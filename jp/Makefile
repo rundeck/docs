@@ -9,11 +9,11 @@ DIST = dist
 DATE = $(shell date "+%Y-%m-%dT%H:%M:%S%Z")
 HRDATE = $(shell date "+%B %e %Y, %H:%M %Z")
 ifndef VERSION
-VERSION=$(shell grep version.number= ../../version.properties | cut -d= -f 2)
+VERSION=$(shell grep version.number= ../version.properties | cut -d= -f 2)
 endif
 
 ifndef TAG
-TAG=$(shell grep version.tag= ../../version.properties | cut -d= -f 2)
+TAG=$(shell grep version.tag= ../version.properties | cut -d= -f 2)
 endif
 ifneq ($(TAG),GA)
 VERSION=$(VERSION)-$(TAG)

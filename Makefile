@@ -2,11 +2,11 @@ include Makefile.inc
 
 DIRS = en
 ifndef VERSION
-VERSION=$(shell grep version.number= ../version.properties | cut -d= -f 2)
+VERSION=$(shell grep version.number= version.properties | cut -d= -f 2)
 endif
 
 ifndef TAG
-TAG=$(shell grep version.tag= ../version.properties | cut -d= -f 2)
+TAG=$(shell grep version.tag= version.properties | cut -d= -f 2)
 endif
 
 ifneq ($(TAG),GA)
