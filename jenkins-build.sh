@@ -3,4 +3,6 @@
 # script for jenkins
 
 make clean
-make docs
+make
+make -C pro clean
+make -C pro
