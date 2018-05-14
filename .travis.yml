@@ -1,0 +1,9 @@
+language: groovy
+script: bash jenkins-build.sh
+addons:
+  apt:
+    packages:
+    - pandoc
+    - make
+    - zip
+    - unzip
