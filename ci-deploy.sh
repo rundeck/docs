@@ -5,30 +5,19 @@ set -euo pipefail
 IFS=$'\n\t'
 readonly ARGS=("$@")
 
-DRYRUN=true
+. ci-common.sh
+
+DRYRUN=false
 WORKSPACE=$(pwd)
 
-VERSION=${VERSION:-}
-TAG=${TAG:-}
-VERSION_FULL=${VERSION_FULL:-}
-
-PROVERSION=${PROVERSION:-}
-PROTAG=${PROTAG:-}
-PROVERSION_FULL=${PROVERSION_FULL:-}
-TRAVIS_PULL_REQUEST=${TRAVIS_PULL_REQUEST:-}
-TRAVIS_BRANCH=${TRAVIS_BRANCH:-}
-TRAVIS_TAG=${TRAVIS_TAG:-}
-TRAVIS_REPO_SLUG=${TRAVIS_REPO_SLUG:-}
 GH_TOKEN=${GH_TOKEN:-}
-
-. ci-common.sh
 
 git_push(){
 	local FARGS=("$@")
 	if [ "$DRYRUN" == "true" ] ; then
 		echo DRYRUN: git push "${FARGS[@]}"
 	else
-		echo git push "${FARGS[@]}"
+		git push "${FARGS[@]}"
 	fi
 }
 
@@ -155,15 +144,16 @@ site_update_primary(){
 	git_push origin master
 }
 
-travis_publish_tag(){
+publish_tag(){
+	local do_release=${1:-no}
 	gen_docs_publish_repo ${VERSION_FULL}
 	site_add_or_update_git_submodule ${VERSION_FULL} ${PROVERSION_FULL}
 
-	if [ "$TAG" == "GA" ] ; then
-		echo TODO: site_update_primary ${VERSION_FULL}
+	if [ "$TAG" == "GA" ] && [ "$do_release" == "yes" ]; then
+		site_update_primary ${VERSION_FULL}
 	fi
 }
-travis_publish_snapshot(){
+publish_snapshot(){
 
 	gen_docs_publish_repo ${VERSION_FULL}
 	site_add_or_update_git_submodule ${VERSION_FULL} ${PROVERSION_FULL} yes
@@ -171,23 +161,19 @@ travis_publish_snapshot(){
 
 main(){
 
-	if [[ $TRAVIS_PULL_REQUEST == 'false' && $TRAVIS_REPO_SLUG == rundeck/docs && $TRAVIS_TAG =~ ^v[[:digit:]] ]]; then
-		echo "Publishing docs: $TRAVIS_TAG"
-
-		read_version ${TRAVIS_TAG:1} GA
-		travis_publish_tag
-
+	parse_travis_version
+	
+	if [ -z $VERSION ] ; then
+		read_version 
+	fi
+	if [ $PUBLISH_TAG == 'yes' ]; then
+		echo "Publishing docs via tag: $VERSION_FULL"
+		echo "(RELEASE: $RELEASE)"
+		publish_tag ${RELEASE}
 	else
-		if [[ $TRAVIS_PULL_REQUEST == 'false' ]] && [ -n ${TRAVIS_BRANCH} ] ; then
-			echo "Publish SNAPSHOT on branch ${TRAVIS_BRANCH}"
-			if  [[  $TRAVIS_BRANCH =~ ^[[:digit:]] ]]; then
-
-				read_version ${TRAVIS_BRANCH} SNAPSHOT
-				travis_publish_snapshot
-			
-			elif  [[ $TRAVIS_BRANCH =~ ^master$ ]]; then
-				echo "Master branch, not publishing"
-			fi
+		if [ $PUBLISH_SNAPSHOT == 'yes' ] ; then
+			echo "Publish SNAPSHOT via branch ${VERSION}"
+			publish_snapshot
 		fi
 	fi
 }
