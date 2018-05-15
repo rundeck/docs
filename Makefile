@@ -40,7 +40,15 @@ clean: $(DIRS)
 
 notes: en/history/toc.conf
 
-en/history/version-$(RVERSION).md: ../RELEASE.md
+_dl/RELEASE-$(RVERSION).md:
+	mkdir -p _dl
+	curl -f -o $@ https://raw.githubusercontent.com/rundeck/rundeck/v$(RVERSION)/RELEASE.md
+
+_dl/CHANGELOG-$(RVERSION).md:
+	mkdir -p _dl
+	curl -f -o $@ https://raw.githubusercontent.com/rundeck/rundeck/v$(RVERSION)/CHANGELOG.md
+
+en/history/version-$(RVERSION).md: _dl/RELEASE-$(RVERSION).md
 	( $(ECHO) "% Version $(RVERSION)" ; \
         $(ECHO) "%" $(shell whoami) ; \
         $(ECHO) "%" $(shell date "+%m/%d/%Y") ; \
@@ -50,11 +58,7 @@ en/history/version-$(RVERSION).md: ../RELEASE.md
 	perl  -i -p -e "s#http://rundeck.org/docs/#../#" $@
 	perl  -i -p -e "s#http://rundeck.org/$(RVERSION)/#../#" $@
 
-../CHANGELOG.md: ../RELEASE.md
-	( cat $< ; echo ; echo "---" ; echo; cat $@ ) > $@.tmp
-	mv $@.tmp $@
-
-en/history/changelog.md: ../CHANGELOG.md
+en/history/changelog.md: _dl/CHANGELOG-$(RVERSION).md
 	( $(ECHO) "% Changelog" ; \
         $(ECHO) "%" $(shell whoami) ; \
         $(ECHO) "%" $(shell date "+%m/%d/%Y") ; \
