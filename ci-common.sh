@@ -39,7 +39,7 @@ parse_travis_version(){
 			tvers=${tvers%-*}
 			release=no
 		fi
-		if [[ $ttag == "maint" ]] ; then
+		if [[ $ttag =~ ^maint ]] ; then
 			ttag=GA
 			release=no
 		fi
