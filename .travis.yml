@@ -7,3 +7,9 @@ addons:
     - make
     - zip
     - unzip
+deploy:
+  - provider: script
+    script: bash ci-deploy.sh
+    skip_cleanup: true
+    on:
+      condition: $TRAVIS_BRANCH =~ ^[[:digit:]].*x$ || $TRAVIS_TAG
