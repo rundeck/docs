@@ -1,5 +1,5 @@
 language: groovy
-script: bash jenkins-build.sh
+script: bash ci-build.sh
 addons:
   apt:
     packages:
