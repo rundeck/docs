@@ -34,7 +34,7 @@ all: $(DIRS)
 
 clean: $(DIRS)
 	for i in $^ ; do \
-	$(MAKE) -C $$i clean ; \
+	$(MAKE) VERSION=$(VERSION) TAG=$(TAG) -C $$i clean ; \
 	done ;
 	rm -rf dist
 
