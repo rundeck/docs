@@ -49,16 +49,18 @@ parse_travis_version(){
 		RELEASE=$release
 
 	else
-		if [[ $TRAVIS_PULL_REQUEST == 'false' ]] && [ $TRAVIS_REPO_SLUG == rundeck/docs ] && [ -n ${TRAVIS_BRANCH} ] ; then
-			echo "Publish SNAPSHOT on branch ${TRAVIS_BRANCH}"
-			if  [[  $TRAVIS_BRANCH =~ ^[[:digit:]] ]]; then
-
+		if [[ $TRAVIS_PULL_REQUEST == 'false' ]] && [[ "$TRAVIS_REPO_SLUG" == rundeck/docs ]] && [ -n ${TRAVIS_BRANCH} ] ; then
+			
+			if  [[  $TRAVIS_BRANCH =~ ^[[:digit:]].*x$ ]]; then
+				echo "Documentation branch ${TRAVIS_BRANCH}"
 				read_version ${TRAVIS_BRANCH} SNAPSHOT
 				PUBLISH_SNAPSHOT=yes
 				
 
 			elif  [[ $TRAVIS_BRANCH =~ ^master$ ]]; then
 				echo "Master branch, not publishing"
+			else
+				echo "Not publishing branch $TRAVIS_BRANCH"
 			fi
 		fi
 	fi
