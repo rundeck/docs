@@ -61,6 +61,7 @@ gen_docs_publish_repo(){
 
 	cd $WORKSPACE/rundeck-docs
 	sh load.sh $WORKSPACE/dist/rundeck-docs-${RundeckVersion}.zip ${RundeckVersion}
+	git pull
 	git commit -m "Added docs for version $RundeckVersion"
 	git_push origin docs$RundeckVersion
 }
