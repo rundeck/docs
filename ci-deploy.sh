@@ -56,12 +56,33 @@ clone_generated_docs_repo(){
 
 gen_docs_publish_repo(){
 	local RundeckVersion=$1
+	local isSnapshot=${2:-no}
+	local skip=
 	
 	clone_generated_docs_repo
 
 	cd $WORKSPACE/rundeck-docs
-	sh load.sh $WORKSPACE/dist/rundeck-docs-${RundeckVersion}.zip ${RundeckVersion}
-	git pull
+
+	if [ "$isSnapshot" == "yes" ] ; then
+		#/ try to fetch existing snapshot branch
+		set +e
+		git fetch origin docs$RundeckVersion
+		local err=$?
+		set -e
+		echo "remote git fetch result: $err"
+		if [  $err == 0 ] ; then
+			echo "local checkout"
+			set +e
+			git branch -l | grep -q docs$RundeckVersion
+			err=$?
+			set -e
+			echo "local branch already exists? $err"
+			git checkout docs$RundeckVersion
+			skip=--skip
+		fi
+	fi
+
+	sh load.sh $WORKSPACE/dist/rundeck-docs-${RundeckVersion}.zip ${RundeckVersion} ${skip}
 	git commit -m "Added docs for version $RundeckVersion"
 	git_push origin docs$RundeckVersion
 }
@@ -93,26 +114,27 @@ site_add_or_update_git_submodule(){
 	clone_org_site_repo
 
 	cd rundeck-org-site
-	if [ -d $RundeckVersion ] && [ $update == 'yes'] ; then
+	if [ -d $RundeckVersion ] && [ $update == 'yes' ] ; then
 		git submodule update --init $RundeckVersion
 		cd $RundeckVersion
 
-		git fetch origin docs$RundeckVersion:docs$RundeckVersion
-		git checkout docs$RundeckVersion
+		git pull origin docs$RundeckVersion
 
 		cd ..
 		git add $RundeckVersion
 		
-		# link based on pro version
-		if [ ! -f "pro$RundeckProVersion" ] ; then
-			ln -s $RundeckVersion "pro$RundeckProVersion"
-			git add pro$RundeckProVersion
-		fi
 	else
 
 		git submodule add -b docs$RundeckVersion https://github.com/rundeck/rundeck-docs.git $RundeckVersion
 		git add $RundeckVersion
-		# link based on pro version
+	fi
+
+	# link based on pro version
+	if [ ! -e "pro$RundeckProVersion" ] ; then
+		ln -s $RundeckVersion "pro$RundeckProVersion"
+		git add pro$RundeckProVersion
+	elif [ $update == 'yes' ] ; then
+		git rm pro$RundeckProVersion
 		ln -s $RundeckVersion "pro$RundeckProVersion"
 		git add pro$RundeckProVersion
 	fi
@@ -156,7 +178,7 @@ publish_tag(){
 }
 publish_snapshot(){
 
-	gen_docs_publish_repo ${VERSION_FULL}
+	gen_docs_publish_repo ${VERSION_FULL} yes
 	site_add_or_update_git_submodule ${VERSION_FULL} ${PROVERSION_FULL} yes
 }
 
