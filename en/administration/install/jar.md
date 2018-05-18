@@ -51,7 +51,31 @@ See the [startup and shutdown](startup-and-shutdown.html) section for
 instructions on using the ``rundeckd`` shell tool to manage the 
 rundeck launcher process.
 
-#### Launcher Options
+## Logging in for the first time
+
+1. Navigate to [http://localhost:4440/](http://localhost:4440/user/login) in a browser
+1. Log in with the username **admin** and password **admin**
+
+Rundeck is now up and running!
+
+Next, learn how to [create your first Rundeck Pro project](../../../manual/getting-started.html#project-setup)
+
+### Updating
+
+When you need to update rundeck and you can not find the relevant section on the docs you are probably on a quite recent version. This worked successfully in all the steps from 2.6.5 to 2.6.10.
+
+* Stop rundeck
+* Remove `%RDECK_BASE%\server\exp` and `%RDECK_BASE%\server\lib`, making a backup of any file you modified under those directories (e.g. `%RDECK_BASE%\server\exp\webapp\WEB-INF\classes\log4j.properties`, `%RDECK_BASE%\server\exp\webapp\WEB-INF\web.xml`, etc)
+* download the launcher
+* open a prompt, optionally setting RDECK_BASE and launch --installonly
+
+    java -jar rundeck-launcher-2.6.10.jar --installonly
+
+* copy over your customizations
+* don't forget, e.g., sqljdbc41.jar in `%RDECK_BASE%\server\lib`
+* start rundeck
+
+### Launcher Options
 
 The launcher jar can take a number of options to specify how the server should start. If you execute with a "-h" you will see the usage information:
 
@@ -83,7 +107,7 @@ These options can be used to customize the directories used by the launcher.
 By default all the directories are organized by convention within the current
 working directory where the launcher jar is located.
 
-#### System Properties
+### System Properties
 
 You can also customize the launcher behavior by using some java system properties.
 
