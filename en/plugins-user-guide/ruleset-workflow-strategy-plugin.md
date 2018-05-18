@@ -1,4 +1,4 @@
-% Ruleset Workflow Strategy plugin
+% Ruleset Workflow Strategy Plugin
 
 <!---
 Original: http://support.rundeck.com/customer/en/portal/articles/2745900-ruleset-workflow-strategy-plugin-advanced-workflow-

@@ -1,4 +1,4 @@
-% PowerShell plugin
+% PowerShell Plugins
 
 <!---
 Original: 

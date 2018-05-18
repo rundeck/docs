@@ -1,4 +1,4 @@
-% ServiceNow plugin
+% ServiceNow Plugins
 
 <!---
 Original: 
