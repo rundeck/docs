@@ -1,4 +1,4 @@
-% Configuration
+% Rundeck Pro
 
 ## Overview
 

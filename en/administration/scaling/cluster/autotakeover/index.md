@@ -1,6 +1,6 @@
 % High Availabilty setup
 
-[Configure a loadbalancer](../loadbalancer/index.html) first.
+[Configure a loadbalancer](loadbalancer/index.html) first.
 
 ### Configure Autotakeover
 

@@ -1,53 +1,3 @@
-% Setting up a RDB Datasource
-
-You can configure Rundeck to use a RDB instead of the default file-based data storage.
-
-You must modify the `server/config/rundeck-config.properties` file, to change the `dataSource` configuration, and you will have to add the appropriate JDBC driver JAR file to the lib directory.
-
-For Mysql-specific instructions, jump to: [Mysql Setup Guide](#mysql-setup-guide).
-
-## Customize the Datasource
-
-The default dataSource is configured for filesystem storage using HSQLDB:
-
-~~~~~~ {.java}
-dataSource.url = jdbc:hsqldb:file:/var/lib/rundeck/data/grailsdb;shutdown=true
-~~~~~~ 
-
-Here is an example configuration to use an Oracle backend:
-
-~~~~~~ {.java .numberLines }
-dataSource.url = jdbc:oracle:thin:@localhost:1521:XE
-dataSource.driverClassName = oracle.jdbc.driver.OracleDriver
-dataSource.username = dbuser
-dataSource.password = dbpass
-dataSource.dialect = org.hibernate.dialect.Oracle10gDialect
-~~~~~~~~
-
-Here is an example configuration to use Mysql:
-
-~~~~~~ {.java .numberLines }
-dataSource.url = jdbc:mysql://myserver/rundeckdb?autoReconnect=true
-dataSource.username = dbuser
-dataSource.password = dbpass
-~~~~~~
-
-NB: for Mysql, the `autoReconnect=true` will fix a common problem where the Rundeck server's connection to Mysql is dropped after a period of inactivity, resulting in an error message: "Message: Can not read response from server. Expected to read 4 bytes, read 0 bytes before connection was unexpectedly lost."
-
-See the [Mysql Setup Guide](#mysql-setup-guide) for
-instructions on creating the rundeck database and granting access.
-
-See more about [configuring the Mysql JDBC Connector/J URL](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-reference-configuration-properties.html).
-
-## Add the JDBC Driver
-
-Rundeck includes a JDBC driver for Mysql and H2. If you are using another database
-copy the appropriate JDBC driver, such as "ojdbc14.jar" for Oracle into the server `lib` dir:
-
-~~~~~~ {.bash}
-cp ojdbc14.jar $RDECK_BASE/server/lib
-~~~~~~
-
 # Mysql setup guide
 
 This is a simple guide for setting up Mysql for use with Rundeck.
@@ -113,54 +63,6 @@ Else:
 * Copy the mysql-connector-java-5.x.x-bin.jar to `$RDECK_BASE/server/lib` (for launcher install) or `$WEBAPPS/rundeck/WEB-INF/lib` (for Tomcat).
 
 Finally you can start rundeck.  If you see a startup error about database access, make sure that the hostname that the Mysql server sees from the client is the same one you granted access to.
-
-# PostgreSQL setup guide
-
-This is a simple guide for setting up PostgreSQL for use with Rundeck.
-
-## Install PostgreSQL
-
-You can "yum install" or "apt-get install" the server, or you can download rpms manually if you like. See [PostgreSQL installation](https://wiki.postgresql.org/wiki/Detailed_installation_guides)
-
-## Setup Rundeck Database
-
-We have to create the database and user for Rundeck.
-
-If it is not running, start Postgres (with "service postgresql-<version> start" or similar).
-
-Switch to 'postgres' user and use the 'psql' commandline tool to access the db:
-
-    $ su postgres
-    $ psql
-
-Once you have the 'postgres=#'' prompt, enter the following commands to create the rundeck database:
-
-    postgres=# create database rundeck;
-
-Now, create a user and grant privileges to connect to this DB.
-
-    postgres=# create user rundeckuser with password 'rundeckpassword';
-    postgres=# grant ALL privileges on database rundeck to rundeckuser;
-
-You can then exit the psql prompt.
-
-You may also have to add a pg_hba.conf entry for this user. See [pg_hba.conf documentation](https://www.postgresql.org/docs/9.5/static/auth-pg-hba-conf.html)
-
-## Configure Rundeck
-
-Now you need to configure Rundeck to connect to this DB as described earlier in this document: [Customize the Datasource](#customize-the-datasource).
-
-Update your `rundeck-config.properties` and configure the datasource:
-
-    dataSource.driverClassName = org.postgresql.Driver
-    dataSource.url = jdbc:postgresql://myserver/rundeck
-    dataSource.username=rundeckuser
-    dataSource.password=rundeckpassword
-
-With recent Rundeck versions, PostgreSQL connector is bundled.
-You can check if present in this path: `$RDECK_BASE/exp/webapp/WEB-INF/lib/`
-
-Now, you can start Rundeck.
 
 # Mysql migration guide
 
@@ -284,4 +186,3 @@ For each project you wish to import, go to the Configure page for the project:
 * Upload the project archive with the corresponding name
 * Optionally choose to Import All Executions
 * Click Import
-

@@ -17,9 +17,6 @@ build(){
 	fi
 
 	VERSION=${VERSION:-} TAG=${TAG:-}  make clean
-	VERSION=${VERSION:-} TAG=${TAG:-}  make -C pro clean
-	VERSION=${VERSION:-} TAG=${TAG:-}  make -C pro
-	mkdir -p en/dist/html; mv pro/en/dist/html en/dist/html/pro
 	VERSION=${VERSION:-} TAG=${TAG:-}  make
 }
 
