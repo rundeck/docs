@@ -110,7 +110,7 @@ You can install more types of File Copiers as plugins, see [Node Execution Plugi
 
 ## Key Storage
 
-The Key Storage facility provides an [API](../api/rundeck-api.html#key-storage) and GUI to manage public, private keys and passwords.
+The Key Storage facility provides an [API](../api/index.html#key-storage) and GUI to manage public, private keys and passwords.
 These stored keys are used by both Node Executor and File Copier plugins.
 Project configuration settings allow you to reference a key path for both the default Node Executor and File Copier 
 ([see above](configure.html#default-node-executor-configuration)). 

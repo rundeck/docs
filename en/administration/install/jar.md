@@ -47,7 +47,7 @@ are using an unsupported Java version.
 
     Exception in thread "main" java.lang.UnsupportedClassVersionError: Bad version number in .class file
 
-See the [startup and shutdown](startup-and-shutdown.html) section for
+See the [startup and shutdown](../maintenance/startup-and-shutdown.html) section for
 instructions on using the ``rundeckd`` shell tool to manage the 
 rundeck launcher process.
 
@@ -58,7 +58,7 @@ rundeck launcher process.
 
 Rundeck is now up and running!
 
-Next, learn how to [create your first Rundeck Pro project](../../../manual/getting-started.html#project-setup)
+Next, learn how to [create your first Rundeck Pro project](../../manual/getting-started.html#project-setup)
 
 ### Updating
 
@@ -128,10 +128,10 @@ to the `java` command:
 * `loginmodule.conf.name` Name of a custom JAAS config file, located in the server's config dir.
 * `rundeck.config.name` Name of a custom rundeck config file, located in the server's config dir.
 * `rundeck.ssl.config` Path to the SSL config properties file to enable SSL. If not set, SSL is not enabled.
-* `rundeck.jetty.connector.forwarded` true/false. Set to true to enable support for "X-forwarded-\*" headers which may be sent by a front-end proxy to the rundeck server. See [Using an SSL Terminated Proxy](configuring-ssl.html#using-an-ssl-terminated-proxy).
-* `rundeck.jetty.connector.ssl.excludedProtocols` Comma-separated list of SSL protocols to disable. Default: 'SSLv3'. See [Disabling SSL Protocols](configuring-ssl.html#disabling-ssl-protocols).
-* `rundeck.jetty.connector.ssl.includedProtocols` Comma-separated list of SSL protocols to include. Default is based on available protocols. See [Disabling SSL Protocols](configuring-ssl.html#disabling-ssl-protocols).
-* `rundeck.jetty.connector.ssl.excludedCipherSuites` Comma-separated list of Cipher suites to disable. No default. See [Disabling SSL Protocols](configuring-ssl.html#disabling-ssl-protocols).
-* `rundeck.jetty.connector.ssl.includedCipherSuites` Comma-separated list of Cipher suites to enable. Default is based on available cipher suites. See [Disabling SSL Protocols](configuring-ssl.html#disabling-ssl-protocols).
+* `rundeck.jetty.connector.forwarded` true/false. Set to true to enable support for "X-forwarded-\*" headers which may be sent by a front-end proxy to the rundeck server. See [Using an SSL Terminated Proxy](../security/configuring-ssl.html#using-an-ssl-terminated-proxy).
+* `rundeck.jetty.connector.ssl.excludedProtocols` Comma-separated list of SSL protocols to disable. Default: 'SSLv3'. See [Disabling SSL Protocols](../security/configuring-ssl.html#disabling-ssl-protocols).
+* `rundeck.jetty.connector.ssl.includedProtocols` Comma-separated list of SSL protocols to include. Default is based on available protocols. See [Disabling SSL Protocols](../security/configuring-ssl.html#disabling-ssl-protocols).
+* `rundeck.jetty.connector.ssl.excludedCipherSuites` Comma-separated list of Cipher suites to disable. No default. See [Disabling SSL Protocols](../security/configuring-ssl.html#disabling-ssl-protocols).
+* `rundeck.jetty.connector.ssl.includedCipherSuites` Comma-separated list of Cipher suites to enable. Default is based on available cipher suites. See [Disabling SSL Protocols](../security/configuring-ssl.html#disabling-ssl-protocols).
 
-For more information about using SSL, see [Configuring Rundeck for SSL](configuring-ssl.html).
+For more information about using SSL, see [Configuring Rundeck for SSL](../security/configuring-ssl.html).

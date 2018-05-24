@@ -189,7 +189,7 @@ export RDECK_JVM="-Dloginmodule.conf.name=jaas-ldap.conf \
     -Dloginmodule.name=ldap"
 ~~~~~~
 
-Note: more information about using the launcher and useful properties are under [Getting Started - Launcher Options](installation.html#launcher-options).
+Note: more information about using the launcher and useful properties are under [Getting Started - Launcher Options](../install/launcher.html#launcher-options).
 
 **For the RPM installation**: the absolute path to the JAAS config file must be specified with the `java.security.auth.login.config` property.
 

@@ -15,7 +15,7 @@ Rundeck server configuration includes settings to define the outbound
 user allowed by the remote hosts. Remote machines
 are not required to make connections back to the server.
 
-![Rundeck architecture](../figures/fig0001.png)
+![Rundeck architecture](../../figures/fig0001.png)
 
 The Rundeck application itself is a Java-based webapp. The application provides both
 graphical interface and network interfaces used by the Rundeck shell
@@ -100,7 +100,7 @@ runtime.
 The install process requires that the latest version of Java 8
 be installed. Both the [Open JDK](http://openjdk.java.net/) and [Sun/Oracle](https://java.com/) JVMs can be used.
 You must have the JAVA_HOME environment variable defined
-in your environment before running the launcher.  The RPM will use the java found on your path. See [Setting JAVA_HOME](startup-and-shutdown.html#setting-java_home) if you want to run a different version of java.
+in your environment before running the launcher.  The RPM will use the java found on your path. See [Setting JAVA_HOME](../maintenance/startup-and-shutdown.html#setting-java_home) if you want to run a different version of java.
 
 Verify your Java version to check it meets the requirement:
 
@@ -139,7 +139,7 @@ In addition, TCP port 22 (by default) needs to be open on the clients for SSH.
 Clients should be set up to allow the Rundeck server user to connect to
 the clients using SSH via public-key authentication. It should not
 prompt for a password. See
-[Configure remote machine for SSH](../plugins-user-guide/ssh-plugins.html#configuring-remote-machine-for-ssh)
+[Configure remote machine for SSH](../../plugins-user-guide/ssh-plugins.html#configuring-remote-machine-for-ssh)
 in the Administration chapter.
 
 There are various ways for installing SSH on Windows; we recommend

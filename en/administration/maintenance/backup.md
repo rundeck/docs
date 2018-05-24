@@ -14,7 +14,7 @@ You can use the [rd] tool.
     ...
     ~~~~~~
 
-(2) Stop the server. See: [startup and shutdown](#startup-and-shtudown). (Rundeck data file backup should only be done with the server down.)
+(2) Stop the server. See: [startup and shutdown](startup-and-shutdown.html). (Rundeck data file backup should only be done with the server down.)
 
     ~~~~~~ {.bash}
     rundeckd stop
@@ -49,7 +49,7 @@ location of the data directory depends on the installation method:
 
 ## Recovery
 
-(1) Stop the server. See: [startup and shutdown](startup-and-shtudown.html). (Rundeck recovery should only be done with the server down.)
+(1) Stop the server. See: [startup and shutdown](startup-and-shutdown.html). (Rundeck recovery should only be done with the server down.)
 
     ~~~~~~ {.bash}
     rundeckd stop

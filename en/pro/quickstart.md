@@ -10,7 +10,7 @@ What differentiates Rundeck Pro from the OSS Rundeck version is . . . .
 
 ### How can I try out Rundeck Pro?
 
-**Note:** this setup is meant for evaluating Rundeck on your local workstation. For a guide to setting up Rundeck Pro in production see [Installation](installation.html).
+**Note:** this setup is meant for evaluating Rundeck on your local workstation. For a guide to setting up Rundeck Pro in production see [Installation](../administration/install/index.html).
 
 1. Fill out the [download form](https://www.rundeck.com/download-now) to access the download page.
 1. Click on `➤ Cluster` and click on the the file ending in `.jar` to start the download.

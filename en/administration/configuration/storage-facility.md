@@ -1,4 +1,4 @@
-% Rundeck Storage Facility
+% Storage Facility
 
 This document describes the Rundeck Storage Facility which is used both for Key Storage, and for Project Definition Storage.
 
@@ -20,7 +20,7 @@ The Key Storage container allows storing public keys, private keys, and password
 contents of these files can be accessed by Node Execution plugins for authenticating to remote nodes.
 The contents can be written via the Rundeck API, but only public keys can be read via the API.
 
-See the chapter: [Key Storage](key-storage.html).
+See the chapter: [Key Storage](../security/key-storage.html).
 
 When configuring Key Storage providers, the configuration entries in `rundeck-config.properties` start with:
 
@@ -108,11 +108,11 @@ cp ojdbc14.jar $RDECK_BASE/server/lib
 
 ### Configuring Storage Plugins
 
-See [Plugins User Guide - Configuring Storage Plugins](../plugins-user-guide/configuring.html#storage-plugins).
+See [Plugins User Guide - Configuring Storage Plugins](../../plugins-user-guide/configuring.html#storage-plugins).
 
 ## Storage Converters
 
-Files can be encrypted in the storage backend by use of a [Storage Converter plugin](../developer/storage-converter-plugin.html). A typical plugin would encrypt data at write time, and decrypt it at read time.
+Files can be encrypted in the storage backend by use of a [Storage Converter plugin](../../developer/storage-converter-plugin.html). A typical plugin would encrypt data at write time, and decrypt it at read time.
 
 The Storage Converter Plugin handles reading and writing the content for any matching resources.  The subsequent data is stored in the storage backend (on-disk or in a database) alongside the metadata for the file.
 
@@ -120,4 +120,4 @@ Converter plugins do not have to manage storing the data, that will be handled b
 
 ### Configuring Storage Converter Plugins
 
-See [Plugins User Guide - Configuring Storage Converter Plugins](../plugins-user-guide/configuring.html#storage-converter-plugins).
+See [Plugins User Guide - Configuring Storage Converter Plugins](../../plugins-user-guide/configuring.html#storage-converter-plugins).

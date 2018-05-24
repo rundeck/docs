@@ -46,7 +46,7 @@ there are a couple ways you can try it.
 install the Rundeck software. There are several package formats. 
 Choose the one that best suits your infrastructure.
 After installation, be sure Rundeck has been started.
-See [Startup](../administration/startup-and-shutdown.html) to learn how to
+See [Startup](../administration/maintenance/startup-and-shutdown.html) to learn how to
 startup and shutdown rundeck.
 * You can run the [vagrant](https://github.com/rundeck/anvils-demo) demo.
 The demo contains a project with tagged nodes, example job workflows with
@@ -70,7 +70,7 @@ you with a dialog to create one. Press the "New Project" button to create
 a project. 
 Fill the project creation form with a desired name. Project names can
 contain letters and numbers but do not use spaces or special characters.
-The [Project setup](../administration/project-setup.html) 
+The [Project setup](../administration/configuration/project-setup.html) 
 chapter in the Administrator guide
 will show you how to learn to add Nodes, automate the creation and maintenance of
 Rundeck projects.

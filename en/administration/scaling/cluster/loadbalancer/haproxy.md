@@ -134,7 +134,7 @@ The URL accepts a parameter called "executionMode" which takes one of two values
 
 For example: `http://localhost:4440/cgi-bin/status?token=<token>&executionMode=active`
 
-![Example health check](../../../figures/haproxy-health-check.png)
+![Example health check](../../../../figures/haproxy-health-check.png)
 
 ### On HAProxy, add the following settings
 
@@ -157,4 +157,4 @@ server rundeck3 192.168.0.3:4440 cookie rundeck3 check inter 2000 rise 2 fall 3
 
 Once the web load balancer has been configured with the health check, any instance that is not in "active" mode will not be passed traffic.
 
-![HAProxy status](../../../figures/haproxy-status.png)
+![HAProxy status](../../../../figures/haproxy-status.png)

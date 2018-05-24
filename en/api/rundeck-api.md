@@ -438,7 +438,7 @@ Some endpoints also support using a `format` query parameter to specify the expe
 Authentication can be done in two different ways, either with Token based authentication,
 or with a username and password.
 
-Note that in either case, **it is recommended that you enable SSL Support for the Rundeck server** so that communication is encrypted at all times. For more information about using SSL, see [Administration - Configuring Rundeck for SSL](../administration/configuring-ssl.html).
+Note that in either case, **it is recommended that you enable SSL Support for the Rundeck server** so that communication is encrypted at all times. For more information about using SSL, see [Security - Configuring Rundeck for SSL](../administration/security/configuring-ssl.html).
 
 ### Token Authentication
 
@@ -456,7 +456,7 @@ and an *Expiration Period*.
 
 Click "Generate API Token" to create a new one. The unique string that is shown is the API Token.
 
-Alternately you can define tokens in static file, by setting the `rundeck.tokens.file` in [framework.properties](../administration/configuration-file-reference.html#framework.properties).
+Alternately you can define tokens in static file, by setting the `rundeck.tokens.file` in [framework.properties](../administration/configuration/configuration-file-reference.html#framework.properties).
 
 You must include one of the following with every HTTP request to the API:
 
@@ -482,7 +482,7 @@ Using the HTTP Header:
     X-Rundeck-Auth-Token: E4rNvVRV378knO9dp3d73O0cs1kd0kCd
     ...
 
-[API Token Authorization]: ../administration/access-control-policy.html#api-token-authorization
+[API Token Authorization]: ../administration/security/access-control-policy.html#api-token-authorization
 
 ### Password Authentication
 
@@ -1930,7 +1930,7 @@ any policy files in the normal filesystem locations (e.g. `$RDECK_BASE/etc`).
 For more information about ACL Policies see:
 
 * [ACLPOLICY format][ACLPOLICY]
-* [Access Control Policy](../administration/access-control-policy.html)
+* [Access Control Policy](../administration/security/access-control-policy.html)
 
 ### List System ACL Policies
 
@@ -3430,7 +3430,7 @@ Delete an execution by ID.
 
 *Authorization requirement*:
 
-* Requires the `delete_execution` action allowed for a `project` in the `application` context. See: [Administration - Access Control Policy - Application Scope Resources and Actions](../administration/access-control-policy.html#application-scope-resources-and-actions)
+* Requires the `delete_execution` action allowed for a `project` in the `application` context. See: [Administration - Access Control Policy - Application Scope Resources and Actions](../administration/security/access-control-policy.html#application-scope-resources-and-actions)
 
 ### Bulk Delete Executions
 
@@ -4466,7 +4466,7 @@ new execution by ID:
 ## Key Storage ###
 
 Upload and manage public and private key files and passwords.
-For more information see the [Administration - Key Storage](../administration/key-storage.html) document.
+For more information see the [Administration - Key Storage](../administration/security/key-storage.html) document.
 
 Keys are stored via Rundeck's *Storage* facility.  This is a path-based interface to manage files.  The underlying storage may be on disk or in a database.
 
@@ -5288,7 +5288,7 @@ however the URL is rooted under the Project's URL path: `/api/13/project/[PROJEC
 For more information about ACL Policies see:
 
 * [ACLPOLICY format][ACLPOLICY]
-* [Access Control Policy](../administration/access-control-policy.html)
+* [Access Control Policy](../administration/security/access-control-policy.html)
 
 #### List Project ACL Policies
 

@@ -6,7 +6,7 @@ This guide explains approaches and implementation examples for making Rundeck hi
 
 When thinking about scaling Rundeck there are roughly two concerns:
 
-1.  Make an individual Rundeck perform better. To tune an individual Rundeck instance see the [Tuning Rundeck](tuning-rundeck.html) page. Also see the Database section below. Use an external database service like Mysql.
+1.  Make an individual Rundeck perform better. To tune an individual Rundeck instance see the [Tuning Rundeck](../maintenance/tuning-rundeck.html) page. Also see the Database section below. Use an external database service like Mysql.
 2. Make the service you are providing with Rundeck handle more users and bigger workloads by adding more machines for increased capacity. In this case, you either want to be sure Rundeck is highly available or you want to add more capacity to serve more users or processing.
 
 
@@ -50,7 +50,7 @@ _Don't use the embedded database._ If you install the vanilla standalone rundeck
 Rundeck versions prior to 1.5, use the Hypersonic database (HSQLDB). Versions 1.5 and beyond include the H2 database. Either HSQLDB or H2 has a low performance wall. Rundeck users will hit this limitation at a small-medium level of scale.
 
 For high performance and scale requirements, you should not use these embedded databases. Instead, use an external database service like Mysql or Oracle.
-See the [Setting up an RDB Datasource](setting-up-an-rdb-datasource.html) page to learn how to configure the Rundeck datasource to your database of choice.
+See the [Setting up a database](storage/index.html) page to learn how to configure the Rundeck datasource to your database of choice.
 
 Also, be sure to locate your external database on a host(s) with sufficient capacity and performance. Don't create a downstream bottleneck!
 
@@ -60,7 +60,7 @@ If you are executing commands across many hundreds or thousands of hosts, the bu
 
 ##### Built in SSH plugins
 
-If you are interested in using the built in [SSH plugins](../manual/plugins-user-guide/ssh-plugins.html), here are some details about how it performs when executing commands across very large numbers of nodes. For these tests, Rundeck was running on an 8 core, 32GB RAM m2.4xlarge AWS EC2 instance.
+If you are interested in using the built in [SSH plugins](../../plugins-user-guide/ssh-plugins.html), here are some details about how it performs when executing commands across very large numbers of nodes. For these tests, Rundeck was running on an 8 core, 32GB RAM m2.4xlarge AWS EC2 instance.
 
 We chose the `rpm -q` command which checks against the rpm database to see if a particular package was installed.  For 1000 nodes we saw an average execution of 52 seconds.  A 4000 node cluster  took roughly 3.5 minutes, and 8000 node cluster about 7 minutes.
 
@@ -74,7 +74,7 @@ It is possible to offload SSL connection processing by using an SSL termination 
 #### Resource provider
 
 Rundeck projects obtain information about nodes via a
-[resource provider](../administration/node-resource-sources.html). If your resource provider is a long blocking process (due to slow responses from a backend service), it can slow down or even hang up Rundeck. Be sure to make your resource provider work asynchronously.
+[resource provider](../configuration/managing-node-sources.html). If your resource provider is a long blocking process (due to slow responses from a backend service), it can slow down or even hang up Rundeck. Be sure to make your resource provider work asynchronously.
 Also, consider using caching when possible.
 
 
@@ -107,7 +107,7 @@ Oracle, Mysql, and MS-SQL offer solutions to enable activation of multiple SQL s
 
 #### Log store
 
-An HA Rundeck requires Rundeck instances share the same log store. Job execution output is stored locally to the Rundeck instance that ran the job but this output can be loaded into a common storage facility (eg, AWS S3, WebDAV, custom). See [Logging Plugin Development](../developer/logging-plugin.html) to learn how to implement your own log storage. Of course, you can configure your Rundeck instances to share a file system using a NAS/SAN or NFS but those methods are typically less desirable or impossible in a cloud environment. Without a shared logstore, job output files would need to be synchronized across Rundecks via a tool like `rsync`.
+An HA Rundeck requires Rundeck instances share the same log store. Job execution output is stored locally to the Rundeck instance that ran the job but this output can be loaded into a common storage facility (eg, AWS S3, WebDAV, custom). See [Logging Plugin Development](../../developer/logging-plugin.html) to learn how to implement your own log storage. Of course, you can configure your Rundeck instances to share a file system using a NAS/SAN or NFS but those methods are typically less desirable or impossible in a cloud environment. Without a shared logstore, job output files would need to be synchronized across Rundecks via a tool like `rsync`.
 
 With a configured Log store, the executing Rundeck instance copies the local output file to the log store after job completion. If the standby rundeck instance is activated, any request for that output log will cause the standby to retrieve it from the log store and copy it locally for future access.
 
@@ -125,7 +125,7 @@ The HA monitor should be configured to run a health check to test the status of 
 Here are several health tests to consider:
 
 * Reachable: Ping the primary Rundeck to be sure it's reachable over the network.
-* API connection: Connect to the rundeck instance and get its system info. See: [/api/1/system/info](../api/index.html#system-info).
+* API connection: Connect to the rundeck instance and get its system info. See: [/api/1/system/info](../../api/index.html#system-info).
 * Custom: You might also script a check unique to your configuration and environment.
 
 A health check should be designed to take the following parameters:
@@ -140,7 +140,7 @@ Writing the health check to test various levels of access can also assist in nar
 
 The takeover procedure should include any steps to make the standby a fully functioning primary rundeck instance. Here are some steps to consider in your takeover procedure:
 
-* Scheduled jobs that were managed by the primary must be taken over by the secondary. See the [takeover schedule](../api/index.html#takeover-schedule-in-cluster-mode) API.
+* Scheduled jobs that were managed by the primary must be taken over by the secondary. See the [takeover schedule](../../api/index.html#takeover-schedule-in-cluster-mode) API.
 * Update the monitoring station to start checking the new primary (old secondary).
 * Update other maintenance tools that need care for the primary (eg, backup, cleanup).
 * Optionally, provision a new secondary instance.
@@ -168,7 +168,7 @@ Clustering requirements build on some of the needs as HA solutions. This specifi
 
 Generally, the architecture is composed of the following units:
 
-![Clustering architecture](../figures/fig14100.png)
+![Clustering architecture](../../figures/fig14100.png)
 
 
 #### Examples
@@ -187,7 +187,7 @@ The following frontend and backend services are used in conjunction with Rundeck
 * Database: RDS (Mysql instance)
 * Log store: S3 using the [S3 log plugin](https://github.com/rundeck-plugins/rundeck-s3-log-plugin)
 
-![Clustering architecture](../figures/fig14101.png)
+![Clustering architecture](../../figures/fig14101.png)
 
 Note, if all your deployments run in EC2, you might also consider using the
 [EC2 nodes plugin](https://github.com/rundeck-plugins/rundeck-ec2-nodes-plugin) so Rundeck knows about your EC2 instances.
@@ -206,14 +206,14 @@ If Oracle RAC and SAN storage is not available to you, here's a similar architec
 * Coyote AJP: Provides communication channel between Apache and the Rundeck instances in Tomcat.
 * Sticky sessions: Ensures incoming requests with same session are routed to the same Tomcat worker. This does not use session sharing/replication.
 
-![Apache-tomcat cluster](../figures/fig14102.png)
+![Apache-tomcat cluster](../../figures/fig14102.png)
 
 
 ##### Simple HA failover
 
 This last example is basically a "roll your own" HA failover solution that uses the scripted methods described earlier. This example uses the monitor, check, takeover scripts to perform the health tests, synchronize configuration and take over the primary role, if the primary is detected as down. The example, assumes there is a load balancer and an associated VIP to manage the traffic redirection. A sync job is used to replicate rundeck configuration across instances.
 
-![Simple HA failover](../figures/fig14103.png)
+![Simple HA failover](../../figures/fig14103.png)
 
 If you are curious to see an example of a simple HA failover setup, take a look at this multi-node Vagrant configuration: [primary-secondary-failover](https://github.com/ahonor/rundeck-vagrant/tree/master/primary-secondary-failover).
 

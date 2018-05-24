@@ -4,7 +4,7 @@
 
 ## About 
 
-Storage plugins provide the backend for storing file contents uploaded to the [Key Storage](../administration/key-storage.html) via the [Key Storage API](../api/index.html#key-storage).
+Storage plugins provide the backend for storing file contents uploaded to the [Key Storage](../administration/security/key-storage.html) via the [Key Storage API](../api/index.html#key-storage).
 
 The Storage facility stores **Resources** in a **Path-oriented** tree structure.  Each **Resource** has a set of key-value *metadata*, and a stream of binary data (the *content*).
 
@@ -14,7 +14,7 @@ When installed, Storage Plugins can be configured to apply to all storage, or fo
 
 ## Configuring
 
-See: [Configuring the Storage Plugins](../administration/key-storage.html#configuring-the-storage-plugins).
+See: [Configuring the Storage Plugins](../administration/security/key-storage.html#configuring-the-storage-plugins).
 
 ## Java Plugin Type
 

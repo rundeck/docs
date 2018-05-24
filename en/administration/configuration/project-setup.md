@@ -38,7 +38,7 @@ The import process copies the contents of `etc/project.properties`, `readme.md` 
 Finally, the `etc/project.properties` file will be renamed on disk to `etc/project.properties.imported`.
 
 The DB storage type also uses the Rundeck **Storage Facility** to store the file contents, which can be
-configured to use an Encryption plugin.  See [Storage Facility - Using Encryption](storage-facility.html#using-encryption).
+configured to use an Encryption plugin.  See [Storage Facility - Using Encryption](storage.html#using-encryption).
 
 ### Configuration file
 
@@ -61,7 +61,7 @@ create a new project.
 
 Press the "New Project" button to create a project.  Project names can contain letters and numbers but do not use spaces or special characters.
 
-![Create project prompt](../figures/fig0203-a.png)
+![Create project prompt](../../figures/fig0203-a.png)
 
 
 After entering your project name, Rundeck initializes it and returns
@@ -85,7 +85,7 @@ You can also create a `motd.md` (Message of the Day) with other information that
 may change more frequently.
 
 
-![Project readme](../figures/fig0203.png)
+![Project readme](../../figures/fig0203.png)
 
 
 #### Filesystem based readme/motd
@@ -138,7 +138,7 @@ to retrieve additional Resource Model content from other sources.
 You can configure Rundeck to retrieve and store resource model data
 from any source, so long as it can produce one of the Rundeck resource model
 document formats. (See
-[Resource Model Document formats](../plugins-user-guide/resource-model-source-plugins.html#resource-model-document-formats).)
+[Resource Model Document formats](../../plugins-user-guide/resource-model-source-plugins.html#resource-model-document-formats).)
 
 See [Resource Model Sources](managing-node-sources.html#resource-model-source).
 
@@ -218,10 +218,10 @@ interested in creating your own, see the
 
 Rundeck currently has two resource model document formats built in:
 
-* XML: [resource-XML](../man5/resource-xml.html).  Format name: `resourcexml`.
-* Yaml: [resource-YAML](../man5/resource-yaml.html). Format name: `resourceyaml`.
+* XML: [resource-XML](../../man5/resource-xml.html).  Format name: `resourcexml`.
+* Yaml: [resource-YAML](../../man5/resource-yaml.html). Format name: `resourceyaml`.
 
-You can enable more formats using [Resource Format Plugins](../plugins-user-guide/resource-model-source-plugins.html).
+You can enable more formats using [Resource Format Plugins](../../plugins-user-guide/resource-model-source-plugins.html).
 
 ### Pluggable Resource Model Sources
 
@@ -229,7 +229,7 @@ Each project can have multiple sources for Resource model information, and
 you can use or write plugins to enable new sources for entries in the Resource model.
 
 You can configure the sources via the GUI from the Admin page, see
-[Configure Page](../manual/configure.html),
+[Configure Page](../../manual/configure.html),
 or by modifying the project.properties file.
 
 ## Related Command Line Tools
@@ -271,20 +271,20 @@ Administrators can place multiple resource model files in this directory.
 
 ## API Usage
 
-All Project creation, configuration, deletion, etc can be achieved via the [API](../api/index.html).
+All Project creation, configuration, deletion, etc can be achieved via the [API](../../api/index.html).
 
-[Create projects](../api/index.html#project-creation):
+[Create projects](../../api/index.html#project-creation):
 
     POST /api/13/projects
     Content-Type: application/json
 
     { "name": "myproject", "config": { "propname":"propvalue" } }
 
-[Delete projects](../api/index.html#project-deletion):
+[Delete projects](../../api/index.html#project-deletion):
 
     DELETE /api/13/project/myproject
 
-[Project configuration](../api/index.html#project-configuration)
+[Project configuration](../../api/index.html#project-configuration)
 
     PUT /api/13/project/myproject/config
     Content-Type: application/json
@@ -294,7 +294,7 @@ All Project creation, configuration, deletion, etc can be achieved via the [API]
         "key2":"value2..."
     }
 
-[Project readme/motd modification](../api/index.html#project-readme-file)
+[Project readme/motd modification](../../api/index.html#project-readme-file)
 
     PUT /api/13/project/myproject/readme.md
     Content-Type: text/plain

@@ -55,7 +55,7 @@ ulimit -n 65535
 ~~~~~
 
 The ulimit setting can be set in the [rundeckd](startup-and-shutdown.html#launcher)
-startup script, or [profile](configuration-file-reference.html#profile).
+startup script, or [profile](../configuration/configuration-file-reference.html#profile).
 
 Restart Rundeck.
 
@@ -72,7 +72,7 @@ Heap size is governed by the following startup parameters:
 ``-Xms<initial heap size>`` and ``-Xmx<maximum heap size>``
 
 
-You can increase these by updating the Rundeck [profile](configuration-file-reference.html#profile).
+You can increase these by updating the Rundeck [profile](../configuration/configuration-file-reference.html#profile).
 To see the current values, grep the ``profile`` for
 the Xmx and Xms patterns:
 
@@ -165,7 +165,7 @@ _Note_: For more background information on JMX, see
 "[Java theory and practice: Instrumenting applications with JMX.](https://www.ibm.com/developerworks/library/j-jtp09196/)".
 
 Enable local JMX monitoring by adding the ``com.sun.management.jmxremote``
-flag to the startup parameters in the [profile](configuration-file-reference.html#profile).
+flag to the startup parameters in the [profile](../configuration/configuration-file-reference.html#profile).
 
 ~~~~~ {.bash}
 export RDECK_JVM="$RDECK_JVM -Dcom.sun.management.jmxremote"

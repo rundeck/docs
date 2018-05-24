@@ -49,7 +49,7 @@ rundeckpro-launcher-cluster-X.X.X.jar --skipinstall -d  >> %CURDIR%\var\logs\ser
 
 * Go to the service management console (services.msc) and you'll find RUNDECK listed as a service. Starting it will start the rundeck process.
 
-![Service Management Console](../../service-management-console.png) 
+![Service Management Console](../../figures/service-management-console.png) 
  
 ### Login to the GUI
  

@@ -129,7 +129,7 @@ the viewvc URL, obtaining the latest revision.
 
 For Rundeck, we would like to have a way of querying the EC2 service to see what EC2 Instances are available for use as Rundeck Nodes.
 
-Amazon has a well-defined API for communication with their services, which would allow us to pull out the EC2 data, and generate XML if we wanted to. We could write a script that produces that data and use that script on a server to produce data via a URL, or we could use that script with the [script resource model source plugin](../plugins-user-guide/resource-model-source-plugins.html#script-resource-model-source-configuration) to generate it. This would give us complete control of the output, but does require extra work.
+Amazon has a well-defined API for communication with their services, which would allow us to pull out the EC2 data, and generate XML if we wanted to. We could write a script that produces that data and use that script on a server to produce data via a URL, or we could use that script with the [script resource model source plugin](../../plugins-user-guide/resource-model-source-plugins.html#script-resource-model-source-configuration) to generate it. This would give us complete control of the output, but does require extra work.
 
 However, there is already a plugin to do this for you: the [Rundeck EC2 Nodes Plugin](https://github.com/rundeck-plugins/rundeck-ec2-nodes-plugin).
 
@@ -193,7 +193,7 @@ of these tools, it is possible to map the data to meet the needs of
 
 ### Definition ###
 
-The [Rundeck resource model document format](../man5/resource-v13.html) and the [resource-yaml-v13](../man5/resource-yaml-v13.html) format provide two attributes that help connect the dots between the
+The [Rundeck resource model document format](../../man5/resource.html) and the [resource-yaml-v13](../../man5/resource-yaml.html) format provide two attributes that help connect the dots between the
 Rundeck UI and the editing interface provided by the external data
 management tool. They can use `editUrl` or `remoteUrl` attributes to specify the remote URL.  The URLs can embed properties about the node to expand prior to being loaded, which allows you to e.g. submit query parameters using the node name.
 

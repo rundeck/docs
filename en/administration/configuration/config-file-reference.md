@@ -50,7 +50,7 @@ document.
 
 This file governs the access for the "admin" group and role.
 
-See [role based access control](access-control-policy.html) for information about setting up policy files for other user groups.
+See [role based access control](../security/access-control-policy.html) for information about setting up policy files for other user groups.
 
 ## framework.properties
 
@@ -68,7 +68,7 @@ Some important settings:
 * `framework.rundeck.url`: Base URL for Rundeck server.
 
 
-SSH Connection settings (See [Plugins User Guide > SSH Plugins](../plugins-user-guide/ssh-plugins.html)):
+SSH Connection settings (See [Plugins User Guide > SSH Plugins](../../plugins-user-guide/ssh-plugins.html)):
 
 * `framework.ssh.keypath`: Path to the SSH private key file used for SSH connections
 * `framework.ssh.user`: Default username for SSH Connections, if not overridden by Node specific value.
@@ -78,7 +78,7 @@ SSH Connection settings (See [Plugins User Guide > SSH Plugins](../plugins-user-
 Other settings:
 
 * `framework.log.dispatch.console.format`: Default format for non-terse node execution logging run by the `dispatch` CLI tool.
-* `execution.script.tokenexpansion.enabled`: Whether inline script token expansion is enabled, default `true`.  If `false`, the "Inline Script Content" syntax described in [User Guide > Jobs > Context Variable Usage](../manual/jobs.html#context-variable-usage) is disabled.
+* `execution.script.tokenexpansion.enabled`: Whether inline script token expansion is enabled, default `true`.  If `false`, the "Inline Script Content" syntax described in [User Guide > Jobs > Context Variable Usage](../../manual/jobs.html#context-variable-usage) is disabled.
 
 Static authentication tokens for API access:
 
@@ -92,7 +92,7 @@ The `tokens.properties` file should contain static authentication tokens you wis
     username2: token_string2
     ...
 
-The token_strings can be used as Authentication tokens to the [API](../api/index.html#token-authentication).
+The token_strings can be used as Authentication tokens to the [API](../../api/index.html#token-authentication).
 
 ### Global execution variables
 
@@ -267,7 +267,7 @@ The [Project Setup - Project Definitions](project-setup.html#project-definitions
 
 ### Key Storage settings
 
-The [Key storage](key-storage.html) mechanism is configured within this file, see:
+The [Key storage](../security/key-storage.html) mechanism is configured within this file, see:
 
 * [Configuring Storage Plugins][]
 * [Configuring Storage Converter Plugins][]
@@ -324,7 +324,7 @@ Default paging size for the Activity page and results from execution API queries
 
 ### Job Remote Option URL connection parameters
 
-Change the defaults for for [Job Remote Option Value URLs](../manual/jobs.html#remote-option-values) loading.
+Change the defaults for for [Job Remote Option Value URLs](../../manual/jobs.html#remote-option-values) loading.
 
 **Socket read timeout**
 

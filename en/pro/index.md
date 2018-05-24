@@ -15,7 +15,7 @@ Rundeck server configuration includes settings to define the outbound
 user allowed by the remote hosts. Remote machines
 are not required to make connections back to the server.
 
-![Rundeck architecture](../../figures/architecture.png)
+![Rundeck architecture](../figures/architecture.png)
 
 The Rundeck application itself is a Java-based webapp. The application provides both
 graphical interface and network interfaces used by the Rundeck shell
@@ -35,7 +35,7 @@ granted if a user's group membership meets the requirements of the policy.
 
 ## License
 
-[License](rundeck/license.html)
+[License](../administration/configuration/license-pro.html)
 
 ## General configuration
 
@@ -52,7 +52,7 @@ the OSS version, described in [Managing Node Sources](http://rundeck.org/docs/ad
 Similar to OSS Rundeck, Rundeck Pro uses Servlet Container Authentication to
 determine the logged in user name and the user's authorized roles.
 
-For more details, see [Authenticating Users]([http://rundeck.org/docs/administration/authenticating-users.html])
+For more details, see [Authenticating Users](../administration/security/authenticating-users.html)
 
 ## Key storage
 
@@ -69,14 +69,16 @@ multiple profiles and assign different projects to different profiles. If a job
 is executed in a project which is not assigned to a specific profile, the
 default policy is used.
 
-For more details, see [Remote Job Execution](rundeck/remote-job-execution.html)
+For more details, see [Remote Job Execution](../administration/configuration/remote-job-execution-pro.html)
 
 ## High availability
 
 ### Database
 
-Instructions for Postgres and MySQL can be found in the [OSS docs](http://rundeck.org/docs/administration/setting-up-an-rdb-datasource.html).
-For Oracle instuctions, see [Using Oracle as a database backend](database/using-oracle-as-a-database-backend.html)
+* [mysql](../administration/scaling/storage/mysql-setup-guide.html)
+* [postgres](../administration/scaling/storage/postgresql-setup-guide.html)
+* [oracle](../administration/scaling/storage/using-oracle-as-a-database-backend.html)
+* [mssql](../administration/scaling/storage/using-microsoft-sql-server-as-a-database-backend.html)
 
 ### Loadbalancer (Pro-only)
 
@@ -84,13 +86,13 @@ A loadbalancer allows you to achieve high availability in your Rundeck Pro
 installation by routing http traffic across several redundant Rundeck Pro
 instances.
 
-To learn how to set up a loadbalancer for Rundeck Pro, see [Loadbalancer](loadbalancer/index.html)
+To learn how to set up a loadbalancer for Rundeck Pro, see [Loadbalancer](../administration/scaling/cluster/loadbalancer/index.html)
 
 ### Autotakeover (Pro-only)
 
 If a cluster member goes down, all scheduled jobs on that cluster member must be moved to another cluster node. This process can be performed automatically using the heartbeat and Autotakeover features in Rundeck Pro version 2.1.0 and later releases.
 
-To learn how to set up Autotakeover, see [Autotakeover](rundeck/high-availability.html)
+To learn how to set up Autotakeover, see [Autotakeover](../administration/scaling/cluster/autotakeover/index.html)
 
 ### Logstore (Pro-only)
 

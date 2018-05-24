@@ -129,7 +129,7 @@ Password, algorithm, provider, etc can be specified directly, or via environment
 
 To enable it, see [Configuring - Storage Converter Plugins](configuring.html#storage-converter-plugins).
 
-See also: [Key Storage](../administration/key-storage.html)
+See also: [Key Storage](../administration/security/key-storage.html)
 
 Provider type: `jasypt-encryption`
 
