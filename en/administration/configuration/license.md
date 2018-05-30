@@ -1,20 +1,40 @@
 % Rundeck Pro Licensing and Support
 
-[http://support.rundeck.com/customer/en/portal/articles/2827074-install-license-key-on-rundeck-pro](http://support.rundeck.com/customer/en/portal/articles/2827074-install-license-key-on-rundeck-pro)
+## Licensing
 
-### Licensing
+While Rundeck is an open source project maintained by Rundeck Inc, Rundeck Pro is commercial software for which you can purchase a license from Rundeck Inc. Rundeck Pro provides a tested, supported, and enterprise-ready distribution of Rundeck with additional features and capabilities for enterprise scale use. Also, a Rundeck Pro subscription license is the only way to receive professional support from Rundeck and the core Rundeck team.
 
-### Support
+Rundeck Pro is available under an annual subscription license and comes bundled with support. You can renew the right to use the software and receive access to support on an annual basis. Multi-year subscription purchases can also be made.
 
-Rundeck Inc offers support for paid Pro editions...
+Rundeck Pro is licensed per Rundeck Pro server instance. There are no restrictions on the number of users, projects, nodes, or jobs run.  
 
-### Trial / Evaluation
+No software with GPL or other “copyleft” licenses are used in Rundeck Pro. All license rights for using Rundeck Pro are contained within the single Rundeck Pro license.
 
-### Subscription Types
+Rundeck Inc. guarantees that Rundeck Pro does not infringe on any patents, copyrights or misappropriates any trade secrets. Rundeck will defend licensees against such claims. For details, see [Rundeck Pro Master Software License Agreement](http://support.rundeck.com/customer/portal/articles/2723878-rundeckpro-license
+).
 
-### License Features
+## License key installation
 
-* Clustering
-* Advanced Workflow
-* Plugins
-* etc
+Ask for the license key to the support team. Then install the license key via the gui or on the filesystem directly.
+
+### Via GUI
+
+Upload the license key using the GUI:
+
+![Upload the license key using the GUI](../../figures/license-key-gui-1.png)
+
+Click on "No License Key File is installed"
+
+![Click on "No License Key File is installed"](../../figures/license-key-gui-2.png)
+
+Click on "Upload License File"
+
+![Click on "Upload License File"](../../figures/license-key-gui-3.png)
+
+Select the license key file and press "Upload License File"
+
+![Select the license key file and press "Upload License File"](../../figures/license-key-gui-4.png)
+
+### Via filesystem
+
+TODO
