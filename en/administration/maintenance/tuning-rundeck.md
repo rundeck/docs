@@ -178,3 +178,25 @@ This can be a desktop GUI like JConsole run locally.
 
 For instructions on remote JMX monitoring for Grails, Spring and log4j see:
 [Grails in the enterprise](https://public.dhe.ibm.com/software/dw/java/j-grails12168-pdf.pdf).
+
+### Node execution
+
+If you are executing commands across many hundreds or thousands of hosts, the bundled SSH node executor may not meet your performance requirements. Each SSH connection uses multiple threads and the encryption/decryption of messages uses CPU cycles and memory. Depending on your environment, you might choose another Node executor like MCollective, Salt or something similar. This essentially delegates remote execution to another tool designed for asynchronous fan out and thus relieving Rundeck of managing remote task execution.
+
+### Built in SSH plugins
+
+If you are interested in using the built in [SSH plugins](../../plugins-user-guide/ssh-plugins.html), here are some details about how it performs when executing commands across very large numbers of nodes. For these tests, Rundeck was running on an 8 core, 32GB RAM m2.4xlarge AWS EC2 instance.
+
+We chose the `rpm -q` command which checks against the rpm database to see if a particular package was installed.  For 1000 nodes we saw an average execution of 52 seconds.  A 4000 node cluster  took roughly 3.5 minutes, and 8000 node cluster about 7 minutes.
+
+The main limitation appears to be memory of the JVM instance relative to the number of concurrent requests.  We tuned the max memory to be 12GB with a 1000 Concurrent Dispatch Threads to 1GB of Memory.  GC appears to behave well during the runs given the "bursty" nature of them.
+
+### SSL and HTTPS performance
+
+It is possible to offload SSL connection processing by using an SSL termination proxy. This can be accomplished by setting up Apache httpd or [Nginx](https://en.wikipedia.org/wiki/Nginx) as a frontend to your Rundeck instances.
+
+### Resource provider
+
+Rundeck projects obtain information about nodes via a
+[resource provider](../configuration/managing-node-sources.html). If your resource provider is a long blocking process (due to slow responses from a backend service), it can slow down or even hang up Rundeck. Be sure to make your resource provider work asynchronously.
+Also, consider using caching when possible.

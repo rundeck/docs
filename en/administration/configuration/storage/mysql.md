@@ -1,4 +1,4 @@
-# Mysql setup guide
+# Using MySQL as a database backend
 
 This is a simple guide for setting up Mysql for use with Rundeck.
 

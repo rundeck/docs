@@ -20,7 +20,7 @@ The Key Storage container allows storing public keys, private keys, and password
 contents of these files can be accessed by Node Execution plugins for authenticating to remote nodes.
 The contents can be written via the Rundeck API, but only public keys can be read via the API.
 
-See the chapter: [Key Storage](../security/key-storage.html).
+See the chapter: [Key Storage](../../security/key-storage.html).
 
 When configuring Key Storage providers, the configuration entries in `rundeck-config.properties` start with:
 
@@ -39,7 +39,7 @@ Similar to Key Storage, the Project Storage container keeps files related to Run
 
 Access to these contents can be made via the Rundeck API.
 
-See the chapter: [Project Setup](project-setup.html)
+See the chapter: [Project Setup](../project-setup.html)
 
 When configuring Project Storage providers, the configuration entries in `rundeck-config.properties` start with:
 
@@ -58,11 +58,16 @@ Rundeck provides these built-in implementations:
 * `filesystem` - stores files locally on the filesystem
 * `db` - stores file data as BLOBs in the database
 
-You can configure Rundeck to use a relational database instead of the default file-based data storage. See Scaling
+It is highly recommended that you configure Rundeck to use a relational database instead of the default file-based data storage.
 
 You must modify the `server/config/rundeck-config.properties` file, to change the `dataSource` configuration, and you will have to add the appropriate JDBC driver JAR file to the lib directory.
 
-For Mysql-specific instructions, jump to: [Mysql Setup Guide](#mysql-setup-guide).
+For database-specific instructions:
+
+* [MySQL](using-mysql-as-a-database-backend.html)
+* [Postgres](using-postgres-as-a-database-backend.html)
+* [Oracle](using-oracle-as-a-database-backend.html)
+* [SQL Server](using-microsoft-sql-server-as-a-database-backend.html)
 
 ### Customize the Datasource
 
@@ -108,11 +113,11 @@ cp ojdbc14.jar $RDECK_BASE/server/lib
 
 ### Configuring Storage Plugins
 
-See [Plugins User Guide - Configuring Storage Plugins](../../plugins-user-guide/configuring.html#storage-plugins).
+See [Plugins User Guide - Configuring Storage Plugins](../../../plugins-user-guide/configuring.html#storage-plugins).
 
 ## Storage Converters
 
-Files can be encrypted in the storage backend by use of a [Storage Converter plugin](../../developer/storage-converter-plugin.html). A typical plugin would encrypt data at write time, and decrypt it at read time.
+Files can be encrypted in the storage backend by use of a [Storage Converter plugin](../../../developer/storage-converter-plugin.html). A typical plugin would encrypt data at write time, and decrypt it at read time.
 
 The Storage Converter Plugin handles reading and writing the content for any matching resources.  The subsequent data is stored in the storage backend (on-disk or in a database) alongside the metadata for the file.
 
@@ -120,4 +125,4 @@ Converter plugins do not have to manage storing the data, that will be handled b
 
 ### Configuring Storage Converter Plugins
 
-See [Plugins User Guide - Configuring Storage Converter Plugins](../../plugins-user-guide/configuring.html#storage-converter-plugins).
+See [Plugins User Guide - Configuring Storage Converter Plugins](../../../plugins-user-guide/configuring.html#storage-converter-plugins).

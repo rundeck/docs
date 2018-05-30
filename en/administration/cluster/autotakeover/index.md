@@ -1,6 +1,9 @@
-% High Availabilty setup
+% Autotakeover
 
-[Configure a loadbalancer](../loadbalancer/index.html) first.
+To support Autotakeover, you must first:
+
+* [Configure a loadbalancer](../loadbalancer/index.html)
+* [Configure an external database](../../configuration/storage/index.html)
 
 ### Configure Autotakeover
 

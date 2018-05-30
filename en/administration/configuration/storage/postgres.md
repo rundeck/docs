@@ -1,4 +1,4 @@
-# PostgreSQL setup guide
+# Using Postgres as a database backend
 
 This is a simple guide for setting up PostgreSQL for use with Rundeck.
 
