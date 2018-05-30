@@ -1,7 +1,5 @@
 % Remote Job Execution
 
-* [Configuring remote execution](http://support.rundeck.com/customer/en/portal/articles/2864130-configuring-cluster-remote-execution)
-
 ### Cluster Remote Execution
 
 This feature allows Rundeck Pro cluster members to forward job executions to
