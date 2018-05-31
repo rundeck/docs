@@ -547,7 +547,7 @@ Finally, in your `ldap-activedirectory.conf` be sure to change the *providerUrl*
 
 Rundeck includes a [PAM](https://en.wikipedia.org/wiki/Pluggable_authentication_module) JAAS login module, which uses [libpam4j](https://github.com/kohsuke/libpam4j) to authenticate.
 
-On debian based systems you can need to install libpam4j : 
+On debian based systems you need to install libpam4j : 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {.bash}
 apt install libpam4j-java
