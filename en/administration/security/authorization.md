@@ -417,7 +417,7 @@ Type      Properties                         Actions            Description
 "                                            `runAs`            Run an adhoc execution as another user
 "                                            `kill`             Kill an adhoc execution
 "                                            `killAs`           Kill an adhoc execution as another user
-`job`     "name","group"                     `read`             View a Job, its executions, and read its definition
+`job`     "name","group","uuid"              `read`             View a Job, its executions, and read its definition
 "                                            `view`             View a Job and its executions
 "                                            `update`           Modify a job
 "                                            `delete`           Delete a job
@@ -435,6 +435,8 @@ Type      Properties                         Actions            Description
 Table: Project scope specific resource actions
 
 *Note*: see [Node resource properties](#node-resource-properties) for more node resource properties for authorization.
+
+*Note*: Jobs can be referenced using "name" and "group" or using "uuid".
 
 *Note*: `runAs` and `killAs` actions only apply to certain API endpoints, and allow running jobs or adhoc executions or killing executions to be performed with a different username attached as the author of the action.  See [Rundeck API - Running a Job](../../api/index.html#running-a-job).
 
@@ -461,6 +463,16 @@ for:
   job:
     - equals:
         name: bob
+      allow: [run]
+~~~~~~~~~~~~~~~~~~~~~~~
+
+Or
+
+~~~~~~~~~ {.yaml}
+for:
+  job:
+    - equals:
+        uuid: baad57ad-1e0b-4452-b1e3-0cbcd10a7bec
       allow: [run]
 ~~~~~~~~~~~~~~~~~~~~~~~
 
