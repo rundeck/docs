@@ -101,7 +101,7 @@ See the *Configuration* notes above.
 * [BUG: Job Options not appearing in Duplicated Jobs](https://github.com/rundeck/rundeck/issues/3421)
 * [Using variable in Storage path job options](https://github.com/rundeck/rundeck/pull/3420)
 * [duplicate jobs page doesn't show options ](https://github.com/rundeck/rundeck/issues/3384)
-* [rundeck access log contains "\[Ljava.lang.String;" instead of project](https://github.com/rundeck/rundeck/issues/3379)
+* [rundeck access log contains "_Ljava.lang.String;" instead of project](https://github.com/rundeck/rundeck/issues/3379)
 * [Grails 3 Update](https://github.com/rundeck/rundeck/pull/3290)
 * [Using variable in Storage path job options](https://github.com/rundeck/rundeck/issues/2092)
 * [Encrypt passwords stored in configuration files](https://github.com/rundeck/rundeck/issues/2062)
