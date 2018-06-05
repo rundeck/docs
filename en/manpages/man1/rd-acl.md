@@ -143,6 +143,9 @@ The following define [Project scope resources](../administration/access-control-
 `-j,--job <group/name>`
 :   Job group/name. (project context)
 
+`-I,--jobUuid <uuid>`
+:   Job uuid. (project context)
+
 `-n,--node <nodename>`
 :   Node name. (project context)
 
@@ -171,6 +174,7 @@ These Resource options:
 * `-s,--storage` Storage path/name
 * `-n,--node` or `-t,--tags` name or tags of a node to tests
 * `-j,--job` Job group/name.
+* `-I,--jobUuid` Job uuid.
 
 ## Test Command
 
