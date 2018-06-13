@@ -53,7 +53,7 @@ corresponding to the group structure your jobs define.
 
 Beyond organizing jobs, groups assist in defining access control
 policy, covered in the
-[Administrator guide - Access Control Policy](../administration/access-control-policy.html).
+[Administrator guide - Access Control Policy](../administration/security/access-control-policy.html).
 
 ## Job UUIDs
 
@@ -436,7 +436,7 @@ When the Job finishes executing, all "success" notifications will be triggered i
 
 To configure a custom email template, see the [Administration - Configuration File Reference - Custom Email Templates][] chapter.
 
-[Administration - Configuration File Reference - Custom Email Templates]: ../administration/configuration-file-reference.html#custom-email-templates
+[Administration - Configuration File Reference - Custom Email Templates]: ../administration/configuration/configuration-file-reference.html#custom-email-templates
 
 ### Webhooks
 
@@ -1016,7 +1016,7 @@ is exposed to use in scripts and commands.  Make sure you acknowledge these secu
 
 ### Secure Remote Authentication Options
 
-The built-in [SSH Provider](plugins.html#ssh-provider) for node execution allows using passwords for SSH and/or Sudo authentication mechanisms, and the passwords are supplied by Secure Remote Authentication Options defined in a Job.
+The built-in [SSH Provider](../plugins-user-guide/ssh-plugins.html) for node execution allows using passwords for SSH and/or Sudo authentication mechanisms, and the passwords are supplied by Secure Remote Authentication Options defined in a Job.
 
 Secure Remote Authentication Options have some limitations compared to Plain and Secure options:
 
@@ -1056,7 +1056,7 @@ So the arguments for the Job Reference might look like this:
 
 ### Secure Options using Key Storage
 
-Secure options can specify a Storage Path in lieu of a default value.  This path to the [Key Storage Facility](../administration/key-storage.html)
+Secure options can specify a Storage Path in lieu of a default value.  This path to the [Key Storage Facility](../administration/security/key-storage.html)
 will be loaded as the option value when one is not supplied.
 
 The path must indicate a stored `password` entry in the storage facility.
@@ -1158,7 +1158,7 @@ Name Value List with default selections:
 
 ### URL connection parameters
 
-You can configure timeouts globally as described in [Configuration - Job Remote Option URL connection parameters](../administration/configuration-file-reference.html#rundeck-config.properties).
+You can configure timeouts globally as described in [Configuration - Job Remote Option URL connection parameters](../administration/configuration/configuration-file-reference.html#rundeck-config.properties).
 
 You can also specify these connection parameters on a per-URL basis:
 
@@ -1460,7 +1460,7 @@ Enter a command that will be used as the *invocation* to run the script, by incl
 sudo -u username ${scriptfile}
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This will then allow your script to make use of [Sudo authentication](plugins.html#configuring-secondary-sudo-password-authentication).
+This will then allow your script to make use of [Sudo authentication](../plugins-user-guide/ssh-plugins.html#secondary-sudo-password-authentication).
 
 The effective commandline for your script will become:
 
@@ -1708,7 +1708,7 @@ Context variables can be used in a few ways in a Job step, with slightly differe
 
     > Note, The "Inline Script Content" variable expansion is **not** available for "Script File" steps.  The Script File is not rewritten at all when used for execution.
 
-    > Note: This can be disabled, see [Administrator Guide > Configuration File Reference > framework.properties](../administration/configuration-file-reference.html#framework.properties).
+    > Note: This can be disabled, see [Administrator Guide > Configuration File Reference > framework.properties](../administration/configuration/configuration-file-reference.html#framework.properties).
 
 * Environment Variables (*see note*)
 

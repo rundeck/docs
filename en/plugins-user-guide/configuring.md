@@ -202,8 +202,8 @@ currently available triggers:
 * `onavgduration` - the Execution exceed the average duration of the Job
 * `onretryablefailure` - the Job failed but will be retried
 
-When you define the Job in the GUI or via [XML](../man5/job-v20.html#notification) or
-[Yaml](../man5/job-yaml-v12.html#notification), you can add any of the available Notification plugin types to happen for
+When you define the Job in the GUI or via [XML](../man5/job-xml.html#notification) or
+[Yaml](../man5/job-yaml.html#notification), you can add any of the available Notification plugin types to happen for
 any of the possible triggers.  Each Notification plugin type may have unique
 configuration properties that you can specify. Each combination of trigger and
  Notification type has a unique configuration.
@@ -306,7 +306,7 @@ The `TYPE` is one of:
 
 ### Storage Plugins
 
-Storage plugins for the [Storage Facility](../administration/storage-facility.html) 
+Storage plugins for the [Storage Facility](../administration/configuration/storage.html) 
 are configured in the `rundeck-config.properties` file.
 
 Two separate "containers" are used, one for Key Storage, and one for Project Definition Storage.

@@ -46,6 +46,9 @@ resources :  $(CSS) ../figures/*.png
 	- cp ../figures/*.png $(DIST)/html/figures
 	cp $(CSS) $(DIST)/html/
 
+test:
+		../scripts/util/checklinks.sh
+
 clean :
 	rm -fr $(DIST)
 	$(MAKE) -C manpages/man1 clean

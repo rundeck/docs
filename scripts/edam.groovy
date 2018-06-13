@@ -236,10 +236,10 @@ def createTocMdFile(File dir,toc,title,content=null, subdirs=null){
             }
         }
         if(subdirs){
-            if(toc){
-                writer<<"\n"
-            }
             if(content || flags.genTocOnly){
+                if(toc){
+                    writer<<"\n"
+                }
                 writer<<"## ${options.subTocTitle}\n\n"
             }
             def i=1
