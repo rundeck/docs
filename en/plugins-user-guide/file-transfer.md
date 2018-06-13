@@ -86,7 +86,7 @@ You can install OpenSSH on Windows to provide the `sh-keyscan` command.
 Known Issues
 When using SFTP protocol, JSCH will search for the host key at `RDECK_BASE/.ssh/known_hosts` file, however, the Java JVM and JSCH do not provide the default encryption algorithms used by OpenSSH (ecdsa-sha2-nistp256 as of 07-2016) resulting in failure on finding the server key even if the server is present in the known_hosts file.
 
-As a workaround, be sure to extract the hostkey using the `t rsa` parameter for `sh-keyscan`:
+As a workaround, be sure to extract the hostkey using the `-t rsa` parameter for `sh-keyscan`:
 
 ```
 ssh-keyscan -t rsa <SERVER ADDRESS>
