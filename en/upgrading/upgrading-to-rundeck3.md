@@ -136,7 +136,14 @@ total 56
 drwxr-x--- 1 rundeck rundeck 4096 Jun  4 16:08 ssl
 ```
 
-A restart is necessary after the merge of `rundeck-config.properties`
+If the `profile` file was modified on 2.11.x, the new profile file (for 3.x) will be created with the name `profile.rpmnew`. If that is the case, merge the changes on the old file and move them to the new one, eg:
+
+```
+mv /etc/rundeck/profile.rpmnew /etc/rundeck/profile
+```
+
+
+A restart is necessary after the merge of `rundeck-config.properties` or/and `profile` file.
 
 
 
