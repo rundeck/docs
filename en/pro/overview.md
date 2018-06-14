@@ -73,10 +73,10 @@ For more details, see [Remote Job Execution](../administration/configuration/rem
 
 ### Database
 
-* [mysql](../administration/scaling/storage/mysql-setup-guide.html)
-* [postgres](../administration/scaling/storage/postgresql-setup-guide.html)
-* [oracle](../administration/scaling/storage/using-oracle-as-a-database-backend.html)
-* [mssql](../administration/scaling/storage/using-microsoft-sql-server-as-a-database-backend.html)
+* [mysql](../administration/configuration/storage/using-mysql-as-a-database-backend.html)
+* [postgres](../administration/configuration/storage/using-postgres-as-a-database-backend.html)
+* [oracle](../administration/configuration/storage/using-oracle-as-a-database-backend.html)
+* [mssql](../administration/configuration/storage/using-microsoft-sql-server-as-a-database-backend.html)
 
 ### Loadbalancer (Pro-only)
 
