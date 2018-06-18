@@ -21,7 +21,7 @@ server rundeck2 192.168.0.2:4440 cookie rundeck2
 server rundeck3 192.168.0.3:4440 cookie rundeck3
 ```
 
-### Using healtcheck 
+### Using health check 
 
 To avoid sending traffic to unavailable nodes, HAProxy can check the health of
 their downstream services via http or tcp. 
