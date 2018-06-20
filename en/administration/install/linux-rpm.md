@@ -50,6 +50,15 @@ Download rpm package: http://download.rundeck.com/eval/ and run:
 sudo rpm -i rundeckpro-cluster-X.X.X-GA.noarch.rpm
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+### Encrypted key/config storage 
+
+Encrypted key/config storage enabled by default. The default encryption algorithm is stronger than the “Default JCE Policy” used in earlier versions of Java 1.8
+
+Note: If you receive an error message about encryption policy strength with creating projects or keys you will need to upgrade your Java 1.8 version, or set the encryption algorithm in `rundeck-config.properties` to a lower strength algorithm such as `PBEWithMD5AndDES`
+
+Further information about encrypted key/config storage on [this](http://rundeck.org/docs/plugins-user-guide/bundled-plugins.html#jasypt-encryption-plugin) link.
+
+
 ## Starting Rundeck
 
 To start Rundeck:
