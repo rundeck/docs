@@ -115,8 +115,8 @@ workflow step.
 
 Steps in a workflow can be either *Node Steps* or *Workflow Steps*.
 
-* Node Steps operate once on each Node, which could be multiple times within a workflow. For a full list of Node Steps, see [Node Steps](node-steps/index.html)
-* Workflow Steps operate only once in the workflow. For a full list of Workflow Steps, see [Workflow Steps](workflow-steps/index.html)
+* Node Steps operate once on each Node, which could be multiple times within a workflow. For a full list of Node Steps, see [Job Plugins - Node Steps](job-plugins.html#node-steps)
+* Workflow Steps operate only once in the workflow. For a full list of Workflow Steps, see [Workflow Steps](job-plugins.html#workflow-steps)
 
 ## Reordering steps
 
@@ -263,7 +263,7 @@ Additional Error-handler context variables:
 * `result.resultCode`: Exit code from an execution (if available)
 * `result.failedNodes`: Comma-separated list of node names that failed for a `NodeDispatchFailure`
 
-Option context variables are referred to as `option.NAME` (more about [Job Options](jobs.html#job-options).)
+Option context variables are referred to as `option.NAME` (more about [Job Options](defining-job-options.html).)
 
 ### Context Variable Usage
 

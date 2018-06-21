@@ -78,7 +78,7 @@ SSH Connection settings (See [Plugins User Guide > SSH Plugins](../../plugins-us
 Other settings:
 
 * `framework.log.dispatch.console.format`: Default format for non-terse node execution logging run by the `dispatch` CLI tool.
-* `execution.script.tokenexpansion.enabled`: Whether inline script token expansion is enabled, default `true`.  If `false`, the "Inline Script Content" syntax described in [User Guide > Jobs > Context Variable Usage](../../manual/jobs.html#context-variable-usage) is disabled.
+* `execution.script.tokenexpansion.enabled`: Whether inline script token expansion is enabled, default `true`.  If `false`, the "Inline Script Content" syntax described in [User Guide > Jobs > Context Variable Usage](../../manual/creating-job-workflows.html#context-variables) is disabled.
 
 Static authentication tokens for API access:
 
@@ -324,7 +324,7 @@ Default paging size for the Activity page and results from execution API queries
 
 ### Job Remote Option URL connection parameters
 
-Change the defaults for for [Job Remote Option Value URLs](../../manual/jobs.html#remote-option-values) loading.
+Change the defaults for for [Job Remote Option Value URLs](../../manual/defining-job-options.html#remote-option-values) loading.
 
 **Socket read timeout**
 

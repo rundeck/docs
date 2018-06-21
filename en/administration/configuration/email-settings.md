@@ -33,7 +33,7 @@ See [Groovy config format](configuration-file-reference.html#groovy-config-forma
 
 ## Notification email settings
 
-The URL and From: address used in [Job email notifications](../../manual/jobs.html#job-notifications)  are managed via the settings located in the rundeck-config.properties file.
+The URL and From: address used in [Job email notifications](../../manual/creating-jobs.html#job-notifications)  are managed via the settings located in the rundeck-config.properties file.
 
 The two properties are:
 

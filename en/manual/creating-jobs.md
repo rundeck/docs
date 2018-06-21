@@ -236,7 +236,7 @@ When the Job starts, all "start" notifications will be triggered.
 
 When the Job finishes executing, all "success" notifications will be triggered if the Job is successful.  Otherwise, all "failure" notifications will be triggered if the Job fails or is cancelled.
 
-For a full list of notification plugins, see [Notifications](notifications/index.html)
+For a full list of notification plugins, see [Job Plugins - Notifications](job-plugins.html#notifications)
 
 ## Deleting Jobs
 
@@ -276,7 +276,7 @@ choose either XML or YAML format to download the definition.
 Click the preferred format to initiate the file download to your
 browser.
 
-To export jobs to a git repository, see the [Git plugin](../plugin-user-guide/git-plugins.html#configuring-git-export)
+To export jobs to a git repository, see the [Git plugin](../plugins-user-guide/git-plugins.html#configuring-git-export)
 
 ## Importing Job definitions
 
@@ -311,4 +311,4 @@ Choose an option where it says "Imported Jobs:":
 Click the Upload button. If there are any errors with the Job
 definitions in the XML file, they will show up on the page.  
 
-To import jobs from a git repository, see the [Git plugin](../plugin-user-guide/git-plugins.html#git-import-configuration)
+To import jobs from a git repository, see the [Git plugin](../plugins-user-guide/git-plugins.html#git-import-configuration)

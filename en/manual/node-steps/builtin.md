@@ -111,7 +111,7 @@ Enter a command that will be used as the *invocation* to run the script, by incl
 sudo -u username ${scriptfile}
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This will then allow your script to make use of [Sudo authentication](../plugins-user-guide/ssh-plugins.html#secondary-sudo-password-authentication).
+This will then allow your script to make use of [Sudo authentication](../../plugins-user-guide/ssh-plugins.html#secondary-sudo-password-authentication).
 
 The effective commandline for your script will become:
 
