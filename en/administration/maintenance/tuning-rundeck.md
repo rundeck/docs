@@ -198,5 +198,5 @@ It is possible to offload SSL connection processing by using an SSL termination 
 ### Resource provider
 
 Rundeck projects obtain information about nodes via a
-[resource provider](../configuration/managing-node-sources.html). If your resource provider is a long blocking process (due to slow responses from a backend service), it can slow down or even hang up Rundeck. Be sure to make your resource provider work asynchronously.
+[resource provider](../configuration/resource-model-sources.html). If your resource provider is a long blocking process (due to slow responses from a backend service), it can slow down or even hang up Rundeck. Be sure to make your resource provider work asynchronously.
 Also, consider using caching when possible.

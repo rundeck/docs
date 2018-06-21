@@ -150,7 +150,7 @@ New project sources can also be added in the Configure page:
 
 ## Managing Node Sources
 
-See [Managing Node Sources](../administration/configuration/managing-node-sources.html)
+See [Managing Node Sources](../administration/configuration/resource-model-sources.html)
 to learn more about configuring Rundeck to read node data from external providers.
 
 
