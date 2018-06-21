@@ -128,7 +128,7 @@ Java examples.
 
 All three plugin types are given a Map of Execution "context data".  This is a dataset with information about the Execution that produced the log events.
 
-This data map is the same as the "Job context variables" available when you execute a job or adhoc script, as described in the chapter [Job Workflows - Context Variables](../manual/jobs.html#context-variables).
+This data map is the same as the "Job context variables" available when you execute a job or adhoc script, as described in the chapter [Job Workflows - Context Variables](../manual/creating-job-workflows.html#context-variables).
 
 Note that the Map keys will not start with `job.`, simply use the variable name, such as `execid`.
 

@@ -37,7 +37,7 @@ The Configuration data is fully custom depending on your plugin, and is describe
 
 The specific data values of the Configuration section are allowed to have
 embedded Property References as described in the
-[Jobs - Context Variables](../manual/jobs.html#context-variables) section.
+[Jobs - Context Variables](../manual/creating-job-workflows.html#context-variables) section.
 
 For example, when a user configures your plugin, they could embed an option value using: `${option.myoption}`.  This value will be replaced with the runtime option value before being passed to your plugin.
 
@@ -111,7 +111,7 @@ The following values may be available after the job is finished (not available f
 
 `job.averageDuration`: Average job duration in Milliseconds, if available
 
-`execution.context` - this is a map containing all of the context variables available to the execution when it ran or will run, such as [Jobs - Context Variables](../manual/jobs.html#context-variables). The contents of this Map are the specific context namespaces and variables.
+`execution.context` - this is a map containing all of the context variables available to the execution when it ran or will run, such as [Jobs - Context Variables](../manual/creating-job-workflows.html#context-variables). The contents of this Map are the specific context namespaces and variables.
 
 `execution.context.option`: a Map containing the Job Option keys/values.
 

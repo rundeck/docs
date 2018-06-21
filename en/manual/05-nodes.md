@@ -49,8 +49,7 @@ This naming convention is really just a graphical treatment to reduce the amount
 
 The node detail view contains a set of hyperlinks that automatically filter
 the nodes in the project.
-By clicking on a Node's tags, attribute names or attribute values 
-the list of nodes will be refined to match a more specific expression. 
+By clicking on a Node's tags, attribute names or attribute values the list of nodes will be refined to match a more specific expression.
 You can delete parts of the expression from the filter form to expand the search again.
 
 As you click search links in the node detail view, that attribute is placed in the node filter form and the attribute becomes a new column in the list view.
@@ -79,10 +78,9 @@ Rundeck  node filters let you match Nodes based on a pattern like "tags" or any 
 1. Filter expression
 2. Column labeled by attribute name
 
-
 ### Filter expression syntax
 
-The filter expression syntax is very simple. You can find a list of nodes by entering their names, or by attribute name and value. Values can also be regular expressions. 
+The filter expression syntax is very simple. You can find a list of nodes by entering their names, or by attribute name and value. Values can also be regular expressions.
 
 For full syntax information see the [Node Filters](node-filters.html) chapter.
 
@@ -97,7 +95,7 @@ To exclude nodes that match a pattern place a "!" (exclamation point) to negate 
 ### Saving filters
 
 Often times you will want to go back to a set of nodes that matched a filter. You can save the filter and give it a name by pressing the "save filter" button to the right of the filter form.
-The example below shows the dialog to confirm saving a new filter. 
+The example below shows the dialog to confirm saving a new filter.
 
 ![Filtered nodes](../figures/fig0204-d.png)
 
@@ -105,29 +103,24 @@ The example below shows the dialog to confirm saving a new filter.
 
 The saved filters become available in the Filters menu in other parts of rundeck, like in the Nodes page, when creating Jobs or running Commands.
 
-
 ![Saved Filters menu](../figures/fig0204-e.png)
 
 1. Named filter in menu
 
 ## Node actions
 
-Often times you are browsing and filtering nodes because you want to do something with the list. The Node Actions menu contains links to 
+Often times you are browsing and filtering nodes because you want to do something with the list. The Node Actions menu contains links to
 
 * Run a command. Choosing this menu item will forward your browser to the Commands page.
 * Create a job. Choosing this menu item will forward you to the Job create page and enter the filter expression in the edit form.
 
-
 ![Node actions menu](../figures/fig0204-f.png)
-
 
 Users that don't have sufficient privileges granted by the ACL will show that menu item disabled.
 
 The example below shows that the user can't create Job for those nodes.
 
-
 ![Not authorized in menu](../figures/fig0204-g.png)
-
 
 ## Related Command line tools
 

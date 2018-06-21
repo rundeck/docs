@@ -102,7 +102,7 @@ Jobs
      Jobs matching the filtering criteria. These filter settings can be
      saved to a Users profile. Only authorized jobs will be visible.
      
-     See [Jobs](jobs.html).
+     See [Jobs](running-jobs.html).
 
 Nodes
 

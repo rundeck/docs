@@ -12,7 +12,7 @@ The default behavior is to dispatch based on these Job configuration values:
 
 An Orchestrator plugin can choose its own logic for how many and what order to process the nodes.
 
-See: [Jobs - Orchestrator](../manual/jobs.html#orchestrator).
+See: [Jobs - Orchestrator](../manual/creating-jobs.html#orchestrator).
 
 ## Develop your own
 
