@@ -43,3 +43,7 @@ explanation on how job notifications work, see [Creating jobs#Job Notifications]
 * [Powershell (Pro)](node-execution/powershell-node-execution.html)
 * [Script](node-execution/script-node-execution.html)
 * [SSH](node-execution/ssh-node-execution.html)
+
+## Workflow Strategy
+
+* [Ruleset (Pro)](workflow-strategies/ruleset-workflow-strategy-plugin.html)

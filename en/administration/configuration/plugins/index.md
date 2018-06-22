@@ -1,4 +1,5 @@
-% Plugins User Guide
+% Configuring Plugins
+
 ## Overview
 
 Most of what Rundeck does is via one of its plugins. 
@@ -11,3 +12,10 @@ in your network, copy a file to a remote
 server, store and stream logs, or talk to a user directory.
 
 See the [Plugin Developer Guide](../developer/index.html) if you are interested in creating one of your own plugins.
+
+## Sections
+
+* [Installing](installing.html)
+* [Plugin Types](plugin-types.html)
+* [Configuring](configuring.html)
+* [Bundled Plugins](bundled-plugins.html)

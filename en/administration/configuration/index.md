@@ -14,3 +14,4 @@
 * [Localization](localization.html)
 * [Configuration File Reference](configuration-file-reference.html)
 * [Encryptable Config Properties (Pro)](encryptable-config-properties-pro.html)
+* [Plugins](plugins/index.html)
