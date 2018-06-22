@@ -1,4 +1,4 @@
-% SSH Plugins
+% SSH Node Execution
 
 Rundeck by default uses SSH to execute commands on remote nodes, SCP to copy scripts to remote nodes, and locally executes commands and scripts for the local (server) node.
 

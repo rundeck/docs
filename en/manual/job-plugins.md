@@ -36,3 +36,10 @@ explanation on how job notifications work, see [Creating jobs#Job Notifications]
 * [Email](notifications/email.html)
 * [Webhooks](notifications/webhooks.html)
 * [Progress Badge (Pro)](notifications/progress-badge-plugin-pro.html)
+
+## Node Execution
+
+* [Built-in](node-execution/builtin.html)
+* [Powershell (Pro)](node-execution/powershell-node-execution.html)
+* [Script](node-execution/script-node-execution.html)
+* [SSH](node-execution/ssh-node-execution.html)

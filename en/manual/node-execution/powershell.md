@@ -1,4 +1,4 @@
-% PowerShell Plugins
+% PowerShell Node Execution
 
 <!---
 Original: 
