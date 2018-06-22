@@ -195,7 +195,7 @@ public class ExampleNotificationPlugin implements NotificationPlugin{
 
 Notification support the Groovy Plugin Type.
 
-To define metadata about your plugin, and configuration properties, see the [Plugin Development - Groovy Plugin Development](plugin-plugin.html#groovy-plugin-development) chapter.
+To define metadata about your plugin, and configuration properties, see the [Plugin Development - Groovy Plugin Development](plugin-development.html#groovy-plugin-development) chapter.
 
 To create a Groovy based plugin, create a file named `MyNotificationPlugin.groovy` in the plugins directory for Rundeck.
 

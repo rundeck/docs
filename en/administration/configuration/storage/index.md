@@ -69,6 +69,11 @@ For database-specific instructions:
 * [Oracle](using-oracle-as-a-database-backend.html)
 * [SQL Server](using-microsoft-sql-server-as-a-database-backend.html)
 
+To develop your own storage plugin, see:
+
+* [Storage Plugin Development](../../../developer/storage-plugin.html).
+* [Storage Converter Plugin Development](../../../developer/storage-converter-plugin.html).
+
 ### Customize the Datasource
 
 The default dataSource is configured for filesystem storage using HSQLDB:
@@ -113,7 +118,7 @@ cp ojdbc14.jar $RDECK_BASE/server/lib
 
 ### Configuring Storage Plugins
 
-See [Plugins User Guide - Configuring Storage Plugins](../../../plugins-user-guide/configuring.html#storage-plugins).
+See [Plugins User Guide - Configuring Storage Plugins](../plugins/configuring.html#storage-plugins).
 
 ## Storage Converters
 
@@ -125,4 +130,4 @@ Converter plugins do not have to manage storing the data, that will be handled b
 
 ### Configuring Storage Converter Plugins
 
-See [Plugins User Guide - Configuring Storage Converter Plugins](../../../plugins-user-guide/configuring.html#storage-converter-plugins).
+See [Plugins User Guide - Configuring Storage Converter Plugins](../plugins/configuring.html#storage-converter-plugins).

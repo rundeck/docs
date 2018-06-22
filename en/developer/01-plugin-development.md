@@ -504,7 +504,7 @@ Required provider entries:
 For `ResourceModelSource` service, this additional entry is required:
 
 * `resource-format` - Must be the name of one of the supported
-[Resource Model Document Formats](../plugins-user-guide/resource-model-source-plugins.html#resource-model-document-formats).
+[Resource Model Document Formats](../administration/configuration/resource-model-sources/built-in-resource-model-source-plugins.html#resource-model-document-formats).
 
 Optional entries:
 

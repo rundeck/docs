@@ -68,7 +68,7 @@ Some important settings:
 * `framework.rundeck.url`: Base URL for Rundeck server.
 
 
-SSH Connection settings (See [Plugins User Guide > SSH Plugins](../../plugins-user-guide/ssh-plugins.html)):
+SSH Connection settings (See [Plugins User Guide > SSH Plugins](../../manual/node-execution/ssh-node-execution.html)):
 
 * `framework.ssh.keypath`: Path to the SSH private key file used for SSH connections
 * `framework.ssh.user`: Default username for SSH Connections, if not overridden by Node specific value.

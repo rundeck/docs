@@ -205,12 +205,12 @@ but this is not enabled by default.
 If you have projects that exist on the filesystem, when you upgrade to Rundeck 2.5, these projects
 and their configuration files can be automatically imported into the DB.  This means that
 the contents of `project.properties` will be copied to the DB,
-using Rundeck's [Storage Facility](../administration/configuration/storage.html).
+using Rundeck's [Storage Facility](../administration/configuration/storage/index.html).
 
 In addition, there is *no encryption by default*, if you want the contents of your project.properties
 to be encrypted in the DB, you must configure 
-[Storage Converter Plugins](../plugins-user-guide/configuring.html#storage-converter-plugins) 
-to use an encryption plugin.  There is now a [Jasypt Encryption Plugin](../plugins-user-guide/storage-plugins.html#jasypt-encryption-converter-plugin) included with Rundeck which can be used.
+[Storage Converter Plugins](../administration/configuration/plugins/configuring.html#storage-converter-plugins) 
+to use an encryption plugin.  There is now a [Jasypt Encryption Plugin](../administration/configuration/plugins/bundled-plugins.html#jasypt-encryption-plugin) included with Rundeck which can be used.
 
 **Enable project DB storage**:
 

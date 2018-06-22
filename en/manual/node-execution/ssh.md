@@ -1,4 +1,4 @@
-% SSH Plugins
+% SSH Node Execution
 
 Rundeck by default uses SSH to execute commands on remote nodes, SCP to copy scripts to remote nodes, and locally executes commands and scripts for the local (server) node.
 
@@ -25,7 +25,7 @@ The SSH plugin also includes support for a secondary Sudo Password Authenticatio
 
 ### Using Key Storage for SSH
 
-Passwords, Passphrases and Private Keys can all be stored in the [Key Storage Facility](../administration/security/key-storage.html) and used with the built-in SSH plugins for Node Execution and File Copying.
+Passwords, Passphrases and Private Keys can all be stored in the [Key Storage Facility](../../administration/security/key-storage.html) and used with the built-in SSH plugins for Node Execution and File Copying.
 
 For specific usage, see below.
 
@@ -47,7 +47,7 @@ You can embed context property references within the key storage path such as `$
 In addition to the general SSH configuration mentioned for in this section, some additional configuration can be done for SCP. 
 
 When a Script is executed on a remote node, it is copied over via SCP first, and then executed.  In addition to the SSH connection properties, some attributes
-can be configured.  See [File Copier destination directory](node-execution-plugins.html#file-copier-destination-directory).
+can be configured.  See [File Copier destination directory](built-in-node-execution-plugins.html#file-copier-destination-directory).
 
 ###  Authentication types
 

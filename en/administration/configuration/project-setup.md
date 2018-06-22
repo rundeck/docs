@@ -38,7 +38,7 @@ The import process copies the contents of `etc/project.properties`, `readme.md` 
 Finally, the `etc/project.properties` file will be renamed on disk to `etc/project.properties.imported`.
 
 The DB storage type also uses the Rundeck **Storage Facility** to store the file contents, which can be
-configured to use an Encryption plugin.  See [Storage Facility - Using Encryption](storage.html#using-encryption).
+configured to use an Encryption plugin.  See [Storage Facility - Using Encryption](storage/index.html#using-encryption).
 
 ### Configuration file
 
@@ -138,9 +138,9 @@ to retrieve additional Resource Model content from other sources.
 You can configure Rundeck to retrieve and store resource model data
 from any source, so long as it can produce one of the Rundeck resource model
 document formats. (See
-[Resource Model Document formats](../../plugins-user-guide/resource-model-source-plugins.html#resource-model-document-formats).)
+[Resource Model Document formats](resource-model-sources/built-in-resource-model-source-plugins.html#resource-model-document-formats).)
 
-See [Resource Model Sources](managing-node-sources.html#resource-model-source).
+See [Resource Model Sources](resource-model-sources/built-in-resource-model-source-plugins.html#resource-model-source).
 
 ##### Defining a node
 
@@ -212,7 +212,7 @@ your host infrastructure infrequently changes.
 
 Check the Rundeck web site for URL resource model sources. If you are
 interested in creating your own, see the
-[Resource model source](managing-node-sources.html#resource-model-source) chapter.
+[Resource model source](resource-model-sources/built-in-resource-model-source-plugins.html#resource-model-source) chapter.
 
 ### Resource Model Document formats
 
@@ -221,7 +221,7 @@ Rundeck currently has two resource model document formats built in:
 * XML: [resource-XML](../../man5/resource-xml.html).  Format name: `resourcexml`.
 * Yaml: [resource-YAML](../../man5/resource-yaml.html). Format name: `resourceyaml`.
 
-You can enable more formats using [Resource Format Plugins](../../plugins-user-guide/resource-model-source-plugins.html).
+You can enable more formats using [Resource Format Plugins](resource-model-sources/built-in-resource-model-source-plugins.html#resource-model-document-formats).
 
 ### Pluggable Resource Model Sources
 

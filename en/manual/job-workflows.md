@@ -82,6 +82,8 @@ Step-oriented flow illustrated:
 The process you are automating will determine which strategy is
 correct, though the node-oriented flow is more commonplace.
 
+For more complex workflow strategy rules, see [Ruleset Workflow Strategy Plugin](workflow-strategies/ruleset-workflow-strategy-plugin.html)
+
 ## Workflow steps
 
 The following sections describe how to construct a workflow as a set
@@ -287,7 +289,7 @@ Context variables can be used in a few ways in a Job step, with slightly differe
 
     The syntax for Environment variables is that all letters become uppercase, punctuation is replaced with underscore, and the name is prefixed with `RD_`.
 
-    > Note, See the chapter [Plugins - SSH - Passing Environment Variables Through Remote Commands](../plugins-user-guide/ssh-plugins.html#passing-environment-variables-through-remote-command) for information about requirements of the SSH server.
+    > Note, See the chapter [Plugins - SSH - Passing Environment Variables Through Remote Commands](node-execution/ssh-node-execution.html#passing-environment-variables-through-remote-command) for information about requirements of the SSH server.
 
 ## Related Command Line Tools
 

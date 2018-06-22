@@ -1,4 +1,4 @@
-% PowerShell Plugins
+% PowerShell Node Execution
 
 <!---
 Original: 
@@ -163,7 +163,7 @@ Set-NetConnectionProfile -InterfaceIndex [INTERFAZ_INDEX] -NetworkCategory Priva
 
 It could be necessary to change the user’s log-on in tomcat service when the remote connection does not work:
 
-![Tomcat settings](../figures/powershell-troubleshooting.png)
+![Tomcat settings](../../figures/powershell-troubleshooting.png)
 
 
 For further information about winrm and PowerShell plug-in see:

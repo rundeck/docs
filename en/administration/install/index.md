@@ -139,7 +139,7 @@ In addition, TCP port 22 (by default) needs to be open on the clients for SSH.
 Clients should be set up to allow the Rundeck server user to connect to
 the clients using SSH via public-key authentication. It should not
 prompt for a password. See
-[Configure remote machine for SSH](../../plugins-user-guide/ssh-plugins.html#configuring-remote-machine-for-ssh)
+[Configure remote machine for SSH](../../manual/node-execution/ssh-node-execution.html#configuring-remote-machine-for-ssh)
 in the Administration chapter.
 
 There are various ways for installing SSH on Windows; we recommend

@@ -16,7 +16,7 @@ specific hosts names or IP addresses. This makes the jobs reusable
 across different environments.
 
 The administrator will also use the built in
-[SSH node executor](../plugins-user-guide/ssh-plugins.html) for
+[SSH node executor](../manual/node-execution/ssh-node-execution.html) for
 the project since SSH is already used to execute remote commands.
 
 ## Create the project
@@ -119,7 +119,7 @@ at run time. In this example, the project default is used as specified in the
 [project.properties] configuration file.
 (e.g.,  project.ssh-keypath=/var/lib/rundeck/.ssh/id_rsa).
 
-See [ssh-plugins guide](../plugins-user-guide/ssh-plugins.html#configuring-remote-machine-for-ssh) to learn about configuring remote machines for ssh.
+See [ssh-plugins guide](../manual/node-execution/ssh-node-execution.html#configuring-remote-machine-for-ssh) to learn about configuring remote machines for ssh.
 
 This example uses the built in ssh plugin but you are not restricted to using
 ssh. There are other node executor plugins that invoke remote actions via
@@ -150,7 +150,7 @@ New project sources can also be added in the Configure page:
 
 ## Managing Node Sources
 
-See [Managing Node Sources](../administration/configuration/managing-node-sources.html)
+See [Managing Node Sources](../administration/configuration/resource-model-sources/index.html)
 to learn more about configuring Rundeck to read node data from external providers.
 
 

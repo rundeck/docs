@@ -188,6 +188,9 @@ The default behavior is to dispatch based on these Job configuration values:
 You can select an Orchestrator plugin to use instead, which can choose its own logic 
 for how many and what order to process the nodes.
 
+To learn how to develop your own Orchestrator plugin
+see [Plugin Developer Guide - Orchestrator Plugin](../developer/orchestrator-plugin.html).
+
 ### Scheduled Jobs
 
 Jobs can be configured to run on a periodic basis.
@@ -276,7 +279,7 @@ choose either XML or YAML format to download the definition.
 Click the preferred format to initiate the file download to your
 browser.
 
-To export jobs to a git repository, see the [Git plugin](../plugins-user-guide/git-plugins.html#configuring-git-export)
+To export jobs to a git repository, see the [Git plugin](scm/scm-git-plugin.html#configuring-git-export)
 
 ## Importing Job definitions
 
@@ -311,4 +314,4 @@ Choose an option where it says "Imported Jobs:":
 Click the Upload button. If there are any errors with the Job
 definitions in the XML file, they will show up on the page.  
 
-To import jobs from a git repository, see the [Git plugin](../plugins-user-guide/git-plugins.html#git-import-configuration)
+To import jobs from a git repository, see the [Git plugin](scm/scm-git-plugin.html#git-import-configuration)
