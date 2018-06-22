@@ -9,13 +9,13 @@ and are installed in the `libext` dir automatically at installation time.
 
 Defines SSH Node Executor and SCP File Copier.
 
-* See [SSH Plugins](ssh-plugins.html)
+* See [SSH Plugins](../../../manual/node-execution/ssh-node-execution.html)
 
 File: *none* (built-in)
 
 ## Built-in Resource Model Sources
 
-Rundeck comes with three built-in Resource Model Source providers, see [Resource Model Source Plugins](resource-model-source-plugins.html):
+Rundeck comes with three built-in Resource Model Source providers, see [Resource Model Source Plugins](../resource-model-sources/index.html):
 
 * File: Parses a file in one of the supported [Model Source Formats](#built-in-resource-model-formats)
 * Directory: Scans all files in a directory in one of the supported formats
@@ -25,7 +25,7 @@ File: *none* (built-in)
 
 ## Built-in Resource Model Formats
 
-Rundeck comes with three Resource Model Format plugins, see [Resource Model Source Plugins](resource-model-source-plugins.html#resource-model-document-formats):
+Rundeck comes with three Resource Model Format plugins, see [Resource Model Source Plugins](../resource-model-sources/index.html#resource-model-document-formats):
 
 * XML: the [resourcexml][] format
 * YAML: the [resourceyaml][] format
@@ -41,9 +41,9 @@ File: *none* (built-in)
 
 Defines Script Node Executor and Script File Copier.
 
-For more detail see [Script Plugin](script-plugin.html).
+For more detail see [Script Plugin](../../../manual/node-execution/script-node-execution.html).
 
-Executes an external script file to perform the command, useful for developing your own plugin with the [Script Plugin Development](../developer/plugin-development.html#script-plugin-development) model.
+Executes an external script file to perform the command, useful for developing your own plugin with the [Script Plugin Development](../../../developer/plugin-development.html#script-plugin-development) model.
 
 File: `rundeck-script-plugin-${VERSION}.jar`
 
@@ -84,7 +84,7 @@ File: `rundeck-stub-plugin-${VERSION}.jar`
 
 ## Orchestrator Plugin
 
-Provides several [Orchestrator plugin](orchestrator-plugins.html) implementations:
+Provides several Orchestrator plugin implementations:
 
 * Random Subset: Selects a maximum number of the target nodes at random
 * Rank Tiered: Processes nodes in a tiered manner, ordered by rank
@@ -116,7 +116,7 @@ File: `rundeck-flow-control-plugin-${VERSION}.jar`
 
 ## Jasypt Encryption Plugin
 
-Provides an encryption [storage converter](storage-plugins.html#storage-converter) for the Storage facility.  Can be used to encrypt the contents of Key Storage,
+Provides an encryption [storage converter](../storage/index.html#storage-converters) for the Storage facility.  Can be used to encrypt the contents of Key Storage,
 and Project Configuration stored in the DB or on disk.
 
 This plugin provides password based encryption for storage contents.  
@@ -129,7 +129,7 @@ Password, algorithm, provider, etc can be specified directly, or via environment
 
 To enable it, see [Configuring - Storage Converter Plugins](configuring.html#storage-converter-plugins).
 
-See also: [Key Storage](../administration/security/key-storage.html)
+See also: [Key Storage](../../security/key-storage.html)
 
 Provider type: `jasypt-encryption`
 
@@ -190,7 +190,7 @@ File: `rundeck-jasypt-encryption-plugin-${VERSION}.jar`
 
 ## Git Plugin
 
-* See [SCM Git Plugin](git-plugins.html)
+* See [SCM Git Plugin](../../../manual/scm/scm-git-plugin.html)
 
 Provides SCM Export and SCM Import providers for Git.
 

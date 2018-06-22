@@ -64,7 +64,7 @@ rundeckPlugin(ContentConverterPlugin){
 }
 ~~~~~~
 
-To define metadata about your plugin, see the [Plugin Development - Groovy Plugin Development](plugin-plugin.html#groovy-plugin-development) chapter.
+To define metadata about your plugin, see the [Plugin Development - Groovy Plugin Development](plugin-development.html#groovy-plugin-development) chapter.
 
 The `ContentConverterPlugin` Groovy DSL supports defining conversions between data types.
 

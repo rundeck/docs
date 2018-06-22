@@ -75,10 +75,10 @@ For more details, see [Remote Job Execution](../administration/configuration/rem
 
 ### Database
 
-* [mysql](../administration/scaling/storage/mysql-setup-guide.html)
-* [postgres](../administration/scaling/storage/postgresql-setup-guide.html)
-* [oracle](../administration/scaling/storage/using-oracle-as-a-database-backend.html)
-* [mssql](../administration/scaling/storage/using-microsoft-sql-server-as-a-database-backend.html)
+* [mysql](../administration/configuration/storage/using-mysql-as-a-database-backend.html)
+* [postgres](../administration/configuration/storage/using-postgres-as-a-database-backend.html)
+* [oracle](../administration/configuration/storage/using-oracle-as-a-database-backend.html)
+* [mssql](../administration/configuration/storage/using-microsoft-sql-server-as-a-database-backend.html)
 
 ### Loadbalancer (Pro-only)
 
@@ -86,13 +86,13 @@ A loadbalancer allows you to achieve high availability in your Rundeck Pro
 installation by routing http traffic across several redundant Rundeck Pro
 instances.
 
-To learn how to set up a loadbalancer for Rundeck Pro, see [Loadbalancer](../administration/scaling/cluster/loadbalancer/index.html)
+To learn how to set up a loadbalancer for Rundeck Pro, see [Loadbalancer](../administration/cluster/loadbalancer/index.html)
 
 ### Autotakeover (Pro-only)
 
 If a cluster member goes down, all scheduled jobs on that cluster member must be moved to another cluster node. This process can be performed automatically using the heartbeat and Autotakeover features in Rundeck Pro version 2.1.0 and later releases.
 
-To learn how to set up Autotakeover, see [Autotakeover](../administration/scaling/cluster/autotakeover/index.html)
+To learn how to set up Autotakeover, see [Autotakeover](../administration/cluster/autotakeover/index.html)
 
 ### Logstore (Pro-only)
 

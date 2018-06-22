@@ -39,7 +39,7 @@ explanation on how job notifications work, see [Creating jobs#Job Notifications]
 
 ## Node Execution
 
-* [Built-in](node-execution/builtin.html)
+* [Built-in](node-execution/built-in-node-execution-plugins.html)
 * [Powershell (Pro)](node-execution/powershell-node-execution.html)
 * [Script](node-execution/script-node-execution.html)
 * [SSH](node-execution/ssh-node-execution.html)

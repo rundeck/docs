@@ -118,7 +118,7 @@ cp ojdbc14.jar $RDECK_BASE/server/lib
 
 ### Configuring Storage Plugins
 
-See [Plugins User Guide - Configuring Storage Plugins](../../../plugins-user-guide/configuring.html#storage-plugins).
+See [Plugins User Guide - Configuring Storage Plugins](../plugins/configuring.html#storage-plugins).
 
 ## Storage Converters
 
@@ -130,4 +130,4 @@ Converter plugins do not have to manage storing the data, that will be handled b
 
 ### Configuring Storage Converter Plugins
 
-See [Plugins User Guide - Configuring Storage Converter Plugins](../../../plugins-user-guide/configuring.html#storage-converter-plugins).
+See [Plugins User Guide - Configuring Storage Converter Plugins](../plugins/configuring.html#storage-converter-plugins).

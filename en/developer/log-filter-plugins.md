@@ -49,7 +49,7 @@ rundeckPlugin(LogFilterPlugin){
 }
 ~~~~~~
 
-To define metadata about your plugin, and configuration properties, see the [Plugin Development - Groovy Plugin Development](plugin-plugin.html#groovy-plugin-development) chapter.
+To define metadata about your plugin, and configuration properties, see the [Plugin Development - Groovy Plugin Development](plugin-development.html#groovy-plugin-development) chapter.
 
 The `LogFilterPlugin` Groovy DLS supports these closure definitions:
 

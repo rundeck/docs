@@ -90,7 +90,7 @@ Rundeck provides these built-in implementations:
 
 ### Configuring Storage Plugins
 
-See [Plugins User Guide - Configuring Storage Plugins](../../plugins-user-guide/configuring.html#storage-plugins).
+See [Plugins User Guide - Configuring Storage Plugins](../configuration/plugins/configuring.html#storage-plugins).
 
 ## Key Data Storage Converter
 
@@ -102,7 +102,7 @@ Converter plugins do not have to manage storing the data, that will be handled b
 
 ### Configuring Storage Converter Plugins
 
-See [Plugins User Guide - Configuring Storage Converter Plugins](../../plugins-user-guide/configuring.html#storage-converter-plugins).
+See [Plugins User Guide - Configuring Storage Converter Plugins](../configuration/plugins/configuring.html#storage-converter-plugins).
 
 ## Using Keys via Rundeck Node Executors
 

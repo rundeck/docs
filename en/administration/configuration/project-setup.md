@@ -38,7 +38,7 @@ The import process copies the contents of `etc/project.properties`, `readme.md` 
 Finally, the `etc/project.properties` file will be renamed on disk to `etc/project.properties.imported`.
 
 The DB storage type also uses the Rundeck **Storage Facility** to store the file contents, which can be
-configured to use an Encryption plugin.  See [Storage Facility - Using Encryption](storage.html#using-encryption).
+configured to use an Encryption plugin.  See [Storage Facility - Using Encryption](storage/index.html#using-encryption).
 
 ### Configuration file
 
@@ -140,7 +140,7 @@ from any source, so long as it can produce one of the Rundeck resource model
 document formats. (See
 [Resource Model Document formats](resource-model-sources/built-in-resource-model-source-plugins.html#resource-model-document-formats).)
 
-See [Resource Model Sources](resource-model-sources.html#resource-model-source).
+See [Resource Model Sources](resource-model-sources/built-in-resource-model-source-plugins.html#resource-model-source).
 
 ##### Defining a node
 
@@ -212,7 +212,7 @@ your host infrastructure infrequently changes.
 
 Check the Rundeck web site for URL resource model sources. If you are
 interested in creating your own, see the
-[Resource model source](resource-model-sources.html#resource-model-source) chapter.
+[Resource model source](resource-model-sources/built-in-resource-model-source-plugins.html#resource-model-source) chapter.
 
 ### Resource Model Document formats
 

@@ -289,7 +289,7 @@ Context variables can be used in a few ways in a Job step, with slightly differe
 
     The syntax for Environment variables is that all letters become uppercase, punctuation is replaced with underscore, and the name is prefixed with `RD_`.
 
-    > Note, See the chapter [Plugins - SSH - Passing Environment Variables Through Remote Commands](../plugins-user-guide/ssh-plugins.html#passing-environment-variables-through-remote-command) for information about requirements of the SSH server.
+    > Note, See the chapter [Plugins - SSH - Passing Environment Variables Through Remote Commands](node-execution/ssh-node-execution.html#passing-environment-variables-through-remote-command) for information about requirements of the SSH server.
 
 ## Related Command Line Tools
 

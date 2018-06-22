@@ -82,13 +82,13 @@ with the same node name.
 
 Rundock provides several Resource Model Source plugins for commonly used clouds:
 
-* [AWS](resource-model-sources/amazon-ec2-resource-model-source.html)
-* [Azure](resource-model-sources/azure-resource-model-source.html)
-* [ServiceNow](resource-model-sources/servicenow-resource-model-source.html)
+* [AWS](amazon-ec2-resource-model-source.html)
+* [Azure](azure-resource-model-source.html)
+* [ServiceNow](servicenow-resource-model-source.html)
 
 Community-supported Resource Model Source plugins are listed on [our wiki](https://github.com/rundeck/rundeck/wiki/Resource-model-providers).
 
-Or you can also use the [built-in plugins](resource-model-sources/built-in-resource-model-source-plugins.html) for defining your own.
+Or you can also use the [built-in plugins](built-in-resource-model-source-plugins.html) for defining your own.
 
 #### Simple VCS URL resource model source
 
@@ -149,7 +149,7 @@ of these tools, it is possible to map the data to meet the needs of
 
 ### Definition ###
 
-The [Rundeck resource model document format](../../man5/resource.html) and the [resource-yaml-v13](../../man5/resource-yaml.html) format provide two attributes that help connect the dots between the
+The [Rundeck resource model document format](../../../man5/resource.html) and the [resource-yaml-v13](../../../man5/resource-yaml.html) format provide two attributes that help connect the dots between the
 Rundeck UI and the editing interface provided by the external data
 management tool. They can use `editUrl` or `remoteUrl` attributes to specify the remote URL.  The URLs can embed properties about the node to expand prior to being loaded, which allows you to e.g. submit query parameters using the node name.
 

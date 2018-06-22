@@ -21,4 +21,4 @@ For information about Rundeck Administration, see the [Administrator Guide](../a
 * [Activity](activity.html)
 * [Configure](configure.html)
 * [User](user.html)
-* [Node Filters](node-filters)
+* [Node Filters](node-filters.html)

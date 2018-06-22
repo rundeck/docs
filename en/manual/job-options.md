@@ -366,7 +366,7 @@ is exposed to use in scripts and commands.  Make sure you acknowledge these secu
 
 ### Secure Remote Authentication Options
 
-The built-in [SSH Provider](../plugins-user-guide/ssh-plugins.html) for node execution allows using passwords for SSH and/or Sudo authentication mechanisms, and the passwords are supplied by Secure Remote Authentication Options defined in a Job.
+The built-in [SSH Provider](node-execution/ssh-node-execution.html) for node execution allows using passwords for SSH and/or Sudo authentication mechanisms, and the passwords are supplied by Secure Remote Authentication Options defined in a Job.
 
 Secure Remote Authentication Options have some limitations compared to Plain and Secure options:
 
