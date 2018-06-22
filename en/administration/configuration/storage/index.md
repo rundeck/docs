@@ -69,6 +69,11 @@ For database-specific instructions:
 * [Oracle](using-oracle-as-a-database-backend.html)
 * [SQL Server](using-microsoft-sql-server-as-a-database-backend.html)
 
+To develop your own storage plugin, see:
+
+* [Storage Plugin Development](../../../developer/storage-plugin.html).
+* [Storage Converter Plugin Development](../../../developer/storage-converter-plugin.html).
+
 ### Customize the Datasource
 
 The default dataSource is configured for filesystem storage using HSQLDB:
