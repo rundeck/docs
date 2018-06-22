@@ -188,6 +188,9 @@ The default behavior is to dispatch based on these Job configuration values:
 You can select an Orchestrator plugin to use instead, which can choose its own logic 
 for how many and what order to process the nodes.
 
+To learn how to develop your own Orchestrator plugin
+see [Plugin Developer Guide - Orchestrator Plugin](../developer/orchestrator-plugin.html).
+
 ### Scheduled Jobs
 
 Jobs can be configured to run on a periodic basis.

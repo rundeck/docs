@@ -82,6 +82,8 @@ Step-oriented flow illustrated:
 The process you are automating will determine which strategy is
 correct, though the node-oriented flow is more commonplace.
 
+For more complex workflow strategy rules, see [Ruleset Workflow Strategy Plugin](workflow-strategies/ruleset-workflow-strategy-plugin.html)
+
 ## Workflow steps
 
 The following sections describe how to construct a workflow as a set
