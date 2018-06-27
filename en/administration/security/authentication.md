@@ -99,28 +99,25 @@ than giving out role accounts to groups.  You may also want to avoid
 having the passwords in plaintext within the configuration file.  
 
 To accomplish this, you'll need a properly hashed or encrypted
-password to use in the config.  Pass the
-username and password to the `Password` utility which is part of the
-`jetty-all-9.0.7.v20131107.jar` file.
-
-Location:
-
-* Launcher install: `$RDECK_BASE/server/lib/jetty-all-9.0.7.v20131107.jar`
-* RPM/Deb install: `/var/lib/rundeck/bootstrap/jetty-all-9.0.7.v20131107.jar`
-
-Use the correct path below.
+password to use in the config.  Rundeck has a built in command line utility to
+encrypt passwords. The default encryption service is the Jetty password utility.
 
 In this example,
 we'll setup a new user named "jsmith", with a password of "mypass":
 
 ~~~~~~ {.bash }
-$ java -cp jetty-all-9.0.7.v20131107.jar org.eclipse.jetty.util.security.Password jsmith mypass
+$ java -jar rundeck-3.0.0.war --encryptpwd Jetty
+Required values are marked with: *
+Username (Optional, but necessary for Crypt encoding):
+jsmith    <-----Type this value
+*Value To Encrypt (The text you want to encrypt):
+mypass    <-----Type this value
 ~~~~~~
 
 ~~~~~~
-OBF:1xfd1zt11uha1ugg1zsp1xfp
-MD5:a029d0df84eb5549c641e04a9ef389e5
-CRYPT:jsnDAc2Xk4W4o
+obfuscate: OBF:1xfd1zt11uha1ugg1zsp1xfp
+md5: MD5:a029d0df84eb5549c641e04a9ef389e5
+crypt: CRYPT:jsnDAc2Xk4W4o
 ~~~~~~
 
 Then add this to the `realm.properties` file with a line like so:
@@ -128,6 +125,9 @@ Then add this to the `realm.properties` file with a line like so:
     jsmith: MD5:a029d0df84eb5549c641e04a9ef389e5,user,admin
 
 Then restart Rundeck to ensure it picks up the change and you're done.
+
+There is also a password encrypter utility user interface in the Rundeck application that
+can be used to generate encrypted passwords. Click the gear icon and then "Password Utility" to use that interface.
 
 ## LDAP
 
