@@ -10,11 +10,16 @@ these properties in the [rundeck-config.properties](configuration-file-reference
 
 `rundeck.gui.brand.html`                    HTML used in place of title          `Test <b>App</b>`
 
+`rundeck.gui.staticUserResources.enabled`   Enable serving static files          true
+                                            from $RDECK_BASE/user-assets dir.
+                                            This must be set to true if using
+                                            a custom logo.
+
 `rundeck.gui.logo`                          Logo icon path relative to           test-logo.png
-                                            webapps/rundeck/images dir           
+                                            $RDECK_BASE/user-assets dir           
 
 `rundeck.gui.logoHires`                     (High Res/retina) Logo icon path     test-logo@2x.png
-                                            relative to webapps/rundeck/images
+                                            relative to $RDECK_BASE/user-assets
                                             dir. Should be 2x the specified
                                             logo-height and logo-width
 
@@ -23,6 +28,11 @@ these properties in the [rundeck-config.properties](configuration-file-reference
 
 `rundeck.gui.logo-height`                   Icon height for proper display (32px 32px
                                             is best)                             
+
+`rundeck.gui.paginatejobs.enabled`          Paginate job list when listing project jobs
+
+`rundeck.gui.paginatejobs.max.per.page`     Number of jobs per page to display when job pagniation
+                                            is enabled
 
 `rundeck.gui.titleLink`                     URL for the link used by the app     http://rundeck.org
                                             header icon.                         
