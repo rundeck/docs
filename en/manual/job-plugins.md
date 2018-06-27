@@ -25,6 +25,7 @@
 * [Data step](workflow-steps/builtin-workflow-steps.html#data-step)
 * [File Transfer (Pro)](workflow-steps/file-transfer-plugins.html)
 * [Github (Pro)](workflow-steps/github-script-plugin-pro.html)
+* [Progress Badge (Pro)](workflow-steps/progress-badge-plugin-pro.html#progress-badge-workflow-step-plugin)
 * [ServiceNow (Pro)](workflow-steps/servicenow-plugins.html)
 
 ## Notifications
@@ -35,7 +36,6 @@ explanation on how job notifications work, see [Creating jobs#Job Notifications]
 
 * [Email](notifications/email.html)
 * [Webhooks](notifications/webhooks.html)
-* [Progress Badge (Pro)](notifications/progress-badge-plugin-pro.html)
 
 ## Node Execution
 

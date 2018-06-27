@@ -28,6 +28,10 @@ Different facilities log to their own files:
 See the [#log4j.properties](../configuration/configuration-file-reference.html#log4j.properties) section for information 
 about customizing log message formats and location.
 
+## Log filter plugins
+
+* [Progress Badge](../../manual/workflow-steps/progress-badge-plugin-pro.html#progress-badges-log-filter-plugin)
+
 ## Streaming log plugins
 
 Streaming log plugins have two forms:
