@@ -1,11 +1,11 @@
-% Version 3.0.0-alpha1
+% Version 3.0.0-beta1
 % greg
-% 06/01/2018
+% 07/07/2018
 
-Release 3.0.0-alpha1
+Release 3.0.0-beta1
 ===========
 
-Date: 2018-06-01
+Date: 2018-07-07
 
 Name: <span style="color: aquamarine"><span class="glyphicon glyphicon-apple"></span> "jalapeño popper aquamarine apple"</span>
 
@@ -17,6 +17,14 @@ on this version. If you find a bug or regression, please file an issue at <https
 We are publishing the snapshot documentation for Rundeck 3.0 at this URL: <http://rundeck.org/3.0.x-SNAPSHOT/>. Currently the Upgrading Guide is *not* updated with specific Rundeck 3.0 information, so please read the notes below.
 
 The largest change is that we've upgraded the underlying web-app framework to Grails 3. This affects some aspects of install and configuration:
+
+
+Changes since alpha1:
+
+* New "Jalapeño Popper" UI: 
+	* This is a complete UI overhaul with a goal of increasing usability and improving the layout and design. We are still working on this: please give us feedback!
+
+* Several bugfixes and enhancements listed under the milestone (see below).
 
 Install:
 
@@ -45,12 +53,13 @@ A lot of work went into the Grails 3 upgrade, many thanks especially to:
 * Stephen Joyner
 
 👏👏👏
+ 
 
 ## Upgrading
 
 For the most part, Rundeck 3.0 is drop-in compatible with existing Rundeck 2.11 installations.
 
-We recommend doing a fresh install of 3.0.0-alpha1 and copying your Jobs/projects into it for testing.
+We recommend doing a fresh install of 3.0.0-beta1 and copying your Jobs/projects into it for testing.
 
 If you are upgrading in-place, *Be sure to backup import data/configs before upgrading.*
 
@@ -67,13 +76,15 @@ See the *Configuration* notes above.
 ## Contributors
 
 * Alberto Hormazabal (ahormazabal)
-* Davy Gabard
 * Davy Gabard (Kaldor37)
 * Greg Schueler (gschueler)
 * Jaime Tobar (jtobard)
+* Jesse Marple
+* Jijo Varghese
 * Jocelyn Thode
+* Joseph Price (PriceChild)
 * OmriShiv
-* Stephen Joyner
+* Greg Zapp (ProTip)
 * Stephen Joyner (sjrd218)
 * carlos (carlosrfranco)
 * scollector65
@@ -82,12 +93,17 @@ See the *Configuration* notes above.
 
 * Kaldor37
 * Nomekrax
+* PriceChild
 * ahormazabal
+* cwaltherf
 * gschueler
+* jijojv
 * jquick
 * jtobard
 * kino71
+* ltamaster
 * sebastianbello
+* sjrd218
 * turlubullu
 * wcliff
 
@@ -95,15 +111,32 @@ See the *Configuration* notes above.
 
 [Milestone 3.0.0](https://github.com/rundeck/rundeck/milestone/76)
 
+beta1: 
+
+* [Problem wth scm+cluster using https](https://github.com/rundeck/rundeck/issues/3623)
+* [Show current API version in System Report page](https://github.com/rundeck/rundeck/issues/3598)
+* [getUserRoles ldap search attributes filter](https://github.com/rundeck/rundeck/pull/3579)
+* [Feature switch to enable job pagination](https://github.com/rundeck/rundeck/pull/3561)
+* [Git plugin setup page does not preserve current values in Select fields](https://github.com/rundeck/rundeck/issues/3483)
+* [Set a max file size of 25mb configurable](https://github.com/rundeck/rundeck/pull/3477)
+* [Error 400 importing projects over 128kb](https://github.com/rundeck/rundeck/issues/3476)
+* [Security Advisory: Zip Slip directory traversal vulnerability](https://github.com/rundeck/rundeck/issues/3471)
+* [Fixed various french translations](https://github.com/rundeck/rundeck/pull/3458)
+* [ACL for uuid](https://github.com/rundeck/rundeck/pull/3456)
+* [resources.xml not created](https://github.com/rundeck/rundeck/issues/3185)
+* [Don't allow starting rundeckd multiple times.](https://github.com/rundeck/rundeck/pull/1873)
+* [ACL based on a job's UUID](https://github.com/rundeck/rundeck/issues/1812)
+
+alpha1:
+
 * [Fixed various french translations](https://github.com/rundeck/rundeck/pull/3430)
 * [importOptions missplaced in yaml/xml export.](https://github.com/rundeck/rundeck/issues/3429)
 * [Create project via API with invalid project name does not return error](https://github.com/rundeck/rundeck/issues/3423)
 * [BUG: Job Options not appearing in Duplicated Jobs](https://github.com/rundeck/rundeck/issues/3421)
 * [Using variable in Storage path job options](https://github.com/rundeck/rundeck/pull/3420)
 * [duplicate jobs page doesn't show options ](https://github.com/rundeck/rundeck/issues/3384)
-* [rundeck access log contains "_Ljava.lang.String;" instead of project](https://github.com/rundeck/rundeck/issues/3379)
+* [rundeck access log contains "Ljava.lang.String;" instead of project](https://github.com/rundeck/rundeck/issues/3379)
 * [Grails 3 Update](https://github.com/rundeck/rundeck/pull/3290)
 * [Using variable in Storage path job options](https://github.com/rundeck/rundeck/issues/2092)
 * [Encrypt passwords stored in configuration files](https://github.com/rundeck/rundeck/issues/2062)
 * [Limit Multiple Executions](https://github.com/rundeck/rundeck/issues/1387)
-* [i18n Update: node filter help](https://github.com/rundeck/rundeck/pull/3383)
