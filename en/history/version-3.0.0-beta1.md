@@ -22,7 +22,8 @@ The largest change is that we've upgraded the underlying web-app framework to Gr
 Changes since alpha1:
 
 * New "Jalapeño Popper" UI: 
-	* This is a complete UI overhaul with a goal of increasing usability and improving the layout and design. We are still working on this: please give us feedback!
+	* The new 3.0 UI is an aesthetic update with an eye towards what comes next. Based on a new Rundeck UI Style Guide, the entire application has been reviewed and updated with more consistent interfaces that make it easier to use, enable easier enhancements and modifications, and improve cross-browser compatibility.
+	* We are still working on this: please give us feedback!
 
 * Several bugfixes and enhancements listed under the milestone (see below).
 
