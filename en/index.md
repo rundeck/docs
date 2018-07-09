@@ -9,8 +9,12 @@ More information about Rundeck at: [rundeck.org](http://rundeck.org).
 
 ## Prerelease info
 
-* [Version 3.0.0-alpha1](history/version-3.0.0-alpha1.html)
+* [Version 3.0.0-beta1](history/version-3.0.0-beta1.html)
+
+<!--
 
 ## Release Notes
 
 * [Version ${VERSION}](history/version-${VERSION}.html)
+
+-->
