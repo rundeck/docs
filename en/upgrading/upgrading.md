@@ -329,7 +329,7 @@ Finally, restore the project files for the imported project.
 
 If you are not doing a clean install, and you want to maintain your JAAS login module configuration, you may have to change your jaas.conf file.
 
-The default jaas-loginmodule.conf file included with Rundeck 1.6.x uses the `org.mortbay.jetty.plus.jaas.spi.PropertyFileLoginModule` class.  You will have to change your file to specify `org.eclipse.jetty.plus.jaas.spi.PropertyFileLoginModule` ("org.eclipse").
+The default jaas-loginmodule.conf file included with Rundeck 1.6.x uses the `org.mortbay.jetty.plus.jaas.spi.PropertyFileLoginModule` class.  You will have to change your file to specify `org.eclipse.jetty.jaas.spi.PropertyFileLoginModule` ("org.eclipse").
 
 Modify the `$RDECK_BASE/server/config/jaas-loginmodule.conf` (launcher install) or `/etc/rundeck/jaas-loginmodule.conf` (RPM/Deb install).
 
