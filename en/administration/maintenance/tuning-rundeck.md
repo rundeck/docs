@@ -118,9 +118,8 @@ export RDECK_JVM="$RDECK_JVM -Xmx4096m -Xms1024m"
 The maximum number of threads used by Rundeck for concurrent jobs
 by default is set to ``10``.
 
-You can change this value, by updating either the
-`rundeck-config.properties` file, or a file called
-`quartz.properties`.
+You can change this value, by updating the
+`rundeck-config.properties` file.
 
 Please refer to the Quartz site for detailed information:
 [Quartz - Configure ThreadPool Settings][1].
@@ -136,19 +135,6 @@ e.g. in `rundeck-config.properties` :
 ~~~ {.properties}
 quartz.props.threadPool.threadCount = 20
 ~~~
-
-Set the threadCount value to the max number of threads you want to run concurrently.
-
-#### Update quartz.properties
-
-If the file doesn't exist, create it.
-
-* RPM install: `/var/lib/rundeck/server/exp/webapp/WEB-INF/classes/quartz.properties`
-* Launcher install: `$RDECK_BASE/server/exp/webapp/WEB-INF/classes/quartz.properties`
-
-To change the maximum threadCount modify this file and add the line:
-
-    org.quartz.threadPool.threadCount = 20
 
 Set the threadCount value to the max number of threads you want to run concurrently.
 
