@@ -136,7 +136,7 @@ Property                                  Description
 `service.NodeExecutor.default.provider`   Default node executor plugin.
 `resources.source.N...`                   Defines a Resource model source see [Resource Model Sources].
 `project.globals.X`                       [Defines a Project Global variable](#project-global-execution-variables)
-----------------------------------
+
 
 Here's an example that configures a File source:
 
@@ -145,7 +145,7 @@ resources.source.1.config.file=/var/rundeck/projects/${project.name}/etc/resourc
 resources.source.1.config.generateFileAutomatically=true
 resources.source.1.config.includeServerNode=true
 resources.source.1.type=file
-~~~~~~~~~~~
+~~~~~~~~~~
 
 Another that configures a URL source:
 
@@ -154,14 +154,14 @@ resources.source.2.config.cache=true
 resources.source.2.config.timeout=30
 resources.source.2.config.url=http\://example.com/nodes
 resources.source.2.type=url
-~~~~~~~~~
+~~~~~~~~
 
 And one that configures a Directory source:
 
 ~~~~~~~~~~
 resources.source.3.config.directory=/var/rundeck/projects/${project.name}/site_nodes
 resources.source.3.type=directory
-~~~~~~~~~~~~
+~~~~~~~~~~
 
 Additional sources increment the source number. You can reference the project name by using the `${project.name}` context variable.
 
@@ -373,6 +373,16 @@ because the File Upload and Job Run are performed as separate steps.)
     # default is 10 minutes
     rundeck.fileUploadService.tempfile.expiration=600000
 
+### Node Cache
+
+Defaults for the Node caches
+
+Enabled: true/false (default true).
+
+:   `rundeck.nodeService.nodeCache.enabled=true` If set to false, no caching is performed.
+
+First Load Asynch: true/false
+:   `rundeck.nodeService.nodeCache.firstLoadAsynch=false`  The default for whether the first load of a project's nodes should be performed synchronously or not. If set to `true`, and the [Project Nodes > Synchronous First Load](project-setup.html#project-nodes) value is unset, then the initial load of a Project's nodes when the cache is empty will be done in the background asynchronously. Otherwise the initial load is done synchronously, possibly causing a delay at Rundeck startup or Job execution startup. A Project level configuration value will override this default.
 
 ### Groovy config format
 

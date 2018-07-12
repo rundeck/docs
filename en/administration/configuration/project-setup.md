@@ -121,6 +121,19 @@ It is important to start thinking about node tagging for the nodes you manage
 because you will use them later when specifying node filtering
 options.
 
+#### Configuration
+
+These project level configuration settings can be set in the config file, or in the GUI:
+
+Use Asynchronous Cache (default: true)
+:   `project.nodeCache.enabled`  Use asynchronous cache for all Resource Model Source results in this project
+
+Cache Delay
+:   `project.nodeCache.delay`  Delay in seconds, at least 30
+
+Synchronous First Load
+:   `project.nodeCache.firstLoadSynch` When the cache is empty, forces the first load to happen synchronously to prevent empty node results.
+
 #### Default resources
 After initial project setup, the project will have a file resource model source.
 The project.properties file will contain a setting specifying this file:
