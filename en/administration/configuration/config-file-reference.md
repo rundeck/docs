@@ -373,6 +373,16 @@ because the File Upload and Job Run are performed as separate steps.)
     # default is 10 minutes
     rundeck.fileUploadService.tempfile.expiration=600000
 
+### Node Cache
+
+Defaults for the Node caches
+
+Enabled: true/false (default true).
+
+:   `rundeck.nodeService.nodeCache.enabled=true` If set to false, no caching is performed.
+
+First Load Asynch: true/false
+:   `rundeck.nodeService.nodeCache.firstLoadAsynch=false`  The default for whether the first load of a project's nodes should be performed synchronously or not. If set to `true`, and the [Project Nodes > Synchronous First Load](project-setup.html#project-nodes) value is unset, then the initial load of a Project's nodes when the cache is empty will be done in the background asynchronously. Otherwise the initial load is done synchronously, possibly causing a delay at Rundeck startup or Job execution startup. A Project level configuration value will override this default.
 
 ### Groovy config format
 
