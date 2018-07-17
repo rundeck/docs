@@ -21,7 +21,7 @@ Rundeck includes these Built-in plugins in the core installation:
 
 To configure these providers use the following configuration properties.
 
-### File Resource Model Source Configuration
+### File Source
 
 The `file` Resource Model Source provider reads a file in one of the supported
 Resource Model Document Formats.
@@ -41,6 +41,54 @@ The value of `format` must be one of the supported Resource Model Document Forma
 
 *Example:*
 
+Here's a sample XML document that defines a node called "orion":
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {.xml}
+<project>
+  <node name="orion"
+    description="a foodazzler service host" tags="staging,us-east"
+    osFamily="unix" osName="Linux"
+    hostname="orion"  username="alexh"
+    />
+</project>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The `node` element has a few
+required such as `name`, `osFamily` and `tags`.
+
+You can add any number of nodes in this document. Here's a second node
+called homestar:
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {.xml}
+<project>
+  <node name="orion"
+    description="a foodazzler service host" tags="staging,us-east"
+    osFamily="unix" osName="Linux"
+    hostname="orion"  username="alexh"
+    />
+  <node name="homestar"
+    description="a humdinger" tags="integration,us-west"
+    osFamily="unix" hostname="192.168.1.02"  username="alexh">
+    <attribute name="flavor" value="medium"/>
+    <attribute name="package:version" value="2.0"/>
+  </node>
+</project>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The `hostname` and `username` values are used for the SSH connection
+while the `name` and `type` are used to define Node identity in the
+resource model. It is possible to overload the hostname value to include
+port information (eg, hostname="somehost:2022").
+This is useful if your run SSH on a different port.
+
+
+You can also tell there are two different ways to declare an attribute
+using the XML format.
+The "flavor" attribute is defined as a separate XML element:
+
+    <attribute name="flavor" value="medium"/>
+
+
     resources.source.1.type=file
     resources.source.1.file=/home/rundeck/projects/example/etc/resources2.xml
     resources.source.1.format=resourcexml
@@ -48,7 +96,7 @@ The value of `format` must be one of the supported Resource Model Document Forma
     resources.source.1.includeServerNode=true
     resources.source.1.generateFileAutomatically=true
 
-### URL Resource Model Source Configuration
+### URL Source
 
 The `url` Resource Model Source provider performs a HTTP GET request to retrieve the Nodes definition.
 
@@ -73,7 +121,7 @@ sent by the remote server. The built-in formats accept "\*/xml" and "\*/yaml" an
     resources.source.1.cache=true
     resources.source.1.timeout=0
 
-### Directory Resource Model Source Configuration
+### Directory Source
 
 The `directory` Resource Model Source provider lists all files in a directory, and loads each one that has a supported file extension
 as File Resource Model Source with all default configuration options.
@@ -90,7 +138,7 @@ Table: Configuration properties for `directory` Resource Model Source provider
     resources.source.2.type=directory
     resources.source.2.directory=/home/rundeck/projects/example/resources
     
-### Script Resource Model Source Configuration
+### Script Source
 
 The `script` Resource Model Source provider executes a script file and reads
 the output of the script as one of the supported [Resource Model Document Formats].

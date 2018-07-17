@@ -1,12 +1,6 @@
 % Rundeck Configuration
 
 * [License (Pro)](license-pro.html)
-* [Project Setup](project-setup.html)
-* [Resource Model Sources](resource-model-sources/index.html)
-  * [Built-in](resource-model-sources/built-in-resource-model-source-plugins.html)
-  * [AWS](resource-model-sources/amazon-ec2-resource-model-source.html)
-  * [Azure](resource-model-sources/azure-resource-model-source.html)
-  * [ServiceNow](resource-model-sources/servicenow-resource-model-source.html)
 * [Storage](storage/index.html)
 * [Remote Job Execution (Pro)](remote-job-execution-pro.html)
 * [Email Settings](email-settings.html)
