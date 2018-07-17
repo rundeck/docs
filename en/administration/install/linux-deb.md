@@ -7,10 +7,8 @@
 You can use this script to add the Rundeck apt repo and install Rundeck:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {.bash}
-echo "deb http://dl.bintray.com/rundeck/rundeck-deb /" | sudo tee -a /etc/apt/sources.list.d/rundeck.list 
-echo "deb-src http://dl.bintray.com/rundeck/rundeck-deb /" | sudo tee -a /etc/apt/sources.list.d/rundeck.list
+echo "deb https://rundeck.bintray.com/rundeck-deb /" | sudo tee -a /etc/apt/sources.list.d/rundeck.list 
 curl 'https://bintray.com/user/downloadSubjectPublicKey?username=bintray' | sudo apt-key add -
-sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 379CE192D401AB61
 sudo apt-get update
 sudo apt-get install rundeck
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -24,7 +22,7 @@ sudo apt-get install rundeck
 
 ### Install deb package directly
 
-Download deb package: http://rundeck.org/downloads.html and run:
+Download deb package: http://rundeck.org/download/deb/ and run:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {.bash}
 sudo dpkg -i rundeck_x.xx.x-x-GA_all.deb
@@ -38,7 +36,6 @@ You can use this script to add the Rundeck Pro apt repo and install Rundeck Pro 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {.bash}
 echo "deb https://rundeckpro.bintray.com/deb stable main" | sudo tee /etc/apt/sources.list.d/rundeck.list
-sudo apt-get install apt-transport-https
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 379CE192D401AB61
 sudo apt-get update
 sudo apt-get install rundeckpro-cluster
