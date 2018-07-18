@@ -235,7 +235,7 @@ The following sections describe configuration values for this file.
     correctly if they use username and password login.
 
 * `rundeck.api.tokens.duration.max`: Duration string indicating maximum lifetime of API Tokens. If unset, the value
-    will be "30d" (30 days). Format: "##{ydhms}" (years, days, hours, minutes, seconds). 
+    will be "30d" (30 days). Format: "##{ydhms}" (years, days, hours, minutes, seconds).
     If you want to disable the max expiration you can set it to 0 and create token with 0 duration that don't expire.
 
 * `rundeck.security.csrf.referer.filterMethod`:`NONE|POST|*`. Set HTTP Method to filter based on Referer header.  Can be POST, or "*" for all methods. Default: NONE (disabled)
@@ -243,7 +243,16 @@ The following sections describe configuration values for this file.
 * `rundeck.security.csrf.referer.allowApi`: `true|false`. Allow /api/* requests without requiring matching Referer header. Default: true.
 
 * `rundeck.security.csrf.referer.requireHttps`: `true|false`. If server URL is HTTPS, Require referer header to be from HTTPS version of server URL, if false allow HTTP as well. Default: true.
- 
+
+* `rundeck.security.enforceMaxSessions`: `true|false`. Only allow users to log in a configured number of times. Oldest sessions are automatically logged out. `Default: false`.
+
+    Note: If you use the rd tool with the RD_USERNAME/RD_PASSWORD authentication this will use an active session each time your run the command. If you log into the
+    user interface then execute rd commands you could be logged out of your web session. If you have multiple long running rd commands and you exceed the maxSessions
+    limit, you may experience unexpected behavior. If you use api tokens with the rd tool it will not log out your interactive session. If you enable this setting and also
+    use the rd tool, it is recommended that you use api tokens with the rd tool.
+
+* `rundeck.security.maxSessions`: If enforceMaxSessions is true, this setting controls the number of active sessions a user is allowed to have. `Default: 1`
+
 ### Execution Mode
 
 * `rundeck.executionMode`:`active/passive`. Default `active`. Set the Execution
@@ -386,7 +395,7 @@ First Load Asynch: true/false
 
 ### Groovy config format
 
-You can change you rundeck-config.properties to a rundeck-config.groovy. 
+You can change you rundeck-config.properties to a rundeck-config.groovy.
 
 The groovy format is a java-like language, and it is not the same as properties.
 
@@ -395,7 +404,7 @@ Make sure you put quotes around all string values, but it is not necessary for t
 java properties format:
 
 ~~~ {.properties}
-some.property=value 
+some.property=value
 ~~~
 
 groovy format:
@@ -410,7 +419,7 @@ but since it is not simple text properties, strings have to be quoted.
 E.g. : a.b.c="blah" is the same as:
 
 ~~~ {.groovy}
-a{ 
+a{
     b{
         c="blah"
     }
