@@ -55,6 +55,18 @@ View the [Index](#index) listing API paths.
 
 Changes introduced by API Version number:
 
+**Version 25**:
+
+* New Endpoints.
+    - [`GET /api/V/metrics`][/api/V/metrics] - List enabled Metrics endpoints
+    - [`GET /api/V/metrics/metrics`][/api/V/metrics/metrics] - Get Metrics Data
+    - [`GET /api/V/metrics/threads`][/api/V/metrics/threads] - Get Metrics Threads
+    - [`GET /api/V/metrics/healthcheck`][/api/V/metrics/healthcheck] - Get Metrics Healthcheck
+    - [`GET /api/V/metrics/ping`][/api/V/metrics/ping] - Get Metrics Ping
+
+* Updated Endpoints:
+    - [`GET /api/V/system/info`][/api/V/system/info] - `metrics` links now point to correct API endpoints.
+
 **Version 24**:
 
 * New Endpoints.
@@ -968,8 +980,10 @@ Success response, with included system info and stats in this format:
             <active>24</active>
         </threads>
     </stats>
-    <metrics href='http://dignan:4440/metrics/metrics?pretty=true' contentType='text/json' />
-    <threadDump href='http://dignan:4440/metrics/threads' contentType='text/plain' />
+    <metrics href='http://dignan:4440/api/25/metrics/metrics?pretty=true' contentType='application/json' />
+    <threadDump href='http://dignan:4440/api/25/metrics/threads' contentType='text/plain' />
+    <healthcheck href='http://dignan:4440/api/25/metrics/healthcheck' contentType='application/json' />
+    <ping href='http://dignan:4440/api/25/metrics/ping' contentType='text/plain' />
 </system>
 ~~~~~~~~~~~~~~~
 
@@ -1039,11 +1053,19 @@ Success response, with included system info and stats in this format:
       }
     },
     "metrics": {
-      "href": "http://madmartigan.local:4440/metrics/metrics?pretty=true",
-      "contentType": "text/json"
+      "href": "http://madmartigan.local:4440/api/25/metrics/metrics?pretty=true",
+      "contentType": "application/json"
     },
     "threadDump": {
-      "href": "http://madmartigan.local:4440/metrics/threads",
+      "href": "http://madmartigan.local:4440/api/25/metrics/threads",
+      "contentType": "text/plain"
+    },
+    "healthcheck": {
+      "href": "http://madmartigan.local:4440/api/25/metrics/healthcheck",
+      "contentType": "application/json"
+    },
+    "ping": {
+      "href": "http://madmartigan.local:4440/api/25/metrics/ping",
       "contentType": "text/plain"
     }
   }
@@ -1157,6 +1179,450 @@ The `memory` section describes memory usage in bytes:
 `threads/active`
 
 :   Number of active Threads in the JVM
+
+### Metrics Links
+
+Several Metrics API endpoints are linked in the System Info response.
+
+See [GET /api/V/metrics][].
+
+## List Metrics
+
+List enabled Metrics endpoints. 
+
+*Configuration*
+
+The Metrics endpoints are enabled by default, but can be disabled based on application configuration.  See: [Administration > Configuration File Reference](../administration/configuration/configuration-file-reference.html#metrics-api-endpoints).
+
+*ACL Requirement*
+
+They require `read` access to the `system` application scope resource.  See: [Access Control Policy > Application Scope](../administration/security/access-control-policy.html#application-scope-resources-and-actions).
+
+**Request:**
+
+    GET /api/25/metrics
+
+**Response:**
+
+Links to enabled Metrics endpoints:
+
+`Content-Type: application/json`:
+
+~~~ {.json}
+{
+  "_links": {
+    "metrics": {
+      "href": "http://ecto1.local:4440/api/25/metrics/metrics"
+    },
+    "ping": {
+      "href": "http://ecto1.local:4440/api/25/metrics/ping"
+    },
+    "threads": {
+      "href": "http://ecto1.local:4440/api/25/metrics/threads"
+    },
+    "healthcheck": {
+      "href": "http://ecto1.local:4440/api/25/metrics/healthcheck"
+    }
+  }
+}
+~~~
+
+### Metrics Data
+
+Return the metrics data.
+
+**Request:**
+
+    GET /api/25/metrics/metrics
+
+**Response:**
+
+`Content-Type: application/json`:
+
+~~~ {.json}
+{
+  "version": "3.1.3",
+  "gauges": {
+    "dataSource.connection.pingTime": {
+      "value": 1
+    },
+    "rundeck.scheduler.quartz.runningExecutions": {
+      "value": 0
+    },
+    "rundeck.services.AuthorizationService.sourceCache.evictionCount": {
+      "value": 0
+    },
+    "rundeck.services.AuthorizationService.sourceCache.hitCount": {
+      "value": 9
+    },
+    "rundeck.services.AuthorizationService.sourceCache.hitRate": {
+      "value": 0.9
+    },
+    "rundeck.services.AuthorizationService.sourceCache.loadExceptionCount": {
+      "value": 0
+    },
+    "rundeck.services.AuthorizationService.sourceCache.missCount": {
+      "value": 1
+    },
+    "rundeck.services.NodeService.nodeCache.evictionCount": {
+      "value": 0
+    },
+    "rundeck.services.NodeService.nodeCache.hitCount": {
+      "value": 11
+    },
+    "rundeck.services.NodeService.nodeCache.hitRate": {
+      "value": 0.9166666666666666
+    },
+    "rundeck.services.NodeService.nodeCache.loadExceptionCount": {
+      "value": 0
+    },
+    "rundeck.services.NodeService.nodeCache.missCount": {
+      "value": 1
+    },
+    "rundeck.services.ProjectManagerService.fileCache.evictionCount": {
+      "value": 0
+    },
+    "rundeck.services.ProjectManagerService.fileCache.hitCount": {
+      "value": 0
+    },
+    "rundeck.services.ProjectManagerService.fileCache.hitRate": {
+      "value": 0
+    },
+    "rundeck.services.ProjectManagerService.fileCache.loadExceptionCount": {
+      "value": 0
+    },
+    "rundeck.services.ProjectManagerService.fileCache.missCount": {
+      "value": 6
+    },
+    "rundeck.services.ProjectManagerService.projectCache.evictionCount": {
+      "value": 0
+    },
+    "rundeck.services.ProjectManagerService.projectCache.hitCount": {
+      "value": 530
+    },
+    "rundeck.services.ProjectManagerService.projectCache.hitRate": {
+      "value": 0.9888059701492538
+    },
+    "rundeck.services.ProjectManagerService.projectCache.loadExceptionCount": {
+      "value": 0
+    },
+    "rundeck.services.ProjectManagerService.projectCache.missCount": {
+      "value": 6
+    },
+    "rundeck.services.ProjectManagerService.sourceCache.evictionCount": {
+      "value": 0
+    },
+    "rundeck.services.ProjectManagerService.sourceCache.hitCount": {
+      "value": 0
+    },
+    "rundeck.services.ProjectManagerService.sourceCache.hitRate": {
+      "value": 1
+    },
+    "rundeck.services.ProjectManagerService.sourceCache.loadExceptionCount": {
+      "value": 0
+    },
+    "rundeck.services.ProjectManagerService.sourceCache.missCount": {
+      "value": 0
+    }
+  },
+  "counters": {
+    "rundeck.scheduler.quartz.scheduledJobs": {
+      "count": 6
+    }
+  },
+  "histograms": {},
+  "meters": {
+    "rundeck.services.AuthorizationService.systemAuthorization.evaluateMeter": {
+      "count": 4,
+      "m15_rate": 0.00314076610191179,
+      "m1_rate": 0.023875601445527157,
+      "m5_rate": 0.008400048550624787,
+      "mean_rate": 0.026528128813374685,
+      "units": "events/second"
+    },
+    "rundeck.services.AuthorizationService.systemAuthorization.evaluateSetMeter": {
+      "count": 12,
+      "m15_rate": 0.6892782713428792,
+      "m1_rate": 0.1267495745218626,
+      "m5_rate": 0.5153224625291539,
+      "mean_rate": 0.07958452971073966,
+      "units": "events/second"
+    },
+    "rundeck.services.ExecutionService.executionJobStartMeter": {
+      "count": 6,
+      "m15_rate": 0.3446391356714396,
+      "m1_rate": 0.0633747872609313,
+      "m5_rate": 0.25766123126457696,
+      "mean_rate": 0.039926086575635206,
+      "units": "events/second"
+    },
+    "rundeck.services.ExecutionService.executionStartMeter": {
+      "count": 6,
+      "m15_rate": 0.3446391356714396,
+      "m1_rate": 0.0633747872609313,
+      "m5_rate": 0.25766123126457696,
+      "mean_rate": 0.039893916635731115,
+      "units": "events/second"
+    },
+    "rundeck.services.ExecutionService.executionSuccessMeter": {
+      "count": 6,
+      "m15_rate": 0.3465591259042392,
+      "m1_rate": 0.06888231291145262,
+      "m5_rate": 0.2619915710449402,
+      "mean_rate": 0.04041785210623091,
+      "units": "events/second"
+    }
+  },
+  "timers": {
+    "rundeck.api.requests.requestTimer": {
+      "count": 3,
+      "max": 0.19907502000000002,
+      "mean": 0.108295424,
+      "min": 0.014703712,
+      "p50": 0.11110754,
+      "p75": 0.19907502000000002,
+      "p95": 0.19907502000000002,
+      "p98": 0.19907502000000002,
+      "p99": 0.19907502000000002,
+      "p999": 0.19907502000000002,
+      "stddev": 0.09221781715431031,
+      "m15_rate": 0.00314076610191179,
+      "m1_rate": 0.023875601445527157,
+      "m5_rate": 0.008400048550624787,
+      "mean_rate": 0.0326409948656659,
+      "duration_units": "seconds",
+      "rate_units": "calls/second"
+    },
+    "rundeck.quartzjobs.ExecutionJob.executionTimer": {
+      "count": 6,
+      "max": 2.785892703,
+      "mean": 0.6245617408333334,
+      "min": 0.156943942,
+      "p50": 0.2009052745,
+      "p75": 0.8750149552500001,
+      "p95": 2.785892703,
+      "p98": 2.785892703,
+      "p99": 2.785892703,
+      "p999": 2.785892703,
+      "stddev": 1.0593646577233937,
+      "m15_rate": 0.17537122122178622,
+      "m1_rate": 0.049487919338571586,
+      "m5_rate": 0.13657375399032906,
+      "mean_rate": 0.039744906881515114,
+      "duration_units": "seconds",
+      "rate_units": "calls/second"
+    },
+    "rundeck.services.AuthorizationService.getSystemAuthorization": {
+      "count": 10,
+      "max": 0.11291242300000001,
+      "mean": 0.0168355508,
+      "min": 0.002907568,
+      "p50": 0.003709257,
+      "p75": 0.0103103045,
+      "p95": 0.11291242300000001,
+      "p98": 0.11291242300000001,
+      "p99": 0.11291242300000001,
+      "p999": 0.11291242300000001,
+      "stddev": 0.0345229796390412,
+      "m15_rate": 0.3477799017733514,
+      "m1_rate": 0.08725038870645847,
+      "m5_rate": 0.2660612798152018,
+      "mean_rate": 0.06628145573313499,
+      "duration_units": "seconds",
+      "rate_units": "calls/second"
+    },
+    "rundeck.services.AuthorizationService.systemAuthorization.evaluateSetTimer": {
+      "count": 12,
+      "max": 0.064324482,
+      "mean": 0.0064664489166666676,
+      "min": 0.0006582410000000001,
+      "p50": 0.001099722,
+      "p75": 0.0018917270000000002,
+      "p95": 0.064324482,
+      "p98": 0.064324482,
+      "p99": 0.064324482,
+      "p999": 0.064324482,
+      "stddev": 0.01822988971428955,
+      "m15_rate": 0.6892782713428792,
+      "m1_rate": 0.1267495745218626,
+      "m5_rate": 0.5153224625291539,
+      "mean_rate": 0.07958252469001104,
+      "duration_units": "seconds",
+      "rate_units": "calls/second"
+    },
+    "rundeck.services.AuthorizationService.systemAuthorization.evaluateTimer": {
+      "count": 4,
+      "max": 0.002291996,
+      "mean": 0.00132195675,
+      "min": 0.000826429,
+      "p50": 0.001084701,
+      "p75": 0.00204558875,
+      "p95": 0.002291996,
+      "p98": 0.002291996,
+      "p99": 0.002291996,
+      "p999": 0.002291996,
+      "stddev": 0.0006824895873415091,
+      "m15_rate": 0.00314076610191179,
+      "m1_rate": 0.023875601445527157,
+      "m5_rate": 0.008400048550624787,
+      "mean_rate": 0.0265274537259422,
+      "duration_units": "seconds",
+      "rate_units": "calls/second"
+    },
+    "rundeck.services.FrameworkService.authorizeApplicationResource": {
+      "count": 4,
+      "max": 0.016328387,
+      "mean": 0.004882139000000001,
+      "min": 0.000912978,
+      "p50": 0.0011435955,
+      "p75": 0.012589778000000001,
+      "p95": 0.016328387,
+      "p98": 0.016328387,
+      "p99": 0.016328387,
+      "p999": 0.016328387,
+      "stddev": 0.007633923731977984,
+      "m15_rate": 0.3711760292127013,
+      "m1_rate": 0.14055240663997448,
+      "m5_rate": 0.32006153577038915,
+      "mean_rate": 0.05025453574530793,
+      "duration_units": "seconds",
+      "rate_units": "calls/second"
+    },
+    "rundeck.services.FrameworkService.filterNodeSet": {
+      "count": 12,
+      "max": 0.36586338300000004,
+      "mean": 0.03359687208333334,
+      "min": 0.000560871,
+      "p50": 0.0010942600000000001,
+      "p75": 0.00812147625,
+      "p95": 0.36586338300000004,
+      "p98": 0.36586338300000004,
+      "p99": 0.36586338300000004,
+      "p999": 0.36586338300000004,
+      "stddev": 0.10477591919675994,
+      "m15_rate": 0.6892782713428792,
+      "m1_rate": 0.1267495745218626,
+      "m5_rate": 0.5153224625291539,
+      "mean_rate": 0.07994704576896616,
+      "duration_units": "seconds",
+      "rate_units": "calls/second"
+    },
+    "rundeck.services.NodeService.project.bingo.loadNodes": {
+      "count": 3,
+      "max": 0.29763018,
+      "mean": 0.13177108533333334,
+      "min": 0.046235376,
+      "p50": 0.051447700000000006,
+      "p75": 0.29763018,
+      "p95": 0.29763018,
+      "p98": 0.29763018,
+      "p99": 0.29763018,
+      "p999": 0.29763018,
+      "stddev": 0.14366183050172013,
+      "m15_rate": 0.17327375280520316,
+      "m1_rate": 0.033814570567886885,
+      "m5_rate": 0.1309493035278718,
+      "mean_rate": 0.020034416530604948,
+      "duration_units": "seconds",
+      "rate_units": "calls/second"
+    },
+    "rundeck.web.requests.requestTimer": {
+      "count": 5,
+      "max": 0.19833273,
+      "mean": 0.0921360348,
+      "min": 0.008643088,
+      "p50": 0.106350626,
+      "p75": 0.16599702400000002,
+      "p95": 0.19833273,
+      "p98": 0.19833273,
+      "p99": 0.19833273,
+      "p999": 0.19833273,
+      "stddev": 0.08113047507342931,
+      "m15_rate": 0.33800395660416016,
+      "m1_rate": 0.05334571472303017,
+      "m5_rate": 0.24315644263411573,
+      "mean_rate": 0.02965980629218819,
+      "duration_units": "seconds",
+      "rate_units": "calls/second"
+    }
+  }
+}
+~~~
+
+### Metrics Healthcheck
+
+Returns results of some health checks.
+
+**Request:**
+
+    GET /api/25/metrics
+
+**Response:**
+
+`Content-Type: application/json`:
+
+~~~ {.json}
+{
+  "dataSource.connection.time": {
+    "healthy": true,
+    "message": "Datasource connection healthy with timeout 5 seconds"
+  },
+  "quartz.scheduler.threadPool": {
+    "healthy": true
+  }
+}
+~~~
+
+
+### Metrics Threads
+
+Returns a dump of running JVM Threads.
+
+**Request:**
+
+    GET /api/25/metrics/threads
+
+**Response:**
+
+`Content-Type: text/plain`:
+
+~~~
+Reference Handler id=2 state=WAITING
+    - waiting on <0x07413c0c> (a java.lang.ref.Reference$Lock)
+    - locked <0x07413c0c> (a java.lang.ref.Reference$Lock)
+    at java.lang.Object.wait(Native Method)
+    at java.lang.Object.wait(Object.java:502)
+    at java.lang.ref.Reference.tryHandlePending(Reference.java:191)
+    at java.lang.ref.Reference$ReferenceHandler.run(Reference.java:153)
+
+Finalizer id=3 state=WAITING
+    - waiting on <0x280b74e0> (a java.lang.ref.ReferenceQueue$Lock)
+    - locked <0x280b74e0> (a java.lang.ref.ReferenceQueue$Lock)
+    at java.lang.Object.wait(Native Method)
+    at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:144)
+    at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:165)
+    at java.lang.ref.Finalizer$FinalizerThread.run(Finalizer.java:216)
+
+Signal Dispatcher id=4 state=RUNNABLE
+
+...
+~~~
+
+### Metrics Ping
+
+Returns a simple text response.
+
+**Request:**
+
+    GET /api/25/metrics/ping
+
+**Response:**
+
+`Content-Type: text/plain`:
+
+~~~
+pong
+~~~
 
 ## User Profile
 
@@ -6496,6 +6962,26 @@ Same response as [Setup SCM Plugin for a Project](#setup-scm-plugin-for-a-projec
 
 * `POST` [Bulk Toggle Job Schedules](#bulk-toggle-job-schedules)
 
+[/api/V/metrics][]
+
+* `GET` [List Metrics](#list-metrics)
+
+[/api/V/metrics/healthcheck][]
+
+* `GET` [Metrics Healthcheck](#metrics-healthcheck)
+
+[/api/V/metrics/metrics][]
+
+* `GET` [Metrics Data](#metrics-data)
+
+[/api/V/metrics/ping][]
+
+* `GET` [Metrics Ping](#metrics-ping)
+
+[/api/V/metrics/threads][]
+
+* `GET` [Metrics Threads](#metrics-threads)
+
 [/api/V/project/[PROJECT]][]
 
 * `GET` [Getting Project Info](#getting-project-info)
@@ -6804,6 +7290,17 @@ Same response as [Setup SCM Plugin for a Project](#setup-scm-plugin-for-a-projec
 [/api/V/jobs/file/[ID]]:#get-info-about-an-uploaded-file
 [/api/V/jobs/schedule/enable]:#bulk-toggle-job-schedules
 [/api/V/jobs/schedule/disable]:#bulk-toggle-job-schedules
+
+ 
+[/api/V/metrics]:#list-metrics
+
+[/api/V/metrics/healthcheck]:#metrics-healthcheck
+
+[/api/V/metrics/metrics]:#metrics-data
+
+[/api/V/metrics/ping]:#metrics-ping
+
+[/api/V/metrics/threads]:#metrics-threads
 
 [/api/V/project/[PROJECT]]:#getting-project-info
 [DELETE /api/V/project/[PROJECT]]:#project-deletion
