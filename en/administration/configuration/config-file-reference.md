@@ -299,22 +299,45 @@ Rundeck now attempts to retry the update to correctly register the final state o
 
 Delay is in milliseconds. If a max is set to `-1`, then retries will happen indefinitely.
 
-### Metrics servlets
+[Resource Model Sources]: ../administration/managing-node-sources.html
 
-Rundeck includes the [Metrics](http://metrics.dropwizard.io/3.0.2/) servlets.  You can selectively disable these by setting these config values:
+### Metrics Capturing
 
-`rundeck.web.metrics.servlets.[name].enabled=true/false`
+Rundeck captures metrics using the [Metrics](http://metrics.dropwizard.io/3.0.2/) library.
 
-Servlet names are:
+You can disable all metrics capturing with:
+
+    rundeck.metrics.enabled=true/false
+
+Additional configuration for metrics:
+
+    # capture metrics for requests via a filter
+    rundeck.metrics.requestFilterEnabled=true/false
+
+    # use JMX 
+    rundeck.metrics.jmxEnabled=true/false
+
+
+#### Metrics API Endpoints
+
+Rundeck exposes Metrics data via API endpoints, which are enabled by default.
+
+You can disable all metrics API endpoints with:
+
+    rundeck.metrics.api.enabled=true/false
+
+You can also selectively disable each endpoing by setting these config values:
+
+    rundeck.metrics.api.[name].enabled=true/false
+
+Metrics names are:
 
 * `metrics`
 * `threads`
 * `ping`
 * `healthcheck`
 
-All of the servlets are enabled by default.
-
-[Resource Model Sources]: ../administration/managing-node-sources.html
+See: [API > List Metrics](../api/index.html#list-metrics).
 
 ### Pagination defaults
 
