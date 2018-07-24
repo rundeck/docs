@@ -30,7 +30,7 @@ Built and tested for the enterprise, Rundeck Pro includes exclusive features (in
 [GitHub]: https://github.com/rundeck/rundeck
 [Apache Software License]: http://www.apache.org/licenses/LICENSE-2.0.html
 
-### Who makes Rundeck?
+## Who makes Rundeck?
 Rundeck is developed by Rundeck, Inc. and the Rundeck community. All new users are welcomed to participate in the project and contribute. Please vote on feature ideas on the [Rundeck Trello Board].
 
 [Rundeck, Inc.]: https://www.rundeck.com/
