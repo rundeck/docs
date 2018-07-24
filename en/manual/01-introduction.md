@@ -1,6 +1,6 @@
 % Introduction
-% Alex Honor; Greg Schueler
-% November 20, 2010
+% Damon Edwards
+% July 23, 2018
 
 ## What is this guide about?
 
@@ -9,73 +9,47 @@ you quickly become productive with the Rundeck server and tools.
 
 ## What is Rundeck?
 
-Rundeck is open source software that helps you automate routine operational
-procedures in data center or cloud environments. Rundeck provides a number 
-of features that will alleviate time-consuming grunt work and make it easy for
-you to scale up your automation efforts and create self service for others. 
-Teams can collaborate to share how processes are automated while
-others are given trust to view operational activity or execute tasks.
+Rundeck is an operations management platform that helps you connect your people with the processes and tools they need to get their job done. Rundeck will help alleviate the time-consuming grunt work and toil that currently consumes too much of your team's time. With Rundeck you will get more done, respond quicker to incidents, and spend less time in ticket queues.
 
-Rundeck allows you to run tasks on any number of nodes from a web-based 
-or command-line interface. Rundeck also includes other features that make 
-it easy to scale up your automation efforts including: access control, workflow 
-building, scheduling, logging, and integration with external sources for node and 
-option data.
+The most common usage of Rundeck is to create standard operating procedures from any of your existing tools or scripts. Trigger Rundeck jobs from the Web GUI, API, CLI, or by schedule. Rundeck's access control features make it easy to safely delegate control of tasks to those traditionally outside of operations.  
+
+Rundeck was designed to accept the reality that heterogeneous infrastructure and tooling are a fact of life in any sizable organization. That is why Rundeck doesn't make you replace the scripts, commands, or tools you use today. You use Rundeck to execute workflows across your existing automation (e.g., Ansible, Puppet, Chef, Jenkins, Docker, Kubernetes, legacy tools, and all of your custom scripts/APIs) or quickly automate previously manual procedures. With Rundeck you can reuse the automation skills you already have and add new ones as needed.
+
+Out of the box, Rundeck gives you capabilities that would be expensive to develop and maintain in-house: workflow control,  scheduling, error-handling, logging, access control, option passing, log filtering, web GUI, REST API (with CLI tools)  and integration with external sources for authentication, resource model, and option data.
+
+## Is Rundeck free?
+#### Rundeck
+At its core, Rundeck is free open source software licensed under the [Apache Software License] (v2.0), and you can participate in the project on [GitHub].  For those who write and run Rundeck jobs at small-scale usage (e.g., limited use or within a team), the open-source Rundeck delivers you the features you need, for free, forever. 
+
+#### Rundeck Pro
+The focus of [Rundeck Pro], our commercial offering, is on making Rundeck production-ready and enterprise-scale.  Rundeck Pro, built on the open source Rundeck, is the bundle of software and services you need to run Rundeck as an enterprise-class service. 
+
+Built and tested for the enterprise, Rundeck Pro includes exclusive features (including clustering/HA, advanced workflow, enhanced ACL management, enhanced dashboards/visualization) and Rundeck Pro exclusive plugins. Professional support and on-boarding services are also part of the Rundeck Pro subscription bundle.
+
+[Rundeck Pro]: https://www.rundeck.com/rundeck-pro
+[GitHub]: https://github.com/rundeck/rundeck
+[Apache Software License]: http://www.apache.org/licenses/LICENSE-2.0.html
+
+### Who makes Rundeck?
+Rundeck is developed by Rundeck, Inc. and the Rundeck community. All new users are welcomed to participate in the project and contribute. Please vote on feature ideas on the [Rundeck Trello Board].
+
+[Rundeck, Inc.]: https://www.rundeck.com/
+[Rundeck Trello Board]: https://trello.com/b/sn3g9nOr/rundeck-development
+
+## Rundeck feature highlights
+
+* Distributed command execution
+* Workflow (including option passing, conditionals, error handling, and  multiple workflow strategies)
+* Pluggable execution system (SSH and WinRM by default; Powershell available)
+* Pluggable resource model (get details of your infrastructure from external systems)
+* On-demand (Web GUI, API or CLI) or scheduled job execution
+* Secure Key store for passwords and keys 
+* Role-based access control policy with support for LDAP/ActiveDirectory/SSO
+* Access control policy editing/management tools
+* History and auditing logs
+* Use any scripting language
 
 Already itching to install it? Jump ahead to
 [Installing Rundeck](getting-started.html#download-and-installation).
 
-
-### Who makes Rundeck?
-
-Rundeck is developed on GitHub as a project called
-[rundeck](https://github.com/rundeck/rundeck)
-by [SimplifyOps](http://simplifyops.com) and the Rundeck community.
-All new users are welcomed to participate in the project and contribute.
-Please vote on feature ideas on the [Rundeck Trello Board](https://trello.com/b/sn3g9nOr/rundeck-development).
-
-Rundeck is free software and is public under the [Apache Software License].
-
-[Apache Software License]: http://www.apache.org/licenses/LICENSE-2.0.html
-
-
-
-## Rundeck features
-
-* Web API
-* distributed command execution
-* pluggable execution system (SSH by default)
-* multi-step workflows 
-* job execution with on demand or scheduled runs
-* graphical web console for command and job execution
-* role-based access control policy with support for LDAP/ActiveDirectory
-* history and auditing logs
-* open integration to external host inventory tools
-* command line interface tools
-
-
-## Rundeck in context
-
-Rundeck is meant to complement the tools you already use 
-(including frameworks like Puppet, Chef, and Jenkins, Cloud, VM) and is geared
-towards helping you automate actions across them. If you currently
-manage your servers by running commands from the terminal or through
-scripts, Rundeck is a more user friendly
-alternative. Instead of managing node lists in a spreadsheet or wiki
-page and then having to transcribe the list to where you execute commands,
-Rundeck acts as a command and control portal that lets you execute
-commands using features like node filtering and parallel execution.
-
-Rundeck also works well for managing virtual servers, be they from a
-cloud provider or from locally hosted virtualization software. The
-node abstraction enabled by the Rundeck command dispatcher 
-helps you cope with managing dynamic environments.
-
-Many automation tasks cross the tool boundaries. For example,
-deploying software or maintaining an application often involves
-using tools up and down the management tool chain. Rundeck has a simple
-to use interface to create multi-step workflows that might call a
-package manager, configuration management tool, system utilities, or your
-own scripts. Rundeck is really meant to help automate tasks across
-tools and  in return enable a push button interface you can hand off to others.
 
