@@ -4,9 +4,9 @@ This is a simple guide for setting up Mysql for use with Rundeck.
 
 ## Install Mysql
 
-You can "yum install" or "apt-get install" the server, or you can download rpms manually if you like. See [mysql linux installation](https://dev.mysql.com/doc/refman/5.5/en/linux-installation-native.html)
+You can "yum install" or "apt-get install" the server, you can find installation guides for other OS [here](https://dev.mysql.com/doc/refman/5.7/en/installing.html)
 
-After install, run the [mysql_secure_installation script](https://dev.mysql.com/doc/refman/5.5/en/mysql-secure-installation.html). This will let prompt you to set the root password for mysql, as well as disable anonymous access.
+After install, run the [mysql_secure_installation script](https://dev.mysql.com/doc/refman/5.7/en/mysql-secure-installation.html). This will let prompt you to set the root password for mysql, as well as disable anonymous access.
 
 ## Setup Rundeck Database
 
@@ -47,20 +47,14 @@ You can verify you can see the "rundeck" database with:
 
 ## Configure Rundeck
 
-Now you need to configure Rundeck to connect to this DB as described earlier in this document: [Customize the Datasource](#customize-the-datasource).
+Now you need to configure Rundeck to connect to this DB.
 
 Update your `rundeck-config.properties` and configure the datasource:
 
-    dataSource.url = jdbc:mysql://myserver/rundeck?autoReconnect=true
+    dataSource.url = jdbc:mysql://myserver/rundeck?autoReconnect=true&useSSL=false
     dataSource.username=rundeckuser
     dataSource.password=rundeckpassword
-
-With recent Rundeck version, MySQL connector is already there.
-You can check if present in this path: `$RDECK_BASE/exp/webapp/WEB-INF/lib/`
-
-Else:
-* [Download the mysql connector jar](https://dev.mysql.com/downloads/connector/j/).
-* Copy the mysql-connector-java-5.x.x-bin.jar to `$RDECK_BASE/server/lib` (for launcher install) or `$WEBAPPS/rundeck/WEB-INF/lib` (for Tomcat).
+    dataSource.driverClassName=com.mysql.jdbc.Driver
 
 Finally you can start rundeck.  If you see a startup error about database access, make sure that the hostname that the Mysql server sees from the client is the same one you granted access to.
 
@@ -114,8 +108,8 @@ Perform this command to log in as root:
 
 Then execute this sql:
 
-    > create database rundeckdb
-    > grant ALL on rundeckdb.* to ‘rundeckuser’@‘localhost’ identified by ‘rundeckpassword’
+    > create database rundeck
+    > grant ALL on rundeck.* to ‘rundeckuser’@‘localhost’ identified by ‘rundeckpassword’
 
 
 ## Configure rundeck-config.properties
@@ -130,7 +124,7 @@ Modify the rundeck config file.
 
 Replace the `dataSource.url` entry with these lines:
 
-    dataSource.url=jdbc:mysql://mysqlhost/rundeckdb?autoReconnect=true
+    dataSource.url=jdbc:mysql://mysqlhost/rundeck?autoReconnect=true&useSSL=false
     dataSource.username=rundeckuser
     dataSource.password=rundeckpassword
     dataSource.driverClassName=com.mysql.jdbc.Driver
@@ -173,7 +167,7 @@ Unix:
 
     sudo service rundeckd start
 
-View the "service.log" or "rundeck.log" file for any error messages.
+View the "/var/log/rundeck/service.log" file for any error messages.
 
 * Project definitions/configs will be imported to DB automatically
 * Resources.xml remain in the same location
