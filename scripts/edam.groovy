@@ -589,6 +589,9 @@ def parseArgs(pargs){
                 case '--no-toc':
                     flags.doToc=false
                     break
+                case '--do-toc':
+                    flags.doToc=true
+                    break
                 case '--no-nav':
                     flags.doNav=false
                     break

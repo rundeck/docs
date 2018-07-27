@@ -51,12 +51,23 @@ Now you need to configure Rundeck to connect to this DB.
 
 Update your `rundeck-config.properties` and configure the datasource:
 
+
+* RPM/Debian location: `/etc/rundeck/rundeck-config.properties`
+* Launcher location: `$RDECK_BASE/server/config/rundeck-config.properties`
+
+Contents:
+
     dataSource.url = jdbc:mysql://myserver/rundeck?autoReconnect=true&useSSL=false
     dataSource.username=rundeckuser
     dataSource.password=rundeckpassword
     dataSource.driverClassName=com.mysql.jdbc.Driver
 
 Finally you can start rundeck.  If you see a startup error about database access, make sure that the hostname that the Mysql server sees from the client is the same one you granted access to.
+
+
+NB: `autoReconnect=true` will fix a common problem where the Rundeck server's connection to Mysql is dropped after a period of inactivity, resulting in an error message: "Message: Can not read response from server. Expected to read 4 bytes, read 0 bytes before connection was unexpectedly lost."
+
+See more about [configuring the Mysql JDBC Connector/J URL](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-reference-configuration-properties.html).
 
 # Mysql migration guide
 
@@ -117,18 +128,7 @@ Then execute this sql:
 Set the datasource URL to point to your Mysql host, with appropriate database name,
 username and password.
 
-Modify the rundeck config file.
-
-* RPM/Debian location: `/etc/rundeck/rundeck-config.properties`
-* Launcher location: `$RDECK_BASE/server/config/rundeck-config.properties`
-
-Replace the `dataSource.url` entry with these lines:
-
-    dataSource.url=jdbc:mysql://mysqlhost/rundeck?autoReconnect=true&useSSL=false
-    dataSource.username=rundeckuser
-    dataSource.password=rundeckpassword
-    dataSource.driverClassName=com.mysql.jdbc.Driver
-
+See [Configure Rundeck](#configure-rundeck) above.
 
 ## Configure project config in DB
 

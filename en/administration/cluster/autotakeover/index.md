@@ -3,7 +3,7 @@
 To support Autotakeover, you must first:
 
 * [Configure a loadbalancer](../loadbalancer/index.html)
-* [Configure an external database](../../configuration/storage/index.html)
+* [Configure an external database](../../configuration/database/index.html)
 
 ### Configure Autotakeover
 
