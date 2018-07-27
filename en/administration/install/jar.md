@@ -1,8 +1,8 @@
-% Installing as an executable .jar
+% Installing as an executable war
 
-Use the launcher as an alternative to a system package:
+Use the executable war as an alternative to a system package:
 
-1. Download the launcher jar file.
+1. Download the executable war file.
 1. Define RDECK_BASE environment variable to the location of the install
 
     ~~~~~~~ {.bash}
@@ -15,23 +15,23 @@ Use the launcher as an alternative to a system package:
     mkdir -p $RDECK_BASE 
     ~~~~~~~
 
-1. Copy the launcher jar to the installation directory.
+1. Copy the executable war to the installation directory.
 
     ~~~~~~~ {.bash}
-    cp rundeck-launcher-2.0.0.jar $RDECK_BASE
+    cp rundeck-3.0.0.war $RDECK_BASE
     ~~~~~~~
 
 1. Change directory and run the jar.
 
     ~~~~~~~ {.bash}
     cd $RDECK_BASE    
-    java -XX:MaxPermSize=256m -Xmx1024m -jar rundeck-launcher-2.0.0.jar
+    java -Xmx4g -jar rundeck-3.0.0.war
     ~~~~~~~
 
 1. Wait for the Started message.
 
     ~~~~~~~
-    2010-11-19 13:35:51.127::INFO:  Started SocketConnector@0.0.0.0:4440
+    Grails application running at http://ecto1.local:4440 in environment: production
     ~~~~~~~
 
 1. Update your shell environment 
@@ -62,14 +62,13 @@ Next, learn how to [create your first Rundeck Pro project](../../manual/getting-
 
 ### Updating
 
-When you need to update rundeck and you can not find the relevant section on the docs you are probably on a quite recent version. This worked successfully in all the steps from 2.6.5 to 2.6.10.
+When you need to update rundeck and you can not find the relevant section on the docs you are probably on a quite recent version. 
 
 * Stop rundeck
-* Remove `%RDECK_BASE%\server\exp` and `%RDECK_BASE%\server\lib`, making a backup of any file you modified under those directories (e.g. `%RDECK_BASE%\server\exp\webapp\WEB-INF\classes\log4j.properties`, `%RDECK_BASE%\server\exp\webapp\WEB-INF\web.xml`, etc)
-* download the launcher
+* download the new war
 * open a prompt, optionally setting RDECK_BASE and launch --installonly
 
-    java -jar rundeck-launcher-2.6.10.jar --installonly
+        java -jar rundeck-3.0.x.war --installonly
 
 * copy over your customizations
 * don't forget, e.g., sqljdbc41.jar in `%RDECK_BASE%\server\lib`
@@ -77,10 +76,10 @@ When you need to update rundeck and you can not find the relevant section on the
 
 ### Launcher Options
 
-The launcher jar can take a number of options to specify how the server should start. If you execute with a "-h" you will see the usage information:
+The executable war can take a number of options to specify how the server should start. If you execute with a "-h" you will see the usage information:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {.bash}
-java -XX:MaxPermSize=256m -Xmx1024m -jar rundeck-launcher-2.1.0.jar -h
+java -Xmx4g -jar rundeck-3.0.0.jar -h
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
 
     usage: java [JAVA_OPTIONS] -jar rundeck-launcher.jar  [-c PATH] [-d]
@@ -105,7 +104,7 @@ java -XX:MaxPermSize=256m -Xmx1024m -jar rundeck-launcher-2.1.0.jar -h
     
 These options can be used to customize the directories used by the launcher. 
 By default all the directories are organized by convention within the current
-working directory where the launcher jar is located.
+working directory where the executable war is located.
 
 ### System Properties
 
@@ -119,7 +118,7 @@ to the `java` command:
 * `server.http.host` Address/hostname to listen on, default is all addresses "0.0.0.0"
 * `server.hostname` Hostname to use for the server, default is the system hostname
 * `server.web.context` Web context path to use, such as "/rundeck". Default is "/".
-* `rdeck.base` Rundeck Basedir to use, default is the directory containing the launcher jar
+* `rdeck.base` Rundeck Basedir to use, default is the directory containing the executable war
 * `server.datastore.path` Path to server datastore dir
 * `default.user.name`  Username for default user account to create
 * `default.user.password` Password for default user account to create
