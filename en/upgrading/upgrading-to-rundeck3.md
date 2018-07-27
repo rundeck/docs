@@ -8,50 +8,51 @@ The "launcher jar" for Rundeck 2 is gone. However, the .war file now operates th
 
 To upgrade to Rundeck 3 using launcher use the following steps:
 
-* Stop Rundeck Service, eg: `.$RDECK_BASE/server/sbin/rundeckd stop`
+**NOTE: replace `$RDECK_BASE` below with the real path.**
+
+* Stop Rundeck Service, eg: `$RDECK_BASE/server/sbin/rundeckd stop`
 
 * In case you have customs plugins on `libext` folder, backup them. For example, you can move the full `libext`:
 
-```
-mv $RDECK_BASE/libext $RDECK_BASE/libext.2-11
-```
+	```
+	mv $RDECK_BASE/libext $RDECK_BASE/libext.2-11
+	```
 
 * Remove previous "source" folders: 
 
-```
-rm -rf server/exp/ server/lib/ server/sbin
-```
+	```
+	rm -rf server/exp/ server/lib/ server/sbin
+	```
 
 * Copy the new war file to `$RDECK_BASE` and install it: 
 
-```
-java -jar rundeck-3.X.war --installonly
-```
+	```
+	java -jar rundeck-3.X.war --installonly
+	```
 
 * Add the following attribute to `$RDECK_BASE/server/config/rundeck-config.properties`
 
-```
-rundeck.log4j.config.file=$RDECK_BASE/server/config/log4j.properties
-```
-*replace `$RDECK_BASE` with the real path.
+	```
+	rundeck.log4j.config.file=$RDECK_BASE/server/config/log4j.properties
+	```
 
-* Copy the "custom" plugins back to `.$RDECK_BASE/libext` folder
+* Copy the "custom" plugins back to `$RDECK_BASE/libext` folder
 
-* Start rundeck 3: `.$RDECK_BASE/server/sbin/rundeckd start`
+* Start rundeck 3: `$RDECK_BASE/server/sbin/rundeckd start`
 
 
 ### Rundeck DEB Package 
 
 The upgrade process can be done using the `.deb` file or using the command `apt-get`:
 
-* using deb package
+**If using deb package**
 
 ```
 sudo dpkg -i rundeck-3.0.X.deb
 ```
 
 
-* from apt-get
+**If using apt-get**
 
 ```
 sudo apt-get upgrade rundeck
@@ -97,9 +98,9 @@ A restart is necessary after the merge of `rundeck-config.properties`
 
 ### Rundeck RPM Package
 
-The upgrade process can be done using the `.rmp` file or using the command `yum`:
+The upgrade process can be done using the `.rpm` file or using the command `yum`:
 
-* using rpm package
+#### using rpm files
 
 ```
 sh-4.2# rpm -U rundeck-3.x.rpm rundeck-config-3.X.rpm
@@ -110,7 +111,7 @@ rundeck.server.uuid = XXXXXXXXXXXXXXX
 
 ```
 
-* Using yum
+#### Using yum
 
 ```
 sh-4.2#  yum upgrade rundeck rundeck-config
