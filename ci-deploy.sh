@@ -63,24 +63,23 @@ gen_docs_publish_repo(){
 
 	cd $WORKSPACE/rundeck-docs
 
-	if [ "$isSnapshot" == "yes" ] ; then
-		#/ try to fetch existing snapshot branch
+	#/ try to fetch existing snapshot branch
+	set +e
+	git fetch origin docs$RundeckVersion
+	local err=$?
+	set -e
+	echo "remote git fetch result: $err"
+	if [  $err == 0 ] ; then
+		echo "local checkout"
 		set +e
-		git fetch origin docs$RundeckVersion
-		local err=$?
+		git branch -l | grep -q docs$RundeckVersion
+		err=$?
 		set -e
-		echo "remote git fetch result: $err"
-		if [  $err == 0 ] ; then
-			echo "local checkout"
-			set +e
-			git branch -l | grep -q docs$RundeckVersion
-			err=$?
-			set -e
-			echo "local branch already exists? $err"
-			git checkout docs$RundeckVersion
-			skip=--skip
-		fi
+		echo "local branch already exists? $err"
+		git checkout docs$RundeckVersion
+		skip=--skip
 	fi
+
 
 	sh load.sh $WORKSPACE/dist/rundeck-docs-${RundeckVersion}.zip ${RundeckVersion} ${skip}
 	git commit -m "Added docs for version $RundeckVersion"
@@ -159,7 +158,7 @@ site_update_primary(){
 publish_tag(){
 	local do_release=${1:-no}
 	gen_docs_publish_repo ${VERSION_FULL}
-	site_add_or_update_git_submodule ${VERSION_FULL}
+	site_add_or_update_git_submodule ${VERSION_FULL} yes
 
 	if [ "$TAG" == "GA" ] && [ "$do_release" == "yes" ]; then
 		site_update_primary ${VERSION_FULL}
