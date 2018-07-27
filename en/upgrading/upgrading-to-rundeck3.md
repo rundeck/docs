@@ -147,5 +147,9 @@ mv /etc/rundeck/profile.rpmnew /etc/rundeck/profile
 A restart is necessary after the merge of `rundeck-config.properties` or/and `profile` file.
 
 
+### Tomcat War deployment
 
 
+Due to changes in authentication, `tomcat-users.xml` and other Tomcat authentication modules no longer work.
+More information about upgrading with Tomcat will be posted on
+[this github issue](https://github.com/rundeck/rundeck/issues/3754).

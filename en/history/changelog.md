@@ -100,6 +100,12 @@ If using Mysql/other DBs which require a JDBC driver, be sure to specify it expl
 Support for Oracle is still considered experimental.  We have confirmed that it works with oracle 12c and 11g,
 however we would like your feedback.
 
+*Tomcat War deployment*
+
+Due to changes in authentication, `tomcat-users.xml` and other Tomcat authentication modules no longer work.
+More information about upgrading with Tomcat will be posted on
+[this github issue](https://github.com/rundeck/rundeck/issues/3754).
+
 ## Upgrading
 
 For the most part, Rundeck 3.0 is drop-in compatible with existing Rundeck 2.11 installations.

@@ -80,7 +80,6 @@ A lot of work went into the Grails 3 upgrade, many thanks especially to:
 
 ## Known Issues and Limitations
 
-
 *Startup error about log4j*
 
 If you update and get an error about Log4j configuration, add a line to your rundeck-config file: `rundeck.log4j.config.file=/.../server/config/log4j.properties` and specify the correct path to a log4j.properties file.
@@ -99,6 +98,12 @@ If using Mysql/other DBs which require a JDBC driver, be sure to specify it expl
 
 Support for Oracle is still considered experimental.  We have confirmed that it works with oracle 12c and 11g,
 however we would like your feedback.
+
+*Tomcat War deployment*
+
+Due to changes in authentication, `tomcat-users.xml` and other Tomcat authentication modules no longer work.
+More information about upgrading with Tomcat will be posted on
+[this github issue](https://github.com/rundeck/rundeck/issues/3754).
 
 ## Upgrading
 
