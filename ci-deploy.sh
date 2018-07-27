@@ -105,11 +105,10 @@ clone_org_site_repo(){
 	fi
 }
 
-#/ add a '$version' and 'pro$proversion' submodules pointing at the version
+#/ add a '$version' submodules pointing at the version
 site_add_or_update_git_submodule(){
 	local RundeckVersion=$1
-	local RundeckProVersion=$2
-	local update=${3:-no}
+	local update=${2:-no}
 
 	clone_org_site_repo
 
@@ -129,19 +128,9 @@ site_add_or_update_git_submodule(){
 		git add $RundeckVersion
 	fi
 
-	# link based on pro version
-	if [ ! -e "pro$RundeckProVersion" ] ; then
-		ln -s $RundeckVersion "pro$RundeckProVersion"
-		git add pro$RundeckProVersion
-	elif [ $update == 'yes' ] ; then
-		git rm pro$RundeckProVersion
-		ln -s $RundeckVersion "pro$RundeckProVersion"
-		git add pro$RundeckProVersion
-	fi
-
 	#commit and push the changes
 	git add -u .
-	git commit -m "Add docs version ${RundeckVersion} (pro$RundeckProVersion)"
+	git commit -m "Add docs version ${RundeckVersion} "
 	git_push origin master
 }
 
@@ -163,14 +152,14 @@ site_update_primary(){
 
 	#commit and push the changes
 	git add -u .
-	git commit -m "Update docs submodule to version ${RundeckVersion} (pro$RundeckProVersion)"
+	git commit -m "Update docs submodule to version ${RundeckVersion}"
 	git_push origin master
 }
 
 publish_tag(){
 	local do_release=${1:-no}
 	gen_docs_publish_repo ${VERSION_FULL}
-	site_add_or_update_git_submodule ${VERSION_FULL} ${PROVERSION_FULL}
+	site_add_or_update_git_submodule ${VERSION_FULL}
 
 	if [ "$TAG" == "GA" ] && [ "$do_release" == "yes" ]; then
 		site_update_primary ${VERSION_FULL}
@@ -179,7 +168,7 @@ publish_tag(){
 publish_snapshot(){
 
 	gen_docs_publish_repo ${VERSION_FULL} yes
-	site_add_or_update_git_submodule ${VERSION_FULL} ${PROVERSION_FULL} yes
+	site_add_or_update_git_submodule ${VERSION_FULL} yes
 }
 
 main(){
