@@ -116,7 +116,7 @@ File: `rundeck-flow-control-plugin-${VERSION}.jar`
 
 ## Jasypt Encryption Plugin
 
-Provides an encryption [storage converter](../storage/index.html#storage-converters) for the Storage facility.  Can be used to encrypt the contents of Key Storage,
+Provides an encryption [storage converter](../storage-facility.html#storage-converters) for the Storage facility.  Can be used to encrypt the contents of Key Storage,
 and Project Configuration stored in the DB or on disk.
 
 This plugin provides password based encryption for storage contents.  

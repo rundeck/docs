@@ -26,7 +26,7 @@ The import process copies the contents of `etc/project.properties`, `readme.md` 
 Finally, the `etc/project.properties` file will be renamed on disk to `etc/project.properties.imported`.
 
 The DB storage type also uses the Rundeck **Storage Facility** to store the file contents, which can be
-configured to use an Encryption plugin.  See [Storage Facility - Using Encryption](storage/index.html#using-encryption).
+configured to use an Encryption plugin.  See [Storage Facility - Using Encryption](storage-facility.html#using-encryption).
 
 ## Graphical Interface
 
