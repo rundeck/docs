@@ -49,7 +49,11 @@ optionsDefaults=[
     subLinkTitle: '${title}',
     recurseDirPattern: '.*',
     recurseDirPatternIgnore: '^\\..*$',
-    recurseDepth:'0'
+    recurseDepth:'0',
+    srcpagelink:'Edit',
+    srcbaseurl:'',
+    bugpagelink:'Report',
+    bugpageurl:''
     ]
 optionDescs=[
     singleIndex: 'true/false, if only a single markdown file, use it as the index HTML file.',
@@ -71,7 +75,12 @@ optionDescs=[
     subLinkTitle: 'Template for title for links to a sub dir section, variables: `${sectionTitle}`, `${title}`, `${index}`, `${name}`',
     recurseDirPattern: 'Regex to match dirs to include in recursive generation.',
     recurseDirPatternIgnore: 'Regex to match dirs to ignore in recursive generation.',
-    recurseDepth: 'Number of dirs to recurse into. -1 means no limit.'
+    recurseDepth: 'Number of dirs to recurse into. -1 means no limit.',
+    srcpagelink:'Link content to edit page source',
+    srcbaseurl:'Base URL to link to edit this page.',
+    bugpagelink:'Text for issue report link',
+    bugpageurl:'Link to report issue for the page',
+
     ]
     
 options = new HashMap(optionsDefaults)
@@ -135,18 +144,21 @@ def readIndexFile(File dir){
     def index
     if(file){
         def title=replaceParams(file.title,pagevars,options.tokenStart,options.tokenEnd)
-        index=[title:title,index:-1,outfile:"${options.indexFileOutputName}.html",file:file]
+        index=[title:title,index:-1,outfile:"${options.indexFileOutputName}.html",file:file,srcfile:file]
     }
     return index
 }
 def replaceParams(String templ,Map params,String tokenStart='${', String tokenEnd='}'){
-    def replaced=templ.replaceAll('('+quote(tokenStart)+'([a-zA-Z_0-9.-]+?)'+quote(tokenEnd)+')',{all,match1,match2->
+    def replaced1=templ.replaceAll(quote('$if(')+'([a-zA-Z_0-9.-]+?)'+quote(')$')+'(.*?)'+quote('$endif$'),{all,match1,match2->
+            params[match1]?match2:''
+        })
+    def replaced=replaced1.replaceAll('('+quote(tokenStart)+'([a-zA-Z_0-9.-]+?)'+quote(tokenEnd)+')',{all,match1,match2->
             null!=params[match2]?params[match2]:match1
         })
     return replaced
 }
-def expandFile(File file){
-    pagevars?writeTempFile(replaceParams(file.text,pagevars,options.tokenStart,options.tokenEnd)):file
+def expandFile(File file,Map extraVars=[:]){
+    (pagevars+extraVars)?writeTempFile(replaceParams(file.text,pagevars+extraVars,options.tokenStart,options.tokenEnd)):file
 }
 def outfileName(title,index,file,toc){
     def filestub=replaceParams(options.pageFileName,[title:titleToIdentifier(title),index:index,name:file.name.replaceAll(/\.(md|txt)$/,'')])
@@ -170,7 +182,7 @@ def readToc(File tocfile){
             if(match.matches()){
                 def file=new File(tocfile.parentFile,match.group(2))
                 if(file.isFile()){
-                    def fdef=[index:match.group(1).toInteger(),file:file,title:match.group(3).trim()]
+                    def fdef=[index:match.group(1).toInteger(),file:file,title:match.group(3).trim(),srcfile:file]
                     fdef.outfile=outfileName(fdef.title,fdef.index,fdef.file,toc)
                     toc<<fdef
                 }else if (file.isDirectory()){
@@ -189,6 +201,7 @@ def getToc(File dir, File routputdir){
     def readtoc=readfile.toc
     def readdirs=readfile.dirs
     def toc=[]
+    def srcfile=null
     if(!tocfile.exists()){
         addTempFile tocfile,true
         //create toc.conf
@@ -196,7 +209,7 @@ def getToc(File dir, File routputdir){
         tocfile.withWriter("UTF-8") { out ->
             mdfiles.each{file->
                 def title=replaceParams(file.title,pagevars,options.tokenStart,options.tokenEnd)
-                toc<<[index:ndx,file:file,title:title,outfile:outfileName(title,ndx,file,toc)]
+                toc<<[index:ndx,file:file,srcfile:file,title:title,outfile:outfileName(title,ndx,file,toc)]
                 out.writeLine("${ndx}:${file.name}:${title}")
                 ndx++
             }
@@ -210,10 +223,11 @@ def getToc(File dir, File routputdir){
             mdfiles.removeAll(common)
             throw new RuntimeException( "Warning: some files changed compared to the TOC, please update toc.conf or remove it to regenerate: Missing ${tocfiles.size()} files declared in TOC: ${tocfiles}, Found ${mdfiles.size()} extra files in directory: ${mdfiles}")    
         }
+        srcfile=tocfile
         
         toc=readtoc
     }
-    return [toc:toc,dirs:readdirs]
+    return [toc:toc,dirs:readdirs,srcfile:srcfile]
 }
 
 def createTocMdFile(File dir,toc,title,content=null, subdirs=null){
@@ -343,7 +357,14 @@ def runPandoc(List longparams){
     endif=quote('$endif$')
     crendif=quote('$endif(crumbs)$')
 endfor=quote('$endfor$')
-navPats=[currentpagelink:quote('$if(currentpage)$'),tocpagelink:quote('$if(tocpage)$'),nextpagelink:quote('$if(nextpage)$'),prevpagelink:quote('$if(prevpage)$'),crumbs:quote('$if(crumbs)$')]
+navPats=[
+    currentpagelink:quote('$if(currentpage)$'),
+    tocpagelink:quote('$if(tocpage)$'),
+    nextpagelink:quote('$if(nextpage)$'),
+    prevpagelink:quote('$if(prevpage)$'),
+    crumbs:quote('$if(crumbs)$'),
+    srcpageurl:quote('$if(srcpageurl)$'),
+]
 
 def replaceNavContent(Map navs,String navcontent){
     //replace ifclauses
@@ -380,7 +401,7 @@ def replaceNavContent(Map navs,String navcontent){
 def chapLinkTitle(titem){
     titem.index>0 && options.chapterNumbers=='true' ?"${options.chapterTitle} ${titem.index}: ${pageLinkTitle(titem)}":pageLinkTitle(titem)
 }
-def prepareAll(toc,File dir){
+def prepareAll(toc,File dir,File rootdir, File tocsrcfile){
     def ndxtoc=[]
     
     def index=readIndexFile(dir)
@@ -410,8 +431,12 @@ def prepareAll(toc,File dir){
             ndxtoc.remove(0)
             tocdoc.title=index.title
             tocdoc.content=index.file.text
+            tocdoc.srcfile=index.file
         }else if(flags.recursive && tocdoc.title==options.tocTitle){
             tocdoc.title=dir.title
+        }
+        if(!index && tocsrcfile){
+            tocdoc.srcfile=tocsrcfile
         }
     }
     
@@ -433,6 +458,9 @@ def prepareAll(toc,File dir){
             allpages[0].outfile="${options.indexFileOutputName}.html"
         }
         allpages = [allpages[0]]
+    }
+    allpages.each{
+        it.rootdir=rootdir
     }
     
     return allpages
@@ -457,32 +485,40 @@ def generateAll(allpages,toc,templates,File dir, File outdir, crumbs, subdirs){
         return allpages
     }
     allpages.eachWithIndex{titem,x->
-        def pargs=['-B',expandFile(templates.header)]
+        def xvars=options.subMap(['bugpagelink','bugpageurl'])
+        if(options.srcbaseurl && titem.srcfile && titem.rootdir){
+            def crumbpath= titem.rootdir.toPath().relativize(titem.srcfile.toPath())
+            xvars.srcpagelink=options.srcpagelink?:'Edit This Page'
+            xvars.srcpageurl=options.srcbaseurl + crumbpath
+        }
+        def pargs=['-B',expandFile(templates.header,xvars)]
+
+        //set up nav links
+        def navs=[currentpage:chapLinkTitle(titem),currentpagelink:titem.outfile]+xvars
+        
+        if(x<allpages.size()-1){
+            //all but the last page
+            navs.nextpage=chapLinkTitle(allpages[x+1])
+            navs.nextpagelink=allpages[x+1].outfile
+        }
+        if(titem.index>1){
+            //all content pages but the first
+            navs.prevpage=chapLinkTitle(allpages[x-1])
+            navs.prevpagelink=allpages[x-1].outfile
+        }
+        def toctitle=tocdoc?.title
+        def toclink=tocdoc?.outfile
+        if(tocdoc && titem.index!=tocdoc.index ){
+            //all pages but the toc page
+            navs.tocpage=tocdoc.title
+            navs.tocpagelink=tocdoc.outfile
+        }else if(!tocdoc && index && titem.index!=index.index){
+            //all pages but the toc page
+            navs.tocpage=index.title
+            navs.tocpagelink=index.outfile
+        }
         if(flags.doNav || flags.recursive){
             def navcontent=templates.nav.text
-            //set up nav links
-            def navs=[currentpage:chapLinkTitle(titem),currentpagelink:titem.outfile]
-            if(x<allpages.size()-1){
-                //all but the last page
-                navs.nextpage=chapLinkTitle(allpages[x+1])
-                navs.nextpagelink=allpages[x+1].outfile
-            }
-            if(titem.index>1){
-                //all content pages but the first
-                navs.prevpage=chapLinkTitle(allpages[x-1])
-                navs.prevpagelink=allpages[x-1].outfile
-            }
-            def toctitle=tocdoc?.title
-            def toclink=tocdoc?.outfile
-            if(tocdoc && titem.index!=tocdoc.index ){
-                //all pages but the toc page
-                navs.tocpage=tocdoc.title
-                navs.tocpagelink=tocdoc.outfile
-            }else if(!tocdoc && index && titem.index!=index.index){
-                //all pages but the toc page
-                navs.tocpage=index.title
-                navs.tocpagelink=index.outfile
-            }
             def bcrumbnav=templates.navCrumbs.text
             //write nav temp files
             navfileTop.withWriter("UTF-8"){writer->
@@ -497,20 +533,21 @@ def generateAll(allpages,toc,templates,File dir, File outdir, crumbs, subdirs){
             pargs.addAll(['-B',navfileTop])
         }
         
-        pargs.addAll(['-B',expandFile(templates.before)])
-        pargs.addAll(['-A',expandFile(templates.after)])
+        pargs.addAll(['-B',expandFile(templates.before,xvars)])
+        pargs.addAll(['-A',expandFile(templates.after,xvars)])
         if(flags.doNav || flags.recursive){
             pargs.addAll(['-A',navfileBot])
         }
-        pargs.addAll(['-A',expandFile(templates.footer)])
-        def htemplate=expandFile(templates.html)
+
+        pargs.addAll(['-A',expandFile(templates.footer,xvars)])
+        def htemplate=expandFile(templates.html,xvars)
         def cssPath= options.cssRelative=='true'? '../'*crumbs.size() : '' 
         def outfile=new File(outdir,titem.outfile)
         pargs.addAll(['-o',outfile.absolutePath,'-s',"--css=${cssPath}${options.cssFileName}","--template=${htemplate.absolutePath}"])
         if(titem.index>0){
             pargs<<"--toc"
         }
-        pargs.add(expandFile(titem.file))
+        pargs.add(expandFile(titem.file,xvars))
         if(titem.multifiles){
             pargs.addAll titem.multifiles
         }
@@ -522,7 +559,7 @@ def generateAll(allpages,toc,templates,File dir, File outdir, crumbs, subdirs){
                 println "Error running pandoc, result: ${result}"
                 throw new RuntimeException("Pandoc run failed: ${result} with args ${pargs}")
             }
-            println "${outfile}"
+            println "${outfile} <-- ${titem.srcfile?.name}"
         }else{
             print "${outfile} <-- ${titem.file.name}"
             if(titem.index==-1){
@@ -691,7 +728,7 @@ def printHelp(){
  * rdepth = remaining dir depth to follow, -1 for indefinite
  * crumbs = breadcrumbs from upper directories, in order
  */
-def run(File docsdir, File tdir, File outputdir, rdepth=0, crumbs=[]){
+def run(File rootdir, File docsdir, File tdir, File outputdir, rdepth=0, crumbs=[]){
     def rtdir=tdir
     if(!tdir){
         rtdir=new File(docsdir,'templates')   
@@ -705,7 +742,7 @@ def run(File docsdir, File tdir, File outputdir, rdepth=0, crumbs=[]){
     def readtoc= getToc(docsdir,routputdir)
     def toc=readtoc.toc
     def dirs=readtoc.dirs
-    def pages=prepareAll(toc,docsdir)
+    def pages=prepareAll(toc,docsdir,rootdir,readtoc.srcfile)
     def subdirs=[]
     if(rdepth!=0){
         //stash flags, pagevars, options
@@ -723,7 +760,7 @@ def run(File docsdir, File tdir, File outputdir, rdepth=0, crumbs=[]){
                 options=new HashMap(stash.options)
                 def newoutputdir=new File(routputdir,dir.name)
                 newoutputdir.mkdirs()
-                def result=run(dir,rtdir,newoutputdir,rdepth-1,scrumb)
+                def result=run(rootdir,dir,rtdir,newoutputdir,rdepth-1,scrumb)
                 //add index doc to subdirs list for this toc
                 if(result?.toc){
                     subdirs<<[dir:dir,index:result.toc[0],toc:result.toc]
@@ -760,4 +797,4 @@ if(options.recurseDepth!='0'){
     flags.recursive=true
 }
 
-run(dirs.docsdir,dirs.tdir,dirs.outputdir,options.recurseDepth.toInteger())
+run(dirs.docsdir,dirs.docsdir,dirs.tdir,dirs.outputdir,options.recurseDepth.toInteger())

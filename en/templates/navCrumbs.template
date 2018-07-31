@@ -19,4 +19,10 @@ $if(crumbs)$
     </ul>
 </div>
 </div>
+<div class="row">
+<div class="col-sm-12 text-right">
+    $if(bugpageurl)$<a class="btn btn-link $navclass$" href="$bugpageurl$"><i class="glyphicon glyphicon-flag"></i> $bugpagelink$</a>$endif$
+    $if(srcpageurl)$<a class="btn btn-link $navclass$ btn-edit-this-page" href="$srcpageurl$"><i class="glyphicon glyphicon-pencil"></i>  $srcpagelink$</a>$endif$
+</div>
+</div>
 </div>
