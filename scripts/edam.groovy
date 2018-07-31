@@ -149,7 +149,7 @@ def readIndexFile(File dir){
     return index
 }
 def replaceParams(String templ,Map params,String tokenStart='${', String tokenEnd='}'){
-    def replaced1=templ.replaceAll(quote('$if(')+'([a-zA-Z_0-9.-]+?)'+quote(')$')+'(.*?)'+quote('$endif$'),{all,match1,match2->
+    def replaced1=templ.replaceAll(quote(tokenStart+'if(')+'([a-zA-Z_0-9.-]+?)'+quote(')'+tokenEnd)+'(.*?)'+quote(tokenStart+'endif'+tokenEnd),{all,match1,match2->
             params[match1]?match2:''
         })
     def replaced=replaced1.replaceAll('('+quote(tokenStart)+'([a-zA-Z_0-9.-]+?)'+quote(tokenEnd)+')',{all,match1,match2->
@@ -491,7 +491,7 @@ def generateAll(allpages,toc,templates,File dir, File outdir, crumbs, subdirs){
             xvars.srcpagelink=options.srcpagelink?:'Edit This Page'
             xvars.srcpageurl=options.srcbaseurl + crumbpath
         }
-        def pargs=['-B',expandFile(templates.header,xvars)]
+        def pargs=['-B',expandFile(templates.header)]
 
         //set up nav links
         def navs=[currentpage:chapLinkTitle(titem),currentpagelink:titem.outfile]+xvars
@@ -533,21 +533,21 @@ def generateAll(allpages,toc,templates,File dir, File outdir, crumbs, subdirs){
             pargs.addAll(['-B',navfileTop])
         }
         
-        pargs.addAll(['-B',expandFile(templates.before,xvars)])
-        pargs.addAll(['-A',expandFile(templates.after,xvars)])
+        pargs.addAll(['-B',expandFile(templates.before)])
+        pargs.addAll(['-A',expandFile(templates.after)])
         if(flags.doNav || flags.recursive){
             pargs.addAll(['-A',navfileBot])
         }
 
-        pargs.addAll(['-A',expandFile(templates.footer,xvars)])
-        def htemplate=expandFile(templates.html,xvars)
+        pargs.addAll(['-A',expandFile(templates.footer)])
+        def htemplate=expandFile(templates.html)
         def cssPath= options.cssRelative=='true'? '../'*crumbs.size() : '' 
         def outfile=new File(outdir,titem.outfile)
         pargs.addAll(['-o',outfile.absolutePath,'-s',"--css=${cssPath}${options.cssFileName}","--template=${htemplate.absolutePath}"])
         if(titem.index>0){
             pargs<<"--toc"
         }
-        pargs.add(expandFile(titem.file,xvars))
+        pargs.add(expandFile(titem.file))
         if(titem.multifiles){
             pargs.addAll titem.multifiles
         }
