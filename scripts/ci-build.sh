@@ -4,15 +4,16 @@
 set -euo pipefail
 IFS=$'\n\t'
 readonly ARGS=("$@")
+SCPTDIR=$( cd "$(dirname "$0")" && pwd)
 
-. ci-common.sh
+. "$SCPTDIR/ci-common.sh"
 
 # script for travis
 
 build(){
 	parse_travis_version
 	
-	if [ -z $VERSION ] ; then
+	if [ -z "$VERSION" ] ; then
 		read_version 
 	fi
 
