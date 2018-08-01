@@ -108,7 +108,7 @@ is set in the ``quartz.properties`` file. By default, this is set to ``10``.
 
 To change the maximum threadCount modify this file and alter the line:
 
-    org.quartz.threadPool.threadCount = 20
+    quartz.threadPool.threadCount = 20
 
 Set the threadCount value to the max number of threads you want to run concurrently.
 

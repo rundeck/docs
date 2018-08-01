@@ -128,12 +128,12 @@ Please refer to the Quartz site for detailed information:
 
 #### Update rundeck-config
 
-Use the properties mentioned in the Quartz documentation, but **replace** the `org.quartz` prefix, with the prefix `quartz.props`.
+Use the properties mentioned in the Quartz documentation, but **replace** the `org.quartz` prefix, with the prefix `quartz`.
 
 e.g. in `rundeck-config.properties` :
 
 ~~~ {.properties}
-quartz.props.threadPool.threadCount = 20
+quartz.threadPool.threadCount = 20
 ~~~
 
 Set the threadCount value to the max number of threads you want to run concurrently.
