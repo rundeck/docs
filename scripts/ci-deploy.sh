@@ -4,8 +4,9 @@
 set -euo pipefail
 IFS=$'\n\t'
 readonly ARGS=("$@")
+SCPTDIR=$( cd "$(dirname "$0")" && pwd)
 
-. ci-common.sh
+. "$SCPTDIR/ci-common.sh"
 
 DRYRUN=false
 WORKSPACE=$(pwd)

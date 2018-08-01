@@ -30,14 +30,17 @@ parse_travis_version(){
 		local tvers=${TRAVIS_TAG:1}
 		local ttag=GA
 		local release=yes
-		if [[ $tvers =~ -[[:alpha:][:digit:]]+$ ]] ; then
+		if [[ $tvers =~ -[[:alpha:][:digit:]-]+$ ]] ; then
 			ttag=${tvers#*-}
-			tvers=${tvers%-*}
+			tvers=${tvers%%-*}
 			release=no
 		fi
 		if [[ $ttag =~ ^maint ]] ; then
-			ttag=GA
 			release=no
+			if [[ $ttag =~ .*latest ]] ; then
+				release=yes
+			fi
+			ttag=GA
 		fi
 		read_version ${tvers} ${ttag}
 		PUBLISH_TAG=yes
