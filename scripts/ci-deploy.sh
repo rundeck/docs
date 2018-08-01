@@ -8,7 +8,7 @@ SCPTDIR=$( cd "$(dirname "$0")" && pwd)
 
 . "$SCPTDIR/ci-common.sh"
 
-DRYRUN=false
+DRYRUN=${DEPLOY_DRYRUN:-false}
 WORKSPACE=$(pwd)
 
 GH_TOKEN=${GH_TOKEN:-}
@@ -55,36 +55,50 @@ clone_generated_docs_repo(){
 	fi
 }
 
+#/ add the docs to the docs$version branch in the rundeck-docs repo
 gen_docs_publish_repo(){
 	local RundeckVersion=$1
-	local isSnapshot=${2:-no}
-	local skip=
-	
+	local BRANCH="docs$RundeckVersion"
+	local DOCS_ZIP="$WORKSPACE/dist/rundeck-docs-${RundeckVersion}.zip"
+
 	clone_generated_docs_repo
 
-	cd $WORKSPACE/rundeck-docs
 
-	#/ try to fetch existing snapshot branch
+	cd "$WORKSPACE/rundeck-docs"
+
+	#/ try to fetch existing branch
 	set +e
-	git fetch origin docs$RundeckVersion
+	git fetch origin "$BRANCH"
 	local err=$?
 	set -e
 	echo "remote git fetch result: $err"
 	if [  $err == 0 ] ; then
 		echo "local checkout"
 		set +e
-		git branch -l | grep -q docs$RundeckVersion
+		git branch -l | grep -q "$BRANCH"
 		err=$?
 		set -e
 		echo "local branch already exists? $err"
-		git checkout docs$RundeckVersion
-		skip=--skip
+		git checkout "$BRANCH"
+	else
+	    git checkout -b "$BRANCH"
 	fi
 
-
-	sh load.sh $WORKSPACE/dist/rundeck-docs-${RundeckVersion}.zip ${RundeckVersion} ${skip}
+	
+	cd "$WORKSPACE"
+	mkdir temp
+	cd temp
+	echo unzip "$DOCS_ZIP"
+	unzip "$DOCS_ZIP"
+	
+	cd "$WORKSPACE/rundeck-docs"
+	#/ remove any existing files
+	git rm -r ./*
+	cp -r "$WORKSPACE"/temp/html/* .
+	rm -rf "$WORKSPACE/temp"
+	git add .
 	git commit -m "Added docs for version $RundeckVersion"
-	git_push origin docs$RundeckVersion
+	git_push origin "$BRANCH"
 }
 
 
@@ -167,7 +181,7 @@ publish_tag(){
 }
 publish_snapshot(){
 
-	gen_docs_publish_repo ${VERSION_FULL} yes
+	gen_docs_publish_repo ${VERSION_FULL}
 	site_add_or_update_git_submodule ${VERSION_FULL} yes
 }
 
