@@ -1,11 +1,18 @@
 % Authenticating Users
 
-Rundeck uses *Container Authentication* to determine
-the logged in user name and the user's authorized roles.
+Rundeck can be configured to use several mechanisms
+to authenticate a user, and determine the user's authorized roles.
 
-For the default installation (Rundeck Launcher, RPM, Deb),
+Primarily these are:
+
+* [Single Sign On](#single-sign-on)
+* [JAAS](#jetty-and-jaas-authentication)
+* [Container Authentication](#container-authentication-and-authorization)
+* [Preauthenticated Mode](#preauthenticated-mode)
+
+For the default installation (Executable War, RPM, Deb),
 the Servlet Container is Jetty,
-and the underlying security mechanism is JAAS,
+and the default security mechanism is JAAS,
 so you are free to use what ever JAAS provider
 you feel is suitable for your environment.
 See [JAAS](https://en.wikipedia.org/wiki/Java_Authentication_and_Authorization_Service)
@@ -14,9 +21,13 @@ and specifically for Jetty,
 
 If you use the Rundeck war file with a different container, such as Tomcat, refer to [Container authentication and authorization](#container-authentication-and-authorization) below.
 
+# Single Sign On
+
+See [Security > Single Sign On](single-sign-on.html).
+
 # Jetty and JAAS authentication
 
-Rundeck has three basic ways of defining authentication.
+Rundeck has three basic JAAS modules.
 
 1. [PropertyFileLoginModule](#propertyfileloginmodule)
 2. [LDAP](#ldap)
@@ -24,54 +35,19 @@ Rundeck has three basic ways of defining authentication.
 
 By default a new installation uses the realm.properties method.
 
-## Security Role
-
-There is a "required role" which any user you wish to allow access to Rundeck must belong to. By default that role name is user (As of Rundeck 2.0 and earlier). The required role name must be manually changed if you want a different required role.
-
-To modify the required role name, edit the web.xml file:
-
-* RPM/debian install path: /var/lib/rundeck/exp/webapp/WEB-INF/web.xml
-* Jar/launcher: After running once or executing `--installonly`, modify the path $RDECK_BASE/server/exp/webapp/WEB-INF/web.xml
-  * after modifying the file you must run the launcher jar with --skipinstall to avoid overwriting the file with the original value
-
-Modify the section shown below and replace user with your own required role name:
-
-~~~~~~ {.xml }
-<security-role>
-    <role-name>user</role-name>
-</security-role>
-~~~~~~
-
-Here's an example that changes the required role to one called "myADgroup" (the hypothetical group name from Active Directory):
-
-~~~~~~ {.diff .numberLines }
---- /var/lib/rundeck/exp/webapp/WEB-INF/web.xml
-+++ /var/lib/rundeck/exp/webapp/WEB-INF/web.xml.new
-@@ -9,7 +9,7 @@
-                <param-value>rundeck-production-2.1.2</param-value>
-        </context-param>
-        <security-role>
--               <role-name>user</role-name>
-+               <role-name>myADgroup</role-name>
-        </security-role>
-        <security-constraint>
-                <web-resource-collection>
-~~~~~~
-
 ## PropertyFileLoginModule
 
 These instructions explain how to manage user credentials for
 Rundeck using a text file containing usernames, passwords and role definitions.
 Usually this file is called <code>realm.properties</code>.
 
-The default Rundeck webapp handles user authentication via its
-container, which in turn is configured to pull its user authentication
-from the realm.properties file.
+The default Rundeck installation handles user authentication via 
+JAAS using the realm.properties file.
 This file is created at the time that you install the server.
 
 Location:
 
-* Launcher: `$RDECK_BASE/server/config/realm.properties`
+* Executable War: `$RDECK_BASE/server/config/realm.properties`
 * RPM/DEB: `/etc/rundeck/realm.properties`
 
 Assuming it wasn't modified, your realm.properties file will
@@ -136,7 +112,7 @@ LDAP and Active Directory configurations are created in the same way, but your L
 Rundeck includes two JAAS login modules you can use for LDAP directory authentication:
 
 * `JettyCachingLdapLoginModule` Performs LDAP authentication and looks up user roles based on LDAP group membership
-* `JettyCombinedLdapLoginModule` (**Since Rundeck 2.5**).   Performs LDAP authentication, and can use "shared authentication credentials" to allow another module to provide authorization lookup for user roles.  See [Login module configuration](#login-module-configuration) and [JettyRolePropertyFileLoginModule](#jettyrolepropertyfileloginmodule) and [Multiple Authentication Modules](#multiple-authentication-modules) below.
+* `JettyCombinedLdapLoginModule` Performs LDAP authentication, and can use "shared authentication credentials" to allow another module to provide authorization lookup for user roles.  See [Login module configuration](#login-module-configuration) and [JettyRolePropertyFileLoginModule](#jettyrolepropertyfileloginmodule) and [Multiple Authentication Modules](#multiple-authentication-modules) below.
 
 These are an enhanced version of the default Jetty JAAS Ldap login module that caches authorization results for a period of time.
 
@@ -153,7 +129,7 @@ Configuring LDAP consists of defining a JAAS config file (e.g. "jaas-ldap.conf")
 Create a `jaas-ldap.conf` file in the same directory as the `jaas-loginmodule.conf` file.
 
 * RPM install: /etc/rundeck/
-* Launcher install: $RDECK_BASE/server/config
+* Executable War install: $RDECK_BASE/server/config
 
 Make sure the name of your Login Module configuration is the same as you use in the next step.  The Login Module configuration is defined like this:
 
@@ -170,40 +146,42 @@ Where "myloginmodule" is the name.
 
 To override the default JAAS configuration file, you will need to supply the Rundeck server with the proper path to the new one, and a `loginmodule.name` Java system property to identify the new login module by name.
 
-The JAAS configuration file location is specified differently between the Launcher and the RPM.
+The JAAS configuration file location is specified differently between the Executable War and the RPM.
 
-**For the Launcher**:  the `loginmodule.conf.name` Java system property is used to identify the *name* of the config file, which must be located in the `$RDECK_BASE/server/config` dir.
+**For the Executable War**:  the `loginmodule.conf.name` Java system property is used to identify the *name* of the config file, which must be located in the `$RDECK_BASE/server/config` dir.
 
 You can simply specify the system properties on the java commandline:
 
 ~~~~~~ {.bash}
-java -Dloginmodule.conf.name=jaas-ldap.conf \
-    -Dloginmodule.name=ldap \
-    -jar rundeck-launcher-x.x.jar
+java -Drundeck.jaaslogin=true \
+     -Dloginmodule.conf.name=jaas-ldap.conf \
+     -Dloginmodule.name=ldap \
+     -jar rundeck-x.x.war
 ~~~~~~
 
-Otherwise, if you are starting the Launcher via the supplied `rundeckd` script, you can modify the `RDECK_JVM` value in the `$RDECK_BASE/etc/profile` file to add two JVM arguments:
+Otherwise, if you are starting the Executable War via the supplied `rundeckd` script, you can modify the `RDECK_JVM` value in the `$RDECK_BASE/etc/profile` file to add two JVM arguments:
 
 ~~~~~~ {.bash}
 export RDECK_JVM="-Dloginmodule.conf.name=jaas-ldap.conf \
+    -Drundeck.jaaslogin=true \
     -Dloginmodule.name=ldap"
 ~~~~~~
 
-Note: more information about using the launcher and useful properties are under [Getting Started - Launcher Options](../install/launcher.html#launcher-options).
+Note: more information about using the Executable War and useful properties are under [Getting Started - Executable War Options](../install/launcher.html#launcher-options).
 
 **For the RPM installation**: the absolute path to the JAAS config file must be specified with the `java.security.auth.login.config` property.
 
 Update the `RDECK_JVM` in `/etc/rundeck/profile` by changing the following two JVM arguments:
 
 ~~~~~~ {.bash}
-export RDECK_JVM="-Djava.security.auth.login.config=/etc/rundeck/jaas-loginmodule.conf \
+export RDECK_JVM="-Drundeck.jaaslogin=true -Djava.security.auth.login.config=/etc/rundeck/jaas-loginmodule.conf \
        -Dloginmodule.name=RDpropertyfilelogin \
 ~~~~~~
 
 to
 
 ~~~~~~ {.bash}
-export RDECK_JVM="-Djava.security.auth.login.config=/etc/rundeck/jaas-ldap.conf \
+export RDECK_JVM="-Drundeck.jaaslogin=true -Djava.security.auth.login.config=/etc/rundeck/jaas-ldap.conf \
        -Dloginmodule.name=ldap \
 ~~~~~~
 
@@ -577,7 +555,7 @@ RDpropertyfilelogin {
         file="/etc/rundeck/realm.properties";
 
 };
-~~~~~~~
+~~~~~~
 
 When combining the two login modules, note that the `storePass` and
 `useFirstPass` are set to true, allowing the two modules to share the user information necessary for the second module to load the user roles.
@@ -665,7 +643,8 @@ multiauth {
     debug="true"
     file="/etc/rundeck/realm.properties";
 };
-~~~~~~~~~~~~
+~~~~~~~~
+
 Based on the flags, JAAS would attempt the following for authentication:
 
 1. Check username/pass against LDAP
@@ -697,7 +676,7 @@ with the following configuration flags in `rundeck-config.properties`:
     rundeck.security.authorization.containerPrincipal.enabled=false
     rundeck.security.authorization.container.enabled=false
 
-## Preauthenticated Mode
+# Preauthenticated Mode
 
 `preauthenticated`
 
