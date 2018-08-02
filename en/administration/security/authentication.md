@@ -171,18 +171,12 @@ Note: more information about using the Executable War and useful properties are 
 
 **For the RPM/Deb installation**: the absolute path to the JAAS config file must be specified with the `java.security.auth.login.config` property.
 
-Update the `RDECK_JVM` in `/etc/rundeck/profile` by changing the following two JVM arguments:
+Declare `RDECK_JVM_OPTS` in `/etc/sysconfig/rundeckd` (rpm) or `/etc/default/rundeckd` (deb):
 
 ~~~~~~ {.bash}
-export RDECK_JVM="-Drundeck.jaaslogin=true -Djava.security.auth.login.config=/etc/rundeck/jaas-loginmodule.conf \
-       -Dloginmodule.name=RDpropertyfilelogin \
-~~~~~~
-
-to
-
-~~~~~~ {.bash}
-export RDECK_JVM="-Drundeck.jaaslogin=true -Djava.security.auth.login.config=/etc/rundeck/jaas-ldap.conf \
-       -Dloginmodule.name=ldap \
+RDECK_JVM_OPTS="-Drundeck.jaaslogin=true \ 
+       -Djava.security.auth.login.config=/etc/rundeck/jaas-loginmodule.conf \
+       -Dloginmodule.name=RDpropertyfilelogin"
 ~~~~~~
 
 
