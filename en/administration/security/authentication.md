@@ -128,7 +128,7 @@ Configuring LDAP consists of defining a JAAS config file (e.g. "jaas-ldap.conf")
 
 Create a `jaas-ldap.conf` file in the same directory as the `jaas-loginmodule.conf` file.
 
-* RPM install: /etc/rundeck/
+* RPM/Deb install: /etc/rundeck/
 * Executable War install: $RDECK_BASE/server/config
 
 Make sure the name of your Login Module configuration is the same as you use in the next step.  The Login Module configuration is defined like this:
@@ -146,7 +146,7 @@ Where "myloginmodule" is the name.
 
 To override the default JAAS configuration file, you will need to supply the Rundeck server with the proper path to the new one, and a `loginmodule.name` Java system property to identify the new login module by name.
 
-The JAAS configuration file location is specified differently between the Executable War and the RPM.
+The JAAS configuration file location is specified differently between the Executable War and the RPM/Deb.
 
 **For the Executable War**:  the `loginmodule.conf.name` Java system property is used to identify the *name* of the config file, which must be located in the `$RDECK_BASE/server/config` dir.
 
@@ -169,7 +169,7 @@ export RDECK_JVM="-Dloginmodule.conf.name=jaas-ldap.conf \
 
 Note: more information about using the Executable War and useful properties are under [Getting Started - Executable War Options](../install/launcher.html#launcher-options).
 
-**For the RPM installation**: the absolute path to the JAAS config file must be specified with the `java.security.auth.login.config` property.
+**For the RPM/Deb installation**: the absolute path to the JAAS config file must be specified with the `java.security.auth.login.config` property.
 
 Update the `RDECK_JVM` in `/etc/rundeck/profile` by changing the following two JVM arguments:
 
