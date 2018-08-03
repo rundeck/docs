@@ -50,7 +50,7 @@ Methods:
 * `String getOutputDataTypeForContentDataType(Class<?> clazz, String dataType)`: gets the data type string for the input data type.
 * `Object convert(Object data, String dataType, Map<String,String> metadata)`: Convert the input data type to the output object, includes metadata about the log event as described in [Log Metadata](#log-metadata).
 
-[ContentConverterPlugin]: ../javadoc/com/dtolabs/rundeck/plugins/logs/ContentConverterPlugin.html
+[ContentConverterPlugin]: ${javadocbase}/com/dtolabs/rundeck/plugins/logs/ContentConverterPlugin.html
 
 
 ### Groovy ContentConverter

@@ -11,7 +11,7 @@ or a [Script Plugin Type](#script-plugin-type).
 ## Plugin configuration
 
 The `ResourceModelSource`
-[(javadoc)](../javadoc/com/dtolabs/rundeck/core/resources/ResourceModelSource.html) service allows the plugins to be configured via the Rundeck Web GUI. You are thus able to declare configuration properties for
+[(javadoc)](${javadocbase}/com/dtolabs/rundeck/core/resources/ResourceModelSource.html) service allows the plugins to be configured via the Rundeck Web GUI. You are thus able to declare configuration properties for
 your plugin, which will be displayed as a web form when the Project is configured, or can be manually configured in the `project.properties` file.
 
 
@@ -23,7 +23,7 @@ re-used, so each time a new ResourceModelSource with a new configuration is requ
 your Factory class will be invoked to produce it.
 
 Your provider class must implement the interface
-[ResourceModelSourceFactory](../javadoc/com/dtolabs/rundeck/core/resources/ResourceModelSourceFactory.html):
+[ResourceModelSourceFactory](${javadocbase}/com/dtolabs/rundeck/core/resources/ResourceModelSourceFactory.html):
 
 ~~~~~~{.java}
 public interface ResourceModelSourceFactory {

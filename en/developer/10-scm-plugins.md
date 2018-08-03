@@ -31,14 +31,14 @@ configuration contents.
 
 * *Note*: Refer to [Java Development](plugin-development.html#java-plugin-development) for information about developing a Java plugin for Rundeck.
 
-The plugin interface is [ScmExportPluginFactory](../javadoc/com/dtolabs/rundeck/plugins/scm/ScmExportPluginFactory.html).
+The plugin interface is [ScmExportPluginFactory](${javadocbase}/com/dtolabs/rundeck/plugins/scm/ScmExportPluginFactory.html).
 This factory type should produce a [ScmExportPlugin][] object.
 
-The plugin interface is [ScmImportPluginFactory](../javadoc/com/dtolabs/rundeck/plugins/scm/ScmImportPluginFactory.html).
+The plugin interface is [ScmImportPluginFactory](${javadocbase}/com/dtolabs/rundeck/plugins/scm/ScmImportPluginFactory.html).
 This factory type should produce a [ScmImportPlugin][] object.
 
-[ScmExportPlugin]: ../javadoc/com/dtolabs/rundeck/plugins/scm/ScmExportPlugin.html
-[ScmImportPlugin]: ../javadoc/com/dtolabs/rundeck/plugins/scm/ScmImportPlugin.html
+[ScmExportPlugin]: ${javadocbase}/com/dtolabs/rundeck/plugins/scm/ScmExportPlugin.html
+[ScmImportPlugin]: ${javadocbase}/com/dtolabs/rundeck/plugins/scm/ScmImportPlugin.html
 
 ## Localization
 

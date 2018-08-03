@@ -33,10 +33,10 @@ It can also control how the log event is handled:
 * `quiet`: the final loglevel should be set to VERBOSE
 * `remove`: the log event should not be processed further
 
-[LogFilterPlugin]: ../javadoc/com/dtolabs/rundeck/plugins/logging/LogFilterPlugin.html
-[PluginLoggingContext]: ../javadoc/com/dtolabs/rundeck/core/logging/PluginLoggingContext.html
-[LogEventControl]: ../javadoc/com/dtolabs/rundeck/core/logging/LogEventControl.html
-[LogEvent]: ../javadoc/com/dtolabs/rundeck/core/logging/LogEvent.html
+[LogFilterPlugin]: ${javadocbase}/com/dtolabs/rundeck/plugins/logging/LogFilterPlugin.html
+[PluginLoggingContext]: ${javadocbase}/com/dtolabs/rundeck/core/logging/PluginLoggingContext.html
+[LogEventControl]: ${javadocbase}/com/dtolabs/rundeck/core/logging/LogEventControl.html
+[LogEvent]: ${javadocbase}/com/dtolabs/rundeck/core/logging/LogEvent.html
 
 ### Groovy LogFilter
 
