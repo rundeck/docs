@@ -11,7 +11,7 @@ A File Copier provider copies a file or script to a remote or local node.
 ## Java Plugin Type
 
 Your provider class must implement the interface
-[FileCopier](../javadoc/com/dtolabs/rundeck/core/execution/service/FileCopier.html):
+[FileCopier](${javadocbase}/com/dtolabs/rundeck/core/execution/service/FileCopier.html):
 
 ~~~~~ {.java}
 public interface FileCopier {
@@ -33,9 +33,9 @@ public interface FileCopier {
 }
 ~~~~~~~~~
 
-(Note: Change between Rundeck 2.7 and 2.8: File copier plugins now require implementation of `FileCopier`.  Previously the [`DestinationFileCopier`](../javadoc/com/dtolabs/rundeck/core/execution/service/DestinationFileCopier.html) was required. Older methods of FileCopier have been removed from the interface.)
+(Note: Change between Rundeck 2.7 and 2.8: File copier plugins now require implementation of `FileCopier`.  Previously the [`DestinationFileCopier`](${javadocbase}/com/dtolabs/rundeck/core/execution/service/DestinationFileCopier.html) was required. Older methods of FileCopier have been removed from the interface.)
 
-Optionally the plugin may implement [MultiFileCopier](../javadoc/com/dtolabs/rundeck/core/execution/service/MultiFileCopier.html) to more efficiently copy multiple files.
+Optionally the plugin may implement [MultiFileCopier](${javadocbase}/com/dtolabs/rundeck/core/execution/service/MultiFileCopier.html) to more efficiently copy multiple files.
 
 ### Plugin properties
 

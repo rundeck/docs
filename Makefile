@@ -9,11 +9,16 @@ ifndef TAG
 TAG=$(shell grep ^version.tag= version.properties | cut -d= -f 2)
 endif
 
+ifndef RELDATE
+RELDATE=$(shell grep ^version.date= version.properties | cut -d= -f 2)
+endif
+
 ifneq ($(TAG),GA)
 RVERSION=$(VERSION)-$(TAG)
 else
 RVERSION=$(VERSION)
 endif
+VERSION_DATE=$(VERSION)-$(RELDATE)
 
 .PHONY: all clean
 
@@ -29,12 +34,12 @@ dist/rundeck-docs-$(RVERSION).zip: all
 
 all: $(DIRS)
 	for i in $^ ; do \
-	$(MAKE) VERSION=$(VERSION) TAG=$(TAG) -C $$i ; \
+	$(MAKE) VERSION=$(VERSION) TAG=$(TAG) VERSION_DATE=$(VERSION_DATE) -C $$i ; \
 	done ;
 
 clean: $(DIRS)
 	for i in $^ ; do \
-	$(MAKE) VERSION=$(VERSION) TAG=$(TAG) -C $$i clean ; \
+	$(MAKE) VERSION=$(VERSION) TAG=$(TAG) VERSION_DATE=$(VERSION_DATE) -C $$i clean ; \
 	done ;
 	rm -rf dist
 

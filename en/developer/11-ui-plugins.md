@@ -303,7 +303,7 @@ Here are some [UI Plugin Examples][example-code].
 
 
 
-[UIPlugin]: ../javadoc/com/dtolabs/rundeck/plugins/rundeck/UIPlugin.html
+[UIPlugin]: ${javadocbase}/com/dtolabs/rundeck/plugins/rundeck/UIPlugin.html
 [Plugin Development - Plugin Localization]: plugin-development.html#plugin-localization
 [Localization]: plugin-development.html#plugin-localization
 [Plugin Development - Internationalization/Localization for Zip files]: plugin-development.html#internationalizationlocalization-for-zip-files

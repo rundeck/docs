@@ -16,7 +16,7 @@ instance when it is being executed.
 
 ## Plugin Description
 You can define the display name, and descriptive text about your plugin by adding a
-[PluginDescription](../javadoc/com/dtolabs/rundeck/plugins/descriptions/PluginDescription.html) annotation to your plugin class.
+[PluginDescription](${javadocbase}/com/dtolabs/rundeck/plugins/descriptions/PluginDescription.html) annotation to your plugin class.
 
 Attributes of `@PluginDescription`:
 
@@ -52,9 +52,9 @@ workflow configuration.
 
 These annotation classes are used:
 
-* [PluginProperty](../javadoc/com/dtolabs/rundeck/plugins/descriptions/PluginProperty.html) - Declares a class field as a plugin configuration property
-* [SelectValues](../javadoc/com/dtolabs/rundeck/plugins/descriptions/SelectValues.html) - Declares a String property to be a "Select" property, which defines a set of input values that can be chosen from a list. Can be used with `multiOption` attribute to declare a `Set`, `List` or `String[]` and allow multiple values to be chosen. If `multiOption` is used with a String, the value will be the values joined with a `,` (comma).
-* [TextArea](../javadoc/com/dtolabs/rundeck/plugins/descriptions/TextArea.html) - Declares a String property to be rendered as a multi-line text area in the Rundeck GUI.
+* [PluginProperty](${javadocbase}/com/dtolabs/rundeck/plugins/descriptions/PluginProperty.html) - Declares a class field as a plugin configuration property
+* [SelectValues](${javadocbase}/com/dtolabs/rundeck/plugins/descriptions/SelectValues.html) - Declares a String property to be a "Select" property, which defines a set of input values that can be chosen from a list. Can be used with `multiOption` attribute to declare a `Set`, `List` or `String[]` and allow multiple values to be chosen. If `multiOption` is used with a String, the value will be the values joined with a `,` (comma).
+* [TextArea](${javadocbase}/com/dtolabs/rundeck/plugins/descriptions/TextArea.html) - Declares a String property to be rendered as a multi-line text area in the Rundeck GUI.
 
 Attributes:
 
@@ -88,7 +88,7 @@ private String fruit;
 
 ## Property Scopes
 
-You can define the scope for a property by adding `scope` to the PluginProperty annotation.  Refer to the class [PropertyScope](../javadoc/com/dtolabs/rundeck/core/plugins/configuration/PropertyScope.html).
+You can define the scope for a property by adding `scope` to the PluginProperty annotation.  Refer to the class [PropertyScope](${javadocbase}/com/dtolabs/rundeck/core/plugins/configuration/PropertyScope.html).
 
 The default effective scope if you do not specify it in the annotation is `InstanceOnly`.
 
