@@ -6,24 +6,20 @@ Rundeck customization and localization/internationalization.
 
 Rundeck uses Grails, based on Spring, which provides localization/internationalization by means of a `messages` file.
 
-For reference, see [Grails Internationalization](https://docs.grails.org/2.5.6/guide/i18n.html).
+For reference, see [Grails Internationalization](https://docs.grails.org/latest/guide/i18n.html).
 
-This file is in Java Properties format, and defines message strings.
+In order to add or override default localized messages you can create a new file: `RDECK_BASE/i18n/messages.properties`
+and place your overrides in that file, according to the normal `messages.properties` format.
 
-    webapp/WEB-INF/grails-app/i18n/messages.properties
-    webapp/WEB-INF/grails-app/i18n/messages_es_419.properties
-
-The default `messages.properties` file contains English/US strings, and formats.
-The file `messages_es_419.properties` defines Spanish strings.
-
-You can create a custom messages file for your locale, by duplicating the `messages.properties` file
-and translating the text strings, or altering the format strings.
+To override messages for a language other than English, follow the normal process for supplying these messages by adding
+the appropriate locale qualifier to your `messages.properties` file. For example, the file name for Spanish strings
+would be: `messages_es_419.properties`
 
 The Locale code you use is based on language code and country code.
 
 ### Testing your changes
 
-You can [change the locale used in Rundeck](https://docs.grails.org/2.5.6/guide/i18n.html#changingLocales)
+You can [change the locale used in Rundeck](https://docs.grails.org/latest/guide/i18n.html#changingLocales)
 by appending a `?lang=XX` to the URL in your request.
 
 ### Missing Strings
