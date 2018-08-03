@@ -58,6 +58,11 @@ parse_travis_version(){
 
 			elif  [[ $TRAVIS_BRANCH =~ ^master$ ]]; then
 				echo "Master branch, not publishing"
+			elif  [[ $TRAVIS_BRANCH =~ ^[[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+-maint$ ]]; then
+				echo "Maintenance branch, ${TRAVIS_BRANCH}"
+				local tvers=${TRAVIS_BRANCH%%-*}
+				read_version ${tvers} GA
+				PUBLISH_TAG=yes
 			else
 				echo "Not publishing branch $TRAVIS_BRANCH"
 			fi
