@@ -8,7 +8,7 @@ Rundeck uses Grails, based on Spring, which provides localization/internationali
 
 For reference, see [Grails Internationalization](https://docs.grails.org/latest/guide/i18n.html).
 
-In order to add or override default localized messages you can create a new file: `RDECK_BASE/i18n/messages.properties`
+In order to add or override the default localized messages, you can create a new file: `RDECK_BASE/i18n/messages.properties`
 and place your overrides in that file, according to the normal `messages.properties` format.
 
 To override messages for a language other than English, follow the normal process for supplying these messages by adding
@@ -21,6 +21,9 @@ The Locale code you use is based on language code and country code.
 
 You can [change the locale used in Rundeck](https://docs.grails.org/latest/guide/i18n.html#changingLocales)
 by appending a `?lang=XX` to the URL in your request.
+
+You may have to use the full locale code to activate your locale. For example, to activate simplified Chinese you will
+need to do so like this: `?lang=zh_cn`
 
 ### Missing Strings
 
