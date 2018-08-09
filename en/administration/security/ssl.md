@@ -2,22 +2,23 @@
 
 This document describes how to configure Rundeck for SSL/HTTPS
 support, and assumes you are using the rundeck-launcher standalone
-launcher.  If you are using RPM/deb install, refer to the appropriate configuration file paths from [Configuration -> Configuration Layout](../configuration/configuration-file-reference.html#configuration-layout).
+launcher.  If you are using RPM/DEB install, refer to the appropriate configuration file paths from [Configuration -> Configuration Layout](../configuration/configuration-file-reference.html#configuration-layout).
 
 (1) Before beginning, do a first-run of the launcher, as it will create
 the base directory for Rundeck and generate configuration files.
 
-        cd $RDECK_BASE;  java -jar rundeck-launcher-1.1.0.jar
+        cd $RDECK_BASE;  java -jar rundeck-3.0.1.war
 
     This will start the server and generate necessary config files.  Press
-    control-c to shut down the server.
+    control-c to shut down the server after you get below message from therminal:
+    Grails application running at http://localhost:4440 in environment: production
 
 (2)  Using the [keytool] command, generate a keystore for use as the
 server cert and client truststore. Specify passwords for key and keystore:
 
 [keytool]: https://linux.die.net/man/1/keytool-java-1.6.0-openjdk
 
-        keytool -keystore etc/keystore -alias rundeck -genkey -keyalg RSA -keypass admin -storepass admin
+        keytool -keystore etc/keystore -alias rundeck -genkey -keyalg RSA -keypass adminadmin -storepass adminadmin
     
     Be sure to specify the correct hostname of the server as the response
     to the question "What is your first and last name?".  Answer "yes" to
@@ -53,13 +54,15 @@ keystore and the appropriate passwords:
 
         vi server/config/ssl.properties
 
-    An example ssl.properties file (from the RPM package).
+    An example ssl.properties file (from the RPM and DEB packages).
 
         keystore=/etc/rundeck/ssl/keystore
         keystore.password=adminadmin
         key.password=adminadmin
         truststore=/etc/rundeck/ssl/truststore
         truststore.password=adminadmin
+    
+    The ssl.properties default keystore and truststore location path for war installation is $RDECK_BASE/etc/
             
 (5) Configure client properties.  Modify the file
 `$RDECK_BASE/etc/framework.properties` and change these properties: 
@@ -81,21 +84,22 @@ keystore and the appropriate passwords:
     4443, or to the value of your `-Dserver.https.port` runtime
     configuration property.
 
-(7) For Debian/RPM installation, uncomment line 43 in `/etc/rundeck/profile`:
+(7) For Debian installation, create/edit `/etc/default/rundeckd`, for RPM installation, create/edit `/etc/sysconfig/rundeckd`:
 
-        export RDECK_JVM="$RDECK_JVM -Drundeck.ssl.config=/etc/rundeck/ssl/ssl.properties -Dserver.https.port=${RDECK_HTTPS_PORT}"
+        export RUNDECK_WITH_SSL=true
+        export RDECK_HTTPS_PORT=1234
 
 (8) Start the server.  For the rundeck launcher, tell it where to read the ssl.properties
 
-        java -Drundeck.ssl.config=$RDECK_BASE/server/config/ssl.properties -jar rundeck-launcher-1.1.0.jar
+        java -Drundeck.ssl.config=$RDECK_BASE/server/config/ssl.properties -jar rundeck-3.0.1.war
     
     You can change port by adding `-Dserver.https.port`:
         
-            java -Drundeck.ssl.config=$RDECK_BASE/server/config/ssl.properties -Dserver.https.port=1234 rundeck-launcher-1.1.0.jar
+            java -Drundeck.ssl.config=$RDECK_BASE/server/config/ssl.properties -Dserver.https.port=1234 -jar rundeck-3.0.1.war
         
     If successful, you will see a line indicating the SSl connector has started:
 
-        Started SslSocketConnector@0.0.0.0:4443
+        Grails application running at https://localhost:1234 in environment: production
 
 ### Securing passwords
 
