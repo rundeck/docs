@@ -50,9 +50,9 @@ parse_travis_version(){
 	else
 		if [[ $TRAVIS_PULL_REQUEST == 'false' ]] && [[ "$TRAVIS_REPO_SLUG" == rundeck/docs ]] && [ -n ${TRAVIS_BRANCH} ] ; then
 			
-			if  [[  $TRAVIS_BRANCH =~ ^[[:digit:]].*x$ ]]; then
+			if  [[  $TRAVIS_BRANCH =~ ^[[:digit:]]+\.[[:digit:]]+\.x$ ]]; then
 				echo "Documentation branch ${TRAVIS_BRANCH}"
-				read_version ${TRAVIS_BRANCH} SNAPSHOT
+				read_version ${TRAVIS_BRANCH} GA
 				PUBLISH_SNAPSHOT=yes
 				
 
