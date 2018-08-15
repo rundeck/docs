@@ -29,6 +29,9 @@ application.
 Add the following properties to your rundeck-config.properties file:
 
 ```properties
+#Enable the OAuth SSO feature
+rundeck.security.oauth.enabled=true
+
 #The first two come from the Client Credentials section on your Application configuration page in Okta
 rundeck.security.oauth.okta.clientId = (Okta Client ID)
 rundeck.security.oauth.okta.clientSecret = (Okta Secret Key)
