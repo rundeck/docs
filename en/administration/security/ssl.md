@@ -152,16 +152,23 @@ Export pem cacert for use by e.g. curl:
 
 You can tell Jetty to honor
 `X-Forwarded-Proto`,  `X-Forwarded-Host`,
-`X-Forwarded-Server` and `X-Forwarded-For` headers
-by adding the following JVM property:
+`X-Forwarded-Server` and `X-Forwarded-For` headers in two ways:
+
+In [rundeck-config.properties][] you can set:
+
+    server.useForwardHeaders=true
+
+Or by declaring the following JVM property:
 
 * `rundeck.jetty.connector.forwarded` set to "true" to enable proxy forwarded support.
 
-E.g. modify the `RDECK_JVM` variable
-in the file `/etc/rundeck/profile`
+For the executable war you can specify it on the commandline `-Drundeck.jetty.connector.forwarded=true`.
+
+For RPM/DEB install you can export the `RDECK_JVM_OPTS` variable
+in the file `/etc/sysconfig/rundeckd` (RPM) or `/etc/default/rundeckd` (DEB)
 and add:
 
-    -Drundeck.jetty.connector.forwarded=true
+    RDECK_JVM_OPTS=-Drundeck.jetty.connector.forwarded=true
 
 This will enable Jetty to respond correctly
 when a forwarded request is first received.
