@@ -15,7 +15,6 @@ deploy:
   skip_cleanup: true
   on:
     all_branches: true
-    condition: "$TRAVIS_BRANCH =~ ^[[:digit:]].*x$"
 - provider: script
   script: bash scripts/ci-deploy.sh
   skip_cleanup: true
