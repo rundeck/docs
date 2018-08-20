@@ -8,17 +8,17 @@ http://support.rundeck.com/customer/en/portal/articles/2522223-enable-credssp-au
 --->
 
 
-This guide will install Rundeck PRO or Open Source as a Service on a Windows Server. It uses the Rundeck launcher installer (WAR file).
+This guide will install Rundeck PRO or Open Source as a Service on a Windows Server. It uses the Rundeck executable war installer.
  
-* Download the latest Rundeck launcher [OSS](http://rundeck.org/downloads.html) or [PRO](http://download.rundeck.com/versions.html)   
+* Download the latest Rundeck war [OSS](http://rundeck.org/downloads.html) or [PRO](http://download.rundeck.com/versions.html)   
 * Choose a root directory (e.g. C:\rundeck). This will be your  `%RDECK_BASE%`
-* Place `rundeckpro-launcher-[edition]-X.X.X.war` in that directory
+* Place `rundeckpro-[edition]-X.X.X.war` in that directory
 * Go to the `%RDECK_BASE%` (e.g. `C:\rundeck) folder and launch the installation of rundeck.
 
 ```
 set RDECK_BASE=C:\rundeck
 cd %RDECK_BASE%
-java -jar rundeckpro-launcher-[edition]-X.X.X.war
+java -jar rundeckpro-[edition]-X.X.X.war
 ```
 
 
@@ -32,7 +32,7 @@ java -jar rundeckpro-launcher-[edition]-X.X.X.war
 ```
 set CURDIR=%~dp0
 call %CURDIR%etc\profile.bat
-java %RDECK_CLI_OPTS% %RDECK_SSL_OPTS% -jar rundeckpro-launcher-[edition]-X.X.X.war --skipinstall -d  >> %CURDIR%\var\logs\service.log  2>&1
+java %RDECK_CLI_OPTS% %RDECK_SSL_OPTS% -jar rundeckpro-[edition]-X.X.X.war --skipinstall -d  >> %CURDIR%\var\logs\service.log  2>&1
 ```
 
 * Download [nssm.exe](http://nssm.cc/)
