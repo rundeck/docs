@@ -49,7 +49,7 @@ are using an unsupported Java version.
 
 See the [startup and shutdown](../maintenance/startup-and-shutdown.html) section for
 instructions on using the ``rundeckd`` shell tool to manage the
-rundeck launcher process.
+rundeck server process.
 
 ## Logging in for the first time
 
@@ -74,7 +74,7 @@ When you need to update rundeck and you can not find the relevant section on the
 * don't forget, e.g., sqljdbc41.jar in `%RDECK_BASE%\server\lib`
 * start rundeck
 
-### Launcher Options
+### Executable War Options
 
 The executable war can take a number of options to specify how the server should start. If you execute with a "-h" you will see the usage information:
 
@@ -82,7 +82,7 @@ The executable war can take a number of options to specify how the server should
 java -Xmx4g -jar rundeck-3.0.x.war -h
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    usage: java [JAVA_OPTIONS] -jar rundeck-launcher.war  [-c PATH] [-d]
+    usage: java [JAVA_OPTIONS] -jar rundeck.war  [-c PATH] [-d]
            [--installonly] [-s PATH] [-b PATH] [-p PATH] [-h] [-x PATH]
            [--skipinstall] [--serverdir PATH] [--datadir PATH]
 
@@ -102,13 +102,13 @@ java -Xmx4g -jar rundeck-3.0.x.war -h
      -x,--bindir <PATH>       The install directory for the tools used by
                               users.
 
-These options can be used to customize the directories used by the launcher.
+These options can be used to customize the directories used by the executable war.
 By default all the directories are organized by convention within the current
 working directory where the executable war is located.
 
 ### System Properties
 
-You can also customize the launcher behavior by using some java system properties.
+You can also customize the executable war behavior by using some java system properties.
 
 Specify these properties using the normal `-Dproperty=value` commandline options
 to the `java` command:
