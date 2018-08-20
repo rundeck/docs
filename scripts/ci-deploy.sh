@@ -171,13 +171,8 @@ site_update_primary(){
 }
 
 publish_tag(){
-	local do_release=${1:-no}
 	gen_docs_publish_repo ${VERSION_FULL}
 	site_add_or_update_git_submodule ${VERSION_FULL} yes
-
-	if [ "$TAG" == "GA" ] && [ "$do_release" == "yes" ]; then
-		site_update_primary ${VERSION_FULL}
-	fi
 }
 publish_snapshot(){
 
@@ -189,18 +184,23 @@ main(){
 
 	parse_travis_version
 	
-	if [ -z $VERSION ] ; then
+	if [ -z "$VERSION" ] ; then
 		read_version 
 	fi
-	if [ $PUBLISH_TAG == 'yes' ]; then
+	
+	if [ "$PUBLISH_TAG" == 'yes' ]; then
 		echo "Publishing docs via tag: $VERSION_FULL"
-		echo "(RELEASE: $RELEASE)"
-		publish_tag ${RELEASE}
-	else
-		if [ $PUBLISH_SNAPSHOT == 'yes' ] ; then
-			echo "Publish SNAPSHOT via branch ${VERSION}"
-			publish_snapshot
-		fi
+		publish_tag 
+	fi
+	
+	if [ "$TAG" == "GA" ] && [ "$RELEASE" == "yes" ]; then
+		echo "Update /docs to version: $VERSION_FULL"
+		site_update_primary "${VERSION_FULL}"
+	fi
+
+	if [ "$PUBLISH_SNAPSHOT" == 'yes' ] ; then
+		echo "Publish SNAPSHOT via branch ${VERSION}"
+		publish_snapshot
 	fi
 }
 

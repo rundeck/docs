@@ -30,12 +30,14 @@ parse_travis_version(){
 		local tvers=${TRAVIS_TAG:1}
 		local ttag=GA
 		local release=yes
+		PUBLISH_TAG=yes
 		if [[ $tvers =~ -[[:alpha:][:digit:]-]+$ ]] ; then
 			ttag=${tvers#*-}
 			tvers=${tvers%%-*}
 			release=no
 		fi
 		if [[ $ttag =~ ^maint ]] ; then
+			PUBLISH_TAG=no
 			release=no
 			if [[ $ttag =~ .*latest ]] ; then
 				release=yes
@@ -43,12 +45,11 @@ parse_travis_version(){
 			ttag=GA
 		fi
 		read_version ${tvers} ${ttag}
-		PUBLISH_TAG=yes
 		
 		RELEASE=$release
 
 	else
-		if [[ $TRAVIS_PULL_REQUEST == 'false' ]] && [[ "$TRAVIS_REPO_SLUG" == rundeck/docs ]] && [ -n ${TRAVIS_BRANCH} ] ; then
+		if [[ $TRAVIS_PULL_REQUEST == 'false' ]] && [[ "$TRAVIS_REPO_SLUG" == rundeck/docs ]] && [ -n "${TRAVIS_BRANCH}" ] ; then
 			
 			if  [[  $TRAVIS_BRANCH =~ ^[[:digit:]]+\.[[:digit:]]+\.x$ ]]; then
 				echo "Documentation branch ${TRAVIS_BRANCH}"
