@@ -55,6 +55,11 @@ View the [Index](#index) listing API paths.
 
 Changes introduced by API Version number:
 
+**Version 26**:
+
+* Udated Endpoints:
+    - [`GET /api/V/projects`][/api/V/projects] - label to projects response.
+
 **Version 25**:
 
 * New Endpoints.
@@ -5154,6 +5159,8 @@ List the existing projects on the server.
 An Item List of `projects`, each `project` of the form specified in the [Getting Project Info](#getting-project-info) section.
 
 *Since API version 11*: JSON content can be retrieved with `Accept: application/json`
+
+*Since API version 26*: add the project `label` to the response
 
 ~~~~~ {.json}
 [
