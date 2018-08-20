@@ -118,6 +118,88 @@ Increase the concurrent shell issue:
 set-item wsman:\localhost\shell\maxshellsperuser 50 
 ```
 
+
+## Enable CredSSP Authentication On Windows Domain
+
+### On the Rundeck server
+
+#### Enable CredSSP
+
+Open a powershell windows and run:
+
+```
+Enable-WSManCredSSP -Role "Client" -DelegateComputer "*.something.com"
+```
+
+Where `something.com` is the DNS domain of the target computer
+
+or
+
+```
+Enable-WSManCredSSP -Role "Client" -DelegateComputer "*"
+```
+
+
+#### Allow Delegating Fresh Credentials
+
+* Click **Start**, type **mmc** and then click **OK**.
+* Click **File and then click **Add/Remove Snap-in**.
+* Click **Group Policy Object** and then click **Add**.
+* Select **Local Computer** and then click **Finish**.
+* Go to **Computer Policy\Administrative Templates\System\Credentials Delegation\Allow Delegating Fresh Credentials** → Set to **enabled** 
+
+![Enable delegating fresh credentials](../../../figures/allow-delegating-fresh-credentials-1.png)
+
+* Add **WSMAN/*** to list of computers and check the box for **Concatenate OS defaults with input above**.
+
+![Add servers to list](../../../figures/allow-delegating-fresh-credentials-2.png)
+
+#### Enable CredSSP authentication on Winrm Client
+
+Open a CMD Prompt as an Administrator user and execute:
+
+```
+winrm set winrm/config/client/auth @{CredSSP="true"}
+```
+
+You need to have winrm service configured and running.
+
+
+### On the remote node
+
+#### Enable CredSSP
+
+Open a powershell windows and run:
+
+```
+Enable-WSManCredSSP -Role "Server"
+```
+
+#### Make sure that you enable the CredSSP on WinRM Service settings
+
+To get the WinRm Service config:
+
+```
+winrm get winrm/config/service
+```
+
+To enable the CredSSP:
+
+```
+winrm set winrm/config/service/auth @{CredSSP="true"}
+```
+
+### Troubleshooting
+
+If you are using a non-administrator user (or a not- domain-administrator user) to execute command to remote nodes, you need to set up the access on the remote machine ( to the user or some of its groups, eg: Domain User group).
+
+To add permissions to non-administrator user to execute remote commands:
+
+```
+Set-PSSessionConfiguration Microsoft.Powershell -ShowSecurityDescriptorUI
+```
+
+
 ### Troubleshooting
 
 If you get "Access is denied" error when you try to access to a shared folder on the remote node, it is possible that you must use the [CredSSP autentication](http://support.rundeck.com/customer/portal/articles/2522223-enable-credssp-authentication-windows).
@@ -163,11 +245,5 @@ Set-NetConnectionProfile -InterfaceIndex [INTERFAZ_INDEX] -NetworkCategory Priva
 
 It could be necessary to change the user’s log-on in tomcat service when the remote connection does not work:
 
-![Tomcat settings](../../figures/powershell-troubleshooting.png)
-
-
-For further information about winrm and PowerShell plug-in see:
-
-* [http://support.rundeck.com/customer/en/portal/articles/1939728-powershell-plugins](http://support.rundeck.com/customer/en/portal/articles/1939728-powershell-plugins)
-* [https://github.com/rundeck-plugins/rundeck-winrm-plugin](https://github.com/rundeck-plugins/rundeck-winrm-plugin)
+![Tomcat settings](../../../figures/powershell-troubleshooting.png)
 

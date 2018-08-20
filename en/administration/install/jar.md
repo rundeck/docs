@@ -18,14 +18,14 @@ Use the executable war as an alternative to a system package:
 1. Copy the executable war to the installation directory.
 
     ~~~~~~~ {.bash}
-    cp rundeck-3.0.0.war $RDECK_BASE
+    cp rundeck-3.0.x.war $RDECK_BASE
     ~~~~~~~
 
-1. Change directory and run the jar.
+1. Change directory and run the WAR.
 
     ~~~~~~~ {.bash}
     cd $RDECK_BASE    
-    java -Xmx4g -jar rundeck-3.0.0.war
+    java -Xmx4g -jar rundeck-3.0.x.war
     ~~~~~~~
 
 1. Wait for the Started message.
@@ -79,10 +79,10 @@ When you need to update rundeck and you can not find the relevant section on the
 The executable war can take a number of options to specify how the server should start. If you execute with a "-h" you will see the usage information:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {.bash}
-java -Xmx4g -jar rundeck-3.0.0.jar -h
+java -Xmx4g -jar rundeck-3.0.x.war -h
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    usage: java [JAVA_OPTIONS] -jar rundeck-launcher.jar  [-c PATH] [-d]
+    usage: java [JAVA_OPTIONS] -jar rundeck-launcher.war  [-c PATH] [-d]
            [--installonly] [-s PATH] [-b PATH] [-p PATH] [-h] [-x PATH]
            [--skipinstall] [--serverdir PATH] [--datadir PATH]
 
