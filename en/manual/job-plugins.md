@@ -11,6 +11,7 @@
 * [Local command](node-steps/builtin-node-steps.html#local-command-step)
 * [Data node](node-steps/builtin-node-steps.html#data-node-step)
 * [SQL Runner (Pro)](node-steps/sqlrunner-plugin-pro.html)
+* [Jira (beta) (Pro)](node-steps/jira-node-step-plugins.html)
 
 ## Workflow Steps
 
@@ -27,6 +28,7 @@
 * [Github (Pro)](workflow-steps/github-script-plugin-pro.html)
 * [Progress Badge (Pro)](workflow-steps/progress-badge-plugin-pro.html#progress-badge-workflow-step-plugin)
 * [ServiceNow (Pro)](workflow-steps/servicenow-plugins.html)
+* [Jira (beta) (Pro)](workflow-steps/jira-workflow-step-plugins.html)
 
 ## Notifications
 
@@ -36,6 +38,7 @@ explanation on how job notifications work, see [Creating jobs#Job Notifications]
 
 * [Email](notifications/email.html)
 * [Webhooks](notifications/webhooks.html)
+* [Jira (beta) (Pro)](notifications/jira-notification-plugins.html)
 
 ## Workflow Strategy
 
