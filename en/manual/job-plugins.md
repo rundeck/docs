@@ -11,6 +11,7 @@
 * [Local command](node-steps/builtin-node-steps.html#local-command-step)
 * [Data node](node-steps/builtin-node-steps.html#data-node-step)
 * [SQL Runner (Pro)](node-steps/sqlrunner-plugin-pro.html)
+* [VMWare (Pro)](node-steps/vmware.html)
 
 ## Workflow Steps
 
@@ -27,6 +28,7 @@
 * [Github (Pro)](workflow-steps/github-script-plugin-pro.html)
 * [Progress Badge (Pro)](workflow-steps/progress-badge-plugin-pro.html#progress-badge-workflow-step-plugin)
 * [ServiceNow (Pro)](workflow-steps/servicenow-plugins.html)
+* [VMWare (Pro)](workflow-steps/vmware.html)
 
 ## Notifications
 
