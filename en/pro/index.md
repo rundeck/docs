@@ -35,17 +35,17 @@ granted if a user's group membership meets the requirements of the policy.
 
 ## License
 
-[License](../administration/configuration/license-pro.html)
+See: [Rundeck Pro Licensing and Support](../administration/configuration/license-pro.html)
 
 ## General configuration
 
-Rundeck Pro supports all properties described in the [OSS version](http://rundeck.org/docs/administration/configuration-file-reference.html).
+Rundeck Pro supports all properties described in the [OSS version](../administration/configuration/configuration-file-reference.html).
 
-## Node Sources
+## Node Model Sources
 
 Node Sources allow you to import metadata about the nodes you want to run
 Rundeck jobs on. Node Sources are configured on Rundeck Pro in the same was as
-the OSS version, described in [Managing Node Sources](http://rundeck.org/docs/administration/managing-node-sources.html).
+the OSS version, described in [Node Model Sources](../administration/projects/resource-model-sources/index.html).
 
 ## Authentication
 
@@ -58,7 +58,7 @@ For more details, see [Authenticating Users](../administration/security/authenti
 
 Similar to OSS Rundeck, Rundeck Pro can securely store private keys that the Rundeck Node Executor and use for sessions.
 
-For momre details, see [Key Storage](http://rundeck.org/docs/administration/key-storage.html)
+For momre details, see [Key Storage](../administration/security/key-storage.html)
 
 ## Remote job execution (Pro-only)
 
@@ -75,10 +75,7 @@ For more details, see [Remote Job Execution](../administration/configuration/rem
 
 ### Database
 
-* [mysql](../administration/configuration/storage/using-mysql-as-a-database-backend.html)
-* [postgres](../administration/configuration/storage/using-postgres-as-a-database-backend.html)
-* [oracle](../administration/configuration/storage/using-oracle-as-a-database-backend.html)
-* [mssql](../administration/configuration/storage/using-microsoft-sql-server-as-a-database-backend.html)
+See: [Database Backends](../administration/configuration/database/index.html).
 
 ### Loadbalancer (Pro-only)
 

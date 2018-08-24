@@ -40,7 +40,8 @@ Encrypted key/config storage enabled by default. The default encryption algorith
 
 Note: If you receive an error message about encryption policy strength with creating projects or keys you will need to upgrade your Java 1.8 version, or set the encryption algorithm in `rundeck-config.properties` to a lower strength algorithm such as `PBEWithMD5AndDES`
 
-Further information about encrypted key/config storage on [this](http://rundeck.org/docs/plugins-user-guide/bundled-plugins.html#jasypt-encryption-plugin) link.
+Further information about encrypted key/config storage on [this](../administration/configuration/plugins/bundled-plugins.html#jasypt-encryption-plugin) link.
 
 ### What is next? 
-Next, learn how to [create your first Rundeck Pro project](http://rundeck.org/docs/manual/getting-started.html#project-setup)
+
+Next, learn how to [create your first Rundeck Pro project](../manual/getting-started.html#project-setup)
