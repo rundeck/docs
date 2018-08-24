@@ -13,6 +13,8 @@ deploy:
 - provider: script
   script: bash scripts/ci-deploy.sh
   skip_cleanup: true
+  on:
+    tags: true
 env:
   global:
   - secure: Z+D2UbGnKNoM5mHB2jI0/4OxcYPwigrbTgQbLeiD73OvyGfh7lfary4qxCgacJh3ffnF7KPXjWj6l9ZVpsot5+T9M2zgL/t7XT1iC4edA/+JqVudV1KGE8ZpCUUfWbaWzSJ+18fRH+2bFUxwFwX9GafJNv2kx5lOvpGtJLiPVUOrcDFtCLQgUJWF0GgZTaeNUiOkd+55gGLdZfdQk8LjtO7zORncOKIK3Ek+nNt3KyPXj49Ww2SJfTrEvaJSeIbc5DjRbFQs7WHqFMaJRexV+FTf6eCCPf1K77tccZZ0HNiVF3MGZXy0bPoXTcrWv64ZJpyHEFhkMpn7OwXUal8VCD1siNJ4Il/6LFCMBWt8Rw1ORNzOV4giDhaUJMbdG/bO1bA7EJ848Osy2MMYk9i7KL2Dpu4e48TZkbYQgp7ZF04uOJ6lFVrHhKlkFE6Njo3V/nTfb5btJE8eocQoV23kK5IonWHDmmgUiWVdvodjgDiS4eo4FzOehBSiVFeBUEG+QHH4JsPvDdWYHHCpdDlLhp0Yo7P4Q9Y68C0Wttjo2ZfJIGm1bdckNHaAE6qR6GHE+OK3lItbLYUwPA+kqiwuK/T7/GuHI3U0xJbw/OQrlIoM0Ds323870z3S0V7yTYCznj+oOqxp8PwQKM6dXi6zBzuxfaK/jjPbtYksglmr2uE=
