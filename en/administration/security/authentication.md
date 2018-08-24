@@ -35,6 +35,13 @@ Rundeck has three basic JAAS modules.
 
 By default a new installation uses the realm.properties method.
 
+Each method determines whether the user is authenticated, and what *roles* they have.
+
+The list of roles can be accepted as-is (default), or you can add a prefix to them using the following config in rundeck-config.properties:
+
+    rundeck.security.jaasRolePrefix=PREFIX_
+
+
 ## PropertyFileLoginModule
 
 These instructions explain how to manage user credentials for
