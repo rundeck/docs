@@ -78,7 +78,7 @@ SSH Connection settings (See [Plugins User Guide > SSH Plugins](../../manual/nod
 Other settings:
 
 * `framework.log.dispatch.console.format`: Default format for non-terse node execution logging run by the `dispatch` CLI tool.
-* `execution.script.tokenexpansion.enabled`: Whether inline script token expansion is enabled, default `true`.  If `false`, the "Inline Script Content" syntax described in [User Guide > Jobs > Context Variable Usage](../../manual/creating-job-workflows.html#context-variables) is disabled.
+* `execution.script.tokenexpansion.enabled`: Whether inline script token expansion is enabled, default `true`.  If `false`, the "Inline Script Content" syntax described in [[page:manual/job-workflows.md#context-variables]] is disabled.
 
 Static authentication tokens for API access:
 

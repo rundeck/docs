@@ -32,7 +32,7 @@ lower text field.
 ![Script URL step type](../../figures/fig0406.png)
 
 
-The URL can contain [Context Variables](#context-variables) that will be expanded at runtime.
+The URL can contain [Context Variables][page:manual/job-workflows.md#context-variables] that will be expanded at runtime.
 
 ### Job reference step
 
