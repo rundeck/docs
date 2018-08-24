@@ -660,7 +660,7 @@ def collectRelativeLinks(context, page, linkset=[]){
             if(!sublinks[parts[0]]){
                 sublinks[parts[0]]=[parts[1]]
             }else{
-                sublinks[parts[0]]<<[parts[1]]
+                sublinks[parts[0]]<<parts[1]
             }
         }
     }
