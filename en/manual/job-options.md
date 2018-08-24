@@ -195,7 +195,7 @@ The `option.NAME` variable will contain a unique ID identifying the uploaded fil
 Option values can be passed to scripts as an argument or referenced
 inside the script via a named token. Each option value is defined in the Options context variables as `option.NAME`.
 
-See the [Context Variables](#context-variables) Section.
+See the [Context Variables][page:manual/job-workflows.md#context-variables] Section.
 
 **Example:**
 
