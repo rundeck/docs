@@ -60,7 +60,7 @@ Similar to OSS Rundeck, Rundeck Pro can securely store private keys that the Run
 
 For momre details, see [Key Storage](../administration/security/key-storage.html)
 
-## Remote job execution (Pro-only)
+## Remote job execution
 
 This feature allows Rundeck Pro cluster members to forward job executions to
 other cluster members based on a policy configuration. By default, each member
@@ -77,7 +77,7 @@ For more details, see [Remote Job Execution](../administration/configuration/rem
 
 See: [Database Backends](../administration/configuration/database/index.html).
 
-### Loadbalancer (Pro-only)
+### Loadbalancer
 
 A loadbalancer allows you to achieve high availability in your Rundeck Pro
 installation by routing http traffic across several redundant Rundeck Pro
@@ -85,13 +85,13 @@ instances.
 
 To learn how to set up a loadbalancer for Rundeck Pro, see [Loadbalancer](../administration/cluster/loadbalancer/index.html)
 
-### Autotakeover (Pro-only)
+### Autotakeover
 
 If a cluster member goes down, all scheduled jobs on that cluster member must be moved to another cluster node. This process can be performed automatically using the heartbeat and Autotakeover features in Rundeck Pro version 2.1.0 and later releases.
 
 To learn how to set up Autotakeover, see [Autotakeover](../administration/cluster/autotakeover/index.html)
 
-### Logstore (Pro-only)
+### Logstore
 
 All Cluster members must share the same log storage, this can be achieved in two ways:
 
@@ -100,7 +100,34 @@ All Cluster members must share the same log storage, this can be achieved in two
 done in all the cluster members.
 * Plugins: Using an Execution log storage plugin.
 
-So far we have the following plugins for execution log storage:
+Some plugins that can be used:
 
-* [AWS S3](https://github.com/rundeck-plugins/rundeck-s3-log-plugin): This plugin works with any storage compatible with AWS S3 API, eg: S3, Minio, etc.
-* [Azure Blob Storage](https://github.com/rundeck-plugins/rundeck-azure-plugin)
+#### Rundeck Pro S3 Log Storage Plugin
+
+This plugin provides Log Storage via Amazon AWS S3, or any storage compatible with AWS S3 API, eg: S3, [Minio], etc.
+
+It is based on the open source [Rundeck S3 Log Storage Plugin](https://github.com/rundeck-plugins/rundeck-s3-log-plugin).
+
+It adds the additional feature:
+
+* *Checkpoint log storage*:  This enables viewing the execution logs while the execution is running.
+
+##### Configuration
+
+Enable the ExecutionFileStorage provider named `com.rundeck.rundeckpro.amazon-s3` in your rundeck-config file:
+
+	rundeck.execution.logs.fileStoragePlugin=com.rundeck.rundeckpro.amazon-s3
+
+The "checkpoint log storage" feature is enabled by default.
+
+If you wish to disable it you can set this in your framework.properties:
+
+	framework.plugin.ExecutionFileStorage.com.rundeck.rundeckpro.amazon-s3.checkpoint=false
+
+Please refer to the [open source plugin](https://github.com/rundeck-plugins/rundeck-s3-log-plugin) for other configuration. **Note**: Be sure to use `com.rundeck.rundeckpro.amazon-s3` in place of `org.rundeck.amazon-s3`.
+
+#### Azure Blob Storage Plugin
+
+See: [Azure Blob Storage](https://github.com/rundeck-plugins/rundeck-azure-plugin)
+
+[minio]: https://minio.io/
