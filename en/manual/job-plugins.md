@@ -2,6 +2,7 @@
 
 ## Node Steps
 
+* [Jira Node Steps (Pro)][page:manual/node-steps/jira.md]
 * [Command step](node-steps/builtin-node-steps.html#command-step)
 * [Script step](node-steps/builtin-node-steps.html#script-step)
 * [Scipt file](node-steps/builtin-node-steps.html#script-file-step)
@@ -12,6 +13,7 @@
 * [Data node](node-steps/builtin-node-steps.html#data-node-step)
 * [SQL Runner (Pro)](node-steps/sqlrunner-plugin-pro.html)
 * [VMWare (Pro)](node-steps/vmware.html)
+
 
 ## Workflow Steps
 
@@ -26,6 +28,7 @@
 * [Data step](workflow-steps/builtin-workflow-steps.html#data-step)
 * [File Transfer (Pro)](workflow-steps/file-transfer-plugins.html)
 * [Github (Pro)](workflow-steps/github-script-plugin-pro.html)
+* [Jira Workflow Steps (Pro)][page:manual/workflow-steps/jira.md]
 * [Progress Badge (Pro)](workflow-steps/progress-badge-plugin-pro.html#progress-badge-workflow-step-plugin)
 * [ServiceNow (Pro)](workflow-steps/servicenow-plugins.html)
 * [VMWare (Pro)](workflow-steps/vmware.html)
@@ -37,6 +40,7 @@ starts or finishes, with either success or failure. For a general
 explanation on how job notifications work, see [Creating jobs#Job Notifications](creating-jobs.html#job-notifications)
 
 * [Email](notifications/email.html)
+* [Jira Notification (Pro)][page:manual/notifications/jira.md]
 * [Webhooks](notifications/webhooks.html)
 
 ## Workflow Strategy
