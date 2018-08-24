@@ -114,7 +114,7 @@ Provides a Workflow Step:
 
 File: `rundeck-flow-control-plugin-${VERSION}.jar`
 
-## Jasypt Encryption Plugin
+## Jasypt Encryption Plugin {#jasypt-encryption-plugin}
 
 Provides an encryption [storage converter](../storage-facility.html#storage-converters) for the Storage facility.  Can be used to encrypt the contents of Key Storage,
 and Project Configuration stored in the DB or on disk.
@@ -122,7 +122,7 @@ and Project Configuration stored in the DB or on disk.
 This plugin provides password based encryption for storage contents.  
 It uses the [Jasypt][] encryption library. The built in Java JCE is used unless another provider is specified, [Bouncycastle][] can be used by specifying the 'BC' provider name.
 
-[Jasypt]: (http://jasypt.org)
+[Jasypt]: http://jasypt.org
 [Bouncycastle]: https://www.bouncycastle.org/
 
 Password, algorithm, provider, etc can be specified directly, or via environment variables (the `*EnvVarName` properties), or Java System properties (the `*SysPropName` properties).

@@ -136,28 +136,9 @@ Enable DB storage for Project configurations, and Key Storage. Optionally enable
 
 For more info refer to:
 
-* [Administrator Guide - Key Storage](http://rundeck.org/docs/administration/key-storage.html)
-* [Plugins User Guide - Storage Plugins - Jasypt Encryption](http://rundeck.org/docs/plugins-user-guide/storage-plugins.html#jasypt-encryption-converter-plugin)
-* [Plugins User Guide - Configuring - Storage Plugins](http://rundeck.org/docs/plugins-user-guide/configuring.html#storage-plugins)
-
-Modify `rundeck-config.properties`
-    
-    # Enables DB for Project configuration storage
-    rundeck.projectsStorageType=db
-
-    # Encryption for project config storage
-    rundeck.config.storage.converter.1.type=jasypt-encryption
-    rundeck.config.storage.converter.1.path=projects
-    rundeck.config.storage.converter.1.config.password=mysecret
-
-    # Enable DB for Key Storage
-    rundeck.storage.provider.1.type=db
-    rundeck.storage.provider.1.path=keys
-
-    # Encryption for Key Storage
-    rundeck.storage.converter.1.type=jasypt-encryption
-    rundeck.storage.converter.1.path=keys
-    rundeck.storage.converter.1.config.password=mysecret
+* [[page:administration/security/key-storage.md]]
+* [[page:administration/configuration/plugins/bundled-plugins.md#jasypt-encryption-plugin]]
+* [[page:administration/configuration/storage-facility.md]]
 
 ## Start up Rundeck
 

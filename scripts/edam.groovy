@@ -22,6 +22,7 @@
 */
 import static java.util.regex.Pattern.quote
 import static java.util.regex.Pattern.compile
+import java.nio.file.Paths
 
 flags=[:]
 flagDefaults=[pdocextra:[],help:false,doToc:true,doNav:true,tocAsIndex:true,genTocOnly:false,cleanUpAuto:true,verbose:false,recursive:false,preview:false]
@@ -53,7 +54,8 @@ optionsDefaults=[
     srcpagelink:'Edit',
     srcbaseurl:'',
     bugpagelink:'Report',
-    bugpageurl:''
+    bugpageurl:'',
+    fulltitleseparator:' - '
     ]
 optionDescs=[
     singleIndex: 'true/false, if only a single markdown file, use it as the index HTML file.',
@@ -80,6 +82,7 @@ optionDescs=[
     srcbaseurl:'Base URL to link to edit this page.',
     bugpagelink:'Text for issue report link',
     bugpageurl:'Link to report issue for the page',
+    fulltitleseparator:'Separator string for generating full page link titles',
 
     ]
     
@@ -158,7 +161,24 @@ def replaceParams(String templ,Map params,String tokenStart='${', String tokenEn
     return replaced
 }
 def expandFile(File file,Map extraVars=[:]){
-    (pagevars+extraVars)?writeTempFile(replaceParams(file.text,pagevars+extraVars,options.tokenStart,options.tokenEnd)):file
+    filterFile(file,[expandFileVarsFilter(extraVars)])
+}
+def expandFileVarsFilter(Map extraVars=[:]){
+    [
+        applies:{file,text->(pagevars+extraVars)},
+        apply:{text->
+            replaceParams(text,pagevars+extraVars,options.tokenStart,options.tokenEnd)
+        }
+    ]
+}
+def filterFile(File file,List filters){
+    def text=null
+    filters.each{filter->
+        if(filter.applies(file,text)){
+            text = filter.apply(text!=null?text:file.text)
+        }
+    }
+    text!=null?writeTempFile(text):file
 }
 def outfileName(title,index,file,toc){
     def filestub=replaceParams(options.pageFileName,[title:titleToIdentifier(title),index:index,name:file.name.replaceAll(/\.(md|txt)$/,'')])
@@ -465,6 +485,7 @@ def prepareAll(toc,File dir,File rootdir, File tocsrcfile){
     
     return allpages
 }
+java.util.regex.Pattern PageLinkMatch=compile('(?s)\\[page:([^\\]\\s]+)\\]')
 /**
  * Generate output files using pandoc. 
  * order of output:
@@ -473,7 +494,7 @@ def prepareAll(toc,File dir,File rootdir, File tocsrcfile){
  * (-1 and 0 are merged if flags.tocAsIndex)
  * 1: first page, ...
  */
-def generateAll(allpages,toc,templates,File dir, File outdir, crumbs, subdirs){
+this.generateAll={context,allpages,toc,templates,File dir, File outdir, crumbs, subdirs->
     def navfileTop=addTempFile(new File(dir,'temp-nav-top.html'))
     def navfileBot=addTempFile(new File(dir,'temp-nav-bot.html'))
     def tocdoc = allpages.find{it.index==0}
@@ -547,9 +568,29 @@ def generateAll(allpages,toc,templates,File dir, File outdir, crumbs, subdirs){
         if(titem.index>0){
             pargs<<"--toc"
         }
-        pargs.add(expandFile(titem.file))
+
+        def text=titem.file.text
+        def linkset=[]
+        def linksdoc=null
+        if(context.siteLinks && text.contains('[page:')){
+            //add any other content such as generated page: link definitions
+            //generate relative links for the rest of the site
+            linkset = (text=~PageLinkMatch).collect{it[1]}
+            linksdoc=generateRelativeLinks(context, titem, linkset)
+            println "linkset: ${linkset}"
+            println "links: ${linksdoc.text}"
+            
+        }
+        def filters=[
+            expandFileVarsFilter(),
+            replacePageLinksFilter(context, titem, linkset)
+        ]
+        pargs.add(filterFile(titem.file,filters))
         if(titem.multifiles){
             pargs.addAll titem.multifiles
+        }
+        if(linksdoc){
+            pargs<<linksdoc
         }
         if(!flags.preview){
             def proc=runPandoc(pargs)
@@ -572,6 +613,151 @@ def generateAll(allpages,toc,templates,File dir, File outdir, crumbs, subdirs){
             print " - ${titem.title}"
             println ""
         }
+    }
+    allpages
+}
+/**
+* return [commoncount,backtrack]
+* where commoncount is # of path segments in common from root
+* backtrack: # of path segments different from common ancestor
+*/
+def relativeCrumbs(page,crumbs){
+    def i=0
+    while(i<page.size() && i<crumbs.size() && page[i] == crumbs[i]){
+         i++
+    }
+    i
+}
+def relativePath(targetPath,srcpath){
+    def parts = targetPath.split('/')
+    def srcparts=srcpath.split('/').toList()
+    srcparts.pop()
+    def common=relativeCrumbs(parts,srcparts)
+    ("../"*(srcparts.size() - common) )+ (parts[common..<parts.size()].join('/'))
+}
+def anchorToTitle(anchor){
+    anchor.split('-')*.capitalize().join(' ')
+}
+def collectRelativeLinks(context, page, linkset=[]){
+    def pagesrcpath=page.rootdir.toPath().relativize(page.srcfile.toPath())
+    //links to files without #anchor
+    def srclinkset=linkset?.collect{
+        it.indexOf('#')>0?it.substring(0,it.indexOf('#')):it
+    }
+
+    //find broken links
+    def broken=srclinkset.findAll{
+        !context.siteLinks[it]
+    }
+    if(broken){
+        throw new RuntimeException("Document ${pagesrcpath}: These page links were not found: $broken")
+    }
+
+    def sublinks = [:]
+    linkset.each{
+        def parts=it.split('#',2)
+        if(parts.length>1){
+            if(!sublinks[parts[0]]){
+                sublinks[parts[0]]=[parts[1]]
+            }else{
+                sublinks[parts[0]]<<[parts[1]]
+            }
+        }
+    }
+    srclinkset.collect{ srcpath ->
+        def pagedata=context.siteLinks[srcpath]
+        def fullpath=pagedata.alltitles? pagedata.alltitles[1..<pagedata.alltitles.size()]:[pagedata.title]
+        def fulltitle=fullpath.join(options.fulltitleseparator)
+        def targetpage=context.siteLinks[pagesrcpath.toString()]
+        def outpath= targetpage.outpath
+            
+        //determine relative path for target page, based on pagedate.crumbs and crumbs
+        // def relpath = Paths.get(outpath).relativize(Paths.get(pagedata.outpath)).toString()
+        def relpath = relativePath(pagedata.outpath,outpath)
+        def linkdefinitions=
+        [
+            [srcpath:srcpath,relpath:relpath,fulltitle:fulltitle,title:pagedata.title]
+        ]
+        sublinks[srcpath]?.each{anchor->
+            linkdefinitions<<[
+                [srcpath:srcpath+'#'+anchor,relpath:relpath+'#'+anchor,fulltitle:fulltitle + options.fulltitleseparator + anchorToTitle(anchor),title:pagedata.title]   
+            ]
+        }
+        linkdefinitions
+    }.flatten()
+}
+def generateRelativeLinksContent(context, page,linkset=[]){
+    collectRelativeLinks(context,page,linkset).collect{ link ->
+        "[page:${link.srcpath}]: ${link.relpath} (${link.fulltitle})"
+    }.findAll{it}.join('\n')
+}
+def generateRelativeLinks(context, page,linkset){
+    writeTempFile(generateRelativeLinksContent(context,page,linkset))
+}
+
+def replacePageLinksFilter(context,page,linkset){
+    def linksdata=collectRelativeLinks(context,page,linkset)
+    def linksmap=linksdata.collectEntries{[it.srcpath,it]}
+    def linksregex=java.util.regex.Pattern.compile('(?s)(\\[\\[page:([^\\]\\s]+)\\]\\])')
+    [
+        applies:{file,text->
+            linkset
+        },
+        apply:{text->
+            text.replaceAll(linksregex){match->
+                def link=linksmap[match[2]]
+                "[${link.fulltitle}][page:${link.srcpath}]"
+            }
+        }
+    ]
+}
+
+this.scanAll={context,allpages,toc,templates,File dir, File outdir, crumbs, subdirs->
+    def tocdoc = allpages.find{it.index==0}
+    def index = allpages.find{it.index==-1}
+    if(tocdoc){
+        //createTocMdFile(flags.genTocOnly?outdir:dir,toc,tocdoc.title,tocdoc.content,subdirs)
+    }
+    if(flags.genTocOnly){
+        return allpages
+    }
+    def getPageData={titem->
+         def srcpath= titem.rootdir.toPath().relativize(titem.srcfile.toPath()).toString()
+        def outfile=new File(outdir,titem.outfile)
+        def outpath= context.outputdir.toPath().relativize(outfile.toPath()).toString()
+        [srcpath:srcpath,title:chapLinkTitle(titem),outpath:outpath]
+    }
+    allpages.eachWithIndex{titem,x->
+
+        def pagedata=getPageData(titem)
+        
+        pagedata.crumbs=new ArrayList(crumbs)
+        if(tocdoc && titem.index!=tocdoc.index ){
+            //all pages but the toc page
+            pagedata.crumbs<<tocdoc
+            // navs.tocpage=tocdoc.title
+            // navs.tocpagelink=tocdoc.outfile
+        }else if(!tocdoc && index && titem.index!=index.index){
+            //all pages but the toc page
+            pagedata.crumbs<<index
+            // navs.tocpage=index.title
+            // navs.tocpagelink=index.outfile
+        }
+        if(pagedata.crumbs){
+            def titlepaths = pagedata.crumbs.collect{c->
+                c.placeholder?c.dir.name:c.title
+            }
+            pagedata.alltitles=(titlepaths+[pagedata.title])
+        }else{
+            pagedata.alltitles = [pagedata.title]
+        }
+        if(!context.siteLinks){
+            context.siteLinks=[(pagedata.srcpath):pagedata]
+        }else{
+            context.siteLinks[pagedata.srcpath]=pagedata
+        }
+        
+        println "${pagedata.srcpath} > ${pagedata.title}(${pagedata.outpath}) = ${pagedata.alltitles}"
     }
     allpages
 }
@@ -728,7 +914,20 @@ def printHelp(){
  * rdepth = remaining dir depth to follow, -1 for indefinite
  * crumbs = breadcrumbs from upper directories, in order
  */
-def run(File rootdir, File docsdir, File tdir, File outputdir, rdepth=0, crumbs=[]){
+def run(File rootdir, File docsdir, File tdir, File outputdir, rdepth, crumbs){
+    def context=[outputdir:outputdir]
+    def result=recurse_dirs(context,rootdir,docsdir,tdir,outputdir,rdepth,crumbs,scanAll)
+    // println "result-> $result"
+    // println "context-> $context"
+    // println "links-> ${context.siteLinks.keySet()}"
+    
+    // def linkB=context.siteLinks['administration/configuration/database/mysql.md']
+    // println(generateRelativeLinksContent(context,linkB,linkB.crumbs))
+    // println("crumbs: ${linkB}")
+    //generate 
+    recurse_dirs(context,rootdir,docsdir,tdir,outputdir,rdepth,crumbs,generateAll)
+}
+def recurse_dirs(Map context,File rootdir, File docsdir, File tdir, File outputdir, rdepth, crumbs, Closure action){
     def rtdir=tdir
     if(!tdir){
         rtdir=new File(docsdir,'templates')   
@@ -760,7 +959,7 @@ def run(File rootdir, File docsdir, File tdir, File outputdir, rdepth=0, crumbs=
                 options=new HashMap(stash.options)
                 def newoutputdir=new File(routputdir,dir.name)
                 newoutputdir.mkdirs()
-                def result=run(rootdir,dir,rtdir,newoutputdir,rdepth-1,scrumb)
+                def result=recurse_dirs(context,rootdir,dir,rtdir,newoutputdir,rdepth-1,scrumb,action)
                 //add index doc to subdirs list for this toc
                 if(result?.toc){
                     subdirs<<[dir:dir,index:result.toc[0],toc:result.toc]
@@ -779,7 +978,7 @@ def run(File rootdir, File docsdir, File tdir, File outputdir, rdepth=0, crumbs=
     }
 
     def templates=getTemplates(rtdir)
-    generateAll(pages,toc,templates,docsdir,routputdir,crumbs,subdirs)
+    action(context,pages,toc,templates,docsdir,routputdir,crumbs,subdirs)
     
     [docsdir:docsdir,tdir:rtdir,outputdir:routputdir,toc:pages]
 }
@@ -797,4 +996,4 @@ if(options.recurseDepth!='0'){
     flags.recursive=true
 }
 
-run(dirs.docsdir,dirs.docsdir,dirs.tdir,dirs.outputdir,options.recurseDepth.toInteger())
+run(dirs.docsdir,dirs.docsdir,dirs.tdir,dirs.outputdir,options.recurseDepth.toInteger(),[])
