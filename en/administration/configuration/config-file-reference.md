@@ -253,6 +253,9 @@ The following sections describe configuration values for this file.
 
 * `rundeck.security.maxSessions`: If enforceMaxSessions is true, this setting controls the number of active sessions a user is allowed to have. `Default: 1`
 
+* `rundeck.security.jaasRolePrefix`: Prefix string to add to each *role* determined via [JAAS Authentication][page:administration/security/authentication.md#jetty-and-jaas-authentication]. Default: none.
+
+
 ### Execution Mode
 
 * `rundeck.executionMode`:`active/passive`. Default `active`. Set the Execution
