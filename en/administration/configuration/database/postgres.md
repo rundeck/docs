@@ -32,7 +32,7 @@ You may also have to add a pg_hba.conf entry for this user. See [pg_hba.conf doc
 
 ## Configure Rundeck
 
-Now you need to configure Rundeck to connect to this DB as described earlier in this document: [Customize the Datasource](#customize-the-datasource).
+Now you need to configure Rundeck to connect to this DB as described in: [Administrator Guide - Rundeck Configuration - Database - Customize the Datasource](index.html#customize-the-datasource).
 
 Update your `rundeck-config.properties` and configure the datasource:
 

@@ -136,9 +136,9 @@ Enable DB storage for Project configurations, and Key Storage. Optionally enable
 
 For more info refer to:
 
-* [Administrator Guide - Key Storage](http://rundeck.org/docs/administration/key-storage.html)
-* [Plugins User Guide - Storage Plugins - Jasypt Encryption](http://rundeck.org/docs/plugins-user-guide/storage-plugins.html#jasypt-encryption-converter-plugin)
-* [Plugins User Guide - Configuring - Storage Plugins](http://rundeck.org/docs/plugins-user-guide/configuring.html#storage-plugins)
+* [Administrator Guide - Security - Key Storage](../../security/key-storage.html)
+* [Administrator Guide - Rundeck Configuration - Configuring Plugins - Bundled Plugins](../plugins/bundled-plugins.html#jasypt-encryption-plugin)
+* [Administrator Guide - Rundeck Configuration - Storage Facility](../storage-facility.html)
 
 Modify `rundeck-config.properties`
     
