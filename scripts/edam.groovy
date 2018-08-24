@@ -687,7 +687,7 @@ def collectRelativeLinks(context, page, linkset=[]){
     }.flatten()
 }
 def generateRelativeLinksContent(context, page,linkset=[]){
-    collectRelativeLinks(context,page,linkset).collect{ link ->
+    '\n\n' + collectRelativeLinks(context,page,linkset).collect{ link ->
         "[page:${link.srcpath}]: ${link.relpath} (${link.fulltitle})"
     }.findAll{it}.join('\n')
 }
