@@ -82,16 +82,6 @@ simply setting the `project.properties` node executor provider to `stub`.
 
 File: `rundeck-stub-plugin-${VERSION}.jar`
 
-## Orchestrator Plugin
-
-Provides several Orchestrator plugin implementations:
-
-* Random Subset: Selects a maximum number of the target nodes at random
-* Rank Tiered: Processes nodes in a tiered manner, ordered by rank
-* Max Percentage: Processes at maximum a percentage of the target nodes
-
-File: `rundeck-orchestrator-plugin-${VERSION}.jar`
-
 ## Local Execution Plugin
 
 A Node Step plugin which executes a command locally instead of on a target node.

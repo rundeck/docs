@@ -45,4 +45,17 @@ explanation on how job notifications work, see [Creating jobs#Job Notifications]
 
 ## Workflow Strategy
 
+The Workflow Strategy determines how the steps are processed within a Job's Workflow.
+
 * [Ruleset (Pro)](workflow-strategies/ruleset-workflow-strategy-plugin.html)
+
+## Node Orchestrator
+
+An Orchestrator plugin can determine how to use the Nodes selected by your Job Filter. By default, all of the filtered nodes will be used,
+in the order specified in your Job definition.
+
+However an Orchestrator plugin can choose which of the nodes should be used, and when.  For example,
+to limit concurrent execution to a subset of the nodes, or to skip certain nodes.
+
+* [[page:manual/orchestrator-plugins/bundled.md]]
+* [[page:manual/orchestrator-plugins/highest-lowest.md]]
