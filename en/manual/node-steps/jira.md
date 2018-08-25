@@ -1,4 +1,4 @@
-% Jira Node Step Plugins
+% Jira Node Step Plugins (Pro)
 
 ## Jira / Issue / Comment
 

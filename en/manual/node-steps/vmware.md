@@ -1,5 +1,4 @@
-
-## VMWare Operations Node Step Plugin
+% VMWare Operations Node Step Plugin (Pro)
 
 Allows users to Power-Off/Power-On/Restart/Suspend/Stand-By a VM. 
 This plugin is a workflow node step, so you need dispatch this step to the nodes that you want to apply the operation.
