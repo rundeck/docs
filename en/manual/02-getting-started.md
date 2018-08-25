@@ -82,19 +82,27 @@ Once the project has been created you are ready to use your Rundeck instance.
 
 ### Navigation
 
-The Rundeck page header contains global navigation control to move
-between tabbed pages: Jobs, Nodes, Commands and Activity. It also has links to
-Configure the project, logout, view your user profile and a link to this online help.
+Most Rundeck navigation is done using the navigation bar on the left side of the page.
+Using the left navigation bar you can choose between available projects, and once inside a project you can switch to the project's Dashboard, Jobs, Nodes, Commands and Activity pages.
+Project adminstrators will also be able to access the Project Settings pages.
 
-![Top navigation bar](../figures/fig0201.png)
+For those with Rundeck administrator access the System settings can be accessed by presing the gear icon in the page header. 
 
-Project menu
+Finally, your user profile and logout functions are found under the User icon.
 
-:    The top navigation bar contains a menu to select the
-     desired project. If only one project exists, the menu will
+![Top level navigation](../figures/fig0201.png)
+
+Projects menu
+
+:    Select the desired project. If only one project exists, the menu will
      automatically be selected. You can create new projects from
      this menu, too.
-   
+
+Dashboard
+
+:    View the project description, Readme and executions summary. 
+     Rundeck Pro users may see UI plugins that provide visualizations for schedules and execution history.
+
 Jobs
 
 :    From the Jobs page, one can list, create and run Jobs. A
@@ -133,14 +141,14 @@ Activity
      See [Activity](activity.html).
 
   
-Configure
+System
 
 :    If your login belongs to the "admin" group and therefore granted
-     "admin" privileges, a "Configure" icon will be displayed in
+     "admin" privileges, a "System" icon will be displayed in
      the top navigation bar. 
-     From the Configure page you can edit project configuration,
-     export and import project archives, view system information,
-     and see what plugins are installed.
+     From the System menu you can access the Key Storage, 
+     System Configuration, Access Control, System Report, Log Storage,
+     List Plugins, Password Utility and Execution model.
      
      See [Configure](configure.html)
 
@@ -151,10 +159,6 @@ User
      and generate API tokens.
      
      See [User](user.html)
-
-Help
-
-:    Opens a page to this user manual.
 
 
 ## Command Line Tools 

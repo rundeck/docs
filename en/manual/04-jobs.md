@@ -96,6 +96,7 @@ This will show the Filter fields. Enter a value in any of the filter fields:
 * Job Name: the name of the job
 * Group: the name of the job group
 * Description: Job description text
+* Scheduled: Include jobs that have been scheduled.
 
 You can type a substring or a regular expression in any of these
 fields.
@@ -111,38 +112,14 @@ and change the filter fields.
 To reset the filter and go back to the full job page, click the
 "Clear" button in the Filter fields.
 
-## Viewing Job detail
-
-A Job's detail  can be previewed by hovering 
-the mouse pointer over the Job's name link.
-Click outside the popup to close it.
-
-![Job detail popup](../figures/fig0320.png)
-
-Pressing the link for the Job name will navigate to  a separate
-page where you can run the job or view the job definition.
-
-![Job detail page](../figures/fig0321.png)
-
-The information in the Job detail view includes:
-
-* Steps the job will execute
-* Options presented to the user at the time of job run
-* Node filter expression with a button to show the matched nodes
-* Job UUID
-* Creation date
-* Statistics about the job executions
-
-Pressing the "Show Matches" link will display the list of Nodes where the Job will run.
 
 ## Running a Job
 
-Any stored job can be started 
-from the Jobs page. Navigate to the desired Job
+Navigate to the desired Job
 from the filtered listing and then press the
-"Run" icon to immediately queue and run the Job. 
+"Run" icon to immediately run the Job. 
 If you do not see the Run icon, it
-means your login does not have "run" privileges.
+means your login does not have "run" privileges for that job.
 
 ![Job run button](../figures/fig0319.png)
 
@@ -151,8 +128,8 @@ the "Run" button there.
 
 ![Job run button](../figures/fig0319-b.png)
 
-After the Run button has been pressed, a dialog will
-open where you can choose execution options.
+The Run job dialog allows you to input Job options if any,
+Log level, Nodes selection and how you want to follow the execution.
 
 ### Choose execution options
 
@@ -161,7 +138,7 @@ a form presenting any of these Job options.
 
 Some options will have default values while others may present you
 with a menu of choices. Some options are optional while others are
-required. Lastly, their might be a pattern governing what values are
+required. Lastly, there might be a pattern governing what values are
 acceptable. 
 
 If there are any such Job options, you can change them here before
@@ -174,14 +151,36 @@ Activity section of the page, or by going to the [Activity](activity.html) page.
 ### Following Running Jobs
 
 Once you have started running a Job, you can follow the Job's output
-in the Execution Follow page. 
+in the Execution page. 
+
+![Job execution output](../figures/fig0319-c.png)
    
-On the Jobs page, look in the "Running" tab in the Activity section of the page
-and click the progress bar.
+On the Jobs list page, look in the "Running" tab in the Activity section of the page
+and click the execution ID's progress bar.
   
 If you pressed the "run" button from the Job's detail page, or you selected to "Follow execution" when you ran the job, your
 browser will already have been directed to the Execution Follow page.
- 
+
+
+## Viewing Job detail
+
+A Job's definition  can be shown by clicking on the Definition 
+tab in the Job Show page or in the Execution page.
+
+![Job definition](../figures/fig0320.png)
+
+
+The information in the Job detail view includes:
+
+* Steps the job will execute
+* Options presented to the user at the time of job run
+* Node filter expression with a button to show the matched nodes
+* Job UUID
+* Creation date
+* Statistics about the job executions
+
+Pressing the "Show Matches" link will display the list of Nodes where the Job will run.
+
 ## Job history
 
 In the Job page, you can see the outcome of previous executions of
@@ -204,10 +203,10 @@ WARNING: This feature should be used with caution, as it forcibly
 kills the Java Thread that the Job is running on. 
 
 From the Activity view Now Running section, or in the Job execution
-follow page, click on the "Kill Job Now" button for the running Job.
+follow page, click on the "Kill Job" button for the running Job.
 
 When prompted "Really kill this job?" Click the "Yes" button.
 
 The Job will terminate with a "Killed" completion status.
 
-See also: [rd-queue](../man1/rd-queue.html).
+![Job definition](../figures/fig0319-d.png)
