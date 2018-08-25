@@ -14,7 +14,7 @@ For information about Rundeck Administration, see the [Administrator Guide](../a
     + [Creating Jobs](creating-jobs.html)
     + [Creating Job Workflows](creating-job-workflows.html)
     + [Defining Job Options](defining-job-options.html)
-    + [Job Plugins: Steps, Notifications, Strategy, Log Filters](job-plugins.html)
+    + [Job Plugins: Steps, Notifications, Strategy, Log Filters, Node Orchestrators](job-plugins.html)
 * [Nodes](nodes.html)
 * [Commands](commands.html)
 * [Executions](executions.html)
