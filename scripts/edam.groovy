@@ -99,10 +99,13 @@ File.metaClass{
                     title=match.group(1).trim()
                 }
             }
-        }    
-        if(!title){
+
+            if(!title){
+                throw new RuntimeException("Could not read title from file: ${delegate}")
+            }
+        } else{
             title = delegate.basename.replaceAll(/[_\.-]/,' ').replaceAll(/^(.)/,{a,m->m.toUpperCase()})
-        }
+        } 
         return title
     }
 }
