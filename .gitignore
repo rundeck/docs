@@ -1,4 +1,4 @@
 dist
-manpages
+*.gz
 .idea
 temp-*.html
