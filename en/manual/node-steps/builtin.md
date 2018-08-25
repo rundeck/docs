@@ -91,9 +91,55 @@ Once you enter a new filter, you can modify the other aspects for the Node Dispa
 
 ### Copy File step
 
+Copy a file to a destination on a remote node.
+
+![Copy File Step](../../figures/copy-file-step.png)
+
+#### Configuration
+
+Source Path
+:    Path on the rundeck server for the file or base directory (recursive/wildcard search).
+
+Destination Path
+:    Path on the remote node for the file destination. If the path ends with a /, the same filename as the source will be used.
+
+Pattern
+:    Wildcard pattern (optional). E.g: `**/*.txt`
+
+Recursive copy
+:    Recursively copy source dir, or matched files and dirs to the destination path.
+
+Print transfer information
+:    Log information about the file copy
+
+
 ### Local Command step
 
+Run a command locally on the server
+
+![Local Command Step](../../figures/local-command-step.png)
+
+#### Configuration
+
+Command
+:    The command (runs locally)
+
+
 ### Data Node step
+
+Produce data values for a node.
+
+![Data Node Step](../../figures/data-node-step.png)
+
+#### Configuration
+
+Data
+:    Properties formatted data to set for the current node
+
+Format
+:    Format for the data.  One of: `properties`, `json`, or `yaml`
+
+
 
 ## Notes
 
