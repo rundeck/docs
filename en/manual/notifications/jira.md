@@ -1,4 +1,4 @@
-% Jira Notification Plugins
+% Jira Notification Plugins (Pro)
 
 
 ## Jira / Issue / Notification Comment

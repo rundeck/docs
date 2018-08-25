@@ -99,10 +99,13 @@ File.metaClass{
                     title=match.group(1).trim()
                 }
             }
-        }    
-        if(!title){
+
+            if(!title){
+                throw new RuntimeException("Could not read title from file: ${delegate}")
+            }
+        } else{
             title = delegate.basename.replaceAll(/[_\.-]/,' ').replaceAll(/^(.)/,{a,m->m.toUpperCase()})
-        }
+        } 
         return title
     }
 }
@@ -633,7 +636,7 @@ def relativePath(targetPath,srcpath){
     def srcparts=srcpath.split('/').toList()
     srcparts.pop()
     def common=relativeCrumbs(parts,srcparts)
-    ("../"*(srcparts.size() - common) )+ (parts[common..<parts.size()].join('/'))
+    [common,("../"*(srcparts.size() - common) )+ (parts[common..<parts.size()].join('/'))]
 }
 def anchorToTitle(anchor){
     anchor.split('-')*.capitalize().join(' ')
@@ -673,14 +676,22 @@ def collectRelativeLinks(context, page, linkset=[]){
             
         //determine relative path for target page, based on pagedate.crumbs and crumbs
         // def relpath = Paths.get(outpath).relativize(Paths.get(pagedata.outpath)).toString()
-        def relpath = relativePath(pagedata.outpath,outpath)
+        def (relcommon,relpath) = relativePath(pagedata.outpath, outpath)
+        def reltitle=fullpath[relcommon..<fullpath.size()].join(options.fulltitleseparator)
+        
         def linkdefinitions=
         [
-            [srcpath:srcpath,relpath:relpath,fulltitle:fulltitle,title:pagedata.title]
+            [srcpath:srcpath,relpath:relpath,fulltitle:fulltitle,title:pagedata.title,reltitle:reltitle]
         ]
         sublinks[srcpath]?.each{anchor->
             linkdefinitions<<[
-                [srcpath:srcpath+'#'+anchor,relpath:relpath+'#'+anchor,fulltitle:fulltitle + options.fulltitleseparator + anchorToTitle(anchor),title:pagedata.title]   
+                [
+                    srcpath:srcpath+'#'+anchor,
+                    relpath:relpath+'#'+anchor,
+                    fulltitle:fulltitle + options.fulltitleseparator + anchorToTitle(anchor),
+                    reltitle:reltitle + options.fulltitleseparator + anchorToTitle(anchor),
+                    title:pagedata.title
+                ]
             ]
         }
         linkdefinitions
@@ -706,7 +717,7 @@ def replacePageLinksFilter(context,page,linkset){
         apply:{text->
             text.replaceAll(linksregex){match->
                 def link=linksmap[match[2]]
-                "[${link.fulltitle}][page:${link.srcpath}]"
+                "[${link.reltitle}][page:${link.srcpath}]"
             }
         }
     ]
