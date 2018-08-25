@@ -1,14 +1,15 @@
-% Progress Badge Workflow Step (Pro)
+% Progress Badge Log Filter (Pro)
 
 The Progress Badge Plugin included with Rundeck Pro can create graphic badges to be rendered on the Log Output tab.
 
-See also: [[page:manual/log-filters/progress-badge.md]].
+See Also: [[page:manual/workflow-steps/progress-badge.md]]
 
-Render a single badge using input options:
+Accepts the following input:
 
 * Text to be displayed inside the badge. Supports emoticons (see below).
-* Status of the Badge, ok (green badge), error (red badge) or neutral (grey badge). Can be a variable from option o key-value data.
-
+* String (optional) regular expression to search in the normal output of the step, if found, the badge is rendered as success (green) else is rendered as failed (red)
+* Mute: Default `true`, suppress all the standard output, just diaplay the badge or errors.
+* Conditional Disable: Boolean to do nothing if string pattern does not match.
 
 ## Emoji Support
 

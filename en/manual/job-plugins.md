@@ -59,3 +59,14 @@ to limit concurrent execution to a subset of the nodes, or to skip certain nodes
 
 * [[page:manual/orchestrator-plugins/bundled.md]]
 * [[page:manual/orchestrator-plugins/highest-lowest.md]]
+
+## Log Filters
+
+Log Filters can filter/process/read output from specific Workflow Steps, or all Workflow Steps of a Job.
+
+* [[page:manual/log-filters/mask-passwords.md]]
+* [[page:manual/log-filters/render-formatted-data.md]]
+* [[page:manual/log-filters/key-value-data.md]]
+* [[page:manual/log-filters/quiet-output.md]]
+* [[page:manual/log-filters/highlight-output.md]]
+* [[page:manual/log-filters/progress-badge.md]]
