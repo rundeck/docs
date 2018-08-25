@@ -1,4 +1,4 @@
-% SCM Git Plugin
+% Git Plugin
 
 Rundeck provides SCM Export and SCM Import providers for Git.
 
