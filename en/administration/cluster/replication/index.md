@@ -8,6 +8,20 @@ The Job replication plugin is a SCM Export plugin included with Rundeck Pro. It 
 
 Enable the plugin in the SCM section of the Configuration page for a project.
 
+### Configuration
+
+Endpoint URL
+
+:   Remote Rundeck API URL
+
+API Token
+
+:   API Token for authentication to the remote Rundeck
+
+Project
+
+:   Name of remote Project to use, or `${job.project}` to maintain the same name
+
 ## Execution Replication File Storage Plugin
 
 The Execution Replication File Storage Plugin included with Rundeck Pro creates a Rundeck formatted Project Archive for each execution, and uploads it to a remote
