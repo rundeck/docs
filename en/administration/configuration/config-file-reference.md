@@ -191,23 +191,9 @@ used. Specified from [jaas-loginmodule.conf](#jaas-loginmodule.conf).
 
 ## Session timeout
 
-Edit the web.xml to modify session-timeout from 30 to 90 minutes:
+See [rundeck-config.properties > Server Settings](#server-settings)
 
-RPM: /var/lib/rundeck/exp/webapp/WEB-INF/web.xml
-
-Example: Set the timeout to 60 minutes:
-
-~~~~
-diff /var/lib/rundeck/exp/webapp/WEB-INF/web.xml web.xml
-
-214c214
-
-< <session-timeout>30</session-timeout>
-
----
-
-> <session-timeout>90</session-timeout>
-~~~~
+Or set `server.session.timeout` via [[page:administration/configuration/system-properties.md]].
 
 ## rundeck-config.properties
 
@@ -254,6 +240,11 @@ The following sections describe configuration values for this file.
 * `rundeck.security.maxSessions`: If enforceMaxSessions is true, this setting controls the number of active sessions a user is allowed to have. `Default: 1`
 
 * `rundeck.security.jaasRolePrefix`: Prefix string to add to each *role* determined via [JAAS Authentication][page:administration/security/authentication.md#jetty-and-jaas-authentication]. Default: none.
+
+### Server Settings
+
+
+* `server.session.timeout`: timeout in seconds.
 
 
 ### Execution Mode
