@@ -1,8 +1,5 @@
 % Running Docker Images
 
-> !!NOTICE!!: The docker images are currently incubating; they are unstable and unsupported.
-Full usage information can be found on the Docker Hub image pages.
-
 ## Open Source Rundeck
 [rundeck/rundeck:SNAPSHOT](https://hub.docker.com/r/rundeck/rundeck/)
 
