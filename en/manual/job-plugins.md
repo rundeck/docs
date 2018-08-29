@@ -70,3 +70,9 @@ Log Filters can filter/process/read output from specific Workflow Steps, or all 
 * [[page:manual/log-filters/quiet-output.md]]
 * [[page:manual/log-filters/highlight-output.md]]
 * [[page:manual/log-filters/progress-badge.md]]
+
+## Content Converters
+
+Content Converters are not added directly to Jobs, but can be used by Log Filters and Step plugins.
+
+See [[page:manual/content-converters/index.md]].
