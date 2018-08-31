@@ -9,6 +9,7 @@ In the field for "Send Email to" you can also use these variables as property re
 * `${job.user.name}` - the user who executed the job
 * `${job.user.email}` - the email of the executing user if set in their user profile
 
-To configure a custom email template, see the [Administration - Configuration File Reference - Custom Email Templates][] chapter.
+See Also:
 
-[Administration - Configuration File Reference - Custom Email Templates]: ../administration/configuration/configuration-file-reference.html#custom-email-templates
+* [[page:administration/configuration/email-settings.md]]
+* [[page:administration/configuration/email-settings.md#custom-email-templates]]
