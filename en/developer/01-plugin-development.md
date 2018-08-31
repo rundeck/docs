@@ -380,19 +380,12 @@ The user is presented with any `Instance` scoped properties in the Rundeck GUI w
 
 ### Supported Groovy Plugin Types 
 
-* [Notification Plugins]
-* [Streaming Log Writer Plugin]
-* [Streaming Log Reader Plugin]
-* [Execution File Storage Plugin]
-* [Log Filter Plugin]
-* [Content Converter Plugin]
-
-[Notificaton Plugins]: notification-plugins.html
-[Streaming Log Writer Plugin]: logging-plugins.html#groovy-streaminglogreader
-[Streaming Log Reader Plugin]: logging-plugins.html#groovy-streaminglogwriter
-[Execution File Storage Plugin]: logging-plugins.html#groovy-executionfilestorage
-[Log Filter Plugin]: log-filter-plugins.html#groovy-logfilter
-[Content Converter Plugin]: content-converter-plugins.html#groovy-contentconverter
+* [[page:developer/05-notification-plugins.md#groovy-plugin-type]]
+* [Streaming Log Reader][page:developer/06-logging-plugins.md#groovy-streaminglogreader]
+* [Streaming Log Writer][page:developer/06-logging-plugins.md#groovy-streaminglogwriter]
+* [Execution File Storage][page:developer/06-logging-plugins.md#groovy-executionfilestorage]
+* [Log Filter][page:developer/log-filter-plugins.md#groovy-logfilter]
+* [Content Converter Plugin][page:developer/content-converter-plugins.md#groovy-contentconverter]
 
 ## Script Plugin Development
 
