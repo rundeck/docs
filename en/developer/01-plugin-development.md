@@ -56,8 +56,8 @@ Rundeck's jars are published to the central Maven repository, and [jCenter](http
 For gradle, use:
 
 ~~~~~ {.java}
-~~~~~~~~~
 compile(group:'org.rundeck', name: 'rundeck-core', version: '${VERSION_FULL}')
+~~~~~
 
 For maven use:
 
@@ -70,7 +70,7 @@ For maven use:
       <scope>compile</scope>
    </dependency>
 </dependencies>
-~~~~~~~~~
+~~~~~~
 
 * Rundeck's core jar is published to the central Maven repository, so you can now declare a build dependency more easily.
 
@@ -165,7 +165,7 @@ Each plugin class must have the
 public class MyProvider implements NodeExecutor {
 ...
 }
-~~~~~~~
+~~~~~
 
 Your provider class must have at least a zero-argument constructor, and optionally
 can have a single-argument constructor with a
@@ -289,7 +289,7 @@ import  com.dtolabs.rundeck.plugins.notification.NotificationPlugin
 rundeckPlugin(NotificationPlugin){
     //plugin definition goes here...
 }
-~~~~~~~~~~
+~~~~~~~
 
 In this case we use the same `NotificationPlugin` interface used for Java [Notfiication Plugins].
 
@@ -312,7 +312,7 @@ description='Does some action'
 version = "0.0.1"
 url = "http://example"
 author = "© 2018, me"
-~~~~~~~~~
+~~~~~
 
 *Configuration*
 
@@ -322,7 +322,7 @@ Use a `configuration` closure to define configuration properties:
 configuration{
     //property definitions go here...
 }
-~~~~~~~~
+~~~~~
 
 Note: not all plugin types support `configuration`.
 
@@ -334,7 +334,7 @@ User configuration properties can be defined in a few ways. To define a property
 
 ~~~~~ {.java}
 myproperty (title: "My Property", description: "Something", type: 'Integer')
-~~~~~~~~~
+~~~~~
 
 2. assignment form. This form guesses the data type and sets the defaultValue, but does not add any other attributes.
 
@@ -346,7 +346,7 @@ myproperty2(defaultValue:"default value", type: 'String')
 myproperty3=["value","another","text"]
 //the above is equivalent to:
 myproperty3(type:'FreeSelect',values:["value","another","text"])
-~~~~~~~~
+~~~~~
 
 Each property has several attributes you can define, but only `name` and `type` are required:
 
@@ -372,7 +372,7 @@ To define a validation check for a property, use the first form and supply a clo
 phone_number(title: "Phone number"){
    it.replaceAll(/[^\d]/,'')==~/^\d{10}$/
 }
-~~~~~~~
+~~~~~~
 
 **A Note about Scopes and Validation**:
 
@@ -455,7 +455,7 @@ providers:
       script-interpreter: [interpreter]
       script-file: [script file name]
       script-args: [script file args]
-~~~~~~~~~~~~
+~~~~~~~
 
 The main metadata that is required:
 
@@ -598,7 +598,7 @@ providers:
           description: "Must be present"
           default: '123'
           scope: Framework
-~~~~~~~~~~~~
+~~~~~~~
 
 ### How script plugin providers are invoked
 
