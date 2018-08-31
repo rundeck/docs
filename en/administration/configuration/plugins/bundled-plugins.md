@@ -45,7 +45,7 @@ For more detail see [Script Plugin](../../../manual/node-execution/script-node-e
 
 Executes an external script file to perform the command, useful for developing your own plugin with the [Script Plugin Development](../../../developer/plugin-development.html#script-plugin-development) model.
 
-File: `rundeck-script-plugin-${VERSION}.jar`
+File: `rundeck-script-plugin-${VERSION_FULL}.jar`
 
 ## Stub Plugin
 
@@ -80,13 +80,13 @@ You could, for example, disable or test an entire project's workflows or jobs by
 simply setting the `project.properties` node executor provider to `stub`.
 
 
-File: `rundeck-stub-plugin-${VERSION}.jar`
+File: `rundeck-stub-plugin-${VERSION_FULL}.jar`
 
 ## Local Execution Plugin
 
 A Node Step plugin which executes a command locally instead of on a target node.
 
-File: `rundeck-localexec-plugin-${VERSION}.jar`
+File: `rundeck-localexec-plugin-${VERSION_FULL}.jar`
 
 ## Job State Plugin
 
@@ -94,7 +94,7 @@ Provides a Workflow Step:
 
 * Job State Conditional: Can query and assert the state of another Job, such as running, succeeded, failed, etc, and optionally halt the current execution.
 
-File: `rundeck-job-state-plugin-${VERSION}.jar`
+File: `rundeck-job-state-plugin-${VERSION_FULL}.jar`
 
 ## Flow Control Plugin
 
@@ -102,7 +102,7 @@ Provides a Workflow Step:
 
 * Flow Control: Can halt the execution with a custom status, useful as an Error handler.
 
-File: `rundeck-flow-control-plugin-${VERSION}.jar`
+File: `rundeck-flow-control-plugin-${VERSION_FULL}.jar`
 
 ## Jasypt Encryption Plugin {#jasypt-encryption-plugin}
 
@@ -176,7 +176,7 @@ Example configuration for the Project Configuration storage facility:
 	rundeck.config.storage.converter.1.config.provider=BC
 
 
-File: `rundeck-jasypt-encryption-plugin-${VERSION}.jar`
+File: `rundeck-jasypt-encryption-plugin-${VERSION_FULL}.jar`
 
 ## Git Plugin
 
@@ -184,10 +184,10 @@ File: `rundeck-jasypt-encryption-plugin-${VERSION}.jar`
 
 Provides SCM Export and SCM Import providers for Git.
 
-File: `rundeck-git-plugin-${VERSION}.jar`
+File: `rundeck-git-plugin-${VERSION_FULL}.jar`
 
 ## Copy File Plugin
 
 Provides a Node Step that can copy a file to a node, using the Node's File Copier.
 
-File: `rundeck-copyfile-plugin-${VERSION}.jar`
+File: `rundeck-copyfile-plugin-${VERSION_FULL}.jar`

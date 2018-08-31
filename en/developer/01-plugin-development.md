@@ -50,8 +50,8 @@ Rundeck's core jar is published to the central Maven repository, so you can simp
 For gradle, use:
 
 ~~~~~ {.java}
-compile(group:'org.rundeck', name: 'rundeck-core', version: '${VERSION}')
 ~~~~~~~~~
+compile(group:'org.rundeck', name: 'rundeck-core', version: '${VERSION_FULL}')
 
 For maven use:
 
@@ -60,7 +60,7 @@ For maven use:
    <dependency>
       <groupId>org.rundeck</groupId>
       <artifactId>rundeck-core</artifactId>
-      <version>${VERSION}</version>
+      <version>${VERSION_FULL}</version>
       <scope>compile</scope>
    </dependency>
 </dependencies>
