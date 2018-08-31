@@ -399,8 +399,6 @@ These Services support Script Plugins:
 * [ResourceModelSource](resource-model-source-plugin.html#script-plugin-type)
 * [WorkflowNodeStep](workflow-step-plugin.html#script-plugin-type) and RemoteScriptNodeStep
 
->Note, the ResourceFormatParser and ResourceFormatGenerator services *do not* support the Script Plugin type.
-
 ### UI Plugin Development
 
 UI Plugins are supported with a `ui` plugin type, which is similar to a Script Plugin.
