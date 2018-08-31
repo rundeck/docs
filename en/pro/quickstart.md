@@ -17,12 +17,12 @@ What differentiates Rundeck Pro from the OSS Rundeck version is . . . .
 1. Once the download is finished verify that the file's checksum matches the expected checksum:
 
     ```
-    shasum -a 1 ~/Downloads/rundeckpro-launcher-cluster-${VERSION}.jar
+    shasum -a 1 ~/Downloads/rundeckpro-launcher-cluster-${VERSION_FULL}.jar
     ```
 1. Run the `.jar` file:
 
     ```
-    java -XX:MaxPermSize=256m -Xmx1024m -jar ~/Downloads/rundeckpro-launcher-cluster-${VERSION}.jar
+    java -XX:MaxPermSize=256m -Xmx1024m -jar ~/Downloads/rundeckpro-launcher-cluster-${VERSION_FULL}.jar
     ```
 1. Once you see something similar to following log output, you know the server is ready:
 
