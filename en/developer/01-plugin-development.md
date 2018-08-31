@@ -45,7 +45,13 @@ the same name and type is defined.
 
 ### Build dependencies
 
-Rundeck's core jar is published to the central Maven repository, so you can simply specify a dependency in your build file.
+Rundeck's jars are published to the central Maven repository, and [jCenter](https://jcenter.bintray.com), so you can simply specify a dependency in your build file.
+
+* `rundeck-core` is the primary build dependency for most plugin types
+    * [org.rundeck:rundeck-core:${VERSION_FULL}](https://search.maven.org/artifact/org.rundeck/rundeck-core/${VERSION_FULL}/jar)
+* `rundeck-storage-api` is also required for [[page:developer/07-storage-plugin.md]].
+    * [org.rundeck:rundeck-storage-api:${VERSION_FULL}](https://search.maven.org/artifact/org.rundeck/rundeck-storage-api/${VERSION_FULL}/jar)
+  
 
 For gradle, use:
 
