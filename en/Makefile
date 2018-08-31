@@ -24,7 +24,7 @@ RVERSION=$(VERSION)-$(TAG)
 else
 RVERSION=$(VERSION)
 endif
-VERSION_DATE=$(VERSION_DATE)
+VERSION_FULL=$(VERSION_FULL)
 
 
 EDAM=groovy ../scripts/edam.groovy
@@ -40,7 +40,7 @@ man :
 
 html: 
 	mkdir -p $(DIST)/html
-	$(EDAM) -o $(DIST)/html  -r -O 'recurseDirPatternIgnore=(dist|figures|temp)' -V "VERSION_DATE=$(VERSION_DATE)" -V "VERSION=$(RVERSION)" -V "APIVERS=$(APIVERS)" -V "DATE=$(DATE)" -V "HRDATE=$(HRDATE)" -V "DATE_YEAR=$(DATE_YEAR)"
+	$(EDAM) -o $(DIST)/html  -r -O 'recurseDirPatternIgnore=(dist|figures|temp)' -V "VERSION_FULL=$(VERSION_FULL)" -V "VERSION=$(RVERSION)" -V "APIVERS=$(APIVERS)" -V "DATE=$(DATE)" -V "HRDATE=$(HRDATE)" -V "DATE_YEAR=$(DATE_YEAR)"
 
 
 resources :  $(CSS) ../figures/*.png $(JS)
