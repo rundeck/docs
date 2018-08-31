@@ -101,3 +101,10 @@ a > code{
   border-width: 4px;
   border-color: blue;
 }
+
+dt, dd{
+  margin-bottom: 10px;
+}
+dd{
+  margin-left: 2em;
+}
