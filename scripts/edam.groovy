@@ -850,7 +850,12 @@ def parseArgs(pargs){
                 case '-V':
                     def arr=pargs[x+1].split('=',2)
                     if(arr.length>1){
-                        pagevars[arr[0]]=arr[1]
+                        def value=arr[1]
+                        if(value.indexOf('${')){
+                            //process embedded vars
+                            value=replaceParams(value, pagevars)
+                        }
+                        pagevars[arr[0]]=value
                     }
                     x++
                     break
