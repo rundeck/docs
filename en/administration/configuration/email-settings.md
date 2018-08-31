@@ -25,7 +25,7 @@ To add authentication:
 ### Advanced SMTP settings
 If you need more advanced configuration (e.g., authenticated and secured over SSL),
 see the grails Mail plugin configuration:
-[Grails Mail Configuration](https://plugins.grails.org/plugin/grails/mail#Configuration)
+[Grails Mail Configuration](https://gpc.github.io/grails-mail/guide/2.%20Configuration.html)
 
 The caveat for using this is that in our experience it requires using a .groovy formatted configuration file to support the extended configuration properties.
 
@@ -66,9 +66,7 @@ You can define these properties to customize the email notifications. Each prope
 
 If a template filepath ends with `.md` or `.markdown`, then it will be interpreted as a Markdown formatted template.  Otherwise it is expected that the template file contains HTML.
 
-The Subject line, filepath, and file contents can all contain embedded property references of the form `${group.key}`.  The available properties are mostly the same as those available for Notification Plugins, including the `execution.*` and `job.*` values.  See [Plugin Development - Notification Plugin - Execution Data][].
-
-[Plugin Development - Notification Plugin - Execution Data]: ../developer/notification-plugin.html#execution-data
+The Subject line, filepath, and file contents can all contain embedded property references of the form `${group.key}`.  The available properties are mostly the same as those available for Notification Plugins, including the `execution.*` and `job.*` values.  See [[page:developer/05-notification-plugins.md#execution-data]].
 
 The "Context Variables" values used within the execution are available just as they are in the execution, so options would be available as `${option.name}`.
 
