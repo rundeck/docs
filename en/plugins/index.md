@@ -1,5 +1,14 @@
 % Rundeck Plugins
 
+This document lists the plugins **distributed with Rundeck and Rundeck Pro**.
+
+More plugins can be found via:
+
+* [Rundeck.org plugins listing](https://rundeck.org/plugins/)
+* [The official rundeck-plugins](https://github.com/rundeck-plugins/) org on github
+* [Github Search: rundeck](https://github.com/search?p=3&q=rundeck&type=Repositories)
+* [Github topic: `rundeck`](https://github.com/topics/rundeck)
+
 Type|Plugin|Description|Availability
 ----|----|--------|----
 Node Step | [Command][page:manual/node-steps/builtin.md#command-step] | Calls system commands on remote nodes | Built-in
