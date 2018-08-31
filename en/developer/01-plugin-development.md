@@ -45,13 +45,19 @@ the same name and type is defined.
 
 ### Build dependencies
 
-Rundeck's core jar is published to the central Maven repository, so you can simply specify a dependency in your build file.
+Rundeck's jars are published to the central Maven repository, and [jCenter](https://jcenter.bintray.com), so you can simply specify a dependency in your build file.
+
+* `rundeck-core` is the primary build dependency for most plugin types
+    * [org.rundeck:rundeck-core:${VERSION_FULL}](https://search.maven.org/artifact/org.rundeck/rundeck-core/${VERSION_FULL}/jar)
+* `rundeck-storage-api` is also required for [[page:developer/07-storage-plugin.md]].
+    * [org.rundeck:rundeck-storage-api:${VERSION_FULL}](https://search.maven.org/artifact/org.rundeck/rundeck-storage-api/${VERSION_FULL}/jar)
+  
 
 For gradle, use:
 
 ~~~~~ {.java}
-compile(group:'org.rundeck', name: 'rundeck-core', version: '${VERSION}')
-~~~~~~~~~
+compile(group:'org.rundeck', name: 'rundeck-core', version: '${VERSION_FULL}')
+~~~~~
 
 For maven use:
 
@@ -60,11 +66,11 @@ For maven use:
    <dependency>
       <groupId>org.rundeck</groupId>
       <artifactId>rundeck-core</artifactId>
-      <version>${VERSION}</version>
+      <version>${VERSION_FULL}</version>
       <scope>compile</scope>
    </dependency>
 </dependencies>
-~~~~~~~~~
+~~~~~~
 
 * Rundeck's core jar is published to the central Maven repository, so you can now declare a build dependency more easily.
 
@@ -159,7 +165,7 @@ Each plugin class must have the
 public class MyProvider implements NodeExecutor {
 ...
 }
-~~~~~~~
+~~~~~
 
 Your provider class must have at least a zero-argument constructor, and optionally
 can have a single-argument constructor with a
@@ -283,7 +289,7 @@ import  com.dtolabs.rundeck.plugins.notification.NotificationPlugin
 rundeckPlugin(NotificationPlugin){
     //plugin definition goes here...
 }
-~~~~~~~~~~
+~~~~~~~
 
 In this case we use the same `NotificationPlugin` interface used for Java [Notfiication Plugins].
 
@@ -306,7 +312,7 @@ description='Does some action'
 version = "0.0.1"
 url = "http://example"
 author = "© 2018, me"
-~~~~~~~~~
+~~~~~
 
 *Configuration*
 
@@ -316,7 +322,7 @@ Use a `configuration` closure to define configuration properties:
 configuration{
     //property definitions go here...
 }
-~~~~~~~~
+~~~~~
 
 Note: not all plugin types support `configuration`.
 
@@ -328,7 +334,7 @@ User configuration properties can be defined in a few ways. To define a property
 
 ~~~~~ {.java}
 myproperty (title: "My Property", description: "Something", type: 'Integer')
-~~~~~~~~~
+~~~~~
 
 2. assignment form. This form guesses the data type and sets the defaultValue, but does not add any other attributes.
 
@@ -340,7 +346,7 @@ myproperty2(defaultValue:"default value", type: 'String')
 myproperty3=["value","another","text"]
 //the above is equivalent to:
 myproperty3(type:'FreeSelect',values:["value","another","text"])
-~~~~~~~~
+~~~~~
 
 Each property has several attributes you can define, but only `name` and `type` are required:
 
@@ -366,7 +372,7 @@ To define a validation check for a property, use the first form and supply a clo
 phone_number(title: "Phone number"){
    it.replaceAll(/[^\d]/,'')==~/^\d{10}$/
 }
-~~~~~~~
+~~~~~~
 
 **A Note about Scopes and Validation**:
 
@@ -374,19 +380,12 @@ The user is presented with any `Instance` scoped properties in the Rundeck GUI w
 
 ### Supported Groovy Plugin Types 
 
-* [Notification Plugins]
-* [Streaming Log Writer Plugin]
-* [Streaming Log Reader Plugin]
-* [Execution File Storage Plugin]
-* [Log Filter Plugin]
-* [Content Converter Plugin]
-
-[Notificaton Plugins]: notification-plugins.html
-[Streaming Log Writer Plugin]: logging-plugins.html#groovy-streaminglogreader
-[Streaming Log Reader Plugin]: logging-plugins.html#groovy-streaminglogwriter
-[Execution File Storage Plugin]: logging-plugins.html#groovy-executionfilestorage
-[Log Filter Plugin]: log-filter-plugins.html#groovy-logfilter
-[Content Converter Plugin]: content-converter-plugins.html#groovy-contentconverter
+* [[page:developer/05-notification-plugins.md#groovy-plugin-type]]
+* [Streaming Log Reader][page:developer/06-logging-plugins.md#groovy-streaminglogreader]
+* [Streaming Log Writer][page:developer/06-logging-plugins.md#groovy-streaminglogwriter]
+* [Execution File Storage][page:developer/06-logging-plugins.md#groovy-executionfilestorage]
+* [Log Filter][page:developer/log-filter-plugins.md#groovy-logfilter]
+* [Content Converter Plugin][page:developer/content-converter-plugins.md#groovy-contentconverter]
 
 ## Script Plugin Development
 
@@ -399,8 +398,6 @@ These Services support Script Plugins:
 * [FileCopier](file-copier-plugin.html#script-plugin-type)
 * [ResourceModelSource](resource-model-source-plugin.html#script-plugin-type)
 * [WorkflowNodeStep](workflow-step-plugin.html#script-plugin-type) and RemoteScriptNodeStep
-
->Note, the ResourceFormatParser and ResourceFormatGenerator services *do not* support the Script Plugin type.
 
 ### UI Plugin Development
 
@@ -458,7 +455,7 @@ providers:
       script-interpreter: [interpreter]
       script-file: [script file name]
       script-args: [script file args]
-~~~~~~~~~~~~
+~~~~~~~
 
 The main metadata that is required:
 
@@ -601,7 +598,7 @@ providers:
           description: "Must be present"
           default: '123'
           scope: Framework
-~~~~~~~~~~~~
+~~~~~~~
 
 ### How script plugin providers are invoked
 

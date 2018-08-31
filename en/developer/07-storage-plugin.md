@@ -20,8 +20,21 @@ See: [Configuring the Storage Plugins](../administration/security/key-storage.ht
 
 * *Note*: Refer to [Java Development](plugin-development.html#java-plugin-development) for information about developing a Java plugin for Rundeck.
 
-The plugin interface is [StoragePlugin](${javadocbase}/com/dtolabs/rundeck/plugins/storage/StoragePlugin.html).  This simply extends [Tree](${javadocbase}/org/rundeck/storage/api/Tree.html) to store resource of type [ResourceMeta](${javadocbase}/com/dtolabs/rundeck/core/storage/ResourceMeta.html).
+**Plugin Interface**
 
-Refer to the [Rundeck Storage API javadocs](${javadocbase}/org/rundeck/storage/api/package-frame.html) for more information about the underlying storage API.
+* [StoragePlugin](${javadocbase}/com/dtolabs/rundeck/plugins/storage/StoragePlugin.html)
 
-The service name is [`Storage`](${javadocbase}/com/dtolabs/rundeck/plugins/ServiceNameConstants.html#Storage).
+This simply extends [Tree](${javadocbase}/org/rundeck/storage/api/Tree.html) to store resource of type [ResourceMeta](${javadocbase}/com/dtolabs/rundeck/core/storage/ResourceMeta.html).
+
+Refer to the [Rundeck Storage API javadocs](${javadocstoragetop}) for more information about the underlying storage API.
+
+**Service Name**
+
+* [`Storage`](${javadocbase}/com/dtolabs/rundeck/plugins/ServiceNameConstants.html#Storage)
+
+**Additional Compile-time Dependency**
+
+Your build tool will need to include `org.rundeck:rundeck-storage-api:${VERSION_FULL}` as a dependency.
+
+See: [org.rundeck:rundeck-storage-api:${VERSION_FULL}](https://search.maven.org/artifact/org.rundeck/rundeck-storage-api/${VERSION_FULL}/jar)
+  

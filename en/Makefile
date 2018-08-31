@@ -5,6 +5,7 @@ APIVERS=$(shell cat api/version.info)
 
 DIRS = manpages
 CSS = style.css
+JS = markdeep.min.js
 DIST = dist
 DATE = $(shell date "+%Y-%m-%dT%H:%M:%S%Z")
 HRDATE = $(shell date "+%B %e %Y, %H:%M %Z")
@@ -23,7 +24,7 @@ RVERSION=$(VERSION)-$(TAG)
 else
 RVERSION=$(VERSION)
 endif
-VERSION_DATE=$(VERSION_DATE)
+VERSION_FULL=$(VERSION_FULL)
 
 
 EDAM=groovy ../scripts/edam.groovy
@@ -39,13 +40,14 @@ man :
 
 html: 
 	mkdir -p $(DIST)/html
-	$(EDAM) -o $(DIST)/html  -r -O 'recurseDirPatternIgnore=(dist|figures|temp)' -V "VERSION_DATE=$(VERSION_DATE)" -V "VERSION=$(RVERSION)" -V "APIVERS=$(APIVERS)" -V "DATE=$(DATE)" -V "HRDATE=$(HRDATE)" -V "DATE_YEAR=$(DATE_YEAR)"
+	$(EDAM) -o $(DIST)/html  -r -O 'recurseDirPatternIgnore=(dist|figures|temp)' -V "VERSION_FULL=$(VERSION_FULL)" -V "VERSION=$(RVERSION)" -V "APIVERS=$(APIVERS)" -V "DATE=$(DATE)" -V "HRDATE=$(HRDATE)" -V "DATE_YEAR=$(DATE_YEAR)"
 
 
-resources :  $(CSS) ../figures/*.png
+resources :  $(CSS) ../figures/*.png $(JS)
 	mkdir -p $(DIST)/html/figures
 	- cp ../figures/*.png $(DIST)/html/figures
 	cp $(CSS) $(DIST)/html/
+	cp $(JS) $(DIST)/html/
 
 test:
 		../scripts/util/checklinks.sh

@@ -18,7 +18,7 @@ RVERSION=$(VERSION)-$(TAG)
 else
 RVERSION=$(VERSION)
 endif
-VERSION_DATE=$(VERSION)-$(RELDATE)
+VERSION_FULL=$(VERSION)-$(RELDATE)
 
 .PHONY: all clean
 
@@ -34,12 +34,12 @@ dist/rundeck-docs-$(RVERSION).zip: all
 
 all: $(DIRS)
 	for i in $^ ; do \
-	$(MAKE) VERSION=$(VERSION) TAG=$(TAG) VERSION_DATE=$(VERSION_DATE) -C $$i ; \
+	$(MAKE) VERSION=$(VERSION) TAG=$(TAG) VERSION_FULL=$(VERSION_FULL) -C $$i ; \
 	done ;
 
 clean: $(DIRS)
 	for i in $^ ; do \
-	$(MAKE) VERSION=$(VERSION) TAG=$(TAG) VERSION_DATE=$(VERSION_DATE) -C $$i clean ; \
+	$(MAKE) VERSION=$(VERSION) TAG=$(TAG) VERSION_FULL=$(VERSION_FULL) -C $$i clean ; \
 	done ;
 	rm -rf dist
 

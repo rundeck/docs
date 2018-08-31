@@ -515,7 +515,9 @@ this.generateAll={context,allpages,toc,templates,File dir, File outdir, crumbs, 
             xvars.srcpagelink=options.srcpagelink?:'Edit This Page'
             xvars.srcpageurl=options.srcbaseurl + crumbpath
         }
-        def pargs=['-B',expandFile(templates.header)]
+        def relPath= '../'*crumbs.size()
+        def templatevars=[relPath:relPath]
+        def pargs=['-B',expandFile(templates.header,templatevars)]
 
         //set up nav links
         def navs=[currentpage:chapLinkTitle(titem),currentpagelink:titem.outfile]+xvars
@@ -557,15 +559,15 @@ this.generateAll={context,allpages,toc,templates,File dir, File outdir, crumbs, 
             pargs.addAll(['-B',navfileTop])
         }
         
-        pargs.addAll(['-B',expandFile(templates.before)])
-        pargs.addAll(['-A',expandFile(templates.after)])
+        pargs.addAll(['-B',expandFile(templates.before,templatevars)])
+        pargs.addAll(['-A',expandFile(templates.after,templatevars)])
         if(flags.doNav || flags.recursive){
             pargs.addAll(['-A',navfileBot])
         }
 
-        pargs.addAll(['-A',expandFile(templates.footer)])
-        def htemplate=expandFile(templates.html)
-        def cssPath= options.cssRelative=='true'? '../'*crumbs.size() : '' 
+        pargs.addAll(['-A',expandFile(templates.footer,templatevars)])
+        def htemplate=expandFile(templates.html,templatevars)
+        def cssPath= options.cssRelative=='true'? relPath : ''
         def outfile=new File(outdir,titem.outfile)
         pargs.addAll(['-o',outfile.absolutePath,'-s',"--css=${cssPath}${options.cssFileName}","--template=${htemplate.absolutePath}"])
         if(titem.index>0){
@@ -848,7 +850,12 @@ def parseArgs(pargs){
                 case '-V':
                     def arr=pargs[x+1].split('=',2)
                     if(arr.length>1){
-                        pagevars[arr[0]]=arr[1]
+                        def value=arr[1]
+                        if(value.indexOf('${')){
+                            //process embedded vars
+                            value=replaceParams(value, pagevars)
+                        }
+                        pagevars[arr[0]]=value
                     }
                     x++
                     break

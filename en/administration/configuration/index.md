@@ -7,6 +7,7 @@
 * [GUI Customization](gui-customization.html)
 * [Localization](localization.html)
 * [Configuration File Reference](configuration-file-reference.html)
+* [[page:administration/configuration/system-properties.md]]
 * [Encryptable Config Properties (Pro)](encryptable-config-properties-pro.html)
 * [Plugins](plugins/index.html)
 * [Storage Facility](storage-facility.html)
