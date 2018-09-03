@@ -55,6 +55,11 @@ View the [Index](#index) listing API paths.
 
 Changes introduced by API Version number:
 
+**Version 27**:
+
+* Udated Endpoints:
+    - [`GET /api/V/user/list`][/api/V/user/list] - More info from the user.
+
 **Version 26**:
 
 * Udated Endpoints:
@@ -1637,7 +1642,7 @@ Get a list of all the users.
 
 **Request:**
 
-    GET /api/21/user/list/
+    GET /api/27/user/list/
 
 **Response:**
 
@@ -1651,12 +1656,20 @@ Success response, with a list of users:
   <firstName>Name</firstName>
   <lastName>LastName</lastName>
   <email>user@server.com</email>
+  <created>2017-10-01 09:00:20.44</created>
+  <updated>2018-08-24 10:53:02.751</updated>
+  <lastJob>2018-08-28 10:35:00.495</lastJob>
+  <tokens>1</tokens>
 </user>
 <user>
   <login>admin</login>
   <firstName />
   <lastName />
-  <email />
+  <email>admin@server.com</email>
+  <created>2016-07-17 14:42:20.44</created>
+  <updated>2018-08-24 10:53:02.751</updated>
+  <lastJob>2018-08-28 10:35:00.495</lastJob>
+  <tokens>6</tokens>
 </user>
 ~~~
 
@@ -1667,15 +1680,30 @@ Success response, with a list of users:
     "login":"user",
     "firstName":"Name",
     "lastName":"LastName",
-    "email":"user@server.com"
+    "email":"user@server.com",
+    "created": "2017-10-01T09:00:20Z",
+    "updated": "2018-08-24T13:53:02Z",
+    "lastJob": "2018-08-28T13:31:00Z",
+    "tokens": 1
 },
 {
     "login":"admin",
     "firstName":"Admin",
     "lastName":"Admin",
-    "email":"admin@server.com"
+    "email":"admin@server.com",
+    "created": "2016-07-17T18:42:00Z",
+    "updated": "2018-08-24T13:53:00Z",
+    "lastJob": "2018-08-28T13:31:00Z",
+    "tokens": 6
 }]
 ~~~
+
+**Since v27**:
+
+* `created` Creation date of the user.
+* `updated` Last time the user contact data was updated.
+* `lastJob` Last time the user runs a job.
+* `tokens` Number of API tokens associated to the user.
 
 
 ### Get user profile
