@@ -11,7 +11,7 @@ http://support.rundeck.com/customer/en/portal/articles/2415681-oracle-setup)
 
 [http://www.oracle.com/technetwork/database/features/jdbc/default-2280470.html](http://www.oracle.com/technetwork/database/features/jdbc/default-2280470.html)
 
-* Copy the downloaded file `ojdbc7.jar` to the `$RDECK_BASE/server/lib`
+* Copy the downloaded file `ojdbc7.jar` to the `$RDECK_BASE/server/lib` for war launcher or in /var/lib/rundeck/lib (create it) for RPM and DEB installations
 * Update `$RDECK_BASE/etc/rundeck-config.properties`:
 
 ```
