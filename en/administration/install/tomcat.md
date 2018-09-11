@@ -64,6 +64,8 @@ grails.serverURL=http://localhost:8080/rundeck
 * Go to http://localhost:8080/rundeck and login.
 
 
+## Users authentication
+
 Note for Linux and Windows installations: users are no longer in Tomcat's configuration files, at this point, users should be configured as in a [launcher installation](https://rundeck.org/docs/administration/security/authenticating-users.html) and java options should be append to the setenv.sh or setenv.bat file:
 
 
