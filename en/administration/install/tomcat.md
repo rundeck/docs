@@ -71,7 +71,7 @@ Note for Linux and Windows installations: users are no longer in Tomcat's config
 
 ## Known issue
 
-If ldap authentication is configured, you will need to copy below file (use proper path on Windows) and then restart Tomcat:
+If ldap/AD authentication is configured, you will need to copy below file (use proper path on Windows) and then restart Tomcat:
 ```
 cp $tomcat.base/webapps/rundeck/WEB-INF/lib-provided/jetty-util-9.4.11.v20180605.jar $tomcat.base/webapps/rundeck/WEB-INF/lib/
 ```
