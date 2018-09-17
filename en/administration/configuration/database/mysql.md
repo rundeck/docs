@@ -120,7 +120,7 @@ Perform this command to log in as root:
 Then execute this sql:
 
     > create database rundeck
-    > grant ALL on rundeck.* to ‘rundeckuser’@‘localhost’ identified by ‘rundeckpassword’
+    > grant ALL on rundeck.* to 'rundeckuser'@'localhost' identified by 'rundeckpassword'
 
 
 ## Configure rundeck-config.properties
