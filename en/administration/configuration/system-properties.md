@@ -1,6 +1,6 @@
 % System Properties Configuration
 
-This document explains how to declare Java System Properties used for configuring rundecRundeck.
+This document explains how to declare Java System Properties used for configuring Rundeck.
 
 These properties must be declared on the Java commandline when starting Rundeck.
 
