@@ -510,13 +510,17 @@ this.generateAll={context,allpages,toc,templates,File dir, File outdir, crumbs, 
     }
     allpages.eachWithIndex{titem,x->
         def xvars=options.subMap(['bugpagelink','bugpageurl'])
-        if(options.srcbaseurl && titem.srcfile && titem.rootdir){
-            def crumbpath= titem.rootdir.toPath().relativize(titem.srcfile.toPath())
-            xvars.srcpagelink=options.srcpagelink?:'Edit This Page'
-            xvars.srcpageurl=options.srcbaseurl + crumbpath
-        }
         def relPath= '../'*crumbs.size()
         def templatevars=[relPath:relPath]
+        if(options.srcbaseurl && titem.srcfile && titem.rootdir){
+            def pagesrcpath= titem.rootdir.toPath().relativize(titem.srcfile.toPath())
+            templatevars['pagesrcpath']=pagesrcpath
+            xvars.srcpagelink=options.srcpagelink?:'Edit This Page'
+            xvars.srcpageurl=options.srcbaseurl + pagesrcpath
+            xvars = xvars.collectEntries{
+                [it.key,replaceParams(it.value,templatevars)]
+            }
+        }
         def pargs=['-B',expandFile(templates.header,templatevars)]
 
         //set up nav links
