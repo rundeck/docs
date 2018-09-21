@@ -70,8 +70,8 @@ you with a dialog to create one. Press the "New Project" button to create
 a project. 
 Fill the project creation form with a desired name. Project names can
 contain letters and numbers but do not use spaces or special characters.
-The [Project setup](../administration/configuration/project-setup.html) 
-chapter in the Administrator guide
+The [[page:administration/projects/index.md]] 
+section
 will show you how to learn to add Nodes, automate the creation and maintenance of
 Rundeck projects.
 
