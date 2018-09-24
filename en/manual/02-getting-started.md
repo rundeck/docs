@@ -20,7 +20,7 @@ like projects, jobs, nodes, commands and API.
 * **Projects**:  A _[project]_ is a place to separate management activity.
 All Rundeck activities occur within the context of a project.
 Multiple projects can be maintained on the same Rundeck server.
-* Jobs : A _[job]_ encapsulate a sequence of steps, job options and nodes where the steps execute.
+* **Jobs** : A _[job]_ encapsulate a sequence of steps, job options and nodes where the steps execute.
 * **Nodes**: A _[node]_  is a resource that is either a physical or virtual instance
 of a network accessible host.
 A *resource model* is a representation of Nodes in a project.
