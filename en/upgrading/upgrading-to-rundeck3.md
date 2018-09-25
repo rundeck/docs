@@ -152,11 +152,11 @@ A restart is necessary after the merge of `rundeck-config.properties` or/and `pr
 
 * Stop Tomcat
 
-* Delete `$tomcat.base/webapps/rundeckpro`
+* Delete `$tomcat.base/webapps/rundeck`
 
-* Delete `$tomcat.base/webapps/rundeckpro.war`
+* Delete `$tomcat.base/webapps/rundeck.war`
 
-* Place Rundeck 3 as the old war file `$tomcat.base/webapps/rundeckpro.war`
+* Place Rundeck 3 as the old war file `$tomcat.base/webapps/rundeck.war`
 
 * Start Tomcat
 
