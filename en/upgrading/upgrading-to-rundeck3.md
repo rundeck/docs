@@ -100,7 +100,7 @@ A restart is necessary after the merge of `rundeck-config.properties`
 
 The upgrade process can be done using the `.rpm` file or using the command `yum`:
 
-#### using rpm files
+#### Using rpm package
 
 ```
 sh-4.2# rpm -U rundeck-3.x.rpm rundeck-config-3.X.rpm
@@ -150,6 +150,21 @@ A restart is necessary after the merge of `rundeck-config.properties` or/and `pr
 ### Tomcat War deployment
 
 
-Due to changes in authentication, `tomcat-users.xml` and other Tomcat authentication modules no longer work.
-More information about upgrading with Tomcat will be posted on
-[this github issue](https://github.com/rundeck/rundeck/issues/3754).
+* Stop Tomcat
+
+* Delete `$tomcat.base/webapps/rundeck`
+
+* Delete `$tomcat.base/webapps/rundeck.war`
+
+* Place Rundeck 3 as the old war file `$tomcat.base/webapps/rundeck.war`
+
+* Start Tomcat
+
+
+#### NOTES:
+
+* Due to changes in authentication, `tomcat-users.xml` and other Tomcat's authentication modules no longer work, you should configure users as in a launcher installation.
+
+* If you do not have "-Drundeck.config.location" defined or configured in `$tomcat.base/bin/setenv.sh` file (`tomcat.base\bin\setenv.bat` for Windows), it will take `$rdeck.base/server/config/rundeck-config.properties`.
+
+* If Rundeck is not starting, please remove `$rdeck.base/var/.install_complete` and restart Tomcat.
