@@ -640,7 +640,7 @@ multiauth {
     cacheDurationMillis="300000"
     reportStatistics="true";
 
-  org.eclipse.jetty.plus.jaas.spi.PropertyFileLoginModule required
+  org.eclipse.jetty.jaas.spi.PropertyFileLoginModule required
     debug="true"
     file="/etc/rundeck/realm.properties";
 };
