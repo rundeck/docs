@@ -135,8 +135,8 @@ Configuring LDAP consists of defining a JAAS config file (e.g. "jaas-ldap.conf")
 
 Create a `jaas-ldap.conf` file in the same directory as the `jaas-loginmodule.conf` file.
 
-* RPM/Deb install: /etc/rundeck/
-* Executable War install: $RDECK_BASE/server/config
+* RPM/Deb install: `/etc/rundeck/`
+* Executable War install: `$RDECK_BASE/server/config`
 
 Make sure the name of your Login Module configuration is the same as you use in the next step.  The Login Module configuration is defined like this:
 
@@ -182,8 +182,8 @@ Declare `RDECK_JVM_OPTS` in `/etc/sysconfig/rundeckd` (rpm) or `/etc/default/run
 
 ~~~~~~ {.bash}
 RDECK_JVM_OPTS="-Drundeck.jaaslogin=true \ 
-       -Djava.security.auth.login.config=/etc/rundeck/jaas-loginmodule.conf \
-       -Dloginmodule.name=RDpropertyfilelogin"
+       -Djava.security.auth.login.config=/etc/rundeck/jaas-ldap.conf \
+       -Dloginmodule.name=ldap"
 ~~~~~~
 
 
@@ -640,7 +640,7 @@ multiauth {
     cacheDurationMillis="300000"
     reportStatistics="true";
 
-  org.eclipse.jetty.plus.jaas.spi.PropertyFileLoginModule required
+  org.eclipse.jetty.jaas.spi.PropertyFileLoginModule required
     debug="true"
     file="/etc/rundeck/realm.properties";
 };
