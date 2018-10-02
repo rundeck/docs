@@ -162,7 +162,7 @@ You can simply specify the system properties on the java commandline:
 ~~~~~~ {.bash}
 java -Drundeck.jaaslogin=true \
      -Dloginmodule.conf.name=jaas-ldap.conf \
-     -Dloginmodule.name=ldap \
+     -Dloginmodule.name=myloginmodule \
      -jar rundeck-x.x.war
 ~~~~~~
 
@@ -171,7 +171,7 @@ Otherwise, if you are starting the Executable War via the supplied `rundeckd` sc
 ~~~~~~ {.bash}
 export RDECK_JVM="-Dloginmodule.conf.name=jaas-ldap.conf \
     -Drundeck.jaaslogin=true \
-    -Dloginmodule.name=ldap"
+    -Dloginmodule.name=myloginmodule"
 ~~~~~~
 
 Note: more information about using the Executable War and useful properties are under [Getting Started - Executable War Options](../install/launcher.html#launcher-options).
@@ -183,9 +183,28 @@ Declare `RDECK_JVM_OPTS` in `/etc/sysconfig/rundeckd` (rpm) or `/etc/default/run
 ~~~~~~ {.bash}
 RDECK_JVM_OPTS="-Drundeck.jaaslogin=true \ 
        -Djava.security.auth.login.config=/etc/rundeck/jaas-ldap.conf \
-       -Dloginmodule.name=ldap"
+       -Dloginmodule.name=myloginmodule"
 ~~~~~~
 
+Edit the File: Profile
+Change the lines:
+~~~~~~ {.bash}
+JAAS_CONF="${JAAS_CONF:-$RDECK_CONFIG/jaas-loginmodule.conf}"
+LOGIN_MODULE="${LOGIN_MODULE:-RDpropertyfilelogin}"
+~~~~~~
+
+to:
+~~~~~~ {.bash}
+JAAS_CONF="${JAAS_CONF:-$RDECK_CONFIG/jaas-ldap.conf}"
+LOGIN_MODULE="${LOGIN_MODULE:-myloginmodule}"
+~~~~~~
+
+Then edit the file:  /var/lib/rundeck/exp/webapp/WEB-INF/web.xml
+Find the tags <role-name></role-name> and replace the text detween them with the name that you want of a group that users must be a member of in oerder to log into Rundeck.  EG:
+~~~~~~ {.bash}
+    <role-name>rundeck_users</role-name>
+~~~~~~
+Note:  If the file /var/lib/rundeck/exp/webapp/WEB-INF/web.xml is missing, you will need to create it.  Please download a copy from github.  
 
 #### Step 3: Restart rundeckd
 
