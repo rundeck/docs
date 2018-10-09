@@ -1,34 +1,26 @@
 % Configuring SSL
 
-This document describes how to configure Rundeck for SSL/HTTPS
-support, and assumes you are using the rundeck-launcher standalone
-launcher.  If you are using RPM/DEB install, refer to the appropriate configuration file paths from [Configuration -> Configuration Layout](../configuration/configuration-file-reference.html#configuration-layout).
+This document describes how to configure Rundeck for SSL/HTTPS support, and assumes you are using the rundeck-launcher standalone launcher.  If you are using RPM/DEB install, refer to the appropriate configuration file paths from [Configuration -> Configuration Layout](../configuration/configuration-file-reference.html#configuration-layout).
 
-(1) Before beginning, do a first-run of the launcher, as it will create
-the base directory for Rundeck and generate configuration files.
+(1) Before beginning, do a first-run of the launcher, as it will create the base directory for Rundeck and generate configuration files.
 
         cd $RDECK_BASE;  java -jar rundeck-3.0.1.war
+        
+This will start the server and generate necessary config files.  Press control-c to shut down the server after you get below message from terminal:
 
-    This will start the server and generate necessary config files.  Press
-    control-c to shut down the server after you get below message from therminal:
     Grails application running at http://localhost:4440 in environment: production
 
-(2)  Using the [keytool] command, generate a keystore for use as the
-server cert and client truststore. Specify passwords for key and keystore:
+(2)  Using the [keytool] command, generate a keystore for use as the server cert and client truststore. Specify passwords for key and keystore:
 
 [keytool]: https://linux.die.net/man/1/keytool-java-1.6.0-openjdk
 
         keytool -keystore etc/keystore -alias rundeck -genkey -keyalg RSA -keypass adminadmin -storepass adminadmin
     
-    Be sure to specify the correct hostname of the server as the response
-    to the question "What is your first and last name?".  Answer "yes" to
-    the final question.
+   Be sure to specify the correct hostname of the server as the response to the question "What is your first and last name?".  Answer "yes" to the final question.
 
-    You can pass all the answers to the tool on the command-line by using
-    a HERE document.
+   You can pass all the answers to the tool on the command-line by using a HERE document.
 
-    Replace the first line "Venkman.local" with the hostname for your
-    server, and use any other organizational values you like:
+   Replace the first line "Venkman.local" with the hostname for your server, and use any other organizational values you like:
         
             keytool -keystore etc/keystore -alias rundeck -genkey -keyalg RSA -keypass adminadmin -storepass adminadmin  <<!
             Venkman.local
@@ -41,20 +33,16 @@ server cert and client truststore. Specify passwords for key and keystore:
             !
 
 
-(3) CLI tools that communicate to the Rundeck server need to trust the
-SSL certificate provided by the server.  They are preconfigured to
-look for a truststore at the location:
-`$RDECK_BASE/etc/truststore`. Copy the keystore as the truststore for
-CLI tools: 
+(3) CLI tools that communicate to the Rundeck server need to trust the SSL certificate provided by the server. They are preconfigured to look for a truststore at the location:
+`$RDECK_BASE/etc/truststore`. Copy the keystore as the truststore for CLI tools: 
 
         cp etc/keystore etc/truststore
 
-(4) Modify the ssl.properties file to specify the location of the
-keystore and the appropriate passwords:
+(4) Modify the ssl.properties file to specify the full path location of the keystore and the appropriate passwords:
 
         vi server/config/ssl.properties
 
-    An example ssl.properties file (from the RPM and DEB packages).
+   An example ssl.properties file (from the RPM and DEB packages).
 
         keystore=/etc/rundeck/ssl/keystore
         keystore.password=adminadmin
@@ -62,7 +50,7 @@ keystore and the appropriate passwords:
         truststore=/etc/rundeck/ssl/truststore
         truststore.password=adminadmin
     
-    The ssl.properties default keystore and truststore location path for war installation is $RDECK_BASE/etc/
+   The ssl.properties default keystore and truststore location path for war installation is $RDECK_BASE/etc/
             
 (5) Configure client properties.  Modify the file
 `$RDECK_BASE/etc/framework.properties` and change these properties: 
@@ -71,18 +59,13 @@ keystore and the appropriate passwords:
     * `framework.rundeck.url`
     * `framework.server.port` 
     
-    Set them to the appropriate https protocol, and change the port to
-    4443, or to the value of your `-Dserver.https.port` runtime
-    configuration property.
+   Set them to the appropriate https protocol, and change the port to 4443, or to the value of your `-Dserver.https.port` runtime configuration property.
         
-(6) Configure server URL so that Rundeck knows its external address.  Modify the file
-`$RDECK_BASE/server/config/rundeck-config.properties` and change the `grails.serverURL`: 
+(6) Configure server URL so that Rundeck knows its external address.  Modify the file `$RDECK_BASE/server/config/rundeck-config.properties` and change the `grails.serverURL`:
 
     * `grails.serverURL=https://myhostname:4443`
     
-    Set the URL to include the appropriate https protocol, and change the port to
-    4443, or to the value of your `-Dserver.https.port` runtime
-    configuration property.
+   Set the URL to include the appropriate https protocol, and change the port to 4443, or to the value of your `-Dserver.https.port` runtime configuration property.
 
 (7) For Debian installation, create/edit `/etc/default/rundeckd`, for RPM installation, create/edit `/etc/sysconfig/rundeckd`:
 
@@ -91,27 +74,23 @@ keystore and the appropriate passwords:
 
 (8) Start the server.  For the rundeck launcher, tell it where to read the ssl.properties
 
-        java -Drundeck.ssl.config=$RDECK_BASE/server/config/ssl.properties -jar rundeck-3.0.1.war
+     java -Drundeck.ssl.config=$RDECK_BASE/server/config/ssl.properties -jar rundeck-3.0.1.war
     
-    You can change port by adding `-Dserver.https.port`:
+   You can change port by adding `-Dserver.https.port`:
         
-            java -Drundeck.ssl.config=$RDECK_BASE/server/config/ssl.properties -Dserver.https.port=1234 -jar rundeck-3.0.1.war
+     java -Drundeck.ssl.config=$RDECK_BASE/server/config/ssl.properties -Dserver.https.port=1234 -jar rundeck-3.0.1.war
         
-    If successful, you will see a line indicating the SSl connector has started:
+   If successful, you will see a line indicating the SSl connector has started:
 
-        Grails application running at https://localhost:1234 in environment: production
+     Grails application running at https://localhost:1234 in environment: production
 
 ### Securing passwords
 
-Passwords do not have to be stored in the ssl.config.  If they are not
-set, then the server will prompt on the console for a user to enter
-the passwords.
+Passwords do not have to be stored in the ssl.config.  If they are not set, then the server will prompt on the console for a user to enter the passwords.
 
-If you want the server to start without prompting then you need to set
-the passwords in the config file.  
+If you want the server to start without prompting then you need to set the passwords in the config file.  
 
-The passwords stored in ssl.properties can be obfuscated so they are
-not in plaintext:
+The passwords stored in ssl.properties can be obfuscated so they are not in plaintext:
 
 Run the jetty "Password" utility:
 
@@ -140,8 +119,7 @@ java.io.IOException: Keystore was tampered with, or password was incorrect
 
 ### Optional PEM export
 
-You can export the PEM formatted server certificate for use by HTTPS
-clients (web browsers or e.g. curl).
+You can export the PEM formatted server certificate for use by HTTPS clients (web browsers or e.g. curl).
 
 
 Export pem cacert for use by e.g. curl: 
@@ -164,23 +142,17 @@ Or by declaring the following JVM property:
 
 For the executable war you can specify it on the commandline `-Drundeck.jetty.connector.forwarded=true`.
 
-For RPM/DEB install you can export the `RDECK_JVM_OPTS` variable
-in the file `/etc/sysconfig/rundeckd` (RPM) or `/etc/default/rundeckd` (DEB)
-and add:
+For RPM/DEB install you can export the `RDECK_JVM_OPTS` variable in the file `/etc/sysconfig/rundeckd` (RPM) or `/etc/default/rundeckd` (DEB) and add:
 
     RDECK_JVM_OPTS=-Drundeck.jetty.connector.forwarded=true
 
-This will enable Jetty to respond correctly
-when a forwarded request is first received.
+This will enable Jetty to respond correctly when a forwarded request is first received.
 
-**Note:** You will still need to modify the `grails.serverURL` value
-in [rundeck-config.properties][]
-to let Rundeck know how to properly generate absolute URLs.
+**Note:** You will still need to modify the `grails.serverURL` value in [rundeck-config.properties][] to let Rundeck know how to properly generate absolute URLs.
 
 ## Disabling SSL Protocols
 
-You can disable SSL protocols or cipher suites using these
-JVM variables:
+You can disable SSL protocols or cipher suites using these JVM variables:
 
 * `rundeck.jetty.connector.ssl.includedProtocols` set to a comma-separated list of SSL protocols to enable. Default will be based on the available protocols.
 * `rundeck.jetty.connector.ssl.excludedProtocols` set to a comma-separated list of SSL protocols to disable. Default value: 'SSLv3'
@@ -189,9 +161,7 @@ JVM variables:
 
 The `included` settings determine what protocols or cipher suites are enabled, and the `excluded` settings then remove values from that list.
 
-E.g. modify the `RDECK_JVM` variable
-in the file `/etc/rundeck/profile`
-and add:
+E.g. modify the `RDECK_JVM` variable in the file `/etc/rundeck/profile` and add:
 
     -Drundeck.jetty.connector.ssl.excludedProtocols=SSLv3,SSLv2Hello
 
