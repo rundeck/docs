@@ -48,7 +48,7 @@ These instructions explain how to manage user credentials for
 Rundeck using a text file containing usernames, passwords and role definitions.
 Usually this file is called <code>realm.properties</code>.
 
-The default Rundeck installation handles user authentication via 
+The default Rundeck installation handles user authentication via
 JAAS using the realm.properties file.
 This file is created at the time that you install the server.
 
@@ -181,7 +181,7 @@ Note: more information about using the Executable War and useful properties are 
 Declare `RDECK_JVM_OPTS` in `/etc/sysconfig/rundeckd` (rpm) or `/etc/default/rundeckd` (deb):
 
 ~~~~~~ {.bash}
-RDECK_JVM_OPTS="-Drundeck.jaaslogin=true \ 
+RDECK_JVM_OPTS="-Drundeck.jaaslogin=true \
        -Djava.security.auth.login.config=/etc/rundeck/jaas-ldap.conf \
        -Dloginmodule.name=ldap"
 ~~~~~~
@@ -526,7 +526,7 @@ Finally, in your `ldap-activedirectory.conf` be sure to change the *providerUrl*
 
 Rundeck includes a [PAM](https://en.wikipedia.org/wiki/Pluggable_authentication_module) JAAS login module, which uses [libpam4j](https://github.com/kohsuke/libpam4j) to authenticate.
 
-On debian based systems you need to install libpam4j : 
+On debian based systems you need to install libpam4j :
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {.bash}
 apt install libpam4j-java
@@ -704,9 +704,7 @@ This method can be enabled with this config in `rundeck-config.properties`:
 
 This configuration requires some additional setup to enable:
 
-1. The file `WEB-INF/web.xml` inside the war contents **must** be modified to remove the `<auth-constraint>` element.  This disables the behavior which causes the Container to trigger its authentication mechanism when a user browses to a Rundeck page requiring authorization.
-
-2. Apache HTTPD and Tomcat must be configured to communicate so that a list of User Roles is sent to Tomcat as a request Attribute with the given "attributeName".
+1. Apache HTTPD and Tomcat must be configured to communicate so that a list of User Roles is sent to Tomcat as a request Attribute with the given "attributeName".
 
 For Tomcat and Apache HTTPd with `mod_proxy_ajp`, here are some additional instructions:
 
