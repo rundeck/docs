@@ -241,6 +241,11 @@ aclpolicy:
     * Full access `admin`
 * Create Service Tokens with specified Roles (actions on a `apitoken` type)
     * Creating Service tokens `create`
+* Managing plugins (actions on resource with kind 'plugin')
+    * Listing installed and available plugins `read`
+    * Installing plugins `install`
+    * Uninstalling plugins `uninstall`
+    * Full access `admin`
 
 The following table summarizes the generic and specific resources and the
 actions you can restrict in the application scope:
@@ -261,6 +266,10 @@ Type       Resource Kind     Properties   Actions                  Description
 "          `job`             none         `admin`                  Manage job schedules
 "          `apitoken`        none         `generate_user_token`    Create a "user" token
 "          "                 none         `generate_service_token` Create a "service" token
+"          "                 none         `admin`                  Full access
+"          `plugin`          none         `read`                   List installed and available plugins
+"          "                 none         `install`                Install plugins
+"          "                 none         `uninstall`              Uninstall plugins
 "          "                 none         `admin`                  Full access
 ----------------------------
 
