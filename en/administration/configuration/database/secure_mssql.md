@@ -7,12 +7,17 @@ Tested version
 
 To enable security mode with SQL Server when executing rundeck.
 
-Copy the "sqljdbc_auth.dll" file to windows folder
+Copy the "sqljdbc_auth.dll" file to correct folder
 
-Example (32 bits )
-\JDBC_SQL_Server\sqljdbc_4.1\enu\auth\x86\sqljdbc_auth.dll
+32 Bit: \JDBC_SQL_Server\sqljdbc_4.1\enu\auth\x86\sqljdbc_auth.dll
 
-to folder c:\windows\
+64 Bit: \JDBC_SQL_Server\sqljdbc_4.1\enu\auth\x64\sqljdbc_auth.dll
+
+
+If is java 32 bits, the dll ( 32 bits ) should be copied to  c:\windows\
+
+If is java 64 bits, the dll ( 64 bits ) should be copied to  c:\windows\system32
+
 
 
 Some common errors may occur like the following
@@ -50,13 +55,6 @@ bc_auth.dll: Can't load AMD 64-bit .dll on a IA 32-bit platform
 2018-10-12 23:54:51.724 ERROR --- [           main] o.a.tomcat.jdbc.pool.ConnectionPool      : Unable to create initial connections of pool.
 
 -----------
-
-To fix, copy the correct library to c:\windows folder
-
-32 Bit: \JDBC_SQL_Server\sqljdbc_4.1\enu\auth\x86\sqljdbc_auth.dll
-
-64 Bit: \JDBC_SQL_Server\sqljdbc_4.1\enu\auth\x64\sqljdbc_auth.dll
-
 
 
 
