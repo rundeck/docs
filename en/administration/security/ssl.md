@@ -1,6 +1,6 @@
 % Configuring SSL
 
-This document describes how to configure Rundeck for SSL/HTTPS support, and assumes you are using the rundeck-launcher standalone launcher.  If you are using RPM/DEB install, refer to the appropriate configuration file paths from [Configuration -> Configuration Layout](../configuration/configuration-file-reference.html#configuration-layout).
+This document describes how to configure Rundeck for SSL/HTTPS support, and assumes you are using the rundeck-launcher standalone launcher.  If you are using RPM/DEB install, refer to the appropriate configuration file paths from [[page:administration/configuration/config-file-reference.md#configuration-layout]].
 
 (1) Before beginning, do a first-run of the launcher, as it will create the base directory for Rundeck and generate configuration files.
 
