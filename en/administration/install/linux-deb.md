@@ -25,7 +25,7 @@ sudo apt-get install rundeck
 Download deb package: http://rundeck.org/download/deb/ and run:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {.bash}
-sudo dpkg -i rundeck_x.xx.x-x-GA_all.deb
+sudo dpkg -i rundeckpro-cluster_3.0.x.deb
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ## Rundeck Pro
@@ -53,12 +53,12 @@ sudo apt-get install rundeckpro-cluster
 Download deb package: http://download.rundeck.com/eval/ and run:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {.bash}
-sudo dpkg -i rundeckpro-EDITION_X.X.X-GA_all.deb
+sudo dpkg -i rundeckpro-cluster_3.0.x.deb
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ## Starting Rundeck
 
-To start Rundeck Pro:
+To start Rundeck:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {.bash}
 sudo service rundeckd start
@@ -73,13 +73,13 @@ tail -f /var/log/rundeck/service.log
 The service is ready once you see something similar to:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {.bash}
-2018-04-25 22:21:53.203:INFO:oejs.ServerConnector:main: Started ServerConnector@7d593bbc{HTTP/1.1}{0.0.0.0:4440}
+Grails application running at http://localhost:4440 in environment: production
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ## Logging in for the first time
 
 1. Navigate to [http://localhost:4440/](http://localhost:4440/user/login) in a browser
-1. Log in with the username **admin** and password **admin**
+2. Log in with the username **admin** and password **admin**
 
 Rundeck is now up and running!
 
