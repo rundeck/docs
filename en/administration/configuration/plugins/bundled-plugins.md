@@ -15,7 +15,7 @@ File: *none* (built-in)
 
 ## Built-in Resource Model Sources
 
-Rundeck comes with three built-in Resource Model Source providers, see [Resource Model Source Plugins](../resource-model-sources/index.html):
+Rundeck comes with four built-in Resource Model Source providers, see [Resource Model Source Plugins](../../projects/resource-model-sources/built-in-plugins-file-directory-url-script.html):
 
 * File: Parses a file in one of the supported [Model Source Formats](#built-in-resource-model-formats)
 * Directory: Scans all files in a directory in one of the supported formats
@@ -25,7 +25,7 @@ File: *none* (built-in)
 
 ## Built-in Resource Model Formats
 
-Rundeck comes with three Resource Model Format plugins, see [Resource Model Source Plugins](../resource-model-sources/index.html#resource-model-document-formats):
+Rundeck comes with three Resource Model Format plugins, see [Resource Model Source Plugins](../../projects/resource-model-sources/built-in-plugins-file-directory-url-script.html#resource-model-document-formats):
 
 * XML: the [resourcexml][] format
 * YAML: the [resourceyaml][] format
