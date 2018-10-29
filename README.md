@@ -1,9 +1,39 @@
+# Building
+
 Requires:
+
 * pandoc installed and in your PATH
 
-Build procedure
-* Run make in top directory to build docs for the supported languages
-  (so far just en)
-* Inside each target language a "dist" directory containing html and
-  man files 
-  * There are two forms of RunDeck-Guide: html and roff
+Build procedure:
+
+    make
+
+Ouput:
+
+* html english output
+
+  `en/dist/html/*`
+
+* man english output
+
+  `en/dist/man/*`
+
+* zip package
+
+  `dist/rundeck-docs-VERSION.zip`
+
+# Writing links
+
+When writing Markdown links between documents, instead of using relative paths and html file names, which might change in the future, you can use these syntaxes to link directly to the page based on its absolute file path;
+
+Link to a page and specify the link text:
+    
+    [My text][page:administration/configuration/system-properties.md]
+
+Link to the same page. The link text will be set to the document title for that page:
+
+    [[page:administration/configuration/system-properties.md]]]
+
+Use the exact file path/name as present in the language subdirectory.  The previous links link to the `/en/administration/configuration/system-properties.md` file when generated in the `en` dir.
+
+Either one is preferable to the normal `[link](../../path/to/file.html)`.
