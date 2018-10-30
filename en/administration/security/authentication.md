@@ -679,6 +679,8 @@ with the following configuration flags in `rundeck-config.properties`:
 
 # Preauthenticated Mode
 
+## Preauthenticated Mode using AJP with apache and tomcat
+
 `preauthenticated`
 
 :   "Preauthenticated" means that the Servlet Container (e.g. Tomcat)
@@ -742,3 +744,28 @@ At this point, move on to [Access Control Policy](access-control-policy.html)
 to set up access control for the listed roles.
 
 If the "User roles: " part is blank, then it may not be working correctly.
+
+## Preauthenticated Mode using headers
+
+If you have a proxy sitting in front of your Rundeck installation that authenticates your users, you can send the authenticated user and groups to Rundeck via HTTP headers. Set the following properties in your `rundeck-config.properties` file.
+
+    rundeck.security.authorization.preauthenticated.enabled=true
+    rundeck.security.authorization.preauthenticated.attributeName=REMOTE_USER_GROUPS
+    rundeck.security.authorization.preauthenticated.delimiter=,
+    rundeck.security.authorization.preauthenticated.userNameHeader=X-Forwarded-Uuid
+    rundeck.security.authorization.preauthenticated.userRolesHeader=X-Forwarded-Roles
+
+The `attributeName` property is the name of the request attribute which stores the user groups for the request. The forwarded headers will be put into this attribute. This attribute must be set for this method to work properly.
+
+The `userNameHeader` property is the name of the header from which to obtain the authenticated user name.
+
+The `userRolesHeader` property is the name of the header from which to obtain the list of user roles. The roles should be delimited by
+the delimiter specified in the `delimiter` property.
+
+## Preauthenticated mode logout redirection
+
+If you are running preauthenticated mode and wish to redirect to a custom logout url on user logout, set the following properties:
+
+    # Redirect to upstream logout url
+    rundeck.security.authorization.preauthenticated.redirectLogout=true
+    rundeck.security.authorization.preauthenticated.redirectUrl=/customlogouturl
