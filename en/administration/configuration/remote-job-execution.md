@@ -18,11 +18,12 @@ rundeck.clusterMode.remoteExecution.policy = <Policy>
 ```
 
 Choose from the following <Policy> settings: 
-None - Default. Executes locally only
-Random - Executes randomly among allowed members
-RoundRobin - Executes round-robin style among allowed members
-Preset - Executes on one other preset member
-Load - Executes on a member based on load (Requires Pro Cluster 2.3.0 or a later release. See Enable Load Balanced Policy)
+
+* None - Default. Executes locally only
+* Random - Executes randomly among allowed members
+* RoundRobin - Executes round-robin style among allowed members
+* Preset - Executes on one other preset member
+* Load - Executes on a member based on load (Requires Pro Cluster 2.3.0 or a later release. See Enable Load Balanced Policy)
 
 #### List of Allowed Members
 
@@ -31,10 +32,11 @@ rundeck.clusterMode.remoteExecution.config.allowed = <List of Allowed Members>
 ```
 
 The <List of Allowed Members> determines additional cluster members that the policy can execute on. Enter values separated by a comma:
-Self - Execute locally
-Other - Any other member except this one
-UUID - A particular UUID
-/regex/ - A regular expression matching a UUID
+
+* Self - Execute locally
+* Other - Any other member except this one
+* UUID - A particular UUID
+* /regex/ - A regular expression matching a UUID
 
 **Example**
 
