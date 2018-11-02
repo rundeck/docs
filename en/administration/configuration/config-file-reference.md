@@ -120,7 +120,7 @@ tools like umask, Java home and classpath, and SSL options.
 
 ## project.properties
 
-Rundeck project configuration file when using Filesystem based project definitions (see [Project Setup - Project Definitions](project-setup.html#project-definitions)).
+Rundeck project configuration file when using Filesystem based project definitions (see [Project Setup - Project Definitions](https://rundeck.org/docs/administration/projects/configuration.html)).
 
 One of these is
 generated at project setup time. Each project has a directory within the Rundeck projects directory, and the config file is within the `etc` subdirectory:
@@ -164,6 +164,10 @@ resources.source.3.type=directory
 ~~~~~~~~~~
 
 Additional sources increment the source number. You can reference the project name by using the `${project.name}` context variable.
+
+### File copier destination directory
+
+When executing a Script step, the destination file path to be used when copying the script can be set using Node, Project, or Framework configuration values. Please see the plugin [documentation](https://rundeck.org/docs/administration/projects/node-execution/built-in-plugins.html#file-copier-destination-directory)
 
 ### Project Global execution variables
 
