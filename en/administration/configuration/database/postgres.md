@@ -42,6 +42,5 @@ Update your `rundeck-config.properties` and configure the datasource:
     dataSource.password=rundeckpassword
 
 With recent Rundeck versions, PostgreSQL connector is bundled.
-You can check if present in this path: `$RDECK_BASE/exp/webapp/WEB-INF/lib/`
 
 Now, you can start Rundeck.
