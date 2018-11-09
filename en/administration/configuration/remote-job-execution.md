@@ -17,13 +17,13 @@ Configure the following remote execution policy parameters in `rundeck-config.pr
 rundeck.clusterMode.remoteExecution.policy = <Policy>
 ```
 
-Choose from the following <Policy> settings: 
+Choose from the following `<Policy>` settings:
 
-* None - Default. Executes locally only
-* Random - Executes randomly among allowed members
-* RoundRobin - Executes round-robin style among allowed members
-* Preset - Executes on one other preset member
-* Load - Executes on a member based on load (Requires Pro Cluster 2.3.0 or a later release. See Enable Load Balanced Policy)
+* `None` - Default. Executes locally only
+* `Random` - Executes randomly among allowed members
+* `RoundRobin` - Executes round-robin style among allowed members
+* `Preset` - Executes on one other preset member
+* `Load` - Executes on a member based on load (Requires Pro Cluster 2.3.0 or a later release. See Enable Load Balanced Policy)
 
 #### List of Allowed Members
 
@@ -31,12 +31,12 @@ Choose from the following <Policy> settings:
 rundeck.clusterMode.remoteExecution.config.allowed = <List of Allowed Members>
 ```
 
-The <List of Allowed Members> determines additional cluster members that the policy can execute on. Enter values separated by a comma:
+The `<List of Allowed Members>` determines additional cluster members that the policy can execute on. Enter values separated by a comma:
 
-* Self - Execute locally
-* Other - Any other member except this one
-* UUID - A particular UUID
-* /regex/ - A regular expression matching a UUID
+* `Self` - Execute locally
+* `Other` - Any other member except this one
+* **UUID** - A particular UUID
+* `/regex/` - A regular expression matching a UUID
 
 **Example**
 
@@ -48,7 +48,7 @@ The example configuration shows Self and a regular expression combined.
 
 #### List of Member Tags
 
-The <List of Member Tags> parameter allows you to restrict the remote Cluster Members by using tags. The tags are similar to Node Tags. The special tag, Self, is automatically only assigned to the *local* cluster node. Set tags for a cluster member in the framework.properties file.
+The `<List of Member Tags>` parameter allows you to restrict the remote Cluster Members by using tags. The tags are similar to Node Tags. The special tag, Self, is automatically only assigned to the *local* cluster node. Set tags for a cluster member in the framework.properties file.
 
 ```
 rundeck.clusterMode.remoteExecution.config.allowedTags = <List of Member Tags>
