@@ -112,6 +112,26 @@ Then restart Rundeck to ensure it picks up the change and you're done.
 There is also a password encrypter utility user interface in the Rundeck application that
 can be used to generate encrypted passwords. Click the gear icon and then "Password Utility" to use that interface.
 
+#### Hot Reloading the `realm.properties` file
+
+If you want your changes to the `realm.properties` file to be picked up without having to restart Rundeck change the module specified in the JAAS config file from `org.eclipse.jetty.jaas.spi.PropertyFileLoginModule` to `org.rundeck.jaas.jetty.ReloadablePropertyFileLoginModule`
+
+For example, the following configuration uses the non-reloadable `realm.properties`
+
+    RDpropertyfilelogin {
+        org.eclipse.jetty.jaas.spi.PropertyFileLoginModule required
+        debug="true"
+        file="/etc/rundeck/server/config/realm.properties";
+    };
+
+This configuration would enable hot reloading:
+
+    RDpropertyfilelogin {
+        org.rundeck.jaas.jetty.ReloadablePropertyFileLoginModule required
+        debug="true"
+        file="/etc/rundeck/server/config/realm.properties";
+    };
+
 ## LDAP
 
 LDAP and Active Directory configurations are created in the same way, but your LDAP structure may be different than Active Directory's structure.
@@ -604,6 +624,7 @@ This module provides authentication in the same way as the [realm.properties](#P
 
 Configuration properties:
 
+* `hotReload` - `hotReload="true"` enables the ability to modify the user list specified by `file` without having to restart Rundeck.
 * `file` - path to a Java Property formatted file in the format defined under [realm.properties](#realm.properties)
 
 ## Multiple Authentication Modules
