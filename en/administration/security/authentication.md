@@ -116,6 +116,8 @@ can be used to generate encrypted passwords. Click the gear icon and then "Passw
 
 If you want your changes to the `realm.properties` file to be picked up without having to restart Rundeck change the module specified in the JAAS config file from `org.eclipse.jetty.jaas.spi.PropertyFileLoginModule` to `org.rundeck.jaas.jetty.ReloadablePropertyFileLoginModule`
 
+The refresh interval for checking the file is 5 seconds. This is not configurable.
+
 For example, the following configuration uses the non-reloadable `realm.properties`
 
     RDpropertyfilelogin {
@@ -624,7 +626,7 @@ This module provides authentication in the same way as the [realm.properties](#P
 
 Configuration properties:
 
-* `hotReload` - `hotReload="true"` enables the ability to modify the user list specified by `file` without having to restart Rundeck.
+* `hotReload` - `hotReload="true"` enables the ability to modify the user list specified by `file` without having to restart Rundeck. The refresh interval for checking the file is 5 seconds. This is not configurable.
 * `file` - path to a Java Property formatted file in the format defined under [realm.properties](#realm.properties)
 
 ## Multiple Authentication Modules
