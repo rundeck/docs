@@ -83,7 +83,7 @@ This configuration defines Allowed Tags and Preferred Tags for Round Robin execu
 rundeck.clusterMode.remoteExecution.policy = RoundRobin
 rundeck.clusterMode.remoteExecution.config.allowed = other
 rundeck.clusterMode.remoteExecution.config.allowedTags = *
-rundeck.clusterMode.remoteExecution.config.allowedTags = worker,secondary
+rundeck.clusterMode.remoteExecution.config.preferredTags = worker,secondary
 ```
 
 #### Profile Name
