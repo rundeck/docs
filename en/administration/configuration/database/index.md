@@ -26,10 +26,11 @@ for your specific Database type.
 
 ### Add the JDBC Driver
 
-Rundeck includes a JDBC driver for Mysql and H2. If you are using another database
-copy the appropriate JDBC driver, such as "ojdbc14.jar" for Oracle into the server `lib` dir:
+Rundeck includes a JDBC driver for Mysql, MariaDB, Postgres, MSsql and H2. If you are using another database or if you want to use an updated driver, copy the appropriate JDBC driver, such as "ojdbc14.jar" for Oracle into the server `lib` dir:
 
 ~~~~~~ {.bash}
 cp ojdbc14.jar $RDECK_BASE/server/lib
+
+For RPM and DEB you should create /var/lib/rundeck/lib folder and place the driver there.
 ~~~~~~
 
