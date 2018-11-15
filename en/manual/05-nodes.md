@@ -12,6 +12,8 @@ describe the properties of a node or reflect the state of the node.
 One of a Node's built in attributes is called "tags" which is a list
 of classifications or categories about that Node. 
 
+To add nodes to your Rundeck instances, see [[page:manual/09-configure.md#resource-model-sources-configuration]]
+
 ## Nodes tab overview
 
 Navigate to this page by clicking on the "Nodes" tab in the navigation
