@@ -678,6 +678,27 @@ Based on the flags, JAAS would attempt the following for authentication:
   1. If auth succeeds, finish with successful authentication
   2. If auth fails, finish with failed authentication
 
+# Jaas Authorization Testing
+
+If you would like to test your Jaas configuration without restarting Rundeck every time you make a change to
+your Jaas configuration, you can execute the command:  
+
+    $ java -jar -Drundeck.jaaslogin=true -Dloginmodule.name=$LOGIN_MODULE_NAME -Drdeck.base=$RD_BASE_DIR rundeck.war --testauth
+
+    ex.
+
+    $ java -jar -Drundeck.jaaslogin=true -Dloginmodule.name=RDpropertyfilelogin -Drdeck.base=/etc/rundeck rundeck.war --testauth
+    $ Checking file: /etc/rundeck/server/config/jaas-loginmodule.conf
+    $ Checking login module: RDpropertyfilelogin
+    $ Enter user name: admin
+    $ Enter password admin <-- This is masked in actual use
+    $ Login Succeeded!  
+
+The Jaas configuration file you are testing against will be printed out, along with the name of the login module you are testing.  
+You will be prompted to enter a username and password. These will be compared against your current Jaas configuration.  
+If the login is successful you will see: `Login Succeeded!`  
+If the login fails a stacktrace will be printed out which will contain the details about the failure.  
+
 # Container authentication and authorization
 
 Container Authentication provides the Servlet context used by Rundeck
