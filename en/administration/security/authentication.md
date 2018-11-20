@@ -602,7 +602,7 @@ Configuration properties:
 * `supplementalRoles` - a comma-separated list of additional user roles to add to any authenticated user. Example: 'user,readonly'
 
 
-### JettyRolePropertyFileLoginModule
+## JettyRolePropertyFileLoginModule
 
 This module does not authenticate, and requires that `useFirstPass` or `tryFirstPass` is set to `true`, and that a previous module has `storePass` set to `true`.
 
@@ -620,7 +620,7 @@ Example properties file with dummy passwords and roles:
     admin: -,user,admin
     user1: -,user,readonly
 
-### JettyAuthPropertyFileLoginModule
+## JettyAuthPropertyFileLoginModule
 
 This module provides authentication in the same way as the [realm.properties](#PropertyFileLoginModule) mechanism, but does not use any of the role names found in the file.  It can be combined with `JettyRolePropertyFileLoginModule` by using `storePass=true`.
 
