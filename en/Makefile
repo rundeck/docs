@@ -5,7 +5,7 @@ APIVERS=$(shell cat api/version.info)
 
 DIRS = manpages
 CSS = style.css
-JS = markdeep.min.js
+JS = markdeep.min.js jquery.autocomplete.min.js docs-autocomplete.js jquery.hotkeys.js
 DIST = dist
 DATE = $(shell date "+%Y-%m-%dT%H:%M:%S%Z")
 HRDATE = $(shell date "+%B %e %Y, %H:%M %Z")
