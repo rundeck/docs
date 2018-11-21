@@ -55,7 +55,9 @@ optionsDefaults=[
     srcbaseurl:'',
     bugpagelink:'Report',
     bugpageurl:'',
-    fulltitleseparator:' - '
+    fulltitleseparator:' - ',
+    generateSiteJson: "true",
+    siteJsonFile:"site.json"
     ]
 optionDescs=[
     singleIndex: 'true/false, if only a single markdown file, use it as the index HTML file.',
@@ -83,6 +85,8 @@ optionDescs=[
     bugpagelink:'Text for issue report link',
     bugpageurl:'Link to report issue for the page',
     fulltitleseparator:'Separator string for generating full page link titles',
+    generateSiteJson:'true/false, generate a site.json with relative links and page titles',
+    siteJsonFile:"Filename for site.json, default: site.json"
 
     ]
     
@@ -774,7 +778,6 @@ this.scanAll={context,allpages,toc,templates,File dir, File outdir, crumbs, subd
             context.siteLinks[pagedata.srcpath]=pagedata
         }
         
-        println "${pagedata.srcpath} > ${pagedata.title}(${pagedata.outpath}) = ${pagedata.alltitles}"
     }
     allpages
 }
@@ -931,6 +934,40 @@ def printHelp(){
         println "`${it}`\n:    ${optionDescs[it]} Default: `${optionsDefaults[it]}`\n"
     }
 }
+def generateSiteJson(context, File outputdir){
+    if(options.generateSiteJson=='true'){
+        File siteJson=new File(outputdir,options.siteJsonFile?:'site.json')
+        siteJson.withWriter { writer ->
+            writer<<'['
+            def comma=""
+            context.siteLinks.each{srcpath,pagedata->
+                if(pagedata.outpath=='index.html'){
+                    return
+                }
+                writer<<"""${comma}
+                {
+                    "srcpath": "${pagedata.srcpath}",
+                    "title": "${pagedata.title}",
+                    "outpath": "${pagedata.outpath}",
+"""
+                if(pagedata.alltitles.size()>1){
+                    writer<<"""
+                        "alltitles": "${pagedata.alltitles[1..-1].join(' > ')}"
+                    }
+                    """
+                }else{
+                    writer<<"""
+                    "alltitles": "${pagedata.alltitles.join(' > ')}"
+                    }
+                    """
+                }
+                println "${pagedata.srcpath} > ${pagedata.title}(${pagedata.outpath}) = ${pagedata.alltitles}"
+                comma=','
+            }
+            writer<<']'
+        }
+    }
+}
 /**
  * Run edam on a directory. 
  * rdepth = remaining dir depth to follow, -1 for indefinite
@@ -939,14 +976,9 @@ def printHelp(){
 def run(File rootdir, File docsdir, File tdir, File outputdir, rdepth, crumbs){
     def context=[outputdir:outputdir]
     def result=recurse_dirs(context,rootdir,docsdir,tdir,outputdir,rdepth,crumbs,scanAll)
-    // println "result-> $result"
-    // println "context-> $context"
-    // println "links-> ${context.siteLinks.keySet()}"
     
-    // def linkB=context.siteLinks['administration/configuration/database/mysql.md']
-    // println(generateRelativeLinksContent(context,linkB,linkB.crumbs))
-    // println("crumbs: ${linkB}")
-    //generate 
+    generateSiteJson(context,outputdir)
+    
     recurse_dirs(context,rootdir,docsdir,tdir,outputdir,rdepth,crumbs,generateAll)
 }
 def recurse_dirs(Map context,File rootdir, File docsdir, File tdir, File outputdir, rdepth, crumbs, Closure action){
