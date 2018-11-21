@@ -29,6 +29,7 @@ jQuery(function(){
   jQuery('[data-toggle="popover"]').popover();
 });
 </script>
+<script src="${relPath}docs-autocomplete.js"></script>
 $if(highlighting-css)$
   <style type="text/css">
 $highlighting-css$
