@@ -1,4 +1,4 @@
-function setupAutocomplete(sitedata){
+function setupAutocomplete(site){
 	jQuery('input.navquery').devbridgeAutocomplete({
   		lookup: jQuery.map(site,function (page) {
   			return {value: page.alltitles, key: page.title, data:page};
@@ -6,7 +6,7 @@ function setupAutocomplete(sitedata){
   		onSelect: function(suggestion){
   			document.location=window._pageRelpath+suggestion.data.outpath;
   		}
-  });
+	});
 	jQuery('.navquerytrigger').collapse('show');
 
 	$(document).bind('keydown', 'q', function(){
