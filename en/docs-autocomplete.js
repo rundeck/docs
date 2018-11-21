@@ -7,6 +7,11 @@ function setupAutocomplete(sitedata){
   			document.location=window._pageRelpath+suggestion.data.outpath;
   		}
   });
+	jQuery('.navquerytrigger').collapse('show');
+
+	$(document).bind('keydown', 'q', function(){
+		jQuery('.navquerytoggle').collapse('toggle');
+	});
 }
 jQuery(function(){
 	
@@ -15,4 +20,7 @@ jQuery(function(){
 		var site=data;
 		setupAutocomplete(site);		
 	});
+  $('[data-toggle="tooltip"]').tooltip();
+  $('[data-has-toggle="tooltip"]').tooltip();
+ 
 });
