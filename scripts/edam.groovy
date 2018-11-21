@@ -57,7 +57,8 @@ optionsDefaults=[
     bugpageurl:'',
     fulltitleseparator:' - ',
     generateSiteJson: "true",
-    siteJsonFile:"site.json"
+    siteJsonFile:"site.json",
+    siteJsonPathSeparator:" / "
     ]
 optionDescs=[
     singleIndex: 'true/false, if only a single markdown file, use it as the index HTML file.',
@@ -86,7 +87,8 @@ optionDescs=[
     bugpageurl:'Link to report issue for the page',
     fulltitleseparator:'Separator string for generating full page link titles',
     generateSiteJson:'true/false, generate a site.json with relative links and page titles',
-    siteJsonFile:"Filename for site.json, default: site.json"
+    siteJsonFile:"Filename for site.json, default: site.json",
+    siteJsonPathSeparator: "Separator string for site json full path titles"
 
     ]
     
@@ -952,12 +954,12 @@ def generateSiteJson(context, File outputdir){
 """
                 if(pagedata.alltitles.size()>1){
                     writer<<"""
-                        "alltitles": "${pagedata.alltitles[1..-1].join(' > ')}"
+                        "alltitles": "${pagedata.alltitles[1..-1].join(options.siteJsonPathSeparator)}"
                     }
                     """
                 }else{
                     writer<<"""
-                    "alltitles": "${pagedata.alltitles.join(' > ')}"
+                    "alltitles": "${pagedata.alltitles.join(options.siteJsonPathSeparator)}"
                     }
                     """
                 }
