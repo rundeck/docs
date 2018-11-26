@@ -548,6 +548,11 @@ Finally, in your `ldap-activedirectory.conf` be sure to change the *providerUrl*
 
 Rundeck includes a [PAM](https://en.wikipedia.org/wiki/Pluggable_authentication_module) JAAS login module, which uses [libpam4j](https://github.com/kohsuke/libpam4j) to authenticate.
 
+In order for Rundeck to have the necessary permissions to check user credentials, the user that runs the Rundeck process must be in the `shadow` group.  
+This can be done with the command:
+
+    $ sudo addgroup rundeck shadow
+
 On debian based systems you need to install libpam4j :
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {.bash}
