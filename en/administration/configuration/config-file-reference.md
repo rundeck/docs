@@ -214,8 +214,8 @@ The following sections describe configuration values for this file.
    tokens.  HMac tokens have a timeout, which may cause submitted forms or
    actions to fail with a message like "Token has expired".  
    If set to false, UUIDs will be used instead of HMac tokens,
-   and they have no timeouts.
-   The default timeout for tokens can be changed with the
+   and they have no timeouts.  
+   The default timeout for tokens can be changed with the java system property
    `-Dorg.rundeck.web.infosec.HMacSynchronizerTokensHolder.DEFAULT_DURATION=[timeout in ms]`.
 
 * `rundeck.security.apiCookieAccess.enabled`: `true/false`. Default: `true`.  
@@ -321,7 +321,7 @@ Additional configuration for metrics:
     # capture metrics for requests via a filter
     rundeck.metrics.requestFilterEnabled=true/false
 
-    # use JMX 
+    # use JMX
     rundeck.metrics.jmxEnabled=true/false
 
 
