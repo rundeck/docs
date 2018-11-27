@@ -69,6 +69,9 @@ Resource Model Source | [AWS][page:administration/projects/resource-model-source
 Resource Model Source | [Azure][page:administration/projects/resource-model-sources/azure.md] | Populates your nodes from Azure | Community
 Resource Model Source | [ServiceNow][page:administration/projects/resource-model-sources/servicenow.md] | Populates your nodes from ServiceNow's CMDB | Pro
 Resource Model Source | [VMware][page:administration/projects/resource-model-sources/vmware.md] | Populates your nodes from a VSphere ESXi server or VCenter Server | Pro
+Resource Format | [XML][page:manpages/man5/resource-v13.md] | XML Format for Resource Models | Built-in
+Resource Format | [YAML][page:manpages/man5/resource-yaml-v13.md] | YAML Format for Resource Models | Built-in
+Resource Format | [JSON][page:manpages/man5/resource-json-v10.md] | JSON Format for Resource Models | Built-in
 SCM | [Git][page:administration/projects/scm/git.md] | Imports or exports jobs from a Git repository | Community
 SCM | [Job Replication][page:administration/projects/scm/job-replication.md] | Replicates job state between Rundeck Cluster instances | Pro
 SSO | [Okta][page:administration/security/sso.md] | Allows you to use Okta to log into Rundeck | Pro
