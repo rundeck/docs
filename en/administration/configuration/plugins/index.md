@@ -11,4 +11,4 @@ send a notification about job status, gather
 in your network, copy a file to a remote
 server, store and stream logs, or talk to a user directory.
 
-See the [Plugin Developer Guide](../../../developer/index.html) if you are interested in creating one of your own plugins.
+See the [[page:developer/index.md]] if you are interested in creating one of your own plugins.
