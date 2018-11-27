@@ -19,28 +19,17 @@ referring to an actual file containing the provider implementations we will say
 Rundeck supports several different types of plugins to perform different kinds 
 of services:
 
-* [Workflow Step][] - defines an action that can be a distinct step within a workflow, either for an individual Node or a set of Nodes
-* [Node Execution][] - defines a mechanism to connect to a remote Node and execute a command
-* [File Copier][] - defines a mechanism to copy a file to a remote node
-* [Resource Model Source][] - defines a mechanism to retrieve Resource Model data (Node definitions) for use by a Rundeck project
-* [Resource Format][] - defines a data format for Resource Models
-* [Notification][] - defines a mechanism for notification that can be triggered when a Job starts or finishes
-* [Streaming Logging][] - defines a mechanism for reading and writing log events
-* [Execution File Storage][] - defines a mechanism for storage of log files
-* [Storage Facility][] - defines storage backends and content conversion
-* [Orchestrator][] - defines a mechanism for orchestrating nodes when performing dispatched commands
-
-[Workflow Step]: workflow-step-plugins.html
-[Node Execution]: node-execution-plugins.html
-[File Copier]: node-execution-plugins.html
-[Resource Model Source]: resource-model-source-plugins.html
-[Resource Format]: resource-model-source-plugins.html#resource-model-document-formats
-[Notification]: notification-plugins.html
-[Streaming Logging]: logging-plugins.html
-[Execution File Storage]: logging-plugins.html
-[Storage Facility]: storage-plugins.html
-[Orchestrator]: orchestrator-plugins.html
-
+* [Workflow Step][page:manual/job-plugins.md#workflow-steps] - defines an action that can be a distinct step within a workflow, either for an individual Node or a set of Nodes
+* [Node Execution][page:administration/projects/node-execution/index.md] - defines a mechanism to connect to a remote Node and execute a command
+* [File Copier][page:administration/projects/node-execution/index.md] - defines a mechanism to copy a file to a remote node
+* [Resource Model Source][page:administration/projects/resource-model-sources/index.md] - defines a mechanism to retrieve Resource Model data (Node definitions) for use by a Rundeck project
+* [Resource Format][page:developer/03-model-source-format-parser-generator-plugins.md] - defines a data format for Resource Models
+* [Notification][page:manual/job-plugins.md#notifications] - defines a mechanism for notification that can be triggered when a Job starts or finishes
+* [Streaming Logging][page:administration/maintenance/logs.md#streaming-log-plugins] - defines a mechanism for reading and writing log events
+* [Execution File Storage][page:administration/maintenance/logs.md#execution-file-storage] - defines a mechanism for storage of log files
+* [Storage Facility][page:administration/configuration/storage-facility.md] - defines storage backends and content conversion
+* [Orchestrator][page:manual/job-plugins.md#node-orchestrator] - defines a mechanism for orchestrating nodes when performing dispatched commands
+* [Log Filters][page:manual/job-plugins.md#log-filters] - can capture data from, or modify, the log output from a workflow
 
 ## About Services and Providers
 
