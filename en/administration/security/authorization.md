@@ -394,6 +394,7 @@ aclpolicy:
 
 * Create Jobs ('create' action on a resource type with kind 'job')
 * Delete Jobs ('delete' action on a resource type with kind 'job')
+* Create or delete jobs using the SCM plugin only ('scm_create' and 'scm_delete' on a resource type with kind 'job')
 * Read Node data ('read' action on a resource type with kind 'node')
 * Update/Refresh node data ('create','update','refresh' action on a resource type with kind 'node')
 * Read history events ('read' action on a resource type with kind 'event')
@@ -405,16 +406,18 @@ aclpolicy:
 The following table summarizes the generic and specific resources and the
 actions you can restrict in the project scope:
 
-Type       Resource Kind     Actions   Description
-------     --------------    --------  ------------
-`resource` `job`             `create`  Create a new Job
-"          "                 `delete`  Delete jobs
-"          `node`            `read`    Read node information
-"          "                 `create`  Create new node entries
-"          "                 `update`  Modify node entries
-"          "                 `refresh` Refresh node entry from a URL
-"          `event`           `read`    Read history event information
-"          "                 `create`  Create arbitrary history event entries
+Type       Resource Kind     Actions       Description
+------     --------------    --------      ------------
+`resource` `job`             `create`      Create a new Job
+"          "                 `delete`      Delete jobs
+"          "                 `scm_create`  Create a new job only using SCM import plugin
+"          "                 `scm_delete`  Delete jobs only using SCM import plugin
+"          `node`            `read`        Read node information
+"          "                 `create`      Create new node entries
+"          "                 `update`      Modify node entries
+"          "                 `refresh`     Refresh node entry from a URL
+"          `event`           `read`        Read history event information
+"          "                 `create`      Create arbitrary history event entries
 ----------------------------
 
 Table: Project scope generic type actions
@@ -437,6 +440,9 @@ Type      Properties                         Actions            Description
 "                                            `create`           Create the matching job
 "                                            `toggle_schedule`  Enable/disable the job's schedule
 "                                            `toggle_execution` Enable/disable the job for execution
+"                                            `scm_create`       Create a Job only using SCM import plugin
+"                                            `scm_update`       Import changes to a job using SCM import plugin
+"                                            `scm_delete`       Delete a job only using SCM import plugin
 `node`    "rundeck_server", "nodename", ...  `read`             View the node in the UI (see [Node resource properties](#node-resource-properties))
 "                                            `run`              Run jobs/adhoc on the node
 ----------------------------
