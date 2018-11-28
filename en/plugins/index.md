@@ -21,7 +21,7 @@ Node Step | [Local Command][page:manual/node-steps/builtin.md#local-command-step
 Node Step | [Data Node][page:manual/node-steps/builtin.md#data-node-step] | Produces data values for a node | Built-in
 Node Step | [Jira][page:manual/node-steps/jira.md] | Creates or updates Jira issues | Pro
 Node Step | [SQL Runner][page:manual/node-steps/sqlrunner.md] | Executes SQL scripts against JDBC URLs | Pro
-Node Step | [VMwave][page:manual/node-steps/vmware.md] | Controls VMware VMs' power state | Pro
+Node Step | [VMware][page:manual/node-steps/vmware.md] | Controls VMware VMs' power state | Pro
 Workflow Step | [Ansible module][page:manual/workflow-steps/builtin.md#ansible-module] | Runs Ansible modules | Built-in
 Workflow Step | [Ansible playbook inline][page:manual/workflow-steps/builtin.md#ansible-playbook-inline] | Runs Ansible playbooks inline | Built-in
 Workflow Step | [Ansible playbook][page:manual/workflow-steps/builtin.md#ansible-playbook] | Runs Ansible playbooks | Built-in
