@@ -55,6 +55,12 @@ View the [Index](#index) listing API paths.
 
 Changes introduced by API Version number:
 
+**Version 28**:
+
+* Udated Endpoints:
+    - [`GET /api/V/project/[PROJECT]/export`][/api/V/project/[PROJECT]/export] - exportScm parameter.
+    - [`PUT /api/V/project/[PROJECT]/import`][/api/V/project/[PROJECT]/import] - importScm parameter.
+
 **Version 27**:
 
 * Udated Endpoints:
@@ -5451,6 +5457,10 @@ In APIv19 or later:
 * `exportReadmes` true/false, include project readme/motd files
 * `exportAcls` true/false, include project ACL Policy files, if authorized
 
+In APIv28 or later:
+
+* `exportScm` true/false, include project SCM configuration, if authorized
+
 GET Examples:
 
     GET /api/11/project/AlphaProject/export?executionIds=1,4,9
@@ -5522,7 +5532,7 @@ Response content type is `application/zip`
 
 Import a zip archive to the project. Requires `import` authorization for the project.
 
-    PUT /api/14/project/[PROJECT]/import{?jobUuidOption,importExecutions,importConfig,importACL}
+    PUT /api/14/project/[PROJECT]/import{?jobUuidOption,importExecutions,importConfig,importACL,importScm}
 
 Parameters:
 
@@ -5530,6 +5540,7 @@ Parameters:
 + `importExecutions` (optional, boolean, `true/false`) ... If true, import all executions and logs from the archive (default). If false, do not import executions or logs.
 + `importConfig` (optional,boolean,`true/false`) ... If true, import the project configuration from the archive. If false, do not import the project configuration (default).
 + `importACL` (optional,boolean,`true/false`) ... If true, import all of the ACL Policies from the archive. If false, do not import the ACL Policies (default).
++ `importScm` (optional,boolean,`true/false`) ... If true, import SCM configuration from the archive. If false, do not import the SCM configuration (default).
 
 Expected Request Content:
 
