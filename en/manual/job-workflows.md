@@ -21,12 +21,11 @@ Users preferring to define Jobs in a text format should refer to the two format 
 
 It is also possible to author Jobs inside the graphical console
 and then export the definition as a file using the
-`rd-jobs` shell tool ([rd-jobs]).
+`rd` CLI tool ([rd]), or via the API.
 
-See [Exporting Job definitions][1] and [Importing Job definitions][2].
+See [Command Line Tools and API Acccess][1].
 
-[1]: #exporting-job-definitions
-[2]: #importing-job-definitions
+[1]: #command-line-tools-and-api-access
 
 ## Workflow control settings
 
@@ -289,23 +288,18 @@ Context variables can be used in a few ways in a Job step, with slightly differe
 
     The syntax for Environment variables is that all letters become uppercase, punctuation is replaced with underscore, and the name is prefixed with `RD_`.
 
-    > Note, See the chapter [Plugins - SSH - Passing Environment Variables Through Remote Commands](node-execution/ssh-node-execution.html#passing-environment-variables-through-remote-command) for information about requirements of the SSH server.
+    > Note, See the chapter [[page:administration/projects/node-execution/ssh.md#configuring-remote-machine-for-ssh]] for information about requirements of the SSH server.
 
-## Related Command Line Tools
+### Command Line Tools and API access
 
-[rd-jobs]
-  ~ List, load and delete job definitions.
+Jobs can be exported or imported in XML or Yaml format using the API or the `rd` CLI tool.
 
-[rd-queue]
-  ~ List, follow or kill currently running executions.
+* [[page:api/rundeck-api.md#exporting-jobs]]
+* [[page:api/rundeck-api.md#importing-jobs]]
+* [RD CLI Tool][rd]
 
-[run]
-  ~ Run a job.
-
-[run]: ../man1/run.html  
-[rd-jobs]: ../man1/rd-jobs.html  
-[rd-queue]: ../man1/rd-queue.html  
 [job-xml]: ../man5/job-xml.html
 [job-yaml]: ../man5/job-yaml.html
+[rd]: https://rundeck.github.io/rundeck-cli
 
 [Quartz Scheduler crontrigger]: http://www.quartz-scheduler.org/api/2.2.1/org/quartz/CronTrigger.html
