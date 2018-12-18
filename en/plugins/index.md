@@ -63,6 +63,8 @@ Node Execution | [Node Execution][page:administration/projects/node-execution/bu
 Node Execution | [Script][page:administration/projects/node-execution/script.md] | Uses a script to execute commands on remote nodes | Built-in
 Node Execution | [SSH][page:administration/projects/node-execution/ssh.md] | Uses SSH to execute commands on remote nodes | Built-in
 Node Execution | [Powershell][page:administration/projects/node-execution/powershell.md] | Uses PowerShell to execute commands on remote nodes | Pro
+Node Execution | [SSH Bastion][page:administration/projects/node-execution/bastionssh.md] | Provides a node-executor and file-copier supporting ssh actions through a bastion host | Community 
+Node Execution | [OpenSSH][page:administration/projects/node-execution/openssh.md] | Provides a node-executor and file-copier using OpenSSH | Built-in
 Resource Model Source | [Resource Model Source][page:administration/projects/resource-model-sources/builtin.md] | | Built-in
 Resource Model Source | [Resource Editor][page:administration/projects/resource-model-sources/resource-editor.md] | | Built-in
 Resource Model Source | [AWS][page:administration/projects/resource-model-sources/aws.md] | Populates your nodes from EC2 | Community
