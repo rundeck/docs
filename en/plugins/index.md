@@ -2,12 +2,15 @@
 
 This document lists the plugins **distributed with Rundeck and Rundeck Pro**.
 
+(For Plugin Development, see [[page:developer/index.md]].)
+
 More plugins can be found via:
 
 * [Rundeck.org plugins listing](https://rundeck.org/plugins/)
 * [The official rundeck-plugins](https://github.com/rundeck-plugins/) org on github
 * [Github Search: rundeck](https://github.com/search?p=3&q=rundeck&type=Repositories)
 * [Github topic: `rundeck`](https://github.com/topics/rundeck)
+
 
 Type|Plugin|Description|Availability
 ----|----|--------|----
