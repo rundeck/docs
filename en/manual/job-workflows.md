@@ -294,8 +294,8 @@ Context variables can be used in a few ways in a Job step, with slightly differe
 
 Jobs can be exported or imported in XML or Yaml format using the API or the `rd` CLI tool.
 
-* [[page:api/index.md#exporting-jobs]]
-* [[page:api/index.md#importing-jobs]]
+* [[page:api/rundeck-api.md#exporting-jobs]]
+* [[page:api/rundeck-api.md#importing-jobs]]
 * [RD CLI Tool][rd]
 
 [job-xml]: ../man5/job-xml.html
