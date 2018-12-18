@@ -14,13 +14,13 @@ If you are a new user, knowing about them will
 help you use or integrate Rundeck into your environment.
 
 
-* **Role-based Access Control Policies**:   A Rundeck _[access control policy]_ grants users
+* **Role-based Access Control Policies**:   A Rundeck _[access control policy][page:administration/security/authorization.md]_ grants users
 and user groups certain privileges to perform actions against rundeck resources
 like projects, jobs, nodes, commands and API. 
-* **Projects**:  A _[project]_ is a place to separate management activity.
+* **Projects**:  A _[project][page:administration/projects/index.md]_ is a place to separate management activity.
 All Rundeck activities occur within the context of a project.
 Multiple projects can be maintained on the same Rundeck server.
-* **Jobs** : A _[job]_ encapsulate a sequence of steps, job options and nodes where the steps execute.
+* **Jobs** : A _job_ encapsulate a sequence of steps, job options and nodes where the steps execute. See [[page:manual/04-jobs.md]] and [[page:manual/creating-jobs.md]].
 * **Nodes**: A _[node]_  is a resource that is either a physical or virtual instance
 of a network accessible host.
 A *resource model* is a representation of Nodes in a project.
@@ -30,11 +30,11 @@ which evaluates the command string and executes it.
 * **Executions**:  An _[execution]_ is a representation of the activity of a running or completed 
 command or job. The data about the execution is used in rundeck to monitor
 the progress of a job or command and later for reporting about what happened.
-* **Plugins**: Most of what Rundeck does is via one of its _[plugins]_. Plugins exist
+* **Plugins**: Most of what Rundeck does is via one of its _plugins_. Plugins exist
 to execute commands on nodes, perform steps in a job, 
 send a notification about job status, gather
 information about the hosts in your network, copy a file to a remote
-server, store and stream logs, or talk to a user directory.
+server, store and stream logs, or talk to a user directory. See [[page:manual/job-plugins.md]] and [[page:developer/index.md]] and [[page:plugins/index.md]].
 
 
 ## Download and Installation
@@ -185,11 +185,6 @@ you can do so using XML or YAML formats.
 
 See the [Document Format Reference](../man5/index.html).
 
-
-[access control policy]: ../administration/access-control-policy.html
-[project]: ../administration/project-setup.html
-[job]: jobs.html
 [node]: nodes.html
 [command]: commands.html
 [execution]: executions.html
-[plugins]: ../plugins-user-guide/index.html
