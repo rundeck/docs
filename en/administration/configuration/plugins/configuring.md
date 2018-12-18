@@ -336,11 +336,47 @@ To use the `file` storage:
 
 Each Storage Plugin defines its own configuration properties, so if you are using a third-party plugin refer to its documentation. You can set the configuration properties via `[prefix].#.config.PROPERTY`.
 
+Settings of the Storage Plugin:
+
+* `type` - plugin provider name to use
+* `path` - path within the storage tree to apply the storage plugin. If `/` this would be the root, and apply to all subdirectories.  You can add additional providers within a subdirectory such as `/subdir`, and that plugin would only apply to things within that subdirectory.
+* `removePathPrefix` - true/false (default: false). By default, the storage plugin will be invoked using the full path that is requested, and if you used `path` to locate the provider at a subdirectory, the requested path includes the subdirectory name (the prefix).  If set to `true`, the path used when invoking the storage plugin would not include that prefix.
+* `config.*` - specific configuration properties of the Storage Plugin
+
 For the builtin `file` implementation, these are the configuration properties:
 
 * `baseDir` - Local filepath to store files and metadata. Default is `${framework.var.dir}/storage`
 
 The `db` implementation has no configuration properties.
+
+#### Using Multiple Storage Plugins
+
+You can combine multiple Storage Plugins to operate over different branches of the Storage Tree, by defining multiple configurations and using the `path` to locate them within the tree.  You could use this, for example, to store some Keys in the database, some on the local filesystem, and some in some other backend provider, such as Vault.
+
+You would defin multiple configurations using sequential index numbers, and apply them to specific `path` locations.
+
+Example:
+
+    rundeck.storage.provider.1.type=db
+    rundeck.storage.provider.1.path=/keys
+    
+    rundeck.storage.provider.2.type=file
+    rundeck.storage.provider.2.path=/keys/local
+    rundeck.storage.provider.2.config.baseDir=/var/local/rundeck
+    
+    rundeck.storage.provider.3.type=vault-plugin
+    rundeck.storage.provider.3.path=/keys/vault
+    rundeck.storage.provider.3.removePathPrefix=true
+
+In this configuration, anything stored under `keys/vault` would be stored with the Vault plugin,
+and the `removePathPrefix` means that the Vault plugin would not see the `keys/vault` prefix in the path it uses internally.
+Anything stored under `keys/local` would be stored on the filesystem under `/var/local/rundeck`
+using the full path (including `keys/local`).
+Anything else, e.g. under `keys/anotherdir` or just under `keys` would be stored in the DB.
+
+If you define multiple configurations that use the same path, the later configuration would override the previous one.
+If you define a configuration that uses a subpath of a previous configuration, the most specific path will apply, such
+as in the `keys` stored in DB and `keys/vault` using Vault examples above.
 
 ### Storage Converter Plugins
 
@@ -383,3 +419,14 @@ For example, this will apply only to private key files:
     rundeck.storage.converter.1.resourceSelector = Rundeck-key-type=private
 
 If a value for `resourceSelector` is not specified, the converter plugin will apply to all files in the matching path.
+
+
+#### Using Multiple Storage Converter Plugins
+
+Similar to using multiple Storage Plugins, you can define multiple converters using sequential indexes
+and applying them to paths within the root. You can use the same or different converters with different configurations
+on different parts of the tree.
+
+Note that multiple Storage Converter Plugin configurations can be defined that apply to the same paths. In that case
+all matching Storage Converter Plugins will be applied to the paths during reading and writing of storage contents,
+in the order that they are declared.
