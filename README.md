@@ -3,6 +3,7 @@
 Requires:
 
 * pandoc installed and in your PATH
+* groovy installed and in your PATH
 
 Build procedure:
 
