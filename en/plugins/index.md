@@ -2,6 +2,8 @@
 
 This document lists the plugins **distributed with Rundeck and Rundeck Pro**.
 
+(For Plugin Development, see [[page:developer/index.md]].)
+
 More plugins can be found via:
 
 * [Rundeck.org plugins listing](https://rundeck.org/plugins/)
