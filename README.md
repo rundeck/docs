@@ -32,7 +32,11 @@ Link to a page and specify the link text:
 
 Link to the same page. The link text will be set to the document title for that page:
 
-    [[page:administration/configuration/system-properties.md]]]
+    [[page:administration/configuration/system-properties.md]]
+    
+You can include anchor text in the page link as well:
+
+    [[page:administration/configuration/system-properties.md#rpm-and-deb]]
 
 Use the exact file path/name as present in the language subdirectory.  The previous links link to the `/en/administration/configuration/system-properties.md` file when generated in the `en` dir.
 
