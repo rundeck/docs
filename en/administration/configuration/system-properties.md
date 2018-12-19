@@ -57,6 +57,7 @@ Within the `rundeckd` defaults file, declare a `RDECK_JVM_OPTS` variable:
 Here is a partial list of environment variables which are set in the `/etc/rundeck/profile`, and can be overridden in the `/etc/sysconfig/rundeckd` or `/etc/default/rundeckd` file.
 
 (from `/etc/rundeck/profile`)
+
 ~~~
 RDECK_INSTALL="${RDECK_INSTALL:-/var/lib/rundeck}"
 RDECK_BASE="${RDECK_BASE:-/var/lib/rundeck}"
