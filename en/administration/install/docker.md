@@ -1,21 +1,20 @@
 % Running Docker Images
 
-> !!NOTICE!!: The docker images are currently incubating; they are unstable and unsupported.
 Full usage information can be found on the Docker Hub image pages.
 
 ## Open Source Rundeck
-[rundeck/rundeck:SNAPSHOT](https://hub.docker.com/r/rundeck/rundeck/)
+[rundeck/rundeck:${VERSION}](https://hub.docker.com/r/rundeck/rundeck/)
 
 ```bash
-docker run --name some-rundeck -v data:/home/rundeck/server/data rundeck/rundeck:SNAPSHOT
+docker run --name some-rundeck -v data:/home/rundeck/server/data rundeck/rundeck:${VERSION}
 ```
 
 ## Rundeck Pro
-[rundeckpro/team:SNAPSHOT](https://hub.docker.com/r/rundeckpro/team/)
+[rundeckpro/team:${VERSION}](https://hub.docker.com/r/rundeckpro/team/)
 ```bash
-docker run --name some-rundeck -v data:/home/rundeck/server/data rundeckpro/team:SNAPSHOT
+docker run --name some-rundeck -v data:/home/rundeck/server/data rundeckpro/team:${VERSION}
 ```
-[rundeckpro/cluster:SNAPSHOT](https://hub.docker.com/r/rundeckpro/cluster/)  
+[rundeckpro/enterprise:${VERSION}](https://hub.docker.com/r/rundeckpro/enterprise/)  
 The following example invocation will require an accessible MySQL instance
 with a database, user, and the required privileges setup:
 ```bash
@@ -26,7 +25,7 @@ docker run \
     -e RUNDECK_DATABASE_USERNAME="${DB_USERNAME}"
     -e RUNDECK_DATABASE_PASSWPRD="${DB_PASSWORD}"
     -e RUNDECK_DATABASE_URL="${DB_URL}"
-    rundeckpro/cluster:SNAPSHOT
+    rundeckpro/enterprise:${VERSION}
 ```
 
 
