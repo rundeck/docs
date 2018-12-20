@@ -2,11 +2,11 @@
 % Greg Schueler, Alex Honor
 % November 20, 2010
 
-There are currently two ways to develop plugins:
+There are currently three ways to develop plugins:
 
 1. [Java plugin development](#java-plugin-development): Develop Java code that is distributed within a Jar file.
 2. [Script Plugin Development](#script-plugin-development): Write shell/system scripts that implement your desired behavior and put them in a zip file with some metadata.
-3. Groovy Plugin Development: Write groovy scripts to implement Notification and Logging plugins.
+3. [Groovy Plugin Development](#groovy-plugin-development): Write groovy scripts to implement Notification and Logging plugins.
 
 Either way, the resultant plugin archive file, either a .jar java archive,
 or a .zip file archive, will be placed in the plugin directory
@@ -291,7 +291,7 @@ rundeckPlugin(NotificationPlugin){
 }
 ~~~~~~~
 
-In this case we use the same `NotificationPlugin` interface used for Java [Notfiication Plugins].
+In this case we use the same `NotificationPlugin` interface used for Java [Notification Plugins][page:developer/05-notification-plugins.md].
 
 However, for other plugin types you would specify the correct Java interface for the specific plugin type.
 
