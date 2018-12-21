@@ -57,18 +57,18 @@ Changes introduced by API Version number:
 
 **Version 28**:
 
-* Udated Endpoints:
+* Updated Endpoints:
     - [`GET /api/V/project/[PROJECT]/export`][/api/V/project/[PROJECT]/export] - exportScm parameter.
     - [`PUT /api/V/project/[PROJECT]/import`][/api/V/project/[PROJECT]/import] - importScm parameter.
 
 **Version 27**:
 
-* Udated Endpoints:
+* Updated Endpoints:
     - [`GET /api/V/user/list`][/api/V/user/list] - More info from the user.
 
 **Version 26**:
 
-* Udated Endpoints:
+* Updated Endpoints:
     - [`GET /api/V/projects`][/api/V/projects] - label to projects response.
 
 **Version 25**:
