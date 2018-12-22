@@ -39,10 +39,11 @@ Try Rundeck Enterprise
     s.parentNode.insertBefore(g, s);
    })(document, 'script');
   </script>
-<!-- Start of HubSpot Embed Code -->
-<script type=“text/javascript” id=“hs-script-loader” async defer src=“//js.hs-scripts.com/2768099.js”></script>
-<!-- End of HubSpot Embed Code -->
 
 <script>window.markdeepOptions={mode:'html'};</script>
 <!-- Markdeep: --><script src="${relPath}markdeep.min.js"></script>
 <!-- <script src="https://casual-effects.com/markdeep/latest/markdeep.min.js"></script> -->
+
+<!-- Start of HubSpot Embed Code -->
+<script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/2768099.js"></script>
+<!-- End of HubSpot Embed Code -->
