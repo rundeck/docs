@@ -50,7 +50,7 @@ document.
 
 This file governs the access for the "admin" group and role.
 
-See [role based access control](../security/access-control-policy.html) for information about setting up policy files for other user groups.
+See [role based access control][page:administration/security/authorization.md] for information about setting up policy files for other user groups.
 
 ## framework.properties
 
@@ -92,7 +92,7 @@ The `tokens.properties` file should contain static authentication tokens you wis
     username2: token_string2
     ...
 
-The token_strings can be used as Authentication tokens to the [API](../../api/index.html#token-authentication).
+The token_strings can be used as Authentication tokens to the [API][page:api/rundeck-api.md#token-authentication].
 
 ### Global execution variables
 
@@ -203,7 +203,7 @@ Or set `server.session.timeout` via [[page:administration/configuration/system-p
 
 This is the primary Rundeck webapp configuration file. Defines default
 loglevel, datasource configuration, and
-[GUI customization](gui-customization.html).
+[GUI customization][page:administration/configuration/gui-customization.md].
 
 The following sections describe configuration values for this file.
 
@@ -266,7 +266,7 @@ system and is useful when managing Rundeck server clusters.
 
 ### Project Configuration Storage settings
 
-The [Project Setup - Project Definitions](project-setup.html#project-definitions) mechanism is configured within this file, see:
+The [Project Setup - Project Definitions][page:administration/projects/project-create.md#project-definitions] mechanism is configured within this file, see:
 
 * [Project Storage][]
 
@@ -274,7 +274,7 @@ The [Project Setup - Project Definitions](project-setup.html#project-definitions
 
 ### Key Storage settings
 
-The [Key storage](../security/key-storage.html) mechanism is configured within this file, see:
+The [Key storage][page:administration/security/key-storage.md] mechanism is configured within this file, see:
 
 * [Configuring Storage Plugins][]
 * [Configuring Storage Converter Plugins][]
@@ -284,11 +284,11 @@ The [Key storage](../security/key-storage.html) mechanism is configured within t
 
 ### Notification email settings
 
-See [Email Settings: Notification email settings](email-settings.html#notification-email-settings)
+See [Email Settings: Notification email settings][page:administration/configuration/email-settings.md#notification-email-settings]
 
 ### Custom Email Templates
 
-See [Email Settings: Custom Email Templates](email-settings.html#custom-email-templates)
+See [Email Settings: Custom Email Templates][page:administration/configuration/email-settings.md#custom-email-templates]
 
 ### Execution finalize retry settings
 
@@ -354,7 +354,7 @@ Default paging size for the Activity page and results from execution API queries
 
 ### Job Remote Option URL connection parameters
 
-Change the defaults for for [Job Remote Option Value URLs](../../manual/defining-job-options.html#remote-option-values) loading.
+Change the defaults for for [Job Remote Option Value URLs][page:manual/job-options.md#remote-option-values] loading.
 
 **Socket read timeout**
 
@@ -412,7 +412,7 @@ Enabled: true/false (default true).
 :   `rundeck.nodeService.nodeCache.enabled=true` If set to false, no caching is performed.
 
 First Load Asynch: true/false
-:   `rundeck.nodeService.nodeCache.firstLoadAsynch=false`  The default for whether the first load of a project's nodes should be performed synchronously or not. If set to `true`, and the [Project Nodes > Synchronous First Load](project-setup.html#project-nodes) value is unset, then the initial load of a Project's nodes when the cache is empty will be done in the background asynchronously. Otherwise the initial load is done synchronously, possibly causing a delay at Rundeck startup or Job execution startup. A Project level configuration value will override this default.
+:   `rundeck.nodeService.nodeCache.firstLoadAsynch=false`  The default for whether the first load of a project's nodes should be performed synchronously or not. If set to `true`, and the [Project Nodes > Synchronous First Load][page:administration/projects/project-create.md#project-nodes] value is unset, then the initial load of a Project's nodes when the cache is empty will be done in the background asynchronously. Otherwise the initial load is done synchronously, possibly causing a delay at Rundeck startup or Job execution startup. A Project level configuration value will override this default.
 
 ### Groovy config format
 

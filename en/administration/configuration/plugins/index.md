@@ -3,7 +3,7 @@
 ## Overview
 
 Most of what Rundeck does is via one of its plugins. 
-Several [plugin types](plugin-types.html) exist
+Several [plugin types][page:administration/configuration/plugins/plugin-types.md] exist
 to [execute commands on nodes][page:administration/configuration/plugins/configuring.md#node-execution], 
 perform a step in a workflow, 
 send a notification about job status, gather

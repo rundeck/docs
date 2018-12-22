@@ -11,7 +11,7 @@ Name: <span style="color: SteelBlue"><span class="glyphicon glyphicon-leaf"></sp
 
 ## Upgrading from 2.6
 
-* See the [Upgrading Guide](../upgrading/index.html)
+* See the [Upgrading Guide][page:upgrading/upgrading.md]
 
 ## Notes
 

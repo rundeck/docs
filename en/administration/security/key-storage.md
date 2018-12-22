@@ -14,9 +14,9 @@ A typical way to store shared keys might be under a "common" or "shared" root. S
 
 ## ACL Policies
 
-Access to the Keys in the Storage facility are restricted by use of [ACL policies](access-control-policy.html#).
+Access to the Keys in the Storage facility are restricted by use of [ACL policies][page:administration/security/authorization.md#].
 
-Access to the `keys` path requires an [Application scope](access-control-policy.html#application-scope-resources-and-actions) authorization.
+Access to the `keys` path requires an [Application scope][page:administration/security/authorization.md#application-scope-resources-and-actions] authorization.
 
 Within the application scope definition, define access with a `for` entry of `storage`.
 
@@ -48,7 +48,7 @@ for:
 
 ## API Usage
 
-The [Key Storage API](../../api/index.html#key-storage) is provided through the standard Rundeck HTTP API. Rundeck should be configured to use HTTPS, and all API access requires either an authentication token, or username and password authentication.
+The [Key Storage API][page:api/rundeck-api.md#key-storage] is provided through the standard Rundeck HTTP API. Rundeck should be configured to use HTTPS, and all API access requires either an authentication token, or username and password authentication.
 
 Creating an key entry:
 
@@ -90,11 +90,11 @@ Rundeck provides these built-in implementations:
 
 ### Configuring Storage Plugins
 
-See [Plugins User Guide - Configuring Storage Plugins](../configuration/plugins/configuring.html#storage-plugins).
+See [Plugins User Guide - Configuring Storage Plugins][page:administration/configuration/plugins/configuring.md#storage-plugins].
 
 ## Key Data Storage Converter
 
- Keys can be encrypted in the storage backend by use of a [Storage Converter plugin](../../developer/storage-converter-plugin.html). A typical plugin would encrypt any private-key data at write time, and decrypt it at read time.
+ Keys can be encrypted in the storage backend by use of a [Storage Converter plugin][page:developer/08-storage-converter-plugins.md]. A typical plugin would encrypt any private-key data at write time, and decrypt it at read time.
 
 The Storage Converter Plugin handles reading and writing the content for any matching resources.  The subsequent data is stored in the storage backend (on-disk or in a database) alongside the metadata for the file.  If necessary, the metadata content can also be encrypted by modifying the data map that is provided.
 
@@ -102,7 +102,7 @@ Converter plugins do not have to manage storing the data, that will be handled b
 
 ### Configuring Storage Converter Plugins
 
-See [Plugins User Guide - Configuring Storage Converter Plugins](../configuration/plugins/configuring.html#storage-converter-plugins).
+See [Plugins User Guide - Configuring Storage Converter Plugins][page:administration/configuration/plugins/configuring.md#storage-converter-plugins].
 
 ## Using Keys via Rundeck Node Executors
 

@@ -11,7 +11,7 @@ Name: <span style="color: SaddleBrown"><span class="glyphicon glyphicon-pushpin"
 
 ## Upgrading from Earlier versions
 
-* See the [Upgrading Guide](../upgrading/index.html)
+* See the [Upgrading Guide][page:upgrading/upgrading.md]
 
 ## Notes
 

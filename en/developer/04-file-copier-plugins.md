@@ -40,7 +40,7 @@ Optionally the plugin may implement [MultiFileCopier](${javadocbase}/com/dtolabs
 ### Plugin properties
 
 
-See [Plugin Development - Java Plugins - Descriptions](plugin-development.html#plugin-descriptions)
+See [Plugin Development - Java Plugins - Descriptions][page:developer/01-plugin-development.md#plugin-descriptions]
 to learn how to create configuration properties for your plugin.
 
 > Note, the `destination` parameter may or may not be specified. If it is not null, it indicates that the file must be copied to the requested destination filepath. If it is null, it indicates that the copied file is likely a script file, and it should be copied to a temporary file location. In either case, the resulting file path must be returned as the result of the method call.
@@ -48,7 +48,7 @@ to learn how to create configuration properties for your plugin.
 
 ## Script Plugin Type
 
-See the [Script Plugin Development](plugin-development.html#script-plugin-development)
+See the [Script Plugin Development][page:developer/01-plugin-development.md#script-plugin-development]
 for the basics of developing script-based plugins for Rundeck.
 
 ### Additional data context properties

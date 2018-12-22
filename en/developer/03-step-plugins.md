@@ -33,12 +33,12 @@ There are several reasons to create a Step Plugin:
 
 ## Define a plugin provider class
 
-Refer to the [Plugin Development - Java Plugins](plugin-development.html#java-plugin-development)
+Refer to the [Plugin Development - Java Plugins][page:developer/01-plugin-development.md#java-plugin-development]
  section for information about correct
 definition of a [Plugin](${javadocbase}/com/dtolabs/rundeck/core/plugins/Plugin.html) class, including packaging as a Jar and annotation.
 
 Be sure to use the `@Plugin` annotation on your provider implementation class
-to let it be recognized by Rundeck (See [Plugin Annotations](plugin-annotations.html)). 
+to let it be recognized by Rundeck (See [Plugin Annotations][page:developer/02-plugin-annotations.md]). 
 
 Your `service` name should be one of the
 three listed below.  The class
@@ -56,7 +56,7 @@ Each plugin type has an associated Java interface.
 
 ### Plugin properties
 
-See [Plugin Development - Java Plugins - Descriptions](plugin-development.html#plugin-descriptions)
+See [Plugin Development - Java Plugins - Descriptions][page:developer/01-plugin-development.md#plugin-descriptions]
 to learn how to create configuration properties for your plugin using Java annotations.
 
 ### WorkflowStep Plugin
@@ -201,7 +201,7 @@ examples of all three provider types.
 * Node Steps - the plugin will execute the script *locally* on the Rundeck server for each node
 * Remote Script Node Steps - the plugin will execute the script *remotely* on each node
 
-See the [Script Plugin Development](plugin-development.html#script-plugin-development) 
+See the [Script Plugin Development][page:developer/01-plugin-development.md#script-plugin-development] 
 for the basics of developing script-based plugins for Rundeck.
 
 Use the service name for the plugin type:
@@ -209,15 +209,15 @@ Use the service name for the plugin type:
 * `WorkflowNodeStep`
 * `RemoteScriptNodeStep`
 
-For configuration properties, see the [Resource Model Source Plugin - Plugin Properties](model-format-parser-and-generator-plugin.html).
+For configuration properties, see the [Resource Model Source Plugin - Plugin Properties][page:developer/03-model-source-format-parser-generator-plugins.md].
 
-Two additional [provider metadata properties](plugin-development.html#provider-metadata) are available for `RemoteScriptNodeStep` plugins:
+Two additional [provider metadata properties][page:developer/01-plugin-development.md#provider-metadata] are available for `RemoteScriptNodeStep` plugins:
 
 * `use-original-extension` - (`true/false`, default `true`), whether to force the remotely 
   copied script to have the same file extension as the original specified by `script-file`.
 * `script-file-extension` - A file extension to use for the remotely copied script.
 
-To define [property scopes](plugin-annotations.html#property-scopes), 
+To define [property scopes][page:developer/02-plugin-annotations.md#property-scopes], 
 add a `scope` entry in the map for a configuration property:
 
 ~~~~ {.yaml}

@@ -2,8 +2,8 @@
 
 To support Autotakeover, you must first:
 
-* [Configure a loadbalancer](../loadbalancer/index.html)
-* [Configure an external database](../../configuration/database/index.html)
+* [Configure a loadbalancer][page:administration/cluster/loadbalancer/index.md]
+* [Configure an external database][page:administration/configuration/database/index.md]
 
 ### Configure Autotakeover
 

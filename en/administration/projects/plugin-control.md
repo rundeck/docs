@@ -25,9 +25,9 @@ rd projects configure set -p MyProject -- \
 
 ## API Usage
 
-Project configuration can be achieved via the [API](../../api/index.html).
+Project configuration can be achieved via the [API][page:api/rundeck-api.md].
 
-[Project configuration](../../api/index.html#project-configuration)
+[Project configuration][page:api/rundeck-api.md#project-configuration]
 
     PUT /api/13/project/MyProject/config
     Content-Type: application/json

@@ -45,7 +45,7 @@ You can embed context property references within the key storage path such as `$
 In addition to the general SSH configuration mentioned for in this section, some additional configuration can be done for SCP. 
 
 When a Script is executed on a remote node, it is copied over via SCP first, and then executed.  In addition to the SSH connection properties, some attributes
-can be configured.  See [File Copier destination directory](built-in-node-execution-plugins.html#file-copier-destination-directory).
+can be configured.  See [File Copier destination directory][page:administration/projects/node-execution/builtin.md#file-copier-destination-directory].
 
 ###  Authentication types
 

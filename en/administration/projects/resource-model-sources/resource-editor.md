@@ -13,7 +13,7 @@ of these tools, it is possible to map the data to meet the needs of
 
 ### Definition ###
 
-The [Rundeck resource model document format](../../../man5/resource.html) and the [resource-yaml-v13](../../../man5/resource-yaml.html) format provide two attributes that help connect the dots between the
+The [Rundeck resource model document format][page:manpages/man5/resource-v13.md] and the [resource-yaml-v13][page:manpages/man5/resource-yaml-v13.md] format provide two attributes that help connect the dots between the
 Rundeck UI and the editing interface provided by the external data
 management tool. They can use `editUrl` or `remoteUrl` attributes to specify the remote URL.  The URLs can embed properties about the node to expand prior to being loaded, which allows you to e.g. submit query parameters using the node name.
 

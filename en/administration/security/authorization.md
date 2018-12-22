@@ -1,6 +1,6 @@
 % Access Control Policy
 
-Based on the [Authentication](authenticating-users.html) mechanism,
+Based on the [Authentication][page:administration/security/authentication.md] mechanism,
 the Container provides Rundeck
 with a list of "group" or "role" names
 that the user belongs to.
@@ -44,7 +44,7 @@ group is allowed to perform which actions.
 Please read over this document for information on how to define it, and how to
 grant access for certain actions to certain resources:
 
-*  [aclpolicy](../../man5/aclpolicy.html)
+*  [aclpolicy][page:manpages/man5/aclpolicy-v10.md]
 
 Policies can be organized into more than one file to help organize
 access by group or pattern of use. The normal Rundeck install will
@@ -59,8 +59,8 @@ Rundeck loads ACL Policy definitions from these locations:
 
 * All `*.aclpolicy` files found in the rundeck `etc` dir, which is either `/etc/rundeck` (rpm and debian install defaults),
 or `$RDECK_BASE/etc` (launcher/war configuration).
-* System level policies created via the [System ACLs API](../../api/index.html#acls)
-* Project level policies created via the [Project ACLs API](../../api/index.html#project-acls), limited only to project context policies for a specific project.
+* System level policies created via the [System ACLs API][page:api/rundeck-api.md#acls]
+* Project level policies created via the [Project ACLs API][page:api/rundeck-api.md#project-acls], limited only to project context policies for a specific project.
 
 
 
@@ -81,7 +81,7 @@ Otherwise, only the policies on the filesystem, and uploaded to the System ACLs 
 
 ### rd-acl
 
-Added in Rundeck 2.5, the [rd-acl](../../man1/rd-acl.html) tool
+Added in Rundeck 2.5, the [rd-acl][page:manpages/man1/rd-acl.md] tool
 can help to create, test, and validate your policy files.
 
 ### Example
@@ -159,7 +159,7 @@ information.
 
 ## Specific Resources and Resource Types
 
-As described in the [aclpolicy-v10(5)](../../man5/aclpolicy.html) definition, access
+As described in the [aclpolicy-v10(5)][page:manpages/man5/aclpolicy-v10.md] definition, access
 is granted or denied to specific "resources". Resources can take two forms:
 
 * A specific resource, with a type and properties
@@ -178,12 +178,12 @@ job.  Which means this corresponds to a generic resource with a "kind" called "j
 In Rundeck 2.8.x and later, Authentication Tokens are given a set of *Authorization Roles* at generation time,
 so the access levels for the Token depend on how it was generated.
 
-See: [API Token](../../api/index.html#token-authentication) usage instructions.
+See: [API Token][page:api/rundeck-api.md#token-authentication] usage instructions.
 
 See below: [API Token Authorization][].
 
 
-(**Note:** In Rundeck 2.7.x and earlier, clients of the [Web API](../../api/index.html) may use the [Token Authentication](../../api/index.html#token-authentication) method.  These clients are
+(**Note:** In Rundeck 2.7.x and earlier, clients of the [Web API][page:api/rundeck-api.md] may use the [Token Authentication][page:api/rundeck-api.md#token-authentication] method.  These clients are
 placed in the special authorization group called `api_token_group`.)
 
 [API Token Authorization]: #api-token-authorization
@@ -453,7 +453,7 @@ Table: Project scope specific resource actions
 
 *Note*: Jobs can be referenced using "name" and "group" or using "uuid".
 
-*Note*: `runAs` and `killAs` actions only apply to certain API endpoints, and allow running jobs or adhoc executions or killing executions to be performed with a different username attached as the author of the action.  See [Rundeck API - Running a Job](../../api/index.html#running-a-job).
+*Note*: `runAs` and `killAs` actions only apply to certain API endpoints, and allow running jobs or adhoc executions or killing executions to be performed with a different username attached as the author of the action.  See [Rundeck API - Running a Job][page:api/rundeck-api.md#running-a-job].
 
 *Note*:
 Job deletion requires allowing the 'delete' action
@@ -609,7 +609,7 @@ To diagnose this, begin by checking two bits:
 2. Read the messages inside the `rundeck.audit.log` log file. The
    authorization facility generates fairly low level messages describing
    how the policy is matched to the user context.
-3. Use the [rd-acl](../../man1/rd-acl.html) tool to test and validate your policy files
+3. Use the [rd-acl][page:manpages/man1/rd-acl.md] tool to test and validate your policy files
 
 For each entry in the audit log, you'll see all decisions leading up to either a
 AUTHORIZED or a REJECTED message.  It's not uncommon to see REJECTED

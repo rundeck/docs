@@ -189,7 +189,7 @@ You can select an Orchestrator plugin to use instead, which can choose its own l
 for how many and what order to process the nodes.
 
 To learn how to develop your own Orchestrator plugin
-see [Plugin Developer Guide - Orchestrator Plugin](../developer/orchestrator-plugin.html).
+see [Plugin Developer Guide - Orchestrator Plugin][page:developer/09-orchestrator-plugin.md].
 
 ### Scheduled Jobs
 
@@ -239,7 +239,7 @@ When the Job starts, all "start" notifications will be triggered.
 
 When the Job finishes executing, all "success" notifications will be triggered if the Job is successful.  Otherwise, all "failure" notifications will be triggered if the Job fails or is cancelled.
 
-For a full list of notification plugins, see [Job Plugins - Notifications](job-plugins.html#notifications)
+For a full list of notification plugins, see [Job Plugins - Notifications][page:manual/job-plugins.md#notifications]
 
 ## Deleting Jobs
 
@@ -279,7 +279,7 @@ choose either XML or YAML format to download the definition.
 Click the preferred format to initiate the file download to your
 browser.
 
-To export jobs to a git repository, see the [Git plugin](scm/scm-git-plugin.html#configuring-git-export)
+To export jobs to a git repository, see the [Git plugin][page:administration/projects/scm/git.md#configuring-git-export]
 
 ## Importing Job definitions
 
@@ -314,4 +314,4 @@ Choose an option where it says "Imported Jobs:":
 Click the Upload button. If there are any errors with the Job
 definitions in the XML file, they will show up on the page.  
 
-To import jobs from a git repository, see the [Git plugin](scm/scm-git-plugin.html#git-import-configuration)
+To import jobs from a git repository, see the [Git plugin][page:administration/projects/scm/git.md#git-import-configuration]

@@ -46,7 +46,7 @@ there are a couple ways you can try it.
 install the Rundeck software. There are several package formats. 
 Choose the one that best suits your infrastructure.
 After installation, be sure Rundeck has been started.
-See [Startup](../administration/maintenance/startup-and-shutdown.html) to learn how to
+See [Startup][page:administration/maintenance/startup.md] to learn how to
 startup and shutdown rundeck.
 * You can run the [vagrant](https://github.com/rundeck/anvils-demo) demo.
 The demo contains a project with tagged nodes, example job workflows with
@@ -110,7 +110,7 @@ Jobs
      Jobs matching the filtering criteria. These filter settings can be
      saved to a Users profile. Only authorized jobs will be visible.
      
-     See [Jobs](running-jobs.html).
+     See [Jobs][page:manual/04-jobs.md].
 
 Nodes
 
@@ -120,14 +120,14 @@ Nodes
      matching the filter criteria. Given the appropriate authorization
      you can also execute ad hoc commands to your filtered node set.
      
-     See [Nodes](nodes.html).
+     See [Nodes][page:manual/05-nodes.md].
 
 Commands
 
 :    The Commands page lets you execute arbitrary commands against the
      nodes that match the node filter.
      
-     See [Commands](commands.html).
+     See [Commands][page:manual/06-commands.md].
 
 Activity
 
@@ -138,7 +138,7 @@ Activity
      filter settings also configure an RSS link, found in the top right of
      the page (see Rundeck Administration to enable RSS). 
      
-     See [Activity](activity.html).
+     See [Activity][page:manual/08-activity.md].
 
   
 System
@@ -150,7 +150,7 @@ System
      System Configuration, Access Control, System Report, Log Storage,
      List Plugins, Password Utility and Execution model.
      
-     See [Configure](configure.html)
+     See [Configure][page:manual/09-configure.md]
 
 User
 
@@ -158,7 +158,7 @@ User
      Your user profile lists your group memberships and a form to list
      and generate API tokens.
      
-     See [User](user.html)
+     See [User][page:manual/10-user.md]
 
 
 ## Command Line Tools 
@@ -168,14 +168,14 @@ and run Job definitions and interact with the dispatcher queue. These
 command tools are an alternative to functions accessible in the
 graphical console.
 
-See the [Command line tools](../man1/index.html).
+See the [Command line tools][page:manpages/man1/index.md].
 
 ## API
 
 You can also use the Web API to interface with all aspects of node
 and Job execution. 
 
-See the [Rundeck API](../api/index.html) page for a reference on the
+See the [Rundeck API][page:api/rundeck-api.md] page for a reference on the
 endpoints and examples.
 
 ## Document Formats
@@ -183,7 +183,7 @@ endpoints and examples.
 If you prefer to manage job and resource definitions using text files
 you can do so using XML or YAML formats.
 
-See the [Document Format Reference](../man5/index.html).
+See the [Document Format Reference][page:manpages/man5/index.md].
 
 [node]: nodes.html
 [command]: commands.html

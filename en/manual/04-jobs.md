@@ -42,7 +42,7 @@ later sections, the topic of Job creation will be covered where
 you will learn about steps and job options
 
 If you want to skip ahead, you can go straight to
-[Creating Jobs](../manual/creating-jobs.html).
+[Creating Jobs][page:manual/creating-jobs.md].
 
 ## Job groups
 
@@ -53,7 +53,7 @@ corresponding to the group structure your jobs define.
 
 Beyond organizing jobs, groups assist in defining access control
 policy, covered in the
-[Administrator guide - Access Control Policy](../administration/security/access-control-policy.html).
+[Administrator guide - Access Control Policy][page:administration/security/authorization.md].
 
 ## Job UUIDs
 
@@ -146,7 +146,7 @@ proceeding with the execution.
 
 When you are ready, press "Run Job Now". The job will enter
 the execution queue and you can track its execution in the 
-Activity section of the page, or by going to the [Activity](activity.html) page.
+Activity section of the page, or by going to the [Activity][page:manual/08-activity.md] page.
 
 ### Following Running Jobs
 

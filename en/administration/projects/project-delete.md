@@ -15,8 +15,8 @@ rd projects delete -p MyProject --confirm
 
 ## API Usage
 
-Project deletion can be achieved via the [API](../../api/index.html).
+Project deletion can be achieved via the [API][page:api/rundeck-api.md].
 
-[Delete projects](../../api/index.html#project-deletion):
+[Delete projects][page:api/rundeck-api.md#project-deletion]:
 
     DELETE /api/13/project/MyProject

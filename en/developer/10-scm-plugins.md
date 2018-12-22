@@ -21,7 +21,7 @@ Each Project can enable a single `ScmImport` and/or `ScmExport` plugin.
 
 This is done in the SCM Configuration page in the Rundeck GUI.
 
-Alternately, you can use the [Rundeck API - SCM](../api/index.html#scm).
+Alternately, you can use the [Rundeck API - SCM][page:api/rundeck-api.md#scm].
 
 SCM Configuration for a project is *not* stored in the `project.properties`
 configuration contents.
@@ -29,7 +29,7 @@ configuration contents.
 
 ## Java Plugin Type
 
-* *Note*: Refer to [Java Development](plugin-development.html#java-plugin-development) for information about developing a Java plugin for Rundeck.
+* *Note*: Refer to [Java Development][page:developer/01-plugin-development.md#java-plugin-development] for information about developing a Java plugin for Rundeck.
 
 The plugin interface is [ScmExportPluginFactory](${javadocbase}/com/dtolabs/rundeck/plugins/scm/ScmExportPluginFactory.html).
 This factory type should produce a [ScmExportPlugin][] object.

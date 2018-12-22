@@ -12,6 +12,6 @@ Authentication Options
 * **URL Server**:  URL of the Server, eg: https://vmware-server
 * **Username**: Login Username
 * **Password**: Username Password
-* **Ignore SSL certificate**:  Connecting with the server ignoring the SSL certificate. If this is false, you will need to add the certificate to the truststore ([see here](../../administration/projects/resource-model-sources/vmware-plugin.html#connecting-using-certificate)).
+* **Ignore SSL certificate**:  Connecting with the server ignoring the SSL certificate. If this is false, you will need to add the certificate to the truststore ([see here][page:administration/projects/resource-model-sources/vmware.md#connecting-using-certificate]).
 
 
