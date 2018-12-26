@@ -510,7 +510,7 @@ Using the HTTP Header:
     X-Rundeck-Auth-Token: E4rNvVRV378knO9dp3d73O0cs1kd0kCd
     ...
 
-[API Token Authorization]: ../administration/security/access-control-policy.html#api-token-authorization
+[API Token Authorization]: page:administration/security/authorization.md#api-token-authorization
 
 ### Password Authentication
 

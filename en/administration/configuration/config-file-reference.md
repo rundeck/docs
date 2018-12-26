@@ -270,7 +270,7 @@ The [Project Setup - Project Definitions][page:administration/projects/project-c
 
 * [Project Storage][]
 
-[Project Storage]: storage-facility.html#project-storage
+[Project Storage]: page:administration/configuration/storage-facility.md#project-storage
 
 ### Key Storage settings
 
@@ -279,8 +279,8 @@ The [Key storage][page:administration/security/key-storage.md] mechanism is conf
 * [Configuring Storage Plugins][]
 * [Configuring Storage Converter Plugins][]
 
-[Configuring Storage Plugins]: ../plugins-user-guide/configuring.html#storage-plugins
-[Configuring Storage Converter Plugins]: ../plugins-user-guide/configuring.html#storage-converter-plugins
+[Configuring Storage Plugins]: page:administration/configuration/plugins/configuring.md#storage-plugins
+[Configuring Storage Converter Plugins]: page:administration/configuration/plugins/configuring.md#storage-converter-plugins
 
 ### Notification email settings
 
@@ -306,7 +306,7 @@ Rundeck now attempts to retry the update to correctly register the final state o
 
 Delay is in milliseconds. If a max is set to `-1`, then retries will happen indefinitely.
 
-[Resource Model Sources]: ../administration/managing-node-sources.html
+[Resource Model Sources]: page:manual/09-configure.md#resource-model-sources-configuration
 
 ### Metrics Capturing
 

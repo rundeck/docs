@@ -106,4 +106,4 @@ Several built-in plugins are listed here:
 
 See <https://github.com/rundeck/rundeck/tree/master/examples/example-groovy-log-filter-plugins>.
 
-[Plugin Development - Plugin Localization]: plugin-development.html#plugin-localization
+[Plugin Development - Plugin Localization]: page:developer/01-plugin-development.md#plugin-localization

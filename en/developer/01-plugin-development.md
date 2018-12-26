@@ -846,7 +846,7 @@ The following message Codes will be used:
 
 (*Note*: SCM Plugins have additional message codes.  See: [SCM Plugins - Localization][]).
 
-[SCM Plugins - Localization]: scm-plugins.html#localization
+[SCM Plugins - Localization]: page:developer/10-scm-plugins.md#localization
 
 Additionally, if a property has a [Property Rendering Option](#property-rendering-options) marking it as `STATIC_TEXT`
 normally the `defaultValue` of the property is used to render it as text or HTML.  This value can be localized as well:
@@ -891,4 +891,4 @@ You can define a custom icon for each Provider in your plugin file, or a single 
 
 [Plugin Localization]: #plugin-localization
 [Plugin Icons]: #plugin-icons
-[UI Plugins]: ui-plugins.html
+[UI Plugins]: page:developer/11-ui-plugins.md

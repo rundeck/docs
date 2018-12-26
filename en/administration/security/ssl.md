@@ -172,4 +172,4 @@ When starting up the Jetty container will log a list of the disabled protocols:
 To see the list of enabled Cipher Suites, turn on DEBUG level logging for Jetty SSL utils: `-Dorg.eclipse.jetty.util.ssl.LEVEL=DEBUG`.
 
 
-[rundeck-config.properties]: configuration-file-reference.html#rundeck-config.properties
+[rundeck-config.properties]: page:administration/configuration/config-file-reference.md#rundeck-config.properties

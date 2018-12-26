@@ -60,8 +60,8 @@ file using the following patterns:
 * `action.ID.property.NAME.description` Description for property named "NAME" for action view with ID "ID"
 
 
-[Plugin Development - Plugin Localization]: plugin-development.html#plugin-localization
-[codes]: plugin-development.html#defining-plugin-localization-messages
+[Plugin Development - Plugin Localization]: page:developer/01-plugin-development.md#plugin-localization
+[codes]: page:developer/01-plugin-development.md#defining-plugin-localization-messages
 
 ## Example
 

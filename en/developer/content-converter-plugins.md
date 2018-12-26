@@ -164,4 +164,4 @@ See the [JsonConverterPlugin] for an example.
 
 See <https://github.com/rundeck/rundeck/tree/master/examples/example-groovy-content-converter-plugins>.
 
-[Plugin Development - Plugin Localization]: plugin-development.html#plugin-localization
+[Plugin Development - Plugin Localization]: page:developer/01-plugin-development.md#plugin-localization

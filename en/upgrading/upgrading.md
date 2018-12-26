@@ -39,7 +39,7 @@ If you want to continue using filesystem storage for project config/readme/motd 
 
 Upgrading an existing `filesystem` configuration to `db` is automatic, and project configs/readme/motd will be loaded into DB storage at system startup.
 
-To encrypt the DB storage, you will need to [enable encryption for the "Project Configuration" storage layer](http://rundeck.org/docs/plugins-user-guide/bundled-plugins.html#jasypt-encryption-plugin).
+To encrypt the DB storage, you will need to [enable encryption for the "Project Configuration" storage layer][page:administration/configuration/plugins/bundled-plugins.md#jasypt-encryption-plugin].
 
 ## Upgrading to Rundeck 2.8.1 from 2.8.0
 
@@ -115,7 +115,7 @@ If you see output containing `Column "USER" not found;` then you have already ru
 If you see output containing `Table "JOB_FILE_RECORD" not found`, then you probably did not have 2.8.0 installed,
 you should be able to upgrade from 2.7 without a problem.
 
-[Backup and Recovery]: ../administration/backup-and-recovery.html
+[Backup and Recovery]: page:administration/maintenance/backup.md
 
 
 ## Upgrading to Rundeck 2.8 from earlier versions

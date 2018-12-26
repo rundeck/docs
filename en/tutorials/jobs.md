@@ -488,6 +488,6 @@ Run Restart specifying the method, "force":
 run -j "web/Restart" -p anvils -- -method force
 ~~~~~~~~ 
 
-[job-xml]: ../man5/job-xml.html
-[run]: ../man1/run.html
-[rd-jobs]: ../man1/rd-jobs.html
+[job-xml]: page:manpages/man5/job-v20.md
+[run]: page:manpages/man1/index.md
+[rd-jobs]: page:manpages/man1/index.md

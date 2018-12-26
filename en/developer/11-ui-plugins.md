@@ -304,9 +304,9 @@ Here are some [UI Plugin Examples][example-code].
 
 
 [UIPlugin]: ${javadocbase}/com/dtolabs/rundeck/plugins/rundeck/UIPlugin.html
-[Plugin Development - Plugin Localization]: plugin-development.html#plugin-localization
-[Localization]: plugin-development.html#plugin-localization
-[Plugin Development - Internationalization/Localization for Zip files]: plugin-development.html#internationalizationlocalization-for-zip-files
-[Plugin Icons]: plugin-development.html#plugin-icons
+[Plugin Development - Plugin Localization]: page:developer/01-plugin-development.md#plugin-localization
+[Localization]: page:developer/01-plugin-development.md#plugin-localization
+[Plugin Development - Internationalization/Localization for Zip files]: page:developer/01-plugin-development.md#internationalizationlocalization-for-zip-files
+[Plugin Icons]: page:developer/01-plugin-development.md#plugin-icons
 [Knockout]: http://knockoutjs.com/
 [example-code]: https://github.com/rundeck-plugins/ui-plugin-examples/

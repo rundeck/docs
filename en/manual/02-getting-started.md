@@ -185,6 +185,6 @@ you can do so using XML or YAML formats.
 
 See the [Document Format Reference][page:manpages/man5/index.md].
 
-[node]: nodes.html
-[command]: commands.html
-[execution]: executions.html
+[node]: page:manual/05-nodes.md
+[command]: page:manual/06-commands.md
+[execution]: page:manual/07-executions.md

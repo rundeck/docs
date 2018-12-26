@@ -187,5 +187,5 @@ To complete the round-trip of editing a Node and then showing the results back i
 [CMDB]: https://en.wikipedia.org/wiki/Configuration_management_database
 [AJAX]: https://en.wikipedia.org/wiki/Ajax_(programming)
 
-[project.properties]: configuration-file-reference.html#project.properties
-[Tutorial]: ../tutorials/index.html
+[project.properties]: page:administration/projects/resource-model-sources/resource-editor.md#project.properties
+[Tutorial]: page:tutorials/index.md
