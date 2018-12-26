@@ -14,15 +14,15 @@ This release has many new features and bugfixes, and contains some refactoring u
 ## New Features
 
 * Upgraded grails framework, which adds support for Java 8 (and removes Java 6)
-* Can now store Project definition and configuration in the database (optional), see [Project Definitions](../administration/project-setup.html#project-definitions) and information in the [Upgrade Guide](http://rundeck.org/2.5.0/upgrading/index.html).
+* Can now store Project definition and configuration in the database (optional), see [Project Definitions][page:administration/projects/configuration.md#project-definitions] and information in the [Upgrade Guide](http://rundeck.org/2.5.0/upgrading/index.html).
 * Improved GUI for administering a project: modify Project configuration file contents, and readme.md/motd.md contents. Project archiving is also now performed asynchronously.
-* New Jasypt encryption plugin can be used for Key Storage and Project Configuration, see [Jasypt Encryption Converter Plugin](../plugins-user-guide/storage-plugins.html#jasypt-encryption-converter-plugin)
+* New Jasypt encryption plugin can be used for Key Storage and Project Configuration, see [Jasypt Encryption Converter Plugin][page:plugins/index.md#jasypt-encryption-converter-plugin]
 * Support Key Storage password for SSH sudo and SSH private key passphrase
 * New workflow step plugin: Assert state of another Job, optionally halt workflow with custom status string
-* New `rd-acl` commandline tool can list test and generate .aclpolicy file contents, see [rd-acl](../man1/rd-acl.html)
+* New `rd-acl` commandline tool can list test and generate .aclpolicy file contents, see [rd-acl][page:manpages/man1/rd-acl.md]
 * New Orchestrator plugin point. Orchestrators can be used to batch and sequence the matched nodes used in node dispatching, e.g.: only allow a certain % to run simultaneously.
-	* [Plugins User Guide -  Orchestrator Plugins](../plugins-user-guide/orchestrator-plugins.html)
-	* [Plugin Developer Guide -  Orchestrator Plugin](../developer/orchestrator-plugin.html)
+	* [Plugins User Guide -  Orchestrator Plugins][page:plugins/index.md]
+	* [Plugin Developer Guide -  Orchestrator Plugin][page:developer/09-orchestrator-plugin.md]
 	* [Example code](https://github.com/rundeck/rundeck/tree/development/examples/example-java-orchestrator-plugin)
 * Added hybrid LDAP + properties file group authentication for JAAS (`JettyCombinedLdapLoginModule`)
 	* [Administration - Authentication - Combining LDAP with other modules](http//rundeck.org/2.5.0/administration/authenticating-users.html#combining-ldap-with-other-modules)
@@ -34,7 +34,7 @@ Rundeck may have issues loading or running some plugins.
 
 Please report issues found to [Github issues](https://github.com/rundeck/rundeck/issues).
 
-See the [Upgrading Guide](../upgrading/index.html)
+See the [Upgrading Guide][page:upgrading/upgrading.md]
 
 ## Contributors
 

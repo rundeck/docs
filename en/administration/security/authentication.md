@@ -23,7 +23,7 @@ If you use the Rundeck war file with a different container, such as Tomcat, refe
 
 # Single Sign On
 
-See [Security > Single Sign On](single-sign-on.html).
+See [Security > Single Sign On][page:administration/security/sso.md].
 
 # Jetty and JAAS authentication
 
@@ -196,7 +196,7 @@ export RDECK_JVM="-Dloginmodule.conf.name=jaas-ldap.conf \
     -Dloginmodule.name=ldap"
 ~~~~~~
 
-Note: more information about using the Executable War and useful properties are under [Getting Started - Executable War Options](../install/launcher.html#launcher-options).
+Note: more information about using the Executable War and useful properties are under [Getting Started - Executable War Options][page:administration/install/jar.md#launcher-options].
 
 **For the RPM/Deb installation**: the absolute path to the JAAS config file must be specified with the `java.security.auth.login.config` property.
 
@@ -789,7 +789,7 @@ with a list of all of the user roles seen by Rundeck.
 This page just means that there are no aclpolicy files
 that match those roles,
 but the apache->tomcat authorization is still working correctly.
-At this point, move on to [Access Control Policy](access-control-policy.html)
+At this point, move on to [Access Control Policy][page:administration/security/authorization.md]
 to set up access control for the listed roles.
 
 If the "User roles: " part is blank, then it may not be working correctly.

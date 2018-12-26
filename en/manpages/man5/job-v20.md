@@ -229,7 +229,7 @@ If the description contains more than one line of text, then the first line is u
 The HTML is sanitized to remove disallowed tags before rendering to the browser (such as `<script>`, etc.). 
 You can disable all extended description HTML rendering
 via a configuration flag.
-See [GUI Customization](../administration/gui-customization.html).
+See [GUI Customization][page:administration/configuration/gui-customization.md].
 
 **Note**: To preserve formatting when defining the extended job description in XML, you should be sure to use a CDATA section. Wrap the contents in `<![CDATA[` and `]]>`.
 
@@ -338,7 +338,7 @@ Allowed values:
 ## logging
 
 An optional logging limit, and the action to perform if the limit is reached.
-(See [Jobs - Log Limit](../manual/jobs.html#log-limit)).
+(See [Jobs - Log Limit][page:manual/04-jobs.md#log-limit]).
 
 ~~~~ {.xml}
 <logging limit='1KB' limitAction='halt' status='aborted' />
@@ -754,7 +754,7 @@ excludeprecedence
 
 The filter string to select matching nodes.
 
-The content of this element is the full node filter string. See [User Guide - Node Filters](../manual/node-filters.html).
+The content of this element is the full node filter string. See [User Guide - Node Filters][page:manual/11-node-filters.md].
 
 ### include
 
@@ -1058,7 +1058,7 @@ The node filters to override for the [jobref](#jobref).
 
 [filter](#filter)
 
-:    node filter string. See [User Guide - Node Filters](../manual/node-filters.html).
+:    node filter string. See [User Guide - Node Filters][page:manual/11-node-filters.md].
 
 Example:
 
@@ -1307,7 +1307,7 @@ urls
 <webhook urls="http://server/callback?id=${execution.id}&status=${execution.status}&trigger=${notification.trigger}"/>
 ~~~~~~~~ 
 
-* For more information about the Webhook mechanism used, see the chapter [Integration - Webhooks](../manual/jobs.html#webhooks).
+* For more information about the Webhook mechanism used, see the chapter [Integration - Webhooks][page:manual/04-jobs.md#webhooks].
 
 ### plugin
 
@@ -1366,7 +1366,7 @@ value
 
 # SEE ALSO
 
-`[rd-jobs](../man1/rd-jobs.html)`
+`[rd-jobs][manual/04-jobs.md]`
 
 The Rundeck source code and all documentation may be downloaded from
 <https://github.com/rundeck/rundeck/>.

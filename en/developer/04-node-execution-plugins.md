@@ -21,13 +21,13 @@ public interface NodeExecutor {
 
 ### Plugin properties
 
-See [Plugin Development - Java Plugins - Descriptions](plugin-development.html#plugin-descriptions)
+See [Plugin Development - Java Plugins - Descriptions][page:developer/01-plugin-development.md#plugin-descriptions]
 to learn how to create configuration properties for your plugin.
 
 
 ## Script Plugin Type
 
-See the [Script Plugin Development](plugin-development.html#script-plugin-development)
+See the [Script Plugin Development][page:developer/01-plugin-development.md#script-plugin-development]
 for the basics of developing script-based plugins for Rundeck.
 
 ### Additional data context properties

@@ -22,7 +22,7 @@ Content Converter plugins are applied automatically to Log Output when viewing i
 However, the Log output must have certain metadata entries set for the Log Events.  Plain log output will not be
 rendered in any special way (aside from ANSI Color rendering.)  
 
-For this reason, usually a [Log Filter Plugin](log-filter-plugins.html) is used to annotate the log output with the correct data type when
+For this reason, usually a [Log Filter Plugin][page:developer/log-filter-plugins.md] is used to annotate the log output with the correct data type when
 used with Rundeck's Command or Script steps,
 however custom Step plugins can add this metadata in the logs they emit.
 
@@ -64,7 +64,7 @@ rundeckPlugin(ContentConverterPlugin){
 }
 ~~~~~~
 
-To define metadata about your plugin, see the [Plugin Development - Groovy Plugin Development](plugin-development.html#groovy-plugin-development) chapter.
+To define metadata about your plugin, see the [Plugin Development - Groovy Plugin Development][page:developer/01-plugin-development.md#groovy-plugin-development] chapter.
 
 The `ContentConverterPlugin` Groovy DSL supports defining conversions between data types.
 

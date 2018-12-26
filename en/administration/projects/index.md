@@ -9,7 +9,7 @@ organize unrelated systems within a single Rundeck
 installation. This can be useful for managing different teams, infrastructures,
 environments or applications.
 
-Projects can be [archived](project-archive.html) and imported to other Rundeck servers to help
+Projects can be [archived][page:administration/projects/project-archive.md] and imported to other Rundeck servers to help
 promote changes between environments.
 
 A new installation will not contain any projects so Rundeck will present

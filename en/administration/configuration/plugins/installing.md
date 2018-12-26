@@ -25,4 +25,4 @@ You can overwrite an old plugin with a newer version to update it.
 
 ## Included Plugins
 
-See [Bundled Plugins](bundled-plugins.html).
+See [Bundled Plugins][page:administration/configuration/plugins/bundled-plugins.md].

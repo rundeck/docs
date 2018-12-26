@@ -1,7 +1,7 @@
 % GUI Customization
 
 You can modify some display features of the Rundeck GUI by setting
-these properties in the [rundeck-config.properties](configuration-file-reference.html#rundeck-config.properties) file:
+these properties in the [rundeck-config.properties][page:administration/configuration/config-file-reference.md#rundeck-config.properties] file:
 
 -------------------------------------------------------------------------------
 
@@ -42,4 +42,4 @@ The `rundeck.gui.errorpage.hidestacktrace` can also be set to true via a Java sy
 
 ## Localization
 
-See [Localization](localization.html).
+See [Localization][page:administration/configuration/localization.md].

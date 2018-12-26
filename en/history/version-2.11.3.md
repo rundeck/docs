@@ -11,7 +11,7 @@ Name: <span style="color: RoyalBlue"><span class="glyphicon glyphicon-plane"></s
 
 ## Upgrading from Earlier versions
 
-* See the [Upgrading Guide](../upgrading/index.html)
+* See the [Upgrading Guide][page:upgrading/upgrading.md]
 
 ## Notes
 

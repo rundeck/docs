@@ -3885,7 +3885,7 @@ This release has bug fixes and new features, including some GUI improvements.
 
 ## New Features
 
-* Job references can override Node Filters. See updates to [XML](../man5/job-xml.html#jobref) and [YAML](../man5/job-yaml.html#job-reference-entry) job definition formats as well.
+* Job references can override Node Filters. See updates to [XML][page:manpages/man5/job-v20.md#jobref] and [YAML][page:manpages/man5/job-yaml-v12.md#job-reference-entry] job definition formats as well.
 * Job and Option descriptions can contain markdown and HTML. For Jobs, the first line is the short description, and following lines are interpreted as markdown.
 * MSSQL compatibility
 * Some GUI tweaks and changes
@@ -3924,7 +3924,7 @@ This release has bug fixes and new features, including some GUI improvements.
 ## Compatibility notes
 
 
-A bug in API v11 XML responses caused them to sometimes be incorrectly wrapped in a `<result>` element, this has now been corrected.  See the [API Docs](../api/index.html) for information.  The Rundeck API Java Client library has been updated to workaround this issue (for previous versions of Rundeck).
+A bug in API v11 XML responses caused them to sometimes be incorrectly wrapped in a `<result>` element, this has now been corrected.  See the [API Docs][page:api/rundeck-api.md] for information.  The Rundeck API Java Client library has been updated to workaround this issue (for previous versions of Rundeck).
 
 ## What is "americano indigo briefcase"?
 
@@ -5033,7 +5033,7 @@ Notable Changes:
 * Job Notification Plugins
     * Jobs can now trigger notification plugins in addition to the built-in email and webhook
     * plugins can be developed in Java or with a new Groovy DSL
-    * See the [Notification Plugin Development](../developer/notification-plugin-development.html) Chapter.
+    * See the [Notification Plugin Development][page:developer/01-plugin-development.md] Chapter.
     * Example code at [dtolabs/rundeck/examples](https://github.com/dtolabs/rundeck/tree/development/examples)
 * Notification 'onstart' trigger
     * Jobs can now cause a notification trigger when started via the 'onstart' trigger
@@ -5091,7 +5091,7 @@ Notable Changes:
 * Job Notification Plugins
     * Jobs can now trigger notification plugins in addition to the built-in email and webhook
     * plugins can be developed in Java or with a new Groovy DSL
-    * See the [Notification Plugin Development](../developer/notification-plugin-development.html) Chapter.
+    * See the [Notification Plugin Development][page:developer/01-plugin-development.md] Chapter.
     * Example code at [dtolabs/rundeck/examples](https://github.com/dtolabs/rundeck/tree/development/examples)
 * Notification 'onstart' trigger
     * Jobs can now cause a notification trigger when started via the 'onstart' trigger

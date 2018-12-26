@@ -14,7 +14,7 @@ This release has primarily bugfixes.
 ## Enhancements
 
 * CLI tools can authenticate to the server using environment variables instead of the credentials stored in the framework.properties file.
-	* see [CLI Tool Authentication](../man1/cli-tool-authentication.html)
+	* see [CLI Tool Authentication][page:manpages/man1/rd.md]
 
 ## Upgrading to 2.5
 
@@ -23,7 +23,7 @@ Rundeck may have issues loading or running some plugins.
 
 Please report issues found to [Github issues](https://github.com/rundeck/rundeck/issues).
 
-See the [Upgrading Guide](../upgrading/index.html)
+See the [Upgrading Guide][page:upgrading/upgrading.md]
 
 ## Contributors
 

@@ -83,4 +83,4 @@ Grails application running at http://localhost:4440 in environment: production
 
 Rundeck is now up and running!
 
-Next, learn how to [create your first Rundeck Pro project](../../manual/getting-started.html#project-setup)
+Next, learn how to [create your first Rundeck Pro project][page:manual/02-getting-started.md#project-setup]

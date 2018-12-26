@@ -63,7 +63,7 @@ If the description contains more than one line of text, then the first line is u
 The HTML is sanitized to remove disallowed tags before rendering to the browser (such as `<script>`, etc.).
 You can disable all extended description HTML rendering
 via a configuration flag.
-See [GUI Customization](../administration/gui-customization.html).
+See [GUI Customization][page:administration/configuration/gui-customization.md].
 
 [`sequence`](#sequence)
 
@@ -154,7 +154,7 @@ In addition, these optional entries can be present:
 `loglimit`
 
 :    An optional logging limit.
-(See [Jobs - Log Limit](../manual/jobs.html#log-limit)). Allowed values:
+(See [Jobs - Log Limit][page:manual/04-jobs.md#log-limit]). Allowed values:
 
     * `###` If you specify a number, that is treated as the "Maximum total number of log lines"
     * `###/node` If you specify a number followed by `/node`, the number is treated as the "Maximum number of log lines for a single node"
@@ -239,7 +239,7 @@ The sequence has these required entries:
 
 `strategy`
 
-:    "node-first" or "step-first".  Determines the strategy for executing the sequence across a set of nodes.  See the [Rundeck User Manual](../manual/jobs.html#workflow-control-settings) for more info.
+:    "node-first" or "step-first".  Determines the strategy for executing the sequence across a set of nodes.  See the [Rundeck User Manual][page:manual/04-jobs.md#workflow-control-settings] for more info.
 
 `commands`
 
@@ -456,7 +456,7 @@ A `nodefilters` map entry specifies the Nodes to use for the referenced job,  an
 
     :    Order direction for node ranking. Either "ascending" or "descending" (default "ascending")
     
-The `nodefilters` should contain a `filter` entry.  The value is a string defining a node filter. See [User Guide - Node Filters](../manual/node-filters.html).
+The `nodefilters` should contain a `filter` entry.  The value is a string defining a node filter. See [User Guide - Node Filters][page:manual/11-node-filters.md].
 
 `filter`
 
@@ -657,7 +657,7 @@ or as Name-value list:
 ] 
 ~~~~~~~~
 
-* See the [Jobs Guide](../manual/jobs.html#remote-option-values) for more info.
+* See the [Jobs Guide][page:manual/04-jobs.md#remote-option-values] for more info.
 
 ### Schedule
 
@@ -754,7 +754,7 @@ Specifies the Nodes to use for the job,  and the node-dispatch options.  Contain
 
     :    Order direction for node ranking. Either "ascending" or "descending" (default "ascending")
     
-The `nodefilters` should contain a `filter` entry.  The value is a string defining a node filter. See [User Guide - Node Filters](../manual/node-filters.html).
+The `nodefilters` should contain a `filter` entry.  The value is a string defining a node filter. See [User Guide - Node Filters][page:manual/11-node-filters.md].
 
 `filter`
 
@@ -881,7 +881,7 @@ Example:
         type: MinimalNotificationPlugin
 ~~~~~~~~ 
 
-* For more information about the Webhook mechanism used, see the chapter [Integration - Webhooks](../manual/jobs.html#webhooks).
+* For more information about the Webhook mechanism used, see the chapter [Integration - Webhooks][page:manual/04-jobs.md#webhooks].
 
 #### plugin
 
@@ -897,7 +897,7 @@ Defines a plugin notification section, can contain a single Map, or a Sequence o
 
 # SEE ALSO
 
-[rd jobs](../man1/rd jobs.html)
+[rd jobs][manual/04-jobs.md]
 
 <http://yaml.org/>
 

@@ -72,7 +72,7 @@ This is the list of available pages which can load UI plugins:
 
 ## Zip Plugin Type
 
-See the [Plugin Development - Script plugin zip structure](plugin-development.html#script-plugin-zip-structure)
+See the [Plugin Development - Script plugin zip structure][page:developer/01-plugin-development.md#script-plugin-zip-structure]
 for the basics of Zip plugin structure.
 
 The structure of the zip file is:
@@ -150,7 +150,7 @@ See [Plugin Icons][].
 
 ## Java Plugin Type
 
-* *Note*: Refer to [Java Development](plugin-development.html#java-plugin-development) for information about developing a Java plugin for Rundeck.
+* *Note*: Refer to [Java Development][page:developer/01-plugin-development.md#java-plugin-development] for information about developing a Java plugin for Rundeck.
 
 The plugin interface is [UIPlugin][].
 
