@@ -165,7 +165,7 @@ If you leave it at the default value of "No", then if any node dispatches fail f
 In addition to entering static values that match the nodes, you can also use 
 more dynamic values.
 
-If you have defined Options for the Job (see [Job Options](#job-options)), you
+If you have defined Options for the Job (see [Job Options][page:manual/job-options.md]), you
 can use the values submitted by the user when the job is executed as part of the
 node filtering.
 

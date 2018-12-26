@@ -344,7 +344,7 @@ Metrics names are:
 * `ping`
 * `healthcheck`
 
-See: [API > List Metrics][/api/rundeck-api.md#list-metrics].
+See: [API > List Metrics][page:api/rundeck-api.md#list-metrics].
 
 ### Pagination defaults
 

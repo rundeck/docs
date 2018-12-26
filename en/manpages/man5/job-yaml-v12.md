@@ -897,7 +897,7 @@ Defines a plugin notification section, can contain a single Map, or a Sequence o
 
 # SEE ALSO
 
-[rd jobs][manual/04-jobs.md]
+[rd jobs][page:manual/04-jobs.md]
 
 <http://yaml.org/>
 

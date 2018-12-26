@@ -1366,7 +1366,7 @@ value
 
 # SEE ALSO
 
-`[rd-jobs][manual/04-jobs.md]`
+`[rd-jobs][page:manual/04-jobs.md]`
 
 The Rundeck source code and all documentation may be downloaded from
 <https://github.com/rundeck/rundeck/>.
