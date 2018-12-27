@@ -153,6 +153,20 @@ You must change some configuration values to change the authentication module to
 
 Configuring LDAP consists of defining a JAAS config file (e.g. "jaas-ldap.conf"), and changing the server startup script to use this file and use the correct Login Module configuration inside it.
 
+#### Sync Rundeck profile from LDAP user attributes
+
+You can use LDAP user attributes to update the email, first name, and last name properties of your Rundeck users.
+To enable this feature, add the property: `rundeck.security.syncLdapUser=true` to your `rundeck-config.properties` file.
+
+In your JAAS LDAP login module you can specify the ldap user attributes used to source the email, and name properties.  
+The properties are:
+
+    userLastNameAttribute="sn"
+    userFirstNameAttribute="givenName"
+    userEmailAttribute="mail"
+
+These LDAP attributes will be checked when a user logs in, and their Rundeck user profile will be updated from them.    
+
 #### Step 1: Setup the LDAP login module configuration file
 
 Create a `jaas-ldap.conf` file in the same directory as the `jaas-loginmodule.conf` file.
@@ -239,6 +253,9 @@ ldap {
       userIdAttribute="uid"
       userPasswordAttribute="userPassword"
       userObjectClass="account"
+      userLastNameAttribute="sn"
+      userFirstNameAttribute="givenName"
+      userEmailAttribute="mail"
       roleBaseDn="ou=Groups,dc=test1,dc=example,dc=com"
       roleNameAttribute="cn"
       roleUsernameMemberAttribute="memberUid"
@@ -293,6 +310,15 @@ The `JettyCachingLdapLoginModule` has these configuration properties:
 
 `userObjectClass`
 :    Attribute name for user object class, default "inetOrgPerson".
+
+`userLastNameAttribute`
+:    Attribute name for user's last name, default "sn".
+
+`userFirstNameAttribute`
+:    Attribute name for user's first name, default "givenName".
+
+`userEmailAttribute`
+:    Attribute name for user's email address, default "mail".
 
 `roleBaseDn`
 :    Base DN for role membership search, e.g. "ou=Groups,dc=test1,dc=example,dc=com".
