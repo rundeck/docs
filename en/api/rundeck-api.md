@@ -1569,7 +1569,7 @@ Returns results of some health checks.
 
 **Request:**
 
-    GET /api/25/metrics
+    GET /api/25/metrics/healthcheck
 
 **Response:**
 
