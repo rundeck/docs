@@ -477,7 +477,7 @@ To obtain an API Token, you must first log in to the Rundeck GUI using a user ac
 Click on your username in the header of the page, and you will be shown your User Profile page.
 From this page you can manage your API Tokens.
 
-**Note**: You must have appropriate authorization to generate a token. See [API Token Authorization][].
+**Note**: You must have appropriate authorization to generate a token. See [API Token Authorization][page:administration/security/authorization.md#api-token-authorization].
 
 Depending on what authorization level you have, you can generate a token with a certain set of *Authorization Roles*
 and an *Expiration Period*.
@@ -509,8 +509,6 @@ Using the HTTP Header:
     GET /api/1/projects HTTP/1.1
     X-Rundeck-Auth-Token: E4rNvVRV378knO9dp3d73O0cs1kd0kCd
     ...
-
-[API Token Authorization]: page:administration/security/authorization.md#api-token-authorization
 
 ### Password Authentication
 
@@ -1200,7 +1198,7 @@ The `memory` section describes memory usage in bytes:
 
 Several Metrics API endpoints are linked in the System Info response.
 
-See [GET /api/V/metrics][].
+See [GET /api/V/metrics][/api/V/metrics].
 
 ## List Metrics
 

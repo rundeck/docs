@@ -47,7 +47,7 @@ you specify different ones to use.
 
 Rundeck Plugin Files can contain more than one Provider.
 
-###Service Categories
+## Service Categories
 
 Services fall into different categories, which determine how and where they are used.
 

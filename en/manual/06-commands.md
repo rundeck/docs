@@ -171,5 +171,5 @@ You can further search activity history by clicking the "Filter activity..." lin
 [rd-queue]
   ~ Query Rundeck for currently running Jobs and possibly kill them.
 
-[dispatch]: page:manpages/man1/index.md
-[rd-queue]: page:manpages/man1/index.md  
+[dispatch][page:manpages/man1/index.md]
+[rd-queue][page:manpages/man1/index.md] 

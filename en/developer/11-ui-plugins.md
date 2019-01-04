@@ -142,11 +142,11 @@ See [Javascript API](#javascript-api) for additional Javascript information.
 
 ### Localization
 
-For the basics of zip plugin localization see: [Plugin Development - Internationalization/Localization for Zip files][].
+For the basics of zip plugin localization see: [Plugin Development - Internationalization/Localization for Zip files][page:developer/01-plugin-development.md#internationalizationlocalization-for-zip-files].
 
 ### Icon
 
-See [Plugin Icons][].
+See [Plugin Icons][page:developer/01-plugin-development.md#plugin-icons].
 
 ## Java Plugin Type
 
@@ -207,11 +207,11 @@ Resources should be included in your plugin Jar file under a `resources/` direct
 
 ### Localization
 
-For the basics of Java plugin localization see: [Plugin Development - Plugin Localization][].
+For the basics of Java plugin localization see: [Plugin Development - Plugin Localization][page:developer/01-plugin-development.md#plugin-localization]
 
 ### Icon
 
-See [Plugin Icons][].
+See [Plugin Icons][page:developer/01-plugin-development.md#plugin-icons].
 
 ## Javascript API
 
@@ -253,7 +253,7 @@ function loadHtmlTemplate(file){
 
 The `rundeckPage.pluginBasei18nUrl(..)` method will return the base URL for loading i18n resources.
 
-Rundeck Plugin Localization/Internationalization uses java `.properties` formatted files. (See [Plugin Localization][Localization]). However, your i18n resources don't have to be `.properties` files.
+Rundeck Plugin Localization/Internationalization uses java `.properties` formatted files. (See [Plugin Localization][page:developer/01-plugin-development.md#plugin-localization]). However, your i18n resources don't have to be `.properties` files.
 
 Requesting resources via this URL provides two features to help with i18n:
 
@@ -298,15 +298,9 @@ function loadi18nHtmlTemplate(file){
 
 ## Example Plugin
 
-
 Here are some [UI Plugin Examples][example-code].
 
-
-
 [UIPlugin]: ${javadocbase}/com/dtolabs/rundeck/plugins/rundeck/UIPlugin.html
-[Plugin Development - Plugin Localization]: page:developer/01-plugin-development.md#plugin-localization
-[Localization]: page:developer/01-plugin-development.md#plugin-localization
-[Plugin Development - Internationalization/Localization for Zip files]: page:developer/01-plugin-development.md#internationalizationlocalization-for-zip-files
-[Plugin Icons]: page:developer/01-plugin-development.md#plugin-icons
-[Knockout]: http://knockoutjs.com/
+[Knockout]: https://knockoutjs.com/
+[jQuery]: https://jquery.com/
 [example-code]: https://github.com/rundeck-plugins/ui-plugin-examples/

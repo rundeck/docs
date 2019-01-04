@@ -94,7 +94,7 @@ complete { PluginLoggingContext context, Map configuration ->
 
 ## Localization
 
-For the basics of plugin localization see: [Plugin Development - Plugin Localization][].
+For the basics of plugin localization see: [Plugin Development - Plugin Localization][page:developer/01-plugin-development.md#plugin-localization].
 
 ## Example
 
@@ -106,4 +106,3 @@ Several built-in plugins are listed here:
 
 See <https://github.com/rundeck/rundeck/tree/master/examples/example-groovy-log-filter-plugins>.
 
-[Plugin Development - Plugin Localization]: page:developer/01-plugin-development.md#plugin-localization

@@ -70,7 +70,7 @@ After running this script, you can proceed with the 2.8.1 upgrade.
 For H2, you will need to do the following:
 
 1. Shut down Rundeck.
-2. (backup your H2 database contents, see [Backup and Recovery][]).
+2. (backup your H2 database contents, see [Backup and Recovery][page:administration/maintenance/backup.md].
 3. Use the h2 [`RunScript`](http://h2database.com/javadoc/org/h2/tools/RunScript.html) command
 to run the following SQL script.
 
@@ -114,8 +114,6 @@ If you see output containing `Column "USER" not found;` then you have already ru
 
 If you see output containing `Table "JOB_FILE_RECORD" not found`, then you probably did not have 2.8.0 installed,
 you should be able to upgrade from 2.7 without a problem.
-
-[Backup and Recovery]: page:administration/maintenance/backup.md
 
 
 ## Upgrading to Rundeck 2.8 from earlier versions

@@ -116,5 +116,5 @@ by:
 
 
 
-[aclpolicy]: page:manpages/man5/aclpolicy-v10.md
-[Access control policy]: page:administration/security/authorization.md
+[aclpolicy][page:manpages/man5/aclpolicy-v10.md]
+[Access control policy][page:administration/security/authorization.md]

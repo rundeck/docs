@@ -156,6 +156,6 @@ to learn more about configuring Rundeck to read node data from external provider
 
 
 
-[resource-XML]: page:manpages/man5/resource-v13.md
+[resource-XML][page:manpages/man5/resource-v13.md]
 [rd]: https://rundeck.github.io/rundeck-cli/
 [tip1]: http://www.thegeekstuff.com/2008/11/3-steps-to-perform-ssh-login-without-password-using-ssh-keygen-ssh-copy-id/

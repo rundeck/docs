@@ -8,7 +8,7 @@ Rundeck uses this list to determine what access rights the user has.
 (For more about the role list,
 refer to [Authenticating Users - Container authentication and authorization][1].)
 
-[1]: page:administration/security/authentication.md#container-authentication-and-authorization
+[1][page:administration/security/authentication.md#container-authentication-and-authorization]
 
 
 A Rundeck *access control policy* grants users

@@ -134,7 +134,7 @@ Property                                  Description
 `project.ssh-keypath`                     SSH identify file.
 `service.FileCopier.default.provider`     Default script file copier plugin.
 `service.NodeExecutor.default.provider`   Default node executor plugin.
-`resources.source.N...`                   Defines a Resource model source see [Resource Model Sources].
+`resources.source.N...`                   Defines a Resource model source see [Resource Model Sources][page:manual/09-configure.md#resource-model-sources-configuration].
 `project.globals.X`                       [Defines a Project Global variable](#project-global-execution-variables)
 
 
@@ -268,19 +268,14 @@ system and is useful when managing Rundeck server clusters.
 
 The [Project Setup - Project Definitions][page:administration/projects/project-create.md#project-definitions] mechanism is configured within this file, see:
 
-* [Project Storage][]
-
-[Project Storage]: page:administration/configuration/storage-facility.md#project-storage
+* [Project Storage][page:administration/configuration/storage-facility.md#project-storage]
 
 ### Key Storage settings
 
 The [Key storage][page:administration/security/key-storage.md] mechanism is configured within this file, see:
 
-* [Configuring Storage Plugins][]
-* [Configuring Storage Converter Plugins][]
-
-[Configuring Storage Plugins]: page:administration/configuration/plugins/configuring.md#storage-plugins
-[Configuring Storage Converter Plugins]: page:administration/configuration/plugins/configuring.md#storage-converter-plugins
+* [Configuring Storage Plugins][page:administration/configuration/plugins/configuring.md#storage-plugins]
+* [Configuring Storage Converter Plugins][page:administration/configuration/plugins/configuring.md#storage-converter-plugins]
 
 ### Notification email settings
 
@@ -305,8 +300,6 @@ Rundeck now attempts to retry the update to correctly register the final state o
     rundeck.execution.stats.retryDelay=5000
 
 Delay is in milliseconds. If a max is set to `-1`, then retries will happen indefinitely.
-
-[Resource Model Sources]: page:manual/09-configure.md#resource-model-sources-configuration
 
 ### Metrics Capturing
 

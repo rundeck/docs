@@ -143,7 +143,7 @@ convert(dataType(SomeClass,'application/x-another-type')) {
 
 ## Localization
 
-For the basics of plugin localization see: [Plugin Development - Plugin Localization][].
+For the basics of plugin localization see: [Plugin Development - Plugin Localization][page:developer/01-plugin-development.md#plugin-localization].
 
 ## Example
 
@@ -164,4 +164,4 @@ See the [JsonConverterPlugin] for an example.
 
 See <https://github.com/rundeck/rundeck/tree/master/examples/example-groovy-content-converter-plugins>.
 
-[Plugin Development - Plugin Localization]: page:developer/01-plugin-development.md#plugin-localization
+[Plugin Development - Plugin Localization][page:developer/01-plugin-development.md#plugin-localization]

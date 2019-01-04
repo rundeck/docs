@@ -224,6 +224,6 @@ If you have access, you can delete the execution by clicking "Delete this Execut
 [rd-queue]
   ~ List, follow or kill currently running executions.
 
-[rd-queue]: page:manpages/man1/index.md  
+[rd-queue][page:manpages/man1/index.md]
 
 

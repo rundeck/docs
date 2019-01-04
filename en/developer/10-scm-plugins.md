@@ -42,7 +42,7 @@ This factory type should produce a [ScmImportPlugin][] object.
 
 ## Localization
 
-For the basics of plugin localization see: [Plugin Development - Plugin Localization][].
+For the basics of plugin localization see: [Plugin Development - Plugin Localization][page:developer/01-plugin-development.md#plugin-localization].
 
 ### Message Codes
 
@@ -60,8 +60,7 @@ file using the following patterns:
 * `action.ID.property.NAME.description` Description for property named "NAME" for action view with ID "ID"
 
 
-[Plugin Development - Plugin Localization]: page:developer/01-plugin-development.md#plugin-localization
-[codes]: page:developer/01-plugin-development.md#defining-plugin-localization-messages
+[codes][page:developer/01-plugin-development.md#defining-plugin-localization-messages]
 
 ## Example
 

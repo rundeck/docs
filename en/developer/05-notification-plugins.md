@@ -201,7 +201,7 @@ To create a Groovy based plugin, create a file named `MyNotificationPlugin.groov
 
 You must restart rundeck to make the plugin available the first time, but you can subsequently update the .groovy script without restarting Rundeck.
 
-[Groovy Plugin Development]: page:developer/01-plugin-development.md#groovy-plugin-development
+[Groovy Plugin Development][page:developer/01-plugin-development.md#groovy-plugin-development]
 
 ### Groovy DSL
 

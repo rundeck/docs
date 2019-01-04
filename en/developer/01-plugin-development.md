@@ -403,7 +403,7 @@ These Services support Script Plugins:
 
 UI Plugins are supported with a `ui` plugin type, which is similar to a Script Plugin.
 
-See: [UI Plugins][].
+See: [UI Plugins][page:developer/11-ui-plugins.md].
 
 
 ### Script plugin zip structure
@@ -495,7 +495,7 @@ Required provider entries:
     * `ResourceModelSource`
     * `WorkflowNodeStep`
     * `RemoteScriptNodeStep`
-* `plugin-type` - must be `script` for these types (or `ui` for [UI Plugins][])
+* `plugin-type` - must be `script` for these types (or `ui` for [UI Plugins][page:developer/11-ui-plugins.md])
 * `script-file` - must be the name of a file relative to the `contents` directory
 
 For `ResourceModelSource` service, this additional entry is required:
@@ -844,9 +844,7 @@ The following message Codes will be used:
 * `property.NAME.title` Title for configuration property named "NAME"
 * `property.NAME.description` Description for configuration property named "NAME"
 
-(*Note*: SCM Plugins have additional message codes.  See: [SCM Plugins - Localization][]).
-
-[SCM Plugins - Localization]: page:developer/10-scm-plugins.md#localization
+(*Note*: SCM Plugins have additional message codes.  See: [SCM Plugins - Localization][page:developer/10-scm-plugins.md#localization]).
 
 Additionally, if a property has a [Property Rendering Option](#property-rendering-options) marking it as `STATIC_TEXT`
 normally the `defaultValue` of the property is used to render it as text or HTML.  This value can be localized as well:
@@ -891,4 +889,3 @@ You can define a custom icon for each Provider in your plugin file, or a single 
 
 [Plugin Localization]: #plugin-localization
 [Plugin Icons]: #plugin-icons
-[UI Plugins]: page:developer/11-ui-plugins.md
