@@ -57,6 +57,10 @@ Changes introduced by API Version number:
 
 **Version 28**:
 
+* New Endpoints:
+    - [`GET /api/V/executions/metrics`][/api/V/executions/metrics] - Get metrics over a system-wide execution query.
+    - [`GET /api/V/project/[PROJECT]/executions/metrics`][/api/V/project/[PROJECT]/executions/metrics] - Get metrics over a project-wide execution query.
+
 * Updated Endpoints:
     - [`GET /api/V/project/[PROJECT]/export`][/api/V/project/[PROJECT]/export] - exportScm parameter.
     - [`PUT /api/V/project/[PROJECT]/import`][/api/V/project/[PROJECT]/import] - importScm parameter.
@@ -4087,6 +4091,69 @@ Paging parameters:
 
 See [Listing Running Executions](#listing-running-executions).
 
+### Execution Query Metrics
+
+Obtain metrics over the result set of an execution query. The query can be issued over all executions on the system, or over the executions of a single project depending on the variant used.
+
+**Request:**
+
+    GET /api/28/executions/metrics
+    GET /api/28/project/[PROJECT]/executions/metrics
+
+To narrow down the result set over which the metrics will be calculated, you can use the same parameters as [Execution Query](#execution-query).
+
+Paging parameters will affect the result by limiting the executions that will be considered on the calculation:
+
+* `max`: maximum number of results to include in calculation. (default: unlimited)
+* `offset`: offset for first result to include. (default: 0)
+
+**Response**
+
+`Content-Type: application/xml`
+
+A single result element with one child for each metric value:
+
+~~~~~~~~~~ {.xml}
+<result>
+  <running>1</running>
+  <total>1325</total>
+  <other>4</other>
+  <aborted>21</aborted>
+  <failed>88</failed>
+  <succeeded>1208</succeeded>
+  <timedout>1</timedout>
+  <failed-with-retry>1</failed-with-retry>
+  <scheduled>1</scheduled>
+  <duration-avg>8m</duration-avg>
+  <duration-min>0s</duration-min>
+  <duration-max>552m</duration-max>
+</result>
+~~~~~~~~~~~~
+
+`Content-Type: application/json`
+
+A single object with one property for each metric value:
+
+~~~~~~~~~~ {.json}
+{
+  "running": 1,
+  "total": 1325,
+  "other": 4,
+  "aborted": 21,
+  "failed": 88,
+  "succeeded": 1208,
+  "timedout": 1,
+  "failed-with-retry":1,
+  "scheduled": 1,
+  "duration-avg": "8m",
+  "duration-min": "0s",
+  "duration-max": "552m"
+}
+~~~~~~~~~~~~
+
+Note that any status count with a value of 0 will be omitted in both json and xml versions.
+
+
 ### Execution State
 
 Get detail about the node and step state of an execution by ID. The execution can be currently running or completed.
@@ -6920,6 +6987,10 @@ Same response as [Setup SCM Plugin for a Project](#setup-scm-plugin-for-a-projec
 
 * `POST` [Bulk Delete Executions](#bulk-delete-executions)
 
+[/api/V/executions/metrics][]
+
+* `GET` [Execution Query Metrics](#execution-query-metrics)
+
 [/api/V/job/[ID]][]
 
 * `GET` [Getting a Job Definition](#getting-a-job-definition)
@@ -7055,6 +7126,10 @@ Same response as [Setup SCM Plugin for a Project](#setup-scm-plugin-for-a-projec
 [/api/V/project/[PROJECT]/executions][]
 
 * `GET` [Execution Query](#execution-query)
+
+[/api/V/project/[PROJECT]/executions/metrics][]
+
+* `GET` [Execution Query Metrics](#execution-query-metrics)
 
 [/api/V/project/[PROJECT*]/executions/running][]
 
