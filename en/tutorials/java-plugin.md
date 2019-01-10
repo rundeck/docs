@@ -237,27 +237,36 @@ Now we want to make changes to the plugin and see them take effect so we know ho
 * The `getDescription()` method describes the parameters to the plugin that Rundeck will render as Rundeck GUI elements.
 * The `executeStep()` method is where the plugin logic happens.
 
-Let's update `executeStep()` to list the files in the current directory. Replace the current `executeStep()` method with the following:
+Let's update `executeStep()` to list the files in the current directory. Update `Hellojava.java` to the following:
 
 ~~~~~~~~~~ {.java}
-@Override
-public void executeStep(final PluginStepContext context, final Map<String, Object> configuration) throws StepException{
-    PluginLogger logger = context.getLogger();
-    File dir = new File(".");
-    File[] filesList = dir.listFiles();
-    for(File f : filesList) {
-        logger.log(2, "File: " + f.getName());
+package com.plugin.hellojava;
+
+import com.dtolabs.rundeck.core.execution.workflow.steps.StepException;
+import com.dtolabs.rundeck.core.plugins.Plugin;
+import com.dtolabs.rundeck.plugins.descriptions.PluginDescription;
+import com.dtolabs.rundeck.plugins.{PluginLogger, ServiceNameConstants};
+import com.dtolabs.rundeck.plugins.step.{PluginStepContext, StepPlugin};
+import java.io.File;
+import java.util.Map;
+
+@Plugin(service=ServiceNameConstants.WorkflowStep,name="hellojava")
+@PluginDescription(title="hellojava", description="My WorkflowStep plugin description")
+public class Hellojava implements StepPlugin {
+   @Override
+   public void executeStep(final PluginStepContext context, final Map<String, Object> configuration)
+   throws StepException {
+        PluginLogger logger = context.getLogger();
+        File dir = new File(".");
+        File[] filesList = dir.listFiles();
+        for(File f : filesList) {
+            logger.log(2, "File: " + f.getName());
+        }
     }
 }
 ~~~~~~~~~~
 
 We've replaced the sample code with some code to log the files in the current directory. Note that since we're using Java libraries to list the files, the plugin is platform-independent, unlike a script plugin that would rely on OS-specific tools like `ls`.
-
-We'll need to import the File class by adding this to the top of the file after all the other imports:
-
-~~~~~~~~~~ {.java}
-import java.io.File;
-~~~~~~~~~~
 
 Then we can compile and deploy our plugin:
 
@@ -280,9 +289,26 @@ FAILURE: Build failed with an exception.
 
 Whoops! Looks like the plugin bootstrap generated some sample tests, and we deleted the sample code that was making them pass. Lets find the tests and remove them. The fastest way to navigate to them is with `cmd+p` and entering `HellojavaSpec.groovy`, the file referenced in the errors above.
 
-This test file is written in Groovy, a JVM-based dynamic language that's a little more lightweight than Java making it ideal for writing tests. For now, since the tests don't apply anymore, let's remove them by deleting the `def "check Boolean parameter"()` and `def "run OK"()` code blocks.
+This test file is written in Groovy, a JVM-based dynamic language that's a little more lightweight than Java making it ideal for writing tests. For now, since the tests don't apply anymore, let's remove them by deleting the `def "check Boolean parameter"()` and `def "run OK"()` code blocks. `HellojavaSpec.groovy` should look like:
 
-Now we're ready to compile and deploy:
+~~~~~~~~~~ {.groovy}
+package com.plugin.hellojava
+
+import com.dtolabs.rundeck.plugins.step.PluginStepContext
+import com.dtolabs.rundeck.core.execution.workflow.steps.StepException
+import com.dtolabs.rundeck.plugins.PluginLogger
+import spock.lang.Specification
+
+class HellojavaSpec extends Specification {
+    def getContext(PluginLogger logger){
+        Mock(PluginStepContext){
+            getLogger()>>logger
+        }
+    }
+}
+~~~~~~~~~~
+
+We'll leave the `getContext()` helper method there so we can mock the context when writing tests later. But for now, we're ready to compile and deploy:
 
 ~~~~~~~~~~ {.bash}
 make rd-config
@@ -304,6 +330,13 @@ Then re-run the job from the Rundeck GUI and you should see it print out a list 
 
 ![Updated plugin log output](../figures/hellojava-log-output-2.png)
 
-## Next: a real world use case
+Success!
 
-Now that we understand the basics of how a custom Java plugin works, we can write an plugin that takes advantage of more of the Java plugin benefits.
+If you want to try your plugin on your live Rundeck server instead of on your workstation, see [Installing plugins][page:administration/configuration/plugins/installing.md]
+
+## References
+
+* [Workflow Step Plugin Developer Guide][page:developer/03-step-plugins.md]
+* [Installing plugins][page:administration/configuration/plugins/installing.md]
+* [Rundeck Playground](https://github.com/clofresh/rundeck-playground)
+* [Rundeck Plugin Bootstrap](https://github.com/rundeck/plugin-bootstrap)
