@@ -6,10 +6,7 @@ with a list of "group" or "role" names
 that the user belongs to.
 Rundeck uses this list to determine what access rights the user has.
 (For more about the role list,
-refer to [Authenticating Users - Container authentication and authorization][1].)
-
-[1][page:administration/security/authentication.md#container-authentication-and-authorization]
-
+refer to [Authenticating Users - Container authentication and authorization][page:administration/security/authentication.md#container-authentication-and-authorization].)
 
 A Rundeck *access control policy* grants users
 and user groups certain
@@ -159,7 +156,7 @@ information.
 
 ## Specific Resources and Resource Types
 
-As described in the [aclpolicy-v10(5)][page:manpages/man5/aclpolicy-v10.md] definition, access
+As described in the [ACL Policy)][page:manpages/man5/aclpolicy-v10.md] definition, access
 is granted or denied to specific "resources". Resources can take two forms:
 
 * A specific resource, with a type and properties

@@ -78,9 +78,10 @@ Grails application running at http://localhost:4440 in environment: production
 
 ## Logging in for the first time
 
-1. Navigate to [http://localhost:4440/](http://localhost:4440/user/login) in a browser
+1. Navigate to [http://localhost:4440/](http://localhost:4440) in a browser.
 2. Log in with the username **admin** and password **admin**
 
 Rundeck is now up and running!
 
 Next, learn how to [create your first Rundeck Pro project][page:manual/02-getting-started.md#project-setup]
+

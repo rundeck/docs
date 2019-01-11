@@ -16,8 +16,8 @@ can be added, edited, removed or reordered.
 
 Users preferring to define Jobs in a text format should refer to the two format definitions:
 
-* XML:  [job-xml]
-* YAML: [job-yaml]
+* XML:  [job-xml][page:manpages/man5/job-v20.md]
+* YAML: [job-yaml][page:manpages/man5/job-yaml-v12.md]
 
 It is also possible to author Jobs inside the graphical console
 and then export the definition as a file using the
@@ -296,10 +296,7 @@ Jobs can be exported or imported in XML or Yaml format using the API or the `rd`
 
 * [[page:api/rundeck-api.md#exporting-jobs]]
 * [[page:api/rundeck-api.md#importing-jobs]]
-* [RD CLI Tool][rd]
+* [RD CLI Tool](https://rundeck.github.io/rundeck-cli)
 
-[job-xml][page:manpages/man5/job-v20.md]
-[job-yaml][page:manpages/man5/job-yaml-v12.md]
-[rd]: https://rundeck.github.io/rundeck-cli
 
-[Quartz Scheduler crontrigger]: http://www.quartz-scheduler.org/api/2.2.1/org/quartz/CronTrigger.html
+[Quartz Scheduler crontrigger]: http://www.quartz-scheduler.org/api/2.2.1/org/quartz/CronTrigger.html 

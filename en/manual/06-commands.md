@@ -14,9 +14,9 @@ specific values.
 The Rundeck graphical console provides the ability to execute
 commands to a set of filtered Node resources.
 The Command page can accept any command string you might run
-via an SSH command or via the [dispatch] shell tool.
+via an SSH command or via the [rd adhoc](https://rundeck.github.io/rundeck-cli/commands/#adhoc) shell tool.
 
-Note, your ability to view Nodes and execute commands on them
+> Note, your ability to view Nodes and execute commands on them
 depends on your ACL policy. 
 
 ## Commands tab overview
@@ -166,10 +166,9 @@ You can further search activity history by clicking the "Filter activity..." lin
 
 ## Related Command line tools
 
-[dispatch]
-  ~ Execute ad hoc commands and scripts.
-[rd-queue]
-  ~ Query Rundeck for currently running Jobs and possibly kill them.
+[rd adhoc](https://rundeck.github.io/rundeck-cli/commands/#adhoc)
+  ~ Execute ad hoc commands and scripts to matching nodes.
 
-[dispatch][page:manpages/man1/index.md]
-[rd-queue][page:manpages/man1/index.md] 
+[rd executions](https://rundeck.github.io/rundeck-cli/commands/#executions)
+  ~ List running executions, attach and follow their output, or kill them.
+

@@ -46,7 +46,7 @@ For the basics of plugin localization see: [Plugin Development - Plugin Localiza
 
 ### Message Codes
 
-In addition to the [basic plugin message codes][codes], SCM Plugins can have multiple "input views" with a set of properties,
+In addition to the [basic plugin message codes][page:developer/01-plugin-development.md#defining-plugin-localization-messages], SCM Plugins can have multiple "input views" with a set of properties,
 as well as a set of "setup" properties.
 The codes for these properties can be defined in your "messages.properties"
 file using the following patterns:
@@ -59,13 +59,8 @@ file using the following patterns:
 * `action.ID.property.NAME.title` Title for property named "NAME" for action view with ID "ID"
 * `action.ID.property.NAME.description` Description for property named "NAME" for action view with ID "ID"
 
-
-[codes][page:developer/01-plugin-development.md#defining-plugin-localization-messages]
-
 ## Example
 
 The Git Plugin bundled with rundeck provides an example.
 
-View: [Git Plugin Source][].
-
-[Git Plugin Source]: https://github.com/rundeck/rundeck/tree/master/plugins/git-plugin
+View: [Git Plugin Source](https://github.com/rundeck/rundeck/tree/master/plugins/git-plugin).

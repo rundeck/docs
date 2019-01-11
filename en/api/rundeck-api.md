@@ -6012,7 +6012,7 @@ The result will contain a single item for the specified resource.
 
 ### Using Node Filters
 
-Refer to the [User Guide - Node Filters][page:manual/10-user.md] Documentation for information on
+Refer to the [User Guide - Node Filters][page:manual/11-node-filters.md] Documentation for information on
 the node filter syntax and usage.
 
 A basic node filter looks like:

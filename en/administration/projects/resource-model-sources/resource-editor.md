@@ -180,12 +180,5 @@ So the JavaScript for integrating with Rundeck is then added to the following pa
 
 To complete the round-trip of editing a Node and then showing the results back in Rundeck, the ndbtest project would have to export XML formatted Resource data, and then your Rundeck project.properties file would have to point to the appropriate URL.  (This is left as an exercise to the reader.)
 
-
-
-[curl]: https://curl.haxx.se/
-[xmlstarlet]: http://xmlstar.sourceforge.net/
-[CMDB]: https://en.wikipedia.org/wiki/Configuration_management_database
-[AJAX]: https://en.wikipedia.org/wiki/Ajax_(programming)
-
-[project.properties][page:administration/projects/resource-model-sources/resource-editor.md#project.properties]
 [Tutorial][page:tutorials/index.md]
+
