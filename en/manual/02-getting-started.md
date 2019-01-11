@@ -21,13 +21,13 @@ like projects, jobs, nodes, commands and API.
 All Rundeck activities occur within the context of a project.
 Multiple projects can be maintained on the same Rundeck server.
 * **Jobs** : A _job_ encapsulate a sequence of steps, job options and nodes where the steps execute. See [[page:manual/04-jobs.md]] and [[page:manual/creating-jobs.md]].
-* **Nodes**: A _[node]_  is a resource that is either a physical or virtual instance
+* **Nodes**: A _[node][page:manual/05-nodes.md]_  is a resource that is either a physical or virtual instance
 of a network accessible host.
 A *resource model* is a representation of Nodes in a project.
-* **Commands**: A _[command]_ is a single executable string executed on a Node.
+* **Commands**: A _[command][page:manual/06-commands.md]_ is a single executable string executed on a Node.
 Rundeck invokes commands on nodes via a *node executor*
 which evaluates the command string and executes it. 
-* **Executions**:  An _[execution]_ is a representation of the activity of a running or completed 
+* **Executions**:  An _[execution][page:manual/07-executions.md]_ is a representation of the activity of a running or completed 
 command or job. The data about the execution is used in rundeck to monitor
 the progress of a job or command and later for reporting about what happened.
 * **Plugins**: Most of what Rundeck does is via one of its _plugins_. Plugins exist
@@ -184,7 +184,3 @@ If you prefer to manage job and resource definitions using text files
 you can do so using XML or YAML formats.
 
 See the [Document Format Reference][page:manpages/man5/index.md].
-
-[node][page:manual/05-nodes.md]
-[command][page:manual/06-commands.md]
-[execution][page:manual/07-executions.md]

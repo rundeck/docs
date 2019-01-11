@@ -126,7 +126,6 @@ The example below shows that the user can't create Job for those nodes.
 
 ## Related Command line tools
 
-[dispatch]
+[dispatch][page:manpages/man1/index.md]
   ~ List nodes or execute commands and scripts.
 
-[dispatch][page:manpages/man1/index.md]
