@@ -246,6 +246,8 @@ The following sections describe configuration values for this file.
 
 * `server.session.timeout`: timeout in seconds.
 
+Note: This setting DOES NOT work in TOMCAT installs ( dev team is currently working on a fix ) 
+
 
 ### Execution Mode
 
