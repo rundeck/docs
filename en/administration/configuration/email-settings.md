@@ -7,7 +7,7 @@ Email settings are located in the rundeck-config.properties file. Depending on t
 * RPM/DEB: /etc/rundeck/rundeck-config.properties
 * Launcher: $RDECK_BASE/server/config/rundeck-config.properties
 
-Refer to the appropriate configuration file paths from [Configuration -> Configuration Layout](configuration-file-reference.html#configuration-layout) to locate the Rundeck configuration paths depending on your install.
+Refer to the appropriate configuration file paths from [Configuration -> Configuration Layout][page:administration/configuration/config-file-reference.md#configuration-layout] to locate the Rundeck configuration paths depending on your install.
 
 ## SMTP server settings
 
@@ -29,11 +29,11 @@ see the grails Mail plugin configuration:
 
 The caveat for using this is that in our experience it requires using a .groovy formatted configuration file to support the extended configuration properties.
 
-See [Groovy config format](configuration-file-reference.html#groovy-config-format).
+See [Groovy config format][page:administration/configuration/config-file-reference.md#groovy-config-format].
 
 ## Notification email settings
 
-The URL and From: address used in [Job email notifications](../../manual/creating-jobs.html#job-notifications)  are managed via the settings located in the rundeck-config.properties file.
+The URL and From: address used in [Job email notifications][page:manual/creating-jobs.md#job-notifications]  are managed via the settings located in the rundeck-config.properties file.
 
 The two properties are:
 
@@ -79,5 +79,5 @@ In addition these properties are defined:
 
 ## Troubleshooting
 
-See the [service.log](../maintenance/logging.html#service.log) for mail error messages.
+See the [service.log][page:administration/maintenance/logs.md#service.log] for mail error messages.
 

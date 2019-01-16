@@ -11,7 +11,7 @@ Name: <span style="color: FireBrick"><span class="glyphicon glyphicon-grain"></s
 
 ## Upgrading from Earlier versions
 
-* See the [Upgrading Guide](../upgrading/index.html)
+* See the [Upgrading Guide][page:upgrading/upgrading.md]
 
 ## Notes
 

@@ -11,7 +11,7 @@ Name: <span style="color: MidnightBlue"><span class="glyphicon glyphicon-camera"
 
 ## Upgrading from Earlier versions
 
-* See the [Upgrading Guide](../upgrading/index.html)
+* See the [Upgrading Guide][page:upgrading/upgrading.md]
 
 ## Notes
 
@@ -21,31 +21,31 @@ Import Changes:
 
 New Features:
 
-* Jobs Options now have a [File input type](../manual/jobs.html#file-option-type).
+* Jobs Options now have a [File input type][page:manual/04-jobs.md#file-option-type].
 	* Uploaded files are stored temporarily on the server while the execution runs
-	* [API support](../api/index.html#upload-a-file-for-a-job-option)
+	* [API support][page:api/rundeck-api.md#upload-a-file-for-a-job-option]
 * API Token Roles
 	* API Tokens now have associated Roles and Expiration date.
-	* [Access Control](../administration/access-control-policy.html#api-token-authorization-roles): 
+	* [Access Control][page:administration/security/authorization.md#api-token-authorization-roles]: 
 		* Authorized users can generate a token with their own roles.
 		* Authorized users can specify other access roles.
-	* [Admins can specify maximum token lifetime](../administration/configuration-file-reference.html#security).
-	* [API support](../api/index.html#authentication-tokens)
+	* [Admins can specify maximum token lifetime][page:administration/configuration/config-file-reference.md#security].
+	* [API support][page:api/rundeck-api.md#authentication-tokens]
 * Job editor autocomplete supports global variables
 * Project configuration for displaying Readme/Motd on Projects List or Project Home page
 * Project configuration for collapsing/expanding Job groups by default
 * Project Archive Export: User can select what to include in the archive
-	* [API support](../api/index.html#project-archive-export)
-	* [API supports async export](../api/index.html#project-archive-export-async)
+	* [API support][page:api/rundeck-api.md#project-archive-export]
+	* [API supports async export][page:api/rundeck-api.md#project-archive-export-async]
 * New Step Plugin: Refresh nodes. Causes Rundeck to refresh the nodes list for the project, so that subsequent Job Reference steps can use any new nodes.
 * File Copy Plugin: Recursive and wildcard file copy
 * Job Options: Multivalue options can be selected by default
-* Job Options: [Remote Option values can specify default selections](../manual/jobs.html#json-format)
+* Job Options: [Remote Option values can specify default selections][page:manual/04-jobs.md#json-format]
 
 Other changes:
 
-* [Optional `Referer` Header verification for CSRF attack prevention](../administration/configuration-file-reference.html#security)
-* Plugin properties support [`Options` multivalue type](../developer/plugin-development.html#plugin-properties) and [java annotations](http://rundeck.org/docs/developer/plugin-annotations.html#plugin-properties)
+* [Optional `Referer` Header verification for CSRF attack prevention][page:administration/configuration/config-file-reference.md#security]
+* Plugin properties support [`Options` multivalue type][page:developer/01-plugin-development.md#plugin-properties] and [java annotations](http://rundeck.org/docs/developer/plugin-annotations.html#plugin-properties)
 
 Bugfixes:
 

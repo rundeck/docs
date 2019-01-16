@@ -178,7 +178,7 @@ to make use of the provider.  The specific Provider Name is used as the
 "format name" when you want to use the parser or generator.
 
 For example, to enable a particular Resource Format parser to be used by a File
-Resource Model Source (see [File Resource Model Source Configuration](../resource-model-sources/index.html#file-resource-model-source-configuration)), you should specify
+Resource Model Source (see [File Resource Model Source Configuration][page:administration/projects/resource-model-sources/index.md#file-resource-model-source-configuration]), you should specify
 the Provider Name for the parser as the format for the source:
 
     resources.source.1.format=myformat
@@ -202,8 +202,8 @@ currently available triggers:
 * `onavgduration` - the Execution exceed the average duration of the Job
 * `onretryablefailure` - the Job failed but will be retried
 
-When you define the Job in the GUI or via [XML](../../../man5/job-xml.html#notification) or
-[Yaml](../../../man5/job-yaml.html#notification), you can add any of the available Notification plugin types to happen for
+When you define the Job in the GUI or via [XML][page:manpages/man5/job-v20.md#notification] or
+[Yaml][page:manpages/man5/job-yaml-v12.md#notification], you can add any of the available Notification plugin types to happen for
 any of the possible triggers.  Each Notification plugin type may have unique
 configuration properties that you can specify. Each combination of trigger and
  Notification type has a unique configuration.
@@ -306,7 +306,7 @@ The `TYPE` is one of:
 
 ### Storage Plugins
 
-Storage plugins for the [Storage Facility](../storage/index.html) 
+Storage plugins for the [Storage Facility][page:administration/configuration/storage-facility.md] 
 are configured in the `rundeck-config.properties` file.
 
 Two separate "containers" are used, one for Key Storage, and one for Project Definition Storage.

@@ -25,7 +25,7 @@ Different facilities log to their own files:
 * `rundeck.log`: General Rundeck application messages
 * `service.log`: Standard input and output generated during runtime
 
-See the [#log4j.properties](../configuration/configuration-file-reference.html#log4j.properties) section for information 
+See the [#log4j.properties][page:administration/configuration/config-file-reference.md#log4j.properties] section for information 
 about customizing log message formats and location.
 
 ## Streaming log plugins
@@ -39,4 +39,4 @@ Streaming Log Readers
 :   can load the log data from another system, rather than from the local file system.  Only a single Log Reader can be configured for the a server, and Rundeck's filesystem-based log reader is used by default.
 
 To learn how to develop your own Logging plugin
-see [Plugin Developer Guide - Logging Plugin](../../developer/logging-plugin.html).
+see [Plugin Developer Guide - Logging Plugin][page:developer/06-logging-plugins.md].

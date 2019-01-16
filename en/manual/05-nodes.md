@@ -84,7 +84,7 @@ Rundeck  node filters let you match Nodes based on a pattern like "tags" or any 
 
 The filter expression syntax is very simple. You can find a list of nodes by entering their names, or by attribute name and value. Values can also be regular expressions.
 
-For full syntax information see the [Node Filters](node-filters.html) chapter.
+For full syntax information see the [Node Filters][page:manual/10-user.md] chapter.
 
 If you forget the syntax, press the help button in the filter form and a dialog containing a cheat sheet will be displayed (see screenshot below).
 
@@ -126,7 +126,6 @@ The example below shows that the user can't create Job for those nodes.
 
 ## Related Command line tools
 
-[dispatch]
+[dispatch][page:manpages/man1/index.md]
   ~ List nodes or execute commands and scripts.
 
-[dispatch]: ../man1/dispatch.html

@@ -466,7 +466,7 @@ Some endpoints also support using a `format` query parameter to specify the expe
 Authentication can be done in two different ways, either with Token based authentication,
 or with a username and password.
 
-Note that in either case, **it is recommended that you enable SSL Support for the Rundeck server** so that communication is encrypted at all times. For more information about using SSL, see [Security - Configuring Rundeck for SSL](../administration/security/configuring-ssl.html).
+Note that in either case, **it is recommended that you enable SSL Support for the Rundeck server** so that communication is encrypted at all times. For more information about using SSL, see [Security - Configuring Rundeck for SSL][page:administration/security/ssl.md].
 
 ### Token Authentication
 
@@ -477,14 +477,14 @@ To obtain an API Token, you must first log in to the Rundeck GUI using a user ac
 Click on your username in the header of the page, and you will be shown your User Profile page.
 From this page you can manage your API Tokens.
 
-**Note**: You must have appropriate authorization to generate a token. See [API Token Authorization][].
+**Note**: You must have appropriate authorization to generate a token. See [API Token Authorization][page:administration/security/authorization.md#api-token-authorization].
 
 Depending on what authorization level you have, you can generate a token with a certain set of *Authorization Roles*
 and an *Expiration Period*.
 
 Click "Generate API Token" to create a new one. The unique string that is shown is the API Token.
 
-Alternately you can define tokens in static file, by setting the `rundeck.tokens.file` in [framework.properties](../administration/configuration/configuration-file-reference.html#framework.properties).
+Alternately you can define tokens in static file, by setting the `rundeck.tokens.file` in [framework.properties][page:administration/configuration/config-file-reference.md#framework.properties].
 
 You must include one of the following with every HTTP request to the API:
 
@@ -509,8 +509,6 @@ Using the HTTP Header:
     GET /api/1/projects HTTP/1.1
     X-Rundeck-Auth-Token: E4rNvVRV378knO9dp3d73O0cs1kd0kCd
     ...
-
-[API Token Authorization]: ../administration/security/access-control-policy.html#api-token-authorization
 
 ### Password Authentication
 
@@ -1200,7 +1198,7 @@ The `memory` section describes memory usage in bytes:
 
 Several Metrics API endpoints are linked in the System Info response.
 
-See [GET /api/V/metrics][].
+See [GET /api/V/metrics][/api/V/metrics].
 
 ## List Metrics
 
@@ -1208,11 +1206,11 @@ List enabled Metrics endpoints.
 
 *Configuration*
 
-The Metrics endpoints are enabled by default, but can be disabled based on application configuration.  See: [Administration > Configuration File Reference](../administration/configuration/configuration-file-reference.html#metrics-api-endpoints).
+The Metrics endpoints are enabled by default, but can be disabled based on application configuration.  See: [Administration > Configuration File Reference][page:administration/configuration/config-file-reference.md#metrics-api-endpoints].
 
 *ACL Requirement*
 
-They require `read` access to the `system` application scope resource.  See: [Access Control Policy > Application Scope](../administration/security/access-control-policy.html#application-scope-resources-and-actions).
+They require `read` access to the `system` application scope resource.  See: [Access Control Policy > Application Scope][page:administration/security/authorization.md#application-scope-resources-and-actions].
 
 **Request:**
 
@@ -2435,7 +2433,7 @@ any policy files in the normal filesystem locations (e.g. `$RDECK_BASE/etc`).
 For more information about ACL Policies see:
 
 * [ACLPOLICY format][ACLPOLICY]
-* [Access Control Policy](../administration/security/access-control-policy.html)
+* [Access Control Policy][page:administration/security/authorization.md]
 
 ### List System ACL Policies
 
@@ -2875,9 +2873,9 @@ The following parameters can also be used to narrow down the result set.
 
 **Response:**
 
-If you specify `format=xml`, then the output will be in [job-xml](../man5/job-xml.html) format.
+If you specify `format=xml`, then the output will be in [job-xml][page:manpages/man5/job-v20.md] format.
 
-If you specify `format=yaml`, then the output will be in [job-yaml](../man5/job-yaml.html) format.
+If you specify `format=yaml`, then the output will be in [job-yaml][page:manpages/man5/job-yaml-v12.md] format.
 
 If an error occurs, then the output will be in XML format, using the common `result` element described in the [Response Format][] section.
 
@@ -2986,9 +2984,9 @@ Optional parameters:
 
 **Response:**
 
-If you specify `format=xml`, then the output will be in [job-xml](../man5/job-xml.html) format.
+If you specify `format=xml`, then the output will be in [job-xml][page:manpages/man5/job-v20.md] format.
 
-If you specify `format=yaml`, then the output will be in [job-yaml](../man5/job-yaml.html) format.
+If you specify `format=yaml`, then the output will be in [job-yaml][page:manpages/man5/job-yaml-v12.md] format.
 
 If an error occurs, then the output will be in XML format, using the common `result` element described in the [Response Format][] section.
 
@@ -3935,7 +3933,7 @@ Delete an execution by ID.
 
 *Authorization requirement*:
 
-* Requires the `delete_execution` action allowed for a `project` in the `application` context. See: [Administration - Access Control Policy - Application Scope Resources and Actions](../administration/security/access-control-policy.html#application-scope-resources-and-actions)
+* Requires the `delete_execution` action allowed for a `project` in the `application` context. See: [Administration - Access Control Policy - Application Scope Resources and Actions][page:administration/security/authorization.md#application-scope-resources-and-actions]
 
 ### Bulk Delete Executions
 
@@ -4971,7 +4969,7 @@ new execution by ID:
 ## Key Storage ###
 
 Upload and manage public and private key files and passwords.
-For more information see the [Administration - Key Storage](../administration/security/key-storage.html) document.
+For more information see the [Administration - Key Storage][page:administration/security/key-storage.md] document.
 
 Keys are stored via Rundeck's *Storage* facility.  This is a path-based interface to manage files.  The underlying storage may be on disk or in a database.
 
@@ -5800,7 +5798,7 @@ however the URL is rooted under the Project's URL path: `/api/13/project/[PROJEC
 For more information about ACL Policies see:
 
 * [ACLPOLICY format][ACLPOLICY]
-* [Access Control Policy](../administration/security/access-control-policy.html)
+* [Access Control Policy][page:administration/security/authorization.md]
 
 #### List Project ACL Policies
 
@@ -5988,7 +5986,7 @@ Specify a MIME type via the `Accept:` header to specify the requested format.
 
 **Response:**
 
-Depending on the `format` parameter, a value of "xml" will return [resource-xml](../man5/resource-xml.html) and "yaml" will return [resource-yaml](../man5/resource-yaml.html), and "json" will return [resource-json](../man5/resource-json.html) formatted results.  Any other supported format value will return content in the specified format.
+Depending on the `format` parameter, a value of "xml" will return [resource-xml][page:manpages/man5/resource-v13.md] and "yaml" will return [resource-yaml][page:manpages/man5/resource-yaml-v13.md], and "json" will return [resource-json][page:manpages/man5/resource-json-v10.md] formatted results.  Any other supported format value will return content in the specified format.
 
 ### Getting Resource Info
 
@@ -6008,13 +6006,13 @@ Optional Parameters:
 
 **Response:**
 
-Depending on the `format` parameter, a value of "xml" will return [resource-xml](../man5/resource-xml.html) and "yaml" will return [resource-yaml](../man5/resource-yaml.html), and "json" will return [resource-json](../man5/resource-json.html) formatted results.
+Depending on the `format` parameter, a value of "xml" will return [resource-xml][page:manpages/man5/resource-v13.md] and "yaml" will return [resource-yaml][page:manpages/man5/resource-yaml-v13.md], and "json" will return [resource-json][page:manpages/man5/resource-json-v10.md] formatted results.
 
 The result will contain a single item for the specified resource.
 
 ### Using Node Filters
 
-Refer to the [User Guide - Node Filters](../manual/node-filters.html) Documentation for information on
+Refer to the [User Guide - Node Filters][page:manual/11-node-filters.md] Documentation for information on
 the node filter syntax and usage.
 
 A basic node filter looks like:

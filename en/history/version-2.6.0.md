@@ -12,7 +12,7 @@ Name: <span style="color: chocolate"><span class="glyphicon glyphicon-gift"></sp
 ## New Features
 
 * SCM Plugin with Git implementation (preliminary release)
-* Per-job logging limits, such as max line count or file size, see [Jobs - Log Limit](../manual/jobs.html#log-limit)
+* Per-job logging limits, such as max line count or file size, see [Jobs - Log Limit][page:manual/04-jobs.md#log-limit]
 * Active/passive execution mode: disable all executions on the server
 * Per-Job schedule and execution toggling: disable scheduled or all executions for a single job
 * UI updates to Nodes and Commands pages
@@ -21,13 +21,13 @@ Name: <span style="color: chocolate"><span class="glyphicon glyphicon-gift"></sp
 	* Filesystem ACLs are now used for "global" level access control
 	* Project ACLs are limited to manage the specific project, and are stored in the DB
 * ACL validation improvements
-	* see the `rd-acl` tool [validate command](../man1/rd-acl.html#validate-command)
+	* see the `rd-acl` tool [validate command][page:manpages/man1/rd-acl.md#validate-command]
 	* Invalid filesystem ACLs are logged in the service log
 	* Invalid project ACLs uploaded via API will be rejected
 * Example Orchestrator plugins now bundled
 * JSON support added for all API endpoints
 * Some API refactoring for v14
-* See [API v14](../api/index.html)
+* See [API v14][page:api/rundeck-api.md]
 * Jobs can now disable automatic node selection by default
 * Phew
 

@@ -5,11 +5,11 @@
 
 ## Configuring
 
-Orchestrators are configured in a Job definition, see: [Jobs - Orchestrator](../manual/creating-jobs.html#orchestrator).
+Orchestrators are configured in a Job definition, see: [Jobs - Orchestrator][page:manual/creating-jobs.md#orchestrator].
 
 ## Java Plugin Type
 
-* *Note*: Refer to [Java Development](plugin-development.html#java-plugin-development) for information about developing a Java plugin for Rundeck.
+* *Note*: Refer to [Java Development][page:developer/01-plugin-development.md#java-plugin-development] for information about developing a Java plugin for Rundeck.
 
 The plugin interface is [OrchestratorPlugin](${javadocbase}/com/dtolabs/rundeck/plugins/orchestrator/OrchestratorPlugin.html).
 

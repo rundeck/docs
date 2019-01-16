@@ -39,7 +39,7 @@ If you want to continue using filesystem storage for project config/readme/motd 
 
 Upgrading an existing `filesystem` configuration to `db` is automatic, and project configs/readme/motd will be loaded into DB storage at system startup.
 
-To encrypt the DB storage, you will need to [enable encryption for the "Project Configuration" storage layer](http://rundeck.org/docs/plugins-user-guide/bundled-plugins.html#jasypt-encryption-plugin).
+To encrypt the DB storage, you will need to [enable encryption for the "Project Configuration" storage layer][page:administration/configuration/plugins/bundled-plugins.md#jasypt-encryption-plugin].
 
 ## Upgrading to Rundeck 2.8.1 from 2.8.0
 
@@ -70,7 +70,7 @@ After running this script, you can proceed with the 2.8.1 upgrade.
 For H2, you will need to do the following:
 
 1. Shut down Rundeck.
-2. (backup your H2 database contents, see [Backup and Recovery][]).
+2. (backup your H2 database contents, see [Backup and Recovery][page:administration/maintenance/backup.md].
 3. Use the h2 [`RunScript`](http://h2database.com/javadoc/org/h2/tools/RunScript.html) command
 to run the following SQL script.
 
@@ -114,8 +114,6 @@ If you see output containing `Column "USER" not found;` then you have already ru
 
 If you see output containing `Table "JOB_FILE_RECORD" not found`, then you probably did not have 2.8.0 installed,
 you should be able to upgrade from 2.7 without a problem.
-
-[Backup and Recovery]: ../administration/backup-and-recovery.html
 
 
 ## Upgrading to Rundeck 2.8 from earlier versions
@@ -162,7 +160,7 @@ If you have customized `/etc/rundeck/profile`, look at the new contents and move
 
 You must now use `@@` (two at-signs) to produce a literal `@` in an inline script when it might be interpreted as a token, i.e. `@word@` looks like a token, but `@word space@` is ok.
 
-You can globally disable inline script token expansion, see [framework.properties](../administration/configuration/configuration-file-reference.html#framework.properties).
+You can globally disable inline script token expansion, see [framework.properties][page:administration/configuration/config-file-reference.md#framework.properties].
 
 ### Jetty embedded server was upgraded to 9.0.x
 
@@ -205,12 +203,12 @@ but this is not enabled by default.
 If you have projects that exist on the filesystem, when you upgrade to Rundeck 2.5, these projects
 and their configuration files can be automatically imported into the DB.  This means that
 the contents of `project.properties` will be copied to the DB,
-using Rundeck's [Storage Facility](../administration/configuration/storage/index.html).
+using Rundeck's [Storage Facility][page:administration/configuration/storage-facility.md].
 
 In addition, there is *no encryption by default*, if you want the contents of your project.properties
 to be encrypted in the DB, you must configure 
-[Storage Converter Plugins](../administration/configuration/plugins/configuring.html#storage-converter-plugins) 
-to use an encryption plugin.  There is now a [Jasypt Encryption Plugin](../administration/configuration/plugins/bundled-plugins.html#jasypt-encryption-plugin) included with Rundeck which can be used.
+[Storage Converter Plugins][page:administration/configuration/plugins/configuring.md#storage-converter-plugins] 
+to use an encryption plugin.  There is now a [Jasypt Encryption Plugin][page:administration/configuration/plugins/bundled-plugins.md#jasypt-encryption-plugin] included with Rundeck which can be used.
 
 **Enable project DB storage**:
 
@@ -258,7 +256,7 @@ but does not alter the schema of other tables.
 
 ### ACL policy additions
 
-Project access via API has been improved, and new authorizations are now required for project access.  See [Adminstration - Access Control Policy](../administration/security/access-control-policy.html#application-scope-resources-and-actions).
+Project access via API has been improved, and new authorizations are now required for project access.  See [Adminstration - Access Control Policy][page:administration/security/authorization.md#application-scope-resources-and-actions].
 
 * project access adds `configure`,`delete`,`import`,`export` actions
 * `admin` access still allows all actions
@@ -300,7 +298,7 @@ The default apitoken aclpolicy file allows this access:
 
 Rundeck 2.0 has some under-the-hood changes, so please follow this guide when upgrading from Rundeck 1.6.x.
 
-The first step is always to make a backup of all important data for your existing Rundeck installation.  Refer to the [Administration - Backup and Recovery](../administration/maintenance/backup-and-recovery.html) section.
+The first step is always to make a backup of all important data for your existing Rundeck installation.  Refer to the [Administration - Backup and Recovery][page:administration/maintenance/backup.md] section.
 
 ## Clean install
 

@@ -45,8 +45,8 @@ The tool works in these *COMMAND* modes:
 
 See:
 
-* [ACL Policy syntax](../man5/aclpolicy.html)
-* [Access Control Policy](../administration/access-control-policy.html)
+* [ACL Policy syntax][page:manpages/man5/aclpolicy-v10.md]
+* [Access Control Policy][page:administration/security/authorization.md]
 
 ## Options
 
@@ -123,7 +123,7 @@ and to define a rule in the ACL Policy (for the `create` command).
 **Resource Options:**
 
 Resources are characterized as either "specific resources", or "resource types" 
-(see [Specific Resources and Resource Types](../administration/access-control-policy.html#specific-resources-and-resource-types)).  You can specify "resource types" using the `-G, --generic <kind>` option. All specific resources can 
+(see [Specific Resources and Resource Types][page:administration/security/authorization.md#specific-resources-and-resource-types]).  You can specify "resource types" using the `-G, --generic <kind>` option. All specific resources can 
 be specified directly using one of the options, or by type using `-R, --resource <type>` in combination with `-b, --attributes <attr=val ...>`.
 
 `-G,--generic <kind>` 
@@ -135,7 +135,7 @@ be specified directly using one of the options, or by type using `-R, --resource
 `-b,--attributes <key=value ...>`
 :   Attributes for the resource. A sequence of key=value pairs, multiple pairs can follow with a space. Use a value of '?' to see suggestions.
 
-The following define [Project scope resources](../administration/access-control-policy.html#project-scope-resources-and-actions):
+The following define [Project scope resources][page:administration/security/authorization.md#project-scope-resources-and-actions]:
 
 `-A,--adhoc`
 :   Adhoc execution (project context)
@@ -152,7 +152,7 @@ The following define [Project scope resources](../administration/access-control-
 `-t,--tags <tag,..>`
 :   Node tags. If specified, the resource match will be defined using 'contains'. (project context)
 
-The following define [Application scope resources](../administration/access-control-policy.html#application-scope-resources-and-actions):
+The following define [Application scope resources][page:administration/security/authorization.md#application-scope-resources-and-actions]:
 
 `-s,--storage <path/file>`
 :   Storage path/name. (application context)
@@ -527,7 +527,7 @@ The validation failed
 
 ## See Also
 
-[`aclpolicy`](../man5/aclpolicy.html)
+[`aclpolicy`][page:manpages/man5/aclpolicy-v10.md]
 
-[Access Control Policy](../administration/access-control-policy.html)
+[Access Control Policy][page:administration/security/authorization.md]
 

@@ -4,7 +4,7 @@
 
 ## About
 Some Rundeck Plugins allow you to use annotations to add
-[description metadata](plugin-development.html#plugin-descriptions)
+[description metadata][page:developer/01-plugin-development.md#plugin-descriptions]
 about your plugin to the class
 definition itself, and Rundeck will extract that metadata for use in
 displaying the plugin information and configuration properties in the GUI, as
@@ -92,4 +92,4 @@ You can define the scope for a property by adding `scope` to the PluginProperty 
 
 The default effective scope if you do not specify it in the annotation is `InstanceOnly`.
 
-For more information see [Property Scopes](plugin-development.html#property-scopes).
+For more information see [Property Scopes][page:developer/01-plugin-development.md#property-scopes].

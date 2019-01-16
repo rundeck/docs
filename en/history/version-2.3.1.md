@@ -9,7 +9,7 @@ Date: 2014-10-31
 
 Fix a regression in executing local inline script steps.
 
-See [2.3.0 release notes](../history/version-2.3.0.html).
+See [2.3.0 release notes][page:history/version-2.3.0.md].
 
 ## Contributors
 

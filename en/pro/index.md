@@ -35,30 +35,30 @@ granted if a user's group membership meets the requirements of the policy.
 
 ## License
 
-See: [Rundeck Pro Licensing and Support](../administration/configuration/license-pro.html)
+See: [Rundeck Pro Licensing and Support][page:administration/configuration/license.md]
 
 ## General configuration
 
-Rundeck Pro supports all properties described in the [OSS version](../administration/configuration/configuration-file-reference.html).
+Rundeck Pro supports all properties described in the [OSS version][page:administration/configuration/config-file-reference.md].
 
 ## Node Model Sources
 
 Node Sources allow you to import metadata about the nodes you want to run
 Rundeck jobs on. Node Sources are configured on Rundeck Pro in the same was as
-the OSS version, described in [Node Model Sources](../administration/projects/resource-model-sources/index.html).
+the OSS version, described in [Node Model Sources][page:administration/projects/resource-model-sources/index.md].
 
 ## Authentication
 
 Similar to OSS Rundeck, Rundeck Pro uses Servlet Container Authentication to
 determine the logged in user name and the user's authorized roles.
 
-For more details, see [Authenticating Users](../administration/security/authenticating-users.html)
+For more details, see [Authenticating Users][page:administration/security/authentication.md]
 
 ## Key storage
 
 Similar to OSS Rundeck, Rundeck Pro can securely store private keys that the Rundeck Node Executor and use for sessions.
 
-For momre details, see [Key Storage](../administration/security/key-storage.html)
+For momre details, see [Key Storage][page:administration/security/key-storage.md]
 
 ## Remote job execution
 
@@ -69,13 +69,13 @@ multiple profiles and assign different projects to different profiles. If a job
 is executed in a project which is not assigned to a specific profile, the
 default policy is used.
 
-For more details, see [Remote Job Execution](../administration/configuration/remote-job-execution-pro.html)
+For more details, see [Remote Job Execution][page:administration/configuration/remote-job-execution.md]
 
 ## High availability
 
 ### Database
 
-See: [Database Backends](../administration/configuration/database/index.html).
+See: [Database Backends][page:administration/configuration/database/index.md].
 
 ### Loadbalancer
 
@@ -83,13 +83,13 @@ A loadbalancer allows you to achieve high availability in your Rundeck Pro
 installation by routing http traffic across several redundant Rundeck Pro
 instances.
 
-To learn how to set up a loadbalancer for Rundeck Pro, see [Loadbalancer](../administration/cluster/loadbalancer/index.html)
+To learn how to set up a loadbalancer for Rundeck Pro, see [Loadbalancer][page:administration/cluster/loadbalancer/index.md]
 
 ### Autotakeover
 
 If a cluster member goes down, all scheduled jobs on that cluster member must be moved to another cluster node. This process can be performed automatically using the heartbeat and Autotakeover features in Rundeck Pro version 2.1.0 and later releases.
 
-To learn how to set up Autotakeover, see [Autotakeover](../administration/cluster/autotakeover/index.html)
+To learn how to set up Autotakeover, see [Autotakeover][page:administration/cluster/autotakeover/index.md]
 
 ### Logstore
 

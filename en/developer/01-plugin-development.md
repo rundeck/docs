@@ -120,30 +120,30 @@ Resource model services:
 * `ResourceFormatParser` - parses a document into a set of Node resources [javadoc](${javadocbase}/com/dtolabs/rundeck/core/resources/format/ResourceFormatParser.html).
 * `ResourceFormatGenerator` - generates a document from a set of Node resources [javadoc](${javadocbase}/com/dtolabs/rundeck/core/resources/format/ResourceFormatGenerator.html).
 
-Workflow Step services (described in [Workflow Step Plugin](workflow-step-plugin.html)):
+Workflow Step services (described in [Workflow Step Plugin][page:developer/03-step-plugins.md]):
 
 * `WorkflowStep` - runs a single step in a workflow.
 * `WorkflowNodeStep` - runs a single step for each node in a workflow.
 * `RemoteScriptNodeStep` - generates a script or command to execute remotely for each node in a workflow.
 
-Notification services (described in [Notification Plugin](notification-plugin.html)):
+Notification services (described in [Notification Plugin][page:developer/05-notification-plugins.md]):
 
 * `Notification` - performs an action after a Job state trigger.
 
 Storage services:
 
-* `Storage` - backend for storing data: [Storage Plugin](storage-plugin.html)
-* `StorageConverter` - modifies stored content or metadata: [Storage Converter Plugin](storage-converter-plugin.html)
+* `Storage` - backend for storing data: [Storage Plugin][page:developer/07-storage-plugin.md]
+* `StorageConverter` - modifies stored content or metadata: [Storage Converter Plugin][page:developer/08-storage-converter-plugins.md]
 
 Logging services:
 
-* `ExecutionFileStorage` - stores and retrieves execution files to another location: [Execution File Storage Plugin](logging-plugin.html)
-* `StreamingLogWriter` - writes execution log events to a destination: [Streaming Log Writer Plugin](logging-plugin.html)
-* `StreamingLogReader` - reads execution log events from a destination: [Streaming Log Reader Plugin](logging-plugin.html)
+* `ExecutionFileStorage` - stores and retrieves execution files to another location: [Execution File Storage Plugin][page:developer/06-logging-plugins.md]
+* `StreamingLogWriter` - writes execution log events to a destination: [Streaming Log Writer Plugin][page:developer/06-logging-plugins.md]
+* `StreamingLogReader` - reads execution log events from a destination: [Streaming Log Reader Plugin][page:developer/06-logging-plugins.md]
 
 Orchestrator:
 
-* `Orchestrator` - orchestrates node dispatching: [Orchestrator Plugin](orchestrator-plugin.html)
+* `Orchestrator` - orchestrates node dispatching: [Orchestrator Plugin][page:developer/09-orchestrator-plugin.md]
 
 
 ### Provider Classes
@@ -240,13 +240,13 @@ construct one by using the
 **Description Annotations**
 
 Newer plugin types support using java annotations to create a Description object.
-See [Plugin Annotations](plugin-annotations.html).
+See [Plugin Annotations][page:developer/02-plugin-annotations.md].
 
 #### Description Properties
 
 Within a Description object you can define a set of Property objects, which represent the input properties for the plugin.
 
-Some plugin types support using Java Annotations to define properties, see [Plugin Annotations](plugin-annotations.html).
+Some plugin types support using Java Annotations to define properties, see [Plugin Annotations][page:developer/02-plugin-annotations.md].
 
 For the remaining plugin types, the Properties must be defined using the other interfaces described above, typically with the use of a [PropertyBuilder](${javadocbase}/com/dtolabs/rundeck/plugins/util/PropertyBuilder.html).
 
@@ -360,7 +360,7 @@ Each property has several attributes you can define, but only `name` and `type` 
 * `description` - a string describing the property
 * `required` - whether the property is required to have a value
 * `defaultValue` - any default value for the property
-* `scope` - defines the scope for the property.  Allowed values are described under the chapter [Plugin Annotations - Property Scopes](plugin-annotations.html#property-scopes). You may also simply use a String matching the name of the scope, e.g. "Instance".  The default scope if unspecified is "Instance".
+* `scope` - defines the scope for the property.  Allowed values are described under the chapter [Plugin Annotations - Property Scopes][page:developer/02-plugin-annotations.md#property-scopes]. You may also simply use a String matching the name of the scope, e.g. "Instance".  The default scope if unspecified is "Instance".
 
 In addition to these properties, for `Select` or `FreeSelect` type, you can define:
 
@@ -394,16 +394,16 @@ with a script that is invoked in an external system processes by the JVM.
 
 These Services support Script Plugins:
 
-* [NodeExecutor](node-executor-plugin.html#script-plugin-type)
-* [FileCopier](file-copier-plugin.html#script-plugin-type)
-* [ResourceModelSource](resource-model-source-plugin.html#script-plugin-type)
-* [WorkflowNodeStep](workflow-step-plugin.html#script-plugin-type) and RemoteScriptNodeStep
+* [NodeExecutor][page:developer/04-node-execution-plugins.md#script-plugin-type]
+* [FileCopier][page:developer/04-file-copier-plugins.md#script-plugin-type]
+* [ResourceModelSource][page:developer/03-model-source-plugins.md#script-plugin-type]
+* [WorkflowNodeStep][page:developer/03-step-plugins.md#script-plugin-type] and RemoteScriptNodeStep
 
 ### UI Plugin Development
 
 UI Plugins are supported with a `ui` plugin type, which is similar to a Script Plugin.
 
-See: [UI Plugins][].
+See: [UI Plugins][page:developer/11-ui-plugins.md].
 
 
 ### Script plugin zip structure
@@ -495,13 +495,13 @@ Required provider entries:
     * `ResourceModelSource`
     * `WorkflowNodeStep`
     * `RemoteScriptNodeStep`
-* `plugin-type` - must be `script` for these types (or `ui` for [UI Plugins][])
+* `plugin-type` - must be `script` for these types (or `ui` for [UI Plugins][page:developer/11-ui-plugins.md])
 * `script-file` - must be the name of a file relative to the `contents` directory
 
 For `ResourceModelSource` service, this additional entry is required:
 
 * `resource-format` - Must be the name of one of the supported
-[Resource Model Document Formats](../administration/configuration/resource-model-sources/built-in-resource-model-source-plugins.html#resource-model-document-formats).
+[Resource Model Document Formats][page:administration/projects/resource-model-sources/builtin.md#resource-model-document-formats].
 
 Optional entries:
 
@@ -760,7 +760,7 @@ Available rendering option keys:
 * `instance-scope-node-attribute`
     - Value is the name of a Node attribute to use for instance-scoped properties for *Node Services* plugins `NodeExecutor` and `FileCopier` only.
 * `selectionAccessor`, values:
-    - `STORAGE_PATH` - display an additional input to select a Storage Path string from Rundeck's [Key Storage Facility](../administration/security/key-storage.html).
+    - `STORAGE_PATH` - display an additional input to select a Storage Path string from Rundeck's [Key Storage Facility][page:administration/security/key-storage.md].
 * `storage-path-root`
     - Value is a Storage Path indicating the root to use if the selectionAccessor is `STORAGE_PATH`.
 * `storage-file-meta-filter`
@@ -844,9 +844,7 @@ The following message Codes will be used:
 * `property.NAME.title` Title for configuration property named "NAME"
 * `property.NAME.description` Description for configuration property named "NAME"
 
-(*Note*: SCM Plugins have additional message codes.  See: [SCM Plugins - Localization][]).
-
-[SCM Plugins - Localization]: scm-plugins.html#localization
+(*Note*: SCM Plugins have additional message codes.  See: [SCM Plugins - Localization][page:developer/10-scm-plugins.md#localization]).
 
 Additionally, if a property has a [Property Rendering Option](#property-rendering-options) marking it as `STATIC_TEXT`
 normally the `defaultValue` of the property is used to render it as text or HTML.  This value can be localized as well:
@@ -891,4 +889,3 @@ You can define a custom icon for each Provider in your plugin file, or a single 
 
 [Plugin Localization]: #plugin-localization
 [Plugin Icons]: #plugin-icons
-[UI Plugins]: ui-plugins.html

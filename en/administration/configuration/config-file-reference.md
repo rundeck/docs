@@ -50,7 +50,7 @@ document.
 
 This file governs the access for the "admin" group and role.
 
-See [role based access control](../security/access-control-policy.html) for information about setting up policy files for other user groups.
+See [role based access control][page:administration/security/authorization.md] for information about setting up policy files for other user groups.
 
 ## framework.properties
 
@@ -92,7 +92,7 @@ The `tokens.properties` file should contain static authentication tokens you wis
     username2: token_string2
     ...
 
-The token_strings can be used as Authentication tokens to the [API](../../api/index.html#token-authentication).
+The token_strings can be used as Authentication tokens to the [API][page:api/rundeck-api.md#token-authentication].
 
 ### Global execution variables
 
@@ -134,7 +134,7 @@ Property                                  Description
 `project.ssh-keypath`                     SSH identify file.
 `service.FileCopier.default.provider`     Default script file copier plugin.
 `service.NodeExecutor.default.provider`   Default node executor plugin.
-`resources.source.N...`                   Defines a Resource model source see [Resource Model Sources].
+`resources.source.N...`                   Defines a Resource model source see [Resource Model Sources][page:manual/09-configure.md#resource-model-sources-configuration].
 `project.globals.X`                       [Defines a Project Global variable](#project-global-execution-variables)
 
 
@@ -203,7 +203,7 @@ Or set `server.session.timeout` via [[page:administration/configuration/system-p
 
 This is the primary Rundeck webapp configuration file. Defines default
 loglevel, datasource configuration, and
-[GUI customization](gui-customization.html).
+[GUI customization][page:administration/configuration/gui-customization.md].
 
 The following sections describe configuration values for this file.
 
@@ -266,29 +266,24 @@ system and is useful when managing Rundeck server clusters.
 
 ### Project Configuration Storage settings
 
-The [Project Setup - Project Definitions](project-setup.html#project-definitions) mechanism is configured within this file, see:
+The [Project Setup - Project Definitions][page:administration/projects/project-create.md#project-definitions] mechanism is configured within this file, see:
 
-* [Project Storage][]
-
-[Project Storage]: storage-facility.html#project-storage
+* [Project Storage][page:administration/configuration/storage-facility.md#project-storage]
 
 ### Key Storage settings
 
-The [Key storage](../security/key-storage.html) mechanism is configured within this file, see:
+The [Key storage][page:administration/security/key-storage.md] mechanism is configured within this file, see:
 
-* [Configuring Storage Plugins][]
-* [Configuring Storage Converter Plugins][]
-
-[Configuring Storage Plugins]: ../plugins-user-guide/configuring.html#storage-plugins
-[Configuring Storage Converter Plugins]: ../plugins-user-guide/configuring.html#storage-converter-plugins
+* [Configuring Storage Plugins][page:administration/configuration/plugins/configuring.md#storage-plugins]
+* [Configuring Storage Converter Plugins][page:administration/configuration/plugins/configuring.md#storage-converter-plugins]
 
 ### Notification email settings
 
-See [Email Settings: Notification email settings](email-settings.html#notification-email-settings)
+See [Email Settings: Notification email settings][page:administration/configuration/email-settings.md#notification-email-settings]
 
 ### Custom Email Templates
 
-See [Email Settings: Custom Email Templates](email-settings.html#custom-email-templates)
+See [Email Settings: Custom Email Templates][page:administration/configuration/email-settings.md#custom-email-templates]
 
 ### Execution finalize retry settings
 
@@ -305,8 +300,6 @@ Rundeck now attempts to retry the update to correctly register the final state o
     rundeck.execution.stats.retryDelay=5000
 
 Delay is in milliseconds. If a max is set to `-1`, then retries will happen indefinitely.
-
-[Resource Model Sources]: ../administration/managing-node-sources.html
 
 ### Metrics Capturing
 
@@ -344,7 +337,7 @@ Metrics names are:
 * `ping`
 * `healthcheck`
 
-See: [API > List Metrics](../api/index.html#list-metrics).
+See: [API > List Metrics][page:api/rundeck-api.md#list-metrics].
 
 ### Pagination defaults
 
@@ -354,7 +347,7 @@ Default paging size for the Activity page and results from execution API queries
 
 ### Job Remote Option URL connection parameters
 
-Change the defaults for for [Job Remote Option Value URLs](../../manual/defining-job-options.html#remote-option-values) loading.
+Change the defaults for for [Job Remote Option Value URLs][page:manual/job-options.md#remote-option-values] loading.
 
 **Socket read timeout**
 
@@ -412,7 +405,7 @@ Enabled: true/false (default true).
 :   `rundeck.nodeService.nodeCache.enabled=true` If set to false, no caching is performed.
 
 First Load Asynch: true/false
-:   `rundeck.nodeService.nodeCache.firstLoadAsynch=false`  The default for whether the first load of a project's nodes should be performed synchronously or not. If set to `true`, and the [Project Nodes > Synchronous First Load](project-setup.html#project-nodes) value is unset, then the initial load of a Project's nodes when the cache is empty will be done in the background asynchronously. Otherwise the initial load is done synchronously, possibly causing a delay at Rundeck startup or Job execution startup. A Project level configuration value will override this default.
+:   `rundeck.nodeService.nodeCache.firstLoadAsynch=false`  The default for whether the first load of a project's nodes should be performed synchronously or not. If set to `true`, and the [Project Nodes > Synchronous First Load][page:administration/projects/project-create.md#project-nodes] value is unset, then the initial load of a Project's nodes when the cache is empty will be done in the background asynchronously. Otherwise the initial load is done synchronously, possibly causing a delay at Rundeck startup or Job execution startup. A Project level configuration value will override this default.
 
 ### Groovy config format
 

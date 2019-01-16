@@ -16,8 +16,8 @@ can be added, edited, removed or reordered.
 
 Users preferring to define Jobs in a text format should refer to the two format definitions:
 
-* XML:  [job-xml]
-* YAML: [job-yaml]
+* XML:  [job-xml][page:manpages/man5/job-v20.md]
+* YAML: [job-yaml][page:manpages/man5/job-yaml-v12.md]
 
 It is also possible to author Jobs inside the graphical console
 and then export the definition as a file using the
@@ -81,7 +81,7 @@ Step-oriented flow illustrated:
 The process you are automating will determine which strategy is
 correct, though the node-oriented flow is more commonplace.
 
-For more complex workflow strategy rules, see [Ruleset Workflow Strategy Plugin](workflow-strategies/ruleset-workflow-strategy-plugin.html)
+For more complex workflow strategy rules, see [Ruleset Workflow Strategy Plugin][page:manual/workflow-strategies/ruleset.md]
 
 ## Workflow steps
 
@@ -116,8 +116,8 @@ workflow step.
 
 Steps in a workflow can be either *Node Steps* or *Workflow Steps*.
 
-* Node Steps operate once on each Node, which could be multiple times within a workflow. For a full list of Node Steps, see [Job Plugins - Node Steps](job-plugins.html#node-steps)
-* Workflow Steps operate only once in the workflow. For a full list of Workflow Steps, see [Workflow Steps](job-plugins.html#workflow-steps)
+* Node Steps operate once on each Node, which could be multiple times within a workflow. For a full list of Node Steps, see [Job Plugins - Node Steps][page:manual/job-plugins.md#node-steps]
+* Workflow Steps operate only once in the workflow. For a full list of Workflow Steps, see [Workflow Steps][page:manual/job-plugins.md#workflow-steps]
 
 ## Reordering steps
 
@@ -225,7 +225,7 @@ Job context variables:
 * `job.username`: Username of the user executing the Job
 * `job.project`: Project name
 * `job.loglevel`: Logging level, one of: 'ERROR','WARN','INFO','VERBOSE','DEBUG'
-* `job.user.email`: Executing user's email address set in [User profile](user.html).
+* `job.user.email`: Executing user's email address set in [User profile][page:manual/10-user.md].
 * `job.retryAttempt`: A number indicating the attempt, if this execution is a [retry](#retry).
 * `job.wasRetry`: `true` if this execution is a retry, otherwise `false`. See: [retry](#retry).
 * `job.threadcount`: Threadcount (number of nodes run at once) of the Job
@@ -264,7 +264,7 @@ Additional Error-handler context variables:
 * `result.resultCode`: Exit code from an execution (if available)
 * `result.failedNodes`: Comma-separated list of node names that failed for a `NodeDispatchFailure`
 
-Option context variables are referred to as `option.NAME` (more about [Job Options](defining-job-options.html).)
+Option context variables are referred to as `option.NAME` (more about [Job Options][page:manual/job-options.md].)
 
 ### Context Variable Usage
 
@@ -280,7 +280,7 @@ Context variables can be used in a few ways in a Job step, with slightly differe
 
     > Note, The "Inline Script Content" variable expansion is **not** available for "Script File" steps.  The Script File is not rewritten at all when used for execution.
 
-    > Note: This can be disabled, see [Administrator Guide > Configuration File Reference > framework.properties](../administration/configuration/configuration-file-reference.html#framework.properties).
+    > Note: This can be disabled, see [Administrator Guide > Configuration File Reference > framework.properties][page:administration/configuration/config-file-reference.md#framework.properties].
 
 * Environment Variables (*see note*)
 
@@ -296,10 +296,7 @@ Jobs can be exported or imported in XML or Yaml format using the API or the `rd`
 
 * [[page:api/rundeck-api.md#exporting-jobs]]
 * [[page:api/rundeck-api.md#importing-jobs]]
-* [RD CLI Tool][rd]
+* [RD CLI Tool](https://rundeck.github.io/rundeck-cli)
 
-[job-xml]: ../man5/job-xml.html
-[job-yaml]: ../man5/job-yaml.html
-[rd]: https://rundeck.github.io/rundeck-cli
 
-[Quartz Scheduler crontrigger]: http://www.quartz-scheduler.org/api/2.2.1/org/quartz/CronTrigger.html
+[Quartz Scheduler crontrigger]: http://www.quartz-scheduler.org/api/2.2.1/org/quartz/CronTrigger.html 

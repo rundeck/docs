@@ -221,9 +221,6 @@ If you have access, you can delete the execution by clicking "Delete this Execut
 
 ## Related Command Line Tools
 
-[rd-queue]
-  ~ List, follow or kill currently running executions.
-
-[rd-queue]: ../man1/rd-queue.html  
-
+[rd executions](https://rundeck.github.io/rundeck-cli/commands/#executions)
+  ~ List running executions, attach and follow their output, or kill them.
 

@@ -202,7 +202,8 @@ definitions.
 
 While each job can be defined graphically in Rundeck, each can
 succinctly be defined using an XML file conforming to the
-[job-xml] document format. This 
+[job-xml][page:manpages/man5/job-v20.md]
+document format. This 
 document contains a set of tags corresponding to the choices seen in
 the Rundeck GUI form.
 
@@ -417,7 +418,7 @@ references will each be called once, and the "start", "stop" and "status" Jobs w
 each be dispatched to the nodes they define.
 
 Saving the XML definitions files located on the Rundeck server,
-one can load them using the [rd-jobs] command.
+one can load them using the [rd-jobs][page:manpages/man1/index.md] command.
 
 Run the `rd-jobs load` command for each job definition file:
 
@@ -471,7 +472,8 @@ with the restriction "enforced from allowed values".
 ### Job run with the CLI
 
 The jobs can also be started from the command line using the
-[run] shell tool. The job group and name are specified
+[run][page:manpages/man1/index.md]
+shell tool. The job group and name are specified
 using the "-j" parameter. Any options the Job supports are supplied
 after the "--" (double dash) parameter. (The "-p" parameter specifies the project,
 but it can be left out if there is only one project available.)
@@ -488,6 +490,3 @@ Run Restart specifying the method, "force":
 run -j "web/Restart" -p anvils -- -method force
 ~~~~~~~~ 
 
-[job-xml]: ../man5/job-xml.html
-[run]: ../man1/run.html
-[rd-jobs]: ../man1/rd-jobs.html
