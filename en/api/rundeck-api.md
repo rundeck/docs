@@ -55,11 +55,13 @@ View the [Index](#index) listing API paths.
 
 Changes introduced by API Version number:
 
-**Version 28**:
+**Version 29**:
 
 * New Endpoints:
     - [`GET /api/V/executions/metrics`][/api/V/executions/metrics] - Get metrics over a system-wide execution query.
     - [`GET /api/V/project/[PROJECT]/executions/metrics`][/api/V/project/[PROJECT]/executions/metrics] - Get metrics over a project-wide execution query.
+
+**Version 28**:
 
 * Updated Endpoints:
     - [`GET /api/V/project/[PROJECT]/export`][/api/V/project/[PROJECT]/export] - exportScm parameter.
@@ -4097,8 +4099,8 @@ Obtain metrics over the result set of an execution query. The query can be issue
 
 **Request:**
 
-    GET /api/28/executions/metrics
-    GET /api/28/project/[PROJECT]/executions/metrics
+    GET /api/29/executions/metrics
+    GET /api/29/project/[PROJECT]/executions/metrics
 
 To narrow down the result set over which the metrics will be calculated, you can use the same parameters as [Execution Query](#execution-query).
 
