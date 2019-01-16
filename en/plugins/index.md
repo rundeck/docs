@@ -21,9 +21,9 @@ Node Step | [Job Reference][page:manual/node-steps/builtin.md#job-reference-step
 Node Step | [Copy File][page:manual/node-steps/builtin.md#copy-file-step] | Copies a file to a remote node | Built-in
 Node Step | [Local Command][page:manual/node-steps/builtin.md#local-command-step] | Execute system commands locally | Built-in
 Node Step | [Data Node][page:manual/node-steps/builtin.md#data-node-step] | Produces data values for a node | Built-in
-Node Step | [Jira][page:manual/node-steps/jira.md] | Creates or updates Jira issues | Pro
-Node Step | [SQL Runner][page:manual/node-steps/sqlrunner.md] | Executes SQL scripts against JDBC URLs | Pro
-Node Step | [VMware][page:manual/node-steps/vmware.md] | Controls VMware VMs' power state | Pro
+Node Step | [Jira][page:manual/node-steps/jira.md] | Creates or updates Jira issues | Enterprise
+Node Step | [SQL Runner][page:manual/node-steps/sqlrunner.md] | Executes SQL scripts against JDBC URLs | Enterprise
+Node Step | [VMware][page:manual/node-steps/vmware.md] | Controls VMware VMs' power state | Enterprise
 Workflow Step | [Ansible module][page:manual/workflow-steps/builtin.md#ansible-module] | Runs Ansible modules | Built-in
 Workflow Step | [Ansible playbook inline][page:manual/workflow-steps/builtin.md#ansible-playbook-inline] | Runs Ansible playbooks inline | Built-in
 Workflow Step | [Ansible playbook][page:manual/workflow-steps/builtin.md#ansible-playbook] | Runs Ansible playbooks | Built-in
@@ -33,26 +33,26 @@ Workflow Step | [Job state conditional][page:manual/workflow-steps/builtin.md#jo
 Workflow Step | [Log data step][page:manual/workflow-steps/builtin.md#log-data-step] | | Built-in
 Workflow Step | [Refresh project nodes][page:manual/workflow-steps/builtin.md#refresh-project-nodes] | | Built-in
 Workflow Step | [Data step][page:manual/workflow-steps/builtin.md#data-step] | | Built-in
-Workflow Step | [Jira][page:manual/workflow-steps/jira.md] | Creates or updates Jira issues | Pro
-Workflow Step | [File Transfer][page:manual/workflow-steps/file-transfer.md] | Transfers files via FTP, SFTP or HTTP | Pro
-Workflow Step | [Github][page:manual/workflow-steps/github.md] | Runs scripts from a GitHub repo | Pro
-Workflow Step | [Progress Badge][page:manual/workflow-steps/progress-badge.md#progress-badge-workflow-step-plugin] | Create graphic badges in log output | Pro
-Workflow Step | [ServiceNow][page:manual/workflow-steps/servicenow.md] | Creates or modifies ServiceNow cases | Pro
-Workflow Step | [VMware][page:manual/workflow-steps/vmware.md] | Creates or modifies VMware VMs | Pro
+Workflow Step | [Jira][page:manual/workflow-steps/jira.md] | Creates or updates Jira issues | Enterprise
+Workflow Step | [File Transfer][page:manual/workflow-steps/file-transfer.md] | Transfers files via FTP, SFTP or HTTP | Enterprise
+Workflow Step | [Github][page:manual/workflow-steps/github.md] | Runs scripts from a GitHub repo | Enterprise
+Workflow Step | [Progress Badge][page:manual/workflow-steps/progress-badge.md#progress-badge-workflow-step-plugin] | Create graphic badges in log output | Enterprise
+Workflow Step | [ServiceNow][page:manual/workflow-steps/servicenow.md] | Creates or modifies ServiceNow cases | Enterprise
+Workflow Step | [VMware][page:manual/workflow-steps/vmware.md] | Creates or modifies VMware VMs | Enterprise
 Notifications | [Email][page:manual/notifications/email.md] | Sends emails when a job finishes | Built-in
 Notifications | [Webhooks][page:manual/notifications/webhooks.md] | Sends HTTP POST data to a URL when a job finishes | Built-in
-Notifications | [Jira][page:manual/notifications/jira.md] | Creates or modifies Jira issues when a job finishes | Pro
-Workflow Strategy | [Ruleset][page:manual/workflow-strategies/ruleset.md] | Defines rules for when steps in a workflow should run | Pro
+Notifications | [Jira][page:manual/notifications/jira.md] | Creates or modifies Jira issues when a job finishes | Enterprise
+Workflow Strategy | [Ruleset][page:manual/workflow-strategies/ruleset.md] | Defines rules for when steps in a workflow should run | Enterprise
 Node Orchestrator | [Random Subset][page:manual/orchestrator-plugins/bundled.md#random-subset] | Selects a maximum number of the target nodes at random | Built-in
 Node Orchestrator | [Ranked Tiered][page:manual/orchestrator-plugins/bundled.md#ranked-tired] | Processes nodes in a tiered manner, ordered by rank | Built-in
 Node Orchestrator | [Max Percentage][page:manual/orchestrator-plugins/bundled.md#max-percentage] | Processes at maximum a percentage of the target nodes | Built-in
-Node Orchestrator | [Highest/Lowest Attribute Value][page:manual/orchestrator-plugins/highest-lowest.md] | Picks one node with either the highest or lowest value of a certain attribute | Pro
+Node Orchestrator | [Highest/Lowest Attribute Value][page:manual/orchestrator-plugins/highest-lowest.md] | Picks one node with either the highest or lowest value of a certain attribute | Enterprise
 Log Filter | [Mask Passwords][page:manual/log-filters/mask-passwords.md] | Masks secure input option values from being emitted in the logs | Built-in
 Log Filter | [Render Formatted Data][page:manual/log-filters/render-formatted-data.md] | Allows marking formatted data as a certain data type | Built-in
 Log Filter | [Key-Value Data][page:manual/log-filters/key-value-data.md] | Captures key/value data | Built-in
 Log Filter | [Quiet Output][page:manual/log-filters/quiet-output.md] | Supresses patterns of output | Built-in
 Log Filter | [Highlight Output][page:manual/log-filters/highlight-output.md] | Highlights patterns of output | Built-in
-Log Filter | [Progress Badge][page:manual/log-filters/progress-badge.md] | Create graphic badges in log output | Pro
+Log Filter | [Progress Badge][page:manual/log-filters/progress-badge.md] | Create graphic badges in log output | Enterprise
 Content Converter | [HTML Table View][page:manual/content-converters/html-table-view.md] | Renders structured data as a HTML tables | Built-in
 Content Converter | [HTML View][page:manual/content-converters/html-view.md] | Renders embedded HTML | Built-in
 Content Converter | [JSON Data][page:manual/content-converters/json.md] | Parses JSON into a Java object | Built-in
@@ -64,19 +64,19 @@ Log Storage | [Amazon S3][page:administration/cluster/logstore/s3.md] | Stores l
 Node Execution | [Node Execution][page:administration/projects/node-execution/builtin.md] | | Built-in
 Node Execution | [Script][page:administration/projects/node-execution/script.md] | Uses a script to execute commands on remote nodes | Built-in
 Node Execution | [SSH][page:administration/projects/node-execution/ssh.md] | Uses SSH to execute commands on remote nodes | Built-in
-Node Execution | [Powershell][page:administration/projects/node-execution/powershell.md] | Uses PowerShell to execute commands on remote nodes | Pro
+Node Execution | [Powershell][page:administration/projects/node-execution/powershell.md] | Uses PowerShell to execute commands on remote nodes | Enterprise
 Node Execution | [SSH Bastion][page:administration/projects/node-execution/bastionssh.md] | Provides a node-executor and file-copier supporting ssh actions through a bastion host | Community 
 Node Execution | [OpenSSH][page:administration/projects/node-execution/openssh.md] | Provides a node-executor and file-copier using OpenSSH | Built-in
 Resource Model Source | [Resource Model Source][page:administration/projects/resource-model-sources/builtin.md] | | Built-in
 Resource Model Source | [Resource Editor][page:administration/projects/resource-model-sources/resource-editor.md] | | Built-in
 Resource Model Source | [AWS][page:administration/projects/resource-model-sources/aws.md] | Populates your nodes from EC2 | Community
 Resource Model Source | [Azure][page:administration/projects/resource-model-sources/azure.md] | Populates your nodes from Azure | Community
-Resource Model Source | [ServiceNow][page:administration/projects/resource-model-sources/servicenow.md] | Populates your nodes from ServiceNow's CMDB | Pro
-Resource Model Source | [VMware][page:administration/projects/resource-model-sources/vmware.md] | Populates your nodes from a VSphere ESXi server or VCenter Server | Pro
+Resource Model Source | [ServiceNow][page:administration/projects/resource-model-sources/servicenow.md] | Populates your nodes from ServiceNow's CMDB | Enterprise
+Resource Model Source | [VMware][page:administration/projects/resource-model-sources/vmware.md] | Populates your nodes from a VSphere ESXi server or VCenter Server | Enterprise
 Resource Format | [XML][page:manpages/man5/resource-v13.md] | XML Format for Resource Models | Built-in
 Resource Format | [YAML][page:manpages/man5/resource-yaml-v13.md] | YAML Format for Resource Models | Built-in
 Resource Format | [JSON][page:manpages/man5/resource-json-v10.md] | JSON Format for Resource Models | Built-in
 SCM | [Git][page:administration/projects/scm/git.md] | Imports or exports jobs from a Git repository | Community
-SCM | [Job Replication][page:administration/projects/scm/job-replication.md] | Replicates job state between Rundeck Cluster instances | Pro
-SSO | [Okta][page:administration/security/sso.md] | Allows you to use Okta to log into Rundeck | Pro
+SCM | [Job Replication][page:administration/projects/scm/job-replication.md] | Replicates job state between Rundeck Cluster instances | Enterprise
+SSO | [Okta][page:administration/security/sso.md] | Allows you to use Okta to log into Rundeck | Enterprise
 Storage Converter | [Encyption][page:administration/configuration/plugins/bundled-plugins.md#jasypt-encryption-plugin] | Encrypts Key Storage and Project configuration data | Built-in
