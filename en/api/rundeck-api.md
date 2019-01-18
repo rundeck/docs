@@ -55,6 +55,12 @@ View the [Index](#index) listing API paths.
 
 Changes introduced by API Version number:
 
+**Version 29**:
+
+* New Endpoints:
+    - [`GET /api/V/executions/metrics`][/api/V/executions/metrics] - Get metrics over a system-wide execution query.
+    - [`GET /api/V/project/[PROJECT]/executions/metrics`][/api/V/project/[PROJECT]/executions/metrics] - Get metrics over a project-wide execution query.
+
 **Version 28**:
 
 * Updated Endpoints:
@@ -4085,6 +4091,81 @@ Paging parameters:
 
 See [Listing Running Executions](#listing-running-executions).
 
+### Execution Query Metrics
+
+Obtain metrics over the result set of an execution query. The query can be issued over all executions on the system, or over the executions of a single project depending on the variant used.
+
+**Request:**
+
+    GET /api/29/executions/metrics
+    GET /api/29/project/[PROJECT]/executions/metrics
+
+To narrow down the result set over which the metrics will be calculated, you can use the same parameters as [Execution Query](#execution-query).
+
+Paging parameters will affect the result by limiting the executions that will be considered on the calculation:
+
+* `max`: maximum number of results to include in calculation. (default: unlimited)
+* `offset`: offset for first result to include. (default: 0)
+
+**Response**
+
+`Content-Type: application/xml`
+
+A single result element with `<duration>` containing duration info, `<total>` with total count,
+and a `<status>` element with per-status counts, containing one entry for each available status. If no entry exists for a given status,
+then the value is 0 for that status:
+
+~~~~~~~~~~ {.xml}
+<result>
+  <duration>
+    <average>0s</average>
+    <min>0s</min>
+    <max>39s</max>
+  </duration>
+  <total>1325</total>
+  <status>
+      <running>1</running>
+      <other>4</other>
+      <aborted>21</aborted>
+      <failed>88</failed>
+      <succeeded>1208</succeeded>
+      <timedout>1</timedout>
+      <failed-with-retry>1</failed-with-retry>
+      <scheduled>1</scheduled>
+  </status>
+</result>
+~~~~~~~~~~
+
+`Content-Type: application/json`
+
+An object with `duration` entry containing duration stats, `total` with total executions, `status` entry
+with per-status counts.
+
+~~~~~~~~~~ {.json}
+{
+    "duration": {
+        "average": "0s",
+        "min": "0s",
+        "max": "39s"
+    },
+    "total": 1325,
+    "status": {
+        "running": 1,
+        "other": 4,
+        "aborted": 21,
+        "failed": 88,
+        "succeeded": 1208,
+        "timedout": 1,
+        "failed-with-retry":1,
+        "scheduled": 1,
+    }
+}
+~~~~~~~~~~
+
+Note that any status count with a value of 0 will be omitted in both json and xml versions.
+
+Possible execution status values are listed under [Listing Running Executions].
+
 ### Execution State
 
 Get detail about the node and step state of an execution by ID. The execution can be currently running or completed.
@@ -6918,6 +6999,10 @@ Same response as [Setup SCM Plugin for a Project](#setup-scm-plugin-for-a-projec
 
 * `POST` [Bulk Delete Executions](#bulk-delete-executions)
 
+[/api/V/executions/metrics][]
+
+* `GET` [Execution Query Metrics](#execution-query-metrics)
+
 [/api/V/job/[ID]][]
 
 * `GET` [Getting a Job Definition](#getting-a-job-definition)
@@ -7053,6 +7138,10 @@ Same response as [Setup SCM Plugin for a Project](#setup-scm-plugin-for-a-projec
 [/api/V/project/[PROJECT]/executions][]
 
 * `GET` [Execution Query](#execution-query)
+
+[/api/V/project/[PROJECT]/executions/metrics][]
+
+* `GET` [Execution Query Metrics](#execution-query-metrics)
 
 [/api/V/project/[PROJECT*]/executions/running][]
 
