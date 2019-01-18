@@ -4113,48 +4113,60 @@ Paging parameters will affect the result by limiting the executions that will be
 
 `Content-Type: application/xml`
 
-A single result element with one child for each metric value:
+A single result element with `<duration>` containing duration info, `<total>` with total count,
+and a `<status>` element with per-status counts, containing one entry for each available status. If no entry exists for a given status,
+then the value is 0 for that status:
 
 ~~~~~~~~~~ {.xml}
 <result>
-  <running>1</running>
+  <duration>
+    <average>0s</average>
+    <min>0s</min>
+    <max>39s</max>
+  </duration>
   <total>1325</total>
-  <other>4</other>
-  <aborted>21</aborted>
-  <failed>88</failed>
-  <succeeded>1208</succeeded>
-  <timedout>1</timedout>
-  <failed-with-retry>1</failed-with-retry>
-  <scheduled>1</scheduled>
-  <duration-avg>8m</duration-avg>
-  <duration-min>0s</duration-min>
-  <duration-max>552m</duration-max>
+  <status>
+      <running>1</running>
+      <other>4</other>
+      <aborted>21</aborted>
+      <failed>88</failed>
+      <succeeded>1208</succeeded>
+      <timedout>1</timedout>
+      <failed-with-retry>1</failed-with-retry>
+      <scheduled>1</scheduled>
+  </status>
 </result>
-~~~~~~~~~~~~
+~~~~~~~~~~
 
 `Content-Type: application/json`
 
-A single object with one property for each metric value:
+An object with `duration` entry containing duration stats, `total` with total executions, `status` entry
+with per-status counts.
 
 ~~~~~~~~~~ {.json}
 {
-  "running": 1,
-  "total": 1325,
-  "other": 4,
-  "aborted": 21,
-  "failed": 88,
-  "succeeded": 1208,
-  "timedout": 1,
-  "failed-with-retry":1,
-  "scheduled": 1,
-  "duration-avg": "8m",
-  "duration-min": "0s",
-  "duration-max": "552m"
+    "duration": {
+        "average": "0s",
+        "min": "0s",
+        "max": "39s"
+    },
+    "total": 1325,
+    "status": {
+        "running": 1,
+        "other": 4,
+        "aborted": 21,
+        "failed": 88,
+        "succeeded": 1208,
+        "timedout": 1,
+        "failed-with-retry":1,
+        "scheduled": 1,
+    }
 }
-~~~~~~~~~~~~
+~~~~~~~~~~
 
 Note that any status count with a value of 0 will be omitted in both json and xml versions.
 
+Possible execution status values are listed under [Listing Running Executions].
 
 ### Execution State
 
