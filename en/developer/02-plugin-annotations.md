@@ -31,10 +31,43 @@ Example:
 public class MyPlugin implements StepPlugin{
     ...
 }
-~~~~~~~~
+~~~~~~
 
 *Note:* If you do not add this annotation, the plugin display name will be the same as the provider name, and will have
 no descriptive text when displayed.
+
+## Plugin Provider Metadata
+
+You can supply additional metadata about the plugin implementation, using the 
+[\@PluginMetadata][] annotation.
+You can provide multiple metadata entries with a [\@PluginMeta](${javadocbase}/com/dtolabs/rundeck/plugins/descriptions/PluginMeta.html)
+annotation, which can contain multiple [\@PluginMetadata][] values.
+
+Example:
+
+~~~~~~ {.java}
+@Plugin(name="myplugin", service=ServiceNameConstants.WorkflowStep)
+@PluginMetadata(key="anykey", value="anyvalue")
+public class MyPlugin implements StepPlugin{
+    ...
+}
+// or with multiple entries:
+@Plugin(name="myplugin", service=ServiceNameConstants.WorkflowStep)
+@PluginMeta(
+    {
+        @PluginMetadata(key="anykey", value="anyvalue"),
+        @PluginMetadata(key="otherkey", value="othervalue")
+    }
+)
+public class MyPlugin implements StepPlugin{
+    ...
+}
+~~~~~~
+
+See [Provider Metadata][page:developer/01-plugin-development.md#provider-metadata-1] for information about what metadata keys may be used.
+
+
+[\@PluginMetadata]: ${javadocbase}/com/dtolabs/rundeck/plugins/descriptions/PluginMetadata.html
 
 ## Plugin Properties
 
