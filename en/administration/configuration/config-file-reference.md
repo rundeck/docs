@@ -248,6 +248,11 @@ The following sections describe configuration values for this file.
 
 Note: This setting DOES NOT work in TOMCAT installs ( dev team is currently working on a fix ) 
 
+      As a workaround, you can manage the session timeout setting in the $TomcatBase/conf/web.xml file. 
+      Rundeck will take this value. The setting is in minutes.
+
+      `<session-config> <session-timeout>30</session-timeout> </session-config>` 
+
 
 ### Execution Mode
 
