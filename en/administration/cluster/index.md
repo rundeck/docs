@@ -14,7 +14,6 @@ A single Rundeck Pro Cluster instance can be installed
 Rundeck cluster environment needs the following shared resources
 
 
-
 ### Database 
 
 Rundeck Pro Cluster requires that all the cluster members share the same DB:
@@ -28,33 +27,26 @@ See [Storage Facility](https://docs.rundeck.com/docs/administration/configuratio
 
 ### Load Balancer
 
-Use a Load Balancer (LB) in front of the cluster members.
 To configure the LB it is necessary: 
 
 * Set the `grails.serverURL` parameter of all cluster members (`rundeck-config.properties`) with the LB URL.
 
 * Use Sticky session
 
-Further information [here](../administration/cluster/loadbalancer)
+Further information [here](https://docs.rundeck.com/docs/administration/cluster/loadbalancer/index.html)
+
+https://docs.rundeck.com/docs/administration/cluster/loadbalancer/index.html
+
+### Log Storage
+
+All Cluster members must share the log storage see
+
+https://docs.rundeck.com/docs/administration/cluster/logstore/index.html
+
+[Logstore](https://docs.rundeck.com/docs/administration/cluster/logstore/index.html)
 
 
-## Log Storage
-
-
-All Cluster members must share the log storage, this can be achieved in two ways:
-
-* Shared file system: You can set the shared file system path in the `framework.properties` file. (`framework.logs.dir`). This changes must be done in all the cluster members.
-
-* Plugins: Using an Execution log storage plugin.
-
-So far we have the following plugins for execution log storage:
-
-* [S3 log storage plugin](https://github.com/rundeck-plugins/rundeck-s3-log-plugin). 
-  This plugin works with any storage compatible with AWS S3 API, eg: S3, Minio, etc.
-* [Azure log storage plugin](https://github.com/rundeck-plugins/rundeck-azure-plugin)
-
-
-## Authentication
+### Authentication
 
 The cluster environment needs a common authentication method, in order all the instances can login with the same list of users/groups
 Rundeck PRO has the following options:
@@ -62,10 +54,10 @@ Rundeck PRO has the following options:
 * LDAP/AD authentication
 * OAuth 2 (preauthentication mode or Okta).
 
-Further information [here](../administration/authenticating-users.html)
+Further information [here](https://docs.rundeck.com/docs/administration/security/authenticating-users.html)
 
 
-## Resource Model
+### Resource Model
 
 Each project will need a common place where define the list of nodes that the project will use.
 This can be reached for example with:
@@ -78,3 +70,13 @@ This can be reached for example with:
  * a REST endpoint, etc.
 
 Further information [Managing Node Sources](http://rundeck.org/docs/administration/managing-node-sources.html).
+
+## Features:
+
+Autotakeover
+
+https://docs.rundeck.com/docs/administration/cluster/autotakeover/index.html
+
+Cluster Remote Execution Policy
+
+https://docs.rundeck.com/docs/administration/configuration/remote-job-execution-pro.html
