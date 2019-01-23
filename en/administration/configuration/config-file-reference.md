@@ -243,16 +243,15 @@ The following sections describe configuration values for this file.
 
 ### Server Settings
 
-
 * `server.session.timeout`: timeout in seconds.
 
-Note: This setting DOES NOT work in TOMCAT installs ( dev team is currently working on a fix ) 
+Note: This setting applies *only* to the embedded Jetty server, which is used for standalone war launcher, rpm or deb installs. It does not work for Tomcat installation.
 
-      As a workaround, you can manage the session timeout setting in the $TomcatBase/conf/web.xml file. 
-      Rundeck will take this value. The setting is in minutes.
+If you are deploying the Rundeck war file to Tomcat, you can manage the session timeout setting in the `$TomcatBase/conf/web.xml` file. The setting is in minutes.
 
-      `<session-config> <session-timeout>30</session-timeout> </session-config>` 
-
+~~~{.xml}
+    <session-config> <session-timeout>30</session-timeout> </session-config>
+~~~
 
 ### Execution Mode
 
