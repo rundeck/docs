@@ -19,14 +19,14 @@ Rundeck cluster environment needs the following shared resources
 
 Rundeck Pro Cluster requires that all the cluster members share the same DB:
 
-[Setting RDB Datasource](http://rundeck.org/docs/administration/setting-up-an-rdb-datasource.html)
+[Setting RDB Datasource](https://docs.rundeck.com/docs/administration/configuration/database/index.html)
 
-Also, you must store the keys and project data in the DB (enable by default since 2.4.x):
+Also, the keys and project data must be stored in the DB (enabled by default since 2.4.x):
 
-[Configure Project with RDB](http://rundeck.org/docs/administration/setting-up-an-rdb-datasource.html#configure-project-config-in-db)
+See [Storage Facility](https://docs.rundeck.com/docs/administration/configuration/storage-facility.html)
 
 
-## Load Balancer
+### Load Balancer
 
 Use a Load Balancer (LB) in front of the cluster members.
 To configure the LB it is necessary: 
