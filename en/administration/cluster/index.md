@@ -73,10 +73,10 @@ Further information [Managing Node Sources](http://rundeck.org/docs/administrati
 
 ## Features:
 
-Autotakeover
+### Autotakeover
 
 https://docs.rundeck.com/docs/administration/cluster/autotakeover/index.html
 
-Cluster Remote Execution Policy
+### Cluster Remote Execution Policy
 
 https://docs.rundeck.com/docs/administration/configuration/remote-job-execution-pro.html
