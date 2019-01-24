@@ -1,6 +1,6 @@
 % Rundeck Pro Cluster
 
-## Rundeck architecture
+## Rundeck Pro Cluster Architecture
 ![Rundeck architecture](https://docs.rundeck.com/docs/figures/architecture.png)
 
 ## Installation
@@ -37,17 +37,13 @@ See: [Logstore](https://docs.rundeck.com/docs/administration/cluster/logstore/in
 
 
 ### Authentication
-The cluster environment needs a common authentication method, in order all the instances can login with the same list of users/groups
-Rundeck PRO has the following options:
+The cluster environment needs a common authentication method. All the instances must have access the same list of users/groups
 
-* LDAP/AD authentication
-* OAuth 2 (preauthentication mode or Okta).
-
-Go to the [Authenticaing Users](https://docs.rundeck.com/docs/administration/security/authenticating-users.html) document for more details.
+Go to the [Authenticating Users](https://docs.rundeck.com/docs/administration/security/authenticating-users.html) document for more details.
 
 ### Resource Model
 
-Each project will need a common place where define the list of nodes that the project will use.
+Each project needs a common source to define the list of project nodes.
 This can be reached for example with:
 
  * a shared folder
@@ -57,7 +53,7 @@ This can be reached for example with:
  * a script, 
  * a REST endpoint, etc.
 
-Further information [Managing Node Sources](http://rundeck.org/docs/administration/managing-node-sources.html).
+See [Node Model Sources](http://rundeck.org/docs/administration/managing-node-sources.html).
 
 ## Features:
 
