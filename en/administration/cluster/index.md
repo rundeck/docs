@@ -4,7 +4,7 @@
 ![Rundeck architecture](https://docs.rundeck.com/docs/figures/architecture.png)
 
 ## Installation
-To install a Rundeck Pro Cluster instance, download the lastest version from [here](https://download.rundeck.com/versions.htmlgo) and follow the steps in the [Installation Guide](https://docs.rundeck.com/docs/administration/install)
+To install a Rundeck Pro Cluster instance, download the lastest version from [here],(https://download.rundeck.com/versions.htmlgo) and follow the steps in the [Installation Guide](https://docs.rundeck.com/docs/administration/install)
 
 https://download.rundeck.com/versions.html
 
