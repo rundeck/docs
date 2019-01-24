@@ -245,6 +245,103 @@ The following sections describe configuration values for this file.
 
 * `rundeck.security.jaasRolePrefix`: Prefix string to add to each *role* determined via [JAAS Authentication][page:administration/security/authentication.md#jetty-and-jaas-authentication]. Default: none.
 
+### Security HTTP Headers
+
+Rundeck adds some HTTP headers for XSS prevention and other security reasons, as described below.
+
+By default, these headers are enabled, but they can be individually disabled, or reconfigured.
+
+Additionally, custom headers can be enabled if required.
+
+~~~~.properties
+# enable security headers filter to add these headers (default: true)
+rundeck.security.httpHeaders.enabled=true
+
+#########
+# enable x-content-type-options: nosniff  (default: true)
+rundeck.security.httpHeaders.provider.xcto.enabled=true
+
+#########
+# enable x-xss-protection: 1  (default: true)
+
+rundeck.security.httpHeaders.provider.xxssp.enabled=true
+
+# Alternates for x-xss-protection:
+#
+# use x-xss-protection: 1; mode=block
+#
+
+# rundeck.security.httpHeaders.provider.xxssp.config.block=true
+
+#
+# use x-xss-protection: 1; report=https://some-uri
+
+# rundeck.security.httpHeaders.provider.xxssp.config.report=https://some-uri
+
+########
+# enable x-frame-options: deny  (default: true)
+
+rundeck.security.httpHeaders.provider.xfo.enabled=true
+
+# Alternate settings for x-frame-options:
+#
+# use x-frame-options: sameorigin
+
+# rundeck.security.httpHeaders.provider.xfo.config.sameorigin=true
+
+#
+# use x-frame-options: allow-from: src
+
+# rundeck.security.httpHeaders.provider.xfo.config.allowFrom=src
+
+#######
+# enable Content-Security-Policy header (default:true)
+
+rundeck.security.httpHeaders.provider.csp.enabled=true
+
+# You can enable the `X-` variants of Content-Security-Policy if desired, but they are disabled by default:
+#
+# This enables the X-Content-Security-Policy header name
+
+# rundeck.security.httpHeaders.provider.csp.config.include-xcsp-header=true
+
+#
+# This enables the X-WebKit-CSP header name
+
+# rundeck.security.httpHeaders.provider.csp.config.include-xwkcsp-header=true
+
+# You can specify an explicit policy, which will override directives declared below
+#
+
+# rundeck.security.httpHeaders.provider.csp.config.policy=default-src 'none'; connect-src 'self' ; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; font-src 'self' data: ; img-src 'self' https://media.rundeck.org ; form-action 'self' ;
+
+#
+# Or you can specify individual directives:
+#
+
+rundeck.security.httpHeaders.provider.csp.config.default-src=none
+rundeck.security.httpHeaders.provider.csp.config.connect-src=self
+rundeck.security.httpHeaders.provider.csp.config.style-src=self unsafe-inline
+rundeck.security.httpHeaders.provider.csp.config.script-src=self unsafe-inline unsafe-eval
+rundeck.security.httpHeaders.provider.csp.config.font-src=self data:
+rundeck.security.httpHeaders.provider.csp.config.img-src=self https://media.rundeck.org
+rundeck.security.httpHeaders.provider.csp.config.form-action=self
+
+#######
+# enable any custom additional headers (default: false)
+# 
+# rundeck.security.httpHeaders.provider.custom.enabled=true
+# rundeck.security.httpHeaders.provider.custom.config.name=X-Other-Security-Policy
+# rundeck.security.httpHeaders.provider.custom.config.value=default-src 'none'; 
+# rundeck.security.httpHeaders.provider.custom.config.name2=X-other-header
+# rundeck.security.httpHeaders.provider.custom.config.value2=some value
+~~~~
+
+References:
+
+* <https://www.owasp.org/index.php/OWASP_Secure_Headers_Project>
+* <https://content-security-policy.com>
+
 ### Server Settings
 
 * `server.session.timeout`: timeout in seconds.
