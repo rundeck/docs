@@ -6,8 +6,6 @@
 ## Installation
 To install a Rundeck Pro Cluster instance, download the lastest version from [here](https://download.rundeck.com/versions.html), and follow the steps in the [Installation Guide](https://docs.rundeck.com/docs/administration/install)
 
-https://download.rundeck.com/versions.html
-
 ## Requirements
 Rundeck cluster environment needs the following shared resources:
 
