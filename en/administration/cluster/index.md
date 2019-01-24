@@ -50,7 +50,7 @@ Projects need a common resource model that can be accesed from all cluster membe
 
 See [Node Model Sources](http://rundeck.org/docs/administration/managing-node-sources.html) for more details.
 
-## Features:
+## Optional Features:
 
 ### Autotakeover
 
