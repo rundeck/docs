@@ -16,6 +16,8 @@ Security and bug fixes, and some enhancements.
 Security fixes:
 
 * potential stored XSS vulnerability (https://github.com/rundeck/rundeck/pull/4406)
+> Discovered by Ishaq Mohammed by at qualys.com
+
 * add Content-Security-Policy and other security HTTP headers to responses (see more info https://github.com/rundeck/rundeck/pull/4405)
 
 
@@ -28,6 +30,7 @@ Security fixes:
 * Luis Toledo (ltamaster)
 * Greg Zapp (ProTip)
 * Stephen Joyner (sjrd218)
+* Ishaq Mohammed
 
 ## Bug Reporters
 
