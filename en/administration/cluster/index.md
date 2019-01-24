@@ -4,23 +4,23 @@
 
 ## Installation
 
-To install a Rundeck Pro Cluster instance see the [Installation guide](https://docs.rundeck.com/docs/administration/install)
+To install a Rundeck Pro Cluster instance see the [Installation Guide](https://docs.rundeck.com/docs/administration/install)
 
 
 ## Requirements
 
-Rundeck cluster environment needs the following shared resources
+Rundeck cluster environment needs the following shared resources:
 
 
 ### Database 
 
-Rundeck Pro Cluster requires that all the cluster members share the same DB:
+* Rundeck Pro Cluster requires that all the cluster members share the same DB:
 
-[Setting RDB Datasource](https://docs.rundeck.com/docs/administration/configuration/database/index.html)
+See: [Database Backends](https://docs.rundeck.com/docs/administration/configuration/database/index.html)
 
-Also, the keys and project data must be stored in the DB (enabled by default since 2.4.x):
+* The keys and project data must be stored in the DB (enabled by default since 2.4.x):
 
-See [Storage Facility](https://docs.rundeck.com/docs/administration/configuration/storage-facility.html)
+See: [Storage Facility](https://docs.rundeck.com/docs/administration/configuration/storage-facility.html)
 
 
 ### Load Balancer
