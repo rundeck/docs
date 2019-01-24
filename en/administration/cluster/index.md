@@ -37,12 +37,12 @@ See: [Logstore](https://docs.rundeck.com/docs/administration/cluster/logstore/in
 
 
 ### Authentication
-The cluster environment needs a common authentication method. All the instances must have access the same list of users/groups
+The cluster environment needs a common authentication method. All the instances must have access to the same list of users/groups
 
 Go to the [Authenticating Users](https://docs.rundeck.com/docs/administration/security/authenticating-users.html) document for more details.
 
 ### Resource Model
-Projects need a common resource model that can be accesed from all cluster members. These are some of the alternatives to achieve this: 
+Projects need a common resource model that can be accessed from all cluster members. These are some of the alternatives to achieve this: 
 
  * A shared file system
  * A script 
@@ -50,16 +50,14 @@ Projects need a common resource model that can be accesed from all cluster membe
 
 See [Node Model Sources](http://rundeck.org/docs/administration/managing-node-sources.html) for more details.
 
-## Optional Features:
+## Features:
 
 ### Autotakeover
-
 Scheduled jobs are owned by the last cluster member who modified them. Jobs can also be controlled using Cluster Manager. If a cluster member goes down, all scheduled jobs on that cluster member must be moved to another cluster node. This process can be performed automatically using the heartbeat and Autotakeover features in Rundeck Pro version 2.1.0 and later releases.
 
 See: [Autotakeover Configuration](https://docs.rundeck.com/docs/administration/cluster/autotakeover/index.html) for more details.
 
 ### Cluster Remote Execution Policy
-
 This feature allows Rundeck Pro cluster members to forward job executions to other cluster members based on a policy configuration.
 
 See: Cluster [Remote Execution Policy](https://docs.rundeck.com/docs/administration/configuration/remote-job-execution-pro.html)
