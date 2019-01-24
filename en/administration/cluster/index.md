@@ -42,25 +42,24 @@ The cluster environment needs a common authentication method. All the instances 
 Go to the [Authenticating Users](https://docs.rundeck.com/docs/administration/security/authenticating-users.html) document for more details.
 
 ### Resource Model
+Projects need a common resource model that can be accesed from all cluster members. These are some of the alternatives to achieve this: 
 
-Each project needs a common source to define the list of project nodes.
-This can be reached for example with:
+ * A shared file system
+ * A script 
+ * A REST endpoint
 
- * a shared folder
- * [S3 plugin](https://github.com/rundeck-plugins/aws-s3-model-source)
- * [Azure plugin](https://github.com/rundeck-plugins/rundeck-azure-plugin)
- * [Git plugin](https://github.com/rundeck-plugins/git-resource-model)
- * a script, 
- * a REST endpoint, etc.
-
-See [Node Model Sources](http://rundeck.org/docs/administration/managing-node-sources.html).
+See [Node Model Sources](http://rundeck.org/docs/administration/managing-node-sources.html) for more details.
 
 ## Features:
 
 ### Autotakeover
 
-https://docs.rundeck.com/docs/administration/cluster/autotakeover/index.html
+Scheduled jobs are owned by the last cluster member who modified them. Jobs can also be controlled using Cluster Manager. If a cluster member goes down, all scheduled jobs on that cluster member must be moved to another cluster node. This process can be performed automatically using the heartbeat and Autotakeover features in Rundeck Pro version 2.1.0 and later releases.
+
+See: [Autotakeover Configuration](https://docs.rundeck.com/docs/administration/cluster/autotakeover/index.html) for more details.
 
 ### Cluster Remote Execution Policy
 
-https://docs.rundeck.com/docs/administration/configuration/remote-job-execution-pro.html
+This feature allows Rundeck Pro cluster members to forward job executions to other cluster members based on a policy configuration.
+
+See: Cluster [Remote Execution Policy](https://docs.rundeck.com/docs/administration/configuration/remote-job-execution-pro.html)
