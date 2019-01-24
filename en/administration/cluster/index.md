@@ -1,59 +1,49 @@
 % Rundeck Pro Cluster
 
+## Rundeck architecture
 ![Rundeck architecture](https://docs.rundeck.com/docs/figures/architecture.png)
 
 ## Installation
-
 To install a Rundeck Pro Cluster instance, go to the [Installation Guide](https://docs.rundeck.com/docs/administration/install)
 
 
 ## Requirements
-
 Rundeck cluster environment needs the following shared resources:
 
 
 ### Database 
-
 * Rundeck Pro Cluster requires that all the cluster members share the same DB:
 
-See: [Database Backends](https://docs.rundeck.com/docs/administration/configuration/database/index.html)
+  See: [Database Backends](https://docs.rundeck.com/docs/administration/configuration/database/index.html)
 
 * The keys and project data must be stored in the DB (enabled by default since 2.4.x):
 
-See: [Storage Facility](https://docs.rundeck.com/docs/administration/configuration/storage-facility.html)
+  See: [Storage Facility](https://docs.rundeck.com/docs/administration/configuration/storage-facility.html)
 
 
 ### Load Balancer
-
-To configure the LB it is necessary: 
+A loadbalancer allows you to achieve high availability in your Rundeck Pro installation by routing http traffic across several redundant Rundeck Pro instances.
 
 * Set the `grails.serverURL` parameter of all cluster members (`rundeck-config.properties`) with the LB URL.
 
 * Use Sticky session
 
-Further information [here](https://docs.rundeck.com/docs/administration/cluster/loadbalancer/index.html)
-
-https://docs.rundeck.com/docs/administration/cluster/loadbalancer/index.html
+Go to the: [Loadbalancer Guide](https://docs.rundeck.com/docs/administration/cluster/loadbalancer/index.html) for more details.
 
 ### Log Storage
+All Cluster members must share the log storage. 
 
-All Cluster members must share the log storage see
-
-https://docs.rundeck.com/docs/administration/cluster/logstore/index.html
-
-[Logstore](https://docs.rundeck.com/docs/administration/cluster/logstore/index.html)
+See: [Logstore](https://docs.rundeck.com/docs/administration/cluster/logstore/index.html)
 
 
 ### Authentication
-
 The cluster environment needs a common authentication method, in order all the instances can login with the same list of users/groups
 Rundeck PRO has the following options:
 
 * LDAP/AD authentication
 * OAuth 2 (preauthentication mode or Okta).
 
-Further information [here](https://docs.rundeck.com/docs/administration/security/authenticating-users.html)
-
+Go to the [Authenticaing Users](https://docs.rundeck.com/docs/administration/security/authenticating-users.html) document for more details.
 
 ### Resource Model
 
