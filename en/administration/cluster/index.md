@@ -4,7 +4,7 @@
 
 ## Installation
 
-To install a Rundeck Pro Cluster instance see [Rundeck installation documentation](https://docs.rundeck.com/docs/administration/install)
+To install a Rundeck Pro Cluster instance see the [Installation guide](https://docs.rundeck.com/docs/administration/install)
 
 
 ## Requirements
