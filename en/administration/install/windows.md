@@ -53,7 +53,7 @@ java %RDECK_CLI_OPTS% %RDECK_SSL_OPTS% -jar rundeckpro-[edition]-X.X.X.war --ski
 ![Service Management Console](../../figures/service-management-console.png) 
  
 
-* set JVM memory heap on `%RDECK_BASE%\etc\profile`. 
+* set JVM memory heap on `%RDECK_BASE%\etc\profile.bat`. 
 Replace the `RDECK_CLI_OPTS` variable with the amount of memory that you need, for example:
 
 ```
