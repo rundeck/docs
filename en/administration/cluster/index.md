@@ -47,7 +47,7 @@ Projects need a common resource model that can be accessed from all cluster memb
  * A script 
  * A REST endpoint
 
-See: [Node Model Sources](http://rundeck.org/docs/administration/managing-node-sources.html)
+See: [Node Model Sources](https://docs.rundeck.com/docs/administration/projects/resource-model-sources/aws-ec2-nodes.html)
 
 ## Features:
 
