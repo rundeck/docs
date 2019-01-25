@@ -1,6 +1,6 @@
 % Rundeck Pro Cluster
 
-## Rundeck Pro Cluster Architecture
+## Rundeck Pro Cluster Architectur
 ![Rundeck architecture](https://docs.rundeck.com/docs/figures/architecture.png)
 
 ## Installation
