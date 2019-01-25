@@ -27,7 +27,7 @@ A loadbalancer allows you to achieve high availability in your Rundeck Pro insta
 
 * Use Sticky session
 
-Go to the: [Loadbalancer Guide](https://docs.rundeck.com/docs/administration/cluster/loadbalancer/index.html) for more details.
+See: [Loadbalancer Guide](https://docs.rundeck.com/docs/administration/cluster/loadbalancer/index.html)
 
 ### Log Storage
 All Cluster members must share the log storage. 
@@ -38,7 +38,7 @@ See: [Logstore](https://docs.rundeck.com/docs/administration/cluster/logstore/in
 ### Authentication
 The cluster environment needs a common authentication method. All the instances must have access to the same list of users/groups
 
-Go to the [Authenticating Users](https://docs.rundeck.com/docs/administration/security/authenticating-users.html) document for more details.
+See: [Authenticating Users](https://docs.rundeck.com/docs/administration/security/authenticating-users.html) 
 
 ### Resource Model
 Projects need a common resource model that can be accessed from all cluster members. These are some of the alternatives to achieve this: 
@@ -47,7 +47,7 @@ Projects need a common resource model that can be accessed from all cluster memb
  * A script 
  * A REST endpoint
 
-See [Node Model Sources](http://rundeck.org/docs/administration/managing-node-sources.html) for more details.
+See: [Node Model Sources](http://rundeck.org/docs/administration/managing-node-sources.html)
 
 ## Features:
 
