@@ -1,4 +1,4 @@
-% Rundeck Pro Enterprise
+% Rundeck Enterprise
 
 ## Rundeck Enterprise Architecture
 ![Rundeck architecture](../../figures/architecture.png)
