@@ -1,22 +1,22 @@
-% Rundeck Pro Cluster
+% Rundeck Pro Enterprise
 
-## Rundeck Pro Cluster Architectur
+## Rundeck Enterprise Architecture
 ![Rundeck architecture](../../figures/architecture.png)
 
 ## Installation
-To install a Rundeck Pro Cluster instance, download the lastest version from [here](https://download.rundeck.com/versions.html), and follow the steps in the [Installation Guide][page:/en/administration/install/index.md]
+To install a Rundeck Pro Enterprise instance, download the lastest version from [here](https://download.rundeck.com/versions.html), and follow the steps in the [Installation Guide][page:administration/install/index.md]
 
 ## Requirements
-Rundeck cluster environment needs the following shared resources:
+The Rundeck Enterprise environment needs the following shared resources:
 
 ### Database 
-* Rundeck Pro Cluster requires that all the cluster members share the same DB:
+* All the cluster members must share the same DB:
 
   See: [Database Backends][page:administration/configuration/database/index.md].
 
 * The keys and project data must be stored in the DB (enabled by default since 2.4.x):
 
-  See: [Storage Facility][page:/administration/configuration/storage-facility.md]
+  See: [Storage Facility][page:administration/configuration/storage-facility.md]
 
 ### Load Balancer
 A loadbalancer allows you to achieve high availability in your Rundeck Pro installation by routing http traffic across several redundant Rundeck Pro instances.
@@ -48,7 +48,7 @@ Projects need a common resource model that can be accessed from all cluster memb
  * A script 
  * A REST endpoint
 
-See: [Node Model Sources][page:docs/en/administration/projects/resource-model-sources/index.md]
+See: [Node Model Sources][page:administration/projects/resource-model-sources/index.md]
 
 ## Features:
 
@@ -61,3 +61,8 @@ See: [Autotakeover][page:administration/cluster/autotakeover/index.md]
 This feature allows Rundeck Pro cluster members to forward job executions to other cluster members based on a policy configuration.
 
 See: [Remote Job Execution][page:administration/configuration/remote-job-execution.md]
+
+### Rundeck Pro Replication
+This plugin is used for an active/passive configuration. Each cluster member can have its own database. 
+
+See [Rundeck Pro Replication][page:administration/cluster/replication/index.md]
