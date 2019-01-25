@@ -59,4 +59,4 @@ See: [Autotakeover Configuration](https://docs.rundeck.com/docs/administration/c
 ### Cluster Remote Execution Policy
 This feature allows Rundeck Pro cluster members to forward job executions to other cluster members based on a policy configuration.
 
-See: [Cluster Remote Execution Policy](https://docs.rundeck.com/docs/administration/configuration/remote-job-execution-pro.html)
+See: [Remote Job Execution][page:administration/configuration/remote-job-execution.md]
