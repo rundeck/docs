@@ -174,16 +174,16 @@ Create a `jaas-ldap.conf` file in the same directory as the `jaas-loginmodule.co
 * RPM/Deb install: `/etc/rundeck/`
 * Executable War install: `$RDECK_BASE/server/config`
 
-Make sure the name of your Login Module configuration is the same as you use in the next step.  The Login Module configuration is defined like this:
+Make sure the name of your Login Module configuration is the same as you use in the next step.  The Login Module configuration is defined like this (e.g. "jaas-ldap.conf" file):
 
 ~~~~~~ {.c }
-    myloginmodule {
+    ldap {
         // comment line
         ...
     }
 ~~~~~~
 
-Where "myloginmodule" is the name.
+Where "ldap" is the module name.
 
 #### Step 2: Specify login module
 
