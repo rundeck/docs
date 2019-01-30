@@ -55,6 +55,11 @@ View the [Index](#index) listing API paths.
 
 Changes introduced by API Version number:
 
+**Version 30**:
+
+* Updated Endpoints:
+    - [`GET /api/V/user/roles`][/api/V/user/roles] - List the roles of the authenticated user
+
 **Version 29**:
 
 * New Endpoints:
@@ -104,7 +109,7 @@ Changes introduced by API Version number:
 * Updated Endpoints.
     - [`GET /api/V/project/[PROJECT]/resources`][/api/V/project/[PROJECT]/resources] - Default response format is `application/json` for API v23 and later
     - [`GET /api/V/project/[PROJECT]/resource/[NAME]`][/api/V/project/[PROJECT]/resource/[NAME]] - Default response format is `application/json` for API v23 and later
-    
+
 **Version 22**:
 
 * Updated Endpoints.
@@ -140,7 +145,7 @@ Changes introduced by API Version number:
     - [`GET /api/19/project/[PROJECT]/export/async`][/api/V/project/[PROJECT]/export/async] - Async project archive export
     - [`GET /api/19/project/[PROJECT]/export/status/[TOKEN]`][/api/V/project/[PROJECT]/export/status/[TOKEN]] - Async project archive export status
     - [`GET /api/19/project/[PROJECT]/export/download/[TOKEN]`][/api/V/project/[PROJECT]/export/download/[TOKEN]] - Async project archive export download
-    
+
 * Updated Endpoints.
     - [`POST /api/19/tokens/[USER]`][POST /api/V/tokens/[USER]] - Specify token roles and expiration
     - [`GET /api/19/tokens/[USER]`][/api/V/tokens/[USER]] - List tokens for users
@@ -171,7 +176,7 @@ Changes introduced by API Version number:
     - [`/api/17/system/logstorage/incomplete/resume`][/api/V/system/logstorage/incomplete/resume] - Resume incomplete log storage processing.
 
 * Updated Endpoints.
-    - [`/api/17/project/[PROJECT]/jobs`][/api/V/project/[PROJECT]/jobs] 
+    - [`/api/17/project/[PROJECT]/jobs`][/api/V/project/[PROJECT]/jobs]
         - Response now includes whether a job is enabled, scheduled, schedule is enabled, and in Cluster mode includes the cluster mode server UUID of the schedule owner, and whether that is the current server or not.
         - add `?scheduledFilter=true/false` returns scheduled/unscheduled jobs only
         - and `?serverNodeUUIDFilter=[uuid]` returns scheduled jobs owned by the given cluster member
@@ -1208,7 +1213,7 @@ See [GET /api/V/metrics][/api/V/metrics].
 
 ## List Metrics
 
-List enabled Metrics endpoints. 
+List enabled Metrics endpoints.
 
 *Configuration*
 
@@ -1893,6 +1898,34 @@ Success response, with profile updated data:
 }
 ~~~
 
+### List roles
+
+Get a list of the authenticated user's roles
+
+**Request:**
+
+    GET /api/30/user/roles
+
+**Response:**
+
+Success response, with a list of roles:
+
+`Content-Type: application/xml`:
+
+~~~ {.xml}
+<roles>
+  <role>admin</role>
+  <role>user</role>
+</roles>
+~~~
+
+`Content-Type: application/json`:
+
+~~~ {.json}
+{
+    "roles":["admin","user"]
+}
+~~~
 
 ## Log Storage
 
@@ -2533,7 +2566,7 @@ Use `POST` to create a policy.
 **Request:**
 
     POST /api/14/system/acl/name.aclpolicy
-    
+
 If the `Content-Type` is `application/yaml` or `text/plain`, then the request body is the ACL policy contents directly.
 
 Otherwise, you can use XML or JSON in the same format as returned by [Get an ACL Policy](#get-an-acl-policy):
@@ -2731,12 +2764,12 @@ In Cluster mode, additional information about what server UUID is the schedule o
 * `serverNodeUUID` UUID of the schedule owner server for this job
 * `serverOwner` boolean value whether the target server is the owner, `true/false`.
 
-`Content-Type: application/xml`: 
+`Content-Type: application/xml`:
 
 ~~~~~~~~~~ {.xml}
-<job id="ID" href="[API url]" permalink="[GUI URL]" scheduled="true/false" scheduleEnabled="true/false" 
+<job id="ID" href="[API url]" permalink="[GUI URL]" scheduled="true/false" scheduleEnabled="true/false"
   enabled="true/false"
-  serverNodeUUID="[UUID]" 
+  serverNodeUUID="[UUID]"
   serverOwner="true/false"
   >
     <name>Job Name</name>
@@ -2825,7 +2858,7 @@ This is the same functionality as the `Retry Failed Nodes ...` button on the exe
 
     POST /api/24/job/[ID]/retry/[EXECID]
 
-Optional parameters. 
+Optional parameters.
 All of this parameters are going to be populated with the execution values unless they are included in the call:
 
 * `argString`: argument string to pass to the job, of the form: `-opt value -opt2 value ...`.
@@ -3455,7 +3488,7 @@ is the option name. The filename is specified normally within the multi-part req
 }
 ~~~~~~~~~~~~
 
-#### Example 
+#### Example
 
 To upload a file for an option `myfile` and run a job with the file:
 
@@ -4699,7 +4732,7 @@ the result data.
 In this mode, Log Entries are compacted by only including the changed values from the
 previous Log Entry in the list.  The first Log Entry in the results will always have complete information.  Subsequent entries may include only changed values.
 
-In JSON format, if the `compactedAttr` value is `log` in the response data, and only the `log` value changed relative to a previous Log Entry, the Log Entry may consist only of the log message string. That is, the array entry will be a string, not a hash. 
+In JSON format, if the `compactedAttr` value is `log` in the response data, and only the `log` value changed relative to a previous Log Entry, the Log Entry may consist only of the log message string. That is, the array entry will be a string, not a hash.
 
 When no values changed from the previous Log Entry, the Log Entry will be an empty hash.
 
@@ -4713,7 +4746,7 @@ In this example, four log entries are included. The first includes all Log Entry
 The second is only a String, indicating only `log` value changed.
 The third is an empty hash, indicating the previous Log Entry was repeated identically.
 The fourth specifies a new value for `stepctx` and `log` and `level` to use.
-The fifth specifies a `node` and `stepctx` of `null`: indicating the `node` and `stepctx` values should be removed for 
+The fifth specifies a `node` and `stepctx` of `null`: indicating the `node` and `stepctx` values should be removed for
 this Log Entry.
 
 ~~~{.json}
@@ -5513,7 +5546,7 @@ Response will be
 
 ### Project Archive Export ###
 
-Export a zip archive of the project.  Requires `export` authorization for the project. Performs the export synchronously. 
+Export a zip archive of the project.  Requires `export` authorization for the project. Performs the export synchronously.
 (See [Project Archive Export Async][/api/V/project/[PROJECT]/export/async] for asynchronous export.)
 
     GET /api/11/project/[PROJECT]/export
@@ -5607,7 +5640,7 @@ Response content type is `application/zip`
 
 ### Project Archive Import ###
 
-**Request:** 
+**Request:**
 
 Import a zip archive to the project. Requires `import` authorization for the project.
 
@@ -5690,7 +5723,7 @@ Response will indicate whether the imported contents had any errors:
 
 ### Updating and Listing Resources for a Project
 
-Update or retrieve the Resources or Sources for a project. 
+Update or retrieve the Resources or Sources for a project.
 
 Each Project can have multiple resource Sources.  Sources can be read-only, or writeable.
 
@@ -5902,7 +5935,7 @@ See [Get an ACL Policy](#get-an-acl-policy) for request and response.
 **Request:**
 
     POST /api/13/project/[PROJECT]/acl/name.aclpolicy
-    
+
 See [Create an ACL Policy](#create-an-acl-policy) for request and response.
 
 #### Update a Project ACL Policy
@@ -6059,7 +6092,7 @@ Optional Parameters:
     * Default is 'xml' (API v22 and earlier)
 * Node Filter parameters: You can select resources to include and exclude in the result set, see [Using Node Filters](#using-node-filters) below.
 
-Accept header: 
+Accept header:
 
 Specify a MIME type via the `Accept:` header to specify the requested format.
 
@@ -6249,7 +6282,7 @@ Input fields have a number of properties:
 * `description` textual description
 * `renderOptions` a key/value map of options, such as declaring that GUI display the input as a password field.
 * `required` true/false whether the input is required
-* `scope` 
+* `scope`
 * `title` display title for the field
 * `type` data type of the field: `String`, `Integer`, `Select` (multi-value), `FreeSelect` (open-ended multi-value), `Boolean` (true/false)
 * `values` if the type is `Select` or `FreeSelect`, a list of string values to choose from
@@ -6281,7 +6314,7 @@ Input fields have a number of properties:
         <!-- <string ... -->
       </values>
     </scmPluginInputField>
-    <!-- 
+    <!--
     <scmPluginInputField>...</scmPluginInputField>
      -->
   </fields>
@@ -6490,12 +6523,12 @@ Export plugin values for `synchState`:
 
 ~~~~~~~~~~ {.xml}
 <scmProjectStatus>
-  
+
   <actions>
     <string>action1</string>
     <string>action2</string>
   </actions>
-  
+
   <integration>$integration</integration>
   <message>$string</message>
   <project>$project</project>
@@ -7038,7 +7071,7 @@ Same response as [Setup SCM Plugin for a Project](#setup-scm-plugin-for-a-projec
 [/api/V/execution/[ID]/input/files][]
 
 * `GET` [List Input Files for an Execution](#list-input-files-for-an-execution)
-    
+
 [/api/V/jobs/file/[ID]][]
 
 * `GET` [Get Info About an Uploaded File](#get-info-about-an-uploaded-file)
@@ -7058,16 +7091,16 @@ Same response as [Setup SCM Plugin for a Project](#setup-scm-plugin-for-a-projec
 [/api/V/job/[ID]/schedule/disable][]
 
 * `POST` [Disable Scheduling for a Job](#disable-scheduling-for-a-job)
-    
-[/api/V/job/[ID]/scm/[INTEGRATION]/status][] 
+
+[/api/V/job/[ID]/scm/[INTEGRATION]/status][]
 
 - `GET` [Get SCM status for a Job][/api/V/job/[ID]/scm/[INTEGRATION]/status]
 
-[/api/V/job/[ID]/scm/[INTEGRATION]/action/[ACTION_ID]][] 
+[/api/V/job/[ID]/scm/[INTEGRATION]/action/[ACTION_ID]][]
 
 - `POST` [Perform SCM action for a Job.][/api/V/job/[ID]/scm/[INTEGRATION]/action/[ACTION_ID]]
 
-[/api/V/job/[ID]/scm/[INTEGRATION]/action/[ACTION_ID]/input][] 
+[/api/V/job/[ID]/scm/[INTEGRATION]/action/[ACTION_ID]/input][]
 
 - `GET` [Get Job SCM Action Input Fields.][/api/V/job/[ID]/scm/[INTEGRATION]/action/[ACTION_ID]/input]
 
@@ -7343,6 +7376,11 @@ Same response as [Setup SCM Plugin for a Project](#setup-scm-plugin-for-a-projec
 * `GET` [Get another user profile][/api/V/user/info/[USER]]
 * `POST` [Modify another user profile][POST /api/V/user/info/[USER]]
 
+
+[/api/V/user/roles][]
+
+* `GET` [List roles][/api/V/user/roles]
+
 [Response Format]:#xml-response-format
 
 
@@ -7424,7 +7462,7 @@ Same response as [Setup SCM Plugin for a Project](#setup-scm-plugin-for-a-projec
 [/api/V/jobs/schedule/enable]:#bulk-toggle-job-schedules
 [/api/V/jobs/schedule/disable]:#bulk-toggle-job-schedules
 
- 
+
 [/api/V/metrics]:#list-metrics
 
 [/api/V/metrics/healthcheck]:#metrics-healthcheck
@@ -7522,5 +7560,6 @@ Same response as [Setup SCM Plugin for a Project](#setup-scm-plugin-for-a-projec
 [POST /api/V/user/info]:#modify-user-profile
 [/api/V/user/info/[USER]]:#get-another-user-profile
 [POST /api/V/user/info/[USER]]:#modify-another-user-profile
+[/api/V/user/roles]:#list-roles
 
 [ACLPOLICY]:../man5/aclpolicy.html
