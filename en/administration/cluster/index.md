@@ -32,7 +32,7 @@ All Cluster members must share the log storage.
 
 See: [Logstore][page:administration/cluster/logstore/index.md]
 
-**Note**: If you use the [S3 Log Storage Plugin][administration/cluster/logstore/s3.md] Be sure to use `com.rundeck.rundeckpro.amazon-s3` in place of `org.rundeck.amazon-s3`. It adds the additional feature:
+**Note**: If you use the [S3 Log Storage Plugin][page:administration/cluster/logstore/s3.md] Be sure to use `com.rundeck.rundeckpro.amazon-s3` in place of `org.rundeck.amazon-s3`. It adds the additional feature:
 
 * *Checkpoint log storage*:  This enables viewing the execution logs while the execution is running.
 
