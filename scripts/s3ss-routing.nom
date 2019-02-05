@@ -65,3 +65,8 @@ RoutingRules
         Redirect
             HostName rundeck.org
             ReplaceKeyPrefixWith 3.0.9
+    RoutingRule
+        Condition
+            KeyPrefixEquals docs/administration/access-control-policy.html
+        Redirect
+            ReplaceKeyPrefixWith docs/administration/security/access-control-policy.html

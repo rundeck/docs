@@ -99,4 +99,13 @@
       <ReplaceKeyPrefixWith>3.0.9</ReplaceKeyPrefixWith>
     </Redirect>
   </RoutingRule>
+  <RoutingRule>
+    <Condition>
+      <KeyPrefixEquals>docs/administration/access-control-policy.html</KeyPrefixEquals>
+    </Condition>
+    <Redirect>
+      <HostName>rundeck.org</HostName>
+      <ReplaceKeyPrefixWith>docs/administration/security/access-control-policy.html</ReplaceKeyPrefixWith>
+    </Redirect>
+  </RoutingRule>
 </RoutingRules>
