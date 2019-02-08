@@ -77,6 +77,24 @@ In addition these properties are defined:
 * `notification.eventStatus`: A string indicating the combination of execution status, and notification trigger, suitable for an email subject line, such as "KILLED", "FAILURE", "STARTING", "SUCCESS".
 * `execution.projectHref`: URL to the Project within Rundeck.
 
+#### Custom Attached Log Output file
+
+When the log output is attached as a file, the file's extension can be defined by adding new settings on rudeck-config.properties. 
+For example:
+
+```
+rundeck.mail.template.log.extension=html
+rundeck.mail.template.log.contentType=text/html
+```
+```
+rundeck.mail.<PROJECT>.<JOBNAME>.template.log.extension=csv
+rundeck.mail.<PROJECT>.<JOBNAME>.template.log.contentType=text/csv
+```
+```
+rundeck.mail.<TRIGGER>.template.log.extension=html
+rundeck.mail.<TRIGGER>.template.log.contentType=text/html
+```
+
 ## Troubleshooting
 
 See the [service.log][page:administration/maintenance/logs.md#service.log] for mail error messages.
