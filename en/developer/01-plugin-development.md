@@ -242,6 +242,10 @@ construct one by using the
 Newer plugin types support using java annotations to create a Description object.
 See [Plugin Annotations][page:developer/02-plugin-annotations.md].
 
+**Provider Metadata**
+
+See [[page:developer/02-plugin-annotations.md#plugin-provider-metadata]].
+
 #### Description Properties
 
 Within a Description object you can define a set of Property objects, which represent the input properties for the plugin.
@@ -312,7 +316,10 @@ description='Does some action'
 version = "0.0.1"
 url = "http://example"
 author = "© 2018, me"
+metadata = [:] //a map defining *Provider Metadata*
 ~~~~~
+
+See [Provider Metadata] for information about what metadata keys may be used.
 
 *Configuration*
 
@@ -496,6 +503,7 @@ Required provider entries:
     * `WorkflowNodeStep`
     * `RemoteScriptNodeStep`
 * `plugin-type` - must be `script` for these types (or `ui` for [UI Plugins][page:developer/11-ui-plugins.md])
+* `plugin-meta` - an optional Map defining additional [Provider Metadata] entries. (Since rundeck 3.0.14)
 * `script-file` - must be the name of a file relative to the `contents` directory
 
 For `ResourceModelSource` service, this additional entry is required:
@@ -525,7 +533,8 @@ Optional entries:
   will be merged with the context environment variables provided to the script.
   If false (default for `rundeckPluginVersion: 1.0`), then
   only the context environment variables will be provided.
-* `config` - a Map defining custom plugin properties (see below.)
+* `config` - a Map defining custom [Plugin properties] (see below.)
+
 
 ### Plugin properties
 
@@ -873,6 +882,10 @@ provider2.plugin.title=My Provider 2
 
 Since Rundeck Plugin Version 1.2 (Rundeck 2.6.10), Custom Icons can now be defined for your plugin.
 
+You can use an [Icon Image Files], or specify [Provider Metadata] to use a CSS icon, such as Glyphicon or Font Awesome icon.
+
+### Icon Image Files
+
 Specify `rundeckPluginVersion: 1.2` in your plugin.yaml (script plugins) or `Rundeck-Plugin-Version: 1.2` in your
 jar Manifest (jar plugins) to enable custom icon support.
 
@@ -886,6 +899,15 @@ a file in the resources directory using the following search pattern:
 
 You can define a custom icon for each Provider in your plugin file, or a single icon for all providers.
 
+## Provider Metadata
+
+(Since Rundeck 3.0.14)
+
+These metadata keys may be available:
+
+* `glyphicon` - name of a Glyphicon icon to use for the plugin, as alternative to providing an icon image resource.
+* `faicon` - name of a Font Awesome icon to use for the plugin.
+* `fabicon` - name of a Font Awesome "brand" icon to use
 
 [Plugin Localization]: #plugin-localization
 [Plugin Icons]: #plugin-icons
