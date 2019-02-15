@@ -503,7 +503,7 @@ Required provider entries:
     * `WorkflowNodeStep`
     * `RemoteScriptNodeStep`
 * `plugin-type` - must be `script` for these types (or `ui` for [UI Plugins][page:developer/11-ui-plugins.md])
-* `plugin-meta` - an optional Map defining additional [Provider Metadata] entries. (Since rundeck 3.0.13)
+* `plugin-meta` - an optional Map defining additional [Provider Metadata] entries. (Since rundeck 3.0.14)
 * `script-file` - must be the name of a file relative to the `contents` directory
 
 For `ResourceModelSource` service, this additional entry is required:
