@@ -10,6 +10,10 @@ of options, you can use an option values plugin to provide valid values for an o
 If you configure an option values plugin for your job, the plugin will run
 and provide the values to the UI when you are preparing the job for execution.
 
+To enable this plugin type in your Rundeck installation add the following to your `rundeck-config.properties`:
+
+    rundeck.feature.option-values-plugin.enabled=true
+
 ## Use
 
 Create an option values plugin and install it like other Rundeck plugins.
