@@ -82,19 +82,13 @@ the Xmx and Xms patterns:
 egrep '(Xmx|Xms)' $RDECK_BASE/etc/profile
 ~~~~~
 
-**RPM installs:**
+**RPM and DEB installs:**
 
 ~~~~~ {.bash}
 egrep '(Xmx|Xms)' /etc/rundeck/profile
 ~~~~~
 
-The default settings initialized by the installer
-sets these to 1024 megabytes maximum
-and 256 megabytes initial:
-
-~~~~~ {.bash}
-export RDECK_JVM="$RDECK_JVM -Xmx1024m -Xms256m"
-~~~~~
+The default settings initialized by the installer sets these to 1024 megabytes maximum and 256 megabytes initial.
 
 _Sizing advice_
 
@@ -105,12 +99,18 @@ Several factors drive memory usage in Rundeck:
 * Concurrent jobs
 * Number of managed nodes
 
-For example, if your installation has dozens of active users
-that manage a large environment (1000+ nodes), and has
-sufficient system memory, the following sizings might be more suitable:
+For example, if your installation has dozens of active users that manage a large environment (1000+ nodes), and has sufficient system memory, the following sizings might be more suitable:
 
+In the **Launcher Install** you can edit the ``$RDECK_BASE/etc/profile`` file.
+
+In **RPM** create/edit ``/etc/sysconfig/rundeckd`` and add below line.
 ~~~~~ {.bash}
-export RDECK_JVM="$RDECK_JVM -Xmx4096m -Xms1024m"
+RDECK_JVM_SETTINGS="$RDECK_JVM_SETTINGS -Xmx4096m -Xms1024m"
+~~~~~
+
+In **DEB** create/edit ``/etc/default/rundeckd`` and add below line.
+~~~~~ {.bash}
+RDECK_JVM_SETTINGS="$RDECK_JVM_SETTINGS -Xmx4096m -Xms1024m"
 ~~~~~
 
 ### Quartz job threadCount
@@ -151,10 +151,20 @@ _Note_: For more background information on JMX, see
 "[Java theory and practice: Instrumenting applications with JMX.](https://www.ibm.com/developerworks/library/j-jtp09196/)".
 
 Enable local JMX monitoring by adding the ``com.sun.management.jmxremote``
-flag to the startup parameters in the [profile][page:administration/configuration/config-file-reference.md#profile].
+flag to the startup parameters in the [profile][page:administration/configuration/config-file-reference.md#profile] for **Launcher Install**.
 
 ~~~~~ {.bash}
 export RDECK_JVM="$RDECK_JVM -Dcom.sun.management.jmxremote"
+~~~~~
+
+For **RPM** create/edit ``/etc/sysconfig/rundeckd`` and add below line.
+~~~~~ {.bash}
+RDECK_JVM_SETTINGS="$RDECK_JVM_SETTINGS -Dcom.sun.management.jmxremote"
+~~~~~
+
+For **DEB** create/edit ``/etc/default/rundeckd`` and add below line.
+~~~~~ {.bash}
+RDECK_JVM_SETTINGS="$RDECK_JVM_SETTINGS -Dcom.sun.management.jmxremote"
 ~~~~~
 
 You use a JMX client to monitor JMX agents.
