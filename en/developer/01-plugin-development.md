@@ -901,7 +901,7 @@ You can define a custom icon for each Provider in your plugin file, or a single 
 
 ## Provider Metadata
 
-(Since Rundeck 3.0.13)
+(Since Rundeck 3.0.14)
 
 These metadata keys may be available:
 
