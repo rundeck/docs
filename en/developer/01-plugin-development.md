@@ -907,6 +907,7 @@ These metadata keys may be available:
 
 * `glyphicon` - name of a Glyphicon icon to use for the plugin, as alternative to providing an icon image resource.
 * `faicon` - name of a Font Awesome icon to use for the plugin.
+* `fabicon` - name of a Font Awesome "brand" icon to use
 
 [Plugin Localization]: #plugin-localization
 [Plugin Icons]: #plugin-icons
