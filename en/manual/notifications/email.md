@@ -8,7 +8,7 @@ The Email plugin is a builtin notification plugin that sends emails when a job s
 
 **Include log output**
 
-Add the log output from the execution to the email. There are to options where put the log:
+Add the log output from the execution to the email. There are two options where put the log:
 
 * **Attached as file to email**: put the log output as an attached file. 
 The attached file extension can be controller using template settings ([[page:administration/configuration/email-settings.md#custom-attached-log-output-file]]).
