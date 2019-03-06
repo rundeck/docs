@@ -21,7 +21,7 @@ To upgrade to Rundeck 3 using launcher use the following steps:
 * Remove previous "source" folders: 
 
 	```
-	rm -rf server/exp/ server/lib/ server/sbin
+	rm -rf $RDECK_BASE/server/exp/ $RDECK_BASE/server/lib/ $RDECK_BASE/server/sbin/ $RDECK_BASE/tools/
 	```
 
 * Copy the new war file to `$RDECK_BASE` and install it: 
