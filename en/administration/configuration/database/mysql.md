@@ -2,11 +2,17 @@
 
 This is a simple guide for setting up Mysql for use with Rundeck.
 
-## Install Mysql
+## Install MySQL
 
 You can "yum install" or "apt-get install" the server, you can find installation guides for other OS [here](https://dev.mysql.com/doc/refman/5.7/en/installing.html)
 
+## Configure MySQL
+
 After install, run the [mysql_secure_installation script](https://dev.mysql.com/doc/refman/5.7/en/mysql-secure-installation.html). This will let prompt you to set the root password for mysql, as well as disable anonymous access.
+
+Set an appropriate [innodb_buffer_pool_size](https://dev.mysql.com/doc/refman/5.7/en/innodb-buffer-pool-resize.html). MySQL, like many databases, manages
+its own page cache and the buffer pool size determines how much RAM it can use! Setting this to 80% of the system memory is the common wisdom for dedicated
+servers, however you may want go higher if your server has more than 32G of RAM.
 
 ## Setup Rundeck Database
 
