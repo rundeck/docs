@@ -42,6 +42,7 @@ Workflow Step | [VMware][page:manual/workflow-steps/vmware.md] | Creates or modi
 Notifications | [Email][page:manual/notifications/email.md] | Sends emails when a job finishes | Built-in
 Notifications | [Webhooks][page:manual/notifications/webhooks.md] | Sends HTTP POST data to a URL when a job finishes | Built-in
 Notifications | [Jira][page:manual/notifications/jira.md] | Creates or modifies Jira issues when a job finishes | Enterprise
+Notifications | [ServiceNow][page:manual/notifications/servicenow.md] | Comment or Create an Incident on Service Now | Enterprise
 Workflow Strategy | [Ruleset][page:manual/workflow-strategies/ruleset.md] | Defines rules for when steps in a workflow should run | Enterprise
 Node Orchestrator | [Random Subset][page:manual/orchestrator-plugins/bundled.md#random-subset] | Selects a maximum number of the target nodes at random | Built-in
 Node Orchestrator | [Ranked Tiered][page:manual/orchestrator-plugins/bundled.md#ranked-tired] | Processes nodes in a tiered manner, ordered by rank | Built-in
