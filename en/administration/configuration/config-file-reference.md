@@ -79,6 +79,7 @@ Other settings:
 
 * `framework.log.dispatch.console.format`: Default format for non-terse node execution logging run by the `dispatch` CLI tool.
 * `execution.script.tokenexpansion.enabled`: Whether inline script token expansion is enabled, default `true`.  If `false`, the "Inline Script Content" syntax described in [[page:manual/job-workflows.md#context-variables]] is disabled.
+* `communityNews.disabled`: Default is not set, or false. Disables the external polling of Community News feed. Link will persist but will not poll, and clicking this link will open a new browser tab and navigate to the web-based version of Community News.
 
 Static authentication tokens for API access:
 
@@ -212,13 +213,13 @@ The following sections describe configuration values for this file.
 * `rundeck.security.useHMacRequestTokens` : `true/false`.  Default: `true`.
    Switches between HMac based request tokens, and the default grails UUID
    tokens.  HMac tokens have a timeout, which may cause submitted forms or
-   actions to fail with a message like "Token has expired".  
+   actions to fail with a message like "Token has expired".
    If set to false, UUIDs will be used instead of HMac tokens,
-   and they have no timeouts.  
+   and they have no timeouts.
    The default timeout for tokens can be changed with the java system property
    `-Dorg.rundeck.web.infosec.HMacSynchronizerTokensHolder.DEFAULT_DURATION=[timeout in ms]`.
 
-* `rundeck.security.apiCookieAccess.enabled`: `true/false`. Default: `true`.  
+* `rundeck.security.apiCookieAccess.enabled`: `true/false`. Default: `true`.
     Determines whether access to the API is allowed if the API client
     authenticates via session cookies (i.e. username and password login.)  If
     set to `false`, the current CLI tools and API libraries will not operate
@@ -329,10 +330,10 @@ rundeck.security.httpHeaders.provider.csp.config.form-action=self
 
 #######
 # enable any custom additional headers (default: false)
-# 
+#
 # rundeck.security.httpHeaders.provider.custom.enabled=true
 # rundeck.security.httpHeaders.provider.custom.config.name=X-Other-Security-Policy
-# rundeck.security.httpHeaders.provider.custom.config.value=default-src 'none'; 
+# rundeck.security.httpHeaders.provider.custom.config.value=default-src 'none';
 # rundeck.security.httpHeaders.provider.custom.config.name2=X-other-header
 # rundeck.security.httpHeaders.provider.custom.config.value2=some value
 ~~~~
