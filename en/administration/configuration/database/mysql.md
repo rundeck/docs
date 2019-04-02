@@ -15,7 +15,7 @@ its own page cache and the buffer pool size determines how much RAM it can use! 
 servers, however you may want go higher if your server has more than 32G of RAM.
 
 ### MySQL 5.6
-`5.6.3` is required if using `utf8mb4` character set as the server default, and upgrading or installation may require an extra step.
+`5.6.3` or greater is required if using `utf8mb4` character set as the server default, and upgrading or installation may require an extra step.
 
 Configuration:
 ```
