@@ -1,5 +1,11 @@
 % Database
 
+* [MySQL][page:administration/configuration/database/mysql.md]
+* [PostgreSQL][page:administration/configuration/database/postgres.md]
+* [Oracle][page:administration/configuration/database/oracle.md]
+* [MS SQL Server][page:administration/configuration/database/mssql.md]
+* [Security Mode for MS SQL Server][page:administration/configuration/database/secure_mssql.md]
+
 ### Default database
 
 When you install the vanilla standalone rundeck configuration, it will use H2, an embedded database. 
