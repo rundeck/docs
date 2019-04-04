@@ -55,6 +55,11 @@ View the [Index](#index) listing API paths.
 
 Changes introduced by API Version number:
 
+**Version 31**:
+
+* New Endpoint:
+    - [`GET /api/V/job/[ID]/forecast`][/api/V/job/[ID]/forecast] - Get a forecast for a specific amount of days of the job by ID.
+
 **Version 30**:
 
 * Updated Endpoints:
@@ -3648,6 +3653,64 @@ Get info about an uploaded file given its ID.
   <execId>2741</execId>
 </file>
 ~~~
+
+### Get Job Forecast
+
+Get a forecast for a specific amount of days of the job by ID.
+
+**Request:**
+
+    GET /api/31/job/[ID]/forecast
+
+Query Parameters:
+
+* `daysAhead`: Number of days to search the forecast (default: 1).
+* `maxFutures`: Maximum number of items to return (default: no limit).
+
+
+
+**Response:**
+
+`Content-Type: application/xml`: A single job element with the array `futureScheduledExecutions`:
+
+~~~~~~~~~~ {.xml}
+<job id="ID" href="[API url]" permalink="[GUI URL]" scheduled="true/false" scheduleEnabled="true/false"
+   enabled="true/false" averageDuration="[ms]"
+   >
+    <name>Job Name</name>
+    <group>Job Group</group>
+    <futureScheduledExecutions>
+        <date>[W3C date]</date>
+        <date>[W3C date]</date>
+    </futureScheduledExecutions>
+    <project>Project Name</project>
+    <description>...</description>
+</job>
+~~~~~~~~~~~~
+
+`Content-Type: application/json`
+
+A single object:
+
+~~~~~~~~~~ {.json}
+{
+    "href": "[API url]",
+    "futureScheduledExecutions": [
+        "[W3C date]",
+        "[W3C date]",
+        "[W3C date]",
+    ],
+    "id": "[ID]",
+    "scheduleEnabled": true/false,
+    "scheduled": true/false,
+    "enabled": true/false,
+    "permalink": "[GUI URL]",
+    "group": "[group]",
+    "description": "[description]",
+    "project": "[project]",
+    "name": "[name]"
+}
+~~~~~~~~~~~~
 
 ## Executions
 
@@ -7447,6 +7510,9 @@ Same response as [Setup SCM Plugin for a Project](#setup-scm-plugin-for-a-projec
 [/api/V/job/[ID]/input/file]:#upload-a-file-for-a-job-option
 [POST /api/V/job/[ID]/input/file]:#upload-a-file-for-a-job-option
 [/api/V/job/[ID]/input/files]:#list-files-uploaded-for-a-job
+
+[/api/V/job/[ID]/forecast]:#get-job-forecast
+[GET /api/V/job/[ID]/forecast]:#get-job-forecast
 
 [/api/V/job/[ID]/schedule/enable]:#enable-scheduling-for-a-job
 
