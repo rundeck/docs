@@ -3664,8 +3664,13 @@ Get a forecast for a specific amount of days of the job by ID.
 
 Query Parameters:
 
-* `daysAhead`: Number of days to search the forecast (default: 1).
-* `maxFutures`: Maximum number of items to return (default: no limit).
+* `time`: Time lapse to search the forecast (default: 1d). The format is "XY" where X is an integer, and "Y" is one of:
+    * `h`: hour
+    * `d`: day
+    * `w`: week
+    * `m`: month
+    * `y`: year
+* `max`: Maximum number of items to return (default: no limit).
 
 
 
