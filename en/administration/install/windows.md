@@ -14,20 +14,7 @@ set RDECK_BASE=C:\rundeck
 
 Next, we need launch Rundeck the first time to generate the configuration files and folders structure, for that you can open a Powershell, go to `c:\rundeck` and execute `java -jar rundeck-3.0.X.war` (in community case) or `java -jar rundeckpro-[edition]-3.0.X.war` for Enterprise; depending of your system the process can take some time, when Rundeck is ready you can see that on Powershell window:
 
-```
-2019-XX-XX 21:51:42.526  INFO --- [ main  rundeckapp.BootStrap : Starting Rundeck 3.0.X-2019XXXX (2019-XX-XX) ...
-2019-XX-XX 21:51:42.531  INFO --- [ main] rundeckapp.BootStrap : using rdeck.base config property: c:\rundeck\ver\3.0.XX
-2019-XX-XX 21:51:42.532  INFO --- [ main] rundeckapp.BootStrap : Performing rundeck first-run initialization...
-2019-XX-XX 21:51:42.579  INFO --- [ main] rundeckapp.BootStrap : Rundeck initialization complete.
-2019-XX-XX 21:51:42.585  INFO --- [ main] rundeckapp.BootStrap : loaded configuration: c:\rundeck\ver\3.0.XXetc\framework.properties
-2019-XX-XX 21:51:42.611  INFO --- [ main] rundeckapp.BootStrap : RSS feeds disabled
-2019-XX-XX 21:51:42.611  INFO --- [ main] rundeckapp.BootStrap : Using builtin realm authentication
-2019-XX-XX 21:51:42.611  INFO --- [ main] rundeckapp.BootStrap : Preauthentication is disabled
-2019-XX-XX 21:51:42.644  INFO --- [ main] rundeckapp.BootStrap : Rundeck is ACTIVE: executions can be run.
-2019-XX-XX 21:51:42.765  WARN --- [ main] rundeckapp.BootStrap : [Development Mode] Usage of H2 database is recommended only for development and testing
-2019-XX-XX 21:51:42.772  INFO --- [ main] rundeckapp.BootStrap : Rundeck startup finished in 381ms
-Grails application running at http://yourhost:4440 in environment: production
-```
+![Windows launcher](../../figures/windows-launcher.png)
 
 At this point, all Rundeck structure is ready and you can stop the process with `<Crtl+C>` keyboard combination to proceed to configure.
 
