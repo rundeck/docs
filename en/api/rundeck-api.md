@@ -3665,6 +3665,8 @@ Get a forecast for a specific amount of days of the job by ID.
 Query Parameters:
 
 * `time`: Time lapse to search the forecast (default: 1d). The format is "XY" where X is an integer, and "Y" is one of:
+    * `s`: second
+    * `n`: minute
     * `h`: hour
     * `d`: day
     * `w`: week
