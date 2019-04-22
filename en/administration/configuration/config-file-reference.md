@@ -343,6 +343,14 @@ References:
 * <https://www.owasp.org/index.php/OWASP_Secure_Headers_Project>
 * <https://content-security-policy.com>
 
+### Local Login Form Visibility
+
+* `rundeck.login.localLogin.enabled`:`true/false`. Default `true`
+
+If you have Single Sign On enabled(Enterprise only) and you want to prevent the ability
+for your users to login with the non-SSO form, you can set this property to false and it
+will suppress the non-SSO login form.
+
 ### Server Settings
 
 * `server.session.timeout`: timeout in seconds.
