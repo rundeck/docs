@@ -351,6 +351,12 @@ If you have Single Sign On enabled(Enterprise only) and you want to prevent the 
 for your users to login with the non-SSO form, you can set this property to false and it
 will suppress the non-SSO login form.
 
+### Logout behaviors
+
+* `rundeck.logout.expire.cookies`: comma separated list of cookie names to expire on logout
+
+* `rundeck.logout.redirect.url`: Redirect to this url after logout. This can either be a fully qualified url or a relative path.
+
 ### Server Settings
 
 * `server.session.timeout`: timeout in seconds.
