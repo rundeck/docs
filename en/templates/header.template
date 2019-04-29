@@ -1,25 +1,40 @@
-<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
-  <!-- Brand and toggle get grouped for better mobile display -->
-  <div class="container-fluid">
-  <div class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-      <span class="sr-only">Toggle navigation</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-    <a class="navbar-brand" href="https://www.rundeck.com/open-source">
-      Rundeck
-      <p class="small rd_version">← Return to Rundeck Project</p>
-    </a>
-  </div>
-  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-    <form class="navbar-form navbar-right" role="search"  action="/search/">
-      <div class="form-group">
-        <input type="text" class="form-control navquery" name="q" placeholder="Search" id="searchQuery">
+<nav role="navigation" aria-label="main navigation" class="navbar navbar-dark is-fixed-top">
+  <div class="container">
+    <div class="navbar-brand"><a href="https://www.rundeck.com/open-source" class="navbar-item logo"><span
+          data-v-ddc5174c=""><svg width="159" height="23" viewBox="0 0 159 23" xmlns="http://www.w3.org/2000/svg"
+            class="logo-image" data-v-ddc5174c="">
+            <g class="logo-type" fill="none" fill-rule="evenodd" data-v-ddc5174c="">
+              <path
+                d="M36.133 10.399v-6.26h1.073c2.78 0 4.17 1.01 4.17 3.028 0 2.155-1.43 3.232-4.285 3.232h-.959zm6.963.332c.813-1.005 1.219-2.206 1.219-3.603 0-1.788-.648-3.227-1.942-4.317-1.174-.98-3.081-1.47-5.722-1.47h-3.535v19.725h3.017v-8.074h.542l5.71 8.074h3.69l-6.189-8.407c1.33-.28 2.4-.923 3.21-1.928zM60.561 13.222c0 1.72-.28 2.96-.842 3.716-.836 1.134-2.02 1.7-3.547 1.7-1.52 0-2.697-.566-3.534-1.7-.56-.783-.84-2.021-.84-3.716V1.341H48.78V14.04c0 2.077.656 3.789 1.968 5.135 1.467 1.499 3.276 2.247 5.424 2.247 2.15 0 3.961-.748 5.438-2.247 1.312-1.346 1.967-3.058 1.967-5.135V1.341h-3.016v11.881zM82.944 15.048L68.367 0v21.065h3.016V7.256l14.577 15.01V1.341h-3.016zM100.938 16.428a6.872 6.872 0 0 1-2.434 1.418c-.897.282-2.024.422-3.379.422h-1.359V4.138h1.36c2.571 0 4.518.602 5.838 1.802 1.468 1.346 2.201 3.1 2.201 5.264 0 2.146-.742 3.887-2.227 5.224m2.175-12.544c-1.019-.92-2.153-1.571-3.404-1.955-1.166-.392-2.753-.588-4.764-.588H90.75v19.724h4.142c2.028 0 3.595-.183 4.7-.55 1.182-.365 2.312-1.017 3.391-1.954 2.15-1.873 3.224-4.325 3.224-7.357 0-3.024-1.03-5.463-3.094-7.32M110.001 21.065h11.03v-2.797h-8.014v-6.592h7.78V8.878h-7.78V4.14h8.014V1.341h-11.03zM126.52 4.574c-1.684 1.966-2.526 4.206-2.526 6.72 0 2.8 1.006 5.194 3.017 7.177 2.02 1.968 4.458 2.951 7.314 2.951 1.9 0 3.711-.48 5.437-1.442v-3.59c-.49.409-.96.758-1.404 1.047-.445.29-.873.52-1.288.69-.743.34-1.644.512-2.706.512-2.054 0-3.789-.712-5.205-2.133-1.415-1.424-2.122-3.17-2.122-5.24 0-2.094.707-3.864 2.122-5.313 1.407-1.457 3.138-2.184 5.192-2.184 1.865 0 3.668.72 5.411 2.159V2.402c-1.674-.963-3.408-1.444-5.204-1.444-3.288 0-5.967 1.205-8.039 3.615M149.912 10.27l9.037-8.928h-4.027l-7.78 7.869V1.34h-3.016v19.724h3.016v-8.163l.62-.613 7.199 8.776H159z"
+                fill="#000" data-v-ddc5174c=""></path>
+              <g class="logo-arrow" fill="#F7403A" data-v-ddc5174c="">
+                <path
+                  d="M0 21.065h13.404l2.501-3.945H2.501zM15.905 5.286L13.404 1.34H0l2.501 3.945zM18.406 9.23H5.002l1.25 1.973-1.25 1.973h13.404l1.25-1.973z"
+                  data-v-ddc5174c=""></path>
+              </g>
+            </g>
+          </svg></span></a> <a role="button" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample"
+        class="navbar-burger burger"><span aria-hidden="true"></span> <span aria-hidden="true"></span> <span
+          aria-hidden="true"></span></a></div>
+    <div class="navbar-menu">
+      <div class="navbar-start">
       </div>
-      <button type="submit" class="btn btn-default">Submit</button>
-    </form>
-  </div>
+      <div class="navbar-end">
+        <div class="navbar-item">
+        <form role="search"  action="/search/">
+          <div class="field has-addons">
+            <div class="control">
+              <input class="input" type="text" placeholder="Keyword">
+            </div>
+            <div class="control">
+              <button type="submit" class="button red-button">
+                Search
+              </button>
+            </div>
+          </div>
+        </form>
+        </div>
+      </div>
+    </div>
   </div>
 </nav>

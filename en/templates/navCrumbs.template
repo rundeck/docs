@@ -1,42 +1,27 @@
-
-<div class="container $navclass$ breadcrumb_holder">
-<div class="row">
-<div class="col-sm-6" id="#breadcrumbs$navclass$">
-
-<div class="navquerytoggle collapse" aria-expanded="false">
-<div class="input-group ">
-    <a class="input-group-addon btn btn-xs" data-toggle="collapse" data-target=".navquerytoggle"  data-parent="#breadcrumbs$navclass$"><i class="glyphicon glyphicon-search"></i></a>
-    <input type="text" class="form-control navquery  " name="q" placeholder="Search" autofocus="true">    
-    <a class="input-group-addon btn btn-xs" data-toggle="collapse" data-target=".navquerytoggle"  data-parent="#breadcrumbs$navclass$"><i class="glyphicon glyphicon-remove"></i></a>
-</div>
-</div>
-
-<ol class="breadcrumb $navclass$ collapse in navquerytoggle" aria-expanded="true">
-    <li class="navquerytrigger collapse" title="Find a page by name. (Keyboard shortcut: q)" data-toggle="tooltip" data-container="body">
-        <a class="btn btn-xs btn-link" data-toggle="collapse" data-target=".navquerytoggle"  data-parent="#breadcrumbs$navclass$">
-            <i class="glyphicon glyphicon-search"></i>
-        </a>
-    </li>
-$if(crumbs)$
-    $for(crumb)$
-        <li>$if(crumblink)$<a href="$crumblink$">$crumbtitle$</a>$endif$$if(crumbname)$$crumbname$$endif$</li>
-    $endfor$
-    $endif(crumbs)$
-    $if(tocpage)$<li ><a href="$tocpagelink$">$tocpage$</a></li>$endif$
-    $if(currentpage)$<li class="active"><a href="$currentpagelink$">$currentpage$</a></li>$endif$
-</ol>
-</div>
-<div class="col-sm-6">
-    <ul class="pager">
-      $if(prevpage)$<li class="previous"><a href="$prevpagelink$"><i class="glyphicon glyphicon-arrow-left"></i> $prevpage$</a></li>$endif$
-      $if(nextpage)$<li class="next"><a href="$nextpagelink$">$nextpage$ <i class="glyphicon glyphicon-arrow-right"></i></a></li>$endif$
-    </ul>
-</div>
-</div>
-<div class="row">
-<div class="col-sm-12 text-right">
-    $if(bugpageurl)$<a class="btn btn-link $navclass$" href="$bugpageurl$"><i class="glyphicon glyphicon-flag"></i> $bugpagelink$</a>$endif$
-    $if(srcpageurl)$<a class="btn btn-link $navclass$ btn-edit-this-page" href="$srcpageurl$"><i class="glyphicon glyphicon-pencil"></i>  $srcpagelink$</a>$endif$
-</div>
-</div>
+<div class="container">
+    <nav class="breadcrumb" aria-label="breadcrumbs">
+        <div class="columns">
+            <div class="column is-two-thirds">
+            <ul>
+                $if(crumbs)$
+                    $for(crumb)$
+                        <li>$if(crumblink)$<a href="$crumblink$">$crumbtitle$</a>$endif$$if(crumbname)$$crumbname$$endif$</li>
+                    $endfor$
+                $endif(crumbs)$
+                $if(tocpage)$<li ><a href="$tocpagelink$">$tocpage$</a></li>$endif$
+                $if(currentpage)$<li class="active"><a href="$currentpagelink$">$currentpage$</a></li>$endif$
+            </ul>
+            </div>
+            <div class="column">
+            <ul>
+                $if(prevpage)$<li class="previous"><a href="$prevpagelink$"><i class="fas fa-arrow-left"></i>$prevpage$</a></li>$endif$
+                $if(nextpage)$<li class="next"><a href="$nextpagelink$">$nextpage$ <i class="fas fa-arrow-right"></i></a></li>$endif$
+            </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="breadcrumb-footer">
+        $if(bugpageurl)$<a class="btn btn-link $navclass$" href="$bugpageurl$"> <i class="fas fa-flag"></i> $bugpagelink$ </a>$endif$
+        $if(srcpageurl)$<a class="btn btn-link $navclass$ btn-edit-this-page" href="$srcpageurl$"><i class="fas fa-pencil-alt"></i> $srcpagelink$</a>$endif$
+    </div>
 </div>

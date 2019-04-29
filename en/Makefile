@@ -4,7 +4,7 @@ include ../Makefile.inc
 APIVERS=$(shell cat api/version.info)
 
 DIRS = manpages
-CSS = style.css
+CSS = styles.css
 JS = markdeep.min.js jquery.autocomplete.min.js docs-autocomplete.js jquery.hotkeys.js
 DIST = dist
 DATE = $(shell date "+%Y-%m-%dT%H:%M:%S%Z")

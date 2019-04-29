@@ -36,7 +36,7 @@ optionsDefaults=[
     chapterTitle: 'Chapter',
     sectionTitle: 'Section',
     pageFileName:'${name}',
-    cssFileName:'style.css',
+    cssFileName:'styles.css',
     indexFileName:'(index|readme)',
     indexFileOutputName:'index',
     tocFileName:'toc',
