@@ -27,8 +27,10 @@ The rule must have a directive or condition, or both.
 Specifies the step or steps that the rule applies to. You must include the [ and ] characters:
 
 * `[X]`: Applies to a single step, the named or numbered step X. You can use the step number, e.g. `[1]` or the label, e.g. `[Deploy QA]` (case sensitive).
-* `[X,Y,Z...]`: Applies to multiple steps. Separate multiple steps with a comma, e.g. `[1,Deploy,3]`
-* `1[*]1`: Applies to all steps
+* `[X,Y,Z...]`: Applies to multiple steps. Separate multiple steps with a comma, e.g. `[1,2,3]`
+* `[1-3]`: Applies to steps 1 through 3
+* `[1-3,5-7]`: Applies to steps 1 through 3 and 5 through 7
+* `[*]`: Applies to all steps
 
 ### Directive
 
