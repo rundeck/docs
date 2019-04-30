@@ -51,7 +51,13 @@ Conditions can define additional checks that must pass before a step can run, or
 * `key.name!=string`: not-equal check
 * `key.name=~pattern`: regular expression match
 * `key.name!~pattern`: negative regular expression match
-* `!key.name context`: variable is unset
+* `!key.name` context: variable is unset
+* `key.name>=number`: greater than or equal to check
+* `key.name<=number`: less than or equal to check
+* `key.name>number`: greater than check
+* `key.name<number`: less than check
+
+> Note: Curly braces are not needed to reference context variable key names.
 
 ## Examples
 
