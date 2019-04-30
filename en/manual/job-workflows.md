@@ -272,11 +272,11 @@ Context variables can be used in a few ways in a Job step, with slightly differe
 
 * Commands, Script Arguments and Job Reference Arguments
 
-    :     `${ctx.name}`
+    :     ${ctx.name}
 
 * Inline Script Content (*see note*)
 
-    :     `@ctx.name@`
+    :     @ctx.name@
 
     > Note, The "Inline Script Content" variable expansion is **not** available for "Script File" steps.  The Script File is not rewritten at all when used for execution.
 
@@ -284,7 +284,7 @@ Context variables can be used in a few ways in a Job step, with slightly differe
 
 * Environment Variables (*see note*)
 
-    :     `$RD_CTX_NAME`
+    :     $RD_CTX_NAME
 
     The syntax for Environment variables is that all letters become uppercase, punctuation is replaced with underscore, and the name is prefixed with `RD_`.
 
