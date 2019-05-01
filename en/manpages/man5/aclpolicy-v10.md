@@ -64,7 +64,7 @@ The Rundeck server no longer uses role-mapping and instead defers to the aclpoli
 
 ### In version 3.1
 
-* `notBy` clause as a negative variant of `by`clause
+* `notBy` clause as a negative variant of `by` clause
 
 ## Upgrading
 
