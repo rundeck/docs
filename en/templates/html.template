@@ -32,6 +32,14 @@ jq(window).scroll(function() {
     }
 });
 jq(function(){jq(".scrollitem").click(function(){jq("html,body").animate({scrollTop:jq("body").offset().top},"1000");return false})})
+jq(window).scroll(function() {    
+    var scroll = jq(window).scrollTop();
+    if (scroll >= 250) {
+      jq(".navbar").addClass("has-shadow");
+    } else {
+      jq(".navbar").removeClass("has-shadow");
+    }
+}); //missing );
 
 window._pageRelpath="${relPath}";
 jQuery(function(){
