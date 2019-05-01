@@ -1,4 +1,4 @@
-<nav role="navigation" aria-label="main navigation" class="navbar navbar-dark is-fixed-top">
+<nav role="navigation" aria-label="main navigation" class="navbar is-fixed-top">
   <div class="container">
     <div class="navbar-brand"><a href="https://www.rundeck.com/open-source" class="navbar-item logo"><span
           data-v-ddc5174c=""><svg width="159" height="23" viewBox="0 0 159 23" xmlns="http://www.w3.org/2000/svg"

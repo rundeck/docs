@@ -24,6 +24,14 @@ jq(document).ready(function(){
     jq('.navbar-menu').toggle();
   });
 })
+jq(window).scroll(function() {
+    if (jq(this).scrollTop() > 50 ) {
+        jq('.scrolltop:hidden').stop(true, true).fadeIn();
+    } else {
+        jq('.scrolltop').stop(true, true).fadeOut();
+    }
+});
+jq(function(){jq(".scrollitem").click(function(){jq("html,body").animate({scrollTop:jq("body").offset().top},"1000");return false})})
 
 window._pageRelpath="${relPath}";
 jQuery(function(){
@@ -55,7 +63,7 @@ $endfor$
 <div class="columns">
 $if(toc)$
 <div class="column is-one-quarter toc-nav">
-<section class="section">
+<section class="section sticky-toc">
 <div class="nav">
 $toc$
 </div>
@@ -77,5 +85,10 @@ $body$
 $for(include-after)$
 $include-after$
 $endfor$
+<div class='scrolltop'>
+<div class='scrollitem icon'>
+<i class="fas fa-chevron-up" ></i>
+</div>
+</div>
 </body>
 </html>
