@@ -62,6 +62,10 @@ The Rundeck server no longer uses role-mapping and instead defers to the aclpoli
 * legacy XML support has been removed
 * legacy `rules:` section in yaml support has been removed
 
+### In version 3.1
+
+* `notBy` clause as a negative variant of `by`clause
+
 ## Upgrading
 
 Note: The XML format from Rundeck 1.3 and earlier is no longer supported.  As
@@ -252,6 +256,38 @@ Examples:
       group: 'dev_team_(alpha|beta|gamma)'
 
     by:
+      username:
+        - simon
+        - frank
+~~~~~~~~
+
+## `notBy`
+
+`notBy` is a variation of the `by` clause, it follow the same pattern using `username` and `group` 
+entries but in this case, the policy applies to anyone not in the group or with a different username.
+
+Each entry can contain a single string, or a sequence of strings to define
+multiple entries.
+
+Regular expressions are supported in the username or group.
+
+
+Examples:
+
+~~~~~~~~ {.yaml}
+    notBy:
+      username: 'bob'
+
+    notBy: #using a regular expression
+      username: 'dev\d+'
+
+    notBy:
+      group: [test,qa,prod]
+
+    notBy: #using a regular expression
+      group: 'dev_team_(alpha|beta|gamma)'
+
+    notBy:
       username:
         - simon
         - frank
