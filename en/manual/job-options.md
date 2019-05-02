@@ -636,3 +636,26 @@ will display a warning message:
 ![](../figures/fig0901.png)
     
 In this case, the option will be allowed to use a textfield to set the value.
+
+## Linking to Jobs and providing option values
+
+You can create a URL to link to a specific Job, and pre-fill some of the option values by adding URL query parameters to the Job's URL.
+
+Query Parameters format for options:
+
+* `opt.NAME` : provide a value for an option named `NAME`
+
+For example, if the URL for the Job is:
+
+    http://rundeck:4440/project/MyProject/job/show/ab698597-9753-4e98-bdab-90ebf395b0d0
+
+Then you can pre-fill the values for `myopt1` and `myotheropt` by appending this to the URL:
+
+    ?opt.myopt1=some+value&opt.myotheropt=another+value
+
+The result would be:
+
+    http://rundeck:4440/project/MyProject/job/show/ab698597-9753-4e98-bdab-90ebf395b0d0?opt.myopt1=some+value&opt.myotheropt=another+value
+
+
+Note: be sure to properly escape the strings for option values, and if necessary for the option names as well.
