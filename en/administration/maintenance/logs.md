@@ -4,7 +4,7 @@ Depending on the installer used, the log files will be under a base
 directory:
 
 *   RPM: `/var/log/rundeck`
-*   Launcher: `$RDECK_BASE/server/logs`
+*   Launcher: `$RDECK_BASE/server/logs asdfasdfasdf`
 
 The following files will be found in the log directory:
 
