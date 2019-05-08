@@ -46,10 +46,11 @@ Rundeck is developed by Rundeck, Inc. and the Rundeck community. All new users a
 * Pluggable resource model (get details of your infrastructure from external systems)
 * On-demand (Web GUI, API or CLI) or scheduled job execution
 * Secure Key store for passwords and keys 
-* Role-based access control policy with support for LDAP/ActiveDirectory/SSO
+* Role-based access control policy with support for *ExampleFix*
 * Access control policy editing/management tools
 * History and auditing logs
 * Use any scripting language
+* New Example Line
 
 Already itching to install it? Jump ahead to
 [Installing Rundeck][page:manual/02-getting-started.md#download-and-installation].
