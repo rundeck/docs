@@ -11,3 +11,4 @@
 * [Encryptable Config Properties (Pro)][page:administration/configuration/encryptable-properties.md]
 * [Plugins][page:administration/configuration/plugins/index.md]
 * [Storage Facility][page:administration/configuration/storage-facility.md]
+* [Repository][page:administration/configuration/repository.md]
