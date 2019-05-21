@@ -263,7 +263,7 @@ Examples:
 
 ## `notBy`
 
-`notBy` is a variation of the `by` clause, it follow the same pattern using `username` and `group` 
+`notBy` is a variation of the `by` clause that only works on `deny`, it follow the same pattern using `username` and `group` 
 entries but in this case, the policy applies to anyone not in the group or with a different username.
 
 Each entry can contain a single string, or a sequence of strings to define
