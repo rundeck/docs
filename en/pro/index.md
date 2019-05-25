@@ -1,4 +1,4 @@
-% Rundeck Pro
+% Rundeck Enterprise
 
 ## Overview
 
@@ -35,34 +35,34 @@ granted if a user's group membership meets the requirements of the policy.
 
 ## License
 
-See: [Rundeck Pro Licensing and Support][page:administration/configuration/license.md]
+See: [Rundeck Enterprise Licensing and Support][page:administration/configuration/license.md]
 
 ## General configuration
 
-Rundeck Pro supports all properties described in the [OSS version][page:administration/configuration/config-file-reference.md].
+Rundeck Enterprise supports all properties described in the [OSS version][page:administration/configuration/config-file-reference.md].
 
 ## Node Model Sources
 
 Node Sources allow you to import metadata about the nodes you want to run
-Rundeck jobs on. Node Sources are configured on Rundeck Pro in the same was as
+Rundeck jobs on. Node Sources are configured on Rundeck Enterprise in the same was as
 the OSS version, described in [Node Model Sources][page:administration/projects/resource-model-sources/index.md].
 
 ## Authentication
 
-Similar to OSS Rundeck, Rundeck Pro uses Servlet Container Authentication to
+Similar to OSS Rundeck, Rundeck Enterprise uses Servlet Container Authentication to
 determine the logged in user name and the user's authorized roles.
 
 For more details, see [Authenticating Users][page:administration/security/authentication.md]
 
 ## Key storage
 
-Similar to OSS Rundeck, Rundeck Pro can securely store private keys that the Rundeck Node Executor and use for sessions.
+Similar to OSS Rundeck, Rundeck Enterprise can securely store private keys that the Rundeck Node Executor and use for sessions.
 
 For momre details, see [Key Storage][page:administration/security/key-storage.md]
 
 ## Remote job execution
 
-This feature allows Rundeck Pro cluster members to forward job executions to
+This feature allows Rundeck Enterprise cluster members to forward job executions to
 other cluster members based on a policy configuration. By default, each member
 of the cluster executes jobs locally and does not forward them. You can define
 multiple profiles and assign different projects to different profiles. If a job
@@ -79,15 +79,15 @@ See: [Database Backends][page:administration/configuration/database/index.md].
 
 ### Loadbalancer
 
-A loadbalancer allows you to achieve high availability in your Rundeck Pro
-installation by routing http traffic across several redundant Rundeck Pro
+A loadbalancer allows you to achieve high availability in your Rundeck Enterprise
+installation by routing http traffic across several redundant Rundeck Enterprise
 instances.
 
-To learn how to set up a loadbalancer for Rundeck Pro, see [Loadbalancer][page:administration/cluster/loadbalancer/index.md]
+To learn how to set up a loadbalancer for Rundeck Enterprise, see [Loadbalancer][page:administration/cluster/loadbalancer/index.md]
 
 ### Autotakeover
 
-If a cluster member goes down, all scheduled jobs on that cluster member must be moved to another cluster node. This process can be performed automatically using the heartbeat and Autotakeover features in Rundeck Pro version 2.1.0 and later releases.
+If a cluster member goes down, all scheduled jobs on that cluster member must be moved to another cluster node. This process can be performed automatically using the heartbeat and Autotakeover features in Rundeck Enterprise version 2.1.0 and later releases.
 
 To learn how to set up Autotakeover, see [Autotakeover][page:administration/cluster/autotakeover/index.md]
 
@@ -102,7 +102,7 @@ done in all the cluster members.
 
 Some plugins that can be used:
 
-#### Rundeck Pro S3 Log Storage Plugin
+#### Rundeck Enterprise S3 Log Storage Plugin
 
 This plugin provides Log Storage via Amazon AWS S3, or any storage compatible with AWS S3 API, eg: S3, [Minio], etc.
 

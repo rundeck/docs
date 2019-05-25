@@ -1,4 +1,4 @@
-% Rundeck SSO Security (Pro Only)
+% Rundeck SSO Security (Enterprise Only)
 
 Rundeck PRO can be configured to work with the Okta security platfom.
 

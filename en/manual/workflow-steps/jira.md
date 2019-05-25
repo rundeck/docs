@@ -1,4 +1,4 @@
-% Jira Workflow Step Plugins (Pro)
+% Jira Workflow Step Plugins (Enterprise)
 
 ## Jira / Issue / Assigned
 

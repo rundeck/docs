@@ -8,7 +8,7 @@ To use encrypted properties in Rundeck you will have a master password that will
 For instance you might want to encrypt the bind password to your LDAP server. Let's say your LDAP bind password is `binder123`. You will need a master password to encrypt this value. We will use `1PwdToBindThem$` for the master password.
 
 ### Encrypting Property values
-Rundeck Pro has a feature to allow you to generate encrypted passwords using the Jasypt encryption library. The following instructions show how to encrypt a password with this utility from the command line.
+Rundeck Enterprise has a feature to allow you to generate encrypted passwords using the Jasypt encryption library. The following instructions show how to encrypt a password with this utility from the command line.
 
 cd into the directory where your rundeck.war is located  
 run: ```java -jar rundeck.war --encryptpwd Jasypt```  

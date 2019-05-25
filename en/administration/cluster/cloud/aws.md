@@ -5,13 +5,13 @@
 Original:
 http://support.rundeck.com/customer/en/portal/articles/2338371-rundeck-pro-ha-for-aws
 
-Make a Pro version of this CloudFormation template: https://osgav.run/page/projects/rundeck-cloudformation.html
+Make a Enterprise version of this CloudFormation template: https://osgav.run/page/projects/rundeck-cloudformation.html
 --->
 
 
 This document provides instructions to install RUNDECK PRO in an HA (cluster) configuration on AWS, taking advantage of ELB, RDS, and S3 for scale and availability.
 
-![Rundeck Pro HA architecture on AWS](../../../figures/aws-architecture.png)
+![Rundeck Enterprise HA architecture on AWS](../../../figures/aws-architecture.png)
 
 ## AWS Setup
 

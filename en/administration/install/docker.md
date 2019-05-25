@@ -9,7 +9,7 @@ Full usage information can be found on the Docker Hub image pages.
 docker run --name some-rundeck -v data:/home/rundeck/server/data rundeck/rundeck:${VERSION}
 ```
 
-## Rundeck Pro
+## Rundeck Enterprise
 [rundeckpro/team:${VERSION}](https://hub.docker.com/r/rundeckpro/team/)
 ```bash
 docker run --name some-rundeck -v data:/home/rundeck/server/data rundeckpro/team:${VERSION}

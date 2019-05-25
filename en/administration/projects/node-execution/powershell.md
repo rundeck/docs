@@ -5,11 +5,11 @@ Original:
 http://support.rundeck.com/customer/en/portal/articles/1939728-powershell-plugins)
 --->
 
-These plugins are only applicable to Rundeck Pro deployments on Windows Servers. 
+These plugins are only applicable to Rundeck Enterprise deployments on Windows Servers. 
 
 There are two plugins:
 
-* **File Copier**: Copies files to the remote node for execution by the Node Executor. This plugin would be used to execute any Script steps in your workflows, or to copy your own files stored on the Rundeck Pro host.
+* **File Copier**: Copies files to the remote node for execution by the Node Executor. This plugin would be used to execute any Script steps in your workflows, or to copy your own files stored on the Rundeck Enterprise host.
 * **Node Executor**: Executes the command and script steps.
 
 The plugins can be enabled in the Project Configuration page by selecting the PowerShell Node Executor and PowerShell File Copier as the default Node Executor and File Copiers.
@@ -38,7 +38,7 @@ You can either configure the password or password storage path at a project-wide
  
 ### Password Storage
 
-Passwords can be stored securely in the Rundeck Pro Keystore facility. These passwords can be stored in a tree like structure to help you organize them any way you wish. The passwords can be referenced using an attribute named "password-storage-path". When Rundeck needs the password, it looks up the file as referenced by the storage path, reads, decrypts, and passes the value to the plugins.
+Passwords can be stored securely in the Rundeck Enterprise Keystore facility. These passwords can be stored in a tree like structure to help you organize them any way you wish. The passwords can be referenced using an attribute named "password-storage-path". When Rundeck needs the password, it looks up the file as referenced by the storage path, reads, decrypts, and passes the value to the plugins.
  
 ### Node Configuration
 
