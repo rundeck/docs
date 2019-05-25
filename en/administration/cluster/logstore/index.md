@@ -1,12 +1,12 @@
 % Logstore
 
-Rundeck Pro Cluster instances must share the same logstore. Job execution output is stored locally to the Rundeck Pro instance that ran the job but this output can be loaded into a common storage facility (eg, AWS S3, WebDAV, custom).
+Rundeck Enterprise Cluster instances must share the same logstore. Job execution output is stored locally to the Rundeck Enterprise instance that ran the job but this output can be loaded into a common storage facility (eg, AWS S3, WebDAV, custom).
 
-With a configured logstore, the executing Rundeck Pro instance copies the local output file to the logstore after job completion. If the standby Rundeck Pro instance is activated, any request for that output log will cause the standby to retrieve it from the logstore and copy it locally for future access.
+With a configured logstore, the executing Rundeck Enterprise instance copies the local output file to the logstore after job completion. If the standby Rundeck Enterprise instance is activated, any request for that output log will cause the standby to retrieve it from the logstore and copy it locally for future access.
 
 Rundeck will make multiple attempts to store a log file if the logstore is unavailable.
 
-All Rundeck Pro Cluster members must share the same log storage, this can be achieved in two ways:
+All Rundeck Enterprise Cluster members must share the same log storage, this can be achieved in two ways:
 
 ## Log storage plugin
 

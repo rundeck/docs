@@ -2,7 +2,7 @@
 
 ### Cluster Remote Execution
 
-This feature allows Rundeck Pro cluster members to forward job executions to
+This feature allows Rundeck Enterprise cluster members to forward job executions to
 other cluster members based on a policy configuration. By default, each member
 of the cluster executes jobs locally and does not forward them. You can define
 multiple profiles and assign different projects to different profiles. If a job
@@ -23,7 +23,7 @@ Choose from the following `<Policy>` settings:
 * `Random` - Executes randomly among allowed members
 * `RoundRobin` - Executes round-robin style among allowed members
 * `Preset` - Executes on one other preset member
-* `Load` - Executes on a member based on load (Requires Pro Cluster 2.3.0 or a later release. See Enable Load Balanced Policy)
+* `Load` - Executes on a member based on load (Requires Enterprise Cluster 2.3.0 or a later release. See Enable Load Balanced Policy)
 
 #### List of Allowed Members
 
@@ -114,12 +114,12 @@ rundeck.clusterMode.remoteExecution.profile.profile1.config.activeOnly = true/fa
 
 ### Load Balanced Execution Policy 
 
-This feature allows Rundeck Pro cluster members to forward job executions to
+This feature allows Rundeck Enterprise cluster members to forward job executions to
 other cluster members based on statistics calculated by the heartbeat process
 of each cluster member. Load is calculated for each member based on thread
 ratio and the percentage of CPU.
  
-Note: You must be running Rundeck Pro 2.3.1 or a later release to use this feature.
+Note: You must be running Rundeck Enterprise 2.3.1 or a later release to use this feature.
  
 **Example**
 

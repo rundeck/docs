@@ -6,7 +6,7 @@ http://download.rundeck.com/plugins/file-transfer-plugin.html
 --->
 
 This plugin provides FTP/SFTP/HTTP file transfers via Workflow Steps.
-It is available since 2.1.0 (Rundeck PRO Version History)
+It is available since 2.1.0 (Rundeck Enterprise Version History)
 
 
 ## Configuration
