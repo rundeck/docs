@@ -9,7 +9,7 @@ Make a Enterprise version of this CloudFormation template: https://osgav.run/pag
 --->
 
 
-This document provides instructions to install RUNDECK PRO in an HA (cluster) configuration on AWS, taking advantage of ELB, RDS, and S3 for scale and availability.
+This document provides instructions to install Rundeck Enterprise in an HA (cluster) configuration on AWS, taking advantage of ELB, RDS, and S3 for scale and availability.
 
 ![Rundeck Enterprise HA architecture on AWS](../../../figures/aws-architecture.png)
 
@@ -19,7 +19,7 @@ This section describes the AWS environment setup needed before the Rundeck softw
 
 ### Key Pair
 
-Create a key pair to access the rundeck pro EC2 instances, rundeckpro-ec2user. This key pair will be specified when it is time to launch the EC2 instances later on. This is also the key pair used to ssh to the EC2 instances.
+Create a key pair to access the Rundeck Enterprise EC2 instances, rundeckpro-ec2user. This key pair will be specified when it is time to launch the EC2 instances later on. This is also the key pair used to ssh to the EC2 instances.
 
 * Open the Amazon EC2 console at: [https://console.aws.amazon.com/ec2/](https://console.aws.amazon.com/ec2/)
 * Go to navigation panel of the AWS console, under NETWORK & SECURITY, choose Key Pairs.
@@ -45,7 +45,7 @@ For further information, see [http://docs.aws.amazon.com/AWSEC2/latest/UserGuide
 
 ### Security Groups
 
-Several security groups are defined to manage network access between the layers of the PRO environment (ELB->RUNDECK-RDS).
+Several security groups are defined to manage network access between the layers of the Enterprise environment (ELB->RUNDECK-RDS).
 
 * Open the Amazon EC2 console at [https://console.aws.amazon.com/ec2/](https://console.aws.amazon.com/ec2/).
 * In the navigation pane, choose Security Groups.
@@ -122,7 +122,7 @@ For further information, see [http://docs.aws.amazon.com/AmazonS3/latest/gsg/Cre
 
 ### RDS
 
-Create an RDS mysql instance, rundeck-rds and place it in the rundeck-rds security group. Specify a database named "rundeck". Note the name of the RDS hostname because it is needed for the pro installation.
+Create an RDS mysql instance, rundeck-rds and place it in the rundeck-rds security group. Specify a database named "rundeck". Note the name of the RDS hostname because it is needed for the Enterprise installation.
  
 * Go into the AWS Management Console and open the Amazon RDS console at [https://console.aws.amazon.com/rds](https://console.aws.amazon.com/rds)
 * In the top right corner of the AWS Management Console, select the region in which you want to create the DB instance.
@@ -139,7 +139,7 @@ For further information, see [http://docs.aws.amazon.com/AmazonRDS/latest/UserGu
 
 ### EC2
 
-Create two EC2 instances for the Rundeck PRO cluster. Specify the following when launching the instance:
+Create two EC2 instances for the Rundeck Enterprise cluster. Specify the following when launching the instance:
 
 * Open the Amazon EC2 console at https://console.aws.amazon.com/ec2/.
 * From the console dashboard, choose Launch Instance.

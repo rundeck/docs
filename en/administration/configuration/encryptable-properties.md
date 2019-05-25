@@ -1,6 +1,6 @@
-% Rundeck PRO Config Property Encryption
+% Rundeck Enterprise Config Property Encryption
 
-All Rundeck PRO bundles come with a feature that allows you to encrypt the values in the rundeck-config.properties file.
+All Rundeck Enterprise bundles come with a feature that allows you to encrypt the values in the rundeck-config.properties file.
 
 ### Approach
 To use encrypted properties in Rundeck you will have a master password that will be used to encrypt and decrypt the other passwords you wish to use in the rundeck-config.properties file.
@@ -33,7 +33,7 @@ You will take the `encrypted:` value from the ENCRYPTED OUTPUT section which wil
 To decrypt the encrypted properties in your rundeck-config.properties file you will need to set the environment variable `RUNDECK_PROP_DECRYPTER_PWD` with the value of your master password before starting Rundeck.
 
 In our example we would do: `export RUNDECK_PROP_DECRYPTER_PWD=1PwdToBindThem$`
-then we would start our Rundeck PRO installation. After the application has completed the bootstrap process and is responding to requests, the environment variable can be unset for security purposes.
+then we would start our Rundeck Enterprise installation. After the application has completed the bootstrap process and is responding to requests, the environment variable can be unset for security purposes.
 
 
 ### Advanced Usage

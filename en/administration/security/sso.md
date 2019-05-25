@@ -1,6 +1,6 @@
 % Rundeck SSO Security (Enterprise Only)
 
-Rundeck PRO can be configured to work with the Okta security platfom.
+Rundeck Enterprise can be configured to work with the Okta security platfom.
 
 To configure the Okta SSO plugin for your Rundeck installation
 you will need to add a new application to your Okta Applications,
