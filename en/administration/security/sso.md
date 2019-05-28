@@ -67,6 +67,31 @@ menu page in Rundeck.
 
 Congratulations, you now have a working Okta/Rundeck SSO setup.
 
+### Okta Group Plugin
+
+If you have Active Directory integrated into your Okta system, the setup for groups described above may not work. In this case you
+may configure the Okta user group plugin that is packaged with Rundeck, to pull the user's group information from Okta via the Okta API.
+
+First, you will need to create an API key in Okta that you can use to make API requests.
+
+Then you will need to add the following properties to your `framework.properties` file.
+
+~~~ {.properties}
+framework.plugin.UserGroupSource.OktaGroupSource.apiToken=<api key>
+
+framework.plugin.UserGroupSource.OktaGroupSource.oktaHostName=<okta host name>
+#example:
+#framework.plugin.UserGroupSource.OktaGroupSource.oktaHostName=dev-877856.oktapreview.com
+
+framework.plugin.UserGroupSource.OktaGroupSource.includedGroupTypes=APP_GROUP
+#APP_GROUP is the way Okta denotes AD groups, if you want to also include Okta groups
+#you could do the following:
+#framework.plugin.UserGroupSource.OktaGroupSource.includedGroupTypes=APP_GROUP,OKTA_GROUP
+framework.plugin.UserGroupSource.OktaGroupSource.enabled=true
+~~~
+
+If the plugin is enabled, when the user logs in, it will attempt to use the Okta user id out of the SSO token to pull that user's groups from Okta.
+
 ## Ping
 
 Rundeck can be configured to work with Ping Identity services.
