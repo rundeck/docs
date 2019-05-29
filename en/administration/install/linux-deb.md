@@ -85,3 +85,6 @@ Rundeck is now up and running!
 
 Next, learn how to [create your first Rundeck Pro project][page:manual/02-getting-started.md#project-setup]
 
+[How to Use API][page:manual/02-getting-started.md#api]
+
+![Ubuntu Logo](../../figures/ubuntu-logo.png)
