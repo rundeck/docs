@@ -1,4 +1,4 @@
-% VMWare Step Plugins (Pro)
+% VMWare Step Plugins (Enterprise)
 
 ## Clone VM Workflow Step
 

@@ -1,6 +1,6 @@
 % Rundeck Plugins
 
-This document lists the plugins **distributed with Rundeck and Rundeck Pro**.
+This document lists the plugins **distributed with Rundeck and Rundeck Enterprise**.
 
 (For Plugin Development, see [[page:developer/index.md]].)
 
