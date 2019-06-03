@@ -5,7 +5,7 @@ You may need to restrict access to plugins for certain projects.
 
 Only enabled plugins are visible to job writers in the Job Edit page.
 
-## Graphical Interface (Pro)
+## Graphical Interface (Enterprise)
 The Plugin Control page lets you enable and disable specific plugins.
 
 Go to the "Project Settings" and then choose "Plugins Control" menu item.

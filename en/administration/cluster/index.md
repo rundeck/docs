@@ -4,7 +4,7 @@
 ![Rundeck architecture](../../figures/architecture.png)
 
 ## Installation
-To install a Rundeck Pro Enterprise instance, download the lastest version from [here](https://download.rundeck.com/versions.html), and follow the steps in the [Installation Guide][page:administration/install/index.md]
+To install a Rundeck Enterprise Enterprise instance, download the lastest version from [here](https://download.rundeck.com/versions.html), and follow the steps in the [Installation Guide][page:administration/install/index.md]
 
 ## Requirements
 The Rundeck Enterprise environment needs the following shared resources:
@@ -19,7 +19,7 @@ The Rundeck Enterprise environment needs the following shared resources:
   See: [Storage Facility][page:administration/configuration/storage-facility.md]
 
 ### Load Balancer
-A loadbalancer allows you to achieve high availability in your Rundeck Pro installation by routing http traffic across several redundant Rundeck Pro instances.
+A loadbalancer allows you to achieve high availability in your Rundeck Enterprise installation by routing http traffic across several redundant Rundeck Enterprise instances.
 
 * Set the `grails.serverURL` parameter of all cluster members (`rundeck-config.properties`) with the LB URL.
 
@@ -53,16 +53,16 @@ See: [Node Model Sources][page:administration/projects/resource-model-sources/in
 ## Features:
 
 ### Autotakeover
-Scheduled jobs are owned by the last cluster member who modified them. Jobs can also be controlled using Cluster Manager. If a cluster member goes down, all scheduled jobs on that cluster member must be moved to another cluster node. This process can be performed automatically using the heartbeat and Autotakeover features in Rundeck Pro version 2.1.0 and later releases.
+Scheduled jobs are owned by the last cluster member who modified them. Jobs can also be controlled using Cluster Manager. If a cluster member goes down, all scheduled jobs on that cluster member must be moved to another cluster node. This process can be performed automatically using the heartbeat and Autotakeover features in Rundeck Enterprise version 2.1.0 and later releases.
 
 See: [Autotakeover][page:administration/cluster/autotakeover/index.md]
 
 ### Cluster Remote Execution Policy
-This feature allows Rundeck Pro cluster members to forward job executions to other cluster members based on a policy configuration.
+This feature allows Rundeck Enterprise cluster members to forward job executions to other cluster members based on a policy configuration.
 
 See: [Remote Job Execution][page:administration/configuration/remote-job-execution.md]
 
-### Rundeck Pro Replication
+### Rundeck Enterprise Replication
 This plugin is used for an active/passive configuration. Each cluster member can have its own database. 
 
-See [Rundeck Pro Replication][page:administration/cluster/replication/index.md]
+See [Rundeck Enterprise Replication][page:administration/cluster/replication/index.md]
