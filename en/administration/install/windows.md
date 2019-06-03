@@ -1,3 +1,5 @@
+% Installing on Window
+
 ### Prerequisites
 
 Before proceeding to install Rundeck, check all hardware [requirements](https://docs.rundeck.com/docs/administration/install/system-requirements.html) to make sure that our machine can be run Rundeck, also, make sure that the Windows user profile has the sufficient rights to install software in the Operating System. 
