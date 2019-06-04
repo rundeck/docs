@@ -214,6 +214,8 @@ expression.
 
 Use the crontab syntax referenced here: [Quartz Scheduler crontrigger].
 
+A good place to generate, validate and test job crontabs is [here](https://www.freeformatter.com/cron-expression-generator-quartz.html).
+
 After the Job has been updated to include a schedule, a clock icon
 will be displayed when the Job is listed:
 
