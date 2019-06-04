@@ -1,4 +1,4 @@
-% Rundeck Pro as a Tomcat servlet
+% Rundeck Enterprise as a Tomcat servlet
 
 ## Installation on Linux
 
@@ -53,8 +53,8 @@ framework.server.url = http://localhost:8080/rundeck
 ## Installation on Windows
 
 * Install Tomcat on your environment, as a service or just using the binaries (as for this example).
-* [Download](https://rundeck.org/downloads.html) the latest version of Rundeck war file and place it in tomcat.base\webapps\ as e.g. rundeck.war
-* Create tomcat.base\bin\setenv.bat
+* [Download](https://rundeck.org/downloads.html) the latest version of Rundeck war file and place it in tomcat.base\\webapps\\ as e.g. rundeck.war
+* Create tomcat.base\\bin\\setenv.bat
 
 ```
 setenv.bat content:
@@ -62,16 +62,16 @@ setenv.bat content:
    set "JAVA_OPTS=-XX:MaxPermSize=512m -Xmx2048m -Xms512m -server -Drdeck.base=C:\path\to\rundeck.base -Drundeck.config.location=C:\path\to\rundeck.base\server\config\rundeck-config.properties"
 ```
 
-* Create C:\path\to\rundeck.base
+* Create C:\\path\\to\\rundeck.base
 * Start Tomcat
 * Go to http://localhost:8080/rundeck, then at login screen: stop Tomcat
-* Edit rdeck.base\server\config\rundeck-config.properties to match Tomcat's url:
+* Edit rdeck.base\\server\\config\\rundeck-config.properties to match Tomcat's url:
 
 ```
 grails.serverURL=http://localhost:8080/rundeck
 ```
 
-* Edit rdeck.base\etc\framework.properties to match Tomcat's url:
+* Edit rdeck.base\\etc\\framework.properties to match Tomcat's url:
 
 ```
 framework.server.name = localhost

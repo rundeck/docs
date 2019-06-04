@@ -12,7 +12,7 @@ this as a HTML Table.
 
 ## Output Types
 
-* `applicaiton/x-java-map-or-list` - `Map` or `List`
+* `application/x-java-map-or-list` - `Map` or `List`
 
 ## Related Plugins
 

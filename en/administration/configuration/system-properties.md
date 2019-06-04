@@ -12,20 +12,7 @@ on the commandline, using the `-Dpropertyname=value` syntax. Add a `-D` for each
 
     java -server -Dserver.session.timeout=3600 -Dserver.port=8080 -jar rundeck-3.0.5-20180828.war
 
-## Profile
-
-For RPM or DEB installations, you can use environment variables set in a "defaults" file to add
-additional Java Sytem Properties.
-
-* RPM install: `/etc/sysconfig/rundeckd`
-* DEB install: `/etc/default/rundeckd`
-
-Within the `rundeckd` defaults file, declare a `RDECK_JVM_OPTS` variable:
-
-    RDECK_JVM_OPTS="-Dserver.session.timeout=3600 -Dserver.port=8080"
-
 ## Properties Reference
-
 
 * `server.port` The HTTP port to use for the server, default "4440"
 * `server.https.port` The HTTPS port to use or the server, default "4443"
@@ -41,11 +28,54 @@ Within the `rundeckd` defaults file, declare a `RDECK_JVM_OPTS` variable:
 * `loginmodule.conf.name` Name of a custom JAAS config file, located in the server's config dir.
 * `rundeck.config.name` Name of a custom rundeck config file, located in the server's config dir.
 * `rundeck.ssl.config` Path to the SSL config properties file to enable SSL. If not set, SSL is not enabled.
-* `rundeck.jetty.connector.forwarded` true/false. Set to true to enable support for "X-forwarded-\*" headers which may be sent by a front-end proxy to the rundeck server. See [Using an SSL Terminated Proxy](../security/configuring-ssl.html#using-an-ssl-terminated-proxy).
-* `rundeck.jetty.connector.ssl.excludedProtocols` Comma-separated list of SSL protocols to disable. Default: 'SSLv3'. See [Disabling SSL Protocols](../security/configuring-ssl.html#disabling-ssl-protocols).
-* `rundeck.jetty.connector.ssl.includedProtocols` Comma-separated list of SSL protocols to include. Default is based on available protocols. See [Disabling SSL Protocols](../security/configuring-ssl.html#disabling-ssl-protocols).
-* `rundeck.jetty.connector.ssl.excludedCipherSuites` Comma-separated list of Cipher suites to disable. No default. See [Disabling SSL Protocols](../security/configuring-ssl.html#disabling-ssl-protocols).
-* `rundeck.jetty.connector.ssl.includedCipherSuites` Comma-separated list of Cipher suites to enable. Default is based on available cipher suites. See [Disabling SSL Protocols](../security/configuring-ssl.html#disabling-ssl-protocols).
+* `rundeck.jetty.connector.forwarded` true/false. Set to true to enable support for "X-forwarded-\*" headers which may be sent by a front-end proxy to the rundeck server. See [Using an SSL Terminated Proxy][page:administration/security/ssl.md#using-an-ssl-terminated-proxy].
+* `rundeck.jetty.connector.ssl.excludedProtocols` Comma-separated list of SSL protocols to disable. Default: 'SSLv3'. See [Disabling SSL Protocols][page:administration/security/ssl.md#disabling-ssl-protocols].
+* `rundeck.jetty.connector.ssl.includedProtocols` Comma-separated list of SSL protocols to include. Default is based on available protocols. See [Disabling SSL Protocols][page:administration/security/ssl.md#disabling-ssl-protocols].
+* `rundeck.jetty.connector.ssl.excludedCipherSuites` Comma-separated list of Cipher suites to disable. No default. See [Disabling SSL Protocols][page:administration/security/ssl.md#disabling-ssl-protocols].
+* `rundeck.jetty.connector.ssl.includedCipherSuites` Comma-separated list of Cipher suites to enable. Default is based on available cipher suites. See [Disabling SSL Protocols][page:administration/security/ssl.md#disabling-ssl-protocols].
 
 
-For more information about using SSL, see [Configuring Rundeck for SSL](../security/configuring-ssl.html).
+For more information about using SSL, see [Configuring Rundeck for SSL][page:administration/security/ssl.md].
+
+## RPM and DEB
+
+You should *not* modify the `/etc/rundeck/profile` file directly, as it may be overwritten during upgrade,
+or any changes from the upgrade might not be applied.
+
+Instead, For RPM or DEB installations, you can use environment variables set in a "defaults" file to add
+additional Java Sytem Properties.
+
+* RPM install: `/etc/sysconfig/rundeckd`
+* DEB install: `/etc/default/rundeckd`
+
+Within the `rundeckd` defaults file, declare a `RDECK_JVM_OPTS` variable:
+
+    RDECK_JVM_OPTS="-Dserver.session.timeout=3600 -Dserver.port=8080"
+
+### Environment Variables Defaults
+
+Here is a partial list of environment variables which are set in the `/etc/rundeck/profile`, and can be overridden in the `/etc/sysconfig/rundeckd` or `/etc/default/rundeckd` file.
+
+(from `/etc/rundeck/profile`)
+
+~~~
+RDECK_INSTALL="${RDECK_INSTALL:-/var/lib/rundeck}"
+RDECK_BASE="${RDECK_BASE:-/var/lib/rundeck}"
+RDECK_CONFIG="${RDECK_CONFIG:-/etc/rundeck}"
+RDECK_CONFIG_FILE="${RDECK_CONFIG_FILE:-$RDECK_CONFIG/rundeck-config.properties}"
+RDECK_SERVER_BASE="${RDECK_SERVER_BASE:-$RDECK_BASE}"
+RDECK_SERVER_CONFIG="${RDECK_SERVER_CONFIG:-$RDECK_CONFIG}"
+RDECK_SERVER_DATA="${RDECK_SERVER_DATA:-$RDECK_BASE/data}"
+RDECK_PROJECTS="${RDECK_PROJECTS:-$RDECK_BASE/projects}"
+RUNDECK_TEMPDIR="${RUNDECK_TEMPDIR:-/tmp/rundeck}"
+RUNDECK_WORKDIR="${RUNDECK_TEMPDIR:-$RDECK_BASE/work}"
+RUNDECK_LOGDIR="${RUNDECK_LOGDIR:-$RDECK_BASE/logs}"
+RDECK_JVM_SETTINGS="${RDECK_JVM_SETTINGS:- -Xmx1024m -Xms256m -XX:MaxMetaspaceSize=256m -server}"
+RDECK_TRUSTSTORE_FILE="${RDECK_TRUSTSTORE_FILE:-$RDECK_CONFIG/ssl/truststore}"
+RDECK_TRUSTSTORE_TYPE="${RDECK_TRUSTSTORE_TYPE:-jks}"
+JAAS_LOGIN="${JAAS_LOGIN:-true}"
+JAAS_CONF="${JAAS_CONF:-$RDECK_CONFIG/jaas-loginmodule.conf}"
+LOGIN_MODULE="${LOGIN_MODULE:-RDpropertyfilelogin}"
+RDECK_HTTP_PORT=${RDECK_HTTP_PORT:-4440}
+RDECK_HTTPS_PORT=${RDECK_HTTPS_PORT:-4443}
+~~~

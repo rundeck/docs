@@ -1,6 +1,6 @@
-% Progress Badge Workflow Step (Pro)
+% Progress Badge Workflow Step (Enterprise)
 
-The Progress Badge Plugin included with Rundeck Pro can create graphic badges to be rendered on the Log Output tab.
+The Progress Badge Plugin included with Rundeck Enterprise can create graphic badges to be rendered on the Log Output tab.
 
 See also: [[page:manual/log-filters/progress-badge.md]].
 

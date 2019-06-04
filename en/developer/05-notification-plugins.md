@@ -37,7 +37,7 @@ The Configuration data is fully custom depending on your plugin, and is describe
 
 The specific data values of the Configuration section are allowed to have
 embedded Property References as described in the
-[Jobs - Context Variables](../manual/creating-job-workflows.html#context-variables) section.
+[Jobs - Context Variables][page:manual/job-workflows.md#context-variables] section.
 
 For example, when a user configures your plugin, they could embed an option value using: `${option.myoption}`.  This value will be replaced with the runtime option value before being passed to your plugin.
 
@@ -111,7 +111,7 @@ The following values may be available after the job is finished (not available f
 
 `job.averageDuration`: Average job duration in Milliseconds, if available
 
-`execution.context` - this is a map containing all of the context variables available to the execution when it ran or will run, such as [Jobs - Context Variables](../manual/creating-job-workflows.html#context-variables). The contents of this Map are the specific context namespaces and variables.
+`execution.context` - this is a map containing all of the context variables available to the execution when it ran or will run, such as [Jobs - Context Variables][page:manual/job-workflows.md#context-variables]. The contents of this Map are the specific context namespaces and variables.
 
 `execution.context.option`: a Map containing the Job Option keys/values.
 
@@ -154,7 +154,7 @@ Java examples.
 
 ## Java Plugin Type
 
-Java-based plugins can be developed just as any other Rundeck plugin, as described in the chapter [Plugin Development - Java Plugin Development](plugin-development.html#java-plugin-development).
+Java-based plugins can be developed just as any other Rundeck plugin, as described in the chapter [Plugin Development - Java Plugin Development][page:developer/01-plugin-development.md#java-plugin-development].
 
 These plugin classes should implement the interface
 [NotificationPlugin](${javadocbase}/com/dtolabs/rundeck/plugins/notification/NotificationPlugin.html):
@@ -171,9 +171,9 @@ public interface NotificationPlugin {
 }
 ~~~~~~~~~~~
 
-To define configuration properties for your plugin, you use the same mechanisms as for Workflow Steps, described under the chapter [Plugin Development - Plugin Descriptions](plugin-development.html#plugin-descriptions).
+To define configuration properties for your plugin, you use the same mechanisms as for Workflow Steps, described under the chapter [Plugin Development - Plugin Descriptions][page:developer/01-plugin-development.md#plugin-descriptions].
 
-The simplest way to do this is to use [Plugin Annotations](plugin-annotations.html). Here is an example class annotated to describe it to the Rundeck GUI:
+The simplest way to do this is to use [Plugin Annotations][page:developer/02-plugin-annotations.md]. Here is an example class annotated to describe it to the Rundeck GUI:
 
 ~~~~~~ {.java}
 @Plugin(service="Notification", name="example")
@@ -195,13 +195,13 @@ public class ExampleNotificationPlugin implements NotificationPlugin{
 
 Notification support the Groovy Plugin Type.
 
-To define metadata about your plugin, and configuration properties, see the [Plugin Development - Groovy Plugin Development](plugin-development.html#groovy-plugin-development) chapter.
+To define metadata about your plugin, and configuration properties, see the [Plugin Development - Groovy Plugin Development][page:developer/01-plugin-development.md#groovy-plugin-development] chapter.
 
 To create a Groovy based plugin, create a file named `MyNotificationPlugin.groovy` in the plugins directory for Rundeck.
 
 You must restart rundeck to make the plugin available the first time, but you can subsequently update the .groovy script without restarting Rundeck.
 
-[Groovy Plugin Development]: plugin-development.html#groovy-plugin-development
+[Groovy Plugin Development][page:developer/01-plugin-development.md#groovy-plugin-development]
 
 ### Groovy DSL
 

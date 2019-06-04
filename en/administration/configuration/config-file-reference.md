@@ -50,7 +50,7 @@ document.
 
 This file governs the access for the "admin" group and role.
 
-See [role based access control](../security/access-control-policy.html) for information about setting up policy files for other user groups.
+See [role based access control][page:administration/security/authorization.md] for information about setting up policy files for other user groups.
 
 ## framework.properties
 
@@ -79,6 +79,7 @@ Other settings:
 
 * `framework.log.dispatch.console.format`: Default format for non-terse node execution logging run by the `dispatch` CLI tool.
 * `execution.script.tokenexpansion.enabled`: Whether inline script token expansion is enabled, default `true`.  If `false`, the "Inline Script Content" syntax described in [[page:manual/job-workflows.md#context-variables]] is disabled.
+* `communityNews.disabled`: Default is not set, or false. Disables the external polling of Community News feed. Link will persist but will not poll, and clicking this link will open a new browser tab and navigate to the web-based version of Community News.
 
 Static authentication tokens for API access:
 
@@ -92,7 +93,7 @@ The `tokens.properties` file should contain static authentication tokens you wis
     username2: token_string2
     ...
 
-The token_strings can be used as Authentication tokens to the [API](../../api/index.html#token-authentication).
+The token_strings can be used as Authentication tokens to the [API][page:api/rundeck-api.md#token-authentication].
 
 ### Global execution variables
 
@@ -134,7 +135,7 @@ Property                                  Description
 `project.ssh-keypath`                     SSH identify file.
 `service.FileCopier.default.provider`     Default script file copier plugin.
 `service.NodeExecutor.default.provider`   Default node executor plugin.
-`resources.source.N...`                   Defines a Resource model source see [Resource Model Sources].
+`resources.source.N...`                   Defines a Resource model source see [Resource Model Sources][page:manual/09-configure.md#resource-model-sources-configuration].
 `project.globals.X`                       [Defines a Project Global variable](#project-global-execution-variables)
 
 
@@ -203,7 +204,7 @@ Or set `server.session.timeout` via [[page:administration/configuration/system-p
 
 This is the primary Rundeck webapp configuration file. Defines default
 loglevel, datasource configuration, and
-[GUI customization](gui-customization.html).
+[GUI customization][page:administration/configuration/gui-customization.md].
 
 The following sections describe configuration values for this file.
 
@@ -212,13 +213,13 @@ The following sections describe configuration values for this file.
 * `rundeck.security.useHMacRequestTokens` : `true/false`.  Default: `true`.
    Switches between HMac based request tokens, and the default grails UUID
    tokens.  HMac tokens have a timeout, which may cause submitted forms or
-   actions to fail with a message like "Token has expired".  
+   actions to fail with a message like "Token has expired".
    If set to false, UUIDs will be used instead of HMac tokens,
    and they have no timeouts.
-   The default timeout for tokens can be changed with the
+   The default timeout for tokens can be changed with the java system property
    `-Dorg.rundeck.web.infosec.HMacSynchronizerTokensHolder.DEFAULT_DURATION=[timeout in ms]`.
 
-* `rundeck.security.apiCookieAccess.enabled`: `true/false`. Default: `true`.  
+* `rundeck.security.apiCookieAccess.enabled`: `true/false`. Default: `true`.
     Determines whether access to the API is allowed if the API client
     authenticates via session cookies (i.e. username and password login.)  If
     set to `false`, the current CLI tools and API libraries will not operate
@@ -245,11 +246,128 @@ The following sections describe configuration values for this file.
 
 * `rundeck.security.jaasRolePrefix`: Prefix string to add to each *role* determined via [JAAS Authentication][page:administration/security/authentication.md#jetty-and-jaas-authentication]. Default: none.
 
-### Server Settings
+### Security HTTP Headers
 
+Rundeck adds some HTTP headers for XSS prevention and other security reasons, as described below.
+
+By default, these headers are enabled, but they can be individually disabled, or reconfigured.
+
+Additionally, custom headers can be enabled if required.
+
+~~~~.properties
+# enable security headers filter to add these headers (default: true)
+rundeck.security.httpHeaders.enabled=true
+
+#########
+# enable x-content-type-options: nosniff  (default: true)
+rundeck.security.httpHeaders.provider.xcto.enabled=true
+
+#########
+# enable x-xss-protection: 1  (default: true)
+
+rundeck.security.httpHeaders.provider.xxssp.enabled=true
+
+# Alternates for x-xss-protection:
+#
+# use x-xss-protection: 1; mode=block
+#
+
+# rundeck.security.httpHeaders.provider.xxssp.config.block=true
+
+#
+# use x-xss-protection: 1; report=https://some-uri
+
+# rundeck.security.httpHeaders.provider.xxssp.config.report=https://some-uri
+
+########
+# enable x-frame-options: deny  (default: true)
+
+rundeck.security.httpHeaders.provider.xfo.enabled=true
+
+# Alternate settings for x-frame-options:
+#
+# use x-frame-options: sameorigin
+
+# rundeck.security.httpHeaders.provider.xfo.config.sameorigin=true
+
+#
+# use x-frame-options: allow-from: src
+
+# rundeck.security.httpHeaders.provider.xfo.config.allowFrom=src
+
+#######
+# enable Content-Security-Policy header (default:true)
+
+rundeck.security.httpHeaders.provider.csp.enabled=true
+
+# You can enable the `X-` variants of Content-Security-Policy if desired, but they are disabled by default:
+#
+# This enables the X-Content-Security-Policy header name
+
+# rundeck.security.httpHeaders.provider.csp.config.include-xcsp-header=true
+
+#
+# This enables the X-WebKit-CSP header name
+
+# rundeck.security.httpHeaders.provider.csp.config.include-xwkcsp-header=true
+
+# You can specify an explicit policy, which will override directives declared below
+#
+
+# rundeck.security.httpHeaders.provider.csp.config.policy=default-src 'none'; connect-src 'self' ; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; font-src 'self' data: ; img-src 'self' https://media.rundeck.org ; form-action 'self' ;
+
+#
+# Or you can specify individual directives:
+#
+
+rundeck.security.httpHeaders.provider.csp.config.default-src=none
+rundeck.security.httpHeaders.provider.csp.config.connect-src=self
+rundeck.security.httpHeaders.provider.csp.config.style-src=self unsafe-inline
+rundeck.security.httpHeaders.provider.csp.config.script-src=self unsafe-inline unsafe-eval
+rundeck.security.httpHeaders.provider.csp.config.font-src=self data:
+rundeck.security.httpHeaders.provider.csp.config.img-src=self https://media.rundeck.org
+rundeck.security.httpHeaders.provider.csp.config.form-action=self
+
+#######
+# enable any custom additional headers (default: false)
+#
+# rundeck.security.httpHeaders.provider.custom.enabled=true
+# rundeck.security.httpHeaders.provider.custom.config.name=X-Other-Security-Policy
+# rundeck.security.httpHeaders.provider.custom.config.value=default-src 'none';
+# rundeck.security.httpHeaders.provider.custom.config.name2=X-other-header
+# rundeck.security.httpHeaders.provider.custom.config.value2=some value
+~~~~
+
+References:
+
+* <https://www.owasp.org/index.php/OWASP_Secure_Headers_Project>
+* <https://content-security-policy.com>
+
+### Local Login Form Visibility
+
+* `rundeck.login.localLogin.enabled`:`true/false`. Default `true`
+
+If you have Single Sign On enabled(Enterprise only) and you want to prevent the ability
+for your users to login with the non-SSO form, you can set this property to false and it
+will suppress the non-SSO login form.
+
+### Logout behaviors
+
+* `rundeck.logout.expire.cookies`: comma separated list of cookie names to expire on logout
+
+* `rundeck.logout.redirect.url`: Redirect to this url after logout. This can either be a fully qualified url or a relative path.
+
+### Server Settings
 
 * `server.session.timeout`: timeout in seconds.
 
+Note: This setting applies *only* to the embedded Jetty server, which is used for standalone war launcher, rpm or deb installs. It does not work for Tomcat installation.
+
+If you are deploying the Rundeck war file to Tomcat, you can manage the session timeout setting in the `$TomcatBase/conf/web.xml` file. The setting is in minutes.
+
+~~~{.xml}
+    <session-config> <session-timeout>30</session-timeout> </session-config>
+~~~
 
 ### Execution Mode
 
@@ -266,29 +384,24 @@ system and is useful when managing Rundeck server clusters.
 
 ### Project Configuration Storage settings
 
-The [Project Setup - Project Definitions](project-setup.html#project-definitions) mechanism is configured within this file, see:
+The [Project Setup - Project Definitions][page:administration/projects/project-create.md#project-definitions] mechanism is configured within this file, see:
 
-* [Project Storage][]
-
-[Project Storage]: storage-facility.html#project-storage
+* [Project Storage][page:administration/configuration/storage-facility.md#project-storage]
 
 ### Key Storage settings
 
-The [Key storage](../security/key-storage.html) mechanism is configured within this file, see:
+The [Key storage][page:administration/security/key-storage.md] mechanism is configured within this file, see:
 
-* [Configuring Storage Plugins][]
-* [Configuring Storage Converter Plugins][]
-
-[Configuring Storage Plugins]: ../plugins-user-guide/configuring.html#storage-plugins
-[Configuring Storage Converter Plugins]: ../plugins-user-guide/configuring.html#storage-converter-plugins
+* [Configuring Storage Plugins][page:administration/configuration/plugins/configuring.md#storage-plugins]
+* [Configuring Storage Converter Plugins][page:administration/configuration/plugins/configuring.md#storage-converter-plugins]
 
 ### Notification email settings
 
-See [Email Settings: Notification email settings](email-settings.html#notification-email-settings)
+See [Email Settings: Notification email settings][page:administration/configuration/email-settings.md#notification-email-settings]
 
 ### Custom Email Templates
 
-See [Email Settings: Custom Email Templates](email-settings.html#custom-email-templates)
+See [Email Settings: Custom Email Templates][page:administration/configuration/email-settings.md#custom-email-templates]
 
 ### Execution finalize retry settings
 
@@ -306,8 +419,6 @@ Rundeck now attempts to retry the update to correctly register the final state o
 
 Delay is in milliseconds. If a max is set to `-1`, then retries will happen indefinitely.
 
-[Resource Model Sources]: ../administration/managing-node-sources.html
-
 ### Metrics Capturing
 
 Rundeck captures metrics using the [Metrics](http://metrics.dropwizard.io/3.0.2/) library.
@@ -321,7 +432,7 @@ Additional configuration for metrics:
     # capture metrics for requests via a filter
     rundeck.metrics.requestFilterEnabled=true/false
 
-    # use JMX 
+    # use JMX
     rundeck.metrics.jmxEnabled=true/false
 
 
@@ -344,7 +455,7 @@ Metrics names are:
 * `ping`
 * `healthcheck`
 
-See: [API > List Metrics](../api/index.html#list-metrics).
+See: [API > List Metrics][page:api/rundeck-api.md#list-metrics].
 
 ### Pagination defaults
 
@@ -354,7 +465,7 @@ Default paging size for the Activity page and results from execution API queries
 
 ### Job Remote Option URL connection parameters
 
-Change the defaults for for [Job Remote Option Value URLs](../../manual/defining-job-options.html#remote-option-values) loading.
+Change the defaults for for [Job Remote Option Value URLs][page:manual/job-options.md#remote-option-values] loading.
 
 **Socket read timeout**
 
@@ -412,7 +523,7 @@ Enabled: true/false (default true).
 :   `rundeck.nodeService.nodeCache.enabled=true` If set to false, no caching is performed.
 
 First Load Asynch: true/false
-:   `rundeck.nodeService.nodeCache.firstLoadAsynch=false`  The default for whether the first load of a project's nodes should be performed synchronously or not. If set to `true`, and the [Project Nodes > Synchronous First Load](project-setup.html#project-nodes) value is unset, then the initial load of a Project's nodes when the cache is empty will be done in the background asynchronously. Otherwise the initial load is done synchronously, possibly causing a delay at Rundeck startup or Job execution startup. A Project level configuration value will override this default.
+:   `rundeck.nodeService.nodeCache.firstLoadAsynch=false`  The default for whether the first load of a project's nodes should be performed synchronously or not. If set to `true`, and the [Project Nodes > Synchronous First Load][page:administration/projects/project-create.md#project-nodes] value is unset, then the initial load of a Project's nodes when the cache is empty will be done in the background asynchronously. Otherwise the initial load is done synchronously, possibly causing a delay at Rundeck startup or Job execution startup. A Project level configuration value will override this default.
 
 ### Groovy config format
 

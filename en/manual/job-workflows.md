@@ -16,17 +16,16 @@ can be added, edited, removed or reordered.
 
 Users preferring to define Jobs in a text format should refer to the two format definitions:
 
-* XML:  [job-xml]
-* YAML: [job-yaml]
+* XML:  [job-xml][page:manpages/man5/job-v20.md]
+* YAML: [job-yaml][page:manpages/man5/job-yaml-v12.md]
 
 It is also possible to author Jobs inside the graphical console
 and then export the definition as a file using the
-`rd-jobs` shell tool ([rd-jobs]).
+`rd` CLI tool ([rd]), or via the API.
 
-See [Exporting Job definitions][1] and [Importing Job definitions][2].
+See [Command Line Tools and API Acccess][1].
 
-[1]: #exporting-job-definitions
-[2]: #importing-job-definitions
+[1]: #command-line-tools-and-api-access
 
 ## Workflow control settings
 
@@ -82,7 +81,7 @@ Step-oriented flow illustrated:
 The process you are automating will determine which strategy is
 correct, though the node-oriented flow is more commonplace.
 
-For more complex workflow strategy rules, see [Ruleset Workflow Strategy Plugin](workflow-strategies/ruleset-workflow-strategy-plugin.html)
+For more complex workflow strategy rules, see [Ruleset Workflow Strategy Plugin][page:manual/workflow-strategies/ruleset.md]
 
 ## Workflow steps
 
@@ -117,8 +116,8 @@ workflow step.
 
 Steps in a workflow can be either *Node Steps* or *Workflow Steps*.
 
-* Node Steps operate once on each Node, which could be multiple times within a workflow. For a full list of Node Steps, see [Job Plugins - Node Steps](job-plugins.html#node-steps)
-* Workflow Steps operate only once in the workflow. For a full list of Workflow Steps, see [Workflow Steps](job-plugins.html#workflow-steps)
+* Node Steps operate once on each Node, which could be multiple times within a workflow. For a full list of Node Steps, see [Job Plugins - Node Steps][page:manual/job-plugins.md#node-steps]
+* Workflow Steps operate only once in the workflow. For a full list of Workflow Steps, see [Workflow Steps][page:manual/job-plugins.md#workflow-steps]
 
 ## Reordering steps
 
@@ -226,7 +225,7 @@ Job context variables:
 * `job.username`: Username of the user executing the Job
 * `job.project`: Project name
 * `job.loglevel`: Logging level, one of: 'ERROR','WARN','INFO','VERBOSE','DEBUG'
-* `job.user.email`: Executing user's email address set in [User profile](user.html).
+* `job.user.email`: Executing user's email address set in [User profile][page:manual/10-user.md].
 * `job.retryAttempt`: A number indicating the attempt, if this execution is a [retry](#retry).
 * `job.wasRetry`: `true` if this execution is a retry, otherwise `false`. See: [retry](#retry).
 * `job.threadcount`: Threadcount (number of nodes run at once) of the Job
@@ -265,7 +264,7 @@ Additional Error-handler context variables:
 * `result.resultCode`: Exit code from an execution (if available)
 * `result.failedNodes`: Comma-separated list of node names that failed for a `NodeDispatchFailure`
 
-Option context variables are referred to as `option.NAME` (more about [Job Options](defining-job-options.html).)
+Option context variables are referred to as `option.NAME` (more about [Job Options][page:manual/job-options.md].)
 
 ### Context Variable Usage
 
@@ -273,39 +272,31 @@ Context variables can be used in a few ways in a Job step, with slightly differe
 
 * Commands, Script Arguments and Job Reference Arguments
 
-    :     `${ctx.name}`
+    :     ${ctx.name}
 
 * Inline Script Content (*see note*)
 
-    :     `@ctx.name@`
+    :     @ctx.name@
 
     > Note, The "Inline Script Content" variable expansion is **not** available for "Script File" steps.  The Script File is not rewritten at all when used for execution.
 
-    > Note: This can be disabled, see [Administrator Guide > Configuration File Reference > framework.properties](../administration/configuration/configuration-file-reference.html#framework.properties).
+    > Note: This can be disabled, see [Administrator Guide > Configuration File Reference > framework.properties][page:administration/configuration/config-file-reference.md#framework.properties].
 
 * Environment Variables (*see note*)
 
-    :     `$RD_CTX_NAME`
+    :     $RD_CTX_NAME
 
     The syntax for Environment variables is that all letters become uppercase, punctuation is replaced with underscore, and the name is prefixed with `RD_`.
 
-    > Note, See the chapter [Plugins - SSH - Passing Environment Variables Through Remote Commands](node-execution/ssh-node-execution.html#passing-environment-variables-through-remote-command) for information about requirements of the SSH server.
+    > Note, See the chapter [[page:administration/projects/node-execution/ssh.md#configuring-remote-machine-for-ssh]] for information about requirements of the SSH server.
 
-## Related Command Line Tools
+### Command Line Tools and API access
 
-[rd-jobs]
-  ~ List, load and delete job definitions.
+Jobs can be exported or imported in XML or Yaml format using the API or the `rd` CLI tool.
 
-[rd-queue]
-  ~ List, follow or kill currently running executions.
+* [[page:api/rundeck-api.md#exporting-jobs]]
+* [[page:api/rundeck-api.md#importing-jobs]]
+* [RD CLI Tool](https://rundeck.github.io/rundeck-cli)
 
-[run]
-  ~ Run a job.
 
-[run]: ../man1/run.html  
-[rd-jobs]: ../man1/rd-jobs.html  
-[rd-queue]: ../man1/rd-queue.html  
-[job-xml]: ../man5/job-xml.html
-[job-yaml]: ../man5/job-yaml.html
-
-[Quartz Scheduler crontrigger]: http://www.quartz-scheduler.org/api/2.2.1/org/quartz/CronTrigger.html
+[Quartz Scheduler crontrigger]: http://www.quartz-scheduler.org/api/2.2.1/org/quartz/CronTrigger.html 

@@ -28,11 +28,11 @@ Download deb package: http://rundeck.org/download/deb/ and run:
 sudo dpkg -i rundeckpro-cluster_3.0.x.deb
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-## Rundeck Pro
+## Rundeck Enterprise
 
 ### Install with apt-get
 
-You can use this script to add the Rundeck Pro apt repo and install Rundeck Pro cluster:
+You can use this script to add the Rundeck Enterprise apt repo and install Rundeck Enterprise cluster:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {.bash}
 echo "deb https://rundeckpro.bintray.com/deb stable main" | sudo tee /etc/apt/sources.list.d/rundeck.list
@@ -41,7 +41,7 @@ sudo apt-get update
 sudo apt-get install rundeckpro-cluster
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-When new versions of Rundeck Pro are released, you can upgrade to them using the command:
+When new versions of Rundeck Enterprise are released, you can upgrade to them using the command:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {.bash}
 sudo apt-get update
@@ -78,9 +78,10 @@ Grails application running at http://localhost:4440 in environment: production
 
 ## Logging in for the first time
 
-1. Navigate to [http://localhost:4440/](http://localhost:4440/user/login) in a browser
+1. Navigate to [http://localhost:4440/](http://localhost:4440) in a browser.
 2. Log in with the username **admin** and password **admin**
 
 Rundeck is now up and running!
 
-Next, learn how to [create your first Rundeck Pro project](../../manual/getting-started.html#project-setup)
+Next, learn how to [create your first Rundeck Enterprise project][page:manual/02-getting-started.md#project-setup]
+

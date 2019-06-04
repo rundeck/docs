@@ -1,10 +1,11 @@
 ## Access control
 
 Access to jobs and commands is managed in access control
-policies defined using the [aclpolicy] document format.
+policies defined using the [aclpolicy][page:manpages/man5/aclpolicy-v10.md] document format.
 The aclpolicy file contains rules describing what user
 groups are allowed to perform which actions. The
-[Access control policy] chapter in the Administration Guide
+[Access control policy][page:administration/security/authorization.md]
+chapter in the Administration Guide
 covers this in detail.
 
 The administrator will use aclpolicy to define two levels of
@@ -113,8 +114,3 @@ by:
   group: dev
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-
-
-
-[aclpolicy]: ../man5/aclpolicy.html
-[Access control policy]: ../administration/access-control-policy.html

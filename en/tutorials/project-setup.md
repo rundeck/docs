@@ -16,7 +16,7 @@ specific hosts names or IP addresses. This makes the jobs reusable
 across different environments.
 
 The administrator will also use the built in
-[SSH node executor](../manual/node-execution/ssh-node-execution.html) for
+[SSH node executor][page:administration/projects/node-execution/ssh.md] for
 the project since SSH is already used to execute remote commands.
 
 ## Create the project
@@ -119,7 +119,7 @@ at run time. In this example, the project default is used as specified in the
 [project.properties] configuration file.
 (e.g.,  project.ssh-keypath=/var/lib/rundeck/.ssh/id_rsa).
 
-See [ssh-plugins guide](../manual/node-execution/ssh-node-execution.html#configuring-remote-machine-for-ssh) to learn about configuring remote machines for ssh.
+See [ssh-plugins guide][page:administration/projects/node-execution/ssh.md#configuring-remote-machine-for-ssh] to learn about configuring remote machines for ssh.
 
 This example uses the built in ssh plugin but you are not restricted to using
 ssh. There are other node executor plugins that invoke remote actions via
@@ -131,7 +131,7 @@ other tools (eg, salt, mcollective, winrm, chef knife, etc).
 
 To make Rundeck aware of the new resource file containing the anvils nodes,
 the administrator modifies the
-[project.properties](../administration/configuration/configuration-file-reference.html#project.properties)
+[project.properties][page:administration/configuration/config-file-reference.md#project.properties]
 configuration file to declare a new resource model source.
 
 Below a directory type source is configured:
@@ -150,12 +150,12 @@ New project sources can also be added in the Configure page:
 
 ## Managing Node Sources
 
-See [Managing Node Sources](../administration/configuration/resource-model-sources/index.html)
+See [Managing Node Sources][page:administration/projects/resource-model-sources/index.md]
 to learn more about configuring Rundeck to read node data from external providers.
 
 
 
 
-[resource-XML]: ../man5/resource-xml.html
+[resource-XML][page:manpages/man5/resource-v13.md]
 [rd]: https://rundeck.github.io/rundeck-cli/
 [tip1]: http://www.thegeekstuff.com/2008/11/3-steps-to-perform-ssh-login-without-password-using-ssh-keygen-ssh-copy-id/

@@ -23,7 +23,7 @@ If you use the Rundeck war file with a different container, such as Tomcat, refe
 
 # Single Sign On
 
-See [Security > Single Sign On](single-sign-on.html).
+See [Security > Single Sign On][page:administration/security/sso.md].
 
 # Jetty and JAAS authentication
 
@@ -112,6 +112,28 @@ Then restart Rundeck to ensure it picks up the change and you're done.
 There is also a password encrypter utility user interface in the Rundeck application that
 can be used to generate encrypted passwords. Click the gear icon and then "Password Utility" to use that interface.
 
+#### Hot Reloading the `realm.properties` file
+
+If you want your changes to the `realm.properties` file to be picked up without having to restart Rundeck change the module specified in the JAAS config file from `org.eclipse.jetty.jaas.spi.PropertyFileLoginModule` to `org.rundeck.jaas.jetty.ReloadablePropertyFileLoginModule`
+
+The refresh interval for checking the file is 5 seconds. This is not configurable.
+
+For example, the following configuration uses the non-reloadable `realm.properties`
+
+    RDpropertyfilelogin {
+        org.eclipse.jetty.jaas.spi.PropertyFileLoginModule required
+        debug="true"
+        file="/etc/rundeck/server/config/realm.properties";
+    };
+
+This configuration would enable hot reloading:
+
+    RDpropertyfilelogin {
+        org.rundeck.jaas.jetty.ReloadablePropertyFileLoginModule required
+        debug="true"
+        file="/etc/rundeck/server/config/realm.properties";
+    };
+
 ## LDAP
 
 LDAP and Active Directory configurations are created in the same way, but your LDAP structure may be different than Active Directory's structure.
@@ -131,6 +153,20 @@ You must change some configuration values to change the authentication module to
 
 Configuring LDAP consists of defining a JAAS config file (e.g. "jaas-ldap.conf"), and changing the server startup script to use this file and use the correct Login Module configuration inside it.
 
+#### Sync Rundeck profile from LDAP user attributes
+
+You can use LDAP user attributes to update the email, first name, and last name properties of your Rundeck users.
+To enable this feature, add the property: `rundeck.security.syncLdapUser=true` to your `rundeck-config.properties` file.
+
+In your JAAS LDAP login module you can specify the ldap user attributes used to source the email, and name properties.  
+The properties are:
+
+    userLastNameAttribute="sn"
+    userFirstNameAttribute="givenName"
+    userEmailAttribute="mail"
+
+These LDAP attributes will be checked when a user logs in, and their Rundeck user profile will be updated from them.    
+
 #### Step 1: Setup the LDAP login module configuration file
 
 Create a `jaas-ldap.conf` file in the same directory as the `jaas-loginmodule.conf` file.
@@ -138,16 +174,16 @@ Create a `jaas-ldap.conf` file in the same directory as the `jaas-loginmodule.co
 * RPM/Deb install: `/etc/rundeck/`
 * Executable War install: `$RDECK_BASE/server/config`
 
-Make sure the name of your Login Module configuration is the same as you use in the next step.  The Login Module configuration is defined like this:
+Make sure the name of your Login Module configuration is the same as you use in the next step.  The Login Module configuration is defined like this (e.g. "jaas-ldap.conf" file):
 
 ~~~~~~ {.c }
-    myloginmodule {
+    ldap {
         // comment line
         ...
     }
 ~~~~~~
 
-Where "myloginmodule" is the name.
+Where "ldap" is the module name.
 
 #### Step 2: Specify login module
 
@@ -174,7 +210,7 @@ export RDECK_JVM="-Dloginmodule.conf.name=jaas-ldap.conf \
     -Dloginmodule.name=ldap"
 ~~~~~~
 
-Note: more information about using the Executable War and useful properties are under [Getting Started - Executable War Options](../install/launcher.html#launcher-options).
+Note: more information about using the Executable War and useful properties are under [Getting Started - Executable War Options][page:administration/install/jar.md#launcher-options].
 
 **For the RPM/Deb installation**: the absolute path to the JAAS config file must be specified with the `java.security.auth.login.config` property.
 
@@ -217,6 +253,9 @@ ldap {
       userIdAttribute="uid"
       userPasswordAttribute="userPassword"
       userObjectClass="account"
+      userLastNameAttribute="sn"
+      userFirstNameAttribute="givenName"
+      userEmailAttribute="mail"
       roleBaseDn="ou=Groups,dc=test1,dc=example,dc=com"
       roleNameAttribute="cn"
       roleUsernameMemberAttribute="memberUid"
@@ -271,6 +310,15 @@ The `JettyCachingLdapLoginModule` has these configuration properties:
 
 `userObjectClass`
 :    Attribute name for user object class, default "inetOrgPerson".
+
+`userLastNameAttribute`
+:    Attribute name for user's last name, default "sn".
+
+`userFirstNameAttribute`
+:    Attribute name for user's first name, default "givenName".
+
+`userEmailAttribute`
+:    Attribute name for user's email address, default "mail".
 
 `roleBaseDn`
 :    Base DN for role membership search, e.g. "ou=Groups,dc=test1,dc=example,dc=com".
@@ -526,6 +574,11 @@ Finally, in your `ldap-activedirectory.conf` be sure to change the *providerUrl*
 
 Rundeck includes a [PAM](https://en.wikipedia.org/wiki/Pluggable_authentication_module) JAAS login module, which uses [libpam4j](https://github.com/kohsuke/libpam4j) to authenticate.
 
+In order for Rundeck to have the necessary permissions to check user credentials, the user that runs the Rundeck process must be in the `shadow` group.  
+This can be done with the command:
+
+    $ sudo addgroup rundeck shadow
+
 On debian based systems you need to install libpam4j :
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {.bash}
@@ -580,7 +633,7 @@ Configuration properties:
 * `supplementalRoles` - a comma-separated list of additional user roles to add to any authenticated user. Example: 'user,readonly'
 
 
-### JettyRolePropertyFileLoginModule
+## JettyRolePropertyFileLoginModule
 
 This module does not authenticate, and requires that `useFirstPass` or `tryFirstPass` is set to `true`, and that a previous module has `storePass` set to `true`.
 
@@ -598,12 +651,13 @@ Example properties file with dummy passwords and roles:
     admin: -,user,admin
     user1: -,user,readonly
 
-### JettyAuthPropertyFileLoginModule
+## JettyAuthPropertyFileLoginModule
 
 This module provides authentication in the same way as the [realm.properties](#PropertyFileLoginModule) mechanism, but does not use any of the role names found in the file.  It can be combined with `JettyRolePropertyFileLoginModule` by using `storePass=true`.
 
 Configuration properties:
 
+* `hotReload` - `hotReload="true"` enables the ability to modify the user list specified by `file` without having to restart Rundeck. The refresh interval for checking the file is 5 seconds. This is not configurable.
 * `file` - path to a Java Property formatted file in the format defined under [realm.properties](#realm.properties)
 
 ## Multiple Authentication Modules
@@ -654,6 +708,27 @@ Based on the flags, JAAS would attempt the following for authentication:
 2. Check username/pass against the properties file
   1. If auth succeeds, finish with successful authentication
   2. If auth fails, finish with failed authentication
+
+# Jaas Authorization Testing
+
+If you would like to test your Jaas configuration without restarting Rundeck every time you make a change to
+your Jaas configuration, you can execute the command:  
+
+    $ java -jar -Drundeck.jaaslogin=true -Dloginmodule.name=$LOGIN_MODULE_NAME -Drdeck.base=$RD_BASE_DIR rundeck.war --testauth
+
+    ex.
+
+    $ java -jar -Drundeck.jaaslogin=true -Dloginmodule.name=RDpropertyfilelogin -Drdeck.base=/etc/rundeck rundeck.war --testauth
+    $ Checking file: /etc/rundeck/server/config/jaas-loginmodule.conf
+    $ Checking login module: RDpropertyfilelogin
+    $ Enter user name: admin
+    $ Enter password admin <-- This is masked in actual use
+    $ Login Succeeded!  
+
+The Jaas configuration file you are testing against will be printed out, along with the name of the login module you are testing.  
+You will be prompted to enter a username and password. These will be compared against your current Jaas configuration.  
+If the login is successful you will see: `Login Succeeded!`  
+If the login fails a stacktrace will be printed out which will contain the details about the failure.  
 
 # Container authentication and authorization
 
@@ -740,7 +815,7 @@ with a list of all of the user roles seen by Rundeck.
 This page just means that there are no aclpolicy files
 that match those roles,
 but the apache->tomcat authorization is still working correctly.
-At this point, move on to [Access Control Policy](access-control-policy.html)
+At this point, move on to [Access Control Policy][page:administration/security/authorization.md]
 to set up access control for the listed roles.
 
 If the "User roles: " part is blank, then it may not be working correctly.

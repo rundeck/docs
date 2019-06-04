@@ -13,7 +13,7 @@ of these tools, it is possible to map the data to meet the needs of
 
 ### Definition ###
 
-The [Rundeck resource model document format](../../../man5/resource.html) and the [resource-yaml-v13](../../../man5/resource-yaml.html) format provide two attributes that help connect the dots between the
+The [Rundeck resource model document format][page:manpages/man5/resource-v13.md] and the [resource-yaml-v13][page:manpages/man5/resource-yaml-v13.md] format provide two attributes that help connect the dots between the
 Rundeck UI and the editing interface provided by the external data
 management tool. They can use `editUrl` or `remoteUrl` attributes to specify the remote URL.  The URLs can embed properties about the node to expand prior to being loaded, which allows you to e.g. submit query parameters using the node name.
 
@@ -180,12 +180,5 @@ So the JavaScript for integrating with Rundeck is then added to the following pa
 
 To complete the round-trip of editing a Node and then showing the results back in Rundeck, the ndbtest project would have to export XML formatted Resource data, and then your Rundeck project.properties file would have to point to the appropriate URL.  (This is left as an exercise to the reader.)
 
+[Tutorial][page:tutorials/index.md]
 
-
-[curl]: https://curl.haxx.se/
-[xmlstarlet]: http://xmlstar.sourceforge.net/
-[CMDB]: https://en.wikipedia.org/wiki/Configuration_management_database
-[AJAX]: https://en.wikipedia.org/wiki/Ajax_(programming)
-
-[project.properties]: configuration-file-reference.html#project.properties
-[Tutorial]: ../tutorials/index.html

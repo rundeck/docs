@@ -1,12 +1,38 @@
 # Using MySQL as a database backend
-
+> MySQL 5.7 or greater is recommended
 This is a simple guide for setting up Mysql for use with Rundeck.
 
-## Install Mysql
+## Install MySQL
 
 You can "yum install" or "apt-get install" the server, you can find installation guides for other OS [here](https://dev.mysql.com/doc/refman/5.7/en/installing.html)
 
+## Configure MySQL
+
 After install, run the [mysql_secure_installation script](https://dev.mysql.com/doc/refman/5.7/en/mysql-secure-installation.html). This will let prompt you to set the root password for mysql, as well as disable anonymous access.
+
+Set an appropriate [innodb_buffer_pool_size](https://dev.mysql.com/doc/refman/5.7/en/innodb-buffer-pool-resize.html). MySQL, like many databases, manages
+its own page cache and the buffer pool size determines how much RAM it can use! Setting this to 80% of the system memory is the common wisdom for dedicated
+servers, however you may want go higher if your server has more than 32G of RAM.
+
+### MySQL 5.6
+`5.6.3` or greater is required if using `utf8mb4` character set as the server default, and upgrading or installation may require an extra step.
+
+Configuration:
+```
+innodb_file_format=barracuda
+innodb_file_per_table=true
+innodb_large_prefix=true
+```
+
+After first Rundeck start run the following SQL queries:
+```
+use <rundeck_database>;
+ALTER TABLE `event_subscription` ROW_FORMAT=dynamic;
+ALTER TABLE `reaction` ROW_FORMAT=dynamic;
+ALTER TABLE `reaction_event` ROW_FORMAT=dynamic;
+```
+
+Restart Rundeck!
 
 ## Setup Rundeck Database
 

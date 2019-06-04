@@ -8,7 +8,7 @@ collect information.
 You can execute commands via the GUI or using rundeck command line interface.
 
 ## Using the GUI
-First go to the [Commands page](../manual/commands.html).
+First go to the [Commands page][page:manual/06-commands.md].
 
 ### Filter nodes
 To filter the nodes type in an expression or choose a saved filter. 

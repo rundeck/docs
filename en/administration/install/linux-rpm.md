@@ -25,18 +25,18 @@ Download rpm package: http://rundeck.org/downloads.html and run:
 sudo rpm -i rundeck-x.x.x.noarch.rpm rundeck-config-x.x.x.noarch.rpm
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-## Rundeck Pro
+## Rundeck Enterprise
 
 ### Install with yum 
 
-You can use this script to add the Rundeck Pro yum repo and install Rundeck Pro cluster:
+You can use this script to add the Rundeck Enterprise yum repo and install Rundeck Enterprise cluster:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {.bash}
 curl https://bintray.com/rundeckpro/rpm/rpm | sudo tee /etc/yum.repos.d/bintray-rundeckpro-rpm.repo
 sudo yum install java rundeckpro-cluster
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-When new versions of Rundeck Pro are released, you can upgrade to them using the command:
+When new versions of Rundeck Enterprise are released, you can upgrade to them using the command:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {.bash}
 sudo yum update rundeckpro-cluster
@@ -77,4 +77,4 @@ The service is ready once you see something similar to:
 
 Rundeck is now up and running!
 
-Next, learn how to [create your first Rundeck Pro project](../../manual/getting-started.html#project-setup)
+Next, learn how to [create your first Rundeck Enterprise project][page:manual/02-getting-started.md#project-setup]

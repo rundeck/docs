@@ -1,4 +1,4 @@
-% Installing on Window
+% Installing on Windows
 
 ### Prerequisites
 
@@ -124,7 +124,8 @@ This section will install Rundeck Community or Enterprise as a Service on a Wind
 
 ![Service Management Console](../../figures/service-management-console.png) 
  
-* Set JVM memory heap on `%RDECK_BASE%\etc\profile`. 
+* set JVM memory heap on `%RDECK_BASE%\etc\profile.bat`. 
+
 Replace the `RDECK_CLI_OPTS` variable with the amount of memory that you need, for example:
 
 ```

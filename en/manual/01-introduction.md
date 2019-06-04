@@ -21,12 +21,14 @@ Out of the box, Rundeck gives you capabilities that would be expensive to develo
 #### Rundeck
 At its core, Rundeck is free open source software licensed under the [Apache Software License] (v2.0), and you can participate in the project on [GitHub].  For those who write and run Rundeck jobs at small-scale usage (e.g., limited use or within a team), the open-source Rundeck delivers you the features you need, for free, forever. 
 
-#### Rundeck Pro
-The focus of [Rundeck Pro], our commercial offering, is on making Rundeck production-ready and enterprise-scale.  Rundeck Pro, built on the open source Rundeck, is the bundle of software and services you need to run Rundeck as an enterprise-class service. 
+#### Rundeck Enterpise (fka Rundeck Enterprise)
+The focus of [Rundeck Enterpise], our commercial offering, is on making Rundeck production-ready and enterprise-scale.  Rundeck Enterprise, built on the open source Rundeck, is the bundle of software and services you need to run Rundeck as an enterprise-class service. 
 
-Built and tested for the enterprise, Rundeck Pro includes exclusive features (including clustering/HA, advanced workflow, enhanced ACL management, enhanced dashboards/visualization) and Rundeck Pro exclusive plugins. Professional support and on-boarding services are also part of the Rundeck Pro subscription bundle.
+Built and tested for the enterprise, Rundeck Enterpise includes exclusive features (including clustering/HA, advanced workflow, enhanced ACL management, enhanced dashboards/visualization) and Rundeck Enterprise exclusive plugins. Professional support and on-boarding services are also part of the Rundeck Enterprise subscription bundle.
 
-[Rundeck Pro]: https://www.rundeck.com/rundeck-pro
+*NOTE: Rundeck Enterprise was recently renamed from Rundeck Enterprise. You may still see refrences to "Pro" here and there, as we work to update our documentation. Just know that they are the same thing.*
+
+[Rundeck Enterpise]: https://www.rundeck.com/rundeck-pro
 [GitHub]: https://github.com/rundeck/rundeck
 [Apache Software License]: http://www.apache.org/licenses/LICENSE-2.0.html
 
@@ -50,6 +52,6 @@ Rundeck is developed by Rundeck, Inc. and the Rundeck community. All new users a
 * Use any scripting language
 
 Already itching to install it? Jump ahead to
-[Installing Rundeck](getting-started.html#download-and-installation).
+[Installing Rundeck][page:manual/02-getting-started.md#download-and-installation].
 
 

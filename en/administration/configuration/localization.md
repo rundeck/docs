@@ -54,4 +54,4 @@ The messages ending with `.ko` use the [moment.js format](https://momentjs.com/d
 
 ## GUI Customization
 
-See [GUI Customization](gui-customization.html).
+See [GUI Customization][page:administration/configuration/gui-customization.md].

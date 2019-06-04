@@ -81,8 +81,8 @@ Clicking the "edit" link opens a new form that lets you modify all
 aspects of that option.
 
 Options can also be defined as part of a job definition and later
-loaded to the Rundeck server. See [job-xml] and [job-yaml] and 
-[rd-jobs] pages if you prefer using an textual Job definition.
+loaded to the Rundeck server. See [job-xml][page:manpages/man5/job-v20.md] and [job-yaml][page:manpages/man5/job-yaml-v12.md] and 
+[rd jobs][https://rundeck.github.io/rundeck-cli/commands/#jobs] pages if you prefer using an textual Job definition.
 
 ## Defining an option
 
@@ -366,7 +366,7 @@ is exposed to use in scripts and commands.  Make sure you acknowledge these secu
 
 ### Secure Remote Authentication Options
 
-The built-in [SSH Provider](node-execution/ssh-node-execution.html) for node execution allows using passwords for SSH and/or Sudo authentication mechanisms, and the passwords are supplied by Secure Remote Authentication Options defined in a Job.
+The built-in [SSH Provider][page:administration/projects/node-execution/ssh.md] for node execution allows using passwords for SSH and/or Sudo authentication mechanisms, and the passwords are supplied by Secure Remote Authentication Options defined in a Job.
 
 Secure Remote Authentication Options have some limitations compared to Plain and Secure options:
 
@@ -374,7 +374,7 @@ Secure Remote Authentication Options have some limitations compared to Plain and
 
 ### Using Secure Options with Job References
 
-When you [define a Job Reference step in a workflow](#job-reference-step), you can specify the arguments that are passed to it. You can pass Secure Option values and Secure Remote Authentication Option values from a top-level job to a Job Reference, but option values *cannot be passed into another option of a different type*. So a parent job can only pass option values to the Job reference if the option type is the same between the jobs.
+When you [define a Job Reference step in a workflow][page:manual/node-steps/builtin.md#job-reference-step], you can specify the arguments that are passed to it. You can pass Secure Option values and Secure Remote Authentication Option values from a top-level job to a Job Reference, but option values *cannot be passed into another option of a different type*. So a parent job can only pass option values to the Job reference if the option type is the same between the jobs.
 
 This constraint is to maintain the security design of these options:
 
@@ -406,7 +406,7 @@ So the arguments for the Job Reference might look like this:
 
 ### Secure Options using Key Storage
 
-Secure options can specify a Storage Path in lieu of a default value.  This path to the [Key Storage Facility](../administration/security/key-storage.html)
+Secure options can specify a Storage Path in lieu of a default value.  This path to the [Key Storage Facility][page:administration/security/key-storage.md]
 will be loaded as the option value when one is not supplied.
 
 The path must indicate a stored `password` entry in the storage facility.
@@ -447,7 +447,7 @@ Option model providers are configured on a per-Option basis (where a Job may hav
 
 ### Configuration ###
 
-Each Option entry for a Job can be configured to get the set of possible values from a remote URL.  If you are authoring the Jobs via [job.xml file format](../man5/job-xml.html#option), simply add a `valuesUrl` attribute for the `<option>`.  If you are modifying the Job in the Rundeck web GUI, you can entry a URL in the "Remote URL" field for the Option.
+Each Option entry for a Job can be configured to get the set of possible values from a remote URL.  If you are authoring the Jobs via [job.xml file format][page:manpages/man5/job-v20.md#option], simply add a `valuesUrl` attribute for the `<option>`.  If you are modifying the Job in the Rundeck web GUI, you can entry a URL in the "Remote URL" field for the Option.
 
 e.g.:
 
@@ -508,7 +508,7 @@ Name Value List with default selections:
 
 ### URL connection parameters
 
-You can configure timeouts globally as described in [Configuration - Job Remote Option URL connection parameters](../administration/configuration/configuration-file-reference.html#rundeck-config.properties).
+You can configure timeouts globally as described in [Configuration - Job Remote Option URL connection parameters][page:administration/configuration/config-file-reference.md#rundeck-config.properties].
 
 You can also specify these connection parameters on a per-URL basis:
 
@@ -636,3 +636,26 @@ will display a warning message:
 ![](../figures/fig0901.png)
     
 In this case, the option will be allowed to use a textfield to set the value.
+
+## Linking to Jobs and providing option values
+
+You can create a URL to link to a specific Job, and pre-fill some of the option values by adding URL query parameters to the Job's URL.
+
+Query Parameters format for options:
+
+* `opt.NAME` : provide a value for an option named `NAME`
+
+For example, if the URL for the Job is:
+
+    http://rundeck:4440/project/MyProject/job/show/ab698597-9753-4e98-bdab-90ebf395b0d0
+
+Then you can pre-fill the values for `myopt1` and `myotheropt` by appending this to the URL:
+
+    ?opt.myopt1=some+value&opt.myotheropt=another+value
+
+The result would be:
+
+    http://rundeck:4440/project/MyProject/job/show/ab698597-9753-4e98-bdab-90ebf395b0d0?opt.myopt1=some+value&opt.myotheropt=another+value
+
+
+Note: be sure to properly escape the strings for option values, and if necessary for the option names as well.

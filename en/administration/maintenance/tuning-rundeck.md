@@ -8,7 +8,7 @@ Your system restricts the number of open file handles per process
 but these limitations can be adjusted.
 
 If your installation attempts to exceed the limit, you will see an error
-like the one shown below in your [service.log](logging.html) file.
+like the one shown below in your [service.log][page:administration/maintenance/logs.md] file.
 
     Too many open files
 
@@ -54,8 +54,8 @@ In a new shell, run the ulimit command to set the new level:
 ulimit -n 65535
 ~~~~~
 
-The ulimit setting can be set in the [rundeckd](startup-and-shutdown.html#launcher)
-startup script, or [profile](../configuration/configuration-file-reference.html#profile).
+The ulimit setting can be set in the [rundeckd][page:administration/maintenance/startup.md#launcher]
+startup script, or [profile][page:administration/configuration/config-file-reference.md#profile].
 
 Restart Rundeck.
 
@@ -72,7 +72,7 @@ Heap size is governed by the following startup parameters:
 ``-Xms<initial heap size>`` and ``-Xmx<maximum heap size>``
 
 
-You can increase these by updating the Rundeck [profile](../configuration/configuration-file-reference.html#profile).
+You can increase these by updating the Rundeck [profile][page:administration/configuration/config-file-reference.md#profile].
 To see the current values, grep the ``profile`` for
 the Xmx and Xms patterns:
 
@@ -82,19 +82,13 @@ the Xmx and Xms patterns:
 egrep '(Xmx|Xms)' $RDECK_BASE/etc/profile
 ~~~~~
 
-**RPM installs:**
+**RPM and DEB installs:**
 
 ~~~~~ {.bash}
 egrep '(Xmx|Xms)' /etc/rundeck/profile
 ~~~~~
 
-The default settings initialized by the installer
-sets these to 1024 megabytes maximum
-and 256 megabytes initial:
-
-~~~~~ {.bash}
-export RDECK_JVM="$RDECK_JVM -Xmx1024m -Xms256m"
-~~~~~
+The default settings initialized by the installer sets these to 1024 megabytes maximum and 256 megabytes initial.
 
 _Sizing advice_
 
@@ -105,12 +99,18 @@ Several factors drive memory usage in Rundeck:
 * Concurrent jobs
 * Number of managed nodes
 
-For example, if your installation has dozens of active users
-that manage a large environment (1000+ nodes), and has
-sufficient system memory, the following sizings might be more suitable:
+For example, if your installation has dozens of active users that manage a large environment (1000+ nodes), and has sufficient system memory, the following sizings might be more suitable:
 
+In the **Launcher Install** you can edit the ``$RDECK_BASE/etc/profile`` file.
+
+In **RPM** create/edit ``/etc/sysconfig/rundeckd`` and add below line.
 ~~~~~ {.bash}
-export RDECK_JVM="$RDECK_JVM -Xmx4096m -Xms1024m"
+RDECK_JVM_SETTINGS="$RDECK_JVM_SETTINGS -Xmx4096m -Xms1024m"
+~~~~~
+
+In **DEB** create/edit ``/etc/default/rundeckd`` and add below line.
+~~~~~ {.bash}
+RDECK_JVM_SETTINGS="$RDECK_JVM_SETTINGS -Xmx4096m -Xms1024m"
 ~~~~~
 
 ### Quartz job threadCount
@@ -151,10 +151,20 @@ _Note_: For more background information on JMX, see
 "[Java theory and practice: Instrumenting applications with JMX.](https://www.ibm.com/developerworks/library/j-jtp09196/)".
 
 Enable local JMX monitoring by adding the ``com.sun.management.jmxremote``
-flag to the startup parameters in the [profile](../configuration/configuration-file-reference.html#profile).
+flag to the startup parameters in the [profile][page:administration/configuration/config-file-reference.md#profile] for **Launcher Install**.
 
 ~~~~~ {.bash}
 export RDECK_JVM="$RDECK_JVM -Dcom.sun.management.jmxremote"
+~~~~~
+
+For **RPM** create/edit ``/etc/sysconfig/rundeckd`` and add below line.
+~~~~~ {.bash}
+RDECK_JVM_SETTINGS="$RDECK_JVM_SETTINGS -Dcom.sun.management.jmxremote"
+~~~~~
+
+For **DEB** create/edit ``/etc/default/rundeckd`` and add below line.
+~~~~~ {.bash}
+RDECK_JVM_SETTINGS="$RDECK_JVM_SETTINGS -Dcom.sun.management.jmxremote"
 ~~~~~
 
 You use a JMX client to monitor JMX agents.
@@ -171,7 +181,7 @@ If you are executing commands across many hundreds or thousands of hosts, the bu
 
 ### Built in SSH plugins
 
-If you are interested in using the built in [SSH plugins](../../manual/node-execution/ssh-node-execution.html), here are some details about how it performs when executing commands across very large numbers of nodes. For these tests, Rundeck was running on an 8 core, 32GB RAM m2.4xlarge AWS EC2 instance.
+If you are interested in using the built in [SSH plugins][page:administration/projects/node-execution/ssh.md], here are some details about how it performs when executing commands across very large numbers of nodes. For these tests, Rundeck was running on an 8 core, 32GB RAM m2.4xlarge AWS EC2 instance.
 
 We chose the `rpm -q` command which checks against the rpm database to see if a particular package was installed.  For 1000 nodes we saw an average execution of 52 seconds.  A 4000 node cluster  took roughly 3.5 minutes, and 8000 node cluster about 7 minutes.
 
@@ -184,5 +194,5 @@ It is possible to offload SSL connection processing by using an SSL termination 
 ### Resource provider
 
 Rundeck projects obtain information about nodes via a
-[resource provider](../configuration/resource-model-sources/index.html). If your resource provider is a long blocking process (due to slow responses from a backend service), it can slow down or even hang up Rundeck. Be sure to make your resource provider work asynchronously.
+[resource provider][page:administration/projects/resource-model-sources/index.md]. If your resource provider is a long blocking process (due to slow responses from a backend service), it can slow down or even hang up Rundeck. Be sure to make your resource provider work asynchronously.
 Also, consider using caching when possible.

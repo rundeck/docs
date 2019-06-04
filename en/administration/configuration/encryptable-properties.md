@@ -1,6 +1,6 @@
-% Rundeck PRO Config Property Encryption
+% Rundeck Enterprise Config Property Encryption
 
-All Rundeck PRO bundles come with a feature that allows you to encrypt the values in the rundeck-config.properties file.
+All Rundeck Enterprise bundles come with a feature that allows you to encrypt the values in the rundeck-config.properties file.
 
 ### Approach
 To use encrypted properties in Rundeck you will have a master password that will be used to encrypt and decrypt the other passwords you wish to use in the rundeck-config.properties file.
@@ -8,7 +8,7 @@ To use encrypted properties in Rundeck you will have a master password that will
 For instance you might want to encrypt the bind password to your LDAP server. Let's say your LDAP bind password is `binder123`. You will need a master password to encrypt this value. We will use `1PwdToBindThem$` for the master password.
 
 ### Encrypting Property values
-Rundeck Pro has a feature to allow you to generate encrypted passwords using the Jasypt encryption library. The following instructions show how to encrypt a password with this utility from the command line.
+Rundeck Enterprise has a feature to allow you to generate encrypted passwords using the Jasypt encryption library. The following instructions show how to encrypt a password with this utility from the command line.
 
 cd into the directory where your rundeck.war is located  
 run: ```java -jar rundeck.war --encryptpwd Jasypt```  
@@ -33,7 +33,7 @@ You will take the `encrypted:` value from the ENCRYPTED OUTPUT section which wil
 To decrypt the encrypted properties in your rundeck-config.properties file you will need to set the environment variable `RUNDECK_PROP_DECRYPTER_PWD` with the value of your master password before starting Rundeck.
 
 In our example we would do: `export RUNDECK_PROP_DECRYPTER_PWD=1PwdToBindThem$`
-then we would start our Rundeck PRO installation. After the application has completed the bootstrap process and is responding to requests, the environment variable can be unset for security purposes.
+then we would start our Rundeck Enterprise installation. After the application has completed the bootstrap process and is responding to requests, the environment variable can be unset for security purposes.
 
 
 ### Advanced Usage

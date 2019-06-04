@@ -165,7 +165,7 @@ If you leave it at the default value of "No", then if any node dispatches fail f
 In addition to entering static values that match the nodes, you can also use 
 more dynamic values.
 
-If you have defined Options for the Job (see [Job Options](#job-options)), you
+If you have defined Options for the Job (see [Job Options][page:manual/job-options.md]), you
 can use the values submitted by the user when the job is executed as part of the
 node filtering.
 
@@ -189,7 +189,7 @@ You can select an Orchestrator plugin to use instead, which can choose its own l
 for how many and what order to process the nodes.
 
 To learn how to develop your own Orchestrator plugin
-see [Plugin Developer Guide - Orchestrator Plugin](../developer/orchestrator-plugin.html).
+see [Plugin Developer Guide - Orchestrator Plugin][page:developer/09-orchestrator-plugin.md].
 
 ### Scheduled Jobs
 
@@ -214,7 +214,7 @@ expression.
 
 Use the crontab syntax referenced here: [Quartz Scheduler crontrigger].
 
-A good place to generate and test job crontabs is [here](https://www.freeformatter.com/cron-expression-generator-quartz.html).
+A good place to generate, validate and test job crontabs is [here](https://www.freeformatter.com/cron-expression-generator-quartz.html).
 
 After the Job has been updated to include a schedule, a clock icon
 will be displayed when the Job is listed:
@@ -241,7 +241,7 @@ When the Job starts, all "start" notifications will be triggered.
 
 When the Job finishes executing, all "success" notifications will be triggered if the Job is successful.  Otherwise, all "failure" notifications will be triggered if the Job fails or is cancelled.
 
-For a full list of notification plugins, see [Job Plugins - Notifications](job-plugins.html#notifications)
+For a full list of notification plugins, see [Job Plugins - Notifications][page:manual/job-plugins.md#notifications]
 
 ## Deleting Jobs
 
@@ -281,7 +281,7 @@ choose either XML or YAML format to download the definition.
 Click the preferred format to initiate the file download to your
 browser.
 
-To export jobs to a git repository, see the [Git plugin](scm/scm-git-plugin.html#configuring-git-export)
+To export jobs to a git repository, see the [Git plugin][page:administration/projects/scm/git.md#configuring-git-export]
 
 ## Importing Job definitions
 
@@ -316,4 +316,4 @@ Choose an option where it says "Imported Jobs:":
 Click the Upload button. If there are any errors with the Job
 definitions in the XML file, they will show up on the page.  
 
-To import jobs from a git repository, see the [Git plugin](scm/scm-git-plugin.html#git-import-configuration)
+To import jobs from a git repository, see the [Git plugin][page:administration/projects/scm/git.md#git-import-configuration]

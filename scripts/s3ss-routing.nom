@@ -1,0 +1,72 @@
+RoutingRules
+    RoutingRule
+        Condition
+            KeyPrefixEquals latest/
+        Redirect
+            HostName rundeck.org
+            ReplaceKeyPrefixWith 3.0.x/
+    RoutingRule
+        Condition
+            KeyPrefixEquals 3.0.0-20180727
+        Redirect
+            HostName rundeck.org
+            ReplaceKeyPrefixWith 3.0.0
+    RoutingRule
+        Condition
+            KeyPrefixEquals 3.0.1-20180803
+        Redirect
+            HostName rundeck.org
+            ReplaceKeyPrefixWith 3.0.1
+    RoutingRule
+        Condition
+            KeyPrefixEquals 3.0.2-20180817
+        Redirect
+            HostName rundeck.org
+            ReplaceKeyPrefixWith 3.0.2
+    RoutingRule
+        Condition
+            KeyPrefixEquals 3.0.3-20180824
+        Redirect
+            HostName rundeck.org
+            ReplaceKeyPrefixWith 3.0.3
+    RoutingRule
+        Condition
+            KeyPrefixEquals 3.0.4-20180827
+        Redirect
+            HostName rundeck.org
+            ReplaceKeyPrefixWith 3.0.4
+    RoutingRule
+        Condition
+            KeyPrefixEquals 3.0.5-20180828
+        Redirect
+            HostName rundeck.org
+            ReplaceKeyPrefixWith 3.0.5
+    RoutingRule
+        Condition
+            KeyPrefixEquals 3.0.6-20180917
+        Redirect
+            HostName rundeck.org
+            ReplaceKeyPrefixWith 3.0.6
+    RoutingRule
+        Condition
+            KeyPrefixEquals 3.0.7-20181008
+        Redirect
+            HostName rundeck.org
+            ReplaceKeyPrefixWith 3.0.7
+    RoutingRule
+        Condition
+            KeyPrefixEquals 3.0.8-20181029
+        Redirect
+            HostName rundeck.org
+            ReplaceKeyPrefixWith 3.0.8
+    RoutingRule
+        Condition
+            KeyPrefixEquals 3.0.9-20181127
+        Redirect
+            HostName rundeck.org
+            ReplaceKeyPrefixWith 3.0.9
+    RoutingRule
+        Condition
+            KeyPrefixEquals docs/administration/access-control-policy.html
+        Redirect
+            ReplaceKeyPrefixWith docs/administration/security/access-control-policy.html

@@ -11,7 +11,7 @@ Name: <span style="color: Tomato"><span class="glyphicon glyphicon-knight"></spa
 
 ## Upgrading from Earlier versions
 
-* See the [Upgrading Guide](../upgrading/index.html)
+* See the [Upgrading Guide][page:upgrading/upgrading.md]
 
 ## Notes
 

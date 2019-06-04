@@ -108,3 +108,35 @@ dt, dd{
 dd{
   margin-left: 2em;
 }
+
+/*
+  enable .collapse and .collapse.in to work correctly
+  within the .breadcrumb ol
+*/
+
+.breadcrumb>li.collapse{
+  display:none;
+}
+.breadcrumb>li.collapse.in{
+  display:inline-block;
+}
+.navquerytrigger{
+  display: inline-block;
+}
+.breadcrumb>li.collapse+li:before {
+    padding: 0 ;
+    color: #ccc;
+    content: "";
+}
+.breadcrumb>li.collapse.in+li:before {
+    padding: 0 5px;
+    color: #ccc;
+    content: "/\00a0";
+}
+
+.autocomplete-suggestions { border: 1px solid #999; background: #FFF; overflow: auto; }
+.autocomplete-suggestion { padding: 2px 5px; white-space: nowrap; overflow: hidden; }
+.autocomplete-selected { background: #F0F0F0; }
+.autocomplete-suggestions strong { font-weight: normal; color: #3399FF; }
+.autocomplete-group { padding: 2px 5px; }
+.autocomplete-group strong { display: block; border-bottom: 1px solid #000; }

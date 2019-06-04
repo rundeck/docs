@@ -17,7 +17,7 @@ It can be a replacement for the built-in SSH-based remote execution and SCP-base
 allow you to user whatever external mechanism you wish.
 
 Note: this plugin offers similar functionality to the 
-[Script Plugin Development](../../developer/plugin-development.html#script-plugin-development) 
+[Script Plugin Development][page:developer/01-plugin-development.md#script-plugin-development] 
  model.  You may want to use this plugin to test your scripts, and
 then later package them into a standalone plugin using that model.  
 

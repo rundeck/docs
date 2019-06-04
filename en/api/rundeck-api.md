@@ -55,14 +55,36 @@ View the [Index](#index) listing API paths.
 
 Changes introduced by API Version number:
 
+**Version 31**:
+
+* New Endpoint:
+    - [`GET /api/V/job/[ID]/forecast`][/api/V/job/[ID]/forecast] - Get a forecast for a specific amount of days of the job by ID.
+
+**Version 30**:
+
+* Updated Endpoints:
+    - [`GET /api/V/user/roles`][/api/V/user/roles] - List the roles of the authenticated user
+
+**Version 29**:
+
+* New Endpoints:
+    - [`GET /api/V/executions/metrics`][/api/V/executions/metrics] - Get metrics over a system-wide execution query.
+    - [`GET /api/V/project/[PROJECT]/executions/metrics`][/api/V/project/[PROJECT]/executions/metrics] - Get metrics over a project-wide execution query.
+
+**Version 28**:
+
+* Updated Endpoints:
+    - [`GET /api/V/project/[PROJECT]/export`][/api/V/project/[PROJECT]/export] - exportScm parameter.
+    - [`PUT /api/V/project/[PROJECT]/import`][/api/V/project/[PROJECT]/import] - importScm parameter.
+
 **Version 27**:
 
-* Udated Endpoints:
+* Updated Endpoints:
     - [`GET /api/V/user/list`][/api/V/user/list] - More info from the user.
 
 **Version 26**:
 
-* Udated Endpoints:
+* Updated Endpoints:
     - [`GET /api/V/projects`][/api/V/projects] - label to projects response.
 
 **Version 25**:
@@ -92,7 +114,7 @@ Changes introduced by API Version number:
 * Updated Endpoints.
     - [`GET /api/V/project/[PROJECT]/resources`][/api/V/project/[PROJECT]/resources] - Default response format is `application/json` for API v23 and later
     - [`GET /api/V/project/[PROJECT]/resource/[NAME]`][/api/V/project/[PROJECT]/resource/[NAME]] - Default response format is `application/json` for API v23 and later
-    
+
 **Version 22**:
 
 * Updated Endpoints.
@@ -128,7 +150,7 @@ Changes introduced by API Version number:
     - [`GET /api/19/project/[PROJECT]/export/async`][/api/V/project/[PROJECT]/export/async] - Async project archive export
     - [`GET /api/19/project/[PROJECT]/export/status/[TOKEN]`][/api/V/project/[PROJECT]/export/status/[TOKEN]] - Async project archive export status
     - [`GET /api/19/project/[PROJECT]/export/download/[TOKEN]`][/api/V/project/[PROJECT]/export/download/[TOKEN]] - Async project archive export download
-    
+
 * Updated Endpoints.
     - [`POST /api/19/tokens/[USER]`][POST /api/V/tokens/[USER]] - Specify token roles and expiration
     - [`GET /api/19/tokens/[USER]`][/api/V/tokens/[USER]] - List tokens for users
@@ -159,7 +181,7 @@ Changes introduced by API Version number:
     - [`/api/17/system/logstorage/incomplete/resume`][/api/V/system/logstorage/incomplete/resume] - Resume incomplete log storage processing.
 
 * Updated Endpoints.
-    - [`/api/17/project/[PROJECT]/jobs`][/api/V/project/[PROJECT]/jobs] 
+    - [`/api/17/project/[PROJECT]/jobs`][/api/V/project/[PROJECT]/jobs]
         - Response now includes whether a job is enabled, scheduled, schedule is enabled, and in Cluster mode includes the cluster mode server UUID of the schedule owner, and whether that is the current server or not.
         - add `?scheduledFilter=true/false` returns scheduled/unscheduled jobs only
         - and `?serverNodeUUIDFilter=[uuid]` returns scheduled jobs owned by the given cluster member
@@ -460,7 +482,7 @@ Some endpoints also support using a `format` query parameter to specify the expe
 Authentication can be done in two different ways, either with Token based authentication,
 or with a username and password.
 
-Note that in either case, **it is recommended that you enable SSL Support for the Rundeck server** so that communication is encrypted at all times. For more information about using SSL, see [Security - Configuring Rundeck for SSL](../administration/security/configuring-ssl.html).
+Note that in either case, **it is recommended that you enable SSL Support for the Rundeck server** so that communication is encrypted at all times. For more information about using SSL, see [Security - Configuring Rundeck for SSL][page:administration/security/ssl.md].
 
 ### Token Authentication
 
@@ -471,14 +493,14 @@ To obtain an API Token, you must first log in to the Rundeck GUI using a user ac
 Click on your username in the header of the page, and you will be shown your User Profile page.
 From this page you can manage your API Tokens.
 
-**Note**: You must have appropriate authorization to generate a token. See [API Token Authorization][].
+**Note**: You must have appropriate authorization to generate a token. See [API Token Authorization][page:administration/security/authorization.md#api-token-authorization].
 
 Depending on what authorization level you have, you can generate a token with a certain set of *Authorization Roles*
 and an *Expiration Period*.
 
 Click "Generate API Token" to create a new one. The unique string that is shown is the API Token.
 
-Alternately you can define tokens in static file, by setting the `rundeck.tokens.file` in [framework.properties](../administration/configuration/configuration-file-reference.html#framework.properties).
+Alternately you can define tokens in static file, by setting the `rundeck.tokens.file` in [framework.properties][page:administration/configuration/config-file-reference.md#framework.properties].
 
 You must include one of the following with every HTTP request to the API:
 
@@ -503,8 +525,6 @@ Using the HTTP Header:
     GET /api/1/projects HTTP/1.1
     X-Rundeck-Auth-Token: E4rNvVRV378knO9dp3d73O0cs1kd0kCd
     ...
-
-[API Token Authorization]: ../administration/security/access-control-policy.html#api-token-authorization
 
 ### Password Authentication
 
@@ -1194,19 +1214,19 @@ The `memory` section describes memory usage in bytes:
 
 Several Metrics API endpoints are linked in the System Info response.
 
-See [GET /api/V/metrics][].
+See [GET /api/V/metrics][/api/V/metrics].
 
 ## List Metrics
 
-List enabled Metrics endpoints. 
+List enabled Metrics endpoints.
 
 *Configuration*
 
-The Metrics endpoints are enabled by default, but can be disabled based on application configuration.  See: [Administration > Configuration File Reference](../administration/configuration/configuration-file-reference.html#metrics-api-endpoints).
+The Metrics endpoints are enabled by default, but can be disabled based on application configuration.  See: [Administration > Configuration File Reference][page:administration/configuration/config-file-reference.md#metrics-api-endpoints].
 
 *ACL Requirement*
 
-They require `read` access to the `system` application scope resource.  See: [Access Control Policy > Application Scope](../administration/security/access-control-policy.html#application-scope-resources-and-actions).
+They require `read` access to the `system` application scope resource.  See: [Access Control Policy > Application Scope][page:administration/security/authorization.md#application-scope-resources-and-actions].
 
 **Request:**
 
@@ -1565,7 +1585,7 @@ Returns results of some health checks.
 
 **Request:**
 
-    GET /api/25/metrics
+    GET /api/25/metrics/healthcheck
 
 **Response:**
 
@@ -1883,6 +1903,34 @@ Success response, with profile updated data:
 }
 ~~~
 
+### List roles
+
+Get a list of the authenticated user's roles
+
+**Request:**
+
+    GET /api/30/user/roles
+
+**Response:**
+
+Success response, with a list of roles:
+
+`Content-Type: application/xml`:
+
+~~~ {.xml}
+<roles>
+  <role>admin</role>
+  <role>user</role>
+</roles>
+~~~
+
+`Content-Type: application/json`:
+
+~~~ {.json}
+{
+    "roles":["admin","user"]
+}
+~~~
 
 ## Log Storage
 
@@ -2429,7 +2477,7 @@ any policy files in the normal filesystem locations (e.g. `$RDECK_BASE/etc`).
 For more information about ACL Policies see:
 
 * [ACLPOLICY format][ACLPOLICY]
-* [Access Control Policy](../administration/security/access-control-policy.html)
+* [Access Control Policy][page:administration/security/authorization.md]
 
 ### List System ACL Policies
 
@@ -2523,7 +2571,7 @@ Use `POST` to create a policy.
 **Request:**
 
     POST /api/14/system/acl/name.aclpolicy
-    
+
 If the `Content-Type` is `application/yaml` or `text/plain`, then the request body is the ACL policy contents directly.
 
 Otherwise, you can use XML or JSON in the same format as returned by [Get an ACL Policy](#get-an-acl-policy):
@@ -2721,12 +2769,12 @@ In Cluster mode, additional information about what server UUID is the schedule o
 * `serverNodeUUID` UUID of the schedule owner server for this job
 * `serverOwner` boolean value whether the target server is the owner, `true/false`.
 
-`Content-Type: application/xml`: 
+`Content-Type: application/xml`:
 
 ~~~~~~~~~~ {.xml}
-<job id="ID" href="[API url]" permalink="[GUI URL]" scheduled="true/false" scheduleEnabled="true/false" 
+<job id="ID" href="[API url]" permalink="[GUI URL]" scheduled="true/false" scheduleEnabled="true/false"
   enabled="true/false"
-  serverNodeUUID="[UUID]" 
+  serverNodeUUID="[UUID]"
   serverOwner="true/false"
   >
     <name>Job Name</name>
@@ -2815,7 +2863,7 @@ This is the same functionality as the `Retry Failed Nodes ...` button on the exe
 
     POST /api/24/job/[ID]/retry/[EXECID]
 
-Optional parameters. 
+Optional parameters.
 All of this parameters are going to be populated with the execution values unless they are included in the call:
 
 * `argString`: argument string to pass to the job, of the form: `-opt value -opt2 value ...`.
@@ -2869,9 +2917,9 @@ The following parameters can also be used to narrow down the result set.
 
 **Response:**
 
-If you specify `format=xml`, then the output will be in [job-xml](../man5/job-xml.html) format.
+If you specify `format=xml`, then the output will be in [job-xml][page:manpages/man5/job-v20.md] format.
 
-If you specify `format=yaml`, then the output will be in [job-yaml](../man5/job-yaml.html) format.
+If you specify `format=yaml`, then the output will be in [job-yaml][page:manpages/man5/job-yaml-v12.md] format.
 
 If an error occurs, then the output will be in XML format, using the common `result` element described in the [Response Format][] section.
 
@@ -2980,9 +3028,9 @@ Optional parameters:
 
 **Response:**
 
-If you specify `format=xml`, then the output will be in [job-xml](../man5/job-xml.html) format.
+If you specify `format=xml`, then the output will be in [job-xml][page:manpages/man5/job-v20.md] format.
 
-If you specify `format=yaml`, then the output will be in [job-yaml](../man5/job-yaml.html) format.
+If you specify `format=yaml`, then the output will be in [job-yaml][page:manpages/man5/job-yaml-v12.md] format.
 
 If an error occurs, then the output will be in XML format, using the common `result` element described in the [Response Format][] section.
 
@@ -3445,7 +3493,7 @@ is the option name. The filename is specified normally within the multi-part req
 }
 ~~~~~~~~~~~~
 
-#### Example 
+#### Example
 
 To upload a file for an option `myfile` and run a job with the file:
 
@@ -3605,6 +3653,71 @@ Get info about an uploaded file given its ID.
   <execId>2741</execId>
 </file>
 ~~~
+
+### Get Job Forecast
+
+Get a forecast for a specific amount of days of the job by ID.
+
+**Request:**
+
+    GET /api/31/job/[ID]/forecast
+
+Query Parameters:
+
+* `time`: Time lapse to search the forecast (default: 1d). The format is "XY" where X is an integer, and "Y" is one of:
+    * `s`: second
+    * `n`: minute
+    * `h`: hour
+    * `d`: day
+    * `w`: week
+    * `m`: month
+    * `y`: year
+* `max`: Maximum number of items to return (default: no limit).
+
+
+
+**Response:**
+
+`Content-Type: application/xml`: A single job element with the array `futureScheduledExecutions`:
+
+~~~~~~~~~~ {.xml}
+<job id="ID" href="[API url]" permalink="[GUI URL]" scheduled="true/false" scheduleEnabled="true/false"
+   enabled="true/false" averageDuration="[ms]"
+   >
+    <name>Job Name</name>
+    <group>Job Group</group>
+    <futureScheduledExecutions>
+        <date>[W3C date]</date>
+        <date>[W3C date]</date>
+    </futureScheduledExecutions>
+    <project>Project Name</project>
+    <description>...</description>
+</job>
+~~~~~~~~~~~~
+
+`Content-Type: application/json`
+
+A single object:
+
+~~~~~~~~~~ {.json}
+{
+    "href": "[API url]",
+    "futureScheduledExecutions": [
+        "[W3C date]",
+        "[W3C date]",
+        "[W3C date]",
+    ],
+    "id": "[ID]",
+    "scheduleEnabled": true/false,
+    "scheduled": true/false,
+    "enabled": true/false,
+    "permalink": "[GUI URL]",
+    "group": "[group]",
+    "description": "[description]",
+    "project": "[project]",
+    "name": "[name]"
+}
+~~~~~~~~~~~~
 
 ## Executions
 
@@ -3929,7 +4042,7 @@ Delete an execution by ID.
 
 *Authorization requirement*:
 
-* Requires the `delete_execution` action allowed for a `project` in the `application` context. See: [Administration - Access Control Policy - Application Scope Resources and Actions](../administration/security/access-control-policy.html#application-scope-resources-and-actions)
+* Requires the `delete_execution` action allowed for a `project` in the `application` context. See: [Administration - Access Control Policy - Application Scope Resources and Actions][page:administration/security/authorization.md#application-scope-resources-and-actions]
 
 ### Bulk Delete Executions
 
@@ -4080,6 +4193,81 @@ Paging parameters:
 **Response**
 
 See [Listing Running Executions](#listing-running-executions).
+
+### Execution Query Metrics
+
+Obtain metrics over the result set of an execution query. The query can be issued over all executions on the system, or over the executions of a single project depending on the variant used.
+
+**Request:**
+
+    GET /api/29/executions/metrics
+    GET /api/29/project/[PROJECT]/executions/metrics
+
+To narrow down the result set over which the metrics will be calculated, you can use the same parameters as [Execution Query](#execution-query).
+
+Paging parameters will affect the result by limiting the executions that will be considered on the calculation:
+
+* `max`: maximum number of results to include in calculation. (default: unlimited)
+* `offset`: offset for first result to include. (default: 0)
+
+**Response**
+
+`Content-Type: application/xml`
+
+A single result element with `<duration>` containing duration info, `<total>` with total count,
+and a `<status>` element with per-status counts, containing one entry for each available status. If no entry exists for a given status,
+then the value is 0 for that status:
+
+~~~~~~~~~~ {.xml}
+<result>
+  <duration>
+    <average>0s</average>
+    <min>0s</min>
+    <max>39s</max>
+  </duration>
+  <total>1325</total>
+  <status>
+      <running>1</running>
+      <other>4</other>
+      <aborted>21</aborted>
+      <failed>88</failed>
+      <succeeded>1208</succeeded>
+      <timedout>1</timedout>
+      <failed-with-retry>1</failed-with-retry>
+      <scheduled>1</scheduled>
+  </status>
+</result>
+~~~~~~~~~~
+
+`Content-Type: application/json`
+
+An object with `duration` entry containing duration stats, `total` with total executions, `status` entry
+with per-status counts.
+
+~~~~~~~~~~ {.json}
+{
+    "duration": {
+        "average": "0s",
+        "min": "0s",
+        "max": "39s"
+    },
+    "total": 1325,
+    "status": {
+        "running": 1,
+        "other": 4,
+        "aborted": 21,
+        "failed": 88,
+        "succeeded": 1208,
+        "timedout": 1,
+        "failed-with-retry":1,
+        "scheduled": 1,
+    }
+}
+~~~~~~~~~~
+
+Note that any status count with a value of 0 will be omitted in both json and xml versions.
+
+Possible execution status values are listed under [Listing Running Executions].
 
 ### Execution State
 
@@ -4614,7 +4802,7 @@ the result data.
 In this mode, Log Entries are compacted by only including the changed values from the
 previous Log Entry in the list.  The first Log Entry in the results will always have complete information.  Subsequent entries may include only changed values.
 
-In JSON format, if the `compactedAttr` value is `log` in the response data, and only the `log` value changed relative to a previous Log Entry, the Log Entry may consist only of the log message string. That is, the array entry will be a string, not a hash. 
+In JSON format, if the `compactedAttr` value is `log` in the response data, and only the `log` value changed relative to a previous Log Entry, the Log Entry may consist only of the log message string. That is, the array entry will be a string, not a hash.
 
 When no values changed from the previous Log Entry, the Log Entry will be an empty hash.
 
@@ -4628,7 +4816,7 @@ In this example, four log entries are included. The first includes all Log Entry
 The second is only a String, indicating only `log` value changed.
 The third is an empty hash, indicating the previous Log Entry was repeated identically.
 The fourth specifies a new value for `stepctx` and `log` and `level` to use.
-The fifth specifies a `node` and `stepctx` of `null`: indicating the `node` and `stepctx` values should be removed for 
+The fifth specifies a `node` and `stepctx` of `null`: indicating the `node` and `stepctx` values should be removed for
 this Log Entry.
 
 ~~~{.json}
@@ -4965,7 +5153,7 @@ new execution by ID:
 ## Key Storage ###
 
 Upload and manage public and private key files and passwords.
-For more information see the [Administration - Key Storage](../administration/security/key-storage.html) document.
+For more information see the [Administration - Key Storage][page:administration/security/key-storage.md] document.
 
 Keys are stored via Rundeck's *Storage* facility.  This is a path-based interface to manage files.  The underlying storage may be on disk or in a database.
 
@@ -5428,7 +5616,7 @@ Response will be
 
 ### Project Archive Export ###
 
-Export a zip archive of the project.  Requires `export` authorization for the project. Performs the export synchronously. 
+Export a zip archive of the project.  Requires `export` authorization for the project. Performs the export synchronously.
 (See [Project Archive Export Async][/api/V/project/[PROJECT]/export/async] for asynchronous export.)
 
     GET /api/11/project/[PROJECT]/export
@@ -5450,6 +5638,10 @@ In APIv19 or later:
 * `exportConfigs` true/false, include project configuration
 * `exportReadmes` true/false, include project readme/motd files
 * `exportAcls` true/false, include project ACL Policy files, if authorized
+
+In APIv28 or later:
+
+* `exportScm` true/false, include project SCM configuration, if authorized
 
 GET Examples:
 
@@ -5518,11 +5710,11 @@ Response content type is `application/zip`
 
 ### Project Archive Import ###
 
-**Request:** 
+**Request:**
 
 Import a zip archive to the project. Requires `import` authorization for the project.
 
-    PUT /api/14/project/[PROJECT]/import{?jobUuidOption,importExecutions,importConfig,importACL}
+    PUT /api/14/project/[PROJECT]/import{?jobUuidOption,importExecutions,importConfig,importACL,importScm}
 
 Parameters:
 
@@ -5530,6 +5722,7 @@ Parameters:
 + `importExecutions` (optional, boolean, `true/false`) ... If true, import all executions and logs from the archive (default). If false, do not import executions or logs.
 + `importConfig` (optional,boolean,`true/false`) ... If true, import the project configuration from the archive. If false, do not import the project configuration (default).
 + `importACL` (optional,boolean,`true/false`) ... If true, import all of the ACL Policies from the archive. If false, do not import the ACL Policies (default).
++ `importScm` (optional,boolean,`true/false`) ... If true, import SCM configuration from the archive. If false, do not import the SCM configuration (default).
 
 Expected Request Content:
 
@@ -5600,7 +5793,7 @@ Response will indicate whether the imported contents had any errors:
 
 ### Updating and Listing Resources for a Project
 
-Update or retrieve the Resources or Sources for a project. 
+Update or retrieve the Resources or Sources for a project.
 
 Each Project can have multiple resource Sources.  Sources can be read-only, or writeable.
 
@@ -5789,7 +5982,7 @@ however the URL is rooted under the Project's URL path: `/api/13/project/[PROJEC
 For more information about ACL Policies see:
 
 * [ACLPOLICY format][ACLPOLICY]
-* [Access Control Policy](../administration/security/access-control-policy.html)
+* [Access Control Policy][page:administration/security/authorization.md]
 
 #### List Project ACL Policies
 
@@ -5812,7 +6005,7 @@ See [Get an ACL Policy](#get-an-acl-policy) for request and response.
 **Request:**
 
     POST /api/13/project/[PROJECT]/acl/name.aclpolicy
-    
+
 See [Create an ACL Policy](#create-an-acl-policy) for request and response.
 
 #### Update a Project ACL Policy
@@ -5969,7 +6162,7 @@ Optional Parameters:
     * Default is 'xml' (API v22 and earlier)
 * Node Filter parameters: You can select resources to include and exclude in the result set, see [Using Node Filters](#using-node-filters) below.
 
-Accept header: 
+Accept header:
 
 Specify a MIME type via the `Accept:` header to specify the requested format.
 
@@ -5977,7 +6170,7 @@ Specify a MIME type via the `Accept:` header to specify the requested format.
 
 **Response:**
 
-Depending on the `format` parameter, a value of "xml" will return [resource-xml](../man5/resource-xml.html) and "yaml" will return [resource-yaml](../man5/resource-yaml.html), and "json" will return [resource-json](../man5/resource-json.html) formatted results.  Any other supported format value will return content in the specified format.
+Depending on the `format` parameter, a value of "xml" will return [resource-xml][page:manpages/man5/resource-v13.md] and "yaml" will return [resource-yaml][page:manpages/man5/resource-yaml-v13.md], and "json" will return [resource-json][page:manpages/man5/resource-json-v10.md] formatted results.  Any other supported format value will return content in the specified format.
 
 ### Getting Resource Info
 
@@ -5997,13 +6190,13 @@ Optional Parameters:
 
 **Response:**
 
-Depending on the `format` parameter, a value of "xml" will return [resource-xml](../man5/resource-xml.html) and "yaml" will return [resource-yaml](../man5/resource-yaml.html), and "json" will return [resource-json](../man5/resource-json.html) formatted results.
+Depending on the `format` parameter, a value of "xml" will return [resource-xml][page:manpages/man5/resource-v13.md] and "yaml" will return [resource-yaml][page:manpages/man5/resource-yaml-v13.md], and "json" will return [resource-json][page:manpages/man5/resource-json-v10.md] formatted results.
 
 The result will contain a single item for the specified resource.
 
 ### Using Node Filters
 
-Refer to the [User Guide - Node Filters](../manual/node-filters.html) Documentation for information on
+Refer to the [User Guide - Node Filters][page:manual/11-node-filters.md] Documentation for information on
 the node filter syntax and usage.
 
 A basic node filter looks like:
@@ -6159,7 +6352,7 @@ Input fields have a number of properties:
 * `description` textual description
 * `renderOptions` a key/value map of options, such as declaring that GUI display the input as a password field.
 * `required` true/false whether the input is required
-* `scope` 
+* `scope`
 * `title` display title for the field
 * `type` data type of the field: `String`, `Integer`, `Select` (multi-value), `FreeSelect` (open-ended multi-value), `Boolean` (true/false)
 * `values` if the type is `Select` or `FreeSelect`, a list of string values to choose from
@@ -6191,7 +6384,7 @@ Input fields have a number of properties:
         <!-- <string ... -->
       </values>
     </scmPluginInputField>
-    <!-- 
+    <!--
     <scmPluginInputField>...</scmPluginInputField>
      -->
   </fields>
@@ -6400,12 +6593,12 @@ Export plugin values for `synchState`:
 
 ~~~~~~~~~~ {.xml}
 <scmProjectStatus>
-  
+
   <actions>
     <string>action1</string>
     <string>action2</string>
   </actions>
-  
+
   <integration>$integration</integration>
   <message>$string</message>
   <project>$project</project>
@@ -6909,6 +7102,10 @@ Same response as [Setup SCM Plugin for a Project](#setup-scm-plugin-for-a-projec
 
 * `POST` [Bulk Delete Executions](#bulk-delete-executions)
 
+[/api/V/executions/metrics][]
+
+* `GET` [Execution Query Metrics](#execution-query-metrics)
+
 [/api/V/job/[ID]][]
 
 * `GET` [Getting a Job Definition](#getting-a-job-definition)
@@ -6944,7 +7141,7 @@ Same response as [Setup SCM Plugin for a Project](#setup-scm-plugin-for-a-projec
 [/api/V/execution/[ID]/input/files][]
 
 * `GET` [List Input Files for an Execution](#list-input-files-for-an-execution)
-    
+
 [/api/V/jobs/file/[ID]][]
 
 * `GET` [Get Info About an Uploaded File](#get-info-about-an-uploaded-file)
@@ -6964,16 +7161,16 @@ Same response as [Setup SCM Plugin for a Project](#setup-scm-plugin-for-a-projec
 [/api/V/job/[ID]/schedule/disable][]
 
 * `POST` [Disable Scheduling for a Job](#disable-scheduling-for-a-job)
-    
-[/api/V/job/[ID]/scm/[INTEGRATION]/status][] 
+
+[/api/V/job/[ID]/scm/[INTEGRATION]/status][]
 
 - `GET` [Get SCM status for a Job][/api/V/job/[ID]/scm/[INTEGRATION]/status]
 
-[/api/V/job/[ID]/scm/[INTEGRATION]/action/[ACTION_ID]][] 
+[/api/V/job/[ID]/scm/[INTEGRATION]/action/[ACTION_ID]][]
 
 - `POST` [Perform SCM action for a Job.][/api/V/job/[ID]/scm/[INTEGRATION]/action/[ACTION_ID]]
 
-[/api/V/job/[ID]/scm/[INTEGRATION]/action/[ACTION_ID]/input][] 
+[/api/V/job/[ID]/scm/[INTEGRATION]/action/[ACTION_ID]/input][]
 
 - `GET` [Get Job SCM Action Input Fields.][/api/V/job/[ID]/scm/[INTEGRATION]/action/[ACTION_ID]/input]
 
@@ -7044,6 +7241,10 @@ Same response as [Setup SCM Plugin for a Project](#setup-scm-plugin-for-a-projec
 [/api/V/project/[PROJECT]/executions][]
 
 * `GET` [Execution Query](#execution-query)
+
+[/api/V/project/[PROJECT]/executions/metrics][]
+
+* `GET` [Execution Query Metrics](#execution-query-metrics)
 
 [/api/V/project/[PROJECT*]/executions/running][]
 
@@ -7245,6 +7446,11 @@ Same response as [Setup SCM Plugin for a Project](#setup-scm-plugin-for-a-projec
 * `GET` [Get another user profile][/api/V/user/info/[USER]]
 * `POST` [Modify another user profile][POST /api/V/user/info/[USER]]
 
+
+[/api/V/user/roles][]
+
+* `GET` [List roles][/api/V/user/roles]
+
 [Response Format]:#xml-response-format
 
 
@@ -7312,6 +7518,9 @@ Same response as [Setup SCM Plugin for a Project](#setup-scm-plugin-for-a-projec
 [POST /api/V/job/[ID]/input/file]:#upload-a-file-for-a-job-option
 [/api/V/job/[ID]/input/files]:#list-files-uploaded-for-a-job
 
+[/api/V/job/[ID]/forecast]:#get-job-forecast
+[GET /api/V/job/[ID]/forecast]:#get-job-forecast
+
 [/api/V/job/[ID]/schedule/enable]:#enable-scheduling-for-a-job
 
 [/api/V/job/[ID]/schedule/disable]:#disable-scheduling-for-a-job
@@ -7326,7 +7535,7 @@ Same response as [Setup SCM Plugin for a Project](#setup-scm-plugin-for-a-projec
 [/api/V/jobs/schedule/enable]:#bulk-toggle-job-schedules
 [/api/V/jobs/schedule/disable]:#bulk-toggle-job-schedules
 
- 
+
 [/api/V/metrics]:#list-metrics
 
 [/api/V/metrics/healthcheck]:#metrics-healthcheck
@@ -7424,5 +7633,6 @@ Same response as [Setup SCM Plugin for a Project](#setup-scm-plugin-for-a-projec
 [POST /api/V/user/info]:#modify-user-profile
 [/api/V/user/info/[USER]]:#get-another-user-profile
 [POST /api/V/user/info/[USER]]:#modify-another-user-profile
+[/api/V/user/roles]:#list-roles
 
 [ACLPOLICY]:../man5/aclpolicy.html

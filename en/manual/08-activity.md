@@ -19,6 +19,7 @@ The filter form contains a number of fields to limit search:
   (given a start after/before to ended after/before).
 * Job Name: Job title name.
 * User: User initiating action.
+* Filter: The node filter used . You can enter just one node name to see if was executed against that node or use the node filter formats. Refer to the [User Guide - Node Filters][page:manual/11-node-filters.md] Documentation.
 * Ad hoc command: Command typed into the command bar or via `dispatch`.
 * Result: Success or failure status.
 

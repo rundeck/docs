@@ -1,13 +1,13 @@
 % Rundeck Configuration
 
-* [License (Pro)](license-pro.html)
-* [Database](database/index.html)
-* [Remote Job Execution (Pro)](remote-job-execution-pro.html)
-* [Email Settings](email-settings.html)
-* [GUI Customization](gui-customization.html)
-* [Localization](localization.html)
-* [Configuration File Reference](configuration-file-reference.html)
+* [License (Enterprise)][page:administration/configuration/license.md]
+* [Database][page:administration/configuration/database/index.md]
+* [Remote Job Execution (Enterprise)][page:administration/configuration/remote-job-execution.md]
+* [Email Settings][page:administration/configuration/email-settings.md]
+* [GUI Customization][page:administration/configuration/gui-customization.md]
+* [Localization][page:administration/configuration/localization.md]
+* [Configuration File Reference][page:administration/configuration/config-file-reference.md]
 * [[page:administration/configuration/system-properties.md]]
-* [Encryptable Config Properties (Pro)](encryptable-config-properties-pro.html)
-* [Plugins](plugins/index.html)
-* [Storage Facility](storage-facility.html)
+* [Encryptable Config Properties (Enterprise)][page:administration/configuration/encryptable-properties.md]
+* [Plugins][page:administration/configuration/plugins/index.md]
+* [Storage Facility][page:administration/configuration/storage-facility.md]

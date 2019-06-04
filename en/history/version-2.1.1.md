@@ -9,7 +9,7 @@ Date: 2014-05-01
 
 Bugfix release, with a small feature enhancement.
 
-* [Custom Email Templates](../administration/configuration-file-reference.html#custom-email-templates):
+* [Custom Email Templates][page:administration/configuration/config-file-reference.md#custom-email-templates]:
 
 *Upgrade notes:* 
 

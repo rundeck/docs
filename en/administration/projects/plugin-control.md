@@ -5,7 +5,7 @@ You may need to restrict access to plugins for certain projects.
 
 Only enabled plugins are visible to job writers in the Job Edit page.
 
-## Graphical Interface (Pro)
+## Graphical Interface (Enterprise)
 The Plugin Control page lets you enable and disable specific plugins.
 
 Go to the "Project Settings" and then choose "Plugins Control" menu item.
@@ -25,9 +25,9 @@ rd projects configure set -p MyProject -- \
 
 ## API Usage
 
-Project configuration can be achieved via the [API](../../api/index.html).
+Project configuration can be achieved via the [API][page:api/rundeck-api.md].
 
-[Project configuration](../../api/index.html#project-configuration)
+[Project configuration][page:api/rundeck-api.md#project-configuration]
 
     PUT /api/13/project/MyProject/config
     Content-Type: application/json

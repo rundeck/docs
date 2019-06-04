@@ -4,4 +4,4 @@
 
 This Guide contains information for Developing plugins and other tools for use with Rundeck.
 
-For information on the API, see: [API](../api/index.html).
+For information on the API, see: [API][page:api/rundeck-api.md].

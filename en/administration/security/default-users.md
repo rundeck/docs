@@ -5,7 +5,7 @@
 Rundeck supports a number of user directory configurations. By
 default, the installation uses a file based directory, but connectivity to
 LDAP is also available. 
-See [Authentication](authenticating-users.html).
+See [Authentication][page:administration/security/authentication.md].
 
 The Rundeck installation process will have defined a set of temporary
 logins useful during the getting started phase.

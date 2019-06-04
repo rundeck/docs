@@ -13,7 +13,7 @@ Notable Changes:
 * Job Notification Plugins
     * Jobs can now trigger notification plugins in addition to the built-in email and webhook
     * plugins can be developed in Java or with a new Groovy DSL
-    * See the [Notification Plugin Development](../developer/notification-plugin-development.html) Chapter.
+    * See the [Notification Plugin Development][page:developer/01-plugin-development.md] Chapter.
     * Example code at [dtolabs/rundeck/examples](https://github.com/dtolabs/rundeck/tree/development/examples)
 * Notification 'onstart' trigger
     * Jobs can now cause a notification trigger when started via the 'onstart' trigger
