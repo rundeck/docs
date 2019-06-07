@@ -44,6 +44,9 @@ The list of roles can be accepted as-is (default), or you can add a prefix to th
 
 ## PropertyFileLoginModule
 
+*NOTE: The `org.eclipse.jetty.jaas.spi.PropertyFileLoginModule` JAAS module will automatically add the username as a role to the login credentials.  
+If you do not want this behavior please use the `org.rundeck.jaas.jetty.ReloadablePropertyFileLoginModule` module.*  
+
 These instructions explain how to manage user credentials for
 Rundeck using a text file containing usernames, passwords and role definitions.
 Usually this file is called <code>realm.properties</code>.
