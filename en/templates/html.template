@@ -11,25 +11,43 @@ $endfor$
 $if(date)$
   <meta name="date" content="$date$" />
 $endif$
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
-
+<link href="https://fonts.googleapis.com/css?family=Lato:400,400i,700,700i" rel="stylesheet">
+<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-<script src="${relPath}jquery.hotkeys.js"></script>
-<script src="${relPath}jquery.autocomplete.min.js"></script>
+
 <!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 <script type="text/javascript">
+var jq = jQuery.noConflict();
+jq(document).ready(function(){
+  jq('.navbar-burger').click(function(){
+    jq('.navbar-menu').toggle();
+  });
+})
+jq(window).scroll(function() {
+    if (jq(this).scrollTop() > 50 ) {
+        jq('.scrolltop:hidden').stop(true, true).fadeIn();
+    } else {
+        jq('.scrolltop').stop(true, true).fadeOut();
+    }
+});
+jq(function(){jq(".scrollitem").click(function(){jq("html,body").animate({scrollTop:jq("body").offset().top},"1000");return false})})
+jq(window).scroll(function() {    
+    var scroll = jq(window).scrollTop();
+    if (scroll >= 250) {
+      jq(".navbar").addClass("has-shadow");
+    } else {
+      jq(".navbar").removeClass("has-shadow");
+    }
+}); //missing );
+
 window._pageRelpath="${relPath}";
 jQuery(function(){
   jQuery('table').addClass('table table-condensed table-responsive'); 
-  jQuery('[data-toggle="popover"]').popover();
+  // jQuery('[data-toggle="popover"]').popover();
 });
 </script>
-<script src="${relPath}docs-autocomplete.js"></script>
+
 $if(highlighting-css)$
   <style type="text/css">
 $highlighting-css$
@@ -45,31 +63,40 @@ $for(header-includes)$
   $header-includes$
 $endfor$
 </head>
-<body data-spy="scroll" data-target=".toc-nav">
+<body data-spy="scroll" data-target=".toc-nav" class="navbar-is-fixed-top">
 $for(include-before)$
 $include-before$
 $endfor$
 <div class="container">
-<div class="row">
+<div class="columns">
 $if(toc)$
-<div class="col-sm-3 toc-nav">
+<div class="column is-one-quarter toc-nav">
+<section class="section sticky-toc">
 <div class="nav">
 $toc$
 </div>
 </div>
+</section>
 $endif$
-<div class="col-sm-9">
+<div class="column">
+<section class="section content">
 $if(title)$
 <div class="page-header">
 <h1 class="title">$title$</h1>
 </div>
 $endif$
 $body$
+</section>
 </div>
 </div>
 </div>
 $for(include-after)$
 $include-after$
 $endfor$
+<div class='scrolltop'>
+<div class='scrollitem icon'>
+<i class="fas fa-chevron-up" ></i>
+</div>
+</div>
 </body>
 </html>

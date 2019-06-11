@@ -1,35 +1,75 @@
-<div class='container footer'>
-
-<div class="row">
-	<footer class="copy col-sm-12 text-muted">
-
-<p>
-<a class="btn btn-info btn-try-rundeck-pro" href="http://rundeck.com/" data-toggle="popover" data-trigger="hover" 
-data-content="<ul class=&quot;list-unstyled&quot;>
-	<li><i class=&quot;glyphicon glyphicon-gift&quot;></i> Try Rundeck Enterprise for Free</li>
-	<li><i class=&quot;glyphicon glyphicon-flash&quot;></i> Get Exclusive Features</li>
-	<li><i class=&quot;glyphicon glyphicon-briefcase&quot;></i> Get Professional Support</li>
-	<li><i class=&quot;glyphicon glyphicon-heart&quot;></i> Support Open-source Development</li>
-	<li><i class=&quot;glyphicon glyphicon-thumbs-up&quot;></i> Get home by 5 </li>
-</ul>" data-html="true">
-<i class="glyphicon glyphicon-hand-right"></i>
-Try Rundeck Enterprise
-</a>
-</p>
-
-<span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">Rundeck Documentation</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://rundeck.com" property="cc:attributionName" rel="cc:attributionURL">Rundeck, Inc</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.
-<p>
-&copy;${DATE_YEAR} <a href="http://rundeck.com">Rundeck</a>
-</p>
-<p>
-<span class="generated-date" title="${DATE}">${DATE}</span>
-</p>
+<footer class="brand-footer">
+  <div class="container">
+    <div class="columns" style="margin-bottom:0;padding-top:5em;padding-bottom:5em">
+      <div class="column is-1" style="padding-top:1.3em"><span><svg width="39" height="40" viewBox="0 0 39 40"
+            xmlns="http://www.w3.org/2000/svg">
+            <g fill="#F7403A" fill-rule="evenodd">
+              <path
+                d="M0 39.175h26.17l4.883-7.702H4.883zM31.053 8.368L26.17.665H0l4.883 7.703zM35.936 16.07H9.766l2.44 3.85-2.44 3.851h26.17l2.44-3.852z">
+              </path>
+            </g>
+          </svg></span></div>
+      <div class="column is-4">
+        <div class="contact"><a href="tel:8336774376" class="phone is-size-3 has-text-weight-bold">(833) OPS-HERO</a>
+          <div class="address address has-text-weight-bold is-size-5" style="margin-top:1em">2317
+            Broadway, Suite 130
+            <br>Redwood City, CA 94063
+          </div>
+          <div>
+            <ul class="social-links">
+              <li class="social-link"><a href="https://www.linkedin.com/company/17928739" role="menuitem"
+                  target="_blank" aria-label="Linkedin" class="button social-link__icon"><svg aria-hidden="true"
+                    focusable="false" data-prefix="fab" data-icon="linkedin" role="img"
+                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"
+                    class="svg-inline--fa fa-linkedin fa-w-14">
+                    <path fill="currentColor"
+                      d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"
+                      class=""></path>
+                  </svg></a></li>
+              <li class="social-link"><a href="https://twitter.com/rundeck" role="menuitem" target="_blank"
+                  aria-label="Twitter" class="button social-link__icon"><svg aria-hidden="true" focusable="false"
+                    data-prefix="fab" data-icon="twitter" role="img" xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 512 512" class="svg-inline--fa fa-twitter fa-w-16">
+                    <path fill="currentColor"
+                      d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"
+                      class=""></path>
+                  </svg></a></li>
+            </ul>
+          </div>
+          <div class="copyright">
+            <span class="copyright-text" style="font-weight:500;font-size:14px">©${DATE_YEAR} Rundeck.
+              All Rights Reserved.</span> 
+              <br />
+              <span class="generated-date" title="${DATE}">${DATE}</span>
+          </div>
+        </div>
+      </div>
+      <div class="column">
+        <ul class="marketing-site-nav is-size-5 has-text-weight-semibold">
+          <li><a href="https://www.rundeck.com/about" role="menuitem">About</a>
+          </li>
+          <li><a href="https://www.rundeck.com/about/team" role="menuitem">Team</a></li>
+          <li><a href="https://www.rundeck.com/careers" role="menuitem">Careers</a></li>
+          <li><a href="https://www.rundeck.com/news" role="menuitem">News</a>
+          </li>
+          <li><a href="https://www.rundeck.com/events" role="menuitem">Events</a>
+          </li>
+          <li><a href="https://www.rundeck.com/privacy-policy" role="menuitem">Privacy Policy</a></li>
+          <li><a href="https://www.rundeck.com/terms" role="menuitem">Terms of
+              Use</a></li>
+          <li><a href="https://www.rundeck.com/contact" role="menuitem">Contact</a></li>
+          <li><a href="https://www.rundeck.com/demo" role="menuitem">Request a
+              Demo</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="creative-commons">
+      <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">Rundeck Documentation</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://rundeck.com" property="cc:attributionName" rel="cc:attributionURL">Rundeck, Inc</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License. </a>
+    </div>
+  </div>
 </footer>
-</div>
-</div>
-<script type="text/javascript">
-  
 
+<script type="text/javascript">
    var _gaq = [['_setAccount', 'UA-529275-13'], ['_trackPageview']];
    (function(d, t) {
     var g = d.createElement(t),
