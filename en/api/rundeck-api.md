@@ -4205,18 +4205,13 @@ Obtain metrics over the result set of an execution query. The query can be issue
 
 To narrow down the result set over which the metrics will be calculated, you can use the same parameters as [Execution Query](#execution-query).
 
-Paging parameters will affect the result by limiting the executions that will be considered on the calculation:
-
-* `max`: maximum number of results to include in calculation. (default: unlimited)
-* `offset`: offset for first result to include. (default: 0)
+Paging parameters `max` and `offset` will have no effect on the result.
 
 **Response**
 
 `Content-Type: application/xml`
 
-A single result element with `<duration>` containing duration info, `<total>` with total count,
-and a `<status>` element with per-status counts, containing one entry for each available status. If no entry exists for a given status,
-then the value is 0 for that status:
+A single result element with `<duration>` containing duration info, and `<total>` with total count.
 
 ~~~~~~~~~~ {.xml}
 <result>
@@ -4226,23 +4221,12 @@ then the value is 0 for that status:
     <max>39s</max>
   </duration>
   <total>1325</total>
-  <status>
-      <running>1</running>
-      <other>4</other>
-      <aborted>21</aborted>
-      <failed>88</failed>
-      <succeeded>1208</succeeded>
-      <timedout>1</timedout>
-      <failed-with-retry>1</failed-with-retry>
-      <scheduled>1</scheduled>
-  </status>
 </result>
 ~~~~~~~~~~
 
 `Content-Type: application/json`
 
-An object with `duration` entry containing duration stats, `total` with total executions, `status` entry
-with per-status counts.
+An object with `duration` entry containing duration stats, and a `total` entry with total executions.
 
 ~~~~~~~~~~ {.json}
 {
@@ -4252,22 +4236,9 @@ with per-status counts.
         "max": "39s"
     },
     "total": 1325,
-    "status": {
-        "running": 1,
-        "other": 4,
-        "aborted": 21,
-        "failed": 88,
-        "succeeded": 1208,
-        "timedout": 1,
-        "failed-with-retry":1,
-        "scheduled": 1,
-    }
 }
 ~~~~~~~~~~
 
-Note that any status count with a value of 0 will be omitted in both json and xml versions.
-
-Possible execution status values are listed under [Listing Running Executions].
 
 ### Execution State
 

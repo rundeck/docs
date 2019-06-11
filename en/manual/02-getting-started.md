@@ -101,7 +101,7 @@ Projects menu
 Dashboard
 
 :    View the project description, Readme and executions summary. 
-     Rundeck Pro users may see UI plugins that provide visualizations for schedules and execution history.
+     Rundeck Enterprise users may see additionalvisualizations for schedules and execution history.
 
 Jobs
 

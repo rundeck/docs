@@ -11,7 +11,7 @@
 * [Copy file][page:manual/node-steps/builtin.md#copy-file-step]
 * [Local command][page:manual/node-steps/builtin.md#local-command-step]
 * [Data node][page:manual/node-steps/builtin.md#data-node-step]
-* [SQL Runner (Pro)][page:manual/node-steps/sqlrunner.md]
+* [SQL Runner (Enterprise)][page:manual/node-steps/sqlrunner.md]
 * [[page:manual/node-steps/vmware.md]]
 
 
@@ -26,11 +26,11 @@
 * [Log data step][page:manual/workflow-steps/builtin.md#log-data-step]
 * [Refresh project nodes][page:manual/workflow-steps/builtin.md#refresh-project-nodes]
 * [Data step][page:manual/workflow-steps/builtin.md#data-step]
-* [File Transfer (Pro)][page:manual/workflow-steps/file-transfer.md]
-* [Github (Pro)][page:manual/workflow-steps/github.md]
+* [File Transfer ()][page:manual/workflow-steps/file-transfer.md]
+* [Github (Enterprise)][page:manual/workflow-steps/github.md]
 * [[page:manual/workflow-steps/jira.md]]
-* [Progress Badge (Pro)][page:manual/workflow-steps/progress-badge.md#progress-badge-workflow-step-plugin]
-* [ServiceNow (Pro)][page:manual/workflow-steps/servicenow.md]
+* [Progress Badge (Enterprise)][page:manual/workflow-steps/progress-badge.md#progress-badge-workflow-step-plugin]
+* [ServiceNow (Enterprise)][page:manual/workflow-steps/servicenow.md]
 * [[page:manual/workflow-steps/vmware.md]]
 
 ## Notifications
@@ -47,7 +47,7 @@ explanation on how job notifications work, see [Creating jobs#Job Notifications]
 
 The Workflow Strategy determines how the steps are processed within a Job's Workflow.
 
-* [Ruleset (Pro)][page:manual/workflow-strategies/ruleset.md]
+* [Ruleset (Enterprise)][page:manual/workflow-strategies/ruleset.md]
 
 ## Node Orchestrator
 

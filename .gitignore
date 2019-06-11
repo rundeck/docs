@@ -2,3 +2,4 @@ dist
 *.gz
 .idea
 temp-*.html
+.DS_Store
