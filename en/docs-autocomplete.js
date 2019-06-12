@@ -20,7 +20,6 @@ $(window).scroll(function() {
 		}
 }); //missing );
 
-window._pageRelpath="${relPath}";
 $(function(){
 	$('table').addClass('table table-condensed table-responsive'); 
 	// jQuery('[data-toggle="popover"]').popover();
@@ -33,11 +32,6 @@ function setupAutocomplete(site){
   		onSelect: function(suggestion){
   			document.location=window._pageRelpath+suggestion.data.outpath;
   		}
-	});
-	$('.navquerytrigger').collapse('show');
-
-	$(document).bind('keydown', 'q', function(){
-		$('.navquerytoggle').collapse('toggle');
 	});
 }
 /*!
@@ -98,7 +92,7 @@ function setupAutocomplete(site){
 jQuery(function(){
 	
 
-	jQuery.getJSON(window._pageRelpath+'site.json',function(data){
+	jQuery.getJSON('./site.json',function(data){
 		var site=data;
 		setupAutocomplete(site);		
 	});

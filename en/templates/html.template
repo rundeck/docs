@@ -21,9 +21,12 @@ crossorigin="anonymous"></script>
 src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"
 integrity="sha256-xI/qyl9vpwWFOXz7+x/9WkG5j/SVnSw21viy8fWwbeE="
 crossorigin="anonymous"></script>
+<script src="./jquery.autocomplete.min.js"></script>
 <script src="./docs-autocomplete.js"></script>
 <!-- Latest compiled and minified JavaScript -->
-
+<script>
+  window._pageRelpath="${relPath}";
+</script>
 $if(highlighting-css)$
   <style type="text/css">
 $highlighting-css$
