@@ -24,7 +24,7 @@
         <form role="search"  action="/search/">
           <div class="field has-addons">
             <div class="control">
-              <input class="input" type="text" placeholder="Keyword">
+              <input type="text" class="input form-control navquery" name="q" placeholder="Search" id="searchQuery" autocomplete="off">
             </div>
             <div class="control">
               <button type="submit" class="button red-button">
