@@ -59,6 +59,7 @@ Changes introduced by API Version number:
 
 * New Endpoint:
     - [`GET /api/V/job/[ID]/forecast`][/api/V/job/[ID]/forecast] - Get a forecast for a specific amount of days of the job by ID.
+    - [`GET /api/V/system/executions/status`][/api/V/system/executions/status] - Gets the current execution mode.
 
 **Version 30**:
 
@@ -2128,6 +2129,7 @@ Resume processing incomplete Log Storage uploads.
 
 Change the server execution mode to ACTIVE or PASSIVE.  The state of the current
 execution mode can be viewed via the [`/api/14/system/info`][/api/V/system/info]
+endpoint, or the [`/api/31/system/executions/status`][/api/V/system/executions/status]
 endpoint.
 
 ### Set Active Mode ###
@@ -2177,6 +2179,34 @@ POST /api/14/system/executions/disable
   "executionMode":"passive"
 }
 ~~~
+
+### Get Current Execution Mode ###
+
+Gets the current execution mode. Additionally, if the current mode is **passive** the response
+status will be ``HTTP 503 - Service Unavailable``.
+
+**Request:**
+
+GET /api/31/system/executions/status
+
+**Response**
+
+`Content-Type: application/xml`:
+
+~~~ {.xml}
+<executions executionMode="active"/>
+or
+<executions executionMode="passive"/> 
+~~~
+
+`Content-Type: application/json`:
+
+~~~ {.json}
+{"executionMode":"active"}
+or
+{"executionMode":"passive"}
+~~~
+
 
 ## Cluster Mode
 
@@ -7373,6 +7403,10 @@ Same response as [Setup SCM Plugin for a Project](#setup-scm-plugin-for-a-projec
 
 * `POST` [Set Passive Mode](#set-passive-mode)
 
+[/api/V/system/executions/status][]
+
+* `POST` [Get Current Execution Mode](#get-current-execution-mode)
+
 [/api/V/system/info][]
 
 * `GET` [System Info](#system-info)
@@ -7586,6 +7620,7 @@ Same response as [Setup SCM Plugin for a Project](#setup-scm-plugin-for-a-projec
 [/api/V/system/info]:#system-info
 [/api/V/system/executions/enable]:#set-active-mode
 [/api/V/system/executions/disable]:#set-passive-mode
+[/api/V/system/executions/status]:#get-current-execution-mode
 
 [/api/V/system/logstorage]:#log-storage-info
 [/api/V/system/logstorage/incomplete]:#list-executions-with-incomplete-log-storage
