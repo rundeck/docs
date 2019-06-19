@@ -92,7 +92,7 @@ function setupAutocomplete(site){
 jQuery(function(){
 	
 
-	jQuery.getJSON('./site.json',function(data){
+	jQuery.getJSON('/site.json',function(data){
 		var site=data;
 		setupAutocomplete(site);		
 	});

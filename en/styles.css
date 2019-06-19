@@ -11,3 +11,6 @@
 .autocomplete-suggestion{
   cursor:pointer;
 }
+.autocomplete-suggestion:hover{
+  background-color: #F3F3F3;
+}
