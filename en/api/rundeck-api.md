@@ -55,6 +55,12 @@ View the [Index](#index) listing API paths.
 
 Changes introduced by API Version number:
 
+
+**Version 32**:
+
+* Updated Endpoints:
+    - [`GET /api/V/project/[PROJECT*]/executions/running`][/api/V/project/[PROJECT*]/executions/running] - Added `jobIdFilter` parameter to return running executions for a specific job.
+
 **Version 31**:
 
 * New Endpoint:
@@ -3792,7 +3798,11 @@ List the currently running executions for a project
 
 (**Deprecated URL**: `/api/14/executions/running`, required URL parameter `project`.)
 
-Note: `PROJECT` is the project name, or '*' for all projects.
+Note: `PROJECT` is the project name, or use `*` for all projects.
+
+Optional Query Parameters:
+
+* `jobIdFilter`: Specifies a Job ID, the results will only contain running executions for the given job. **Since API v32**
 
 Response with `Content-Type: application/xml`: An `<executions>` element containing multiple `<execution>` elements.
 
