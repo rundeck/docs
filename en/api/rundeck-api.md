@@ -58,6 +58,9 @@ Changes introduced by API Version number:
 
 **Version 32**:
 
+* New Endpoint:
+    - [`GET /api/V/system/executions/status`][/api/V/system/executions/status] - Gets the current execution mode.
+    
 * Updated Endpoints:
     - [`GET /api/V/project/[PROJECT*]/executions/running`][/api/V/project/[PROJECT*]/executions/running] - Added `jobIdFilter` parameter to return running executions for a specific job.
 
@@ -65,7 +68,6 @@ Changes introduced by API Version number:
 
 * New Endpoint:
     - [`GET /api/V/job/[ID]/forecast`][/api/V/job/[ID]/forecast] - Get a forecast for a specific amount of days of the job by ID.
-    - [`GET /api/V/system/executions/status`][/api/V/system/executions/status] - Gets the current execution mode.
 
 **Version 30**:
 
@@ -2135,7 +2137,7 @@ Resume processing incomplete Log Storage uploads.
 
 Change the server execution mode to ACTIVE or PASSIVE.  The state of the current
 execution mode can be viewed via the [`/api/14/system/info`][/api/V/system/info]
-endpoint, or the [`/api/31/system/executions/status`][/api/V/system/executions/status]
+endpoint, or the [`/api/32/system/executions/status`][/api/V/system/executions/status]
 endpoint.
 
 ### Set Active Mode ###
@@ -2193,7 +2195,7 @@ status will be ``HTTP 503 - Service Unavailable``.
 
 **Request:**
 
-GET /api/31/system/executions/status
+GET /api/32/system/executions/status
 
 **Response**
 
