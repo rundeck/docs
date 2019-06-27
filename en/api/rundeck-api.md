@@ -3679,6 +3679,7 @@ Query Parameters:
     * `m`: month
     * `y`: year
 * `max`: Maximum number of items to return (default: no limit).
+* `past`: `true` to return an inverse forecast, that is, considering the current scheduler, when it should have run. Note this forecast is only referential, since it will not take into account if the job could have been disabled or not yet been created.
 
 
 
