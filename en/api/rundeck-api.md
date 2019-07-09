@@ -60,6 +60,7 @@ Changes introduced by API Version number:
 
 * Updated Endpoints:
     - [`GET /api/V/project/[PROJECT*]/executions/running`][/api/V/project/[PROJECT*]/executions/running] - Added `jobIdFilter` parameter to return running executions for a specific job.
+    - [`GET /api/V/job/[ID]/forecast`][/api/V/job/[ID]/forecast] - Added `past` parameter to return inverse forecast.
 
 **Version 31**:
 
@@ -3679,7 +3680,7 @@ Query Parameters:
     * `m`: month
     * `y`: year
 * `max`: Maximum number of items to return (default: no limit).
-* `past`: `true` to return an inverse forecast, that is, considering the current scheduler, when it should have run. Note this forecast is only referential, since it will not take into account if the job could have been disabled or not yet been created.
+* `past`: `true` to return an inverse forecast, that is, considering the current scheduler, when it should have run. Note this forecast is only referential, since it will not take into account if the job could have been disabled or not yet been created. **Since API v32**
 
 
 
