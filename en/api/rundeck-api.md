@@ -64,6 +64,7 @@ Changes introduced by API Version number:
 * Updated Endpoints:
     - [`GET /api/V/project/[PROJECT*]/executions/running`][/api/V/project/[PROJECT*]/executions/running] - Added `jobIdFilter` parameter to return running executions for a specific job.
     - [`GET /api/V/job/[ID]/forecast`][/api/V/job/[ID]/forecast] - Added `past` parameter to return inverse forecast.
+    - [`PUT /api/V/scheduler/takeover`][/api/V/scheduler/takeover] - Added capability to specify multiple job ids.
 
 **Version 31**:
 
@@ -2286,6 +2287,16 @@ Example for a single Job:
 </takeoverSchedule>
 ~~~
 
+Example for multiple Jobs: (**since API v32**)
+
+~~~ {.xml}
+<takeoverSchedule>
+    <server all="true"/>
+    <job id="[UUID]"/>
+    <job id="[UUID]"/>
+</takeoverSchedule>
+~~~
+
 **Note**: The `<server>` element can be the root of the document request for backwards compatibility.
 
 `Content-Type: application/json`:
@@ -2316,6 +2327,24 @@ Specify a job id:
   "job": {
     "id": "[UUID]"
   }
+}
+~~~
+
+Specify multiple jobs: (**since API v32**)
+
+~~~ {.json}
+{
+    "server": {
+    "all": true
+  },
+  "jobs":[
+    {
+    "id": "[UUID]"
+    },
+    {
+    "id": "[UUID]"
+    }
+  ]
 }
 ~~~
 
