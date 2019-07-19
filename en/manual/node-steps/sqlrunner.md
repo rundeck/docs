@@ -61,10 +61,15 @@ If you omit the type, it's going to be passed as generic object to the JDBC conn
 <joblist>
    <job>
       <description />
+      <context>
+         <options preserveOrder="true">
+            <option name="name" required="true" />
+         </options>
+      </context>
       <executionEnabled>true</executionEnabled>
       <id>2d782a36-c06b-47fa-8ceb-7fcc9ff9fab7</id>
       <loglevel>INFO</loglevel>
-      <name>SQL_test</name>
+      <name>SQL_test</name>v
       <scheduleEnabled>true</scheduleEnabled>
       <sequence keepgoing="false" strategy="node-first">
          <command>
@@ -76,7 +81,7 @@ If you omit the type, it's going to be passed as generic object to the JDBC conn
                   <entry key="password" value="rundeck" />
                   <entry key="scriptBody" value="INSERT INTO test (id, version, args, date) VALUES(0, ?, ?, now());" />
                   <entry key="user" value="rundeck" />
-                  <entry key="variables" value="int:0,string:teststr" />
+                  <entry key="variables" value="int:0,string:${option.name}" />
                </configuration>
             </node-step-plugin>
          </command>
