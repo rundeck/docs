@@ -154,11 +154,13 @@ If the attribute you use has an integer number value, then the nodes will be sor
 
 Any nodes without the specified attribute will then be sorted by their names.
 
-#### Keepgoing
+#### If a node fails
 
-If you set "Keep going on error?" to "Yes", then if any node dispatches fail for any reason, the rest will continue to be executed until all have been executed.  At the end of the workflow for all nodes, the Job Execution will fail if any of the nodes had failed.
+This setting determines how to continue if one of the nodes has a failure.
 
-If you leave it at the default value of "No", then if any node dispatches fail for any reason, no further dispatches will be executed and the Job Execution will fail immediately.
+The option "Fail the step without running on any remaining nodes", will cause no further dispatches to be executed and the Job Execution will fail immediately.
+
+The option "Continue running on any remaining nodes before failing the step" will allow the remaining nodes to continue to be executed until all have been executed.  At the end of the workflow for all nodes, the Job Execution will fail if any of the nodes had failed.
 
 #### Dynamic node filters
 
