@@ -11,11 +11,19 @@ Provider name: `org.rundeck.sqlrunner.SQLRunnerNodeStepPlugin`
 ## Configuration
 
 * *SQL script path*: Path to the sql script
+* *SQL inline script*: Alternative to sql script path.
+* *Variables*: comma separated list of variables values too be used as Prepared Statement.
 * *JDBC Driver class name*: e.g. `com.mysql.jdbc.Driver`
 * *JDBC url*: full JDBC url to use for connections
 * *Database username* connection username
 * *Database password* connection password
 * *Auto commit flag*: if true, a `Connection::commit()` will be called after the script.
+
+## Usage of variables
+
+the variable text field can receive a comma separated list of variables values too be used as Prepared Statement, this is, replacing a `?` variable in the script.
+The list of variables  can be a list of values comma separated or using the format `type:value`.
+If you omit the type, it's going to be passed as generic object to the JDBC connector, this works only on some cases.
 
 ## Example Job XML
 
@@ -44,5 +52,36 @@ Provider name: `org.rundeck.sqlrunner.SQLRunnerNodeStepPlugin`
     </sequence>
     <uuid>c9704ff9-c34f-455e-aa4b-8f98eae9ed5b</uuid>
   </job>
+</joblist>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+## Example Job XML using variables
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {.xml}
+<joblist>
+   <job>
+      <description />
+      <executionEnabled>true</executionEnabled>
+      <id>2d782a36-c06b-47fa-8ceb-7fcc9ff9fab7</id>
+      <loglevel>INFO</loglevel>
+      <name>SQL_test</name>
+      <scheduleEnabled>true</scheduleEnabled>
+      <sequence keepgoing="false" strategy="node-first">
+         <command>
+            <node-step-plugin type="org.rundeck.sqlrunner.SQLRunnerNodeStepPlugin">
+               <configuration>
+                  <entry key="commit" value="true" />
+                  <entry key="jdbcDriver" value="org.postgresql.Driver" />
+                  <entry key="jdbcUrl" value="jdbc:postgresql://wintermute/rundeck" />
+                  <entry key="password" value="rundeck" />
+                  <entry key="scriptBody" value="INSERT INTO test (id, version, args, date) VALUES(0, ?, ?, now());" />
+                  <entry key="user" value="rundeck" />
+                  <entry key="variables" value="int:0,string:teststr" />
+               </configuration>
+            </node-step-plugin>
+         </command>
+      </sequence>
+      <uuid>2d782a36-c06b-47fa-8ceb-7fcc9ff9fab7</uuid>
+   </job>
 </joblist>
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
