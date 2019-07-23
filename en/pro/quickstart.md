@@ -13,16 +13,16 @@ What differentiates Rundeck Enterprise from the OSS Rundeck version is . . . .
 **Note:** this setup is meant for evaluating Rundeck on your local workstation. For a guide to setting up Rundeck Enterprise in production see [Installation][page:administration/install/index.md].
 
 1. Fill out the [download form](https://www.rundeck.com/download-now) to access the download page.
-1. Click on `➤ Cluster` and click on the the file ending in `.jar` to start the download.
+1. Scroll to "Rundeck Editions > Enterprise" and click on the the file ending in `.war` to start the download.
 1. Once the download is finished verify that the file's checksum matches the expected checksum:
 
     ```
-    shasum -a 1 ~/Downloads/rundeckpro-launcher-cluster-${VERSION_FULL}.jar
+    shasum -a 1 ~/Downloads/rundeckpro-enterprise-${VERSION_FULL}.war
     ```
-1. Run the `.jar` file:
+1. Run the `.war` file:
 
     ```
-    java -XX:MaxPermSize=256m -Xmx1024m -jar ~/Downloads/rundeckpro-launcher-cluster-${VERSION_FULL}.jar
+    java -XX:MaxPermSize=256m -Xmx1024m -jar ~/Downloads/rundeckpro-enterprise-${VERSION_FULL}.jar
     ```
 1. Once you see something similar to following log output, you know the server is ready:
 
