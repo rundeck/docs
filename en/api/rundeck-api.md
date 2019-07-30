@@ -58,8 +58,13 @@ Changes introduced by API Version number:
 
 **Version 32**:
 
+* New Endpoint:
+    - [`GET /api/V/system/executions/status`][/api/V/system/executions/status] - Gets the current execution mode.
+    
 * Updated Endpoints:
     - [`GET /api/V/project/[PROJECT*]/executions/running`][/api/V/project/[PROJECT*]/executions/running] - Added `jobIdFilter` parameter to return running executions for a specific job.
+    - [`GET /api/V/job/[ID]/forecast`][/api/V/job/[ID]/forecast] - Added `past` parameter to return inverse forecast.
+    - [`PUT /api/V/scheduler/takeover`][/api/V/scheduler/takeover] - Added capability to specify multiple job ids.
 
 **Version 31**:
 
@@ -2134,6 +2139,7 @@ Resume processing incomplete Log Storage uploads.
 
 Change the server execution mode to ACTIVE or PASSIVE.  The state of the current
 execution mode can be viewed via the [`/api/14/system/info`][/api/V/system/info]
+endpoint, or the [`/api/32/system/executions/status`][/api/V/system/executions/status]
 endpoint.
 
 ### Set Active Mode ###
@@ -2183,6 +2189,34 @@ POST /api/14/system/executions/disable
   "executionMode":"passive"
 }
 ~~~
+
+### Get Current Execution Mode ###
+
+Gets the current execution mode. Additionally, if the current mode is **passive** the response
+status will be ``HTTP 503 - Service Unavailable``.
+
+**Request:**
+
+GET /api/32/system/executions/status
+
+**Response**
+
+`Content-Type: application/xml`:
+
+~~~ {.xml}
+<executions executionMode="active"/>
+or
+<executions executionMode="passive"/> 
+~~~
+
+`Content-Type: application/json`:
+
+~~~ {.json}
+{"executionMode":"active"}
+or
+{"executionMode":"passive"}
+~~~
+
 
 ## Cluster Mode
 
@@ -2253,6 +2287,16 @@ Example for a single Job:
 </takeoverSchedule>
 ~~~
 
+Example for multiple Jobs: (**since API v32**)
+
+~~~ {.xml}
+<takeoverSchedule>
+    <server all="true"/>
+    <job id="[UUID]"/>
+    <job id="[UUID]"/>
+</takeoverSchedule>
+~~~
+
 **Note**: The `<server>` element can be the root of the document request for backwards compatibility.
 
 `Content-Type: application/json`:
@@ -2283,6 +2327,24 @@ Specify a job id:
   "job": {
     "id": "[UUID]"
   }
+}
+~~~
+
+Specify multiple jobs: (**since API v32**)
+
+~~~ {.json}
+{
+    "server": {
+    "all": true
+  },
+  "jobs":[
+    {
+    "id": "[UUID]"
+    },
+    {
+    "id": "[UUID]"
+    }
+  ]
 }
 ~~~
 
@@ -3679,6 +3741,7 @@ Query Parameters:
     * `m`: month
     * `y`: year
 * `max`: Maximum number of items to return (default: no limit).
+* `past`: `true` to return an inverse forecast, that is, considering the current scheduler, when it should have run. Note this forecast is only referential, since it will not take into account if the job could have been disabled or not yet been created. **Since API v32**
 
 
 
@@ -7383,6 +7446,10 @@ Same response as [Setup SCM Plugin for a Project](#setup-scm-plugin-for-a-projec
 
 * `POST` [Set Passive Mode](#set-passive-mode)
 
+[/api/V/system/executions/status][]
+
+* `POST` [Get Current Execution Mode](#get-current-execution-mode)
+
 [/api/V/system/info][]
 
 * `GET` [System Info](#system-info)
@@ -7596,6 +7663,7 @@ Same response as [Setup SCM Plugin for a Project](#setup-scm-plugin-for-a-projec
 [/api/V/system/info]:#system-info
 [/api/V/system/executions/enable]:#set-active-mode
 [/api/V/system/executions/disable]:#set-passive-mode
+[/api/V/system/executions/status]:#get-current-execution-mode
 
 [/api/V/system/logstorage]:#log-storage-info
 [/api/V/system/logstorage/incomplete]:#list-executions-with-incomplete-log-storage

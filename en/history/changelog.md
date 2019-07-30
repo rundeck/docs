@@ -2,9 +2,6 @@
 % greg
 % 07/19/2019
 
-Release 3.0.24
-===========
-
 Date: 2019-07-19
 
 Name: <span style="color: rebeccapurple"><span class="glyphicon glyphicon-tent"></span> "jalapeño popper rebeccapurple tent"</span>
@@ -159,6 +156,7 @@ Bug fixes
 * [Configuring an option, impossible to let the Default Value empty, even with default values declared in JSON](https://github.com/rundeck/rundeck/issues/2531)
 
 ---
+=======
 
 Release 3.0.21
 ===========
