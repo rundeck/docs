@@ -4,7 +4,7 @@
 Original: http://support.rundeck.com/customer/en/portal/articles/2745900-ruleset-workflow-strategy-plugin-advanced-workflow-
 --->
 
-The Ruleset Workflow Strategy Plugin (exclusive to Rundeck Enterpise) allows you to define a set of rules to describe when and if steps in the workflow should run.
+The Ruleset Workflow Strategy Plugin (exclusive to Rundeck Enterprise) allows you to define a set of rules to describe when and if steps in the workflow should run.
 
 The plugin can be selected in the Workflow Strategy list in the the Edit Job page.
  
