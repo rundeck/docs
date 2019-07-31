@@ -1901,43 +1901,43 @@ Name: <span style="color: Olive"><span class="glyphicon glyphicon-music"></span>
 New Features:
 
 * SCM/Git plugin: 
-    * works in Cluster mode
-    * improvements to jobs page load speed
-    * can disable SCM status checks in the GUI
+	* works in Cluster mode
+	* improvements to jobs page load speed
+	* can disable SCM status checks in the GUI
 * Projects: 
-    * Set a Label to display instead of the name
-    * new default: projectsStorageType defaults to `db` (see below)
+	* Set a Label to display instead of the name
+	* new default: projectsStorageType defaults to `db` (see below)
 * Job reference steps:
-    * Can reference jobs via UUID as well as group/name, so you can rename jobs [#3115](https://github.com/rundeck/rundeck/pull/3115)
-    * Deleting a job will check if any steps reference the job and warn you
-    * Automatically pass job options to the job reference [#3056](https://github.com/rundeck/rundeck/pull/3056)
-    * Notifications for referenced jobs are triggered
-    * Statistics (success/duration) of referenced jobs are updated
-    * Timeout for referenced jobs is enforced
-    * Choose behavior if the referenced job is disabled: fail or pass
-    * (see [#3040](https://github.com/rundeck/rundeck/pull/3040))
+	* Can reference jobs via UUID as well as group/name, so you can rename jobs [#3115](https://github.com/rundeck/rundeck/pull/3115)
+	* Deleting a job will check if any steps reference the job and warn you
+	* Automatically pass job options to the job reference [#3056](https://github.com/rundeck/rundeck/pull/3056)
+	* Notifications for referenced jobs are triggered
+	* Statistics (success/duration) of referenced jobs are updated
+	* Timeout for referenced jobs is enforced
+	* Choose behavior if the referenced job is disabled: fail or pass
+	* (see [#3040](https://github.com/rundeck/rundeck/pull/3040))
 * Job Options: 
-    * Set a Label to display instead of the name
-    * Multivalue option delimiter is available in data context as `${option.name.delimiter}`/`$RD_OPTION_NAME_DELIMITER`
+	* Set a Label to display instead of the name
+	* Multivalue option delimiter is available in data context as `${option.name.delimiter}`/`$RD_OPTION_NAME_DELIMITER`
 * Plugins: admins can disable/enable plugins for a project in the GUI or via project config [#3122](https://github.com/rundeck/rundeck/pull/3122)
 * Job Node Threadcount: can use an option value
 * Job Notification:
-    * Can send a notification if the job duration exceeds an absolute time, or relative to the job's average [#3087](https://github.com/rundeck/rundeck/pull/3087)
-    * Separate notifications for failure vs. retryable failure (i.e.) [#2864](https://github.com/rundeck/rundeck/pull/2864)
+	* Can send a notification if the job duration exceeds an absolute time, or relative to the job's average [#3087](https://github.com/rundeck/rundeck/pull/3087)
+	* Separate notifications for failure vs. retryable failure (i.e.) [#2864](https://github.com/rundeck/rundeck/pull/2864)
 * Job Definition visibility ACL:
-    * A new ACL access level `view` is a subset of the `read` access level for jobs, and does not allow users to view the "Definition" tab of a Job, or download the XML/YAML definitions.
+	* A new ACL access level `view` is a subset of the `read` access level for jobs, and does not allow users to view the "Definition" tab of a Job, or download the XML/YAML definitions.
 * Plugin development:
-    * dynamic list of Select value inputs for Java plugins
-    * Documentation for LogFilter and ContentConverter plugins added
-    * Groovy Plugin DSL added for LogFilter and ContentConverter plugins
+	* dynamic list of Select value inputs for Java plugins
+	* Documentation for LogFilter and ContentConverter plugins added
+	* Groovy Plugin DSL added for LogFilter and ContentConverter plugins
 * Execution View:
-    * Can link or redirect to the Log Output tab for Executions
+	* Can link or redirect to the Log Output tab for Executions
 * Internationalization:
-    * Improvements, and French translation added by PeekLeon! 👏👏 🇫🇷
+	* Improvements, and French translation added by PeekLeon! 👏👏 🇫🇷
 * API:
-    * Added endpoints for writeable Resource Model Sources (such as built in File plugin)
-    * List project sources, retrieve node definitions from each source
-    * Writeable sources allow updating node data via API
+	* Added endpoints for writeable Resource Model Sources (such as built in File plugin)
+	* List project sources, retrieve node definitions from each source
+	* Writeable sources allow updating node data via API
 
 Bug fixes:
 
@@ -2189,7 +2189,7 @@ Some bugfixes, and some improvements to Git SCM plugin:
 * Import: Option to Pull automatically when fetching (default: true)
 * new Clean button in the GUI: allows removing local git repo 
 * Import: automatic Tracking init during Setup, if you use a regular expression
-    * API improvement: does not require a second step after setup to initialize Git Import
+	* API improvement: does not require a second step after setup to initialize Git Import
 * Export: Push Remotely is checked by default when making commits
 * (see full details [#PR3152](https://github.com/rundeck/rundeck/pull/3152))
 
@@ -2444,7 +2444,7 @@ Primarily Bug fixes.
 Enhancements:
 
 * New: Global Variable step plugin: copy captured data values into a global context in any variable group.  E.g. data from a node step to use it in a non-node-step.
-    * Within a job, copy data to the `export.*` group, to have it available in later steps if the job is included as a Job Reference.
+	* Within a job, copy data to the `export.*` group, to have it available in later steps if the job is included as a Job Reference.
 
 ## Contributors
 
@@ -2511,7 +2511,7 @@ Name: <span style="color: Teal"><span class="glyphicon glyphicon-glass"></span> 
 New features:
 
 * GUI editable Resource Model source plugins.  Allows the xml/yaml/json resource data to be edited in the GUI.
-    * The built-in File model source can be marked as "writeable", allowing admins to edit the resources file in the GUI
+	* The built-in File model source can be marked as "writeable", allowing admins to edit the resources file in the GUI
 * GUI editable ACLs. Modify the aclpolicy yaml files in the GUI and see validation info.
 * Jobs can define Notifications in the event of Average Duration Exceeded
 * API updated to allow user profile modifications
@@ -2777,25 +2777,25 @@ This release contains a number of enhancements:
 For more detail see [2.9.0 Changes](https://github.com/rundeck/rundeck/issues/2577)
 
 1. Data Capture/Data Passing between steps 
-    * Data capture plugin to match a regular expression in a step's log output and pass the values to later steps
+	* Data capture plugin to match a regular expression in a step's log output and pass the values to later steps
 2. Log Filter Plugins
-    * These plugins can be applied to individual steps, or to the entire workflow
-    * Data type plugins can detect or mark formatted data such as JSON, CSV, HTML, Markdown, etc. and render it in the GUI
-    * Mask Passwords plugin removes any values from secure input options before it is logged
-    * Highlighting/quelling: highlight keywords or selectively quell output from verbose scripts
-    * (And of course, you can write your own plugins...)
+	* These plugins can be applied to individual steps, or to the entire workflow
+	* Data type plugins can detect or mark formatted data such as JSON, CSV, HTML, Markdown, etc. and render it in the GUI
+	* Mask Passwords plugin removes any values from secure input options before it is logged
+	* Highlighting/quelling: highlight keywords or selectively quell output from verbose scripts
+	* (And of course, you can write your own plugins...)
 2. New Job and Project features: 
-    * Export a project to another Rundeck instance
-    * Copy a Job to another Project
-    * Reference a Job in another Project
-    * Check state of a job in another project
-    * Disable Job Schedules or all Executions for a project
-    * Improved Time Zone support
-    * Allow matching 0 nodes as success condition
-    * Retry delay
+	* Export a project to another Rundeck instance
+	* Copy a Job to another Project
+	* Reference a Job in another Project
+	* Check state of a job in another project
+	* Disable Job Schedules or all Executions for a project
+	* Improved Time Zone support
+	* Allow matching 0 nodes as success condition
+	* Retry delay
 4. GUI changes
-    * Rearranged the Project and System configuration pages and navigation
-    * Job workflow editor enhancements
+	* Rearranged the Project and System configuration pages and navigation
+	* Job workflow editor enhancements
 
 Stay tuned! We are also adding many new features to [Rundeck Pro](http://rundeck.com).
 
@@ -3113,21 +3113,21 @@ Import Changes:
 New Features:
 
 * Jobs Options now have a [File input type](http://rundeck.org/docs/manual/jobs.html#file-option-type).
-    * Uploaded files are stored temporarily on the server while the execution runs
-    * [API support](http://rundeck.org/docs/api/index.html#upload-a-file-for-a-job-option)
+	* Uploaded files are stored temporarily on the server while the execution runs
+	* [API support](http://rundeck.org/docs/api/index.html#upload-a-file-for-a-job-option)
 * API Token Roles
-    * API Tokens now have associated Roles and Expiration date.
-    * [Access Control](http://rundeck.org/docs/administration/access-control-policy.html#api-token-authorization-roles): 
-        * Authorized users can generate a token with their own roles.
-        * Authorized users can specify other access roles.
-    * [Admins can specify maximum token lifetime](http://rundeck.org/docs/administration/configuration-file-reference.html#security).
-    * [API support](http://rundeck.org/docs/api/index.html#authentication-tokens)
+	* API Tokens now have associated Roles and Expiration date.
+	* [Access Control](http://rundeck.org/docs/administration/access-control-policy.html#api-token-authorization-roles): 
+		* Authorized users can generate a token with their own roles.
+		* Authorized users can specify other access roles.
+	* [Admins can specify maximum token lifetime](http://rundeck.org/docs/administration/configuration-file-reference.html#security).
+	* [API support](http://rundeck.org/docs/api/index.html#authentication-tokens)
 * Job editor autocomplete supports global variables
 * Project configuration for displaying Readme/Motd on Projects List or Project Home page
 * Project configuration for collapsing/expanding Job groups by default
 * Project Archive Export: User can select what to include in the archive
-    * [API support](http://rundeck.org/docs/api/index.html#project-archive-export)
-    * [API supports async export](http://rundeck.org/docs/api/index.html#project-archive-export-async)
+	* [API support](http://rundeck.org/docs/api/index.html#project-archive-export)
+	* [API supports async export](http://rundeck.org/docs/api/index.html#project-archive-export-async)
 * New Step Plugin: Refresh nodes. Causes Rundeck to refresh the nodes list for the project, so that subsequent Job Reference steps can use any new nodes.
 * File Copy Plugin: Recursive and wildcard file copy
 * Job Options: Multivalue options can be selected by default
@@ -4175,12 +4175,12 @@ Name: <span style="color: chocolate"><span class="glyphicon glyphicon-gift"></sp
 * UI updates to Nodes and Commands pages
 * Project Archives: includes ACLs and project config
 * Per-project ACLs available via API, storable in DB
-    * Filesystem ACLs are now used for "global" level access control
-    * Project ACLs are limited to manage the specific project, and are stored in the DB
+	* Filesystem ACLs are now used for "global" level access control
+	* Project ACLs are limited to manage the specific project, and are stored in the DB
 * ACL validation improvements
-    * see the `rd-acl` tool [validate command](http://rundeck.org/2.6.0/man1/rd-acl.html#validate-command)
-    * Invalid filesystem ACLs are logged in the service log
-    * Invalid project ACLs uploaded via API will be rejected
+	* see the `rd-acl` tool [validate command](http://rundeck.org/2.6.0/man1/rd-acl.html#validate-command)
+	* Invalid filesystem ACLs are logged in the service log
+	* Invalid project ACLs uploaded via API will be rejected
 * Example Orchestrator plugins now bundled
 * JSON support added for all API endpoints
 * Some API refactoring for v14
@@ -4382,7 +4382,7 @@ This release has primarily bugfixes.
 ## Enhancements
 
 * CLI tools can authenticate to the server using environment variables instead of the credentials stored in the framework.properties file.
-    * see [CLI Tool Authentication](http://rundeck.org/2.5.1/man1/cli-tool-authentication.html)
+	* see [CLI Tool Authentication](http://rundeck.org/2.5.1/man1/cli-tool-authentication.html)
 
 ## Upgrading to 2.5
 
@@ -4471,11 +4471,11 @@ This release has many new features and bugfixes, and contains some refactoring u
 * New workflow step plugin: Assert state of another Job, optionally halt workflow with custom status string
 * New `rd-acl` commandline tool can list test and generate .aclpolicy file contents, see [rd-acl](http://rundeck.org/2.5.0/man1/rd-acl.html)
 * New Orchestrator plugin point. Orchestrators can be used to batch and sequence the matched nodes used in node dispatching, e.g.: only allow a certain % to run simultaneously.
-    * [Plugins User Guide -  Orchestrator Plugins](http://rundeck.org/2.5.0/plugins-user-guide/orchestrator-plugins.html)
-    * [Plugin Developer Guide -  Orchestrator Plugin](http://rundeck.org/2.5.0/developer/orchestrator-plugin.html)
-    * [Example code](https://github.com/rundeck/rundeck/tree/development/examples/example-java-orchestrator-plugin)
+	* [Plugins User Guide -  Orchestrator Plugins](http://rundeck.org/2.5.0/plugins-user-guide/orchestrator-plugins.html)
+	* [Plugin Developer Guide -  Orchestrator Plugin](http://rundeck.org/2.5.0/developer/orchestrator-plugin.html)
+	* [Example code](https://github.com/rundeck/rundeck/tree/development/examples/example-java-orchestrator-plugin)
 * Added hybrid LDAP + properties file group authentication for JAAS (`JettyCombinedLdapLoginModule`)
-    * [Administration - Authentication - Combining LDAP with other modules](http//rundeck.org/2.5.0/administration/authenticating-users.html#combining-ldap-with-other-modules)
+	* [Administration - Authentication - Combining LDAP with other modules](http//rundeck.org/2.5.0/administration/authenticating-users.html#combining-ldap-with-other-modules)
 
 ## Upgrading
 
