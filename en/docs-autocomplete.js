@@ -90,9 +90,7 @@ function setupAutocomplete(site){
 
 
 jQuery(function(){
-	
-
-	jQuery.getJSON('/site.json',function(data){
+	jQuery.getJSON(window._pageRelpath+'site.json',function(data){
 		var site=data;
 		setupAutocomplete(site);		
 	});
