@@ -50,14 +50,18 @@ $endfor$
 <div class="columns">
 $if(toc)$
 <div class="column is-one-quarter toc-nav">
-<section class="section sticky-toc">
+<section class="section">
 <div class="nav">
 $toc$
 </div>
 </div>
 </section>
 $endif$
-<div class="column">
+<div class="column
+$if(toc)$
+is-three-quarters
+$endif$
+">
 <section class="section content">
 $if(title)$
 <div class="page-header">
