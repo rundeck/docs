@@ -1,3 +1,5 @@
+> ⚠️ **NOTICE**: This project has been archived! All documentation work has been detoured to the [VuePress Docs project](https://github.com/rundeck/docs-vuepress) . Please open all PRs and issues against that repo!
+
 # Building
 
 Requires:
