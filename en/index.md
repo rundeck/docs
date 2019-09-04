@@ -10,3 +10,4 @@ More information about Rundeck at: [rundeck.org](http://rundeck.org).
 ## Release Notes
 
 * [Version ${VERSION}](history/version-${VERSION}.html)
+
