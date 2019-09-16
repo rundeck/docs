@@ -1,0 +1,18 @@
+# Using Microsoft SQL Server as a database backend
+
+<!---
+Original: http://support.rundeck.com/customer/en/portal/articles/2819414-install-rundeck-pro-team-launcher-on-windows
+--->
+
+Create a database on your backend, plus a user (and assign it the db_owner role)
+
+In %RDECK_BASE%\\server\\config\\rundeck-config.properties, set the following:
+
+```
+    rundeck.projectsStorageType=db
+    dataSource.dbCreate = update
+    dataSource.driverClassName = com.microsoft.sqlserver.jdbc.SQLServerDriver
+    dataSource.url = jdbc:sqlserver://myserver;DatabaseName=RUNDECK
+    dataSource.username = myusername
+    dataSource.password = mypassword
+```
