@@ -26,7 +26,7 @@ The focus of [Rundeck Enterprise], our commercial offering, is on making Rundeck
 
 Built and tested for the enterprise, Rundeck Enterprise includes exclusive features (including clustering/HA, advanced workflow, enhanced ACL management, enhanced dashboards/visualization) and Rundeck Enterprise exclusive plugins. Professional support and on-boarding services are also part of the Rundeck Enterprise subscription bundle.
 
-*NOTE: Rundeck Enterprise was recently renamed from Rundeck Enterprise. You may still see refrences to "Pro" here and there, as we work to update our documentation. Just know that they are the same thing.*
+*NOTE: Rundeck Enterprise was recently renamed from Rundeck Pro. You may still see references to "Pro" here and there, as we work to update our documentation. Just know that they are the same thing.*
 
 [Rundeck Enterprise]: https://www.rundeck.com/enterprise
 [GitHub]: https://github.com/rundeck/rundeck
