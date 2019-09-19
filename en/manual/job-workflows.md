@@ -51,7 +51,7 @@ dispatch to nodes: *Node-oriented* and *Step-oriented*.
 *   *Node-oriented*: Executes the full workflow on each node before the
     next node. (default)
 *   *Step-oriented*: Executes each step on all nodes before the next
-     node.
+     step.
 
 The following illustrations contrast the strategies showing how three
 steps proceed across two nodes.
@@ -74,7 +74,7 @@ Step-oriented flow illustrated:
 2.   NodeB      "
 3.   NodeA    step#2
 4.   NodeB      "
-5.   NodeA    step#1
+5.   NodeA    step#3
 6.   NodeB      "
 ~~~~~~~~~~~~~~~~~~~~~
 
