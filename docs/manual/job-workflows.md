@@ -50,7 +50,7 @@ dispatch to nodes: _Node-oriented_ and _Step-oriented_.
 - _Node First_: Executes the full workflow on each node before the
   next node. (default)
 - _Sequential_: Executes each step on all nodes before the next
-  node.
+  step.
 - _Parallel_: Run all steps in parallel.
 
 The following illustrations contrast the strategies showing how three
@@ -74,7 +74,7 @@ Sequential flow illustrated:
 2.   NodeB      "
 3.   NodeA    step#2
 4.   NodeB      "
-5.   NodeA    step#1
+5.   NodeA    step#3
 6.   NodeB      "
 ```
 
