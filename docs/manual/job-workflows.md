@@ -312,6 +312,7 @@ Jobs can be exported or imported in XML or Yaml format using the API or the `rd`
 
 - [Exporting Jobs](/api/rundeck-api.md#exporting-jobs)
 - [Importing Jobs](/api/rundeck-api.md#importing-jobs)
-- [RD CLI Tool](https://rundeck.github.io/rundeck-cli)
+- [RD CLI Tool][rd]
 
 [quartz scheduler crontrigger]: http://www.quartz-scheduler.org/api/2.2.1/org/quartz/CronTrigger.html
+[rd]: https://rundeck.github.io/rundeck-cli/
