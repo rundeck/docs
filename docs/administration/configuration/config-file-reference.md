@@ -52,6 +52,8 @@ This file governs the access for the "admin" group and role.
 
 See [role based access control](/administration/security/authorization.md) for information about setting up policy files for other user groups.
 
+[aclpolicy]: /manual/document-format-reference/aclpolicy-v10
+
 ## framework.properties
 
 Configuration file used by shell tools and core Rundeck services. This file will be created for you at install time.
