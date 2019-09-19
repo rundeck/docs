@@ -41,5 +41,18 @@ module.exports = [{
         },
       ]
     },
+    {
+      title: 'Document Formats',
+      collapsable: true,
+      sidebarDepth: 0,
+      children: [
+        '/manual/document-format-reference/aclpolicy-v10.md',
+        '/manual/document-format-reference/job-v20.md',
+        '/manual/document-format-reference/job-yaml-v12.md',
+        '/manual/document-format-reference/resource-json-v10.md',
+        '/manual/document-format-reference/resource-v13.md',
+        '/manual/document-format-reference/resource-yaml-v13.md',
+      ]
+    },
   ]
 }]

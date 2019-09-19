@@ -45,5 +45,9 @@ module.exports = [{
   {
     link: '/manual/12-webhooks',
     text: 'Webhooks'
+  },
+  {
+    link: '/manual/document-format-reference/index',
+    text: 'Document Formats'
   }
 ]

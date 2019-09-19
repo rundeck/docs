@@ -92,7 +92,7 @@ _Anything_
 
 : Specify any custom attributes about node using a string value.
 
-- For more information about using the `editUrl`/`remoteUrl` see the [Rundeck User Manual](/administration/projects/resource-model-sources/resource-editor.md#resource-editor].
+- For more information about using the `editUrl`/`remoteUrl` see the [Rundeck User Manual](/administration/projects/resource-model-sources/resource-editor.md#resource-editor).
 
 ## Examples
 
@@ -160,6 +160,3 @@ Here is the same two nodes but in the sequence style syntax:
   app-port: 8080
   https-port: 8443
 ```
-
-The Rundeck source code and all documentation may be downloaded from
-<https://github.com/rundeck/rundeck/>.

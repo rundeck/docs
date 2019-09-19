@@ -174,5 +174,3 @@ An example with tags and custom attributes that describe the server role and env
     />
 ```
 
-The Rundeck source code and all documentation may be downloaded from
-<https://github.com/rundeck/rundeck/>.
