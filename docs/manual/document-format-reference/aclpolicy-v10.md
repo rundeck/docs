@@ -20,7 +20,7 @@ The resulting file must be a valid yaml file.
 
 For more information about the exact resources and actions you need to
 authorize for the Rundeck application, see the
-[Administration Guide - Authorization](/administration/security/authorization.md#rundeck-resource-authorizations].
+[Administration Guide - Authorization](/administration/security/authorization.md#rundeck-resource-authorization).
 
 ## Authorizing a certain action on a resource
 

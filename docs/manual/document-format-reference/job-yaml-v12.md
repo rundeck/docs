@@ -877,7 +877,7 @@ Example:
         type: MinimalNotificationPlugin
 ```
 
-- For more information about the Webhook mechanism used, see the chapter [Integration - Webhooks](/manual/04-jobs.md#webhooks].
+- For more information about the Webhook mechanism used, see the chapter [Integration - Webhooks](/manual/04-jobs.md#webhooks).
 
 #### plugin
 
@@ -893,9 +893,6 @@ Defines a plugin notification section, can contain a single Map, or a Sequence o
 
 # SEE ALSO
 
-[rd jobs](/manual/04-jobs.md)
 
 <http://yaml.org/>
 
-The Rundeck source code and all documentation may be downloaded from
-<https://github.com/rundeck/rundeck/>.
