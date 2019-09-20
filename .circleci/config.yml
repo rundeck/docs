@@ -37,3 +37,12 @@ jobs:
 
       # run tests!
       - run: node docs/.vuepress/deploy.js $CIRCLE_TAG
+
+workflows:
+  version: 2
+  publish:
+    jobs:
+      - build:
+          filters:
+            branches:
+              only: 3.1.x
