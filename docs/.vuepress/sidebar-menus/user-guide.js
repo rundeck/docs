@@ -26,7 +26,7 @@ module.exports = [{
     '/manual/10-user.md',
     '/manual/11-node-filters.md',
     {
-      title: 'Webhooks (beta)',
+      title: 'Webhooks (incubating)',
       collapsable: false,
       sidebarDepth: 2,
       children: [
