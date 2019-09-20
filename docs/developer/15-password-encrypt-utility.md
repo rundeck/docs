@@ -27,7 +27,7 @@ Finally, run the encryption
 
 ## Java Plugin Type
 
-~~~~~ {.java}
+```java
 package com.plugin.example;
 
 import com.dtolabs.rundeck.core.encrypter.EncryptorResponse;
@@ -128,5 +128,4 @@ public class MyPasswordEncrypterTest implements PasswordUtilityEncrypterPlugin, 
 
     }
 }
-
-~~~~~
+```

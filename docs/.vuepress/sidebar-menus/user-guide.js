@@ -36,7 +36,7 @@ module.exports = [{
           sidebarDepth: 2,
           children: [
             '/manual/webhooks/run-job.md',
-            '/manual/webhooks/routing-run-job',
+            '/manual/webhooks/advanced-run-job',
           ]
         },
       ]
