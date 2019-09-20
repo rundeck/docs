@@ -1,6 +1,8 @@
-## Notes
+# Release 3.1.1
 
 Name: <span style="color: pink"><span class="glyphicon glyphicon-plane"></span> "mozzarella stick pink plane"</span>
+
+## Notes
 
 ## Upgrading
 See the upgrade documentation [here](https://docs.rundeck.com/3.1.0-rc2/upgrading/upgrade-to-rundeck-3.1.html).
