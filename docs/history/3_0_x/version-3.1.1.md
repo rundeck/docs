@@ -11,7 +11,7 @@ See the upgrade documentation [here](https://docs.rundeck.com/3.1.0-rc2/upgradin
 
 ### Webhooks (incubating)
 Much anticipated and maximally useful.. Webhooks have landed in Rundeck! This new incubating feature
-empowers Rundeck to reveive JSON events and direct them to jobs.
+empowers Rundeck to receive JSON events and direct them to jobs.
 Check out the [Webhook Docs](https://docs.rundeck.com/3.1.1/manual/12-webhooks.html) for
 instructions on enabling the feature and full details.
 
@@ -19,7 +19,8 @@ instructions on enabling the feature and full details.
 
 
 ### Job Options
-Job options display has been enhanced in the activities list and execution view.
+Job options display has been enhanced in the activities list and execution view. This should
+provide better visual separation between the option names and option values.
 
 ![Contrasty!](https://docs.rundeck.com/assets/releases/3_1_1/job_opts.png "Contrasty!")
 
