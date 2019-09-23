@@ -4,28 +4,28 @@ module.exports = [
   {
     title: 'History',
     collapsable: false,
-    sidebarDepth: 1,
+    sidebarDepth: 2,
     path: '/history/',
     children: [
       ...getChildren('docs/history'),
       {
         title: '3.0.x',
         collapsable: true,
-        sidebarDepth: 1,
+        sidebarDepth: 2,
         path: '/history/',
         children: getChildren('docs/history', '3_0_x'),
       },
       {
         title: '2.x',
         collapsable: true,
-        sidebarDepth: 1,
+        sidebarDepth: 2,
         path: '/history/',
         children: getChildren('docs/history', '2_x'),
       },
       {
         title: '1.x',
         collapsable: true,
-        sidebarDepth: 1,
+        sidebarDepth: 2,
         path: '/history/',
         children: getChildren('docs/history', '1_x'),
       }
