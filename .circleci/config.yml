@@ -44,5 +44,8 @@ workflows:
     jobs:
       - build:
           filters:
+            tags:
+              only: /^v.*/
             branches:
               only: 3.1.x
+
