@@ -26,6 +26,7 @@ provide better visual separation between the option names and option values.
 
 * Allow notification to use workflow exported variables [#5139](https://github.com/rundeck/rundeck/pull/5139)
 * API to list installed plugins [#5259](https://github.com/rundeck/rundeck/pull/5259)
+* Externalize Vue in webpack builds [#5217](https://github.com/rundeck/rundeck/pull/5217)
 
 ### Docker
 
@@ -35,6 +36,7 @@ provide better visual separation between the option names and option values.
 
 * 🌈 Upgrade font awesome to 5.10.2 [#5269](https://github.com/rundeck/rundeck/pull/5269)
 * Execution log parsing has been speed up to improve log loading speed [#5253](https://github.com/rundeck/rundeck/pull/5253)
+* New `scm_import` and `scm_export` ACLs for job writers [#5176](https://github.com/rundeck/rundeck/pull/5176)
 
 ## Bug Fixes
 
@@ -94,6 +96,7 @@ provide better visual separation between the option names and option values.
 * [Bump sass-asset-pipeline from 3.0.5 to 3.0.10](https://github.com/rundeck/rundeck/pull/4862)
 * [Bump jaxb-api from 2.3.0 to 2.3.1](https://github.com/rundeck/rundeck/pull/4859)
 * [API to list installed plugins](https://github.com/rundeck/rundeck/issues/495)
+* [Consider plugin title in search](https://github.com/rundeck/rundeck/pull/5288)
 
 ## Contributors
 
