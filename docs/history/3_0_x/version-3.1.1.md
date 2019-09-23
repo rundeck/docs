@@ -22,11 +22,6 @@ provide better visual separation between the option names and option values.
 
 ![Contrasty!](https://docs.rundeck.com/assets/releases/3_1_1/job_opts.png "Contrasty!")
 
-### Misc
-
-* 🌈 Upgrade font awesome to 5.10.2 [#5269](https://github.com/rundeck/rundeck/pull/5269)
-* Execution log parsing has been speed up to improve log loading speed [#5253](https://github.com/rundeck/rundeck/pull/5253)
-
 ### Development
 
 * Allow notification to use workflow exported variables [#5139](https://github.com/rundeck/rundeck/pull/5139)
@@ -35,6 +30,11 @@ provide better visual separation between the option names and option values.
 ### Docker
 
 * Added ldap nestedGroups setting to remco template [#5100](https://github.com/rundeck/rundeck/pull/5100)
+
+### Misc
+
+* 🌈 Upgrade font awesome to 5.10.2 [#5269](https://github.com/rundeck/rundeck/pull/5269)
+* Execution log parsing has been speed up to improve log loading speed [#5253](https://github.com/rundeck/rundeck/pull/5253)
 
 ## Bug Fixes
 
