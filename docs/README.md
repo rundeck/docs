@@ -1,3 +1,7 @@
+---
+sidebar: false
+---
+
 # Rundeck Documentation
 
 If you are new to Rundeck, start with the **[User Guide](/manual/index.md)**.
