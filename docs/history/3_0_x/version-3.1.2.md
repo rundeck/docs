@@ -13,7 +13,7 @@ See the upgrade documentation [here](https://docs.rundeck.com/3.1.0-rc2/upgradin
 
 * Fixed SCM plugin API memory leak [#5301](https://github.com/rundeck/rundeck/issues/5301)
 * Fixed Rundeck Plugin Options type preventing saving node step [#5302](https://github.com/rundeck/rundeck/pull/5302)
-* (Enterprise)
+* `Enterprise` Fix s3 execution log plugin not loading
 
 ## Issues
 
