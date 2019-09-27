@@ -118,7 +118,7 @@ Optional parameters:
 * `argString`: argument string to pass to the job, of the form: `-opt value -opt2 value ...`.
 * `loglevel`: argument specifying the loglevel to use, one of: 'DEBUG','VERBOSE','INFO','WARN','ERROR'
 * `asUser` : specifies a username identifying the user who ran the job. Requires `runAs` permission.
-* Node filter parameters as described under [Using Node Filters](#using-node-filters)
+* Node filter parameters as described under [Using Node Filters](/api/#using-node-filters)
 * `filter` can be a node filter string.
 * `runAtTime`: Specify a time to run the job (**API v18** or later).
 * `option.OPTNAME`: Option value for option named `OPTNAME`. If any `option.OPTNAME` parameters are specified,
