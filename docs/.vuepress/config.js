@@ -2,6 +2,7 @@ const path = require("path");
 
 // sidebars
 const sidebarAdmin = require('./sidebar-menus/administration')
+const sidebarAPI = require('./sidebar-menus/api')
 const sidebarUserGuide = require('./sidebar-menus/user-guide')
 const sidebarCommandLineTools = require('./sidebar-menus/command-line-tools')
 const sidebarEnterprise = require('./sidebar-menus/enterprise')
@@ -86,15 +87,13 @@ module.exports = {
     sidebarDepth: 2,
     sidebar: {
       '/administration/': sidebarAdmin,
+      '/api/': sidebarAPI,
       '/enterprise/': sidebarEnterprise,
       '/manual/command-line-tools/': sidebarCommandLineTools,
       '/manual': sidebarUserGuide,
       '/tutorials/': sidebarTutorials,
       '/developer/': sidebarDeveloper,
       '/history/': sidebarHistory,
-      '/api/': [
-        '/api/rundeck-api.md'
-      ],
       '/': [
         ''
       ]

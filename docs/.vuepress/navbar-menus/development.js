@@ -1,6 +1,6 @@
 module.exports = [{
   text: 'API',
-  link: '/api/rundeck-api'
+  link: '/api/'
 }, {
   text: 'Plugin Development',
   link: '/developer/index'
