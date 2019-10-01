@@ -97,12 +97,13 @@ provide better visual separation between the option names and option values.
 * [Bump jaxb-api from 2.3.0 to 2.3.1](https://github.com/rundeck/rundeck/pull/4859)
 * [API to list installed plugins](https://github.com/rundeck/rundeck/issues/495)
 * [Consider plugin title in search](https://github.com/rundeck/rundeck/pull/5288)
+* [Fix Rundeck ignoring custom config file](https://github.com/rundeck/rundeck/issues/5160)
 
 ## Contributors
 
 * Alberto Hormazabal
+* Daniel Fernández (danifr)
 * Deyan Stoykov (deyanstoykov)
-* GitHub (web-flow)
 * Greg Schueler (gschueler)
 * Jaime Tobar (jtobard)
 * Jesse Marple (jessemarple)
@@ -111,8 +112,6 @@ provide better visual separation between the option names and option values.
 * Rune Philosof (runephilosof)
 * Stephen Joyner (sjrd218)
 * carlos (carlosrfranco)
-* dependabot-preview[bot]
-* dependabot[bot] (dependabot-bot)
 
 ## Bug Reporters
 
@@ -123,7 +122,7 @@ provide better visual separation between the option names and option values.
 * amendlik
 * bradym
 * carlosrfranco
-* dependabot-preview[bot]
+* Daniel Fernández (danifr)
 * deyanstoykov
 * gschueler
 * jessemarple
