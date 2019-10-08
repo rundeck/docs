@@ -21,8 +21,8 @@
     "@vue/cli-plugin-babel": "^3.8.0",
     "@vue/cli-plugin-eslint": "^3.8.0",
     "@vue/cli-service": "^3.8.0",
-    "@vuepress/core": "1.0.2",
-    "@vuepress/theme-default": "1.0.2",
+    "@vuepress/core": "1.1.0",
+    "@vuepress/theme-default": "1.1.0",
     "babel-eslint": "^10.0.1",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
@@ -32,7 +32,7 @@
     "push-dir": "^0.4.1",
     "semver-compare": "^1.0.0",
     "vue-template-compiler": "^2.6.10",
-    "vuepress": "1.0.2"
+    "vuepress": "1.1.0"
   },
   "eslintConfig": {
     "root": true,
