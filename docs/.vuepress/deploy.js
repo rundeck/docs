@@ -30,7 +30,7 @@ const base = version || branch
 
 env = {
     ...env,
-    DOC_BASE: `/${base}/`
+    DOC_BASE: base
 }
 
 build(env)
@@ -40,7 +40,7 @@ if (version && !maint) {
     console.log('Releasing to /docs')
     const releaseEnv = {
         ...env,
-        DOC_BASE: `/docs/`
+        DOC_BASE: `docs`
     }
     build(releaseEnv)
     syncS3('docs')
