@@ -60,7 +60,7 @@ module.exports = {
     algolia: {
       appId: 'GRSXNRCDRG',
       apiKey: '50ca83cbf53e21e93a02dc46488b12e0',
-      indexName: 'dev_rundeck_docs',
+      indexName: 'prod_rundeck_docs',
       algoliaOptions: {
         hitsPerPage: 10,
         facets: [ "version" ],
