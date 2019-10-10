@@ -5,7 +5,7 @@ const API_VERSION='33'
 const REPO_BRANCH='3.1.x'
 
 const setup = {
-    base: process.env.DOC_BASE || '/',
+    base: process.env.DOC_BASE,
     branch: process.env.DOC_BRANCH || REPO_BRANCH,
     apiVersion: API_VERSION,
     rundeckVersion: process.env.RUNDECK_VERSION || RUNDECK_VERSION,
