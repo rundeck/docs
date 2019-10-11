@@ -24,7 +24,7 @@
       "lvl4": "[class*='content '] h5",
       "lvl5": "[class*='content '] h5",
       "text": {
-        "selector": "//div[contains(@class, \"content\")]/p | //div[contains(@class, \"content\")]/pre[string-length(string()) < 5000]",
+        "selector": "//div[contains(@class, \"content\")]//p | //div[contains(@class, \"content\")]//pre[string-length(string()) < 5000]",
         "type": "xpath"
       },
       "lang": {
