@@ -5,7 +5,7 @@ There may be breaking API changes between releases!
 :::
 
 You can configure Rundeck to receive webhook events from external system and to run a job based on those actions.
-Webhook events are handled by [Webhook Event](/developer/15-webhook-plugins.md) Rundeck plugins, so you can write your own handling code if necessary.
+Webhook events are handled by [Webhook Event](/developer/16-webhook-plugins.md) Rundeck plugins, so you can write your own handling code if necessary.
 
 ### Enable the feature
 

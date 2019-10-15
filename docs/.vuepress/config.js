@@ -23,7 +23,7 @@ console.log(setup)
 module.exports = {
   title: 'Rundeck Docs',
   description: '',
-  base: setup.base,
+  base: `/${setup.base}/`,
   configureWebpack: {
     resolve: {
       alias: {
@@ -57,10 +57,17 @@ module.exports = {
     apiVersion: setup.apiVersion,
     version: setup.rundeckVersion,
     versionFull: setup.rundeckVersionFull,
-    // algolia: {
-    //   apiKey: 'b83a4def9dea3b0d8b9c7f68f5c8f3eb',
-    //   indexName: 'rundeck'
-    // },
+    algolia: {
+      appId: 'GRSXNRCDRG',
+      apiKey: '50ca83cbf53e21e93a02dc46488b12e0',
+      indexName: 'prod_rundeck_docs',
+      algoliaOptions: {
+        hitsPerPage: 10,
+        facets: [ "version" ],
+        facetFilters: [ `version:${setup.base}` ]
+      },
+    },
+    searchMaxSuggestions: 10,
     lastUpdated: 'Last Updated', // string | boolean
     nav: [{
         text: 'User Guide',
