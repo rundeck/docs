@@ -13,23 +13,16 @@ the content correctly when you view it in the GUI. Rundeck also knows how to cha
 to produce `text/html` output for the Log View. This allows some plugins to
 simply parse formatted data such as CSV, and another plugin to render it as HTML.
 
-<pre class="diagram">
-
- .----------------.      +----------------+
-| input: text/json +---->| JSON converter |
- '----------------'      +-------+--------+
-                                 |
-                                 v
-                         .------------------.    +----------------------+
-                        | result: x-java-map +-->| HTML Table converter |
-                         '------------------'    +----------+-----------+
-                                                            |
-                                                            v
-                                                   .------------------.
-						                          | result: text/html  |
-						                           '------------------'
-
-</pre>
+<mermaid>
+graph TD
+  A(" text/json   ") --> B[JSON Converter]
+  B --> C("result: x-java-map")
+  C --> D[HTML Table converter]
+  D --> E("result: text/html   ")
+  style A fill:#eee
+  style C fill:#eee
+  style E fill:#eee
+</mermaid>
 
 Normally Content Converters are not used directly. However,
 Step plugins can include metadata in their log output that will invoke
