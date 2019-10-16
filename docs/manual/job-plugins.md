@@ -75,3 +75,7 @@ Log Filters can filter/process/read output from specific Workflow Steps, or all 
 Content Converters are not added directly to Jobs, but can be used by Log Filters and Step plugins.
 
 See [Content Converter Plugins](/manual/content-converters/index.md).
+
+## Execution Lifecycle
+
+See [Execution Lifecycle Plugins](/manual/execution-lifecycle/index.md).
