@@ -1,8 +1,8 @@
 # Properties Converter
 
-Parses Java style Properties data into a Java object.
+Parses Java style [Properties][] data into a Java object.
 
-The (/manual/content-converters/html-table-view.md) plugin can render this as a HTML Table.
+The [HTML Table View Converter](/manual/content-converters/html-table-view.md) plugin can render this as a HTML Table.
 
 ## Input Types
 
@@ -14,4 +14,6 @@ The (/manual/content-converters/html-table-view.md) plugin can render this as a 
 
 ## Related Plugins
 
-- (/manual/content-converters/html-table-view.md)
+- [HTML Table View Converter](/manual/content-converters/html-table-view.md)
+
+[Properties]: https://docs.oracle.com/javase/8/docs/api/java/util/Properties.html#load-java.io.Reader-
