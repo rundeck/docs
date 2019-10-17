@@ -166,6 +166,18 @@ Usage (see below)
 
 ![Option Usage](~@assets/img/fig-option-usage.png)
 
+### Option timestamp variable
+
+You can use the string `${DATE:format}` as a job option value (either as default value or as input by the user), which will be converted when the job/command is executed.
+This variable also allows you to add or remove days as you can see below.
+
+`${DATE:format}` current date in format used by the Java [SimpleDateFormatter](https://docs.oracle.com/javase/7/docs/api/java/text/SimpleDateFormat.html)
+
+`${DATE+2:format}` two days from now
+
+`${DATE-2:format}` two days ago
+
+
 ### File Option Type
 
 Choose "File" from the Option Type:
