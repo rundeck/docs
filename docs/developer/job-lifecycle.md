@@ -4,6 +4,9 @@
 Job Lifecycle Plugins add custom logic to be executed before a job is saved, and before an execution is started.
 They can also modify the Options of the Job and input values.
 
+To enable the Job Lifecycle Plugin add: `rundeck.feature.jobLifecyclePlugin.enabled=true`
+to your `rundeck-config.properties` or equivalent file.
+
 The lifecycle points currently supported:
 
 
