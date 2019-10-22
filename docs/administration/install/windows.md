@@ -14,7 +14,7 @@ The first step is to download Rundeck WAR file and save it on the main work dire
 set RDECK_BASE=C:\rundeck
 ```
 
-Next, we need launch Rundeck the first time to generate the configuration files and folders structure, for that you can open a Powershell, go to `c:\rundeck` and execute `java -jar rundeck-3.0.X.war` (in community case) or `java -jar rundeckpro-[edition]-3.0.X.war` for Enterprise; depending of your system the process can take some time, when Rundeck is ready you can see that on Powershell window:
+Next, we need to launch Rundeck the first time to generate the configuration files and folders structure, for that you can open a Powershell, go to `c:\rundeck` and execute `java -jar rundeck-3.0.X.war` (in community case) or `java -jar rundeckpro-[edition]-3.0.X.war` for Enterprise; depending of your system the process can take some time, when Rundeck is ready you can see that on Powershell window:
 
 ![Windows launcher](~@assets/img/windows-launcher.png)
 
