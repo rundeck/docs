@@ -8,7 +8,7 @@ Also, the main dependency is Java Development Kit 1.8 (JDK 8), you can download 
 
 ### Installing Rundeck on Windows based systems and first run
 
-The first step is to download Rundeck WAR file and save it on the main work directory, e.g. `C:\rundeck`, you can download [Community](https://www.rundeck.com/open-source/download) version or [Enterprise](https://download.rundeck.com/) and save it on `C:\rundeck` folder, now you will set Rundeck path environment variable, for that set it on a Powershell window and :
+The first step is to download Rundeck WAR file and save it to the main work directory, e.g. `C:\rundeck`, you can download [Community](https://www.rundeck.com/open-source/download) version or [Enterprise](https://download.rundeck.com/) and save it on `C:\rundeck` folder, now you will set Rundeck path environment variable, for that set it on a Powershell window and :
 
 ```powershell
 set RDECK_BASE=C:\rundeck
