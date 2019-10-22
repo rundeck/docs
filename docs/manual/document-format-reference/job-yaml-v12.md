@@ -194,6 +194,10 @@ value of `failed`. Allowed values:
 
 : Job result notifications
 
+[`plugins`](#plugins)
+
+: Job scoped plugins
+
 _Note:_ The UUID can be set manually (if
 you are writing the job definition from scratch), or will be assigned at job
 creation time by the Rundeck server using a random UUID. This string should be
@@ -890,6 +894,25 @@ Defines a plugin notification section, can contain a single Map, or a Sequence o
 `configuration`
 
 : A Map containing any custom configuration key/values for the plugin.
+
+### Plugins
+
+Defines job-scoped plugin entries, such as Execution Lifecycle Plugins.
+
+Example:
+
+```yaml
+  plugins:
+    ExecutionLifecycle:
+      myplugin: {}
+      anotherPlugin:
+        prop1: value
+```
+
+The `plugins` entry contains an entry for each plugin service, such as `ExecutionLifecycle`.
+This will contain entries for each provider type, using the provider name as the key.
+
+Each provider may contain a configuration Map, or if there is no configuration for the plugin, an empty map, `{}`.
 
 # SEE ALSO
 

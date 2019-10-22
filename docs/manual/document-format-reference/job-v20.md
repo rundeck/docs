@@ -24,7 +24,6 @@ rd jobs list command:
 rd jobs list -p project --file /tmp/jobs.xml
 ```
 
-[rd]: https://rundeck.github.io/rundeck-cli/
 
 # joblist
 
@@ -106,6 +105,14 @@ _Nested elements_
 [logging](#logging)
 
 : limit on the amount of log output
+
+[schedule](#schedule)
+
+: define scheduled execution
+
+[plugins](#plugins)
+
+: plugin configuration entries
 
 _Job command modes_
 
@@ -1339,15 +1346,109 @@ value
 
 : Textual value
 
+## plugins
+
+Defines Job-scoped plugins, such as Execution Lifecycle Plugins
+
+Contains an entry for each configured plugin, with an element name of the plugin service, such as `ExecutionLifecycle`, and a `type` attribute for the provider name.
+
+Example:
+
+```xml
+<plugins>
+  <ExecutionLifecycle type='myplugin'/>
+</plugins>
+```
+
+Each element may contain a `<configuration>` element, defining the plugin configuration.  This element is expected to have attribute `data="true"`, indicating
+that the contents of the `configuration` element are a [Generic Data Structure](#generic-data-structure).
+Most plugin configurations will consist of a Map of String keys and values.
+
+```xml
+<plugins>
+  <ExecutionLifecycle type='myplugin'>
+    <configuration data='true'>
+      <map>
+        <string key="akey">some string</string>
+      </map>
+    </configuration>
+  </ExecutionLifecycle>
+</plugins>
+```
+
+# Generic Data Structure
+
+This is allows encoding a data structure into the XML definition.  It consists of four types of elements:
+
+* [`map`](#generic-map)
+* [`list`](#generic-list)
+* [`set`](#generic-set)
+* [`string`](#generic-string)
+
+Except for `string`, each element can contain any of the other elements. 
+
+When a `map` contains other elements, each element has a `key` attribute indicating the Map key (String only) for that value.
+
+## Generic Map
+
+Map of String keys to arbitrary values of: Generic [Map](#generic-map), [List](#generic-list), [Set](#generic-set), or [String](#generic-string)
+
+```xml
+<map>
+  <string key="akey">a string value</string>
+  <string key="bkey">another value</string>
+</map>
+```
+
+## Generic List
+
+A list of values with specific order, can contain: Generic [Map](#generic-map), [List](#generic-list), [Set](#generic-set), or [String](#generic-string)
+
+
+
+```xml
+<list>
+  <string>a string value</string>
+  <string>other value</string>
+</list>
+```
+
+## Generic Set
+
+A set of values without ordering, can contain: Generic [Map](#generic-map), [List](#generic-list), [Set](#generic-set), or [String](#generic-string)
+
+
+```xml
+<set>
+  <string>a string value</string>
+  <string>other value</string>
+</set>
+```
+
+## Generic String
+
+Represents a String. If the String contains line breaks, it should be wrapped in a CDATA section.
+
+Examples:
+
+```xml
+<string>simple string</string>
+```
+
+```xml
+<string><![CDATA[simple string
+with
+linebreaks
+]]></string>
+```
+
 # SEE ALSO
 
-`[rd-jobs](/manual/04-jobs.md)`
-
-The Rundeck source code and all documentation may be downloaded from
-<https://github.com/rundeck/rundeck/>.
+- [rd][] - Rundeck CLI tool
 
 [onsuccess]: #onsuccess
 [onfailure]: #onfailure
 [onstart]: #onstart
 [onavgduration]: #onavgduration
 [onretryablefailure]: #onretryablefailure
+[rd]: https://rundeck.github.io/rundeck-cli/
