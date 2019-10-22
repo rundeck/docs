@@ -1,9 +1,14 @@
 # Execution Lifecycle Plugins
 
+
+## About
+
 Execution Lifecycle Plugins add custom logic to be executed during the lifecycle of a Job execution.
 
+::: tip
 To enable the Execution Lifecycle Plugin add: `rundeck.feature.executionLifecyclePlugin.enabled=true`
 to your `rundeck-config.properties` or equivalent file.
+:::
 
 The lifecycle points currently supported:
 
