@@ -9,6 +9,20 @@ The plugin will load the stored state contents, and start a new execution with t
 resume state, proceeding to execute the previously failed step with the same inputs.
 
 
+## Feature Flag
+
+::: tip
+This feature requires enabling via server configuration in the `rundeck-config.properties` file, see [rundeck-config.properties](/administration/configuration/config-file-reference.md#rundeck-config-properties).
+
+Add the following:
+
+```properties
+rundeckpro.feature.incubator.jobresume=true
+```
+
+It also requires that the [Execution Lifecycle Plugin](/developer/execution-lifecycle.md) feature be enabled.
+:::
+
 ## Requirements
 
 ::: warning
