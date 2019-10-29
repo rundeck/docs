@@ -1,8 +1,4 @@
 # Advanced Run Job (Enterprise)
-:::danger
-Webhooks and the Enterprise routing rule plugin are currently incubating.
-There may be breaking API changes between releases!
-:::
 
 The powerful Enterprise Advanced Run Job webhook handler enables selective execution
 of one or more jobs based by evaluating event data.

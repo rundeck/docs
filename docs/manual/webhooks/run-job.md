@@ -1,8 +1,4 @@
 # Webhook Run Job Plugin
-:::danger
-Webhooks and the Run Job Plugin are currently incubating.
-There may be breaking API changes between releases!
-:::
 
 The webhook run job plugin receives a webhook event and executes the configured job.
 You can pass the payload of the webhook to the job or use the event payload information

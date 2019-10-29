@@ -1,31 +1,30 @@
 # Webhooks
-:::danger
-Webhooks are currently incubating.
-There may be breaking API changes between releases!
-:::
 
 You can configure Rundeck to receive webhook events from external system and to run a job based on those actions.
 Webhook events are handled by [Webhook Event](/developer/16-webhook-plugins.md) Rundeck plugins, so you can write your own handling code if necessary.
 
-### Enable the feature
+### Disable the feature
+:::tip
+Webhooks are on by default as of `3.2.0`. They can be disabled by following the following instructions.
+:::
+
 
 #### WAR/Deb/RPM
-To enable the use of webhooks for your Rundeck server add the following configuration property to
+To disable the use of webhooks for your Rundeck server add the following configuration property to
 your `rundeck-config.properties` or equivalent.
 
 ```properties
-rundeck.feature.webhooks.enabled=true
+rundeck.feature.webhooks.enabled=false
 ```
 
 #### Docker
 Set the following environment variable:
 ```properties
-RUNDECK_FEATURE_WEBHOOKS_ENABLED=true
+RUNDECK_FEATURE_WEBHOOKS_ENABLED=false
 ```
 
 ### Webhook Administration
 
-Once enabled, the ability to configure webhooks will be added to the project sidebar.
 Click on `Webhooks` to go to the webhook administration page where you can add, configure, and remove webhooks
 for your project.
 
