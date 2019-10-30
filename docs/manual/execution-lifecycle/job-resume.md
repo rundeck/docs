@@ -70,10 +70,7 @@ The configuration of this plugin is simple. Once added to a Job definition, it i
   <job>
   	<!-- ... -->
     <plugins>
-      <ExecutionLifecyclePlugin>
-        <resume>
-        </resume>
-      </ExecutionLifecyclePlugin>
+      <ExecutionLifecycle type='resume'/>
     </plugins>
    </job>
 </joblist>
@@ -86,11 +83,13 @@ If you also want to enable it for automatic Retries, set `onRetry` to `true`.
   <job>
   	<!-- ... -->
 	<plugins>
-	  <ExecutionLifecyclePlugin>
-	    <resume>
-	      <onRetry>true</onRetry>
-	    </resume>
-	  </ExecutionLifecyclePlugin>
+	  <ExecutionLifecycle type='resume'>
+	    <configuration data='true'>
+	      <map>
+		<string key='onRetry'>true</string>
+	      </map>
+	    </configuration>
+	  </ExecutionLifecycle>
 	</plugins>
    </job>
 </joblist>
