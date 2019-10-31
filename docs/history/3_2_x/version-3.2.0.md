@@ -17,14 +17,19 @@ See the upgrade documentation [here](https://docs.rundeck.com/3.1.0-rc2/upgradin
 
 ## Development
 
-### Job Life-Cycle Plugin Type
-Job life cycle plugin offers the possibility to intercept the certain job events and manipulate the data/flow:
-1. Before job execution: It triggers before the job execution exists and it can be used to:
-    - Prevent the job to be execution by throwing an exception (JobLifecyclePluginException)
-    - Prevent the job to be executed by returning "isSuccessful" false
-    - Change option values in runtime by seting "isUseNewValues" true
-2. Before saving a job: It can be used to modify/add/remove options to the persisted job:
-    - If "isUseNewValues" returns "true" the system will replace the current job options with the ones returned by "getOptions" method
+### New Plugin: Execution Lifecycle
+
+A Job-scoped plugin point that allows custom behavior:
+
+* When a Job execution workflow is about to run: can update execution context info, or cause failure if invalid
+* After workflow finishes
+    
+### New Plugin: Job Lifecycle
+
+Job life cycle plugin offers allows custom behavior:
+
+* Before a Job execution is created: it can prevent the execution, or update Option input values
+* Before saving a job: It can be used to modify/add/remove options on the Job definition
 
 ### Misc
 
