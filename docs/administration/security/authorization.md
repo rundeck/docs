@@ -437,6 +437,7 @@ Type Properties Actions Description
 | "       |                                   | `scm_create`       | Create a Job only using SCM import plugin                                           |
 | "       |                                   | `scm_update`       | Import changes to a job using SCM import plugin                                     |
 | "       |                                   | `scm_delete`       | Delete a job only using SCM import plugin                                           |
+| "       |                                   | `view_history`     | View job executions history                                                         |
 | `node`  | "rundeck_server", "nodename", ... | `read`             | View the node in the UI (see [Node resource properties](#node-resource-properties)) |
 | "       |                                   | `run`              | Run jobs/adhoc on the node                                                          |
 
@@ -446,6 +447,8 @@ _Note_: see [Node resource properties](#node-resource-properties) for more node 
 _Note_: Jobs can be referenced using "name" and "group" or using "uuid".
 
 _Note_: `runAs` and `killAs` actions only apply to certain API endpoints, and allow running jobs or adhoc executions or killing executions to be performed with a different username attached as the author of the action. See [Rundeck API - Running a Job](/api/rundeck-api.md#running-a-job).
+
+_Note_: All executions will be showed on history view if `view_history` is not defined.
 
 _Note_:
 Job deletion requires allowing the 'delete' action
