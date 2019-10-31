@@ -20,7 +20,14 @@ module.exports = [{
     },
     '/manual/05-nodes',
     '/manual/06-commands',
-    '/manual/07-executions',
+    {
+      title: 'Executions',
+      sidebarDepth: 2,
+      children: [
+        '/manual/07-executions',
+        '/manual/execution-lifecycle/job-resume.md'
+      ]
+    },
     '/manual/08-activity',
     '/manual/09-configure',
     '/manual/10-user.md',
