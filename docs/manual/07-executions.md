@@ -68,7 +68,6 @@ The screenshot below displays the elements of the summary view for a running exe
 
 1. Execution status icon is blue to indicate it is running.
 2. Elapsed Time progress bar. The average elapsed time is calculated from the previous executions of the job. If the elapsed time is within the average duration, the bar is colored blue. If the elapsed time exceeds the average the bar turns orange. ![](~@assets/img/fig0810.png)
-
 3. Action buttons. Assuming the ACL policy grants it, the execution can be killed.
 4. Tabs to other execution views besides Summary.
 5. Box score node summary shows nodes that are waiting to run, currently running steps, or are done running their steps.
