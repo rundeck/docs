@@ -13,6 +13,8 @@ See the upgrade documentation [here](https://docs.rundeck.com/3.1.0-rc2/upgradin
 
 ### Misc
 
+* Webhooks are enabled by default [#5382](https://github.com/rundeck/rundeck/pull/5382)
+
 ## Development
 
 ### Job Life-Cycle Plugin Type
@@ -30,6 +32,9 @@ Job life cycle plugin offers the possibility to intercept the certain job events
 
 ## Bug Fixes
 
+* Fix job group expansion applying to all levels [#5345](https://github.com/rundeck/rundeck/pull/5345)
+* Fix error on remote opts with enforced values for simple JSON object [#5325](https://github.com/rundeck/rundeck/pull/5325)
+* Fix scrolling to bottom in log output [#5322](https://github.com/rundeck/rundeck/pull/5322)
 
 ## Issues
 
