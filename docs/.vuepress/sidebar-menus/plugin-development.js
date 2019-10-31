@@ -21,5 +21,6 @@ module.exports = [
   '/developer/15-password-encrypt-utility.md',
   '/developer/16-webhook-plugins.md',
   '/developer/execution-lifecycle.md',
-  '/developer/job-lifecycle.md'
+  '/developer/job-lifecycle.md',
+  '/developer/audit-events-listeners.md'
 ]
