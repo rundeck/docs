@@ -33,19 +33,46 @@ dt
   }
 }
 img.logo{
-    height: auto !important;
-    margin-right: 0.8rem;
-    vertical-align: top;
-    max-width: 11rem;
-    width: 100%;
-    margin-top: .3rem;
+  height: auto !important;
+  margin-right: 0.8rem;
+  vertical-align: top;
+  max-width: 11rem;
+  width: 100%;
+  margin-top: .3rem;
 }
+
 .navbar{
   box-shadow: 0 4px 12px 0 rgba(0,0,0,0.10);
   border-bottom: 0 solid;
 }
 .theme-default-content:not(.custom) {
   padding: 6rem 2.5rem 2rem;
+}
+
+.content__default ol {
+  list-style: none;
+  counter-reset: my-awesome-counter;
+}
+.content__default ol > li {
+  counter-increment: my-awesome-counter;
+}
+.content__default ol > li::before {
+  content: counter(my-awesome-counter) ". ";
+  color: $accentColor;
+  font-weight: bold;
+}
+
+.content__default ul {
+  list-style: none; /* Remove default bullets */
+}
+
+.content__default ul > li::before {
+  content: "\2022";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
+  color: $accentColor; /* Change the color */
+  font-weight: bold; /* If you want it to be bold */
+  display: inline-block; /* Needed to add space between the bullet and the text */
+  width: 1em; /* Also needed for space (tweak if needed) */
+  margin-left: -1em; /* Also needed for space (tweak if needed) */
 }
 
 @media screen and (max-width: 1150px) and (min-width:720px)
@@ -56,6 +83,4 @@ img.logo{
       img
         width: 225px;
         height: 30px;
-
-
 
