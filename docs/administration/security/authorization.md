@@ -199,6 +199,7 @@ aclpolicy:
 
 - Creating Projects (`create` action on a resource type with kind 'project')
 - Reading system information (`read` action on a resource type with kind 'system')
+- Reading enterprise cluster view (`cluster` action on a resource type with kind 'system'. Enterprise only)
 - Managing System level ACL Policies (actions on a resource type with kind 'system_acl')
   - Reading `read`
   - Creating `create`
@@ -244,27 +245,28 @@ aclpolicy:
 The following table summarizes the generic and specific resources and the
 actions you can restrict in the application scope:
 
-| Type       | Resource Kind | Properties | Actions                  | Description                           |
-|------------|---------------|------------|--------------------------|---------------------------------------|
-| `resource` | `project`     | none       | `create`                 | Create a new project                  |
-| "          | `system`      | none       | `read`                   | Read system information               |
-| "          | "             | none       | `enable_executions`      | Enable executions                     |
-| "          | "             | none       | `disable_executions`     | Disable executions                    |
-| "          | "             | none       | `admin`                  | Enable or disable executions          |
-| "          | `system_acl`  | none       | `read`                   | Read system ACL policy files          |
-| "          | "             | none       | `create`                 | Create system ACL policy files        |
-| "          | "             | none       | `update`                 | Update system ACL policy files        |
-| "          | "             | none       | `delete`                 | Delete system ACL policy files        |
-| "          | "             | none       | `admin`                  | All access to system ACL policy files |
-| "          | `user`        | none       | `admin`                  | Modify user profiles                  |
-| "          | `job`         | none       | `admin`                  | Manage job schedules                  |
-| "          | `apitoken`    | none       | `generate_user_token`    | Create a "user" token                 |
-| "          | "             | none       | `generate_service_token` | Create a "service" token              |
-| "          | "             | none       | `admin`                  | Full access                           |
-| "          | `plugin`      | none       | `read`                   | List installed and available plugins  |
-| "          | "             | none       | `install`                | Install plugins                       |
-| "          | "             | none       | `uninstall`              | Uninstall plugins                     |
-| "          | "             | none       | `admin`                  | Full access                           |
+| Type       | Resource Kind | Properties | Actions                  | Description                               |
+|------------|---------------|------------|--------------------------|-------------------------------------------|
+| `resource` | `project`     | none       | `create`                 | Create a new project                      |
+| "          | `system`      | none       | `read`                   | Read system information                   |
+| "          | "             | none       | `cluster`                | Read only view of enterprise cluster view |
+| "          | "             | none       | `enable_executions`      | Enable executions                         |
+| "          | "             | none       | `disable_executions`     | Disable executions                        |
+| "          | "             | none       | `admin`                  | Enable or disable executions              |
+| "          | `system_acl`  | none       | `read`                   | Read system ACL policy files              |
+| "          | "             | none       | `create`                 | Create system ACL policy files            |
+| "          | "             | none       | `update`                 | Update system ACL policy files            |
+| "          | "             | none       | `delete`                 | Delete system ACL policy files            |
+| "          | "             | none       | `admin`                  | All access to system ACL policy files     |
+| "          | `user`        | none       | `admin`                  | Modify user profiles                      |
+| "          | `job`         | none       | `admin`                  | Manage job schedules                      |
+| "          | `apitoken`    | none       | `generate_user_token`    | Create a "user" token                     |
+| "          | "             | none       | `generate_service_token` | Create a "service" token                  |
+| "          | "             | none       | `admin`                  | Full access                               |
+| "          | `plugin`      | none       | `read`                   | List installed and available plugins      |
+| "          | "             | none       | `install`                | Install plugins                           |
+| "          | "             | none       | `uninstall`              | Uninstall plugins                         |
+| "          | "             | none       | `admin`                  | Full access                               |
 
 Table: Application scope generic type actions
 
