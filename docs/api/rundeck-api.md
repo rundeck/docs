@@ -57,14 +57,18 @@ View the [Index](#index) listing API paths.
 
 Changes introduced by API Version number:
 
+**Version 34**:
+* New Endpoints:
+    - [`GET /api/V/job/[ID]/workflow`][/api/V/job/\[ID\]/workflow] - Get the job workflow tree
+
 **Version 33**:
 
 * New Endpoints:
-    - [`POST /api/V/webhook/[WEBHOOK TOKEN]`](/api/V/webhook/\[TOKEN\]) - Trigger a webhook with the payload as the body of the post
-    - [`GET /api/V/project/[PROJECT]/webhooks`](/api/V/project/\[PROJECT\]/webhooks) - Lists the webhooks configured for the project
-    - [`GET /api/V/project/[PROJECT]/webhook/[ID]`](/api/V/project/\[PROJECT\]/webhooks) - Get the webhook identified by ID
-    - [`POST /api/V/project/[PROJECT]/webhook/[ID]`](/api/V/project/\[PROJECT\]/webhooks) - Create or update the webhook identified by ID. When creating a new webhook ID is not provided.
-    - [`DELETE /api/V/project/[PROJECT]/webhook/[ID]`](/api/V/project/\[PROJECT\]/webhooks) - Delete the webhook identified by ID
+    - [`POST /api/V/webhook/[AUTH_TOKEN]`][/api/V/webhook/\[AUTH_TOKEN\]] - Trigger a webhook with the payload as the body of the post
+    - [`GET /api/V/project/[PROJECT]/webhooks`][/api/V/project/\[PROJECT\]/webhooks] - Lists the webhooks configured for the project
+    - [`GET /api/V/project/[PROJECT]/webhook/[ID]`][/api/V/project/\[PROJECT\]/webhooks] - Get the webhook identified by ID
+    - [`POST /api/V/project/[PROJECT]/webhook/[ID]`][/api/V/project/\[PROJECT\]/webhooks] - Create or update the webhook identified by ID. When creating a new webhook ID is not provided.
+    - [`DELETE /api/V/project/[PROJECT]/webhook/[ID]`][/api/V/project/\[PROJECT\]/webhooks] - Delete the webhook identified by ID
     - [`GET /api/V/plugin/list`][/api/V/plugin/list] - List the installed plugins.
     
 * Updated Endpoints:
@@ -3801,6 +3805,56 @@ A single object:
     "name": "[name]"
 }
 ```
+
+### Get Job Workflow
+Get the workflow tree for a job. It will traverse referenced jobs to a depth of 3.
+
+**Request:**
+
+    GET /api/33/job/[ID]/workflow
+
+**Response:**
+
+`Content-Type: application/json`:
+
+```json
+{
+    "workflow": [
+        {
+            "description": "[description]",
+            "exec": "[exec]",
+            "script": "[script]",
+            "scriptfile": "[scriptfile]",
+            "scripturl": "[scripturl]",
+            "jobRef": {
+                "name": "[name]",
+                "group": "[group]",
+                "uuid": "[uuid]",
+                "nodeStep": "[nodeStep]",
+                "importOptions": "[importOptions]"
+            },
+            "jobId": "[jobId]",
+            "type": "[type]",
+            "nodeStep": "true|false",
+            "workflow": "[workflow]"
+        }
+    ]
+}
+```
+
+**Workflow Step Fields** 
+* `description`: Present and set to workflow step description if configured
+* `exec`: If command step field is present and set to command string; otherwise
+* `script`: Present and set to `"true"` if script step
+* `scriptfile`: Present and set to file path if `scriptfile` step
+* `scripturl`: If `scripturl` step field is present and set to URL if step
+* `jobRef`: Present if step is a job reference
+* `jobId`: If step is a job reference field is present and contains the referenced
+jobs ID
+* `type`: For plugin steps present and set to step plugin type
+* `nodeStep`: Present if `type` is present and set to `"true"` or `"false"` to indicate
+if the step is a node step. Implicitly `"true"` if not present and not a job step.
+* `workflow`: If step is a job reference contains the sub-workflow
 
 ## Executions
 
@@ -7688,7 +7742,7 @@ or error
 
 * `GET` [List Webhooks](#list-project-webhooks)
 
-[/api/V/webhook/\[AUTH_TOKEN\]][]
+[/api/V/webhook/\[AUTH_TOKEN\]](#send-webhook-event)
 
 * `GET` [Send Webhook Event](#send-webhook-event)
 
@@ -7868,8 +7922,8 @@ or error
 
 [/api/V/job/\[ID\]/schedule/disable]:#disable-scheduling-for-a-job
 
-
 [/api/V/job/\[ID\]/run]:#running-a-job
+[/api/V/job/\[ID\]/workflow]:#get-job-workflow
 
 [/api/V/jobs/delete]:#bulk-job-delete
 [/api/V/jobs/execution/enable]:#bulk-toggle-job-execution
