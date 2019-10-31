@@ -114,6 +114,12 @@ Then restart Rundeck to ensure it picks up the change and you're done.
 There is also a password encrypter utility user interface in the Rundeck application that
 can be used to generate encrypted passwords. Click the gear icon and then "Password Utility" to use that interface.
 
+**Warning**
+
+The use of `CRYPT` comes with limitations. Only the first 8 characters of the
+provided password will be validated when authenticating. This encryption scheme
+should be avoided if possible.
+
 #### Hot Reloading the `realm.properties` file
 
 If you want your changes to the `realm.properties` file to be picked up without having to restart Rundeck change the module specified in the JAAS config file from `org.eclipse.jetty.jaas.spi.PropertyFileLoginModule` to `org.rundeck.jaas.jetty.ReloadablePropertyFileLoginModule`
