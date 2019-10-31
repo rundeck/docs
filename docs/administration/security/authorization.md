@@ -448,8 +448,6 @@ _Note_: Jobs can be referenced using "name" and "group" or using "uuid".
 
 _Note_: `runAs` and `killAs` actions only apply to certain API endpoints, and allow running jobs or adhoc executions or killing executions to be performed with a different username attached as the author of the action. See [Rundeck API - Running a Job](/api/rundeck-api.md#running-a-job).
 
-_Note_: All executions will be showed on history view if `view_history` is not defined.
-
 _Note_:
 Job deletion requires allowing the 'delete' action
 both at the generic type
