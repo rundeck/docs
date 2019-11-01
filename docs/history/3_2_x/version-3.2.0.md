@@ -9,6 +9,10 @@ See the upgrade documentation [here](https://docs.rundeck.com/3.1.0-rc2/upgradin
 
 ### Job Resume
 
+The new [Job Resume Plugin \(Enterprise\)](/manual/execution-lifecycle/job-resume.md) allows you to manually or automatically resume an execution at a failed step.
+
+![Execution Plugins](~@assets/img/figure-job-resume-edit-job-execution-plugins.png)
+
 ### Docker
 
 ### Misc
