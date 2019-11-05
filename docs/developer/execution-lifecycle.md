@@ -4,6 +4,7 @@
 ## About
 
 Execution Lifecycle Plugins add custom logic to be executed during the lifecycle of a Job execution.
+At execution start, plugins can update the contents of the ExecutionContext if necessary, or store custom Java objects as "components" to be used by step plugins, or later in the the course of the execution lifecycle.
 
 ::: tip
 To enable the Execution Lifecycle Plugin add: `rundeck.feature.executionLifecyclePlugin.enabled=true`
@@ -13,12 +14,12 @@ to your `rundeck-config.properties` or equivalent file.
 The lifecycle points currently supported:
 
 *Execution Start*
-:   The Execution is created, the context is configured, and the workflow is about to run.
+:   The Execution is created, the context is configured, and the workflow is about to run. Plugins can modify the contents of the Execution Context and store custom objects in the context.
 
 *Execution End*
-:   The workflow execution has finished.
+:   The workflow execution has finished. Plugins can perform final cleanup, logging, or other tasks.
 
-Execution Lifecycle plugins are configured at a *Job* context.
+Execution Lifecycle plugins are configured at a *Job* scope, in the Job definition.
 
 ## Use
 
@@ -65,7 +66,7 @@ import com.dtolabs.rundeck.plugins.jobs.ExecutionLifecyclePlugin;
 
 @Plugin(service = ServiceNameConstants.ExecutionLifecycle, name = "MyPlugin")
 class MyPlugin implements ExecutionLifecyclePlugin{
- 		@Override
+        @Override
         public ExecutionLifecycleStatus beforeJobStarts(JobExecutionEvent event) throws ExecutionLifecyclePluginException{
             //...
             return null;
@@ -82,28 +83,74 @@ class MyPlugin implements ExecutionLifecyclePlugin{
 The [JobExecutionEvent]({{{javaDocBase}}}/com/dtolabs/rundeck/plugins/jobs/JobExecutionEvent.html) type allows access to the ExecutionContext,
 and other information about the Job and Execution.
 
+To modify the ExecutionContext within the `beforeJobStarts` method, you should create a new StepExecutionContext object, by building from the original available from the JobExecutionEvent object, and returning the new context object within the ExecutionLifecycleStatus object.
+
+Here is an example using the `ExecutionContextImpl.builder()` method to construct a new context, and add some more context data.
+
+```java
+ExecutionContextImpl.Builder builder = ExecutionContextImpl.builder(event.getExecutionContext());
+//use builder methods to modify contents
+builder.loglevel(0); //change loglevel
+builder.addComponent("myCustomObject", myObject, MyType.class);
+StepExecutionContext newContext = builder.build();
+//you can also use the normal SharedDataContext to add values to the available data
+
+Map<String, String> mapData = ...;
+newContext.getSharedDataContext().merge(ContextView.global(), DataContextUtils.context("myplugin", mapData));
+```
+
 Your method should return a [ExecutionLifecycleStatus]({{{javaDocBase}}}/com/dtolabs/rundeck/plugins/jobs/ExecutionLifecycleStatus.html) object, which indicates
 whether your plugin was successful or not, and can include new execution context data to use for the remaining execution.
 
-Alternately, your plugin can return `null` to indicate a successful result. 
-
+This example returns a new ExecutionLifecycleStatus with the newly constructed StepExecutionContext:
 
 ```java
-public interface ExecutionLifecycleStatus extends LifecycleStatus{
+       return new ExecutionLifecycleStatus() {
+            @Override
+            public boolean isUseNewValues() {
+                return true; //must return true if you want the new context to be used
+            }
 
-    /**
-     * @return StepExecutionContext of the event to use if isUseNewValues is true
-     */
-    default StepExecutionContext getExecutionContext(){ return null; }
-
-}
+            @Override
+            public StepExecutionContext getExecutionContext() {
+                return newContext;
+            }
+        };
 ```
+
+Alternately, your plugin can return `null` to indicate a successful result with no changes to the context.
+
 
 The behavior of the execution depends on the contents of this object, and which event is occurring:
 
 * `beforeJobStarts`:
-	* if `isSuccessful()` returns `false`, the execution will halt.  The value in `errorMessage` will be logged as an error.
-	* if `isUseNewValues()` returns `true`, 
-		* `getExecutionContext()`: non-null value will be merged with the original context
+    * if `isSuccessful()` returns `false`, the execution will halt.  The value in `errorMessage` will be logged as an error.
+    * if `isUseNewValues()` returns `true`, 
+        * `getExecutionContext()`: non-null value will be merged with the original context
 * `afterJobEnds`:
-	* Any error result is logged
+    * Any error result is logged
+
+## Using Context Components
+
+Context "components" are Java objects you can add to the Execution Context, for use by your custom plugin.
+The component will stay within the context if desired, or can be set as "single-use".
+If a component is "single-use", and you retrieve it with one of the "use\*" methods below, it will be removed from the context.
+
+Components are identified by a name and/or Java Type.  In the `ExecutionContextImpl.Builder`, you can add new components using `addComponent(..)` methods. 
+
+The components can later be retrieved (such as within a step plugin, or later phase of the Execution Lifecycle), using methods of the `ExecutionContext`:
+
+* `componentForType(Class<T> type)`
+* `componentsForType(Class<T> type)`
+
+If `use*` is called, then any components retrieved that are "single-use" will also be removed from the context:
+
+* `useSingleComponentOfType(Class<T> type)`
+* `useSingleComponentOfType(Class<T> type,Consumer<Optional<T>> consumer)`
+* `useAllComponentsOfType(Class<T> type, Consumer<T> consumer)`
+
+
+## Example Code
+
+A full example is available on Github: <https://github.com/rundeck/rundeck/tree/master/examples/example-java-execution-lifecyle-plugin>
+

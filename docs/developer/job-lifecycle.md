@@ -101,7 +101,7 @@ The `beforeJobExecution` method will be called before the execution is created. 
 the option values that will be used for the execution. The return value from your method can modify the option values used in the execution, or prevent the execution from
 occurring.
 
-You can use [JobLifecycleStatusImpl.builder()]({{{javaDocBase}}}/com/dtolabs/rundeck/core/jobs/JobLifecycleStatusImpl.html) to build the JobLifecycleStatus result.
+You can use [JobLifecycleStatusImpl.builder\(\)]({{{javaDocBase}}}/com/dtolabs/rundeck/core/jobs/JobLifecycleStatusImpl.html) to build the JobLifecycleStatus result.
 
 * if `isSuccessful()` returns `false`, the execution will be prevented.  The value in `errorMessage` will be logged as an error.
 * otherwise, if `isUseNewValues()` returns `true`:
@@ -114,5 +114,10 @@ The [JobPersistEvent]({{{javaDocBase}}}/com/dtolabs/rundeck/plugins/jobs/JobPers
   * if `getOptions()` is not null, the options defined will be *replaced* by the options returned here. If you want to preserve the initial values, you will
   have to include them in the result as well. 
 
-You can use [JobOptionImpl.builder()]({{javaDocBase}}}/com/dtolabs/rundeck/plugins/jobs/JobOptionImpl.html) to create new JobOption values.
+You can use [JobOptionImpl.builder\(\)]({{{javaDocBase}}}/com/dtolabs/rundeck/plugins/jobs/JobOptionImpl.html) to create new JobOption values.
+
+
+## Example Code
+
+A full example is available on Github: <https://github.com/rundeck/rundeck/tree/master/examples/example-java-job-lifecyle-plugin>
 
