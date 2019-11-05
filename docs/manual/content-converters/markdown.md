@@ -2,7 +2,9 @@
 
 Renders Markdown as HTML.
 
-See: (/manual/content-converters/index.md#sanitized-html-output]].
+::: tip 
+See: [Sanitized HTML Output](/manual/content-converters/index.md#sanitized-html-output)
+:::
 
 ## Input Data Types
 

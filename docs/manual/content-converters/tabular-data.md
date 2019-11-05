@@ -2,7 +2,7 @@
 
 Parses Tabular text (csv) into a a Java object.
 
-The "HTML Table View Converter" plugin can render this as a HTML Table.
+The [HTML Table View Converter](/manual/content-converters/html-table-view.md) plugin can render this as a HTML Table.
 
 Expected content data type: `text/csv`.
 
@@ -30,4 +30,4 @@ Additionally if the data type contains `;header=present` a header is assumed pre
 
 ## Related Plugins
 
-- (/manual/content-converters/html-table-view.md)
+- [HTML Table View Converter](/manual/content-converters/html-table-view.md)
