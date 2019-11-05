@@ -18,24 +18,36 @@ The new [Job Resume Plugin \(Enterprise\)](/manual/execution-lifecycle/job-resum
 ### Misc
 
 * Webhooks are enabled by default [#5382](https://github.com/rundeck/rundeck/pull/5382)
+* New ACL to allow read-only view of the Enterprise Cluster Manager [`view_cluster`](/administration/security/authorization.md#application-scope-resources-and-actions)
+* Global variables can be used in option value inputs
+* Log File Storage plugins now support deleting stored files when executions are deleted
+* New User Summary admin page shows login status
 
 ## Development
 
-### New Plugin: Execution Lifecycle
+### New Plugin Type: Execution Lifecycle
 
 A Job-scoped plugin point that allows custom behavior:
 
 * When a Job execution workflow is about to run: can update execution context info, or cause failure if invalid
 * After workflow finishes
     
-### New Plugin: Job Lifecycle
+### New Plugin Type: Job Lifecycle
 
 Job life cycle plugin offers allows custom behavior:
 
 * Before a Job execution is created: it can prevent the execution, or update Option input values
 * Before saving a job: It can be used to modify/add/remove options on the Job definition
 
-### Misc
+### New Plugin Type: Password Encrypter
+
+Allows encrypting values via the Password Utility menu item.
+
+### New Plugin Type: Audit Listener
+
+Allows auditing user actions: login, logout, login failure, and project access.
+
+## API
 
 * Job workflow API endpoint [#5408](https://github.com/rundeck/rundeck/pull/5408)
 
