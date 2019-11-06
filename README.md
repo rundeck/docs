@@ -1,6 +1,12 @@
-# doc_vuepress
+# Rundeck Documentation
+Rundeck Documentation project.
 
-## Project setup
+## Getting starting
+
+### Dependencies
+* nodejs
+
+### Project setup
 ```
 npm install
 ```
