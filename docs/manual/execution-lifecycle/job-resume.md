@@ -20,6 +20,12 @@ Add the following:
 rundeckpro.feature.incubator.jobresume=true
 ```
 
+Or for Docker:
+
+```bash
+RUNDECK_FEATURE_JOBRESUME_ENABLED=true
+```
+
 It also requires that the [Execution Lifecycle Plugin](/developer/execution-lifecycle.md) feature be enabled.
 :::
 
