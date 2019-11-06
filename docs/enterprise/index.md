@@ -124,6 +124,11 @@ If you wish to disable it you can set this in your framework.properties:
 
     framework.plugin.ExecutionFileStorage.com.rundeck.rundeckpro.amazon-s3.checkpoint=false
 
+If you want to remove files from the storage when executions are deleted, add the following setting in your framework.properties:
+
+    framework.plugin.ExecutionFileStorage.com.rundeck.rundeckpro.amazon-s3.allowDeleteFiles=true
+
+
 Please refer to the [open source plugin](https://github.com/rundeck-plugins/rundeck-s3-log-plugin) for other configuration. **Note**: Be sure to use `com.rundeck.rundeckpro.amazon-s3` in place of `org.rundeck.amazon-s3`.
 
 #### Azure Blob Storage Plugin
