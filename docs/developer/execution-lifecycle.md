@@ -6,19 +6,6 @@
 Execution Lifecycle Plugins add custom logic to be executed during the lifecycle of a Job execution.
 At execution start, plugins can update the contents of the ExecutionContext if necessary, or store custom Java objects as "components" to be used by step plugins, or later in the the course of the execution lifecycle.
 
-::: tip
-To enable the Execution Lifecycle Plugin edit `rundeck-config.properties` or equivalent file and add:
-```properties
-rundeck.feature.executionLifecyclePlugin.enabled=true
-```
-
-For Docker:
-```bash
-RUNDECK_FEATURE_EXECUTIONLIFECYCLEPLUGIN_ENABLED=true
-```
-
-:::
-
 The lifecycle points currently supported:
 
 *Execution Start*
