@@ -63,7 +63,7 @@ At this point, all Rundeck structure is ready and you can stop the process with 
 
 ### Configuring Rundeck
 
-After installing Rundeck, the first run and know the files/folders structure, you need to configure it, basically publish Rundeck to be available in the network and generate a .bat script to launch Rundeck and use some parameters depending on our needs.
+After installing Rundeck, the first run and know the files/folders structure, you need to configure it. Basically publish Rundeck to be available on the network and generate a .bat script to launch Rundeck and use some parameters depending on our needs.
 
 To publish Rundeck to be available in your network, open `C:\rundeck\server\config\rundeck-config.properties` with your favorite text editor and change this line:
 
