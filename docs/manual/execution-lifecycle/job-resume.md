@@ -8,6 +8,8 @@ serialized and stored.  You can then choose to "Resume" the execution at the fai
 The plugin will load the stored state contents, and start a new execution with the 
 resume state, proceeding to execute the previously failed step with the same inputs.
 
+If the Rundeck server is interrupted, such as an application or server crash, before the workflow state
+is serialized and stored the execution will not be able to resume from the failed step.
 
 ## Requirements
 
@@ -15,8 +17,10 @@ resume state, proceeding to execute the previously failed step with the same inp
 This plugin currently works only for Jobs which use the "Sequential" (aka "Step-first") Workflow Strategy.
 :::
 
-1. The Job must use the "Sequential" Workflow Strategy. With this strategy, we know that the internal state of the workflow engine before the failed step runs can be used to resume the same Job execution again. 
-2. The Job's workflow sequence should not be modified before resuming the execution. The plugin will store a "snapshot" of the workflow sequence within the resume state, allowing it to compare that to the workflow sequence used to resume it. If the Job workflow sequence has been modified, the plugin will fail to start. This means that you should not reorder, add/remove, or replace steps in the Workflow before resuming the execution.  However, modifying existing steps should be possible.
+1. The Job must use the "Sequential" Workflow Strategy. With this strategy, we know that the internal state of the workflow engine before the failed step runs can be used to resume the same Job execution again.
+2. Job reference steps are not supported. Executions with job references in the workflow will not be
+resumable.
+3. The Job's workflow sequence should not be modified before resuming the execution. The plugin will store a "snapshot" of the workflow sequence within the resume state, allowing it to compare that to the workflow sequence used to resume it. If the Job workflow sequence has been modified, the plugin will fail to start. This means that you should not reorder, add/remove, or replace steps in the Workflow before resuming the execution.  However, modifying existing steps should be possible.
 
 
 ## Usage
