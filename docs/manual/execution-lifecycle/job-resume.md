@@ -8,14 +8,13 @@ serialized and stored.  You can then choose to "Resume" the execution at the fai
 The plugin will load the stored state contents, and start a new execution with the 
 resume state, proceeding to execute the previously failed step with the same inputs.
 
-
 ## Requirements
 
 ::: warning
 This plugin currently works only for Jobs which use the "Sequential" (aka "Step-first") Workflow Strategy.
 :::
 
-1. The Job must use the "Sequential" Workflow Strategy. With this strategy, we know that the internal state of the workflow engine before the failed step runs can be used to resume the same Job execution again. 
+1. The Job must use the "Sequential" Workflow Strategy. With this strategy, we know that the internal state of the workflow engine before the failed step runs can be used to resume the same Job execution again.
 2. The Job's workflow sequence should not be modified before resuming the execution. The plugin will store a "snapshot" of the workflow sequence within the resume state, allowing it to compare that to the workflow sequence used to resume it. If the Job workflow sequence has been modified, the plugin will fail to start. This means that you should not reorder, add/remove, or replace steps in the Workflow before resuming the execution.  However, modifying existing steps should be possible.
 
 
@@ -88,3 +87,10 @@ your configured [Log Storage](/administration/cluster/logstore/index.md) system,
 
 You can initiate the **Resume Execution** from any Cluster member if the Resume state file has been copied to the Log Storage system.  Before the execution starts, the
 file will be loaded from the Log Storage system.
+
+## Limitations
+
+- Currently only the top level workflow steps will be tracked for resume. Referenced jobs will not
+resume at their internally failed step.
+- If the Rundeck server is interrupted, such as an application or server crash, before the workflow state
+is serialized and stored the execution will not be able to resume from the failed step.
