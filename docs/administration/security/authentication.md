@@ -645,6 +645,7 @@ It then looks the username up in the Properties file, and applies any roles for 
 
 Configuration properties:
 
+- `hotReload` - `hotReload="true"` enables the ability to modify the user list specified by `file` without having to restart Rundeck. The refresh interval for checking the file is 5 seconds. This is not configurable.
 - `file` - path to a Java Property formatted file in the format defined under [realm.properties](#PropertyFileLoginModule)
 - `caseInsensitive` - true/false. If true, usernames are converted to lowercase before being looked up in the property file, otherwise they are compared as entered. Default: true.
 
