@@ -166,3 +166,47 @@ When starting up the Jetty container will log a list of the disabled protocols:
     2014-10-27 11:08:41.225:INFO:oejus.SslContextFactory:Enabled Protocols [SSLv2Hello, TLSv1] of [SSLv2Hello, SSLv3, TLSv1]
 
 To see the list of enabled Cipher Suites, turn on DEBUG level logging for Jetty SSL utils: `-Dorg.eclipse.jetty.util.ssl.LEVEL=DEBUG`.
+
+
+
+
+
+
+
+## Rundeck 3 SSL Configuration with Tomcat Servlet
+
+#### Create a Keystore file
+
+From Linux Prompt:
+
+`$: keytool -keystore ./keystore -alias rundeck -genkey -keyalg RSA -keypass adminadmin -storepass adminadmin`
+
+#### Copy the file to a desired directory (if not already created there):
+cp keystore $Rdeck_Base/server/config
+
+#### Configure $Tomcat_Base/conf/server.xml file with https protocol and properties
+E.g.:    
+
+    <Connector port="8443" protocol="org.apache.coyote.http11.Http11Protocol"
+               maxThreads="150"
+               SSLEnabled="true"
+               scheme="https" secure="true"
+               clientAuth="false" sslProtocol="TLS"
+               keystoreFile="/usr/local/rundeckpro/server/config/keystore"
+               keystorePass="adminadmin"
+                 ciphers="TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA,TLS_RSA_WITH_AES_128_CBC_SHA25,TLS_RSA_WITH_AES_128_CBC_SHA,TLS_RSA_WITH_AES_256_CBC_SHA256,TLS_RSA_WITH_AES_256_CBC_SHA"/>
+
+
+#### Configure rundeck-config properties file with port 8443 and https protocol in grails URL
+E.g.:
+grails.serverURL=https://192.168.0.27:8443/rundeckpro
+
+#### Configure framework.propeties file with port and https protocol
+E.g.:
+framework.server.port = 8443
+framework.server.url = https://192.168.0.27:8443/rundeckpro
+
+#### Restart Tomcat Service and enter new Rundeck URL
+
+
+
