@@ -209,4 +209,4 @@ framework.server.url = https://192.168.0.27:8443/rundeckpro
 #### Restart Tomcat Service and enter new Rundeck URL
 
 
-
+![Rundeck SSL Login](/docs/assets/img/tomcat_ssl.png)
