@@ -1,3 +1,7 @@
+---
+title: Content Converters
+---
+
 # Content Converter Plugins
 
 Content Converter Plugins allow Step Plugins and Log Filter plugins to
@@ -26,8 +30,8 @@ simply parse formatted data such as CSV, and another plugin to render it as HTML
                                                             |
                                                             v
                                                    .------------------.
-						                          | result: text/html  |
-						                           '------------------'
+                                                  | result: text/html  |
+                                                   '------------------'
 
 </pre>
 
