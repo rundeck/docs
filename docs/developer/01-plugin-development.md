@@ -646,6 +646,17 @@ Examples:
 - `${exec.command}` becomes `$RD_EXEC_COMMAND`
 - `${file-copy.file}` becomes `$RD_FILE_COPY_FILE`
 
+### Access to private context variables
+
+When a job defines a [Secure Remote Authentication Option](/manual/job-options.md#secure-options), this value is saved on the `Private Data Context` at the execution time.
+
+These `Private Data Context` properties will be available as environment variables to the script or interpreter when it is executed on the Node Executor Script Plugin.
+
+For example, if the job as an input secure option called `password`:
+
+-  `${option.password}` becomes `$RD_PRIVATE_PASSWORD`
+
+
 ### Script provider requirements
 
 The specific service has expectations about
