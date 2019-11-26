@@ -75,11 +75,12 @@ Each Health Check will result in a Health Status:
 
 	![Sidebar - Health Checks Link](~@assets/img/healthchecks-sidebar-link.png)
 
-3. Click on the "Configure" Tab, and add a Health Check Plugin.  Here we add the simple Command Health Check plugin, and leave the default command of `uname`.
+3. Click on the "Configure" Tab, and add a Health Check Plugin.  Here we add the simple Command Health Check plugin, and leave the default command of `uname`. Click "Save" and "Save" again.
 
-	![Configure - Add Health Check Plugin]()
+	![Configure - Add Health Check Plugin](~@assets/img/healthchecks-add-healthcheck-plugin.png)
 
 
+4.  Return to the Nodes Tab to see a list of nodes.
 
 	You may see a message "Unauthorized: cannot execute on node".  You will need to add an ACL Policy to allow the Health Check System to run commands and scripts on the target nodes. See [Access Control](#access-control).
 
