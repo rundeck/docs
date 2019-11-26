@@ -19,7 +19,15 @@ module.exports = [{
         '/manual/execution-lifecycle/job-resume.md'
       ]
     },
-    '/manual/05-nodes',
+    {
+      title: 'Nodes',
+      collapsable: true,
+      sidebarDepth: 1,
+      children: [
+        '/manual/05-nodes',
+        '/manual/healthchecks',
+      ]
+    },
     '/manual/06-commands',
     '/manual/07-executions',
     '/manual/08-activity',

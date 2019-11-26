@@ -26,6 +26,7 @@ The screenshot above shows the elements of the Nodes page user interface.
 3. Node detail - Clicking on the node name will show a dialogue that lets you view the attributes and values for that Node.
 4. Attributes - Node attributes describe the characteristics or state of a Node
 5. Actions- Run a command or create a Job for the nodes matching the filter.
+6. Health Status - an indication of the Health Status of the Node (see [Health Checks](/manual/healthchecks.md)).
 
 ## Attribute name spaces
 
