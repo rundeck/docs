@@ -145,3 +145,19 @@ rundeck.sso.loginButton.url=oauth/ping
 ```
 
 After completing the configuration, restart Rundeck and attempt to login with Ping.
+
+## Redirect URL Override
+
+If you have Rundeck set up behind an SSL terminating proxy, you may need to specify the redirect url rather that use the 
+automatically generated one. Rundeck tells the OAuth2 system where to redirect after authentication by sending a redirect
+url to the OAuth2 provider with the first authentication redirect. Most of the time Rundeck
+will send the correct url, but in some cases you will need to specify the redirect url manually. 
+
+This can be done by setting the following property in your Rundeck configuration file.
+
+```properties
+rundeck.security.oauth.YOUR_OAUTH2_PROVIDER.customRedirectUri=https://YOUR_RUNDECK_SERVER/user/oauth/PROVIDER
+#example
+rundeck.security.oauth.okta.customRedirectUri=https://ssl_terminating_proxy.com/user/oauth/okta
+rundeck.security.oauth.ping.customRedirectUri=https://ssl_terminating_proxy.com/user/oauth/ping
+```
