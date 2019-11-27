@@ -1,4 +1,4 @@
-# Rundeck Enterprise as a Tomcat servlet
+# Rundeck as a Tomcat servlet
 
 ## Installation on Linux
 
