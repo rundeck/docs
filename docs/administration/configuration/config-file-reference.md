@@ -245,6 +245,8 @@ The following sections describe configuration values for this file.
 
 - `rundeck.security.jaasRolePrefix`: Prefix string to add to each _role_ determined via [JAAS Authentication](/administration/security/authentication.md#jetty-and-jaas-authentication). Default: none.
 
+- `rundeck.security.requiredRole`: `roleName`. If this property is set, all users must be a member of the role specified. 
+
 ### Security HTTP Headers
 
 Rundeck adds some HTTP headers for XSS prevention and other security reasons, as described below.
