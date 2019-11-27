@@ -500,6 +500,7 @@ When triggered, the _Storage Request_ will use the configured ExecutionFileStora
 - If it is unsuccessful, Rundeck may re-queue the request to retry it after a delay (configurable)
 - The `store` method will be invoked for each file to store.
 - (Optional) if your plugin implements [ExecutionMultiFileStorage](#executionmultifilestorage), then only a single method `storeMultiple` will be called. This is useful if you want access to all files for an execution at once.
+- (Optional) you can delete the files saved on the storage calling the method `deleteFile`
 
 ### Retrieval behavior
 
@@ -615,6 +616,39 @@ public interface ExecutionFileStorage {
      */
     boolean retrieve(String filetype, OutputStream stream)
        throws IOException, ExecutionFileStorageException;
+
+     /**
+     * Write the incomplete snapshot of the file of the given file type to the given stream
+     *
+     * @param filetype key to identify stored file
+     * @param stream   the output stream
+     *
+     * @return true if successful
+     *
+     * @throws IOException                                                    if an IO error occurs
+     * @throws com.dtolabs.rundeck.core.logging.ExecutionFileStorageException if other errors occur
+     */
+    default boolean partialRetrieve(String filetype, OutputStream stream)
+            throws IOException, ExecutionFileStorageException
+    {
+        throw new UnsupportedOperationException("partialRetrieve is not implemented");
+    }
+
+    /**
+     * delete the file of the given file type
+     *
+     * @param filetype key to identify stored file
+     *
+     * @return true if successful
+     *
+     * @throws IOException                                                    if an IO error occurs
+     * @throws com.dtolabs.rundeck.core.logging.ExecutionFileStorageException if other errors occur
+     */
+    default boolean deleteFile(String filetype)
+            throws IOException, ExecutionFileStorageException
+    {
+        return false;
+    }
 }
 ```
 
@@ -622,6 +656,7 @@ The plugin is used in these two conditions:
 
 - A log or state file needs to be stored via the plugin
 - A log or state file needs to be retrieved via the plugin
+- A log or state file needs to be deleted
 
 1. When the plugin is instantiated, any configuration properties defined that have values to be resolved are set on the plugin instance
 2. The `initialize` method is called with a map of [contextual data](#execution-context-data) about the execution.
@@ -634,6 +669,11 @@ When `retrieval` is needed:
 When `storage` is needed:
 
 1. The `store` method is called with the filetype to store.
+
+When `delete` is needed:
+
+1. The `deleteFile` method is called with the filetype.
+
 
 ### Groovy ExecutionFileStorage
 
