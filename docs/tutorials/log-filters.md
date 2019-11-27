@@ -1,6 +1,6 @@
 # Using Log Filters
 
-In this tutorial we'll learn how to use Rundeck's log filters to
+In this tutorial we'll learn how to use Rundeck's log filters to:
 
 - Capture key value data for use in subsequent jobs
 - Highlight important output to improve job output readability
