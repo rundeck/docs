@@ -1,6 +1,7 @@
 # September 2019 Update
 
-[3.0.0](./3_1_x/version-3.1.0.md), [3.1.1](./3_1_x/version-3.1.1.md), [3.1.2](./3_1_x/version-3.1.2.md)
+[3.0.0](./3_1_x/version-3.1.0.md), [3.1.1](./3_1_x/version-3.1.1.md), [3.1.2](./3_1_x/version-3.1.2.md),
+[3.1.3](./3_1_x/version-3.1.3.md)
 
 ## Upgrading
 See the upgrade documentation [here](https://docs.rundeck.com/3.1.0-rc2/upgrading/upgrade-to-rundeck-3.1.html).
