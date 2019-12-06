@@ -17,7 +17,7 @@ help you use or integrate Rundeck into your environment.
 - **Projects**: A _[project](/administration/projects/index.md)_ is a place to separate management activity.
   All Rundeck activities occur within the context of a project.
   Multiple projects can be maintained on the same Rundeck server.
-- **Jobs** : A _job_ encapsulate a sequence of steps, job options and nodes where the steps execute. See (/manual/04-jobs.md) and (/manual/creating-jobs.md).
+- **Jobs** : A _job_ encapsulate a sequence of steps, job options and nodes where the steps execute. See [Jobs](/manual/04-jobs.md) and [Creating Jobs](/manual/creating-jobs.md).
 - **Nodes**: A _[node](/manual/05-nodes.md)_ is a resource that is either a physical or virtual instance
   of a network accessible host.
   A _resource model_ is a representation of Nodes in a project.
@@ -31,7 +31,7 @@ help you use or integrate Rundeck into your environment.
   to execute commands on nodes, perform steps in a job,
   send a notification about job status, gather
   information about the hosts in your network, copy a file to a remote
-  server, store and stream logs, or talk to a user directory. See (/manual/job-plugins.md) and (/developer/index.md) and (/plugins/index.md).
+  server, store and stream logs, or talk to a user directory. See [Job Plugins](/manual/job-plugins.md) and [Plugin Developer Guide](/developer/index.md) and [Rundeck Plugins](/plugins/index.md).
 
 ## Download and Installation
 
