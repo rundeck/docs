@@ -55,9 +55,11 @@ img.logo{
 }
 .content__default ol > li {
   counter-increment: my-awesome-counter;
+  position: relative;
 }
 .content__default ol > li::before {
   content: counter(my-awesome-counter) ". ";
+  position: absolute;
   font-weight: bold;
   display: inline-block;
   width: 1em;
