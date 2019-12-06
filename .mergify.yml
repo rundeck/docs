@@ -1,0 +1,17 @@
+pull_request_rules:
+  - name: port patches to 3.1 branch
+    conditions:
+      - base=master
+      - label=port-to-3.1
+    actions:
+      backport:
+        branches:
+          - 3.1.x
+  - name: port patches to 3.2 branch
+    conditions:
+      - base=master
+      - label=port-to-3.2
+    actions:
+      backport:
+        branches:
+          - 3.2.x
