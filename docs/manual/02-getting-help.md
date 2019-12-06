@@ -1,8 +1,8 @@
 # Getting Help
 
-## Mailing list:
+## Q&A
 
-- [https://groups.google.com/group/rundeck-discuss](https://groups.google.com/group/rundeck-discuss)
+- [https://stackoverflow.com/questions/tagged/rundeck](https://stackoverflow.com/questions/tagged/rundeck)
 
 ## IRC
 

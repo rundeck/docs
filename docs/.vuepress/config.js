@@ -14,6 +14,14 @@ const navbarTutorials = require('./navbar-menus/tutorials')
 const navbarAdmin = require('./navbar-menus/administration')
 const navbarEnterprise = require('./navbar-menus/enterprise')
 const navbarDevelopment = require('./navbar-menus/development')
+//Meta Information
+const autometa_options = {
+  site: {
+    name   : 'Rundeck Docs',
+    twitter: 'rundeck',
+  },
+  canonical_base: 'https://docs.rundeck.com',
+};
 
 
 const setup = require('./setup')
@@ -48,6 +56,20 @@ module.exports = {
       figcaption: true
     })
   },
+  plugins: [
+    [
+      'autometa', {
+        autometa_options
+      }
+    ],
+    [
+      'vuepress-plugin-canonical',
+      {
+        baseURL: 'https://docs.rundeck.com', // base url for your canonical link, optional, default: ''
+        stripExtension: true // strip '.html' , optional, default: false
+      }
+    ]
+  ],
   themeConfig: {
     logo: '/images/rundecklogo-black.png',
     repo: 'rundeck/docs',

@@ -14,28 +14,20 @@ To upgrade to Rundeck 3 using launcher use the following steps:
 
 - In case you have customs plugins on `libext` folder, backup them. For example, you can move the full `libext`:
 
-      	```
       	mv $RDECK_BASE/libext $RDECK_BASE/libext.2-11
-      	```
-
+      	
 - Remove previous "source" folders:
 
-      	```
       	rm -rf $RDECK_BASE/server/exp/ $RDECK_BASE/server/lib/ $RDECK_BASE/server/sbin/ $RDECK_BASE/tools/
-      	```
-
+      	
 - Copy the new war file to `$RDECK_BASE` and install it:
 
-      	```
       	java -jar rundeck-3.X.war --installonly
-      	```
-
+      	
 - Add the following attribute to `$RDECK_BASE/server/config/rundeck-config.properties`
 
-      	```
       	rundeck.log4j.config.file=$RDECK_BASE/server/config/log4j.properties
-      	```
-
+      	
 - Copy the "custom" plugins back to `$RDECK_BASE/libext` folder
 
 - Start rundeck 3: `$RDECK_BASE/server/sbin/rundeckd start`

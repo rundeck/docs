@@ -75,7 +75,7 @@ Otherwise, only the policies on the filesystem, and uploaded to the System ACLs 
 
 ### rd-acl
 
-Added in Rundeck 2.5, the [rd-acl](/manpages/man1/rd-acl.md) tool
+Added in Rundeck 2.5, the [rd-acl](/manual/command-line-tools/rd-acl.md) tool
 can help to create, test, and validate your policy files.
 
 ### Example

@@ -32,7 +32,9 @@
     "push-dir": "^0.4.1",
     "semver-compare": "^1.0.0",
     "vue-template-compiler": "^2.6.10",
-    "vuepress": "1.1.0"
+    "vuepress": "1.1.0",
+    "vuepress-plugin-autometa": "^0.1.13",
+    "vuepress-plugin-canonical": "^1.0.0"
   },
   "eslintConfig": {
     "root": true,

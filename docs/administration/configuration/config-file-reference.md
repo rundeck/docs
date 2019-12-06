@@ -5,36 +5,61 @@
 Configuration file layout differs between the RPM and Launcher
 installation methods.
 
-## RPM layout
+## DEB/RPM layout
 
-    /etc/rundeck
-    |-- admin.aclpolicy
-    |-- framework.properties
-    |-- log4j.properties
-    |-- profile
-    |-- project.properties
-    |-- jaas-loginmodule.conf
-    |-- log4j.properties
-    |-- realm.properties
-    |-- rundeck-config.properties
-    `-- ssl
-        |-- ssl.properties
-        |-- keystore (not packaged)
-        `-- truststore (not packaged)
-    /var/lib/rundeck/exp/webapp/WEB-INF/web.xml
+    /etc/rundeck/
+    ├── admin.aclpolicy
+    ├── apitoken.aclpolicy
+    ├── artifact-repositories.yaml
+    ├── cli-log4j.properties
+    ├── framework.properties
+    ├── jaas-loginmodule.conf
+    ├── log4j.properties
+    ├── profile
+    ├── project.properties
+    ├── realm.properties
+    ├── rundeck-config.properties
+    ├── rundeckpro-license.key
+    ├── ssl
+    │   ├── ssl.properties
+    │   ├── keystore (not packaged)
+    │   └── truststore (not packaged)
+    ├── system-job_reader.aclpolicy_template
+    ├── system-job_runner.aclpolicy_template
+    ├── system-job_viewer.aclpolicy_template
+    ├── system-job_writer.aclpolicy_template
+    └── system-project_admin.aclpolicy_template
+
+    /var/lib/rundeck/
+    ├── bootstrap
+    ├── cli
+    ├── data
+    ├── libext
+    ├── logs
+    ├── projects
+    ├── repository
+    ├── var
+    └── work
 
 ## Launcher layout
 
-    $RDECK_BASE/etc
-    |-- admin.aclpolicy
-    |-- framework.properties
-    |-- log4j.properties
-    |-- profile
-    `-- project.properties
-    $RDECK_BASE/server/config
-    |-- jaas-loginmodule.conf
-    |-- realm.properties
-    `-- rundeck-config.properties
+    $RDECK_BASE/etc/
+    ├── admin.aclpolicy
+    ├── apitoken.aclpolicy
+    ├── cli-log4j.properties
+    ├── framework.properties
+    ├── preferences.properties
+    ├── profile
+    ├── profile.bat
+    └── project.properties
+
+    $RDECK_BASE/server/config/
+    ├── artifact-repositories.yaml
+    ├── jaas-loginmodule.conf
+    ├── log4j.properties
+    ├── realm.properties
+    ├── rundeck-config.properties
+    └── ssl.properties
 
 # Configuration files
 

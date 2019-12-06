@@ -2,23 +2,23 @@
 
 ### Prerequisites
 
-Before proceeding to install Rundeck, check all hardware [requirements](https://docs.rundeck.com/docs/administration/install/system-requirements.html) to make sure that our machine can be run Rundeck, also, make sure that the Windows user profile has the sufficient rights to install software in the Operating System.
+Before proceeding to install Rundeck, check all system [requirements](https://docs.rundeck.com/docs/administration/install/system-requirements.html) to make sure that the server can run Rundeck, also, make sure that the Windows user has sufficient rights to install software.
 
-Also, the main dependency is Java Development Kit 1.8 (JDK 8), you can download it from Oracle [website](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).
+Rundeck requires Java Development Kit 1.8 (JDK 8), you can download it from Oracle [website](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).
 
 ### Installing Rundeck on Windows based systems and first run
 
-The first step is to download Rundeck WAR file and save it to the main work directory, e.g. `C:\rundeck`, you can download [Community](https://www.rundeck.com/open-source/download) version or [Enterprise](https://download.rundeck.com/) and save it on `C:\rundeck` folder, now you will set Rundeck path environment variable, for that set it on a Powershell window and :
+Download the Rundeck WAR file and save it to a main working directory, e.g. `C:\rundeck`, you can download [Community](https://www.rundeck.com/open-source/download) version or [Enterprise](https://download.rundeck.com/). Set the Rundeck path environment variable, by typing the following command at a Powershell command prompt :
 
 ```powershell
 set RDECK_BASE=C:\rundeck
 ```
 
-Next, we need to launch Rundeck the first time to generate the configuration files and folders structure, for that you can open a Powershell, go to `c:\rundeck` and execute `java -jar rundeck-3.0.X.war` (in community case) or `java -jar rundeckpro-[edition]-3.0.X.war` for Enterprise; depending of your system the process can take some time, when Rundeck is ready you can see that on Powershell window:
+When Rundeck is started for the first time, it generates the configuration files and folders structure. Open a Powershell command prompt, go to `c:\rundeck`, and execute `java -jar rundeck-3.0.X.war` (for the community edition) or `java -jar rundeckpro-[edition]-3.0.X.war` for the Enterprise edition. This step may take up to 1-2 minutes depending on system performance. When Rundeck is ready, it will be indicated in the Powershell window:
 
 ![Windows launcher](~@assets/img/windows-launcher.png)
 
-At this point, all Rundeck structure is ready and you can stop the process with `<Crtl+C>` keyboard combination to proceed to configure.
+After generation is complete, stop the process with `<Crtl+C>` keys and continue with configuration.
 
 ## Folder Structure
 
@@ -63,7 +63,7 @@ At this point, all Rundeck structure is ready and you can stop the process with 
 
 ### Configuring Rundeck
 
-After installing Rundeck, the first run and know the files/folders structure, you need to configure it, basically publish Rundeck to be available in the network and generate a .bat script to launch Rundeck and use some parameters depending on our needs.
+After installing Rundeck, the first run and know the files/folders structure, you need to configure it. Basically publish Rundeck to be available on the network and generate a .bat script to launch Rundeck and use some parameters depending on our needs.
 
 To publish Rundeck to be available in your network, open `C:\rundeck\server\config\rundeck-config.properties` with your favorite text editor and change this line:
 
@@ -71,13 +71,13 @@ To publish Rundeck to be available in your network, open `C:\rundeck\server\conf
 server.address=yourhostname
 ```
 
-by:
+to:
 
 ```properties
 server.address=0.0.0.0
 ```
 
-Save the file it and now is time to create a .bat script that launch rundeck properly. For that create a file called `start_rundeck.bat` with your favorite text editor and put this in the for Rundeck Community version:
+Create a file called `start_rundeck.bat` with your favorite text editor with the contents shown below. Make sure the .war filename matches the war file you downloaded:
 
 ```batch
 set CURDIR=%~dp0
@@ -93,35 +93,35 @@ call %CURDIR%etc\profile.bat
 java %RDECK_CLI_OPTS% %RDECK_SSL_OPTS% -jar rundeckpro-[edition]-3.0.X.war --skipinstall -d  >> %CURDIR%\var\logs\service.log  2>&1
 ```
 
-To launch, execute start_rundeck.bat at Powershell session, to stop Rundeck you can press `<Crtl+C>` keyboard combination.
+To launch, type start_rundeck.bat at the command prompt. To stop Rundeck, you can press `<Crtl+C>` keys.
 
 ### Login to the GUI
 
-By default, Rundeck will be installed in TCP port 4440. To access, go to the following URL using your web browser: `http://servername:4440` (when "servername" is the name of your Windows host).
+By default, Rundeck will be available on TCP port 4440. To access, go to the following URL on your web browser: `http://servername:4440` (when "servername" is the name of your Windows server).
 
 ![Login page](~@assets/img/login-page.png)
 
-The default username and password is "admin" with password "admin".
+The default username and password is "admin".
 
-### Run rundeck as a Service
+### Run Rundeck as a Service
 
-This section will install Rundeck Community or Enterprise as a Service on a Windows based systems.
+This section will install Rundeck as a Windows Service so it runs in the background even when a user is not logged in.
 
 - [Install](#installing-rundeck-on-windows-systems-and-first-run) Rundeck.
 - Download [nssm.exe](http://nssm.cc/)
-- Place the executable under `%RDECK_BASE%` (you can place it elsewhere, but for the sake of the example let's use always the root dir)
-- Open a prompt and issue these commands (Administrator user profile is required to install a service)
+- Place the executable under `%RDECK_BASE%` (you can place it elsewhere, but for the sake of the example, use this base dir)
+- Open a prompt and type these commands (Administrator user is required to install a service)
 
 ```batch
     cd C:\rundeck
     nssm.exe install RUNDECK
 ```
 
-- The GUI pops up, set "path" as `%RDECK_BASE%\start_rundeck.bat`, startup directory as `%RDECK_BASE%` (optionally set "low" on the process tab, under priority, to avoid server CPU spike when starting Rundeck)
+- The GUI pops up, set "path" as `%RDECK_BASE%\start_rundeck.bat`, startup directory as `%RDECK_BASE%` (optionally set "low" on the process tab, under priority, to avoid server CPU spiking when starting Rundeck)
 
 ![NSSM Installer](~@assets/img/nssm-installer.png)
 
-- Go to the Service Management Console (services.msc) and you'll find `rundeck` listed as a service. Starting it will start the `rundeck` process.
+- Go to the Windows Service Management Console (services.msc) to start the `rundeck` service. You can also stop or restart Rundeck here.
 
 ![Service Management Console](~@assets/img/service-management-console.png)
 
@@ -136,8 +136,4 @@ set RDECK_CLI_OPTS=-Xms1024m -Xmx4096m
 set RD_LIBDIR=%RDECK_BASE%\tools\lib
 ```
 
-Now, Rundeck is configured as a Service and can be launch it at the moment of start Windows.
-
-### Start-Stop instances
-
-Go to the Service Management Console (services.msc) and you'll find Rundeck listed as a service. You can start, stop or restart `rundeck` service.
+Now, Rundeck is configured as a Service and will automatically start when Windows starts.
