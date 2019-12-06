@@ -18,6 +18,7 @@ module.exports = [
   '/developer/12-option-values-plugins.md',
   '/developer/13-user-group-source-plugin.md',
   '/developer/14-file-upload-plugins.md',
+  '/developer/password-encrypt-utility.md',
   '/developer/16-webhook-plugins.md',
   '/developer/execution-lifecycle.md',
   '/developer/job-lifecycle.md',
