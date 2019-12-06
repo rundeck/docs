@@ -1,4 +1,5 @@
 const nunjucks = require('nunjucks')
+const setup = require('./setup')
 
 nunjucks.configure({
     autoescape: false,
@@ -13,10 +14,11 @@ nunjucks.configure({
 })
 
 const config = {
-    apiVersion: 33,
-    apiVersionFull: '3.1.0-20190731',
+    apiVersion: setup.apiVersion,
+    rundeckVersion: setup.rundeckVersion,
+    rundeckVersionFull: setup.rundeckVersionFull,
 
-    javaDocBase: `https://static.javadoc.io/org.rundeck/rundeck-core/3.1.0-20190731`
+    javaDocBase: `https://static.javadoc.io/org.rundeck/rundeck-core/`+setup.rundeckVersionFull
 }
 
 module.exports = function(source) {
