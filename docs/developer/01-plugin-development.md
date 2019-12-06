@@ -45,15 +45,15 @@ the same name and type is defined.
 Rundeck's jars are published to the central Maven repository, and [jCenter](https://jcenter.bintray.com), so you can simply specify a dependency in your build file.
 
 - `rundeck-core` is the primary build dependency for most plugin types
-  - [org.rundeck:rundeck-core:{{{ apiVersionFull }}}](https://search.maven.org/artifact/org.rundeck/rundeck-core/{{{ apiVersionFull }}}/jar)
+  - [org.rundeck:rundeck-core:{{{ rundeckVersionFull }}}](https://search.maven.org/artifact/org.rundeck/rundeck-core/{{{ rundeckVersionFull }}}/jar)
 
 - `rundeck-storage-api` is also required for [Storage Plugin](/developer/07-storage-plugin.md).
-  - [org.rundeck:rundeck-storage-api:{{{apiVersionFull}}}](https://search.maven.org/artifact/org.rundeck/rundeck-storage-api/{{{apiVersionFull}}}/jar)
+  - [org.rundeck:rundeck-storage-api:{{{rundeckVersionFull}}}](https://search.maven.org/artifact/org.rundeck/rundeck-storage-api/{{{rundeckVersionFull}}}/jar)
 
 For gradle, use:
 
 ```java
-compile(group:'org.rundeck', name: 'rundeck-core', version: '{{{apiVersionFull}}}')
+compile(group:'org.rundeck', name: 'rundeck-core', version: '{{{rundeckVersionFull}}}')
 ```
 
 For maven use:
@@ -63,7 +63,7 @@ For maven use:
    <dependency>
       <groupId>org.rundeck</groupId>
       <artifactId>rundeck-core</artifactId>
-      <version>{{{apiVersionFull}}}</version>
+      <version>{{{rundeckVersionFull}}}</version>
       <scope>compile</scope>
    </dependency>
 </dependencies>
