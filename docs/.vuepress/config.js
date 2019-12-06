@@ -31,7 +31,7 @@ console.log(setup)
 module.exports = {
   title: 'Rundeck Docs',
   description: '',
-  base: `/${setup.base}/`,
+  base: `/${setup.base ? setup.base + '/' : ''}`,
   configureWebpack: {
     resolve: {
       alias: {
