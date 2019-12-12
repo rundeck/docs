@@ -25,7 +25,7 @@ sudo apt-get install rundeck
 Download deb package: http://rundeck.org/download/deb/ and run:
 
 ```bash
-sudo dpkg -i rundeckpro-cluster_3.0.x.deb
+sudo dpkg -i rundeckpro-cluster_3.1.x.deb
 ```
 
 ## Rundeck Enterprise
@@ -53,7 +53,7 @@ sudo apt-get install rundeckpro-cluster
 Download deb package: http://download.rundeck.com/eval/ and run:
 
 ```bash
-sudo dpkg -i rundeckpro-cluster_3.0.x.deb
+sudo dpkg -i rundeckpro-cluster_3.1.x.deb
 ```
 
 ## Starting Rundeck
@@ -72,7 +72,7 @@ tail -f /var/log/rundeck/service.log
 
 The service is ready once you see something similar to:
 
-```bash
+```
 Grails application running at http://localhost:4440 in environment: production
 ```
 
