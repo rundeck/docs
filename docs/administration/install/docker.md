@@ -4,24 +4,28 @@ Full usage information can be found on the Docker Hub image pages.
 
 ## Open Source Rundeck
 
-[rundeck/rundeck:\{{ $themeConfig.version }}](https://hub.docker.com/r/rundeck/rundeck/)
+[rundeck/rundeck:{{{rundeckVersion}}}](https://hub.docker.com/r/rundeck/rundeck/)
 
-    docker run --name some-rundeck -v data:/home/rundeck/server/data rundeck/rundeck:{{ $themeConfig.version }}
+```sh
+docker run --name some-rundeck -v data:/home/rundeck/server/data rundeck/rundeck:{{{rundeckVersion}}}
+```
 
 ## Rundeck Enterprise
 
-[rundeckpro/enterprise:\{{ $themeConfig.version }}](https://hub.docker.com/r/rundeckpro/enterprise/)
+[rundeckpro/enterprise:{{{rundeckVersion}}}](https://hub.docker.com/r/rundeckpro/enterprise/)
 The following example invocation will require an accessible MySQL instance
 with a database, user, and the required privileges setup:
 
-    docker run \
-        --name some-rundeck \
-        -v data:/home/rundeck/server/data \
-        -e RUNDECK_DATABASE_DRIVER=com.mysql.jdbc.Driver \
-        -e RUNDECK_DATABASE_USERNAME="${DB_USERNAME}" \
-        -e RUNDECK_DATABASE_PASSWPRD="${DB_PASSWORD}" \
-        -e RUNDECK_DATABASE_URL="${DB_URL}" \
-        rundeckpro/enterprise:{{ $themeConfig.version }}
+```sh
+docker run \
+    --name some-rundeck \
+    -v data:/home/rundeck/server/data \
+    -e RUNDECK_DATABASE_DRIVER=com.mysql.jdbc.Driver \
+    -e RUNDECK_DATABASE_USERNAME="${DB_USERNAME}" \
+    -e RUNDECK_DATABASE_PASSWPRD="${DB_PASSWORD}" \
+    -e RUNDECK_DATABASE_URL="${DB_URL}" \
+    rundeckpro/enterprise:{{{rundeckVersion}}}
+```
 
 ## Example Configurations
 
