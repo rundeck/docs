@@ -2,6 +2,7 @@ const path = require("path");
 
 // sidebars
 const sidebarAdmin = require('./sidebar-menus/administration')
+const sidebarUpgrading = require('./sidebar-menus/upgrading')
 const sidebarUserGuide = require('./sidebar-menus/user-guide')
 const sidebarCommandLineTools = require('./sidebar-menus/command-line-tools')
 const sidebarEnterprise = require('./sidebar-menus/enterprise')
@@ -115,6 +116,7 @@ module.exports = {
     sidebarDepth: 2,
     sidebar: {
       '/administration/': sidebarAdmin,
+      '/upgrading/': sidebarUpgrading,
       '/enterprise/': sidebarEnterprise,
       '/manual/command-line-tools/': sidebarCommandLineTools,
       '/manual': sidebarUserGuide,
