@@ -3,17 +3,27 @@
 Name: <span style="color: aquamarine"><span class="glyphicon glyphicon-knight"></span> "nacho aquamarine knight"</span>
 
 ## Upgrading
-See the upgrade documentation [here](https://docs.rundeck.com/3.1.0-rc2/upgrading/upgrade-to-rundeck-3.1.html).
+See [Upgrading to Rundeck 3.2](/upgrading/upgrading-to-rundeck-3.2.html).
 
 ## Enhancements
 
-### Job Resume
+### Job Resume (Enterprise)
 
 The new [Job Resume Plugin \(Enterprise\)](/manual/execution-lifecycle/job-resume.md) allows you to manually or automatically resume an execution at a failed step.
 
 ![Execution Plugins](~@assets/img/figure-job-resume-edit-job-execution-plugins.png)
 
-### Docker
+### Node Health Checks (Enterprise)
+
+[Node Health Checks](/manual/healthchecks.md) let you run commands or scripts to check if nodes are healthy. Filter out unhealthy nodes before executing jobs. Capture data and add it to node attributes. See Node Health status in the Node list.
+
+![Health Checks](~@assets/img/healthchecks-health-status-ui.png)	
+
+### Webhooks
+
+[Webhooks](/manual/12-webhooks.md) are now enabled by default (previously incubating).  
+
+Define webhooks in your projects that can trigger one or more jobs.
 
 ### Misc
 

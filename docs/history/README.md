@@ -1,17 +1,17 @@
-# September 2019 Update
+# December 2019 Update
 
-[3.0.0](./3_1_x/version-3.1.0.md), [3.1.1](./3_1_x/version-3.1.1.md), [3.1.2](./3_1_x/version-3.1.2.md),
-[3.1.3](./3_1_x/version-3.1.3.md)
+[3.2.0](./3_2_x/version-3.2.0.md)
 
 ## Upgrading
-See the upgrade documentation [here](https://docs.rundeck.com/3.1.0-rc2/upgrading/upgrade-to-rundeck-3.1.html).
+
+See [Upgrading to Rundeck 3.2](/upgrading/upgrade-to-rundeck-3.2.md).
 
 ## Enhancements
 
-### Webhooks (incubating)
+### Webhooks 
 Much anticipated and maximally useful.. Webhooks have landed in Rundeck! This new incubating feature
 empowers Rundeck to receive JSON events and direct them to jobs.
-Check out the [Webhook Docs](https://docs.rundeck.com/3.1.1/manual/12-webhooks.html) for
+Check out the [Webhook Docs](/manual/12-webhooks.md) for
 instructions on enabling the feature and full details.
 
 ![Destroy your FOMO, never miss an important event!](https://docs.rundeck.com/assets/releases/3_1_1/webhook_promo_pd_sm.gif "Destroy your FOMO, never miss an important event!")
