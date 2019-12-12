@@ -14,7 +14,10 @@ to have access via [sudo].
 
 [sudo]: https://en.wikipedia.org/wiki/Sudo
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 34eb3dd... Update system-requirements.md
 - **Supported Operating Systems:**
   _ Red Hat Enterprise Linux
   _ CentOS
