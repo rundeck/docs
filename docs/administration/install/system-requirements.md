@@ -14,8 +14,6 @@ to have access via [sudo].
 
 [sudo]: https://en.wikipedia.org/wiki/Sudo
 
-FIXME: needs cleanup
-
 - **Supported Operating Systems:**
   _ Red Hat Enterprise Linux
   _ CentOS
