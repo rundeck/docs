@@ -193,24 +193,23 @@ insert into user_roles values('samuel','admin');
 - Define the JNDI entry in `$tomcat.base/conf/server.xml`:
 
 ```xml
-     <!-- Use the LockOutRealm to prevent attempts to guess user passwords
-          via a brute-force attack -->
-     <Realm className="org.apache.catalina.realm.LockOutRealm">
-       <!-- This Realm uses the UserDatabase configured in the global JNDI
-            resources under the key "UserDatabase".  Any edits
-            that are performed against this UserDatabase are immediately
-            available for use by the Realm.  -->
-       <Realm className="org.apache.catalina.realm.UserDatabaseRealm"
-              resourceName="UserDatabase"/>
-     </Realm>
-
-     <Realm className="org.apache.catalina.realm.DataSourceRealm"
-                  dataSourceName="jdbc/testDB"
-     userTable="users"
-     userNameCol="user_name"
-     userCredCol="user_pass"
-     userRoleTable="user_roles"
-     roleNameCol="role_name"/>
+<!-- Use the LockOutRealm to prevent attempts to guess user passwords
+     via a brute-force attack -->
+<Realm className="org.apache.catalina.realm.LockOutRealm">
+  <!-- This Realm uses the UserDatabase configured in the global JNDI
+       resources under the key "UserDatabase".  Any edits
+       that are performed against this UserDatabase are immediately
+       available for use by the Realm.  -->
+  <Realm className="org.apache.catalina.realm.UserDatabaseRealm"
+         resourceName="UserDatabase"/>
+</Realm>
+ <Realm className="org.apache.catalina.realm.DataSourceRealm"
+             dataSourceName="jdbc/testDB"
+userTable="users"
+userNameCol="user_name"
+userCredCol="user_pass"
+userRoleTable="user_roles"
+roleNameCol="role_name"/>
 ```
 
 Further information:
@@ -220,12 +219,4 @@ Further information:
 
 ## Users authentication
 
-Note for Linux and Windows installations: users are no longer in Tomcat's configuration files, at this point, users should be configured as in a [launcher installation](https://rundeck.org/docs/administration/security/authenticating-users.html) and java options should be append to the setenv.sh or setenv.bat file:
-
-## Known issue
-
-If ldap/AD authentication is configured, you will need to copy below file (use proper path on Windows) and then restart Tomcat:
-
-```bash
-cp $tomcat_base/webapps/rundeck/WEB-INF/lib-provided/jetty-util-9.4.11.v20180605.jar $tomcat_base/webapps/rundeck/WEB-INF/lib/
-```
+Note for Linux and Windows installations: users are no longer in Tomcat's configuration files, at this point, users should be configured as in a [launcher installation](/administration/security/authentication.md#authenticating-users) and java options should be append to the setenv.sh or setenv.bat file.
