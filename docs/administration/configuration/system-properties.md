@@ -9,7 +9,9 @@ These properties must be declared on the Java commandline when starting Rundeck.
 If you are using [Executable War](/administration/install/jar.md) to start Rundeck, you would set the properties directly
 on the commandline, using the `-Dpropertyname=value` syntax. Add a `-D` for each property:
 
-    java -server -Dserver.session.timeout=3600 -Dserver.port=8080 -jar rundeck-3.0.5-20180828.war
+```sh
+java -server -Dserver.session.timeout=3600 -Dserver.port=8080 -jar rundeck-{{{rundeckVersionFull}}}.war
+```
 
 ## Properties Reference
 
@@ -48,11 +50,13 @@ additional Java Sytem Properties.
 
 Within the `rundeckd` defaults file, declare a `RDECK_JVM_OPTS` variable:
 
-    RDECK_JVM_OPTS="-Dserver.session.timeout=3600 -Dserver.port=8080"
+```properties
+RDECK_JVM_OPTS="-Dserver.session.timeout=3600 -Dserver.port=8080"
+```
 
 ### Environment Variables Defaults
 
-Here is a partial list of environment variables which are set in the `/etc/rundeck/profile`, and can be overridden in the `/etc/sysconfig/rundeckd` or `/etc/default/rundeckd` file.
+Here is a partial list of environment variables which are set in the `/etc/rundeck/profile`, and can be overridden in the `/etc/sysconfig/rundeckd` file for RPM installation or `/etc/default/rundeckd` file for DEB installation.
 
 (from `/etc/rundeck/profile`)
 
