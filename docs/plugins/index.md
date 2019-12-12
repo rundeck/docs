@@ -7,7 +7,7 @@ sidebar: false
 
 This document lists the plugins **distributed with Rundeck and Rundeck Enterprise**.
 
-(For Plugin Development, see (/developer/index.md).)
+Also see: [Plugin Development Guide](/developer/index.md).
 
 More plugins can be found via:
 
