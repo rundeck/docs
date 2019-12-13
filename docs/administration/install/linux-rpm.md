@@ -33,13 +33,13 @@ You can use this script to add the Rundeck Enterprise yum repo and install Runde
 
 ```bash
 curl https://bintray.com/rundeckpro/rpm/rpm | sudo tee /etc/yum.repos.d/bintray-rundeckpro-rpm.repo
-sudo yum install java rundeckpro-cluster
+sudo yum install java rundeckpro-enterprise
 ```
 
 When new versions of Rundeck Enterprise are released, you can upgrade to them using the command:
 
 ```bash
-sudo yum update rundeckpro-cluster
+sudo yum update rundeckpro-enterprise
 ```
 
 ### Install rpm package directly
@@ -47,7 +47,7 @@ sudo yum update rundeckpro-cluster
 Download rpm package: http://download.rundeck.com/eval/ and run:
 
 ```bash
-sudo rpm -i rundeckpro-cluster-X.X.X-GA.noarch.rpm
+sudo rpm -i rundeckpro-enterprise-X.X.X-GA.noarch.rpm
 ```
 
 ## Starting Rundeck
@@ -66,8 +66,8 @@ tail -f /var/log/rundeck/service.log
 
 The service is ready once you see something similar to:
 
-```bash
-2018-04-25 22:21:53.203:INFO:oejs.ServerConnector:main: Started ServerConnector@7d593bbc{HTTP/1.1}{0.0.0.0:4440}
+```
+Grails application running at http://localhost:4440 in environment: production
 ```
 
 ## Logging in for the first time

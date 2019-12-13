@@ -35,7 +35,9 @@ ACLs which allow `read` to Jobs, will work as before. To disallow Job Definition
 
 If you want to continue using filesystem storage for project config/readme/motd files, you will need to set this in your `rundeck-config.properties` before upgrading:
 
-    rundeck.projectsStorageType=filesystem
+```properties
+rundeck.projectsStorageType=filesystem
+```
 
 Upgrading an existing `filesystem` configuration to `db` is automatic, and project configs/readme/motd will be loaded into DB storage at system startup.
 
@@ -71,8 +73,7 @@ For H2, you will need to do the following:
 
 1. Shut down Rundeck.
 2. (backup your H2 database contents, see [Backup and Recovery](/administration/maintenance/backup.md).
-3. Use the h2 [`RunScript`](http://h2database.com/javadoc/org/h2/tools/RunScript.html) command
-   to run the following SQL script.
+3. Use the h2 [`RunScript`](http://h2database.com/javadoc/org/h2/tools/RunScript.html) command to run the following SQL script.
 
 To run the script you will need:
 
@@ -80,8 +81,7 @@ To run the script you will need:
   your `rundeck-config.properties`.
 
   - For RPM/DEB installs it is `jdbc:h2:file:/var/lib/rundeck/data/rundeckdb`.
-  - For a Launcher install, it will include your `$RDECK_BASE` path. It can be relative to your current
-    working directory, such as `jdbc:h2:file:$RDECK_BASE/server/data/grailsdb`.
+  - For a Launcher install, it will include your `$RDECK_BASE` path. It can be relative to your current working directory, such as `jdbc:h2:file:$RDECK_BASE/server/data/grailsdb`.
 
 - File path to the `h2-1.4.x.jar` jar file, which is in the expanded war contents of the Rundeck install.
   - For RPM/DEB installs it is `/var/lib/rundeck/exp/webapp/WEB-INF/lib/h2-1.4.193.jar`.
@@ -134,7 +134,9 @@ The new version uses a different storage format ("mv_store") so switching back t
 
 In-place upgrade with the old storage format do seem to work, however if necessary to keep compatibility with an existing older h2 database, you can update your dataSource.url in rundeck-config.properties to add `;mv_store=false`
 
-    dataSource.url = jdbc:h2:file:/path;MVCC=true;mv_store=false
+```properties
+dataSource.url = jdbc:h2:file:/path;MVCC=true;mv_store=false
+```
 
 - You can remove `;TRACE_LEVEL_FILE=4` from the dataSource.url in rundeck-config.properties
 
@@ -212,7 +214,9 @@ to use an encryption plugin. There is now a [Jasypt Encryption Plugin](/administ
 You can configure Rundeck to use the Database by adding the following to
 `rundeck-config.properties` before starting it up:
 
-    rundeck.projectsStorageType=db
+```properties
+rundeck.projectsStorageType=db
+```
 
 When importing previously created filesystem projects, the contents of these files are imported to the DB:
 
@@ -238,7 +242,9 @@ then you may need to back it up, and re-apply the changes you made after upgradi
 
 If you receive a "Service Unavailable" error on startup, and the service.log file contains this message:
 
-    java.lang.ClassNotFoundException: org.codehaus.groovy.grails.web.sitemesh.GrailsPageFilter
+```
+java.lang.ClassNotFoundException: org.codehaus.groovy.grails.web.sitemesh.GrailsPageFilter
+```
 
 Then that means your web.xml file is out of date. Replace it with the one from 2.5 installation,
 then re-apply your changes to `<role-name>`.
@@ -260,19 +266,21 @@ Project access via API has been improved, and new authorizations are now require
 
 Example allowing explicit actions:
 
-    context:
-      application: 'rundeck'
-    for:
-      resource:
-        - equals:
-            kind: 'project'
-          allow: [create] # allow creating new projects
-      project:
-        - equals:
-            name: 'myproject'
-          allow: [read,configure,delete,import,export,admin] # access to 'myproject'
-    by:
-      group: admin
+```
+context:
+  application: 'rundeck'
+for:
+  resource:
+    - equals:
+        kind: 'project'
+      allow: [create] # allow creating new projects
+  project:
+    - equals:
+        name: 'myproject'
+      allow: [read,configure,delete,import,export,admin] # access to 'myproject'
+by:
+  group: admin
+```
 
 The storage facility for uploading public/private keys requires authorization to use. The default `admin.aclpolicy` and `apitoken.aclpolicy` provide this access, but if you have custom policies you may want to allow access to these actions.
 
@@ -281,15 +289,17 @@ The storage facility for uploading public/private keys requires authorization to
 
 The default apitoken aclpolicy file allows this access:
 
-    context:
-      application: 'rundeck'
-    for:
-      storage:
-        - match:
-            path: '(keys|keys/.*)'
-          allow: '*' # allow all access to manage stored keys
-    by:
-      group: api_token_group
+```
+context:
+  application: 'rundeck'
+for:
+  storage:
+    - match:
+        path: '(keys|keys/.*)'
+      allow: '*' # allow all access to manage stored keys
+by:
+  group: api_token_group
+```
 
 ## Upgrading to Rundeck 2.0 from 1.6.x
 
