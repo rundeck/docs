@@ -8,7 +8,6 @@ module.exports = [{
       collapsable: true,
       sidebarDepth: 1,
       children: [
-        '/administration/install/',
         '/administration/install/system-requirements',
         '/administration/install/jar',
         '/administration/install/linux-deb',
@@ -81,7 +80,16 @@ module.exports = [{
         '/administration/maintenance/backup',
         '/administration/maintenance/tuning-rundeck'
       ]
-    }, {
+    },
+    {
+      title: 'Upgrading',
+      collapsable: true,
+      children: [
+        '/upgrading/upgrading',
+        '/upgrading/upgrading-to-rundeck3',
+      ]
+    },
+    {
       title: 'Cluster',
       collapsable: true,
       children: [

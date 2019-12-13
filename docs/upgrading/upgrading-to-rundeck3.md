@@ -2,7 +2,7 @@
 
 Updated June 1, 2018
 
-### Rundeck Launcher
+## Rundeck Launcher
 
 The "launcher jar" for Rundeck 2 is gone. However, the .war file now operates the same way. Just use the .war in the same way as the previous launcher jar, or deploy it as a webapp.
 
@@ -12,39 +12,47 @@ To upgrade to Rundeck 3 using launcher use the following steps:
 
 - Stop Rundeck Service, eg: `$RDECK_BASE/server/sbin/rundeckd stop`
 
-- In case you have customs plugins on `libext` folder, backup them. For example, you can move the full `libext`:
+- In case you have customs plugins in `libext` folder, backup them. For example, you can move the full `libext`:
 
-      	mv $RDECK_BASE/libext $RDECK_BASE/libext.2-11
-      	
+```sh
+mv $RDECK_BASE/libext $RDECK_BASE/libext.2-11
+```
+
 - Remove previous "source" folders:
 
-      	rm -rf $RDECK_BASE/server/exp/ $RDECK_BASE/server/lib/ $RDECK_BASE/server/sbin/ $RDECK_BASE/tools/
-      	
+```sh
+rm -rf $RDECK_BASE/server/exp/ $RDECK_BASE/server/lib/ $RDECK_BASE/server/sbin/ $RDECK_BASE/tools/
+```
+
 - Copy the new war file to `$RDECK_BASE` and install it:
 
-      	java -jar rundeck-3.X.war --installonly
-      	
+```sh
+java -jar rundeck-3.X.war --installonly
+```
+
 - Add the following attribute to `$RDECK_BASE/server/config/rundeck-config.properties`
 
-      	rundeck.log4j.config.file=$RDECK_BASE/server/config/log4j.properties
-      	
+```properties
+rundeck.log4j.config.file = $RDECK_BASE/server/config/log4j.properties
+```
+
 - Copy the "custom" plugins back to `$RDECK_BASE/libext` folder
 
 - Start rundeck 3: `$RDECK_BASE/server/sbin/rundeckd start`
 
-### Rundeck DEB Package
+## Rundeck DEB Package
 
 The upgrade process can be done using the `.deb` file or using the command `apt-get`:
 
 **If using deb package**
 
-```
+```sh
 sudo dpkg -i rundeck-3.0.X.deb
 ```
 
 **If using apt-get**
 
-```
+```sh
 sudo apt-get upgrade rundeck
 ```
 
@@ -84,14 +92,14 @@ drwxr-x--- 1 rundeck rundeck 4096 Jun  4 14:25 ssl
 
 A restart is necessary after the merge of `rundeck-config.properties`
 
-### Rundeck RPM Package
+## Rundeck RPM Package
 
 The upgrade process can be done using the `.rpm` file or using the command `yum`:
 
-#### Using rpm package
+### Using rpm package
 
-```
-sh-4.2# rpm -U rundeck-3.x.rpm rundeck-config-3.X.rpm
+```sh
+# rpm -U rundeck-3.x.rpm rundeck-config-3.X.rpm
 
 warning: /etc/rundeck/framework.properties created as /etc/rundeck/framework.properties.rpmnew
 warning: /etc/rundeck/rundeck-config.properties created as /etc/rundeck/rundeck-config.properties.rpmnew
@@ -99,16 +107,16 @@ rundeck.server.uuid = XXXXXXXXXXXXXXX
 
 ```
 
-#### Using yum
+### Using yum
 
-```
-sh-4.2#  yum upgrade rundeck rundeck-config
+```sh
+# yum upgrade rundeck rundeck-config
 ```
 
 In the case of the RPM upgrade, the old properties files are not modified, and the new files are saved with the extension `.rpmnew`. For the configuration file `rundeck-config.properties` a merge is needed to include new default attribute (`rundeck.log4j.config.file`).
 
-```
-sh-4.2# ls -lrt
+```sh
+# ls -lrt
 total 56
 -rw-r----- 1 rundeck rundeck  455 Jun  1 19:34 rundeck-config.properties.rpmnew
 -rw-r----- 1 rundeck rundeck  986 Jun  1 19:34 realm.properties
@@ -127,13 +135,13 @@ drwxr-x--- 1 rundeck rundeck 4096 Jun  4 16:08 ssl
 
 If the `profile` file was modified on 2.11.x, the new profile file (for 3.x) will be created with the name `profile.rpmnew`. If that is the case, merge the changes on the old file and move them to the new one, eg:
 
-```
-mv /etc/rundeck/profile.rpmnew /etc/rundeck/profile
+```sh
+# mv /etc/rundeck/profile.rpmnew /etc/rundeck/profile
 ```
 
 A restart is necessary after the merge of `rundeck-config.properties` or/and `profile` file.
 
-### Tomcat War deployment
+## Tomcat War deployment
 
 - Stop Tomcat
 
@@ -143,12 +151,20 @@ A restart is necessary after the merge of `rundeck-config.properties` or/and `pr
 
 - Place Rundeck 3 as the old war file `$tomcat.base/webapps/rundeck.war`
 
+- Remove `$rdeck.base/var/.install_complete` and `$rdeck.base/var/.install_complete-missing-ver` if any.
+
+- In case you have customs plugins in `libext` folder, backup them. For example, you can move the full libext:
+
+```sh
+mv $rdeck.base/libext $rdeck.base/libext.2-11
+```
+
 - Start Tomcat
 
-#### NOTES:
+- Copy the "custom" plugins back to `$rdeck.base/libext` folder.
 
-- Due to changes in authentication, `tomcat-users.xml` and other Tomcat's authentication modules no longer work, you should configure users as in a launcher installation.
+### NOTES FOR TOMCAT:
+
+- Due to changes in authentication, `tomcat-users.xml` and other Tomcat's authentication modules no longer work, you should configure users as in a [launcher installation](/administration/security/authentication.md#authenticating-users).
 
 - If you do not have "-Drundeck.config.location" defined or configured in `$tomcat.base/bin/setenv.sh` file (`tomcat.base\bin\setenv.bat` for Windows), it will take `$rdeck.base/server/config/rundeck-config.properties`.
-
-- If Rundeck is not starting, please remove `$rdeck.base/var/.install_complete` and restart Tomcat.
