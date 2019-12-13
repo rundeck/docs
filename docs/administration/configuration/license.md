@@ -42,15 +42,24 @@ Agree to the Rundeck Master Software License Agreement and Rundeck Support Polic
 
 Copy the license file to the correct directory depending of the kind of installation.
 
-License file name : rundeckpro-license.key ( don't change to a different name )
+License file name : `rundeckpro-license.key` ( don't change to a different name )
 
-File location
+File location:
 
-Rundeck package RPM(Redhat/centos) or DEB (debian/ubuntu)
+Rundeck package RPM (Redhat/centos) or DEB (debian/ubuntu):
+
+```
 /etc/rundeck/
+```
 
-Rundeck Launcher
-\$RD_BASE/etc/
+Rundeck Launcher:
 
-Rundeck + Tomcat
-\$RDECK_BASE/etc/
+```
+$RDECK_BASE/etc/
+```
+
+Rundeck + Tomcat:
+
+```
+$RDECK_BASE/etc/
+```
