@@ -32,7 +32,7 @@ shasum -a 1 ~/Downloads/rundeckpro-enterprise-{{{rundeckVersionFull}}}.war
 >>>>>>> 81f5c39... Update quickstart.md
 
 ```sh
-java -XX:MaxPermSize=256m -Xmx1024m -jar ~/Downloads/rrundeckpro-enterprise-{{{rundeckVersionFull}}}.war
+java -XX:MaxPermSize=256m -Xmx1024m -jar ~/Downloads/rundeckpro-enterprise-{{{rundeckVersionFull}}}.war
 ```
 
 5. Once you see something similar to following log output, you know the server is ready:
