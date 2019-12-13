@@ -4,7 +4,7 @@
 
 ## Upgrading
 
-See [Upgrading to Rundeck 3.2](/upgrading/upgrade-to-rundeck-3.2.md).
+See [Upgrading to Rundeck 3.2](/upgrading/upgrading-to-rundeck-3.2.md).
 
 ## Enhancements
 
