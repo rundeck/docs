@@ -1,5 +1,4 @@
-Upgrading to Rundeck 3.1
-========================
+# Upgrading to Rundeck 3.1
 
 ## RPM package
 
