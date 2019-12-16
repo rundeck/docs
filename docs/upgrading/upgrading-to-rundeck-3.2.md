@@ -6,7 +6,7 @@
 See other [Upgrading](/upgrading/) Documents if you are upgrading from 3.0 or earlier.
 :::
 
-## Upgrading from Rundeck 3.0 Using Debian packaging
+## Upgrading from Rundeck 3.0 Using Debian/RPM packaging
 
 
 The value of `framework.projects.dir` in the default install of Rundeck 3.2 in the config file `framework.properties` has changed to:
