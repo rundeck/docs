@@ -1,6 +1,6 @@
 # December 2019 Update
 
-[3.2.0](./3_2_x/version-3.2.0.md)
+[3.2.0 Release Notes](./3_2_x/version-3.2.0.md)
 
 ## Upgrading
 
