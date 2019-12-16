@@ -45,10 +45,9 @@ are extracted before applying the event ID key to each item.
 Rules can be individually enabled/disabled!
 :::
 
-Each webhook event gets evaluated against each rule. If the rule matches
-(all conditions are satisfied) the target job will be executed.
+Each webhook event gets evaluated against each rule. If the rule satisfies the conditions the target job will be executed.
 
-### Name (optional but srsly)
+### Name (optional)
 A label to identify the rule.
 
 ### Debug
@@ -69,48 +68,56 @@ like [Node Filter](#node-filter)
 Job options to be supplied during job execution. Use [JsonPath](#jsonpath) or
 [Templates](#templates) to construct the `value` from event data.
 
-### [Conditions](#conditions)
-See [Conditions](#conditions)
-
 ## Conditions
+
+Each rule can have multiple Conditions. Based on the [Policy](#policy), the rule will apply when all or any of the conditions are satisfied.  Each Condition defines a Field selector using JsonPath, a particular match type (defined below), and a value.
+
 ![Oh noes :O](../../assets/img/wh-routing-rule-conditions-overview.png)
 
 ### Policy
+
+When more than one Condition is added to the Rule, you can select which policy to use for evaluating the Conditions.
+
 * **all** All conditions must match
 * **any** At least one condition must match
 
-### contains
-Satisfied if the value at `path` contains the provided `value`.
-### dateTimeAfter
-### dateTimeBefore
-:::warning
-Must be a Date with Time.
-:::
-Compares the parsed Zoned DateTime at `path` with the provided DateTime.
-Supported formats are:
-* [ISO_DATE_TIME](https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html#ISO_DATE_TIME)
-* [ISO_INSTANT](https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html#ISO_INSTANT)
-* Unix EPOCH (assumed to be in milliseconds if year >=2970)
+### Match Types
 
-The format in the event need not match the format of the value.
+`contains`
+:   Satisfied to true if the Field is equal to, or contains a substring equal to, the provided `value`.
 
-### exists
-Satisfied if _Something_ exists at the specified path.
-### matches
-Matches is satisfied if the value at `path` _equals_ the value of
+`dateTimeAfter`/`dateTimeBefore`
+:   Satisfied if the Field, parsed as a Zoned DateTime, compares with the provided DateTime.
+
+	:::warning
+	Must be a Date with Time.
+	:::
+
+	Supported formats for the Field and the value are:
+
+	* [ISO_DATE_TIME](https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html#ISO_DATE_TIME)
+	* [ISO_INSTANT](https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html#ISO_INSTANT)
+	* Unix EPOCH (assumed to be in milliseconds if year >=2970)
+
+`exists`
+:   Satisfied if the Field is non-null.
+
+`matches`
+:   Satisfied if the value at `path` _equals_ the value of
 the provided `value`.
-### isA
-Satisfied if the type at `path` match a provided `value` of:
-- string
-- number
-- map
-- list
-- null
+
+`isA`
+:   Satisfied if the *type* of the Field is one of these `values`:
+	- `string`
+	- `number`
+	- `map`
+	- `list`
+	- `null`
 
 ## JsonPath/Templates
-Many fields accept a JsonPath or template string. The discriminating criteria are:
+Many fields accept a JsonPath or Template string. The discriminating criteria are:
 * **JsonPath:** Starts with `$`
-* **Template:** Starts with `\$` or `/^[^$]/`
+* **Template:** Starts with `\$` or `/^[^$]/` (anything other than `$`)
 
 ### JsonPath
 :::tip
@@ -124,18 +131,22 @@ See [Path Examples](https://github.com/json-path/JsonPath#path-examples) in the 
 repo for easy examples and inspiration.
 
 ### Template
-In a string template values are substituted with `${}`.
+Template Strings use the Groovy "GString" expansion syntax.
+
+Use `${VAR}` to expand to the value of the `VAR` variable, or `${VAR.key}` to access map entries.
+
+Given this example JSON Webhook event content, it will be provided as the variable `data`:
 
 ```json
 {"foo":"bar"}
 ```
 
-Event data can be accessed in `${data}`:  
+In this example, the data can be accessed in `${data}`:  
 `The value is ${data.foo}` -> `The value is bar`
 
-JsonPath can be used too!:  
-`The value is ${path('$.foo')}` -> `The value is bar`
+JsonPath can also be embedded in the Template string using the `${path('$.foo')}` syntax:
 
+`The value is ${path('$.foo')}` -> `The value is bar`
 
 
 ## FAQ
