@@ -10,35 +10,25 @@ To upgrade to Rundeck 3 using launcher use the following steps:
 
 **NOTE: replace `$RDECK_BASE` below with the real path.**
 
-- Stop Rundeck Service, eg: `$RDECK_BASE/server/sbin/rundeckd stop`
-
-- In case you have customs plugins in `libext` folder, backup them. For example, you can move the full `libext`:
-
-```sh
-mv $RDECK_BASE/libext $RDECK_BASE/libext.2-11
-```
-
-- Remove previous "source" folders:
-
-```sh
-rm -rf $RDECK_BASE/server/exp/ $RDECK_BASE/server/lib/ $RDECK_BASE/server/sbin/ $RDECK_BASE/tools/
-```
-
-- Copy the new war file to `$RDECK_BASE` and install it:
-
-```sh
-java -jar rundeck-3.X.war --installonly
-```
-
-- Add the following attribute to `$RDECK_BASE/server/config/rundeck-config.properties`
-
-```properties
-rundeck.log4j.config.file = $RDECK_BASE/server/config/log4j.properties
-```
-
-- Copy the "custom" plugins back to `$RDECK_BASE/libext` folder
-
-- Start rundeck 3: `$RDECK_BASE/server/sbin/rundeckd start`
+* Stop Rundeck Service, eg: `$RDECK_BASE/server/sbin/rundeckd stop`
+* In case you have customs plugins in `libext` folder, backup them. For example, you can move the full `libext`:
+  ```sh
+  mv $RDECK_BASE/libext $RDECK_BASE/libext.2-11
+  ```
+* Remove previous "source" folders:
+  ```sh
+  rm -rf $RDECK_BASE/server/exp/ $RDECK_BASE/server/lib/ $RDECK_BASE/server/sbin/ $RDECK_BASE/tools/
+  ```
+* Copy the new war file to `$RDECK_BASE` and install it:
+  ```sh
+  java -jar rundeck-3.X.war --installonly
+  ```
+* Add the following attribute to `$RDECK_BASE/server/config/rundeck-config.properties`
+  ```properties
+  rundeck.log4j.config.file = $RDECK_BASE/server/config/log4j.properties
+  ```
+* Copy the "custom" plugins back to `$RDECK_BASE/libext` folder
+* Start rundeck 3: `$RDECK_BASE/server/sbin/rundeckd start`
 
 ## Rundeck DEB Package
 
@@ -144,23 +134,15 @@ A restart is necessary after the merge of `rundeck-config.properties` or/and `pr
 ## Tomcat War deployment
 
 - Stop Tomcat
-
 - Delete `$tomcat.base/webapps/rundeck`
-
 - Delete `$tomcat.base/webapps/rundeck.war`
-
 - Place Rundeck 3 as the old war file `$tomcat.base/webapps/rundeck.war`
-
 - Remove `$rdeck.base/var/.install_complete` and `$rdeck.base/var/.install_complete-missing-ver` if any.
-
 - In case you have customs plugins in `libext` folder, backup them. For example, you can move the full libext:
-
-```sh
-mv $rdeck.base/libext $rdeck.base/libext.2-11
-```
-
+  ```sh
+  mv $rdeck.base/libext $rdeck.base/libext.2-11
+  ```
 - Start Tomcat
-
 - Copy the "custom" plugins back to `$rdeck.base/libext` folder.
 
 ### NOTES FOR TOMCAT:
