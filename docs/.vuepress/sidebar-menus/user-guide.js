@@ -46,6 +46,7 @@ module.exports = [{
           children: [
             '/manual/webhooks/run-job.md',
             '/manual/webhooks/advanced-run-job',
+            '/manual/webhooks/pagerduty-run-job'
           ]
         },
       ]
