@@ -21,7 +21,7 @@ The configuration will run a **Job** when PagerDuty send rundeck an incident
 ### Customize Sample Rule
 1. Click **Choose A Job** to select a job to run when the rule matches.
 2. Customize the **Job Options**:  
-   The sample will set the job's `pd_incident_id` option to the PagerDuty incident ID inside the event
+   The sample will set the job's `pd_incident_id` option to the PagerDuty incident ID extracted from the event
 3. Customize **Conditions**:  
    The sample condition will match for `trigger` event types. See [Webhook Types](https://v2.developer.pagerduty.com/docs/webhooks-v2-overview#webhook-types) for a list of PagerDuty event types.
 4. Save the Webhook
@@ -30,7 +30,7 @@ The configuration will run a **Job** when PagerDuty send rundeck an incident
 Use the suggestion dropdowns to chose from common PagerDuty event fields
 :::
 
-![](../../assets/img/wh-pd-rule.png)
+![Sample Rule](../../assets/img/wh-pd-rule.png "Sample Rule")
 
 ### Add Webhook to PagerDuty
 
