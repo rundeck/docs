@@ -115,33 +115,59 @@ the provided `value`.
 	- `null`
 
 ## JsonPath/Templates
-Many fields accept a JsonPath or Template string. The discriminating criteria are:
-* **JsonPath:** Starts with `$`
-* **Template:** Starts with `\$` or `/^[^$]/` (anything other than `$`)
+Many fields accept a JsonPath or Template string.
+They will be evaluated as one or the other, based on the following critiera:
+* **JsonPath:** If the string starts with `$`, the entire value will be treated as JsonPath.
+* **Template:** If the string starts with `\$` or if the first character is anything other than `$`, it will be evaluated as a Template string.
+
+You can use JsonPath to easily access JSON data content on its own, or use the Template mechanism to embed the JSON data within another string.
+
+See below for some examples. 
 
 ### JsonPath
-:::tip
-A JsonPath that selects a data structure(list or map)
-will return the data structure as serialized JSON.
-:::
 
 JsonPath allows for very flexible event data extraction.
 
 See [Path Examples](https://github.com/json-path/JsonPath#path-examples) in the JsonPath
 repo for easy examples and inspiration.
 
-### Template
-Template Strings use the Groovy "GString" expansion syntax.
+When using JsonPath, the JSON Webhook event content can be referenced with the basic JsonPath expression of `$.`.
 
-Use `${VAR}` to expand to the value of the `VAR` variable, or `${VAR.key}` to access map entries.
-
-Given this example JSON Webhook event content, it will be provided as the variable `data`:
+Given this example Webhook event content:
 
 ```json
 {"foo":"bar"}
 ```
 
-In this example, the data can be accessed in `${data}`:  
+The data can be accessed like:
+
+* `$.foo` -> evaluates to `bar`
+
+:::tip
+A JsonPath expression that evaluates to a data structure (list or map)
+will return the data structure as serialized JSON.
+:::
+
+:::tip
+If you want to embed a simple JsonPath expression within a larger string (for example, to add a prefix or suffix), you should use the [Template](#template) syntax.
+:::
+
+### Template
+Template Strings use the Groovy "GString" expansion syntax, which is designed for embedding variable values into a string.
+
+With in a Template, the JSON Webhook event content can be referenced with the variable name `data`.
+
+GString Templates use the syntax `${VAR}` to expand to the value of the `VAR` variable, or `${VAR.key}` to access map entries or fields within the `VAR` variable.
+
+Array access can be achieved with `${VAR.some.array[0]}`.
+
+Given this example Webhook event content:
+
+```json
+{"foo":"bar"}
+```
+
+The data can be accessed in `${data}`:  
 `The value is ${data.foo}` -> `The value is bar`
 
 JsonPath can also be embedded in the Template string using the `${path('$.foo')}` syntax:
