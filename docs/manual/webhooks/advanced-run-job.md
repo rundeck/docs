@@ -83,6 +83,10 @@ When more than one Condition is added to the Rule, you can select which policy t
 
 ### Match Types
 
+`equals`
+:   Satisfied if the Field _equals_ the value of
+the provided `value` string. Note: currently the selected Field will be converted to a String if it is not one, to compare it to the string `value`.
+
 `contains`
 :   Satisfied if the Field is equal to, or contains a substring equal to, the provided `value`.
 
@@ -102,9 +106,6 @@ When more than one Condition is added to the Rule, you can select which policy t
 `exists`
 :   Satisfied if the Field is non-null.
 
-`matches`
-:   Satisfied if the value at `path` _equals_ the value of
-the provided `value`.
 
 `isA`
 :   Satisfied if the *type* of the Field is one of these `values`:
