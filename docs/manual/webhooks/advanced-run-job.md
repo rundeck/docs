@@ -84,7 +84,7 @@ When more than one Condition is added to the Rule, you can select which policy t
 ### Match Types
 
 `contains`
-:   Satisfied to true if the Field is equal to, or contains a substring equal to, the provided `value`.
+:   Satisfied if the Field is equal to, or contains a substring equal to, the provided `value`.
 
 `dateTimeAfter`/`dateTimeBefore`
 :   Satisfied if the Field, parsed as a Zoned DateTime, compares with the provided DateTime.
