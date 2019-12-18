@@ -20,6 +20,8 @@ When Rundeck is started for the first time, it generates the configuration files
 
 After generation is complete, stop the process with `<Crtl+C>` keys and continue with configuration.
 
+Tip: Like the example, do not use spaces for dir paths for Rundeck. It's a known best practice on Windows.
+
 ## Folder Structure
 
 ```
