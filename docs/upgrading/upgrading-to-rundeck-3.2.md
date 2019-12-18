@@ -1,7 +1,6 @@
 # Upgrading to Rundeck 3.2
 
 
-
 ::: tip
 See other [Upgrading](/upgrading/) Documents if you are upgrading from 3.0 or earlier.
 :::
@@ -26,3 +25,19 @@ An error with this message may occur in the Rundeck console at startup:
 ... nested exception is java.lang.IllegalArgumentException: project base directory could not be created. /var/rundeck/projects
 
 ```
+
+## Webhooks
+:::tip
+Webhooks were feature flagged in `3.1.x` and disabled by default
+:::
+
+### Advanced Run Job (Enterprise)
+The [condition](/manual/webhooks/advanced-run-job.html#conditions) type `matches`
+has been renamed to `equals`. Webhooks using `Advanced Run Job` with `matches` conditions
+will need to be updated to work properly. These configurations can be updated by:
+
+- Loading the webhook in the UI, selecting `equals` on the approriate conditions, and then saving
+
+   **OR**
+
+- Updating the webhooks configuration through the [API](/api/rundeck-api.html#webhooks-incubating)

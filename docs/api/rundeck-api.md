@@ -7218,11 +7218,7 @@ Same response as [Setup SCM Plugin for a Project](#setup-scm-plugin-for-a-projec
 ]
 ```
 
-## Webhooks (incubating)
-:::danger
-Webhooks are currently incubating.
-There may be breaking API changes between releases!
-:::
+## Webhooks
 
 ### List Project Webhooks
 
