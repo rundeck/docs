@@ -1,16 +1,38 @@
 # General Upgrade Guide
 
-Updated December 16, 2019
+Updated December 18, 2019
 
 ## Rundeck War Launcher
 
 To upgrade Rundeck 3 using war launcher use the following steps:
 
-**NOTE: replace `$RDECK_BASE` below with the real path.**
+- Stop Rundeck Service:
+```sh
+$RDECK_BASE/server/sbin/rundeckd stop
+```
 
-* Stop Rundeck Service, eg: `$RDECK_BASE/server/sbin/rundeckd stop`
-* Copy the new war file to `$RDECK_BASE` and install it:
-* Start Rundeck 3: `$RDECK_BASE/server/sbin/rundeckd start`
+- In case you have customs plugins in `libext` folder, backup them. For example, you can move the full `libext`:
+```sh
+mv $RDECK_BASE/libext $RDECK_BASE/libext.3
+```
+
+- Remove previous "source" folders:
+```sh
+rm -rf $RDECK_BASE/server/lib/ $RDECK_BASE/server/sbin/ $RDECK_BASE/tools/ $RDECK_BASE/var/.install_complete-missing-ver
+```
+
+- Copy the new war file to `$RDECK_BASE` and install it:
+```sh
+java -jar rundeck-{{{rundeckVersionFull}}}.war --installonly
+```
+
+- Start Rundeck 3:
+```sh
+$RDECK_BASE/server/sbin/rundeckd start
+```
+
+- Copy the "custom" plugins back to `$RDECK_BASE/libext` folder.
+
 
 ## Rundeck DEB Package
 
@@ -72,17 +94,36 @@ rundeck.server.uuid = XXXXXXXXXXXXXXX
 $ yum upgrade rundeck 
 ```
 
-
 ## Tomcat War deployment
 
 - Stop Tomcat
-- Delete `$tomcat.base/webapps/rundeck`
-- Delete `$tomcat.base/webapps/rundeck.war`
-- Place Rundeck 3 as the old war file `$tomcat.base/webapps/rundeck.war`
+
+- In case you have customs plugins in `libext` folder, backup them. For example, you can move the full `libext`:
+```sh
+mv $rdeck.base/libext $rdeck.base/libext.3
+```
+
+- Remove old version deployment and war file:
+```sh
+rm $tomcat.base/webapps/rundeck $tomcat.base/webapps/rundeck.war
+```
+
+- Remove previous "source" content:
+```sh
+rm -rf $rdeck.base/server/lib/* $rdeck.base/var/.install_complete-missing-ver
+```
+
+- Place the new Rundeck 3 version as the old war file:
+```sh
+mv rundeck-{{{rundeckVersionFull}}}.war $tomcat.base/webapps/rundeck.war
+```
+
 - Start Tomcat
+
+- Copy the "custom" plugins back to `$rdeck.base/libext` folder.
 
 ### NOTES FOR TOMCAT:
 
 - Due to changes in authentication, `tomcat-users.xml` and other Tomcat's authentication modules no longer work, you should configure users as described in [Authenticating Users](/administration/security/authentication.md#authenticating-users).
 - If you do not have `-Drundeck.config.location` defined or configured in `$tomcat.base/bin/setenv.sh` file (`tomcat.base\bin\setenv.bat` for Windows), Rundeck will read its config file from this location: `$rdeck.base/server/config/rundeck-config.properties`.
-- You **must** define the `server.contextPath` value in `rundeck-config.properties` to properly tell Rundeck about the context path used by tomcat.  See [Installation on Tomcat](/administration/install/tomcat.md).
+- You **must** define the `server.contextPath` value in `rundeck-config.properties` to properly tell Rundeck about the context path used by tomcat. See [Installation on Tomcat](/administration/install/tomcat.md).
