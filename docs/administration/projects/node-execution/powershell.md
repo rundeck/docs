@@ -242,3 +242,16 @@ Set-NetConnectionProfile -InterfaceIndex [INTERFAZ_INDEX] -NetworkCategory Priva
 It could be necessary to change the user’s log-on in tomcat service when the remote connection does not work:
 
 ![Tomcat settings](../../../assets/img/powershell-troubleshooting.png)
+
+### Use utf-8 scripts
+
+If you need to use UTF-8 scripts from an `unix` instance to a `windows` node, powershell is unable to identify correctly 
+the encoding of UTF-8 files without bom. You can force the file to be UTF-8 with bom adding the `file-copier-add-utf8-bom` 
+property to the node:
+
+```
+<node name="windowsServer" description="Windows server node" tags="windows"
+  osArch="x86_64" osFamily="windows" osName="Windows 10" osVersion="10" 
+  hostname="192.168.56.101:5985" file-copier-add-utf8-bom="true"/>
+```
+
