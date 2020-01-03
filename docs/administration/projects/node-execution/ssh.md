@@ -571,13 +571,13 @@ environment.
 
 ### Passing environment variables through remote command
 
-To pass environment variables through remote command
-dispatches, it is required to properly configure the SSH server on the
-remote end. See the `AcceptEnv` directive in the "sshd_config(5)"
-manual page for instructions.
-
-Use a wild card pattern to permit `RD_` prefixed variables to provide
-open access to Rundeck generated environment variables.
+ - To pass environment variables through remote command
+    dispatches, it is required to properly configure the SSH server on the
+    remote end. See the `AcceptEnv` directive in the "sshd_config(5)"
+    manual page for instructions.
+    
+    Use a wild card pattern to permit `RD_` prefixed variables to provide
+    open access to Rundeck generated environment variables.
 
 Example in sshd_config:
 
@@ -585,3 +585,23 @@ Example in sshd_config:
     AcceptEnv RD_*
 
 [ssh]: https://en.wikipedia.org/wiki/Secure_Shell
+
+
+- To pass environment variables directly throught the command it self, you 
+can also make use of these node attributes to stablish the configuration by
+node
+  - ssh-variable-export-pattern : [STRING] Allows to explictly set the export 
+  sintaxis.
+  - ssh-variable-export-separator : [STRING] Allows to use a different separator
+ than default one (;).
+  - ssh-variable-export-exclude-nodes : [true,false] Allows to exclude the 
+  export of node attributes.
+
+Example node configuration:
+
+    # rundeck node definition
+    <node name="remote-example-linux-node"
+    ssh-variable-export-pattern="export {key}='{value}'"
+    ssh-variable-export-separator=";"
+    ssh-variable-export-exclude-nodes="true"/>
+    
