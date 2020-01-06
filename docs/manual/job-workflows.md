@@ -251,6 +251,32 @@ Node context variables:
 - `node.os-*`: OS properties of the Node: `name`,`version`,`arch`,`family`
 - `node.*`: All Node attributes defined on the Node.
 
+Execution context variables:
+
+The execution data is included as a Map called execution containing the following keys and values:
+
+- `execution.id`: ID of the execution
+- `execution.href`: URL to the execution output view
+- `execution.status`: Execution state ('running','failed','aborted','succeeded')
+- `execution.user`: User who started the job
+- `execution.dateStarted`: Start time (java.util.Date)
+- `execution.dateStartedUnixtime`: Start time as milliseconds since epoch (long)
+- `execution.dateStartedW3c`: Start time as a W3C formatted String
+- `execution.description`: Summary string for the execution
+- `execution.argstring`: Argument string for any job options
+- `execution.project`: Project name
+- `execution.loglevel`: Loglevel string ('ERROR','WARN','INFO','VERBOSE','DEBUG')
+The following values may be available after the job is finished (not available for onstart trigger):
+- `execution.failedNodeListString`: Comma-separated list of any nodes that failed, if present
+- `execution.failedNodeList`: Java List of any node names that failed, if present
+- `execution.succeededNodeListString`: Comma-separated list of any nodes that succeeded, if present
+- `execution.succeededNodeList`: Java List of any node names that succeeded, if present
+- `execution.nodestatus`: Java Map containing summary counts of node success/failure/total, in the form: [succeeded: int, failed: int, total: int]
+- `execution.dateEnded`: End time (java.util.Date)
+- `execution.dateEndedUnixtime`: End time as milliseconds since epoch (long)
+- `execution.dateEndedW3c`: End time as W3C formatted string
+- `execution.abortedby`: User who aborted the execution
+
 Additional Error-handler context variables:
 
 - `result.reason`: A code indicating the reason the step failed
@@ -316,3 +342,4 @@ Jobs can be exported or imported in XML or Yaml format using the API or the `rd`
 
 [quartz scheduler crontrigger]: http://www.quartz-scheduler.org/api/2.2.1/org/quartz/CronTrigger.html
 [rd]: https://rundeck.github.io/rundeck-cli/
+
