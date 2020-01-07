@@ -21,9 +21,12 @@ Required values are marked with: *
 Encrypter Config (The base property name used in RD_ENCRYPTION_ or rd.encryption. ('default' is the default value)):
 
 *Master Password (Master password used to encrypt the value):
-1PwdToBindThem$
+1PwdToBindThem$ (this won't be displayed)
+*Verify Master Password (Verify master password):
+
 *Value To Encrypt (The text you want to encrypt):
-binder123
+binder123 (this won't be displayed)
+*Verify Value To Encrypt (Verify the text you want to encrypt):
 
 ==ENCRYPTED OUTPUT==
 encrypted: bbnJmDtx82/NOeUc9ahULGVAH+RdSLG5
@@ -34,9 +37,9 @@ You will take the `encrypted:` value from the ENCRYPTED OUTPUT section which wil
 
 ### Decrypting rundeck-config.properties
 
-To decrypt the encrypted properties in your rundeck-config.properties file you will need to set the environment variable `RUNDECK_PROP_DECRYPTER_PWD` with the value of your master password before starting Rundeck.
+To decrypt the encrypted properties in your rundeck-config.properties file you will need to set the java attribute `-Drd.encryption.default.password` with the value of your master password before starting Rundeck.
 
-In our example we would do: `export RUNDECK_PROP_DECRYPTER_PWD=1PwdToBindThem$`
+In our example we would add it to the java variable in `/etc/sysconfig/rundeckd` for RPM install or in `/etc/default/rundeckd` for DEB install : `RDECK_JVM_SETTINGS=-Drd.encryption.default.password=1PwdToBindThem$`
 then we would start our Rundeck Enterprise installation. After the application has completed the bootstrap process and is responding to requests, the environment variable can be unset for security purposes.
 
 ### Advanced Usage
@@ -52,9 +55,12 @@ Required values are marked with: *
 Encrypter Config (The base property name used in RD_ENCRYPTION_ or rd.encryption. ('default' is the default value)):
 STRONG
 *Master Password (Master password used to encrypt the value):
-1PwdToBindThem$
+1PwdToBindThem$ (this won't be displayed)
+*Verify Master Password (Verify master password):
+
 *Value To Encrypt (The text you want to encrypt):
-binder123
+binder123 (this won't be displayed)
+*Verify Value To Encrypt (Verify the text you want to encrypt):
 
 ==ENCRYPTED OUTPUT==
 encrypted: i67e4g3jAUML0KCh+KwmnqX9lCflThMuu6CXm++VSqU=
