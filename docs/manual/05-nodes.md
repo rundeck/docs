@@ -125,5 +125,5 @@ The example below shows that the user can't create Job for those nodes.
 
 ## Related Command line tools
 
-[rd nodes](/manual/command-line-tools/)
+[rd nodes](https://rundeck.github.io/rundeck-cli/commands/#nodes)
 ~ List nodes via the `rd` tool.
