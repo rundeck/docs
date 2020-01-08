@@ -48,6 +48,26 @@ sudo apt-get update
 sudo apt-get install rundeckpro-enterprise
 ```
 
+### Clean Install from deb repository when existing version is present
+1. First, Check for existing versions installed 
+
+```bash
+dpkg --list | grep -i rundeck
+```
+2. Then, remove existing version to perform a clean install. 
+
+```bash
+apt remove rundeck
+dpkg --purge rundeck && apt install rundeck 
+```
+
+Note: "rundeck" package may have a different names like 
+- rundeckpro-cluster - transitional package
+- rundeckpro-dr - Rundeck Pro dr
+- rundeckpro-enterprise - Rundeck
+- rundeckpro-team - Rundeck team
+- rundeck - Rundeck OSS 
+
 ### Install deb package directly
 
 Download deb package: http://download.rundeck.com/eval/ and run:
