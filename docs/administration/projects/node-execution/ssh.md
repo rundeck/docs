@@ -591,7 +591,7 @@ Example in sshd_config:
 can also make use of these node attributes to stablish the configuration by
 node
   - ssh-variable-export-pattern : [STRING] Allows to explictly set the export 
-  sintaxis, it must have {key} and {value}.
+  pattern, it must have {key} and {value}.
     - key: It is going to be replaced by the RD_ variable name
     - value: It is going to be replaced by the RD_ variable value
   - ssh-variable-export-separator : [STRING] Allows to use a different separator
