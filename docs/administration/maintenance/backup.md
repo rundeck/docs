@@ -128,3 +128,29 @@ The import process:
 
 Note that because the archive does not contain the project configuration or resource definitions, you
 will have to configure those separately for the new or updated project.
+
+
+### Export/Import keys. 
+
+- Scenario 1 : where keys are saved in filesystem 
+
+If you keep the same filesystem and you upgrade rundeck. The keys will be migrated to the the new rundeck instance. 
+
+Example "rundeck.config.properties" Includes
+bash ´´´
+rundeck.storage.provider.1.type=file
+´´´
+
+or if this line is missing the keys will be stored in your filesystem. 
+
+- Scenario 2: where keys are saved in Database. 
+
+If you perform a complete Database Dump and "rundeck-config.properties" Includes for example
+bash ´´´
+rundeck.storage.provider.1.type=db
+´´´
+You should see the same keys in the new instance of rundeck. 
+
+- Scenario 3: Keys are saved in Database and you are moving to a different database provider
+
+In this case you may need to manually create the keys in the new instance 
