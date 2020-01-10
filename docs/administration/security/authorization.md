@@ -240,7 +240,7 @@ aclpolicy:
   - Listing installed and available plugins `read`
   - Installing plugins `install`
   - Uninstalling plugins `uninstall`
-  - Full access `admin`
+  - Full access `admin`    
 
 The following table summarizes the generic and specific resources and the
 actions you can restrict in the application scope:
@@ -399,6 +399,13 @@ aclpolicy:
 - Run adhoc jobs ('run' action on 'adhoc' resources)
 - Kill adhoc jobs ('kill' action on 'adhoc' resources)
 - Any Action on Jobs (actions on 'job' resources, see below)
+- Managing Webhooks (action on a resource with the kind 'webhook')
+  - Reading `read`
+  - Creating `create`
+  - Updating `update`
+  - Deleting `delete`
+  - Full access `admin`
+  - Post to a webhook `post`
 
 The following table summarizes the generic and specific resources and the
 actions you can restrict in the project scope:
@@ -415,6 +422,12 @@ actions you can restrict in the project scope:
 | "          | "             | `refresh`    | Refresh node entry from a URL                 |
 | "          | `event`       | `read`       | Read history event information                |
 | "          | "             | `create`     | Create arbitrary history event entries        |
+| "          | `webhook`     | `admin`      | Full access                                   |
+| "          | "             | `read`       | Read access                                   |
+| "          | "             | `create`     | Create access                                 |
+| "          | "             | `update`     | Update access                                 |
+| "          | "             | `delete`     | Delete access                                 |
+| "          | "             | `post`       | Post to webhook access                        |
 
 Type Properties Actions Description
 

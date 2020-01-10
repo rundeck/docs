@@ -48,6 +48,16 @@ url you can copy to your external system as the webhook endpoint.
 When a system posts to the url it will be authenticated as the user you specify in the 
 `Webhook User` field with the roles specified by `Webhook Roles`.
 
+:::warning
+Please note that after you have created a webhook you cannot change the `Webhook User`. This field will become read only.
+:::
+
+:::tip
+If you try to specify a user that has never logged in to Rundeck before you will receive a validation error
+saying that the user cannot be found. Once you log in with the specified user one time you can specify the user
+in the webhook form.
+:::
+
 #### Updating a webhook
 
 Click on the webhook row in the `Webhooks` list. The entry will be highlighted and you
