@@ -56,6 +56,8 @@ Please note that after you have created a webhook you cannot change the `Webhook
 If you try to specify a user that has never logged in to Rundeck before you will receive a validation error
 saying that the user cannot be found. Once you log in with the specified user one time you can specify the user
 in the webhook form.
+
+Alternatively, you can create a user api token for the user you are trying to specify, and the validation error will not be triggered. 
 :::
 
 #### Updating a webhook

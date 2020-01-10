@@ -5757,6 +5757,12 @@ In APIv28 or later:
 
 * `exportScm` true/false, include project SCM configuration, if authorized
 
+In APIv34 or later:
+
+* `exportWebhooks` true/false, include project webhooks in the archive
+* `whkIncludeAuthTokens` true/false, include the auth token information when exporting webhooks, if not included the auth tokens will be regenerated upon import
+
+
 GET Examples:
 
     GET /api/11/project/AlphaProject/export?executionIds=1,4,9
@@ -5767,7 +5773,7 @@ Post:
     POST /api/11/project/AlphaProject/export
     Content-Type: application/x-www-form-urlencoded
 
-    executionIds=1&executionIds=4&executionIds=9&...
+    executionIds=1&executionIds=4&executionIds=9&...    
 
 ### Project Archive Export Async
 
@@ -5837,6 +5843,13 @@ Parameters:
 + `importConfig` (optional,boolean,`true/false`) ... If true, import the project configuration from the archive. If false, do not import the project configuration (default).
 + `importACL` (optional,boolean,`true/false`) ... If true, import all of the ACL Policies from the archive. If false, do not import the ACL Policies (default).
 + `importScm` (optional,boolean,`true/false`) ... If true, import SCM configuration from the archive. If false, do not import the SCM configuration (default).
+
+
+In APIv34 or later:
+
+* `importWebhooks` true/false, If true, import the webhooks in the archive. If false, do not import webhooks (default). 
+* `whkRegenAuthTokens` true/false, If true, always regenerate the auth tokens associated with the webhook. If false, the webhook auth token in the archive will be imported. If no auth token info was included with the webhook, it will be generated (default).   
+
 
 Expected Request Content:
 

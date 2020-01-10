@@ -1,6 +1,6 @@
 # Project Archive
 
-The content of a project, jobs, configuration, readme, motd, project ACLs and executions can be exported to an archive file. You might archive a project as a way to:
+The content of a project, jobs, configuration, readme, motd, project ACLs, executions, and webhooks can be exported to an archive file. You might archive a project as a way to:
 
 - transfer project content from one Rundeck instance to another
 - add a collection of boiler plate project content when provisioning new projects
