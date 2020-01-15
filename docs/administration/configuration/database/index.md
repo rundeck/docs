@@ -13,7 +13,7 @@ It is convenient to have an embedded database when you are just trying Rundeck o
 
 Don't use the H2 embedded database for anything except testing and non-production.
 
-Use an external database service like Mariadb, Mysql, Posgres or Oracle.
+Use an external database service like Mariadb, Mysql, Postgres or Oracle.
 
 ### Customize the Datasource
 
