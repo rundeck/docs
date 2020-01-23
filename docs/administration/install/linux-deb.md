@@ -20,6 +20,25 @@ sudo apt-get update
 sudo apt-get install rundeck
 ```
 
+Note: When rundeck repository is configured in your system and you install a new fresh rundeck[pro*], you will be asked to install OpenJDK 11 (which is not supported with rundeck). It's recommended to :
+
+1. Install Java 1.8 .
+
+2. Verify java 1.8 version is installed
+
+Example 
+```bash
+java -version
+openjdk version "1.8.0_242"
+OpenJDK Runtime Environment (AdoptOpenJDK)(build 1.8.0_242-b08)
+OpenJDK 64-Bit Server VM (AdoptOpenJDK)(build 25.242-b08, mixed mode)
+```
+
+3. Install Rundeck 
+```bash
+sudo apt-get install rundeck
+```
+
 ### Install deb package directly
 
 Download deb package: http://rundeck.org/download/deb/ and run:
