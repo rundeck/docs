@@ -9,8 +9,6 @@ Name: <span style="color: red"><span class="glyphicon glyphicon-tower"></span> "
 
 [Milestone 3.1.5](https://github.com/rundeck/rundeck/milestone/134)
 
-* [Sync build setup from master](https://github.com/rundeck/rundeck/pull/5741)
-* [Switch to https for dep repos (bp #5713)](https://github.com/rundeck/rundeck/pull/5728)
 * [Upgrade snakeyaml (bp #5703)](https://github.com/rundeck/rundeck/pull/5726)
 * [scm git plugin: close repo and delete using recursive flag on cleanup (bp #5688)](https://github.com/rundeck/rundeck/pull/5724)
 * [Allow valid unicode characters in user first and last name fields (bp #5705)](https://github.com/rundeck/rundeck/pull/5718)
