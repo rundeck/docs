@@ -9,10 +9,10 @@ Create a database on your backend, plus a user (and assign it the db_owner role)
 In %RDECK_BASE%\\server\\config\\rundeck-config.properties, set the following:
 
 ```
-    rundeck.projectsStorageType=db
-    dataSource.dbCreate = update
-    dataSource.driverClassName = com.microsoft.sqlserver.jdbc.SQLServerDriver
-    dataSource.url = jdbc:sqlserver://myserver;DatabaseName=RUNDECK
-    dataSource.username = myusername
-    dataSource.password = mypassword
+rundeck.projectsStorageType=db
+dataSource.dbCreate = update
+dataSource.driverClassName = com.microsoft.sqlserver.jdbc.SQLServerDriver
+dataSource.url = jdbc:sqlserver://myserver;DatabaseName=RUNDECK
+dataSource.username = myusername
+dataSource.password = mypassword
 ```
