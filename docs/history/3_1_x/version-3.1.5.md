@@ -1,5 +1,3 @@
-## Notes
-
 # Release 3.1.5
 
 Name: <span style="color: red"><span class="glyphicon glyphicon-tower"></span> "mozzarella stick red tower"</span>
