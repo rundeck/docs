@@ -10,9 +10,14 @@ See [Upgrading to Rundeck 3.2](/upgrading/upgrading-to-rundeck-3.2.html).
 
 [Milestone 3.2.2](https://github.com/rundeck/rundeck/milestone/133)
 
+* [Fixes #5761 by adding scheduled true to the dynamic finder.](https://github.com/rundeck/rundeck/pull/5769)
+* [Fix wrong job scheduled status message in jobs list](https://github.com/rundeck/rundeck/pull/5764)
+* [Add underscore to project description regex.](https://github.com/rundeck/rundeck/pull/5755)
+* [Fix #5753 - An error message needs to be shown on GUI when deleting the project returns an error](https://github.com/rundeck/rundeck/pull/5754)
 * [Fixes Activity Filter Doesn't Save in Search Modal](https://github.com/rundeck/rundeck/pull/5752)
 * [Fixing a n+1 issue removing a code that accessed the list of executions and was making a query for each one. ](https://github.com/rundeck/rundeck/pull/5749)
 * [Fix for problem validating remote url options using other options values. 5733](https://github.com/rundeck/rundeck/pull/5748)
+* [Fix #5721 by setting the form name to the correct value for the avg duration url.](https://github.com/rundeck/rundeck/pull/5742)
 * [ Changing the mechanism that loads the plugins into memory to consider the type of the plugin in addition to its name](https://github.com/rundeck/rundeck/pull/5737)
 * [JobsAjax causing Rundeck to become unresponsive](https://github.com/rundeck/rundeck/issues/5735)
 * [Enforced from Allowed Values fails  when option value is used in Remote URL (persists)](https://github.com/rundeck/rundeck/issues/5733)
