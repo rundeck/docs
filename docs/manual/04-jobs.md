@@ -205,3 +205,10 @@ When prompted "Really kill this job?" Click the "Yes" button.
 The Job will terminate with a "Killed" completion status.
 
 ![Job definition](~@assets/img/fig0319-d.png)
+
+
+## Note about Opening Multiple Tabs in the Browser 
+
+Inconsistencies and data loss using multiples tabs have been reported. 
+
+This is a limitation in the GUI caused by the componentes used in Rundeck GUI (ajax,javascript). Is not recommended to open/use multiples tabs to edit jobs /projects. This may lead to data loss and unexpected behaviour.
