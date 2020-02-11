@@ -147,6 +147,7 @@ This will enable Jetty to respond correctly when a forwarded request is first re
 **Note:** You will still need to modify the `grails.serverURL` value in [rundeck-config.properties](/administration/configuration/config-file-reference.md#rundeck-config.properties) to let Rundeck know how to properly generate absolute URLs.
 
 ## Disabling SSL Protocols
+### Rundeck 2
 
 You can disable SSL protocols or cipher suites using these JVM variables:
 
@@ -167,15 +168,35 @@ When starting up the Jetty container will log a list of the disabled protocols:
 
 To see the list of enabled Cipher Suites, turn on DEBUG level logging for Jetty SSL utils: `-Dorg.eclipse.jetty.util.ssl.LEVEL=DEBUG`.
 
+### Rundeck 3
+
+Rundeck 3 by default uses TLSv1.2. To enable other protocols like TLSv1 it is necessary to re-enable it and also the ciphers
+the connection will need.
+
+#### Example for enabling TLSv1 in Rundeck 3 using JVM
+
+Use -Dserver.ssl.enabledProtocols to enable the protocol TLSv1
+`-Dserver.ssl.enabledProtocols=TLSv1`
+
+Use -Dserver.ssl.ciphers to enable the necesarry Ciphers
+`-Dserver.ssl.ciphers=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA"`
+
+Note: The necesarry Ciphers for a Rundeck TLSv1 connection are 
+##### TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA and TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA
 
 
+#### Example for enabling TLSv1 in Rundeck 3 exporting the flags to the rundeckd file
 
+### Check if the connection is successfull
+Run this command from a linux prompt:
+`#openssl s_client -connect 192.168.43.233:4443`
+Example output:
 
 
 
 ## Rundeck 3 SSL Configuration with Tomcat Servlet
 
-#### Create a Keystore file
+#### Create a Keystore file-Dserver.ssl.ciphers=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA"
 
 From Linux Prompt:
 
