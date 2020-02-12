@@ -150,20 +150,22 @@ This will enable Jetty to respond correctly when a forwarded request is first re
 
 ### Rundeck 3
 
-Rundeck 3 by default uses TLSv1.2. To enable other protocols it is necessary to re-enable them and also the ciphers
-the connection will need.
+Rundeck 3 by default uses TLSv1.2. To use other protocols, it's necessary to enable them and Ciphers needed for the connection.
 
 #### Flags for enabling TLS Protocols in Rundeck 3 using JVM
 https://github.com/cwaltherf/docs/blob/patch-2/docs/administration/security/ssl.md
 Use -Dserver.ssl.enabledProtocols to enable the protocol
+
 `-Dserver.ssl.enabledProtocols=YourProtocols`
 
 #### Flags for enabling Ciphers in Rundeck 3 using JVM
 Use -Dserver.ssl.ciphers to enable the Ciphers
+
 `-Dserver.ssl.ciphers=YourCiphers`
 
 #### For .RPM and .DEB Systems
 Edit /etc/sysconfig/rundeckd (for .RMP) or /etc/default/rundeckd (for .DEB) and add the flags
+
 `RDECK_JVM_OPTS="-Dserver.ssl.enabledProtocols=YourProtocols -Dserver.ssl.ciphers=YourCiphers`
 
 
