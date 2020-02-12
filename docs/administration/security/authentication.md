@@ -585,7 +585,7 @@ c:\>  openssl s_client -connect ldaps_server.example:63 > C:\rundeck\certs.out
 ```bash
 c:\> keytool -importcert -file "C:\rundeck\certs.out" -storepass changeit -keystore "C:\Program Files\Java\jre1.8.0_xxx\lib\security\cacerts" -alias host_ext
 ```
-3. Import in rundeck ( Optional if using SSL with rundeck)
+3. Import in rundeck (Optional if using Rundeck with SSL)
 ```bash
 c:\> keytool -importcert -file "C:\rundeck\certs.out" -storepass adminadmin -keystore "C:\rundeck\etc\truststore" -alias ldapsserver
 ```
