@@ -181,17 +181,42 @@ Use -Dserver.ssl.enabledProtocols to enable the protocol TLSv1
 Use -Dserver.ssl.ciphers to enable the necesarry Ciphers
 `-Dserver.ssl.ciphers=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA"`
 
-Note: The necesarry Ciphers for a Rundeck TLSv1 connection are 
-##### TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA and TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA
-
+Note: The Ciphers for a Rundeck TLSv1 connection are 
+ TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA and TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA
 
 #### Example for enabling TLSv1 in Rundeck 3 exporting the flags to the rundeckd file
+Add these flags with the protocol and it's Ciphers to your rundeckd file:
+/etc/sysconfig/rundeckd for .RPM systems and /etc/default/rundeckd fro .DEB systems
+`RDECK_JVM_OPTS="-Dserver.ssl.enabledProtocols=TLSv1 -Dserver.ssl.ciphers=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA"`
 
-### Check if the connection is successfull
+### Check if the connection is successfully
 Run this command from a linux prompt:
-`#openssl s_client -connect 192.168.43.233:4443`
-Example output:
 
+`#openssl s_client -connect 192.168.43.233:4443`
+
+Example output:
+`SSL handshake has read 1359 bytes and written 439 bytes`
+
+`New, TLSv1/SSLv3, Cipher is ECDHE-RSA-AES128-SHA
+Server public key is 2048 bit
+Secure Renegotiation IS supported
+Compression: NONE
+Expansion: NONE
+No ALPN negotiated
+SSL-Session:
+    Protocol  : TLSv1
+    Cipher    : ECDHE-RSA-AES128-SHA
+    Session-ID: 5E443B400D0D89F1665E451EDCDFF367BC702D008B7ED91FD34C23CF771D29A6
+    Session-ID-ctx: 
+    Master-Key: 0D4E01C9B6B1BD6425CDB718B58B4C1197AEB02DB3E048981EB1FAA13772F8E22257BC10CBAA47FDE676597A7CADA5C1
+    Key-Arg   : None
+    PSK identity: None
+    PSK identity hint: None
+    SRP username: None
+    Start Time: 1581529920
+    Timeout   : 300 (sec)
+    Verify return code: 18 (self signed certificate)
+`
 
 
 ## Rundeck 3 SSL Configuration with Tomcat Servlet
