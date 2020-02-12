@@ -147,47 +147,19 @@ This will enable Jetty to respond correctly when a forwarded request is first re
 **Note:** You will still need to modify the `grails.serverURL` value in [rundeck-config.properties](/administration/configuration/config-file-reference.md#rundeck-config.properties) to let Rundeck know how to properly generate absolute URLs.
 
 ## Disabling SSL Protocols
-### Rundeck 2
-
-You can disable SSL protocols or cipher suites using these JVM variables:
-
-- `rundeck.jetty.connector.ssl.includedProtocols` set to a comma-separated list of SSL protocols to enable. Default will be based on the available protocols.
-- `rundeck.jetty.connector.ssl.excludedProtocols` set to a comma-separated list of SSL protocols to disable. Default value: 'SSLv3'
-- `rundeck.jetty.connector.ssl.includedCipherSuites` set to a comma-separated list of Cipher suites to enable. Default will be based on the available cipher suites.
-- `rundeck.jetty.connector.ssl.excludedCipherSuites` set to a comma-separated list of Cipher suites to disable. No default value.
-
-The `included` settings determine what protocols or cipher suites are enabled, and the `excluded` settings then remove values from that list.
-
-E.g. modify the `RDECK_JVM` variable in the file `/etc/rundeck/profile` and add:
-
-    -Drundeck.jetty.connector.ssl.excludedProtocols=SSLv3,SSLv2Hello
-
-When starting up the Jetty container will log a list of the disabled protocols:
-
-    2014-10-27 11:08:41.225:INFO:oejus.SslContextFactory:Enabled Protocols [SSLv2Hello, TLSv1] of [SSLv2Hello, SSLv3, TLSv1]
-
-To see the list of enabled Cipher Suites, turn on DEBUG level logging for Jetty SSL utils: `-Dorg.eclipse.jetty.util.ssl.LEVEL=DEBUG`.
 
 ### Rundeck 3
 
-Rundeck 3 by default uses TLSv1.2. To enable other protocols like TLSv1 it is necessary to re-enable it and also the ciphers
+Rundeck 3 by default uses TLSv1.2. To enable other protocols it is necessary to re-enable it and also the ciphers
 the connection will need.
 
 #### Example for enabling TLSv1 in Rundeck 3 using JVM
 
-Use -Dserver.ssl.enabledProtocols to enable the protocol TLSv1
-`-Dserver.ssl.enabledProtocols=TLSv1`
+Use -Dserver.ssl.enabledProtocols to enable the protocol
+`-Dserver.ssl.enabledProtocols`
 
-Use -Dserver.ssl.ciphers to enable the necesarry Ciphers
-`-Dserver.ssl.ciphers=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA"`
-
-Note: The Ciphers for a Rundeck TLSv1 connection are 
- TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA and TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA
-
-#### Example for enabling TLSv1 in Rundeck 3 exporting the flags to the rundeckd file
-Add these flags with the protocol and it's Ciphers to your rundeckd file:
-/etc/sysconfig/rundeckd for .RPM systems and /etc/default/rundeckd fro .DEB systems
-`RDECK_JVM_OPTS="-Dserver.ssl.enabledProtocols=TLSv1 -Dserver.ssl.ciphers=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA"`
+Use -Dserver.ssl.ciphers to enable the Ciphers
+`-Dserver.ssl.ciphers`
 
 ### Check if the connection is successfully
 Run this command from a linux prompt:
