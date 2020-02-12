@@ -67,7 +67,7 @@ Set them to the appropriate https protocol, and change the port to 4443, or to t
 
 Set the URL to include the appropriate https protocol, and change the port to 4443, or to the value of your `-Dserver.https.port` runtime configuration property.
 
-(7) For Debian installation, create/edit `/etc/default/rundeckd`, for RPM inshttps://github.com/rundeck/docs/pull/428/commits/fa10369f7dd33b173510a7ed82ff1a432d29adc1tallation, create/edit `/etc/sysconfig/rundeckd`:
+(7) For Debian installation, create/edit `/etc/default/rundeckd`, for RPM installation, create/edit `/etc/sysconfig/rundeckd`:
 
         export RUNDECK_WITH_SSL=true
         export RDECK_HTTPS_PORT=1234
