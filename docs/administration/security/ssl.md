@@ -67,7 +67,7 @@ Set them to the appropriate https protocol, and change the port to 4443, or to t
 
 Set the URL to include the appropriate https protocol, and change the port to 4443, or to the value of your `-Dserver.https.port` runtime configuration property.
 
-(7) For Debian installation, create/edit `/etc/default/rundeckd`, for RPM installation, create/edit `/etc/sysconfig/rundeckd`:
+(7) For Debian installation, create/edit `/etc/default/rundeckd`, for RPM inshttps://github.com/rundeck/docs/pull/428/commits/fa10369f7dd33b173510a7ed82ff1a432d29adc1tallation, create/edit `/etc/sysconfig/rundeckd`:
 
         export RUNDECK_WITH_SSL=true
         export RDECK_HTTPS_PORT=1234
@@ -153,7 +153,7 @@ This will enable Jetty to respond correctly when a forwarded request is first re
 Rundeck 3 by default uses TLSv1.2. To use other protocols, it's necessary to enable them and Ciphers needed for the connection.
 
 #### Flags for enabling TLS Protocols in Rundeck 3 using JVM
-https://github.com/cwaltherf/docs/blob/patch-2/docs/administration/security/ssl.md
+
 Use -Dserver.ssl.enabledProtocols to enable the protocol
 
 `-Dserver.ssl.enabledProtocols=YourProtocols`
@@ -200,7 +200,7 @@ SSL-Session:
 
 ## Rundeck 3 SSL Configuration with Tomcat Servlet
 
-#### Create a Keystore file-Dserver.ssl.ciphers=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA"
+#### Create a Keystore file
 
 From Linux Prompt:
 
