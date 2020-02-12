@@ -18,7 +18,7 @@ mv $RDECK_BASE/libext $RDECK_BASE/libext.3
 
 - Remove previous "source" folders:
 ```sh
-rm -rf $RDECK_BASE/server/lib/ $RDECK_BASE/server/sbin/ $RDECK_BASE/tools/ $RDECK_BASE/var/.install_complete-missing-ver
+rm -rf $RDECK_BASE/server/lib/rundeck-core*jar $RDECK_BASE/server/sbin/ $RDECK_BASE/tools/ $RDECK_BASE/var/.install_complete-missing-ver
 ```
 
 - Copy the new war file to `$RDECK_BASE` and install it:
@@ -110,7 +110,7 @@ rm $tomcat.base/webapps/rundeck $tomcat.base/webapps/rundeck.war
 
 - Remove previous "source" content:
 ```sh
-rm -rf $rdeck.base/server/lib/* $rdeck.base/var/.install_complete-missing-ver
+rm -rf $rdeck.base/server/lib/rundeck-core* $rdeck.base/var/.install_complete-missing-ver
 ```
 
 - Place the new Rundeck 3 version as the old war file:
