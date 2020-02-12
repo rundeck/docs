@@ -150,21 +150,27 @@ This will enable Jetty to respond correctly when a forwarded request is first re
 
 ### Rundeck 3
 
-Rundeck 3 by default uses TLSv1.2. To enable other protocols it is necessary to re-enable it and also the ciphers
+Rundeck 3 by default uses TLSv1.2. To enable other protocols it is necessary to re-enable them and also the ciphers
 the connection will need.
 
-#### Example for enabling TLSv1 in Rundeck 3 using JVM
+#### Flags for enabling TLS Protocols in Rundeck 3 using JVM
 
 Use -Dserver.ssl.enabledProtocols to enable the protocol
-`-Dserver.ssl.enabledProtocols`
+`-Dserver.ssl.enabledProtocols=YourProtocols`
 
+#### Flags for enabling Ciphers in Rundeck 3 using JVM
 Use -Dserver.ssl.ciphers to enable the Ciphers
-`-Dserver.ssl.ciphers`
+`-Dserver.ssl.ciphers=YourCiphers`
+
+#### For .RPM and .DEB Systems
+Edit /etc/sysconfig/rundeckd (for .RMP) or /etc/default/rundeckd (for .DEB) and add the flags
+`RDECK_JVM_OPTS="-Dserver.ssl.enabledProtocols=YourProtocols -Dserver.ssl.ciphers=YourCiphers`
+
 
 ### Check if the connection is successfully
 Run this command from a linux prompt:
 
-`#openssl s_client -connect 192.168.43.233:4443`
+`#openssl s_client -connect HOST:PORT`
 
 Example output:
 `SSL handshake has read 1359 bytes and written 439 bytes`
@@ -188,8 +194,6 @@ SSL-Session:
     Start Time: 1581529920
     Timeout   : 300 (sec)
     Verify return code: 18 (self signed certificate)
-`
-
 
 ## Rundeck 3 SSL Configuration with Tomcat Servlet
 
