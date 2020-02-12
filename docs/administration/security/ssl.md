@@ -154,7 +154,7 @@ Rundeck 3 by default uses TLSv1.2. To enable other protocols it is necessary to 
 the connection will need.
 
 #### Flags for enabling TLS Protocols in Rundeck 3 using JVM
-
+https://github.com/cwaltherf/docs/blob/patch-2/docs/administration/security/ssl.md
 Use -Dserver.ssl.enabledProtocols to enable the protocol
 `-Dserver.ssl.enabledProtocols=YourProtocols`
 
@@ -168,14 +168,14 @@ Edit /etc/sysconfig/rundeckd (for .RMP) or /etc/default/rundeckd (for .DEB) and 
 
 
 ### Check if the connection is successfully
-Run this command from a linux prompt:
+Run this command from a terminal:
 
-`#openssl s_client -connect HOST:PORT`
+`openssl s_client -connect HOST:PORT`
 
 Example output:
-`SSL handshake has read 1359 bytes and written 439 bytes`
-
-`New, TLSv1/SSLv3, Cipher is ECDHE-RSA-AES128-SHA
+```
+SSL handshake has read 1359 bytes and written 439 bytes`
+New, TLSv1/SSLv3, Cipher is ECDHE-RSA-AES128-SHA
 Server public key is 2048 bit
 Secure Renegotiation IS supported
 Compression: NONE
@@ -194,6 +194,7 @@ SSL-Session:
     Start Time: 1581529920
     Timeout   : 300 (sec)
     Verify return code: 18 (self signed certificate)
+```
 
 ## Rundeck 3 SSL Configuration with Tomcat Servlet
 
