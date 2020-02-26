@@ -462,6 +462,12 @@ two choices: "anviles:stop" and "anvils:stop --force". No other choices can be m
 
 ![Restart run page](~@assets/img/fig0608.png)
 
+
+### Using Multiple tabs in the browser 
+
+Some customers have reported having unexpected issues when using multiples tabs . 
+Example of unexpected behaviour includes missing saved options and workflow in the jobs. It's suggested to use a single tab when editing a job. 
+
 ### Job run with the CLI
 
 The jobs can also be started from the command line using the
@@ -483,8 +489,4 @@ Run Restart specifying the method, "force":
 run -j "web/Restart" -p anvils -- -method force
 ```
 
-## Using Multiple tabs in the browser 
-
-Some customers have reported having unexpected issues when using multiples tabs . 
-Example of unexpected behaviour includes missing saved options and workflow in the jobs. It's suggested to use a single tab when editing a job. 
 
