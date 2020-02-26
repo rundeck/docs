@@ -47,6 +47,10 @@ module.exports = [{
     text: 'Webhooks'
   },
   {
+    link: '/manual/13-calendars',
+    text: 'Calendars'
+  },
+  {
     link: '/manual/document-format-reference/index',
     text: 'Document Formats'
   }

@@ -52,6 +52,17 @@ module.exports = [{
       ]
     },
     {
+      title: 'Calendars (Enterprise)',
+      collapsable: true,
+      sidebarDepth: 1,
+      children: [
+        '/manual/13-calendars.md',
+        '/manual/calendars/system-calendars.md',
+        '/manual/calendars/project-calendars.md',
+        '/manual/calendars/import-export.md'
+      ]
+    },
+    {
       title: 'Document Formats',
       collapsable: true,
       sidebarDepth: 0,

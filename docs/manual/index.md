@@ -21,3 +21,4 @@ For information about Rundeck Administration, see the [Administrator Guide](/adm
 - [User](/manual/10-user.md)
 - [Node Filters](/manual/11-node-filters.md)
 - [Webhooks](/manual/12-webhooks.md)
+- [Calendars](/manual/13-calendars.md)
