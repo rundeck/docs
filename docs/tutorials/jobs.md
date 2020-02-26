@@ -482,3 +482,9 @@ Run Restart specifying the method, "force":
 ```bash
 run -j "web/Restart" -p anvils -- -method force
 ```
+
+## Using Multiple tabs in the browser 
+
+Some customers have reported having unexpected issues when using multiples tabs . 
+Example of unexpected behaviour includes missing saved options and workflow in the jobs. It's suggested to use a single tab when editing a job. 
+
