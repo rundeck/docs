@@ -57,6 +57,10 @@ View the [Index](#index) listing API paths.
 
 Changes introduced by API Version number:
 
+**Version 35**:
+* Updated Response:
+    - [`PUT /api/V/project/[PROJECT]/import`][/api/V/project/\[PROJECT\]/import] - More validation and error message results added.
+
 **Version 34**:
 * New Endpoints:
     - [`GET /api/V/job/[ID]/workflow`][/api/V/job/\[ID\]/workflow] - Get the job workflow tree
@@ -5895,6 +5899,9 @@ Response will indicate whether the imported contents had any errors:
         <error>file.aclpolicy could not be validated: ...</error>
         <error>file2.aclpolicy could not be validated: ...</error>
     </aclErrors>
+    <otherErrors count="[#]"><!-- since API v35 -->
+        <error>webhooks could not be validated: ...</error>
+    </otherErrors>
 </import>
 ```
 
@@ -5914,9 +5921,14 @@ Response will indicate whether the imported contents had any errors:
     "acl_errors": [
         "file.aclpolicy could not be validated: ...",
         "file2.aclpolicy could not be validated: ..."
+    ],
+    "other_errors": [
+        "webhooks could not be validated: ..."
     ]
 }
 ```
+
+* `other_errors` included since *API v35*
 
 ### Updating and Listing Resources for a Project
 
