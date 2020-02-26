@@ -579,7 +579,7 @@ Finally, in your `ldap-activedirectory.conf` be sure to change the _providerUrl_
 ### Communicating over secure ldap using Windows(ldaps://)
 1. Download certificate from remote site 
 ```bash
-c:\>  openssl s_client -connect ldaps_server.example:686 > C:\rundeck\certs.out
+c:\>  openssl s_client -connect ldaps_server.example:636 > C:\rundeck\certs.out
 ```
 2. Import the file to keystore in Java home  . 
 ```bash
