@@ -119,6 +119,11 @@ The `tokens.properties` file should contain static authentication tokens you wis
     username2: token_string2
     ...
 
+or include roles
+
+    username: token_string,role1,role2
+    ...
+
 The token_strings can be used as Authentication tokens to the [API](/api/rundeck-api.md#token-authentication).
 
 ### Global execution variables
