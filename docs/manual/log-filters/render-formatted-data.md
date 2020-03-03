@@ -36,7 +36,7 @@ ViewConverter plugins.
 
 For example, you can emit JSON data, and prefix it with:
 
-    echo #BEGIN:RUNDECK:DATATYPE:application/json
+    echo "#BEGIN:RUNDECK:DATATYPE:application/json"
 
 Then emit json data (only)
 
@@ -44,7 +44,7 @@ Then emit json data (only)
 
 Then END the datatype:
 
-    echo #END:RUNDECK:DATATYPE
+    echo "#END:RUNDECK:DATATYPE"
 
 The log output will then capture all of the JSON data in a single
 log event, and mark it as `application/json` data type.
