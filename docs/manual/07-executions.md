@@ -196,7 +196,7 @@ It will be entered in the workflow portion of the job edit form as shown below.
 
 ![Command step in the Job form](~@assets/img/fig0814.png)
 
-### Edit the job
+### Edit the job (test)
 
 Press the Action menu button and choose "Edit this Job.." to open the job definition in the Job editor.
 
