@@ -67,3 +67,90 @@ Authentication Options
 - **Username**: Login Username
 - **Password**: Username Password
 - **Ignore SSL certificate**: Connecting with the server ignoring the SSL certificate. If this is false, you will need to add the certificate to the truststore ([see here](/administration/projects/resource-model-sources/vmware.md#connecting-using-certificate]).
+
+
+## VMWare / VM / Clone / Template
+Clone VM from template Workflow Step.
+This workflow step plugin clones VMs from existing template.
+
+Configuration
+
+- **Template VM Name**: Template Name that will be clone
+- **VM Name**: Destination VM Name
+- **Hostname**: Vm Hostname
+- **DataCenter**: DataCenter Name. If the DataCenter is not set, the VM will be searching on the root folder
+- **DataStore Name**: (Optional) If DataStore, it will take one from the host
+- **Memory Size (MB)**: Memory Size of the new VM
+- **Number CPU**: Number CPU of the new VM
+- **Disk Size (MB)**: Size of the new disk (MB)
+
+Network Settings
+- **IP**: Fixed IP
+- **Gateway**: Fixed Gateway
+- **Subnet Mask**: Subnet Mask
+- **DNS Server**: DNS Server list, comma separated
+
+Windows / will be applied to windows templates
+- **Fullname**: Windows Full name
+- **OrgName**: Organisation Name
+- **ProductID**: Windows Product ID
+- **Workgroup**: Windows Workgroup
+- **Domain**: Domain Name
+- **Domain User**: Domain User (Domain admin to register the machine on the domain)
+- **Admin Password**: Domain User Password
+- **TimeZone**: Time Zone ID ([list time zones ID](https://www.vmware.com/support/developer/windowstoolkit/wintk40u1/html/New-OSCustomizationSpec.html))
+- **Gui Run Once**: Run Script when the machine is customized 
+
+
+Linux / will be applied to linux templates
+- **Domain**: Domain Name
+- **TimeZone**: Time Zone Name, eg: America/Los_Angeles
+- **hwClockUTC**: Enable hwClockUTC
+
+Authentication Options
+
+- **URL Server**: URL of the Server, eg: https://vmware-server
+- **Username**: Login Username
+- **Password**: Username Password
+- **Ignore SSL certificate**: Connecting with the server ignoring the SSL certificate. If this is false, you will need to add the certificate to the truststore ([see here](/administration/projects/resource-model-sources/vmware.md#connecting-using-certificate]).
+
+
+## VMWare / VM / Customize 
+Customize a VM.
+This workflow step plugin allows you to customize some parameters from a VM, for example set the IP address.
+
+Configuration
+
+- **VM Name**: Destination VM Name
+- **Hostname**: Vm Hostname
+- **DataCenter**: DataCenter Name. If the DataCenter is not set, the VM will be searching on the root folder
+
+Network Settings
+- **IP**: Fixed IP
+- **Gateway**: Fixed Gateway
+- **Subnet Mask**: Subnet Mask
+- **DNS Server**: DNS Server list, comma separated
+
+Windows / will be applied to windows templates
+- **Fullname**: Windows Full name
+- **OrgName**: Organisation Name
+- **ProductID**: Windows Product ID
+- **Workgroup**: Windows Workgroup
+- **Domain**: Domain Name
+- **Domain User**: Domain User (Domain admin to register the machine on the domain)
+- **Admin Password**: Domain User Password
+- **TimeZone**: Time Zone ID ([list time zones ID](https://www.vmware.com/support/developer/windowstoolkit/wintk40u1/html/New-OSCustomizationSpec.html))
+- **Gui Run Once**: Run Script when the machine is customized 
+
+
+Linux / will be applied to linux templates
+- **Domain**: Domain Name
+- **TimeZone**: Time Zone Name, eg: America/Los_Angeles
+- **hwClockUTC**: Enable hwClockUTC
+
+Authentication Options
+
+- **URL Server**: URL of the Server, eg: https://vmware-server
+- **Username**: Login Username
+- **Password**: Username Password
+- **Ignore SSL certificate**: Connecting with the server ignoring the SSL certificate. If this is false, you will need to add the certificate to the truststore ([see here](/administration/projects/resource-model-sources/vmware.md#connecting-using-certificate]).
