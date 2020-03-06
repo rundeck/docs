@@ -16,7 +16,8 @@ module.exports = [{
         '/manual/job-workflows',
         '/manual/job-options',
         '/manual/job-plugins',
-        '/manual/execution-lifecycle/job-resume.md'
+        '/manual/execution-lifecycle/job-resume.md',
+        '/manual/execution-lifecycle/job-restart-failed-nodes.md',
       ]
     },
     {
