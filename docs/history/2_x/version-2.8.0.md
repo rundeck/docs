@@ -20,15 +20,15 @@ Import Changes:
 
 New Features:
 
-- Jobs Options now have a [File input type](/manual/04-jobs.md#file-option-type].
+- Jobs Options now have a [File input type](/manual/04-jobs.md#file-option-type).
   _ Uploaded files are stored temporarily on the server while the execution runs
   _ [API support](/api/rundeck-api.md#upload-a-file-for-a-job-option)
 - API Token Roles
   _ API Tokens now have associated Roles and Expiration date.
-  _ [Access Control](/administration/security/authorization.md#api-token-authorization-roles]:
+  _ [Access Control](/administration/security/authorization.md#api-token-authorization-roles):
   _ Authorized users can generate a token with their own roles.
   _ Authorized users can specify other access roles.
-  _ [Admins can specify maximum token lifetime](/administration/configuration/config-file-reference.md#security].
+  _ [Admins can specify maximum token lifetime](/administration/configuration/config-file-reference.md#security).
   _ [API support](/api/rundeck-api.md#authentication-tokens)
 - Job editor autocomplete supports global variables
 - Project configuration for displaying Readme/Motd on Projects List or Project Home page
@@ -44,7 +44,7 @@ New Features:
 Other changes:
 
 - [Optional `Referer` Header verification for CSRF attack prevention](/administration/configuration/config-file-reference.md#security)
-- Plugin properties support [`Options` multivalue type](/developer/01-plugin-development.md#plugin-properties] and [java annotations](http://rundeck.org/docs/developer/plugin-annotations.html#plugin-properties)
+- Plugin properties support [`Options` multivalue type](/developer/01-plugin-development.md#plugin-properties) and [java annotations](http://rundeck.org/docs/developer/plugin-annotations.html#plugin-properties)
 
 Bugfixes:
 

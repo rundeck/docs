@@ -251,7 +251,7 @@ function loadHtmlTemplate(file){
 
 The `rundeckPage.pluginBasei18nUrl(..)` method will return the base URL for loading i18n resources.
 
-Rundeck Plugin Localization/Internationalization uses java `.properties` formatted files. (See [Plugin Localization](/developer/01-plugin-development.md#plugin-localization]). However, your i18n resources don't have to be `.properties` files.
+Rundeck Plugin Localization/Internationalization uses java `.properties` formatted files. (See [Plugin Localization](/developer/01-plugin-development.md#plugin-localization)). However, your i18n resources don't have to be `.properties` files.
 
 Requesting resources via this URL provides two features to help with i18n:
 

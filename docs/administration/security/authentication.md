@@ -218,7 +218,7 @@ export RDECK_JVM="-Dloginmodule.conf.name=jaas-ldap.conf \
     -Dloginmodule.name=ldap"
 ```
 
-Note: more information about using the Executable War and useful properties are under [Getting Started - Executable War Options](/administration/install/jar.md#launcher-options].
+Note: more information about using the Executable War and useful properties are under [Getting Started - Executable War Options](/administration/install/jar.md#launcher-options).
 
 **For the RPM/Deb installation**: the absolute path to the JAAS config file must be specified with the `java.security.auth.login.config` property.
 
