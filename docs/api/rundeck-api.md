@@ -2558,7 +2558,7 @@ Manage the system system ACL policy files stored in the database.
 The files managed via the API **do not** include the files located on disk, however these policy files will be merged with
 any policy files in the normal filesystem locations (e.g. `$RDECK_BASE/etc`).
 
-**Note:** For Project-specific ACLs see [Project ACLs](#project-acls).
+::: tip For Project-specific ACLs see [Project ACLs](#project-acls). :::
 
 For more information about ACL Policies see:
 
