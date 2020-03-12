@@ -2564,7 +2564,7 @@ For Project-specific ACLs see [Project ACLs](#project-acls).
 
 For more information about ACL Policies see:
 
-* [ACLPOLICY format][ACLPOLICY]
+* [ACLPOLICY format][/manual/document-format-reference/aclpolicy-v10.md]
 * [Access Control Policy](/administration/security/authorization.md)
 
 ### List System ACL Policies
