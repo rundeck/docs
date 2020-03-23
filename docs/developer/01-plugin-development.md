@@ -356,7 +356,7 @@ Each property has several attributes you can define, but only `name` and `type` 
 - `description` - a string describing the property
 - `required` - whether the property is required to have a value
 - `defaultValue` - any default value for the property
-- `scope` - defines the scope for the property. Allowed values are described under the chapter [Plugin Annotations - Property Scopes](/developer/02-plugin-annotations.md#property-scopes]. You may also simply use a String matching the name of the scope, e.g. "Instance". The default scope if unspecified is "Instance".
+- `scope` - defines the scope for the property. Allowed values are described under the chapter [Plugin Annotations - Property Scopes](/developer/02-plugin-annotations.md#property-scopes). You may also simply use a String matching the name of the scope, e.g. "Instance". The default scope if unspecified is "Instance".
 
 In addition to these properties, for `Select` or `FreeSelect` type, you can define:
 
@@ -853,7 +853,7 @@ The following message Codes will be used:
 - `property.NAME.title` Title for configuration property named "NAME"
 - `property.NAME.description` Description for configuration property named "NAME"
 
-(_Note_: SCM Plugins have additional message codes. See: [SCM Plugins - Localization](/developer/10-scm-plugins.md#localization]).
+(_Note_: SCM Plugins have additional message codes. See: [SCM Plugins - Localization](/developer/10-scm-plugins.md#localization)).
 
 Additionally, if a property has a [Property Rendering Option](#property-rendering-options) marking it as `STATIC_TEXT`
 normally the `defaultValue` of the property is used to render it as text or HTML. This value can be localized as well:

@@ -341,7 +341,7 @@ Allowed values:
 ## logging
 
 An optional logging limit, and the action to perform if the limit is reached.
-(See [Jobs - Log Limit](/manual/04-jobs.md#log-limit]).
+(See [Jobs - Log Limit](/manual/04-jobs.md#log-limit)).
 
 ```xml
 <logging limit='1KB' limitAction='halt' status='aborted' />
@@ -1291,7 +1291,7 @@ _Example_
 <webhook urls="http://server/callback?id=${execution.id}&status=${execution.status}&trigger=${notification.trigger}"/>
 ```
 
-- For more information about the Webhook mechanism used, see the chapter [Integration - Webhooks](/manual/04-jobs.md#webhooks].
+- For more information about the Webhook mechanism used, see the chapter [Integration - Webhooks](/manual/04-jobs.md#webhooks).
 
 ### plugin
 

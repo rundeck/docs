@@ -154,7 +154,7 @@ Example of simple retry:
 `loglimit`
 
 : An optional logging limit.
-(See [Jobs - Log Limit](/manual/04-jobs.md#log-limit]). Allowed values:
+(See [Jobs - Log Limit](/manual/04-jobs.md#log-limit)). Allowed values:
 
     * `###` If you specify a number, that is treated as the "Maximum total number of log lines"
     * `###/node` If you specify a number followed by `/node`, the number is treated as the "Maximum number of log lines for a single node"
@@ -243,7 +243,7 @@ The sequence has these required entries:
 
 `strategy`
 
-: "node-first" or "step-first". Determines the strategy for executing the sequence across a set of nodes. See the [Rundeck User Manual](/manual/04-jobs.md#workflow-control-settings] for more info.
+: "node-first" or "step-first". Determines the strategy for executing the sequence across a set of nodes. See the [Rundeck User Manual](/manual/04-jobs.md#workflow-control-settings) for more info.
 
 `commands`
 
@@ -658,7 +658,7 @@ or as Name-value list:
 ]
 ```
 
-- See the [Jobs Guide](/manual/04-jobs.md#remote-option-values] for more info.
+- See the [Jobs Guide](/manual/04-jobs.md#remote-option-values) for more info.
 
 ### Schedule
 

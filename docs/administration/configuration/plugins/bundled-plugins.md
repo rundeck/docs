@@ -38,7 +38,7 @@ Defines Script Node Executor and Script File Copier.
 
 For more detail see [Script Plugin](/administration/projects/node-execution/script.md).
 
-Executes an external script file to perform the command, useful for developing your own plugin with the [Script Plugin Development](/developer/01-plugin-development.md#script-plugin-development] model.
+Executes an external script file to perform the command, useful for developing your own plugin with the [Script Plugin Development](/developer/01-plugin-development.md#script-plugin-development) model.
 
 File: `rundeck-script-plugin-{{{rundeckVersionFull}}}.jar`
 
@@ -52,7 +52,7 @@ The `stub-plugin` includes these providers:
 - `stub` for the FileCopier service
 - `stub` for the ResourceModelSource service
 
-(Refer to [Configuring - Node Execution](/administration/configuration/plugins/configuring.md#node-execution] to enable them.)
+(Refer to [Configuring - Node Execution](/administration/configuration/plugins/configuring.md#node-execution) to enable them.)
 
 This plugin does not actually perform any remote file copy or command execution,
 instead it simply echoes the command that was supposed to be executed, and
