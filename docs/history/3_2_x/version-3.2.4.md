@@ -2,7 +2,7 @@
 
 Name: <span style="color: chartreuse"><span class="glyphicon glyphicon-paperclip"></span> "nacho chartreuse paperclip"</span>
 ## Overview
-This release brings some impressive new performance enhancements to the Jobs Listing page, more granular ACL options and the ability to Retry a job on failed nodes. Version 3.2.4 will offer an 80% improvement in performance, especially for those projects with a large number of jobs.
+This release brings some impressive new performance enhancements to the Jobs Listing page, more granular ACL options and the ability to Retry a job on failed nodes. Version 3.2.4 will offer an 80% improvement in Job List performance, especially for those projects with a large number of jobs.
 
 Also in this release a new ACL permission to allow or restrict Job Execution History separately from actions that can be done on a job. This opens the ability to share job results without allowing any other access to the job itself. [Here’s the documentation](https://docs.rundeck.com/3.2.x/administration/security/authorization.html#project-scope-resources-and-actions) on for using this new ACL action called `view_history`.
 
