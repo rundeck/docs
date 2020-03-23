@@ -575,6 +575,22 @@ Refer to: https://docs.oracle.com/javase/1.5.0/docs/tooldocs/solaris/keytool.htm
 
 Finally, in your `ldap-activedirectory.conf` be sure to change the _providerUrl_ to be `ldaps://ad-server`. Including the port is optional as the default is 686.
 
+
+### Communicating over secure ldap using Windows(ldaps://)
+1. Download certificate from remote site 
+```bash
+c:\>  openssl s_client -connect ldaps_server.example:636 > C:\rundeck\certs.out
+```
+2. Import the file to keystore in Java home  . 
+```bash
+c:\> keytool -importcert -file "C:\rundeck\certs.out" -storepass changeit -keystore "C:\Program Files\Java\jre1.8.0_xxx\lib\security\cacerts" -alias host_ext
+```
+3. Import in rundeck (Optional if using Rundeck with SSL)
+```bash
+c:\> keytool -importcert -file "C:\rundeck\certs.out" -storepass adminadmin -keystore "C:\rundeck\etc\truststore" -alias ldapsserver
+```
+
+
 ## PAM
 
 Rundeck includes a [PAM](https://en.wikipedia.org/wiki/Pluggable_authentication_module) JAAS login module, which uses [libpam4j](https://github.com/kohsuke/libpam4j) to authenticate.
