@@ -47,7 +47,7 @@ module.exports = [{
     text: 'Webhooks'
   },
   {
-    link: '/manual/13-calendars',
+    link: '/manual/calendars',
     text: 'Calendars'
   },
   {
