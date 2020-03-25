@@ -17,7 +17,7 @@ module.exports = [{
         '/manual/job-options',
         '/manual/job-plugins',
         '/manual/execution-lifecycle/job-resume.md',
-        '/manual/execution-lifecycle/job-restart-failed-nodes.md',
+        '/manual/execution-lifecycle/job-retry-failed-nodes.md',
       ]
     },
     {
