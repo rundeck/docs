@@ -1,4 +1,4 @@
-# User Guide
+# Overview
 
 This the Rundeck _User Guide_.
 
@@ -21,3 +21,4 @@ For information about Rundeck Administration, see the [Administrator Guide](/adm
 - [User](/manual/10-user.md)
 - [Node Filters](/manual/11-node-filters.md)
 - [Webhooks](/manual/12-webhooks.md)
+- [Document Formats](/manual/document-format-reference/)
