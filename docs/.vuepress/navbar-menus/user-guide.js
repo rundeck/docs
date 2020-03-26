@@ -15,6 +15,10 @@ module.exports = [{
     text: 'Jobs'
   },
   {
+    link: '/manual/schedules/project-schedules',
+    text: 'Project Schedules'
+  },
+  {
     link: '/manual/05-nodes',
     text: 'Nodes'
   },
