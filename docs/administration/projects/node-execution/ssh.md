@@ -25,7 +25,7 @@ The SSH plugin also includes support for a secondary Sudo Password Authenticatio
 
 ### Using Key Storage for SSH
 
-Passwords, Passphrases and Private Keys can all be stored in the [Key Storage Facility](../../administration/security/key-storage.html) and used with the built-in SSH plugins for Node Execution and File Copying.
+Passwords, Passphrases and Private Keys can all be stored in the [Key Storage Facility](../../../administration/security/key-storage.html) and used with the built-in SSH plugins for Node Execution and File Copying.
 
 For specific usage, see below.
 
@@ -181,7 +181,9 @@ If the value is not `sshKeyPassphrase`, then make sure to set the following attr
 An example Node and Job option configuration are below:
 
 ```xml .numberLines
-<node name="egon" description="egon" osFamily="unix"
+ <node name="egon"
+    description="egon"
+    osFamily="unix"
     username="rundeck"
     hostname="egon"
     ssh-keypath="/path/to/privatekey_rsa"
@@ -223,7 +225,9 @@ in this order, with the first match having precedence:
 An example Node using private key passphrase storage:
 
 ```xml .numberLines
-<node name="egon" description="egon" osFamily="unix"
+ <node name="egon"
+    description="egon"
+    osFamily="unix"
     username="rundeck"
     hostname="egon"
     ssh-authentication="privateKey"
@@ -258,7 +262,9 @@ If the option name is not `sshPassword`, then make sure to set the following att
 An example Node and Job option configuration are below:
 
 ```xml .numberLines
-<node name="egon" description="egon" osFamily="unix"
+ <node name="egon"
+    description="egon"
+    osFamily="unix"
     username="rundeck"
     hostname="egon"
     ssh-authentication="password"
@@ -297,7 +303,9 @@ When connecting to the remote node, Rundeck will look for a property/attribute s
 An example Node using password storage:
 
 ```xml .numberLines
-<node name="egon" description="egon" osFamily="unix"
+ <node name="egon"
+    description="egon"
+    osFamily="unix"
     username="rundeck"
     hostname="egon"
     ssh-authentication="password"
@@ -354,7 +362,9 @@ If the value is not `sudoPassword`, then make sure to set the following attribut
 An example Node and Job option configuration are below:
 
 ```xml .numberLines
-<node name="egon" description="egon" osFamily="unix"
+ <node name="egon"
+    description="egon"
+    osFamily="unix"
     username="rundeck"
     hostname="egon"
     sudo-command-enabled="true"
@@ -393,7 +403,9 @@ Define a `sudo-password-storage-path` node attribute specifying the path in the 
 See example Node configuration below:
 
 ```xml .numberLines
-<node name="egon" description="egon" osFamily="unix"
+ <node name="egon"
+    description="egon"
+    osFamily="unix"
     username="rundeck"
     hostname="egon"
     sudo-command-enabled="true"
