@@ -16,7 +16,7 @@ The plugin configuration will run a **Job** when PagerDuty sends Rundeck an inci
 3. Give the new webhook a name.  (e.g. PagerDuty)
 4. Select **PagerDuty: Generic V2 Webhook**
 
-![](../../assets/img/wh-pd-create.png)
+![](~@assets/img/wh-pd-create.png)
 
 
 ### Customize Sample Rule
@@ -32,16 +32,16 @@ A sample rule will be created in the Rules section called `PagerDuty Example Rul
 Use the suggestion drop-downs to chose from common PagerDuty event fields
 :::
 
-![Sample Rule](../../assets/img/wh-pd-rule.png "Sample Rule")
+![Sample Rule](~@assets/img/wh-pd-rule.png "Sample Rule")
 
 ### Add Webhook to PagerDuty
 
 1. *In **Rundeck*** select the Webhook by name in **Webhook Management** and copy the **Post URL** :
-   ![](../../assets/img/wh-pd-posturl.png)
+   ![](~@assets/img/wh-pd-posturl.png)
 
 2. *In **PagerDuty*** navigate to **Configuration** -> **Services** and select the service where the integration would be called from.
 3. Select the **Integrations** tab and click **New Extension**
 4. For the **Extension Type** select **Generic V2 Webhook**
 5. Enter the **Post URL** into the **URL** field from step **1**
 (For the Name we recommend using the same name as the webhook name in Rundeck.)
-   ![](../../assets/img/wh-pd-extension.png)
+   ![](~@assets/img/wh-pd-extension.png)

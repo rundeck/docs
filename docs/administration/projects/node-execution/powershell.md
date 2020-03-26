@@ -146,11 +146,11 @@ Enable-WSManCredSSP -Role "Client" -DelegateComputer "*"
 - Select **Local Computer** and then click **Finish**.
 - Go to **Computer Policy\Administrative Templates\System\Credentials Delegation\Allow Delegating Fresh Credentials** → Set to **enabled**
 
-![Enable delegating fresh credentials](../../../assets/img/allow-delegating-fresh-credentials-1.png)
+![Enable delegating fresh credentials](~@assets/img/allow-delegating-fresh-credentials-1.png)
 
 - Add **WSMAN/\*** to list of computers and check the box for **Concatenate OS defaults with input above**.
 
-![Add servers to list](../../../assets/img/allow-delegating-fresh-credentials-2.png)
+![Add servers to list](~@assets/img/allow-delegating-fresh-credentials-2.png)
 
 #### Enable CredSSP authentication on Winrm Client
 
@@ -241,7 +241,7 @@ Set-NetConnectionProfile -InterfaceIndex [INTERFAZ_INDEX] -NetworkCategory Priva
 
 It could be necessary to change the user’s log-on in tomcat service when the remote connection does not work:
 
-![Tomcat settings](../../../assets/img/powershell-troubleshooting.png)
+![Tomcat settings](~@assets/img/powershell-troubleshooting.png)
 
 ### Use utf-8 scripts
 
