@@ -10,7 +10,7 @@ A typical example is to apply some form of encryption to the [Key Storage](/admi
 
 ## Configuring
 
-See: [Configuring the Storage Converter Plugin](/administration/security/key-storage.md#configuring-the-storage-converter-plugin).
+See: [Configuring the Storage Converter Plugin](/administration/security/key-storage.md#configuring-storage-converter-plugins).
 
 ## Java Plugin Type
 
