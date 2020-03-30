@@ -11,7 +11,7 @@ Project Schedules allow you to define Schedules independently of Jobs.  Schedule
 To enable the Project Schedules feature, add the following settings to rundeck-config.properties
 
 ```properties
-rundeckpro.feature.incubator.schedules=true
+rundeck.feature.projectSchedules=true
 ```
 
 ## Usage
