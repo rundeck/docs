@@ -65,13 +65,15 @@ There are different types of calendars to definehow to set the target days/hours
 
 #### Related projects
 
-In the **Projects** section you can define if the calendar will be used for all Projects or specific Project. By default, the calendar will select all projects.
+In the **Projects** section you can define if the calendar will be used for all Projects or specific Project. By default, the calendar will not be assigned to any projects.
 
-![Projects Section](~@assets/img/calendars-system-selector.png)
-
-To select a particular project, uncheck the "Apply this Calendar to all Projects" checkbox, select a particular project and click the "Add Project" button.
+Select a project from the list and click the "Add Project" button.
 
 ![Project Selector](~@assets/img/calendars-system-project-selector.png)
+
+Or, check the "Apply this Calendar to all Projects" checkbox, and it will be assigned to all Projects.
+
+![Projects Section](~@assets/img/calendars-system-selector.png)
 
 Finally, click "Save", and the Calendar will be created and shown in the list.
 
