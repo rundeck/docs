@@ -15,10 +15,6 @@ module.exports = [{
     text: 'Jobs'
   },
   {
-    link: '/manual/schedules/project-schedules',
-    text: 'Project Schedules'
-  },
-  {
     link: '/manual/05-nodes',
     text: 'Nodes'
   },
@@ -33,6 +29,10 @@ module.exports = [{
   {
     link: '/manual/08-activity',
     text: 'Activity'
+  },
+  {
+    link: '/manual/schedules/project-schedules',
+    text: 'Schedules'
   },
   {
     link: '/manual/09-configure',

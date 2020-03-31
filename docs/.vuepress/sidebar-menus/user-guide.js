@@ -20,7 +20,6 @@ module.exports = [{
         '/manual/execution-lifecycle/job-retry-failed-nodes.md',
       ]
     },
-    '/manual/schedules/project-schedules.md',
     {
       title: 'Nodes',
       collapsable: true,
@@ -33,6 +32,7 @@ module.exports = [{
     '/manual/06-commands',
     '/manual/07-executions',
     '/manual/08-activity',
+    ['/manual/schedules/project-schedules', 'Schedules'],
     '/manual/09-configure',
     '/manual/10-user.md',
     '/manual/11-node-filters.md',
