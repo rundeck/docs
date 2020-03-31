@@ -23,5 +23,5 @@ Calendars can be defined at system level as *System Calendars* or project level 
 To enable the calendars, add the following settings to rundeck-config.properties
 
 ```properties
-rundeck.feature.calendars=true
+rundeck.feature.calendars.enabled=true
 ```
