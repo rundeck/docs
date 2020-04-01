@@ -1,9 +1,5 @@
 # Project Schedules (Enterprise)
 
-:::tip
-This is a Rundeck Enterprise Feature
-:::
-
 Project Schedules allow you to define Schedules independently of Jobs.  Schedules can apply to any Jobs in the Project. Schedule definitions can be exported into, and imported from, Project Archives.
 
 ## Feature Flag
@@ -13,15 +9,18 @@ To enable the Project Schedules feature, add the following settings to rundeck-c
 ```properties
 rundeck.feature.projectSchedules.enabled=true
 ```
+:::tip
+Currently only project admins will be able to access the Schedules module.  In a future release there will be more granular ACL based access assigned.
+:::
 
 ## Usage
 
-In the Project Sidebar navigation there is now a link called "Schedules":
+In the Project Sidebar navigation there is now a link called **Schedules**:
 
 
 ![Project Schedules Sidebar](~@assets/img/project-schedules-sidebar.png)
 
-You can click "New Schedule" to create a new Schedule:
+You can click **New Schedule** to create a new Schedule:
 
 ![New Schedule](~@assets/img/project-schedules-create-form.png)
 
@@ -32,7 +31,7 @@ Under **Schedule** you can choose *Simple* or *Crontab*, exactly like Job Schedu
 ![Schedule Crontab](~@assets/img/project-schedules-create-crontab.png)
 
 :::tip
-For crontab format, see [Quartz Tutorial][crontab]
+For crontab format, see [this tutorial][crontab]
 :::
 
 Optionally enter a **Time Zone**.
@@ -150,12 +149,12 @@ Schedules can be defined in YAML format as shown below. Multiple schedules can b
 `crontabString`
 
 :   Required if the `type` is `CRON`, specifies the [crontab format][crontab]
-	
+
 
 `schedule`
 
 :   Required if the `type` is `SIMPLE`, specifying `hour`,`minute`,`month`, and `dayOfWeek`:
-	
+
 	`hour`
 	:   Hour of day
 
@@ -168,7 +167,7 @@ Schedules can be defined in YAML format as shown below. Multiple schedules can b
 
 	`month`
 
-	:   Either `*` for all months, or comma separated list of three-letter month abbreviations. `JAN,FEB,MAR,APR,MAY,JUN,JUL,AUG,SEP,OCT,NOV,DEC` 
+	:   Either `*` for all months, or comma separated list of three-letter month abbreviations. `JAN,FEB,MAR,APR,MAY,JUN,JUL,AUG,SEP,OCT,NOV,DEC`
 
 
 [crontab]: http://www.quartz-scheduler.org/documentation/quartz-2.2.2/tutorials/tutorial-lesson-06.html
