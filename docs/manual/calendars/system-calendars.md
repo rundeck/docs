@@ -25,15 +25,15 @@ Click on `+ Add Calendar` button and you will see form to add a new calendar
 
 If the required fields are not set, the form will display the errors.
 
- 
+
 
 #### Types
 
-There are different types of calendars to definehow to set the target days/hours that the calendar will cover.
+There are different types of calendars to define how to set the target days/hours that the calendar will cover.
 
 **Calendar Dates**
-:   Pick up a list of days where the calendar will be used, eg: 25/12/2020, 31/12/2020
-	
+:   Pick up a list of days where the calendar will be used, eg: 12/25/2020, 12/31/2020
+
 	**Repeat dates yearly**: if this box is checked, the calendar will be triggered every year on the selected dates.  If the box is *not* checked, the selected dates will apply only to the selected year.
 
 	![Calendar Dates](~@assets/img/calendars-date-type.png)
