@@ -6,7 +6,7 @@ This plugin allows Source Code Management of the jobs, versioning, exporting or 
 
 ## Configuring Git Export
 
-### Commiter Configuration
+### Committer Configuration
 
 **Committer Name** and **Committer Email** are mandatory fields, the recommended configuration is to use the default `${user.fullName}` and `${user.email}`. The email and name of the current user can be set on the Profile page.
 
