@@ -1,4 +1,4 @@
-# Release 3.2.4
+# Release 3.2.5
 
 Name: <span style="color: coral"><span class="glyphicon glyphicon-phone"></span> "nacho coral phone"</span>
 
