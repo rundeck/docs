@@ -2,6 +2,11 @@
 
 Name: <span style="color: coral"><span class="glyphicon glyphicon-phone"></span> "nacho coral phone"</span>
 
+## Overview
+This release represents a smaller set of fixes that are setting up for some very big things to come!  Along with the list of bugs and fixes below we are working on some new plugins that bring awesome functionality to Rundeck.  Stay tuned for future releases.
+
+One significant update in this release is an update to the AWS SDK version used by the AWS plugins.  They are now on a version which includes `aws-java-sdk-sts`. This allows the default credential provider chain to resolve web identity roles(IAM for service accounts).
+
 ## Upgrading
 
 See [Upgrading to Rundeck 3.2](/upgrading/upgrading-to-rundeck-3.2.html).
