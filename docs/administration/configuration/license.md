@@ -63,3 +63,35 @@ Rundeck + Tomcat:
 ```
 $RDECK_BASE/etc/
 ```
+
+### Store license in database (introduced in 3.2.6)
+
+If you would like to store your license in your database rather than your filesystem, turn on the following setting:
+
+`rundeck.license.useStorageTree=true`
+
+If you have a license file installed in your Rundeck server it will be migrated automatically into the database,
+and your current license file will be renamed to `rundeckpro-license.key_migrated`
+
+If you are using a read-only filesystem and need to prevent the license file rename, set the following:
+
+`rundeck.license.moveOld=false` 
+
+### Store the license using a custom storage tree
+
+If you would like to store your license in a storage tree, you can configure a storage tree using the standard 
+storage tree config options.  
+
+Turn on license storage tree usage then provide your configuration using the prefix: `rundeck.license.storageTreeConfig`
+
+Example storing the license in Amazon S3
+
+```
+rundeck.license.useStorageTree=true
+rundeck.license.storageTreeConfig.provider.1.type=object
+rundeck.license.storageTreeConfig.provider.1.path=/license
+rundeck.license.storageTreeConfig.provider.1.config.bucket=rundeck
+rundeck.license.storageTreeConfig.provider.1.config.objectStoreUrl=https://s3.amazonaws.com
+rundeck.license.storageTreeConfig.provider.1.config.secretKey=YOUR_SECRET_KEY
+rundeck.license.storageTreeConfig.provider.1.config.accessKey=YOUR_ACCESS_KEY
+```
