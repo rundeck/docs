@@ -70,12 +70,11 @@ If you would like to store your license in your database rather than your filesy
 
 `rundeck.license.useStorageTree=true`
 
-If you have a license file installed in your Rundeck server it will be migrated automatically into the database,
-and your current license file will be renamed to `rundeckpro-license.key_migrated`
+If you have a license file installed in your Rundeck server it will be migrated automatically into the database.
 
-If you are using a read-only filesystem and need to prevent the license file rename, set the following:
-
-`rundeck.license.moveOld=false` 
+When Rundeck bootstraps it will check the license file on the filesystem if it exists, and if the issue date of
+that license is more recent than the license in the database, the database will be updated with the license
+on the filesystem.
 
 ### Store the license using a custom storage tree
 
