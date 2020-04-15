@@ -841,6 +841,9 @@ Defines a notification for the job. You can include any of `onsuccess`, `onfailu
 
 `onsuccess`/`onfailure`/`onstart`/`onavgduration`/`onretryablefailure`
 
+::: Note: `onavgduration` also requires the following attribute set at the same level as `notification`
+`notifyAvgDurationThreshold` - Add or set a threshold value to the avg duration in order to trigger this notification. Options: - percentage => eg: 20% - time delta => eg: +20s, +20 - absolute time => 30s, 5m Time in seconds if you don't specify time units Can include option value references like ${option.avgDurationThreshold}.
+
 : A Map containing either or both of:
 
     `recipients`
@@ -858,6 +861,7 @@ Defines a notification for the job. You can include any of `onsuccess`, `onfailu
 Example:
 
 ```yaml
+  notifyAvgDurationThreshold: '+30'
   notification:
     onfailure:
       recipients: tom@example.com,shirley@example.com
