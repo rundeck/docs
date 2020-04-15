@@ -194,6 +194,10 @@ value of `failed`. Allowed values:
 
 : Node filter definition
 
+`nodesSelectedByDefault`
+
+: Boolean option that determines if Nodes (based on node filter) are selected automatically or if the user running the job must select nodes from the results. (true | false)
+
 [`notification`](#notification)
 
 : Job result notifications
