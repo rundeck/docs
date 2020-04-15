@@ -7631,6 +7631,42 @@ Example:
   }
   ```
 
+### Delete Project Calendar
+Deletes a calendar at project level
+
+**Request:**
+    
+    DELETE  /api/V/project/[PROJECT]/calendars/[ID]
+
+Request Content:
+`NO CONTENT NEEDED`
+
+
+Example:
+
+```json
+{
+    "msg": "Deleted calendar"
+  }
+  ```
+### Delete System Calendar
+Deletes a calendar at system level
+
+**Request:**
+    
+    DELETE  /api/V/system/calendars/[ID]
+
+Request Content:
+`NO CONTENT NEEDED`
+
+
+Example:
+
+```json
+{
+    "msg": "Deleted calendar"
+  }
+  ```
 
 ## Index
 
