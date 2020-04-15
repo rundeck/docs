@@ -200,7 +200,11 @@ value of `failed`. Allowed values:
 
 [`notification`](#notification)
 
-: Job result notifications
+: Job result notifications.
+
+[`orchestration`](#orchestration)
+
+: Orchestration Plugin configuration to determine node processing order.
 
 [`plugins`](#plugins)
 
@@ -894,6 +898,28 @@ Example:
 ```
 
 - For more information about the Webhook mechanism used, see the chapter [Integration - Webhooks](/manual/04-jobs.md#webhooks).
+
+### Orchestration
+
+Defines a Orchestrator Plugin that can be used to determine the order in which nodes are processed.
+
+`type`
+
+: The type identifier of the Orchestrator plugin
+
+`configuration`
+
+: Contains configuration attributes for the plugin.  Values will vary depending on Orchestrator plugin.
+
+Example:
+
+```yaml
+    orchestrator:
+    configuration:
+      attribute: sort-attr-on-node
+      sort: highest
+    type: orchestrator-highest-lowest-attribute
+```
 
 #### plugin
 
