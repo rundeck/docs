@@ -186,6 +186,10 @@ value of `failed`. Allowed values:
 
 : Job schedule
 
+`nodeFilterEditable`
+
+: Boolean option that determines if Node filters can be edited when running the job. (true | false)
+
 [`nodefilters`](#nodefilters)
 
 : Node filter definition
