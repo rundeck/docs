@@ -18,7 +18,8 @@ const config = {
     rundeckVersion: setup.rundeckVersion,
     rundeckVersionFull: setup.rundeckVersionFull,
 
-    javaDocBase: `https://static.javadoc.io/org.rundeck/rundeck-core/`+setup.rundeckVersionFull
+    javaDocBase: `https://static.javadoc.io/org.rundeck/rundeck-core/`+setup.rundeckVersionFull,
+    javaDocStorageApiBase: `https://static.javadoc.io/org.rundeck/rundeck-storage-api/`+setup.rundeckVersionFull
 }
 
 module.exports = function(source) {
