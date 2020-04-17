@@ -62,6 +62,6 @@ The order to determine the value is:
 
 ## Built-in Node Execution plugins
 
-Rundeck includes node execution plugins out of the box.  For the lastest list check out [this list of plugins](/docs/plugins)
+Rundeck includes node execution plugins out of the box.  For the lastest list check out [this list of plugins](/plugins)
 
 
