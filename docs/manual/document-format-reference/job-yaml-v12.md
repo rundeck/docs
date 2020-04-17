@@ -202,7 +202,7 @@ value of `failed`. Allowed values:
 
 : Job result notifications.
 
-[`orchestration`](#orchestration)
+[`orchestrator`](#orchestrator)
 
 : Orchestration Plugin configuration to determine node processing order.
 
@@ -901,7 +901,7 @@ Example:
 
 - For more information about the Webhook mechanism used, see the chapter [Integration - Webhooks](/manual/04-jobs.md#webhooks).
 
-### Orchestration
+### Orchestrator
 
 Defines a Orchestrator Plugin that can be used to determine the order in which nodes are processed.
 
