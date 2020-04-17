@@ -4899,7 +4899,7 @@ Content of each Log Entry:
 
 * `time`: Timestamp in format: "HH:MM:SS"
 * `absolute_time`: Timestamp in format: "yyyy-MM-dd'T'HH:mm:ssZ"
-* `level`: Log level, one of: SEVERE,WARNING,INFO,CONFIG,FINEST
+* `level`: Log level, one of: ERROR,WARN,NORMAL,VERBOSE,DEBUG,OTHER
 * `log`: The log message
 * `user`: User name
 * `command`: Workflow command context string
