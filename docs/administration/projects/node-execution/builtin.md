@@ -62,22 +62,6 @@ The order to determine the value is:
 
 ## Built-in Node Execution plugins
 
-Rundeck includes the following node execution plugins.
+Rundeck includes node execution plugins out of the box.  For the lastest list check out [this list of plugins](/plugins)
 
-`local`
 
-: local execution of a command.
-
-`jsch-ssh`
-
-: remote execution of a command via SSH, requiring the "hostname", and "username" attributes on a node.
-
-For FileCopier, these plugins:
-
-`local`
-
-: creates a local temp file for a script.
-
-`jsch-scp`
-
-: remote copy of a command via SCP, requiring the "hostname" and "username" attributes on a node.
