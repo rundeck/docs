@@ -28,45 +28,6 @@ page. For Zip UI Plugins, the Page configuration determines which scripts and st
 to load. For Java plugins, the `scriptResourcesForPath` and `styleResourcesForPath` methods
 will be called.
 
-This is the list of available pages which can load UI plugins:
-
-- `menu/jobs`,
-- `menu/home`
-- `menu/projectHome`
-- `menu/executionMode`
-- `menu/projectExport`
-- `menu/projectImport`
-- `menu/projectDelete`
-- `menu/projectAcls`
-- `menu/editProjectAclFile`
-- `menu/createProjectAclFile`
-- `menu/saveProjectAclFile`
-- `menu/logStorage`
-- `menu/securityConfig`
-- `menu/acls`
-- `menu/editSystemAclFile`
-- `menu/createSystemAclFile`
-- `menu/saveSystemAclFile`
-- `menu/systemInfo`
-- `menu/systemConfig`
-- `menu/metrics`
-- `menu/plugins`
-- `menu/welcome`
-- `menu/storage`
-- `scheduledExecution/show`
-- `scheduledExecution/edit`
-- `scheduledExecution/delete`
-- `scheduledExecution/create`
-- `execution/show`
-- `framework/nodes`
-- `framework/adhoc`
-- `framework/createProject`
-- `framework/editProject`
-- `framework/editProjectConfig`
-- `framework/editProjectFile`
-- `scm/index`
-- `reports/index`
-
 ## Zip Plugin Type
 
 See the [Plugin Development - Script plugin zip structure](/developer/01-plugin-development.md#script-plugin-zip-structure)
