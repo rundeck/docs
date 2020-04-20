@@ -459,7 +459,7 @@ _Attributes_
 
 day
 
-: values: `*` - all ; `1-5` days "sun-sat" ; `1,2,3-5` - days "sun,mon,tue-thu", etc
+: values: `*` - all ; `1-7` days "sun-sat" ; `1,2,3-5` - days "sun,mon,tue-thu", etc
 
 ### month
 
