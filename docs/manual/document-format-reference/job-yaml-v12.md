@@ -186,13 +186,25 @@ value of `failed`. Allowed values:
 
 : Job schedule
 
+`nodeFilterEditable`
+
+: Boolean option that determines if Node filters can be edited when running the job. (true | false)
+
 [`nodefilters`](#nodefilters)
 
 : Node filter definition
 
+`nodesSelectedByDefault`
+
+: Boolean option that determines if Nodes (based on node filter) are selected automatically or if the user running the job must select nodes from the results. (true | false)
+
 [`notification`](#notification)
 
-: Job result notifications
+: Job result notifications.
+
+[`orchestrator`](#orchestrator)
+
+: Orchestration Plugin configuration to determine node processing order.
 
 [`plugins`](#plugins)
 
@@ -833,6 +845,11 @@ Defines a notification for the job. You can include any of `onsuccess`, `onfailu
 
 `onsuccess`/`onfailure`/`onstart`/`onavgduration`/`onretryablefailure`
 
+::: tip
+`onavgduration` also requires the following attribute set at the same level as `notification`
+:::
+`notifyAvgDurationThreshold` - Add or set a threshold value to the avg duration in order to trigger this notification. Options: - percentage => eg: 20% - time delta => eg: +20s, +20 - absolute time => 30s, 5m Time in seconds if you don't specify time units Can include option value references like ${option.avgDurationThreshold}.
+
 : A Map containing either or both of:
 
     `recipients`
@@ -850,6 +867,7 @@ Defines a notification for the job. You can include any of `onsuccess`, `onfailu
 Example:
 
 ```yaml
+  notifyAvgDurationThreshold: '+30'
   notification:
     onfailure:
       recipients: tom@example.com,shirley@example.com
@@ -882,6 +900,28 @@ Example:
 ```
 
 - For more information about the Webhook mechanism used, see the chapter [Integration - Webhooks](/manual/04-jobs.md#webhooks).
+
+### Orchestrator
+
+Defines a Orchestrator Plugin that can be used to determine the order in which nodes are processed.
+
+`type`
+
+: The type identifier of the Orchestrator plugin
+
+`configuration`
+
+: Contains configuration attributes for the plugin.  Values will vary depending on Orchestrator plugin.
+
+Example:
+
+```yaml
+    orchestrator:
+    configuration:
+      attribute: sort-attr-on-node
+      sort: highest
+    type: orchestrator-highest-lowest-attribute
+```
 
 #### plugin
 
@@ -918,4 +958,3 @@ Each provider may contain a configuration Map, or if there is no configuration f
 
 
 <http://yaml.org/>
-
