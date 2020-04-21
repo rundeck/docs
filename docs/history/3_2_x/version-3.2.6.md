@@ -2,6 +2,14 @@
 
 Name: <span style="color: deeppink"><span class="glyphicon glyphicon-piggy-bank"></span> "nacho deeppink piggy-bank"</span>
 
+## Overview
+
+The 3.2.6 release of Rundeck includes improved support for building the environment on Windows Servers.  Also of note are some of these Windows based plugins highlighted by our Field Engineer team.
+[Using Powershell in Rundeck](https://www.youtube.com/watch?v=X2hw51uytUA)
+
+Lots of other the bug fixes and enhancements in 3.2.6.  Check out the list below.
+
+
 ## Upgrading
 See [Upgrading to Rundeck 3.2.6](/upgrading/upgrading-to-rundeck-3.2.6.html).
 
