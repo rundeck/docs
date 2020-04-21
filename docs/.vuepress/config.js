@@ -58,6 +58,7 @@ module.exports = {
     })
   },
   plugins: [
+    ['alias'],
     [
       'autometa', {
         autometa_options

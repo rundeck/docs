@@ -1,5 +1,6 @@
 ---
 title: API Reference
+alias: api/index.html
 ---
 
 # API Reference | Version {{{ apiVersion }}}
