@@ -28,16 +28,66 @@ An error with this message may occur in the Rundeck console at startup:
 
 ## Webhooks
 :::tip
-Webhooks were feature flagged in `3.1.x` and disabled by default
+Webhooks were feature flagged in `3.1.x` and disabled by default.  Your instance may not have used Webhooks prior to the 3.2 release.  If you did not use Webhooks prior to version 3.2 you can skip this issue.
 :::
 
 ### Advanced Run Job (Enterprise)
-The [condition](/manual/webhooks/advanced-run-job.html#conditions) type `matches`
-has been renamed to `equals`. Webhooks using `Advanced Run Job` with `matches` conditions
-will need to be updated to work properly. These configurations can be updated by:
+The [condition](/manual/webhooks/advanced-run-job.html#conditions) type `matches` has been renamed to `equals`. Webhooks using `Advanced Run Job` with `matches` conditions will need to be updated to work properly. These configurations can be updated by:  
 
-- Loading the webhook in the UI, selecting `equals` on the approriate conditions, and then saving
+- Loading the webhook in the UI, selecting `equals` on the appropriate conditions, and then saving
 
    **OR**
 
 - Updating the webhooks configuration through the [API](/api/rundeck-api.html#webhooks-incubating)
+
+## Log File Storage Constraints
+If you are updating from a version prior to `3.2.6` it is recommended following guidance below to ensure proper loading of Rundeck.
+
+Rundeck version `3.2.6` and later adds a unique constraint to the `log_file_storage_request` table. In order for this constraint to be added as part of the upgrade there must be no duplicates in the table.
+
+::: tip
+Note: The SQL code below was only tested on MySQL.  You may need to adjust for your particular implementation.
+:::
+
+**Check for duplicates**
+
+Manually run this SQL against your Rundeck database.
+
+```sql
+select count(id) from log_file_storage_request
+GROUP BY execution_id HAVING count(execution_id) > 1;
+```
+
+If a row count comes back as 0 you can continue with the upgrade and skip the following steps.
+
+If a row count greater than 0 is returned, the duplicates must be removed:
+
+**Locate duplicates**
+```sql
+DELETE FROM log_file_storage_request
+WHERE id IN (
+    SELECT * FROM (
+        SELECT log.id FROM log_file_storage_request log
+        JOIN (
+            SELECT executiuon_id
+            FROM log_file_storage_request
+            GROUP BY execution_id
+            HAVING count(*) > 1
+        ) dupe
+        ON log.execution_id = dupe.execution_id
+        WHERE log.completed=0
+    ) uncompleted_dupes
+);
+```
+
+**Delete all but one duplicate entry**
+```sql
+DELETE FROM log_file_storage_request
+WHERE id NOT IN (
+    SELECT * FROM (
+        SELECT min(id)
+        FROM log_file_storage_request
+        GROUP BY execution_id
+    ) dupes
+);
+```

@@ -11,7 +11,11 @@ Lots of other the bug fixes and enhancements in 3.2.6.  Check out the list below
 
 
 ## Upgrading
-See [Upgrading to Rundeck 3.2.6](/upgrading/upgrading-to-rundeck-3.2.6.html).
+::: warning
+Upgrading to 3.2.6 introduces a new constraint in the `log_file_storage_request` table.  There are steps to ensure a smooth upgrade on [the 3.2 upgrade page](/upgrading/upgrading-to-rundeck-3.2.html).
+:::
+
+See [Upgrading to Rundeck 3.2](/upgrading/upgrading-to-rundeck-3.2.html) for full details.
 
 ## Issues
 
