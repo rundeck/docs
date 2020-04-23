@@ -69,7 +69,7 @@ WHERE id IN (
     SELECT * FROM (
         SELECT log.id FROM log_file_storage_request log
         JOIN (
-            SELECT executiuon_id
+            SELECT execution_id
             FROM log_file_storage_request
             GROUP BY execution_id
             HAVING count(*) > 1
