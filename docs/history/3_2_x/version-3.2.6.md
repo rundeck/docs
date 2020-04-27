@@ -7,13 +7,12 @@ Name: <span style="color: deeppink"><span class="glyphicon glyphicon-piggy-bank"
 The 3.2.6 release of Rundeck includes improved support for building the environment on Windows Servers.  Also of note are some of these Windows based plugins highlighted by our Field Engineer team.
 [Using Powershell in Rundeck](https://www.youtube.com/watch?v=X2hw51uytUA)
 
-Lots of other the bug fixes and enhancements in 3.2.6.  Check out the list below.
+Many other the bug fixes and enhancements in 3.2.6.  Check out the list below.
 
+## Security
+This release fixes [CVE-2020-11009](https://github.com/rundeck/rundeck/security/advisories/GHSA-5679-7qrc-5m7j).
 
 ## Upgrading
-::: warning
-Upgrading to 3.2.6 introduces a new constraint in the `log_file_storage_request` table.  There are steps to ensure a smooth upgrade on [the 3.2 upgrade page](/upgrading/upgrading-to-rundeck-3.2.html).
-:::
 
 See [Upgrading to Rundeck 3.2](/upgrading/upgrading-to-rundeck-3.2.html) for full details.
 
@@ -25,7 +24,6 @@ See [Upgrading to Rundeck 3.2](/upgrading/upgrading-to-rundeck-3.2.html) for ful
 * [Fix #5894 prevent double click on run job button](https://github.com/rundeck/rundeck/pull/5974)
 * [Use pessimistic locking on job stats update](https://github.com/rundeck/rundeck/pull/5971)
 * [Remove remaining SCM calls prior to job list on GUI](https://github.com/rundeck/rundeck/pull/5970)
-* [Fix #5081 log file storage request should be unique for execution](https://github.com/rundeck/rundeck/pull/5968)
 * [Remove scm calls prior to job list.](https://github.com/rundeck/rundeck/issues/5967)
 * [Fix #5943 - Avoiding creating temporary files when deleting executions](https://github.com/rundeck/rundeck/pull/5966)
 * [Some fixes for saving writeable project node data](https://github.com/rundeck/rundeck/pull/5965)
