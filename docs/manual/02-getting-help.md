@@ -1,3 +1,6 @@
+---
+alias: manual/getting-help.html
+---
 # Getting Help
 
 ## Q&A

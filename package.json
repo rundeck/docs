@@ -15,6 +15,7 @@
     "glob": "^7.1.4",
     "vue": "^2.6.10",
     "vuepress-bar": "^0.1.0",
+    "vuepress-plugin-alias": "^1.0.0-beta",
     "vuepress-sidebar-generator": "^0.1.1"
   },
   "devDependencies": {

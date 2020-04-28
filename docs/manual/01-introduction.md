@@ -1,3 +1,7 @@
+---
+alias: manual/introduction.html
+---
+
 # Introduction
 
 ## What is this guide about?
