@@ -178,6 +178,6 @@ JsonPath can also be embedded in the Template string using the `${path('$.foo')}
 
 ## FAQ
 ### How do I pass the raw event data to a job?
-You can use the [JsonPath](#jsonpath) `$.` as a job option value to send the event as a serialized
+You can use the [JsonPath](#jsonpath) `$` as a job option value to send the event as a serialized
 JSON. You can also send parts of the event by crafting a JsonPath that returns structured
 data!
