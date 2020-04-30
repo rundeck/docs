@@ -515,7 +515,7 @@ local-ttl-ssh-agent=<time in sec>
 
 Here's an example of SSH RSA key generation on a Linux system:
 
-    $ ssh-keygen -t rsa
+    $ ssh-keygen -t rsa -b 4096
     Generating public/private rsa key pair.
     Enter file in which to save the key (/home/demo/.ssh/id_rsa):
     Enter passphrase (empty for no passphrase):
@@ -525,7 +525,7 @@ Here's an example of SSH RSA key generation on a Linux system:
     The key fingerprint is:
     a7:31:01:ca:f0:62:42:9d:ab:c8:b7:9c:d1:80:76:c6 demo@ubuntu
     The key's randomart image is:
-    +--[ RSA 2048]----+
+    +--[ RSA 4096]----+
     | .o . .          |
     |.  * . .         |
     |. = =   .        |
@@ -536,6 +536,32 @@ Here's an example of SSH RSA key generation on a Linux system:
     |   +             |
     |                 |
     +-----------------+
+
+If you're using OpenSSH-Client 8.0p1-6build1 or higher (which is installed on Ubuntu 19.10 and up) you'll need to change your key generation:
+
+    $ ssh-keygen -t rsa -b 4096 -m PEM
+    Generating public/private rsa key pair.
+    Enter file in which to save the key (/home/demo/.ssh/id_rsa):
+    Enter passphrase (empty for no passphrase):
+    Enter same passphrase again:
+    Your identification has been saved in /home/demo/.ssh/id_rsa.
+    Your public key has been saved in /home/demo/.ssh/id_rsa.pub.
+    The key fingerprint is:
+    SHA256:GzO9Km/BPIl6IQ/NVPyeSQmr+6+sBOPYzIeTTZTMORk demo@ubuntu
+    The key's randomart image is:
+    +---[RSA 4096]----+
+    |      E.         |
+    |     o =+        |
+    |      O. + .     |
+    |     .....+      |
+    |    o+.=S+.o     |
+    |   *oB* *=+.     |
+    |  . O=+o.o.      |
+    |    .+=...       |
+    |     ..**o.      |
+    +----[SHA256]-----+
+
+
 
 ### Configuring remote machine for SSH
 
