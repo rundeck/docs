@@ -561,8 +561,6 @@ If you're using OpenSSH-Client 8.0p1-6build1 or higher (which is installed on Ub
     |     ..**o.      |
     +----[SHA256]-----+
 
-
-
 ### Configuring remote machine for SSH
 
 To be able to directly ssh to remote machines, the SSH public key of
