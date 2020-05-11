@@ -7,7 +7,7 @@ Full usage information can be found on the Docker Hub image pages.
 [rundeck/rundeck:{{{rundeckVersion}}}](https://hub.docker.com/r/rundeck/rundeck/)
 
 ```sh
-docker run --name some-rundeck -v data:/home/rundeck/server/data rundeck/rundeck:{{{rundeckVersion}}}
+docker run --name some-rundeck -p 4440:4440 -v data:/home/rundeck/server/data rundeck/rundeck:{{{rundeckVersion}}}
 ```
 
 ## Rundeck Enterprise
