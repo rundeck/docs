@@ -16,6 +16,8 @@ As we get closer to a larger release we are looking for your help and feedback. 
   - Light and Dark Modes.
   - Persists setting preferences in browser for use between loads.
 
+![A whale of a log!](https://docs.rundeck.com/assets/releases/3_2_7/viewer_moby_load.gif "A whale of a log!")
+
 This is just a beta release. We have tried to catch as many bugs as we can, but if there is something please provide feedback by sending an email to product@rundeck.com. The fully vetted version will be out mid-summer.
 
 ::: warning
