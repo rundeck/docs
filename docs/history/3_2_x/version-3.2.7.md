@@ -9,7 +9,7 @@ Our 3.2.7 release contains some great fixes and enhancements and a special previ
 ### Enhanced Event Viewer - BETA
 
 As we get closer to a larger release we are looking for your help and feedback. Some customers brought to our attention that the legacy Event Log Viewer was in need of some enhancements. Our Development team heard them and has answered the call. Enabled by default in this release you will find a Beta version of the new and improved Event Viewer. Here’s a few tid-bits on the benefits:
-  - Reduces output log loading time by **1000%** on 20k lines.
+  - Increases output log loading speed **1000%** over 20k lines.
   - Linear loading performance up to **100k lines**.
   - The log viewer no longer ties up your browser while loading large files.
   - Ability to **share a link** directly to a log output line number.
