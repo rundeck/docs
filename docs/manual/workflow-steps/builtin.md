@@ -8,6 +8,33 @@
 
 ### Global Variable
 
+#### Working with job references
+
+When a global variable step is defined in a referenced job, it exports values into a data variable that can be used in subsequent steps of the parent job.
+![Global Variable Image 1](~@assets/img/global-variable-image1.png)
+
+#### Collecting values for all target nodes
+
+Use the global variable workflow step to collect data across all target nodes into a delimited list. Rundeck executes the steps before the global variable step, collecting values into the variable and then executes any remaining steps. The data variable is available to all subsequent steps in the job.
+
+Note that you can also collect a value from a single node that is available in steps on the other targeted nodes.
+![Global Variable Image 2](~@assets/img/global-variable-image2.png)
+
+#### Reference
+
+The global variable step can capture the following groups of variables:
+-   [context](https://docs.rundeck.com/docs/manual/job-workflows.html#context-variables) variable, such as project, job, node
+-   data variable captured by a [key-value](https://docs.rundeck.com/docs/manual/log-filters/key-value-data.html), Multiline regex, or JQ log filter
+
+
+| Field name | Syntax                    | Description                                                                                                                                                                                            |
+|------------|---------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Value      | ${group.keyname*}         | Captures the value across all nodes into a comma separated list. To change the delimiter add the character after the asterisk. For example to capture values separated by a dash use ${data.status*-}. |
+|            | ${group.keyname@nodename} | Captures the value only on a single node. For example. ${data.status@haproxy}.                                                                                                                         |
+| Group      |                           | Prefix that identifies the variable group. Note that you cannot add the variable to any context groups such as job or node, however you can use data to add it to the captured group.                  |
+| Name       |                           | Key name of variable.  
+
+
 ### Flow Control
 
 ### Job State Conditional
