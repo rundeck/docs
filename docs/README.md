@@ -2,8 +2,7 @@
 sidebar: false
 ---
 
-# Rundeck Documentation
-
+# Rundeck {{{rundeckVersion}}} Documentation    
 
 Start with the **[User Guide](/manual/index.md)**.
 
