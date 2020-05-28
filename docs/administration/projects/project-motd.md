@@ -1,4 +1,4 @@
-# Project MOTD
+# Project Message Of The Day (MOTD)
 
 A motd file is a great way to make an announcement to the project's users.
 The motd content is interpreted as [markdown](http://commonmark.org/help/) text letting you format your text and embed images and links.
@@ -13,26 +13,30 @@ The motd content is interpreted as [markdown](http://commonmark.org/help/) text 
 
 ## CLI Usage
 
-Update the motd with some text.
+Update the motd with the [rd-cli](/manual/command-line-tools/rd.md) tool.
 
 ```bash
 rd projects readme put -p MyProject --motd -t "This is the **motd** for MyProject"
 ```
 
-You might want to set the project home page to show the motd.
+Now, you must add a property to set where to show the motd message, these options are `projectList` to show it in the main list of projects, `projectHome` to show it in the project view, or `navbar` to have a button in the navigation bar to display the motd at will, you could add more than one option as comma separated attributes:
 
+Example to show the motd in the project list and in the main project
 ```bash
-rd projects configure set -p MyProject -- --project.gui.motd.display=projectHome
+rd projects configure set -p MyProject -- --project.gui.motd.display=projectList,projectHome
 ```
 
 ## API Usage
 
 [Project motd/motd modification](/api/rundeck-api.md#project-motd-file)
 
-    PUT /api/13/project/myproject/motd.md
-    Content-Type: text/plain
+As we saw above, setting the motd using the GUI is the easiest way, less used is the API, but you can accomplish the same as by GUI or rd-cli, using below example:
 
-    "This is the **motd** for MyProject"
+```
+PUT /api/35/project/myproject/motd.md
+Content-Type: text/plain
+"This is the **motd** for MyProject"
+```
 
 ## Filesystem
 
@@ -41,4 +45,4 @@ If using the _filesystem_ storage type only, you can create the file in the proj
 - launcher: $RDECK_BASE/projects/{project}/motd.md
 - rpm/deb: /var/rundeck/projects/{project}/motd.md
 
-If using the _db_ storage type, use the GUI, the CLI or [API](#api-usage).
+If using the _db_ storage type, use the GUI, the [CLI](/manual/command-line-tools/rd.md) or [API](#api-usage).
