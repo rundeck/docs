@@ -32,7 +32,7 @@ rd projects configure set -p MyProject -- --project.gui.motd.display=projectHome
     PUT /api/13/project/myproject/motd.md
     Content-Type: text/plain
 
-    This is the **motd** for MyProject
+    "This is the **motd** for MyProject"
 
 ## Filesystem
 
