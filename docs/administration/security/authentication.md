@@ -90,16 +90,15 @@ encrypt passwords. The default encryption service is the Jetty password utility.
 In this example,
 we'll setup a new user named "jsmith", with a password of "mypass":
 
-```bash 
-$ java -jar rundeck-3.0.0.war --encryptpwd Jetty
+```
+$ java -jar rundeck-{{{rundeckVersionFull}}}.war --encryptpwd Jetty
 Required values are marked with: *
 Username (Optional, but necessary for Crypt encoding):
 jsmith    <-----Type this value
 *Value To Encrypt (The text you want to encrypt):
 mypass    <-----Type this value
-```
 
-```
+==ENCRYPTED OUTPUT==
 obfuscate: OBF:1xfd1zt11uha1ugg1zsp1xfp
 md5: MD5:a029d0df84eb5549c641e04a9ef389e5
 crypt: CRYPT:jsnDAc2Xk4W4o
@@ -207,12 +206,12 @@ You can simply specify the system properties on the java commandline:
 java -Drundeck.jaaslogin=true \
      -Dloginmodule.conf.name=jaas-ldap.conf \
      -Dloginmodule.name=ldap \
-     -jar rundeck-x.x.war
+     -jar rundeck-{{{rundeckVersionFull}}}.war
 ```
 
 Otherwise, if you are starting the Executable War via the supplied `rundeckd` script, you can modify the `RDECK_JVM` value in the `$RDECK_BASE/etc/profile` file to add two JVM arguments:
 
-```bash
+```sh
 export RDECK_JVM="-Dloginmodule.conf.name=jaas-ldap.conf \
     -Drundeck.jaaslogin=true \
     -Dloginmodule.name=ldap"
@@ -220,26 +219,28 @@ export RDECK_JVM="-Dloginmodule.conf.name=jaas-ldap.conf \
 
 Note: more information about using the Executable War and useful properties are under [Getting Started - Executable War Options](/administration/install/jar.md#launcher-options).
 
-**For the RPM/Deb installation**: the absolute path to the JAAS config file must be specified with the `java.security.auth.login.config` property.
+**For the RPM/DEB installation**:
 
-Declare `RDECK_JVM_OPTS` in `/etc/sysconfig/rundeckd` (rpm) or `/etc/default/rundeckd` (deb):
+Declare variables (as the ones from /etc/rundeck/profile) in `/etc/sysconfig/rundeckd` (rpm) or `/etc/default/rundeckd` (deb):
 
-```bash
-RDECK_JVM_OPTS="-Drundeck.jaaslogin=true \
-       -Djava.security.auth.login.config=/etc/rundeck/jaas-ldap.conf \
-       -Dloginmodule.name=ldap"
+Example:
+```
+$ cat /etc/sysconfig/rundeckd
+JAAS_CONF=/etc/rundeck/jaas-ldap.conf
+LOGIN_MODULE=ldap
 ```
 
 #### Step 3: Restart rundeckd
 
+RPM/DEB
 ```bash
-sudo /etc/init.d/rundeckd restart
+service rundeckd restart
 ```
 
 #### Step 4: Attempt to logon
 
 If everything was configured correctly, you will be able to access Rundeck using your AD credentials. If something did not go smoothly, look at `/var/log/rundeck/service.log` for stack traces that may indicate what is wrong.
-To make troubleshooting easier, you may want to add the `-Dcom.dtolabs.rundeck.jetty.jaas.LEVEL=DEBUG` Java system property to the `RDECK_JVM` environment variable above, to have enable DEBUG logging for the authentication module.
+To make troubleshooting easier, you may want to add the `-Dcom.dtolabs.rundeck.jetty.jaas.LEVEL=DEBUG` Java system property to the `RDECK_JVM` environment variable above, or as `RDECK_JVM_OPTS="$RDECK_JVM_OPTS -Dcom.dtolabs.rundeck.jetty.jaas.LEVEL=DEBUG"` in /etc/sysconfig/rundeckd for RPM or /etc/default/rundeck for DEB to have enable DEBUG logging for the authentication module.
 
 ### Login module configuration
 
@@ -252,7 +253,7 @@ ldap {
       contextFactory="com.sun.jndi.ldap.LdapCtxFactory"
       providerUrl="ldap://server:389"
       bindDn="cn=Manager,dc=example,dc=com"
-      bindPassword="secrent"
+      bindPassword="secret"
       authenticationMethod="simple"
       forceBindingLogin="false"
       userBaseDn="ou=People,dc=test1,dc=example,dc=com"
@@ -269,7 +270,6 @@ ldap {
       roleMemberAttribute="memberUid"
       roleObjectClass="posixGroup"
       cacheDurationMillis="300000"
-      supplementalRoles="user"
       reportStatistics="true"
       timeoutRead="10000"
       timeoutConnect="20000"
@@ -699,7 +699,7 @@ multiauth {
     contextFactory="com.sun.jndi.ldap.LdapCtxFactory"
     providerUrl="ldap://server:389"
     bindDn="cn=Manager,dc=example,dc=com"
-    bindPassword="secrent"
+    bindPassword="secret"
     authenticationMethod="simple"
     forceBindingLogin="false"
     userBaseDn="ou=People,dc=test1,dc=example,dc=com"
@@ -732,19 +732,18 @@ Based on the flags, JAAS would attempt the following for authentication:
 
 # Jaas Authorization Testing
 
-If you would like to test your Jaas configuration without restarting Rundeck every time you make a change to
-your Jaas configuration, you can execute the command:
+If you would like to test your Jaas configuration without restarting Rundeck every time you make a change to your Jaas configuration, you can add the `--testauth` option:
 
-    $ java -jar -Drundeck.jaaslogin=true -Dloginmodule.name=$LOGIN_MODULE_NAME -Drdeck.base=$RD_BASE_DIR rundeck.war --testauth
+ldap example:
 
-    ex.
-
-    $ java -jar -Drundeck.jaaslogin=true -Dloginmodule.name=RDpropertyfilelogin -Drdeck.base=/etc/rundeck rundeck.war --testauth
-    $ Checking file: /etc/rundeck/server/config/jaas-loginmodule.conf
-    $ Checking login module: RDpropertyfilelogin
-    $ Enter user name: admin
-    $ Enter password admin <-- This is masked in actual use
-    $ Login Succeeded!
+```sh
+$ java -jar -Drundeck.jaaslogin=true -Dloginmodule.conf.name=jaas-ldap.conf -Dloginmodule.name=ldap rundeck-{{{rundeckVersionFull}}}.war --testauth
+Checking file: $RDECK_BASE/server/config/jaas-ldap.conf
+Checking login module: ldap
+Enter user name: ldapuser
+Enter password ldapuserPASSWORD <-- This is masked in actual use
+Login Succeeded!
+```
 
 The Jaas configuration file you are testing against will be printed out, along with the name of the login module you are testing.
 You will be prompted to enter a username and password. These will be compared against your current Jaas configuration.
@@ -765,12 +764,12 @@ and which can list the "roles" the user has.
 `container`
 : The Container also provides a query mechanism `isUserInRole`.
 
-Both of these methods are used by default,
-although they can be disabled
-with the following configuration flags in `rundeck-config.properties`:
+Both of these methods are used by default, although they can be disabled with the following configuration flags in `rundeck-config.properties`:
 
-    rundeck.security.authorization.containerPrincipal.enabled=false
-    rundeck.security.authorization.container.enabled=false
+```properties
+rundeck.security.authorization.containerPrincipal.enabled=false
+rundeck.security.authorization.container.enabled=false
+```
 
 # Preauthenticated Mode
 
@@ -795,9 +794,11 @@ without requiring authentication.
 
 This method can be enabled with this config in `rundeck-config.properties`:
 
-    rundeck.security.authorization.preauthenticated.enabled=true
-    rundeck.security.authorization.preauthenticated.attributeName=REMOTE_USER_GROUPS
-    rundeck.security.authorization.preauthenticated.delimiter=:
+```properties
+rundeck.security.authorization.preauthenticated.enabled=true
+rundeck.security.authorization.preauthenticated.attributeName=REMOTE_USER_GROUPS
+rundeck.security.authorization.preauthenticated.delimiter=:
+```
 
 This configuration requires some additional setup to enable:
 
@@ -807,23 +808,27 @@ For Tomcat and Apache HTTPd with `mod_proxy_ajp`, here are some additional instr
 
 1.  Modify the tomcat server.xml, and make sure to set `tomcatAuthentication="false"` on the AJP connector:
 
-        <Connector port="8009" protocol="AJP/1.3" redirectPort="4440" tomcatAuthentication="false"/>
+```xml
+<Connector port="8009" protocol="AJP/1.3" redirectPort="4440" tomcatAuthentication="false"/>
+```
 
 2.  Configure Apache to perform the necessary authentication, and to pass an environment variable named "REMOTE_USER_GROUPS", the value should be all colon-separated e.g.: "user:admin:ops" (or using the `delimiter` you have configured.)
 
 Here is an example using just `mod_proxy_ajp`, and passing a static list of roles. A real solution should use [mod_lookup_identity](https://www.adelton.com/apache/mod_lookup_identity/):
 
-    <Location /rundeck>
-        ProxyPass  ajp://localhost:8009/rundeck
+```
+<Location /rundeck>
+    ProxyPass  ajp://localhost:8009/rundeck
 
-        AuthType basic
-        AuthName "private area"
-        AuthBasicProvider file
+    AuthType basic
+    AuthName "private area"
+    AuthBasicProvider file
 
-        AuthUserFile /etc/httpd/users.htpasswd
-        SetEnv AJP_REMOTE_USER_GROUPS "admin:testrole1:testrole2"
-        Require valid-user
-    </Location>
+    AuthUserFile /etc/httpd/users.htpasswd
+    SetEnv AJP_REMOTE_USER_GROUPS "admin:testrole1:testrole2"
+    Require valid-user
+</Location>
+```
 
 **Note**: `mod_proxy_ajp` requires prefixing the environment variable with "AJP\_", but `mod_jk` can pass the environment variable directly.
 
@@ -843,11 +848,13 @@ If the "User roles: " part is blank, then it may not be working correctly.
 
 If you have a proxy sitting in front of your Rundeck installation that authenticates your users, you can send the authenticated user and groups to Rundeck via HTTP headers. Set the following properties in your `rundeck-config.properties` file.
 
-    rundeck.security.authorization.preauthenticated.enabled=true
-    rundeck.security.authorization.preauthenticated.attributeName=REMOTE_USER_GROUPS
-    rundeck.security.authorization.preauthenticated.delimiter=,
-    rundeck.security.authorization.preauthenticated.userNameHeader=X-Forwarded-Uuid
-    rundeck.security.authorization.preauthenticated.userRolesHeader=X-Forwarded-Roles
+```properties
+rundeck.security.authorization.preauthenticated.enabled=true
+rundeck.security.authorization.preauthenticated.attributeName=REMOTE_USER_GROUPS
+rundeck.security.authorization.preauthenticated.delimiter=,
+rundeck.security.authorization.preauthenticated.userNameHeader=X-Forwarded-Uuid
+rundeck.security.authorization.preauthenticated.userRolesHeader=X-Forwarded-Roles
+```
 
 The `attributeName` property is the name of the request attribute which stores the user groups for the request. The forwarded headers will be put into this attribute. This attribute must be set for this method to work properly.
 
@@ -860,6 +867,8 @@ the delimiter specified in the `delimiter` property.
 
 If you are running preauthenticated mode and wish to redirect to a custom logout url on user logout, set the following properties:
 
-    # Redirect to upstream logout url
-    rundeck.security.authorization.preauthenticated.redirectLogout=true
-    rundeck.security.authorization.preauthenticated.redirectUrl=/customlogouturl
+```properties
+# Redirect to upstream logout url
+rundeck.security.authorization.preauthenticated.redirectLogout=true
+rundeck.security.authorization.preauthenticated.redirectUrl=/customlogouturl
+```
