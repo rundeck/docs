@@ -5,21 +5,24 @@ The motd content is interpreted as [markdown](http://commonmark.org/help/) text 
 
 ## Graphical Interface
 
-![Figure: Project motd](~@assets/img/fixme.png)
+![Figure: Project motd](~@assets/img/motdgui01.png)
+
+![Figure: Project motd](~@assets/img/motdgui02.png)
+
+![Figure: Project motd](~@assets/img/motdgui03.png)
 
 ## CLI Usage
 
 Update the motd with some text.
 
 ```bash
-rd projects motd put -p MyProject -t "This is the **motd** for MyProject"
+rd projects readme put -p MyProject --motd -t "This is the **motd** for MyProject"
 ```
 
 You might want to set the project home page to show the motd.
 
 ```bash
-rd projects configure set -p MyProject -- \
-   --project.gui.motd.display=projectHome
+rd projects configure set -p MyProject -- --project.gui.motd.display=projectHome
 ```
 
 ## API Usage
@@ -35,7 +38,7 @@ rd projects configure set -p MyProject -- \
 
 If using the _filesystem_ storage type only, you can create the file in the project base directory:
 
-- launcher: \$RDECK_BASE/projects/{project}/motd.md
+- launcher: $RDECK_BASE/projects/{project}/motd.md
 - rpm/deb: /var/rundeck/projects/{project}/motd.md
 
 If using the _db_ storage type, use the GUI, the CLI or [API](#api-usage).
