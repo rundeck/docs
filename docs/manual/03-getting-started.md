@@ -43,9 +43,8 @@ there are a couple ways you can try it.
   Choose the one that best suits your infrastructure.
   After installation, be sure Rundeck has been started.
   ::: tip
-  See [Startup](/administration/maintenance/startup.md) to learn how to
+  See [Startup](/administration/maintenance/startup.md) to learn how to  startup and shutdown rundeck.
   :::
-  startup and shutdown rundeck.
 - You can run the [vagrant](https://github.com/rundeck/anvils-demo) demo.
   The demo contains a project with tagged nodes, example job workflows with
   dynamic options, and a set of users, each with varying degrees of privilege.
@@ -175,7 +174,7 @@ and run Job definitions and interact with the dispatcher queue. These
 command tools are an alternative to functions accessible in the
 graphical console.
 
-See the [Command line tools](/manpages/man1/index.md).
+See the [Command line tools](/manual/command-line-tools/index.md).
 
 ## API
 
