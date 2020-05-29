@@ -1,8 +1,8 @@
-const RUNDECK_VERSION='3.2.0'
-const RUNDECK_VERSION_FULL='3.2.0-SNAPSHOT'
+const RUNDECK_VERSION='3.3.0'
+const RUNDECK_VERSION_FULL='3.3.0-SNAPSHOT'
 const API_VERSION='35'
 
-const REPO_BRANCH='3.2.x'
+const REPO_BRANCH='3.3.x'
 
 const setup = {
     base: process.env.DOC_BASE,
