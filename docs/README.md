@@ -1,5 +1,6 @@
 ---
 sidebar: false
+title: Rundeck Documentation
 ---
 
 # Rundeck {{{rundeckVersion}}} Documentation    
