@@ -15,25 +15,26 @@ to have access via [sudo].
 [sudo]: https://en.wikipedia.org/wiki/Sudo
 
 - **Supported Operating Systems:**
-  _ Red Hat Enterprise Linux
-  _ CentOS
-  _ Ubuntu
-  _ Windows Server
-- **A currently supported version of Mozilla Firefox or Google Chrome** \* Other HTML5 compliant web browsers may work but are not fully tested or supported.
+  - Red Hat Enterprise Linux
+  - CentOS
+  - Ubuntu
+  - Windows Server
+- **A currently supported version of Mozilla Firefox or Google Chrome**
+  - \* Other HTML5 compliant web browsers may work but are not fully tested or supported.
 - **2 CPUs** \* 2 CPUs per member
 - **4 GB RAM** \* other notes about memory sizing
 - **20 GB hard disk** \* other notes about disk sizing
 - **Database**
-  _ Mysql version
-  _ Mariadb version
-  _ Postgres version
-  _ Oracle version
+  - Mysql version
+  - Mariadb version
+  - Postgres version
+  - Oracle version
 - **Log store**
-  _ File system
-  _ S3 compatible object store
+  - File system
+  - S3 compatible object store
 - **Amazon EC2**
-  _ Instance size of m3.medium or larger
-  _ An instance size of m3.xlarge or larger if there are more than 100 hosts
+  - Instance size of m3.medium or larger
+  - An instance size of m3.xlarge or larger if there are more than 100 hosts
 
 ### Java
 
