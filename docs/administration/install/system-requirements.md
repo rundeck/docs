@@ -21,9 +21,10 @@ to have access via [sudo].
   - Windows Server
 - **A currently supported version of Mozilla Firefox or Google Chrome**
   - \* Other HTML5 compliant web browsers may work but are not fully tested or supported.
-- **2 CPUs** \* 2 CPUs per member
-- **4 GB RAM** \* other notes about memory sizing
-- **20 GB hard disk** \* other notes about disk sizing
+- **2 CPUs**
+  - 2 CPUs per instance
+- **4 GB RAM**
+- **20 GB hard disk**
 - **Database**
   - Mysql version
   - Mariadb version
