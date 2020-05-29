@@ -1,6 +1,6 @@
 # Overview
 
-This the Rundeck {{{rundeckVersion}}} _User Guide_.
+Welcome to the Rundeck {{{rundeckVersion}}} _User Guide_.
 
 For information about Rundeck Administration, see the [Administrator Guide](/administration/index.md)
 
