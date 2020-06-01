@@ -7460,6 +7460,228 @@ or error
 }
 ```
 
+## Calendars API (Enterprise)
+
+The calendar feature has some APIs:
+
+### List System Calendars
+Get all calendars at system level.
+
+**Request:**
+    
+    GET  /api/V/system/calendars
+
+**Response:**
+Content-Type: application/json
+
+```json
+[
+  {
+    "id": [ID],
+    "name": "[NAME]",
+    "description": "[DESCRIPTION]",
+    "calendarType": "[blackout/allowed]",
+    "level": "system",
+    "project": null,
+    "dateType": "[date,range,daily,monthly]",
+    "dateDefinition": [DATE-DEFINITION],
+    "enable": [true/false],
+    "allReference": [true/false],
+    "recurrent": [true/false],
+    "objects": [PROJECT_LIST/null]
+  },
+]
+```
+
+### List Project Calendars
+Get all calendars at project level
+
+**Request:**
+    
+    GET  /api/V/project/[PROJECT]/calendars
+
+**Response:**
+Content-Type: application/json
+```json
+[
+  {
+    "id": [ID],
+    "name": "[NAME]",
+    "description": "[DESCRIPTION]",
+    "calendarType": "[blackout/allowed]",
+    "level": "project",
+    "project": "[PROJECT]",
+    "dateType": "[date,range,daily,monthly]",
+    "dateDefinition": [DATE-DEFINITION],
+    "enable": [true/false],
+    "allReference": [true/false],
+    "recurrent": [true/false],
+    "objects": [
+      {
+        "uuid": "[JOBUUID]",
+        "name": "[JOBNAME"
+      }
+    ]
+  }
+]
+```
+
+### Create/Update System Calendar
+Create or update a calendar at system level
+
+**Request:**
+    
+    POST  /api/V/system/calendars
+
+Request Content:
+`Content-Type: application/json`
+
+```json
+  {
+    "id": [ID],
+    "name": "[NAME]",
+    "description": "[DESCRIPTION]",
+    "calendarType": "[blackout/allowed]",
+    "level": "system",
+    "dateType": "[date,range,daily,monthly]",
+    "dateDefinition": [DATE-DEFINITION],
+    "enable": [true/false],
+    "allReference": [true/false],
+    "recurrent": [true/false],
+    "objects": [
+      {
+        "name": "[PROJECTNAME]"
+      }
+    ]
+  }
+```
+
+*if the ID exists, it will update the existing calendar, otherwise it will be created it
+
+Example:
+
+```json
+  {
+    "id": 1,
+    "name": "System Calendar",
+    "description":"description",
+    "calendarType": "blackout",
+    "level": "system",
+    "dateType": "range",
+    "dateDefinition": [
+      "2019/11/21",
+      "2019/11/27"
+    ],
+    "enable": false,
+    "allReference": true,
+    "recurrent": true
+  }
+```
+
+
+### Create/Update Project Calendar
+Create or update a calendar at project level
+
+**Request:**
+    
+    POST  /api/V/project/[PROJECT]/calendars
+
+Request Content:
+`Content-Type: application/json`
+
+```json
+  {
+    "id": [ID],
+    "name": "[NAME]",
+    "description": "[DESCRIPTION]",
+    "calendarType": "[blackout/allowed]",
+    "level": "project",
+    "project": "[PROJECT]",
+    "dateType": "[date,range,daily,monthly]",
+    "dateDefinition": [DATE-DEFINITION],
+    "enable": [true/false],
+    "allReference": [true/false],
+    "recurrent": [true/false],
+    "objects": [
+      {
+        "uuid": "[JOBUUID]",
+        "name": "[JOBNAME]"
+      },
+     {
+        "uuid": "[JOBUUID]",
+        "name": "[JOBNAME]"
+      }
+    ]
+  }
+```
+
+*if the ID exists, it will update the existing calendar, otherwise it will be created it
+
+Example:
+
+```json
+{
+    "id": 1,
+    "name": "New Calendar",
+    "description": "test",
+    "calendarType": "blackout",
+    "level": "project",
+    "project": "Demo",
+    "dateType": "date",
+    "dateDefinition": [
+      "2019/12/07",
+      "2019/12/14",
+      "2019/12/31",
+      "2020/01/01"
+    ],
+    "enable": true,
+    "allReference": false,
+    "recurrent": false,
+    "objects": [
+      {
+        "uuid": "7ca918bd-b463-4948-96d2-796c0619c2bd",
+        "name": "scheduled/job"
+      }
+    ]
+  }
+  ```
+
+### Delete Project Calendar
+Deletes a calendar at project level
+
+**Request:**
+    
+    DELETE  /api/V/project/[PROJECT]/calendars/[ID]
+
+Request Content:
+`NO CONTENT NEEDED`
+
+
+Example:
+
+```json
+{
+    "msg": "Deleted calendar"
+  }
+  ```
+### Delete System Calendar
+Deletes a calendar at system level
+
+**Request:**
+    
+    DELETE  /api/V/system/calendars/[ID]
+
+Request Content:
+`NO CONTENT NEEDED`
+
+
+Example:
+
+```json
+{
+    "msg": "Deleted calendar"
+  }
+  ```
 
 ## Index
 
@@ -8061,3 +8283,16 @@ or error
 [/api/V/plugin/list]:#list-installed-plugins
 
 [ACLPOLICY]:../man5/aclpolicy.html
+
+[/api/V/project/\[PROJECT\]/calendars][]
+
+* `GET` [List Project Calendars](#list-project-calendars)
+* `POST` [Create/Update Project Calendars](#create-update-project-calendar)
+  
+[/api/V/system/calendars][]
+
+* `GET` [List System Calendars](#list-system-calendars)
+* `POST` [Create/Update System Calendars](#create-update-system-calendar)
+  
+[/api/V/project/\[PROJECT\]/calendars]:#list-project-calendars
+[/api/V/system/calendars]:#list-system-calendars
