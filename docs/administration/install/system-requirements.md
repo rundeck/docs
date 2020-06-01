@@ -16,6 +16,7 @@ to have access via [sudo].
 
 - **Supported Operating Systems:**
   - Red Hat Enterprise Linux
+  - Oracle Linux
   - CentOS
   - Ubuntu
   - Windows Server
