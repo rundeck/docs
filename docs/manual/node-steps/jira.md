@@ -16,6 +16,14 @@ project.plugin.WorkflowNodeStep.jira-comment-issue-step.password=keys/jira/passw
 project.plugin.WorkflowNodeStep.jira-comment-issue-step.url=https://instance.atlassian.net
 ```
 
+or use common jira config for all Jira workflow and nodesteps in `framework.properties`
+
+```
+jira.url=https://instance.atlassian.net
+jira.login=user
+jira.password-key-storage-path=keys/jira/pass
+```
+
 ### Usage
 
 To use the plugin, configure the mandatory input.
@@ -37,6 +45,14 @@ Password it's a keystorage path to the password.
 project.plugin.WorkflowNodeStep.jira-create-issue.login=admin@instance.com
 project.plugin.WorkflowNodeStep.jira-create-issue.password=keys/jira/password
 project.plugin.WorkflowNodeStep.jira-create-issue.url=https://instance.atlassian.net
+```
+
+or use common jira config for all Jira workflow and nodesteps in `framework.properties`
+
+```
+jira.url=https://instance.atlassian.net
+jira.login=user
+jira.password-key-storage-path=keys/jira/pass
 ```
 
 ### Usage
