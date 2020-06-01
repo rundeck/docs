@@ -11,7 +11,7 @@ This release has bug fixes and new features, including some GUI improvements.
 
 ## New Features
 
-* Job references can override Node Filters. See updates to [XML](/manual/document-format-reference/job-v20.md#jobref] and [YAML](/manual/document-format-reference/job-yaml-v12.md#job-reference-entry] job definition formats as well.
+* Job references can override Node Filters. See updates to [XML](/manual/document-format-reference/job-v20.md#jobref) and [YAML](/manual/document-format-reference/job-yaml-v12.md#job-reference-entry) job definition formats as well.
 * Job and Option descriptions can contain markdown and HTML. For Jobs, the first line is the short description, and following lines are interpreted as markdown.
 * MSSQL compatibility
 * Some GUI tweaks and changes

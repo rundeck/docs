@@ -148,30 +148,55 @@ This will enable Jetty to respond correctly when a forwarded request is first re
 
 ## Disabling SSL Protocols
 
-You can disable SSL protocols or cipher suites using these JVM variables:
+### Rundeck 3
 
-- `rundeck.jetty.connector.ssl.includedProtocols` set to a comma-separated list of SSL protocols to enable. Default will be based on the available protocols.
-- `rundeck.jetty.connector.ssl.excludedProtocols` set to a comma-separated list of SSL protocols to disable. Default value: 'SSLv3'
-- `rundeck.jetty.connector.ssl.includedCipherSuites` set to a comma-separated list of Cipher suites to enable. Default will be based on the available cipher suites.
-- `rundeck.jetty.connector.ssl.excludedCipherSuites` set to a comma-separated list of Cipher suites to disable. No default value.
+Rundeck 3 by default uses TLSv1.2. To use other protocols, it's necessary to enable them and Ciphers needed for the connection.
 
-The `included` settings determine what protocols or cipher suites are enabled, and the `excluded` settings then remove values from that list.
+#### Flags for enabling TLS Protocols in Rundeck 3 using JVM
 
-E.g. modify the `RDECK_JVM` variable in the file `/etc/rundeck/profile` and add:
+Use -Dserver.ssl.enabledProtocols to enable the protocol
 
-    -Drundeck.jetty.connector.ssl.excludedProtocols=SSLv3,SSLv2Hello
+`-Dserver.ssl.enabledProtocols=YourProtocols`
 
-When starting up the Jetty container will log a list of the disabled protocols:
+#### Flags for enabling Ciphers in Rundeck 3 using JVM
+Use -Dserver.ssl.ciphers to enable the Ciphers
 
-    2014-10-27 11:08:41.225:INFO:oejus.SslContextFactory:Enabled Protocols [SSLv2Hello, TLSv1] of [SSLv2Hello, SSLv3, TLSv1]
+`-Dserver.ssl.ciphers=YourCiphers`
 
-To see the list of enabled Cipher Suites, turn on DEBUG level logging for Jetty SSL utils: `-Dorg.eclipse.jetty.util.ssl.LEVEL=DEBUG`.
+#### For .RPM and .DEB Systems
+Edit /etc/sysconfig/rundeckd (for .RMP) or /etc/default/rundeckd (for .DEB) and add the flags
 
-
-
+`RDECK_JVM_OPTS="-Dserver.ssl.enabledProtocols=YourProtocols -Dserver.ssl.ciphers=YourCiphers`
 
 
+### Check if the connection is successfully
+Run this command from a terminal:
 
+`openssl s_client -connect HOST:PORT`
+
+Example output:
+```
+SSL handshake has read 1359 bytes and written 439 bytes`
+New, TLSv1/SSLv3, Cipher is ECDHE-RSA-AES128-SHA
+Server public key is 2048 bit
+Secure Renegotiation IS supported
+Compression: NONE
+Expansion: NONE
+No ALPN negotiated
+SSL-Session:
+    Protocol  : TLSv1
+    Cipher    : ECDHE-RSA-AES128-SHA
+    Session-ID: 5E443B400D0D89F1665E451EDCDFF367BC702D008B7ED91FD34C23CF771D29A6
+    Session-ID-ctx: 
+    Master-Key: 0D4E01C9B6B1BD6425CDB718B58B4C1197AEB02DB3E048981EB1FAA13772F8E22257BC10CBAA47FDE676597A7CADA5C1
+    Key-Arg   : None
+    PSK identity: None
+    PSK identity hint: None
+    SRP username: None
+    Start Time: 1581529920
+    Timeout   : 300 (sec)
+    Verify return code: 18 (self signed certificate)
+```
 
 ## Rundeck 3 SSL Configuration with Tomcat Servlet
 
@@ -207,6 +232,3 @@ framework.server.port = 8443
 framework.server.url = https://192.168.0.27:8443/rundeckpro
 
 #### Restart Tomcat Service and enter new Rundeck URL
-
-
-![Rundeck SSL Login](/docs/assets/img/tomcat_ssl.png)

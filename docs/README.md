@@ -1,9 +1,9 @@
 ---
 sidebar: false
+title: Rundeck Documentation
 ---
 
-# Rundeck Documentation
-
+# Rundeck {{{rundeckVersion}}} Documentation    
 
 Start with the **[User Guide](/manual/index.md)**.
 

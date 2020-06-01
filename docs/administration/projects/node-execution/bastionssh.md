@@ -75,7 +75,7 @@ Using Dry run, you might see output similar to this:
 
 You can test the plugin on a docker environment on the plugin [repo](https://github.com/rundeck-plugins/openssh-bastion-node-execution)
 
-- Run `./star-docker-example.sh`
+- Run `./start-docker-example.sh`
 - Got to `http://localhost:8080`
 - User/Password => admin/admin
 

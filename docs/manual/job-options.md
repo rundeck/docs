@@ -205,7 +205,7 @@ The `option.NAME` variable will contain a unique ID identifying the uploaded fil
 Option values can be passed to scripts as an argument or referenced
 inside the script via a named token. Each option value is defined in the Options context variables as `option.NAME`.
 
-See the [Context Variables](/manual/job-workflows.md#context-variables] Section.
+See the [Context Variables](/manual/job-workflows.md#context-variables) Section.
 
 **Example:**
 
@@ -387,7 +387,7 @@ Secure Remote Authentication Options have some limitations compared to Plain and
 
 ### Using Secure Options with Job References
 
-When you [define a Job Reference step in a workflow](/manual/node-steps/builtin.md#job-reference-step], you can specify the arguments that are passed to it. You can pass Secure Option values and Secure Remote Authentication Option values from a top-level job to a Job Reference, but option values _cannot be passed into another option of a different type_. So a parent job can only pass option values to the Job reference if the option type is the same between the jobs.
+When you [define a Job Reference step in a workflow](/manual/node-steps/builtin.md#job-reference-step), you can specify the arguments that are passed to it. You can pass Secure Option values and Secure Remote Authentication Option values from a top-level job to a Job Reference, but option values _cannot be passed into another option of a different type_. So a parent job can only pass option values to the Job reference if the option type is the same between the jobs.
 
 This constraint is to maintain the security design of these options:
 
@@ -459,7 +459,7 @@ Option model providers are configured on a per-Option basis (where a Job may hav
 
 ### Configuration
 
-Each Option entry for a Job can be configured to get the set of possible values from a remote URL. If you are authoring the Jobs via [job.xml file format](/manual/document-format-reference/job-v20.md#option], simply add a `valuesUrl` attribute for the `<option>`. If you are modifying the Job in the Rundeck web GUI, you can entry a URL in the "Remote URL" field for the Option.
+Each Option entry for a Job can be configured to get the set of possible values from a remote URL. If you are authoring the Jobs via [job.xml file format](/manual/document-format-reference/job-v20.md#option), simply add a `valuesUrl` attribute for the `<option>`. If you are modifying the Job in the Rundeck web GUI, you can entry a URL in the "Remote URL" field for the Option.
 
 e.g.:
 
@@ -520,7 +520,7 @@ Name Value List with default selections:
 
 ### URL connection parameters
 
-You can configure timeouts globally as described in [Configuration - Job Remote Option URL connection parameters](/administration/configuration/config-file-reference.md#rundeck-config.properties].
+You can configure timeouts globally as described in [Configuration - Job Remote Option URL connection parameters](/administration/configuration/config-file-reference.md#rundeck-config.properties).
 
 You can also specify these connection parameters on a per-URL basis:
 

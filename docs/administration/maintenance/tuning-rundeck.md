@@ -123,7 +123,7 @@ You can change this value, by updating the
 Please refer to the Quartz site for detailed information:
 [Quartz - Configure ThreadPool Settings][1].
 
-[1]: http://www.quartz-scheduler.org/documentation/quartz-2.x/configuration/ConfigThreadPool.html#configure-threadpool-settings
+[1]: http://www.quartz-scheduler.org/documentation/2.3.1-SNAPSHOT/configuration.html#configuration-of-threadpool-tune-resources-for-job-execution
 
 #### Update rundeck-config
 

@@ -14,19 +14,19 @@ There are two plugins:
 
 The plugins can be enabled in the Project Configuration page by selecting the PowerShell Node Executor and PowerShell File Copier as the default Node Executor and File Copiers.
 
-### Authentication Types
+## Authentication Types
 
 Authentication can happen in two ways, via trusted domain account or by username and password.
 
-#### Hosts in Trusted Domain
+### Hosts in Trusted Domain
 
 When all hosts are in a trusted domain, remote execution requires just the username to access the remote hosts. Authentication will be made to the remote nodes as the domain user account that is executing the Rundeck server process.
 
-#### Username and Password
+### Username and Password
 
 If all hosts are not in a trusted domain, both username and password are required to access the remote hosts.
 
-### Plugin Configuration
+## Plugin Configuration
 
 Trusted Domain authentication will be used by default, unless a username and password are configured to be used.
 
@@ -40,7 +40,7 @@ You can either configure the password or password storage path at a project-wide
 
 Passwords can be stored securely in the Rundeck Enterprise Keystore facility. These passwords can be stored in a tree like structure to help you organize them any way you wish. The passwords can be referenced using an attribute named "password-storage-path". When Rundeck needs the password, it looks up the file as referenced by the storage path, reads, decrypts, and passes the value to the plugins.
 
-### Node Configuration
+## Node Configuration
 
 Each host is configurable via "nodes" in the project resource model. Nodes are defined in terms of attributes.
 
@@ -51,20 +51,20 @@ Attributes
 - password-storage-path: The path to the file containing the password in the keystore. This path will start with "keys/".
 - connectionUri: Alternate connection parameters as a URI. e.g. "https://hostname:port"
 
-#### Example resource model definitions
+### Example resource model definitions
 
 The following example show a node defined using the XML format.
 
 **Note the password-storage-path attribute referencing the key path.**
 
-```
+```xml
  <node name="winhost123"
        hostname="xxx.xxx.xxx.xxx"
        username="myaccount"
        password-storage-path="keys/winhost123.passwd" .../>
 ```
 
-### Project Configuration
+## Project Configuration
 
 The Password storage path can be configured at the project level. In the Project Configuration page, set the Password Storage Path to a key path. The path can contain references to information from the node or user who is executing the command, for example:
 
@@ -78,18 +78,18 @@ or
 keys/users/${job.username}.password
 ```
 
-### WinRM Setting to use PowerShell Plugin
+## WinRM Setting to use PowerShell Plugin
 
 In order to connect Rundeck with remote Windows nodes, it is necessary to set WinRM in both, the server and the remote nodes.
 
-#### On the rundeck server
+### On the rundeck server
 
 ```
 winrm quickconfig
 winrm set winrm/config/client @{TrustedHosts="*"}
 ```
 
-#### On the remote nodes
+### On the remote nodes
 
 ```
 winrm quickconfig
@@ -102,19 +102,19 @@ winrm set winrm/config/winrs @{MaxMemoryPerShellMB="1024"}
 
 To enable the execution of remote command:
 
-```
+```powershell
 Set-ExecutionPolicy RemoteSigned
 ```
 
 To enable permission to a user to execute remote command:
 
-```
+```powershell
 Set-PSSessionConfiguration -ShowSecurityDescriptorUI -Name Microsoft.PowerShell
 ```
 
 Increase the concurrent shell issue:
 
-```
+```powershell
 set-item wsman:\localhost\shell\maxshellsperuser 50
 ```
 
@@ -126,7 +126,7 @@ set-item wsman:\localhost\shell\maxshellsperuser 50
 
 Open a powershell windows and run:
 
-```
+```powershell
 Enable-WSManCredSSP -Role "Client" -DelegateComputer "*.something.com"
 ```
 
@@ -134,23 +134,23 @@ Where `something.com` is the DNS domain of the target computer
 
 or
 
-```
+```powershell
 Enable-WSManCredSSP -Role "Client" -DelegateComputer "*"
 ```
 
 #### Allow Delegating Fresh Credentials
 
 - Click **Start**, type **mmc** and then click **OK**.
-- Click **File and then click **Add/Remove Snap-in\*\*.
+- Click **File** and then click **Add/Remove Snap-in**.
 - Click **Group Policy Object** and then click **Add**.
 - Select **Local Computer** and then click **Finish**.
 - Go to **Computer Policy\Administrative Templates\System\Credentials Delegation\Allow Delegating Fresh Credentials** → Set to **enabled**
 
-![Enable delegating fresh credentials](../../../assets/img/allow-delegating-fresh-credentials-1.png)
+![Enable delegating fresh credentials](~@assets/img/allow-delegating-fresh-credentials-1.png)
 
 - Add **WSMAN/\*** to list of computers and check the box for **Concatenate OS defaults with input above**.
 
-![Add servers to list](../../../assets/img/allow-delegating-fresh-credentials-2.png)
+![Add servers to list](~@assets/img/allow-delegating-fresh-credentials-2.png)
 
 #### Enable CredSSP authentication on Winrm Client
 
@@ -168,7 +168,7 @@ You need to have winrm service configured and running.
 
 Open a powershell windows and run:
 
-```
+```powershell
 Enable-WSManCredSSP -Role "Server"
 ```
 
@@ -188,21 +188,23 @@ winrm set winrm/config/service/auth @{CredSSP="true"}
 
 ### Troubleshooting
 
+#### Using non-administrator user
+
 If you are using a non-administrator user (or a not- domain-administrator user) to execute command to remote nodes, you need to set up the access on the remote machine ( to the user or some of its groups, eg: Domain User group).
 
 To add permissions to non-administrator user to execute remote commands:
 
-```
+```powershell
 Set-PSSessionConfiguration Microsoft.Powershell -ShowSecurityDescriptorUI
 ```
 
-### Troubleshooting
+#### Access is denied error
 
-If you get "Access is denied" error when you try to access to a shared folder on the remote node, it is possible that you must use the [CredSSP autentication](http://support.rundeck.com/customer/portal/articles/2522223-enable-credssp-authentication-windows).
+If you get "Access is denied" error when you try to access to a shared folder on the remote node, it is possible that you must use the [CredSSP Authentication](#enable-credssp-authentication-on-windows-domain).
 
 Then, you can define the authentication type like:
 
-```
+```xml
 <node name="XXXXX"
       description="Windows Server 2012"
       tags="Win2012"
@@ -232,7 +234,7 @@ WinRM firewall exception will not work since one of the network connection types
 
 Workaround using PowerShell as Administrator User:
 
-```
+```powershell
 # (to get the InterfaceIndex)
 Get-NetConnectionProfile
 
@@ -241,17 +243,25 @@ Set-NetConnectionProfile -InterfaceIndex [INTERFAZ_INDEX] -NetworkCategory Priva
 
 It could be necessary to change the user’s log-on in tomcat service when the remote connection does not work:
 
-![Tomcat settings](../../../assets/img/powershell-troubleshooting.png)
+![Tomcat settings](~@assets/img/powershell-troubleshooting.png)
 
-### Use utf-8 scripts
+## Use utf-8 scripts
 
 If you need to use UTF-8 scripts from an `unix` instance to a `windows` node, powershell is unable to identify correctly 
 the encoding of UTF-8 files without bom. You can force the file to be UTF-8 with bom adding the `file-copier-add-utf8-bom` 
 property to the node:
 
-```
-<node name="windowsServer" description="Windows server node" tags="windows"
-  osArch="x86_64" osFamily="windows" osName="Windows 10" osVersion="10" 
-  hostname="192.168.56.101:5985" file-copier-add-utf8-bom="true"/>
+```xml
+<node 
+  name="windowsServer" 
+  description="Windows server node" 
+  tags="windows"
+  osArch="x86_64" 
+  osFamily="windows" 
+  osName="Windows 10" 
+  osVersion="10" 
+  hostname="192.168.56.101:5985" 
+  file-copier-add-utf8-bom="true"
+  />
 ```
 

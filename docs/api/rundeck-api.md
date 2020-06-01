@@ -1,5 +1,6 @@
 ---
 title: API Reference
+alias: api/index.html
 ---
 
 # API Reference | Version {{{ apiVersion }}}
@@ -56,6 +57,10 @@ View the [Index](#index) listing API paths.
 ## Changes
 
 Changes introduced by API Version number:
+
+**Version 35**:
+* Updated Response:
+    - [`PUT /api/V/project/[PROJECT]/import`][/api/V/project/\[PROJECT\]/import] - More validation and error message results added.
 
 **Version 34**:
 * New Endpoints:
@@ -2558,11 +2563,13 @@ Manage the system system ACL policy files stored in the database.
 The files managed via the API **do not** include the files located on disk, however these policy files will be merged with
 any policy files in the normal filesystem locations (e.g. `$RDECK_BASE/etc`).
 
-**Note:** For Project-specific ACLs see [Project ACLs](#project-acls).
+::: tip 
+For Project-specific ACLs see [Project ACLs](#project-acls).
+:::
 
 For more information about ACL Policies see:
 
-* [ACLPOLICY format][ACLPOLICY]
+* [ACLPOLICY format][/manual/document-format-reference/aclpolicy-v10.md]
 * [Access Control Policy](/administration/security/authorization.md)
 
 ### List System ACL Policies
@@ -4893,7 +4900,7 @@ Content of each Log Entry:
 
 * `time`: Timestamp in format: "HH:MM:SS"
 * `absolute_time`: Timestamp in format: "yyyy-MM-dd'T'HH:mm:ssZ"
-* `level`: Log level, one of: SEVERE,WARNING,INFO,CONFIG,FINEST
+* `level`: Log level, one of: ERROR,WARN,NORMAL,VERBOSE,DEBUG,OTHER
 * `log`: The log message
 * `user`: User name
 * `command`: Workflow command context string
@@ -5895,6 +5902,9 @@ Response will indicate whether the imported contents had any errors:
         <error>file.aclpolicy could not be validated: ...</error>
         <error>file2.aclpolicy could not be validated: ...</error>
     </aclErrors>
+    <otherErrors count="[#]"><!-- since API v35 -->
+        <error>webhooks could not be validated: ...</error>
+    </otherErrors>
 </import>
 ```
 
@@ -5914,9 +5924,14 @@ Response will indicate whether the imported contents had any errors:
     "acl_errors": [
         "file.aclpolicy could not be validated: ...",
         "file2.aclpolicy could not be validated: ..."
+    ],
+    "other_errors": [
+        "webhooks could not be validated: ..."
     ]
 }
 ```
+
+* `other_errors` included since *API v35*
 
 ### Updating and Listing Resources for a Project
 

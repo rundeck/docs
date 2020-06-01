@@ -9,7 +9,7 @@ options can be constructed from event data!
 
 ## General Settings
 
-![](../../assets/img/wh-routing-rule-overview.png)
+![](~@assets/img/wh-routing-rule-overview.png)
 
 ### Batch Key (optional)
 The batch key makes it possible to extract a list from
@@ -40,7 +40,7 @@ webhook events are received. This will be reflected in the logs. Batches
 are extracted before applying the event ID key to each item.
 
 ## Rules
-![](../../assets/img/wh-routing-rule-rule-overview.png)
+![](~@assets/img/wh-routing-rule-rule-overview.png)
 :::tip
 Rules can be individually enabled/disabled!
 :::
@@ -72,7 +72,7 @@ Job options to be supplied during job execution. Use [JsonPath](#jsonpath) or
 
 Each rule can have multiple Conditions. Based on the [Policy](#policy), the rule will apply when all or any of the conditions are satisfied.  Each Condition defines a Field selector using JsonPath, a particular match type (defined below), and a value.
 
-![Oh noes :O](../../assets/img/wh-routing-rule-conditions-overview.png)
+![Oh noes :O](~@assets/img/wh-routing-rule-conditions-overview.png)
 
 ### Policy
 
@@ -178,6 +178,6 @@ JsonPath can also be embedded in the Template string using the `${path('$.foo')}
 
 ## FAQ
 ### How do I pass the raw event data to a job?
-You can use the [JsonPath](#jsonpath) `$.` as a job option value to send the event as a serialized
+You can use the [JsonPath](#jsonpath) `$` as a job option value to send the event as a serialized
 JSON. You can also send parts of the event by crafting a JsonPath that returns structured
 data!

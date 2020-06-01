@@ -3,6 +3,7 @@ module.exports = [{
   collapsable: false,
   sidebarDepth: 0,
   children: [
+    '/manual/',
     '/manual/01-introduction',
     '/manual/02-getting-help',
     '/manual/03-getting-started',
@@ -16,7 +17,8 @@ module.exports = [{
         '/manual/job-workflows',
         '/manual/job-options',
         '/manual/job-plugins',
-        '/manual/execution-lifecycle/job-resume.md'
+        '/manual/execution-lifecycle/job-resume.md',
+        '/manual/execution-lifecycle/job-retry-failed-nodes.md',
       ]
     },
     {

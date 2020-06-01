@@ -10,7 +10,7 @@ A typical example is to apply some form of encryption to the [Key Storage](/admi
 
 ## Configuring
 
-See: [Configuring the Storage Converter Plugin](/administration/security/key-storage.md#configuring-the-storage-converter-plugin).
+See: [Configuring the Storage Converter Plugin](/administration/security/key-storage.md#configuring-storage-converter-plugins).
 
 ## Java Plugin Type
 
@@ -20,7 +20,7 @@ The plugin interface is [StorageConverterPlugin]({{{javaDocBase}}}/com/dtolabs/r
 
 The service name is [`StorageConverter`]({{{javaDocBase}}}/com/dtolabs/rundeck/plugins/ServiceNameConstants.html#StorageConverter).
 
-SEE ALSO: [rundeck-storage-api](${javadocstoragetop}).
+SEE ALSO: [rundeck-storage-api]({{{javaDocStorageApiBase}}}).
 
 ```java
 import com.dtolabs.rundeck.core.plugins.Plugin;
