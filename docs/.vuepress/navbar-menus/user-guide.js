@@ -34,6 +34,10 @@ module.exports = [{
     text: 'Activity'
   },
   {
+    link: '/manual/schedules/project-schedules',
+    text: 'Schedules'
+  },
+  {
     link: '/manual/09-configure',
     text: 'Configure'
   },
