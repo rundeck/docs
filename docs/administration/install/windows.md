@@ -4,7 +4,7 @@
 
 Before proceeding to install Rundeck, check all system [requirements](https://docs.rundeck.com/docs/administration/install/system-requirements.html) to make sure that the server can run Rundeck, also, make sure that the Windows user has sufficient rights to install software.
 
-Rundeck requires Java Development Kit 1.8 (JDK 8), you can download it from Oracle [website](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).
+Be sure to install the appropriate Java Software Development Kit per the [requirements](https://docs.rundeck.com/docs/administration/install/system-requirements.html).
 
 ### Installing Rundeck on Windows based systems and first run
 
@@ -14,7 +14,20 @@ Download the Rundeck WAR file and save it to a main working directory, e.g. `C:\
 set RDECK_BASE=C:\rundeck
 ```
 
-When Rundeck is started for the first time, it generates the configuration files and folders structure. Open a Powershell command prompt, go to `c:\rundeck`, and execute `java -jar rundeck-3.0.X.war` (for the community edition) or `java -jar rundeckpro-[edition]-3.0.X.war` for the Enterprise edition. This step may take up to 1-2 minutes depending on system performance. When Rundeck is ready, it will be indicated in the Powershell window:
+When Rundeck is started for the first time, it generates the configuration files and folders structure. Open a Powershell command prompt, go to `c:\rundeck`, and execute
+for Enterprise:
+
+```
+java -jar rundeckpro-enterprise-{{{rundeckVersionFull}}}.war
+```
+
+or this for the community edition:
+
+```
+java -jar rundeck-{{{rundeckVersionFull}}}.war
+```
+
+This step may take up to 1-2 minutes depending on system performance. When Rundeck is ready, it will be indicated in the Powershell window:
 
 ![Windows launcher](~@assets/img/windows-launcher.png)
 
@@ -79,19 +92,23 @@ server.address=0.0.0.0
 
 Create a file called `start_rundeck.bat` with your favorite text editor with the contents shown below. Make sure the .war filename matches the war file you downloaded:
 
-```batch
-set CURDIR=%~dp0
-call %CURDIR%etc\profile.bat
-java %RDECK_CLI_OPTS% %RDECK_SSL_OPTS% -jar rundeck-3.0.X.war --skipinstall -d  >> %CURDIR%\var\logs\service.log  2>&1
-```
-
-Or for Rundeck Enterprise version:
+Rundeck Enterprise version:
 
 ```batch
 set CURDIR=%~dp0
 call %CURDIR%etc\profile.bat
-java %RDECK_CLI_OPTS% %RDECK_SSL_OPTS% -jar rundeckpro-[edition]-3.0.X.war --skipinstall -d  >> %CURDIR%\var\logs\service.log  2>&1
+java %RDECK_CLI_OPTS% %RDECK_SSL_OPTS% -jar rundeckpro-enterprise-{{{rundeckVersionFull}}}.war --skipinstall -d  >> %CURDIR%\var\logs\service.log  2>&1
 ```
+
+for community:
+
+```batch
+set CURDIR=%~dp0
+call %CURDIR%etc\profile.bat
+java %RDECK_CLI_OPTS% %RDECK_SSL_OPTS% -jar rundeck-{{{rundeckVersionFull}}}.war --skipinstall -d  >> %CURDIR%\var\logs\service.log  2>&1
+```
+
+
 
 To launch, type start_rundeck.bat at the command prompt. To stop Rundeck, you can press `<Crtl+C>` keys.
 

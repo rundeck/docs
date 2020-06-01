@@ -1,30 +1,5 @@
 # Installing on CentOS or Red Hat Linux distributions
 
-## Open Source Rundeck
-
-### Install with yum
-
-You can use this script to add the Rundeck yum repo and install Rundeck:
-
-```bash
-rpm -Uvh http://repo.rundeck.org/latest.rpm
-sudo yum install rundeck java
-```
-
-When new versions of Rundeck are released, you can upgrade to them using the command:
-
-```bash
-sudo yum update rundeck
-```
-
-### Install rpm package directly
-
-Download rpm package: http://rundeck.org/downloads.html and run:
-
-```bash
-sudo rpm -i rundeck-x.x.x.noarch.rpm rundeck-config-x.x.x.noarch.rpm
-```
-
 ## Rundeck Enterprise
 
 ### Install with yum
@@ -47,8 +22,35 @@ sudo yum update rundeckpro-enterprise
 Download rpm package: http://download.rundeck.com/eval/ and run:
 
 ```bash
-sudo rpm -i rundeckpro-enterprise-X.X.X-GA.noarch.rpm
+sudo rpm -i rundeckpro-enterprise-{{{rundeckVersionFull}}}-1.noarch.rpm
 ```
+
+
+## Open Source Rundeck
+
+### Install with yum
+
+You can use this script to add the Rundeck yum repo and install Rundeck:
+
+```bash
+rpm -Uvh http://repo.rundeck.org/latest.rpm
+sudo yum install rundeck java
+```
+
+When new versions of Rundeck are released, you can upgrade to them using the command:
+
+```bash
+sudo yum update rundeck
+```
+
+### Install rpm package directly
+
+Download rpm package: http://rundeck.org/downloads.html and run:
+
+```bash
+sudo rpm -i rundeck-{{{rundeckVersionFull}}}-1.noarch.rpm rundeck-config-x.x.x.noarch.rpm
+```
+
 
 ## Starting Rundeck
 
