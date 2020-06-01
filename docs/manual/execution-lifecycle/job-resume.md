@@ -94,3 +94,4 @@ file will be loaded from the Log Storage system.
 resume at their internally failed step.
 - If the Rundeck server is interrupted, such as an application or server crash, before the workflow state
 is serialized and stored the execution will not be able to resume from the failed step.
+- Currently, if you kill manually a job during its execution, this job cannot be resumed. The plugin does not allow this action. Only a job can be resumed when this fails by itself.
