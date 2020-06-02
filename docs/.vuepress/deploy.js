@@ -58,5 +58,5 @@ function syncS3(base) {
     }
 
     console.log('Syncing to s3 base:', base)
-    CP.execSync(`aws s3 sync --delete --acl public-read docs/.vuepress/dist/ s3://docs.rundeck.com/${base}/`, {stdio: "inherit"})
+    CP.execSync(`aws s3 sync --acl public-read docs/.vuepress/dist/ s3://docs.rundeck.com/${base}/`, {stdio: "inherit"})
 }

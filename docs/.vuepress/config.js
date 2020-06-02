@@ -91,7 +91,7 @@ module.exports = {
     ]
   ],
   themeConfig: {
-    logo: '/images/rundeck-logo.svg',
+    logo: '/images/rundecklogo-black.png',
     repo: 'rundeck/docs',
     docsDir: 'docs',
     docsBranch: setup.branch,
