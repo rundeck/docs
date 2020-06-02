@@ -18,13 +18,14 @@ Calendars can be defined at system level as *System Calendars* or project level 
 
 :   Will be applied for all Jobs on the project or only for selected Jobs in that Project.
 
-### Enable Calendars feature
+### Disable Calendars feature
 
-To enable the calendars, add the following settings to rundeck-config.properties
+If there is a need to disable the calendars feature, add the following settings to rundeck-config.properties
 
 ```properties
-rundeck.feature.calendars.enabled=true
+rundeck.feature.calendars.enabled=false
 ```
 :::tip
-Note: this will not prevent manual execution of jobs. It will only affect scheduled jobs.
+Note: This will not prevent manual execution of jobs. It will only affect scheduled jobs.
+Setting the value to 'true' or removing line will enable the feature.
 :::

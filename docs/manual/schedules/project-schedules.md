@@ -1,14 +1,6 @@
 # Project Schedules (Enterprise)
 
 Project Schedules allow you to define Schedules independently of Jobs.  Schedules can apply to any Jobs in the Project. Schedule definitions can be exported into, and imported from, Project Archives.
-
-## Feature Flag
-
-To enable the Project Schedules feature, add the following settings to rundeck-config.properties
-
-```properties
-rundeck.feature.projectSchedules.enabled=true
-```
 :::tip
 Currently only project admins will be able to access the Schedules module.  In a future release there will be more granular ACL based access assigned.
 :::
@@ -169,5 +161,13 @@ Schedules can be defined in YAML format as shown below. Multiple schedules can b
 
 	:   Either `*` for all months, or comma separated list of three-letter month abbreviations. `JAN,FEB,MAR,APR,MAY,JUN,JUL,AUG,SEP,OCT,NOV,DEC`
 
+
+  ## Feature Flag
+
+  To disabled the Project Schedules feature, add the following settings to rundeck-config.properties
+
+  ```properties
+  rundeck.feature.projectSchedules.enabled=false
+  ```
 
 [crontab]: http://www.quartz-scheduler.org/documentation/quartz-2.2.2/tutorials/tutorial-lesson-06.html
