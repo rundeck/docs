@@ -48,7 +48,7 @@ sudo yum update rundeck
 Download rpm package: http://rundeck.org/downloads.html and run:
 
 ```bash
-sudo rpm -i rundeck-{{{rundeckVersionFull}}}-1.noarch.rpm rundeck-config-x.x.x.noarch.rpm
+sudo rpm -i rundeck-{{{rundeckVersionFull}}}-1.noarch.rpm
 ```
 
 
