@@ -70,7 +70,10 @@ module.exports = {
       '@vuepress/pwa',
       {
         serviceWorker: true,
-        updatePopup: true
+        updatePopup: true,
+        generateSWConfig: {
+          globIgnores: ['**/gtm.js']
+        }
       }
     ],
     ['alias'],
