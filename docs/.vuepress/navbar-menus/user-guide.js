@@ -35,12 +35,16 @@ module.exports = [{
     text: 'Calendars'
   },
   {
-    link: '/manual/09-configure',
-    text: 'Configure'
+    link: '/manual/project-settings',
+    text: 'Project Settings'
+  },
+  {
+    link: '/manual/system-configs',
+    text: 'System Configuration'
   },
   {
     link: '/manual/10-user',
-    text: 'User'
+    text: 'Users'
   },
   {
     link: '/manual/12-webhooks',
