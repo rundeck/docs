@@ -23,10 +23,6 @@ module.exports = [{
     text: 'Commands'
   },
   {
-    link: '/manual/07-executions',
-    text: 'Executions'
-  },
-  {
     link: '/manual/08-activity',
     text: 'Activity'
   },

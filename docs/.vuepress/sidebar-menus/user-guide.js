@@ -31,8 +31,15 @@ module.exports = [{
       ]
     },
     '/manual/06-commands',
-    '/manual/07-executions',
-    '/manual/08-activity',
+    {
+      title: 'Activity',
+      collapsable: true,
+      sidebarDepth: 1,
+      children: [
+        '/manual/08-activity',
+        '/manual/07-executions'
+      ]
+    },
     ['/manual/schedules/project-schedules', 'Schedules (Enterprise)'],
     {
       title: 'Calendars (Enterprise)',
@@ -45,8 +52,6 @@ module.exports = [{
         '/manual/calendars/import-export.md'
       ]
     },
-    '/manual/09-configure',
-    '/manual/10-user.md',
     {
       title: 'Webhooks',
       collapsable: true,
@@ -64,6 +69,8 @@ module.exports = [{
         },
       ]
     },
+    '/manual/09-configure',
+    '/manual/10-user.md',
     {
       title: 'Document Formats',
       collapsable: true,
@@ -76,6 +83,6 @@ module.exports = [{
         '/manual/document-format-reference/resource-v13.md',
         '/manual/document-format-reference/resource-yaml-v13.md',
       ]
-    },
+    }
   ]
 }]
