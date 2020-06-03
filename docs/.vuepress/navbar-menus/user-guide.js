@@ -1,7 +1,4 @@
 module.exports = [{
-    link: '/manual/index',
-    text: 'Overview'
-  },{
     link: '/manual/01-introduction',
     text: 'Introduction'
   },
