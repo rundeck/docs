@@ -7,6 +7,9 @@ export default ({
 }) => {
   /** Update service workers on navigation */
   router.afterEach( (to, from) => {
+      if (typeof navigator === 'undefined')
+        return
+
       navigator.serviceWorker.getRegistrations().then( regos => {
           regos.forEach(r => {
               r.update()
