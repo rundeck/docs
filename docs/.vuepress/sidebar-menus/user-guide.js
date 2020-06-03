@@ -26,6 +26,7 @@ module.exports = [{
       sidebarDepth: 1,
       children: [
         '/manual/05-nodes',
+        '/manual/11-node-filters.md',
         '/manual/healthchecks',
       ]
     },
@@ -33,9 +34,19 @@ module.exports = [{
     '/manual/07-executions',
     '/manual/08-activity',
     ['/manual/schedules/project-schedules', 'Schedules (Enterprise)'],
+    {
+      title: 'Calendars (Enterprise)',
+      collapsable: true,
+      sidebarDepth: 1,
+      children: [
+        '/manual/calendars.md',
+        '/manual/calendars/system-calendars.md',
+        '/manual/calendars/project-calendars.md',
+        '/manual/calendars/import-export.md'
+      ]
+    },
     '/manual/09-configure',
     '/manual/10-user.md',
-    '/manual/11-node-filters.md',
     {
       title: 'Webhooks',
       collapsable: true,
@@ -51,17 +62,6 @@ module.exports = [{
             '/manual/webhooks/pagerduty-run-job'
           ]
         },
-      ]
-    },
-    {
-      title: 'Calendars (Enterprise)',
-      collapsable: true,
-      sidebarDepth: 1,
-      children: [
-        '/manual/calendars.md',
-        '/manual/calendars/system-calendars.md',
-        '/manual/calendars/project-calendars.md',
-        '/manual/calendars/import-export.md'
       ]
     },
     {

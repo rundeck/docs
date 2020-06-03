@@ -35,6 +35,10 @@ module.exports = [{
     text: 'Schedules'
   },
   {
+    link: '/manual/calendars',
+    text: 'Calendars'
+  },
+  {
     link: '/manual/09-configure',
     text: 'Configure'
   },
@@ -43,16 +47,8 @@ module.exports = [{
     text: 'User'
   },
   {
-    link: '/manual/11-node-filters',
-    text: 'Node Filters'
-  },
-  {
     link: '/manual/12-webhooks',
     text: 'Webhooks'
-  },
-  {
-    link: '/manual/calendars',
-    text: 'Calendars'
   },
   {
     link: '/manual/document-format-reference/index',
