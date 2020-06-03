@@ -38,7 +38,7 @@ module.exports = [{
     '/manual/11-node-filters.md',
     {
       title: 'Webhooks',
-      collapsable: false,
+      collapsable: true,
       sidebarDepth: 2,
       children: [
         '/manual/12-webhooks.md',
