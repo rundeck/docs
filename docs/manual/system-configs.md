@@ -121,6 +121,13 @@ See what plugins you have today.
 
 Did you use our [Developer Docs](/api/rundeck-api) to write your own plugin?  Upload it here to use it on your instance.
 
+## Password Utility
+
+## Users
+This section is where you can see a summary of User accounts and, with Enterprise, manage local user accounts with a GUI based editor.
+
+[More details about the Users section can be found here](/manual/user-management/user-mgmt.html).
+
 ## Licenses
 
 This page lists the Rundeck and third party library licenses.

@@ -69,16 +69,24 @@ module.exports = [{
         },
       ]
     },
-    ['/manual/project-settings', 'Project Settings'],
+    {
+      title: 'Project Settings',
+      collapsable: true,
+      sidebarDepth: 1,
+      children: [
+          '/manual/project-settings'
+      ]
+    },
     {
       title: 'System Configurations',
       collapsable: true,
       sidebarDepth: 1,
       children: [
-          '/manual/system-configs'
+          '/manual/system-configs',
+          '/manual/user-management/user-mgmt'
       ]
     },
-    ['/manual/10-user.md', 'Users'],
+    ['/manual/10-user.md', 'Profile Menu'],
     {
       title: 'Document Formats',
       collapsable: true,
