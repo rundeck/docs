@@ -44,7 +44,7 @@ module.exports = [{
   },
   {
     link: '/manual/10-user',
-    text: 'Users'
+    text: 'Profile Menu'
   },
   {
     link: '/manual/12-webhooks',
