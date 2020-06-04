@@ -52,77 +52,41 @@ You can install more types of File Copiers as plugins, see [Node Execution Plugi
 ## Edit Nodes...
 This section lets you add and modify Node Resource Model Sources for the project.
 These sources contain the node definitions for the project.
-One source will already be defined as a result of the initial project creation.
-You can configure multiple Node Sources to gather all the node information relevant to this project. Rundeck will aggregate the data from each
-one providing a merged view of the nodes.
+A default source will be defined listing the Rundeck Host as a node as a result of the initial project creation.
+You can configure additional Node Sources to gather all the node information relevant to this project.
 
-To add a new one, click "Add Source". You are prompted to select a type of source. The list shown will include all of the built-in types of sources, as well as any Plugins you have installed.
-
-![Add Resource Model Source](~@assets/img/fig0706.png)
-
-When you click "Add" for a type, you will be shown the configuration options for the type.
-
-![Configure Resource Model Source](~@assets/img/fig0707.png)
-
-You can then click "Cancel" or "Save" to discard or add the configuration to the list.
-
-Each item you add will be shown in the list:
-
-![Configured Source](~@assets/img/fig0708.png)
-
-To edit an item in the list click the "Edit" button. To delete an item in the list click the "Delete" button.
-
-Each type of Resource Model Source will have different configuration settings of its own. The built-in Resource Model Source providers are shown below.
-
-You can install more sources as plugins, see [Resource Model Source Plugins](/administration/projects/resource-model-sources/builtin.md#resource-model-source-plugins).
-
-#### File Resource Model Source
-
-This is the File Resource Model Source configuration form:
-
-![File Resource Model Source](~@assets/img/fig0707.png)
-
-See [File Resource Model Source Configuration](/administration/projects/resource-model-sources/builtin.md#file-resource-model-source-configuration) for more configuration information.
-
-#### Directory Resource Model Source
-
-Allows a directory to be scanned for resource document files. All files
-with an extension supported by one of the [Resource Model Document Formats](/administration/projects/resource-model-sources/builtin.md#resource-model-document-formats) are included.
-
-![Directory Resource Model Source](~@assets/img/fig0709.png)
-
-See [Directory Resource Model Source Configuration](/administration/projects/resource-model-sources/builtin.md#directory-resource-model-source-configuration) for more configuration information.
-
-#### Script Resource Model Source
-
-This source can run an external script to produce the resource model
-definitions.
-
-![Script Resource Model Source](~@assets/img/fig0710.png)
-
-See [Script Resource Model Source Configuration](/administration/projects/resource-model-sources/builtin.md#script-resource-model-source-configuration) for more configuration information.
-
-#### URL Resource Model Source
-
-This source performs a HTTP GET request on a URL to return the
-resource definitions.
-
-![URL Resource Model Source](~@assets/img/fig0711.png)
-
-See [URL Resource Model Source Configuration](/administration/projects/resource-model-sources/builtin.md#url-resource-model-source-configuration) for more configuration information.
+See [Node Sources](/administration/projects/resource-model-sources/) for more details.
 
 ## Access Control
 
 ## Edit Readme...
+A project ReadMe can provide some important context for a Project.  The content can be formatted using Markdown and can displayed on the Project's home page and as part of the Project Listing.
 
 ## Edit Message of the Day...
+The Message of the Day is a way to communicate important messages to Project users.  The message can be dismissed or hidden after reading using the [x] in the upper right corner.
+
+![Message of the Day](~@assets/img/motd-example.png)
+
+More info in the [Projects Section](/administration/projects/project-motd.html)
 
 ## Setup SCM...
 
+More info in the [Projects Section > SCM](/administration/projects/scm/)
+
 ## Export Archive...
+Use this to export the Project to an Archive file for backup or migration purposes.
+
+More info in the [Projects Section](/administration/projects/project-archive.html#export-archive).
 
 ## Import Archive...
+Use this to import a Project archive file.
+
+More info in the [Projects Section](/administration/projects/project-archive.html#import-archive).
 
 ## Delete Project...
+Use this to delete the project.  Note it will delete all associated jobs, node sources, etc.
 
 ## Plugins Control
+Plugins Control can be used to selectively enable/disable plugins available to this project.
+
+More info in the [Projects Section](/administration/projects/plugin-control.html).
