@@ -51,6 +51,7 @@ Verify your Java version to check it meets the requirement:
 ```bash
 $ java -version
 ```
+Example output (actual version numbers can vary)
 
 ```
 java version "1.8.0_131"
