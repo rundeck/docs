@@ -70,6 +70,14 @@ module.exports = [{
       ]
     },
     {
+      title: 'Tour Manager (Enterprise)',
+      collapsable: true,
+      sidebarDepth: 2,
+      children: [
+        '/manual/tour-manager.md'
+      ]
+    },
+    {
       title: 'Project Settings',
       collapsable: true,
       sidebarDepth: 1,

@@ -35,6 +35,14 @@ module.exports = [{
     text: 'Calendars'
   },
   {
+    link: '/manual/12-webhooks',
+    text: 'Webhooks'
+  },
+  {
+    link: '/manual/tour-manager',
+    text: 'Tour Manager'
+  },
+  {
     link: '/manual/project-settings',
     text: 'Project Settings'
   },
@@ -45,10 +53,6 @@ module.exports = [{
   {
     link: '/manual/10-user',
     text: 'Profile Menu'
-  },
-  {
-    link: '/manual/12-webhooks',
-    text: 'Webhooks'
   },
   {
     link: '/manual/document-format-reference/index',
