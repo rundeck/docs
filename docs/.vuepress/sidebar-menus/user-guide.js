@@ -1,7 +1,7 @@
 module.exports = [{
   title: 'User Guide',
   collapsable: false,
-  sidebarDepth: 0,
+  sidebarDepth: 1,
   children: [
     '/manual/01-introduction',
     '/manual/02-getting-help',
@@ -55,7 +55,7 @@ module.exports = [{
     {
       title: 'Document Formats',
       collapsable: true,
-      sidebarDepth: 0,
+      sidebarDepth: 1,
       children: [
         '/manual/document-format-reference/aclpolicy-v10.md',
         '/manual/document-format-reference/job-v20.md',

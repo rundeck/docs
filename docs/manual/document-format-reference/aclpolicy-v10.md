@@ -2,7 +2,7 @@
 
 Updated December 20, 2013
 
-# Overview
+## Overview
 
 This document describes the YAML format for ACL Policy definition files.
 
