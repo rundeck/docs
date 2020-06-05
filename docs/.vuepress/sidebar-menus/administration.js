@@ -21,7 +21,7 @@ module.exports = [{
     {
       title: 'Configuration',
       collapsable: true,
-      sidebarDepth: 0,
+      sidebarDepth: 1,
       children: [
         '/administration/configuration/license',
         {
