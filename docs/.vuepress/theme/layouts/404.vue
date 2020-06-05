@@ -6,7 +6,8 @@
     <div class="theme-default-content">
       <h1>404</h1>
       <blockquote>{{ getMsg() }}</blockquote>
-      <router-link to="/">Take me home.</router-link>
+      <router-link to="/">Take me home.</router-link><br>
+      <img src="/images/saucer-cat.png" style="width:321px;height:224px;"/>
     </div>
   </div>
 </template>
@@ -15,10 +16,10 @@
 import Navbar from '@theme/components/Navbar.vue'
 
 const msgs = [
-  `There's nothing here.`,
-  `How did we get here?`,
+  `We must be purrr-fectly lost.`,
+  `Too much Light Speed! How did we get here?`,
   `That's a Four-Oh-Four.`,
-  `Looks like we've got some broken links.`
+  `You gone beyond the rim, please search the galaxy for what you're looking for.`
 ]
 
 export default {
