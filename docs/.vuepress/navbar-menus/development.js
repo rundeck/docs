@@ -5,8 +5,8 @@ module.exports = [{
   text: 'Plugin Development',
   link: '/developer/index'
 }, {
-  text: 'Command Line Tools',
-  link: '/manual/command-line-tools/'
+  text: 'RD - Command Line Interface',
+  link: 'https://rundeck.github.io/rundeck-cli'
 }, {
   text: 'History',
   link: '/history/'
