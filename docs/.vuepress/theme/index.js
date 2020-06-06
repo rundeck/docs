@@ -13,10 +13,16 @@ module.exports = (_, ctx) => ({
         base => themeConfig.locales[base].algolia
       );
 
-    const ret = isAlgoliaSearch ?
-    {
-      '@AlgoliaSearchBox': path.resolve(__dirname, 'components/AlgoliaSearchBox.vue')
-    } : {}
+    let ret = {
+      '@NavBar': path.resolve(__dirname, 'components/Navbar.vue')
+    }
+
+    if(isAlgoliaSearch) {
+      ret = {
+        ...ret,
+        '@AlgoliaSearchBox': path.resolve(__dirname, 'components/AlgoliaSearchBox.vue')
+      }
+    }
 
     return ret
   },
