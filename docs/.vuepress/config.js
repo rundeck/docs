@@ -99,7 +99,7 @@ module.exports = {
     apiVersion: setup.apiVersion,
     version: setup.rundeckVersion,
     versionFull: setup.rundeckVersionFull,
-    algolia: {
+    algolia: setup.base == 'docs' ? {
       appId: 'GRSXNRCDRG',
       apiKey: '50ca83cbf53e21e93a02dc46488b12e0',
       indexName: 'prod_rundeck_docs',
@@ -108,7 +108,7 @@ module.exports = {
         facets: [ "version" ],
         facetFilters: [ `version:${setup.base}` ]
       },
-    },
+    } : undefined,
     searchMaxSuggestions: 10,
     lastUpdated: 'Last Updated', // string | boolean
     nav: [{

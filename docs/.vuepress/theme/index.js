@@ -13,11 +13,12 @@ module.exports = (_, ctx) => ({
         base => themeConfig.locales[base].algolia
       );
 
-    return {
-      '@AlgoliaSearchBox': isAlgoliaSearch
-        ? path.resolve(__dirname, 'components/AlgoliaSearchBox.vue')
-        : path.resolve(__dirname, 'noopModule.js')
-    };
+    const ret = isAlgoliaSearch ?
+    {
+      '@AlgoliaSearchBox': path.resolve(__dirname, 'components/AlgoliaSearchBox.vue')
+    } : {}
+
+    return ret
   },
 
   extend: '@vuepress/theme-default'
