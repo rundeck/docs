@@ -10,7 +10,7 @@
             font-family: 'Jost';
             font-weight: 400;
             fill: black;
-            font-size: 2em;
+            font-size: 1.8em;
         }
     </style>
     <path fill-rule="evenodd" clip-rule="evenodd" d="M17.15 5.693l-2.697-4.28H0l2.697 4.28H17.15zM0 22.812h14.453l2.697-4.28H2.697L0 22.812zm5.393-12.84h14.453l1.348 2.14-1.348 2.141H5.393l1.348-2.14-1.348-2.14z" fill="#f73f39"/>
