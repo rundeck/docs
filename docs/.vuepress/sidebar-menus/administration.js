@@ -65,6 +65,7 @@ module.exports = [{
         '/administration/security/default-users',
         '/administration/security/authentication',
         '/administration/security/authorization',
+        '/administration/security/acl-policy-editor',
         '/administration/security/ssl',
         '/administration/security/key-storage',
         '/administration/security/sso',
