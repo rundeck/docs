@@ -3,7 +3,7 @@
 Name: <span style="color: fuchsia"><span class="glyphicon glyphicon-pushpin"></span> "nacho fuchsia pushpin"</span>
 
 ## Overview
-Our 3.2.8 release is small release addressing a few urgent bug fixes.
+Our 3.2.8 release is a small release addressing a few urgent bug fixes.
 
 ## Issues
 
