@@ -1,6 +1,34 @@
-# Release 3.3.0
+# Preview Release 3.3.0
 
 Name: <span style="color: peru"><span class="glyphicon glyphicon-flash"></span> "onion ring peru flash"</span>
+
+## Overview
+**Welcome to the preview release of Rundeck 3.3.0.**
+
+This release includes a long list of feature releases for our Enterprise and Open Source versions and fixes throughout the 3.2.x series.  This preview version provided is still under development. We are hoping you have a chance to download and test it, but it should **not** be used for production yet.
+
+Here is a list of some things you can check out:
+- Backend updates to Grails 4/Gradle 5 which now support Java 11.
+- [Schedules]('/manual/schedules/project-schedules') can be decoupled from jobs to make managing schedule changes easier.
+- [Calendars]('/manual/calendars') offer blackout/allowed job run dates and times.
+- New User Management Wizard for local Rundeck user accounts.
+- New Node Wizard for creating node entries local to Rundeck.
+- An Enhanced Log Viewer loads job activity 1000% faster with improved usability options.
+- Job tags to refine searching for your important jobs.
+- Spring Security 5 upgrade including OAuth2 updates.
+- [HTTP Tours]('/manual/tour-manager') can now be built and managed in product.
+
+Documentation for the 3.3.x release can be [found here](https://docs.rundeck.com/3.3.x) and will be in-progress until the official release.
+
+## Known Issues
+If you find a bug or run into any issue you can email us at [product@rundeck.com](mailto:product@rundeck.com) or add an issue to GitHub.  Please be sure to mention that you are using the `3.3.0 Preview` version.
+
+* Tour Manager has some outstanding bugs:
+  * Issue editing steps and their title.
+  * Some buttons are mis-labled.
+  * Step re-ordering is still under development.
+* Event Viewer is still listed as beta.
+
 
 ## Issues
 
