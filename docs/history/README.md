@@ -2,9 +2,9 @@
 
 ## Most Recent Release Notes
 
-Our 3.2.7 release contains some great fixes and enhancements and a special preview of things to come! Check out the details for the Enhanced Event Viewer Beta and a critical bug fix.
+Our 3.2.8 release contains some great fixes and enhancements and a special preview of things to come! Check out the details for the Enhanced Event Viewer Beta and a critical bug fix.
 
-[Rundeck 3.2.7](3_2_x/version-3.2.7.html)
+[Rundeck 3.2.8](3_2_x/version-3.2.8.html)
 
 ## Upgrading
 
