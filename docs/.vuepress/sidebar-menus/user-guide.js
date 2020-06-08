@@ -85,7 +85,12 @@ module.exports = [{
       path: '/manual/tour-manager.md',
       sidebarDepth: 2
     },
-    '/manual/project-settings',
+    {
+      title: 'Project Settings',
+      collapsable: true,
+      path: '/manual/project-settings',
+      sidebarDepth: 2
+    },
     {
       title: 'System Configurations',
       collapsable: true,
