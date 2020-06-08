@@ -9,6 +9,7 @@ module.exports = [{
     {
       title: 'Jobs',
       collapsable: true,
+      path: '/manual/04-jobs',
       sidebarDepth: 1,
       children: [
         '/manual/04-jobs',
@@ -23,18 +24,25 @@ module.exports = [{
     {
       title: 'Nodes',
       collapsable: true,
+      path:'/manual/05-nodes',
       sidebarDepth: 1,
       children: [
         '/manual/05-nodes',
         '/manual/11-node-filters.md',
-        '/manual/healthchecks',
+        '/manual/healthchecks'
       ]
     },
-    '/manual/06-commands',
+    {
+      title: 'Commands',
+      path: '/manual/06-commands',
+      collapsable: true,
+      sidebarDepth: 1
+    },
     {
       title: 'Activity',
+      path: '/manual/08-activity',
       collapsable: true,
-      sidebarDepth: 1,
+      sidebarDepth: 2,
       children: [
         '/manual/08-activity',
         '/manual/07-executions'
@@ -44,9 +52,10 @@ module.exports = [{
     {
       title: 'Calendars (Enterprise)',
       collapsable: true,
-      sidebarDepth: 1,
+      path:'/manual/calendars',
+      sidebarDepth: 2,
       children: [
-        '/manual/calendars.md',
+        '/manual/calendars',
         '/manual/calendars/system-calendars.md',
         '/manual/calendars/project-calendars.md',
         '/manual/calendars/import-export.md'
@@ -55,9 +64,10 @@ module.exports = [{
     {
       title: 'Webhooks',
       collapsable: true,
+      path: '/manual/12-webhooks',
       sidebarDepth: 2,
       children: [
-        '/manual/12-webhooks.md',
+        '/manual/12-webhooks',
         {
           title: 'Webhooks Handlers',
           sidebarDepth: 2,
@@ -72,22 +82,14 @@ module.exports = [{
     {
       title: 'Tour Manager (Enterprise)',
       collapsable: true,
-      sidebarDepth: 2,
-      children: [
-        '/manual/tour-manager.md'
-      ]
+      path: '/manual/tour-manager.md',
+      sidebarDepth: 2
     },
-    {
-      title: 'Project Settings',
-      collapsable: true,
-      sidebarDepth: 1,
-      children: [
-          '/manual/project-settings'
-      ]
-    },
+    '/manual/project-settings',
     {
       title: 'System Configurations',
       collapsable: true,
+      path: '/manual/system-configs',
       sidebarDepth: 1,
       children: [
           '/manual/system-configs',

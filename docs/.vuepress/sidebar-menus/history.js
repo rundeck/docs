@@ -13,7 +13,7 @@ module.exports = [
         collapsable: true,
         sidebarDepth: 2,
         path: '/history/',
-        children: getChildren('docs/history', '3_2_3'),
+        children: getChildren('docs/history', '3_3_x'),
       },
       {
         title: '3.2.x',
@@ -52,5 +52,5 @@ module.exports = [
       }
     ],
   },
-  
+
 ]

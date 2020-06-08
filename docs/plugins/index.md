@@ -16,6 +16,8 @@ More plugins can be found via:
 * [Github Search: rundeck](https://github.com/search?p=3&q=rundeck&type=Repositories)
 * [Github topic: `rundeck`](https://github.com/topics/rundeck)
 
+***Note: We are releasing new plugins all the time. This list may not fully list all included plugins.  If you find one missing let us know!***
+
 Type|Plugin|Description|Availability
 ----|----|--------|----
 Node Step | [Command](/manual/node-steps/builtin.md#command-step) | Calls system commands on remote nodes | Built-in
@@ -87,4 +89,4 @@ SCM | [Job Replication](/administration/projects/scm/job-replication.md) | Repli
 SSO | [Okta](/administration/security/sso.md) | Allows you to use Okta to log into Rundeck | Enterprise
 Storage Converter | [Encyption](/administration/configuration/plugins/bundled-plugins.md#jasypt-encryption-plugin) | Encrypts Key Storage and Project configuration data | Built-in
 Webhook | [Run Job](/manual/webhooks/run-job.md) | Runs a job when a webhook event is received | Built In
-Webhook | [Routing Run Job](./webhooks/routing-run-job.md) | Advanced rule processing of webhook event data to run jobs. | Enterprise 
+Webhook | [Routing Run Job](./webhooks/routing-run-job.md) | Advanced rule processing of webhook event data to run jobs. | Enterprise

@@ -58,6 +58,7 @@ You can configure additional Node Sources to gather all the node information rel
 See [Node Sources](/administration/projects/resource-model-sources/) for more details.
 
 ## Access Control
+Control access to the project with [ACL Policy GUI](/administration/security/acl-policy-editor.html) (Enterprise) or [Access Control Policy](/administration/security/authorization.html) files.
 
 ## Edit Readme...
 A project ReadMe can provide some important context for a Project.  The content can be formatted using Markdown and can displayed on the Project's home page and as part of the Project Listing.

@@ -4,7 +4,7 @@ Execution history for commands and Jobs is stored by the Rundeck server. Executi
 
 ![Activity page](~@assets/img/fig0211.png)
 
-### Filtering Activity
+## Filtering Activity
 
 By default, the Activity page will list running executions and history
 recent executions. The page contains a filter control that can be used to
@@ -25,20 +25,20 @@ The filter form contains a number of fields to limit search:
 After filling the form pressing the "Filter" button, the page will
 display executions matching the search.
 
-### Extended date range
+## Extended date range
 
 It is also possible to search for activity between dates.
 Press the "Other..." menu choice to bring up the form.
 
 ![Extended date range search](~@assets/img/fig0217.png)
 
-### Saving the filter
+## Saving the filter
 
 Filters can be saved to a menu that makes repeating searches more
 convenient. Click the "save this filter..." link to save the filter
 configuration.
 
-### Execution listings
+## Execution listings
 
 Information for each execution contains the command or Job executed,
 options, success status and a link to a file containing all
@@ -52,14 +52,14 @@ failed.
 
 ![Execution view](~@assets/img/fig0216.png)
 
-### RSS link
+## RSS link
 
 If configured, an RSS icon provides a link to an RSS view of the events that match
 the current filtering criteria.
 
 ![RSS link](~@assets/img/fig0214.png)
 
-### Bulk Delete Executions
+## Bulk Delete Executions
 
 If you have access, you can click the "Bulk Delete" button to enable bulk-edit mode.
 

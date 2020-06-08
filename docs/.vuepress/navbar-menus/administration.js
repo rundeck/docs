@@ -11,10 +11,6 @@ module.exports = [{
     link: '/administration/configuration/'
   },
   {
-    text: 'Plugins',
-    link: '/plugins/'
-  },
-  {
     text: 'Security',
     link: '/administration/security/default-users'
   },

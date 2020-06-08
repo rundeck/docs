@@ -1,5 +1,5 @@
 
-### Import/Export Calendars
+# Import/Export Calendars
 
 Project calendars can be exported on the project’s export archive. If Calendar feature is enabled, you will see a checkbox where you can enable the calendar export.
 
@@ -10,9 +10,9 @@ Also, for import project archive, you will see a checkbox where you can define i
 ![Project Export](~@assets/img/calendars-project-import.png)
 
 
-### Export Calendar on Job Definition
+## Export Calendar on Job Definition
 
-When you export a job that is associated with a specifc Project Calendar, the job definition will include the list of  calendars by name.
+When you export a job that is associated with a specific Project Calendar, the job definition will include the list of  calendars by name.
 
 When you import the job on another rundeck instance or project, if an existing project calendar doesn’t match with the calendar name, a warning will be displayed. Otherwise, the named calendar will be updated to apply to the Job.
 

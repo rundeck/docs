@@ -6,6 +6,7 @@ module.exports = [{
     {
       title: 'Installation',
       collapsable: true,
+      path: '/administration/install/',
       sidebarDepth: 1,
       children: [
         '/administration/install/system-requirements',
@@ -21,6 +22,7 @@ module.exports = [{
     {
       title: 'Configuration',
       collapsable: true,
+      path: '/administration/configuration/',
       sidebarDepth: 1,
       children: [
         '/administration/configuration/license',
@@ -85,6 +87,7 @@ module.exports = [{
     {
       title: 'Upgrading',
       collapsable: true,
+      path: '/upgrading/upgrading',
       children: [
         '/upgrading/upgrading',
         '/upgrading/upgrading-to-rundeck3',
@@ -93,6 +96,7 @@ module.exports = [{
     {
       title: 'Cluster',
       collapsable: true,
+      path: '/administration/cluster/',
       children: [
         '/administration/cluster/',
         {
