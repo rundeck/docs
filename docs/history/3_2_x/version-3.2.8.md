@@ -2,6 +2,9 @@
 
 Name: <span style="color: fuchsia"><span class="glyphicon glyphicon-pushpin"></span> "nacho fuchsia pushpin"</span>
 
+## Overview
+Our 3.2.8 release is small release addressing a few urgent bug fixes.
+
 ## Issues
 
 [Milestone 3.2.8](https://github.com/rundeck/rundeck/milestone/142)
