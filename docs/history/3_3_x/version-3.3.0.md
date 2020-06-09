@@ -15,7 +15,7 @@ Here is a list of some things you can check out:
 - New Node Wizard for creating node entries local to Rundeck.
 - An Enhanced Log Viewer loads job activity 1000% faster with improved usability options.
 - Job tags to refine searching for your important jobs.
-- Spring Security 5 upgrade including OAuth2 updates.
+- Spring Security 5 upgrade including [OAuth2 updates](/administration/security/sso). (Be sure to read docs for the changes required)
 - [HTTP Tours](/manual/tour-manager) can now be built and managed in product.
 
 Documentation for the 3.3.x release can be [found here](https://docs.rundeck.com/3.3.x) and will be in-progress until the official release.

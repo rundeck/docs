@@ -63,6 +63,8 @@ module.exports = [{
     {
       title: 'Security',
       collapsable: true,
+      path: '/administration/security/default-users',
+      sidebarDepth: 1,
       children: [
         '/administration/security/default-users',
         '/administration/security/authentication',
