@@ -5,7 +5,7 @@ Name: <span style="color: peru"><span class="glyphicon glyphicon-flash"></span> 
 ## Overview
 **Welcome to the preview release of Rundeck 3.3.0.**
 
-This release includes a long list of feature releases for our Enterprise and Open Source versions and fixes throughout the 3.2.x series.  This preview version provided is still under development. We are hoping you have a chance to download and test it, but it should **not** be used for production yet.
+This release includes a long list of feature releases for our Enterprise and Open Source versions and fixes throughout the 3.2.x series.  This preview version provided is still under development. We are hoping you have a chance to [download](https://download.rundeck.com/3.3.0/index.html) and test it, but it should **not** be used for production yet.
 
 Here is a list of some things you can check out:
 - Backend updates to Grails 4/Gradle 5 which now support Java 11.
@@ -20,14 +20,18 @@ Here is a list of some things you can check out:
 
 Documentation for the 3.3.x release can be [found here](https://docs.rundeck.com/3.3.x) and will be in-progress until the official release.
 
+## How to get it
+Visit the [Download Site](https://download.rundeck.com/3.3.0/index.html) for the installation files.  Be sure to follow installation instructions using the [3.3.x docs](https://docs.rundeck.com/3.3.x).
+
 ## Known Issues
 If you find a bug or run into any issue you can email us at [product@rundeck.com](mailto:product@rundeck.com) or add an issue to GitHub.  Please be sure to mention that you are using the `3.3.0 Preview` version.
 
-* Tour Manager has some outstanding bugs:
+* Tour Manager has some outstanding bugs and a redesign coming in a future version.
   * Issue editing steps and their title.
   * Some buttons are mis-labled.
   * Step re-ordering is still under development.
-* Event Viewer is still listed as beta.
+* Event Viewer is still listed as beta and is still being actively developed.
+* Documentation is still in progress.
 
 
 ## Issues
