@@ -7464,6 +7464,8 @@ or error
 ```
 
 ## Calendars API (Enterprise)
+::: enterprise  
+:::
 
 The calendar feature has some APIs:
 
@@ -7690,8 +7692,7 @@ Example:
 
 ### View License 
 
-::: tip
-This API endpoint works with Rundeck Enterprise only.
+::: enterprise  
 :::
 
 Returns metadata about the current License for Rundeck Enterprise.
@@ -7739,8 +7740,7 @@ Returns metadata about the current License for Rundeck Enterprise.
 
 ### Set License Key
 
-::: tip
-This API endpoint works with Rundeck Enterprise only.
+::: enterprise  
 :::
 
 Uploads a license key for Rundeck Enterprise.
