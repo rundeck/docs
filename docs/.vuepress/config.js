@@ -88,6 +88,15 @@ module.exports = {
         baseURL: 'https://docs.rundeck.com', // base url for your canonical link, optional, default: ''
         stripExtension: true // strip '.html' , optional, default: false
       }
+    ],
+    [
+      'vuepress-plugin-container',
+      {
+        type: 'enterprise',
+        defaultTitle: {
+          '/':'Available in Rundeck Enterprise'
+        },
+      },
     ]
   ],
   themeConfig: {
