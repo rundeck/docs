@@ -7411,7 +7411,7 @@ Do not specify and `authToken` or `creator` field. They will be ignored.
  
  `Content-Type: application/json`:
  
- ``` json
+``` json
 {
     "msg": "Saved webhook"
 }
