@@ -61,6 +61,9 @@ Changes introduced by API Version number:
 **Version 35**:
 * Updated Response:
     - [`PUT /api/V/project/[PROJECT]/import`][/api/V/project/\[PROJECT\]/import] - More validation and error message results added.
+* New Endpoints:
+    - [`GET /api/V/enterprise/license`][GET /api/V/enterprise/license] - Read Enterprise License information (Enterprise only)
+    - [`POST /api/V/enterprise/license`][POST /api/V/enterprise/license] - Upload Enterprise License Key (Enterprise only)
 
 **Version 34**:
 * New Endpoints:
@@ -7683,7 +7686,95 @@ Example:
   }
   ```
 
+## License (Enterprise)
+
+### View License 
+
+::: tip
+This API endpoint works with Rundeck Enterprise only.
+:::
+
+Returns metadata about the current License for Rundeck Enterprise.
+
+**Request:**
+
+    GET /api/V/enterprise/license
+
+**Response:**
+
+```json
+{
+  "company": "rundeck.com",
+  "contactEmail": "support@rundeck.com",
+  "application": "rundeckpro",
+  "editions": [
+    "ENTERPRISE"
+  ],
+  "applicationVersion": [
+    "3.3.0"
+  ],
+  "serverUUIDs": [
+    "00000000-0000-0000-0000-000000000000"
+  ],
+  "gracePeriod": 30,
+  "type": "EVAL",
+  "issueDate": "2020-06-04T07:00:00Z",
+  "validUntil": "2020-06-30T07:00:00Z",
+  "validSince": null,
+  "graceUntil": "2020-06-30T07:00:00Z",
+  "licenseId": "00000000-0000-0000-0000-000000000000",
+  "perpetual": false,
+  "invalidCode": null,
+  "remaining": 26,
+  "state": "ACTIVE",
+  "active": true,
+  "shouldWarn": true,
+  "baseUrl": "http://rundeck/license/index",
+  "edition": "ENTERPRISE",
+  "reason": "The License is Valid",
+  "warning": "The Rundeck License will expire in 26 days"
+}
+
+```
+
+### Set License Key
+
+::: tip
+This API endpoint works with Rundeck Enterprise only.
+:::
+
+Uploads a license key for Rundeck Enterprise.
+
+**Request:**
+
+    POST /api/V/enterprise/license
+    Content-Type: application/x-rundeck-license
+
+Request Content: 
+
+The Rundeck Enterprise License key file.
+
+Optional Parameters:
+
+* `license_agreement`: `true` to agree with the Rundeck Enterprise License.
+
+**Response:**
+
+Content-Type: `application/json`
+
+```json
+{
+    "message": "OK"
+}
+```
+
 ## Index
+
+
+[/api/V/enterprise/license][]
+
+* `GET` [View License](#view-license)
+* `POST` [Set License Key](#set-license-key)
 
 [/api/V/execution/\[ID\]][]
 
@@ -8096,6 +8187,11 @@ Example:
 [/api/V/plugin/list][]
 
 * `GET` [List Installed Plugins][/api/V/plugin/list]
+
+
+[/api/V/enterprise/license]: #view-license
+[GET /api/V/enterprise/license]: #view-license
+[POST /api/V/enterprise/license]: #set-license-key
 
 [/api/V/project/\[PROJECT\]/scm/\[INTEGRATION\]/plugins]:#list-scm-plugins
 [/api/V/project/\[PROJECT\]/scm/\[INTEGRATION\]/plugin/\[TYPE\]/input]:#get-scm-plugin-input-fields
