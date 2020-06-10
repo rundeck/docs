@@ -5,7 +5,7 @@ Name: <span style="color: peru"><span class="glyphicon glyphicon-flash"></span> 
 ## Overview
 **Welcome to the preview release of Rundeck 3.3.0.**
 
-This release includes a long list of feature releases for our Enterprise and Open Source versions and fixes throughout the 3.2.x series.  This preview version provided is still under development. We are hoping you have a chance to download and test it, but it should **not** be used for production yet.
+This release includes a long list of feature releases for our Enterprise and Open Source versions and fixes throughout the 3.2.x series.  This preview version provided is still under development. We are hoping you have a chance to [download](https://download.rundeck.com/3.3.0/index.html) and test it, but it should **not** be used for production yet.
 
 Here is a list of some things you can check out:
 - Backend updates to Grails 4/Gradle 5 which now support Java 11.
@@ -21,7 +21,8 @@ Here is a list of some things you can check out:
 Documentation for the 3.3.x release can be [found here](https://docs.rundeck.com/3.3.x) and will be in-progress until the official release.
 
 ## How to get it
-We are seeing some early issues with Preview 1 and working on getting Preview 2 built for evaluation.  In the mean time check out the [docs](https://docs.rundeck.com/3.3.x) for details on some of the new features!
+UPDATED Download!  **Preview 2** Version is now available.
+Visit the [Download Site](https://download.rundeck.com/3.3.0/index.html) for the installation files.  Be sure to follow installation instructions using the [3.3.x docs](https://docs.rundeck.com/3.3.x).
 
 A trial License for the 3.3.0 Preview period is available here.  
 
