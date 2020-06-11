@@ -1,9 +1,51 @@
-# User Manager (Enterprise)
-::: enterprise
-:::
+# User Manager
 
-This Enterprise plugin provides GUI based management and centralized storage of local Rundeck user accounts.
+Need generic discussion of Users in Rundeck.
+
+![User Manager Button](@assets/img/usermgr-menu-button.png)
 
 ## User Summary
 
-## User Manager
+This is a listing of all the users that have logged in...
+
+## Manage Local Users
+::: enterprise
+:::
+
+Enterprise users can leverage the built-in GUI based management and centralized storage of local Rundeck user accounts.
+
+![User Manager Screen](@assets/img/usermgr-manage-users.png)
+
+### Adding Users
+
+Click the **Add User** button in the main window.  Fill out the fields.
+
+  - ___Username:___ Unique value used to login to the system.  This is also the value used to merge with other user sources. (LDAP/Active Directory)
+  - ___Password:___ By default there are no password policies enforced.  It is strongly encouraged to use something secure!
+  - _First Name:_ What you call someone informally.
+  - _Last Name:_ What you use when it's time to get a bit more formal.
+  - _Email:_ How to reach someone.
+  - _Notes:_ A nice description of this person that makes them smile.
+  - ___Groups:___ Provide at least one role for them to login. See [Groups Section](#manage-local-groups) below
+
+  ___Bold/Italics___ are minimum required fields.
+
+![Add User Screen](@assets/img/usermgr-add-user.png)
+
+## Manage Local Groups
+::: enterprise
+:::
+
+GUI based management of groups (also sometimes referred to as Roles).
+
+![Group Manager Screen](@assets/img/usermgr-manage-groups.png)
+
+### Adding Groups
+
+Click the ***Add Group*** button in the main window.  Fill out the fields and select users for the new group.
+
+  - ___Group Name:___ Unique name of the group.  Reference this value in ACL policies.
+  - _Description:_ A nice description of this group of users.
+  - _Users:_ Click the green plus sign to add the user to the group.  Click the red minus sign to remove them from the group.
+
+![Group Add Screen](@assets/img/usermgr-add-group.png)
