@@ -1,30 +1,36 @@
-# Key-Value Data
+# Key-Value Data - Log Filter
 
-Captures simple Key/Value data using a simple text format
-from a regular expresssion.
+The Key Value Data log filter can parse the output of a workflow step with a regular expression to create a key/value data that is exported to the workflow as a context variable for use in later workflow steps.
 
-By default, to produce a key/value entry, echo a line similar to this:
+## Usage
 
-    RUNDECK:DATA:(key) = (value)
+There are only three configuration components:
+  - Pattern
+  - Name Data
+  - Log Data (Checkbox)
 
-Where `(key)` is the key name, and `(value)` is the value.
+The Pattern field matches a regular expression and looks for one or two Capture Groups. If there are two Capture Groups, the first will be mapped to a Rundeck variable key in the data context, while the second will be the value. If there is only one Capture Group, the match will be the value.
 
-If you provide a regular expression with only one group, the `name` input is required.
+The Name Data field is only used when a single Capture Group is defined in the regex statement. The value of that field will be used as the variable key.  The variable value will be the content from the Capture Group.
 
-You can define the regular expression used.
+Log Data is a checkbox that, if checked, will add tabular output of what is captured in the filter to the log output of the job that the filter is attached to.
 
-## Configuration
+By default, the pattern field is set to: `^RUNDECK:DATA:(.+?)\s*=\s*(.+)$`
 
-Pattern
-: Regular Expression for matching key/value data. Default: `^RUNDECK:DATA:(.+?)\s*=\s*(.+)$`
+This will match output of the attached job if there is a line in the log output that begins with _RUNDECK:DATA:foo=value1_. The data is available in later job steps as the Rundeck variable `$data.foo` with a value of everything after the equals sign to the end of the line. So in this case, the value of `$data.foo` would be _value1_.
 
-Name Data
-: Regular Expression for matching key/value data.
+Under the Advanced section, there is also an Invalid Character Pattern. This is a regular expression that matches unwanted characters in the matched value of the Pattern field. By default, Rundeck filters out whitespace and characters typical of Rundeck variable calls like `$, {, }, and \`.
 
-    The regular expression must define two Capturing Groups. The first group matched defines
-    the data key, and the second group defines the data value.
+## Examples
 
-    See the [Java Pattern](https://docs.oracle.com/javase/8/docs/api/java/util/regex/Pattern.html) documentation.
+![](@assets/img/logfilter-keyvalue-example1.png)
 
-Log Data
-: If true, log the captured data
+The log filter in this example is fully default, with the Log Data field checked:
+
+![](@assets/img/logfilter-keyvalue-example2.png)
+
+The output when the job runs looks like this:
+
+![](@assets/img/logfilter-keyvalue-example3.png)
+
+So in later job steps, refer to `$data.EXIP` in commands, or `@data.EXIP@` in scripts for the _10.1.1.2_ value.

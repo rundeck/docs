@@ -16,6 +16,7 @@ module.exports = [{
         '/manual/creating-jobs',
         '/manual/job-workflows',
         '/manual/job-options',
+        '/manual/log-filters/',
         '/manual/job-plugins',
         '/manual/execution-lifecycle/job-resume.md',
         '/manual/execution-lifecycle/job-retry-failed-nodes.md',
