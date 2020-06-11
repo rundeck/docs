@@ -17,6 +17,7 @@ Here is a list of some things you can check out:
 - Job tags to refine searching for your important jobs.
 - Spring Security 5 upgrade including [OAuth2 updates](/administration/security/sso). (Be sure to read docs for the changes required)
 - [HTTP Tours](/manual/tour-manager) can now be built and managed in product.
+- Logging system is [Log4J2](https://logging.apache.org/log4j/2.x/) (Be sure to read docs for changes required)
 
 Documentation for the 3.3.x release can be [found here](https://docs.rundeck.com/3.3.x) and will be in-progress until the official release.
 
