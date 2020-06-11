@@ -4,7 +4,7 @@ Tour Manager content under construction
 
 ## Overview
 
-Rundeck HTTP Tours provide guided walk-throughs to help guide users through new features.  Tours can be configured as System Tours and are available to all Projects or project specific.
+Rundeck HTTP Tours provide guided walk-throughs to help guide users through new features.  Tours can be configured as System Tours and are available to all Projects or project specific.  Tours are  stored in the Rundeck database so they are easily shared to all members in clustered environments.
 
 The System level Tour Manager can be found under the Settings menu:
 
@@ -28,25 +28,26 @@ After creating the Group Name this dialog will be presented to start creating to
 ![Create a Tour](@assets/img/tours-create-blank.png)
 
 1. Click Add Tour
+    ![Add Tour](@assets/img/tours-create-add.png)
 
-![Add Tour](@assets/img/tours-create-add.png)
-
-2. Click the tour name then choose **Add Step** from the right dialog box
-
-![Add Step](@assets/img/tours-create-addstep.png)
+2. Click the tour name then choose **Add Step**
+    ![Add Step](@assets/img/tours-create-addstep.png)
 
 3. Fill out the Add Step details for this step:
-  - Title: Serves as the Name of that particular step.  The value is not shown in the display.
-  - Current URL: This value can be a relative url from the root of your Rundeck server, or a
-  - Next Step URL (optional): This is included to support previous versions of http-tours.  ([See Details below](#current-vs-next-url))
-  - Indicator: To draw attention to somewhere a user should click the **Indicator** can be set to an HTML tag `id` value.
-  - Indicator Position: Allows the choice of showing the indicator on the top/bottom/right of the selected tag entry from above.  (ignored if Indicator is empty)
 
-  * Editor and Preview Windows: Use the left editor to write a description or details to be shown for this step in [Markdown syntax](https://www.markdownguide.org/basic-syntax/).  A preview will be shown in the window on the right.
+    - Title: Serves as the Name of that particular step.  The value is not shown in the display.
+    - Current URL: This value can be a relative url from the root of your Rundeck server, or a
+    - Next Step URL (optional): This is included to support previous versions of http-tours.  ([See Details below](#current-vs-next-url))
+    - Indicator: To draw attention to somewhere a user should click the **Indicator** can be set to an HTML tag `id` value.
+    - Indicator Position: Allows the choice of showing the indicator on the top/bottom/right of the selected tag entry from above.  (ignored if Indicator is empty)
+    - Editor and Preview Windows: Use the left editor to write a description or details to be shown for this step in [Markdown syntax](https://www.markdownguide.org/basic-syntax/).  A preview will be shown in the window on the right.
+    ![Tour Step Details](@assets/img/tours-step-detail.png)
 
-  ![Tour Step Details](@assets/img/tours-step-detail.png)
+4. Continue to Add steps until you are ready to share your tours. Then click Save button to save the tour.
 
-Continue to Add steps until you are ready to share your tours.
+Steps can be re-ordered using the up/down arrow next to the Actions Menu.
+
+![Step Actions Menu](@assets/img/tours-step-actions.png)
 
 ## Using Tours
 
@@ -54,13 +55,23 @@ Tours can be enabled/disabled using the Toggle button at the top of the Tour Gro
 
 ![Enable Tours](@assets/img/tours-enable-tour.png)![Disable Tours](@assets/img/tours-disable-tour.png)
 
-Click the [TOURS] icon in the header navigation and the tours list window will be displayed.
+Click the **[TOURS]** icon in the header navigation and the tours list window will be displayed.
 
 ![List of Tours](@assets/img/tours-listoftours.png)
 
 After selecting the Tour to use a dialog on the right will be displayed.  Use the **Previous/Next** buttons to navigate through the tour.  The **Resume** button will return the browser to the Current URL setting specified for that step.
 
 ![Example Tour Window](@assets/img/tours-example-tour1.png)
+
+### Import / Export
+
+There are options to export and import tours.  The export will be a zip file containing a tour manifest file and the tour definitions.
+
+If you have tours from a previous release you can build your own zip files for import.  The structure shown below is what the import process is expecting:
+
+![Sample Zip Import File](@assets/img/tours-sample-zip.png)
+
+For more information on importing previously created tours please reach out to our Enterprise Support team.
 
 
 ## Appendix
