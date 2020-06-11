@@ -1,4 +1,6 @@
-# Progress Badge Log Filter (Enterprise)
+# Progress Badge (Enterprise)
+::: enterprise
+:::
 
 The Progress Badge Plugin included with Rundeck Enterprise can create graphic badges to be rendered on the Log Output tab.
 

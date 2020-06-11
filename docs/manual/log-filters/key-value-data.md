@@ -1,4 +1,4 @@
-# Key-Value Data - Log Filter
+# Key-Value Data
 
 The Key Value Data log filter can parse the output of a workflow step with a regular expression to create a key/value data that is exported to the workflow as a context variable for use in later workflow steps.
 

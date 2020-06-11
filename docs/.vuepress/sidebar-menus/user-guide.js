@@ -16,7 +16,21 @@ module.exports = [{
         '/manual/creating-jobs',
         '/manual/job-workflows',
         '/manual/job-options',
-        '/manual/log-filters/',
+        {
+          title: 'Log Filters',
+          collapsable: true,
+          path: '/manual/log-filters/',
+          sidebarDepth: 1,
+          children: [
+            '/manual/log-filters/key-value-data.md',
+            '/manual/log-filters/quiet-output.md',
+            '/manual/log-filters/progress-badge.md',
+            '/manual/log-filters/highlight-output.md',
+            '/manual/log-filters/render-formatted-data.md',
+            '/manual/log-filters/mask-passwords.md',
+            '/manual/log-filters/multi-line-regex.md'
+          ]
+        },
         '/manual/job-plugins',
         '/manual/execution-lifecycle/job-resume.md',
         '/manual/execution-lifecycle/job-retry-failed-nodes.md',
