@@ -1,4 +1,6 @@
 # ServiceNow Resource Model Source
+::: enterprise
+:::
 
 This is a Resource Model Source plugin that provides server information from ServiceNow's CMDB.
 

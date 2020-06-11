@@ -1,5 +1,8 @@
 # Project Schedules (Enterprise)
 
+::: enterprise
+:::
+
 Project Schedules allow you to define Schedules independently of Jobs.  Schedules can apply to any Jobs in the Project. Schedule definitions can be exported into, and imported from, Project Archives.
 :::tip
 Currently only project admins will be able to access the Schedules module.  In a future release there will be more granular ACL based access assigned.

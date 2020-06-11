@@ -1,5 +1,8 @@
 # Tour Manager
 
+::: enterprise
+:::
+
 Tour Manager content under construction
 
 ## Overview

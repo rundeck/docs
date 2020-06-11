@@ -1,11 +1,13 @@
 # Job Resume Plugin (Enterprise)
+::: enterprise
+:::
 
 This plugin allows Jobs to *Resume* execution at a failed workflow step.
 
-When you enable this plugin for a Job, the plugin will record the internal *Workflow State* 
+When you enable this plugin for a Job, the plugin will record the internal *Workflow State*
 as the Execution progresses.  When a step fails, the state from immediately before the step started is
 serialized and stored.  You can then choose to "Resume" the execution at the failed step.
-The plugin will load the stored state contents, and start a new execution with the 
+The plugin will load the stored state contents, and start a new execution with the
 resume state, proceeding to execute the previously failed step with the same inputs.
 
 ## Requirements
@@ -61,7 +63,7 @@ The configuration of this plugin is simple. Once added to a Job definition, it i
 </joblist>
 ```
 
-If you also want to enable it for automatic Retries, set `onRetry` to `true`. 
+If you also want to enable it for automatic Retries, set `onRetry` to `true`.
 
 ```xml
 <joblist>

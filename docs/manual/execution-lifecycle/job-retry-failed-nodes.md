@@ -1,4 +1,6 @@
 # Job Retry Failed Nodes (Enterprise)
+::: enterprise
+:::
 
 This plugin allows Jobs to *retry* failed executions just on failed nodes.
 

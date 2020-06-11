@@ -1,4 +1,7 @@
-# Rundeck SSO Security (Enterprise Only)
+# Rundeck SSO Security (Enterprise)
+
+::: enterprise
+:::
 
 ## Okta
 
@@ -9,7 +12,7 @@ you will need to add a new application to your Okta Applications,
 and then add some properties to your rundeck-config.properties file.
 
 ### Upgrade notes for 3.3.0
-   
+
 :::warning
 YOU MUST CHANGE YOUR CONFIGURED REDIRECT URL IN YOUR OAUTH PROVIDER
 :::
@@ -219,10 +222,10 @@ After completing the configuration, restart Rundeck and attempt to login with Pi
 
 ## Redirect URL Override
 
-If you have Rundeck set up behind an SSL terminating proxy, you may need to specify the redirect url rather that use the 
+If you have Rundeck set up behind an SSL terminating proxy, you may need to specify the redirect url rather that use the
 automatically generated one. Rundeck tells the OAuth2 system where to redirect after authentication by sending a redirect
 url to the OAuth2 provider with the first authentication redirect. Most of the time Rundeck
-will send the correct url, but in some cases you will need to specify the redirect url manually. 
+will send the correct url, but in some cases you will need to specify the redirect url manually.
 
 This can be done by setting the following property in your Rundeck configuration file.
 
@@ -244,5 +247,5 @@ rundeck.security.syncOauthUser=true
 ```
 
 On SSO login, the jwt token sent by your Oauth2 provider will be examined for the `email` `given_name` and `family_name` attributes
-which should be populated if you are using the default scopes (`openid email profile`). 
+which should be populated if you are using the default scopes (`openid email profile`).
 Rundeck will save this information to the appropriate fields in the user's Rundeck profile.

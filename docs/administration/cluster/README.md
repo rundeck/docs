@@ -1,5 +1,8 @@
 # Cluster Overview
 
+::: enterprise
+:::
+
 ## Rundeck Enterprise Architecture
 ![Rundeck architecture](~@assets/img/architecture.png)
 

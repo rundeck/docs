@@ -1,4 +1,7 @@
 # PagerDuty (Enterprise)
+::: enterprise
+:::
+
 Rundeck's **PagerDuty Webhook** plugin makes it easy
 to automatically run jobs in response to PagerDuty events.
 

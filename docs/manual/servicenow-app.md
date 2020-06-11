@@ -1,4 +1,6 @@
 # Rundeck Automation - ServiceNow Application
+::: enterprise
+:::
 
 Our ServiceNow application can be found on the ServiceNow Store.  The application is free to Enterprise customers.  To request the application please contact your Account Executive or Customer Success contact.
 
