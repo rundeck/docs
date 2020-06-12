@@ -1,7 +1,5 @@
 # Highlight Output
 
-## Description
-
 This log filter parses the log output of a workflow step and highlights the output that matches a given regular expression. This filter changes display output in Rundeck, but does not alter the logs themselves.
 
 ## Usage

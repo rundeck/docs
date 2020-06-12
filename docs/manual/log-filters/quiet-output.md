@@ -1,7 +1,5 @@
 # Quiet Output
 
-## Description
-
 Quiets output which does or does not match a certain pattern by changing its log level. This filter does this by changing the loglevel of the output. It does not remove or delete any logs.
 
 ## Usage
