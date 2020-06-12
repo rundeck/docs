@@ -1,8 +1,22 @@
 # Render Formatted Data
 
-Allows marking formatted data as a certain data type, for rendering in the Log Output.
+This is a data presentation log filter - meaning that this filter doesn’t manipulate the log returns from the job step it’s applied to; instead, it transforms the output of a job step by parsing the log returns from a given workflow step and rendering it in sanitized HTML. This is particularly useful when reformatting the return values of scripts and API calls.
 
-Some supported datatypes:
+Output will be an HTML table with the data formatted appropriately.
+
+## Usage
+
+First, ensure that the job step is returning output that is able to be parsed by one of the filter datatypes. If the job output will be entirely the expected datatype, then set the Data Type field in the log filter to the appropriate type. Otherwise, Rundeck expects a prefix and suffix to the parsable data. To mark a section of output with a datatype, echo this marker defining it:
+
+    `#BEGIN:RUNDECK:DATATYPE:<datatype>`
+
+Replacing `<datatype>` with one of the supported data types.
+
+You can mark the section as ending by echoing the line below. Otherwise, when the step ends the plugin will treat it as ended.
+
+    `#END:RUNDECK:DATATYPE`
+
+Supported datatypes:
 
 - `application/json` [JSON][] (synonyms: `json`)
 - `application/x-java-properties` [Java Properties][] (synonyms: `properties`)
@@ -14,17 +28,7 @@ Some supported datatypes:
 [markdown]: https://en.wikipedia.org/wiki/Markdown
 [java properties]: https://docs.oracle.com/javase/7/docs/api/java/util/Properties.html#load(java.io.Reader)
 
-To mark a section of output with a datatype, echo this marker defining it:
-
-    #BEGIN:RUNDECK:DATATYPE:<datatype>
-
-Replacing `<datatype>` with one of the supported data types.
-
-You can mark the section as ending by echoing:
-
-    #END:RUNDECK:DATATYPE
-
-Otherwise, when the step ends the plugin will treat it as ended.
+### Use for all output
 
 You can also choose a value for the `Data Type` property, to preset
 a datatype to use for the entire output log data. If this is set, then
@@ -49,11 +53,11 @@ Then END the datatype:
 The log output will then capture all of the JSON data in a single
 log event, and mark it as `application/json` data type.
 
-### Configuration
+## Examples
 
-Data type
-: Enter a data type to use by default for all output from the
-step. If not set, the BEGIN and END markers will be looked for.
+![](@assets/img/logfilter-render-example1.png)
+
+![](@assets/img/logfilter-render-example2.png)
 
 ### See Also
 

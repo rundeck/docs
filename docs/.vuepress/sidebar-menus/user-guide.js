@@ -28,6 +28,7 @@ module.exports = [{
             '/manual/log-filters/highlight-output.md',
             '/manual/log-filters/render-formatted-data.md',
             '/manual/log-filters/mask-passwords.md',
+            '/manual/log-filters/json-jq.md',
             '/manual/log-filters/multi-line-regex.md'
           ]
         },

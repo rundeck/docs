@@ -14,3 +14,5 @@ Log Filters:
 - [Quiet Output](/manual/log-filters/quiet-output.md)
 - [Highlight Output](/manual/log-filters/highlight-output.md)
 - [Progress Badge](/manual/log-filters/progress-badge.md)
+- [JSON JQ](/manual/log-filters/json-jq.md)
+- [Multi-line Regex](/manual/log-filters/multi-line-regex.md)

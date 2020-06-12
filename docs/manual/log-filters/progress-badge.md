@@ -2,16 +2,20 @@
 ::: enterprise
 :::
 
-The Progress Badge Plugin included with Rundeck Enterprise can create graphic badges to be rendered on the Log Output tab.
+This log filter changes the display of log output in a job’s activity logs by displaying a simple lozenge (the Progress Badge) with a text message, and optionally not displaying log returns. This is typically used to notify users of job status in a very clear way without complicating results with log returns.
 
-See Also: (/manual/workflow-steps/progress-badge.md)
+## Usage
+This filter has a few options:
 
-Accepts the following input:
+- Text - the text to be placed on the display badge.
+- String - Optional regex to search the log returns for. If this field is set, the badge will only appear if the regex finds a match.
+- Mute - True/False with Conditional Disable option. If true, log output will be replaced by the badge.
+    - Conditional Disable option will only show the badge if the String regex matches. (Useful when configuring multiple Progress Badges for the same result for “Red/Green” style notifications.)
+- Typeface - Specify font for the badge - uses typical HTML/CSS typeface rules.
+### Advanced render options
+- Font Size - Font size of the text on the badge. All standard CSS options are available - “%”, “px”, “pt”, or “em.”
+- Background Color - Select from the predefined pulldown list, or enter a valid CSS value in the text box - either standard colors, or hex values.
 
-- Text to be displayed inside the badge. Supports emoticons (see below).
-- String (optional) regular expression to search in the normal output of the step, if found, the badge is rendered as success (green) else is rendered as failed (red)
-- Mute: Default `true`, suppress all the standard output, just diaplay the badge or errors.
-- Conditional Disable: Boolean to do nothing if string pattern does not match.
 
 ## Emoji Support
 
@@ -24,7 +28,8 @@ Display as:
 A full list of supported emoji are listed here:
 [vdurmont/emoji-java](https://github.com/vdurmont/emoji-java)
 
-## Advanced render options
+## Example
 
-- Specify typeface and font size
-- Select for background color of the badge. O can enter a hexadecimal color value in the format #ffff00
+![](@assets/img/logfilter-progress-example1.png)
+
+![](@assets/img/logfilter-progress-example2.png)
