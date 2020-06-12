@@ -11,11 +11,11 @@ you quickly become productive with the Rundeck server and tools.
 
 ## What is Rundeck?
 
-Rundeck is runbook automation that gives you and your colleagues self-service access to the processes and tools they need to get their job done. 
+Rundeck is runbook automation that gives you and your colleagues self-service access to the processes and tools they need to get their job done.
 
-When used for incident management, Rundeck will help you have shorter incidents and fewer escalations. 
+When used for incident management, Rundeck will help you have shorter incidents and fewer escalations.
 
-When used for general operations work, Rundeck will help alleviate the time-consuming and repetitive toil that currently consumes too much of your team's time. 
+When used for general operations work, Rundeck will help alleviate the time-consuming and repetitive toil that currently consumes too much of your team's time.
 
 For more information on use cases, see the [New to Rundeck] page.
 
@@ -33,9 +33,9 @@ At its core, Rundeck is free open source software licensed under the [Apache Sof
 
 #### Rundeck Enterpise (fka Rundeck Pro)
 
-The focus of [Rundeck Enterpise], our commercial offering, is on making Rundeck production-ready and enterprise-scale. Rundeck Enterprise, built on the open source Rundeck, is the bundle of software and services you need to run Rundeck as an enterprise-class service.
+The focus of [Rundeck Enterprise], our commercial offering, is on making Rundeck production-ready and enterprise-scale. Rundeck Enterprise, built on the open source Rundeck, is the bundle of software and services you need to run Rundeck as an enterprise-class service.
 
-Built and tested for the enterprise, Rundeck Enterpise includes exclusive features (including clustering/HA, advanced workflow, enhanced ACL management, enhanced dashboards/visualization) and Rundeck Enterprise exclusive plugins. Professional support and on-boarding services are also part of the Rundeck Enterprise subscription bundle.
+Built and tested for the enterprise, Rundeck Enterprise includes exclusive features (including clustering/HA, advanced workflow, enhanced ACL management, enhanced dashboards/visualization) and Rundeck Enterprise exclusive plugins. Professional support and on-boarding services are also part of the Rundeck Enterprise subscription bundle.
 
 _NOTE: Rundeck Enterprise was recently renamed from Rundeck Pro. You may still see references to "Pro" here and there, as we work to update our documentation. Just know that they are the same thing._
 
@@ -46,10 +46,9 @@ _NOTE: Rundeck Enterprise was recently renamed from Rundeck Pro. You may still s
 
 ## Who makes Rundeck?
 
-Rundeck is developed by Rundeck, Inc. and the Rundeck community. All new users are welcomed to participate in the project and contribute. Please vote on feature ideas on the [Rundeck Trello Board].
+Rundeck is developed by Rundeck, Inc. and the Rundeck community. All new users are welcomed to participate in the project and contribute. Please submit an issue on our GitHub repository listed above or reach out to your Customer Success Team contact.
 
 [rundeck, inc.]: https://www.rundeck.com/
-[rundeck trello board]: https://trello.com/b/sn3g9nOr/rundeck-development
 
 ## Rundeck feature highlights
 
