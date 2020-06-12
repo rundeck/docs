@@ -7,6 +7,14 @@ module.exports = [{
     '/manual/02-getting-help',
     '/manual/03-getting-started',
     {
+      title: "Projects",
+      path: '/manual/projects',
+      collapsable: true,
+      children: [
+        '/manual/projects',
+        ]
+    },
+    {
       title: 'Jobs',
       collapsable: true,
       path: '/manual/04-jobs',

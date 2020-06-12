@@ -14,4 +14,5 @@ These are some other common starting points.
 * [API Documentation](/api/rundeck-api.md)
 * [Release History](/history/)
 * [List of Plugins](/plugins/)
+* [Old Version of Docs](/manual/old-docs.md)
 * [Sign up for Release Notes](https://www.rundeck.com/rundecker)
