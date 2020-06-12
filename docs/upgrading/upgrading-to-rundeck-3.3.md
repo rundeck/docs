@@ -11,6 +11,16 @@ See other [Upgrading](/upgrading/) Documents if you are upgrading from 3.1 or ea
 
 ## JSCH Timeout Notes
 
-## RD-ACL Removed in 3.3.0
+## rd-acl Removed in 3.3.0
+
+The `rd-acl` CLI tool has been removed from the Rundeck server package. It has migrated to be an extension for [`rd`][rd], the official Rundeck CLI client tool.
+
+The `rd acl` extension is bundled with `rd` version 1.3.0.
+
+Invoke the command `rd acl` to replace the functionality of `rd-acl`.
+
+Please report any issues on the [rd-ext-acl github](https://github.com/rundeck/rd-ext-acl).
+
+[rd]: https://rundeck.github.io/rundeck-cli/
 
 ## Docker Notes
