@@ -33,4 +33,4 @@ The output when the job runs looks like this:
 
 ![](@assets/img/logfilter-keyvalue-example3.png)
 
-So in later job steps, refer to `$data.EXIP` in commands, or `@data.EXIP@` in scripts for the _10.1.1.2_ value.
+In later job steps, refer to `$data.EXIP` in commands, or `@data.EXIP@` in scripts for the _10.1.1.2_ value.

@@ -14,5 +14,5 @@ There are four options for this log filter:
 By default, all Rundeck job step log results are published at the “Normal” loglevel. This filter can be used not just for quiescing log output, but promoting to a higher level as well.
 
 ::: tip
-Note: Rundeck log filters expect to read logs on the “Normal” loglevel. This means that applying this filter as a global log filter on a Rundeck job can affect other filters that process later than this one.
+Rundeck log filters expect to read logs on the “Normal” loglevel. This means that applying this filter as a global log filter on a Rundeck job can affect other filters that process later than this one.
 :::

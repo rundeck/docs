@@ -16,5 +16,5 @@ This log filter has four fields to configure:
   - Log Data - checkbox. If true, the captured data will be passed along in the job log.
 
 ::: tip
-Note: that when multiple values match, then $data.key will equal all of the matched values, separated by a newline.
+When multiple values match, then $data.key will equal all of the matched values, separated by a newline.
 :::
