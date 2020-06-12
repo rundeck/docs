@@ -19,13 +19,18 @@ http://support.rundeck.com/customer/en/portal/articles/2859551-authentication-wi
 
 --->
 
+:::warning
+Rundeck 3.3.x requires a new system property to define the destination for your Rundeck logs to be set in your Tomcat launch JAVA_OPTS.  
+Ensure you have set the `rundeck.server.logDir` to the directory that will hold your Rundeck logs. 
+:::
+
 - Install Tomcat on your environment, as a service or just using the binaries (as for this example).
 - [Download](https://rundeck.org/downloads.html) the latest version of Rundeck war file and place it in `$tomcat.base/webapps/` as e.g. rundeck.war
 - Create `$tomcat.base/bin/setenv.sh`
 
 ```bash
 $ cat setenv.sh
-   JAVA_OPTS="$JAVA_OPTS -XX:MaxPermSize=512m -Xmx2048m -Xms512m -server -Drdeck.base=/path/to/rundeck.base -Drundeck.config.location=/path/to/rundeck.base/server/config/rundeck-config.properties"
+   JAVA_OPTS="$JAVA_OPTS -XX:MaxPermSize=512m -Xmx2048m -Xms512m -server -Drdeck.base=/path/to/rundeck.base -Drundeck.config.location=/path/to/rundeck.base/server/config/rundeck-config.properties -Drundeck.server.logDir=/path/to/rundeck.base/server/logs"
 ```
 
 - Create `/path/to/rundeck.base`
@@ -59,7 +64,7 @@ framework.server.url = http://localhost:8080/rundeck
 ```bash
 setenv.bat content:
    set "JRE_HOME=C:\Program Files\Java\jre1.8.0_181"
-   set "JAVA_OPTS=-XX:MaxPermSize=512m -Xmx2048m -Xms512m -server -Drdeck.base=C:\path\to\rundeck.base -Drundeck.config.location=C:\path\to\rundeck.base\server\config\rundeck-config.properties"
+   set "JAVA_OPTS=-XX:MaxPermSize=512m -Xmx2048m -Xms512m -server -Drdeck.base=C:\path\to\rundeck.base -Drundeck.config.location=C:\path\to\rundeck.base\server\config\rundeck-config.properties -Drundeck.server.logDir=C:\path\to\rundeck.base\server\logs"
 ```
 
 - Create `C:\\path\\to\\rundeck.base`

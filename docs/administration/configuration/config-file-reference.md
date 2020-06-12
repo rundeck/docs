@@ -11,7 +11,6 @@ installation methods.
     ├── admin.aclpolicy
     ├── apitoken.aclpolicy
     ├── artifact-repositories.yaml
-    ├── cli-log4j.properties
     ├── framework.properties
     ├── jaas-loginmodule.conf
     ├── log4j.properties
@@ -32,7 +31,6 @@ installation methods.
 
     /var/lib/rundeck/
     ├── bootstrap
-    ├── cli
     ├── data
     ├── libext
     ├── logs
@@ -46,7 +44,6 @@ installation methods.
     $RDECK_BASE/etc/
     ├── admin.aclpolicy
     ├── apitoken.aclpolicy
-    ├── cli-log4j.properties
     ├── framework.properties
     ├── preferences.properties
     ├── profile
@@ -132,16 +129,27 @@ Entries in `framework.properties` in the form `framework.globals.X=Y` Adds a var
 
 Global variables can be overridden in the [`project.properties`](#project-properties) by adding a line in the form of `project.globals.X=Y` and then accessing it as `${globals.X}`.
 
-## log4j.properties
+## log4.properties - Legacy
 
-Rundeck uses [log4j] as its application logging facility. This file
+Rundeck uses [log4j](http://logging.apache.org/log4j/1.2/) as its application logging facility. This file
 defines the logging configuration for the Rundeck server.
 
-[log4j]: https://logging.apache.org/log4j/2.x/
+## log4j2.properties - New in Rundeck 3.3.x
 
-## cli-log4j.properties
+Rundeck uses [log4j2](https://logging.apache.org/log4j/2.x/) as its application logging facility. This file
+defines the logging configuration for the Rundeck server.
 
-This file defines the logging configuration for the Commandline tools.
+#### Upgrading to log4j 2
+
+:::warning
+If you have custom plugins that used log4j 1.x or logback to do logging, you will need to upgrade them to use slf4j logging apis or log4j2 logging apis.
+:::
+
+If you are using the launcher or war in a container, the first time you run Rundeck 3.3.x a log4j2.properties file will be created for you.    
+If you are using the rpm or deb package a log4j2.properties file should be added to your configuration directory when you upgrade the package.
+If you have customized your old log4j.properties file you will need to ensure that it complies to the log4j2 format, then you can rename it to `log4j2.properties` in your configuration directory
+
+Please refer to the log4j2 [documentation](https://logging.apache.org/log4j/2.x/manual/migration.html) to see how to update your old log4j.properties to be compliant with the new log4j2 format.
 
 ## profile
 
