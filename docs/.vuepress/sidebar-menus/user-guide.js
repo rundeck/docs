@@ -7,6 +7,55 @@ module.exports = [{
     '/manual/02-getting-help',
     '/manual/03-getting-started',
     {
+      title: "Projects",
+      path: '/administration/projects/',
+      collapsable: true,
+      children: [
+        '/administration/projects/project-create',
+        '/administration/projects/configuration',
+        {
+          title: 'SCM',
+          collapsable: true,
+          children: [
+            '/administration/projects/scm/',
+            '/administration/projects/scm/git',
+            '/administration/projects/scm/job-replication'
+          ]
+        },
+        '/administration/projects/project-readme',
+        '/administration/projects/project-motd',
+        '/administration/projects/plugin-control',
+        '/administration/projects/project-archive',
+        '/administration/projects/project-delete',
+        {
+          title: 'Resource Model Sources',
+          collapsable: true,
+          children: [
+            '/administration/projects/resource-model-sources/',
+            '/administration/projects/resource-model-sources/builtin',
+            '/administration/projects/resource-model-sources/aws',
+            '/administration/projects/resource-model-sources/azure',
+            '/administration/projects/resource-model-sources/servicenow',
+            '/administration/projects/resource-model-sources/resource-editor',
+            '/administration/projects/resource-model-sources/vmware'
+          ]
+        },
+        {
+          title: 'Node Execution',
+          collapsable: true,
+          children: [
+            '/administration/projects/node-execution/',
+            '/administration/projects/node-execution/builtin',
+            '/administration/projects/node-execution/script',
+            '/administration/projects/node-execution/ssh',
+            '/administration/projects/node-execution/powershell',
+            '/administration/projects/node-execution/bastionssh',
+            '/administration/projects/node-execution/openssh'
+          ]
+        }
+      ]
+    },
+    {
       title: 'Jobs',
       collapsable: true,
       path: '/manual/04-jobs',

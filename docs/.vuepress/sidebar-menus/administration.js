@@ -136,6 +136,7 @@ module.exports = [{
     {
       title: "Projects",
       collapsable: true,
+      path: '/administration/projects/',
       children: [
         '/administration/projects/project-create',
         '/administration/projects/configuration',
