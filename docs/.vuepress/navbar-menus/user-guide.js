@@ -11,6 +11,10 @@ module.exports = [{
     text: 'Getting Started'
   },
   {
+    link: '/manual/projects',
+    text: 'Projects'
+  },
+  {
     link: '/manual/04-jobs',
     text: 'Jobs'
   },
