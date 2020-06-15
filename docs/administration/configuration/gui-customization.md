@@ -72,6 +72,26 @@ Title shown in app header
 
 Enable serving static files from $RDECK_BASE/user-assets dir. This must be set to true if using a custom logo.
 
+### rundeck.feature.pagedjoblist.enabled
+- Example: ```TRUE```
+- min version: 3.2.6 Enterprise
+
+Enables the option of a job list UI for a project that is capable of listing tens of thousands of jobs in a project.
+This UI does not support bulk operations or SCM operations and does not display jobs in a grouped layout, but is significantly faster than the default job list UI.
+
+When this property has been enabled, a new project configuration property will be added to the project `User Interface` configuration tab called `Default Job List`
+You can use the drop-down menu to toggle the job list component for the project.
+
+![Figure: Select Project Job List Component](~@assets/img/configure-default-job-list.png)
+
+### rundeck.gui.defaultJobList
+- Example: ```grouped```
+- min version: 3.2.6 Enterprise
+
+Sets the default job list type for all projects in Rundeck.
+The two options are `grouped` and `paged`.
+`grouped` is the default job list that Rundeck has always used.
+`paged` is the new job list that can handle very large numbers of jobs in a project.
 
 ### rundeck.gui.paginatejobs.enabled
 - Example: ```TRUE```
