@@ -97,7 +97,7 @@ For the basics of plugin localization see: [Plugin Development - Plugin Localiza
 
 Several built-in plugins are listed here:
 
-- [`rundeckapp/src/groovy/com/dtolabs/rundeck/server/plugins/logging`](https://github.com/rundeck/rundeck/tree/master/rundeckapp/src/groovy/com/dtolabs/rundeck/server/plugins/logging)
+- [`rundeckapp/src/main/groovy/com/dtolabs/rundeck/server/plugins/logging`](https://github.com/rundeck/rundeck/tree/master/rundeckapp/src/main/groovy/com/dtolabs/rundeck/server/plugins/logging)
 
 ## Example Groovy plugins
 
