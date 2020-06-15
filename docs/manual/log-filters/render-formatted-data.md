@@ -1,6 +1,6 @@
 # Render Formatted Data
 
-This is a data presentation log filter - meaning that this filter doesn’t manipulate the log returns from the job step it’s applied to; instead, it transforms the output of a job step by parsing the log returns from a given workflow step and rendering it in sanitized HTML. This is particularly useful when reformatting the return values of scripts and API calls.
+This is a data presentation log filter - meaning that this filter doesn’t alter the log output from the job step it’s applied to; instead, it adds some metadata to the logs allowing Rundeck to render it in sanitized HTML by use of [Content Converter Plugins][]. This is particularly useful to display the return values of scripts and API calls.
 
 Output will be an HTML table with the data formatted appropriately.
 
@@ -61,4 +61,6 @@ log event, and mark it as `application/json` data type.
 
 ### See Also
 
-- (/manual/content-converters/index.md)
+- [Content Converter Plugins][]
+
+[Content Converter Plugins]: /docs/developer/content-converter-plugins.html
