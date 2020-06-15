@@ -8236,6 +8236,7 @@ Content-Type: `application/json`
 [/api/V/executions/delete]:#bulk-delete-executions
 
 
+[/api/V/executions/metrics]: #execution-query-metrics
 
 [/api/V/job/\[ID\]]:#getting-a-job-definition
 [DELETE /api/V/job/\[ID\]]:#deleting-a-job-definition
