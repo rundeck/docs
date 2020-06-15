@@ -149,7 +149,7 @@ For the basics of plugin localization see: [Plugin Development - Plugin Localiza
 
 Several built-in plugins are listed here:
 
-- [`rundeckapp/src/groovy/com/dtolabs/rundeck/server/plugins/logs`](https://github.com/rundeck/rundeck/tree/master/rundeckapp/src/main/groovy/com/dtolabs/rundeck/server/plugins/logs)
+- [`rundeckapp/src/main/groovy/com/dtolabs/rundeck/server/plugins/logs`](https://github.com/rundeck/rundeck/tree/master/rundeckapp/src/main/groovy/com/dtolabs/rundeck/server/plugins/logs)
 
 Several of the built-in rundeck plugins convert their input into a "Data Type" of: A Java List or Map object and type name of `application/x-java-map-or-list`. This "Data Type" can be rendered to HTML via the [HTMLTableViewConverterPlugin].
 
