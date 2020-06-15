@@ -7463,11 +7463,12 @@ or error
 }
 ```
 
-## Calendars API (Enterprise)
+## Calendars (Enterprise)
+
 ::: enterprise  
 :::
 
-The calendar feature has some APIs:
+Manage System and Project Calendars in Rundeck Enterprise.
 
 ### List System Calendars
 Get all calendars at system level.
@@ -8235,6 +8236,7 @@ Content-Type: `application/json`
 [/api/V/executions/delete]:#bulk-delete-executions
 
 
+[/api/V/executions/metrics]: #execution-query-metrics
 
 [/api/V/job/\[ID\]]:#getting-a-job-definition
 [DELETE /api/V/job/\[ID\]]:#deleting-a-job-definition
