@@ -7463,11 +7463,12 @@ or error
 }
 ```
 
-## Calendars API (Enterprise)
+## Calendars (Enterprise)
+
 ::: enterprise  
 :::
 
-The calendar feature has some APIs:
+Manage System and Project Calendars in Rundeck Enterprise.
 
 ### List System Calendars
 Get all calendars at system level.
