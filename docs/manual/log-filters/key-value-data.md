@@ -2,6 +2,13 @@
 
 The Key Value Data log filter can parse the output of a workflow step with a regular expression to create a key/value data that is exported to the workflow as a context variable for use in later workflow steps.
 
+::: tip
+This plugin can only capture data values which are logged within a single line of log output.
+
+If you want to capture multiple lines of output, see 
+the [Multiline Regex Capture](/manual/log-filters/multi-line-regex.html#usage) plugin.
+:::
+
 ## Usage
 
 There are only three configuration components:
@@ -34,3 +41,7 @@ The output when the job runs looks like this:
 ![](@assets/img/logfilter-keyvalue-example3.png)
 
 In later job steps, refer to `$data.EXIP` in commands, or `@data.EXIP@` in scripts for the _10.1.1.2_ value.
+
+## See Also
+
+* [Multiline Regex Capture](/manual/log-filters/multi-line-regex.html#usage) which can capture multiple lines of log output into a data variable.
