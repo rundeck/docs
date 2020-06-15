@@ -35,7 +35,7 @@ Log events have Metadata (key/value strings) associated with them.
 If a Log event has a `content-data-type` metadata value, Rundeck will attempt to chain together up to two Content Converter Plugins
 to convert the specified data type into `text/html` for rendering in the GUI.
 
-Using a Log Filter plugin such as the "Render Formatted Data" built-in Log Filter Plugin allows adding adding the `content-data-type` to the output
+Using a Log Filter plugin such as the [Render Formatted Data](/manual/log-filters/render-formatted-data.md) built-in Log Filter Plugin allows adding the `content-data-type` to the output
 of Commands or Script steps.
 
 Additional metadata can be passed to the Content Converter plugins. All log metadata entries with keys starting with `content-meta:` will be extracted from the
@@ -43,7 +43,7 @@ Log Event metadata, and the `content-meta:` prefix removed.
 
 ## Java Plugin Type
 
-Plugins must implement the [ContentConverterPlugin] interface, and declare as a provider of server `ContentConverter`.
+Plugins must implement the [ContentConverterPlugin] interface, and declare as a provider of service [`ContentConverter`]({{{javaDocBase}}}/com/dtolabs/rundeck/plugins/ServiceNameConstants.html#ContentConverter).
 
 Methods:
 
@@ -149,15 +149,15 @@ For the basics of plugin localization see: [Plugin Development - Plugin Localiza
 
 Several built-in plugins are listed here:
 
-- [`rundeckapp/src/groovy/com/dtolabs/rundeck/server/plugins/logs`](https://github.com/rundeck/rundeck/tree/master/rundeckapp/src/groovy/com/dtolabs/rundeck/server/plugins/logs)
+- [`rundeckapp/src/main/groovy/com/dtolabs/rundeck/server/plugins/logs`](https://github.com/rundeck/rundeck/tree/master/rundeckapp/src/main/groovy/com/dtolabs/rundeck/server/plugins/logs)
 
 Several of the built-in rundeck plugins convert their input into a "Data Type" of: A Java List or Map object and type name of `application/x-java-map-or-list`. This "Data Type" can be rendered to HTML via the [HTMLTableViewConverterPlugin].
 
 Your plugins can make use of this built-in plugin and therefore do not have to convert directly to HTML.
 See the [JsonConverterPlugin] for an example.
 
-[jsonconverterplugin]: https://github.com/rundeck/rundeck/blob/master/rundeckapp/src/groovy/com/dtolabs/rundeck/server/plugins/logs/JsonConverterPlugin.groovy
-[htmltableviewconverterplugin]: https://github.com/rundeck/rundeck/tree/master/rundeckapp/src/groovy/com/dtolabs/rundeck/server/plugins/logs/HTMLTableViewConverterPlugin.groovy
+[jsonconverterplugin]: https://github.com/rundeck/rundeck/blob/master/rundeckapp/src/main/groovy/com/dtolabs/rundeck/server/plugins/logs/JsonConverterPlugin.groovy
+[htmltableviewconverterplugin]: https://github.com/rundeck/rundeck/tree/master/rundeckapp/src/main/groovy/com/dtolabs/rundeck/server/plugins/logs/HTMLTableViewConverterPlugin.groovy
 
 ## Example Groovy plugins
 
