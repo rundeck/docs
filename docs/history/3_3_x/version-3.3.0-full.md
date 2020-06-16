@@ -1,4 +1,4 @@
-# Preview Release 3.3.0
+# Draft Notes - Release 3.3.0
 
 Name: <span style="color: peru"><span class="glyphicon glyphicon-flash"></span> "onion ring peru flash"</span>
 
@@ -34,7 +34,7 @@ An Enhanced Log Viewer loads job activity 1000% faster with improved usability o
 ### Extensive Backend Enhancements
 - Backend updates to Grails 4/Gradle 5 which now support Java 11.
 - Spring Security 5 upgrade including [OAuth2 updates](/administration/security/sso). (Be sure to read docs for the changes required)
-- Logging system is [Log4J2](https://logging.apache.org/log4j/2.x/) (Be sure to read docs for changes required)
+- Logging system is [Log4J2](https://logging.apache.org/log4j/2.x/) (Be sure to read [docs for changes required when upgrading](/upgrading/upgrading-to-rundeck-3.3.html))
 
 #### Docker
 - Ubuntu backend updated to current LTS version

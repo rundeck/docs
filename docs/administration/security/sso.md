@@ -3,23 +3,15 @@
 ::: enterprise
 :::
 
-## Okta
-
-Rundeck Enterprise can be configured to work with the Okta security platfom.
-
-To configure the Okta SSO plugin for your Rundeck installation
-you will need to add a new application to your Okta Applications,
-and then add some properties to your rundeck-config.properties file.
-
-### Upgrade notes for 3.3.0
+## New in version 3.3.0
 
 :::warning
-YOU MUST CHANGE YOUR CONFIGURED REDIRECT URL IN YOUR OAUTH PROVIDER
-:::
+When Upgrading, you must change the redirect url configured with your OAuth provider.
 The Login Redirect URI has changed.  
-Change it from `<rundeck base url>/user/oauth/<providerId>` to `<rundeck base url>/login/oauth2/code/<providerId>`  
-For example. If you use Okta.  
-Change from `<rundeck base url>/user/oauth/okta` to `<rundeck base url>/login/oauth2/code/okta`
+Change it from `/user/oauth/` to `/login/oauth2/code/`
+
+See vendor specific details below for [Okta](#okta) and [Ping](#ping).
+:::
 
 :::warning
 In order to enhance the security of the communication between your oauth provider and Rundeck, you must supply
@@ -32,6 +24,16 @@ The Rundeck Oauth2 configuration now has support for auto configuration from you
 To use the auto configuration you only need to supply the base url to your oauth provider endpoint, your client id and client secret, and Rundeck will do the rest.
 Please see the documentation below for detailed instructions.
 :::
+
+## Okta
+
+Rundeck Enterprise can be configured to work with the Okta security platfom.
+
+To configure the Okta SSO plugin for your Rundeck installation
+you will need to add a new application to your Okta Applications,
+and then add some properties to your rundeck-config.properties file.
+
+
 
 
 ### Okta Application Configuration
