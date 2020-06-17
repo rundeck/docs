@@ -58,12 +58,10 @@ View the [Index](#index) listing API paths.
 
 Changes introduced by API Version number:
 
+
 **Version 35**:
 * Updated Response:
     - [`PUT /api/V/project/[PROJECT]/import`][/api/V/project/\[PROJECT\]/import] - More validation and error message results added.
-* New Endpoints:
-    - [`GET /api/V/enterprise/license`][GET /api/V/enterprise/license] - Read Enterprise License information (Enterprise only)
-    - [`POST /api/V/enterprise/license`][POST /api/V/enterprise/license] - Upload Enterprise License Key (Enterprise only)
 
 **Version 34**:
 * New Endpoints:
@@ -494,6 +492,19 @@ Added in Rundeck 1.4.6, 1.5.1:
 * Updated endpoints
     * `/api/1/jobs` - [Listing Jobs](#listing-jobs)
         * Additional parameters added
+
+## Incubating Endpoints
+
+These endpoints are in "Incubating" status, and are subject to change in future releases.
+
+- [`GET /api/V/incubating/enterprise/license`][GET /api/V/incubating/enterprise/license] - Read Enterprise License information (Enterprise only)
+- [`POST /api/V/incubating/enterprise/license`][POST /api/V/incubating/enterprise/license] - Upload Enterprise License Key (Enterprise only)
+- [`GET /api/V/incubating/project/[PROJECT]/calendars`][GET /api/V/incubating/project/\[PROJECT\]/calendars] - Get Project Calendars (Enterprise only)
+- [`POST /api/V/incubating/project/[PROJECT]/calendars`][POST /api/V/incubating/project/\[PROJECT\]/calendars] - Create/Update Project Calendars (Enterprise only)
+- [`DELETE /api/V/incubating/project/[PROJECT]/calendars/[ID]`][DELETE /api/V/incubating/project/\[PROJECT\]/calendars/\[ID\]] - Delete a Project Calendar (Enterprise only)
+- [`GET /api/V/incubating/system/calendars`][GET /api/V/incubating/system/calendars] - Get System Calendars (Enterprise only)
+- [`POST /api/V/incubating/system/calendars`][POST /api/V/incubating/system/calendars] - Create/Update System Calendars (Enterprise only)
+- [`DELETE /api/V/incubating/system/calendars/[ID]`][DELETE /api/V/incubating/system/calendars/\[ID\]] - Delete a System Calendar (Enterprise only)
 
 ## URLs
 
@@ -7468,14 +7479,24 @@ or error
 ::: enterprise  
 :::
 
+::: incubating
+:::
+
 Manage System and Project Calendars in Rundeck Enterprise.
 
 ### List System Calendars
 Get all calendars at system level.
 
+::: enterprise  
+:::
+
+::: incubating
+:::
+
+
 **Request:**
     
-    GET  /api/V/system/calendars
+    GET  /api/V/incubating/system/calendars
 
 **Response:**
 Content-Type: application/json
@@ -7502,9 +7523,16 @@ Content-Type: application/json
 ### List Project Calendars
 Get all calendars at project level
 
+::: enterprise  
+:::
+
+::: incubating
+:::
+
+
 **Request:**
     
-    GET  /api/V/project/[PROJECT]/calendars
+    GET  /api/V/incubating/project/[PROJECT]/calendars
 
 **Response:**
 Content-Type: application/json
@@ -7535,9 +7563,16 @@ Content-Type: application/json
 ### Create/Update System Calendar
 Create or update a calendar at system level
 
+::: enterprise  
+:::
+
+::: incubating
+:::
+
+
 **Request:**
     
-    POST  /api/V/system/calendars
+    POST  /api/V/incubating/system/calendars
 
 Request Content:
 `Content-Type: application/json`
@@ -7588,9 +7623,16 @@ Example:
 ### Create/Update Project Calendar
 Create or update a calendar at project level
 
+::: enterprise  
+:::
+
+::: incubating
+:::
+
+
 **Request:**
     
-    POST  /api/V/project/[PROJECT]/calendars
+    POST  /api/V/incubating/project/[PROJECT]/calendars
 
 Request Content:
 `Content-Type: application/json`
@@ -7655,9 +7697,16 @@ Example:
 ### Delete Project Calendar
 Deletes a calendar at project level
 
+::: enterprise  
+:::
+
+::: incubating
+:::
+
+
 **Request:**
     
-    DELETE  /api/V/project/[PROJECT]/calendars/[ID]
+    DELETE  /api/V/incubating/project/[PROJECT]/calendars/[ID]
 
 Request Content:
 `NO CONTENT NEEDED`
@@ -7673,9 +7722,16 @@ Example:
 ### Delete System Calendar
 Deletes a calendar at system level
 
+::: enterprise  
+:::
+
+::: incubating
+:::
+
+
 **Request:**
     
-    DELETE  /api/V/system/calendars/[ID]
+    DELETE  /api/V/incubating/system/calendars/[ID]
 
 Request Content:
 `NO CONTENT NEEDED`
@@ -7696,11 +7752,14 @@ Example:
 ::: enterprise  
 :::
 
+::: incubating
+:::
+
 Returns metadata about the current License for Rundeck Enterprise.
 
 **Request:**
 
-    GET /api/V/enterprise/license
+    GET /api/V/incubating/enterprise/license
 
 **Response:**
 
@@ -7744,11 +7803,14 @@ Returns metadata about the current License for Rundeck Enterprise.
 ::: enterprise  
 :::
 
+::: incubating
+:::
+
 Uploads a license key for Rundeck Enterprise.
 
 **Request:**
 
-    POST /api/V/enterprise/license
+    POST /api/V/incubating/enterprise/license
     Content-Type: application/x-rundeck-license
 
 Request Content: 
@@ -7771,11 +7833,6 @@ Content-Type: `application/json`
 
 ## Index
 
-
-[/api/V/enterprise/license][]
-
-* `GET` [View License](#view-license)
-* `POST` [Set License Key](#set-license-key)
 
 [/api/V/execution/\[ID\]][]
 
@@ -8183,16 +8240,12 @@ Content-Type: `application/json`
 
 * `GET` [List roles][/api/V/user/roles]
 
-[Response Format]:#xml-response-format
+[Response Format]: #xml-response-format
 
 [/api/V/plugin/list][]
 
 * `GET` [List Installed Plugins][/api/V/plugin/list]
 
-
-[/api/V/enterprise/license]: #view-license
-[GET /api/V/enterprise/license]: #view-license
-[POST /api/V/enterprise/license]: #set-license-key
 
 [/api/V/project/\[PROJECT\]/scm/\[INTEGRATION\]/plugins]:#list-scm-plugins
 [/api/V/project/\[PROJECT\]/scm/\[INTEGRATION\]/plugin/\[TYPE\]/input]:#get-scm-plugin-input-fields
@@ -8382,15 +8435,38 @@ Content-Type: `application/json`
 
 [ACLPOLICY]:../man5/aclpolicy.html
 
-[/api/V/project/\[PROJECT\]/calendars][]
+
+### Incubating
+
+[/api/V/incubating/enterprise/license][]
+
+* `GET` [View License](#view-license)
+* `POST` [Set License Key](#set-license-key)
+
+
+[/api/V/incubating/enterprise/license]: #view-license
+[GET /api/V/incubating/enterprise/license]: #view-license
+[POST /api/V/incubating/enterprise/license]: #set-license-key
+
+[/api/V/incubating/project/\[PROJECT\]/calendars][]
 
 * `GET` [List Project Calendars](#list-project-calendars)
 * `POST` [Create/Update Project Calendars](#create-update-project-calendar)
+* `DELETE` [Delete Project Calendars](#delete-project-calendar)
   
-[/api/V/system/calendars][]
+[/api/V/incubating/system/calendars][]
 
 * `GET` [List System Calendars](#list-system-calendars)
 * `POST` [Create/Update System Calendars](#create-update-system-calendar)
-  
-[/api/V/project/\[PROJECT\]/calendars]:#list-project-calendars
-[/api/V/system/calendars]:#list-system-calendars
+* `DELETE` [Delete System Calendars](#delete-system-calendar)
+
+
+[/api/V/incubating/project/\[PROJECT\]/calendars]: #list-project-calendars
+[GET /api/V/incubating/project/\[PROJECT\]/calendars]: #list-project-calendars
+[POST /api/V/incubating/project/\[PROJECT\]/calendars]: #create-update-project-calendar
+[DELETE /api/V/incubating/project/\[PROJECT\]/calendars/\[ID\]]: #delete-project-calendar
+
+[/api/V/incubating/system/calendars]: #list-system-calendars
+[GET /api/V/incubating/system/calendars]: #list-system-calendars
+[POST /api/V/incubating/system/calendars]: #create-update-system-calendar
+[DELETE /api/V/incubating/system/calendars/\[ID\]]: #delete-system-calendar
