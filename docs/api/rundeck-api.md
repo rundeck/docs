@@ -7445,22 +7445,14 @@ the content type posted you will get an error response.
     
 **Response**    
 
-`Content-Type: application/json`:
+The webhook plugin will determine the response received.
+Please see the documentation for the plugin that is configured for the webhook endpoint you are using. 
 
-``` json
-{
-    "msg": "ok"
-}
+The default response is:  
+`Content-Type: text/plain`:
+
 ```
-
-or error
-
-`Content-Type: application/json`:
-
-``` json
-{
-    "err": "The error message"
-}
+ok
 ```
 
 ## Calendars (Enterprise)

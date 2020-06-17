@@ -73,4 +73,10 @@ Please report any issues on the [rd-ext-acl github](https://github.com/rundeck/r
 
 [rd]: https://rundeck.github.io/rundeck-cli/
 
+## Webhook Plugins
+
+:::warning
+Webhook plugins must now return a `WebhookResponder` from the `onEvent` method in the plugin. A `null` can be returned to use the `DefaultWebhookResponder`.
+:::
+
 ## Docker Notes
