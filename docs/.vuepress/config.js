@@ -97,6 +97,15 @@ module.exports = {
           '/':'Available in Rundeck Enterprise'
         },
       },
+    ],
+    [
+      'vuepress-plugin-container',
+      {
+        type: 'incubating',
+        defaultTitle: {
+          '/':'Incubating: this API may change in a future release.'
+        },
+      },
     ]
   ],
   themeConfig: {
