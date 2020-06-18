@@ -16,6 +16,19 @@ You will see the following configuration options in the `Plugin Configuration` s
 Once you have saved the webhook, you will see a `Post Url`. You can post a test message to
 that Url using curl or httpie to ensure that it runs the job as expected.
 
+### Response
+
+The webhook run job plugin will return the job id and execution id to the caller upon a successful job kickoff.
+You can use the execution id to check the progress of the job execution.
+
+Example:
+```
+{
+    "executionId": "7",
+    "jobId": "9bb310cf-fa0a-4a66-89a0-1892d73021e2"
+}
+```
+
 ## Configuration
 
 The JSON that is received by the plugin can be used to supply options, node filter, and the `Run As` user.

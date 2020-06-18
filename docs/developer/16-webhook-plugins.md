@@ -37,6 +37,12 @@ the job runner service.
 The `WebhookData` object contains the event payload itself as an InputStream plus contextual information
 such as the event sender, data content type, owning project, and pertinent HTTP headers your plugin might need.
 
+:::tip
+You can control the response sent back to the service that called the webhook by implementing a WebhookResponder.
+::: 
+
+A WebhookResponder class must be returned from the plugin's onEvent method. If you return a `null` the DefaultWebhookResponder will be used, which sends a plain text `ok` message to the webhook caller. 
+
 ```java
 import com.dtolabs.rundeck.core.plugins.Plugin;
 import com.dtolabs.rundeck.core.webhook.WebhookEventException;
@@ -62,7 +68,7 @@ class LogWebhookEventPlugin implements WebhookEventPlugin {
     }
 
     @Override
-    void onEvent(final WebhookEventContext context, final WebhookData data) throws WebhookEventException {
+    WebhookResponder onEvent(final WebhookEventContext context, final WebhookData data) throws WebhookEventException {
         LOG.info("Log Webhook Event Plugin - Webhook event information:");
         LOG.info("id: " + data.getId());
         LOG.info("name: " + data.webhook);
@@ -73,6 +79,7 @@ class LogWebhookEventPlugin implements WebhookEventPlugin {
         LOG.info("data:");
         LOG.info(new BufferedReader(new InputStreamReader(data.getData()))
                    .lines().collect(Collectors.joining("\n")));
+        return null; //will cause the default responder to respond to the webhook caller
     }
 }
 ```
