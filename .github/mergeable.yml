@@ -1,0 +1,9 @@
+
+version: 2
+mergeable:
+  - when: pull_request.*
+    validate:
+      - do: label
+        must_exclude:
+          regex: '(unmerged)'
+          message: 'This PR should not be merged until related code has been merged.'
