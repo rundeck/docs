@@ -1,4 +1,7 @@
-# Health Checks
+# Health Checks (Enterprise)
+
+::: enterprise
+:::
 
 ## Overview
 
@@ -6,7 +9,7 @@ Health Checks allow you to check the *Health Status* of Nodes periodically and o
 You can show the heatlh status visually in the GUI, and use the status to filter out unhealthy nodes when running Jobs.
 
 
-![Health Checks](~@assets/img/healthchecks-health-status-ui.png)	
+![Health Checks](~@assets/img/healthchecks-health-status-ui.png)
 
 Configure how you want to determine the Health Statuses of your Nodes, using a Command or Script.
 
@@ -88,7 +91,7 @@ Each Health Check will result in a Health Status:
 
 4. Once you have configured Access Control, you should see successful "healthy" checks:
 
-	![Health Checks - Healthy checks](~@assets/img/healthchecks-healthy-checks.png)	
+	![Health Checks - Healthy checks](~@assets/img/healthchecks-healthy-checks.png)
 
 5. Return to the "Project Settings... > Edit Nodes" page. Under "Enhancers" click "Add a new Node Enhancer"  and choose "Health Status".
 
@@ -114,7 +117,7 @@ When you run the Job, the excluded nodes will be indicated and automatically des
 
 ## Access Control
 
-To execute commands and scripts on Nodes, the Health Checks System adopts a username/role of "system/system". 
+To execute commands and scripts on Nodes, the Health Checks System adopts a username/role of "system/system".
 
 You can control what nodes are allowed to be executed on by adding an appropriate ACL Policy.
 
