@@ -22,7 +22,7 @@ docker run \
     -v data:/home/rundeck/server/data \
     -e RUNDECK_DATABASE_DRIVER=com.mysql.jdbc.Driver \
     -e RUNDECK_DATABASE_USERNAME="${DB_USERNAME}" \
-    -e RUNDECK_DATABASE_PASSWPRD="${DB_PASSWORD}" \
+    -e RUNDECK_DATABASE_PASSWORD="${DB_PASSWORD}" \
     -e RUNDECK_DATABASE_URL="${DB_URL}" \
     rundeckpro/enterprise:{{{rundeckVersion}}}
 ```
