@@ -16,29 +16,29 @@ This release includes a long list of feature releases for our Enterprise and Ope
 ![Schedule Creation](~@assets/img/project-schedules-create-form.png)
 
 #### Calendars
-[Calendars](/manual/calendars.html) takes the Schedules offering to a level above time based execution to true Schedule based executions.  Define Ad-Hoc Calendars and let Rundeck know when a job is allowed to run or might be blacked out.
+[Calendars](/manual/calendars) takes the Schedules offering to a level above time based execution to true Schedule based executions.  Define Ad-Hoc Calendars and let Rundeck know when a job is allowed to run or might be blacked out.
 
-![Calendars List](@assets/img/relnotes-330-calendars.png)
+![Calendars List](~@assets/img/relnotes-330-calendars.png)
 
 ### Guided Tours
 Rundeck [Guided Tours](/manual/tour-manager) provide customizable, interactive walk-throughs to end users to help demonstrate Rundeck processes.  They can be used as guidance for first-time users getting familiar with the system, or provide step-by-step instructions for how to execute longer processes.  Managed in product with a new UI manager tour definitions can be built as System Tours and are available to all projects or Project Tours and tied to that individual project.  Tours are stored in the Rundeck database so they are easily shared to all members in clustered environments.
 
-![Tours Example](@assets/img/relnotes-330-tours.png)
+![Tours Example](~@assets/img/relnotes-330-tours.png)
 
 ### New Log Viewer
 An enhanced Log Viewer loads job activity 1000% faster with improved usability options.  Along with significant performance improvements the new log viewer includes light/dark theme options, and no longer takes over the browser while loading large job output.
 
-![Log Viewer](@assets/img/relnotes-330-eventview.png)
+![Log Viewer](~@assets/img/relnotes-330-eventview.png)
 
 ### User/Group Management Wizard
 Rundeck user accounts can now be added/managed directly in the Enterprise version of Rundeck. Define local users and groups quickly and easily from the new [User Manager](/manual/user-management/user-mgmt.html#manage-local-users) administration interface.
 
-![User Manager Screen](@assets/img/usermgr-manage-users.png)
+![User Manager Screen](~@assets/img/usermgr-manage-users.png)
 
 ### Node Wizard Plugin
 New Node Wizard plugin is built-in to Rundeck Enterprise for managing node entries local to Rundeck.  The plugin can still merge values with other Node Sources but offer direct value settings with a friendly GUI based interface.  No need to write complicated JSON/YAML for local Node Sources!
 
-![Node Editor](@assets/img/relnotes-330-nodeedit.png)
+![Node Editor](~@assets/img/relnotes-330-nodeedit.png)
 
 ### Job Tags
 Use Job tags to refine searching for your important jobs.
@@ -55,13 +55,18 @@ A new License Status API has been added to allow programmatic checking of your i
 - Ubuntu backend updated to current LTS version
 - Option to use Open JDK 11 in some builds
 
-
 ### Documentation
 A significant documentation revamp was done as part of the 3.3.x release.  It can be [found here](https://docs.rundeck.com/) and covers all the new features and funtionality.
 
 ## Upgrading
 See [Upgrading to Rundeck 3.3](/upgrading/upgrading-to-rundeck-3.3.html) for details about how to upgrade from 3.2.  If you are upgrading from a version prior to 3.2 be sure to [start here](/upgrading/).
 
+## Notices
+Notices for future changes that may require code changes.
+
+::: warning
+  API Deprecation Notice.
+:::
 
 ## Additional Improvements
 
