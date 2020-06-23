@@ -1,4 +1,4 @@
-# Built-in Resource Model Source Plugins
+# Open Source Resource Model Source Plugins
 
 Rundeck includes these Built-in plugins in the core installation:
 

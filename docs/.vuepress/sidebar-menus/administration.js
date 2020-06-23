@@ -159,12 +159,13 @@ module.exports = [{
           collapsable: true,
           children: [
             '/administration/projects/resource-model-sources/',
-            '/administration/projects/resource-model-sources/builtin',
+            '/administration/projects/resource-model-sources/node-wizard',
             '/administration/projects/resource-model-sources/aws',
             '/administration/projects/resource-model-sources/azure',
             '/administration/projects/resource-model-sources/servicenow',
-            '/administration/projects/resource-model-sources/resource-editor',
-            '/administration/projects/resource-model-sources/vmware'
+            '/administration/projects/resource-model-sources/vmware',
+            '/administration/projects/resource-model-sources/builtin',
+            '/administration/projects/resource-model-sources/resource-editor'
           ]
         },
         {

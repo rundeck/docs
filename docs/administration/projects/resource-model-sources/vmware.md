@@ -1,4 +1,6 @@
-# VMWare Plugin
+# VMWare (Enterprise)
+::: enterprise
+:::
 
 The VMWare resource model plugin gets the VMs from a VSphere ESXi server or VCenter Server as Rundeck Nodes.
 

@@ -1,4 +1,4 @@
-# ServiceNow Resource Model Source
+# ServiceNow (Enterprise)
 ::: enterprise
 :::
 

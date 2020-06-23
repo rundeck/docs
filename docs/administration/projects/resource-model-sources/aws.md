@@ -1,4 +1,6 @@
-# Amazon EC2 Resource Model Source
+# Amazon EC2 (Enterprise)
+::: enterprise
+:::
 
 [Amazon's EC2](https://aws.amazon.com/ec2/) (Elastic Cloud Compute) is a cloud service in wide use for dynamic infrastructure; it is easy to start up and shut down Node "Instances" in the cloud.
 

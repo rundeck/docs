@@ -1,4 +1,6 @@
-# Azure Resource Model Source
+# Azure (Enterprise)
+::: enterprise
+:::
 
 The Azure Resource Model Source Plugin provides the Azure VMs as nodes on a Rundeck Server.
 
