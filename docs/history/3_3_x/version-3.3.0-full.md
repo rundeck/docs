@@ -36,12 +36,12 @@ Rundeck user accounts can now be added/managed directly in the Enterprise versio
 ![User Manager Screen](~@assets/img/usermgr-manage-users.png)
 
 ### Node Wizard Plugin
-New Node Wizard plugin is built-in to Rundeck Enterprise for managing node entries local to Rundeck.  The plugin can still merge values with other Node Sources but offer direct value settings with a friendly GUI based interface.  No need to write complicated JSON/YAML for local Node Sources!
+New [Node Wizard plugin](/administration/projects/resource-model-sources/node-wizard) is built-in to Rundeck Enterprise for managing node entries local to Rundeck.  The plugin can still merge values with other Node Sources but offer direct value settings with a friendly GUI based interface.  No need to write complicated JSON/YAML for local Node Sources!
 
 ![Node Editor](~@assets/img/relnotes-330-nodeedit.png)
 
 ### Job Tags
-Use Job tags to refine searching for your important jobs.
+Use Job tags to refine searching for your important jobs.  ***!!! Would also like content about the two job view options here***
 
 ### API Enhancements
 A new License Status API has been added to allow programmatic checking of your instance license status.
