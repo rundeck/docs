@@ -1,4 +1,4 @@
-# Guided Tour Manager
+# Guided Tour Manager (Enterprise)
 
 ::: enterprise
 :::
@@ -7,11 +7,11 @@
 
 Rundeck **Guided Tours** provide interactive walk-throughs to end users to help demonstrate Rundeck processes.  They can be used to help first time users get familiar with the system, or provide step-by-step instructions for how to execute complicated processes.  Managed in product with a new UI manager tour definitions can be configured as System Tours and are available to all projects or Project Tours and tied to that individual project.  Tours are stored in the Rundeck database so they are easily shared to all members in clustered environments.
 
-The System level Tour Manager can be found under the Settings menu:
+The System level **Tour Manager** can be found under the Settings menu:
 
 ![Sytems Tours](@assets/img/tours-system-link.png)
 
-Project level Tour Manager can be found within a Project using this menu choice:
+Project level **Tour Manager** can be found within a Project using this menu choice:
 
 ![Project Tour Manager](@assets/img/tours-project-link.png)
 

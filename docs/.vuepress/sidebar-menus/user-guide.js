@@ -72,7 +72,18 @@ module.exports = [{
         '/manual/07-executions'
       ]
     },
-    ['/manual/schedules/project-schedules', 'Schedules (Enterprise)'],
+    {
+      title: 'Schedules (Enterprise)',
+      collapsable: true,
+      path: '/manual/schedules/project-schedules',
+      sidebarDepth: 1
+    },
+    {
+      title: 'Tour Manager (Enterprise)',
+      collapsable: true,
+      path: '/manual/tour-manager.md',
+      sidebarDepth: 1
+    },
     {
       title: 'Calendars (Enterprise)',
       collapsable: true,
@@ -102,12 +113,6 @@ module.exports = [{
           ]
         },
       ]
-    },
-    {
-      title: 'Tour Manager (Enterprise)',
-      collapsable: true,
-      path: '/manual/tour-manager.md',
-      sidebarDepth: 2
     },
     {
       title: 'Project Settings',
