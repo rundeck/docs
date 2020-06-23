@@ -1,23 +1,21 @@
-# Tour Manager
+# Guided Tour Manager
 
 ::: enterprise
 :::
 
-Tour Manager content under construction
-
 ## Overview
 
-Rundeck HTTP Tours provide guided walk-throughs to help guide users through new features.  Tours can be configured as System Tours and are available to all Projects or project specific.  Tours are  stored in the Rundeck database so they are easily shared to all members in clustered environments.
+Rundeck **Guided Tours** provide interactive walk-throughs to end users to help demonstrate Rundeck processes.  They can be used to help first time users get familiar with the system, or provide step-by-step instructions for how to execute complicated processes.  Managed in product with a new UI manager tour definitions can be configured as System Tours and are available to all projects or Project Tours and tied to that individual project.  Tours are stored in the Rundeck database so they are easily shared to all members in clustered environments.
 
 The System level Tour Manager can be found under the Settings menu:
 
 ![Sytems Tours](@assets/img/tours-system-link.png)
 
-Project level Tours can be found within a Project using this menu choice:
+Project level Tour Manager can be found within a Project using this menu choice:
 
 ![Project Tour Manager](@assets/img/tours-project-link.png)
 
-## Creating a Tour
+## Creating a Guided Tour
 
 The first time you visit the Tour Manager a dialog box will ask you to provide a [System/Project] Tour Group Name.  
 ![Create Tour Group](@assets/img/tours-creategroup.png)
@@ -52,7 +50,7 @@ Steps can be re-ordered using the up/down arrow next to the Actions Menu.
 
 ![Step Actions Menu](@assets/img/tours-step-actions.png)
 
-## Using Tours
+## Using Guided Tours
 
 Tours can be enabled/disabled using the Toggle button at the top of the Tour Group.  
 
@@ -66,7 +64,7 @@ After selecting the Tour to use a dialog on the right will be displayed.  Use th
 
 ![Example Tour Window](@assets/img/tours-example-tour1.png)
 
-### Import / Export
+### Import / Export Tours
 
 There are options to export and import tours.  The export will be a zip file containing a tour manifest file and the tour definitions.
 

@@ -27,7 +27,9 @@ If there is a need to disable the calendars feature, add the following settings 
 ```properties
 rundeck.feature.calendars.enabled=false
 ```
+
+(Setting the value to 'true' or removing line will enable the feature.)
+
 :::tip
 Note: This will not prevent manual execution of jobs. It will only affect scheduled jobs.
-Setting the value to 'true' or removing line will enable the feature.
 :::

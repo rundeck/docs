@@ -11,37 +11,49 @@ This release includes a long list of feature releases for our Enterprise and Ope
 
 ### Enhanced Scheduling Options
 #### Schedules
-[Schedules](/manual/schedules/project-schedules) can be decoupled from jobs to make managing schedule changes easier.
+[Schedules](/manual/schedules/project-schedules) can be configured independently from jobs as stand-alone schedules to centralize the management of how often jobs run.
+
+![Schedule Creation](~@assets/img/project-schedules-create-form.png)
 
 #### Calendars
-[Calendars](/manual/calendars) offer blackout/allowed job run dates and times.
+[Calendars](/manual/calendars.html) takes the Schedules offering to a level above time based execution to true Schedule based executions.  Define Ad-Hoc Calendars and let Rundeck know when a job is allowed to run or might be blacked out.
 
-### User Guidance Tours
-[HTTP Tours](/manual/tour-manager) can now be built and managed in product.
+![Calendars List](@assets/img/relnotes-330-calendars.png)
 
-### Improved Log Viewer
-An Enhanced Log Viewer loads job activity 1000% faster with improved usability options.
+### Guided Tours
+Rundeck [Guided Tours](/manual/tour-manager) provide customizable, interactive walk-throughs to end users to help demonstrate Rundeck processes.  They can be used as guidance for first-time users getting familiar with the system, or provide step-by-step instructions for how to execute longer processes.  Managed in product with a new UI manager tour definitions can be built as System Tours and are available to all projects or Project Tours and tied to that individual project.  Tours are stored in the Rundeck database so they are easily shared to all members in clustered environments.
 
-### Local User Management
-- New User Management Wizard for local Rundeck user accounts.
+![Tours Example](@assets/img/relnotes-330-tours.png)
 
-### Node Management
-- New Node Wizard for creating node entries local to Rundeck.
+### New Log Viewer
+An enhanced Log Viewer loads job activity 1000% faster with improved usability options.  Along with significant performance improvements the new log viewer includes light/dark theme options, and no longer takes over the browser while loading large job output.
+
+![Log Viewer](@assets/img/relnotes-330-eventview.png)
+
+### User/Group Management Wizard
+Rundeck user accounts can now be added/managed directly in the Enterprise version of Rundeck. Define local users and groups quickly and easily from the new [User Manager](/manual/user-management/user-mgmt.html#manage-local-users) administration interface.
+
+![User Manager Screen](@assets/img/usermgr-manage-users.png)
+
+### Node Wizard Plugin
+New Node Wizard plugin is built-in to Rundeck Enterprise for managing node entries local to Rundeck.  The plugin can still merge values with other Node Sources but offer direct value settings with a friendly GUI based interface.  No need to write complicated JSON/YAML for local Node Sources!
+
+![Node Editor](@assets/img/relnotes-330-nodeedit.png)
 
 ### Job Tags
-- Job tags to refine searching for your important jobs.
+Use Job tags to refine searching for your important jobs.
 
-### Extensive Backend Enhancements
+### API Enhancements
+A new License Status API has been added to allow programmatic checking of your instance license status.
+
+### Extensive Engine Enhancements
 - Backend updates to Grails 4/Gradle 5 which now support Java 11.
-- Spring Security 5 upgrade including [OAuth2 updates](/administration/security/sso). (Be sure to read docs for the changes required)
-- Logging system is [Log4J2](https://logging.apache.org/log4j/2.x/) (Be sure to read [docs for changes required when upgrading](/upgrading/upgrading-to-rundeck-3.3.html))
+- Spring Security 5 upgrade including [OAuth2 updates](/administration/security/sso). (Be sure to read [docs for changes required when upgrading](/upgrading/upgrading-to-rundeck-3.3.html))
+- Logging system upgraded to [Log4J2](https://logging.apache.org/log4j/2.x/) (Be sure to read [docs for changes required when upgrading](/upgrading/upgrading-to-rundeck-3.3.html))
 
-#### Docker
+#### Docker Updates
 - Ubuntu backend updated to current LTS version
 - Option to use Open JDK 11 in some builds
-
-### API Changes
-- A new License Status API has been added to allow programmatic checking of your instance license status.
 
 
 ### Documentation
