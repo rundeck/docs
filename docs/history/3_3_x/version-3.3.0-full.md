@@ -3,13 +3,12 @@
 Name: <span style="color: peru"><span class="glyphicon glyphicon-flash"></span> "onion ring peru flash"</span>
 
 ## Overview
-**Welcome to the preview release of Rundeck 3.3.0.**
 
-This release includes a long list of feature releases for our Enterprise and Open Source versions and fixes throughout the 3.2.x series.
+This release includes a long list of useful feature enhancements for our Enterprise and Open Source versions of Rundeck.  **Enhanced Scheduling Options** take job schedules from simple time based runs to comprehensive schedule based executions.  **Guided Tours** are now natively available in the product to guide users through Rundeck processes.  New plugins for adding users, managing nodes, and organizing jobs also streamline administration tasks.  Rundeck 3.3.0 has a whole new engine behind the scenes (Grails 4, Log4J2, Gradle 5, OAuth2, Spring 5, etc.) and now **supports Java 11**.
 
 ## Enhancements
 
-### Enhanced Scheduling Options
+### Enhanced Scheduling Options (Enterprise)
 #### Schedules
 [Schedules](/manual/schedules/project-schedules) can be configured independently from jobs as stand-alone schedules to centralize the management of how often jobs run.
 
@@ -20,7 +19,7 @@ This release includes a long list of feature releases for our Enterprise and Ope
 
 ![Calendars List](~@assets/img/relnotes-330-calendars.png)
 
-### Guided Tours
+### Guided Tours (Enterprise)
 Rundeck [Guided Tours](/manual/tour-manager) provide customizable, interactive walk-throughs to end users to help demonstrate Rundeck processes.  They can be used as guidance for first-time users getting familiar with the system, or provide step-by-step instructions for how to execute longer processes.  Managed in product with a new UI manager tour definitions can be built as System Tours and are available to all projects or Project Tours and tied to that individual project.  Tours are stored in the Rundeck database so they are easily shared to all members in clustered environments.
 
 ![Tours Example](~@assets/img/relnotes-330-tours.png)
@@ -30,12 +29,12 @@ An enhanced Log Viewer loads job activity 1000% faster with improved usability o
 
 ![Log Viewer](~@assets/img/relnotes-330-eventview.png)
 
-### User/Group Management Wizard
+### User/Group Management Wizard (Enterprise)
 Rundeck user accounts can now be added/managed directly in the Enterprise version of Rundeck. Define local users and groups quickly and easily from the new [User Manager](/manual/user-management/user-mgmt.html#manage-local-users) administration interface.
 
 ![User Manager Screen](~@assets/img/usermgr-manage-users.png)
 
-### Node Wizard Plugin
+### Node Wizard Plugin (Enterprise)
 New [Node Wizard plugin](/administration/projects/resource-model-sources/node-wizard) is built-in to Rundeck Enterprise for managing node entries local to Rundeck.  The plugin can still merge values with other Node Sources but offer direct value settings with a friendly GUI based interface.  No need to write complicated JSON/YAML for local Node Sources!
 
 ![Node Editor](~@assets/img/relnotes-330-nodeedit.png)
