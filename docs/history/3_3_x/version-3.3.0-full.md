@@ -19,13 +19,13 @@ This release includes a long list of useful feature enhancements for our Enterpr
 
 ![Calendars List](~@assets/img/relnotes-330-calendars.png)
 
-### Guided Tours (Enterprise)
-Rundeck [Guided Tours](/manual/tour-manager) provide customizable, interactive walk-throughs to end users to help demonstrate Rundeck processes.  They can be used as guidance for first-time users getting familiar with the system, or provide step-by-step instructions for how to execute longer processes.  Managed in product with a new UI manager tour definitions can be built as System Tours and are available to all projects or Project Tours and tied to that individual project.  Tours are stored in the Rundeck database so they are easily shared to all members in clustered environments.
+### Guided Tour Manager (Enterprise)
+A new Rundeck [Guided Tours Manager](/manual/tour-manager) provide an authoring environment to build customizable, interactive walk-throughs to end users to help demonstrate Rundeck processes.  Tours can be used as guidance for first-time users getting familiar with the system, or provide step-by-step instructions for how to execute longer processes.  Tours can now be managed in product with a new UI to edit tour definitions. Guided Tours can be built as System Tours and are available to all projects or Project Tours and tied to that individual project.  As part of this Enterprise update Tours are stored in the Rundeck database so they are easily shared to all members in clustered environments.
 
 ![Tours Example](~@assets/img/relnotes-330-tours.png)
 
 ### New Log Viewer
-An enhanced Log Viewer loads job activity 1000% faster with improved usability options.  Along with significant performance improvements the new log viewer includes light/dark theme options, and no longer takes over the browser while loading large job output.
+A completely re-architected Log Viewer loads job activity 1000% faster with improved usability options.  Along with significant performance improvements the new log viewer includes light/dark theme options, and no longer takes over the browser while loading large job output.
 
 ![Log Viewer](~@assets/img/relnotes-330-eventview.png)
 
