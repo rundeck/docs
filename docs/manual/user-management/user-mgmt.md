@@ -1,14 +1,12 @@
 # User Manager
 
-Need generic discussion of Users in Rundeck.
-
 ![User Manager Button](@assets/img/usermgr-menu-button.png)
 
 ## User Summary
 
-This is a listing of all the users that have logged in...
+This is a listing of all the users that have logged in to Rundeck regardless of the source of users.
 
-## Manage Local Users
+## Manage Local Users (Enterprise)
 ::: enterprise
 :::
 
@@ -32,7 +30,7 @@ Click the **Add User** button in the main window.  Fill out the fields.
 
 ![Add User Screen](@assets/img/usermgr-add-user.png)
 
-## Manage Local Groups
+## Manage Local Groups (Enterprise)
 ::: enterprise
 :::
 
@@ -49,3 +47,9 @@ Click the ***Add Group*** button in the main window.  Fill out the fields and se
   - _Users:_ Click the green plus sign to add the user to the group.  Click the red minus sign to remove them from the group.
 
 ![Group Add Screen](@assets/img/usermgr-add-group.png)
+
+
+## Appendix
+
+### Including Admin Users
+By default the Rundeck admin user is not listed in the User Manager.  There are some options available in `rundeck-config.properties` to configure whether admin accounts are available in this module.  [They are documented here](/administration/configuration/config-file-reference.html#rundeck-config-properties) and prefixed with `rundeck.security.dblogin.`

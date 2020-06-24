@@ -283,7 +283,26 @@ The following sections describe configuration values for this file.
 
 - `rundeck.security.jaasRolePrefix`: Prefix string to add to each _role_ determined via [JAAS Authentication](/administration/security/authentication.md#jetty-and-jaas-authentication). Default: none.
 
-- `rundeck.security.requiredRole`: `roleName`. If this property is set, all users must be a member of the role specified. 
+- `rundeck.security.requiredRole`: `roleName`. If this property is set, all users must be a member of the role specified.
+
+- `rundeck.security.dblogin.enabled`: `true|false`. (Enterprise) This option is enabled by default in version 3.3.0 to allow creation of local Rundeck users.  [More Info](/manual/user-management/user-mgmt.html#manage-local-users)
+
+- `rundeck.security.dblogin.createAdminUserAndRoles`: `true|false`.  Enabling this feature adds the admin user and roles . (See `rundeck.security.dblogin.enabled`) Default is `false` so that no admin user or role is created by default.
+
+- `rundeck.security.dblogin.adminUsername`: `[String]` The user name for the admin account that is created if the `createAdminUserAndRoles` value is set to *true*. Default is `rdadmin`.
+
+- `rundeck.security.dblogin.adminPassword`: `[String]` A password value for the admin user created above.  If this entry is left blank or missing a password will be generated on boot of Rundeck.  The printed message will look like this:
+```
+************************************
+* YOUR GENERATED DB ADMIN PASSWORD *
+*                                  *
+*     <<RANDOMSTRING>>             *
+*                                  *
+* PLEASE LOGIN WITH THIS PASSWORD  *
+* AND CHANGE IT IMMEDIATELY        *
+************************************
+
+```
 
 ### Security HTTP Headers
 
