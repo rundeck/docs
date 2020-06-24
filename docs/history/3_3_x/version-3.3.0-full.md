@@ -1,4 +1,4 @@
-# Draft Notes - Release 3.3.0
+# Release 3.3.0 - DRAFT
 
 Name: <span style="color: peru"><span class="glyphicon glyphicon-flash"></span> "onion ring peru flash"</span>
 
@@ -22,7 +22,7 @@ This release includes a long list of useful feature enhancements for our Enterpr
 ### Guided Tour Manager (Enterprise)
 A new Rundeck [Guided Tours Manager](/manual/tour-manager) provide an authoring environment to build customizable, interactive walk-throughs to end users to help demonstrate Rundeck processes.  Tours can be used as guidance for first-time users getting familiar with the system, or provide step-by-step instructions for how to execute longer processes.  Tours can now be managed in product with a new UI to edit tour definitions. Guided Tours can be built as System Tours and are available to all projects or Project Tours and tied to that individual project.  As part of this Enterprise update Tours are stored in the Rundeck database so they are easily shared to all members in clustered environments.
 
-![Tours Example](~@assets/img/relnotes-330-tours.png)
+![Tours Example](~@assets/img/relnotes-330-tourdemo.gif)
 
 ### New Log Viewer
 A completely re-architected Log Viewer loads job activity 1000% faster with improved usability options.  Along with significant performance improvements the new log viewer includes light/dark theme options, and no longer takes over the browser while loading large job output.
@@ -64,7 +64,9 @@ See [Upgrading to Rundeck 3.3](/upgrading/upgrading-to-rundeck-3.3.html) for det
 Notices for future changes that may require code changes.
 
 ::: warning
-  API Deprecation Notice.
+API version `{{{ apiDepVersion }}}` will become the minimum version in a future release: Rundeck `{{{ apiDepRelease }}}`.
+
+Clients specifying API versions below the Deprecation version should upgrade to use it as the minimum version before then.
 :::
 
 ## Additional Improvements
