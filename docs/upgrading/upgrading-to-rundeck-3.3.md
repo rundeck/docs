@@ -2,6 +2,7 @@
 
 
 ::: tip
+This document highlights changes for users upgrading from Rundeck 3.2. 
 See other [Upgrading](/upgrading/) Documents if you are upgrading from 3.1 or earlier.
 :::
 
@@ -34,8 +35,10 @@ Please see [the documentation here](/administration/security/sso.md) for detaile
 If you have custom plugins that used log4j 1.x or logback to do logging, you will need to upgrade them to use slf4j logging apis or log4j2 logging apis.
 :::
 
-If you are using the launcher or war in a container, the first time you run Rundeck 3.3.x a log4j2.properties file will be created for you.    
+If you are using the launcher or war in a container, the first time you run Rundeck 3.3.x a log4j2.properties file will be created for you.
+
 If you are using the rpm or deb package a log4j2.properties file should be added to your configuration directory when you upgrade the package.
+
 If you have customized your old log4j.properties file you will need to ensure that it complies to the log4j2 format, then you can rename it to `log4j2.properties` in your configuration directory
 
 Please refer to the Log4j 2 [documentation](https://logging.apache.org/log4j/2.x/manual/migration.html) to see how to update your old log4j.properties to be compliant with the new log4j2 format.
@@ -53,13 +56,35 @@ $ cat setenv.sh
 JAVA_OPTS="$JAVA_OPTS -XX:MaxPermSize=512m -Xmx2048m -Xms512m -server -Drdeck.base=/path/to/rundeck.base -Drundeck.config.location=/path/to/rundeck.base/server/config/rundeck-config.properties -Drundeck.server.logDir=/path/to/rundeck.base/server/logs"
 ```
 
-## JSCH Timeout Notes
+## JSCH Node Executor timeouts and environment variables
 
-Old behavior used a timeout config of 0, causing an internal JSCH timeout of 20s, which caused some connections to fail. A new default timeout config is set for JSCH (instead of 0), this fixes the timeout issue in cases where the network is unstable.
+::: warning
+`RD_*` remote environment variables will no longer be sent by default when using JSCH node executor. You can turn them back on with a configuration change.
+:::
 
-By setting the timeout config, JSCH now responds differently to the case when remote sshd does not accept remote env vars, causing connections to fail when env vars are sent.
+A [bug fix](https://github.com/rundeck/rundeck/pull/6130) has changed the default behavior of the built-in SSH node executor (JSCH).
 
-We added a new config `send-env-var` which is default to false, if you use `RD_*` env vars you can enable this by default using `framework.properties`, at project level using project properties or at node level.
+This will affect you if:
+
+* You make use of `RD_*` environment variables sent to remote nodes, which require the sshd server to configure `AcceptEnv` to accept them.
+
+**Old Behavior**:
+
+Rundeck would always send `RD_*` environment variables when making a SSH connection via JSCH.  However if the remote sshd server did not accept those variables, it would send an error that JSCH would quietly ignore.
+
+**New Behavior**:
+
+Because of the fix for connection timeout, JSCH no longer ignores the error response from remote sshd.  This can cause the SSH connection to fail unless the remote sshd server uses the `AcceptEnv` configuration.
+
+As a safer default, Rundeck *no longer* sends `RD_*` environment variables by default.
+
+You can turn on sending the remote environment variables with a new SSH configuration option `ssh-send-env` which is default to false.
+
+You can enable this using at a global, project, or node level:
+
+* Framework default for all nodes in all projects: `framework.ssh-send-env=true`
+* Project default for all nodes in a project: `project.ssh-send-env=true`
+* Node attribute for a single node: `ssh-send-env: true`
 
 ## rd-acl Tool Removed
 
@@ -75,8 +100,18 @@ Please report any issues on the [rd-ext-acl github](https://github.com/rundeck/r
 
 ## Webhook Plugins
 
-:::warning
-Webhook plugins must now return a `WebhookResponder` from the `onEvent` method in the plugin. A `null` can be returned to use the `DefaultWebhookResponder`.
+::: warning
+Webhook Plugins built for Rundeck 3.2 will no longer work due to a Java interface change.
 :::
 
-## Docker Notes
+Webhook plugins must now return a `WebhookResponder` from the `onEvent` method in the plugin. A `null` can be returned to use the `DefaultWebhookResponder`.
+
+Please see the [Development > Webhook Plugins](/developer/16-webhook-plugins.md) document for more detail.
+
+## Node step error handler behavior change
+
+::: warning
+Node Step error handlers will no longer run on all nodes from the original step, only on the failed nodes.
+:::
+
+A [bug fix](https://github.com/rundeck/rundeck/pull/6118) changes the behavior of Error Handlers for Node Steps: the error handler step will run only on the failed nodes of the step. Previously the error handler would execute on all nodes of the original step, regardless of which individual nodes failed.

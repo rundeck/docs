@@ -1,10 +1,9 @@
 # General Upgrade Guide
 
-Updated December 18, 2019
 
-## Rundeck War Launcher
+## Runnable War
 
-To upgrade Rundeck 3 using war launcher use the following steps:
+To upgrade Rundeck 3 using the runnable war use the following steps:
 
 - Stop Rundeck Service:
 ```sh
