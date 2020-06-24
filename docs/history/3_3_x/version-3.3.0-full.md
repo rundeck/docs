@@ -40,7 +40,7 @@ New [Node Wizard plugin](/administration/projects/resource-model-sources/node-wi
 ![Node Editor](~@assets/img/relnotes-330-nodeedit.png)
 
 ### Job Tags
-Use Job tags to refine searching for your important jobs.  ***!!! Would also like content about the two job view options here***
+Use Job Tags to take your Runbook organization to a new level.  Quickly find jobs based on keywords chosen for each job.
 
 ### API Enhancements
 A new License Status API has been added to allow programmatic checking of your instance license status.
@@ -55,7 +55,7 @@ A new License Status API has been added to allow programmatic checking of your i
 - Option to use Open JDK 11 in some builds
 
 ### Documentation
-A significant documentation revamp was done as part of the 3.3.x release.  It can be [found here](https://docs.rundeck.com/) and covers all the new features and funtionality.
+A significant documentation revamp was done as part of the 3.3.x release.  It can be [found here](https://docs.rundeck.com/) and covers all the new features and functionality.
 
 ## Upgrading
 See [Upgrading to Rundeck 3.3](/upgrading/upgrading-to-rundeck-3.3.html) for details about how to upgrade from 3.2.  If you are upgrading from a version prior to 3.2 be sure to [start here](/upgrading/).
