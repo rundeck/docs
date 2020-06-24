@@ -216,7 +216,7 @@ When cluster mode is enabled, true/false display server name/ID in footer.
 - Example: ```(Default: false)```
 - min version: 3.2.x
 
-Enables loggin status in user summary page.
+Enables login status in user summary page.
 
 
 ### rundeck.gui.userSummaryShowLoggedUsersDefault
