@@ -9,7 +9,27 @@ Rundeck provides a Web API for use with your applications.
 
 ## API Version Number
 
-The current API version is {{{ apiVersion }}} .
+| Current  | Minimum | Deprecation |
+|---------|-------------|---------|
+|`{{{ apiVersion }}}` | `{{{ apiMinVersion }}}` | `{{{ apiDepVersion }}}` |
+
+Current
+:   The current version number.
+
+Minimum
+:   Minimum supported version.
+
+Deprecation
+:   Future minimum version number.
+
+
+### Deprecation
+
+API version `{{{ apiDepVersion }}}` will become the minimum version in a future release: Rundeck `{{{ apiDepRelease }}}`.
+
+Clients specifying API versions below the Deprecation version should upgrade to use it as the minimum version before then.
+
+### Usage
 
 For API endpoints described in this document, the *minimum* API version required for their
 use is indicated by the URL used, e.g.:
@@ -58,6 +78,8 @@ View the [Index](#index) listing API paths.
 
 Changes introduced by API Version number:
 
+**Deprecation**
+* API versions below `{{{ apiDepVersion }}}` are *deprecated*.  Clients using earlier versions should upgrade to use `{{{ apiDepVersion }}}` as the minimum version before release `{{{ apiDepRelease }}}` to avoid errors.
 
 **Version 35**:
 * Updated Response:
@@ -8349,6 +8371,8 @@ Content-Type: `application/json`
 [/api/V/project/\[PROJECT\]/executions]:#execution-query
 
 
+[/api/V/project/\[PROJECT\]/executions/metrics]: #execution-query-metrics
+
 [/api/V/project/\[PROJECT\]/executions/running]:#listing-running-executions
 
 
@@ -8424,6 +8448,8 @@ Content-Type: `application/json`
 
 [/api/V/project/\[PROJECT\]/webhooks]:#list-project-webhooks
 [/api/V/plugin/list]:#list-installed-plugins
+
+[/api/V/webhook/\[AUTH_TOKEN\]]: #send-webhook-event
 
 [ACLPOLICY]:../man5/aclpolicy.html
 

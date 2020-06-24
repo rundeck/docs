@@ -115,3 +115,9 @@ Node Step error handlers will no longer run on all nodes from the original step,
 :::
 
 A [bug fix](https://github.com/rundeck/rundeck/pull/6118) changes the behavior of Error Handlers for Node Steps: the error handler step will run only on the failed nodes of the step. Previously the error handler would execute on all nodes of the original step, regardless of which individual nodes failed.
+
+## API Version Deprecation
+
+API Version `11` is the current **API Deprecation Level**, and will become the **API Minimum Version** in future Rundeck release version `3.4.0`.
+
+Clients using API version `10` or earlier should upgrade to use API version `11` minimum before then.

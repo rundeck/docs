@@ -115,6 +115,9 @@ module.exports = {
     docsBranch: setup.branch,
     editLinks: true,
     apiVersion: setup.apiVersion,
+    apiDepVersion: setup.apiDepVersion,
+    apiDepRelease: setup.apiDepRelease,
+    apiMinVersion: setup.apiMinVersion,
     version: setup.rundeckVersion,
     versionFull: setup.rundeckVersionFull,
     algolia: setup.base == 'docs' ? {
