@@ -8349,6 +8349,8 @@ Content-Type: `application/json`
 [/api/V/project/\[PROJECT\]/executions]:#execution-query
 
 
+[/api/V/project/\[PROJECT\]/executions/metrics]: #execution-query-metrics
+
 [/api/V/project/\[PROJECT\]/executions/running]:#listing-running-executions
 
 
@@ -8424,6 +8426,8 @@ Content-Type: `application/json`
 
 [/api/V/project/\[PROJECT\]/webhooks]:#list-project-webhooks
 [/api/V/plugin/list]:#list-installed-plugins
+
+[/api/V/webhook/\[AUTH_TOKEN\]]: #send-webhook-event
 
 [ACLPOLICY]:../man5/aclpolicy.html
 
