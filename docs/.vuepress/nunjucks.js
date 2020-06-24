@@ -15,6 +15,9 @@ nunjucks.configure({
 
 const config = {
     apiVersion: setup.apiVersion,
+    apiDepVersion: setup.apiDepVersion,
+    apiDepRelease: setup.apiDepRelease,
+    apiMinVersion: setup.apiMinVersion,
     rundeckVersion: setup.rundeckVersion,
     rundeckVersionFull: setup.rundeckVersionFull,
 
