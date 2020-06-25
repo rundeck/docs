@@ -24,7 +24,7 @@ help you use or integrate Rundeck into your environment.
 - **Executions**: An _[execution](/manual/07-executions.md)_ is a representation of the activity of a running or completed
   command or job. The data about the execution is used in rundeck to monitor
   the progress of a job or command and later for reporting about what happened.
-  - **Role-based Access Control Policies**: A Rundeck _[access control policy](/administration/security/authorization.md)_ grants users
+- **Role-based Access Control Policies**: A Rundeck _[access control policy](/administration/security/authorization.md)_ grants users
     and user groups certain privileges to perform actions against rundeck resources
     like projects, jobs, nodes, commands and API.
 - **Plugins**: Extending Rundeck functionality is done through _plugins_. Plugins exist
