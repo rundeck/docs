@@ -3,10 +3,6 @@ module.exports = [{
     text: 'Introduction'
   },
   {
-    link: '/manual/02-getting-help',
-    text: 'Getting Help'
-  },
-  {
     link: '/manual/03-getting-started',
     text: 'Getting Started'
   },
@@ -61,5 +57,9 @@ module.exports = [{
   {
     link: '/manual/document-format-reference/index',
     text: 'Document Formats'
+  },
+  {
+    link: '/manual/02-getting-help',
+    text: 'Getting Help'
   }
 ]
