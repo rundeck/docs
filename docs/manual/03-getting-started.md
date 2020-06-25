@@ -11,9 +11,6 @@ Several fundamental concepts underlie and drive the Rundeck system.
 If you are a new user, knowing about them will
 help you use or integrate Rundeck into your environment.
 
-- **Role-based Access Control Policies**: A Rundeck _[access control policy](/administration/security/authorization.md)_ grants users
-  and user groups certain privileges to perform actions against rundeck resources
-  like projects, jobs, nodes, commands and API.
 - **Projects**: A _[project](/administration/projects/index.md)_ is a place to separate management activity.
   All Rundeck activities occur within the context of a project.
   Multiple projects can be maintained on the same Rundeck server.
@@ -27,11 +24,18 @@ help you use or integrate Rundeck into your environment.
 - **Executions**: An _[execution](/manual/07-executions.md)_ is a representation of the activity of a running or completed
   command or job. The data about the execution is used in rundeck to monitor
   the progress of a job or command and later for reporting about what happened.
-- **Plugins**: Most of what Rundeck does is via one of its _plugins_. Plugins exist
+  - **Role-based Access Control Policies**: A Rundeck _[access control policy](/administration/security/authorization.md)_ grants users
+    and user groups certain privileges to perform actions against rundeck resources
+    like projects, jobs, nodes, commands and API.
+- **Plugins**: Extending Rundeck functionality is done through _plugins_. Plugins exist
   to execute commands on nodes, perform steps in a job,
   send a notification about job status, gather
   information about the hosts in your network, copy a file to a remote
-  server, store and stream logs, or talk to a user directory. See [Job Plugins](/manual/job-plugins.md) and [Plugin Developer Guide](/developer/index.md) and [Rundeck Plugins](/plugins/index.md).
+  server, store and stream logs, talk to a user directory, and so much more.
+
+  Our Enterprise version includes built-in plugins to further enhance functionality for [Scheduling](schedules/project-schedules.md) job executions, providing [Guided Tours](tour-manager.md), incorporating [Health Checks](healthchecks.md), and much more.
+
+  See [Job Plugins](/manual/job-plugins.md) and [Plugin Developer Guide](/developer/index.md) and [Rundeck Plugins](/plugins/index.md).
 
 ## Download and Installation
 
@@ -45,9 +49,7 @@ there are a couple ways you can try it.
   ::: tip
   See [Startup](/administration/maintenance/startup.md) to learn how to  startup and shutdown rundeck.
   :::
-- You can run the [vagrant](https://github.com/rundeck/anvils-demo) demo.
-  The demo contains a project with tagged nodes, example job workflows with
-  dynamic options, and a set of users, each with varying degrees of privilege.
+- Also check out our [Docker Zoo](https://github.com/rundeck/docker-zoo) for quick and easy environment builds.
 
 The default port for the web interface is `4440`. If you
 installed Rundeck on your local machine, go to this URL: `http://<hostname>:4440`
@@ -80,9 +82,9 @@ Once the project has been created you are ready to use your Rundeck instance.
 
 Most Rundeck navigation is done using the navigation bar on the left side of the page.
 Using the left navigation bar you can choose between available projects, and once inside a project you can switch to the project's Dashboard, Jobs, Nodes, Commands and Activity pages.
-Project adminstrators will also be able to access the Project Settings pages.
+Project administrators will also be able to access the Project Settings pages.
 
-For those with Rundeck administrator access the System settings can be accessed by presing the gear icon in the page header.
+For those with Rundeck administrator access the System settings can be accessed by clicking the gear icon in the page header.
 
 Finally, your user profile and logout functions are found under the User icon.
 

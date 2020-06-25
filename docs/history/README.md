@@ -2,17 +2,13 @@
 
 ## Most Recent Release Notes
 
-Our 3.2.8 contains a few small fixes.
+The 3.3.0 release includes a long list of useful feature enhancements for our Enterprise and Open Source versions of Rundeck.
 
-[Rundeck 3.2.8](3_2_x/version-3.2.8.html)
+[Rundeck 3.3.0](3_3_x/version-3.3.0.html)
 
 ## Version 3.2.x
-Check out all the new features released as part of the version 3.2.x series in the [3.2.0 Release Notes](3_2_x/version-3.2.0.html)
-
-## Version 3.3.0 Preview
-
-[Preview Release of 3.3.0](https://docs.rundeck.com/3.3.x/history/3_3_x/version-3.3.0.html) is also available during month of June.
+This list shows all the items fixed in the 3.2.x series [3.2.0 Release Notes](3_2_x/version-3.2.0.html)
 
 ## Upgrading
 
-See [Upgrading to Rundeck 3.2](/upgrading/upgrading-to-rundeck-3.2.md).
+See [Upgrading to Rundeck 3.3](/upgrading/upgrading-to-rundeck-3.3.md).
