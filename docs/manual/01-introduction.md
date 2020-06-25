@@ -29,7 +29,7 @@ Out of the box, Rundeck gives you capabilities that would be expensive to develo
 
 #### Rundeck
 
-At its core, Rundeck is free open source software licensed under the [Apache Software License](v2.0), and you can participate in the project on [GitHub]. For those who write and run Rundeck jobs at small-scale usage (e.g., limited use or within a team), the open-source Rundeck delivers you the features you need, for free, _forever_.
+Rundeck Open Source is free open source software licensed under the [Apache Software License v2.0](http://www.apache.org/licenses/LICENSE-2.0.html), and you can participate in the project on [GitHub]. For those who write and run Rundeck jobs at small-scale usage (e.g., limited use or within a team), the open-source Rundeck delivers you the features you need, for free, _forever_.
 
 #### Rundeck Enterpise (fka Rundeck Pro)
 
@@ -40,9 +40,8 @@ Built and tested for the enterprise, Rundeck Enterprise includes exclusive featu
 _NOTE: Rundeck Enterprise was recently renamed from Rundeck Pro. You may still see references to "Pro" here and there, as we work to update our documentation. Just know that they are the same thing._
 
 [New to Rundeck]: https://www.rundeck.com/new-to-rundeck
-[rundeck enterpise]: https://www.rundeck.com/rundecker
+[Rundeck Enterprise]: https://www.rundeck.com/enterprise
 [github]: https://github.com/rundeck/rundeck
-[apache software license]: http://www.apache.org/licenses/LICENSE-2.0.html
 
 ## Who makes Rundeck?
 
