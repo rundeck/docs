@@ -121,3 +121,8 @@ A [bug fix](https://github.com/rundeck/rundeck/pull/6118) changes the behavior o
 API Version `11` is the current **API Deprecation Level**, and will become the **API Minimum Version** in future Rundeck release version `3.4.0`.
 
 Clients using API version `10` or earlier should upgrade to use API version `11` minimum before then.
+
+## Server session timeout property name change
+
+If you have customized the `server.session.timeout` property in your installation, please update the property name to `server.servlet.session.timeout`
+as this is the new correct property name.
