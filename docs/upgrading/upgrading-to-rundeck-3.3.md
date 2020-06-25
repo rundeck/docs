@@ -56,6 +56,22 @@ $ cat setenv.sh
 JAVA_OPTS="$JAVA_OPTS -XX:MaxPermSize=512m -Xmx2048m -Xms512m -server -Drdeck.base=/path/to/rundeck.base -Drundeck.config.location=/path/to/rundeck.base/server/config/rundeck-config.properties -Drundeck.server.logDir=/path/to/rundeck.base/server/logs"
 ```
 
+## Context Path Property Change
+:::warning
+If you operate Rundeck under a custom URL path it may fail to function properly without this configuration change!
+:::
+When running Rundeck under Tomcat or behind a load balancer on a custom path (ie `mycorp.com/rundeck`)
+it is necessary to inform Rundeck of the base path. This configuration property has changed with the upgrade to
+Grails 4 and Spring Boot 2.x. The new property is `server.servlet.context-path` and is placed in `rundeck-config.properties`:
+
+**Old Property**  
+`server.contextPath`
+
+**New Property**  
+`server.servlet.context-path`
+
+Docker images will utilize the same environment variable.
+
 ## JSCH Node Executor timeouts and environment variables
 
 ::: warning
