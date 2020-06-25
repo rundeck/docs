@@ -2,9 +2,53 @@
 
 ### Ansible Module
 
+Ansible Module workflow step allows executing any Ansible module directly on any Rundeck workflow, it's also available for Node Steps. To use, add a new step, and selecting "Ansible Module".
+
+![Ansible_Module_0](~@assets/img/ansible_module_0.png)
+
+On Module textbox just put the module name, [here](https://docs.ansible.com/ansible/latest/modules/modules_by_category.html) you can check all Ansible modules.
+
+![Ansible_Module_1](~@assets/img/ansible_module_1.png)
+
+It's possible to pass arguments to modules (for example, any command to execute using the `command` module), just put the name of argument on "Argument" textbox. In the following example, we're passing a command (`pwd`) to `command` module to execute [pwd](https://linux.die.net/man/1/pwd).
+
+![Ansible_Module_2](~@assets/img/ansible_module_2.png)
+
 ### Ansible Playbook Inline
 
+Ansible Playbook Inline workflow step allows executing an Ansible playbook definition directly on any Rundeck workflow, it's also available for Node Steps. To use, add a new step, and select "Ansible Playbook".
+
+![Ansible_Inline_0](~@assets/img/ansible_inline_0.png)
+
+In Playbook textbox just put the Ansible Playbook content, it's important to respect the Ansible Playbook YAML [syntax](https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html).
+
+![Ansible_Inline_1](~@assets/img/ansible_inline_1.png)
+
+It's possible to pass extra variables to Playbooks. The variable must be defined on Ansible Playbook in this format `"{{ variable_name }}"'`, later, define the format, in the following example we're using a YAML format. Finally, define the variable content on "Extra Variables" textbox (following the format defined on "Syntax Mode"), [options](https://docs.rundeck.com/docs/manual/job-options.html#job-options) and [data](https://docs.rundeck.com/docs/manual/log-filters/key-value-data.html#key-value-data) values are accepted.
+
+![Ansible_Inline_2](~@assets/img/ansible_inline_2.png)
+
+Another way to pass variables to Ansible inline playbooks is to define as an argument on "Extra Ansible arguments" textbox, using the same inline-playbook defined in the example above, you can define the argument using `-e "variable_name:value"`, [options](https://docs.rundeck.com/docs/manual/job-options.html#job-options) and [data](https://docs.rundeck.com/docs/manual/log-filters/key-value-data.html#key-value-data) values are accepted.
+
+![Ansible_Inline_3](~@assets/img/ansible_inline_3.png)
+
 ### Ansible Playbook
+
+Ansible Playbook allows to execute Ansible Playbooks files from filesystem, it's also available for Node Step. It's available adding "Ansible Playbook" workflow step on any job.
+
+![Ansible_Playbook_0](~@assets/img/ansible_playbook_0.png)
+
+To reference the playbook file, just put the Ansible Playbook file path at "Playbook" textbox like the following example.
+
+![Ansible_Playbook_1](~@assets/img/ansible_playbook_1.png)
+
+Like Ansible Playbook Inline step, it's possible to use "Extra Variables" textbox to pass any variable defined in your Playbook, it's importaant follow the syntax defined on "Syntax Mode" list. You can use Rundeck [options](https://docs.rundeck.com/docs/manual/job-options.html#job-options) or [data](https://docs.rundeck.com/docs/manual/log-filters/key-value-data.html#key-value-data) values.
+
+![Ansible_Playbook_2](~@assets/img/ansible_playbook_2.png)
+
+Also, it's possible use "Extra Ansible arguments" as the same way of Ansible Playbook Inline step, just define the argument in the following way: `-e "variable_name:value"`, [options](https://docs.rundeck.com/docs/manual/job-options.html#job-options) and [data](https://docs.rundeck.com/docs/manual/log-filters/key-value-data.html#key-value-data) values are accepted.
+
+![Ansible_Playbook_3](~@assets/img/ansible_playbook_3.png)
 
 ### Global Variable
 
