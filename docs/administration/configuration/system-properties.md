@@ -18,7 +18,8 @@ java -server -Dserver.session.timeout=3600 -Dserver.port=8080 -jar rundeck-{{{ru
 - `server.port` The HTTP port to use for the server, default "4440"
 - `server.https.port` The HTTPS port to use or the server, default "4443"
 - `server.address` Address/hostname to listen on, default is "localhost"
-- `server.servlet.context-path` Web context path to use, such as "/rundeck". Default is "/".
+- `server.contextPath` Web context path to use, such as "/rundeck". Default is "/". (Pre-Rundeck 3.3.x)
+- `server.servlet.context-path` Web context path to use, such as "/rundeck". Default is "/". (Rundeck 3.3.x)
 - `server.session.timeout` Session timeout in seconds. (Pre-Rundeck 3.3.x)
 - `server.servlet.session.timeout` Session timeout in seconds. (Rundeck 3.3.x)
 - `rdeck.base` Rundeck Basedir to use, default is the directory containing the executable war
