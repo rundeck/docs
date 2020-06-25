@@ -124,5 +124,5 @@ Clients using API version `10` or earlier should upgrade to use API version `11`
 
 ## Server session timeout property name change
 
-If you have customized the `server.servlet.timeout` property in your installation, please update the property name to `server.servlet.session.timeout`
+If you have customized the `server.session.timeout` property in your installation, please update the property name to `server.servlet.session.timeout`
 as this is the new correct property name.
