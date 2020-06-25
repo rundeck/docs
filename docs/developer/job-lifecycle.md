@@ -35,7 +35,7 @@ Select the Job Lifecycle Plugins to enable win the "Project > Edit Configuration
 
 Enable a Job Lifecycle plugin named `example`:
 
-```.properties
+``` properties
 # project.properties example
 project.enable.jobLifecyclePlugin.example=true
 
@@ -51,11 +51,16 @@ Project and Framework properties can also be used to configure the plugin.
 
 _Framework scope property definition in `framework.properties`_
 
-    framework.plugin.JobLifecycle.[your_plugin_name].[property]=value
+
+``` properties
+framework.plugin.JobLifecycle.[your_plugin_name].[property]=value
+```
 
 _Project scope property definition in `project.properties`_
 
-    project.plugin.JobLifecycle.[your_plugin_name].[property]=value
+``` properties
+project.plugin.JobLifecycle.[your_plugin_name].[property]=value
+```
 
 ## Java Plugin
 
