@@ -235,7 +235,7 @@ used. Specified from [jaas-loginmodule.conf](#jaas-loginmodule-conf).
 
 See [rundeck-config.properties > Server Settings](#server-settings)
 
-Or set `server.session.timeout` via [System Properties Configuration](/administration/configuration/system-properties.md).
+Or set `server.servlet.session.timeout` via [System Properties Configuration](/administration/configuration/system-properties.md).
 
 ## rundeck-config.properties
 
@@ -417,7 +417,7 @@ will suppress the non-SSO login form.
 
 ### Server Settings
 
-- `server.session.timeout`: timeout in seconds.
+- `server.servlet.session.timeout`: timeout in seconds.
 
 Note: This setting applies _only_ to the embedded Jetty server, which is used for standalone war launcher, rpm or deb installs. It does not work for Tomcat installation.
 
