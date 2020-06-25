@@ -40,7 +40,7 @@ $ cat setenv.sh
 
 ```properties
 grails.serverURL=http://localhost:8080/rundeck
-server.contextPath=/rundeck
+server.servlet.context-path=/rundeck
 ```
 
 - Edit `$rdeck.base/etc/framework.properties` to match Tomcat's url:
