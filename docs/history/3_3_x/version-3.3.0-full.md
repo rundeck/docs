@@ -50,7 +50,7 @@ A new License Status API has been added to allow programmatic checking of your i
 - Spring Security 5 upgrade including [OAuth2 updates](/administration/security/sso). (Be sure to read [docs for changes required when upgrading](/upgrading/upgrading-to-rundeck-3.3.html))
 - Logging system upgraded to [Log4J2](https://logging.apache.org/log4j/2.x/) (Be sure to read [docs for changes required when upgrading](/upgrading/upgrading-to-rundeck-3.3.html))
 
-#### Docker Updates
+### Docker Updates
 - Base image updated to **Ubuntu 18.04 LTS**
 - **OpenJDK 11** is the installed JVM
 
