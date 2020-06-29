@@ -51,8 +51,16 @@ A new License Status API has been added to allow programmatic checking of your i
 - Logging system upgraded to [Log4J2](https://logging.apache.org/log4j/2.x/) (Be sure to read [docs for changes required when upgrading](/upgrading/upgrading-to-rundeck-3.3.html))
 
 #### Docker Updates
-- Ubuntu backend updated to current LTS version
-- Option to use Open JDK 11 in some builds
+- Base image updated to **Ubuntu 18.04 LTS**
+- **OpenJDK 11** is the installed JVM
+
+From `3.3.0` and on the official Docker images will be based on Ubuntu 18.04 and OpenJDK 11.
+
+With open JDK 11 a new, more flexible max heap setting is available:  
+`JVM_MAX_RAM_PERCENTAGE`  
+
+This will set the max heap size to a percentage of the available RAM in the running container.
+The default is `75%`.
 
 ### Documentation
 A significant documentation revamp was done as part of the 3.3.x release.  It can be [found here](https://docs.rundeck.com/) and covers all the new features and functionality.

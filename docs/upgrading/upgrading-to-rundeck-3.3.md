@@ -142,3 +142,12 @@ Clients using API version `10` or earlier should upgrade to use API version `11`
 
 If you have customized the `server.session.timeout` property in your installation, please update the property name to `server.servlet.session.timeout`
 as this is the new correct property name.
+
+## Docker Image Upgraded
+:::warning
+Installed plugins must be compatible with OpenJDK 11 for use with the official Docker image.
+:::
+
+The official Docker images have had their base OS upgraded from **Ubuntu 16.04 to Ubuntu 18.04**.
+
+The installed JVM in this image is now **OpenJDK 11**.
