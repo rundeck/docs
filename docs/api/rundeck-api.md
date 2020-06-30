@@ -4919,7 +4919,7 @@ Entries:
 * `execState`: execution state, one of "running","succeeded","failed","aborted"
 * `lastModified`: (long integer), millisecond timestamp of the last modification of the log file
 * `execDuration`: (long integer), millisecond duration of the execution
-* `percentLoaded`: (float), percentage of the output which has been loaded by the parameters to this request
+* `percentLoaded`: (float), (optional) percentage of the output which has been loaded by the parameters to this request
 * `totalSize`: (integer), total bytes available in the output file
 * `filter` - if a `node` or `step` filter was used
     - `nodename` - value of the node name filter
