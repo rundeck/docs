@@ -1,4 +1,4 @@
-# Release 3.3.0 - DRAFT
+# Release 3.3.0
 
 Name: <span style="color: peru"><span class="glyphicon glyphicon-flash"></span> "onion ring peru flash"</span>
 
