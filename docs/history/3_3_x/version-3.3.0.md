@@ -6,6 +6,8 @@ Name: <span style="color: peru"><span class="glyphicon glyphicon-flash"></span> 
 
 This release includes a long list of useful feature enhancements for our Enterprise and Open Source versions of Rundeck.  **Enhanced Scheduling Options** take job schedules from simple time based runs to comprehensive schedule based executions.  **Guided Tours** are now natively available in the product to guide users through Rundeck processes.  New plugins for managing users, managing nodes, and organizing jobs also streamline administration tasks.  Rundeck 3.3.0 has a whole new engine behind the scenes (Grails 4, Log4J2, Gradle 5, OAuth2, Spring 5, etc.) and now **supports Java 11**.
 
+[Download the Release here](https://download.rundeck.com/3.3.0/index.html)
+
 ## Enhancements
 
 ### Enhanced Scheduling Options (Enterprise)
