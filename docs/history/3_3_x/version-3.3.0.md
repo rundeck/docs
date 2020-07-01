@@ -160,21 +160,36 @@ Clients specifying API versions below the Deprecation version should upgrade to 
 
 ## Contributors
 
+* arthurvanduynhoven
+* carlos
 * Carlos Eduardo (carlosrfranco)
+* Christoph Hille (hille721)
 * Forrest Evans (fdevans)
 * Greg Schueler (gschueler)
-* Muneyuki Noguchi (mnogu)
 * Greg Zapp (ProTip)
-* Stephen Joyner (sjrd218)
-* carlos
+* Jaime Tobar (jtobard)
+* Laubstein (laubstein)
+* ltamaster
+* Muneyuki Noguchi (mnogu)
+* Nick Cammorato (cammoraton)
 * niravassar
+* ProTip
+* Stephen Joyner (sjrd218)
 
 ## Bug Reporters
 
-* ProTip
+* cammoraton
 * carlosrfranco
 * gmr
 * gschueler
+* hille721
+* jessemarple
+* jtobard
+* laubstein
 * ltamaster
+* MegaDrive68k
 * mnogu
+* ProTip
+* sebastianbello
+* ShedPlant
 * sjrd218
