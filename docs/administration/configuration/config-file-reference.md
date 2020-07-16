@@ -173,7 +173,7 @@ generated at project setup time. Each project has a directory within the Rundeck
 | `project.ssh-keypath`                    | SSH identify file. |
 | `service.FileCopier.default.provider`    | Default script file copier plugin. |
 | `service.NodeExecutor.default.provider`  | Default node executor plugin. |
-| `resources.source.N...`                  | Defines a Resource model source see [Resource Model Sources](/manual/09-configure.md#resource-model-sources-configuration). |
+| `resources.source.N...`                  | Defines a Resource model source see [Resource Model Sources](/administration/projects/resource-model-sources/). |
 | `project.globals.X` | [Defines a Project Global variable](#project-global-execution-variables) |
 
 Here's an example that configures a File source:
