@@ -151,3 +151,16 @@ Installed plugins must be compatible with OpenJDK 11 for use with the official D
 The official Docker images have had their base OS upgraded from **Ubuntu 16.04 to Ubuntu 18.04**.
 
 The installed JVM in this image is now **OpenJDK 11**.
+
+## Project description characters
+:::warning
+Characters that were allowed in the project description field on 3.2.x may not be compatible with 3.3.x.
+:::
+
+The regular expression that is ran against this field is as follows:
+`^[a-zA-Z0-9\p{L}\p{M}\s\.,\(\)_-]+$`
+
+Common characters, such as `'`, and `&` will cause a failure in application start up:
+`Field error in object 'rundeck.Project' on field 'description': rejected value ...`
+
+Before upgrading, Ensure that project description fields pass the regex listed above.
