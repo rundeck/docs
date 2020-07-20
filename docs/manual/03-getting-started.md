@@ -14,16 +14,16 @@ help you use or integrate Rundeck into your environment.
 - **Projects**: A _[project](/administration/projects/index.md)_ is a place to separate management activity.
   All Rundeck activities occur within the context of a project.
   Multiple projects can be maintained on the same Rundeck server.
-- **Jobs** : A _job_ encapsulate a sequence of steps, job options and nodes where the steps execute. See [Jobs](/manual/04-jobs.md) and [Creating Jobs](/manual/creating-jobs.md).
+- **Jobs** : A _job_ encapsulates a sequence of steps, job options and nodes where the steps execute. See [Jobs](/manual/04-jobs.md) and [Creating Jobs](/manual/creating-jobs.md).
 - **Nodes**: A _[node](/manual/05-nodes.md)_ is a resource that is either a physical or virtual instance
   of a network accessible host.
   A _resource model_ is a representation of Nodes in a project.
 - **Commands**: A _[command](/manual/06-commands.md)_ is a single executable string executed on a Node.
-  Rundeck invokes commands on nodes via a _node executor_
+  Rundeck invokes commands on nodes via a _node executor_, 
   which evaluates the command string and executes it.
 - **Executions**: An _[execution](/manual/07-executions.md)_ is a representation of the activity of a running or completed
   command or job. The data about the execution is used in rundeck to monitor
-  the progress of a job or command and later for reporting about what happened.
+  the progress of a job or command, and later for reporting about what happened.
 - **Role-based Access Control Policies**: A Rundeck _[access control policy](/administration/security/authorization.md)_ grants users
     and user groups certain privileges to perform actions against rundeck resources
     like projects, jobs, nodes, commands and API.
@@ -68,23 +68,23 @@ A new installation will not contain any projects so Rundeck will present
 you with a dialog to create one. Press the "New Project" button to create
 a project.
 Fill the project creation form with a desired name. Project names can
-contain letters and numbers but do not use spaces or special characters.
+contain letters and numbers, but do not use spaces or special characters.
 The [project](/administration/projects/index.md)
 section
-will show you how to learn to add Nodes, automate the creation and maintenance of
+will teach you how to add Nodes, automate the creation and maintenance of
 Rundeck projects.
 
-Once the project has been created you are ready to use your Rundeck instance.
+Once the project has been created, you are ready to use your Rundeck instance.
 
 ## Rundeck Graphical Console
 
 ### Navigation
 
 Most Rundeck navigation is done using the navigation bar on the left side of the page.
-Using the left navigation bar you can choose between available projects, and once inside a project you can switch to the project's Dashboard, Jobs, Nodes, Commands and Activity pages.
-Project administrators will also be able to access the Project Settings pages.
+Using the left navigation bar you can choose between available projects and, once inside a project, you can switch to the project's _Dashboard_, _Jobs_, _Nodes_, _Commands_ and _Activity_ pages.
+Project administrators will also be able to access the _Project Settings_ pages.
 
-For those with Rundeck administrator access the System settings can be accessed by clicking the gear icon in the page header.
+For those with Rundeck administrator access, the System settings can be accessed by clicking the gear icon in the page header.
 
 Finally, your user profile and logout functions are found under the User icon.
 
@@ -103,10 +103,10 @@ Rundeck Enterprise users may see additional visualizations for schedules and exe
 
 #### Jobs
 
-From the Jobs page, one can list, create and run Jobs. A
-configurable filter allows a user to limit the Job listing to those
+From the Jobs page, one can list, create, and run Jobs. A
+configurable filter allows a user to limit the Job listing to
 Jobs matching the filtering criteria. These filter settings can be
-saved to a Users profile. Only authorized jobs will be visible.
+saved to a user profile. Only authorized jobs will be visible.
 
 ::: tip
 See [Jobs](/manual/04-jobs.md).
@@ -114,10 +114,10 @@ See [Jobs](/manual/04-jobs.md).
 
 #### Nodes
 
-The Nodes page is used to browse your Nodes configured in your
+The Nodes page is used to browse the Nodes configured in your
 Project resource model. A filter control can be used to
 limit the listing to just the Node resources
-matching the filter criteria. Given the appropriate authorization
+matching the filter criteria. Given the appropriate authorization,
 you can also execute ad hoc commands to your filtered node set.
 
 ::: tip
@@ -135,9 +135,9 @@ See [Commands](/manual/06-commands.md).
 
 #### Activity
 
-From the Activity page, one can view currently executing commands
-and Jobs or browse execution history. The execution
-history can be filtered based on user selected parameters. Once the
+From the Activity page, one can view currently executing Commands
+and Jobs, or browse execution history. The execution
+history can be filtered based on user-selected parameters. Once the
 filter has been set, the matching history is displayed. The current
 filter settings also configure an RSS link, found in the top right of
 the page (see Rundeck Administration to enable RSS).
@@ -148,7 +148,7 @@ See [Activity](/manual/08-activity.md).
 
 #### System
 
-If your login belongs to the "admin" group and therefore granted
+If your login belongs to the "admin" group and therefore is granted
 "admin" privileges, a "System" icon will be displayed in
 the top navigation bar.
 From the System menu you can access the Key Storage,
@@ -172,15 +172,15 @@ See [User](/manual/10-user.md)
 ## Command Line Tools
 
 Rundeck includes a number of shell tools to dispatch commands, load
-and run Job definitions and interact with the dispatcher queue. These
-command tools are an alternative to functions accessible in the
+and run Job definitions, and interact with the dispatcher's queue. These
+command line tools are an alternative to functions accessible in the
 graphical console.
 
 See the [Command line tools](/manual/command-line-tools/index.md).
 
 ## API
 
-You can also use the Web API to interface with all aspects of node
+You can also use the Web API to interface with all aspects of Node
 and Job execution.
 
 See the [Rundeck API](/api/rundeck-api.md) page for a reference on the
@@ -188,7 +188,7 @@ endpoints and examples.
 
 ## Document Formats
 
-If you prefer to manage job and resource definitions using text files
+If you prefer to manage job and resource definitions using text files,
 you can do so using XML or YAML formats.
 
 See the [Document Format Reference](/manual/document-format-reference/index.md).
