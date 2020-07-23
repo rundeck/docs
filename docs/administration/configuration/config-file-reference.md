@@ -593,6 +593,16 @@ because the File Upload and Job Run are performed as separate steps.)
 rundeck.fileUploadService.tempfile.expiration=600000
 ```
 
+### Job YAML format
+
+In order to get a human readable export of a Job, all of the line endings in the workflow scripts must not end with
+a space. Otherwise the YAML exporter will resort to a format the preserves the exact line spaces, but is not as human readable.
+The following setting will trim all line endings in the job's workflow scripts so that the YAML exporter produces a nice human readable document.
+
+```properties
+rundeck.job.export.yaml.trimSpaces=true
+```
+
 ### Node Cache
 
 Defaults for the Node caches
