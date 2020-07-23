@@ -427,6 +427,19 @@ If you are deploying the Rundeck war file to Tomcat, you can manage the session 
     <session-config> <session-timeout>30</session-timeout> </session-config>
 ```
 
+### Primary Server Id
+
+If you are running Rundeck in a cluster set up you'll want to set one of the servers as the primary server.
+Once set as primary, that server will be the one that applies any data updates that might need to be run on bootstrap.
+If no server is set as primary in a cluster set up, then all servers will try to apply the updates on startup. This can
+lead to record contention in the database that will cause the updates to fail.
+
+To set a server as primary set the server UUID in the property: `rundeck.primaryServerId`
+
+```properties
+rundeck.primaryServerId=70a4af69-74d6-4319-b923-16eec8c742d3
+```
+
 ### Execution Mode
 
 - `rundeck.executionMode`:`active/passive`. Default `active`. Set the Execution
