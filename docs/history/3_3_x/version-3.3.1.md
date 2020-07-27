@@ -4,6 +4,9 @@ Name: <span style="color: pink"><span class="glyphicon glyphicon-flash"></span> 
 
 ## Overview
 
+We hope you're taking full advantage of all the 3.3.x features we released earlier this month.  The 3.3.0 release was our most ambitious and comprehensive release to date.  
+Along with that came a few bugs that we've addressed here.  There were some browser specific issues with the new Event Viewer in Firefox, an ACL import issue when moving from 3.2 to 3.3 plus a few other small errors.  As always if you find a bug report it on [GitHub](https://github.com/rundeck/rundeck/issues) for us!
+
 ## Issues
 
 [Milestone 3.3.1](https://github.com/rundeck/rundeck/milestone/145)
@@ -11,7 +14,7 @@ Name: <span style="color: pink"><span class="glyphicon glyphicon-flash"></span> 
 * [Fix node view output not rendering](https://github.com/rundeck/rundeck/pull/6302)
 * [Fix noisy cache warnings on startup](https://github.com/rundeck/rundeck/pull/6296)
 * [Logs in Node View are broken since 3.3.0](https://github.com/rundeck/rundeck/issues/6292)
-* [Allow a rundeck server to be set as primary. ](https://github.com/rundeck/rundeck/pull/6280)
+* [Allow a Rundeck server to be set as primary. ](https://github.com/rundeck/rundeck/pull/6280)
 * [Update dependencies](https://github.com/rundeck/rundeck/pull/6277)
 * [Fixes when to execute a job using "Remote URL options" #6275](https://github.com/rundeck/rundeck/pull/6276)
 * [Scheduled jobs not running when using Remote URL options and enforcing from allowed values](https://github.com/rundeck/rundeck/issues/6275)
@@ -25,7 +28,7 @@ Name: <span style="color: pink"><span class="glyphicon glyphicon-flash"></span> 
 * [Fixes API call using asterisk #6069](https://github.com/rundeck/rundeck/pull/6245)
 * [Set ehcache missing cache strategy to 'create' to avoid warnings](https://github.com/rundeck/rundeck/pull/6244)
 * [Project ACL's are gone after upgrading to v3.3](https://github.com/rundeck/rundeck/issues/6239)
-* [Rundeck 3.3.0 - log viewer broken in firefox](https://github.com/rundeck/rundeck/issues/6232)
+* [Rundeck 3.3.0 - log viewer broken in Firefox](https://github.com/rundeck/rundeck/issues/6232)
 * [Rundeck 3.3.0 node filter broken in Firefox](https://github.com/rundeck/rundeck/issues/6230)
 * [ Fix URI parse message on Windows for log4j2 config file](https://github.com/rundeck/rundeck/pull/6228)
 * [Log4j2 path parse error message on Windows startup](https://github.com/rundeck/rundeck/issues/6227)
