@@ -4,8 +4,8 @@ Name: <span style="color: pink"><span class="glyphicon glyphicon-flash"></span> 
 
 ## Overview
 
-We hope you're taking full advantage of all the 3.3.x features we released earlier this month.  The 3.3.0 release was our most ambitious and comprehensive release to date.  
-Along with that came a few bugs that we've addressed here.  There were some browser specific issues with the new Event Viewer in Firefox, an ACL import issue when moving from 3.2 to 3.3 plus a few other small errors.  As always if you find a bug report it on [GitHub](https://github.com/rundeck/rundeck/issues) for us!
+We hope you're taking full advantage of all the 3.3.x features we released earlier this month. The 3.3.0 release was our most ambitious and comprehensive release to date.  
+Along with that came a few bugs that we've addressed here. There were some browser specific issues with the new Event Viewer in Firefox, an ACL import issue when moving from 3.2 to 3.3 plus a few other small errors. As always if you find a bug report it on [GitHub](https://github.com/rundeck/rundeck/issues) for us!
 
 ## Issues
 
