@@ -125,6 +125,18 @@ Clicking on "Halt" and "Fail when Halted" the next steps on the current job don'
 
 Finally at the moment of run our job, if the referenced job defines in Job State Conditional Step has run as *Succeeded* in the latest execution all the rules matched and the next steps can be executed.
 
+### Log Data Step
+
+The log data step allows you to log all the context data values and view them in a table. 
+
+![Log Data Step](~@assets/img/log-data-set.png)
+
+Debug Only
+: If checked, it will only log data at the debug level.
+
+After execution of the job, you will get a table like this:
+
+![Log Data Step Result](~@assets/img/log-data-result.png)
 
 ### Refresh Project Nodes
 
