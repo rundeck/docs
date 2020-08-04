@@ -138,6 +138,69 @@ After execution of the job, you will get a table like this:
 
 ![Log Data Step Result](~@assets/img/log-data-result.png)
 
+
+### PagerDuty Incident Note 
+
+This job step updates an existing pagerduty incident with the supplied note
+
+![PagerDuty Incident Note](~@assets/img/pagerduty_incident_note.png)
+
+API Token
+: Provide the API token for the pager duty account containing the incident
+
+Email
+: Provide the email address associated with the API Token
+
+Incident ID
+: Provide the ID of the incident you wish to add a note to
+
+Note
+: Add a custom note to the incident
+
+### PagerDuty Status Update
+
+![Pager Duty Incident Update](~@assets/img/pagerduty_update.png)
+
+API Token
+: Provide the API token for the pager duty account containing the incident
+
+Email
+: Provide the email address associated with the API Token
+
+Incident ID
+: Provide the ID of the incident you wish to add a note to
+
+Note
+: Update the status here. Can be updated to "resolved" or "acknowledged"
+
+### PagerDuty Incident Update
+
+![Pager Duty Incident Update](~@assets/img/pagerduty_update2.png)
+
+API Token
+: Provide the API token for the pager duty account containing the incident
+
+Email
+: Provide the email address associated with the API Token
+
+Incident ID
+: Provide the ID of the incident you wish to add a note to
+
+Status
+: Update the status here. Can be updated to "resolved" or "acknowledged"
+
+Resolution
+: If the incident was resolved, leave any notes regarding the resolution here. 
+
+Asignees
+: Update the people assigned to the incident. Enter each assignee seperated by a comma
+
+
+
+
+
+
+
 ### Refresh Project Nodes
 
 ### Data Step
