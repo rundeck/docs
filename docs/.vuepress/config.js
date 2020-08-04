@@ -73,7 +73,7 @@ module.exports = {
         serviceWorker: true,
         updatePopup: true,
         generateSWConfig: {
-          globIgnores: ['**/gtm.js', '**/lf.js']
+          globIgnores: ['**/gtm.js']
         }
       }
     ],
