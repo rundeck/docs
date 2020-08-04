@@ -127,6 +127,19 @@ Finally at the moment of run our job, if the referenced job defines in Job State
 
 ### Log Data Step
 
+The log data step allows you to log all the context data values and view them in a table. 
+
+![Log Data Step](~@assets/img/log-data-set.png)
+
+Debug Only
+: If checked, only runs if the job is run in Debug mode
+
+After execution of the job, you will get a table like this:
+
+![Log Data Step Result](~@assets/img/log-data-result.png)
+
 ### Refresh Project Nodes
 
 ### Data Step
+
+

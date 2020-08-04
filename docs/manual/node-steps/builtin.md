@@ -135,6 +135,51 @@ Data
 Format
 : Format for the data. One of: `properties`, `json`, or `yaml`
 
+### HTTP Node Step
+
+Performs an HTTP Request with or without authentication (per node)
+
+![HTTP Node Step](~@assets/img/http-request-step.png)
+
+#### Configuration
+
+Remote URL
+: The URL to which to make the request.
+
+HTTP Method
+: The method that you want to be performed on the URL
+
+Headers
+: Any headers you wish to include
+
+Body
+: Any body you want
+
+Request Timeout
+: How long to wait for the request to complete before failing
+
+![HTTP Node Step - Authentication](~@assets/img/http-node-step-auth.png)
+
+#### Authentication 
+
+Authentication
+: Method of authentication to use (Basic or OAuth 2.0)
+
+Username/Client ID
+: Username used for authentication
+
+Password/Secret Key
+: The password or secret key file used for authentication
+
+Oauth Token URL:
+: If using OAuth, provide the endpoint URL at which to obtain tokens
+
+OAuth Validate URL
+: If using OAuth, provide the endpoint URL at which to obtain validate token responses
+
+
+
+
 ## Notes
 
 ### Advanced Script options
