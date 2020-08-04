@@ -127,6 +127,34 @@ Finally at the moment of run our job, if the referenced job defines in Job State
 
 ### Log Data Step
 
+The log data step allows you to log all the context data values and view them in a table. 
+
+![Log Data Step](~@assets/img/log-data-set.png)
+
+Debug Only
+: If checked, it will only log data at the debug level.
+
+After execution of the job, you will get a table like this:
+
+![Log Data Step Result](~@assets/img/log-data-result.png)
+
+### Github Run Script
+
+This job step can be used to run a script that is located on Github.
+
+![Github Run Script](~@assets/img/github-script-set.png)
+
+URL
+: The Github URL where the file is located
+
+Github Path
+: The path to the script file in Github
+
+File Name
+: The name of the the script file that you wish to run
+
+
+
 ### Refresh Project Nodes
 
-### Data Step
+
