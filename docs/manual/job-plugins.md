@@ -11,7 +11,7 @@
 - [Copy file](/manual/node-steps/builtin.md#copy-file-step)
 - [Local command](/manual/node-steps/builtin.md#local-command-step)
 - [Data node](/manual/node-steps/builtin.md#data-node-step)
-- [HTTP Request](/manual/node-steps/builtin.md#log-data-step)
+- [HTTP Request](/manual/node-steps/builtin.md#http-node-step)
 - [SQL Runner (Enterprise)](/manual/node-steps/sqlrunner.md)
 - [VMWare Operations Node Step Plugin (Enterprise)](/manual/node-steps/vmware.md)
 
