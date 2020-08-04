@@ -132,12 +132,14 @@ The log data step allows you to log all the context data values and view them in
 ![Log Data Step](~@assets/img/log-data-set.png)
 
 Debug Only
-: If checked, it will only log data at the debug level.
+: If checked, only runs if the job is run in Debug mode
 
 After execution of the job, you will get a table like this:
 
 ![Log Data Step Result](~@assets/img/log-data-result.png)
 
 ### Refresh Project Nodes
+
+### Data Step
 
 

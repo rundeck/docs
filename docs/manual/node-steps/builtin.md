@@ -163,7 +163,7 @@ Request Timeout
 #### Authentication 
 
 Authentication
-: Method of authentication to use
+: Method of authentication to use (Basic or OAuth 2.0)
 
 Username/Client ID
 : Username used for authentication
