@@ -5,15 +5,11 @@ docs/.vuepress/dist
 # local env files
 .env.local
 .env.*.local
-*.iml
-*.ipr
 
 # Log files
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-*.iml
-*.ipr
 
 # Editor directories and files
 .idea
