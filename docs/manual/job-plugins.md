@@ -17,6 +17,7 @@
 
 ## Workflow Steps
 
+- [Azure Job Steps (Enterprise)](/manual/workflow-steps/azure.md#azure-job-steps)
 - [File Transfer (Enterprise)](/manual/workflow-steps/file-transfer.md)
 - [Github (Enterprise)](/manual/workflow-steps/github.md)
 - [Jira Workflow Step Plugins (Enterprise)](/manual/workflow-steps/jira.md)
