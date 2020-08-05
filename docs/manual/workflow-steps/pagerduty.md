@@ -28,7 +28,7 @@ This job step allows you to update the status of an existing PagerDuty incident.
 
 ## Pager Duty Incident Update
 
-This job step allows you to update an existin PagerDuty incident.
+This job step allows you to update an existing PagerDuty incident.
 
 ![Pager Duty - Incident Update](~@assets/img/pagerduty_update.png)
 
