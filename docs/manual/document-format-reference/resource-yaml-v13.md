@@ -88,6 +88,46 @@ Optional Entries:
 
 : URL to an external resource model editor service.
 
+
+Optional Entries:
+
+`sshport`
+
+: The connection port to use, 22 by default
+
+`ssh-keypath`
+
+: The path to the SSH key in the Rundeck Key store. For example: keys/ec2/west.pem
+
+`node-executor`
+
+: The node executor plugin that you wish to use to issue commands to nodes (Script Execution, stub, openssh, etc.)
+ 
+`script-exec`
+
+: Specifies the system command to run
+
+`script-exec-dir`
+
+: Specifies the working directory for the execution
+
+`script-exec-shell`
+
+: Specifies the shell to use to interpret the command, e.g. "bash -c" or "cmd.exe /c"
+
+`file-copier`
+
+: The file copier you want to use to copy files to nodes (script execution, stub, openssh, etc.)
+
+`script-copy`
+
+: Specifies the system command to execute
+
+`script-copy-remote-filepath`
+
+: Specifies the full path of the copied file
+
+
 _Anything_
 
 : Specify any custom attributes about node using a string value.
