@@ -30,6 +30,7 @@
 - [Flow control](/manual/workflow-steps/builtin.md#flow-control)
 - [Job state conditional](/manual/workflow-steps/builtin.md#job-state-conditional)
 - [Log data step](/manual/workflow-steps/builtin.md#log-data-step)
+- [PagerDuty Steps (Enterprise)](/manual/workflow-steps/pagerduty.md#pager-duty-plugins-enterprise)
 - [Refresh project nodes](/manual/workflow-steps/builtin.md#refresh-project-nodes)
 - [Data step](/manual/workflow-steps/builtin.md#data-step)
 
