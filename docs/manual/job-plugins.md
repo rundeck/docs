@@ -23,6 +23,7 @@
 - [Progress Badge (Enterprise)](/manual/workflow-steps/progress-badge.md#progress-badge-workflow-step-plugin)
 - [ServiceNow (Enterprise)](/manual/workflow-steps/servicenow.md)
 - [VMWare Step Plugins (Enterprise)](/manual/workflow-steps/vmware.md)
+- [Pager Duty (Enterprise)](/manual/workflow-steps/pagerduty.md#pager-duty-job-steps-enterprise)
 - [Ansible module](/manual/workflow-steps/builtin.md#ansible-module)
 - [Ansible playbook inline](/manual/workflow-steps/builtin.md#ansible-playbook-inline)
 - [Ansible playbook](/manual/workflow-steps/builtin.md#ansible-playbook)
