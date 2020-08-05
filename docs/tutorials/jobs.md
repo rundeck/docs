@@ -21,10 +21,10 @@ might be preferred to break each step of the process into separate jobs.
 
 Using this approach the administrator imagines the following jobs:
 
-- start: call the start procedure to start the web service
-- stop: call the stop procedure to stop the web service
-- status: call the status procedure to stop the web service
-- Restart: call the stop, start, and status jobs
+- start: call the start procedure to start the web service.
+- stop: call the stop procedure to stop the web service.
+- status: call the status procedure to stop the web service.
+- Restart: call the stop, start, and status jobs in succession.
 
 Since the restart procedure is the primary focus, it is capitalized
 for distinction.
@@ -208,8 +208,7 @@ defined inside a single XML file but your convention will dictate how to
 organize the definitions. The files can be named any way desired and
 do not have to correspond to the Job name or its group.
 
-File listing: stop.xml
-
+:::details Click to get stop.xml code
 ```xml .numberLines
 <joblist>
     <job>
@@ -259,14 +258,14 @@ exit ${exit_code:-0}]]></script>
      </job>
 </joblist>
 ```
+:::
 
 Defines Job, /web/stop, and executes the shell script to
 Nodes tagged "web". Using the `scriptargs` tag, the shell
 script is passed a single argument, `${option.method}`,
 containing the value chosen in the Job run form.
 
-File listing: start.xml
-
+:::details Click to get start.xml code
 ```xml .numberLines
 <joblist>
    <job>
@@ -307,12 +306,12 @@ echo "- Web started (pid=$$)"]]></script>
   </job>
 </joblist>
 ```
+:::
 
 Defines Job, /web/start, that also executes a shell script to
 Nodes tagged "web".
 
-File listing: status.xml
-
+:::details Click to get status.xml code
 ```xml .numberLines
 <joblist>
    <job>
@@ -353,6 +352,7 @@ PID=$(cat "$DIR/pid")
   </job>
 </joblist>
 ```
+:::
 
 Defines Job, /web/status, that also executes a shell script to
 Nodes tagged "web".
@@ -368,8 +368,7 @@ using the `jobref` xml tag.
 Restart also must pass the "dir" and "method" options so it
 declares those too and uses the `arg` xml tag to pass them.
 
-File listing: restart.xml
-
+:::details Click to get restart.xml code
 ```xml .numberLines
 <joblist>
    <job>
@@ -405,6 +404,7 @@ File listing: restart.xml
    </job>
 </joblist>
 ```
+:::
 
 Note that we don't define a `<nodefilters>` or `<dispatch>` section for Restart, because we
 only want this sequence to execute **once**, on the server node. The Job
@@ -463,10 +463,10 @@ two choices: "anviles:stop" and "anvils:stop --force". No other choices can be m
 ![Restart run page](~@assets/img/fig0608.png)
 
 
-### Using Multiple tabs in the browser 
+### Using Multiple tabs in the browser
 
-Some customers have reported having unexpected issues when using multiples tabs . 
-Example of unexpected behaviour includes missing saved options and workflow in the jobs. It's suggested to use a single tab when editing a job. 
+Some customers have reported having unexpected issues when using multiples tabs .
+Example of unexpected behaviour includes missing saved options and workflow in the jobs. It's suggested to use a single tab when editing a job.
 
 ### Job run with the CLI
 
@@ -488,5 +488,3 @@ Run Restart specifying the method, "force":
 ```bash
 run -j "web/Restart" -p anvils -- -method force
 ```
-
-

@@ -1,9 +1,9 @@
 # Planning for the project
 
-The administrator decides to create a project called "anvils."
-to manage the activities of the anvils restart.
-The anvils project will contain definitions about the nodes used
-by the anvils application, as well as, a set a jobs
+The administrator decides to create a project called "Anvils."
+to manage the activities of the Anvils restart.
+The Anvils project will contain definitions about the nodes used
+by the Anvils application, as well as, a set a jobs
 that reference these nodes. The administrator will use Rundeck
 access control policies to govern which teams have access to
 perform each of the procedures.
@@ -14,34 +14,31 @@ the Jobs to target each kind of node rather than reference
 specific hosts names or IP addresses. This makes the jobs reusable
 across different environments.
 
-The administrator will also use the built in
+Executing Jobs on the nodes will use the built in
 [SSH node executor](/administration/projects/node-execution/ssh.md) for
 the project since SSH is already used to execute remote commands.
 
 ## Create the project
 
-The administrator can create the project using the
-[rd] command line tool. Logged in on the
-rundeck server as the user "rundeck", the administrator executes:
+The first step is to create the project using the GUI.
+Upon first Login this window will be displayed.
+![Initial Login Project Creation](~@assets/img/tutorial-createproject.png)
 
-```bash
-rd projects create -p anvils
-```
+Click the "New Project+" button and fill in the fields as shown below.
 
-This initializes the "anvils" project in Rundeck.
+![Anvils Project Settings](~@assets/img/tutorial-createproject2.png)
 
-Of course, the administrator could also create the project
-from the projects menu in the Rundeck GUI.
+This initializes the "Anvils" project in Rundeck.
 
-The project has been created but contains no jobs and only
-one node definition, one entry for the Rundeck server node.
+The project has been created, and by default, contains no jobs and only
+one node definition, the entry for the Rundeck server node.
 
 ## Declare node definitions
 
-Modeling the anvils nodes deployed in the live environment is
+Modeling the Anvils nodes deployed in the live environment is
 administrator's next step.
 
-The anvils application environment has several components spread
+The Anvils application environment has several components spread
 across different servers. Anvils is a three tier
 application and has web, application and database components,
 each component installed on a separate host.
@@ -53,61 +50,97 @@ Each component will run using under a separate unix login
 to help isolate each component at the system level.
 
 With this information in hand, the administrator prepares the project
-resource model using the [resource-XML]
-document format. The file listing
-below contains the node definitions for the five nodes --
-www1, www2, app1, app2, db1:
+resource model using the Node Wizard (Rundeck Enterprise 3.3.0+). The steps
+below define the first node with the Node Wizard.
 
-File listing: /var/rundeck/projects/anvils/nodes/resources.xml
+1. Open the Anvils project.
+1. Click _Project Settings_ > _Edit Nodes_...
+1. Click the _Sources_ tab then click the "Add new Node Source+" button:
+  ![Add Node Source](~@assets/img/tutorial-addNodeSource.png)
+1. Add the _Node Wizard_ source option and click Save ___twice___.  
+  ![Node Wizard](~@assets/img/tutorial-nodewizardsource.png)  
+1. Return to the Edit Tab and click the Modify button on the Node Wizard entry.  
+  ![Modify Node Wizard Entries](~@assets/img/tutorial-nodewiz-modify.png)  
+1. Click the _Add Node_ button  
+1. Fill out the details as shown in the image below:  
+  ![First Node Entry](~@assets/img/tutorial-node1.png)  
+1. Click Save.
 
-```xml .numberLines
-<?xml version="1.0" encoding="UTF-8"?>
-<project>
-  <node name="www1.anvils.com" description="A www server node." tags="www"
-    hostname="192.168.50.2" username="www1"
-    osFamily="unix" osName="Linux">
-    <attribute name="anvils-location" value="US-East"/>
-    <attribute name="anvils-customer" value="acme.com"/>
-  </node>
-  <node name="www2.anvils.com" description="A www server node." tags="www"
-    hostname="192.168.50.2" username="www2"
-    osFamily="unix" osName="Linux">
-    <attribute name="anvils-location" value="US-East"/>
-    <attribute name="anvils-customer" value="acme.com"/>
-  </node>
-  <node name="app1.anvils.com" description="A app server node." tags="app"
-    hostname="192.168.50.2" username="app1"
-    osFamily="unix" osName="Linux">
-    <attribute name="anvils-location" value="US-East"/>
-    <attribute name="anvils-customer" value="acme.com"/>
-  </node>
-  <node name="app2.anvils.com" description="A app server node." tags="app"
-    hostname="192.168.50.2" username="app2"
-    osFamily="unix" osName="Linux">
-    <attribute name="anvils-location" value="US-East"/>
-    <attribute name="anvils-customer" value="acme.com"/>
-  </node>
-  <node name="db1.anvils.com" description="A db server node." tags="db"
-    hostname="192.168.50.2" username="db"
-    osFamily="unix" osName="Linux">
-    <attribute name="anvils-location" value="US-East"/>
-    <attribute name="anvils-customer" value="acme.com"/>
-  </node>
-</project>
+The full environment uses five node entries.  To simplify the setup copy and paste
+the text below into the Editor window of the Node Wizard to add all five entries.  
+(Replacing any content from previous steps)
+::: details Click to get the code
+```yml .numberLines
+www1.anvils.com:
+  nodename: www1.anvils.com
+  hostname: 192.168.50.2
+  description: A www server node.
+  username: www1
+  osFamily: unix
+  node-executor: jsch-ssh
+  file-copier: jsch-scp
+  tags: www
+  osName: Linux
+  anvils-location: US-East
+  anvils-customer: acme.com
+www2.anvils.com:
+  nodename: www1.anvils.com
+  hostname: 192.168.50.2
+  description: A www server node.
+  username: www2
+  osFamily: unix
+  node-executor: jsch-ssh
+  file-copier: jsch-scp
+  tags: www
+  osName: Linux
+  anvils-location: US-East
+  anvils-customer: acme.com
+app1.anvils.com:
+  nodename: app1.anvils.com
+  hostname: 192.168.50.2
+  description: An app server node.
+  username: app1
+  osFamily: unix
+  node-executor: jsch-ssh
+  file-copier: jsch-scp
+  tags: app
+  osName: Linux
+  anvils-location: US-East
+  anvils-customer: acme.com
+app2.anvils.com:
+  nodename: app1.anvils.com
+  hostname: 192.168.50.2
+  description: An app server node.
+  username: app2
+  osFamily: unix
+  node-executor: jsch-ssh
+  file-copier: jsch-scp
+  tags: app
+  osName: Linux
+  anvils-location: US-East
+  anvils-customer: acme.com
+db1.anvils.com:
+  nodename: db1.anvils.com
+  hostname: 192.168.50.2
+  description: A db server node.
+  username: db1
+  osFamily: unix
+  node-executor: jsch-ssh
+  file-copier: jsch-scp
+  tags: db
+  osName: Linux
+  anvils-location: US-East
+  anvils-customer: acme.com
 ```
-
-Reviewing the XML content one sees the XML data define
-several nodes and tags describing the three kinds of application components.
+:::
 
 A logical name for each node is defined
-with the `name` attribute (eg name="www1.anvils.com").
+with the `nodename` attribute (eg nodename="www1.anvils.com").
 The address used by SSH is set with `hostname` while the login
 used to execute commands has been specified with the
 `username` attribute (username="www1" vs
 username="db"). The value for the `tags` attribute
 reflects the server role (tags="web" vs tags="app").
-
-You will also notice there are two ways to define attributes using inline attribute names like `osName` or a separate xml element like `anvils-location`. It's purely up to your preference which format you use.
 
 ::: tip
 This tutorial is a trivial sized example so to conserve space (and VMs) the nodes are located on the same VM (each node uses the same hostname but a different username).
@@ -117,42 +150,22 @@ A node in rundeck can model a single host on the
 network and represents a single management endpoint. In the end,
 the ssh node executor plugin formulates an ssh command string similar to:
 "ssh username@hostname command". The ssh identity is resolved via configuration
-at run time. In this example, the project default is used as specified in the
-[project.properties] configuration file.
-(e.g., `project.ssh-keypath=/var/lib/rundeck/.ssh/id_rsa`).
-
-See [ssh-plugins guide](/administration/projects/node-execution/ssh.md#configuring-remote-machine-for-ssh) to learn about configuring remote machines for ssh.
+at run time. For more info see [ssh-plugins guide](/administration/projects/node-execution/ssh.md#configuring-remote-machine-for-ssh)
+to learn about configuring remote machines for ssh.
 
 This example uses the built in ssh plugin but you are not restricted to using
-ssh. There are other node executor plugins that invoke remote actions via
+ssh. There are other node executor plugins available that invoke remote actions via
 other tools (eg, salt, mcollective, winrm, chef knife, etc).
 
-## Configure the model source
+## Configuring Nodes on Rundeck Open Source version
 
-To make Rundeck aware of the new resource file containing the anvils nodes,
-the administrator modifies the
-[project.properties](/administration/configuration/config-file-reference.md#project-properties)
-configuration file to declare a new resource model source.
+The Node Wizard shown above is an Enterprise version feature.  If you are working through this tutorial
+using the Open Source version use these step variations to add the same nodes.
 
-Below a directory type source is configured:
+- Instead of the Node Wizard Source, add the _File_ Source.
+  * For format choose `resourceyaml` from the dropdown
+  * File path use something local to your server.  (i.e. `/home/rundeck/anvilnodes.yml`)
+  * Check the Generate Box
+  * Check the Writeable Box
 
-```properties
-resources.source.2.config.directory=/var/rundeck/projects/anvils/nodes
-resources.source.2.type=directory
-```
-
-This is the second source (hence: resource.source.2) as the first one defined
-was created by the rd-project create action.
-
-New project sources can also be added in the Configure page:
-
-![Anvils model sources](~@assets/img/fig0609.png)
-
-## Managing Node Sources
-
-See [Managing Node Sources](/administration/projects/resource-model-sources/index.md)
-to learn more about configuring Rundeck to read node data from external providers.
-
-[resource-XML]: /manual/document-format-reference/resource-v13.md
-[rd]: https://rundeck.github.io/rundeck-cli/
-[tip1]: http://www.thegeekstuff.com/2008/11/3-steps-to-perform-ssh-login-without-password-using-ssh-keygen-ssh-copy-id/
+You should be able to use the same code from above to add the nodes.
