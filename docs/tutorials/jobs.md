@@ -71,8 +71,7 @@ that merely echo their intent but define the essential arguments they will need.
 The scripts - start, status and stop - represent the logical steps of
 the restart process.
 
-File listing: start
-
+:::details Click to see start script
 ```bash .numberLines
 #!/bin/bash
 #/ usage: start ?dir?
@@ -85,9 +84,9 @@ mkdir -p "$DIR"
 echo $$ > "$DIR/pid"
 echo "- Web started (pid=$$)"
 ```
+::::
 
-File listing: status
-
+:::details Click to see status script
 ```bash .numberLines
 #!/bin/bash
 #/ usage: status ?dir?
@@ -100,9 +99,9 @@ DIR=$1
 PID=$(cat "$DIR/pid")
 [[ -z "$PID" ]] && { echo "DOWN"; exit 1; } || { echo "- RUNNING (pid=$PID)"; }
 ```
+:::
 
-File listing: stop
-
+:::details Click to see stop script
 ```bash .numberLines
 #!/bin/bash
 #/ usage: stop ?dir? ?method?
@@ -121,6 +120,7 @@ then
 fi
 exit ${exit_code:-0}
 ```
+:::
 
 Because either the normal or force can be specified for the
 "method" option, the Jobs will need to pass the user's choice as an
@@ -192,42 +192,100 @@ before execution:
 
 ## Job definition
 
-With an understanding of the scripts and the option needed to
+With an understanding of the scripts and the options needed to
 control the restart operation, the final step is to compose the Job
 definitions.
 
-While each job can be defined graphically in Rundeck, each can
-succinctly be defined using an XML file conforming to the
-[job-xml](/manual/document-format-reference/job-v20.md)
-document format. This
-document contains a set of tags corresponding to the choices seen in
-the Rundeck GUI form.
+As with the Node Definitions the Tutorial will walk through the GUI setup
+of the first job, then provide an import for the remaining jobs.
 
-Below are the XML definitions for the jobs. One or more jobs can be
-defined inside a single XML file but your convention will dictate how to
-organize the definitions. The files can be named any way desired and
-do not have to correspond to the Job name or its group.
+Click the *Job Actions* Button and select *New Job*.  
+Use the following sections to configure the job.
 
-:::details Click to get stop.xml code
-```xml .numberLines
+#### Details Tab
+  * Job Name: `stop`  
+  * Group: `web`  
+  * Description: `the web stop procedure`
+  ![Workflow Details](~@assets/img/tutorial-wf-details.png)
+
+#### Workflow Tab
+
+  * Click *Add an Option*
+    * Name: `dir`
+    * Option Label: `Directory`
+    * Default Value: `$HOME/anvils`
+    * Required: `Yes`
+    * *All other values can remain defaults*
+    * Click **Save** on the Option Box
+  * Add another Option
+    * Name: `method`
+    * Allowed Values: Select List and enter the following in the box `normal,force`
+    * Restrictions: `Enforced from Allowed Values`
+    * Required: `Yes`
+    * *All other values can remain defaults*
+    * Click **Save** on the Option Box
+  * In the "Add A Step" section select `Script` on the Node Steps tab.
+    * Paste the following code from above into the script box:
+    ```bash .numberLines
+    #!/bin/bash
+    #/ usage: stop ?dir? ?method?
+    set -eu
+    [[ $# != 2 ]] && {
+      grep '^#/ usage:' <"$0" | cut -c4- >&2 ; exit 2;
+    }
+    DIR=$1
+    METHOD=$2
+    if [[ -f "$DIR/pid" ]]
+    then
+            pid=$(cat "$DIR/pid")
+            rm -f "$DIR/pid"; #approximates a kill process
+            exit_code=$?
+            echo "- Web stopped (pid=${pid}) using method: $METHOD"
+    fi
+    exit ${exit_code:-0}
+    ```
+    * Arguments: `${option.method}`
+    * Click Save
+
+#### Nodes Tab
+  * Select the option for: `Dispatch to Nodes`  
+  * Node Filter: `tags: www`  
+  * Editable Filter: `Yes`
+  ![Node Details](~@assets/img/tutorial-wf-nodes.png)
+
+#### Save the Job
+Click the save button to save the **stop** job.
+
+### Additional Jobs
+While each subsequent job could be defined graphically in Rundeck, provided
+below is a method to import the other jobs directly.
+
+::: details Click and copy/save this XML to a file on your local machine
+``` xml .numberLines
 <joblist>
-    <job>
-       <name>stop</name>
-       <description>the web stop procedure</description>
-       <loglevel>INFO</loglevel>
-       <group>web</group>
-       <context>
-         <options>
-           <option name="method" enforcedvalues="true"
-                   required="true"
-               values="normal,force"/>
-           <option name="dir" enforcedvalues="false" required="true"
-             default="$HOME/anvils" />
-           </options>
-       </context>
-       <sequence threadcount="1" keepgoing="false" strategy="node-first">
-         <command>
-           <script><![CDATA[#!/bin/bash
+  <job>
+    <context>
+      <options preserveOrder='true'>
+        <option name='dir' required='true' value='$HOME/anvils'>
+          <label>Directory</label>
+        </option>
+        <option enforcedvalues='true' name='method' required='true' values='normal,force' valuesListDelimiter=',' />
+      </options>
+    </context>
+    <defaultTab>nodes</defaultTab>
+    <description>the web stop procedure</description>
+    <executionEnabled>true</executionEnabled>
+    <group>web</group>
+    <name>stop</name>
+    <nodeFilterEditable>true</nodeFilterEditable>
+    <nodefilters>
+      <filter>tags: www</filter>
+    </nodefilters>
+    <nodesSelectedByDefault>true</nodesSelectedByDefault>
+    <scheduleEnabled>true</scheduleEnabled>
+    <sequence keepgoing='false' strategy='node-first'>
+      <command>
+        <script><![CDATA[#!/bin/bash
 #/ usage: stop ?dir? ?method?
 set -eu
 [[ $# != 2 ]] && {
@@ -243,46 +301,30 @@ then
         echo "- Web stopped (pid=${pid}) using method: $METHOD"
 fi
 exit ${exit_code:-0}]]></script>
-            <scriptargs>${option.method}</scriptargs>
-         </command>
-       </sequence>
-       <nodefilters excludeprecedence="true">
-         <include>
-           <tags>www</tags>
-         </include>
-       </nodefilters>
-       <dispatch>
-         <threadcount>1</threadcount>
-         <keepgoing>false</keepgoing>
-       </dispatch>
-     </job>
-</joblist>
-```
-:::
-
-Defines Job, /web/stop, and executes the shell script to
-Nodes tagged "web". Using the `scriptargs` tag, the shell
-script is passed a single argument, `${option.method}`,
-containing the value chosen in the Job run form.
-
-:::details Click to get start.xml code
-```xml .numberLines
-<joblist>
-   <job>
-     <name>start</name>
-     <description>the web start procedure</description>
-     <loglevel>INFO</loglevel>
-     <group>web</group>
-    <context/>
+        <scriptargs>${option.method}</scriptargs>
+      </command>
+    </sequence>
+  </job>
+  <job>
     <context>
-       <options>
-         <option name="dir" enforcedvalues="false" required="true"
-                 default="$HOME/anvils" />
-       </options>
+      <options preserveOrder='true'>
+        <option name='dir' required='true' value='$HOME/anvils'>
+          <label>Directory</label>
+        </option>
+      </options>
     </context>
-    <sequence threadcount="1" keepgoing="false" strategy="node-first">
-     <command>
-      <script><![CDATA[#!/bin/bash
+    <description>the web start procedure</description>
+    <executionEnabled>true</executionEnabled>
+    <group>web</group>
+    <loglevel>INFO</loglevel>
+    <name>start</name>
+    <nodeFilterEditable>true</nodeFilterEditable>
+    <nodefilters>
+      <filter>tags: www</filter>
+    </nodefilters>
+    <sequence keepgoing='false' strategy='node-first'>
+      <command>
+        <script><![CDATA[#!/bin/bash
 #/ usage: start ?dir?
 set -eu
 [[ $# != 1 ]] && {
@@ -292,42 +334,28 @@ DIR=$1
 mkdir -p "$DIR"
 echo $$ > "$DIR/pid"
 echo "- Web started (pid=$$)"]]></script>
-     </command>
-  </sequence>
-    <nodefilters excludeprecedence="true">
-      <include>
-        <tags>www</tags>
-      </include>
-   </nodefilters>
-   <dispatch>
-     <threadcount>1</threadcount>
-     <keepgoing>false</keepgoing>
-   </dispatch>
+        <scriptargs />
+      </command>
+    </sequence>
   </job>
-</joblist>
-```
-:::
-
-Defines Job, /web/start, that also executes a shell script to
-Nodes tagged "web".
-
-:::details Click to get status.xml code
-```xml .numberLines
-<joblist>
-   <job>
-     <name>status</name>
-     <description>the web status procedure</description>
-     <loglevel>INFO</loglevel>
-     <group>web</group>
-     <context>
-       <options>
-         <option name="dir" enforcedvalues="false" required="true"
-                 default="$HOME/anvils" />
-       </options>
-     </context>
-     <sequence threadcount="1" keepgoing="false" strategy="node-first">
-     <command>
-      <script><![CDATA[#!/bin/bash
+  <job>
+    <context>
+      <options preserveOrder='true'>
+        <option name='dir' required='true' value='$HOME/anvils' />
+      </options>
+    </context>
+    <defaultTab>nodes</defaultTab>
+    <description>the web status procedure</description>
+    <executionEnabled>true</executionEnabled>
+    <group>web</group>
+    <name>status</name>
+    <nodefilters>
+      <filter>tags: www</filter>
+    </nodefilters>
+    <nodesSelectedByDefault>true</nodesSelectedByDefault>
+    <sequence keepgoing='false' strategy='node-first'>
+      <command>
+        <script><![CDATA[#!/bin/bash
 #/ usage: status ?dir?
 set -eu
 [[ $# != 1 ]] && {
@@ -338,153 +366,116 @@ DIR=$1
 PID=$(cat "$DIR/pid")
 [[ -z "$PID" ]] && { echo "DOWN"; exit 1; } || { echo "- RUNNING (pid=$PID)"; }
 ]]></script>
-     </command>
-  </sequence>
-    <nodefilters excludeprecedence="true">
-      <include>
-        <tags>www</tags>
-      </include>
-   </nodefilters>
-   <dispatch>
-     <threadcount>1</threadcount>
-     <keepgoing>false</keepgoing>
-   </dispatch>
+        <scriptargs />
+      </command>
+    </sequence>
   </job>
 </joblist>
+
 ```
 :::
 
+- On the Jobs Page click the Job Action button and select Upload Definition:
+![Upload Job Definition](~@assets/img/tutorial-upload-job-def.png)  
+
+- Click _Choose File_ and select the file the the text from above.
+- Click Upload.
+
+### Descriptions of the Jobs included
+
+#### Stop Job
+Defines Job, /web/stop, and executes the shell script to
+Nodes tagged "web". Using the `scriptargs` tag, the shell
+script is passed a single argument, `${option.method}`,
+containing the value chosen in the Job run form.
+
+#### Start Job
+Defines Job, /web/start, that also executes a shell script to Nodes tagged "web".
+
+#### Status Job
 Defines Job, /web/status, that also executes a shell script to
 Nodes tagged "web".
 
-> Note, these examples demonstrate Jobs with inline scripts. This is for the purpose of providing a simple and transparent example. You may rightly consider other approaches such as external scriptfiles or custom steps to further encapsulate the code from the job definition.
+::: tip
+These job definitions are defined using an XML file conforming to the
+[job-xml](/manual/document-format-reference/job-v20.md) document format.
+:::
+
+::: tip
+These examples demonstrate Jobs with inline scripts. This is for the purpose of
+providing a simple and transparent example. You may rightly consider other
+approaches such as external script files or custom steps to further encapsulate
+the code from the job definition.
+:::
 
 ### Restart Job composition
 
 The final job definition declares the "Restart" job which merely
 wraps calls to the stop, start, status jobs already defined.
-This is done by declaring a sequence of Job calls,
-using the `jobref` xml tag.
-Restart also must pass the "dir" and "method" options so it
-declares those too and uses the `arg` xml tag to pass them.
+This is done by declaring a sequence of Job calls to the three jobs we already created.
 
-:::details Click to get restart.xml code
+:::details Click and copy/save the restart job XML to a file on your local machine
 ```xml .numberLines
 <joblist>
-   <job>
-     <name>Restart</name>
-     <description>restart the web server</description>
-     <loglevel>INFO</loglevel>
-     <group>web</group>
-     <context>
-       <options>
-         <option name="method" enforcedvalues="true" required="false"
-                 values="normal,force" />
-         <option name="dir" enforcedvalues="false" required="true"
-                 default="$HOME/anvils" />
-       </options>
-     </context>
-     <sequence threadcount="1" keepgoing="false" strategy="node-first">
+  <job>
+    <context>
+      <options preserveOrder='true'>
+        <option name='dir' required='true' value='$HOME/anvils' />
+        <option enforcedvalues='true' name='method' values='normal,force' valuesListDelimiter=',' />
+      </options>
+    </context>
+    <defaultTab>nodes</defaultTab>
+    <description>restart the web server</description>
+    <executionEnabled>true</executionEnabled>
+    <group>web</group>
+    <name>Restart</name>
+    <scheduleEnabled>true</scheduleEnabled>
+    <sequence keepgoing='false' strategy='node-first'>
       <command>
-        <jobref name="stop" group="web">
-          <arg line="-dir ${option.dir} -method ${option.method}"/>
+        <jobref group='web' name='stop'>
+          <arg line='-dir ${option.dir} -method ${option.method}' />
+          <useName>true</useName>
         </jobref>
       </command>
       <command>
-        <jobref name="start" group="web">
-          <arg line="-dir ${option.dir}"/>
+        <jobref group='web' name='start'>
+          <arg line='-dir ${option.dir}' />
+          <useName>true</useName>
         </jobref>
       </command>
       <command>
-        <jobref name="status" group="web">
-          <arg line="-dir ${option.dir}"/>
+        <jobref group='web' name='status'>
+          <arg line='-dir ${option.dir}' />
+          <useName>true</useName>
         </jobref>
       </command>
     </sequence>
-   </job>
+  </job>
 </joblist>
 ```
 :::
 
-Note that we don't define a `<nodefilters>` or `<dispatch>` section for Restart, because we
+Note that we don't define a `nodefilters` or `dispatch` section for Restart, because we
 only want this sequence to execute **once**, on the server node. The Job
 references will each be called once, and the "start", "stop" and "status" Jobs will
 each be dispatched to the nodes they define.
-
-Saving the XML definitions files located on the Rundeck server,
-one can load them using the [rd-jobs](/manpages/man1/index.md) command.
-
-Run the `rd-jobs load` command for each job definition file:
-
-```bash
-rd-jobs load -p anvils -f start.xml
-rd-jobs load -p anvils -f stop.xml
-rd-jobs load -p anvils -f status.xml
-rd-jobs load -p anvils -f restart.xml
-```
-
-The `rd-jobs list` command queries Rundeck and prints out the list of
-defined jobs:
-
-```bash
-rd-jobs list -p anvils
-```
-
-```
-Found 3 jobs:
-- Restart - 'the web restart procedure'
-- start - 'the web start procedure'
-- status - 'the web status procedure'
-- stop - 'the web stop procedure'
-```
-
-Of course, the jobs can be viewed inside the Rundeck graphical console by going to
-the Jobs page. Clicking the "Restart" job name and clicking the "Definition" tab reveals job detail.
-
-![Anvils Restart job](~@assets/img/fig0607.png)
-
-You will see the composition of the "Restart" job as a workflow
-calling the jobs: stop, start, status. The "Restart" job passes the
-the `-dir` option to all the jobs and the
-`-method` option value to the stop Job.
 
 ## Running the job
 
 ### Run using the GUI
 
-The Jobs can be run from the Rundeck graphical console by going to the
+The Jobs could then be run from the Rundeck graphical console by going to the
 "Jobs" page. From there, navigate to the "web" job group to
-display the three stored Jobs.
+display the four stored Jobs.
 
 Clicking the "Run" button for the Restart job, will display the
 options selection page. The menu for the "method" option displays the
-two choices: "anviles:stop" and "anvils:stop --force". No other choices can be made, nor a textfield for free form entry, because the "method" option was defined with the restriction "enforced from allowed values".
+two choices: "normal" and "force".
+No other choices can be made, nor a textfield for free form entry,
+because the "method" option was defined with the restriction "enforced from allowed values".
 
 ![Restart run page](~@assets/img/fig0608.png)
 
-
-### Using Multiple tabs in the browser
-
-Some customers have reported having unexpected issues when using multiples tabs .
-Example of unexpected behaviour includes missing saved options and workflow in the jobs. It's suggested to use a single tab when editing a job.
-
-### Job run with the CLI
-
-The jobs can also be started from the command line using the
-[run](/manpages/man1/index.md)
-shell tool. The job group and name are specified
-using the "-j" parameter. Any options the Job supports are supplied
-after the "--" (double dash) parameter. (The "-p" parameter specifies the project,
-but it can be left out if there is only one project available.)
-
-Run Restart specifying the method, "normal":
-
-```bash
-run -j "web/Restart" -p anvils -- -method normal
-```
-
-Run Restart specifying the method, "force":
-
-```bash
-run -j "web/Restart" -p anvils -- -method force
-```
+::: tip
+Note that the jobs will not execute successfully at this time.  The tutorial is just walking through a theoretical scenario.
+:::
