@@ -138,8 +138,139 @@ After execution of the job, you will get a table like this:
 
 ![Log Data Step Result](~@assets/img/log-data-result.png)
 
+### Executions Delete
+
+This job step allows you to delete previously run executions by specifying when the executions are from, who executed them and what job thet were executed on. 
+
+![Executions Delete](~@assets/img/executions_delete.png)
+
+- **Status**
+: This is where you specify the status of the executions that you wish to delete. The options are running, succeeded, failed, aborted.
+
+- **Older**
+: If filled out, this specifies that you want the executions you delete to be older than this amount of time. You can enter anything from years to seconds. An example would be "3m", which would only delete executions that are older than three months old. Other options are: h,n,s,d,w,m,y (hour,minute,second,day,week,month,year).
+
+- **Recent**
+: If filled out, this specifies that you want the executions you delete to be newer than this amount of time. You can enter anything from years to seconds. An example would be "3m", which would only delete executions that have happened less than three months ago. Other options are: h,n,s,d,w,m,y (hour,minute,second,day,week,month,year).
+
+- **User**
+: This specifies which user who performed the executions that you want to delete. So, if you specify "admin" then it will only delete executions by the admin.
+
+- **Job Name**
+: This specifies which job name filters should have their executions deleted. For example, if you specify "update" then all jobs with the filter "update" will have its executions deleted.
+ 
+- **Job Exact Name**
+: This specifies the exact job name that you want to delete. If you specify the exact name of a job such as "restart X" then the job with the same name will have its executions deleted.
+
+- **Job Name List**
+: This allows you to specify numerous jobs names. This is just like Job Name above but now you can add many names separated by commas.
+
+![Executions Delete - continued](~@assets/img/executions_delete2.png)
+
+- **Job ID List**
+: This allows you to list all of the job IDs that you want included in the deletion. So, you can enter numerous job IDs separated by a comma and those jobs executions will be deleted.
+
+- **Group Path**
+: This allows you to specify a group of jobs whose executions should be deleted. You can specify a path to a certain job group and all jobs in that group will have their executions deleted.
+
+- **Exact Group Path**
+: This allows you to specify an exact group path to a group of jobs whose executions you wish to delete. If specified, all job executions in that group that meet the criteria will be deleted. 
+
+- **Exclude Job Name**
+: This specifies which job name filters should NOT have their executions deleted. For example, if you specify "update" then all jobs with the filter "update" will NOT have its executions deleted.
+ 
+- **Exclude Job Exact Name**
+: This specifies the exact job name that you DO NOT want to delete. If you specify the exact name of a job such as "restart X" then the job with the same name will NOT have its executions deleted.
+
+- **Exclude Jobs**
+: This allows you to specify numerous jobs names to exclude from deletion. For example, if you provide the paths group1/job1 and group2/job2 separated by commas then those jobs' executions will not be deleted.
+
+- **Job ID List**
+: This allows you to list all of the job IDs that you want excluded in the deletion. So, you can enter numerous job IDs separated by a comma, and those jobs executions will NOT be deleted.
+
+- **Exclude Group Path**
+: This allows you to specify a group of jobs whose executions should NOT be deleted. You can specify a path to a certain job group and all jobs in that group will NOT have their executions deleted.
+
+- **Exclude Exact Group Path**
+: This allows you to specify an exact group path to a group of jobs whose executions you wish to NOT delete. If specified, all job executions in that group that meet the criteria will NOT be deleted. 
+
+### Executions Wait Result
+
+This job step allows you to wait on the results of other job executions before continuing on to the next job step. This is very helpful if you need a particular execution to run prior to running a job. 
+
+![Executions Wait Result](~@assets/img/executions_wait.png)
+
+- **Job Project (optional)**
+: If you enter a value into this box, then it will only search within that specific project, not across all project. If you don't specify, it will not only search that one project but all executions.
+
+- **Execution List**
+: This is where you can specify the executions that you wish to wait on. In order to do so you need to provide the list of execution IDs that you want to wait on, all separated by a comma.
+
+- **Fail on Failed Execution**
+: If true is selected and one execution fails, this whole step will fail, even if other executions succeeded. If false is chosed, this job step will only fail if all executions fail.
+
+- **Result as JSON**
+: If this box is checked, then the results will be in the form of a JSON instead of a table. This is ideal if the results need to be used elsewhere.
+
+### Executions Retry
+
+This job step allows you to reference execution IDs that you want to retry executing. This is very beneficial in a case where you need a successful execution prior to moving forward with another job.
+
+![Executions Retry](~@assets/img/executions_retry.png)
+
+- **Execution List**
+: This is where you specify the list of executions that you want to retry. Provide the execution IDs, separated by a comma. This is very helpful if you need for certain executions to run successfully prior to continuing with another job. This step allows you to retry those executions before continuing with the job.
+
+- **Run on Failed Nodes**
+: If checked, this box allows you to only run executions on nodes that have failed. Executions on healthy nodes will not be run.
+
+- **Result as JSON**
+: If this box is checked, then the results will be in the form of a JSON instead of a table. This is ideal if the results need to be used elsewhere.
+
+### Executions Search
+
+This job step allows you to search for an execution based on a variety of factors such as state of execution, job id, etc.
+
+![Executions Search](~@assets/img/executions_search.png)
+
+- **State**
+: This allows you to specify the state of the execution that you are searching for. The possible options are incomplete, failed and succeeded. 
+
+- **Job Project (optional)**
+: This allows you to search only one project for the executions. If nothing is provided, it will search all projects for executions meeting the criteria.
+
+- **Job ID (optional)**
+: This allows you to specify a certain job. If something is provided here, it will just search for executions of that specific job. Otherwise, it will search all jobs. 
+
+- **Exclude Job ID (optional)**
+: This allows you to specify a certain job you aren't searching for. If something is provided here, it will not search for executions of that specific job.
+
+- **Executions Since**
+: This allows you to specify how far back you wish to search for executions. If you specify 3m then it will search all executions that are less than three minutes old. Other options are "m" for minutes, "d" for days and "h" for hours.
+
+
 ### Refresh Project Nodes
 
+This job step allows you to refresh all the nodes in a project. This is beneficial if you want to make sure the nodes are up to date before executing a job. The refreshed nodes will be available in any subsequent Job Reference step, but not within the current workflow. 
+
+![Refresh Project Nodes](~@assets/img/refresh_nodes.png)
+
+- **Sleep (optional)**
+: This is an optional field. If a number is provided (seconds), there will be a period of sleep for that amount of time before the sources are refreshed. 
+
+
 ### Data Step
+
+This job step produces data values for the current node.
+
+![Data Step](~@assets/img/data_step.png)
+
+- **Data**
+: This is where you provide the data variables and their values for the current node. For example, var1=value.
+
+- **Format**
+: This is where you specify the format for the data that you just entered. The options are properties, json or yaml.
+
+
 
 
