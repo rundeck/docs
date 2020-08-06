@@ -20,6 +20,10 @@ Export archive to a file. Without the `--include` flag all content is archived (
 ```bash
 rd projects archives export -p MyProject --file MyProject.zip
 ```
+::: warning
+Only Enterprise users can export tours, calendars, schedule definitions and nodes.
+:::
+
 
 ## Import Archive
 
