@@ -1,17 +1,18 @@
 # Listing and filtering nodes
 
 With the new model source in place and the project configuration updated, the
-administrator can begin listing the nodes in rundeck and dispatch commands.
+administrator can begin listing the nodes in Rundeck and dispatch commands.
 
-Clicking on the "Nodes" tab in the anvils project will list all the nodes
-by default. The screenshot below shows the listing with 6 nodes.
+Clicking on the "Nodes" tab and using the drop down to choose "Select All Nodes"
+in the anvils project will display all the nodes that have been configured.
+The screenshot below shows the listing with 6 nodes.
 
-![Anvils resources](~@assets/img/fig0601.png)
+![Anvils Nodes List](~@assets/img/tutorial-nodeslist.png)
 
 The tags allow filtering nodes by their functional role. Below shows
 just the nodes tagged "www":
 
-![Filtered nodes](~@assets/img/fig0602.png)
+![Filtered nodes](~@assets/img/tutorial-nodesfiltered.png)
 
 The screenshot shows the filter form with an expression: `tags: www`.
 Node filtering uses a simple syntax. You can match nodes by specifying
