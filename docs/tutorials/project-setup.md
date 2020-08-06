@@ -1,6 +1,6 @@
 # Planning for the project
 
-The administrator decides to create a project called "Anvils."
+The administrator decides to create a project called "Anvils"
 to manage the activities of the Anvils restart.
 The Anvils project will contain definitions about the nodes used
 by the Anvils application, as well as, a set a jobs
