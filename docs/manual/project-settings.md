@@ -57,6 +57,10 @@ You can configure additional Node Sources to gather all the node information rel
 
 See [Node Sources](/administration/projects/resource-model-sources/) for more details.
 
+## Node Enhancers
+
+Take advantage of the node enhancers that Rundeck offers by adding them to your nodes. See [Node Enhancers](/manual/node-enhancers.md) for more details.
+
 ## Access Control
 Control access to the project with [ACL Policy GUI](/administration/security/acl-policy-editor.html) (Enterprise) or [Access Control Policy](/administration/security/authorization.html) files.
 

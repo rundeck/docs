@@ -51,6 +51,7 @@ module.exports = [{
       sidebarDepth: 1,
       children: [
         '/manual/05-nodes',
+        'manual/node-enhancers.md',
         '/manual/11-node-filters.md',
         '/manual/healthchecks'
       ]
