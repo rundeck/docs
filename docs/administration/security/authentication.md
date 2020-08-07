@@ -25,6 +25,14 @@ If you use the Rundeck war file with a different container, such as Tomcat, refe
 
 See [Security > Single Sign On](/administration/security/sso.md).
 
+# Require Roles For Sign On
+
+By default, when users who are not granted access to any projects try to login, they are directed to a page that says they don't have any roles at the moment. However, if you would like to require roles to even get passed the login screen, that is possible. If you require roles for sign on, then if a user without a role tries to login, they will not be able to get into the Rundeck portal. In order to require roles for sign on, add the following line to the rundeck-config.properties file:
+```bash
+rundeck.security.requiredRole=Your_Role_Name
+```
+where Your_Role_Name is the name of the group you wish to grant access to.
+
 # Jetty and JAAS authentication
 
 Rundeck has three basic JAAS modules.
