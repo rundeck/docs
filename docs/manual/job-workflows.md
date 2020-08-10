@@ -332,6 +332,14 @@ This can be disabled, see [Administrator Guide > Configuration File Reference > 
 See the chapter [Configuring Remote Machine for SSH](/administration/projects/node-execution/ssh.md#configuring-remote-machine-for-ssh) for information about requirements of the SSH server.
 :::
 
+### Data Capture Job Filter Plugins
+
+Rundeck offers two different data capture job filter plugins. The first, Key Value Data, captures simple Key/Value data using a simple text format. The second, Multiline Regex Data Capture, captures multiline regex key/value data using a simple text format. The data capture job filter plugins allow users to define and utilize data variables across numerous job steps.
+
+For more information on Key Value data, see [Key Value Data](/manual/log-filters/key-value-data.md).
+
+For more information on Key Value data, see [Multiline Regex Capture](/manual/log-filters/multi-line-regex.md).
+
 ### Command Line Tools and API access
 
 Jobs can be exported or imported in XML or Yaml format using the API or the `rd` CLI tool.
