@@ -80,7 +80,7 @@ keys/users/${job.username}.password
 
 ## WinRM Setting to use PowerShell Plugin
 
-In order to connect Rundeck with remote Windows nodes, it is necessary to set WinRM in both, the server and the remote nodes.
+In order to connect Rundeck with remote Windows nodes, it is necessary to set WinRM in both, the server and the remote nodes. For more information about installing and configuring Windows Remote Nodes, see [Windows Remote Nodes](https://docs.microsoft.com/en-us/windows/win32/winrm/installation-and-configuration-for-windows-remote-management#:~:text=To%20configure%20WinRM%20with%20default,command%20at%20a%20command%20prompt)
 
 ### On the rundeck server
 
