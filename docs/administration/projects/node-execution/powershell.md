@@ -80,7 +80,7 @@ keys/users/${job.username}.password
 
 ## WinRM Setting to use PowerShell Plugin
 
-In order to connect Rundeck with remote Windows nodes, it is necessary to set WinRM in both, the server and the remote nodes. For more information about installing and configuring Windows Remote Nodes, see [Windows Remote Nodes](https://docs.microsoft.com/en-us/windows/win32/winrm/installation-and-configuration-for-windows-remote-management#:~:text=To%20configure%20WinRM%20with%20default,command%20at%20a%20command%20prompt)
+In order to connect Rundeck with remote Windows nodes, it is necessary to set WinRM in both, the server and the remote nodes. 
 
 ### On the rundeck server
 
@@ -138,6 +138,12 @@ or
 Enable-WSManCredSSP -Role "Client" -DelegateComputer "*"
 ```
 
+To enable unencrypted access run this command on both the Rundeck server and the remote nodes:
+
+```
+winrm/config/service @{AllowUnencrypted="true"}
+```
+
 #### Allow Delegating Fresh Credentials
 
 - Click **Start**, type **mmc** and then click **OK**.
@@ -185,6 +191,13 @@ To enable the CredSSP:
 ```
 winrm set winrm/config/service/auth @{CredSSP="true"}
 ```
+
+To enable unencrypted access run this command on the Rundeck server and the remote nodes:
+
+```
+winrm/config/service @{AllowUnencrypted="true"}
+```
+
 
 ### Troubleshooting
 
@@ -244,6 +257,8 @@ Set-NetConnectionProfile -InterfaceIndex [INTERFAZ_INDEX] -NetworkCategory Priva
 It could be necessary to change the user’s log-on in tomcat service when the remote connection does not work:
 
 ![Tomcat settings](~@assets/img/powershell-troubleshooting.png)
+
+For more information about installing and configuring Windows Remote Nodes, see [Windows Remote Nodes](https://docs.microsoft.com/en-us/windows/win32/winrm/installation-and-configuration-for-windows-remote-management#:~:text=To%20configure%20WinRM%20with%20default,command%20at%20a%20command%20prompt).
 
 ## Use utf-8 scripts
 
