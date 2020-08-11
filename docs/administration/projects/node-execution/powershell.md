@@ -138,7 +138,7 @@ or
 Enable-WSManCredSSP -Role "Client" -DelegateComputer "*"
 ```
 
-To enable unencrypted access run this command on both the Rundeck server and the remote nodes:
+To enable unencrypted access for the purpose of establishing a connection, run this command on both the Rundeck server and the remote nodes:
 
 ```
 winrm/config/service @{AllowUnencrypted="true"}
@@ -192,7 +192,7 @@ To enable the CredSSP:
 winrm set winrm/config/service/auth @{CredSSP="true"}
 ```
 
-To enable unencrypted access run this command on the Rundeck server and the remote nodes:
+To enable unencrypted access for the purpose of establishing a connection, run this command on the Rundeck server and the remote nodes:
 
 ```
 winrm/config/service @{AllowUnencrypted="true"}
