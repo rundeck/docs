@@ -5789,6 +5789,11 @@ contain *only* executions that are specified, and will not contain Jobs, ACLs, o
 
 In APIv19 or later:
 
+By default, exportALL=true. So, in order to not export empty data, you need to include one of the following flags. For example:
+```
+GET /api/11/project/[PROJECT]/export?exportAll=false
+```
+
 * `exportAll` true/false, include all project contents (default: true)
 * `exportJobs` true/false, include executions
 * `exportExecutions` true/false, include executions
@@ -5834,6 +5839,20 @@ Same as [Project Archive Export][/api/V/project/\[PROJECT\]/export].
 
 Same as [Project Archive Export Async Status][/api/V/project/\[PROJECT\]/export/status/\[TOKEN\]].
 
+
+In APIv19 or later:
+
+By default, exportALL=true. So, in order to not export empty data, you need to include one of the following flags. For example:
+```
+GET /api/11/project/[PROJECT]/export?exportAll=false
+```
+
+* `exportAll` true/false, include all project contents (default: true)
+* `exportJobs` true/false, include executions
+* `exportExecutions` true/false, include executions
+* `exportConfigs` true/false, include project configuration
+* `exportReadmes` true/false, include project readme/motd files
+* `exportAcls` true/false, include project ACL Policy files, if authorized
 
 ### Project Archive Export Async Status
 
