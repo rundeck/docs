@@ -1,6 +1,6 @@
 # Log Events
 
-All Rundeck users have access to the Log Events Webhook plugin. The log events plugin allows users to log incoming webhook events to the log4j logger rundeck.webhooks.log file. Users can post any data they might want to the webhook and it will be logged. Because of this, it can act as a debug endpoint. For example, maybe you don't exactly know what data the source will be sending. Using the log events plugin, you could log it and analyze it before using a different plugin to handle it. 
+All Rundeck users have access to the Log Events Webhook plugin. The log events plugin allows users to log incoming webhook events to the log4j2 logger rundeck.webhooks.log file. Users can post any data they might want to the webhook and it will be logged. Because of this, it can act as a debug endpoint. For example, maybe you don't exactly know what data the source will be sending. Using the log events plugin, you could log it and analyze it before using a different plugin to handle it. 
 
 ![Log Events - Webhook Plugin](~@assets/img/log-events.png)
 
