@@ -18,10 +18,10 @@ You can also manage webhooks using the [Webhook API](/api/rundeck-api.md#webhook
 Click the `Add` button to add a new webhook.
 
 Fill out the information in the form and select a Webhook event handler:
+* [Advanced Run Job (Enterprise)](./webhooks/advanced-run-job.md)
+* [PagerDuty Run Job (Enterprise)](./webhooks/pagerduty-run-job.md)
 * [Run Job](./webhooks/run-job.md)
 * [Log Events](./webhooks/log-events.md)
-* [PagerDuty Run Job (Enterprise)](./webhooks/pagerduty-run-job.md)
-* [Advanced Run Job (Enterprise)](./webhooks/advanced-run-job.md)
 
 Click `Save`.
 

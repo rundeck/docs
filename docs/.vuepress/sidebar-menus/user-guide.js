@@ -106,10 +106,10 @@ module.exports = [{
           title: 'Webhooks Handlers',
           sidebarDepth: 2,
           children: [
-            '/manual/webhooks/run-job.md',
-            '/manual/webhooks/log-events.md',
             '/manual/webhooks/advanced-run-job',
-            '/manual/webhooks/pagerduty-run-job'
+            '/manual/webhooks/pagerduty-run-job',
+            '/manual/webhooks/run-job.md',
+            '/manual/webhooks/log-events.md'
           ]
         },
       ]
