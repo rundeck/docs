@@ -107,6 +107,7 @@ module.exports = [{
           sidebarDepth: 2,
           children: [
             '/manual/webhooks/run-job.md',
+            '/manual/webhooks/log-events.md',
             '/manual/webhooks/advanced-run-job',
             '/manual/webhooks/pagerduty-run-job'
           ]
