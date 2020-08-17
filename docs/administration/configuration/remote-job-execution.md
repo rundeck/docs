@@ -145,3 +145,71 @@ rundeck.clusterMode.remoteExecution.config.groupWeight=1,0,0,0
 ```
 
 The example defines four groups, each with 25% of the members. The weights define 100% chance of the first group being used.
+
+### Cluster Remote Execution with Secure Options
+
+When forwarding executions which include [Secure Options](/manual/job-options.md#secure-options), option values will be delivered
+between cluster members using encrypted messaging by default.
+
+This behavior and the encryption configuration can be changed configuring the following parameters in `rundeck-config.properties`: 
+
+#### Disable encrypted messaging
+
+Set this property if you need to completely disable encrypted messaging between cluster members. (Default: enabled)
+```
+rundeck.clusterMode.messaging.encryption.enabled = false
+```
+
+**Note:** Jobs with secure options will **NOT** be remotely executed if encryption is disabled, falling back to local execution only.
+
+#### Configuring encryption parameters
+
+Message encryption currently implements the CMS/PKCS#7 standard, using RSA as signature algorithm. You can configure many parameters
+for the encryption stack with the following properties. **Note**: All cluster instances must have the same cyphers configured in order to work properly.
+
+**Signature key size**
+
+Sets the key size to use for the RSA public/private key generation. Minimum key size supported is 512. (Default: 2048)  
+```
+rundeck.clusterMode.messaging.encryption.simplecms.keySize=2048
+```
+
+**Signature Algorithm**
+
+Set the algorithms to use for the signature generation. (Default: SHA256withRSA)
+```
+rundeck.clusterMode.messaging.encryption.simplecms.signatureAlgorithm=SHA256withRSA
+```
+Currently supported modes are:
+- SHA1withRSA
+- SHA224withRSA
+- SHA256withRSA
+- SHA384withRSA
+- SHA512withRSA
+- SHA512/224withRSA
+- SHA512/256withRSA
+- SHA3-224withRSA
+- SHA3-256withRSA
+- SHA3-384withRSA
+- SHA3-512withRSA
+
+**Certificate Validity**
+
+Set the validity in days for the instance self-signed certificate. (default 10 years)
+```
+rundeck.clusterMode.messaging.encryption.simplecms.certValidityDays=3650
+```
+
+**Encryption Algorithm**
+
+Specify the algorithm to use for content encryption. (Default: AES128_CBC)
+```
+rundeck.clusterMode.messaging.encryption.simplecms.encryptionAlgorithm=AES128_CBC
+```
+
+Recommended cypher modes:
+- AES256_CBC
+- AES192_CBC
+- AES128_CBC (default)
+
+Other available cyphers: https://www.bouncycastle.org/docs/pkixdocs1.5on/org/bouncycastle/cms/CMSAlgorithm.html
