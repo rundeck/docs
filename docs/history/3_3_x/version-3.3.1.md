@@ -2,6 +2,8 @@
 
 Name: <span style="color: pink"><span class="glyphicon glyphicon-flash"></span> "onion ring pink gift"</span>
 
+[Download this release](https://download.rundeck.com/3.3.1/index.html)
+
 ## Overview
 
 We hope you're taking full advantage of all the 3.3.x features we released earlier this month. The 3.3.0 release was our most ambitious and comprehensive release to date.  
