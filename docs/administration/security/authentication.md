@@ -745,7 +745,7 @@ If you would like to test your Jaas configuration without restarting Rundeck eve
 ldap example:
 
 ```sh
-$ java -jar -Drundeck.jaaslogin=true -Dloginmodule.conf.name=jaas-ldap.conf -Dloginmodule.name=ldap rundeck-{{{rundeckVersionFull}}}.war --testauth
+$ java -jar rundeck-{{{rundeckVersionFull}}}.war -Drundeck.jaaslogin=true -Dloginmodule.conf.name=jaas-ldap.conf -Dloginmodule.name=ldap --testauth
 Checking file: $RDECK_BASE/server/config/jaas-ldap.conf
 Checking login module: ldap
 Enter user name: ldapuser
