@@ -13,7 +13,7 @@
   "dependencies": {
     "core-js": "^2.6.5",
     "glob": "^7.1.4",
-    "vue": "2.6.11",
+    "vue": "2.6.12",
     "vuepress-bar": "^0.1.0",
     "vuepress-plugin-alias": "^1.0.0-beta",
     "vuepress-sidebar-generator": "^0.1.1"
@@ -33,7 +33,7 @@
     "nunjucks": "^3.2.0",
     "push-dir": "^0.4.1",
     "semver-compare": "^1.0.0",
-    "vue-template-compiler": "2.6.11",
+    "vue-template-compiler": "2.6.12 ",
     "vuepress": "1.5.0",
     "vuepress-plugin-autometa": "^0.1.13",
     "vuepress-plugin-canonical": "^1.0.0"
