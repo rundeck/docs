@@ -1,4 +1,6 @@
 # DataDog (Enterprise)
+::: enterprise
+:::
 
 Rundeck's DataDog webhook plugin allows users to automatically run jobs in response to webhooks sent from DataDog. 
 
