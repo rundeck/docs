@@ -112,6 +112,18 @@ rundeck.clusterMode.remoteExecution.profile.profile1.config.preferredTags = <Lis
 rundeck.clusterMode.remoteExecution.profile.profile1.config.activeOnly = true/false
 ```
 
+### Preset Policy
+
+This feature allows for you to use a preset policy for remote execution. For example, a correct configuration looks like this:
+
+```properties
+rundeck.clusterMode.remoteExecution.config.activeOnly = true
+rundeck.clusterMode.remoteExecution.profiles =Linux
+rundeck.clusterMode.remoteExecution.profile.Linux.projects=Example, Test1, Test2
+rundeck.clusterMode.remoteExecution.profile.Linux.policy=Preset
+rundeck.clusterMode.remoteExecution.profile.Linux.config.uuid=<UUID1>
+```
+
 ### Load Balanced Execution Policy
 
 This feature allows Rundeck Enterprise cluster members to forward job executions to
