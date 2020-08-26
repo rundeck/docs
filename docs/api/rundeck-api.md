@@ -3181,8 +3181,11 @@ Delete multiple job definitions at once.
 
 **Request:**
 
+Both of the following are valid options for doing a bulk delete of jobs. However, if you are hoping to pass a body with the request, then you must use the POST method since the DELETE method does not allow for request bodies.
+
     DELETE /api/5/jobs/delete
     POST /api/5/jobs/delete
+
 
 Either Query parameters:
 
