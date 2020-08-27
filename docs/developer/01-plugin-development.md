@@ -73,7 +73,7 @@ For maven use:
 
 If your Java classes require external libraries that are not included with
 the Rundeck runtime, you can include them in your .jar archive. (Look in
-`$RDECK_BASE/tools/lib` to see the set of
+`/var/lib/rundeck/lib` to see the set of
 third-party jars that are available for your classes by default at runtime).
 
 Specify the `Rundeck-Plugin-Libs` attribute in the Main attributes of the
