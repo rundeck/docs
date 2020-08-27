@@ -8,7 +8,7 @@ You can use the [rd] tool.
 
 (1) Export the jobs. You will have to do this for each project
 
-    ``` bash
+    ```bash
     rd jobs list -f /path/to/backup/dir/project1/jobs.xml -p project1
     rd jobs list -f /path/to/backup/dir/project2/jobs.xml -p project2
     ...
@@ -16,7 +16,7 @@ You can use the [rd] tool.
 
 (2) Stop the server. See: [startup and shutdown](/administration/maintenance/startup.md). (Rundeck data file backup should only be done with the server down.)
 
-    ``` bash
+    ```bash
     rundeckd stop
     ```
 
@@ -27,7 +27,7 @@ location of the data directory depends on the installation method:
 - Launcher install: `$RDECK_BASE/server/data`
 
 
-    ``` bash
+    ```bash
     cp -r data /path/to/backup/dir
     ```
 
@@ -37,15 +37,20 @@ location of the data directory depends on the installation method:
 - Launcher install: `$RDECK_BASE/var/logs`
 
 
-    ``` bash
+    ```bash
     cp -r logs /path/to/backup/dir
     ```
 
 (5) Start the server
 
-    ``` bash
+    ```bash
     rundeckd start
     ```
+    
+Other files you might want to backup and their locations:
+- ACL Policies - `$RDECK_BASE/etc`
+- Server Config - `$RDECK_BASE/server/config`
+- Key Storage - `$RDECK_BASE/var/storage`
 
 [rd]: https://rundeck.github.io/rundeck-cli/
 
