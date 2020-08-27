@@ -4022,7 +4022,7 @@ Each `execution` of the form:
 
 Response with `Content-Type: application/json`:
 
-It contains a `paging` entry with paging information, and a `executions` array:
+It contains a `paging` entry with paging information, and an `executions` entry:
 
 ``` json
 {
@@ -4032,7 +4032,7 @@ It contains a `paging` entry with paging information, and a `executions` array:
     "offset": 0,
     "max": 20
   },
-  "executions": [
+  "executions": 
     {
       "id": 387,
       "href": "[API url]",
@@ -4071,7 +4071,6 @@ It contains a `paging` entry with paging information, and a `executions` array:
       ]
     },
     ...
-  ]
 }
 
 ```
