@@ -4022,7 +4022,7 @@ Each `execution` of the form:
 
 Response with `Content-Type: application/json`:
 
-It contains a `paging` entry with paging information, and an `executions` entry:
+It contains a `paging` entry with paging information, and an `executions` entry with execution information:
 
 ``` json
 {
