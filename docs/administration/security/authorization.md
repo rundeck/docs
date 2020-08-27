@@ -64,8 +64,8 @@ The Rundeck server does not need to be restarted for changes to aclpolicy files 
 
 The files are loaded at startup and are cached.
 When an authorization request occurs, the policies may be reloaded if the file was modified.
-A file's contents are cached for at least 60 seconds before checking if they need to be reloaded.
-Also, the etc directory is only re-scanned for new/removed files after a 60 second delay.
+A file's contents are cached for at least 2 minutes before checking if they need to be reloaded.
+Also, the etc directory is only re-scanned for new/removed files after a 2 minute delay.
 
 If an authorization request occurs in the context of a specific Project
 (e.g. "does a user have Run access for a specific Job in this project?")
