@@ -43,6 +43,24 @@ rundeck.clusterMode.autotakeover.delay = 60
 # sleep in minimum seconds between autotakeover atttempts for a particular destination
 rundeck.clusterMode.autotakeover.sleep = 300
 ```
+#### Autotakeover Recover Executions
+
+If for some reason, your Rundeck instance goes offline while a job is running and that job gets marked as incomplete, jobs configured with retry settings are taken over by another online instance using the recover execution policy. To use the recover execution policy, add the following to your `rundeck-config.properties` file:
+
+```properties
+# enable auto cleanup of stale jobs on member death
+rundeck.clusterMode.recoverExecutions.enabled=true
+
+# policy for members to accept as targets of auto cleanup. Can be 'Any' or 'Static'
+# if static, config requires 'allowed' setting
+rundeck.clusterMode.recoverExecutions.policy=Any
+
+# delay in seconds before proceeding with auto-retry proposal
+rundeck.clusterMode.recoverExecutions.delay=30
+
+# delay in seconds before doing another auto-retry of the same member
+rundeck.clusterMode.recoverExecutions.sleep=60
+```
 
 #### Autotakeover policies
 
