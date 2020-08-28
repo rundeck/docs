@@ -81,6 +81,10 @@ Changes introduced by API Version number:
 **Deprecation**
 * API versions below `{{{ apiDepVersion }}}` are *deprecated*.  Clients using earlier versions should upgrade to use `{{{ apiDepVersion }}}` as the minimum version before release `{{{ apiDepRelease }}}` to avoid errors.
 
+**Version 36**
+* New Endpoints:
+    - [`GET /api/V/system/executions/status?passiveAs503=true`](#get-current-execution-mode) - Will return a 503 error if Rundeck is in Passive mode
+
 **Version 35**:
 * Updated Response:
     - [`PUT /api/V/project/[PROJECT]/import`][/api/V/project/\[PROJECT\]/import] - More validation and error message results added.
@@ -2252,12 +2256,13 @@ POST /api/14/system/executions/disable
 
 ### Get Current Execution Mode ###
 
-Gets the current execution mode. Additionally, if the current mode is **passive** the response
+Gets the current execution mode. Additionally, if the current mode is **passive** and you include the flag "passiveAs503=true" the response
 status will be ``HTTP 503 - Service Unavailable``.
 
 **Request:**
 
 GET /api/32/system/executions/status
+GET /api/32/system/executions/status?passiveAs503=true
 
 **Response**
 
