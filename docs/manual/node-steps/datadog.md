@@ -1,4 +1,4 @@
-# Data Dog Node Steps (Enterprise)
+# Datadog Node Steps (Enterprise)
 
 ## Getting Started
 
@@ -16,13 +16,13 @@ Note:  The user must have proper permissions to create and access keys or these 
 
 ## Configuration
 
-![DataDog - Dispatch to Nodes](~@assets/img/datadog-dispatch.png)
+![Datadog - Dispatch to Nodes](~@assets/img/datadog-dispatch.png)
 
 For both of the following steps, you will need to dispatch these steps to specific nodes for execution. In order to do so, when defining the job, select the tab "Nodes." Select "Dispatch to Nodes" and select the nodes that you wish to be muted/unmuted.
 
 ## Mute Host
 
-![DataDog - Mute Host](~@assets/img/datadog_mute.png)
+![Datadog - Mute Host](~@assets/img/datadog_mute.png)
 
 - **Message**
 : This is the message that you want to be added when the host is muting. It can be used to describe who ran it, why, etc.
@@ -38,7 +38,7 @@ For both of the following steps, you will need to dispatch these steps to specif
   
   ## Unmute Host 
   
-  ![DataDog - Unmute Host](~@assets/img/datadog_unmute.png)
+  ![Datadog - Unmute Host](~@assets/img/datadog_unmute.png)
   
   The only thing you need to specify here are the API and APP key.
   

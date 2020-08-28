@@ -1,4 +1,4 @@
-# Data Dog Workflow Steps
+# Datadog Workflow Steps
 
 ## Getting Started
 
@@ -16,7 +16,7 @@ Note:  The user must have proper permissions to create and access keys or these 
 
 ## DataDog / Send Event
 
-![DataDog - Send Event - Configuration](~@assets/img/datadog_send.png)
+![Datadog - Send Event - Configuration](~@assets/img/datadog_send.png)
 
 ### Configuration
 
@@ -52,7 +52,7 @@ Note:  The user must have proper permissions to create and access keys or these 
 
 ### Connection
 
-![DataDog - Send Event - Connection](~@assets/img/datadog_connection.png)
+![Datadog - Send Event - Connection](~@assets/img/datadog_connection.png)
 
 The only thing you need to specify here are the API and APP key.
   

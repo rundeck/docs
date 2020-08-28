@@ -2,7 +2,7 @@
 
 ## Node Steps
 
-- [DataDog Node Step Plugins (Enterprise)](/manual/node-steps/datadog.md)
+- [Datadog Node Step Plugins (Enterprise)](/manual/node-steps/datadog.md)
 - [Jira Node Step Plugins (Enterprise)](/manual/node-steps/jira.md)
 - [SQL Runner (Enterprise)](/manual/node-steps/sqlrunner.md)
 - [VMWare Operations Node Step Plugin (Enterprise)](/manual/node-steps/vmware.md)
@@ -19,7 +19,7 @@
 ## Workflow Steps
 
 - [Azure Job Steps (Enterprise)](/manual/workflow-steps/azure.md#azure-job-steps)
-- [DataDog Workflow Step Plugins (Enterprise)](/manual/workflow-steps/datadog.md)
+- [Datadog Workflow Step Plugins (Enterprise)](/manual/workflow-steps/datadog.md)
 - [File Transfer (Enterprise)](/manual/workflow-steps/file-transfer.md)
 - [Github (Enterprise)](/manual/workflow-steps/github.md)
 - [Jira Workflow Step Plugins (Enterprise)](/manual/workflow-steps/jira.md)
