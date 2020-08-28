@@ -182,6 +182,9 @@ The properties are:
 
 These LDAP attributes will be checked when a user logs in, and their Rundeck user profile will be updated from them.
 
+**Note**: By default, all users can log into Rundeck. However, if they do not have the proper authorization, they will not be able to access any projects. If you want to prevent them from even being able to login to rundeck, you can include the following JVM parameter:
+`rundeck.security.requiredRole=Your_Role_Name`
+
 #### Step 1: Setup the LDAP login module configuration file
 
 Create a `jaas-ldap.conf` file in the same directory as the `jaas-loginmodule.conf` file.
