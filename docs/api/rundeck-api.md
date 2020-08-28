@@ -82,8 +82,8 @@ Changes introduced by API Version number:
 * API versions below `{{{ apiDepVersion }}}` are *deprecated*.  Clients using earlier versions should upgrade to use `{{{ apiDepVersion }}}` as the minimum version before release `{{{ apiDepRelease }}}` to avoid errors.
 
 **Version 36**
-* New Endpoints:
-    - [`GET /api/V/system/executions/status?passiveAs503=true`](#get-current-execution-mode) - Will return a 503 error if Rundeck is in Passive mode
+* Updated Response:
+    - [`GET /api/V/system/executions/status?passiveAs503=true`](#get-current-execution-mode) - The default response is now 200. However, if the flag "passiveAs503=true" is included, it will return a 503 error if Rundeck is in Passive mode.
 
 **Version 35**:
 * Updated Response:
