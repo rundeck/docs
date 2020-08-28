@@ -2,7 +2,6 @@ module.exports = [{
   title: 'Administration Guide',
   collapsable: false,
   children: [
-    '/administration/overview/system-architecture',
     {
       title: 'Installation',
       collapsable: true,
@@ -87,6 +86,16 @@ module.exports = [{
       ]
     },
     {
+       title: 'System Architecture and Cloud Deployment',
+       collapsable: true,
+       path: '/administration/architecture-and-deployment/architecture-and-deployment',
+       sidebarDepth: 10,
+       children: [
+         '/administration/architecture-and-deployment/system-architecture',
+         '/administration/architecture-and-deployment/aws',
+       ]
+    },
+    {
       title: 'Upgrading',
       collapsable: true,
       path: '/upgrading/upgrading',
@@ -101,15 +110,6 @@ module.exports = [{
       path: '/administration/cluster/',
       children: [
         '/administration/cluster/',
-        {
-          title: 'Cloud Deployment',
-          collapsable: true,
-          children: [
-            '/administration/cluster/cloud/',
-            '/administration/cluster/cloud/aws',
-
-          ]
-        },
         '/administration/cluster/autotakeover/',
         {
           title: 'Load Balancer',
