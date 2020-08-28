@@ -114,7 +114,7 @@ rundeck.clusterMode.remoteExecution.profile.profile1.config.activeOnly = true/fa
 
 ### Preset Policy
 
-This feature allows for you to use a preset policy for remote execution. For example, a correct configuration looks like this:
+This feature allows for you to use a preset policy for remote execution. The preset policies make use of a static UUID. This can be beneficial when you want to ensure that a single node is taking the executions. A correct configuration looks like this:
 
 ```properties
 rundeck.clusterMode.remoteExecution.config.activeOnly = true
