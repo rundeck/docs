@@ -2252,8 +2252,13 @@ POST /api/14/system/executions/disable
 
 ### Get Current Execution Mode ###
 
-Gets the current execution mode. Additionally, if the current mode is **passive** the response
-status will be ``HTTP 503 - Service Unavailable``.
+Gets the current execution mode. 
+
+:::tip
+Prior to API version 36 if the mode was **passive** a status ``HTTP 503 - Service Unavailable`` would be returned.
+As of API v36 a ``200`` status will now be returned when the mode is **passive**.
+To return a 503 when the mode is **passive** add `?passiveAs503=true` to the API call.  
+:::
 
 **Request:**
 
