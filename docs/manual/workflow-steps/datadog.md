@@ -2,15 +2,21 @@
 
 ## Getting Started
 
-Before we begin using the DataDog plugins, we are going to add the APP and API keys to our storage to make the process even simpler. To do so, follow these steps: 
+Before we begin using the DataDog plugins, we are going to add the APP and API keys. We have two different ways of doing this. We can either add it to the framework or to the specific project. 
 
-1. Click on the gear in the top right corner of Rundeck and select "key storage" from the drop down. 
+### Adding to the Framwork
+
+1. In Rundeck, click on the gear icon in the top right and select "Key Storage."
 2. Click "Add or Upload a Key"
 3. Choose "Password" as the key type and name it what you would like (API or APP, you will need one for both)
 4. Where it says "Enter text," copy and paste the APP/API key from DataDog. You can find it in account settings in DataDog under API.
 5. Choose a path for the key to be stored. For example, "keys/datadog" will create a new folder datadog to hold the two keys.
+6. Open the framework.properties file and add the path to the keys:
 
-For the rest of the instruction, you can now use the storage to locate the keys instead of typing them in everytime you create a new datadog job.
+```bash
+datadog.api-key-storage-path=keys/datadog/api_key
+datadog.app-key-storage-path=keys/datadog/app_key
+```
 
 Note:  The user must have proper permissions to create and access keys or these steps will not work.
 
@@ -49,15 +55,3 @@ Note:  The user must have proper permissions to create and access keys or these 
 
 - **Tags**
 : This can be a list of tags that you want to be applied to the event. If you wish to specify more than one, they need to be separated by a comma.
-
-### Connection
-
-![Datadog - Send Event - Connection](~@assets/img/datadog_connection.png)
-
-The only thing you need to specify here are the API and APP key.
-  
-- **API Key**
-: This is where you can choose the key from storage that we save earlier. Just click on browse and choose the key you want to use. So select the API key here. 
-   
-- **APP Key**
-: This is where you can choose the key from storage that we save earlier. Just click on browse and choose the key you want to use. So select the APP key here. 
