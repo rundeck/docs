@@ -4,23 +4,28 @@
 
 Before we begin using the DataDog plugins, we are going to add the APP and API keys. We have two different ways of doing this. We can either add it to the framework or to the specific project. 
 
-### Adding to the Framwork
+### Send Event
 
-1. In Rundeck, click on the gear icon in the top right and select "Key Storage."
-2. Click "Add or Upload a Key"
-3. Choose "Password" as the key type and name it what you would like (API or APP, you will need one for both)
-4. Where it says "Enter text," copy and paste the APP/API key from DataDog. You can find it in account settings in DataDog under API.
-5. Choose a path for the key to be stored. For example, "keys/datadog" will create a new folder datadog to hold the two keys.
-6. Open the framework.properties file and add the path to the keys:
+#### Adding to the Framework
+
+In the `etc/framework.properties` file, add the following lines of code, depending on which you are using. 
+
 
 ```bash
-datadog.api-key-storage-path=keys/datadog/api_key
-datadog.app-key-storage-path=keys/datadog/app_key
+framework.plugin.WorkflowStep.datadog-send-event.api_key=value
+framework.plugin.WorkflowStep.datadog-send-event.app_key=value
 ```
 
-Note:  The user must have proper permissions to create and access keys or these steps will not work.
+#### Adding to the Project Configuration
 
-## DataDog / Send Event
+To add the API and APP to the project configuration setting, go to "Project Settings" and select "Edit Configuration." Next, select "Edit Configuarion File" and add the following:
+
+```bash
+project.plugin.WorkflowNodeStep.datadog-send-event.api_key=value
+project.plugin.WorkflowNodeStep.datadog-send-event.app_key=value
+```
+
+## Datadog / Send Event
 
 ![Datadog - Send Event - Configuration](~@assets/img/datadog_send.png)
 
@@ -51,7 +56,7 @@ Note:  The user must have proper permissions to create and access keys or these 
 : If the event should have a parent event, this is where you can specify the parent ID by including its ID. This field is not required.
 
 - **Source Type Name**
-: This is the type of event being posted. Option examples include nagios, hudson, jenkins, my_apps, chef, puppet, git, bitbucket, etc.
+: This is the type of event that is being posted. Option examples include nagios, hudson, jenkins, my_apps, chef, puppet, git, bitbucket, etc.
 
 - **Tags**
 : This can be a list of tags that you want to be applied to the event. If you wish to specify more than one, they need to be separated by a comma.

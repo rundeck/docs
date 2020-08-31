@@ -4,21 +4,37 @@
 
 Before we begin using the DataDog plugins, we are going to add the APP and API keys. We have two different ways of doing this. We can either add it to the framework or to the specific project. 
 
-### Adding to the Framwork
+### Adding to the Framework
 
-1. In Rundeck, click on the gear icon in the top right and select "Key Storage."
-2. Click "Add or Upload a Key"
-3. Choose "Password" as the key type and name it what you would like (API or APP, you will need one for both)
-4. Where it says "Enter text," copy and paste the APP/API key from DataDog. You can find it in account settings in DataDog under API.
-5. Choose a path for the key to be stored. For example, "keys/datadog" will create a new folder datadog to hold the two keys.
-6. Open the framework.properties file and add the path to the keys:
+In the `etc/framework.properties` file, add the following lines of code, depending on which job step plugin you are using. 
 
+#### Mute Host
 ```bash
-datadog.api-key-storage-path=keys/datadog/api_key
-datadog.app-key-storage-path=keys/datadog/app_key
+framework.plugin.WorkflowNodeStep.datadog-mute-hosts.api_key=value
+framework.plugin.WorkflowNodeStep.datadog-mute-hosts.app_key=value
 ```
 
-Note:  The user must have proper permissions to create and access keys or these steps will not work.
+#### Unmute Host
+```bash
+framework.plugin.WorkflowNodeStep.datadog-unmute-hosts.api_key=value
+framework.plugin.WorkflowNodeStep.datadog-unmute-hosts.app_key=value
+```
+
+### Adding to the Project Configuration
+
+To add the API and APP to the project configuration setting, go to "Project Settings" and select "Edit Configuration." Next, select "Edit Configuarion File" and add the following:
+
+#### Mute Host
+```bash
+project.plugin.WorkflowNodeStep.datadog-mute-hosts.api_key=value
+project.plugin.WorkflowNodeStep.datadog-mute-hosts.app_key=value
+```
+
+#### Unmute Host
+```bash
+project.plugin.WorkflowNodeStep.datadog-unmute-hosts.api_key=value
+project.plugin.WorkflowNodeStep.datadog-unmute-hosts.app_key=value
+```
 
 ### Adding to the Project Configuration
 
@@ -33,7 +49,7 @@ For both of the following steps, you will need to dispatch these steps to specif
 
 ## Mute Host
 
-![Datadog - Mute Host](~@assets/img/datadog_mute.png)
+![Datadog - Mute Host](~@assets/img/datadog-mute.png)
 
 - **Message**
 : This is the message that you want to be added when the host is muting. It can be used to describe who ran it, why, etc.
@@ -49,13 +65,4 @@ For both of the following steps, you will need to dispatch these steps to specif
   
   ## Unmute Host 
   
-  ![Datadog - Unmute Host](~@assets/img/datadog_unmute.png)
-  
-  The only thing you need to specify here are the API and APP key.
-  
-  - **API Key**
-  : This is where you can choose the key from storage that we save earlier. Just click on browse, and choose the key you want to use. So select the API key here. 
-   
-  - **APP Key**
-  : This is where you can choose the key from storage that we save earlier. Just click on browse, and choose the key you want to use. So select the APP key here. 
-    
+You do not need to specify anything here, besides a step label if you would like. You just need to make sure the job step is dispatching to the right node as mentioned above. 

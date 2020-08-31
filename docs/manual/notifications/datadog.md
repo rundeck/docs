@@ -1,10 +1,19 @@
-# DataDog Notification Plugin (Enterprise)
+# Datadog Notification Plugin (Enterprise)
 
-Enterprise customers have access to this plugin, that allows you to create an event in DataDog based on the execution status of a job. For example, you can configure it to create an event if the job failed or if the job succeeded.
+Enterprise customers have access to this plugin, that allows you to create an event in Datadog based on the execution status of a job. For example, you can configure it to create an event if the job failed or if the job succeeded.
+
+## Setup 
+
+To begin, you will need to add the API and APP to the project configuration setting, go to "Project Settings" and select "Edit Configuration." Next, select "Edit Configuarion File" and add the following:
+
+```bash
+project.plugin.Notification.datadog-notification-event.api_key=value
+project.plugin.Notification.datadog-notification-event.app_key=value
+```
 
 ## Configuration
 
-![DataDog Notification - Configuration](~@assets/img/notification-config.png)
+![Datadog Notification - Configuration](~@assets/img/notification-config.png)
 
 - **Title**
 : This is the event title. It can be anything you want it to be. By default, it includes data about the job and the execution.
@@ -35,13 +44,3 @@ Enterprise customers have access to this plugin, that allows you to create an ev
 
 - **Tags**
 : This can be a list of tags that you want to be applied to the event. If you wish to specify more than one, they need to be separated by a comma.
-
-## Connection 
-
-![DataDog Notification - Connection](~@assets/img/notification-connection.png)
-
-- **API Key**
-: This is the API key. In order to find it, navigate to Integrations > APIs and copy and paste the API key. If it doesn't exist yet, create a Rundeck integration and create an API key. 
-
-- **API Key**
-: This is the APP key. In order to find it, navigate to Integrations > APIs and copy and paste the APP key. If it doesn't exist yet, create a Rundeck integration and create an APP key. 
