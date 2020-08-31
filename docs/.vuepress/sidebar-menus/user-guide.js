@@ -109,6 +109,7 @@ module.exports = [{
           children: [
             '/manual/webhooks/advanced-run-job',
             '/manual/webhooks/pagerduty-run-job',
+            '/manual/webhooks/datadog-run-job.md',
             '/manual/webhooks/aws-sns-webhook',
             '/manual/webhooks/github-webhook',
             '/manual/webhooks/run-job.md',
