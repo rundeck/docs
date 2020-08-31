@@ -114,7 +114,7 @@ rundeck.clusterMode.remoteExecution.profile.profile1.config.activeOnly = true/fa
 
 ### Preset Policy
 
-This feature allows for you to use a preset policy for remote execution. The preset policies make use of a static UUID. This can be beneficial when you want to ensure that a single node is taking the executions. A correct configuration looks like this:
+Enterprise customers have the ability to forward job executions to other cluster members based on a policy (None, Random, RoundRobin, Preset, and Load). The preset option offers you the ability to execute on another member of the cluster, that is predefined. If you choose to use the preset policy, then you need to specify that you want to use the preset policy, and on top of that you need to specify the UUID of the cluster member which you would like the execution to be performed on.
 
 ```properties
 rundeck.clusterMode.remoteExecution.config.activeOnly = true
