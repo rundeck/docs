@@ -1,15 +1,15 @@
-# DataDog (Enterprise)
+# Datadog (Enterprise)
  ::: enterprise
  :::
  
- Rundeck's DataDog webhook plugin allows users to automatically run jobs in response to webhooks sent from DataDog. 
+ Rundeck's Datadog webhook plugin allows users to automatically run jobs in response to webhooks sent from Datadog. 
  
   ## Getting Started
  
   1. To get started, go to Webhooks and select "add."
-  2. Click on the drop down menu titled "Choose Webhook Plugin" and select DataDog.
+  2. Click on the drop down menu titled "Choose Webhook Plugin" and select Datadog.
  
-  ![DataDog Webhook - General](~@assets/img/datadog-webhook-general.png)
+  ![Datadog Webhook - General](~@assets/img/datadog-webhook-general.png)
  
   ### General
  
@@ -28,7 +28,7 @@
   - **Enabled**
   : This is whether or not the webhook is enabled. To work properly, the enabled box needs to be checked. 
  
-  ![DataDog Webhook - Rule](~@assets/img/datadog-webhook-rule.png)
+  ![Datadog Webhook - Rule](~@assets/img/datadog-webhook-rule.png)
  
   ### Rules
  
