@@ -2,7 +2,7 @@
 ::: enterprise
 :::
 
-Rundeck's **PagerDuty Webhook** plugin makes it easy
+Rundeck's **PagerDuty Generic V2 Webhook** plugin makes it easy
 to automatically run jobs in response to PagerDuty events.
 
 Jobs can be executed in response to PagerDuty events when incidents are `triggered` or `updated`, or even in response to **custom actions**.  PagerDuty does this by executing a webhook call into Rundeck.  This guide will show and example PagerDuty integration that calls a Rundeck jobs for incidents when they are triggered.
