@@ -20,6 +20,11 @@ mv $RDECK_BASE/libext $RDECK_BASE/libext.3
 rm -rf $RDECK_BASE/server/lib/rundeck-core*jar $RDECK_BASE/server/sbin/ $RDECK_BASE/tools/ $RDECK_BASE/var/.install_complete-missing-ver
 ```
 
+- Run the following command to ensure that all files and directories are created properly:
+```sh
+rm var/.install_complete-missing-ver
+```
+
 - Copy the new war file to `$RDECK_BASE` and install it:
 ```sh
 java -jar rundeck-{{{rundeckVersionFull}}}.war --installonly

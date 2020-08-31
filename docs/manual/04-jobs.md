@@ -76,7 +76,7 @@ the folder icon to reveal its contents.
 Once you have navigated to a Job, you will see its name, possibly its
 description and a summary total of how many times it has been executed.
 
-Clicking on the job name will will expand the window to show the Job
+Clicking on the job name will expand the window to show the Job
 detail. You will see a button bar containing icons representing the
 actions you are able to perform. Other Job detail will include what
 command(s) it will run, filter expressions and other dispatcher options.

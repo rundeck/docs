@@ -40,7 +40,7 @@ for your project.
 ```
 project.plugin.Notification.Service-Now-Notification-Create.login=user
 project.plugin.Notification.Service-Now-Notification-Create.password=s3cret
-project.plugin.Notification.Service-Now-Notification-Create.url=value=https://server.service-now.com
+project.plugin.Notification.Service-Now-Notification-Create.url=https://server.service-now.com
 ```
 
 ### Usage

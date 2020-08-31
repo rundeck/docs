@@ -2252,8 +2252,13 @@ POST /api/14/system/executions/disable
 
 ### Get Current Execution Mode ###
 
-Gets the current execution mode. Additionally, if the current mode is **passive** the response
-status will be ``HTTP 503 - Service Unavailable``.
+Gets the current execution mode. 
+
+:::tip
+Prior to API version 36 if the mode was **passive** a status ``HTTP 503 - Service Unavailable`` would be returned.
+As of API v36 a ``200`` status will now be returned when the mode is **passive**.
+To return a 503 when the mode is **passive** add `?passiveAs503=true` to the API call.  
+:::
 
 **Request:**
 
@@ -3181,8 +3186,11 @@ Delete multiple job definitions at once.
 
 **Request:**
 
+Both of the following are valid options for doing a bulk delete of jobs. However, if you are hoping to pass a body with the request, then you must use the POST method since the DELETE method does not allow for request bodies.
+
     DELETE /api/5/jobs/delete
     POST /api/5/jobs/delete
+
 
 Either Query parameters:
 
@@ -4019,7 +4027,7 @@ Each `execution` of the form:
 
 Response with `Content-Type: application/json`:
 
-It contains a `paging` entry with paging information, and a `executions` array:
+It contains a `paging` entry with paging information, and an `executions` entry with execution information:
 
 ``` json
 {
@@ -4029,7 +4037,7 @@ It contains a `paging` entry with paging information, and a `executions` array:
     "offset": 0,
     "max": 20
   },
-  "executions": [
+  "executions": 
     {
       "id": 387,
       "href": "[API url]",
@@ -4068,7 +4076,6 @@ It contains a `paging` entry with paging information, and a `executions` array:
       ]
     },
     ...
-  ]
 }
 
 ```
