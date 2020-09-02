@@ -40,6 +40,10 @@
 Notification plugins allow Rundeck to communicate changes in job execution state and notify other users of successful or failed runs. For a general explanation on how job notifications work, see [Job Notifications](/manual/creating-jobs.md#job-notifications).
 
 - [Jira Notification Plugins (Enterprise)](/manual/notifications/jira.md)
+- [ServiceNow (Enterprise)](/manual/notifications/servicenow.md)
+- [PagerDuty Enterprise](/manual/notifications/pagerduty.md)
+- [Slack (Enterprise)](/manual/notifications/slack.md)
+- [SplunkEvent (Enterprise)](/manual/notifications/splunkevent.md)
 - [Email](/manual/notifications/email.md)
 - [Webhooks](/manual/notifications/webhooks.md)
 
