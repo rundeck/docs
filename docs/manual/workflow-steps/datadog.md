@@ -13,6 +13,7 @@ Note: You will need to follow these steps twice. Once for the API key and once f
 5. For storage path, this can be whatever you want (REMEMBER THIS FOR LATER). E.g. keys/datadog
 6. This can be whatever you want. For example, if you chose API as the name, the new path would be keys/datadog/API.
 7. Now that we have created the keys, we need to specify them in the framework. Open the `etc/framework.properties` file and add the following lines:
+
 ```bash
 datadog.api-key-storage-path=path..
 datadog.app-key-storage-path=path..
@@ -44,7 +45,7 @@ Where `path` is the path you created above.
 - **Host**
 : If you want to associate the event with a specific host, then you could specify which host here. Doesn't require a value.
 
-- *Priority**
+- **Priority**
 : This is the priority that the event is defined as. The options are normal or low.
 
 - **Related Parent ID**
