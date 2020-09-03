@@ -11,6 +11,8 @@ default policy is used.
 
 Configure the following remote execution policy parameters in `rundeck-config.properties`.
 
+NOTE: Definitions on this page are case-sensitive. Copy and paste the code to ensure no typos.
+
 #### Policy
 
 ```
@@ -39,6 +41,7 @@ The `<List of Allowed Members>` determines additional cluster members that the p
 - `/regex/` - A regular expression matching a UUID
 
 **Example**
+
 
 ```
 rundeck.clusterMode.remoteExecution.config.allowed = Self,/1C519C5A-4E78-4BE9-85EC-.+/
