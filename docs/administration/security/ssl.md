@@ -92,7 +92,7 @@ The passwords stored in ssl.properties can be obfuscated so they are not in plai
 
 Run the jetty "Password" utility:
 
-    $ java -cp server/lib/jetty-all-7.6.0.v20120127.jar org.eclipse.jetty.util.security.Password [username] [password]
+    $ java -jar rundeck.war --encryptpwd Jetty
 
 This will produce two lines, one starting with "OBF:"
 
