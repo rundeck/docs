@@ -86,9 +86,7 @@ If successful, you will see a line indicating the SSl connector has started:
 
 ### Securing passwords
 
-Passwords do not have to be stored in the ssl.config. If they are not set, then the server will prompt on the console for a user to enter the passwords.
-
-If you want the server to start without prompting then you need to set the passwords in the config file.
+Passwords have to be stored in the ssl.config. If they are not set, then the server will return a NullPointerException.
 
 The passwords stored in ssl.properties can be obfuscated so they are not in plaintext:
 

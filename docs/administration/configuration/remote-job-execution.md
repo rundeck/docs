@@ -11,7 +11,9 @@ default policy is used.
 
 Configure the following remote execution policy parameters in `rundeck-config.properties`.
 
-NOTE: Definitions on this page are case-sensitive. Copy and paste the code to ensure no typos.
+:::tip
+Definitions on this page are case-sensitive. Copy and paste the code to ensure no typos.
+:::
 
 #### Policy
 
