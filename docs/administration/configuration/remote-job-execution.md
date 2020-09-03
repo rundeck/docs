@@ -41,7 +41,7 @@ The `<List of Allowed Members>` determines additional cluster members that the p
 **Example**
 
 ```
-rundeck.clusterMode.remoteExecution.config.allowed = self,/1C519C5A-4E78-4BE9-85EC-.+/
+rundeck.clusterMode.remoteExecution.config.allowed = Self,/1C519C5A-4E78-4BE9-85EC-.+/
 ```
 
 The example configuration shows Self and a regular expression combined.
@@ -69,7 +69,7 @@ Allowed Tags policy is configured in a similar way, using comma-separated allowe
 
 ```properties
 rundeck.clusterMode.remoteExecution.policy = RoundRobin
-rundeck.clusterMode.remoteExecution.config.allowed = other
+rundeck.clusterMode.remoteExecution.config.allowed = Other
 rundeck.clusterMode.remoteExecution.config.allowedTags = worker,secondary
 ```
 
@@ -81,7 +81,7 @@ This configuration defines Allowed Tags and Preferred Tags for Round Robin execu
 
 ```properties
 rundeck.clusterMode.remoteExecution.policy = RoundRobin
-rundeck.clusterMode.remoteExecution.config.allowed = other
+rundeck.clusterMode.remoteExecution.config.allowed = Other
 rundeck.clusterMode.remoteExecution.config.allowedTags = *
 rundeck.clusterMode.remoteExecution.config.preferredTags = worker,secondary
 ```
@@ -136,7 +136,7 @@ Note: You must be running Rundeck Enterprise 2.3.1 or a later release to use thi
 **Example**
 
 ```properties
-rundeck.clusterMode.remoteExecution.config.criteria = threadRatio,load
+rundeck.clusterMode.remoteExecution.config.criteria = ThreadRatio,load
 ```
 
 Each criteria can be weighted using a relative value:
