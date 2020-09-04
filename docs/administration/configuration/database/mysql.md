@@ -125,7 +125,7 @@ in a place you can upload it later.
 
 - Make a backup of your Projects
   - RPM/Debian install location: `/var/rundeck/projects`
-  - Launcher location: `$RDECK_BASE/prjoects`
+  - Launcher location: `$RDECK_BASE/projects`
 - Make a backup of your H2 database, which you can revert back to in case of error,
   - RPM/Debian install location: `/var/lib/rundeck/data`
   - Launcher location: `$RDECK_BASE/server/data`
