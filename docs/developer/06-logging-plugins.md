@@ -504,7 +504,7 @@ When triggered, the _Storage Request_ will use the configured ExecutionFileStora
 
 ### Retrieval behavior
 
-When a client requests a log stream to read via the **Local File Log**, or requests to read the **Execution Workflow State**, Rundeck determines if the file(s) are available locally. If they are not available, it will start a _Retrieval Request_ asynchronously for each missing file, and tell the client that the file is in a "pending" state. (If an ExecutionFileStorage plugin is configured and it supports `retireve`.
+When a client requests a log stream to read via the **Local File Log**, or requests to read the **Execution Workflow State**, Rundeck determines if the file(s) are available locally. If they are not available, it will start a _Retrieval Request_ asynchronously for each missing file, and tell the client that the file is in a "pending" state. (If an ExecutionFileStorage plugin is configured and it supports `retrieve`.
 If your plugin does not support `retrieve`, implement [ExecutionMultiFileStorage](#executionmultifilestorage) to
 declare available methods.)
 
