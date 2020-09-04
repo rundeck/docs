@@ -10,6 +10,7 @@ To begin, you will need to add the API and APP to the project configuration sett
 project.plugin.Notification.datadog-notification-event.api_key=value
 project.plugin.Notification.datadog-notification-event.app_key=value
 ```
+In order to find the API/APP keys, navigate to Integrations > APIs and copy and paste the API/APP key. If it doesn't exist yet, create a Rundeck integration and create an API/APP key.
 
 ## Configuration
 
