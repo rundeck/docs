@@ -6,7 +6,31 @@ Name: <span style="color: powderblue"><span class="glyphicon glyphicon-globe"></
 
 ## Overview
 
-(Enter notes here)
+This is a jam packed release!  We've been working closely with many of our
+partners to enhance Rundeck's integration capabilities.
+Below is a list of the new integration features included in 3.3.3:
+
+A full suite of plugins for Datadog.  It's now possible to use
+[Datadog as a Node Source](/administration/projects/resource-model-sources/datadog.md)
+for your infrastructure, Send Datadog event payloads as a [Workflow](/manual/workflow-steps/datadog.md)[/Node Step](/manual/node-steps/datadog.md) or
+[Notification](/manual/notifications/datadog.md), and [Mute/Unmute hosts](/manual/node-steps/datadog.md#mute-host) during a workflow
+
+New [PagerDuty Workflow Steps](/manual/workflow-steps/pagerduty.md) for "Escalate Incident", "Run Response Play"
+and "Send V2 Event".
+
+Updated and enhanced [ServiceNow plugins](/manual/workflow-steps/servicenow.md) allow job writers to add any field to
+the respective tables for incidents and change records.
+
+A new [Amazon Web Services (AWS) SNS Webhook Plugin](/manual/webhooks/aws-sns-webhook.md)
+streamlines setup of SNS services that trigger Rundeck jobs by responding with
+the appropriate setup response payload.
+
+A new [GitHub Webhook Plugin](/manual/webhooks/github-webhook.md) allows for
+using GitHub webhook secrets and also responds to setup confirmation payloads.
+
+Also included are some important performance updates that help Rundeck scale
+with your organization.  The Project List Page now has pagination turned on by
+default and other areas of the product were refined for faster response times with larger Rundeck data sets.
 
 
 ## Issues
@@ -44,7 +68,8 @@ Name: <span style="color: powderblue"><span class="glyphicon glyphicon-globe"></
 * Loren Jamison (sornerol)
 * Stephen Joyner (sjrd218)
 * carlos
-* ltamaster
+* Luis Toledo (ltamaster)
+* Chris McG (chrismcg14)
 
 ## Bug Reporters
 

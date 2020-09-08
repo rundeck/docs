@@ -3,12 +3,12 @@
 ## Getting Started
 
 :::tip
-You will need to have both an API and APP key created in Datadog and ready to use. To create these values in Datadog, navigate to Integrations > APIs and copy and paste the API key. If it doesn't exist yet, create a Rundeck integration and create an API/APP key. 
+You will need to have both an API and APP key created in Datadog and ready to use. To create these values in Datadog, navigate to Integrations > APIs and copy and paste the API key. If it doesn't exist yet, create a Rundeck integration and create an API/APP key.
 :::
 
-Before we begin using the DataDog plugins, we are going to add the APP and API keys. We can do this by adding them to Rundeck's key storage and then specifying that path in the framework. 
+Before we begin using the DataDog plugins, we are going to add the APP and API keys. We can do this by adding them to Rundeck's key storage and then specifying that path in the framework.
 
-Note: You will need to follow these steps twice. Once for the API key and once for the APP key. 
+Note: You will need to follow these steps twice. Once for the API key and once for the APP key.
 
 1. In the top right-hand corner of Rundeck, click on the gear icon and select "Key Storage."
 2. Select "Add or Upload a Key."
@@ -21,7 +21,7 @@ Note: You will need to follow these steps twice. Once for the API key and once f
 datadog.api-key-storage-path=path..
 datadog.app-key-storage-path=path..
 ```
-Where `path` is the path you created above. 
+Where `path` is the path you created above.
 
 ## Configuration
 
@@ -40,11 +40,11 @@ For both of the following steps, you will need to dispatch these steps to specif
 : When you choose to mute a host, you also have to specify how long you want it to remain muted for. For example, if you want it to be muted for one hour you would put "1h", or "5m" for 5 minutes. The possible units are h,m,s for hours, minutes and seconds.
 
  - **API Key**
- : This is where you can choose the key from storage that we save earlier. Just click on browse, and choose the key you want to use. So select the API key here. 
- 
+ : This is where you can choose the key from storage that we save earlier. Just click on browse, and choose the key you want to use. So select the API key here.
+
   - **APP Key**
-  : This is where you can choose the key from storage that we save earlier. Just click on browse, and choose the key you want to use. So select the APP key here. 
-  
-  ## Unmute Host 
-  
-You do not need to specify anything here, besides a step label if you would like. You just need to make sure the job step is dispatching to the right node as mentioned above. 
+  : This is where you can choose the key from storage that we save earlier. Just click on browse, and choose the key you want to use. So select the APP key here.
+
+## Unmute Host 
+
+You do not need to specify anything here, besides a step label if you would like. You just need to make sure the job step is dispatching to the right node as mentioned above.
