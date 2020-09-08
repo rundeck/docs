@@ -43,6 +43,9 @@ Notification plugins allow Rundeck to communicate changes in job execution state
 
 - [Jira Notification Plugins (Enterprise)](/manual/notifications/jira.md)
 - [Datadog Notification Plugin (Enterprise)](/manual/notifications/datadog.md)
+- [PagerDuty Notification Plugin (Enterprise)](/manual/notifications/pagerduty.md)
+- [ServiceNow Notification Plugin (Enterprise)](/manual/notifications/servicenow.md)
+- [Slack Notification Plugin (Enterprise)](/manual/notifications/slack.md)
 - [Email](/manual/notifications/email.md)
 - [Webhooks](/manual/notifications/webhooks.md)
 
