@@ -1,4 +1,4 @@
-git # GitHub Plugin (Enterprise)
+# GitHub Plugin (Enterprise)
 ::: enterprise
 :::
 
