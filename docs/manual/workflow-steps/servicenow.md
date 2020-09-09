@@ -1,5 +1,7 @@
 # ServiceNow Plugins
 
+The built in ServiceNow plugins are built to help customers automate the creation of incidents and change records within ServiceNow. The various job steps give you total control over your workflow, allowing you to create and edit ServiceNow incidents and change records within your Rundeck jobs. 
+
 <!---
 Original:
 http://support.rundeck.com/customer/en/portal/articles/2915300-servicenow-plugins)
@@ -203,3 +205,7 @@ Rundeck workflow step that creates a change on Service Now
 : Short description to be used.
 - **State**
 : State code. If not set, the change will be in New status.
+
+:::tip
+You can also establish the connection at the project level. For more information, see [Establishing the Connection at the Project Level](servicenow-project-specs.md).
+:::
