@@ -12,6 +12,7 @@ module.exports = [{
     '/tutorials/option-provider.md',
     '/tutorials/custom-script-plugin-hello-world.md',
     '/tutorials/custom-script-plugin-db-cred-rotation.md',
+    '/tutorials/oss-to-enterprise-overview.md',
     '/tutorials/log-filters.md',
     '/tutorials/java-plugin.md'
   ]

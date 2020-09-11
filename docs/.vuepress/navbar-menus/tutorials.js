@@ -27,9 +27,14 @@ module.exports = [{
     text: 'Custom Script Plugin - DB Credential Rotation',
     link: '/tutorials/custom-script-plugin-db-cred-rotation'
   }, {
+    text: 'Upgrading from Open Source to Enterprise',
+    link: '/tutorials/oss-to-enterprise-overview'
+       },
+   {
     text: 'Log Filters',
     link: '/tutorials/log-filters'
-  }, {
+  },
+   {
     text: 'Java Plugin',
     link: '/tutorials/java-plugin'
   }
