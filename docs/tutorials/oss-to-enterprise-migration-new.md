@@ -2,9 +2,12 @@
 
 Congratulations, you have decided to use Rundeck Enterpise! You are on you way to automating your workflows. Before that happens, you need to get your Rundeck Enterprise set up. Fear not, this guide will get you set up no matter what kind of Rundeck user you are. 
 
+## Getting Started
+
+Before we get started, you have the option to delete unnecessary job execution history. By trimming this history exporting the jobs will proceed much faster and have you up and running sooner. This can be done by going to activity and choosing bulk delete. Then you can select all the executions you want deleted or click on the  "Toggle All," "Select All," or "Select None" links to change the selection.
+
 ## RPM Upgrade
 
-* Delete job execution history. If you do not, then the exporting of projects will take a much longer time.
 * Export project setting from Rundeck Open Source. Go to the project that you wish to export, go to project settings and select "Export Archive." On the next page, you will be able to choose what all you want exported (Jobs, Executions, Configurations, etc.)
 * To begin, stop your Rundeck OSS with the following command:
 ```
@@ -37,7 +40,6 @@ Following the last command, modified files from `/etc/rundeck` will get .rpmsave
 
 ## Debian/Ubuntu Upgrade
 
-* Delete job execution history. If you do not, then the exporting of projects will take a much longer time.
 * Export project setting from Rundeck Open Source. 
 * Stop your Rundeck Open Source using the following command:
 ```
