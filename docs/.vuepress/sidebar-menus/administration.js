@@ -39,6 +39,7 @@ module.exports = [{
           ]
         },
         '/administration/configuration/remote-job-execution',
+        '/administration/configuration/hashicorp-consul',
         '/administration/configuration/email-settings',
         '/administration/configuration/gui-customization',
         '/administration/configuration/localization',
