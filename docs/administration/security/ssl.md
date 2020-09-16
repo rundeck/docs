@@ -59,7 +59,7 @@ An example ssl.properties file (from the RPM and DEB packages).
 ```properties
 keystore=/etc/rundeck/ssl/keystore
 keystore.password=adminadmin
-ey.password=adminadmin
+key.password=adminadmin
 truststore=/etc/rundeck/ssl/truststore
 truststore.password=adminadmin
 ```
