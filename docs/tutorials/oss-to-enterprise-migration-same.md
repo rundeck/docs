@@ -68,7 +68,7 @@ Following the last command, modified files from `/etc/rundeck` will get .rpmsave
 ```
 * Copy the executable war to the installation directory:
 ```
-        cp rundeck-3.3.2-20200817.war $RDECK_BASE
+        cp rundeck-{{{rundeckVersionFull}}}.war $RDECK_BASE
 ```
 * Add any other configuration from your old rundeck config files
 * Change directories and start Rundeck:
