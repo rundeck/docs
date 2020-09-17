@@ -6411,7 +6411,7 @@ To specify a Node Filter string as a URL parameter for an API request, use a par
 Your HTTP client will have to correctly escape the value of the `filter` parameter.  For example you can
 use `curl` like this;
 
-    curl --data-urlencoded "filter=attribute: value"
+    curl --data-urlencode "filter=attribute: value"
 
 Common attributes:
 
