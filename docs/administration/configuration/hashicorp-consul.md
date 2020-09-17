@@ -37,6 +37,10 @@ Now, when we return to the Rundeck Login page, we will see the following:
 
 ![Rundeck Welcome Message](~@assets/img/rundeck-welcome-message.png)
 
+:::warning
+If you define a key/value pair that conflicts with a setting configured in a file on the server (rundeck-config.properties), then the file on the server will always override the Consul configuration. 
+:::
+
 ## Example: Using HashiCorp for a Cluster
 
 When setting up a cluster, you need to specify your key storage and configuration storage to all of the members of the cluster. That would look something like the following for each member of the cluster:
