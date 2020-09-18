@@ -98,7 +98,7 @@ Changes introduced by API Version number:
     - [`POST /api/V/project/[PROJECT]/webhook/[ID]`][/api/V/project/\[PROJECT\]/webhooks] - Create or update the webhook identified by ID. When creating a new webhook ID is not provided.
     - [`DELETE /api/V/project/[PROJECT]/webhook/[ID]`][/api/V/project/\[PROJECT\]/webhooks] - Delete the webhook identified by ID
     - [`GET /api/V/plugin/list`][/api/V/plugin/list] - List the installed plugins.
-    
+
 * Updated Endpoints:
     - [`GET /api/V/projects`][/api/V/projects] - project creation date to response.
 
@@ -106,7 +106,7 @@ Changes introduced by API Version number:
 
 * New Endpoint:
     - [`GET /api/V/system/executions/status`][/api/V/system/executions/status] - Gets the current execution mode.
-    
+
 * Updated Endpoints:
     - [`GET /api/V/project/[PROJECT]/executions/running`][/api/V/project/\[PROJECT\]/executions/running] - Added `jobIdFilter` parameter to return running executions for a specific job.
     - [`GET /api/V/job/[ID]/forecast`][/api/V/job/\[ID\]/forecast] - Added `past` parameter to return inverse forecast.
@@ -2252,7 +2252,7 @@ POST /api/14/system/executions/disable
 
 ### Get Current Execution Mode ###
 
-Gets the current execution mode. 
+Gets the current execution mode.
 
 :::tip
 Prior to API version 36 if the mode was **passive** a status ``HTTP 503 - Service Unavailable`` would be returned.
@@ -2271,7 +2271,7 @@ GET /api/32/system/executions/status
 ``` xml
 <executions executionMode="active"/>
 or
-<executions executionMode="passive"/> 
+<executions executionMode="passive"/>
 ```
 
 `Content-Type: application/json`:
@@ -2604,7 +2604,7 @@ Manage the system system ACL policy files stored in the database.
 The files managed via the API **do not** include the files located on disk, however these policy files will be merged with
 any policy files in the normal filesystem locations (e.g. `$RDECK_BASE/etc`).
 
-::: tip 
+::: tip
 For Project-specific ACLs see [Project ACLs](#project-acls).
 :::
 
@@ -3893,7 +3893,7 @@ Get the workflow tree for a job. It will traverse referenced jobs to a depth of 
 }
 ```
 
-**Workflow Step Fields** 
+**Workflow Step Fields**
 * `description`: Present and set to workflow step description if configured
 * `exec`: If command step field is present and set to command string; otherwise
 * `script`: Present and set to `"true"` if script step
@@ -4037,7 +4037,7 @@ It contains a `paging` entry with paging information, and an `executions` entry 
     "offset": 0,
     "max": 20
   },
-  "executions": 
+  "executions":
     {
       "id": 387,
       "href": "[API url]",
@@ -5916,7 +5916,7 @@ Parameters:
 
 In APIv34 or later:
 
-* `importWebhooks` true/false, If true, import the webhooks in the archive. If false, do not import webhooks (default). 
+* `importWebhooks` true/false, If true, import the webhooks in the archive. If false, do not import webhooks (default).
 * `whkRegenAuthTokens` true/false, If true, always regenerate the auth tokens associated with the webhook. If false, the webhook auth token in the archive will be imported. If no auth token info was included with the webhook, it will be generated (default).   
 
 
@@ -7390,13 +7390,13 @@ Required Fields:
 `id`  
 `project`
 
-Along with the required fields you may send only the fields you want to update. 
+Along with the required fields you may send only the fields you want to update.
 
 When updating a webhook you may not change the user associated with a webhook,
 so suppling the `user` field will have no effect. Also, specifying an `authToken` field has no effect.
-    
+
 `Content-Type: application/json`:
- 
+
 ``` json
 {
     "config": {
@@ -7436,7 +7436,7 @@ or error
 **Request**
 
     POST /api/V/project/[PROJECT]/webhook
-    
+
 Required Fields:
 ```
 project - the project that owns the webhook
@@ -7448,7 +7448,7 @@ config - object containing config values for the specified plugin
 enabled - boolean
 ```   
 
-Do not specify and `authToken` or `creator` field. They will be ignored.
+Do not specify an `authToken` or `creator` field. They will be ignored.
 
 `Content-Type: application/json`:
 
@@ -7467,9 +7467,9 @@ Do not specify and `authToken` or `creator` field. They will be ignored.
 ```
 
 **Response**
- 
+
  `Content-Type: application/json`:
- 
+
 ``` json
 {
     "msg": "Saved webhook"
@@ -7497,15 +7497,15 @@ Do not specify and `authToken` or `creator` field. They will be ignored.
 **Request**
 
     POST /api/V/webhook/[AUTH_TOKEN]
-    
+
 You may post whatever data you wish to the webhook endpoint, however the plugin you are using must
 be able to handle the data you post. If the webhook plugin associated with the webhook can't handle
 the content type posted you will get an error response.
-    
+
 **Response**    
 
 The webhook plugin will determine the response received.
-Please see the documentation for the plugin that is configured for the webhook endpoint you are using. 
+Please see the documentation for the plugin that is configured for the webhook endpoint you are using.
 
 The default response is:  
 `Content-Type: text/plain`:
@@ -7535,7 +7535,7 @@ Get all calendars at system level.
 
 
 **Request:**
-    
+
     GET  /api/V/incubating/system/calendars
 
 **Response:**
@@ -7571,7 +7571,7 @@ Get all calendars at project level
 
 
 **Request:**
-    
+
     GET  /api/V/incubating/project/[PROJECT]/calendars
 
 **Response:**
@@ -7611,7 +7611,7 @@ Create or update a calendar at system level
 
 
 **Request:**
-    
+
     POST  /api/V/incubating/system/calendars
 
 Request Content:
@@ -7671,7 +7671,7 @@ Create or update a calendar at project level
 
 
 **Request:**
-    
+
     POST  /api/V/incubating/project/[PROJECT]/calendars
 
 Request Content:
@@ -7745,7 +7745,7 @@ Deletes a calendar at project level
 
 
 **Request:**
-    
+
     DELETE  /api/V/incubating/project/[PROJECT]/calendars/[ID]
 
 Request Content:
@@ -7770,7 +7770,7 @@ Deletes a calendar at system level
 
 
 **Request:**
-    
+
     DELETE  /api/V/incubating/system/calendars/[ID]
 
 Request Content:
@@ -7787,7 +7787,7 @@ Example:
 
 ## License (Enterprise)
 
-### View License 
+### View License
 
 ::: enterprise  
 :::
@@ -7853,7 +7853,7 @@ Uploads a license key for Rundeck Enterprise.
     POST /api/V/incubating/enterprise/license
     Content-Type: application/x-rundeck-license
 
-Request Content: 
+Request Content:
 
 The Rundeck Enterprise License key file.
 
@@ -8497,7 +8497,7 @@ Content-Type: `application/json`
 * `GET` [List Project Calendars](#list-project-calendars)
 * `POST` [Create/Update Project Calendars](#create-update-project-calendar)
 * `DELETE` [Delete Project Calendars](#delete-project-calendar)
-  
+
 [/api/V/incubating/system/calendars][]
 
 * `GET` [List System Calendars](#list-system-calendars)
