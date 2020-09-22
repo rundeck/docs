@@ -14,6 +14,10 @@ argument to the script specified in the lower text field.
 
 ![Script step type](~@assets/img/fig0405.png)
 
+::: warning
+If an exception is thrown with the message `Cannot run program, error = 26 Text file busy` when executing the script step, a node attribute `enable-sync=true` can be configured to enable a `sync` command to be executed (in background) before executing the script, avoiding this scenario.
+:::
+
 ### Script file step
 
 Executes the script file local to the sever to the filtered Node
