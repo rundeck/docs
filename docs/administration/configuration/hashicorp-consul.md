@@ -23,19 +23,17 @@ For customers who use installed Rundeck using the .war, there are a couple diffe
 java -Xmx4g -Drundeck.consul.enabled=true -jar rundeck-{{{rundeckVersionFull}}}.war
 ```
 
+### Updating the Server Name
+
+Now that you have specified to use Consul, we can shut down Rundeck and look at the newly created `bootstap.yml` file. In there, it will specify the host of Consul. This should be updated to the IP address or domain name you are using. 
+
 ## Services
 
 In HashiCorp, you will notice that Rundeck may not appear right away as a service. However, once the Rundeck service is fully up and running, it will show up in HashiCorp.
 
 ## Key/Value
 
-This is where you can specify the various configurations for Rundeck. To begin, you need to create a folder called "config", with another folder called "rundeck" inside of it. Inside of the Rundeck folder is where all the Rundeck configuration will be placed. The following is an example of defining the Rundeck welcome message in consul:
-
-![HashiCorp Consul - Key/Value](~@assets/img/key-value-consul.png)
-
-Now, when we return to the Rundeck Login page, we will see the following:
-
-![Rundeck Welcome Message](~@assets/img/rundeck-welcome-message.png)
+This is where you can specify the various configurations for Rundeck. To begin, you need to create a folder called "config", with another folder called "rundeck" inside of it. Inside of the Rundeck folder is where all the Rundeck configuration will be placed. Begin by creating a key value named "data." Now, copy and paste all the contents in the `rundeck-config.properties` file into the value for that key. After that, comment out the entire `rundeck-config.properties` file. Now, when we relaunch Rundeck, it will pull the configuration settings from Consul. 
 
 :::warning
 If you define a key/value pair that conflicts with a setting configured in a file on the server (rundeck-config.properties), then the file on the server will always override the Consul configuration. 
@@ -43,49 +41,9 @@ If you define a key/value pair that conflicts with a setting configured in a fil
 
 ## Example: Using HashiCorp for a Cluster
 
-When setting up a cluster, you need to specify your key storage and configuration storage to all of the members of the cluster. That would look something like the following for each member of the cluster:
+![Consul - Dispatching to Specific Instance](~@assets/img/rundeck-server-id.png)
 
-```bash
-# Encryption for key storage
-rundeck.storage.provider.1.type=db
-rundeck.storage.provider.1.path=keys
-rundeck.storage.converter.1.type=jasypt-encryption
-rundeck.storage.converter.1.path=keys
-rundeck.storage.converter.1.config.encryptorType=custom
-rundeck.storage.converter.1.config.password=bompd87463c3fec
-rundeck.storage.converter.1.config.algorithm=PBEWITHSHA256AND128BITAES-CBC-BC
-rundeck.storage.converter.1.config.provider=BC
-# Encryption for project config storage
-rundeck.projectsStorageType=db
-rundeck.config.storage.converter.1.type=jasypt-encryption
-rundeck.config.storage.converter.1.path=projects
-rundeck.config.storage.converter.1.config.encryptorType=custom
-rundeck.config.storage.converter.1.config.password=bompd87463c3fec
-rundeck.config.storage.converter.1.config.algorithm=PBEWITHSHA256AND128BITAES-CBC-BC
-rundeck.config.storage.converter.1.config.provider=BC
-rundeck.config.storage.converter.1.config.loggerName=config.storage
-```
-
-Instead of doing this for each instance, you could just specify the configuration within Consul and it would be applied to all the different members of the cluster. 
-
-To begin, select the "Key/Value" tab in Consul. 
-
+If you have a cluster of Rundeck Enterprise instances, then you can specify the server id when creating the folder for the config key/values. Looking at the example above, we see that there are two different folders created inside of the config directory. One called Rundeck and one called Rundeck with a long id after it. That is how we specify a specific server to have all the configuration settings applied to. By just naming the folder Rundeck, we apply the configuration to all members of the cluster. So, in order to apply the configuration to just one instance, we need to create a directory called "rundeck,{server_id}."
 :::warning
-All key-values must be saved in the following directory: `/config/rundeck`. If those folders do not exist yet, create them now. 
+If you specify a server ID, those configuration settings will always override the settings specified for all instances in the "rundeck" folder. 
 :::
-
-
-![HashiCorp - Create a Key/Value](~@assets/img/hashicorp-create.png)
-
-After confirming that we are in the Rundeck config directory, we can create a new key/value pair. We can do this by clicking "Create," as shown in the picture above. 
-
-
-![HashiCorp - Create a Key/Value](~@assets/img/hashicorp-key-value-create.png)
-
-Now we are going to create our first Key/Value. Since the first property we see in the example storage configuration above is `rundeck.storage.provider.1.type`, we will create that first. We will put the property in the entry box that says "Key or Folder" and we will put the value in the entry box that says "Value", as shown above. After saving that key/value, we will continue down the list, property by property until we have made it through the entire configuration. 
-
-## Starting Rundeck Using Consul
-
-Since we have created all the key/value pairs that we need to, we now need to start Rundeck. When we start Rundeck, we need to specify we want to use Consul for configuration. There are a [couple different ways](#getting-started) to do that. 
-
-
