@@ -110,15 +110,10 @@ You can define the location of a .properties file in framework.properties:
 
 - `rundeck.tokens.file=/etc/rundeck/tokens.properties`
 
-The `tokens.properties` file should contain static authentication tokens you wish to use, keyed by the associated username:
+The `tokens.properties` file should contain static authentication tokens you wish to use, keyed by the associated username. You MUST also specify the role of the user:
 
-    username: token_string
-    username2: token_string2
-    ...
-
-or include roles
-
-    username: token_string,role1,role2
+    username: token_string, role1
+    username2: token_string2, role2
     ...
 
 The token_strings can be used as Authentication tokens to the [API](/api/rundeck-api.md#token-authentication).
