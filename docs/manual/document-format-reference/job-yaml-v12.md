@@ -8,17 +8,17 @@ job-yaml-v13 - The 'job' YAML file declares job entries for Rundeck.
 
 ## Loading and unloading
 
-This file can be batch loaded via [rd] jobs load command:
-
-```bash
-rd jobs load -p project --file /path/to/jobs.yaml -F yaml
-```
-
 Rundeck job definitions can be dumped and saved to a file via
 rd jobs list command:
 
 ```bash
 rd jobs list -p project --file /tmp/jobs.yaml -F yaml
+```
+
+This file can be batch loaded via [rd] jobs load command:
+
+```bash
+rd jobs load -p project --file /path/to/jobs.yaml -F yaml
 ```
 
 [rd]: https://rundeck.github.io/rundeck-cli/
