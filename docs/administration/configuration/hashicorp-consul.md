@@ -23,15 +23,15 @@ For customers who use installed Rundeck using the .war, there are a couple diffe
 java -Xmx4g -Drundeck.consul.enabled=true -jar rundeck-{{{rundeckVersionFull}}}.war
 ```
 
-### Updating the Server Name
+### Setting the Consul server in Rundeck
 
-Now that you have specified to use Consul, we can shut down Rundeck and look at the newly created `bootstap.yml` file. In there, it will specify the host of Consul. This should be updated to the IP address or domain name you are using. 
+Now that you have specified to use Consul, we can shut down Rundeck and look at the newly created `bootstap.yml` file, which is located in the ${rdbase}/server/config directory. In there, it will specify the host of Consul. The host property should be set to the ip address or hostname of your Consul server.
 
-## Services
+## Services in Consul
 
 In HashiCorp, you will notice that Rundeck may not appear right away as a service. However, once the Rundeck service is fully up and running, it will show up in HashiCorp.
 
-## Key/Value
+## Key/Value in Consul
 
 This is where you can specify the various configurations for Rundeck. To begin, you need to create a folder called "config", with another folder called "rundeck" inside of it. Inside of the Rundeck folder is where all the Rundeck configuration will be placed. Begin by creating a key value named "data." Now, copy and paste all the contents in the `rundeck-config.properties` file into the value for that key. After that, comment out the entire `rundeck-config.properties` file. Now, when we relaunch Rundeck, it will pull the configuration settings from Consul. 
 
@@ -47,3 +47,7 @@ If you have a cluster of Rundeck Enterprise instances, then you can specify the 
 :::warning
 If you specify a server ID, those configuration settings will always override the settings specified for all instances in the "rundeck" folder. 
 :::
+
+### Levels of Precedence for Clusters
+
+![](~@assets/img/consul-levels.png)
