@@ -48,3 +48,7 @@ cp ojdbc14.jar $RDECK_BASE/server/lib
 
 For RPM and DEB you should create /var/lib/rundeck/lib folder and place the driver there.
 ```
+
+:::warning
+You must establish a JDBC connection for every job you expect to be running simultaneously (we suggest for # of connections to equal number of jobs * 2 | 3). So if you expect to have two jobs running simultaneously, we recommend a minimum of 4 connections. 
+:::
