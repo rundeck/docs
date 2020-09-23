@@ -25,7 +25,7 @@ java -Xmx4g -Drundeck.consul.enabled=true -jar rundeck-{{{rundeckVersionFull}}}.
 
 ### Setting the Consul server in Rundeck
 
-Now that Rundeck knows to use Consul, we can shut down Rundeck and look at the newly created `bootstap.yml` file, which is located in the ${rdbase}/server/config directory. In there, it will specify the host of Consul. The host property should be set to the ip address or hostname of your Consul server.
+Now that Rundeck knows to use Consul, we can shut down Rundeck and look at the newly created `bootstrap.yml` file, which is located in the ${rdbase}/server/config directory. In there, it will specify the host of Consul. The host property should be set to the ip address or hostname of your Consul server.
 
 ## Services in Consul
 
@@ -52,4 +52,6 @@ If a server ID is specified, those configuration settings will always override t
 
 ### Levels of Precedence for Clusters
 
-![](~@assets/img/consul-levels.png)
+1. A file on the server (rundeck-config.properties)
+2. In Consul, specifying the server to be applied to.
+3. In Consul, not specifying a server.
