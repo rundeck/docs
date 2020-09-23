@@ -43,7 +43,7 @@ If a key/value pair is defined that conflicts with a setting configured in a fil
 
 ![Consul - Dispatching to Specific Instance](~@assets/img/rundeck-server-id.png)
 
-If using a cluster of Rundeck Enterprise instances, then you can specify the server id when creating the folder for the config key/values. Looking at the example above, there are two different folders created inside of the config directory. One called Rundeck and one called Rundeck with a long id after it. That is how to specify a server to have all the configuration settings applied to. By just naming the folder Rundeck, we apply the configuration to all members of the cluster. So, in order to apply the configuration to just one instance, we need to create a directory called "rundeck,{server_id}"(as shown in image above). To find the the server id, you will need to view the logs after starting Rundeck as shown in the photo below. 
+If using a cluster of Rundeck Enterprise instances, then you can specify the server id when creating the folder for the config key/values. Looking at the example above, there are two different folders created inside of the config directory. One called Rundeck and one called Rundeck with a long id after it. That is how to specify a server to have all the configuration settings applied to. By just naming the folder Rundeck, we apply the configuration to all members of the cluster. So, in order to apply the configuration to just one instance, we need to create a directory called "rundeck,{server_id}"(as shown in image above). To find the the server id, click on the gears icon in the top right hand corner of Rundeck and select "System Report." On the next page, you will see the following box containing your server UUID: 
 ![Server ID](~@assets/img/server-id-location.png)
 
 :::warning
@@ -51,7 +51,6 @@ If a server ID is specified, those configuration settings will always override t
 :::
 
 ### Levels of Precedence for Clusters
-
 1. A file on the server (rundeck-config.properties)
 2. In Consul, specifying the server to be applied to.
 3. In Consul, not specifying a server.
