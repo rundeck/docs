@@ -31,6 +31,13 @@ and passed in two sets of Map data:
 
 The Configuration data is fully custom depending on your plugin, and is described in the [Plugin configuration properties](#plugin-configuration-properties) section.
 
+## Notifications thread
+
+Notifications can be runned on it's own thread by setting the following properties in the rundeck-config.properties file.
+
+`rundeck.config.notifications.own.thread`: ('true','false') When set to 'true' it will trigger the notifications on a separated thread.
+`rundeck.config.notifications.timeout`: (numeric in miliseconds) When you set the notifications to be triggered on a separated thread, you can also set a time out for the notification thread.
+
 #### Property References
 
 The specific data values of the Configuration section are allowed to have
