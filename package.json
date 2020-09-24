@@ -12,45 +12,20 @@
   },
   "dependencies": {
     "core-js": "^2.6.5",
-    "glob": "^7.1.4",
-    "vue": "2.6.12",
-    "vuepress-bar": "^0.1.0",
-    "vuepress-plugin-alias": "^1.0.0-beta",
-    "vuepress-sidebar-generator": "^0.1.1"
+    "glob": "^7.1.4"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.8.0",
-    "@vue/cli-plugin-eslint": "^3.8.0",
-    "@vue/cli-service": "^3.8.0",
-    "@vuepress/core": "1.5.0",
-    "@vuepress/plugin-pwa": "1.5.0",
-    "@vuepress/theme-default": "1.5.0",
-    "babel-eslint": "^10.0.1",
-    "eslint": "^5.16.0",
-    "eslint-plugin-vue": "^5.0.0",
+    "@vuepress/plugin-pwa": "1.5.4",
+    "@vuepress/theme-default": "1.5.4",
     "markdown-it-deflist": "^2.0.3",
     "markdown-it-implicit-figures": "^0.9.0",
+    "markdown-it-meta": "0.0.1",
     "nunjucks": "^3.2.0",
     "push-dir": "^0.4.1",
     "semver-compare": "^1.0.0",
-    "vue-template-compiler": "2.6.12 ",
-    "vuepress": "1.5.0",
+    "vuepress": "1.5.4",
     "vuepress-plugin-autometa": "^0.1.13",
     "vuepress-plugin-canonical": "^1.0.0"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/essential",
-      "eslint:recommended"
-    ],
-    "rules": {},
-    "parserOptions": {
-      "parser": "babel-eslint"
-    }
   },
   "postcss": {
     "plugins": {
