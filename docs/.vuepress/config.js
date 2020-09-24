@@ -77,7 +77,6 @@ module.exports = {
         }
       }
     ],
-    ['alias'],
     [
       'autometa', {
         autometa_options

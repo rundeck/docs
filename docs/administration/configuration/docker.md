@@ -1,7 +1,10 @@
 # Docker Configuration Reference
 
+:::tip
 **Check out the [Docker Zoo](https://github.com/rundeck/docker-zoo) for configuration examples
-in Docker Compose!**
+in Docker Compose!**. These examples cover common configuration scenarios including
+connecting to each supported database.
+:::
 
 ## Security
 
@@ -26,8 +29,8 @@ Kubernetes documentation [Use-Case: Pod with ssh keys](https://kubernetes.io/doc
 `$ docker run -m 1024m`
 
 The JVM is configured to use cgroup information to set the max heap allocation size.
-The RAM ratio is set to `1` by default, so the JVM will utilize up to about the container limit.
-See `JVM_MAX_RAM_FRACTION` for information on changing this.
+The RAM percentage is set to `75` by default, so the JVM will utilize up to about 3/4 the container limit.
+See `JVM_MAX_RAM_PERCENTAGE` for information on changing this.
 
 ## Key Store Security
 By default keystorage is set to use the database, and the encryption converters are
@@ -69,14 +72,9 @@ By convention the module name matches the name in the docs, and the config keys 
 the config options listed in the docs uppercase, and all one word.
 
 ## Extending Configuration
-[Remco](https://github.com/HeavyHorst/remco) is used to generate configuration files
-from templates. It supports different key/value sources such as vault, etcd, and dynamodb.
-The default configuration uses environment variables.
 
-Extending the configuration involves building a derived image
-with additional template files.
-
-See the [Docker Zoo Exhibit](https://github.com/rundeck/docker-zoo/tree/main/config) for a complete example.
+See the [Extending Configuration](/administration/configuration/docker/extending-configuration.md)
+for complete details on extending the Docker application configuration.
 
 
 ## Environment Variables
