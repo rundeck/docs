@@ -22,7 +22,7 @@ module.exports = [{
       title: 'Configuration',
       collapsable: true,
       path: '/administration/configuration/',
-      sidebarDepth: 1,
+      sidebarDepth: 2,
       children: [
         '/administration/configuration/license',
         {
@@ -36,6 +36,14 @@ module.exports = [{
             '/administration/configuration/database/oracle',
             '/administration/configuration/database/postgres'
 
+          ]
+        },
+        {
+          title: 'Docker',
+          collapsable: true,
+          children: [
+            ['/administration/configuration/docker', 'Configuration Reference'],
+            ['/administration/configuration/docker/extending-configuration.md', 'Extending Configuration']
           ]
         },
         '/administration/configuration/remote-job-execution',
