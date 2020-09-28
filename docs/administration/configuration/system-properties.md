@@ -18,12 +18,10 @@ java -server -Dserver.servlet.session.timeout=3600 -Dserver.port=8080 -jar runde
 - `server.port` The HTTP port to use for the server, default "4440"
 - `server.https.port` The HTTPS port to use or the server, default "4443"
 - `server.address` Address/hostname to listen on, default is "localhost"
-- `server.contextPath` Web context path to use, such as "/rundeck". Default is "/". (Pre-Rundeck 3.3.x)
-- `server.servlet.context-path` Web context path to use, such as "/rundeck". Default is "/". (Rundeck 3.3.x)
-- `server.session.timeout` Session timeout in seconds. (Pre-Rundeck 3.3.x)
-- `server.servlet.session.timeout` Session timeout in seconds. (Rundeck 3.3.x)
+- `server.servlet.context-path` Web context path to use, such as "/rundeck". Default is "/".
+- `server.servlet.session.timeout` Session timeout in seconds.
 - `rdeck.base` Rundeck Basedir to use, default is the directory containing the executable war
-- `rundeck.server.logDir` The location where Rundeck will write log files (Rundeck 3.3.x)
+- `rundeck.server.logDir` The location where Rundeck will write log files
 - `server.datastore.path` Path to server datastore dir
 - `default.user.name` Username for default user account to create
 - `default.user.password` Password for default user account to create
@@ -37,8 +35,8 @@ java -server -Dserver.servlet.session.timeout=3600 -Dserver.port=8080 -jar runde
 - `rundeck.jetty.connector.ssl.includedProtocols` Comma-separated list of SSL protocols to include. Default is based on available protocols. See [Disabling SSL Protocols](/administration/security/ssl.md#disabling-ssl-protocols).
 - `rundeck.jetty.connector.ssl.excludedCipherSuites` Comma-separated list of Cipher suites to disable. No default. See [Disabling SSL Protocols](/administration/security/ssl.md#disabling-ssl-protocols).
 - `rundeck.jetty.connector.ssl.includedCipherSuites` Comma-separated list of Cipher suites to enable. Default is based on available cipher suites. See [Disabling SSL Protocols](/administration/security/ssl.md#disabling-ssl-protocols).
-- `logging.config` The absolute path to your log4j2 configuraiton file. This is the Spring Boot log file setting and must be set in rpm,deb, and docker environments for the logging system to initialize properly (Rundeck 3.3.x)
-- `log4j.configurationFile` The absolute path to your log4j2 configuration file. (Rundeck 3.3.x)
+- `logging.config` The absolute path to your log4j2 configuration file. This is the Spring Boot log file setting and must be set in rpm,deb, and docker environments for the logging system to initialize properly
+- `log4j.configurationFile` The absolute path to your log4j2 configuration file.
 
 For more information about using SSL, see [Configuring Rundeck for SSL](/administration/security/ssl.md).
 
