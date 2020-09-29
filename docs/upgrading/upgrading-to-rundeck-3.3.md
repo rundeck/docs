@@ -28,6 +28,16 @@ This allows Rundeck to obtain the signing keys necessary to verify the jwt token
 
 Please see [the documentation here](/administration/security/sso.md) for detailed instructions and property format.
 
+## Incompatible plugin versions
+
+You must delete old versions of the following plugins from your `libext` folder.
+
+Any prior version of http-notification-1.0.7.jar   
+Any prior version of rundeck-jasypt-encryption-plugin-3.3.0.jar
+
+(Enterprise Only)  
+Any prior version of rundeckpro-pagerduty-plugins-3.3.0.jar
+
 ## Log4j 2 Notes
 #### Upgrading to log4j 2
 
