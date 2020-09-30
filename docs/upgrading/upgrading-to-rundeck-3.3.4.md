@@ -1,8 +1,8 @@
 # Upgrading to Rundeck 3.3.4
 
-## MySQL (Enterprise Only)
+## MySQL
 :::warning
-Starting with Rundeck Enterprise `3.3.4` the MySQL JDBC driver will no longer
+Starting with Rundeck `3.3.4` the MySQL JDBC driver will no longer
 be bundled in any of the distributions(war, deb, rpm, Docker, etc). You must
 take action for Rundeck to continue connecting to the database after upgrading.
 :::
