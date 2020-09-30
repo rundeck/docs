@@ -1,7 +1,6 @@
 # Using MySQL as a database backend
 ::: warning
 MySQL 5.7 or greater is recommended
-This is a simple guide for setting up Mysql for use with Rundeck.
 :::
 
 ## Install MySQL
@@ -90,7 +89,7 @@ Contents:
 dataSource.url = jdbc:mysql://myserver/rundeck?autoReconnect=true&useSSL=false
 dataSource.username=rundeckuser
 dataSource.password=rundeckpassword
-dataSource.driverClassName=com.mysql.jdbc.Driver
+dataSource.driverClassName=org.mariadb.jdbc.Driver
 ```
 
 Finally you can start rundeck. If you see a startup error about database access, make sure that the hostname that the Mysql server sees from the client is the same one you granted access to.
@@ -189,3 +188,19 @@ For each project you wish to import, go to the Configure page for the project:
 - Upload the project archive with the corresponding name
 - Optionally choose to Import All Executions
 - Click Import
+
+## MySQL JDBC Driver
+
+This guide configures Rundeck to use the [MariaDB Connector/J driver](https://mariadb.com/kb/en/about-mariadb-connector-j/).
+It is compatible with MySQL and has a more permissive, LGPL, license.
+
+If you would like to use the Oracle MySQL driver you must download it and copy it
+to the `$RDECK_BASE/server/lib` for war launcher or in `/var/lib/rundeck/lib` 
+(create it) for RPM and DEB installations.
+
+The driver can be obtained from the [MySQL Website](https://www.mysql.com/products/connector/), or directly from
+Maven:
+```bash
+MYSQLJ_VERS=8.0.21
+curl -L -o https://repo1.maven.org/maven2/mysql/mysql-connector-java/${MYSQLJ_VERS}/mysql-connector-java-${MYSQLJ_VERS}.jar`
+```
