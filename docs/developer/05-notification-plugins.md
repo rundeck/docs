@@ -35,8 +35,8 @@ The Configuration data is fully custom depending on your plugin, and is describe
 
 Notifications can be run on their own thread by setting the following properties in the rundeck-config.properties file:
 
-`rundeck.config.notifications.own.thread`: ('true','false') When set to 'true' it will trigger the notifications on a separate thread.
-`rundeck.config.notifications.timeout`: (numeric, in miliseconds) When you set the notifications to be triggered on a separate thread, you can also set a time out for the notification thread so that it must be sent before a certain time.
+`rundeck.notifications.own.thread`: ('true','false') When set to 'true' it will trigger the notifications on a separate thread.
+`rundeck.notifications.timeout`: (numeric, in miliseconds, defaults to 120000ms) When you set the notifications to be triggered on a separate thread, you can also set a time out for the notification thread so that it must be sent before a certain time.
 
 
 #### Property References
