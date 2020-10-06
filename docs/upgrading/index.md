@@ -5,6 +5,7 @@
 
 Specific instructions for specific Rundeck Versions:
 
+- [Upgrade to Rundeck 3.3.4](upgrading-to-rundeck-3.3.4.md)
 - [Upgrade to Rundeck 3.3](upgrading-to-rundeck-3.3.md)
 - [Upgrade to Rundeck 3.2](upgrading-to-rundeck-3.2.md)
 - [Upgrade to Rundeck 3.1](upgrading-to-rundeck-3.1.md)

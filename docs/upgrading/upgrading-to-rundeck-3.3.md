@@ -2,7 +2,7 @@
 
 
 ::: tip
-This document highlights changes for users upgrading from Rundeck 3.2. 
+This document highlights changes for users upgrading from Rundeck 3.2.
 See other [Upgrading](/upgrading/) Documents if you are upgrading from 3.1 or earlier.
 :::
 
@@ -25,7 +25,7 @@ dataSource.driverClassName=org.mariadb.jdbc.Driver
 **For Docker**  
 Set the following environment variable:
 ```bash
-RUNDECK_DATABASE_DRIVER=dataSource.driverClassName
+RUNDECK_DATABASE_DRIVER=org.mariadb.jdbc.Driver
 ```
 
 ## Single-Sign On Changes

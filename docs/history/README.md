@@ -2,7 +2,9 @@
 
 ## Most Recent Release Notes
 
-The 3.3.0 release includes a long list of useful feature enhancements for our Enterprise and Open Source versions of Rundeck.
+[Our most recent release is 3.3.4](3_3_x/version-3.3.4.md) with Consul backed configurations and a new Notification UI/UX.
+
+Also check out the 3.3.0 release list of useful feature enhancements for our Enterprise and Open Source versions of Rundeck.
 
 [Rundeck 3.3.0](3_3_x/version-3.3.0.html)
 
