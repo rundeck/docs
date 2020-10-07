@@ -7,8 +7,8 @@ See other [Upgrading](/upgrading/) Documents if you are upgrading from 3.1 or ea
 :::
 
 ## MySQL
-:::warning
-Starting with Rundeck `3.3.4` the MySQL JDBC driver will no longer
+:::danger
+**For MySQL users**: Starting with Rundeck `3.3.4` the MySQL JDBC driver will no longer
 be bundled in any of the distributions(war, deb, rpm, Docker, etc). You must
 take action for Rundeck to continue connecting to the database after upgrading.
 :::

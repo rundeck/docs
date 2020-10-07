@@ -58,6 +58,8 @@ Check out the new [configuration documentation](https://docs.rundeck.com/docs/ad
 * [Disabled Job and Disabled Schedule not honored ](https://github.com/rundeck/rundeck/issues/6357)
 * [Job import/export removes failOnDisable: true](https://github.com/rundeck/rundeck/issues/6335)
 * [Updating a JOB Crontab Schedule doesn't save new value](https://github.com/rundeck/rundeck/issues/6304)
+* [Fix old property for contextPath was being used to set the context ref in the UI](https://github.com/rundeck/rundeck/pull/6516)
+
 
 ## Contributors
 
