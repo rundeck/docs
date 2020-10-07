@@ -234,7 +234,7 @@ or finishes, with either success or failure.
 The notification form will list all the installed notification plugins.
 
 :::warning
-There is an updated user interface for notifications. If you prefer to continue to use the interface below, set the following property in rundeck-config.properties:
+There is an updated user interface for notifications in v3.3.4 and later. If you prefer to continue to use the interface below, set the following property in rundeck-config.properties:
 'rundeck.feature.notificationsEditorVue.enabled = false'
 
 If you wish to use the updated notifications view, add the following property to rundeck-config.properties: 

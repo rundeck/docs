@@ -1,4 +1,4 @@
-# Notification Interface V2
+# Notification Interface V2 (After v3.3.4)
 
 The second iteration of the Rundeck notification user interface includes dropdowns to make creating a new notification more seamless for the user. Now, when creating a new notification for a job, you will be prompted to select from two dropdown menus:
 

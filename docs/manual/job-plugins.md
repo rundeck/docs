@@ -50,7 +50,7 @@ Notification plugins allow Rundeck to communicate changes in job execution state
 - [Webhooks](/manual/notifications/webhooks.md)
 
 :::warning
-There is an updated user interface for notifications. If you prefer to continue to use the old interface, set the following property in rundeck-config.properties:
+There is an updated user interface for notifications in v3.3.4 and later. If you prefer to continue to use the old interface, set the following property in rundeck-config.properties:
 'rundeck.feature.notificationsEditorVue.enabled = false'
 
 If you wish to use the updated notifications view, add the following property to rundeck-config.properties: 
