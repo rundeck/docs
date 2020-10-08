@@ -5,6 +5,16 @@ Name: <span style="color: rebeccapurple"><span class="glyphicon glyphicon-grain"
 [Download this release](https://download.rundeck.com/3.3.4/index.html)
 
 :::danger
+**BUG NOTICE** If you are using Enterprise RPM or Debian packages you may have an issue with your license after upgrading to this version.  We are working on a fix that will be released with version 3.3.5.
+
+Issue: If your server UUID is specified in the framework.properties it will not be recognized and that Rundeck instance will appear to be unlicensed.
+Workaround Steps:
+- Use environment variables to pass the server ID as described on [this page](https://docs.rundeck.com/docs/administration/configuration/system-properties.html#rpm-and-deb)
+- Setting to include `-Drundeck.server.uuid=00000000-0000-0000-0000-000000000000` (replacing the zeros with your unique server ID)
+
+:::
+
+:::danger
 **For MySQL users**: Starting with Rundeck `3.3.4` the MySQL JDBC driver will no longer be
 bundled with the distributions. See the [Upgrade Guide](/upgrading/upgrading-to-rundeck-3.3.4.md)
 for instructions to ensure your Rundeck installation can still connect to MySQL after
