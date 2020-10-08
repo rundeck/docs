@@ -233,16 +233,6 @@ You can configure notifications to occur when a Job Execution starts
 or finishes, with either success or failure.
 The notification form will list all the installed notification plugins.
 
-:::warning
-There is an updated user interface for notifications in v3.3.4 and later. If you prefer to continue to use the interface below, set the following property in rundeck-config.properties:
-'rundeck.feature.notificationsEditorVue.enabled = false'
-
-If you wish to use the updated notifications view, add the following property to rundeck-config.properties: 
-'rundeck.feature.notificationsEditorVue.enabled = true'
-
-For instructions on the new notifications view, see [here](/manual/notifications/new-interface.md).
-:::
-
 If you want to receive notifications, click Yes under "Send Notification?".
 
 ![Notification form](~@assets/img/fig0322.png)
