@@ -1,6 +1,6 @@
 # Release 3.3.4
 
-Name: <span style="color: rebeccapurple"><span class="glyphicon glyphicon-grain"></span> "onion ring rebeccapurple grain"</span>
+Name: <span style="color: rebeccapurple"><span class="glyphicon glyphicon-grain"></span> "onion ring rebeccapurple grain"*</span>
 
 [Download this release](https://download.rundeck.com/3.3.4/index.html)
 
@@ -95,3 +95,6 @@ Check out the new [configuration documentation](https://docs.rundeck.com/docs/ad
 * nvalenzuela20
 * ruiplcorreia
 * sjrd218
+
+
+<span style="color: rebeccapurple">*If you aren't familiar with the story of "rebeccapurple" [check out this blog](https://medium.com/@valgaze/the-hidden-purple-memorial-in-your-web-browser-7d84813bb416).</span>
