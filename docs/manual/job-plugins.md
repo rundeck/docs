@@ -49,7 +49,7 @@ Notification plugins allow Rundeck to communicate changes in job execution state
 - [Email](/manual/notifications/email.md)
 - [Webhooks](/manual/notifications/webhooks.md)
 
-For directions on how to use the new Notification interface, see [here](/manual/notifications/new-interface.md).
+For directions on how to use the Notification interface, see [here](/manual/notifications/new-interface.md).
 
 ## Workflow Strategy
 
