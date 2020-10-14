@@ -125,9 +125,12 @@ module.exports = [{
           collapsable: true,
           children: [
             '/administration/cluster/loadbalancer/',
+            '/administration/cluster/loadbalancer/health-check',
+            '/administration/cluster/loadbalancer/aws-alb',
             '/administration/cluster/loadbalancer/aws-elb',
             '/administration/cluster/loadbalancer/haproxy',
             '/administration/cluster/loadbalancer/iis',
+            '/administration/cluster/loadbalancer/NGINX',
 
           ]
         }, {
