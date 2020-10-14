@@ -129,6 +129,7 @@ module.exports = [{
             '/administration/cluster/loadbalancer/haproxy',
             '/administration/cluster/loadbalancer/iis',
 
+
           ]
         }, {
           title: 'Log Store',
