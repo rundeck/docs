@@ -49,6 +49,9 @@ Notification plugins allow Rundeck to communicate changes in job execution state
 - [Email](/manual/notifications/email.md)
 - [Webhooks](/manual/notifications/webhooks.md)
 
+For directions on how to use the Notification interface, see [here](/manual/notifications/interface-instructions.md).
+
+
 ## Workflow Strategy
 
 The Workflow Strategy determines how the steps are processed within a Job's Workflow.
