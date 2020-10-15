@@ -615,7 +615,7 @@ rundeck.job.export.yaml.trimSpaces=true
 
 Defaults for the Node caches
 
-Enabled: true/false (default true).
+Enabled: true/false (default true)
 
 : `rundeck.nodeService.nodeCache.enabled=true` If set to false, no caching is performed.
 
@@ -624,19 +624,17 @@ First Load Asynch: true/false
 
 ### Groovy config format
 
-You can change you rundeck-config.properties to a rundeck-config.groovy.
+You have the option to use a groovy formatted rundeck-config(rundeck-config.groovy) instead of the default rundeck-config.properties. Or, you can use some combination of the two by placing some properties in one, and some in the other.
 
-The groovy format is a java-like language, and it is not the same as properties.
+The groovy format is a java-like language, but is not the same as properties.Make sure you put quotes around all string values, but not booleans or numbers.
 
-Make sure you put quotes around all string values, but it is not necessary for true/false or numbers.
-
-java properties format:
+Java properties format:
 
 ```properties
 some.property=value
 ```
 
-groovy format:
+Groovy format:
 
 ```groovy
 some.property="value"
@@ -645,19 +643,19 @@ some.property="value"
 You can also use nested values using curly brackets, or use dot-notation "a.b.c",
 but since it is not simple text properties, strings have to be quoted.
 
-E.g. : a.b.c="blah" is the same as:
+E.g. : a.b.c="cat" is the same as:
 
 ```groovy
 a{
     b{
-        c="blah"
+        c="cat"
     }
 }
 ```
 
 ### Specify config file location
 
-You will need to point rundeck at the new filename when you start up rundeck:
+You will need to point Rundeck at the new filename when you start up Rundeck:
 
 - Launcher:
 
