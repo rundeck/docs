@@ -626,7 +626,7 @@ First Load Asynch: true/false
 
 You have the option to use a groovy formatted rundeck-config(rundeck-config.groovy) instead of the default rundeck-config.properties. Or, you can use some combination of the two by placing some properties in one, and some in the other.
 
-The groovy format is a java-like language, but is not the same as properties.Make sure you put quotes around all string values, but not booleans or numbers.
+The groovy format is a java-like language, but is not the same as properties. Make sure you put quotes around all string values, but not booleans or numbers.
 
 Java properties format:
 
