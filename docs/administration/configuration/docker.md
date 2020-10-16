@@ -132,7 +132,7 @@ Set this if using an alternative backend from h2.
 
 - `org.postgresql.Driver`
 - `org.mariadb.jdbc.Driver`
-- `com.mysql.jdbc.Driver`
+- `com.mysql.jdbc.Driver` (Must download the jar.  It is not bundled with Rundeck.)
 
 `RUNDECK_DATABASE_USERNAME`
 
