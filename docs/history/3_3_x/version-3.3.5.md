@@ -15,19 +15,20 @@ the upgrading.
 
 This release fixes some important bugs and performance issues as well as introduces our Beta for System Report 2.0.
 
-System Report 2.0 (Enterprise Only) is an updated version of the System Report page that includes 
-more Rundeck stats and lists all the configuration settings currently in use. There is even an Export 
-feature that our Support team can use to identify and troubleshoot issues faster. Sensitive data is 
-stored as either Concealed or Secured. Concealed data is hidden on first glance, but visible by 
-clicking a "show data" button in the UI. These are often paths, headers, or other data. 
-Secured entries can not be shown at all and are use for passwords and other critically sensitive information. 
-Both of these data types are always excluded from exports. Enterprise customers can check out the 
+System Report 2.0 (Enterprise Only) is an updated version of the System Report page that includes
+more Rundeck stats and lists all the configuration settings currently in use. There is even an Export
+feature that our Support team can use to identify and troubleshoot issues faster. Sensitive data is
+stored as either Concealed or Secured. Concealed data is hidden on first glance, but visible by
+clicking a "show data" button in the UI. These are often paths, headers, or other data.
+Secured entries can not be shown at all and are use for passwords and other critically sensitive information.
+Both of these data types are always excluded from exports. Enterprise customers can check out the
 new System Report page under the gear menu in Rundeck.
 
 The licensing bug on RPM/Deb installations from `3.3.4` has been fixed. Rundeck installs with Server UUID
 specified in `framework.properties` will now work normally with `3.3.5`.
 
-This release also includes performance enhancements that improve the Project Listing page and overall application startup time.
+This release also includes performance enhancements that improve the Project Listing page and overall application
+startup time. Check out all the details below.
 
 ## Issues
 
