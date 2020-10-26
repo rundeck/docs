@@ -95,43 +95,13 @@ framework.server.url = http://localhost:8080/rundeck
 
 This setting allow Rundeck to use JNDI database connections instead of the default grails settings.
 
-- Add the following entry on `$tomcat.base/conf/server.xml` under the `<GlobalNamingResources>` tag:
-
-```xml
-<!-- Global JNDI resources
-      Documentation at /docs/jndi-resources-howto.html
- -->
- <GlobalNamingResources>
-   <!-- Editable user database that can also be used by
-        UserDatabaseRealm to authenticate users
-   -->
-   <Resource name="UserDatabase" auth="Container"
-             type="org.apache.catalina.UserDatabase"
-             description="User database that can be updated and saved"
-             factory="org.apache.catalina.users.MemoryUserDatabaseFactory"
-             pathname="conf/tomcat-users.xml" />
-
-<Resource name="jdbc/rundeckdb"
-                 global="jdbc/rundeckdb"
-                 auth="Container"
-                 type="javax.sql.DataSource"
-   maxActive="100"
-                maxIdle="30"
-                maxWait="10000"
-                username="rundeckuser"
-                password="password"
-                driverClassName="com.mysql.jdbc.Driver"
-                url="jdbc:mysql://localhost:3306/rundeckdb"/>
-
-</GlobalNamingResources>
-```
-
 - Add the Resource link on `$tomcat.base/conf/context.xml`
 
 ```xml
-<ResourceLink name="jdbc/rundeckdb"
-                        global="jdbc/rundeckdb"
-                        type="javax.sql.DataSource"/>
+  <Resource name="jdbc/rundeckdb" auth="Container" type="javax.sql.DataSource"
+               maxActive="100" maxIdle="30" maxWait="10000"
+               username="rundeckuser" password="rundeckpassword" driverClassName="org.mariadb.jdbc.Driver"
+               url="jdbc:mariadb://mysql.rundeck.local:3306/rundeck"/>
 ```
 
 - on `$rundeck.base/server/config/rundeck-config.properties` add the `dataSource.jndiName` entry:
