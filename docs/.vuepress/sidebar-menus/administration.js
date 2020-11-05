@@ -140,7 +140,7 @@ module.exports = [{
           ]
         },
         '/administration/cluster/replication/',
-        '/administration/cluster/misfiremarking/'
+        ['/administration/cluster/misfiremarking/','Misfire Marking']
       ]
     },
     {

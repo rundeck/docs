@@ -4,18 +4,11 @@ Name: <span style="color: rosybrown"><span class="glyphicon glyphicon-knight"></
 
 [Download this release](https://download.rundeck.com/3.3.6/index.html)
 
-:::danger Remember!!
-**For MySQL users**: Starting with Rundeck `3.3.4` the MySQL JDBC driver will no longer be
-bundled with the distributions. See the [Upgrade Guide](/upgrading/upgrading-to-rundeck-3.3.4.md)
-for instructions to ensure your Rundeck installation can still connect to MySQL after
-the upgrading.
-:::
-
 ## Overview
 ### Scheduled Jobs Improvements
 Scheduled business tasks are essential to internal processes that keep the business running (Financial operations, inventory operations, fulfillment requests, etc.) Scheduled operations tasks are essential to keeping infrastructure running (rotating logs, cleaning up temp files, restarting known faulty services, validating configuration and security settings/conditions, etc.). Unknowingly missing either is a business continuity issue. Also unknowingly missing a run and then running again can cause bigger problems (data corruption, bad configuration, runaway processes, etc)
 
-In this release we have included an early access version of our Missed Schedules feature as part of our Enterprise Scheduling package. Scheduled job executions that are not started within a configurable tolerance window will be marked as "Missed".  Use Job Notifications to then trigger an email or integration action to follow-up.  More details on configuration can be [found here (link coming)](#).
+In this release we have included an early access version of our Missed Schedules feature as part of our Enterprise Scheduling package. Scheduled job executions that are not started within a configurable tolerance window will be marked as "Missed".  Use Job Notifications to then trigger an email or integration action to follow-up.  More details on configuration can be [found here (link coming)](/administration/cluster/misfiremarking/).
 
 The Remote Execution Policy feature was originally meant for "run now" job executions. It was later enabled for Jobs at scheduling time. However this only changes the schedule ownership to a different cluster member *at scheduling time*.  With the introduction of Enhanced Scheduling that policy no longer fit the bill.  We have updated the Remote Execution Policy to evaluate load at the *time of execution* and selects the appropriate cluster member.
 
@@ -27,7 +20,7 @@ More PagerDuty Plugin Updates!  The Enterprise plugin suite now includes the fol
 - PagerDuty Generic V3 Webhook Processor (Webhook Plugin)<br>
 [Click Here to see a full list of the Enterprise version PagerDuty Plugin features.](https://resources.rundeck.com/plugins/pagerduty-enterprise-plugins/)
 
-We have also worked with [Sensu](https://www.sensu.io/) on a new suite of plugins.
+We have also worked with [Sensu](https://www.sensu.io/) on a new suite of plugins.  Here is what's included:
 - Sensu Entity Node Source
 - Sensu Entity Healh Check Plugin
 - Get Check Info (Node Step)
@@ -43,6 +36,13 @@ We have also worked with [Sensu](https://www.sensu.io/) on a new suite of plugin
 There is a new option to select SSHJ as a Node Executor and File Copier. SSHJ supports newer and more secure cryptography algorithms.  
 
 Enterprise System Report continues to improve during Beta testing.  This update focused the user interface and some significant performance updates.
+
+:::danger Remember!!
+**For MySQL users**: Starting with Rundeck `3.3.4` the MySQL JDBC driver will no longer be
+bundled with the distributions. See the [Upgrade Guide](/upgrading/upgrading-to-rundeck-3.3.4.md)
+for instructions to ensure your Rundeck installation can still connect to MySQL after
+the upgrading.
+:::
 
 ## Issues
 
