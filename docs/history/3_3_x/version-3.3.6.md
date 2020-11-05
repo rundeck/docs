@@ -71,7 +71,7 @@ the upgrading.
 * [Changing to consider logged user roles for ACL cache](https://github.com/rundeck/rundeck/pull/6506)
 * [Notifications on its own thread](https://github.com/rundeck/rundeck/pull/6494)
 * [Applying "if node set empty" config for workflow strategies other than "Node First"](https://github.com/rundeck/rundeck/pull/6477)
-* [update mail plugin to 3.0.0, placeholders for dev mode testing](https://github.com/rundeck/rundeck/pull/6446)
+* [Update mail plugin to 3.0.0, placeholders for dev mode testing](https://github.com/rundeck/rundeck/pull/6446)
 
 ## Contributors
 
