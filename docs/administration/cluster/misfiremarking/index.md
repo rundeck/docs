@@ -4,7 +4,7 @@
   This feature is currently available as a Beta feature offering.  It is not enabled by default.  Follow steps below to turn it on.
 :::
 
-Misfire marking is a feature that will keep track of the jobs scheduled in your cluster, and if one of the jobs doesn't run at the time when it was scheduled
+Misfire marking is a feature that will keep track of the jobs scheduled, and if one of the jobs doesn't run at the time when it was scheduled
 to run, an execution with a status of "missed" will be added to the activity page. Additionally, if the job is configured with a failure notification, the notification
 will be triggered reporting that the job was missed.
 
