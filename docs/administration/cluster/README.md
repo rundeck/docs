@@ -69,8 +69,3 @@ See: [Remote Job Execution](/administration/configuration/remote-job-execution.m
 This plugin is used for an active/passive configuration. Each cluster member can have its own database.
 
 See [Rundeck Enterprise Replication](/administration/cluster/replication/index.md)
-
-### Misfire Marking
-Mark Jobs that miss their scheduled run time with a "missed" execution
-
-See [Misfire Marking](/administration/cluster/misfiremarking/index.md)

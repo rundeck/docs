@@ -139,8 +139,7 @@ module.exports = [{
             '/administration/cluster/logstore/s3'
           ]
         },
-        '/administration/cluster/replication/',
-        ['/administration/cluster/misfiremarking/','Misfire Marking']
+        '/administration/cluster/replication/'
       ]
     },
     {

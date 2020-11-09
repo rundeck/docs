@@ -76,6 +76,10 @@ module.exports = [{
       title: 'Schedules (Enterprise)',
       collapsable: true,
       path: '/manual/schedules/project-schedules',
+      children: [
+        '/manual/schedules/project-schedules.md',
+        '/manual/schedules/missedjobfires.md'
+      ],
       sidebarDepth: 1
     },
     {
