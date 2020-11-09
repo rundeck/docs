@@ -27,6 +27,9 @@ Where `path` is the path you created above
 
 ![Sensu - Get Check](~@assets/img/sensu-get-check.png)
 
+For both of the following steps, you will need to dispatch these steps to specific nodes for execution. In order to do so, when defining the job, select the tab "Nodes." Select "Dispatch to Nodes" and select the nodes that you wish to be get info for.
+
+
 - **Check Name**
 : This is the check that you want to get information about. If you set your API URL and API key in the project/framework settings prior to creating the job, there will be a list of checks that you currently have in Sensu for you to choose from.
 
