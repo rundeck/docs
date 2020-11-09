@@ -4,6 +4,7 @@
 
 - [Datadog Node Step Plugins (Enterprise)](/manual/node-steps/datadog.md)
 - [Jira Node Step Plugins (Enterprise)](/manual/node-steps/jira.md)
+- [Sensu Node Step Plugins (Enterprise)](/manual/node-steps/sensu.md)
 - [SQL Runner (Enterprise)](/manual/node-steps/sqlrunner.md)
 - [VMWare Operations Node Step Plugin (Enterprise)](/manual/node-steps/vmware.md)
 - [Command step](/manual/node-steps/builtin.md#command-step)
@@ -25,6 +26,7 @@
 - [Jira Workflow Step Plugins (Enterprise)](/manual/workflow-steps/jira.md)
 - [PagerDuty (Enterprise)](/manual/workflow-steps/pagerduty.md#pager-duty-job-steps-enterprise)
 - [Progress Badge (Enterprise)](/manual/workflow-steps/progress-badge.md#progress-badge-workflow-step-plugin)
+- [Sensu Workflow Step Plugins (Enterprise)](/manual/workflow-steps/sensu.md)
 - [ServiceNow (Enterprise)](/manual/workflow-steps/servicenow.md)
 - [VMWare Step Plugins (Enterprise)](/manual/workflow-steps/vmware.md)
 - [Ansible module](/manual/workflow-steps/builtin.md#ansible-module)
