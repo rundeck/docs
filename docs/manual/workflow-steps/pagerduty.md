@@ -15,6 +15,72 @@ This job step allows you to add a note to an existing PagerDuty incident.
 - **Incident ID**: The ID of the incident you want to add a note to
 - **Note**: The note you want to add to the incident
 
+## PagerDuty Escalate Incident
+
+![PagerDuty - Escalate Incident](~@assets/img/pagerduty-escalate-incident.png)
+
+- **API Key**
+: The API key for the account that contains the incident you would like to update.
+
+- **Email**
+: A valid email associated with the account of the API key. This is required.
+
+- **Escalation Leve**
+: The level of the escalation policy that you would like the incident to be escalated to.
+
+- **Incident ID**
+: The ID of the incident that you would like to run the response play for.
+
+## PagerDuty Run Response Play
+
+![PagerDuty - Run Response Play](~@assets/img/pagerduty-run-response-play.png)
+
+- **API Key**
+: The API key for the account that contains the incident you would like to update.
+
+- **Email**
+: A valid email associated with the account of the API key. This is required.
+
+- **Response Play ID**
+: The ID of the response play that you would like to be run in response to the incident.
+
+- **Incident ID**
+: The ID of the incident that you would like to run the response play for.
+
+## PagerDuty Send Event 
+
+![PagerDuty - Send Event](~@assets/img/pagerduty-send-event.png)
+
+- **Dedupe Key**
+: If a dedupe key is specified, it applies all events with matching dedupe key to the same open alert
+
+- **Integration Key**
+: This is the integration key for the account where the incident is
+
+- **Event Action**
+: These are the actions you can take when creating the event. The options are trigger, acknowledge, and resolve. 
+
+- **Severity**
+: This is the current severity level of the event. The options are critical, warning, error, info.
+
+- **Event Summary**
+: This is the summary for the event. The default sends execution information as the summary, but you can update it to send whatever you would like.
+
+- **Source**
+: This is the source that created the event. By default, it is the job name, but you can put anything you want.
+
+- **Component**
+: This is where you can specify the part or component of the affected system is broken. 
+
+- **Group**
+: If something is specified here, it allows for a cluster or grouping of sources. For example, sources "prod-datapipe-02" and "prod-datapipe-03" might both be part of "prod-datapipe".
+
+- **Class**
+: The class/type of the event.
+
+- **Images**
+: This is a comma separated list of image URLS to include in the event.
+
 ## PagerDuty Update Status
 
 This job step allows you to update the status of an existing PagerDuty incident.
