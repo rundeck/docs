@@ -3,7 +3,7 @@
 :::enterprise
 :::
 
-Enterprise customers have access to this plugin, that allows users to create an event in Sensu based on the execution status of a job. For example, you can configure it to create an event if the job failed or if the job succeeded.
+Enterprise customers have access to this plugin, that allows users to create an event in Sensu based on the execution status of a job. For example, configure it to create an event if the job failed or if the job succeeded.
 
 ## Setup
 
@@ -53,7 +53,7 @@ Where `path` is the path created above
 : This is the interval to run the check on.
 
 - **API URL**
-: This is the endpoint that needs to be hit in order to create an event for an account. For example, `http://sensu:8080/api/core/v2/namespaces/default`. If it is already specified it in project or framework settings, you don't need to add it again here.
+: This is the endpoint that needs to be hit in order to create an event for an account. For example, `http://sensu:8080/api/core/v2/namespaces/default`. If it is already specified it in project or framework settings, no need to add it again here.
 
 - **API Key**
-: This is the API key for the account to create an event in. Choose the one created in the Setup section above. If it is already specified it in project or framework settings, you don't need to add it again here.
+: This is the API key for the account to create an event in. Choose the one created in the Setup section above. If it is already specified it in project or framework settings, no need to add it again here.
