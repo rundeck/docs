@@ -33,9 +33,9 @@ We have also worked with [Sensu](https://www.sensu.io/) on a new suite of plugin
 
 ### Additional Improvements
 
-There is a new option to select SSHJ as a Node Executor and File Copier. SSHJ supports newer and more secure cryptography algorithms.  
+There is a new option to select SSHJ as a Node Executor and File Copier. SSHJ supports newer and more secure cryptography algorithms.
 
-Enterprise System Report continues to improve during Beta testing.  This update focused the user interface and some significant performance updates.
+[Enterprise System Report](/manual/system-report.md) continues to improve during **Beta** testing.  This update focused the user interface and some significant performance updates.
 
 :::danger Remember!!
 **For MySQL users**: Starting with Rundeck `3.3.4` the MySQL JDBC driver will no longer be
@@ -49,7 +49,7 @@ the upgrading.
 [Milestone 3.3.6](https://github.com/rundeck/rundeck/milestone/155)
 
 * [New SSHJ plugin](https://github.com/rundeck/rundeck/pull/6594)
-* [Duplicate job options](https://github.com/rundeck/rundeck/pull/6505)
+* [Duplicate job options - v1](https://github.com/rundeck/rundeck/pull/6505)
 * [Report incomplete status in abort response reason](https://github.com/rundeck/rundeck/pull/6591)
 * [Issue/1321 Activity lists not showing on Job page when using oracle database](https://github.com/rundeck/rundeck/pull/6590)
 * [Update tomcat-jdbc version to 9.0.39 to address security concerns](https://github.com/rundeck/rundeck/pull/6589)
