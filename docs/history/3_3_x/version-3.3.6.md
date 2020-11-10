@@ -13,14 +13,17 @@ In this release we have included an early access version of our Missed Schedules
 The Remote Execution Policy feature was originally meant for "run now" job executions. It was later enabled for Jobs at scheduling time. However this only changes the schedule ownership to a different cluster member *at scheduling time*.  With the introduction of Enhanced Scheduling that policy no longer fit the bill.  We have updated the Remote Execution Policy to evaluate load at the *time of execution* and selects the appropriate cluster member.
 
 ### Enterprise Plugins
+#### PagerDuty
 More PagerDuty Plugin Updates!  The Enterprise plugin suite now includes the following:
-- Get Incident Information (Job Workflow Step)
-- Update Escalation (Job Workflow Step)
-- Add Additional Responders (Job Workflow Step)
-- PagerDuty Generic V3 Webhook Processor (Webhook Plugin)<br>
+- [Get Incident Information](/manual/workflow-steps/pagerduty.html#pagerduty-get-incident) (Job Workflow Step)
+- [Update Escalation](/manual/workflow-steps/pagerduty.html#pagerduty-update-escalation-policy) (Job Workflow Step)
+- [Add Additional Responders](/manual/workflow-steps/pagerduty.html#pagerduty-add-additional-responders) (Job Workflow Step)
+- [PagerDuty Generic V3 Webhook Processor](/manual/webhooks/pagerduty-run-job.html#getting-started) (Webhook Plugin)
+
 [Click Here to see a full list of the Enterprise version PagerDuty Plugin features.](https://resources.rundeck.com/plugins/pagerduty-enterprise-plugins/)
 
-We have also worked with [Sensu](https://www.sensu.io/) on a new suite of plugins.  Here is what's included:
+#### Sensu
+We have also worked with **[Sensu]**(https://www.sensu.io/) on a new suite of plugins.  Here is what's included:
 - [Sensu Entity Node Source](/administration/projects/resource-model-sources/sensu.md)
 - [Sensu Entity Health Check Plugin](/manual/healthcheckplugins/sensu.md)
 - [Get Check Info](/manual/node-steps/sensu.html#sensu-get-check-info) (Node Step)
@@ -33,12 +36,12 @@ We have also worked with [Sensu](https://www.sensu.io/) on a new suite of plugin
 
 ### Additional Improvements
 
-There is a new option to select SSHJ as a Node Executor and File Copier. SSHJ supports newer and more secure cryptography algorithms.
-
 [Enterprise System Report](/manual/system-report.md) continues to improve during **Beta** testing.  This update focused the user interface and some significant performance updates.
 
+There is a new option to select SSHJ as a Node Executor and File Copier. SSHJ supports newer and more secure cryptography algorithms.
+
 :::danger Remember!!
-**For MySQL users**: Starting with Rundeck `3.3.4` the MySQL JDBC driver will no longer be
+**For MySQL users**: Starting with Rundeck `3.3.4` the MySQL JDBC driver is no longer be
 bundled with the distributions. See the [Upgrade Guide](/upgrading/upgrading-to-rundeck-3.3.4.md)
 for instructions to ensure your Rundeck installation can still connect to MySQL after
 the upgrading.
