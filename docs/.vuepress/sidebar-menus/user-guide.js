@@ -57,8 +57,10 @@ module.exports = [{
           title: 'Health Checks',
           collapsable: true,
           path: '/manual/healthchecks',
-          sidebarDepth: 1,
+          sidebarDepth: 2,
           children: [
+              '/manual/healthchecks',
+              '/manual/healthcheckplugins/datadog.md',
               '/manual/healthcheckplugins/sensu.md'
           ]
         }
