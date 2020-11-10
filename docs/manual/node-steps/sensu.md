@@ -1,9 +1,5 @@
 # Sensu Node Steps (Enterprise)
 
-:::warning
-You will need to set the API Key and API Url at the project level or framework level. (I.e. `sensu.url=value` in framework.properties)
-:::
-
 Before we begin using the Sensu plugins, we are going to add the API key. We can do this by adding them to Rundeck's key storage and then specifying that path in the framework.
 
 1. In the top right-hand corner of Rundeck, click on the gear icon and select "Key Storage."
@@ -56,10 +52,10 @@ Where `path` is the path you created above
 : If this is checked, then if the check finished successfully then the silenced entry will be deleted.
 
 - **API URL**
-: This is the endpoint that needs to be hit in order to get the checks for a specific account. (For example: `http://sensu:8080/api/core/v2/namespaces/default`)
+: This is the endpoint that needs to be hit in order to create a silence entry for a specific account. (For example: `http://sensu:8080/api/core/v2/namespaces/default`)
 
 - **API Key**
-: This is the API key for the account with the check you would like to get information about.
+: This is the API key for the account to create a silenced entry in.
 
 ## Sensu / Delete / Silence Entry
 
@@ -69,10 +65,10 @@ Where `path` is the path you created above
 : This is the check you want to delete a silence entry from. If you set your API URL and API key in the project/framework settings prior to creating the job, there will be a list of checks that you currently have in Sensu for you to choose from.
 
 - **API URL**
-: This is the endpoint that needs to be hit in order to get the checks for a specific account. For example, `http://sensu:8080/api/core/v2/namespaces/default`
+: This is the endpoint that needs to be hit in order to silence an entry. For example, `http://sensu:8080/api/core/v2/namespaces/default`
 
 - **API Key**
-: This is the API key for the account with the check that you would like to get information about.
+: This is the API key for the account with the silence entry to delete.
 
 ## Sensu / Event / Create
 
@@ -97,10 +93,10 @@ Where `path` is the path you created above
 : This is the interval that you want to check for new checks.
 
 - **API URL**
-: This is the endpoint that needs to be hit in order to get the checks for a specific account. For example, `http://sensu:8080/api/core/v2/namespaces/default`
+: This is the endpoint that needs to be hit in order to create an event for that account. For example, `http://sensu:8080/api/core/v2/namespaces/default`
 
 - **API Key**
-: This is the API key for the account with the check that you would like to get information about.
+: This is the API key for the account to create the event in.
 
 ## Sensu / Run ad hoc Check
 
@@ -116,7 +112,7 @@ Where `path` is the path you created above
 : If you check this box, it will wait for the event to finish before running the check.
 
 - **API URL**
-: This is the endpoint that needs to be hit in order to get the checks for a specific account. For example, `http://sensu:8080/api/core/v2/namespaces/default`
+: This is the endpoint that needs to be hit in order to run an ad hoc check for an account. For example, `http://sensu:8080/api/core/v2/namespaces/default`
 
 - **API Key**
-: This is the API key for the account with the check that you would like to get information about.
+: This is the API key for the account with the check that you would like to run.

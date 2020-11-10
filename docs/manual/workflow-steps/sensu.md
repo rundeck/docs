@@ -4,7 +4,7 @@
 You will need to set the API Key and API Url at the project level or framework level. (I.e. `sensu.url=value` in framework.properties)
 :::
 
-Before we begin using the Sensu plugins, we are going to add the API key. We can do this by adding them to Rundeck's key storage and then specifying that path in the framework.
+Before we begin using the Sensu plugins, we are going to add the API key and URL. We can do this by adding the API key to Rundeck's key storage and specifying that path and the URL value in the framework.
 
 1. In the top right-hand corner of Rundeck, click on the gear icon and select "Key Storage."
 2. Select "Add or Upload a Key."
@@ -27,7 +27,7 @@ Where `path` is the path you created above
 : This is the check you want to get information about. If you set your API URL and API key in the project/framework settings prior to creating the job, there will be a list of checks that you currently have in Sensu for you to choose from.
 
 - **Check NameSpace**
-:
+:This is the namespace to add the check too. 
 
 - **Check command**
 : This is the command that you would like the check to run.
@@ -37,9 +37,6 @@ Where `path` is the path you created above
 
 - **Check Handlers**
 : If you check one of the check handlers, it will apply those handlers to the new event. I.e. if you select the "Slack Handler," a notification will be sent to slack.
-
-- **Is Publish?**
-:
 
 - **Check Type**
 : This is the type that you want the check you are creating to be. If you set your API URL and API key in the project/framework settings prior to creating the job, there will be a list of check types that you currently have in Sensu for you to choose from.
@@ -87,7 +84,7 @@ Where `path` is the path you created above
 : If this is checked, then if the check finished successfully then the silenced entry will be deleted. 
 
 - **API URL**
-: This is the endpoint that needs to be hit in order to get the checks for a specific account. For example, `http://sensu:8080/api/core/v2/namespaces/default`
+: This is the endpoint that needs to be hit in order to get the checks for a specific account. For example, `http://sensu:8080/api/core/v2/namespaces/default`. If it is already specified it in project or framework settings, you don't need to add it again here.
 
 - **API Key**
-: This is the API key for the account with the check you would like to get information about.
+: This is the API key for the account with the check you would like to get information about. If it is already specified it in project or framework settings, you don't need to add it again here.
