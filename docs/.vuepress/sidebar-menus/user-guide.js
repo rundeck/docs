@@ -135,7 +135,8 @@ module.exports = [{
       sidebarDepth: 1,
       children: [
           '/manual/system-configs',
-          '/manual/user-management/user-mgmt'
+          '/manual/user-management/user-mgmt',
+          '/manual/system-report'
       ]
     },
     ['/manual/10-user.md', 'Profile Menu'],
