@@ -27,17 +27,39 @@ Where `path` is the path you created above
 
 ![Sensu - Get Check](~@assets/img/sensu-get-check.png)
 
-For both of the following steps, you will need to dispatch these steps to specific nodes for execution. In order to do so, when defining the job, select the tab "Nodes." Select "Dispatch to Nodes" and select the nodes that you wish to be get info for.
-
-
 - **Check Name**
-: This is the check that you want to get information about. If you set your API URL and API key in the project/framework settings prior to creating the job, there will be a list of checks that you currently have in Sensu for you to choose from.
+: This is the name of the check to gather information about. Set the API URL and API key in the project/framework settings prior to creating the job, there will be a list of checks that are currently in Sensu to choose from.
 
 - **API URL**
 : This is the endpoint that needs to be hit in order to get the checks for a specific account. For example, `http://sensu:8080/api/core/v2/namespaces/default`
 
 - **API Key**
-: This is the API key for the account with the check that you would like to get information about.
+: This is the API key for the account with the check to get information about.
+
+## Sensu / Create / Silence Entry
+
+![Sensu - Create Silenced Entry](~@assets/img/sensu-create-silenced.png)
+
+- **Check Name**
+: This is the check to delete a silence entry from. If you set your API URL and API key in the project/framework settings prior to creating the job, there will be a list of checks that are currently in Sensu to choose from.
+
+- **Silence Reason**
+: This is the reason that the node is being silenced.
+
+- **Expired**
+- This is when the silence entry on the node will expire. The value should be entered in number of seconds. (i.e. 60 for one minute)
+
+- **Begin**
+: This is when you want the silenced entry to begin. You can specify seconds, minutes, hours. (I.e. 2s, 3m, 4h)
+
+- **Expire on Resolve**
+: If this is checked, then if the check finished successfully then the silenced entry will be deleted.
+
+- **API URL**
+: This is the endpoint that needs to be hit in order to get the checks for a specific account. (For example: `http://sensu:8080/api/core/v2/namespaces/default`)
+
+- **API Key**
+: This is the API key for the account with the check you would like to get information about.
 
 ## Sensu / Delete / Silence Entry
 
@@ -72,7 +94,7 @@ For both of the following steps, you will need to dispatch these steps to specif
 : If you check one of the check handlers, it will apply those handlers to the new event. I.e. if you select the "Slack Handler," a notification will be sent to slack.
 
 - **Check Interval**
-: This is the interval that you want to check for new checks. 
+: This is the interval that you want to check for new checks.
 
 - **API URL**
 : This is the endpoint that needs to be hit in order to get the checks for a specific account. For example, `http://sensu:8080/api/core/v2/namespaces/default`
@@ -91,35 +113,10 @@ For both of the following steps, you will need to dispatch these steps to specif
 : If you check this box, it will only print the output of the check and not the full API call's response.
 
 - **Wait for the event**
-: If you check this box, it will wait for the event to finish before running the check. 
+: If you check this box, it will wait for the event to finish before running the check.
 
 - **API URL**
 : This is the endpoint that needs to be hit in order to get the checks for a specific account. For example, `http://sensu:8080/api/core/v2/namespaces/default`
 
 - **API Key**
 : This is the API key for the account with the check that you would like to get information about.
-
-## Sensu / Create / Silence Entry
-
-![Sensu - Create Silenced Entry](~@assets/img/sensu-create-silenced.png)
-
-- **Check Name**
-: This is the check you want to delete a silence entry from. If you set your API URL and API key in the project/framework settings prior to creating the job, there will be a list of checks that you currently have in Sensu for you to choose from.
-
-- **Silence Reason**
-: This is the reason that you are silencing. Can be whatever you want.
-
-- **Expired**
-- This is when you want the silenced entry to expire. This should be in number of seconds.
-
-- **Begin**
-: This is when you want the silenced entry to begin. You can specify seconds, minutes, hours. (I.e. 2s, 3m, 4h)
-
-- **Expire on Resolve**
-: If this is checked, then if the check finished successfully then the silenced entry will be deleted. 
-
-- **API URL**
-: This is the endpoint that needs to be hit in order to get the checks for a specific account. For example, `http://sensu:8080/api/core/v2/namespaces/default`
-
-- **API Key**
-: This is the API key for the account with the check you would like to get information about.
