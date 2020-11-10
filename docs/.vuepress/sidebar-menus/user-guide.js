@@ -53,7 +53,15 @@ module.exports = [{
         '/manual/05-nodes',
         'manual/node-enhancers.md',
         '/manual/11-node-filters.md',
-        '/manual/healthchecks'
+        {
+          title: 'Health Checks',
+          collapsable: true,
+          path: '/manual/healthchecks',
+          sidebarDepth: 1,
+          children: [
+              '/manual/healthcheckplugins/sensu.md'
+          ]
+        }
       ]
     },
     {

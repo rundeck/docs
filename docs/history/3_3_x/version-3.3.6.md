@@ -21,15 +21,15 @@ More PagerDuty Plugin Updates!  The Enterprise plugin suite now includes the fol
 [Click Here to see a full list of the Enterprise version PagerDuty Plugin features.](https://resources.rundeck.com/plugins/pagerduty-enterprise-plugins/)
 
 We have also worked with [Sensu](https://www.sensu.io/) on a new suite of plugins.  Here is what's included:
-- Sensu Entity Node Source
-- Sensu Entity Healh Check Plugin
-- Get Check Info (Node Step)
-- Create/Remove Silence for an Entity (Node Steps)
-- Send Event (Node Step)
-- Run AN AdHoc Check (Node Step)
-- Create a Check (Workflow Step)
-- Create/Delete a Silence entry (Workflow Step)
-- Send Event as Notification (Notification Plugin)
+- [Sensu Entity Node Source](/administration/projects/resource-model-sources/sensu.md)
+- [Sensu Entity Health Check Plugin](/manual/healthcheckplugins/sensu.md)
+- [Get Check Info](/manual/node-steps/sensu.html#sensu-get-check-info) (Node Step)
+- [Create/Remove Silence for an Entity](/manual/node-steps/sensu.html#sensu-create-silence-entry) (Node Steps)
+- [Send Event](/manual/node-steps/sensu.html#sensu-event-create) (Node Step)
+- [Run Ad Hoc Check](/manual/node-steps/sensu.html#sensu-run-ad-hoc-check) (Node Step)
+- [Create a Check](/manual/workflow-steps/sensu.html#sensu-check-create) (Workflow Step)
+- [Create/Delete a Silence entry](/manual/workflow-steps/sensu.html#sensu-create-silence-entry) (Workflow Step)
+- [Send Event as Notification](/manual/notifications/sensu.md) (Notification Plugin)
 
 ### Additional Improvements
 
