@@ -23,7 +23,7 @@ More PagerDuty Plugin Updates!  The Enterprise plugin suite now includes the fol
 [Click Here to see a full list of the Enterprise version PagerDuty Plugin features.](https://resources.rundeck.com/plugins/pagerduty-enterprise-plugins/)
 
 #### Sensu
-We have also worked with **[Sensu]**(https://www.sensu.io/) on a new suite of plugins.  Here is what's included:
+We have also worked with **[Sensu](https://www.sensu.io/)** on a new suite of plugins.  Here is what's included:
 - [Sensu Entity Node Source](/administration/projects/resource-model-sources/sensu.md)
 - [Sensu Entity Health Check Plugin](/manual/healthcheckplugins/sensu.md)
 - [Get Check Info](/manual/node-steps/sensu.html#sensu-get-check-info) (Node Step)
