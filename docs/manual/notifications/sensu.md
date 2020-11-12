@@ -1,4 +1,4 @@
-#Sensu Notifications (Enterprise Only)
+# Sensu Notifications (Enterprise Only)
 
 :::enterprise
 :::
