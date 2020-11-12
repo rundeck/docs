@@ -174,6 +174,7 @@ module.exports = [{
             '/administration/projects/resource-model-sources/datadog',
             '/administration/projects/resource-model-sources/servicenow',
             '/administration/projects/resource-model-sources/vmware',
+            '/administration/projects/resource-model-sources/sensu',
             '/administration/projects/resource-model-sources/builtin',
             '/administration/projects/resource-model-sources/resource-editor'
           ]

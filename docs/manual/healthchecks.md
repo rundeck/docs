@@ -5,17 +5,17 @@
 
 ## Overview
 
-Health Checks allow you to check the *Health Status* of Nodes periodically and on-demand.
-You can show the heatlh status visually in the GUI, and use the status to filter out unhealthy nodes when running Jobs.
+Health Checks allow the ability to check the *Health Status* of Nodes periodically and on-demand.
+It can show the heatlh status visually in the GUI, and use the status to filter out unhealthy nodes when running Jobs.
 
 
 ![Health Checks](~@assets/img/healthchecks-health-status-ui.png)
 
-Configure how you want to determine the Health Statuses of your Nodes, using a Command or Script.
+Configure how to determine the Health Statuses of Nodes in Rundeck, using a Command or Script.
 
-Capture output of the command or script to add as attributes to your nodes.
+Capture output of the command or script to add as attributes to the nodes in Rundeck.
 
-Expose the status as Node Attributes using the Health Status Node Enhancer, and use the health check attributes inside your node filters.
+Expose the status as Node Attributes using the Health Status Node Enhancer, and use the health check attributes inside node filters.
 
 Use the secondary node filter feature of Jobs to pre-filter out unhealthy nodes, and see which nodes will be targetted
 and which will be filtered out before running a Job.
@@ -24,8 +24,8 @@ and which will be filtered out before running a Job.
 
 The Health Checks System operates across several parts of the Rundeck System:
 
-* **Project Nodes** - as determined by your Nodes configuration.
-* **Health Checks configuration** - the definition of which checks to run in your project configuration.
+* **Project Nodes** - as determined by the account's Nodes configuration.
+* **Health Checks configuration** - the definition of which checks to run in the project configuration.
 * **Node Execution** - Command and Script execution use the configured Node Executor for the nodes
 * **ACL Policies** - Access control definition used by the Health Checks when performing Node Execution
 * **Health Checks System** - periodically and asychronously performs the Health Checks
@@ -34,9 +34,9 @@ The Health Checks System operates across several parts of the Rundeck System:
 
 ## Usage
 
-You enable Health Checks in your Project configuration.
+Enable Health Checks in the Project configuration.
 
-You can configure multiple Health Check Plugins for each project, and each Health Check can apply to all nodes (default)
+Configure multiple Health Check Plugins for each project, and each Health Check can apply to all nodes (default)
 or a select set of nodes using a Node Filter.
 
 Each Health Check can have a "label", which identifies it within the generated Node Attributes.
@@ -50,7 +50,7 @@ Initially, each node would be given an "Unknown" status, until the Health Checks
 
 After a period of time, the Health Checks results will *expire*, and another request for Nodes data would trigger a *refresh* of the data.
 
-You can also *Refresh* the results in the GUI directly, which will cause the checks to be run again for the nodes.
+It is also possible to *Refresh* the results in the GUI directly, which will cause the checks to be run again for the nodes.
 
 ## Status Results
 
@@ -85,11 +85,11 @@ Each Health Check will result in a Health Status:
 
 4.  Return to the Nodes Tab to see a list of nodes.
 
-	You may see a message "Unauthorized: cannot execute on node".  You will need to add an ACL Policy to allow the Health Check System to run commands and scripts on the target nodes. See [Access Control](#access-control).
+	There may be a message saying "Unauthorized: cannot execute on node".  If so, add an ACL Policy to allow the Health Check System to run commands and scripts on the target nodes. See [Access Control](#access-control).
 
 	![Health Checks - Unauthorized Warning](~@assets/img/healthchecks-unauthorized.png)
 
-4. Once you have configured Access Control, you should see successful "healthy" checks:
+4. Once Access Control is configured, the checks should be showing up and healthy:
 
 	![Health Checks - Healthy checks](~@assets/img/healthchecks-healthy-checks.png)
 
@@ -97,21 +97,21 @@ Each Health Check will result in a Health Status:
 
 	![Health Checks - Add Node Enhancer](~@assets/img/healthchecks-add-node-enhancer.png)		
 
-	You can modify the settings, or keep the defaults.  Make sure "UI Status Attributes" is added, to add UI indicators. Then click "Save" and "Save" again.
+	Option to modify the settings, or keep the defaults.  Make sure "UI Status Attributes" is added, to add UI indicators. Then click "Save" and "Save" again.
 
 	![Health Checks - Add Health Status Enhancer](~@assets/img/healthchecks-add-health-status-enhancer.png)			
 
-6. Visit the "Nodes" link in the Sidebar. You should now see the healthy status indicators for the nodes:
+6. Visit the "Nodes" link in the Sidebar. There will be healthy status indicators for the nodes:
 
 	![Health Checks - Node Health Status UI](~@assets/img/healthchecks-health-status-ui.png)			
 
 ## Job Filter
 
-You can use the "Exclude Filter" in Job definitions to filter out unhealthy nodes, while still indicating in the UI those nodes will be excluded.  Make sure to set "Show Excluded Nodes" to "Yes". If some nodes are unhealthy you will see the node but it will be crossed out:
+Use the "Exclude Filter" in Job definitions to filter out unhealthy nodes, while still indicating in the UI those nodes will be excluded.  Make sure to set "Show Excluded Nodes" to "Yes". If some nodes are unhealthy it will show the node but it will be crossed out:
 
 ![Health Checks - Job Definition - Exclude Unhealthy Nodes](~@assets/img/healthchecks-job-edit-exclude-filter.png)
 
-When you run the Job, the excluded nodes will be indicated and automatically deselected.  Note: if "Show Excluded Nodes" is set to "No", the excluded nodes will not be shown at all.
+When a Job is run, the excluded nodes will be indicated and automatically deselected.  Note: if "Show Excluded Nodes" is set to "No", the excluded nodes will not be shown at all.
 
 ![Health Checks - Run Job - Exclude Unhealthy Nodes](~@assets/img/healthchecks-run-job-excluded-filter.png)
 
@@ -119,7 +119,7 @@ When you run the Job, the excluded nodes will be indicated and automatically des
 
 To execute commands and scripts on Nodes, the Health Checks System adopts a username/role of "system/system".
 
-You can control what nodes are allowed to be executed on by adding an appropriate ACL Policy.
+Control what nodes are allowed to be executed on by adding an appropriate ACL Policy.
 
 Here is an example ACL Policy to allow access to all nodes within a project.
 
@@ -132,7 +132,7 @@ for:
 description: Allow run on all nodes for system Health Checks
 ```
 
-You can also change the Username and Role adopted by the Health Checks System with the following configuration in `rundeck-config.properties`:
+Change the Username and Role adopted by the Health Checks System with the following configuration in `rundeck-config.properties`:
 
 ```properties
 rundeck.healthcheck.access.username=system
