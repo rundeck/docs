@@ -91,6 +91,8 @@ the provided `value` string. Note: currently the selected Field will be converte
 
 `contains`
 :   Satisfied if the Field is equal to, or contains a substring equal to, the provided `value`.
+	For fields whose [JsonPath](#jsonpath) query returns a list of strings, it will be satisfied
+	if the list contains the provided `value`.
 
 `dateTimeAfter`/`dateTimeBefore`
 :   Satisfied if the Field, parsed as a Zoned DateTime, compares with the provided DateTime.
