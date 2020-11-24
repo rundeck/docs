@@ -23,6 +23,6 @@ dataSource.dialect = org.rundeck.hibernate.RundeckOracleDialect
 dataSource.properties.validationQuery = SELECT 1 FROM DUAL
 ```
 
-:::
-Tip:  The config properties above are case sensitive.
+:::tip
+The config properties above are case sensitive.
 :::
