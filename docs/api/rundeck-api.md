@@ -1017,6 +1017,25 @@ Delete a specified auth token.
 Response:
 
     204 No Content
+    
+## Config Refresh ##
+
+Make the Rundeck server re-read the config properties file.
+
+**Request:**
+
+    POST /api/36/config/refresh
+    
+**Response**
+
+`Content-Type: application/json`:
+
+``` json
+{
+    "msg": "Rundeck configuration refreshed"
+}
+```
+        
 
 ## System Info ###
 
@@ -7873,6 +7892,9 @@ Content-Type: `application/json`
 
 ## Index
 
+[/api/V/config/refresh][]
+
+* `POST` [Refresh config settings](#config-refresh)
 
 [/api/V/execution/\[ID\]][]
 
