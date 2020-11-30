@@ -134,8 +134,27 @@ This job step allows users to specify another escalation policy or another user 
 ![PagerDuty - Update Escalation](~@assets/img/pd-add.png)
 
 - **Escalation Policy**: This is the new escalation policy for the incident to use.
-- **Incident ID (required)**: The ID of the incident to update the escalation policy on. 
-- **API Key (required)**: The API key for the account that contains the incident to update.
+- **Incident ID**: The ID of the incident to update the escalation policy on. 
+- **API Key**: The API key for the account that contains the incident to update.
 - **User**: The user to assign to the incident.
-- **Message (required)**: A message to include when notifying the new responders
+- **Message**: A message to include when notifying the new responders
 - **Requester**: The person requesting the new responders. This user must match the API key specified in key storage.
+
+
+## PagerDuty Send Change Event
+
+![PagerDuty - Send Change Event](~@assets/img/pd_changevent.png)
+
+- **Routing Key**: This is the integration key for an integration on a service. Specify the one for the service where the change event should be sent.
+- **Summary**: A brief text summary of the event.
+- **Source**: The unique name of the location where the Change Event occurred.
+- **Add Custom Fields**: This is a place to enter any custom fields for the change event. Specify a field key, label and description and then assign a value to that key once rendered. 
+- **API Key**: The API key for the account that contains the service to send the change event to.
+
+## PagerDuty Send Impact Metric
+
+![PagerDuty - Send Impact Metric](~@assets/img/pd_impactmetric.png)
+
+- **Value**: This is the value that to be appended to the impact metric.
+- **Metric ID**: The ID of the metric that you want to be updated.
+- **API Key**: The API key for the account that contains the incident to update.
