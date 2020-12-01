@@ -240,6 +240,27 @@ loglevel, datasource configuration, and
 
 The following sections describe configuration values for this file.
 
+#### Live Configuration Refreshing (Enterprise)
+
+You can make changes in the rundeck-config.properties file and then get Rundeck to reload the config without having to restart.  
+The following steps give the process for live reloading:
+* Make the change to the property
+* Save the rundeck-config.properties file
+* Issue an http POST request to the api endpoint `/api/36/config/refresh`
+
+**Caveats**
+
+Live reloading only works with a small set of properties at this time. Any properties that affect services, storage, or the http server
+still require the server to be restarted to take effect.
+
+Some of the properties that work with live reloading:
+* All Rundeck remote execution policy settings (e.g. `rundeck.clusterMode.remoteExecution.*`)
+* `rundeck.security.ldap.bindPassword`
+* `rundeck.gui.login.welcomeHtml`
+* `rundeck.gui.instanceName`
+ 
+
+
 ### Security
 
 - `rundeck.security.useHMacRequestTokens` : `true/false`. Default: `true`.
