@@ -1,6 +1,6 @@
 # Release 3.3.6
 
-Name: <span style="color: rosybrown"><span class="glyphicon glyphicon-knight"></span> "onion ring rosybrown knight"*</span>
+Name: <span style="color: rosybrown"><span class="glyphicon glyphicon-knight"></span> "onion ring rosybrown knight"</span>
 
 [Download this release](https://download.rundeck.com/3.3.6/index.html)
 
