@@ -179,6 +179,75 @@ JsonPath can also be embedded in the Template string using the `${path('$.foo')}
 
 `The value is ${path('$.foo')}` -> `The value is bar`
 
+## Debugging
+![](~@assets/img/wh-debug-button-highlight.png)
+
+The Advanced Run Job handler(and most Enterprise webhook handlers based in its rules engine)
+provides a debug view into webhook processing. Detailed evaluation results from recently received
+webhook requests is made available to assist in setup and troubleshooting.
+This view is accessible by pressing the `Debug` button at the top of the configuration.
+
+::: tip Note
+Debug information is *historical*. The information displayed including the batch key, events,
+rules, and conditions are as they were when the webhook request was evaluated.
+:::
+
+### Overview
+![](~@assets/img/wh-debug-batch-sample.png)
+
+**Refresh**  
+Clicking the refresh button will fetch the latest results. The selected result will automatically change
+to the most recent.
+
+**Select Received Webhook Request**  
+The debug view offers a selection of recently received webhook payload requests from the past **24 hours**.
+Each available option is labeled with the timestamp when it was recevied.
+
+**Batch Key**  
+This field will display the batch key if configured.
+
+**Select Batch Event**  
+If a batch key was specified a sub-select will be available to choose individual extracted events.
+
+**Event**  
+The received webhook request payload will be visible in the **Event** code box. For webhooks with batch keys
+this will refelct the selected batch event.
+
+**Rule Results**
+This section will display the rule evaluation results for each configured rule, for the selected event. It
+will include the rendered job options, condition results with extracted request data, and the job run status.
+
+### Rule Results
+![](~@assets/img/wh-debug-rule-results.png)
+
+In this sample the rule **was not satisfied** because one of the conditions did not match. The received webhook
+is missing the property `$.fizz` which was required to *equals* `buzz`.
+
+**Job Options**  
+This section displays the configured job options rendered with the received wehook data.
+
+**Conditions**  
+A table is rendered summerizing the evaluation results of each condition. The `Condition Expression` column maps to
+the configured `Event Field` and `Received Value` displays the value extracted from the webhook request.
+
+### Errors
+Errors encountered processing the webhook or running the job will be displayed in the debug view. Below are
+a few common errors.
+
+#### Job Already Running
+![](~@assets/img/wh-debug-error-already-running.png)
+
+This error is encountered if the job is not configured for parallel execution.
+
+#### Batch Key Path Missing
+![](~@assets/img/wh-debug-error-batch-missing.png)
+
+If the the webhook is configured with a batch key, and the path does not exist, this error will appear.
+
+#### Executions Disabled
+![](~@assets/img/wh-debug-error-executions-disabled.png)
+
+Encountered if the job could not be run due to Rundeck executions being disabled.
 
 ## FAQ
 ### How do I pass the raw event data to a job?

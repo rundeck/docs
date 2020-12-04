@@ -22,12 +22,15 @@ The options, node filter, and user properties can all use data from the payload.
 
 #### Data substitution examples
 
-If the data is sent using an AWS SNS envelop the `Message` property will contain the SNS message  
+If the data is sent using an AWS SNS envelope the `Message` property will contain the SNS message  
 `-myopt ${data.Message}`
 
 If you enable raw delivery on the AWS topic subscription, the data sent
-as the SNS message will be delivered without a JSON envelop.  
-**NOTE: This plugin expects the event payload to be JSON**
+as the SNS message will be delivered without a JSON envelope.  
+
+::: tip NOTE
+This plugin expects the event payload to be JSON
+:::
 
 Example raw payload
 ```json
