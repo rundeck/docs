@@ -71,7 +71,7 @@ The following job steps require specifying the API and APP key paths in either p
 
 - **Title**: The title of the new event being created.
 
-- **Incident Commander**: The ID of the user who should be assigned as the commander on the incident.
+- **Incident Commander**: The ID of the user who should be assigned as the commander on the incident. This can be found in Datadog by selecting "Teams" in the bottom left corner, selecting the user you want, and copying their ID from the URL of that page.
 
 - **Incident Customer Scope**: The scope of the customer impact for the incident that is being created.
 
@@ -97,7 +97,7 @@ Any job steps in the same workflow, following Create Incident can use the incide
 
 - **Incident ID**: The id of the incident that is being updated. 
 
-- **Incident Commander**: The updated ID of the user who should be assigned as the commander on the incident.
+- **Incident Commander**: The updated ID of the user who should be assigned as the commander on the incident. This can be found in Datadog by selecting "Teams" in the bottom left corner, selecting the user you want, and copying their ID from the URL of that page. 
 
 - **Incident Customer Scope**: The scope of the customer impact for the incident that is being updated.
 
