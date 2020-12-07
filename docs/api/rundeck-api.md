@@ -81,6 +81,10 @@ Changes introduced by API Version number:
 **Deprecation**
 * API versions below `{{{ apiDepVersion }}}` are *deprecated*.  Clients using earlier versions should upgrade to use `{{{ apiDepVersion }}}` as the minimum version before release `{{{ apiDepRelease }}}` to avoid errors.
 
+**Version 36**:
+* Updated Response:
+    - [`GET /api/V/system/executions/status`][/api/V/system/executions/status] - If Rundeck is in passive mode, the call will now return a 503 error code. 
+
 **Version 35**:
 * Updated Response:
     - [`PUT /api/V/project/[PROJECT]/import`][/api/V/project/\[PROJECT\]/import] - More validation and error message results added.
