@@ -22,7 +22,7 @@ You can make changes in the rundeck-config.properties file and then get Rundeck 
 
 ### Additional Improvements
 
-* Option Values can now use Key Storage
+* Option Values can now use Key Storage to access secret information.
 
 ## Issues
 
