@@ -6,6 +6,23 @@ Name: <span style="color: salmon"><span class="glyphicon glyphicon-lamp"></span>
 
 ## Overview
 
+### Webhooks: Enhanced Debugging Visibility
+
+A new Webhook Debug screen allows admins to review results from recently received webhook requests for setup and troubleshooting.  A visual rules evaluation screen highlights which conditions were met or missed.
+
+![](~@assets/img/wh-debug-batch-sample.png)
+
+### DataDog Incidents
+
+New Workflows steps allow DataDog users to create / update Incidents and add Tasks to Incidents.
+
+### Config Refresh
+
+You can make changes in the rundeck-config.properties file and then get Rundeck to reload the config without having to restart. [Check out details here.](/administration/configuration/config-file-reference.html#live-configuration-refreshing-enterprise)
+
+### Option Values can now use Key Storage
+
+
 :::danger Remember!!
 **For MySQL users**: Starting with Rundeck `3.3.4` the MySQL JDBC driver is no longer be
 bundled with the distributions. See the [Upgrade Guide](/upgrading/upgrading-to-rundeck-3.3.4.md)
