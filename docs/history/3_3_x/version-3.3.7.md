@@ -20,15 +20,9 @@ New Workflows steps allow DataDog users to create / update Incidents and add Tas
 
 You can make changes in the rundeck-config.properties file and then get Rundeck to reload the config without having to restart. [Check out details here.](/administration/configuration/config-file-reference.html#live-configuration-refreshing-enterprise)
 
-### Option Values can now use Key Storage
+### Additional Improvements
 
-
-:::danger Remember!!
-**For MySQL users**: Starting with Rundeck `3.3.4` the MySQL JDBC driver is no longer be
-bundled with the distributions. See the [Upgrade Guide](/upgrading/upgrading-to-rundeck-3.3.4.md)
-for instructions to ensure your Rundeck installation can still connect to MySQL after
-the upgrading.
-:::
+* Option Values can now use Key Storage
 
 ## Issues
 
@@ -59,3 +53,10 @@ the upgrading.
 * carlosrfranco
 * ltamaster
 * sjrd218
+
+:::danger Remember!!
+**For MySQL users**: Starting with Rundeck `3.3.4` the MySQL JDBC driver is no longer be
+bundled with the distributions. See the [Upgrade Guide](/upgrading/upgrading-to-rundeck-3.3.4.md)
+for instructions to ensure your Rundeck installation can still connect to MySQL after
+the upgrading.
+:::
