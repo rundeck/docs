@@ -645,7 +645,7 @@ First Load Asynch: true/false
 
 ### Groovy config format
 
-You can change you rundeck-config.properties to a rundeck-config.groovy.
+If you would prefer to use Groovy for the config file, you can use rundeck-config.groovy instead of rundeck-config.properties. Or, you can use a combination of the two (i.e. some settings configured in the properties file and some in the Groovy file).
 
 The groovy format is a java-like language, and it is not the same as properties.
 
