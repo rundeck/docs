@@ -215,17 +215,17 @@ You can simply specify the system properties on the java commandline:
 
 ```bash
 java -Drundeck.jaaslogin=true \
-     -Dloginmodule.conf.name=jaas-ldap.conf \
      -Dloginmodule.name=ldap \
+     -Dloginmodule.conf.name=jaas-ldap.conf \
      -jar rundeck-{{{rundeckVersionFull}}}.war
 ```
 
 Otherwise, if you are starting the Executable War via the supplied `rundeckd` script, you can modify the `RDECK_JVM` value in the `$RDECK_BASE/etc/profile` file to add two JVM arguments:
 
 ```sh
-export RDECK_JVM="-Dloginmodule.conf.name=jaas-ldap.conf \
-    -Drundeck.jaaslogin=true \
-    -Dloginmodule.name=ldap"
+export RDECK_JVM="-Drundeck.jaaslogin=true \
+    -Dloginmodule.name=ldap \
+    -Dloginmodule.conf.name=jaas-ldap.conf"
 ```
 
 Note: more information about using the Executable War and useful properties are under [Getting Started - Executable War Options](/administration/install/jar.md#launcher-options).
@@ -237,8 +237,9 @@ Declare variables (as the ones from /etc/rundeck/profile) in `/etc/sysconfig/run
 Example:
 ```
 $ cat /etc/sysconfig/rundeckd
-JAAS_CONF=/etc/rundeck/jaas-ldap.conf
+JAAS_LOGIN=true
 LOGIN_MODULE=ldap
+JAAS_CONF=/etc/rundeck/jaas-ldap.conf
 ```
 
 #### Step 3: Restart rundeckd
