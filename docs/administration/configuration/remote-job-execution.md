@@ -141,7 +141,7 @@ Note: You must be running Rundeck Enterprise 2.3.1 or a later release to use thi
 **Example**
 
 ```properties
-rundeck.clusterMode.remoteExecution.config.criteria = ThreadRatio,load
+rundeck.clusterMode.remoteExecution.config.criteria = threadRatio,load
 ```
 
 Each criteria can be weighted using a relative value:
