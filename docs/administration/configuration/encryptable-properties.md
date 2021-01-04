@@ -45,8 +45,13 @@ You will take the `encrypted:` value from the ENCRYPTED OUTPUT section which wil
 
 To decrypt the encrypted properties in your rundeck-config.properties file you will need to set the java attribute `-Drd.encryption.default.password` with the value of your master password before starting Rundeck.
 
-In our example we would add it to the java variable in `/etc/sysconfig/rundeckd` for RPM install or in `/etc/default/rundeckd` for DEB install : `RDECK_JVM_SETTINGS=-Drd.encryption.default.password=1PwdToBindThem$`
-then we would start our Rundeck Enterprise installation. After the application has completed the bootstrap process and is responding to requests, the environment variable can be unset for security purposes.
+In our example we would add it to the java variable in `/etc/sysconfig/rundeckd` for RPM install or in `/etc/default/rundeckd` for DEB install :
+
+```shell
+RDECK_JVM_SETTINGS=-Drd.encryption.default.password=1PwdToBindThem$
+```
+
+Then we would start our Rundeck Enterprise installation. After the application has completed the bootstrap process and is responding to requests, the environment variable can be unset for security purposes.
 
 ### Advanced Usage
 
@@ -55,7 +60,7 @@ values as system properties when you launch the encryption utility.
 
 For example, if you wish to use the `PBEWITHSHA256AND256BITAES-CBC-BC` algorithm to encrypt your password, you could do it like this:
 
-```
+```shell
 > java -jar -Drd.encryption.STRONG.algorithm=PBEWITHSHA256AND256BITAES-CBC-BC rundeckpro-cluster-3.0.0-SNAPSHOT.war --encryptpwd Jasypt
 Required values are marked with: *
 Encrypter Config (The base property name used in RD_ENCRYPTION_ or rd.encryption. ('default' is the default value)):
@@ -80,7 +85,7 @@ are set at launch time. Otherwise Rundeck will use the default decryptor setting
 
 To start Rundeck with the settings in our example, the startup string would be something like:
 
-```
+```shell
 java -jar -Drd.encryption.STRONG.algorithm=PBEWITHSHA256AND256BITAES-CBC-BC -Drundeck.encrypter.config.name=STRONG rundeckpro-cluster-3.0.0-SNAPSHOT.war
 ```
 
