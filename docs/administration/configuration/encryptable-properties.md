@@ -13,7 +13,13 @@ For instance you might want to encrypt the bind password to your LDAP server. Le
 Rundeck Enterprise has a feature to allow you to generate encrypted passwords using the Jasypt encryption library. The following instructions show how to encrypt a password with this utility from the command line.
 
 cd into the directory where your rundeck.war is located
-run: `java -jar rundeck.war --encryptpwd Jasypt`
+run:
+
+```shell
+java -jar rundeck.war --encryptpwd Jasypt
+
+```
+
 You will receive prompts for information that look like the following:
 
 ```
