@@ -566,7 +566,7 @@ request to the Rundeck API.
 
 To obtain an API Token, you must first log in to the Rundeck GUI using a user account.
 Click on your username in the header of the page, and you will be shown your User Profile page.
-From this page you can manage your API Tokens.
+From this page you can [manage your API Tokens](/manual/10-user.html#user-api-tokens).
 
 **Note**: You must have appropriate authorization to generate a token. See [API Token Authorization](/administration/security/authorization.md#api-token-authorization).
 
@@ -689,9 +689,13 @@ When an API path declares its results as an "Item List" this is the format that 
 
 Authentication tokens can be managed via the API itself.
 
-Note: as of Rundeck 2.8, Authentication tokens are generated with a unique ID as well as a token string. Listing
+**Note:** as of Rundeck 3.3.8, Authentication tokens are stored in secure form and are no longer retrievable. Listing and getting
+tokens will show the token id, name and other metadata but not the token value itself. The token value is only available at creation time
+using the [POST /api/V/tokens/[USER]][POST /api/V/tokens/\[USER\]] endpoint. 
+
+**Note:** as of Rundeck 2.8, Authentication tokens are generated with a unique ID as well as a token string. Listing
 tokens will show the ID instead of the token string, and the ID should be used to manage the token instead of the
-token string itself.  Token strings can be retrieved with the [/api/V/token/[ID]][/api/V/token/\[ID\]] endpoint.
+token string itself.  Until Rundeck 3.3.7, token strings can be retrieved with the [/api/V/token/[ID]][/api/V/token/\[ID\]] endpoint.
 
 ### List Tokens ####
 
@@ -702,14 +706,16 @@ List all tokens or all tokens for a specific user.
     GET /api/11/tokens
     GET /api/11/tokens/[USER]
 
-**Response (API version: 19):**
+**Response (API version: 19 and later):**
+
+- `name` attribute added **since V37**
 
 `application/xml`:
 
 ```xml
 <tokens user="user3" count="4">
   <token user="user3" id="ece75ac8-2791-442e-b179-a9907d83fd05"
-  creator="user3">
+  creator="user3" name="Admin RD-CLI">
     <expiration>2017-03-25 14:16:50.848 PDT</expiration>
     <roles>
       <role>DEV_99</role>
@@ -718,7 +724,7 @@ List all tokens or all tokens for a specific user.
     <expired>false</expired>
   </token>
   <token user="user3" id="abcb096f-cef4-451a-bd2b-43284a3ff2ad"
-  creator="user3">
+  creator="user3" name="CI Server">
     <expiration>2017-03-25 14:17:12.935 PDT</expiration>
     <roles>
       <role>SVC_XYZ</role>
@@ -728,7 +734,7 @@ List all tokens or all tokens for a specific user.
     <expired>false</expired>
   </token>
   <token user="user3" id="a99bd86d-0125-4eaa-9b16-caded4485476"
-  creator="user3">
+  creator="user3" name="GitHub Integration">
     <expiration>2018-03-24 14:17:26.253 PDT</expiration>
     <roles>
       <role>user</role>
@@ -755,6 +761,7 @@ List all tokens or all tokens for a specific user.
     "user": "user3",
     "id": "ece75ac8-2791-442e-b179-a9907d83fd05",
     "creator": "user3",
+    "name": "Admin RD-CLI",
     "expiration": "2017-03-25T21:16:50Z",
     "roles": [
       "DEV_99",
@@ -766,6 +773,7 @@ List all tokens or all tokens for a specific user.
     "user": "user3",
     "id": "abcb096f-cef4-451a-bd2b-43284a3ff2ad",
     "creator": "user3",
+    "name": "CI Server",
     "expiration": "2017-03-25T21:17:12Z",
     "roles": [
       "SVC_XYZ",
@@ -778,6 +786,7 @@ List all tokens or all tokens for a specific user.
     "user": "user3",
     "id": "a99bd86d-0125-4eaa-9b16-caded4485476",
     "creator": "user3",
+    "name": "GitHub Integration",
     "expiration": "2018-03-24T21:17:26Z",
     "roles": [
       "user",
@@ -798,7 +807,10 @@ List all tokens or all tokens for a specific user.
 ]
 ```
 
+
 **Response (API version: 18 and earlier):**
+
+**Note: removed since Rundeck 3.3.8**
 
 `application/xml`:
 
@@ -841,15 +853,52 @@ For a specific user:
 
 ### Get a token ####
 
-Get a specified auth token.
+Get a specified auth token metadata.
 
-Note: API Version 19 and later uses the token ID instead of the token string.
+**Note:** API Version 19 and later uses the token ID instead of the token string.
+
+**Note:** As of Rundeck 3.3.8, the actual token value is not available through this endpoint.
 
 **Request:**
 
     GET /api/11/token/[ID]
 
-**Response (API version: 19):**
+**Response (API version: 19) (Rundeck 3.3.8 and later):**
+
+The token includes the `creator` of the token, as well as the `user` (the effective username) of the token.
+The `id` is the unique ID, and the `name` (since v37) is the name given at creation.
+
+`application/xml`
+
+``` xml
+<?xml version="1.0" encoding="utf-8"?>
+<token user="user3" id="c13de457-c429-4476-9acd-e1c89e3c2928" 
+creator="user3" name="CI Server Token">
+  <expiration>2017-03-24T21:18:55Z</expiration>
+  <roles>
+    <role>USER_ACCOUNT</role>
+  </roles>
+  <expired>true</expired>
+</token>
+```
+
+`application/json`
+
+``` json
+{
+  "user": "user3",
+  "id": "c13de457-c429-4476-9acd-e1c89e3c2928",
+  "creator": "user3",
+  "name": "CI Server Token",
+  "expiration": "2017-03-24T21:18:55Z",
+  "roles": [
+    "USER_ACCOUNT"
+  ],
+  "expired": true
+}
+```
+
+**Response (API version: 19) (Rundeck 3.3.7 and earlier):**
 
 The token includes the `creator` of the token, as well as the `user` (the effective username) of the token.
 The `id` is the unique ID, and the `token` value is the token string.
@@ -884,7 +933,7 @@ id="c13de457-c429-4476-9acd-e1c89e3c2928" creator="user3">
 }
 ```
 
-**Response (API version: 18 and earlier):**
+**Response (API version: 18 and earlier) (removed since Rundeck 3.3.8):**
 
 The `id` value returned is the token string.
 
@@ -905,7 +954,7 @@ The `id` value returned is the token string.
 
 ### Create a Token ####
 
-Create a new token for a specific user.  Specify custom roles and duration if authorized.
+Create a new token for a specific user. Specify custom roles and duration if authorized.
 
 **Request:**
 
@@ -914,27 +963,31 @@ Create a new token for a specific user.  Specify custom roles and duration if au
 
 The user specified must either be part of the URL, or be part of the request content.
 
+**Note:** As of Rundeck 3.3.8, the actual token value **is only available at creation time through the response of this endpoint**. Be sure to store your tokens as they will not be available later.
+
 **For API v18 and earlier**: by default the role `api_token_group` is set for the generated token,
 and the duration will be the maximum allowed token duration.  If `user` is present in the URL, then the request content is ignored and can be empty.
 
 **For API v19 and later**: A content body is expected, and `roles` must be specified, and `duration` is optional.
-
 If unset, duration will be the maximum allowed token duration.
 
 If the `roles` value is the string `*` (asterisk), and the token is generated for oneself (i.e. the authenticated user),
 then the generated token will have all roles as the authenticated user.
 
+**For API v37 and later**: You can provide a `name` parameter to name the created token.
+
+
 
 `Content-type: application/xml`
 
 ``` xml
-<user user="alice" roles="sre,dev" duration="120d"/>
+<user user="alice" roles="sre,dev" duration="120d" name="Example Token"/>
 ```
 
 Requesting all available roles for the same user:
 
 ``` xml
-<user user="alice" roles="*" duration="120d"/>
+<user user="alice" roles="*" duration="120d" name="Example Token"/>
 ```
 
 `Content-type: application/json`
@@ -946,7 +999,8 @@ Requesting all available roles for the same user:
     "sre",
     "dev"
   ],
-  "duration": "120d"
+  "duration": "120d",
+  "name": "Example Token"
 }
 ```
 
@@ -956,17 +1010,20 @@ Requesting all available roles for the same user:
 {
   "user": "alice",
   "roles": "sre,dev",
-  "duration": "120d"
+  "duration": "120d",
+  "name": "Example Token"
 }
 ```
 
-**Response (API version: 19):**
+**Response (API version: 19 and later):**
+
+- `name` attribute added **since V37**
 
 `application/xml`
 
 ``` xml
 <token user="alice" token="4ehYi11hDHtxwVK6it4IhNFvbQcYmAJp"
-id="4073a4c5-336c-4157-942a-41639379c100" creator="admin">
+id="4073a4c5-336c-4157-942a-41639379c100" creator="admin" name="Example Token">
   <expiration>2017-07-22T22:45:18Z</expiration>
   <roles>
     <role>dev</role>
@@ -984,6 +1041,7 @@ id="4073a4c5-336c-4157-942a-41639379c100" creator="admin">
   "token": "08e7rlGwwnqoX6lzewriXSabuqNMueTL",
   "id": "b6ea87e3-43e5-4210-bd51-b82f8e33d9a4",
   "creator": "admin",
+  "name": "Example Token",
   "expiration": "2017-07-22T22:43:53Z",
   "roles": [
     "dev",
