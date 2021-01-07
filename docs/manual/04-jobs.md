@@ -63,7 +63,7 @@ your job in your job definition, it will modify the correct job in the server.
 The UUID is also useful when porting Job definitions between Rundeck instances.
 
 ::: warning
-Be careful not to use custom UUIDs as this can lead to inconsistencies in job loading. A possible problem, as documented in this [GitHub issue](https://github.com/rundeck/rundeck/issues/6150), occurs when customizing UUID using only numbers, it may cause a problem with database and the jobs can be displayed with crossed information.
+We do not require that this field is compliant with the UUID format but be careful creating custom UUIDs as this can lead to inconsistencies in job loading.
 :::
 
 ## Listing and filtering Jobs
