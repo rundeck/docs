@@ -5,7 +5,7 @@ Enterprise customers have access to this plugin that allows for triggering a bui
 ## Setup
 
 :::tip
-You will need to have both an API key created in Jenkins and ready to use. To create these values in Jenkins, select the profile from the top right corner. On the next page on the left side, there will be a "configure" section. Select that and on the next page you will be able to create a new API token. It is best to save this key in Rundeck key storage. To do so, navigate to the gear icon in the top right corner of rundeck and select "Key Storage." On the next page, select "Add or Upload Key" and add the API key as a password.
+Before using the plugin, make sure an API key has been created in Jenkins and is ready to use. To create these values in Jenkins, select the profile from the top right corner. On the next page on the left side, there will be a "configure" section. Select that and on the next page, create a new API token. It is best to save this key in Rundeck key storage. To do so, navigate to the gear icon in the top right corner of rundeck and select "Key Storage." On the next page, select "Add or Upload Key" and add the API key as a password.
 :::
 
 ## Configure
@@ -13,7 +13,7 @@ You will need to have both an API key created in Jenkins and ready to use. To cr
 ![Jenkins Notification - Configuration](~@assets/img/jenkins-notification.png)
 
 - **Jenkins URL**
-: This the URL for your Jenkins account. (i.e. http://localhost:8080)
+: This the URL for the Jenkins account. (i.e. http://localhost:8080)
 
 - **User**
 : The user for the account that matches the API token and contains the build to trigger. 
