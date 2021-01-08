@@ -218,6 +218,10 @@ rundeck.security.oauth.ping.principleKeys=sub
 #The name of the attribute that hold's the users groups
 rundeck.security.oauth.ping.authorityProperty = YOUR_MAPPED_GROUPS_ATTRIBUTE
 
+#Client Authentication method - default is 'post'
+#NOTE: Only set this if you have 'basic' authentication selected in Ping
+#rundeck.security.oauth.ping.clientAuthenticationMethod = basic
+
 ```
 
 After completing the configuration, restart Rundeck and attempt to login with Ping.
