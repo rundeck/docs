@@ -866,6 +866,13 @@ rundeck.security.authorization.preauthenticated.attributeName=REMOTE_USER_GROUPS
 rundeck.security.authorization.preauthenticated.delimiter=,
 rundeck.security.authorization.preauthenticated.userNameHeader=X-Forwarded-Uuid
 rundeck.security.authorization.preauthenticated.userRolesHeader=X-Forwarded-Roles
+
+#sync user info headers
+rundeck.security.authorization.preauthenticated.userSyncEnabled=true
+#these are the default headers for passing user details
+rundeck.security.authorization.preauthenticated.userFirstNameHeader=X-Forwarded-User-FirstName
+rundeck.security.authorization.preauthenticated.userLastNameHeader=X-Forwarded-User-LastName
+rundeck.security.authorization.preauthenticated.userEmailHeader=X-Forwarded-User-Email
 ```
 
 The `attributeName` property is the name of the request attribute which stores the user groups for the request. The forwarded headers will be put into this attribute. This attribute must be set for this method to work properly.
@@ -874,6 +881,20 @@ The `userNameHeader` property is the name of the header from which to obtain the
 
 The `userRolesHeader` property is the name of the header from which to obtain the list of user roles. The roles should be delimited by
 the delimiter specified in the `delimiter` property.
+
+The `userSyncEnabled` property will enable the use of preauthentication headers to pass the user's first and last name and email
+The default headers that will be read for the user details are:  
+```
+X-Forwarded-User-FirstName
+X-Forwarded-User-LastName
+X-Forwarded-User-Email
+```
+To customize the headers used set the following properties
+```
+rundeck.security.authorization.preauthenticated.userFirstNameHeader=X-Forwarded-User-FirstName
+rundeck.security.authorization.preauthenticated.userLastNameHeader=X-Forwarded-User-LastName
+rundeck.security.authorization.preauthenticated.userEmailHeader=X-Forwarded-User-Email
+```
 
 ## Preauthenticated mode logout redirection
 
