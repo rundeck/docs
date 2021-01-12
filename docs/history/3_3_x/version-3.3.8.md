@@ -68,6 +68,7 @@ The Rundeck/Jenkins integration [received an update](https://plugins.jenkins.io/
 * Stephen Joyner (sjrd218)
 * Carlos Franco (carlosrfranco)
 * Luis Toledo (ltamaster)
+* Forrest Evans (fdevans)
 
 ## Bug Reporters
 
