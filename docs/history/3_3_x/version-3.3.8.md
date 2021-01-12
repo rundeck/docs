@@ -33,10 +33,10 @@ The Rundeck/Jenkins integration [received an update](https://plugins.jenkins.io/
 * Enable OAuth2 client authentication method configuration (Ping SSO)
 * Changes to allow use of the namespaces for HashiCorp Vault in rundeck-config.properties
 * [FIXED] PyWinRM fails when using options or arguments with simple quotes
+* [Property loader wasn't decrypting property value](https://github.com/rundeck/rundeck/pull/6694)
 
 ### Core Product Updates
 
-* [Pro property loader wasn't decrypting property value](https://github.com/rundeck/rundeck/pull/6694)
 * [Migrate auth call from frameworkService to new ACL classes in repository controller](https://github.com/rundeck/rundeck/pull/6692)
 * [Update pywinrm plugin to add a function to remove/replace simple quotes when execute CMD command](https://github.com/rundeck/rundeck/pull/6689)
 * [Update Ace editor to fix handling of yaml multiline string](https://github.com/rundeck/rundeck/pull/6685)
