@@ -38,7 +38,16 @@ jobs:
 
       # run tests!
       - run: node docs/.vuepress/deploy.js $CIRCLE_TAG
-
+  update_index:
+    machine:
+      image: ubuntu-2004:202010-01
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - run:
+          name: algolia
+          command: |
+            /bin/bash scripts/_docsearch.sh
 workflows:
   version: 2
   publish:
@@ -49,3 +58,12 @@ workflows:
               only: /^v.*/
             branches:
               only: /3\.[1-9]\..*/
+      - update_index:
+          requires:
+            - build
+          filters:
+            tags:
+              only: /^v.*/
+            branches:
+              only: /3\.[1-9]\..*/
+
