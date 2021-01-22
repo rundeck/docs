@@ -54,12 +54,16 @@ workflows:
     jobs:
       - build:
           filters:
+            branches:
+              ignore: /.*/
             tags:
               only: /^v.*/
       - update_index:
           requires:
             - build
           filters:
+            branches:
+              ignore: /.*/
             tags:
               only: /^v.*/
 
