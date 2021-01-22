@@ -81,6 +81,10 @@ Changes introduced by API Version number:
 **Deprecation**
 * API versions below `{{{ apiDepVersion }}}` are *deprecated*.  Clients using earlier versions should upgrade to use `{{{ apiDepVersion }}}` as the minimum version before release `{{{ apiDepRelease }}}` to avoid errors.
 
+**Version 38**:
+* Updated Endpoint:
+    - [`PUT /api/V/project/[PROJECT]/import`][/api/V/project/\[PROJECT\]/import]  - Added `importNodesSources` parameter to define if Node Resources Source will be imported
+
 **Version 36**:
 * Updated Response:
     - [`GET /api/V/system/executions/status`][/api/V/system/executions/status] - If Rundeck is in passive mode, the call will now return a 503 error code. 
