@@ -48,6 +48,12 @@ git push origin
 
 ## Generating Release Notes
 
+Rundeck Core PRs are included by default.
+Core PRs can excluded by labeling them with the `release-notes/exclude` label.
+
+Rundeck Enterprise PRs are excluded by default.
+Enterprise PRs can be included by labeling them with the `release-notes/include` label.
+
 Create the file `.env` in the project root and add the line `GH_API_TOKEN=[TOKEN]`
 replacing `[TOKEN]` with your GitHub API token. This token needs `repo` scope.
 
