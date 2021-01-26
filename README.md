@@ -45,3 +45,13 @@ git checkout v3.2.8
 git checkout -b 3.2.8
 git push origin
 ```
+
+## Generating Release Notes
+
+Create the file `.env` in the project root and add the line `GH_API_TOKEN=[TOKEN]`
+replacing `[TOKEN]` with your GitHub API token. This token needs `repo` scope.
+
+Run the following with the milestone for the release:
+```bash
+npm run notes -- --mileston 3.3.9
+```
