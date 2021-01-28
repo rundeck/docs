@@ -81,6 +81,10 @@ Changes introduced by API Version number:
 **Deprecation**
 * API versions below `{{{ apiDepVersion }}}` are *deprecated*.  Clients using earlier versions should upgrade to use `{{{ apiDepVersion }}}` as the minimum version before release `{{{ apiDepRelease }}}` to avoid errors.
 
+**Version 38**:
+* Updated Endpoint:
+    - [`PUT /api/V/project/[PROJECT]/import`][/api/V/project/\[PROJECT\]/import]  - Added `importNodesSources` parameter to define if Node Resources Source will be imported
+
 **Version 36**:
 * Updated Response:
     - [`GET /api/V/system/executions/status`][/api/V/system/executions/status] - If Rundeck is in passive mode, the call will now return a 503 error code. 
@@ -5998,7 +6002,11 @@ Parameters:
 In APIv34 or later:
 
 * `importWebhooks` true/false, If true, import the webhooks in the archive. If false, do not import webhooks (default).
-* `whkRegenAuthTokens` true/false, If true, always regenerate the auth tokens associated with the webhook. If false, the webhook auth token in the archive will be imported. If no auth token info was included with the webhook, it will be generated (default).   
+* `whkRegenAuthTokens` true/false, If true, always regenerate the auth tokens associated with the webhook. If false, the webhook auth token in the archive will be imported. If no auth token info was included with the webhook, it will be generated (default).
+
+In APIv38 or later:
+
+* `importNodesSources` true/false. If true, import Node Resources Source defined on project properties. If false, do not import the nodes sources.    
 
 
 Expected Request Content:
