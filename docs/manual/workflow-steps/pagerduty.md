@@ -15,7 +15,7 @@ This job step allows users to add a note to an existing PagerDuty incident.
 ![PagerDuty - Add Note](~@assets/img/pagerduty_note.png)
 
 - **API Token**: The API token associated with the PagerDuty account. In PagerDuty go to Configuration, select API access and either create a new key or use an existing one. 
-- **Email**: The email address associated with the API token
+- **Email**: The email address associated with the API token (whichever user was logged in when the token was created)
 - **Incident ID**: The ID of the incident to add a note to
 - **Note**: The note to add to the incident
 
@@ -27,7 +27,7 @@ This job step allows users to add a note to an existing PagerDuty incident.
 : The API key for the account that contains the incident to update.
 
 - **Email**
-: A valid email associated with the account of the API key. This is required.
+: The email address associated with the API token (whichever user was logged in when the token was created)
 
 - **Escalation Leve**
 : The level of the escalation policy that the incident should be escalated to.
@@ -43,7 +43,7 @@ This job step allows users to add a note to an existing PagerDuty incident.
 : The API key for the account that contains the incident to update.
 
 - **Email**
-: A valid email associated with the account of the API key. This is required.
+: The email address associated with the API token (whichever user was logged in when the token was created)
 
 - **Response Play ID**
 : The ID of the response play to be run in response to the incident.
@@ -92,7 +92,7 @@ This job step allows users to update the status of an existing PagerDuty inciden
 ![PagerDuty - Update Status](~@assets/img/pagerduty_status.png)
 
 - **API Token**: The API token associated with the PagerDuty account
-- **Email**: The email address associated with the API token (whichever user was logged when the token was created)
+- **Email**: The email address associated with the API token (whichever user was logged in when the token was created)
 - **Incident ID**: The ID of the incident to want to add a note to
 - **Message**: This is where to update the status (acknowledged or resolved)
 
@@ -103,7 +103,7 @@ This job step allows users to update an existing PagerDuty incident.
 ![PagerDuty - Incident Update](~@assets/img/pagerduty_update.png)
 
 - **API Token**: The API token associated with the PagerDuty account
-- **Email**: The email address associated with the API token (whichever user was logged when the token was created)
+- **Email**: The email address associated with the API token (whichever user was logged in when the token was created)
 - **Incident ID**: The ID of the incident to add a note to
 - **Status**: This is where to update the status (acknowledged or resolved)
 - **Resolution**: If the incident was resolved, this is where to add the resolution notes
