@@ -4,6 +4,10 @@
 
 PagerDuty is a software that provides incident response management services to IT operations teams. When an incident is created, PagerDuty makes it easy for IT teams to track that incident for the duration of its life. The Rundeck and PagerDuty integration allows teams to run diagnostic and corrective actions to minimize the duration of the incident, as well as get event notifications within PagerDuty.
 
+:::warning
+The following job steps require specifying the key path in either project settings (e.g. project.pagerduty.api_key_path=keys/pd/api) or framework.properties (e.g. pagerduty.api_key_path=keys/pd/api) before running the step as it need to pull users/escalation policies specific to the specific account.
+:::
+
 ## PagerDuty Incident Note
 
 This job step allows users to add a note to an existing PagerDuty incident.
@@ -88,7 +92,7 @@ This job step allows users to update the status of an existing PagerDuty inciden
 ![PagerDuty - Update Status](~@assets/img/pagerduty_status.png)
 
 - **API Token**: The API token associated with the PagerDuty account
-- **Email**: The email address associated with the API token
+- **Email**: The email address associated with the API token (whichever user was logged when the token was created)
 - **Incident ID**: The ID of the incident to want to add a note to
 - **Message**: This is where to update the status (acknowledged or resolved)
 
@@ -99,7 +103,7 @@ This job step allows users to update an existing PagerDuty incident.
 ![PagerDuty - Incident Update](~@assets/img/pagerduty_update.png)
 
 - **API Token**: The API token associated with the PagerDuty account
-- **Email**: The email address associated with the API token
+- **Email**: The email address associated with the API token (whichever user was logged when the token was created)
 - **Incident ID**: The ID of the incident to add a note to
 - **Status**: This is where to update the status (acknowledged or resolved)
 - **Resolution**: If the incident was resolved, this is where to add the resolution notes
@@ -111,10 +115,6 @@ This job step allows users to update an existing PagerDuty incident.
 
 - **Incident ID**: The ID of the Incident to get information on.
 - **API Key**: The API key for the account that contains the incident to update.
-
-:::warning
-The following job steps require specifying the key path in either project settings (e.g. project.pagerduty.api_key_path=keys/pd/api) or framework.properties (e.g. pagerduty.api_key_path=keys/pd/api) before running the step as it need to pull users/escalation policies specific to the specific account.
-:::
 
 ## PagerDuty Update Escalation Policy
 
