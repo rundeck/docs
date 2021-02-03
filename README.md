@@ -59,5 +59,11 @@ replacing `[TOKEN]` with your GitHub API token. This token needs `repo` scope.
 
 Run the following with the milestone for the release:
 ```bash
-npm run notes -- --milestone 3.3.9
+npm run notes -- --milestone=3.3.9
+```
+
+**Draft**
+Run the following with the milestone for the release:
+```bash
+npm run notes -- --milestone=3.3.9 --draft
 ```

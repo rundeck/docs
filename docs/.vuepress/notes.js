@@ -1,4 +1,5 @@
 const FS = require('fs')
+const Path = require('path')
 
 const nunjucks = require('nunjucks')
 
@@ -32,7 +33,17 @@ async function main() {
 
     console.log(notes)
 
-    const path = `./docs/history/${argv.milestone.split('.').slice(0,2).concat(['x']).join('_')}/version-${argv.milestone}.md`
+    const pathBase = `./docs/history/${argv.milestone.split('.').slice(0,2).concat(['x']).join('_')}/`
+    
+    let path
+
+    if (argv.draft) {
+        path = Path.join(pathBase, 'draft.md')
+    }
+    else {
+        path = Path.join(pathBase, `version-${argv.milestone}.md`)
+    }
+
     FS.writeFileSync(path, notes)
 }
 
@@ -40,7 +51,13 @@ async function getRepoData(repo, includeLabels, excludeTags) {
     const gh = new Octokit({auth: argv.token || process.env.GH_API_TOKEN})
 
     const milestones = await gh.issues.listMilestones({...repo})
+
     const milestone = milestones.data.filter(m => m.title == argv.milestone)[0]
+
+    if (!milestone) {
+        console.error(`GitHub milestone ${argv.milestone} not found!`)
+        process.exit(1)
+    }
 
     const issuesResp = await gh.issues.listForRepo({...repo, milestone: milestone.number, state: 'closed', labels: includeLabels.join(',')})
 
