@@ -19,20 +19,20 @@ This release also adds some User Count information to the System Report in Enter
 
 ## Core Product Updates
 
-* [Add ability for Node Sources to use Key Storage](https://api.github.com/repos/rundeck/rundeck/issues/6666)
-* [Fix community news post dates](https://api.github.com/repos/rundeck/rundeck/issues/6750)
-* [Fix #6614 check plugin exists instead of configuration](https://api.github.com/repos/rundeck/rundeck/issues/6740)
-* [Update bootstrap js to 3.3.7](https://api.github.com/repos/rundeck/rundeck/issues/6739)
-* [Fix SCM icons lost after 3.3.7 upgrade](https://api.github.com/repos/rundeck/rundeck/issues/6735)
-* [fixes rundeckpro/rundeckpro#1454, add in event bus notification when …](https://api.github.com/repos/rundeck/rundeck/issues/6734)
-* [Fixes webhook notification issue that use credentials in URL](https://api.github.com/repos/rundeck/rundeck/issues/6732)
-* [edit framework controller to accept resourceModelSources config when creating a new project](https://api.github.com/repos/rundeck/rundeck/issues/6730)
-* [Issues/6693 slow job list show page](https://api.github.com/repos/rundeck/rundeck/issues/6725)
-* [Fix to get futures schedules both via addon (enterprise-schedules) and via job scheduling (job edit page)](https://api.github.com/repos/rundeck/rundeck/issues/6723)
-* [Update pywinrm plugin. Added a function to remove/replace simple quotes when execute command](https://api.github.com/repos/rundeck/rundeck/issues/6712)
-* [Creating a new log filter plugin to mask sensitive output log text](https://api.github.com/repos/rundeck/rundeck/issues/6709)
-* [Changes to allow to import nodes only separately from Configuration](https://api.github.com/repos/rundeck/rundeck/issues/6701)
-* [Grails plugin reorganization](https://api.github.com/repos/rundeck/rundeck/issues/6697)
+* [Add ability for Node Sources to use Key Storage](https://github.com/rundeck/rundeck/issues/6666)
+* [Fix community news post dates](https://github.com/rundeck/rundeck/issues/6750)
+* [Fix #6614 check plugin exists instead of configuration](https://github.com/rundeck/rundeck/issues/6740)
+* [Update bootstrap js to 3.3.7](https://github.com/rundeck/rundeck/issues/6739)
+* [Fix SCM icons lost after 3.3.7 upgrade](https://github.com/rundeck/rundeck/issues/6735)
+* [fixes rundeckpro/rundeckpro#1454, add in event bus notification when …](https://github.com/rundeck/rundeck/issues/6734)
+* [Fixes webhook notification issue that use credentials in URL](https://github.com/rundeck/rundeck/issues/6732)
+* [edit framework controller to accept resourceModelSources config when creating a new project](https://github.com/rundeck/rundeck/issues/6730)
+* [Issues/6693 slow job list show page](https://github.com/rundeck/rundeck/issues/6725)
+* [Fix to get futures schedules both via addon (enterprise-schedules) and via job scheduling (job edit page)](https://github.com/rundeck/rundeck/issues/6723)
+* [Update pywinrm plugin. Added a function to remove/replace simple quotes when execute command](https://github.com/rundeck/rundeck/issues/6712)
+* [Creating a new log filter plugin to mask sensitive output log text](https://github.com/rundeck/rundeck/issues/6709)
+* [Changes to allow to import nodes only separately from Configuration](https://github.com/rundeck/rundeck/issues/6701)
+* [Grails plugin reorganization](https://github.com/rundeck/rundeck/issues/6697)
 
 ## Contributors
 
