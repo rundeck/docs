@@ -20,6 +20,7 @@ This release also adds some User Count information to the System Report in Enter
 ## Core Product Updates
 
 * [Add ability for Node Sources to use Key Storage](https://github.com/rundeck/rundeck/issues/6666)
+* [Fix/project acl import](https://github.com/rundeck/rundeck/issues/6761)
 * [Fix community news post dates](https://github.com/rundeck/rundeck/issues/6750)
 * [Fix #6614 check plugin exists instead of configuration](https://github.com/rundeck/rundeck/issues/6740)
 * [Update bootstrap js to 3.3.7](https://github.com/rundeck/rundeck/issues/6739)
