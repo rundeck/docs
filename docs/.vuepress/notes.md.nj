@@ -15,7 +15,7 @@ Name: <span style="color: {{version.color()}}"><span class="glyphicon glyphicon-
 ## Core Product Updates
 
 {% for pull in core.pulls -%}
-* [{{ pull.title }}]({{pull.url}})
+* [{{ pull.title }}]({{pull.html_url}})
 {% endfor %}
 
 ## Contributors
