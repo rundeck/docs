@@ -8,7 +8,7 @@ Also check out the 3.3.0 release list of useful feature enhancements for our Ent
 
 [Rundeck 3.3.0](3_3_x/version-3.3.0.html)
 
-:::danger MySQL Support
+:::danger MySQL Support Note
 **For MySQL users**: Starting with Rundeck `3.3.4` the MySQL JDBC driver is no longer be
 bundled with the distributions. See the [Upgrade Guide](/upgrading/upgrading-to-rundeck-3.3.4.md)
 for instructions to ensure your Rundeck installation can still connect to MySQL after
