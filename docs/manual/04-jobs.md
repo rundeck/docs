@@ -18,7 +18,7 @@ A _Job_ is a configuration representing input options,
 the steps in the process, a filter expression that matches the nodes where
 those steps will execute, and execution
 control parameters that specify if steps are run in parallel
-and what do do if an error occurs in one of the steps.
+and what to do if an error occurs in one of the steps.
 
 Job access is governed by an access control
 policy you define declaring how users are given privileges to
