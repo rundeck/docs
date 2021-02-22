@@ -91,7 +91,7 @@ see [Plugin Developer Guide - Logging Plugin](/developer/06-logging-plugins.md).
 
 **Method 1: Powershell script**
 
-```
+```powershell
 # SERVICE.LOG ROTATION CONFIGS ########################
 $Verbose = "true" # true | false
 $SkipClear = "true" # true | false # skip clearing service.log for testing
@@ -131,7 +131,7 @@ Function RotateByTime($Time) {
     if ($Log.Name.Contains((Get-Date -Format "$Time"))) {
       Expand-Archive -Path "$LogPath\$Log" -DestinationPath "$ENV:TEMP\$LogFile-temp" -Force
       Add-Content -Value (Get-Content -Path "$ENV:TEMP\$LogFile-temp\$LogFile") -Path "$ENV:TEMP\$LogFile" -Force
-      Remove-Item -Path "$ENV:TEMP\$LogFile-temp" -Recurse -Force 
+      Remove-Item -Path "$ENV:TEMP\$LogFile-temp" -Recurse -Force
       Remove-Item -Path "$LogPath\$Log" -Force
     }
   }
@@ -176,4 +176,3 @@ DoRotation
 ```
 
 **Method 2: https://sourceforge.net/p/logrotatewin/wiki/LogRotate/**
-
