@@ -40,6 +40,10 @@ Directives optionally define when a step should start. You can define a directiv
 - `run-in-sequence`: Run after the previous step in sequence is run or is skipped.
 - `run-after:X[,Y[,Z..]]`: Run after one or more steps run or are skipped.
 
+::: warning
+Step Numbers and Names can be used on run-after:[], but in the case that the Step Name includes spaces, this condition must be encapsulated in double quotes, e.g. `[Step Two] "run-after:Step One"`
+:::
+
 ### Conditions
 
 Conditions can define additional checks that must pass before a step can run, or determine when a step can be skipped. For example:
