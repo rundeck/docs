@@ -10,7 +10,7 @@ Before using the Sensu plugins, add the API key and URL to the framework setting
 6. This can be anything. For example, if  api is the name, the new path would be keys/sensu/api.
 7. Now that the keys are created, specify them in the framework. Open the `etc/framework.properties` file and add the following lines:
 ```bash
-sensu.url=value
+sensu.url=http://sensu-backend:8080/api/core/v2/namespaces/default
 sensu.api_key_path=/keys/sensu/api
 ```
 Where `path` is the path created above
