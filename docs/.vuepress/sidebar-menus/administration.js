@@ -80,6 +80,7 @@ module.exports = [{
         '/administration/security/acl-policy-editor',
         '/administration/security/ssl',
         '/administration/security/key-storage',
+        '/administration/security/storage-plugins',
         '/administration/security/sso',
         '/administration/security/webapp-http-headers'
       ]
