@@ -37,6 +37,7 @@ java -server -Dserver.servlet.session.timeout=3600 -Dserver.port=8080 -jar runde
 - `rundeck.jetty.connector.ssl.includedCipherSuites` Comma-separated list of Cipher suites to enable. Default is based on available cipher suites. See [Disabling SSL Protocols](/administration/security/ssl.md#disabling-ssl-protocols).
 - `logging.config` The absolute path to your log4j2 configuration file. This is the Spring Boot log file setting and must be set in rpm,deb, and docker environments for the logging system to initialize properly
 - `log4j.configurationFile` The absolute path to your log4j2 configuration file.
+- `java.io.tmpdir` Specifies the temporary directory used by plugins, such as Node Sources and Workflow steps.
 
 For more information about using SSL, see [Configuring Rundeck for SSL](/administration/security/ssl.md).
 
