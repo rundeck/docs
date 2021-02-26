@@ -1,8 +1,8 @@
-# PagerDuty (Enterprise)
+# PagerDuty Webhooks (Enterprise)
 ::: enterprise
 :::
 
-Rundeck has two PagerDuty webhooks - one handles PagerDuty's V2 webhooks and one handles PagerDuty's V3 webhook. The webhooks both function the same, so you can choose base off of which version webhook is being sent from your PagerDuty account. 
+Rundeck has two PagerDuty webhooks - one handles PagerDuty's V2 webhooks and one handles PagerDuty's V3 webhook. The webhooks both function the same, so you can choose base off of which version webhook is being sent from your PagerDuty account.
 
 Jobs can be executed in response to PagerDuty events when incidents are `triggered` or `updated`, or even in response to **custom actions**.  PagerDuty does this by executing a webhook call into Rundeck.  This guide will show and example PagerDuty integration that calls a Rundeck jobs for incidents when they are triggered.
 

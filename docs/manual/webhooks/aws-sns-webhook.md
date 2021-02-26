@@ -1,4 +1,4 @@
-# AWS SNS Plugin (Enterprise)
+# AWS SNS Webhook Plugin (Enterprise)
 ::: enterprise
 :::
 
@@ -7,7 +7,7 @@
 
 You can use Amazon SNS  to send notification messages to one or more HTTP or HTTPS endpoints.  This Webhook plugin streamlines the setup for sending Amazon SNS messages to Rundeck.  Along with establishing the webhook endpoint, the plugin also handles the Subscription Confirmation required to start sending messages to the endpoint from SNS.  The confirmation message will not trigger any associated jobs on Rundeck Webhook entry.
 
-This plugin expects the data coming from AWS to be a JSON object. 
+This plugin expects the data coming from AWS to be a JSON object.
 The http content type does not have to be `application/json` because
 in some cases AWS will send json with the content type `text/plain`. As long
 as the data is JSON it will be handled correctly.
@@ -43,13 +43,13 @@ You can also get the following webhook context properties:
 ```code
 #a uniquely generated id for the webhook event
 ${webhook.id}
-  
+
 #the project that owns the webhook
 ${webhook.project}
-  
+
 #the ip that sent the event
 ${webhook.sender}
-  
+
 #epoch timestamp when event was received
 ${webhook.timestamp}
 

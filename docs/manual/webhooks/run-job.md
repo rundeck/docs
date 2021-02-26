@@ -1,4 +1,4 @@
-# Run Job Plugin
+# Run Job Webhook Plugin
 
 The *Run Job* webhook plugin receives a webhook event and executes the configured job.
 You can pass the payload of the webhook to the job or use the event payload information

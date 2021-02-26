@@ -1,4 +1,4 @@
-# GitHub Plugin (Enterprise)
+# GitHub Webhook Plugin (Enterprise)
 ::: enterprise
 :::
 
@@ -49,13 +49,13 @@ You can also get the following webhook context properties:
 ```code
 #a uniquely generated id for the webhook event
 ${webhook.id}
-  
+
 #the project that owns the webhook
 ${webhook.project}
-  
+
 #the ip that sent the event
 ${webhook.sender}
-  
+
 #epoch timestamp when event was received
 ${webhook.timestamp}
 
