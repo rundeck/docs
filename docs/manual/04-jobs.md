@@ -49,6 +49,8 @@ into groups. A group is a logical set of jobs, and one job group can
 exist inside another. Rundeck displays job lists as a set of folders
 corresponding to the group structure your jobs define.
 
+To create a new job group, create a new job and type in the name of the group the job should be stored in. After creating the job, the group will be created and can be selected in UI for future job creation.
+
 Beyond organizing jobs, groups assist in defining access control
 policy, covered in the
 [Administrator guide - Access Control Policy](/administration/security/authorization.md).
