@@ -61,12 +61,7 @@ see [Plugin Developer Guide - Logging Plugin](/developer/06-logging-plugins.md).
      }
      EOF
 
- - `daily`: Rotate once a day.
- - `missingok`: Do not show error messages if the log in question does not exist.
- - `notifempty`: Do not rotate logs if the file is empty.
- - `rotate`: Keep X old log files.
- - `compress`: Compress the files that have been rotated. This uses gzip by default and the resulting files will have the ending .gz.
- - `create 640 root adm`: Owner and permissions for creation.
+**Full documentation and examples can be seen with `man logrotate`**
 
 #### Create cron schedule as needed, i.e monthly rotation
 
@@ -84,6 +79,7 @@ see [Plugin Developer Guide - Logging Plugin](/developer/06-logging-plugins.md).
 	rotating pattern: /var/log/rundeck/service.log after 1 days (7 rotations)
 	empty log files are not rotated, old logs are removed
 	considering log /var/log/rundeck/service.log
+	...
 
 **New service.log backups should be created within service.log directory**
 
@@ -175,4 +171,42 @@ Stop-Service -Name $RundeckService
 DoRotation
 ```
 
-**Method 2: https://sourceforge.net/p/logrotatewin/wiki/LogRotate/**
+**Method 2: `LogRotateWin` (Windows version of logrotate)**
+
+**Download from official repo, install in system** `https://sourceforge.net/projects/logrotatewin/files/`
+
+#### Create logrotate configuration file
+
+     C:\Rundeck\var\log\service.log {
+      copytruncate
+      daily
+      missingok
+      rotate 7
+      compress
+      delaycompress
+      notifempty
+      create
+     }
+
+**Full documentation and examples can be seen in `https://sourceforge.net/p/logrotatewin/wiki/LogRotate/`**
+
+#### Create task schedule as needed, i.e
+
+     C:\> SCHTASKS /TN RundeckRotation /SC DAILY /ST 00:00 /TR "logrotate C:\LogRotateConfigs\Rundeck.conf"
+
+#### Test rotation rules and configurations
+
+     C:\> logrotate --debug --force C:\LogRotateConfigs\Rundeck.conf
+
+**Output should be seen as**
+
+     reading config file C:\LogRotateConfigs\Rundeck.conf
+	Allocating hash table for state file, size 15360 B
+	Handling 1 logs
+	rotating pattern: C:\Rundeck\var\log\service.log after 1 days (7 rotations)
+	empty log files are not rotated, old logs are removed
+	considering log C:\Rundeck\var\log\service.log
+	...
+
+**New service.log backups should be created within service.log directory**
+
