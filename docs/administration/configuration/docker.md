@@ -48,7 +48,7 @@ Refer to the [docs](http://rundeck.org/docs/administration/configuration/storage
 For example configurations check out the Zoo.
 
 * [Docs](http://rundeck.org/docs/administration/security/authenticating-users.html#ldap)
-* [Zoo](https://github.com/rundeck/docker-zoo/tree/main/ldap-combined)
+* [Zoo](https://github.com/rundeck/docker-zoo/tree/master/ldap-combined)
 
 **Default**  
 The default setup utilizes the `/home/rundeck/server/config/realm.properties` file. Mount
