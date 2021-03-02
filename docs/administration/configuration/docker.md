@@ -71,6 +71,12 @@ RUNDECK_JAAS_FILE_*
 By convention the module name matches the name in the docs, and the config keys match
 the config options listed in the docs uppercase, and all one word.
 
+To configure the LDAP module as sufficient, required, requisite, optional, you can use:
+```
+RUNDECK_JAAS_LDAP_FLAG
+```
+For further reference, please check [this documentation](/administration/security/authentication.md#multiple-authentication-modules)
+
 ## Extending Configuration
 
 See the [Extending Configuration](/administration/configuration/docker/extending-configuration.md)
