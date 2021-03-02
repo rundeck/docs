@@ -373,7 +373,7 @@ The `JettyCachingLdapLoginModule` has these configuration properties:
 : Connect timeout value (ms). Default: 0 (no timeout)
 
 `nestedGroups`
-: "true/false" - Default: false. If true, will resolve all nested groups for authenticated users. For the first user to login after a fresh start it will take a couple of seconds longer, this is when the cache of all nested groups is built. This will happen as often as the cache is refreshed. Uses the cacheDurationMillis for cache timeout.
+: "true/false" - Default: false. If true, will resolve all nested groups for authenticated users. For the first user to login after a fresh start it will take a couple of seconds longer, this is when the cache of all nested groups is built. This will happen as often as the cache is refreshed. Uses the cacheDurationMillis for cache timeout. The groups recognized as nested will depend on the `roleBaseDn`, any other role outside of this will not be taken.
 
 The `JettyCombinedLdapLoginModule` is extends the previous module, so is configured in almost exactly the same way, but adds these additional configuration options:
 
