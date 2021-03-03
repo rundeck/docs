@@ -27,6 +27,7 @@ This is a small release to address minor bugs and issues.  We are working some a
 * Luis Toledo (ltamaster)
 * Greg Zapp (protip)
 
+Released: March 1st, 2021
 
 :::danger Remember!!
 **For MySQL users**: Starting with Rundeck `3.3.4` the MySQL JDBC driver is no longer be
