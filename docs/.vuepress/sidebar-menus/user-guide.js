@@ -23,6 +23,7 @@ module.exports = [{
         '/manual/creating-jobs',
         '/manual/job-workflows',
         '/manual/job-options',
+        '/manual/jobs/job-notifications',
         {
           title: 'Log Filters',
           collapsable: true,

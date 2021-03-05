@@ -229,24 +229,7 @@ will be displayed when the Job is listed:
 ### Job Notifications
 
 Job notifications are messages triggered by a job event.
-You can configure notifications to occur when a Job Execution starts
-or finishes, with either success or failure.
-The notification form will list all the installed notification plugins.
-
-If you want to receive notifications, click Yes under "Send Notification?".
-
-![Notification form](~@assets/img/fig0322.png)
-
-You can enable notifications for either Start, Success or Failure events
-and choose the notifier, using a builtin like mail, or webhook. Click the checkbox next to the type of notification to enable.
-
-![Notifications enabled](~@assets/img/fig0323.png)
-
-When the Job starts, all "start" notifications will be triggered.
-
-When the Job finishes executing, all "success" notifications will be triggered if the Job is successful. Otherwise, all "failure" notifications will be triggered if the Job fails or is cancelled.
-
-For a full list of notification plugins, see [Job Plugins - Notifications](/manual/job-plugins.md#notifications)
+[More details here about Job Notifications](jobs/job-notifications.md).
 
 ## Deleting Jobs
 

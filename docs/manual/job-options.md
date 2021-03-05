@@ -1,4 +1,4 @@
-# Job options
+# Job Options
 
 Rundeck Jobs can be configured to prompt a user for input by defining
 one or more named _options_. An _option_ models a named parameter that
