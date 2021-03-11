@@ -1,6 +1,6 @@
 # ACLPOLICY
 
-Updated December 20, 2013
+
 
 ## Overview
 
@@ -66,6 +66,10 @@ The Rundeck server no longer uses role-mapping and instead defers to the aclpoli
 
 - `notBy` clause as a negative variant of `by` clause
 
+### In version 3.4
+
+- Add support for `urn:` clause in `by:` and `notBy:`
+
 ## Upgrading
 
 Note: The XML format from Rundeck 1.3 and earlier is no longer supported. As
@@ -102,6 +106,7 @@ for:
 by:
     username: 'yml_usr_1'
     group: ['yml_group_1','group2']
+    urn: '_urn_'
 ```
 
 An .aclpolicy supports multiple policy definitions in the form of YAML
@@ -231,12 +236,12 @@ has any values _not_ included in the subset.
 
 ## `by`
 
-Within `by` are `username` and `group` entries that declare who the policy applies to.
+Within `by` are `username` and `group` or `urn` entries that declare who or what the policy applies to.
 
 Each entry can contain a single string, or a sequence of strings to define
 multiple entries.
 
-Regular expressions are supported in the username or group.
+Regular expressions are supported in the `username` or `group`.
 
 A single match will result in further evaluation of the policy.
 
@@ -259,17 +264,38 @@ Examples:
       username:
         - simon
         - frank
+
+    by:
+      urn: 'project:MyProject'
+
+    by:
+      urn: 'user:some.user'
+
+    by:
+      urn: 'group:some.group'
 ```
+
+You can specify a username or group exact match (which will not evaluate as a Regular expression)
+with a `urn` using the supported URN formats:
+
+* `group:GROUP` - matches a group name exactly
+* `user:USER`  - matches a username exactly
+
+The other use for the `urn` is to define ACL Policies that apply to some subjects which do not correspond to users, 
+the primary usage is to define a policy for a Project, using a URN format like:
+
+* `project:NAME` to match a Project by name
 
 ## `notBy`
 
 `notBy` is a variation of the `by` clause that only works on `deny`, it follow the same pattern using `username` and `group`
-entries but in this case, the policy applies to anyone not in the group or with a different username.
+and `urn` entries but in this case, the policy applies to any subject not matched.
 
 Each entry can contain a single string, or a sequence of strings to define
 multiple entries.
 
-Regular expressions are supported in the username or group.
+Regular expressions are supported in the username or group. As above, a `urn` can
+be used for an exact match instead of a Regular Expression match for username or group.
 
 Examples:
 
@@ -290,6 +316,11 @@ Examples:
       username:
         - simon
         - frank
+
+    notBy:
+      urn:
+        - user:simon
+        - group:qa
 ```
 
 ### `actions` element
@@ -313,7 +344,7 @@ This will show all the options as they're being evaluated.
 
 ## Example Admin policy
 
-This document grants full permissions to an 'admin' role:
+This document grants full permissions to an 'admin' group:
 
 ```yaml .numberLines
 description: Admin project level access control. Applies to resources within a specific project.
