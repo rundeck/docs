@@ -46,9 +46,10 @@ module.exports = {
       new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
       j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','GTM-M2STD5F');
+      })(window,document,'script','dataLayer','GTM-5QNBBN6');
     `],
-    ['script', { src: '/js/gtm.js', defer: true }]
+    ['script', { src: '/js/gtm.js', defer: true }],
+    ['script', { src: 'https://secure.peak2poem.com/js/195720.js' }]
   ],
   chainWebpack: config => {
     config.module
@@ -76,7 +77,6 @@ module.exports = {
         }
       }
     ],
-    ['alias'],
     [
       'autometa', {
         autometa_options

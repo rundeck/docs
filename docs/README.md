@@ -16,3 +16,8 @@ These are some other common starting points.
 * [List of Plugins](/plugins/)
 * [Old Version of Docs](/manual/old-docs.md)
 * [Sign up for Release Notes](https://www.rundeck.com/rundecker)
+
+
+:::tip Ask the Experts
+Each month, Rundeck offers one hour of free online support for our community members.  First Thursday of every month.  [Register today](https://www.rundeck.com/en-us/asktherundeckexpert) and pre-submit your questions.
+:::

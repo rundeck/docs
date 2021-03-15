@@ -1,3 +1,3 @@
 # Using AWS ELB as a loadbalancer
 
-See [AWS:ELB](/administration/cluster/cloud/index.md#elb)
+We are reworking the content for this page.  Check back or Enterprise customers can contact Support if you need help with this.

@@ -1,8 +1,8 @@
-# System Configurations
+# System Configuration Menu
 
-The Rundeck GUI has a Configuration Page which lets you view and manage system wide configuration settings.
+The Rundeck GUI has a Configuration Menu which lets you view and manage system wide configuration settings.
 
-If you have `admin` role access, when you log in, you will see the "Configure" icon in the header:
+Users with `admin` role access will see the "Configure" icon in the header:
 
 ![Configure Settings Icon](~@assets/img/fig0701.png)
 
@@ -25,7 +25,7 @@ Keys can be stored either using an uploaded file or as text input. Public key da
 
 ### Key store organization
 
-You can organize the keys similar to how you locate files in a file system, using convention to define the folder structure.
+Key Storage organizes keys similar to how files are organized in a file system. Keys can be organized into a folder structure.
 Here's an example convention that uses three fields to manage keys.
 
     keys/projects/{project}/nodes/{node}/{identity}.pem convention
@@ -52,7 +52,7 @@ Key data can be added using the content of an uploaded file or as text input.
 
 Choose the "Enter text" option. Paste the key content here.
 
-You will also need to enter the storage path and give the key a name.
+Enter the storage path and give the key a name.
 
 ![Add a key and enter text](~@assets/img/fig0721.png)
 
@@ -93,7 +93,9 @@ System security is managed through configuration files. This page describes the 
 
 ## System Report
 
-The System Report page gives you a breakdown of some of the Rundeck server's system statistics and information:
+The System Report page provides a breakdown of some of the Rundeck server's system statistics and information.  
+There is an Enterprise version of this page that includes the ability to view and export important configuration
+information for sharing with our support team.  More details are on the [Enterprise System Report](system-report.md) page.
 
 ![System Report Page](~@assets/img/fig0703.png)
 
@@ -101,13 +103,12 @@ This information is also available via the API: [API > System Info](/api/rundeck
 
 ## Log Storage
 
-Details coming soon.
-
 See [Logstore](/administration/cluster/logstore/)
 
 ## Plugins
 
-Rundeck is built on a pluggable core.  Use these menus to find, install, and manage the plugins on your Rundeck instance.
+Rundeck is built on a pluggable core.  Plugins can add functionality to connect to 3rd party systems, update the Rundeck UI, etc.
+Use these menus to find, install, and manage the plugins on your Rundeck instance.
 
 ### Find Plugins
 
@@ -115,16 +116,16 @@ Search plugins from the online Rundeck plugin repository.
 
 ### Installed Plugins
 
-See what plugins you have today.
+See what plugins are currently installed.
 
 ### Upload Plugin
 
-Did you use our [Developer Docs](/api/rundeck-api) to write your own plugin?  Upload it here to use it on your instance.
+Use the [Developer Docs](/api/rundeck-api) to write your own plugin!  Upload it here to use it on your instance.
 
 ## Password Utility
 
 ## Users
-This section is where you can see a summary of User accounts and, with Enterprise, manage local user accounts with a GUI based editor.
+Use this section to see a summary of User accounts and, with Enterprise, manage local user accounts with a GUI based editor.
 
 [More details about the Users section can be found here](/manual/user-management/user-mgmt.html).
 

@@ -218,6 +218,10 @@ rundeck.security.oauth.ping.principleKeys=sub
 #The name of the attribute that hold's the users groups
 rundeck.security.oauth.ping.authorityProperty = YOUR_MAPPED_GROUPS_ATTRIBUTE
 
+#Client Authentication method - default is 'post'
+#NOTE: Only set this if you have 'basic' authentication selected in Ping
+#rundeck.security.oauth.ping.clientAuthenticationMethod = basic
+
 ```
 
 After completing the configuration, restart Rundeck and attempt to login with Ping.
@@ -251,3 +255,14 @@ rundeck.security.syncOauthUser=true
 On SSO login, the jwt token sent by your Oauth2 provider will be examined for the `email` `given_name` and `family_name` attributes
 which should be populated if you are using the default scopes (`openid email profile`).
 Rundeck will save this information to the appropriate fields in the user's Rundeck profile.
+
+#### Alternative user detail attributes
+
+If the token sent by your Oauth2 provider does not use the standard attributes for passing user information you can specify
+the attributes in your token that carry the email, first, and last names using the following properties.
+
+```properties
+rundeck.ssoSyncAttribNames.firstname=custom-firstname-attrib
+rundeck.ssoSyncAttribNames.lastname=custom-lastname-attrib
+rundeck.ssoSyncAttribNames.email=custom-email-attrib
+```

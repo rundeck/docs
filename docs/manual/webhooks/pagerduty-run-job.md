@@ -1,9 +1,8 @@
-# PagerDuty (Enterprise)
+# PagerDuty Webhooks (Enterprise)
 ::: enterprise
 :::
 
-Rundeck's **PagerDuty Webhook** plugin makes it easy
-to automatically run jobs in response to PagerDuty events.
+Rundeck has two PagerDuty webhooks - one handles PagerDuty's V2 webhooks and one handles PagerDuty's V3 webhook. The webhooks both function the same, so you can choose base off of which version webhook is being sent from your PagerDuty account.
 
 Jobs can be executed in response to PagerDuty events when incidents are `triggered` or `updated`, or even in response to **custom actions**.  PagerDuty does this by executing a webhook call into Rundeck.  This guide will show and example PagerDuty integration that calls a Rundeck jobs for incidents when they are triggered.
 
@@ -17,7 +16,7 @@ The plugin configuration will run a **Job** when PagerDuty sends Rundeck an inci
 1. Navigate to **Webhooks**
 2. Click **Add**
 3. Give the new webhook a name.  (e.g. PagerDuty)
-4. Select **PagerDuty: Generic V2 Webhook**
+4. Select **PagerDuty: Generic V2 Webhook** or **PagerDuty: Generic V3 Webhook**
 
 ![](~@assets/img/wh-pd-create.png)
 

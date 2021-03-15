@@ -34,12 +34,12 @@ Node Step | [VMware](/manual/node-steps/vmware.md) | Controls VMware VMs' power 
 Workflow Step | [Ansible module](/manual/workflow-steps/builtin.md#ansible-module) | Runs Ansible modules | Built-in
 Workflow Step | [Ansible playbook inline](/manual/workflow-steps/builtin.md#ansible-playbook-inline) | Runs Ansible playbooks inline | Built-in
 Workflow Step | [Ansible playbook](/manual/workflow-steps/builtin.md#ansible-playbook) | Runs Ansible playbooks | Built-in
-Workflow Step | [Global variable](/manual/workflow-steps/builtin.md#global-variable) | | Built-in
-Workflow Step | [Flow control](/manual/workflow-steps/builtin.md#flow-control) | | Built-in
-Workflow Step | [Job state conditional](/manual/workflow-steps/builtin.md#job-state-conditional) | | Built-in
-Workflow Step | [Log data step](/manual/workflow-steps/builtin.md#log-data-step) | | Built-in
-Workflow Step | [Refresh project nodes](/manual/workflow-steps/builtin.md#refresh-project-nodes) | | Built-in
-Workflow Step | [Data step](/manual/workflow-steps/builtin.md#data-step) | | Built-in
+Workflow Step | [Global variable](/manual/workflow-steps/builtin.md#global-variable) | Defines a global variable that can be used across all job steps | Built-in
+Workflow Step | [Flow control](/manual/workflow-steps/builtin.md#flow-control) | Allows you to control the flow of a job by printing a status between job steps or halting | Built-in
+Workflow Step | [Job state conditional](/manual/workflow-steps/builtin.md#job-state-conditional) | Allows you to only run a job based on the execution status of another job | Built-in
+Workflow Step | [Log data step](/manual/workflow-steps/builtin.md#log-data-step) | Allows you to log all the context data values and view them in a table. | Built-in
+Workflow Step | [Refresh project nodes](/manual/workflow-steps/builtin.md#refresh-project-nodes) | Allows you to refresh all of the nodes in a project | Built-in
+Workflow Step | [Data step](/manual/workflow-steps/builtin.md#data-step) | produces data values for the current node | Built-in
 Workflow Step | [Jira](/manual/workflow-steps/jira.md) | Creates or updates Jira issues | Enterprise
 Workflow Step | [File Transfer](/manual/workflow-steps/file-transfer.md) | Transfers files via FTP, SFTP or HTTP | Enterprise
 Workflow Step | [Github](/manual/workflow-steps/github.md) | Runs scripts from a GitHub repo | Enterprise
@@ -75,8 +75,8 @@ Node Execution | [SSH](/administration/projects/node-execution/ssh.md) | Uses SS
 Node Execution | [Powershell](/administration/projects/node-execution/powershell.md) | Uses PowerShell to execute commands on remote nodes | Enterprise
 Node Execution | [SSH Bastion](/administration/projects/node-execution/bastionssh.md) | Provides a node-executor and file-copier supporting ssh actions through a bastion host | Community
 Node Execution | [OpenSSH](/administration/projects/node-execution/openssh.md) | Provides a node-executor and file-copier using OpenSSH | Built-in
-Resource Model Source | [Resource Model Source](/administration/projects/resource-model-sources/builtin.md) | | Built-in
-Resource Model Source | [Resource Editor](/administration/projects/resource-model-sources/resource-editor.md) | | Built-in
+Resource Model Source | [Resource Model Source](/administration/projects/resource-model-sources/builtin.md) | Imports nodes from a source | Built-in
+Resource Model Source | [Resource Editor](/administration/projects/resource-model-sources/resource-editor.md) | Allows you to edit nodes in a text editor | Built-in
 Resource Model Source | [AWS](/administration/projects/resource-model-sources/aws.md) | Populates your nodes from EC2 | Community
 Resource Model Source | [Azure](/administration/projects/resource-model-sources/azure.md) | Populates your nodes from Azure | Community
 Resource Model Source | [ServiceNow](/administration/projects/resource-model-sources/servicenow.md) | Populates your nodes from ServiceNow's CMDB | Enterprise

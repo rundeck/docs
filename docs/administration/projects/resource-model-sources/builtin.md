@@ -88,11 +88,11 @@ The "flavor" attribute is defined as a separate XML element:
 
 
     resources.source.1.type=file
-    resources.source.1.file=/home/rundeck/projects/example/etc/resources2.xml
-    resources.source.1.format=resourcexml
-    resources.source.1.requireFileExists=true
-    resources.source.1.includeServerNode=true
-    resources.source.1.generateFileAutomatically=true
+    resources.source.1.config.file=/home/rundeck/projects/example/etc/resources2.xml
+    resources.source.1.config.format=resourcexml
+    resources.source.1.config.requireFileExists=true
+    resources.source.1.config.includeServerNode=true
+    resources.source.1.config.generateFileAutomatically=true
 
 ### URL Source
 

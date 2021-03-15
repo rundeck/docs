@@ -16,7 +16,7 @@ Within the new job form:
 For "Job Name", enter "info" and for the "Group", enter "administration/resources".
 If you want to specify your own UUID you can enter it in the field.
 Otherwise a unique value will be set for you.
-Providing a description will be come helpful to other users to understand the intent and purpose for the Job.
+Providing a description will become helpful to other users to understand the intent and purpose for the Job.
 
 Give the job a description. It's best practice to give a short description on the first line.
 Create one blank line and all subsequent lines can use markdown format.

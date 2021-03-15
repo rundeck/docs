@@ -25,6 +25,14 @@ If you use the Rundeck war file with a different container, such as Tomcat, refe
 
 See [Security > Single Sign On](/administration/security/sso.md).
 
+# Require Roles For Sign On
+
+By default, when users who are not granted access to any projects try to login, they are directed to a page that says they don't have any roles at the moment. However, if you would like to require roles to even get passed the login screen, that is possible. If you require roles for sign on, then if a user without a role tries to login, they will not be able to get into the Rundeck portal. In order to require roles for sign on, add the following line to the rundeck-config.properties file:
+```bash
+rundeck.security.requiredRole=Your_Role_Name
+```
+where Your_Role_Name is the name of the group you wish to grant access to.
+
 # Jetty and JAAS authentication
 
 Rundeck has three basic JAAS modules.
@@ -174,6 +182,9 @@ The properties are:
 
 These LDAP attributes will be checked when a user logs in, and their Rundeck user profile will be updated from them.
 
+**Note**: By default, all users can log into Rundeck. However, if they do not have the proper authorization, they will not be able to access any projects. If you want to prevent them from even being able to login to rundeck, you can include the following JVM parameter:
+`rundeck.security.requiredRole=Your_Role_Name`
+
 #### Step 1: Setup the LDAP login module configuration file
 
 Create a `jaas-ldap.conf` file in the same directory as the `jaas-loginmodule.conf` file.
@@ -204,17 +215,17 @@ You can simply specify the system properties on the java commandline:
 
 ```bash
 java -Drundeck.jaaslogin=true \
-     -Dloginmodule.conf.name=jaas-ldap.conf \
      -Dloginmodule.name=ldap \
+     -Dloginmodule.conf.name=jaas-ldap.conf \
      -jar rundeck-{{{rundeckVersionFull}}}.war
 ```
 
 Otherwise, if you are starting the Executable War via the supplied `rundeckd` script, you can modify the `RDECK_JVM` value in the `$RDECK_BASE/etc/profile` file to add two JVM arguments:
 
 ```sh
-export RDECK_JVM="-Dloginmodule.conf.name=jaas-ldap.conf \
-    -Drundeck.jaaslogin=true \
-    -Dloginmodule.name=ldap"
+export RDECK_JVM="-Drundeck.jaaslogin=true \
+    -Dloginmodule.name=ldap \
+    -Dloginmodule.conf.name=jaas-ldap.conf"
 ```
 
 Note: more information about using the Executable War and useful properties are under [Getting Started - Executable War Options](/administration/install/jar.md#launcher-options).
@@ -226,8 +237,9 @@ Declare variables (as the ones from /etc/rundeck/profile) in `/etc/sysconfig/run
 Example:
 ```
 $ cat /etc/sysconfig/rundeckd
-JAAS_CONF=/etc/rundeck/jaas-ldap.conf
+JAAS_LOGIN=true
 LOGIN_MODULE=ldap
+JAAS_CONF=/etc/rundeck/jaas-ldap.conf
 ```
 
 #### Step 3: Restart rundeckd
@@ -361,7 +373,7 @@ The `JettyCachingLdapLoginModule` has these configuration properties:
 : Connect timeout value (ms). Default: 0 (no timeout)
 
 `nestedGroups`
-: "true/false" - Default: false. If true, will resolve all nested groups for authenticated users. For the first user to login after a fresh start it will take a couple of seconds longer, this is when the cache of all nested groups is built. This will happen as often as the cache is refreshed. Uses the cacheDurationMillis for cache timeout.
+: "true/false" - Default: false. If true, will resolve all nested groups for authenticated users. For the first user to login after a fresh start it will take a couple of seconds longer, this is when the cache of all nested groups is built. This will happen as often as the cache is refreshed. Uses the cacheDurationMillis for cache timeout. The groups recognized as nested will depend on the `roleBaseDn`, any other role outside of this will not be taken.
 
 The `JettyCombinedLdapLoginModule` is extends the previous module, so is configured in almost exactly the same way, but adds these additional configuration options:
 
@@ -737,7 +749,7 @@ If you would like to test your Jaas configuration without restarting Rundeck eve
 ldap example:
 
 ```sh
-$ java -jar -Drundeck.jaaslogin=true -Dloginmodule.conf.name=jaas-ldap.conf -Dloginmodule.name=ldap rundeck-{{{rundeckVersionFull}}}.war --testauth
+$ java -Drundeck.jaaslogin=true -Dloginmodule.conf.name=jaas-ldap.conf -Dloginmodule.name=ldap -jar rundeck-{{{rundeckVersionFull}}}.war --testauth
 Checking file: $RDECK_BASE/server/config/jaas-ldap.conf
 Checking login module: ldap
 Enter user name: ldapuser
@@ -854,6 +866,13 @@ rundeck.security.authorization.preauthenticated.attributeName=REMOTE_USER_GROUPS
 rundeck.security.authorization.preauthenticated.delimiter=,
 rundeck.security.authorization.preauthenticated.userNameHeader=X-Forwarded-Uuid
 rundeck.security.authorization.preauthenticated.userRolesHeader=X-Forwarded-Roles
+
+#sync user info headers
+rundeck.security.authorization.preauthenticated.userSyncEnabled=true
+#these are the default headers for passing user details
+rundeck.security.authorization.preauthenticated.userFirstNameHeader=X-Forwarded-User-FirstName
+rundeck.security.authorization.preauthenticated.userLastNameHeader=X-Forwarded-User-LastName
+rundeck.security.authorization.preauthenticated.userEmailHeader=X-Forwarded-User-Email
 ```
 
 The `attributeName` property is the name of the request attribute which stores the user groups for the request. The forwarded headers will be put into this attribute. This attribute must be set for this method to work properly.
@@ -862,6 +881,20 @@ The `userNameHeader` property is the name of the header from which to obtain the
 
 The `userRolesHeader` property is the name of the header from which to obtain the list of user roles. The roles should be delimited by
 the delimiter specified in the `delimiter` property.
+
+The `userSyncEnabled` property will enable the use of preauthentication headers to pass the user's first and last name and email
+The default headers that will be read for the user details are:  
+```
+X-Forwarded-User-FirstName
+X-Forwarded-User-LastName
+X-Forwarded-User-Email
+```
+To customize the headers used set the following properties
+```
+rundeck.security.authorization.preauthenticated.userFirstNameHeader=X-Forwarded-User-FirstName
+rundeck.security.authorization.preauthenticated.userLastNameHeader=X-Forwarded-User-LastName
+rundeck.security.authorization.preauthenticated.userEmailHeader=X-Forwarded-User-Email
+```
 
 ## Preauthenticated mode logout redirection
 

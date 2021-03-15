@@ -91,6 +91,6 @@ rundeck.license.storage.provider.1.type=object
 rundeck.license.storage.provider.1.path=/
 rundeck.license.storage.provider.1.config.bucket=rundeck
 rundeck.license.storage.provider.1.config.objectStoreUrl=https://s3.amazonaws.com
-rundeck.license.storage.provider.1.config.secretKey=YOUR_SECRET_KEY
 rundeck.license.storage.provider.1.config.accessKey=YOUR_ACCESS_KEY
+rundeck.license.storage.provider.1.config.secretKey=YOUR_SECRET_KEY
 ```

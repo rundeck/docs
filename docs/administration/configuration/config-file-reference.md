@@ -110,15 +110,10 @@ You can define the location of a .properties file in framework.properties:
 
 - `rundeck.tokens.file=/etc/rundeck/tokens.properties`
 
-The `tokens.properties` file should contain static authentication tokens you wish to use, keyed by the associated username:
+The `tokens.properties` file should contain static authentication tokens you wish to use, keyed by the associated username. You MUST also specify the role of the user:
 
-    username: token_string
-    username2: token_string2
-    ...
-
-or include roles
-
-    username: token_string,role1,role2
+    username: token_string, role1
+    username2: token_string2, role2
     ...
 
 The token_strings can be used as Authentication tokens to the [API](/api/rundeck-api.md#token-authentication).
@@ -244,6 +239,27 @@ loglevel, datasource configuration, and
 [GUI customization](/administration/configuration/gui-customization.md).
 
 The following sections describe configuration values for this file.
+
+#### Live Configuration Refreshing (Enterprise)
+
+You can make changes in the rundeck-config.properties file and then get Rundeck to reload the config without having to restart.  
+The following steps give the process for live reloading:
+* Make the change to the property
+* Save the rundeck-config.properties file
+* Issue an http POST request to the api endpoint `/api/36/config/refresh`
+
+**Caveats**
+
+Live reloading only works with a small set of properties at this time. Any properties that affect services, storage, or the http server
+still require the server to be restarted to take effect.
+
+Some of the properties that work with live reloading:
+* All Rundeck remote execution policy settings (e.g. `rundeck.clusterMode.remoteExecution.*`)
+* `rundeck.security.ldap.bindPassword`
+* `rundeck.gui.login.welcomeHtml`
+* `rundeck.gui.instanceName`
+ 
+
 
 ### Security
 
@@ -427,6 +443,19 @@ If you are deploying the Rundeck war file to Tomcat, you can manage the session 
     <session-config> <session-timeout>30</session-timeout> </session-config>
 ```
 
+### Primary Server Id
+
+If you are running Rundeck in a cluster set up you'll want to set one of the servers as the primary server.
+Once set as primary, that server will be the one that applies any data updates that might need to be run on bootstrap.
+If no server is set as primary in a cluster set up, then all servers will try to apply the updates on startup. This can
+lead to record contention in the database that will cause the updates to fail.
+
+To set a server as primary set the server UUID in the property: `rundeck.primaryServerId`
+
+```properties
+rundeck.primaryServerId=70a4af69-74d6-4319-b923-16eec8c742d3
+```
+
 ### Execution Mode
 
 - `rundeck.executionMode`:`active/passive`. Default `active`. Set the Execution
@@ -593,6 +622,16 @@ because the File Upload and Job Run are performed as separate steps.)
 rundeck.fileUploadService.tempfile.expiration=600000
 ```
 
+### Job YAML format
+
+In order to get a human readable export of a Job, all of the line endings in the workflow scripts must not end with
+a space. Otherwise the YAML exporter will resort to a format the preserves the exact line spaces, but is not as human readable.
+The following setting will trim all line endings in the job's workflow scripts so that the YAML exporter produces a nice human readable document.
+
+```properties
+rundeck.job.export.yaml.trimSpaces=true
+```
+
 ### Node Cache
 
 Defaults for the Node caches
@@ -606,7 +645,7 @@ First Load Asynch: true/false
 
 ### Groovy config format
 
-You can change you rundeck-config.properties to a rundeck-config.groovy.
+If you would prefer to use Groovy for the config file, you can use rundeck-config.groovy instead of rundeck-config.properties. Or, you can use a combination of the two (i.e. some settings configured in the properties file and some in the Groovy file).
 
 The groovy format is a java-like language, and it is not the same as properties.
 

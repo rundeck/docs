@@ -73,7 +73,7 @@ For maven use:
 
 If your Java classes require external libraries that are not included with
 the Rundeck runtime, you can include them in your .jar archive. (Look in
-`$RDECK_BASE/tools/lib` to see the set of
+`/var/lib/rundeck/lib` to see the set of
 third-party jars that are available for your classes by default at runtime).
 
 Specify the `Rundeck-Plugin-Libs` attribute in the Main attributes of the
@@ -773,27 +773,25 @@ Available rendering option keys:
 - `storage-path-root`
   - Value is a Storage Path indicating the root to use if the selectionAccessor is `STORAGE_PATH`.
 - `storage-file-meta-filter`
-  - Value is a Storage metadata filter string, indicating the types of Storage Files to select from if selectionAccessor is `STORAGE_PATH`. Filt string format: `metadatakey=value`, e.g. `Rundeck-key-type=private`.
+  - Value is a Storage metadata filter string, indicating the types of Storage Files to select from if selectionAccessor is `STORAGE_PATH`. Filter string format: `metadatakey=value`, e.g. `Rundeck-key-type=private`.
 - `valueConversion` defines a way to convert a the value of the resolved property. Allowed values:
-
   - `STORAGE_PATH_AUTOMATIC_READ` - automatically loads the storage contents from the given Storage Path, replacing the path with the loaded file contents as a String. E.g. can be used to load a Password file contents.
   - `PRIVATE_DATA_CONTEXT` - automatically read a value from the Private data context, which contains Secure Authentication Job Option values. E.g. With this conversion enabled, a config value of "option.mypassword" would be replaced with the value of a secure authentication job option named "mypassword".
-
-  * `valueConversionFailure` can be used to indicate that if the Private data context, or Storage path data is not present,
+- `valueConversionFailure` can be used to indicate that if the Private data context, or Storage path data is not present,
     then the config data key should be removed. Allowed values:
     - `remove` - remove the original config property value if the conversion is not successful
-  * `staticTextContentType` if displayType is `STATIC_TEXT`, the content type for the defaultValue text. values:
+- `staticTextContentType` if displayType is `STATIC_TEXT`, the content type for the defaultValue text. values:
     - `text/html` render as sanitized HTML
     - `text/x-markdown` convert markdown text to sanitized HTML
     - any other value or if not specified: render text directly
-  * `groupName` specifies a group that the input field belongs to. If not specified the field will be in the
+- `groupName` specifies a group that the input field belongs to. If not specified the field will be in the
     primary, unnamed group. If specified, all fields with the same `groupName` value will be
     displayed in a common area under the group name.
-  * `grouping` allowed value: `secondary`, indicates that the specified `groupName` should be shown in a
+- `grouping` allowed value: `secondary`, indicates that the specified `groupName` should be shown in a
     collapsed state if no input values in that group have been set. If no `groupName` is set, then the field
     will be displayed under a group with a heading of "More".
-  * `codeSyntaxMode` - if displayType is `CODE`, name of a [ACE editor mode][acejs] supported by Rundeck. One of: `batchfile`, `diff`, `dockerfile`, `golang`, `groovy`, `html`, `java`, `javscript`, `json`, `markdown`, `perl`, `php`, `powershell`, `properties`, `python`, `ruby`, `sh`, `sql`, `xml`, `yaml`.
-  * `codeSyntaxSelectable` - if displayType is `CODE`, `true/false`: if true, show a select box for choosing from the available syntax highlighting modes.
+- `codeSyntaxMode` - if displayType is `CODE`, name of a [ACE editor mode][acejs] supported by Rundeck. One of: `batchfile`, `diff`, `dockerfile`, `golang`, `groovy`, `html`, `java`, `javscript`, `json`, `markdown`, `perl`, `php`, `powershell`, `properties`, `python`, `ruby`, `sh`, `sql`, `xml`, `yaml`.
+- `codeSyntaxSelectable` - if displayType is `CODE`, `true/false`: if true, show a select box for choosing from the available syntax highlighting modes.
 
   [acejs]: https://ace.c9.io
 

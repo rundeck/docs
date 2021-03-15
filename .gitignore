@@ -3,6 +3,7 @@ node_modules
 docs/.vuepress/dist
 
 # local env files
+.env
 .env.local
 .env.*.local
 
@@ -20,3 +21,5 @@ yarn-error.log*
 *.sln
 *.sw?
 package-lock.json
+*.iml
+*.ipr

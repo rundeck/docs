@@ -2,7 +2,7 @@ const getChildren = require('../getHistory')
 
 module.exports = [
   {
-    title: 'History',
+    title: 'Release Notes',
     collapsable: false,
     sidebarDepth: 2,
     path: '/history/',

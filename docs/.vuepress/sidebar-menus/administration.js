@@ -2,7 +2,6 @@ module.exports = [{
   title: 'Administration Guide',
   collapsable: false,
   children: [
-    '/administration/overview/system-architecture',
     {
       title: 'Installation',
       collapsable: true,
@@ -23,7 +22,7 @@ module.exports = [{
       title: 'Configuration',
       collapsable: true,
       path: '/administration/configuration/',
-      sidebarDepth: 1,
+      sidebarDepth: 2,
       children: [
         '/administration/configuration/license',
         {
@@ -39,7 +38,16 @@ module.exports = [{
 
           ]
         },
+        {
+          title: 'Docker',
+          collapsable: true,
+          children: [
+            ['/administration/configuration/docker', 'Configuration Reference'],
+            ['/administration/configuration/docker/extending-configuration.md', 'Extending Configuration']
+          ]
+        },
         '/administration/configuration/remote-job-execution',
+        '/administration/configuration/hashicorp-consul',
         '/administration/configuration/email-settings',
         '/administration/configuration/gui-customization',
         '/administration/configuration/localization',
@@ -72,6 +80,7 @@ module.exports = [{
         '/administration/security/acl-policy-editor',
         '/administration/security/ssl',
         '/administration/security/key-storage',
+        '/administration/security/storage-plugins',
         '/administration/security/sso',
         '/administration/security/webapp-http-headers'
       ]
@@ -85,6 +94,16 @@ module.exports = [{
         '/administration/maintenance/backup',
         '/administration/maintenance/tuning-rundeck'
       ]
+    },
+    {
+       title: 'System Architecture and Cloud Deployment',
+       collapsable: true,
+       path: '/administration/architecture-and-deployment/architecture-and-deployment',
+       sidebarDepth: 10,
+       children: [
+         '/administration/architecture-and-deployment/system-architecture',
+         '/administration/architecture-and-deployment/aws',
+       ]
     },
     {
       title: 'Upgrading',
@@ -101,24 +120,18 @@ module.exports = [{
       path: '/administration/cluster/',
       children: [
         '/administration/cluster/',
-        {
-          title: 'Cloud Deployment',
-          collapsable: true,
-          children: [
-            '/administration/cluster/cloud/',
-            '/administration/cluster/cloud/aws',
-
-          ]
-        },
         '/administration/cluster/autotakeover/',
         {
           title: 'Load Balancer',
           collapsable: true,
           children: [
             '/administration/cluster/loadbalancer/',
+            '/administration/cluster/loadbalancer/health-check',
+            '/administration/cluster/loadbalancer/aws-alb',
             '/administration/cluster/loadbalancer/aws-elb',
             '/administration/cluster/loadbalancer/haproxy',
             '/administration/cluster/loadbalancer/iis',
+            '/administration/cluster/loadbalancer/NGINX',
 
           ]
         }, {
@@ -162,8 +175,10 @@ module.exports = [{
             '/administration/projects/resource-model-sources/node-wizard',
             '/administration/projects/resource-model-sources/aws',
             '/administration/projects/resource-model-sources/azure',
+            '/administration/projects/resource-model-sources/datadog',
             '/administration/projects/resource-model-sources/servicenow',
             '/administration/projects/resource-model-sources/vmware',
+            '/administration/projects/resource-model-sources/sensu',
             '/administration/projects/resource-model-sources/builtin',
             '/administration/projects/resource-model-sources/resource-editor'
           ]

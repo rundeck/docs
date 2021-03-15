@@ -40,6 +40,10 @@ Directives optionally define when a step should start. You can define a directiv
 - `run-in-sequence`: Run after the previous step in sequence is run or is skipped.
 - `run-after:X[,Y[,Z..]]`: Run after one or more steps run or are skipped.
 
+::: warning
+Step Numbers and Names can be used on run-after:[], but in the case that the Step Name includes spaces, this condition must be encapsulated in double quotes, e.g. `[Step Two] "run-after:Step One"`
+:::
+
 ### Conditions
 
 Conditions can define additional checks that must pass before a step can run, or determine when a step can be skipped. For example:
@@ -77,10 +81,19 @@ Choose between 5 and 6 based on an option value:
 [6] unless:option.env==PRODUCTION
 ```
 
-Run step 1, then steps 2 and 3 in parallel, then step 4
+Run step 1, then steps 2 and 3 in parallel, then step 4:
 
 ```
 [2] run-after:1
 [3] run-after:1
 [4] run-after:2,3
 ```
+Run steps only if two different conditions are met:
+```
+[1] run-in-sequence
+[2] if:option.1=yes if:option.2=yes
+[3] if.option.1=yes if:option.2=no
+[4] if:option.1=no if:option.2=yes
+[5] if:option.1=no if:option.2=no
+```
+Based on the ruleset defined above, if option 1 is "yes" and option 2 is "no" then job step 3 would run after 1. If option 1 is "no" and option 2 is "yes" then job step 4 would run after 1.

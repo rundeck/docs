@@ -1,6 +1,6 @@
 module.exports = [{
-    text: 'System Architecture',
-    link: '/administration/overview/system-architecture'
+    text: 'System Architecture and Cloud Deployment',
+    link: '/administration/architecture-and-deployment/architecture-and-deployment'
   },
   {
     text: 'Installation',

@@ -51,8 +51,19 @@ module.exports = [{
       sidebarDepth: 1,
       children: [
         '/manual/05-nodes',
+        'manual/node-enhancers.md',
         '/manual/11-node-filters.md',
-        '/manual/healthchecks'
+        {
+          title: 'Health Checks',
+          collapsable: true,
+          path: '/manual/healthchecks',
+          sidebarDepth: 2,
+          children: [
+              '/manual/healthchecks',
+              '/manual/healthcheckplugins/datadog.md',
+              '/manual/healthcheckplugins/sensu.md'
+          ]
+        }
       ]
     },
     {
@@ -75,6 +86,10 @@ module.exports = [{
       title: 'Schedules (Enterprise)',
       collapsable: true,
       path: '/manual/schedules/project-schedules',
+      children: [
+        '/manual/schedules/project-schedules.md',
+        '/manual/schedules/missedjobfires.md'
+      ],
       sidebarDepth: 1
     },
     {
@@ -106,9 +121,13 @@ module.exports = [{
           title: 'Webhooks Handlers',
           sidebarDepth: 2,
           children: [
-            '/manual/webhooks/run-job.md',
             '/manual/webhooks/advanced-run-job',
-            '/manual/webhooks/pagerduty-run-job'
+            '/manual/webhooks/pagerduty-run-job',
+            '/manual/webhooks/datadog-run-job.md',
+            '/manual/webhooks/aws-sns-webhook',
+            '/manual/webhooks/github-webhook',
+            '/manual/webhooks/run-job.md',
+            '/manual/webhooks/log-events.md'
           ]
         },
       ]
@@ -126,7 +145,8 @@ module.exports = [{
       sidebarDepth: 1,
       children: [
           '/manual/system-configs',
-          '/manual/user-management/user-mgmt'
+          '/manual/user-management/user-mgmt',
+          '/manual/system-report'
       ]
     },
     ['/manual/10-user.md', 'Profile Menu'],

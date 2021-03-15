@@ -2,7 +2,11 @@
 
 ## Node Steps
 
+- [Datadog Node Step Plugins (Enterprise)](/manual/node-steps/datadog.md)
 - [Jira Node Step Plugins (Enterprise)](/manual/node-steps/jira.md)
+- [Sensu Node Step Plugins (Enterprise)](/manual/node-steps/sensu.md)
+- [SQL Runner (Enterprise)](/manual/node-steps/sqlrunner.md)
+- [VMWare Operations Node Step Plugin (Enterprise)](/manual/node-steps/vmware.md)
 - [Command step](/manual/node-steps/builtin.md#command-step)
 - [Script step](/manual/node-steps/builtin.md#script-step)
 - [Script file](/manual/node-steps/builtin.md#script-file-step)
@@ -11,11 +15,20 @@
 - [Copy file](/manual/node-steps/builtin.md#copy-file-step)
 - [Local command](/manual/node-steps/builtin.md#local-command-step)
 - [Data node](/manual/node-steps/builtin.md#data-node-step)
-- [SQL Runner (Enterprise)](/manual/node-steps/sqlrunner.md)
-- [VMWare Operations Node Step Plugin (Enterprise)](/manual/node-steps/vmware.md)
+- [HTTP Request](/manual/node-steps/builtin.md#http-node-step)
 
 ## Workflow Steps
 
+- [Azure Job Steps (Enterprise)](/manual/workflow-steps/azure.md#azure-job-steps)
+- [Datadog Workflow Step Plugins (Enterprise)](/manual/workflow-steps/datadog.md)
+- [File Transfer (Enterprise)](/manual/workflow-steps/file-transfer.md)
+- [Github (Enterprise)](/manual/workflow-steps/github.md)
+- [Jira Workflow Step Plugins (Enterprise)](/manual/workflow-steps/jira.md)
+- [PagerDuty (Enterprise)](/manual/workflow-steps/pagerduty.md#pager-duty-job-steps-enterprise)
+- [Progress Badge (Enterprise)](/manual/workflow-steps/progress-badge.md#progress-badge-workflow-step-plugin)
+- [Sensu Workflow Step Plugins (Enterprise)](/manual/workflow-steps/sensu.md)
+- [ServiceNow (Enterprise)](/manual/workflow-steps/servicenow.md)
+- [VMWare Step Plugins (Enterprise)](/manual/workflow-steps/vmware.md)
 - [Ansible module](/manual/workflow-steps/builtin.md#ansible-module)
 - [Ansible playbook inline](/manual/workflow-steps/builtin.md#ansible-playbook-inline)
 - [Ansible playbook](/manual/workflow-steps/builtin.md#ansible-playbook)
@@ -25,20 +38,22 @@
 - [Log data step](/manual/workflow-steps/builtin.md#log-data-step)
 - [Refresh project nodes](/manual/workflow-steps/builtin.md#refresh-project-nodes)
 - [Data step](/manual/workflow-steps/builtin.md#data-step)
-- [File Transfer (Enterprise)](/manual/workflow-steps/file-transfer.md)
-- [Github (Enterprise)](/manual/workflow-steps/github.md)
-- [Jira Workflow Step Plugins (Enterprise)](/manual/workflow-steps/jira.md)
-- [Progress Badge (Enterprise)](/manual/workflow-steps/progress-badge.md#progress-badge-workflow-step-plugin)
-- [ServiceNow (Enterprise)](/manual/workflow-steps/servicenow.md)
-- [VMWare Step Plugins (Enterprise)](/manual/workflow-steps/vmware.md)
 
 ## Notifications
 
 Notification plugins allow Rundeck to communicate changes in job execution state and notify other users of successful or failed runs. For a general explanation on how job notifications work, see [Job Notifications](/manual/creating-jobs.md#job-notifications).
 
-- [Email](/manual/notifications/email.md)
 - [Jira Notification Plugins (Enterprise)](/manual/notifications/jira.md)
+- [Jenkins Notification Plugin (Enterprise)](/manual/notifications/jenkins.md)
+- [Datadog Notification Plugin (Enterprise)](/manual/notifications/datadog.md)
+- [PagerDuty Notification Plugin (Enterprise)](/manual/notifications/pagerduty.md)
+- [ServiceNow Notification Plugin (Enterprise)](/manual/notifications/servicenow.md)
+- [Slack Notification Plugin (Enterprise)](/manual/notifications/slack.md)
+- [Email](/manual/notifications/email.md)
 - [Webhooks](/manual/notifications/webhooks.md)
+
+For directions on how to use the Notification interface, see [here](/manual/notifications/interface-instructions.md).
+
 
 ## Workflow Strategy
 
@@ -52,8 +67,8 @@ Typically, Rundeck processes nodes in the exact order that they are specified wi
 
 The Bundled plugins support random selection, ordering by ranked tier, or specifying a percentage of nodes to target. If more logic or specificity is required, the Enterprise edition supports the selection of a single node based upon the value of an attribute.
 
-- [Bundled Orchestrator Plugins](/manual/orchestrator-plugins/bundled.md)
 - [Highest/Lowest Attribute Value (Enterprise)](/manual/orchestrator-plugins/highest-lowest.md)
+- [Bundled Orchestrator Plugins](/manual/orchestrator-plugins/bundled.md)
 
 ## Log Filters
 

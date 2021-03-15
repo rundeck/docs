@@ -18,7 +18,7 @@ A _Job_ is a configuration representing input options,
 the steps in the process, a filter expression that matches the nodes where
 those steps will execute, and execution
 control parameters that specify if steps are run in parallel
-and what do do if an error occurs in one of the steps.
+and what to do if an error occurs in one of the steps.
 
 Job access is governed by an access control
 policy you define declaring how users are given privileges to
@@ -49,6 +49,8 @@ into groups. A group is a logical set of jobs, and one job group can
 exist inside another. Rundeck displays job lists as a set of folders
 corresponding to the group structure your jobs define.
 
+To create a new job group, create a new job and type in the name of the group the job should be stored in. After creating the job, the group will be created and can be selected in UI for future job creation.
+
 Beyond organizing jobs, groups assist in defining access control
 policy, covered in the
 [Administrator guide - Access Control Policy](/administration/security/authorization.md).
@@ -61,6 +63,10 @@ You can use the UUID to make sure that when you rename or change the group for
 your job in your job definition, it will modify the correct job in the server.
 
 The UUID is also useful when porting Job definitions between Rundeck instances.
+
+::: warning
+We do not require that this field is compliant with the UUID format but be careful creating custom UUIDs as this can lead to inconsistencies in job loading.
+:::
 
 ## Listing and filtering Jobs
 
@@ -76,7 +82,7 @@ the folder icon to reveal its contents.
 Once you have navigated to a Job, you will see its name, possibly its
 description and a summary total of how many times it has been executed.
 
-Clicking on the job name will will expand the window to show the Job
+Clicking on the job name will expand the window to show the Job
 detail. You will see a button bar containing icons representing the
 actions you are able to perform. Other Job detail will include what
 command(s) it will run, filter expressions and other dispatcher options.

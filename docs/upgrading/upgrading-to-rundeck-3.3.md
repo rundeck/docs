@@ -2,9 +2,31 @@
 
 
 ::: tip
-This document highlights changes for users upgrading from Rundeck 3.2. 
+This document highlights changes for users upgrading from Rundeck 3.2.
 See other [Upgrading](/upgrading/) Documents if you are upgrading from 3.1 or earlier.
 :::
+
+## MySQL
+:::danger
+**For MySQL users**: Starting with Rundeck `3.3.4` the MySQL JDBC driver will no longer
+be bundled in any of the distributions(war, deb, rpm, Docker, etc). You must
+take action for Rundeck to continue connecting to the database after upgrading.
+:::
+
+The MariaDB Connector/J JDBC driver will continue to be bundled with Rundeck,
+and can be used as a replacement.
+
+**For deb, rpm, and war**  
+Set the following in `rundeck-config.properties`
+```properties
+dataSource.driverClassName=org.mariadb.jdbc.Driver
+```
+
+**For Docker**  
+Set the following environment variable:
+```bash
+RUNDECK_DATABASE_DRIVER=org.mariadb.jdbc.Driver
+```
 
 ## Single-Sign On Changes
 The Login Redirect URI has changed and will need to be updated for SSO to work.
@@ -27,6 +49,16 @@ an additional `jwkSetUri` property.
 This allows Rundeck to obtain the signing keys necessary to verify the jwt tokens sent from your oauth provider.
 
 Please see [the documentation here](/administration/security/sso.md) for detailed instructions and property format.
+
+## Incompatible plugin versions
+
+You must delete old versions of the following plugins from your `libext` folder.
+
+Any prior version of http-notification-1.0.7.jar   
+Any prior version of rundeck-jasypt-encryption-plugin-3.3.0.jar
+
+(Enterprise Only)  
+Any prior version of rundeckpro-pagerduty-plugins-3.3.0.jar
 
 ## Log4j 2 Notes
 #### Upgrading to log4j 2

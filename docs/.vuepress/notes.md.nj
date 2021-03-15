@@ -1,0 +1,32 @@
+# Release {{version.versionString}}
+
+Name: <span style="color: {{version.color()}}"><span class="glyphicon glyphicon-{{version.icon()}}"></span> "{{version.name()}} {{version.color()}} {{version.icon()}}"</span>
+
+[Download this release](https://download.rundeck.com/{{version.versionString}}/index.html)
+
+## Overview
+
+## Enterprise Updates
+
+{% for pull in enterprise.pulls -%}
+* {{ pull.title }}
+{% endfor %}
+
+## Core Product Updates
+
+{% for pull in core.pulls -%}
+* [{{ pull.title }}]({{pull.html_url}})
+{% endfor %}
+
+## Contributors
+
+{% for login, user in contributors -%}
+* {{ user.name }} ({{user.login}})
+{% endfor %}
+
+:::danger Remember!!
+**For MySQL users**: Starting with Rundeck `3.3.4` the MySQL JDBC driver is no longer be
+bundled with the distributions. See the [Upgrade Guide](/upgrading/upgrading-to-rundeck-3.3.4.md)
+for instructions to ensure your Rundeck installation can still connect to MySQL after
+the upgrading.
+:::

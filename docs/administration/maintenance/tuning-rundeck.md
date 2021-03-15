@@ -134,8 +134,19 @@ e.g. in `rundeck-config.properties` :
 ```properties
 quartz.threadPool.threadCount = 20
 ```
-
 Set the threadCount value to the max number of threads you want to run concurrently.
+
+### Memory and Threads Example
+
+As an example, an environment which has 200 scheduled jobs that will trigger all at the same time, while using a threadPool size of 50.
+
+When these jobs are triggered, only 50 will run (sometimes less due to Rundeck using some threads for a temporary background process at that specific time). The other 150 jobs are queued, waiting for more threads to be released so more jobs can be triggered. So jobs will trigger at a delayed time but will trigger. This delay always depends on how much time the active jobs take to finish and free up the next thread.
+
+The relation between the Java heap size allocated and threadPool size is, the more threads you set, the more memory size will be needed.
+
+It is recommended to start from low numbers like 50, 100, 200, etc. (50 is a good number to start at) These settings will depend on how much workload/jobs/memory the server will need to handle within it's environment.
+
+This threads size does not affect only to scheduled jobs but ad-hoc commands, manually triggered jobs, and health-checks.
 
 ### JMX instrumentation
 

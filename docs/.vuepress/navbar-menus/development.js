@@ -15,7 +15,7 @@ module.exports = [{
     link: 'https://rundeck.github.io/rundeck-cli'
   },
   {
-    text: 'History',
+    text: 'Release Notes',
     link: '/history/'
   }
 ]
