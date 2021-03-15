@@ -298,6 +298,7 @@ Changes introduced by API Version number:
 **Version 14**:
 
 **Note**: this document now has an [Index](#index) listing API paths.
+
 * Deprecated Endpoints with no replacement
     - `/api/2/project/[PROJECT]/resources/refresh`
 * New Endpoints
