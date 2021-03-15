@@ -1,9 +1,9 @@
 const RUNDECK_VERSION='3.4.0'
 const RUNDECK_VERSION_FULL='3.4.0-SNAPSHOT'
-const API_VERSION='36'
+const API_VERSION='39'
 const API_DEP_REL='3.4.0'
 const API_DEP_VER='11'
-const API_MIN_VER='1'
+const API_MIN_VER='11'
 
 const REPO_BRANCH='3.4.x'
 
