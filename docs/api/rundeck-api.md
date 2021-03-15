@@ -298,19 +298,6 @@ Changes introduced by API Version number:
 **Version 14**:
 
 **Note**: this document now has an [Index](#index) listing API paths.
-
-* Deprecated Endpoints.  These endpoints are deprecated, and new versions are added which include the Project name in the URL path
-    - `/api/1/executions/running` replacement: [`/api/14/project/[PROJECT*]/executions/running`][/api/V/project/\[PROJECT\]/executions/running]
-    - `/api/1/executions` replacement: [`/api/14/project/[PROJECT]/executions`][/api/V/project/\[PROJECT\]/executions]
-    - `/api/1/history` replacement: [`/api/14/project/[PROJECT]/history`][/api/V/project/\[PROJECT\]/history]
-    - `/api/1/jobs/export` replacement: [`/api/14/project/[PROJECT]/jobs/export`][/api/V/project/\[PROJECT\]/jobs/export]
-    - `/api/1/jobs/import` replacement: [`/api/14/project/[PROJECT]/jobs/import`][/api/V/project/\[PROJECT\]/jobs/import]
-    - `/api/1/jobs` replacement: [`/api/14/project/[PROJECT]/jobs`][/api/V/project/\[PROJECT\]/jobs]
-    - `/api/1/resource/[NAME]` replacement: [`/api/14/project/[PROJECT]/resource/[NAME]`][/api/V/project/\[PROJECT\]/resource/\[NAME\]]
-    - `/api/1/resources(/*)` replacement: [`/api/14/project/[PROJECT]/resources`][/api/V/project/\[PROJECT\]/resources]
-    - `/api/1/run/command` replacement: [`/api/14/project/[PROJECT]/run/command`][/api/V/project/\[PROJECT\]/run/command]
-    - `/api/1/run/script` replacement: [`/api/14/project/[PROJECT]/run/script`][/api/V/project/\[PROJECT\]/run/script]
-    - `/api/1/run/url` replacement: [`/api/14/project/[PROJECT]/run/url`][/api/V/project/\[PROJECT\]/run/url]
 * Deprecated Endpoints with no replacement
     - `/api/2/project/[PROJECT]/resources/refresh`
 * New Endpoints
