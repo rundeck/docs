@@ -25,8 +25,8 @@ Minimum
 For API endpoints described in this document, the *minimum* API version required for their
 use is indicated by the URL used, e.g.:
 
-    /api/2/system/info
-    /api/1/projects
+    /api/11/system/info
+    /api/14/projects
 
 This means you must use at least the API version indicated to access the
 endpoint, unless otherwise noted. Some features or functionality for the
@@ -57,7 +57,7 @@ If the version number is not included or if the requested version number is unsu
   "error": true,
   "apiversion": 14,
   "errorCode": "api.error.api-version.unsupported",
-  "message": "Unsupported API Version \"1\". API Request: /api/1/project/test/resources. Reason: Minimum supported version: 2"
+  "message": "Unsupported API Version \"1\". API Request: /api/1/project/test/resources. Reason: Minimum supported version: 11"
 }
 ```
 
@@ -69,10 +69,9 @@ View the [Index](#index) listing API paths.
 
 Changes introduced by API Version number:
 
-**Deprecation**
-* API versions below `{{{ apiDepVersion }}}` are *deprecated*.  Clients using earlier versions should upgrade to use `{{{ apiDepVersion }}}` as the minimum version before release `{{{ apiDepRelease }}}` to avoid errors.
-
 **Version 39**:
+
+* Removed support for previously deprecated API v10 and below. The minimum API version is now v11. 
 * Removed Endpoints:
     - `/api/1/executions/running` replacement: [`/api/14/project/[PROJECT*]/executions/running`][/api/V/project/\[PROJECT\]/executions/running]
     - `/api/1/executions` replacement: [`/api/14/project/[PROJECT]/executions`][/api/V/project/\[PROJECT\]/executions]
