@@ -9,9 +9,9 @@ Rundeck provides a Web API for use with your applications.
 
 ## API Version Number
 
-| Current  | Minimum | Deprecation |
-|---------|-------------|---------|
-|`{{{ apiVersion }}}` | `{{{ apiMinVersion }}}` | `{{{ apiDepVersion }}}` |
+| Current  | Minimum |
+|---------|-------------|
+|`{{{ apiVersion }}}` | `{{{ apiMinVersion }}}` |
 
 Current
 :   The current version number.
@@ -19,23 +19,14 @@ Current
 Minimum
 :   Minimum supported version.
 
-Deprecation
-:   Future minimum version number.
-
-
-### Deprecation
-
-API version `{{{ apiDepVersion }}}` will become the minimum version in a future release: Rundeck `{{{ apiDepRelease }}}`.
-
-Clients specifying API versions below the Deprecation version should upgrade to use it as the minimum version before then.
 
 ### Usage
 
 For API endpoints described in this document, the *minimum* API version required for their
 use is indicated by the URL used, e.g.:
 
-    /api/2/system/info
-    /api/1/projects
+    /api/11/system/info
+    /api/14/projects
 
 This means you must use at least the API version indicated to access the
 endpoint, unless otherwise noted. Some features or functionality for the
@@ -66,7 +57,7 @@ If the version number is not included or if the requested version number is unsu
   "error": true,
   "apiversion": 14,
   "errorCode": "api.error.api-version.unsupported",
-  "message": "Unsupported API Version \"1\". API Request: /api/1/project/test/resources. Reason: Minimum supported version: 2"
+  "message": "Unsupported API Version \"1\". API Request: /api/1/project/test/resources. Reason: Minimum supported version: 11"
 }
 ```
 
@@ -78,8 +69,23 @@ View the [Index](#index) listing API paths.
 
 Changes introduced by API Version number:
 
-**Deprecation**
-* API versions below `{{{ apiDepVersion }}}` are *deprecated*.  Clients using earlier versions should upgrade to use `{{{ apiDepVersion }}}` as the minimum version before release `{{{ apiDepRelease }}}` to avoid errors.
+**Version 39**:
+
+* Removed support for previously deprecated API v10 and below. The minimum API version is now v11. 
+* Removed Endpoints:
+    - `/api/1/executions/running` replacement: [`/api/14/project/[PROJECT*]/executions/running`][/api/V/project/\[PROJECT\]/executions/running]
+    - `/api/1/executions` replacement: [`/api/14/project/[PROJECT]/executions`][/api/V/project/\[PROJECT\]/executions]
+    - `/api/1/history` replacement: [`/api/14/project/[PROJECT]/history`][/api/V/project/\[PROJECT\]/history]
+    - `/api/1/jobs/export` replacement: [`/api/14/project/[PROJECT]/jobs/export`][/api/V/project/\[PROJECT\]/jobs/export]
+    - `/api/1/jobs/import` replacement: [`/api/14/project/[PROJECT]/jobs/import`][/api/V/project/\[PROJECT\]/jobs/import]
+    - `/api/1/jobs` replacement: [`/api/14/project/[PROJECT]/jobs`][/api/V/project/\[PROJECT\]/jobs]
+    - `/api/1/resource/[NAME]` replacement: [`/api/14/project/[PROJECT]/resource/[NAME]`][/api/V/project/\[PROJECT\]/resource/\[NAME\]]
+    - `/api/1/resources(/*)` replacement: [`/api/14/project/[PROJECT]/resources`][/api/V/project/\[PROJECT\]/resources]
+    - `/api/1/run/command` replacement: [`/api/14/project/[PROJECT]/run/command`][/api/V/project/\[PROJECT\]/run/command]
+    - `/api/1/run/script` replacement: [`/api/14/project/[PROJECT]/run/script`][/api/V/project/\[PROJECT\]/run/script]
+    - `/api/1/run/url` replacement: [`/api/14/project/[PROJECT]/run/url`][/api/V/project/\[PROJECT\]/run/url]
+    
+    **Replacement endpoints above require v14**
 
 **Version 38**:
 * Updated Endpoint:
@@ -286,18 +292,6 @@ Changes introduced by API Version number:
 
 **Note**: this document now has an [Index](#index) listing API paths.
 
-* Deprecated Endpoints.  These endpoints are deprecated, and new versions are added which include the Project name in the URL path
-    - `/api/14/executions/running` replacement: [`/api/14/project/[PROJECT*]/executions/running`][/api/V/project/\[PROJECT\]/executions/running]
-    - `/api/14/executions` replacement: [`/api/14/project/[PROJECT]/executions`][/api/V/project/\[PROJECT\]/executions]
-    - `/api/14/history` replacement: [`/api/14/project/[PROJECT]/history`][/api/V/project/\[PROJECT\]/history]
-    - `/api/14/jobs/export` replacement: [`/api/14/project/[PROJECT]/jobs/export`][/api/V/project/\[PROJECT\]/jobs/export]
-    - `/api/14/jobs/import` replacement: [`/api/14/project/[PROJECT]/jobs/import`][/api/V/project/\[PROJECT\]/jobs/import]
-    - `/api/14/jobs` replacement: [`/api/14/project/[PROJECT]/jobs`][/api/V/project/\[PROJECT\]/jobs]
-    - `/api/14/resource/[NAME]` replacement: [`/api/14/project/[PROJECT]/resource/[NAME]`][/api/V/project/\[PROJECT\]/resource/\[NAME\]]
-    - `/api/14/resources(/*)` replacement: [`/api/14/project/[PROJECT]/resources`][/api/V/project/\[PROJECT\]/resources]
-    - `/api/14/run/command` replacement: [`/api/14/project/[PROJECT]/run/command`][/api/V/project/\[PROJECT\]/run/command]
-    - `/api/14/run/script` replacement: [`/api/14/project/[PROJECT]/run/script`][/api/V/project/\[PROJECT\]/run/script]
-    - `/api/14/run/url` replacement: [`/api/14/project/[PROJECT]/run/url`][/api/V/project/\[PROJECT\]/run/url]
 * Deprecated Endpoints with no replacement
     - `/api/2/project/[PROJECT]/resources/refresh`
 * New Endpoints
