@@ -118,3 +118,9 @@ On the other project, to import _project-b_:
 Set **Import UUID Behavior** to `archive`.
 Set **File Path Template** to `project-b/${job.group}${job.name}-${job.sourceId}.${config.format}`.
 Set **Match a Regular Expression?** to `yes` and **Regular Expression** to `project-b/.*\.xml` or `project-b/.*\.yaml`.
+
+### Sugested steps to delete an scm configuration
+
+Disable the desired configuration
+Perform a clean to the configuration
+Delete the configuration
