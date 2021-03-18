@@ -40,7 +40,7 @@ If the version number is not included or if the requested version number is unsu
 `Content-Type: application/xml`:
 
 ``` xml
-<result error="true" apiversion="2">
+<result error="true">
     <error code="api-version-unsupported">
         <message>
         Unsupported API Version "1". API Request: /rundeck/api/1/project/test/jobs. Reason: Minimum supported version: 2
@@ -72,6 +72,8 @@ Changes introduced by API Version number:
 **Version 39**:
 
 * Removed support for previously deprecated API v10 and below. The minimum API version is now v11. 
+* XML Responses no longer support the request header of `X-Rundeck-API-XML-Response-Wrapper: true`. A `<result>` element will now only be returned in some endpoints where explicitly documented.
+* When returning an error response, JSON will be sent by default if no `Accept:` header is specified, instead of XML.
 * Removed Endpoints:
     - `/api/1/executions/running` replacement: [`/api/14/project/[PROJECT*]/executions/running`][/api/V/project/\[PROJECT\]/executions/running]
     - `/api/1/executions` replacement: [`/api/14/project/[PROJECT]/executions`][/api/V/project/\[PROJECT\]/executions]
@@ -391,9 +393,6 @@ In this version, all new and updated endpoints support XML or JSON request and r
 - For API clients that expect to see the `<result>` element, a request header of `X-Rundeck-API-XML-Response-Wrapper: true` will restore it.
 - For endpoint requests for API version 10 and earlier, the `<result>` element will be sent as it has been (described in [Response Format][])
 
-
-**Version 11**:
-
 * New endpoints
     - `/api/11/project/[PROJECT]/config`
         - PUT and GET for [Project Configuration](#project-configuration)
@@ -546,7 +545,9 @@ As of API version 14, all endpoints support JSON format, with content type `appl
 
 JSON results can be retrieved by sending the HTTP "Accept" header with a `application/json` value.  JSON request content is supported when the HTTP "Content-Type" header specifies `application/json`.
 
-If an "Accept" header is not specified, then the response will be either the same format as the request content (for POST, or PUT requests), or XML by default.
+XML results can be retrieved by sending the HTTP "Accept" header with a `application/xml` value.  XML request content is supported when the HTTP "Content-Type" header specifies `application/xml`.
+
+If an "Accept" header is not specified, then the response will be either the same format as the request content (for POST, or PUT requests), or JSON by default.
 
 Some endpoints also support using a `format` query parameter to specify the expected output format.
 
@@ -624,36 +625,40 @@ The response should set a cookie named `JSESSIONID`.
 
 ## XML Response Format
 
-For version 11 and later API requests, XML responses will have only the content indicated in the appropriate endpoint documentation.
+XML responses will have only the content indicated in the appropriate endpoint documentation.
 
-For version 10 and earlier API requests, XML responses will have this document structure:
+## Error Responses
+
+Errors in XML format will be in the form:
 
 ``` xml
-<result success/error="true" apiversion="X">
+<result error="true" apiversion="X">
     <!-- error included if error="true" -->
     <error>
         <message><!-- error message text --></message>
         <!-- ... multiple message elements -->
     </error>
-
-    <!-- optional success element if declared for the endpoint -->
-    <success>
-        <message><!-- success message --></message>
-    </success>
-
-    <!--
-        Specific API results..
-    -->
 </result>
 ```
 
-If an error occurred, then the `error` attribute of the `<result>` element will be "true". Otherwise a `success` attribute will have the value "true".
+If an error occurred, then the `error` attribute of the `<result>` element will be "true"
 
 Some `<error>` responses will include a `code` attribute giving a specific type
 of error code, in addition to the message.
 
 The `apiversion` attribute will be set to the latest version of the API
 supported by the server.
+
+Errors in JSON format will be in the form:
+
+``` json
+{
+    "error": true,
+    "errorCode: "code",
+    "message": "message",
+    "apiversion": "X"
+}
+```
 
 ### Error codes ###
 
@@ -666,20 +671,6 @@ Defined error codes that may be returned as `<error code="...">`
 `unauthorized`
 
 :    The requested action is not authorized and/or the connection is not authenticated.
-
-### Item Lists ###
-
-Many API requests will return an item list as a result.  These are typically in the form:
-
-    <[items] count="x">
-        <[item] ...>
-        <[item] ...>
-    </[items]>
-
-Where the list of specific items are wrapped in a pluralized element name which contains a `count` attribute.
-
-When an API path declares its results as an "Item List" this is the format that will be returned.
-
 
 # API Contents
 
@@ -2493,7 +2484,7 @@ Specify multiple jobs: (**since API v32**)
 
 **Response:**
 
-If request was XML, then Standard API response containing the following additional elements:
+If request was XML, then a `<result>` element containing the following elements:
 
 *  `takeoverSchedule`
     * `self`
@@ -2517,53 +2508,59 @@ If request was XML, then Standard API response containing the following addition
 Example XML Response, when `uuid` was specified:
 
 ``` xml
-<takeoverSchedule>
-    <self>
-      <server uuid='C677C663-F902-4B97-B8AC-4AA57B58DDD6' />
-    </self>
-    <server uuid='8F3D5976-2232-4529-847B-8E45764608E3' />
-    <jobs total='2'>
-      <successful count='2'>
-        <job id='a1aa53ac-73a6-4ead-bbe4-34afbff8e057'
-        href='http://localhost:9090/api/14/job/a1aa53ac-73a6-4ead-bbe4-34afbff8e057'
-        permalink='http://localhost:9090/rundeck/job/show/a1aa53ac-73a6-4ead-bbe4-34afbff8e057'
-        previous-owner="8F3D5976-2232-4529-847B-8E45764608E3" />
-        <job id='116e2025-7895-444a-88f7-d96b4f19fdb3'
-        href='http://localhost:9090/api/14/job/116e2025-7895-444a-88f7-d96b4f19fdb3'
-        permalink='http://localhost:9090/rundeck/job/show/116e2025-7895-444a-88f7-d96b4f19fdb3'
-        previous-owner="8F3D5976-2232-4529-847B-8E45764608E3" />
-      </successful>
-      <failed count='0'></failed>
-    </jobs>
-</takeoverSchedule>
+<result success="true">
+    <takeoverSchedule>
+        <self>
+          <server uuid='C677C663-F902-4B97-B8AC-4AA57B58DDD6' />
+        </self>
+        <server uuid='8F3D5976-2232-4529-847B-8E45764608E3' />
+        <jobs total='2'>
+          <successful count='2'>
+            <job id='a1aa53ac-73a6-4ead-bbe4-34afbff8e057'
+            href='http://localhost:9090/api/14/job/a1aa53ac-73a6-4ead-bbe4-34afbff8e057'
+            permalink='http://localhost:9090/rundeck/job/show/a1aa53ac-73a6-4ead-bbe4-34afbff8e057'
+            previous-owner="8F3D5976-2232-4529-847B-8E45764608E3" />
+            <job id='116e2025-7895-444a-88f7-d96b4f19fdb3'
+            href='http://localhost:9090/api/14/job/116e2025-7895-444a-88f7-d96b4f19fdb3'
+            permalink='http://localhost:9090/rundeck/job/show/116e2025-7895-444a-88f7-d96b4f19fdb3'
+            previous-owner="8F3D5976-2232-4529-847B-8E45764608E3" />
+          </successful>
+          <failed count='0'></failed>
+        </jobs>
+    </takeoverSchedule>
+</result>
 ```
 
 Example XML Response, when `all` was specified:
 
 ``` xml
-<takeoverSchedule>
-    <self>
-      <server uuid='C677C663-F902-4B97-B8AC-4AA57B58DDD6' />
-    </self>
-    <server all='true' />
-    <jobs total='2'>
-      ...
-    </jobs>
-</takeoverSchedule>
+<result success="true">
+    <takeoverSchedule>
+        <self>
+          <server uuid='C677C663-F902-4B97-B8AC-4AA57B58DDD6' />
+        </self>
+        <server all='true' />
+        <jobs total='2'>
+          ...
+        </jobs>
+    </takeoverSchedule>
+</result>
 ```
 
 Example XML Response, when `project` was specified:
 
 ``` xml
-<takeoverSchedule>
-    <self>
-      <server uuid='C677C663-F902-4B97-B8AC-4AA57B58DDD6' />
-    </self>
-    <project name='My Project' />
-    <jobs total='2'>
-      ...
-    </jobs>
-</takeoverSchedule>
+<result success="true">
+    <takeoverSchedule>
+        <self>
+          <server uuid='C677C663-F902-4B97-B8AC-4AA57B58DDD6' />
+        </self>
+        <project name='My Project' />
+        <jobs total='2'>
+          ...
+        </jobs>
+    </takeoverSchedule>
+</result>
 ```
 
 JSON response for `uuid` specified:
@@ -2923,8 +2920,6 @@ List the jobs that exist for a project.
 
     GET  /api/14/project/[PROJECT]/jobs
 
-(**Deprecated URL**: `/api/14/jobs` with required parameter: `project`.)
-
 The following parameters can also be used to narrow down the result set.
 
 * `idlist`: specify a comma-separated list of Job IDs to include
@@ -2939,17 +2934,19 @@ Note: If neither `groupPath` nor `groupPathExact` are specified, then the defaul
 
 **Response**
 
-`Content-Type: application/xml`:  An Item List of `jobs`. Each `job` is of the form:
+`Content-Type: application/xml`:
 
 ``` xml
-<job id="ID" href="[API url]" permalink="[GUI URL]" scheduled="true/false" scheduleEnabled="true/false"
-   enabled="true/false"
-   >
-    <name>Job Name</name>
-    <group>Job Name</group>
-    <project>Project Name</project>
-    <description>...</description>
-</job>
+<jobs count="1">
+    <job id="ID" href="[API url]" permalink="[GUI URL]" scheduled="true/false" scheduleEnabled="true/false"
+       enabled="true/false"
+       >
+        <name>Job Name</name>
+        <group>Job Name</group>
+        <project>Project Name</project>
+        <description>...</description>
+    </job>
+</jobs>
 ```
 
 `Content-Type: application/json`
@@ -3116,8 +3113,6 @@ Export the job definitions for in XML or YAML formats.
 
     GET /api/14/project/[PROJECT]/jobs/export
 
-(**Deprecated URL**: `/api/14/jobs/export` with required parameter: `project`.)
-
 Optional parameters:
 
 * `format` : can be "xml" or "yaml" to specify the output format. Default is "xml"
@@ -3144,8 +3139,6 @@ Import job definitions in XML or YAML formats.
 
     POST /api/1/project/[PROJECT]/jobs/import
 
-(**Deprecated URL**: `/api/14/jobs/import` with optional parameter: `project`.)
-
 Request Content:
 
 One of the following:
@@ -3159,7 +3152,6 @@ One of the following:
 Optional parameters:
 
 * `fileformat` : can be "xml" or "yaml" to specify the input format, if multipart of form input is sent. Default is "xml"
-    * (deprecated: `format` can be used as well, but this will also force the response format to be XML.)
 * `dupeOption`: A value to indicate the behavior when importing jobs which already exist.  Value can be "skip", "create", or "update". Default is "create".
 * `uuidOption`: Whether to preserve or remove UUIDs from the imported jobs. Allowed values (**since V9**):
     *  `preserve`: Preserve the UUIDs in imported jobs.  This may cause the import to fail if the UUID is already used. (Default value).
@@ -3172,15 +3164,17 @@ A set of status results.  Each imported job definition will be either "succeeded
 `Content-Type: application/xml`:
 
 ``` xml
-<succeeded count="x">
-    <!-- job elements -->
-</succeeded>
-<failed count="x">
-    <!-- job elements -->
-</failed>
-<skipped count="x">
-    <!-- job elements -->
-</skipped>
+<result success="true">
+    <succeeded count="x">
+        <!-- job elements -->
+    </succeeded>
+    <failed count="x">
+        <!-- job elements -->
+    </failed>
+    <skipped count="x">
+        <!-- job elements -->
+    </skipped>
+</result>
 ```
 
 Each Job element will be of the form:
@@ -4005,7 +3999,7 @@ Optional Query Parameters:
 
 **Response:**
 
-An Item List of `executions`.  See [Listing Running Executions](#listing-running-executions).
+See [Listing Running Executions](#listing-running-executions).
 
 ### Delete all Executions for a Job
 
@@ -4026,8 +4020,6 @@ List the currently running executions for a project
 **Request:**
 
     GET /api/14/project/[PROJECT]/executions/running
-
-(**Deprecated URL**: `/api/14/executions/running`, required URL parameter `project`.)
 
 Note: `PROJECT` is the project name, or use `*` for all projects.
 
@@ -4203,7 +4195,9 @@ Get the status for an execution by ID.
 
 **Response:**
 
-An Item List of `executions` with a single item. See [Listing Running Executions](#listing-running-executions).
+With `Content-Type: application/xml`:
+
+A single `<execution>` item, see [Listing Running Executions](#listing-running-executions).
 
 With `Content-Type: application/json`, a single object:
 
@@ -4414,8 +4408,6 @@ Query for Executions based on Job or Execution details.
 
     GET /api/14/project/[PROJECT]/executions
 
-(**Deprecated URL**: `/api/14/executions`, required parameter `project`.)
-
 The following parameters can also be used to narrow down the result set.
 
 * `statusFilter`: execution status, one of "running", succeeded", "failed" or "aborted"
@@ -4520,7 +4512,7 @@ Get detail about the node and step state of an execution by ID. The execution ca
 
 Specify expected output format with the `Accept: ` HTTP header. Supported formats:
 
-* `text/xml`
+* `application/xml`
 * `application/json`
 
 The content of the response contains state information for different parts of the workflow:
@@ -4675,103 +4667,104 @@ In JSON: an object with node names as keys.  Values are objects containing the s
 
 **Full XML Example**
 
-Within the `<result>` element:
 
 ``` xml
-<executionState id="135">
-  <startTime>2014-01-13T20:58:59Z</startTime>
-  <updateTime>2014-01-13T20:59:10Z</updateTime>
-  <stepCount>2</stepCount>
-  <allNodes>
-    <nodes>
-      <node name="dignan" />
-    </nodes>
-  </allNodes>
-  <targetNodes>
-    <nodes>
-      <node name="dignan" />
-    </nodes>
-  </targetNodes>
-  <executionId>135</executionId>
-  <serverNode>dignan</serverNode>
-  <endTime>2014-01-13T20:59:10Z</endTime>
-  <executionState>SUCCEEDED</executionState>
-  <completed>true</completed>
-  <steps>
-    <step stepctx="1" id="1">
-      <startTime>2014-01-13T20:58:59Z</startTime>
-      <nodeStep>true</nodeStep>
-      <updateTime>2014-01-13T20:58:59Z</updateTime>
-      <endTime>2014-01-13T20:59:04Z</endTime>
-      <executionState>SUCCEEDED</executionState>
-      <nodeStates>
-        <nodeState name="dignan">
-          <startTime>2014-01-13T20:58:59Z</startTime>
-          <updateTime>2014-01-13T20:59:04Z</updateTime>
-          <endTime>2014-01-13T20:59:04Z</endTime>
-          <executionState>SUCCEEDED</executionState>
-        </nodeState>
-      </nodeStates>
-    </step>
-    <step stepctx="2" id="2">
-      <startTime>2014-01-13T20:59:04Z</startTime>
-      <nodeStep>false</nodeStep>
-      <updateTime>2014-01-13T20:59:10Z</updateTime>
-      <hasSubworkflow>true</hasSubworkflow>
-      <endTime>2014-01-13T20:59:10Z</endTime>
-      <executionState>SUCCEEDED</executionState>
-      <workflow>
+<result success="true">
+  <executionState id="135">
+    <startTime>2014-01-13T20:58:59Z</startTime>
+    <updateTime>2014-01-13T20:59:10Z</updateTime>
+    <stepCount>2</stepCount>
+    <allNodes>
+      <nodes>
+        <node name="dignan" />
+      </nodes>
+    </allNodes>
+    <targetNodes>
+      <nodes>
+        <node name="dignan" />
+      </nodes>
+    </targetNodes>
+    <executionId>135</executionId>
+    <serverNode>dignan</serverNode>
+    <endTime>2014-01-13T20:59:10Z</endTime>
+    <executionState>SUCCEEDED</executionState>
+    <completed>true</completed>
+    <steps>
+      <step stepctx="1" id="1">
+        <startTime>2014-01-13T20:58:59Z</startTime>
+        <nodeStep>true</nodeStep>
+        <updateTime>2014-01-13T20:58:59Z</updateTime>
+        <endTime>2014-01-13T20:59:04Z</endTime>
+        <executionState>SUCCEEDED</executionState>
+        <nodeStates>
+          <nodeState name="dignan">
+            <startTime>2014-01-13T20:58:59Z</startTime>
+            <updateTime>2014-01-13T20:59:04Z</updateTime>
+            <endTime>2014-01-13T20:59:04Z</endTime>
+            <executionState>SUCCEEDED</executionState>
+          </nodeState>
+        </nodeStates>
+      </step>
+      <step stepctx="2" id="2">
         <startTime>2014-01-13T20:59:04Z</startTime>
+        <nodeStep>false</nodeStep>
         <updateTime>2014-01-13T20:59:10Z</updateTime>
-        <stepCount>1</stepCount>
-        <allNodes>
-          <nodes>
-            <node name="dignan" />
-          </nodes>
-        </allNodes>
-        <targetNodes>
-          <nodes>
-            <node name="dignan" />
-          </nodes>
-        </targetNodes>
+        <hasSubworkflow>true</hasSubworkflow>
         <endTime>2014-01-13T20:59:10Z</endTime>
         <executionState>SUCCEEDED</executionState>
-        <completed>true</completed>
+        <workflow>
+          <startTime>2014-01-13T20:59:04Z</startTime>
+          <updateTime>2014-01-13T20:59:10Z</updateTime>
+          <stepCount>1</stepCount>
+          <allNodes>
+            <nodes>
+              <node name="dignan" />
+            </nodes>
+          </allNodes>
+          <targetNodes>
+            <nodes>
+              <node name="dignan" />
+            </nodes>
+          </targetNodes>
+          <endTime>2014-01-13T20:59:10Z</endTime>
+          <executionState>SUCCEEDED</executionState>
+          <completed>true</completed>
+          <steps>
+            <step stepctx="2/1" id="1">
+              <startTime>2014-01-13T20:59:04Z</startTime>
+              <nodeStep>true</nodeStep>
+              <updateTime>2014-01-13T20:59:04Z</updateTime>
+              <endTime>2014-01-13T20:59:10Z</endTime>
+              <executionState>SUCCEEDED</executionState>
+              <nodeStates>
+                <nodeState name="dignan">
+                  <startTime>2014-01-13T20:59:04Z</startTime>
+                  <updateTime>2014-01-13T20:59:10Z</updateTime>
+                  <endTime>2014-01-13T20:59:10Z</endTime>
+                  <executionState>SUCCEEDED</executionState>
+                </nodeState>
+              </nodeStates>
+            </step>
+          </steps>
+        </workflow>
+      </step>
+    </steps>
+    <nodes>
+      <node name="dignan">
         <steps>
-          <step stepctx="2/1" id="1">
-            <startTime>2014-01-13T20:59:04Z</startTime>
-            <nodeStep>true</nodeStep>
-            <updateTime>2014-01-13T20:59:04Z</updateTime>
-            <endTime>2014-01-13T20:59:10Z</endTime>
+          <step>
+            <stepctx>1</stepctx>
             <executionState>SUCCEEDED</executionState>
-            <nodeStates>
-              <nodeState name="dignan">
-                <startTime>2014-01-13T20:59:04Z</startTime>
-                <updateTime>2014-01-13T20:59:10Z</updateTime>
-                <endTime>2014-01-13T20:59:10Z</endTime>
-                <executionState>SUCCEEDED</executionState>
-              </nodeState>
-            </nodeStates>
+          </step>
+          <step>
+            <stepctx>2/1</stepctx>
+            <executionState>SUCCEEDED</executionState>
           </step>
         </steps>
-      </workflow>
-    </step>
-  </steps>
-  <nodes>
-    <node name="dignan">
-      <steps>
-        <step>
-          <stepctx>1</stepctx>
-          <executionState>SUCCEEDED</executionState>
-        </step>
-        <step>
-          <stepctx>2/1</stepctx>
-          <executionState>SUCCEEDED</executionState>
-        </step>
-      </steps>
-    </node>
-  </nodes>
-</executionState>
+      </node>
+    </nodes>
+  </executionState>
+</result>
 ```
 
 **Full JSON example**
@@ -5203,8 +5196,6 @@ Run a command string.
     GET /api/14/project/[PROJECT]/run/command
     POST /api/14/project/[PROJECT]run/command
 
-(**Deprecated URLs**: `/api/14/run/command`, with required parameter `project`).
-
 The necessary content can be supplied as request Parameters:
 
 * `exec`: the shell command string to run, e.g. "echo hello". (required)
@@ -5256,8 +5247,6 @@ Run a script.
 **Request:**
 
     POST /api/14/project/[PROJECT]/run/script
-
-(**Deprecated URL**: `/api/14/run/script`, with required parameter `project`).
 
 Request Content:
 
@@ -5330,8 +5319,6 @@ Run a script downloaded from a URL.  (**API version 4** required.)
 
     POST /api/14/project/[PROJECT]/run/url
     GET /api/14/project/[PROJECT]/run/url
-
-(**Deprecated URL**: `/api/14/run/url`, with required parameter `project`).
 
 The request can be form content, or a JSON document.
 
@@ -5613,9 +5600,7 @@ List the existing projects on the server.
 
 **Response:**
 
-An Item List of `projects`, each `project` of the form specified in the [Getting Project Info](#getting-project-info) section.
-
-*Since API version 11*: JSON content can be retrieved with `Accept: application/json`
+See [Getting Project Info](#getting-project-info) section.
 
 *Since API version 26*: add the project `label` to the response
 
@@ -5669,30 +5654,7 @@ Get information about a project.
 
 **Response:**
 
-An Item List of `projects` with one `project`.  XML or JSON is determined by the `Accept` request header. The `project` is of the form:
-
-`Content-Type: application/xml`
-
-``` xml
-<project>
-    <name>Project Name</name>
-    <description>...</description>
-    <!-- additional items -->
-</project>
-```
-
-If the project defines a Resource Model Provider URL, then the additional items are:
-
-``` xml
-<resources>
-    <providerURL>URL</providerURL>
-</resources>
-```
-
-Updated in version 11:
-
-    GET /api/11/project/[PROJECT]
-
+XML or JSON is determined by the `Accept` request header.
 
 `Content-Type: application/xml`
 
@@ -5704,7 +5666,16 @@ Updated in version 11:
 </project>
 ```
 
-`Content-Type: application/json` *since version 11*
+If the user has `configure` authorization for the project, then the project configuration properties are included in the response.
+
+``` xml
+<config>
+    <property key="[name]" value="[value]"/>
+    <!-- ... -->
+</config>
+```
+
+`Content-Type: application/json`
 
 ``` json
 {
@@ -5714,15 +5685,6 @@ Updated in version 11:
   "config": {  }
 }
 
-```
-
-**API version 11 and later**: If the user has `configure` authorization for the project, then the project configuration properties are included in the response.
-
-``` xml
-<config>
-    <property key="[name]" value="[value]"/>
-    <!-- ... -->
-</config>
 ```
 
 ### Project Deletion ###
@@ -6319,8 +6281,6 @@ List the event history for a project.
 
     GET /api/14/project/[PROJECT]/history
 
-(**Deprecated URL**: `/api/14/history`, requires URL parameter: `project`.)
-
 Optional Parameters:
 
 * History query parameters:
@@ -6350,25 +6310,27 @@ The format for the `jobListFilter` and `excludeJobListFilter` is the job's group
 
 **Response:**
 
-`Content-Type: application/xml`: an Item List of `events`.  Each `event` has this form:
+`Content-Type: application/xml`:
 
 ``` xml
-<event starttime="[unixtime]" endtime="[unixtime]">
-  <title>[job title, or "adhoc"]</title>
-  <status>[status]</status>
-  <summary>[summary text]</summary>
-  <node-summary succeeded="[X]" failed="[Y]" total="[Z]"/>
-  <user>[user]</user>
-  <project>[project]</project>
-  <date-started>[start date]</date-started>
-  <date-ended>[end date]</date-ended>
-  <!-- if the execution was aborted, the username who aborted it: -->
-  <abortedby>[username]</abortedby>
-  <!-- if associated with an Execution, include the execution id: -->
-  <execution id="[execid]" href="[api href]" permalink="[gui href]"/>
-  <!-- if associated with a Job, include the Job ID: -->
-  <job id="[jobid]"  href="[api href]" permalink="[gui href]"/>
-</event>
+<events count="1">
+    <event starttime="[unixtime]" endtime="[unixtime]">
+      <title>[job title, or "adhoc"]</title>
+      <status>[status]</status>
+      <summary>[summary text]</summary>
+      <node-summary succeeded="[X]" failed="[Y]" total="[Z]"/>
+      <user>[user]</user>
+      <project>[project]</project>
+      <date-started>[start date]</date-started>
+      <date-ended>[end date]</date-ended>
+      <!-- if the execution was aborted, the username who aborted it: -->
+      <abortedby>[username]</abortedby>
+      <!-- if associated with an Execution, include the execution id: -->
+      <execution id="[execid]" href="[api href]" permalink="[gui href]"/>
+      <!-- if associated with a Job, include the Job ID: -->
+      <job id="[jobid]"  href="[api href]" permalink="[gui href]"/>
+    </event>
+</events>
 ```
 
 The `events` element will also have `max`, `offset`, and `total` attributes, to indicate the state of paged results.  E.G:
@@ -6440,8 +6402,6 @@ List or query the resources for a project.
 
     GET /api/14/project/[PROJECT]/resources
 
-(**Deprecated URL**: `/api/1/resources` requires `project` query parameter.)
-
 Optional Parameters:
 
 * `format` : Result format. Can use "xml", "yaml" or "json", or an installed ResourceFormat plugin name.
@@ -6466,8 +6426,6 @@ Get a specific resource within a project.
 **Request:**
 
     GET /api/14/project/[PROJECT]/resource/[NAME]
-
-(**Deprecated URL**: `/api/1/resource/[NAME]` requires `project` query parameter.)
 
 Optional Parameters:
 
@@ -6505,50 +6463,6 @@ Common attributes:
 * `osFamily`, `osName`, `osVersion`, `osArch`
 
 Custom attributes can also be used.
-
-Note: previous Rundeck versions supported individual URL parameters for specific node filter attributes,
-these are deprecated, but mentioned below.
-
-##### Deprecated Node Filter parameters
-
-To include certain resources, specify the inclusion filters:
-
-* `hostname`, `tags`, `os-[name,family,arch,version]`, `name`
-
-To exclude certain resources, specify the exclusion filters as above but with `exclude-` prepended:
-
-* `exclude-hostname`, `exclude-tags`, etc..
-
-To specify which type of filter (inclusion or exclusion) takes precedence, specify:
-
-* `exclude-precedence` : Whether exclusion filters take precedence. "true"/"false" (default is "true").
-
-If using only inclusion filters, the result set will be only those resources which *do* match the filters.
-
-If using only exclusion filters, the result set will be only those resources which *do not* match the filters.
-
-When using both types of filters, the result will depend on the `exclude-precedence` value (default true).
-
-* When `exclude-precedence` is true:
-    1. First select the resources which *do not* match the **exclusion** filters.
-    2. Then select from those the resources which *do* match the **inclusion** filters.
-
-* When `exclude-precedence` is false:
-    1. First select all resources.
-    2. Then remove the resources which *do not* match the **exclusion** filters.
-    3. Then add the resources which *do* match the **inclusion** filters.
-
-The difference between these results is apparent when you have resources which are matched by both the exclusion and the inclusion filters.  The precedence determines whether those resources are included or not.
-
-Using set logic, if "A" is the set of all resources, "X" is the set of all resources matching the exclusion filters, and "I" is the set of all resources matching the inclusion filters, then:
-
-* when `exclude-precedence=true` then the result is:
-    * $( A - X ) \cap I$
-    * which is also $I - X$
-* when `exclude-precedence=false` then the result is:
-    * $( A - X ) \cup I$
-
-
 
 ## SCM
 
