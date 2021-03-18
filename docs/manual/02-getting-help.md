@@ -19,10 +19,6 @@ Each month, Rundeck offers one hour of free online support for our community mem
 ### Open Discussion Q&A
 - [https://stackoverflow.com/questions/tagged/rundeck](https://stackoverflow.com/questions/tagged/rundeck)
 
-### IRC
-
-- IRC: irc://irc.freenode.net/rundeck
-
 ## Feedback
 
 If you find problems with Rundeck, or if you have questions, remarks, or
