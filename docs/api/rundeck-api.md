@@ -43,7 +43,7 @@ If the version number is not included or if the requested version number is unsu
 <result error="true">
     <error code="api-version-unsupported">
         <message>
-        Unsupported API Version "1". API Request: /rundeck/api/1/project/test/jobs. Reason: Minimum supported version: 2
+        Unsupported API Version "1". API Request: /rundeck/api/1/project/test/jobs. Reason: Minimum supported version: 11
         </message>
     </error>
 </result>
@@ -591,12 +591,12 @@ Examples:
 
 Using the URL parameter to request the project list:
 
-    GET /api/1/projects?authtoken=E4rNvVRV378knO9dp3d73O0cs1kd0kCd HTTP/1.1
+    GET /api/11/projects?authtoken=E4rNvVRV378knO9dp3d73O0cs1kd0kCd HTTP/1.1
     ...
 
 Using the HTTP Header:
 
-    GET /api/1/projects HTTP/1.1
+    GET /api/11/projects HTTP/1.1
     X-Rundeck-Auth-Token: E4rNvVRV378knO9dp3d73O0cs1kd0kCd
     ...
 
@@ -3022,7 +3022,7 @@ Run a job specified by ID.
 
 **Request:**
 
-    POST /api/1/job/[ID]/run
+    POST /api/11/job/[ID]/run
     POST /api/12/job/[ID]/executions
 
 Optional parameters:
@@ -3137,7 +3137,7 @@ Import job definitions in XML or YAML formats.
 
 **Request:**
 
-    POST /api/1/project/[PROJECT]/jobs/import
+    POST /api/14/project/[PROJECT]/jobs/import
 
 Request Content:
 
@@ -3146,8 +3146,8 @@ One of the following:
 
 * `Content-Type: x-www-form-urlencoded`, with a `xmlBatch` request parameter containing the input content
 * `Content-Type: multipart/form-data` multipart MIME request part named `xmlBatch` containing the content.
-* `Content-Type: application/xml`, request body is the Jobs XML formatted job definition (**since API v14**)
-* `Content-Type: application/yaml`, request body is the Jobs YAML formatted job definition (**since API v14**)
+* `Content-Type: application/xml`, request body is the Jobs XML formatted job definition
+* `Content-Type: application/yaml`, request body is the Jobs YAML formatted job definition
 
 Optional parameters:
 
@@ -3227,7 +3227,7 @@ Export a single job definition in XML or YAML formats.
 
 **Request:**
 
-    GET /api/1/job/[ID]
+    GET /api/11/job/[ID]
 
 Optional parameters:
 
@@ -3247,7 +3247,7 @@ Delete a single job definition.
 
 **Request:**
 
-    DELETE /api/1/job/[ID]
+    DELETE /api/11/job/[ID]
 
 **Response:**
 
@@ -3988,7 +3988,7 @@ Get the list of executions for a Job.
 
 **Request:**
 
-    GET /api/1/job/[ID]/executions
+    GET /api/11/job/[ID]/executions
 
 Optional Query Parameters:
 
@@ -4191,7 +4191,7 @@ Get the status for an execution by ID.
 
 **Request:**
 
-    GET /api/1/execution/[ID]
+    GET /api/11/execution/[ID]
 
 **Response:**
 
@@ -5149,7 +5149,7 @@ Abort a running execution by ID.
 
 **Request:**
 
-    GET /api/1/execution/[ID]/abort
+    GET /api/11/execution/[ID]/abort
 
 Optional Parameters:
 
@@ -5596,7 +5596,7 @@ List the existing projects on the server.
 
 **Request:**
 
-    GET /api/1/projects
+    GET /api/11/projects
 
 **Response:**
 
@@ -5650,7 +5650,7 @@ Response:  XML or JSON project definition of the form indicated in the [Getting 
 
 Get information about a project.
 
-    GET /api/1/project/[PROJECT]
+    GET /api/11/project/[PROJECT]
 
 **Response:**
 
