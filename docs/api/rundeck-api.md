@@ -2686,7 +2686,7 @@ For Project-specific ACLs see [Project ACLs](#project-acls).
 
 For more information about ACL Policies see:
 
-* [ACLPOLICY format][/manual/document-format-reference/aclpolicy-v10.md]
+* [ACLPOLICY format][ACLPOLICY]
 * [Access Control Policy](/administration/security/authorization.md)
 
 ### List System ACL Policies
@@ -8477,7 +8477,7 @@ Content-Type: `application/json`
 
 [/api/V/webhook/\[AUTH_TOKEN\]]: #send-webhook-event
 
-[ACLPOLICY]:../man5/aclpolicy.html
+[ACLPOLICY]:../manual/document-format-reference/aclpolicy-v10.html
 
 
 ### Incubating
