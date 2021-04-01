@@ -12,6 +12,15 @@ PagerDuty Webhook plugin.
 The plugin configuration will run a **Job** when PagerDuty sends Rundeck an incident
 `trigger` event.
 
+## Configuring the V3 Webhooks
+For the incoming V3 events, Rundeck can now confirm that the payload was confirmed by using a shared secret key with PagerDuty that is returned in the response body in the [webhook subscription call](https://developer.pagerduty.com/api-reference/reference/REST/openapiv3.json/paths/~1webhook_subscriptions/post)
+
+Once the shared secret is in posession, you will need to set it at the project or framework level. For example:
+
+In the project settings: `project.plugin.WebhookEvent.pagerduty-V3-run-job.privateKey=value`
+In the framework settings: `framework.plugin.WebhookEvent.pagerduty-V3-run-job.privateKey=value`
+
+
 ### Create Rundeck Webhook
 1. Navigate to **Webhooks**
 2. Click **Add**
