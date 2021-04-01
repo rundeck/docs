@@ -2686,7 +2686,7 @@ For Project-specific ACLs see [Project ACLs](#project-acls).
 
 For more information about ACL Policies see:
 
-* [ACLPOLICY format][/manual/document-format-reference/aclpolicy-v10.md]
+* [ACLPOLICY format][ACLPOLICY]
 * [Access Control Policy](/administration/security/authorization.md)
 
 ### List System ACL Policies
@@ -8161,7 +8161,7 @@ Content-Type: `application/json`
 
 [/api/V/project/\[PROJECT\]/source/\[INDEX\]][]
 
-* `GET` [Get a Resource Model Source for a Project][GET /api/V/project/\[PROJECT\]/source/\[INDEX\]]
+* `GET` [Get a Resource Model Source for a Project][/api/V/project/\[PROJECT\]/source/\[INDEX\]]
 
 [/api/V/project/\[PROJECT\]/source/\[INDEX\]/resources][]
 
@@ -8307,6 +8307,8 @@ Content-Type: `application/json`
 [/api/V/job/\[ID\]/scm/\[INTEGRATION\]/action/\[ACTION_ID\]]:#perform-job-scm-action
 [/api/V/job/\[ID\]/scm/\[INTEGRATION\]/action/\[ACTION_ID\]/input]:#get-job-scm-action-input-fields
 
+
+[/api/V/config/refresh]: #config-refresh
 
 [/api/V/execution/\[ID\]]: #execution-info
 
@@ -8477,7 +8479,10 @@ Content-Type: `application/json`
 
 [/api/V/webhook/\[AUTH_TOKEN\]]: #send-webhook-event
 
-[ACLPOLICY]:../man5/aclpolicy.html
+[/api/V/project/\[PROJECT\]/webhook/]: #add-a-webhook
+[/api/V/project/\[PROJECT\]/webhook/\[ID\]]: #get-a-webhook
+
+[ACLPOLICY]:../manual/document-format-reference/aclpolicy-v10.html
 
 
 ### Incubating
