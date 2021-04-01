@@ -8161,7 +8161,7 @@ Content-Type: `application/json`
 
 [/api/V/project/\[PROJECT\]/source/\[INDEX\]][]
 
-* `GET` [Get a Resource Model Source for a Project][GET /api/V/project/\[PROJECT\]/source/\[INDEX\]]
+* `GET` [Get a Resource Model Source for a Project][/api/V/project/\[PROJECT\]/source/\[INDEX\]]
 
 [/api/V/project/\[PROJECT\]/source/\[INDEX\]/resources][]
 
@@ -8307,6 +8307,8 @@ Content-Type: `application/json`
 [/api/V/job/\[ID\]/scm/\[INTEGRATION\]/action/\[ACTION_ID\]]:#perform-job-scm-action
 [/api/V/job/\[ID\]/scm/\[INTEGRATION\]/action/\[ACTION_ID\]/input]:#get-job-scm-action-input-fields
 
+
+[/api/V/config/refresh]: #config-refresh
 
 [/api/V/execution/\[ID\]]: #execution-info
 
@@ -8476,6 +8478,9 @@ Content-Type: `application/json`
 [/api/V/plugin/list]:#list-installed-plugins
 
 [/api/V/webhook/\[AUTH_TOKEN\]]: #send-webhook-event
+
+[/api/V/project/\[PROJECT\]/webhook/]: #add-a-webhook
+[/api/V/project/\[PROJECT\]/webhook/\[ID\]]: #get-a-webhook
 
 [ACLPOLICY]:../manual/document-format-reference/aclpolicy-v10.html
 
