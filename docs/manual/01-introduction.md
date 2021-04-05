@@ -45,7 +45,7 @@ _NOTE: Rundeck Enterprise was recently renamed from Rundeck Pro. You may still s
 
 ## Who makes Rundeck?
 
-Rundeck is developed by Rundeck, Inc. and the Rundeck community. All new users are welcomed to participate in the project and contribute. Please submit an issue on our GitHub repository listed above or reach out to your Customer Success Team contact.
+Rundeck is part of the PagerDuty suite of products and is developed by the Rundeck Business unit and the Rundeck community. The community is welcomed to participate in the project and contribute. Please submit an issue on our GitHub repository listed above or reach out to your Customer Success Team contact.
 
 [rundeck, inc.]: https://www.rundeck.com/
 

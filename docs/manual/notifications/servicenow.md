@@ -6,13 +6,13 @@ Original:
 http://support.rundeck.com/customer/en/portal/articles/2915300-servicenow-plugins)
 --->
 
-## Service Now / Incident / Comment
+## ServiceNow / Incident / Comment
 
 Rundeck Notification plugin to comment an incident
 
 ### Configuration
 
-The Service Now connection credentials are set in the project.properties file
+The ServiceNow connection credentials are set in the project.properties file
 for your project.
 
 ```
@@ -25,16 +25,16 @@ project.plugin.Notification.Service-Now-Notification.url=https://server.service-
 
 To use the plugin, configure this mandatory input:
 
-- incident key: Service Now incident ID.
+- incident key: ServiceNow incident ID.
 - Comment: Comment to add.
 
-## Service Now / Incident / Create
+## ServiceNow / Incident / Create
 
 Rundeck Notification plugin that creates an incident
 
 ### Configuration
 
-The Service Now connection credentials are set in the project.properties file
+The ServiceNow connection credentials are set in the project.properties file
 for your project.
 
 ```
@@ -57,13 +57,13 @@ These inputs are optional and if left empty the default value of Service now it'
 - Assignment Group: Assignment Group. If not set, no value will be sent
 - Description: Description to be used
 
-## Service Now / Change / Create
+## ServiceNow / Change / Create
 
-Rundeck Notification plugin to create a Service Now Change
+Rundeck Notification plugin to create a ServiceNow Change
 
 ### Configuration
 
-The Service Now connection credentials are set in the project.properties file
+The ServiceNow connection credentials are set in the project.properties file
 for your project.
 
 ```
@@ -76,5 +76,5 @@ project.plugin.Notification.Service-Now-Notification-Change-Create.url=https://s
 
 To use the plugin, configure this mandatory input:
 
-- assignment group: Service Now incident ID.
+- assignment group: ServiceNow incident ID.
 - state: State code. If not set, the change will be in New status.

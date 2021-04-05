@@ -4,7 +4,7 @@
 
 This is a Resource Model Source plugin that provides server information from ServiceNow's CMDB.
 
-To obtain the data, the Service Now connection parameters must be passed as parameters to the plugin
+To obtain the data, the ServiceNow connection parameters must be passed as parameters to the plugin
 (username, password and url), and a list of server types, this can be:
 
 - all : Retrieve al types of servers
@@ -23,7 +23,7 @@ To obtain the data, the Service Now connection parameters must be passed as para
 
 - `mappingParams`: A set of ";" separated mapping entries. This values are going to override the default mapping
   one by one.
-  The minimal maping needed is the `username, because Service Now servers lacks a username field to map:
+  The minimal maping needed is the `username, because ServiceNow servers lacks a username field to map:
 
 ```
 username.default=root
@@ -35,7 +35,7 @@ username.default=root
 nodename.selector=name
 hostname.selector=host_name,ip_address,dns_domain
 sshport.default=22
-description.default=Service Now node instance
+description.default=ServiceNow node instance
 description.selector=short_description
 osFamily.default=unix
 osName.selector=os

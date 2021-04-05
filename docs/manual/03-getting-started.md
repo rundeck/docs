@@ -19,7 +19,7 @@ help you use or integrate Rundeck into your environment.
   of a network accessible host.
   A _resource model_ is a representation of Nodes in a project.
 - **Commands**: A _[command](/manual/06-commands.md)_ is a single executable string executed on a Node.
-  Rundeck invokes commands on nodes via a _node executor_, 
+  Rundeck invokes commands on nodes via a _node executor_,
   which evaluates the command string and executes it.
 - **Executions**: An _[execution](/manual/07-executions.md)_ is a representation of the activity of a running or completed
   command or job. The data about the execution is used in rundeck to monitor
@@ -76,17 +76,18 @@ Rundeck projects.
 
 Once the project has been created, you are ready to use your Rundeck instance.
 
-## Rundeck Graphical Console
+## Rundeck Graphical Console (GUI)
 
 ### Navigation
 
-Most Rundeck navigation is done using the navigation bar on the left side of the page.
-Using the left navigation bar you can choose between available projects and, once inside a project, you can switch to the project's _Dashboard_, _Jobs_, _Nodes_, _Commands_ and _Activity_ pages.
-Project administrators will also be able to access the _Project Settings_ pages.
+Using the project picker in the top bar it is possible to quickly search, list and switch between the various projects configured.
+Once inside a project navigation is done using the navigation bar on the left side of the page.
+ _Dashboard_, _Jobs_, _Nodes_, _Commands_, _Activity_, and other pages.
+Project administrators will also be able to access the _Project Settings_ pages menu.
 
 For those with Rundeck administrator access, the System settings can be accessed by clicking the gear icon in the page header.
 
-Finally, your user profile and logout functions are found under the User icon.
+Finally, the user profile and logout functions are found under the User icon.
 
 ![Top level navigation](~@assets/img/fig0201.png)
 

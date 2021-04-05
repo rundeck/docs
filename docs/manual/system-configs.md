@@ -2,7 +2,7 @@
 
 The Rundeck GUI has a Configuration Menu which lets you view and manage system wide configuration settings.
 
-Users with `admin` role access will see the "Configure" icon in the header:
+Users with `admin` role access will see the "Configure" icon in the header (gear icon):
 
 ![Configure Settings Icon](~@assets/img/fig0701.png)
 
@@ -78,10 +78,11 @@ After the key has been saved, the browser will be updated.
 
 ![Key Storage UI](~@assets/img/fig0727.png)
 
-## System Configuration
+## System Configuration (Enterprise Only)
 
-This page displays key configuration settings.
-Modify the associated configuration file to change a configuration setting.
+This section will allow configuration of Rundeck configuration settings from within the GUI.  [Check out the full feature documentation here](/manual/configuration-mgmt/configmgmt.md).
+
+Open Source Rundeck will display key configuration settings as shown in the screen shot below.
 
 ![System settings](~@assets/img/fig0715.png)
 

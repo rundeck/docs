@@ -5,7 +5,7 @@ The readme content is interpreted as [markdown](http://commonmark.org/help/) tex
 
 ## Graphical Interface
 
-![Figure: Project readme](~@assets/img/fig0203.png)
+![Figure: Project with Readme](~@assets/img/project-list-readme.png)
 
 ### CLI Usage
 

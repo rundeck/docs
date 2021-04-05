@@ -1,27 +1,27 @@
 # Project Create
 
-A project can be created either from the graphical console or using the
-[rd] shell tool.
+A project can be created either from the graphical console or using the [rd] shell tool.
 
 ## Graphical Interface
 
-In the graphical console, you will notice a Project menu in the navigation bar and a list of projects on the homepage if any projects exist.
+In the graphical console, you will notice a Project Picker in the top navigation bar.  This is the primary access to the different projects.  To see the full Project Menu click on _View All Projects_ or click the Rundeck logo in the upper left of the screen.
 
-![List of projects](~@assets/img/fig203-b.png)
+![Project Picker](~@assets/img/project-picker.png)
+
+![Full Project Menu](~@assets/img/project-list-full.png)
 
 If no projects exist, the project menu will not be displayed you will be prompted to create a new project.
 
-![Creat a project](~@assets/img/fig0203-c.png)
+![Creat a project](~@assets/img/project-list-empty.png)
 
 When one or more projects exist, a project can be created by either
-clicking on the "New Project" link in the navigation menu or by pressing the "New Project" button home
-page.
+clicking on the "New Project" link in the full project menu.
 
-![Creat a project](~@assets/img/fig0203-d.png)
+![Creat a project](~@assets/img/project-list-newbutton.png)
 
 Press the "New Project" button to create a project.
 
-![Figure: Create project prompt](~@assets/img/fig0203-a.png)
+![Figure: Create project prompt](~@assets/img/project-create-blank.png)
 
 _Details_
 
