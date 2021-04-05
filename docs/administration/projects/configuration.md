@@ -6,7 +6,7 @@
 Rundeck 3.4 no longer supports the `rundeck.projectsStorageType` configuration property.
 :::
 
-If you are upgrading from Rundeck 3.3 or earlier, any existing Projects that existed with a previous value of `filesystem` 
+If you are upgrading from Rundeck 3.3 or earlier, any Projects that existed with a previous value of `filesystem` 
 will be automatically imported to the Database.
 The import process copies the contents of `etc/project.properties`, `readme.md` and `motd.md` (if they exist), and any ACLs within `acls/`.
 
