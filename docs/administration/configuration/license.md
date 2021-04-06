@@ -14,7 +14,7 @@ Rundeck Inc. guarantees that Rundeck Enterprise does not infringe on any patents
 
 ## License key installation
 
-Ask for the license key to the support team. Then install the license key via the gui or on the filesystem directly.
+Licenses are available from your Rundeck Customer Success representative.
 
 ### Via GUI
 
@@ -64,7 +64,7 @@ Rundeck + Tomcat:
 $RDECK_BASE/etc/
 ```
 
-### Store license in database (introduced in 3.2.6)
+### Store license in database
 
 If you would like to store your license in your database rather than your filesystem, turn on the following setting:
 
@@ -74,7 +74,7 @@ If you have a license file installed in your Rundeck server it will be migrated 
 
 When Rundeck bootstraps it will check the license file on the filesystem if it exists, and if the issue date of
 that license is more recent than the license in the database, the database will be updated with the license
-on the filesystem.
+on the filesystem. _(version 3.2.6+)_
 
 ### Store the license using a custom storage tree
 
