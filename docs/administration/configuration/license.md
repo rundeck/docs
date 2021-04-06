@@ -10,7 +10,7 @@ Rundeck Enterprise is licensed per a combination of Rundeck Enterprise clusters 
 
 No software with GPL or other “copyleft” licenses are used in Rundeck Enterprise. All license rights for using Rundeck Enterprise are contained within the single Rundeck Enterprise license.
 
-Rundeck Inc. guarantees that Rundeck Enterprise does not infringe on any patents, copyrights or misappropriates any trade secrets. Rundeck will defend licensees against such claims. For details, see [Rundeck Enterprise Master Software License Agreement](http://support.rundeck.com/customer/portal/articles/2723878-rundeckpro-license).
+Rundeck Inc. guarantees that Rundeck Enterprise does not infringe on any patents, copyrights or misappropriates any trade secrets. Rundeck will defend licensees against such claims. For details, see [Rundeck Enterprise Master Software License Agreement](https://www.rundeck.com/enterprise-license).
 
 ## License key installation
 
@@ -78,7 +78,7 @@ on the filesystem.
 
 ### Store the license using a custom storage tree
 
-If you would like to store your license in a storage tree, you can configure a storage tree using the standard 
+If you would like to store your license in a storage tree, you can configure a storage tree using the standard
 storage tree config options.  
 
 Turn on license storage tree usage then provide your configuration using the prefix: `rundeck.license.storage`
