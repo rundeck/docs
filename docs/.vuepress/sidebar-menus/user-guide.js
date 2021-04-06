@@ -140,14 +140,15 @@ module.exports = [{
       sidebarDepth: 2
     },
     {
-      title: 'System Configurations',
+      title: 'System Menu',
       collapsable: true,
       path: '/manual/system-configs',
       sidebarDepth: 1,
       children: [
           '/manual/system-configs',
           '/manual/user-management/user-mgmt',
-          '/manual/system-report'
+          '/manual/system-report',
+          '/manual/configuration-mgmt/configmgmt'
       ]
     },
     ['/manual/10-user.md', 'Profile Menu'],

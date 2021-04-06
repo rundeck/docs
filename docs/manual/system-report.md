@@ -3,10 +3,6 @@
 :::enterprise
 :::
 
-::: warning Beta Feature
-This Enterprise feature is currently in Beta.  To provide feedback please feel free to email [product@rundeck.com](mailto:product@rundeck.com)
-:::
-
 The Enterprise System Report provides a breakdown of the Rundeck server's system statistics and information.
 
 ## General

@@ -1,14 +1,14 @@
-# System Configuration Menu
+# System Menu
 
-The Rundeck GUI has a Configuration Menu which lets you view and manage system wide configuration settings.
+The Rundeck GUI has a menu which lets you view and manage system wide configuration settings.
 
-Users with `admin` role access will see the "Configure" icon in the header (gear icon):
+Users with `admin` role access will see the "System Menu" icon in the header:
 
-![Configure Settings Icon](~@assets/img/fig0701.png)
+![System Menu Icon](~@assets/img/fig0701.png)
 
 This page contains links to manage Project configuration as well as system level configuration information.
 
-![Configure Menu](~@assets/img/fig0702.png)
+![System Menu](~@assets/img/fig0702.png)
 
 :::tip
 Some settings and screenshots show Enterprise version features and may not be available in the open source version.

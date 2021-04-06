@@ -48,7 +48,7 @@ module.exports = [{
   },
   {
     link: '/manual/system-configs',
-    text: 'System Configuration'
+    text: 'System Menu'
   },
   {
     link: '/manual/10-user',
