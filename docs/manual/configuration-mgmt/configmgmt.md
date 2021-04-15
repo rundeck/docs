@@ -37,12 +37,17 @@ All setting values are done in String format for this release.  If a setting is 
 
 ### Current Roadmap Plans
 
+Bugs:
+- Removing a Base setting does not take it off the list.
+
+Enhancements:
 - Currently everything is entered as a string. In future versions the datatype of the field will be used to simplify input.  _(e.g. True/False selectors, List entries, Storage Path browsers, etc.)_
 - Initial boot configuration settings will be written to the database by default rather than server based text files.
 - Settings will be refreshed using the [backend config refresh](/administration/configuration/config-file-reference.html#live-configuration-refreshing-enterprise) where possible to reduce restarts.
 - Critical settings will be identified and marked as required.
 - UI Improvements with setting descriptions, documentation links, no-restart refresh where possible.
 - Include the ability to sort the settings list.
+- Add ability to change config Strata setting without removing and re-adding config.
 - Add ability to cancel or revert changes that have been made without having to navigate to another page.
 - Allow for nesting Categories listing.
 - Deleting entries will be “staged” and committed after “Save” rather than immediate removal.
