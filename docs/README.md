@@ -15,7 +15,7 @@ These are some other common starting points.
 * [Release History](/history/)
 * [List of Plugins](/plugins/)
 * [Old Version of Docs](/manual/old-docs.md)
-* [Sign up for Release Notes](https://www.rundeck.com/rundecker)
+* [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
 
 
 :::tip Ask the Experts
