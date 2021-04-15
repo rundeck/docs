@@ -3,7 +3,7 @@
 This document describes how to configure Rundeck for SSL/HTTPS support, and assumes you are using the rundeck-launcher standalone launcher. If you are using RPM/DEB install, refer to the appropriate configuration file paths from
 [Rundeck Configuration - Configuration File Reference - Configuration Layout](/administration/configuration/config-file-reference.md#configuration-layout).
 
-(1) Before beginning, do a first-run of the launcher, as it will create the base directory for Rundeck and generate configuration files.
+1. Before beginning, do a first-run of the launcher, as it will create the base directory for Rundeck and generate configuration files.
 
 ```properties
 cd $RDECK_BASE;  java -jar rundeck-3.0.1.war
@@ -15,7 +15,7 @@ This will start the server and generate necessary config files. Press control-c 
 Grails application running at http://localhost:4440 in environment: production
 ```
 
-(2) Using the [keytool] command, generate a keystore for use as the server cert and client truststore. Specify passwords for key and keystore:
+2. Using the [keytool] command, generate a keystore for use as the server cert and client truststore. Specify passwords for key and keystore:
 
 [keytool]: https://linux.die.net/man/1/keytool-java-1.6.0-openjdk
 
@@ -41,14 +41,14 @@ yes
 !
 ```
 
-(3) CLI tools that communicate to the Rundeck server need to trust the SSL certificate provided by the server. They are preconfigured to look for a truststore at the location:
+3. CLI tools that communicate to the Rundeck server need to trust the SSL certificate provided by the server. They are preconfigured to look for a truststore at the location:
 `$RDECK_BASE/etc/truststore`. Copy the keystore as the truststore for CLI tools:
 
 ```shell
 cp etc/keystore etc/truststore
 ```
 
-(4) Modify the ssl.properties file to specify the full path location of the keystore and the appropriate passwords:
+4. Modify the ssl.properties file to specify the full path location of the keystore and the appropriate passwords:
 
 ```shell
 vi server/config/ssl.properties
@@ -66,7 +66,7 @@ truststore.password=adminadmin
 
 The ssl.properties default keystore and truststore location path for war installation is \$RDECK_BASE/etc/
 
-(5) Configure client properties. Modify the file
+5. Configure client properties. Modify the file
 `$RDECK_BASE/etc/framework.properties` and change these properties:
 
 * framework.server.url
@@ -76,7 +76,7 @@ The ssl.properties default keystore and truststore location path for war install
 
 Set them to the appropriate https protocol, and change the port to 4443, or to the value of your `-Dserver.https.port` runtime configuration property.
 
-(6) Configure server URL so that Rundeck knows its external address. Modify the file `$RDECK_BASE/server/config/rundeck-config.properties` and change the `grails.serverURL`:
+6. Configure server URL so that Rundeck knows its external address. Modify the file `$RDECK_BASE/server/config/rundeck-config.properties` and change the `grails.serverURL`:
 
 ```properties
 grails.serverURL=https://myhostname:4443
@@ -84,14 +84,14 @@ grails.serverURL=https://myhostname:4443
 
 Set the URL to include the appropriate https protocol, and change the port to 4443, or to the value of your `-Dserver.https.port` runtime configuration property.
 
-(7) For Debian installation, create/edit `/etc/default/rundeckd`, for RPM installation, create/edit `/etc/sysconfig/rundeckd`:
+7. For Debian installation, create/edit `/etc/default/rundeckd`, for RPM installation, create/edit `/etc/sysconfig/rundeckd`:
 
 ```properties
 RUNDECK_WITH_SSL=true
 RDECK_HTTPS_PORT=1234
 ```
 
-(8) Start the server. For the rundeck launcher, tell it where to read the ssl.properties
+8. Start the server. For the rundeck launcher, tell it where to read the ssl.properties
 
 ```shell
 java -Drundeck.ssl.config=$RDECK_BASE/server/config/ssl.properties -jar rundeck-3.0.1.war
