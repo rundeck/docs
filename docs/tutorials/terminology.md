@@ -1,3 +1,0 @@
-# Rundeck Terminology
-
-Terms stuff

@@ -1,4 +1,4 @@
-# Tutorials
+# Learning Rundeck
 
 With Rundeck, it is simple and easy to create automation workflows from any of
 your existing tools or scripts. This Tutorial is written to help you quickly
