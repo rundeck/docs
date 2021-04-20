@@ -9,11 +9,20 @@ module.exports = [{
       title: 'Tutorials',
       collapsable: true,
       path: '/learning/tutorial',
-      sidebarDepth: 1,
+      sidebarDepth: 0,
       children: [
         '/learning/tutorial/sample'
       ]
     },
-    ['/learning/howto/','How To Articles']
+    {
+      title: 'How To',
+      collapsable: true,
+      path: '/learning/howto',
+      sidebarDepth: 0,
+      children: [
+        '/learning/howto/custom-script-plugin-hello-world',
+        '/learning/howto/java-plugin'
+      ]
+    },
   ]
 }]
