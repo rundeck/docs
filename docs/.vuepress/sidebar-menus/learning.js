@@ -20,8 +20,15 @@ module.exports = [{
       path: '/learning/howto',
       sidebarDepth: 0,
       children: [
-        '/learning/howto/custom-script-plugin-hello-world',
-        '/learning/howto/java-plugin'
+        {
+          title: 'Customizing',
+          collapsable: true,
+          sidebarDepth: 0,
+          children: [
+            '/learning/howto/custom-script-plugin-hello-world',
+            '/learning/howto/java-plugin'
+          ]
+        }
       ]
     },
   ]
