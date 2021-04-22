@@ -15,7 +15,7 @@ Set an appropriate [innodb_buffer_pool_size](https://dev.mysql.com/doc/refman/5.
 its own page cache and the buffer pool size determines how much RAM it can use! Setting this to 80% of the system memory is the common wisdom for dedicated
 servers, however you may want go higher if your server has more than 32G of RAM.
 
-### MySQL 5.6
+### MySQL 5.6, 5.7
 
 `5.6.3` or greater is required if using `utf8mb4` character set as the server default, and upgrading or installation may require an extra step.
 
@@ -37,6 +37,28 @@ ALTER TABLE `reaction_event` ROW_FORMAT=dynamic;
 ```
 
 Restart Rundeck!
+
+### MySQL 8.0
+
+`8.0.0` or greater is using `utf8mb4` character set as the server default.
+
+It also has newer default configuration which reflected [MySQL 5.6, 5.7](#MySQL-5.6_-5.7) conf.
+
+Configuration:
+
+```properties
+innodb_file_per_table=true  # default value is ture
+```
+
+The following InnoDB file format configuration options ware [removed on 8.0.0](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-0.html):
+
+- innodb_file_format
+- innodb_file_format_check
+- innodb_file_format_max
+- innodb_large_prefix
+
+On 8.0, Barracuda is default file format and all table's ROW_FORMAT is dynamic.
+
 
 ## Setup Rundeck Database
 
