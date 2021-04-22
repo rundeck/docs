@@ -26,10 +26,10 @@ A Job Step is an individual unit of work that a Job might do.  A job can have mu
 The Activity window shows execution history for commands and Jobs. By default, the Activity page will list running executions and history recent executions. The page contains a filter control that can be used to expand or limit the executions. Execution detail for each job execution will show options the job was run with, log output, job duration, etc.
 
 ## Tours
-Things that can show people how to do stuff
+Rundeck Guided Tours provide interactive walk-throughs to end users to help demonstrate Rundeck processes. They can be used to help first time users get familiar with the system, or provide step-by-step instructions for how to execute complicated processes.
 
 ## Plugins
-Things people write to do more things
+Rundeck is built over a flexible platform architecture.  Adding new functionality such as Job Steps, Storage sources, etc. can be implemented by writing a [Rundeck Plugin](/developer/01-plugin-development).
 
 ## Node Executors
-Things that do execution things on nodes
+Rundeck executes Command items on Nodes. The command may be part of a Workflow as defined in a Job, and it may be executed multiple times on different nodes. Rundeck uses the NodeExecutor and FileCopier services as part of the process of executing these commands.
