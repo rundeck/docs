@@ -116,6 +116,10 @@ dataSource.driverClassName = org.mariadb.jdbc.Driver
 
 Finally you can start rundeck. If you see a startup error about database access, make sure that the hostname that the Mysql server sees from the client is the same one you granted access to.
 
+NB: `myserver` , `rundeckuser` and `rundeckpassword` should be match your environment and mysql configuration.
+If you install rundeck & MySQL-server on one server, `myserver` is localhost.
+If you install rundeck & MySQL-server on different servers, `myserver` should be IP address or hostname of server which installed MySQL-server.
+
 NB: `autoReconnect=true` will fix a common problem where the Rundeck server's connection to Mysql is dropped after a period of inactivity, resulting in an error message: "Message: Can not read response from server. Expected to read 4 bytes, read 0 bytes before connection was unexpectedly lost."
 
 See more about [configuring the Mysql JDBC Connector/J URL](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-reference-configuration-properties.html).
