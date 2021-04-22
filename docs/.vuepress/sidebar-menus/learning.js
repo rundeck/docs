@@ -4,7 +4,15 @@ module.exports = [{
   sidebarDepth: 2,
   children: [
     '/learning/',
-    '/learning/tutorial/terminology',
+    {
+      title: 'Terminology',
+      collapsable: true,
+      path: '/learning/tutorial/terminology',
+      sidebarDepth: 2,
+      children: [
+        '/learning/tutorial/terminology'
+      ]
+    },
     {
       title: 'Tutorial',
       collapsable: true,

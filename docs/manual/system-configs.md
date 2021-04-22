@@ -17,11 +17,9 @@ Some settings and screenshots show Enterprise version features and may not be av
 ## Key Storage
 
 The Key Storage facility provides GUI backed by an [API](/api/rundeck-api.md#key-storage) to manage public, private keys and passwords.
-These stored keys are used by both Node Executor and File Copier plugins.
-Project configuration settings allow you to reference a key path for both the default Node Executor and File Copier
-([see above](/manual/project-settings.md#default-node-executor-configuration).
+These stored keys are used by many different types of Rundeck plugins.  The Key Storage entries can also be used in Job definitions as secure value inputs.
 
-Keys can be stored either using an uploaded file or as text input. Public key data can be retrieved once stored. Private key and password data is only available to the node execution plugins.
+Keys can be stored either using an uploaded file or as text input.
 
 ### Key store organization
 
