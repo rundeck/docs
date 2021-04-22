@@ -6,12 +6,14 @@ module.exports = [{
     '/learning/',
     '/learning/tutorial/terminology',
     {
-      title: 'Tutorials',
+      title: 'Tutorial',
       collapsable: true,
       path: '/learning/tutorial',
       sidebarDepth: 0,
       children: [
-        '/learning/tutorial/sample'
+        '/learning/tutorial/creatingnodes',
+        '/learning/tutorial/commands',
+        '/learning/tutorial/jobs'
       ]
     },
     {

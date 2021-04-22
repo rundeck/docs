@@ -99,6 +99,15 @@ module.exports = {
     [
       'vuepress-plugin-container',
       {
+        type: 'tutorial',
+        defaultTitle: {
+          '/':'This tutorial is based on example code described on the Learning Rundeck page.'
+        },
+      },
+    ],
+    [
+      'vuepress-plugin-container',
+      {
         type: 'incubating',
         defaultTitle: {
           '/':'Incubating: this API may change in a future release.'
