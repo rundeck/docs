@@ -5,9 +5,10 @@ module.exports = [{
     {
       title: 'Installation',
       collapsable: true,
-      path: '/administration/install/',
+      path: '/administration/install/installing-rundeck',
       sidebarDepth: 1,
       children: [
+        '/administration/install/installing-rundeck',
         '/administration/install/system-requirements',
         '/administration/install/jar',
         '/administration/install/linux-deb',
