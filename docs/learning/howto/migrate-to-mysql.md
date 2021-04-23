@@ -16,7 +16,6 @@ For each project that needs to be migrated export the archive via the GUI:
 >Note: make sure to click the final link that is presented to download the file.
 
 Save each project archive file (named "[project name]-XXXX.rdproject.jar")
-in a place you can upload it later.
 in a safe place.  They will be needed in a future step.
 
 ## Backup Rundeck data
