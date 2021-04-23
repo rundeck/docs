@@ -15,6 +15,33 @@ Set an appropriate [innodb_buffer_pool_size](https://dev.mysql.com/doc/refman/8.
 its own page cache and the buffer pool size determines how much RAM it can use! Setting this to 80% of the system memory is the common wisdom for dedicated
 servers, maybe even higher if the server has more than 32G of RAM.
 
+### MySQL 8.0
+
+### MySQL 5.7
+
+### MySQL 5.6
+
+`5.6.3` or greater is required if using `utf8mb4` character set as the server default, and upgrading or installation may require an extra step.
+
+Configuration:
+
+```properties
+innodb_file_format=barracuda
+innodb_file_per_table=true
+innodb_large_prefix=true
+```
+
+After first Rundeck start run the following SQL queries:
+
+```sql
+use <rundeck_database>;
+ALTER TABLE `event_subscription` ROW_FORMAT=dynamic;
+ALTER TABLE `reaction` ROW_FORMAT=dynamic;
+ALTER TABLE `reaction_event` ROW_FORMAT=dynamic;
+```
+
+Be sure to restart Rundeck after making these changes!
+
 ## Setup Rundeck Database
 
 Next create a database and user access for the Rundeck server.
@@ -93,29 +120,6 @@ Maven:
 MYSQLJ_VERS=8.0.21
 curl -L -o https://repo1.maven.org/maven2/mysql/mysql-connector-java/${MYSQLJ_VERS}/mysql-connector-java-${MYSQLJ_VERS}.jar
 ```
-
-### Notes on previous versions.
-
-Prior to version `8.0.0` some characters sets may not work correctly. `5.6.3` or greater is required if using `utf8mb4` character set as the server default, and upgrading or installation may require an extra step.
-
-Configuration:
-
-```properties
-innodb_file_format=barracuda
-innodb_file_per_table=true
-innodb_large_prefix=true
-```
-
-After first Rundeck start run the following SQL queries:
-
-```sql
-use <rundeck_database>;
-ALTER TABLE `event_subscription` ROW_FORMAT=dynamic;
-ALTER TABLE `reaction` ROW_FORMAT=dynamic;
-ALTER TABLE `reaction_event` ROW_FORMAT=dynamic;
-```
-
-Be sure to restart Rundeck after making these changes!
 
 ### Additional Articles
 
