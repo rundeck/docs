@@ -36,7 +36,8 @@ module.exports = [{
           sidebarDepth: 0,
           children: [
             '/learning/howto/custom-script-plugin-hello-world',
-            '/learning/howto/java-plugin'
+            '/learning/howto/java-plugin',
+            '/learning/howto/migrate-to-mysql'
           ]
         }
       ]
