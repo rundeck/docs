@@ -4,7 +4,7 @@ module.exports = [{
   },
   {
     text: 'Installation',
-    link: '/administration/install/'
+    link: '/administration/install/installing-rundeck'
   },
   {
     text: 'Configuration',
