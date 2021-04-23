@@ -4,39 +4,42 @@ Use this guide to migrate a set of Rundeck projects from the built-in H2 databas
 
 ## Project export all projects
 
-For each project you want to retain, Export the archive via the GUI:
+For each project that needs to be migrated export the archive via the GUI:
 
-- Navigate to Configure page for the project
-  - Either click the cog icon in the header, then choose your project from the list
-  - OR click the Configure button next to the project name in the home page
-- Click on the "Export Archive" tab
-- Click "Export project.rdproject.jar"
-- Wait for export process to complete
-- Click the link to download the file
+1. Open the Project to be archived.
+1. Choose **Project Settings > Export Archive**
+1. Select appropriate options
+1. Click "Export project.rdproject.jar"
+1. Wait for export process to complete
+1. Click the link to download the file
 
-Note: make sure to click the final link that is presented to download the file.
+>Note: make sure to click the final link that is presented to download the file.
 
 Save each project archive file (named "[project name]-XXXX.rdproject.jar")
 in a place you can upload it later.
+in a safe place.  They will be needed in a future step.
 
-## Backup your Rundeck data
+## Backup Rundeck data
 
-- Make a backup of your Projects
-  - RPM/Debian install location: `/var/rundeck/projects`
-  - Launcher location: `$RDECK_BASE/projects`
-- Make a backup of your H2 database, which you can revert back to in case of error,
+- Make a backup of the H2 database to use in case of error,
   - RPM/Debian install location: `/var/lib/rundeck/data`
   - Launcher location: `$RDECK_BASE/server/data`
 
+Older versions may also backup file based project definitions.
+
+- Make a backup of all Projects
+  - RPM/Debian install location: `/var/rundeck/projects`
+  - Launcher location: `$RDECK_BASE/projects`
+
 ## Stop rundeck
 
-Unix:
+Linux/Unix:
 
     sudo service rundeckd stop
 
 ## Setup mysql
 
-Install Mysql according to the instructions for your platform.
+Install Mysql according to the instructions for the destination platform.
 
 ## Prepare Mysql database
 
@@ -51,10 +54,10 @@ Then execute this sql:
 
 ## Configure rundeck-config.properties
 
-Set the datasource URL to point to your Mysql host, with appropriate database name,
+Set the datasource URL to point to the Mysql host, with appropriate database name,
 username and password.
 
-See [Configure Rundeck](#configure-rundeck) above.
+See [Configuring Rundeck](/administration/configuration/database/mysql.html#configuring-rundeck) for details.
 
 ## Configure project config in DB
 
@@ -66,11 +69,11 @@ For more info refer to:
 - [Configuring Plugins - Bundled Plugins - Jasypt Encryption Plugin](/administration/configuration/plugins/bundled-plugins.md#jasypt-encryption-plugin)
 - [Storage Facility](/administration/configuration/storage-facility.md)
 
-## Start up Rundeck
+## Start Rundeck
 
 Start the Rundeck server again.
 
-Unix:
+Linux/Unix:
 
     sudo service rundeckd start
 
@@ -81,9 +84,13 @@ View the "/var/log/rundeck/service.log" file for any error messages.
 
 ## Import archives
 
-For each project you wish to import, go to the Configure page for the project:
+:::danger
+NEED TO REVISIT THIS SECTION
+:::
 
-- Click the "Import Archive" tab
-- Upload the project archive with the corresponding name
-- Optionally choose to Import All Executions
-- Click Import
+Import each project into the new database.
+
+1. Click the "Import Archive" tab
+1. Upload the project archive with the corresponding name
+1. Optionally choose to Import All Executions
+1. Click Import
