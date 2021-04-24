@@ -3,7 +3,8 @@
 # Check https://circleci.com/docs/ for more details
 #
 version: 2.1
-
+orbs:
+  slack: circleci/slack@4.4.0
 jobs:
   build:
     docker:
@@ -38,6 +39,14 @@ jobs:
 
       # run tests!
       - run: node docs/.vuepress/deploy.js $CIRCLE_TAG
+      - slack/notify:
+          channel: C01D3B233DJ
+          event: fail
+          template: basic_fail_1
+      - slack/notify:
+          channel: C01D3B233DJ
+          event: pass
+          template: basic_success_1
   update_index:
     machine:
       image: ubuntu-2004:202010-01
@@ -49,10 +58,11 @@ jobs:
           command: |
             /bin/bash scripts/_docsearch.sh
 workflows:
-  version: 2
   publish:
     jobs:
       - build:
+          context:
+            - slack-secrets
           filters:
             branches:
               only: /3\.[1-9]\..*/
@@ -66,4 +76,3 @@ workflows:
               ignore: /.*/
             tags:
               only: /^v.*/
-

@@ -45,9 +45,10 @@ _NOTE: Rundeck Enterprise was recently renamed from Rundeck Pro. You may still s
 
 ## Who makes Rundeck?
 
-Rundeck is part of the PagerDuty suite of products and is developed by the Rundeck Business unit and the Rundeck community. The community is welcomed to participate in the project and contribute. Please submit an issue on our GitHub repository listed above or reach out to your Customer Success Team contact.
+[Rundeck] is part of the [PagerDuty] suite of products and is developed by the Rundeck Business unit and the Rundeck community. The community is welcomed to participate in the project and contribute. Please submit an issue on our GitHub repository listed above or reach out to your Customer Success Team contact.
 
-[rundeck, inc.]: https://www.rundeck.com/
+[Rundeck]: https://www.rundeck.com/
+[PagerDuty]: https://www.pagerduty.com/
 
 ## Rundeck feature highlights
 
@@ -61,6 +62,9 @@ Rundeck is part of the PagerDuty suite of products and is developed by the Runde
 - Access control policy editing/management tools
 - History and auditing logs
 - Use any scripting language
+
+Want to learn more or give it a test run?
+[Check out the Learning Page for a Welcome Tutorial](/learning)
 
 Already itching to install it? Jump ahead to
 [Installing Rundeck](/manual/03-getting-started.md#download-and-installation).
