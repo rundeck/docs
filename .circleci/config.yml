@@ -56,7 +56,6 @@ jobs:
           command: |
             /bin/bash scripts/_docsearch.sh
 workflows:
-  version: 2.1
   publish:
     jobs:
       - build:
