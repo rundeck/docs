@@ -16,9 +16,9 @@ module.exports = [{
     {
       title: 'Tutorial',
       collapsable: true,
-      path: '/learning/tutorial',
       sidebarDepth: 0,
       children: [
+        '/learning/tutorial/preparing',
         '/learning/tutorial/creatingnodes',
         '/learning/tutorial/commands',
         '/learning/tutorial/jobs'
