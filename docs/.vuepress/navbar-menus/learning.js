@@ -4,7 +4,7 @@ module.exports = [{
   },
   {
       text: 'Tutorial',
-      link: '/learning/tutorial/index'
+      link: '/learning/tutorial/preparing'
   },
   {
       text: 'How To Articles',
