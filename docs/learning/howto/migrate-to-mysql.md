@@ -1,6 +1,7 @@
 # MySQL Migration Guide
 
-Use this guide to migrate a set of Rundeck projects from the built-in H2 database, to use MySQL.
+Use this guide to migrate a set of Rundeck projects from the built-in H2 database, to use MySQL.  
+The instructions assume Rundeck and MySQL are running on Linux/Unix server.
 
 ## Project export all projects
 
