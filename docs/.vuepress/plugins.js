@@ -9,6 +9,7 @@ const autometa_options = {
 
 function getPlugins(setup) {
     const plugins = [
+        'vuepress-plugin-element-tabs',
         [
         'autometa', {
             autometa_options

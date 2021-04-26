@@ -30,6 +30,7 @@ module.exports = [{
       path: '/learning/howto',
       sidebarDepth: 0,
       children: [
+        '/learning/howto/migrate-to-rundeck-packages-repo',
         {
           title: 'Customizing',
           collapsable: true,
