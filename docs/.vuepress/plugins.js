@@ -52,7 +52,7 @@ function getPlugins(setup) {
         ]
     ]
 
-    if (setup.base == 'docs')
+    if (setup.base)
         plugins.unshift([
         '@vuepress/pwa',
         {
