@@ -9,7 +9,7 @@ with them. It is recommended to install the `openjdk-11-jre-headless` package ma
 :::
 
 ```bash
-sudo apt-get install openjdk-jre-headless
+sudo apt-get install openjdk-11-jre-headless
 ```
 
 :::: tabs
