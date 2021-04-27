@@ -4,7 +4,7 @@ lang: en-US
 ---
 
 # Migrating From Bintray
-**April 26th, 2021**
+**April 27th, 2021**
 
 In February, JFrog announced that it would be ending their Bintray distribution service. The official download distributions of Rundeck are now available on a new hosting service. See below for full details about new repository sources and guidance about signing keys. **Any automation that your team has created utilizing Rundeck’s Bintray repositories will need to be updated prior to May 1st, 2021**.
 
