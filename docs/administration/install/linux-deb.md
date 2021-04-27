@@ -18,7 +18,7 @@ sudo apt-get install openjdk-jre-headless
 
 ### Quick install with apt
 ```bash
-curl https://raw.githubusercontent.com/rundeck/packaging/main/scripts/deb-setup.sh 2&> /dev/null | sudo bash -s rundeckpro
+curl https://raw.githubusercontent.com/rundeck/packaging/main/scripts/deb-setup.sh 2> /dev/null | sudo bash -s rundeckpro
 ```
 
 ### Manual install with apt
@@ -66,7 +66,7 @@ sudo dpkg -i rundeckpro-enterprise_{{{rundeckVersionFull}}}-1_all.deb
 ### Quick install with apt
 
 ```bash
-curl https://raw.githubusercontent.com/rundeck/packaging/main/scripts/deb-setup.sh 2&> /dev/null | sudo bash -s rundeck
+curl https://raw.githubusercontent.com/rundeck/packaging/main/scripts/deb-setup.sh 2> /dev/null | sudo bash -s rundeck
 ```
 
 ### Manual install with apt

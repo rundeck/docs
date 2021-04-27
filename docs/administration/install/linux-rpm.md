@@ -10,7 +10,7 @@
 You can use this script to add the Rundeck Enterprise yum repo:
 
 ```bash
-curl https://raw.githubusercontent.com/rundeck/packaging/main/scripts/rpm-setup.sh 2&> /dev/null | sudo bash -s rundeckpro
+curl https://raw.githubusercontent.com/rundeck/packaging/main/scripts/rpm-setup.sh 2> /dev/null | sudo bash -s rundeckpro
 ```
 
 ```bash
@@ -55,7 +55,7 @@ sudo rpm -i rundeckpro-enterprise-{{{rundeckVersionFull}}}-1.noarch.rpm
 You can use this script to add the Rundeck yum repo and install Rundeck:
 
 ```bash
-curl https://raw.githubusercontent.com/rundeck/packaging/main/scripts/rpm-setup.sh 2&> /dev/null | sudo bash -s rundeck
+curl https://raw.githubusercontent.com/rundeck/packaging/main/scripts/rpm-setup.sh 2> /dev/null | sudo bash -s rundeck
 ```
 
 When new versions of Rundeck are released, you can upgrade to them using the command:
