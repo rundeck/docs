@@ -9,6 +9,7 @@ const autometa_options = {
 
 function getPlugins(setup) {
     const plugins = [
+        'vuepress-plugin-element-tabs',
         [require('./plugins/vuepress-plugin-code-copy'), {
             selector: 'div[class*="language-"], extra-class',
             backgroundColor: '#383e4a'

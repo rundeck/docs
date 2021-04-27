@@ -15,7 +15,6 @@
     "@vuepress/core": "^1.8.2",
     "core-js": "^2.6.5",
     "glob": "^7.1.4",
-    "vuepress-plugin-code-copy": "^1.0.6",
     "vuepress-plugin-element-tabs": "^0.2.8"
   },
   "devDependencies": {
