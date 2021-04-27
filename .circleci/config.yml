@@ -50,7 +50,7 @@ jobs:
             			"fields": [
             				{
             					"type": "mrkdwn",
-            					"text": ":white_check_mark: *Job*: ${CIRCLE_JOB}"
+            					"text": ":red_circle: *Job Failed*: ${CIRCLE_JOB}"
             				}
             			]
             		},
@@ -89,7 +89,50 @@ jobs:
       - slack/notify:
           channel: C01D3B233DJ
           event: pass
-          template: basic_success_1
+          custom: |
+            {
+            	"blocks": [
+            		{
+            			"type": "section",
+            			"fields": [
+            				{
+            					"type": "mrkdwn",
+            					"text": ":white_check_mark: *Job Success*: ${CIRCLE_JOB}"
+            				}
+            			]
+            		},
+            		{
+            			"type": "context",
+            			"elements": [
+            				{
+            					"type": "mrkdwn",
+            					"text": "*Project*: $CIRCLE_PROJECT_REPONAME"
+            				},
+            				{
+            					"type": "mrkdwn",
+            					"text": "*Branch*: $CIRCLE_BRANCH"
+            				},
+            				{
+            					"type": "mrkdwn",
+            					"text": "*Author*: $CIRCLE_USERNAME"
+            				}
+            			]
+            		},
+            		{
+            			"type": "actions",
+            			"elements": [
+            				{
+            					"type": "button",
+            					"text": {
+            						"type": "plain_text",
+            						"text": "View Job"
+            					},
+            					"url": "${CIRCLE_BUILD_URL}"
+            				}
+            			]
+            		}
+            	]
+            }
   update_index:
     machine:
       image: ubuntu-2004:202010-01
