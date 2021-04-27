@@ -1,20 +1,40 @@
 # Installing on Ubuntu or Debian Linux distributions
 
-## Rundeck Enterprise
+## Installing Rundeck
 
-### Install with apt-get
-
-You can use this script to add the Rundeck Enterprise apt repo and install Rundeck Enterprise cluster:
+:::warning 
+Rundeck depends on **Java 11** or **Java 8**. The **Java 14**
+packages will satisfy this dependency however Rundeck will not function properly
+with them. It is recommended to install the `openjdk-11-jre-headless` package manually.
+:::
 
 ```bash
-echo "deb https://rundeckpro.bintray.com/deb stable main" | sudo tee /etc/apt/sources.list.d/rundeck.list
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 379CE192D401AB61
-sudo apt-get update
-sudo apt-get install rundeckpro-enterprise
+sudo apt-get install openjdk-jre-headless
 ```
 
-When new versions of Rundeck Enterprise are released, you can upgrade to them using the command:
+:::: tabs
 
+::: tab Enterprise
+
+### Quick install with apt
+```bash
+sudo bash <(curl https://raw.githubusercontent.com/rundeck/packaging/main/scripts/deb-setup.sh) rundeckpro
+```
+
+### Manual install with apt
+
+Import the repo signing key:
+```bash
+curl -L https://packages.rundeck.com/pagerduty/rundeckpro/gpgkey | sudo apt-key add -
+```
+
+Add the following to `/etc/apt/sources.list.d/rundeck.list` replacing existing entries:
+```bash
+deb https://packages.rundeck.com/pagerduty/rundeckpro/any/ any main
+deb-src https://packages.rundeck.com/pagerduty/rundeckpro/any/ any main
+```
+
+Update apt cache and install:
 ```bash
 sudo apt-get update
 sudo apt-get install rundeckpro-enterprise
@@ -35,59 +55,48 @@ dpkg --purge rundeck && apt install rundeck
 
 ### Install deb package directly
 
-Download deb package: http://download.rundeck.com/eval/ and run: (Enterprise)
+Download `deb` package from [the download page](https://download.rundeck.com/eval/) and run:
 
 ```bash
 sudo dpkg -i rundeckpro-enterprise_{{{rundeckVersionFull}}}-1_all.deb
 ```
+:::
 
-## Open Source Rundeck
-
-### Install with apt-get
-
-You can use this script to add the Rundeck apt repo and install Rundeck:
+::: tab Community
+### Quick install with apt
 
 ```bash
-echo "deb https://rundeck.bintray.com/rundeck-deb /" | sudo tee -a /etc/apt/sources.list.d/rundeck.list
-curl 'https://bintray.com/user/downloadSubjectPublicKey?username=bintray' | sudo apt-key add -
+sudo bash <(curl https://raw.githubusercontent.com/rundeck/packaging/main/scripts/deb-setup.sh) rundeck
+```
+
+### Manual install with apt
+
+Import the repo signing key:
+```bash
+curl -L https://packages.rundeck.com/pagerduty/rundeck/gpgkey | sudo apt-key add -
+```
+
+Add the following to `/etc/apt/sources.list.d/rundeck.list` replacing existing entries:
+```bash
+deb https://packages.rundeck.com/pagerduty/rundeck/any/ any main
+deb-src https://packages.rundeck.com/pagerduty/rundeck/any/ any main
+```
+
+Update apt cache and install:
+```bash
 sudo apt-get update
 sudo apt-get install rundeck
 ```
-
-When new versions of Rundeck are released, you can upgrade to them using the command:
-
-```bash
-sudo apt-get update
-sudo apt-get install rundeck
-```
-
-Note: When rundeck repository is configured in your system and you install a new fresh rundeck[pro*], you will be asked to install OpenJDK 11 (which is not supported with rundeck). It's recommended to :
-
-1. Install Java per System Requirements Instructions.
-
-2. Verify a supported java version is installed
-
-Example
-```bash
-java -version
-openjdk version "1.8.0_242"
-OpenJDK Runtime Environment (AdoptOpenJDK)(build 1.8.0_242-b08)
-OpenJDK 64-Bit Server VM (AdoptOpenJDK)(build 25.242-b08, mixed mode)
-```
-
-3. Install Rundeck
-```bash
-sudo apt-get install rundeck
-```
-
 ### Install deb package directly
 
-Download deb package: http://rundeck.org/download/deb/ and run:
+Download deb package from [the download page](https://docs.rundeck.com/downloads.html) and run:
 
 ```bash
-sudo dpkg -i rundeckpro-enterprise_{{{rundeckVersionFull}}}-1_all.deb
+sudo dpkg -i rundeck_{{{rundeckVersionFull}}}-1_all.deb
 ```
+:::
 
+::::
 ## Starting Rundeck
 
 To start Rundeck:
