@@ -5,27 +5,17 @@ const sidebarAdmin = require('./sidebar-menus/administration')
 const sidebarUpgrading = require('./sidebar-menus/upgrading')
 const sidebarUserGuide = require('./sidebar-menus/user-guide')
 const sidebarCommandLineTools = require('./sidebar-menus/command-line-tools')
-const sidebarEnterprise = require('./sidebar-menus/enterprise')
 const sidebarDeveloper = require('./sidebar-menus/plugin-development')
-const sidebarTutorials = require('./sidebar-menus/tutorials')
+const sidebarLearning = require('./sidebar-menus/learning')
 const sidebarHistory = require('./sidebar-menus/history')
 // navbars
 const navbarUserGuide = require('./navbar-menus/user-guide')
-const navbarTutorials = require('./navbar-menus/tutorials')
+const navbarLearning = require('./navbar-menus/learning')
 const navbarAdmin = require('./navbar-menus/administration')
-const navbarEnterprise = require('./navbar-menus/enterprise')
 const navbarDevelopment = require('./navbar-menus/development')
-//Meta Information
-const autometa_options = {
-  site: {
-    name   : 'Rundeck Docs',
-    twitter: 'rundeck',
-  },
-  canonical_base: 'https://docs.rundeck.com',
-};
-
 
 const setup = require('./setup')
+const getPlugins = require('./plugins')
 
 console.log(setup)
 
@@ -63,48 +53,7 @@ module.exports = {
       figcaption: true
     })
   },
-  plugins: [
-    [
-      '@vuepress/pwa',
-      {
-        serviceWorker: true,
-        updatePopup: true,
-        generateSWConfig: {
-          globIgnores: ['**/gtm.js']
-        }
-      }
-    ],
-    [
-      'autometa', {
-        autometa_options
-      }
-    ],
-    [
-      'vuepress-plugin-canonical',
-      {
-        baseURL: 'https://docs.rundeck.com', // base url for your canonical link, optional, default: ''
-        stripExtension: true // strip '.html' , optional, default: false
-      }
-    ],
-    [
-      'vuepress-plugin-container',
-      {
-        type: 'enterprise',
-        defaultTitle: {
-          '/':'Available in Rundeck Enterprise'
-        },
-      },
-    ],
-    [
-      'vuepress-plugin-container',
-      {
-        type: 'incubating',
-        defaultTitle: {
-          '/':'Incubating: this API may change in a future release.'
-        },
-      },
-    ]
-  ],
+  plugins: getPlugins(setup),
   themeConfig: {
     logo: '/images/rundeck-logo.svg',
     repo: 'rundeck/docs',
@@ -134,16 +83,12 @@ module.exports = {
         items: navbarUserGuide
       },
       {
-        text: 'Tutorials',
-        items: navbarTutorials
+        text: 'Learning',
+        items: navbarLearning
       },
       {
         text: 'Administration',
         items: navbarAdmin
-      },
-      {
-        text: 'Enterprise',
-        items: navbarEnterprise
       },
       {
         text: 'Development',
@@ -154,10 +99,9 @@ module.exports = {
     sidebar: {
       '/administration/': sidebarAdmin,
       '/upgrading/': sidebarUpgrading,
-      '/enterprise/': sidebarEnterprise,
       '/manual/command-line-tools/': sidebarCommandLineTools,
       '/manual': sidebarUserGuide,
-      '/tutorials/': sidebarTutorials,
+      '/learning/': sidebarLearning,
       '/developer/': sidebarDeveloper,
       '/history/': sidebarHistory,
       '/api/': [
