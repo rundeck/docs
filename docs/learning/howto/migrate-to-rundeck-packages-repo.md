@@ -9,7 +9,7 @@ lang: en-US
 ## Migration Instructions
 :::warning
 Rundeck has rotated the signing key used to sign release packages. All previously released
-`deb`, `rpm`, and `war` packages have been re-signed and uploaded. The new public key can be found [here in the Rundeck packaging repo](https://raw.githubusercontent.com/rundeck/packaging/main/pubring.gpg).
+`deb`, `rpm`, and `war` packages have been re-signed and uploaded. The new public key can be found [here in the Rundeck packaging repo](https://github.com/rundeck/packaging/blob/main/pubring.gpg).
 :::
 
 
@@ -124,7 +124,7 @@ The quick setup script will configure the Rundeck Enterprise repository. Legacy 
 will be replaced.
 
 ```bash
-sudo bash <(curl https://raw.githubusercontent.com/rundeck/packaging/main/scripts/rpm-setup.sh) rundeckpro
+sudo bash <(curl https://raw.githubusercontent.com/rundeck/packaging/main/scripts/rpm-setup.sh) rundeck
 ```
 
 ### Manual setup
@@ -133,8 +133,8 @@ Remove `bintray-rundeckpro-rpm.repo` if it exists.
 
 Add the following entries to `/etc/yum.repos.d/rundeck.repo` replacing any existing entries:
 ```properties
-[rundeckpro]
-name=rundeckpro
+[rundeck]
+name=rundeck
 baseurl=https://packages.rundeck.com/pagerduty/rundeck/rpm_any/rpm_any/$basearch
 repo_gpgcheck=1
 gpgcheck=0
