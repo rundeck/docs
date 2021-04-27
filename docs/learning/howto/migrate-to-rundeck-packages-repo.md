@@ -6,6 +6,8 @@ lang: en-US
 # Migrating From Bintray
 **April 26th, 2021**
 
+In February, JFrog announced that it would be ending their Bintray distribution service. The official download distributions of Rundeck are now available on a new hosting service.  Details below provide full details about new repository sources and guidance about signing keys.  **Any automation that your team has created utilizing Rundeck’s Bintray repositories will need to be updated prior to May 1st, 2021**.
+
 ## Migration Instructions
 :::warning
 Rundeck has rotated the signing key used to sign release packages. All previously released
@@ -20,7 +22,7 @@ Rundeck has rotated the signing key used to sign release packages. All previousl
 :::: tabs
 ::: tab Deb
 ### Quick setup script
-The quick setup script will configure the Rundeck Enterprise repository,
+The [quick setup script](https://github.com/rundeck/packaging/blob/main/scripts/deb-setup.sh) will configure the Rundeck Enterprise repository,
 import the new repository signing key, and update apt. Legacy configuration
 will be replaced.
 
@@ -50,7 +52,7 @@ sudo apt-get update
 
 ::: tab Rpm
 ### Quick setup script
-The quick setup script will configure the Rundeck Enterprise repository. Legacy configuration
+The [quick setup script](https://github.com/rundeck/packaging/blob/main/scripts/rpm-setup.sh) will configure the Rundeck Enterprise repository. Legacy configuration
 will be replaced.
 
 ```bash
@@ -90,7 +92,7 @@ download links.
 :::: tabs
 ::: tab Deb
 ### Quick setup script
-The quick setup script will configure the Rundeck Community repository,
+The [quick setup script](https://github.com/rundeck/packaging/blob/main/scripts/deb-setup.sh) will configure the Rundeck Community repository,
 import the new repository signing key, and update apt. Legacy configuration
 will be replaced.
 
@@ -120,7 +122,7 @@ sudo apt-get update
 
 ::: tab Rpm
 ### Quick setup script
-The quick setup script will configure the Rundeck Enterprise repository. Legacy configuration
+The [quick setup script](https://github.com/rundeck/packaging/blob/main/scripts/rpm-setup.sh) will configure the Rundeck Enterprise repository. Legacy configuration
 will be replaced.
 
 ```bash

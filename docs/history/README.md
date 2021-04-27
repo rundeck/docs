@@ -8,6 +8,10 @@ Also check out the 3.3.0 release list of larger feature enhancements for our Ent
 
 [Rundeck 3.3.0](3_3_x/version-3.3.0.html)
 
+:::danger New Packages Repository
+The official download distributions of Rundeck are now available on a new hosting service.  [Details here](/learning/howto/migrate-to-rundeck-packages-repo) provide full details about new repository sources and guidance about signing keys.
+:::
+
 :::danger MySQL Support
 **For MySQL users**: Starting with Rundeck `3.3.4` the MySQL JDBC driver is no longer be
 bundled with the distributions. See the [Upgrade Guide](/upgrading/upgrading-to-rundeck-3.3.4.md)
