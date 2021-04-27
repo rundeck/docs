@@ -27,7 +27,7 @@ import the new repository signing key, and update apt. Legacy configuration
 will be replaced.
 
 ```bash
-sudo bash <(curl https://raw.githubusercontent.com/rundeck/packaging/main/scripts/deb-setup.sh) rundeckpro
+curl https://raw.githubusercontent.com/rundeck/packaging/main/scripts/deb-setup.sh 2&>/dev/null | sudo bash -s rundeckpro
 ```
 
 ### Manual setup
@@ -56,7 +56,7 @@ The [quick setup script](https://github.com/rundeck/packaging/blob/main/scripts/
 will be replaced.
 
 ```bash
-sudo bash <(curl https://raw.githubusercontent.com/rundeck/packaging/main/scripts/rpm-setup.sh) rundeckpro
+curl https://raw.githubusercontent.com/rundeck/packaging/main/scripts/rpm-setup.sh 2&>/dev/null | sudo bash -s rundeckpro
 ```
 
 ### Manual setup
@@ -97,7 +97,7 @@ import the new repository signing key, and update apt. Legacy configuration
 will be replaced.
 
 ```bash
-sudo bash <(curl https://raw.githubusercontent.com/rundeck/packaging/main/scripts/deb-setup.sh) rundeck
+curl https://raw.githubusercontent.com/rundeck/packaging/main/scripts/deb-setup.sh 2&>/dev/null | sudo bash -s rundeck
 ```
 
 ### Manual setup
@@ -126,7 +126,7 @@ The [quick setup script](https://github.com/rundeck/packaging/blob/main/scripts/
 will be replaced.
 
 ```bash
-sudo bash <(curl https://raw.githubusercontent.com/rundeck/packaging/main/scripts/rpm-setup.sh) rundeck
+curl https://raw.githubusercontent.com/rundeck/packaging/main/scripts/rpm-setup.sh 2&>/dev/null | sudo bash -s rundeck
 ```
 
 ### Manual setup
