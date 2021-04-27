@@ -8,10 +8,12 @@ const sidebarCommandLineTools = require('./sidebar-menus/command-line-tools')
 const sidebarEnterprise = require('./sidebar-menus/enterprise')
 const sidebarDeveloper = require('./sidebar-menus/plugin-development')
 const sidebarTutorials = require('./sidebar-menus/tutorials')
+const sidebarLearning = require('./sidebar-menus/learning')
 const sidebarHistory = require('./sidebar-menus/history')
 // navbars
 const navbarUserGuide = require('./navbar-menus/user-guide')
 const navbarTutorials = require('./navbar-menus/tutorials')
+const navbarLearning = require('./navbar-menus/learning')
 const navbarAdmin = require('./navbar-menus/administration')
 const navbarEnterprise = require('./navbar-menus/enterprise')
 const navbarDevelopment = require('./navbar-menus/development')
@@ -64,6 +66,7 @@ module.exports = {
     })
   },
   plugins: [
+    'vuepress-plugin-element-tabs',
     [
       '@vuepress/pwa',
       {
@@ -134,6 +137,10 @@ module.exports = {
         items: navbarUserGuide
       },
       {
+        text: 'Learning',
+        items: navbarLearning
+      },
+      {
         text: 'Tutorials',
         items: navbarTutorials
       },
@@ -157,6 +164,7 @@ module.exports = {
       '/enterprise/': sidebarEnterprise,
       '/manual/command-line-tools/': sidebarCommandLineTools,
       '/manual': sidebarUserGuide,
+      '/learning': sidebarLearning,
       '/tutorials/': sidebarTutorials,
       '/developer/': sidebarDeveloper,
       '/history/': sidebarHistory,

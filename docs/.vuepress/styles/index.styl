@@ -112,6 +112,16 @@ dt
     .custom-block-title
       margin 0.5rem
 
+.custom-block
+  &.tutorial
+    background-color #f3f5f7
+    border-color #4283b9
+    padding 0.1rem 1.5rem
+    border-left-width 0.5rem
+    border-left-style solid
+    margin 1rem 0
+    .custom-block-title
+      margin 0.5rem
 
 .custom-block
   &.incubating
@@ -120,3 +130,12 @@ dt
     margin 1rem 0
     .custom-block-title
       margin 0.5rem
+
+/* Tabs */
+.el-tabs--border-card > .el-tabs__header .el-tabs__item.is-active  {
+  color: $accentColor !important;
+}
+
+.el-tabs--border-card > .el-tabs__header .el-tabs__item:not(.is-disabled):hover {
+  color: lighten($accentColor, 15) !important;
+}
