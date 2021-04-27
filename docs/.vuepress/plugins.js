@@ -10,6 +10,7 @@ const autometa_options = {
 function getPlugins(setup) {
     const plugins = [
         'vuepress-plugin-element-tabs',
+        ['vuepress-plugin-code-copy', true],
         [
         'autometa', {
             autometa_options
