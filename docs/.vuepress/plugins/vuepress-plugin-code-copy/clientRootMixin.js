@@ -15,6 +15,7 @@ export default {
                     let instance = new ComponentClass()
 
                     let options = {
+                        trimContent: trimContent,
                         align: align,
                         color: color,
                         backgroundTransition: backgroundTransition,

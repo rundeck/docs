@@ -27,6 +27,7 @@ export default {
         parent: Object,
         code: String,
         options: {
+            trimContent: Boolean,
             align: String,
             color: String,
             backgroundTransition: Boolean,
@@ -73,8 +74,17 @@ export default {
                 : null
         },
         copyToClipboard(el) {
+            let preparedCode
+
+            console.log(this.options)
+
+            if (this.options.trimContent)
+                preparedCode = this.code.replace(/\n$/,'')
+            else
+                preparedCode = this.code
+
             if (navigator.clipboard) {
-                navigator.clipboard.writeText(this.code).then(
+                navigator.clipboard.writeText(preparedCode).then(
                     () => {
                         this.setSuccessTransitions()
                     },
@@ -83,7 +93,7 @@ export default {
             } else {
                 let copyelement = document.createElement('textarea')
                 document.body.appendChild(copyelement)
-                copyelement.value = this.code
+                copyelement.value = preparedCode
                 copyelement.select()
                 document.execCommand('Copy')
                 copyelement.remove()

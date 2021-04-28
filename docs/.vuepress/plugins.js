@@ -11,6 +11,7 @@ function getPlugins(setup) {
     const plugins = [
         'vuepress-plugin-element-tabs',
         [require('./plugins/vuepress-plugin-code-copy'), {
+            trimContent: true,
             selector: 'div[class*="language-"], extra-class',
             backgroundColor: '#383e4a'
         }],

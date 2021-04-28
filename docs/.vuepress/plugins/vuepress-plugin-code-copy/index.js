@@ -2,6 +2,7 @@ const { path } = require('@vuepress/shared-utils')
 
 module.exports = (options = {}, ctx) => ({
     define: {
+        trimContent: options.trimContent || false,
         selector: options.selector || 'div[class*="language-"] pre',
         align: options.align || 'bottom',
         color: options.color || '#27b1ff',
