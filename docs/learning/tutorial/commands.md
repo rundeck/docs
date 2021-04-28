@@ -1,4 +1,4 @@
-# 2 - Commands
+# 2 - Getting Started - Commands
 
 :::tutorial
 :::
@@ -7,10 +7,12 @@ A command is a single executable string executed on a Node. Rundeck invokes comm
 
 The Rundeck graphical console provides the ability to execute commands to a set of filtered Node resources. The Command page can accept any command string you might run via on the node's console.
 
-### Enterprise / Community Exercise:
+### Enterprise/Community Exercise:
+
+In the previous step we confirmed our new nodes were in our Nodes List.
 
 1. Click on the **Commands** link in the project navigation menu.
-1. In the Nodes Line enter `.*` and click **Search**.
+1. In the Nodes Line enter `.*` and click **Search**.<br>_(if the node doesn't show up right away wait a few seconds and try again)_
 1. Enter the following where it says **Enter a Command**: `uname -a`
 1. Click **Run on _X_ Node**.
 

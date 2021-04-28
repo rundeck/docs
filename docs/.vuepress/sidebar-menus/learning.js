@@ -21,7 +21,8 @@ module.exports = [{
         '/learning/tutorial/preparing',
         '/learning/tutorial/creatingnodes',
         '/learning/tutorial/commands',
-        '/learning/tutorial/jobs'
+        '/learning/tutorial/jobs',
+        '/learning/tutorial/users'
       ]
     },
     {

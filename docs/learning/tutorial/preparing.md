@@ -1,4 +1,4 @@
-# 0 - Preparing for Tutorial
+# 0 - Getting Started - Tutorial Preparations
 
 This *Tutorial* section is built around our Welcome Projects. These projects contain starter content that the following steps are build on top of.
 
@@ -8,17 +8,17 @@ Please be sure to start at the [Learning Overview](/learning) page for full deta
 
 ## Course Pre-Requisites
 
-- Running the course using the Welcome Projects provided will require installing Docker.
+- Running the course using the Welcome Projects provided will require installing Docker.  [We recommend 3.3+](https://www.docker.com/products/docker-desktop)
 - Basic knowledge of Linux OS administration is expected.
 
-## Creating Nodes
+## Getting Started - Nodes
 
 Add a node to a project and test executing a command against it. [Creating Nodes](/learning/tutorial/creatingnodes)
 
-## Commands
+## Getting Started -Commands
 
 Run commands against the nodes in a project. [Commands](/learning/tutorial/commands)
 
-## Jobs / Activity
+## Getting Started -Jobs / Activity
 
 Run a job and view it's output in the Activity viewer. [Activity](/learning/tutorial/jobs)
