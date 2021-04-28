@@ -43,6 +43,14 @@ module.exports = [{
           ]
         },
         {
+          title: 'Writing Jobs',
+          collapsable: true,
+          sidebarDepth: 0,
+          children: [
+              '/learning/howto/passing-variables'
+          ]
+        },
+        {
           title: 'Customizing',
           collapsable: true,
           sidebarDepth: 0,

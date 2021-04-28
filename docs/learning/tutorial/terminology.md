@@ -33,3 +33,6 @@ Rundeck is built over a flexible platform architecture.  Adding new functionalit
 
 ## Node Executors
 Rundeck executes Command items on Nodes. The command may be part of a Workflow as defined in a Job, and it may be executed multiple times on different nodes. Rundeck uses the NodeExecutor and FileCopier services as part of the process of executing these commands.
+
+## Log Filters
+Log Filters are applied to a Job step to act on the output from that step. Certain Job Filters can set variables based on information in the log output. Check out the Passing Variables in Jobs How To for more information.
