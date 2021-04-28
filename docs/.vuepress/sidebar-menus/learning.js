@@ -22,15 +22,18 @@ module.exports = [{
         '/learning/tutorial/creatingnodes',
         '/learning/tutorial/commands',
         '/learning/tutorial/jobs',
-        '/learning/tutorial/users'
+        '/learning/tutorial/users',
+        '/learning/tutorial/acls',
+        '/learning/tutorial/conclusion'
       ]
     },
     {
       title: 'How To',
       collapsable: true,
-      path: '/learning/howto',
+      path: '/learning/howto/overview',
       sidebarDepth: 0,
       children: [
+        '/learning/howto/overview',
         {
           title: 'Setup / Installation',
           collapsable: true,
