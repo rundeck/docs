@@ -10,6 +10,10 @@ const autometa_options = {
 function getPlugins(setup) {
     const plugins = [
         'vuepress-plugin-element-tabs',
+        ['@vuepress/html-redirect', {
+          duration: 0
+          }
+        ],
         [require('./plugins/vuepress-plugin-code-copy'), {
             trimContent: true,
             selector: 'div[class*="language-"], extra-class',
