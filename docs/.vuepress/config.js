@@ -8,7 +8,9 @@ const sidebarCommandLineTools = require('./sidebar-menus/command-line-tools')
 const sidebarDeveloper = require('./sidebar-menus/plugin-development')
 const sidebarLearning = require('./sidebar-menus/learning')
 const sidebarHistory = require('./sidebar-menus/history')
+const sidebarIntroduction = require('./sidebar-menus/introduction')
 // navbars
+const navbarIntroduction = require('./navbar-menus/introduction')
 const navbarUserGuide = require('./navbar-menus/user-guide')
 const navbarLearning = require('./navbar-menus/learning')
 const navbarAdmin = require('./navbar-menus/administration')
@@ -81,7 +83,12 @@ module.exports = {
     } : undefined,
     searchMaxSuggestions: 10,
     lastUpdated: 'Last Updated', // string | boolean
-    nav: [{
+    nav: [
+      {
+        text: 'Introduction',
+        items: navbarIntroduction
+      },
+      {
         text: 'User Guide',
         items: navbarUserGuide
       },
@@ -100,10 +107,11 @@ module.exports = {
     ],
     sidebarDepth: 2,
     sidebar: {
+      '/introduction/': sidebarIntroduction,
       '/administration/': sidebarAdmin,
       '/upgrading/': sidebarUpgrading,
       '/manual/command-line-tools/': sidebarCommandLineTools,
-      '/manual': sidebarUserGuide,
+      '/manual/': sidebarUserGuide,
       '/learning/': sidebarLearning,
       '/developer/': sidebarDeveloper,
       '/history/': sidebarHistory,

@@ -3,8 +3,6 @@ module.exports = [{
   collapsable: false,
   sidebarDepth: 1,
   children: [
-    '/manual/01-introduction',
-    '/manual/03-getting-started',
     {
       title: "Projects",
       path: '/manual/projects',
@@ -165,7 +163,6 @@ module.exports = [{
         '/manual/document-format-reference/resource-v13.md',
         '/manual/document-format-reference/resource-yaml-v13.md',
       ]
-    },
-    '/manual/02-getting-help'
+    }
   ]
 }]

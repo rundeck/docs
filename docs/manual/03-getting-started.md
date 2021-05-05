@@ -1,9 +1,8 @@
 # Getting Started
 
-This chapter helps new users get started with Rundeck. We will begin
-by explaining a few essential Rundeck concepts and
-terminology and then discuss installation, project setup and introduce
-you to the top level navigation of the interface.
+The best way to get started with Rundeck is through our [Learning section](/learning/).  
+[Terminology](/learning/tutorial/terminology), [Tutorials](/learning/tutorial/preparing) and
+[How To articles](/learning/how-to/overview) that show the many ways to use Rundeck.
 
 ## Essential Concepts
 
@@ -42,17 +41,17 @@ help you use or integrate Rundeck into your environment.
 If a running Rundeck instance isn't already available to you,
 there are a couple ways you can try it.
 
-- You can [download](http://rundeck.org/downloads.html) and
+- Check out the Docker based Welcome Projects described on the [Learning Overview Page](/learning/).
+- Visit our download site [download](http://rundeck.org/downloads.html) and
   install the Rundeck software. There are several package formats.
-  Choose the one that best suits your infrastructure.
+  Choose the one that best suits the target infrastructure.
   After installation, be sure Rundeck has been started.
   ::: tip
   See [Startup](/administration/maintenance/startup.md) to learn how to  startup and shutdown rundeck.
   :::
-- Also check out our [Docker Zoo](https://github.com/rundeck/docker-zoo) for quick and easy environment builds.
 
 The default port for the web interface is `4440`. If you
-installed Rundeck on your local machine, go to this URL: `http://<hostname>:4440`
+installed Rundeck on your local machine, go to this URL: `http://locahost:4440`
 
 ## Login
 
