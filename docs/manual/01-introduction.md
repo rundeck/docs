@@ -2,12 +2,7 @@
 alias: manual/introduction.html
 ---
 
-# Introduction
-
-## What is this guide about?
-
-Welcome to the Rundeck user guide. This guide was written to help
-you quickly become productive with the Rundeck server and tools.
+# Rundeck Documentation
 
 ## What is Rundeck?
 
@@ -31,7 +26,7 @@ Out of the box, Rundeck gives you capabilities that would be expensive to develo
 
 Rundeck Open Source is free open source software licensed under the [Apache Software License v2.0](http://www.apache.org/licenses/LICENSE-2.0.html), and you can participate in the project on [GitHub]. For those who write and run Rundeck jobs at small-scale usage (e.g., limited use or within a team), the open-source Rundeck delivers you the features you need, for free, _forever_.
 
-#### Rundeck Enterpise (fka Rundeck Pro)
+#### Rundeck Enterprise
 
 The focus of [Rundeck Enterprise], our commercial offering, is on making Rundeck production-ready and enterprise-scale. Rundeck Enterprise, built on the open source Rundeck, is the bundle of software and services you need to run Rundeck as an enterprise-class service.
 
@@ -54,7 +49,7 @@ _NOTE: Rundeck Enterprise was recently renamed from Rundeck Pro. You may still s
 
 - Distributed command execution
 - Workflow (including option passing, conditionals, error handling, and multiple workflow strategies)
-- Pluggable execution system (SSH and WinRM by default; Powershell available)
+- Pluggable execution system (SSH and WinRM by default; PowerShell available)
 - Pluggable resource model (get details of your infrastructure from external systems)
 - On-demand (Web GUI, API or CLI) or scheduled job execution
 - Secure Key store for passwords and keys

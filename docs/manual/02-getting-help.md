@@ -1,6 +1,3 @@
----
-alias: manual/getting-help.html
----
 # Getting Help
 
 This documentation is the first stop for help or understanding of Rundeck.  For additional support options check out the list below.
