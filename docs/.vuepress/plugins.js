@@ -11,7 +11,7 @@ function getPlugins(setup) {
     const plugins = [
         'vuepress-plugin-element-tabs',
         ['@vuepress/html-redirect', {
-          duration: 0
+          countdown: 0
           }
         ],
         [require('./plugins/vuepress-plugin-code-copy'), {
