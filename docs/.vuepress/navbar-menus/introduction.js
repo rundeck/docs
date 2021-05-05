@@ -1,8 +1,10 @@
-module.exports = [{
+module.exports = [
+  {
     text: 'Introduction',
-    link: '/manual/01-introduction'
+    link: '/introduction/introduction'
   },
   {
     text: 'Getting Help',
-    link: '/manual/02-getting-help'
-  }]
+    link: '/introduction/getting-help'
+  }
+]

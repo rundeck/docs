@@ -107,11 +107,11 @@ module.exports = {
     ],
     sidebarDepth: 2,
     sidebar: {
-      '/manual/01-introduction': sidebarIntroduction,
+      '/introduction/': sidebarIntroduction,
       '/administration/': sidebarAdmin,
       '/upgrading/': sidebarUpgrading,
       '/manual/command-line-tools/': sidebarCommandLineTools,
-      '/manual': sidebarUserGuide,
+      '/manual/': sidebarUserGuide,
       '/learning/': sidebarLearning,
       '/developer/': sidebarDeveloper,
       '/history/': sidebarHistory,

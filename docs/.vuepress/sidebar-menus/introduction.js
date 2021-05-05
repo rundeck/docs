@@ -3,7 +3,7 @@ module.exports = [{
   collapsable: false,
   sidebarDepth: 2,
   children: [
-    '/manual/01-introduction',
-    '/manual/02-getting-help'
+    '/introduction/introduction',
+    '/introduction/getting-help'
   ]
 }]
