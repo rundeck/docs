@@ -25,7 +25,7 @@ docker run --rm -it -p 4440:4440 rundeckpro/rundeck-enterprise:{{{rundeckVersion
 in Docker Compose!** These examples cover common configuration scenarios including
 connecting to each supported database.
 
-[Detailed Docker instructions can be found here.](/administration/install/docker)  
+[Detailed Docker instructions can be found here.](/administration/install/docker.md)  
 :::
 
 ::: tab Deb
@@ -54,7 +54,7 @@ sudo apt-get update
 sudo apt-get install rundeckpro-enterprise
 ```
 
-[Detailed deb instructions can be found here.](/administration/install/linux-deb)  
+[Detailed deb instructions can be found here.](/administration/install/linux-deb.md)  
 :::
 
 ::: tab Rpm
@@ -86,17 +86,17 @@ metadata_expire=300
 sudo yum install java rundeckpro-enterprise
 ```
 
-[Detailed rpm instructions can be found here.](/administration/install/linux-rpm)  
+[Detailed rpm instructions can be found here.](/administration/install/linux-rpm.md)  
 :::
 
 
 
 ::: tab Tomcat
-[Check here for detailed Tomcat installation instructions.](/administration/install/tomcat)  
+[Check here for detailed Tomcat installation instructions.](/administration/install/tomcat.md)  
 :::
 
 ::: tab Windows
-[Check here for detailed Windows installation instructions.](/administration/install/windows)
+[Check here for detailed Windows installation instructions.](/administration/install/windows.md)
 :::
 
 ::::
@@ -140,7 +140,7 @@ dataSource.password = <rundeckpassword>
 dataSource.driverClassName = org.mariadb.jdbc.Driver
 ```
 
-[Detailed MySQL instructions.](/administration/configuration/database/mysql)
+[Detailed MySQL instructions.](/administration/configuration/database/mysql.md)
 :::
 
 ::: tab PostgreSQL
@@ -151,7 +151,7 @@ dataSource.username=<rundeckuser>
 dataSource.password=<rundeckpassword>
 ```
 
-[Detailed PostgreSQL instructions.](/administration/configuration/database/postgres)
+[Detailed PostgreSQL instructions.](/administration/configuration/database/postgres.md)
 :::
 
 ::: tab SQL Server
@@ -162,7 +162,7 @@ dataSource.username = <rundeckuser>
 dataSource.password = <rundeckpassword>
 ```
 
-[Detailed SQL Server instructions.](/administration/configuration/database/mssql)
+[Detailed SQL Server instructions.](/administration/configuration/database/mssql.md)
 :::
 
 
@@ -176,7 +176,7 @@ dataSource.dialect = org.rundeck.hibernate.RundeckOracleDialect
 dataSource.properties.validationQuery = SELECT 1 FROM DUAL
 ```
 
-[Detailed Oracle instructions.](/administration/configuration/database/oracle)
+[Detailed Oracle instructions.](/administration/configuration/database/oracle.md)
 :::
 
 ::::
@@ -196,5 +196,5 @@ For **deb, rpm, and war** this will be set as `grails.serverUrl=` in the `rundec
 file.
 
 ### Configuration Reference
-[Docker](/administration/configuration/docker)  
-[Configuration file reference](/administration/configuration/config-file-reference)  
+[Docker](/administration/configuration/docker.md)  
+[Configuration file reference](/administration/configuration/config-file-reference.md)  
