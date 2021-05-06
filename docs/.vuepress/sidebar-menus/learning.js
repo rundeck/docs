@@ -47,7 +47,8 @@ module.exports = [{
           collapsable: true,
           sidebarDepth: 0,
           children: [
-              '/learning/howto/passing-variables'
+              '/learning/howto/passing-variables',
+              '/learning/howto/calling-apis'
           ]
         },
         {
