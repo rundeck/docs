@@ -1,6 +1,6 @@
 # Installing Rundeck
 
-1. [Review the system requirements](/administration/install/system-requirements)
+1. [Review the system requirements](/administration/install/system-requirements.md)
 2. [Install Rundeck with chosen method](#installation)
 3. [Configure database](#database-configuration)
 4. [Configure Rundeck](#rundeck-configuration)
