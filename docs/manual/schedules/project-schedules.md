@@ -27,6 +27,8 @@ Under **Schedule** you can choose *Simple* or *Crontab*, exactly like Job Schedu
 
 :::tip
 For crontab format, see [this tutorial][crontab]
+
+There is also a helpful crontab expression builder [here ][cronbuilder]
 :::
 
 Optionally enter a **Time Zone**.
@@ -174,3 +176,4 @@ Schedules can be defined in YAML format as shown below. Multiple schedules can b
   ```
 
 [crontab]: http://www.quartz-scheduler.org/documentation/quartz-2.2.2/tutorials/tutorial-lesson-06.html
+[cronbuilder]: https://www.freeformatter.com/cron-expression-generator-quartz.html

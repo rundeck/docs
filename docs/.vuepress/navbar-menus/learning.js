@@ -8,6 +8,6 @@ module.exports = [{
   },
   {
       text: 'How To Articles',
-      link: '/learning/howto/index'
+      link: '/learning/howto/overview'
   },
 ]

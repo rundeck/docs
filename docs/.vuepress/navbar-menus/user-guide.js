@@ -1,11 +1,4 @@
-module.exports = [{
-    link: '/manual/01-introduction',
-    text: 'Introduction'
-  },
-  {
-    link: '/manual/03-getting-started',
-    text: 'Getting Started'
-  },
+module.exports = [
   {
     link: '/manual/projects',
     text: 'Projects'
@@ -57,9 +50,5 @@ module.exports = [{
   {
     link: '/manual/document-format-reference/index',
     text: 'Document Formats'
-  },
-  {
-    link: '/manual/02-getting-help',
-    text: 'Getting Help'
   }
 ]

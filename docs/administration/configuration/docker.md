@@ -2,7 +2,7 @@
 
 :::tip
 **Check out the [Docker Zoo](https://github.com/rundeck/docker-zoo) for configuration examples
-in Docker Compose!**. These examples cover common configuration scenarios including
+in Docker Compose!** These examples cover common configuration scenarios including
 connecting to each supported database.
 :::
 

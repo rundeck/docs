@@ -71,7 +71,7 @@ dt
   content: counter(my-awesome-counter) ". ";
   position: absolute;
   font-weight: bold;
-  display: inline-block;
+  display: contents;
   width: 1em;
   margin-left: -1em;
 }
@@ -138,4 +138,23 @@ dt
 
 .el-tabs--border-card > .el-tabs__header .el-tabs__item:not(.is-disabled):hover {
   color: lighten($accentColor, 15) !important;
+}
+
+/* Fixup the code-copy plugin */
+.code-copy {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 5;
+}
+
+.code-copy > span {
+  color: whitesmoke;
+  bottom: unset;
+  top: 15px;
+}
+
+.code-copy > svg {
+  bottom: unset !important;
+  top 7.5px;
 }

@@ -4,7 +4,7 @@
 
 Notifications are actions that are performed when a Job starts or finishes.
 
-Currently there are three conditions that can trigger notifications:
+Currently there are five conditions that can trigger notifications:
 
 - `onstart` - the Job started
 - `onsuccess` - the Job completed without error

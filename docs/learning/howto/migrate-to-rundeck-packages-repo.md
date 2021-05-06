@@ -4,9 +4,9 @@ lang: en-US
 ---
 
 # Migrating From Bintray
-**April 26th, 2021**
+**April 27th, 2021**
 
-In February, JFrog announced that it would be ending their Bintray distribution service. The official download distributions of Rundeck are now available on a new hosting service.  Details below provide full details about new repository sources and guidance about signing keys.  **Any automation that your team has created utilizing Rundeck’s Bintray repositories will need to be updated prior to May 1st, 2021**.
+In February, JFrog announced that it would be ending their Bintray distribution service. The official download distributions of Rundeck are now available on a new hosting service. See below for full details about new repository sources and guidance about signing keys. **Any automation that your team has created utilizing Rundeck’s Bintray repositories will need to be updated prior to May 1st, 2021**.
 
 ## Migration Instructions
 :::warning
@@ -27,7 +27,7 @@ import the new repository signing key, and update apt. Legacy configuration
 will be replaced.
 
 ```bash
-sudo bash <(curl https://raw.githubusercontent.com/rundeck/packaging/main/scripts/deb-setup.sh) rundeckpro
+curl https://raw.githubusercontent.com/rundeck/packaging/main/scripts/deb-setup.sh 2> /dev/null | sudo bash -s rundeckpro
 ```
 
 ### Manual setup
@@ -56,7 +56,7 @@ The [quick setup script](https://github.com/rundeck/packaging/blob/main/scripts/
 will be replaced.
 
 ```bash
-sudo bash <(curl https://raw.githubusercontent.com/rundeck/packaging/main/scripts/rpm-setup.sh) rundeckpro
+curl https://raw.githubusercontent.com/rundeck/packaging/main/scripts/rpm-setup.sh 2> /dev/null | sudo bash -s rundeckpro
 ```
 
 ### Manual setup
@@ -97,7 +97,7 @@ import the new repository signing key, and update apt. Legacy configuration
 will be replaced.
 
 ```bash
-sudo bash <(curl https://raw.githubusercontent.com/rundeck/packaging/main/scripts/deb-setup.sh) rundeck
+curl https://raw.githubusercontent.com/rundeck/packaging/main/scripts/deb-setup.sh 2> /dev/null | sudo bash -s rundeck
 ```
 
 ### Manual setup
@@ -126,7 +126,7 @@ The [quick setup script](https://github.com/rundeck/packaging/blob/main/scripts/
 will be replaced.
 
 ```bash
-sudo bash <(curl https://raw.githubusercontent.com/rundeck/packaging/main/scripts/rpm-setup.sh) rundeckpro
+curl https://raw.githubusercontent.com/rundeck/packaging/main/scripts/rpm-setup.sh 2> /dev/null | sudo bash -s rundeck
 ```
 
 ### Manual setup
@@ -135,8 +135,8 @@ Remove `bintray-rundeckpro-rpm.repo` if it exists.
 
 Add the following entries to `/etc/yum.repos.d/rundeck.repo` replacing any existing entries:
 ```properties
-[rundeckpro]
-name=rundeckpro
+[rundeck]
+name=rundeck
 baseurl=https://packages.rundeck.com/pagerduty/rundeck/rpm_any/rpm_any/$basearch
 repo_gpgcheck=1
 gpgcheck=0

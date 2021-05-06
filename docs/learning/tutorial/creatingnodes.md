@@ -1,4 +1,4 @@
-# 1 - Creating Nodes
+# 1 - Getting Started - Nodes
 
 :::tutorial
 :::
@@ -7,8 +7,7 @@ A Node is a resource that is either a physical or virtual instance of a network 
 
 If this is the first run through of the tutorial there will only be a single node in your Welcome Project, the Rundeck Server.
 
-
-### Community / Enterprise Exercise
+### Enterprise/Community Exercise
 
 1. Click the `>` next to the server node to see additional attributes of that node.
 1. Clicking attribute values will dynamically filter the nodes based on that value.
@@ -21,31 +20,46 @@ If this is the first run through of the tutorial there will only be a single nod
 
 There are multiple ways to add Nodes to Rundeck. Using the Node Wizard Resource Model is the simplest way to add a node to the project.
 
-### Enterprise Welcome Project Exercise:
+:::: tabs
+::: tab Enterprise Exercise:
 
 Included in Enterprise is the Node Wizard Node Source.  Use that to add a new node by following these steps:
 
 1. Click **Project Settings | Edit Nodes**
-1. Click the Modify button under the Node Wizard entry.
+1. Click the Modify button under the **Node Wizard** entry.
 1. Click + Add Node.
-1. Set the Node Name to node1
-1. Set HostName to node1
-1. Set OS Family to Unix
+1. Set the Node Name to `node1`
+1. Set HostName to `node1`
+1. Set OS Family to `Unix`
 1. Click the Authentication Tab at the top.
-1. Enter agent for the UserName
+1. Enter `agent` for the UserName
 1. Click Add Node
+1. Repeat the steps above for **node2**
 1. Click Save button under the list of nodes.
 
-### Community Welcome Project Exercise
+:::
+::: tab Community Exercise
 
--- Need Same steps for Community --
+1. Click **Project Settings | Edit Nodes**
+1. Click the Modify button under the `File /home/rundeck/resources.yml` entry.
+1. Copy and paste the code below into the edit window:
+    ```yml
+    node1:
+      nodename: node1
+      hostname: node1
+      description: ''
+      username: agent
+      osFamily: unix
+    ```
+1. Duplicate that entry again changing all the `node1` values to `node2`.
 
-### Testing your Nodes
-Use Commands window to run Ad-Hoc commands against nodes and test connectivity.
+>YAML is specific about tabs so be sure to check your formatting.
 
-1. Go to Commands
-1. Enter .* for the Node Filter and click **Search**
-1. Type `uname -a` as the command and click the **Run on X Node** button
+:::
+::::
+### Checking your Nodes
 
+1. Click the **Nodes** entry in the Project Menu
+1. Enter `.*` in the filter and click Search. <br>_(if the node doesn't show up right away wait a few seconds and try again)_
 
-Next let’s test our nodes using the an ad-hoc Command.
+Next let’s test our nodes using the an ad-hoc [Command](/learning/tutorial/commands.md).

@@ -1,0 +1,60 @@
+{
+  "_from": "vuepress-plugin-code-copy@^1.0.6",
+  "_id": "vuepress-plugin-code-copy@1.0.6",
+  "_inBundle": false,
+  "_integrity": "sha512-FiqwMtlb4rEsOI56O6sSkekcd3SlESxbkR2IaTIQxsMOMoalKfW5R9WlR1Pjm10v6jmU661Ex8MR11k9IzrNUg==",
+  "_location": "/vuepress-plugin-code-copy",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "range",
+    "registry": true,
+    "raw": "vuepress-plugin-code-copy@^1.0.6",
+    "name": "vuepress-plugin-code-copy",
+    "escapedName": "vuepress-plugin-code-copy",
+    "rawSpec": "^1.0.6",
+    "saveSpec": null,
+    "fetchSpec": "^1.0.6"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/vuepress-plugin-code-copy/-/vuepress-plugin-code-copy-1.0.6.tgz",
+  "_shasum": "6431dab764b48b5b203e4936d98b1943651ce4ad",
+  "_spec": "vuepress-plugin-code-copy@^1.0.6",
+  "_where": "/home/greg/projects/docs",
+  "author": {
+    "name": "Nicholas Brown"
+  },
+  "bugs": {
+    "url": "https://github.com/znicholasbrown/vuepress-plugin-code-copy/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "A Vuepress plugin that adds copy code buttons to all code blocks.",
+  "homepage": "https://github.com/znicholasbrown/vuepress-plugin-code-copy#readme",
+  "keywords": [
+    "vuepress",
+    "code copy",
+    "copy",
+    "clipboard",
+    "vuepress plugin",
+    "plugin"
+  ],
+  "license": "GPL-3.0-or-later",
+  "main": "index.js",
+  "name": "vuepress-plugin-code-copy",
+  "prettier": {
+    "trailingComma": "none",
+    "tabWidth": 4,
+    "semi": false,
+    "singleQuote": true
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/znicholasbrown/vuepress-plugin-code-copy.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.0.6"
+}

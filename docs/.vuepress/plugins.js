@@ -10,6 +10,15 @@ const autometa_options = {
 function getPlugins(setup) {
     const plugins = [
         'vuepress-plugin-element-tabs',
+        ['@vuepress/html-redirect', {
+          countdown: 0
+          }
+        ],
+        [require('./plugins/vuepress-plugin-code-copy'), {
+            trimContent: true,
+            selector: 'div[class*="language-"], extra-class',
+            backgroundColor: '#383e4a'
+        }],
         [
         'autometa', {
             autometa_options
@@ -51,7 +60,7 @@ function getPlugins(setup) {
         ]
     ]
 
-    if (setup.base == 'docs')
+    if (setup.base)
         plugins.unshift([
         '@vuepress/pwa',
         {

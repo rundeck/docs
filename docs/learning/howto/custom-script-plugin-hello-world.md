@@ -271,7 +271,3 @@ I'm Kilroy!
 ```
 
 Another thing to notice is that even though we've securely passed the secret to the script plugin, once the script plugin has it, they can do whatever with the value, including expose it in the logs, so the script writer needs to be cautious about that.
-
-## Next: a real world use case
-
-Now that we understand the basics of how a custom script plugin works, we can use it to solve a real world use case: [rotating database credentials](/tutorials/custom-script-plugin-db-cred-rotation.md).
