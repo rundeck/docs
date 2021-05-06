@@ -13,15 +13,7 @@ You can use this script to add the Rundeck Enterprise yum repo:
 curl https://raw.githubusercontent.com/rundeck/packaging/main/scripts/rpm-setup.sh 2> /dev/null | sudo bash -s rundeckpro
 ```
 
-```bash
-sudo yum install java rundeckpro-enterprise
-```
 
-When new versions of Rundeck Enterprise are released, you can upgrade to them using the command:
-
-```bash
-sudo yum update rundeckpro-enterprise
-```
 ### Manual yum setup
 
 Remove `bintray-rundeckpro-rpm.repo` if it exists.
@@ -38,6 +30,16 @@ gpgkey=https://packages.rundeck.com/pagerduty/rundeck/gpgkey
 sslverify=1
 sslcacert=/etc/pki/tls/certs/ca-bundle.crt
 metadata_expire=300
+```
+
+```bash
+sudo yum install java rundeckpro-enterprise
+```
+
+When new versions of Rundeck Enterprise are released, you can upgrade to them using the command:
+
+```bash
+sudo yum update rundeckpro-enterprise
 ```
 
 ### Install rpm package directly
