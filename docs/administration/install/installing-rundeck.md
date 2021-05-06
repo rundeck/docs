@@ -110,26 +110,25 @@ on first start using the stock configurations. Production installations of
 Rundeck running H2 are not supported! Choose a supported database below
 to configure a production installation.
 :::
+### Edit Database Config
 
 :::tip
-The Rundeck database(or schema) be setup in advance. The following
+The Rundeck database(or schema) should be setup in advance. The following
 assumes the database is named `rundeck`.
-
-Replace the following tokens in the instructions for each database:
-* `<host>`: The database server hostname.
-* `<rundeckuser>`: The database user with permissions on the `rundeck` database.
-* `<rundeckpassword>`: The password for the Rundeck database user.
 :::
 
-
-### Edit Database Config
 Update your `rundeck-config.properties` file with settings from the following database list and restart
-Rundeck if necessary.
+Rundeck.
 This file is located in different locations depending on your installation method:
 * **RPM/DEB**: `/etc/rundeck/rundeck-config.properties`
 * **WAR/Custom**: `$RDECK_BASE/server/config/rundeck-config.properties`
 * **Docker**: Check out the [Docker Zoo](https://github.com/rundeck/docker-zoo) for configuration examples
 of each database using Docker Compose!
+
+Replace the following tokens in the instructions for each database:
+* `<host>`: The database server hostname.
+* `<rundeckuser>`: The database user with permissions on the `rundeck` database.
+* `<rundeckpassword>`: The password for the Rundeck database user.
 
 :::: tabs
 
