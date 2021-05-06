@@ -15,7 +15,6 @@ how to install it.
 
 1. Go to the **System Menu** (Gear Icon in upper right) **> Plugins > Upload Plugin**.
 1. Copy the plugin file location from the repository _(Latest link as of last update is below)_
-
     ```
     https://github.com/rundeck-plugins/http-step/releases/download/1.0.12/http-step-1.0.12.jar
     ```
