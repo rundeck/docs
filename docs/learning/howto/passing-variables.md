@@ -14,7 +14,7 @@ Click here for more documentation on: [Context Variables](/docs/manual/job-workf
 
 ### Other Terminology
 
-These are some key terms we'll be using throughout this tour in addition to terms used in our [Terminology](/learning/tutorial/terminology) documentation.
+These are some key terms we'll be using throughout this tour in addition to terms used in our [Terminology](/learning/tutorial/terminology.md) documentation.
 
 #### Log Filters
 Log Filters are applied to a Job step to act on the output from that step. Certain Job Filters can set variables based on information in the log output. There is a separate tour to cover different types of Log Filters and how they are used.
@@ -23,12 +23,12 @@ Log Filters are applied to a Job step to act on the output from that step. Certa
 Log Filters use Regular Expression syntax (RegEx) to collect information from the log output. Familiarity with Regex will be key to successfully gathering data from your own job steps. You will not need to know it for these Exercises.
 
 ## Exercises Intro
-As part of the Welcome Projects we have built some example jobs to highlight how variables can be passed from one job step to another.  For more information about the Welcome Projects check out the [Learning Overview](/learning/).
+As part of the Welcome Projects we have built some example jobs to highlight how variables can be passed from one job step to another.  For more information about the Welcome Projects check out the [Learning Overview](/learning/index.md).
 
 It's important to note that Node Steps (steps run against nodes) and Workflow Steps (steps run from the Rundeck server) store variables differently. The examples will also show how to use the variables from different types of steps and highlight common trouble spots.
 
 ::: tip Important Exercise Prerequisite
-If you have not completed the [Getting Started Tutorial](/learning/tutorial/preparing) we recommend finishing the exercises there first to include additional nodes and familiarize yourself with core Rundeck functionality. Terminology and actions in the following exercise will assume you have completed that Tutorial.
+If you have not completed the [Getting Started Tutorial](/learning/tutorial/preparing.md) we recommend finishing the exercises there first to include additional nodes and familiarize yourself with core Rundeck functionality. Terminology and actions in the following exercise will assume you have completed that Tutorial.
 :::
 
 ## Using Input Option Variables

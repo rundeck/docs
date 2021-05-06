@@ -62,4 +62,4 @@ Included in Enterprise is the Node Wizard Node Source.  Use that to add a new no
 1. Click the **Nodes** entry in the Project Menu
 1. Enter `.*` in the filter and click Search. <br>_(if the node doesn't show up right away wait a few seconds and try again)_
 
-Next let’s test our nodes using the an ad-hoc [Command](/learning/tutorial/commands).
+Next let’s test our nodes using the an ad-hoc [Command](/learning/tutorial/commands.md).

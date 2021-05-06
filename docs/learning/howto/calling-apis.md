@@ -4,7 +4,7 @@ Modern applications use the [HTTP](https://developer.mozilla.org/en-US/docs/Web/
 
 To make those HTTP calls we can use an [inline-script(https://docs.rundeck.com/docs/manual/node-steps/builtin.html#script-step)] with a [cURL](https://curl.se/) command inside, curl is used in scripts or commands to transfer data and it’s available for any operating system. But this implies maintaining a lot of code inside a Rundeck workflow.
 
-Rundeck’s Job Steps offer a more user-friendly way to make these calls. For HTTP calls, use the [HTTP Workflow Step Plugin](https://resources.rundeck.com/plugins/rundeck-http-workflow-step-plugin/) in Rundeck. This plugin will send HTTP calls to any web service or HTTP endpoint.  The returned data can then be used in subsequent steps.  (Check out our [Passing Variables](/learning/howto/passing-variables) guide).
+Rundeck’s Job Steps offer a more user-friendly way to make these calls. For HTTP calls, use the [HTTP Workflow Step Plugin](https://resources.rundeck.com/plugins/rundeck-http-workflow-step-plugin/) in Rundeck. This plugin will send HTTP calls to any web service or HTTP endpoint.  The returned data can then be used in subsequent steps.  (Check out our [Passing Variables](/learning/howto/passing-variables.md) guide).
 
 If you are using our Enterprise version the plugin is already bundled with your installation.  Skip straight to the exercises.
 
