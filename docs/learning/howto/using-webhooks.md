@@ -29,7 +29,11 @@ Webhooks are configured within a project. The [Welcome Projects](/learning/index
 
 :::
 ::: tab Community Highlights
-Coming soon.
+- Click on **Webhooks** in the Project Menu and choose the `Run Job - Webhook Example` entry.
+- The **Post URL** is the URL that external systems would submit a POST http event to trigger this webhook.
+- Name **Run Job - Webhook Example**
+- The **Webhook Handler** is **Run Job** _(more on this in future steps)_
+- The webhook is running a job called `Demo/Linux/Gather Linux Versions - Docker` against all nodes `(.*)`
 :::
 ::::
 
@@ -77,11 +81,19 @@ There is a Debug button, but likely at this stage there are no event that have b
 1. Click the **Create Webhook** button.
 :::
 ::: tab Community Exercise
-Coming soon.
+1. Navigate to **Webhooks** in the Project Menu.
+1. Click **Add** Button.
+1. In the Window on the right enter `Check Process Status` for **Name**.
+1. Leave the Users and Roles field as default.
+1. Click **Choose Webhook Plugin** and select **Run Job**.
+1. Click the **Choose a Job** and select the **Demo/Linux/Process Status** job.
+1. Enter `-process ${data.process}` **Options** Value.
+1. Enter `.*` for the Node Filter to run against all nodes.
+1. Click the **Create Webhook** button.
 :::
 ::::
 
-After following these steps and clicking Create Webhook the URL will be populated. Click your new Webhook on the left and copy the Post URL to your clipboard.
+After following these steps and clicking Create Webhook the URL will be populated. Click your new Webhook on the left and copy the **Post URL** to your clipboard.
 
 To trigger the webhook use the curl command below or your favorite webhook tool (Postman). Replace the `<<URL HERE>>` with the value from your webhook.
 
