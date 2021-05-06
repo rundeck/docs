@@ -55,6 +55,17 @@ For this exercise we will use the site [httpbin.org](http://httpbin.org/) test w
 :::
 ::::
 
+## Other Parameters
+Other parameters available:
+
+- Request Timeout (How long to wait for a request to complete before failing).
+- Validate [SSL Certificates](https://en.wikipedia.org/wiki/Transport_Layer_Security#Digital_certificates) (true or false, validate that SSL certificates are trusted, match the hostname, etc.)
+- Authentication section. If the HTTP service uses Basic / [OAuth2](https://en.wikipedia.org/wiki/OAuth#OAuth_2.0_2) authentication. On Basic Auth it’s possible to define the user and password from the Rundeck Key Storage. On OAuth 2.0 add the OAuth Token URL and OAuth Validate URL.
+- Validate Response can check the [HTTP response code](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes) that is returned and fail the step if it is not the expected value. (typically looking for 200)
+- Proxy Settings section, if the HTTP service is behind a proxy server, you can define the Proxy IP address and port.
+
 ## Additional Information
 
-Link to [Example Job Definition](https://github.com/rundeck/welcome-project-community/blob/main/runbooks/yaml/HowTos/Calling_APIs_from_Rundeck.yaml) built using the steps above.
+- Link to [Example Job Definition](https://github.com/rundeck/welcome-project-community/blob/main/runbooks/yaml/HowTos/Calling_APIs_from_Rundeck.yaml) built using the steps above.
+- Official plugin description from [the plugin's GitHub repository](https://github.com/rundeck-plugins/http-step).
+- [Documentation on different HTTP methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods).
