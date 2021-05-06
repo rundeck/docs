@@ -47,8 +47,16 @@ module.exports = [{
           collapsable: true,
           sidebarDepth: 0,
           children: [
-              '/learning/howto/passing-variables',
-              '/learning/howto/calling-apis'
+              '/learning/howto/passing-variables.md',
+              '/learning/howto/calling-apis.md'
+          ]
+        },
+        {
+          title: 'Integrating',
+          collapsable: true,
+          sidebarDepth: 0,
+          children: [
+              '/learning/howto/using-webhooks.md'
           ]
         },
         {
