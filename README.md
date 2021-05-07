@@ -77,13 +77,13 @@ Enterprise PRs can be included by labeling them with the `release-notes/include`
 Create the file `.env` in the project root and add the line `GH_API_TOKEN=[TOKEN]`
 replacing `[TOKEN]` with your GitHub API token. This token needs `repo` scope.
 
-Run the following with the milestone for the release:
+Run the following with the milestone for the release.  This will create/overwrite an existing entry for the release.  Use wisely:
 ```bash
 npm run notes -- --milestone=3.3.9
 ```
 
 **Draft**
-Run the following with the milestone for the release:
+Run the following with the milestone for the release. This will create the file named draft.md to avoid overwriting any existing version:
 ```bash
 npm run notes -- --milestone=3.3.9 --draft
 ```
