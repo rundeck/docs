@@ -45,6 +45,7 @@ see [Plugin Developer Guide - Logging Plugin](/developer/06-logging-plugins.md).
 
 **Required:** `logrotate` installed in system.
 
+
 #### Create logrotate configuration file
 
      cat << EOF > /etc/logrotate.d/theRundeckLog
@@ -60,6 +61,10 @@ see [Plugin Developer Guide - Logging Plugin](/developer/06-logging-plugins.md).
       create 640 root adm
      }
      EOF
+
+::: tip
+keep in mind, a deb installation generates a service.log owns to rundeck/adm, with that in mind, the logrotate has had to change some lines to represent it. 
+:::
 
 **Full documentation and examples can be seen with `man logrotate`**
 
