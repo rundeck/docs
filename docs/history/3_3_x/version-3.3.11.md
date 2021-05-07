@@ -5,7 +5,7 @@ Name: <span style="color: slategray"><span class="glyphicon glyphicon-phone"></s
 [Download this release](https://download.rundeck.com/3.3.11/index.html)
 
 ## Overview
-[SCM plugins](/administration/projects/scm/git) provide Source Code Management for jobs, versioning, exporting or importing their definitions using a remote Git repository.  This release is a major overhaul of issues related to using those plugins.  The plugins should be faster and more reliable in both Open Source and Enterprise versions.
+[SCM plugins](/administration/projects/scm/git) provide Source Code Management for jobs allowing Rundeck admins to track versions and export and/or import definitions using a remote Git repository. With this release, the plugins are faster and more reliable in both Open Source and Enterprise versions.
 
 ## Enterprise Updates
 
