@@ -4,6 +4,10 @@ Name: <span style="color: slategray"><span class="glyphicon glyphicon-phone"></s
 
 [Download this release](https://download.rundeck.com/3.3.11/index.html)
 
+:::danger Package repositories have moved!
+  Please read [the new instructions for downloading Rundeck](/learning/howto/migrate-to-rundeck-packages-repo.md) from our new package repositories.
+:::
+
 ## Overview
 [SCM plugins](/administration/projects/scm/git) provide Source Code Management for jobs allowing Rundeck admins to track versions and export and/or import definitions using a remote Git repository. With this release, the plugins are faster and more reliable in both Open Source and Enterprise versions.
 
@@ -49,7 +53,7 @@ Name: <span style="color: slategray"><span class="glyphicon glyphicon-phone"></s
 * Forrest Evans (fdevans)
 
 
-:::danger Remember!!
+:::warning Remember!!
 **For MySQL users**: Starting with Rundeck `3.3.4` the MySQL JDBC driver is no longer be
 bundled with the distributions. See the [Upgrade Guide](/upgrading/upgrading-to-rundeck-3.3.4.md)
 for instructions to ensure your Rundeck installation can still connect to MySQL after
