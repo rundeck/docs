@@ -1,7 +1,7 @@
 # Rundeck Terminology
 
 ## Projects
-A project is a place to separate management activity. All Rundeck activities occur within the context of a project. Multiple projects can be maintained on the same Rundeck server. Projects are independent from one another, so you can use them to organize unrelated systems within a single Rundeck installation. This can be useful for managing different teams, infrastructures, environments or applications.
+A project is a place within Rundeck to separate management activity. All Rundeck activities occur within the context of a project. Multiple projects can be maintained on the same Rundeck server. Projects are independent from one another, so you can use them to organize unrelated systems within a single Rundeck installation. This can be useful for managing different teams, infrastructures, environments or applications.
 
 ## Nodes
 A Node is a resource that is either a physical or virtual instance of a network accessible host. Nodes have a few basic attributes but a Node's attributes can be extended to include arbitrary named key/value pairs. Attributes typically describe the properties of a node or reflect the state of the node. One of a Node's built in attributes is called "tags" which is a list of classifications or categories about that Node.
@@ -23,17 +23,17 @@ Rundeck lets you organize and execute Jobs and observe the progress as the Job i
 A Job Step is an individual unit of work that a Job might do.  A job can have multiple, ordered steps that each do a different unit of work.  There are two types of job steps available. *Workflow Steps* execute once during the Job execution.  *Node Steps* are run once on each node associated with a job.
 
 ## Activity / Executions
-The Activity window shows execution history for commands and Jobs. By default, the Activity page will list running executions and history recent executions. The page contains a filter control that can be used to expand or limit the executions. Execution detail for each job execution will show options the job was run with, log output, job duration, etc.
+The Activity window shows execution history for commands and Jobs. By default, the Activity page will list running executions and history of recent executions. The page contains a filter control that can be used to expand or limit the executions. Execution detail for each job execution will show options the job was run with, log output, job duration, etc.
 
 ## Tours
-Rundeck Guided Tours provide interactive walk-throughs to end users to help demonstrate Rundeck processes. They can be used to help first time users get familiar with the system, or provide step-by-step instructions for how to execute complicated processes.
+Rundeck Guided Tours provide interactive walk-throughs to end users to help demonstrate Rundeck processes. They can be used to help first time users get familiar with the system, or provide step-by-step instructions for how to execute complicated processes. Tours are only available in Rundeck Enterprise.
 
 ## Plugins
 Rundeck is built over a flexible platform architecture.  Extending Rundeck functionality is done through _plugins_. Plugins exist to execute commands on nodes, perform steps in a job, send a notification about job status, gather information about the hosts in your network, copy a file to a remote server, store and stream logs, talk to a user directory, and so much more.
 
-Our Enterprise version includes built-in plugins to further enhance functionality for [Scheduling](schedules/project-schedules.md) job executions, providing [Guided Tours](tour-manager.md), incorporating [Health Checks](healthchecks.md), and much more.
+The Rundeck Enterprise version includes built-in plugins to further enhance functionality for [Scheduling](schedules/project-schedules.md) job executions, providing [Guided Tours](tour-manager.md), incorporating [Health Checks](healthchecks.md), and much more.
 
-See [Job Plugins](/manual/job-plugins.md) and [Plugin Developer Guide](/developer/index.md) and [Rundeck Plugins](/plugins/index.md).
+See [Job Plugins](/manual/job-plugins.md) and [Plugin Developer Guide](/developer/index.md) and [Rundeck Plugins](/plugins/index.md) for more information.
 
 ## Node Executors
 Rundeck executes Command items on Nodes. The command may be part of a Workflow as defined in a Job, and it may be executed multiple times on different nodes. Rundeck uses the NodeExecutor and FileCopier services as part of the process of executing these commands.

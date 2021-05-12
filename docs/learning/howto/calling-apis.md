@@ -1,12 +1,12 @@
 # Calling APIs from Rundeck
 
-Modern applications use the [HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP) protocol to communicate with each other, send or obtain information of any web service using HTTP [methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) like GET, POST, or PUT (for example, to obtain a valid user ID from a web service to use it later in another process/application).
+Modern applications use the [HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP) protocol to communicate with each other and send or obtain information from any web service using [HTTP methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) like GET, POST, or PUT. For example, to obtain a valid user ID from a web service to use it later in another process/application.
 
-To make those HTTP calls we can use an [inline-script(https://docs.rundeck.com/docs/manual/node-steps/builtin.html#script-step)] with a [cURL](https://curl.se/) command inside, curl is used in scripts or commands to transfer data and it’s available for any operating system. But this implies maintaining a lot of code inside a Rundeck workflow.
+To make those HTTP calls we can use an [inline-script](https://docs.rundeck.com/docs/manual/node-steps/builtin.html#script-step)] with a [cURL](https://curl.se/) command inside, curl is used in scripts or commands to transfer data and it’s available for any operating system. But this implies maintaining a lot of code inside a Rundeck workflow.
 
-Rundeck’s Job Steps offer a more user-friendly way to make these calls. For HTTP calls, use the [HTTP Workflow Step Plugin](https://resources.rundeck.com/plugins/rundeck-http-workflow-step-plugin/) in Rundeck. This plugin will send HTTP calls to any web service or HTTP endpoint.  The returned data can then be used in subsequent steps.  (Check out our [Passing Variables](/learning/howto/passing-variables.md) guide).
+Rundeck’s Job Steps offer a more user-friendly way to make these calls. For HTTP calls, use the [HTTP Workflow Step Plugin](https://resources.rundeck.com/plugins/rundeck-http-workflow-step-plugin/) in Rundeck. This plugin will send HTTP calls to any web service or HTTP endpoint. The returned data can then be used in subsequent steps. (Check out our [Passing Variables](/learning/howto/passing-variables.md) guide).
 
-If you are using our Enterprise version the plugin is already bundled with your installation.  Skip straight to the exercises.
+If you are using our Enterprise version the plugin is already bundled with your installation. Skip straight to the exercises.
 
 ## Community Version Prerequisite
 
@@ -65,6 +65,6 @@ Other parameters available:
 
 ## Additional Information
 
-- Link to [Example Job Definition](https://github.com/rundeck/welcome-project-community/blob/main/runbooks/yaml/HowTos/Calling_APIs_from_Rundeck.yaml) built using the steps above.
+- Link to [Example Job](https://github.com/rundeck/welcome-project-community/blob/main/runbooks/yaml/HowTos/Calling_APIs_from_Rundeck.yaml) built using the steps above. Download the YAML and use it in your Rundeck.
 - Official plugin description from [the plugin's GitHub repository](https://github.com/rundeck-plugins/http-step).
 - [Documentation on different HTTP methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods).

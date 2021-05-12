@@ -35,7 +35,7 @@ Included in Enterprise is the Node Wizard Node Source.  Use that to add a new no
 1. Enter `agent` for the UserName
 1. Click Add Node
 1. Repeat the steps above for **node2**
-1. Click Save button under the list of nodes.
+1. Click the Save button under the list of nodes.
 
 :::
 ::: tab Community Exercise
@@ -62,4 +62,4 @@ Included in Enterprise is the Node Wizard Node Source.  Use that to add a new no
 1. Click the **Nodes** entry in the Project Menu
 1. Enter `.*` in the filter and click Search. <br>_(if the node doesn't show up right away wait a few seconds and try again)_
 
-Next let’s test our nodes using the an ad-hoc [Command](/learning/tutorial/commands.md).
+Next let’s test our nodes using an ad-hoc [Command](/learning/tutorial/commands.md).

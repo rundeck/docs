@@ -36,6 +36,6 @@ There are additional example jobs in the Welcome Project that gather performance
 
 The Activity window shows execution history for commands and Jobs.
 
-By default, the Activity page will list running executions and history recent executions. The page contains a filter control that can be used to expand or limit the executions. Execution detail for each job execution will show options the job was run with, log output, job duration, etc.
+By default, the Activity page will list running executions and history of recent executions. The page contains a filter control that can be used to expand or limit the executions. Execution detail for each job execution will show options the job was run with, log output, job duration, etc.
 
 Click one of the entries in the Activity window to see the executions you've already run.  The list will also include commands run on the **Commands** page.
