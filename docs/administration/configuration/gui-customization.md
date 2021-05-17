@@ -122,7 +122,7 @@ URL for the help link in the app header.
 
 
 ### rundeck.gui.realJobTree
-- Example: ```false (Default: true```
+- Example: ```false (Default: true)```
 - min version: 2.x
 
 Displaying a real tree in the Jobs overview instead of collapsing empty groups.
