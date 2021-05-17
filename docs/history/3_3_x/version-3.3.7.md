@@ -57,6 +57,5 @@ You can make changes in the rundeck-config.properties file and then get Rundeck 
 :::danger Remember!!
 **For MySQL users**: Starting with Rundeck `3.3.4` the MySQL JDBC driver is no longer be
 bundled with the distributions. See the [Upgrade Guide](/upgrading/upgrading-to-rundeck-3.3.4.md)
-for instructions to ensure your Rundeck installation can still connect to MySQL after
-the upgrading.
+for instructions to ensure your Rundeck installation can still connect to MySQL after upgrading.
 :::
