@@ -36,10 +36,12 @@ Now you need to configure Rundeck to connect to this DB as described in: [Admini
 
 Update your `rundeck-config.properties` and configure the datasource:
 
-    dataSource.driverClassName = org.postgresql.Driver
-    dataSource.url = jdbc:postgresql://myserver/rundeck
-    dataSource.username=rundeckuser
-    dataSource.password=rundeckpassword
+```properties
+dataSource.driverClassName = org.postgresql.Driver
+dataSource.url = jdbc:postgresql://pgsql.rundeck.local/rundeck
+dataSource.username = rundeckuser
+dataSource.password = rundeckpassword
+```
 
 With recent Rundeck versions, PostgreSQL connector is bundled.
 
