@@ -23,7 +23,7 @@ You specify the `dataSource.` configuration properties.
 
 Here is the default, set up for the default embedded H2 database:
 
-```java
+```properties
 dataSource.dbCreate = update
 dataSource.url = jdbc:h2:file:/var/lib/rundeck/data/grailsdb;MVCC=true
 ```
