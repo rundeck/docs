@@ -74,7 +74,7 @@ Each Health Check will result in a Health Status:
 	project.healthcheck.enabled=true
 	```
  
-    The health check uses a cache to store the statuses and improve performance when requesting them. Then, enable the "Refresh health status cache" to clean and update the cache periodically and set the update period in the "Cache refresh period" field whose default value is 30 seconds. 
+    The health check uses a cache to store the statuses and improve performance when requesting them. To automatically refresh the Health Checks, enable the "Refresh health status cache" and set the update period in the "Cache refresh period" field whose default value is 30 seconds. 
 
 2. Visit the sidebar link "Health Checks"
 
