@@ -10,7 +10,7 @@ In %RDECK_BASE%\\server\\config\\rundeck-config.properties, set the following:
 
 ```properties
 dataSource.driverClassName = com.microsoft.sqlserver.jdbc.SQLServerDriver
-dataSource.url = jdbc:sqlserver://myserver;DatabaseName=RUNDECK
-dataSource.username = myusername
-dataSource.password = mypassword
+dataSource.url = jdbc:sqlserver://mssql.rundeck.local;DatabaseName=rundeck
+dataSource.username = rundeckuser
+dataSource.password = rundeckpassword
 ```

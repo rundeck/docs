@@ -86,10 +86,10 @@ Update your `rundeck-config.properties` and configure the datasource:
 
 Contents:
 ```properties
-dataSource.url = jdbc:mysql://myserver/rundeck?autoReconnect=true&useSSL=false
+dataSource.driverClassName = org.mariadb.jdbc.Driver
+dataSource.url = jdbc:mysql://mysql.rundeck.local/rundeck?autoReconnect=true&useSSL=false
 dataSource.username = rundeckuser
 dataSource.password = rundeckpassword
-dataSource.driverClassName = org.mariadb.jdbc.Driver
 ```
 
 Finally you can start rundeck. If you see a startup error about database access, make sure that the hostname that the Mysql server sees from the client is the same one you granted access to.
