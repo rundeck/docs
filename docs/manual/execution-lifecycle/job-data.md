@@ -1,0 +1,202 @@
+# Job Data Plugins (Enterprise) [Incubating]
+::: enterprise
+:::
+
+::: incubating
+:::
+
+This plugin allows Jobs to export a JSON file as the result of an execution.  The JSON data can be retrieved via the API, and shown in the GUI.
+
+This allows you to run a Job, and receive a JSON result back, customized to contain data that is relevant to the outcome of the Job.
+
+There are currently two different Plugins that can be used to produce JSON data for the Job.
+
+## Requirements
+
+::: warning
+You must enable the feature with the following configuration
+:::
+
+```
+rundeck.feature.incubator.jobdata.enabled=true
+```
+
+## Plugin: Export Job Data
+
+This plugin exports data groups from the Execution Context in the Global scope. Groups are named key-value maps.
+
+The Execution Context is used to store data values as the Execution proceeds, and allows passing Captured data values from one step in a workflow to later steps in the workflow.
+
+You can export the captured data into a JSON file using the **Export Data** Execution Lifecycle Plugin.
+
+Enable it in the Execution Lifecycle tab when editing the Job.
+
+### Inputs
+
+**Data Groups**
+
+Define the set of Groups you want to export into the JSON data.
+
+Typically data captured using the "Key Value Data" Log Filter plugin, is put in the `data` group, and values can be referenced via `${data.mydata}`. That data is also usually captured in the Node Context.  You will have to use the "Global Variable" workflow step, to copy values out of Node context into the Global context.  You can specify what Group to put the values in. When you do this to expose data values to parent Jobs in a multi-job workflow, you need to put it in the `export` group.
+
+The default Group to export is `export`, but you can specify a different one or multiple ones using a comma-separated list such as `data,export`.
+
+The JSON data will be exported in the same structure it has in the stored context, such as:
+
+```json
+{
+	"export":{
+		"mydata": "mydata value"
+	}
+}
+```
+
+## Plugin: JSON Template Data
+
+This plugin exports a JSON document that is generated from a template defined by the user.
+
+Execution Context data values can be used within Strings within the JSON document, and will be expanded as usually done within Commands and other steps, such as `${data.myvalue}`.
+
+The JSON Template also supports a special syntax for generating Arrays or Objects of data, by iterating over either the Node or Step context values.
+
+For example, if you capture data using the "Key Value Data" Log filter on a command or script executed multiple Nodes, you will have a value for each node that executed. 
+
+You can copy that data as an Array or JSON Object (keyed by Node name) into the output document.
+
+You can also select values based on a Regular expression filter of Node Name, or from specific Steps if you have multiple data sets from different steps.
+
+### Inputs
+
+**JSON Template**
+
+Enter a valid JSON document. 
+
+### JSON Template format
+
+Enter a valid JSON document. You can substitute context data values like `${data.name}` or `${data.value@nodename}`
+. Note that 
+Context Variable expansion is evaluated in a global context, meaning that `${data.name}` will only work if there is 
+a global value matching that group and name.
+If you want to include data captured from Node steps, such as when using the Key Value Data Log Filter, you can use a
+ syntax like `${data.name*}` which will
+collect all values for `data.name` in all Node contexts separated with a comma.
+
+You can expand all node values like that into a JSON array using a special syntax:
+
+```json
+{ "key": [], "key@": "data.name" }
+```
+
+This declares a map entry `key` as an array, and the `key@` declares will collect all Node entries for `data.name` 
+into the `key` value.
+
+The result will be:
+
+```json
+{ "key": ["nodevalue1","nodevalue2"] }
+```
+
+If you want the data expanded as a JSON Object instead, using Node Names as the map entries, declare the `key` entry 
+as a JSON object:
+
+```json
+{ "key" : {}, "key@": "data.name" }
+```
+
+The result will be:
+
+```json
+{ "key" : {"node1": "nodevalue1", "node2": "nodevalue2" } }
+```
+
+You can select a subset of node values using a syntax after the `@` sign in the key:
+
+* `key@~REGEX` matches all nodes matching the regular expression
+
+Similarly for Step values, you can select values based on the step key using this syntax:
+
+* `*:key` matches all steps
+* `1:key` only step 1 value
+
+```json
+{ "key" : [], "*:key": "data.name" }
+```
+
+Results in `key` value being an array of all Step data values for `data.name`.
+
+A combination of `*:key@` will enumerate all step and node values if there are different values in different steps.
+
+A value of `1:key@` will match all node values in step 1.
+
+Note that if you the value from a single node, you can use the normal variable expansion such as
+`${data.name@nodename}` (value for node `nodename`) or `${1:data.name}` (step value for step 1).
+
+
+
+## API 
+
+After execution, you can get the JSON data produced by either of the plugins, by sending a GET request to
+
+`/api/36/project/$PROJECT/execution/$ID/result/data`
+
+## Example Job
+
+Here is a sample job, that captures a set of values and uses the "JSON Template" plugin to export the JSON:
+
+```yaml
+- defaultTab: nodes
+  description: returns something fun
+  executionEnabled: true
+  id: fa3d68ba-151b-464e-a455-a0615a0a7d20
+  loglevel: INFO
+  maxMultipleExecutions: '2'
+  multipleExecutions: true
+  name: Fun Job
+  nodeFilterEditable: true
+  plugins:
+    ExecutionLifecycle:
+      json-data:
+        jsonTemplate: |-
+          {
+              "d6":"${data.dice*}",
+              "fortune":"${data.fortune*}",
+              "For your reference, today you will have":"${data.luck*}"
+          }
+  scheduleEnabled: true
+  schedules: []
+  sequence:
+    commands:
+    - description: roll dice
+      exec: echo $(($RANDOM % 6 + 1 ))
+      plugins:
+        LogFilter:
+        - config:
+            invalidKeyPattern: \s|\$|\{|\}|\\
+            logData: 'true'
+            name: dice
+            regex: ^(.+)$
+          type: key-value-data
+    - description: fortune
+      exec: fortune
+      plugins:
+        LogFilter:
+        - config:
+            hideOutput: 'false'
+            logData: 'false'
+            name: fortune
+            regex: (.+?)
+          type: key-value-data-multilines
+    - description: wishing
+      exec: RD_COLOR=0 rd pond
+      plugins:
+        LogFilter:
+        - config:
+            invalidKeyPattern: \s|\$|\{|\}|\\
+            logData: 'false'
+            name: luck
+            regex: ^(.+\.)$
+          type: key-value-data
+    keepgoing: false
+    strategy: node-first
+  uuid: fa3d68ba-151b-464e-a455-a0615a0a7d20
+```

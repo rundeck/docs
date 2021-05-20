@@ -41,6 +41,7 @@ module.exports = [{
         '/manual/job-plugins',
         '/manual/execution-lifecycle/job-resume.md',
         '/manual/execution-lifecycle/job-retry-failed-nodes.md',
+        '/manual/execution-lifecycle/job-data.md',
         '/manual/jobs/job-queue.md',
       ]
     },
