@@ -51,6 +51,10 @@ The list of roles can be accepted as-is (default), or you can add a prefix to th
 
 ## PropertyFileLoginModule
 
+:::warning
+It is reccomended to use BCRYPT versus other methods, this will lead to the best results.
+:::
+
 - NOTE: The `org.eclipse.jetty.jaas.spi.PropertyFileLoginModule` JAAS module will automatically add the username as a role to the login credentials.  
 If you do not want this behavior please use the `org.rundeck.jaas.jetty.ReloadablePropertyFileLoginModule` module.*
 
@@ -110,11 +114,12 @@ mypass    <-----Type this value
 obfuscate: OBF:1xfd1zt11uha1ugg1zsp1xfp
 md5: MD5:a029d0df84eb5549c641e04a9ef389e5
 crypt: CRYPT:jsnDAc2Xk4W4o
+bcrypt: BCRYPT:JDG45dJSNnsf4
 ```
 
 Then add this to the `realm.properties` file with a line like so:
 
-    jsmith: MD5:a029d0df84eb5549c641e04a9ef389e5,user,admin
+    jsmith: BCRYPT:a029d0df84eb5549c641e04a9ef389e5,user,admin
 
 Then restart Rundeck to ensure it picks up the change and you're done.
 
@@ -160,7 +165,7 @@ Rundeck includes two JAAS login modules you can use for LDAP directory authentic
 
 These are an enhanced version of the default Jetty JAAS Ldap login module that caches authorization results for a period of time.
 
-JAAS supports evaluating `MD5` and `CRYPT` password hashes.
+JAAS supports evaluating `MD5`, `BCRYPT` and `CRYPT` password hashes.
 
 You must change some configuration values to change the authentication module to use.
 
