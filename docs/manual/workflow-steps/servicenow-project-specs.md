@@ -44,9 +44,10 @@ project.plugin.WorkflowStep.Service-Now-Incident-Create.url=https://server.servi
 
 ## ServiceNow / Incident / Edit
 
-```project.plugin.WorkflowStep.Service-Now-Incident-Edit.login=admin
-   project.plugin.WorkflowStep.Service-Now-Incident-Edit.password-key-storage-path=keys/servicenow/pass
-   project.plugin.WorkflowStep.Service-Now-Incident-Edit.url=https\://dev63229.service-now.com
+```
+project.plugin.WorkflowStep.Service-Now-Incident-Edit.login=admin
+project.plugin.WorkflowStep.Service-Now-Incident-Edit.password-key-storage-path=keys/servicenow/pass
+project.plugin.WorkflowStep.Service-Now-Incident-Edit.url=https\://dev63229.service-now.com
 ```
 
 ## ServiceNow / Incident / View
