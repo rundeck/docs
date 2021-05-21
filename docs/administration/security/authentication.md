@@ -52,7 +52,7 @@ The list of roles can be accepted as-is (default), or you can add a prefix to th
 ## PropertyFileLoginModule
 
 :::warning
-It is reccomended to use BCRYPT versus other methods, this will lead to the best results.
+It is recommended to use `BCRYPT` encrypted passwords with `realm.properties` as it is the most secure option available. Avoid `plain`, `MD5`, and `CRYPT`.
 :::
 
 - NOTE: The `org.eclipse.jetty.jaas.spi.PropertyFileLoginModule` JAAS module will automatically add the username as a role to the login credentials.  
