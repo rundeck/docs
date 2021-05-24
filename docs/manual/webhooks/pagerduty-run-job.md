@@ -12,6 +12,17 @@ PagerDuty Webhook plugin.
 The plugin configuration will run a **Job** when PagerDuty sends Rundeck an incident
 `trigger` event.
 
+### V3 Webhook Signature Verification
+
+In Rundeck 3.4.0 and later, enterprise customers have the ability to verify that incoming webhooks are actually coming from Pagerduty.
+
+To begin, users must have a shared secret key from PagerDuty. In order to get the shared secret key, make an API call to create a webhook subscription, as described here: [Webhook Subscriptions](https://developer.pagerduty.com/api-reference/reference/REST/openapiv3.json/paths/~1webhook_subscriptions/post)
+
+In the response body of the call above, there will be a "secret" key. The value for secret is the shared secret used to verify webhooks. Once that value has been returned, create a new password type key in Rundeck Key Storage.
+
+Now, when returning to the webhook definition as described below, select "Shared Secret" and then select the shared secret key from key storage. If the key doesn't match what was returned from PagerDuty, the webhook will not trigger the job successfully.
+
+
 ### Create Rundeck Webhook
 1. Navigate to **Webhooks**
 2. Click **Add**
