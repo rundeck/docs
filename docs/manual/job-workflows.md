@@ -225,7 +225,7 @@ permanently saved after pressing the "Create" button if new or the
 
 When a Job step is executed, it has a set of "context" variables that you can access in the Job step. There are several sets of context variables, including: the Job context `job`, the Node context `node`, and the Option context `option`.
 
-Job context variables:
+Job context variables (Global scope):
 
 - `job.name`: Name of the Job
 - `job.group`: Group of the Job
@@ -241,7 +241,7 @@ Job context variables:
 - `job.threadcount`: Threadcount (number of nodes run at once) of the Job
 - `job.filter`: The filter used to select the nodes for this job (if applicable)
 
-Node context variables:
+Node context variables (Node scope):
 
 - `node.name`: Name of the Node being executed on
 - `node.hostname`: Hostname of the Node
@@ -251,7 +251,7 @@ Node context variables:
 - `node.os-*`: OS properties of the Node: `name`,`version`,`arch`,`family`
 - `node.*`: All Node attributes defined on the Node.
 
-Execution context variables:
+Execution context variables (Global scope):
 
 The execution data is included as a Map called execution containing the following keys and values:
 
@@ -277,7 +277,7 @@ The following values may be available after the job is finished (not available f
 - `execution.dateEndedW3c`: End time as W3C formatted string
 - `execution.abortedby`: User who aborted the execution
 
-Additional Error-handler context variables:
+Additional Error-handler context variables (Global scope):
 
 - `result.reason`: A code indicating the reason the step failed
   - Common reason code strings used by node execution of commands or scripts:
@@ -302,20 +302,23 @@ Additional Error-handler context variables:
 
 Option context variables are referred to as `option.NAME` (more about [Job Options](/manual/job-options.md).)
 
+There may be additional context variables available, such as `data.*` values when using the [Data Capture Job Filter Plugins](#data-capture-job-filter-plugins).
+
+
 ### Context Variable Usage
 
 Context variables can be used in a few ways in a Job step, with slightly different syntaxes:
 
 - Commands, Script Arguments and Job Reference Arguments
 
-  : \${ctx.name}
+  : `${ctx.name}`
 
 - Inline Script Content (_see note_)
 
-  : @ctx.name@
+  : `@ctx.name@`
 
-::: tip
-Note, The "Inline Script Content" variable expansion is **not** available for "Script File" steps. The Script File is not rewritten at all when used for execution.
+::: tip Note
+The "Inline Script Content" variable expansion is **not** available for "Script File" steps. The Script File is not rewritten at all when used for execution.
 :::
 
 ::: tip
@@ -324,17 +327,56 @@ This can be disabled, see [Administrator Guide > Configuration File Reference > 
 
 - Environment Variables (_see note_)
 
-  : \$RD_CTX_NAME
+  : `$RD_CTX_NAME`
 
   The syntax for Environment variables is that all letters become uppercase, punctuation is replaced with underscore, and the name is prefixed with `RD_`.
 
-::: tip
+::: tip Note
 See the chapter [Configuring Remote Machine for SSH](/administration/projects/node-execution/ssh.md#configuring-remote-machine-for-ssh) for information about requirements of the SSH server.
 :::
 
-### Data Capture Job Filter Plugins
 
-Rundeck offers two different data capture job filter plugins. The first, Key Value Data, captures simple Key/Value data using a simple text format. The second, Multiline Regex Data Capture, captures multiline regex key/value data using a simple text format. The data capture job filter plugins allow users to define and utilize data variables across numerous job steps.
+- Special syntax for different Scopes (see below)
+
+
+### About Context Variable Scopes
+
+The `job.*`, and `execution.*` variables mentioned above exist in the Global scope.
+
+Global Scope variables are available to all types of Workflow steps.
+
+The `node.*` values are available within a Node scope.  There can be multiple Node Scopes, and each Node Scope is bound to a particular Node Name.
+
+Node Scope values for a particular Node name, are available within the same Scope for the same Node.
+
+Variables that are added to the Context while the workflow is executing, such as `data.*` variables, get added to either the Global Scope or a Node Scope.  
+
+If the variable is added within a Node Step, then the data values are stored within the Node Scope for that node. This allows multiple values to be added by different nodes with the same variable name.
+
+Any variables within the same Scope can be referenced without special syntax.  For example, within a Node Step other variables
+added to the Context within the same Node Scope for the same node can be referenced using `${data.MyKey}`. 
+
+If a value is not found for the variable reference within the current scope, the scope is "widened" to find it at a higher scope. So all Globally Scoped variable
+values can be referenced using the normal syntax.
+
+Node Scope values can be referenced either from the Global scope or a different Node's scope by using a special syntax:
+
+* `${data.MyKey@MyNodeName}` - reference the variable within the Node scope for the `MyNodeName` node.
+* `${data.MyKey*}` - collects all variable values from all Node Scopes, and produces a single value using a `,` (comma) to delimit the values.
+* `${data.MyKey*;}` - specifies a different delimiter for the values
+
+::: tip
+If a variable reference does not produce the value that is expected, make sure the Scope of the value and the Scope of the reference point (i.e where the context variable reference is being evaluated) correspond.
+
+The **Log Data** Workflow Step will log all scoped context variables, to visualize what values are available at a certain point in a workflow.
+
+The Workflow Strategy used in the Workflow governs when steps execute: A sequential strategy means each step will be processed before subsequent steps, which allows (for example) Step 2 to reference any value stored in Step 1, even from different Nodes.  However, a Node-first, Parallel or Ruleset Strategy will have different behavior, so depending on the order in which Steps are executed, some captured values may or may not be present.
+
+:::
+
+### Data Capture Log Filter Plugins
+
+Rundeck offers two different data capture Log Filter plugins. The first, Key Value Data, captures simple Key/Value data using a simple text format. The second, Multiline Regex Data Capture, captures multiline regex key/value data using a simple text format. The data capture Log Filter plugins allow users to define and utilize data variables across numerous job steps.
 
 For more information on Key Value data, see [Key Value Data](/manual/log-filters/key-value-data.md).
 

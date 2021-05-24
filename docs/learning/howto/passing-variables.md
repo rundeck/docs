@@ -10,7 +10,7 @@ This tour will show various examples of how to share data from one step to anoth
 ### Type of Variables
 When a Job step is executed, it has a set of *context variables* that you can access in the Job step. There are several sets of context variables, including: the Job context `job`, the Node context `node`, the Option context `option`, and the Step Data Context `data`.
 
-Click here for more documentation on: [Context Variables](/docs/manual/job-workflows.html#context-variables)
+Click here for more documentation on: [Context Variables](/manual/job-workflows.md#context-variables)
 
 ### Other Terminology
 
@@ -73,7 +73,7 @@ This is important to keep in mind because when a job is run against more than on
 
 ### Command Steps vs Scripts
 Referencing variables from Command Steps use a different syntax than referencing them from within a Script. Most Job Steps are Command Steps and will follow a format of:
-`${data.MyKeyName}`.  Scripts will reference variables by enclosing them in @ symbols: `@data.MyKeyName`
+`${data.MyKeyName}`.  Scripts will reference variables by enclosing them in @ symbols: `@data.MyKeyName@`
 
 :::: tabs
 In this Exercise we'll highlight the dynamics between all of these scenarios.
@@ -124,7 +124,7 @@ A common sticking point is when _Workflow Steps_ need to use a variable value fr
 
 Accessing the variable from the node would need to be called using `${data.MyKeyName@hostname}` to get the specific value. Note the `@hostname` portion of that string.
 
-One If your job is run against a single node it is also possible to use the `*` character `${data.MyKeName*}`. The `*` is used in Step 4 but as you can see in the output when used on jobs with multiple nodes the variables are joined with a comma `,`.
+If your job is run against a single node it is also possible to use the `*` character `${data.MyKeyName*}`. The `*` is used in Step 4 but as you can see in the output when used on jobs with multiple nodes the variables are joined with a comma `,`.  If you want to use a character other than `,`, you can add it after the `*` like `${data.MyKeyName*;}` which will separate all values with `;`.
 
 ## Using Other Context Variables
 Using other Context variables follows the same format.
