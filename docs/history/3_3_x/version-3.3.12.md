@@ -4,6 +4,10 @@ Name: <span style="color: springgreen"><span class="glyphicon glyphicon-piggy-ba
 
 [Download this release](https://download.rundeck.com/3.3.12/index.html)
 
+:::danger Package repositories have moved!
+  Please read [the new instructions for downloading Rundeck](/learning/howto/migrate-to-rundeck-packages-repo.md) from our new package repositories.
+:::
+
 ## Overview
 
 This small release updates package dependencies to enhance the security of Rundeck and addresses some cosmetic fixes.
