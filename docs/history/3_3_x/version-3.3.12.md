@@ -6,14 +6,16 @@ Name: <span style="color: springgreen"><span class="glyphicon glyphicon-piggy-ba
 
 ## Overview
 
-This small release updates package dependencies to enhance the security of Rundeck and some cosmetic fixes.
+This small release updates package dependencies to enhance the security of Rundeck and addresses some cosmetic fixes.
 
-Related CVE
-- [http-client 3.1](https://nvd.nist.gov/vuln/detail/CVE-2012-5783)
+Security Updates:
+- Apache JDBC files updated to 9.0.44. _Note: These files are not vulnerable. Updating helps reduce false positive findings in some security scans._
+- Updated http-client 3.1 across multiple libraries. [See CVE](https://nvd.nist.gov/vuln/detail/CVE-2012-5783)
 
 
 ## Core Product Updates
 
+* [Add Style for Fixed Table and Word Breaks](https://github.com/rundeck/rundeck/pull/7080)
 * [Fix stuck progress bar on oversized logs](https://github.com/rundeck/rundeck/pull/7059)
 * [Initialize cmdDatavariable used in closure](https://github.com/rundeck/rundeck/pull/7058)
 * [Update Tomcat JDBC lib to 9.0.44](https://github.com/rundeck/rundeck/pull/7044)
