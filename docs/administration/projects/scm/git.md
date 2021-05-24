@@ -4,13 +4,13 @@ Rundeck provides SCM Export and SCM Import providers for Git.
 
 This plugin allows Source Code Management of the jobs, versioning, exporting or importing their definitions using a remote Git repository.
 
-Project Settings > Setup SCM 
-:   
-![Setup SCM Option](~@assets/img/scm-git-config-location.png)
+_Project Settings > Setup SCM_
+
+![Setup SCM Option](~@assets/img/scm-git-conf-location.png)
 
 ## Git Export Configuration
 
-![Setup export button](~@assets/img/csm-git-conf-export-button.png)
+![Setup export button](~@assets/img/scm-git-conf-export-button.png)
 
 ### Committer Configuration
 
@@ -55,7 +55,7 @@ Changing this value modifies the file definition and files need to be pushed aga
 
 ## Git Import Configuration
 
-![Setup import button](~@assets/img/csm-git-conf-import-button.png)
+![Setup import button](~@assets/img/scm-git-conf-import-button.png)
 
 ### Git Repository Configuration
 
