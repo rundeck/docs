@@ -1,8 +1,17 @@
 # 3.4.0 ACL Changes
 
 ## Project ACLs for Key Storage
-In Rundeck 3.4.0, theACL policies in regard to key storage were changed. Now, ACL policies granting access to key storages must be defined within the project ACLs, not the system ACLs. This allows for users to grant access to keys only to certain users in a project, not the whole project.
+In Rundeck 3.4.0, the ACL policies were enhanced to allow administrators the ability to write project level ACLs for key storage access.  Previously, ACL policies for Key Storage Access were defined at the system level.  Now, administrators and authorized users can control key storage access at a project level in order to isolate users from other contexts at the System level. 
 
+The default behavior for Key Storage access is defined at the project level.  For administrators who would like to retain the previous functionality of defining key storage access at the system level, they would have to set the following config property:
+
+
+
+     rundeck.feature.projectKeyStorage.enabled=false
+
+
+
+This property should be set in the `rundeck-config.properties`. The Key Storage GUI is available in the project configuration menu allowing project level key management.  
 ## Enterprise ACL Storage Layer
 
 Rundeck Enterprise 3.4.0 adds a more efficient Enterprise ACL Storage Layer, which improves application performance if you have many ACLs. This feature is enabled by default and will automatically transfer ACLs from the Core ACL Storage Layer at startup if they exist. Newly added or changed ACLs will use the new Enterprise ACL Storage Layer. The new storage layer stores ACLs in the database in a format that allows them to be queried more efficiently, and improves performance when there are many ACLs. 
