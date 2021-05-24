@@ -95,7 +95,7 @@ rundeck.server.uuid = XXXXXXXXXXXXXXX
 ### Using yum
 
 ```sh
-$ yum upgrade rundeck 
+$ yum upgrade rundeck
 ```
 
 ## Tomcat War deployment
@@ -137,7 +137,7 @@ mv rundeck-{{{rundeckVersionFull}}}.war $tomcat.base/webapps/rundeck.war
 
 **Before performing this upgrade, we highly recommend you stop all cluster members and do the following steps, one cluster member, at a time.**
 
-- Download the latest Rundeck version .war from [Rundeck Downloads](https://download.rundeck.com/) 
+- Download the latest Rundeck version .war from [Rundeck Downloads](https://download.rundeck.com/)
 
 - Copy or move the downloaded rundeck war file into your` $RDECK_BASE` folder
 
@@ -154,7 +154,7 @@ mv rundeck-{{{rundeckVersionFull}}}.war $tomcat.base/webapps/rundeck.war
 
 - Backup both folders, `$RDECK_BASE/server/config` and` $RDECK_BASE/etc`, just in case
 
-- Delete these files and dirs: 
+- Delete these files and dirs:
 
 ```
 $RDECK_BASE/libext/
@@ -169,9 +169,6 @@ $RDECK_BASE/var/.install-complete-missing-ver
 - Start Rundeck from the console and wait until it boots up successfully
 
 ```
-java -jar rundeckpro-enterprise-3.3.6-20201111.war
+java -jar rundeckpro-enterprise-{{{rundeckVersionFull}}}.war
 
 ```
-
-
-
