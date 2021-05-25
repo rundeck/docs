@@ -35,7 +35,7 @@ On initial Rundeck build/boot all configuration items are still written to the t
 
 All setting values are done in String format for this release.  If a setting is expecting a Boolean value please use `true` or `false`.
 
-### Current Roadmap Plans
+### Feature Plans
 
 Bugs:
 - Removing a Base setting does not take it off the list.

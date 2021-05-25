@@ -20,13 +20,18 @@ Name: <span style="color: {{version.color()}}"><span class="glyphicon glyphicon-
 
 ## Contributors
 
+* Imad Jafir (imad6639)
+* Greg Schueler (gschueler)
+* Luis Toledo (ltamaster)
+* Rodrigo Navarro (ronaveva)
+* Carlos Eduardo (carlosrfranco)
+* Miguel Ramos (mishingo)
+* Stephen Joyner (sjrd218)
+* Greg Zapp (ProTip)
+* Christopher McCarroll-Gilbert (chrismcg14)
+* Jason Qualman (qualman)
+* Forrest Evans (fdevans)
+
 {% for login, user in contributors -%}
 * {{ user.name }} ({{user.login}})
 {% endfor %}
-
-:::danger Remember!!
-**For MySQL users**: Starting with Rundeck `3.3.4` the MySQL JDBC driver is no longer be
-bundled with the distributions. See the [Upgrade Guide](/upgrading/upgrading-to-rundeck-3.3.4.md)
-for instructions to ensure your Rundeck installation can still connect to MySQL after
-the upgrading.
-:::
