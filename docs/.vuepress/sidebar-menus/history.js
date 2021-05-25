@@ -9,6 +9,13 @@ module.exports = [
     children: [
       ...getChildren('docs/history'),
       {
+        title: '3.4.x',
+        collapsable: true,
+        sidebarDepth: 2,
+        path: '/history/',
+        children: getChildren('docs/history', '3_4_x'),
+      },
+      {
         title: '3.3.x',
         collapsable: true,
         sidebarDepth: 2,

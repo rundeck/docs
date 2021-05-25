@@ -14,7 +14,7 @@ The plugin configuration will run a **Job** when PagerDuty sends Rundeck an inci
 
 ### V3 Webhook Signature Verification
 
-In Rundeck 3.4.0 and later, enterprise customers have the ability to verify that incoming webhooks are actually coming from Pagerduty.
+In Rundeck 3.4.0 and later, enterprise customers have the ability to verify that incoming webhooks are actually coming from PagerDuty.
 
 To begin, users must have a shared secret key from PagerDuty. In order to get the shared secret key, make an API call to create a webhook subscription, as described here: [Webhook Subscriptions](https://developer.pagerduty.com/api-reference/reference/REST/openapiv3.json/paths/~1webhook_subscriptions/post)
 
