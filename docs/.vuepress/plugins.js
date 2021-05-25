@@ -54,7 +54,7 @@ function getPlugins(setup) {
         {
             type: 'incubating',
             defaultTitle: {
-            '/':'Incubating: this API may change in a future release.'
+            '/':'Incubating: this API or Feature may change in a future release.'
             },
         },
         ]

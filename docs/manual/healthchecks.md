@@ -73,6 +73,8 @@ Each Health Check will result in a Health Status:
 	```properties
 	project.healthcheck.enabled=true
 	```
+ 
+    The health check uses a cache to store the statuses and improve performance when requesting them. To automatically refresh the Health Checks, enable the "Refresh health status cache" and set the update period in the "Cache refresh period" field whose default value is 30 seconds. 
 
 2. Visit the sidebar link "Health Checks"
 
@@ -114,6 +116,12 @@ Use the "Exclude Filter" in Job definitions to filter out unhealthy nodes, while
 When a Job is run, the excluded nodes will be indicated and automatically deselected.  Note: if "Show Excluded Nodes" is set to "No", the excluded nodes will not be shown at all.
 
 ![Health Checks - Run Job - Exclude Unhealthy Nodes](~@assets/img/healthchecks-run-job-excluded-filter.png)
+
+## Refresh Cache Before Execution
+
+Enable the "Refresh HealthChecker Cache" plugin to force healthcheck cache to refresh before job execution starts.
+
+![Refresh HealthChecker cache](~@assets/img/refresh_healthcheck_cache_exec_lifecycle_plugin.png)
 
 ## Access Control
 

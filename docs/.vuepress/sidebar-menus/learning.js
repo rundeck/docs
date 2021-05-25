@@ -60,6 +60,14 @@ module.exports = [{
           ]
         },
         {
+          title: 'Installation',
+          collapsable: true,
+          sidebarDepth: 0,
+          children: [
+            '/learning/howto/migrate-to-mysql'
+          ]
+        },
+        {
           title: 'Customizing',
           collapsable: true,
           sidebarDepth: 0,
