@@ -26,8 +26,6 @@ You can make changes in the rundeck-config.properties file and then get Rundeck 
 
 ## Issues
 
-[Milestone 3.3.7](https://github.com/rundeck/rundeck/milestone/156)
-
 * [Fix values list in option form displayed misaligned in 3.3.7](https://github.com/rundeck/rundeck/pull/6653)
 * [Allow option values plugins to access the key storage](https://github.com/rundeck/rundeck/pull/6642)
 * [Fix multivalued options validation with no errors when another option (not multivalued) is invalid](https://github.com/rundeck/rundeck/pull/6641)

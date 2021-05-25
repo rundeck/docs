@@ -29,7 +29,7 @@ This release also adds some User Count information to the System Report in Enter
 * [Fixes webhook notification issue that use credentials in URL](https://github.com/rundeck/rundeck/issues/6732)
 * [edit framework controller to accept resourceModelSources config when creating a new project](https://github.com/rundeck/rundeck/issues/6730)
 * [Issues/6693 slow job list show page](https://github.com/rundeck/rundeck/issues/6725)
-* [Fix to get futures schedules both via addon (enterprise-schedules) and via job scheduling (job edit page)](https://github.com/rundeck/rundeck/issues/6723)
+* [Fix to get futures schedules both via add-on (enterprise-schedules) and via job scheduling (job edit page)](https://github.com/rundeck/rundeck/issues/6723)
 * [Update pywinrm plugin. Added a function to remove/replace simple quotes when execute command](https://github.com/rundeck/rundeck/issues/6712)
 * [Creating a new log filter plugin to mask sensitive output log text](https://github.com/rundeck/rundeck/issues/6709)
 * [Changes to allow to import nodes only separately from Configuration](https://github.com/rundeck/rundeck/issues/6701)

@@ -33,6 +33,9 @@ Security Updates:
 * [Fix: use aclFileManager to read project ACLs for export](https://github.com/rundeck/rundeck/pull/6961)
 
 
+[Here is a link to the full list of public PRs](https://github.com/rundeck/rundeck/pulls?q=is%3Apr+milestone%3A3.3.11+is%3Aclosed)
+
+
 ## Contributors
 
 * Imad Jafir (imad6639)

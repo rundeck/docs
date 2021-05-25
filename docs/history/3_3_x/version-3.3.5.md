@@ -31,8 +31,6 @@ startup time. Check out all the details below.
 
 ## Issues
 
-[Milestone 3.3.5](https://github.com/rundeck/rundeck/milestone/154)
-
 * [Fix crontab everyday/everymonth checkbox fields always hidden](https://github.com/rundeck/rundeck/pull/6560)
 * [Fix server uuid loading in rpm/deb](https://github.com/rundeck/rundeck/pull/6544)
 * [Rundeck server uuid not set correctly in rpm/deb](https://github.com/rundeck/rundeck/issues/6543)

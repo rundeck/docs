@@ -11,8 +11,6 @@ Along with that came a few bugs that we've addressed here. There were some brows
 
 ## Issues
 
-[Milestone 3.3.1](https://github.com/rundeck/rundeck/milestone/145)
-
 * [Fix node view output not rendering](https://github.com/rundeck/rundeck/pull/6302)
 * [Fix noisy cache warnings on startup](https://github.com/rundeck/rundeck/pull/6296)
 * [Logs in Node View are broken since 3.3.0](https://github.com/rundeck/rundeck/issues/6292)

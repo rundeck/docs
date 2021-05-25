@@ -48,8 +48,6 @@ for instructions to ensure your Rundeck installation can still connect to MySQL 
 
 ## Issues
 
-[Milestone 3.3.6](https://github.com/rundeck/rundeck/milestone/155)
-
 * [New SSHJ plugin](https://github.com/rundeck/rundeck/pull/6594)
 * [Duplicate job options - v1](https://github.com/rundeck/rundeck/pull/6505)
 * [Report incomplete status in abort response reason](https://github.com/rundeck/rundeck/pull/6591)

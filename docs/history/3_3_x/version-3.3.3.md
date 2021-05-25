@@ -35,8 +35,6 @@ default and other areas of the product were refined for faster response times wi
 
 ## Issues
 
-[Milestone 3.3.3](https://github.com/rundeck/rundeck/milestone/151)
-
 * [Increase jetty max form keys to 2000](https://github.com/rundeck/rundeck/pull/6429)
 * [Update openssh plugin version to 2.0.1](https://github.com/rundeck/rundeck/pull/6427)
 * [Migrate pre spring boot 2 cookie configs to valid configs](https://github.com/rundeck/rundeck/pull/6420)

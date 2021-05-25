@@ -25,8 +25,6 @@ The Rundeck/Jenkins integration [received an update](https://plugins.jenkins.io/
 
 ## Issues
 
-[Milestone 3.3.8](https://github.com/rundeck/rundeck/milestone/157)
-
 ### Enterprise Updates
 
 * SSO sync can now use user info that is provided in non-OIDC standard attributes

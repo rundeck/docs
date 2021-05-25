@@ -39,6 +39,9 @@ Name: <span style="color: slategray"><span class="glyphicon glyphicon-phone"></s
 * [Sec: Bump Jetty to 9.4.38.v20210224](https://github.com/rundeck/rundeck/pull/6867)
 
 
+[Here is a link to the full list of public PRs](https://github.com/rundeck/rundeck/pulls?q=is%3Apr+milestone%3A3.3.11+is%3Aclosed)
+
+
 ## Contributors
 
 * Imad Jafir (imad6639)

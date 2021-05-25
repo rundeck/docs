@@ -36,8 +36,6 @@ Check out the new [configuration documentation](https://docs.rundeck.com/docs/ad
 
 ## Issues
 
-[Milestone 3.3.4](https://github.com/rundeck/rundeck/milestone/152)
-
 * [Remove MySQL JDBC driver from bundle](https://github.com/rundeck/rundeck/pull/6511)
 * [Upgrade mariadb driver to 2.7.0](https://github.com/rundeck/rundeck/pull/6502)
 * [Quell reflective access messages.](https://github.com/rundeck/rundeck/pull/6500)

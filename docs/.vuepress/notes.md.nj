@@ -18,6 +18,9 @@ Name: <span style="color: {{version.color()}}"><span class="glyphicon glyphicon-
 * [{{ pull.title }}]({{pull.html_url}})
 {% endfor %}
 
+
+[Here is a link to the full list of public PRs](https://github.com/rundeck/rundeck/pulls?q=is%3Apr+milestone%3A{{version.versionString}}+is%3Aclosed)
+
 ## Contributors
 
 * Imad Jafir (imad6639)
@@ -30,6 +33,7 @@ Name: <span style="color: {{version.color()}}"><span class="glyphicon glyphicon-
 * Greg Zapp (ProTip)
 * Christopher McCarroll-Gilbert (chrismcg14)
 * Jason Qualman (qualman)
+* Alberto Hormazabal Cespedes (ahormazabal)
 * Forrest Evans (fdevans)
 
 {% for login, user in contributors -%}

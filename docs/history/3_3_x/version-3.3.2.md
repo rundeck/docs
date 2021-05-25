@@ -12,8 +12,6 @@ This release also builds on our original 3.3.0 release and improves the speed of
 
 ## Issues
 
-[Milestone 3.3.2](https://github.com/rundeck/rundeck/milestone/150)
-
 * [Fix logging system initialization when running jar](https://github.com/rundeck/rundeck/pull/6369)
 * [Display message when no log output is available](https://github.com/rundeck/rundeck/pull/6356)
 * [SCM and Git plugin fixes](https://github.com/rundeck/rundeck/pull/6353)

@@ -107,13 +107,7 @@ Clients specifying API versions below the Deprecation version should upgrade to 
 * [Docker - Update Ubuntu LTS to 18.04](https://github.com/rundeck/rundeck/issues/6032)
 * [Remove rd-acl](https://github.com/rundeck/rundeck/pull/5920)
 * [Rundeck secrets are group and world readable](https://github.com/rundeck/rundeck/issues/3017)
-
-[Milestone 3.3.0-M2](https://github.com/rundeck/rundeck/milestone/147)
-
-* [Main screen stucks when non-admin user log in](https://github.com/rundeck/rundeck/issues/6099)
-
-[Milestone 3.3.0-M3](https://github.com/rundeck/rundeck/milestone/148)
-
+* [Main screen sticks when non-admin user log in](https://github.com/rundeck/rundeck/issues/6099)
 * [Fix for rundeckpro/969 job list paging](https://github.com/rundeck/rundeck/pull/6176)
 * [Fix #6174 broken ui without legacy feature flag config](https://github.com/rundeck/rundeck/pull/6175)
 * [Docker - Add supplemental roles to ldap config](https://github.com/rundeck/rundeck/pull/6172)
@@ -148,9 +142,6 @@ Clients specifying API versions below the Deprecation version should upgrade to 
 * [Container JAAS_LDAP optional settings do not result in a valid configuration file](https://github.com/rundeck/rundeck/issues/5731)
 * [Use typed configuration for Rundeck configs.](https://github.com/rundeck/rundeck/pull/5405)
 * [Failed: SSHProtocolFailure: channel is not opened .... JSCH default timeout ](https://github.com/rundeck/rundeck/issues/4137)
-
-[Milestone 3.3.0-FINAL](https://github.com/rundeck/rundeck/milestone/149)
-
 * [Fix #4085 empty log file causes NaN in percentLoaded value](https://github.com/rundeck/rundeck/pull/6208)
 * [Docker - HOME envar is not set](https://github.com/rundeck/rundeck/issues/6191)
 * [Docker - Update server session timeout key](https://github.com/rundeck/rundeck/pull/6190)

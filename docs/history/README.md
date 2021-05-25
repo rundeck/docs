@@ -2,11 +2,11 @@
 
 ## Most Recent Release Notes
 
-[Our most recent release is {{{rundeckVersion}}}](3_3_x/version-{{{rundeckVersion}}}.md)
+[Our most recent release is {{{rundeckVersion}}}](3_4_x/version-{{{rundeckVersion}}}.md)
 
-Also check out the 3.3.0 release list of larger feature enhancements for our Enterprise and Open Source versions of Rundeck.
+Also check out the 3.4.0 release list of larger feature enhancements for our Enterprise and Open Source versions of Rundeck.
 
-[Rundeck 3.3.0](3_3_x/version-3.3.0.html)
+[Rundeck 3.4.0](3_4_x/version-3.4.0.md)
 
 :::danger New Packages Repository
 The official download distributions of Rundeck are now available on a new hosting service.  [Details here](/learning/howto/migrate-to-rundeck-packages-repo) provide full details about new repository sources and guidance about signing keys.
@@ -19,9 +19,12 @@ for instructions to ensure your Rundeck installation can still connect to MySQL 
 the upgrading.
 :::
 
+## Version 3.3.x
+This list shows all the items fixed in the 3.3.x series [3.3.0 Release Notes](3_3_x/version-3.3.0.html)
+
 ## Version 3.2.x
 This list shows all the items fixed in the 3.2.x series [3.2.0 Release Notes](3_2_x/version-3.2.0.html)
 
 ## Upgrading
 
-See [Upgrading to Rundeck 3.3](/upgrading/upgrading-to-rundeck-3.3.md).
+See [Upgrading to Rundeck 3.4](/upgrading/upgrading-to-rundeck-3.4.md).
