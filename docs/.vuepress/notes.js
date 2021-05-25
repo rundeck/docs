@@ -59,13 +59,19 @@ async function getRepoData(repo, includeLabels, excludeTags) {
         process.exit(1)
     }
 
-    const issuesResp = await gh.issues.listForRepo({...repo, milestone: milestone.number, state: 'closed', labels: includeLabels.join(',')})
+    const issuesResp = await gh.paginate(gh.issues.listForRepo, {
+        ...repo,
+        milestone: milestone.number,
+        state: 'closed',
+        labels: includeLabels.join(','),
+        per_page: 100
+    })
 
-    const pulls = issuesResp.data
+    const pulls = issuesResp
         .filter(i => i.pull_request)
         .filter(i => !i.labels.some(l => excludeLabels.includes(l.name)))
 
-    const issues = issuesResp.data
+    const issues = issuesResp
         .filter(i => !i.pull_request)
         .filter(i => !i.labels.some(l => !excludeLabels.includes(l.name)))
 
@@ -73,11 +79,17 @@ async function getRepoData(repo, includeLabels, excludeTags) {
     const reporters = {}
 
     for (const p of pulls) {
+        if (contributors[p.user.login])
+            continue
+
         const user = await gh.users.getByUsername({username: p.user.login})
         contributors[user.data.login] = user.data
     }
 
     for (const i of issues) {
+        if (reporters[i.user.login])
+            continue
+
         const user = await gh.users.getByUsername({username: i.user.login})
         reporters[user.data.login] = user.data
     }
