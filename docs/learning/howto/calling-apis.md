@@ -65,6 +65,7 @@ Other parameters available:
 
 ## Additional Information
 
+- If you need to use variables in the *HTTP Request Steps* Headers or Body sections use the format `${data.variable-name}`.  For more information about using variables check out [Passing Data Between Steps](passing-variables.md)
 - Link to [Example Job](https://github.com/rundeck/welcome-project-community/blob/main/runbooks/yaml/HowTos/Calling_APIs_from_Rundeck.yaml) built using the steps above. Download the YAML and use it in your Rundeck.
 - Official plugin description from [the plugin's GitHub repository](https://github.com/rundeck-plugins/http-step).
 - [Documentation on different HTTP methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods).
