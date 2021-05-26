@@ -1,4 +1,4 @@
-# 4 - Getting Started - Users
+# 4. Getting Started - Users
 
 Adding User accounts to Rundeck can be done in many ways. Rundeck Enterprise support [Single Sign-On solutions](/administration/security/sso.md), [LDAP Authentication](/administration/security/authentication.html#ldap) and a variety of other options.
 

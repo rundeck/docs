@@ -1,4 +1,4 @@
-# 0 - Getting Started - Tutorial Preparations
+# 0. Getting Started - Tutorial Preparations
 
 This *Tutorial* section is built around our Welcome Projects. The Welcome Projects walk users through different Rundeck features and functionality without needing to download Rundeck locally on a server. These projects contain starter content that the following steps are built on top of.
 

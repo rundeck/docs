@@ -1,4 +1,4 @@
-# 6 - Getting Started - Conclusion
+# 6. Getting Started - Conclusion
 
 ## Congratulations!
 

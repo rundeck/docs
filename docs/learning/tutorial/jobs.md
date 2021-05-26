@@ -1,4 +1,4 @@
-# 3 - Getting Started - Jobs / Activity
+# 3. Getting Started - Jobs / Activity
 
 :::tutorial
 :::

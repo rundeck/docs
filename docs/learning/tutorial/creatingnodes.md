@@ -1,4 +1,4 @@
-# 1 - Getting Started - Nodes
+# 1. Getting Started - Nodes
 
 :::tutorial
 :::

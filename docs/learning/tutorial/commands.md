@@ -1,4 +1,4 @@
-# 2 - Getting Started - Commands
+# 2. Getting Started - Commands
 
 :::tutorial
 :::
