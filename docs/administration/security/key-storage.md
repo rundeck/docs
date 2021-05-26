@@ -2,9 +2,17 @@
 
 This document describes the Rundeck Key Storage mechanism for a developer to implement a secure data flow of sensitive private key data that can be used for sessions via a Rundeck Node Executor.
 
-The structure or hierarchy used for organizing Keys is up to you.
+The default structure or hierarchy used for organizing Keys is by project.  Keys organized by project allow access to be isolated from other contexts at the System level.
 
-A typical way to store shared keys might be under a "common" or "shared" root. Specific user or project keys might be stored under "user/[username]/" or "project/[name]" paths:
+The project scope defined keys should be stored by the "project/[name]" paths
+
+- `project/project1/default.pem`
+
+For users who want overwrite the project defined key storage structure and allow key access at the system level would have to set the configuration property:
+```yaml
+     rundeck.feature.projectKeyStorage.enabled=false
+```
+A typical way to store shared keys defined at the system level might be under a "common" or "shared" root.  Specific user keys might be stored under "user/[username]/"  paths:
 
 - `common/qa-dev.pem`
 - `user/bob/dev1.pem`
@@ -12,13 +20,18 @@ A typical way to store shared keys might be under a "common" or "shared" root. S
 - `role/qa/web1.pem`
 - `project/project1/default.pem`
 
+
 ## ACL Policies
 
 Access to the Keys in the Storage facility are restricted by use of [ACL policies](/administration/security/authorization.md#).
 
-Access to the `keys` path requires an [Application scope](/administration/security/authorization.md#application-scope-resources-and-actions) authorization.
+Access to the `keys` path requires an [Project scope](/administration/security/authorization.md#application-scope-resources-and-actions) authorization.
 
-Within the application scope definition, define access with a `for` entry of `storage`.
+The access to the `keys` can be changed to the [Application scope] (/administration/security/authorization.md#application-scope-resources-and-actions) by setting the feature flag:
+```yaml
+     rundeck.feature.projectKeyStorage.enabled=false
+```
+Define access with a `for` entry of `storage`.
 
 Authorization can be granted for these actions:
 
@@ -31,18 +44,18 @@ Authorization can be granted for these actions:
 
 ```yaml
 description: authorize keys/ storage files
-context:
-  application: 'rundeck'
+by:
+  group: admin
 for:
   storage:
     - match:
-        path: 'keys/.*'
+        path: 'keys/project/${name}.*'
       allow: [read]
     - equals:
-        path: 'keys/test1.pub'
+        path: 'keys/project/${name}/test1.pub'
       allow: [read,create,update,delete]
     - match:
-        path: 'keys/scratch/.*'
+        path: 'keys/project/scratch/.*'
       allow: [read,create,update,delete]
 ```
 
@@ -127,3 +140,19 @@ The value of the `ssh-key-storage-path` attribute can embed values taken from th
     ssh-key-storage-path="/keys/users/${job.username}/default.pem"
 
 When resolved, this will evaluate to `/keys/users/bob/default.pem` (for example).
+
+## Enterprise ACL Storage Layer
+Rundeck configurations with thousands of ACL policies may experience performance degradation.  Core acl policies [aclpolicy]: (/manual/document-format-reference/aclpolicy-v10) are stored on the file system. Rundeck enterprise provides an optimized engine to rectify performance issues caused by very large sets of acl policies. This Enterprise storage layer will store the acl policies in the database, rather than the filesystem. The Rundeck Enterprise ACL Storage Layer is enabled by default and can be disabled by the configuration:
+```yaml
+`rundeck.feature.enterpriseacl.enabled=true | false`
+```
+
+Current Core ACL Storage Layer policies will be transferred to the optimized Enterprise ACL Storage Layer by default unless the configuration property is disabled:
+
+```yaml
+ rundeck.feature.enterpriseacltransfer.enabled=true | false
+```
+When the Transfer feature flag is disabled, ACLs will not be transferred to the Core storage layer. You can choose to enable the Enterprise ACL Storage Layer while not enabling the automatic Transfer, and only newly created or modified ACLs will use the new storage layer. 
+:::warning
+if you disable the Enterprise ACL Storage Layer feature, but enable the Transfer feature and restart, any ACLs in the new storage layer will be automatically transferred back to the Core storage layer.
+:::
