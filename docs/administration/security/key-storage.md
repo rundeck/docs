@@ -140,19 +140,3 @@ The value of the `ssh-key-storage-path` attribute can embed values taken from th
     ssh-key-storage-path="/keys/users/${job.username}/default.pem"
 
 When resolved, this will evaluate to `/keys/users/bob/default.pem` (for example).
-
-## Enterprise ACL Storage Layer
-Rundeck configurations with thousands of ACL policies may experience performance degradation.  Core acl policies [aclpolicy]: (/manual/document-format-reference/aclpolicy-v10) are stored on the file system. Rundeck enterprise provides an optimized engine to rectify performance issues caused by very large sets of acl policies. This Enterprise storage layer will store the acl policies in the database, rather than the filesystem. The Rundeck Enterprise ACL Storage Layer is enabled by default and can be disabled by the configuration:
-```yaml
-`rundeck.feature.enterpriseacl.enabled=true | false`
-```
-
-Current Core ACL Storage Layer policies will be transferred to the optimized Enterprise ACL Storage Layer by default unless the configuration property is disabled:
-
-```yaml
- rundeck.feature.enterpriseacltransfer.enabled=true | false
-```
-When the Transfer feature flag is disabled, ACLs will not be transferred to the Core storage layer. You can choose to enable the Enterprise ACL Storage Layer while not enabling the automatic Transfer, and only newly created or modified ACLs will use the new storage layer. 
-:::warning
-if you disable the Enterprise ACL Storage Layer feature, but enable the Transfer feature and restart, any ACLs in the new storage layer will be automatically transferred back to the Core storage layer.
-:::
