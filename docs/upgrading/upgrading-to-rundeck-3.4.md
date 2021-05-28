@@ -14,9 +14,14 @@ Package repositories have moved! Please read [the new instructions for downloadi
 
 ## API v11 (New Minimum Version)
 
-Version 3.4.0 removed support for API v10 and below. The minimum API version is now v11. This is a potential breaking change for customers automating Rundeck via the API.
+Version 3.4.0 removed support for API v10 and below. The minimum API version is now v11. This is a potential breaking change for customers automating Rundeck via the API.  It is recommended to check any automation and confirm that all API calls are using API version 11 or higher.
+
+`http://localhost:4440/api/<APIVERSION>/projects`
+
+In the example above make sure the value at `<APIVERSION>` is 11 or higher.
 
 ## Project ACLs for Key Storage
+Project ACLs for Key Storage implements a new dynamic within the Key Storage component.  If the existing Key Storage (from version 3.3 and previous) is organized by project name (e.g. `keys/project-name/folder/key) `care should be taken to ensure that rights are properly granted.  [More information about this feature can be found here](/administration/security/project-acl.md).
 
 ## Enterprise ACL Storage Layer
 
