@@ -43,6 +43,14 @@ module.exports = [{
           ]
         },
         {
+          title: 'Managing Nodes',
+          collapsable: true,
+          sidebarDepth: 0,
+          children: [
+              '/learning/howto/ssh-on-linux-nodes.md'
+          ]
+        },
+        {
           title: 'Writing Jobs',
           collapsable: true,
           sidebarDepth: 0,
