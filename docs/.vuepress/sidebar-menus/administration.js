@@ -83,7 +83,8 @@ module.exports = [{
         '/administration/security/key-storage',
         '/administration/security/storage-plugins',
         '/administration/security/sso',
-        '/administration/security/webapp-http-headers'
+        '/administration/security/webapp-http-headers',
+        '/administration/security/project-acl'
       ]
     },
     {
