@@ -23,7 +23,7 @@ In the example above make sure the value at `<APIVERSION>` is 11 or higher.
 ## Project ACLs for Key Storage
 Project ACLs for Key Storage implements a new dynamic within the Key Storage component.  If the existing Key Storage (from version 3.3 and previous) is organized by project name (e.g. `keys/project-name/folder/key) `care should be taken to ensure that rights are properly granted.  [More information about this feature can be found here](/administration/security/project-acl.md).
 
-## Enterprise ACL Storage Layer
+## Enterprise ACL Storage Layer (Enterprise)
 
 Rundeck Enterprise 3.4.0 adds a more efficient Enterprise ACL Storage Layer, which improves application performance if you have many ACLs. This feature is enabled by default and will automatically transfer ACLs from the Core ACL Storage Layer at startup if they exist. Newly added or changed ACLs will use the new Enterprise ACL Storage Layer. The new storage layer stores ACLs in the database in a format that allows them to be queried more efficiently, and improves performance when there are many ACLs. A caveat is that if regular expressions are used in the `by:` clause of ACLs, those ACLs cannot be queried efficiently, and remain stored only in the Core storage layer. Regular expressions are detected by a simple check for characters common to regular expressions such as `+`, `.`, `*` etc. If you have a `.` in usernames or group names, and do not want it to be treated as a regular expression, you should use a [URN in the by clause explicitly](/manual/document-format-reference/aclpolicy-v10.md#by).
 
@@ -50,4 +50,39 @@ Known file resources stored in each project's directory, such as readme/motd and
 
 You can remove the `rundeck.projectsStorageType` configuration key from your rundeck-config.properties file
 
-## JIRA Plugins
+## JIRA Plugins Require Updated Authentication (Enterprise)
+
+The JIRA Plugins now require an authentication token as opposed to the password used to login to the account. However, there are two options for proceeding with the authentication token.
+
+
+:::: tabs
+::: tab Recommended Configuration
+
+Use the enterprise configuration management to configure the properties centrally and share with all cluster members. ([Link To learn more about this option](/manual/configuration-mgmt/configmgmt.md#managing-configuration))
+
+1. Create a Key Store entry with the API Token.
+1. Set **JIRA Login Name**, **JIRA Auth token** (use key path from step 1 in plain text), and **JIRA base URL**.
+1. **_Remove_** any JIRA plugin settings from Project Configuration, `rundeck-conifg.properties`, `framework.properties`, and/or individual step configuration.
+
+:::
+::: tab Alternative Method
+
+Edit project/framework settings and update the JIRA password properties to use auth_token as opposed to password.
+
+First, create a Key Store entry with the API Token. Then edit the Project or Step settings individually.  An example configuration for using the auth_token as opposed to the password property would look like this:
+
+`project.plugin.WorkflowStep.jira-assigned-issue.password=myJiraPassword`
+
+changes to...
+
+`project.plugin.WorkflowStep.jira-assigned-issue.auth_token=path/to/auth_token`
+
+(“path/to/auth_token”) is a Key Storage path, not the token value.
+
+Note: The JIRA Notification plugin will continue using the password property:
+
+`project.plugin.Notification.jira-create-issue-notif.password=mytokenvalue`
+
+The token value is the actual value, not a key storage path.
+:::
+::::
