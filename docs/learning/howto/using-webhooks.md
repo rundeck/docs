@@ -19,21 +19,21 @@ Webhooks are configured within a project. The [Welcome Projects](/learning/index
 :::: tabs
 ::: tab Enterprise Highlights
 
-- Click on **Webhooks** in the Project Menu and choose the `Run Jobs - Webhook Example` entry.
-- The **Post URL** is the URL that external systems would submit a POST http event to trigger this webhook.
-- Name **Run Jobs - Webhook Example**
-- The **Webhook Handler** is **Advanced Run Job** _(more on this in future steps)_
-- The Rules section has a single rule called `Run Job 1`
-- Expanding the rule by clicking **Edit** to see the details.
-- The rule is running a job called `Demo/Linux/Gather Linux Versions - Docker` against all nodes `(.*)`
+1. Click on **Webhooks** in the Project Menu and choose the `Run Jobs - Webhook Example` entry.
+1. The **Post URL** is the URL that external systems would submit a POST http event to trigger this webhook.
+1. Name **Run Jobs - Webhook Example**
+1. The **Webhook Handler** is **Advanced Run Job** _(more on this in future steps)_
+1. The Rules section has a single rule called `Run Job 1`
+1. Expanding the rule by clicking **Edit** to see the details.
+1. The rule is running a job called `Demo/Linux/Gather Linux Versions - Docker` against all nodes `(.*)`
 
 :::
 ::: tab Community Highlights
-- Click on **Webhooks** in the Project Menu and choose the `Run Job - Webhook Example` entry.
-- The **Post URL** is the URL that external systems would submit a POST http event to trigger this webhook.
-- Name **Run Job - Webhook Example**
-- The **Webhook Handler** is **Run Job** _(more on this in future steps)_
-- The webhook is running a job called `Demo/Linux/Gather Linux Versions - Docker` against all nodes `(.*)`
+1. Click on **Webhooks** in the Project Menu and choose the `Run Job - Webhook Example` entry.
+1. The **Post URL** is the URL that external systems would submit a POST http event to trigger this webhook.
+1. Name **Run Job - Webhook Example**
+1. The **Webhook Handler** is **Run Job** _(more on this in future steps)_
+1. The webhook is running a job called `Demo/Linux/Gather Linux Versions - Docker` against all nodes `(.*)`
 :::
 ::::
 

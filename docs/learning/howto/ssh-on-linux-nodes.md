@@ -3,7 +3,7 @@
 
 Rundeck allows users to dispatch jobs to remote Linux/UNIX servers to manage and automate any task using Rundeck workflows. The most common protocol for connecting to Linux/Unix servers is SSH. This is an example of how to add a remote node and configure Rundeck to use SSH to connect to it.
 
-_Note: If this is the first time adding remote nodes. It is suggested to review the [Rundeck Tutorial](https://docs.rundeck.com/3.4.x/learning/tutorial/) before adding remote SSH nodes.   This exercise assumes some experience with Linux, SSH Keys, and the Rundeck basics covered previously._
+_Note: If this is the first time adding remote nodes. It is suggested to review the [Rundeck Tutorial](/learning/tutorial/preparing.md) before adding remote SSH nodes.   This exercise assumes some experience with Linux, SSH Keys, and the Rundeck basics covered previously._
 
 
 ## Generating Keys
@@ -20,20 +20,20 @@ To allow the Rundeck server to access this Remote Node we will add the public ke
 
 The key can be found in the following path:` /home/rundeck/.ssh/id_rsa.pub`
 
-**Note:** On RPM/DEB based installations, this key can be found at `/var/lib/rundeck/.ssh/id_rsa.pub` path. For [WAR-based](https://docs.rundeck.com/docs/administration/install/jar.html#installing-as-an-executable-war) installations, add the public key content of a previously keypair created with `ssh-keygen -m PEM` command on the remote `authorized_keys` file (/`home/USERNAME/.ssh/authorized_keys`).
+**Note:** On RPM/DEB based installations, this key can be found at `/var/lib/rundeck/.ssh/id_rsa.pub` path. For [WAR-based](/administration/install/jar.md#installing-as-an-executable-war) installations, add the public key content of a previously key pair created with `ssh-keygen -m PEM` command on the remote `authorized_keys` file (`/home/USERNAME/.ssh/authorized_keys`).
 
 ## Configuring Rundeck
 
 Rundeck can store the authentication keys necessary to authenticate to our Linux example host in Rundeck’s built-in Key Storage.
 
-1. Click on the System Menu (gear icon) and choose "Key Storage".
+1. Click on the System Menu (gear icon) and choose **Key Storage**.
     ![Key Storage Menu](@assets/img/howto-ssh-keystoragemenu.png)
-1.  Click on the “Add or Upload a Key” button to create a new entry in the Rundeck Key Storage.
+1.  Click on the **Add or Upload a Key** button to create a **New entry** in the Rundeck Key Storage.
     ![Add Key Entry](@assets/img/howto-ssh-addkey.png)
-1. “Key Type” select “Private Key”.
-1. Add Rundeck instance private key file content in “Enter text”  that key is located at `/var/lib/rundeck/.ssh/id_rsa`.
-1. In “Storage path” it’s possible to define specific “subfolders” for the keys if needed, for this example just leave it blank.
-1. In the “Name” textbox enter a key name that corresponds to the rundeck host, in this example is just “rundeck” (now the Key Storage entry is `keys/rundeck`).
+1. For *Key Type* select `Private Key`.
+1. Add Rundeck instance private key file content in *Enter text*. The key is located at `/var/lib/rundeck/.ssh/id_rsa`.
+1. In **Storage path** it’s possible to define specific subfolders for the keys if needed, for this example just leave it blank.
+1. In the *Name* textbox enter a key name that corresponds to the rundeck host, in this example is just `rundeck` (now the Key Storage entry is `keys/rundeck`).
     ![Key Entry](@assets/img/howto-ssh-keyentry.png)
 
 ## Adding Nodes
@@ -94,7 +94,6 @@ remote-node:
 ```
 
 In the *hostname* attribute, place the DNS name of our remote node. In *username* the user who is trying to access the SSH server, In *ssh-key-storage-path* specifies the path that was created in key storage earlier.
-
 :::
 ::::
 
@@ -108,18 +107,9 @@ In the *hostname* attribute, place the DNS name of our remote node. In *username
 1. In the “Enter a command” textbox put a command, e.g.: `df`, and click on the “Run on 1 Node” green button.
     <br>![Command Output](@assets/img/howto-ssh-dispatch3.png)
 
-
 **Congratulations!**
 Rundeck is now set up a remote SSH node to dispatch commands and jobs. Stay tuned to the next blog entry where we build a job to execute on this Node.
-
 
 ## Additional Resources
 
 [ssh-keygen command documentation](https://linux.die.net/man/1/ssh-keygen)
-
-
-### Footnote
-
-Support for Rundeck Community is provided by the community. Visit [Github](https://github.com/rundeck/rundeck/issues) to report new issues, [Stackoverflow](https://stackoverflow.com/questions/tagged/rundeck) to ask questions, join the [Rundeck Discuss](https://groups.google.com/g/rundeck-discuss) mailing list in google groups, Rundeck [subreddit](https://www.reddit.com/r/Rundeck/) on Reddit, or just visit us at `#rundeck` channel on [Freenode](https://webchat.freenode.net/) IRC network to chat.
-
-Don’t forget to enroll in the Rundeck [course](https://university.pagerduty.com/intro-to-rundeck) at PagerDuty University to learn more.
