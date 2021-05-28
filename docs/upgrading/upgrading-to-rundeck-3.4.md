@@ -46,14 +46,13 @@ The configuration value `rundeck.projectsStorageType=filesystem` or file is no l
 
 If you are using this mode, you will see a warning at startup, and projects will be converted to DB storage automatically.
 
-Known file resources stored in each project's directory, such as readme/motd and aclpolicy files, will be imported to the DB storage automatically.
+Known file resources stored in each project's directory, such as readme/message-of-the-day and aclpolicy files, will be imported to the DB storage automatically.
 
 You can remove the `rundeck.projectsStorageType` configuration key from your rundeck-config.properties file
 
 ## JIRA Plugins Require Updated Authentication (Enterprise)
 
 The JIRA Plugins now require an authentication token as opposed to the password used to login to the account. However, there are two options for proceeding with the authentication token.
-
 
 :::: tabs
 ::: tab Recommended Configuration
