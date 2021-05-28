@@ -19,6 +19,9 @@ for instructions to ensure your Rundeck installation can still connect to MySQL 
 the upgrading.
 :::
 
+## Version 3.4.x
+This list shows all the items fixed in the 3.3.x series [3.4.0 Release Notes](3_3_x/version-3.4.0.html)
+
 ## Version 3.3.x
 This list shows all the items fixed in the 3.3.x series [3.3.0 Release Notes](3_3_x/version-3.3.0.html)
 
@@ -27,4 +30,4 @@ This list shows all the items fixed in the 3.2.x series [3.2.0 Release Notes](3_
 
 ## Upgrading
 
-See [Upgrading to Rundeck 3.4](/upgrading/upgrading-to-rundeck-3.4.md).
+See [Upgrading to Rundeck](/upgrading/index.md) section for details about using this latest version.
