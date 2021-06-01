@@ -1,6 +1,5 @@
 # How to Use Rundeck Example Jobs
 
-
 ## Overview
 
 A good way to understand different problem solving approaches in Rundeck is by seeing how they’re implemented. The [Community Welcome Project](https://github.com/rundeck/welcome-project-community) has a series of individual [example jobs](https://github.com/rundeck/welcome-project-community/tree/main/runbooks/yaml) that you can download, import into your rundeck instance, adapt, and test.  The example jobs are written to work with the Welcome Projects, but these steps can be used to import into any project.

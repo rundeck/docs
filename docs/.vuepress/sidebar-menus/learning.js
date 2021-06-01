@@ -66,7 +66,8 @@ module.exports = [{
           collapsable: true,
           sidebarDepth: 0,
           children: [
-              '/learning/howto/using-webhooks.md'
+              '/learning/howto/using-webhooks.md',
+              '/learning/howto/pagerduty-notification.md'
           ]
         },
         {

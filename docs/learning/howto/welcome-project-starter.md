@@ -23,8 +23,8 @@ The Welcome Project requires:
 
 To install the Welcome Project you need to download the latest release of the Welcome Project.
 
-::::tabs
-:::tab For Rundeck Community Welcome Project:
+:::: tabs
+::: tab Community Welcome Project
 
 Navigate to: [https://github.com/rundeck/welcome-project-community](https://github.com/rundeck/welcome-project-community)
 
@@ -33,7 +33,7 @@ Navigate to: [https://github.com/rundeck/welcome-project-community](https://gith
 1. Extract the contents to a folder on your local hard drive.
 
 :::
-:::tab For Rundeck Enterprise Welcome Project:
+::: tab Enterprise Welcome Project
 
 Navigate to: [https://github.com/rundeckpro/welcome-project](https://github.com/rundeckpro/welcome-project)
 
