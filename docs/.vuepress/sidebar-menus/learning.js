@@ -34,6 +34,7 @@ module.exports = [{
       sidebarDepth: 0,
       children: [
         '/learning/howto/overview',
+        '/learning/howto/welcome-project-starter',
         {
           title: 'Setup / Installation',
           collapsable: true,

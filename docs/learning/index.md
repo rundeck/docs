@@ -1,17 +1,16 @@
 # Learning Rundeck
 
-With Rundeck, it is simple and easy to create automation workflows from existing tools or scripts. The Learning section includes a _[Getting Started Tutorial](/learning/tutorial/preparing.md)_ and _[How to Guides](/learning/howto/overview.md)_ that  help new users quickly become productive with the Rundeck server and tools. Instructions are provided for both Enterprise and Community versions of Rundeck.
+With Rundeck, it is simple and easy to create automation workflows from existing tools or scripts. The Learning section includes a _[Getting Started Tutorial](/learning/tutorial/preparing.md)_ and _[How to Guides](/learning/howto/overview.md)_ that help new users quickly become productive with the Rundeck server and tools. Instructions are provided for both Enterprise and Community versions of Rundeck.
 
-Visit the _[Tutorials](/learning/tutorial/preparing)_ to see practical step-by-step guides that help you get your Rundeck account up and running - starting with installing and configuring Rundeck. Use the [How To](/learning/howto/overview) section accomplish the task using the Rundeck Enterprise version and where applicable, the steps for the Community version.
+Visit the _[Tutorials](/learning/tutorial/preparing)_ to see practical step-by-step guides that help you get your Rundeck account up and running - starting with installing and configuring Rundeck.  The Tutorial section is built around our Welcome Projects that provide product simulations for both Rundeck versions.  
 
-The *How To Guides* guides to accomplish tasks using the Rundeck Enterprise version and where applicable, the steps for the Community version. The How To guides go deeper into specific topics and are also commonly built around the Welcome Project plus completion of the base tutorial.
+The [How To Guides](/learning/howto/overview.md) to accomplish tasks using the Rundeck Enterprise version and where applicable, the steps for the Community version. The How To guides go deeper into specific topics and are also commonly built around the Welcome Project plus completion of the base tutorial.
 
 ## Getting Started
 
 ### Essential Concepts
 
 Several fundamental concepts underlie and drive the Rundeck system. If you are a new user, knowing about them will help you more effectively use and integrate Rundeck into your environment.
-
 The first step is to learn some key Rundeck Terms in our [Terminology Tutorial](terminology.md).
 
 ### Using Rundeck
