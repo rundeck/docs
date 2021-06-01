@@ -33,8 +33,8 @@ module.exports = [{
       path: '/learning/howto/overview',
       sidebarDepth: 0,
       children: [
-        '/learning/howto/overview',
-        '/learning/howto/welcome-project-starter',
+        ['/learning/howto/overview','Overview'],
+        ['/learning/howto/welcome-project-starter','Welcome Projects'],
         {
           title: 'Setup / Installation',
           collapsable: true,
@@ -56,6 +56,7 @@ module.exports = [{
           collapsable: true,
           sidebarDepth: 0,
           children: [
+              '/learning/howto/use-example-jobs.md',
               '/learning/howto/passing-variables.md',
               '/learning/howto/calling-apis.md'
           ]
