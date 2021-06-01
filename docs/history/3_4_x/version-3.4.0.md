@@ -59,6 +59,7 @@ Be sure to check out the [Upgrade Notes](/upgrading/upgrading-to-rundeck-3.4.md)
 
 ### Other notable improvements
 
+- The JIRA plugins bundled with Enterprise now support tokens over passwords.  [Please check the Upgrade Notes for important details about them](/upgrading/upgrading-to-rundeck-3.4.md#jira-plugins-require-updated-authentication-enterprise).
 - `bcrypt` is now supported for password hashes in _realm.properties_.
 
 
