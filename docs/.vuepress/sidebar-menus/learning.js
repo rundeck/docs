@@ -40,7 +40,8 @@ module.exports = [{
           collapsable: true,
           sidebarDepth: 0,
           children: [
-              '/learning/howto/migrate-to-rundeck-packages-repo'
+              '/learning/howto/migrate-to-rundeck-packages-repo',
+              '/learning/howto/install-centos.md'
           ]
         },
         {
