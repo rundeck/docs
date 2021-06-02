@@ -67,7 +67,8 @@ module.exports = [{
           sidebarDepth: 0,
           children: [
               '/learning/howto/using-webhooks.md',
-              '/learning/howto/pagerduty-notification.md'
+              '/learning/howto/pagerduty-notification.md',
+              '/learning/howto/using-ansible.md'
           ]
         },
         {
