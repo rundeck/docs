@@ -60,6 +60,7 @@ The JIRA Plugins now require an authentication token as opposed to the password 
 Use the enterprise configuration management to configure the properties centrally and share with all cluster members. ([Link To learn more about this option](/manual/configuration-mgmt/configmgmt.md#managing-configuration))
 
 1. Create a Key Store entry with the API Token.
+1. Open **System Menu > Configuration Management**
 1. Set **JIRA Login Name**, **JIRA Auth token** (use key path from step 1 in plain text), and **JIRA base URL**.
 1. **_Remove_** any JIRA plugin settings from Project Configuration, `rundeck-conifg.properties`, `framework.properties`, and/or individual step configuration.
 
