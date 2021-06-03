@@ -1,10 +1,14 @@
 module.exports = [{
-    text: 'System Architecture and Cloud Deployment',
+    text: 'System Architecture',
     link: '/administration/architecture-and-deployment/architecture-and-deployment'
   },
   {
     text: 'Installation',
     link: '/administration/install/installing-rundeck'
+  },
+  {
+    text: 'Upgrading',
+    link: '/upgrading/index'
   },
   {
     text: 'Configuration',
@@ -19,11 +23,7 @@ module.exports = [{
     link: '/administration/maintenance/index'
   },
   {
-    text: 'Upgrading',
-    link: '/upgrading/index'
-  },
-  {
-    text: 'Cluster',
+    text: 'Clustering',
     link: '/administration/cluster/index'
   }, {
     text: 'Projects',
