@@ -55,7 +55,7 @@ You can remove the `rundeck.projectsStorageType` configuration key from your run
 The JIRA Plugins now require an authentication token as opposed to the password used to login to the account. However, there are two options for proceeding with the authentication token.
 
 :::: tabs
-::: tab Recommended Configuration
+::: tab Configuration Management (Enterprise)
 
 Use the enterprise configuration management to configure the properties centrally and share with all cluster members. ([Link To learn more about this option](/manual/configuration-mgmt/configmgmt.md#managing-configuration))
 
@@ -64,8 +64,10 @@ Use the enterprise configuration management to configure the properties centrall
 1. Set **JIRA Login Name**, **JIRA Auth token** (use key path from step 1 in plain text), and **JIRA base URL**.
 1. **_Remove_** any JIRA plugin settings from Project Configuration, `rundeck-conifg.properties`, `framework.properties`, and/or individual step configuration.
 
+The above steps will only work for Job Steps.  Use _Configuration File Updates_ tab for Notification Plugins.
+
 :::
-::: tab Alternative Method
+::: tab Configuration File Updates
 
 Edit project/framework settings and update the JIRA password properties to use auth_token as opposed to password.
 
@@ -79,7 +81,7 @@ changes to...
 
 (“path/to/auth_token”) is a Key Storage path, not the token value.
 
-Note: The JIRA Notification plugin will continue using the password property:
+**Note:** The JIRA Notification plugin will continue using the password property:
 
 `project.plugin.Notification.jira-create-issue-notif.password=mytokenvalue`
 
