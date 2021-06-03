@@ -41,7 +41,8 @@ module.exports = [{
           sidebarDepth: 0,
           children: [
               '/learning/howto/migrate-to-rundeck-packages-repo',
-              '/learning/howto/install-centos.md'
+              '/learning/howto/install-centos.md',
+              '/learning/howto/migrate-to-mysql'
           ]
         },
         {
@@ -70,14 +71,6 @@ module.exports = [{
               '/learning/howto/using-webhooks.md',
               '/learning/howto/pagerduty-notification.md',
               '/learning/howto/using-ansible.md'
-          ]
-        },
-        {
-          title: 'Installation',
-          collapsable: true,
-          sidebarDepth: 0,
-          children: [
-            '/learning/howto/migrate-to-mysql'
           ]
         },
         {
