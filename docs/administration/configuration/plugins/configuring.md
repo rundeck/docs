@@ -2,6 +2,10 @@
 
 ## Configuring Plugins for Use
 
+### Configuration Management
+
+As of Rundeck 3.4.0 Configuration for system wide settings can happen in the Rundeck GUI.  [Read the Configuration Management documentation](/manual/configuration-mgmt/configmgmt.md).
+
 ### Workflow Steps
 
 Workflow Step and Workflow Node Step providers are used to define custom steps that
@@ -21,7 +25,7 @@ exist at Framework or Project levels.
 
 1. Instance (Job) scope: the property values defined in the Job definition
 2. Project scope: property values defined in the Project's _project.properties_ file
-3. Framework (Application) scope: property values defined in Rundeck's _framework.properties_ file.
+3. Framework (Application) scope: property values defined in Rundeck's _framework.properties_ file or [Configuration Management](/manual/configuration-mgmt/configmgmt.md).
 
 When determining the property value to use, Rundeck will evaluate the most-specific scope first (Instance level), and
 then widen the scope to Project, then Framework definitions.
@@ -50,7 +54,7 @@ in this order:
 
 1. Node specific
 2. Project scope
-3. Framework scope
+3. Framework scope or [Configuration Management](/manual/configuration-mgmt/configmgmt.md)
 
 #### Node Specific
 
@@ -226,7 +230,7 @@ In addition, you can also use these variables:
 Logging plugins consist of Readers and Writers, and Log File Storage.
 Rundeck has a built-in Reader/Writer called the **Local File Log** that is used by default.
 
-Logging plugins are enabled in the `rundeck-config` file. You should add an entry identifying the plugin by its "provider name". For Java plugins, this provider name is defined in the Java code. For Groovy plugins, the provider name is usually just the name of the Groovy script file, such as "MyStreamingLogWriterPlugin".
+Logging plugins are enabled in the `rundeck-config` file or [Configuration Management](/manual/configuration-mgmt/configmgmt.md). You should add an entry identifying the plugin by its "provider name". For Java plugins, this provider name is defined in the Java code. For Groovy plugins, the provider name is usually just the name of the Groovy script file, such as "MyStreamingLogWriterPlugin".
 
 To add StreamingLogWriter plugins, add a comma separated list to this entry, note that this will enable these plugins in addition to the **Local File Log Writer**:
 
@@ -291,7 +295,7 @@ For plugins that support Partial/Checkpoint log storage, these additional config
 
 #### Logging Plugin Configuration
 
-Logging plugins can define configuration properties, which can be set in the `framework.properties` (system-wide) or `project.properties` (project-wide). Project-level properties override system-level properties.
+Logging plugins can define configuration properties, which can be set in the `framework.properties`/[Configuration Management](/manual/configuration-mgmt/configmgmt.md) (system-wide) or `project.properties` (project-wide). Project-level properties override system-level properties.
 
 To add a configuration property, add a value to the appropriate file in the following format:
 

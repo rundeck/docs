@@ -3,6 +3,15 @@ module.exports = [{
   collapsable: false,
   children: [
     {
+       title: 'System Architecture',
+       collapsable: true,
+       path: '/administration/architecture-and-deployment/architecture-and-deployment',
+       sidebarDepth: 10,
+       children: [
+         '/administration/architecture-and-deployment/system-architecture'
+       ]
+    },
+    {
       title: 'Installation',
       collapsable: true,
       path: '/administration/install/installing-rundeck',
@@ -16,7 +25,17 @@ module.exports = [{
         '/administration/install/tomcat',
         '/administration/install/windows',
         '/administration/install/source',
-        '/administration/install/docker'
+        '/administration/install/docker',
+        '/administration/architecture-and-deployment/aws'
+      ]
+    },
+    {
+      title: 'Upgrading',
+      collapsable: true,
+      path: '/upgrading/upgrading',
+      children: [
+        '/upgrading/upgrading',
+        '/upgrading/upgrading-to-rundeck3',
       ]
     },
     {
@@ -47,7 +66,6 @@ module.exports = [{
             ['/administration/configuration/docker/extending-configuration.md', 'Extending Configuration']
           ]
         },
-        '/administration/configuration/remote-job-execution',
         '/administration/configuration/hashicorp-consul',
         '/administration/configuration/email-settings',
         '/administration/configuration/gui-customization',
@@ -98,31 +116,11 @@ module.exports = [{
       ]
     },
     {
-       title: 'System Architecture and Cloud Deployment',
-       collapsable: true,
-       path: '/administration/architecture-and-deployment/architecture-and-deployment',
-       sidebarDepth: 10,
-       children: [
-         '/administration/architecture-and-deployment/system-architecture',
-         '/administration/architecture-and-deployment/aws',
-       ]
-    },
-    {
-      title: 'Upgrading',
-      collapsable: true,
-      path: '/upgrading/upgrading',
-      children: [
-        '/upgrading/upgrading',
-        '/upgrading/upgrading-to-rundeck3',
-      ]
-    },
-    {
-      title: 'Cluster',
+      title: 'Clustering',
       collapsable: true,
       path: '/administration/cluster/',
       children: [
         '/administration/cluster/',
-        '/administration/cluster/autotakeover/',
         {
           title: 'Load Balancer',
           collapsable: true,
@@ -145,6 +143,8 @@ module.exports = [{
             '/administration/cluster/logstore/s3'
           ]
         },
+        '/administration/cluster/autotakeover/',
+        '/administration/configuration/remote-job-execution',
         '/administration/cluster/replication/'
       ]
     },
