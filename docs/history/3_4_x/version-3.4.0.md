@@ -52,7 +52,7 @@ Rundeck 3.3.6 included a new Webhook Processor for PagerDuty V3 Webhooks.  The 3
 
 [Find the PagerDuty Webhook Signatures Documentation here.](/manual/webhooks/pagerduty-run-job.md#v3-webhook-signature-verification)
 
-### Project Based ACLs for Key Storage
+### Project Based ACLs for Key Storage (Enterprise)
 Rundeck 3.4 adds new functionality to the Access Control List functionality.  Rundeck aims to streamline sharing your Runbook Automation Projects with all your users.  Adding Project Level ACLs for the Key Storage component allows Rundeck admins to combine all the important access rights within a project definition, which streamlines adding new users with the appropriate permissions in Rundeck.  
 
 Be sure to check out the [Upgrade Notes](/upgrading/upgrading-to-rundeck-3.4.md) and Documentation for this new feature.
