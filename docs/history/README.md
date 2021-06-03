@@ -20,7 +20,7 @@ the upgrading.
 :::
 
 ## Version 3.4.x
-This list shows all the items fixed in the 3.3.x series [3.4.0 Release Notes](3_3_x/version-3.4.0.html)
+This list shows all the items fixed in the 3.3.x series [3.4.0 Release Notes](3_4_x/version-3.4.0.html)
 
 ## Version 3.3.x
 This list shows all the items fixed in the 3.3.x series [3.3.0 Release Notes](3_3_x/version-3.3.0.html)
