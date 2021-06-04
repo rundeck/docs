@@ -45,7 +45,7 @@ function getPlugins(setup) {
         {
             type: 'tutorial',
             defaultTitle: {
-            '/':'This tutorial is based on example code in the Welcome Projects described on the [Learning Rundeck](/learning/index.md) page.'
+            '/':'This tutorial is based on example code in the Welcome Projects.'
             },
         },
         ],

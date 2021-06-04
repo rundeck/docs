@@ -25,7 +25,7 @@ Both Rundeck product versions, Enterprise and Community, have a companion set of
 - Enterprise: [https://github.com/rundeckpro/welcome-project](https://github.com/rundeckpro/welcome-project)
 - Community: [https://github.com/rundeck/welcome-project-community](https://github.com/rundeck/welcome-project-community)
 
-Follow the readme steps for more information about getting the environments started.
+Use the [Welcome Projects Starter How To article](/learning/howto/welcome-project-starter.md) about how to get started with these environments.
 
 :::tip
 Note: The Enterprise version will require a license file. If you aren’t currently an Enterprise customer and you’re interested in using that please [contact us here](https://www.rundeck.com/see-demo).
