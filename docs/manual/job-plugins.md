@@ -55,6 +55,13 @@ Notification plugins allow Rundeck to communicate changes in job execution state
 For directions on how to use the Notification interface, see [here](/manual/notifications/interface-instructions.md).
 
 
+## Option Plugins
+
+Option Plugins provide dynamic Allowed Value lists to help choose the proper inputs for your jobs.  For general overview of how Options work see [Job Options](/manual/job-options.md)
+
+- [Jira Option Plugins](/manual/option-plugins/jira.md)
+
+
 ## Workflow Strategy
 
 The Workflow Strategy determines how the steps are processed within a Job's Workflow.
