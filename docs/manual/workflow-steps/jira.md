@@ -1,5 +1,28 @@
 # Jira Workflow Step Plugins (Enterprise)
 
+::: tip Upgrade Notice
+As of Rundeck version 3.4.0 the Jira plugins now support Auth Tokens.  Please check the [Release Notes updates here](/history/3_4_x/version-3.4.0.md).
+:::
+
+Configuration of the Jira Workflow Steps can be done centrally using Configuration Management.
+
+1. Create a Key Store entry with the API Token. (Note the path to this key for use later.)
+1. Open **System Menu > Configuration Management**
+1. Set **Jira Login Name**, **Jira Auth token** (use key path from step 1 in plain text), and **Jira base URL**.
+1. Click Save in the Upper Right.
+
+> There is no need to restart.  The JIRA Workflow Step plugins should be ready for use.
+
+Alternatively the settings can be specified in `framework.properties`for all Jira Workflow Steps.
+
+```
+jira.url=https://instance.atlassian.net
+jira.login=user
+jira.auth_token=keys/jira/token
+```
+
+Configuration can be specific per project as documented in the settings below:
+
 ## Jira / Issue / Assigned
 
 Search assigned issues by user.
@@ -8,19 +31,12 @@ Search assigned issues by user.
 
 The Jira connection credentials are set in the `project.properties` file
 for your project.
-Password it's a keystorage path to the password.
+Password it's a key storage path to the password.
 
 ```
 project.plugin.WorkflowStep.jira-assigned-issue.login=admin@instance.com
 project.plugin.WorkflowStep.jira-assigned-issue.password=keys/jira/password
 project.plugin.WorkflowStep.jira-assigned-issue.url=https://instance.atlassian.net
-```
-or use common jira config for all Jira workflow and nodesteps in `framework.properties`
-
-```
-jira.url=https://instance.atlassian.net
-jira.login=user
-jira.password-key-storage-path=keys/jira/pass
 ```
 
 ### Usage
@@ -38,20 +54,12 @@ Check if the Jira Issue exist by key.
 
 The Jira connection credentials are set in the `project.properties` file
 for your project.
-Password it's a keystorage path to the password.
+Password it's a key storage path to the password.
 
 ```
 project.plugin.WorkflowStep.jira-check-issue.login=admin@instance.com
 project.plugin.WorkflowStep.jira-check-issue.password=keys/jira/password
 project.plugin.WorkflowStep.jira-check-issue.url=https://instance.atlassian.net
-```
-
-or use common jira config for all Jira workflow and nodesteps in `framework.properties`
-
-```
-jira.url=https://instance.atlassian.net
-jira.login=user
-jira.password-key-storage-path=keys/jira/pass
 ```
 
 ### Usage
@@ -76,14 +84,6 @@ project.plugin.WorkflowStep.jira-comment-issue-step.password=keys/jira/password
 project.plugin.WorkflowStep.jira-comment-issue-step.url=https://instance.atlassian.net
 ```
 
-or use common jira config for all Jira workflow and nodesteps in `framework.properties`
-
-```
-jira.url=https://instance.atlassian.net
-jira.login=user
-jira.password-key-storage-path=keys/jira/pass
-```
-
 ### Usage
 
 To use the plugin, configure the mandatory input.
@@ -105,14 +105,6 @@ Password it's a keystorage path to the password.
 project.plugin.WorkflowStep.jira-create-issue.login=admin@instance.com
 project.plugin.WorkflowStep.jira-create-issue.password=keys/jira/password
 project.plugin.WorkflowStep.jira-create-issue.url=https://instance.atlassian.net
-```
-
-or use common jira config for all Jira workflow and nodesteps in `framework.properties`
-
-```
-jira.url=https://instance.atlassian.net
-jira.login=user
-jira.password-key-storage-path=keys/jira/pass
 ```
 
 ### Usage
@@ -144,13 +136,6 @@ project.plugin.WorkflowStep.jira-update-issue.login=admin@instance.com
 project.plugin.WorkflowStep.jira-update-issue.password=keys/jira/password
 project.plugin.WorkflowStep.jira-update-issue.url=https://instance.atlassian.net
 ```
-or use common jira config for all Jira workflow and nodesteps in `framework.properties`
-
-```
-jira.url=https://instance.atlassian.net
-jira.login=user
-jira.password-key-storage-path=keys/jira/pass
-```
 
 ### Usage
 
@@ -178,13 +163,6 @@ project.plugin.WorkflowStep.jira-get-issue.login=admin@instance.com
 project.plugin.WorkflowStep.jira-get-issue.password=keys/jira/password
 project.plugin.WorkflowStep.jira-get-issue.url=https://instance.atlassian.net
 ```
-or use common jira config for all Jira workflow and nodesteps in `framework.properties`
-
-```
-jira.url=https://instance.atlassian.net
-jira.login=user
-jira.password-key-storage-path=keys/jira/pass
-```
 
 ### Usage
 
@@ -192,4 +170,3 @@ To use the plugin, configure the mandatory input.
 
 - key: Jira issue ID.
 - plainJson: to print the info in plain Json instead of formatted text.
-

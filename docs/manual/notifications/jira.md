@@ -6,13 +6,12 @@ Append notification messages to a Jira issue.
 
 ### Configuration
 
-The Jira connection credentials are set in the `project.properties` file
-for your project.
-In Notification plugins, `password` is on clean text.
+The Jira connection credentials are set in the `project.properties` file for your project.
+For these Notification plugins, `password` is your Auth Token (plain text).
 
 ```
 project.plugin.Notification.jira-comment-issue.login=admin@instance.com
-project.plugin.Notification.jira-comment-issue.password=cleanPass
+project.plugin.Notification.jira-comment-issue.password=tokentext
 project.plugin.Notification.jira-comment-issue.url=https://instance.atlassian.net
 ```
 
@@ -28,13 +27,12 @@ Creates a new Jira issue.
 
 ### Configuration
 
-The Jira connection credentials are set in the `project.properties` file
-for your project.
-In Notification plugins, `password` is on clean text.
+The Jira connection credentials are set in the `project.properties` file for your project.
+For these Notification plugins, `password` is your Auth Token (plain text).
 
 ```
 project.plugin.Notification.jira-create-issue-notif.login=admin@instance.com
-project.plugin.Notification.jira-create-issue-notif.password=cleanPass
+project.plugin.Notification.jira-create-issue-notif.password=tokentext
 project.plugin.Notification.jira-create-issue-notif.url=https://instance.atlassian.net
 ```
 
