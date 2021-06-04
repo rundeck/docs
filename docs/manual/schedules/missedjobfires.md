@@ -2,10 +2,6 @@
 ::: enterprise
 :::
 
-:::warning Beta Feature
-  This feature is currently available as a Beta feature offering.  It is not enabled by default.  Follow steps below to turn it on.
-:::
-
 Scheduled business tasks are essential to internal processes that keep the business running (Financial operations, inventory operations, fulfillment requests, etc.) Scheduled operations tasks are essential to keeping infrastructure running (rotating logs, cleaning up temp files, restarting known faulty services, validating configuration and security settings/conditions, etc.). Unknowingly missing either is a business continuity issue. Also unknowingly missing a run and then running again can cause bigger problems. (data corruption, bad configuration, runaway processes, etc)
 
 Missed Jobs marking will keep track of the jobs scheduled, and if one of the jobs doesn't run at the time when it was scheduled
@@ -19,9 +15,19 @@ You will only get 1 entry or triggered notification in the event that a schedule
 
 ### Configuration
 
-Please make sure all the systems in your cluster have the same configuration. Otherwise, you may experience unexpected results.
+Misfire detection is enabled by default.  If there is a need to change settings use the information below.
 
-Configure the Missed Job marking feature by adding the following settings in [`rundeck-config.properties`](/administration/configuration/config-file-reference.html#rundeck-config-properties):
+> Note: Please make sure all the systems in your cluster have the same configuration. Otherwise, you may experience unexpected results.
+
+1. Open **System Menu > Configuration Management**
+1. Click **Add Config**
+1. Add the setting from the list below that needs to be changed.
+
+![Job Misfire Config](@assets/img/misfire-config-mgmt.png)
+
+[More information about Configuration Management](/manual/configuration-mgmt/configmgmt.md)
+
+Alternatively it's possible to configure the Missed Job Fires feature by adding the following settings in [`rundeck-config.properties`](/administration/configuration/config-file-reference.html#rundeck-config-properties):
 
 ```properties
 #Enable the misfire marking feature
