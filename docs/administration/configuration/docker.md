@@ -47,7 +47,7 @@ Refer to the [docs](http://rundeck.org/docs/administration/configuration/storage
 > **NOTE:** For extra reference and clarity, refer to the official docs.
 For example configurations check out the Zoo.
 
-* [Docs](http://rundeck.org/docs/administration/security/authenticating-users.html#ldap)
+* [Docs](/administration/security/authentication.md#ldap)
 * [Zoo](https://github.com/rundeck/docker-zoo/tree/master/ldap-combined)
 
 **Default**  
@@ -163,7 +163,7 @@ Set to anything enables audit logging. This can be very verbose so use with caut
 `RUNDECK_STORAGE_CONVERTER_#_[[TYPE|PATH]|CONFIG_[...]]`
 
 Configuration options for key storage providers and converts. These map to the
-[Storage Facility Docs](http://rundeck.org/docs/administration/configuration/storage-facility.html).
+[Storage Facility Docs](/administration/configuration/storage-facility.md).
 
 
 ### Authentication
@@ -176,10 +176,10 @@ Configuration options for key storage providers and converts. These map to the
 `RUNDECK_PREAUTH_REDIRECT_LOGOUT=false`
 `RUNDECK_PREAUTH_REDIRECT_URL=/oauth2/sign_in`
 Configuration options for using the
-[preauthenticated mode](http://rundeck.org/docs/administration/security/authenticating-users.html#preauthenticated-mode).
+[preauthenticated mode](/administration/security/authenticating-users.md#preauthenticated-mode).
 
 `RUNDECK_TOKENS_FILE`
-Specify location of a static tokens file. See [configuration file reference](https://docs.rundeck.com/docs/administration/configuration/configuration-file-reference.html) for details.
+Specify location of a static tokens file. See [configuration file reference](/administration/configuration/configuration-file-reference.md) for details.
 
 ### Security Headers
 
