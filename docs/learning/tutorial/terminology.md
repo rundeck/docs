@@ -4,7 +4,7 @@
 A project is a place within Rundeck to separate management activity. All Rundeck activities occur within the context of a project. Multiple projects can be maintained on the same Rundeck server. Projects are independent from one another, so you can use them to organize unrelated systems within a single Rundeck installation. This can be useful for managing different teams, infrastructures, environments or applications.
 
 ## Nodes
-A Node is a resource that is either a physical or virtual instance of a network accessible host. Nodes have a few basic attributes but a Node's attributes can be extended to include arbitrary named key/value pairs. Attributes typically describe the properties of a node or reflect the state of the node. One of a Node's built in attributes is called "tags" which is a list of classifications or categories about that Node.
+A Node is a resource that is either a physical or virtual instance of a network accessible host. Nodes have a few basic attributes but a Node's attributes can be extended to include arbitrary named key/value pairs. Attributes typically describe the properties of a node or reflect the state of the node. One of a Node's built in attributes is called "tags" which are a list of classifications or categories about that Node.
 
 ## Key Storage
 The Key Storage facility provides GUI backed by an [API](/api/rundeck-api.md#key-storage) to manage public, private keys and passwords.

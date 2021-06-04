@@ -3,9 +3,9 @@
 :::tutorial
 :::
 
-A Node is a resource that is either a physical or virtual instance of a network accessible host. Nodes have a few basic attributes but a Node's attributes can be extended to include arbitrary named key/value pairs. Attributes typically describe the properties of a node or reflect the state of the node. *(e.g. OSVersion: Ubuntu 18.04)* Tags can also be assigned to ease searching (e.g. `prod` or `dev`)
+A Node is a resource that is either a physical or virtual instance of a network accessible host. Nodes have a few basic attributes, but a Node's attributes can be extended to include arbitrary named key/value pairs. Attributes typically describe the properties of a node or reflect the state of the node. _(e.g. OSVersion: Ubuntu 18.04)._ Tags can also be assigned to a node for easy searching (e.g. `prod` or `dev`).
 
-If this is the first run through of the tutorial there will only be a single node in your Welcome Project, the Rundeck Server.
+If this is the first run through of the tutorial there will be a single node in your Welcome Project (the Rundeck Server).
 
 ### Enterprise/Community Exercise
 
