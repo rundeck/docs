@@ -3,7 +3,7 @@
 
 Rundeck allows users to dispatch jobs to remote Linux/UNIX servers to manage and automate any task using Rundeck workflows. The most common protocol for connecting to Linux/Unix servers is SSH. This is an example of how to add a remote node and configure Rundeck to use SSH to connect to it.
 
-_Note: If this is the first time adding remote nodes. It is suggested to review the [Rundeck Tutorial](/learning/tutorial/preparing.md) before adding remote SSH nodes.   This exercise assumes some experience with Linux, SSH Keys, and the Rundeck basics covered previously._
+_Note: If this is the first time adding remote nodes. It is suggested to review the [Rundeck Tutorial](/learning/tutorial/preparing.md) before adding remote SSH nodes. This exercise assumes some experience with Linux, SSH Keys, and Rundeck basics covered in the Tutorial._
 
 
 ## Generating Keys
@@ -32,8 +32,8 @@ Rundeck can store the authentication keys necessary to authenticate to our Linux
     ![Add Key Entry](@assets/img/howto-ssh-addkey.png)
 1. For *Key Type* select `Private Key`.
 1. Add Rundeck instance private key file content in *Enter text*. The key is located at `/var/lib/rundeck/.ssh/id_rsa`.
-1. In **Storage path** it’s possible to define specific subfolders for the keys if needed, for this example just leave it blank.
-1. In the *Name* textbox enter a key name that corresponds to the rundeck host, in this example is just `rundeck` (now the Key Storage entry is `keys/rundeck`).
+1. In the **Storage path** field it’s possible to define specific subfolders for the keys if needed, for this example just leave it blank.
+1. In the *Name* textbox enter a key name that corresponds to the Rundeck host, in this example is just `rundeck` (now the Key Storage entry is `keys/rundeck`).
     ![Key Entry](@assets/img/howto-ssh-keyentry.png)
 
 ## Adding Nodes
@@ -100,15 +100,14 @@ In the *hostname* attribute, place the DNS name of our remote node. In *username
 ## Running Commands on Nodes
 **Let’s dispatch some commands!**
 
-1. Clicking on the "Nodes" tab (left menu) and using the drop-down to choose "Select All Nodes"  will display all the nodes that have been configured. The screenshot below shows the listing with 2 nodes (the Rundeck node and the node added recently).
+1. Clicking on the "Nodes" tab (left menu) and using the drop-down to choose _Select All Nodes_  will display all the nodes that have been configured. The screenshot below shows the listing with 2 nodes (the Rundeck node and the node added recently).
     <br>![Two Nodes Shown](@assets/img/howto-ssh-dispatch1.png)
-1. To select the node created earlier, just put the name on Nodes textbox, in this case, “node1” and press Enter key, now the node is selected.
+1. To select the node created earlier, put the name in _Nodes_ textbox; In this case, `node1` and press Enter key, now the node is selected.
     <br>![Filter for one node](@assets/img/howto-ssh-dispatch2.png)
-1. In the “Enter a command” textbox put a command, e.g.: `df`, and click on the “Run on 1 Node” green button.
+1. In the _Enter a command_ textbox put a command, e.g.: `df`, and click on the **Run on 1 Node** green button.
     <br>![Command Output](@assets/img/howto-ssh-dispatch3.png)
 
-**Congratulations!**
-Rundeck is now set up a remote SSH node to dispatch commands and jobs. Stay tuned to the next blog entry where we build a job to execute on this Node.
+**Congratulations!** A remote SSH node to dispatch commands and jobs is setup in Rundeck. Stay tuned to the next blog entry where we build a job to execute on this Node.
 
 ## Additional Resources
 
