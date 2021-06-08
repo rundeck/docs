@@ -3,7 +3,7 @@
 Use this guide to migrate a set of Rundeck projects from the built-in H2 database, to use MySQL.  
 The instructions assume Rundeck and MySQL are running on Linux/Unix server.
 
-## Project export all projects
+## Project Export All Projects
 
 For each project that needs to be migrated export the archive via the GUI:
 
@@ -19,7 +19,7 @@ For each project that needs to be migrated export the archive via the GUI:
 Save each project archive file (named "[project name]-XXXX.rdproject.jar")
 in a safe place.  They will be needed in a future step.
 
-## Backup Rundeck data
+## Backup Rundeck Data
 
 - Make a backup of the H2 database to use in case of error,
   - RPM/Debian install location: `/var/lib/rundeck/data`
@@ -31,17 +31,17 @@ Older versions may also backup file based project definitions.
   - RPM/Debian install location: `/var/rundeck/projects`
   - Launcher location: `$RDECK_BASE/projects`
 
-## Stop rundeck
+## Stop Rundeck
 
 Linux/Unix:
 
     sudo service rundeckd stop
 
-## Setup mysql
+## Setup MySQL
 
-Install Mysql according to the instructions for the destination platform.
+Install MySQL according to the instructions for the destination platform.
 
-## Prepare Mysql database
+## Prepare MySQL database
 
 Perform this command to log in as root:
 
@@ -59,7 +59,7 @@ username and password.
 
 See [Configuring Rundeck](/administration/configuration/database/mysql.html#configuring-rundeck) for details.
 
-## Configure project config in DB
+## Configure Project Config in DB
 
 Enable DB storage for Project configurations, and Key Storage. Optionally enable encryption.
 
@@ -82,7 +82,7 @@ View the "/var/log/rundeck/service.log" file for any error messages.
 - Project definitions/configs will be imported to DB automatically
 - Resources.xml remain in the same location
 
-## Import archives
+## Import Archives
 
 :::danger
 NEED TO REVISIT THIS SECTION
