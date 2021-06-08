@@ -1,13 +1,13 @@
-# Developing a custom Rundeck Java plugin
+# Developing a Custom Rundeck Java Plugin
 
-In this tutorial we'll learn:
+This tutorial covers:
 
 - Why you might benefit from a custom Rundeck Java plugin
 - How to set up your development environment to write, build and test Rundeck Java plugins
 
 ## Why create a Rundeck plugin in Java?
 
-Rundeck is an open source ops automation platform that comes with a lot of functionality out of the box, like running script commands on your nodes with a command step. If you can already run commands with the default functionality, why would you want to write a new plugin to do that?
+Rundeck Community is an open source runbook automation platform that comes with a lot of functionality out of the box, like running script commands on your nodes with a command step. If you can already run commands with the default functionality, why would you want to write a new plugin to do that?
 
 Several reasons:
 
@@ -23,13 +23,13 @@ These benefits apply to both script plugins and Java plugins. Additional benefit
 - Testability
 - Use any JVM language
 
-### Fully crossplatform
+### Fully cross-platform
 
-Script plugins depend on a script interpreter like bash or Powershell deployed on the node running your plugin. If you run a heterogeneous environment with nodes of different operating systems or different versions of the same operating system, you can avoid those inconsistencies using a Java plugin. Since Java can run on essential any platform, our plugin logic will run the same way regardless of what operating system it runs on.
+Script plugins depend on a script interpreter like bash or Powershell deployed on the node running your plugin. If you run a heterogeneous environment with nodes of different operating systems or different versions of the same operating system, you can avoid those inconsistencies using a Java plugin. Since Java can run on essentially any platform, our plugin logic will run the same way regardless of what operating system it runs on.
 
 ### All code dependencies can be packaged with the plugin
 
-Many scripts rely on external tools like awk, jq or your cloud provider's command line tool, requiring you to ensure that those tools are deployed everywhere your plugin will run, and are the correct version that your script expects. A Java plugin would be packaged into a single jar file that can also bundle any necessary third party library dependencies you might need alongside your plugin code so your dependencies are deployed atomically with your plugin logic.
+Many scripts rely on external tools like awk, jq or your cloud provider's command line tool, requiring you to ensure that those tools are deployed everywhere your plugin will run, and are the correct version that your script expects. A Java plugin would be packaged into a single jar file that can also bundle any necessary third party library dependencies alongside your plugin code so your dependencies are deployed atomically with your plugin logic.
 
 ### Robust access to Rundeck context data
 
@@ -37,7 +37,7 @@ Java step plugins can read data from the job context that previous jobs have wri
 
 ### Testability
 
-Java plugins are testable in the same way any Java app is. You can use familiar libraries like JUnit and jMock to ensure that your plugin can be well-tested before being deployed. Tested code give developers who are new to the project more confidence in fixing bugs or adding features in the future.
+Java plugins are testable in the same way any Java app is. You can use familiar libraries like JUnit and jMock to ensure that your plugin can be well-tested before being deployed. Tested code gives developers who are new to the project more confidence in fixing bugs or adding features in the future.
 
 ### Use any JVM language
 
@@ -53,7 +53,7 @@ Now that we see the value in creating our own workflow step Java plugin, we can 
 
 ### Setting up your development environment
 
-If you're not a Java programmer by trade, the thought of setting up a Java development environment might seem a little daunting. I'll try to walk you through a simple setup that may not have all the bells & whistles that a fully Java IDE might have, but will get you up and running quickly while still understanding each of the tools you're working with.
+If you're not a Java programmer by trade, the thought of setting up a Java development environment might seem a little daunting. We'll try to walk you through a simple setup that may not have all the bells and whistles that a fully Java IDE might have, but will get you up and running quickly, while still understanding each of the tools you're working with.
 
 Our ultimate goal is to build an archive file of Java bytecode-compiled files that we can easily ship off to a Rundeck server instance. The archive file is a .jar file which is just a .zip file with extra metadata. The bytecode is compiled and packaged with Gradle, a DSL for building Java applications. We need to be able to write code and run the compiler to check that it compiles. Any other IDE features are icing on the cake.
 
@@ -227,7 +227,7 @@ Click the hellojava plugin, fill in some text in the Example string parameter fi
 
 ![Plugin log output](~@assets/img/hellojava-log-output-1.png)
 
-If the job succeeded with some output similar to the screenshot, then your Java plugin is working correctly!
+If the job succeeded with some output similar to the screenshot, then your Java plugin is working!
 
 ### Verify that we can modify the plugin
 
@@ -287,7 +287,7 @@ com.plugin.hellojava.HellojavaSpec > run OK FAILED
 FAILURE: Build failed with an exception.
 ```
 
-Whoops! Looks like the plugin bootstrap generated some sample tests, and we deleted the sample code that was making them pass. Lets find the tests and remove them. The fastest way to navigate to them is with `cmd+p` and entering `HellojavaSpec.groovy`, the file referenced in the errors above.
+Whoops! Looks like the plugin bootstrap generated some sample tests and we deleted the sample code that was making them pass. Let's find the tests and remove them. The fastest way to navigate to them is with `cmd+p` and entering `HellojavaSpec.groovy`, the file referenced in the errors above.
 
 This test file is written in Groovy, a JVM-based dynamic language that's a little more lightweight than Java making it ideal for writing tests. For now, since the tests don't apply anymore, let's remove them by deleting the `def "check Boolean parameter"()` and `def "run OK"()` code blocks. `HellojavaSpec.groovy` should look like:
 
