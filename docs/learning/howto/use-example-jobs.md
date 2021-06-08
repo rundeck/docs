@@ -2,7 +2,7 @@
 
 ## Overview
 
-A good way to understand different problem solving approaches in Rundeck is by seeing how they’re implemented. The [Community Welcome Project](https://github.com/rundeck/welcome-project-community) has a series of individual [example jobs](https://github.com/rundeck/welcome-project-community/tree/main/runbooks/yaml) that you can download, import into your rundeck instance, adapt, and test.  The example jobs are written to work with the Welcome Projects, but these steps can be used to import into any project.
+A good way to understand different problem solving approaches in Rundeck is by seeing how they’re implemented. The [Community Welcome Project](https://github.com/rundeck/welcome-project-community) has a series of individual [example jobs](https://github.com/rundeck/welcome-project-community/tree/main/runbooks/yaml) that you can download, import into your Rundeck instance, adapt, and test.  The example jobs are written to work with the Welcome Projects, but these steps can be used to import into any project.
 
 The library of example jobs provides examples of job definitions for common use-cases and platform-focused runbooks to help show new users the power of runbook automation and make it easy for existing users to add new job definitions to their Rundeck. Rundeck uses exchangeable formats to share their jobs: XML or/and YAML, making it easy to store on any repository.
 
@@ -20,7 +20,7 @@ Download the zip file from the repository:
 3. Download the Source Code (.zip) file.
 4. Extract the contents to a folder on your local hard drive.
 
-All runbooks job definitions are located in the `runbooks/yaml` folder inside the main repository directory.
+All runbook job definitions are located in the `runbooks/yaml` folder inside the main repository directory.
 
 1. Click on the **Jobs** page (left menu) of your Project.
 1. And click on the **Upload a job definition** button.
