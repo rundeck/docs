@@ -49,9 +49,13 @@ Rundeck Enterprise includes Webhook Handlers for [PagerDuty](/manual/webhooks/pa
 ### Advanced Rule Processing
 
 Below is a highlight of some of the features of Advanced Rule Processing.
-Rules and conditions target jobs based on webhook event contents - Often times webhook payloads from 3rd party systems can’t be edited or updated. If something is sending a lot of events that logic would trigger the job with every event and result in messy Activity logs. Performing logic at the Webhook step whether the job should run helps streamline event processing.
-Run Multiple Jobs within single Webhook - Having a single URL to set in a 3rd party solution simplifies the efforts on that side and keeps the customization within Rundeck to manage their Automation workflows.
-Process batched webhook payloads - Many 3rd party webhook senders will send messages in a “batch”. This features allows processing each entry in the batch as it’s own event against the rule set.
+
+Rules and conditions target jobs based on webhook event contents. Often-times webhook payloads from 3rd party systems can’t be edited or updated. If something is sending a lot of events that logic would trigger the job with every event and result in messy Activity logs. Performing logic at the Webhook step, whether the job should run, helps streamline event processing.
+
+Run Multiple Jobs within a single Webhook. Having a single URL to set in a 3rd party solution simplifies the efforts on that side and keeps the customization within Rundeck to manage their Automation workflows.
+
+Process batched webhook payloads. Many 3rd party webhook senders will send messages in a “batch”. This feature allows processing each entry in the batch as its own event against the rule set.
+
 All of the solution specific Enterprise Webhook Handlers (PagerDuty, GitHub, AWS, etc.) leverage these same features.
 
 ### Webhook Debugging
@@ -59,7 +63,8 @@ All of the solution specific Enterprise Webhook Handlers (PagerDuty, GitHub, AWS
 >_“Why didn’t my webhook do X?!”_
 
 Rundeck Enterprise includes a Webhook Debugger integrated with the Webhook builder. The Debugger makes troubleshooting incoming webhooks and why they did (or did not) trigger certain rules in your Advanced Rule Processing Handlers.
-There is a Debug button, but likely at this stage there are no event that have been logged to see debug information for. We will show the Debugger during the Exercise later.
+
+There is a Debug button, but likely at this stage there are no events that have been logged to see debug information for. We will show the Debugger during the Exercise later.
 
 ## Webhook Exercise
 
