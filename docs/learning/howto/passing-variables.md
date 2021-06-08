@@ -3,9 +3,9 @@
 ## Overview
 Rundeck offers powerful Runbook Automation. Most Runbooks are complicated, multi-step processes.
 
-This tour will show various examples of how to share data from one step to another through the use of Log Filters.
+This guide will show various examples of how to share data from one step to another through the use of Log Filters.
 
-> Note: If you haven't followed the Exercise Steps in the Tutorial we encourage starting with that walk-through.
+> Note: If you haven't followed the Exercise Steps in the [Tutorial](/learning/tutorial/preparing.md) we encourage starting with that walk-through.
 
 ### Type of Variables
 When a Job step is executed, it has a set of *context variables* that you can access in the Job step. There are several sets of context variables, including: the Job context `job`, the Node context `node`, the Option context `option`, and the Step Data Context `data`.
@@ -17,7 +17,7 @@ Click here for more documentation on: [Context Variables](/manual/job-workflows.
 These are some key terms we'll be using throughout this tour in addition to terms used in our [Terminology](/learning/tutorial/terminology.md) documentation.
 
 #### Log Filters
-Log Filters are applied to a Job step to act on the output from that step. Certain Job Filters can set variables based on information in the log output. There is a separate tour to cover different types of Log Filters and how they are used.
+Log Filters are applied to a Job step to act on the output from that step. Certain Job Filters can set variables based on information in the log output. There is a separate guide _(coming soon)_ to cover different types of Log Filters and how they are used.
 
 #### RegEx
 Log Filters use Regular Expression syntax (RegEx) to collect information from the log output. Familiarity with Regex will be key to successfully gathering data from your own job steps. You will not need to know it for these Exercises.
@@ -28,7 +28,7 @@ As part of the Welcome Projects we have built some example jobs to highlight how
 It's important to note that Node Steps (steps run against nodes) and Workflow Steps (steps run from the Rundeck server) store variables differently. The examples will also show how to use the variables from different types of steps and highlight common trouble spots.
 
 ::: tip Important Exercise Prerequisite
-If you have not completed the [Getting Started Tutorial](/learning/tutorial/preparing.md) we recommend finishing the exercises there first to include additional nodes and familiarize yourself with core Rundeck functionality. Terminology and actions in the following exercise will assume you have completed that Tutorial.
+If you are new to Rundeck, we recommend finishing the exercises in the [Getting Started Tutorial](/learning/tutorial/preparing.md) first. Terminology and actions in the following exercise will assume you have completed that Tutorial.
 :::
 
 ## Using Input Option Variables
@@ -97,7 +97,7 @@ In this Exercise we'll highlight the dynamics between all of these scenarios.
 
 ### Node vs Workflow Steps (Multi-Node Example)
 The **Using Step Data Variables** job in the previous section was configured to only execute against the Rundeck Server.
-To highlight the difference when running against multiple nodes let's run the **Multi-Node Example** job and explore it's output and configuration.
+To highlight the difference when running against multiple nodes, let's run the **Multi-Node Example** job and explore its output and configuration.
 >Note: It is recommended to configure multiple Nodes as detailed in the Getting Started Tutorial.
 
 :::: tabs
