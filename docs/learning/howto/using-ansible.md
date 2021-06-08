@@ -1,4 +1,4 @@
-# Rundeck and Ansible integration
+# Rundeck and Ansible Integration
 
 It’s common for Rundeck users to integrate Ansible into their Rundeck. Like Rundeck, Ansible's straightforward design and learning curve make it Operations friendly.
 
@@ -16,8 +16,7 @@ The full Ansible documentation is available here [https://docs.ansible.com/](htt
 
 ## How to Integrate Ansible with Rundeck
 
-> Note: In the interest of brevity this How To assumes readers are very familiar with Rundeck.  It is suggested to fully understand with the [Tutorial Exercises](/learning/tutorial/preparing.md) prior to attempting these steps.
-
+> Note: This How To assumes readers are very familiar with Rundeck. It is suggested to review and fully understand thee [Tutorial Exercises](/learning/tutorial/preparing.md) prior to attempting these steps.
 
 Both Rundeck versions (Community and Enterprise) use a [built-in plugin](https://github.com/Batix/rundeck-ansible-plugin) for Ansible integrations. This plugin imports hosts from Ansible's inventory. It includes a bunch of facts and can run modules and playbooks. There is also a node executor and file copier for the project.
 
