@@ -1,6 +1,5 @@
 # Upgrading to Rundeck 3.4
 
-
 ::: tip
 This document highlights changes for users upgrading **_from_ Rundeck 3.3**.
 See other [Upgrading](/upgrading/) Documents if you are upgrading from 3.2 or earlier.
@@ -11,6 +10,27 @@ See other [Upgrading](/upgrading/) Documents if you are upgrading from 3.2 or ea
 Package repositories have moved! Please read [the new instructions for downloading Rundeck](/learning/howto/migrate-to-rundeck-packages-repo.md) from our new package repositories.
 
 ## DB Migration
+
+Rundeck now uses the [Database Migration plugin](http://grails-plugins.github.io/grails-database-migration/3.0.x/index.html) to manage database changes which provides structure and process to database schema changes.  Previously, database changes were applied when the `dataSource.dbCreate` property located in the _rundeck-config.properties_ was set to `update`. This property should be set to `none` moving forward. In addition, the property `grails.plugin.databasemigration.updateOnStart` should be set to `true` moving forward from 3.4.0.
+
+_Upgrading from to Rundeck 3.4.0 from previous Rundeck Version &lt; 3.3.5_
+
+In order to upgrade to Rundeck 3.4.0 from a version less than 3.3.5, the database must be brought up to an appropriate state using the previous database migration method. The following steps should be performed in order:
+
+1. Backup the rundeck database
+1. Add the following two properties in the _rundeck-config.properties_ file:
+    1. `dataSource.dbCreate=update`
+    1. `grails.plugin.databasemigration.updateOnStart=false`
+1. Start Rundeck 3.4.0
+1. Once Rundeck is fully started, Shutdown Rundeck 3.4.0
+1. Remove the previously added settings from rundeck-config.properties.
+1. Restart Rundeck 3.4.0.  Once initialization is complete, Rundeck is ready for use
+
+_Upgrading from to Rundeck 3.4.0 from previous Rundeck Version >= 3.3.5_
+
+1. Backup the rundeck database
+1. Start Rundeck 3.4.0
+1. Once initialization is complete, Rundeck is ready for use
 
 ## API v11 (New Minimum Version)
 
