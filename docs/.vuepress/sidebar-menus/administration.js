@@ -99,7 +99,15 @@ module.exports = [{
         '/administration/security/acl-policy-editor',
         '/administration/security/ssl',
         '/administration/security/key-storage',
-        '/administration/security/storage-plugins',
+        {
+          title: 'Key Storage Plugins',
+          collapsable: true,
+          path: '/administration/security/storage-plugins',
+          children: [
+            '/administration/security/storage-plugins/thycotic-storage.md',
+            '/administration/security/storage-plugins/vault.md'
+          ]
+        },
         '/administration/security/sso',
         '/administration/security/webapp-http-headers',
         '/administration/security/project-acl'
