@@ -1,19 +1,33 @@
 # Thycotic Storage Plugin (Enterprise)
 
-Rundeck Enterprise users have access to this plugin used to access password/key data stored in a Thycotic Secret Server.
+Thycotic is a leader in Privileged Access Management solutions providing cloud ready, easy to use security solutions across the complete privileged access surface.  A centralized password management system provides visibility and control to protect privileges from attack.  Thycotic's solution is built for the Enterprise to enforce strong password business policies and prevent data breaches.  [Read more about their solution here](https://thycotic.com/solutions/enterprise-password-management/).
 
+Rundeck Enterprise users have access to the Thycotic Storage Plugin which can be used to access password/key data stored in a Thycotic Secret Server.
 
-Below is an example configuration, which needs to be placed in `rundeck-config.properties`:
+:::: tabs
+::: tab Configuration Management
+
+Below is an example configuration, which can be configured using the *System Configuration* module. Add each setting as a configuration entry.
+
+![Thycotic Configuration](@assets/img/thycotic-config-screen.png)
+
+:::
+::: tab rundeck-config.properties
+Alternatively the settings can be placed in `rundeck-config.properties`
 
 ```
 rundeck.storage.provider.1.type=thycotic-storage
 rundeck.storage.provider.1.path=keys
 rundeck.storage.provider.1.removePathPrefix=true
-rundeck.storage.provider.1.config.username=username
+rundeck.storage.provider.1.config.username=thycotic-username
 rundeck.storage.provider.1.config.password=password
 rundeck.storage.provider.1.config.address=https://example.secretservercloud.com
 rundeck.storage.provider.1.config.allowSelfSignedCert=true
 ```
+:::
+::::
+
+### Setting Descriptions
 
 - **Type**
 : This specifies the storage plugin to use. For Thycotic, it should always be "thycotic-storage."
