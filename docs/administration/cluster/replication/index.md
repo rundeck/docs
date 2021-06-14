@@ -38,7 +38,6 @@ Configuration will be defined in framework.properties/project.properties:
 ```properties
 framework.plugin.ExecutionFileStorage.ExecutionReplicationPlugin.rundeckUrl=http://host
 framework.plugin.ExecutionFileStorage.ExecutionReplicationPlugin.apiToken=...
-framework.plugin.ExecutionFileStorage.ExecutionReplicationPlugin.outputDir=/tmp
 framework.plugin.ExecutionFileStorage.ExecutionReplicationPlugin.project=${execution.project}
 framework.plugin.ExecutionFileStorage.ExecutionReplicationPlugin.timeout=30
 ```
