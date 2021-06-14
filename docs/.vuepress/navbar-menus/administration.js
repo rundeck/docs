@@ -11,6 +11,10 @@ module.exports = [{
     link: '/upgrading/index'
   },
   {
+    text: 'Licensing',
+    link: '/administration/license',
+  },
+  {
     text: 'Configuration',
     link: '/administration/configuration/'
   },

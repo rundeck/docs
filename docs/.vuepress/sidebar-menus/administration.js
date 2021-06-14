@@ -39,12 +39,17 @@ module.exports = [{
       ]
     },
     {
+      title: 'Licensing',
+      collapsable: true,
+      path: '/administration/license',
+      sidebarDepth: 2
+    },
+    {
       title: 'Configuration',
       collapsable: true,
       path: '/administration/configuration/',
       sidebarDepth: 2,
       children: [
-        '/administration/configuration/license',
         {
           title: 'Database',
           collapsable: true,

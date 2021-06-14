@@ -1,6 +1,6 @@
-# Rundeck Enterprise Licensing and Support
+# Rundeck Enterprise Licensing
 
-## Licensing
+## Overview
 
 While Rundeck is an open source project maintained by Rundeck Inc, Rundeck Enterprise is commercial software for which you can purchase a license from Rundeck Inc. Rundeck Enterprise provides a tested, supported, and enterprise-ready distribution of Rundeck with additional features and capabilities for enterprise scale use. Also, a Rundeck Enterprise subscription license is the only way to receive professional support from Rundeck and the core Rundeck team.
 
@@ -12,7 +12,7 @@ No software with GPL or other “copyleft” licenses are used in Rundeck Enterp
 
 Rundeck Inc. guarantees that Rundeck Enterprise does not infringe on any patents, copyrights or misappropriates any trade secrets. Rundeck will defend licensees against such claims. For details, see [Rundeck Enterprise Master Software License Agreement](http://support.rundeck.com/customer/portal/articles/2723878-rundeckpro-license).
 
-## License key installation
+## License Key Installation
 
 Ask for the license key to the support team. Then install the license key via the gui or on the filesystem directly.
 
@@ -64,7 +64,7 @@ Rundeck + Tomcat:
 $RDECK_BASE/etc/
 ```
 
-### Store license in database (introduced in 3.2.6)
+### Store license in database
 
 If you would like to store your license in your database rather than your filesystem, turn on the following setting:
 
@@ -72,13 +72,13 @@ If you would like to store your license in your database rather than your filesy
 
 If you have a license file installed in your Rundeck server it will be migrated automatically into the database.
 
-When Rundeck bootstraps it will check the license file on the filesystem if it exists, and if the issue date of
+When Rundeck boots it will check the license file on the filesystem if it exists, and if the issue date of
 that license is more recent than the license in the database, the database will be updated with the license
 on the filesystem.
 
 ### Store the license using a custom storage tree
 
-If you would like to store your license in a storage tree, you can configure a storage tree using the standard 
+If you would like to store your license in a storage tree, you can configure a storage tree using the standard
 storage tree config options.  
 
 Turn on license storage tree usage then provide your configuration using the prefix: `rundeck.license.storage`
