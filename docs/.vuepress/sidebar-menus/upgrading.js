@@ -7,6 +7,7 @@ module.exports = [{
     '/upgrading/upgrading',
     '/upgrading/upgrading-to-rundeck-3.4.md',
     '/upgrading/upgrading-to-rundeck-3.3.4.md',
+    '/upgrading/upgrading-to-rundeck-3.3.4.md',
     '/upgrading/upgrading-to-rundeck-3.3.md',
     '/upgrading/upgrading-to-rundeck-3.2.md',
     '/upgrading/upgrading-to-rundeck-3.1.md',

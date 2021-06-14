@@ -72,6 +72,8 @@ You can remove the `rundeck.projectsStorageType` configuration key from your run
 
 ## JIRA Plugins Require Updated Authentication (Enterprise)
 
+>Note: These steps also apply to Rundeck version 3.3.13
+
 The JIRA Plugins now require an authentication token as opposed to the password used to login to the account. However, there are two options for proceeding with the authentication token.
 
 :::: tabs
