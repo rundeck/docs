@@ -2,7 +2,7 @@
 
 Name: <span style="color: {{version.color()}}"><span class="glyphicon glyphicon-{{version.icon()}}"></span> "{{version.name()}} {{version.color()}} {{version.icon()}}"</span>
 
-[Download this release](https://download.rundeck.com/{{version.versionString}}/index.html)
+[Download Rundeck](https://download.rundeck.com/)
 
 ## Overview
 
