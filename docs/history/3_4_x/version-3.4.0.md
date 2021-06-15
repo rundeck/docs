@@ -22,7 +22,7 @@ The most obvious change in our 3.4 release is the newly refreshed and rebuilt Us
 - **Project Selector:** Quickly switching between projects was important to getting work done faster. The new Project Picker in the top navigation allows easy access to your projects at all times and includes a quick search function to find that important project faster.
 - **Utility Bar:** So many systems leverage that simple bit of functionality lurking just off screen quickly ready for when you need it. The Utility Bar in Rundeck 3.4 offers the same functionality. You'll find a few widgets in this release with more to come in the future.
 
-[Download this release](https://download.rundeck.com/3.4.0/index.html) and check out all the new improvements!
+[Download this release](https://www.rundeck.com/downloads) and check out all the new improvements!
 
 
 ### Configuration Management (Enterprise)
