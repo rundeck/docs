@@ -2,7 +2,7 @@
 
 Name: <span style="color: red"><span class="glyphicon glyphicon-headphones"></span> "onion ring red headphones"*</span>
 
-[Download this release](https://download.rundeck.com/3.3.5/index.html)
+[Download Rundeck](https://download.rundeck.com/)
 
 :::danger Remember!!
 **For MySQL users**: Starting with Rundeck `3.3.4` the MySQL JDBC driver will no longer be

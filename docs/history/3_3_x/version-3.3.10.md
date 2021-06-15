@@ -2,7 +2,7 @@
 
 Name: <span style="color: skyblue"><span class="glyphicon glyphicon-paperclip"></span> "Onion ring skyblue paperclip"</span>
 
-[Download this release](https://download.rundeck.com/3.3.10/index.html)
+[Download Rundeck](https://download.rundeck.com/)
 
 ## Overview
 This is a small release to address minor bugs and issues.  We are working some awesome new enhancements and a significant release around the end of March.

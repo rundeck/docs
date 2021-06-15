@@ -2,7 +2,7 @@
 
 Name: <span style="color: silver"><span class="glyphicon glyphicon-music"></span> "Onion ring silver music"</span>
 
-[Download this release](https://download.rundeck.com/3.3.9/index.html)
+[Download Rundeck](https://download.rundeck.com/)
 
 ## Overview
 

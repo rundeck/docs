@@ -2,7 +2,7 @@
 
 Name: <span style="color: slategray"><span class="glyphicon glyphicon-phone"></span> "Onion ring slategray phone"</span>
 
-[Download this release](https://download.rundeck.com/3.3.11/index.html)
+[Download Rundeck](https://download.rundeck.com/)
 
 :::danger Package repositories have moved!
   Please read [the new instructions for downloading Rundeck](/learning/howto/migrate-to-rundeck-packages-repo.md) from our new package repositories.

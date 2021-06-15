@@ -2,7 +2,7 @@
 
 Name: <span style="color: springgreen"><span class="glyphicon glyphicon-piggy-bank"></span> "Onion ring springgreen piggy-bank"</span>
 
-[Download this release](https://download.rundeck.com/3.3.12/index.html)
+[Download Rundeck](https://download.rundeck.com/)
 
 :::danger Package repositories have moved!
   Please read [the new instructions for downloading Rundeck](/learning/howto/migrate-to-rundeck-packages-repo.md) from our new package repositories.

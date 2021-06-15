@@ -2,7 +2,7 @@
 
 Name: <span style="color: sandybrown"><span class="glyphicon glyphicon-leaf"></span> "onion ring sandybrown leaf"</span>
 
-[Download this release](https://download.rundeck.com/3.3.8/index.html)
+[Download Rundeck](https://download.rundeck.com/)
 
 ## Overview
 

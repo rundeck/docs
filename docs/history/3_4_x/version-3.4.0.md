@@ -2,7 +2,7 @@
 
 Name: <span style="color: aquamarine"><span class="glyphicon glyphicon-book"></span> "Papadum aquamarine book"</span>
 
-[Download this release](https://download.rundeck.com/3.4.0/index.html)
+[Download Rundeck](https://download.rundeck.com/)
 
 ## Overview
 
@@ -36,7 +36,7 @@ With version 3.4 it is now possible to configure Rundeck within the GUI and many
 [See the full Configuration Management documentation here.](/manual/configuration-mgmt/configmgmt.md)
 
 ### Job Queuing (Enterprise)
-Some technical operations can’t be run _in parallel_. Depending on the job, if the same one was executed while the previous execution was running, that might create a little havoc on the systems being managed. With Job Queuing when one execution finishes, the next one will start. The ability to queue up all the work that needs to be done at once without risking chaos in production. 
+Some technical operations can’t be run _in parallel_. Depending on the job, if the same one was executed while the previous execution was running, that might create a little havoc on the systems being managed. With Job Queuing when one execution finishes, the next one will start. The ability to queue up all the work that needs to be done at once without risking chaos in production.
 
 ![Job Queue Config](~@assets/img/jobqueue-config.png)
 
@@ -55,7 +55,7 @@ Rundeck 3.3.6 included a new Webhook Processor for PagerDuty V3 Webhooks. The 3.
 [Find the PagerDuty Webhook Signatures Documentation here.](/manual/webhooks/pagerduty-run-job.md#v3-webhook-signature-verification)
 
 ### Project Based ACLs for Key Storage (Enterprise)
-Rundeck 3.4 adds new functionality to the Access Control List functionality. Rundeck aims to streamline sharing your Runbook Automation Projects with all your users. Adding Project Level ACLs for the Key Storage component allows Rundeck admins to combine all the important access rights within a project definition, which streamlines adding new users with the appropriate permissions in Rundeck. 
+Rundeck 3.4 adds new functionality to the Access Control List functionality. Rundeck aims to streamline sharing your Runbook Automation Projects with all your users. Adding Project Level ACLs for the Key Storage component allows Rundeck admins to combine all the important access rights within a project definition, which streamlines adding new users with the appropriate permissions in Rundeck.
 
 Be sure to check out the [Upgrade Notes](/upgrading/upgrading-to-rundeck-3.4.md) and Documentation for this new feature.
 
