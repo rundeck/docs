@@ -3,6 +3,9 @@
 Name: <span style="color: aquamarine"><span class="glyphicon glyphicon-book"></span> "Papadum aquamarine book"</span>
 
 [Download Rundeck](https://download.rundeck.com/)
+::: warning
+Please be sure to follow the [Upgrading Guidance](/upgrading/index.md) when upgrading to 3.4.0 from a previous version.
+:::
 
 ## Overview
 
