@@ -9,13 +9,13 @@ Name: <span style="color: {{version.color()}}"><span class="glyphicon glyphicon-
 ## Enterprise Updates
 
 {% for pull in enterprise.pulls -%}
-* {{ pull.title }}
+* {{ pull.title | replace(r/RUN-[0-9]*:?\s?/g, "") }}
 {% endfor %}
 
 ## Core Product Updates
 
 {% for pull in core.pulls -%}
-* [{{ pull.title }}]({{pull.html_url}})
+* [{{ pull.title | replace(r/RUN-[0-9]*:?\s?/g, "") }}]({{pull.html_url}})
 {% endfor %}
 
 
