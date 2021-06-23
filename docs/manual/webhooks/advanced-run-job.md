@@ -109,6 +109,7 @@ the provided `value` string. Note: currently the selected Field will be converte
 
 `exists`
 :   Satisfied if the Field is non-null.
+>Note: A bug exists that this setting still requires a value in the value field.  The value is ignored, and bug will be fixed in a future release.
 
 
 `isA`
