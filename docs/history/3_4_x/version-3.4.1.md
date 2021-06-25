@@ -10,7 +10,7 @@ Name: <span style="color: blue"><span class="glyphicon glyphicon-briefcase"></sp
 
 Building on the great foundation of the 3.4.0 improvements we have revamped the Webhooks UI. Check out the image below for a preview.
 
-![Webhooks UI](@assets/img/relnotes-341-webhooksui.png)
+![Webhooks UI](@assets/img/relnotes-341-webhooksui.gif)
 
 ### CyberArk Key Storage Plugin
 
