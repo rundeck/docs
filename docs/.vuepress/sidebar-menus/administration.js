@@ -110,7 +110,8 @@ module.exports = [{
           path: '/administration/security/storage-plugins',
           children: [
             '/administration/security/storage-plugins/thycotic-storage.md',
-            '/administration/security/storage-plugins/vault.md'
+            '/administration/security/storage-plugins/vault.md',
+            '/administration/security/storage-plugins/cyberark-storage.md'
           ]
         },
         '/administration/security/sso',
