@@ -348,6 +348,23 @@ echo "$1"
 
 Which allows the shell will correctly handle the input value by quoting it.
 
+### Using non-escaped values
+
+**WARNING**: using non-escaped values can expose you to security risks, for example
+command injection (but not limited to command injection!). Consider the following example where a user is allowed to supply
+a list of directories to an hypothetical backup job. Let's also suppose the job processed the directory list with `tar -zcvf /tmp/archive.tgz @unquotedoption.targetdirs@`. Then a malicious user
+could trick the job into running an extra command by supplying this value for
+`targetdirs`: `/etc /home /var/lib/redis; rm -rf /`.  
+Then, depending on the user privileges, the script will happily nuke as many directories
+and files as it can on the target node.  
+You can limit the risk by adopting appropriate regex masks, coding the script
+defensively, and using the least privilege principle.
+
+In the case that you absolutely need to provide an option in its raw, unescaped form to a job
+you can use the `unquotedoption` context lookup key instead of `option`. For example
+the option `${option.name}` value could be accessed without any escaping by referencing it as `${unquotedoption.name}` instead.  
+In a script you could similarly use `@unquotedoption.name@` instead of `@option.name@`.
+
 ## Secure Options
 
 Options can be marked as Secure, to show a password prompt in the GUI, instead of a normal text field or drop down menu. Secure option values are not stored with the Execution as are the other option values.
