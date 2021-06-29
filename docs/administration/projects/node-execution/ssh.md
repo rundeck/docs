@@ -336,7 +336,7 @@ You can configure the way the Sudo Password Authentication works by setting thes
 - `sudo-command-pattern` - a regular expression to detect when a command execution should expect to require Sudo authentication. Default pattern is `^sudo$`.
 - `sudo-password-option` - an option reference ("option.NAME") to define which secure remote authentication option value to use as password. The default is `option.sudoPassword`.
 - `sudo-password-storage-path` - Path in the Key Storage facility for the password.
-- `sudo-prompt-pattern` - a regular expression to detect the password prompt for the Sudo authentication. The default pattern is `^\[sudo\] password for .+: .*`
+- `sudo-prompt-pattern` - a regular expression to detect the password prompt for the Sudo authentication. The default pattern is `^.*password.*`
 - `sudo-failure-pattern` - a regular expression to detect the password failure response. The default pattern is `^.*try again.*`.
 - `sudo-prompt-max-lines` - maximum lines to read when expecting the password prompt. (default: `12`).
 - `sudo-prompt-max-timeout` - maximum milliseconds to wait for input when expecting the password prompt. (default `5000`)
