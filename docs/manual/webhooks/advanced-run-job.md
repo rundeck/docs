@@ -5,7 +5,7 @@
 The powerful Enterprise Advanced Run Job webhook handler enables selective execution
 of one or more jobs based by evaluating event data.
 
-Each event passes through one or more routing rules. If the event satisfies the rule
+Each event passes through one or more routing actions. If the event satisfies the action
 conditions the target job will be executed with the supplied job options. Conditions and job
 options can be constructed from event data!
 
@@ -15,7 +15,7 @@ options can be constructed from event data!
 
 ### Batch Key (optional)
 The batch key makes it possible to extract a list from
-the event and run each item through the rule processing.
+the event and run each item through the action processing.
 
 **Given:**
 ```json
@@ -41,22 +41,22 @@ The event ID key can be used to replace the ID auto generated when
 webhook events are received. This will be reflected in the logs. Batches
 are extracted before applying the event ID key to each item.
 
-## Rules
+## Actions
 ![](~@assets/img/wh-routing-rule-rule-overview.png)
 :::tip
-Rules can be individually enabled/disabled!
+Actions can be individually enabled/disabled!
 :::
 
-Each webhook event gets evaluated against each rule. If the rule satisfies the conditions the target job will be executed.
+Each webhook event gets evaluated against each action. If the action satisfies the conditions the target job will be executed.
 
 ### Name (optional)
-A label to identify the rule.
+A label to identify the action.
 
 ### Debug
-Rule evaluation debug info can be printed to the `INFO` log level by selecting the debug option. This can make it easier to troubleshoot rules while reducing noise.
+Action evaluation debug info can be printed to the `INFO` log level by selecting the debug option. This can make it easier to troubleshoot actions while reducing noise.
 
 ### Job
-Use the job picker to select a job target. If the rule evaluation is a match the target
+Use the job picker to select a job target. If the action evaluation is a match the target
 job will be executed with the Job Options.
 
 ### Node Filter (optional)
@@ -72,13 +72,13 @@ Job options to be supplied during job execution. Use [JsonPath](#jsonpath) or
 
 ## Conditions
 
-Each rule can have multiple Conditions. Based on the [Policy](#policy), the rule will apply when all or any of the conditions are satisfied.  Each Condition defines a Field selector using JsonPath, a particular match type (defined below), and a value.
+Each action can have multiple Conditions. Based on the [Policy](#policy), the action will apply when all or any of the conditions are satisfied.  Each Condition defines a Field selector using JsonPath, a particular match type (defined below), and a value.
 
 ![Oh noes :O](~@assets/img/wh-routing-rule-conditions-overview.png)
 
 ### Policy
 
-When more than one Condition is added to the Rule, you can select which policy to use for evaluating the Conditions.
+When more than one Condition is added to the Action, you can select which policy to use for evaluating the Conditions.
 
 * **all** All conditions must match
 * **any** At least one condition must match
@@ -183,14 +183,14 @@ JsonPath can also be embedded in the Template string using the `${path('$.foo')}
 ## Debugging
 ![](~@assets/img/wh-debug-button-highlight.png)
 
-The Advanced Run Job handler(and most Enterprise webhook handlers based in its rules engine)
+The Advanced Run Job handler(and most Enterprise webhook handlers based in its action engine)
 provides a debug view into webhook processing. Detailed evaluation results from recently received
 webhook requests is made available to assist in setup and troubleshooting.
 This view is accessible by pressing the `Debug` button at the top of the configuration.
 
 ::: tip Note
 Debug information is *historical*. The information displayed including the batch key, events,
-rules, and conditions are as they were when the webhook request was evaluated.
+actions, and conditions are as they were when the webhook request was evaluated.
 :::
 
 ### Overview
@@ -214,14 +214,14 @@ If a batch key was specified a sub-select will be available to choose individual
 The received webhook request payload will be visible in the **Event** code box. For webhooks with batch keys
 this will refelct the selected batch event.
 
-**Rule Results**
-This section will display the rule evaluation results for each configured rule, for the selected event. It
+**Action Results**
+This section will display the action evaluation results for each configured action, for the selected event. It
 will include the rendered job options, condition results with extracted request data, and the job run status.
 
-### Rule Results
+### Action Results
 ![](~@assets/img/wh-debug-rule-results.png)
 
-In this sample the rule **was not satisfied** because one of the conditions did not match. The received webhook
+In this sample the action **was not satisfied** because one of the conditions did not match. The received webhook
 is missing the property `$.fizz` which was required to *equals* `buzz`.
 
 **Job Options**  

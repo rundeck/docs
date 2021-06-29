@@ -32,8 +32,8 @@ Now, when returning to the webhook definition as described below, select "Shared
 ![](~@assets/img/wh-pd-create.png)
 
 
-### Customize Sample Rule
-A sample rule will be created in the Rules section called `PagerDuty Example Rule`. To configure rule details click the **Edit >** link.
+### Customize Sample Action
+A sample action will be created in the Actions section called `PagerDuty Example Action`. To configure action details click the **Edit >** link.
 1. Click **Choose A Job** to select a job to run when the rule matches.
 2. Customize the **Job Options**:  
    The sample will set the job's `pd_incident_id` option to the PagerDuty incident ID extracted from the event
@@ -45,7 +45,7 @@ A sample rule will be created in the Rules section called `PagerDuty Example Rul
 Use the suggestion drop-downs to chose from common PagerDuty event fields
 :::
 
-![Sample Rule](~@assets/img/wh-pd-rule.png "Sample Rule")
+![Sample Action](~@assets/img/wh-pd-rule.png "Sample Action")
 
 ### Add Webhook to PagerDuty
 
