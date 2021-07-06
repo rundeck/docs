@@ -57,6 +57,7 @@ rundeck.storage.provider.1.config.clientCertName=clientcert
 :::
 ::::
 
+
 ### Setting Descriptions
 All of the following are required.
 
@@ -85,7 +86,7 @@ All of the following are required.
 : Platform ID to use when creating a new secret from Rundeck's key storage. I.e. WinServerLocal
 
 - **createUsername**
-: Username to create new accounts in Cyberark with.
+: Default user name applied when creating a new password entry in Cyberark.
 
 - **clientKeystore**
 : The path to the key store that contains the client certificate. (Must be of type `JKS`)
