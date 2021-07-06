@@ -43,3 +43,6 @@ Log Filters are applied to a Job step to act on the output from that step. Certa
 
 ## Role-based Access Control Policies
 A Rundeck _[access control policy](/administration/security/authorization.md)_ grants users and user groups certain privileges to perform actions against rundeck resources like projects, jobs, nodes, commands and API.
+
+## Webhooks
+Webhooks are an industry standard way for internet applications to communicate with each other.  Rundeck Webhooks are an entry point to automation with Rundeck.  A Webhook can be configured to accept incoming payloads and trigger Rundeck Job(s).  For more information about how to use Webhooks [check out this tutorial](/learning/howto/using-webhooks.md).
