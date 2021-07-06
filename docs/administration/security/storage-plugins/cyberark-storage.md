@@ -2,6 +2,8 @@
 
 Cyberark is a leader in Privileged Access Management solutions providing cloud ready, easy to use security solutions across the complete privileged access surface.  A centralized password management system provides visibility and control to protect privileges from attack.  Cyberark's solution is built for the Enterprise to enforce strong password business policies and prevent data breaches.
 
+To begin, this plugin will require you to using a root CA certificate 
+
 This storage plugin requires having the JRE installed, as well as the java keytool. In order to provide the correct authentication to the plugin, store the RootCA certificate, the client certificate and the client private key in key stores and specify them in `rundeck-config.properties`. For more information on creating/using a keystore, see [Java Keystore](https://www.ibm.com/docs/en/cognos-tm1/10.2.2?topic=ictocyoiatwas-add-certificates-jre-keystore). 
 
 **Below is an example of how to import a certificate using the command-line:**
@@ -22,6 +24,11 @@ If a full path is not specified for the new keystore, it will create the keystor
 ::: tab Configuration Management
 
 Below is an example configuration, which can be configured using the *System Configuration* module. Add each setting as a configuration entry.
+
+![Cyberark Configuration](@assets/img/cyberark-config.png)
+
+![Cyberark Configuration - continued](@assets/img/cyberark-config2.png)
+
 
 :::
 
@@ -55,61 +62,61 @@ rundeck.storage.provider.1.config.clientCertName=clientcert
 ### Setting Descriptions
 All of the following are required.
 
-- **Type**
+- **type**
 : This specifies the storage plugin to use. For Cyberark, the value should always be `cyberark-storage`.
 
-- **Path**
+- **path**
 : The path in Rundeck storage tree to apply the plugin. If just `keys` is specified, then all keys added to Rundeck Key Storage will also be added to Cyberark.
 
 - **removePathPrefix**
 : By default, the storage plugin will be invoked using the full path that is requested. If set to true, the path used when invoking the storage plugin would not include the prefix. It is recommended to set it to true. If set to false, keys will not be displayed unless a directory is specified in Rundeck.
 
-- **Base URL**
+- **baseURL**
 : The base URL for the cyberark account where the secrets should be saved. For example, `https://services-uscentral.skytap.com:18246`.
 
-- **Username**
+- **username**
 : Username for an account with access to the secrets that will be used in Rundeck.
 
-- **Password**
+- **password**
 : The password for a user in the account where the secrets should be stored.
 
-- **AppID**
+- **appId**
 : The app ID for the application with the safes to use secrets from.
 
-- **Platform ID**
+- **platformId**
 : Platform ID to use when creating a new secret from Rundeck's key storage. I.e. WinServerLocal
 
-- **Create Username**
+- **createUsername**
 : Username to create new accounts in Cyberark with.
 
-- **Client Keystore**
+- **clientKeystore**
 : The path to the key store that contains the client certificate. (Must be of type `JKS`)
 
-- **Client Keystore Password**
+- **clientKeystorePassword**
 : The password for the key store that contains the client certificate.
 
-- **Root CA Keystore**
+- **rootCAKeystore**
 : The path to the key store containing the RootCA certificate. (Must be of type `JKS`)
 
-- **Root CA Keystore Password**
+- **rootCAKeystorePassword**
 : The password for the key store containing the RootCA certificate.
 
-- **Private Key Keystore**
+- **privateKeyKeystore**
 : The path to the key store containing the user's private key. (Must be of type `JKS`)
 
-- **Private Key Keystore Password**
+- **privateKeyKeystorePassword**
 : The password for the key store containing the user's private key.
 
-- **Private Key Alias**
+- **privateKeyAlias**
 : The name the private key is saved under in the key store.
 
-- **Private Key Password**
+- **privateKeyPassword**
 : Password to access the private key.
 
-- **Root CA Certificate Alias**
+- **rootCAName**
 : The name that the Root CA Certificate is saved under in the key store.
 
-- **Client Certificate Alias**
+- **clientCertName**
 : The name that the Client Certificate is saved under in the key store.
 
 Once the configuration settings have been added to Rundeck, restart Rundeck. Following the restart and logging in, click on the gears icon in the top right corner of Rundeck. In that menu, there is "Key Storage." Select it and Cyberark keys will be shown at the path specified in the config above.  
