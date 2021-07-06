@@ -2,7 +2,8 @@
 
 Name: <span style="color: tan"><span class="glyphicon glyphicon-plane"></span> "Onion ring tan plane"</span>
 
-[Download Rundeck](https://download.rundeck.com/)
+- [Download Rundeck](https://download.rundeck.com/)
+- [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
 
 ## Overview
 

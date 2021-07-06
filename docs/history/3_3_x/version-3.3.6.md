@@ -2,7 +2,8 @@
 
 Name: <span style="color: rosybrown"><span class="glyphicon glyphicon-knight"></span> "onion ring rosybrown knight"</span>
 
-[Download Rundeck](https://download.rundeck.com/)
+- [Download Rundeck](https://download.rundeck.com/)
+- [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
 
 ## Overview
 ### Job Scheduling Improvements

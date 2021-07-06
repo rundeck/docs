@@ -2,7 +2,8 @@
 
 Name: <span style="color: peru"><span class="glyphicon glyphicon-flash"></span> "onion ring peru flash"</span>
 
-[Download Rundeck](https://download.rundeck.com/)
+- [Download Rundeck](https://download.rundeck.com/)
+- [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
 
 ## Overview
 

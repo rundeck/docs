@@ -2,7 +2,8 @@
 
 Name: <span style="color: salmon"><span class="glyphicon glyphicon-lamp"></span> "onion ring salmon lamp"</span>
 
-[Download Rundeck](https://download.rundeck.com/)
+- [Download Rundeck](https://download.rundeck.com/)
+- [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
 
 ## Overview
 

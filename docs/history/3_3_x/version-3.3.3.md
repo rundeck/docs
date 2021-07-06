@@ -2,7 +2,8 @@
 
 Name: <span style="color: powderblue"><span class="glyphicon glyphicon-globe"></span> "onion ring powderblue globe"</span>
 
-[Download Rundeck](https://download.rundeck.com/)
+- [Download Rundeck](https://download.rundeck.com/)
+- [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
 
 ## Overview
 

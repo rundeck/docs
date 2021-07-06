@@ -2,7 +2,8 @@
 
 Name: <span style="color: blue"><span class="glyphicon glyphicon-briefcase"></span> "Papadum blue briefcase"</span>
 
-[Download Rundeck](https://download.rundeck.com/)
+- [Download Rundeck](https://download.rundeck.com/)
+- [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
 
 ## Overview
 

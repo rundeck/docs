@@ -2,7 +2,8 @@
 
 Name: <span style="color: rebeccapurple"><span class="glyphicon glyphicon-grain"></span> "onion ring rebeccapurple grain"*</span>
 
-[Download Rundeck](https://download.rundeck.com/)
+- [Download Rundeck](https://download.rundeck.com/)
+- [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
 
 :::danger
 **BUG NOTICE** If you are using Enterprise RPM or Debian packages you may have an issue with your license after upgrading to this version.  We are working on a fix that will be released with version 3.3.5.
