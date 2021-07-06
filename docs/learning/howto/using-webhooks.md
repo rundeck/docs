@@ -22,8 +22,8 @@ Webhooks are configured within a project. The [Welcome Projects](/learning/index
 1. Click on **Webhooks** in the Project Menu and choose the `Run Jobs - Webhook Example` entry.
 1. The **Post URL** is the URL that external systems would submit a POST http event to trigger this webhook.
 1. Name **Run Jobs - Webhook Example**
-1. The **Webhook Handler** is **Advanced Run Job** _(more on this in future steps)_
-1. The Rules section has a single rule called `Run Job 1`
+1. On the **Handler Configuration** tab, the **Webhook Handler** is **Advanced Run Job** _(more on this in future steps)_
+1. The Actions section has a single rule called `Run Job 1`
 1. Expanding the rule by clicking **Edit** to see the details.
 1. The rule is running a job called `Demo/Linux/Gather Linux Versions - Docker` against all nodes `(.*)`
 
@@ -32,14 +32,14 @@ Webhooks are configured within a project. The [Welcome Projects](/learning/index
 1. Click on **Webhooks** in the Project Menu and choose the `Run Job - Webhook Example` entry.
 1. The **Post URL** is the URL that external systems would submit a POST http event to trigger this webhook.
 1. Name **Run Job - Webhook Example**
-1. The **Webhook Handler** is **Run Job** _(more on this in future steps)_
+1. On the **Handler Configuration** tab, the **Webhook Handler** is **Run Job** _(more on this in future steps)_
 1. The webhook is running a job called `Demo/Linux/Gather Linux Versions - Docker` against all nodes `(.*)`
 :::
 ::::
 
 ## Webhook Handlers
 
-In the previous step we noted the Advanced Run Job Webhook Handler.
+In the previous step we noted the _Advanced Run Job_ (Enterprise)/_Run Job_ (Community) Webhook Handlers.
 Webhook Event Handlers are custom handlers that can be developed as [Rundeck Plugins](/developer/16-webhook-plugins.md) to interact with external systems.
 They can respond to Authentication calls, pre-process inputs, and provide configuration defaults for specific systems.
 Rundeck Enterprise includes Webhook Handlers for [PagerDuty](/manual/webhooks/pagerduty-run-job.md), [GitHub](/manual/webhooks/github-webhook.md), [AWS SNS](/manual/webhooks/aws-sns-webhook.md), [DataDog](/manual/webhooks/datadog-run-job.md) and many more.
@@ -50,7 +50,7 @@ Rundeck Enterprise includes Webhook Handlers for [PagerDuty](/manual/webhooks/pa
 
 Below is a highlight of some of the features of Advanced Rule Processing.
 
-Rules and conditions target jobs based on webhook event contents. Often-times webhook payloads from 3rd party systems can’t be edited or updated. If something is sending a lot of events that logic would trigger the job with every event and result in messy Activity logs. Performing logic at the Webhook step, whether the job should run, helps streamline event processing.
+Actions and conditions target jobs based on webhook event contents. Often-times webhook payloads from 3rd party systems can’t be edited or updated. If something is sending a lot of events that logic would trigger the job with every event and result in messy Activity logs. Performing logic at the Webhook step, whether the job should run, helps streamline event processing.
 
 Run Multiple Jobs within a single Webhook. Having a single URL to set in a 3rd party solution simplifies the efforts on that side and keeps the customization within Rundeck to manage their Automation workflows.
 
@@ -64,19 +64,19 @@ All of the solution specific Enterprise Webhook Handlers (PagerDuty, GitHub, AWS
 
 Rundeck Enterprise includes a Webhook Debugger integrated with the Webhook builder. The Debugger makes troubleshooting incoming webhooks and why they did (or did not) trigger certain rules in your Advanced Rule Processing Handlers.
 
-There is a Debug button, but likely at this stage there are no events that have been logged to see debug information for. We will show the Debugger during the Exercise later.
+There is a Debug tab, but likely at this stage there are no events that have been logged to see debug information for. We will show the Debugger during the Exercise later.
 
 ## Webhook Exercise
 
 :::: tabs
 ::: tab Enterprise Exercise
 1. Navigate to **Webhooks** in the Project Menu.
-1. Click **Add** Button.
+1. Click **Create Webhook** Button.
 1. In the Window on the right enter `Check Process Status` for **Name**.
 1. Leave the Users and Roles field as default.
-1. Click **Choose Webhook Plugin** and select **Advanced Run Job**.
-1. Click the **Add Rule** Button.
-1. Enter `Rule 1` for the **Rule Name**.
+1. On the **Handler Configuration** tab, click **Choose Webhook Plugin** and select **Advanced Run Job**.
+1. Click the **Add Action** Button.
+1. Enter `Action 1` for the **Action Name**.
 1. Click the **Choose a Job** and select the **Demo/Linux/Process Status** job.
 1. Enter `.*` for the Node Filter to run against all nodes.
 1. Click the **Add Option** button.
@@ -90,7 +90,7 @@ There is a Debug button, but likely at this stage there are no events that have 
 1. Click **Add** Button.
 1. In the Window on the right enter `Check Process Status` for **Name**.
 1. Leave the Users and Roles field as default.
-1. Click **Choose Webhook Plugin** and select **Run Job**.
+1. On the **Handler Configuration** tab, click **Choose Webhook Plugin** and select **Run Job**.
 1. Click the **Choose a Job** and select the **Demo/Linux/Process Status** job.
 1. Enter `-process ${data.process}` **Options** Value.
 1. Enter `.*` for the Node Filter to run against all nodes.
@@ -106,7 +106,7 @@ To trigger the webhook use the curl command below or your favorite webhook tool 
 curl -X POST -H "Content-Type: application/json" -d '{"process":"java"}' <<URL HERE>>
 ```
 
-Enterprise customers can use the Debug button to see if the Advanced Processing rule was successful or not.
+Enterprise customers can use the Debug tab to see if the Advanced Processing rule was successful or not.
 
 ### Post Exercise Activity
 
