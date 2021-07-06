@@ -57,9 +57,6 @@ rundeck.storage.provider.1.config.clientCertName=clientcert
 :::
 ::::
 
-:::warning
-The config management does not show all the properties that need to be added, it is just an example. The props below must all be present.
-:::
 
 ### Setting Descriptions
 All of the following are required.
