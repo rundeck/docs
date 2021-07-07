@@ -114,8 +114,12 @@ mypass    <-----Type this value
 obfuscate: OBF:1xfd1zt11uha1ugg1zsp1xfp
 md5: MD5:a029d0df84eb5549c641e04a9ef389e5
 crypt: CRYPT:jsnDAc2Xk4W4o
-bcrypt: BCRYPT:JDG45dJSNnsf4
+bcrypt: BCRYPT:a029d0df84eb5549c641e04a9ef389e5
 ```
+
+:::warning
+Some salt revisions for BCRYPT are security concerns in our spring security, so `$2a$` works but `$2y$` does not. 
+:::
 
 Then add this to the `realm.properties` file with a line like so:
 
