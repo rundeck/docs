@@ -27,6 +27,7 @@ Below is an example configuration, which can be configured using the *System Con
 
 ![Cyberark Configuration - continued](@assets/img/cyberark-config2.png)
 
+![Cyberark Configuration - continued](@assets/img/cyberark-config3.png)
 
 :::
 
