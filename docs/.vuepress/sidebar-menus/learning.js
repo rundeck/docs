@@ -30,19 +30,19 @@ module.exports = [{
     {
       title: 'How To',
       collapsable: true,
-      path: '/learning/howto/overview',
+      path: '/learning/howto/overview.md',
       sidebarDepth: 0,
       children: [
-        ['/learning/howto/overview','Overview'],
-        ['/learning/howto/welcome-project-starter','Welcome Projects'],
+        ['/learning/howto/overview.md','Overview'],
+        ['/learning/howto/welcome-project-starter.md','Welcome Projects'],
         {
           title: 'Setup / Installation',
           collapsable: true,
           sidebarDepth: 0,
           children: [
-              '/learning/howto/migrate-to-rundeck-packages-repo',
+              '/learning/howto/migrate-to-rundeck-packages-repo.md',
               '/learning/howto/install-centos.md',
-              '/learning/howto/migrate-to-mysql'
+              '/learning/howto/migrate-to-mysql.md'
           ]
         },
         {
@@ -78,8 +78,16 @@ module.exports = [{
           collapsable: true,
           sidebarDepth: 0,
           children: [
-            '/learning/howto/custom-script-plugin-hello-world',
-            '/learning/howto/java-plugin'
+            '/learning/howto/custom-script-plugin-hello-world.md',
+            '/learning/howto/java-plugin.md'
+          ]
+        },
+        {
+          title: 'Contributing',
+          collapsable: true,
+          sidebarDepth: 0,
+          children: [
+            '/learning/howto/updating-rundeck-docs.md'
           ]
         }
       ]
