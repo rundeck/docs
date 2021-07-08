@@ -30,7 +30,7 @@ module.exports = [{
     {
       title: 'How To',
       collapsable: true,
-      path: '/learning/howto/overview.md',
+      path: '/learning/howto/overview',
       sidebarDepth: 0,
       children: [
         ['/learning/howto/overview.md','Overview'],
