@@ -3,7 +3,10 @@
 :::
 
 ::: incubating
+This is so very incubating that it's not even released yet!  We are looking for feedback though. Join us in the [Rundeck Community Forums](https://community.pagerduty.com/forum/c/rundeck) to talk more about it.
 :::
+
+
 
 This plugin allows Jobs to export a JSON file as the result of an execution, which will be stored alongside the output log file.
 The JSON file can be retrieved via the API as JSON data, and shown in the GUI.
@@ -60,7 +63,7 @@ Execution Context data values can be used within Strings within the JSON documen
 
 The JSON Template also supports a special syntax for generating Arrays or Objects of data, by iterating over either the Node or Step context values.
 
-For example, data captured using the "Key Value Data" Log filter on a command or script executed multiple Nodes will have a value for each node that executed. 
+For example, data captured using the "Key Value Data" Log filter on a command or script executed multiple Nodes will have a value for each node that executed.
 
 This data can be copied as an Array or JSON Object (keyed by Node name) into the output document.
 
@@ -70,12 +73,12 @@ A Regular expression filter of Node Name can also be used, or specific Steps sel
 
 **JSON Template**
 
-Enter a valid JSON document. 
+Enter a valid JSON document.
 
 ### JSON Template format
 
 Enter a valid JSON document. Context data values like `${data.name}` or `${data.value@nodename}` can be used within Strings.
-Note that Context Variable expansion is evaluated in a global context, meaning that `${data.name}` will only work if there is 
+Note that Context Variable expansion is evaluated in a global context, meaning that `${data.name}` will only work if there is
 a global value matching that group and name.
 
 To include data captured from Node steps, such as when using the Key Value Data Log Filter, use a
@@ -89,7 +92,7 @@ To expand all node values like that into a JSON array, use a special syntax:
 { "key": [], "key@": "data.name" }
 ```
 
-This declares a map entry `key` as an array, and the `key@` declares will collect all Node entries for `data.name` 
+This declares a map entry `key` as an array, and the `key@` declares will collect all Node entries for `data.name`
 into the `key` value.
 
 The result will be:
@@ -98,7 +101,7 @@ The result will be:
 { "key": ["nodevalue1","nodevalue2"] }
 ```
 
-To expand the data as a JSON Object instead, using Node Names as the map entries, declare the `key` entry 
+To expand the data as a JSON Object instead, using Node Names as the map entries, declare the `key` entry
 as a JSON object:
 
 ```json
@@ -133,7 +136,7 @@ A value of `1:key@` will match all node values in step 1.
 
 
 
-## API 
+## API
 
 After execution, get the JSON data produced by either of the plugins by sending a GET request to:
 
