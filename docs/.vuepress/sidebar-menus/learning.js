@@ -36,13 +36,14 @@ module.exports = [{
         ['/learning/howto/overview.md','Overview'],
         ['/learning/howto/welcome-project-starter.md','Welcome Projects'],
         {
-          title: 'Setup / Installation',
+          title: 'Administration',
           collapsable: true,
           sidebarDepth: 0,
           children: [
               '/learning/howto/migrate-to-rundeck-packages-repo.md',
               '/learning/howto/install-centos.md',
-              '/learning/howto/migrate-to-mysql.md'
+              '/learning/howto/migrate-to-mysql.md',
+              '/learning/howto/use-terraform-provider.md'
           ]
         },
         {
