@@ -1,6 +1,8 @@
-# Use Terraform to Automate Rundeck
+# 'How To' Use Terraform to Automate Rundeck
 
-Terraform (and everything) is awesome...
+Terraform is an open-source infrastructure as code software tool created by HashiCorp. Users define and provide data center infrastructure using a declarative configuration language known as HashiCorp Configuration Language, or optionally JSON.
+
+[The Rundeck Terraform provider](https://registry.terraform.io/providers/rundeck/rundeck/latest/docs) allows Terraform to create and configure Projects, Jobs and Keys in Rundeck. The project resource allows Rundeck projects to be managed by Terraform. In Rundeck a project is the container object for a set of jobs and the configuration for which servers those jobs can be run on.
 
 ## Pre-Requisites
 
