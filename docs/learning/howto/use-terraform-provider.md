@@ -11,11 +11,28 @@ Terraform (and everything) is awesome...
 ## Exercise
 
 :::: tabs
+::: tab Create an API Key
+
+1. Login as `admin` to your Welcome Project (same steps Community or Enterprise)
+1. In the upper right corner click the person icon and choose Profile
+    ![User > Profile](@assets/img/howto-user-profile.png)
+1. Click the plus (**+**) next to **User API Tokens**
+1. Name the token `terraform`
+1. User can remain `admin`
+1. Rest of the fields can be blank/defaults.
+1. Click **Generate New Token**
+
+A box will pop up.  Be sure to copy the API Token somewhere before clicking **Close**.  The API token will be used in the next Exercise.
+
+![Copy API Token](@assets/img/howto-copy-apikey.png)
+
+:::
 ::: tab Terraform Exercise 1
 
 1. Create a working directory on your machine for this exercise.
-1. Copy the contents from the **Terraform Plan File** tab to a file called `rundeck-build.tf` in your working directory.
-1. Copy the contents from the **ACL Example File** tab to a file called `acl.yaml` in your working directory.
+1. Copy the contents from the **Terraform Plan File** (tabs below) to a file called `rundeck-build.tf` in your working directory.
+1. Replace the `your-auth-token` value on line 13 with the value from the Create API Key steps.
+1. Copy the contents from the **ACL Example File** (tabs below) to a file called `acl.yaml` in your working directory.
 1. In your computer's terminal program navigate to your working directory.
 1. Execute the command `terraform init`
 1. Execute the command `terraform apply`
@@ -39,6 +56,9 @@ To see the power of managing Rundeck Projects with Terraform we can make some mi
 The project will be updated with a new Label value.  To confirm click the Rundeck logo in the upper left of the interface to load the project list.
 
 :::
+::::
+
+:::: tabs
 ::: tab Terraform Plan File
 
 ```
@@ -145,6 +165,7 @@ context:
 ```
 
 :::
+::::
 
 ## More Information
 
