@@ -2,7 +2,6 @@
 
 Terraform (and everything) is awesome...
 
-
 ## Pre-Requisites
 
 - This Exercise is build based on the Welcome Projects.  Please ensure you have completed the tutorial and have that environment running.
@@ -146,3 +145,7 @@ context:
 ```
 
 :::
+
+## More Information
+
+[Link to official Terraform Rundeck Provider Docs](https://registry.terraform.io/providers/rundeck/rundeck/latest/docs)
