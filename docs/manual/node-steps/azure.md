@@ -3,7 +3,7 @@
 ## Getting Started
 
 :::tip
-It is needed to configure the azure resource model plugin before using these steps: [Azure Resource Model](@administration/projects/resource-model-sources/azure.md)
+It is needed to configure the azure resource model plugin before using these steps: [Azure Resource Model](https://docs.rundeck.com/docs/administration/projects/resource-model-sources/azure.html#azure-enterprise)
 :::
 
 The following properties are present for all node steps, and can be configured at the job, project or framework level.
