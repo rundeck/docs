@@ -1,4 +1,4 @@
-# VMWare (Enterprise)
+# VMWare Node Source (Enterprise)
 ::: enterprise
 :::
 

@@ -1,4 +1,4 @@
-# Datadog (Enterprise)
+# Datadog Node Source (Enterprise)
 
 Rundeck Enterprise users have the ability to use this plugin to import their host list in Datadog by creating nodes matching all the hosts. This makes it easy to import nodes from Datadog.
 
@@ -17,11 +17,11 @@ Rundeck Enterprise users have the ability to use this plugin to import their hos
 ![Datadog Resource Model - Connection](~@assets/img/resource-connect.png)
 
 :::tip
-You will need to have both an API and APP key created in Datadog and ready to use. To create these values in Datadog, navigate to Integrations > APIs and copy and paste the API key. If it doesn't exist yet, create a Rundeck integration and create an API/APP key. 
+You will need to have both an API and APP key created in Datadog and ready to use. To create these values in Datadog, navigate to Integrations > APIs and copy and paste the API key. If it doesn't exist yet, create a Rundeck integration and create an API/APP key.
 :::
 
 - **API Key**
-: This is the API key. To create these values in Datadog, navigate to Integrations > APIs and copy and paste the API key. If it doesn't exist yet, create a Rundeck integration and create an API key. 
+: This is the API key. To create these values in Datadog, navigate to Integrations > APIs and copy and paste the API key. If it doesn't exist yet, create a Rundeck integration and create an API key.
 
 - **API Key**
-: This is the APP key. To create these values in Datadog, navigate to Integrations > APIs and copy and paste the APP key. If it doesn't exist yet, create a Rundeck integration and create an APP key. 
+: This is the APP key. To create these values in Datadog, navigate to Integrations > APIs and copy and paste the APP key. If it doesn't exist yet, create a Rundeck integration and create an APP key.
