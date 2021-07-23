@@ -2,6 +2,7 @@
 
 ## Node Steps
 
+- [Azure Node Step Plugins (Enterprise)](/manual/node-steps/azure.md)
 - [Datadog Node Step Plugins (Enterprise)](/manual/node-steps/datadog.md)
 - [Jira Node Step Plugins (Enterprise)](/manual/node-steps/jira.md)
 - [Sensu Node Step Plugins (Enterprise)](/manual/node-steps/sensu.md)
@@ -16,6 +17,7 @@
 - [Local command](/manual/node-steps/builtin.md#local-command-step)
 - [Data node](/manual/node-steps/builtin.md#data-node-step)
 - [HTTP Request](/manual/node-steps/builtin.md#http-node-step)
+
 
 ## Workflow Steps
 
