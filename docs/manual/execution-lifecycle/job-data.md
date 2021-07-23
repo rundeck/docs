@@ -3,22 +3,24 @@
 :::
 
 ::: incubating
-This is so very incubating that it's not even released yet!  We are looking for feedback though. Join us in the [Rundeck Community Forums](https://community.pagerduty.com/forum/c/rundeck) to talk more about it.
+Join us in the [Rundeck Community Forums](https://community.pagerduty.com/forum/c/rundeck) to talk more about it.
 :::
-
-
 
 This plugin allows Jobs to export a JSON file as the result of an execution, which will be stored alongside the output log file.
 The JSON file can be retrieved via the API as JSON data, and shown in the GUI.
 
+![Job Data Output](@assets/img/jobdata-output.png)
+
 This allows a Job to be executed, and a JSON result returned, customized to contain data that is relevant to the outcome of the Job.
 
-There are currently two different Plugins that can be used to produce JSON data for the Job.
+There are currently two different Plugins that can be used to produce JSON data for a Job.
+
+![Job Data Plugins](@assets/img/jobdata-plugins.png)
 
 ## Requirements
 
-::: warning
-Enable the feature with the following configuration
+::: tip
+Enable the incubating feature by adding the following configuration to Configuration Management or `rundeck-config.properties`
 :::
 
 ```
@@ -133,9 +135,6 @@ A combination of `*:key@` will enumerate all step and node values if there are d
 
 A value of `1:key@` will match all node values in step 1.
 
-
-
-
 ## API
 
 After execution, get the JSON data produced by either of the plugins by sending a GET request to:
@@ -144,26 +143,31 @@ After execution, get the JSON data produced by either of the plugins by sending 
 
 ## Example Job
 
-Here is a sample job, that captures a set of values and uses the "JSON Template" plugin to export the JSON:
+Here is a sample job provided in our [Welcome Projects](/learning/howto/welcome-project-starter.md), that captures a set of values and uses the "JSON Template" plugin to export the JSON:
+
+>Note: This requires installation of Fortune and the Rundeck CLI.  Be sure to enable the feature prior to importing the job definition.
 
 ```yaml
 - defaultTab: nodes
-  description: returns something fun
+  description: |-
+    Returns some fun feedback as data output.
+
+    Requires Rundeck CLI and Fortune to be installed.  Find the installation jobs under Demo/Configuration
   executionEnabled: true
-  id: fa3d68ba-151b-464e-a455-a0615a0a7d20
+  group: Demo
   loglevel: INFO
   maxMultipleExecutions: '2'
   multipleExecutions: true
-  name: Fun Job
+  name: Job Data Example
   nodeFilterEditable: true
   plugins:
     ExecutionLifecycle:
       json-data:
         jsonTemplate: |-
           {
-              "d6":"${data.dice*}",
-              "fortune":"${data.fortune*}",
-              "For your reference, today you will have":"${data.luck*}"
+            "D6 Roll":"${data.dice*}",
+            "Fortune":"${data.fortune*}",
+            "Luck Today":"${data.luck*}"
           }
   scheduleEnabled: true
   schedules: []
@@ -180,7 +184,7 @@ Here is a sample job, that captures a set of values and uses the "JSON Template"
             regex: ^(.+)$
           type: key-value-data
     - description: fortune
-      exec: fortune
+      exec: /usr/games/fortune
       plugins:
         LogFilter:
         - config:
@@ -199,7 +203,10 @@ Here is a sample job, that captures a set of values and uses the "JSON Template"
             name: luck
             regex: ^(.+\.)$
           type: key-value-data
+    - configuration:
+        debugOnly: 'false'
+      nodeStep: false
+      type: log-data-step
     keepgoing: false
     strategy: node-first
-  uuid: fa3d68ba-151b-464e-a455-a0615a0a7d20
 ```
