@@ -1,4 +1,4 @@
-# VMWare Step Plugins (Enterprise)
+# VMWare Workflow Steps (Enterprise)
 
 ## Clone VM Workflow Step
 
@@ -99,7 +99,7 @@ Windows / will be applied to windows templates
 - **Domain User**: Domain User (Domain admin to register the machine on the domain)
 - **Admin Password**: Domain User Password
 - **TimeZone**: Time Zone ID ([list time zones ID](https://www.vmware.com/support/developer/windowstoolkit/wintk40u1/html/New-OSCustomizationSpec.html))
-- **Gui Run Once**: Run Script when the machine is customized 
+- **Gui Run Once**: Run Script when the machine is customized
 
 
 Linux / will be applied to linux templates
@@ -115,7 +115,7 @@ Authentication Options
 - **Ignore SSL certificate**: Connecting with the server ignoring the SSL certificate. If this is false, you will need to add the certificate to the truststore ([see here](/administration/projects/resource-model-sources/vmware.md#connecting-using-certificate)).
 
 
-## VMWare / VM / Customize 
+## VMWare / VM / Customize
 Customize a VM.
 This workflow step plugin allows you to customize some parameters from a VM, for example set the IP address.
 
@@ -140,7 +140,7 @@ Windows / will be applied to windows templates
 - **Domain User**: Domain User (Domain admin to register the machine on the domain)
 - **Admin Password**: Domain User Password
 - **TimeZone**: Time Zone ID ([list time zones ID](https://www.vmware.com/support/developer/windowstoolkit/wintk40u1/html/New-OSCustomizationSpec.html))
-- **Gui Run Once**: Run Script when the machine is customized 
+- **Gui Run Once**: Run Script when the machine is customized
 
 
 Linux / will be applied to linux templates

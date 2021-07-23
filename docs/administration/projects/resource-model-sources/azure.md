@@ -1,4 +1,4 @@
-# Azure (Enterprise)
+# Azure Node Source (Enterprise)
 ::: enterprise
 :::
 

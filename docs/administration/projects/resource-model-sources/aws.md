@@ -1,4 +1,4 @@
-# Amazon EC2 (Enterprise)
+# Amazon EC2 Node Source (Enterprise)
 ::: enterprise
 :::
 
