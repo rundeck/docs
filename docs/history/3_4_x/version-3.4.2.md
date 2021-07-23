@@ -11,7 +11,7 @@ Name: <span style="color: brown"><span class="glyphicon glyphicon-bullhorn"></sp
 
 Configure Job output as structured JSON data for use on other systems.
 
-### AWS Node Steps
+### Azure Node Steps
 
 Start/Stop/Restart/Delete Machine Instances.
 
