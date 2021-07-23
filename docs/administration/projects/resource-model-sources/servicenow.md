@@ -2,28 +2,35 @@
 ::: enterprise
 :::
 
-This is a Resource Model Source plugin that provides server information from ServiceNow's CMDB.
+This is a Node Source plugin that provides node information from ServiceNow's CMDB.
 
-To obtain the data, the ServiceNow connection parameters must be passed as parameters to the plugin
-(username, password and url), and a list of server types, this can be:
+There is a [How To article in the Learning section](/learning/howto/config-sn-nodesource.md) with an example setup.
 
-- all : Retrieve al types of servers
+## Filters
+
+The plugin offers some **Quick Filters** to gather specific server types from the CMDB.
+
+- all : Retrieve all types of servers
 - linux : Retrieve only linux machines
 - win : Retrieve only Windows machines
 - unix : Retrieve only unix machines
 - esx: Retrieve only ESX machines
-- solaris: Retrieve Solaris linux machines
+- solaris: Retrieve Solaris Linux machines
 - aix: Retrieve only AIX machines
 - hpux: Retrieve only HPUX machines
-- osx: Retrieve only OS X machines
+- osx: Retrieve only OSX machines
 - netware: Retrieve only Netware machines
 - comma separated list : as example 'linux,win'
 
-### Mapping and default values
+> The Quick Filters above are equivalent to a filter of `sys_class_name=cmdb_ci_linux_server` where the "linux" is replaced with the value above.
+
+The **Custom Filter** field will use any custom CMDB filter provided to gather the nodes.  _Note: If a Custom Filter is specified, all Quick Filter selections are ignored_
+
+## Mapping and default values
 
 - `mappingParams`: A set of ";" separated mapping entries. This values are going to override the default mapping
   one by one.
-  The minimal maping needed is the `username, because ServiceNow servers lacks a username field to map:
+  The minimal mapping needed is the `username`, because ServiceNow servers lacks a username field to map:
 
 ```
 username.default=root
@@ -51,9 +58,12 @@ tags.selector=asset_tag
 tags.default=servicenow
 ```
 
+::: tip
+All nodes require at least the _nodename_, _hostname_ and _user_ values.  If entries in the ServiceNow query (Quick or Custom) do not have these values they will not show up in the Nodes list.
+:::
+
 ### Configuration of the Mapping
 
-The node requieres at least the nodename, hostname and user.
 A selector with a list like this:
 
 ```
@@ -63,7 +73,7 @@ hostname.selector=host_name,ip_address,dns_domain
 Are going to search on the result of the query the value of `host_name`, if is not set, the `ip_address` or the
 `dns_domain`.
 
-A selector with a defualt value like this example:
+A selector with a default value like this example:
 
 ```
 osName.selector=os
