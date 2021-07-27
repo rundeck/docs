@@ -20,6 +20,10 @@ async function main() {
     const context = {}
     context.core = await getRepoData({repo: 'rundeck', owner: 'rundeck'}, [])
     context.enterprise = await getRepoData({repo: 'rundeckpro', owner: 'rundeckpro'}, ['release-notes/include'])
+    context.systemreport = await getRepoData({repo: 'enterprise-system-report', owner: 'rundeckpro'}, ['release-notes/include'])
+    context.schedules = await getRepoData({repo: 'enterprise-schedules', owner: 'rundeckpro'}, ['release-notes/include'])
+    context.calendars = await getRepoData({repo: 'enterprise-calendars', owner: 'rundeckpro'}, ['release-notes/include'])
+    context.tours = await getRepoData({repo: 'enterprise-tour-manager', owner: 'rundeckpro'}, ['release-notes/include'])
     context.contributors = {...context.core.contributors, ...context.enterprise.contributors}
     context.reporters = {...context.core.reporters, ...context.enterprise.reporters}
 
@@ -34,7 +38,7 @@ async function main() {
     console.log(notes)
 
     const pathBase = `./docs/history/${argv.milestone.split('.').slice(0,2).concat(['x']).join('_')}/`
-    
+
     let path
 
     if (argv.draft) {
@@ -56,8 +60,8 @@ async function getRepoData(repo, includeLabels, excludeTags) {
 
     if (!milestone) {
         console.error(`GitHub milestone ${argv.milestone} not found!`)
-        process.exit(1)
-    }
+        //process.exit(1)
+    } else {
 
     const issuesResp = await gh.paginate(gh.issues.listForRepo, {
         ...repo,
@@ -100,6 +104,7 @@ async function getRepoData(repo, includeLabels, excludeTags) {
         pulls,
         issues
     }
+  }
 }
 
 main()

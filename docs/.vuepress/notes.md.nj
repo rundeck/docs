@@ -12,6 +12,22 @@ Name: <span style="color: {{version.color()}}"><span class="glyphicon glyphicon-
 {% for pull in enterprise.pulls -%}
 * {{ pull.title | replace(r/RUN-[0-9]*:?\s?/g, "") }}
 {% endfor %}
+### System Report
+{% for pull in systemreport.pulls -%}
+* {{ pull.title | replace(r/RUN-[0-9]*:?\s?/g, "") }}
+{% endfor %}
+### Enterprise Schedules
+{% for pull in schedules.pulls -%}
+* {{ pull.title | replace(r/RUN-[0-9]*:?\s?/g, "") }}
+{% endfor %}
+### Enterprise Calendars
+{% for pull in calendars.pulls -%}
+* {{ pull.title | replace(r/RUN-[0-9]*:?\s?/g, "") }}
+{% endfor %}
+### Tour Manager
+{% for pull in tours.pulls -%}
+* {{ pull.title | replace(r/RUN-[0-9]*:?\s?/g, "") }}
+{% endfor %}
 
 ## Core Product Updates
 
