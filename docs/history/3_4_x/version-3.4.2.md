@@ -9,23 +9,45 @@ Name: <span style="color: brown"><span class="glyphicon glyphicon-bullhorn"></sp
 
 ### Job Data [Incubating] (Enterprise)
 
-Configure Job output as structured JSON data for use on other systems.
+The Job Data feature brings "Output data that is easy to digest" to Rundeck.
 
-### Azure Node Steps
+Log Output can be long, complicated, and often lacks focus. Use this to output key log data in an easily consumable and consistent format.  The job data output is available through it’s own API endpoint from the Job Activity.  The initial release builds JSON output either from a user defined template or from global variable namespaces.
 
-Start/Stop/Restart/Delete Machine Instances.
+Use cases for this feature cover a broad range of ideas.  Jobs can now be thought of as composable functions that return data
 
-### ServiceNow Node Source Custom Filters
+[Check out the documentation for how to enable the incubating feature.](https://docs.rundeck.com/docs/manual/execution-lifecycle/job-data.html)
 
-Allow custom filters on ServiceNow Node Sources.
+### Ruleset Visualization [Incubating] (Enterprise)
+
+Rulesets can be complicated to write. The Ruleset visualization offers a view of how the Workflow will progress based on the rules written.  This feature is enabled by default on 3.4.2.
+
+### Azure Node Steps (Enterprise)
+
+In 3.4.1, new node steps were introduced to add more functionality to the already existing Azure Resource Model. Now you can control your imported nodes in Rundeck by using the following new job steps:
+
+* Start a Virtual Machine
+* Stop a Virtual Machine
+* Restart a Virtual Machine
+* Delete a Virtual Machine
+* Capture Snapshot of Machine Instances
+
+### ServiceNow Node Source Custom Filters (Enterprise)
+
+In 3.4.1, we added the ability to specify custom filters when setting up the ServiceNow Node Source. Now, you can add any filters you may use in ServiceNow to ensure that only the nodes you want are imported into Rundeck.
+
+[Check out the updated documentation here](https://docs.rundeck.com/docs/administration/projects/resource-model-sources/servicenow.html)
 
 ## Enterprise Updates
 
 * Introduce Rundeck Job Data Plugin - Incubating Feature
-* Fix: If 3rd party SSO is not available, rundeck wouldn't start properly.
+* Fix: If 3rd party SSO is not available, rundeck wouldn&#39;t start properly.
 * Azure Enterprise Node Step Enhancements
 * Allow Custom filter for ServiceNow resource model
 * Project dashboard updates for queued executions
+
+### System Report
+* Add new usage metrics to System Report
+
 
 ## Core Product Updates
 
@@ -33,6 +55,7 @@ Allow custom filters on ServiceNow Node Sources.
 * [Fix project export error messages](https://github.com/rundeck/rundeck/pull/7174)
 * [Fix errors from 1000+ Executions on Oracle Database](https://github.com/rundeck/rundeck/pull/7173)
 * [Fix to properly show SSO login button](https://github.com/rundeck/rundeck/pull/7170)
+* [Optional BindDN in JAAS login module template for Docker Image](https://github.com/rundeck/rundeck/pull/7163)
 * [Improve loading speed of Project Picker and New Widget](https://github.com/rundeck/rundeck/pull/7158)
 * [SCM: Reduce errors related to failed SCM plugins.](https://github.com/rundeck/rundeck/pull/7153)
 * [FIX: Gracefully handle errors when execution fails to start.](https://github.com/rundeck/rundeck/pull/7150)
@@ -41,6 +64,8 @@ Allow custom filters on ServiceNow Node Sources.
 * [Job import does not preserve option value ordering](https://github.com/rundeck/rundeck/pull/7122)
 * [Fix: Properly detect when a job was renamed in SCM Import](https://github.com/rundeck/rundeck/pull/7030)
 * [Make log levels configurable on Docker Image via Remco](https://github.com/rundeck/rundeck/pull/6990)
+
+
 
 [Here is a link to the full list of public PRs](https://github.com/rundeck/rundeck/pulls?q=is%3Apr+milestone%3A3.4.2+is%3Aclosed)
 
