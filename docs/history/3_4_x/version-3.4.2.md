@@ -17,7 +17,7 @@ Log Output can be long, complicated, and often lacks focus. Use this feature to 
 
 Use cases for this feature cover a broad range of ideas like API consolidation, simplifying results for technicians, and more. Jobs can now be thought of as composable functions that return data. Share your own use case ideas as well on the [Rundeck Forums](https://community.pagerduty.com). (Look for the _Result Data - Incubating_ post)
 
-[Check out the documentation for how to enable the incubating feature.](https://docs.rundeck.com/docs/manual/execution-lifecycle/job-data.html)
+[Check out the documentation for how to enable the incubating feature.](/manual/execution-lifecycle/job-data.html)
 
 ![Job Data Output](@assets/img/relnotes-342-jobdata.png)
 
@@ -42,7 +42,7 @@ New node steps were introduced to add more functionality to the already existing
 
 In 3.4.2, we have added the ability to specify custom filters when setting up the ServiceNow Node Source. Now it’s possible to gather the nodes you want into your Rundeck project. Use a filter against any CMDB table and gather the results as nodes from ServiceNow.
 
-[Check out the updated documentation here](https://docs.rundeck.com/docs/administration/projects/resource-model-sources/servicenow.html)
+[Check out the updated documentation here](/administration/projects/resource-model-sources/servicenow.html)
 
 ## Enterprise Updates
 
