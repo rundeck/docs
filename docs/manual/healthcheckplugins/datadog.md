@@ -8,7 +8,7 @@ The DataDog Health Check plugin allow Rundeck to check status of DataDog hosts. 
 
 ## Configuration
 
-![DataDog HealthCheck Config](@assets/img/healthcheck-datadog-config)
+![DataDog HealthCheck Config](@assets/img/healthcheck-datadog-config.png)
 
 **Node Filter**: This is the Node Filter used to determine which nodes the HealthCheck is run against.
 
