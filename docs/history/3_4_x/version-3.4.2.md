@@ -5,26 +5,32 @@ Name: <span style="color: brown"><span class="glyphicon glyphicon-bullhorn"></sp
 - [Download Rundeck](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
 
-## Overview
-Check out the new features and enhancements for Rundeck Enterprise and Rundeck Community included in this release.
+# Overview
 
-### Job Data [Incubating] (Enterprise)
+Check out the new features and enhancements for Rundeck Enterprise and Rundeck Community as well as a few incubating features included in this release Incubating features are functionality released as ideas with the goal of getting feedback from our users. Look for posts in the [Rundeck Forums](https://community.pagerduty.com) to join the discussion about Result Data and Ruleset Visualization.
 
-The Job Data feature brings "Output data that is easy to digest" to Rundeck.
+### Result Data [Incubating] (Enterprise)
 
-Log Output can be long, complicated, and often lacks focus. Use this to output key log data in an easily consumable and consistent format.  The job data output is available through it’s own API endpoint from the Job Activity.  The initial release builds JSON output either from a user defined template or from global variable namespaces.
+The new Result Data feature brings easier to digest output data to Rundeck.
 
-Use cases for this feature cover a broad range of ideas.  Jobs can now be thought of as composable functions that return data
+Log Output can be long, complicated, and often lacks focus. Use this feature to construct key log data into an easily consumable and consistent output format. The Result Data output is available through its own API endpoint from the Job Activity. The initial release builds JSON output either from a user defined template or from global variable namespaces.
+
+Use cases for this feature cover a broad range of ideas like API consolidation, simplifying results for technicians, and more. Jobs can now be thought of as composable functions that return data. Share your own use case ideas as well on the [Rundeck Forums](https://community.pagerduty.com). (Look for the _Result Data - Incubating_ post)
 
 [Check out the documentation for how to enable the incubating feature.](https://docs.rundeck.com/docs/manual/execution-lifecycle/job-data.html)
 
+![Job Data Output](@assets/img/relnotes-342-jobdata.png)
+
 ### Ruleset Visualization [Incubating] (Enterprise)
 
-Rulesets can be complicated to write. The Ruleset visualization offers a view of how the Workflow will progress based on the rules written.  This feature is enabled by default on 3.4.2.
+Rulesets can be complicated to write. The Ruleset visualization offers a view of how the Workflow will progress based on the rules written. This feature is enabled by default on 3.4.2 and we have plans to expand the functionality in future releases. Join the discussion on the [Rundeck Forums](https://community.pagerduty.com). (Look for the _Ruleset Visualization - Incubating_ post)
+
+
+![Ruleset Visualization](@assets/img/relnotes-342-rulesetvisual.gif)
 
 ### Azure Node Steps (Enterprise)
 
-In 3.4.1, new node steps were introduced to add more functionality to the already existing Azure Resource Model. Now you can control your imported nodes in Rundeck by using the following new job steps:
+New node steps were introduced to add more functionality to the already existing Azure Resource Model. Now you can control your imported nodes in Rundeck by using the following new job steps:
 
 * Start a Virtual Machine
 * Stop a Virtual Machine
@@ -34,14 +40,14 @@ In 3.4.1, new node steps were introduced to add more functionality to the alread
 
 ### ServiceNow Node Source Custom Filters (Enterprise)
 
-In 3.4.1, we added the ability to specify custom filters when setting up the ServiceNow Node Source. Now, you can add any filters you may use in ServiceNow to ensure that only the nodes you want are imported into Rundeck.
+In 3.4.2, we have added the ability to specify custom filters when setting up the ServiceNow Node Source. Now it’s possible to gather the nodes you want into your Rundeck project. Use a filter against any CMDB table and gather the results as nodes from ServiceNow.
 
 [Check out the updated documentation here](https://docs.rundeck.com/docs/administration/projects/resource-model-sources/servicenow.html)
 
 ## Enterprise Updates
 
 * Introduce Rundeck Job Data Plugin - Incubating Feature
-* Fix: If 3rd party SSO is not available, rundeck wouldn&#39;t start properly.
+* Fix: If 3rd party SSO is not available, rundeck wouldn't start properly.
 * Azure Enterprise Node Step Enhancements
 * Allow Custom filter for ServiceNow resource model
 * Project dashboard updates for queued executions
