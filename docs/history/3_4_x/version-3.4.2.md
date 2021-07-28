@@ -30,7 +30,7 @@ Rulesets can be complicated to write. The Ruleset visualization offers a view of
 
 ### Azure Node Steps (Enterprise)
 
-New node steps were introduced to add more functionality to the already existing Azure Resource Model. Now you can control your imported nodes in Rundeck by using the following new job steps:
+New node steps were introduced to add Cloud Automation to your Rundeck workflows. Now you can control your imported nodes in Rundeck by using the following new job steps:
 
 * Start a Virtual Machine
 * Stop a Virtual Machine
