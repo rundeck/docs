@@ -6,6 +6,7 @@ Name: <span style="color: brown"><span class="glyphicon glyphicon-bullhorn"></sp
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
 
 ## Overview
+Check out the new features and enhancements for Rundeck Enterprise and Rundeck Community included in this release.
 
 ### Job Data [Incubating] (Enterprise)
 
@@ -64,8 +65,6 @@ In 3.4.1, we added the ability to specify custom filters when setting up the Ser
 * [Job import does not preserve option value ordering](https://github.com/rundeck/rundeck/pull/7122)
 * [Fix: Properly detect when a job was renamed in SCM Import](https://github.com/rundeck/rundeck/pull/7030)
 * [Make log levels configurable on Docker Image via Remco](https://github.com/rundeck/rundeck/pull/6990)
-
-
 
 [Here is a link to the full list of public PRs](https://github.com/rundeck/rundeck/pulls?q=is%3Apr+milestone%3A3.4.2+is%3Aclosed)
 

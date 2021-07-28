@@ -7,6 +7,8 @@ Name: <span style="color: {{version.color()}}"><span class="glyphicon glyphicon-
 
 ## Overview
 
+Check out the new features and enhancements for Rundeck Enterprise and Rundeck Community included in this release.
+
 ## Enterprise Updates
 
 {% for pull in enterprise.pulls -%}
