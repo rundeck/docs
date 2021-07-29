@@ -124,5 +124,5 @@ You can use [JobOptionImpl.builder\(\)]({{{javaDocBase}}}/com/dtolabs/rundeck/pl
 
 ## Example Code
 
-A full example is available on Github: <https://github.com/rundeck/rundeck/tree/master/examples/example-java-job-lifecyle-plugin>
+A full example is available on Github: <https://github.com/rundeck/rundeck/tree/main/examples/example-java-job-lifecycle-plugin>
 
