@@ -51,7 +51,8 @@ module.exports = [{
           collapsable: true,
           sidebarDepth: 0,
           children: [
-              '/learning/howto/ssh-on-linux-nodes.md'
+              '/learning/howto/ssh-on-linux-nodes.md',
+              '/learning/howto/configuring-windows-nodes.md'
           ]
         },
         {
