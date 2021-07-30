@@ -13,7 +13,7 @@ The [pywinrm plugin](https://github.com/rundeck-plugins/py-winrm-plugin) needs t
 
 ### Requirements:
 
-The plugin uses the python [WinRM Library](https://github.com/diyan/pywinrm/) to provide the WinRM implementation.
+The [pywinrm plugin](https://github.com/rundeck-plugins/py-winrm-plugin) uses the python [WinRM Library](https://github.com/diyan/pywinrm/) to provide the WinRM implementation.
 
 * Python 3.3-3.5 or PyPy2 installed on Rundeck server. _(Python 3 strongly recommended)_
 * Pywinrm library (It can be installed with the following command: `pip install pywinrm`)
@@ -65,7 +65,7 @@ Create a Windows-based project on the Rundeck instance.
     <br><br>![Create Project](@assets/img/howto-winnode-createproject.png)<br><br>
 1. Go to the Default Node Executor tab and then select **WinRM Node Executor Python**. It may be necessary to set the Python interpreter textbox to `python3` interpreter as the command/path.
     <br><br>![Node Executor](@assets/img/howto-winnode-nodeexec.png)<br><br>
-1. Go to the **Default File Copier** tab and select the **WinRM Python File Copier**. Similar to the previous step, it's it may be necessary to define the Python interpreter textbox as `python3` interpreter for the command/path.
+1. Go to the **Default File Copier** tab and select the **WinRM Python File Copier**. Similar to the previous step, it may be necessary to define the Python interpreter textbox as `python3` interpreter for the command/path.
     <br><br>![File Copier](@assets/img/howto-winnode-filecopy.png)<br><br>
 1. Click on the **Create** button.
 
