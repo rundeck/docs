@@ -6,7 +6,7 @@ Configuration file layout differs between the RPM and Launcher
 installation methods.
 
 ## DEB/RPM layout
-
+```bash
     /etc/rundeck/
     ├── admin.aclpolicy
     ├── apitoken.aclpolicy
@@ -38,9 +38,9 @@ installation methods.
     ├── repository
     ├── var
     └── work
-
+```
 ## Launcher layout
-
+```bash
     $RDECK_BASE/etc/
     ├── admin.aclpolicy
     ├── apitoken.aclpolicy
@@ -57,7 +57,7 @@ installation methods.
     ├── realm.properties
     ├── rundeck-config.properties
     └── ssl.properties
-
+```
 # Configuration files
 
 Configuration is specified in a number of standard Rundeck
@@ -677,9 +677,9 @@ a{
 ```
 
 ### Specify config file location (optional)
-:: warning
-This configuration should only be applied if the location or format of the rundeck-config is different from default. e.g. groovy format
-::
+::: warning
+This configuration should only be applied if the location or the format of the rundeck-config is different from default. e.g. groovy format
+:::
 
 You will need to point rundeck at the new filename when you start up rundeck:
 
@@ -692,7 +692,9 @@ or
 java -jar -Drundeck.config.name=/opt/rundeck/config/rundeck-config.properties rundeck-launcher.jar
 ```
 
-RPM: Add this to the `/etc/sysconfig/rundeckd` file on RPM, or `/etc/default/rundeckd` file on DEB:
+- Linux Package:
+
+Add this to the `/etc/sysconfig/rundeckd` file on RPM, or `/etc/default/rundeckd` file on DEB:
 ```bash
 export RDECK_CONFIG_FILE="/etc/rundeck/rundeck-config.groovy"
 ```
