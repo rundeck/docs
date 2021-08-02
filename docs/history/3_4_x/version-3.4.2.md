@@ -7,7 +7,7 @@ Name: <span style="color: brown"><span class="glyphicon glyphicon-bullhorn"></sp
 
 # Overview
 
-Check out the new features and enhancements for Rundeck Enterprise and Rundeck Community as well as a few incubating features included in this release Incubating features are functionality released as ideas with the goal of getting feedback from our users. Look for posts in the [Rundeck Forums](https://community.pagerduty.com) to join the discussion about Result Data and Ruleset Visualization.
+Check out the new features and enhancements for Rundeck Enterprise and Rundeck Community as well as a few incubating features included in this release. Incubating features are functionality released as ideas with the goal of getting feedback from our users. Look for posts in the [Rundeck Forums](https://community.pagerduty.com) to join the discussion about **Result Data** and **Ruleset Visualization**.
 
 ### Result Data [Incubating] (Enterprise)
 
