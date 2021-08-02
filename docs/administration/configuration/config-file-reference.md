@@ -676,18 +676,27 @@ a{
 }
 ```
 
-### Specify config file location
+### Specify config file location (optional)
+:: warning
+This configuration should only be applied if the location or format of the rundeck-config is different from default. e.g. groovy format
+::
 
 You will need to point rundeck at the new filename when you start up rundeck:
 
 - Launcher:
+```bash
+java -jar -Drundeck.config.name=rundeck-config.groovy rundeck-launcher.jar
+```
+or
+```bash
+java -jar -Drundeck.config.name=/opt/rundeck/config/rundeck-config.properties rundeck-launcher.jar
+```
 
-        java -jar -Drundeck.config.name=rundeck-config.groovy rundeck-launcher.jar
-
-RPM: Add this to the `/etc/sysconfig/rundeckd` file:
-
-        export RDECK_CONFIG_FILE="/etc/rundeck/rundeck-config.groovy"
-
-RPM/DEB: Add this to the `/etc/default/rundeckd` file:
-
-        export RDECK_CONFIG_FILE="/etc/rundeck/rundeck-config.groovy"
+RPM: Add this to the `/etc/sysconfig/rundeckd` file on RPM or `/etc/default/rundeckd` file on DEB:
+```bash
+export RDECK_CONFIG_FILE="/etc/rundeck/rundeck-config.groovy"
+```
+or
+```bash
+export RDECK_CONFIG_FILE="/opt/rundeck/config/rundeck-config.properties"
+```
