@@ -19,7 +19,7 @@ for your infrastructure, Send Datadog event payloads as a [Workflow](/manual/wor
 New [PagerDuty Workflow Steps](/manual/workflow-steps/pagerduty.md) for "Escalate Incident", "Run Response Play"
 and "Send V2 Event".
 
-Updated and enhanced [ServiceNow plugins](/manual/workflow-steps/servicenow.md) allow job writers to add any field to
+Updated and enhanced [ServiceNow&reg; plugins](/manual/workflow-steps/servicenow.md) allow job writers to add any field to
 the respective tables for incidents and change records.
 
 A new [Amazon Web Services (AWS) SNS Webhook Plugin](/manual/webhooks/aws-sns-webhook.md)

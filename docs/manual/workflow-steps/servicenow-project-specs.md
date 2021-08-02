@@ -1,6 +1,6 @@
-# Establishing A ServiceNow Connection at the Project Level
+# Establishing A ServiceNow&reg; Connection at the Project Level
 
-For all the different ServiceNow job steps, the connection can also be established at the project level. In order to do so, add the following to your project configuration file, depending on which job step you are utilizing:
+For all the different ServiceNow&reg; job steps, the connection can also be established at the project level. In order to do so, add the following to your project configuration file, depending on which job step you are utilizing:
 
 ## ServiceNow / Incident / Update State
 

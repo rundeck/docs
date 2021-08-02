@@ -1,4 +1,4 @@
-# ServiceNow Node Source (Enterprise)
+# ServiceNow&reg; Node Source (Enterprise)
 ::: enterprise
 :::
 
@@ -30,7 +30,7 @@ The **Custom Filter** field will use any custom CMDB filter provided to gather t
 
 - `mappingParams`: A set of ";" separated mapping entries. This values are going to override the default mapping
   one by one.
-  The minimal mapping needed is the `username`, because ServiceNow servers lacks a username field to map:
+  The minimal mapping needed is the `username`, because ServiceNow&reg; servers lacks a username field to map:
 
 ```
 username.default=root
@@ -59,7 +59,7 @@ tags.default=servicenow
 ```
 
 ::: tip
-All nodes require at least the _nodename_, _hostname_ and _user_ values.  If entries in the ServiceNow query (Quick or Custom) do not have these values they will not show up in the Nodes list.
+All nodes require at least the _nodename_, _hostname_ and _user_ values.  If entries in the ServiceNow&reg; query (Quick or Custom) do not have these values they will not show up in the Nodes list.
 :::
 
 ### Configuration of the Mapping

@@ -1,22 +1,22 @@
-# Rundeck Automation - ServiceNow Application
+# Rundeck Automation - ServiceNow&reg; Application
 ::: enterprise
 :::
 
-Our ServiceNow application can be found on the ServiceNow Store.  The application is free to Enterprise customers.  To request the application please contact your Account Executive or Customer Success contact.
+Our ServiceNow&reg; application can be found on the ServiceNow&reg; Store.  The application is free to Enterprise customers.  To request the application please contact your Account Executive or Customer Success contact.
 
 ## Requirements
 
-The application is supported on New York and Orlando ServiceNow releases.
+The application is supported on New York and Orlando ServiceNow&reg; releases.
 
 An active Rundeck Enterprise license for version 3.2.x or higher is also required.
 
 ## Requesting the application
 
-ServiceNow instructions TBD
+ServiceNow&reg; instructions TBD
 
 ## Configuration Steps
 
-After the app has been installed in your ServiceNow instance there will be a new "Rundeck Automation" Module Group.
+After the app has been installed in your ServiceNow&reg; instance there will be a new "Rundeck Automation" Module Group.
 
 Note: Your account will need the 'admin' role and 'rundeck_app_user' role to configure these settings.
 
@@ -35,7 +35,7 @@ Note: Your account will need the 'admin' role and 'rundeck_app_user' role to con
 
 ## Using the Application
 
-### ServiceNow Roles included
+### ServiceNow&reg; Roles included
 
 - executor: Assign this role to allow users to execute Rundeck actions.  The role provides read-only access to the minimum necessary application components.
 - rundeck_app_user:  Grants access to the Rundeck Automation module listing and allow read/write access to most application areas.
@@ -44,9 +44,9 @@ Note: Your account will need the 'admin' role and 'rundeck_app_user' role to con
 
 The Scheduled Scripts module will list the Populate Webhooks Scheduled Script.  This script can be used to import all available webhooks.  By default it comes unscheduled.  In order to keep your webhook listing current the script can be scheduled to run on a regular interval.
 
-### Calling Webhooks from ServiceNow Code
+### Calling Webhooks from ServiceNow&reg; Code
 
-Upon import webhooks from your Rundeck Projects will be added to the **Rundeck Webhooks** table.  A 'Code Example' field provides basic code that can be used in ServiceNow Client or Server side scripts to call that specific webhook.
+Upon import webhooks from your Rundeck Projects will be added to the **Rundeck Webhooks** table.  A 'Code Example' field provides basic code that can be used in ServiceNow&reg; Client or Server side scripts to call that specific webhook.
 
 ![Webhook Record](@assets/img/sn-webhook-record.png)
 

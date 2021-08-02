@@ -44,12 +44,12 @@ Workflow Step | [Jira](/manual/workflow-steps/jira.md) | Creates or updates Jira
 Workflow Step | [File Transfer](/manual/workflow-steps/file-transfer.md) | Transfers files via FTP, SFTP or HTTP | Enterprise
 Workflow Step | [Github](/manual/workflow-steps/github.md) | Runs scripts from a GitHub repo | Enterprise
 Workflow Step | [Progress Badge](/manual/workflow-steps/progress-badge.md#progress-badge-workflow-step-plugin) | Create graphic badges in log output | Enterprise
-Workflow Step | [ServiceNow](/manual/workflow-steps/servicenow.md) | Creates or modifies ServiceNow cases | Enterprise
+Workflow Step | [ServiceNow](/manual/workflow-steps/servicenow.md) | Creates or modifies ServiceNow&reg; cases | Enterprise
 Workflow Step | [VMware](/manual/workflow-steps/vmware.md) | Creates or modifies VMware VMs | Enterprise
 Notifications | [Email](/manual/notifications/email.md) | Sends emails when a job finishes | Built-in
 Notifications | [Webhooks](/manual/notifications/webhooks.md) | Sends HTTP POST data to a URL when a job finishes | Built-in
 Notifications | [Jira](/manual/notifications/jira.md) | Creates or modifies Jira issues when a job finishes | Enterprise
-Notifications | [ServiceNow](/manual/notifications/servicenow.md) | Comment or Create an Incident on ServiceNow | Enterprise
+Notifications | [ServiceNow](/manual/notifications/servicenow.md) | Comment or Create an Incident on ServiceNow&reg; | Enterprise
 Workflow Strategy | [Ruleset](/manual/workflow-strategies/ruleset.md) | Defines rules for when steps in a workflow should run | Enterprise
 Node Orchestrator | [Random Subset](/manual/orchestrator-plugins/bundled.md#random-subset) | Selects a maximum number of the target nodes at random | Built-in
 Node Orchestrator | [Ranked Tiered](/manual/orchestrator-plugins/bundled.md#ranked-tired) | Processes nodes in a tiered manner, ordered by rank | Built-in

@@ -12,7 +12,7 @@ This is a small release to address minor bugs and issues.  We are working some a
 
 * Fix: Dynamic properties for DataDog Incidents
 * Fix: Health Checks show inappropriate last refresh date
-* New/Updated ServiceNow Plugin - Options Plugin fixed - Fixes for Incident View with linked table reference fields.
+* New/Updated ServiceNow&reg; Plugin - Options Plugin fixed - Fixes for Incident View with linked table reference fields.
 
 
 ## Core Product Updates

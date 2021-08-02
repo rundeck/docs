@@ -1,4 +1,4 @@
-# ServiceNow Notification Plugins
+# ServiceNow&reg; Notification Plugins
 ::: enterprise
 :::
 <!---
@@ -34,7 +34,7 @@ Rundeck Notification plugin that creates an incident
 
 ### Configuration
 
-The ServiceNow connection credentials are set in the project.properties file
+The ServiceNow&reg; connection credentials are set in the project.properties file
 for your project.
 
 ```
@@ -59,11 +59,11 @@ These inputs are optional and if left empty the default value of Service now it'
 
 ## ServiceNow / Change / Create
 
-Rundeck Notification plugin to create a ServiceNow Change
+Rundeck Notification plugin to create a ServiceNow&reg; Change
 
 ### Configuration
 
-The ServiceNow connection credentials are set in the project.properties file
+The ServiceNow&reg; connection credentials are set in the project.properties file
 for your project.
 
 ```
@@ -76,5 +76,5 @@ project.plugin.Notification.Service-Now-Notification-Change-Create.url=https://s
 
 To use the plugin, configure this mandatory input:
 
-- assignment group: ServiceNow incident ID.
+- assignment group: ServiceNow&reg; incident ID.
 - state: State code. If not set, the change will be in New status.

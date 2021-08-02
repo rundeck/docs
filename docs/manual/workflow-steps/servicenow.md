@@ -1,6 +1,6 @@
-# ServiceNow Workflow Steps
+# ServiceNow&reg; Workflow Steps
 
-The built in ServiceNow plugins are built to help customers automate the creation of incidents and change records within ServiceNow. The various job steps give you total control over your workflow, allowing you to create and edit ServiceNow incidents and change records within your Rundeck jobs.
+The built in ServiceNow&reg; plugins are built to help customers automate the creation of incidents and change records within ServiceNow. The various job steps give you total control over your workflow, allowing you to create and edit ServiceNow&reg; incidents and change records within your Rundeck jobs.
 
 <!---
 Original:
@@ -174,7 +174,6 @@ Rundeck workflow step that views an incident
 Rundeck workflow step that checks the state of a change request
 
 ![ServiceNow / Change / Check State](~@assets/img/servicenow-change-checkstate.png)
-
 
 - **Number**
 : Number of the change.
