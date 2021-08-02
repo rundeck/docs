@@ -1,4 +1,4 @@
-# Security mode for Microsoft SQL Server
+# Security mode for Microsoft&reg; SQL Server
 
 Tested version
 

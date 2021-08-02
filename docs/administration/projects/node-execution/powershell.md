@@ -109,7 +109,7 @@ Set-ExecutionPolicy RemoteSigned
 To enable permission to a user to execute remote command:
 
 ```powershell
-Set-PSSessionConfiguration -ShowSecurityDescriptorUI -Name Microsoft.PowerShell
+Set-PSSessionConfiguration -ShowSecurityDescriptorUI -Name Microsoft&reg;.PowerShell
 ```
 
 Increase the concurrent shell issue:
@@ -208,7 +208,7 @@ If you are using a non-administrator user (or a not- domain-administrator user) 
 To add permissions to non-administrator user to execute remote commands:
 
 ```powershell
-Set-PSSessionConfiguration Microsoft.Powershell -ShowSecurityDescriptorUI
+Set-PSSessionConfiguration Microsoft&reg;.Powershell -ShowSecurityDescriptorUI
 ```
 
 #### Access is denied error

@@ -31,7 +31,7 @@ Rulesets can be complicated to write. The Ruleset visualization offers a view of
 
 ### Azure Node Steps (Enterprise)
 
-Now it's more practical to manage larger deployments in Microsoft Azure with more detailed cloud automation features. New node steps were introduced to add Cloud Automation to your Rundeck workflows. Control your imported nodes in Rundeck by using the following new job steps:
+Now it's more practical to manage larger deployments in Microsoft&reg;&reg; Azure with more detailed cloud automation features. New node steps were introduced to add Cloud Automation to your Rundeck workflows. Control your imported nodes in Rundeck by using the following new job steps:
 
 * Start a Virtual Machine
 * Stop a Virtual Machine

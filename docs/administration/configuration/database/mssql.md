@@ -1,4 +1,4 @@
-# Using Microsoft SQL Server as a database backend
+# Using Microsoft&reg; SQL Server as a database backend
 
 <!---
 Original: http://support.rundeck.com/customer/en/portal/articles/2819414-install-rundeck-pro-team-launcher-on-windows

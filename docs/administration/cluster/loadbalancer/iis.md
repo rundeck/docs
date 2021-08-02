@@ -1,4 +1,4 @@
-# Using Microsoft IIS
+# Using Microsoft&reg; IIS
 
 <!---
 Original: http://support.rundeck.com/customer/en/portal/articles/2819414-install-rundeck-pro-team-launcher-on-windows

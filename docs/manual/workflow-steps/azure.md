@@ -1,6 +1,6 @@
 # Azure Workflow Steps
 
-Azure is Microsoft's web services product. It is a cloud computing platform that offers a variety of services including but not limited to storage, networking and analytics. Azure's integration with Rundeck allows you to edit and utilize your Azure services in a Rundeck job.
+The Microsoft&reg; Azure cloud computing platform that offers a variety of services including but not limited to storage, networking and analytics. Azure's integration with Rundeck allows you to edit and utilize your Azure services in a Rundeck job.
 
 ## Azure / Storage / Copy
 
