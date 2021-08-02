@@ -692,7 +692,7 @@ or
 java -jar -Drundeck.config.name=/opt/rundeck/config/rundeck-config.properties rundeck-launcher.jar
 ```
 
-RPM: Add this to the `/etc/sysconfig/rundeckd` file on RPM or `/etc/default/rundeckd` file on DEB:
+RPM: Add this to the `/etc/sysconfig/rundeckd` file on RPM, or `/etc/default/rundeckd` file on DEB:
 ```bash
 export RDECK_CONFIG_FILE="/etc/rundeck/rundeck-config.groovy"
 ```
