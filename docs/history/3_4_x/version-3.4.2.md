@@ -25,8 +25,9 @@ Use cases for this feature cover a broad range of ideas like API consolidation, 
 
 Rulesets can be complicated to write. The Ruleset visualization offers a view of how the Workflow will progress based on the rules written. This feature is enabled by default on 3.4.2 and we have plans to expand the functionality in future releases. Join the discussion on the [Rundeck Forums](https://community.pagerduty.com). (Look for the _Ruleset Visualization - Incubating_ post)
 
-
 ![Ruleset Visualization](@assets/img/relnotes-342-rulesetvisual.gif)
+
+[Click here learn more about the Ruleset Strategy available in Rundeck Enterprise.](/docs/manual/workflow-strategies/ruleset.md)
 
 ### Azure Node Steps (Enterprise)
 

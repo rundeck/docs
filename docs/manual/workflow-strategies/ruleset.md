@@ -3,6 +3,10 @@
 :::enterprise
 :::
 
+:::tip
+The [3.4.2 release](/history/3_4_x/version-3.4.2.md) of Rundeck Enterprise includes a new, incubating feature for visualizing the workflow strategy.
+:::
+
 The Ruleset Workflow Strategy allows Enterprise users to provide more complex logic around job step execution.  To use the Ruleset Strategy choose _Ruleset_ on the Workflow tab when editing a Job.
 
 ![Ruleset Strategy](@assets/img/wfstrategy-ruleset.png)
