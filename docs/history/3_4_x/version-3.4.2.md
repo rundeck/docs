@@ -31,7 +31,7 @@ Rulesets can be complicated to write. The Ruleset visualization offers a view of
 
 ### Azure Node Steps (Enterprise)
 
-Now it's more practical to manage larger deployments in Microsoft&reg;&reg; Azure with more detailed cloud automation features. New node steps were introduced to add Cloud Automation to your Rundeck workflows. Control your imported nodes in Rundeck by using the following new job steps:
+Now it's more practical to manage larger deployments in Microsoft&reg; Azure with more detailed cloud automation features. New node steps were introduced to add Cloud Automation to your Rundeck workflows. Control your imported nodes in Rundeck by using the following new job steps:
 
 * Start a Virtual Machine
 * Stop a Virtual Machine
@@ -39,9 +39,9 @@ Now it's more practical to manage larger deployments in Microsoft&reg;&reg; Azur
 * Delete a Virtual Machine
 * Capture Snapshot of Machine Instances
 
-### ServiceNow&reg;Node Source Custom Filters (Enterprise)
+### ServiceNow&reg; Node Source Custom Filters (Enterprise)
 
-In 3.4.2, we have added the ability to specify custom filters when setting up the ServiceNow&reg;Node Source. Now it’s possible to gather the nodes you want into your Rundeck project. Use a filter against any CMDB table and gather the results as nodes from ServiceNow.
+In 3.4.2, we have added the ability to specify custom filters when setting up the ServiceNow&reg; Node Source. Now it’s possible to gather the nodes you want into your Rundeck project. Use a filter against any CMDB table and gather the results as nodes from ServiceNow&reg;.
 
 [Check out the updated documentation here](/administration/projects/resource-model-sources/servicenow.html)
 
@@ -50,7 +50,7 @@ In 3.4.2, we have added the ability to specify custom filters when setting up th
 * Introduce Rundeck Job Data Plugin - Incubating Feature
 * Fix: If 3rd party SSO is not available, rundeck wouldn't start properly.
 * Azure Enterprise Node Step Enhancements
-* Allow Custom filter for ServiceNow&reg;resource model
+* Allow Custom filter for ServiceNow&reg; resource model
 * Project dashboard updates for queued executions
 
 ### System Report
