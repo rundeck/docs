@@ -79,7 +79,7 @@ Resource Model Source | [Resource Model Source](/administration/projects/resourc
 Resource Model Source | [Resource Editor](/administration/projects/resource-model-sources/resource-editor.md) | Allows you to edit nodes in a text editor | Built-in
 Resource Model Source | [AWS](/administration/projects/resource-model-sources/aws.md) | Populates your nodes from EC2 | Community
 Resource Model Source | [Azure](/administration/projects/resource-model-sources/azure.md) | Populates your nodes from Azure | Community
-Resource Model Source | [ServiceNow](/administration/projects/resource-model-sources/servicenow.md) | Populates your nodes from ServiceNow's CMDB | Enterprise
+Resource Model Source | [ServiceNow](/administration/projects/resource-model-sources/servicenow.md) | Populates your nodes from ServiceNow's&reg;CMDB | Enterprise
 Resource Model Source | [VMware](/administration/projects/resource-model-sources/vmware.md) | Populates your nodes from a VSphere ESXi server or VCenter Server | Enterprise
 Resource Format | [XML](/manual/document-format-reference/resource-v13.md) | XML Format for Resource Models | Built-in
 Resource Format | [YAML](/manual/document-format-reference/resource-yaml-v13.md) | YAML Format for Resource Models | Built-in

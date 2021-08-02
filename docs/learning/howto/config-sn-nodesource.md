@@ -52,4 +52,4 @@ The Asset Tag (asset-tag) entry is now an attribute on the Node.
 ::::
 
 ## Additional Information
-ServiceNow's Developer program allows anyone to sign up and get access to a ServiceNow&reg; instance for testing/learning purposes. Sign Up at: [https://developer.servicenow.com/](https://developer.servicenow.com/)
+ServiceNow's&reg;Developer program allows anyone to sign up and get access to a ServiceNow&reg; instance for testing/learning purposes. Sign Up at: [https://developer.servicenow.com/](https://developer.servicenow.com/)

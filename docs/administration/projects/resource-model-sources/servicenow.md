@@ -2,7 +2,7 @@
 ::: enterprise
 :::
 
-This is a Node Source plugin that provides node information from ServiceNow's CMDB.
+This is a Node Source plugin that provides node information from ServiceNow's&reg;CMDB.
 
 There is a [How To article in the Learning section](/learning/howto/config-sn-nodesource.md) with an example setup.
 
