@@ -34,6 +34,22 @@ see the grails Mail plugin configuration:
 
 To use the advanced grails Mail configuration it is only required to create a new file called rundeck-config.groovy in the same place where the rundeck-config.properties is located, e.g. /etc/rundeck/rundeck-config.groovy or $RDECK_BASE/server/config/rundeck-config.groovy.
 
+- GmailExample:
+```groovy
+grails {
+   mail {
+     props = ["mail.smtp.starttls.enable":"true",
+              "mail.smtp.port":"587"]
+   }
+}
+```
+
+Every other data should be configured on the properties, like password.
+
+::: tip
+Passwords can be encrypted on the rundeck-config.properties using [Jasypt on Rundeck Enterprise](/administration/configuration/encryptable-properties.md).
+:::
+
 See [Groovy config format](/administration/configuration/config-file-reference.md#groovy-config-format).
 
 ## Notification email settings
