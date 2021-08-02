@@ -1,16 +1,15 @@
 # Ruleset Workflow Strategy Plugin
 
-<!---
-Original: http://support.rundeck.com/customer/en/portal/articles/2745900-ruleset-workflow-strategy-plugin-advanced-workflow-
---->
+:::enterprise
+:::
 
-The Ruleset Workflow Strategy Plugin (exclusive to Rundeck Enterprise) allows you to define a set of rules to describe when and if steps in the workflow should run.
+The Ruleset Workflow Strategy allows Enterprise users to provide more complex logic around job step execution.  To use the Ruleset Strategy choose _Ruleset_ on the Workflow tab when editing a Job.
 
-The plugin can be selected in the Workflow Strategy list in the the Edit Job page.
+![Ruleset Strategy](@assets/img/wfstrategy-ruleset.png)
 
-The rules configuration value is a multiline block of text in the following format.
+## Writing Rules
 
-## Rules syntax
+### Syntax
 
 Rules define how each step should run. You can add one rule per-line. Rules are additive, and you can define multiple rules for each step.
 Rules are in the form:
@@ -24,7 +23,7 @@ The rule must have a directive or condition, or both.
 
 ### Step
 
-Specifies the step or steps that the rule applies to. You must include the [ and ] characters:
+Specifies the step, or steps that the rule applies to. You must include the [ and ] characters:
 
 - `[X]`: Applies to a single step, the named or numbered step X. You can use the step number, e.g. `[1]` or the label, e.g. `[Deploy QA]` (case sensitive).
 - `[X,Y,Z...]`: Applies to multiple steps. Separate multiple steps with a comma, e.g. `[1,2,3]`
