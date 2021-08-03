@@ -37,7 +37,6 @@ Now it's more practical to manage larger deployments in Microsoft&reg; Azure wit
 * Stop a Virtual Machine
 * Restart a Virtual Machine
 * Delete a Virtual Machine
-* Capture Snapshot of Machine Instances
 
 ### ServiceNow&reg; Node Source Custom Filters (Enterprise)
 
