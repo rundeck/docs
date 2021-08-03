@@ -1,4 +1,4 @@
-# ServiceNow&reg; Node Source (Enterprise)
+# ServiceNow Node Source (Enterprise)
 ::: enterprise
 :::
 
