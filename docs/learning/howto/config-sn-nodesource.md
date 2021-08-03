@@ -1,4 +1,4 @@
-# Configure ServiceNow&reg; CMDB Node Source
+# Configure ServiceNow CMDB Node Source
 
 The ServiceNow&reg; Node Source brings CMDB entries into Rundeck as Nodes.  This exercise shows how to configure and use some key features of that Node Source.
 
