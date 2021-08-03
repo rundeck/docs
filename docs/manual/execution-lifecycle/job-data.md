@@ -1,4 +1,4 @@
-# Job Data Plugins (Enterprise) [Incubating]
+# Result Data Plugins (Enterprise) [Incubating]
 ::: enterprise
 :::
 
@@ -9,13 +9,13 @@ Join us in the [Rundeck Community Forums](https://community.pagerduty.com/forum/
 This plugin allows Jobs to export a JSON file as the result of an execution, which will be stored alongside the output log file.
 The JSON file can be retrieved via the API as JSON data, and shown in the GUI.
 
-![Job Data Output](@assets/img/jobdata-output.png)
+![Result Data Output](@assets/img/jobdata-output.png)
 
 This allows a Job to be executed, and a JSON result returned, customized to contain data that is relevant to the outcome of the Job.
 
 There are currently two different Plugins that can be used to produce JSON data for a Job.
 
-![Job Data Plugins](@assets/img/jobdata-plugins.png)
+![Result Data Plugins](@assets/img/jobdata-plugins.png)
 
 ## Requirements
 
@@ -27,7 +27,7 @@ Enable the incubating feature by adding the following configuration to Configura
 rundeck.feature.incubator.jobdata.enabled=true
 ```
 
-## Plugin: Export Job Data
+## Plugin: Export Result Data
 
 This plugin exports data groups from the Execution Context in the Global scope. Groups are named key-value maps.
 
@@ -158,7 +158,7 @@ Here is a sample job provided in our [Welcome Projects](/learning/howto/welcome-
   loglevel: INFO
   maxMultipleExecutions: '2'
   multipleExecutions: true
-  name: Job Data Example
+  name: Result Data Example
   nodeFilterEditable: true
   plugins:
     ExecutionLifecycle:
