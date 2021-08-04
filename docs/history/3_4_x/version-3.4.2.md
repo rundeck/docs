@@ -46,10 +46,12 @@ In 3.4.2, we have added the ability to specify custom filters when setting up th
 
 ## Enterprise Updates
 
+* Fix ServiceNow Node Source does not map certain fields.
+* Fix: Issue on Rundeck 3.4.0 using encrypted values (JASYPT) account lock
 * Introduce Rundeck Job Data Plugin - Incubating Feature
-* Fix: If 3rd party SSO is not available, rundeck wouldn't start properly.
+* Fix: If 3rd party SSO is not available, rundeck wouldn&#39;t start properly.
 * Azure Enterprise Node Step Enhancements
-* Allow Custom filter for ServiceNow&reg; resource model
+* Allow Custom filter for ServiceNow resource model
 * Project dashboard updates for queued executions
 
 ### System Report
@@ -58,6 +60,9 @@ In 3.4.2, we have added the ability to specify custom filters when setting up th
 
 ## Core Product Updates
 
+* [Fix copybox to work if connection is insecure](https://github.com/rundeck/rundeck/pull/7196)
+* [Fix navbar overflow during zoom](https://github.com/rundeck/rundeck/pull/7194)
+* [Hotfix: Update to output new TAG](https://github.com/rundeck/rundeck/pull/7186)
 * [Fix pywinrm plugin to properly handle % characters](https://github.com/rundeck/rundeck/pull/7178)
 * [Fix project export error messages](https://github.com/rundeck/rundeck/pull/7174)
 * [Fix errors from 1000+ Executions on Oracle Database](https://github.com/rundeck/rundeck/pull/7173)
@@ -66,7 +71,7 @@ In 3.4.2, we have added the ability to specify custom filters when setting up th
 * [Improve loading speed of Project Picker and New Widget](https://github.com/rundeck/rundeck/pull/7158)
 * [SCM: Reduce errors related to failed SCM plugins.](https://github.com/rundeck/rundeck/pull/7153)
 * [FIX: Gracefully handle errors when execution fails to start.](https://github.com/rundeck/rundeck/pull/7150)
-* [and Fixes Sort list of plugins by key order.](https://github.com/rundeck/rundeck/pull/7142)
+* [Fixes Sort list of plugins by key order.](https://github.com/rundeck/rundeck/pull/7142)
 * [Properly handle null value when resource does not have the attribute filtered by ACL rule key](https://github.com/rundeck/rundeck/pull/7137)
 * [Job import does not preserve option value ordering](https://github.com/rundeck/rundeck/pull/7122)
 * [Fix: Properly detect when a job was renamed in SCM Import](https://github.com/rundeck/rundeck/pull/7030)
