@@ -538,7 +538,7 @@ You can disable all metrics API endpoints with:
 rundeck.metrics.api.enabled=true/false
 ```
 
-You can also selectively disable each endpoing by setting these config values:
+You can also selectively disable each endpoint by setting these config values:
 
 ```properties
 rundeck.metrics.api.[name].enabled=true/false
