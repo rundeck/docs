@@ -9,6 +9,13 @@ module.exports = [
     children: [
       ...getChildren('docs/history'),
       {
+        title: "Security Advisories",
+        collapsable: true,
+        sidebarDepth: 1,
+        path: '/history/CVEs/',
+        children: getChildren('docs/history', 'CVEs'),
+      },
+      {
         title: '3.4.x',
         collapsable: true,
         sidebarDepth: 2,
