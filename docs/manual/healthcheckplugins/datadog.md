@@ -4,7 +4,11 @@
 :::
 ## Overview
 
-The DataDog Health Check plugin allow Rundeck to check status of DataDog hosts. The plugin checks if the host is up according to DataDog and returns "healthy/unhealthy".
+The DataDog Health Check plugin allow Rundeck to check status of DataDog hosts to determine if they are healthy. The plugin checks if the host is up according to the DataDog system and returns "healthy/unhealthy".  Optionally, the plugin can check the status of the DataDog Agent process.
+
+## Preparation
+
+Gather the API Key and APP Key from your DataDog portal.  [Click here for more information from DataDog documentation](https://docs.datadoghq.com/account_management/api-app-keys/).
 
 ## Configuration
 
@@ -17,3 +21,5 @@ The DataDog Health Check plugin allow Rundeck to check status of DataDog hosts. 
 **API Key**: The DataDog API Key used to authenticate.
 
 **APP Key**: The DataDog APP Key used to authenticate.
+
+**Health Check Agent**: Check the status of the DataDog Agent on these nodes. If the agent is not running it will return an "unhealthy" status.

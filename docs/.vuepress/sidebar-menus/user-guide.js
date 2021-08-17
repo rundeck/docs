@@ -62,7 +62,8 @@ module.exports = [{
           children: [
               '/manual/healthchecks',
               '/manual/healthcheckplugins/datadog.md',
-              '/manual/healthcheckplugins/sensu.md'
+              '/manual/healthcheckplugins/sensu.md',
+              '/manual/healthcheckplugins/azure-healthcheck.md'
           ]
         }
       ]
