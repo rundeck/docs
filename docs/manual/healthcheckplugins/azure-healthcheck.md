@@ -50,11 +50,11 @@ To configure this plugin some information will be needed from the Azure system.
 1. Sign in to the [Azure portal](https://portal.azure.com).
 1. Select _Azure Active Directory_ in the left sidebar.
 1. Click _App Registrations_.
-1. Select the application which you have created.
-1. Click on _All settings_.
-1. Click on _Keys_.
-1. Provide a memorable _Key Description_ and choose a _Duration_.
-1. Click _Save_.
+1. Select the application which you have created. (or create one)
+1. Click on _Certificates and Secrets_.
+1. Add a new _Client Secret_.
+1. Provide a memorable _Key Description_ and choose an _Expiration_.
+1. Click _Add_.
 1. Copy and store the key value in a temporary location
     >Note: You won't be able to see this value again after you leave this page.
 
