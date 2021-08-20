@@ -7,12 +7,17 @@ Name: <span style="color: burlywood"><span class="glyphicon glyphicon-camera"></
 
 ## Overview
 
-Check out the new features and enhancements for Rundeck Enterprise and Rundeck Community included in this release.
+Check out the new features and enhancements for Rundeck Enterprise and Rundeck Community included in this release. This is a smaller release, with two important security fixes. Look out for new enhancements and a significant release in the coming months.
+
+## Security Fixes
+
+* [YAML deserialization can run untrusted code.](/history/CVEs/CVE-2021-39132.md)
+* [Cross-Site Request Forgery (CSRF) can run untrusted code on Rundeck server](/history/CVEs/CVE-2021-39133.md)
+
 
 ## Enterprise Updates
 
-* Azure Node Health Check Plugin - The Azure Node Health Check plugin will provide a "healthy" status to instances that are currently running.  This pairs well with the new Azure Steps from the 3.4.2 release to only run jobs on nodes that are actually running.
-
+* [Azure Node Health Check Plugin](/manual/healthcheckplugins/azure-healthcheck.md) - The Azure Node Health Check plugin will provide a "healthy" status to instances that are currently running.  This pairs well with the new [Azure Steps from the 3.4.2 release](/history/3_4_x/version-3.4.2.md) to only run jobs on nodes that are actually running.
 * Fix dynamic properties error on startup
 * Fix issue when scheduled jobs runs twice in a cluster
 
