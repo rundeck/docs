@@ -18,6 +18,7 @@ to have access via [sudo].
   - Red Hat Enterprise Linux
   - Oracle Linux
   - CentOS
+  - Debian
   - Ubuntu
   - Windows Server
 - **[JAVA](#java) 8 or 11 Installed.**
