@@ -1,4 +1,5 @@
 # Rundeck Automation - ServiceNow&reg; Application
+
 ::: enterprise
 :::
 
@@ -21,14 +22,12 @@ After the app has been installed in your ServiceNow&reg; instance there will be 
 Note: Your account will need the 'admin' role and 'rundeck_app_user' role to configure these settings.
 
 1. Create an API Key
-
 2. Click "Configure Rundeck Connection" and fill out the fields on the form with your environment details.
-
-- Choose if your Rundeck instance is running over http or https.
-- Enter the IP address or domain name where your Rundeck is running.
-- Confirm the port number Rundeck is running on
-- Paste in the API Key from Step 1
-- In rare occurrences the API version can be adjusted.  Default and minimum version is 34.
+    - Choose if your Rundeck instance is running over http or https.
+    - Enter the IP address or domain name where your Rundeck is running.
+    - Confirm the port number Rundeck is running on
+    - Paste in the API Key from Step 1
+    - In rare occurrences the API version can be adjusted.  Default and minimum version is 34.
 
 ![Configuration Settings](@assets/img/sn-properties-config.png)
 
