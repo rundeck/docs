@@ -1,4 +1,4 @@
-# Rundeck Automation - ServiceNow&reg; Application
+# Rundeck Automation - ServiceNow Application
 
 ::: enterprise
 :::

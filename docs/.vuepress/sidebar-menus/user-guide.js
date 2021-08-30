@@ -154,6 +154,15 @@ module.exports = [{
     },
     ['/manual/10-user.md', 'Profile Menu'],
     {
+      title: 'Integrations',
+      collapsable: true,
+      path: '/manual/integrations',
+      sidebarDepth: 1,
+      children: [
+          '/manual/integrations/servicenow-app.md'
+      ]
+    },
+    {
       title: 'Document Formats',
       collapsable: true,
       sidebarDepth: 1,
