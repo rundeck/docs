@@ -48,7 +48,7 @@ module.exports = [
     text: 'Profile Menu'
   },
   {
-    link: '/manual/integrations',
+    link: '/manual/integrations/index',
     text: 'Integrations'
   },
   {
