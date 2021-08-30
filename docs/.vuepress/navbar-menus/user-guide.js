@@ -48,6 +48,10 @@ module.exports = [
     text: 'Profile Menu'
   },
   {
+    link: '/manual/integrations',
+    text: 'Integrations'
+  },
+  {
     link: '/manual/document-format-reference/index',
     text: 'Document Formats'
   }
