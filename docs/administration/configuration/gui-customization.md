@@ -229,6 +229,12 @@ Enables login status in user summary page.
 
 Sets the default value for users logged status to show on summary page (it will only work with rundeck.gui.userSummaryShowLoginStatus=true).
 
+### rundeck.gui.matchedNodesMaxCount
+- Example: ```(Default: 100)```
+- min version: 3.4.4
+
+Sets the maximum number of nodes to be displayed on [Matched Nodes](/manual/creating-jobs.md#node-dispatching-and-filtering) session in job edit page.
+
 
 ## Other Customizations
 The `rundeck.gui.errorpage.hidestacktrace` can also be set to true via a Java system property defined at system startup:
