@@ -30,7 +30,6 @@ Check out the new features and enhancements for Rundeck Enterprise and Rundeck C
 * [Fix/issue 1899 Wrong value after changing option type](https://github.com/rundeck/rundeck/pull/7201)
 * [Fix issue when scheduled jobs runs twice in a cluster](https://github.com/rundeck/rundeck/pull/7192)
 * [Add pluginSecurity feature to disable plugin uploads](https://github.com/rundeck/rundeck/pull/7185)
-* [Fix: High CPU usage with large log outputs without any log warning](https://github.com/rundeck/rundeck/pull/7136)
 
 
 
