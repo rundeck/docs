@@ -40,7 +40,12 @@ Check out the new features and enhancements for Rundeck Enterprise and Rundeck C
 
 [Here is a link to the full list of public PRs](https://github.com/rundeck/rundeck/pulls?q=is%3Apr+milestone%3A{{version.versionString}}+is%3Aclosed)
 
-## Contributors
+## Community Contributors
+{% for login, user in contributors -%}
+* {{ user.name }} ({{user.login}})
+{% endfor %}
+
+## Staff Contributors
 
 * Imad Jafir (imad6639)
 * Greg Schueler (gschueler)
@@ -55,7 +60,3 @@ Check out the new features and enhancements for Rundeck Enterprise and Rundeck C
 * Alexander Abarca (alexander-variacode)
 * Alberto Hormazabal Cespedes (ahormazabal)
 * Forrest Evans (fdevans)
-
-{% for login, user in contributors -%}
-* {{ user.name }} ({{user.login}})
-{% endfor %}

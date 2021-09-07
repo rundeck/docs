@@ -38,7 +38,7 @@ We have updated our color palette with updated colors to enhance the contrast an
 
 * [Fix: dismissible alert x button too far right](https://github.com/rundeck/rundeck/pull/7251)
 * [Fix duplicated node filter after save a job](https://github.com/rundeck/rundeck/pull/7250)
-* [add Jost variable font](https://github.com/rundeck/rundeck/pull/7244)
+* [Add Jost variable font](https://github.com/rundeck/rundeck/pull/7244)
 * [Fix SCM/Node Sources configuration auth checks to be less restrictive](https://github.com/rundeck/rundeck/pull/7240)
 * [Migration to change adhoc_local_string column type from VARCHAR to NVARCHAR on SQL Server database.](https://github.com/rundeck/rundeck/pull/7237)
 * [Update project picker to respect GUI startpage setting](https://github.com/rundeck/rundeck/pull/7233)
