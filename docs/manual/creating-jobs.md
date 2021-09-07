@@ -143,6 +143,10 @@ In the GUI, the "Dispatch to Nodes" checkbox lets you enable node dispatching. W
 You can click the different filter fields "Name", and "Tags" to enter filter values for those fields. As you update the values you will see the "Matched Nodes" section updated to reflect the list of nodes that will match the inputs. You can click "More" to see more of the available inclusion filters, and you can click "Extended Filters" to enter
 exclusion filters for the same fields.
 
+::: tip
+By default, the "Matched Nodes" section will show a maximum of 100 nodes in the search result. To customize this maximum value, you should set the property `rundeck.gui.matchedNodesMaxCount` on rundeck-config.property file
+:::
+
 #### Threadcount
 
 You can set the maximum number of simultaneous threads to use by changing the "Thread Count" box. A value of 1 means all node dispatches happen sequentially, and any greater value means that the node dispatches will happen in parallel.
