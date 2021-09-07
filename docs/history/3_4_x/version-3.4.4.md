@@ -57,6 +57,8 @@ We have updated our color palette with updated colors to enhance the contrast an
 ## Community Contributors
 
 * Jacek Kowalski (jacekkow)
+* Rich Walkup (richwalkup)
+* Anonymous (pheiduck)
 
 ## Staff Contributors
 
