@@ -41,6 +41,7 @@ Check out the new features and enhancements for Rundeck Enterprise and Rundeck C
 [Here is a link to the full list of public PRs](https://github.com/rundeck/rundeck/pulls?q=is%3Apr+milestone%3A{{version.versionString}}+is%3Aclosed)
 
 ## Community Contributors
+
 {% for login, user in contributors -%}
 * {{ user.name }} ({{user.login}})
 {% endfor %}
