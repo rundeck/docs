@@ -21,7 +21,7 @@ An active Rundeck Enterprise license for version 3.2.x or higher is also require
 
 After the app has been installed in your ServiceNow&reg; instance there will be a new "Rundeck Automation" Module Group.
 
-> Note: The ServiceNow login account will need the `admin` role and `rundeck_app_user` roles to configure these settings.
+> Note: The ServiceNow login account will need the `admin` role and `x_runde_rundeck_it.rundeck_app_user` roles to configure these settings.
 
 1. Create an [API Key](/manual/10-user.md#user-api-tokens) in Rundeck.
 1. Click **Configure Rundeck Connection** and fill out the fields on the form with your environment details.
