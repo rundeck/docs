@@ -13,15 +13,17 @@ Check out the new features and enhancements for Rundeck Enterprise and Rundeck C
 
 This release includes new **Cloud Infrastructure** plugins that add coverage for **Oracle Cloud** and **Google Cloud** platforms and expands coverage within the **Amazon Web Services** and **Azure** platforms.
 
+![AWS/Azure/OCI/GCP](@assets/img/relnotes-344-4clouds.png)
+
 ### New UI based Ruleset Designer [Enterprise]
 
-In version 3.4.2 we introduced the Ruleset Visualization capability as part of our incubating features program.  With this 3.4.4 release it's now possible to use the GUI to design your Ruleset and generate the rules automatically.
+In version 3.4.2 we introduced the Ruleset Visualization capability as part of our incubating features program.  With this 3.4.4 release it's now possible to **use the GUI to design your Ruleset** and generate the rules automatically.
 
 ![Ruleset Designer](@assets/img/relnotes-344-rulesetdesigner.gif)
 
 ### Accessible Colors
 
-We have updated our color palette with updated colors to enhance the contrast and overall visual presence of Rundeck.  We'll let these before and after pictures speak for themselves.
+We have updated our color palette with new colors to enhance the contrast and overall visual presence of Rundeck.  We'll let these before and after pictures speak for themselves.
 
 ![Before Color Changes](@assets/img/relnotes-344-before.png)
 
