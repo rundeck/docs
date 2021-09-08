@@ -7,23 +7,25 @@ Name: <span style="color: chartreuse"><span class="glyphicon glyphicon-cutlery">
 
 ## Overview
 
-Check out the new features and enhancements for Rundeck Enterprise and Rundeck Community included in this release.
+We’ve launched some tasty new features and enhancements in Rundeck version 3.4 and we aren’t done yet. The 3.4 party continues with version 3.4.4 which includes not-to-be-missed features. Read on to see what 3.4.4 has to offer!
 
 ### Expanded Cloud Infrastructure plugins [Enterprise]
 
-This release includes new **Cloud Infrastructure** plugins that add coverage for **Oracle Cloud** and **Google Cloud** platforms and expands coverage within the **Amazon Web Services** and **Azure** platforms.
+To better support cloud automation at scale, we’ve significantly expanded our cloud plugins for popular public clouds. This release includes new cloud infrastructure plugins that add coverage for **Oracle Cloud** and **Google Cloud** platforms and expands coverage within the **Amazon Web Services** and **Azure** platforms.
+
+Now users can automate infrastructure tasks in their preferred cloud provider, benefit from connecting cloud operations to IT process workflows, and even turn cloud service requests into self-service operations for end users.
 
 ![AWS/Azure/OCI/GCP](@assets/img/relnotes-344-4clouds.png)
 
 ### New UI based Ruleset Designer [Enterprise]
 
-In version 3.4.2 we introduced the Ruleset Visualization capability as part of our incubating features program.  With this 3.4.4 release it's now possible to **use the GUI to design your Ruleset** and generate the rules automatically.
+Jobs with complicated rule steps and conditionals can be hard to understand. To help users better visualize potential pathways according to step rules and conditions, we introduced the Ruleset Visualization as an incubating feature in 3.4.2. With the 3.4.4 release it's now possible to **use the GUI to design your Ruleset** and generate the rules automatically!
 
 ![Ruleset Designer](@assets/img/relnotes-344-rulesetdesigner.gif)
 
 ### Accessible Colors
 
-We have updated our color palette with new colors to enhance the contrast and overall visual presence of Rundeck.  We'll let these before and after pictures speak for themselves.
+We’ve updated our color palette with new colors. This update helps make Rundeck more accessible to people with disabilities by enhancing the contrast and overall visual presence of Rundeck. We think the updated color palette looks pretty good too! 
 
 ![Before Color Changes](@assets/img/relnotes-344-before.png)
 
