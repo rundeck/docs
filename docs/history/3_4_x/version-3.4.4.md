@@ -13,7 +13,7 @@ We’ve launched some tasty new features and enhancements in Rundeck version 3.4
 
 To better support cloud automation at scale, we’ve significantly expanded our cloud plugins for popular public clouds. This release includes new cloud infrastructure plugins that add coverage for **Oracle Cloud** and **Google Cloud** platforms and expands coverage within the **Amazon Web Services** and **Azure** platforms.
 
-Now users can automate infrastructure tasks in their preferred cloud provider, benefit from connecting cloud operations to IT process workflows, and even turn cloud service requests into self-service operations for end users.
+With these updates, Rundeck users can apply a single script to multiple nodes and can perform similar actions across multiple clouds which, overlaid with other resource contexts, provides users with the ability to create automated processes that span multiple domains.
 
 ![AWS/Azure/OCI/GCP](@assets/img/relnotes-344-4clouds.png)
 
@@ -25,7 +25,7 @@ Jobs with complicated rule steps and conditionals can be hard to understand. To 
 
 ### Accessible Colors
 
-We’ve updated our color palette with new colors. This update helps make Rundeck more accessible to people with disabilities by enhancing the contrast and overall visual presence of Rundeck. We think the updated color palette looks pretty good too! 
+We’ve updated our color palette with new colors. This update helps make Rundeck more accessible to people with disabilities by enhancing the contrast and overall visual presence of Rundeck. We think the updated color palette looks pretty good too!
 
 ![Before Color Changes](@assets/img/relnotes-344-before.png)
 
