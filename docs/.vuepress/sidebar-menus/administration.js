@@ -191,6 +191,8 @@ module.exports = [{
             '/administration/projects/resource-model-sources/node-wizard',
             '/administration/projects/resource-model-sources/aws',
             '/administration/projects/resource-model-sources/azure',
+            '/administration/projects/resource-model-sources/gcp',
+            '/administration/projects/resource-model-sources/oracle',
             '/administration/projects/resource-model-sources/datadog',
             '/administration/projects/resource-model-sources/servicenow',
             '/administration/projects/resource-model-sources/vmware',

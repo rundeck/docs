@@ -2,7 +2,10 @@
 
 ## Node Steps
 
+- [AWS EC2 Node Step Plugin](/manual/node-steps/aws.md)
 - [Azure Node Step Plugins (Enterprise)](/manual/node-steps/azure.md)
+- [Google Cloud Platform Plugins (Enterprise)](/manual/node-steps/gcp.md)
+- [Oracle Cloud Node Steps plugins (Enterprise)](/manual/node-steps/oracle.md)
 - [Datadog Node Step Plugins (Enterprise)](/manual/node-steps/datadog.md)
 - [Jira Node Step Plugins (Enterprise)](/manual/node-steps/jira.md)
 - [Sensu Node Step Plugins (Enterprise)](/manual/node-steps/sensu.md)
@@ -21,7 +24,10 @@
 
 ## Workflow Steps
 
-- [Azure Job Steps (Enterprise)](/manual/workflow-steps/azure.md#azure-job-steps)
+- [Amazon Web Services(Enterprise)](/manual/workflow-steps/aws.md)
+- [Azure Job Steps (Enterprise)](/manual/workflow-steps/azure.md)
+- [Google Cloud Platform (Enterprise)](/manual/workflow-steps/gcp.md)
+- [Oracle Cloud Infrastructure(Enterprise)](/manual/workflow-steps/oracle.md)
 - [Datadog Workflow Step Plugins (Enterprise)](/manual/workflow-steps/datadog.md)
 - [File Transfer (Enterprise)](/manual/workflow-steps/file-transfer.md)
 - [Github (Enterprise)](/manual/workflow-steps/github.md)
