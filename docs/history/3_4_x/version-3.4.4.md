@@ -27,9 +27,7 @@ Jobs with complicated rule steps and conditionals can be hard to understand. To 
 
 We’ve updated our color palette with new colors. This update helps make Rundeck more accessible to people with disabilities by enhancing the contrast and overall visual presence of Rundeck. We think the updated color palette looks pretty good too!
 
-![Before Color Changes](@assets/img/relnotes-344-before.png)
-
-![After Color Changes](@assets/img/relnotes-344-after.png)
+![Before Color Changes](@assets/img/relnotes-344-beforeafter.gif)
 
 ## Enterprise Updates
 
