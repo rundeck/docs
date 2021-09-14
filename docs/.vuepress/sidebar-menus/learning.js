@@ -73,7 +73,8 @@ module.exports = [{
               '/learning/howto/using-webhooks.md',
               '/learning/howto/pagerduty-notification.md',
               '/learning/howto/using-ansible.md',
-              '/learning/howto/config-sn-nodesource.md'
+              '/learning/howto/config-sn-nodesource.md',
+              '/learning/howto/configure-gcp-plugins.md'
           ]
         },
         {
