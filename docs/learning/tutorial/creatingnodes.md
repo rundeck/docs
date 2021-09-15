@@ -53,7 +53,7 @@ Included in Enterprise is the Node Wizard Node Source.  Use that to add a new no
     ```
 1. Duplicate that entry again changing all the `node1` values to `node2`.
 
->YAML is specific about tabs so be sure to check your formatting.
+>YAML is specific about indentation so be sure to check your formatting.  (tip: use **two spaces** not a _tab_)
 
 :::
 ::::
