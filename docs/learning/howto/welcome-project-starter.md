@@ -14,14 +14,12 @@ Before starting, knowing basic Rundeck terminology is useful. All basic concepts
 
 ### Pre-requisites
 
-The Welcome Project requires:
-
-*   Docker Desktop - the open platform for developing, shipping, and running applications on containers, [find information on installing it on your operating system here](https://www.docker.com/products/docker-desktop).
+*   **Docker Desktop** - the open platform for developing, shipping, and running applications on containers, [find information on installing it on your operating system here](https://www.docker.com/products/docker-desktop).
 
 
 ## Installing the Welcome Project
 
-To install the Welcome Project you need to download the latest release of the Welcome Project.
+To install the Welcome Project you need to download the latest release:
 
 :::: tabs
 ::: tab Community Welcome Project
@@ -78,6 +76,8 @@ If you want to see Rundeck logs in real-time, open a new terminal window and exe
 docker logs -f rundeck
 ```
 
+> Alternatively leave off the `-d` from the `docker-compose up` command above and all the logs will be printed on screen.
+
 ## Accessing Welcome Project (note the images are for the Enterprise Welcome Project)
 
 To access Rundeck, head to[ http://localhost:4440](http://localhost:4440) in your web browser.
@@ -127,7 +127,7 @@ In the left nav bar the options available are:
 
 ## Familiarize Yourself with Rundeck!
 
-Once your environment is fully operational, you [start the Tutorial here](https://docs.rundeck.com/docs/learning/tutorial/preparing.html).
+Once your environment is fully operational, [start the Tutorial here](https://docs.rundeck.com/docs/learning/tutorial/preparing.html).
 
 ## Stop the Environment
 
