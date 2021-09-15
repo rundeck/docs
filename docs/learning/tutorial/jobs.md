@@ -12,9 +12,9 @@ Rundeck lets you organize and execute Jobs and observe the progress as the Job i
 Now that we have multiple nodes let's run a job against those nodes.
 
 1. Click the **Jobs** in the left navigation menu.
-1. Under the **Demo/Linux** folder find the _Gather Linux Versions_ job.
+1. Under the _Demo/Linux_ folder find the **Gather Linux Versions** job.
 1. Click on the Name of the job.
-1. Click Run Job Now.
+1. Click **Run Job Now**.
 1. This will output version information about the Server node and your other new nodes.
 
 There are additional example jobs in the Welcome Project that gather performance metrics and check the status of services to explore as well.
@@ -22,9 +22,9 @@ There are additional example jobs in the Welcome Project that gather performance
 :::
 ::: tab Community Exercise:
 1. Click the **Jobs** in the left navigation menu.
-1. Under the **Administration/Linux** folder find the _Gather Linux Versions_ job.
+1. Under the _Administration/Linux_ folder find the **Gather Linux Versions** job.
 1. Click on the Name of the job.
-1. Click Run Job Now.
+1. Click **Run Job Now**.
 1. This will output version information about the Server node and your other new nodes.
 
 There are additional example jobs in the Welcome Project that gather performance metrics and check the status of services to explore as well.
