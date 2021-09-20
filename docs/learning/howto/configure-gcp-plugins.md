@@ -11,7 +11,7 @@ This How To will highlight some of the key steps to configuring the Google Cloud
 This How To is based on the Rundeck Enterprise [Welcome Projects](/learning/howto/welcome-project-starter.md).
 
 - Rundeck Welcome Project version 1.5<br>
-    _(Rundeck Enterprise 3.4.4 is min version with GCP plugins)_
+    _(Rundeck Enterprise 3.4.4 is min product version)_
 - Administrative access to a Google Cloud environment
 - Create at least one [Virtual Machine Instance](https://cloud.google.com/compute/docs/instances) and note which _Zone_ it is created in.
 
