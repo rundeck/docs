@@ -7,7 +7,7 @@ Name: <span style="color: chartreuse"><span class="glyphicon glyphicon-cutlery">
 
 ## Overview
 
-We’ve launched some tasty new features and enhancements in Rundeck version 3.4 and we aren’t done yet. The 3.4 party continues with version 3.4.4 which includes not-to-be-missed features. Read on to see what 3.4.4 has to offer!
+Rundeck version 3.4 has been packed full of exciting enhancements and new features and 3.4.4 is no exception. This release includes not-to-be-missed features for Enterprise and Community. Read the release notes below to see what 3.4.4 has to offer.
 
 ### Expanded Cloud Infrastructure plugins [Enterprise]
 
