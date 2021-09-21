@@ -31,6 +31,7 @@ We’ve updated our color palette with new colors. This update helps make Rundec
 
 ## Enterprise Updates
 
+* Our [ServiceNow Application](/manual/integrations/servicenow-app.md), which allows triggering automation from any ServiceNow screen, is now **Quebec** certified.
 * Adding new GCP, Oracle, AWS Steps and Node Sources
 * Show error page if not authorized to access System Configuration page.
 * Upgrade pywinrm plugin to 2.0.14
