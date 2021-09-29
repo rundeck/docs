@@ -1142,19 +1142,21 @@ Create or update configs and properties. Invalid config data is ignored.
 
 **JSON Content:**
 ```json
-{
-  "props": [
-    {
-      "key": "myCustomConfig",
-      "value": "newValueForCustomConfig",
-      "strata": "default"
-    },
-    {
-      "key": "myNewCustomConfig",
-      "value": "valueOfNewCustomConfig",
-      "strata": "default"
-    }
-  ]
+[
+  {
+    "key": "myCustomConfig",
+    "value": "newValueForCustomConfig",
+    "strata": "default"
+  },
+  {
+    "key": "myNewCustomConfig",
+    "value": "valueOfNewCustomConfig",
+    "strata": "default"
+  },
+  {
+    "key": "myIncompleteData"
+  }
+]
 ```
 
 **Response**
@@ -1167,7 +1169,21 @@ _Successful_
 
 ```json
 {
-    "msg":"saved"
+  "msg":"saved",
+  "created": [
+    {
+      "key": "myNewCustomConfig",
+      "value": "valueOfNewCustomConfig",
+      "strata": "default"
+    }
+  ],
+  "updated": [
+    {
+      "key": "myCustomConfig",
+      "value": "newValueForCustomConfig",
+      "strata": "default"
+    }
+  ]
 }
 ```
 
