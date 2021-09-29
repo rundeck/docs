@@ -1083,6 +1083,10 @@ List all existing configs and their properties.
 
 **Response:**
 
+_Successful_
+
+    200 OK
+
 `Content-Type: application/json`:
 
 ```json
@@ -1116,9 +1120,21 @@ List all existing configs and their properties.
 ]
 ```
 
+_API Key has insufficent permissions_
+
+    401 Unathorized
+
+`Content-Type: application/json`:
+
+```json
+{
+  "msg":"Unauthorized"
+}
+```
+
 
 ### Save configs ####
-Create or update configs and properties.
+Create or update configs and properties. Invalid config data is ignored.
 
 **Request:**
 
@@ -1139,10 +1155,13 @@ Create or update configs and properties.
       "strata": "default"
     }
   ]
-}
 ```
 
 **Response**
+
+_Successful_
+
+    200 OK
 
 `Content-Type: application/json`:
 
@@ -1152,45 +1171,18 @@ Create or update configs and properties.
 }
 ```
 
-### List configmeta.json configs ####
-Lists only config details included from configmeta.json.
+_API Key has insufficent permissions_
 
-**Request:**
-
-    GET api/36/config/metaList
-
-**Response**
+    401 Unathorized
 
 `Content-Type: application/json`:
 
 ```json
-[
-  {
-    "key": "rundeck.api.tokens.duration.max",
-    "visibility": "Advanced",
-    "category": "API",
-    "strata": "default",
-    "required": false,
-    "restart": true,
-    "label": "API Token Duration Max",
-    "datatype": "String",
-    "encrypted": false,
-    "defaultValue": ""
-  },
-  {
-    "key": "rundeck.nodeService.nodeCache.enabled",
-    "visibility": "Advanced",
-    "category": "Cache",
-    "strata": "default",
-    "required": false,
-    "restart": true,
-    "label": "Node Cache",
-    "datatype": "Boolean",
-    "encrypted": false,
-    "defaultValue": ""
-  }
-]
- ```
+{
+  "msg":"Unauthorized"
+}
+```
+
 ### Delete a single config ####
 
 Delete a single config by key and strata.
@@ -1209,11 +1201,34 @@ Delete a single config by key and strata.
 
 **Response**
 
+_Successful_
+
 `Content-Type: application/json`:
 
-``` json
+_API Key has insufficent permissions_
+
+    401 Unathorized
+
+`Content-Type: application/json`:
+
+```json
 {
-    "msg": "Deleted!!"
+  "msg":"Unauthorized"
+}
+```
+
+_Config key and strata are not found_
+
+    404 Not Found
+
+`Content-Type: application/json`:
+
+```json
+{
+  "error":true,
+  "apiversion":40,
+  "errorCode":"rundeckpro.config.api.error.not.found",
+  "message":"System Configuration Not Found"
 }
 ```
 ### Config Refresh ####
@@ -1226,11 +1241,27 @@ Make the Rundeck server re-read the config properties file.
 
 **Response**
 
+_Successful_
+
+    200 OK
+
 `Content-Type: application/json`:
 
 ``` json
 {
     "msg": "Rundeck configuration refreshed"
+}
+```
+
+_API Key has insufficent permissions_
+
+    401 Unathorized
+
+`Content-Type: application/json`:
+
+```json
+{
+  "msg":"Unauthorized"
 }
 ```
 
@@ -1244,12 +1275,28 @@ Restart the Rundeck server.
     
 **Response**
 
+_Successful_
+
+    200 OK
+
 `Content-Type: application/json`:
 
 ``` json
 {
   "msg": "Rundeck Restarting",
   "restarting":true
+}
+```
+
+_API Key has insufficent permissions_
+
+    401 Unathorized
+
+`Content-Type: application/json`:
+
+```json
+{
+  "msg":"Unauthorized"
 }
 ```
 
