@@ -1069,14 +1069,161 @@ Response:
 
     204 No Content
     
-## Config Refresh ##
+
+## Config Management ###
+Manage your plugin and custom configuration properties via API.
+
+
+### List configs ####
+List all existing configs and their properties.
+
+**Request:**
+
+    GET api/36/config/list
+
+**Response:**
+
+`Content-Type: application/json`:
+
+```json
+[
+    {
+    "key": "rundeck.nodeService.nodeCache.enabled",
+    "visibility": "Advanced",
+    "category": "Cache",
+    "strata": "default",
+    "required": false,
+    "restart": true,
+    "label": "Node Cache",
+    "datatype": "Boolean",
+    "encrypted": false,
+    "defaultValue": ""
+  },
+  {
+    "key": "myCustomConfig",
+    "value": "myConfigValue",
+    "strata": "Server",
+    "category": "Custom",
+    "visibility": "Custom"
+  },
+  {
+    "key": "myCustomConfig2",
+    "value": "myConfigValue2",
+    "strata": "default",
+    "category": "Custom",
+    "visibility": "Custom"
+  }
+]
+```
+
+
+### Save configs ####
+Create or update configs and properties.
+
+**Request:**
+
+    POST api/36/config/save
+
+**JSON Content:**
+```json
+{
+  "props": [
+    {
+      "key": "myCustomConfig",
+      "value": "newValueForCustomConfig",
+      "strata": "default"
+    },
+    {
+      "key": "myNewCustomConfig",
+      "value": "valueOfNewCustomConfig",
+      "strata": "default"
+    }
+  ]
+}
+```
+
+**Response**
+
+`Content-Type: application/json`:
+
+```json
+{
+    "msg":"saved"
+}
+```
+
+### List configmeta.json configs ####
+Lists only config details included from configmeta.json.
+
+**Request:**
+
+    GET api/36/config/metaList
+
+**Response**
+
+`Content-Type: application/json`:
+
+```json
+[
+  {
+    "key": "rundeck.api.tokens.duration.max",
+    "visibility": "Advanced",
+    "category": "API",
+    "strata": "default",
+    "required": false,
+    "restart": true,
+    "label": "API Token Duration Max",
+    "datatype": "String",
+    "encrypted": false,
+    "defaultValue": ""
+  },
+  {
+    "key": "rundeck.nodeService.nodeCache.enabled",
+    "visibility": "Advanced",
+    "category": "Cache",
+    "strata": "default",
+    "required": false,
+    "restart": true,
+    "label": "Node Cache",
+    "datatype": "Boolean",
+    "encrypted": false,
+    "defaultValue": ""
+  }
+]
+ ```
+### Delete a single config ####
+
+Delete a single config by key and strata.
+
+**Request:**
+
+    DELETE /api/36/config/delete
+
+**JSON Content:**
+```json
+  {
+    "key": "myCustomConfig",
+    "strata": "default"
+  }
+```
+
+**Response**
+
+`Content-Type: application/json`:
+
+``` json
+{
+    "msg": "Deleted!!"
+}
+```
+### Config Refresh ####
 
 Make the Rundeck server re-read the config properties file.
 
 **Request:**
 
     POST /api/36/config/refresh
-    
+
 **Response**
 
 `Content-Type: application/json`:
@@ -1086,6 +1233,26 @@ Make the Rundeck server re-read the config properties file.
     "msg": "Rundeck configuration refreshed"
 }
 ```
+
+### App Restart ####
+
+Restart the Rundeck server.
+
+**Request:**
+
+    POST /api/36/config/restart
+    
+**Response**
+
+`Content-Type: application/json`:
+
+``` json
+{
+  "msg": "Rundeck Restarting",
+  "restarting":true
+}
+```
+
         
 
 ## System Info ###
