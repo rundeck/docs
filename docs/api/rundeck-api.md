@@ -1126,7 +1126,7 @@ Headers
 Body
 ```json
 {
-  "msg":"saved",
+  "msg":"Saved, with some configs ignored",
   "created": [
     {
       "key": "myNewCustomConfig",
@@ -1140,9 +1140,19 @@ Body
       "value": "newValueForCustomConfig",
       "strata": "default"
     }
-  ]
+  ],
+  "ignored": [
+    {
+      "key": "myIncompleteData"
+    }
+  ],
 }
 ```
+---
+    400 Bad Request
+
+All configs were formatted in an invalid way and were ignored. Check your request data and try again.
+
 ---
     401 Unathorized
 
