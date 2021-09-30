@@ -1073,22 +1073,178 @@ Response:
 ## Config Management ###
 Manage your plugin and custom configuration properties via API.
 
+### Create or Update Configurations ####
+    POST api/36/config/save
+Create or update configs and properties. Invalid config data is ignored.
 
-### List configs ####
+**Request:**
+
+Headers
+* `Content-Type` Required
+  * Accepts: `application/json`
+
+Body
+* `key` Required
+  * Represents either a new config to be created, or an existing config to be updated.
+  * Accepts: Any `string`
+* `value` Required
+  * The value for the desired config `key`.
+  * Accepts: Any `string`
+* `strata` Optional
+  * Whether the config should apply to the current server (`Server`), or to all servers in the cluster (`default`).
+  * Accepts: `Server`, `default`
+  * Default: `default`
+
+Example JSON
+```json
+[
+  {
+    "key": "myCustomConfig",
+    "value": "newValueForCustomConfig",
+    "strata": "default"
+  },
+  {
+    "key": "myNewCustomConfig",
+    "value": "valueOfNewCustomConfig",
+    "strata": "default"
+  },
+  {
+    "key": "myIncompleteData"
+  }
+]
+```
+
+**Responses**
+
+    200 OK
+
+One or more configs were successfully saved or updated. A payload reflecting save or creation status is returned.
+
+Headers  
+`Content-Type: application/json`:
+
+Body
+```json
+{
+  "msg":"saved",
+  "created": [
+    {
+      "key": "myNewCustomConfig",
+      "value": "valueOfNewCustomConfig",
+      "strata": "default"
+    }
+  ],
+  "updated": [
+    {
+      "key": "myCustomConfig",
+      "value": "newValueForCustomConfig",
+      "strata": "default"
+    }
+  ]
+}
+```
+---
+    401 Unathorized
+
+API Key is associated with a user or role with insufficent permissions to perform the action.
+
+Headers  
+`Content-Type: application/json`
+
+Body
+```json
+{
+  "msg":"Unauthorized"
+}
+```
+
+### Delete a Single Config ####
+    DELETE /api/36/config/delete
+
+Delete a single config by key and strata.
+
+**Request:**
+
+Headers
+* `Content-Type` Required
+  * Accepts: `application/json`
+
+Body
+* `key` Required
+  * Represents the config to be deleted.
+  * Accepts: Any `string`
+* `strata` Optional
+  * Whether the config should apply to the current server (`Server`), or to all servers in the cluster (`default`).
+  * Accepts: `Server`, `default`
+  * Default: `default`
+
+Example JSON
+```json
+  {
+    "key": "myCustomConfig",
+    "strata": "default"
+  }
+```
+
+**Response**
+
+    204 No Content
+
+The config was deleted successfully.
+
+---
+    401 Unathorized
+
+API Key is associated with a user or role with insufficent permissions to perform the action.
+
+Headers  
+`Content-Type: application/json`
+
+Body
+```json
+{
+  "msg":"Unauthorized"
+}
+```
+
+---
+    404 Not Found
+
+A config with the input config key was not found.
+
+Headers  
+`Content-Type: application/json`
+
+Body
+```json
+{
+  "error":true,
+  "apiversion":40,
+  "errorCode":"rundeckpro.config.api.error.not.found",
+  "message":"System Configuration Not Found"
+}
+```
+
+### List All Current Configurations ####
+    GET api/36/config/list
 List all existing configs and their properties.
 
 **Request:**
 
-    GET api/36/config/list
+Headers
+* `Content-Type` Optional
+  * Accepts: `application/json`
 
-**Response:**
-
-_Successful_
+**Responses:**
 
     200 OK
 
-`Content-Type: application/json`:
+Call was successful. A list of all configs is returned.
 
+Headers  
+`Content-Type: application/json`
+
+Body
 ```json
 [
     {
@@ -1120,203 +1276,107 @@ _Successful_
 ]
 ```
 
-_API Key has insufficent permissions_
-
+---
     401 Unathorized
 
-`Content-Type: application/json`:
+API Key is associated with a user or role with insufficent permissions to perform the action.
 
+Headers
+
+`Content-Type: application/json`
+
+Body
 ```json
 {
   "msg":"Unauthorized"
 }
 ```
 
-
-### Save configs ####
-Create or update configs and properties. Invalid config data is ignored.
-
-**Request:**
-
-    POST api/36/config/save
-
-**JSON Content:**
-```json
-[
-  {
-    "key": "myCustomConfig",
-    "value": "newValueForCustomConfig",
-    "strata": "default"
-  },
-  {
-    "key": "myNewCustomConfig",
-    "value": "valueOfNewCustomConfig",
-    "strata": "default"
-  },
-  {
-    "key": "myIncompleteData"
-  }
-]
-```
-
-**Response**
-
-_Successful_
-
-    200 OK
-
-`Content-Type: application/json`:
-
-```json
-{
-  "msg":"saved",
-  "created": [
-    {
-      "key": "myNewCustomConfig",
-      "value": "valueOfNewCustomConfig",
-      "strata": "default"
-    }
-  ],
-  "updated": [
-    {
-      "key": "myCustomConfig",
-      "value": "newValueForCustomConfig",
-      "strata": "default"
-    }
-  ]
-}
-```
-
-_API Key has insufficent permissions_
-
-    401 Unathorized
-
-`Content-Type: application/json`:
-
-```json
-{
-  "msg":"Unauthorized"
-}
-```
-
-### Delete a single config ####
-
-Delete a single config by key and strata.
-
-**Request:**
-
-    DELETE /api/36/config/delete
-
-**JSON Content:**
-```json
-  {
-    "key": "myCustomConfig",
-    "strata": "default"
-  }
-```
-
-**Response**
-
-_Successful_
-
-`Content-Type: application/json`:
-
-_API Key has insufficent permissions_
-
-    401 Unathorized
-
-`Content-Type: application/json`:
-
-```json
-{
-  "msg":"Unauthorized"
-}
-```
-
-_Config key and strata are not found_
-
-    404 Not Found
-
-`Content-Type: application/json`:
-
-```json
-{
-  "error":true,
-  "apiversion":40,
-  "errorCode":"rundeckpro.config.api.error.not.found",
-  "message":"System Configuration Not Found"
-}
-```
-### Config Refresh ####
+### Refresh Configurations from Properties File ####
+    POST /api/36/config/refresh
 
 Make the Rundeck server re-read the config properties file.
 
 **Request:**
 
-    POST /api/36/config/refresh
+Headers
+* `Content-Type` Optional
+  * Accepts: `application/json`
 
 **Response**
 
-_Successful_
-
     200 OK
+
+The call was successful. Rundeck will reread the config properties file.
+
+Headers
 
 `Content-Type: application/json`:
 
+Body
 ``` json
 {
     "msg": "Rundeck configuration refreshed"
 }
 ```
-
-_API Key has insufficent permissions_
-
+---
     401 Unathorized
 
-`Content-Type: application/json`:
+API Key is associated with a user or role with insufficent permissions to perform the action.
 
+Headers
+
+`Content-Type: application/json`
+
+Body
 ```json
 {
   "msg":"Unauthorized"
 }
 ```
 
-### App Restart ####
 
+### Restart the Rundeck Server ####
+    POST /api/36/config/restart
 Restart the Rundeck server.
 
 **Request:**
 
-    POST /api/36/config/restart
-    
-**Response**
+Headers
+* `Content-Type` Optional
+  * Accepts: `application/json`
 
-_Successful_
+**Response**
 
     200 OK
 
+The call was successful. The Rundeck server will immediately restart.
+
+Headers
+
 `Content-Type: application/json`:
 
+Body
 ``` json
 {
   "msg": "Rundeck Restarting",
   "restarting":true
 }
 ```
-
-_API Key has insufficent permissions_
-
+---
     401 Unathorized
 
-`Content-Type: application/json`:
+API Key is associated with a user or role with insufficent permissions to perform the action.
 
+Headers  
+`Content-Type: application/json`
+
+Body
 ```json
 {
   "msg":"Unauthorized"
 }
 ```
-
-        
 
 ## System Info ###
 
