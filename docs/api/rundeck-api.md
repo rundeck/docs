@@ -1075,7 +1075,7 @@ Manage your plugin and custom configuration properties via API.
 
 ### Create or Update Configurations ####
     POST api/36/config/save
-Create or update configs and properties. Invalid config data is ignored.
+Create or update configs and properties. POST fails if any configs are invalid.
 
 **Request:**
 
@@ -1107,9 +1107,6 @@ Example JSON
     "key": "myNewCustomConfig",
     "value": "valueOfNewCustomConfig",
     "strata": "default"
-  },
-  {
-    "key": "myIncompleteData"
   }
 ]
 ```
@@ -1118,7 +1115,7 @@ Example JSON
 
     200 OK
 
-One or more configs were successfully saved or updated. A payload reflecting save or creation status is returned.
+All configs were successfully saved or updated. A payload reflecting save or creation status is returned.
 
 Headers  
 `Content-Type: application/json`:
@@ -1126,7 +1123,7 @@ Headers
 Body
 ```json
 {
-  "msg":"Saved, with some configs ignored",
+  "msg":"Saved",
   "created": [
     {
       "key": "myNewCustomConfig",
@@ -1140,18 +1137,13 @@ Body
       "value": "newValueForCustomConfig",
       "strata": "default"
     }
-  ],
-  "ignored": [
-    {
-      "key": "myIncompleteData"
-    }
-  ],
+  ]
 }
 ```
 ---
     400 Bad Request
 
-All configs were formatted in an invalid way and were ignored. Check your request data and try again.
+Some or all configs were formatted in an invalid way and were ignored. Check your request data and try again.
 
 ---
     401 Unathorized
@@ -1256,34 +1248,36 @@ Headers
 
 Body
 ```json
-[
-    {
-    "key": "rundeck.nodeService.nodeCache.enabled",
-    "visibility": "Advanced",
-    "category": "Cache",
-    "strata": "default",
-    "required": false,
-    "restart": true,
-    "label": "Node Cache",
-    "datatype": "Boolean",
-    "encrypted": false,
-    "defaultValue": ""
+{
+  "Plugins": {
+    "AWS": [
+      {
+      "key": "rundeck.nodeService.nodeCache.enabled",
+      "strata": "default",
+      "label": "Node Cache",
+      "value": true
+    }
+    ]
   },
-  {
-    "key": "myCustomConfig",
-    "value": "myConfigValue",
-    "strata": "Server",
-    "category": "Custom",
-    "visibility": "Custom"
-  },
-  {
-    "key": "myCustomConfig2",
-    "value": "myConfigValue2",
-    "strata": "default",
-    "category": "Custom",
-    "visibility": "Custom"
+  "Custom": {
+    "": [
+      {
+        "key": "myCustomConfig",
+        "value": "myConfigValue",
+        "strata": "Server",
+        "category": "Custom",
+        "visibility": "Custom"
+      },
+      {
+        "key": "myCustomConfig2",
+        "value": "myConfigValue2",
+        "strata": "default",
+        "category": "Custom",
+        "visibility": "Custom"
+      }
+    ]
   }
-]
+}
 ```
 
 ---
