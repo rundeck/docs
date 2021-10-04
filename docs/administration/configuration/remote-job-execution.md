@@ -230,3 +230,12 @@ Recommended cypher modes:
 - AES128_CBC (default)
 
 Other available cyphers: https://www.bouncycastle.org/docs/pkixdocs1.5on/org/bouncycastle/cms/CMSAlgorithm.html
+
+**Cleanup process for cluster remote execution messages**
+
+A property is available to set a timer to cleanup the remote execution messages when running on cluster mode. Unit of meassure is in minutes with a default value of '30', in order to change this value, you need to add the following property in rundeck-config.properties file and set the desired value.
+
+The user could want to change this value to keep a longer track of remote executions, for auditoring or troubleshooting purposes.
+```
+rundeck.clusterMode.remoteExecution.cleanup.older.messages=25
+```
