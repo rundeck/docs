@@ -168,7 +168,7 @@ The example defines four groups, each with 25% of the members. The weights defin
 When forwarding executions which include [Secure Options](/manual/job-options.md#secure-options), option values will be delivered
 between cluster members using encrypted messaging by default.
 
-This behavior and the encryption configuration can be changed configuring the following parameters in `rundeck-config.properties`: 
+This behavior and the encryption configuration can be changed configuring the following parameters in `rundeck-config.properties`:
 
 #### Disable encrypted messaging
 
@@ -233,9 +233,9 @@ Other available cyphers: https://www.bouncycastle.org/docs/pkixdocs1.5on/org/bou
 
 **Cleanup process for cluster remote execution messages**
 
-A property is available to set a timer to cleanup the remote execution messages when running on cluster mode. Unit of meassure is in minutes with a default value of '30', in order to change this value, you need to add the following property in rundeck-config.properties file and set the desired value.
+A property is available to set a timer to cleanup the remote execution messages when running on cluster mode. Unit of measure is in minutes with a default value of '30', in order to change this value, you need to add the following property in rundeck-config.properties file and set the desired value.
 
-The user could want to change this value to keep a longer track of remote executions, for auditoring or troubleshooting purposes.
+The user could want to change this value to keep a longer track of remote executions, for auditing or troubleshooting purposes.
 ```
 rundeck.clusterMode.remoteExecution.cleanup.older.messages=25
 ```
