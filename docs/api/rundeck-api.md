@@ -1125,18 +1125,10 @@ Body
 {
   "msg":"Saved",
   "created": [
-    {
-      "key": "myNewCustomConfig",
-      "value": "valueOfNewCustomConfig",
-      "strata": "default"
-    }
+    "myNewCustomConfig"
   ],
   "updated": [
-    {
-      "key": "myCustomConfig",
-      "value": "newValueForCustomConfig",
-      "strata": "default"
-    }
+    "myCustomConfig"
   ]
 }
 ```
