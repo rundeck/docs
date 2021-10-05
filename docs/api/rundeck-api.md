@@ -1251,36 +1251,27 @@ Headers
 
 Body
 ```json
-{
-  "Plugins": {
-    "AWS": [
-      {
-      "key": "rundeck.nodeService.nodeCache.enabled",
-      "strata": "default",
-      "label": "Node Cache",
-      "value": true
-    }
-    ]
+[
+  {
+    "name": "azure.clientId",
+    "value": "test222236",
+    "level": "default",
+    "label": "Azure Client ID",
+    "category": "Plugins/Azure"
   },
-  "Custom": {
-    "": [
-      {
-        "key": "myCustomConfig",
-        "value": "myConfigValue",
-        "strata": "Server",
-        "category": "Custom",
-        "visibility": "Custom"
-      },
-      {
-        "key": "myCustomConfig2",
-        "value": "myConfigValue2",
-        "strata": "default",
-        "category": "Custom",
-        "visibility": "Custom"
-      }
-    ]
+  {
+    "name": "myCustomConfig",
+    "value": "myConfigValue",
+    "level": "default",
+    "category": "Custom",
+  },
+  {
+    "name": "myCustomConfig2",
+    "value": "myConfigValue2",
+    "level": "default",
+    "category": "Custom",
   }
-}
+]
 ```
 
 ---
