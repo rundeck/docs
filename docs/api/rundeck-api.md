@@ -1241,7 +1241,10 @@ Headers
 
     200 OK
 
-Call was successful. A list of all configs is returned.
+Call was successful. A list of all configs stored using Configuration Management is returned.
+
+_NOTE: For a complete list of all configs, reference the System Report page in Rundeck._
+
 
 Headers  
 `Content-Type: application/json`
@@ -1312,6 +1315,8 @@ Headers
     200 OK
 
 The call was successful. Rundeck will reread the config properties file.
+
+_NOTE: Some config changes will not go into effect after a reload, and require a full restart of Rundeck._
 
 Headers
 
