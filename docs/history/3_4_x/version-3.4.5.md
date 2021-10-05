@@ -13,11 +13,21 @@ Check out the new features and enhancements for Rundeck Enterprise and Rundeck C
 
 Continuing with our Redesign efforts started in 3.4.0, Configuration Management has been fully revamped with an improved UI/UX.
 
+![System Configuration Updated](@assets/img/relnotes-345-sysconfig.png)
+
 ## Dark Mode!!
 
 So many users have asked for this that one of our rock-star devs decided to use his Hackweek time and make it happen!!
 
-## New A
+![Dark Mode](@assets/img/relnotes-345-darkmode.png)
+
+## New AWS Actions
+
+Continuing our enhancements to Amazon Web Services these new job steps enable new functionality to automate your digital operations strategy.
+
+- Create EC2 Resources from Snapshot
+- Enable Audit Trail Logs
+- Enable VPC Logs
 
 ## Enterprise Updates
 
