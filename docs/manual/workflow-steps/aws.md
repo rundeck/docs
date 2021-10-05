@@ -37,4 +37,22 @@ Terminate the EC2 instance.
 
 Captures a Snapshot of the specified instance.
 
-Need to provide **Snapshot Name** for the newly created Snapshot, and **Volume ID** that the snapshot will be taken from.
+Provide a **Snapshot Name** for the newly created Snapshot, and **Volume ID** that the snapshot will be taken from.
+
+## AWS / Cloud / Audit / Trail / Logs
+
+Creates a log stream for the specified log group using log group name and log stream name.
+
+Include the **Log Group Name** and **Log Stream Name**
+
+## Aws / Configure / Vpc / Logs / Instance / Groups
+
+
+
+## Aws / Create / Resource
+
+Create EC2 resource from existing snapshots
+
+## Aws / EnableVpc / NetworkPeering
+
+Enable vpc or network peering for inter-region for AWS cloud instance.  I
