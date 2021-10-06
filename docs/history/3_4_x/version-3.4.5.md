@@ -11,7 +11,7 @@ Check out the new features and enhancements for Rundeck Enterprise and Rundeck C
 
 ## Configuration Management UI/UX
 
-Continuing with our Redesign efforts started in 3.4.0, Configuration Management has been fully revamped with an improved UI/UX.
+Continuing with our Redesign efforts started in 3.4.0, [Configuration Management](/manual/configuration-mgmt/configmgmt.md) has been fully revamped with an improved UI/UX.
 
 ![System Configuration Updated](@assets/img/relnotes-345-sysconfig.png)
 
