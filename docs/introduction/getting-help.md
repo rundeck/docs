@@ -10,8 +10,8 @@ Rundeck Enterprise is the only way to get professional support from the creators
 
 Sometimes questions have already been answered use these resources to engage with the Rundeck community.
 
-### Ask the Experts
-Each month, Rundeck offers one hour of free online support for our community members.  First Thursday of every month.  [Register today](https://www.rundeck.com/en-us/asktherundeckexpert) and pre-submit your questions.
+### Rundeck Office Hours
+Live Rundeck support on the first Thursday of every month. Deep dive product demos and a panel of technical experts to support the Rundeck community. [Register today](https://www.rundeck.com/rundeck-office-hours) and pre-submit your questions.
 
 ### Open Discussion Q&A
 - [https://stackoverflow.com/questions/tagged/rundeck](https://stackoverflow.com/questions/tagged/rundeck)

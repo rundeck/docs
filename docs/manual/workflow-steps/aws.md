@@ -45,14 +45,18 @@ Creates a log stream for the specified log group using log group name and log st
 
 Include the **Log Group Name** and **Log Stream Name**
 
-## Aws / Configure / Vpc / Logs / Instance / Groups
+## AWS / Configure / Vpc / Logs / Instance / Groups
 
+Creates one or more flow logs to capture information about IP traffic for a specific network interface, subnet, or VPC.
 
-
-## Aws / Create / Resource
+## AWS / Create / Resource
 
 Create EC2 resource from existing snapshots
 
-## Aws / EnableVpc / NetworkPeering
+## AWS / EnableVpc / NetworkPeering
 
-Enable vpc or network peering for inter-region for AWS cloud instance.  I
+Requests a VPC peering connection between two VPCs.
+
+## AWS / Autoscaling / Update / Groups
+
+Updates the configuration for the specified Auto Scaling group.
