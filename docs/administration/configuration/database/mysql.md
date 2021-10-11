@@ -17,30 +17,15 @@ servers, maybe even higher if the server has more than 32G of RAM.
 
 ### MySQL 8.0
 
+This is the recommended version of MySQL for Rundeck.
+
 ### MySQL 5.7
+
+MySQL 5.7 is in extended support but does not have the `utf8mb4` as a default character set.  Some parts of Rundeck will not work without this.
 
 ### MySQL 5.6
 
-`5.6.3` or greater is required if using `utf8mb4` character set as the server default, and upgrading or installation may require an extra step.
-
-Configuration:
-
-```properties
-innodb_file_format=barracuda
-innodb_file_per_table=true
-innodb_large_prefix=true
-```
-
-After first Rundeck start run the following SQL queries:
-
-```sql
-use <rundeck_database>;
-ALTER TABLE `event_subscription` ROW_FORMAT=dynamic;
-ALTER TABLE `reaction` ROW_FORMAT=dynamic;
-ALTER TABLE `reaction_event` ROW_FORMAT=dynamic;
-```
-
-Be sure to restart Rundeck after making these changes!
+MySQL 5.6 is End-of-Life and no longer fully supported as a backend.  If you are currently using this it's strongly recommended to upgrade those instances.
 
 ## Setup Rundeck Database
 
