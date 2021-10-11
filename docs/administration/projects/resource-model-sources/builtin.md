@@ -21,7 +21,7 @@ each file that matches.
 
 To configure these providers use the following configuration properties.
 
-### File Source
+## File Source
 
 The `file` Resource Model Source provider reads a file in one of the supported
 Resource Model Document Formats.
@@ -94,7 +94,7 @@ The "flavor" attribute is defined as a separate XML element:
     resources.source.1.config.includeServerNode=true
     resources.source.1.config.generateFileAutomatically=true
 
-### URL Source
+## URL Source
 
 The `url` Resource Model Source provider performs a HTTP GET request to retrieve the Nodes definition.
 
@@ -118,7 +118,7 @@ _Example:_
     resources.source.1.cache=true
     resources.source.1.timeout=0
 
-### Directory Source
+## Directory Source
 
 The `directory` Resource Model Source provider lists all files in a directory, and loads each one that has a supported file extension
 as File Resource Model Source with all default configuration options.
@@ -132,7 +132,7 @@ _Example:_
     resources.source.2.type=directory
     resources.source.2.directory=/home/rundeck/projects/example/resources
 
-### Script Source
+## Script Source
 
 The `script` Resource Model Source provider executes a script file and reads
 the output of the script as one of the supported [Resource Model Document Formats](#resource-model-document-formats).
