@@ -22,7 +22,7 @@ You can provide private ssh keys by mounting them into `/home/rundeck/.ssh`:
 **Kubernetes** users may wish to mount a private key in through the secrets system. See
 Kubernetes documentation [Use-Case: Pod with ssh keys](https://kubernetes.io/docs/concepts/configuration/secret/#use-cases) for details.
 
-[**Rundeck Key Storage**](https://docs.rundeck.com/docs/administration/projects/node-execution/ssh.html#using-key-storage-for-ssh) can be used to provide ssh keys to the ssh plugin as well.
+[**Rundeck Key Storage**](/administration/projects/node-execution/ssh.md#using-key-storage-for-ssh) can be used to provide ssh keys to the ssh plugin as well.
 
 ## Control JVM heap allocation
 
@@ -176,7 +176,7 @@ Configuration options for key storage providers and converts. These map to the
 `RUNDECK_PREAUTH_REDIRECT_LOGOUT=false`
 `RUNDECK_PREAUTH_REDIRECT_URL=/oauth2/sign_in`
 Configuration options for using the
-[preauthenticated mode](/administration/security/authenticating-users.md#preauthenticated-mode).
+[preauthenticated mode](/administration/security/authentication.md#preauthenticated-mode).
 
 `RUNDECK_TOKENS_FILE`
 Specify location of a static tokens file. See [configuration file reference](/administration/configuration/configuration-file-reference.md) for details.
