@@ -14,11 +14,13 @@ Check out the new features and enhancements for Rundeck Enterprise and Rundeck C
 
 Continuing with our Redesign efforts started in 3.4.0, [Configuration Management](/manual/configuration-mgmt/configmgmt.md) has been fully revamped with an improved UI/UX.
 
+As a reminder, with [3.4.0](/history/3_4_x/version-3.4.0.md) release users can now configure Rundeck within the GUI and many of the settings now do not require a restart. The settings are stored in the Rundeck database so they are also shared across all your cluster members immediately. No need to worry about visiting each server console to update that certain setting for each server in your cluster.
+
 ![System Configuration Updated](@assets/img/relnotes-345-sysconfig.png)
 
 ## Dark Mode!!
 
-So many users have asked for this that one of our rock-star devs decided to use his Hackweek time and make it happen!!
+Dark mode is a highly requested Rundeck feature! One of our rock-star devs made dark mode a reality during PageruDuty’s Hackweek. Now you can view Rundeck in a dark background with white text. Change the theme using the setting icon in the bottom right corner of the Rundeck GUI. 
 
 ![Dark Mode](@assets/img/relnotes-345-darkmode.png)
 
