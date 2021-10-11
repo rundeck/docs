@@ -116,6 +116,7 @@ module.exports = {
       '/developer/': sidebarDeveloper,
       '/history/': sidebarHistory,
       '/api/': [
+        '/api/rundeck-api-versions.md',
         '/api/rundeck-api.md'
       ],
       '/': [
