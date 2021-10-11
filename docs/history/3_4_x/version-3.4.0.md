@@ -1,6 +1,7 @@
 # Release 3.4.0
 
 Name: <span style="color: aquamarine"><span class="glyphicon glyphicon-book"></span> "Papadum aquamarine book"</span>
+Release Date: June 15, 2021
 
 - [Download Rundeck](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)

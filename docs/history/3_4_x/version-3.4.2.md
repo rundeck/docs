@@ -1,6 +1,7 @@
 # Release 3.4.2
 
 Name: <span style="color: brown"><span class="glyphicon glyphicon-bullhorn"></span> "Papadum brown bullhorn"</span>
+Release Date: August 4, 2021
 
 - [Download Rundeck](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)

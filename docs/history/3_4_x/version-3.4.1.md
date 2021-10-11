@@ -1,6 +1,7 @@
 # Release 3.4.1
 
 Name: <span style="color: blue"><span class="glyphicon glyphicon-briefcase"></span> "Papadum blue briefcase"</span>
+Release Date: July 16, 2021
 
 - [Download Rundeck](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)

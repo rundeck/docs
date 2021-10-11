@@ -1,6 +1,7 @@
 # Release 3.4.4
 
 Name: <span style="color: chartreuse"><span class="glyphicon glyphicon-cutlery"></span> "Papadum chartreuse cutlery"</span>
+Release Date: September 21, 2021
 
 - [Download Rundeck](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
