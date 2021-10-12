@@ -10,8 +10,9 @@ Blackout Calendars
 Allowed Calendars
 :   Scheduled Jobs are allowed to run on the matching dates and times, but not on any other dates and times.
 
-:::tip
-Note: If calendars overlap the Blackout Calendars will take precedence and prevent the job from running.
+:::tip Notes
+- If calendars overlap the Blackout Calendars will take precedence and prevent the job from running.
+- Blackout Calendars are not considered [Misfired Jobs](/manual/schedules/missedjobfires.md).
 :::
 
 Calendars can be defined at system level as *System Calendars* or project level as *Project Calendars*.
