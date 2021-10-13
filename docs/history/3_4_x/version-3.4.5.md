@@ -20,9 +20,9 @@ As a reminder, with [3.4.0](/history/3_4_x/version-3.4.0.md) release users can n
 
 ## Dark Mode!!
 
-Dark mode is a highly requested Rundeck feature! One of our rock-star devs made dark mode a reality during PageruDuty’s Hackweek. Now you can view Rundeck in a dark background with white text. Change the theme using the setting icon in the bottom right corner of the Rundeck GUI. 
+Dark mode is a highly requested Rundeck feature! One of our rock-star devs made dark mode a reality during PageruDuty’s Hackweek. Now you can view Rundeck in a dark background with white text. Change the theme using the setting icon in the bottom right corner of the Rundeck GUI.
 
-![Dark Mode](@assets/img/relnotes-345-darkmode.png)
+![Dark Mode](@assets/img/relnotes-345-darkmode.gif)
 
 ## New AWS Actions
 
