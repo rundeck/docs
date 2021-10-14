@@ -2,7 +2,7 @@
 
 With Rundeck, it is simple and easy to create automation workflows from existing tools or scripts. The Learning section includes a _[Getting Started Tutorial](/learning/tutorial/preparing.md)_ and _[How to Guides](/learning/howto/overview.md)_ that help new users quickly become productive with the Rundeck server and tools. Instructions are provided for both Enterprise and Community versions of Rundeck.
 
-Visit the _[Tutorials](/learning/tutorial/preparing)_ to see practical step-by-step guides that help you get your Rundeck account up and running - starting with installing and configuring Rundeck.  The Tutorial section is built around our Welcome Projects that provide product simulations for both Rundeck versions.  
+Visit the _[Tutorials](/learning/tutorial/preparing.md)_ to see practical step-by-step guides that help you get your Rundeck account up and running - starting with installing and configuring Rundeck.  The Tutorial section is built around our Welcome Projects that provide product simulations for both Rundeck versions.  
 
 Use the [How To Guides](/learning/howto/overview.md) to accomplish tasks using Rundeck Enterprise version and where applicable, the Community version. The How To guides go deeper into specific topics and are commonly built around the Welcome Project.
 
@@ -11,7 +11,7 @@ Use the [How To Guides](/learning/howto/overview.md) to accomplish tasks using R
 ### Essential Concepts
 
 Several fundamental concepts underlie and drive the Rundeck system. If you are a new user, knowing about them will help you more effectively use and integrate Rundeck into your environment.
-The first step is to learn some key Rundeck Terms in our [Terminology Tutorial](terminology.md).
+The first step is to learn some key Rundeck Terms in our [Terminology Tutorial](/learning/tutorial/terminology.md).
 
 ### Using Rundeck
 
