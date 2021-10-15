@@ -40,6 +40,8 @@ Continuing our enhancements to Amazon Web Services these new job steps enable ne
 
 ## Core Product Updates
 
+* [Allow more SVG attributes through HTML sanitization](https://github.com/rundeck/rundeck/pull/7306)
+* [Add color theme picker](https://github.com/rundeck/rundeck/pull/7288)
 * [Dark Mode](https://github.com/rundeck/rundeck/pull/7283)
 * [Grant permission to delete webhook with project based ACL.](https://github.com/rundeck/rundeck/pull/7269)
 * [Add functionality to specify a blocklist of plugins](https://github.com/rundeck/rundeck/pull/7264)
