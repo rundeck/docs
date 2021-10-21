@@ -123,7 +123,7 @@ Steps in a workflow can be either _Node Steps_ or _Workflow Steps_.
 
 The order of the Workflow steps can be modified by hovering over any
 step and then clicking and dragging the double arrow icon to the
-desired position. 
+desired position.
 
 ![Job step reorder](~@assets/img/fig0408.png)
 
@@ -230,6 +230,7 @@ Job context variables (Global scope):
 - `job.name`: Name of the Job
 - `job.group`: Group of the Job
 - `job.id`: ID of the Job
+- `job.url`: URL to the Job/execution data.
 - `job.execid`: ID of the current Execution
 - `job.executionType` : Execution type, can be `user`, `scheduled` or `user-scheduled` for `Run Job Later` executions
 - `job.username`: Username of the user executing the Job
@@ -254,6 +255,8 @@ Node context variables (Node scope):
 Execution context variables (Global scope):
 
 The execution data is included as a Map called execution containing the following keys and values:
+
+> Note: The `execution` and `result` variables are only available in the Notification context.  They are not available while a job is running or as part of Job Steps.
 
 - `execution.id`: ID of the execution
 - `execution.href`: URL to the execution output view
@@ -354,7 +357,7 @@ Variables that are added to the Context while the workflow is executing, such as
 If the variable is added within a Node Step, then the data values are stored within the Node Scope for that node. This allows multiple values to be added by different nodes with the same variable name.
 
 Any variables within the same Scope can be referenced without special syntax.  For example, within a Node Step other variables
-added to the Context within the same Node Scope for the same node can be referenced using `${data.MyKey}`. 
+added to the Context within the same Node Scope for the same node can be referenced using `${data.MyKey}`.
 
 If a value is not found for the variable reference within the current scope, the scope is "widened" to find it at a higher scope. So all Globally Scoped variable
 values can be referenced using the normal syntax.
@@ -392,4 +395,3 @@ Jobs can be exported or imported in XML or Yaml format using the API or the `rd`
 
 [quartz scheduler crontrigger]: http://www.quartz-scheduler.org/api/2.2.1/org/quartz/CronTrigger.html
 [rd]: https://rundeck.github.io/rundeck-cli/
-
