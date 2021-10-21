@@ -20,7 +20,7 @@ Live Rundeck support on the first Thursday of every month. Deep dive product dem
 
 If you find problems with Rundeck, or if you have questions, remarks, or
 ideas about it, please send an email to the Rundeck mailing list.
-[rundeck-discuss@groups.google.com](mailto:rundeck-discuss@groups.google.com).
+[rundeck-discuss@googlegroups.com](mailto:rundeck-discuss@googlegroups.com).
 
 ## Bugs
 
