@@ -32,9 +32,9 @@ If you need more advanced configuration (e.g., authenticated and secured over SS
 see the grails Mail plugin configuration:
 [Grails Mail Configuration](https://gpc.github.io/grails-mail/guide/2.%20Configuration.html)
 
-The caveat for using this is that in our experience it requires using a .groovy formatted configuration file to support the extended configuration properties.
-
-See [Groovy config format](/administration/configuration/config-file-reference.md#groovy-config-format).
+:::tip
+For the extended configuration properties, it needs to be appended to the property prefix `grails.mail.props.<key_props>`. For example, to enable `startttl`, the property should be `grails.mail.props.mail.smtp.starttls.enable=true`
+:::
 
 ## Notification email settings
 
