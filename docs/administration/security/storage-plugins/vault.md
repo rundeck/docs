@@ -215,8 +215,14 @@ Default value: rundeck
 ```
 rundeck.storage.provider.[index].config.engineVersion=1/2
 ```
-
 Default value: 1
+
+* **removePathPrefix**: Remove Rundeck's prefix path (keys/...) in Vault's items path
+
+```
+rundeck.storage.provider.[index].removePathPrefix=true
+```
+Default value: false
 
 ### More Configuration Examples
 
@@ -225,6 +231,7 @@ Default value: 1
 ```
 rundeck.storage.provider.1.type=vault-storage
 rundeck.storage.provider.1.path=keys
+rundeck.storage.provider.1.removePathPrefix=true
 rundeck.storage.provider.1.config.prefix=rundeck
 rundeck.storage.provider.1.config.secretBackend=secret
 rundeck.storage.provider.1.config.address=$VAULT_URL
