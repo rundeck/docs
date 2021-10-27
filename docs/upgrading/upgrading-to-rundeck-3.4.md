@@ -11,7 +11,7 @@ Package repositories have moved! Please read [the new instructions for downloadi
 
 ## DB Migration
 
-Rundeck now uses the [Database Migration plugin](http://grails-plugins.github.io/grails-database-migration/3.0.x/index.html) to manage database changes which provides structure and process to database schema changes.  Previously, database changes were applied when the `dataSource.dbCreate` property located in the _rundeck-config.properties_ was set to `update`. This property should be set to `none` moving forward. In addition, the property `grails.plugin.databasemigration.updateOnStart` should be set to `true` moving forward from 3.4.0.
+Rundeck now uses the [Database Migration plugin](http://grails-plugins.github.io/grails-database-migration/3.0.x/index.html) to manage database changes which provides structure and process to database schema changes.  Previously, database changes were applied when the `dataSource.dbCreate` property located in the _rundeck-config.properties_ was set to `update`. This property should be set to `none` moving forward (or removed). In addition, the property `grails.plugin.databasemigration.updateOnStart` should be set to `true` moving forward from 3.4.0.
 
 _Upgrading from to Rundeck 3.4.0 from previous Rundeck Version &lt; 3.3.5_
 
@@ -23,7 +23,8 @@ In order to upgrade to Rundeck 3.4.0 from a version less than 3.3.5, the databas
     1. `grails.plugin.databasemigration.updateOnStart=false`
 1. Start Rundeck 3.4.0
 1. Once Rundeck is fully started, Shutdown Rundeck 3.4.0
-1. Remove the previously added settings from rundeck-config.properties.
+1. Remove the previously added `dataSource.dbCreate=update` setting from rundeck-config.properties.
+1. Change the `grails.plugin.databasemigration.updateOnStart` setting to `=true`.
 1. Restart Rundeck 3.4.0.  Once initialization is complete, Rundeck is ready for use
 
 _Upgrading from to Rundeck 3.4.0 from previous Rundeck Version >= 3.3.5_
