@@ -60,3 +60,7 @@ Runner Logs are located in the `./runner/logs` folder under the folder where the
 **Does this replace Clustering?**
 
 This feature is intended to be used in situations where execution of Node Steps is needed in a network segment or security zone that is different from the Rundeck Cluster.  A Rundeck Enterprise Cluster still provides high-availability and fault tolerance for the User Interface, Job Management/Execution and system management tasks.
+
+**Does this work for all communication into the remote data center?**
+
+The Runner will handle Node Step execution.  Node Sources, Health Checks, and other communication are not included in this version of the Runner.
