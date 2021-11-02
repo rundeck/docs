@@ -39,6 +39,12 @@ module.exports = [{
       ]
     },
     {
+      title: 'Enterprie Runner',
+      collapsable: true,
+      path: '/administration/runner',
+      sidebarDepth: 2
+    },
+    {
       title: 'Licensing',
       collapsable: true,
       path: '/administration/license',
