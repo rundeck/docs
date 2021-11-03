@@ -4,7 +4,7 @@
 This feature is currently in Incubating status.  Once released as Generally Available (GA) this will be a licensed feature of Rundeck.
 :::
 
-The Rundeck Enterprise Runner securely opens up network/communication between data centers and your Rundeck Enterprise Cluster.  The Runner is a Remote Execution hub for Node Steps to run on specified endpoints, rather than from the Rundeck server itself.  
+The Rundeck Enterprise Runner securely opens up network/communication between data centers and the Rundeck Enterprise Cluster.  The Runner is a Remote Execution hub for Node Steps to run on specified endpoints, rather than from the Rundeck server itself.  
 
 ## Architecture
 
@@ -26,7 +26,7 @@ Follow these steps to install a Runner to Rundeck Enterprise:
 1. On the next screen choose **Download ID and Secret** to save the credentials for this Runner installation.  (You will need this file when setting up Runner Binaries)
 1. Click **Next** to go to _Project Assignment_
 1. [This step is optional] On this page choose which project(s) the Runner is active for.  The Assigned toggle will enable the Runner for _All Nodes_ (`.*`) in that project.  
-    _([This step is optional] If you would like the Runner to only act on a subset of Nodes it's recommended to do that in the Runner Edit page.)_
+    _([This step is optional] If the Runner should only act on a subset of Nodes it's recommended to do that in the Runner Edit page.)_
 
 :::
 ::: tab Runner Installation
@@ -46,9 +46,17 @@ Connection can be confirmed on the Runner Management page on the Last Checkin li
 
 ## Runner Management
 
-### Editing Runner Configuration
+### Assigning Projects/Nodes to a Runner
 
-> <coming next>
+Runners will execute Node Steps on Nodes within a project based on a Node Filter assigned to the Runner.  To assign Projects and specific nodes to a Runner follow these steps:
+
+1. In the Runner Management screen click on the name of the Runner instance to be edited.
+1. If the project is not listed already choose **Add Projects**
+1. Toggle the Projects that should be added.
+1. The Node Filter section is used to identify Nodes that this runner is responsible for.  By default `.*` will apply it to all nodes in the project.
+1. Click **Add** and the projects are now listed under the Runner configuration.
+
+It is possible to edit each project Node Filter individually if needed.  Use the _Actions_ menu to _Edit_ the project entry's Node Filter.
 
 ### Troubleshooting
 
