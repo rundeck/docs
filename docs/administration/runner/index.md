@@ -10,7 +10,7 @@ The Rundeck Enterprise Runner securely opens up network/communication between da
 
 The Enterprise Runner is a Java based program which uses a polling model to pick up work from Rundeck Enterprise.  During each polling cycle (every 5 seconds) the Runner checks for executions that it is responsible for.  Communication from the Runner to Rundeck Enterprise happens over https and is initiated from the Runner.  This allows for enhanced firewall security as ports no longer need to be open for Rundeck to talk to nodes over more sensitive ports. _(e.g. SSH/22)_
 
-> **<Architecture Graphic coming soon>**
+![Runner Architecture](@assets/img/runner-arch-diagram.png)
 
 
 ## Installation

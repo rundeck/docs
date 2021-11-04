@@ -39,9 +39,9 @@ module.exports = [{
       ]
     },
     {
-      title: 'Enterprie Runner',
+      title: 'Enterprise Runner',
       collapsable: true,
-      path: '/administration/runner',
+      path: '/administration/runner/',
       sidebarDepth: 2
     },
     {
