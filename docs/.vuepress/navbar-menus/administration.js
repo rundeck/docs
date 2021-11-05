@@ -11,8 +11,12 @@ module.exports = [{
     link: '/upgrading/index'
   },
   {
+    text: 'Enterprise Runner',
+    link: '/administration/runner/'
+  },
+  {
     text: 'Licensing',
-    link: '/administration/license',
+    link: '/administration/license'
   },
   {
     text: 'Configuration',
