@@ -631,6 +631,14 @@ The following setting will trim all line endings in the job's workflow scripts s
 ```properties
 rundeck.job.export.yaml.trimSpaces=true
 ```
+### Load balancer Health endpoint
+
+The endpoint `/health` will respond with `200 OK` without authentication.
+
+You can disable this behavior using a feature flag.
+
+Node Balancer Health endpoint feature flag
+: `rundeck.feature.healthEndpoint.enabled=false`
 
 ### Node Cache
 
