@@ -1,7 +1,7 @@
 # Enterprise Runner (Incubating)
 
 :::warning
-This feature is currently in Incubating status.  Once released as Generally Available (GA) this will be a licensed feature of Rundeck.
+This incubating feature is available for preview in this version. Try out the Enterprise Runner, free of charge, while it's incubating and let us know what you think. This feature will be licensed separately once generally available.
 :::
 
 The Rundeck Enterprise Runner securely opens up network/communication between data centers and the Rundeck Enterprise Cluster.  The Runner is a Remote Execution hub for Node Steps to run on specified endpoints, rather than from the Rundeck server itself.  
