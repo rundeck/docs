@@ -3,3 +3,8 @@
 /manual/02-getting-help.html /introduction/getting-help.html
 /administration/configuration/license.html /administration/license.html
 /manual/servicenow-app.html /manual/integrations/servicenow-app.html
+/administration/security/key-storage.html /administration/key-storage/key-storage.html
+/administration/security/storage-plugins.html /administration/key-storage/key-plugins.html
+/administration/security/storage-plugins/cyberark-storage.html /administration/key-storage/storage-plugins/cyberark-storage.html
+/administration/security/storage-plugins/thycotic-storage.html /administration/key-storage/storage-plugins/thycotic-storage.html
+/administration/security/storage-plugins/vault.html /administration/key-storage/storage-plugins/vault.html

@@ -39,12 +39,6 @@ module.exports = [{
       ]
     },
     {
-      title: 'Enterprise Runner',
-      collapsable: true,
-      path: '/administration/runner/',
-      sidebarDepth: 2
-    },
-    {
       title: 'Licensing',
       collapsable: true,
       path: '/administration/license',
@@ -109,63 +103,9 @@ module.exports = [{
         '/administration/security/authorization',
         '/administration/security/acl-policy-editor',
         '/administration/security/ssl',
-        '/administration/security/key-storage',
-        {
-          title: 'Key Storage Plugins',
-          collapsable: true,
-          path: '/administration/security/storage-plugins',
-          children: [
-            '/administration/security/storage-plugins/thycotic-storage.md',
-            '/administration/security/storage-plugins/vault.md',
-            '/administration/security/storage-plugins/cyberark-storage.md'
-          ]
-        },
         '/administration/security/sso',
         '/administration/security/webapp-http-headers',
         '/administration/security/project-acl'
-      ]
-    },
-    {
-      title: 'Maintenance',
-      collapsable: true,
-      children: [
-        '/administration/maintenance/startup',
-        '/administration/maintenance/logs',
-        '/administration/maintenance/backup',
-        '/administration/maintenance/tuning-rundeck'
-      ]
-    },
-    {
-      title: 'Clustering',
-      collapsable: true,
-      path: '/administration/cluster/',
-      children: [
-        '/administration/cluster/',
-        {
-          title: 'Load Balancer',
-          collapsable: true,
-          children: [
-            '/administration/cluster/loadbalancer/',
-            '/administration/cluster/loadbalancer/health-check',
-            '/administration/cluster/loadbalancer/aws-alb',
-            '/administration/cluster/loadbalancer/aws-elb',
-            '/administration/cluster/loadbalancer/haproxy',
-            '/administration/cluster/loadbalancer/iis',
-            '/administration/cluster/loadbalancer/NGINX',
-
-          ]
-        }, {
-          title: 'Log Store',
-          collapsable: true,
-          children: [
-            '/administration/cluster/logstore/',
-            '/administration/cluster/logstore/azure',
-            '/administration/cluster/logstore/s3'
-          ]
-        },
-        '/administration/cluster/autotakeover/',
-        '/administration/configuration/remote-job-execution',
-        '/administration/cluster/replication/'
       ]
     },
     {
@@ -220,6 +160,74 @@ module.exports = [{
             '/administration/projects/node-execution/openssh'
           ]
         }
+      ]
+    },
+    {
+      title: 'Enterprise Runner',
+      collapsable: true,
+      path: '/administration/runner/',
+      sidebarDepth: 2
+    },
+    {
+      title: 'Key Storage',
+      collapsable: true,
+      path: '/administration/key-storage/key-storage',
+      sidebarDepth: 1,
+      children: [
+        '/administration/key-storage/key-storage',
+        {
+          title: 'Key Storage Plugins',
+          collapsable: true,
+          path: '/administration/key-storage/storage-plugins',
+          children: [
+            '/administration/key-storage/storage-plugins/thycotic-storage.md',
+            '/administration/key-storage/storage-plugins/vault.md',
+            '/administration/key-storage/storage-plugins/cyberark-storage.md'
+          ]
+        },
+      ]
+    },
+    {
+      title: 'Maintenance',
+      collapsable: true,
+      children: [
+        '/administration/maintenance/startup',
+        '/administration/maintenance/logs',
+        '/administration/maintenance/backup',
+        '/administration/maintenance/tuning-rundeck'
+      ]
+    },
+    {
+      title: 'Clustering',
+      collapsable: true,
+      path: '/administration/cluster/',
+      children: [
+        '/administration/cluster/',
+        {
+          title: 'Load Balancer',
+          collapsable: true,
+          children: [
+            '/administration/cluster/loadbalancer/',
+            '/administration/cluster/loadbalancer/health-check',
+            '/administration/cluster/loadbalancer/aws-alb',
+            '/administration/cluster/loadbalancer/aws-elb',
+            '/administration/cluster/loadbalancer/haproxy',
+            '/administration/cluster/loadbalancer/iis',
+            '/administration/cluster/loadbalancer/NGINX',
+
+          ]
+        }, {
+          title: 'Log Store',
+          collapsable: true,
+          children: [
+            '/administration/cluster/logstore/',
+            '/administration/cluster/logstore/azure',
+            '/administration/cluster/logstore/s3'
+          ]
+        },
+        '/administration/cluster/autotakeover/',
+        '/administration/configuration/remote-job-execution',
+        '/administration/cluster/replication/'
       ]
     }
   ]
