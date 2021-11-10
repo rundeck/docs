@@ -18,11 +18,20 @@ The Rundeck Enterprise Runner securely opens up network/communication between da
 
 > This incubating feature is available for preview in this version. Try out the Enterprise Runner, free of charge, while it's incubating and let us know what you think. This feature will be licensed separately once generally available.
 
+## ServiceNow Rundeck Application Certified on Rome [Enterprise]
+
+The [ServiceNow Rundeck Application](https://store.servicenow.com/sn_appstore_store.do#!/store/application/6e8e2effdb8f041034a5d487f49619e2/1.0.6) is now certified on Rome.
+
+Use the ServiceNow Rundeck Application to trigger provisioning, diagnostic, and repair actions from ServiceNow ITSM workflows. Enhance ticket information and automate repetitive tasks in your IT environment.
+
+More details on this application in our [documentation](/manual/integrations/servicenow-app.md).
+
+
 ## Enterprise Updates
 
 * Include settings to configure SMTP using Configuration Management
 * User Manager authz update to require &#39;user&#39; resource instead of &#39;system&#39;
-* The [ServiceNow Rundeck Application](https://store.servicenow.com/sn_appstore_store.do#!/store/application/6e8e2effdb8f041034a5d487f49619e2/1.0.6) is now certified on Rome.
+* The [ServiceNow Rundeck Application](https://store.servicenow.com/sn_appstore_store.do#!/store/application/6e8e2effdb8f041034a5d487f49619e2/1.0.6) Rome certification.
 
 
 ## Core Product Updates
