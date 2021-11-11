@@ -15,6 +15,8 @@ The Enterprise Runner is a Java based program which uses a polling model to pick
 
 ## Installation
 
+> During Incubating phase it is necessary to turn the feature on manually using the following settings in your rundeck-config.properties `rundeck.feature.runner.enabled = true`.  (`RUNDECK_FEATURE_RUNNER_ENABLED: 'true'` for docker-compose files)
+
 Follow these steps to install a Runner to Rundeck Enterprise:
 
 :::: tabs
