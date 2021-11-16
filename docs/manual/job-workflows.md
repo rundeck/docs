@@ -206,6 +206,15 @@ The example below shows an error handler that calls a script by URL.
 
 ![Example error handler](~@assets/img/fig0411.png)
 --->
+
+### Error handler with sequential workflow strategy
+
+When using Sequential workflow strategy, the error handler gets triggered once in the first node that fails to execute the step and it won't run the step on the remaining nodes unless "Continue running on any remaining nodes before failing the step" is selected in the Nodes tab.
+
+Here is the log output when using error handler with sequential workflow strategy
+
+![Error handler result for sequential strategy](~@assets/img/fig0410b.png)
+
 ### Context information
 
 When the Error-handler step is executed, its execution context will contain some information about the nature
