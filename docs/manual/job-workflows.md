@@ -209,7 +209,7 @@ The example below shows an error handler that calls a script by URL.
 
 ### Error handler with sequential workflow strategy
 
-When using Sequential workflow strategy, the error handler gets triggered once in the first node that fails, to execute the step and it won't run the step on the remaining nodes unless "Continue running on any remaining nodes before failing the step" is selected in the Nodes tab.
+When using Sequential workflow strategy, the error handler gets triggered once in the first node that fails to execute the step and it won't run the step on the remaining nodes unless "Continue running on any remaining nodes before failing the step" is selected in the Nodes tab.
 
 Here is the log output when using error handler with sequential workflow strategy
 
