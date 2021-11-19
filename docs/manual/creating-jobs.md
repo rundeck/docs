@@ -230,6 +230,9 @@ will be displayed when the Job is listed:
 
 ![Scheduled job icon](~@assets/img/fig0308.png)
 
+:::warning
+If cluster mode is enabled, any change to the execution schedule when editing a job will take a few seconds to take effect. This is because the job take over message needs to be processed by the instance that owns the job to change the schedule configuration.
+:::
 ### Job Notifications
 
 Job notifications are messages triggered by a job event.
