@@ -211,6 +211,15 @@ sudo -u username [scriptfile] arguments ...
 If necessary, you can check the "Quote arguments to script invocation string?" checkbox, which will then quote both the scriptfile and arguments before passing to the invocation command:
 
     [invocation string] "[scriptfile] arguments ..."
+	
+:::tip
+If an specific encoding is needed when using power shell executor, you can set this through the invocation string:
+	
+	powershell [Console]::OutputEncoding = [Text.UTF8Encoding]::utf8 ; "[scriptfile] arguments ..."
+	
+![Script Encoding](~@assets/img/powershell_encoding.png)
+:::
+
 
 ### Changing the File extension
 
