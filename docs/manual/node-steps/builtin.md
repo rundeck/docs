@@ -212,9 +212,14 @@ If necessary, you can check the "Quote arguments to script invocation string?" c
 
     [invocation string] "[scriptfile] arguments ..."
 	
-When using powershell node executor you can also set the encoding output as part of the invocation string:
-
+:::tip
+If an specific encoding is needed when using power shell executor, you can set this through the invocation string:
+	
 	powershell [Console]::OutputEncoding = [Text.UTF8Encoding]::utf8 ; "[scriptfile] arguments ..."
+	
+![Script Encoding](~@assets/img/powershell_encoding.png)
+:::
+
 
 ### Changing the File extension
 
