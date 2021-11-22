@@ -2,48 +2,52 @@ module.exports = [{
   title: 'Administration Guide',
   collapsable: false,
   children: [
-    {
-       title: 'System Architecture',
-       collapsable: true,
-       path: '/administration/architecture-and-deployment/architecture-and-deployment',
-       sidebarDepth: 10,
-       children: [
-         '/administration/architecture-and-deployment/system-architecture'
-       ]
-    },
-    {
-      title: 'Installation',
-      collapsable: true,
-      path: '/administration/install/installing-rundeck',
-      sidebarDepth: 1,
-      children: [
-        '/administration/install/installing-rundeck',
-        '/administration/install/system-requirements',
-        '/administration/install/jar',
-        '/administration/install/linux-deb',
-        '/administration/install/linux-rpm',
-        '/administration/install/tomcat',
-        '/administration/install/windows',
-        '/administration/install/source',
-        '/administration/install/docker',
-        '/administration/architecture-and-deployment/aws'
-      ]
-    },
-    {
-      title: 'Upgrading',
-      collapsable: true,
-      path: '/upgrading/upgrading',
-      children: [
-        '/upgrading/upgrading',
-        '/upgrading/upgrading-to-rundeck3',
-      ]
-    },
-    {
-      title: 'Licensing',
-      collapsable: true,
-      path: '/administration/license',
-      sidebarDepth: 2
-    },
+        {
+          title: 'Rundeck Enterprise',
+          collapsable: true,
+          sidebarDepth: 1,
+          children: [
+              {
+                title: 'Installation',
+                collapsable: true,
+                path: '/administration/install/installing-rundeck',
+                sidebarDepth: 1,
+                children: [
+                  '/administration/install/installing-rundeck',
+                  '/administration/install/system-requirements',
+                  '/administration/install/jar',
+                  '/administration/install/linux-deb',
+                  '/administration/install/linux-rpm',
+                  '/administration/install/tomcat',
+                  '/administration/install/windows',
+                  '/administration/install/source',
+                  '/administration/install/docker',
+                  '/administration/architecture-and-deployment/aws'
+                ]
+              },
+              {
+                title: 'Upgrading',
+                collapsable: false,
+                path: '/upgrading/',
+                sidebarDepth: 1,
+                children: [
+                  '/upgrading/',
+                  '/upgrading/upgrading',
+                  '/upgrading/upgrading-to-rundeck-3.4.md',
+                  '/upgrading/upgrading-to-rundeck-3.3.4.md',
+                  '/upgrading/upgrading-to-rundeck-3.3.md',
+                  '/upgrading/upgrading-to-rundeck-3.2.md',
+                  '/upgrading/upgrading-to-rundeck-3.1.md',
+                  '/upgrading/upgrading-to-rundeck3'
+                ]
+              },
+              {
+                title: 'Licensing',
+                collapsable: true,
+                path: '/administration/license',
+                sidebarDepth: 2
+              },
+            ]},
     {
       title: 'Configuration',
       collapsable: true,

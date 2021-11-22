@@ -14,6 +14,8 @@ Rundeck Inc. guarantees that Rundeck Enterprise does not infringe on any patents
 
 ## License Key Installation
 
+>Note: this is only required on Rundeck Enterprise version.  Rundeck Cloud will come pre-installed with your license.
+
 Ask for the license key to the support team. Then install the license key via the gui or on the filesystem directly.
 
 ### Via GUI

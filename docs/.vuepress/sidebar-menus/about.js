@@ -16,7 +16,15 @@ module.exports = [{
          ['/about/cloud/cloudfaq.md','FAQ']
        ]
     },
-    '/about/enterprise.md',
+    {
+       title: 'Rundeck Enterprise',
+       collapsable: true,
+       path: '/about/enterprise/',
+       sidebarDepth: 1,
+       children: [
+         ['/about/enterprise/', 'Overview'],
+         ['/about/enterprise/system-architecture.md','Architecture']
+    ]},
     '/about/getting-help.md'
   ]
 }]

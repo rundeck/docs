@@ -5,7 +5,7 @@ module.exports = [
   },
   {
     text: 'Rundeck Enterprise',
-    link: '/about/enterprise'
+    link: '/about/enterprise/'
   },
   {
     text: 'Rundeck Cloud',
