@@ -8,9 +8,9 @@ const sidebarCommandLineTools = require('./sidebar-menus/command-line-tools')
 const sidebarDeveloper = require('./sidebar-menus/plugin-development')
 const sidebarLearning = require('./sidebar-menus/learning')
 const sidebarHistory = require('./sidebar-menus/history')
-const sidebarIntroduction = require('./sidebar-menus/introduction')
+const sidebarAbout = require('./sidebar-menus/about')
 // navbars
-const navbarIntroduction = require('./navbar-menus/introduction')
+const navbarAbout = require('./navbar-menus/about')
 const navbarUserGuide = require('./navbar-menus/user-guide')
 const navbarLearning = require('./navbar-menus/learning')
 const navbarAdmin = require('./navbar-menus/administration')
@@ -81,12 +81,12 @@ module.exports = {
         facetFilters: [ `version:${setup.base}` ]
       },
     } : undefined,
-    searchMaxSuggestions: 10,
+    searchMaxSuggestions: 15,
     lastUpdated: 'Last Updated', // string | boolean
     nav: [
       {
-        text: 'Introduction',
-        items: navbarIntroduction
+        text: 'About',
+        items: navbarAbout
       },
       {
         text: 'User Guide',
@@ -107,7 +107,7 @@ module.exports = {
     ],
     sidebarDepth: 2,
     sidebar: {
-      '/introduction/': sidebarIntroduction,
+      '/about/': sidebarAbout,
       '/administration/': sidebarAdmin,
       '/upgrading/': sidebarUpgrading,
       '/rd-cli/': sidebarCommandLineTools,
