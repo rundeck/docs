@@ -399,7 +399,7 @@ When passed as arguments to Job References, they can only be passed as the value
 
 ### Secure Remote Authentication Options
 
-The built-in [SSH Provider](/administration/projects/node-execution/ssh.md) for node execution allows using passwords for SSH and/or Sudo authentication mechanisms, and the passwords are supplied by Secure Remote Authentication Options defined in a Job.
+The built-in [SSH Provider](/manual/projects/node-execution/ssh.md) for node execution allows using passwords for SSH and/or Sudo authentication mechanisms, and the passwords are supplied by Secure Remote Authentication Options defined in a Job.
 
 Secure Remote Authentication Options have some limitations compared to Plain and Secure options:
 

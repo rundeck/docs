@@ -91,7 +91,7 @@ Some important settings:
 - `framework.server.password`: Password for connection to the Rundeck server
 - `framework.rundeck.url`: Base URL for Rundeck server.
 
-SSH Connection settings (See [Projects - Node Execution - SSH](/administration/projects/node-execution/ssh.md)):
+SSH Connection settings (See [Projects - Node Execution - SSH](/manual/projects/node-execution/ssh.md)):
 
 - `framework.ssh.keypath`: Path to the SSH private key file used for SSH connections
 - `framework.ssh.user`: Default username for SSH Connections, if not overridden by Node specific value.
@@ -154,7 +154,7 @@ tools like umask, Java home and classpath, and SSL options.
 
 ## project.properties
 
-Rundeck project configuration file when using Filesystem based project definitions (see [Project Setup - Project Definitions](https://rundeck.org/docs/administration/projects/configuration.html)).
+Rundeck project configuration file when using Filesystem based project definitions (see [Project Setup - Project Definitions](https://rundeck.org/docs/manual/projects/configuration.html)).
 
 One of these is
 generated at project setup time. Each project has a directory within the Rundeck projects directory, and the config file is within the `etc` subdirectory:
@@ -168,7 +168,7 @@ generated at project setup time. Each project has a directory within the Rundeck
 | `project.ssh-keypath`                    | SSH identify file. |
 | `service.FileCopier.default.provider`    | Default script file copier plugin. |
 | `service.NodeExecutor.default.provider`  | Default node executor plugin. |
-| `resources.source.N...`                  | Defines a Resource model source see [Resource Model Sources](/administration/projects/resource-model-sources/). |
+| `resources.source.N...`                  | Defines a Resource model source see [Resource Model Sources](/manual/projects/resource-model-sources/). |
 | `project.globals.X` | [Defines a Project Global variable](#project-global-execution-variables) |
 
 Here's an example that configures a File source:
@@ -200,7 +200,7 @@ Additional sources increment the source number. You can reference the project na
 
 ### File copier destination directory
 
-When executing a Script step, the destination file path to be used when copying the script can be set using Node, Project, or Framework configuration values. Please see the plugin [documentation](https://rundeck.org/docs/administration/projects/node-execution/built-in-plugins.html#file-copier-destination-directory)
+When executing a Script step, the destination file path to be used when copying the script can be set using Node, Project, or Framework configuration values. Please see the plugin [documentation](https://rundeck.org/docs/manual/projects/node-execution/built-in-plugins.html#file-copier-destination-directory)
 
 ### Project Global execution variables
 
@@ -471,7 +471,7 @@ system and is useful when managing Rundeck server clusters.
 
 ### Project Configuration Storage settings
 
-The [Project Setup - Project Definitions](/administration/projects/project-create.md#project-definitions) mechanism is configured within this file, see:
+The [Project Setup - Project Definitions](/manual/projects/project-create.md#project-definitions) mechanism is configured within this file, see:
 
 - [Project Storage](/administration/configuration/storage-facility.md#project-storage)
 
@@ -649,7 +649,7 @@ Enabled: true/false (default true).
 : `rundeck.nodeService.nodeCache.enabled=true` If set to false, no caching is performed.
 
 First Load Asynch: true/false
-: `rundeck.nodeService.nodeCache.firstLoadAsynch=false` The default for whether the first load of a project's nodes should be performed synchronously or not. If set to `true`, and the [Project Nodes > Synchronous First Load](/administration/projects/project-create.md#project-nodes) value is unset, then the initial load of a Project's nodes when the cache is empty will be done in the background asynchronously. Otherwise the initial load is done synchronously, possibly causing a delay at Rundeck startup or Job execution startup. A Project level configuration value will override this default.
+: `rundeck.nodeService.nodeCache.firstLoadAsynch=false` The default for whether the first load of a project's nodes should be performed synchronously or not. If set to `true`, and the [Project Nodes > Synchronous First Load](/manual/projects/project-create.md#project-nodes) value is unset, then the initial load of a Project's nodes when the cache is empty will be done in the background asynchronously. Otherwise the initial load is done synchronously, possibly causing a delay at Rundeck startup or Job execution startup. A Project level configuration value will override this default.
 
 ### Groovy config format
 

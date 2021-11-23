@@ -18,7 +18,7 @@ If you are upgrading from Rundeck 2.x, please see:
 - [Upgrade to Rundeck 3.X from 2.11](upgrading-to-rundeck3.md)
 
 If you are migrating to a new instance, please see:
-- [Project Archive: Export/Import](/administration/projects/project-archive.md)
+- [Project Archive: Export/Import](/manual/projects/project-archive.md)
 
 Once you have upgraded, you may want to see:
 

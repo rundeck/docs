@@ -39,7 +39,7 @@ Similar to Key Storage, the Project Storage container keeps files related to Run
 
 Access to these contents can be made via the Rundeck API.
 
-See the chapter: [Project Setup](/administration/projects/configuration.md)
+See the chapter: [Project Setup](/manual/projects/configuration.md)
 
 When configuring Project Storage providers, the configuration entries in `rundeck-config.properties` start with:
 

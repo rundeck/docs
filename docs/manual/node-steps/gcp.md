@@ -3,7 +3,7 @@
 ## Getting Started
 
 :::tip
-It is helpful to configure the GCP Compute VM resource model plugin before using these steps: [GCP Compute VM Resource Model](/administration/projects/resource-model-sources/gcp.md)
+It is helpful to configure the GCP Compute VM resource model plugin before using these steps: [GCP Compute VM Resource Model](/manual/projects/resource-model-sources/gcp.md)
 :::
 
 [Google Cloud Platform](https://cloud.google.com) (GCP) is a cloud service in wide use for dynamic infrastructure; it is easy to start up and shut down Node "Instances" in the cloud.  Use these Rundeck steps to automate common GCP Compute VM actions.

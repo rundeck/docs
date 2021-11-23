@@ -498,7 +498,7 @@ Required provider entries:
 For `ResourceModelSource` service, this additional entry is required:
 
 - `resource-format` - Must be the name of one of the supported
-  [Resource Model Document Formats](/administration/projects/resource-model-sources/builtin.md#resource-model-document-formats).
+  [Resource Model Document Formats](/manual/projects/resource-model-sources/builtin.md#resource-model-document-formats).
 
 Optional entries:
 

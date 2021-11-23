@@ -43,7 +43,7 @@ Now it's more practical to manage larger deployments in Microsoft&reg; Azure wit
 
 In 3.4.2, we have added the ability to specify custom filters when setting up the ServiceNow&reg; Node Source. Now it’s possible to gather the nodes you want into your Rundeck project. Use a filter against any CMDB table and gather the results as nodes from ServiceNow&reg;.
 
-[Check out the updated documentation here](/administration/projects/resource-model-sources/servicenow.html)
+[Check out the updated documentation here](/manual/projects/resource-model-sources/servicenow.html)
 
 ## Enterprise Updates
 

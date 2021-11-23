@@ -55,7 +55,7 @@ These sources contain the node definitions for the project.
 A default source will be defined listing the Rundeck Host as a node as a result of the initial project creation.
 You can configure additional Node Sources to gather all the node information relevant to this project.
 
-See [Node Sources](/administration/projects/resource-model-sources/) for more details.
+See [Node Sources](/manual/projects/resource-model-sources/) for more details.
 
 ## Node Enhancers
 
@@ -72,21 +72,21 @@ The Message of the Day is a way to communicate important messages to Project use
 
 ![Message of the Day](~@assets/img/motd-example.png)
 
-More info in the [Projects Section](/administration/projects/project-motd.html)
+More info in the [Projects Section](/manual/projects/project-motd.html)
 
 ## Setup SCM...
 
-More info in the [Projects Section > SCM](/administration/projects/scm/)
+More info in the [Projects Section > SCM](/manual/projects/scm/)
 
 ## Export Archive...
 Use this to export the Project to an Archive file for backup or migration purposes.
 
-More info in the [Projects Section](/administration/projects/project-archive.html#export-archive).
+More info in the [Projects Section](/manual/projects/project-archive.html#export-archive).
 
 ## Import Archive...
 Use this to import a Project archive file.
 
-More info in the [Projects Section](/administration/projects/project-archive.html#import-archive).
+More info in the [Projects Section](/manual/projects/project-archive.html#import-archive).
 
 ## Delete Project...
 Use this to delete the project.  Note it will delete all associated jobs, node sources, etc.
@@ -94,4 +94,4 @@ Use this to delete the project.  Note it will delete all associated jobs, node s
 ## Plugins Control
 Plugins Control can be used to selectively enable/disable plugins available to this project.
 
-More info in the [Projects Section](/administration/projects/plugin-control.html).
+More info in the [Projects Section](/manual/projects/plugin-control.html).

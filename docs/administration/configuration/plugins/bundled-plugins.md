@@ -8,13 +8,13 @@ and are installed in the `libext` dir automatically at installation time.
 
 Defines SSH Node Executor and SCP File Copier.
 
-- See [SSH Plugins](/administration/projects/node-execution/ssh.md)
+- See [SSH Plugins](/manual/projects/node-execution/ssh.md)
 
 File: _none_ (built-in)
 
 ## Built-in Resource Model Sources
 
-Rundeck comes with four built-in Resource Model Source providers, see [Resource Model Source Plugins](/administration/projects/resource-model-sources/builtin.md):
+Rundeck comes with four built-in Resource Model Source providers, see [Resource Model Source Plugins](/manual/projects/resource-model-sources/builtin.md):
 
 - File: Parses a file in one of the supported [Model Source Formats](#built-in-resource-model-formats)
 - Directory: Scans all files in a directory in one of the supported formats
@@ -24,7 +24,7 @@ File: _none_ (built-in)
 
 ## Built-in Resource Model Formats
 
-Rundeck comes with three Resource Model Format plugins, see [Resource Model Source Plugins](/administration/projects/resource-model-sources/builtin.md#resource-model-document-formats):
+Rundeck comes with three Resource Model Format plugins, see [Resource Model Source Plugins](/manual/projects/resource-model-sources/builtin.md#resource-model-document-formats):
 
 - XML: the [resourcexml](/manual/document-format-reference/resource-v13.md) format
 - YAML: the [resourceyaml](/manual/document-format-reference/resource-yaml-v13.md) format
@@ -36,7 +36,7 @@ File: _none_ (built-in)
 
 Defines Script Node Executor and Script File Copier.
 
-For more detail see [Script Plugin](/administration/projects/node-execution/script.md).
+For more detail see [Script Plugin](/manual/projects/node-execution/script.md).
 
 Executes an external script file to perform the command, useful for developing your own plugin with the [Script Plugin Development](/developer/01-plugin-development.md#script-plugin-development) model.
 
@@ -177,7 +177,7 @@ File: `rundeck-jasypt-encryption-plugin-{{{rundeckVersionFull}}}.jar`
 
 ## Git Plugin
 
-- See [SCM Git Plugin](/administration/projects/scm/git.md)
+- See [SCM Git Plugin](/manual/projects/scm/git.md)
 
 Provides SCM Export and SCM Import providers for Git.
 

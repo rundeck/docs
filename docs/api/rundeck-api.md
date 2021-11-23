@@ -5984,7 +5984,7 @@ The resource model data in the format requested via the `Accept:` header.
 
 The `readme.md` and `motd.md` files,
 which are Markdown formatted and displayed in the Project listing page,
-can be managed via the API. (See [Project Readme.md](/administration/projects/project-readme.md).)
+can be managed via the API. (See [Project Readme.md](/manual/projects/project-readme.md).)
 
 **Request:**
 

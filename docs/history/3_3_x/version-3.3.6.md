@@ -25,7 +25,7 @@ More PagerDuty Plugin Updates!  The Enterprise plugin suite now includes the fol
 
 #### Sensu
 We have also worked with **[Sensu](https://www.sensu.io/)** on a new suite of plugins.  Here is what's included:
-- [Sensu Entity Node Source](/administration/projects/resource-model-sources/sensu.md)
+- [Sensu Entity Node Source](/manual/projects/resource-model-sources/sensu.md)
 - [Sensu Entity Health Check Plugin](/manual/healthcheckplugins/sensu.md)
 - [Get Check Info](/manual/node-steps/sensu.html#sensu-get-check-info) (Node Step)
 - [Create/Remove Silence for an Entity](/manual/node-steps/sensu.html#sensu-create-silence-entry) (Node Steps)

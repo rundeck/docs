@@ -5,11 +5,57 @@ module.exports = [{
   children: [
     {
       title: "Projects",
-      path: '/manual/projects',
       collapsable: true,
+      path: '/manual/projects/',
       children: [
-        '/manual/projects',
-        ]
+        '/manual/projects/project-create',
+        '/manual/projects/configuration',
+        {
+          title: 'SCM',
+          collapsable: true,
+          children: [
+            '/manual/projects/scm/',
+            '/manual/projects/scm/git',
+            '/manual/projects/scm/job-replication'
+          ]
+        },
+        '/manual/projects/project-readme',
+        '/manual/projects/project-motd',
+        '/manual/projects/plugin-control',
+        '/manual/projects/project-archive',
+        '/manual/projects/project-delete',
+        {
+          title: 'Resource Model Sources',
+          collapsable: true,
+          children: [
+            '/manual/projects/resource-model-sources/',
+            '/manual/projects/resource-model-sources/node-wizard',
+            '/manual/projects/resource-model-sources/aws',
+            '/manual/projects/resource-model-sources/azure',
+            '/manual/projects/resource-model-sources/gcp',
+            '/manual/projects/resource-model-sources/oracle',
+            '/manual/projects/resource-model-sources/datadog',
+            '/manual/projects/resource-model-sources/servicenow',
+            '/manual/projects/resource-model-sources/vmware',
+            '/manual/projects/resource-model-sources/sensu',
+            '/manual/projects/resource-model-sources/builtin',
+            '/manual/projects/resource-model-sources/resource-editor'
+          ]
+        },
+        {
+          title: 'Node Execution',
+          collapsable: true,
+          children: [
+            '/manual/projects/node-execution/',
+            '/manual/projects/node-execution/builtin',
+            '/manual/projects/node-execution/script',
+            '/manual/projects/node-execution/ssh',
+            '/manual/projects/node-execution/powershell',
+            '/manual/projects/node-execution/bastionssh',
+            '/manual/projects/node-execution/openssh'
+          ]
+        }
+      ]
     },
     {
       title: 'Jobs',

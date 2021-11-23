@@ -200,7 +200,7 @@ Enter a command that will be used as the _invocation_ to run the script, by incl
 sudo -u username ${scriptfile}
 ```
 
-This will then allow your script to make use of [Sudo authentication](/administration/projects/node-execution/ssh.md#secondary-sudo-password-authentication).
+This will then allow your script to make use of [Sudo authentication](/manual/projects/node-execution/ssh.md#secondary-sudo-password-authentication).
 
 The effective commandline for your script will become:
 

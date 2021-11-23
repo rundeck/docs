@@ -109,7 +109,7 @@ _Anything_
 
 : Specify any custom attributes about node using a string value.
 
-- For more information about using the `editUrl`/`remoteUrl` see the [Rundeck User Manual](/administration/projects/resource-model-sources/resource-editor.md#resource-editor).
+- For more information about using the `editUrl`/`remoteUrl` see the [Rundeck User Manual](/manual/projects/resource-model-sources/resource-editor.md#resource-editor).
 
 ## Examples
 

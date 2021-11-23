@@ -21,7 +21,7 @@ module.exports = [
   },
   {
    text: 'Projects',
-   link: '/administration/projects/index'
+   link: '/administration/projects'
   },
   {
     text: 'Enterprise Runner',
