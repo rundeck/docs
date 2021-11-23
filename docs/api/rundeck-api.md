@@ -5200,7 +5200,7 @@ new execution by ID:
 ## Key Storage ###
 
 Upload and manage public and private key files and passwords.
-For more information see the [Administration - Key Storage](/administration/key-storage/key-storage.md) document.
+For more information see the [Administration - Key Storage](/manual/key-storage/key-storage.md) document.
 
 Keys are stored via Rundeck's *Storage* facility.  This is a path-based interface to manage files.  The underlying storage may be on disk or in a database.
 

@@ -113,7 +113,7 @@ Password, algorithm, provider, etc can be specified directly, or via environment
 
 To enable it, see [Configuring - Storage Converter Plugins](/administration/configuration/plugins/configuring.md#storage-converter-plugins).
 
-See also: [Key Storage](/administration/key-storage/key-storage.md)
+See also: [Key Storage](/manual/key-storage/key-storage.md)
 
 Provider type: `jasypt-encryption`
 

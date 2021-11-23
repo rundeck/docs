@@ -160,33 +160,6 @@ module.exports = [{
         '/administration/security/webapp-http-headers',
         '/administration/security/project-acl'
       ]
-    },
-    {
-      title: "Projects",
-      path: '/administration/projects',
-      collapsable: true,
-      children: [
-        '/administration/projects',
-        ]
-    },
-    {
-      title: 'Key Storage',
-      collapsable: true,
-      path: '/administration/key-storage/key-storage',
-      sidebarDepth: 1,
-      children: [
-        '/administration/key-storage/key-storage',
-        {
-          title: 'Key Storage Plugins',
-          collapsable: true,
-          path: '/administration/key-storage/storage-plugins',
-          children: [
-            '/administration/key-storage/storage-plugins/thycotic-storage.md',
-            '/administration/key-storage/storage-plugins/vault.md',
-            '/administration/key-storage/storage-plugins/cyberark-storage.md'
-          ]
-        },
-      ]
     }
   ]
 }]

@@ -20,7 +20,7 @@ The Key Storage container allows storing public keys, private keys, and password
 contents of these files can be accessed by Node Execution plugins for authenticating to remote nodes.
 The contents can be written via the Rundeck API, but only public keys can be read via the API.
 
-See the chapter: [Key Storage](/administration/key-storage/key-storage.md).
+See the chapter: [Key Storage](/manual/key-storage/key-storage.md).
 
 When configuring Key Storage providers, the configuration entries in `rundeck-config.properties` start with:
 

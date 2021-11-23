@@ -28,10 +28,6 @@ module.exports = [
     link: '/administration/runner/'
   },
   {
-    text: 'Key Storage',
-    link: '/administration/key-storage/key-storage'
-  },
-  {
     text: 'Maintenance',
     link: '/administration/maintenance/index'
   },

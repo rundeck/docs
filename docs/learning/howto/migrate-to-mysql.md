@@ -65,7 +65,7 @@ Enable DB storage for Project configurations, and Key Storage. Optionally enable
 
 For more info refer to:
 
-- [Security - Key Storage](/administration/key-storage/key-storage.md)
+- [Security - Key Storage](/manual/key-storage/key-storage.md)
 - [Configuring Plugins - Bundled Plugins - Jasypt Encryption Plugin](/administration/configuration/plugins/bundled-plugins.md#jasypt-encryption-plugin)
 - [Storage Facility](/administration/configuration/storage-facility.md)
 

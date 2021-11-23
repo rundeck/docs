@@ -115,6 +115,25 @@ module.exports = [{
       ]
     },
     {
+      title: 'Key Storage',
+      collapsable: true,
+      path: '/manual/key-storage/key-storage',
+      sidebarDepth: 1,
+      children: [
+        '/manual/key-storage/key-storage',
+        {
+          title: 'Key Storage Plugins',
+          collapsable: true,
+          path: '/manual/key-storage/storage-plugins',
+          children: [
+            '/manual/key-storage/storage-plugins/thycotic-storage.md',
+            '/manual/key-storage/storage-plugins/vault.md',
+            '/manual/key-storage/storage-plugins/cyberark-storage.md'
+          ]
+        },
+      ]
+    },
+    {
       title: 'Commands',
       path: '/manual/06-commands',
       collapsable: true,

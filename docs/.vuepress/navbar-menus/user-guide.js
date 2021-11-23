@@ -12,6 +12,10 @@ module.exports = [
     text: 'Nodes'
   },
   {
+    text: 'Key Storage',
+    link: '/manual/key-storage/key-storage'
+  },
+  {
     link: '/manual/06-commands',
     text: 'Commands'
   },

@@ -439,7 +439,7 @@ So the arguments for the Job Reference might look like this:
 
 ### Secure Options using Key Storage
 
-Secure options can specify a Storage Path in lieu of a default value. This path to the [Key Storage Facility](/administration/key-storage/key-storage.md)
+Secure options can specify a Storage Path in lieu of a default value. This path to the [Key Storage Facility](/manual/key-storage/key-storage.md)
 will be loaded as the option value when one is not supplied.
 
 The path must indicate a stored `password` entry in the storage facility.
