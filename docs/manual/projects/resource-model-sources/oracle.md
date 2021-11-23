@@ -35,6 +35,3 @@ This setting can be configured using _System Configuration_ using `oracle.finger
 
 **Just running instances**
 : Will return only running instances to populate the Node listing.
-
-**Defined Tag Name for custom Attributes**
-: <TBD>

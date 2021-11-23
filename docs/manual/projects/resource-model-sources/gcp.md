@@ -21,6 +21,3 @@ To configure Authentication please use this page as a reference to gather the in
 
 **Just running instances**
 : Will return only running instances to populate the Node listing.
-
-**Defined Tag Name for custom Attributes**
-: <TBD>
