@@ -12,7 +12,7 @@ module.exports = [{
   },
   {
     text: 'RD - Command Line Interface',
-    link: 'https://rundeck.github.io/rundeck-cli'
+    link: '/rd-cli/'
   },
   {
     text: 'Release Notes',
