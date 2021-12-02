@@ -57,6 +57,8 @@ rundeck.storage.provider.1.config.storageBehaviour=vault
 
 Add the settings to the **System Configuration** module (3.4.0+ Enterprise) or `$RDECK_BASE/etc/rundeck-config.properties`.
 
+>Note: These settings will require a restart of Rundeck to take effect.
+
 * **prefix**: Vault Prefix in Vault secret backend
 
 ```
@@ -156,9 +158,14 @@ rundeck.storage.provider.[index].config.clientPemFile=/path/clientPemFile
 rundeck.storage.provider.[index].config.clientKeyPemFile=/path/clientKeyPemFile
 ```
 
-* **namespace**: Define the Hashicorp namespace for the integration.
+* **namespace**: Define the Hashicorp namespace for the integration.  If root is needed leave blank or set to `root/`
 ```
 rundeck.storage.provider.[index].config.namespace=hashicorpNamespace
+```
+
+* **authNamespace**: When using Namespaces if the user or AppRole is in a different namespace than the password entries use this to set the namespace where Authentication should take place.  If left blank the _namespace_ entry from above will be used (if set).  To use the _root_ namespace set to `root/`.
+```
+rundeck.storage.provider.[index].config.authNamespace=namespace_for_auth
 ```
 
 * **validateSsl**:  Enable/Disable SSL validation. Specifies whether SSL validation is to be performed
@@ -253,7 +260,7 @@ rundeck.storage.provider.1.config.token=$VAULT_TOKEN
 rundeck.storage.provider.1.config.storageBehaviour=vault
 ```
 
-#### **Using APPROLE authentication**
+#### **Using APPROLE authentication and Namespaces**
 
 You can use these settings for an existing vault storage:
 
@@ -265,29 +272,20 @@ rundeck.storage.provider.1.config.secretBackend=secret
 rundeck.storage.provider.1.config.address=$VAULT_URL
 rundeck.storage.provider.1.config.engineVersion=2
 rundeck.storage.provider.1.config.storageBehaviour=vault
+rundeck.storage.provider.1.config.namespace=training/engineering
 
 #auth
 rundeck.storage.provider.1.config.authBackend=approle
 rundeck.storage.provider.1.config.approleAuthMount=approle
 rundeck.storage.provider.1.config.approleId=$VAULT_APPROLE_ID
 rundeck.storage.provider.1.config.approleSecretId=$VAULT_APPROLE_SECRET_ID
+rundeck.storage.provider.1.config.authNamespace=training
 
 #timeouts
 rundeck.storage.provider.1.config.maxRetries=500
 rundeck.storage.provider.1.config.retryIntervalMilliseconds=2
 rundeck.storage.provider.1.config.openTimeout=2500
 rundeck.storage.provider.1.config.readTimeout=2500
-```
-
-**Enabling APPROLE Vault using API**
-
-```
-curl --header "X-Vault-Token: $TOKEN" --request POST --data '{"type": "approle"}' http://localhost:8200/v1/sys/auth/approle
-curl --header "X-Vault-Token: $TOKEN" --request POST --data '{"policies": "rundeck", "token_ttl": "2m", "token_max_ttl": "2m"}' http://localhost:8200/v1/auth/approle/role/rundeck
-# get $VAULT_APPROLE_ID
-curl --header "X-Vault-Token: $TOKEN" http://localhost:8200/v1/auth/approle/role/rundeck/role-id | jq
-# get $VAULT_APPROLE_SECRET_ID
-curl --header "X-Vault-Token: $TOKEN" --request POST http://localhost:8200/v1/auth/approle/role/rundeck/secret-id | jq
 ```
 
 
@@ -318,7 +316,7 @@ By default, the value is set to v1 (1)
 
 ## Minimal version requirements
   * Java 1.8
-  * Rundeck 2.10.0
+  * Rundeck 3.3.0
   * Vault 0.9.0
 
 ## Thanks
