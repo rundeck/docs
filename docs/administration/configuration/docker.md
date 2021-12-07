@@ -179,7 +179,7 @@ Configuration options for using the
 [preauthenticated mode](/administration/security/authentication.md#preauthenticated-mode).
 
 `RUNDECK_TOKENS_FILE`
-Specify location of a static tokens file. See [configuration file reference](/administration/configuration/configuration-file-reference.md) for details.
+Specify location of a static tokens file. See [configuration file reference](/administration/configuration/config-file-reference.md) for details.
 
 ### Security Headers
 
