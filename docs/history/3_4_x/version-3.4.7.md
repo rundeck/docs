@@ -8,17 +8,15 @@ Release Date: December, 15 2021
 
 ## Overview
 
-Last release of 2021
+This is the last release of 2021. It includes lots of fixes and security updates with more to come after the New Year. Check out the summary of this month's features and enhancements below.
 
-Check out the new features and enhancements for Rundeck Enterprise and Rundeck Community included in this release.
+### Updated Vault Plugin
 
-Updated Vault Plugin includes more logging and ability to support authentication to a different namespace from where the passwords are stored.
-
-Towards the end of the year we are focusing on some tech debt and customer bugs so this release has Lots fixes and security updates with more to come after the New Year.
+[HashiCorp Vault](https://www.vaultproject.io/) continues to be a very popular way for users to manage secrets in Rundeck. The Vault plugin update in this release includes more logging and the ability to support authentication to a different namespace from where the passwords are stored.  [Find the updated documentation here](/administration/key-storage/storage-plugins/vault.md).
 
 ## Enterprise Updates
 
-* Upgrade Hashicorp Vault plugin
+* Improve Hashicorp Vault plugin
 * Fix: Enterprise System Config menu should be hidden without auth
 * Bump spring version to provide security enhancements
 
