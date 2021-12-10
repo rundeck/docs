@@ -8,3 +8,7 @@ These are the Security Advisories Rundeck has issued in the past:
     YAML deserialization can run untrusted code.
 * [CVE-2020-11009](CVE-2020-11009.md)<br>
     IDOR can reveal execution data and logs to unauthorized user.
+
+## Log4J CVE-2021-44228
+
+The Rundeck Engineering team is aware of the [Log4J CVE-2021-44228 vulnerability](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-44228) and actively working on mitigation and fixes.  Please check back at this page for updates.
