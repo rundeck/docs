@@ -21,4 +21,9 @@ Rundeck versions 3.4.6 and below can mitigate the CVE with any of these actions:
 * Set env var `LOG4J_FORMAT_MSG_NO_LOOKUPS=true`
 * Modify the file `$RDECK_BASE/server/config/log4j2.properties`, replace the string `%m` with `%m{nolookups}`
 
-Rundeck 3.4.7 will be released as soon as possible with the updated libraries necessary to bring Log4j up to a safe version.
+Rundeck 3.4.7-rc4 is available with the updated libraries necessary to bring Log4j up to a safe version.
+
+* Enterprise available at: <https://packagecloud.io/pagerduty/rundeckpro-test>
+* Community available at: <https://packagecloud.io/pagerduty/rundeck-test>
+
+Rundeck 3.4.7 GA will be released as soon as possible 
