@@ -70,7 +70,7 @@ Rundeck Community
 3. There will be a list of options, select the **File** Node Source.
     <br>![File Node Source](@assets/img/howto-ssh-filenodesource.png)
 4. In the drop-down menu on the right, select **resourceyaml**.
-5. In *File Path* choose a path reachable by the Rundeck user - e.g: in the `/var/lib/rundeck/`directory. _It’s important to leave the filename at the end, otherwise, it will not be created._
+5. In *File Path* choose a path reachable by the Rundeck user - e.g: in the `/var/lib/rundeck/resources.yml` directory. _It’s important to leave the filename at the end, otherwise, it will not be created._
 6. Next, check **Generate**, **Include Server Node** and **Writeable**.
     <br>![alt_text](@assets/img/howto-ssh-filenodesource-filled.png)
 7. Finally, click on the **Save** button. The file will be added to the server and ready for a node entry.
