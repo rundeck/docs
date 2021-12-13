@@ -47,6 +47,8 @@ This is the last release of 2021. It includes lots of fixes and security updates
 ## Community Contributors
 
 * Sylvia van Os (TheLastProject)
+* Nacho Barrientos (nbarrientos)
+* Tim Haak (timhaak)
 
 ## Staff Contributors
 
