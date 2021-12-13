@@ -8,3 +8,19 @@ These are the Security Advisories Rundeck has issued in the past:
     YAML deserialization can run untrusted code.
 * [CVE-2020-11009](CVE-2020-11009.md)<br>
     IDOR can reveal execution data and logs to unauthorized user.
+
+## Log4J CVE-2021-44228
+
+The Rundeck Engineering team is aware of the [Log4J CVE-2021-44228 vulnerability](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-44228) and actively working on mitigation and fixes.  Please check back at this page for updates.
+
+### Mitigation UPDATED
+
+**CORRECTION**. use `-Dlog4j2.formatMsgNoLookups=true` (**not** "log4j.formatMsgNoLookups")
+
+Rundeck versions 3.4.6 and below can mitigate the CVE with any of these actions:
+
+* Add this flag to the JVM options for starting rundeck: `-Dlog4j2.formatMsgNoLookups=true`
+* Set env var `LOG4J_FORMAT_MSG_NO_LOOKUPS=true`
+* Modify the file `$RDECK_BASE/server/config/log4j2.properties`, replace the string `%m` with `%m{nolookups}`
+
+Rundeck 3.4.7 has been released with the updated log4j dependency.
