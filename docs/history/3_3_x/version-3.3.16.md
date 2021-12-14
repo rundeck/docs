@@ -1,7 +1,7 @@
-# Release 3.3.15
+# Release 3.3.16
 
 Name: <span style="color: turquoise"><span class="glyphicon glyphicon-sunglasses"></span> "Onion ring turquoise sunglasses"</span>
-Release Date: December 13, 2021
+Release Date: December 14, 2021
 
 - [Download Rundeck](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
@@ -10,14 +10,17 @@ Release Date: December 13, 2021
 ## Overview
 
 :::danger Important Security Update
- The security patches in this release has been superseded by the [3.3.16 release](/history/3_3_x/version-3.3.16.md) or [3.4.8 release](/history/3_4_x/version-3.4.8.md).  Please upgrade to either of those versions.
+ This release includes updated packages to address the recent Log4j vulnerabilities list below
+
+ * [Log4J CVE-2021-44228](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-44228)
+ * [Log4J CVE-2021-45046](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-45046)  
+
+ For more information check out our [Log4j Security page](/history/CVEs/#log4j-cve-2021-44228).
 :::
 
 ## Core Product Updates
 
-* [Update log4j dependency for CVE-2021-44228 (backport #7427)](https://github.com/rundeck/rundeck/pull/7429)
-* [Grant permission to delete webhook with project based ACL. (backport #7269)](https://github.com/rundeck/rundeck/pull/7280)
-
+* [Update Log4j to 2.16 for CVE-2021-45046](https://github.com/rundeck/rundeck/pull/7435)
 
 ## Staff Contributors
 

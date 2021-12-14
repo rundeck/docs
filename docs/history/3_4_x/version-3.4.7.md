@@ -7,12 +7,12 @@ Release Date: December, 10 2021
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
 
 :::danger Important Security Update
- This release includes updated packages to address the recent Log4j vulnerability.  For more information check out our [Log4j Security page](/history/CVEs/#log4j-cve-2021-44228).
+ The security patches in this release has been superseded by the [3.4.8 release](/history/3_4_x/version-3.4.8.md).  Please upgrade to that version.
 :::
 
 ## Overview
 
-This is the last release of 2021. It includes lots of fixes and security updates with more to come after the New Year. Check out the summary of this month's features and enhancements below.
+Check out the new features and enhancements for Rundeck Enterprise and Rundeck Community included in this release.
 
 ### Updated Vault Plugin
 
