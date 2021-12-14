@@ -15,7 +15,7 @@ http://support.rundeck.com/customer/en/portal/articles/2415681-oracle-setup)
 - Update `rundeck-config.properties` file according to your installation [layout](https://docs.rundeck.com/docs/administration/configuration/config-file-reference.html#configuration-layout):
 
 ```properties
-dataSource.driverClassName = oracle.jdbc.driver.OracleDriver
+dataSource.driverClassName = oracle.jdbc.OracleDriver
 dataSource.url = jdbc:oracle:thin:@oracle.rundeck.local:1521:orcl #orcl is the instance name
 dataSource.username = rundeckuser
 dataSource.password = rundeckpassword

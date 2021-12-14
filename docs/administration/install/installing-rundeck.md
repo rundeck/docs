@@ -169,7 +169,7 @@ dataSource.password = <rundeckpassword>
 ::: tab Oracle
 ```properties
 dataSource.url = jdbc:oracle:thin:@<host>:1521:orcl # (change server name and instance name)
-dataSource.driverClassName = oracle.jdbc.driver.OracleDriver
+dataSource.driverClassName = oracle.jdbc.OracleDriver
 dataSource.username = <rundeckuser>
 dataSource.password = <rundeckpassword>
 dataSource.dialect = org.rundeck.hibernate.RundeckOracleDialect
