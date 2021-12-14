@@ -27,10 +27,7 @@ Note that [A new Log4j CVE](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2
 * Rundeck 3.4.8 - [Download site](https://download.rundeck.com)
 * Rundeck 3.3.16 - [Download site](https://download.rundeck.com)
 
-
-The mitigation options below were invalidated by [CVE-2021-045056](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-45046)
-
-Rundeck versions 3.4.6 and below can mitigate some risk with the actions below.  Note the `CVE-2021-45046` says a Denial-of-Service is still possible even with these mitigations.
+Rundeck versions 3.4.6 and below can mitigate some risk with the actions below.  Note the [CVE-2021-045056](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-45046) says a Denial-of-Service is still possible even with these mitigations.
 
 * Add this flag to the JVM options for starting rundeck: `-Dlog4j2.formatMsgNoLookups=true`
 * Set env var `LOG4J_FORMAT_MSG_NO_LOOKUPS=true`
