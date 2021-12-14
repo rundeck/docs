@@ -15,14 +15,12 @@ The Rundeck Engineering team is aware of the [Log4J CVE-2021-44228 vulnerability
 
 ### Mitigation UPDATED
 
-**CORRECTION**: Use `-Dlog4j2.formatMsgNoLookups=true` (**not** "log4j.formatMsgNoLookups")
-
 Rundeck versions 3.4.6 and below can mitigate the CVE with any of these actions:
 
 * Add this flag to the JVM options for starting rundeck: `-Dlog4j2.formatMsgNoLookups=true`
 * Set env var `LOG4J_FORMAT_MSG_NO_LOOKUPS=true`
 * Modify the file `$RDECK_BASE/server/config/log4j2.properties`, replace the string `%m` with `%m{nolookups}`
 
-Rundeck 3.4.7 has been released with the updated log4j dependency.
+[Rundeck 3.4.7](http://download.rundeck.com) and has been released with the updated log4j dependency.
 
-Rundeck 3.3.15 will be released with the updated libraries on or before Wednesday December 15th, 2021.
+[Rundeck 3.3.15](http://download.rundeck.com) is also available with this fix.
