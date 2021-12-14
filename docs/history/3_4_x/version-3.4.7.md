@@ -1,7 +1,7 @@
 # Release 3.4.7
 
 Name: <span style="color: deepskyblue"><span class="glyphicon glyphicon-gift"></span> "Papadum deepskyblue gift"</span>
-Release Date: December, 15 2021
+Release Date: December, 10 2021
 
 - [Download Rundeck](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
