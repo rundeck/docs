@@ -9,23 +9,46 @@ These are the Security Advisories Rundeck has issued in the past:
 * [CVE-2020-11009](CVE-2020-11009.md)<br>
     IDOR can reveal execution data and logs to unauthorized user.
 
-## Log4J CVE-2021-44228
-
-The Rundeck Engineering team is aware of the [Log4J CVE-2021-44228 vulnerability](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-44228) and actively working on mitigation and fixes.  Please check back at this page for updates.
-
-_Update December 14, 2021, 3pm PST_
-We have released versions `3.4.8` and `3.3.16` which use Log4j version 2.16 to address the latest [Log4j CVE-2021-45046](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-45046)
+## Log4JShell CVEs
 
 
-_Update December 14, 2021 10am PST_
-Note that [A new Log4j CVE](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-45046) has been issued. Rundeck Engineering is currently testing impacts and will update docs accordingly as soon as we have more information.
+The Rundeck Engineering team is aware of the "Log4Shell" vulnerabilities and actively working on mitigation and fixes.  Please check back at this page for updates.
 
-### Mitigation Options
+**Status:**
 
-[A new Log4j CVE](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-45046) was issued that recommends updating the Log4j package to 2.16.  Previously documented mitigation options were invalidated by this finding and the recommendation is to update Rundeck to one of the versions listed below
+* [CVE-2021-44228][] (RCE vulnerability)
+    *  Fixed in Rundeck 3.4.8/3.3.16
+    *  Partial fix in Rundeck 3.4.7/3.3.15
+    *  Partial [mitigation](#mitigation-options) in previous versions (3.4.6 and 3.3.14 and earlier)
+* [CVE-2021-45046][] (DOS attack)
+    *  Fixed in Rundeck 3.4.8/3.3.16
+
+**Recommendations:**
+
+* Upgrade as soon as possible
+* If you are still using Rundeck 3.4.6/3.3.14 or earlier, be sure to apply the [mitigation options](#mitigation-options) below to protect against the RCE vulnerability.
+
+Downloads:
 
 * Rundeck 3.4.8 - [Download site](https://download.rundeck.com)
 * Rundeck 3.3.16 - [Download site](https://download.rundeck.com)
+
+**Updates**
+
+_Update December 14, 2021, 3pm PST_
+
+We will be releasing `3.4.8` and `3.3.16` today, which use Log4j version 2.16 to address the latest [Log4j CVE-2021-45046](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-45046)
+
+
+_Update December 14, 2021 10am PST_
+
+Note that [A new Log4j CVE](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-45046) has been issued. Rundeck Engineering is currently testing impacts and will update docs accordingly as soon as we have more information.
+This CVE indicates a potential DOS attack is possible even with the [mitigation of CVE-2021-44228](#log4j-cve-2021-44228) applied.
+
+[CVE-2021-44228]: https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-44228
+[CVE-2021-45046]: https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-45046
+
+### Mitigation Options
 
 Rundeck versions 3.4.6 and below can mitigate some risk with the actions below.  Note the [CVE-2021-045056](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-45046) says a Denial-of-Service is still possible even with these mitigations.
 
