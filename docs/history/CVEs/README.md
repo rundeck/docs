@@ -13,7 +13,10 @@ These are the Security Advisories Rundeck has issued in the past:
 
 The Rundeck Engineering team is aware of the [Log4J CVE-2021-44228 vulnerability](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-44228) and actively working on mitigation and fixes.  Please check back at this page for updates.
 
-### Mitigation UPDATED
+_Update December 14, 2021 10am PST_
+Note that [a new Log4j CVE](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-45046) has been issued. Rundeck Engineering is currently testing impacts and will update docs accordingly as soon as we have more information.
+
+### Mitigation Options
 
 Rundeck versions 3.4.6 and below can mitigate the CVE with any of these actions:
 
