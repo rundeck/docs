@@ -1,6 +1,6 @@
 # Security Advisories
 
-## Log4JShell CVEs
+## Log4Shell CVEs
 
 
 The Rundeck Engineering team is aware of the "Log4Shell" vulnerabilities and actively working on mitigation and fixes.  Please check back at this page for updates.
