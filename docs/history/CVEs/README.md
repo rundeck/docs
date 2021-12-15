@@ -44,7 +44,6 @@ This CVE indicates a potential DOS attack is possible even with the [mitigation 
 Rundeck versions 3.4.6 and below can mitigate some risk with the actions below.  Note the [CVE-2021-045056](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-45046) says a Denial-of-Service is still possible even with these mitigations.
 
 * Add this flag to the JVM options for starting rundeck: `-Dlog4j2.formatMsgNoLookups=true`
-* Set env var `LOG4J_FORMAT_MSG_NO_LOOKUPS=true`
 * Modify the file `$RDECK_BASE/server/config/log4j2.properties`, replace the string `%m` with `%m{nolookups}`
 
 
