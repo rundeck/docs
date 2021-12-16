@@ -48,7 +48,7 @@ Rundeck versions 3.4.6 and below can mitigate some risk with the actions below. 
 
 
 ## Past Rundeck CVEs
-These are the Security Advisories Rundeck has issued in the past.  It is always recommened to upgrade to the current version of Rundeck ({{{rundeckVersion}}}) for the latest security updates.
+These are the Security Advisories Rundeck has issued in the past.  It is always recommeneded to upgrade to the current version of Rundeck ({{{rundeckVersion}}}) for the latest security updates.
 
 * [CVE-2021-39133](CVE-2021-39133.md)<br>
     Cross-Site Request Forgery (CSRF) can run untrusted code on Rundeck server.
