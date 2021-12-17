@@ -1,6 +1,6 @@
 # Finding Log4Shell with Rundeck
 
-Rundeck is prepared a blog about how a Rundeck Administrator might chase down an security vulnerability like the recent issues in Log4j.  This learning article recaps some of the technical details covered in that article and expands on the ideas with steps to implementing a Rundeck Health Check to keep an eye out for vulnerable nodes.
+Rundeck prepared a blog about how a Rundeck Administrator might chase down an security vulnerability like the recent issues in Log4j.  This learning article discusses some of the technical details covered in that article and expands on the ideas with steps to implementing a Rundeck Health Check to keep an eye out for vulnerable nodes.
 
 [You can read the full Blog article here](https://www.rundeck.com/blog/chasing-log4shell-with-automation-mindset)
 
@@ -9,7 +9,7 @@ In this table are the two job exports from the demonstration video in the blog.
 :::warning Disclaimer
 These jobs are provided as examples only to illustrate a design pattern and are not intended to provide security for any environment.  Since this was recorded LunaSec may have issued newer versions of the tool so be sure to adjust the jobs for the latest version.
 
-You might also notice that when scanning Rundeck 3.4.8 (you did upgrade to the latest version right!!??) the tool prior to verison 1.4 identifies a vulnerability in the Log4j 2.16 package as 2.14.  We have confirmed this is a false positive in Log4Shell and is fixed in 1.4.0.  Be assured Rundeck 3.4.8 is patched and protected from CVE-2021-44228 and CVE-2021-45046.
+You might also notice that when scanning Rundeck 3.4.8 (you did upgrade to the latest version right!!??) the tool prior to version 1.4 identifies a vulnerability in the Log4j 2.16 package as 2.14.  We have confirmed this is a false positive in Log4Shell and is fixed in 1.4.0.  Be assured Rundeck 3.4.8 is patched and protected from CVE-2021-44228 and CVE-2021-45046.
 :::
 
 To add the job definitions to a project of your own follow these steps:
