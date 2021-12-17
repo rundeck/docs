@@ -7,9 +7,9 @@ Rundeck is prepared a blog about how a Rundeck Administrator might chase down an
 In this table are the two job exports from the demonstration video in the blog.
 
 :::warning Disclaimer
-These jobs are provided as examples only to illustrate a design pattern and are not intended to provide security for any environment.  Since this was recorded  LunaSec may have issued newer versions of the tool so be sure to adjust the jobs for the latest version.
+These jobs are provided as examples only to illustrate a design pattern and are not intended to provide security for any environment.  Since this was recorded LunaSec may have issued newer versions of the tool so be sure to adjust the jobs for the latest version.
 
-You might also notice that when scanning Rundeck 3.4.8 (you did upgrade to the latest version right!!??) the tool identifies a vulnerability in the Log4j 2.16 package as 2.15.  We are working with Lunasec to understand why that is happening as the software is patched to 2.16 and protected from CVE-2021-44228 and CVE-2021-45046.
+You might also notice that when scanning Rundeck 3.4.8 (you did upgrade to the latest version right!!??) the tool identifies a vulnerability in the Log4j 2.16 package as 2.14.  We have confirmed this is a false positive in Log4Shell and they are working on patching it.  Be assured Rundeck 3.4.8 is patched and protected from CVE-2021-44228 and CVE-2021-45046.
 :::
 
 To add the job definitions to a project of your own follow these steps:
