@@ -129,7 +129,7 @@ Health Check Script
 ```
 if log4shell -v
 then
-if sudo log4shell s --json / 2>&1 | grep -q -E '(44228|45046)';
+if sudo log4shell s --json --no-follow-symlinks / 2>&1 | grep -q -E '(44228|45046)';
 then
 echo "UNHEALTHY";
 exit 1;
