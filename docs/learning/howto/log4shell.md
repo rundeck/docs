@@ -94,7 +94,7 @@ To add the job definitions to a project of your own follow these steps:
       exec: sudo log4shell -v
     - interpreterArgsQuoted: false
       script: |-
-        if log4shell s --json @option.DirectoryPath@ 2>&1 | grep -q -E '(44228|45046)'
+        if log4shell s --json --no-follow-symlinks @option.DirectoryPath@ 2>&1 | grep -q -E '(44228|45046)'
         then
           echo "Found vulnerable to Log4Shell"
           log4shell s @option.DirectoryPath@ 2>&1
