@@ -7,6 +7,8 @@ The Rundeck Engineering team is aware of the "Log4Shell" vulnerabilities and act
 
 **Status:**
 
+* [CVE-2021-45105][]
+    * Fixed in Rundeck 3.4.9/3.3.17
 * [CVE-2021-44228][] (RCE vulnerability)
     *  Fixed in Rundeck 3.4.8/3.3.16
     *  Partial fix in Rundeck 3.4.7/3.3.15
@@ -21,10 +23,15 @@ The Rundeck Engineering team is aware of the "Log4Shell" vulnerabilities and act
 
 Downloads:
 
-* Rundeck 3.4.8 - [Download site](https://download.rundeck.com)
-* Rundeck 3.3.16 - [Download site](https://download.rundeck.com)
+* Rundeck 3.4.9 - [Download site](https://download.rundeck.com)
+* Rundeck 3.3.17 - [Download site](https://download.rundeck.com)
 
 **Updates**
+
+_Update December 20, 2021_
+
+We will be releasing `3.4.9` and `3.3.17` today, which use Log4j version 2.17 to address the latest [Log4j CVE-2021-45105](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-45105)
+
 
 _Update December 14, 2021, 3pm PST_
 
@@ -38,6 +45,7 @@ This CVE indicates a potential DOS attack is possible even with the [mitigation 
 
 [CVE-2021-44228]: https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-44228
 [CVE-2021-45046]: https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-45046
+[CVE-2021-45105]: https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-45105
 
 ### Mitigation Options
 

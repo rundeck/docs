@@ -8,12 +8,9 @@ Release Date: December 14, 2021
 
 
 :::danger Important Security Update
- This release includes updated packages to address the recent Log4j vulnerabilities list below
 
- * [Log4J CVE-2021-44228](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-44228)
- * [Log4J CVE-2021-45046](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-45046)  
+ The Log4j security patches in this release has been superseded by the [3.4.9 release](/history/3_4_x/version-3.4.9.md).  Please upgrade to that version.
 
- For more information check out our [Log4j Security page](/history/CVEs/#log4j-cve-2021-44228).
 :::
 
 

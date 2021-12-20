@@ -7,7 +7,7 @@ Release Date: December, 10 2021
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
 
 :::danger Important Security Update
- The security patches in this release has been superseded by the [3.4.8 release](/history/3_4_x/version-3.4.8.md).  Please upgrade to that version.
+ The security patches in this release has been superseded by the [3.4.9 release](/history/3_4_x/version-3.4.9.md).  Please upgrade to that version.
 :::
 
 ## Overview

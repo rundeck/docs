@@ -10,7 +10,7 @@ Release Date: December 13, 2021
 ## Overview
 
 :::danger Important Security Update
- The security patches in this release has been superseded by the [3.3.16 release](/history/3_3_x/version-3.3.16.md) or [3.4.8 release](/history/3_4_x/version-3.4.8.md).  Please upgrade to either of those versions.
+ The security patches in this release has been superseded by the [3.3.17 release](/history/3_3_x/version-3.3.17.md) or [3.4.9 release](/history/3_4_x/version-3.4.9.md).  Please upgrade to either of those versions.
 :::
 
 ## Core Product Updates
