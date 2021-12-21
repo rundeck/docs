@@ -70,6 +70,8 @@ project.plugin.WorkflowStep.Service-Now-Incident-Check-State.password-key-storag
 project.plugin.WorkflowStep.Service-Now-Incident-Check-State.url=https://server.service-now.com
 
 ```
+- **Note**
+: The ServiceNow API credentials used for this plugin must have the permissions to _read_ the `sys_choice` table. This can be done manually, or be adding the _ITIL_ and _Personalize_ roles to this user.
 
 ## ServiceNow / Incident / Comment
 
