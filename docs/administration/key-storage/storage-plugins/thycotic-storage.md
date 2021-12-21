@@ -46,6 +46,7 @@ rundeck.storage.provider.1.config.allowSelfSignedCert=true
 
 - **Address**
 : The base URL for the secret server account where the secrets should be saved. For example, `https://example.secretservercloud.com`.
+: If using Thycotic on-premises, the address must be appended with `/SecretServer`, so your full URL will be `https://example.yourdomain.com/SecretServer`.
 
 - **allowSelfSignedCert**
 : Set to true if wishing to use self-signed certificates to access the Thycotic server.
