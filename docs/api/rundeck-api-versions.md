@@ -35,6 +35,11 @@ These endpoints are in "Incubating" status, and are subject to change in future 
 
 Changes introduced by API Version number:
 
+**Version 40**:
+
+* Updated Endpoints:
+    * [`GET /api/V/plugin/list`][GET /api/V/plugin/list] - Plugin detail includes `iconUrl` and `providerMetadata`
+
 **Version 39**:
 
 * Removed support for previously deprecated API v10 and below. The minimum API version is now v11.

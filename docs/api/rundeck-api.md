@@ -7107,7 +7107,9 @@ Same response as [Setup SCM Plugin for a Project](#setup-scm-plugin-for-a-projec
         "name": "Kubernetes-node-executor",
         "pluginVersion": "1.0.0",
         "service": "NodeExecutor",
-        "title": "Kubernetes / Pods / Node Executor"
+        "title": "Kubernetes / Pods / Node Executor",
+        "iconUrl": "...",
+        "providerMetadata": { }
     },
     {
         "artifactName": "py-winrm-plugin",
@@ -7118,11 +7120,16 @@ Same response as [Setup SCM Plugin for a Project](#setup-scm-plugin-for-a-projec
         "name": "WinRMPython",
         "pluginVersion": "1.0.7",
         "service": "NodeExecutor",
-        "title": "WinRM Node Executor Python"
+        "title": "WinRM Node Executor Python",
+        "iconUrl": "...",
+        "providerMetadata": { }
     },
     ...
 ]
 ```
+
+* `iconUrl` - URL to icon file for the plugin if present. **since V40**
+* `providerMetadata` - Map of metadata about the plugin if present. **since V40**
 
 ## Webhooks
 
