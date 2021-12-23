@@ -34,6 +34,11 @@ Press the "Create" button at the bottom of the page.
 
 ![Simple saved job form](~@assets/img/fig0303.png)
 
+:::tip
+Scheduled jobs contains username and group data from the last user who modified its scheduled behavior.
+That information is necessary to evaluate any required ACL and is preserved even if the user or group is removed.
+:::
+
 After the the job is created, the browser is directed to the page of the job you just created. The job can be run by clicking the Run Job Now button.
 
 ![Simple job form](~@assets/img/fig0303-a.png)
