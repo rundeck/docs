@@ -26,5 +26,5 @@ In the field for "Send Email to" you can also use these variables as property re
 
 See Also:
 
-- [Email Settings](/administration/configuration/email-settings)
+- [Email Settings](/administration/configuration/email-settings.md)
 - [Email Settings: Custom Email Templates](/administration/configuration/email-settings.md#custom-email-templates)
