@@ -8,7 +8,7 @@ What does Rundeck do for Ansible users? Rundeck gives them a great GUI front-end
 
 [Ansible](https://github.com/ansible/ansible) is an automation solution developed by RedHat Inc, that handles configuration management, application deployment, cloud provisioning, ad-hoc task execution, network automation, and multi-node orchestration.
 
-The [Ansible basic](https://docs.ansible.com/ansible/latest/user_guide/intro_getting_started.html) configuration is extremely easy. Ansible just needs two files to work: [the configuration file](https://docs.ansible.com/ansible/latest/reference_appendices/config.html) (`ansible.cfg`, usually at `/etc/ansible` path) and [the inventory file](https://docs.ansible.com/ansible/latest/user_guide/intro_inventory.html)  (where Ansible stores their remote nodes in this https://docs.ansible.com/ansible/2.3/intro_inventory.html format, usually at `/etc/ansible` path too).
+The [Ansible basic](https://docs.ansible.com/ansible/latest/user_guide/intro_getting_started.html) configuration is extremely easy. Ansible just needs two files to work: [the configuration file](https://docs.ansible.com/ansible/latest/reference_appendices/config.html) (`ansible.cfg`, usually at `/etc/ansible` path) and [the inventory file](https://docs.ansible.com/ansible/latest/user_guide/intro_inventory.html)  (where Ansible stores their remote nodes in [this format](https://docs.ansible.com/ansible/2.3/intro_inventory.html), usually at `/etc/ansible` path too).
 
 Ansible uses [playbooks](https://docs.ansible.com/ansible/latest/user_guide/playbooks.html) (essentially a defined blueprint for automation tasks), to manage configurations and deployments to remote machines.
 
@@ -25,11 +25,16 @@ This integration enables Rundeck users to:
 - Call Ansible playbooks and modules from Rundeck. Rundeck returns output from Ansible's command line, however in an easier to consume format within Rundeck’s GUI and users can utilize the Rundeck API and access control features.
 - Use Ansible as the underlying execution framework. Run any command or script and output will be collated by node and step like typical Rundeck output.
 
+### Pre-Requisites
+- Rundeck installed with version {{{rundeckVersion}}}
+- Ansible binaries installed on Rundeck Server based on [Ansible documentation](https://docs.ansible.com/).
+- Confirmation that Rundeck can SSH as `rundeck` user to the Ansible endpoints defined in the inventory file.
+
 ## Ansible Configuration
 
-Ansible needs two basic files to work, [ansible.cfg](https://docs.ansible.com/ansible/latest/reference_appendices/config.html) (where Ansible configurations are located) and hosts (inventory).
+Ansible needs two basic files to work, [ansible.cfg](https://docs.ansible.com/ansible/latest/reference_appendices/config.html) (where Ansible configurations are located) and `hosts` (inventory).
 
-In this guide we use three nodes defined at the [Ansible inventory](https://docs.ansible.com/ansible/latest/user_guide/intro_inventory.html)file:
+In this guide we use three nodes defined as the [Ansible inventory](https://docs.ansible.com/ansible/latest/user_guide/intro_inventory.html) file: (Note-Your file will be different)
 
 ```
 [ssh_farm]
@@ -40,15 +45,15 @@ In this guide we use three nodes defined at the [Ansible inventory](https://docs
 
 ## Rundeck/Ansible Integration
 
-1. To run commands via the "Commands" menu or the default "Command" node step in a Rundeck job, we can configure a project with the Ansible node executor. **Create a new project**, go to the **Default Node Executor** tab and select _Ansible Ad-hoc Node Executor_.
+1. To run commands via the "Commands" menu or the default "Command" node step in a Rundeck job, we can configure a project with the Ansible node executor as a default. **Create a new project**, go to the **Default Node Executor** tab and select _Ansible Ad-hoc Node Executor_.
     <br><br>![ Edit Config ](@assets/img/howto-ansible-editconfig.png)<br><br>
 1. In the Ansible Node Executor configuration, set the Executable (usually `/bin/bash`) and define the Ansible config path (usually at `/etc/ansible/ansible.cfg`). Click on the **Generate Inventory** checkbox. Now scroll down and click on the **Save** button.
     <br><br>![ Node Executor Config ](@assets/img/howto-ansible-defaultnodeexec.png)<br><br>
     The Rundeck-Ansible plugin uses the `rundeck` user as the default user to connect to the Ansible remote inventory nodes. At this point, it’s possible to define the SSH authentication method (`privatekey` and `password`) and the specific Ansible SSH user to connect to the remote inventory nodes. You need to define the username in the SSH User textbox. Depending on the auth method you can select the password from the storage path or the ssh key (also from the filesystem path).
     <br><br>![ Node Executor Authentication ](@assets/img/howto-ansible-nodeexecauth.png)<br><br>
-1. Is time to add the Ansible inventory nodes, for that click on **Project Settings**, click on **Edit Nodes...** and then on **Add new Node Source +**.
+1. Add the Ansible inventory nodes by clicking on **Project Settings** > **Edit Nodes...** and then on **Add new Node Source +**.
     <br><br>![ Add Node Source ](@assets/img/howto-ansible-addnodesource.png)<br><br>
-1.  Choose **Ansible Resource Model Source** and define the Ansible inventory file path (usually at `/etc/ansible/hosts`) and Ansible config path (usually at `/etc/ansible/ansible.cfg`).
+1.  Choose **Ansible Resource Model Source** and define the Ansible inventory file path on your Rundeck Server (usually at `/etc/ansible/hosts`) and Ansible config path (usually at `/etc/ansible/ansible.cfg`).
     <br><br>![ Ansible Node Source ](@assets/img/howto-ansible-ansiblenodesource.png)<br><br>
     <br><br>![ Ansible Node Source Config ](@assets/img/howto-ansible-ansiblesourceconfig.png)<br><br>
     Similar to the node executor configuration, in the “SSH Connection” section it’s possible to define the Authentication method (`privatekey` or `password-based`). Depending on the Authentication method, enter the _user_, _ssh password_, or the _key file path_.
@@ -68,16 +73,18 @@ Time for a quick test.
 1. Give it any name
 1. In the Workflow tab select **Ansible Playbook Inline Workflow Node Step**
 1. Put the following playbook:
-    ```
+    ``` yaml
     - name: test playbook
       hosts: all
       tasks:
-      	- shell: uname -a
-        	ignore_errors: yes
-        	register: uname_result
-      	- debug: msg="{{ uname_result.stdout }}"
+        - shell: uname -a
+          ignore_errors: yes
+          register: uname_result
+        - debug: msg="{{ uname_result.stdout }}"
     ```
 1. Go to the **Nodes tab** in the Job Definition and type the name of an Ansible node as a _Node Filter_.
 1. **Save** the Job
 1. **Run the job**
     <br><br>![  ](@assets/img/howto-ansible-joboutput.png)<br><br>
+
+To see the output you may need to switch to the _Log Output_ view.
