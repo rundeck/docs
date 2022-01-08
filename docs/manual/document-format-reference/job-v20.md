@@ -427,13 +427,14 @@ in the year 2010, using a single crontab attribute to express it:
     <schedule crontab="02 00 06,07,08 ? * * 2010"/>
 
 For more information, see
-http://www.quartz-scheduler.org/documentation/quartz-2.2.x/tutorials/tutorial-lesson-06.html
+[Quartz Documentation][Quartz].
 
 ### crontab
 
 Attribute of the [schedule](#schedule), sets the schedule with a full
-crontab string. For more information, see
-http://www.quartz-scheduler.org/documentation/quartz-2.2.x/tutorials/tutorial-lesson-06.html
+crontab string. For more information, see [Quartz Documentation][Quartz].
+
+[Quartz]: http://www.quartz-scheduler.org/documentation/quartz-2.2.2/tutorials/tutorial-lesson-06.html
 
 If specified, then the embedded schedule elements are not used.
 
