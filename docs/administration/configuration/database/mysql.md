@@ -37,8 +37,8 @@ Use the 'mysql' command line tool to access the db as the root user:
 
 Enter the root password to connect. At the *mysql>* prompt, enter the following commands to create the rundeck database:
 
-  mysql> create database rundeck;
-  Query OK, 1 row affected (0.00 sec)
+    mysql> create database rundeck;
+    Query OK, 1 row affected (0.00 sec)
 
 Then "grant" access for a new user/password, and specify the hostname the Rundeck server will connect from. if it is the same server, use "localhost".
 
