@@ -17,7 +17,7 @@ Docker is fastest way to try out Rundeck
 
 ### Quick Start
 ```bash
-docker run --rm -it -p 4440:4440 rundeckpro/rundeck-enterprise:{{{rundeckVersion}}}
+docker run --rm -it -p 4440:4440 rundeckpro/enterprise:{{{rundeckVersion}}}
 ```
 
 ### Docker Compose
