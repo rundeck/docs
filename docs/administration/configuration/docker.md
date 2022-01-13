@@ -85,7 +85,9 @@ for complete details on extending the Docker application configuration.
 
 ## Environment Variables
 
-Not all rundeck configuration listed in the official documentation is available for setup yet. Please take a look at the templates to see all available variables.
+It is possible to use Environment Variables to configure Rundeck.  The templates [here are included in both versions of Rundeck](https://github.com/rundeck/rundeck/tree/main/docker/official/remco/templates).
+
+> Note: Some Enterprise settings may not be documented here. Check the template files for the latest updates
 
 ### Basic
 
