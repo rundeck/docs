@@ -148,6 +148,7 @@ module.exports = [{
       children: [
           '/manual/system-configs',
           '/manual/user-management/user-mgmt',
+          '/manual/user-management/password-reset',
           '/manual/system-report',
           '/manual/configuration-mgmt/configmgmt'
       ]
