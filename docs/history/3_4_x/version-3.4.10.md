@@ -12,7 +12,7 @@ Check out the new features and enhancements for Rundeck Enterprise and Rundeck C
 
 This release updates both Community and Enterprise with the latest Log4J to address CVE-2021-44832 by updating it to `2.17.1`.
 
-Our Enterprise version now has the ability to reset Local User passwords by sending them an email with a reset link rather than setting the password directly on the account.  [Check out the docs here](#)
+Our Enterprise version now has the ability to reset Local User passwords by sending them an email with a reset link rather than setting the password directly on the account.  [Check out the docs here](/manual/user-management/password-reset.md)
 
 ## Enterprise Updates
 
