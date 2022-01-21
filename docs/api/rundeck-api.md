@@ -7615,9 +7615,6 @@ Example:
 ::: enterprise  
 :::
 
-::: incubating
-:::
-
 Returns metadata about the current License for Rundeck Enterprise.
 
 **Request:**
@@ -7664,9 +7661,6 @@ Returns metadata about the current License for Rundeck Enterprise.
 ### Set License Key
 
 ::: enterprise  
-:::
-
-::: incubating
 :::
 
 Uploads a license key for Rundeck Enterprise.
