@@ -2,7 +2,7 @@
 
 It’s common for Rundeck users to integrate Ansible into their Rundeck. Like Rundeck, Ansible's straightforward design and learning curve make it Operations friendly.
 
-What does Rundeck do for Ansible users? Rundeck gives them a great GUI front-end experience and ties together their Ansible automation alongside different tools used by other groups. Rundeck's powerful access control capabilities can be used to safely provide other users and teams with self-service access to run automation (including Ansible playbooks) https://docs.ansible.com/ansible/latest/user_guide/playbooks.html.
+What does Rundeck do for Ansible users? Rundeck gives them a great GUI front-end experience and ties together their Ansible automation alongside different tools used by other groups. Rundeck's powerful access control capabilities can be used to safely provide other users and teams with self-service access to run automation (including Ansible playbooks) [https://docs.ansible.com/ansible/latest/user_guide/playbooks.html](https://docs.ansible.com/ansible/latest/user_guide/playbooks.html).
 
 # What is Ansible?
 
@@ -29,6 +29,8 @@ This integration enables Rundeck users to:
 - Rundeck installed with version {{{rundeckVersion}}}
 - Ansible binaries installed on Rundeck Server based on [Ansible documentation](https://docs.ansible.com/).
 - Confirmation that Rundeck can SSH as `rundeck` user to the Ansible endpoints defined in the inventory file.
+
+> Note: It is possible to use the Welcome Project environment with the Project File in the Additional Information section at the bottom of this page.
 
 ## Ansible Configuration
 
@@ -88,3 +90,13 @@ Time for a quick test.
     <br><br>![  ](@assets/img/howto-ansible-joboutput.png)<br><br>
 
 To see the output you may need to switch to the _Log Output_ view.
+
+## Additional Information
+
+It is possible to use the Welcome Project environment with this [Project File](https://github.com/rundeckpro/welcome-project/raw/main/supplements/ansible.rdproject.jar).
+
+1. Create a new project called `ansible` (or another name if that one is taken)
+1. Open the Ansible Project and use _Project Settings_ > _Import Archive_ to import the file.
+1. Run the **Install Ansible on Rundeck Server** Job to install Ansible.
+
+The other jobs have descriptions for what they do and are aligned with this tutorial.
