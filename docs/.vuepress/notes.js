@@ -21,11 +21,7 @@ async function main() {
     context.core = await getRepoData({repo: 'rundeck', owner: 'rundeck'}, [])
     context.enterprise = await getRepoData({repo: 'rundeckpro', owner: 'rundeckpro'}, ['release-notes/include'])
     context.docs = await getRepoData({repo: 'docs', owner: 'rundeck'}, [])
-    context.systemreport = await getRepoData({repo: 'enterprise-system-report', owner: 'rundeckpro'}, ['release-notes/include'])
-    context.schedules = await getRepoData({repo: 'enterprise-schedules', owner: 'rundeckpro'}, ['release-notes/include'])
-    context.calendars = await getRepoData({repo: 'enterprise-calendars', owner: 'rundeckpro'}, ['release-notes/include'])
-    context.tours = await getRepoData({repo: 'enterprise-tour-manager', owner: 'rundeckpro'}, ['release-notes/include'])
-    context.contributors = {...context.core.contributors, ...context.enterprise.contributors, ...context.docs.contributors, ...context.systemreport.contributors, ...context.schedules.contributors, ...context.calendars.contributors, ...context.tours.contributors}
+    context.contributors = {...context.core.contributors, ...context.enterprise.contributors, ...context.docs.contributors}
     //context.reporters = {...context.core.reporters, ...context.enterprise.reporters}
 
     // FS.writeFileSync('notes.json', JSON.stringify(context))
