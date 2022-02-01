@@ -5015,7 +5015,7 @@ Check whether the execution has Result Data created by a Job using the [Result D
 
 **Request:**
 
-    GET /api/40/project/[PROJ]/execution/[ID]/dataAvailable
+    GET /api/40/execution/[ID]/result/dataAvailable
 
 **Response:**
 
@@ -5046,7 +5046,7 @@ You can handle this situation in two ways: either use the `wait=true` URL parame
 
 **Request:**
 
-    GET /api/40/project/[PROJ]/execution/[ID]/data
+    GET /api/40/execution/[ID]/result/data
 
 Optional Query Parameters:
 
