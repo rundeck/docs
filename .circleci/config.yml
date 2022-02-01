@@ -151,7 +151,7 @@ workflows:
             - slack-secrets
           filters:
             branches:
-              only: /3\.[1-9]\..*/
+              only: /4\.[1-9]\..*/
             tags:
               only: /^v.*/
       - update_index:
