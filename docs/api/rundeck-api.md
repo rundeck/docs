@@ -5004,6 +5004,69 @@ The `[abort-state]` will be one of: "pending", "failed", or "aborted".
 
 If the `[abort-state]` is "failed", then `[reason]` will be a textual description of the reason.
 
+
+
+### Check Execution Result Data Availability [Enterprise]
+
+::: enterprise  
+:::
+
+Check whether the execution has Result Data created by a Job using the [Result Data feature](/manual/execution-lifecycle/result-data.html).
+
+**Request:**
+
+    GET /api/40/execution/[ID]/result/dataAvailable
+
+**Response:**
+
+* `404 Not found` - no data can be retrieved for the Execution
+
+Successful response:
+
+```json
+{
+  "loadable": true,
+  "message": "OK"
+}
+```
+
+### Get Execution Result Data [Enterprise]
+
+::: enterprise  
+:::
+
+
+Retrieve the Result Data created by a Job using the [Result Data feature](/manual/execution-lifecycle/result-data.html) in JSON format.
+
+:::tip
+In a Rundeck Cluster, Result Data may not be locally available and must be retrieved by the server asynchronously before it can be returned.
+
+You can handle this situation in two ways: either use the `wait=true` URL parameter, to indicate that the API request should block until the data is retrieved (waiting up to 10 seconds), or if the response has HTTP status `202` it means that the asynchronous request was started but has not completed yet and you can retry the same API request shortly.
+:::
+
+**Request:**
+
+    GET /api/40/execution/[ID]/result/data
+
+Optional Query Parameters:
+
+* `wait`: true/false - if true and the data is not immediately available, the response will wait until the data is retrieved, or a timeout occurs. Otherwise the response may return 202 status if data must be retrieved first.
+
+**Responses:**
+
+* `404 Not Found` - data was not available
+* `202 Accepted` - request was accepted but not fulfilled. This indicates the data will be retrieved asynchronously before it can be made available. Retry the request later to retrieve the data. See also: the `wait` parameter.
+
+Sucessful response:
+
+```
+200 OK
+Content-Type: application/json
+
+...JSON data...
+```
+
+
 ## Adhoc
 
 ### Running Adhoc Commands

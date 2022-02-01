@@ -1,9 +1,5 @@
-# Result Data Plugins (Enterprise) [Incubating]
+# Result Data Plugins (Enterprise)
 ::: enterprise
-:::
-
-::: incubating
-Join us in the [Rundeck Community Forums](https://community.pagerduty.com/forum/c/rundeck) to talk more about it.
 :::
 
 This plugin allows Jobs to export a JSON file as the result of an execution, which will be stored alongside the output log file.
@@ -19,23 +15,29 @@ There are currently two different Plugins that can be used to produce JSON data 
 
 ## Requirements
 
-::: tip
-Enable the incubating feature by adding the following configuration to Configuration Management or `rundeck-config.properties`
-:::
 
-```
-rundeck.feature.incubator.jobdata.enabled=true
-```
+Enable and configure one of these plugins in the *Execution Lifecycle* tab when editing a Job.
 
-## Plugin: Export Result Data
 
-This plugin exports data groups from the Execution Context in the Global scope. Groups are named key-value maps.
+## Plugin: Result Data / Export Context
+
+Provider name: `result-data-export-context`.
+
+This plugin exports one or more *data groups* from the Global scope Execution Context into a JSON file.
 
 The Execution Context is used to store data values as the Execution proceeds, and allows passing Captured data values from one step in a workflow to later steps in the workflow.
 
-The captured data can be exported into a JSON file using the **Export Data** Execution Lifecycle Plugin.
+*Data Groups* are named key-value maps.
 
-Enable it in the Execution Lifecycle tab when editing the Job.
+:::tip
+Typically, data is captured within *Node Contexts*, and in order to export the data it must be in a *Global Context*.
+
+You can use the [Key-Value Data Logfilter Plugin](/manual/log-filters/key-value-data.html) to capture data into Node Contexts.
+
+You can use the [Global Variable Workflow Step Plugin](/manual/workflow-steps/builtin.html#global-variable) to copy Node Context data to the Global Context.
+:::
+
+
 
 ### Inputs
 
@@ -57,7 +59,9 @@ The JSON data will be exported in the same structure it has in the stored contex
 }
 ```
 
-## Plugin: JSON Template Data
+## Plugin: Result Data / JSON Template
+
+Provider name: `result-data-json-template`.
 
 This plugin exports a JSON document that is generated from a template defined by the user.
 
@@ -73,20 +77,40 @@ A Regular expression filter of Node Name can also be used, or specific Steps sel
 
 ### Inputs
 
-**JSON Template**
-
-Enter a valid JSON document.
-
-### JSON Template format
+### JSON Template
 
 Enter a valid JSON document. Context data values like `${data.name}` or `${data.value@nodename}` can be used within Strings.
 Note that Context Variable expansion is evaluated in a global context, meaning that `${data.name}` will only work if there is
 a global value matching that group and name.
 
+**Simple Expansion**
+
 To include data captured from Node steps, such as when using the Key Value Data Log Filter, use a
  syntax like `${data.name*}` which will
 collect all values for `data.name` in all Node contexts separated with a comma.
 
+Example Template: 
+```json
+{ "key" : "${data.mydata*}" }
+```
+
+Result, expands into a comma-separated string for each Node:
+```json
+{ "key" : "nodevalue1,nodevalue2" }
+```
+
+
+Example Using specific delimiter: 
+```json
+{ "key" : "${data.mydata*-}" }
+```
+
+Result, expands into a `-`-separated string for each Node:
+```json
+{ "key" : "nodevalue1-nodevalue2" }
+```
+
+**Array Expansion**
 
 To expand all node values like that into a JSON array, use a special syntax:
 
@@ -102,6 +126,8 @@ The result will be:
 ```json
 { "key": ["nodevalue1","nodevalue2"] }
 ```
+
+**Object Expansion**
 
 To expand the data as a JSON Object instead, using Node Names as the map entries, declare the `key` entry
 as a JSON object:
@@ -137,15 +163,22 @@ A value of `1:key@` will match all node values in step 1.
 
 ## API
 
-After execution, get the JSON data produced by either of the plugins by sending a GET request to:
+The API can be used to check whether an Execution has a Result Data set, and to retrieve it.
 
-`/api/36/project/$PROJECT/execution/$ID/result/data`
+See:
+
+* [API - Check Execution Result Data Availability][API1]
+* [API - Get Execution Result Data][API2]
+
+[API1]: /api/rundeck-api.html#check-execution-result-data-availability-enterprise
+[API2]: /api/rundeck-api.html#get-execution-result-data-enterprise
+
 
 ## Example Job
 
-Here is a sample job provided in our [Welcome Projects](/learning/howto/welcome-project-starter.md), that captures a set of values and uses the "JSON Template" plugin to export the JSON:
+Here is a sample job provided in our [Welcome Projects](/learning/howto/welcome-project-starter.md), that captures a set of values and uses the [Result Data / JSON Template](#plugin-result-data-json-template) plugin to export the JSON:
 
->Note: This requires installation of Fortune and the Rundeck CLI.  Be sure to enable the feature prior to importing the job definition.
+>Note: This requires installation of `fortune` command and the [Rundeck CLI Tool](/rd-cli).
 
 ```yaml
 - defaultTab: nodes
@@ -162,7 +195,7 @@ Here is a sample job provided in our [Welcome Projects](/learning/howto/welcome-
   nodeFilterEditable: true
   plugins:
     ExecutionLifecycle:
-      json-data:
+      result-data-json-template:
         jsonTemplate: |-
           {
             "D6 Roll":"${data.dice*}",
