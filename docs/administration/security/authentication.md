@@ -177,6 +177,10 @@ You must change some configuration values to change the authentication module to
 
 Configuring LDAP consists of defining a JAAS config file (e.g. "jaas-ldap.conf"), and changing the server startup script to use this file and use the correct Login Module configuration inside it.
 
+:::warning
+The jaas-ldap.conf file cannot have comments. Adding a `#` character will break parsing in JAAS.
+:::
+
 #### Sync Rundeck profile from LDAP user attributes
 
 You can use LDAP user attributes to update the email, first name, and last name properties of your Rundeck users.
