@@ -2,16 +2,15 @@
 ::: enterprise
 :::
 
-Scheduled business tasks are essential to internal processes that keep the business running (Financial operations, inventory operations, fulfillment requests, etc.) Scheduled operations tasks are essential to keeping infrastructure running (rotating logs, cleaning up temp files, restarting known faulty services, validating configuration and security settings/conditions, etc.). Unknowingly missing either is a business continuity issue. Also unknowingly missing a run and then running again can cause bigger problems. (data corruption, bad configuration, runaway processes, etc)
+Scheduled business tasks are essential to internal processes that keep the business running (Financial operations, inventory operations, fulfillment requests, etc.) Scheduled operations tasks are essential to keep infrastructure running (rotating logs, cleaning up temp files, restarting known faulty services, validating configuration and security settings/conditions, etc.). Unknowingly missing either is a business continuity issue. Also unknowingly missing a run and then running again can cause bigger problems. (data corruption, bad configuration, runaway processes, etc)
 
 Missed Jobs marking will keep track of the jobs scheduled, and if one of the jobs doesn't run at the time when it was scheduled
 to run, an execution with a status of "missed" will be added to the activity page. Additionally, if the job is configured with a failure notification, the notification
 will be triggered reporting that the job was missed.
 
-:::tip
-This feature does not try to deduce from the job's cron expression how many times the job should've run between the time the server went down, and when the misfire was detected.
-You will only get 1 entry or triggered notification in the event that a schedule was missed.
-:::
+> Note: This feature only checks the last "next execution" time of each job, if this next execution time is above the misfire threshold it is considered a missed execution. Thus, if more than one execution of the same job were missed, there will be only **one** missed mark. 
+
+> Note: "Next Execution" times are calculated based on calendars, project, system and job schedules.
 
 ### Configuration
 
