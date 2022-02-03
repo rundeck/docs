@@ -8,7 +8,7 @@ Missed Jobs marking will keep track of the jobs scheduled, and if one of the job
 to run, an execution with a status of "missed" will be added to the activity page. Additionally, if the job is configured with a failure notification, the notification
 will be triggered reporting that the job was missed.
 
-> Note: This feature simply checks the last "next execution" time of each job, if this next execution time is obove the missfire threshold it is consireder as a missed execution. Thus, if more than one execution of the same job were missed, there will be only one **missed** mark. 
+> Note: This feature only checks the last "next execution" time of each job, if this next execution time is above the misfire threshold it is considered a missed execution. Thus, if more than one execution of the same job were missed, there will be only **one** missed mark. 
 
 > Note: "Next Execution" times are calculated based on calendars, project, system and job schedules.
 
