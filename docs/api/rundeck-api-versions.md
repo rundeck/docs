@@ -9,7 +9,7 @@ This page documents changes to the Rundeck API through-out the versions.  For us
 ## API Version Number
 
 | Current  | Minimum | Deprecation |
-|---------|-------------|
+|---------|-------------|----------|
 |`{{{ apiVersion }}}` | `{{{ apiMinVersion }}}` | `{{{apiDepVersion}}}`
 
 Current
