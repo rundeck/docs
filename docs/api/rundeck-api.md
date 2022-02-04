@@ -9,15 +9,18 @@ Rundeck provides a Web API for use with your applications.
 
 ## API Version Number
 
-| Current  | Minimum |
-|---------|-------------|
-|`{{{ apiVersion }}}` | `{{{ apiMinVersion }}}` |
+| Current | Minimum | Deprecation |
+|---------|-------------|---------|
+|`{{{ apiVersion }}}` | `{{{ apiMinVersion }}}` | `{{{apiDepVersion}}}`
 
 Current
 :   The current version number.
 
 Minimum
 :   Minimum supported version.
+
+Deprecation
+:   Future minimum version.
 
 For information on historical version changes please see [API Version History](/api/rundeck-api-versions.md).  Please note of any [incubating endpoints](/api/rundeck-api-versions.md#incubating_endpoints) that may be subject to change.
 
@@ -74,19 +77,28 @@ The root URL path for all calls to the API in this version is:
 
     $RUNDECK_SERVER_URL/api/2
 
-## XML and JSON
+## JSON Support
 
-The API supports both XML and JSON.  Some import/export features support YAML or `text/plain` formatted documents, but XML and JSON are used for all API-level information.
+
+The API usees JSON for all API-level information.  Some import/export features support YAML, XML, or `text/plain` formatted documents.
 
 As of API version 14, all endpoints support JSON format, with content type `application/json`, with one exception ([/api/V/project/[PROJECT]/jobs/export][/api/V/project/\[PROJECT\]/jobs/export]).
 
 JSON results can be retrieved by sending the HTTP "Accept" header with a `application/json` value.  JSON request content is supported when the HTTP "Content-Type" header specifies `application/json`.
 
-XML results can be retrieved by sending the HTTP "Accept" header with a `application/xml` value.  XML request content is supported when the HTTP "Content-Type" header specifies `application/xml`.
-
 If an "Accept" header is not specified, then the response will be either the same format as the request content (for POST, or PUT requests), or JSON by default.
 
 Some endpoints also support using a `format` query parameter to specify the expected output format.
+
+## XML support
+
+:::deprecated
+XML support is *deprecated* and will be removed in a future version.
+:::
+
+
+XML results can be retrieved by sending the HTTP "Accept" header with a `application/xml` value.  XML request content is supported when the HTTP "Content-Type" header specifies `application/xml`.
+
 
 ## Authentication
 
@@ -161,6 +173,10 @@ Otherwise, if the response is a redirect chain which results in `200 successful`
 The response should set a cookie named `JSESSIONID`.
 
 ## XML Response Format
+
+:::deprecated
+XML support is *deprecated* and will be removed in a future version.
+:::
 
 XML responses will have only the content indicated in the appropriate endpoint documentation.
 

@@ -8,15 +8,18 @@ This page documents changes to the Rundeck API through-out the versions.  For us
 
 ## API Version Number
 
-| Current  | Minimum |
+| Current  | Minimum | Deprecation |
 |---------|-------------|
-|`{{{ apiVersion }}}` | `{{{ apiMinVersion }}}` |
+|`{{{ apiVersion }}}` | `{{{ apiMinVersion }}}` | `{{{apiDepVersion}}}`
 
 Current
 :   The current version number.
 
 Minimum
 :   Minimum supported version.
+
+Deprecation
+:   Future minimum version.
 
 ## Incubating Endpoints
 
@@ -32,6 +35,9 @@ These endpoints are in "Incubating" status, and are subject to change in future 
 ## API Changes
 
 Changes introduced by API Version number:
+
+**Deprecation**
+* API versions below `{{{ apiDepVersion }}}` are *deprecated*.  Clients using earlier versions should upgrade to use `{{{ apiDepVersion }}}` as the minimum version before release `{{{ apiDepRelease }}}` to avoid errors.
 
 **Version 40**:
 
