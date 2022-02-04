@@ -53,6 +53,9 @@ module.exports = {
   },
   extendMarkdown: md => {
     // use more markdown-it plugins!
+    md.use(require('markdown-it-include'),{
+      root: path.resolve(__dirname,"../")
+    })
     md.use(require('markdown-it-deflist'))
     md.use(require('markdown-it-implicit-figures'), {
       figcaption: true
