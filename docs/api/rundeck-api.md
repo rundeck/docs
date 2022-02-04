@@ -7698,7 +7698,7 @@ Returns metadata about the current License for Rundeck Enterprise.
 
 **Request:**
 
-    GET /api/V/incubating/enterprise/license
+    GET /api/41/enterprise/license
 
 **Response:**
 
@@ -7746,7 +7746,7 @@ Uploads a license key for Rundeck Enterprise.
 
 **Request:**
 
-    POST /api/V/incubating/enterprise/license
+    POST /api/41/enterprise/license
     Content-Type: application/x-rundeck-license
 
 Request Content:
@@ -7772,6 +7772,12 @@ Content-Type: `application/json`
 [/api/V/config/refresh][]
 
 * `POST` [Refresh config settings](#config-refresh)
+
+
+[/api/V/enterprise/license][]
+
+* `GET` [View License](#view-license)
+* `POST` [Set License Key](#set-license-key)
 
 [/api/V/execution/\[ID\]][]
 
@@ -8188,11 +8194,6 @@ Content-Type: `application/json`
 
 
 ### Incubating
-
-[/api/V/incubating/enterprise/license][]
-
-* `GET` [View License](#view-license)
-* `POST` [Set License Key](#set-license-key)
 
 
 [/api/V/incubating/project/\[PROJECT\]/calendars][]

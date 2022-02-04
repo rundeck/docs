@@ -39,6 +39,12 @@ Changes introduced by API Version number:
 **Deprecation**
 * API versions below `{{{ apiDepVersion }}}` are *deprecated*.  Clients using earlier versions should upgrade to use `{{{ apiDepVersion }}}` as the minimum version before release `{{{ apiDepRelease }}}` to avoid errors.
 
+**Version 41**:
+
+* Endpoints promoted out of incubating status. These endpoints no longer contain `incubating/` in the endpoint URL, and now require API version 41 minimum.
+    * ['GET /api/V/enterprise/license'][GET /api/v/enterprise/license] - Get Enterprise license
+    * ['POST /api/V/enterprise/license'][POST /api/v/enterprise/license] - Store Enterprise license
+    
 **Version 40**:
 
 * Updated Endpoints:

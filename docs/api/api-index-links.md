@@ -196,9 +196,10 @@
 [/api/V/project/\[PROJECT\]/webhook/\[ID\]]:/api/rundeck-api.html#get-a-webhook
 
 
-[/api/V/incubating/enterprise/license]:/api/rundeck-api.html#view-license
-[GET /api/V/incubating/enterprise/license]:/api/rundeck-api.html#view-license
-[POST /api/V/incubating/enterprise/license]:/api/rundeck-api.html#set-license-key
+[/api/V/enterprise/license]:/api/rundeck-api.html#view-license
+[GET /api/V/enterprise/license]:/api/rundeck-api.html#view-license
+[POST /api/V/enterprise/license]:/api/rundeck-api.html#set-license-key
+
 
 
 
