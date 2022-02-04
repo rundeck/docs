@@ -73,4 +73,4 @@ This feature is intended to be used in situations where execution of Node Steps 
 
 **Does this work for all communication into the remote data center?**
 
-The Runner will handle Node Step execution.  Node Sources, Health Checks, and other communication are not included in this version of the Runner.
+At this time, the Runner will execute Node Executor and File Copier steps.  This includes node steps such as Remote Command, Inline Script, Script File, and Copy File, as well as commands executed from the Commands tab. Node Sources, Health Checks, and other communication are not included in this version of the Runner.
