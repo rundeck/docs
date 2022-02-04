@@ -9,15 +9,18 @@ Rundeck provides a Web API for use with your applications.
 
 ## API Version Number
 
-| Current  | Minimum |
-|---------|-------------|
-|`{{{ apiVersion }}}` | `{{{ apiMinVersion }}}` |
+| Current | Minimum | Deprecation |
+|---------|-------------|---------|
+|`{{{ apiVersion }}}` | `{{{ apiMinVersion }}}` | `{{{apiDepVersion}}}`
 
 Current
 :   The current version number.
 
 Minimum
 :   Minimum supported version.
+
+Deprecation
+:   Future minimum version.
 
 For information on historical version changes please see [API Version History](/api/rundeck-api-versions.md).  Please note of any [incubating endpoints](/api/rundeck-api-versions.md#incubating_endpoints) that may be subject to change.
 
@@ -74,19 +77,28 @@ The root URL path for all calls to the API in this version is:
 
     $RUNDECK_SERVER_URL/api/2
 
-## XML and JSON
+## JSON Support
 
-The API supports both XML and JSON.  Some import/export features support YAML or `text/plain` formatted documents, but XML and JSON are used for all API-level information.
+
+The API usees JSON for all API-level information.  Some import/export features support YAML, XML, or `text/plain` formatted documents.
 
 As of API version 14, all endpoints support JSON format, with content type `application/json`, with one exception ([/api/V/project/[PROJECT]/jobs/export][/api/V/project/\[PROJECT\]/jobs/export]).
 
 JSON results can be retrieved by sending the HTTP "Accept" header with a `application/json` value.  JSON request content is supported when the HTTP "Content-Type" header specifies `application/json`.
 
-XML results can be retrieved by sending the HTTP "Accept" header with a `application/xml` value.  XML request content is supported when the HTTP "Content-Type" header specifies `application/xml`.
-
 If an "Accept" header is not specified, then the response will be either the same format as the request content (for POST, or PUT requests), or JSON by default.
 
 Some endpoints also support using a `format` query parameter to specify the expected output format.
+
+## XML support
+
+:::deprecated
+XML support is *deprecated* and will be removed in a future version.
+:::
+
+
+XML results can be retrieved by sending the HTTP "Accept" header with a `application/xml` value.  XML request content is supported when the HTTP "Content-Type" header specifies `application/xml`.
+
 
 ## Authentication
 
@@ -161,6 +173,10 @@ Otherwise, if the response is a redirect chain which results in `200 successful`
 The response should set a cookie named `JSESSIONID`.
 
 ## XML Response Format
+
+:::deprecated
+XML support is *deprecated* and will be removed in a future version.
+:::
 
 XML responses will have only the content indicated in the appropriate endpoint documentation.
 
@@ -3080,8 +3096,8 @@ Delete multiple job definitions at once.
 
 Both of the following are valid options for doing a bulk delete of jobs. However, if you are hoping to pass a body with the request, then you must use the POST method since the DELETE method does not allow for request bodies.
 
-    DELETE /api/5/jobs/delete
-    POST /api/5/jobs/delete
+    DELETE /api/11/jobs/delete
+    POST /api/11/jobs/delete
 
 
 Either Query parameters:
@@ -4327,7 +4343,7 @@ Get detail about the node and step state of an execution by ID. The execution ca
 
 **Request:**
 
-    GET /api/10/execution/[ID]/state
+    GET /api/11/execution/[ID]/state
 
 Specify expected output format with the `Accept: ` HTTP header. Supported formats:
 
@@ -4702,10 +4718,10 @@ Get the output for an execution by ID.  The execution can be currently running o
 
 **Request:**
 
-    GET /api/5/execution/[ID]/output
-    GET /api/10/execution/[ID]/output/node/[NODE]
-    GET /api/10/execution/[ID]/output/node/[NODE]/step/[STEPCTX]
-    GET /api/10/execution/[ID]/output/step/[STEPCTX]
+    GET /api/11/execution/[ID]/output
+    GET /api/11/execution/[ID]/output/node/[NODE]
+    GET /api/11/execution/[ID]/output/node/[NODE]/step/[STEPCTX]
+    GET /api/11/execution/[ID]/output/step/[STEPCTX]
 
 The log output for each execution is stored in a file on the Rundeck server, and this API endpoint allows you to retrieve some or all of the output, in several possible formats: json, XML, and plain text.  When retrieving the plain text output, some metadata about the log is included in HTTP Headers.  JSON and XML output formats include metadata about each output log line, as well as metadata about the state of the execution and log file, and your current index location in the file.
 
@@ -4775,13 +4791,13 @@ To use a URL parameter, add a `?format=` parameter to your request.
 
 E.g.:
 
-    GET /api/5/execution/3/output?format=json
+    GET /api/11/execution/3/output?format=json
 
 To use a URL extension, add a ".[format]" to the end of the URL, but prior to any URL parameters.
 
 E.g.:
 
-    GET /api/5/execution/3/output.xml?offset=120
+    GET /api/11/execution/3/output.xml?offset=120
 
 #### Output Format using Accept Header
 
@@ -4793,7 +4809,7 @@ You can also specify the format using Content Negotiation techniques by includin
 
 E.g.:
 
-    GET /api/5/execution/3/output
+    GET /api/11/execution/3/output
     Accept: */xml
 
 #### Output Content
@@ -4945,8 +4961,8 @@ Get the metadata associated with workflow step state changes along with the log 
 
 **Request:**
 
-    GET /api/10/execution/[ID]/output/state
-    GET /api/10/execution/[ID]/output/state?stateOnly=true
+    GET /api/11/execution/[ID]/output/state
+    GET /api/11/execution/[ID]/output/state?stateOnly=true
 
 This API endpoint provides the sequential log of state changes for steps and nodes, optionally interleaved with the actual log output.
 
@@ -5939,7 +5955,7 @@ A GET request returns all the resources for the project.
 
 **Request:**
 
-    GET /api/2/project/[PROJECT]/resources
+    GET /api/11/project/[PROJECT]/resources
 
 See [Listing Resources](#listing-resources).
 
@@ -8170,203 +8186,6 @@ Content-Type: `application/json`
 * `GET` [List Installed Plugins][/api/V/plugin/list]
 
 
-[/api/V/project/\[PROJECT\]/scm/\[INTEGRATION\]/plugins]:#list-scm-plugins
-[/api/V/project/\[PROJECT\]/scm/\[INTEGRATION\]/plugin/\[TYPE\]/input]:#get-scm-plugin-input-fields
-[/api/V/project/\[PROJECT\]/scm/\[INTEGRATION\]/plugin/\[TYPE\]/setup]:#setup-scm-plugin-for-a-project
-[/api/V/project/\[PROJECT\]/scm/\[INTEGRATION\]/plugin/\[TYPE\]/enable]:#enable-scm-plugin-for-a-project
-[/api/V/project/\[PROJECT\]/scm/\[INTEGRATION\]/plugin/\[TYPE\]/disable]:#disable-scm-plugin-for-a-project
-[/api/V/project/\[PROJECT\]/scm/\[INTEGRATION\]/status]:#get-project-scm-status
-[/api/V/project/\[PROJECT\]/scm/\[INTEGRATION\]/config]:#get-project-scm-config
-[/api/V/project/\[PROJECT\]/scm/\[INTEGRATION\]/action/\[ACTION_ID\]]:#perform-project-scm-action
-[/api/V/project/\[PROJECT\]/scm/\[INTEGRATION\]/action/\[ACTION_ID\]/input]:#get-project-scm-action-input-fields
-
-[/api/V/project/\[PROJECT\]/sources]:#list-resource-model-sources-for-a-project
-[/api/V/project/\[PROJECT\]/source/\[INDEX\]]:#get-a-resource-model-source-for-a-project
-[/api/V/project/\[PROJECT\]/source/\[INDEX\]/resources]:#list-resources-of-a-resource-model-source
-[GET /api/V/project/\[PROJECT\]/source/\[INDEX\]/resources]:#list-resources-of-a-resource-model-source
-[POST /api/V/project/\[PROJECT\]/source/\[INDEX\]/resources]:#update-resources-of-a-resource-model-source
-
-[/api/V/job/\[ID\]/scm/\[INTEGRATION\]/status]:#get-job-scm-status
-[/api/V/job/\[ID\]/scm/\[INTEGRATION\]/action/\[ACTION_ID\]]:#perform-job-scm-action
-[/api/V/job/\[ID\]/scm/\[INTEGRATION\]/action/\[ACTION_ID\]/input]:#get-job-scm-action-input-fields
-
-
-[/api/V/config/refresh]: #config-refresh
-
-[/api/V/execution/\[ID\]]: #execution-info
-
-[/api/V/execution/\[ID\]/abort]:#aborting-executions
-
-[/api/V/execution/\[ID\]/input/files]:#list-input-files-for-an-execution
-
-[/api/V/execution/\[ID\]/output/state]:#execution-output-with-state
-
-[/api/V/execution/\[ID\]/output/step/\[STEPCTX\]]:#execution-output
-
-[/api/V/execution/\[ID\]/output/node/\[NODE\]/step/\[STEPCTX\]]:#execution-output
-
-[/api/V/execution/\[ID\]/output/node/\[NODE\]]:#execution-output
-
-[/api/V/execution/\[ID\]/output]:#execution-output
-
-[/api/V/execution/\[ID\]/state]:#execution-state
-
-[/api/V/executions/delete]:#bulk-delete-executions
-
-
-[/api/V/executions/metrics]: #execution-query-metrics
-
-[/api/V/job/\[ID\]]:#getting-a-job-definition
-[DELETE /api/V/job/\[ID\]]:#deleting-a-job-definition
-
-[/api/V/job/\[ID\]/executions]:#getting-executions-for-a-job
-
-[/api/V/job/\[ID\]/execution/enable]:#enable-executions-for-a-job
-
-[/api/V/job/\[ID\]/execution/disable]:#disable-executions-for-a-job
-
-[POST /api/V/job/\[ID\]/executions]:#running-a-job
-[DELETE /api/V/job/\[ID\]/executions]:#delete-all-executions-for-a-job
-
-[/api/V/job/\[ID\]/retry/\[EXECID\]]:#retry-a-job-based-on-execution
-[POST /api/V/job/\[ID\]/retry/\[EXECID\]]:#retry-a-job-based-on-execution
-
-[/api/V/job/\[ID\]/info]:#get-job-metadata
-[GET /api/V/job/\[ID\]/info]:#get-job-metadata
-[/api/V/job/\[ID\]/input/file]:#upload-a-file-for-a-job-option
-[POST /api/V/job/\[ID\]/input/file]:#upload-a-file-for-a-job-option
-[/api/V/job/\[ID\]/input/files]:#list-files-uploaded-for-a-job
-
-[/api/V/job/\[ID\]/forecast]:#get-job-forecast
-[GET /api/V/job/\[ID\]/forecast]:#get-job-forecast
-
-[/api/V/job/\[ID\]/schedule/enable]:#enable-scheduling-for-a-job
-
-[/api/V/job/\[ID\]/schedule/disable]:#disable-scheduling-for-a-job
-
-[/api/V/job/\[ID\]/run]:#running-a-job
-[/api/V/job/\[ID\]/workflow]:#get-job-workflow
-
-[/api/V/jobs/delete]:#bulk-job-delete
-[/api/V/jobs/execution/enable]:#bulk-toggle-job-execution
-[/api/V/jobs/execution/disable]:#bulk-toggle-job-execution
-[/api/V/jobs/file/\[ID\]]:#get-info-about-an-uploaded-file
-[/api/V/jobs/schedule/enable]:#bulk-toggle-job-schedules
-[/api/V/jobs/schedule/disable]:#bulk-toggle-job-schedules
-
-
-[/api/V/metrics]:#list-metrics
-
-[/api/V/metrics/healthcheck]:#metrics-healthcheck
-
-[/api/V/metrics/metrics]:#metrics-data
-
-[/api/V/metrics/ping]:#metrics-ping
-
-[/api/V/metrics/threads]:#metrics-threads
-
-[/api/V/project/\[PROJECT\]]:#getting-project-info
-[DELETE /api/V/project/\[PROJECT\]]:#project-deletion
-
-[/api/V/project/\[PROJECT\]/acl/*]:#project-acls
-
-[/api/V/project/\[PROJECT\]/config]:#get-project-configuration
-[PUT /api/V/project/\[PROJECT\]/config]:#put-project-configuration
-
-
-[/api/V/project/\[PROJECT\]/config/\[KEY\]]:#get-project-configuration-key
-[PUT /api/V/project/\[PROJECT\]/config/\[KEY\]]:#put-project-configuration-key
-[DELETE /api/V/project/\[PROJECT\]/config/\[KEY\]]:#delete-project-configuration-key
-
-
-[/api/V/project/\[PROJECT\]/executions]:#execution-query
-
-
-[/api/V/project/\[PROJECT\]/executions/metrics]: #execution-query-metrics
-
-[/api/V/project/\[PROJECT\]/executions/running]:#listing-running-executions
-
-
-[/api/V/project/\[PROJECT\]/export]:#project-archive-export
-[/api/V/project/\[PROJECT\]/export/async]:#project-archive-export-async
-[/api/V/project/\[PROJECT\]/export/status/\[TOKEN\]]:#project-archive-export-async-status
-[/api/V/project/\[PROJECT\]/export/download/\[TOKEN\]]:#project-archive-export-async-download
-
-
-[/api/V/project/\[PROJECT\]/\[FILE.md\]]:#get-readme-file
-[PUT /api/V/project/\[PROJECT\]/\[FILE.md\]]:#put-readme-file
-[DELETE /api/V/project/\[PROJECT\]/\[FILE.md\]]:#delete-readme-file
-
-[/api/V/project/\[PROJECT\]/history]:#listing-history
-
-[/api/V/project/\[PROJECT\]/import]:#project-archive-import
-
-[/api/V/project/\[PROJECT\]/jobs]:#listing-jobs
-
-[/api/V/project/\[PROJECT\]/jobs/export]:#exporting-jobs
-
-[/api/V/project/\[PROJECT\]/jobs/import]:#importing-jobs
-
-[/api/V/project/\[PROJECT\]/resources]:#listing-resources
-
-[/api/V/project/\[PROJECT\]/resource/\[NAME\]]:#getting-resource-info
-
-[/api/V/projects]:#listing-projects
-
-[POST /api/V/projects]:#project-creation
-
-[/api/V/project/\[PROJECT\]/run/command]:#running-adhoc-commands
-
-[/api/V/project/\[PROJECT\]/run/script]:#running-adhoc-scripts
-
-[/api/V/project/\[PROJECT\]/run/url]:#running-adhoc-script-urls
-
-[/api/V/scheduler/takeover]:#takeover-schedule-in-cluster-mode
-
-[/api/V/scheduler/jobs]:#list-scheduled-jobs-for-this-cluster-server
-
-[/api/V/scheduler/server/\[UUID\]/jobs]:#list-scheduled-jobs-for-a-cluster-server
-
-[/api/V/storage/keys/\[PATH\]/\[FILE\]]:#list-keys
-[PUT /api/V/storage/keys/\[PATH\]/\[FILE\]]:#upload-keys
-[DELETE /api/V/storage/keys/\[PATH\]/\[FILE\]]:#delete-keys
-
-
-[/api/V/system/acl/*]:#acls
-[/api/V/system/info]:#system-info
-[/api/V/system/executions/enable]:#set-active-mode
-[/api/V/system/executions/disable]:#set-passive-mode
-[/api/V/system/executions/status]:#get-current-execution-mode
-
-[/api/V/system/logstorage]:#log-storage-info
-[/api/V/system/logstorage/incomplete]:#list-executions-with-incomplete-log-storage
-[/api/V/system/logstorage/incomplete/resume]:#resume-incomplete-log-storage
-[POST /api/V/system/logstorage/incomplete/resume]:#resume-incomplete-log-storage
-
-[/api/V/tokens]:#list-tokens
-[/api/V/tokens/\[USER\]]:#list-tokens
-[POST /api/V/tokens/\[USER\]]:#create-a-token
-[/api/V/token/\[ID\]]:#get-a-token
-[DELETE /api/V/token/\[ID\]]:#delete-a-token
-
-
-[/api/V/user/list]:#list-users
-[/api/V/user/info]:#get-user-profile
-[POST /api/V/user/info]:#modify-user-profile
-[/api/V/user/info/\[USER\]]:#get-another-user-profile
-[POST /api/V/user/info/\[USER\]]:#modify-another-user-profile
-[/api/V/user/roles]:#list-roles
-
-[/api/V/project/\[PROJECT\]/webhooks]:#list-project-webhooks
-[/api/V/plugin/list]:#list-installed-plugins
-
-[/api/V/webhook/\[AUTH_TOKEN\]]: #send-webhook-event
-
-[/api/V/project/\[PROJECT\]/webhook/]: #add-a-webhook
-[/api/V/project/\[PROJECT\]/webhook/\[ID\]]: #get-a-webhook
-
-[ACLPOLICY]:../manual/document-format-reference/aclpolicy-v10.html
-
 
 ### Incubating
 
@@ -8375,10 +8194,6 @@ Content-Type: `application/json`
 * `GET` [View License](#view-license)
 * `POST` [Set License Key](#set-license-key)
 
-
-[/api/V/incubating/enterprise/license]: #view-license
-[GET /api/V/incubating/enterprise/license]: #view-license
-[POST /api/V/incubating/enterprise/license]: #set-license-key
 
 [/api/V/incubating/project/\[PROJECT\]/calendars][]
 
@@ -8393,12 +8208,7 @@ Content-Type: `application/json`
 * `DELETE` [Delete System Calendars](#delete-system-calendar)
 
 
-[/api/V/incubating/project/\[PROJECT\]/calendars]: #list-project-calendars
-[GET /api/V/incubating/project/\[PROJECT\]/calendars]: #list-project-calendars
-[POST /api/V/incubating/project/\[PROJECT\]/calendars]: #create-update-project-calendar
-[DELETE /api/V/incubating/project/\[PROJECT\]/calendars/\[ID\]]: #delete-project-calendar
+[ACLPOLICY]:../manual/document-format-reference/aclpolicy-v10.html
 
-[/api/V/incubating/system/calendars]: #list-system-calendars
-[GET /api/V/incubating/system/calendars]: #list-system-calendars
-[POST /api/V/incubating/system/calendars]: #create-update-system-calendar
-[DELETE /api/V/incubating/system/calendars/\[ID\]]: #delete-system-calendar
+
+!!!include(api/api-index-links.md)!!!

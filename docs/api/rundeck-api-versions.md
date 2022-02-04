@@ -8,15 +8,18 @@ This page documents changes to the Rundeck API through-out the versions.  For us
 
 ## API Version Number
 
-| Current  | Minimum |
-|---------|-------------|
-|`{{{ apiVersion }}}` | `{{{ apiMinVersion }}}` |
+| Current  | Minimum | Deprecation |
+|---------|-------------|----------|
+|`{{{ apiVersion }}}` | `{{{ apiMinVersion }}}` | `{{{apiDepVersion}}}`
 
 Current
 :   The current version number.
 
 Minimum
 :   Minimum supported version.
+
+Deprecation
+:   Future minimum version.
 
 ## Incubating Endpoints
 
@@ -32,6 +35,9 @@ These endpoints are in "Incubating" status, and are subject to change in future 
 ## API Changes
 
 Changes introduced by API Version number:
+
+**Deprecation**
+* API versions below `{{{ apiDepVersion }}}` are *deprecated*.  Clients using earlier versions should upgrade to use `{{{ apiDepVersion }}}` as the minimum version before release `{{{ apiDepRelease }}}` to avoid errors.
 
 **Version 40**:
 
@@ -484,3 +490,6 @@ Added in Rundeck 1.4.6, 1.5.1:
 * Updated endpoints
     * `/api/1/jobs` - [Listing Jobs](/api/rundeck-api.md#listing-jobs)
         * Additional parameters added
+
+
+!!!include(api/api-index-links.md)!!!
