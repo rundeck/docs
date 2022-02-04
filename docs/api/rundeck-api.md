@@ -9,15 +9,18 @@ Rundeck provides a Web API for use with your applications.
 
 ## API Version Number
 
-| Current  | Minimum |
-|---------|-------------|
-|`{{{ apiVersion }}}` | `{{{ apiMinVersion }}}` |
+| Current | Minimum | Deprecation |
+|---------|-------------|---------|
+|`{{{ apiVersion }}}` | `{{{ apiMinVersion }}}` | `{{{apiDepVersion}}}`
 
 Current
 :   The current version number.
 
 Minimum
 :   Minimum supported version.
+
+Deprecation
+:   Future minimum version.
 
 For information on historical version changes please see [API Version History](/api/rundeck-api-versions.md).  Please note of any [incubating endpoints](/api/rundeck-api-versions.md#incubating_endpoints) that may be subject to change.
 
@@ -74,19 +77,28 @@ The root URL path for all calls to the API in this version is:
 
     $RUNDECK_SERVER_URL/api/2
 
-## XML and JSON
+## JSON Support
 
-The API supports both XML and JSON.  Some import/export features support YAML or `text/plain` formatted documents, but XML and JSON are used for all API-level information.
+
+The API usees JSON for all API-level information.  Some import/export features support YAML, XML, or `text/plain` formatted documents.
 
 As of API version 14, all endpoints support JSON format, with content type `application/json`, with one exception ([/api/V/project/[PROJECT]/jobs/export][/api/V/project/\[PROJECT\]/jobs/export]).
 
 JSON results can be retrieved by sending the HTTP "Accept" header with a `application/json` value.  JSON request content is supported when the HTTP "Content-Type" header specifies `application/json`.
 
-XML results can be retrieved by sending the HTTP "Accept" header with a `application/xml` value.  XML request content is supported when the HTTP "Content-Type" header specifies `application/xml`.
-
 If an "Accept" header is not specified, then the response will be either the same format as the request content (for POST, or PUT requests), or JSON by default.
 
 Some endpoints also support using a `format` query parameter to specify the expected output format.
+
+## XML support
+
+:::deprecated
+XML support is *deprecated* and will be removed in a future version.
+:::
+
+
+XML results can be retrieved by sending the HTTP "Accept" header with a `application/xml` value.  XML request content is supported when the HTTP "Content-Type" header specifies `application/xml`.
+
 
 ## Authentication
 
@@ -161,6 +173,10 @@ Otherwise, if the response is a redirect chain which results in `200 successful`
 The response should set a cookie named `JSESSIONID`.
 
 ## XML Response Format
+
+:::deprecated
+XML support is *deprecated* and will be removed in a future version.
+:::
 
 XML responses will have only the content indicated in the appropriate endpoint documentation.
 
@@ -3080,8 +3096,8 @@ Delete multiple job definitions at once.
 
 Both of the following are valid options for doing a bulk delete of jobs. However, if you are hoping to pass a body with the request, then you must use the POST method since the DELETE method does not allow for request bodies.
 
-    DELETE /api/5/jobs/delete
-    POST /api/5/jobs/delete
+    DELETE /api/11/jobs/delete
+    POST /api/11/jobs/delete
 
 
 Either Query parameters:
@@ -4327,7 +4343,7 @@ Get detail about the node and step state of an execution by ID. The execution ca
 
 **Request:**
 
-    GET /api/10/execution/[ID]/state
+    GET /api/11/execution/[ID]/state
 
 Specify expected output format with the `Accept: ` HTTP header. Supported formats:
 
@@ -4702,10 +4718,10 @@ Get the output for an execution by ID.  The execution can be currently running o
 
 **Request:**
 
-    GET /api/5/execution/[ID]/output
-    GET /api/10/execution/[ID]/output/node/[NODE]
-    GET /api/10/execution/[ID]/output/node/[NODE]/step/[STEPCTX]
-    GET /api/10/execution/[ID]/output/step/[STEPCTX]
+    GET /api/11/execution/[ID]/output
+    GET /api/11/execution/[ID]/output/node/[NODE]
+    GET /api/11/execution/[ID]/output/node/[NODE]/step/[STEPCTX]
+    GET /api/11/execution/[ID]/output/step/[STEPCTX]
 
 The log output for each execution is stored in a file on the Rundeck server, and this API endpoint allows you to retrieve some or all of the output, in several possible formats: json, XML, and plain text.  When retrieving the plain text output, some metadata about the log is included in HTTP Headers.  JSON and XML output formats include metadata about each output log line, as well as metadata about the state of the execution and log file, and your current index location in the file.
 
@@ -4775,13 +4791,13 @@ To use a URL parameter, add a `?format=` parameter to your request.
 
 E.g.:
 
-    GET /api/5/execution/3/output?format=json
+    GET /api/11/execution/3/output?format=json
 
 To use a URL extension, add a ".[format]" to the end of the URL, but prior to any URL parameters.
 
 E.g.:
 
-    GET /api/5/execution/3/output.xml?offset=120
+    GET /api/11/execution/3/output.xml?offset=120
 
 #### Output Format using Accept Header
 
@@ -4793,7 +4809,7 @@ You can also specify the format using Content Negotiation techniques by includin
 
 E.g.:
 
-    GET /api/5/execution/3/output
+    GET /api/11/execution/3/output
     Accept: */xml
 
 #### Output Content
@@ -4945,8 +4961,8 @@ Get the metadata associated with workflow step state changes along with the log 
 
 **Request:**
 
-    GET /api/10/execution/[ID]/output/state
-    GET /api/10/execution/[ID]/output/state?stateOnly=true
+    GET /api/11/execution/[ID]/output/state
+    GET /api/11/execution/[ID]/output/state?stateOnly=true
 
 This API endpoint provides the sequential log of state changes for steps and nodes, optionally interleaved with the actual log output.
 
@@ -5939,7 +5955,7 @@ A GET request returns all the resources for the project.
 
 **Request:**
 
-    GET /api/2/project/[PROJECT]/resources
+    GET /api/11/project/[PROJECT]/resources
 
 See [Listing Resources](#listing-resources).
 

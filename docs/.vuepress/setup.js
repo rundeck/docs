@@ -1,8 +1,8 @@
 const RUNDECK_VERSION='4.0.0'
 const RUNDECK_VERSION_FULL='4.0.0-SNAPSHOT'
 const API_VERSION='40'
-const API_DEP_REL='3.4.0'
-const API_DEP_VER='11'
+const API_DEP_REL='5.0.0'
+const API_DEP_VER='14'
 const API_MIN_VER='11'
 const CLI_VERSION='1.3.10'
 
