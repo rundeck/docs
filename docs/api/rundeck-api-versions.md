@@ -484,3 +484,6 @@ Added in Rundeck 1.4.6, 1.5.1:
 * Updated endpoints
     * `/api/1/jobs` - [Listing Jobs](/api/rundeck-api.md#listing-jobs)
         * Additional parameters added
+
+
+!!!include(api/api-index-links.md)!!!
