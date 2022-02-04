@@ -3096,8 +3096,8 @@ Delete multiple job definitions at once.
 
 Both of the following are valid options for doing a bulk delete of jobs. However, if you are hoping to pass a body with the request, then you must use the POST method since the DELETE method does not allow for request bodies.
 
-    DELETE /api/5/jobs/delete
-    POST /api/5/jobs/delete
+    DELETE /api/11/jobs/delete
+    POST /api/11/jobs/delete
 
 
 Either Query parameters:
@@ -4343,7 +4343,7 @@ Get detail about the node and step state of an execution by ID. The execution ca
 
 **Request:**
 
-    GET /api/10/execution/[ID]/state
+    GET /api/11/execution/[ID]/state
 
 Specify expected output format with the `Accept: ` HTTP header. Supported formats:
 
@@ -4718,10 +4718,10 @@ Get the output for an execution by ID.  The execution can be currently running o
 
 **Request:**
 
-    GET /api/5/execution/[ID]/output
-    GET /api/10/execution/[ID]/output/node/[NODE]
-    GET /api/10/execution/[ID]/output/node/[NODE]/step/[STEPCTX]
-    GET /api/10/execution/[ID]/output/step/[STEPCTX]
+    GET /api/11/execution/[ID]/output
+    GET /api/11/execution/[ID]/output/node/[NODE]
+    GET /api/11/execution/[ID]/output/node/[NODE]/step/[STEPCTX]
+    GET /api/11/execution/[ID]/output/step/[STEPCTX]
 
 The log output for each execution is stored in a file on the Rundeck server, and this API endpoint allows you to retrieve some or all of the output, in several possible formats: json, XML, and plain text.  When retrieving the plain text output, some metadata about the log is included in HTTP Headers.  JSON and XML output formats include metadata about each output log line, as well as metadata about the state of the execution and log file, and your current index location in the file.
 
@@ -4791,13 +4791,13 @@ To use a URL parameter, add a `?format=` parameter to your request.
 
 E.g.:
 
-    GET /api/5/execution/3/output?format=json
+    GET /api/11/execution/3/output?format=json
 
 To use a URL extension, add a ".[format]" to the end of the URL, but prior to any URL parameters.
 
 E.g.:
 
-    GET /api/5/execution/3/output.xml?offset=120
+    GET /api/11/execution/3/output.xml?offset=120
 
 #### Output Format using Accept Header
 
@@ -4809,7 +4809,7 @@ You can also specify the format using Content Negotiation techniques by includin
 
 E.g.:
 
-    GET /api/5/execution/3/output
+    GET /api/11/execution/3/output
     Accept: */xml
 
 #### Output Content
@@ -4961,8 +4961,8 @@ Get the metadata associated with workflow step state changes along with the log 
 
 **Request:**
 
-    GET /api/10/execution/[ID]/output/state
-    GET /api/10/execution/[ID]/output/state?stateOnly=true
+    GET /api/11/execution/[ID]/output/state
+    GET /api/11/execution/[ID]/output/state?stateOnly=true
 
 This API endpoint provides the sequential log of state changes for steps and nodes, optionally interleaved with the actual log output.
 
@@ -5955,7 +5955,7 @@ A GET request returns all the resources for the project.
 
 **Request:**
 
-    GET /api/2/project/[PROJECT]/resources
+    GET /api/11/project/[PROJECT]/resources
 
 See [Listing Resources](#listing-resources).
 
