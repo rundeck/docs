@@ -40,8 +40,7 @@ module.exports = {
       'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
       })(window,document,'script','dataLayer','GTM-5QNBBN6');
     `],
-    ['script', { src: '/js/gtm.js', defer: true }],
-    ['script', { src: 'https://secure.peak2poem.com/js/195720.js' }]
+    ['script', { src: '/js/gtm.js', defer: true }]
   ],
   chainWebpack: config => {
     config.module
