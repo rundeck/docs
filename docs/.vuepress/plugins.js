@@ -34,6 +34,15 @@ function getPlugins(setup) {
         [
         'vuepress-plugin-container',
         {
+            type: 'deprecated',
+            defaultTitle: {
+            '/':'Deprecation Warning'
+            },
+        },
+        ],
+        [
+        'vuepress-plugin-container',
+        {
             type: 'enterprise',
             defaultTitle: {
             '/':'Available in Rundeck Enterprise'
