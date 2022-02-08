@@ -25,12 +25,7 @@ Deprecation
 
 These endpoints are in "Incubating" status, and are subject to change in future releases.
 
-- [`GET /api/V/incubating/project/[PROJECT]/calendars`][GET /api/V/incubating/project/\[PROJECT\]/calendars] - Get Project Calendars (Enterprise only)
-- [`POST /api/V/incubating/project/[PROJECT]/calendars`][POST /api/V/incubating/project/\[PROJECT\]/calendars] - Create/Update Project Calendars (Enterprise only)
-- [`DELETE /api/V/incubating/project/[PROJECT]/calendars/[ID]`][DELETE /api/V/incubating/project/\[PROJECT\]/calendars/\[ID\]] - Delete a Project Calendar (Enterprise only)
-- [`GET /api/V/incubating/system/calendars`][GET /api/V/incubating/system/calendars] - Get System Calendars (Enterprise only)
-- [`POST /api/V/incubating/system/calendars`][POST /api/V/incubating/system/calendars] - Create/Update System Calendars (Enterprise only)
-- [`DELETE /api/V/incubating/system/calendars/[ID]`][DELETE /api/V/incubating/system/calendars/\[ID\]] - Delete a System Calendar (Enterprise only)
+* (none)
 
 ## API Changes
 
@@ -44,6 +39,12 @@ Changes introduced by API Version number:
 * Endpoints promoted out of incubating status. These endpoints no longer contain `incubating/` in the endpoint URL, and now require API version 41 minimum.
     * [`GET /api/V/enterprise/license`][GET /api/V/enterprise/license] - Get Enterprise license
     * [`POST /api/V/enterprise/license`][POST /api/V/enterprise/license] - Store Enterprise license
+    * [`GET /api/V/project/[PROJECT]/calendars`][GET /api/V/project/\[PROJECT\]/calendars] - Get Project Calendars (Enterprise only)
+    * [`POST /api/V/project/[PROJECT]/calendars`][POST /api/V/project/\[PROJECT\]/calendars] - Create/Update Project Calendars (Enterprise only)
+    * [`DELETE /api/V/project/[PROJECT]/calendars/[ID]`][DELETE /api/V/project/\[PROJECT\]/calendars/\[ID\]] - Delete a Project Calendar (Enterprise only)
+    * [`GET /api/V/system/calendars`][GET /api/V/system/calendars] - Get System Calendars (Enterprise only)
+    * [`POST /api/V/system/calendars`][POST /api/V/system/calendars] - Create/Update System Calendars (Enterprise only)
+    * [`DELETE /api/V/system/calendars/[ID]`][DELETE /api/V/system/calendars/\[ID\]] - Delete a System Calendar (Enterprise only)
 * New Endpoints:
     * [`POST /api/V/enterprise/cluster/executions/enable`][POST /api/V/enterprise/cluster/executions/enable] - Set Active execution Mode for a cluster member
     * [`POST /api/V/enterprise/cluster/executions/disable`][POST /api/V/enterprise/cluster/executions/disable] - Set Passive execution Mode for a cluster member

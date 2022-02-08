@@ -7500,8 +7500,6 @@ ok
 ::: enterprise  
 :::
 
-::: incubating
-:::
 
 Manage System and Project Calendars in Rundeck Enterprise.
 
@@ -7511,13 +7509,10 @@ Get all calendars at system level.
 ::: enterprise  
 :::
 
-::: incubating
-:::
-
 
 **Request:**
 
-    GET  /api/V/incubating/system/calendars
+    GET  /api/41/system/calendars
 
 **Response:**
 Content-Type: application/json
@@ -7547,13 +7542,10 @@ Get all calendars at project level
 ::: enterprise  
 :::
 
-::: incubating
-:::
-
 
 **Request:**
 
-    GET  /api/V/incubating/project/[PROJECT]/calendars
+    GET  /api/41/project/[PROJECT]/calendars
 
 **Response:**
 Content-Type: application/json
@@ -7587,13 +7579,10 @@ Create or update a calendar at system level
 ::: enterprise  
 :::
 
-::: incubating
-:::
-
 
 **Request:**
 
-    POST  /api/V/incubating/system/calendars
+    POST  /api/41/system/calendars
 
 Request Content:
 `Content-Type: application/json`
@@ -7618,7 +7607,7 @@ Request Content:
   }
 ```
 
-*if the ID exists, it will update the existing calendar, otherwise it will be created it
+* if the ID exists, it will update the existing calendar, otherwise a new one will be created.
 
 Example:
 
@@ -7647,13 +7636,10 @@ Create or update a calendar at project level
 ::: enterprise  
 :::
 
-::: incubating
-:::
-
 
 **Request:**
 
-    POST  /api/V/incubating/project/[PROJECT]/calendars
+    POST  /api/41/project/[PROJECT]/calendars
 
 Request Content:
 `Content-Type: application/json`
@@ -7684,7 +7670,7 @@ Request Content:
   }
 ```
 
-*if the ID exists, it will update the existing calendar, otherwise it will be created it
+* if the ID exists, it will update the existing calendar, otherwise a new one will be created.
 
 Example:
 
@@ -7721,50 +7707,29 @@ Deletes a calendar at project level
 ::: enterprise  
 :::
 
-::: incubating
-:::
-
 
 **Request:**
 
-    DELETE  /api/V/incubating/project/[PROJECT]/calendars/[ID]
+    DELETE  /api/41/project/[PROJECT]/calendars/[ID]
 
-Request Content:
-`NO CONTENT NEEDED`
+**Response:**
 
+    204 No Content
 
-Example:
-
-```json
-{
-    "msg": "Deleted calendar"
-  }
-  ```
 ### Delete System Calendar
 Deletes a calendar at system level
 
 ::: enterprise  
 :::
 
-::: incubating
-:::
-
 
 **Request:**
 
-    DELETE  /api/V/incubating/system/calendars/[ID]
+    DELETE  /api/41/system/calendars/[ID]
 
-Request Content:
-`NO CONTENT NEEDED`
+**Response:**
 
-
-Example:
-
-```json
-{
-    "msg": "Deleted calendar"
-  }
-  ```
+    204 No Content
 
 ## License (Enterprise)
 
@@ -8018,6 +7983,14 @@ Content-Type: `application/json`
 * `PUT` [Update a Project ACL Policy](#update-a-project-acl-policy)
 * `DELETE` [Delete a Project ACL Policy](#delete-a-project-acl-policy)
 
+
+[/api/V/project/\[PROJECT\]/calendars][]
+
+* `GET` [List Project Calendars](#list-project-calendars)
+* `POST` [Create/Update Project Calendars](#create-update-project-calendar)
+* `DELETE` [Delete Project Calendars](#delete-project-calendar)
+
+
 [/api/V/project/\[PROJECT\]/config][]
 
 * `GET` [GET Project Configuration](#get-project-configuration)
@@ -8203,6 +8176,12 @@ Content-Type: `application/json`
 * `PUT` [Update an ACL Policy](#update-an-acl-policy)
 * `DELETE` [Delete an ACL Policy](#delete-an-acl-policy)
 
+[/api/V/system/calendars][]
+
+* `GET` [List System Calendars](#list-system-calendars)
+* `POST` [Create/Update System Calendars](#create-update-system-calendar)
+* `DELETE` [Delete System Calendars](#delete-system-calendar)
+
 [/api/V/system/executions/enable][]
 
 * `POST` [Set Active Mode](#set-active-mode)
@@ -8275,18 +8254,7 @@ Content-Type: `application/json`
 ### Incubating
 
 
-[/api/V/incubating/project/\[PROJECT\]/calendars][]
-
-* `GET` [List Project Calendars](#list-project-calendars)
-* `POST` [Create/Update Project Calendars](#create-update-project-calendar)
-* `DELETE` [Delete Project Calendars](#delete-project-calendar)
-
-[/api/V/incubating/system/calendars][]
-
-* `GET` [List System Calendars](#list-system-calendars)
-* `POST` [Create/Update System Calendars](#create-update-system-calendar)
-* `DELETE` [Delete System Calendars](#delete-system-calendar)
-
+(none)
 
 [ACLPOLICY]:../manual/document-format-reference/aclpolicy-v10.html
 
