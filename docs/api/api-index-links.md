@@ -164,7 +164,9 @@
 [/api/V/system/acl/*]:/api/rundeck-api.html#acls
 [/api/V/system/info]:/api/rundeck-api.html#system-info
 [/api/V/system/executions/enable]:/api/rundeck-api.html#set-active-mode
+[POST /api/V/system/executions/enable]:/api/rundeck-api.html#set-active-mode
 [/api/V/system/executions/disable]:/api/rundeck-api.html#set-passive-mode
+[POST /api/V/system/executions/disable]:/api/rundeck-api.html#set-passive-mode
 [/api/V/system/executions/status]:/api/rundeck-api.html#get-current-execution-mode
 
 [/api/V/system/logstorage]:/api/rundeck-api.html#log-storage-info
@@ -194,6 +196,9 @@
 
 [/api/V/project/\[PROJECT\]/webhook/]:/api/rundeck-api.html#add-a-webhook
 [/api/V/project/\[PROJECT\]/webhook/\[ID\]]:/api/rundeck-api.html#get-a-webhook
+
+[POST /api/V/enterprise/cluster/executions/enable]:/api/rundeck-api.html#set-active-mode-for-a-cluster-member-enterprise
+[POST /api/V/enterprise/cluster/executions/disable]:/api/rundeck-api.html#set-passive-mode-for-a-cluster-member-enterprise
 
 
 [/api/V/enterprise/license]:/api/rundeck-api.html#view-license

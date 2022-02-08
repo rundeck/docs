@@ -2508,6 +2508,85 @@ List the scheduled Jobs with their schedule owned by the target cluster server.
 The same format as [Listing Jobs](#listing-jobs).
 
 
+### Set Active Mode for a Cluster Member (Enterprise)
+
+:::enterprise
+:::
+
+Set the Execution Mode for the target cluster member to *Active*.
+
+If the UUID parameter matches the current cluster member, the mode will be changed immedidately, otherwise the status will be `pending`.
+
+**Request**
+
+`POST /api/41/enterprise/cluster/executions/enable`
+
+URL Parameters:
+
+`uuid`
+:    UUID of Member
+
+**Response**
+
+`Content-Type: application/json`
+
+```json
+{
+  "status": "pending",
+  "executionMode": "active",
+  "uuid": "a3de6030-2b7a-47e3-b46f-3e46a11a85d9"
+}
+```
+
+`status`
+:   `pending` indicates the request has been posted, `complete` indicates the request has taken effect already.
+
+`executionMode`
+:   The requested execution mode, either `active` or `passive`
+
+`uuid`
+:   The target cluster member UUID
+
+### Set Passive Mode for a Cluster Member (Enterprise)
+
+:::enterprise
+:::
+
+Set the Execution Mode for the target cluster member to *Passive*.
+
+If the UUID parameter matches the current cluster member, the mode will be changed immedidately, otherwise the status will be `pending`.
+
+**Request**
+
+`POST /api/41/enterprise/cluster/executions/disable`
+
+
+URL Parameters:
+
+`uuid`
+:    UUID of Member
+
+**Response**
+
+`Content-Type: application/json`
+
+```json
+{
+  "status": "pending",
+  "executionMode": "passive",
+  "uuid": "a3de6030-2b7a-47e3-b46f-3e46a11a85d9"
+}
+```
+
+`status`
+:   `pending` indicates the request has been posted, `complete` indicates the request has taken effect already.
+
+`executionMode`
+:   The requested execution mode, either `active` or `passive`
+
+`uuid`
+:   The target cluster member UUID
+
 ## ACLs
 
 Manage the system system ACL policy files stored in the database.

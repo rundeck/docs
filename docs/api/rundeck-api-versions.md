@@ -42,8 +42,11 @@ Changes introduced by API Version number:
 **Version 41**:
 
 * Endpoints promoted out of incubating status. These endpoints no longer contain `incubating/` in the endpoint URL, and now require API version 41 minimum.
-    * ['GET /api/V/enterprise/license'][GET /api/v/enterprise/license] - Get Enterprise license
-    * ['POST /api/V/enterprise/license'][POST /api/v/enterprise/license] - Store Enterprise license
+    * [`GET /api/V/enterprise/license`][GET /api/V/enterprise/license] - Get Enterprise license
+    * [`POST /api/V/enterprise/license`][POST /api/V/enterprise/license] - Store Enterprise license
+* New Endpoints:
+    * [`POST /api/V/enterprise/cluster/executions/enable`][POST /api/V/enterprise/cluster/executions/enable] - Set Active execution Mode for a cluster member
+    * [`POST /api/V/enterprise/cluster/executions/disable`][POST /api/V/enterprise/cluster/executions/disable] - Set Passive execution Mode for a cluster member
     
 **Version 40**:
 
