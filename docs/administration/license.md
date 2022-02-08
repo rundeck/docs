@@ -2,21 +2,15 @@
 
 ## Overview
 
-While Rundeck is an open source project maintained by Rundeck Inc, Rundeck Enterprise is commercial software for which you can purchase a license from Rundeck Inc. Rundeck Enterprise provides a tested, supported, and enterprise-ready distribution of Rundeck with additional features and capabilities for enterprise scale use. Also, a Rundeck Enterprise subscription license is the only way to receive professional support from Rundeck and the core Rundeck team.
+While Rundeck is an open source project maintained by PagerDuty, Rundeck Enterprise is commercial software for which you can purchase a license from PagerDuty. Rundeck Enterprise provides a tested, supported, and enterprise-ready distribution of Rundeck with additional features and capabilities for enterprise scale use. Also, a Rundeck Enterprise subscription license is the only way to receive professional support from PagerDuty and the core Rundeck team.
 
-Rundeck Enterprise is available under an annual subscription license and comes bundled with support. You can renew the right to use the software and receive access to support on an annual basis. Multi-year subscription purchases can also be made.
-
-Rundeck Enterprise is licensed per a combination of Rundeck Enterprise clusters (consisting of two servers), any additional servers, and the number of users using Rundeck Enterprise. There are no restrictions on the number of projects, nodes, or jobs run.
-
-No software with GPL or other “copyleft” licenses are used in Rundeck Enterprise. All license rights for using Rundeck Enterprise are contained within the single Rundeck Enterprise license.
-
-Rundeck Inc. guarantees that Rundeck Enterprise does not infringe on any patents, copyrights or misappropriates any trade secrets. Rundeck will defend licensees against such claims. For details, see [Rundeck Enterprise Master Software License Agreement](http://support.rundeck.com/customer/portal/articles/2723878-rundeckpro-license).
+[Contact the PagerDuty sales team to get started with Rundeck Enterprise today.](https://www.pagerduty.com/contact-us/)
 
 ## License Key Installation
 
 >Note: this is only required on Rundeck Enterprise version.  Rundeck Cloud will come pre-installed with your license.
 
-Ask for the license key to the support team. Then install the license key via the gui or on the filesystem directly.
+Ask for the license key to the support team. Then install the license key via the GUI or on the filesystem directly.
 
 ### Via GUI
 

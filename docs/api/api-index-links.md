@@ -164,7 +164,9 @@
 [/api/V/system/acl/*]:/api/rundeck-api.html#acls
 [/api/V/system/info]:/api/rundeck-api.html#system-info
 [/api/V/system/executions/enable]:/api/rundeck-api.html#set-active-mode
+[POST /api/V/system/executions/enable]:/api/rundeck-api.html#set-active-mode
 [/api/V/system/executions/disable]:/api/rundeck-api.html#set-passive-mode
+[POST /api/V/system/executions/disable]:/api/rundeck-api.html#set-passive-mode
 [/api/V/system/executions/status]:/api/rundeck-api.html#get-current-execution-mode
 
 [/api/V/system/logstorage]:/api/rundeck-api.html#log-storage-info
@@ -195,19 +197,23 @@
 [/api/V/project/\[PROJECT\]/webhook/]:/api/rundeck-api.html#add-a-webhook
 [/api/V/project/\[PROJECT\]/webhook/\[ID\]]:/api/rundeck-api.html#get-a-webhook
 
-
-[/api/V/incubating/enterprise/license]:/api/rundeck-api.html#view-license
-[GET /api/V/incubating/enterprise/license]:/api/rundeck-api.html#view-license
-[POST /api/V/incubating/enterprise/license]:/api/rundeck-api.html#set-license-key
+[POST /api/V/enterprise/cluster/executions/enable]:/api/rundeck-api.html#set-active-mode-for-a-cluster-member-enterprise
+[POST /api/V/enterprise/cluster/executions/disable]:/api/rundeck-api.html#set-passive-mode-for-a-cluster-member-enterprise
 
 
+[/api/V/enterprise/license]:/api/rundeck-api.html#view-license
+[GET /api/V/enterprise/license]:/api/rundeck-api.html#view-license
+[POST /api/V/enterprise/license]:/api/rundeck-api.html#set-license-key
 
-[/api/V/incubating/project/\[PROJECT\]/calendars]:/api/rundeck-api.html#list-project-calendars
-[GET /api/V/incubating/project/\[PROJECT\]/calendars]:/api/rundeck-api.html#list-project-calendars
-[POST /api/V/incubating/project/\[PROJECT\]/calendars]:/api/rundeck-api.html#create-update-project-calendar
-[DELETE /api/V/incubating/project/\[PROJECT\]/calendars/\[ID\]]:/api/rundeck-api.html#delete-project-calendar
 
-[/api/V/incubating/system/calendars]:/api/rundeck-api.html#list-system-calendars
-[GET /api/V/incubating/system/calendars]:/api/rundeck-api.html#list-system-calendars
-[POST /api/V/incubating/system/calendars]:/api/rundeck-api.html#create-update-system-calendar
-[DELETE /api/V/incubating/system/calendars/\[ID\]]:/api/rundeck-api.html#delete-system-calendar
+
+
+[/api/V/project/\[PROJECT\]/calendars]:/api/rundeck-api.html#list-project-calendars
+[GET /api/V/project/\[PROJECT\]/calendars]:/api/rundeck-api.html#list-project-calendars
+[POST /api/V/project/\[PROJECT\]/calendars]:/api/rundeck-api.html#create-update-project-calendar
+[DELETE /api/V/project/\[PROJECT\]/calendars/\[ID\]]:/api/rundeck-api.html#delete-project-calendar
+
+[/api/V/system/calendars]:/api/rundeck-api.html#list-system-calendars
+[GET /api/V/system/calendars]:/api/rundeck-api.html#list-system-calendars
+[POST /api/V/system/calendars]:/api/rundeck-api.html#create-update-system-calendar
+[DELETE /api/V/system/calendars/\[ID\]]:/api/rundeck-api.html#delete-system-calendar
