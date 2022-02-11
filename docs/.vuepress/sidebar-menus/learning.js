@@ -28,6 +28,21 @@ module.exports = [{
       ]
     },
     {
+      title: 'Solutions',
+      collapsable: true,
+      sidebarDepth: 0,
+      children: [
+        {
+          title: 'Incident Response',
+          collapsable: true,
+          sidebarDepth: 0,
+          children: [
+              '/learning/solutions/pagerduty-incident-diagnostics.md',
+          ]
+        }
+      ]
+    },
+    {
       title: 'How To',
       collapsable: true,
       path: '/learning/howto/overview',
