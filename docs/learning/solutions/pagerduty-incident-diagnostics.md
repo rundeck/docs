@@ -10,13 +10,15 @@ The design principles outlined in this solution are applicable to most other use
 
 ::: tip Solution Prerequisites
 
-For this guide, Rundeck Enterprise must be installed and running.
+For this guide, Rundeck Enterprise must be installed and running. The provided Rundeck Job depends on the Kubernetes Plugins. 
+You can install the most recent version of these plugins from [here](https://github.com/rundeck-plugins/kubernetes/releases). 
+Download the `kubernetes-plugin-x.x.x.zip` file and then upload to your Rundeck instance. These plugins require the Kubernetes python library. 
+You can read more about the plugin requirements [here](https://github.com/rundeck-plugins/kubernetes#requirements).
 
 A PagerDuty account with the Rundeck Actions add-on enabled is also required.
 Rundeck Actions are available as an add-on for Business and Digital Operations pricing plans. Please [contact us](https://www.pagerduty.com/contact-us/rundeck-actions-long/) if you would like to upgrade your plan or trial Rundeck Actions. 
 
 This solution is meant to demonstrate design principles, and therefore the steps outlined in this Rundeck Job may not be applicable to your specific environment.
-
 :::
 
 #### Configure Rundeck Job
@@ -34,6 +36,10 @@ You can find more detailed instructions for upload a Job Definition [here](/manu
 7. Click the **Select** button next to **API Key** to select your API Key from Key Storage. If you used a _User Token API Key_ for PagerDuty, then be sure to modify the email-address as well:
 <br><br>![Edit Job2](@assets/img/solutions-pd-diag-k8s-step-3.png)<br><br>
 8. Click **Save** on the step as well as **Save** on the Job.
+
+#### Configure Kubernetes Node Source
+In order for the Rundeck Job to target Kubernetes Pods, the Pods should be added into the Rundeck inventory.
+1. Navigate to 
 
 ::: tip Note                                                                                                                                                                                                                
 This Rundeck Job is meant to be invoked from PagerDuty, not through the Rundeck GUI. There is a hidden Job Option for the PagerDuty Incident ID. If you run the Job directly from the Rundeck Interface, the Job will fail on Step 3, as it is expecting to have the PagerDuty incident ID as an input parameter.                                                                                                                                                                                                                                              
