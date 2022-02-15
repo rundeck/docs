@@ -37,13 +37,21 @@ You can find more detailed instructions for upload a Job Definition [here](/manu
 <br><br>![Edit Job2](@assets/img/solutions-pd-diag-k8s-step-3.png)<br><br>
 8. Click **Save** on the step as well as **Save** on the Job.
 
+::: tip Note
+This Rundeck Job is meant to be invoked from PagerDuty, not through the Rundeck GUI. There is a hidden Job Option for the PagerDuty Incident ID. If you run the Job directly from the Rundeck Interface, the Job will fail on Step 3, as it is expecting to have the PagerDuty incident ID as an input parameter.
+:::                                                                                                                                                                                                                                           
+
 #### Configure Kubernetes Node Source
 In order for the Rundeck Job to target Kubernetes Pods, the Pods should be added into the Rundeck inventory.
-1. Navigate to 
+1. Navigate to **Setings -> Edit Nodes -> Add a new Node Source**:
+<br><br>![K8s Nodes](@assets/img/solutions-pd-diag-k8s-node-source.png)<br><br>
+2. Fill in the Node Source fields with connection details to the Kubernetes cluster. When a successful connection has been made, the Kubernetes pods will be visible in the Nodes tab:
+<br><br>![K8s Pods](@assets/img/solutions-pd-diag-k8s-pods.png)<br><br>
 
-::: tip Note                                                                                                                                                                                                                
-This Rundeck Job is meant to be invoked from PagerDuty, not through the Rundeck GUI. There is a hidden Job Option for the PagerDuty Incident ID. If you run the Job directly from the Rundeck Interface, the Job will fail on Step 3, as it is expecting to have the PagerDuty incident ID as an input parameter.                                                                                                                                                                                                                                              
-:::                                                                                                                                                                                                                                           
+
+                                                                                                                                                                                                                
+                                                                                                                                                                                                                                              
+
 
 #### Configure Rundeck Actions 
 1. Create a Rundeck User API Token by navigating to **User Icon** -> **Profile** and click the **+** next to **User API Tokens**:
