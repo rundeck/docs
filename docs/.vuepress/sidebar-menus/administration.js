@@ -103,6 +103,7 @@ module.exports = [{
         '/administration/security/authorization',
         '/administration/security/acl-policy-editor',
         '/administration/security/ssl',
+        '/administration/security/blocklist',
         '/administration/security/sso',
         '/administration/security/webapp-http-headers',
         '/administration/security/project-acl'
