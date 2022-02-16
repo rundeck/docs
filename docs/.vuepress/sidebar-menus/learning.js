@@ -37,7 +37,7 @@ module.exports = [{
           collapsable: true,
           sidebarDepth: 0,
           children: [
-              '/learning/solutions/pagerduty-incident-diagnostics.md',
+              ['/learning/solutions/auto-incident-kubernetes-logs.md','Auto-Diagnostics - Kubernetes Logs']
           ]
         }
       ]
