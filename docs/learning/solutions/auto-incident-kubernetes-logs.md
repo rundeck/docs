@@ -2,7 +2,7 @@
 
 ## Solution Summary
 This solution will walk through an example of enriching PagerDuty incidents by retrieving diagnostic data from a single data-source using a Rundeck Job.
-At the end of building this solution, when an incident is created in PagerDuty, users will be presented with a button to retrieve recent logs from Kubernetes pods and view those recent logs on the incident timeline.
+At the end of building this solution, when an incident is created in PagerDuty, users will be presented with a button to retrieve recent logs from Kubernetes pods and view those logs from within the PagerDuty user-interface.
 
 The design principles outlined in this solution are applicable to most other use-cases for retrieving diagnostic-data or invoking remediation.
 
@@ -43,7 +43,7 @@ If you run the Job directly from the Rundeck Interface, the Job will fail on Ste
 :::
 
 ::: tab Rundeck Community
-9. Download the sample Rundeck Job YAML from this [link](https://raw.githubusercontent.com/rundeckpro/welcome-project/main/runbooks/yaml/solutions/Auto-Diagnostics__-_Kubernetes_Logs.yaml).
+9. Download the sample Rundeck Job YAML from this [link](https://raw.githubusercontent.com/rundeck/welcome-project-community/main/runbooks/yaml/Solutions/Auto-Diagnostics_-_Kubernetes_Logs.yaml).
    (Right click and select **Save Link As...** and be sure to append `.yaml` to the file name). You can find more detailed instructions for uploading a Job Definition [here](/manual/creating-jobs.html#importing-job-definitions). 
 10. Edit the Job by clicking **Edit This Job**:
 <br><br>![Edit CMNTY Job](@assets/img/solutions-pd-diag-k8s-edit-cmnty-job.png)<br><br>
