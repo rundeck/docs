@@ -653,7 +653,7 @@ First Load Asynch: true/false
 
 ### Limit displayed Job execution Log Output
  
-Limit the amount of lines displayed in Log Output after a configurable limit has been reached.
+Limit the amount of lines displayed in Log Output when following the execution of a Job that is running (not finished yet) after a configurable limit has been reached.
 If the value is not defined, default behavior is to display all the generated output
 
 Trim Output: Max size of visible Log Output (not present by default).
