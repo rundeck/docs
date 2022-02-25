@@ -99,5 +99,20 @@ module.exports = [{
         }
       ]
     },
+    {
+      title: 'Solutions',
+      collapsable: true,
+      sidebarDepth: 0,
+      children: [
+        {
+          title: 'Incident Response',
+          collapsable: true,
+          sidebarDepth: 0,
+          children: [
+              ['/learning/solutions/auto-incident-kubernetes-logs.md','Auto-Diagnostics - Kubernetes Logs']
+          ]
+        }
+      ]
+    }
   ]
 }]

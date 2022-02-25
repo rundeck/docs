@@ -132,6 +132,10 @@ the container.
 
 Defaults to `jdbc:h2:file:/home/rundeck/server/data/grailsdb;MVCC=true`. The default configuration utilizes an h2 file for data storage.
 
+`RUNDECK_DATABASE_MIGRATE_ONSTART`
+
+This will configure the setting for `grails.plugin.databasemigration.updateOnStart` used in [Upgrading to the 3.4](/upgrading/upgrading-to-rundeck-3.4.md). Defaults to `true`.
+
 ### Database
 
 `RUNDECK_DATABASE_DRIVER`
@@ -294,7 +298,8 @@ See the [SSO Documentation](/administration/security/sso.md) for more informatio
 Set to `com.rundeck.rundeckpro.amazon-s3`
 
 `RUNDECK_PLUGIN_EXECUTIONFILESTORAGE_S3_BUCKET`  
-`RUNDECK_PLUGIN_EXECUTIONFILESTORAGE_S3_REGION`  
+`RUNDECK_PLUGIN_EXECUTIONFILESTORAGE_S3_REGION`
+`RUNDECK_PLUGIN_EXECUTIONFILESTORAGE_S3_PATH`
 `RUNDECK_PLUGIN_EXECUTIONFILESTORAGE_S3_AWSACCESSKEYID`  
 `RUNDECK_PLUGIN_EXECUTIONFILESTORAGE_S3_AWSSECRETKEY`  
 :::warning
