@@ -95,7 +95,7 @@ Grafana listens to 3000 TCP port by default.
 
 1. Clone or download the repository:
     ```
-    git clone https://github.com/MegaDrive68k/rundeck-exporter-demo
+    git clone https://github.com/rundeck/rundeck-exporter-demo
 
     ```
 2. Go to the cloned repository directory and build the environment with the `docker-compose build`, then run with `docker-compose up`.
