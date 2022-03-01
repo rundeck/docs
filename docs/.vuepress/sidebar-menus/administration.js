@@ -158,7 +158,9 @@ module.exports = [{
         '/administration/security/ssl',
         '/administration/security/sso',
         '/administration/security/webapp-http-headers',
-        '/administration/security/project-acl'
+        '/administration/security/project-acl',
+        '/administration/security/password-security',
+        '/administration/security/ratelimiting'
       ]
     }
   ]

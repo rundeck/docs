@@ -35,6 +35,10 @@ Select the Default Node Executor you wish to use for all remote Nodes for the pr
 
 You can install more types of Node Executors as plugins, see [Node Execution Plugins](/manual/job-plugins.md#node-execution).
 
+::: tip
+When using SSH node executor and SCP file copier, the properties will be shared between the file copier and the node executor, so any change made for the node executor will affect the file copier and vice versa. If a more specific configuration is required, this can be done directly in the node definition.
+:::
+
 ### Default File Copier Configuration
 
 When Rundeck executes a script on a node, it does so by first copying the script as a file to the node, via a "File Copier". (It then uses a "Node Executor" to execute the script like a command.)
@@ -47,6 +51,10 @@ Select the Default File Copier you wish to use for all remote Nodes for the proj
 ![Default File Copier Choice](~@assets/img/fig0713.png)
 
 You can install more types of File Copiers as plugins, see [Node Execution Plugins](/manual/job-plugins.md#node-execution).
+
+::: tip
+When using SCP file copier and SSH node executor, the properties will be shared between the file copier and the node executor, so any change made for the file copier will affect the node executor and vice versa. If a more specific configuration is required, this can be done directly in the node definition.
+:::
 
 
 ## Edit Nodes...
