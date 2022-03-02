@@ -2,7 +2,7 @@
   <header class="navbar">
     <div class="banner">
           <p>
-            Rundeck Enterprise is changing names to Process Automation!  For more info click  <a href="#">here</a>
+            Rundeck Enterprise is changing names to PagerDuty Process Automation OnPrem.  For more info click  <a href="#">here</a>
           </p>
     </div>
     <div class="navbar-content">
@@ -112,11 +112,11 @@ $navbar-horizontal-padding = 1.5rem
   line-height $navbarHeight - 1.4rem
   a, span, img
     display inline-block
-  p 
+  p
     margin -0.7rem -1.5rem 0.7rem -1.5rem
     text-align center
     padding 0 3rem 0 3rem
-  .banner 
+  .banner
     position relative
     background rgba(6, 172, 56, 0.25)
     margin 0 -1.5rem 0 -1.5rem
