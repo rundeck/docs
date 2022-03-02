@@ -9,7 +9,7 @@ The ServiceNow&reg; Node Source brings CMDB entries into Rundeck as Nodes.  This
 
 ## Exercise
 
-This exercise configures the [ServiceNow&reg; Node Source](/administration/projects/resource-model-sources/servicenow.md) with a Custom Filter from the ServiceNow&reg; CMDB.
+This exercise configures the [ServiceNow&reg; Node Source](/manual/projects/resource-model-sources/servicenow.md) with a Custom Filter from the ServiceNow&reg; CMDB.
 
 :::: tabs
 ::: tab Basic Exercise

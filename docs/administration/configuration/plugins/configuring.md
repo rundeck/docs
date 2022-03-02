@@ -183,7 +183,7 @@ to make use of the provider. The specific Provider Name is used as the
 "format name" when you want to use the parser or generator.
 
 For example, to enable a particular Resource Format parser to be used by a File
-Resource Model Source (see [File Resource Model Source Configuration](/administration/projects/resource-model-sources/index.md#file-resource-model-source-configuration)), you should specify
+Resource Model Source (see [File Resource Model Source Configuration](/manual/projects/resource-model-sources/index.md#file-resource-model-source-configuration)), you should specify
 the Provider Name for the parser as the format for the source:
 
 ```properties

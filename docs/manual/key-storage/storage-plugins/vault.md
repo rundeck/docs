@@ -2,7 +2,7 @@
 
 [Hashicorp Vault](https://www.vaultproject.io/) is a tool for securely accessing secrets. A secret is anything that you want to tightly control access to, such as API keys, passwords, or certificates. Vault provides a unified interface to any secret, while providing tight access control and recording a detailed audit log.
 
-Rundeck offers a [Key Storage Backend](/administration/key-storage/key-storage.html#key-data-storage-converter) plugin for storing Key Store data in [Vault](https://www.vaultproject.io/).
+Rundeck offers a [Key Storage Backend](/manual/key-storage/key-storage.html#key-data-storage-converter) plugin for storing Key Store data in [Vault](https://www.vaultproject.io/).
 
 :::: tabs
 ::: tab Enterprise Installation

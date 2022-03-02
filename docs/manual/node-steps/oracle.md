@@ -3,7 +3,7 @@
 ## Getting Started
 
 :::tip
-It is helpful configure the Oracle Cloud Infrastructure (OCI) resource model plugin before using these steps: [Oracle Cloud Resource Model](/administration/projects/resource-model-sources/orale.md)
+It is helpful configure the Oracle Cloud Infrastructure (OCI) resource model plugin before using these steps: [Oracle Cloud Resource Model](/manual/projects/resource-model-sources/orale.md)
 :::
 
 [Oracle Cloud Infrastructure](https://www.oracle.com/cloud/) is a cloud service in wide use for dynamic infrastructure; it is easy to start up and shut down Node "Instances" in the cloud.  Use these Rundeck steps to automate common OCI Virtual Machine actions.

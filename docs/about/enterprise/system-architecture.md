@@ -1,6 +1,6 @@
 # System Architecture
 
-Rundeck is a server application you host on a system you designate
+Rundeck Enterprise is a server application hosted in your local environment as
 a central administrative control point. Internally, Rundeck stores job
 definitions and execution history in a relational database. Output
 from command and job executions is saved on disk but can be forwarded

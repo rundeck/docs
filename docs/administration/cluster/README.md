@@ -51,7 +51,7 @@ Projects need a common resource model that can be accessed from all cluster memb
 - A script
 - A REST endpoint
 
-See: [Node Model Sources](/administration/projects/resource-model-sources/index.md)
+See: [Node Model Sources](/manual/projects/resource-model-sources/index.md)
 
 ## Features:
 

@@ -6,7 +6,7 @@
 
 For Rundeck, we would like to have a way of querying the EC2 service to see what EC2 Instances are available for use as Rundeck Nodes.
 
-Amazon has a well-defined API for communication with their services, which would allow us to pull out the EC2 data, and generate XML if we wanted to. We could write a script that produces that data and use that script on a server to produce data via a URL, or we could use that script with the [script resource model source plugin](/administration/projects/resource-model-sources/builtin.md#script-resource-model-source-configuration) to generate it. This would give us complete control of the output, but does require extra work.
+Amazon has a well-defined API for communication with their services, which would allow us to pull out the EC2 data, and generate XML if we wanted to. We could write a script that produces that data and use that script on a server to produce data via a URL, or we could use that script with the [script resource model source plugin](/manual/projects/resource-model-sources/builtin.md#script-resource-model-source-configuration) to generate it. This would give us complete control of the output, but does require extra work.
 
 However, there is already an Open Source plugin to do this: [Rundeck EC2 Nodes Plugin](https://github.com/rundeck-plugins/rundeck-ec2-nodes-plugin).
 

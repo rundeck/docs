@@ -2,15 +2,15 @@
 
 ## About
 
-Storage converters can modify file contents and metadata uploaded to the [Key Storage](/administration/key-storage/key-storage.md) via the [Key Storage API](/api/rundeck-api.md#key-storage).
+Storage converters can modify file contents and metadata uploaded to the [Key Storage](/manual/key-storage/key-storage.md) via the [Key Storage API](/api/rundeck-api.md#key-storage).
 
 When installed, Storage Converter plugins can be configured to apply to all storage requests for a certain Path, or matching a certain metadata selector. This lets you apply plugins to only a subset of storage requests.
 
-A typical example is to apply some form of encryption to the [Key Storage](/administration/key-storage/key-storage.md) stored under the `/keys` path. In this case you can also have the plugin apply only to Private keys, by using the metadata selector.
+A typical example is to apply some form of encryption to the [Key Storage](/manual/key-storage/key-storage.md) stored under the `/keys` path. In this case you can also have the plugin apply only to Private keys, by using the metadata selector.
 
 ## Configuring
 
-See: [Configuring the Storage Converter Plugin](/administration/key-storage/key-storage.md#configuring-storage-converter-plugins).
+See: [Configuring the Storage Converter Plugin](/manual/key-storage/key-storage.md#configuring-storage-converter-plugins).
 
 ## Java Plugin Type
 

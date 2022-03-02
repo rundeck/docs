@@ -18,9 +18,9 @@ Rundeck supports several different types of plugins to perform different kinds
 of services:
 
 - [Workflow Step](/manual/job-plugins.md#workflow-steps) - defines an action that can be a distinct step within a workflow, either for an individual Node or a set of Nodes
-- [Node Execution](/administration/projects/node-execution/index.md) - defines a mechanism to connect to a remote Node and execute a command
-- [File Copier](/administration/projects/node-execution/index.md) - defines a mechanism to copy a file to a remote node
-- [Resource Model Source](/administration/projects/resource-model-sources/index.md) - defines a mechanism to retrieve Resource Model data (Node definitions) for use by a Rundeck project
+- [Node Execution](/manual/projects/node-execution/index.md) - defines a mechanism to connect to a remote Node and execute a command
+- [File Copier](/manual/projects/node-execution/index.md) - defines a mechanism to copy a file to a remote node
+- [Resource Model Source](/manual/projects/resource-model-sources/index.md) - defines a mechanism to retrieve Resource Model data (Node definitions) for use by a Rundeck project
 - [Resource Format](/developer/03-model-source-format-parser-generator-plugins.md) - defines a data format for Resource Models
 - [Notification](/manual/job-plugins.md#notifications) - defines a mechanism for notification that can be triggered when a Job starts or finishes
 - [Streaming Logging](/administration/maintenance/logs.md#streaming-log-plugins) - defines a mechanism for reading and writing log events

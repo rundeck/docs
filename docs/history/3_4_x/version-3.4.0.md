@@ -53,7 +53,7 @@ The new Thycotic Key Storage plugin replaces the built-in Key Storage (where Run
 
 ![Thycotic Key Storage](https://thycotic.com/wp-content/uploads/2020/05/Thycotic-Logo-Full-Color.png)
 
-[Configure Thycotic as your Key Storage Backend here.](/administration/key-storage/storage-plugins/thycotic-storage.md)
+[Configure Thycotic as your Key Storage Backend here.](/manual/key-storage/storage-plugins/thycotic-storage.md)
 
 ### PagerDuty V3 Webhook Signatures (Enterprise)
 Rundeck 3.3.6 included a new Webhook Processor for PagerDuty V3 Webhooks. The 3.4.0 release adds new functionality to those webhook processors to add additional validation and security to your webhook calls.

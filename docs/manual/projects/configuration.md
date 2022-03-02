@@ -18,7 +18,7 @@ configured to use an Encryption plugin. See [Storage Facility - Using Encryption
 ## Graphical Interface
 
 Under the Project Settings menu, select the "Edit Configuration" item.
-This page provides the same controls used when [creating a project](/administration/projects/project-create.md).
+This page provides the same controls used when [creating a project](/manual/projects/project-create.md).
 
 Alternatively, you may might want to edit the raw configuration keys.
 Click the "Edit Configuration File" button to open a text editor letting you view and

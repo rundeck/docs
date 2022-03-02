@@ -43,8 +43,8 @@ The **Authentication** tab has some optional fields.  If left blank defaults fro
 - _Username_: Specify the user name used when authenticating to this Node.
 
 Defaults will be pre-populated for the following settings after selecting the OS Family entry on the Detail tab.
-- _Node Executor_: Specify a custom Node Executor if needed. [More Details](/administration/projects/node-execution/builtin.html#when-node-executors-are-invoked)
-- _File Copier_: Specify a custom File Copier if needed. [More Details](/administration/projects/node-execution/builtin.html#file-copier-destination-directory)
+- _Node Executor_: Specify a custom Node Executor if needed. [More Details](/manual/projects/node-execution/builtin.html#when-node-executors-are-invoked)
+- _File Copier_: Specify a custom File Copier if needed. [More Details](/manual/projects/node-execution/builtin.html#file-copier-destination-directory)
 
 There may be additional selections to select the key entry to use with the authentication mechanism.
 

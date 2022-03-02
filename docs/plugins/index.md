@@ -69,23 +69,23 @@ Content Converter | [Properties](/manual/content-converters/properties.md) | Par
 Content Converter | [Tabular Data](/manual/content-converters/tabular-data.md) | Parses Tabular text (csv) into a a Java object | Built-in
 Log Storage | [Azure Storage](/administration/cluster/logstore/azure.md) | Stores log files in Azure Storage | Community
 Log Storage | [Amazon S3](/administration/cluster/logstore/s3.md) | Stores log files in Amazon S3 | Community
-Node Execution | [Node Execution](/administration/projects/node-execution/builtin.md) | | Built-in
-Node Execution | [Script](/administration/projects/node-execution/script.md) | Uses a script to execute commands on remote nodes | Built-in
-Node Execution | [SSH](/administration/projects/node-execution/ssh.md) | Uses SSH to execute commands on remote nodes | Built-in
-Node Execution | [Powershell](/administration/projects/node-execution/powershell.md) | Uses PowerShell to execute commands on remote nodes | Enterprise
-Node Execution | [SSH Bastion](/administration/projects/node-execution/bastionssh.md) | Provides a node-executor and file-copier supporting ssh actions through a bastion host | Community
-Node Execution | [OpenSSH](/administration/projects/node-execution/openssh.md) | Provides a node-executor and file-copier using OpenSSH | Built-in
-Resource Model Source | [Resource Model Source](/administration/projects/resource-model-sources/builtin.md) | Imports nodes from a source | Built-in
-Resource Model Source | [Resource Editor](/administration/projects/resource-model-sources/resource-editor.md) | Allows you to edit nodes in a text editor | Built-in
-Resource Model Source | [AWS](/administration/projects/resource-model-sources/aws.md) | Populates your nodes from EC2 | Community
-Resource Model Source | [Azure](/administration/projects/resource-model-sources/azure.md) | Populates your nodes from Azure | Community
-Resource Model Source | [ServiceNow](/administration/projects/resource-model-sources/servicenow.md) | Populates your nodes from ServiceNow's&reg;CMDB | Enterprise
-Resource Model Source | [VMware](/administration/projects/resource-model-sources/vmware.md) | Populates your nodes from a VSphere ESXi server or VCenter Server | Enterprise
+Node Execution | [Node Execution](/manual/projects/node-execution/builtin.md) | | Built-in
+Node Execution | [Script](/manual/projects/node-execution/script.md) | Uses a script to execute commands on remote nodes | Built-in
+Node Execution | [SSH](/manual/projects/node-execution/ssh.md) | Uses SSH to execute commands on remote nodes | Built-in
+Node Execution | [Powershell](/manual/projects/node-execution/powershell.md) | Uses PowerShell to execute commands on remote nodes | Enterprise
+Node Execution | [SSH Bastion](/manual/projects/node-execution/bastionssh.md) | Provides a node-executor and file-copier supporting ssh actions through a bastion host | Community
+Node Execution | [OpenSSH](/manual/projects/node-execution/openssh.md) | Provides a node-executor and file-copier using OpenSSH | Built-in
+Resource Model Source | [Resource Model Source](/manual/projects/resource-model-sources/builtin.md) | Imports nodes from a source | Built-in
+Resource Model Source | [Resource Editor](/manual/projects/resource-model-sources/resource-editor.md) | Allows you to edit nodes in a text editor | Built-in
+Resource Model Source | [AWS](/manual/projects/resource-model-sources/aws.md) | Populates your nodes from EC2 | Community
+Resource Model Source | [Azure](/manual/projects/resource-model-sources/azure.md) | Populates your nodes from Azure | Community
+Resource Model Source | [ServiceNow](/manual/projects/resource-model-sources/servicenow.md) | Populates your nodes from ServiceNow's&reg;CMDB | Enterprise
+Resource Model Source | [VMware](/manual/projects/resource-model-sources/vmware.md) | Populates your nodes from a VSphere ESXi server or VCenter Server | Enterprise
 Resource Format | [XML](/manual/document-format-reference/resource-v13.md) | XML Format for Resource Models | Built-in
 Resource Format | [YAML](/manual/document-format-reference/resource-yaml-v13.md) | YAML Format for Resource Models | Built-in
 Resource Format | [JSON](/manual/document-format-reference/resource-json-v10.md) | JSON Format for Resource Models | Built-in
-SCM | [Git](/administration/projects/scm/git.md) | Imports or exports jobs from a Git repository | Community
-SCM | [Job Replication](/administration/projects/scm/job-replication.md) | Replicates job state between Rundeck Cluster instances | Enterprise
+SCM | [Git](/manual/projects/scm/git.md) | Imports or exports jobs from a Git repository | Community
+SCM | [Job Replication](/manual/projects/scm/job-replication.md) | Replicates job state between Rundeck Cluster instances | Enterprise
 SSO | [Okta](/administration/security/sso.md) | Allows you to use Okta to log into Rundeck | Enterprise
 Storage Converter | [Encyption](/administration/configuration/plugins/bundled-plugins.md#jasypt-encryption-plugin) | Encrypts Key Storage and Project configuration data | Built-in
 Webhook | [Run Job](/manual/webhooks/run-job.md) | Runs a job when a webhook event is received | Built In

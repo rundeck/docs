@@ -193,7 +193,7 @@ If you are executing commands across many hundreds or thousands of hosts, the bu
 
 ### Built in SSH plugins
 
-If you are interested in using the built in [SSH plugins](/administration/projects/node-execution/ssh.md), here are some details about how it performs when executing commands across very large numbers of nodes. For these tests, Rundeck was running on an 8 core, 32GB RAM m2.4xlarge AWS EC2 instance.
+If you are interested in using the built in [SSH plugins](/manual/projects/node-execution/ssh.md), here are some details about how it performs when executing commands across very large numbers of nodes. For these tests, Rundeck was running on an 8 core, 32GB RAM m2.4xlarge AWS EC2 instance.
 
 We chose the `rpm -q` command which checks against the rpm database to see if a particular package was installed. For 1000 nodes we saw an average execution of 52 seconds. A 4000 node cluster took roughly 3.5 minutes, and 8000 node cluster about 7 minutes.
 
@@ -206,5 +206,5 @@ It is possible to offload SSL connection processing by using an SSL termination 
 ### Resource provider
 
 Rundeck projects obtain information about nodes via a
-[resource provider](/administration/projects/resource-model-sources/index.md). If your resource provider is a long blocking process (due to slow responses from a backend service), it can slow down or even hang up Rundeck. Be sure to make your resource provider work asynchronously.
+[resource provider](/manual/projects/resource-model-sources/index.md). If your resource provider is a long blocking process (due to slow responses from a backend service), it can slow down or even hang up Rundeck. Be sure to make your resource provider work asynchronously.
 Also, consider using caching when possible.

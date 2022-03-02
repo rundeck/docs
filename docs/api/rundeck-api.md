@@ -5358,7 +5358,7 @@ new execution by ID:
 ## Key Storage ###
 
 Upload and manage public and private key files and passwords.
-For more information see the [Administration - Key Storage](/administration/key-storage/key-storage.md) document.
+For more information see the [Administration - Key Storage](/manual/key-storage/key-storage.md) document.
 
 Keys are stored via Rundeck's *Storage* facility.  This is a path-based interface to manage files.  The underlying storage may be on disk or in a database.
 
@@ -6142,7 +6142,7 @@ The resource model data in the format requested via the `Accept:` header.
 
 The `readme.md` and `motd.md` files,
 which are Markdown formatted and displayed in the Project listing page,
-can be managed via the API. (See [Project Readme.md](/administration/projects/project-readme.md).)
+can be managed via the API. (See [Project Readme.md](/manual/projects/project-readme.md).)
 
 **Request:**
 
