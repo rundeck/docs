@@ -156,7 +156,17 @@ module.exports = [{
         '/administration/security/authorization',
         '/administration/security/acl-policy-editor',
         '/administration/security/ssl',
-        '/administration/security/sso',
+        {
+          title: 'SSO',
+          collapsable: true,
+          path: '/administration/security/sso',
+          sidebarDepth: 1,
+          children: [
+              '/administration/security/sso/azure-sso.md',
+              '/administration/security/sso/okta.md',
+              '/administration/security/sso/ping.md'
+          ]
+        },
         '/administration/security/webapp-http-headers',
         '/administration/security/project-acl',
         '/administration/security/password-security',
