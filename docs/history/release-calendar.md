@@ -27,5 +27,5 @@ Upgrade instructions [can be found here](/upgrading/).
 
 
 ::: warning
-With the release of version 4.0.0 the 3.4.x series was placed into Maintenance Support status. All fixes to the product will be made in the 4.x series.  Critical Security bugs may be back ported to the 3.4.x series as determined by the Rundeck Product Team. 3.4.x series will not be provided back port security fixes after the 1 year anniversary of 4.0.0 on March 15th, 2023. The 3.3.x series will not be provided back port fixes after the 1 year anniversary of 3.4.0 on June 14th, 2022.
+With the release of [version 4.0.0](4_x/version-4.0.0.html) the 3.4.x series was placed into Maintenance Support status. All fixes to the product will be made in the 4.x series.  Critical Security bugs may be back ported to the 3.4.x series as determined by the Rundeck Product Team. 3.4.x series will not be provided back port security fixes after the 1 year anniversary of 4.0.0 on March 15th, 2023. The 3.3.x series will not be provided back port fixes after the 1 year anniversary of 3.4.0 on June 14th, 2022.
 :::

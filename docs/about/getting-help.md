@@ -4,7 +4,7 @@ This documentation is the first stop for help or understanding of Rundeck.  For 
 
 ## Enterprise Support
 
-Rundeck Enterprise is the only way to get professional support from the creators and maintainers of Rundeck. From advice about your Rundeck usage to help with troubleshooting, our support team has you covered. Standard and 24x7 options are available.  If you are interested in getting professional support [Contact Us here](https://www.rundeck.com/contact).
+Rundeck Enterprise or Rundeck Cloud are the only way to get professional support from the creators and maintainers of Rundeck. From advice about your Rundeck usage to help with troubleshooting, our support team has you covered. Standard and 24x7 options are available.  If you are interested in getting professional support [Contact Us here](https://www.rundeck.com/contact).
 
 ## Public Resources
 

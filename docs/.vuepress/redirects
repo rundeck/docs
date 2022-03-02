@@ -14,6 +14,6 @@
 /history/cves/ /history/CVEs/
 /introduction/introduction.html /about/introduction.html
 /introduction/getting-help.html /about/getting-help.html
-/administration/architecture-and-deployment/system-architecture.html /about/enterprise/system-architecture.html
+/administration/architecture-and-deployment/system-architecture.html /about/enterprise/index.html
 /administration/architecture-and-deployment/aws.html /administration/install/aws.html
 /administration/projects/ /manual/projects/

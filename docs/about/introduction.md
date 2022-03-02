@@ -55,7 +55,7 @@ _NOTE: Rundeck Enterprise was recently renamed from Rundeck Pro. You may still s
 - Use any scripting language
 
 Want to learn more or give it a test run?
-[Check out the Learning Page for a Welcome Tutorial](/learning)
+[Check out the Learning Page for a Welcome Tutorial](/learning/)
 
 Already itching to install it? Jump ahead to
-[Installing Rundeck](/manual/03-getting-started.md#download-and-installation).
+[Installing Rundeck](/administration/install/installing-rundeck.md).
