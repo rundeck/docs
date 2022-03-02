@@ -5,6 +5,14 @@ module.exports = [{
   children: [
     '/about/introduction.md',
     {
+       title: 'Rundeck Enterprise',
+       collapsable: true,
+       path: '/about/enterprise/',
+       sidebarDepth: 1,
+       children: [
+         ['/about/enterprise/', 'Overview']
+    ]},
+    {
        title: 'Rundeck Cloud',
        collapsable: true,
        path: '/about/cloud/',
@@ -16,15 +24,6 @@ module.exports = [{
          ['/about/cloud/cloudfaq.md','FAQ']
        ]
     },
-    {
-       title: 'Rundeck Enterprise',
-       collapsable: true,
-       path: '/about/enterprise/',
-       sidebarDepth: 1,
-       children: [
-         ['/about/enterprise/', 'Overview'],
-         ['/about/enterprise/system-architecture.md','Architecture']
-    ]},
     '/about/getting-help.md'
   ]
 }]
