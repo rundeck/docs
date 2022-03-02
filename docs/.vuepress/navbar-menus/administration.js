@@ -20,10 +20,6 @@ module.exports = [
     link: '/administration/security/default-users'
   },
   {
-   text: 'Projects',
-   link: '/administration/projects'
-  },
-  {
     text: 'Enterprise Runner',
     link: '/administration/runner/'
   },

@@ -52,7 +52,8 @@ module.exports = [{
             '/manual/projects/node-execution/ssh',
             '/manual/projects/node-execution/powershell',
             '/manual/projects/node-execution/bastionssh',
-            '/manual/projects/node-execution/openssh'
+            '/manual/projects/node-execution/openssh',
+            '/manual/projects/node-execution/aws-ssm'
           ]
         }
       ]

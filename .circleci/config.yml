@@ -140,7 +140,7 @@ workflows:
           filters:
             branches:
               only:
-                - /4\.[1-9]\..*/
+                - /4\.[0-9]\..*/
             tags:
               only: /^v.*/
       - update_index:

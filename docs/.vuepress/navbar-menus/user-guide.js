@@ -1,6 +1,6 @@
 module.exports = [
   {
-    link: '/manual/projects',
+    link: '/manual/projects/',
     text: 'Projects'
   },
   {
