@@ -19,7 +19,7 @@ jobs:
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
       - run: sudo apt-get update && sudo apt-get install -y apt-transport-https
-      - run: sudo apt-get update && sudo apt-get -y install python3-dev python3-pip libpython-dev
+      - run: sudo apt-get update && sudo apt-get -y install python3-dev python3-pip libpython2-dev
       - run: sudo pip3 install awscli
       - run: npm install
       - save_cache:
