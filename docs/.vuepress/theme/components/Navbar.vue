@@ -2,7 +2,7 @@
   <header class="navbar">
     <div class="banner">
           <p>
-            Rundeck Enterprise is changing names to PagerDuty Process Automation OnPrem.  For more info click  <a href="#">here</a>
+            The <i>Rundeck Enterprise</i> name is changing to <b>PagerDuty Process Automation OnPrem</b>.<br><i>Rundeck Cloud</i> is changing to <b>PagerDuty Runbook Automation</b>. For more info click  <a href="#">here</a>
           </p>
     </div>
     <div class="navbar-content">
