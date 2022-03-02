@@ -54,4 +54,12 @@ By default Microsoft does not send usable group information in the SSO token. To
     rundeck.security.oauth.azure.scope = openid email profile https://graph.microsoft.com/Directory.Read.All
     ```
 
+The Azure Groups plugin uses the MS Graph API endpoint to gather the groups.  By default it will use the endpoint `https://graph.microsoft.com/v1.0/users/`.  For some Azure environments (Government, etc.) an different endpoint may be needed. ([more info](https://docs.microsoft.com/en-us/answers/questions/434905/microsoft-graph-api-for-azure-us-government-plan.html))  
+
+The endpoint can be changed using the following setting:
+
+```
+framework.plugin.UserGroupSource.AzureGroupSource.baseApiEndpoint = NEW_URL
+```
+
 Upon first login to Rundeck using Azure SSO an Azure Admin level user will need to consent to the `Directory.Read.All` permission. Make sure to click the checkbox that asks to consent for the _whole organization_.
