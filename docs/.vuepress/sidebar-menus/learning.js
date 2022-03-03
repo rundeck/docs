@@ -33,11 +33,11 @@ module.exports = [{
       sidebarDepth: 0,
       children: [
         {
-          title: 'Incident Response',
+          title: 'Automated Diagnostics',
           collapsable: true,
           sidebarDepth: 0,
           children: [
-              ['/learning/solutions/auto-incident-kubernetes-logs.md','Auto-Diagnostics - Kubernetes Logs']
+              ['/learning/solutions/auto-incident-kubernetes-logs.md','Kubernetes Logs']
           ]
         }
       ]
