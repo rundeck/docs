@@ -399,7 +399,7 @@ When passed as arguments to Job References, they can only be passed as the value
 
 ### Secure Remote Authentication Options
 
-The built-in [SSH Provider](/administration/projects/node-execution/ssh.md) for node execution allows using passwords for SSH and/or Sudo authentication mechanisms, and the passwords are supplied by Secure Remote Authentication Options defined in a Job.
+The built-in [SSH Provider](/manual/projects/node-execution/ssh.md) for node execution allows using passwords for SSH and/or Sudo authentication mechanisms, and the passwords are supplied by Secure Remote Authentication Options defined in a Job.
 
 Secure Remote Authentication Options have some limitations compared to Plain and Secure options:
 
@@ -439,7 +439,7 @@ So the arguments for the Job Reference might look like this:
 
 ### Secure Options using Key Storage
 
-Secure options can specify a Storage Path in lieu of a default value. This path to the [Key Storage Facility](/administration/key-storage/key-storage.md)
+Secure options can specify a Storage Path in lieu of a default value. This path to the [Key Storage Facility](/manual/key-storage/key-storage.md)
 will be loaded as the option value when one is not supplied.
 
 The path must indicate a stored `password` entry in the storage facility.

@@ -10,4 +10,8 @@ module.exports = [{
       text: 'How To Articles',
       link: '/learning/howto/overview'
   },
+  {
+      text: 'Solutions',
+      link: '/learning/solutions/auto-incident-kubernetes-logs'
+  }
 ]

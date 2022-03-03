@@ -1,6 +1,12 @@
 <template>
   <header class="navbar">
-    <SidebarButton @toggle-sidebar="$emit('toggle-sidebar')" />
+    <div class="banner">
+          <p>
+            The <i>Rundeck Enterprise</i> name is changing to <b>PagerDuty Process Automation OnPrem</b>.<br><i>Rundeck Cloud</i> is changing to <b>PagerDuty Runbook Automation</b>. For more info click  <a href="#">here</a>
+          </p>
+    </div>
+    <div class="navbar-content">
+    <SidebarButton class="sidebar-button" @toggle-sidebar="$emit('toggle-sidebar')"/>
 
     <RouterLink
       :to="$localePath"
@@ -33,8 +39,9 @@
         v-if="isAlgoliaSearch"
         :options="algolia"
       />
-      <SearchBox v-else-if="$site.themeConfig.search !== false && $page.frontmatter.search !== false" />
-      <NavLinks class="can-hide" />
+      <SearchBox v-else-if="$site.themeConfig.search !== false && $page.frontmatter.search !== false"/>
+      <NavLinks class="can-hide"/>
+    </div>
     </div>
   </header>
 </template>
@@ -100,10 +107,23 @@ $navbar-vertical-padding = 0.7rem
 $navbar-horizontal-padding = 1.5rem
 
 .navbar
+  height auto
   padding $navbar-vertical-padding $navbar-horizontal-padding
   line-height $navbarHeight - 1.4rem
   a, span, img
     display inline-block
+  p
+    margin -0.7rem -1.5rem 0.7rem -1.5rem
+    text-align center
+    padding 0 3rem 0 3rem
+  .banner
+    position relative
+    background rgba(6, 172, 56, 0.25)
+    margin 0 -1.5rem 0 -1.5rem
+  .navbar-content
+    position relative
+  .sidebar-button
+    margin-top -0.7rem
   .logo
     height $navbarHeight - 1.4rem
     min-width $navbarHeight - 1.4rem
@@ -122,7 +142,7 @@ $navbar-horizontal-padding = 1.5rem
     font-size 0.9rem
     position absolute
     right $navbar-horizontal-padding
-    top $navbar-vertical-padding
+    top 0
     display flex
     .search-box
       flex: 0 0 auto
@@ -130,7 +150,7 @@ $navbar-horizontal-padding = 1.5rem
 
 @media (max-width: $MQMobile)
   .navbar
-    padding-left 4rem
+    padding-left 0rem
     .can-hide
       display none
     .links

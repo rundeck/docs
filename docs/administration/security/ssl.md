@@ -6,7 +6,7 @@ This document describes how to configure Rundeck for SSL/HTTPS support, and assu
 (1) Before beginning, do a first-run of the launcher, as it will create the base directory for Rundeck and generate configuration files.
 
 ```properties
-cd $RDECK_BASE;  java -jar rundeck-3.0.1.war
+cd $RDECK_BASE;  java -jar {{{rundeckVersion}}}.war
 ```
 
 This will start the server and generate necessary config files. Press control-c to shut down the server after you get below message from terminal:
@@ -94,13 +94,13 @@ RDECK_HTTPS_PORT=1234
 (8) Start the server. For the rundeck launcher, tell it where to read the ssl.properties
 
 ```shell
-java -Drundeck.ssl.config=$RDECK_BASE/server/config/ssl.properties -jar rundeck-3.0.1.war
+java -Drundeck.ssl.config=$RDECK_BASE/server/config/ssl.properties -jar rundeck-{{{rundeckVersionFull}}}.war
 ```
 
 You can change port by adding `-Dserver.https.port`:
 
 ```shell
-java -Drundeck.ssl.config=$RDECK_BASE/server/config/ssl.properties -Dserver.https.port=1234 -jar rundeck-3.0.1.war
+java -Drundeck.ssl.config=$RDECK_BASE/server/config/ssl.properties -Dserver.https.port=1234 -jar rundeck-{{{rundeckVersionFull}}}.war
 ```
 
 If successful, you will see a line indicating the SSl connector has started:
@@ -229,7 +229,7 @@ SSL-Session:
     Protocol  : TLSv1
     Cipher    : ECDHE-RSA-AES128-SHA
     Session-ID: 5E443B400D0D89F1665E451EDCDFF367BC702D008B7ED91FD34C23CF771D29A6
-    Session-ID-ctx: 
+    Session-ID-ctx:
     Master-Key: 0D4E01C9B6B1BD6425CDB718B58B4C1197AEB02DB3E048981EB1FAA13772F8E22257BC10CBAA47FDE676597A7CADA5C1
     Key-Arg   : None
     PSK identity: None

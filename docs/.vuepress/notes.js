@@ -34,7 +34,7 @@ async function main() {
 
     console.log(notes)
 
-    const pathBase = `./docs/history/${argv.milestone.split('.').slice(0,2).concat(['x']).join('_')}/`
+    const pathBase = `./docs/history/${argv.milestone.split('.').slice(0,1).concat(['x']).join('_')}/`
 
     let path
 

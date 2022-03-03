@@ -19,7 +19,7 @@ Date: 2014-10-28
     The built-in SSH execution and SCP file copy
     both now support using stored passwords.
     Note: the Key Storage facility is not encrypted by default, see
-    [Key Storage](/administration/key-storage/key-storage.md).
+    [Key Storage](/manual/key-storage/key-storage.md).
 * Added a new GUI for uploading Passwords and public/private keys
     to the Key Storage facility
 * Bug fixes

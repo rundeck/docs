@@ -9,15 +9,18 @@ Rundeck provides a Web API for use with your applications.
 
 ## API Version Number
 
-| Current  | Minimum |
-|---------|-------------|
-|`{{{ apiVersion }}}` | `{{{ apiMinVersion }}}` |
+| Current | Minimum | Deprecation |
+|---------|-------------|---------|
+|`{{{ apiVersion }}}` | `{{{ apiMinVersion }}}` | `{{{apiDepVersion}}}`
 
 Current
 :   The current version number.
 
 Minimum
 :   Minimum supported version.
+
+Deprecation
+:   Future minimum version.
 
 For information on historical version changes please see [API Version History](/api/rundeck-api-versions.md).  Please note of any [incubating endpoints](/api/rundeck-api-versions.md#incubating_endpoints) that may be subject to change.
 
@@ -74,19 +77,28 @@ The root URL path for all calls to the API in this version is:
 
     $RUNDECK_SERVER_URL/api/2
 
-## XML and JSON
+## JSON Support
 
-The API supports both XML and JSON.  Some import/export features support YAML or `text/plain` formatted documents, but XML and JSON are used for all API-level information.
+
+The API usees JSON for all API-level information.  Some import/export features support YAML, XML, or `text/plain` formatted documents.
 
 As of API version 14, all endpoints support JSON format, with content type `application/json`, with one exception ([/api/V/project/[PROJECT]/jobs/export][/api/V/project/\[PROJECT\]/jobs/export]).
 
 JSON results can be retrieved by sending the HTTP "Accept" header with a `application/json` value.  JSON request content is supported when the HTTP "Content-Type" header specifies `application/json`.
 
-XML results can be retrieved by sending the HTTP "Accept" header with a `application/xml` value.  XML request content is supported when the HTTP "Content-Type" header specifies `application/xml`.
-
 If an "Accept" header is not specified, then the response will be either the same format as the request content (for POST, or PUT requests), or JSON by default.
 
 Some endpoints also support using a `format` query parameter to specify the expected output format.
+
+## XML support
+
+:::deprecated
+XML support is *deprecated* and will be removed in a future version.
+:::
+
+
+XML results can be retrieved by sending the HTTP "Accept" header with a `application/xml` value.  XML request content is supported when the HTTP "Content-Type" header specifies `application/xml`.
+
 
 ## Authentication
 
@@ -161,6 +173,10 @@ Otherwise, if the response is a redirect chain which results in `200 successful`
 The response should set a cookie named `JSESSIONID`.
 
 ## XML Response Format
+
+:::deprecated
+XML support is *deprecated* and will be removed in a future version.
+:::
 
 XML responses will have only the content indicated in the appropriate endpoint documentation.
 
@@ -2492,6 +2508,85 @@ List the scheduled Jobs with their schedule owned by the target cluster server.
 The same format as [Listing Jobs](#listing-jobs).
 
 
+### Set Active Mode for a Cluster Member (Enterprise)
+
+:::enterprise
+:::
+
+Set the Execution Mode for the target cluster member to *Active*.
+
+If the UUID parameter matches the current cluster member, the mode will be changed immedidately, otherwise the status will be `pending`.
+
+**Request**
+
+`POST /api/41/enterprise/cluster/executions/enable`
+
+URL Parameters:
+
+`uuid`
+:    UUID of Member
+
+**Response**
+
+`Content-Type: application/json`
+
+```json
+{
+  "status": "pending",
+  "executionMode": "active",
+  "uuid": "a3de6030-2b7a-47e3-b46f-3e46a11a85d9"
+}
+```
+
+`status`
+:   `pending` indicates the request has been posted, `complete` indicates the request has taken effect already.
+
+`executionMode`
+:   The requested execution mode, either `active` or `passive`
+
+`uuid`
+:   The target cluster member UUID
+
+### Set Passive Mode for a Cluster Member (Enterprise)
+
+:::enterprise
+:::
+
+Set the Execution Mode for the target cluster member to *Passive*.
+
+If the UUID parameter matches the current cluster member, the mode will be changed immedidately, otherwise the status will be `pending`.
+
+**Request**
+
+`POST /api/41/enterprise/cluster/executions/disable`
+
+
+URL Parameters:
+
+`uuid`
+:    UUID of Member
+
+**Response**
+
+`Content-Type: application/json`
+
+```json
+{
+  "status": "pending",
+  "executionMode": "passive",
+  "uuid": "a3de6030-2b7a-47e3-b46f-3e46a11a85d9"
+}
+```
+
+`status`
+:   `pending` indicates the request has been posted, `complete` indicates the request has taken effect already.
+
+`executionMode`
+:   The requested execution mode, either `active` or `passive`
+
+`uuid`
+:   The target cluster member UUID
+
 ## ACLs
 
 Manage the system system ACL policy files stored in the database.
@@ -3080,8 +3175,8 @@ Delete multiple job definitions at once.
 
 Both of the following are valid options for doing a bulk delete of jobs. However, if you are hoping to pass a body with the request, then you must use the POST method since the DELETE method does not allow for request bodies.
 
-    DELETE /api/5/jobs/delete
-    POST /api/5/jobs/delete
+    DELETE /api/11/jobs/delete
+    POST /api/11/jobs/delete
 
 
 Either Query parameters:
@@ -4327,7 +4422,7 @@ Get detail about the node and step state of an execution by ID. The execution ca
 
 **Request:**
 
-    GET /api/10/execution/[ID]/state
+    GET /api/11/execution/[ID]/state
 
 Specify expected output format with the `Accept: ` HTTP header. Supported formats:
 
@@ -4702,10 +4797,10 @@ Get the output for an execution by ID.  The execution can be currently running o
 
 **Request:**
 
-    GET /api/5/execution/[ID]/output
-    GET /api/10/execution/[ID]/output/node/[NODE]
-    GET /api/10/execution/[ID]/output/node/[NODE]/step/[STEPCTX]
-    GET /api/10/execution/[ID]/output/step/[STEPCTX]
+    GET /api/11/execution/[ID]/output
+    GET /api/11/execution/[ID]/output/node/[NODE]
+    GET /api/11/execution/[ID]/output/node/[NODE]/step/[STEPCTX]
+    GET /api/11/execution/[ID]/output/step/[STEPCTX]
 
 The log output for each execution is stored in a file on the Rundeck server, and this API endpoint allows you to retrieve some or all of the output, in several possible formats: json, XML, and plain text.  When retrieving the plain text output, some metadata about the log is included in HTTP Headers.  JSON and XML output formats include metadata about each output log line, as well as metadata about the state of the execution and log file, and your current index location in the file.
 
@@ -4775,13 +4870,13 @@ To use a URL parameter, add a `?format=` parameter to your request.
 
 E.g.:
 
-    GET /api/5/execution/3/output?format=json
+    GET /api/11/execution/3/output?format=json
 
 To use a URL extension, add a ".[format]" to the end of the URL, but prior to any URL parameters.
 
 E.g.:
 
-    GET /api/5/execution/3/output.xml?offset=120
+    GET /api/11/execution/3/output.xml?offset=120
 
 #### Output Format using Accept Header
 
@@ -4793,7 +4888,7 @@ You can also specify the format using Content Negotiation techniques by includin
 
 E.g.:
 
-    GET /api/5/execution/3/output
+    GET /api/11/execution/3/output
     Accept: */xml
 
 #### Output Content
@@ -4945,8 +5040,8 @@ Get the metadata associated with workflow step state changes along with the log 
 
 **Request:**
 
-    GET /api/10/execution/[ID]/output/state
-    GET /api/10/execution/[ID]/output/state?stateOnly=true
+    GET /api/11/execution/[ID]/output/state
+    GET /api/11/execution/[ID]/output/state?stateOnly=true
 
 This API endpoint provides the sequential log of state changes for steps and nodes, optionally interleaved with the actual log output.
 
@@ -5003,6 +5098,69 @@ Optional Parameters:
 The `[abort-state]` will be one of: "pending", "failed", or "aborted".
 
 If the `[abort-state]` is "failed", then `[reason]` will be a textual description of the reason.
+
+
+
+### Check Execution Result Data Availability [Enterprise]
+
+::: enterprise  
+:::
+
+Check whether the execution has Result Data created by a Job using the [Result Data feature](/manual/execution-lifecycle/result-data.html).
+
+**Request:**
+
+    GET /api/40/execution/[ID]/result/dataAvailable
+
+**Response:**
+
+* `404 Not found` - no data can be retrieved for the Execution
+
+Successful response:
+
+```json
+{
+  "loadable": true,
+  "message": "OK"
+}
+```
+
+### Get Execution Result Data [Enterprise]
+
+::: enterprise  
+:::
+
+
+Retrieve the Result Data created by a Job using the [Result Data feature](/manual/execution-lifecycle/result-data.html) in JSON format.
+
+:::tip
+In a Rundeck Cluster, Result Data may not be locally available and must be retrieved by the server asynchronously before it can be returned.
+
+You can handle this situation in two ways: either use the `wait=true` URL parameter, to indicate that the API request should block until the data is retrieved (waiting up to 10 seconds), or if the response has HTTP status `202` it means that the asynchronous request was started but has not completed yet and you can retry the same API request shortly.
+:::
+
+**Request:**
+
+    GET /api/40/execution/[ID]/result/data
+
+Optional Query Parameters:
+
+* `wait`: true/false - if true and the data is not immediately available, the response will wait until the data is retrieved, or a timeout occurs. Otherwise the response may return 202 status if data must be retrieved first.
+
+**Responses:**
+
+* `404 Not Found` - data was not available
+* `202 Accepted` - request was accepted but not fulfilled. This indicates the data will be retrieved asynchronously before it can be made available. Retry the request later to retrieve the data. See also: the `wait` parameter.
+
+Sucessful response:
+
+```
+200 OK
+Content-Type: application/json
+
+...JSON data...
+```
+
 
 ## Adhoc
 
@@ -5200,7 +5358,7 @@ new execution by ID:
 ## Key Storage ###
 
 Upload and manage public and private key files and passwords.
-For more information see the [Administration - Key Storage](/administration/key-storage/key-storage.md) document.
+For more information see the [Administration - Key Storage](/manual/key-storage/key-storage.md) document.
 
 Keys are stored via Rundeck's *Storage* facility.  This is a path-based interface to manage files.  The underlying storage may be on disk or in a database.
 
@@ -5876,7 +6034,7 @@ A GET request returns all the resources for the project.
 
 **Request:**
 
-    GET /api/2/project/[PROJECT]/resources
+    GET /api/11/project/[PROJECT]/resources
 
 See [Listing Resources](#listing-resources).
 
@@ -5984,7 +6142,7 @@ The resource model data in the format requested via the `Accept:` header.
 
 The `readme.md` and `motd.md` files,
 which are Markdown formatted and displayed in the Project listing page,
-can be managed via the API. (See [Project Readme.md](/administration/projects/project-readme.md).)
+can be managed via the API. (See [Project Readme.md](/manual/projects/project-readme.md).)
 
 **Request:**
 
@@ -7342,8 +7500,6 @@ ok
 ::: enterprise  
 :::
 
-::: incubating
-:::
 
 Manage System and Project Calendars in Rundeck Enterprise.
 
@@ -7353,13 +7509,10 @@ Get all calendars at system level.
 ::: enterprise  
 :::
 
-::: incubating
-:::
-
 
 **Request:**
 
-    GET  /api/V/incubating/system/calendars
+    GET  /api/41/system/calendars
 
 **Response:**
 Content-Type: application/json
@@ -7389,13 +7542,10 @@ Get all calendars at project level
 ::: enterprise  
 :::
 
-::: incubating
-:::
-
 
 **Request:**
 
-    GET  /api/V/incubating/project/[PROJECT]/calendars
+    GET  /api/41/project/[PROJECT]/calendars
 
 **Response:**
 Content-Type: application/json
@@ -7429,13 +7579,10 @@ Create or update a calendar at system level
 ::: enterprise  
 :::
 
-::: incubating
-:::
-
 
 **Request:**
 
-    POST  /api/V/incubating/system/calendars
+    POST  /api/41/system/calendars
 
 Request Content:
 `Content-Type: application/json`
@@ -7460,7 +7607,7 @@ Request Content:
   }
 ```
 
-*if the ID exists, it will update the existing calendar, otherwise it will be created it
+* if the ID exists, it will update the existing calendar, otherwise a new one will be created.
 
 Example:
 
@@ -7489,13 +7636,10 @@ Create or update a calendar at project level
 ::: enterprise  
 :::
 
-::: incubating
-:::
-
 
 **Request:**
 
-    POST  /api/V/incubating/project/[PROJECT]/calendars
+    POST  /api/41/project/[PROJECT]/calendars
 
 Request Content:
 `Content-Type: application/json`
@@ -7526,7 +7670,7 @@ Request Content:
   }
 ```
 
-*if the ID exists, it will update the existing calendar, otherwise it will be created it
+* if the ID exists, it will update the existing calendar, otherwise a new one will be created.
 
 Example:
 
@@ -7563,50 +7707,29 @@ Deletes a calendar at project level
 ::: enterprise  
 :::
 
-::: incubating
-:::
-
 
 **Request:**
 
-    DELETE  /api/V/incubating/project/[PROJECT]/calendars/[ID]
+    DELETE  /api/41/project/[PROJECT]/calendars/[ID]
 
-Request Content:
-`NO CONTENT NEEDED`
+**Response:**
 
+    204 No Content
 
-Example:
-
-```json
-{
-    "msg": "Deleted calendar"
-  }
-  ```
 ### Delete System Calendar
 Deletes a calendar at system level
 
 ::: enterprise  
 :::
 
-::: incubating
-:::
-
 
 **Request:**
 
-    DELETE  /api/V/incubating/system/calendars/[ID]
+    DELETE  /api/41/system/calendars/[ID]
 
-Request Content:
-`NO CONTENT NEEDED`
+**Response:**
 
-
-Example:
-
-```json
-{
-    "msg": "Deleted calendar"
-  }
-  ```
+    204 No Content
 
 ## License (Enterprise)
 
@@ -7619,7 +7742,7 @@ Returns metadata about the current License for Rundeck Enterprise.
 
 **Request:**
 
-    GET /api/V/incubating/enterprise/license
+    GET /api/41/enterprise/license
 
 **Response:**
 
@@ -7667,7 +7790,7 @@ Uploads a license key for Rundeck Enterprise.
 
 **Request:**
 
-    POST /api/V/incubating/enterprise/license
+    POST /api/41/enterprise/license
     Content-Type: application/x-rundeck-license
 
 Request Content:
@@ -7693,6 +7816,12 @@ Content-Type: `application/json`
 [/api/V/config/refresh][]
 
 * `POST` [Refresh config settings](#config-refresh)
+
+
+[/api/V/enterprise/license][]
+
+* `GET` [View License](#view-license)
+* `POST` [Set License Key](#set-license-key)
 
 [/api/V/execution/\[ID\]][]
 
@@ -7853,6 +7982,14 @@ Content-Type: `application/json`
 * `POST` [Create a Project ACL Policy](#create-a-project-acl-policy)
 * `PUT` [Update a Project ACL Policy](#update-a-project-acl-policy)
 * `DELETE` [Delete a Project ACL Policy](#delete-a-project-acl-policy)
+
+
+[/api/V/project/\[PROJECT\]/calendars][]
+
+* `GET` [List Project Calendars](#list-project-calendars)
+* `POST` [Create/Update Project Calendars](#create-update-project-calendar)
+* `DELETE` [Delete Project Calendars](#delete-project-calendar)
+
 
 [/api/V/project/\[PROJECT\]/config][]
 
@@ -8039,6 +8176,12 @@ Content-Type: `application/json`
 * `PUT` [Update an ACL Policy](#update-an-acl-policy)
 * `DELETE` [Delete an ACL Policy](#delete-an-acl-policy)
 
+[/api/V/system/calendars][]
+
+* `GET` [List System Calendars](#list-system-calendars)
+* `POST` [Create/Update System Calendars](#create-update-system-calendar)
+* `DELETE` [Delete System Calendars](#delete-system-calendar)
+
 [/api/V/system/executions/enable][]
 
 * `POST` [Set Active Mode](#set-active-mode)
@@ -8110,24 +8253,8 @@ Content-Type: `application/json`
 
 ### Incubating
 
-[/api/V/incubating/enterprise/license][]
 
-* `GET` [View License](#view-license)
-* `POST` [Set License Key](#set-license-key)
-
-
-[/api/V/incubating/project/\[PROJECT\]/calendars][]
-
-* `GET` [List Project Calendars](#list-project-calendars)
-* `POST` [Create/Update Project Calendars](#create-update-project-calendar)
-* `DELETE` [Delete Project Calendars](#delete-project-calendar)
-
-[/api/V/incubating/system/calendars][]
-
-* `GET` [List System Calendars](#list-system-calendars)
-* `POST` [Create/Update System Calendars](#create-update-system-calendar)
-* `DELETE` [Delete System Calendars](#delete-system-calendar)
-
+(none)
 
 [ACLPOLICY]:../manual/document-format-reference/aclpolicy-v10.html
 

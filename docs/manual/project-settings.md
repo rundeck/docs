@@ -35,6 +35,10 @@ Select the Default Node Executor you wish to use for all remote Nodes for the pr
 
 You can install more types of Node Executors as plugins, see [Node Execution Plugins](/manual/job-plugins.md#node-execution).
 
+::: tip
+When using SSH node executor and SCP file copier, the properties will be shared between the file copier and the node executor, so any change made for the node executor will affect the file copier and vice versa. If a more specific configuration is required, this can be done directly in the node definition.
+:::
+
 ### Default File Copier Configuration
 
 When Rundeck executes a script on a node, it does so by first copying the script as a file to the node, via a "File Copier". (It then uses a "Node Executor" to execute the script like a command.)
@@ -48,6 +52,10 @@ Select the Default File Copier you wish to use for all remote Nodes for the proj
 
 You can install more types of File Copiers as plugins, see [Node Execution Plugins](/manual/job-plugins.md#node-execution).
 
+::: tip
+When using SCP file copier and SSH node executor, the properties will be shared between the file copier and the node executor, so any change made for the file copier will affect the node executor and vice versa. If a more specific configuration is required, this can be done directly in the node definition.
+:::
+
 
 ## Edit Nodes...
 This section lets you add and modify Node Resource Model Sources for the project.
@@ -55,7 +63,7 @@ These sources contain the node definitions for the project.
 A default source will be defined listing the Rundeck Host as a node as a result of the initial project creation.
 You can configure additional Node Sources to gather all the node information relevant to this project.
 
-See [Node Sources](/administration/projects/resource-model-sources/) for more details.
+See [Node Sources](/manual/projects/resource-model-sources/) for more details.
 
 ## Node Enhancers
 
@@ -72,21 +80,21 @@ The Message of the Day is a way to communicate important messages to Project use
 
 ![Message of the Day](~@assets/img/motd-example.png)
 
-More info in the [Projects Section](/administration/projects/project-motd.html)
+More info in the [Projects Section](/manual/projects/project-motd.html)
 
 ## Setup SCM...
 
-More info in the [Projects Section > SCM](/administration/projects/scm/)
+More info in the [Projects Section > SCM](/manual/projects/scm/)
 
 ## Export Archive...
 Use this to export the Project to an Archive file for backup or migration purposes.
 
-More info in the [Projects Section](/administration/projects/project-archive.html#export-archive).
+More info in the [Projects Section](/manual/projects/project-archive.html#export-archive).
 
 ## Import Archive...
 Use this to import a Project archive file.
 
-More info in the [Projects Section](/administration/projects/project-archive.html#import-archive).
+More info in the [Projects Section](/manual/projects/project-archive.html#import-archive).
 
 ## Delete Project...
 Use this to delete the project.  Note it will delete all associated jobs, node sources, etc.
@@ -94,4 +102,4 @@ Use this to delete the project.  Note it will delete all associated jobs, node s
 ## Plugins Control
 Plugins Control can be used to selectively enable/disable plugins available to this project.
 
-More info in the [Projects Section](/administration/projects/plugin-control.html).
+More info in the [Projects Section](/manual/projects/plugin-control.html).

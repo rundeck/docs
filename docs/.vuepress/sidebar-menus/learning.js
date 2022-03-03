@@ -28,6 +28,21 @@ module.exports = [{
       ]
     },
     {
+      title: 'Solutions',
+      collapsable: true,
+      sidebarDepth: 0,
+      children: [
+        {
+          title: 'Automated Diagnostics',
+          collapsable: true,
+          sidebarDepth: 0,
+          children: [
+              ['/learning/solutions/auto-incident-kubernetes-logs.md','Automated Diagnostics - Kubernetes Logs']
+          ]
+        }
+      ]
+    },
+    {
       title: 'How To',
       collapsable: true,
       path: '/learning/howto/overview',
@@ -77,7 +92,8 @@ module.exports = [{
               '/learning/howto/using-ansible.md',
               '/learning/howto/config-sn-nodesource.md',
               '/learning/howto/configure-gcp-plugins.md',
-              '/learning/howto/sn-midserver.md'
+              '/learning/howto/sn-midserver.md',
+              '/learning/howto/rundeck-exporter.md'
           ]
         },
         {
@@ -99,5 +115,20 @@ module.exports = [{
         }
       ]
     },
+    {
+      title: 'Solutions',
+      collapsable: true,
+      sidebarDepth: 0,
+      children: [
+        {
+          title: 'Incident Response',
+          collapsable: true,
+          sidebarDepth: 0,
+          children: [
+              ['/learning/solutions/auto-incident-kubernetes-logs.md','Auto-Diagnostics - Kubernetes Logs']
+          ]
+        }
+      ]
+    }
   ]
 }]

@@ -12,7 +12,7 @@ partners to enhance Rundeck's integration capabilities.
 Below is a list of the new integration features included in 3.3.3:
 
 A full suite of plugins for Datadog.  It's now possible to use
-[Datadog as a Node Source](/administration/projects/resource-model-sources/datadog.md)
+[Datadog as a Node Source](/manual/projects/resource-model-sources/datadog.md)
 for your infrastructure, Send Datadog event payloads as a [Workflow](/manual/workflow-steps/datadog.md)[/Node Step](/manual/node-steps/datadog.md) or
 [Notification](/manual/notifications/datadog.md), and [Mute/Unmute hosts](/manual/node-steps/datadog.md#mute-host) during a workflow
 

@@ -10,7 +10,7 @@ Several fundamental concepts underlie and drive the Rundeck system.
 If you are a new user, knowing about them will
 help you use or integrate Rundeck into your environment.
 
-- **Projects**: A _[project](/administration/projects/index.md)_ is a place to separate management activity.
+- **Projects**: A _[project](/manual/projects/index.md)_ is a place to separate management activity.
   All Rundeck activities occur within the context of a project.
   Multiple projects can be maintained on the same Rundeck server.
 - **Jobs** : A _job_ encapsulates a sequence of steps, job options and nodes where the steps execute. See [Jobs](/manual/04-jobs.md) and [Creating Jobs](/manual/creating-jobs.md).
@@ -68,7 +68,7 @@ you with a dialog to create one. Press the "New Project" button to create
 a project.
 Fill the project creation form with a desired name. Project names can
 contain letters and numbers, but do not use spaces or special characters.
-The [project](/administration/projects/index.md)
+The [project](/manual/projects/index.md)
 section
 will teach you how to add Nodes, automate the creation and maintenance of
 Rundeck projects.
