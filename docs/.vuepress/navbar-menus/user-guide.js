@@ -32,7 +32,7 @@ module.exports = [
     text: 'Calendars'
   },
   {
-    link: '/manual/12-webhooks',
+    link: '/manual/webhooks',
     text: 'Webhooks'
   },
   {

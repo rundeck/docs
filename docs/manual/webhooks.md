@@ -12,6 +12,28 @@ Click on `Webhooks` to go to the webhook administration page to add, configure, 
 
 The [Webhook API](/api/rundeck-api.md#webhooks-beta) or using the rd cli tool can also manage webhooks.
 
+### Webhook HTTP Authorization String
+
+Webhooks have an an optional HTTP Authorization String feature, when used, can increase the the security of the webhook.  To enable the feature check the _Use Authorization Heeader_ box when creating or editing a webhook.  When the Webhook is saved a box will be shown below the check box with the Authorization string assigned to the webhook.  **Note: This will only be shown once!** After navigating away from the webhook it will no longer be visible.
+
+Include the string as an `Authorization` header when making a call to the webhook.
+
+```
+curl --location --request POST 'http://your.rundeck.domain:4440/api/40/webhook/wvNE6e1R06eqCQSl5jwXgXy3IUgt5vxS#Advanced_Webhook' \
+--header 'Authorization: the-authorization-string' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "messages": {
+        "field1": "value1",
+        "sub1": {
+            "subfield": "subval"
+        }
+    }
+}'
+```
+
+It is possible to regenerate the Authorization String by clicking the **Regenerate** button on the Webhook.  The new value will be displayed after saving.
+
 ### Webhook Handlers
 
 Webhook Event Handlers are custom handlers that can be developed as [Rundeck Plugins](/developer/16-webhook-plugins.md) to interact with external systems.

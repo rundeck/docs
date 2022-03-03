@@ -181,10 +181,10 @@ module.exports = [{
     {
       title: 'Webhooks',
       collapsable: true,
-      path: '/manual/12-webhooks',
+      path: '/manual/webhooks',
       sidebarDepth: 2,
       children: [
-        '/manual/12-webhooks',
+        '/manual/webhooks',
         {
           title: 'Webhooks Handlers',
           sidebarDepth: 2,
