@@ -37,7 +37,8 @@ module.exports = [{
           collapsable: true,
           sidebarDepth: 0,
           children: [
-              ['/learning/solutions/auto-incident-kubernetes-logs.md','Automated Diagnostics - Kubernetes Logs']
+            ['/learning/solutions/auto-incident-kubernetes-logs.md','General Purpose: Kubernetes Logs'],
+            ['/learning/solutions/auto-diagnostics-github-script.md','General Purpose: Raw Scripts']
           ]
         }
       ]
