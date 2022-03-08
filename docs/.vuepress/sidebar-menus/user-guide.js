@@ -149,7 +149,6 @@ module.exports = [{
           '/manual/system-configs',
           '/manual/user-management/user-mgmt',
           '/manual/user-management/password-reset',
-          '/manual/user-management/user-classes',
           '/manual/system-report',
           '/manual/configuration-mgmt/configmgmt'
       ]
