@@ -28,22 +28,6 @@ module.exports = [{
       ]
     },
     {
-      title: 'Solutions',
-      collapsable: true,
-      sidebarDepth: 0,
-      children: [
-        {
-          title: 'Automated Diagnostics',
-          collapsable: true,
-          sidebarDepth: 0,
-          children: [
-            ['/learning/solutions/auto-incident-kubernetes-logs.md','General Purpose: Kubernetes Logs'],
-            ['/learning/solutions/auto-diagnostics-github-script.md','General Purpose: Raw Scripts']
-          ]
-        }
-      ]
-    },
-    {
       title: 'How To',
       collapsable: true,
       path: '/learning/howto/overview',
@@ -122,11 +106,12 @@ module.exports = [{
       sidebarDepth: 0,
       children: [
         {
-          title: 'Incident Response',
+          title: 'Automated Diagnostics',
           collapsable: true,
           sidebarDepth: 0,
           children: [
-              ['/learning/solutions/auto-incident-kubernetes-logs.md','Auto-Diagnostics - Kubernetes Logs']
+            ['/learning/solutions/auto-incident-kubernetes-logs.md','General Purpose: Kubernetes Logs'],
+            ['/learning/solutions/auto-diagnostics-github-script.md','General Purpose: Raw Scripts']
           ]
         }
       ]
