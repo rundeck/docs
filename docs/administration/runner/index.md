@@ -64,6 +64,30 @@ It is possible to edit each project Node Filter individually if needed.  Use the
 
 Runner Logs are located in the `./runner/logs` folder under the folder where the jar was executed from.  The `runner.log` file contains operational and important messages about the runner.  `operations.log` tracks an operation starts and if it succeeds or fails.
 
+### Proxying Runner connections
+Using a HTTP/HTTPS proxy with a Runner.
+Runners can be configured to connect through a HTTP/HTTPS proxy. Proxies are commonly used to centralize and secure outbound traffic from the datacenter to internet services. The proxy configuration is optional and is added as java command line arguments when the runner process is started. 
+
+#### Proxy configuration without proxy authentication
+The following example will allow the runner to connect through the secure company proxy with address wp.acme.corp. 
+
+```
+java -Dmicronaut.http.client.proxy-type=http -Dmicronaut.http.client.proxy-address=wp.acme.corp:443 -jar pdrunner.jar
+```
+
+`-Dmicronaut.http.client.proxy-type` is set to `http` 
+`-Dmicronaut.http.client.proxy-address` is set to the secure proxy company address.
+
+#### Proxy configuration with proxy authentication
+The following example adds basic auth proxy configuration to the runner. The proxy-type and proxy-address settings are the same as the unauthenticated access example.
+
+```
+java -Dmicronaut.http.client.proxy-type=http -Dmicronaut.http.client.proxy-address=wp.acme.corp:443 -Dmicronaut.http.client.proxy-username=proxyUsernameString -Dmicronaut.http.client.proxy-password=proxyPassString -jar pdrunner.jar
+```
+
+`-Dmicronaut.http.client.proxy-username` is set to the user that is allowed to connect through the secure proxy. 
+`-Dmicronaut.http.client.proxy-password` is set to the secure proxy user password.
+
 
 ## FAQ
 
