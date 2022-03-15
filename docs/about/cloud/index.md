@@ -18,7 +18,7 @@ Rundeck Cloud will take care of security patching, protection, monitoring, and e
 
 ## Getting access
 
-Rundeck Cloud can be evaluated and purchased under the Automation category [here](https://www.pagerduty.com/pricing/). PagerDuty and Rundeck Cloud accounts are separate at the moment,however, Single Sign On (ex. Okta or Azure AD) for both products can be configured resulting in a unified login experience. [Read the doc](/docs/administration/security/sso.md) on how to configure SSO with Rundeck.
+Rundeck Cloud can be evaluated and purchased under the Automation category [here](https://www.pagerduty.com/pricing/). PagerDuty and Rundeck Cloud accounts are separate at the moment,however, Single Sign On (ex. Okta or Azure AD) for both products can be configured resulting in a unified login experience. [Read the doc](/administration/security/sso.md) on how to configure SSO with Rundeck.
 
 ## Rundeck Cloud and Rundeck Enterprise differences
 
@@ -26,7 +26,7 @@ Rundeck Cloud and Rundeck Enterprise are 99% the same in terms of features. Howe
 
 ### User roles and classes
 
-The Opsadmin and FullAdmin roles are not available in Rundeck Cloud, and a user cannot assign those user classes. The highest privileged user role is the AppAdmin which allows full access to manage content (like projects, jobs, node sources etc) but cannot change any infrastructure configuration for the customer account instance. [Read more](/docs/administration/security/default-users.md) about the different roles.
+The Opsadmin and FullAdmin roles are not available in Rundeck Cloud, and a user cannot assign those user classes. The highest privileged user role is the AppAdmin which allows full access to manage content (like projects, jobs, node sources etc) but cannot change any infrastructure configuration for the customer account instance. [Read more](/administration/security/default-users.md) about the different roles.
 
 ### Job execution
 
@@ -37,7 +37,7 @@ Plugin job steps generally execute in Rundeck Cloud. However, job steps that imp
 Currently, Rundeck Cloud can only connect to Cloud based keystore providers (Vault, Thycotic, CyberArk have SaaS solutions) with Rundeck Cloud keystore plugins. Rundeck Cloud keystore plugins have no connectivity to on-premise keystores.
 
 #### Runner administration
-[Read the Runner docs](/docs/administration/runner/index.md) about how to install, configure and manage the Runner. 
+[Read the Runner docs](/administration/runner/index.md) about how to install, configure and manage the Runner. 
 
 #### APIs
 

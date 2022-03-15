@@ -100,7 +100,7 @@ At this time, the Runner will execute Node Executor and File Copier steps.  This
 
 **Do Runners participate in node discovery?**
 
-Not at this time, but it is possible with some custom scripting and using the [APIs](https://docs.rundeck.com/docs/api/rundeck-api.html#updating-and-listing-resources-for-a-project) it is possible to update the node lists remotely in Rundeck. 
+Not at this time, but it is possible with some custom scripting and using the [APIs](/api/rundeck-api.md#updating-and-listing-resources-for-a-project) it is possible to update the node lists remotely in Rundeck. 
 
 **Can multiple Runners run in parallel?**
 
