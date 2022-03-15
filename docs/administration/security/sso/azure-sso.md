@@ -4,7 +4,7 @@ Rundeck Enterprise can be configured to authenticate using Azure Active Director
 
 To configure your Rundeck with SSO from Azure Active Directory you will need to register a new application and gather some configuration information.
 
-## Configuring Azure Active Diretory
+## Configuring Azure Active Directory
 
 1. Navigate to the Azure Active Directory page
 1. Click on the **App Registrations** link
