@@ -11,7 +11,7 @@ Rundeck Enterprise or Rundeck Cloud are the only way to get professional support
 Sometimes questions have already been answered use these resources to engage with the Rundeck community.
 
 ### Rundeck Office Hours
-Live Rundeck support on the first Thursday of every month. Deep dive product demos and a panel of technical experts to support the Rundeck community. [Register today](https://www.pagerduty.com/resources/webinar/rundeck-office-hours-march10/).
+Live Rundeck support on the first Thursday of every month. Deep dive product demos and a panel of technical experts to support the Rundeck community. [Register today](https://www.pagerduty.com/resources/webinar/rundeck-office-hours/).
 
 ### Open Discussion Q&A
 - [https://stackoverflow.com/questions/tagged/rundeck](https://stackoverflow.com/questions/tagged/rundeck)
