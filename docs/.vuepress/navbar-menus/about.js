@@ -14,5 +14,9 @@ module.exports = [
   {
     text: 'Getting Help',
     link: '/about/getting-help'
+  },
+  {
+    text: 'Licensing',
+    link: '/about/licensing'
   }
 ]
