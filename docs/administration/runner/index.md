@@ -97,3 +97,11 @@ This feature is intended to be used in situations where execution of Node Steps 
 **Does this work for all communication into the remote data center?**
 
 At this time, the Runner will execute Node Executor and File Copier steps.  This includes node steps such as Remote Command, Inline Script, Script File, and Copy File, as well as commands executed from the Commands tab. Node Sources, Health Checks, and other communication are not included in this version of the Runner.
+
+**Do Runners participate in node discovery?**
+
+Not at this time, but it is possible with some custom scripting and using the [APIs](https://docs.rundeck.com/docs/api/rundeck-api.html#updating-and-listing-resources-for-a-project) it is possible to update the node lists remotely in Rundeck. 
+
+**Can multiple Runners run in parallel?**
+
+Yes, multiple runners can be configured for the same project. If multiple runners have the same node scope, they race to retrieve the relevant task list. Multiple runners can be used to increase scale or add more redundancy in the automation architecture.
