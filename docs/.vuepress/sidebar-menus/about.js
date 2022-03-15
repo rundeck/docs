@@ -24,6 +24,7 @@ module.exports = [{
          ['/about/cloud/cloudfaq.md','FAQ']
        ]
     },
-    '/about/getting-help.md'
+    '/about/getting-help.md',
+    '/about/licensing.md'
   ]
 }]
