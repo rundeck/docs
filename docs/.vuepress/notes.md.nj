@@ -13,13 +13,13 @@ Check out the new features and enhancements for Rundeck Enterprise and Rundeck C
 ## Enterprise Updates
 
 {% for pull in enterprise.pulls -%}
-* {{ pull.title | replace(r/RUN-[0-9]*:?\s?/g, "") | replace(r/RDCLOUD-[0-9]*:?\s?/g, "") }}
+* {{ pull.title | replace(r/RUN-[0-9]*:?\s?/g, "") | replace(r/RCLOUD-[0-9]*:?\s?/g, "") }}
 {% endfor %}
 
 ## Core Product Updates
 
 {% for pull in core.pulls -%}
-* [{{ pull.title | replace(r/RUN-[0-9]*:?\s?/g, "") | replace(r/RDCLOUD-[0-9]*:?\s?/g, "") }}]({{pull.html_url}})
+* [{{ pull.title | replace(r/RUN-[0-9]*:?\s?/g, "") | replace(r/RCLOUD-[0-9]*:?\s?/g, "") }}]({{pull.html_url}})
 {% endfor %}
 
 
