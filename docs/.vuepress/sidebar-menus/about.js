@@ -18,10 +18,7 @@ module.exports = [{
        path: '/about/cloud/',
        sidebarDepth: 1,
        children: [
-         ['/about/cloud/', 'Overview'],
-         ['/about/cloud/cloudjobexec.md', 'Job Execution'],
-         ['/about/cloud/cloudusermgmt.md','User Management'],
-         ['/about/cloud/cloudfaq.md','FAQ']
+         ['/about/cloud/', 'Overview']
        ]
     },
     '/about/getting-help.md',
