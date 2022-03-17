@@ -2,6 +2,8 @@
 
 Rundeck Cloud is a fully managed SaaS providing online secure access to the latest commercial Rundeck feature set.
 
+![Cloud architecture](~@assets/img/ra-diagram.png)
+
 ## Core value of Rundeck Cloud 
 Organizations adopting cloud are looking for ways to stay nimble while improving system availability, quality of operations, and keeping control over costs. With Rundeck Cloud, platform engineering and SRE teams are able to standardize and automate cloud ops.
 
