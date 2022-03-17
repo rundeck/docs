@@ -6,9 +6,64 @@ Release Date: March 23rd, 2022
 - [Download Rundeck](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
 
-## Overview
+# Rundeck 4.0 Release Notes
 
-Check out the new features and enhancements for Rundeck Enterprise and Rundeck Community included in this release.
+## Rundeck Enterprise has a new Name
+
+With the introduction of version 4.0 the Rundeck Enterprise version will be renamed to _PagerDuty Process Automation OnPrem_.  The Rundeck Cloud version announced late in 2021 will be known as _PagerDuty Runbook Automation._  The Open Source version will continue to be _Rundeck._  The renames will take some time to implement, so bear with us as we update pages, documentation, and other areas of our new ecosystem.
+
+## Version Cadence
+
+Starting with 4.0 the product will be following a more traditional Major/Minor/Patch semantic versioning system. Previously, iterative releases were increasing on the 3rd (Patch) number.  Going forward those same releases will be iterating on the 2nd (minor) number.  This change will allow us greater flexibility to issue minor/quick patches when the need arises and align better with industry standards.
+
+## Enterprise Runner
+
+With version 4.0 the [Enterprise Runner](/administration/runner/) will be Generally Available. The Enterprise Runner is built to meet the latest zero-trust security models. The Runner is deployed behind the firewall where it securely connects to nodes and executes automation tasks within the network zone. It calls back to the cluster endpoint via HTTPS to fetch the task list. This deployment model eliminates the need for SSH tunnels between zones.
+
+## Enhanced Security Features
+
+A variety of new features will help enhance the security of your Automation solution.
+
+* [User Class Management](/manual/user-management/user-classes.html#overview)
+* [Enhanced Webhook Security](/manual/webhooks.html#webhook-http-authorization-string) with Authorization strings that can be regenerated and provide another layer of security.
+* [Password Complexity ](/administration/security/password-security.html)can be enabled for [User Manager](/manual/user-management/user-mgmt.html) to encourage local users to use more secure passwords.  Complexity can be set by length and guessability.
+* [Password Reset by Email](/manual/user-management/password-reset.html) is now available for local users from [User Manager](/manual/user-management/user-mgmt.html) systems with email notifications configured.  Instead of setting a user’s password this will send them a 1 time link to set their own password.
+* [Failed Login Rate Limiting](/administration/security/ratelimiting.html) will help prevent brute force attempts by locking accounts after a configurable number of failed logins.
+
+## Plugin Enhancements
+
+* New! [AWS Systems Manager](/manual/projects/node-execution/aws-ssm.html) plugins mean Rundeck does not need direct connectivity to remote AWS infrastructure. Rather, Rundeck sends commands to AWS Systems Manager, and Systems Manager dispatches the commands to remote nodes via the Systems Manager agents.
+* [Azure Active Directory Single SignOn](/administration/security/sso/azure-sso.html) is now documented and built into Rundeck Enterprise.  
+* PagerDuty User Management Job Steps allow adding/removing and getting lists of your PagerDuty user accounts.
+* Thycotic Key Storage Plugin can now use all password types.
+
+
+## “Under the hood” updates
+
+Along with all the new features above, our major version releases always include significant updates to the foundational libraries we use to build Rundeck.  The following highlights some of those new versions. The result is a more stable, extensible and secure product from the extensive library updates included.
+
+* Grails 5 and Gradle 7.2 are the fundamental frameworks used to build Rundeck.
+* UI is now built with Node 16
+* Docker images now use Ubuntu 20.04 as the base OS.
+
+## Feature Deprecation
+
+Configuration through `config.groovy` will be deprecated in future versions.  The primary use for this was advanced mail configuration, which is now supported by Configuration Management or `rundeck-config.properties`.
+
+## API Changes
+
+The new _Current API_ version number is: `41`.
+
+### Deprecations:
+
+The API Deprecation version is now: `14`. This means that future Rundeck releases will have a minimum API version of `14`.
+
+XML API support is now deprecated and will be removed in a future version(s). This applies to the majority of API endpoints which support XML requests/responses, however the “Job XML” format used for Job serialization is not being deprecated. API usage should be updated to use JSON.
+
+
+### Promotions:
+
+Some API endpoints previously marked as _incubating_ have now been promoted to Generally Available (GA), including Enterprise Calendar features, and Cluster Member Execution Mode toggle endpoints. Please check the API docs to see what has changed. In general, the `/incubating` URL path is now removed, and the current API version of `41` is now the required minimum for those endpoints.
 
 ## Enterprise Updates
 
@@ -25,7 +80,6 @@ Check out the new features and enhancements for Rundeck Enterprise and Rundeck C
 * Update Rundeck Enterprise official Docker base image to Ubuntu 20.04
 * Allow for pulling in of all secret types by Thycotic
 * PagerDuty manage users plugins
-
 
 ## Core Product Updates
 

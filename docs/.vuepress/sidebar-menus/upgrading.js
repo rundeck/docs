@@ -5,6 +5,7 @@ module.exports = [{
   children: [
     '/upgrading/',
     '/upgrading/upgrading',
+    '/upgrading/upgrading-to-4.md',
     '/upgrading/upgrading-to-rundeck-3.4.md',
     '/upgrading/upgrading-to-rundeck-3.3.4.md',
     '/upgrading/upgrading-to-rundeck-3.3.md',
