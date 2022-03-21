@@ -182,7 +182,7 @@ dataSource.properties.validationQuery = SELECT 1 FROM DUAL
 ::::
 
 :::warning
-If using passwords with **special characters**, make sure the corresponding property at least has **no spaces** between the equals and the value: `dataSource.password=<rundeckpassword>`
+When using passwords with **special characters**, ensure there are **no spaces** between the equal sign and the value provided: `dataSource.password=<rundeckpassword>`
 :::
 
 ## Rundeck Configuration
