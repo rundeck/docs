@@ -12,10 +12,6 @@ Release Date: March 23rd, 2022
 
 With the introduction of version 4.0 the Rundeck Enterprise version will be renamed to _PagerDuty Process Automation OnPrem_.  The Rundeck Cloud version announced late in 2021 is Generally Available and will be known as _PagerDuty Runbook Automation._ [Read more about Runbook Automation](/about/cloud/index.md). The Open Source version will continue to be _Rundeck._  The renames will take some time to implement, so bear with us as we update pages, documentation, and other areas of our new ecosystem.
 
-## Version Cadence
-
-Starting with 4.0 the product will be following a more traditional Major/Minor/Patch semantic versioning system. Previously, iterative releases were increasing on the 3rd (Patch) number.  Going forward those same releases will be iterating on the 2nd (minor) number.  This change will allow us greater flexibility to issue minor/quick patches when the need arises and align better with industry standards.
-
 ## Enterprise Runner
 
 With version 4.0 the [Enterprise Runner](/administration/runner/) will be Generally Available. The Enterprise Runner is built to meet the latest zero-trust security models. The Runner is deployed behind the firewall where it securely connects to nodes and executes automation tasks within the network zone. It calls back to the cluster endpoint via HTTPS to fetch the task list. This deployment model eliminates the need for SSH tunnels between zones.
@@ -50,6 +46,10 @@ Along with all the new features above, our major version releases always include
 
 Configuration through `config.groovy` will be deprecated in future versions.  The primary use for this was advanced mail configuration, which is now supported by Configuration Management or `rundeck-config.properties`.
 
+## Version Cadence
+
+Starting with 4.0 the product will be following a more traditional Major/Minor/Patch semantic versioning system. Previously, iterative releases were increasing on the 3rd (Patch) number.  Going forward those same releases will be iterating on the 2nd (minor) number.  This change will allow us greater flexibility to issue minor/quick patches when the need arises and align better with industry standards.
+
 ## API Changes
 
 The new _Current API_ version number is: `41`.
@@ -59,7 +59,6 @@ The new _Current API_ version number is: `41`.
 The API Deprecation version is now: `14`. This means that future Rundeck releases will have a minimum API version of `14`.
 
 XML API support is now deprecated and will be removed in a future version(s). This applies to the majority of API endpoints which support XML requests/responses, however the “Job XML” format used for Job serialization is not being deprecated. API usage should be updated to use JSON.
-
 
 ### Promotions:
 
