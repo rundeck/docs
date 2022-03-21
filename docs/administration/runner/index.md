@@ -33,7 +33,7 @@ Pre-Requisites:
 - Java 11 is required to run the Runner JAR file.
 
 1. Copy the Runner JAR file that was saved when you created the Runner to the server and directory where it will run.
-1. Execute `java -jar <runner_filename>.jar` and the service should start.
+1. Execute `java -jar runner_filename.jar` and the service should start.
 
 Connection can be confirmed on the Runner Management page on the Last Checkin line.  If there are errors in the output resolve those using troubleshooting steps below.
 
