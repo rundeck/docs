@@ -2,7 +2,7 @@
 
 ## Overview
 
-User Class Management allows Rundeck Enterprise customers to assign users to User Classes which act as a super-set of ACL enforcement.  Each class enforces a pre-set collection of restrictions across all of Rundeck including customer defined projects.  The Class Management module included as part of the User Management features will allow customers to assign users to classes to fit their use cases.
+User Class Management allows Rundeck Enterprise customers to assign users to User Classes which act as a super-set of ACL enforcement and licensing seat management.  Each class enforces a pre-set collection of restrictions across all of Rundeck including customer defined projects.  The Class Management module included as part of the User Management features will allow customers to assign users to classes to fit their use cases.
 
 ![User Class Screen](~@assets/img/user-classes.png)
 
@@ -17,6 +17,8 @@ This User Class allows full access to the Rundeck environment.
 ### Job Runner
 
 This User Class, when assigned, will allow a user to run jobs and view output on all projects. They can not modify jobs or other resources.
+
+> Note: Not all licenses include the Job Runner.  Please contact your customer support manager for information.
 
 ### Default Class Assignment
 

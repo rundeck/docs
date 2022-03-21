@@ -24,9 +24,9 @@ With version 4.0 the [Enterprise Runner](/administration/runner/) will be Genera
 
 A variety of new features will help enhance the security of your Automation solution.
 
-* [User Class Management](/manual/user-management/user-classes.html#overview)
+* [User Class Management](/manual/user-management/user-classes.html#overview) is available to help manage your licensed users and what they are allowed to do.
 * [Enhanced Webhook Security](/manual/webhooks.html#webhook-http-authorization-string) with Authorization strings that can be regenerated and provide another layer of security.
-* [Password Complexity ](/administration/security/password-security.html)can be enabled for [User Manager](/manual/user-management/user-mgmt.html) to encourage local users to use more secure passwords.  Complexity can be set by length and guessability.
+* [Password Complexity ](/administration/security/password-security.html)can be enabled for [User Manager](/manual/user-management/user-mgmt.html) to encourage local users to use more secure passwords.  Complexity can be set by length and guess-ability.
 * [Password Reset by Email](/manual/user-management/password-reset.html) is now available for local users from [User Manager](/manual/user-management/user-mgmt.html) systems with email notifications configured.  Instead of setting a user’s password this will send them a 1 time link to set their own password.
 * [Failed Login Rate Limiting](/administration/security/ratelimiting.html) will help prevent brute force attempts by locking accounts after a configurable number of failed logins.
 
