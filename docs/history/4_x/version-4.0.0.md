@@ -20,18 +20,18 @@ With version 4.0 the [Enterprise Runner](/administration/runner/) will be Genera
 
 A variety of new features will help enhance the security of your Automation solution.
 
-* [User Class Management](/manual/user-management/user-classes.html#overview) is available to help manage your licensed users and what they are allowed to do.
+* [User Class Management](/manual/user-management/user-classes.md) is available to help manage your licensed users and what they are allowed to do.
 * [Enhanced Webhook Security](/manual/webhooks.html#webhook-http-authorization-string) with Authorization strings that can be regenerated and provide another layer of security.
-* [Password Complexity ](/administration/security/password-security.html)can be enabled for [User Manager](/manual/user-management/user-mgmt.html) to encourage local users to use more secure passwords.  Complexity can be set by length and guess-ability.
-* [Password Reset by Email](/manual/user-management/password-reset.html) is now available for local users from [User Manager](/manual/user-management/user-mgmt.html) systems with email notifications configured.  Instead of setting a user’s password this will send them a 1 time link to set their own password.
-* [Failed Login Rate Limiting](/administration/security/ratelimiting.html) will help prevent brute force attempts by locking accounts after a configurable number of failed logins.
+* [Password Complexity ](/administration/security/password-security.md)can be enabled for [User Manager](/manual/user-management/user-mgmt.md) to encourage local users to use more secure passwords.  Complexity can be set by length and guess-ability.
+* [Password Reset by Email](/manual/user-management/password-reset.md) is now available for local users from [User Manager](/manual/user-management/user-mgmt.md) systems with email notifications configured.  Instead of setting a user’s password this will send them a 1 time link to set their own password.
+* [Failed Login Rate Limiting](/administration/security/ratelimiting.md) will help prevent brute force attempts by locking accounts after a configurable number of failed logins.
 
 ## Plugin Enhancements
 
-* New! [AWS Systems Manager](/manual/projects/node-execution/aws-ssm.html) plugins mean Rundeck does not need direct connectivity to remote AWS infrastructure. Rather, Rundeck sends commands to AWS Systems Manager, and Systems Manager dispatches the commands to remote nodes via the Systems Manager agents.
-* [Azure Active Directory Single SignOn](/administration/security/sso/azure-sso.html) is now documented and built into Rundeck Enterprise.  
-* PagerDuty User Management Job Steps allow adding/removing and getting lists of your PagerDuty user accounts.
-* Thycotic Key Storage Plugin can now use all password types.
+* New! [AWS Systems Manager](/manual/projects/node-execution/aws-ssm.md) plugins mean Rundeck does not need direct connectivity to remote AWS infrastructure. Rather, Rundeck sends commands to AWS Systems Manager, and Systems Manager dispatches the commands to remote nodes via the Systems Manager agents.
+* [Azure Active Directory Single SignOn](/administration/security/sso/azure-sso.md) is now documented and built into Rundeck Enterprise.  
+* [PagerDuty User Management Job Steps](/manual/workflow-steps/pagerduty.md) allow adding/removing and getting lists of your PagerDuty user accounts.
+* [Thycotic Key Storage Plugin](/manual/key-storage/storage-plugins/thycotic-storage.md) can now use all password types.
 
 
 ## “Under the hood” updates
@@ -53,6 +53,8 @@ Starting with 4.0 the product will be following a more traditional Major/Minor/P
 ## API Changes
 
 The new _Current API_ version number is: `41`.
+
+[Check the API Versions page for all the details.](/api/rundeck-api-versions.md)
 
 ### Deprecations:
 
