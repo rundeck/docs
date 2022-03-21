@@ -34,6 +34,32 @@ The Opsadmin and FullAdmin roles are not available in Rundeck Cloud, and a user 
 
 Plugin job steps generally execute in Rundeck Cloud. However, job steps that implement local NodeExecutor or FileCopier are delegated to execute on the Runner automatically. If a Runner is not configured these "local" steps will fail. Runners that match the node filter target will assume the role of the local node.  
 
+### Plugins NOT available in cloud
+The following plugins are not currently available in Rundeck Cloud.
+
+- aws-s3-steps
+- command
+- file
+- github-script-plugin
+- local-script
+- openssh-node-execution
+- puppet-apply
+- py-winrm-plugin
+- rundeck-ansible
+- rundeck-azure-storage-plugin
+- rundeck-copyfile-plugin
+- rundeck-localexec
+- rundeck-script-plugin
+- rundeckpro-cyberark
+- rundeckpro-jira-plugins
+- rundeckpro-rundeck-filetransfer
+- rundeckpro-vmware-plugin
+- waitfor
+- directory
+- file
+- script
+
+
 #### Key Storage
 
 Currently, Rundeck Cloud can only connect to Cloud based keystore providers (Vault, Thycotic, CyberArk have SaaS solutions) with Rundeck Cloud keystore plugins. Rundeck Cloud keystore plugins have no connectivity to on-premise keystores.
