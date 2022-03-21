@@ -3,7 +3,7 @@
 ## Getting Started
 
 :::tip
-It is helpful to configure the AWS EC2 resource model plugin before using these steps: [AWS EC2 Resource Model](/administration/projects/resource-model-sources/aws.md)
+It is helpful to configure the AWS EC2 resource model plugin before using these steps: [AWS EC2 Resource Model](/manual/projects/resource-model-sources/aws.md)
 :::
 
 [Amazon's EC2](https://aws.amazon.com/ec2/) (Elastic Cloud Compute) is a cloud service in wide use for dynamic infrastructure; it is easy to start up and shut down Node "Instances" in the cloud.  Use these Rundeck steps to automate common EC2 actions.
@@ -11,11 +11,20 @@ It is helpful to configure the AWS EC2 resource model plugin before using these 
 **Access Key ID**
 : Specify your AWS Access key.
 
+- **Project setting**: project.aws.access_key
+- **Configuration Management**/**Framework Setting**: aws.access_key
+
 **Secret Key**
-: Specify your AWS Secret Key
+: Specify the path to your AWS Secret Key in the Rundeck Key Storage
+
+- **Project setting**: project.aws.secret_key_path
+- **Configuration Management**/**Framework Setting**: aws.secret_key_path
 
 **Region**
 : Specify the region for the node.  If using the EC2 Node Source it's possible to use `${node.region}` and the region will be dynamically populated with the region for that node.
+
+- **Project setting**: project.aws.region
+- **Configuration Management**/**Framework Setting**: aws.region
 
 ## EC2 VM Node Steps (Enterprise Only)
 

@@ -14,7 +14,7 @@ This release has many new features and bugfixes, and contains some refactoring u
 ## New Features
 
 * Upgraded grails framework, which adds support for Java 8 (and removes Java 6)
-* Can now store Project definition and configuration in the database (optional), see [Project Definitions](/administration/projects/configuration.md#project-definitions) and information in the [Upgrade Guide](http://rundeck.org/2.5.0/upgrading/index.html).
+* Can now store Project definition and configuration in the database (optional), see [Project Definitions](/manual/projects/configuration.md#project-definitions) and information in the [Upgrade Guide](http://rundeck.org/2.5.0/upgrading/index.html).
 * Improved GUI for administering a project: modify Project configuration file contents, and readme.md/motd.md contents. Project archiving is also now performed asynchronously.
 * New Jasypt encryption plugin can be used for Key Storage and Project Configuration, see [Jasypt Encryption Converter Plugin](/plugins/index.md#jasypt-encryption-converter-plugin)
 * Support Key Storage password for SSH sudo and SSH private key passphrase

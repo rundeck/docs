@@ -344,7 +344,7 @@ This can be disabled, see [Administrator Guide > Configuration File Reference > 
   The syntax for Environment variables is that all letters become uppercase, punctuation is replaced with underscore, and the name is prefixed with `RD_`.
 
 ::: tip Note
-See the chapter [Configuring Remote Machine for SSH](/administration/projects/node-execution/ssh.md#configuring-remote-machine-for-ssh) for information about requirements of the SSH server.
+See the chapter [Configuring Remote Machine for SSH](/manual/projects/node-execution/ssh.md#configuring-remote-machine-for-ssh) for information about requirements of the SSH server.
 :::
 
 

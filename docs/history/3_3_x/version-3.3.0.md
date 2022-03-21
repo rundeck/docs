@@ -38,7 +38,7 @@ Rundeck user accounts can now be added/managed directly in the Enterprise versio
 ![User Manager Screen](~@assets/img/usermgr-manage-users.png)
 
 ### Node Wizard Plugin (Enterprise)
-New [Node Wizard plugin](/administration/projects/resource-model-sources/node-wizard) is built-in to Rundeck Enterprise for managing node entries local to Rundeck.  The node data is stored in the Rundeck database for easy sharing in clustered environments.  The plugin can still merge values with other Node Sources but offer direct value settings with a friendly GUI based interface.  No need to write complicated JSON/YAML for local Node Sources!
+New [Node Wizard plugin](/manual/projects/resource-model-sources/node-wizard) is built-in to Rundeck Enterprise for managing node entries local to Rundeck.  The node data is stored in the Rundeck database for easy sharing in clustered environments.  The plugin can still merge values with other Node Sources but offer direct value settings with a friendly GUI based interface.  No need to write complicated JSON/YAML for local Node Sources!
 
 ![Node Editor](~@assets/img/relnotes-330-nodeedit.png)
 

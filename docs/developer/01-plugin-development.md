@@ -498,7 +498,7 @@ Required provider entries:
 For `ResourceModelSource` service, this additional entry is required:
 
 - `resource-format` - Must be the name of one of the supported
-  [Resource Model Document Formats](/administration/projects/resource-model-sources/builtin.md#resource-model-document-formats).
+  [Resource Model Document Formats](/manual/projects/resource-model-sources/builtin.md#resource-model-document-formats).
 
 Optional entries:
 
@@ -769,7 +769,7 @@ Available rendering option keys:
 - `instance-scope-node-attribute`
   - Value is the name of a Node attribute to use for instance-scoped properties for _Node Services_ plugins `NodeExecutor` and `FileCopier` only.
 - `selectionAccessor`, values:
-  - `STORAGE_PATH` - display an additional input to select a Storage Path string from Rundeck's [Key Storage Facility](/administration/key-storage/key-storage.md).
+  - `STORAGE_PATH` - display an additional input to select a Storage Path string from Rundeck's [Key Storage Facility](/manual/key-storage/key-storage.md).
 - `storage-path-root`
   - Value is a Storage Path indicating the root to use if the selectionAccessor is `STORAGE_PATH`.
 - `storage-file-meta-filter`

@@ -77,7 +77,8 @@ module.exports = [{
               '/learning/howto/using-ansible.md',
               '/learning/howto/config-sn-nodesource.md',
               '/learning/howto/configure-gcp-plugins.md',
-              '/learning/howto/sn-midserver.md'
+              '/learning/howto/sn-midserver.md',
+              '/learning/howto/rundeck-exporter.md'
           ]
         },
         {
@@ -99,5 +100,21 @@ module.exports = [{
         }
       ]
     },
+    {
+      title: 'Solutions',
+      collapsable: true,
+      sidebarDepth: 0,
+      children: [
+        {
+          title: 'Automated Diagnostics',
+          collapsable: true,
+          sidebarDepth: 0,
+          children: [
+            ['/learning/solutions/auto-incident-kubernetes-logs.md','General Purpose: Kubernetes Logs'],
+            ['/learning/solutions/auto-diagnostics-github-script.md','General Purpose: Raw Scripts']
+          ]
+        }
+      ]
+    }
   ]
 }]

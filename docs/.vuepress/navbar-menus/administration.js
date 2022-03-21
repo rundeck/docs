@@ -1,14 +1,11 @@
-module.exports = [{
-    text: 'System Architecture',
-    link: '/administration/architecture-and-deployment/architecture-and-deployment'
-  },
+module.exports = [
   {
     text: 'Installation',
     link: '/administration/install/installing-rundeck'
   },
   {
     text: 'Upgrading',
-    link: '/upgrading/index'
+    link: '/upgrading/'
   },
   {
     text: 'Licensing',
@@ -23,16 +20,8 @@ module.exports = [{
     link: '/administration/security/default-users'
   },
   {
-   text: 'Projects',
-   link: '/administration/projects/index'
-  },
-  {
     text: 'Enterprise Runner',
     link: '/administration/runner/'
-  },
-  {
-    text: 'Key Storage',
-    link: '/administration/key-storage/key-storage'
   },
   {
     text: 'Maintenance',

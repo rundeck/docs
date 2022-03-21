@@ -2,7 +2,7 @@
 
 ## About
 
-Storage plugins provide the backend for storing file contents uploaded to the [Key Storage](/administration/key-storage/key-storage.md) via the [Key Storage API](/api/rundeck-api.md#key-storage).
+Storage plugins provide the backend for storing file contents uploaded to the [Key Storage](/manual/key-storage/key-storage.md) via the [Key Storage API](/api/rundeck-api.md#key-storage).
 
 The Storage facility stores **Resources** in a **Path-oriented** tree structure. Each **Resource** has a set of key-value _metadata_, and a stream of binary data (the _content_).
 
@@ -12,7 +12,7 @@ When installed, Storage Plugins can be configured to apply to all storage, or fo
 
 ## Configuring
 
-See: [Configuring the Storage Plugins](/administration/key-storage/key-storage.md#configuring-the-storage-plugins).
+See: [Configuring the Storage Plugins](/manual/key-storage/key-storage.md#configuring-the-storage-plugins).
 
 ## Java Plugin Type
 

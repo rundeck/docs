@@ -10,7 +10,7 @@ describe the properties of a node or reflect the state of the node.
 One of a Node's built in attributes is called "tags" which is a list
 of classifications or categories about that Node.
 
-To add nodes to your Rundeck instances, see [Configure - Resource Model Sources Configuration](/administration/projects/resource-model-sources/)
+To add nodes to your Rundeck instances, see [Configure - Resource Model Sources Configuration](/manual/projects/resource-model-sources/)
 
 ## Nodes tab overview
 

@@ -17,11 +17,11 @@ The new [Job Resume Plugin \(Enterprise\)](/manual/execution-lifecycle/job-resum
 
 [Node Health Checks](/manual/healthchecks.md) let you run commands or scripts to check if nodes are healthy. Filter out unhealthy nodes before executing jobs. Capture data and add it to node attributes. See Node Health status in the Node list.
 
-![Health Checks](~@assets/img/healthchecks-health-status-ui.png)	
+![Health Checks](~@assets/img/healthchecks-health-status-ui.png)
 
 ### Webhooks
 
-[Webhooks](/manual/12-webhooks.md) are now enabled by default (previously incubating).  
+[Webhooks](/manual/webhooks.md) are now enabled by default (previously incubating).  
 
 Define webhooks in your projects that can trigger one or more jobs.
 
@@ -41,7 +41,7 @@ A Job-scoped plugin point that allows custom behavior:
 
 * When a Job execution workflow is about to run: can update execution context info, or cause failure if invalid
 * After workflow finishes
-    
+
 ### New Plugin Type: Job Lifecycle
 
 Job life cycle plugin offers allows custom behavior:

@@ -30,15 +30,15 @@ npm run docs:build
 ```
 
 ## Submitting Changes
-Rundeck welcomes documentation PRs.  Please submit PRs against the default branch (currently `3.3.x`) and we will review.
+Rundeck welcomes documentation PRs.  Please submit PRs against the default branch (currently `4.x`) and we will review.
 
 
 ## Publishing
 
 Docs will be built and published to a base matching a branch name of
-`/3\.[1-9]\..*/`:
+`/4\.[1-9]\..*/`:
 
-- Branch `3.3.x` => `docs.rundeck.com/3.3.x/`
+- Branch `4.x` => `docs.rundeck.com/3.3.x/`
 - Branch `3.3.1` => `docs.rundeck.com/3.3.1/`
 
 ### Latest
@@ -52,8 +52,8 @@ to the latest:
 
 Example Code:
 ```
-git tag -f v3.3.9-20210201
-git push -f origin v3.3.9-20210201
+git tag -f v4.0.0-20210201
+git push -f origin v4.0.0-20210201
 ```
 
 
@@ -79,11 +79,11 @@ replacing `[TOKEN]` with your GitHub API token. This token needs `repo` scope.
 
 Run the following with the milestone for the release.  This will create/overwrite an existing entry for the release.  Use wisely:
 ```bash
-npm run notes -- --milestone=3.3.9
+npm run notes -- --milestone=4.0.0
 ```
 
 **Draft**
 Run the following with the milestone for the release. This will create the file named draft.md to avoid overwriting any existing version:
 ```bash
-npm run notes -- --milestone=3.3.9 --draft
+npm run notes -- --milestone=4.0.0 --draft
 ```

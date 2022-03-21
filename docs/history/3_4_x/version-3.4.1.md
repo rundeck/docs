@@ -11,7 +11,7 @@ Check out the new features and enhancements for both Rundeck Enterprise and Open
 
 ### CyberArk Key Storage Plugin (Enterprise)
 
-Keep your business and its most valuable assets secure. Preventing malicious account or credential access starts with sound privileged access management. The new [CyberArk plugin ](/administration/key-storage/storage-plugins/cyberark-storage.md)joined existing Rundeck plugins with [Thycotic](/administration/key-storage/storage-plugins/thycotic-storage.md) and [HashiCorp Vault](/administration/key-storage/storage-plugins/vault.md) to provide Rundeck users more options for secrets management. The CyberArk Key Storage Plugin can be used as a Key Storage backend for Rundeck. Use secrets from CyberArk in your automation scripts, Rundeck configuration, etc.
+Keep your business and its most valuable assets secure. Preventing malicious account or credential access starts with sound privileged access management. The new [CyberArk plugin ](/manual/key-storage/storage-plugins/cyberark-storage.md)joined existing Rundeck plugins with [Thycotic](/manual/key-storage/storage-plugins/thycotic-storage.md) and [HashiCorp Vault](/manual/key-storage/storage-plugins/vault.md) to provide Rundeck users more options for secrets management. The CyberArk Key Storage Plugin can be used as a Key Storage backend for Rundeck. Use secrets from CyberArk in your automation scripts, Rundeck configuration, etc.
 
 ### New Webhook UI!  
 

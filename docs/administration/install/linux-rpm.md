@@ -121,3 +121,17 @@ Grails application running at http://localhost:4440 in environment: production
 Rundeck is now up and running!
 
 Next, learn how to [create your first Rundeck Enterprise project](/manual/03-getting-started.md#project-setup)
+
+## Note about Linux Groups
+
+If you installed Rundeck using the RPM installation method, it will
+have created a unix group called "rundeck".
+
+```
+$ groups rundeck
+rundeck : rundeck
+```
+
+Consult the [usermod] command to modify a user account.
+
+[usermod]: https://linux.die.net/man/8/usermod

@@ -16,6 +16,13 @@ module.exports = [
         children: getChildren('docs/history', 'CVEs'),
       },
       {
+        title: '4.x',
+        collapsable: true,
+        sidebarDepth: 2,
+        path: '/history/',
+        children: getChildren('docs/history', '4_x')
+      },
+      {
         title: '3.4.x',
         collapsable: true,
         sidebarDepth: 2,

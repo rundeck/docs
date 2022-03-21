@@ -1,6 +1,6 @@
 module.exports = [
   {
-    link: '/manual/projects',
+    link: '/manual/projects/',
     text: 'Projects'
   },
   {
@@ -10,6 +10,10 @@ module.exports = [
   {
     link: '/manual/05-nodes',
     text: 'Nodes'
+  },
+  {
+    text: 'Key Storage',
+    link: '/manual/key-storage/key-storage'
   },
   {
     link: '/manual/06-commands',
@@ -28,7 +32,7 @@ module.exports = [
     text: 'Calendars'
   },
   {
-    link: '/manual/12-webhooks',
+    link: '/manual/webhooks',
     text: 'Webhooks'
   },
   {
