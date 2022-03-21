@@ -155,6 +155,50 @@ This job step allows users to specify another escalation policy or another user 
 
 ![PagerDuty - Send Impact Metric](~@assets/img/pd_impactmetric.png)
 
-- **Value**: This is the value that to be appended to the impact metric.
+>> Note: this feature has been deprecated by PagerDuty and will be removed in a future version of Rundeck.
+
+- **Value**: This is the value to be appended to the impact metric.
 - **Metric ID**: The ID of the metric that you want to be updated.
 - **API Key**: The API key for the account that contains the incident to update.
+
+## PagerDuty Create User
+
+- **Email**: This is the unique email address for the new user to be created.
+- **Name**: Full Name of the user
+- **Color**: This is the schedule color for the user. There is a long list of string values available for this.  Edit an existing user to see options.
+- **Role**: The PagerDuty role to assign this new user.
+- **Title**: User's Job Title
+- **Description**: A description of the user.
+- **API Key**: The User API Key that corresponds to an account with rights to create/invite new user accounts.
+
+## PagerDuty Update User
+
+- **User ID**: This is the unique ID associated with the user (Required)
+- **Email**: This is the unique email address for the new user to be created.
+- **Name**: Full Name of the user
+- **Color**: This is the schedule color for the user. There is a long list of string values available for this.  Edit an existing user to see options.
+- **Role**: The PagerDuty role to assign this new user.
+- **Title**: User's Job Title
+- **Description**: A description of the user.
+- **API Key**: The User API Key that corresponds to an account with rights to update new user accounts.
+
+> Note: The User ID is not the user's email address. The Unique ID can be found in the URL of the User's profile or by issuing a Get List with their email as a filter.
+
+## PagerDuty Delete User
+
+- **User ID**: This is the unique ID associated with the user
+- **API Key**: The User API Key that corresponds to an account with rights to delete new user accounts.
+
+> Note: The User ID is not the user's email address. The Unique ID can be found in the URL of the User's profile or by issuing a Get List with their email as a filter.
+
+## PagerDuty Get User
+
+- - **User ID**: This is the unique ID associated with the user
+- **API Key**: The User API Key that corresponds to an account with rights to query user accounts.
+
+> Note: The User ID is not the user's email address. The Unique ID can be found in the URL of the User's profile or by issuing a Get List with their email as a filter.
+
+## PagerDuty Get Users (List)
+
+- **Team Ids**: An array of team IDs. Only results related to these teams will be returned. Account must have the teams ability to use this parameter. (KSDJ56,SKDJ56,AKSJF67)
+- **Filter**: A unique query to find a list of users.  Example: `email@your.domain` would return a user with that email address.
