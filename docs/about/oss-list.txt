@@ -1,0 +1,2586 @@
+License Notices
+
+PagerDuty Process Automation On Prem, Action Runner for Automation Actions, Runbook Runner for Runbook Automation, and Process Runner for Process Automation
+Copyright 2022 PagerDuty, Inc.
+PagerDuty Process Automation On Prem, Action Runner for Automation Actions, Runbook Runner for Runbook Automation, and Process Runner for Process Automation are proprietary, licensed software. Any use or redistribution without express authorization from PagerDuty, Inc. is strictly prohibited.
+PagerDuty Process Automation On Prem, Action Runner for Automation Actions, Runbook Runner for Runbook Automation, and Process Runner for Process Automation are subject to the following terms and conditions:
+https://www.pagerduty.com/terms-of-service/
+#################
+
+Rundeck (core)
+
+Copyright 2022 PagerDuty, Inc.
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+ 
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+#################
+Grails,5,Apache2,https://github.com/grails/grails-core/raw/master/LICENSE
+Component Name: Grails
+Component Version: 5
+License Type: Apache2
+Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+
+      "Legal Entity" shall mean the union of the acting entity and all
+###########
+QuartzScheduler,2.3.2,Apache2,https://github.com/quartz-scheduler/quartz/raw/master/docs/license.adoc
+Component Name: QuartzScheduler
+Component Version: 2.3.2
+License Type: Apache2
+----
+                                 Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+###########
+QuartzGrailsPlugin,2.0.13,Apache2,https://github.com/grails-plugins/grails-quartz/raw/master/LICENSE
+Component Name: QuartzGrailsPlugin
+Component Version: 2.0.13
+License Type: Apache2
+                                 Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+
+      "Legal Entity" shall mean the union of the acting entity and all
+###########
+Grails3MailPlugin,2.0.1,Apache2,https://github.com/grails3-plugins/mail/raw/master/LICENSE
+Component Name: Grails3MailPlugin
+Component Version: 2.0.1
+License Type: Apache2
+/*
+*                                 Apache License
+*                           Version 2.0, January 2004
+*                        http://www.apache.org/licenses/
+*
+*   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+*
+*   1. Definitions.
+*
+*      "License" shall mean the terms and conditions for use, reproduction,
+*      and distribution as defined by Sections 1 through 9 of this document.
+*
+*      "Licensor" shall mean the copyright owner or entity authorized by
+*      the copyright owner that is granting the License.
+*
+###########
+Commonmark,0.11.0,BSD2-clause,https://raw.githubusercontent.com/commonmark/commonmark-java/main/LICENSE.txt
+Component Name: Commonmark
+Component Version: 0.11.0
+License Type: BSD2-clause
+Copyright (c) 2015, Atlassian Pty Ltd
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+* Redistributions of source code must retain the above copyright notice, this
+  list of conditions and the following disclaimer.
+
+* Redistributions in binary form must reproduce the above copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+###########
+owasp-java-html-sanitizer,20180219.1,Apache2,https://github.com/OWASP/java-html-sanitizer/raw/main/COPYING
+Component Name: owasp-java-html-sanitizer
+Component Version: 20180219.1
+License Type: Apache2
+You may use under either the Apache License Version 2.0 or the BSD
+3-Clause License.
+
+------------------------------------------------------------------
+
+                                 Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+###########
+owspencoder,1.2.1,BSD2-clause,https://raw.githubusercontent.com/OWASP/owasp-java-encoder/main/LICENSE
+Component Name: owspencoder
+Component Version: 1.2.1
+License Type: BSD2-clause
+Copyright (c) 2015 Jeff Ichnowski
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions
+are met:
+
+    * Redistributions of source code must retain the above
+      copyright notice, this list of conditions and the following
+      disclaimer.
+
+    * Redistributions in binary form must reproduce the above
+      copyright notice, this list of conditions and the following
+      disclaimer in the documentation and/or other materials
+      provided with the distribution.
+###########
+Grailsexternal-configplugin,2.0.0,Apache2,https://plugins.grails.org/plugin/grails/external-config
+Component Name: Grailsexternal-configplugin
+Component Version: 2.0.0
+License Type: Apache2        
+        
+###########
+commons-fileupload,1.3.3,Apache2,https://github.com/apache/commons-fileupload/raw/master/LICENSE.txt
+Component Name: commons-fileupload
+Component Version: 1.3.3
+License Type: Apache2
+
+                                 Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+###########
+commons-beanutils,1.9.4,Apache2,https://github.com/apache/commons-beanutils/raw/master/LICENSE.txt
+Component Name: commons-beanutils
+Component Version: 1.9.4
+License Type: Apache2
+
+                                 Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+###########
+snakeyaml,1.26,Apache2,https://bitbucket.org/asomov/snakeyaml/src/master/LICENSE.txt
+Component Name: snakeyaml
+Component Version: 1.26
+License Type: Apache2
+
+###########
+hibernate,5.4.18.Final,LGPL2.1,https://raw.githubusercontent.com/hibernate/hibernate-orm/main/lgpl.txt
+Component Name: hibernate
+Component Version: 5.4.18.Final
+License Type: LGPL2.1
+                  GNU LESSER GENERAL PUBLIC LICENSE
+                       Version 2.1, February 1999
+
+ Copyright (C) 1991, 1999 Free Software Foundation, Inc.
+ 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+ Everyone is permitted to copy and distribute verbatim copies
+ of this license document, but changing it is not allowed.
+
+[This is the first released version of the Lesser GPL.  It also counts
+ as the successor of the GNU Library Public License, version 2, hence
+ the version number 2.1.]
+
+                            Preamble
+
+  The licenses for most software are designed to take away your
+###########
+ehcache,3.8.1,Apache2,https://github.com/ehcache/ehcache3/raw/master/LICENSE
+Component Name: ehcache
+Component Version: 3.8.1
+License Type: Apache2
+                                 Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+
+      "Legal Entity" shall mean the union of the acting entity and all
+###########
+hibernate-validator,6.0.19.Final,Apache2,https://raw.githubusercontent.com/hibernate/hibernate-validator/main/license.txt
+Component Name: hibernate-validator
+Component Version: 6.0.19.Final
+License Type: Apache2
+
+                                 Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+###########
+spring-boot,,Apache2,https://raw.githubusercontent.com/spring-projects/spring-boot/main/LICENSE.txt
+Component Name: spring-boot
+Component Version: 
+License Type: Apache2
+
+                                 Apache License
+                           Version 2.0, January 2004
+                        https://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+###########
+GrailsPlugingrails-executor,0.4,Apache2,https://github.com/uberall/grails-executor/raw/master/LICENSE
+Component Name: GrailsPlugingrails-executor
+Component Version: 0.4
+License Type: Apache2
+                                 Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+
+      "Legal Entity" shall mean the union of the acting entity and all
+###########
+GrailsPluginasync,,Apache2,https://github.com/grails/grails-async/raw/master/LICENSE
+Component Name: GrailsPluginasync
+Component Version: 
+License Type: Apache2
+Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+
+      "Legal Entity" shall mean the union of the acting entity and all
+###########
+GrailsPluginscaffolding,,Apache2,https://github.com/grails/scaffolding/raw/master/LICENSE
+Component Name: GrailsPluginscaffolding
+Component Version: 
+License Type: Apache2
+Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+
+      "Legal Entity" shall mean the union of the acting entity and all
+###########
+GrailsPlugingsp,,Apache2,https://github.com/grails/grails-gsp/raw/master/LICENSE
+Component Name: GrailsPlugingsp
+Component Version: 
+License Type: Apache2
+Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+
+      "Legal Entity" shall mean the union of the acting entity and all
+###########
+Micronaut,,Apache2,https://github.com/micronaut-projects/micronaut-core/raw/2.0.x/LICENSE
+Component Name: Micronaut
+Component Version: 
+License Type: Apache2
+                                 Apache License
+                           Version 2.0, January 2004
+                        https://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+
+      "Legal Entity" shall mean the union of the acting entity and all
+###########
+gson,2.8.2,Apache2,https://github.com/google/gson/raw/master/LICENSE
+Component Name: gson
+Component Version: 2.8.2
+License Type: Apache2
+
+                                 Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+###########
+Jackson,2.10.1,Apache2,https://github.com/FasterXML/jackson-databind/raw/master/LICENSE
+Component Name: Jackson
+Component Version: 2.10.1
+License Type: Apache2
+
+                                 Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+###########
+GrailsPlugin:spring-security-core,4.0.2,Apache2,https://github.com/grails-plugins/grails-spring-security-core/raw/master/LICENSE
+Component Name: GrailsPlugin:spring-security-core
+Component Version: 4.0.2
+License Type: Apache2
+                                 Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+
+      "Legal Entity" shall mean the union of the acting entity and all
+###########
+libpam4j,1.11,MIT,https://github.com/kohsuke/libpam4j/raw/master/LICENSE.txt
+Component Name: libpam4j
+Component Version: 1.11
+License Type: MIT
+ Copyright (c) 2011- Kohsuke Kawaguchi and other contributors
+
+ Permission is hereby granted, free of charge, to any person
+ obtaining a copy of this software and associated documentation
+ files (the "Software"), to deal in the Software without
+ restriction, including without limitation the rights to use,
+ copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the
+ Software is furnished to do so, subject to the following
+ conditions:
+
+ The above copyright notice and this permission notice shall be
+ included in all copies or substantial portions of the Software.
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+###########
+jaxb-api,2.3.1,CDDL1.1orGPL2w/CPE,https://oss.oracle.com/licenses/CDDL+GPL-1.1
+Component Name: jaxb-api
+Component Version: 2.3.1
+License Type: CDDL1.1orGPL2w/CPE
+COMMON DEVELOPMENT AND DISTRIBUTION LICENSE (CDDL) Version 1.1
+
+1. Definitions.
+
+    1.1. "Contributor" means each individual or entity that creates or
+    contributes to the creation of Modifications.
+
+    1.2. "Contributor Version" means the combination of the Original
+    Software, prior Modifications used by a Contributor (if any), and
+    the Modifications made by that particular Contributor.
+
+    1.3. "Covered Software" means (a) the Original Software, or (b)
+    Modifications, or (c) the combination of files containing Original
+    Software with files containing Modifications, in each case including
+    portions thereof.
+###########
+dom4j,2.1.3,GPL3-ClauseNewLicense,https://github.com/dom4j/dom4j/raw/master/LICENSE
+Component Name: dom4j
+Component Version: 2.1.3
+License Type: GPL3-ClauseNewLicense
+Copyright 2001-2016 (C) MetaStuff, Ltd. and DOM4J contributors. All Rights Reserved.
+
+Redistribution and use of this software and associated documentation
+("Software"), with or without modification, are permitted provided
+that the following conditions are met:
+
+1. Redistributions of source code must retain copyright
+   statements and notices.  Redistributions must also contain a
+   copy of this document.
+ 
+2. Redistributions in binary form must reproduce the
+   above copyright notice, this list of conditions and the
+   following disclaimer in the documentation and/or other
+   materials provided with the distribution.
+ 
+###########
+Bouncycastle,1.66,BounycastleLicense,https://www.bouncycastle.org/licence.html
+Component Name: Bouncycastle
+Component Version: 1.66
+License Type: BounycastleLicense
+LICENSE
+Copyright (c) 2000 - 2021 The Legion of the Bouncy Castle Inc. (https://www.bouncycastle.org)
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+
+###########
+ApacheHTTPComponents,4.5.12,Apache2,https://github.com/apache/httpcomponents-client/raw/master/LICENSE.txt
+Component Name: ApacheHTTPComponents
+Component Version: 4.5.12
+License Type: Apache2
+                                 Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+
+      "Legal Entity" shall mean the union of the acting entity and all
+###########
+H2Database,1.4.99,MPL2.0orEPL1.0,https://h2database.com/html/license.html
+Component Name: H2Database
+Component Version: 1.4.99
+License Type: MPL2.0orEPL1.0
+This software contains unmodified binary redistributions for
+H2 database engine (https://h2database.com/),
+which is dual licensed and available under the MPL 2.0
+(Mozilla Public License) or under the EPL 1.0 (Eclipse Public License).
+An original copy of the license agreement can be found at:
+https://h2database.com/html/license.html
+
+###########
+MysqlConnector/J,8.0.21,GPLv2withFOSSException,https://oss.oracle.com/licenses/universal-foss-exception/
+Component Name: MysqlConnector/J
+Component Version: 8.0.21
+License Type: GPLv2withFOSSException
+The Universal FOSS Exception, Version 1.0
+ 
+This page provides a copy of the Universal FOSS Exception, Version 1.0.  Here is the text:
+ 
+The Universal FOSS Exception, Version 1.0
+ 
+In addition to the rights set forth in the other license(s) included in the distribution for this software, data, and/or documentation (collectively the "Software," and such licenses collectively with this additional permission the "Software License"), the copyright holders wish to facilitate interoperability with other software, data, and/or documentation distributed with complete corresponding source under a license that is OSI-approved and/or categorized by the FSF as free (collectively "Other FOSS").  We therefore hereby grant the following additional permission with respect to the use and distribution of the Software with Other FOSS, and the constants, function signatures, data structures and other invocation methods used to run or interact with each of them (as to each, such software's "Interfaces"):
+
+###########
+MSSQLJDBCDriver,6.4.0.jre8,MIT,https://raw.githubusercontent.com/microsoft/mssql-jdbc/main/LICENSE
+Component Name: MSSQLJDBCDriver
+Component Version: 6.4.0.jre8
+License Type: MIT
+MIT License
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files(the "Software"), 
+to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, 
+and / or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions :
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED *AS IS*, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS 
+IN THE SOFTWARE.
+###########
+MariaDBConnector/J,1.7.4,LGPL-2.1,https://mariadb.com/kb/en/mariadb/about-mariadb-connector-j
+Component Name: MariaDBConnector/J
+Component Version: 1.7.4
+License Type: LGPL-2.1
+
+    <title>About MariaDB Connector/J - MariaDB Knowledge Base</title>
+
+    GNU GENERAL PUBLIC LICENSE
+                         Version 2, June 1991
+
+     Copyright (C) 1989, 1991 Free Software Foundation, Inc.
+     59 Temple Place - Suite 330, Boston, MA  02111-1307, USA
+
+     Everyone is permitted to copy and distribute verbatim copies
+     of this license document, but changing it is not allowed.
+
+
+
+###########
+Postgrespgjdbc,42.2.13,BSD2-clause,https://github.com/pgjdbc/pgjdbc/raw/master/LICENSE
+Component Name: Postgrespgjdbc
+Component Version: 42.2.13
+License Type: BSD2-clause
+Copyright (c) 1997, PostgreSQL Global Development Group
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice,
+   this list of conditions and the following disclaimer.
+2. Redistributions in binary form must reproduce the above copyright notice,
+   this list of conditions and the following disclaimer in the documentation
+   and/or other materials provided with the distribution.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+###########
+ApacheGroovy,2.5.6,Apache2,https://github.com/apache/groovy/raw/master/LICENSE
+Component Name: ApacheGroovy
+Component Version: 2.5.6
+License Type: Apache2
+
+                                 Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+###########
+ApacheTomcatJDBC,,Apache2,https://www.apache.org/licenses/LICENSE-2.0
+Component Name: ApacheTomcatJDBC
+Component Version: 
+License Type: Apache2
+
+                                 Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+###########
+AssetPipeline,3.1.0,Apache2,https://github.com/bertramdev/asset-pipeline/raw/master/asset-pipeline-grails/LICENSE
+Component Name: AssetPipeline
+Component Version: 3.1.0
+License Type: Apache2
+
+                                 Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+###########
+OKHttp,4.7.2,Apache2,https://github.com/square/okhttp/raw/master/LICENSE.txt
+Component Name: OKHttp
+Component Version: 4.7.2
+License Type: Apache2
+
+                                 Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+###########
+Apachelog4j2,,Apache2,https://www.apache.org/licenses/LICENSE-2.0
+Component Name: Apachelog4j2
+Component Version: 
+License Type: Apache2
+
+                                 Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+###########
+Jetty,9.4.26.v20200117,EPL1.0,https://github.com/eclipse/jetty.project/raw/jetty-9.4.x/LICENSE
+Component Name: Jetty
+Component Version: 9.4.26.v20200117
+License Type: EPL1.0
+This program and the accompanying materials are made available under the
+terms of the Eclipse Public License 1.0 which is available at
+https://www.eclipse.org/org/documents/epl-1.0/EPL-1.0.txt
+or the Apache Software License 2.0 which is available at
+https://www.apache.org/licenses/LICENSE-2.0
+
+
+
+Eclipse Public License - v 1.0
+
+THE ACCOMPANYING PROGRAM IS PROVIDED UNDER THE TERMS OF THIS ECLIPSE PUBLIC
+LICENSE ("AGREEMENT"). ANY USE, REPRODUCTION OR DISTRIBUTION OF THE PROGRAM
+CONSTITUTES RECIPIENT'S ACCEPTANCE OF THIS AGREEMENT.
+
+1. DEFINITIONS
+###########
+Googleguava,24.1.1-jre,Apache2,https://github.com/google/guava/raw/master/COPYING
+Component Name: Googleguava
+Component Version: 24.1.1-jre
+License Type: Apache2
+
+                                 Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+###########
+ApacheAnt,1.9.15,Apache2,https://ant.apache.org/license.html
+Component Name: ApacheAnt
+Component Version: 1.9.15
+License Type: Apache2
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!--
+   Licensed to the Apache Software Foundation (ASF) under one or more
+   contributor license agreements.  See the NOTICE file distributed with
+   this work for additional information regarding copyright ownership.
+   The ASF licenses this file to You under the Apache License, Version 2.0
+   (the "License"); you may not use this file except in compliance with
+   the License.  You may obtain a copy of the License at
+
+       https://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+###########
+SLF4J,1.7.30,MIT,https://www.slf4j.org/license.html
+Component Name: SLF4J
+Component Version: 1.7.30
+License Type: MIT
+Licensing terms for SLF4J
+SLF4J source code and binaries are distributed under the MIT license.
+
+ Copyright (c) 2004-2017 QOS.ch
+ All rights reserved.
+
+ Permission is hereby granted, free  of charge, to any person obtaining
+ a  copy  of this  software  and  associated  documentation files  (the
+ "Software"), to  deal in  the Software without  restriction, including
+ without limitation  the rights to  use, copy, modify,  merge, publish,
+ distribute,  sublicense, and/or sell  copies of  the Software,  and to
+ permit persons to whom the Software  is furnished to do so, subject to
+ the following conditions:
+
+
+###########
+Apachecommons-codec,1.11,Apache2,https://github.com/apache/commons-codec/raw/master/LICENSE.txt
+Component Name: Apachecommons-codec
+Component Version: 1.11
+License Type: Apache2
+
+                                 Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+###########
+Apachecommons-collections,3.2.2,Apache2,https://raw.githubusercontent.com/apache/commons-collections/master/LICENSE.txt
+Component Name: Apachecommons-collections
+Component Version: 3.2.2
+License Type: Apache2
+
+                                 Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+###########
+Apachecommons-lang,2.6,Apache2,https://raw.githubusercontent.com/apache/commons-lang/master/LICENSE.txt
+Component Name: Apachecommons-lang
+Component Version: 2.6
+License Type: Apache2
+
+                                 Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+###########
+jaxen,1.1.6,BSDLicense2.0,https://raw.githubusercontent.com/jaxen-xpath/jaxen/master/LICENSE.txt
+Component Name: jaxen
+Component Version: 1.1.6
+License Type: BSDLicense2.0
+/*
+ $Id$
+
+ Copyright 2003-2006 The Werken Company. All Rights Reserved.
+ 
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions are
+ met:
+
+  * Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+
+  * Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+###########
+commons-cli,1,Apache2,https://raw.githubusercontent.com/apache/commons-cli/master/LICENSE.txt
+Component Name: commons-cli
+Component Version: 1
+License Type: Apache2
+                                 Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+
+      "Legal Entity" shall mean the union of the acting entity and all
+###########
+Jsch,0.1.55,BSD,https://www.jcraft.com/jsch/LICENSE.txt
+Component Name: Jsch
+Component Version: 0.1.55
+License Type: BSD
+
+###########
+Retrofit2,2.7.2,Apache2,https://github.com/square/retrofit/raw/master/LICENSE.txt
+Component Name: Retrofit2
+Component Version: 2.7.2
+License Type: Apache2
+
+                                 Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+###########
+servlet-api,4.0.1,GPLorCDDL,https://oss.oracle.com/licenses/CDDL+GPL-1.1
+Component Name: servlet-api
+Component Version: 4.0.1
+License Type: GPLorCDDL
+COMMON DEVELOPMENT AND DISTRIBUTION LICENSE (CDDL) Version 1.1
+
+1. Definitions.
+
+    1.1. "Contributor" means each individual or entity that creates or
+    contributes to the creation of Modifications.
+
+    1.2. "Contributor Version" means the combination of the Original
+    Software, prior Modifications used by a Contributor (if any), and
+    the Modifications made by that particular Contributor.
+
+    1.3. "Covered Software" means (a) the Original Software, or (b)
+    Modifications, or (c) the combination of files containing Original
+    Software with files containing Modifications, in each case including
+    portions thereof.
+###########
+ant-design-vue,1.6.2,MIT,https://github.com/vueComponent/ant-design-vue/raw/master/LICENSE
+Component Name: ant-design-vue
+Component Version: 1.6.2
+License Type: MIT
+
+MIT License
+
+Copyright (c) 2017-present ant-design-vue
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+###########
+axios,0.18.1,MIT,https://github.com/axios/axios/raw/master/LICENSE
+Component Name: axios
+Component Version: 0.18.1
+License Type: MIT
+Copyright (c) 2014-present Matt Zabriskie
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+###########
+brace,0.11.1,MIT,https://github.com/thlorenz/brace/raw/master/LICENSE
+Component Name: brace
+Component Version: 0.11.1
+License Type: MIT
+Copyright 2013 Thorsten Lorenz. 
+All rights reserved.
+
+Permission is hereby granted, free of charge, to any person
+obtaining a copy of this software and associated documentation
+files (the "Software"), to deal in the Software without
+restriction, including without limitation the rights to use,
+copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following
+conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+###########
+core-js,3.6.5,MIT,https://github.com/zloirock/core-js/raw/master/LICENSE
+Component Name: core-js
+Component Version: 3.6.5
+License Type: MIT
+Copyright (c) 2014-2022 Denis Pushkarev
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+###########
+fuse.js,3.6.1,Apache-2.0,https://github.com/krisk/Fuse/raw/master/LICENSE
+Component Name: fuse.js
+Component Version: 3.6.1
+License Type: Apache-2.0
+                                 Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+
+      "Legal Entity" shall mean the union of the acting entity and all
+###########
+lodash,4.17.15,MIT,https://github.com/lodash/lodash/raw/master/LICENSE
+Component Name: lodash
+Component Version: 4.17.15
+License Type: MIT
+The MIT License
+
+Copyright JS Foundation and other contributors <https://js.foundation/>
+
+Based on Underscore.js, copyright Jeremy Ashkenas,
+DocumentCloud and Investigative Reporters & Editors <http://underscorejs.org/>
+
+This software consists of voluntary contributions made by many
+individuals. For exact contribution history, see the revision history
+available at https://github.com/lodash/lodash
+
+The following license applies to all parts of this software except as
+documented below:
+
+====
+###########
+markdown-it-vue,1.1.2,MIT,https://github.com/ravenq/markdown-it-vue/raw/master/LICENSE
+Component Name: markdown-it-vue
+Component Version: 1.1.2
+License Type: MIT
+MIT License
+
+Copyright (c) 2018 fanliwen
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+###########
+markdown-it,11.0.0,MIT,https://github.com/markdown-it/markdown-it/raw/master/LICENSE
+Component Name: markdown-it
+Component Version: 11.0.0
+License Type: MIT
+Copyright (c) 2014 Vitaly Puzrin, Alex Kocharin.
+
+Permission is hereby granted, free of charge, to any person
+obtaining a copy of this software and associated documentation
+files (the "Software"), to deal in the Software without
+restriction, including without limitation the rights to use,
+copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following
+conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+###########
+mobx-utils,5.6.1,MIT,https://raw.githubusercontent.com/mobxjs/mobx/main/LICENSE
+Component Name: mobx-utils
+Component Version: 5.6.1
+License Type: MIT
+The MIT License (MIT)
+
+Copyright (c) 2015 Michel Weststrate
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+###########
+mobx,5.15.4,MIT,https://raw.githubusercontent.com/mobxjs/mobx/main/LICENSE
+Component Name: mobx
+Component Version: 5.15.4
+License Type: MIT
+The MIT License (MIT)
+
+Copyright (c) 2015 Michel Weststrate
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+###########
+moment,2.27.0,MIT,https://github.com/moment/moment/raw/master/LICENSE
+Component Name: moment
+Component Version: 2.27.0
+License Type: MIT
+Copyright (c) JS Foundation and other contributors
+
+Permission is hereby granted, free of charge, to any person
+obtaining a copy of this software and associated documentation
+files (the "Software"), to deal in the Software without
+restriction, including without limitation the rights to use,
+copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following
+conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+###########
+prex,0.4.7,Apache-2.0,https://github.com/rbuckton/prex/raw/master/LICENSE
+Component Name: prex
+Component Version: 0.4.7
+License Type: Apache-2.0
+Promise Extensions for JavaScript
+Copyright (c) Microsoft Corporation
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+###########
+source-map-loader,1.0.1,MIT,https://github.com/webpack-contrib/source-map-loader/raw/master/LICENSE
+Component Name: source-map-loader
+Component Version: 1.0.1
+License Type: MIT
+Copyright JS Foundation and other contributors
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+'Software'), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+###########
+uiv,0.33.0,MIT,https://raw.githubusercontent.com/uiv-lib/uiv/dev/LICENSE
+Component Name: uiv
+Component Version: 0.33.0
+License Type: MIT
+MIT License
+
+Copyright (c) 2017 Kairui Guo
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+###########
+vue-class-component,7.2.3,MIT,https://github.com/vuejs/vue-class-component/raw/master/LICENSE
+Component Name: vue-class-component
+Component Version: 7.2.3
+License Type: MIT
+The MIT License (MIT)
+
+Copyright (c) 2015-present Evan You
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+###########
+vue-cookies,1.7.0,MIT,https://github.com/cmp-cc/vue-cookies/raw/master/LICENSE
+Component Name: vue-cookies
+Component Version: 1.7.0
+License Type: MIT
+MIT License
+
+Copyright (c) 2016 
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+###########
+vue-fuse,2.2.1,MIT,https://raw.githubusercontent.com/shayneo/vue-fuse/master/LICENSE.md
+Component Name: vue-fuse
+Component Version: 2.2.1
+License Type: MIT
+MIT License
+
+Copyright (c) 2018 Shayne O'Sullivan
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+###########
+vue-i18n,8.18.2,MIT,https://github.com/kazupon/vue-i18n/raw/master/LICENSE
+Component Name: vue-i18n
+Component Version: 8.18.2
+License Type: MIT
+The MIT License (MIT)
+
+Copyright (c) 2016 kazuya kawaguchi
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+the Software, and to permit persons to whom the Software is furnished to do so,
+subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+###########
+vue-moment,4.1.0,MIT,https://github.com/brockpetrie/vue-moment/raw/master/LICENSE
+Component Name: vue-moment
+Component Version: 4.1.0
+License Type: MIT
+MIT License
+
+Copyright (c) 2017 Brock Petrie
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+###########
+vue-property-decorator,8.5.1,MIT,https://github.com/kaorun343/vue-property-decorator/raw/master/LICENSE
+Component Name: vue-property-decorator
+Component Version: 8.5.1
+License Type: MIT
+The MIT License (MIT)
+
+Copyright (c) 2018 kaorun343
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+###########
+vue-router,3.3.4,MIT,https://raw.githubusercontent.com/vuejs/vue-router/dev/LICENSE
+Component Name: vue-router
+Component Version: 3.3.4
+License Type: MIT
+MIT License
+
+Copyright (c) 2013-present Evan You
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+###########
+vue-scrollto,2.18.1,MIT,https://github.com/rigor789/vue-scrollto/raw/master/LICENSE
+Component Name: vue-scrollto
+Component Version: 2.18.1
+License Type: MIT
+The MIT License (MIT)
+
+Copyright (c) 2017 Igor Randjelovic
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+###########
+vue2-ace-editor,0.0.11,MIT,https://github.com/chairuosen/vue2-ace-editor/raw/master/LICENSE
+Component Name: vue2-ace-editor
+Component Version: 0.0.11
+License Type: MIT
+                                 Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+
+      "Legal Entity" shall mean the union of the acting entity and all
+###########
+vue2-filters,0.9.1,MIT,https://github.com/freearhey/vue2-filters/raw/master/LICENSE
+Component Name: vue2-filters
+Component Version: 0.9.1
+License Type: MIT
+
+###########
+vue,2.6.11,MIT,https://github.com/vuejs/vue/raw/master/LICENSE
+Component Name: vue
+Component Version: 2.6.11
+License Type: MIT
+The MIT License (MIT)
+
+Copyright (c) 2013-present, Yuxi (Evan) You
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+###########
+vuex,3.4.0,MIT,https://github.com/vuejs/vuex/raw/master/LICENSE
+Component Name: vuex
+Component Version: 3.4.0
+License Type: MIT
+The MIT License (MIT)
+
+Copyright (c) 2015-2016 Evan You
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+###########
+Dropwizardmetrics,4.0.7,Apache2,https://github.com/dropwizard/metrics/raw/release/4.1.x/LICENSE
+Component Name: Dropwizardmetrics
+Component Version: 4.0.7
+License Type: Apache2
+
+                                 Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+###########
+Minio,7.1.0,Apache2,https://github.com/minio/minio-java/raw/release/LICENSE
+Component Name: Minio
+Component Version: 7.1.0
+License Type: Apache2
+                                 Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+
+      "Legal Entity" shall mean the union of the acting entity and all
+###########
+JGit,5.6.0,EclipseDistributionLicensev1.0,https://github.com/eclipse/jgit/raw/master/LICENSE
+Component Name: JGit
+Component Version: 5.6.0
+License Type: EclipseDistributionLicensev1.0
+
+###########
+Jasypt,1.9.3,Apache2,https://github.com/jasypt/jasypt/raw/master/LICENSE
+Component Name: Jasypt
+Component Version: 1.9.3
+License Type: Apache2
+                                 Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+
+      "Legal Entity" shall mean the union of the acting entity and all
+###########
+Jackson,2.10.0,Apache2,https://github.com/FasterXML/jackson-databind/raw/master/LICENSE
+Component Name: Jackson
+Component Version: 2.10.0
+License Type: Apache2
+
+                                 Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+###########
+jewelcli,0.8.9,Apache2,https://github.com/lexicalscope/jewelcli/raw/master/LICENSE
+Component Name: jewelcli
+Component Version: 0.8.9
+License Type: Apache2
+
+                                 Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+###########
+license3j,,Apache2,https://github.com/verhas/License3j/raw/master/LICENSE.txt
+Component Name: license3j
+Component Version: 
+License Type: Apache2
+
+                                 Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+###########
+Bouncycastlebcpkix-jdk15on,,BounycastleLicense,https://www.bouncycastle.org/licence.html
+Component Name: Bouncycastlebcpkix-jdk15on
+Component Version: 
+License Type: BounycastleLicense
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>bouncycastle.org</title>
+	<meta http-equiv="Content-type" content="text/html; charset=iso-8859-1" />
+	<meta http-equiv="Content-Language" content="en-aus" />
+	<meta name="description" content="Home of the Legion of the Bouncy Castle and their Java cryptography resources and open source code" />
+	<meta name="keywords" content="Legion of the Bouncy Castle, Cryptography, JCE, Java Cryptography Extension, Cryptography Source Code, ASN.1, X.509, Open Source" />
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+	<link rel="stylesheet" type="text/css" href="bouncycastle.css" />
+</head>
+<body>
+###########
+Jasypt,1.9.2,Apache2,https://github.com/jasypt/jasypt/raw/master/LICENSE
+Component Name: Jasypt
+Component Version: 1.9.2
+License Type: Apache2
+                                 Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+
+      "Legal Entity" shall mean the union of the acting entity and all
+###########
+@babel/core,7.9.6,MIT,https://raw.githubusercontent.com/babel/babel/main/LICENSE
+Component Name: @babel/core
+Component Version: 7.9.6
+License Type: MIT
+MIT License
+
+Copyright (c) 2014-present Sebastian McKenzie and other contributors
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+###########
+jsoneditor,5.34.0,Apache-2.0,https://github.com/josdejong/jsoneditor/raw/master/LICENSE
+Component Name: jsoneditor
+Component Version: 5.34.0
+License Type: Apache-2.0
+                               Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+
+      "Legal Entity" shall mean the union of the acting entity and all
+###########
+vuejs-toggle-switch,1.3.1,MIT,https://github.com/larsmars/vuejs-toggle-switch/raw/master/LICENSE
+Component Name: vuejs-toggle-switch
+Component Version: 1.3.1
+License Type: MIT
+MIT License
+
+Copyright (c) 2018 Lars-Martin Hejll
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+###########
+Grailsviews,2.0.0,Apache2,https://github.com/grails/grails-core/raw/master/LICENSE
+Component Name: Grailsviews
+Component Version: 2.0.0
+License Type: Apache2
+Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+
+      "Legal Entity" shall mean the union of the acting entity and all
+###########
+rxjava,2.2.18,Apache2,https://github.com/ReactiveX/RxJava/raw/3.x/LICENSE
+Component Name: rxjava
+Component Version: 2.2.18
+License Type: Apache2
+
+                                 Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+###########
+spring-boot-starter-oauth2-client,2.1.13.RELEASE,Apache2,https://raw.githubusercontent.com/spring-projects/spring-boot/main/LICENSE.txt
+Component Name: spring-boot-starter-oauth2-client
+Component Version: 2.1.13.RELEASE
+License Type: Apache2
+
+                                 Apache License
+                           Version 2.0, January 2004
+                        https://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+###########
+javax.mail,1.6.2,GPLv2orCDDL,https://oss.oracle.com/licenses/CDDL+GPL-1.1
+Component Name: javax.mail
+Component Version: 1.6.2
+License Type: GPLv2orCDDL
+COMMON DEVELOPMENT AND DISTRIBUTION LICENSE (CDDL) Version 1.1
+
+1. Definitions.
+
+    1.1. "Contributor" means each individual or entity that creates or
+    contributes to the creation of Modifications.
+
+    1.2. "Contributor Version" means the combination of the Original
+    Software, prior Modifications used by a Contributor (if any), and
+    the Modifications made by that particular Contributor.
+
+    1.3. "Covered Software" means (a) the Original Software, or (b)
+    Modifications, or (c) the combination of files containing Original
+    Software with files containing Modifications, in each case including
+    portions thereof.
+###########
+vuedraggable,2.23.2,MIT,https://github.com/SortableJS/Vue.Draggable/raw/master/LICENSE
+Component Name: vuedraggable
+Component Version: 2.23.2
+License Type: MIT
+The MIT License (MIT)
+
+Copyright (c) 2016-2019 David Desmaisons
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+###########
+json-path,2.4.0,Apache2,https://github.com/json-path/JsonPath/raw/master/LICENSE
+Component Name: json-path
+Component Version: 2.4.0
+License Type: Apache2
+
+                                 Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+###########
+markdown-it-container,2.0.0,MIT,https://github.com/markdown-it/markdown-it-container/raw/master/LICENSE
+Component Name: markdown-it-container
+Component Version: 2.0.0
+License Type: MIT
+Copyright (c) 2015 Vitaly Puzrin, Alex Kocharin.
+
+Permission is hereby granted, free of charge, to any person
+obtaining a copy of this software and associated documentation
+files (the "Software"), to deal in the Software without
+restriction, including without limitation the rights to use,
+copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following
+conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+###########
+uuid,3.4.0,MIT,https://raw.githubusercontent.com/uuidjs/uuid/main/LICENSE.md
+Component Name: uuid
+Component Version: 3.4.0
+License Type: MIT
+The MIT License (MIT)
+
+Copyright (c) 2010-2020 Robert Kieffer and other contributors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+###########
+vue2-datepicker,2.13.4,MIT,https://github.com/mengxiong10/vue2-datepicker/raw/master/LICENSE
+Component Name: vue2-datepicker
+Component Version: 2.13.4
+License Type: MIT
+MIT License
+
+Copyright (c) 2018 xiemengxiong
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+###########
+vue2-daterange-picker,0.3.1,MIT,https://github.com/Innologica/vue2-daterange-picker/raw/master/LICENSE
+Component Name: vue2-daterange-picker
+Component Version: 0.3.1
+License Type: MIT
+MIT License
+
+Copyright (c) 2020 Innologica Ltd
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+###########
+@types/moment-timezone,0.5.12,MIT,https://github.com/DefinitelyTyped/DefinitelyTyped/raw/master/LICENSE
+Component Name: @types/moment-timezone
+Component Version: 0.5.12
+License Type: MIT
+This project is licensed under the MIT license.
+Copyrights are respective of each contributor listed at the beginning of each definition file.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+###########
+js-yaml,3.13.1,MIT,https://github.com/nodeca/js-yaml/raw/master/LICENSE
+Component Name: js-yaml
+Component Version: 3.13.1
+License Type: MIT
+(The MIT License)
+
+Copyright (C) 2011-2015 by Vitaly Puzrin
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+###########
+moment-timezone,0.5.28,MIT,https://github.com/moment/moment-timezone/raw/master/LICENSE
+Component Name: moment-timezone
+Component Version: 0.5.28
+License Type: MIT
+The MIT License (MIT)
+
+Copyright (c) JS Foundation and other contributors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+the Software, and to permit persons to whom the Software is furnished to do so,
+subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+###########
+vfa-picker,5.9.1,none(pernpmjs),
+Component Name: vfa-picker
+Component Version: 5.9.1
+License Type: none(pernpmjs)
+
+###########
+vue-multiselect,2.1.6,MIT,https://github.com/shentao/vue-multiselect/raw/master/LICENSE
+Component Name: vue-multiselect
+Component Version: 2.1.6
+License Type: MIT
+MIT License
+
+Copyright (c) 2016 Damian Dulisz
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+###########
+vue-tags-component,1.3.0,MIT,https://raw.githubusercontent.com/ek0t0v/vue-tags-component/master/LICENSE.md
+Component Name: vue-tags-component
+Component Version: 1.3.0
+License Type: MIT
+The MIT License (MIT)
+
+Copyright (c) Spatie bvba <info@spatie.be>
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+###########
+@types/showdown,1.9.3,MIT,https://github.com/DefinitelyTyped/DefinitelyTyped/raw/master/LICENSE
+Component Name: @types/showdown
+Component Version: 1.9.3
+License Type: MIT
+This project is licensed under the MIT license.
+Copyrights are respective of each contributor listed at the beginning of each definition file.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+###########
+v-markdown-editor,1.2.5,MIT,https://github.com/nasa8x/v-markdown-editor/raw/master/LICENSE
+Component Name: v-markdown-editor
+Component Version: 1.2.5
+License Type: MIT
+MIT License
+
+Copyright (c) 2017 Nasa8x
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+###########
+vue-showdown,2.4.1,MIT,https://github.com/meteorlxy/vue-showdown/raw/master/LICENSE
+Component Name: vue-showdown
+Component Version: 2.4.1
+License Type: MIT
+MIT License
+
+Copyright (c) 2018 meteorlxy & contributors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+###########
+vue-switches,2.0.1,MIT,Nolicensefile
+Component Name: vue-switches
+Component Version: 2.0.1
+License Type: MIT
+
+###########
+github-api,1.92,MIT,https://raw.githubusercontent.com/hub4j/github-api/main/LICENSE.txt
+Component Name: github-api
+Component Version: 1.92
+License Type: MIT
+ Copyright (c) 2011- Kohsuke Kawaguchi and other contributors
+
+ Permission is hereby granted, free of charge, to any person
+ obtaining a copy of this software and associated documentation
+ files (the "Software"), to deal in the Software without
+ restriction, including without limitation the rights to use,
+ copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the
+ Software is furnished to do so, subject to the following
+ conditions:
+
+ The above copyright notice and this permission notice shall be
+ included in all copies or substantial portions of the Software.
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+###########
+jira-client,0.5,LGPL,https://github.com/rcarz/jira-client/raw/master/LICENSE-LESSER.md
+Component Name: jira-client
+Component Version: 0.5
+License Type: LGPL
+GNU LESSER GENERAL PUBLIC LICENSE, Version 2.1, February 1999
+=============================================================
+
+> Copyright (C) 1991, 1999 Free Software Foundation, Inc.
+> 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+
+Everyone is permitted to copy and distribute verbatim copies of this license document, but changing it is not allowed.
+
+[This is the first released version of the Lesser GPL.  It also counts
+ as the successor of the GNU Library Public License, version 2, hence
+ the version number 2.1.]
+
+Preamble
+--------
+###########
+emoji-java,3.3.0,MIT,https://github.com/vdurmont/emoji-java/raw/master/LICENSE.md
+Component Name: emoji-java
+Component Version: 3.3.0
+License Type: MIT
+The MIT License (MIT)
+
+Copyright (c) 2014-present Vincent DURMONT <vdurmont@gmail.com>
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+###########
+Retrofit2,2.7.2,Apache2,https://github.com/square/retrofit/raw/master/LICENSE.txt
+Component Name: Retrofit2
+Component Version: 2.7.2
+License Type: Apache2
+
+                                 Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+###########
+OKHttp,4.7.2,Apache2,https://github.com/square/okhttp/raw/master/LICENSE.txt
+Component Name: OKHttp
+Component Version: 4.7.2
+License Type: Apache2
+
+                                 Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+###########
+Apachecommons-net,3.5,Apache2,https://raw.githubusercontent.com/apache/commons-net/master/LICENSE.txt
+Component Name: Apachecommons-net
+Component Version: 3.5
+License Type: Apache2
+
+                                 Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+###########
+Apachecommons-io,2.5,Apache2,https://raw.githubusercontent.com/apache/commons-io/master/LICENSE.txt
+Component Name: Apachecommons-io
+Component Version: 2.5
+License Type: Apache2
+
+                                 Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+###########
+aws-java-sdk-s3,1.11.743,Apache2,https://github.com/aws/aws-sdk-java/raw/master/LICENSE.txt
+Component Name: aws-java-sdk-s3
+Component Version: 1.11.743
+License Type: Apache2
+Apache License
+Version 2.0, January 2004
+
+TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+1. Definitions.
+
+"License" shall mean the terms and conditions for use, reproduction, and distribution as defined by Sections 1 through 9 of this document.
+
+"Licensor" shall mean the copyright owner or entity authorized by the copyright owner that is granting the License.
+
+"Legal Entity" shall mean the union of the acting entity and all other entities that control, are controlled by, or are under common control with that entity. For the purposes of this definition, "control" means (i) the power, direct or indirect, to cause the direction or management of such entity, whether by contract or otherwise, or (ii) ownership of fifty percent (50%) or more of the outstanding shares, or (iii) beneficial ownership of such entity.
+
+"You" (or "Your") shall mean an individual or Legal Entity exercising permissions granted by this License.
+###########
+aws-java-sdk-sts,1.11.743,Apache2,https://github.com/aws/aws-sdk-java/raw/master/LICENSE.txt
+Component Name: aws-java-sdk-sts
+Component Version: 1.11.743
+License Type: Apache2
+Apache License
+Version 2.0, January 2004
+
+TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+1. Definitions.
+
+"License" shall mean the terms and conditions for use, reproduction, and distribution as defined by Sections 1 through 9 of this document.
+
+"Licensor" shall mean the copyright owner or entity authorized by the copyright owner that is granting the License.
+
+"Legal Entity" shall mean the union of the acting entity and all other entities that control, are controlled by, or are under common control with that entity. For the purposes of this definition, "control" means (i) the power, direct or indirect, to cause the direction or management of such entity, whether by contract or otherwise, or (ii) ownership of fifty percent (50%) or more of the outstanding shares, or (iii) beneficial ownership of such entity.
+
+"You" (or "Your") shall mean an individual or Legal Entity exercising permissions granted by this License.
+###########
+d3js,v4,BSD3-Clause,https://raw.githubusercontent.com/d3/d3/main/LICENSE
+Component Name: d3js
+Component Version: v4
+License Type: BSD3-Clause
+Copyright 2010-2021 Mike Bostock
+
+Permission to use, copy, modify, and/or distribute this software for any purpose
+with or without fee is hereby granted, provided that the above copyright notice
+and this permission notice appear in all copies.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND
+FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS
+OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER
+TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF
+THIS SOFTWARE.
+###########
+dagre-d3js,v4,MIT,https://github.com/dagrejs/dagre-d3/raw/master/LICENSE
+Component Name: dagre-d3js
+Component Version: v4
+License Type: MIT
+Copyright (c) 2013 Chris Pettitt
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+###########
+graphlib-dot,,MIT,https://github.com/dagrejs/graphlib-dot/raw/master/LICENSE
+Component Name: graphlib-dot
+Component Version: 
+License Type: MIT
+Copyright (c) 2012-2013 Chris Pettitt
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+###########
+jquery-sparklinejs,2.1.2,BSD3-Clause,https://www.opensource.org/licenses/BSD-3-Clause
+Component Name: jquery-sparklinejs
+Component Version: 2.1.2
+License Type: BSD3-Clause
+
+###########
+bootstrap-multiselect,,Apache2,https://github.com/davidstutz/bootstrap-multiselect/raw/master/LICENSE.md
+Component Name: bootstrap-multiselect
+Component Version: 
+License Type: Apache2
+Apache License, Version 2.0:
+
+Copyright (c) 2012 - 2021 David Stutz
+
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use
+this file except in compliance with the License. You may obtain a copy of the
+License at http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software distributed
+under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+CONDITIONS OF ANY KIND, either express or implied. See the License for the
+specific language governing permissions and limitations under the License.
+
+BSD 3-Clause License:
+###########
+d3-timeline,,MIT,https://github.com/jiahuang/d3-timeline/raw/master/README.md
+Component Name: d3-timeline
+Component Version: 
+License Type: MIT
+# d3-timeline
+A simple d3 timeline plugin.
+
+###########
+okhttpurlconnection,4.1.0,Apache2,https://github.com/square/okhttp/raw/master/LICENSE.txt
+Component Name: okhttpurlconnection
+Component Version: 4.1.0
+License Type: Apache2
+
+                                 Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+###########
+vijava,5.1,BSD,https://vijava.sourceforge.net/faq.php
+Component Name: vijava
+Component Version: 5.1
+License Type: BSD
+
+###########
+ApacheGroovyhttp-builder,0.7.1,Apache2,https://github.com/jgritman/httpbuilder/raw/master/README
+Component Name: ApacheGroovyhttp-builder
+Component Version: 0.7.1
+License Type: Apache2
+HTTPBuilder = Easy HTTP client for Groovy.
+
+Build Instructions:
+
+ HTTPBuilder is built using Apache Maven (http://maven.apache.org)
+ $ mvn install
+
+Documentation: https://github.com/jgritman/httpbuilder/wiki
+
+Contributions:
+
+ This project relies on the work of many open source projects including:
+  * Groovy: http://groovy.codehaus.org
+  * Apache HttpClient: http://hc.apache.org
+  * Json-Lib: http://json-lib.sourceforge.net/
+###########
+yamlbeans,1.13,BSD2-Clause,https://www.opensource.org/licenses/bsd-license.php
+Component Name: yamlbeans
+Component Version: 1.13
+License Type: BSD2-Clause
+
+###########
+pircbot,1.5.0,GPL,https://www.jibble.org/licenses/gnu-license.php
+Component Name: pircbot
+Component Version: 1.5.0
+License Type: GPL
+
+###########
+smack,3.2.1,Apache2,https://www.apache.org/licenses/LICENSE-2.0
+Component Name: smack
+Component Version: 3.2.1
+License Type: Apache2
+
+                                 Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+###########
+jackson-jq,0.0.10,Apache2,https://github.com/eiiches/jackson-jq/raw/develop/1.x/COPYING
+Component Name: jackson-jq
+Component Version: 0.0.10
+License Type: Apache2
+jackson-jq
+----------
+
+Copyright (C) 2015 Eiichi Sato
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+###########
+gpars,1.1.0,Apache2,https://www.apache.org/licenses/LICENSE-2.0.txt
+Component Name: gpars
+Component Version: 1.1.0
+License Type: Apache2
+
+                                 Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+###########
+jersey,1.17.1,CDDL+GPL,https://glassfish.java.net/public/CDDL+GPL_1_1.html
+Component Name: jersey
+Component Version: 1.17.1
+License Type: CDDL+GPL
+GlassFish
+The Open Source Java EE Reference Implementation
+COMMON DEVELOPMENT AND DISTRIBUTION LICENSE (CDDL) Version 
+###########
+azure,1.3.0,MIT,https://raw.githubusercontent.com/Azure/azure-sdk-for-java/main/LICENSE.txt
+Component Name: azure
+Component Version: 1.3.0
+License Type: MIT
+The MIT License (MIT)
+
+Copyright (c) 2015 Microsoft
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+###########
+azure-storage,6.1.0,Apache2,https://github.com/Azure/azure-storage-java/raw/master/LICENSE
+Component Name: azure-storage
+Component Version: 6.1.0
+License Type: Apache2
+    MIT License
+
+    Copyright (c) Microsoft Corporation. All rights reserved.
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in all
+    copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+###########
+retrofitadapter-rxjava,2.6.1,Apache2,https://github.com/square/retrofit/raw/master/LICENSE.txt
+Component Name: retrofitadapter-rxjava
+Component Version: 2.6.1
+License Type: Apache2
+
+                                 Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+###########
+stax-api,1.0.1,Apache2,https://www.apache.org/licenses/LICENSE-2.0.txt
+Component Name: stax-api
+Component Version: 1.0.1
+License Type: Apache2
+
+                                 Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+###########
+resty,0.3.2,Apache2,https://github.com/beders/Resty/raw/master/LICENSE
+Component Name: resty
+Component Version: 0.3.2
+License Type: Apache2
+                                 Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+
+      "Legal Entity" shall mean the union of the acting entity and all
+###########
+ApacheHTTPComponents,4.5.1,Apache2,https://www.apache.org/licenses/LICENSE-2.0
+Component Name: ApacheHTTPComponents
+Component Version: 4.5.1
+License Type: Apache2
+
+                                 Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+###########
+overthere,5.0.2,GPLv2withXebiaLabsFLOSSexception,https://github.com/xebialabs/overthere/raw/master/LICENSE
+Component Name: overthere
+Component Version: 5.0.2
+License Type: GPLv2withXebiaLabsFLOSSexception
+XebiaLabs FLOSS License Exception
+
+The XebiaLabs Exception for Free/Libre and Open Source Software-only
+Applications Using XebiaLabs Libraries (the "FLOSS Exception").
+
+
+Exception Intent
+We want specified Free/Libre and Open Source Software ("FLOSS") applications
+to be able to use specified GPL-licensed XebiaLabs libraries (the
+"Program") despite the fact that not all FLOSS licenses are compatible with
+version 2 of the GNU General Public License (the "GPL"). 
+
+
+Legal Terms and Conditions
+As a special exception to the terms and conditions of version 2.0 of the
+###########
+com.google.code.findbugs:jsr305,2.0.1,BSD3-Clause,https://opensource.org/licenses/BSD-3-Clause
+Component Name: com.google.code.findbugs:jsr305
+Component Version: 2.0.1
+License Type: BSD3-Clause
+###########
+freemarker,2.3.20,Apache2,https://www.apache.org/licenses/LICENSE-2.0.txt
+Component Name: freemarker
+Component Version: 2.3.20
+License Type: Apache2
+
+                                 Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+###########
+vault-java-driver,4.0.0,MIT,https://github.com/BetterCloud/vault-java-driver#license
+Component Name: vault-java-driver
+Component Version: 4.0.0
+License Type: MIT
+The MIT License (MIT)
+Copyright (c) 2016-2019 BetterCloud
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+###########
+sardine,5,Apache2,https://www.apache.org/licenses/LICENSE-2.0
+Component Name: sardine
+Component Version: 5
+License Type: Apache2
+
+                                 Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+###########
+flywaydb,8,Apache2,https://flywaydb.org/licenses/flyway-community-edition-license
+Component Name: flywaydb
+Component Version: 8
+License Type: Apache2
+Flyway Community Edition License
+Apache License Version 2.0, January 2004
+http://www.apache.org/licenses/
+
