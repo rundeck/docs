@@ -22,3 +22,6 @@ providerNameEntries:
 Provider names can be found by navigating to the System Menu > Plugins > Installed Plugins.  Click on the information icon for the plugin and find the provider name in the upper left.
 
 ![provider name](~@assest/img/blocklist-providername.png)
+
+Once the providers are all listed, add the following config entry to rundeck-config.properties with the path to the file just created:
+```rundeck.plugins.providerBlockListFile=/path/to/user/blocklist```
