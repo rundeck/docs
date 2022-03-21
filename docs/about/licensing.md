@@ -1,2 +1,2 @@
 # Open Source Licenses
-[OSS License Notices](/about/oss-list.txt)
+[OSS License Notices](@assets/doc/oss-list.txt)
