@@ -170,7 +170,8 @@ module.exports = [{
         '/administration/security/webapp-http-headers',
         '/administration/security/project-acl',
         '/administration/security/password-security',
-        '/administration/security/ratelimiting'
+        '/administration/security/ratelimiting',
+        '/administration/security/blocklist'
       ]
     }
   ]
