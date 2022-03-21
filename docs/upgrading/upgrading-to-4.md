@@ -17,4 +17,24 @@ When editing a job with previously configured incubating Result Data template or
 
 ## JSON Event Data Errors
 
-After an upgrade there may be errors in logs during boot.  These are not an issue, but do create unnecessary noise in the logs.** **To clear up these errors, move the `rundeckpro-json-event-format-plugin-3.4.x.jar` from the `libext` directory to another directory. Restart Rundeck and confirm everything is functioning correctly. This plugin is no longer needed, but during an upgrade, previous plugins are not removed to maintain any custom plugins that may be installed.
+After an upgrade there may be errors in logs relating to `EventDataFormat` during boot.  These are not an issue, but do create unnecessary noise in the logs.** **To clear up these errors, move the `rundeckpro-json-event-format-plugin-3.4.x.jar` from the `libext` directory to another directory. Restart Rundeck and confirm everything is functioning correctly. This plugin is no longer needed, but during an upgrade, previous plugins are not removed to maintain any custom plugins that may be installed.
+
+Example of Errors seen in logs:
+
+```java
+Caused by: java.lang.NoClassDefFoundError: org/rundeck/reactions/plugins/EventDataFormat
+at java.base/java.lang.ClassLoader.defineClass1(Native Method)
+at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1017)
+at java.base/java.security.SecureClassLoader.defineClass(SecureClassLoader.java:174)
+at java.base/java.net.URLClassLoader.defineClass(URLClassLoader.java:555)
+at java.base/java.net.URLClassLoader$1.run(URLClassLoader.java:458)
+at java.base/java.net.URLClassLoader$1.run(URLClassLoader.java:452)
+at java.base/java.security.AccessController.doPrivileged(Native Method)
+at java.base/java.net.URLClassLoader.findClass(URLClassLoader.java:451)
+at com.dtolabs.rundeck.core.plugins.LocalFirstClassLoader.loadClass(LocalFirstClassLoader.java:52)
+at com.dtolabs.rundeck.core.plugins.LocalFirstClassLoader.loadClass(LocalFirstClassLoader.java:44)
+at java.base/java.lang.Class.forName0(Native Method)
+at java.base/java.lang.Class.forName(Class.java:398)
+at com.dtolabs.rundeck.core.plugins.JarPluginProviderLoader.loadClass(JarPluginProviderLoader.java:435)
+... 96 more
+```
