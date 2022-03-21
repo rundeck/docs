@@ -126,8 +126,7 @@ module.exports = [{
                       '/administration/cluster/loadbalancer/aws-elb',
                       '/administration/cluster/loadbalancer/haproxy',
                       '/administration/cluster/loadbalancer/iis',
-                      '/administration/cluster/loadbalancer/NGINX',
-
+                      '/administration/cluster/loadbalancer/NGINX'
                     ]
                   },
                   {
