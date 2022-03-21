@@ -1,9 +1,5 @@
 # Enterprise Runner
 
-:::warning
-This feature is a feature of Rundeck Enterprise that requires specific licenses to use.
-:::
-
 The Rundeck Enterprise Runner securely opens up network/communication between data centers and the Rundeck Enterprise Cluster.  The Runner is a Remote Execution hub for Node Steps to run on specified endpoints, rather than from the Rundeck server itself.  
 
 ## Architecture
@@ -20,26 +16,24 @@ The Enterprise Runner is a Java based program which uses a polling model to pick
 Follow these steps to install a Runner to Rundeck Enterprise:
 
 :::: tabs
-::: tab Rundeck Enterprise Steps
+::: tab Creating and configuring a Runner
 
 1. Under the _System Menu_ (gear icon upper-right) choose **Runner Management**
 1. Choose **Create Runner**.
 1. Type in a unique _Name_ and relevant _Description_ for this Runner and Click **Add Runner**.
-1. On the next screen choose **Download ID and Secret** to save the credentials for this Runner installation.  (You will need this file when setting up Runner Binaries)
 1. Click **Next** to go to _Project Assignment_
-1. [This step is optional] On this page choose which project(s) the Runner is active for.  The Assigned toggle will enable the Runner for _All Nodes_ (`.*`) in that project.  
-    _([This step is optional] If the Runner should only act on a subset of Nodes it's recommended to do that in the Runner Edit page.)_
+1. [This step is optional] On this page choose which project(s) the Runner is active for.  The Assigned toggle will enable the Runner for _All Nodes_ (`.*`) in that project. After the Runner is created you can edit the Runner assignment and adjust the node filter to target a subset of nodes. Click **Next**.
+1. On the **Confirmation** step, click on **Download** and save the Runner JAR binary file. Note that the JAR file must be used only for the environment that it is configured for. Click **Finish**.
 
 :::
-::: tab Runner Installation
+::: tab Installing a Runner
 
 Pre-Requisites:
 - Same OS requirements as Rundeck Enterprise
 - Java 11 is required to run the Runner JAR file.
 
-1. Download the latest Runner code using our [Downloads](https://rundeck.com/downloads) site.
-1. Copy the credentials file to the same directory as the Runner JAR file with the name of `.rdrunner-creds`
-1. Execute `java -jar pd-runner.jar` and the service should start.
+1. Copy the Runner JAR file that was saved when you created the Runner to the server and directory where it will run.
+1. Execute `java -jar <runner_filename>.jar` and the service should start.
 
 Connection can be confirmed on the Runner Management page on the Last Checkin line.  If there are errors in the output resolve those using troubleshooting steps below.
 
