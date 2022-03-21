@@ -46,9 +46,9 @@ Also, you can define the configuration at Node Level, setting the node-executor 
 ```
 
 :::note
-This plugin could present some problems when it tries to copy a file to Windows Server nodes. 
-This is because this plugin uses scp command, and it throws some issues with Windows machines for the reason that 
-is not natively installed therefore it is necessary to add a ssh server like OpenSSH, but the result is the same (Tested on Windows Server 2019).
-Is recommended use another plugin when the remote node is a Windows OS. Here there is a good recommendation 
-https://docs.rundeck.com/docs/learning/howto/configuring-windows-nodes.html#running-jobs-on-windows-nodes
+Using this plugin with Windows Server nodes is not recommended.
+This plugin uses the `scp` command, which has issues with Windows machines since it
+is not natively installed. Adding OpenSSH will result in the same issues.  (Tested on Windows Server 2019)
+It is recommended to use [this plugin](https://docs.rundeck.com/docs/learning/howto/configuring-windows-nodes.html#running-jobs-on-windows-nodes) when the remote node is a Windows OS. 
+
 :::
