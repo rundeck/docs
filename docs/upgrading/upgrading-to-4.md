@@ -38,3 +38,11 @@ at java.base/java.lang.Class.forName(Class.java:398)
 at com.dtolabs.rundeck.core.plugins.JarPluginProviderLoader.loadClass(JarPluginProviderLoader.java:435)
 ... 96 more
 ```
+
+### Dot Notation Warnings
+
+Some builds of 4.0 will show a Warning about Dot Notation as shown below.  These messages are informational only and will be cleared up in a future release.
+
+```
+WARN  config.NavigableMap - Accessing config key '[useManifest]' through dot notation is deprecated, and it will be removed in a future release. Use 'config.getProperty(key, targetClass)' instead.
+```
