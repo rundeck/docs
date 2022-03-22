@@ -124,7 +124,7 @@ jobs:
             }
   update_index:
     machine:
-      image: cimg/base:2021.04
+      image: ubuntu-2004:202201-02
     working_directory: ~/repo
     steps:
       - checkout
