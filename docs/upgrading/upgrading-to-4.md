@@ -39,7 +39,7 @@ at com.dtolabs.rundeck.core.plugins.JarPluginProviderLoader.loadClass(JarPluginP
 ... 96 more
 ```
 
-### Dot Notation Warnings
+## Dot Notation Warnings
 
 Some builds of 4.0 will show a Warning about Dot Notation as shown below.  These messages are informational only and will be cleared up in a future release.
 
