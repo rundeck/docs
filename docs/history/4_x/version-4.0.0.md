@@ -1,6 +1,6 @@
 # Release 4.0.0
 
-Name: <span style="color: aquamarine"><span class="glyphicon glyphicon-apple"></span> "Macchiato aquamarine apple"</span>
+Name: <span style="color: brown"><span class="glyphicon glyphicon-apple"></span> "Kraken brown apple"</span>
 Release Date: March 22nd, 2022
 
 - [Download Rundeck](https://download.rundeck.com/)
