@@ -1,7 +1,7 @@
 # Release 4.0.0
 
 Name: <span style="color: aquamarine"><span class="glyphicon glyphicon-apple"></span> "Macchiato aquamarine apple"</span>
-Release Date: March 23rd, 2022
+Release Date: March 22nd, 2022
 
 - [Download Rundeck](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
