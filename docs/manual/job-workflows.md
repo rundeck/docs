@@ -187,7 +187,7 @@ A "keepGoingOnSuccess" checkbox will let you **override** the Workflow's "runRem
      2. The workflow behaves according to the `runRemainingOnFail` variable.
 
 ::: tip
-It is a good practice, when you are defining Error Handlers, to **always** have them fail (e.g. scripts/commands return a non-zero exit-code), unless you specifically want them to be used for Recovery.
+When difining error handlers, it is a good practice to use a step that will **always** fail (e.g. scripts/commands return a non-zero exit-code) so that rundeck can show the step as _FAILED_, unless you specifically want them to be used for Recovery.
 :::
 
 ::: tip
