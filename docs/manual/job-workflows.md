@@ -40,7 +40,7 @@ _If a step fails_: This manages what to do if a step incurs an error:
 - Run remaining steps before failing: Continue to next steps and fail the job at the end.
 
 The default is to fail immediately but depending on the procedure at
-hand you can choose to have the execution continue.
+hand it is possible to choose to have the execution continue.
 
 <!--- Out of date? Node First, Parallel, Sequential, Ruleset Workflow Strategy --->
 
@@ -78,7 +78,7 @@ Sequential flow illustrated:
 6.   NodeB      "
 ```
 
-The process you are automating will determine which strategy is
+The process being automated will determine which strategy is
 correct, though the node-oriented flow is more commonplace.
 
 For more complex workflow strategy rules, see [Ruleset Workflow Strategy Plugin](/manual/workflow-strategies/ruleset.md)
@@ -95,9 +95,9 @@ have a form open asking to choose a step type to add.
 ![Add a step](~@assets/img/fig0402.png)
 
 To add new steps simply press the "Add a step" link inside the workflow
-editor form. This will prompt you with a dialog asking which kind of
-step you would like to add. Each kind of step has its own
-form. When you are done filling out the form, press "Save" to add it
+editor form. This will prompt with a dialog asking which kind of
+step to add. Each kind of step has its own
+form. When the form is completed, press "Save" to add it
 to the sequence. Pressing "Cancel" will close the form and leave the
 sequence unchanged.
 
@@ -135,8 +135,7 @@ where the Job will land.
 After releasing the select Job, it will land in the desired position
 and the step order will be updated.
 
-If you wish to Undo the step reordering, press the "Undo" link above
-the steps.
+To Undo the step reordering, press the "Undo" link above the steps.
 
 The "Redo" button can be pressed to reapply the last undone change.
 
@@ -169,9 +168,9 @@ Essentially, **the result status of the Error Handler becomes the result status 
   3. Otherwise, the remaining Workflow steps are executed in order.
   4. The Workflow ends with a "failed" result status.
 
-If you define an Error Handler for a step, the behavior changes. This one can recover from the step failure by executing successfully or, as previouly said, do a secondary action.
+If a job is defined with an Error Handler for a step, the behavior changes. This one can recover from the step failure by executing successfully or, as previously said, perform a secondary action.
 
-A "keepGoingOnSuccess" checkbox will let you **override** the Workflow's "runRemainingOnFail" value if it is false:
+A "keepGoingOnSuccess" checkbox will **override** the Workflow's "runRemainingOnFail" value if it is false:
 
 - When a step fails **with an Error Handler**
   1. The Error Handler is executed.
@@ -187,18 +186,18 @@ A "keepGoingOnSuccess" checkbox will let you **override** the Workflow's "runRem
      2. The workflow behaves according to the `runRemainingOnFail` variable.
 
 ::: tip
-When defining error handlers, it is a good practice to use a step that will **always** fail (e.g. scripts/commands return a non-zero exit-code) so that rundeck can show the step as _FAILED_, unless you specifically want them to be used for Recovery.
+When defining error handlers, it is a good practice to use a step that will **always** fail (e.g. scripts/commands return a non-zero exit-code) so that rundeck can show the step as _FAILED_, unless it is specifically to be used for Recovery.
 :::
 
 ::: tip
 Error-handlers can be attached to either Node Steps or Workflow Steps, and the type of step and the Strategy of the Workflow determines what type of Error-handler steps can be attached to a step. The only restriction is in the case that the Workflow is "Node-oriented", which means that the workflow is executed independently for each node. In this case, Node Steps can only have other Node steps as Error Handlers. In other cases, the Error Handler can be other Workflow steps.
 :::
 
-To add an error handler press the "settings" button on the step you want to handle.
+To add an error handler press the "settings" button on the step to handle.
 
 ![Adding an error handler](~@assets/img/fig0410.png)
 
-The form presented includes the normal set of steps you can add to a workflow.
+The form presented includes the normal set of steps that can be added to a workflow.
 
 ![Adding an error handler](~@assets/img/fig0410a.png)
 
@@ -233,7 +232,7 @@ permanently saved after pressing the "Create" button if new or the
 
 ## Context Variables
 
-When a Job step is executed, it has a set of "context" variables that you can access in the Job step. There are several sets of context variables, including: the Job context `job`, the Node context `node`, and the Option context `option`.
+When a Job step is executed, it has a set of "context" variables that can be accessed in the Job step. There are several sets of context variables, including: the Job context `job`, the Node context `node`, and the Option context `option`.
 
 Job context variables (Global scope):
 
