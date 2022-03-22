@@ -38,7 +38,7 @@ Rundeck welcomes documentation PRs.  Please submit PRs against the default branc
 Docs will be built and published to a base matching a branch name of
 `/4\.[1-9]\..*/`:
 
-- Branch `4.x` => `docs.rundeck.com/3.3.x/`
+- Branch `4.0.x` => `docs.rundeck.com/4.0.x/`
 - Branch `3.3.1` => `docs.rundeck.com/3.3.1/`
 
 ### Latest
