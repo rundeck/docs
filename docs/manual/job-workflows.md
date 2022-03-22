@@ -40,7 +40,7 @@ _If a step fails_: This manages what to do if a step incurs an error:
 - Run remaining steps before failing: Continue to next steps and fail the job at the end.
 
 The default is to fail immediately but depending on the procedure at
-hand you can choose to have the execution continue.
+hand it is possible to choose to have the execution continue.
 
 <!--- Out of date? Node First, Parallel, Sequential, Ruleset Workflow Strategy --->
 
@@ -78,7 +78,7 @@ Sequential flow illustrated:
 6.   NodeB      "
 ```
 
-The process you are automating will determine which strategy is
+The process being automated will determine which strategy is
 correct, though the node-oriented flow is more commonplace.
 
 For more complex workflow strategy rules, see [Ruleset Workflow Strategy Plugin](/manual/workflow-strategies/ruleset.md)
@@ -95,9 +95,9 @@ have a form open asking to choose a step type to add.
 ![Add a step](~@assets/img/fig0402.png)
 
 To add new steps simply press the "Add a step" link inside the workflow
-editor form. This will prompt you with a dialog asking which kind of
-step you would like to add. Each kind of step has its own
-form. When you are done filling out the form, press "Save" to add it
+editor form. This will prompt with a dialog asking which kind of
+step to add. Each kind of step has its own
+form. When the form is completed, press "Save" to add it
 to the sequence. Pressing "Cancel" will close the form and leave the
 sequence unchanged.
 
@@ -135,8 +135,7 @@ where the Job will land.
 After releasing the select Job, it will land in the desired position
 and the step order will be updated.
 
-If you wish to Undo the step reordering, press the "Undo" link above
-the steps.
+To Undo the step reordering, press the "Undo" link above the steps.
 
 The "Redo" button can be pressed to reapply the last undone change.
 
@@ -156,48 +155,49 @@ This provides a few different ways to deal with a step's failure:
 - Recover the workflow from failure, and continue normally
 
 When a Workflow step has a failure, the behavior depends on whether it has an Error Handler or not,
-and the value of the "keepgoing" setting for the Workflow, and the value of the "keepgoingOnSuccess" for the Error Handler.
+and the value of the "runRemainingOnFail" and "keepGoingOnSuccess" settings for the workflow and Error Handler respectively.
+
+Essentially, **the result status of the Error Handler becomes the result status of its Step**. In other words: **"If the Error Handler succeeds, then the step is not considered to have failed"**.
+
+#### Workflow Behavior
 
 - When a step fails **without an Error Handler**
-  1. the Workflow is marked as "failed"
-  2. If `keepgoing="false"`
-     1. then the entire Workflow stops
-  3. Otherwise, the remaining Workflow steps are executed in order
-  4. the Workflow ends with a "failed" result status
+  1. The Workflow is marked as "failed".
+  2. If `runRemainingOnFail="false"`
+     1. The entire Workflow stops.
+  3. Otherwise, the remaining Workflow steps are executed in order.
+  4. The Workflow ends with a "failed" result status.
 
-If you define an Error Handler for a step, then the behavior changes. The handler can recover the step's failure by executing successfully, and a secondary option "keepgoingOnSuccess" will
-let you override the Workflow's "keepgoing" value if it is false.
+If a job is defined with an Error Handler for a step, the behavior changes. This one can recover from the step failure by executing successfully or, as previously said, perform a secondary action.
+
+A "keepGoingOnSuccess" checkbox will **override** the Workflow's "runRemainingOnFail" value if it is false:
 
 - When a step fails **with an Error Handler**
-  1. The Error Handler is executed
-  2. If the Error Handler was successful and has `keepgoingOnSuccess="true"`
-     1. The workflow `keepgoing` is ignored,
-     2. The Workflow failure status is _not_ marked, and it will continue to the next step
-  3. Else if `keepgoing="false"`
-     1. The Workflow is marked as "failed"
-     2. Then the entire Workflow stops
-  4. Else if `keepgoing="true"`
-     1. If the Error Handler failed then the Workflow is marked as "failed"
-     2. Otherwise, the Workflow is _not_ additionally marked
-  5. the remaining Workflow steps are executed in order (including other triggered Error Handlers)
-  6. when the Workflow ends, its status depends on if it is marked
+  1. The Error Handler is executed.
+  2. If the Error Handler is successful:
+     1. `runRemainingOnFail="false"` and `keepGoingOnSuccess="false"`
+        1. The Step is marked as a success.
+        2. Remaining steps don't run.
+        3. Workflow execution status is marked as _Failed_.
+     2. `runRemainingOnFail="true"` or `keepGoingOnSuccess="true"`
+        1. The Workflow failure status is _not_ marked, and it will continue to the next step.
+  3. If the Error Handler fails:
+     1. The step is marked as _Failed_
+     2. The workflow behaves according to the `runRemainingOnFail` variable.
 
-Essentially, the result status of the Error Handler becomes the result status of its Step, if the Workflow
-has `keepgoing="true"` or if the Error Handler overrides it with `keepgoingOnSuccess="true"`. If the Error Handler succeeds, then the step is not considered to have failed. This
-includes scripts, commands, job references, etc. (Scripts and commands must have an exit status of `0` to
-return success.)
-
-It is a good practice, when you are defining Error Handlers, to **always** have them fail (e.g. scripts/commands return a non-zero exit-code), unless you specifically want them to be used for Recovery.
+::: tip
+When defining error handlers, it is a good practice to use a step that will **always** fail (e.g. scripts/commands return a non-zero exit-code) so that rundeck can show the step as _FAILED_, unless it is specifically to be used for Recovery.
+:::
 
 ::: tip
 Error-handlers can be attached to either Node Steps or Workflow Steps, and the type of step and the Strategy of the Workflow determines what type of Error-handler steps can be attached to a step. The only restriction is in the case that the Workflow is "Node-oriented", which means that the workflow is executed independently for each node. In this case, Node Steps can only have other Node steps as Error Handlers. In other cases, the Error Handler can be other Workflow steps.
 :::
 
-To add an error handler press the "settings" button on the step you want to handle.
+To add an error handler press the "settings" button on the step to handle.
 
 ![Adding an error handler](~@assets/img/fig0410.png)
 
-The form presented includes the normal set of steps you can add to a workflow.
+The form presented includes the normal set of steps that can be added to a workflow.
 
 ![Adding an error handler](~@assets/img/fig0410a.png)
 
@@ -232,7 +232,7 @@ permanently saved after pressing the "Create" button if new or the
 
 ## Context Variables
 
-When a Job step is executed, it has a set of "context" variables that you can access in the Job step. There are several sets of context variables, including: the Job context `job`, the Node context `node`, and the Option context `option`.
+When a Job step is executed, it has a set of "context" variables that can be accessed in the Job step. There are several sets of context variables, including: the Job context `job`, the Node context `node`, and the Option context `option`.
 
 Job context variables (Global scope):
 
