@@ -177,7 +177,7 @@ A "keepGoingOnSuccess" checkbox will let you **override** the Workflow's "runRem
   1. The Error Handler is executed.
   2. If the Error Handler is successful:
      1. `runRemainingOnFail="false"` and `keepGoingOnSuccess="false"`
-        1. The Step is marked as success.
+        1. The Step is marked as a success.
         2. Remaining steps don't run.
         3. Workflow execution status is marked as _Failed_.
      2. `runRemainingOnFail="true"` or `keepGoingOnSuccess="true"`
@@ -187,7 +187,7 @@ A "keepGoingOnSuccess" checkbox will let you **override** the Workflow's "runRem
      2. The workflow behaves according to the `runRemainingOnFail` variable.
 
 ::: tip
-When difining error handlers, it is a good practice to use a step that will **always** fail (e.g. scripts/commands return a non-zero exit-code) so that rundeck can show the step as _FAILED_, unless you specifically want them to be used for Recovery.
+When defining error handlers, it is a good practice to use a step that will **always** fail (e.g. scripts/commands return a non-zero exit-code) so that rundeck can show the step as _FAILED_, unless you specifically want them to be used for Recovery.
 :::
 
 ::: tip
