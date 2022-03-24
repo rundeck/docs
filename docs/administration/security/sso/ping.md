@@ -1,4 +1,4 @@
-## Single SignOn - Ping
+# Single SignOn - Ping
 
 Rundeck can be configured to work with Ping Identity services.
 
