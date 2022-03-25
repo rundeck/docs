@@ -2843,8 +2843,12 @@ The following parameters can also be used to narrow down the result set.
 * `groupPathExact`: specify an exact group path to match.  Set to the special value "-" to match the top level jobs only
 * `scheduledFilter`: `true/false` specify whether to return only scheduled or only not scheduled jobs.
 * `serverNodeUUIDFilter`: Value: a UUID. In cluster mode, use to select scheduled jobs assigned to the server with given UUID.
+* `max`: limit the maximum amount of results to be received.
+* `offset`: use in conjunction with `max` to paginate the result set.
 
-Note: If neither `groupPath` nor `groupPathExact` are specified, then the default `groupPath` value of "*" will be used (matching jobs in all groups).  `groupPathExact` cannot be combined with `groupPath`.  You can set either one to "-" to match only the top-level jobs which are not within a group.
+**Note:** It is possible to disable result set pagination by setting the property `rundeck.api.paginatejobs.enabled=false` which is assumed to be true if not set.
+
+**Note:** If neither `groupPath` nor `groupPathExact` are specified, then the default `groupPath` value of "*" will be used (matching jobs in all groups).  `groupPathExact` cannot be combined with `groupPath`.  You can set either one to "-" to match only the top-level jobs which are not within a group.
 
 **Response**
 
