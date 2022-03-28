@@ -25,6 +25,7 @@ to have access via [sudo].
 - **2 CPUs**
   - 2 CPUs per instance
 - **4 GB RAM**
+  - 4GB for the JVM instance
 - **20 GB hard disk**
 - **Database**
   - Mysql version
