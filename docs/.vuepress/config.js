@@ -75,7 +75,7 @@ module.exports = {
     versionFull: setup.rundeckVersionFull,
     algolia: setup.base == 'docs' ? {
       appId: 'GRSXNRCDRG',
-      apiKey: '50ca83cbf53e21e93a02dc46488b12e0',
+      apiKey: 'c463f74d6f36a5af808650e0f69aadfa',
       indexName: 'prod_rundeck_docs',
       algoliaOptions: {
         hitsPerPage: 10,
