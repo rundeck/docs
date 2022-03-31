@@ -1,8 +1,9 @@
 # Security Advisories
 
-There are no currently no urgent security issues the team is working on.
+The Rundeck / Process Automation team is aware of the [emerging Spring vulnerabilities](https://spring.io/blog/2022/03/31/spring-framework-rce-early-announcement) and is working on any necessary fixes as more information is available.
 
-[For information about Log4j / Log4Shell please see this page.](log4j.md)
+More information will be available Friday April 1st in the morning time (Pacific) or sooner if possible.
+
 
 ## Past Rundeck CVEs
 
@@ -18,3 +19,5 @@ These are the Security Advisories Rundeck has issued in the past.  It is always 
     YAML deserialization can run untrusted code.
 * [CVE-2020-11009](CVE-2020-11009.md)<br>
     IDOR can reveal execution data and logs to unauthorized user.
+
+[For information about Log4j / Log4Shell please see this page.](log4j.md)
