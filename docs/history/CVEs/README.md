@@ -1,8 +1,10 @@
 # Security Advisories
 
-The Rundeck / Process Automation team is aware of the [emerging Spring vulnerabilities](https://spring.io/blog/2022/03/31/spring-framework-rce-early-announcement) and is working on any necessary fixes as more information is available.
+The Rundeck / Process Automation team is aware of the [emerging Spring vulnerabilities](https://spring.io/blog/2022/03/31/spring-framework-rce-early-announcement) and is working on the necessary fixes.  Updates will be provided below as we are able to make progress.
 
-More information will be available Friday April 1st in the morning time (Pacific) or sooner if possible.
+Updates:
+
+_Friday April 1st, 2022_ - Still working on integrating the new fixes/packages with Grails.
 
 
 ## Past Rundeck CVEs
