@@ -5,6 +5,7 @@ Release Date: March 22nd, 2022
 
 - [Download Rundeck](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
+- [Upgrade instructions](/upgrading/)
 
 # Rundeck 4.0 Release Notes
 

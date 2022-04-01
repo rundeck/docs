@@ -5,6 +5,7 @@ Release Date: December 14, 2021
 
 - [Download Rundeck](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
+- [Upgrade instructions](/upgrading/)
 
 
 :::danger Important Security Update

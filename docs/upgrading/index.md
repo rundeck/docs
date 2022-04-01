@@ -2,7 +2,7 @@
 
 - [General Upgrade Guide](upgrading.md) - General upgrading guide for Rundeck/Process Automation
 
-Specific instructions for specific Rundeck Versions:
+Specific instructions for upgrading to specific Rundeck Versions is below.  When upgrading from multiple versions behind be sure to follow all interim upgrade steps.
 
 - [Upgrade to Process Automation OnPrem 4.0](upgrading-to-4.md)
 - [Upgrade to Rundeck 3.4](upgrading-to-rundeck-3.4.md)

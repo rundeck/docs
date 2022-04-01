@@ -5,6 +5,7 @@ Release Date: January 18, 2022
 
 - [Download Rundeck](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
+- [Upgrade instructions](/upgrading/)
 
 Check out the new features and enhancements for Rundeck Enterprise and Rundeck Community included in this release.
 
