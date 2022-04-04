@@ -240,3 +240,10 @@ When you define a [Command](#command-step) or arguments to any Script or Job ref
 - Or use doubled-up quote characters
   - `"""double quotes"""`: interpreted as `"double quotes"`
   - `'''single quotes'''`: interpreted as `'single quotes'`
+
+::: tip
+On version 3.4.1 quoting in jobs was changed. If you want to keep using the same quoting behavior as previous versions, you can add a new property in "framework.properties" file.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {.bash}
+rundeck.feature.quoting.backwardCompatible=true
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+:::
