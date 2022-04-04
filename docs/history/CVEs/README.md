@@ -1,10 +1,12 @@
 # Security Advisories
 
-The Rundeck / Process Automation team is aware of the [emerging Spring vulnerabilities](https://spring.io/blog/2022/03/31/spring-framework-rce-early-announcement) and is working on the necessary fixes.  Updates will be provided below as we are able to make progress.
+**April 4th, 2022**
 
-Updates:
+The Rundeck / Process Automation team has released a hotfix version `4.0.1` to address the [vulnerabilities in Spring Framework announced here](https://spring.io/blog/2022/03/31/spring-framework-rce-early-announcement).
 
-_Friday April 1st, 2022_ - Still working on integrating the new fixes/packages with Grails.
+All future releases will also include this fix.
+
+[Download the latest version here](https://download.rundeck.com).
 
 
 ## Past Rundeck CVEs
