@@ -15,6 +15,11 @@ This fix brings the version of Grails up to `5.1.6` and Spring Framework up to `
 
 The specific Pull Requests can be reviewed using [this link](https://github.com/rundeck/rundeck/compare/release/4.0.0...release/4.0.1).
 
+:::danger
+Warning:  This release contains a bug that will cause issues in environments using a Load Balancer in front of Rundeck and running on https.  If your environment leverages a load balancer (NGINX, ELB, etc) and the `server.useForwardHeaders=true` is set there may be a situation where this version reverts to using `http` instead of `https`.
+
+Rundeck 4.1.0, due out mid-April, will address this bug.  For more information follow [this GitHub Issue](https://github.com/rundeck/rundeck/issues/7605).  (that version will include the Spring4Shell fixes covered in 4.0.1)
+:::
 
 ## Staff Contributors
 

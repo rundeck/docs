@@ -5,7 +5,7 @@ This document highlights changes for users upgrading _from_ Rundeck 3.4. See oth
 :::
 
 :::danger
-Warning:  The 4.0.0 release contains a bug that will cause issues with environments using a Load Balancer in front of Rundeck and running on https.  If your environment leverages a load balancer (NGINX, ELB, etc) and the `server.useForwardHeaders=true` is set there may be a situation where this version reverts to using `http` instead of `https`.  It is recommended to use version 4.1.0 or later to avoid this issue.
+Warning:  The 4.0.0/1 release contains a bug that will cause issues with environments using a Load Balancer in front of Rundeck and running on https.  If your environment leverages a load balancer (NGINX, ELB, etc) and the `server.useForwardHeaders=true` is set there may be a situation where this version reverts to using `http` instead of `https`.  It is recommended to use version 4.1.0 or later to avoid this issue.
 
 (Rundeck 4.1.0, due out mid-April, will address this bug.  For more information follow [this GitHub Issue](https://github.com/rundeck/rundeck/issues/7605).)
 :::
