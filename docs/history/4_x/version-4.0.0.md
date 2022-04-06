@@ -9,6 +9,12 @@ Release Date: March 22nd, 2022
 
 # Rundeck 4.0 Release Notes
 
+:::danger
+Warning:  This release contains a bug that will cause issues in environments using a Load Balancer in front of Rundeck and running on https.  If your environment leverages a load balancer (NGINX, ELB, etc) and the `server.useForwardHeaders=true` is set there may be a situation where this version reverts to using `http` instead of `https`.
+
+Rundeck 4.1.0, due out mid-April, will address this bug.  For more information follow [this GitHub Issue](https://github.com/rundeck/rundeck/issues/7605).
+:::
+
 ## Rundeck Enterprise has a new Name
 
 With the introduction of version 4.0 the Rundeck Enterprise version will be renamed to _PagerDuty Process Automation OnPrem_.  The Rundeck Cloud version announced late in 2021 is Generally Available and will be known as _PagerDuty Runbook Automation._ [Read more about Runbook Automation](/about/cloud/index.md). The Open Source version will continue to be _Rundeck._  The renames will take some time to implement, so bear with us as we update pages, documentation, and other areas of our new ecosystem.

@@ -4,16 +4,22 @@
 This document highlights changes for users upgrading _from_ Rundeck 3.4. See other [Upgrading](https://docs.rundeck.com/docs/upgrading/) Documents if you are upgrading from 3.3 or earlier.
 :::
 
+:::danger
+Warning:  The 4.0.0 release contains a bug that will cause issues with environments using a Load Balancer in front of Rundeck and running on https.  If your environment leverages a load balancer (NGINX, ELB, etc) and the `server.useForwardHeaders=true` is set there may be a situation where this version reverts to using `http` instead of `https`.  It is recommended to use version 4.1.0 or later to avoid this issue.
+
+(Rundeck 4.1.0, due out mid-April, will address this bug.  For more information follow [this GitHub Issue](https://github.com/rundeck/rundeck/issues/7605).)
+:::
+
 ## Result Data GA
 
-In Rundeck 3.4.2 we released an incubating feature for Result Data.  With Rundeck 4.0 the plugins were updated with new provider names to better represent the feature name.  Any job definitions that were using the incubating version will need to update their job definitions with the new provider name.
+In Rundeck 3.4.2 we released an incubating feature for Result Data.  With Rundeck 4.0 the plugins were updated with new provider names to better represent the feature name.  Job definitions using the incubating version will need to update the definition with the new provider name.
 
 When editing a job with previously configured incubating Result Data template or export Rundeck 4.0 will present an error message. If this is encountered it’s recommended to Cancel editing the job and follow one of the following steps.
 
 ### Ways to Update the Jobs
 
-* Export the Job Definition and search for the string `job-data` and replace it with `result-data` and re-import the job.
-* Export the Job Definition and copy the Result Data template or setting from the export and paste it into the  job definition in the UI and save the job.
+* Export the Job Definition and search for the string `job-data` and replace it with `result-data-json-template` and re-import the job.
+* Export the Job Definition and copy the Result Data template or setting from the export and paste it into the job definition in the UI and save the job.
 
 ## JSON Event Data Errors
 
