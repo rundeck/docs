@@ -18,8 +18,6 @@ By default, a key pair is generated in the following path `/home/USERNAME/.ssh`.
 
 To allow the Rundeck server to access this Remote Node we will add the public key of our Rundeck instance to the /`home/USERNAME/.ssh/authorized_keys` file on the remote SSH node.
 
-The key can be found in the following path:` /home/rundeck/.ssh/id_rsa.pub`
-
 **Note:** On RPM/DEB based installations, this key can be found at `/var/lib/rundeck/.ssh/id_rsa.pub` path. For [WAR-based](/administration/install/jar.md#installing-as-an-executable-war) installations, add the public key content of a previously key pair created with `ssh-keygen -m PEM` command on the remote `authorized_keys` file (`/home/USERNAME/.ssh/authorized_keys`).
 
 ## Configuring Rundeck
