@@ -5,20 +5,9 @@ Rundeck allows users to dispatch jobs to remote Linux/UNIX servers to manage and
 
 _Note: If this is the first time adding remote nodes. It is suggested to review the [Rundeck Tutorial](/learning/tutorial/preparing.md) before adding remote SSH nodes. This exercise assumes some experience with Linux, SSH Keys, and Rundeck basics covered in the Tutorial._
 
-
-## Generating Keys
-
-First, the SSH remote node must be configured so that it can be accessed using SSH Keys. Login to the remote node’s console and execute the `ssh-keygen` command.
-
-```
-$ ssh-keygen
-```
-
-By default, a key pair is generated in the following path `/home/USERNAME/.ssh`.
-
-To allow the Rundeck server to access this Remote Node we will add the public key of our Rundeck instance to the /`home/USERNAME/.ssh/authorized_keys` file on the remote SSH node.
-
-**Note:** On RPM/DEB based installations, this key can be found at `/var/lib/rundeck/.ssh/id_rsa.pub` path. For [WAR-based](/administration/install/jar.md#installing-as-an-executable-war) installations, add the public key content of a previously key pair created with `ssh-keygen -m PEM` command on the remote `authorized_keys` file (`/home/USERNAME/.ssh/authorized_keys`).
+:::warning
+This documentation is for use with the [Welcome Projects](/learning/) on non-production instances.  It is strongly recommended to follow best practices when generating, managing and configuring SSH keys and access.  For detailed configuration of SSH use [this documentation](/manual/projects/node-execution/ssh.md).
+:::
 
 ## Configuring Rundeck
 
