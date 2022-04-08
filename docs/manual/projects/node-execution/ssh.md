@@ -17,6 +17,10 @@ Out of the box typical node configuration to make use of these is simple.
 
 This will allow remote command and script execution on the nodes.
 
+:::warning
+  It is recommended that firewalls be used to only allow access to SSH nodes on port 22 from known endpoints.
+:::
+
 See below for more configuration options.
 
 **Sudo Password Authentication**
