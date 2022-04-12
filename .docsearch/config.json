@@ -6,8 +6,7 @@
           "url": "https://docs.rundeck.com/(?P<version>.*?)/",
           "variables": {
               "version": [
-                  "docs",
-                  "3.2.8"
+                  "docs"
               ]
           }
       }
