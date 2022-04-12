@@ -574,13 +574,13 @@ the client should be shared to the remote machine.
 
 Follow the steps given below to enable ssh to remote machines.
 
-Generate a new SSH Key using steps above.  Never use an existing key unless you know it's origin.
+Generate a new SSH Key using steps above.  Never use an existing key unless you know its origin.
 
 The ssh public key should be copied to the `authorized_keys` file of
 the remote machine. The public key will be available in
 `~/.ssh/id_rsa.pub` file.
 
-To enhance security be sure to remove any keys that are no longer needed.
+Be sure to remove any keys that are no longer needed.
 
 The `authorized_keys` file should be created in the `.ssh` directory of
 the remote machine.
