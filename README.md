@@ -79,7 +79,7 @@ replacing `[TOKEN]` with your GitHub API token. This token needs `repo` scope.
 
 Run the following with the milestone for the release.  This will create/overwrite an existing entry for the release.  Use wisely:
 ```bash
-npm run notes -- --milestone=4.0.0
+npm run notes -- --milestone=4.0.1
 ```
 
 **Draft**
