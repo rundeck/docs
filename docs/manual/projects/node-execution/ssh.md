@@ -517,6 +517,7 @@ local-ttl-ssh-agent=<time in sec>
   type keys.
 - Run key generation command(s) on a secure machine separate from the Rundeck Server.
 - After importing keys to nodes/Rundeck Key Storage remove the generated files from the secure machine.
+- When re-generating keys be sure to over-write the existing key.
 
 Here's an example of SSH RSA key generation on a Linux system:  
 
@@ -568,14 +569,18 @@ If you're using OpenSSH-Client 8.0p1-6build1 or higher (which is installed on Ub
 
 ### Configuring remote machine for SSH
 
-To be able to directly ssh to remote machines, the SSH public key of
+To be able to directly ssh to remote machines, an SSH public key of
 the client should be shared to the remote machine.
 
 Follow the steps given below to enable ssh to remote machines.
 
+Generate a new SSH Key using steps above.  Never use an existing key unless you know it's origin.
+
 The ssh public key should be copied to the `authorized_keys` file of
 the remote machine. The public key will be available in
 `~/.ssh/id_rsa.pub` file.
+
+To enhance security be sure to remove any keys that are no longer needed.
 
 The `authorized_keys` file should be created in the `.ssh` directory of
 the remote machine.
