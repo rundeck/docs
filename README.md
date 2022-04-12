@@ -85,5 +85,5 @@ npm run notes -- --milestone=4.0.0
 **Draft**
 Run the following with the milestone for the release. This will create the file named draft.md to avoid overwriting any existing version:
 ```bash
-npm run notes -- --milestone=4.0.0 --draft
+npm run notes -- --milestone=4.0.1 --draft
 ```
