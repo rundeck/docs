@@ -17,6 +17,10 @@ Out of the box typical node configuration to make use of these is simple.
 
 This will allow remote command and script execution on the nodes.
 
+:::warning
+  It is recommended that firewalls be used to only allow access to SSH nodes on port 22 from known endpoints.
+:::
+
 See below for more configuration options.
 
 **Sudo Password Authentication**
@@ -501,8 +505,7 @@ local-ttl-ssh-agent=<time in sec>
 - For public/private key authentication:
   _ There are many resources
   available on how to configure ssh to use public key authentication
-  instead of passwords such as:
-  [Password-less logins with OpenSSH](https://debian-administration.org/article/152/Password-less_logins_with_OpenSSH)
+  instead of passwords such as [this article from ArchLinux](https://wiki.archlinux.org/title/SSH_keys).
   _ If your private key file has a passphrase, each Job definition that will execute on the node must be configured correctly.
 - For password authentication:
   - each Node definition must be configured to allow password authentication
@@ -512,8 +515,11 @@ local-ttl-ssh-agent=<time in sec>
 
 - The Rundeck installation can be configured to use RSA _or_ DSA
   type keys.
+- Run key generation command(s) on a secure machine separate from the Rundeck Server.
+- After importing keys to nodes/Rundeck Key Storage remove the generated files from the secure machine.
+- When re-generating keys be sure to over-write the existing key.
 
-Here's an example of SSH RSA key generation on a Linux system:
+Here's an example of SSH RSA key generation on a Linux system:  
 
     $ ssh-keygen -t rsa -b 4096
     Generating public/private rsa key pair.
@@ -563,14 +569,18 @@ If you're using OpenSSH-Client 8.0p1-6build1 or higher (which is installed on Ub
 
 ### Configuring remote machine for SSH
 
-To be able to directly ssh to remote machines, the SSH public key of
+To be able to directly ssh to remote machines, an SSH public key of
 the client should be shared to the remote machine.
 
 Follow the steps given below to enable ssh to remote machines.
 
+Generate a new SSH Key using steps above.  Never use an existing key unless you know its origin.
+
 The ssh public key should be copied to the `authorized_keys` file of
 the remote machine. The public key will be available in
 `~/.ssh/id_rsa.pub` file.
+
+Be sure to remove any keys that are no longer needed.
 
 The `authorized_keys` file should be created in the `.ssh` directory of
 the remote machine.

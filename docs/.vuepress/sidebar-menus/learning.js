@@ -53,7 +53,8 @@ module.exports = [{
           sidebarDepth: 0,
           children: [
               '/learning/howto/ssh-on-linux-nodes.md',
-              '/learning/howto/configuring-windows-nodes.md'
+              '/learning/howto/configuring-windows-nodes.md',
+              '/learning/howto/revoke-ssh-keys.md'
           ]
         },
         {
