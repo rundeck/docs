@@ -6,18 +6,7 @@
 
 Also check out the 4.0 release list of larger feature enhancements for our Enterprise and Open Source versions of Rundeck.
 
-[Rundeck 4.0](4_x/version-4.0.0.md)
-
-:::danger Packages Repository
-The official download distributions of Rundeck are available on a new hosting service.  [Details here](/learning/howto/migrate-to-rundeck-packages-repo) provide full details about new repository sources and guidance about signing keys.
-:::
-
-:::danger MySQL Support
-**For MySQL users**: Starting with Rundeck `3.3.4` the MySQL JDBC driver is no longer be
-bundled with the distributions. See the [Upgrade Guide](/upgrading/upgrading-to-rundeck-3.3.4.md)
-for instructions to ensure your Rundeck installation can still connect to MySQL after
-the upgrading.
-:::
+[Rundeck 4.0.0](4_x/version-4.0.0.md)
 
 ## Version 4.x
 This list shows all the items fixed in the 4.x series [4.0.0 Release Notes](4_x/version-4.0.0.html)

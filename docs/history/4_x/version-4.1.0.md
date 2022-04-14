@@ -10,14 +10,20 @@ Release Date: April 13th, 2022
 
 Check out the new features and enhancements for Rundeck Enterprise and Rundeck Community included in this release.
 
+- H2 is updated to version 2.x to address a Critical vulnerability.
+
+:::danger
+Warning: The old version of the h2 database is not compatible with the newer version. As there is no mechanism to migrate a database in the new version automatically without including the old, vulnerable libraries the process must be done manually following.  See details on the [Upgrading to 4.1](/upgrading/upgrading-to-4.1.md) page.
+:::
+
 - Fixed scenario where `https` connections were reverting to `http` when running behind a load balancer.
 - Grails upgraded to `5.1.6` which addresses some cosmetic logging issues in the 4.0.0 version.
 - Spring Framework is upgraded to `5.3.18` to address [CVE-2022-22965](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-22965)
-- H2 is updated to version 2.x to address a Critical vulnerability.
+
 
 ## Commercial Versions
 
-### New Cloud System Plugins
+### New Plugins
 
 - New Job Steps to pull AWS CloudWatch logs into Job Output.
 - New AWS EC2 Node Health Check.
