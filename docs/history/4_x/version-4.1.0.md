@@ -8,7 +8,7 @@ Release Date: April 13th, 2022
 
 ## Overview
 
-Check out the new features and enhancements for Rundeck Enterprise and Rundeck Community included in this release.
+Check out the new features and enhancements for the commercial products (Runbook Automation and Process Automation On Prem formerly Rundeck Enterprise) and Rundeck Community included in this release.
 
 - H2 is updated to version 2.x to address a Critical vulnerability.
 
@@ -25,11 +25,13 @@ Warning: The old version of the H2 database is not compatible with the newer ver
 
 ### New Plugins
 
-- New Job Steps to pull AWS CloudWatch logs into Job Output.
-- New AWS EC2 Node Health Check.
-- New GCP Compute Node Health Check.
-- New ability to set custom DataDog API URLs for customers outside the U.S.
-- Private IP address is now visible on Azure Node Source.
+We continue to add plugins to help automate cloud operations. New plugins include:
+
+- [Job Steps to pull AWS CloudWatch](/manual/workflow-steps/aws-cloudwatch.md) logs into Job Output. These new plugins retrieve diagnostic data from AWS infrastructure and applications making it easier to run automated diagnostics for AWS across multiple accounts and products.
+- [AWS EC2 Node Health Check](/manual/healthcheckplugins/aws-ec2-healthcheck.md)
+- [GCP Compute Node Health Check](/manual/healthcheckplugins/gcp-compute-healthcheck.md)
+- Ability to set custom DataDog API URLs for customers outside the U.S.
+- Private IP address is now visible on nodes from [Azure Node Source](/manual/projects/resource-model-sources/azure.md).
 
 ### Improved Configuration Management
 Configuration of SSO settings in Configuration Management no longer require a restart.  Changes are also propagated to other cluster members upon saving.

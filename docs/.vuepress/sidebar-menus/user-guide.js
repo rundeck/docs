@@ -110,7 +110,9 @@ module.exports = [{
               '/manual/healthchecks',
               '/manual/healthcheckplugins/datadog.md',
               '/manual/healthcheckplugins/sensu.md',
-              '/manual/healthcheckplugins/azure-healthcheck.md'
+              '/manual/healthcheckplugins/azure-healthcheck.md',
+              '/manual/healthcheckplugins/aws-ec2-healthcheck.md',
+              '/manual/healthcheckplugins/gcp-compute-healthcheck.md'
           ]
         }
       ]
