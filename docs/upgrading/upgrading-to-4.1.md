@@ -6,7 +6,7 @@ Note: If you are using one of the **[supported production databases](/administra
 
 ## H2 Database Upgrade
 
-In release 4.1 the lib version of the h2 database was updated to `2.1.210`.  The old version of the H2 database is not compatible with the newer library. Since the old library has a critical security vulnerability we have not included it in the release and there is no mechanism to migrate the 1.x database in the version automatically by Rundeck.  When attempting an in-place upgrade from a previous version to 4.1 using H2 Rundeck startup will fail.
+In release 4.1.0 the lib version of the h2 database was updated to `2.1.210`.  The old version of the H2 database is not compatible with the newer library. Since the old library has a critical security vulnerability we have not included it in the release and there is no mechanism to migrate the 1.x database in the version automatically by Rundeck.  When attempting an in-place upgrade from a previous version to 4.1.0+ using H2 Rundeck startup will fail.
 
 ```
 [2022-04-14T16:06:22,414] ERROR pool.HikariPool - HikariPool-1 - Exception during pool initialization.

@@ -13,7 +13,7 @@ Check out the new features and enhancements for Rundeck Enterprise and Rundeck C
 - H2 is updated to version 2.x to address a Critical vulnerability.
 
 :::danger
-Warning: The old version of the h2 database is not compatible with the newer version. There is no mechanism to migrate a database in the new version automatically without including the old, vulnerable libraries. The process must be done manually following the details on the [Upgrading to 4.1](/upgrading/upgrading-to-4.1.md) page.
+Warning: The old version of the H2 database is not compatible with the newer version. There is no mechanism to migrate a database in the new version automatically without including the old, vulnerable libraries. The process must be done manually following the details on the [Upgrading to 4.1](/upgrading/upgrading-to-4.1.md) page.
 :::
 
 - Fixed scenario where `https` connections were reverting to `http` when running behind a load balancer.
@@ -67,8 +67,6 @@ Configuration of SSO settings in Configuration Management no longer require a re
 * [Upgrade grails 5.1.6 and Spring to 5.3.16](https://github.com/rundeck/rundeck/pull/7583)
 * [Upgrade h2 library version to 2.x](https://github.com/rundeck/rundeck/pull/7577)
 * [Fix can not uncheck the &quot;Keep going on success&quot; option for error handler](https://github.com/rundeck/rundeck/pull/7566)
-
-
 
 [Here is a link to the full list of public PRs](https://github.com/rundeck/rundeck/pulls?q=is%3Apr+milestone%3A4.1.0+is%3Aclosed)
 
