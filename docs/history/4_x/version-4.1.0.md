@@ -13,7 +13,7 @@ Check out the new features and enhancements for Rundeck Enterprise and Rundeck C
 - H2 is updated to version 2.x to address a Critical vulnerability.
 
 :::danger
-Warning: The old version of the h2 database is not compatible with the newer version. As there is no mechanism to migrate a database in the new version automatically without including the old, vulnerable libraries the process must be done manually following.  See details on the [Upgrading to 4.1](/upgrading/upgrading-to-4.1.md) page.
+Warning: The old version of the h2 database is not compatible with the newer version. There is no mechanism to migrate a database in the new version automatically without including the old, vulnerable libraries. The process must be done manually following the details on the [Upgrading to 4.1](/upgrading/upgrading-to-4.1.md) page.
 :::
 
 - Fixed scenario where `https` connections were reverting to `http` when running behind a load balancer.
@@ -38,7 +38,7 @@ Configuration of SSO settings in Configuration Management no longer require a re
 
 * Include Private IP address in Azure Node Source entries.
 * Fix Calendars Cancel button refresh issue
-* Add AWS EC2 Healthcheck Plugin
+* Add AWS EC2 Health check Plugin
 * Allow users to add custom base URL to DataDog Plugins
 * Fix: CPU usage showing negative value in Cluster Manager
 * Propagate system configuration refresh to other cluster members

@@ -1,6 +1,8 @@
 # Rundeck 4.1 Upgrade Notes
 
-> Note: If you are using one of the **[supported production databases](/administration/install/installing-rundeck.html#database-configuration)** these upgrade steps can be ignored.
+:::tip
+Note: If you are using one of the **[supported production databases](/administration/install/installing-rundeck.html#database-configuration)** these upgrade steps can be ignored.
+:::
 
 ## H2 Database Upgrade
 
@@ -18,11 +20,45 @@ org.h2.jdbc.JdbcSQLNonTransientException: General error: "The write format 1 is 
 **If you don't need to keep the data in your old H2 database:**
 
 1. Remove the files from `{RUNDECK_HOME}/server/data`.
-1. Restart Rundeck.  A new blank database will be created on bootstrap.
+1. Restart Rundeck.  A new blank database will be created when Rundeck starts up.
 
-> Note: This will wipe out all data in your Rundeck instance.  At a minimum we suggest backing up the files using the first steps below just in case you change your mind later.
+:::warning
+Note: This will wipe out all data in your Rundeck instance.  At a minimum we suggest backing up the files using the first steps below just in case you change your mind later.
+:::
+
+**If you need to keep the data in the old H2 database,** Rundeck has developed a script to help with migration.
+### Preparation:
+
+1. Create a backup directory `${backup_directory}` in your local file system to host the backup database files
+1. Clone the git repo [h2-v2-migration](https://github.com/rundeck-plugins/h2-v2-migration) into your local file system
+
+### Backup
+Before migration - copy and backup the database files somewhere safe:
+1. Stop the Rundeck application
+1. Copy the H2 database from the Rundeck application directory `{RUNDECK_HOME}/server/data` to the `${backup_directory}` There should be two files
+        `grailsdb.mv.db`
+        `grailsdb.trace.db`
+
+### Migration
+
+#### STEP 1. Generate the new version database
+
+Open a shell terminal and navigate into the `h2-v2-migration` repository folder. Execute the `migration.sh` shell command.
+```
+    migration.sh -f ${backup_directory}/grailsdb -u ${username} -p ${password}
+```
+
+- The `-f` parameter is required and should be the full path to the backup database file without the extension.
+- The optional `-u` parameter is used for database username. If it is not provided, an empty string will be used.
+- The optional `-p` parameter is used for database password. If it is not provided, an empty string will be used.
+
+By default, the `username` and `password` parameters are both empty string. If you have custom setup, please use your customized values.
+
+The migration.sh script will create a `output` folder at current location and put all generated files (including the v2 database file) into it.
 
 
-**If you need to keep the data in the old H2 database follow the steps below**
-
-_Working on steps..._
+#### STEP 2. Deploy the new version database
+- Use the generated database file `./output/v2/data/grails.mv.db` from the above step to replace your the target Rundeck application database at `{RUNDECK_HOME}/server/data/grails.mv.db`
+- Set the permission of the file `{RUNDECK_HOME}/server/data/grails.mv.db` correctly, so Rundeck application can access it with write permission. Login to the docker container’s shell to change the ownership of the database files by executing the below command:
+    `sudo chown rundeck:root {RUNDECK_HOME}/server/data/grailsdb.mv.db`
+- Restart the Rundeck application
