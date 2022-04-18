@@ -36,17 +36,13 @@ We continue to add plugins to help automate cloud operations. New plugins includ
 ### Improved Configuration Management
 Configuration of SSO settings in Configuration Management no longer require a restart.  Changes are also propagated to other cluster members upon saving.
 
-## Enterprise Updates
+## Additional Updates
 
-* Include Private IP address in Azure Node Source entries.
 * Fix Calendars Cancel button refresh issue
-* Add AWS EC2 Health check Plugin
-* Allow users to add custom base URL to DataDog Plugins
 * Fix: CPU usage showing negative value in Cluster Manager
 * Propagate system configuration refresh to other cluster members
 * Remove PagerDuty Impact Metric plugin
 * Fix Bug in Calendars related to quote characters in Job Options
-* SSO Configurations through Config Management will not require restart
 * Upgrade grails 5.1.6 and Spring 5.3.16
 
 
