@@ -1,4 +1,4 @@
-# Single SignOn - Azure Active Directory
+# Single SignOn (SSO) - Azure Active Directory
 
 Rundeck Enterprise can be configured to authenticate using Azure Active Directory.
 
