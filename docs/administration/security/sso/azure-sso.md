@@ -5,14 +5,16 @@ PagerDuty Process Automation can be configured to use Azure Active Directory for
 ## Configuring Azure Active Directory
 
 ### Create a new app registration
-<br>
-    ![app reg link1](~@assets/img/sso-azure-01-appreg1.jpg)
+
+The first thing to do is create a new application registration in Azure.
+
+![app reg link1](~@assets/img/sso-azure-01-appreg1.jpg)
 
 1. Begin by opening to Azure Active Directory
 2. Select **"App registrations"** on the left
 3. Select **"+ New registration"** near the top
 
-   ![app reg link2](~@assets/img/sso-azure-02-appreg2.jpg)
+![app reg link2](~@assets/img/sso-azure-02-appreg2.jpg)
 
        (Redo: wrong URL name)
 
@@ -25,7 +27,9 @@ PagerDuty Process Automation can be configured to use Azure Active Directory for
 
 ### Add the required application permissions
 
-   ![app perm link1](~@assets/img/sso-azure-03-apiperm1.jpg)
+Next, add the required permissions in Azure.
+
+![app perm link1](~@assets/img/sso-azure-03-apiperm1.jpg)
 
 1. Select **"API permissions"** on the left
 2. Select **"+ Add a permission"**
@@ -36,7 +40,7 @@ PagerDuty Process Automation can be configured to use Azure Active Directory for
 7. Select **"profile"** to enable the permission
 8. Select **"Add permission"** at the bottom
 
-   ![app perm link2](~@assets/img/sso-azure-04-apiperm2.jpg)
+![app perm link2](~@assets/img/sso-azure-04-apiperm2.jpg)
 
 1. Select **"API permissions"** on the left
 2. Select **"+ Add a permission"**
@@ -48,27 +52,31 @@ PagerDuty Process Automation can be configured to use Azure Active Directory for
 
 ### Create the Application Secret
 
-   ![app secret link1](~@assets/img/sso-azure-05-secret1.jpg)
+Next, create an application secret (ID & passsword) that will be used in the Process Automation configuration.  Note, if you lose the secret value/password, you can delete the existing secret and create a new one.
+
+![app secret link1](~@assets/img/sso-azure-05-secret1.jpg)
 
 1. Select **"Certificates & secrets"** on the left
 2. Select **"+ New client secret"**
 3. Enter **"PagerDuty Process Automation On-Prem"** for the Description (or any name you choice)
 4. Select **"Add"** at the bottom
 
-   ![app secret link2](~@assets/img/sso-azure-06-secret2.jpg)
+![app secret link2](~@assets/img/sso-azure-06-secret2.jpg)
 
 1. Copy the **Value** and store it someplace. You will use it as the clientSecret (password) when configuring Process Automation On-Prem. (Hint: use the Copy to clipboard button)
 2. Copy the **Secret ID** and store it someplace. You will use it as tge clientID when configuring Process Automation On-Prem. (Hint: use the Copy to clipboard button)
 
 ### Get the **"Directory (tenant) ID"**
 
-   ![app dirid link](~@assets/img/sso-azure-07-dirid.jpg)
+Last, capture the Directory (tenant) ID to use in configuring Process Automation.
+
+![app dirid link](~@assets/img/sso-azure-07-dirid.jpg)
     
 1. Click **"Overview"** on the left
 2. Copy the **"Directory (tenant) ID"** and store it someplace.  You will use it in the URL when configuring Process Automation On-Prem. (Hint: use the Copy to clipboard button)
 
 
-## Configuring PagerDuty Process Automation On-Prem
+## Configure PagerDuty Process Automation On-Prem to use Azure Active Directory for Authentication
 
 Azure Active Directory integration is configured within the `rundeck-config.properties` file.  Below are the required and optional settings to be added.  Be sure to fill in your Directory (tenant) ID, Secret ID and Value that you previously saved. After making the changes to the config file, a server restart is required.
 
@@ -81,15 +89,16 @@ rundeck.sso.loginButton.url=oauth/azure
 rundeck.security.oauth.azure.autoConfigUrl=https://login.microsoftonline.com/<DIRECTORY_TENANT_ID>/v2.0  
 rundeck.security.oauth.azure.clientId=<SECRET_ID>  
 rundeck.security.oauth.azure.clientSecret=<SECRET_VALUE>  
+rundeck.security.syncOauthUser=true  
   
 # Map Azure groups by default (can be commented out if not mapping group permissions)  
 framework.plugin.UserGroupSource.AzureGroupSource.enabled=true  
 rundeck.security.oauth.azure.scope=openid email profile https://graph.microsoft.com/Directory.Read.All
   
-# Alternative user detail attributes (can be enabled if using non-standard attribute names)  
-#rundeck.ssoSyncAttribNames.firstname=givenname  
-#rundeck.ssoSyncAttribNames.lastname=surname  
-#rundeck.ssoSyncAttribNames.email=preferred_username  
+# Map Azure user detail attributes  
+rundeck.ssoSyncAttribNames.firstname=given_name  
+rundeck.ssoSyncAttribNames.lastname=family_name  
+rundeck.ssoSyncAttribNames.email=preferred_username  
   
 ```
 
@@ -107,7 +116,7 @@ If your Azure Active Directory attributes are non-standard, you can specify the 
 
 ## Note: Debugging tips
 
-If you are having trouble with the Azure integration, these additional config file entries will generate helpful debugging information.
+If you are having trouble with the Azure integration, these additional config file entries will generate helpful debugging information.  Adding the following lines to the **log4j.properties** file will produce additional debugging output in the services.log file.
 
 ```
 #SSO ADDTL LOGGING
