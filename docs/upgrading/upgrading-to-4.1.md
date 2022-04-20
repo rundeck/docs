@@ -41,24 +41,29 @@ Before migration - copy and backup the database files somewhere safe:
 
 ### Migration
 
-#### STEP 1. Generate the new version database
+#### STEP 1: Generate the new version database
 
-Open a shell terminal and navigate into the `h2-v2-migration` repository folder. Execute the `migration.sh` shell command.
-```
-    migration.sh -f ${backup_directory}/grailsdb -u ${username} -p ${password}
-```
+Open a shell terminal and navigate into the `h2-v2-migration` git repo. Execute the `migration.sh` shell command.
+
+
+    $_>/bin/sh migration.sh -f ${backup_directory}/grailsdb -u ${username} -p ${password}
+
 
 - The `-f` parameter is required and should be the full path to the backup database file without the extension.
 - The optional `-u` parameter is used for database username. If it is not provided, an empty string will be used.
+    - If your Rundeck installation is RPM/Deb/War use `sa` for the user name.
+    - If your Rundeck installation is from Docker the user name is blank. (leave `-u` out of command)
 - The optional `-p` parameter is used for database password. If it is not provided, an empty string will be used.
 
-By default, the `username` and `password` parameters are both empty string. If you have custom setup, please use your customized values.
+By default, the `username` and `password` parameters are both empty string. If you have any custom setup, please use your customized values.
 
 The migration.sh script will create a `output` folder at current location and put all generated files (including the v2 database file) into it.
 
 
-#### STEP 2. Deploy the new version database
+#### STEP 2: Deploy the new version database
 - Use the generated database file `./output/v2/data/grails.mv.db` from the above step to replace your the target Rundeck application database at `{RUNDECK_HOME}/server/data/grails.mv.db`
 - Set the permission of the file `{RUNDECK_HOME}/server/data/grails.mv.db` correctly, so Rundeck application can access it with write permission. Login to the docker container’s shell to change the ownership of the database files by executing the below command:
-    `sudo chown rundeck:root {RUNDECK_HOME}/server/data/grailsdb.mv.db`
+
+       sudo chown rundeck:root {RUNDECK_HOME}/server/data/grailsdb.mv.db
+- Add the string `;NON_KEYWORDS=MONTH,HOUR,MINUTE,YEAR,SECONDS` to _datasource.url_ in rundeck-config.properties file, i.e., `datasource.url = jdbc:h2:file:[rdbase]/server/data/grailsdb;NON_KEYWORDS=MONTH,HOUR,MINUTE,YEAR,SECONDS;DB_CLOSE_ON_EXIT=FALSE`
 - Restart the Rundeck application
