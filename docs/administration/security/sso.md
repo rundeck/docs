@@ -9,7 +9,7 @@ There are 3 supported SSO solutions available:
 
 - [Okta](sso/okta.md)
 - [Ping](sso/ping.md)
-- [Azure Active Directory](sso/azure.md)
+- [Azure Active Directory](sso/azure-sso.md)
 
 It is possible to connect other OpenID Connect based solutions, but functionality may be limited.
 
