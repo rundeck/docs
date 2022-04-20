@@ -12,7 +12,7 @@ Release Date: March 22nd, 2022
 :::danger
 Warning:  This release contains a bug that will cause issues in environments using a Load Balancer in front of Rundeck and running on https.  If your environment leverages a load balancer (NGINX, ELB, etc) and the `server.useForwardHeaders=true` is set there may be a situation where this version reverts to using `http` instead of `https`.
 
-Rundeck 4.1.0, due out mid-April, will address this bug.  For more information follow [this GitHub Issue](https://github.com/rundeck/rundeck/issues/7605).
+[Rundeck 4.1.0 fixes this bug](/history/4_x/version-4.1.0.md).
 :::
 
 ## Rundeck Enterprise has a new Name
