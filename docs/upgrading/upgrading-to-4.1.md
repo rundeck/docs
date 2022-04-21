@@ -1,7 +1,7 @@
 # Rundeck 4.1 Upgrade Notes
 
 :::warning
-We have seen a few customers that are not using H2 as their database have an issue booting after the 4.1.0 upgrade.  The error will be the same error shown in the Database Upgrade section below.  We are looking into the issue. The current suggestion is to remove the `{RUNDECK_HOME}/server/config/bootstrap.yml` file and restart Rundeck.
+We have seen a few customers that are not using H2 as their database have an issue booting after the 4.1.0 upgrade.  The error will be the same error shown in the Database Upgrade section below. The solution is to remove the `{RUNDECK_HOME}/server/config/bootstrap.yml` file and restart Rundeck.  The file will be regenerated correctly on restart.
 :::
 
 ## H2 Database Upgrade
