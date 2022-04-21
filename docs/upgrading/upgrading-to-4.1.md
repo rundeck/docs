@@ -1,7 +1,7 @@
 # Rundeck 4.1 Upgrade Notes
 
-:::tip
-Note: If you are using one of the **[supported production databases](/administration/install/installing-rundeck.html#database-configuration)** these upgrade steps can be ignored.
+:::warning
+We have seen a few customers that are not using H2 as their database have an issue booting after the 4.1.0 upgrade.  The error will be the same error shown in the Database Upgrade section below.  We are looking into the issue. The current suggestion is to remove the `{RUNDECK_HOME}/server/config/bootstrap.yml` file and restart Rundeck.
 :::
 
 ## H2 Database Upgrade
@@ -16,6 +16,10 @@ org.h2.jdbc.JdbcSQLNonTransientException: General error: "The write format 1 is 
 ```
 
 ### H2 Migration Options
+
+:::tip
+Note: If you are using one of the **[supported production databases](/administration/install/installing-rundeck.html#database-configuration)** these migration steps can be ignored.
+:::
 
 **If you don't need to keep the data in your old H2 database:**
 
