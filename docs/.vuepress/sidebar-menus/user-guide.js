@@ -127,7 +127,6 @@ module.exports = [{
         {
           title: 'Key Storage Plugins',
           collapsable: true,
-          path: '/manual/key-storage/storage-plugins',
           children: [
             '/manual/key-storage/storage-plugins/thycotic-storage.md',
             '/manual/key-storage/storage-plugins/vault.md',
