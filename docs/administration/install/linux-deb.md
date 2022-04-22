@@ -55,7 +55,7 @@ dpkg --purge rundeck && apt install rundeck
 
 ### Install deb package directly
 
-Download `deb` package from [the download page](https://download.rundeck.com/eval/) and run:
+Download `deb` package from [the download page](https://download.rundeck.com/) and run:
 
 ```bash
 sudo dpkg -i rundeckpro-enterprise_{{{rundeckVersionFull}}}-1_all.deb
