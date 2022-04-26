@@ -17,7 +17,7 @@ To configure credentials within the Job Step, place your AWS Access Key into the
 ![plugin-step-creds](@assets/img/aws-cloudwatch-logs-creds.png)<br>
 <br>
 [Optionally] configure credentials at the Project level, navigate to **Project Settings -> Edit Configuration -> Edit Configuration File** and insert the following properties into the Config File:
-**`project.aws.acess_key`** and **`project.aws.secret_key_path`** and **`project.aws.region`**:<br><br>
+**`project.aws.access_key`** and **`project.aws.secret_key_path`** and **`project.aws.region`**:<br><br>
 ![project-creds](@assets/img/aws-cloudwatch-logs-project-creds.png)<br>
 
 [Optionally] configure credentials at the Framework level (spanning across multiple Projects), use [Configuration Management](/manual/configuration-mgmt/configmgmt.html#configuration-management-enterprise)
