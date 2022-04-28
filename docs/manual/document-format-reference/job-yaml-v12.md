@@ -861,6 +861,12 @@ Defines a notification for the job. You can include any of `onsuccess`, `onfailu
     `urls`
 
     :    A comma-separated list of URLs to use as webhooks
+    `httpMethod`
+
+    :    HTTP method (get/post) used in the webhooks
+    `format`
+
+    :    The payload format (xml/json) used in the webhooks
 
     [`plugin`](#plugin)
 
@@ -871,34 +877,84 @@ Example:
 ```yaml
   notifyAvgDurationThreshold: '+30'
   notification:
+    onavgduration:
+    - email:
+        recipients: test@example.com
+        subject: Job Exceeded average duration
+    - plugin:
+      - type: my-plugin
+        configuration:
+          somekey: somevalue
     onfailure:
-      recipients: tom@example.com,shirley@example.com
-    onsuccess:
-      urls: 'http://server/callback?id=${execution.id}&status=${execution.status}&trigger=${notification.trigger}'
-      plugin:
-        type: myplugin
+    - email:
+        recipients: 'tom@example.com,shirley@example.com'
+    - email:
+        attachLog: 'true'
+        attachLogInline: true
+        recipients: manager@example.com
+        subject: JOB-FAILURE
+    onretryablefailure:
+    - plugin:
+      - type: my-plugin
+        configuration:
+          somekey: somevalue
+      - type: my-plugin
         configuration:
           somekey: somevalue
     onstart:
-      -  plugin:
-          type: myplugin
-          configuration:
-            somekey: somevalue
-      -  plugin:
-          type: otherplugin
-          configuration:
-            a: b
+      email:
+        attachLog: true
+        attachLogInFile: true
+        recipients: tom@example.com
+        subject: JOB-STARTED
+    onsuccess:
+    - format: xml
+      httpMethod: post
+      urls: http://server/callback?id=${execution.id}&status=${execution.status}&trigger=${notification.trigger}
+    - plugin:
+      - type: my-plugin
+        configuration:
+          somekey: somevalue
+```
+
+#### Another valid format
+If there is no need to have more than one notification of the same type on **any** trigger the following is a valid definition. 
+
+Example:
+
+```yaml
+  notifyAvgDurationThreshold: '+30'
+  notification:
+    onstart:
+      email:
+        attachLog: 'true'
+        attachLogInFile: true
+        recipients: tom@example.com
+        subject: JOB-STARTED
+    onfailure:
+      email:
+        recipients: 'tom@example.com,shirley@example.com'
+    onsuccess:
+      urls: 'http://server/callback?id=${execution.id}&status=${execution.status}&trigger=${notification.trigger}'
+      httpMethod: post
+      format: xml
+      plugin:
+        type: my-plugin
+        configuration:
+          somekey: somevalue
     onavgduration:
       email:
         recipients: test@example.com
         subject: Job Exceeded average duration
       plugin:
-        configuration: {}
-        type: MinimalNotificationPlugin
+        type: my-plugin
+        configuration:
+          somekey: somevalue
     onretryablefailure:
       plugin:
-        configuration: {}
-        type: MinimalNotificationPlugin
+        type: my-plugin
+        configuration:
+          somekey: somevalue
 ```
 
 - For more information about the Webhook mechanism used, see the chapter [Integration - Webhooks](/manual/04-jobs.md#webhooks).
