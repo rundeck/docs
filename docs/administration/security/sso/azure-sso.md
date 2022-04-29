@@ -90,6 +90,10 @@ rundeck.security.oauth.azure.clientId=<SECRET_ID>
 rundeck.security.oauth.azure.clientSecret=<SECRET_VALUE>
 rundeck.security.syncOauthUser=true
 
+# The follow can be used to make the Azure AD email address as the username
+# which enables you to use the email address as the username in ACL policies
+#rundeck.security.oauth.azure.principleKeys=preferred_username
+
 # Map Azure groups by default (can be commented out if not mapping group permissions)
 framework.plugin.UserGroupSource.AzureGroupSource.enabled=true
 rundeck.security.oauth.azure.scope=openid email profile https://graph.microsoft.com/Directory.Read.All
