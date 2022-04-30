@@ -49,8 +49,9 @@ dpkg --list | grep -i rundeck
 2. Then, remove existing version to perform a clean install.
 
 ```bash
-apt remove rundeck
-dpkg --purge rundeck && apt install rundeck
+sudo apt remove rundeck
+sudo dpkg --purge rundeck && apt install rundeck
+
 ```
 
 ### Install deb package directly
