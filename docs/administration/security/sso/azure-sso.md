@@ -131,7 +131,7 @@ logger.oauth2.additivity=false
 logger.oauth2.appenderRef.stdout.ref=STDOUT
 ```
 
-### Note: Azure Government
+## Note: Azure Government
 
 The Azure Groups plugin uses the MS Graph API endpoint to gather the groups.  By default it will use the endpoint `https://graph.microsoft.com/v1.0/users/`.  For some Azure environments (Government, etc.) a different endpoint may be needed. ([more info](https://docs.microsoft.com/en-us/answers/questions/434905/microsoft-graph-api-for-azure-us-government-plan.html))  
 
