@@ -78,9 +78,8 @@ Last, capture the Directory (tenant) ID to use in configuring Rundeck.
 
 Azure Active Directory integration is configured within the `rundeck-config.properties` file.  Below are the required and optional settings to be added. Be sure to substitute your Directory (tenant) ID, Secret ID and Value (Password) that you previously saved. After making the changes to the config file, a server restart is required.
 
-```
-
-# rundeck-config.properties | Azure SSO
+```properties
+# rundeck-config.properties: Azure SSO
 rundeck.security.oauth.enabled=true
 rundeck.sso.loginButton.enabled=true
 rundeck.sso.loginButton.title=Login with Azure
@@ -90,8 +89,7 @@ rundeck.security.oauth.azure.clientId=<SECRET_ID>
 rundeck.security.oauth.azure.clientSecret=<SECRET_VALUE>
 rundeck.security.syncOauthUser=true
 
-# Map Azure groups by default (can be commented out if not mapping group permissions)
-framework.plugin.UserGroupSource.AzureGroupSource.enabled=true
+# Define the Azure scopes to map
 rundeck.security.oauth.azure.scope=openid email profile https://graph.microsoft.com/Directory.Read.All
 
 # Map Azure user detail attributes
@@ -99,8 +97,16 @@ rundeck.ssoSyncAttribNames.firstname=given_name
 rundeck.ssoSyncAttribNames.lastname=family_name
 rundeck.ssoSyncAttribNames.email=preferred_username
 
+# Optional: The follow can be used to make the Azure AD email address as the username
+# which enables you to use the email address as the username in ACL policies
+#rundeck.security.oauth.azure.principleKeys=preferred_username
 ```
 
+```properties
+# framework.properties: Azure SSO
+# Map Azure groups by default (can be commented out if not mapping group permissions)
+framework.plugin.UserGroupSource.AzureGroupSource.enabled=true
+```
 ### Important: First Login Approval
 
 Upon first login to Rundeck using Azure SSO an Azure Admin level user will need to consent to the `Directory.Read.All` permission. Make sure to click the checkbox that asks to consent for the **whole organization**.
@@ -115,22 +121,23 @@ If your Azure Active Directory attributes are non-standard, you can specify the 
 
 ## Note: Debugging tips
 
-If you are having trouble with the Azure SSO integration, these additional config file entries will generate helpful debugging information.  Adding the following lines to the `log4j.propertie`* file will produce additional debugging output in the `services.log` file.
+If you are having trouble with the Azure SSO integration, these additional config file entries will generate helpful debugging information.  Adding the following lines to the `log4j2.propertie`* file will produce additional debugging output in the `services.log` file.
 
-```
-# log4j.properties | SSO logging
+```properties
+# log4j2.properties | SSO logging
 logger.oauth2.name=org.springframework.security.oauth2
 logger.oauth2.level=debug
 logger.oauth2.additivity=false
 logger.oauth2.appenderRef.stdout.ref=STDOUT
 ```
 
-### Note: Azure Government
+## Note: Azure Government
 
 The Azure Groups plugin uses the MS Graph API endpoint to gather the groups.  By default it will use the endpoint `https://graph.microsoft.com/v1.0/users/`.  For some Azure environments (Government, etc.) a different endpoint may be needed. ([more info](https://docs.microsoft.com/en-us/answers/questions/434905/microsoft-graph-api-for-azure-us-government-plan.html))  
 
 The endpoint can be changed using the following setting using Configuration Management or the `framework.properties` file:
 
-```
+```properties
+# framework.properties: Change the default endpoint
 framework.plugin.UserGroupSource.AzureGroupSource.baseApiEndpoint=<NEW_URL>
 ```

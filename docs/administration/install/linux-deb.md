@@ -44,13 +44,13 @@ sudo apt-get install rundeckpro-enterprise
 1. First, Check for existing versions installed
 
 ```bash
-dpkg --list | grep -i rundeck
+dpkg --list | grep -i rundeckpro-enterprise
 ```
 2. Then, remove existing version to perform a clean install.
 
 ```bash
-apt remove rundeck
-dpkg --purge rundeck && apt install rundeck
+apt remove rundeckpro-enterprise
+dpkg --purge rundeckpro-enterprise && apt install rundeckpro-enterprise
 ```
 
 ### Install deb package directly
