@@ -5,7 +5,7 @@ MySQL 5.6 is now End of Life.  Rundeck will offer limited support on that versio
 
 ## Install MySQL
 
-Install MySQL using their installation guides [here](https://dev.mysql.com/doc/refman/8.0/en/installing.html)
+Install MySQL using the installation guides [here](https://dev.mysql.com/doc/refman/8.0/en/installing.html)
 
 ## Configure MySQL
 
@@ -25,7 +25,7 @@ MySQL 5.7 is in extended support but does not have the `utf8mb4` as a default ch
 
 ### MySQL 5.6
 
-MySQL 5.6 is End-of-Life and no longer fully supported as a backend.  If you are currently using this it's strongly recommended to upgrade those instances.
+MySQL 5.6 is End-of-Life and no longer fully supported as a backend.  Rundeck strongly recommends upgrading in-use instances of MySQL 5.6.
 
 ## Setup Rundeck Database
 
@@ -45,7 +45,7 @@ Next, create the MySQL user for the rundeck database:
     mysql> create user 'rundeckuser'@'localhost' identified by 'rundeckpassword';
     Query OK, 1 row affected (0.00 sec)
 
-Then "grant" access for your new user, and specify the hostname the Rundeck server will connect from. if it is the same server, use "localhost".
+Then "grant" access to the new user, and specify the hostname the Rundeck server will connect from. if it is the same server, use "localhost".
 
     mysql> grant ALL on rundeck.* to 'rundeckuser'@'localhost';
     Query OK, 1 row affected (0.00 sec)
