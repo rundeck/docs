@@ -80,7 +80,7 @@ The root URL path for all calls to the API in this version is:
 ## JSON Support
 
 
-The API usees JSON for all API-level information.  Some import/export features support YAML, XML, or `text/plain` formatted documents.
+The API uses JSON for all API-level information.  Some import/export features support YAML, XML, or `text/plain` formatted documents.
 
 As of API version 14, all endpoints support JSON format, with content type `application/json`, with one exception ([/api/V/project/[PROJECT]/jobs/export][/api/V/project/\[PROJECT\]/jobs/export]).
 
