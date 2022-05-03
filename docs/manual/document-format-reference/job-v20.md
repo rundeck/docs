@@ -1286,11 +1286,54 @@ urls
 
 : comma-separated list of URLs
 
+httpMethod
+
+: HTTP method (get/post)
+
+format
+
+: The payload format (xml/json)
+
+_Example_
+
+```xml 
+<webhook urls="http://server/callback?id=${execution.id}&status=${execution.status}&trigger=${notification.trigger}" format='json' httpMethod='post'/>
+```
+
+#### Other supported definition
+In case of **not** having two or more notifications of the same type in the same trigger (for all triggers), the following webhook xml definition is also supported:
+
+_Tags_
+
+webhook
+
+: comma-separated list of URLs
+
+httpMethod
+
+: HTTP method (get/post)
+
+format
+
+: The payload format (xml/json)
+
+_Attributes_
+
+webhook: urls
+
+: comma-separated list of URLs
+
 _Example_
 
 ```xml 
 <webhook urls="http://server/callback?id=${execution.id}&status=${execution.status}&trigger=${notification.trigger}"/>
+<format>xml</format>
+<httpMethod>post</httpMethod>
 ```
+
+:::warning
+If having two or more notifications of the same type in any trigger, the last metioned approach is not a valid webhook notification definition.
+:::
 
 - For more information about the Webhook mechanism used, see the chapter [Integration - Webhooks](/manual/04-jobs.md#webhooks).
 
