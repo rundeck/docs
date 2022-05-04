@@ -100,6 +100,7 @@ SSH Connection settings (See [Projects - Node Execution - SSH](/manual/projects/
 
 Other settings:
 
+- `rundeck.server.uuid`: This is used to manually specify the server UUID for certain cluster and licensing needs.
 - `framework.log.dispatch.console.format`: Default format for non-terse node execution logging run by the `dispatch` CLI tool.
 - `execution.script.tokenexpansion.enabled`: Whether inline script token expansion is enabled, default `true`. If `false`, the "Inline Script Content" syntax described in [User Guide - Creating Job Workflows - Context Variables](/manual/job-workflows.md#context-variables) is disabled.
 - `communityNews.disabled`: Default is not set, or false. Disables the external polling of Community News feed. Link will persist but will not poll, and clicking this link will open a new browser tab and navigate to the web-based version of Community News.
@@ -260,7 +261,7 @@ Some of the properties that work with live reloading:
 * `rundeck.security.ldap.bindPassword`
 * `rundeck.gui.login.welcomeHtml`
 * `rundeck.gui.instanceName`
- 
+
 
 
 ### Security
@@ -654,13 +655,13 @@ First Load Asynch: true/false
 : `rundeck.nodeService.nodeCache.firstLoadAsynch=false` The default for whether the first load of a project's nodes should be performed synchronously or not. If set to `true`, and the [Project Nodes > Synchronous First Load](/manual/projects/project-create.md#project-nodes) value is unset, then the initial load of a Project's nodes when the cache is empty will be done in the background asynchronously. Otherwise the initial load is done synchronously, possibly causing a delay at Rundeck startup or Job execution startup. A Project level configuration value will override this default.
 
 ### Limit displayed Job execution Log Output
- 
+
 Limit the amount of lines displayed in Log Output when following the execution of a Job that is running (not finished yet) after a configurable limit has been reached.
 If the value is not defined, default behavior is to display all the generated output
 
 Trim Output: Max size of visible Log Output (not present by default).
 
-: `rundeck.logviewer.trimOutput=250kb` Remove the oldest lines in Log Output after displaying 250kb of logs 
+: `rundeck.logviewer.trimOutput=250kb` Remove the oldest lines in Log Output after displaying 250kb of logs
 
 
 ### Groovy config format
