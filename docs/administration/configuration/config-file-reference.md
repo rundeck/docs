@@ -511,6 +511,17 @@ rundeck.execution.stats.retryDelay=5000
 
 Delay is in milliseconds. If a max is set to `-1`, then retries will happen indefinitely.
 
+### Execution log settings
+
+You can globally specify for all your jobs a log size limit and action as you needed.
+
+```properties
+rundeck.execution.logs.output.limit = 5MB
+rundeck.execution.logs.output.limitAction = truncate
+```
+- `rundeck.execution.logs.output.limit`. Show an error when that limit is exceeded. Could be entered either maximum total line-count (e.g. "100"), maximum per-node line-count ("100/node"), or maximum log file size ("100MB", "100KB", etc.), using "GB","MB","KB","B" as Giga- Mega- Kilo- and bytes.
+- `rundeck.execution.logs.output.limitAction`. Is the action applied when the limit is achieved. It is triggered only if there is a value at rundeck.execution.logs.output.limit. The values accepted are ‘truncate' or 'halt’. The default value if it does not set is 'halt'.
+
 ### Metrics Capturing
 
 Rundeck captures metrics using the [Metrics](http://metrics.dropwizard.io/3.0.2/) library.
