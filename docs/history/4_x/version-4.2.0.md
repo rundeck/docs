@@ -9,8 +9,10 @@ Release Date: May 11, 2022
 
 ## Overview
 
+Check out the new features and enhancements for the commercial products (Runbook Automation and Process Automation On Prem formerly Rundeck Enterprise) and Rundeck Community included in this release. Release includes:
+
 - New ECS/Fargate Node Source.
-- More security fixes from a valued community member.  Thank you @paulcalabro for the Pull Requests.
+- More security fixes from a valued community member. Thank you @paulcalabro for the Pull Requests.
 - Simplified configuration for Vault and Thycotic Key Storage plugins directly in the UI.
 - Lots of Bug fixes and UI updates.
 
