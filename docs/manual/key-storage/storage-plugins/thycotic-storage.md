@@ -23,6 +23,7 @@ rundeck.storage.provider.1.config.username=thycotic-username
 rundeck.storage.provider.1.config.password=password
 rundeck.storage.provider.1.config.address=https://example.secretservercloud.com
 rundeck.storage.provider.1.config.allowSelfSignedCert=true
+rundeck.storage.provider.1.config.maximumResources=100
 ```
 :::
 ::::
@@ -50,3 +51,6 @@ rundeck.storage.provider.1.config.allowSelfSignedCert=true
 
 - **allowSelfSignedCert**
 : Set to true if wishing to use self-signed certificates to access the Thycotic server.
+
+- **maximumResources**
+: Default value: 100 . This value allows the user to customize the number of resources to retrieve from thycotic.
