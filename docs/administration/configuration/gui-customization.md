@@ -10,15 +10,16 @@ these properties in the [rundeck-config.properties](/administration/configuratio
 ### rundeck.gui.logo
 - Example: ```rundeck.png```
 - min version: 3.0.1
+- Does not require restart.
 
-Requires staticUserResources to be enabled. Sets the user's logo (e.g. company/org logo) on the login, logout pages and in the header of the application
+Requires staticUserResources to be enabled. Sets the user's logo (e.g. company/org logo) on the login, logout pages and in the header of the application.  See `rundeck.gui.staticUserResources.enabled` for file location.
 
 
 ### rundeck.gui.logoSmall
 - Example: ```rundeck.small.png```
 - min version: 3.0.1
 
-Requires staticUserResources to be enabled. Sets a small user's logo (e.g. company/org logo) to be used in place of the larger logo in the header of the application.
+Requires staticUserResources to be enabled. Sets a small user's logo (e.g. company/org logo) to be used in place of the larger logo in the header of the application.  See `rundeck.gui.staticUserResources.enabled` for file location.
 
 
 ### rundeck.gui.sidebarColor
@@ -73,6 +74,7 @@ Title shown in app header
 ### rundeck.gui.staticUserResources.enabled
 - Example: ```TRUE```
 - min version: 2.x
+- Requires a restart
 
 Enable serving static files from $RDECK_BASE/user-assets dir. This must be set to true if using a custom logo.
 
