@@ -27,7 +27,7 @@ Downloads:
 **Updates**
 
 _Update May 10, 2022_
-The JIRA plugins bundled with Rundeck Enterprise utilize the JIRA REST Java Client Library.  This includes a Log4j version 1.2 that will flag security scanners.  Atlassian states that "Some on-premises products use an Atlassian-maintained fork of Log4j 1.2.17, which is not vulnerable to CVE-2021-44228".
+The JIRA plugins bundled with Rundeck Enterprise utilize the JIRA REST Java Client Library.  This includes a Log4j version 1.2 that will flag security scanners.  Atlassian states that _"Some on-premises products use an Atlassian-maintained fork of Log4j 1.2.17, which is not vulnerable to [CVE-2021-44228][]"_.
 More details at [FAQ from Atlassian](https://confluence.atlassian.com/kb/faq-for-cve-2021-44228-1103069406.html).
 After upgrading to a minimum version listed above, if your installation is not using JIRA it is safe to remove the `rundeckpro-jira-plugins-*.jar` from the `libext` folder.  (You must still update to a version above to mitigate all issues.)
 
@@ -48,7 +48,7 @@ This CVE indicates a potential DOS attack is possible even with the mitigation o
 
 ### Mitigation Options
 
-Rundeck versions 3.4.6 and below can mitigate some risk with the actions below.  Note the [CVE-2021-045056][] says a Denial-of-Service is still possible even with these mitigations.
+Rundeck versions 3.4.6 and below can mitigate some risk with the actions below.  Note the [CVE-2021-45056][] says a Denial-of-Service is still possible even with these mitigations.
 
 * Add this flag to the JVM options for starting rundeck: `-Dlog4j2.formatMsgNoLookups=true`
 * Modify the file `$RDECK_BASE/server/config/log4j2.properties`, replace the string `%m` with `%m{nolookups}`
@@ -58,3 +58,4 @@ Rundeck versions 3.4.6 and below can mitigate some risk with the actions below. 
 [CVE-2021-44228]: https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-44228
 [CVE-2021-45046]: https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-45046
 [CVE-2021-45105]: https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-45105
+[CVE-2021-40456]: https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-40456
