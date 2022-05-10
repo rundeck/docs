@@ -94,12 +94,25 @@ For example, you can put this in the mappingParams field in the GUI to change th
 **`tags.default=mytag, mytag2;tag.stopping.selector=;ami_id.selector=imageId`**<br>
 This would remove the "stopping" tag selector, and add a new "ami_id" selector.
 :::
-<br>
 
 * **Mapping File**: Filepath to a mapping property-mapping file.<br><br>
 * **Use Default Mapping**: Start with default mapping definition. (Defaults will automatically be used if no others are defined).<br><br>
 * **Max API Results**: Limit the number of instances retrieved per API call.<br>
-<br>
+
+### Connecting to EC2's for Commands and Scripts
+In order to execute commands or scripts on EC2's, a **Node Executor** needs to be specified - either for the full Node Source or for a subset of EC2's within the Node Source. 
+A few of the most common Node Executors are [SSH](/manual/projects/node-execution/ssh.html#ssh-node-execution), [WinRM](/learning/howto/configuring-windows-nodes.html) and [Powershell](/manual/projects/node-execution/powershell.html), and [Ansible](/learning/howto/using-ansible.html#rundeck-ansible-integration).<br>
+With EC2's, there is also the option to use [AWS's Systems Manager (SSM)](/manual/projects/node-execution/aws-ssm.html#description).
+
+In order to specify a Node Executor for _all_ EC2's, add the associated Node Executor properties to the **Mapping Params** field.  For example, to use SSH:<br>
+`ssh-keypath.default=keys/us-west-1-privKey;username.default=ubuntu`
+
+Or, to use SSM:<br>
+`ssm-accessKeyId.default=MY_AWS_ACCESS_KEY;ssm-secretKey.default=keys/aws_access_key`
+
+To declare Node Executors on a subset of EC2's within a given Node Source, use the **Attribute Match** Enhancer.  For example, to specify the **WinRM** Node Executor for just Windows EC2's, use `osName==windows`
+in the _Attribute Match_ box and `node-executor:WinRMPython` in the _Attributes to Add_ box:
+![attribute-match](@assets/img/ec2-node-enhancer-attribute-match.png)
 
 ### Integrating with Multiple Regions
 In the **Endpoint** field, enter a comma-separated list of endpoints to integrate with multiple regions.  For example:<br> 
@@ -107,14 +120,143 @@ In the **Endpoint** field, enter a comma-separated list of endpoints to integrat
 You can also input **`ALL_REGIONS`** and this will retrieve instances from all the regions that the provided credentials have access to. 
 See [Amazon EC2 Regions and Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#ec2_region) for the full list of endpoints.
 
-### 
+### Integrating with Multiple AWS Accounts in a Single Project
+It is possible to retrieve EC2's from across multiple AWS account in a single Rundeck project. 
+After configuring the **AWS EC2 Resources** node source with credentials for a given AWS Account, simply click on **Add a new Node Source** and select the **AWS EC2 Resources** option _again_ - this time configuring it with credentials for your other AWS Account.
+There is no limit to the number of AWS Accounts that you can integrate with in a given Rundeck project (or across multiple projects).
 
-It is possible to manage the set of Nodes that gets returned from the plugin by organizing EC2 instances using EC2 Tags, as well as adding EC2 Filters to the plugin configuration.
+### Advanced Mapping Configuration
+The mapping consists of defining either a selector or a default for
+the desired Node fields.  The "nodename" field is required, and will
+automatically be set to the instance ID if no other value is defined.
 
-The EC2 plugin will automatically add tags for the nodes based on an EC2 Instance Tag named "Rundeck-Tags", as well as the Instance's state. Add "Mapping parameters" to the EC2 Plugin configuration to add additional tags.
+For purposes of the mapping definition, a `field selector` is either:
 
-Add filters to the EC2 Plugin configuration under the "Filter Params" configuration area, with the syntax of: `filter=value;filter2=value2`. The available filter names are listed in [AWS API - DescribeInstances](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstances.html).
+* An EC2 fieldname, or dot-separated field names
+* "tags/" followed by a Tag name, e.g. "tags/My Tag"
+* "tags/*" for use by the `attributes.selector` mapping
 
-## Additional Information
+Selectors use the Apache [BeanUtils](http://commons.apache.org/beanutils/) to extract a property value from the AWS API
+[Instance class](http://docs.amazonwebservices.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/ec2/model/Instance.html).
+This means you can use dot-separated fieldnames to traverse the object graph.
+E.g. "state.name" to specify the "name" field of the State property of the Instance.
 
-More configuration is available for the [rundeck-ec2-nodes-plugin project](https://github.com/rundeck-plugins/rundeck-ec2-nodes-plugin).
+format:
+
+    # define a selector for "property":
+    <attribute>.selector=<field selector>
+    # define a default value for "property":
+    <attribute>.default=<default value>
+    # Special attributes selector to map all Tags to attributes
+    attributes.selector=tags/*
+    # The value for the tags selector will be treated as a comma-separated list of strings
+    tags.selector=<field selector>
+    # the default tags list
+    tags.default=a,b,c
+    # Define a single tag <name> which will be set if and only if the selector result is not empty
+    tag.<name>.selector=<field selector>
+    # Define a single tag <name> which will be set if the selector result equals the <value>
+    tag.<name>.selector=<field selector>=<value>
+
+Note that a ".selector" value can have multiple selectors defined, separated by commas, and they will be evaluated in order with the first value available being used.  
+For example, `nodename.selector=tags/Name,instanceId`, which will look for a tag named "Name", otherwise use the instanceId.
+You can also use the `<field selector>=<value>` feature to set a tag only if the field selector has a certain value.
+
+#### Tags selector
+
+When defining field selector for the `tags` node property, the string value selected (if any) will
+be treated as a comma-separated list of strings to use as node tags.  You could, for example, set a custom EC2 Tag on
+an instance to contain this list of tags, in this example from the simplemapping.properties file:
+
+    tags.selector=tags/Rundeck-Tags
+
+So creating the "Rundeck-Tags" Tag on the EC2 Instance with a value of "alpha, beta" will result in the node having
+those two node tags.
+
+The tags.selector also supports a "merge" ability, so you can merge multiple Instance Tags into the RunDeck tags by separating multiple selectors with a "|" character:
+
+    tags.selector=tags/Environment|tags/Role
+
+#### Appending values
+
+A field selector can conjoin multiple values using `+`, and can append literal text like the `_` character for example.
+
+    # conjoin two fields with no separation between the values
+    # this will result in "field1field2" 
+    <attribute>.selector=<field selector>+<field2 selector>
+    
+    # conjoin multiple fields with a literal string delimiter
+    # this will result in "field1-*-field2"
+    <attribute>.selector=<field selector>+"-*-"+<field2 selector>
+
+Use a quoted value to insert a delimiter, with either single or double quotes.
+
+Here is an example to use the "Name" instance tag, and InstanceId, to generate
+a unique node name for rundeck:
+
+    nodename.selector=tags/Name+'-'+instanceId
+
+#### Default Rundeck Node Attributes
+
+Rundeck node definitions specify mainly the pertinent data for connecting to and organizing the Nodes.  EC2 Instances have metadata that can be mapped onto the fields used for Rundeck Nodes.
+
+Rundeck nodes have the following metadata fields:
+
+* `nodename` - unique identifier
+* `hostname` - IP address/hostname to connect to the node
+* `sshport` - The ssh port, if resolved to another port than 22 hostname will be set to ``<hostname>:<sshport>``
+* `username` - SSH username to connect to the node
+* `description` - textual description
+* `osName` - OS name
+* `osFamily` - OS family: unix, windows, cygwin.
+* `osArch` - OS architecture
+* `osVersion` - OS version
+* `tags` - set of labels for organization
+* `editUrl` - URL to edit the definition of this node object
+* `remoteUrl` - URL to edit the definition of this node object using Rundeck-specific integration
+
+In addition, Nodes can have arbitrary attribute values.
+
+#### EC2 Instance Fields
+EC2 Instances have a set of metadata that can be mapped to any of the Rundeck node fields, or to Settings or tags for the node.
+
+EC2 fields:
+
+* amiLaunchIndex
+* architecture
+* clientToken
+* imageId
+* imageName
+* instanceId
+* instanceLifecycle
+* instanceType
+* kernelId
+* keyName
+* launchTime
+* license
+* platform
+* privateDnsName
+* privateIpAddress
+* publicDnsName
+* publicIpAddress
+* ramdiskId
+* rootDeviceName
+* rootDeviceType
+* spotInstanceRequestId
+* state
+* stateReason
+* stateTransitionReason
+* subnetId
+* virtualizationType
+* vpcId
+* **tags**
+
+EC2 Instances can also have "Tags" which are key/value pairs attached to the Instance.  
+A common Tag is "Name" which could be a unique identifier for the Instance, making it a useful mapping to the Node's name field.  
+Note that EC2 Tags differ from Rundeck Node tags: Rundeck tags are simple string labels and are not key/value pairs.
+
+
+
+## Additional Information & Contributing
+
+More configuration and the opportunity to contribute to this open-source project is available at the [Github repository](https://github.com/rundeck-plugins/rundeck-ec2-nodes-plugin).
