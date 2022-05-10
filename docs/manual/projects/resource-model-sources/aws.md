@@ -24,24 +24,90 @@ and allows for targeted automation based off of instance-properties, tags, regio
 
 ## Configuring
 
-1. Copy the plugin file _rundeck-ec2-nodes-plugin-1.2.jar_ into your `$RDECK_BASE/libext` directory. The plugin contains all of the required dependencies. _(Already installed on Enterprise Edition)_
-2. Login to Rundeck with an administrator account, and browse to a project _or_ create a new project.
-3. Once inside a Project click **Project Settings** > **Edit Nodes** and choose **Sources** tab.
-4. Click **Add a New Node Source** and select the _AWS EC2 Resources_ type.
-5. Enter the configuration details (see below) for the plugin and click **Save**.
-6. Click **Save** for the full Node Source Configuration.
+### Basic Configuration
 
-Minimal configuration details for the plugin includes your AWS access credentials you can find here <https://console.aws.amazon.com/iam/home>
+::: warning Note
+If using Rundeck Community, then you will first need to download the plugin JAR from the [Github repository](https://github.com/rundeck-plugins/rundeck-ec2-nodes-plugin/releases).
+Copy the plugin file _rundeck-ec2-nodes-plugin-1.2.jar_ into your `$RDECK_BASE/libext` directory. 
+The plugin contains all of the required dependencies.
+:::
 
-_Access Key ID_
-: Specify your AWS Access key.
+1. Navigate to **Project Settings** -> **Edit Nodes** and select the **Sources** tab.
+2. Click on **Add a new Node Source** and select **AWS EC2 Resources**.
+3. Provide AWS Credentials into the **Access Key** and **Secret Key** fields. The only permissions required for the credentials is `ec2:DescribeInstances`
+4. To specify the region (or multiple regions) to integrate with, fill in the **Endpoint** field with the associated regional endpoint. All endpoints are of the syntax **https:ec2.aws-region.amazonaws.com**.
+For example, the **us-west-1** endpoint is **`https://ec2.us-west-1.amazonaws.com`**. See below for defining multiple regions.
+5. Toggle **Only Running Instances** to determine whether both Running and Stopped instances should be retrieved, or just Running instances.
+6. Click **Save** on the Node Source and then click **Save** again on the Sources configuration page.
+::: tip
+If self-hosting Rundeck in AWS and an IAM Role is assigned to the infrastructure that Rundeck is running on, then you do not need to fill in the **Access Key** and **Secret Key** fields.
+:::
 
-_Secret Key_
-: Specify your AWS Secret Key
+### Advanced Configuration Options
 
-Read about the other configuration details in the [readme](https://github.com/rundeck-plugins/rundeck-ec2-nodes-plugin/blob/master/Readme.md) for the rundeck-ec2-nodes-plugin.
+* **Assume Role ARN**: Specify an IAM Role that Rundeck should use when authenticating with AWS.<br><br>
+* **Synchronous Loading**: Do not use internal async loading behavior. Rundeck 2.6.3+ uses an asynchronous nodes cache by default. You should enable this if you are using the Rundeck nodes cache.<br><br>
+* **Async Refresh Interval**: Unless using Synchronous Loading, minimum time in seconds between API requests to AWS (default is 30).<br><br>
+* **Filter Params**: Filter which EC2 instances are populated in the Node Inventory using the following syntax: **`filter=value;filter2=value2`**. 
+You can specify multiple filters by separating them with `;`, and you can specify multiple values by separating them with `,`.<br>
+For example: `tag:MyTag=My_Tag_Value;instance-type=m1.small,m1.large`<br>
+The available filter names are listed in [AWS API - DescribeInstances](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstances.html).<br><br>
+* **HTTP Proxy Host**: If hosting Rundeck behind a proxy-host, define the proxy hostname here.<br><br>
+* **HTTP Proxy Port**: If hosting Rundeck behind a proxy-host, define the proxy host port here.<br><br>
+* **HTTP Proxy User**: If hosting Rundeck behind a proxy-host with authentication, define the proxy host username here.<br><br>
+* **HTTP Proxy Password**: If hosting Rundeck behind a proxy-host with authentication, define the proxy host password here.<br><br>
+* **Mapping Params**: Node attributes are configured by mapping EC2 instances properties via a mapping configuration. 
+The mapping declares the node attributes that will be set, and what their values will be set to using a "selector" on properties of the EC2 Instance object.
+Here is the default mapping:
+```
+description.default=EC2 node instance
+editUrl.default=https://console.aws.amazon.com/ec2/home#s=Instances&selectInstance=${node.instanceId}
+hostname.selector=publicDnsName,privateIpAddress
+sshport.default=22
+sshport.selector=tags/ssh_config_Port
+instanceId.selector=instanceId
+nodename.selector=tags/Name,instanceId
+osArch.selector=architecture
+osFamily.default=unix
+osFamily.selector=platform
+osName.default=Linux
+osName.selector=platform
+privateDnsName.selector=privateDnsName
+privateIpAddress.selector=privateIpAddress
+state.selector=state.name
+tag.pending.selector=state.name=pending
+tag.running.selector=state.name=running
+tag.shutting-down.selector=state.name=shutting-down
+tag.stopped.selector=state.name=stopped
+tag.stopping.selector=state.name=stopping
+tag.terminated.selector=state.name=terminated
+tags.default=ec2
+tags.selector=tags/Rundeck-Tags
+username.default=ec2-user
+username.selector=tags/Rundeck-User
+```
+::: tip
+You can configure the mapping source to start with the above default mapping with the **Use Default Mapping** property.
+Then, selectively change it either by setting the mappingParams or pointing to a new properties file with mappingFile.
 
-## Filtering EC2 Results
+For example, you can put this in the mappingParams field in the GUI to change the default tags for your nodes:<br>
+**`tags.default=mytag, mytag2;tag.stopping.selector=;ami_id.selector=imageId`**<br>
+This would remove the "stopping" tag selector, and add a new "ami_id" selector.
+:::
+<br>
+
+* **Mapping File**: Filepath to a mapping property-mapping file.<br><br>
+* **Use Default Mapping**: Start with default mapping definition. (Defaults will automatically be used if no others are defined).<br><br>
+* **Max API Results**: Limit the number of instances retrieved per API call.<br>
+<br>
+
+### Integrating with Multiple Regions
+In the **Endpoint** field, enter a comma-separated list of endpoints to integrate with multiple regions.  For example:<br> 
+`https://ec2.us-west-1.amazonaws.com, https://ec2.us-east-1.amazonaws.com, https://ec2.eu-west-1.amazonaws.com` would integrate with the **us-west-1**, **us-east-1**, and **eu-west-1** regions.<br><br>
+You can also input **`ALL_REGIONS`** and this will retrieve instances from all the regions that the provided credentials have access to. 
+See [Amazon EC2 Regions and Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#ec2_region) for the full list of endpoints.
+
+### 
 
 It is possible to manage the set of Nodes that gets returned from the plugin by organizing EC2 instances using EC2 Tags, as well as adding EC2 Filters to the plugin configuration.
 
