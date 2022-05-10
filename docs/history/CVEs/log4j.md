@@ -16,7 +16,7 @@ In December 2021 Rundeck Engineering team was made aware of the "Log4Shell" vuln
 
 **Recommendations:**
 
-* Upgrade as soon as possible
+* Upgrade as soon as possible.  Minimum versions for remediation are listed below.
 * If you are still using Rundeck 3.4.6/3.3.14 or earlier, be sure to apply the [mitigation options](#mitigation-options) below to protect against the RCE vulnerability.
 
 Downloads:
@@ -25,6 +25,11 @@ Downloads:
 * Rundeck 3.3.17 - [Download site][]
 
 **Updates**
+
+_Update May 10, 2022_
+The JIRA plugins bundled with Rundeck Enterprise utilize the JIRA REST Java Client Library.  This includes a Log4j version 1.2 that will flag security scanners.  Atlassian states that "Some on-premises products use an Atlassian-maintained fork of Log4j 1.2.17, which is not vulnerable to CVE-2021-44228".
+More details at [FAQ from Atlassian](https://confluence.atlassian.com/kb/faq-for-cve-2021-44228-1103069406.html).
+After upgrading to a minimum version listed above, if your installation is not using JIRA it is safe to remove the `rundeckpro-jira-plugins-*.jar` from the `libext` folder.  (You must still update to a version above to mitigate all issues.)
 
 _Update December 20, 2021_
 
