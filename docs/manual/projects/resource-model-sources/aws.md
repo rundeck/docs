@@ -2,16 +2,25 @@
 ::: enterprise
 :::
 
-[Amazon's EC2](https://aws.amazon.com/ec2/) (Elastic Cloud Compute) is a cloud service in wide use for dynamic infrastructure; it is easy to start up and shut down Node "Instances" in the cloud.
+[Amazon's EC2](https://aws.amazon.com/ec2/) (Elastic Cloud Compute) is a cloud service that provides on-demand and scalable virtual-machines for dynamic infrastructure. 
+It is one of the most popular cloud services used for developing, testing and hosting applications for businesses.
 
-For Rundeck, we would like to have a way of querying the EC2 service to see what EC2 Instances are available for use as Rundeck Nodes.
+In order to automate tasks on EC2's - such as executing commands or rebooting - the instances must be populated into the automation product's [Node Inventory](/manual/projects/resource-model-sources/).
 
-Amazon has a well-defined API for communication with their services, which would allow us to pull out the EC2 data, and generate XML if we wanted to. We could write a script that produces that data and use that script on a server to produce data via a URL, or we could use that script with the [script resource model source plugin](/manual/projects/resource-model-sources/builtin.md#script-resource-model-source-configuration) to generate it. This would give us complete control of the output, but does require extra work.
+The **EC2 Node Source** bundled into Runbook Automation - and accessible to Community users [here](https://github.com/rundeck-plugins/rundeck-ec2-nodes-plugin) - retrieves the EC2 instances from one or more regions
+and allows for targeted automation based off of instance-properties, tags, regions or Account ID's.
 
-However, there is already an Open Source plugin to do this: [Rundeck EC2 Nodes Plugin](https://github.com/rundeck-plugins/rundeck-ec2-nodes-plugin).
+[comment]: <> (For Rundeck, we would like to have a way of querying the EC2 service to see what EC2 Instances are available for use as Rundeck Nodes.)
 
-- [rundeck-ec2-nodes-plugin](https://github.com/rundeck-plugins/rundeck-ec2-nodes-plugin) project source code on GitHub.
-- [Download the binary distribution](https://github.com/rundeck-plugins/rundeck-ec2-nodes-plugin/downloads).
+[comment]: <> (Amazon has a well-defined API for communication with their services, which would allow us to pull out the EC2 data, and generate XML if we wanted to. )
+
+[comment]: <> (We could write a script that produces that data and use that script on a server to produce data via a URL, or we could use that script with the [script resource model source plugin]&#40;/manual/projects/resource-model-sources/builtin.md#script-resource-model-source-configuration&#41; to generate it. This would give us complete control of the output, but does require extra work.)
+
+[comment]: <> (However, there is already an Open Source plugin to do this: [Rundeck EC2 Nodes Plugin]&#40;https://github.com/rundeck-plugins/rundeck-ec2-nodes-plugin&#41;.)
+
+[comment]: <> (- [rundeck-ec2-nodes-plugin]&#40;https://github.com/rundeck-plugins/rundeck-ec2-nodes-plugin&#41; project source code on GitHub.)
+
+[comment]: <> (- [Download the binary distribution]&#40;https://github.com/rundeck-plugins/rundeck-ec2-nodes-plugin/downloads&#41;.)
 
 ## Configuring
 
