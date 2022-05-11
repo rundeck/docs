@@ -5,30 +5,18 @@
 [Amazon's EC2](https://aws.amazon.com/ec2/) (Elastic Cloud Compute) is a cloud service that provides on-demand and scalable virtual-machines for dynamic infrastructure. 
 It is one of the most popular cloud services used for developing, testing and hosting applications for businesses.
 
-In order to automate tasks on EC2's - such as executing commands or rebooting - the instances must be populated into the automation product's [Node Inventory](/manual/projects/resource-model-sources/).
+In order to automate tasks on EC2's - such as executing commands or rebooting - the instances must be populated into Rundeck's [Node Inventory](/manual/projects/resource-model-sources/).
 
-The **EC2 Node Source** bundled into Runbook Automation - and accessible to Community users [here](https://github.com/rundeck-plugins/rundeck-ec2-nodes-plugin) - retrieves the EC2 instances from one or more regions
-and allows for targeted automation based off of instance-properties, tags, regions or Account ID's.
-
-[comment]: <> (For Rundeck, we would like to have a way of querying the EC2 service to see what EC2 Instances are available for use as Rundeck Nodes.)
-
-[comment]: <> (Amazon has a well-defined API for communication with their services, which would allow us to pull out the EC2 data, and generate XML if we wanted to. )
-
-[comment]: <> (We could write a script that produces that data and use that script on a server to produce data via a URL, or we could use that script with the [script resource model source plugin]&#40;/manual/projects/resource-model-sources/builtin.md#script-resource-model-source-configuration&#41; to generate it. This would give us complete control of the output, but does require extra work.)
-
-[comment]: <> (However, there is already an Open Source plugin to do this: [Rundeck EC2 Nodes Plugin]&#40;https://github.com/rundeck-plugins/rundeck-ec2-nodes-plugin&#41;.)
-
-[comment]: <> (- [rundeck-ec2-nodes-plugin]&#40;https://github.com/rundeck-plugins/rundeck-ec2-nodes-plugin&#41; project source code on GitHub.)
-
-[comment]: <> (- [Download the binary distribution]&#40;https://github.com/rundeck-plugins/rundeck-ec2-nodes-plugin/downloads&#41;.)
+The **EC2 Node Source**, which retrieves the EC2 instances from one or more regions, is bundled into Runbook Automation and is also accessible to Community users [here](https://github.com/rundeck-plugins/rundeck-ec2-nodes-plugin). 
+This allows for targeted automation on EC2 instances - based off of instance-properties, tags, regions or Account ID's.
 
 ## Configuring
 
 ### Basic Configuration
 
 ::: warning Note
-If using Rundeck Community, then you will first need to download the plugin JAR from the [Github repository](https://github.com/rundeck-plugins/rundeck-ec2-nodes-plugin/releases).
-Copy the plugin file _rundeck-ec2-nodes-plugin-1.2.jar_ into your `$RDECK_BASE/libext` directory. 
+If using Rundeck Community, first download the plugin JAR from the [Github repository](https://github.com/rundeck-plugins/rundeck-ec2-nodes-plugin/releases).
+Copy the plugin file _rundeck-ec2-nodes-plugin-X.Y.jar_ into your `$RDECK_BASE/libext` directory. 
 The plugin contains all of the required dependencies.
 :::
 
@@ -100,7 +88,7 @@ This would remove the "stopping" tag selector, and add a new "ami_id" selector.
 * **Max API Results**: Limit the number of instances retrieved per API call.<br>
 
 ### Connecting to EC2's for Commands and Scripts
-In order to execute commands or scripts on EC2's, a **Node Executor** needs to be specified - either for the full Node Source or for a subset of EC2's within the Node Source. 
+In order to execute commands or scripts on EC2's, a **Node Executor** must be specified - either for the full Node Source or for a subset of EC2's within the Node Source. 
 A few of the most common Node Executors are [SSH](/manual/projects/node-execution/ssh.html#ssh-node-execution), [WinRM](/learning/howto/configuring-windows-nodes.html) and [Powershell](/manual/projects/node-execution/powershell.html), and [Ansible](/learning/howto/using-ansible.html#rundeck-ansible-integration).<br>
 With EC2's, there is also the option to use [AWS's Systems Manager (SSM)](/manual/projects/node-execution/aws-ssm.html#description).
 
@@ -114,11 +102,15 @@ To declare Node Executors on a subset of EC2's within a given Node Source, use t
 in the _Attribute Match_ box and `node-executor:WinRMPython` in the _Attributes to Add_ box:
 ![attribute-match](@assets/img/ec2-node-enhancer-attribute-match.png)
 
+::: tip Note
+If a Node Executor is not specified for the Node Source, then the Project's [Default Node Executor](/manual/project-settings.html#edit-configuration) will be used. 
+:::
+
 ### Integrating with Multiple Regions
 In the **Endpoint** field, enter a comma-separated list of endpoints to integrate with multiple regions.  For example:<br> 
 `https://ec2.us-west-1.amazonaws.com, https://ec2.us-east-1.amazonaws.com, https://ec2.eu-west-1.amazonaws.com` would integrate with the **us-west-1**, **us-east-1**, and **eu-west-1** regions.<br><br>
-You can also input **`ALL_REGIONS`** and this will retrieve instances from all the regions that the provided credentials have access to. 
-See [Amazon EC2 Regions and Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#ec2_region) for the full list of endpoints.
+You can also input **`ALL_REGIONS`** and this will retrieve instances from all the regions that the provided credentials have access to.
+For the full list of endpoints, see [Amazon EC2 Regions and Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#ec2_region).
 
 ### Integrating with Multiple AWS Accounts in a Single Project
 It is possible to retrieve EC2's from across multiple AWS account in a single Rundeck project. 
