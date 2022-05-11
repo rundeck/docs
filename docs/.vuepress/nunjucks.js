@@ -14,12 +14,7 @@ nunjucks.configure({
 })
 
 const config = {
-    apiVersion: setup.apiVersion,
-    apiDepVersion: setup.apiDepVersion,
-    apiDepRelease: setup.apiDepRelease,
-    apiMinVersion: setup.apiMinVersion,
-    rundeckVersion: setup.rundeckVersion,
-    rundeckVersionFull: setup.rundeckVersionFull,
+    ...setup,
 
     javaDocBase: `https://static.javadoc.io/org.rundeck/rundeck-core/`+setup.rundeckVersionFull,
     javaDocStorageApiBase: `https://static.javadoc.io/org.rundeck/rundeck-storage-api/`+setup.rundeckVersionFull
