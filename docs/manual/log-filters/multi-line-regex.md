@@ -18,3 +18,26 @@ This log filter has four fields to configure:
 ::: tip
 When multiple values match, then $data.key will equal all of the matched values, separated by a newline.
 :::
+
+## Capture Multiple Values
+
+If the `Capture multiple values` option is checked, each line is scanned separately to match the regex, capturing multiple key/value pairs. This means that it is possible to capture a different key/value set for each matched line.
+
+Then, in case of the output log is:
+
+    hello 1
+    world 2
+    goodbye 3
+    
+Configuring the log filter with the regex `(\w+)\s(\d+)` will produce three key/value set:
+
+    $data.hello = 1
+    $data.world = 2
+    $data.goodbye = 3
+    
+And, also, if log filter settings has one group regex, i.e. `(\w+\s\d+)`, the user must provide a key in the “Name Data” field and the values should be all lines matched. So, for the same output as above, it would produce the key/value pair:
+
+    $data.my_match = 
+    hello 1
+    world 2
+    goodbye 3
