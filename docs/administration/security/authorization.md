@@ -240,7 +240,10 @@ aclpolicy:
   - Listing installed and available plugins `read`
   - Installing plugins `install`
   - Uninstalling plugins `uninstall`
-  - Full access `admin`    
+  - Full access `admin`
+- Managing Runners
+  - Read Access to All Runner configuration `read`
+  - Full Admin access to All Runner Configuration `admin`
 
 The following table summarizes the generic and specific resources and the
 actions you can restrict in the application scope:
@@ -267,6 +270,8 @@ actions you can restrict in the application scope:
 | "          | "             | none       | `install`                | Install plugins                                |
 | "          | "             | none       | `uninstall`              | Uninstall plugins                              |
 | "          | "             | none       | `admin`                  | Full access                                    |
+| "          | `runner       | none       | `read`                   | Read Access to Runners                         |
+| "          | "             | none       | `admin`                  | Full access to manage Runners                  |
 
 Table: Application scope generic type actions
 
@@ -291,6 +296,15 @@ Table: Application scope generic type actions
 | "             | "                  | `read`             | Read files and list directories in the storage facility |
 | "             | "                  | `delete`           | Delete files in the storage facility                    |
 | `apitoken`    | "username","roles" | `create`           | Create an API Token with specified roles or username    |
+| `runner`      | "username","roles" | `read`             | Read Runner setup/configuration deatils                 |
+| "             | "                  | `create`           | Create new Runner entries                               |
+| "             | "                  | `update`           | Update existing Runner entries                          |
+| "             | "                  | `delete`           | Delete Runner entries                                   |
+| "             | "                  | `ping`             | Execute the ping command to check Runner statu          |
+| "             | "                  | `regenerate_credentials`| Regenerate a new credential package for a Runner   |
+
+
+
 
 ---
 
