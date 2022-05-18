@@ -163,6 +163,8 @@ For further information, see [http://docs.aws.amazon.com/AWSEC2/latest/UserGuide
 
 Create the ELB called rundeckpro-ha-elb. If you defined the HTTPS listener, you must create a new SSL certificate. You will upload the SSL cert and key when defining the HTTPS listener.
 
+Kindly add which type of ELB ? Is it ALB or NLB ? Can it be mentioned regarding SSL termination and passthrough concept to considering special security requirement of E2E encryption ?
+
 - Open the Amazon EC2 console at [https://console.aws.amazon.com/ec2/](https://console.aws.amazon.com/ec2/).
 - From the navigation bar, select a region for your load balancers. Be sure to select the same region that you selected for your EC2 instances.
 - In the navigation pane, under LOAD BALANCING, click Load Balancers.
