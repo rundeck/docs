@@ -11,10 +11,12 @@ Release Date: May 11, 2022
 
 Check out the new features and enhancements for the commercial products (Runbook Automation and Process Automation On Prem formerly Rundeck Enterprise) and Rundeck Community included in this release. Release includes:
 
-- New ECS/Fargate Node Source.
+- New AWS ECS/Fargate Node Source.
 - More security fixes from a valued community member. Thank you @paulcalabro for the Pull Requests.
 - Simplified configuration for Vault and Thycotic Key Storage plugins directly in the UI.
 - Lots of Bug fixes and UI updates.
+- The EC2 Node Source can now pull from multiple or all regions.
+>Post Release Note: There is a minor bug with the new EC2 Node Source that the **endpoint** setting must be specified.  If you are using this Node Source please ensure that is specified.  This issue is fixed in [4.2.1](version-4.2.1.md).
 
 :::danger Reminder
 When upgrading to 4.1+ and using H2 please follow the [Upgrading to 4.1](/upgrading/upgrading-to-4.1.md) notes.

@@ -2,29 +2,29 @@
 
 All artifacts can be downloaded from: [github releases](https://github.com/rundeck/rundeck-cli/releases/latest)
 
-* [zip install](#zip-install) `rd-x.y.zip`/`rd-x.y.tar`
-* [standalone executable jar](#jar-install) `rundeck-cli-x.y-all.jar`
-* [rpm install](#yum-usage) `rundeck-cli-x.y.noarch.rpm`
-* [debian install](#debian-usage) `rundeck-cli-x.y_all.deb`
+* [zip install](#zip-install) `rd-{{{ rundeckCLIVersion }}}.zip`/`rd-{{{ rundeckCLIVersion }}}.tar`
+* [standalone executable jar](#jar-install) `rundeck-cli-{{{ rundeckCLIVersion }}}-all.jar`
+* [rpm install](#yum-usage) `rundeck-cli-{{{ rundeckCLIVersion }}}.noarch.rpm`
+* [debian install](#debian-usage) `rundeck-cli-{{{ rundeckCLIVersion }}}_all.deb`
 * [arch install](#arch-linux-install)
 
 ## Jar install
 
-Download the `rundeck-cli-x.y.z-all.jar` from [github releases](https://github.com/rundeck/rundeck-cli/releases/latest).
+Download the `rundeck-cli-{{{ rundeckCLIVersion }}}-all.jar` from [github releases](https://github.com/rundeck/rundeck-cli/releases/latest).
 
 Simply execute:
 
-    java -jar rundeck-cli-x.y.z-all.jar
+    java -jar rundeck-cli-{{{ rundeckCLIVersion }}}-all.jar
 
 ## Zip install
 
 
-Download the `rd-x.y.z.zip` from [github releases](https://github.com/rundeck/rundeck-cli/releases/latest).
+Download the `rd-{{{ rundeckCLIVersion }}}.zip` from [github releases](https://github.com/rundeck/rundeck-cli/releases/latest).
 
 Install:
 
-    $ unzip rd-x.y.zip
-	rd-x.y.z
+    $ unzip rd-{{{ rundeckCLIVersion }}}.zip
+	rd-{{{ rundeckCLIVersion }}}
 	├── bin
 	│   ├── rd
 	│   └── rd.bat
@@ -33,7 +33,7 @@ Install:
 
 Execute:
 
-    rd-x.y.z/bin/rd
+    rd-{{{ rundeckCLIVersion }}}/bin/rd
 
 ## Yum usage
 

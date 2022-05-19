@@ -13,6 +13,8 @@ All future releases will also include this fix.
 
 These are the Security Advisories Rundeck has issued in the past.  It is always recommended to upgrade to the current version of Rundeck ({{{rundeckVersion}}}) for the latest security updates.
 
+* [CVE-2022-29186](CVE-2022-29186.md)<br>
+    Key Pair Misconfiguration may expose systems.
 * [CVE-2021-41112](CVE-2021-41112.md)<br>
     Authenticated users can modify Calendars without appropriate authorization.
 * [CVE-2021-41111](CVE-2021-41111.md)<br>

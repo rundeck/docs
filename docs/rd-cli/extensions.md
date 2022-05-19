@@ -44,9 +44,9 @@ repositories {
 }
 
 dependencies {
-    api "org.rundeck.cli:rd-cli-lib:{{site.app_version}}"
+    api "org.rundeck.cli:rd-cli-lib:{{{ rundeckCLIVersion }}}"
     api "org.rundeck.cli-toolbelt:toolbelt-jewelcli:0.2.28"
-    implementation "org.rundeck.api:rd-api-client:{{site.app_version}}"
+    implementation "org.rundeck.api:rd-api-client:{{{ rundeckCLIVersion }}}"
 
     implementation 'com.squareup.retrofit2:retrofit:2.7.1'
     implementation 'com.squareup.retrofit2:converter-jackson:2.7.1'
