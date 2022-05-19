@@ -242,8 +242,8 @@ Sets the maximum number of nodes to be displayed on [Matched Nodes](/manual/crea
 - Example: ```(Default: true)```
 - min version: 4.2.0
 
-Enable/disable the public key GUI download option in the Key Storage 
-
+Enable/disable the public key GUI download option in the Key Storage. 
+Set the value to `false` to disable the download/view option. By default, the attribute is set `true`.
 
 ## Other Customizations
 The `rundeck.gui.errorpage.hidestacktrace` can also be set to true via a Java system property defined at system startup:
