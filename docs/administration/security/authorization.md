@@ -270,7 +270,7 @@ actions you can restrict in the application scope:
 | "          | "             | none       | `install`                | Install plugins                                |
 | "          | "             | none       | `uninstall`              | Uninstall plugins                              |
 | "          | "             | none       | `admin`                  | Full access                                    |
-| "          | `runner       | none       | `read`                   | Read Access to Runners                         |
+| "          | `runner`      | none       | `read`                   | Read Access to Runners                         |
 | "          | "             | none       | `admin`                  | Full access to manage Runners                  |
 
 Table: Application scope generic type actions
