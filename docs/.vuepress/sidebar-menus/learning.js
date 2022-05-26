@@ -108,11 +108,14 @@ module.exports = [{
       children: [
         {
           title: 'Automated Diagnostics',
-          path: '/learning/solutions/automated-diagnostics',
+          path: '/learning/solutions/automated-diagnostics/solution-overview',
           collapsable: true,
           sidebarDepth: 0,
           children: [
-            ['/learning/solutions/automated-diagnostics.md','Solution Summary'],
+            ['/learning/solutions/automated-diagnostics/solution-overview.md','Solution Summary'],
+            ['/learning/solutions/automated-diagnostics/getting-started.md', 'Getting Started'],
+            ['/learning/solutions/automated-diagnostics/tours.md', 'Following the Tours'],
+            ['/learning/solutions/automated-diagnostics/jobs.md', 'Prebuilt Jobs'],
             ['/learning/solutions/auto-incident-kubernetes-logs.md','General Purpose: Kubernetes Logs'],
             ['/learning/solutions/auto-diagnostics-github-script.md','General Purpose: Raw Scripts']
           ]
