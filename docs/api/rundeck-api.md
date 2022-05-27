@@ -5790,6 +5790,9 @@ Set the value.
 
     PUT /api/11/project/[PROJECT]/config/[KEY]
 
+Example JSON Payload:
+    `{"value": "value-for-key"}`
+
 #### DELETE Project Configuration Key ####
 
 Delete the key.
