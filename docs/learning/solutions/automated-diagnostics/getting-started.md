@@ -33,7 +33,7 @@ Follow the steps below to download and import the Automated Diagnostics Job and 
 3. Select the **system-tours-xxxxx.zip** file from the downloaded resources<br><br>
 4. Click on the green **Import** button
 
-### **With the Jobs and Tours imported, you can now [follow the in-app Tours!](/learning/solutions/automated-diagnostics/tours.html)**
+### **With the Jobs and Tours imported, you can now follow the [<span style="color:green"><ins>in-app Tours!</ins></span>](/learning/solutions/automated-diagnostics/tours.html)**
 <br>
 <br>
 

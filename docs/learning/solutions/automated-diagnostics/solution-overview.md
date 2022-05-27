@@ -13,4 +13,4 @@ This information is then presented in the PagerDuty Incident Response interface:
 
 ![Overview Picture](@assets/img/solutions-auto-diag-overview.png)<br>
 
-### **Get started now with the Automated Diagnostics [Solution Guide](/learning/solutions/automated-diagnostics/getting-started.html)**
+### **Get started now with the Automated Diagnostics [<span style="color:green"><ins>Solution Guide</ins></span>](/learning/solutions/automated-diagnostics/getting-started.html)**
