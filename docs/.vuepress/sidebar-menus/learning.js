@@ -116,6 +116,7 @@ module.exports = [{
             ['/learning/solutions/automated-diagnostics/getting-started.md', 'Getting Started'],
             ['/learning/solutions/automated-diagnostics/tours.md', 'Following the Tours'],
             ['/learning/solutions/automated-diagnostics/jobs.md', 'Prebuilt Jobs'],
+            ['/learning/solutions/automated-diagnostics/feedback-faq.md', 'Feedback & FAQ'],
             ['/learning/solutions/auto-incident-kubernetes-logs.md','General Purpose: Kubernetes Logs'],
             ['/learning/solutions/auto-diagnostics-github-script.md','General Purpose: Raw Scripts']
           ]
