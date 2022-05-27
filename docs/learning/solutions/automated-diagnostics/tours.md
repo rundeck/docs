@@ -12,12 +12,20 @@ To initiate any Tour, click the Tours icon at the bottom right of your screen (n
 ![Initiate Tours](@assets/img/solutions-auto-diag-initiate-tours.png)<br>
 
 ### Included Tours
+
+* The Tour numbers are the _recommended_ order to follow when using the Tours. This order my not be applicable for all users.  See the **Expected Result** column to identify which Tours are relevant for you.
+
 | Tour | Dependencies or Requirements | Expected Result |
 |---|---|---|
 | Tour 1: Configure AWS Credentials | - Your AWS Access Key ID<br> - Your AWS Secret Key | Can run most includes AWS Jobs |
-| Tour 2: Configure EC2 Inventory | - Completed Tour 1<br> * Endpoint Region  (you will select this during the tour) | EC2 instances added to the Node-Inventory |
+| Tour 2: Configure EC2 Inventory | - Completed Tour 1<br><br> - Endpoint Region  (you will select this during the tour) | EC2 instances added to the Node-Inventory |
 | Tour 3a: Configure Systems Manager (SSM) | - Completed Tours 1 and 2 | Can connect to AWS instances using SSM for commands and Jobs |
 | Tour 3b: Configure SSH Connectivity | - Completed Tour 1 and 2<br><br> - Install an Enterprise Runner if you are using Runbook Automation<br><br> - SSH Private Key or Password for connecting to nodes | Can connect to nodes using SSH for commands and Jobs |
 | Tour 4: Send Diagnostic Data to PagerDuty | - PagerDuty API Token | Can add diagnostic-diata to the Incident Timeline of PagerDuty incidents |
+
+<br>
+
+![Example Tour](@assets/img/solutions-auto-diag-example-tour.png)
+<center>_Example Tour Interface_</center>
 
 ### **After following the tours, you can now use the [<span style="color:green"><ins>Prebuilt Automation Jobs!</ins></span>](/learning/solutions/automated-diagnostics/jobs.html)**
