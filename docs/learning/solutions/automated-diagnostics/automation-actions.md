@@ -53,7 +53,22 @@ A **red circle** indicates that the runner is not running or there is a problem 
 
 #### Define an Action
 
-1. In PagerDuty, navigate to **Automation -> Rundeck Actions -> Add Action**:
+1. In Runbook Automation, click on a Job - such as **CPU, Memory & Disk to PagerDuty Incident**
+2. Click on the **clipboard** icon next to the Job's UUID. This will copy the Job ID to your clipboard:
+![Job ID](@assets/img/solutions-auto-diag-job-id.png)<br><br>
+3. In PagerDuty, navigate to **Automation -> Rundeck Actions -> Add Action**:
 <br>![Add Action](@assets/img/solutions-pd-diag-k8s-add-action.png)<br><br>
-2. Fill in the Automation Action details with the desired Name and Description. Select **process automation** as the type of action and **Diagnostic** as the category.  
-   Paste the jod ID into the **Job ID** field and insert `-pd_incident_id ${pagerduty.incidentId}` into the **Rundeck arguments** field:
+4. Fill in the Automation Action details with the desired **Name** and **Description**. 
+5. Select **process automation** as the type of action and **Diagnostic** as the category.
+6. Paste the jod ID into the **Job ID** field and insert `-pd_incident_id ${pagerduty.incidentId}` into the **Process Automation arguments** field:
+![Add Action](@assets/img/solutions-auto-diag-define-action.png)<br><br>
+7. Select the Runner you installed from the **_Find a runner_** dropdown.
+8. Select one or more Services from the **_Find Services_** dropdown.
+9. Select one or more Teams from the **_Find Teams_** dropdown.
+10. Click **Create Action**.
+
+This Automated Action can now be invoked from an incident or from Event Orchestration:
+
+![**Invoke from Incident**](@assets/img/solutions-auto-diag-run-action.png)
+
+![**Invoke from Event Orchestration**](@assets/img/solutions-auto-diag-event-orchestration.png)
