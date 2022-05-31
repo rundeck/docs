@@ -37,4 +37,6 @@ To target specific Nodes for the prebuilt Jobs within the Runbook Automation Int
 3. Click on **Show all nodes**
 ![Change Nodes](@assets/img/solutions-auto-diag-change-nodes.png)<br><br>
 4. Click on an individual Node, and click the small **Arrow** to the right of the Node Name:
-![Select Node](@assets/img/solutions-auto-diag-select-node.png)<br><br>
+![Select Node](@assets/img/solutions-auto-diag-select-node.png)<br>
+
+This will allow you to target the _individual_ node selected.  If you want to target multiple Nodes, see the [Node Filter Documentation](/manual/11-node-filters).
