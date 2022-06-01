@@ -1,12 +1,12 @@
 # Rundeck 4.3 Upgrade Notes
 
 :::warning
-When upgrading from 4.1 to 4.2, some users reported keys and passwords created using encryption were lost. Therefore, we strongly recommend backing up your data before upgrading from 4.2 to 4.3. Data created prior to version 4.2 should not be affected when upgrading to 4.3.
+When upgrading from any previous version to 4.2, some users reported keys and passwords created using encryption were lost. Therefore, we strongly recommend backing up your data before upgrading from 4.2 to 4.3. Data created prior to version 4.2 should not be affected when upgrading to 4.3.
 :::
 
 ## Private keys and password encryption issue
 
-The release 4.3.0 fixes an issue that results in invalid credentials after upgrading from version 3.4.x to version 4.2.0.
+The release 4.3.0 fixes an issue that results in invalid credentials after upgrading from any previous version to 4.2.0.
 
 This issue is related to the key encryption method and causes keys already stored using previous versions to become invalid.
 
@@ -25,3 +25,8 @@ Steps to overwrite key storage:
 - Go to the key storage page
 - Select the private key need to be overwritten then click the Overwrite Key button in the toolbar
 - Follow the same steps as [Add a Private Key](/manual/system-configs.html#key-storage) to overwrite the keys
+
+## For Github SCM users:
+[Github has stopped supporting insecure algorithms](https://github.blog/2021-09-01-improving-git-protocol-security-github/#when-are-these-changes-effective), and our current SSH implementation doesn't support the algorithms required by Github so you cannot use `Private Key` method to authenticate Rundeck client to Github. As a workaround, You still can use the `Password` authentication method with the Github `Personal Access Token` to connect to your Github repos.
+
+We are working on upgrading the SSH implementation to solve this issue in a future release.
