@@ -17,6 +17,8 @@ For more background please see the [Upgrading to 4.3](/upgrading/upgrading-to-4.
 
 Check out the new features and enhancements for PagerDuty Process Automation (formerly Rundeck Enterprise) and PagerDuty Runbook Automation (announced as Rundeck Cloud) and Rundeck Community included in this release.
 
+A new version 2.0 of the Rundeck CLI tool was also released.  See the [Change Log](https://rundeck.github.io/rundeck-cli/changes/) for the latest info.
+
 ## AWS Plugin Enhancements
 New AWS Job Step Plugins for ELB, ECS, RDS are available for Commercial product users. See details about specific plugin functionality below.
 
