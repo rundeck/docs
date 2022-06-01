@@ -21,6 +21,15 @@ _Project Settings > Setup SCM_
 **The Base Directory** is a local folder on the server node used to clone the git repository.
 
 **Git url** and **Branch** are the common repository settings.
+- For `HTTP/HTTPS` urls use the form: `http[s]://user@host.xz[:port]/path/to/repo.git`
+:::tip
+Many SCM systems provide a "clone" url for http[s] in the form: `http[s]://host.xz/path/to/repo.git`, to make use of this in the default git plugin it is necessary to add it the scm user with an `@` sign in the url: `http[s]://scm-user@host.xz/path/to/repo.git`
+:::
+
+- For `SSH` urls use the form: `ssh://user@host.xz[:port]/path/to/repo.git`
+:::tip
+Many SCM systems provide a "clone" url for ssh in the form: `git@host.xz:path/to/repo.git`, to make use of this in the default git plugin it is necessary to prepend `ssh://` and replace the `:` with a `/` in the url: `ssh://git@host.xz/path/to/repo.git`
+:::
 
 **Fetch automatically** automatize the fetch command to be called in background.
 
@@ -50,6 +59,10 @@ Changing this value modifies the file definition and files need to be pushed aga
 **SSH: Strict Host Key Checking**: If yes, require remote host SSH key is defined in the `~/.ssh/known_hosts` file, otherwise do not verify.
 
 **SSH Key Storage Path** (Optional): A Storage Key path containing the private key to be used with git authentication.
+:::tip
+Use the following command to generate the ssh key pair:
+`ssh-keygen -t key-type -m PEM -f key-pair-name -C ""`
+:::
 
 **Password Storage Path** (Optional): A password stored in the Key Storage to be used on the ssh or https git authentication.
 
@@ -62,6 +75,15 @@ Changing this value modifies the file definition and files need to be pushed aga
 **The Base Directory** is a local folder on the server node used to clone the git repository.
 
 **Git url** and **Branch** are the common repository settings.
+- For `HTTP/HTTPS` urls use the form: `http[s]://user@host.xz[:port]/path/to/repo.git`
+:::tip
+Many SCM systems provide a "clone" url for http[s] in the form: `http[s]://host.xz/path/to/repo.git`, to make use of this in the default git plugin it is necessary to add it the scm user with an `@` sign in the url: `http[s]://scm-user@host.xz/path/to/repo.git`
+:::
+
+- For `SSH` urls use the form: `ssh://user@host.xz[:port]/path/to/repo.git`
+:::tip
+Many SCM systems provide a "clone" url for ssh in the form: `git@host.xz:path/to/repo.git`, to make use of this in the default git plugin it is necessary to prepend `ssh://` and replace the `:` with a `/` in the url: `ssh://git@host.xz/path/to/repo.git`
+:::
 
 **Fetch automatically** automatize the fetch command to be called in background.
 
@@ -89,6 +111,11 @@ Changing this value modifies the file definition and files need to be pushed aga
 **SSH: Strict Host Key Checking**: If yes, require remote host SSH key is defined in the `~/.ssh/known_hosts` file, otherwise do not verify.
 
 **SSH Key Storage Path** (Optional): A Storage Key path containing the private key to be used with git authentication.
+:::tip
+Use the following command to generate the ssh key pair:
+
+`ssh-keygen -t key-type -m PEM -f key-pair-name -C ""`
+:::
 
 **Password Storage Path** (Optional): A password stored in the Key Storage to be used on the ssh or https git authentication.
 
