@@ -1,7 +1,7 @@
 # Rundeck 4.3 Upgrade Notes
 
 :::warning
-Any keys or passwords created using encryption in 4.2.0/4.2.1 will be lost when upgrading, it is recommended to back up your data before upgrading from those versions. Data created in earlier versions (before v4.2.0) will transfer properly.
+An issue was reported in 4.2.0 and 4.2.1 where keys and passwords created using encryption was lost when upgrading. We recommend backing up your data before upgrading from these two versions. Data created prior to version 4.2.0 will transfer correctly.
 :::
 
 ## Private keys and password encryption issue
@@ -10,7 +10,7 @@ The release 4.3.0 fixes an issue that results in invalid credentials after upgra
 
 This issue is related to the key encryption method and causes keys already stored using previous versions to become invalid.
 
-One of the impacts related to this is related to the private keys used in SCM become invalid disabling all projects that use SCM with SSH private keys.
+Specifically, private keys used in SCM becoming invalid after the upgrade. This results in disabling all projects at that use SCM with SSH private keys.
 
 ## Upgrading from 4.2.0
 
