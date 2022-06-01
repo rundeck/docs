@@ -21,4 +21,32 @@ Let's walk through an example for how to target a specific host with our diagnos
 ![Updated Action](@assets/img/solutions-auto-diag-updated-action.png)<br><br>
 You will now see the host identifier in the arguments of the invocation pane:<br>
 ![Invocation Pane](@assets/img/solutions-auto-diag-invocation-pane.png)<br><br>
-9. Click **Run Job**
+9. Click **Run Job**. You can optionally view the status of the invocation by click on **output report** on the incident timeline.
+
+If the configuration was successful, the Automated Diagnostic Job will execute and the diagnostics will be posted to the Incident Timeline:
+![Timeline Notes](@assets/img/solutions-auto-diag-timeline-notes.png)
+
+::: warning Heads Up!
+If the parameters in the **Process Automation Arguments** do not match those in the Job Options of the associated Runbook Automation Job, 
+then you will see the following log in the Automation Actions output report:
+```
+Rundeck communication error. Status: 400
+```
+Be sure that _**all**_ Job Options are present in the **Process Automation Arguments** and that they are all spelled exactly the same.
+:::
+
+### Instance Attributes for Automation Actions Node Filter
+If the Node names in Runbook Automation do not directly match the instance-identifier on the PagerDuty incident, you can modify the Node Filter syntax within the Automation Action
+to associate with the correct Nodes.
+
+For example, in Runbook Automation, EC2's might be discovered by their display-name:<br><br>
+![EC2 Nodes](@assets/img/solutions-auto-diag-ec2-nodes.png)<br><br>
+In this case, we would use the **`instanceId`** node-attribute:<br><br>
+![EC2 Node Attribute](@assets/img/solutions-auto-diag-ec2-node-attribute.png)<br><br>
+So in Automation Actions, the **Process Automation Arguments** would be <br> 
+**`-node_filter instanceId:${pd.alert.details.orig-source}`**, as shown here:<br><br>
+![Action Node Syntax](@assets/img/solutions-auto-diag-actions-node-filter.png)
+
+#### Congratulations!
+
+**You have successfully implemented the Automated Diagnostics Solution with PagerDuty's Automation Actions and Runbook Automation!**

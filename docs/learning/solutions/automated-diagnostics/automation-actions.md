@@ -72,3 +72,5 @@ This Automated Action can now be invoked from an incident or from Event Orchestr
 ![**Invoke from Incident**](@assets/img/solutions-auto-diag-run-action.png)
 
 ![**Invoke from Event Orchestration**](@assets/img/solutions-auto-diag-event-orchestration.png)
+
+### **Complete the Automated Diagnostics Solution by integrating one of [<span style="color:green"><ins>Example Jobs!</ins></span>](/learning/solutions/automated-diagnostics/linux-diagnostics-example.html)**
