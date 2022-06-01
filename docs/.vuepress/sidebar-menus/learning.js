@@ -118,9 +118,9 @@ module.exports = [{
             ['/learning/solutions/automated-diagnostics/jobs.md', '3. Using the Prebuilt Jobs'],
             ['/learning/solutions/automated-diagnostics/automation-actions.md', '4. Integrating with Automation Actions'],
             ['/learning/solutions/automated-diagnostics/linux-diagnostics-example.md','5. Example: Linux Host Diagnostics'],
-            ['/learning/solutions/automated-diagnostics/feedback-faq.md', '6. Feedback & FAQ'],
-            ['/learning/solutions/auto-incident-kubernetes-logs.md','Example: Kubernetes Logs'],
-            ['/learning/solutions/auto-diagnostics-github-script.md','Example: Raw Scripts']
+            ['/learning/solutions/automated-diagnostics/feedback-faq.md', '6. Feedback & FAQ']
+//            ['/learning/solutions/auto-incident-kubernetes-logs.md','Example: Kubernetes Logs'],
+//            ['/learning/solutions/auto-diagnostics-github-script.md','Example: Raw Scripts']
           ]
         }
       ]
