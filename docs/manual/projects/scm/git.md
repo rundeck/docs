@@ -4,6 +4,14 @@ Rundeck provides SCM Export and SCM Import providers for Git.
 
 This plugin allows Source Code Management of the jobs, versioning, exporting or importing their definitions using a remote Git repository.
 
+:::warning
+**For Github SCM users**
+
+[Github has stopped supporting insecure algorithms](https://github.blog/2021-09-01-improving-git-protocol-security-github/#when-are-these-changes-effective), and our current SSH implementation doesn't support the algorithms required by Github so you cannot use `Private Key` method to authenticate Rundeck client to Github. As a workaround, You still can use the `Password` authentication method with the Github `Personal Access Token` to connect to your Github repos.
+
+We are working on upgrading the SSH implementation to solve this issue in a future release.
+:::
+
 _Project Settings > Setup SCM_
 
 ![Setup SCM Option](~@assets/img/scm-git-conf-location.png)
@@ -21,6 +29,15 @@ _Project Settings > Setup SCM_
 **The Base Directory** is a local folder on the server node used to clone the git repository.
 
 **Git url** and **Branch** are the common repository settings.
+- For `HTTP/HTTPS` urls use the form: `http[s]://user@host.xz[:port]/path/to/repo.git`
+:::tip
+Many SCM systems provide a "clone" url for http[s] in the form: `http[s]://host.xz/path/to/repo.git`, to make use of this in the default git plugin it is necessary to add it the scm user with an `@` sign in the url: `http[s]://scm-user@host.xz/path/to/repo.git`
+:::
+
+- For `SSH` urls use the form: `ssh://user@host.xz[:port]/path/to/repo.git`
+:::tip
+Many SCM systems provide a "clone" url for ssh in the form: `git@host.xz:path/to/repo.git`, to make use of this in the default git plugin it is necessary to prepend `ssh://` and replace the `:` with a `/` in the url: `ssh://git@host.xz/path/to/repo.git`
+:::
 
 **Fetch automatically** automatize the fetch command to be called in background.
 
@@ -50,6 +67,10 @@ Changing this value modifies the file definition and files need to be pushed aga
 **SSH: Strict Host Key Checking**: If yes, require remote host SSH key is defined in the `~/.ssh/known_hosts` file, otherwise do not verify.
 
 **SSH Key Storage Path** (Optional): A Storage Key path containing the private key to be used with git authentication.
+:::tip
+Use the following command to generate the ssh key pair:
+`ssh-keygen -t key-type -m PEM -f key-pair-name -C ""`
+:::
 
 **Password Storage Path** (Optional): A password stored in the Key Storage to be used on the ssh or https git authentication.
 
@@ -62,6 +83,15 @@ Changing this value modifies the file definition and files need to be pushed aga
 **The Base Directory** is a local folder on the server node used to clone the git repository.
 
 **Git url** and **Branch** are the common repository settings.
+- For `HTTP/HTTPS` urls use the form: `http[s]://user@host.xz[:port]/path/to/repo.git`
+:::tip
+Many SCM systems provide a "clone" url for http[s] in the form: `http[s]://host.xz/path/to/repo.git`, to make use of this in the default git plugin it is necessary to add it the scm user with an `@` sign in the url: `http[s]://scm-user@host.xz/path/to/repo.git`
+:::
+
+- For `SSH` urls use the form: `ssh://user@host.xz[:port]/path/to/repo.git`
+:::tip
+Many SCM systems provide a "clone" url for ssh in the form: `git@host.xz:path/to/repo.git`, to make use of this in the default git plugin it is necessary to prepend `ssh://` and replace the `:` with a `/` in the url: `ssh://git@host.xz/path/to/repo.git`
+:::
 
 **Fetch automatically** automatize the fetch command to be called in background.
 
@@ -89,6 +119,11 @@ Changing this value modifies the file definition and files need to be pushed aga
 **SSH: Strict Host Key Checking**: If yes, require remote host SSH key is defined in the `~/.ssh/known_hosts` file, otherwise do not verify.
 
 **SSH Key Storage Path** (Optional): A Storage Key path containing the private key to be used with git authentication.
+:::tip
+Use the following command to generate the ssh key pair:
+
+`ssh-keygen -t key-type -m PEM -f key-pair-name -C ""`
+:::
 
 **Password Storage Path** (Optional): A password stored in the Key Storage to be used on the ssh or https git authentication.
 

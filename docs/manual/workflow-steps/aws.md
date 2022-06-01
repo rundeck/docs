@@ -1,4 +1,5 @@
-# Amazon Web Services - EC2 Workflow Steps
+# Amazon Web Services - Workflow Steps
+
 
 ## Getting Started
 
