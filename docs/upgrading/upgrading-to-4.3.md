@@ -1,7 +1,7 @@
 # Rundeck 4.3 Upgrade Notes
 
 :::warning
-An issue was reported in 4.2.0 and 4.2.1 where keys and passwords created using encryption was lost when upgrading. We recommend backing up your data before upgrading from these two versions. Data created prior to version 4.2.0 will transfer correctly.
+When upgrading from 4.1 to 4.2, some users reported keys and passwords created using encryption were lost. Therefore, we strongly recommend backing up your data before upgrading from 4.2 to 4.3. Data created prior to version 4.2 should not be affected when upgrading to 4.3.
 :::
 
 ## Private keys and password encryption issue
@@ -14,16 +14,14 @@ Specifically, private keys used in SCM becoming invalid after the upgrade. This 
 
 ## Upgrading from 4.2.0
 
-:::tip
-**The issue was detected in version 4.2.0 and, if no action was taken so far, the stored keys should work normally in version 4.3.0.** 
-:::
+This issue was detected after upgrading to v4.2.x from any previous version.
 
-However, if the keys have been overwritten by the same key in order to workaround the issue in 4.2.0 version, the same step must be performed again, i.e., the keys must be overwritten by the same private key in version 4.3.0
+- If you didn't change the stored private keys after the upgrading then you don't need to do anything in v4.3.0.
+
+- If you have already overwritten private keys in v4.2.x to work around the issue, you have to overwrite those private keys again after upgrading to v4.3.0 
 
 Steps to overwrite key storage:
 
-- Go to key storage page
-- Select the private key
-- Click on Overwrite Key button
-- Overwrite the key **with the same key**
-- Check if the keys is working well
+- Go to the key storage page
+- Select the private key need to be overwritten then click the Overwrite Key button in the toolbar
+- Follow the same steps as [Add a Private Key](/manual/system-configs.html#key-storage) to overwrite the keys
