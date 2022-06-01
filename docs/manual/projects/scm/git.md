@@ -4,6 +4,14 @@ Rundeck provides SCM Export and SCM Import providers for Git.
 
 This plugin allows Source Code Management of the jobs, versioning, exporting or importing their definitions using a remote Git repository.
 
+:::warning
+**For Github SCM users**
+
+[Github has stopped supporting insecure algorithms](https://github.blog/2021-09-01-improving-git-protocol-security-github/#when-are-these-changes-effective), and our current SSH implementation doesn't support the algorithms required by Github so you cannot use `Private Key` method to authenticate Rundeck client to Github. As a workaround, You still can use the `Password` authentication method with the Github `Personal Access Token` to connect to your Github repos.
+
+We are working on upgrading the SSH implementation to solve this issue in a future release.
+:::
+
 _Project Settings > Setup SCM_
 
 ![Setup SCM Option](~@assets/img/scm-git-conf-location.png)
