@@ -45,8 +45,7 @@ In this case, we would use the **`instanceId`** node-attribute:<br><br>
 ![EC2 Node Attribute](@assets/img/solutions-auto-diag-ec2-node-attribute.png)<br><br>
 So in Automation Actions, the **Process Automation Arguments** would be <br> 
 **`-node_filter instanceId:${pd.alert.details.orig-source}`**, as shown here:<br><br>
-![Action Node Syntax](@assets/img/solutions-auto-diag-actions-node-filter.png)
+![Action Node Syntax](@assets/img/solutions-auto-diag-actions-node-filter.png)<br><br>
 
-#### Congratulations!
-
+**<center><font size="+3">Congratulations!</font></center>**
 **You have successfully implemented the Automated Diagnostics Solution with PagerDuty's Automation Actions and Runbook Automation!**
