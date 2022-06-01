@@ -8,6 +8,10 @@ If you do not have a license for either of these products, reach out to Sales.
 
 Follow the steps below to download and import the Automated Diagnostics Job and Tours:
 #### Download the **Automated Diagnostics Solution package**.
+1. Download the latest release of the Automated Diagnostics Solution [here](https://github.com/rundeckpro/automated-diagnostics-project/releases/download/1.0/auto-diag-1.0.zip).
+2. Open the **.zip** file and there should be two files inside the folder:
+   * **`automated-diagnostics-xxxxxxx.rdproject.jar`**
+   * **`system-tours-xxxxxxxx.zip`**
 
 #### Create a project in your Runbook Automation environment:
 1. Click the **P** in the upper left corner to navigate to the Main Dashboard <br><br>
