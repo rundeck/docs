@@ -9,9 +9,9 @@ Release Date: PUTADATEHERE
 
 ## Overview
 
-Check out the new features and enhancements for Rundeck Enterprise and Rundeck Community included in this release.
+Check out the new features and enhancements for PagerDuty Process Automation (formerly Rundeck Enterprise) and PagerDuty Runbook Automation (announced as Rundeck Cloud) and Rundeck Community included in this release.
 
-## Enterprise Updates
+## Commercial Updates
 
 {% for pull in enterprise.pulls -%}
 * {{ pull.title | replace(r/RUN-[0-9]*:?\s?/g, "") | replace(r/RCLOUD-[0-9]*:?\s?/g, "") }}

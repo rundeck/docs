@@ -13,11 +13,18 @@ Any keys or passwords created using encryption in 4.2.0/4.2.1 will be lost when 
 
 ## Overview
 
-Check out the new features and enhancements for Rundeck Enterprise and Rundeck Community included in this release.
+Check out the new features and enhancements for PagerDuty Process Automation (formerly Rundeck Enterprise) and PagerDuty Runbook Automation (announced as Rundeck Cloud) and Rundeck Community included in this release.
 
-## Enterprise Updates
+## AWS Plugin Enhancements
+New AWS Job Step Plugins for ELB, ECS, RDS are available for Commercial product users. See details about specific plugin functionality below.
 
-* New AWS Job Step Plugins for ELB, ECS, RDS
+* ELB plugin lists any Target-Group instance with an "unhealthy" status check.
+* ECS plugin Stops an ECS Task (Container).
+* ECS plugin lists any stopped ECS Tasks and their associated error messages.
+* RDS provides the RDS Instance Status, such as whether more storage is needed.
+
+## Other Commercial Updates
+
 * Allow editing the endpoint in Pagerduty Event API Plugins
 * Native sleep plugin Workflow step
 * Allow more than ~30 actions on a single webhook
