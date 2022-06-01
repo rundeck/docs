@@ -2,7 +2,7 @@
 
 ## Node Steps
 
-- [AWS EC2 Node Step Plugin](/manual/node-steps/aws.md)
+- [AWS Node Steps](/manual/node-steps/aws.md)
 - [Azure Node Step Plugins (Enterprise)](/manual/node-steps/azure.md)
 - [Google Cloud Platform Plugins (Enterprise)](/manual/node-steps/gcp.md)
 - [Oracle Cloud Node Steps plugins (Enterprise)](/manual/node-steps/oracle.md)
@@ -24,7 +24,8 @@
 
 ## Workflow Steps
 
-- [Amazon Web Services(Enterprise)](/manual/workflow-steps/aws.md)
+- [AWS EC2 Steps](/manual/workflow-steps/aws.md)
+- [CloudWatch Logs Workflow Step](/manual/workflow-steps/aws-cloudwatch.md)
 - [Azure Job Steps (Enterprise)](/manual/workflow-steps/azure.md)
 - [Google Cloud Platform (Enterprise)](/manual/workflow-steps/gcp.md)
 - [Oracle Cloud Infrastructure(Enterprise)](/manual/workflow-steps/oracle.md)
