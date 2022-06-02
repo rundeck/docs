@@ -9,7 +9,7 @@ Also check out the 4.0 release list of larger feature enhancements for our Enter
 [Rundeck 4.0.0](4_x/version-4.0.0.md)
 
 ## Version 4.x
-This list shows all the items fixed in the 4.x series [4.0.0 Release Notes](4_x/version-4.0.0.html)
+This list shows all the release notes the 4.x.y series [4.0.0 Release Notes](4_x/version-4.0.0.html)
 
 ## Version 3.4.x
 This list shows all the release notes the 3.3.x series [3.4.0 Release Notes](3_4_x/version-3.4.0.html)
