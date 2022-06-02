@@ -1,11 +1,11 @@
 ## Automated Diagnostics
 ### Contributing & Providing feedback
-We are constantly looking to expand the quantity and quality of our Automated-Diagnostics Solution. We have also open-sourced the Job Definitions for this project on Github, where you can submit feedback as “Issues,” or contribute directly by making pull-requests. We’d love your feedback to improve this solution for yourself and others.
+We are constantly looking to expand the quantity and quality of our Automated-Diagnostics Solution. We have also open-sourced the Job Definitions for [this project on Github](https://github.com/rundeckpro/automated-diagnostics-project), where you can submit feedback as “Issues,” or contribute directly by making pull-requests. We’d love your feedback to improve this solution for yourself and others.
 <br>
 
 ### FAQ
 #### What licensing is required to have the Automated Diagnostics Solution?
-* Runbook Automation or Process Automation users have full access to - and support of - the Auto-Diagnostics Solution. Runbeck Community users can view the Solution and use some of the Jobs, but will be limited in their ability to use many Jobs due to dependencies on exclusive plugins.
+* Runbook Automation or Process Automation users have full access to - and support of - the Auto-Diagnostics Solution. Rundeck Community users can view the Solution and use some Jobs, but will be limited in their ability to use many Jobs due to dependencies on exclusive plugins.
 
 #### Can users modify the prebuilt automation Jobs?
 * Yes! Though we hope that the prebuilt Jobs will provide value, the intent of these is also to show you what’s possible with the Runbook Automation product. Treat these as templates for your own use-cases.

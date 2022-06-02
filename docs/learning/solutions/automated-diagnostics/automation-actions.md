@@ -28,7 +28,8 @@ Next, you will add a new runner to generate an ID and secret.
 1. In PagerDuty, navigate to **Automation -> Automated Actions -> Runners tab -> +Add Runner** 
 2. Enter a **Name and Description** and click **Next, Generate Runner Secret & ID**. 
 3. On the following screen, click **Download ID & Secret** to download the file **`credentials.pdrunner-creds`**, and click **Confirm**. 
-4. Open **`credentials.pdrunner-creds`** in your preferred text editor, replace **`<API_Token>`** with the PagerDuty API key from step 4 above, and save the file:
+4. Open **`credentials.pdrunner-creds`** in your preferred text editor, replace **`<API_Token>`** with the PagerDuty API key from step 4 above.
+5. Add a line **`rundeck_url:`** followed by your Runbook Automation (or Process Automation) URL and a line with **`rundeck_token:`** followed by your Runbook Automation API Token:
 ```
 id:XXXXXXXXXXXXXXXXXXXXXXX3P1C
 secret:XXXXXXXXXXXXXXXXXXXX2I4B
@@ -60,7 +61,7 @@ A **red circle** indicates that the runner is not running or there is a problem 
 <br>![Add Action](@assets/img/solutions-pd-diag-k8s-add-action.png)<br><br>
 4. Fill in the Automation Action details with the desired **Name** and **Description**. 
 5. Select **process automation** as the type of action and **Diagnostic** as the category.
-6. Paste the jod ID into the **Job ID** field and insert `-pd_incident_id ${pagerduty.incidentId}` into the **Process Automation arguments** field:
+6. Paste the Job ID into the **Job ID** field and insert `-pd_incident_id ${pagerduty.incidentId}` into the **Process Automation arguments** field:
 ![Add Action](@assets/img/solutions-auto-diag-define-action.png)<br><br>
 7. Select the Runner you installed from the **_Find a runner_** dropdown.
 8. Select one or more Services from the **_Find Services_** dropdown.

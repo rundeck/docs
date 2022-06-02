@@ -21,7 +21,7 @@ Let's walk through an example for how to target a specific host with our diagnos
 ![Updated Action](@assets/img/solutions-auto-diag-updated-action.png)<br><br>
 You will now see the host identifier in the arguments of the invocation pane:<br>
 ![Invocation Pane](@assets/img/solutions-auto-diag-invocation-pane.png)<br><br>
-9. Click **Run Job**. You can optionally view the status of the invocation by click on **output report** on the incident timeline.
+9. Click **Run Job**. You can optionally view the status of the invocation by clicking on **output report** on the incident timeline.
 
 If the configuration was successful, the Automated Diagnostic Job will execute and the diagnostics will be posted to the Incident Timeline:
 ![Timeline Notes](@assets/img/solutions-auto-diag-timeline-notes.png)
