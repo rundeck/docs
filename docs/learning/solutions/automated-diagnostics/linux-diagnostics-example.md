@@ -27,7 +27,7 @@ If the configuration was successful, the Automated Diagnostic Job will execute a
 ![Timeline Notes](@assets/img/solutions-auto-diag-timeline-notes.png)
 
 ::: warning Heads Up!
-If the parameters in the **Process Automation Arguments** do not match those in the Job Options of the associated Runbook Automation Job, 
+If the parameters in the **Process Automation Arguments** (_Step 6_) do not match those in the Job Options of the associated Runbook Automation Job, 
 then you will see the following log in the Automation Actions output report:
 ```
 Rundeck communication error. Status: 400
