@@ -238,6 +238,13 @@ Sets the default value for users logged status to show on summary page (it will 
 Sets the maximum number of nodes to be displayed on [Matched Nodes](/manual/creating-jobs.md#node-dispatching-and-filtering) session in job edit page.
 
 
+### rundeck.gui.keystorage.downloadenabled
+- Example: ```(Default: true)```
+- min version: 4.2.0
+
+Enable/disable the public key GUI download option in the Key Storage. 
+Set the value to `false` to disable the download/view option. By default, the attribute is set `true`.
+
 ## Other Customizations
 The `rundeck.gui.errorpage.hidestacktrace` can also be set to true via a Java system property defined at system startup:
 `-Dorg.rundeck.gui.errorpage.hidestacktrace=true`.
