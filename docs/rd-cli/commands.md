@@ -18,6 +18,11 @@ Available commands:
 
 	Use "rd [command] help" to get help on any command.
 
+## acl
+
+
+See [rd acl](./rd-acl.md)
+
 ## adhoc
 
 Dispatch adhoc COMMAND to matching nodes.

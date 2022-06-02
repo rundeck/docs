@@ -8,7 +8,7 @@ module.exports = [{
     ['/rd-cli/install.md','Installation'],
     ['/rd-cli/configuration.md','Configuration'],
     ['/rd-cli/commands.md','Commands'],
-    ['/rd-cli/rd-ext-acl.md','RD ACL Extension'],
+    ['/rd-cli/rd-acl.md','ACL Tool'],
     ['/rd-cli/scripting.md','Scripting'],
     ['/rd-cli/ssl.md','SSL'],
     ['/rd-cli/javalib.md','JAVA API Library'],
