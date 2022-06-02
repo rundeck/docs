@@ -16,24 +16,30 @@ Run this before the first you start the docs site locally.
 npm install
 ```
 
-### Run the Rundeck Docs site locally
+# How to use
+
+## Run Locally
 
 ```
 npm run docs:dev
 ```
+
 > Compiles and hot-reloads for development. As (most) content changes are made they show up immediately.  Changes to the menus will require quitting and restarting with the command above.
 
-### Running in Production
+## Build
+
 > Compiles and minifies for production.
+
 ```
 npm run docs:build
 ```
 
-## Submitting Changes
+# Submitting Changes
+
 Rundeck welcomes documentation PRs.  Please submit PRs against the default branch (currently `4.x`) and we will review.
 
 
-## Publishing
+# Publishing
 
 Docs will be built and published to a base matching a branch name of
 `/4\.[1-9]\..*/`:
@@ -41,7 +47,8 @@ Docs will be built and published to a base matching a branch name of
 - Branch `4.0.x` => `docs.rundeck.com/4.0.x/`
 - Branch `3.3.1` => `docs.rundeck.com/3.3.1/`
 
-### Latest
+## Latest
+
 > Version tag must contain the full Rundeck version with date!
 
 Tag a commit to publish to the matching version base as well as
@@ -66,7 +73,7 @@ git checkout -b 3.2.8
 git push origin
 ```
 
-## Generating Release Notes
+# How to Create Release Notes
 
 Rundeck Core PRs are included by default.
 Core PRs can excluded by labeling them with the `release-notes/exclude` label.
@@ -77,13 +84,18 @@ Enterprise PRs can be included by labeling them with the `release-notes/include`
 Create the file `.env` in the project root and add the line `GH_API_TOKEN=[TOKEN]`
 replacing `[TOKEN]` with your GitHub API token. This token needs `repo` scope.
 
+## Release Notes
+
 Run the following with the milestone for the release.  This will create/overwrite an existing entry for the release.  Use wisely:
+
 ```bash
-npm run notes -- --milestone=4.0.1
+npm run notes -- --milestone=${1?milestone name}
 ```
 
-**Draft**
+## Draft Release Notes
+
 Run the following with the milestone for the release. This will create the file named draft.md to avoid overwriting any existing version:
+
 ```bash
-npm run notes -- --milestone=4.0.1 --draft
+npm run notes -- --milestone=${1?milestone name} --draft
 ```
