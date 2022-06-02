@@ -2,14 +2,14 @@
 ### Getting Started
 
 ::: tip Licensing
-To use the Automated Diagnostics Solution, you must either have a **Runbook Automation** license or a **Process Automation** (previously **Rundeck Enterprise**) license.
-See the [FAQ](/learning/solutions/automated-diagnostics/feedback-faq) for details on using with **Rundeck Community**.
+To use the Automated Diagnostics Solution, you must either have a **PagerDuty Runbook Automation** license or a **Process Automation** (previously **Rundeck Enterprise**) license.
+See the [FAQ](/learning/solutions/automated-diagnostics/feedback-faq) for details on use with **Rundeck Community**.
 If you do not have a license for either of these products, [contact us](https://www.pagerduty.com/contact-us/runbook-automation/) to learn more.
 :::
 
-Follow the steps below to download and import the Automated Diagnostics Job and Tours:
+Follow the steps below to download and import the Automated Diagnostics Jobs and Tours:
 #### Download the **Automated Diagnostics Solution package**.
-1. Download the latest release of the Automated Diagnostics Solution [here](https://github.com/rundeckpro/automated-diagnostics-project/releases/download/1.0/auto-diag-1.0.zip).
+1. Download the latest release of the Automated Diagnostics Solution [here](https://github.com/rundeckpro/automated-diagnostics-project/releases/download/1.0/automated-diagnostics-1.0.zip).<br><br>
 2. Open the **.zip** file and there should be two files inside the folder:
    * **`automated-diagnostics-xxxxxxx.rdproject.jar`**
    * **`system-tours-xxxxxxxx.zip`**
@@ -37,12 +37,10 @@ Follow the steps below to download and import the Automated Diagnostics Job and 
 ![Import Tours](@assets/img/solutions-auto-diag-import-tours.png)<br><br>
 3. Select the **system-tours-xxxxx.zip** file from the downloaded resources<br><br>
 4. Click on the green **Import** button
+   ::: tip Note
+   The Tours in the Automated Diagnostics Solution will help you integrate the product with various services (such as AWS) and other PagerDuty products.  
+   If you are looking for a more general introduction to PagerDuty’s Automation products, it is recommended to review the contents of the [Welcome project](/learning/howto/welcome-project-starter.html).
+   :::
 
 ### **With the Jobs and Tours imported, you can now follow the [<span style="color:green"><ins>in-app Tours!</ins></span>](/learning/solutions/automated-diagnostics/tours.html)**
-<br>
-<br>
 
-::: tip Note
-The Tours in the Automated Diagnostics Solution will help you integrate the product with various services (such as AWS) and other PagerDuty products.  
-If you are looking for a more general introduction to PagerDuty’s Automation products, it is recommended to review the contents of the [Welcome project](/learning/howto/welcome-project-starter.html).
-:::

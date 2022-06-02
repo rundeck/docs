@@ -13,7 +13,7 @@ In the PagerDuty web app:
 4. A unique **API key** will be generated. Copy it to a safe place, as you will not have access to copy this key again. Once it has been copied, click **Close**. 
    * If you lose a key you will need to delete it and create a new one.
 
-#### Create a Runbook Automation API Key
+#### Create a PagerDuty Runbook Automation API Key
 In Runbook Automation:
 
 1. Click on the _**User Icon**_ in the upper-right and click on **Profile**. 
@@ -22,10 +22,10 @@ In Runbook Automation:
 3. Enter a **name** for the API token and click **Generate New Token**. 
 4. Copy the **User API Token** and keep it in a safe place for later use.
 
-#### Create an Automation Actions Runner
+#### Create an Action Runner
 Next, you will add a new runner to generate an ID and secret.
 
-1. In PagerDuty, navigate to **Automation -> Automated Actions -> Runners tab -> +Add Runner** 
+1. In PagerDuty, navigate to **Automation -> Automation Actions -> Runners tab -> +Add Runner** 
 2. Enter a **Name and Description** and click **Next, Generate Runner Secret & ID**. 
 3. On the following screen, click **Download ID & Secret** to download the file **`credentials.pdrunner-creds`**, and click **Confirm**. 
 4. Open **`credentials.pdrunner-creds`** in your preferred text editor, replace **`<API_Token>`** with the PagerDuty API key from step 4 above.
@@ -68,10 +68,10 @@ A **red circle** indicates that the runner is not running or there is a problem 
 9. Select one or more Teams from the **_Find Teams_** dropdown.
 10. Click **Create Action**.
 
-This Automated Action can now be invoked from an incident or from Event Orchestration:
+This Automated Action can now be invoked from an incident or from [Event Orchestration](https://support.pagerduty.com/docs/event-orchestration):
 
 ![**Invoke from Incident**](@assets/img/solutions-auto-diag-run-action.png)
 
 ![**Invoke from Event Orchestration**](@assets/img/solutions-auto-diag-event-orchestration.png)
 
-### **Complete the Automated Diagnostics Solution by integrating one of [<span style="color:green"><ins>Example Jobs!</ins></span>](/learning/solutions/automated-diagnostics/linux-diagnostics-example.html)**
+### **Complete the Automated Diagnostics Solution by integrating one of the [<span style="color:green"><ins>Example Jobs!</ins></span>](/learning/solutions/automated-diagnostics/linux-diagnostics-example.html)**

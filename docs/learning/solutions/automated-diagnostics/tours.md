@@ -1,9 +1,9 @@
 ## Automated Diagnostics
 ### Following the Tours
 
-In addition to the library of prebuilt Automation Jobs, this Solution includes a collection of in-product **Tours** that guide you through integrating the automation with your infrastructure and tooling - including PagerDuty’s Incident Response.
+In addition to the library of prebuilt Automation Jobs, the Automated Diagnostics Solution includes a collection of in-product **Tours** that guide you through integrating these prebuilt, automated-workflows with your infrastructure and tooling - including PagerDuty’s Incident Response.
 
-To begin using the Solution, it is recommended that you follow the included Tours.
+It's recommended that you follow the included Tours before starting to use this.
 
 ::: tip Tip
 To initiate any Tour, click the Tours icon at the bottom right of your screen (next to the light bulb icon) and select the Tour you’d like.
@@ -13,7 +13,7 @@ To initiate any Tour, click the Tours icon at the bottom right of your screen (n
 
 ### Included Tours
 
-* The Tour numbers are the _recommended_ order to follow when using the Tours. This order my not be applicable for all users.  See the **Expected Result** column to identify which Tours are relevant for you.
+* Tour numbers are the _recommended_ order to follow when using the Tours. This order may not be applicable for all users.  See the **Expected Result** column to identify which Tours are relevant for you.
 
 | Tour | Dependencies or Requirements | Expected Result |
 |---|---|---|
