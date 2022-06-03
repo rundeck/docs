@@ -12,6 +12,6 @@ module.exports = [{
   },
   {
       text: 'Solutions',
-      link: '/learning/solutions/auto-incident-kubernetes-logs'
+      link: '/learning/solutions/automated-diagnostics/solution-overview'
   }
 ]
