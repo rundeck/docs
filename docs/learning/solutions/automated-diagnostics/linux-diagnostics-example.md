@@ -3,7 +3,6 @@
 ### Example: Linux Host Diagnostics
 
 Let's walk through an example for how to target a specific host with our diagnostics.
-In this example we will walk through how to run diagnostics on a Linux host.
 
 1. Click on a prior incident for the PagerDuty Service in question. It can be a _Resolved_ or _Active_ incident.
 2. Expand the **Custom Details** on the Incident
