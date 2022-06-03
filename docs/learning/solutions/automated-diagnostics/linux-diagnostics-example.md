@@ -3,6 +3,7 @@
 ### Example: Linux Host Diagnostics
 
 Let's walk through an example for how to target a specific host with our diagnostics.
+In this example we will walk through how to run diagnostics on a Linux host.
 
 1. Click on a prior incident for the PagerDuty Service in question. It can be a _Resolved_ or _Active_ incident.
 2. Expand the **Custom Details** on the Incident
@@ -21,7 +22,7 @@ Let's walk through an example for how to target a specific host with our diagnos
 ![Updated Action](@assets/img/solutions-auto-diag-updated-action.png)<br><br>
 You will now see the host identifier in the arguments of the invocation pane:<br>
 ![Invocation Pane](@assets/img/solutions-auto-diag-invocation-pane.png)<br><br>
-9. Click **Run Job**. You can optionally view the status of the invocation by clicking on **output report** on the incident timeline.
+9. Click **Run Job**. You can optionally view the status of the invocation by clicking on the **output report** on the incident timeline.
 
 If the configuration was successful, the Automated Diagnostic Job will execute and the diagnostics will be posted to the Incident Timeline:
 ![Timeline Notes](@assets/img/solutions-auto-diag-timeline-notes.png)
@@ -37,7 +38,7 @@ Be sure that _**all**_ Job Options are present in the **Process Automation Argum
 
 ### Instance Attributes for Automation Actions Node Filter
 If the Node names in Runbook Automation do not directly match the instance-identifier on the PagerDuty incident, you can modify the Node Filter syntax within the Automation Action
-to associate with the correct Nodes.
+to associate it with the correct Nodes.
 
 For example, in Runbook Automation, EC2's might be discovered by their display-name:<br><br>
 ![EC2 Nodes](@assets/img/solutions-auto-diag-ec2-nodes.png)<br><br>
