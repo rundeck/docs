@@ -27,6 +27,7 @@
   - [Elastic Cloud Compute (EC2)](/manual/workflow-steps/aws.md)
   - [CloudWatch Logs](/manual/workflow-steps/aws-cloudwatch.md)
   - [ECS & Fargate Workflow Steps](/manual/workflow-steps/aws-ecs-fargate.md)
+  - [Lambda Workflow Step](/manual/workflow-steps/aws-lambda.md)
 - [Azure Job Steps (Enterprise)](/manual/workflow-steps/azure.md)
 - [Google Cloud Platform (Enterprise)](/manual/workflow-steps/gcp.md)
 - [Oracle Cloud Infrastructure(Enterprise)](/manual/workflow-steps/oracle.md)

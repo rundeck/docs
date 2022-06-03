@@ -8,6 +8,7 @@ Amazon ECS is a fully managed container orchestration service that makes it easy
 The following plugins are available for PagerDuty Runbook Automation and Process Automation (formerly Rundeck Enterprise):
 
 * [Stopped ECS Tasks Error Messages](#stopped-ecs-tasks-error-messages)
+* [Stop an ECS Task](#stop-an-ecs-task)
 
 These plugins utilize the following properties:
 
@@ -39,5 +40,18 @@ The **AWS / ECS / Stopped Task Details** plugin checks a specified cluster for a
 In order to use this plugin, you mused specify the **ECS Cluster Name**.
 
 The IAM Policies required to use this plugin are:
-* **ecs:ListTasks**
-* **ecs:DescribeTasks**
+* **`ecs:ListTasks`**
+* **`ecs:DescribeTasks`**
+
+See [here](https://docs.aws.amazon.com/AmazonECS/latest/userguide/stopped-task-error-codes.html) for more details on the Stopped ECS Tasks error message meanings.
+
+#### Stop an ECS Task
+
+The **AWS / ECS / Stop** plugin _stops_ a specific ECS Task. This can assist with auto-remediation of issues with ECS containers. There is both a **Workflow** _and_ a **Node** step of this plugin.
+
+In order to use the _Workflow_ step plugin, you will need to specify the Cluster-ID (or ARN) _and_ the Task-ID (or ARN):
+
+![Stop ECS Task](@assets/img/aws-ecs-stop-task.png)<br>
+
+The IAM Policies required to use this plugin are:
+* **`ecs:StopTask`**
