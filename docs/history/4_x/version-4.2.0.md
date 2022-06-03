@@ -7,6 +7,10 @@ Release Date: May 11, 2022
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
 - [Upgrade instructions](/upgrading/)
 
+:::danger
+ Rundeck is investigating an issue with the 4.2 series releases.  Please hold off on upgrading to this version.
+:::
+
 ## Overview
 
 Check out the new features and enhancements for the commercial products (Runbook Automation and Process Automation On Prem formerly Rundeck Enterprise) and Rundeck Community included in this release. Release includes:
