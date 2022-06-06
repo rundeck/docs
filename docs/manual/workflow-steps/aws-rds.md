@@ -39,7 +39,7 @@ This can be especially useful when your RDS instance has run out of storage capa
 
 #### Plugin Field Descriptions
 
-* **Target RDS Instance**: The RDS database instance name. In AWS, this is the **DB identifier**
+* **Target RDS Instance**: The RDS database instance name. In AWS, this is the **DB identifier**.
 * **Target RDS Region**: The AWS region where the RDS instance resides.
 
 ### See it in Action
