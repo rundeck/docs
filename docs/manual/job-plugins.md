@@ -25,10 +25,11 @@
 ## Workflow Steps
 * **Amazon Web Services (Enterprise Only)**
   - [CloudWatch Logs](/manual/workflow-steps/aws-cloudwatch.md)
-  - [ECS & Fargate Workflow Steps](/manual/workflow-steps/aws-ecs-fargate.md)
+  - [ECS & Fargate](/manual/workflow-steps/aws-ecs-fargate.md)
   - [Elastic Cloud Compute (EC2)](/manual/workflow-steps/aws.md)
-  - [Lambda Workflow Step](/manual/workflow-steps/aws-lambda.md)
-  - [RDS Workflow Step](/manual/workflow-steps/aws-rds.md)
+  - [Elastic Load Balancer (ELB)](/manual/workflow-steps/aws-elb-workflow-plugin.md)
+  - [Lambda](/manual/workflow-steps/aws-lambda.md)
+  - [RDS](/manual/workflow-steps/aws-rds.md)
 - [Azure Job Steps (Enterprise)](/manual/workflow-steps/azure.md)
 - [Google Cloud Platform (Enterprise)](/manual/workflow-steps/gcp.md)
 - [Oracle Cloud Infrastructure(Enterprise)](/manual/workflow-steps/oracle.md)
