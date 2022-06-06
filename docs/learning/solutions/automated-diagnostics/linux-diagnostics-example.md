@@ -48,4 +48,5 @@ So in Automation Actions, the **Process Automation Arguments** would be <br>
 ![Action Node Syntax](@assets/img/solutions-auto-diag-actions-node-filter.png)<br><br>
 
 **<center><font size="+3">Congratulations!</font></center>**
-**You have successfully implemented the Automated Diagnostics Solution with PagerDuty's Automation Actions and Runbook Automation!**
+**You have successfully implemented the Automated Diagnostics Solution!**
+**Check out the [Welcome Project](/learning/howto/welcome-project-starter) to learn other use-cases for Runbook Automation.**
