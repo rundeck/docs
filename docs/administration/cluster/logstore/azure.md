@@ -34,6 +34,7 @@ For example:
 #storage.storageAccount and storage.accessKey
 framework.plugin.ExecutionFileStorage.azure-storage.storageAccount=<ACCOUNT-NAME>
 framework.plugin.ExecutionFileStorage.azure-storage.accessKey=<ACCESS-KEY>
+framework.plugin.ExecutionFileStorage.azure-storage.defaultEndpointProtocol=https
 
 #path to store the logs
 framework.plugin.ExecutionFileStorage.azure-storage.path=logs/${job.project}/${job.execid}.log
