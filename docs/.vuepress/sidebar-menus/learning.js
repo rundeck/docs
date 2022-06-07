@@ -108,11 +108,19 @@ module.exports = [{
       children: [
         {
           title: 'Automated Diagnostics',
+          path: '/learning/solutions/automated-diagnostics/solution-overview',
           collapsable: true,
           sidebarDepth: 0,
           children: [
-            ['/learning/solutions/auto-incident-kubernetes-logs.md','General Purpose: Kubernetes Logs'],
-            ['/learning/solutions/auto-diagnostics-github-script.md','General Purpose: Raw Scripts']
+            ['/learning/solutions/automated-diagnostics/solution-overview.md','Solution Summary'],
+            ['/learning/solutions/automated-diagnostics/getting-started.md', '1. Getting Started'],
+            ['/learning/solutions/automated-diagnostics/tours.md', '2. Following the Tours'],
+            ['/learning/solutions/automated-diagnostics/jobs.md', '3. Using the Prebuilt Jobs'],
+            ['/learning/solutions/automated-diagnostics/automation-actions.md', '4. Integrating with Automation Actions'],
+            ['/learning/solutions/automated-diagnostics/linux-diagnostics-example.md','5. Example: Linux Host Diagnostics'],
+            ['/learning/solutions/automated-diagnostics/feedback-faq.md', '6. Feedback & FAQ']
+//            ['/learning/solutions/auto-incident-kubernetes-logs.md','Example: Kubernetes Logs'],
+//            ['/learning/solutions/auto-diagnostics-github-script.md','Example: Raw Scripts']
           ]
         }
       ]

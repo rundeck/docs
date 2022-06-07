@@ -7,6 +7,10 @@ Release Date: May 11, 2022
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
 - [Upgrade instructions](/upgrading/)
 
+:::danger
+ Rundeck is investigating an issue with the 4.2 series releases.  Please hold off on upgrading to this version.
+:::
+
 ## Overview
 
 This release fixes a bug in the [4.2.0 Release](version-4.2.0.md) with the EC2 Node Source.  If the `endpoint` setting was blank in 4.2.0 errors would occur due to no default value being applied.

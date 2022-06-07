@@ -7,6 +7,9 @@ jobs:
     docker:
       # specify the version you desire here
       - image: cimg/node:12.22.10
+        environment:
+          NODE_OPTIONS="--max-old-space-size=6144"
+    resource_class: medium+
 
     working_directory: ~/repo
 
