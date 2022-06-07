@@ -4333,6 +4333,8 @@ The following parameters can also be used to narrow down the result set.
 * `userFilter`: Username who started the execution
 * Date query parameters:
     * `recentFilter`: Use a simple text format to filter executions that completed within a period of time. The format is "XY" where X is an integer, and "Y" is one of:
+        * `s`: second
+        * `n`: minute
         * `h`: hour
         * `d`: day
         * `w`: week
