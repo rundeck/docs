@@ -1,10 +1,12 @@
 ## Automated Diagnostics
 ### Getting Started
 
-::: tip Licensing
+::: tip Prerequisites
 To use the Automated Diagnostics Solution, you must either have a **PagerDuty Runbook Automation** license or a **Process Automation** (previously **Rundeck Enterprise**) license.
 See the [FAQ](/learning/solutions/automated-diagnostics/feedback-faq) for details on use with **Rundeck Community**.
 If you do not have a license for either of these products, [contact us](https://www.pagerduty.com/contact-us/runbook-automation/) to learn more.
+
+**You must be running version 4.3.0 or greater to use this Solution.**
 :::
 
 Follow the steps below to download and import the Automated Diagnostics Jobs and Tours:
