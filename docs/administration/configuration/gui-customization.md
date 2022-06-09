@@ -107,7 +107,7 @@ Paginate job list when listing project jobs
 
 
 ### rundeck.gui.paginatejobs.max.per.page
-- Example: ```TRUE```
+- Example: ```10```
 - min version: 2.x
 
 Number of jobs per page to display when job pagination is enabled
