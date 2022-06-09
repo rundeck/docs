@@ -614,6 +614,11 @@ File size in bytes or with a suffix of `k`,`m`,`g`,`t` (kilo,mega,giga,tera).
 ```properties
 rundeck.fileUploadService.tempfile.maxsize=200M
 ```
+Max controller file size. File size in bytes. In example: `4096000000` is equivalent to `4g`.
+```properties
+grails.controllers.upload.maxFileSize=4096000000
+grails.controllers.upload.maxRequestSize=4096000000
+```
 
 Max temp file expiration (duration in milliseconds).
 The uploaded file will be removed if not used as a job option within ths time period.
@@ -624,23 +629,13 @@ because the File Upload and Job Run are performed as separate steps.)
 # default is 10 minutes
 rundeck.fileUploadService.tempfile.expiration=600000
 ```
-### File Size Max
-Specifies the size of the largest request the server can accept
-
-For 1GB ~ 2GB files, is recommended to set:
-```properties
-grails.controllers.upload.maxFileSize=4096000000
-grails.controllers.upload.maxRequestSize=4096000000
-rundeck.fileUploadService.tempfile.maxsize=4096000000
-rundeck.fileUploadService.tempfile.expiration=600000
-```
-
 If you need to use large files, make sure your JVM settings have enough free memory to handle it.
 
-For 1GB ~ 2GB files, is recommended to set:
+_For 1GB ~ 2GB files, is recommended to set:_
 ```properties
 java -Xms4g -Xmx8g -jar rundeck.war
 ```
+
 
 ### Job YAML format
 
