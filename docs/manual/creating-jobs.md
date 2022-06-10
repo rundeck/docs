@@ -221,8 +221,7 @@ choose "Every Day" (default), or uncheck that option and select
 individual days of the week. You can select "Every Month" (default) or
 unselect that option and choose specific months of the year:
 
-If the crontab time and date format is preferred, enter a cron
-expression.
+If the the desired schedule cannot be defined using the simple schedule editor, the crontab expression editor should be used. This time format allows users to write nearly any shedule definition. Thus, if entering a simple enough cron expression to be displayed on the simple editor, it will be displayed on that editor once saved.
 
 ![Scheduled job crontab form](~@assets/img/fig0307.png)
 
