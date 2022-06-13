@@ -1,30 +1,3 @@
-<!-- You have some errors, warnings, or alerts. If you are using reckless mode, turn it off to see inline alerts.
-* ERRORs: 0
-* WARNINGs: 0
-* ALERTS: 14 -->
-
-<p style="color: red; font-weight: bold">>>>>>  gd2md-html alert:  ERRORs: 0; WARNINGs: 1; ALERTS: 14.</p>
-<ul style="color: red; font-weight: bold"><li>See top comment block for details on ERRORs and WARNINGs. <li>In the converted Markdown or HTML, search for inline alerts that start with >>>>>  gd2md-html alert:  for specific instances that need correction.</ul>
-
-<p style="color: red; font-weight: bold">Links to alert messages:</p><a href="#gdcalert1">alert1</a>
-<a href="#gdcalert2">alert2</a>
-<a href="#gdcalert3">alert3</a>
-<a href="#gdcalert4">alert4</a>
-<a href="#gdcalert5">alert5</a>
-<a href="#gdcalert6">alert6</a>
-<a href="#gdcalert7">alert7</a>
-<a href="#gdcalert8">alert8</a>
-<a href="#gdcalert9">alert9</a>
-<a href="#gdcalert10">alert10</a>
-<a href="#gdcalert11">alert11</a>
-<a href="#gdcalert12">alert12</a>
-<a href="#gdcalert13">alert13</a>
-<a href="#gdcalert14">alert14</a>
-
-<p style="color: red; font-weight: bold">>>>>> PLEASE check and correct alert issues and delete this message and the inline alerts.<hr></p>
-
-
-
 # ACL Basic Concepts with Examples
 
 
@@ -43,7 +16,7 @@ To see the current ACL rules click on the Gear Icon and then click on the "Acces
 
 
 
-![](../../assets/img/acl_basics_1_policies.png)
+![policies](~@assets/img/acl_basics_1_policies.png)
 
 
 
@@ -76,7 +49,7 @@ To create a new ACL, click on the Gear Icon > Access Control and click on the â€
 
 
 
-![](../../assets/img/acl_basics_2_yaml.png)
+![](~@assets/img/acl_basics_2_yaml.png)
 
 
 Note for those considering the Enterprise product, PagerDuty Process Automation uses a user-friendly wizard to create rules using the GUI directly instead of typing all rules on the YAML text editor.
@@ -207,7 +180,7 @@ Creating a role and user.
 
 
 
-![](../../assets/img/acl_basics_3_usermgr.png)
+![](~@assets/img/acl_basics_3_usermgr.png)
 
 
 
@@ -216,12 +189,12 @@ Creating a role and user.
 
 
 
-![](../../assets/img/acl_basics_4_addgroup.png)
+![](~@assets/img/acl_basics_4_addgroup.png)
 
 
 
 
-![](../../assets/img/acl_basics_4_newgroup.png)
+![](~@assets/img/acl_basics_4_newgroup.png)
 
 
 
@@ -229,12 +202,12 @@ Creating a role and user.
 
 
 
-![](../../assets/img/acl_basics_5_manageusers.png)
+![](~@assets/img/acl_basics_5_manageusers.png)
 
 
 
 
-![](../../assets/img/acl_basics_6_newuser.png)
+![](~@assets/img/acl_basics_6_newuser.png)
 
 
 ### Creating the ACL via Wizard:
@@ -245,7 +218,7 @@ Creating a role and user.
 
 
 
-![](../../assets/img/acl_basics_7_systemgear.png)
+![](~@assets/img/acl_basics_7_systemgear.png)
 
 
 
@@ -254,7 +227,7 @@ Creating a role and user.
 
 
 
-![](../../assets/img/acl_basics_8_storedpolicies.png)
+![](~@assets/img/acl_basics_8_storedpolicies.png)
 
 
 
@@ -263,7 +236,7 @@ Creating a role and user.
 
 
 
-![](../../assets/img/acl_basics_9_guiaddrule.png)
+![](~@assets/img/acl_basics_9_guiaddrule.png)
 
 
 
@@ -272,7 +245,7 @@ Creating a role and user.
 
 
 
-![](../../assets/img/acl_basics_10_guiaddrule2.png)
+![](~@assets/img/acl_basics_10_guiaddrule2.png)
 
 
 
@@ -281,7 +254,7 @@ Creating a role and user.
 
 
 
-![](../../assets/img/acl_basics_11_guiaddrule3.png)
+![](~@assets/img/acl_basics_11_guiaddrule3.png)
 
 
 
@@ -289,11 +262,11 @@ Creating a role and user.
 
 
 
-![](../../assets/img/acl_basics_12_singleproject.png)
+![](~@assets/img/acl_basics_12_singleproject.png)
 
 
 
-![](../../assets/img/acl_basics_13_jobexample.png)
+![](~@assets/img/acl_basics_13_jobexample.png)
 
 
 ## Project Context Example ACL
