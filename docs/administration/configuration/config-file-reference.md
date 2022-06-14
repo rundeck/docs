@@ -446,7 +446,7 @@ If you are deploying the Rundeck war file to Tomcat, you can manage the session 
     <session-config> <session-timeout>30</session-timeout> </session-config>
 ```
 
-### Primary Server Id
+### Primary Server Id (optional)
 
 If you are running Rundeck in a cluster set up you'll want to set one of the servers as the primary server.
 Once set as primary, that server will be the one that applies any data updates that might need to be run on bootstrap.
