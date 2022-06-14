@@ -42,7 +42,7 @@ framework.plugin.ExecutionFileStorage.azure-storage.path=logs/${job.project}/${j
 ```
 
 #### (Enterprise Version only):
-The Azure Storage Enterprise Version includes the checkpoint configuration which enables an incremental update to the execution log across the members of the cluster (https://docs.rundeck.com/docs/administration/configuration/plugins/configuring.html#logging). To use the pro version of this plugin (3.4.4+), please use the following on the rundeck-config.properties:
+The Azure Storage Enterprise Version includes the [checkpoint property](/administration/configuration/plugins/configuring.md#logging) which enables an incremental update to the execution log across the members of the cluster. To use the pro version of this plugin (3.4.4+), please use the following on the rundeck-config.properties:
 
 ```properties
 rundeck.execution.logs.fileStoragePlugin=rundeckpro.azure-storage
