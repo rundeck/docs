@@ -53,7 +53,7 @@ And on the framework.properties:
 ```property
 framework.plugin.ExecutionFileStorage.rundeckpro.azure-storage.storageAccount=<STORAGE_ACCOUNT_NAME>
 framework.plugin.ExecutionFileStorage.rundeckpro.azure-storage.accessKey=<STORAGE_ACCESS_KEY>
-framework.plugin.ExecutionFileStorage.rundeckpro.azure-storage.containerName=<STORAGE_CONTAINER_NAME>
-framework.plugin.ExecutionFileStorage.rundeckpro.azure-storage.path=logs/${job.project}/${job.execid}.log
+framework.plugin.ExecutionFileStorage.rundeckpro.azure-storage.containerName=logs
+framework.plugin.ExecutionFileStorage.rundeckpro.azure-storage.path=${job.project}/${job.execid}
 framework.plugin.ExecutionFileStorage.rundeckpro.azure-storage.defaultEndpointProtocol=https
 ```
