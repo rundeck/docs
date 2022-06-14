@@ -79,7 +79,7 @@ storage tree config options.
 
 Turn on license storage tree usage then provide your configuration using the prefix: `rundeck.license.storage`
 
-Example storing the license in Amazon S3
+Example storing the license on Amazon S3 root folder
 
 ```
 rundeck.license.useStorageTree=true
@@ -90,3 +90,24 @@ rundeck.license.storage.provider.1.config.objectStoreUrl=https://s3.amazonaws.co
 rundeck.license.storage.provider.1.config.accessKey=YOUR_ACCESS_KEY
 rundeck.license.storage.provider.1.config.secretKey=YOUR_SECRET_KEY
 ```
+
+Example storing the license on Amazon S3 using a specific folder
+
+Use the property `rundeck.license.file` to declare the specific path, and the license name.
+
+Use the property `rundeck.license.storage.provider.1.path` to declare the license path.
+
+Both properties must be used as show below. 
+
+```
+rundeck.license.useStorageTree=true
+rundeck.license.storage.provider.1.type=object
+rundeck.license.storage.provider.1.config.bucket=rundeck
+rundeck.license.storage.provider.1.config.objectStoreUrl=https://s3.amazonaws.com
+rundeck.license.storage.provider.1.config.accessKey=YOUR_ACCESS_KEY
+rundeck.license.storage.provider.1.config.secretKey=YOUR_SECRET_KEY
+
+rundeck.license.storage.provider.1.path=/FOLDER_NAME/SUB_FOLDER_NAME/
+rundeck.license.file=/FOLDER_NAME/SUB_FOLDER_NAME/rundeckpro-license.key
+```
+
