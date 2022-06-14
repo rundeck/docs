@@ -8,7 +8,7 @@ Release Date: May 11, 2022
 - [Upgrade instructions](/upgrading/)
 
 :::danger
- Rundeck is investigating an issue with the 4.2 series releases.  Please hold off on upgrading to this version.
+ Due to [CVE-2022-31044](/history/cves/CVE-2022-31044.md) this version has been superseded by version [4.2.2](version-4.2.2.md).
 :::
 
 ## Overview
