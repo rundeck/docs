@@ -1,7 +1,7 @@
 # Release 4.2.2
 
 Name: <span style="color: salmon"><span class="glyphicon glyphicon-grain"></span> "Liger salmon grain"</span>
-Release Date: June 8, 2022
+Release Date: June 15, 2022
 
 - [Download Rundeck](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
