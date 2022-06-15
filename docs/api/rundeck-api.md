@@ -5,7 +5,7 @@ alias: api/index.html
 
 # API Reference | Version {{{ apiVersion }}}
 
-Rundeck provides a Web API for use with your applications.
+Rundeck provides a Web API for use with your applications.  
 
 ## API Version Number
 
@@ -22,7 +22,7 @@ Minimum
 Deprecation
 :   Future minimum version.
 
-For information on historical version changes please see [API Version History](/api/rundeck-api-versions.md).  Please note of any [incubating endpoints](/api/rundeck-api-versions.md#incubating_endpoints) that may be subject to change.
+For tips on getting started with the API, check out these [API Basics](/api/api_basics.md) .  For information on historical version changes please see [API Version History](/api/rundeck-api-versions.md).  Please note of any [incubating endpoints](/api/rundeck-api-versions.md#incubating_endpoints) that may be subject to change.
 
 ### Usage
 

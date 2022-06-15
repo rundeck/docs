@@ -1,5 +1,8 @@
 # Using NGINX as loadbalancer
 
+:::tip
+For details on using NGINX or Apache as a reverse proxy, read [this](/administration/cluster/loadbalancer/reverse_proxies.md).
+:::
 
 [NGINX Open Source](https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-open-source/)
 [NGINX Plus](https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-plus/)
