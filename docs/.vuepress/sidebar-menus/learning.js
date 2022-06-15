@@ -44,7 +44,8 @@ module.exports = [{
               '/learning/howto/install-centos.md',
               '/learning/howto/migrate-to-mysql.md',
               '/learning/howto/use-terraform-provider.md',
-              '/learning/howto/learn-rd-cli.md'
+              '/learning/howto/learn-rd-cli.md',
+              '/learning/howto/acl_basic_examples.md'
           ]
         },
         {

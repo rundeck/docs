@@ -139,6 +139,7 @@ module.exports = [{
                     ]
                   },
                   '/administration/cluster/autotakeover/',
+                  '/administration/cluster/loadbalancer/reverse_proxies',
                   '/administration/configuration/remote-job-execution',
                   '/administration/cluster/replication/'
                 ]

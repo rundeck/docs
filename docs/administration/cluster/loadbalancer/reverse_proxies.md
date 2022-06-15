@@ -1,4 +1,5 @@
-# How to Configure Rundeck Behind a Reverse Proxy Server
+# Reverse Proxies
+## How to Configure Rundeck Behind a Reverse Proxy Server
 
 Rundeck works using its own web server, the Jetty web server. This web server runs over the 4440 TCP port by default (or 4443 under SSL config).
 

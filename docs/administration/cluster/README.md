@@ -7,7 +7,7 @@
 ![Rundeck architecture](~@assets/img/architecture.png)
 
 ## Installation
-To install a Rundeck Enterprise Enterprise instance, download the lastest version from [here](https://download.rundeck.com/versions.html), and follow the steps in the [Installation Guide](/administration/install/index.md)
+To install a Rundeck Enterprise Enterprise instance, download the latest version from [here](https://download.rundeck.com/versions.html), and follow the steps in the [Installation Guide](/administration/install/index.md)
 
 ## Requirements
 The Rundeck Enterprise environment needs the following shared resources:
