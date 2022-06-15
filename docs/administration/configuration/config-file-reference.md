@@ -446,6 +446,14 @@ If you are deploying the Rundeck war file to Tomcat, you can manage the session 
     <session-config> <session-timeout>30</session-timeout> </session-config>
 ```
 
+### Multi-URL Setting
+Make sure the `grails.serverURL` is specified (with or without server.servlet.context-path), Set `rundeck.multiURL.enabled=true` and access the service through `grails.serverURL` using a secondary DNS pointing to the same server, the server IP, etc.
+
+- Each of accessed urls will ask for login and password
+- The address in navigation bar will not change
+- Notifications will use `grails.serverURL`
+
+
 ### Primary Server Id (optional)
 
 If you are running Rundeck in a cluster set up you'll want to set one of the servers as the primary server.
