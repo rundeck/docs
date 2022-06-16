@@ -5834,6 +5834,10 @@ GET /api/11/project/[PROJECT]/export?exportAll=false
 * `exportConfigs` true/false, include project configuration
 * `exportReadmes` true/false, include project readme/motd files
 * `exportAcls` true/false, include project ACL Policy files, if authorized
+* `exportComponents.calendars` true/false, include project calendars 
+* `exportComponents.Schedule%20Definitions` true/false, include schedule definitions 
+* `exportComponents.tours-manager` true/false, include tours manager
+* `exportComponents.node-wizard` true/false, include node wizard
 
 In APIv28 or later:
 
@@ -5844,6 +5848,14 @@ In APIv34 or later:
 * `exportWebhooks` true/false, include project webhooks in the archive
 * `whkIncludeAuthTokens` true/false, include the auth token information when exporting webhooks, if not included the auth tokens will be regenerated upon import
 
+:::tip
+By default `exportAll` does not include the webhooks auth tokens, `whkIncludeAuthTokens` must be set to true in order to export the auth tokens. 
+
+Example:
+```
+GET /api/34/project/[PROJECT]/export?exportAll=true&whkIncludeAuthTokens=true
+```
+:::
 
 GET Examples:
 
