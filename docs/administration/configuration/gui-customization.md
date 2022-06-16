@@ -15,34 +15,6 @@ these properties in the [rundeck-config.properties](/administration/configuratio
 Requires staticUserResources to be enabled. Sets the user's logo (e.g. company/org logo) on the login, logout pages and in the header of the application.  See `rundeck.gui.staticUserResources.enabled` for file location.
 
 
-### rundeck.gui.logoSmall
-- Example: ```rundeck.small.png```
-- min version: 3.0.1
-
-Requires staticUserResources to be enabled. Sets a small user's logo (e.g. company/org logo) to be used in place of the larger logo in the header of the application.  See `rundeck.gui.staticUserResources.enabled` for file location.
-
-
-### rundeck.gui.sidebarColor
-- Example: ```#2910f8```
-- min version: 3.0.2
-
-Sets the background color of the navigation sidebar.
-
-
-### rundeck.gui.sidebarTextColor
-- Example: ```#fffdfa```
-- min version: 3.0.2
-
-Sets the text color of the navigation sidebar.
-
-
-### rundeck.gui.sidebarTextActiveColor
-- Example: ```#000000```
-- min version: 3.0.2
-
-Sets the active text/link color of the navigation sidebar.
-
-
 ### rundeck.gui.instanceName
 - Example: ```Ops Management Console> Prod, Ops Staging```
 - min version: 3.0.3
@@ -141,19 +113,6 @@ Displaying a real tree in the Jobs overview instead of collapsing empty groups.
 Change the default page shown after choosing a project. Values: 'adhoc', 'configure', 'createJob', 'events', 'home', 'jobs', 'nodes', 'projectHome' or 'uploadJob'.
 
 
-### rundeck.gui.execution.tail.lines.default
-- Example: ```(Default: 20)```
-- min version: 2.x
-
-Change the default number of lines shown in the execution page in tail mode view.
-
-
-### rundeck.gui.execution.tail.lines.max
-- Example: ```(Default: 100)```
-- min version: 2.x
-
-Change the maximum number of lines shown in the execution page in tail mode view.
-
 
 ### rundeck.gui.enableJobHoverInfo
 - Example: ```(Default: true)```
@@ -183,25 +142,11 @@ HTML displayed on the login page. The HTML will be sanitized before display.
 HTML displayed on the login page below the login form. The HTML will be sanitized before display.
 
 
-### rundeck.gui.login.disclaimer
-- Example: ```(Default: blank)```
-- min version: 3.0.8
-
-HTML displayed on the login page below the login form element but seperate from the login form element. The HTML will be sanitized before display.
-
-
 ### rundeck.gui.errorpage.hidestacktrace
 - Example: ```(Default: false)```
 - min version: 2.x
 
 Hide Java stacktraces from the end true/false user when an error occurs.
-
-
-### rundeck.gui.job.description.disableHTML
-- Example: ```(Default: false)```
-- min version: 2.x
-
-Disable extended Job description true/false and Option description rendering as HTML.
 
 
 ### rundeck.gui.clusterIdentityInHeader
