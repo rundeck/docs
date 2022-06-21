@@ -1,18 +1,13 @@
 # Project Configuration
 
-## Storage types
+## File Storage
 
-:::tip Note
-Rundeck 3.4 no longer supports the `rundeck.projectsStorageType` configuration property.
-:::
+Configuration files for the project (previously stored on-disk) are stored in the database. (Since Rundeck 3.4).
 
-If you are upgrading from Rundeck 3.3 or earlier, any Projects that existed with a previous value of `filesystem` 
-will be automatically imported to the Database.
-The import process copies the contents of `etc/project.properties`, `readme.md` and `motd.md` (if they exist), and any ACLs within `acls/`.
+This includes the project configuration properties (aka `project.properties`), `readme.md` and `motd.md`. Additionally, some ACLs may be stored this way 
+if the Enterprise ACL Storage feature is not used, or the ACL files cannot be used with it. (See [Rundeck 3.4 > Enterprise ACL Storage Layer (Enterprise)](https://docs.rundeck.com/docs/upgrading/upgrading-to-rundeck-3.4.html#enterprise-acl-storage-layer-enterprise))
 
-Finally, all imported files will be renamed on disk to add an extension of `.imported`.
-
-The DB storage type also uses the Rundeck **Storage Facility** to store the file contents, which can be
+This uses the Rundeck **Storage Facility** to store the file contents, which can be
 configured to use an Encryption plugin. See [Storage Facility - Using Encryption](/administration/configuration/storage-facility.md#using-encryption).
 
 ## Graphical Interface
