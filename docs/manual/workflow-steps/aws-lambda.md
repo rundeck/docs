@@ -7,7 +7,8 @@ AWS Lambda is a serverless, event-driven compute service that lets you run code 
 
 The following Lambda plugins are available for PagerDuty Runbook Automation and Process Automation (formerly Rundeck Enterprise):
 
-* [Execute Lambda Function](#execute-lambda-function)
+* [Execute Lambda Function](#execute-lambda-function) - Executes an existing Lambda function.
+* [Lambda Custom Code Execution](#lambda-custom-code-execution) - Creates and executes a new Lambda function with the custom-code provided in the Job step.
 
 These plugins utilize the following properties:
 
@@ -50,3 +51,17 @@ For more details on the differences between Event and Request, click [here](http
 #### Permissions
 The IAM Policies required to use this plugin are:
 * **`lambda:InvokeFunction`**
+
+### Lambda Custom Code Execution
+
+The **AWS / Lambda / Custom Code Execution** plugin creates and executes a new Lambda function with the custom-code provided in the Job step as its input:
+
+![Lambda Custom Code](@assets/img/aws-custom-lambda-code.png)<br>
+
+In the example above, a new Lambda is created and is executed as a Python-3.9 script.  Any content defined in the **`return`** statement will be displayed in the log-output:
+
+![Lambda Custom Output](@assets/img/aws-custom-lambda-output.png)<br>
+
+#### Supported Languages
+All _interpreted_ languages supported by AWS Lambda (Python, Ruby, Node.js) are usable within the plugin. Because the Lambda function is generated programmatically, _compiled_ languages such as Java and Go are not available within the plugin.
+
