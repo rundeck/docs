@@ -59,10 +59,10 @@ Capture a snapshot of the GCP VM. The snapshot name cannot include spaces.
 - instanceName
 - projectId
 - zone
-- Cool down period(Optional -in seconds)
-- CPU utilization target(Optional - Must be between 0-1 i.e 0.6)
-- Maximum number of replicas(Maximum number of replicas you want to create for Compute Machine)
-- Minimum number of replicas( Optional - Minimum number of replicas you want to create for Compute Machine)
+- Cool down period (Optional- in seconds)
+- CPU utilization target (Optional- Must be between 0-1 i.e 0.6)
+- Maximum number of replicas you want to create for Compute Machine
+- Minimum number of replicas you want to create for Compute Machine (Optional)
 - Policy Mode( Optional i.e. ON, OFF)
 
 ### GCP / Enable / VPC / Network / Peering
