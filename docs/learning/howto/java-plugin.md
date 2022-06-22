@@ -78,39 +78,44 @@ Otherwise you can install the dependencies manually:
 
 The editor we'll be using in this tutorial Visual Studio Code (vscode for short) has an extensible architecture to add support for whatever language or framework you need to work with. To get Java functionality, install the Java Extension Pack by pressing `cmd+p` then entering `ext install vscjava.vscode-java-pack` in the prompt.
 
-### Bootstrapping the plugin project structure
+### Using the plugin bootstrap tool
+[Here](https://github.com/rundeck/plugin-bootstrap/releases) you can download the latest release of the plugin-bootstrap tool.
 
-#### Download the rundeck-playground environment
+#### Installing from zip file
+Download the tar or zip distribution, and use the tool `<extraction-path>/bin/rundeck-plugin-bootstrap`.
 
-If you don't already have the rundeck-playground project checked out, clone it now:
-
+#### Installing from deb package
 ```bash
-git clone https://github.com/clofresh/rundeck-playground.git
+sudo dpkg -i <download-path>/rundeck-plugin-bootstrap-X.Y.Z-1_all.deb
 ```
 
-This project provides a sample Rundeck environment running in Docker on your workstation.
-
-#### Build and configure the rundeck-plugin bootstrap tool
-
-Now that you have the rundeck-playground project, you can build the rundeck-plugin-bootstrap tool and make it executable in your environment:
-
+#### Installing from rpm package
 ```bash
-make tools
-eval $(make env)
+sudo rpm -i <download-path>/rundeck-plugin-bootstrap-X.Y.Z-1.noarch.rpm
 ```
 
+#### Check the available options
 To confirm that you have the bootstrap tool, run:
 
 ```bash
-rundeck-plugin-bootstrap -h
+rundeck-plugin-bootstrap --help
 
-Create a Verb artifact
-
-The options available are:
-        --destinationDirectory -d value : The directory in which the artifact directory will be generated
-        --pluginName -n value : Plugin Name
-        --pluginType -t value : Plugin Type
-        --serviceType -s value : Rundeck Service Type
+Usage: plugin-bootstrap [-hV] -d=<destinationDirectory> -n=<pluginName>
+                        -s=<serviceType> -t=<pluginType>
+Create a Rundeck plugin artifact.
+  -d, --destinationDirectory=<destinationDirectory>
+                  The directory in which the artifact directory will be generated
+  -h, --help      Show this help message and exit.
+  -n, --pluginName=<pluginName>
+                  Plugin Name.
+  -s, --serviceType=<serviceType>
+                  Rundeck Service Type: ResourceModelSource, Notification,
+                    WorkflowStep, WorkflowNodeStep, LogFilter, NodeExecutor,
+                    Orchestrator, FileCopier, RemoteScriptNodeStep,
+                    NodeExecutorFileCopier, Option, UI
+  -t, --pluginType=<pluginType>
+                  Plugin Type: java, script, ui
+  -V, --version   Print version information and exit.
 ```
 
 #### Generate the Java plugin project structure
@@ -215,7 +220,7 @@ The rd-config Make task will see your new Java plugin and run the Gradle build a
 
 #### Creating a job to use our plugin
 
-Now that we've deployed our plugin, we want to make sure that we can use it in a job. Log into the local Rundeck at [http://127.0.0.1:4440/](http://127.0.0.1:4440/) with the default user `admin` and password `admin`. Then create a new job in the `hello-project` project:
+Now that we've deployed our plugin, we want to make sure that we can use it in a job. Log into the local Rundeck at [http://localhost:4440/](http://127.0.0.1:4440/) with the default user `admin` and password `admin`. Then create a new job in the `hello-project` project:
 
 ![Create a new job](~@assets/img/create-job.png)
 
