@@ -1,4 +1,4 @@
-## AWS Lambda Workflow Steps
+# AWS Lambda Workflow Steps
 
 :::enterprise
 :::
@@ -30,7 +30,7 @@ These plugins utilize the following properties:
 - **Project setting**: project.aws.region
 - **Configuration Management**/**Framework Setting**: aws.region
 
-### Execute Lambda Function
+## Execute Lambda Function
 
 The **AWS / Lambda / Invoke** plugin invokes an _existing_ Lambda function in an AWS account in a specific region:
 
@@ -52,7 +52,7 @@ For more details on the differences between Event and Request, click [here](http
 The IAM Policies required to use this plugin are:
 * **`lambda:InvokeFunction`**
 
-### Lambda Custom Code Execution
+## Lambda Custom Code Execution
 
 The **AWS / Lambda / Custom Code Execution** plugin creates and executes a new Lambda function with the custom-code provided in the Job step as its input:
 
@@ -62,6 +62,21 @@ In the example above, a new Lambda is created and is executed as a Python-3.9 sc
 
 ![Lambda Custom Output](@assets/img/aws-custom-lambda-output.png)<br>
 
-#### Supported Languages
-All _interpreted_ languages supported by AWS Lambda (Python, Ruby, Node.js) are usable within the plugin. Because the Lambda function is generated programmatically, _compiled_ languages such as Java and Go are not available within the plugin.
+:::tip Note
+Content within **`print`** statements will **not** be displayed in the log-output of the plugin. Any content you wish to see in Runbook Automation should be in the **`return`** statement. 
+:::
+
+#### Plugin Field Descriptions
+
+* **Execution Role ARN**: This is the Lambda function's IAM role that grants the function permission to access AWS services and resources. More details on this can be found [here](https://docs.aws.amazon.com/lambda/latest/dg/lambda-intro-execution-role.html).
+* **Lambda Runtime**: The runtime to use for the Lambda function. Only _interpreted_ languages are included here - not compiled languages.
+* **Function Code**: This is the code to be executed by the Lambda function.  This must include a _handler_ which is identified in the `Name of Main Function` field.  More details on the handler can be found [here](https://docs.aws.amazon.com/lambda/latest/dg/python-handler.html).
+  ::: tip Supported Languages
+    All _interpreted_ languages supported by AWS Lambda (Python, Ruby, Node.js) are usable within the plugin. Because the Lambda function is generated programmatically, _compiled_ languages such as Java and Go are not available within the plugin.
+    :::
+* **Name of Main Function**: The name of your _handler_ function.  In the example above, **`lambda_handler`** is the name of the main function.
+* **Delete Function After Execution**: Select whether the Lambda that is created by this Job step should be automatically deleted after execution. The function will be deleted regardless of whether the execution of the Lambda code is successful. This is to avoid "orphaned" functions in your AWS environment. 
+* **Function AWS Description (Optional)**: Provide a description for the Lambda function. Because the plugin auto-generates the functions _Name_, this can be useful when you do _not_ auto-delete the function.
+* 
+
 
