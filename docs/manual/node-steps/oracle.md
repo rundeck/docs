@@ -8,11 +8,11 @@ It is helpful configure the Oracle Cloud Infrastructure (OCI) resource model plu
 
 [Oracle Cloud Infrastructure](https://www.oracle.com/cloud/) is a cloud service in wide use for dynamic infrastructure; it is easy to start up and shut down Node "Instances" in the cloud.  Use these Rundeck steps to automate common OCI Virtual Machine actions.
 
+To configure Authentication use this page as a reference: [Create Credential for OCI Authentication](https://docs.oracle.com/en/cloud/paas/management-cloud/logcs/create-credentials-oci-authentication.html)
+
 ::: warning
 When setting up the node for your Oracle instance, make the compartment ID the same as the tenant ID if you are getting an error and your root tenant doesn't have any compartments.
 :::
-
-To configure Authentication use this page as a reference: [Create Credential for OCI Authentication](https://docs.oracle.com/en/cloud/paas/management-cloud/logcs/create-credentials-oci-authentication.html)
 
 **Tenant ID**
 : The OCID of the tenant.
