@@ -8,6 +8,10 @@ It is helpful configure the Oracle Cloud Infrastructure (OCI) resource model plu
 
 [Oracle Cloud Infrastructure](https://www.oracle.com/cloud/) is a cloud service in wide use for dynamic infrastructure; it is easy to start up and shut down Node "Instances" in the cloud.  Use these Rundeck steps to automate common OCI Virtual Machine actions.
 
+::: warning
+When setting up the node for your Oracle instance, make the compartment ID the same as the tenant ID if you are getting an error and your root tenant doesn't have any compartments.
+:::
+
 To configure Authentication use this page as a reference: [Create Credential for OCI Authentication](https://docs.oracle.com/en/cloud/paas/management-cloud/logcs/create-credentials-oci-authentication.html)
 
 **Tenant ID**
@@ -21,7 +25,7 @@ This setting can be configured using _System Configuration_ using `oracle.tenant
 This setting can be configured using _System Configuration_ using `oracle.user_id` or project specific using `project.oracle.user_id`
 
 **Fingerprint**
-: The fingerprint for the RSA key pair that you're using to access OCI. It looks something like this: `12:34:56:78:90:ab:cd:ef:12:34:56:78:90:ab:cd:ef`.
+: The fingerprint for the RSA key pair that you're using to access OCI. It looks something like this: `12:34:56:78:90:ab:cd:ef:12:34:56:78:90:ab:cd:ef`. When generating credentials on Oracle, it will first have you make a private key, generate a public key from this private key, and then upload this public key back to Oracle. Use the fingerprint from this second, public key.
 
 This setting can be configured using _System Configuration_ using `oracle.fingerprint` or project specific using `project.oracle.fingerprint`
 
