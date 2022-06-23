@@ -6,7 +6,7 @@
 
 To configure Authentication use this page as a reference: [Create Credential for OCI Authentication](https://docs.oracle.com/en/cloud/paas/management-cloud/logcs/create-credentials-oci-authentication.html)
 
-When setting up the node for your Oracle instance, make the compartment ID the same as the tenant ID if you are getting an error. 
+When setting up the node for your Oracle instance, make the compartment ID the same as the tenant ID if you are getting an error and your root tenant doesn't have any compartments. 
 
 **Tenant ID**
 : The OCID of the tenant.
