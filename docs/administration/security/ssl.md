@@ -25,7 +25,7 @@ Make sure to use the correct `$HOSTNAME` value both here and in response to the 
 keytool -keystore etc/keystore -ext san=dns:$HOSTNAME -alias rundeck -genkey -keyalg RSA -keypass adminadmin -storepass adminadmin
 ```
 
-:::tip Modern SSL clients no longer use the "CN" value of a certificate to validate the hostname, and require that the hostname be included in the SubjectAlternativeName field. The flag `-ext san=dns:$HOSTNAME` includes a "SubjectAlternativeName" when generating the certificate. Newer clients may fail with an error about validating the hostname if this is empty or does not contain a matching value. The flag value can include multiple entries**** such as `-ext san=dns:x.tld,dns:y.tld`.
+:::tip Modern SSL clients no longer use the "CN" value of a certificate to validate the hostname, and require that the hostname be included in the SubjectAlternativeName field. The flag `-ext san=dns:$HOSTNAME` includes a "SubjectAlternativeName" when generating the certificate. Newer clients may fail with an error about validating the hostname if this is empty or does not contain a matching value. The flag value can include multiple entries such as `-ext san=dns:x.tld,dns:y.tld`.
 :::
 
 Be sure to specify the correct DNS hostname of the server as the response to the question "What is your first and last name?". Answer "yes" to the final question.
