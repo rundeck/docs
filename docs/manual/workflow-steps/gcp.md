@@ -48,3 +48,31 @@ Terminate the Compute VM instance.
 ### GCP / SQLInstance / Restart
 
 Restart a GCP SQL Instance.
+
+### GCP / VM / Capture Snapshot
+
+Capture a snapshot of the GCP VM. The snapshot name cannot include spaces. 
+
+### GCP / VM / Update / Autoscaling Policy
+
+- Update the autoscaling policy of GCP managed compute machine using below parameters:
+- instanceName
+- projectId
+- zone
+- Cool down period (Optional- in seconds)
+- CPU utilization target (Optional- Must be between 0-1 i.e 0.6)
+- Maximum number of replicas you want to create for Compute Machine
+- Minimum number of replicas you want to create for Compute Machine (Optional)
+- Policy Mode( Optional i.e. ON, OFF)
+
+### GCP / Enable / VPC / Network / Peering
+
+Allow VPC connections between one another using peer network, network, and connection name.
+
+### GCP / Create / Resource
+
+Create a new instance using an existing disk which uses instance name, disk name, and machine type.
+
+### GCP / Configure / Vpc-Log
+
+Enable flow log for GCP cloud instance.

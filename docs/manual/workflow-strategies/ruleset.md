@@ -66,7 +66,7 @@ Conditions can define additional checks that must pass before a step can run, or
 - `key.name>number`: greater than check
 - `key.name<number`: less than check
 
-> Note: Curly braces are not needed to reference context variable key names.
+> Note: Curly braces are not needed to reference context variable key names.  Option, Global, and Workflow Step variables are accessible by the Ruleset Strategy.  _Node Context_ variables are not available to Ruleset Conditions. 
 
 ## Examples
 

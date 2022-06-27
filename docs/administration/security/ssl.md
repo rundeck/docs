@@ -17,21 +17,26 @@ Grails application running at http://localhost:4440 in environment: production
 
 (2) Using the [keytool] command, generate a keystore for use as the server cert and client truststore. Specify passwords for key and keystore:
 
-[keytool]: https://linux.die.net/man/1/keytool-java-1.6.0-openjdk
+[keytool]: https://docs.oracle.com/javase/8/docs/technotes/tools/windows/keytool.html
+
+Make sure to use the correct `$HOSTNAME` value both here and in response to the prompts below.
 
 ```shell
-keytool -keystore etc/keystore -alias rundeck -genkey -keyalg RSA -keypass adminadmin -storepass adminadmin
+keytool -keystore etc/keystore -ext san=dns:$HOSTNAME -alias rundeck -genkey -keyalg RSA -keypass adminadmin -storepass adminadmin
 ```
 
-Be sure to specify the correct hostname of the server as the response to the question "What is your first and last name?". Answer "yes" to the final question.
+:::tip Modern SSL clients no longer use the "CN" value of a certificate to validate the hostname, and require that the hostname be included in the SubjectAlternativeName field. The flag `-ext san=dns:$HOSTNAME` includes a "SubjectAlternativeName" when generating the certificate. Newer clients may fail with an error about validating the hostname if this is empty or does not contain a matching value. The flag value can include multiple entries such as `-ext san=dns:x.tld,dns:y.tld`.
+:::
+
+Be sure to specify the correct DNS hostname of the server as the response to the question "What is your first and last name?". Answer "yes" to the final question.
 
 You can pass all the answers to the tool on the command-line by using a HERE document.
 
-Replace the first line "Venkman.local" with the hostname for your server, and use any other organizational values you like:
+Replace the first line "$HOSTNAME" with the hostname for your server, and use any other organizational values you like:
 
 ```shell
-keytool -keystore etc/keystore -alias rundeck -genkey -keyalg RSA -keypass adminadmin -storepass adminadmin  <<!
-Venkman.local
+keytool -keystore etc/keystore -ext san=dns:$HOSTNAME -alias rundeck -genkey -keyalg RSA -keypass adminadmin -storepass adminadmin  <<!
+$HOSTNAME
 devops
 My org
 my city

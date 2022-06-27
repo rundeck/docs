@@ -34,8 +34,26 @@ For example:
 #storage.storageAccount and storage.accessKey
 framework.plugin.ExecutionFileStorage.azure-storage.storageAccount=<ACCOUNT-NAME>
 framework.plugin.ExecutionFileStorage.azure-storage.accessKey=<ACCESS-KEY>
+framework.plugin.ExecutionFileStorage.azure-storage.defaultEndpointProtocol=https
 
 #path to store the logs
 framework.plugin.ExecutionFileStorage.azure-storage.path=logs/${job.project}/${job.execid}.log
 
+```
+
+#### (Enterprise Version only):
+The Azure Storage Enterprise Version includes the [checkpoint property](/administration/configuration/plugins/configuring.md#logging) which enables an incremental update to the execution log across the members of the cluster. To use the pro version of this plugin (3.4.4+), please use the following on the rundeck-config.properties:
+
+```properties
+rundeck.execution.logs.fileStoragePlugin=rundeckpro.azure-storage
+```
+
+And on the framework.properties:
+
+```properties
+framework.plugin.ExecutionFileStorage.rundeckpro.azure-storage.storageAccount=<STORAGE_ACCOUNT_NAME>
+framework.plugin.ExecutionFileStorage.rundeckpro.azure-storage.accessKey=<STORAGE_ACCESS_KEY>
+framework.plugin.ExecutionFileStorage.rundeckpro.azure-storage.containerName=logs
+framework.plugin.ExecutionFileStorage.rundeckpro.azure-storage.path=${job.project}/${job.execid}
+framework.plugin.ExecutionFileStorage.rundeckpro.azure-storage.defaultEndpointProtocol=https
 ```

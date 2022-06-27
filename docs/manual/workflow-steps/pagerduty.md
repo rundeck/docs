@@ -85,6 +85,13 @@ This job step allows users to add a note to an existing PagerDuty incident.
 - **Images**
 : This is a comma separated list of image URLS to include in the event.
 
+> Note: to send events to PagerDuty services hosted in different regions, you will need to add the URL in a property called: framework.pagerduty.service.url, inside the framework.properties file, located in $RDECK_BASE/etc/ .
+
+E.g.:
+```bash
+framework.pagerduty.service.url = https://events.eu.pagerduty.com
+```
+
 ## PagerDuty Update Status
 
 This job step allows users to update the status of an existing PagerDuty incident.
@@ -150,6 +157,13 @@ This job step allows users to specify another escalation policy or another user 
 - **Source**: The unique name of the location where the Change Event occurred.
 - **Add Custom Fields**: This is a place to enter any custom fields for the change event. Specify a field key, label and description and then assign a value to that key once rendered.
 - **API Key**: The API key for the account that contains the service to send the change event to.
+
+> Note: to send events to PagerDuty services hosted in different regions, you will need to add the URL in a property called: framework.pagerduty.service.url, inside the framework.properties file, located in $RDECK_BASE/etc/ .
+
+E.g.:
+```bash
+framework.pagerduty.service.url = https://events.eu.pagerduty.com
+```
 
 ## PagerDuty Send Impact Metric
 
