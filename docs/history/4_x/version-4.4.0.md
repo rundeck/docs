@@ -1,7 +1,7 @@
 # Release 4.4.0
 
 Name: <span style="color: deeppink"><span class="glyphicon glyphicon-piggy-bank"></span> "Murloc deeppink piggy-bank"</span>
-Release Date: PUTADATEHERE
+Release Date: July 13, 2022
 
 - [Download Rundeck](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
@@ -66,7 +66,6 @@ New AWS Job Step Plugins for ECS (Fargate) and Lambda are available for Commerci
 
 * Pierre Carré (pierrecarre)
 * Pieter De Praetere (pieterdp)
-
 
 ## Staff Contributors
 
