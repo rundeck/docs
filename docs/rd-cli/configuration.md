@@ -135,7 +135,7 @@ See [SSL Configuration](./ssl.md)
 
 To disable *all* SSL certificate checks, and hostname verifications:
 
-    `export RD_INSECURE_SSL=true`
+    `export RD_INSECURE_SSL=true RD_INSECURE_SSL_NO_WARN=true`
 
 When enabled, a value of `RD_DEBUG=2` will also report SSL certificate
 information.
@@ -145,7 +145,7 @@ information.
 To retain SSL certificate verification, but allow *any* hostname to be
 allowed for the certificate:
 
-    `export RD_INSECURE_SSL_HOSTNAME=true RD_INSECURE_SSL_NO_WARN=true`
+    `export RD_INSECURE_SSL_HOSTNAME=true`
 
 ## Alternate SSL Hostname Verification
 
