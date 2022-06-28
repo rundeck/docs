@@ -145,7 +145,7 @@ information.
 To retain SSL certificate verification, but allow *any* hostname to be
 allowed for the certificate:
 
-    `RD_INSECURE_SSL_HOSTNAME=true`
+    `export RD_INSECURE_SSL_HOSTNAME=true RD_INSECURE_SSL_NO_WARN=true`
 
 ## Alternate SSL Hostname Verification
 
@@ -154,4 +154,4 @@ allows you to retain SSL certificate verification, but set an
 alternate hostname to accept from the remote server certificate, if
 it does not match the hostname you are using in your request:
 
-    `RD_ALT_SSL_HOSTNAME=hostname`
+    `export RD_ALT_SSL_HOSTNAME=hostname`
