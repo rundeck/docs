@@ -11,4 +11,7 @@ The **Amazon ECS-Fargate Node Source** retrieves the running containers in ECS a
 
 ![ECS Node Attributes](@assets/img/aws-ecs-node-attributes.png)<br>
 
+## Configuration
 
+You can add the **ECS-Fargate Node Source** by navigating to:<br>
+**Project Settings** -> **Edit Nodes** -> **Sources** -> **Add a new Node Source +** 
