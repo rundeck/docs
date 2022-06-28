@@ -11,6 +11,12 @@ Release Date: PUTADATEHERE
 
 Check out the new features and enhancements for PagerDuty Process Automation (formerly Rundeck Enterprise) and PagerDuty Runbook Automation (announced as Rundeck Cloud) and Rundeck Community included in this release.
 
+## New AWS Plugins
+New AWS Job Step Plugins for ECS (Fargate) and Lambda are available for Commercial product users. See details about specific plugin functionality below:
+
+* [ECS/Fargate Command Workflow Step](/manual/workflow-steps/aws-ecs-fargate): Send commands to containers running in ECS using AWS's Systems Manager agent. This is useful for extracting realtime diagnostics from containers.<br><br>
+* [Lambda Custom Code Workflow Step](/manual/workflow-steps/aws-lambda.html#lambda-custom-code-execution): Create, execute, and optionally delete a new Lambda function with the custom-code provided in a Job step as its input. This allows users to execute custom scripts as steps in their Jobs without needing to install any software - therefore particularly useful for Runbook Automation (Cloud) users.
+
 ## Commercial Updates
 
 * Upgrade Ansible Plugin to 3.2.1
