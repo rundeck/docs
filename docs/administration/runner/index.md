@@ -56,19 +56,19 @@ It is possible to edit each project Node Filter individually if needed.  Use the
 
 ### Troubleshooting
 
-Runner Logs are located in the `./runner/logs` folder under the folder where the jar was executed from.  The `runner.log` file contains operational and important messages about the runner.  `operations.log` tracks an operation starts and if it succeeds or fails.
+Runner Logs are located in the `./runner/logs` folder under the folder where the jar was executed from.  The `runner.log` file contains operational and important messages about the runner.  `operations.log` tracks an operation starts and if it succeeds or fails.  [Read more about logging and setting up custom logging](runner-logging.md).
 
 ### Proxying Runner connections
-Runners can be configured to connect through a HTTP/HTTPS proxy. Proxies are commonly used to centralize and secure outbound traffic from the datacenter to internet services. The proxy configuration is optional and is added as java command line arguments when the runner process is started. 
+Runners can be configured to connect through a HTTP/HTTPS proxy. Proxies are commonly used to centralize and secure outbound traffic from the datacenter to internet services. The proxy configuration is optional and is added as java command line arguments when the runner process is started.
 
 #### Proxy configuration without proxy authentication
-The following example will allow the runner to connect through the secure company proxy with address wp.acme.corp. 
+The following example will allow the runner to connect through the secure company proxy with address wp.acme.corp.
 
 ```
 java -Dmicronaut.http.client.proxy-type=http -Dmicronaut.http.client.proxy-address=wp.acme.corp:443 -jar pdrunner.jar
 ```
 
-1. `-Dmicronaut.http.client.proxy-type` is set to `http` 
+1. `-Dmicronaut.http.client.proxy-type` is set to `http`
 1. `-Dmicronaut.http.client.proxy-address` is set to the secure proxy company address.
 
 #### Proxy configuration with proxy authentication
@@ -78,7 +78,7 @@ The following example adds basic auth proxy configuration to the runner. The pro
 java -Dmicronaut.http.client.proxy-type=http -Dmicronaut.http.client.proxy-address=wp.acme.corp:443 -Dmicronaut.http.client.proxy-username=proxyUsernameString -Dmicronaut.http.client.proxy-password=proxyPassString -jar pdrunner.jar
 ```
 
-1. `-Dmicronaut.http.client.proxy-username` is set to the user that is allowed to connect through the secure proxy. 
+1. `-Dmicronaut.http.client.proxy-username` is set to the user that is allowed to connect through the secure proxy.
 1. `-Dmicronaut.http.client.proxy-password` is set to the secure proxy user password.
 
 
@@ -94,7 +94,7 @@ At this time, the Runner will execute Node Executor and File Copier steps.  This
 
 **Do Runners participate in node discovery?**
 
-Not at this time, but it is possible with some custom scripting and using the [APIs](/api/rundeck-api.md#updating-and-listing-resources-for-a-project) it is possible to update the node lists remotely in Rundeck. 
+Not at this time, but it is possible with some custom scripting and using the [APIs](/api/rundeck-api.md#updating-and-listing-resources-for-a-project) it is possible to update the node lists remotely in Rundeck.
 
 **Can multiple Runners run in parallel?**
 
