@@ -3,12 +3,16 @@
 Export environment variables in your shell, or in a `~/.rd/rd.conf`
 file (unix only), or by specifying the file location:
 
-    `export RD_CONF=/path/to/rd.conf`
+```shell
+export RD_CONF=/path/to/rd.conf
+```
 
 If you want the conf file values to let you override them with any vars
 you have exported in your shell, you can define config values like:
 
-    `export RD_URL=${RD_URL:-http://server:4440}`
+```shell
+export RD_URL=${RD_URL:-http://server:4440}
+```
 
 Which will default the value unless you have already exported `RD_URL`.
 
@@ -16,11 +20,15 @@ Which will default the value unless you have already exported `RD_URL`.
 
 ## Connection Info
 
-	`export RD_URL=http://rundeck:4440`
+```shell
+export RD_URL=http://rundeck:4440`
+```
 
 Define a specific API version to use, by using the complete API base:
 
-	`export RD_URL=http://rundeck:4440/api/12`
+```shell
+export RD_URL=http://rundeck:4440/api/12
+```
 
 All requests will be made using that API version.
 
@@ -28,12 +36,16 @@ All requests will be made using that API version.
 
 Define access credentials as user/password or Token value:
 
-	`export RD_TOKEN=yourtokenhere`
+```shell
+export RD_TOKEN=yourtokenhere`
+```
 
-	# or
+__or__
 
-	`export RD_USER=username`
-	`export RD_PASSWORD=password`
+```shell
+export RD_USER=username
+export RD_PASSWORD=password
+```
 
 ## Prompting
 
@@ -43,8 +55,9 @@ the shell if a TTY is avaliable.
 
 You can disable automatic prompting:
 
-    `export RD_AUTH_PROMPT=false`
-
+```shell
+export RD_AUTH_PROMPT=false
+```
 
 ## ANSI color
 
@@ -52,19 +65,25 @@ By default, `rd` will print some output using ANSI escapes for colorized output.
 
 You can disable this:
 
-    `export RD_COLOR=0`
+```shell
+export RD_COLOR=0
+```
 
 You can set the default colors used by info/output/error/warning output:
 
-    `export RD_COLOR_INFO=blue`
-    `export RD_COLOR_WARN=orange`
-    `export RD_COLOR_ERROR=cyan`
+```shell
+export RD_COLOR_INFO=blue
+export RD_COLOR_WARN=orange
+export RD_COLOR_ERROR=cyan
+```
 
 ## Date Format
 
 You can modify the Date format used when displaying dates:
 
-	export RD_DATE_FORMAT=<format>
+```shell
+export RD_DATE_FORMAT=<format>
+```
 
 Where `<format>` is a Java [Simple Date Format](#).
 
@@ -78,8 +97,10 @@ If your Rundeck server has a different *external URL* than the one you are acces
 you can tell the `rd` tool to treat redirects to that external URL as
 if they were to the original URL you specified.
 
-	`export RD_URL=http://internal-rundeck:4440/rundeck`
-	`export RD_BYPASS_URL=https://rundeck.mycompany.com`
+```shell
+export RD_URL=http://internal-rundeck:4440/rundeck
+export RD_BYPASS_URL=https://rundeck.mycompany.com
+```
 
 This will rewrite any redirect to `https://rundeck.mycompany.com/blah`
 as `http://internal-rundeck:4440/rundeck/blah`.
@@ -89,21 +110,26 @@ the `RD_BYPASS_URL` will be replaced by `http://internal-rundeck:4440/rundeck`.
 
 ## HTTP/connect timeout
 
-
-    # sets connection timeout (default: 2 Minutes)
-    `export RD_HTTP_CONN_TIMEOUT=120`
-
-    # sets write timeout (default: 10 Seconds)
-    `export RD_HTTP_WRITE_TIMEOUT=10`
-
-    # sets read timeout (default: 10 Minutes)
-    `export RD_HTTP_READ_TIMEOUT=600`
-
-    # sets call* timeout (default: none)
-    `export RD_HTTP_CALL_TIMEOUT=240`
-
-    # Sets the timeout for READ, CONNECT, and WRITE. This overrides any settings above.
-    `export RD_HTTP_TIMEOUT=30`
+### sets connection timeout (default: 2 Minutes)
+```shell
+export RD_HTTP_CONN_TIMEOUT=120
+```
+### sets write timeout (default: 10 Seconds)
+```shell
+export RD_HTTP_WRITE_TIMEOUT=10
+```
+### sets read timeout (default: 10 Minutes)
+```shell
+export RD_HTTP_READ_TIMEOUT=600
+```
+### sets call* timeout (default: none)
+```shell
+export RD_HTTP_CALL_TIMEOUT=240
+```
+### Sets the timeout for READ, CONNECT, and WRITE. This overrides any settings above.
+```shell
+export RD_HTTP_TIMEOUT=30
+```
 
 *\* Call Timeout*: This is sets a timeout on the entire request/response sequence including DNS resolution and redirect following.
 
@@ -116,16 +142,27 @@ Retry in case of recoverable connection issue (e.g. failure to connect):
 
 Use `RD_CONNECT_RETRY` (default `true`):
 
-	# don't retry
-	`export RD_CONNECT_RETRY=false`
+### don't retry
+```shell
+export RD_CONNECT_RETRY=false
+```
 
 ## Debug HTTP
 
 Use the `RD_DEBUG` env var to turn on HTTP debugging:
 
-	`export RD_DEBUG=1 # basic http request debug`
-	`export RD_DEBUG=2 # http headers`
-	`export RD_DEBUG=3 # http body`
+### basic http request debug
+```shell
+export RD_DEBUG=1 
+```
+### http headers
+```shell
+export RD_DEBUG=2 
+```
+### http body
+```shell
+export RD_DEBUG=3 
+```
 
 ## SSL Configuration
 
@@ -133,9 +170,11 @@ See [SSL Configuration](./ssl.md)
 
 ## Insecure SSL
 
-To disable *all* SSL certificate checks, and hostname verifications:
+To disable __all__ SSL certificate checks, and hostname verifications:
 
-    `export RD_INSECURE_SSL=true`
+```shell
+export RD_INSECURE_SSL=true
+```
 
 When enabled, a value of `RD_DEBUG=2` will also report SSL certificate
 information.
@@ -145,7 +184,9 @@ information.
 To retain SSL certificate verification, but allow *any* hostname to be
 allowed for the certificate:
 
-    `RD_INSECURE_SSL_HOSTNAME=true`
+```shell
+RD_INSECURE_SSL_HOSTNAME=true
+```
 
 ## Alternate SSL Hostname Verification
 
@@ -154,4 +195,6 @@ allows you to retain SSL certificate verification, but set an
 alternate hostname to accept from the remote server certificate, if
 it does not match the hostname you are using in your request:
 
-    `RD_ALT_SSL_HOSTNAME=hostname`
+```shell
+RD_ALT_SSL_HOSTNAME=hostname
+```
