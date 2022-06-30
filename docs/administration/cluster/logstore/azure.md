@@ -41,6 +41,10 @@ framework.plugin.ExecutionFileStorage.azure-storage.path=logs/${job.project}/${j
 
 ```
 
+:::warning
+This will work only if the generated paths follow the [naming conventions for Azure Storage services](https://docs.microsoft.com/en-us/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
+:::
+
 #### (Enterprise Version only):
 The Azure Storage Enterprise Version includes the [checkpoint property](/administration/configuration/plugins/configuring.md#logging) which enables an incremental update to the execution log across the members of the cluster. To use the pro version of this plugin (3.4.4+), please use the following on the rundeck-config.properties:
 
