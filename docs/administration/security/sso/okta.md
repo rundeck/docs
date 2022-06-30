@@ -55,6 +55,10 @@ rundeck.security.oauth.okta.autoConfigUrl = <okta service url>
 #rundeck.security.oauth.okta.autoConfigUrl = <okta service url>/oauth2/<authServerId>
 #example
 #rundeck.security.oauth.okta.autoConfigUrl = https://dev-877856.oktapreview.com/oauth2/default
+
+#This is the default scope setting. You can add additional scopes at the end of the line, separate it by spaces
+# rundeck.security.oauth.okta.scope = openid profile email groups my_own_scope
+rundeck.security.oauth.okta.scope = openid profile email groups
 ```
 
 #### Manual Configuration Method
@@ -77,8 +81,10 @@ rundeck.security.oauth.okta.userAuthorizationUri = <okta service url>/v1/authori
 rundeck.security.oauth.okta.userInfoUri = <okta service url>/v1/userinfo
 rundeck.security.oauth.okta.jwkSetUri = <okta service url>/v1/keys
 
-#This is the default scope setting. Only add it if you need to customize the scopes
-#rundeck.security.oauth.okta.scope = openid profile email my_custom_scope
+#This is the default scope setting. You can add additional scopes at the end of the line, separate it by spaces
+# rundeck.security.oauth.okta.scope = openid profile email groups my_own_scope
+rundeck.security.oauth.okta.scope = openid profile email groups
+
 ```
 
 If setup is done using the `rundeck-config.properties` file, restart Rundeck.
