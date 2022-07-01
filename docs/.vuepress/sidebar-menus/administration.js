@@ -3,7 +3,7 @@ module.exports = [{
   collapsable: false,
   children: [
         {
-          title: 'Rundeck Enterprise',
+          title: 'Rundeck / Process Automation',
           collapsable: true,
           sidebarDepth: 1,
           children: [
@@ -47,10 +47,14 @@ module.exports = [{
                 sidebarDepth: 2
               },
               {
-                title: 'Enterprise Runner',
+                title: 'Runner',
                 collapsable: true,
                 path: '/administration/runner/',
-                sidebarDepth: 2
+                sidebarDepth: 1,
+                children: [
+                  '/administration/runner/',
+                  '/administration/runner/runner-logging'
+                ]
               },
               {
                 title: 'Configuration',

@@ -1,10 +1,10 @@
-# Enterprise Runner
+# Runner
 
-The Rundeck Enterprise Runner securely opens up network/communication between data centers and the Rundeck Enterprise Cluster.  The Runner is a Remote Execution hub for Node Steps to run on specified endpoints, rather than from the Rundeck server itself.  
+The Runner, available for both Process Automation and Runbook Automation securely opens up network/communication between data centers and the Automation Cluster.  The Runner is a Remote Execution hub for Node Steps to run on specified endpoints, rather than from the Automation server itself.  
 
 ## Architecture
 
-The Enterprise Runner is a Java based program which uses a polling model to pick up work from Rundeck Enterprise.  During each polling cycle (every 5 seconds) the Runner checks for executions that it is responsible for.  Communication from the Runner to Rundeck Enterprise happens over https and is initiated from the Runner.  This allows for enhanced firewall security as ports no longer need to be open for Rundeck to talk to nodes over more sensitive ports. _(e.g. SSH/22)_
+The Runner is a Java based program which uses a polling model to pick up work from the Automation Server.  During each polling cycle (every 5 seconds) the Runner checks for executions that it is responsible for.  Communication from the Runner to the Automation Server happens over https and is initiated from the Runner.  This allows for enhanced firewall security as ports no longer need to be open for the Automation Server to talk to nodes over more sensitive ports. _(e.g. SSH/22)_
 
 ![Runner Architecture](@assets/img/runner-arch-diagram.png)
 
@@ -13,7 +13,7 @@ The Enterprise Runner is a Java based program which uses a polling model to pick
 
 > During Incubating phase it is necessary to turn the feature on manually using the following settings in your rundeck-config.properties `rundeck.feature.runner.enabled = true`.  (`RUNDECK_FEATURE_RUNNER_ENABLED: 'true'` for docker-compose files)
 
-Follow these steps to install a Runner to Rundeck Enterprise:
+Follow these steps to install a Runner:
 
 :::: tabs
 ::: tab Creating and configuring a Runner
@@ -29,13 +29,13 @@ Follow these steps to install a Runner to Rundeck Enterprise:
 ::: tab Installing a Runner
 
 Pre-Requisites:
-- Same OS requirements as Rundeck Enterprise
+- Same [OS requirements as Rundeck](/administration/install/system-requirements.md)
 - Java 11 is required to run the Runner JAR file.
 
-1. Copy the Runner JAR file that was saved when you created the Runner to the server and directory where it will run.
-1. Execute `java -jar runner_filename.jar` and the service should start.
+1. Copy the Runner JAR file that was saved when the Runner was created to the server and directory where it will run.
+1. Execute `java -jar runner_filename.jar` to start the service.
 
-Connection can be confirmed on the Runner Management page on the Last Checkin line.  If there are errors in the output resolve those using troubleshooting steps below.
+Connection can be confirmed on the Runner Management page on the _Last Checkin_ line.  If there are errors in the output resolve those using troubleshooting steps below.
 
 :::
 ::::
@@ -56,19 +56,19 @@ It is possible to edit each project Node Filter individually if needed.  Use the
 
 ### Troubleshooting
 
-Runner Logs are located in the `./runner/logs` folder under the folder where the jar was executed from.  The `runner.log` file contains operational and important messages about the runner.  `operations.log` tracks an operation starts and if it succeeds or fails.
+Runner Logs are located in the `./runner/logs` folder under the folder where the jar was executed from.  The `runner.log` file contains operational and important messages about the runner.  `operations.log` tracks an operation starts and if it succeeds or fails.  [Read more about logging and setting up custom logging](runner-logging.md).
 
 ### Proxying Runner connections
-Runners can be configured to connect through a HTTP/HTTPS proxy. Proxies are commonly used to centralize and secure outbound traffic from the datacenter to internet services. The proxy configuration is optional and is added as java command line arguments when the runner process is started. 
+Runners can be configured to connect through a HTTP/HTTPS proxy. Proxies are commonly used to centralize and secure outbound traffic from the datacenter to internet services. The proxy configuration is optional and is added as java command line arguments when the runner process is started.
 
 #### Proxy configuration without proxy authentication
-The following example will allow the runner to connect through the secure company proxy with address wp.acme.corp. 
+The following example will allow the runner to connect through the secure company proxy with address wp.acme.corp.
 
 ```
 java -Dmicronaut.http.client.proxy-type=http -Dmicronaut.http.client.proxy-address=wp.acme.corp:443 -jar pdrunner.jar
 ```
 
-1. `-Dmicronaut.http.client.proxy-type` is set to `http` 
+1. `-Dmicronaut.http.client.proxy-type` is set to `http`
 1. `-Dmicronaut.http.client.proxy-address` is set to the secure proxy company address.
 
 #### Proxy configuration with proxy authentication
@@ -78,7 +78,7 @@ The following example adds basic auth proxy configuration to the runner. The pro
 java -Dmicronaut.http.client.proxy-type=http -Dmicronaut.http.client.proxy-address=wp.acme.corp:443 -Dmicronaut.http.client.proxy-username=proxyUsernameString -Dmicronaut.http.client.proxy-password=proxyPassString -jar pdrunner.jar
 ```
 
-1. `-Dmicronaut.http.client.proxy-username` is set to the user that is allowed to connect through the secure proxy. 
+1. `-Dmicronaut.http.client.proxy-username` is set to the user that is allowed to connect through the secure proxy.
 1. `-Dmicronaut.http.client.proxy-password` is set to the secure proxy user password.
 
 
@@ -86,7 +86,7 @@ java -Dmicronaut.http.client.proxy-type=http -Dmicronaut.http.client.proxy-addre
 
 **Does this replace Clustering?**
 
-This feature is intended to be used in situations where execution of Node Steps is needed in a network segment or security zone that is different from the Rundeck Cluster.  A Rundeck Enterprise Cluster still provides high-availability and fault tolerance for the User Interface, Job Management/Execution and system management tasks.
+This feature is intended to be used in situations where execution of Node Steps is needed in a network segment or security zone that is different from the Cluster feature(s).  An Automation Server Cluster still provides high-availability and fault tolerance for the User Interface, Job Management/Execution and system management tasks.
 
 **Does this work for all communication into the remote data center?**
 
@@ -94,7 +94,7 @@ At this time, the Runner will execute Node Executor and File Copier steps.  This
 
 **Do Runners participate in node discovery?**
 
-Not at this time, but it is possible with some custom scripting and using the [APIs](/api/rundeck-api.md#updating-and-listing-resources-for-a-project) it is possible to update the node lists remotely in Rundeck. 
+Not at this time.  To dynamically update nodes use custom scripting and the [APIs](/api/rundeck-api.md#updating-and-listing-resources-for-a-project) to update the node lists remotely.
 
 **Can multiple Runners run in parallel?**
 
