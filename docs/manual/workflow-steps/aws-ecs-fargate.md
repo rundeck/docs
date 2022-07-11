@@ -7,6 +7,7 @@ Amazon ECS is a fully managed container orchestration service that makes it easy
 
 The following plugins are available for PagerDuty Runbook Automation and Process Automation (formerly Rundeck Enterprise):
 
+* [Send Commands to ECS Containers](#Send Commands to ECS Containers)
 * [Stopped ECS Tasks Error Messages](#stopped-ecs-tasks-error-messages)
 * [Stop an ECS Task](#stop-an-ecs-task)
 
@@ -30,6 +31,11 @@ These plugins utilize the following properties:
 - **Project setting**: project.aws.region
 - **Configuration Management**/**Framework Setting**: aws.region
 
+#### Send Commands to ECS Containers
+
+The **AWS / ECS / Run Command** plugin sends commands to the specified ECS containers:
+
+![ECS Command Example](@assets/img/aws-ecs-command-example.png)<br><br>
 
 #### Stopped ECS Tasks Error Messages
 
