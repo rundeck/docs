@@ -19,7 +19,7 @@ New AWS Job Step Plugins for ECS (Fargate) and Lambda are available for Commerci
 
 ## Commercial Updates
 
-* Upgrade Ansible Plugin to 3.2.1
+* Upgrade Ansible Plugin to 3.2.1 [More Details Below](#ansible-plugin-updates)
 * Bump OpenSSH plugin version to 2.0.2
 * Execute Custom Lambda Code Plugin
 * ACL Manager UI Update: add context information about access levels in listing
