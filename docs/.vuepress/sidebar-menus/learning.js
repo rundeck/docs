@@ -88,6 +88,7 @@ module.exports = [{
           collapsable: true,
           sidebarDepth: 0,
           children: [
+            '/learning/howto/plugin-bootstrap.md',
             '/learning/howto/custom-script-plugin-hello-world.md',
             '/learning/howto/java-plugin.md'
           ]

@@ -38,46 +38,52 @@ A more secure solution would be to authorize the job user to use the secret with
 
 ## How to create a simple workflow step script plugin
 
-Now that we see the value in creating our own workflow step script plugin, we can walk through a simple Hello World example.
+Create a basic plugin using the [rundeck plugin bootstrap tool](/learning/howto/plugin-bootstrap.md):
+
+```bash
+rundeck-plugin-bootstrap -d <plugins-path> -n HelloBash -s WorkflowNodeStep -t script
+
+gradle build
+```
 
 ### Script to wrap
 
-We're going to wrap a simple bash script called helloworld.sh:
+We can modify the bash script stored in `<plugins-path>/contents/exec`:
 
 ```bash
 #!/bin/bash
+set -eu
+
 echo "Hello world from $(hostname)! I am a $1. Don't tell anyone that the secret is \"$2\""
 ```
 
 It prints the hostname it's called on and the first and second parameters passed to it. We can wrap a script from any scripting language as long as the interpreter is already deployed on the remote nodes.
 
-### Basic plugin structure
+### The plugin configuration
 
-A Rundeck plugin is a zipped directory with the following structure:
-
-```
-helloworld-plugin.zip
-helloworld-plugin      -- root directory of zip contents, same name as zip file
-├── plugin.yaml        -- plugin metadata file
-└── contents           -- where to put your scripts
-    └── helloworld.sh
-```
-
-`plugin.yaml` is the only required file in the zip. This is the `plugin.yaml` for our Hello World plugin:
+`<plugin-path>/plugin.yaml` has the configuration for the plugin, we will replace the content with our Hello World plugin setup:
 
 ```yaml
-name: Hello World
-version: 1
-rundeckPluginVersion: 1.2
-author: Carlo Cabanilla
-date: 2018-07-20
-url: http://rundeck.org/
+name: HelloBash
+rundeckPluginVersion: 2.0
+author: Rundeck Dev
+description: Describe your plugin here
+rundeckCompatibilityVersion: 3.x
+targetHostCompatibility: unix
+license: Apache 2.0
+tags:
+  - script
+  - WorkflowNodeStep
+date: 2022-07-11T18:51:13.151Z
+version: 1.0.0
 providers:
-  - name: HelloBash
-    service: RemoteScriptNodeStep
+  - name: hellobash
+    service: WorkflowNodeStep
+    title: HelloBash
+    description: The description of hellobash plugin
     plugin-type: script
     script-interpreter: /bin/bash
-    script-file: helloworld.sh
+    script-file: exec
     script-args: ${config.who_i_am} ${config.secret_secret}
     config:
       - name: who_i_am
@@ -91,7 +97,9 @@ providers:
         title: My Secret
         description: Securely pass this to the script
         renderingOptions:
+          selectionAccessor: "STORAGE_PATH"
           valueConversion: "STORAGE_PATH_AUTOMATIC_READ"
+          storage-path-root: "keys"
 ```
 
 The significant section is the item in the `providers` array. It says we're creating a RemoteScriptNodeStep named HelloBash. A RemoteScriptNodeStep means the script will run on the remote nodes, as opposed to a WorkflowNodeStep, which runs on the Rundeck server itself and receives the nodes as parameters.
@@ -131,100 +139,41 @@ The `secret_secret` item is a string value but the `valueConversion: "STORAGE_PA
   title: My Secret
   description: Securely pass this to the script
   renderingOptions:
+    selectionAccessor: "STORAGE_PATH"
     valueConversion: "STORAGE_PATH_AUTOMATIC_READ"
+    storage-path-root: "keys"
 ```
+### Check the script works from a deployed instance
+#### Create a key storage entry
+Click on the gear button, go to Key Storage.
 
-### Setting up the plugin environment
+![Key Storage System Menu](~@assets/img/key-storage-sysmenu-button.png)
 
-How can we actually see this plugin in action? Rundeck is designed for real world multi-node environments but we don't want the hassle of actually spinning one up, so we use Docker to simulate a multi-node environment right on our workstation.
+Click on Add or Upload a Key
 
-The environment setup can be downloaded at [https://github.com/clofresh/rundeck-playground](https://github.com/clofresh/rundeck-playground)
+![Add a Key Button](~@assets/img/key-storage-add-a-key.png)
 
-To build and start the Docker environment, run:
+Set a key as follows:
 
-```bash
-make compose
-```
+![Filled Password Key form](~@assets/img/custom-script-plugin-key-storage.png)
 
-This make command is specific to this tutorial. It will do several things:
-
-1. Zip the plugin source files into the proper zip structure and save it in the Rundeck image's build directory
-2. Run Docker Compose to build all the images specified in `docker-compose.yml` and run containers from those images. Docker Compose will run the containers in the foreground, outputting all their logs to your terminal.
-
-The containers in our environment are:
-
-- rundeck: The Rundeck server. The Dockerfile copies the zipped plugin into the image's `libext` directory where Rundeck will watch for new plugins.
-- rundeck-cli: The Rundeck command line client. This image doesn't run as a service but instead we invoke it from the command line to push configuration and invoke jobs on the Rundeck server.
-- web_1 & web_2: Containers that simulate your application nodes. They run both an ssh daemon and a sample web app. These are the nodes that Rundeck will execute our plugin on.
-
-### Pushing configuration to Rundeck
-
-Once our Docker environment is up and the Rundeck server is listening for requests, we can push a sample project and job that will use our plugin. We do that from a separate terminal than our `make compose` command:
-
-```bash
-make rd-config
-```
-
-This will:
-
-- Check for changes in our plugin source files, and if so, copy a new plugin zip into the running Rundeck container.
-- Push all the Rundeck yaml config in `rundeck-project` to the running Rundeck server.
-- Push the keys in `rundeck-project/key-storage` to the Key Storage.
-
-With this command, you can iterate on your plugin or job configuration without having to stop and start the Docker environment. Additionally, it will only push the config that has changed.
-
-The configuration we're pushing defines the nodes, project and job that use our plugin.
-
-If you just want to run the job, you can skip ahead to _Running the Hello World job_, otherwise we walk through the config involved in the sections below.
-
-#### Nodes
-
-In order for Rundeck to know which nodes exist in your environment and how to connect to them, we provide a resource source yaml file:
+#### Create a job definition
+To define our job, we create another yaml file, `hello_test_job.yaml`:
 
 ```yaml
-web_1:
-  hostname: web_1
-  tags: web
-
-web_2:
-  hostname: web_2
-  tags: web
-```
-
-#### Project
-
-To use the above defined resource source file, we set the following properties on the project:
-
-```properties
-project.ssh.user=root
-project.ssh-keypath=/home/rundeck/.ssh/rundeck-playground
-resources.source.1.config.file=/home/rundeck/nodes.yaml
-resources.source.1.config.generateFileAutomatically=false
-resources.source.1.config.includeServerNode=true
-resources.source.1.type=file
-```
-
-`project.ssh.user` and `project.ssh-keypath` configure the ssh user and private key to use when connecting to any node with this project. It's up to you to properly distribute the ssh keys to your nodes. In our playground environment, we've bundled the keys into the Docker images.
-
-`resources.source.1.config.file` points to the `nodes.yaml` file we created previously.
-
-Both the ssh private key and the `nodes.yaml` file need to be deployed to the Rundeck server and be readable by the rundeck user.
-
-#### Job
-
-To define our job, we create another yaml file, `rundeck-project/hello_test_job.yaml`:
-
-```yaml
-- name: Hello Test Job
-  description: "A job to test our hello world plugin"
-  nodefilters:
-    filter: web_.*
+- name: Test Job
+  defaultTab: nodes
+  description: 'A job to test our hello world plugin'
+  loglevel: INFO
   sequence:
     commands:
-      - nodeStep: true
-        type: HelloBash
-        configuration:
-          secret_secret: keys/projects/hello-project/mysecret
+    - configuration:
+        secret_secret: keys/path-to-secret/secret.key
+        who_i_am: machine
+      nodeStep: true
+      type: hellobash
+    keepgoing: false
+    strategy: node-first
 ```
 
 Some values to note:
@@ -233,41 +182,10 @@ Some values to note:
 - The `sequence` key defines what the job should run. In our case, we're running one command, a node step of our HelloBash script from our custom plugin.
 - The `configuration` key of the node step is how we pass configuration into our script. Note that we're passing in a Key Storage path instead of an actual value.
 
-### Running the Hello World job
+#### Run the Test Job
 
-Now that we've spun up a Rundeck environment and defined a job that uses our plugin, we can run it using the `rd` command line client. If you had the `rd` client installed natively, it would be as simple as:
+[Create a project](/manual/projects/project-create.md) and [upload the job definition](/manual/creating-jobs.html#importing-job-definitions) for our `hello_test_job.yaml`
 
-```bash
-export RD_PROJECT=hello-project
-rd run -f --job 'Hello Test Job'
-```
+Run the job and see the output:
 
-But since we're running `rd` from a Docker container, we need some extra commands to get it to run:
-
-```bash
-alias rd='docker run --network rundeck-playground_default --mount type=bind,source="$(pwd)",target=/root -e RD_PROJECT=hello-project playground-rundeck-cli '
-
-rd run -f --job 'Hello Test Job'
-```
-
-The `rd` alias we've created lets us type less and use the `rd` command as if it were running natively on our workstation.
-
-All this is encapsulated in a make command:
-
-```bash
-make rd-run-job
-
-# Found matching job: 7fd65208-4482-456b-9d76-aa099171938e Hello Test Job
-# Execution started: [3] 7fd65208-4482-456b-9d76-aa099171938e /Hello Test Job <http://127.0.0.1:4440/project/hello-project/execution/show/3>
-Hello world from abee114adea5! Don't tell anyone that the secret is "I'm Kilroy!"
-Hello world from 9964ad40468a! Don't tell anyone that the secret is "I'm Kilroy!"
-```
-
-The script outputs the hostnames it's running on, which will most likely be different but similar to the above, as well as the secret "I'm Kilroy!". Remember that we passed in a Key Storage path value `keys/projects/hello-project/mysecret` for that parameter. To double check that that's the correct value, you can cat the value on disk that we pushed to the Rundeck server:
-
-```bash
-cat rundeck-project/key-storage/keys/projects/hello-project/mysecret
-I'm Kilroy!
-```
-
-Another thing to notice is that even though we've securely passed the secret to the script plugin, once the script plugin has it, they can do whatever with the value, including expose it in the logs, so the script writer needs to be cautious about that.
+![Custom Script Plugin job Output](~@assets/img/custom-script-plugin-job-output.png)
