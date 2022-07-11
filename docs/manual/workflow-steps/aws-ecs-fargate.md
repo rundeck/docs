@@ -33,7 +33,7 @@ These plugins utilize the following properties:
 
 ### Send Commands to ECS Containers
 
-The **AWS / ECS / Run Command** plugin sends commands to the specified ECS containers:
+The **AWS / ECS / Run Command** plugin sends commands to specified ECS containers:
 
 ![ECS Command Example](@assets/img/aws-ecs-command-example.png)<br><br>
 
@@ -99,12 +99,42 @@ which removes any zombie SSM agent child processes found. The following provides
     }
     ```
 
+#### Configuration
+
+The following fields are used for configuration the Workflow Step plugin to send commands to ECS containers:
+
+* **Container Name**: The name of the ECS container to run the command on.
+* **Cluster Name**: The name of the cluster where the container resides.
+* **Task ID**: The ID the task associated with the specified container.
+* **Command**: The shell command you wish to run on the specified container.
+* **Container Region**: The region where the container's cluster is located.
+* **Access Key ID**: AWS Access Key. This can be set in the Project configuration properties with `project.aws.access_key` or in [Configuration Management](/manual/configuration-mgmt/configmgmt).
+* **Secret Key**: AWS Secret Key. Click the **Select** button to choose your AWS Secret from Key Storage. This can be set in the Project configuration properties with `project.aws.secret_key_path`.
+
+![**Example Configuration**](@assets/img/aws-ecs-command-example-config.png)
+
+#### Executing Job Step
+
+Once the Job step is configured, commands can be sent to the specified container. Start by hard-coding a specific command into the Job step as shown here:
+
+![Hard Coded Command](@assets/img/aws-ecs-test-hard-coded-command.png)<br>
+
+If this executes successfully, you would see the following output in the Job output logs:
+                                                                                         
+![Command Output Logs](@assets/img/aws-ecs-command-log-output.png)<br>                   
+
+To use this Job step as part of a larger workflow, or to create a **_"self service interface"_**, you will likely want to use a Job Option (shown below) or a Data Variable
+as the input for the command.  See here for more details on [Job Options](/manual/job-options) and [Data Variables](/learning/howto/passing-variables):
+
+![Using Job Options](@assets/img/aws-ecs-command-job-options.png)<br><br>
+
+![Self Service](@assets/img/aws-ecs-command-self-service.png)<br><br>
 
 ### Stopped ECS Tasks Error Messages
 
 The **AWS / ECS / Stopped Task Details** plugin checks a specified cluster for any **Stopped** ECS Tasks and provides their associated error messages:
 
-![Stopped ECS Error](@assets/img/aws-ecs-stopped-task-errors.png)<br>
+![Stopped ECS Error](@assets/img/aws-ecs-stopped-task-errors.png)<br>                                                     
 
 In order to use this plugin, you mused specify the **ECS Cluster Name**.
 
