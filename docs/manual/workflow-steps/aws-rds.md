@@ -29,7 +29,7 @@ These plugins utilize the following properties:
 - **Project setting**: project.aws.region
 - **Configuration Management**/**Framework Setting**: aws.region
 
-### RDS Instance Status
+## RDS Instance Status
 
 The **AWS / RDS / Status** plugin checks on the status of an existing RDS database instance:
 
@@ -37,11 +37,11 @@ The **AWS / RDS / Status** plugin checks on the status of an existing RDS databa
 
 This can be especially useful when your RDS instance has run out of storage capacity, or when there are other issues with the instance availability.
 
-#### Plugin Field Descriptions
+## Plugin Field Descriptions
 
 * **Target RDS Instance**: The RDS database instance name. In AWS, this is the **DB identifier**.
 * **Target RDS Region**: The AWS region where the RDS instance resides.
 
-### See it in Action
+## See it in Action
 This plugin is used in one of the prebuilt Jobs in our [**_Automated Diagnostics Solution_**](/learning/solutions/automated-diagnostics/solution-overview). 
 Try out the Solution to see how this plugin can be used as part of incident-response workflows.

@@ -1,4 +1,4 @@
-## AWS Lambda Workflow Steps
+# AWS Lambda Workflow Steps
 
 :::enterprise
 :::
@@ -29,13 +29,13 @@ These plugins utilize the following properties:
 - **Project setting**: project.aws.region
 - **Configuration Management**/**Framework Setting**: aws.region
 
-### Execute Lambda Function
+## Execute Lambda Function
 
 The **AWS / Lambda / Invoke** plugin invokes an _existing_ Lambda function in an AWS account in a specific region:
 
 ![Invoke Lambda](@assets/img/aws-invoke-lambda-workflow-step.png)<br>
 
-#### Plugin Field Descriptions
+## Plugin Field Descriptions
 
 * **Event Payload**: the JSON Event Data that is sent as input to the Lambda function. For more details on Lambda Event Data, click [**here**](https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-concepts.html#gettingstarted-concepts-trigger).
 
@@ -47,6 +47,6 @@ For more details on the differences between Event and Request, click [here](http
 * **Client Context**: Context to provide to the Lambda handler. For more details on Lambda Context, see [here](https://docs.aws.amazon.com/lambda/latest/dg/python-context.html).
 <br>
 
-#### Permissions
+## Permissions
 The IAM Policies required to use this plugin are:
 * **`lambda:InvokeFunction`**

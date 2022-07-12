@@ -1,4 +1,4 @@
-## AWS Elastic Container Service (ECS) Workflow Steps
+# AWS Elastic Container Service (ECS) Workflow Steps
 
 :::enterprise
 :::
@@ -31,7 +31,7 @@ These plugins utilize the following properties:
 - **Configuration Management**/**Framework Setting**: aws.region
 
 
-#### Stopped ECS Tasks Error Messages
+## Stopped ECS Tasks Error Messages
 
 The **AWS / ECS / Stopped Task Details** plugin checks a specified cluster for any **Stopped** ECS Tasks and provides their associated error messages:
 
@@ -45,7 +45,7 @@ The IAM Policies required to use this plugin are:
 
 See [here](https://docs.aws.amazon.com/AmazonECS/latest/userguide/stopped-task-error-codes.html) for more details on the Stopped ECS Tasks error message meanings.
 
-#### Stop an ECS Task
+## Stop an ECS Task
 
 The **AWS / ECS / Stop** plugin _stops_ a specific ECS Task. This can assist with auto-remediation of issues with ECS containers. There is both a **Workflow** _and_ a **Node** step of this plugin.
 

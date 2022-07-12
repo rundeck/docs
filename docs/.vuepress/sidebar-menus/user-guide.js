@@ -85,7 +85,58 @@ module.exports = [{
             '/manual/log-filters/multi-line-regex.md'
           ]
         },
-        '/manual/job-plugins',
+        {
+            title: 'Job Plugins',
+            collapsable: true,
+            path: '/manual/job-plugins',
+            sidebarDepth: 1,
+            children: [
+                {
+                    title: 'Workflow Steps',
+                    collapsable: true,
+                    sidebarDepth: 2,
+                    children: [
+                        {title: 'Ansible Module & Playbook', path: '/manual/workflow-steps/builtin'},
+                        {title: 'AWS CloudWatch Logs', path: '/manual/workflow-steps/aws-cloudwatch'},
+                        {title: 'AWS EC2', path: '/manual/workflow-steps/aws'},
+                        {title: 'AWS ECS & Fargate', path: '/manual/workflow-steps/aws-ecs-fargate'},
+                        {title: 'AWS ELB', path: '/manual/workflow-steps/aws-elb-workflow-plugin'},
+                        {title: 'AWS Lambda', path: '/manual/workflow-steps/aws-lambda'},
+                        {title: 'AWS RDS', path: '/manual/workflow-steps/aws-rds'},
+                        {title: 'Azure Workflow Steps', path: '/manual/workflow-steps/azure'},
+                        {title: 'Builtin Workflow Steps', path: '/manual/workflow-steps/builtin'},
+                        {title: 'Datadog', path: '/manual/workflow-steps/datadog'},
+                        {title: 'File Transfer', path: '/manual/workflow-steps/file-transfer'},
+                        {title: 'Google Workflow Steps', path: '/manual/workflow-steps/gcp'},
+                        {title: 'Github', path: '/manual/workflow-steps/github'},
+                        {title: 'Jira', path: '/manual/workflow-steps/jira'},
+                        {title: 'Oracle Cloud Infrastructure', path: '/manual/workflow-steps/oracle'},
+                        {title: 'PagerDuty', path: '/manual/workflow-steps/pagerduty'},
+                        {title: 'Progress Badge', path: '/manual/workflow-steps/progress-badge'},
+                        {title: 'Sensu', path: '/manual/workflow-steps/sensu'},
+                        {title: 'ServiceNow', path: '/manual/workflow-steps/servicenow'},
+                        {title: 'VMware', path: '/manual/workflow-steps/vmware'}
+                    ]
+                },
+                {
+                    title: 'Node Steps',
+                    collapsable: true,
+                    sidebarDepth: 2,
+                    children: [
+                        {title: 'AWS', path: '/manual/node-steps/aws'},
+                        {title: 'Azure', path: '/manual/node-steps/azure'},
+                        {title: 'Builtin Node Steps', path: '/manual/node-steps/builtin'},
+                        {title: 'Datadog', path: '/manual/node-steps/datadog'},
+                        {title: 'Google Cloud Platform', path: '/manual/node-steps/gcp'},
+                        {title: 'Jira', path: '/manual/node-steps/jira'},
+                        {title: 'Oracle Cloud Infrastructure', path: '/manual/node-steps/oracle'},
+                        {title: 'Sensu', path: '/manual/node-steps/sensu'},
+                        {title: 'SQL Run Command', path: '/manual/node-steps/sqlrunner'},
+                        {title: 'VMware', path: '/manual/node-steps/vmware'}
+                    ]
+                }
+            ]
+        },
         '/manual/execution-lifecycle/job-resume.md',
         '/manual/execution-lifecycle/job-retry-failed-nodes.md',
         '/manual/execution-lifecycle/result-data.md',

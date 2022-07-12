@@ -1,4 +1,4 @@
-# Amazon Web Services - CloudWatch Logs Workflow Step
+# AWS CloudWatch Logs Workflow Step
 
 AWS CloudWatch can serve as a log-aggregator for the majority of logs generated within your cloud environment. 
 This includes logs from the Cloud infrastructure, such as ELB logs and VPC Flow logs, as well as logs from the applications running on VM's and containers.
