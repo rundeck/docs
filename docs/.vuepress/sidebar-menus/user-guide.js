@@ -92,6 +92,39 @@ module.exports = [{
             sidebarDepth: 1,
             children: [
                 {
+                    title: 'Node Steps',
+                    collapsable: true,
+                    sidebarDepth: 2,
+                    children: [
+                        {title: 'AWS', path: '/manual/node-steps/aws'},
+                        {title: 'Azure', path: '/manual/node-steps/azure'},
+                        {title: 'Builtin Node Steps', path: '/manual/node-steps/builtin'},
+                        {title: 'Datadog', path: '/manual/node-steps/datadog'},
+                        {title: 'Google Cloud Platform', path: '/manual/node-steps/gcp'},
+                        {title: 'Jira', path: '/manual/node-steps/jira'},
+                        {title: 'Oracle Cloud Infrastructure', path: '/manual/node-steps/oracle'},
+                        {title: 'Sensu', path: '/manual/node-steps/sensu'},
+                        {title: 'SQL Run Command', path: '/manual/node-steps/sqlrunner'},
+                        {title: 'VMware', path: '/manual/node-steps/vmware'}
+                    ]
+                },
+                {
+                    title: 'Notification Plugins',
+                    collapsable: true,
+                    sidebarDepth: 2,
+                    children: [
+                        {title: 'Datadog', path: '/manual/notifications/datadog'},
+                        {title: 'Email', path: '/manual/notifications/email'},
+                        {title: 'Jenkins', path: '/manual/notifications/jenkins'},
+                        {title: 'Jira', path: '/manual/notifications/jira'},
+                        {title: 'PagerDuty', path: '/manual/notifications/pagerduty'},
+                        {title: 'Sensu', path: '/manual/notifications/sensu'},
+                        {title: 'ServiceNow', path: '/manual/notifications/servicenow'},
+                        {title: 'Slack', path: '/manual/notifications/slack'},
+                        {title: 'Webhooks', path: '/manual/notifications/webhooks'}
+                    ]
+                },
+                {
                     title: 'Workflow Steps',
                     collapsable: true,
                     sidebarDepth: 2,
@@ -116,23 +149,6 @@ module.exports = [{
                         {title: 'Sensu', path: '/manual/workflow-steps/sensu'},
                         {title: 'ServiceNow', path: '/manual/workflow-steps/servicenow'},
                         {title: 'VMware', path: '/manual/workflow-steps/vmware'}
-                    ]
-                },
-                {
-                    title: 'Node Steps',
-                    collapsable: true,
-                    sidebarDepth: 2,
-                    children: [
-                        {title: 'AWS', path: '/manual/node-steps/aws'},
-                        {title: 'Azure', path: '/manual/node-steps/azure'},
-                        {title: 'Builtin Node Steps', path: '/manual/node-steps/builtin'},
-                        {title: 'Datadog', path: '/manual/node-steps/datadog'},
-                        {title: 'Google Cloud Platform', path: '/manual/node-steps/gcp'},
-                        {title: 'Jira', path: '/manual/node-steps/jira'},
-                        {title: 'Oracle Cloud Infrastructure', path: '/manual/node-steps/oracle'},
-                        {title: 'Sensu', path: '/manual/node-steps/sensu'},
-                        {title: 'SQL Run Command', path: '/manual/node-steps/sqlrunner'},
-                        {title: 'VMware', path: '/manual/node-steps/vmware'}
                     ]
                 }
             ]
