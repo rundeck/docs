@@ -282,12 +282,20 @@ that can be used to tune the behavior of the plugins:
   - threadpool size for log storage retry scheduling (retries)
   - default: 5
 
-For plugins that support Partial/Checkpoint log storage, these additional configuration properties can be set:
+
+#### Logging Checkpoints
+
+For plugins that support Partial/Checkpoint log storage these additional configuration properties can be set:
 
 - `rundeck.execution.logs.fileStorage.checkpoint.time.interval` default: `30s` (30 seconds)
-  - This is the time interval between submitting a new partial log storage request
+  - This is the time interval between submitting a new partial log storage request. _Network delays might affect the time until changes are reflected in the storage_
 - `rundeck.execution.logs.fileStorage.checkpoint.time.minimum` default: `30s` (30 seconds)
-  - This is the minimum time to wait until the first partial log storage request
+  - This is the minimum time to wait until the execution starts comparing the current time with the `interval`.
+
+:::tip
+Eg: If `minimum = 10` and `interval = 5`, once the minimum is reached, the execution will see that the current time is greater than the interval, then it will submit the first storage request. After that, one storage request will be submitted every `interval` (in this case 5) seconds
+:::
+
 - `rundeck.execution.logs.fileStorage.checkpoint.fileSize.minimum` default: `0` (no minimum)
   - This is the minimum file size before the first partial log storage request
 - `rundeck.execution.logs.fileStorage.checkpoint.fileSize.increment` default: `0` (no minimum increment)
