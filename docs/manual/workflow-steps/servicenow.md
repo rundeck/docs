@@ -7,13 +7,15 @@ Original:
 http://support.rundeck.com/customer/en/portal/articles/2915300-servicenow-plugins)
 --->
 
-For all of the following job steps, you will need to have set the connection credentials. In order to do so, add the following lines of code to your `framework.properties` file:
+For all of the following job steps, you will need to have set the connection credentials. In order to do so, configure the following settings using Configuration Management in the System Menu:
 
 ```
 servicenow.url=https://server.service-now.com
 servicenow.login=user
 servicenow.password-key-storage-path=keys/servicenow/pass
 ```
+
+(these can also be applied via `framework.properties`)
 
 ## ServiceNow / Incident / Update State
 
