@@ -12,7 +12,7 @@ This job step allows users to copy files to and from their Azure storage. For ex
 : This is the name of the Azure storage account that you wish to use. To find it, go to storage accounts and copy the name of the account with the files you wish to copy.
 
 - **Access Key**
-: This is the access key that will grant access to your Azure account. To find it, go to storage accounts, choose the storage account you wish to use and select access keys under settings.
+: This is the access key that will grant access to your Azure account. To find it, go to app registrations on Azure, click on the application you want to link, and then go to certificates and secrets. Now create a new secret or use an existing one, making sure to use the secret value and not ID. 
 
 - **Source**
 : This is the path to the file you want to copy. It can be either an Azure URI or a local path (azure://container/path/file.ext or file://some/path/file.ext)
@@ -30,7 +30,7 @@ This job step allows users to delete blobs inside of an Azure storage container.
 : This is the name of the Azure storage account that you wish to use. To find it, go to storage accounts and copy the name of the account with the files you wish to delete.
 
 - **Access Key**
-: This is the access key that will grant access to your Azure account. To find it, go to storage accounts, choose the storage account you wish to use and select access keys under settings.
+: This is the access key that will grant access to your Azure account. To find it, go to app registrations on Azure, click on the application you want to link, and then go to certificates and secrets. Now create a new secret or use an existing one, making sure to use the secret value and not ID. 
 
 - **Container Name**
 : This is the name of the Azure container that the file you want to delete is in. To find it, go to storage accounts, select the account you wish to use, click containers and then copy the name of the container you wish to use.
@@ -49,7 +49,7 @@ This job step allows users to list all of the contents of a storage container. S
 : This is the name of the Azure storage account that you wish to use. To find it, go to storage accounts and copy the name of the account with the container you wish to list.
 
 - **Access Key**
-: This is the access key that will grant access to your Azure account. To find it, go to storage accounts, choose the storage account you wish to use and select access keys under settings.
+: This is the access key that will grant access to your Azure account. To find it, go to app registrations on Azure, click on the application you want to link, and then go to certificates and secrets. Now create a new secret or use an existing one, making sure to use the secret value and not ID. 
 
 - **Container Name**
 : This is the name of the Azure container that the file you want to delete is in. To find it, go to storage accounts, select the account you wish to use, click containers and then copy the name of the container you wish to use.
@@ -70,7 +70,7 @@ This job step allows users to create a new Virtual Machine hosted by Azure. In o
 : This is where you provide the Azure subscription ID. To find it, go to subscriptions and find the subscription you wish to use to host the VM and copy that subscription ID.
 
 - **Key**
-: This is the access key that will grant access to your Azure account. To find it, go to storage accounts, choose the storage account you wish to use and select access keys under settings.
+: This is the access key that will grant access to your Azure account. To find it, go to app registrations on Azure, click on the application you want to link, and then go to certificates and secrets. Now create a new secret or use an existing one, making sure to use the secret value and not ID. 
 
 - **Certificate Path**
 : (Optional if the access key is not defined) This is the file path to the Azure certificate. If you don't have a certificate already, go to the App Services Certificates page and click "Create App Service Certificate."
@@ -128,7 +128,7 @@ This job step allows users to get a list of all of the Virtual Machines being ho
 : This is where you provide the Azure subscription ID. To find it, go to subscriptions and find the subscription you wish to use to host the VM and copy that subscription ID.
 
 - **Key**
-: This is the access key that will grant access to your Azure account. To find it, go to storage accounts, choose the storage account you wish to use and select access keys under settings.
+: This is the access key that will grant access to your Azure account. To find it, go to app registrations on Azure, click on the application you want to link, and then go to certificates and secrets. Now create a new secret or use an existing one, making sure to use the secret value and not ID. 
 
 - **Certificate Path**
 : (Optional if the access key is not defined) This is the file path to the Azure certificate. If you don't have a certificate already, go to the App Services Certificates page and click "Create App Service Certificate."
@@ -166,7 +166,7 @@ This job step allows users to start a Virtual Machine that is being hosted by Az
 : This is where you provide the Azure subscription ID. To find it, go to subscriptions and find the subscription you wish to use to host the VM and copy that subscription ID.
 
 - **Key**
-: This is the access key that will grant access to your Azure account. To find it, go to storage accounts, choose the storage account you wish to use and select access keys under settings.
+: This is the access key that will grant access to your Azure account. To find it, go to app registrations on Azure, click on the application you want to link, and then go to certificates and secrets. Now create a new secret or use an existing one, making sure to use the secret value and not ID. 
 
 - **Certificate Path**
 : (Optional if the access key is not defined) This is the file path to the Azure certificate. If you don't have a certificate already, go to the App Services Certificates page and click "Create App Service Certificate."
@@ -198,7 +198,7 @@ This job step allows users to stop a Virtual Machine that is being hosted by Azu
 : This is where you provide the Azure subscription ID. To find it, go to subscriptions and find the subscription you wish to use to host the VM and copy that subscription ID.
 
 - **Key**
-: This is the access key that will grant access to your Azure account. To find it, go to storage accounts, choose the storage account you wish to use and select access keys under settings.
+: This is the access key that will grant access to your Azure account. To find it, go to app registrations on Azure, click on the application you want to link, and then go to certificates and secrets. Now create a new secret or use an existing one, making sure to use the secret value and not ID. 
 
 - **Certificate Path**
 : (Optional if the access key is not defined) This is the file path to the Azure certificate. If you don't have a certificate already, go to the App Services Certificates page and click "Create App Service Certificate."
