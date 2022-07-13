@@ -282,6 +282,9 @@ that can be used to tune the behavior of the plugins:
   - threadpool size for log storage retry scheduling (retries)
   - default: 5
 
+
+#### Logging Checkpoints
+
 For plugins that support Partial/Checkpoint log storage these additional configuration properties can be set:
 
 - `rundeck.execution.logs.fileStorage.checkpoint.time.interval` default: `30s` (30 seconds)
