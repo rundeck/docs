@@ -91,11 +91,11 @@ Each Health Check will result in a Health Status:
 
 	![Health Checks - Unauthorized Warning](~@assets/img/healthchecks-unauthorized.png)
 
-4. Once Access Control is configured, the checks should be showing up and healthy:
+5. Once Access Control is configured, the checks should be showing up and healthy:
 
 	![Health Checks - Healthy checks](~@assets/img/healthchecks-healthy-checks.png)
 
-5. Return to the "Project Settings... > Edit Nodes" page. Under "Enhancers" click "Add a new Node Enhancer"  and choose "Health Status".
+6. Return to the "Project Settings... > Edit Nodes" page. Under "Enhancers" click "Add a new Node Enhancer"  and choose "Health Status".
 
 	![Health Checks - Add Node Enhancer](~@assets/img/healthchecks-add-node-enhancer.png)		
 
@@ -103,9 +103,19 @@ Each Health Check will result in a Health Status:
 
 	![Health Checks - Add Health Status Enhancer](~@assets/img/healthchecks-add-health-status-enhancer.png)			
 
-6. Visit the "Nodes" link in the Sidebar. There will be healthy status indicators for the nodes:
+7. Visit the "Nodes" link in the Sidebar. There will be healthy status indicators for the nodes:
 
 	![Health Checks - Node Health Status UI](~@assets/img/healthchecks-health-status-ui.png)			
+	
+:::tip
+If you have a very large node list, you might need to increase the thread pool size value for the healthcheck process.
+You can add the following properties to the rundeck-config.properties file and change their default values.
+
+```properties
+rundeckpro.healthcheck.statusService.queueCapacity=500
+rundeckpro.healthcheck.statusService.maxPoolSize=25
+```
+:::
 
 ## Job Filter
 
