@@ -31,6 +31,7 @@ module.exports = [{
             '/manual/projects/resource-model-sources/',
             '/manual/projects/resource-model-sources/node-wizard',
             '/manual/projects/resource-model-sources/aws',
+            '/manual/projects/resource-model-sources/ecs-fargate',
             '/manual/projects/resource-model-sources/azure',
             '/manual/projects/resource-model-sources/gcp',
             '/manual/projects/resource-model-sources/oracle',
