@@ -108,12 +108,20 @@ Each Health Check will result in a Health Status:
 	![Health Checks - Node Health Status UI](~@assets/img/healthchecks-health-status-ui.png)			
 	
 :::tip
-If you have a very large node list, you might need to increase the thread pool size value for the healthcheck process.
+In order to avoid "TaskRejectedException" when having health check enabled with a large number of nodes (over 525). It is recommended to increase the health check queue and pool size to at least match the node list size.
 You can add the following properties to the rundeck-config.properties file and change their default values.
 
 ```properties
+# Default values
 rundeckpro.healthcheck.statusService.queueCapacity=500
 rundeckpro.healthcheck.statusService.maxPoolSize=25
+```
+
+
+```properties
+# Example values for 836 nodes
+rundeckpro.healthcheck.statusService.queueCapacity=800
+rundeckpro.healthcheck.statusService.maxPoolSize=36
 ```
 :::
 
