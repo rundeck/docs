@@ -73,10 +73,10 @@ This job step allows users to create a new Virtual Machine hosted by Azure. In o
 : This is the access key that will grant access to your Azure account. To find it, go to storage accounts, choose the storage account you wish to use and select access keys under settings.
 
 - **Certificate Path**
-: This is the file path to the Azure certificate. If you don't have a certificate already, go to the App Services Certificates page and click "Create App Service Certificate."
+: (Optional if the access key is not defined) This is the file path to the Azure certificate. If you don't have a certificate already, go to the App Services Certificates page and click "Create App Service Certificate."
 
 - **Certificate Password**
-: This is the password for the Azure certificate.
+: (Optional if the access key is not defined) This is the password for the Azure certificate.
 
 ![Azure - Create VM - VM Properties](~@assets/img/azure_create2.png)
 
@@ -131,10 +131,10 @@ This job step allows users to get a list of all of the Virtual Machines being ho
 : This is the access key that will grant access to your Azure account. To find it, go to storage accounts, choose the storage account you wish to use and select access keys under settings.
 
 - **Certificate Path**
-: This is the file path to the Azure certificate. If you don't have a certificate already, go to the App Services Certificates page and click "Create App Service Certificate."
+: (Optional if the access key is not defined) This is the file path to the Azure certificate. If you don't have a certificate already, go to the App Services Certificates page and click "Create App Service Certificate."
 
 - **Certificate Password**
-: This is the password for the Azure certificate.
+: (Optional if the access key is not defined) This is the password for the Azure certificate.
 
 ![Azure - List VM - VM Properties](~@assets/img/azure_list3.png)
 
@@ -166,13 +166,13 @@ This job step allows users to start a Virtual Machine that is being hosted by Az
 : This is where you provide the Azure subscription ID. To find it, go to subscriptions and find the subscription you wish to use to host the VM and copy that subscription ID.
 
 - **Key**
-: This is the access key that will grant access to your Azure account. To find it, go to storage accounts, choose the storage account you wish to use and select access keys under settings.
+: This is the access key that will grant access to your Azure VM. To find it, go to app registrations on Azure, click on the application you want to link, and then go to certificates and secrets. Now create a new secret or use an existing one, making sure to use the secret value and not ID. 
 
 - **Certificate Path**
-: This is the file path to the Azure certificate. If you don't have a certificate already, go to the App Services Certificates page and click "Create App Service Certificate."
+: (Optional if the access key is not defined) This is the file path to the Azure certificate. If you don't have a certificate already, go to the App Services Certificates page and click "Create App Service Certificate."
 
 - **Certificate Password**
-: This is the password for the Azure certificate.
+: (Optional if the access key is not defined) This is the password for the Azure certificate.
 
 ![Azure - Start VM - VM Properties](~@assets/img/azure_start2.png)
 
@@ -198,13 +198,13 @@ This job step allows users to stop a Virtual Machine that is being hosted by Azu
 : This is where you provide the Azure subscription ID. To find it, go to subscriptions and find the subscription you wish to use to host the VM and copy that subscription ID.
 
 - **Key**
-: This is the access key that will grant access to your Azure account. To find it, go to storage accounts, choose the storage account you wish to use and select access keys under settings.
+: This is the access key that will grant access to your Azure VM. To find it, go to app registrations on Azure, click on the application you want to link, and then go to certificates and secrets. Now create a new secret or use an existing one, making sure to use the secret value and not ID. 
 
 - **Certificate Path**
-: This is the file path to the Azure certificate. If you don't have a certificate already, go to the App Services Certificates page and click "Create App Service Certificate."
+: (Optional if the access key is not defined) This is the file path to the Azure certificate. If you don't have a certificate already, go to the App Services Certificates page and click "Create App Service Certificate."
 
 - **Certificate Password**
-: This is the password for the Azure certificate.
+: (Optional if the access key is not defined) This is the password for the Azure certificate.
 
 ![Azure - Stop VM - VM Properties](~@assets/img/azure_stop2.png)
 
