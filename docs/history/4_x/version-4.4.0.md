@@ -56,6 +56,9 @@ New AWS Job Step Plugins for ECS (Fargate) and Lambda are available for Commerci
 [Here is a link to the full list of public PRs](https://github.com/rundeck/rundeck/pulls?q=is%3Apr+milestone%3A4.4.0+is%3Aclosed)
 
 ## Ansible Plugin Updates
+
+Ansible plugins continue to be very popular and are available to all users. We recently added additional enhancements and fixes outlined below. 
+
 * [Ansible: Inline inventory Fix](https://github.com/rundeck-plugins/ansible-plugin/pull/318)
 * [Ansible: Update Gradle to 7.2](https://github.com/rundeck-plugins/ansible-plugin/pull/317)
 * [Ansible: Normalize line separators to LF(unix)](https://github.com/rundeck-plugins/ansible-plugin/pull/316)
@@ -84,5 +87,6 @@ New AWS Job Step Plugins for ECS (Fargate) and Lambda are available for Commerci
 * Leonel Juarez (L2JE)
 * Eric He (ehe-pd)
 * Forrest Evans (fdevans)
+* Jake Cohen (jsboak)
 * Darwis Narvaez (DarwisNarvaezDev)
 * Antony Velasquez Ruiz (avelasquezr)
