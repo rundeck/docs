@@ -521,7 +521,7 @@ Delay is in milliseconds. If a max is set to `-1`, then retries will happen inde
 
 ### Execution log settings
 
-You can globally specify for all your jobs (regardless of which project they belong to) a log size limit and action as you needed. If you configure a job with other values, the process will take the minimum value and prioritize Halt over Truncate.
+You can globally specify for all your jobs (regardless of which project they belong to) a log size limit and action as needed. If a job is configured with other values, the process will take the minimum value for output limit and prioritize "Halt" over "Truncate".
 
 ```properties
 rundeck.execution.logs.output.limit = 5MB
