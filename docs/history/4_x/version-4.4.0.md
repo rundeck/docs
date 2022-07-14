@@ -1,7 +1,7 @@
 # Release 4.4.0
 
 Name: <span style="color: deeppink"><span class="glyphicon glyphicon-piggy-bank"></span> "Murloc deeppink piggy-bank"</span>
-Release Date: July 13, 2022
+Release Date: July 14, 2022
 
 - [Download Rundeck](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
@@ -57,7 +57,7 @@ New AWS Job Step Plugins for ECS (Fargate) and Lambda are available for Commerci
 
 ## Ansible Plugin Updates
 
-Ansible plugins continue to be very popular and are available to all users. We recently added additional enhancements and fixes outlined below. 
+Ansible plugins continue to be very popular and are available to all users. We recently added additional enhancements and fixes outlined below.
 
 * [Ansible: Inline inventory Fix](https://github.com/rundeck-plugins/ansible-plugin/pull/318)
 * [Ansible: Update Gradle to 7.2](https://github.com/rundeck-plugins/ansible-plugin/pull/317)
