@@ -9,10 +9,10 @@ Release Date: June 15, 2022
 
 ## Overview
 
-This release fixes a critical issue with versions 4.2.0 and 4.2.1 of both Rundeck Open Source and Process Automation OnPrem (formerly Rundeck Enterprise).
+::: warning
+This release has been superseded by version [`4.3.2`](version-4.3.2.md).  Please upgrade if you are currently using `4.3.0` or `4.3.1`.
+:::
 
 For more details about the issue please read our [CVE-2022-31044](/history/CVEs/CVE-2022-31044.md) page.
 
-Upon upgrading to this version any Key Storage entries that may have been written as plain text will be re-encrypted automatically.
-
-> Note: 4.3.0 does not have the vulnerability, but does not include the patch to re-encrypt plain text values if 4.2.0 or 4.2.1 were used.
+> Note: 4.3.0 and 4.3.1 do not have the vulnerability, but does not include the patch to re-encrypt plain text values if 4.2.0 or 4.2.1 were used.

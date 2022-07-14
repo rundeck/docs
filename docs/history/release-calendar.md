@@ -1,6 +1,6 @@
 # Rundeck Release Calendar
 
-Rundeck Enterprise offers Support for Rundeck versions up to one year from release date.  The following calendar represents the currently supported versions of Rundeck and their original release dates.  It is strongly recommended to plan upgrades ahead of the one year anniversary.
+Rundeck Enterprise / Process Automation On Prem offers support for released versions up to one year from release date.  The following calendar represents the currently supported versions and their original release dates.  It is strongly recommended to plan upgrades ahead of the one year anniversary.
 
 Updated versions can be downloaded from [https://download.rundeck.com](https://download.rundeck.com)
 
@@ -9,6 +9,9 @@ Upgrade instructions [can be found here](/upgrading/).
 
 | Release Version | Release Date      | Enterprise Support Status |
 |-----------------|-------------------|---------------------------|
+| [4.4.0](/history/4_x/version-4.4.0.md) | July 14th, 2022 | Supported |
+| [4.3.2](/history/4_x/version-4.3.2.md) | July 14th, 2022 | Supported |
+| [4.2.3](/history/4_x/version-4.2.3.md) | July 14th, 2022 | Supported |
 | [4.3.1](/history/4_x/version-4.3.1.md) | June 15th, 2022 | Supported |
 | [4.2.2](/history/4_x/version-4.2.2.md) | June 15th, 2022 | Supported |
 | [4.3.0](/history/4_x/version-4.3.0.md) | June 2nd, 2022 | Supported |
@@ -26,10 +29,12 @@ Upgrade instructions [can be found here](/upgrading/).
 | [3.4.4](/history/3_4_x/version-3.4.4.md) | September 21, 2021 | Maintenance Support |
 | [3.4.3](/history/3_4_x/version-3.4.3.md) | August 25, 2021 | Maintenance Support |
 | [3.4.2](/history/3_4_x/version-3.4.2.md) | August 4, 2021 | Maintenance Support |
-| [3.4.1](/history/3_4_x/version-3.4.1.md) | July 16, 2021 | Maintenance Support |
-| [3.4.0](/history/3_4_x/version-3.4.0.md) | June 15, 2021 | Maintenance Support |
 
 
 ::: warning
-With the release of [version 4.0.0](4_x/version-4.0.0.html) the 3.4.x series was placed into Maintenance Support status. All fixes to the product will be made in the 4.x series.  Critical Security bugs may be back ported to the 3.4.x series as determined by the Rundeck Product Team. 3.4.x series will not be provided back port security fixes after the 1 year anniversary of 4.0.0 on March 15th, 2023. The 3.3.x series will not be provided back port fixes after the 1 year anniversary of 3.4.0 on June 14th, 2022.
+With the release of [version 4.0.0](4_x/version-4.0.0.html) the 3.4.x series was placed into Maintenance Support status. All fixes to the product will be made in the 4.x series.  Critical Security bugs may be back ported to the 3.4.x series as determined by the PagerDuty Automation Product Team.
+
+The 3.4.x series will not be provided back port security fixes after the 1 year anniversary of 4.0.0 on March 15th, 2023.
+
+The 3.3.x series will not be provided back port fixes after the 1 year anniversary of 3.4.0 on June 14th, 2022.
 :::
