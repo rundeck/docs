@@ -21,7 +21,8 @@ async function main() {
     context.core = await getRepoData({repo: 'rundeck', owner: 'rundeck'}, [])
     context.enterprise = await getRepoData({repo: 'rundeckpro', owner: 'rundeckpro'}, ['release-notes/include'])
     context.docs = await getRepoData({repo: 'docs', owner: 'rundeck'}, [])
-    context.contributors = {...context.core.contributors, ...context.enterprise.contributors, ...context.docs.contributors}
+    context.ansible = await getRepoData({repo: 'ansible-plugin', owner: 'rundeck-plugins'}, [])
+    context.contributors = {...context.core.contributors, ...context.enterprise.contributors, ...context.docs.contributors, ...context.ansible.contributors}
     //context.reporters = {...context.core.reporters, ...context.enterprise.reporters}
 
     // FS.writeFileSync('notes.json', JSON.stringify(context))

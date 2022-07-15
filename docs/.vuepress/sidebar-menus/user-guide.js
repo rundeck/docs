@@ -31,6 +31,7 @@ module.exports = [{
             '/manual/projects/resource-model-sources/',
             '/manual/projects/resource-model-sources/node-wizard',
             '/manual/projects/resource-model-sources/aws',
+            '/manual/projects/resource-model-sources/ecs-fargate',
             '/manual/projects/resource-model-sources/azure',
             '/manual/projects/resource-model-sources/gcp',
             '/manual/projects/resource-model-sources/oracle',
@@ -85,6 +86,18 @@ module.exports = [{
             '/manual/log-filters/multi-line-regex.md'
           ]
         },
+//        {
+//            title: 'Job Plugins',
+//            collapsable: true,
+//            path: '/manual/job-plugins',
+//            sidebarDepth: 1,
+//            children: [
+//
+//                '/manual/node-steps',
+//                '/manual/workflow-steps',
+//
+//            ]
+//        }
         '/manual/job-plugins',
         '/manual/execution-lifecycle/job-resume.md',
         '/manual/execution-lifecycle/job-retry-failed-nodes.md',

@@ -25,6 +25,11 @@ Check out the new features and enhancements for PagerDuty Process Automation (fo
 
 [Here is a link to the full list of public PRs](https://github.com/rundeck/rundeck/pulls?q=is%3Apr+milestone%3A{{version.versionString}}+is%3Aclosed)
 
+## Ansible Plugin Updates
+{% for pull in ansible.pulls -%}
+* [{{ pull.title | replace(r/RUN-[0-9]*:?\s?/g, "") | replace(r/RCLOUD-[0-9]*:?\s?/g, "") }}]({{pull.html_url}})
+{% endfor %}
+
 ## Community Contributors
 
 {% for login, user in contributors -%}
@@ -42,10 +47,12 @@ Check out the new features and enhancements for PagerDuty Process Automation (fo
 * Miguel Ramos (mishingo)
 * Christopher McCarroll-Gilbert (chrismcg14)
 * Jason Qualman (qualman)
+* Jesus Osuna (Jesus-Osuna-M)
 * Alexander Abarca (alexander-variacode)
 * Alberto Hormazabal Cespedes (ahormazabal)
 * Leonel Juarez (L2JE)
 * Eric He (ehe-pd)
 * Forrest Evans (fdevans)
+* Jake Cohen (jsboak)
 * Darwis Narvaez (DarwisNarvaezDev)
 * Antony Velasquez Ruiz (avelasquezr)

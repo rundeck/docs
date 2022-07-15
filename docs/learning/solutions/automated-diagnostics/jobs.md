@@ -8,6 +8,38 @@ Many of these Jobs depend on a method of sending of commands to remote-nodes (su
 Follow the SSM Tour outlined in the [Tours section](/learning/solutions/automated-diagnostics/tours) to use Systems Manager, or install an [Enterprise Runner](/administration/runner/) for SSH so that Runbook Automation can send commands to the remote-nodes.  
 :::
 
+Group|Job Name
+----|--------
+AWS / CloudWatch|Nginx Rejected Requests
+AWS / CloudWatch|Top 10 Hosts by Throughput on Subnet
+AWS / CloudWatch|Top 10 Source IP Addresses with Highest Rejected Requests
+AWS / CloudWatch|Top 10 Web-Server Requesters by Public IP
+AWS / CloudWatch|UDP Transfer Protocol IP Addresses Identification
+AWS / EC2|Instance Status
+AWS / ECS|Stopped ECS Task Errors
+AWS / ELB|Retrieve ELB Targets Health Status
+AWS / RDS|Check Database Storage Status
+Kubernetes|Describe Deployment
+Kubernetes|Describe Replicaset
+Kubernetes|Describe Specific Pod
+Kubernetes|Execute Command in Pod
+Kubernetes|List Recent Events
+Kubernetes|Retrieve Logs from Kubernetes by Selector Label
+Kubernetes|Tail Logs from Individual Kubernetes Pod
+Linux|CPU, Memory & Disk to PagerDuty Incident
+Linux|Retrieve Errors from Syslog
+Linux|Retrieve Service Status
+Linux|Top CPU & Memory Consuming Processes
+Linux|Top Disk Consuming Files
+Nginx|Curl Localhost Endpoint
+Nginx|Retrieve Error Logs
+Nginx|Test Nginx Configuration
+PostGreSQL|Tail PostgreSQL Logs Files
+PostGreSQL|Test is PostgreSQL Server is Running
+Redis|Check Port 6379 is Listening
+Redis|Redis Memory Statistics
+Redis|Slow Log Entries
+
 **AWS**: Gather diagnostic data from your own AWS environment, including EC2, ECS, ELB, RDS and VPCs. These Jobs do _not_ require an [Enterprise Runner](/administration/runner/)  or an integration with Systems Manager.
 
 **Kubernetes**:  Describe your Kubernetes objects, run commands against Pods and gather logs.

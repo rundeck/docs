@@ -495,6 +495,10 @@ The value data must be returned in JSON data format described below.
 
 Three styles of return data are supported: simple list, simple object, and a name/value list. For a simple list, the list values will be displayed in a pop-up list when running the Job. If a simple object or name/value pairs are returned, then the `name` will be displayed in the list, but the `value` will be used as the input.
 
+::: tip
+If you need the values to be shown in the same order as the json, you should use the "Name Value List" format
+:::
+
 _Examples_
 
 Simple List:
