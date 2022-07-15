@@ -35,7 +35,7 @@ Then configure Autotakeover by adding the following settings in `rundeck-config.
 rundeck.clusterMode.autotakeover.enabled=true
 
 # policy indicates which nodes to take over. "Any": all dead nodes. "Static": only allowed uuids
-rundeck.clusterMode.autotakeover.policy=any
+rundeck.clusterMode.autotakeover.policy=Any
 
 # delay in seconds to wait after sending autotakeover proposal
 rundeck.clusterMode.autotakeover.delay = 60
