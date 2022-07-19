@@ -59,7 +59,7 @@ Add the settings to the **System Configuration** module (3.4.0+ Enterprise) or `
 
 >Note: These settings will require a restart of Rundeck to take effect.
 
-* **prefix**: Vault Prefix in Vault secret backend 
+* **prefix**: Vault Prefix in Vault secret backend
 
 ```
 rundeck.storage.provider.[index].config.prefix=rundeck
@@ -241,8 +241,8 @@ Default value: false
 
 ::: tip
 Use `rundeck.storage.provider.[index].removePathPrefix=true` and 
-`rundeck.storage.provider.[index].config.removePrefix=true` to store keys from
-the root of the vault secret backend.
+`rundeck.storage.provider.[index].config.removePrefix=true` to store keys 
+starting from the root of the vault secret backend.
 :::
 
 ### More Configuration Examples
