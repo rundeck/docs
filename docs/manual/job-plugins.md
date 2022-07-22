@@ -51,6 +51,7 @@
 - [Log data step](/manual/workflow-steps/builtin.md#log-data-step)
 - [Refresh project nodes](/manual/workflow-steps/builtin.md#refresh-project-nodes)
 - [Data step](/manual/workflow-steps/builtin.md#data-step)
+- [Sumo Logic](/manual/workflow-steps/sumo-logic.md)
 
 ## Notifications
 
