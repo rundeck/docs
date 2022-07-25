@@ -43,4 +43,4 @@ The **AWS / Athena / Query** plugin allows you to create a custom SQL query that
 : The name of the database that this query will be sent to. If you want to target a specific table, make sure that table is located inside that database. You can create tables and databases yourself with [Amazon's Glue](https://aws.amazon.com/glue/).
 
 **Bucket**
-: The name of the s3 bucket that the results of this query will be stored in. Make sure that the user credentials entered above have access to write in AWS s3 buckets either through user permissions, or by belonging to a user group with access.
+: The name of the S3 bucket that the results of this query will be stored in. Make sure that the user credentials entered above have access to write in AWS S3 buckets either through user permissions, or by belonging to a user group with access.
