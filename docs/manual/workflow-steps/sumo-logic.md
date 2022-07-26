@@ -55,3 +55,16 @@ There are two Workflow Step plugins for Sumo Logic:
 7. Select a **Time Range**, such as **`3s`**, **`5m`**, **`1d`**.  This is the relative look-back time for the query. For more details on the time range, see [here](https://help.sumologic.com/05Search/Get-Started-with-Search/Search-Basics/Time-Range-Expressions).
 8. [Optionally] Add a name for the **Step Label**.
 9. Click **Save** for the Job step.
+
+#### Execute a Saved Query in Sumo Logic
+
+1. Perform steps 1 and 2 above to search for the Sumo Logic Job step plugins.
+2. Select **Sumo Logic / Execute a Saved Search Query**
+3. In the **Credentials** section, paste in your Sumo Logic Access ID.
+4. In the **Search Job ID** field, place in a saved Search query from Sumo Logic.
+   :::tip Note
+    This is the **SESSION** field for a query in Sumo Logic:
+    <img style='border:1px solid #327af6' src="@assets/img/sumo-saved-query-session.png" />
+    :::
+5. [Optionally] Add a name for the Step Label. 
+6. Click Save for the Job step.
