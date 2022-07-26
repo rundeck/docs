@@ -43,11 +43,15 @@ There are two Workflow Step plugins for Sumo Logic:
 2. Click on the **Workflow** tab and in the **Search Step** field, type in **`sumo`** and hit return:
 <br><br>![Search for Step](@assets/img/sumo-search-for-step.png)<br><br>
 3. Select **Sumo Logic / Create and Execute Query Search  Job**
-4. In the **Query String** text box, place your Sumo logs query:
+4. In the **Credentials** section, paste in your Sumo Logic Access ID.
+5. Use the **Select** button to define the path in Key Storage for your **Access Key**.
+6. In the **Query String** text box, place your Sumo logs query:
 <img style='border:1px solid #327af6' src="@assets/img/sumo-add-query.png" />
     :::tip Tip
      You can include variables in your query by making use of [Job Options](/manual/job-options) and [Context Variables](/manual/job-workflows.html#context-variable-usage).
     For example, if you use a log filter to capture the **`_collector`** from a prior step and saved in a variable **`${data.collector}`**, this could be passed into the Query String:
     <br><br><img style='border:1px solid #327af6' src="@assets/img/sumo-use-data-variable.png" />
     :::
-5. Select a **Time Range**, such as **`3s`**, **`5m`**, **`1d`**.  This is the _relative_ 
+7. Select a **Time Range**, such as **`3s`**, **`5m`**, **`1d`**.  This is the relative look-back time for the query. For more details on the time range, see [here](https://help.sumologic.com/05Search/Get-Started-with-Search/Search-Basics/Time-Range-Expressions).
+8. [Optionally] Add a name for the **Step Label**.
+9. Click **Save** for the Job step.
