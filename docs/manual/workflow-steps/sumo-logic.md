@@ -14,13 +14,40 @@ There are two Workflow Step plugins for Sumo Logic:
 
 ## Integration Setup
 
-To configure the Sumo Logic workflow steps, API credentials must be generated in Sumo Logic:
+### In Sumo Logic
 
 1. In the Sumo Logic web app, click your name in the left-nav and open the **Preferences** page.
 2. In the **My Access Keys** section, click **+ Add Access Key**.
+<br><br>![Create Access Key](@assets/img/sumo-create-access-key.png)<br>
 3. The **Create a Sumo Logic Access Key** window appears.
 4. Enter a **Name** for the access key in the Name field. If you don’t want to create an allowlist of domains from which the access key can be used to access Sumo APIs, go to step 8 below.
 5. (Optional) In this step, you can define one or more domains that may use the access key to access Sumo APIs. Enter a domain in the **Allowlisted CORS Domains** field and click Add.
-6. The window updates, and displays the domain you added.Repeat steps 5 and 6 to add additional domains to the allowlist. 
+6. The window updates, and displays the domain you added. Repeat steps 5 and 6 to add additional domains to the allowlist. 
 7. Click **Create Key** to generate the key. 
 8. The window displays the generated Access ID and Access Key. Copy both before clicking **Close**. After you press Close, you will not be able to recover the Access ID and Access Key.
+
+### In Process Automation
+
+#### Add Access Key to Key Storage
+1. Click on the System Menu (**gear** icon in upper-right) and click on **Key Storage**.
+2. Click on **+ Add or Upload a Key**.
+3. For the **Key Type** select the **Password** option.
+4. In the **Enter Text** field, paste in the _Access Key_ that was copied from step 8 above.
+5. Provide a name for this key, such as `sumo-logic-access-key`:
+<br><br>![Add to Key Storage](@assets/img/sumo-add-to-key-storage.png)<br>
+
+#### Execute a New Query in Sumo Logic
+
+1. Add a new step to a new or existing Job by clicking on **Add a Step**:
+<br><br>![Add Job Step](@assets/img/sumo-add-job-step.png)<br><br>
+2. Click on the **Workflow** tab and in the **Search Step** field, type in **`sumo`** and hit return:
+<br><br>![Search for Step](@assets/img/sumo-search-for-step.png)<br><br>
+3. Select **Sumo Logic / Create and Execute Query Search  Job**
+4. In the **Query String** text box, place your Sumo logs query:
+<img style='border:1px solid #327af6' src="@assets/img/sumo-add-query.png" />
+    :::tip Tip
+     You can include variables in your query by making use of [Job Options](/manual/job-options) and [Context Variables](/manual/job-workflows.html#context-variable-usage).
+    For example, if you use a log filter to capture the **`_collector`** from a prior step and saved in a variable **`${data.collector}`**, this could be passed into the Query String:
+    <br><br><img style='border:1px solid #327af6' src="@assets/img/sumo-use-data-variable.png" />
+    :::
+5. Select a **Time Range**, such as **`3s`**, **`5m`**, **`1d`**.  This is the _relative_ 
