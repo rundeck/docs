@@ -1,5 +1,5 @@
 <template>
-	
+
 	<label>
 	Version:
 
@@ -9,8 +9,8 @@
 			<option v-for="vers in group.values" :value="docsbase+'/'+vers" :key="vers">{{vers}}</option>
 			</optgroup>
 		</select>
-		        
-            
+
+
             </select>
 	</label>
 </template>
@@ -19,7 +19,9 @@
 const docsBase= "https://docs.rundeck.com"
 //include the last version in each minor release
 const previousDocsVersions= [
-        "3.3.9",
+  "4.4.0",
+	"3.4.10",
+	"3.3.9",
 	"3.2.9",
 	"3.1.3",
 	"3.0.27",
@@ -48,7 +50,7 @@ for(let a in previousDocsVersions){
 		strings.push(minor+`.${i}`)
 	}
 	versarr.push({label:minor,values:strings})
-	
+
 }
 export default {
 	data(){

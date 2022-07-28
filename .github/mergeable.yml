@@ -7,3 +7,9 @@ mergeable:
         must_exclude:
           regex: '(unmerged)'
           message: 'This PR should not be merged until related code has been merged.'
+  - when: pull_request.*
+    validate:
+      - do: milestone
+        no_empty:
+          enabled: true # Cannot be empty when true.
+          message: 'Milestone must be assigned before merging.'

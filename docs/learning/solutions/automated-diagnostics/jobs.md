@@ -40,20 +40,6 @@ Redis|Check Port 6379 is Listening
 Redis|Redis Memory Statistics
 Redis|Slow Log Entries
 
-**AWS**: Gather diagnostic data from your own AWS environment, including EC2, ECS, ELB, RDS and VPCs. These Jobs do _not_ require an [Enterprise Runner](/administration/runner/)  or an integration with Systems Manager.
-
-**Kubernetes**:  Describe your Kubernetes objects, run commands against Pods and gather logs.
-
-**Linux**: Retrieve Syslog messages and service statuses as well as top processes large files.
-
-**Nginx**: Test your Nginx configuration, retrieve logs and curl an endpoint.
-
-**PostgreSQL**: Test your PostgreSQL server and tail its logs.
-
-**Redis**: Check listening port, test latency, retrieve memory stats and return slow log entries.
-
-**Validate Integrations** Checks whether the credentials provided for the specified integration (such as AWS or PagerDuty) successfully connect and authenticate.
-
 ### How to Use the Node Filter Job Option
 All Jobs that send commands to a remote-node have a predefined Node Filter set to `{$option.node_filter}`:
 
