@@ -1,7 +1,7 @@
 //Meta Information
 const autometa_options = {
     site: {
-        name   : 'Rundeck Docs',
+        name   : 'Rundeck / Process Automation Documentation',
         twitter: 'rundeck',
     },
     canonical_base: 'https://docs.rundeck.com',
@@ -45,7 +45,7 @@ function getPlugins(setup) {
         {
             type: 'enterprise',
             defaultTitle: {
-            '/':'Available in Rundeck Enterprise'
+            '/':'Available in PagerDuty Process Automation products'
             },
         },
         ],
