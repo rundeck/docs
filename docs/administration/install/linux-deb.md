@@ -2,7 +2,7 @@
 
 ## Installing Rundeck
 
-:::warning 
+:::warning
 Rundeck depends on **Java 11** or **Java 8**. The **Java 14**
 packages will satisfy this dependency however Rundeck will not function properly
 with them. It is recommended to install the `openjdk-11-jre-headless` package manually.
@@ -124,4 +124,4 @@ Grails application running at http://localhost:4440 in environment: production
 
 Rundeck is now up and running!
 
-Next, learn how to [create your first Rundeck Enterprise project](/manual/03-getting-started.md#project-setup)
+Next, learn how to [create your first project](/manual/03-getting-started.md#project-setup)

@@ -22,7 +22,7 @@ Rundeck has rotated the signing key used to sign release packages. All previousl
 :::: tabs
 ::: tab Deb
 ### Quick setup script
-The [quick setup script](https://github.com/rundeck/packaging/blob/main/scripts/deb-setup.sh) will configure the Rundeck Enterprise repository,
+The [quick setup script](https://github.com/rundeck/packaging/blob/main/scripts/deb-setup.sh) will configure the Process Automation repository,
 import the new repository signing key, and update apt. Legacy configuration
 will be replaced.
 
@@ -52,7 +52,7 @@ sudo apt-get update
 
 ::: tab Rpm
 ### Quick setup script
-The [quick setup script](https://github.com/rundeck/packaging/blob/main/scripts/rpm-setup.sh) will configure the Rundeck Enterprise repository. Legacy configuration
+The [quick setup script](https://github.com/rundeck/packaging/blob/main/scripts/rpm-setup.sh) will configure the Process Automation repository. Legacy configuration
 will be replaced.
 
 ```bash
@@ -122,7 +122,7 @@ sudo apt-get update
 
 ::: tab Rpm
 ### Quick setup script
-The [quick setup script](https://github.com/rundeck/packaging/blob/main/scripts/rpm-setup.sh) will configure the Rundeck Enterprise repository. Legacy configuration
+The [quick setup script](https://github.com/rundeck/packaging/blob/main/scripts/rpm-setup.sh) will configure the Process Automation repository. Legacy configuration
 will be replaced.
 
 ```bash

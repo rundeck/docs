@@ -1,6 +1,6 @@
 # Github Script Plugin (Enterprise)
 
-The Github script plugin is a Workflow Step plugin included with Rundeck Enterprise that runs a command located on a GitHub repo.
+The Github script plugin is a Workflow Step plugin included with Process Automation that runs a command located on a GitHub repo.
 
 ## Configuration
 

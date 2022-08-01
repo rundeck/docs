@@ -5,7 +5,7 @@
 
 Amazon Relational Database Service (RDS) is a collection of managed services that makes it simple to set up, operate, and scale databases in the cloud.
 
-The following RDS plugins are available for PagerDuty Runbook Automation and Process Automation (formerly Rundeck Enterprise):
+The following RDS plugins are available for PagerDuty Runbook Automation and Process Automation:
 
 * [RDS Instance Status](#rds-instance-status)
 
@@ -43,5 +43,5 @@ This can be especially useful when your RDS instance has run out of storage capa
 * **Target RDS Region**: The AWS region where the RDS instance resides.
 
 ### See it in Action
-This plugin is used in one of the prebuilt Jobs in our [**_Automated Diagnostics Solution_**](/learning/solutions/automated-diagnostics/solution-overview). 
+This plugin is used in one of the prebuilt Jobs in our [**_Automated Diagnostics Solution_**](/learning/solutions/automated-diagnostics/solution-overview).
 Try out the Solution to see how this plugin can be used as part of incident-response workflows.

@@ -5,7 +5,7 @@
 
 Amazon ECS is a fully managed container orchestration service that makes it easy for you to deploy, manage, and scale containerized applications.
 
-The following plugins are available for PagerDuty Runbook Automation and Process Automation (formerly Rundeck Enterprise):
+The following plugins are available for PagerDuty Runbook Automation and Process Automation:
 
 * [Send Commands to ECS Containers](#send-commands-to-ecs-containers)
 * [Stopped ECS Tasks Error Messages](#stopped-ecs-tasks-error-messages)
@@ -37,12 +37,12 @@ The **AWS / ECS / Run Command** plugin sends commands to specified ECS container
 
 ![ECS Command Example](@assets/img/aws-ecs-command-example.png)<br><br>
 
-Sending commands to ECS containers makes it easier to collect diagnostic information and quickly troubleshoot errors. For example, in development, 
-this allows you to easily interact with various processes in your containers and troubleshoot your applications. In production scenarios, 
+Sending commands to ECS containers makes it easier to collect diagnostic information and quickly troubleshoot errors. For example, in development,
+this allows you to easily interact with various processes in your containers and troubleshoot your applications. In production scenarios,
 this enables you to gain break-glass access to your containers to debug issues.
 
 #### Prerequisites
-1. This feature requires a Task IAM role to grant containers the permissions needed for communication between the managed SSM agent (execute-command agent) and the SSM service. 
+1. This feature requires a Task IAM role to grant containers the permissions needed for communication between the managed SSM agent (execute-command agent) and the SSM service.
 Use the following policy and attach it to your task definition as explained [here](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html).
     ```
     {
@@ -71,7 +71,7 @@ For example, with an existing Service:
       --service-name service-name \
       --desired-count 1
     ```
-3. **[Optional]** If you set the task definition parameter `initProcessEnabled` to **`true`**, this starts the init process inside the container, 
+3. **[Optional]** If you set the task definition parameter `initProcessEnabled` to **`true`**, this starts the init process inside the container,
 which removes any zombie SSM agent child processes found. The following provides an example:
     ```
     {
@@ -120,7 +120,7 @@ Once the Job step is configured, commands can be sent to the specified container
 ![Hard Coded Command](@assets/img/aws-ecs-test-hard-coded-command.png)<br>
 
 If this executes successfully, you would see the following output in the Job output logs:
-                                                                                         
+
 ![Command Output Logs](@assets/img/aws-ecs-command-log-output.png)<br>                   
 
 To use this Job step as part of a larger workflow, or to create a **_"self service interface"_**, you will likely want to use a Job Option (shown below) or a Data Variable

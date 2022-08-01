@@ -7,7 +7,7 @@
 ::: tab Enterprise
 ### Quick install with yum
 
-You can use this script to add the Rundeck Enterprise yum repo:
+You can use this script to add the Process Automation yum repo:
 
 ```bash
 curl https://raw.githubusercontent.com/rundeck/packaging/main/scripts/rpm-setup.sh 2> /dev/null | sudo bash -s rundeckpro
@@ -36,7 +36,7 @@ metadata_expire=300
 sudo yum install java rundeckpro-enterprise
 ```
 
-When new versions of Rundeck Enterprise are released, you can upgrade to them using the command:
+When new versions of Process Automation are released, you can upgrade to them using the command:
 
 ```bash
 sudo yum update rundeckpro-enterprise
@@ -120,7 +120,7 @@ Grails application running at http://localhost:4440 in environment: production
 
 Rundeck is now up and running!
 
-Next, learn how to [create your first Rundeck Enterprise project](/manual/03-getting-started.md#project-setup)
+Next, learn how to [create your first Process Automation project](/manual/03-getting-started.md#project-setup)
 
 ## Note about Linux Groups
 

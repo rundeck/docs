@@ -1,6 +1,9 @@
 # Single SignOn - Okta
 
-Rundeck Enterprise can be configured to work with the Okta security platfom.
+:::enterprise
+:::
+
+Process Automation can be configured to work with the Okta security platfom.
 
 To configure the Okta SSO plugin for Rundeck add a new application to your Okta Applications and then configure Rundeck to authenticate using Okta.
 

@@ -11,7 +11,7 @@ You can configure health checks, which are used to monitor the health of the reg
 For more information, see How Elastic Load Balancing works in the [Elastic Load Balancing User Guide](https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/how-elastic-load-balancing-works.html).
 
 
-### Creating an AWS ALB for you Rundeck Enterprise Cluster
+### Creating an AWS ALB for you Process Automation Cluster
 
 <!-- blank line -->
 <figure class="video_container">

@@ -5,11 +5,11 @@ Original:
 http://support.rundeck.com/customer/en/portal/articles/1939728-powershell-plugins)
 --->
 
-These plugins are only applicable to Rundeck Enterprise deployments on Windows Servers.
+These plugins are only applicable to Process Automation deployments on Windows Servers.
 
 There are two plugins:
 
-- **File Copier**: Copies files to the remote node for execution by the Node Executor. This plugin would be used to execute any Script steps in your workflows, or to copy your own files stored on the Rundeck Enterprise host.
+- **File Copier**: Copies files to the remote node for execution by the Node Executor. This plugin would be used to execute any Script steps in your workflows, or to copy your own files stored on the Process Automation host.
 - **Node Executor**: Executes the command and script steps.
 
 The plugins can be enabled in the Project Configuration page by selecting the PowerShell Node Executor and PowerShell File Copier as the default Node Executor and File Copiers.
@@ -38,7 +38,7 @@ You can either configure the password or password storage path at a project-wide
 
 ### Password Storage
 
-Passwords can be stored securely in the Rundeck Enterprise Keystore facility. These passwords can be stored in a tree like structure to help you organize them any way you wish. The passwords can be referenced using an attribute named "password-storage-path". When Rundeck needs the password, it looks up the file as referenced by the storage path, reads, decrypts, and passes the value to the plugins.
+Passwords can be stored securely in the Process Automation Keystore facility. These passwords can be stored in a tree like structure to help you organize them any way you wish. The passwords can be referenced using an attribute named "password-storage-path". When Rundeck needs the password, it looks up the file as referenced by the storage path, reads, decrypts, and passes the value to the plugins.
 
 ## Node Configuration
 
@@ -80,7 +80,7 @@ keys/users/${job.username}.password
 
 ## WinRM Setting to use PowerShell Plugin
 
-In order to connect Rundeck with remote Windows nodes, it is necessary to set WinRM in both, the server and the remote nodes. 
+In order to connect Rundeck with remote Windows nodes, it is necessary to set WinRM in both, the server and the remote nodes.
 
 ### On the rundeck server
 
@@ -262,21 +262,20 @@ For more information about installing and configuring Windows Remote Nodes, see 
 
 ## Use utf-8 scripts
 
-If you need to use UTF-8 scripts from an `unix` instance to a `windows` node, powershell is unable to identify correctly 
-the encoding of UTF-8 files without bom. You can force the file to be UTF-8 with bom adding the `file-copier-add-utf8-bom` 
+If you need to use UTF-8 scripts from an `unix` instance to a `windows` node, powershell is unable to identify correctly
+the encoding of UTF-8 files without bom. You can force the file to be UTF-8 with bom adding the `file-copier-add-utf8-bom`
 property to the node:
 
 ```xml
-<node 
-  name="windowsServer" 
-  description="Windows server node" 
+<node
+  name="windowsServer"
+  description="Windows server node"
   tags="windows"
-  osArch="x86_64" 
-  osFamily="windows" 
-  osName="Windows 10" 
-  osVersion="10" 
-  hostname="192.168.56.101:5985" 
+  osArch="x86_64"
+  osFamily="windows"
+  osName="Windows 10"
+  osVersion="10"
+  hostname="192.168.56.101:5985"
   file-copier-add-utf8-bom="true"
   />
 ```
-

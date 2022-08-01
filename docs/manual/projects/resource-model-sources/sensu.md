@@ -1,9 +1,9 @@
-# Sensu Node Source (Enteprise)
+# Sensu Node Source
 
 :::enterprise
 :::
 
-Rundeck Enterprise users have the ability to use this plugin to import their host list in Sensu by creating nodes matching all the hosts. This makes it easy to import nodes from Sensu.
+Process Automation users have the ability to use this plugin to import their host list in Sensu by creating nodes matching all the hosts. This makes it easy to import nodes from Sensu.
 
 Before creating the job step, have the API key and URL for the account ready. To find them, see [here](https://docs.sensu.io/sensu-go/latest/api/apikeys/#create-a-new-api-key).
 

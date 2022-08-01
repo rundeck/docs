@@ -5,7 +5,7 @@ module.exports = [{
   children: [
     '/about/introduction.md',
     {
-       title: 'Rundeck Enterprise',
+       title: 'Process Automation',
        collapsable: true,
        path: '/about/enterprise/',
        sidebarDepth: 1,
@@ -13,7 +13,7 @@ module.exports = [{
          ['/about/enterprise/', 'Overview']
     ]},
     {
-       title: 'Rundeck Cloud',
+       title: 'Runbook Automation',
        collapsable: true,
        path: '/about/cloud/',
        sidebarDepth: 1,

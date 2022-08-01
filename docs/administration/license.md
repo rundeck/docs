@@ -1,14 +1,14 @@
-# Rundeck Enterprise Licensing
+# Process Automation Licensing
 
 ## Overview
 
-While Rundeck is an open source project maintained by PagerDuty, Rundeck Enterprise is commercial software for which you can purchase a license from PagerDuty. Rundeck Enterprise provides a tested, supported, and enterprise-ready distribution of Rundeck with additional features and capabilities for enterprise scale use. Also, a Rundeck Enterprise subscription license is the only way to receive professional support from PagerDuty and the core Rundeck team.
+While Rundeck is an open source project maintained by PagerDuty, Process Automation is commercial software for which you can purchase a license from PagerDuty. Process Automation provides a tested, supported, and enterprise-ready distribution of Rundeck with additional features and capabilities for enterprise scale use. Also, a Process Automation subscription license is the only way to receive professional support from PagerDuty and the core Rundeck team.
 
-[Contact the PagerDuty sales team to get started with Rundeck Enterprise today.](https://www.pagerduty.com/contact-us/)
+[Contact the PagerDuty sales team to get started with Process Automation today.](https://www.pagerduty.com/contact-us/)
 
 ## License Key Installation
 
->Note: this is only required on Rundeck Enterprise version.  Rundeck Cloud will come pre-installed with your license.
+>Note: this is only required on Process Automation version.  Runbook Automation (Cloud offering) will come pre-installed with your license.
 
 Ask for the license key to the support team. Then install the license key via the GUI or on the filesystem directly.
 
@@ -97,7 +97,7 @@ Use the property `rundeck.license.file` to declare the specific path, and the li
 
 Use the property `rundeck.license.storage.provider.1.path` to declare the license path.
 
-Both properties must be used as show below. 
+Both properties must be used as show below.
 
 ```
 rundeck.license.useStorageTree=true
@@ -110,4 +110,3 @@ rundeck.license.storage.provider.1.config.secretKey=YOUR_SECRET_KEY
 rundeck.license.storage.provider.1.path=/FOLDER_NAME/SUB_FOLDER_NAME/
 rundeck.license.file=/FOLDER_NAME/SUB_FOLDER_NAME/rundeckpro-license.key
 ```
-

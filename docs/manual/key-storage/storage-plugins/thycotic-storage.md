@@ -1,8 +1,11 @@
 # Thycotic Storage Plugin (Enterprise)
 
+:::enterprise
+:::
+
 Thycotic is a leader in Privileged Access Management solutions providing cloud ready, easy to use security solutions across the complete privileged access surface.  A centralized password management system provides visibility and control to protect privileges from attack.  Thycotic's solution is built for the Enterprise to enforce strong password business policies and prevent data breaches.  [Read more about their solution here](https://thycotic.com/solutions/enterprise-password-management/).
 
-Rundeck Enterprise users have access to the Thycotic Storage Plugin which can be used to access password/key data stored in a Thycotic Secret Server.
+Process Automation users have access to the Thycotic Storage Plugin which can be used to access password/key data stored in a Thycotic Secret Server.
 
 :::: tabs
 ::: tab Configuration Management
