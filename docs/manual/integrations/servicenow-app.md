@@ -9,7 +9,7 @@ Our ServiceNow&reg; application can be found on the ServiceNow&reg; Store.  The 
 
 The application is supported on Paris, Quebec and Rome ServiceNow&reg; releases.
 
-An active Rundeck Enterprise license for a currently supported version is also required. (Minimum is 3.3.0)
+An active license for a currently supported version is also required. (Minimum is 3.3.0)
 
 ## Requesting the application
 

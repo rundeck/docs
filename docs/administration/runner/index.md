@@ -1,5 +1,8 @@
 # Runner
 
+:::enterprise
+:::
+
 The Runner, available for both Process Automation and Runbook Automation securely opens up network/communication between data centers and the Automation Cluster.  The Runner is a Remote Execution hub for Node Steps to run on specified endpoints, rather than from the Automation server itself.  
 
 ## Architecture

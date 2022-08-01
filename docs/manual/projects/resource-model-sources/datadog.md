@@ -1,6 +1,9 @@
-# Datadog Node Source (Enterprise)
+# Datadog Node Source
 
-Rundeck Enterprise users have the ability to use this plugin to import their host list in Datadog by creating nodes matching all the hosts. This makes it easy to import nodes from Datadog.
+:::enterprise
+:::
+
+Process Automation users have the ability to use this plugin to import their host list in Datadog by creating nodes matching all the hosts. This makes it easy to import nodes from Datadog.
 
 ## Configuration
 

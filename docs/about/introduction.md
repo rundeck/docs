@@ -22,21 +22,21 @@ Out of the box, Rundeck gives you capabilities that would be expensive to develo
 
 Rundeck Open Source is free open source software licensed under the [Apache Software License v2.0](http://www.apache.org/licenses/LICENSE-2.0.html), and you can participate in the project on [GitHub]. For those who write and run Rundeck jobs at small-scale usage (e.g., limited use or within a team), the open-source Rundeck delivers you the features you need, for free, _forever_.
 
-#### Rundeck Enterprise
+#### Process Automation (formerly Rundeck Enterprise)
 
-The focus of [Rundeck Enterprise], our commercial offering, is on making Rundeck production-ready and enterprise-scale. Rundeck Enterprise, built on the open source Rundeck, is the bundle of software and services you need to run Rundeck as an enterprise-class service.
+The focus of [Process Automation], our commercial offering, is on making Rundeck production-ready and enterprise-scale. Process Automation, built on the open source Rundeck, is the bundle of software and services you need to run Rundeck as an enterprise-class service.
 
-Built and tested for the enterprise, Rundeck Enterprise includes exclusive features (including clustering/HA, advanced workflow, enhanced ACL management, enhanced dashboards/visualization) and Rundeck Enterprise exclusive plugins. Professional support and on-boarding services are also part of the Rundeck Enterprise subscription bundle.
+Built and tested for the enterprise, Process Automation includes exclusive features (including clustering/HA, advanced workflow, enhanced ACL management, enhanced dashboards/visualization) and Process Automation exclusive plugins. Professional support and on-boarding services are also part of the Process Automation subscription bundle.
 
-_NOTE: Rundeck Enterprise was recently renamed from Rundeck Pro. You may still see references to "Pro" here and there, as we work to update our documentation. Just know that they are the same thing._
+_NOTE: Process Automation was recently renamed from Rundeck Enteprise. You may still see references to Rundeck Enteprise/Pro here and there, as we work to update our documentation. Just know that they are the same thing._
 
 [New to Rundeck]: https://www.rundeck.com/new-to-rundeck
-[Rundeck Enterprise]: https://www.rundeck.com/enterprise
+[Process Automation]: https://www.pagerduty.com/platform/automation/process-software/
 [github]: https://github.com/rundeck/rundeck
 
 ## Who makes Rundeck?
 
-[Rundeck] is part of the [PagerDuty] suite of products and is developed by the Rundeck Business unit and the Rundeck community. The community is welcomed to participate in the project and contribute. Please submit an issue on our GitHub repository listed above or reach out to your Customer Success Team contact.
+[Rundeck] is part of the [PagerDuty] suite of products and is developed by the Automation Business unit and the Rundeck community. The community is welcomed to participate in the project and contribute. Please submit an issue on our GitHub repository listed above or reach out to your Customer Success Team contact.
 
 [Rundeck]: https://www.rundeck.com/
 [PagerDuty]: https://www.pagerduty.com/

@@ -1,12 +1,12 @@
 # Enterprise Quickstart
 
-## What is Rundeck Enterprise?
+## What is Process Automation?
 
-Rundeck Enterprise is the enterprise-ready edition of Rundeck, the most popular open-source runbook automation solution.  More details about the features that distinguish Enterprise from our Open Source version are [covered here](https://www.rundeck.com/enterprise).
+Process Automation is the enterprise-ready edition of Rundeck, the most popular open-source runbook automation solution.  More details about the features that distinguish Enterprise from our Open Source version are [covered here](https://www.rundeck.com/enterprise).
 
-## How can I try out Rundeck Enterprise?
+## How can I try out Process Automation?
 
-**Note:** this setup is meant for evaluating Rundeck on your local workstation. For a guide to setting up Rundeck Enterprise in production see [Installation](/administration/install/index.md).
+**Note:** this setup is meant for evaluating Rundeck on your local workstation. For a guide to setting up Process Automation in production see [Installation](/administration/install/index.md).
 
 1. Visit our [Download Site](https://download.rundeck.com/) and get the latest rundeckpro-enterprise-{{{rundeckVersionFull}}}.war file.
 2. Once the download is finished verify that the file's checksum matches the expected checksum:
@@ -30,7 +30,7 @@ Grails application running at http://0.0.0.0:4440 in environment: production
 5. Navigate to [http://localhost:4440/](http://localhost:4440/user/login) in a browser
 6. Log in with the username **admin** and password **admin**
 
-Rundeck Enterprise is now running on your workstation for you to evaluate!
+Process Automation is now running on your workstation for you to evaluate!
 
 If you'd like assistance or more help feel free to reach out at: https://www.rundeck.com/see-demo
 
@@ -44,4 +44,4 @@ Further information about encrypted key/config storage on [this](/administration
 
 ## What is next?
 
-Next, learn how to [create your first Rundeck Enterprise project](/manual/03-getting-started.md#project-setup)
+Next, learn how to [create your first Process Automation project](/manual/03-getting-started.md#project-setup)
