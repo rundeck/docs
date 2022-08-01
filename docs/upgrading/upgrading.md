@@ -1,6 +1,10 @@
 # General Upgrade Guide
 
 
+## Cluster upgrade
+
+Before performing any method of upgrade, we highly recommend you stop all cluster members and do the following steps, one cluster member, at a time.
+
 ## Runnable War
 
 To upgrade Rundeck 3 using the runnable war use the following steps:
@@ -134,8 +138,6 @@ mv rundeck-{{{rundeckVersionFull}}}.war $tomcat.base/webapps/rundeck.war
 
 
 ## Windows As a Service
-
-**Before performing this upgrade, we highly recommend you stop all cluster members and do the following steps, one cluster member, at a time.**
 
 - Download the latest Rundeck version .war from [Rundeck Downloads](https://download.rundeck.com/)
 
