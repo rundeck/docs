@@ -4,11 +4,11 @@
 :::
 
 Sumo Logic provides cloud monitoring, log management, Cloud SIEM tools, and real-time insights for web and SaaS based apps.
-The **Sumo Logic workflow steps** allows users to automate operational tasks - such as retrieving logs for incident diagnostics - by integrating with their Sumo instance.
+The **Sumo Logic workflow steps** allows users to automate operational tasks - such as retrieving logs for incident diagnostics - by integrating with your Sumo Logic instance.
 
 There are two Workflow Step plugins for Sumo Logic:
 * [Create and Execute Query Search Job](#execute-a-new-query-in-sumo-logic) - Executes a new logs query in Sumo Logic to surface log data in PagerDuty Process Automation.
-* [Execute a Saved Search Query](#execute-a-saved-query-in-sumo-logic) - Executed an existing, saved logs query in Sumo Logic to surface log data in PagerDuty Process Automation.
+* [Execute a Saved Search Query](#execute-a-saved-query-in-sumo-logic) - Executes an existing, saved logs query in Sumo Logic to surface log data in PagerDuty Process Automation.
 
 ![Create Query Example](@assets/img/sumo-logic-create-query-example.png)<br>
 
