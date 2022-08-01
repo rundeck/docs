@@ -2,12 +2,12 @@
 ::: enterprise
 :::
 
-[Amazon's EC2](https://aws.amazon.com/ec2/) (Elastic Cloud Compute) is a cloud service that provides on-demand and scalable virtual-machines for dynamic infrastructure. 
+[Amazon's EC2](https://aws.amazon.com/ec2/) (Elastic Cloud Compute) is a cloud service that provides on-demand and scalable virtual-machines for dynamic infrastructure.
 It is one of the most popular cloud services used for developing, testing and hosting applications for businesses.
 
 In order to automate tasks on EC2's - such as executing commands or rebooting - the instances must be populated into Rundeck's [Node Inventory](/manual/projects/resource-model-sources/).
 
-The **EC2 Node Source**, which retrieves the EC2 instances from one or more regions, is bundled into Runbook Automation and is also accessible to Community users [here](https://github.com/rundeck-plugins/rundeck-ec2-nodes-plugin). 
+The **EC2 Node Source**, which retrieves the EC2 instances from one or more regions, is bundled into Runbook Automation and is also accessible to Community users [here](https://github.com/rundeck-plugins/rundeck-ec2-nodes-plugin).
 This allows for targeted automation on EC2 instances - based off of instance-properties, tags, regions or Account ID's.
 
 ## Configuring
@@ -16,19 +16,20 @@ This allows for targeted automation on EC2 instances - based off of instance-pro
 
 ::: warning Note
 If using Rundeck Community, first download the plugin JAR from the [Github repository](https://github.com/rundeck-plugins/rundeck-ec2-nodes-plugin/releases).
-Copy the plugin file _rundeck-ec2-nodes-plugin-X.Y.jar_ into your `$RDECK_BASE/libext` directory. 
+Copy the plugin file _rundeck-ec2-nodes-plugin-X.Y.jar_ into your `$RDECK_BASE/libext` directory.
 The plugin contains all of the required dependencies.
 :::
 
 1. Navigate to **Project Settings** -> **Edit Nodes** and select the **Sources** tab.
-2. Click on **Add a new Node Source** and select **AWS EC2 Resources**.
-3. Provide AWS Credentials into the **Access Key** and **Secret Key** fields. The only permissions required for the credentials is `ec2:DescribeInstances`
-4. To specify the region (or multiple regions) to integrate with, fill in the **Endpoint** field with the associated regional endpoint. All endpoints are of the syntax **https:ec2.aws-region.amazonaws.com**.
+1. Click on **Add a new Node Source** and select **AWS EC2 Resources**.
+1. Provide AWS Credentials into the **Access Key** and **Secret Key** fields. The only permissions required for the credentials is `ec2:DescribeInstances`
+1. To specify the region (or multiple regions) to integrate with, fill in the **Endpoint** field with the associated regional endpoint. All endpoints are of the syntax **https:ec2.aws-region.amazonaws.com**.
 For example, the **us-west-1** endpoint is **`https://ec2.us-west-1.amazonaws.com`**. See below for defining multiple regions.
-5. Toggle **Only Running Instances** to determine whether both Running and Stopped instances should be retrieved, or just Running instances.
-6. Click **Save** on the Node Source and then click **Save** again on the Sources configuration page.
+1. Toggle **Only Running Instances** to determine whether both Running and Stopped instances should be retrieved, or just Running instances.
+1. Click **Save** on the Node Source and then click **Save** again on the Sources configuration page.
+
 ::: tip
-If self-hosting Rundeck in AWS and an IAM Role is assigned to the infrastructure that Rundeck is running on, then you do not need to fill in the **Access Key** and **Secret Key** fields.
+If self-hosting in AWS and an IAM Role is assigned to the infrastructure that your server is running on, then you do not need to fill in the **Access Key** and **Secret Key** fields.
 :::
 
 ### Advanced Configuration Options
@@ -36,7 +37,7 @@ If self-hosting Rundeck in AWS and an IAM Role is assigned to the infrastructure
 * **Assume Role ARN**: Specify an IAM Role that Rundeck should use when authenticating with AWS.<br><br>
 * **Synchronous Loading**: Do not use internal async loading behavior. Rundeck 2.6.3+ uses an asynchronous nodes cache by default. You should enable this if you are using the Rundeck nodes cache.<br><br>
 * **Async Refresh Interval**: Unless using Synchronous Loading, minimum time in seconds between API requests to AWS (default is 30).<br><br>
-* **Filter Params**: Filter which EC2 instances are populated in the Node Inventory using the following syntax: **`filter=value;filter2=value2`**. 
+* **Filter Params**: Filter which EC2 instances are populated in the Node Inventory using the following syntax: **`filter=value;filter2=value2`**.
 You can specify multiple filters by separating them with `;`, and you can specify multiple values by separating them with `,`.<br>
 For example: `tag:MyTag=My_Tag_Value;instance-type=m1.small,m1.large`<br>
 The available filter names are listed in [AWS API - DescribeInstances](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstances.html).<br><br>
@@ -44,7 +45,7 @@ The available filter names are listed in [AWS API - DescribeInstances](https://d
 * **HTTP Proxy Port**: If hosting Rundeck behind a proxy-host, define the proxy host port here.<br><br>
 * **HTTP Proxy User**: If hosting Rundeck behind a proxy-host with authentication, define the proxy host username here.<br><br>
 * **HTTP Proxy Password**: If hosting Rundeck behind a proxy-host with authentication, define the proxy host password here.<br><br>
-* **Mapping Params**: Node attributes are configured by mapping EC2 instances properties via a mapping configuration. 
+* **Mapping Params**: Node attributes are configured by mapping EC2 instances properties via a mapping configuration.
 The mapping declares the node attributes that will be set, and what their values will be set to using a "selector" on properties of the EC2 Instance object.
 Here is the default mapping:
 ```
@@ -88,7 +89,7 @@ This would remove the "stopping" tag selector, and add a new "ami_id" selector.
 * **Max API Results**: Limit the number of instances retrieved per API call.<br>
 
 ### Connecting to EC2's for Commands and Scripts
-In order to execute commands or scripts on EC2's, a **Node Executor** must be specified - either for the full Node Source or for a subset of EC2's within the Node Source. 
+In order to execute commands or scripts on EC2's, a **Node Executor** must be specified - either for the full Node Source or for a subset of EC2's within the Node Source.
 A few of the most common Node Executors are [SSH](/manual/projects/node-execution/ssh.html#ssh-node-execution), [WinRM](/learning/howto/configuring-windows-nodes.html) and [Powershell](/manual/projects/node-execution/powershell.html), and [Ansible](/learning/howto/using-ansible.html#rundeck-ansible-integration).<br>
 With EC2's, there is also the option to use [AWS's Systems Manager (SSM)](/manual/projects/node-execution/aws-ssm.html#description).
 
@@ -103,17 +104,17 @@ in the _Attribute Match_ box and `node-executor:WinRMPython` in the _Attributes 
 ![attribute-match](@assets/img/ec2-node-enhancer-attribute-match.png)
 
 ::: tip Note
-If a Node Executor is not specified for the Node Source, then the Project's [Default Node Executor](/manual/project-settings.html#edit-configuration) will be used. 
+If a Node Executor is not specified for the Node Source, then the Project's [Default Node Executor](/manual/project-settings.html#edit-configuration) will be used.
 :::
 
 ### Integrating with Multiple Regions
-In the **Endpoint** field, enter a comma-separated list of endpoints to integrate with multiple regions.  For example:<br> 
+In the **Endpoint** field, enter a comma-separated list of endpoints to integrate with multiple regions.  For example:<br>
 `https://ec2.us-west-1.amazonaws.com, https://ec2.us-east-1.amazonaws.com, https://ec2.eu-west-1.amazonaws.com` would integrate with the **us-west-1**, **us-east-1**, and **eu-west-1** regions.<br><br>
 You can also input **`ALL_REGIONS`** and this will retrieve instances from all the regions that the provided credentials have access to.
 For the full list of endpoints, see [Amazon EC2 Regions and Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#ec2_region).
 
 ### Integrating with Multiple AWS Accounts in a Single Project
-It is possible to retrieve EC2's from across multiple AWS account in a single Rundeck project. 
+It is possible to retrieve EC2's from across multiple AWS account in a single Rundeck project.
 After configuring the **AWS EC2 Resources** node source with credentials for a given AWS Account, simply click on **Add a new Node Source** and select the **AWS EC2 Resources** option _again_ - this time configuring it with credentials for your other AWS Account.
 There is no limit to the number of AWS Accounts that you can integrate with in a given Rundeck project (or across multiple projects).
 
@@ -174,9 +175,9 @@ The tags.selector also supports a "merge" ability, so you can merge multiple Ins
 A field selector can conjoin multiple values using `+`, and can append literal text like the `_` character for example.
 
     # conjoin two fields with no separation between the values
-    # this will result in "field1field2" 
+    # this will result in "field1field2"
     <attribute>.selector=<field selector>+<field2 selector>
-    
+
     # conjoin multiple fields with a literal string delimiter
     # this will result in "field1-*-field2"
     <attribute>.selector=<field selector>+"-*-"+<field2 selector>

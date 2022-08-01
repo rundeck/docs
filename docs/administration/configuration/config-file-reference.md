@@ -168,7 +168,7 @@ generated at project setup time. Each project has a directory within the Rundeck
 | --- | --- |
 | `project.name`                           | Declare the project name. |
 | `project.ssh-authentication`             | SSH authentication type (eg, privateKey). |
-| `project.ssh-keypath`                    | SSH identify file. |
+| `project.ssh-keypath`                    | Loal SSH identify file. (Note: this is not a keystorage path but a local file system path.)|
 | `service.FileCopier.default.provider`    | Default script file copier plugin. |
 | `service.NodeExecutor.default.provider`  | Default node executor plugin. |
 | `resources.source.N...`                  | Defines a Resource model source see [Resource Model Sources](/manual/projects/resource-model-sources/). |
