@@ -1,7 +1,50 @@
 # General Upgrade Guide
 
+## Upgrading Clusters
 
-## Runnable War
+:::warning
+Before performing an upgrade, it is highly recommend to stop all cluster members and do the following steps, one cluster member, at a time.
+:::
+
+- Download the latest Rundeck version .war from [Rundeck Downloads](https://download.rundeck.com/)
+
+- Copy or move the downloaded rundeck war file into your` $RDECK_BASE` folder
+
+- Stop Rundeck (stop service or kill the process)
+
+- _Windows_ Edit the file start_rundeck.bat located on your `$RDECK_BASE` dir and change the name of your rundeck.war file with the name of the downloaded file, e.g. "rundeckpro-enterprise-{{{rundeckVersionFull}}}.war"
+
+```
+ java %RDECK_CLI_OPTS% %RDECK_SSL_OPTS% -jar rundeckpro-enterprise-3.3.6-20201111.war --skipinstall -d >> %CURDIR%\var\logs\service.log 2>&1
+
+```
+
+- Backup your `$RDECK_BASE\libext` folder (in case you have any custom plugins)
+
+- Backup both folders, `$RDECK_BASE/server/config` and` $RDECK_BASE/etc`, just in case
+
+- Delete these files and dirs:
+
+```
+$RDECK_BASE/libext/
+$RDECK_BASE/tools/
+$RDECK_BASE/server/lib/
+$RDECK_BASE/server/sbin/
+$RDECK_BASE/var/.firstLogin
+$RDECK_BASE/var/.first-run-3.0.22-20190512
+$RDECK_BASE/var/.install-complete-missing-ver
+```
+
+- Start Rundeck from the console and wait until it boots up successfully
+
+```
+java -jar rundeckpro-enterprise-{{{rundeckVersionFull}}}.war
+
+```
+
+## Installation Specific Notes
+
+### Runnable War
 
 To upgrade Rundeck 3 using the runnable war use the following steps:
 
@@ -38,7 +81,7 @@ $RDECK_BASE/server/sbin/rundeckd start
 - Copy the "custom" plugins back to `$RDECK_BASE/libext` folder.
 
 
-## Rundeck DEB Package
+### DEB Package
 
 The upgrade process can be done using the `.deb` file or using the command `apt-get`:
 
@@ -54,7 +97,7 @@ sudo dpkg -i rundeck-{{{rundeckVersionFull}}}.deb
 sudo apt-get upgrade rundeck
 ```
 
-## Rundeck RPM Package
+### RPM Package
 
 The upgrade process can be done using the `.rpm` file or using the command `yum`.
 
@@ -80,7 +123,7 @@ total 56
 drwxr-x--- 1 rundeck rundeck 4096 Jun  4 16:08 ssl
 ```
 
-### Using rpm package
+#### Using rpm package
 
 
 ```sh
@@ -92,13 +135,13 @@ rundeck.server.uuid = XXXXXXXXXXXXXXX
 
 ```
 
-### Using yum
+#### Using yum
 
 ```sh
 $ yum upgrade rundeck
 ```
 
-## Tomcat War deployment
+### Tomcat War deployment
 
 - Stop Tomcat
 
@@ -126,49 +169,8 @@ mv rundeck-{{{rundeckVersionFull}}}.war $tomcat.base/webapps/rundeck.war
 
 - Copy the "custom" plugins back to `$rdeck.base/libext` folder.
 
-### NOTES FOR TOMCAT:
+#### NOTES FOR TOMCAT:
 
 - Due to changes in authentication, `tomcat-users.xml` and other Tomcat's authentication modules no longer work, you should configure users as described in [Authenticating Users](/administration/security/authentication.md#authenticating-users).
 - If you do not have `-Drundeck.config.location` defined or configured in `$tomcat.base/bin/setenv.sh` file (`tomcat.base\bin\setenv.bat` for Windows), Rundeck will read its config file from this location: `$rdeck.base/server/config/rundeck-config.properties`.
 - You **must** define the `server.servlet.context-path` (`server.contextPath` for versions prior to 3.3) value in `rundeck-config.properties` to properly tell Rundeck about the context path used by tomcat. See [Installation on Tomcat](/administration/install/tomcat.md).
-
-
-## Windows As a Service
-
-**Before performing this upgrade, we highly recommend you stop all cluster members and do the following steps, one cluster member, at a time.**
-
-- Download the latest Rundeck version .war from [Rundeck Downloads](https://download.rundeck.com/)
-
-- Copy or move the downloaded rundeck war file into your` $RDECK_BASE` folder
-
-- Stop Rundeck (stop service or kill the process)
-
-- Edit the file start_rundeck.bat located on your `$RDECK_BASE` dir and change the name of your rundeck.war file with the name of the downloaded file, e.g. "rundeckpro-enterprise-3.3.6-20201111.war"
-
-```
- java %RDECK_CLI_OPTS% %RDECK_SSL_OPTS% -jar rundeckpro-enterprise-3.3.6-20201111.war --skipinstall -d >> %CURDIR%\var\logs\service.log 2>&1
-
-```
-
-- Backup your `$RDECK_BASE\libext` folder (in case you have any custom plugins)
-
-- Backup both folders, `$RDECK_BASE/server/config` and` $RDECK_BASE/etc`, just in case
-
-- Delete these files and dirs:
-
-```
-$RDECK_BASE/libext/
-$RDECK_BASE/tools/
-$RDECK_BASE/server/lib/
-$RDECK_BASE/server/sbin/
-$RDECK_BASE/var/.firstLogin
-$RDECK_BASE/var/.first-run-3.0.22-20190512
-$RDECK_BASE/var/.install-complete-missing-ver
-```
-
-- Start Rundeck from the console and wait until it boots up successfully
-
-```
-java -jar rundeckpro-enterprise-{{{rundeckVersionFull}}}.war
-
-```
