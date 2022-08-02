@@ -5,7 +5,7 @@ sidebar: false
 
 ---
 
-This document lists the plugins **distributed with Rundeck and Rundeck Enterprise**.
+This document lists the plugins **distributed with Rundeck and Process Automation**.
 
 Also see: [Plugin Development Guide](/developer/index.md).
 

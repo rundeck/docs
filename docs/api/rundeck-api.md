@@ -5834,8 +5834,8 @@ GET /api/11/project/[PROJECT]/export?exportAll=false
 * `exportConfigs` true/false, include project configuration
 * `exportReadmes` true/false, include project readme/motd files
 * `exportAcls` true/false, include project ACL Policy files, if authorized
-* `exportComponents.calendars` true/false, include project calendars 
-* `exportComponents.Schedule%20Definitions` true/false, include schedule definitions 
+* `exportComponents.calendars` true/false, include project calendars
+* `exportComponents.Schedule%20Definitions` true/false, include schedule definitions
 * `exportComponents.tours-manager` true/false, include tours manager
 * `exportComponents.node-wizard` true/false, include node wizard
 
@@ -5849,7 +5849,7 @@ In APIv34 or later:
 * `whkIncludeAuthTokens` true/false, include the auth token information when exporting webhooks, if not included the auth tokens will be regenerated upon import
 
 :::tip
-By default `exportAll` does not include the webhooks auth tokens, `whkIncludeAuthTokens` must be set to true in order to export the auth tokens. 
+By default `exportAll` does not include the webhooks auth tokens, `whkIncludeAuthTokens` must be set to true in order to export the auth tokens.
 
 Example:
 ```
@@ -7522,7 +7522,7 @@ ok
 :::
 
 
-Manage System and Project Calendars in Rundeck Enterprise.
+Manage System and Project Calendars in Process Automation.
 
 ### List System Calendars
 Get all calendars at system level.
@@ -7759,7 +7759,7 @@ Deletes a calendar at system level
 ::: enterprise  
 :::
 
-Returns metadata about the current License for Rundeck Enterprise.
+Returns metadata about the current License for Process Automation.
 
 **Request:**
 
@@ -7807,7 +7807,7 @@ Returns metadata about the current License for Rundeck Enterprise.
 ::: enterprise  
 :::
 
-Uploads a license key for Rundeck Enterprise.
+Uploads a license key for Process Automation.
 
 **Request:**
 
@@ -7816,11 +7816,11 @@ Uploads a license key for Rundeck Enterprise.
 
 Request Content:
 
-The Rundeck Enterprise License key file.
+The Process Automation License key file.
 
 Optional Parameters:
 
-* `license_agreement`: `true` to agree with the Rundeck Enterprise License.
+* `license_agreement`: `true` to agree with the Process Automation License.
 
 **Response:**
 

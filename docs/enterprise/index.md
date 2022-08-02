@@ -1,4 +1,4 @@
-# Rundeck Enterprise
+# Process Automation
 
 ## Overview
 
@@ -23,7 +23,7 @@ tools.
 
 ## License
 
-See: [Rundeck Enterprise Licensing and Support](/administration/configuration/license.md)
+See: [Process Automation Licensing and Support](/administration/configuration/license.md)
 
 ## Features
-All of the Enterprise features that are not included in our Open Source offering are covered on our [Why Rundeck Enterprise?](https://www.rundeck.com/enterprise) page.
+All of the Enterprise features that are not included in our Open Source offering are covered on our [Why Process Automation?](https://www.rundeck.com/enterprise) page.

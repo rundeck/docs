@@ -3,14 +3,14 @@
 ::: enterprise
 :::
 
-## Rundeck Enterprise Architecture
+## Process Automation Architecture
 ![Rundeck architecture](~@assets/img/architecture.png)
 
 ## Installation
-To install a Rundeck Enterprise Enterprise instance, download the latest version from [here](https://download.rundeck.com/versions.html), and follow the steps in the [Installation Guide](/administration/install/index.md)
+To install a Process Automation instance, download the latest version from [here](https://download.rundeck.com/versions.html), and follow the steps in the [Installation Guide](/administration/install/index.md)
 
 ## Requirements
-The Rundeck Enterprise environment needs the following shared resources:
+The Process Automation environment needs the following shared resources:
 
 ### Database
 - All the cluster members must share the same DB:
@@ -22,7 +22,7 @@ The Rundeck Enterprise environment needs the following shared resources:
   See: [Storage Facility](/administration/configuration/storage-facility.md)
 
 ### Load Balancer
-A loadbalancer allows you to achieve high availability in your Rundeck Enterprise installation by routing http traffic across several redundant Rundeck Enterprise instances.
+A loadbalancer allows you to achieve high availability in your Process Automation installation by routing http traffic across several redundant Process Automation instances.
 
 - Set the `grails.serverURL` parameter of all cluster members (`rundeck-config.properties`) with the LB URL.
 
@@ -56,16 +56,16 @@ See: [Node Model Sources](/manual/projects/resource-model-sources/index.md)
 ## Features:
 
 ### Autotakeover
-Scheduled jobs are owned by the last cluster member who modified them. Jobs can also be controlled using Cluster Manager. If a cluster member goes down, all scheduled jobs on that cluster member must be moved to another cluster node. This process can be performed automatically using the heartbeat and Autotakeover features in Rundeck Enterprise version 2.1.0 and later releases.
+Scheduled jobs are owned by the last cluster member who modified them. Jobs can also be controlled using Cluster Manager. If a cluster member goes down, all scheduled jobs on that cluster member must be moved to another cluster node. This process can be performed automatically using the heartbeat and Autotakeover features in Process Automation version 2.1.0 and later releases.
 
 See: [Autotakeover](/administration/cluster/autotakeover/index.md)
 
 ### Cluster Remote Execution Policy
-This feature allows Rundeck Enterprise cluster members to forward job executions to other cluster members based on a policy configuration.
+This feature allows Process Automation cluster members to forward job executions to other cluster members based on a policy configuration.
 
 See: [Remote Job Execution](/administration/configuration/remote-job-execution.md)
 
-### Rundeck Enterprise Replication
+### Process Automation Replication
 This plugin is used for an active/passive configuration. Each cluster member can have its own database.
 
-See [Rundeck Enterprise Replication](/administration/cluster/replication/index.md)
+See [Process Automation Replication](/administration/cluster/replication/index.md)

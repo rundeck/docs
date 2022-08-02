@@ -4,7 +4,7 @@ With Rundeck, it is simple and easy to create automation workflows from existing
 
 Visit the _[Tutorials](/learning/tutorial/preparing.md)_ to see practical step-by-step guides that help you get your Rundeck account up and running - starting with installing and configuring Rundeck.  The Tutorial section is built around our Welcome Projects that provide product simulations for both Rundeck versions.  
 
-Use the [How To Guides](/learning/howto/overview.md) to accomplish tasks using Rundeck Enterprise version and where applicable, the Community version. The How To guides go deeper into specific topics and are commonly built around the Welcome Project.
+Use the [How To Guides](/learning/howto/overview.md) to accomplish tasks using Process Automation version and where applicable, the Community version. The How To guides go deeper into specific topics and are commonly built around the Welcome Project.
 
 ## Getting Started
 

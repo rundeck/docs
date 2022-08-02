@@ -2,7 +2,7 @@
   <header class="navbar">
     <div class="banner">
           <p>
-            The <i>Rundeck Enterprise</i> name is changing to <b>PagerDuty Process Automation OnPrem</b>.<br><i>Rundeck Cloud</i> is changing to <b>PagerDuty Runbook Automation</b>. For more info click  <a href="https://www.pagerduty.com/blog/runbook-automation-joins-the-pagerduty-process-automation-portfolio/">here</a>
+            The The <i>Rundeck Enterprise</i> product name has been changed to <b>PagerDuty Process Automation</b>.<br><i>Rundeck Cloud</i> has changed to <b>PagerDuty Runbook Automation</b>. For more info click  <a href="https://www.pagerduty.com/blog/runbook-automation-joins-the-pagerduty-process-automation-portfolio/">here</a>
           </p>
     </div>
     <div class="navbar-content">

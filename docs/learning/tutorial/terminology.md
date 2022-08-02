@@ -26,12 +26,12 @@ A Job Step is an individual unit of work that a Job might do.  A job can have mu
 The Activity window shows execution history for commands and Jobs. By default, the Activity page will list running executions and history of recent executions. The page contains a filter control that can be used to expand or limit the executions. Execution detail for each job execution will show options the job was run with, log output, job duration, etc.
 
 ## Tours
-Rundeck Guided Tours provide interactive walk-throughs to end users to help demonstrate Rundeck processes. They can be used to help first time users get familiar with the system, or provide step-by-step instructions for how to execute complicated processes. Tours are only available in Rundeck Enterprise.
+Rundeck Guided Tours provide interactive walk-throughs to end users to help demonstrate Rundeck processes. They can be used to help first time users get familiar with the system, or provide step-by-step instructions for how to execute complicated processes. Tours are only available in Process Automation.
 
 ## Plugins
 Rundeck is built over a flexible platform architecture.  Extending Rundeck functionality is done through _plugins_. Plugins exist to execute commands on nodes, perform steps in a job, send a notification about job status, gather information about the hosts in your network, copy a file to a remote server, store and stream logs, talk to a user directory, and so much more.
 
-The Rundeck Enterprise version includes built-in plugins to further enhance functionality for [Scheduling](schedules/project-schedules.md) job executions, providing [Guided Tours](tour-manager.md), incorporating [Health Checks](healthchecks.md), and much more.
+The Process Automation version includes built-in plugins to further enhance functionality for [Scheduling](schedules/project-schedules.md) job executions, providing [Guided Tours](tour-manager.md), incorporating [Health Checks](healthchecks.md), and much more.
 
 See [Job Plugins](/manual/job-plugins.md) and [Plugin Developer Guide](/developer/index.md) and [Rundeck Plugins](/plugins/index.md) for more information.
 

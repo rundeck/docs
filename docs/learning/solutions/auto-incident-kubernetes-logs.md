@@ -8,7 +8,7 @@ The design principles outlined in this solution are applicable to most other use
 
 ::: tip Solution Prerequisites
 
-For this guide, Rundeck Enterprise or Rundeck Community must be installed and running. Instructions for both products are provided below.
+For this guide, Process Automation or Rundeck Community must be installed and running. Instructions for both products are provided below.
 
 A PagerDuty account with the **Automation Actions** add-on enabled is also required.
 Automation Actions is available as an add-on for Business and Digital Operations pricing plans. Please [contact us](https://www.pagerduty.com/contact-us/rundeck-actions-long/) if you would like to upgrade your plan or to trial Automation Actions.
@@ -19,14 +19,14 @@ This solution is meant to demonstrate design principles, and therefore the steps
 
 ### Configure Rundeck Job
 :::: tabs
-::: tab Rundeck Enterprise
+::: tab Process Automation
 1. **In PagerDuty**, generate an API Access Key with (at minimum) _Responder_ permissions.
 This can either be a [General Access API Key](https://support.pagerduty.com/docs/api-access-keys#section-generate-a-general-access-rest-api-key)
 or a [User Token API Key](https://support.pagerduty.com/docs/api-access-keys#section-generate-a-user-token-rest-api-key).
 2. Copy the PagerDuty API Key into Rundeck's [Key Storage](/manual/system-configs.html#key-storage) as a Password or into your secrets-manager that is integrated with Rundeck.
-3. Download the sample Rundeck Job YAML from this [link](https://raw.githubusercontent.com/rundeckpro/welcome-project/main/runbooks/yaml/solutions/Auto-Diagnostics__-_Kubernetes_Logs.yaml). 
+3. Download the sample Rundeck Job YAML from this [link](https://raw.githubusercontent.com/rundeckpro/welcome-project/main/runbooks/yaml/solutions/Auto-Diagnostics__-_Kubernetes_Logs.yaml).
 (Right click and select **Save Link As...** and be sure to append `.yaml` to the file name). **Note** that this Job definition will only work with Rundeck _Enterprise_. Click the **Rundeck Community** tab if you are using Rundeck Community.                                                                                                                             
-4. Upload the sample job to your Rundeck Enterprise instance by navigating to the **Jobs** tab, selecting **Job Actions** in the upper-right, then selecting **Upload Definition**.
+4. Upload the sample job to your Process Automation instance by navigating to the **Jobs** tab, selecting **Job Actions** in the upper-right, then selecting **Upload Definition**.
 You can find more detailed instructions for uploading a Job Definition [here](/manual/creating-jobs.html#importing-job-definitions).
 <br><br>![Upload Job](@assets/img/solutions-pd-diag-k8s-upload-job.png)<br><br>
 5. Edit the Job by clicking **Edit This Job**:
@@ -38,13 +38,13 @@ You can find more detailed instructions for uploading a Job Definition [here](/m
 <br><br>![Edit Job2](@assets/img/solutions-pd-diag-k8s-step-2.png)<br><br>
 8. Click **Save** on the step as well as **Save** on the Job.
 ::: tip Note
-This Rundeck Job is meant to be invoked from PagerDuty, not through the Rundeck GUI. There is a hidden Job Option for the PagerDuty Incident ID. 
+This Rundeck Job is meant to be invoked from PagerDuty, not through the Rundeck GUI. There is a hidden Job Option for the PagerDuty Incident ID.
 If you run the Job directly from the Rundeck Interface, the Job will fail on Step 2, as it is expecting to have the PagerDuty incident ID as an input parameter.
 :::
 
 ::: tab Rundeck Community
 9. Download the sample Rundeck Job YAML from this [link](https://raw.githubusercontent.com/rundeck/welcome-project-community/main/runbooks/yaml/Solutions/Auto-Diagnostics_-_Kubernetes_Logs.yaml).
-   (Right click and select **Save Link As...** and be sure to append `.yaml` to the file name). You can find more detailed instructions for uploading a Job Definition [here](/manual/creating-jobs.html#importing-job-definitions). 
+   (Right click and select **Save Link As...** and be sure to append `.yaml` to the file name). You can find more detailed instructions for uploading a Job Definition [here](/manual/creating-jobs.html#importing-job-definitions).
 10. Edit the Job by clicking **Edit This Job**:
 <br><br>![Edit CMNTY Job](@assets/img/solutions-pd-diag-k8s-edit-cmnty-job.png)<br><br>
 11. Click into the **Workflow** tab and then in the **Options** section, select the `k8s_selector` option, and modify the selector to determine which pods to pull logs from:
@@ -68,7 +68,7 @@ The PagerDuty Automation Actions Runner is installed in your environment and req
 You do not need to allow for any inbound protocols from PagerDuty to your infrastructure.
 :::
 ::::tabs
-::: tab Rundeck Enterprise
+::: tab Process Automation
 1. Create a Rundeck User API Token by navigating to **User Icon** -> **Profile** and click the **+** next to **User API Tokens**:
 <br><br>![RD Token](@assets/img/solutions-pd-diag-k8s-rd-token.png)
 2. Enter a **Name** for the API Token and choose a **Role** that has the correct levels of permissions to invoke the uploaded Job.
@@ -90,7 +90,7 @@ Paste the jod ID into the **Job ID** field and insert `-pd_incident_id ${pagerdu
 10. Enter a **Name** for the API Token and choose a **Role** that has the correct levels of permissions to invoke the uploaded Job.
 11. Follow the instructions outlined [here](https://support.pagerduty.com/docs/rundeck-actions#create-a-runner) to install and configure the PagerDuty Actions Runner.
     Optionally use the PagerDuty API Token generated earlier for the Rundeck Job, or generate a new API Token - this token needs **Read Only** permissions.
-12. Create a file named `rundeck_api_token` in the `rundeck_runner` folder you created as part of installing the PagerDuty Actions runner (in step 3) and paste the Rundeck API Token from Step 1 into this file. 
+12. Create a file named `rundeck_api_token` in the `rundeck_runner` folder you created as part of installing the PagerDuty Actions runner (in step 3) and paste the Rundeck API Token from Step 1 into this file.
 13. In PagerDuty, navigate to **Automation -> Rundeck Actions -> Add Action**:
 <br><br>![Add Action](@assets/img/solutions-pd-diag-k8s-add-action.png)<br><br>
 14. Fill in the Automation Action details with the desired Name and Description. Select **script** as the type of action and **Diagnostic** as the category.
@@ -116,7 +116,7 @@ Paste the jod ID into the **Job ID** field and insert `-pd_incident_id ${pagerdu
     ```
 16. Copy the **Post URL** from the Webhook created in the **Configure Rundeck Job** section, and replace it as the `webhookURL` variable in the script above:
 <br>![Webhook URL](@assets/img/solutions-pd-diag-k8s-webhook-url.png)<br>
-17. In the **Identify where this action will be run** section, select the Runner that you installed in Step 3. 
+17. In the **Identify where this action will be run** section, select the Runner that you installed in Step 3.
 18. Select the PagerDuty Services and Teams that should be associated with this action.
 The PagerDuty Service selected here will ideally align with the `k8s_selector` you defined in the **Configure Rundeck Job** section.
 <br><br>![Action Runner Config](@assets/img/solutions-pd-diag-k8s-script-location.png)<br><br>

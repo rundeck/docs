@@ -3,7 +3,7 @@
 :::enterprise
 :::
 
-Rundeck Enterprise includes a Configuration Management module to set configuration settings via the GUI and store them in the Rundeck database.  Database storage shares configuration options with all your cluster members and centralizes configuration.  This can significantly streamline configuration of new Rundeck servers.  Most settings will be set and refreshed upon Saving.  If a setting requires a restart there is a message to let users know.
+Process Automation includes a Configuration Management module to set configuration settings via the GUI and store them in the Rundeck database.  Database storage shares configuration options with all your cluster members and centralizes configuration.  This can significantly streamline configuration of new Rundeck servers.  Most settings will be set and refreshed upon Saving.  If a setting requires a restart there is a message to let users know.
 
 ![Configuration Management](~@assets/img/configmgmt-list.png)
 

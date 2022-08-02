@@ -4,11 +4,11 @@ module.exports = [
     link: '/about/introduction'
   },
   {
-    text: 'Rundeck Enterprise',
+    text: 'Process Automation',
     link: '/about/enterprise/'
   },
   {
-    text: 'Rundeck Cloud',
+    text: 'Runbook Automation',
     link: '/about/cloud/'
   },
   {

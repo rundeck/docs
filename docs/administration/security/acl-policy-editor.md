@@ -1,19 +1,22 @@
 # ACL Policy GUI
 
+:::enterprise
+:::
+
 For basic instructions on how to get started with Rundeck ACL Policies, check out this [Basic ACL Tutorial](/learning/howto/acl_basic_examples.md).
 
 ## Access Control Pages
 
 You can manage ACL Policy files within the Rundeck GUI, at both System and Project contexts (also referred to as scopes).
 
-System > Access Control 
-:   This page manages System context ACL Policies. 
+System > Access Control
+:   This page manages System context ACL Policies.
 
     Click the System Gear icon in the navigation header, and choose "Access Control"
 
     ![System Access Control Menu](~@assets/img/acl-editor-system-menu.png)
 
-Project Settings > Access Control 
+Project Settings > Access Control
 :   This page manages Project context ACL Policies
 
     Select a Project.  In the Project menu sidebar, expand "Project Settings", click "Access Control"
@@ -29,15 +32,15 @@ They are categorized into "Stored ACL Policies" and "ACL Policies on local files
 
 Stored ACL Policies
 :   ACL Policies stored in the Rundeck storage system (e.g. in the Database), typically shared across Cluster members.
-    
+
     These policies can be modified by Admin users. Click the "Edit" button to edit the Policy, or use the action menu to **Delete** or **Upload** a new definition for the Policy.
 
 Local Filesystem ACL Policies (System context only)
 :   Local ACL Policies files on the filesystem of the Cluster member. (A default set of ACL Policies for `admin` user is created on the filesystem for new Rundeck installations.)
-    
+
     These policies *cannot* be modified via the web GUI.
 
-In Rundeck Enterprise you can also see an "Access Levels" tab, which allows testing the current Access Levels for users and groups across all loaded ACL Policy files.
+In Process Automation you can also see an "Access Levels" tab, which allows testing the current Access Levels for users and groups across all loaded ACL Policy files.
 
 ![System Access Control Page](~@assets/img/acl-editor-system.png)
 
@@ -49,7 +52,7 @@ The Project context Access Control page is similar to the System Access Control 
 
 Choose "Edit" or "Create" to modify an ACL Policy.
 
-You can edit the YAML format for the ACL Policy directly. (In Rundeck Enterprise, click the "Editor" tab to view the YAML editor.)
+You can edit the YAML format for the ACL Policy directly. (In Process Automation, click the "Editor" tab to view the YAML editor.)
 
 ::: tip
 See the [Access Control Policy](/administration/security/authorization.md#access-control-policy-2) and [aclpolicy](/manual/document-format-reference/aclpolicy-v10.html) pages for more information.
@@ -65,14 +68,14 @@ If your ACL Policy YAML fails validation checks, attempting to save it will disp
 
 ## Editing ACL Rules (Enterprise)
 
-In Rundeck Enterprise, by default you will see the Rules editor which allows defining ACL Policy rules with a simpler wizard UI.
+In Process Automation, by default you will see the Rules editor which allows defining ACL Policy rules with a simpler wizard UI.
 
 ![ACL Editor Rules List](~@assets/img/acl-editor-edit-rules-list.png)
 
 The list displays all rules for the ACL Policy file, with the "By", "Action", "For", and "Context" information displayed.
 
 ::: tip
-Note: You can switch between the Editor and Rules tabs at any time to see the same ACL Policy definition. This is helpful if you 
+Note: You can switch between the Editor and Rules tabs at any time to see the same ACL Policy definition. This is helpful if you
 create a new Rule in the Rule Editor, and need to change a detail afterwards, or if you need to paste YAML content into
 your ACL Policy.
 :::
@@ -94,7 +97,7 @@ By/Not By
 
 For
 :   This section defines the Resource Type the rule applies to.  Different Resource Types are available depending on whether the rule is for System or Project context.
-    
+
 ![System Resource Types](~@assets/img/acl-editor-new-rule-system-resources.png)
 
 More information about System Context Resource types are in the [Access Control Policy > Application Scope Resources and Actions](/administration/security/authorization.html#application-scope-resources-and-actions) page.
@@ -151,7 +154,7 @@ If you choose Group, enter a Group name or choose one from the drop down list. Y
 
 Access Levels to a resource in Rundeck are shown as Actions that are either Allowed, Denied, or Rejected.
 
-An **Allowed** Action means an ACL policy allows the action, and no other policy denies it. 
+An **Allowed** Action means an ACL policy allows the action, and no other policy denies it.
 
 A **Denied** Action means an ACL Policy denies the action even if another policy allows it.
 
@@ -203,7 +206,7 @@ Jobs Tab
 	![Project Jobs Access](~@assets/img/acl-access-level-project-jobs-tab.png)
 
 	::: tip
-	Note: Check the **Show: Rejected** checkbox if you see no Jobs in the list and the message "No Access", if you wish to see all jobs which have no Allowed or Denied access. 
+	Note: Check the **Show: Rejected** checkbox if you see no Jobs in the list and the message "No Access", if you wish to see all jobs which have no Allowed or Denied access.
 	:::
 
 Nodes Tab

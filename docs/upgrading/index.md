@@ -26,4 +26,4 @@ If you are migrating to a new instance, please see:
 
 Once you have upgraded, you may want to see:
 
-- [Create your first Rundeck Enterprise project](/manual/03-getting-started.md#project-setup)
+- [Create your first Process Automation project](/manual/03-getting-started.md#project-setup)

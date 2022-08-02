@@ -4,7 +4,7 @@
 :::
 
 :::tip
-The [3.4.4 release](/history/3_4_x/version-3.4.4.md) of Rundeck Enterprise includes updates to our incubating feature for visualizing the workflow strategy.
+The [3.4.4 release](/history/3_4_x/version-3.4.4.md) includes updates to our incubating feature for visualizing the workflow strategy.
 :::
 
 The Ruleset Workflow Strategy allows Enterprise users to provide more complex logic around job step execution.  To use the Ruleset Strategy choose _Ruleset_ on the Workflow tab when editing a Job.
@@ -66,7 +66,7 @@ Conditions can define additional checks that must pass before a step can run, or
 - `key.name>number`: greater than check
 - `key.name<number`: less than check
 
-> Note: Curly braces are not needed to reference context variable key names.  Option, Global, and Workflow Step variables are accessible by the Ruleset Strategy.  _Node Context_ variables are not available to Ruleset Conditions. 
+> Note: Curly braces are not needed to reference context variable key names.  Option, Global, and Workflow Step variables are accessible by the Ruleset Strategy.  _Node Context_ variables are not available to Ruleset Conditions.
 
 ## Examples
 

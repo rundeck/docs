@@ -5,7 +5,7 @@
 
 Elastic Load Balancing (ELB) is an AWS service that automatically distributes incoming application traffic across multiple targets and virtual appliances in one or more Availability Zones (AZs).
 
-The following ELB plugins are available for PagerDuty Runbook Automation and Process Automation (formerly Rundeck Enterprise):
+The following ELB plugins are available for PagerDuty Runbook Automation and Process Automation:
 
 * [Target Group Instance Statuses](#target-group-instance-statuses)
 
