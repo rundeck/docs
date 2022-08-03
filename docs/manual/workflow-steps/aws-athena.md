@@ -29,7 +29,7 @@
 
 ## Athena Query Workflow Step
 
-The **AWS / Athena / Query** plugin allows you to create a custom SQL query that it automatically sent to Athena as a workflow step when a Rundeck job is run or triggered. Upon the job completion, Rundeck will output a link straight to the results.  
+The **AWS / Athena / Query** plugin allows you to create a custom SQL query that it automatically sent to Athena as a workflow step when a Rundeck job is run or triggered. Upon the job completion, Rundeck will output a link straight to the results and display the first 50 rows right in Rundeck. 
 
 
 **Query**
