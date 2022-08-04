@@ -16,6 +16,7 @@ AWS / CloudWatch|Top 10 Source IP Addresses with Highest Rejected Requests
 AWS / CloudWatch|Top 10 Web-Server Requesters by Public IP
 AWS / CloudWatch|UDP Transfer Protocol IP Addresses Identification
 AWS / EC2|Instance Status
+AWS / ECS|Java Thread Dump from Container
 AWS / ECS|Stopped ECS Task Errors
 AWS / ELB|Retrieve ELB Targets Health Status
 AWS / RDS|Check Database Storage Status
