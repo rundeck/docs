@@ -131,7 +131,7 @@ On each command you need to type the PFX password to extract the files.
 For better results, please rename your PFX certificate to "certificate.pfx"
 :::
 
-After this, you have to run the following command to convert the extracted files to P12 format:
+After this, you have to run the following command to merge the extracted files to P12 format:
 
 ```shell
 openssl pkcs12 -export -in clientcert.cer -inkey clientcert.key -certfile cacerts.cer -name rundeck -out keystore.p12
