@@ -137,7 +137,7 @@ After this, you have to run the following command to merge the extracted files t
 openssl pkcs12 -export -in clientcert.cer -inkey clientcert.key -certfile cacerts.cer -name rundeck -out keystore.p12
 ```
 
-On this step, you have to type the password `adminadmin`, or the password defined on the ssl.properties from your PDPAOP Instance if you are using a custom password, e.g. `/etc/rundeck/ssl/ssl.properties`
+In this step, you have to type the password `adminadmin`, or the password defined on the ssl.properties from your PDPAOP Instance if you are using a custom password, e.g. `/etc/rundeck/ssl/ssl.properties`
 
 Once this is done, you can create or import the certificate to the Keystore using the following command:
 
@@ -145,7 +145,7 @@ Once this is done, you can create or import the certificate to the Keystore usin
 keytool -importkeystore -srckeystore keystore.p12 -srcstoretype pkcs12 -destkeystore keystore -deststoretype JKS
 ```
 
-On this step, you need to type the same password from the previous step.
+In this step, you need to type the same password from the previous step.
 
 Once this is done, you can copy the `keystore` file to the PDPAOP etc folder, e.g. `/etc/rundeck/ssl/keystore`
 
