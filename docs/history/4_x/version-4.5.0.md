@@ -15,6 +15,16 @@ Check out the new features and enhancements for PagerDuty Process Automation, Pa
 
 > Also includes all Open Source updates from below
 
+### Highlights
+
+* **Sumo Logic Job Step Plugins:** Now Sumo Logic users can automate operational tasks - such as retrieving logs for incident diagnostics - by integrating with a Sumo Logic instance.
+
+* **ECS Node Executor Plugin:** Users can now run commands across multiple ECS containers in a single Job Step or from the Commands tab.  This makes it easier to accomplish tasks such as retrieving time-critical diagnostics during an incident before containers are redeployed.
+
+* **AWS Fargate Node Executor:**
+
+### Additional Updates
+
 * Allow use of EC2 instance or ECS container Profile credentials  for authentication in all AWS plugins
 * Set Runner on by Default in Docker Remco
 * Sumologic Job Step Plugins
@@ -28,6 +38,7 @@ Check out the new features and enhancements for PagerDuty Process Automation, Pa
 
 ## Rundeck Open Source Product Updates
 
+* [Changed default SCM SSH authentication to SSHJ](https://github.com/rundeck/rundeck/pull/7763) This fix addresses the new GitHub security requirements and allows SCM to use GitHub as a source.
 * [Upgrade grails to 5.1.9](https://github.com/rundeck/rundeck/pull/7829)
 * [Upgrade spring to 5.3.20](https://github.com/rundeck/rundeck/pull/7823)
 * [Fix: Unable to update Webhooks when changing handler settings in 4.4.0](https://github.com/rundeck/rundeck/pull/7820)
@@ -46,34 +57,10 @@ Check out the new features and enhancements for PagerDuty Process Automation, Pa
 * [Remove &quot;project FS importer&quot; code (disabled since 3.4)](https://github.com/rundeck/rundeck/pull/7778)
 * [Fix: `instanceNameLabelColor` setting to apply properly on login page.](https://github.com/rundeck/rundeck/pull/7770)
 * [Fix: Node tags being showed all in uppercase without distinction](https://github.com/rundeck/rundeck/pull/7768)
-* [Changed default SCM SSH authentication to SSHJ](https://github.com/rundeck/rundeck/pull/7763)
 * [Update ExecReport table for better queries to improve execution cleanup peformance](https://github.com/rundeck/rundeck/pull/7735)
 
 
 [Here is a link to the full list of public PRs](https://github.com/rundeck/rundeck/pulls?q=is%3Apr+milestone%3A4.5.0+is%3Aclosed)
-
-## Ansible Plugin Updates
-
-
-## Community Contributors
-
-* Alberto Hormazabal (ahormazabal)
-* Darwis Narvaez (DarwisNarvaezDev)
-* Alexander Abarca (alexander-variacode)
-* Leonel Juarez (L2JE)
-* Antony Velasquez Ruiz (avelasquezr)
-* Osmar Perez (perezo-pd)
-* Rodrigo Navarro (ronaveva)
-* Michael Catanese (mcat115)
-* Osman Albarran (Oalbarran94)
-* Jesus Osuna (Jesus-Osuna-M)
-* Greg Schueler (gschueler)
-* Luis Toledo (ltamaster)
-* Christopher McCarroll-Gilbert (chrismcg14)
-* Forrest Evans (fdevans)
-* Jeremy Olexa (jolexa)
-* Jake Cohen (jsboak)
-* Jaime Tobar (jtobard)
 
 
 ## Staff Contributors
@@ -90,6 +77,7 @@ Check out the new features and enhancements for PagerDuty Process Automation, Pa
 * Imad Jafir (imad6639)
 * Jake Cohen (jsboak)
 * Jason Qualman (qualman)
+* Jeremy Olexa (jolexa)
 * Jesus Osuna (Jesus-Osuna-M)
 * Leonel Juarez (L2JE)
 * Luis Toledo (ltamaster)
