@@ -86,9 +86,13 @@ Licensing is provisioned and updated automatically once a subscription is purcha
 
 ## FAQ
 
-## How is Runbook Automation managed?
-
 - **How are Runbook Automation upgrades managed?**
 User accounts do not have a choice when it comes to scheduling upgrades. We will notify customers ahead of time and customers should expect one planned monthly update. At the moment planned updates will incur some downtime (blackout period), however we will be striving to minimize that and cause as little ops disruption as possible.
 - **Where is Runbook Automation hosted?**
-Currently Runbook Automation is hosted AWS US.
+Runbook Automation is hosted in several AWS US regions.
+- **Safelisting IPs**
+Runbook Automation Web URL IP addresses are unlikely to change, but may do
+so in the future. All DNS records resolve to multiple IPs, which you can find by
+querying the A records for your subdomain using `dig` or `nslookup`.
+When using the Runner feature, your system must be able to make outbound
+connections to your subdomain on TCP port 443 (https).
