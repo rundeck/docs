@@ -9,7 +9,7 @@ Release Date: August 10th, 2022
 
 ## Overview
 
-Check out the new features and enhancements for PagerDuty Process Automation, PagerDuty Runbook Automation, and Rundeck included in this release.
+Check out the new features and enhancements for PagerDuty Process Automation (formerly Rundeck Enterprise) and PagerDuty Runbook Automation and Rundeck Community included in this release.
 
 ## Process Automation Updates
 
