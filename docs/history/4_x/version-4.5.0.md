@@ -18,35 +18,36 @@ Check out the new features and enhancements for PagerDuty Process Automation, Pa
 * Allow use of EC2 instance or ECS container Profile credentials  for authentication in all AWS plugins
 * Set Runner on by Default in Docker Remco
 * Sumologic Job Step Plugins
-* Azure Log Storage generates duplicated folder for executions
+* Fix: Jobs not running after removing a project from a System Calendar
+* Fix: Azure Log Storage generating duplicate folders for executions
 * Loop Script Plugins
 * Fix: Dependency Graph gets truncated in some views
-* Cyberark Plugin now properly serializes return payload from API
+* Fix: Cyberark Plugin now properly serializes return payload from API
 * AWS Fargate Node Executor
 
 
 ## Rundeck Open Source Product Updates
 
+* [Upgrade grails to 5.1.9](https://github.com/rundeck/rundeck/pull/7829)
 * [Upgrade spring to 5.3.20](https://github.com/rundeck/rundeck/pull/7823)
 * [Fix: Unable to update Webhooks when changing handler settings in 4.4.0](https://github.com/rundeck/rundeck/pull/7820)
-* [Enable Twistlock Scan as part of CI/CD Process](https://github.com/rundeck/rundeck/pull/7819)
-* [Fixed: Log limit action does not work properly when global and job limit action are configured ](https://github.com/rundeck/rundeck/pull/7809)
+* [Fix: Log limit action does not work properly when global and job limit action are configured ](https://github.com/rundeck/rundeck/pull/7809)
 * [Fix:  Member info not visible on Job tab in Cluster Manager](https://github.com/rundeck/rundeck/pull/7806)
 * [Fix: Date Format differences in Context Variable output](https://github.com/rundeck/rundeck/pull/7805)
 * [Fix Deprecated dot notation navigation issue for logviewer](https://github.com/rundeck/rundeck/pull/7796)
 * [Fix: Schedule shown incorrectly when editing jobs with complex CRON statements.](https://github.com/rundeck/rundeck/pull/7794)
 * [fixed broken error message that appears when you have not stored a password](https://github.com/rundeck/rundeck/pull/7791)
-* [System Report &#39;Allocated Memory&#39; display broken in the GUI](https://github.com/rundeck/rundeck/pull/7789)
+* [Fix: System Report &#39;Allocated Memory&#39; display broken in the GUI](https://github.com/rundeck/rundeck/pull/7789)
 * [Show proper error message when an existing filter with same name is already present](https://github.com/rundeck/rundeck/pull/7788)
 * [Package Updates to address new CVEs](https://github.com/rundeck/rundeck/pull/7787)
-* [Fix Notification Property Value type when SCM Export YAML format.](https://github.com/rundeck/rundeck/pull/7785)
-* [Fix bug where Health Status Enhancers affects performance with lots of nodes.](https://github.com/rundeck/rundeck/pull/7780)
+* [Fix: Notification Property Value type when SCM Export is done in YAML format.](https://github.com/rundeck/rundeck/pull/7785)
+* [Fix: Health Status Enhancers affects performance with lots of nodes.](https://github.com/rundeck/rundeck/pull/7780)
 * [Fix: Incorrect &quot;Forward Slash&quot; parsing in File/URL Step](https://github.com/rundeck/rundeck/pull/7779)
 * [Remove &quot;project FS importer&quot; code (disabled since 3.4)](https://github.com/rundeck/rundeck/pull/7778)
-* [Fix `instanceNameLabelColor` setting to apply properly on login page.](https://github.com/rundeck/rundeck/pull/7770)
+* [Fix: `instanceNameLabelColor` setting to apply properly on login page.](https://github.com/rundeck/rundeck/pull/7770)
 * [Fix: Node tags being showed all in uppercase without distinction](https://github.com/rundeck/rundeck/pull/7768)
-* [Changing default SCM SSH authentication to SSHJ](https://github.com/rundeck/rundeck/pull/7763)
-* [update ExecReport table for better queries](https://github.com/rundeck/rundeck/pull/7735)
+* [Changed default SCM SSH authentication to SSHJ](https://github.com/rundeck/rundeck/pull/7763)
+* [Update ExecReport table for better queries to improve execution cleanup peformance](https://github.com/rundeck/rundeck/pull/7735)
 
 
 [Here is a link to the full list of public PRs](https://github.com/rundeck/rundeck/pulls?q=is%3Apr+milestone%3A4.5.0+is%3Aclosed)
@@ -58,7 +59,6 @@ Check out the new features and enhancements for PagerDuty Process Automation, Pa
 
 * Alberto Hormazabal (ahormazabal)
 * Darwis Narvaez (DarwisNarvaezDev)
-* Eric He (ehe-pd)
 * Alexander Abarca (alexander-variacode)
 * Leonel Juarez (L2JE)
 * Antony Velasquez Ruiz (avelasquezr)
@@ -71,8 +71,9 @@ Check out the new features and enhancements for PagerDuty Process Automation, Pa
 * Luis Toledo (ltamaster)
 * Christopher McCarroll-Gilbert (chrismcg14)
 * Forrest Evans (fdevans)
-* Jaime Tobar (jtobard)
+* Jeremy Olexa (jolexa)
 * Jake Cohen (jsboak)
+* Jaime Tobar (jtobard)
 
 
 ## Staff Contributors
