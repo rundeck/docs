@@ -34,7 +34,7 @@ Check out the new features and enhancements for PagerDuty Process Automation (fo
 
 ## Rundeck Open Source Product Updates
 
-* [Changed default SCM SSH authentication to SSHJ](https://github.com/rundeck/rundeck/pull/7763) This fix addresses the new GitHub security requirements and allows SCM to use GitHub as a source.
+* [Changed default SCM SSH authentication to SSHJ](https://github.com/rundeck/rundeck/pull/7763) The SCM integration now uses SSHJ for SSH authentication by default (previously JSCH). GitHub has tightened up their SSH key requirements and now requires SSH-RSA 2 keys. The new default for ssh-keygen via OpenSSH is not supported by JSCH. 
 * [Upgrade grails to 5.1.9](https://github.com/rundeck/rundeck/pull/7829)
 * [Upgrade spring to 5.3.20](https://github.com/rundeck/rundeck/pull/7823)
 * [Fix: Unable to update Webhooks when changing handler settings in 4.4.0](https://github.com/rundeck/rundeck/pull/7820)
