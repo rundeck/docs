@@ -36,7 +36,7 @@ Check out the new features and enhancements for PagerDuty Process Automation, Pa
 * [Fix: Date Format differences in Context Variable output](https://github.com/rundeck/rundeck/pull/7805)
 * [Fix Deprecated dot notation navigation issue for logviewer](https://github.com/rundeck/rundeck/pull/7796)
 * [Fix: Schedule shown incorrectly when editing jobs with complex CRON statements.](https://github.com/rundeck/rundeck/pull/7794)
-* [fixed broken error message that appears when you have not stored a password](https://github.com/rundeck/rundeck/pull/7791)
+* [Fix: Broken password configuration path error message ](https://github.com/rundeck/rundeck/pull/7791)
 * [Fix: System Report &#39;Allocated Memory&#39; display broken in the GUI](https://github.com/rundeck/rundeck/pull/7789)
 * [Show proper error message when an existing filter with same name is already present](https://github.com/rundeck/rundeck/pull/7788)
 * [Package Updates to address new CVEs](https://github.com/rundeck/rundeck/pull/7787)
