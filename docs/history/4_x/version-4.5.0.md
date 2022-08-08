@@ -21,19 +21,15 @@ Check out the new features and enhancements for PagerDuty Process Automation (fo
 
 * **ECS Node Executor Plugin:** Users can now run commands across multiple ECS containers in a single Job Step or from the Commands tab.  This makes it easier to accomplish tasks such as retrieving time-critical diagnostics during an incident before containers are redeployed.
 
-* **AWS Fargate Node Executor:**
-
 ### Additional Updates
 
-* Allow use of EC2 instance or ECS container Profile credentials  for authentication in all AWS plugins
+* Allow use of EC2 instance or ECS container Profile credentials for authentication in all AWS plugins
 * Set Runner on by Default in Docker Remco
-* Sumologic Job Step Plugins
 * Fix: Jobs not running after removing a project from a System Calendar
 * Fix: Azure Log Storage generating duplicate folders for executions
 * Loop Script Plugins
 * Fix: Dependency Graph gets truncated in some views
 * Fix: Cyberark Plugin now properly serializes return payload from API
-* AWS Fargate Node Executor
 
 
 ## Rundeck Open Source Product Updates
