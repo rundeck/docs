@@ -234,7 +234,7 @@ permanently saved after pressing the "Create" button if new or the
 
 When a Job step is executed, it has a set of "context" variables that can be accessed in the Job step. There are several sets of context variables, including: the Job context `job`, the Node context `node`, and the Option context `option`.
 
-Job context variables (Global scope):
+#### Job context variables (Global scope):
 
 - `job.name`: Name of the Job
 - `job.group`: Group of the Job
@@ -251,7 +251,7 @@ Job context variables (Global scope):
 - `job.threadcount`: Threadcount (number of nodes run at once) of the Job
 - `job.filter`: The filter used to select the nodes for this job (if applicable)
 
-Node context variables (Node scope):
+#### Node context variables (Node scope):
 
 - `node.name`: Name of the Node being executed on
 - `node.hostname`: Hostname of the Node
@@ -261,11 +261,34 @@ Node context variables (Node scope):
 - `node.os-*`: OS properties of the Node: `name`,`version`,`arch`,`family`
 - `node.*`: All Node attributes defined on the Node.
 
-Execution context variables (Global scope):
+#### Additional Error-handler context variables (Global scope):
+
+- `result.reason`: A code indicating the reason the step failed
+  - Common reason code strings used by node execution of commands or scripts:
+    - `NonZeroResultCode` - the execution returned a non-zero code
+    - `SSHProtocolFailure` - SSH protocol failure
+    - `HostNotFound` - host not found
+    - `ConnectionTimeout` - connection timeout
+    - `ConnectionFailure` - connection failure (e.g. refused)
+    - `IOFailure` - IO error
+    - `AuthenticationFailure` - authentication was refused or incorrect
+  - Reason code strings used by Job references
+    - `JobFailed` - referenced Job workflow failed
+    - `NotFound` - referenced Job not found
+    - `Unauthorized` - referenced Job not authorized
+    - `InvalidOptions` - referenced Job input options invalid
+    - `NoMatchedNodes` - referenced Job node dispatch filters had no match
+  - Reason code used from a failed Node Step if the handler is a Workflow Step
+    - `NodeDispatchFailure` - one or more nodes failed the step
+- `result.message`: A string describing the failure
+- `result.resultCode`: Exit code from an execution (if available)
+- `result.failedNodes`: Comma-separated list of node names that failed for a `NodeDispatchFailure`
+
+#### Execution context variables (Global scope):
 
 The execution data is included as a Map called execution containing the following keys and values:
 
-> Note: The `execution` and `result` variables are only available in the Notification context.  They are not available while a job is running or as part of Job Steps.
+> Note: The `execution` variables are only available in the Notification context.  They are not available while a job is running or as part of Job Steps.
 
 - `execution.id`: ID of the execution
 - `execution.href`: URL to the execution output view
@@ -289,33 +312,11 @@ The following values may be available after the job is finished (not available f
 - `execution.dateEndedW3c`: End time as W3C formatted string
 - `execution.abortedby`: User who aborted the execution
 
-Additional Error-handler context variables (Global scope):
-
-- `result.reason`: A code indicating the reason the step failed
-  - Common reason code strings used by node execution of commands or scripts:
-    - `NonZeroResultCode` - the execution returned a non-zero code
-    - `SSHProtocolFailure` - SSH protocol failure
-    - `HostNotFound` - host not found
-    - `ConnectionTimeout` - connection timeout
-    - `ConnectionFailure` - connection failure (e.g. refused)
-    - `IOFailure` - IO error
-    - `AuthenticationFailure` - authentication was refused or incorrect
-  - Reason code strings used by Job references
-    - `JobFailed` - referenced Job workflow failed
-    - `NotFound` - referenced Job not found
-    - `Unauthorized` - referenced Job not authorized
-    - `InvalidOptions` - referenced Job input options invalid
-    - `NoMatchedNodes` - referenced Job node dispatch filters had no match
-  - Reason code used from a failed Node Step if the handler is a Workflow Step
-    - `NodeDispatchFailure` - one or more nodes failed the step
-- `result.message`: A string describing the failure
-- `result.resultCode`: Exit code from an execution (if available)
-- `result.failedNodes`: Comma-separated list of node names that failed for a `NodeDispatchFailure`
-
 Option context variables are referred to as `option.NAME` (more about [Job Options](/manual/job-options.md).)
 
+:::tip
 There may be additional context variables available, such as `data.*` values when using the [Data Capture Job Filter Plugins](#data-capture-job-filter-plugins).
-
+:::
 
 ### Context Variable Usage
 
