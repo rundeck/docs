@@ -114,7 +114,46 @@ If successful, you will see a line indicating the SSl connector has started:
 Grails application running at https://localhost:1234 in environment: production
 ```
 
-### Securing passwords
+## Import Existing PFX Key to Keystore
+These commands involves to extract the Certificate, key and the CA from the PFX, and convert everything to the Keystore format.
+
+To achieve this, please use the following commands:
+
+```shell
+openssl pkcs12 -in certificate.pfx -nocerts -nodes -out clientcert.key
+openssl pkcs12 -in certificate.pfx -clcerts -nokeys -out clientcert.cer
+openssl pkcs12 -in certificate.pfx -cacerts -nokeys -chain -out cacerts.cer
+```
+
+On each command you need to type the PFX password to extract the files.
+
+::: tip
+For better results, please rename your PFX certificate to "certificate.pfx"
+:::
+
+After this, you have to run the following command to merge the extracted files to P12 format:
+
+```shell
+openssl pkcs12 -export -in clientcert.cer -inkey clientcert.key -certfile cacerts.cer -name rundeck -out keystore.p12
+```
+
+In this step, you have to type the password `adminadmin`, or the password defined on the ssl.properties from your PDPAOP Instance if you are using a custom password, e.g. `/etc/rundeck/ssl/ssl.properties`
+
+Once this is done, you can create or import the certificate to the Keystore using the following command:
+
+```shell
+keytool -importkeystore -srckeystore keystore.p12 -srcstoretype pkcs12 -destkeystore keystore -deststoretype JKS
+```
+
+In this step, you need to type the same password from the previous step.
+
+Once this is done, you can copy the `keystore` file to the PDPAOP etc folder, e.g. `/etc/rundeck/ssl/keystore`
+
+::: tip
+You can add this new certificate to your current Keystore by changing the "-destkeystore keystore" by adding the path of your keystore file location, e.g.: ` -destkeystore /etc/rundeck/ssl/keystore`
+:::
+
+## Securing passwords
 
 Passwords have to be stored in the ssl.config. If they are not set, then the server will return a NullPointerException.
 
@@ -134,7 +173,7 @@ Use the entire OBF: output as the password in the ssl.properties file, eg:
 key.password=OBF:1lk2j1lkj321lj13lj
 ```
 
-### Troubleshooting keystore
+## Troubleshooting keystore
 
 Some common error messages and causes:
 
