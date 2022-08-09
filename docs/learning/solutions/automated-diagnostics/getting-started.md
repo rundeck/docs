@@ -11,7 +11,7 @@ If you do not have a license for either of these products, [contact us](https://
 
 Follow the steps below to download and import the Automated Diagnostics Jobs and Tours:
 #### Download the **Automated Diagnostics Solution package**.
-1. Download the latest release of the Automated Diagnostics Solution [here](https://github.com/rundeckpro/automated-diagnostics-project/releases/download/1.0/automated-diagnostics-1.0.zip).<br><br>
+1. Download the latest release of the Automated Diagnostics Solution [here](https://github.com/rundeckpro/automated-diagnostics-project/releases/download/1.1/automated-diagnostics-1.1.zip).<br><br>
 2. Open the **.zip** file and there should be two files inside the folder:
    * **`automated-diagnostics-xxxxxxx.rdproject.jar`**
    * **`system-tours-xxxxxxxx.zip`**
