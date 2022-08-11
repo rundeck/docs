@@ -26,6 +26,10 @@ Before configuring these plugins, be sure that you have completed the prerequisi
    <br><br>![aws-ssm-test-run](@assets/img/aws-ssm-test-run-command.png)<br>
    <br>![aws-ssm-test-script](@assets/img/aws-ssm-test-run-script.png)<br>
 
+:::warning
+Make sure you read the mentioned aws documentation and gave the correct permissions to the **ec2 machine** and the user that consumes the aws ssm api. Eg: the allowed actions that may be required for the ssm user are `ssm:SendCommand` and `ssm:ListCommandInvocations`, and in the case of the ec2 machine: `s3:GetObject`.
+:::
+
 ### Node Executor
 In order for SSM Node Executor to send commands to remote nodes, the following properties must be set on the nodes in Rundeck:
 1. `instanceId` - This is the EC2 instance-id from AWS.  If using the [AWS EC2 Node Source](/administration/projects/resource-model-sources/aws.html#amazon-ec2-node-source), then this property will be automatically applied.<br><br>
