@@ -27,7 +27,7 @@ Before configuring these plugins, be sure that you have completed the prerequisi
    <br>![aws-ssm-test-script](@assets/img/aws-ssm-test-run-script.png)<br>
 
 :::warning
-Make sure you read the mentioned aws documentation and gave the correct permissions to the **ec2 machine** and the user that consumes the aws ssm api. Eg: the allowed actions that may be required for the ssm user are `ssm:SendCommand` and `ssm:ListCommandInvocations`, and in the case of the ec2 machine: `s3:GetObject`.
+Please read the mentioned AWS documentation and configure the correct permissions to the **EC2 machine** and the user that consumes the AWS SSM API. e.g.: The allowed actions that may be required for the SSM user are `ssm:SendCommand` and `ssm:ListCommandInvocations`, and in the case of the EC2 machine: `s3:GetObject`.
 :::
 
 ### Node Executor
