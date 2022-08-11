@@ -26,5 +26,5 @@ You will need to have both an API and APP key created in Datadog and ready to us
 - **API Key**
 : This is the API key. To create these values in Datadog, navigate to Integrations > APIs and copy and paste the API key. If it doesn't exist yet, create a Rundeck integration and create an API key.
 
-- **API Key**
+- **APP Key**
 : This is the APP key. To create these values in Datadog, navigate to Integrations > APIs and copy and paste the APP key. If it doesn't exist yet, create a Rundeck integration and create an APP key.

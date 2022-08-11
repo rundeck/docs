@@ -1,6 +1,6 @@
 # Configuring SSL
 
-This document describes how to configure Rundeck for SSL/HTTPS support, and assumes you are using the rundeck-launcher standalone launcher. If you are using RPM/DEB install, refer to the appropriate configuration file paths from
+This document describes how to configure Rundeck for SSL/HTTPS support, and assumes it is running from the `rundeck-launcher` standalone launcher. For RPM/DEB install, refer to the appropriate configuration file paths from
 [Rundeck Configuration - Configuration File Reference - Configuration Layout](/administration/configuration/config-file-reference.md#configuration-layout).
 
 (1) Before beginning, do a first-run of the launcher, as it will create the base directory for Rundeck and generate configuration files.
@@ -9,7 +9,7 @@ This document describes how to configure Rundeck for SSL/HTTPS support, and assu
 cd $RDECK_BASE;  java -jar {{{rundeckVersion}}}.war
 ```
 
-This will start the server and generate necessary config files. Press control-c to shut down the server after you get below message from terminal:
+This will start the server and generate necessary config files. Press control-c to shut down the server after the message below is shown in the terminal:
 
 ```log
 Grails application running at http://localhost:4440 in environment: production
@@ -30,9 +30,9 @@ keytool -keystore etc/keystore -ext san=dns:$HOSTNAME -alias rundeck -genkey -ke
 
 Be sure to specify the correct DNS hostname of the server as the response to the question "What is your first and last name?". Answer "yes" to the final question.
 
-You can pass all the answers to the tool on the command-line by using a HERE document.
+It is OK to skip all the answers to the tool on the command-line by using a HERE document.
 
-Replace the first line "$HOSTNAME" with the hostname for your server, and use any other organizational values you like:
+Replace the first line "$HOSTNAME" with the hostname for the Rundeck server, and use any other desired organizational values:
 
 ```shell
 keytool -keystore etc/keystore -ext san=dns:$HOSTNAME -alias rundeck -genkey -keyalg RSA -keypass adminadmin -storepass adminadmin  <<!
@@ -79,7 +79,7 @@ The ssl.properties default keystore and truststore location path for war install
 * framework.server.port
 
 
-Set them to the appropriate https protocol, and change the port to 4443, or to the value of your `-Dserver.https.port` runtime configuration property.
+Set them to the appropriate https protocol, and change the port to 4443, or to the value from `-Dserver.https.port` runtime configuration property.
 
 (6) Configure server URL so that Rundeck knows its external address. Modify the file `$RDECK_BASE/server/config/rundeck-config.properties` and change the `grails.serverURL`:
 
@@ -87,7 +87,7 @@ Set them to the appropriate https protocol, and change the port to 4443, or to t
 grails.serverURL=https://myhostname:4443
 ```
 
-Set the URL to include the appropriate https protocol, and change the port to 4443, or to the value of your `-Dserver.https.port` runtime configuration property.
+Set the URL to include the appropriate https protocol, and change the port to 4443, or to the value from `-Dserver.https.port` runtime configuration property.
 
 (7) For Debian installation, create/edit `/etc/default/rundeckd`, for RPM installation, create/edit `/etc/sysconfig/rundeckd`:
 
@@ -108,14 +108,14 @@ You can change port by adding `-Dserver.https.port`:
 java -Drundeck.ssl.config=$RDECK_BASE/server/config/ssl.properties -Dserver.https.port=1234 -jar rundeck-{{{rundeckVersionFull}}}.war
 ```
 
-If successful, you will see a line indicating the SSl connector has started:
+If successful, there will be a line indicating the SSl connector has started:
 
 ```log
 Grails application running at https://localhost:1234 in environment: production
 ```
 
 ## Import Existing PFX Key to Keystore
-These commands involves to extract the Certificate, key and the CA from the PFX, and convert everything to the Keystore format.
+Use the following commands to extract the Certificate, key and the CA from the PFX, and convert everything to the Keystore format.  (Note: OpenSSL will need to be installed prior to starting)
 
 To achieve this, please use the following commands:
 
@@ -125,32 +125,32 @@ openssl pkcs12 -in certificate.pfx -clcerts -nokeys -out clientcert.cer
 openssl pkcs12 -in certificate.pfx -cacerts -nokeys -chain -out cacerts.cer
 ```
 
-On each command you need to type the PFX password to extract the files.
+On each command type the PFX password to extract the files.
 
 ::: tip
-For better results, please rename your PFX certificate to "certificate.pfx"
+For better results, please rename the PFX certificate to "certificate.pfx"
 :::
 
-After this, you have to run the following command to merge the extracted files to P12 format:
+After this, run the following command to merge the extracted files to P12 format:
 
 ```shell
 openssl pkcs12 -export -in clientcert.cer -inkey clientcert.key -certfile cacerts.cer -name rundeck -out keystore.p12
 ```
 
-In this step, you have to type the password `adminadmin`, or the password defined on the ssl.properties from your PDPAOP Instance if you are using a custom password, e.g. `/etc/rundeck/ssl/ssl.properties`
+In this step, type the password `adminadmin`, or the password defined on the ssl.properties the Rundeck instance if it is using a custom password, e.g. `/etc/rundeck/ssl/ssl.properties`
 
-Once this is done, you can create or import the certificate to the Keystore using the following command:
+Once this is done, create or import the certificate to the Keystore using the following command:
 
 ```shell
 keytool -importkeystore -srckeystore keystore.p12 -srcstoretype pkcs12 -destkeystore keystore -deststoretype JKS
 ```
 
-In this step, you need to type the same password from the previous step.
+In this step, type the same password from the previous step.
 
-Once this is done, you can copy the `keystore` file to the PDPAOP etc folder, e.g. `/etc/rundeck/ssl/keystore`
+Once this is done, copy the `keystore` file to the Rundeck `etc` folder, e.g. `/etc/rundeck/ssl/keystore`
 
 ::: tip
-You can add this new certificate to your current Keystore by changing the "-destkeystore keystore" by adding the path of your keystore file location, e.g.: ` -destkeystore /etc/rundeck/ssl/keystore`
+Add this new certificate to the current Keystore by changing the "-destkeystore keystore" by adding the path of the keystore file location, e.g.: ` -destkeystore /etc/rundeck/ssl/keystore`
 :::
 
 ## Securing passwords
@@ -203,7 +203,7 @@ You can tell Jetty to honor
 `X-Forwarded-Proto`, `X-Forwarded-Host`,
 `X-Forwarded-Server` and `X-Forwarded-For` headers in two ways:
 
-In [rundeck-config.properties](/administration/configuration/config-file-reference.md#rundeck-config.properties) you can set:
+In [rundeck-config.properties](/administration/configuration/config-file-reference.md#rundeck-config.properties) set:
 
 ```properties
 server.useForwardHeaders=true
@@ -213,9 +213,9 @@ Or by declaring the following JVM property:
 
 - `rundeck.jetty.connector.forwarded` set to "true" to enable proxy forwarded support.
 
-For the executable war you can specify it on the commandline `-Drundeck.jetty.connector.forwarded=true`.
+For the executable war specify it on the commandline `-Drundeck.jetty.connector.forwarded=true`.
 
-For RPM/DEB install you can export the `RDECK_JVM_OPTS` variable in the file `/etc/sysconfig/rundeckd` (RPM) or `/etc/default/rundeckd` (DEB) and add:
+For RPM/DEB install export the `RDECK_JVM_OPTS` variable in the file `/etc/sysconfig/rundeckd` (RPM) or `/etc/default/rundeckd` (DEB) and add:
 
 ```properties
 RDECK_JVM_OPTS=-Drundeck.jetty.connector.forwarded=true
