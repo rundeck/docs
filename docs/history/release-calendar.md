@@ -9,7 +9,7 @@ Upgrade instructions [can be found here](/upgrading/).
 
 | Release Version | Release Date      | Enterprise Support Status |
 |-----------------|-------------------|---------------------------|
-| [4.5.0](/history/4_x/version-4.5.0.md) | August 10th, 2022 | Supported |
+| [4.5.0](/history/4_x/version-4.5.0.md) | August 11th, 2022 | Supported |
 | [4.4.0](/history/4_x/version-4.4.0.md) | July 14th, 2022 | Supported |
 | [4.3.2](/history/4_x/version-4.3.2.md) | July 14th, 2022 | Supported |
 | [4.2.3](/history/4_x/version-4.2.3.md) | July 14th, 2022 | Supported |
