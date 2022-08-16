@@ -135,13 +135,6 @@ Text displayed in the login page.
 HTML displayed on the login page. The HTML will be sanitized before display.
 
 
-### rundeck.gui.login.footerMessageHtml
-- Example: ```(Default: blank)```
-- min version: 2.x
-
-HTML displayed on the login page below the login form. The HTML will be sanitized before display.
-
-
 ### rundeck.gui.errorpage.hidestacktrace
 - Example: ```(Default: false)```
 - min version: 2.x
