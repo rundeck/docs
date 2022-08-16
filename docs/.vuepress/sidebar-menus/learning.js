@@ -80,7 +80,8 @@ module.exports = [{
               '/learning/howto/config-sn-nodesource.md',
               '/learning/howto/configure-gcp-plugins.md',
               '/learning/howto/sn-midserver.md',
-              '/learning/howto/rundeck-exporter.md'
+              '/learning/howto/rundeck-exporter.md',
+              '/learning/howto/vault-integration.md'
           ]
         },
         {
