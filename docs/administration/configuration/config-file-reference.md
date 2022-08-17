@@ -617,7 +617,7 @@ rundeck.jobs.options.remoteUrlConnectionTimeout=[seconds]
 
 If the request is sent, but the server disconnects without a response (e.g. server is overloaded), retry the request this many times.
 
-Default value: 3
+Default value: 5
 
 Change this by setting:
 
