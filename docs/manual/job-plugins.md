@@ -20,6 +20,7 @@
 - [Local command](/manual/node-steps/builtin.md#local-command-step)
 - [Data node](/manual/node-steps/builtin.md#data-node-step)
 - [HTTP Request](/manual/node-steps/builtin.md#http-node-step)
+- [Loop Script Plugins (Enterprise)](/manual/node-steps/loop-plugins.md)
 
 
 ## Workflow Steps
@@ -52,6 +53,7 @@
 - [Refresh project nodes](/manual/workflow-steps/builtin.md#refresh-project-nodes)
 - [Data step](/manual/workflow-steps/builtin.md#data-step)
 - [Sumo Logic](/manual/workflow-steps/sumo-logic.md)
+- [Loop Script Plugins (Enterprise)](/manual/workflow-steps/loop-plugins.md)
 
 ## Notifications
 
@@ -101,6 +103,7 @@ Log Filters can transform or aggregate output from one or more Workflow states.
 - [Quiet Output](/manual/log-filters/quiet-output.md)
 - [Highlight Output](/manual/log-filters/highlight-output.md)
 - [Progress Badge](/manual/log-filters/progress-badge.md)
+- [Store and Validate JSON (Enterprise)](/manual/log-filters/loop-plugins.md)
 
 ## Content Converters
 

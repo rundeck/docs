@@ -7,9 +7,9 @@ This plugin allows Source Code Management of the jobs, versioning, exporting or 
 :::warning
 **For Github SCM users**
 
-[Github has stopped supporting insecure algorithms](https://github.blog/2021-09-01-improving-git-protocol-security-github/#when-are-these-changes-effective), and our current SSH implementation doesn't support the algorithms required by Github so you cannot use `Private Key` method to authenticate Rundeck client to Github. As a workaround, You still can use the `Password` authentication method with the Github `Personal Access Token` to connect to your Github repos.
+[Github has stopped supporting insecure algorithms](https://github.blog/2021-09-01-improving-git-protocol-security-github/#when-are-these-changes-effective).  As of version 4.5.0 the SCM integration uses SSHJ by default, which supports the SSH-RSA 2 keys that are now required by GitHub.
 
-We are working on upgrading the SSH implementation to solve this issue in a future release.
+Versions older than 4.5 cannot use `Private Key` method to authenticate to Github. As a workaround, You still can use the `Password` authentication method with the Github `Personal Access Token` to connect to your Github repos.
 :::
 
 _Project Settings > Setup SCM_

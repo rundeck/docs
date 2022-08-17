@@ -625,7 +625,25 @@ This can be done with the command:
 
     $ sudo addgroup rundeck shadow
 
-On debian based systems you need to install libpam4j :
+On Debian based systems you need to install libpam4j :
+
+```bash
+apt install libpam4j-java
+```
+
+On modern Debian linux distributions, add the following line on the `/etc/apt/sources.list` file:
+
+```
+deb http://ftp.us.debian.org/debian stretch main contrib non-free
+```
+
+Save the file and update all repositories with:
+
+```
+apt update
+```
+
+And then, install libpam4j-java library:
 
 ```bash
 apt install libpam4j-java
