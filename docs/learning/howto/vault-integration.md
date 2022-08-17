@@ -26,7 +26,8 @@ Checking the VAULT_ADDR URL in any browser you can see the Vault web interface. 
 
 ## Configuring Vault with PPA / Rundeck
 
-### PagerDuty Process Automation
+:::: tabs
+::: tab PagerDuty Process Automation
 
 The Vault Storage plugin is bundled by default with PagerDuty Process Automation (formerly Rundeck Enterprise).  To use the plugin, you need to add properties using the [System Configuration](https://docs.rundeck.com/docs/manual/configuration-mgmt/configmgmt.html#managing-configuration) feature.
 
@@ -44,10 +45,8 @@ PPA includes a Configuration Management module to set configuration settings via
 1. From the Vault side, check the secret/rundeck path and see the stored key.<br>
 ![](~@assets/img/Vault6.png)<br>
 
-### Rundeck Community
-
-
-
+:::
+::: tab Rundeck Community
 1. Stop the Rundeck service.
 1. Download the Vault Storage Plugin jar file from [here](https://github.com/rundeck-plugins/vault-storage/releases) and save it to the `libext` directory.
 1. Open the `rundeck-config.properties` file, comment the following lines:
