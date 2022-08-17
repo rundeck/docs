@@ -17,24 +17,24 @@ Check out the new features and enhancements for PagerDuty Process Automation (fo
 
 ### Highlights
 
-* **Sumo Logic Job Step Plugins:** Now Sumo Logic users can automate operational tasks - such as retrieving logs for incident diagnostics - by integrating with a Sumo Logic instance.
+* **Sumo Logic Job Step Plugins:** Now Sumo Logic users can automate operational tasks - such as retrieving logs for incident diagnostics - by integrating with a Sumo Logic instance. [[Docs](/manual/workflow-steps/sumo-logic.md)]
 
 * **ECS Node Executor Plugin:** Users can now run commands across multiple ECS containers in a single Job Step or from the Commands tab.  This makes it easier to accomplish tasks such as retrieving time-critical diagnostics during an incident before containers are redeployed.
 
 ### Additional Updates
 
 * Allow use of EC2 instance or ECS container Profile credentials for authentication in all AWS plugins
-* Set Runner on by Default in Docker Remco
-* Fix: Jobs not running after removing a project from a System Calendar
-* Fix: Azure Log Storage generating duplicate folders for executions
-* Loop Script Plugins
+* Set Runner on by Default in [Docker Remco](/administration/configuration/docker/extending-configuration.md)
+* Fix: Jobs not running after removing a project from a [System Calendar](/manual/calendars.md)
+* Fix: [Azure Log Storage](/administration/cluster/logstore/azure.md) generating duplicate folders for executions
+* [Loop Script Plugins](/manual/workflow-steps/loop-plugins.md)
 * Fix: Dependency Graph gets truncated in some views
-* Fix: Cyberark Plugin now properly serializes return payload from API
+* Fix: [Cyberark Plugin](/manual/key-storage/storage-plugins/cyberark-storage.md) now properly serializes return payload from API
 
 
 ## Rundeck Open Source Product Updates
 
-* [Changed default SCM SSH authentication to SSHJ](https://github.com/rundeck/rundeck/pull/7763) The SCM integration now uses SSHJ for SSH authentication by default (previously JSCH). GitHub has tightened up their SSH key requirements and now requires SSH-RSA 2 keys. The new default for ssh-keygen via OpenSSH is not supported by JSCH. 
+* [Changed default SCM SSH authentication to SSHJ](https://github.com/rundeck/rundeck/pull/7763) The [SCM integration](/manual/projects/scm/) now uses SSHJ for SSH authentication by default (previously JSCH). GitHub has tightened up their SSH key requirements and now requires SSH-RSA 2 keys. The new default for ssh-keygen via OpenSSH is not supported by JSCH.
 * [Upgrade grails to 5.1.9](https://github.com/rundeck/rundeck/pull/7829)
 * [Upgrade spring to 5.3.20](https://github.com/rundeck/rundeck/pull/7823)
 * [Fix: Unable to update Webhooks when changing handler settings in 4.4.0](https://github.com/rundeck/rundeck/pull/7820)
