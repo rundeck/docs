@@ -1,6 +1,6 @@
-# How to integrate Hashicorp Vault with PagerDuty Process Automation & Rundeck Community
+# How to integrate Hashicorp Vault
 
-Out-of-the-box, both PagerDuty Process Automation (PPA) & Rundeck Community store all the keys and passwords in their own Key Storage using the database backend. Many people prefer to use a central Key Storage server to access all keys and passwords from a single secure location. This avoids saving secrets in multiple locations and reduces the risk of key/password leaks. 
+Out-of-the-box, both PagerDuty Process Automation (PPA) & Rundeck Community store all the keys and passwords in their own Key Storage using the database backend. Many people prefer to use a central Key Storage server to access all keys and passwords from a single secure location. This avoids saving secrets in multiple locations and reduces the risk of key/password leaks.
 
 Some users prefer to integrate PPA/Rundeck Community with their Secrets Management solution rather than using the native product functionality. In this article, we demonstrate how to integrate PPA/Rundeck Community with the Hashicorp Vault plugin.
 
@@ -10,7 +10,7 @@ Some users prefer to integrate PPA/Rundeck Community with their Secrets Manageme
 
 ### Test Vault server
 
-Before integrating Vault with PPA or Rundeck you need to test the Vault server. If you don’t already have Vault installed, To do that follow these steps: 
+Before integrating Vault with PPA or Rundeck you need to test the Vault server. If you don’t already have Vault installed, To do that follow these steps:
 
 
 
@@ -31,7 +31,7 @@ Checking the VAULT_ADDR URL in any browser you can see the Vault web interface. 
 
 The Vault Storage plugin is bundled by default with PagerDuty Process Automation (formerly Rundeck Enterprise).  To use the plugin, you need to add properties using the [System Configuration](https://docs.rundeck.com/docs/manual/configuration-mgmt/configmgmt.html#managing-configuration) feature.
 
-PPA includes a Configuration Management module to set configuration settings via the GUI and store them in the product database. Database storage shares configuration options with all your cluster members and centralizes configuration. 
+PPA includes a Configuration Management module to set configuration settings via the GUI and store them in the product database. Database storage shares configuration options with all your cluster members and centralizes configuration.
 
 
 
