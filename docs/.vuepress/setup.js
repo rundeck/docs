@@ -4,7 +4,7 @@ const API_VERSION='41'
 const API_DEP_REL='5.0.0'
 const API_DEP_VER='14'
 const API_MIN_VER='11'
-const CLI_VERSION='2.0.1'
+const CLI_VERSION='2.0.0'
 
 const REPO_BRANCH='4.0.x'
 
@@ -17,7 +17,7 @@ const setup = {
     apiMinVersion: API_MIN_VER,
     rundeckVersion: process.env.RUNDECK_VERSION || RUNDECK_VERSION,
     rundeckVersionFull: process.env.RUNDECK_VERSION_FULL || RUNDECK_VERSION_FULL,
-    rundeckCLIVersion: CLI_VERSION
+    rundeckCLIVersion: process.env.CLI_VERSION || CLI_VERSION
 }
 
 module.exports = setup
