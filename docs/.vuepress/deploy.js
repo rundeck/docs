@@ -6,11 +6,12 @@ console.log(process.cwd())
 console.log(process.argv)
 const TAG = process.argv[2]
 
-const rdCLIVersion = CP.execSync('curl -H "Accept: application/vnd.github+json" https://api.github.com/repos/rundeck/rundeck-cli/releases | jq -r \'.[0].tag_name\' | sed \'s/v//\'').toString()
-console.log("CLI Version: ", rdCLIVersion)
-
 let version, date, maint, env
 if (TAG) {
+
+    const rdCLIVersion = CP.execSync('curl -H "Accept: application/vnd.github+json" https://api.github.com/repos/rundeck/rundeck-cli/releases | jq -r \'.[0].tag_name\' | sed \'s/v//\'').toString()
+
+    console.log("CLI Version: ", rdCLIVersion)
 
     const capture = TAG.match(/v?(.+?)-(.+?)(?:-(.+))?$/)
 
