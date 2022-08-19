@@ -29,8 +29,6 @@ if (TAG) {
 
 const branch = CP.execSync('git rev-parse --abbrev-ref HEAD').toString().trim()
 
-'')
-
 const base = version || branch
 
 env = {
