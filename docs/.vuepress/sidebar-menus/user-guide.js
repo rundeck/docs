@@ -47,14 +47,15 @@ module.exports = [{
           title: 'Node Execution',
           collapsable: true,
           children: [
-            '/manual/projects/node-execution/',
-            '/manual/projects/node-execution/builtin',
-            '/manual/projects/node-execution/script',
-            '/manual/projects/node-execution/ssh',
-            '/manual/projects/node-execution/powershell',
+//            '/manual/projects/node-execution/',
+            '/manual/projects/node-execution/aws-ecs',
+            '/manual/projects/node-execution/aws-ssm',
             '/manual/projects/node-execution/bastionssh',
+            '/manual/projects/node-execution/builtin',
             '/manual/projects/node-execution/openssh',
-            '/manual/projects/node-execution/aws-ssm'
+            '/manual/projects/node-execution/powershell',
+            '/manual/projects/node-execution/script',
+            '/manual/projects/node-execution/ssh'
           ]
         }
       ]
