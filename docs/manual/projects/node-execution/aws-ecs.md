@@ -4,7 +4,7 @@
 
 ## About Amazon ECS
 
-**Amazon ECS** is a fully managed container orchestration service that makes it easy for you to deploy, manage, and scale containerized applications.
+**Amazon ECS** is a fully managed container orchestration service that makes it easy for users to deploy, manage, and scale containerized applications.
 
 AWS **Fargate** is a serverless compute engine that is compatible with both Amazon Elastic Container Service (ECS) and Amazon Elastic Kubernetes Service (EKS).
 
@@ -12,9 +12,9 @@ AWS **Fargate** is a serverless compute engine that is compatible with both Amaz
 
 The **Amazon ECS Node Executor** provides the ability to send commands to one or multiple containers running on ECS.
 
-Sending commands to ECS containers makes it easier to collect diagnostic information and quickly troubleshoot errors. For example, in development,
-this allows you to easily interact with various processes in your containers and troubleshoot your applications. In production scenarios,
-this enables you to gain break-glass access to your containers to debug issues.
+Sending commands to ECS containers makes it easier to collect diagnostic information and quickly troubleshoot errors. In development,
+this allows users to easily interact with various processes in your containers and troubleshoot applications. In production scenarios,
+this enables break-glass access to containers to debug issues.
 
 This plugin is designed to work in conjunction with the [ECS-Fargate Node Source](/manual/projects/resource-model-sources/ecs-fargate).
 
@@ -22,8 +22,8 @@ This plugin is designed to work in conjunction with the [ECS-Fargate Node Source
 
 ### Configure ECS Task and Service Definitions
 
-1. Attach a **Task IAM Role** to the **Task Definition** that grants them the permissions needed for communication between the managed SSM agent (`execute-command` agent) and the SSM service.
-   Use the following policy and attach it to your task definition as explained [**here**](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html).
+1. Attach a **Task IAM Role** to the **Task Definition** that grants containers the permissions needed for communication between the managed SSM agent (`execute-command` agent) and the SSM service.
+   Use the following policy and attach it to the task definition as explained [**here**](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html).
     ```
     {
        "Version": "2012-10-17",
@@ -51,7 +51,7 @@ This plugin is designed to work in conjunction with the [ECS-Fargate Node Source
          --service-name service-name \
          --desired-count 1
     ```
-3. **[Optional]** If you set the task definition parameter `initProcessEnabled` to **`true`**, this starts the init process inside the container,
+3. **[Optional]** If the task definition parameter `initProcessEnabled` is set to **`true`**, this starts the init process inside the container,
    which removes any zombie SSM agent child processes found. The following provides an example:
     ```
     {
@@ -82,7 +82,7 @@ This plugin is designed to work in conjunction with the [ECS-Fargate Node Source
 ### Configure IAM Policy for Process Automation
 
 The following permissions must be provided to the IAM Role that is assigned to Process Automation - 
-either through Access Key and Secret or assigning an IAM Role to the instance that Process Automation is running on:
+either through Access Keys or assigning an IAM Role (explained in detail below) to the instance that Process Automation is running on:
 
 **`ecs:ExecuteCommand`**
 
@@ -99,7 +99,7 @@ This IAM policy condition key can be used in tandem with other IAM policy condit
 
 Examples of IAM policies that restrict the access by Process Automation can be found [here](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-exec.html).
 
-### Configure Node Executor Setting within Process Automation
+### Configure Node Executor within Process Automation
 
 With the IAM policy created in the previous step, there are two methods for providing the IAM role to Process Automation: **Access Keys** _or_ **Instance or Container Profile**.
 
@@ -129,9 +129,9 @@ This retrieves the ECS containers and presents them as nodes in Process Automati
 
 <img style='border:1px solid #327af6' src="@assets/img/aws-ecs-node-inventory.png" />
 
-Once the containers have been added as nodes, Process Automation can send commands to them.  This can be done through the **Commands** tab, or using the **Remote Command** Job step.
+Once the containers have been added as nodes, Process Automation can send commands to them.  This can be done through the **Commands** tab, or using the **Remote Command** Job step:
 
-#### Commands Tab
+#### Ad-hoc Commands through the Commands Tab
 
 1. Navigate to the **Commands** tab in the sidebar menu.<br><br>
 2. In the Node Filter field, type in a Node Filter to specify the containers that the command should execute on.  For example, **`ECS:Container-Image: spring.*`** filters only the containers
