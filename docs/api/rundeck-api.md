@@ -5074,6 +5074,7 @@ Abort a running execution by ID.
 Optional Parameters:
 
 * `asUser` : specifies a username identifying the user who aborted the execution. Requires `runAs` permission.
+* `forceIncomplete`: if `true`, forces a running execution to be marked as "incomplete".
 
 **Response:**
 
