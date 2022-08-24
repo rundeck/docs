@@ -1,4 +1,4 @@
-## AWS Elastic Container Service (ECS) Workflow Steps
+# AWS Elastic Container Service (ECS) Workflow Steps
 
 :::enterprise
 :::

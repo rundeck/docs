@@ -25,6 +25,7 @@
 
 ## Workflow Steps
 * **Amazon Web Services (Enterprise Only)**
+  - [Athena Query](/manual/workflow-steps/aws-athena.md)
   - [CloudWatch Logs](/manual/workflow-steps/aws-cloudwatch.md)
   - [ECS & Fargate](/manual/workflow-steps/aws-ecs-fargate.md)
   - [Elastic Cloud Compute (EC2)](/manual/workflow-steps/aws.md)
