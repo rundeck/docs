@@ -1,4 +1,4 @@
-#  AWS Systems Manager (SSM) Node Executor Plugins (Enterprise)
+#  AWS Systems Manager (SSM) Node Executor Plugins
 ::: enterprise
 :::
 
