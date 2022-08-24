@@ -11,6 +11,8 @@ The **Amazon ECS-Fargate Node Source** retrieves the running containers in ECS a
 
 ![ECS Node Attributes](@assets/img/aws-ecs-node-attributes.png)<br>
 
+This plugin is designed to work in tandem with the [ECS Node Executor](/manual/projects/node-execution/aws-ecs) to send commands to containers.
+
 ## Configuration
 
 You can add the **ECS-Fargate Node Source** by navigating to:<br>
@@ -46,3 +48,7 @@ to the right of **Container-Image** will filter the displayed containers to thos
 
 ![ECS Containers Spyglass](@assets/img/aws-ecs-select-spyglass.png)<br><br>
 ![ECS Filtered Containers](@assets/img/aws-ecs-filtered-containers.png)<br>
+
+## Executing Commands on ECS Containers
+
+Once the containers have been retrieved as nodes in Process Automation, commands can be executor on one or more containers using the [ECS Node Executor](/manual/projects/node-execution/aws-ecs).
