@@ -54,15 +54,29 @@ Also, it's possible use "Extra Ansible arguments" as the same way of Ansible Pla
 
 #### Working with job references
 
-When a global variable step is defined in a referenced job, it exports values into a data variable that can be used in subsequent steps of the parent job.
-![Global Variable Image 1](~@assets/img/global-variable-image1.png)
+When a global variable step is defined in a referenced job, it exports values into a data variable that can be used in subsequent steps of the parent job. To use, add a new workflow step, and select the "Global Variable" step.
+
+![Global Variable Image 1](~@assets/img/global_variable_0.png)
+
+On value textbox put the value of the variable to be used, to uplift an existing variable, use a reference to it, like `${data.var1@node1}` or `${data.var1*}`. 
+
+![Global Variable Image 2](~@assets/img/global_variable_1.png)
+
+To reference a job, add a new step, and select the "Job Reference" step.
+
+![Global Variable Image 3](~@assets/img/global_variable_2.png)
+
+In order to use the global variable value on a referenced job, the job receiving the exported value must have an option. On the Arguments textbox add the name option, and the global variable name like `-optionToObtainValue ${export.myValue}`.
+
+![Global Variable Image 4](~@assets/img/global_variable_3.png)
 
 #### Collecting values for all target nodes
 
 Use the global variable workflow step to collect data across all target nodes into a delimited list. Rundeck executes the steps before the global variable step, collecting values into the variable and then executes any remaining steps. The data variable is available to all subsequent steps in the job.
 
 Note that you can also collect a value from a single node that is available in steps on the other targeted nodes.
-![Global Variable Image 2](~@assets/img/global-variable-image2.png)
+
+![Global Variable Image 5](~@assets/img/global-variable-image2.png)
 
 #### Reference
 
