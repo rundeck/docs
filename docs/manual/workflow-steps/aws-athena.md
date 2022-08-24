@@ -15,6 +15,7 @@ To learn more about Amazon Athena, click [here](https://aws.amazon.com/athena).
 ## About the AWS Athena Query Workflow Step Plugin
 
 The Athena Query Workflow Step plugin allows users to make queries through Athena to their S3 data as part of their automated-runbook workflows:
+<img style='border:1px solid #327af6' src="@assets/img/aws-athena-job-step-config.png" /><br>
 
 ## Configuration
 
@@ -43,7 +44,8 @@ If Process Automation is self-hosted and running on either an EC2 instance or an
 For instructions on how to associate an IAM Role to an EC2, click [here](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html), and for ECS Task Roles, click [here](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html).
 
 1. Navigate to **Project Settings -> Edit Configuration -> Edit Configuration File**.<br><br>
-2. If Process Automation is installed on an EC2, then add **`project.aws.credentialProvider=instance`**.  If it is installed on ECS, then add **`project.aws.credentialProvider=container`**.<br><br>
+2. If Process Automation is installed on an EC2, then add **`project.aws.credentialProvider=instance`**.  
+   If it is installed on ECS, then add **`project.aws.credentialProvider=container`**.<br><br>
 3. Click **Save** to commit the changes to the Project Configuration File.
 
 ### Job Step Configuration
