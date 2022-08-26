@@ -12,8 +12,6 @@ The first place to see anything related to Rundeck is the `service.log` file. Th
 
 #### The `service.log` file is located: 
 
-
-
 * In the `/var/log/rundeck` path on RPM/DEB installations
 * In WAR-based installations, the log file is located at the `$RDECK_BASE/var/log` path (the service needs to be launched using the `$RDECK_BASE/sbin/rundeckd` script, the process is described [here](/administration/maintenance/startup.html#launcher).<br>
 
@@ -23,9 +21,8 @@ For Windows-based instances, the installation process [covers using](/administra
 
 ### **Docker Container Installation**
 
-For installations on a Docker container, the service.log content is printed directly in the container log. You can use the `docker logs` command to access that information.<br> 
+For installations in a Docker container, the service.log content is printed directly in the container log. You can use the `docker logs` command to access that information.<br> 
 See the current service.log content with:
-
 
 ```
 docker logs <container_id>
@@ -37,7 +34,8 @@ To follow the `service.log` content (equivalent to the command `tail -f /var/log
 docker logs <container_id> –follow
 ```
 
-![](~@assets/img/logs-docker.png)
+![ ](@assets/img/logs-docker.png)
+
 Where `<container_id>` is the Rundeck container ID, you can check with the `docker ps` command, more information [here](https://docs.docker.com/engine/reference/commandline/ps/).
 
 ### **Apache Tomcat Installation**
