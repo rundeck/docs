@@ -16,8 +16,8 @@ which is an easy way to implement SSO where Active Directory (or Kerberos) is av
 
 We assume that inside the VM:
 * Rundeck has been already set up with all the necessary configuration options for DB, logging, etc.
-* apache2 is running with the necessary modules enabled (proxy, gssapi, etc)
-* a valid keytab has been generated and contains the correct principal keys (in this case HTTP/srv.example.com@EXAMPLE.COM)
+* Apache2 is running with the necessary modules enabled (proxy, gssapi, etc)
+* A valid keytab has been generated and contains the correct principal keys (in this case HTTP/srv.example.com@EXAMPLE.COM)
 
 Please refer the relevant documentation for more details:
 *   [apache2 proxy balancer](https://httpd.apache.org/docs/2.4/mod/mod_proxy_balancer.html)
