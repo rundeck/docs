@@ -10,6 +10,8 @@ while the actual server (in this example) is running in the same VM but bound lo
 In addition authentication will be transparently handled by apache2 via GSSAPI, 
 which is an easy way to implement SSO where Active Directory (or Kerberos) is available.
 
+The proposed approach for looking up user roles is very simple and perhaps suitable only for a small user base 
+and should be hardened in case of peculiar characters in users principals (e.g. `..`, `/`, etc).
 
 
 # Prerequisites
@@ -41,8 +43,6 @@ Last but not least, the look up of user roles, necessary for the correct executi
 is implemented by reading one file named as the user principal and located under the folder `/etc/apache2/rundeck-roles/`.
 The file contains one row with the list of roles specific to the user, for example `admin,user`.
 
-This approach is very simple and perhaps suitable only for a small user base 
-and should be hardened in case of peculiar characters in users principals (e.g. `..`, `/`, etc).
 
 ```
 <Proxy balancer://rundeck>
