@@ -113,12 +113,18 @@ Displaying a real tree in the Jobs overview instead of collapsing empty groups.
 Change the default page shown after choosing a project. Values: 'adhoc', 'configure', 'createJob', 'events', 'home', 'jobs', 'nodes', 'projectHome' or 'uploadJob'.
 
 
-
 ### rundeck.gui.enableJobHoverInfo
 - Example: ```(Default: true)```
 - min version: 2.x
 
 Shows job information when the user hovers over a job name in various pages.
+
+
+### rundeck.gui.login.disclaimer
+- Example: ```(Default: blank)```
+- min version: 3.0.8
+
+HTML displayed on the login page below the login form element but seperate from the login form element. The HTML will be sanitized before display.
 
 
 ### rundeck.gui.login.welcome
@@ -133,6 +139,13 @@ Text displayed in the login page.
 - min version: 2.x
 
 HTML displayed on the login page. The HTML will be sanitized before display.
+
+
+### rundeck.gui.login.footerMessageHtml
+- Example: ```(Default: blank)```
+- min version: 2.x
+
+HTML displayed on the login page below the login form. The HTML will be sanitized before display.
 
 
 ### rundeck.gui.errorpage.hidestacktrace
