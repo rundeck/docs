@@ -82,7 +82,8 @@ module.exports = [{
               '/learning/howto/configure-gcp-plugins.md',
               '/learning/howto/sn-midserver.md',
               '/learning/howto/rundeck-exporter.md',
-              '/learning/howto/vault-integration.md'
+              '/learning/howto/vault-integration.md',
+              '/learning/howto/howtojenkins.md'
           ]
         },
         {
