@@ -326,7 +326,7 @@ Some of the properties that work with live reloading:
 ### Security HTTP Headers
 
 :::warning
-The HTTP header 'XSS-Protection' has been deprecated by mordern browsers and it use can introduce additional security issues on the client side of the application. So Rundeck will not support this header no more since version 4.3.0 .
+The HTTP header 'XSS-Protection' has been deprecated by mordern browsers and it use can introduce additional security issues on the client side of the application. So Rundeck will no longer support this header as of version 4.3.0 .
 :::
 
 Rundeck adds some HTTP headers for XSS prevention and other security reasons, as described below.
