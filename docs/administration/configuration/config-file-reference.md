@@ -325,6 +325,10 @@ Some of the properties that work with live reloading:
 
 ### Security HTTP Headers
 
+:::warning
+The HTTP header 'XSS-Protection' has been deprecated by mordern browsers and it use can introduce additional security issues on the client side of the application. Rundeck has deprecated this setting as of version 4.3.0.
+:::
+
 Rundeck adds some HTTP headers for XSS prevention and other security reasons, as described below.
 
 By default, these headers are enabled, but they can be individually disabled, or reconfigured.
@@ -339,24 +343,6 @@ rundeck.security.httpHeaders.enabled=true
 # enable x-content-type-options: nosniff  (default: true)
 rundeck.security.httpHeaders.provider.xcto.enabled=true
 
-#########
-# enable x-xss-protection: 1  (default: true)
-
-rundeck.security.httpHeaders.provider.xxssp.enabled=true
-
-# Alternates for x-xss-protection:
-#
-# use x-xss-protection: 1; mode=block
-#
-
-# rundeck.security.httpHeaders.provider.xxssp.config.block=true
-
-#
-# use x-xss-protection: 1; report=https://some-uri
-
-# rundeck.security.httpHeaders.provider.xxssp.config.report=https://some-uri
-
-########
 # enable x-frame-options: deny  (default: true)
 
 rundeck.security.httpHeaders.provider.xfo.enabled=true
