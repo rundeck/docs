@@ -175,7 +175,8 @@ module.exports = [{
         '/administration/security/project-acl',
         '/administration/security/password-security',
         '/administration/security/ratelimiting',
-        '/administration/security/blocklist'
+        '/administration/security/blocklist',
+        '/administration/security/audit-trail'
       ]
     }
   ]

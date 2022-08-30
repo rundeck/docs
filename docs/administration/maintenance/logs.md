@@ -11,6 +11,7 @@ The following files will be found in the log directory:
      .
      |-- command.log
      |-- rundeck.audit.log
+     |-- rundeck.audit.events.log
      |-- rundeck.jobs.log
      |-- rundeck.options.log
      |-- rundeck.log
@@ -20,6 +21,7 @@ Different facilities log to their own files:
 
 - `command.log`: Shell tools log their activity to the command.log
 - `rundeck.audit.log`: Authorization messages pertaining to aclpolicy
+- `rundeck.audit.events.log`: Logs all auditing events. See [Audit trail log](/administration/security/audit-trail.md).
 - `rundeck.job.log`: Log of all job definition changes
 - `rundeck.options.log`: Logs remote HTTP requests for Options JSON data
 - `rundeck.log`: General Rundeck application messages
