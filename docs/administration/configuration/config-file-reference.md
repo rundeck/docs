@@ -341,7 +341,7 @@ rundeck.security.httpHeaders.enabled=true
 
 #########
 # enable x-content-type-options: nosniff  (default: true)
-rundeck.security.httpHeaders.provider.xcto.enabled=trues
+rundeck.security.httpHeaders.provider.xcto.enabled=true
 
 # enable x-frame-options: deny  (default: true)
 
