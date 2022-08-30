@@ -15,31 +15,36 @@ Check out the new features and enhancements for PagerDuty Process Automation (fo
 
 > Also includes all Open Source updates from below
 
+### Highlights
+
+- first highlight
+- second highlight
+
+### Additional Updates
+
+
 * Update runner version to 0.1.30
+* Loop Script Plugins - Fixups
 * Changed max chars allowed on job params field from 255 to 750
 * Fix: Chrome Debug console Errors
-* ECS Node Source enhancements
+* Enhanced plugin: ECS Node Source
 * Fix: Usability issues with SQL Runner
-* AWS Athena query Job Steps
+* New plugin: AWS Athena Query Job Steps
 * New API rate-limit algorithms to throttle abnormal client requests
 
 
 ## Rundeck Open Source Product Updates
 
-* [Bump version to 4.6.0](https://github.com/rundeck/rundeck/pull/7883)
-* [The activity page doesn&#39;t work with running jobs / Auto-refresh doesn&#39;t work](https://github.com/rundeck/rundeck/pull/7882)
-* [Add a new rendering option to support the token script expansion in plugins](https://github.com/rundeck/rundeck/pull/7877)
-* [Fix : Remote options simple json sort](https://github.com/rundeck/rundeck/pull/7872)
-* [Fix : Upgrade Ansible to 3.2.2 (winrm non-admin fix)](https://github.com/rundeck/rundeck/pull/7863)
+* [Fix : Enable autocomplete for the token script expansion in plugins](https://github.com/rundeck/rundeck/pull/7877)
+* [Fix : Allow JSON &quot;Simple List&quot; format parsing from a job option remote URL](https://github.com/rundeck/rundeck/pull/7872)
+* [Fix : Non-admin user unable to get data on windows nodes through WinRM and Ansible (Upgrade Ansible to 3.2.2)](https://github.com/rundeck/rundeck/pull/7863)
 * [Fix: Stop UI AJAX calls when a user is not logged in](https://github.com/rundeck/rundeck/pull/7861)
-* [Fix : job-remote-option-url-retry-connection-parameter-not-honored](https://github.com/rundeck/rundeck/pull/7856)
+* [Fix : Job Remote Option URL &quot;retry&quot; connection parameter is not honored](https://github.com/rundeck/rundeck/pull/7856)
 * [Fix: Enabling/Disabling both Scheduling and Executions at the same time using timer mode](https://github.com/rundeck/rundeck/pull/7842)
-* [Fix : Upgrade to Liquibase 4.8.0](https://github.com/rundeck/rundeck/pull/7831)
-* [Fix : Sub Menu Position and Adjust Spacing, Font Size](https://github.com/rundeck/rundeck/pull/7830)
+* [Fix : Update for CVE-2022-0839 (Upgrade to Liquibase 4.8.0)](https://github.com/rundeck/rundeck/pull/7831)
 * [Fix: Improve query to get referenced executions](https://github.com/rundeck/rundeck/pull/7827)
 * [Add audit tracking for jobs and acls](https://github.com/rundeck/rundeck/pull/7826)
-* [Fix : Update okhttp to 4.9.2](https://github.com/rundeck/rundeck/pull/7825)
-* [Fix : Allow job editing when SCM fails due to Key Storage path errors](https://github.com/rundeck/rundeck/pull/7786)
+* [Fix : Update for CVE-2022-24329 (Upgrade to okhttp 4.9.2)](https://github.com/rundeck/rundeck/pull/7825)
 
 
 [Here is a link to the full list of public PRs](https://github.com/rundeck/rundeck/pulls?q=is%3Apr+milestone%3A4.6.0+is%3Aclosed)
@@ -50,20 +55,17 @@ Check out the new features and enhancements for PagerDuty Process Automation (fo
 
 ## Community Contributors
 
-* Alberto Hormazabal ([ahormazabal](https://github.com/ahormazabal))
-* Darwis Narvaez ([DarwisNarvaezDev](https://github.com/DarwisNarvaezDev))
 * Luis Toledo ([ltamaster](https://github.com/ltamaster))
 * Rodrigo Navarro ([ronaveva](https://github.com/ronaveva))
 * Leonel Juarez ([L2JE](https://github.com/L2JE))
+* Darwis Narvaez ([DarwisNarvaezDev](https://github.com/DarwisNarvaezDev))
 * Jesus Osuna ([Jesus-Osuna-M](https://github.com/Jesus-Osuna-M))
-* Miguel Ramos ([mishingo](https://github.com/mishingo))
-* Antony Velasquez Ruiz ([avelasquezr](https://github.com/avelasquezr))
+* Alberto Hormazabal ([ahormazabal](https://github.com/ahormazabal))
 * Alexander Abarca ([alexander-variacode](https://github.com/alexander-variacode))
 * Michael Catanese ([mcat115](https://github.com/mcat115))
 * Eric He ([ehe-pd](https://github.com/ehe-pd))
 * Jake Cohen ([jsboak](https://github.com/jsboak))
 * Greg Schueler ([gschueler](https://github.com/gschueler))
-*  ([AndLLA](https://github.com/AndLLA))
 * Nathan Fluegel ([wayfaringson](https://github.com/wayfaringson))
 * Reiner ([MegaDrive68k](https://github.com/MegaDrive68k))
 

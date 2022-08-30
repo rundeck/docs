@@ -15,6 +15,14 @@ Check out the new features and enhancements for PagerDuty Process Automation (fo
 
 > Also includes all Open Source updates from below
 
+### Highlights
+
+- first highlight
+- second highlight
+
+### Additional Updates
+
+
 {% for pull in enterprise.pulls -%}
 * {{ pull.title | replace(r/RUN-[0-9]*:?\s?/g, "") | replace(r/RSE-[0-9]*:?\s?/g, "") | replace(r/RCLOUD-[0-9]*:?\s?/g, "") }}
 {% endfor %}
