@@ -33,9 +33,9 @@ Each log entry contains the following components which identify one event:
 * **RequestInfo**: Information about the request which originated the action, including session data and user-agent.
 * **UserInfo**: Information about the user which performed the action, including username and its roles.
 
-Taking one event line for analysis:
+Taking one example event line for analysis:
 ```
-[2022-08-05T17:00:17,717] INFO  audit.AuditLoggerPlugin - Audit Event: AuditEvent {Timestamp=Fri Aug 05 17:00:17 CLT 2022, ActionType='run', UserInfo={username='admin', userRoles=[admin, user]}, RequestInfo={serverHostname='localhost', serverUUID='a0827934-52ae-488a-8863-42c1ddb433d7', sessionID='node018386eveen98r1hpjfapdazne61', userAgent='Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:103.0) Gecko/20100101 Firefox/103.0'}, ResourceInfo={resourceType='job', resourceName='TestProject:testjob'}}
+[2022-08-05T17:00:17,717] INFO  audit.AuditLoggerPlugin - Audit Event: AuditEvent {Timestamp=Fri Aug 05 17:00:17 CLT 2022, ActionType='run', UserInfo={username='admin', userRoles=[admin, user]}, RequestInfo={serverHostname='localhost', serverUUID='a0827934-52ae-488a-8863-42c1ddb433d7', sessionID='node018386eveen98r1hpjfapdazne61', userAgent='Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:103.0) Gecko/20100101 Firefox/103.0'}, ResourceInfo={resourceType='job', resourceName='TestProject:49a9cb6d-5e2a-4b52-9511-a525756826c8:jobgroup/testjob:15032'}}
 ```
 
 * The event happened on Fri Aug 05 at 17:00:17 Chilean Time.
