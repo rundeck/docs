@@ -9,7 +9,7 @@ Release Date: August 31, 2022
 
 ## Overview
 
-Check out the new features and enhancements for PagerDuty Process Automation (formerly Rundeck Enterprise) and PagerDuty Runbook Automation and Rundeck Community included in this release. This release includes a new plugin for AWS Athena that job definitions to include SQL queries against Amazon S3, an enhancement of the Amazon ECS node source plugin to handle multiple clusters within the same region, and a number of  security and compliance updates, and bug fixes.
+Check out the new features and enhancements for PagerDuty Process Automation (formerly Rundeck Enterprise) and PagerDuty Runbook Automation and Rundeck Community included in this release. This release includes a new plugin for AWS Athena that job definitions to include SQL queries against Amazon S3, an enhancement of the Amazon ECS node source plugin to handle multiple clusters within the same region, and a number of security and compliance enhancements and bug fixes.
 
 ## Process Automation Updates
 
@@ -34,6 +34,7 @@ Check out the new features and enhancements for PagerDuty Process Automation (fo
 
 ## Rundeck Open Source Product Updates
 
+* [Add audit tracking for jobs and acls](https://github.com/rundeck/rundeck/pull/7826) ([documentation](/administration/security/audit-trail.md))
 * [Fix : Enable autocomplete for the token script expansion in plugins](https://github.com/rundeck/rundeck/pull/7877)
 * [Fix : Allow JSON &quot;Simple List&quot; format parsing from a job option remote URL](https://github.com/rundeck/rundeck/pull/7872)
 * [Fix : Non-admin user unable to get data on windows nodes through WinRM and Ansible (Upgrade Ansible to 3.2.2)](https://github.com/rundeck/rundeck/pull/7863)
@@ -42,7 +43,6 @@ Check out the new features and enhancements for PagerDuty Process Automation (fo
 * [Fix: Enabling/Disabling both Scheduling and Executions at the same time using timer mode](https://github.com/rundeck/rundeck/pull/7842)
 * [Fix : Update for CVE-2022-0839 (Upgrade to Liquibase 4.8.0)](https://github.com/rundeck/rundeck/pull/7831)
 * [Fix: Improve query to get referenced executions](https://github.com/rundeck/rundeck/pull/7827)
-* [Add audit tracking for jobs and acls](https://github.com/rundeck/rundeck/pull/7826)
 * [Fix : Update for CVE-2022-24329 (Upgrade to okhttp 4.9.2)](https://github.com/rundeck/rundeck/pull/7825)
 
 
