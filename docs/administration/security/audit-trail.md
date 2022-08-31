@@ -40,9 +40,11 @@ Taking one event line for analysis:
 
 * The event happened on Fri Aug 05 at 17:00:17 Chilean Time.
 
-* The `ResourceInfo` block: `ResourceInfo={resourceType='job', resourceName='TestProject:jobgroup/testjob'}` is intepreted as:
-  - Resource Type: Job
+* The `ResourceInfo` block: `ResourceInfo={resourceType='job', resourceName='TestProject:49a9cb6d-5e2a-4b52-9511-a525756826c8:jobgroup/testjob:15032'}` is intepreted as:
+  - The affected resource (`resourceType`) is a job.
   - Resource Name: Job `testjob` under group `jobgroup` on project `TestProject`
+  - The referred job uuid is `49a9cb6d-5e2a-4b52-9511-a525756826c8`
+  - As the action is `run`, the corresponding execution id `#15032` is also provided.
 
 * The `Action` block: `ActionType='run'` means this job is being executed.
 
