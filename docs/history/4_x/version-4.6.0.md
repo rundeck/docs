@@ -1,7 +1,7 @@
 # Release 4.6.0
 
 Name: <span style="color: salmon"><span class="glyphicon glyphicon-bullhorn"></span> "Ogre salmon bullhorn"</span>
-Release Date: PUTADATEHERE
+Release Date: August 31, 2022
 
 - [Download the Releases](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
@@ -9,7 +9,7 @@ Release Date: PUTADATEHERE
 
 ## Overview
 
-Check out the new features and enhancements for PagerDuty Process Automation (formerly Rundeck Enterprise) and PagerDuty Runbook Automation and Rundeck Community included in this release.
+Check out the new features and enhancements for PagerDuty Process Automation (formerly Rundeck Enterprise) and PagerDuty Runbook Automation and Rundeck Community included in this release. This release includes a new plugin for AWS Athena that job definitions to include SQL queries against Amazon S3, an enhancement of the Amazon ECS node source plugin to handle multiple clusters within the same region, and a number of  security and compliance updates, and bug fixes.
 
 ## Process Automation Updates
 
@@ -17,20 +17,19 @@ Check out the new features and enhancements for PagerDuty Process Automation (fo
 
 ### Highlights
 
-- first highlight
-- second highlight
+- **New plugin:** [AWS Athena Query Job Step Plugin](/manual/workflow-steps/aws-athena.md): The AWS Athena job steps plugin allows users to execute queries on data in S3 using AWS Athena as part of their Jobs.  Using this plugin allows domain-experts, such as BI or ML engineers, to provide a self-service interface to other individuals within the organization.  Or, as part of incident response, this plugin can be used for Automated Diagnostics and retrieve events from CloudTrail and surface those within PagerDuty Incidents.  
+
+- **ECS Node Source Enhancements:** With the [ECS Node Source](/manual/projects/resource-model-sources/ecs-fargate.md), users can now integrate with multiple clusters in a given region.  This makes it easier to manage ECS Tasks across larger environments where it is common to have numerous clusters.  In addition, users can now filter the ECS Tasks added to the Node Inventory based on Service, Task Definition, or Container Name.  This is especially useful when there are only specific ECS Tasks that should be targeted with the [ECS Node Executor](/manual/projects/node-execution/aws-ecs.md).  For example, in a given cluster, there might be “sandbox” Tasks that do not need to be targeted with Automated-Diagnostics runbooks.  
 
 ### Additional Updates
 
 
 * Update runner version to 0.1.30
-* Loop Script Plugins - Fixups
+* [Loop Script Plugins](/manual/workflow-steps/loop-plugins.md) - Fixups
 * Changed max chars allowed on job params field from 255 to 750
 * Fix: Chrome Debug console Errors
-* Enhanced plugin: ECS Node Source
-* Fix: Usability issues with SQL Runner
-* New plugin: AWS Athena Query Job Steps
-* New API rate-limit algorithms to throttle abnormal client requests
+* Fix: Usability issues with [SQL Runner Plugin](/manual/node-steps/sqlrunner.md)
+* New [API rate-limit](/administration/security/ratelimiting.md) algorithms to throttle abnormal client requests
 
 
 ## Rundeck Open Source Product Updates
@@ -51,23 +50,6 @@ Check out the new features and enhancements for PagerDuty Process Automation (fo
 
 ## Ansible Plugin Updates
 * [Fix: Ansible plugin using a non-admin user on winrm](https://github.com/rundeck-plugins/ansible-plugin/pull/324)
-
-
-## Community Contributors
-
-* Luis Toledo ([ltamaster](https://github.com/ltamaster))
-* Rodrigo Navarro ([ronaveva](https://github.com/ronaveva))
-* Leonel Juarez ([L2JE](https://github.com/L2JE))
-* Darwis Narvaez ([DarwisNarvaezDev](https://github.com/DarwisNarvaezDev))
-* Jesus Osuna ([Jesus-Osuna-M](https://github.com/Jesus-Osuna-M))
-* Alberto Hormazabal ([ahormazabal](https://github.com/ahormazabal))
-* Alexander Abarca ([alexander-variacode](https://github.com/alexander-variacode))
-* Michael Catanese ([mcat115](https://github.com/mcat115))
-* Eric He ([ehe-pd](https://github.com/ehe-pd))
-* Jake Cohen ([jsboak](https://github.com/jsboak))
-* Greg Schueler ([gschueler](https://github.com/gschueler))
-* Nathan Fluegel ([wayfaringson](https://github.com/wayfaringson))
-* Reiner ([MegaDrive68k](https://github.com/MegaDrive68k))
 
 
 ## Staff Contributors
@@ -91,3 +73,5 @@ Check out the new features and enhancements for PagerDuty Process Automation (fo
 * Osman Albarran ([Oalbarran94](https://github.com/Oalbarran94))
 * Rodrigo Navarro ([ronaveva](https://github.com/ronaveva))
 * Stephen Joyner ([sjrd218](https://github.com/sjrd218))
+* Nathan Fluegel ([wayfaringson](https://github.com/wayfaringson))
+* Reiner ([MegaDrive68k](https://github.com/MegaDrive68k))
