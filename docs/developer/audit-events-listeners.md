@@ -4,12 +4,27 @@
 
 Audit event listeners plugins provides a way to capture and process certain system events related to user access to the application and its resources.
 
-Implementing an Audit Event Listener, you can configure a process to be executed when the following events take place:
+Implementing an Audit Event Listener, you can configure a process to be executed when one of these events take place, and gather contextual data like user identification, resource being affected and source client information.
 
--	User logs in successfully to the application
--	Users logs out from the application
--	User fails a login attempt
--	User access a project through the UI
+### Available Events
+
+* **User Events**:
+  * **Login Success**: When a user successfully logins in the system.
+  * **Login Failed**: When a user fails a login attempt.
+  * **Logout**: When a user signs out its session.
+
+* **Project Events**:
+  * **View**: Triggered when a user access a project through the UI. 
+
+* **Job Events**:
+  * **Create**: When a job is successfully created.
+  * **Update**: When a job is successfully modified.
+  * **Delete**: When a job is successfully deleted.
+  * **Run**: When a job is executed.
+
+* **System and Project ACL events**:
+  * **Update**: When an ACL file is created or edited.
+  * **Delete**: WHen an ACL file is deleted.
 
 ## Use
 
@@ -19,7 +34,7 @@ After installation, audit event plugins will be automatically loaded on startup 
 
 The following service configuration options are available at `rundeck-config.properties file:
 
-- `rundeck.audit.projectNotificationPeriod=1800` Defines the minimum period of seconds to wait between triggering repetitive events for a single project within the current session. Default 1800 (30 minutes)
+- `rundeck.audit.projectNotificationPeriod=1800` Defines the minimum period of seconds to wait between triggering repetitive `View` events for a single project within the current session. Default 1800 (30 minutes)
 - `rundeck.audit.minCacheRetentionPeriod=1800` Defines the minimum period of seconds to keep session tracking data in cache. Default 1800 (30 minutes).
 
 
@@ -113,7 +128,7 @@ public void init() {
 
 #### Capturing event info
 
-When an event is triggered, you will receive an event through the onEvent() method. The event object contains all the information related to the event. You can also access properties defined at the rundeck configuration file:
+When an event is triggered, you will **always** receive an event through the `onEvent()` method. The event object contains all the information related to the event. You can also access properties defined at the rundeck configuration file:
 
 ```java
 
@@ -165,7 +180,7 @@ public void onEvent(AuditEvent event) {
 
 #### Event callbacks
 
-Besides the generic onEvent() callback, the interface also provides dedicated callbacks for many of the usual events. This callback methods are called after the onEvent method, and only for the corresponding event. Use these methods if you just need to capture certain specific events:
+Besides the generic onEvent() callback, the interface also provides dedicated callbacks for many of the usual events. This callback methods are called **after the `onEvent` method**, and only for the specific event. Use these methods if you just need to capture certain specific events:
 
 ```java
   /**
@@ -200,8 +215,14 @@ Besides the generic onEvent() callback, the interface also provides dedicated ca
 
 Currently the available callbacks on the interface are:
 
-- onLoginSuccess: Called when a user logins successfully.
-- onLoginFailed: Called on an authentication failure event.
-- onLogout: Called when a user logs out.
-- onProjectView: Called when the project homepage is accessed.
+- **onLoginSuccess**: Called when a user logins successfully.
+- **onLoginFailed**: Called on an authentication failure event.
+- **onLogout**: Called when a user logs out.
+- **onProjectView**: Called when the project homepage is accessed.
+- **onJobCreate**: Called when a job is successfully created
+- **onJobUpdate**: Called when a job is successfully modified.
+- **onJobDelete**: Called when a job is successfully deleted.
+- **onJobRun**: Called when a job is executed.
+- **onAclUpdate**: Called when an ACL file is created or edited.
+- **onAclDelete**: Called whenan ACL file is deleted.
 
