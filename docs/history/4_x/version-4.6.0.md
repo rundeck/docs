@@ -24,7 +24,7 @@ Check out the new features and enhancements for PagerDuty Process Automation (fo
 ### Additional Updates
 
 
-* Update runner version to 0.1.30
+* Fix : Runner updated to v0.1.30 for CVE-2022-0239 (okhttp lib upgrade)
 * [Loop Script Plugins](/manual/workflow-steps/loop-plugins.md) - Fixups
 * Changed max chars allowed on job params field from 255 to 750
 * Fix: Chrome Debug console Errors
