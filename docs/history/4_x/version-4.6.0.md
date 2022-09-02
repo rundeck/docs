@@ -51,6 +51,9 @@ Check out the new features and enhancements for PagerDuty Process Automation (fo
 ## Ansible Plugin Updates
 * [Fix: Ansible plugin using a non-admin user on winrm](https://github.com/rundeck-plugins/ansible-plugin/pull/324)
 
+## Community Contributors
+
+* ([AndLLA](https://github.com/AndLLA)) - Thank you for the [Learning Article](/learning/howto/apache2-proxy-gssapi.md)
 
 ## Staff Contributors
 
