@@ -46,7 +46,9 @@ module.exports = [{
               '/learning/howto/use-terraform-provider.md',
               '/learning/howto/learn-rd-cli.md',
               '/learning/howto/acl_basic_examples.md',
-              '/learning/howto/apache2-proxy-gssapi.md'      
+              '/learning/howto/apache2-proxy-gssapi.md',
+              '/learning/howto/workinglogs.md',
+              '/learning/howto/S3-minio.md'
           ]
         },
         {
@@ -82,7 +84,8 @@ module.exports = [{
               '/learning/howto/configure-gcp-plugins.md',
               '/learning/howto/sn-midserver.md',
               '/learning/howto/rundeck-exporter.md',
-              '/learning/howto/vault-integration.md'
+              '/learning/howto/vault-integration.md',
+              '/learning/howto/howtojenkins.md'
           ]
         },
         {
