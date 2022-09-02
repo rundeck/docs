@@ -60,19 +60,19 @@ Next, create an application secret (ID & passsword) that will be used in the Run
 3. Enter **"PagerDuty Process Automation On-Prem"** for the Description (or any name you choice)
 4. Select **"Add"** at the bottom
 
-![](~@assets/img/sso-azure-06-secret2.jpg)
+![](~@assets/img/sso-azure-06-secret3.png)
 
 1. Copy the **Value** and store it someplace. You will use it as the clientSecret (password) when configuring Rundeck. (Hint: use the Copy to clipboard button)
-2. Copy the **Secret ID** and store it someplace. You will use it as the clientID when configuring Rundeck. (Hint: use the Copy to clipboard button)
 
 ### Azure - Get the **"Directory (tenant) ID"**
 
 Last, capture the Directory (tenant) ID to use in configuring Rundeck.
 
-![](~@assets/img/sso-azure-07-dirid.jpg)
+![](~@assets/img/sso-azure-07-dirid2.png)
 
 1. Click **"Overview"** on the left
 2. Copy the **"Directory (tenant) ID"** and store it someplace.  You will use it in the URL when configuring Rundeck. (Hint: use the Copy to clipboard button)
+3. Copy the **Secret ID** and store it someplace. You will use it as the clientID when configuring Rundeck. (Hint: use the Copy to clipboard button)
 
 ## Configure Rundeck to use Azure Active Directory for Authentication
 
