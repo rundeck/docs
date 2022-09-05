@@ -59,6 +59,8 @@ the value.
 The execution data is included as a Map called `execution`
 containing the following keys and values:
 
+> Note: The context variables that will be available for users to use on inputs on the gui will depend on the specific notification plugin.
+
 `execution.id`: ID of the execution
 
 `execution.href`: URL to the execution output view
