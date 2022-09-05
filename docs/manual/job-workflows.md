@@ -288,7 +288,7 @@ When a Job step is executed, it has a set of "context" variables that can be acc
 
 The execution data is included as a Map called execution containing the following keys and values:
 
-> Note: The `execution` variables are only available in the Notification context.  They are not available while a job is running or as part of Job Steps.
+> Note: The `execution` variables are only available in the [Notification context](/developer/05-notification-plugins.md#execution-data). They are not available while a job is running or as part of Job Steps.
 
 - `execution.id`: ID of the execution
 - `execution.href`: URL to the execution output view
