@@ -24,7 +24,7 @@ if (TAG) {
     env = {
         RUNDECK_VERSION: version,
         RUNDECK_VERSION_FULL: `${version}-${date}`,
-        CLI_VERSION: rundeckCLIVersion
+        CLI_VERSION: rdCLIVersion
     }
 
     console.log(version, date, maint)
