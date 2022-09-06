@@ -72,7 +72,7 @@ Last, capture the Directory (tenant) ID to use in configuring Rundeck.
 
 1. Click **"Overview"** on the left
 2. Copy the **"Directory (tenant) ID"** and store it someplace.  You will use it in the URL when configuring Rundeck. (Hint: use the Copy to clipboard button)
-3. Copy the **Secret ID** and store it someplace. You will use it as the clientID when configuring Rundeck. (Hint: use the Copy to clipboard button)
+3. Copy the **Client ID** and store it someplace. You will use it as the clientID when configuring Rundeck. (Hint: use the Copy to clipboard button)
 
 ## Configure Rundeck to use Azure Active Directory for Authentication
 
