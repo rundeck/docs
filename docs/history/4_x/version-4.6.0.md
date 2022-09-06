@@ -1,7 +1,7 @@
 # Release 4.6.0
 
 Name: <span style="color: salmon"><span class="glyphicon glyphicon-bullhorn"></span> "Ogre salmon bullhorn"</span>
-Release Date: August 31, 2022
+Release Date: September 6, 2022
 
 - [Download the Releases](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
