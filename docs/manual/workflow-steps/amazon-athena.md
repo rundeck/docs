@@ -1,4 +1,4 @@
-# AWS Athena Query Workflow Step
+# Amazon Athena Query Workflow Step
 
 ::: enterprise
 :::
@@ -12,7 +12,7 @@ crawl data sources to discover schemas and populate their Catalog with new and m
 
 To learn more about Amazon Athena, click [here](https://aws.amazon.com/athena).
 
-## About the AWS Athena Query Workflow Step Plugin
+## About the Amazon Athena Query Workflow Step Plugin
 
 The Athena Query Workflow Step plugin allows users to make queries through Athena to their S3 data as part of their automated-runbook workflows:
 <img style='border:1px solid #327af6' src="@assets/img/aws-athena-job-step-config.png" /><br>
