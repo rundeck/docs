@@ -41,6 +41,13 @@ Connection can be confirmed on the Runner Management page on the _Last Checkin_ 
 :::
 ::::
 
+:::tip
+To enable the Runner features you have to add the following property in `rundeck-config.properties` file and restart the Process Automation cluster or instance. The setting is already on by default for docker installs since 4.5.0, and also on by default for Runbook Automation.	
+```
+rundeck.feature.runner.enabled=true
+```
+:::
+
 ## Runner Management
 
 ### Assigning Projects/Nodes to a Runner
@@ -82,6 +89,17 @@ java -Dmicronaut.http.client.proxy-type=http -Dmicronaut.http.client.proxy-addre
 1. `-Dmicronaut.http.client.proxy-username` is set to the user that is allowed to connect through the secure proxy.
 1. `-Dmicronaut.http.client.proxy-password` is set to the secure proxy user password.
 
+### Runner on Windows OS
+
+The “Runner Management” menu will appear on under the “System” settings:
+
+![Runner Architecture](@assets/img/runner-management.png)
+
+If you are installing a Runner on a Windows OS, you have to specify the “OS Family” setting as “windows” in the Local node configuration for the Project that the Runner will be associated with.
+
+![Runner Architecture](@assets/img/runner-os-family.png)
+
+Powershell script steps are fully supported on the Runner. Commands that run through the cmd.exe shell are not supported at the moment.
 
 ## FAQ
 
