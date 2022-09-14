@@ -1,7 +1,7 @@
 # Release 4.6.1
 
 Name: <span style="color: sandybrown"><span class="glyphicon glyphicon-camera"></span> "Ogre sandybrown camera"</span>
-Release Date: PUTADATEHERE
+Release Date: September 14, 2022
 
 - [Download the Releases](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
@@ -11,31 +11,12 @@ Release Date: PUTADATEHERE
 
 Check out the new features and enhancements for PagerDuty Process Automation (formerly Rundeck Enterprise) and PagerDuty Runbook Automation and Rundeck Community included in this release.
 
-## Process Automation Updates
+## Process Automation / Rundeck Open Source Product Updates
 
-> Also includes all Open Source updates from below
-
-### Highlights
-
-- first highlight
-- second highlight
-
-### Additional Updates
-
-
-
-
-## Rundeck Open Source Product Updates
-
+* [Fix : Update snakeyaml to 1.31 to address High Severity CVE-2022-25857](https://github.com/rundeck/rundeck/pull/7894)
 
 
 [Here is a link to the full list of public PRs](https://github.com/rundeck/rundeck/pulls?q=is%3Apr+milestone%3A4.6.1+is%3Aclosed)
-
-## Ansible Plugin Updates
-
-
-## Community Contributors
-
 
 
 ## Staff Contributors
