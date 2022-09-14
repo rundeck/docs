@@ -7,7 +7,7 @@
 ![Rundeck architecture](~@assets/img/architecture.png)
 
 ## Installation
-To install a Process Automation instance, download the latest version from [here](https://download.rundeck.com/versions.html), and follow the steps in the [Installation Guide](/administration/install/index.md)
+To install a Process Automation instance, download the latest version from [here](https://download.rundeck.com/versions.html), and follow the steps in the [Installation Guide](/administration/install/installing-rundeck.md)
 
 ## Requirements
 The Process Automation environment needs the following shared resources:
