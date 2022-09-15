@@ -3,11 +3,11 @@
 /manual/02-getting-help.html /introduction/getting-help.html
 /administration/configuration/license.html /administration/license.html
 /manual/servicenow-app.html /manual/integrations/servicenow-app.html
-/administration/security/key-storage.html /administration/key-storage/key-storage.html
-/administration/security/storage-plugins.html /administration/key-storage/key-plugins.html
-/administration/security/storage-plugins/cyberark-storage.html /administration/key-storage/storage-plugins/cyberark-storage.html
-/administration/security/storage-plugins/thycotic-storage.html /administration/key-storage/storage-plugins/thycotic-storage.html
-/administration/security/storage-plugins/vault.html /administration/key-storage/storage-plugins/vault.html
+/administration/security/key-storage.html /manual/key-storage/key-storage.html
+/administration/security/storage-plugins.html /manual/key-storage/key-plugins.html
+/administration/security/storage-plugins/cyberark-storage.html /manual/key-storage/storage-plugins/cyberark-storage.html
+/administration/security/storage-plugins/thycotic-storage.html /manual/key-storage/storage-plugins/thycotic-storage.html
+/administration/security/storage-plugins/vault.html /manual/key-storage/storage-plugins/vault.html
 /manual/command-line-tools/index.html /rd-cli/index.html
 /manual/command-line-tools/rd.html /rd-cli/index.html
 /manual/command-line-tools/rd-acl.html /rd-cli/rd-ext-acl.html
