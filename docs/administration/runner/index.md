@@ -42,7 +42,7 @@ Connection can be confirmed on the Runner Management page on the _Last Checkin_ 
 ::::
 
 :::tip
-To enable the Runner features you have to add the following property in `rundeck-config.properties` file and restart the Process Automation cluster or instance. The setting is already on by default for docker installs since 4.5.0, and also on by default for Runbook Automation.	
+To enable the Runner features you have to add the following property in `rundeck-config.properties` file and restart the Process Automation cluster or instance. This feature has been enabled on Docker installations since v4.5.0 and is also enabled by default for Runbook Automation.	
 ```
 rundeck.feature.runner.enabled=true
 ```
@@ -95,7 +95,19 @@ The “Runner Management” menu will appear on under the “System” settings:
 
 ![Runner Architecture](@assets/img/runner-management.png)
 
-If you are installing a Runner on a Windows OS, you have to specify the “OS Family” setting as “windows” in the Local node configuration for the Project that the Runner will be associated with.
+If you are installing a Runner on a Windows OS as localhost node, you have to specify the “OS Family” setting as “windows”.
+
+- Choose related to the project.
+- Go to the left side bar menu and choose "EDIT NODES".
+- Click on "Resources" tab.
+- Click on "Edit" on the local node.
+- On the field "OS Family" set "windows".
+
+![Runner Architecture](@assets/img/runner-edit-nodes.png)
+
+![Runner Architecture](@assets/img/runner-resource-tab.png)
+
+![Runner Architecture](@assets/img/runner-edit-local.png)
 
 ![Runner Architecture](@assets/img/runner-os-family.png)
 
