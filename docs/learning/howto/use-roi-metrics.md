@@ -1,12 +1,12 @@
 # Using ROI Metric Data
 
-**ROI Metrics Data** stores arbitrary key value pairs against your job to help understand your ROI per job execution. The metrics will be stored against the each execution of the job, and accessible via API for further analysis.  This article will walk through a setup scenario and provide some helpful example scripts to gather data from the API.
+**ROI Metrics Data** stores arbitrary key value pairs against your job to help understand your ROI per job execution. The metrics will be stored against the execution of the job, and accessible via API for further analysis.  This article will walk through a setup scenario and provide some helpful example scripts to gather data from the API.
 
 ## Configuring the Metrics
 
 ### Example Scenario:
 
-Customer X has decided to track how often time is saved with their newly implemented Automation job (uniquely titled `ROI Job`).  They know from historical issues that doing the same work prior to writing this job the manual steps took around 75 minutes across all teams, start to finish.  The job now runs in just seconds.  To configure the job follow the steps or download the job definition.
+Customer X has decided to track how much time is saved with their newly implemented Automation job (uniquely titled `ROI Job`).  They know from historical ticket-data that doing the same work manually - prior to writing this job - took around 75 minutes across all teams, start to finish.  The job now runs in just seconds.  To configure the job follow the steps or download the job definition.
 
 :::: tabs
 ::: tab Steps to Create
@@ -19,7 +19,7 @@ Customer X has decided to track how often time is saved with their newly impleme
 1. Check the box for **ROI Metrics Data**.<br><br>
     ![ROI Metrics Plugin](~@assets/img/roi-metrics-data.png)
 1. Click **Add Custom Field**.<br><br>
-    ~[Add Custom Field](~@assets/img/roi-metrics-customfield.png)
+    ![Add Custom Field](~@assets/img/roi-metrics-customfield.png)
 1. Enter a value for:
     - ***Field Label***: `Hours Saved`
     - ***Field Key***: `hours`
