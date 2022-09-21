@@ -8,7 +8,7 @@ User Class Management allows Process Automation customers to assign users to Use
 
 ## User Classes
 
-User Classes act as a super set of ACLs.  Rundeck uses a lowest privilege model.  These ACLs will allow a certain level of access “at the most”, and customers can apply [customized ACLs](https://docs.rundeck.com/docs/tutorials/access-control.html) to further refine access.
+User Classes act as a super set of ACLs.  Rundeck uses a lowest privilege model.  These ACLs will allow a certain level of access “at the most”, and customers can apply [customized ACLs](/learning/tutorial/acls.md) to further refine access.
 
 ### Full User
 
