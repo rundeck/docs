@@ -37,7 +37,7 @@ Then configure Autotakeover by adding the following settings in `rundeck-config.
 # enables autotakeover for members detected as "dead"
 rundeck.clusterMode.autotakeover.enabled=true
 
-# policy indicates which nodes to take over. "Any": all dead nodes. "Static": only allowed uuids
+# policy indicates which nodes to take over. "Any": all dead nodes. "Static": only allowed uuids. "RemoteExecution": respect the remote execution policy defined on the cluster.
 rundeck.clusterMode.autotakeover.policy=Any
 
 # delay in seconds to wait after sending autotakeover proposal
