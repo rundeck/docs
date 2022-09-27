@@ -155,13 +155,15 @@ other cluster members based on statistics calculated by the heartbeat process
 of each cluster member. Load is calculated for each member based on thread
 ratio and the percentage of CPU.
 
-Note: You must be running Process Automation 2.3.1 or a later release to use this feature.
+> **Note:** You must be running Process Automation 2.3.1 or a later release to use this feature.
 
 **Example**
 
 ```properties
 rundeck.clusterMode.remoteExecution.config.criteria = threadRatio,load
 ```
+
+> **Note:** These are the only criterias available so far.
 
 Each criteria can be weighted using a relative value:
 
@@ -174,13 +176,17 @@ group is given a weight, and the policy randomly chooses a group based on the
 proportional weight of the group. A member of the group is chosen randomly and
 used.
 
-**Example**
+With the property `groupWeight` it is possible to define the amount of groups and its weights, the groups will be as many as defined weights, and the sum of all weights must be divisible by the number of members.
+
+**Examples**
 
 ```properties
+# Four groups, each with 25% of the members. The weights define 100% chance of the first group being used.
 rundeck.clusterMode.remoteExecution.config.groupWeight=1,0,0,0
-```
 
-The example defines four groups, each with 25% of the members. The weights define 100% chance of the first group being used.
+# Three groups, each with 30% of the members. The weights define 44.4%, 33.3% and 22.2% chance of each group respectively being used.
+rundeck.clusterMode.remoteExecution.config.groupWeight=4,3,2
+```
 
 ### Cluster Remote Execution with Secure Options
 
