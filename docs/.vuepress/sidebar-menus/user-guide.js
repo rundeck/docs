@@ -103,6 +103,7 @@ module.exports = [{
         '/manual/execution-lifecycle/job-resume.md',
         '/manual/execution-lifecycle/job-retry-failed-nodes.md',
         '/manual/execution-lifecycle/result-data.md',
+        '/manual/execution-lifecycle/roi-metrics.md',
         '/manual/jobs/job-queue.md',
       ]
     },
