@@ -18,6 +18,22 @@ Configure the following remote execution policy parameters in `rundeck-config.pr
 Definitions on this page are case-sensitive. Copy and paste the code to ensure no typos.
 :::
 
+When a job is saved, it is scheduled to run on a server node in the cluster. It is possible to see how many jobs are scheduled to run on each cluster member as well as each job specifically from the cluster manager page :
+
+![Cluster Members with jobs scheduled in](~@assets/img/cluster_members_scheduled_jobs.png)
+
+![Job scheduled in cluster member "3e" (192.168.56.23)](~@assets/img/job_remote_exec_node_assigned.png)
+
+After the job runs a couple of times it is possible to see that the executions were run on different cluster members because of the evaluation of the remote execution policy. See The example below of a job assigned to a cluster member *(3e)* and running a local command `hostname -I` on different servers depending on the remote execution policy:
+
+![Remote Execution on server "18" (192.168.56.21)](~@assets/img/job_remote_exec_run1.png)
+
+![Remote Execution on server "08" (192.168.56.22)](~@assets/img/job_remote_exec_run2.png)
+
+:::tip
+Although the remote execution policy is reevaluated on every execution, it is **also** possible to make cluster members **reevaluate** the remote execution policy **only once** when the job is scheduled. This is possible by setting to **false** the following property:
+`rundeck.clusterMode.remoteScheduledExecutionPolicy.enabled`
+:::
 #### Policy
 
 ```
@@ -139,13 +155,15 @@ other cluster members based on statistics calculated by the heartbeat process
 of each cluster member. Load is calculated for each member based on thread
 ratio and the percentage of CPU.
 
-Note: You must be running Process Automation 2.3.1 or a later release to use this feature.
+> **Note:** You must be running Process Automation 2.3.1 or a later release to use this feature.
 
 **Example**
 
 ```properties
 rundeck.clusterMode.remoteExecution.config.criteria = threadRatio,load
 ```
+
+> **Note:** These are the only criterias available so far.
 
 Each criteria can be weighted using a relative value:
 
@@ -158,13 +176,17 @@ group is given a weight, and the policy randomly chooses a group based on the
 proportional weight of the group. A member of the group is chosen randomly and
 used.
 
-**Example**
+With the property `groupWeight` it is possible to define the amount of groups and its weights, the groups will be as many as defined weights, and the sum of all weights must be divisible by the number of members.
+
+**Examples**
 
 ```properties
+# Four groups, each with 25% of the members. The weights define 100% chance of the first group being used.
 rundeck.clusterMode.remoteExecution.config.groupWeight=1,0,0,0
-```
 
-The example defines four groups, each with 25% of the members. The weights define 100% chance of the first group being used.
+# Three groups, each with 30% of the members. The weights define 44.4%, 33.3% and 22.2% chance of each group respectively being used.
+rundeck.clusterMode.remoteExecution.config.groupWeight=4,3,2
+```
 
 ### Cluster Remote Execution with Secure Options
 
