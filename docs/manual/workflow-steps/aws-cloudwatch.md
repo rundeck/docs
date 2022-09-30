@@ -1,10 +1,15 @@
-# Amazon Web Services - CloudWatch Logs Workflow Step
+# Amazon Web Services - CloudWatch Logs Workflow Step Plugins
 
 AWS CloudWatch can serve as a log-aggregator for the majority of logs generated within your cloud environment. 
 This includes logs from the Cloud infrastructure, such as ELB logs and VPC Flow logs, as well as logs from the applications running on VM's and containers.
 
 With CloudWatch Logs Insights, queries can be made to log groups within CloudWatch to retrieve statistics and visualizations from the logs.
 You can read more about CloudWatch Logs Insights [here](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AnalyzingLogData.html)
+
+There are two CloudWatch Logs plugins:
+
+[Execute Ad-Hoc CloudWatch Logs Query](#execute-ad-hoc-cloudwatch-logs-query)
+[Execute Saved CloudWatch Logs Query](#execute-saved-cloudwatch-logs-query)
 
 The CloudWatch Logs workflow step plugin allows you to execute queries to your CloudWatch logs as a step within your Automation Job. This can be useful for generating reports as well as automated-debugging and troubleshooting during incidents.
 
@@ -29,7 +34,7 @@ and fill in the **AWS Access Key** and **AWS Secret Key Path** and **AWS Region*
 For the plugin to be able to query CloudWatch using Logs Insights, the following permissions must be associated with the AWS Credentials or IAM Role used for authentication:
 **`logs:StartQuery`** and **`logs:GetQueryResults`**.
 
-## Making Queries to CloudWatch Logs Insights
+## Execute Ad-Hoc CloudWatch Logs Query
 
 1. When configuring your Automation Job, add the **Aws / CloudWatch / Logs** Workflow Step.
 2. In the **Query Settings** section provide the CloudWatch log group that should be queries using Logs Insights.
@@ -46,3 +51,5 @@ You can insert Job Options into the Query String using `${option.my_job_option}`
 ### See it in Action
 This plugin is used in one of the prebuilt Jobs in our [**_Automated Diagnostics Solution_**](/learning/solutions/automated-diagnostics/solution-overview).
 Try out the Solution to see how this plugin can be used as part of incident-response workflows.
+
+## Execute Saved CloudWatch Logs Query
