@@ -30,19 +30,19 @@ Authentication to AWS can be performed from Process and Runbook Automation using
 If Process Automation is self-hosted and running on either an EC2 instance or an ECS container, then the Node Executor can leverage the IAM Role that has been associated with the instance or container.
 For instructions on how to associate an IAM Role to an EC2, click [here](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html), and for ECS Task Roles, click [here](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html).
 
-1. Navigate to **Project Settings -> Edit Configuration -> Edit Configuration File**.<br><br>
+1. Navigate to **Project Settings -> Edit Configuration -> Edit Configuration File**.
 2. If Process Automation is installed on an EC2, then add **`project.aws.credentialProvider=instance`**.  
-   If it is installed in an ECS container, then add **`project.aws.credentialProvider=container`**.<br><br>
+   If it is installed in an ECS container, then add **`project.aws.credentialProvider=container`**.
 3. Click **Save** to commit the changes to the Project Configuration File.
 
 #### Option 2: Authentication with Access Keys
 These steps outline how to set the AWS Access Keys for a given project.  The credentials can be set for the entire Process Automation _system_ using [Configuration Management](/manual/configuration-mgmt/configmgmt.html).
 
-1. To create an Access Key ID and Secret that is associated with an IAM Role, follow [these instructions](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html).<br><br>
-2. Once the keys have been downloaded, add the Secret Key into Project or System **Key Storage** using the **Password** key type, following [these instructions](/manual/system-configs.html#key-storage).<br><br>
-3. Navigate to **Project Settings -> Edit Configuration -> Edit Configuration File**. <br><br>
-4. Insert **`project.aws.access_key=YOUR_ACCESS_KEY`** with the Access Key from the IAM credentials.<br><br>
-5. Insert **`project.aws.secret_key_path=keys/path/to/secret_key`** with the path to the **Secret Key** in Key Storage.<br><br>
+1. To create an Access Key ID and Secret that is associated with an IAM Role, follow [these instructions](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html).
+2. Once the keys have been downloaded, add the Secret Key into Project or System **Key Storage** using the **Password** key type, following [these instructions](/manual/system-configs.html#key-storage).
+3. Navigate to **Project Settings -> Edit Configuration -> Edit Configuration File**. 
+4. Insert **`project.aws.access_key=YOUR_ACCESS_KEY`** with the Access Key from the IAM credentials.
+5. Insert **`project.aws.secret_key_path=keys/path/to/secret_key`** with the path to the **Secret Key** in Key Storage.
 6. Click **Save**.
 
 ## Execute Ad-Hoc CloudWatch Logs Query
