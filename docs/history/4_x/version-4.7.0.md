@@ -1,7 +1,7 @@
 # Release 4.7.0
 
 Name: <span style="color: yellowgreen"><span class="glyphicon glyphicon-gift"></span> "Orc yellowgreen gift"</span>
-Release Date: PUTADATEHERE
+Release Date: October 6th, 2022
 
 - [Download the Releases](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
@@ -9,7 +9,9 @@ Release Date: PUTADATEHERE
 
 ## Overview
 
-Check out the new features and enhancements for PagerDuty Process Automation (formerly Rundeck Enterprise) and PagerDuty Runbook Automation and Rundeck Community included in this release.
+Check out the new features and enhancements for PagerDuty Process Automation (formerly Rundeck Enterprise), PagerDuty Runbook Automation, and Rundeck Community included in this release. This release includes a new plugin for CloudWatch that simplifies the management of diagnostics queries, an incubating feature that helps users understand the return on investment (ROI) of jobs, and a number of security and compliance updates and bug fixes.
+
+View our Twitch stream review of this release live on Wednesday, October 12 at 10AM Pacific. [Here’s the event link](https://www.twitch.tv/pagerduty/schedule?seriesID=792f972e-f876-4135-b6c2-6ea30a5c0330).
 
 ## Process Automation Updates
 
