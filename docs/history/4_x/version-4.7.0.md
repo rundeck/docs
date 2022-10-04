@@ -25,6 +25,14 @@ The ROI Metrics integration tracks user-defined value of each job execution and 
 
 **Enhanced Progress Badge Plugin** - The Progress Badge plugin can create graphic badges that render on the Log Output tab. Now, the enhanced Progress Badge allows users to present simplified log-output text to other job-steps and provides the option to include emoticon status-symbols. For users implementing Automated Diagnostics, this gives domain-experts the ability to simplify diagnostics in an easier to consume way. Find the full documentation for the enhanced plugin [here](/manual/log-filters/progress-badge.md).
 
+### Additional Updates
+
+* Cleanup/fix some restart flags on System Configuration entries.
+* Error sending PagerDuty notification if summary contains unknown variable
+* Fix: JIRA Notification Plugin Shows password in plain text
+* Fixed runner downloading on windows
+
+
 ## Rundeck Open Source Product Updates
 
 * [Improvements on job file option input sanitation](https://github.com/rundeck/rundeck/pull/7911)
@@ -41,10 +49,9 @@ The ROI Metrics integration tracks user-defined value of each job execution and 
 * [Customizing UI with client logo resize login form, push login button to bottom without scroll](https://github.com/rundeck/rundeck/pull/7878)
 * [Fix flaky test for avg duration notification](https://github.com/rundeck/rundeck/pull/7876)
 * [fix: validation added to prevent invalid captured pattern](https://github.com/rundeck/rundeck/pull/7873)
-* [Fixes imports that were missing](https://github.com/rundeck/rundeck/pull/7871)
-* [Migrating components to app.ts](https://github.com/rundeck/rundeck/pull/7870)
 * [Add changes needed for ROI Plugin](https://github.com/rundeck/rundeck/pull/7866)
 * [Auth Token data-spi ](https://github.com/rundeck/rundeck/pull/7837)
+
 
 [Here is a link to the full list of public PRs](https://github.com/rundeck/rundeck/pulls?q=is%3Apr+milestone%3A4.7.0+is%3Aclosed)
 
