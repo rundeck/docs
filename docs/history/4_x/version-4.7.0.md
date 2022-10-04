@@ -17,13 +17,13 @@ Check out the new features and enhancements for PagerDuty Process Automation (fo
 
 ### Highlights
 
-- first highlight
-- second highlight
+**ROI Metrics Data (incubating)** - Process Automation provides value with each workflow execution. Users report saving time, money, and often a combination of both. Now, Process Automation users have a way to track time and money saved, as well as begin to see insights into the effectiveness of teams and projects.
 
-### Additional Updates
+The ROI Metrics integration tracks user-defined value of each job execution and stores key value pairs against jobs to help you understand the ROI per job execution. The metrics accessible via API for further analysis. Find out more [here](/manual/execution-lifecycle/roi-metrics.md).
 
+**CloudWatch Logs Saved Query plugin** - This new plugin can help users improve incident response and streamline reporting. Amazon customers often save queries for CloudWatch Logs Insights for common reporting and investigation tasks. Now, Runbook Automation and Process Automation customers can use this plugin to execute saved queries as Job steps within their automated runbooks. This allows domain-experts to delegate queries to others as self-service. For incident response, this plugin also helps automate diagnostics by giving responders the ability to pull logs into a PagerDuty incident without escalating to experts. Full details and documentation for the new plugin can be found [here](/manual/workflow-steps/aws-cloudwatch.md).
 
-
+**Enhanced Progress Badge Plugin** - The Progress Badge plugin can create graphic badges that render on the Log Output tab. Now, the enhanced Progress Badge allows users to present simplified log-output text to other job-steps and provides the option to include emoticon status-symbols. For users implementing Automated Diagnostics, this gives domain-experts the ability to simplify diagnostics in an easier to consume way. Find the full documentation for the enhanced plugin [here](/manual/log-filters/progress-badge.md).
 
 ## Rundeck Open Source Product Updates
 
@@ -46,31 +46,13 @@ Check out the new features and enhancements for PagerDuty Process Automation (fo
 * [Add changes needed for ROI Plugin](https://github.com/rundeck/rundeck/pull/7866)
 * [Auth Token data-spi ](https://github.com/rundeck/rundeck/pull/7837)
 
-
 [Here is a link to the full list of public PRs](https://github.com/rundeck/rundeck/pulls?q=is%3Apr+milestone%3A4.7.0+is%3Aclosed)
-
-## Ansible Plugin Updates
-
 
 ## Community Contributors
 
-* Alberto Hormazabal ([ahormazabal](https://github.com/ahormazabal))
-* Imad Jafir ([imad6639](https://github.com/imad6639))
-*  ([jbrookspd](https://github.com/jbrookspd))
-* Eric He ([ehe-pd](https://github.com/ehe-pd))
-* Darwis Narvaez ([DarwisNarvaezDev](https://github.com/DarwisNarvaezDev))
-* Greg Schueler ([gschueler](https://github.com/gschueler))
-* Antony Velasquez Ruiz ([avelasquezr](https://github.com/avelasquezr))
-* Osman Albarran ([Oalbarran94](https://github.com/Oalbarran94))
-* Carlos Eduardo ([carlosrfranco](https://github.com/carlosrfranco))
-* Jason Qualman ([qualman](https://github.com/qualman))
 * Reiner ([MegaDrive68k](https://github.com/MegaDrive68k))
-* Jake Cohen ([jsboak](https://github.com/jsboak))
 * Lucas Canavosio ([lcanavosio](https://github.com/lcanavosio))
 * JP Lassnibatt ([jplassnibatt](https://github.com/jplassnibatt))
-* Forrest Evans ([fdevans](https://github.com/fdevans))
-* Alexander Abarca ([alexander-variacode](https://github.com/alexander-variacode))
-
 
 ## Staff Contributors
 
@@ -85,6 +67,7 @@ Check out the new features and enhancements for PagerDuty Process Automation (fo
 * Forrest Evans ([fdevans](https://github.com/fdevans))
 * Imad Jafir ([imad6639](https://github.com/imad6639))
 * Jake Cohen ([jsboak](https://github.com/jsboak))
+* Jason Brooks ([jbrookspd](https://github.com/jbrookspd))
 * Jason Qualman ([qualman](https://github.com/qualman))
 * Jesus Osuna ([Jesus-Osuna-M](https://github.com/Jesus-Osuna-M))
 * Leonel Juarez ([L2JE](https://github.com/L2JE))
