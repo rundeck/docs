@@ -29,30 +29,27 @@ The ROI Metrics integration tracks user-defined value of each job execution and 
 
 ### Additional Updates
 
+
 * Cleanup/fix some restart flags on System Configuration entries.
-* Error sending PagerDuty notification if summary contains unknown variable
+* Fix: PagerDuty notifications fail if the Summary field contains unknown variables
+* Execute Saved CloudWatch Queries Plugin
+* Fix: Unexpected FailureReason string causes node execution to result in success
 * Fix: JIRA Notification Plugin Shows password in plain text
-* Fixed runner downloading on windows
+* Fix :Runner in-product downloads erroring on windows
+* ROI Metrics Plugin
 
 
 ## Rundeck Open Source Product Updates
 
 * [Improvements on job file option input sanitation](https://github.com/rundeck/rundeck/pull/7911)
-* [fix bugs with AuthToken refactor](https://github.com/rundeck/rundeck/pull/7910)
-* [Adding job start failure metric.](https://github.com/rundeck/rundeck/pull/7909)
-* [Add error code parameter to login error page for custom message support](https://github.com/rundeck/rundeck/pull/7906)
-* [change lombok from annotationProcessor to implementation to resolve i…](https://github.com/rundeck/rundeck/pull/7901)
-* [[QA 4.6.1] Minor GUI Bug on WH Dropdown](https://github.com/rundeck/rundeck/pull/7899)
-* [fix: dev-mode: failing ui pseudo-test](https://github.com/rundeck/rundeck/pull/7892)
-* [project menu dropdown create project doesnt work with an app context path](https://github.com/rundeck/rundeck/pull/7890)
-* [Failed to Import project, error 500 whitelabel on screen](https://github.com/rundeck/rundeck/pull/7887)
-* [Unable to edit job when SCM is still activated](https://github.com/rundeck/rundeck/pull/7885)
-* [rundeck.gui.helpLink property replace the doc link instead of support link](https://github.com/rundeck/rundeck/pull/7880)
-* [Customizing UI with client logo resize login form, push login button to bottom without scroll](https://github.com/rundeck/rundeck/pull/7878)
-* [Fix flaky test for avg duration notification](https://github.com/rundeck/rundeck/pull/7876)
-* [fix: validation added to prevent invalid captured pattern](https://github.com/rundeck/rundeck/pull/7873)
-* [Add changes needed for ROI Plugin](https://github.com/rundeck/rundeck/pull/7866)
-* [Auth Token data-spi ](https://github.com/rundeck/rundeck/pull/7837)
+* [Adding job start failure JMX metric.](https://github.com/rundeck/rundeck/pull/7909)
+* [Fix: Minor GUI Bug on Webhook Plugin dropdown](https://github.com/rundeck/rundeck/pull/7899)
+* [Fix: Project menu dropdown &#39;Create project&#39; breaks with an app context path](https://github.com/rundeck/rundeck/pull/7890)
+* [Fix: Improved error handling on importing a Project with missing plugins](https://github.com/rundeck/rundeck/pull/7887)
+* [Fix: Removed the hardcoded &#39;Documentation&#39; string in the &#39;get help&#39; URL in the footer ](https://github.com/rundeck/rundeck/pull/7880)
+* [Fix: UI update to prevent the login box from being obscured by large images](https://github.com/rundeck/rundeck/pull/7878)
+* [Fix: Added regex validation to LogFilter &#39;Key Value Data&#39; capture](https://github.com/rundeck/rundeck/pull/7873)
+
 
 
 [Here is a link to the full list of public PRs](https://github.com/rundeck/rundeck/pulls?q=is%3Apr+milestone%3A4.7.0+is%3Aclosed)
