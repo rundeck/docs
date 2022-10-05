@@ -29,15 +29,11 @@ The ROI Metrics integration tracks user-defined value of each job execution and 
 
 ### Additional Updates
 
-
 * Cleanup/fix some restart flags on System Configuration entries.
 * Fix: PagerDuty notifications fail if the Summary field contains unknown variables
-* Execute Saved CloudWatch Queries Plugin
 * Fix: Unexpected FailureReason string causes node execution to result in success
 * Fix: JIRA Notification Plugin Shows password in plain text
-* Fix :Runner in-product downloads erroring on windows
-* ROI Metrics Plugin
-
+* Fix: Runner in-product downloads erroring on windows
 
 ## Rundeck Open Source Product Updates
 
@@ -49,8 +45,6 @@ The ROI Metrics integration tracks user-defined value of each job execution and 
 * [Fix: Removed the hardcoded &#39;Documentation&#39; string in the &#39;get help&#39; URL in the footer ](https://github.com/rundeck/rundeck/pull/7880)
 * [Fix: UI update to prevent the login box from being obscured by large images](https://github.com/rundeck/rundeck/pull/7878)
 * [Fix: Added regex validation to LogFilter &#39;Key Value Data&#39; capture](https://github.com/rundeck/rundeck/pull/7873)
-
-
 
 [Here is a link to the full list of public PRs](https://github.com/rundeck/rundeck/pulls?q=is%3Apr+milestone%3A4.7.0+is%3Aclosed)
 
