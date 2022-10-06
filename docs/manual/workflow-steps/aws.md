@@ -33,7 +33,7 @@ Start the EC2 instance.
 
 ### AWS / VM / Stop
 
-Start the EC2 instance.
+Stop the EC2 instance.
 
 ### AWS / VM / Delete
 

@@ -2,24 +2,43 @@
 ::: enterprise
 :::
 
-This log filter changes the display of log output in a job’s activity logs by displaying a simple lozenge (the Progress Badge) with a text message, and optionally not displaying log returns. This is typically used to notify users of job status in a very clear way without complicating results with log returns.
+This log filter changes the log output of the steps in a job’s activity logs by displaying user-specified text and "Status Symbols" (emoticons), as well as optionally not displaying log returns. The chosen text and status-symbol can be dependent on the "raw" log-output of the given job step.
+
+One of the most common use-cases for the Progress Badge is to simplify the verbose output of diagnostics - such as application logs - into content that is consumable by first-responders of incidents.
+
+<img style='border:1px solid #327af6' src="@assets/img/progress-badge-output.png" />
 
 ## Usage
-This filter has a few options:
 
-- Text - the text to be placed on the display badge.
-- String - Optional regex to search the log returns for. If this field is set, the badge will only appear if the regex finds a match.
-- Mute - True/False with Conditional Disable option. If true, log output will be replaced by the badge.
-    - Conditional Disable option will only show the badge if the String regex matches. (Useful when configuring multiple Progress Badges for the same result for “Red/Green” style notifications.)
-- Typeface - Specify font for the badge - uses typical HTML/CSS typeface rules.
-### Advanced render options
-- Font Size - Font size of the text on the badge. All standard CSS options are available - “%”, “px”, “pt”, or “em.”
-- Background Color - Select from the predefined pulldown list, or enter a valid CSS value in the text box - either standard colors, or hex values.
+To add the Progress Badge to a job step:
 
+1. Click the **gear** icon in the upper-right of the job step:
+   <img style='border:1px solid #327af6' src="@assets/img/add-log-filter.png" />
+2. Click on **Progress Badge** and fill in the fields outlined below:
 
-## Emoji Support
+**Regex**: Optional regex to search the log returns for. If this field is set, the badge will only appear if the regex finds a match.
 
-To use some emoji inside the text, must input the alias of the emoji between colon:
+**Text**: The text to be placed in the log-output.
+
+**Status Symbol**: Optional emoticon to append to the text in the log-output.
+
+**Context Variable**: The name of a context-variable that can be referenced in subsequent steps.  For example, if `http_status` placed here, then the text plus emoticon will be referencable as `${data.http_status}` in subsequent job steps.
+
+### Optional advanced configuration settings:
+
+**Mute**: True/False with Conditional Disable option. If true, log output will be replaced by the badge.
+
+**Conditional**: Disable option will only show the badge if the String regex matches. (Useful when configuring multiple Progress Badges for the same result for “Red/Green” style notifications.)
+
+**Typeface**: Specify font for the badge - uses typical HTML/CSS typeface rules.
+
+**Font Size**: Font size of the text on the badge. All standard CSS options are available - “%”, “px”, “pt”, or “em.”
+
+**Background Color**: Select from the predefined pulldown list, or enter a valid CSS value in the text box - either standard colors, or hex values.
+
+### Custom Emoticon Support
+
+To use custom emoticons inside the text field, input the alias of the emoticon between two colons:
 `:smile: Successfull job! :100:`
 Display as:
 
@@ -28,8 +47,39 @@ Display as:
 A full list of supported emoji are listed here:
 [vdurmont/emoji-java](https://github.com/vdurmont/emoji-java)
 
-## Example
+## Example: Simplified HTTP Diagnostics 
 
-![](@assets/img/logfilter-progress-example1.png)
+In this scenario, Process Automation is used to check on an HTTP endpoint and inform the user whether the HTTP response is "healthy" or "unhealthy."
+The Progress Badge is used to simplify the output of the HTTP diagnostics.
 
-![](@assets/img/logfilter-progress-example2.png)
+1. Add a Job Option `endpoint-to-check`.  This will be the URL that is queried for an HTTP response.
+2. Add a **Remote Command** job step and use the command:
+   ```
+   curl -I ${option.endpoint-to-check}
+   ```
+3. Add the **Progress Badge** Log Filter, as described [above](#usage).
+4. Insert the following into the **Regex** field: **`HTTP/.*(200).*`**
+5. Insert "Healthy" into the **Text** field.
+6. Select the green check-mark emoticon for the **Status Symbol**.
+7. Insert the following into the **Context Variable** field  **`simplified-response`**:
+<p align="center">
+<img style='border:1px solid #327af6' width="500" src="@assets/img/completed-progress-badge.png" />
+</p>
+8. Add _another_ **Progress Badge** Log Filter to the same step.
+9. Insert the following into the **Regex** field: **`HTTP/.*(400|404|500|504|301).*`**
+10. Insert "Unhealthy" into the **Text** field.
+11. Select the red **X** emoticon for the **Status Symbol**.
+12. Insert the following into the **Context Variable** field: **`simplified-response`**.
+<p align="center">
+<img style='border:1px solid #327af6' width="500" src="@assets/img/progress-badge-unhealthy.png" />
+</p>
+
+Now, when a URL returns a **`200`**, the simplified message will be displayed alongside the verbose HTTP response:
+<img style='border:1px solid #327af6' src="@assets/img/progress-badge-output.png" />
+
+This simplified output can then be sent to other tools, such as PagerDuty Incident Response.
+First, add the **PagerDuty / Incident / Note** job step:
+<img style='border:1px solid #327af6' src="@assets/img/progress-badge-pd-step.png" />
+<br><br>
+Then, when the job is invoked, the **Text** plus **Status Symbol** will appear on the Incident Timeline:
+<img style='border:1px solid #327af6' src="@assets/img/progress-badge-pd-timeline.png" />
