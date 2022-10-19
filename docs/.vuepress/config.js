@@ -102,7 +102,7 @@ module.exports = {
       {
         text: 'Integrations',
         items: navbarIntegrations
-      }
+      },
       {
         text: 'Learning',
         items: navbarLearning
