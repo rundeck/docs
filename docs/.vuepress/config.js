@@ -12,6 +12,7 @@ const sidebarAbout = require('./sidebar-menus/about')
 // navbars
 const navbarAbout = require('./navbar-menus/about')
 const navbarUserGuide = require('./navbar-menus/user-guide')
+const navbarIntegrations = require('./navbar-menus/integrations')
 const navbarLearning = require('./navbar-menus/learning')
 const navbarAdmin = require('./navbar-menus/administration')
 const navbarDevelopment = require('./navbar-menus/development')
@@ -98,6 +99,10 @@ module.exports = {
         text: 'Administration',
         items: navbarAdmin
       },
+      {
+        text: 'Integrations',
+        items: navbarIntegrations
+      }
       {
         text: 'Learning',
         items: navbarLearning
