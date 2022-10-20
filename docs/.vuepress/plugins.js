@@ -45,7 +45,7 @@ function getPlugins(setup) {
         {
             type: 'enterprise',
             defaultTitle: {
-            '/':'Available in PagerDuty Process Automation products'
+            '/':'Available in PagerDuty Process Automation products. [Contact us](https://www.pagerduty.com/contact-us/process-automation/) to upgrade.'
             },
         },
         ],
