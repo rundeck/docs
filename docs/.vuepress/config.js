@@ -4,6 +4,7 @@ const path = require("path");
 const sidebarAdmin = require('./sidebar-menus/administration')
 const sidebarUpgrading = require('./sidebar-menus/upgrading')
 const sidebarUserGuide = require('./sidebar-menus/user-guide')
+const sidebarIntegrations = require('./sidebar-menus/integrations')
 const sidebarCommandLineTools = require('./sidebar-menus/command-line-tools')
 const sidebarDeveloper = require('./sidebar-menus/plugin-development')
 const sidebarLearning = require('./sidebar-menus/learning')
@@ -117,6 +118,7 @@ module.exports = {
       '/about/': sidebarAbout,
       '/administration/': sidebarAdmin,
       '/upgrading/': sidebarUpgrading,
+      '/integrations/': sidebarIntegrations,
       '/rd-cli/': sidebarCommandLineTools,
       '/manual/': sidebarUserGuide,
       '/learning/': sidebarLearning,

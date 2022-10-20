@@ -1,6 +1,6 @@
 module.exports = [
   {
-    text: 'Service Now PlugOUT',
-    link: '/manual/integrations/servicenow-app.md'
+    text: 'Service Now Integration',
+    link: '/integrations/servicenow-app.md'
   }
 ]
