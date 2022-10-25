@@ -1,5 +1,8 @@
 # Using ROI Metric Data
 
+::: incubating
+:::
+
 **ROI Metrics Data** stores arbitrary key value pairs against your job to help understand your ROI per job execution. The metrics will be stored against the execution of the job, and accessible via API for further analysis.  This article will walk through a setup scenario and provide some helpful example scripts to gather data from the API.
 
 ## Configuring the Metrics
@@ -173,7 +176,7 @@ Copy the Job Definition below and paste into a plain text file.  Then import to 
         \ i; do\n    jobIDList=`echo \"$jobIDList&jobIdListFilter=$i\"`\n  done <<<\
         \ $(echo $jobs_output | jq -r -c '.[] | .id')\n  if \"$debug\" == \"true\"\
         ; then \n   #echo $jobIDList\n   echo \"Ending Loop\"\n  fi\n}\n\n\nlist_executions_from_jobs\
-        \ () {\n    executions_list=`curl -sS --request GET $rundeckhost'/api/'$api_version'/project/'$project'/executions?max=100&recentFilter='$execution_history'&'$jobIDList\
+        \ () {\n    executions_list=`curl -sS --request GET $rundeckhost'/api/'$api_version'/project/'$project'/executions?max=1000&statusFilter=succeeded&recentFilter='$execution_history'&'$jobIDList\
         \ \\\n     --header 'X-Rundeck-Auth-Token: '$api_key \\\n     --header 'Content-Type:\
         \ application/json' \\\n     --header 'Accept: application/json'`\n    \n\
         \    if \"$debug\" == \"true\"; then\n      echo $rundeckhost'/api/'$api_version'/project/'$project'/executions?recentFilter='$execution_history$jobIDList\n\
