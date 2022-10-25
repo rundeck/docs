@@ -2,27 +2,55 @@
 ::: enterprise
 :::
 
-This plugin allows Jobs to *Resume* execution at a failed workflow step.
+This plugin allows resuming a job if one or more steps fail.
 
 When you enable this plugin for a Job, the plugin will record the internal *Workflow State*
-as the Execution progresses.  When a step fails, the state from immediately before the step started is
-serialized and stored.  You can then choose to "Resume" the execution at the failed step.
-The plugin will load the stored state contents, and start a new execution with the
-resume state, proceeding to execute the previously failed step with the same inputs.
+as the Execution progresses.  When one or more steps fail, the Workflow State prior to executing the failed step(s) is
+recorded and stored.
+
+You can then choose to "Resume" the execution, which will load the stored state and start a new execution, proceeding to execute the previously failed step(s) with the same inputs.
 
 ## Requirements
 
 ::: warning
-This plugin currently works only for Jobs which use the "Sequential" (aka "Step-first") Workflow Strategy.
+This plugin does not work for "Node First" Workflow Strategy.
 :::
 
-1. The Job must use the "Sequential" Workflow Strategy. With this strategy, we know that the internal state of the workflow engine before the failed step runs can be used to resume the same Job execution again.
+
+::: betafeature
+This plugin now works with "Parallel" and "Ruleset" Strategies.
+:::
+
+
+1. The Job cannot use the "Node FIrst" Workflow Strategy.
 2. The Job's workflow sequence should not be modified before resuming the execution. The plugin will store a "snapshot" of the workflow sequence within the resume state, allowing it to compare that to the workflow sequence used to resume it. If the Job workflow sequence has been modified, the plugin will fail to start. This means that you should not reorder, add/remove, or replace steps in the Workflow before resuming the execution.  However, modifying existing steps should be possible.
+
+## Caveats - Workflow Strategies
+
+Does not work with "Node First" workflow strategy.
+
+Only works with these workflow strategies:
+
+* Sequential
+* Parallel (**BETA** feature)
+* Ruleset (**BETA** feature)
+
+## Caveats - Secure Options
+
+The runtime values for "Secure" or "Secure Remote Authentication" options **will not** be 
+persisted with the Resumable workflow state.  
+
+This means that Secure Option values will only be available when Resuming a job in these cases:
+
+* If a secure option defines a Storage Path, the Key Storage value will be loaded when the execution is Resumed.
+* If "Other > Retry" is configured for the Job, and "Resume On Retry" is checked, secure option values will be available when the execution is automatically retried.
+
+In other words, manually-entered Secure Option values will not be available when a manual "Resume" action is performed.  
 
 
 ## Usage
 
-To use this plugin, edit or create a Job, and under the "Execution Plugins" tab, enable the checkbox next to the "Resumable Job" plugin.
+To use this plugin, edit or create a Job, and under the "Execution Plugins" tab, enable the checkbox next to the "Resumable" plugin.
 
 ![Execution Plugins](~@assets/img/figure-job-resume-edit-job-execution-plugins.png)
 
@@ -30,15 +58,11 @@ When an execution fails at some step, a new menu option is available under the "
 
 ![Resume Execution Menu Item](~@assets/img/figure-job-resume-resume-execution-menuitem.png)
 
-::: tip
-Note: The page might need to be refreshed to show the menu item.
-:::
-
 You will see a confirmation page to begin the resumed execution.
 
 ![Confirm Resume Execution](~@assets/img/figure-job-resume-confirm-resume.png)
 
-After confirming, the new execution will start at the step that previously failed.
+After confirming, the new execution will begin at the step(s) that previously failed.
 
 ![Resumed Execution](~@assets/img/figure-job-resume-resumed-execution.png)
 
