@@ -1,15 +1,20 @@
 # Configuring SSL
 
-This document describes how to configure Rundeck for SSL/HTTPS support, and assumes it is running from the `rundeck-launcher` standalone launcher. For RPM/DEB install, refer to the appropriate configuration file paths from
-[Rundeck Configuration - Configuration File Reference - Configuration Layout](/administration/configuration/config-file-reference.md#configuration-layout).
+:::warning
+IT IS NOT RECOMMENDED TO LET RUNDECK MANAGE SSL CERTIFICATES.
 
-(1) Before beginning, do a first-run of the launcher, as it will create the base directory for Rundeck and generate configuration files.
+A better practice is having this layer at a proxy/load balancer service.
+:::
+
+This document describes how to configure Rundeck for SSL/HTTPS support, and assumes it is running from the `rundeck-launcher` standalone launcher. 
+
+(1) Before beginning, do a first-run of the launcher, as it will create the base directory for Rundeck and generate configuration files. (This is not necessary for RPM/DEB installations)
 
 ```properties
 cd $RDECK_BASE;  java -jar {{{rundeckVersion}}}.war
 ```
 
-This will start the server and generate necessary config files. Press control-c to shut down the server after the message below is shown in the terminal:
+This will start the server and generate necessary config files. Press Ctrl-C to shut down the server after the message below is shown in the terminal:
 
 ```log
 Grails application running at http://localhost:4440 in environment: production
@@ -25,7 +30,8 @@ Make sure to use the correct `$HOSTNAME` value both here and in response to the 
 keytool -keystore etc/keystore -ext san=dns:$HOSTNAME -alias rundeck -genkey -keyalg RSA -keypass adminadmin -storepass adminadmin
 ```
 
-:::tip Modern SSL clients no longer use the "CN" value of a certificate to validate the hostname, and require that the hostname be included in the SubjectAlternativeName field. The flag `-ext san=dns:$HOSTNAME` includes a "SubjectAlternativeName" when generating the certificate. Newer clients may fail with an error about validating the hostname if this is empty or does not contain a matching value. The flag value can include multiple entries such as `-ext san=dns:x.tld,dns:y.tld`.
+:::tip 
+Modern SSL clients no longer use the "CN" value of a certificate to validate the hostname, and require that the hostname be included in the SubjectAlternativeName field. The flag `-ext san=dns:$HOSTNAME` includes a "SubjectAlternativeName" when generating the certificate. Newer clients may fail with an error about validating the hostname if this is empty or does not contain a matching value. The flag value can include multiple entries such as `-ext san=dns:x.tld,dns:y.tld`.
 :::
 
 Be sure to specify the correct DNS hostname of the server as the response to the question "What is your first and last name?". Answer "yes" to the final question.
@@ -45,6 +51,13 @@ US
 yes
 !
 ```
+
+
+:::tip
+For RPM/DEB installations, see the configuration layout for better understanding of the used paths: 
+
+[Rundeck Configuration - Configuration File Reference - Configuration Layout](/administration/configuration/config-file-reference.md#configuration-layout)
+:::
 
 (3) CLI tools that communicate to the Rundeck server need to trust the SSL certificate provided by the server. They are preconfigured to look for a truststore at the location:
 `$RDECK_BASE/etc/truststore`. Copy the keystore as the truststore for CLI tools:
