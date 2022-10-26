@@ -8,7 +8,7 @@ A better practice is having this layer at a proxy/load balancer service.
 
 This document describes how to configure Rundeck for SSL/HTTPS support, and assumes it is running from the `rundeck-launcher` standalone launcher. 
 
-(1) Before beginning:
+**1.** Before beginning:
 
 :::: tabs
 ::: tab WAR
@@ -55,7 +55,7 @@ service rundeckd stop
 ::::
 
 
-(2) Using the [keytool] command, generate a keystore for use as the server cert and client truststore. Specify passwords for key and keystore:
+**2.** Using the [keytool] command, generate a keystore for use as the server cert and client truststore. Specify passwords for key and keystore:
 
 [keytool]: https://docs.oracle.com/javase/8/docs/technotes/tools/windows/keytool.html
 
@@ -108,7 +108,7 @@ For RPM/DEB installations, see the configuration layout for better understanding
 [Rundeck Configuration - Configuration File Reference - Configuration Layout](/administration/configuration/config-file-reference.md#configuration-layout)
 :::
 
-(3) CLI tools that communicate to the Rundeck server need to trust the SSL certificate provided by the server. They are preconfigured to look for a truststore at the location:
+**3.** CLI tools that communicate to the Rundeck server need to trust the SSL certificate provided by the server. They are preconfigured to look for a truststore at the location:
 `$RDECK_BASE/etc/truststore`. Copy the keystore as the truststore for CLI tools:
 
 :::: tabs
@@ -132,7 +132,7 @@ cp /etc/rundeck/ssl/keystore /etc/rundeck/ssl/truststore
 
 
 
-(4) Modify the ssl.properties file to specify the full path location of the keystore and the appropriate passwords:
+**4.** Modify the ssl.properties file to specify the full path location of the keystore and the appropriate passwords:
 
 :::: tabs
 ::: tab WAR
@@ -165,7 +165,7 @@ truststore.password=adminadmin
 
 The ssl.properties default keystore and truststore location path for war installation is \$RDECK_BASE/etc/
 
-(5) Configure client properties. Modify the file:
+**5.** Configure client properties. Modify the file:
 
 :::: tabs
 ::: tab WAR
@@ -193,7 +193,7 @@ framework.server.port=4443
 ```
 
 
-(6) Configure server URL so that Rundeck knows its external address. 
+**6.** Configure server URL so that Rundeck knows its external address. 
 
 :::: tabs
 ::: tab WAR
@@ -221,34 +221,34 @@ grails.serverURL=https://localhost:4443
 ```
 
 
-(7) For WAR installations skip this step
+**7.** _For WAR installations skip this step_
 
 :::: tabs
-::: tab WAR
+::: tab DEB
 
 Create/edit `/etc/default/rundeckd`:
 
 ```properties
-RUNDECK_WITH_SSL=true
-RDECK_HTTPS_PORT=1234
+export RUNDECK_WITH_SSL=true
+export RDECK_HTTPS_PORT=1234
 ```
 
 :::
 
-::: tab RPM/DEB
+::: tab RPM
 
 Create/edit `/etc/sysconfig/rundeckd`:
 
 ```properties
-RUNDECK_WITH_SSL=true
-RDECK_HTTPS_PORT=1234
+export RUNDECK_WITH_SSL=true
+export RDECK_HTTPS_PORT=1234
 ```
 
 :::
 ::::
 
 
-(8) Start the server.
+**8.** Start the server.
 
 :::: tabs
 ::: tab WAR
@@ -353,11 +353,11 @@ Some common error messages and causes:
 ```log
 java.io.IOException: Keystore was tampered with, or password was incorrect
 ```
-
 : A password specified in the file was incorrect.
 
+```log
 2010-12-02 10:07:29.958::WARN: failed SslSocketConnector@0.0.0.0:4443: java.io.FileNotFoundException: /Users/greg/rundeck/etc/keystore (No such file or directory)
-
+```
 : The keystore/truststore file specified in ssl.properties doesn't exist
 
 ### Optional PEM export
