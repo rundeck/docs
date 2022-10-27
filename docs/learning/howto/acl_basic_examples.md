@@ -4,8 +4,8 @@ title: "Getting Started with ACLs"
 feed:
   enable: true
   title: "Getting Started with ACLs"
-  description: "Test Description"
-  updated: new Date(2013, 6, 14)
+  description: "Trouble with ACLs?  Use this to get started."
+  updated: "2013-06-14"
 
 ---
 
