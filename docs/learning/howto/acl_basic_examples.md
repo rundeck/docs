@@ -5,18 +5,7 @@ feed:
   enable: true
   title: "Getting Started with ACLs"
   description: "Test Description"
-  image: 
-  author:
-    -
-      name: Author
-      email: author@doamin.tld
-      link: http://doamin.tld
-  contributor:
-    -
-      name: Contributor
-      email: contributor@doamin.tld
-      link: http://doamin.tld
-
+  updated: new Date(2013, 6, 14)
 
 ---
 
