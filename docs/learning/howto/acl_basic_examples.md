@@ -1,3 +1,25 @@
+---
+
+title: "Getting Started with ACLs"
+feed:
+  enable: true
+  title: "Getting Started with ACLs"
+  description: "Test Description"
+  image: 
+  author:
+    -
+      name: Author
+      email: author@doamin.tld
+      link: http://doamin.tld
+  contributor:
+    -
+      name: Contributor
+      email: contributor@doamin.tld
+      link: http://doamin.tld
+
+
+---
+
 # Getting Started with Access Control Examples
 
 
@@ -5,11 +27,11 @@
 
 ACLs (Access Control Lists) are YAML-based rules that limit/give access to Rundeck elements to any user/role. An ACL Policy is a set of rules that allows/denies access to specific resources such as jobs, projects, keys, passwords, etc.  No one can access or do anything in the system unless it is allowed by one or more ACL Policies.
 
-Rules need to be defined in [YAML format](https://en.wikipedia.org/wiki/YAML) and Rundeck stores the ACLs in two places: 
+Rules need to be defined in [YAML format](https://en.wikipedia.org/wiki/YAML) and Rundeck stores the ACLs in two places:
 
 
 
-* In the file system as an `.aclpolcy` files (at `/etc/rundeck/` path on an RPM/DEB based installation, `/home/rundeck/etc/` on Docker environment or $RDECK_BASE/etc/ on a war-based installation) 
+* In the file system as an `.aclpolcy` files (at `/etc/rundeck/` path on an RPM/DEB based installation, `/home/rundeck/etc/` on Docker environment or $RDECK_BASE/etc/ on a war-based installation)
 * or in the internal database, which is referred to as "Stored" ACL
 
 To see the current ACL rules click on the Gear Icon and then click on the "Access Control", in this section all ACLs are listed.
@@ -25,7 +47,7 @@ To see the current ACL rules click on the Gear Icon and then click on the "Acces
 
 ## Rule Types
 
-Rundeck uses two types of ACL rules: System ACLs and Project ACLs. 
+Rundeck uses two types of ACL rules: System ACLs and Project ACLs.
 
 
 
@@ -68,11 +90,11 @@ The `context` section declares the scope of the ensuing policy description. Rund
 
 The first one declares the name of the project(s) for which the policy applies. Its value is a String and can be a regular expression, for which the project name must match to apply.
 
-The second one applies to the Rundeck system, so the only value admitted is "`rundeck`", in the following way: 
+The second one applies to the Rundeck system, so the only value admitted is "`rundeck`", in the following way:
 
 
 ```
-context: 
+context:
 application: 'rundeck'
 ```
 
@@ -120,7 +142,7 @@ for:
       nodename: node.*
     allow: [read,run]
 by:
-  group: my_role 
+  group: my_role
 ```
 
 
