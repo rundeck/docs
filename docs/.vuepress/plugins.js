@@ -1,4 +1,6 @@
 //Meta Information
+const _ = require('lodash');
+
 const autometa_options = {
     site: {
         name   : 'Rundeck / Process Automation Documentation',
@@ -9,7 +11,7 @@ const autometa_options = {
 
 const feed_options = {
   canonical_base: 'https://docs.rundeck.com/docs',
-  posts_directories: ['/learning/howto/']
+  sort:  entries => _.reverse( _.sortBy( entries, 'date' ) )
 };
 
 

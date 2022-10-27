@@ -1,11 +1,11 @@
 ---
 
 title: "Getting Started with ACLs"
+date: "2020-05-10"
 feed:
   enable: true
   title: "Getting Started with ACLs"
   description: "Trouble with ACLs?  Use this to get started."
-  updated: "2013-06-14"
 
 ---
 
