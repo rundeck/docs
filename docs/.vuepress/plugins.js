@@ -7,9 +7,17 @@ const autometa_options = {
     canonical_base: 'https://docs.rundeck.com',
 }
 
+const feed_options = {
+  canonical_base: 'https://docs.rundeck.com/docs',
+  posts_directories: ['/learning/howto/']
+};
+
+
+
 function getPlugins(setup) {
     const plugins = [
         'vuepress-plugin-element-tabs',
+        [ 'feed', feed_options],
         ['@vuepress/html-redirect', {
           countdown: 0
           }
