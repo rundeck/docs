@@ -1,4 +1,6 @@
 //Meta Information
+const _ = require('lodash');
+
 const autometa_options = {
     site: {
         name   : 'Rundeck / Process Automation Documentation',
@@ -7,9 +9,17 @@ const autometa_options = {
     canonical_base: 'https://docs.rundeck.com',
 }
 
+const feed_options = {
+  canonical_base: 'https://docs.rundeck.com/docs',
+  sort:  entries => _.reverse( _.sortBy( entries, 'date' ) )
+};
+
+
+
 function getPlugins(setup) {
     const plugins = [
         'vuepress-plugin-element-tabs',
+        [ 'feed', feed_options],
         ['@vuepress/html-redirect', {
           countdown: 0
           }

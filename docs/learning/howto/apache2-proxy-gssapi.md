@@ -1,16 +1,27 @@
+---
+
+title: "Apache 2.4 Reverse Proxy + custom URL + GSSAPI"
+date: "2022-09-02"
+feed:
+  enable: true
+  description: "Rundeck from an Apache2 reverse proxy with a custom url and GSSAPI."
+
+---
+
+
 # Apache 2.4 Reverse Proxy + custom URL + GSSAPI
 
-This section summarizes one possible configuration setup that can be used to expose Rundeck 
+This section summarizes one possible configuration setup that can be used to expose Rundeck
 from an apache2 reverse proxy with a custom url path and GSSAPI authentication (with delegated headers).
 In this way Rundeck can be hosted together with other applications in the same url structure.
 
 The final goal is to expose to the outside world Rundeck as `http://srv.example.com/rundeck/`
 while the actual server (in this example) is running in the same VM but bound locally as `http://127.0.0.1:4440/rundeck/`.
 
-In addition authentication will be transparently handled by apache2 via GSSAPI, 
+In addition authentication will be transparently handled by apache2 via GSSAPI,
 which is an easy way to implement SSO where Active Directory (or Kerberos) is available.
 
-The proposed approach for looking up user roles is very simple and perhaps suitable only for a small user base 
+The proposed approach for looking up user roles is very simple and perhaps suitable only for a small user base
 and should be hardened in case of peculiar characters in users principals (e.g. `..`, `/`, etc).
 
 
@@ -35,11 +46,11 @@ The configuration on apache2 for exposing Rundeck can be set up in different way
 The configuration is straightforward, however particular care must be applied to absence of an ending `/` in the various urls.
 
 
-The `GSSAPI` (and related `RequestHeader`) configuration is of course optional 
+The `GSSAPI` (and related `RequestHeader`) configuration is of course optional
 and if applied should be customized with the actual location of the keytab files and domain name `EXAMPLE.COM`.
 In addition the stripping of the domain name `EXAMPLE.COM` from the `Uiid` field should be updated as well, if needed.
 
-Last but not least, the look up of user roles, necessary for the correct execution of the authorization process on Rundeck side, 
+Last but not least, the look up of user roles, necessary for the correct execution of the authorization process on Rundeck side,
 is implemented by reading one file named as the user principal and located under the folder `/etc/apache2/rundeck-roles/`.
 The file contains one row with the list of roles specific to the user, for example `admin,user`.
 
@@ -58,9 +69,9 @@ The file contains one row with the list of roles specific to the user, for examp
 
     RequestHeader set X-Forwarded-Uuid expr=%{REMOTE_USER}
     RequestHeader edit X-Forwarded-Uuid "\@EXAMPLE.COM$" ""
-    
+
     RequestHeader set X-Forwarded-User-Email expr=%{REMOTE_USER}
-    
+
     RequestHeader set X-Forwarded-Roles expr=%{file:/etc/apache2/rundeck-roles/%{REMOTE_USER}}
     RequestHeader edit X-Forwarded-Roles "\n" ""
 
@@ -69,7 +80,7 @@ The file contains one row with the list of roles specific to the user, for examp
 </Location>
 ```
 
-In addition to the configuration of apache2, it is necessary to tune also Rundeck configuration 
+In addition to the configuration of apache2, it is necessary to tune also Rundeck configuration
 so that the actual server can bind to a local port and serve contents under `/rundeck` path, instead of the default root `/`.
 
 The first configuration file to update is `etc/profile` where we modify the context path of the servlet container:
@@ -99,6 +110,3 @@ rundeck.security.authorization.preauthenticated.userEmailHeader=X-Forwarded-User
 #sync user info headers at each login
 rundeck.security.authorization.preauthenticated.userSyncEnabled=true
 ```
-
-
-
