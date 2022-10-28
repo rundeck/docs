@@ -215,7 +215,7 @@ vi /etc/rundeck/rundeck-config.properties
 ::::
 
 
-Change the following properties to include the appropriate https protocol, hostname and port. _(The port value can also be extractedf rom `-Dserver.https.port` runtime configuration property)_
+Change the following properties to include the appropriate https protocol, hostname and port. _(The port value can also be extracted from `-Dserver.https.port` runtime configuration property)_
 ```properties
 grails.serverURL=https://localhost:4443
 ```
