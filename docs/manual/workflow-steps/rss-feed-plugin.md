@@ -22,6 +22,3 @@ This plugin helps surface these events for their customers - thereby answering t
 ## Example
 In the example below, the job step will query for the **10** most recent events from within the last **2 hours** from the **AWS Events** RSS Feed:
 ![AWS Example](@assets/img/rss-feed-aws-example.png)<br>
-
-## Parsing Data
-Because the log output of the plugin is a table, the data can be parsed with the [**JSON jq key/value mapper**](/manual/log-filters/json-jq) log filter plugin:
