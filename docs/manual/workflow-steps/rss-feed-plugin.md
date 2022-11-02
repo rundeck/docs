@@ -4,7 +4,11 @@
 
 This new plugin allows users to query and parse RSS feeds for events from SaaS and public-cloud providers.  
 When these providers have any service degradation, updates are posted to their status-page RSS feeds.
+<<<<<<< HEAD
 This plugin helps surface these events for their customers, thereby answering the question of whether an incident is due to an internal issue or a third party.
+=======
+This plugin helps surface these events for their customers - thereby answering the questions of whether an incident is due to an internal issue or a third party.
+>>>>>>> parent of 32d065f8 (Revert "RSS Feed Plugin doc")
 
 ![RSS Feed Events](@assets/img/rss-feed-output.png)<br>
 
