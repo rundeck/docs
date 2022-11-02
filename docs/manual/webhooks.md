@@ -5,6 +5,7 @@ Webhooks are an industry standard way for internet applications to communicate w
 
 
 ## Webhook Administration
+> Released in version 4.0
 
 Click on `Webhooks` to go to the webhook administration page to add, configure, and remove webhooks for a project.
 
