@@ -42,7 +42,7 @@ the same name and type is defined.
 
 ### Build dependencies
 
-Rundeck's jars are published to the central Maven repository, and [jCenter](https://jcenter.bintray.com), so you can simply specify a dependency in your build file.
+Rundeck's jars are published to the central Maven repository so you can simply specify a dependency in your build file.
 
 - `rundeck-core` is the primary build dependency for most plugin types
   - [org.rundeck:rundeck-core:{{{ rundeckVersionFull }}}](https://search.maven.org/artifact/org.rundeck/rundeck-core/{{{ rundeckVersionFull }}}/jar)
@@ -68,8 +68,6 @@ For maven use:
    </dependency>
 </dependencies>
 ```
-
-- Rundeck's core jar is published to the central Maven repository, so you can now declare a build dependency more easily.
 
 If your Java classes require external libraries that are not included with
 the Rundeck runtime, you can include them in your .jar archive. (Look in
