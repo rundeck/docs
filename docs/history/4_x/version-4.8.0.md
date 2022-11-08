@@ -23,6 +23,7 @@ _Patched CVE-2022-42889_ - A recent security announcement was released for Apach
 
 ### Process/Runbook Automation Updates
 
+* The [ServiceNow Application](/manual/integrations/servicenow-app.md) is now certified for the Tokyo Release.
 * Update base Ubuntu packages on docker build
 * Fix: CVE-2022-42889: Apache commons-text library
 * Fix: ROI Metrics Output inconsistent with multiple jobs running
