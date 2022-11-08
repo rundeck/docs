@@ -10,7 +10,7 @@ The User Profile page shows user details, Authorization Roles, API Tokens, and p
 
 ## Change Password
 :::warning Note
-This is only applicable for **local** users. Users that have authenticated through SSO will not be able to change their password here.
+This is only applicable for **local** users that were created with the [**User Manager**](/manual/user-management/user-mgmt) or the **`appadmin`** user in Runbook Automation. Users that have authenticated through SSO will not be able to change their password here.
 :::
 
 ![Change Password](@assets/img/profile-change-password.png)<br>
