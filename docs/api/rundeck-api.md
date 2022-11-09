@@ -8329,8 +8329,19 @@ The Runner is a Remote Execution hub for Node Steps to run on specified endpoint
 
     DELETE /api/41/runnerManagement/deleteRunner
 
-    Body
-    runnerId="<RUNNER_ID>"
+
+Parameters:
+
+* `runnerId` : ID of the runner to be deleted.
+
+Example body:
+
+`Content-Type: application/json`:
+``` json
+{
+  "runnerId":"859e38e6-3985-4ba3-b9d5-65c44110e985"
+}
+```
 
 **Response**
 
@@ -8346,7 +8357,7 @@ The Runner is a Remote Execution hub for Node Steps to run on specified endpoint
 
 **Request**
 
-    GET /api/41/runnerManagement/runnerInfo/"<RUNNER_ID>"
+    GET /api/41/runnerManagement/runnerInfo/<RUNNER_ID>
 
 **Response**
 
@@ -8378,10 +8389,20 @@ The Runner is a Remote Execution hub for Node Steps to run on specified endpoint
 
     PUT /api/41/runnerManagement/createRunner
 
-    Body
-    name="<DESIRED_RUNNER_NAME>"
-    description="<DESIRED_RUNNER_DESCRIPTION>"
-    projectAssociations="<DESIRED_PROJECTS_ASSOCIATIONS>"
+Parameters:
+
+* `name` : Desired name for the runner.
+* `description` : Desired description for the runner.
+
+Example body:
+
+`Content-Type: application/json`:
+``` json
+{
+  "name":"Runner",
+  "description":"a runner description",
+}
+```
 
 **Response**
 
@@ -8402,7 +8423,7 @@ The Runner is a Remote Execution hub for Node Steps to run on specified endpoint
 
 **Request**
 
-    POST /api/41/runnerManagement/pingRunner/"<RUNNER_ID>"
+    POST /api/41/runnerManagement/pingRunner/<RUNNER_ID>
 
 **Response**
 
@@ -8418,7 +8439,7 @@ The Runner is a Remote Execution hub for Node Steps to run on specified endpoint
 
 **Request**
 
-    GET /api/41/runnerManagement/checkPing/"<PING_ID>"
+    GET /api/41/runnerManagement/checkPing/<PING_ID>
 
 **Response**
 
@@ -8436,7 +8457,7 @@ The Runner is a Remote Execution hub for Node Steps to run on specified endpoint
 
 **Request**
 
-    GET /api/41/runnerManagement/regenerateRunnerCreds/"<RUNNER_ID>"
+    GET /api/41/runnerManagement/regenerateRunnerCreds/<RUNNER_ID>
 
 **Response**
 
@@ -8454,18 +8475,35 @@ The Runner is a Remote Execution hub for Node Steps to run on specified endpoint
 
 **Request**
 
-    GET /api/41/runnerManagement/download/"<DOWNLOAD_TOKEN>"
+    GET /api/41/runnerManagement/download/<DOWNLOAD_TOKEN>
 
-### Edit/save runner by ID
+### Edit/Save runner by ID
 
 **Request**
 
     GET /api/41/runnerManagement/saveRunner
 
-    Body
-    runnerId="<RUNNER_ID>"
-    name="<RUNNER_NAME>"
-    description="<RUNNER_DESCRIPTION>"
+Parameters:
+
+* `runnerId` : ID of the runner to be modified.
+* `name` : Desired name for the runner.
+* `description` : Desired description for the runner.
+* `assignedProjects` : Recibe a map with the desired projects 
+
+Example body:
+
+`Content-Type: application/json`:
+``` json
+{
+  "runnerId":"859e38e6-3985-4ba3-b9d5-65c44110e985",
+  "name":"Runner",
+  "description":"a runner description",
+  "assignedProjects": {
+     "project1":".*",
+     "project2":".*"
+  }
+}
+```
 
 **Response**
 
