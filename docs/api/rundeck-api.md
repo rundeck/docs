@@ -8279,6 +8279,204 @@ Content-Type: `application/json`
 
 (none)
 
+
+## Runner
+
+The Runner is a Remote Execution hub for Node Steps to run on specified endpoints, rather than from the Automation server itself.
+
+### List all runners
+
+**Request**
+
+    GET /api/41/runnerManagement/listRunner
+
+**Response**
+
+`Content-Type: application/json`:
+
+``` json
+{
+    "runners": [
+        {
+            "associatedProjects": 1,
+            "description": "Runner Description",
+            "id": "c75f85e6-5dea-46a2-b939-d265575e4fae",
+            "lastCheckin": null,
+            "lastCheckinAlert": false,
+            "name": "Runner",
+            "selected": false,
+            "status": "New",
+            "version": "unknown"
+        },
+        {
+            "associatedProjects": 0,
+            "description": "Runner Description",
+            "id": "592a6f93-5f6d-4cdb-b293-764ec94a6624",
+            "lastCheckin": null,
+            "lastCheckinAlert": false,
+            "name": "Runner2",
+            "selected": false,
+            "status": "New",
+            "version": "unknown"
+        }
+    ]
+}
+```
+
+### Delete runner by ID
+
+**Request**
+
+    DELETE /api/41/runnerManagement/deleteRunner
+
+    Body
+    runnerId="<RUNNER_ID>"
+
+**Response**
+
+`Content-Type: application/json`:
+
+``` json
+{
+    "msg": "deleted"
+}
+```
+
+### Get runner by ID
+
+**Request**
+
+    GET /api/41/runnerManagement/runnerInfo/"<RUNNER_ID>"
+
+**Response**
+
+`Content-Type: application/json`:
+
+``` json
+{
+    "createTime": "2022-11-02T19:03:03Z",
+    "description": "Runner Description",
+    "id": "d44a8a2c-7a64-4668-8a4d-442934dfa255",
+    "lastCheckin": null,
+    "lastCheckinAlert": false,
+    "name": "RunnerTest",
+    "projectAssociations": {
+        "projectNodeFilters": {
+            "RunnerTestProject": ".*"
+        }
+    },
+    "runnerVersion": "unknown",
+    "runningOperations": 0,
+    "status": "New",
+    "uptime": 0
+}
+```
+
+### Create runner 
+
+**Request**
+
+    PUT /api/41/runnerManagement/createRunner
+
+    Body
+    name="<DESIRED_RUNNER_NAME>"
+    description="<DESIRED_RUNNER_DESCRIPTION>"
+    projectAssociations="<DESIRED_PROJECTS_ASSOCIATIONS>"
+
+**Response**
+
+`Content-Type: application/json`:
+
+``` json
+{
+    "description": "a description for runnertest",
+    "downloadTk": "32ff85fd-32de-4fe4-b247-f258943508be",
+    "name": "RunnertestAPI",
+    "projectAssociations": {},
+    "runnerId": "5d3e4851-e074-4a4b-a056-ce9ea772364a",
+    "token": "RehykqzfnWNDoJriQ8QbTEpLrI09c2Ym"
+}
+```
+
+### Ping runner 
+
+**Request**
+
+    POST /api/41/runnerManagement/pingRunner/"<RUNNER_ID>"
+
+**Response**
+
+`Content-Type: application/json`:
+
+``` json
+{
+    "pingToken": "e5b81f1c-1631-41ed-bd69-e41317b873a3"
+}
+```
+
+### Check runner ping
+
+**Request**
+
+    GET /api/41/runnerManagement/checkPing/"<PING_ID>"
+
+**Response**
+
+`Content-Type: application/json`:
+
+``` json
+{
+    "completed": true,
+    "iserror": true,
+    "message": "ping timed out"
+}
+```
+
+### Regenerate runner credentials
+
+**Request**
+
+    GET /api/41/runnerManagement/regenerateRunnerCreds/"<RUNNER_ID>"
+
+**Response**
+
+`Content-Type: application/json`:
+
+``` json
+{
+    "downloadTk": "1ff12f46-3b1d-425d-a611-a4eea9fddfd7",
+    "runnerId": "d44a8a2c-7a64-4668-8a4d-442934dfa255",
+    "token": "fZ4sWTFpPdNmvyI6F4CQwXUtmSi73Ztx"
+}
+```
+
+### Download runner
+
+**Request**
+
+    GET /api/41/runnerManagement/download/"<DOWNLOAD_TOKEN>"
+
+### Edit/save runner by ID
+
+**Request**
+
+    GET /api/41/runnerManagement/saveRunner
+
+    Body
+    runnerId="<RUNNER_ID>"
+    name="<RUNNER_NAME>"
+    description="<RUNNER_DESCRIPTION>"
+
+**Response**
+
+`Content-Type: application/json`:
+
+``` json
+{
+    "msg": "saved"
+}
+```
+
 [ACLPOLICY]:../manual/document-format-reference/aclpolicy-v10.html
 
 
