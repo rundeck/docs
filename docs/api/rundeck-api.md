@@ -8488,7 +8488,7 @@ Parameters:
 * `runnerId` : ID of the runner to be modified.
 * `name` : Desired name for the runner.
 * `description` : Desired description for the runner.
-* `assignedProjects` : Recibe a map with the desired projects 
+* `assignedProjects` : Recibe a map with the desired projects. 
 
 Example body:
 
