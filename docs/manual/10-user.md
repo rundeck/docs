@@ -8,6 +8,18 @@ The Profile menu contains items to view your Profile and log out.
 
 The User Profile page shows user details, Authorization Roles, API Tokens, and preferred language.
 
+## Change Password
+:::warning Note
+This is only applicable for **local** users that were created with the [**User Manager**](/manual/user-management/user-mgmt) or the **`appadmin`** user in Runbook Automation. Users that have authenticated through SSO will not be able to change their password here.
+:::
+
+![Change Password](@assets/img/profile-change-password.png)<br>
+
+1. Click on **Change Password** 
+2. Enter a new password into the **Password** field.
+3. Confirm the new password in the **Confirm Password** field.
+4. Click **Save**.
+
 ### Language
 
 You can choose a Language preference from the select menu. Currently English is the primary application language, with partial internationalization in Spanish, French and Chinese.
