@@ -29,7 +29,6 @@ Upgrade instructions [can be found here](/upgrading/).
 | [3.4.9](/history/3_4_x/version-3.4.9.md) | December 21, 2021 | Maintenance Support |
 | [3.4.8](/history/3_4_x/version-3.4.8.md) | December 14, 2021 | Maintenance Support |
 | [3.4.7](/history/3_4_x/version-3.4.7.md) | December 10, 2021 | Maintenance Support |
-| [3.4.6](/history/3_4_x/version-3.4.6.md) | November, 11 2021 | Maintenance Support |
 
 
 ::: warning
