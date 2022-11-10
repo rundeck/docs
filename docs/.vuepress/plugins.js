@@ -76,6 +76,15 @@ function getPlugins(setup) {
             '/':'Incubating: This Feature or API is new! We may still have a few bugs or change some functionality in the future.'
             },
         },
+        ],
+        [
+        'vuepress-plugin-container',
+        {
+            type: 'betafeature',
+            defaultTitle: {
+            '/':'BETA FEATURE'
+            },
+        },
         ]
     ]
 

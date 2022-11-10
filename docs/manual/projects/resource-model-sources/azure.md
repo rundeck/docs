@@ -22,7 +22,7 @@ Settings related to the Azure connection
 Mapping and filter settings
 
 - **Mapping Params**: Custom mapping settings. Property mapping definitions. Specify multiple mappings in the form "attributeName.selector=selector" or "attributeName.default=value", separated by ";"
-- **Resource Group**: Filter using resource group
+- **Resource Groups**:  Filter using a list of allowed resource groups separated by semicolons (`;`). Eg: `RG1; RG2; RG3`.
 - **Only Running Instances**: Filter for the "Running" instances. If false, all instances will be returned.
 
 ### Mapping
