@@ -47,7 +47,8 @@ module.exports = [{
               '/learning/howto/learn-rd-cli.md',
               '/learning/howto/acl_basic_examples.md',
               '/learning/howto/workinglogs.md',
-              '/learning/howto/S3-minio.md'
+              '/learning/howto/S3-minio.md',
+              '/learning/howto/how2scm.md'
           ]
         },
         {
@@ -84,7 +85,8 @@ module.exports = [{
               '/learning/howto/sn-midserver.md',
               '/learning/howto/rundeck-exporter.md',
               '/learning/howto/vault-integration.md',
-              '/learning/howto/howtojenkins.md'
+              '/learning/howto/howtojenkins.md',
+              '/learning/howto/how2kube.md'
           ]
         },
         {
