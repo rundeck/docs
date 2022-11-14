@@ -1,16 +1,21 @@
-# Managing Kubernetes with Rundeck<br>
-Kubernetes (AKA K8s) is an open-source platform for managing containerized services. It is used in many environments but particularly as part of cloud-native applications where it is important to be able to scale up and down at will.  The architecture makes scaling and recycling containers easy.  Kubernetes services, support, and tools are widely available and very customizable.<br><br>
-Kubernetes can be used in two different ways in the context of Rundeck.  K8s can be used to automate the build and management of Rundeck as a container.  In this article, we’ll be focused on the second way to use Kubernetes and Rundeck together by using Rundeck to manage a complete Kubernetes cluster environment. <br><br>
-In this article, we focus on Rundeck Community, the open-source software, but you can also follow this example if you are using the commercial version, [PagerDuty Process Automation](https://www.pagerduty.com/platform/automation/process-software/).<br>
+# Managing Kubernetes with Rundeck
 
-## Kubernetes and Rundeck<br>
-Rundeck uses a [specific plugin](https://github.com/rundeck-plugins/kubernetes) to manage Kubernetes.  In this guide, we explain how to configure the plugin, how to manage pods as nodes, and how to use the workflow steps to interact with Kubernetes components.<br>
+[Kubernetes](https://kubernetes.io/) (K8s) is an open-source platform for managing containerized services. It is used in many environments, but particularly as part of cloud-native applications where it is important to be able to scale up and down at will.  The architecture makes scaling and recycling container based services easy.  
 
-## Prerequisites for This Tutorial<br>
+Kubernetes services, support, and tools are widely available and very customizable and can be used in two different ways in the context of Rundeck.  K8s can be used to automate the build and management of Rundeck as a container.  For the purposes of this article, we’ll be focused on the more common way to use Kubernetes and Rundeck together, managing a complete Kubernetes cluster environment.
+
+The article is written assuming use of Rundeck Community, our open-source offering, but can also be done using the commercial version, [PagerDuty Process Automation](https://www.pagerduty.com/platform/automation/process-software/).
+
+## Kubernetes and Rundeck
+
+Rundeck uses the [Kubernetes workflow step plugin](https://github.com/rundeck-plugins/kubernetes) to manage K8s.  In this guide, we explain how to configure the plugin, how to manage pods as nodes, and how to use the workflow steps to interact with Kubernetes components.
+
+## Prerequisites for This Tutorial
+
 1. **Minikube as a local Kubernetes cluster**<br>
  Minikube is a local Kubernetes implementation and it’s an easy way to learn Kubernetes using any computer.<br>
  To install Minikube on Linux, download and copy the binary to`/usr/local/bin/` path with the correct permissions:<br>
-	```	
+	```
   	$ curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
   	$ sudo install minikube-linux-amd64 /usr/local/bin/minikube
   	```
@@ -24,22 +29,24 @@ Rundeck uses a [specific plugin](https://github.com/rundeck-plugins/kubernetes) 
  K9s is a tool focused on monitoring and interacting with the cluster.  Click [here](https://k9scli.io/topics/install/) to learn how to installk9.<br>
 1. Rundeck<br>
 
-## Kubernetes Rundeck Plugin Prerequisites<br>
+## Kubernetes Rundeck Plugin Prerequisites
+
 1. Python3<br>
 1. Kubernetes pip module<br>
 Can be installed with<br>
 	```
 	pip3 install kubernetes
 	```
-	
-## Installing the Kubernetes Plugin in Rundeck<br>
+
+## Installing the Kubernetes Plugin in Rundeck
+
 1. Go to the System Menu > Plugins > Upload plugin<br>
 ![](~@assets/img/kube1.png)<br>
 1. Put in the latest version .zip file full URL path here.<br>
 ![](~@assets/img/kube2.png)<br>
 1. Click on the "install" button.<br>
 
-## Kubernetes Model Source<br>
+## Kubernetes Model Source
 
 To manage K8s pods as nodes, it's necessary to add the Kubernetes model source.<br>
 1. Go to Project Settings > Edit Nodes<br>
@@ -133,7 +140,8 @@ Next, we’ll simulate a simple deployment using the `Kubernetes / Generic / Cre
 ![](~@assets/img/kube11.png)<br>
 1. The new deployment is added to the nodes section. Now it's possible to dispatch commands against the pods or create jobs against them.<br>
 ![](~@assets/img/kube11.png)<br>
-## Other Available Workflow Steps<br>
+
+## Other Available Workflow Steps
 
 The following plugins allow you to deploy/un-deploy applications and run/re-run jobs on Kubernetes. For example, you can create a deployment, services, ingress, etc., and update or delete those Kubernetes resources.<br>
 1. _Create / Update / Delete / Check / Wait a Deployment_<br>

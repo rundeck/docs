@@ -1,20 +1,25 @@
-# How to Manage Jobs as Code (Source Control Management)<br>
-![](~@assets/img/scm1.png)<br>
-[The Rundeck Git plugin](https://docs.rundeck.com/docs/manual/projects/scm/git.html) allows organizations to manage Rundeck jobs as source code by versioning, exporting, or importing their definitions using a remote Git repository. Managing jobs in this way takes advantage of your existing code review processes to ensure that only approved job code is allowed in production projects or instances. Users can backup, manage, and approve changes to their Rundeck jobs using any Git solution like Github/Gitlab/BitBucket, centralizing the job code in one place.<br>
-Enable SCM (Source Control Management) for managing Job definitions on a per-project basis. The SCM plugin can be configured to either import or export.  This approach can be applied in any way that matches an organization’s code review processes but is often configured with a development project where jobs can be modified and developed for export to an experimental branch in Git and a production project that imports jobs from the approved and stable branch.<br>
+# How to Manage Jobs as Code (Source Control Management)
 
-# Background<br>
-There are two integration modes for the SCM Plugin, _import,_ and _export_, which are managed separately.<br>
-A Project can be configured with a single SCM plugin to either import or export. After setting up the plugin, the Project and Job level "status" can be read. Changes to Jobs within a project affect the status of import or export.  For example, if the project is set to import, there will be indicators where jobs are out of sync with the source and could be imported.<br>
-The Git plugin provides "actions" which are available based on the Project or Job status. For example, a plugin can provide a "commit" action for a Job, which allows a user to save the changes for the job.<br>
+![](~@assets/img/scm1.png)
 
-# Prerequisites<br>
+[The Rundeck Git plugin](https://docs.rundeck.com/docs/manual/projects/scm/git.html) allows organizations to manage Rundeck jobs as source code by versioning, exporting, or importing their definitions using a remote Git repository. Managing jobs in this way takes advantage of your existing code review processes to ensure that only approved job code is allowed in production projects or instances. Users can backup, manage, and approve changes to their Rundeck jobs using any Git solution like Github/Gitlab/BitBucket, centralizing the job code in one place.
 
-To follow this tutorial you need to have Docker installed on your computer. Go [here](https://docs.docker.com/get-docker/) to install Docker Desktop depending on your Operating System.<br>
+Enable SCM (Source Control Management) for managing Job definitions on a per-project basis. The SCM plugin can be configured to either import or export.  This approach can be applied in any way that matches an organization’s code review processes but is often configured with a development project where jobs can be modified and developed for export to an experimental branch in Git and a production project that imports jobs from the approved and stable branch.
 
-# Example Docker Environment<br>
-This Docker-compose file contains both Rundeck and GitBucket servers to test the Git plugin functionality.<br>
+# Background
 
+There are two integration modes for the SCM Plugin, _import,_ and _export_, which are managed separately.  A Project can be configured with a single SCM plugin to either import or export. After setting up the plugin, the Project and Job level "status" can be read. Changes to Jobs within a project affect the status of import or export.  
+
+For example, if the project is set to import, there will be indicators where jobs are out of sync with the source and could be imported.
+
+The Git plugin provides "actions" which are available based on the Project or Job status. For example, a plugin can provide a "commit" action for a Job, which allows a user to save the changes for the job.
+
+# Prerequisites
+
+To follow this tutorial you need to have Docker installed on your computer. Go [here](https://docs.docker.com/get-docker/) to install Docker Desktop depending on your Operating System.
+
+# Example Docker Environment
+This Docker-compose file contains both Rundeck and GitBucket servers to test the Git plugin functionality.
 
 ```
 version: "3"
@@ -33,15 +38,13 @@ services:
      - 8080:8080
 ```
 
-
-To run use:<br>
-
+To run use:
 
 ```
 docker-compose up
 ```
 
-## Exporting Jobs<br>
+## Exporting Jobs
 
 1. Enter GitBucket server<br>
 	```
@@ -77,7 +80,8 @@ If you're using GitHub, it doesn't allow passwords to connect to the repositorie
 1.  The token value could be used as a password in the SCM configuration.<br>
 :::
 
-## Exporting Jobs, continued<br>
+## Exporting Jobs, continued
+
 1.  Now, configure SCM in a Rundeck project. Go to the left navigation and click on "Project Settings" and select the "SETUP SCM" option from the menu.<br>
 	![](~@assets/img/scm5.png)<br>
 1.  Click on "Setup" in the “Git Export” section.<br>
@@ -121,7 +125,8 @@ If you're using GitHub, it doesn't allow passwords to connect to the repositorie
 :::tip
 Note: The SCM plugin should be used either for Import or Export on a single project, not both.  To test importing, you should use or create a different project than you used for the export section above.<br>
 :::
-## Importing Jobs<br>
+
+## Importing Jobs
 
 1. In your import project, select "Projects Settings" from the left navigation and click on "SETUP SCM".<br>
 	![](~@assets/img/scm24.png)<br>
@@ -148,6 +153,6 @@ Note: The SCM plugin should be used either for Import or Export on a single proj
 1. The jobs should be imported from the Rundeck instance to the GitBucket repository.<br>
 	![](~@assets/img/scm32.png)<br>
 
-### Resources<br>
+### Resources
 
 [About the Git Plugin](https://docs.rundeck.com/docs/manual/projects/scm/git.html#git-plugin) (Rundeck Documentation)<br>
