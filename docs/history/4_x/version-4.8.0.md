@@ -34,6 +34,7 @@ _Patched CVE-2022-42889_ - A recent security announcement was released for Apach
 * Implement RSS Feeds Plugin
 * Update Job Resume to work with Parallel/Ruleset strategies
 * Enh: Upgrade Azure Node Source to allow getting resources from selected resource groups
+* FIX: AWS EC2 Node Source Plugin now works with Service Accounts
 
 
 ## Rundeck Open Source Product Updates
