@@ -120,7 +120,7 @@ module.exports = [{
           title: 'Automated Diagnostics',
           path: '/learning/solutions/automated-diagnostics/solution-overview',
           collapsable: true,
-          sidebarDepth: 2,
+          sidebarDepth: 0,
           children: [
             ['/learning/solutions/automated-diagnostics/solution-overview.md','Solution Summary'],
             ['/learning/solutions/automated-diagnostics/getting-started.md', 'Getting Started'],
