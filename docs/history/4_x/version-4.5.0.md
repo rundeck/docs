@@ -1,4 +1,4 @@
-# Release 4.5.0
+# 4.5.0 Release Notes
 
 Name: <span style="color: orchid"><span class="glyphicon glyphicon-tower"></span> "Nessie orchid tower"</span>
 Release Date: August 10th, 2022

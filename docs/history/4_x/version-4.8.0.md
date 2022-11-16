@@ -1,4 +1,14 @@
-# Release 4.8.0
+---
+
+title: "4.8.0 Release Notes"
+date: "2022-11-10"
+feed:
+ enable: true
+ description: "Version 4.8.0 is here! Check out the new RSS Feed Plugin that will help streamline Automated Diagnostics and Resume Jobs using Ruleset and Parallel Strategies."
+
+---
+
+# 4.8.0 Release Notes
 
 Name: <span style="color: green"><span class="glyphicon glyphicon-knight"></span> "Phoenix green knight"</span>
 Release Date: November 10, 2022

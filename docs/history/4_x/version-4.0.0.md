@@ -1,4 +1,4 @@
-# Release 4.0.0
+# 4.0.0 Release Notes
 
 Name: <span style="color: brown"><span class="glyphicon glyphicon-apple"></span> "Kraken brown apple"</span>
 Release Date: March 22nd, 2022

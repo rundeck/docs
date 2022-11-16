@@ -1,4 +1,4 @@
-# Release 4.4.0
+# 4.4.0 Release Notes
 
 Name: <span style="color: deeppink"><span class="glyphicon glyphicon-piggy-bank"></span> "Murloc deeppink piggy-bank"</span>
 Release Date: July 14, 2022

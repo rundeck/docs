@@ -1,4 +1,4 @@
-# Release 4.3.0
+# 4.3.0 Release Notes
 
 Name: <span style="color: turquoise"><span class="glyphicon glyphicon-lamp"></span> "Manticore turquoise lamp"</span>
 Release Date: June 1st, 2022

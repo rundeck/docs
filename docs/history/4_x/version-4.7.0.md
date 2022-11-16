@@ -8,7 +8,7 @@ feed:
 
 ---
 
-# Release 4.7.0
+# 4.7.0 Release Notes
 
 Name: <span style="color: yellowgreen"><span class="glyphicon glyphicon-gift"></span> "Orc yellowgreen gift"</span>
 Release Date: October 6th, 2022

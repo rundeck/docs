@@ -1,4 +1,4 @@
-# Release 4.6.0
+# 4.6.0 Release Notes
 
 Name: <span style="color: salmon"><span class="glyphicon glyphicon-bullhorn"></span> "Ogre salmon bullhorn"</span>
 Release Date: September 6, 2022
