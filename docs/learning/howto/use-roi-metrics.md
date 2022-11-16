@@ -4,7 +4,7 @@ title: "Using ROI Metric Data"
 date: "2022-10-07"
 feed:
   enable: true
-  description: "How valuable are your jobs?  We can help you track that."
+  description: "Automation saves time and money with every job execution. Tracking that over time can help provide insight to the value of your automation efforts.  Use the ROI Metrics plugin to store value of each job run.   The ROI Metrics integration tracks user-defined value of each job execution and stores key value pairs against jobs to help you understand the ROI per job execution."
 
 ---
 

@@ -1,3 +1,13 @@
+---
+
+title: "4.7.0 Release Notes"
+date: "2022-10-06"
+feed:
+ enable: true
+ description: "Version 4.7.0 is here!  The release includes a new plugin for CloudWatch that simplifies the management of diagnostics queries, an incubating feature that helps users understand the ROI of jobs, and a number of security and compliance updates and bug fixes."
+
+---
+
 # Release 4.7.0
 
 Name: <span style="color: yellowgreen"><span class="glyphicon glyphicon-gift"></span> "Orc yellowgreen gift"</span>

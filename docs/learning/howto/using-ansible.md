@@ -1,3 +1,13 @@
+---
+
+title: "Rundeck and Ansible Integration"
+date: "2022-09-20"
+feed:
+ enable: true
+ description: "One popular pairing for Rundeck users is integrating Ansible playbooks into Rundeck to orchestrate and schedule workflows across multiple tools. Like Rundeck, Ansible's straightforward design and learning curve make it Operations friendly. Learn how you can integrate Rundeck with Ansible. "
+
+---
+
 # Rundeck and Ansible Integration
 
 It’s common for Rundeck users to integrate Ansible into their Rundeck. Like Rundeck, Ansible's straightforward design and learning curve make it Operations friendly.
