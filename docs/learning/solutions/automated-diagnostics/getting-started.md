@@ -11,9 +11,8 @@ If you do not have a license for either of these products, [contact us](https://
 
 For Process Automation environments, follow the steps below to download and import the Automated Diagnostics Jobs and Tours:
 #### Download the **Automated Diagnostics Solution package**.
-1. Download the latest release of the Automated Diagnostics Solution [here](https://github.com/rundeckpro/automated-diagnostics-project/releases/download/1.1/automated-diagnostics-1.1.zip).<br><br>
-2. Open the **.zip** file and there should be a .jar file inside the folder:
-   * **`automated-diagnostics-xxxxxxx.rdproject.jar`**
+1. Download the latest release of the Automated Diagnostics Solution [here](https://github.com/rundeckpro/automated-diagnostics-project/releases/download/v3/automated-diagnostics.jar).<br><br>
+
 
 #### Create a project in your Process Automation environment:
 1. Click the **P** in the upper left corner to navigate to the Main Dashboard <br><br>
@@ -28,7 +27,7 @@ For Process Automation environments, follow the steps below to download and impo
 1. In your new project, click the **gears** in the lower left corner for **Project Settings**<br><br>
 2. Choose **Import Archive** from the menu:
 ![Import Archive](@assets/img/solutions-auto-diag-import-archive.png)<br><br>
-3. For the **Choose a Rundeck archive**, select the **`automated-diagnostics-xxxxxx.jar`** from the downloaded resources.<br><br>
+3. For the **Choose a Rundeck archive**, select the **`automated-diagnostics.jar`** from the downloaded resources.<br><br>
 4. Leave all of the import settings as their defaults<br><br>
 5. Click green **Import** button
    ::: tip Note
