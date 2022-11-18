@@ -13,7 +13,7 @@ It is convenient to have an embedded database when you are just trying Rundeck o
 
 Don't use the H2 embedded database for anything except testing and non-production.
 
-Use an external database service like MariaDB, Mysql, Postgres or Oracle.
+Use an external database service like MariaDB, Mysql, Postgres, Amazon Aurora or Oracle.
 
 ### Customize the Datasource
 
@@ -40,7 +40,7 @@ for your specific Database type.
 
 ### Add the JDBC Driver
 
-Rundeck includes a JDBC driver for Mysql, MariaDB, Postgres, MSSQL and H2. If you are using another database or if you want to use an updated driver, copy the appropriate JDBC driver, such as "ojdbc14.jar" for Oracle into the server `lib` dir:
+Rundeck includes a JDBC driver for Mysql, MariaDB, Postgres, MSSQL and H2. If you are using another database or if you want to use an updated driver, copy the appropriate JDBC driver (e.g.,"ojdbc14.jar" for Oracle,or "aws-mysql-jdbc.jar" for Amazon Aurora) into the server `lib` dir:
 
 ```bash
 cp ojdbc14.jar $RDECK_BASE/server/lib
