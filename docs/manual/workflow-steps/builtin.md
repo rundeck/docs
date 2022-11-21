@@ -70,6 +70,66 @@ In order to use the global variable value on a referenced job, the job receiving
 
 ![Global Variable Image 4](~@assets/img/global_variable_3.png)
 
+#### Uplift a job context variable
+
+Create a new job, go to the workflow windows, add a new global variable.
+
+![Job context variables 1](~@assets/img/uplift-job-context-variable-1.png)
+
+On the value textbox write ${job.NAME_VAR} in our case we will use ${job.id}, on the name textbox write the desired name of the variable to be used as a global variable.
+
+![Job context variables 2](~@assets/img/uplift-job-context-variable-2.png)
+
+To test the uplifted variable, create a simple command making reference to the uplifted variable in our case echo ${export.upliftedVariable}.
+
+![Job context variables 3](~@assets/img/uplift-job-context-variable-3.png)
+
+#### Uplift a project context variable
+
+Go to project configuration, on this window click on Edit Configuration File.
+
+![Project context variables 1](~@assets/img/uplift-project-context-variable-1.png)
+
+Add the desired global variable in our case we are using project.globals.testValue=TEST.
+
+![Project context variables 2](~@assets/img/uplift-project-context-variable-2.png)
+
+Create a new job, go to the workflow windows, add a new global variable.
+
+![Project context variables 3](~@assets/img/uplift-project-context-variable-3.png)
+
+On the value textbox write ${globals.NAME_VAR*} in our case we will use ${globals.testValue}, on the name textbox write the desired name of the variable to be used as a global variable.
+
+![Project context variables 4](~@assets/img/uplift-project-context-variable-4.png)
+
+To test the uplifted variable, create a simple command making reference to the uplifted variable in our case echo ${export.upliftedVariable}.
+
+![Project context variables 5](~@assets/img/uplift-project-context-variable-5.png)
+
+#### Uplift a node context variable
+
+The Global Variable job step is a workflow step, it will not have access to the node context however there is a way to make this possible doing a few extra steps.
+
+Create a new job, go to the workflow windows, add a new command node step.
+
+![Node context variables 1](~@assets/img/uplift-node-context-variable-1.png)
+
+In this step the node context variables are accessible, do a echo ${node.NAME_VAR} in our case we a using ${node.os-name}.
+
+![Node context variables 2](~@assets/img/uplift-node-context-variable-2.png)
+
+Add a log filter to the node step, we are using the key value data to store the result from the echo command on a variable named test.
+
+![Node context variables 3](~@assets/img/uplift-node-context-variable-3.png)
+
+Once we have the node context variable captured on our key data value, this variable could be used to be exported as a global variable.
+
+![Node context variables 4](~@assets/img/uplift-node-context-variable-4.png)
+
+To test the uplifted variable, create a simple command making reference to the uplifted variable in our case echo ${export.upliftedVariable}.
+
+![Node context variables 5](~@assets/img/uplift-node-context-variable-5.png)
+
 #### Collecting values for all target nodes
 
 Use the global variable workflow step to collect data across all target nodes into a delimited list. Rundeck executes the steps before the global variable step, collecting values into the variable and then executes any remaining steps. The data variable is available to all subsequent steps in the job.
@@ -81,8 +141,9 @@ Note that you can also collect a value from a single node that is available in s
 #### Reference
 
 The global variable step can capture the following groups of variables:
--   [context](https://docs.rundeck.com/docs/manual/job-workflows.html#context-variables) variable, such as project, job, node
--   data variable captured by a [key-value](https://docs.rundeck.com/docs/manual/log-filters/key-value-data.html), Multiline regex, or JQ log filter
+-   [Context](https://docs.rundeck.com/docs/manual/job-workflows.html#context-variables) variable, such as project and job.
+-   Data variable captured by a [key-value](https://docs.rundeck.com/docs/manual/log-filters/key-value-data.html), Multiline regex, or JQ log filter
+
 
 
 | Field name | Syntax                    | Description                                                                                                                                                                                            |
