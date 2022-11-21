@@ -150,6 +150,11 @@ Performs an HTTP Request with or without authentication (per node)
 Remote URL
 : The URL to which to make the request.
 
+:::tip
+This plugin doesn't support unsafe characters. If you get this error message: `Illegal character in scheme name at index` means that you're using an unsafe character.
+All unsafe characters must always be encoded within a URL. For more information on unsafe characters see [IETF | Internet Engineering Task Force](https://www.ietf.org/rfc/rfc1738.txt)
+:::
+
 HTTP Method
 : The method that you want to be performed on the URL
 
