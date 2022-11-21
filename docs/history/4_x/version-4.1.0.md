@@ -1,4 +1,4 @@
-# Release 4.1.0
+# 4.1.0 Release Notes
 
 Name: <span style="color: olivedrab"><span class="glyphicon glyphicon-camera"></span> "Kaiju olivedrab camera"</span>
 Release Date: April 13th, 2022
@@ -9,7 +9,7 @@ Release Date: April 13th, 2022
 :::danger
 Warning: This version of Rundeck updates the libraries used for the built-in H2 database.  The new version is not compatible with the old version. There is no mechanism to migrate a database to the new version automatically without including the old, vulnerable libraries.
 - If you are using H2 for data storage, the process must be done manually following the details on the [Upgrading to 4.1](/upgrading/upgrading-to-4.1.md) page.
-- If you are **not** using H2 there may still be errors on boot related to H2.  More details on the [Upgrading to 4.1](/upgrading/upgrading-to-4.1.md) page. 
+- If you are **not** using H2 there may still be errors on boot related to H2.  More details on the [Upgrading to 4.1](/upgrading/upgrading-to-4.1.md) page.
 :::
 
 ## Overview

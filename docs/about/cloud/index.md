@@ -24,7 +24,7 @@ Runbook Automation can be evaluated and purchased under the Automation category 
 
 ## Runbook Automation and Process Automation differences
 
-Runbook Automation and Process Automation are 99% the same in terms of features. However, there are differences stemming from the different deployment architectures in what user classes and plugins are available and how job execution is carried out. 
+Runbook Automation and Process Automation share the same software foundation. However, there are differences stemming from the different deployment architectures in what user classes and plugins are available and how job execution is carried out. 
 
 ### User roles and classes
 
@@ -35,29 +35,41 @@ The Opsadmin and FullAdmin roles are not available in Runbook Automation, and a 
 Plugin job steps generally execute in Runbook Automation. However, job steps that implement local NodeExecutor or FileCopier are delegated to execute on the Runner automatically. If a Runner is not configured these "local" steps will fail. Runners that match the node filter target will assume the role of the local node.  
 
 ### Plugins NOT available in cloud
-The following plugins are not currently available in Runbook Automation.
+The following plugins are not currently available in Runbook Automation at the moment. The following block list is in place:
 
-- aws-s3-steps
-- command
-- file
-- github-script-plugin
-- local-script
-- openssh-node-execution
-- puppet-apply
-- py-winrm-plugin
-- rundeck-ansible
-- rundeck-azure-storage-plugin
-- rundeck-copyfile-plugin
-- rundeck-localexec
-- rundeck-script-plugin
-- rundeckpro-cyberark
-- rundeckpro-jira-plugins
-- rundeckpro-rundeck-filetransfer
-- rundeckpro-vmware-plugin
-- waitfor
-- directory
-- file
-- script
+```
+    fileNameEntries:
+      - openssh-node-execution
+      - rundeck-ansible
+      - rundeck-copyfile-plugin
+      - rundeck-localexec
+      - rundeck-script-plugin
+      - rundeckpro-cyberark
+      - local-script
+      - waitfor
+      - aws-s3-steps
+      - rundeck-azure-storage-plugin
+      - rundeckpro-rundeck-filetransfer
+      - command-v
+      - file-v
+      - github-script-plugin
+      - rundeckpro-vmware-plugin
+      - puppet-apply
+    providerNameEntries:
+      NodeExecutor:
+        - local
+        - sshj-ssh
+      FileCopier:
+        - sshj-scp
+        - script-copy
+        - local
+      ResourceModelSource:
+        - file
+        - directory
+        - script
+      FileUpload:
+        - filesystem-temp
+```
 
 
 #### Key Storage

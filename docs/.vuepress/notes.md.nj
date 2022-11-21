@@ -1,4 +1,14 @@
-# Release {{version.versionString}}
+---
+
+title: "{{version.versionString}} Release Notes"
+date: ""
+feed:
+ enable: true
+ description: ""
+
+---
+
+# {{version.versionString}} Release Notes
 
 Name: <span style="color: {{version.color()}}"><span class="glyphicon glyphicon-{{version.icon()}}"></span> "{{version.name()}} {{version.color()}} {{version.icon()}}"</span>
 Release Date: PUTADATEHERE

@@ -1,3 +1,13 @@
+---
+
+title: "Developing a Custom Rundeck Script Plugin"
+date: "2022-09-20"
+feed:
+ enable: true
+ description: "Need to reuse a script across many different jobs?  Make it a plugin and streamline the setup and updates.  Find more details in the doc."
+
+---
+
 # Developing a Custom Rundeck Script Plugin
 
 This tutorial covers:
@@ -54,7 +64,7 @@ We can modify the bash script stored in `<plugins-path>/contents/exec`:
 #!/bin/bash
 set -eu
 
-echo "Hello world from $(hostname)! I am a $1. Don't tell anyone that the secret is \"$2\""
+echo "Hello world from $(hostname)! I am a $1. Don't tell anyone that the secret is \"$2\"
 ```
 
 It prints the hostname it's called on and the first and second parameters passed to it. We can wrap a script from any scripting language as long as the interpreter is already deployed on the remote nodes.
