@@ -8,7 +8,7 @@ A very common type of diagnostic job is to query an API as a way of measuring ap
 
 #### Some common examples
 * Validate health status of cloud providers’ infrastructure
-![](~@assets/img/saasapi1.png)
+![**Results of an API query using built-in job**](~@assets/img/saasapi1.png)
 * Check health of each component in a custom app stack
 * Query status of public-facing applications, such as your own customer interface or support site
 * Confirm infrastructure health for the cloud or virtualization solution hosting your servers
