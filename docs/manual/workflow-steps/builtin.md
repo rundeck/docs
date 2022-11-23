@@ -136,7 +136,7 @@ Use the global variable workflow step to collect data across all target nodes in
 
 Note that you can also collect a value from a single node that is available in steps on the other targeted nodes.
 
-![Global Variable Image 5](~@assets/img/global-variable-image2.png)
+![Values from all target nodes](~@assets/img/value-from-all-target-nodes.png)
 
 #### Reference
 
