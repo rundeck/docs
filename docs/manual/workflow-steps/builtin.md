@@ -98,7 +98,7 @@ Create a new job, go to the workflow windows, add a new global variable.
 
 ![Project context variables 3](~@assets/img/uplift-project-context-variable-3.png)
 
-On the value textbox write ${globals.NAME_VAR*} in our case we will use ${globals.testValue}, on the name textbox write the desired name of the variable to be used as a global variable.
+On the value textbox write ${globals.NAME_VAR} in our case we will use ${globals.testValue}, on the name textbox write the desired name of the variable to be used as a global variable.
 
 ![Project context variables 4](~@assets/img/uplift-project-context-variable-4.png)
 
@@ -136,7 +136,7 @@ Use the global variable workflow step to collect data across all target nodes in
 
 Note that you can also collect a value from a single node that is available in steps on the other targeted nodes.
 
-![Values from all target nodes](~@assets/img/value-from-all-target-nodes.png)
+![Values from all target nodes](~@assets/img/values-from-all-target-nodes.png)
 
 #### Reference
 
