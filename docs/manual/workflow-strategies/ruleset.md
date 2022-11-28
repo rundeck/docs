@@ -94,9 +94,9 @@ Run step 1, then steps 2 and 3 in parallel, then step 4:
 Run steps only if two different conditions are met:
 ```
 [1] run-in-sequence
-[2] if:option.1=yes if:option.2=yes
-[3] if:option.1=yes if:option.2=no
-[4] if:option.1=no if:option.2=yes
-[5] if:option.1=no if:option.2=no
+[2] if:option.1==yes if:option.2==yes
+[3] if:option.1==yes if:option.2==no
+[4] if:option.1==no if:option.2==yes
+[5] if:option.1==no if:option.2==no
 ```
 Based on the ruleset defined above, if option 1 is "yes" and option 2 is "no" then job step 3 would run after 1. If option 1 is "no" and option 2 is "yes" then job step 4 would run after 1.
