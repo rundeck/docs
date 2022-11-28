@@ -124,33 +124,34 @@ The default username and password is "admin".
 
 This section will install Rundeck as a Windows Service so it runs in the background even when a user is not logged in.
 
-- [Install](#installing-rundeck-on-windows-systems-and-first-run) Rundeck.
-- Download [nssm.exe](http://nssm.cc/)
-- Place the executable under `%RDECK_BASE%` (you can place it elsewhere, but for the sake of the example, use this base dir)
-- Open a prompt and type these commands (Administrator user is required to install a service)
+- Download [Apache Commons Daemon](https://dlcdn.apache.org//commons/daemon/binaries/windows/) zip. These binaries wraps Java applications as a Windows service. More info [here](https://commons.apache.org/proper/commons-daemon/procrun.html).
+- Download [Rundeck](https://www.rundeck.com/downloads).
+- Unzip the apache-commons-daemon file and place the files including the WAR package in a new created folder (the Rundeck base folder i.e C:\rundeck).
+- Rename WAR package to rundeck.war, rename prunsrv.exe to the service name i.e rundeck.exe, and prunmgr.exe to rundeckw.exe (the "w" character is required).
+- Open a prompt and paste these commands (Administrator user is required to install a service)
 
 ```batch
-    cd C:\rundeck
-    nssm.exe install RUNDECK
+  rundeck.exe //IS/rundeck ^
+  --DisplayName=Rundeck/ProcessAutomation ^
+  --LogLevel=Debug ^
+  --LogPath=C:\rundeck ^
+  --ServiceUser=LocalSystem ^
+  --Startup=auto ^
+  --StartMode=java ^
+  --StartPath=C:\rundeck ^
+  --StartParams=-jar#rundeck.war ^
+  --StopMode=exe ^
+  --StopPath=C:\rundeck ^
+  --StopImage=TASKKILL.exe ^
+  --StopTimeout=30 ^
+  --PidFile=rundeck.pid ^
+  --JvmMs=1024 --JvmMx=4096 ^
+  --StdOutput=C:\rundeck\var\logs\service.log ^
+  --StdError=C:\rundeck\var\logs\service.log ^
+  --JvmOptions=-server#-Drdeck.base=C:\rundeck#-Drundeck.config.location=C:\rundeck\server\config\rundeck-config.properties#-Drundeck.server.logDir=C:\rundeck\server\logs
 ```
 
-- The GUI pops up, set "path" as `%RDECK_BASE%\start_rundeck.bat`, startup directory as `%RDECK_BASE%` (optionally set "low" on the process tab, under priority, to avoid server CPU spiking when starting Rundeck)
+Now, Rundeck is configured as a Service and can be managed with rundeckw.exe
 
-![NSSM Installer](~@assets/img/nssm-installer.png)
-
-- Go to the Windows Service Management Console (services.msc) to start the `rundeck` service. You can also stop or restart Rundeck here.
-
-![Service Management Console](~@assets/img/service-management-console.png)
-
-- set JVM memory heap on `%RDECK_BASE%\etc\profile.bat`.
-
-Replace the `RDECK_CLI_OPTS` variable with the amount of memory that you need, for example:
-
-```batch
-....
-
-set RDECK_CLI_OPTS=-Xms1024m -Xmx4096m
-set RD_LIBDIR=%RDECK_BASE%\tools\lib
-```
-
-Now, Rundeck is configured as a Service and will automatically start when Windows starts.
+- Double click the rundeckw.exe binary and a management window will appear to start the service. Stop, Restart or settings like JVM Max memory size can be tweaked from this window.
+- NOTE: This service can also be managed from services.msc console.
