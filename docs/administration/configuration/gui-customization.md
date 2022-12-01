@@ -91,12 +91,21 @@ Number of jobs per page to display when job pagination is enabled
 
 URL for the link used by the app header icon.
 
+### rundeck.gui.helpLinkName
+- Example: ```Your custom name here```
+- min version: 4.7
+
+To customize the link's name of the "Get help" button in Rundeck's GUI Support footer.
+
+![Figure: The "Get Help link name changed for a custom value named in the property"](~@assets/img/gui-custom-helpLink-name.png)
 
 ### rundeck.gui.helpLink
-- Example: ```http://rundeck.org/docs```
+- Example: ```https://yoururlhere.com```
 - min version: 2.x
 
-URL for the help link in the app header.
+To customize the Url of the "Get Help" button in Rundeck's GUI Support footer.
+
+![Figure: The "Get Help link redirects to a custom link named in the property"](~@assets/img/gui-custom-helpLink.png)
 
 
 ### rundeck.gui.realJobTree
@@ -113,12 +122,18 @@ Displaying a real tree in the Jobs overview instead of collapsing empty groups.
 Change the default page shown after choosing a project. Values: 'adhoc', 'configure', 'createJob', 'events', 'home', 'jobs', 'nodes', 'projectHome' or 'uploadJob'.
 
 
-
 ### rundeck.gui.enableJobHoverInfo
 - Example: ```(Default: true)```
 - min version: 2.x
 
 Shows job information when the user hovers over a job name in various pages.
+
+
+### rundeck.gui.login.disclaimer
+- Example: ```(Default: blank)```
+- min version: 3.0.8
+
+HTML displayed on the login page below the login form element but seperate from the login form element. The HTML will be sanitized before display.
 
 
 ### rundeck.gui.login.welcome
@@ -133,6 +148,13 @@ Text displayed in the login page.
 - min version: 2.x
 
 HTML displayed on the login page. The HTML will be sanitized before display.
+
+
+### rundeck.gui.login.footerMessageHtml
+- Example: ```(Default: blank)```
+- min version: 2.x
+
+HTML displayed on the login page below the login form. The HTML will be sanitized before display.
 
 
 ### rundeck.gui.errorpage.hidestacktrace

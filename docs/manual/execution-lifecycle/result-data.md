@@ -18,6 +18,10 @@ There are currently two different Plugins that can be used to produce JSON data 
 
 Enable and configure one of these plugins in the *Execution Lifecycle* tab when editing a Job.
 
+::: tip Configuration Tip
+Currently, the data for this feature is stored as file based logs.  To ensure resiliency please be sure that a [LogStore](/administration/cluster/logstore/) is configured to backup the files.
+:::
+
 
 ## Plugin: Result Data / Export Context
 
@@ -36,8 +40,6 @@ You can use the [Key-Value Data Logfilter Plugin](/manual/log-filters/key-value-
 
 You can use the [Global Variable Workflow Step Plugin](/manual/workflow-steps/builtin.html#global-variable) to copy Node Context data to the Global Context.
 :::
-
-
 
 ### Inputs
 
@@ -89,7 +91,7 @@ To include data captured from Node steps, such as when using the Key Value Data 
  syntax like `${data.name*}` which will
 collect all values for `data.name` in all Node contexts separated with a comma.
 
-Example Template: 
+Example Template:
 ```json
 { "key" : "${data.mydata*}" }
 ```
@@ -100,7 +102,7 @@ Result, expands into a comma-separated string for each Node:
 ```
 
 
-Example Using specific delimiter: 
+Example Using specific delimiter:
 ```json
 { "key" : "${data.mydata*-}" }
 ```

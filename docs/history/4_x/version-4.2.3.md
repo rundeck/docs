@@ -1,4 +1,4 @@
-# Release 4.2.3
+# 4.2.3 Release Notes
 
 Name: <span style="color: salmon"><span class="glyphicon glyphicon-grain"></span> "Liger salmon grain"</span>
 Release Date: July 14, 2022

@@ -1,4 +1,14 @@
-# Release {{version.versionString}}
+---
+
+title: "{{version.versionString}} Release Notes"
+date: ""
+feed:
+ enable: true
+ description: ""
+
+---
+
+# {{version.versionString}} Release Notes
 
 Name: <span style="color: {{version.color()}}"><span class="glyphicon glyphicon-{{version.icon()}}"></span> "{{version.name()}} {{version.color()}} {{version.icon()}}"</span>
 Release Date: PUTADATEHERE
@@ -15,21 +25,29 @@ Check out the new features and enhancements for PagerDuty Process Automation (fo
 
 > Also includes all Open Source updates from below
 
+### Highlights
+
+- first highlight
+- second highlight
+
+### Additional Updates
+
+
 {% for pull in enterprise.pulls -%}
-* {{ pull.title | replace(r/RUN-[0-9]*:?\s?/g, "") | replace(r/RCLOUD-[0-9]*:?\s?/g, "") }}
+* {{ pull.title | replace(r/RUN-[0-9]*:?\s?/g, "") | replace(r/RSE-[0-9]*:?\s?/g, "") | replace(r/RCLOUD-[0-9]*:?\s?/g, "") }}
 {% endfor %}
 
 ## Rundeck Open Source Product Updates
 
 {% for pull in core.pulls -%}
-* [{{ pull.title | replace(r/RUN-[0-9]*:?\s?/g, "") | replace(r/RCLOUD-[0-9]*:?\s?/g, "") }}]({{pull.html_url}})
+* [{{ pull.title | replace(r/RUN-[0-9]*:?\s?/g, "") | replace(r/RSE-[0-9]*:?\s?/g, "") | replace(r/RCLOUD-[0-9]*:?\s?/g, "") }}]({{pull.html_url}})
 {% endfor %}
 
 [Here is a link to the full list of public PRs](https://github.com/rundeck/rundeck/pulls?q=is%3Apr+milestone%3A{{version.versionString}}+is%3Aclosed)
 
 ## Ansible Plugin Updates
 {% for pull in ansible.pulls -%}
-* [{{ pull.title | replace(r/RUN-[0-9]*:?\s?/g, "") | replace(r/RCLOUD-[0-9]*:?\s?/g, "") }}]({{pull.html_url}})
+* [{{ pull.title | replace(r/RUN-[0-9]*:?\s?/g, "") | replace(r/RSE-[0-9]*:?\s?/g, "") | replace(r/RCLOUD-[0-9]*:?\s?/g, "") }}]({{pull.html_url}})
 {% endfor %}
 
 ## Community Contributors
@@ -51,6 +69,7 @@ Check out the new features and enhancements for PagerDuty Process Automation (fo
 * Forrest Evans ([fdevans](https://github.com/fdevans))
 * Imad Jafir ([imad6639](https://github.com/imad6639))
 * Jake Cohen ([jsboak](https://github.com/jsboak))
+* Jason Brooks ([jbrookspd](https://github.com/jbrookspd))
 * Jason Qualman ([qualman](https://github.com/qualman))
 * Jesus Osuna ([Jesus-Osuna-M](https://github.com/Jesus-Osuna-M))
 * Leonel Juarez ([L2JE](https://github.com/L2JE))

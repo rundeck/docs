@@ -10,6 +10,7 @@ Provider name: `org.rundeck.sqlrunner.SQLRunnerNodeStepPlugin`
 
 ## Configuration
 
+- _Statement Delimiter_: Single character used to define the end of a statement when multiple statements are present. Default: '/'
 - _SQL script path_: Path to the sql script
 - _SQL inline script_: Alternative to sql script path.
 - _Variables_: comma separated list of variables values too be used as Prepared Statement.
@@ -18,6 +19,11 @@ Provider name: `org.rundeck.sqlrunner.SQLRunnerNodeStepPlugin`
 - _Database username_ connection username
 - _Database password_ connection password
 - _Auto commit flag_: if true, a `Connection::commit()` will be called after the script.
+
+
+:::tip
+Use a comment `-- delimiter = ;` at the beggining of the script file or inline script to override the **statement delimiter** property.
+:::
 
 ## Usage of variables
 

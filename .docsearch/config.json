@@ -7,13 +7,13 @@
           "variables": {
               "version": [
                   "docs",
-                  "4.5.0"
+                  "4.9.0"
               ]
           }
       }
     ],
     "stop_urls": [
-      "https://docs.rundeck.com/.*?/history/.*?/.*"
+      "https://docs.rundeck.com/.*?/history/[1,2,3].*?/.*"
     ],
     "selectors": {
       "lvl0": "[class*='content '] h1",

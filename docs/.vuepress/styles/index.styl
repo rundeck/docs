@@ -22,6 +22,10 @@ figcaption
   font-style: italic
   text-align: center
 
+img {
+  border: 1px solid #C0C0C0;
+}
+
 dl
   line-height: 1.7
 
@@ -63,6 +67,7 @@ a.home-link{
 }
 
 .theme-default-content:not(.custom) {
+  max-width: 65%
   padding: 6rem 2.5rem 2rem;
 }
 
@@ -144,6 +149,15 @@ a.home-link{
     margin 1rem 0
     .custom-block-title
       margin 0.5rem
+
+.custom-block
+  &.betafeature
+    background-color #f3f5f7
+    border-color #48a1f5
+    padding 0.1rem 1.5rem
+    border-left-width 0.5rem
+    border-left-style solid
+    margin 1rem 0
 
 .custom-block
   &.deprecated

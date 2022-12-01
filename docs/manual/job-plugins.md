@@ -25,6 +25,7 @@
 
 ## Workflow Steps
 * **Amazon Web Services (Enterprise Only)**
+  - [Athena Query](/manual/workflow-steps/amazon-athena.md)
   - [CloudWatch Logs](/manual/workflow-steps/aws-cloudwatch.md)
   - [ECS & Fargate](/manual/workflow-steps/aws-ecs-fargate.md)
   - [Elastic Cloud Compute (EC2)](/manual/workflow-steps/aws.md)
@@ -52,8 +53,9 @@
 - [Log data step](/manual/workflow-steps/builtin.md#log-data-step)
 - [Refresh project nodes](/manual/workflow-steps/builtin.md#refresh-project-nodes)
 - [Data step](/manual/workflow-steps/builtin.md#data-step)
-- [Sumo Logic](/manual/workflow-steps/sumo-logic.md)
+- [Sumo Logic (Enterprise)](/manual/workflow-steps/sumo-logic.md)
 - [Loop Script Plugins (Enterprise)](/manual/workflow-steps/loop-plugins.md)
+- [RSS Feed Plugin (Enterprise)](/manual/workflow-steps/rss-feed-plugin.md)
 
 ## Notifications
 

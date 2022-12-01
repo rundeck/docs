@@ -1,4 +1,6 @@
 //Meta Information
+const _ = require('lodash');
+
 const autometa_options = {
     site: {
         name   : 'Rundeck / Process Automation Documentation',
@@ -7,9 +9,17 @@ const autometa_options = {
     canonical_base: 'https://docs.rundeck.com',
 }
 
+const feed_options = {
+  canonical_base: 'https://docs.rundeck.com/docs',
+  sort:  entries => _.reverse( _.sortBy( entries, 'date' ) )
+};
+
+
+
 function getPlugins(setup) {
     const plugins = [
         'vuepress-plugin-element-tabs',
+        [ 'feed', feed_options],
         ['@vuepress/html-redirect', {
           countdown: 0
           }
@@ -45,7 +55,7 @@ function getPlugins(setup) {
         {
             type: 'enterprise',
             defaultTitle: {
-            '/':'Available in PagerDuty Process Automation products'
+            '/':'Available in PagerDuty Process Automation Commercial products.'
             },
         },
         ],
@@ -63,7 +73,16 @@ function getPlugins(setup) {
         {
             type: 'incubating',
             defaultTitle: {
-            '/':'Incubating: this API or Feature may change in a future release.'
+            '/':'Incubating: This Feature or API is new! We may still have a few bugs or change some functionality in the future.'
+            },
+        },
+        ],
+        [
+        'vuepress-plugin-container',
+        {
+            type: 'betafeature',
+            defaultTitle: {
+            '/':'BETA FEATURE'
             },
         },
         ]

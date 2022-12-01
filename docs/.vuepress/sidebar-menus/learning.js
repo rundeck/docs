@@ -45,7 +45,11 @@ module.exports = [{
               '/learning/howto/migrate-to-mysql.md',
               '/learning/howto/use-terraform-provider.md',
               '/learning/howto/learn-rd-cli.md',
-              '/learning/howto/acl_basic_examples.md'
+              '/learning/howto/acl_basic_examples.md',
+              '/learning/howto/apache2-proxy-gssapi.md',
+              '/learning/howto/workinglogs.md',
+              '/learning/howto/S3-minio.md',
+              '/learning/howto/how2scm.md'
           ]
         },
         {
@@ -66,7 +70,8 @@ module.exports = [{
               '/learning/howto/use-example-jobs.md',
               '/learning/howto/passing-variables.md',
               '/learning/howto/calling-apis.md',
-              '/learning/howto/log4shell.md'
+              '/learning/howto/log4shell.md',
+              '/learning/howto/use-roi-metrics.md'
           ]
         },
         {
@@ -81,7 +86,9 @@ module.exports = [{
               '/learning/howto/configure-gcp-plugins.md',
               '/learning/howto/sn-midserver.md',
               '/learning/howto/rundeck-exporter.md',
-              '/learning/howto/vault-integration.md'
+              '/learning/howto/vault-integration.md',
+              '/learning/howto/howtojenkins.md',
+              '/learning/howto/how2kube.md'
           ]
         },
         {

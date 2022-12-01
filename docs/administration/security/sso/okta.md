@@ -62,6 +62,7 @@ rundeck.security.oauth.okta.autoConfigUrl = <okta service url>
 #This is the default scope setting. You can add additional scopes at the end of the line, separate it by spaces
 # rundeck.security.oauth.okta.scope = openid profile email groups my_own_scope
 rundeck.security.oauth.okta.scope = openid profile email groups
+rundeck.security.oauth.okta.authorityProperty = YOUR_MAPPED_GROUPS_ATTRIBUTE
 ```
 
 #### Manual Configuration Method
@@ -87,6 +88,7 @@ rundeck.security.oauth.okta.jwkSetUri = <okta service url>/v1/keys
 #This is the default scope setting. You can add additional scopes at the end of the line, separate it by spaces
 # rundeck.security.oauth.okta.scope = openid profile email groups my_own_scope
 rundeck.security.oauth.okta.scope = openid profile email groups
+rundeck.security.oauth.okta.authorityProperty = YOUR_MAPPED_GROUPS_ATTRIBUTE
 
 ```
 

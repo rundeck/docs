@@ -23,7 +23,9 @@ In order to capture the JSON array in previous steps (data context), you can use
 * **_Stop Iteration on failure_**: Stop execution if the iteration failed
 
 The input JSON array must be a simple key/value JSON array:
-
+:::tip
+The JSON provided cannot have spaces in the attribute name, this is allowed just for the values
+:::
 ````
 [ 
   {"id":"1","name":"test 1"},

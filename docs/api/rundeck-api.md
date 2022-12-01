@@ -2845,6 +2845,7 @@ The following parameters can also be used to narrow down the result set.
 * `serverNodeUUIDFilter`: Value: a UUID. In cluster mode, use to select scheduled jobs assigned to the server with given UUID.
 * `max`: limit the maximum amount of results to be received.
 * `offset`: use in conjunction with `max` to paginate the result set.
+* `tags`: specify a tag or comma separated list of tags to list Jobs that have matching tags. (e.g. `tags=tag1,tag2`)
 
 **Note:** It is possible to disable result set pagination by setting the property `rundeck.api.paginatejobs.enabled=false` which is assumed to be true if not set.
 
@@ -5074,6 +5075,7 @@ Abort a running execution by ID.
 Optional Parameters:
 
 * `asUser` : specifies a username identifying the user who aborted the execution. Requires `runAs` permission.
+* `forceIncomplete`: if `true`, forces a running execution to be marked as "incomplete".
 
 **Response:**
 

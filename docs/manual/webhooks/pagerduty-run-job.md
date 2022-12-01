@@ -52,7 +52,7 @@ Use the suggestion drop-downs to chose from common PagerDuty event fields
 
 In Rundeck 3.4.0 and later, enterprise customers have the ability to verify that incoming webhooks are actually coming from PagerDuty.
 
-To begin, users must have a shared secret key from PagerDuty. In order to get the shared secret key, make an API call to create a webhook subscription, as described here: [Webhook Subscriptions](https://developer.pagerduty.com/api-reference/reference/REST/openapiv3.json/paths/~1webhook_subscriptions/post)
+To begin, users must have a shared secret key from PagerDuty. In order to get the shared secret key, make an API call to create a webhook subscription, as described here: [Webhook Subscriptions](https://developer.pagerduty.com/docs/db0fa8c8984fc-overview)
 
 In the response body of the call above, there will be a "secret" key. The value for secret is the shared secret used to verify webhooks. Once that value has been returned, create a new password type key in Rundeck Key Storage.
 

@@ -1,5 +1,5 @@
-const RUNDECK_VERSION='4.5.0'
-const RUNDECK_VERSION_FULL='4.5.0-SNAPSHOT'
+const RUNDECK_VERSION='4.9.0'
+const RUNDECK_VERSION_FULL='4.9.0-SNAPSHOT'
 const API_VERSION='42'
 const API_DEP_REL='5.0.0'
 const API_DEP_VER='14'
@@ -17,7 +17,7 @@ const setup = {
     apiMinVersion: API_MIN_VER,
     rundeckVersion: process.env.RUNDECK_VERSION || RUNDECK_VERSION,
     rundeckVersionFull: process.env.RUNDECK_VERSION_FULL || RUNDECK_VERSION_FULL,
-    rundeckCLIVersion: CLI_VERSION
+    rundeckCLIVersion: process.env.CLI_VERSION || CLI_VERSION
 }
 
 module.exports = setup

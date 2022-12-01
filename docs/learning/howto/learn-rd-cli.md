@@ -1,3 +1,13 @@
+---
+
+title: "Learn the Rundeck CLI"
+date: "2022-08-10"
+feed:
+ enable: true
+ description: "The Rundeck CLI is a great way to streamline repeated Rundeck tasks or programmatically manage your installation. Learn more about using it today. "
+
+---
+
 # Learn the Rundeck CLI
 
 ## What is RD-CLI?

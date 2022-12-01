@@ -1,4 +1,4 @@
-# Release 4.3.2
+# 4.3.2 Release Notes
 
 Name: <span style="color: violet"><span class="glyphicon glyphicon-leaf"></span> "Manticore violet leaf"</span>
 Release Date: July 14, 2022
