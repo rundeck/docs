@@ -7839,7 +7839,7 @@ Content-Type: `application/json`
 ### Get A System Feature Status
 
 
-Return the information about if a specific system feature is enabled or not.
+Return the information whether a specific system feature is enabled or not.
 
 **Request:**
 
