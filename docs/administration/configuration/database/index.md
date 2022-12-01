@@ -6,7 +6,7 @@
 - [MS SQL Server](/administration/configuration/database/mssql.md)
 - [Security Mode for MS SQL Server](/administration/configuration/database/secure_mssql.md)
 
-### Default database
+## Default database (H2)
 
 When you install the vanilla standalone rundeck configuration, it will use H2, an embedded database.
 It is convenient to have an embedded database when you are just trying Rundeck or using it for a non-critical purpose. Be aware though that using the H2 database is not considered safe for production because it not resilient if Rundeck is not shutdown gracefully. When shutdown gracefully, Rundeck can write the data (kept in memory) to disk. If Rundeck is forcefully shutdown, the data can not be guaranteed to be written to file on disk and cause truncation and corruption.
@@ -14,6 +14,10 @@ It is convenient to have an embedded database when you are just trying Rundeck o
 Don't use the H2 embedded database for anything except testing and non-production.
 
 Use an external database service like MariaDB, Mysql, Postgres, Amazon Aurora or Oracle.
+
+## Database Architecture and Performance Notes
+
+Process Automation supports only one active DB instance serving queries to the Enterprise Cluster. PAOP only supports reading from and writing to a single database instance from all servers in the same cluster. For optimal performance the Process Automation Enterprise Cluster and database instance need to be connected on low latency network (<40ms latency).
 
 ### Customize the Datasource
 

@@ -111,6 +111,10 @@ MYSQLJ_VERS=8.0.21
 curl -L -o https://repo1.maven.org/maven2/mysql/mysql-connector-java/${MYSQLJ_VERS}/mysql-connector-java-${MYSQLJ_VERS}.jar
 ```
 
+## Amazon Aurora MySQL
+Process Automation v4.8+ supports Amazon Aurora MySQL v5.7 with the mysql standard jdbc driver or [https://awslabs.github.io/aws-mysql-jdbc](https://awslabs.github.io/aws-mysql-jdbc) driver when regional/zone DR failover is required. 
+
+
 ### Additional Articles
 
 Check out our [Migrating to MySQL from H2 article](/learning/howto/migrate-to-mysql) in our Learning Section.
