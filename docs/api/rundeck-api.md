@@ -7845,7 +7845,7 @@ Return the information about if a specific system feature is enabled or not.
 
     GET /api/42/feature/[featureName]
 
-The `featureName` parameter should be the feature's configuration name without `rundeck.feature.` prefix and `.enabled` surfix. E.g. For configuration name `rundeck.feature.runner.enabled`, the value of `[featureName]` should be `runner`  
+The `featureName` parameter should be the feature's configuration name without `rundeck.feature.` prefix and `.enabled` suffix. E.g. For configuration name `rundeck.feature.runner.enabled`, the value of `[featureName]` should be `runner`  
 
 **Response:**
 
