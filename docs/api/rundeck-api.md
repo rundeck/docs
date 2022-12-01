@@ -7832,6 +7832,70 @@ Content-Type: `application/json`
 }
 ```
 
+## System Feature
+
+### Get A System Feature Status
+
+
+Return the information about if a specific system feature is enabled or not.
+
+**Request:**
+
+    GET /api/42/feature/[featureName]
+
+The `featureName` parameter is the value of the feature's configuration name without `rundeck.feature.` prefix and `.enabled` surfix. E.g. For configuration name `rundeck.feature.runner.enabled`, the value of `[featureName]` should be `runner`  
+
+**Response:**
+
+Content-Type: `application/json`
+
+```json
+{
+  "enabled": true
+}
+
+```
+
+### Get All System Feature Status
+Return the information about all system features status.
+
+**Request:**
+
+    GET /api/42/feature/
+
+**Response:**
+
+Content-Type: `application/json`
+
+```json
+{
+  "authorizationServiceBootstrapWarmupCache": {
+    "enabled": true
+  },
+  "cleanExecutionsHistoryJob": {
+    "enabled": true
+  },
+  "cleanExecutionsHistoryJobAsyncStart": {
+    "enabled": true
+  },
+  "emailCSSFramework": {
+    "enabled": false
+  },
+  "enableAll": null,
+  "enhancedNodes": {
+    "enabled": true
+  },
+  ...,
+  "eventStore": {
+    "enabled": true
+  },
+  "executionLifecyclePlugin": {
+    "enabled": true
+  }
+}
+
+```
+
 ## Index
 
 [/api/V/config/refresh][]
@@ -7882,6 +7946,9 @@ Content-Type: `application/json`
 [/api/V/executions/metrics][]
 
 * `GET` [Execution Query Metrics](#execution-query-metrics)
+
+[/api/V/feature/[featureName]]
+* `GET` [System feature on/ff status](#system-feature) 
 
 [/api/V/job/\[ID\]][]
 
