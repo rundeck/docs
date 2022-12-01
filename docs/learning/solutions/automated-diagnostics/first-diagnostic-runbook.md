@@ -47,3 +47,20 @@ This is to demonstrate how verbose log data can be “simplified” so that a re
 With this sample Job - and others in the **Automated Diagnostics Project** - users can click the link in the Incident note to jump into the Automation instance to see the full diagnostic data output.  
 If desired, it is straightforward to send the "verbose" output to PagerDuty rather than just the simplified output.  
 
+:::warning Troubleshooting Sending Diagnostic Output to PagerDuty
+If the diagnostic data did not get added to the Incident timeline, navigate back to the Automation interface.
+Navigate to the **Activity** tab.
+
+If the **Third Party Service Disruptions** job was invoked at the same time the Automation Action was clicked in PagerDuty, click on the record in the Activity tab for that invocation.  
+Click on **Log Output**.  Included below are possible error messages and steps to troubleshoot:
+
+`Please provide PagerDuty API token and Incident ID to send diagnostics to Incident.`
+This likely means that the `pd_incident_id` Job Option was not correctly provided. Check the syntax of the variable in Automation Actions.  Also make sure that the PagerDuty step within the Job is referencing ${option.pd_incident_id} for the Incident ID field.
+
+`"error":{"message":"Requester User Not Found","code":1008`
+The PagerDuty user email that was placed into the Project Configuration is not a valid user email. Change the value associated with the project.globals.pd-email property.
+
+`Error in PagerDuty request 401`
+The PagerDuty API Key placed in Key Storage was not a valid API Key.
+Details for other error codes can be found [here](https://developer.pagerduty.com/docs/ZG9jOjExMDI5NTYz-errors#http-responses).
+:::
