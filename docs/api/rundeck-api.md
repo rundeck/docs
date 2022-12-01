@@ -7950,7 +7950,7 @@ Content-Type: `application/json`
 * `GET` [Execution Query Metrics](#execution-query-metrics)
 
 [/api/V/feature/[featureName]]
-* `GET` [System feature on/ff status](#system-feature) 
+* `GET` [System feature on/off status](#system-feature) 
 
 [/api/V/job/\[ID\]][]
 
