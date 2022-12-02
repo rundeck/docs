@@ -59,7 +59,8 @@ module.exports = [{
           children: [
               '/learning/howto/ssh-on-linux-nodes.md',
               '/learning/howto/configuring-windows-nodes.md',
-              '/learning/howto/revoke-ssh-keys.md'
+              '/learning/howto/revoke-ssh-keys.md',
+              '/learning/howto/how2mixos.md'
           ]
         },
         {
@@ -98,7 +99,8 @@ module.exports = [{
           children: [
             '/learning/howto/plugin-bootstrap.md',
             '/learning/howto/custom-script-plugin-hello-world.md',
-            '/learning/howto/java-plugin.md'
+            '/learning/howto/java-plugin.md',
+            '/learning/howto/how2extenddocker.md'
           ]
         },
         {
