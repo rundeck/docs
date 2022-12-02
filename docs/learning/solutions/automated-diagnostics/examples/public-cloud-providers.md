@@ -1,5 +1,5 @@
-# Automated Diagnostics Examples
----
+# Automated Diagnostics
+
 
 ## Public Cloud Providers
 
