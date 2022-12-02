@@ -138,7 +138,7 @@ module.exports = [{
                     ['/learning/solutions/automated-diagnostics/examples/windows.md','Windows'],
                     ['/learning/solutions/automated-diagnostics/examples/apis.md','SaaS & Internal API\'s'],
                     ['/learning/solutions/automated-diagnostics/examples/kubernetes.md','Kubernetes'],
-                    ['/learning/solutions/automated-diagnostics/examples/amazon-ecs.md','Amazon ECS'],
+                    ['/learning/solutions/automated-diagnostics/examples/containers.md','Containers'],
                     ['/learning/solutions/automated-diagnostics/examples/databases.md','Databases'],
                     ['/learning/solutions/automated-diagnostics/examples/network-devices.md','Network Devices'],
                     ['/learning/solutions/automated-diagnostics/examples/observability-integrations.md','Observability Integrations']

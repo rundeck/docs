@@ -13,11 +13,10 @@ There are numerous plugins that make it possible to get started quickly with Aut
 
 It is also very common for users to want to “wrap around” the Kubernetes command-line **`kubectl`**.
 
-
-### Example: Recent Pod logs and Kubernetes Events
+### Sample Job: Recent Pod logs and Kubernetes Events
 
 Here is an example Job that retrieves recent Pod logs and Kubernetes events using **`kubectl`**.  
-Right click [here](https://github.com/rundeck/docs/blob/RUN-1308-diagnostics-phase-3/docs/assets/text/sample_k8s_job.yaml) and click **`Save Link As...`** to download the Job definition **YAML** and import the Job to your Automation instance.
+Right click [here](https://raw.githubusercontent.com/rundeck/docs/RUN-1308-diagnostics-phase-3/docs/assets/text/sample_k8s_job.yaml) and click **`Save Link As...`** to download the Job definition **YAML** and import the Job to your Automation instance.
 
 ![Example Kubernetes Job Output](@assets/img/example-k8s-job-output.png)
 

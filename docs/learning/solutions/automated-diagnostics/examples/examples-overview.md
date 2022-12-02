@@ -15,7 +15,7 @@ Other prebuilt Jobs are included in the Automated Diagnostics Solution package, 
 * [Working with Windows Servers and Applications](/learning/solutions/automated-diagnostics/examples/windows.html)
 * [Running Diagnostics using APIs](/learning/solutions/automated-diagnostics/examples/apis.html)
 * [Diagnosing issues with Kubernetes environments](/learning/solutions/automated-diagnostics/examples/kubernetes.html)
-* [Interacting with Amazon ECS](/learning/solutions/automated-diagnostics/examples/amazon-ecs.html)
+* [Debugging Containers](/learning/solutions/automated-diagnostics/examples/containers.html)
 * [Debugging databases](/learning/solutions/automated-diagnostics/examples/databases.html)
 * [Working with Network Devices](/learning/solutions/automated-diagnostics/examples/network-devices.html)
 * [Observability Integrations](/learning/solutions/automated-diagnostics/examples/observability-integrations.html)
