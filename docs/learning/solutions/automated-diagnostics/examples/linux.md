@@ -1,6 +1,6 @@
 # Automated Diagnostics
 
-## Linux OS & Applications Examples
+## Linux OS & Applications
 
 When responding to incidents related to Linux servers, there are many sorts of diagnostics that can be run. 
 Unlike some cloud diagnostics, connecting to Linux servers will involve using [node executors](/manual/projects/node-execution/builtin.html) to connect. 
