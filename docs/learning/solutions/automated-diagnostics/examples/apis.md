@@ -1,14 +1,15 @@
-### Automated Diagnostics Examples
----
+# Automated Diagnostics
 
-## Applications & API's
+## SaaS & Internal Application APIs
+A very common type of diagnostic job is to query an API as a way of measuring application or system health.  
+This could be a common SaaS API or might be querying the API of an internal application.  
 
-#### Introduction
-A very common type of diagnostic job is to query an API as a way of measuring application or system health.  This could be a common SAAS API or might be querying the API of an internal application.  In either case, this is accomplished by using the [HTTP Request workflow step](https://resources.rundeck.com/plugins/rundeck-http-workflow-step-plugin/), which can send an http request and trigger further steps based on the response code.  Whatever data is returned by the http step can be used in later steps in a workflow through the use of [custom variables](/learning/howto/passing-variables.html).  This plugin is very customizable to accommodate whatever is needed, including various authentication methods and support for proxy settings.
+In either case, this is accomplished by using the [HTTP Request workflow step](https://resources.rundeck.com/plugins/rundeck-http-workflow-step-plugin/), which can send an http request and trigger further steps based on the response code.  
+Whatever data is returned by the http step can be used in later steps in a workflow through the use of [custom variables](/learning/howto/passing-variables.html).  
 
-#### Some common examples
-* Validate health status of cloud providers’ infrastructure
-![**Results of an API query using built-in job**](~@assets/img/saasapi1.png)
-* Check health of each component in a custom app stack
-* Query status of public-facing applications, such as your own customer interface or support site
-* Confirm infrastructure health for the cloud or virtualization solution hosting your servers
+![HTTP Request plugin can query external or internal APIs](@assets/img/http-step.png)
+
+This plugin is very customizable to accommodate whatever is needed, including various authentication methods and support for proxy settings.
+
+In addition to the **HTTP Request Plugin**, APIs can be queried using commands such as **`curl`** using the **Command Step**:
+![Command Step to curl an endpoint](@assets/img/curl-example.png)

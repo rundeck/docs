@@ -136,7 +136,7 @@ module.exports = [{
                     ['/learning/solutions/automated-diagnostics/examples/public-cloud-providers.md','Public Cloud Providers'],
                     ['/learning/solutions/automated-diagnostics/examples/linux.md','Linux'],
                     ['/learning/solutions/automated-diagnostics/examples/windows.md','Windows'],
-                    ['/learning/solutions/automated-diagnostics/examples/apis.md','Applications & API\'s'],
+                    ['/learning/solutions/automated-diagnostics/examples/apis.md','SaaS & Internal API\'s'],
                     ['/learning/solutions/automated-diagnostics/examples/kubernetes.md','Kubernetes'],
                     ['/learning/solutions/automated-diagnostics/examples/amazon-ecs.md','Amazon ECS'],
                     ['/learning/solutions/automated-diagnostics/examples/databases.md','Databases'],
