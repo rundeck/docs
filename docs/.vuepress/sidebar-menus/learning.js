@@ -114,7 +114,7 @@ module.exports = [{
     {
       title: 'Solutions',
       collapsable: true,
-      sidebarDepth: 2,
+      sidebarDepth: 0,
       children: [
         {
           title: 'Automated Diagnostics',
@@ -129,7 +129,7 @@ module.exports = [{
             ['/learning/solutions/automated-diagnostics/integrating-chat-tools.md', 'Integrating Chat Tools'],
             {
                 title: 'Examples & Best Practices',
-                path: '/learning/solutions/automated-diagnostics/examples/examples-overview',
+                path: '/learning/solutions/automated-diagnostics/examples-overview',
                 collapsable: true,
                 sidebarDepth: 0,
                 children: [

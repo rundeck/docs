@@ -2,12 +2,12 @@
 
 ## First Diagnostics Runbook
 
-Now that your Runbook or Process Automation instance has been integrated with Automation Actions, you’re ready to invoke your first Diagnostic Runbook.  
+Now that your **Runbook Automation** or **Process Automation** instance has been integrated with Automation Actions, you’re ready to invoke your first Diagnostic Runbook.  
 Before jumping into your Automation instance, first [create a PagerDuty API Key](https://support.pagerduty.com/docs/api-access-keys) and copy or save it somewhere to be used later.  
 This will be used to add the Diagnostic data onto the PagerDuty Incident.
 
 Navigate into your Automation instance.  In the **Automated Diagnostics** project, click on the **Third Party Service Disruptions** job:
-![First Diagnostic Runbook](@assets/img/third-party-service-disruptions.png)
+![First Diagnostic Runbook](@assets/img/first-diagnostic-runbook.png)
 
 This Job retrieves recent service-disruptions from Public-cloud or SaaS providers:
 Click **Run Job Now**.  You will see whether there have been recent incidents for the specific Public-cloud or SaaS provider.

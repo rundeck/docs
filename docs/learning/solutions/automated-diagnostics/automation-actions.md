@@ -2,8 +2,11 @@
 
 ## Integrating with Automation Actions
 
-The prebuilt Jobs in the Automated Diagnostics solution are designed to be invoked from [Automation Actions](https://www.pagerduty.com/platform/automation/actions/), though they can be invoked from within the Runbook Automation or Process Automation interface as well.  The steps for configuration can differ depending on your interface so follow the instructions below.<br>
+The prebuilt Jobs in the Automated Diagnostics solution are designed to be invoked from [Automation Actions](https://www.pagerduty.com/platform/automation/actions/), though they can be invoked from within the Runbook Automation or Process Automation interface as well.  
 
+:::tip Heads Up
+The steps for configuration differ for **Runbook Automation** and **Process Automation** (self-hosted). Be sure to select the correct tab below for the applicable instructions.
+:::
 
 :::: tabs
 ::: tab Runbook Automation

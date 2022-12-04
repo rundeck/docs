@@ -1,6 +1,6 @@
 # Automated Diagnostics
 
-## What is PagerDuty's Automated Diagnostics Solution and what does it do for you?
+## What is PagerDuty's Automated Diagnostics Solution?
 Automated diagnostics can be of huge value when managing incidents. By pulling “diagnostic” data into your incidents, you can shorten the length of incidents, simplify results for the first responder and reduce the number of individuals paged to help with resolution.  Once you have implemented and configured the Diagnostic Solution, your responders can respond or draw in the right resources more quickly based on up-to-date diagnostics that they can understand. 
 See [this blog post](https://www.pagerduty.com/blog/democratize-capabilities-automation-actions) to learn more about the value of automated diagnostics.
 

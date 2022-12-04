@@ -6,7 +6,7 @@ To use the Automated Diagnostics Solution, you must either have a **PagerDuty Ru
 See the [FAQ](/learning/solutions/automated-diagnostics/feedback-faq) for details on how to use with **Rundeck Community**.
 If you do not have a license for either of these products, [contact us](https://www.pagerduty.com/contact-us/runbook-automation/) to learn more.
 
-**You must be running version 4.8.0 or greater to use this Solution.** New instances of Runbook Automation have the Solution installed and included by default.<br>
+**You must be running at least version 4.8.0 to use this Solution.** New instances of Runbook Automation have the Solution installed and included by default.<br>
 :::
 
 **Runbook Automation** instances are preloaded with the Automated Diagnostics project.  If you do not see the project in your Runbook Automation instance, 
@@ -21,7 +21,10 @@ For all Process Automation environments, follow the steps below to download and 
 2. Click the blue **New Project+** button:
 ![Add Project](@assets/img/solutions-auto-diag-add-project.png)<br><br>
 3. Copy the following into the **Project Name** field:  **`automated-diagnostics`**
-![Name Project](@assets/img/solutions-auto-diag-name-project.png)<br><br>
+![Name Project](@assets/img/solutions-auto-diag-name-project.png)
+    :::warning Heads Up
+     Be sure to name the project **`automated-diagnostics`**. Otherwise, some of the prebuilt Jobs and Tours will not function properly.
+    :::
 4. Provide a Label for a more "user-friendly" name - such as _Automated Diagnostics_ <br><br>
 5. Click the green **Create** button
 

@@ -1,4 +1,3 @@
-### Automated Diagnostics Examples
----
+# Automated Diagnostics
 
-# Observability Integrations
+## Observability Integrations
