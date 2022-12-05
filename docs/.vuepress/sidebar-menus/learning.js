@@ -146,7 +146,7 @@ module.exports = [{
             ['/learning/solutions/automated-diagnostics/sending-output-to-pagerduty.md','Sending Output to PagerDuty'],
             ['/learning/solutions/automated-diagnostics/integrating-with-event-orchestration.md', 'Integrating with Event Orchestration'],
             ['/learning/solutions/automated-diagnostics/simplifying-diagnostics.md','Simplifying Diagnostics Output'],
-            ['/learning/solutions/automated-diagnostics/actions-from-diagnostics.md','Taking Action from Diagnostics'],
+            ['/learning/solutions/automated-diagnostics/automation-beyond-triage.md','Automation Beyond Triage'],
             ['/learning/solutions/automated-diagnostics/feedback-faq.md', 'Feedback & FAQ']
 //            ['/learning/solutions/auto-incident-kubernetes-logs.md','Example: Kubernetes Logs'],
 //            ['/learning/solutions/auto-diagnostics-github-script.md','Example: Raw Scripts']
