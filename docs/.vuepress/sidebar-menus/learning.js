@@ -143,6 +143,7 @@ module.exports = [{
                     ['/learning/solutions/automated-diagnostics/examples/observability-integrations.md','Observability Integrations']
                 ]
             },
+            ['/learning/solutions/automated-diagnostics/sending-output-to-pagerduty.md','Sending Output to PagerDuty'],
             ['/learning/solutions/automated-diagnostics/integrating-with-event-orchestration.md', 'Integrating with Event Orchestration'],
             ['/learning/solutions/automated-diagnostics/simplifying-diagnostics.md','Simplifying Diagnostics Output'],
             ['/learning/solutions/automated-diagnostics/actions-from-diagnostics.md','Taking Action from Diagnostics'],
