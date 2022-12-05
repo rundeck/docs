@@ -3,15 +3,44 @@
 
 ## Network Devices
 
-#### Introduction
-One of the often-overlooked elements of Runbook Automation and Process Automation is that any sort of element can be targeted in jobs as nodes.  Most commonly, nodes are servers or workstations but nodes could also represent other objects in the computing world such as network devices.  Most common network devices can be accessed over SSH in a similar way to Linux nodes but how the devices process commands can vary from device to device.  A very common approach to managing network devices as nodes is to use built-in integration with Ansible,  which takes advantage of Ansible’s own inventory mechanism to define nodes and connectivity.
+One of the often-overlooked elements of Runbook Automation and Process Automation is that any sort of element can be targeted in jobs as nodes.  
+Most commonly, nodes are servers or workstations but nodes could also represent other objects in the computing world such as network devices.  
+Most common network devices can be accessed over SSH in a similar way to Linux nodes but how the devices process commands can vary from device to device.  
+A very common approach to managing network devices as nodes is to use built-in integration with Ansible, which takes advantage of Ansible’s own inventory mechanism to define nodes and connectivity.
 
-#### What is Ansible?
-Ansible is a very popular configuration management solution developed by RedHat, Inc..  Though it is a very powerful tool, many customers use PagerDuty Process Automation as a GUI front-end that takes advantage of Ansible’s capabilities but makes Ansible more accessible for less technical users.  As with many other integrations, configuration of Ansible is handled through a built-in [plugin](https://docs.rundeck.com/docs/learning/howto/using-ansible.html#rundeck-and-ansible-integration) that assumes Ansible is installed on the same server as Process Automation.
+## Examples
 
-#### Integration Points
+### BGP Route Flapping
+BGP route flapping occurs when an adjacent network continuously sends updates regarding changes to IP address routing, causing instability in the network. 
+This can occur due to hardware or software failures, misconfigured BGP filters, or issues with ISP networks.
+When troubleshooting BGP route flapping, the first step is identifying whether the problem is local or external.
+Running the following BGP commands can provide information about neighboring networks and routing activity: 
 
-Ansible integration is configured on a per-project basis and is composed of 3 main pieces:
+**`show ip bgp neighbors`**<br>
+**`show ip bgp summary`** 
+
+### Spanning Tree
+Spanning-tree prevents loops in a Layer 2 switched network.  To avoid unexpected network instability users must be intentional in spanning-tree design.  
+To verify that spanning-tree is working as expected, use the following command:
+
+**`show spanning-tree`**
+
+### Duplex Mismatch
+Duplex mismatch occurs when a switch port and an attached server (or computer) are not configured to use the same duplex setting or both ends are not configured to auto negotiate the setting. 
+The settings for the connection may appear to work fine at low traffic levels, particularly for ping packets. But as the traffic level grows, the errors increase, affecting network throughput.
+The following commands are useful for troubleshooting duplex issues:
+
+**`show interfaces`**
+**`show interfaces status`**
+
+## Mechanisms for Automated Diagnostics
+
+### Ansible Integration
+Ansible is a popular configuration management solution often used for managing network devices. 
+Many customers use PagerDuty Process Automation as an intuitive graphical-user-interface (GUI) on top of Ansible, or as a way to integrate Ansible with other tools in their worksflows.
+As with many other integrations, configuration of Ansible is handled through a built-in [plugin](https://docs.rundeck.com/docs/learning/howto/using-ansible.html#rundeck-and-ansible-integration) that assumes Ansible is installed on the same server as Process Automation.
+
+The Ansible integration is configured on a per-project basis and is composed of 3 main pieces:
 * **Ansible Resource Model Source**<br>
     Once configured to point at the Ansible inventory file and config path, nodes will be imported from Ansible inventory to Process Automation inventory 
 * **Ansible Node Executor**<br>
