@@ -2,20 +2,13 @@
 
 ## Overview
 
-A _Node_ is a resource that is either a physical or virtual instance
-of a network accessible host.
-Nodes have a few basic attributes but a Node's attributes can be
-extended to include arbitrary named key/value pairs. Attributes typically
-describe the properties of a node or reflect the state of the node.
-One of a Node's built in attributes is called "tags" which is a list
-of classifications or categories about that Node.
+A _Node_ is a resource that is either a physical or virtual instance of a network accessible host. Nodes have a few basic attributes but a Node's attributes can be extended to include arbitrary named key/value pairs. Each node has a uniquely identifying name. In addition to `name`, some pieces of metadata are required (like `hostname` and `username`) and some are optional. Attributes typically describe the properties of a node or reflect the state of the node. One of a Node's built in attributes is called "tags" which is a list of classifications or categories about that Node.
 
 To add nodes to your Rundeck instances, see [Configure - Resource Model Sources Configuration](/manual/projects/resource-model-sources/)
 
 ## Nodes tab overview
 
-Navigate to this page by clicking on the "Nodes" link in the navigation
-menu.
+Navigate to this page by clicking on the "Nodes" link in the navigation menu.
 
 ![Nodes page](~@assets/img/fig0204-a.png)
 
@@ -44,13 +37,9 @@ This naming convention is really just a graphical treatment to reduce the amount
 
 ## Navigating Nodes by tag or attribute
 
-The node detail view contains a set of hyperlinks that automatically filter
-the nodes in the project.
-By clicking on a Node's tags, attribute names or attribute values the list of nodes will be refined to match a more specific expression.
-You can delete parts of the expression from the filter form to expand the search again.
+The node detail view contains a set of hyperlinks that automatically filter the nodes in the project. By clicking on a Node's tags, attribute names or attribute values the list of nodes will be refined to match a more specific expression. You can delete parts of the expression from the filter form to expand the search again.
 
-As you click search links in the node detail view, that attribute is placed in the node filter form and the attribute becomes a new column in the list view.
-These filtered list views are useful to create custom views about the project nodes.
+As you click search links in the node detail view, that attribute is placed in the node filter form and the attribute becomes a new column in the list view. These filtered list views are useful to create custom views about the project nodes.
 
 The screenshot below shows a case where two nodes were found that were tagged "www" have an attribute named web:pid and with their web:state attribute value "RUNNING".
 
@@ -67,8 +56,7 @@ The next screenshot shows a single node view. Notice the nodes unique name is en
 
 ## Node filtering
 
-A _node filter_ is a search pattern that matches a set of nodes.
-Rundeck node filters let you match Nodes based on a pattern like "tags" or any node attribute. You can define node filters that include and exclude nodes based on sets of patterns. While a node filter can specifically reference nodes using their unique name, filter patterns are more resilient to changes in your environment and better handle dynamically provisioned servers.
+A _node filter_ is a search pattern that matches a set of nodes. Rundeck node filters let you match Nodes based on a pattern like "tags" or any node attribute. You can define node filters that include and exclude nodes based on sets of patterns. While a node filter can specifically reference nodes using their unique name, filter patterns are more resilient to changes in your environment and better handle dynamically provisioned servers.
 
 ![Filtered nodes](~@assets/img/fig0204-c.png)
 
