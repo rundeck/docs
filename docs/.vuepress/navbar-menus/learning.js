@@ -1,17 +1,14 @@
-module.exports = [{
-    text: 'Overview',
+module.exports = [
+    {
+        text: 'Solutions',
+        link: '/learning/solutions/automated-diagnostics/solution-overview'
+    },
+    {
+        text: 'How To Articles',
+        link: '/learning/howto/overview'
+    },
+    {
+    text: 'Learning',
     link: '/learning/index'
-  },
-  {
-      text: 'Tutorial',
-      link: '/learning/tutorial/preparing'
-  },
-  {
-      text: 'How To Articles',
-      link: '/learning/howto/overview'
-  },
-  {
-      text: 'Solutions',
-      link: '/learning/solutions/automated-diagnostics/solution-overview'
-  }
+    }
 ]

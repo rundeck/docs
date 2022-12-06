@@ -1,30 +1,80 @@
 module.exports = [{
-  title: 'Learning',
+  title: 'Solutions',
   collapsable: false,
   sidebarDepth: 2,
   children: [
-    '/learning/',
     {
-      title: 'Terminology',
-      collapsable: true,
-      path: '/learning/tutorial/terminology',
-      sidebarDepth: 2,
-      children: [
-        '/learning/tutorial/terminology'
-      ]
-    },
-    {
-      title: 'Tutorial',
+      title: 'Solutions',
       collapsable: true,
       sidebarDepth: 0,
       children: [
-        '/learning/tutorial/preparing',
-        '/learning/tutorial/creatingnodes',
-        '/learning/tutorial/commands',
-        '/learning/tutorial/jobs',
-        '/learning/tutorial/users',
-        '/learning/tutorial/acls',
-        '/learning/tutorial/conclusion'
+        {
+          title: 'Automated Diagnostics',
+          path: '/learning/solutions/automated-diagnostics/solution-overview',
+          collapsable: true,
+          sidebarDepth: 0,
+          children: [
+            ['/learning/solutions/automated-diagnostics/solution-overview.md','Solution Summary'],
+            ['/learning/solutions/automated-diagnostics/getting-started.md', 'Getting Started'],
+            ['/learning/solutions/automated-diagnostics/automation-actions.md', 'Configuring Automation Actions'],
+            ['/learning/solutions/automated-diagnostics/first-diagnostic-runbook.md', 'First Diagnostic Runbook'],
+            ['/learning/solutions/automated-diagnostics/integrating-chat-tools.md', 'Integrating Chat Tools'],
+            {
+                title: 'Examples & Best Practices',
+                path: '/learning/solutions/automated-diagnostics/examples-overview',
+                collapsable: true,
+                sidebarDepth: 0,
+                children: [
+                    ['/learning/solutions/automated-diagnostics/examples/public-cloud-providers.md','Public Cloud Providers'],
+                    ['/learning/solutions/automated-diagnostics/examples/linux.md','Linux'],
+                    ['/learning/solutions/automated-diagnostics/examples/windows.md','Windows'],
+                    ['/learning/solutions/automated-diagnostics/examples/apis.md','SaaS & Internal API\'s'],
+                    ['/learning/solutions/automated-diagnostics/examples/kubernetes.md','Kubernetes'],
+                    ['/learning/solutions/automated-diagnostics/examples/databases.md','Databases'],
+                    ['/learning/solutions/automated-diagnostics/examples/network-devices.md','Network Devices'],
+                    ['/learning/solutions/automated-diagnostics/examples/observability-integrations.md','Observability Integrations']
+                ]
+            },
+            ['/learning/solutions/automated-diagnostics/sending-output-to-pagerduty.md','Sending Output to PagerDuty'],
+            ['/learning/solutions/automated-diagnostics/integrating-with-event-orchestration.md', 'Integrating with Event Orchestration'],
+            ['/learning/solutions/automated-diagnostics/simplifying-diagnostics.md','Simplifying Diagnostics Output'],
+            ['/learning/solutions/automated-diagnostics/automation-beyond-triage.md','Automation Beyond Triage'],
+            ['/learning/solutions/automated-diagnostics/feedback-faq.md', 'Feedback & FAQ']
+//            ['/learning/solutions/auto-incident-kubernetes-logs.md','Example: Kubernetes Logs'],
+//            ['/learning/solutions/auto-diagnostics-github-script.md','Example: Raw Scripts']
+          ]
+        }
+      ]
+    },
+    {
+      title: 'Learning Rundeck',
+      collapsable: true,
+      path: '/learning/',
+      sidebarDepth: 1,
+      children: [
+        {
+          title: 'Terminology',
+          collapsable: true,
+          path: '/learning/tutorial/terminology',
+          sidebarDepth: 2,
+          children: [
+            '/learning/tutorial/terminology'
+          ]
+        },
+        {
+          title: 'Tutorial',
+          collapsable: true,
+          sidebarDepth: 0,
+          children: [
+            '/learning/tutorial/preparing',
+            '/learning/tutorial/creatingnodes',
+            '/learning/tutorial/commands',
+            '/learning/tutorial/jobs',
+            '/learning/tutorial/users',
+            '/learning/tutorial/acls',
+            '/learning/tutorial/conclusion'
+          ]
+        }
       ]
     },
     {
@@ -108,49 +158,6 @@ module.exports = [{
           sidebarDepth: 0,
           children: [
             '/learning/howto/update-rundeck-docs.md'
-          ]
-        }
-      ]
-    },
-    {
-      title: 'Solutions',
-      collapsable: true,
-      sidebarDepth: 0,
-      children: [
-        {
-          title: 'Automated Diagnostics',
-          path: '/learning/solutions/automated-diagnostics/solution-overview',
-          collapsable: true,
-          sidebarDepth: 0,
-          children: [
-            ['/learning/solutions/automated-diagnostics/solution-overview.md','Solution Summary'],
-            ['/learning/solutions/automated-diagnostics/getting-started.md', 'Getting Started'],
-            ['/learning/solutions/automated-diagnostics/automation-actions.md', 'Configuring Automation Actions'],
-            ['/learning/solutions/automated-diagnostics/first-diagnostic-runbook.md', 'First Diagnostic Runbook'],
-            ['/learning/solutions/automated-diagnostics/integrating-chat-tools.md', 'Integrating Chat Tools'],
-            {
-                title: 'Examples & Best Practices',
-                path: '/learning/solutions/automated-diagnostics/examples-overview',
-                collapsable: true,
-                sidebarDepth: 0,
-                children: [
-                    ['/learning/solutions/automated-diagnostics/examples/public-cloud-providers.md','Public Cloud Providers'],
-                    ['/learning/solutions/automated-diagnostics/examples/linux.md','Linux'],
-                    ['/learning/solutions/automated-diagnostics/examples/windows.md','Windows'],
-                    ['/learning/solutions/automated-diagnostics/examples/apis.md','SaaS & Internal API\'s'],
-                    ['/learning/solutions/automated-diagnostics/examples/kubernetes.md','Kubernetes'],
-                    ['/learning/solutions/automated-diagnostics/examples/databases.md','Databases'],
-                    ['/learning/solutions/automated-diagnostics/examples/network-devices.md','Network Devices'],
-                    ['/learning/solutions/automated-diagnostics/examples/observability-integrations.md','Observability Integrations']
-                ]
-            },
-            ['/learning/solutions/automated-diagnostics/sending-output-to-pagerduty.md','Sending Output to PagerDuty'],
-            ['/learning/solutions/automated-diagnostics/integrating-with-event-orchestration.md', 'Integrating with Event Orchestration'],
-            ['/learning/solutions/automated-diagnostics/simplifying-diagnostics.md','Simplifying Diagnostics Output'],
-            ['/learning/solutions/automated-diagnostics/automation-beyond-triage.md','Automation Beyond Triage'],
-            ['/learning/solutions/automated-diagnostics/feedback-faq.md', 'Feedback & FAQ']
-//            ['/learning/solutions/auto-incident-kubernetes-logs.md','Example: Kubernetes Logs'],
-//            ['/learning/solutions/auto-diagnostics-github-script.md','Example: Raw Scripts']
           ]
         }
       ]

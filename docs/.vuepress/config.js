@@ -99,7 +99,7 @@ module.exports = {
         items: navbarAdmin
       },
       {
-        text: 'Learning',
+        text: 'Solutions',
         items: navbarLearning
       },
       {
