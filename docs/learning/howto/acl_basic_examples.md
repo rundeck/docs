@@ -1,11 +1,10 @@
 ---
 
 title: "Getting Started with ACLs"
-date: "2020-05-10"
+date: "2022-09-01"
 feed:
-  enable: true
-  title: "Getting Started with ACLs"
-  description: "Trouble with ACLs?  Use this to get started."
+ enable: true
+ description: "Need to provide limited access to your users?  Use this guide to get started with ACLs in Process Automation/Rundeck."
 
 ---
 

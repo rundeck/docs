@@ -1,3 +1,13 @@
+---
+
+title: "Learn more about Automated Diagnostics"
+date: "2022-10-01"
+feed:
+ enable: true
+ description: "Did you know the majority of incident duration is spent in diagnosis? Speeding up diagnosis of issues gets you to the the resolution much quicker.  Learn how Automated Diagnostics saves time and reduces interruptions throughout an incident by allowing responders to efficiently triage problems, only escalating to engineers who can resolve the issue. Resolvers have the data they need on hand, and this troubleshooting data is captured in the incident response record for future retrospectives."
+
+---
+
 # Automated Diagnostics
 
 ## What is PagerDuty's Automated Diagnostics Solution?
@@ -42,3 +52,4 @@ This guide includes a full section on Examples & Best Practices - a preview of t
 [<img src="@assets/img/mysql-logo.png" style="border:none;">](/learning/solutions/automated-diagnostics/examples/databases.html)<br>[**Databases**](/learning/solutions/automated-diagnostics/examples/Databases.html)|_Top Resource Consuming Queries_<br><br> _Blocking Locks_<br><br> _Missing Indexes_
 [<img src="@assets/img/network-switch.png" style="border:none;">](/learning/solutions/automated-diagnostics/examples/network-devices.html)<br>[**Network Devices**](/learning/solutions/automated-diagnostics/examples/network-devices.html)|_BGP Route Flapping_<br><br> _Spanning Tree Issues_<br><br> _Duplex Mismatch_
 [<img src="@assets/img/cloudwatch-logo.png" style="border:none;">](/learning/solutions/automated-diagnostics/examples/observability-integrations.html)<br>[**Observability Integrations**](/learning/solutions/automated-diagnostics/examples/observability-integrations.html)|_Retrieve Application Logs_<br><br> _Surface Relevant Graphs_<br><br> _Capture Time Sensitive Diagnostics_
+

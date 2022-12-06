@@ -1,3 +1,13 @@
+---
+
+title: "How to - Passing Data Between Steps"
+date: "2022-09-10"
+feed:
+ enable: true
+ description: "Multi-Step workflows often require sharing data from one step to another. Check out the examples in this 'How to' for the diffrerent ways data can be shared through out a workflow."
+
+---
+
 # Passing Data Between Steps
 
 ## Overview

@@ -1,10 +1,21 @@
-# Release 4.7.0
+---
+
+title: "4.7.0 Release Notes"
+date: "2022-10-06"
+feed:
+ enable: true
+ description: "Version 4.7.0 is here!  The release includes a new plugin for CloudWatch that simplifies the management of diagnostics queries, an incubating feature that helps users understand the ROI of jobs, and a number of security and compliance updates and bug fixes."
+
+---
+
+# 4.7.0 Release Notes
 
 Name: <span style="color: yellowgreen"><span class="glyphicon glyphicon-gift"></span> "Orc yellowgreen gift"</span>
 Release Date: October 6th, 2022
 
 - [Download the Releases](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
+- [Watch the Live Stream Release Recap](https://youtu.be/jTqfAmExg_Y)
 - [Upgrade instructions](/upgrading/)
 
 ## Overview

@@ -1,4 +1,4 @@
-# Release 4.2.0
+# 4.2.0 Release Notes
 
 Name: <span style="color: rebeccapurple"><span class="glyphicon glyphicon-glass"></span> "Liger rebeccapurple glass"</span>
 Release Date: May 11, 2022

@@ -1,4 +1,4 @@
-# Release 4.6.1
+# 4.6.1 Release Notes
 
 Name: <span style="color: sandybrown"><span class="glyphicon glyphicon-camera"></span> "Ogre sandybrown camera"</span>
 Release Date: September 14, 2022

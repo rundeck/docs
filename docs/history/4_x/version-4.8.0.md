@@ -1,4 +1,14 @@
-# Release 4.8.0
+---
+
+title: "4.8.0 Release Notes"
+date: "2022-11-10"
+feed:
+ enable: true
+ description: "Version 4.8.0 is here! Check out the new RSS Feed Plugin that will help streamline Automated Diagnostics and Resume Jobs using Ruleset and Parallel Strategies."
+
+---
+
+# 4.8.0 Release Notes
 
 Name: <span style="color: green"><span class="glyphicon glyphicon-knight"></span> "Phoenix green knight"</span>
 Release Date: November 10, 2022
@@ -13,6 +23,9 @@ Check out the new features and enhancements for PagerDuty Process Automation, Pa
 
 View our Twitch stream review of this release live on Wednesday, November 15 at 10AM Pacific. [Here’s the event link](https://www.twitch.tv/pagerduty/schedule?seriesID=792f972e-f876-4135-b6c2-6ea30a5c0330).
 
+:::warning
+If you are using password authentication with the Rundeck API, the JSESSIONID cookie will change after the first request after authentication. You will have to update your client code to follow redirects for subsequent requests. For example, when using curl you would have to use -b and -c options to update the session cookie in your next request after authentication. Alternately, you could add the -L option to the initial login POST, which will follow the redirect after login and update the session cookie.
+:::
 ### Highlights
 
 **RSS Feed Plugin** - Our new [RSS Feed Plugin](/manual/workflow-steps/rss-feed-plugin.md) helps users quickly understand whether an incident is due to an internal issue or a third-party. The RSS Feed Plugin allows users to query and parse RSS feeds for events from SaaS tools and public cloud providers. For users deploying the [Automated-Diagnostics Solution](/learning/solutions/automated-diagnostics/solution-overview.md), this plugin provides a logical first step for implementation.
