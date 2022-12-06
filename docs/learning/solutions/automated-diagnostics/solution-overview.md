@@ -1,9 +1,17 @@
 # Automated Diagnostics
 
 ## What is PagerDuty's Automated Diagnostics Solution?
-Automated diagnostics can be of huge value when managing incidents. By pulling “diagnostic” data into your incidents, you can shorten the length of incidents, simplify results for the first responder and reduce the number of individuals paged to help with resolution.  Once you have implemented and configured the Diagnostic Solution, your responders can respond or draw in the right resources more quickly based on up-to-date diagnostics that they can understand. 
-See [this blog post](https://www.pagerduty.com/blog/democratize-capabilities-automation-actions) to learn more about the value of automated diagnostics.
+Automated diagnostics is a solution provided by integrating PagerDuty's Incident Response and Runbook Automation products. By automating the retrieval of “diagnostic” data during incidents, you can shorten the length of incidents, reduce the number of individuals paged to help with resolution, and gather evidence for fixing the root-cause after the incident.
 
+### Use Cases
+There are multiple use-cases and benefits to the Automated Diagnostics solution. Here are a few of the most common examples:
+1. **Improve Triage**: surfacing diagnostic data can improve the time spent troubleshooting and the number of people pulled into incidents.
+2. **Capture Environment State**: by capturing the _environment_ or _application_ "state" during an incident, operations engineers and developers have _evidence_ to help them fix code-level and configuration bugs.
+3. **Realtime Updates**: by querying backend services in realtime, an Incident Commander can more easily provide updates to stakeholders during an incident.
+
+For more details on these use-cases, see [**this section**](/learning/solutions/automated-diagnostics/automation-beyond-triage) of the solution-guide.
+
+### Prebuilt Automation 
 PagerDuty provides a solution that helps users start automating diagnostics quickly. This Solution consists of **prebuilt Automation Jobs** that retrieve data from common infrastructure and services for investigating, debugging and diagnosing incidents:
 
 ![Automated Diagnostics within PagerDuty](@assets/img/diag-on-pd-timeline.png) 
@@ -12,14 +20,15 @@ PagerDuty provides a solution that helps users start automating diagnostics quic
 
 ![Verbose Diagnostics in Process Automation](@assets/img/diag-verbose-output.png)
 
-As an example, if an incident is triggered for a service running in Kubernetes, PagerDuty Runbook Automation can retrieve information from logs, API’s, databases and other sources that support this service.  This could be triggered with the click of a button or through event-driven invocation.<br>
-This information is then available in multiple interfaces such as PagerDuty's Mobil App, Slack, and Microsoft Teams:
+As an example, if an incident is triggered for a service running in Kubernetes, PagerDuty Runbook Automation can retrieve information from logs, API’s, databases and other sources that support this service.  This could be triggered with the click of a button or through event-driven invocation.
+
+### Simplifying and Sharing Diagnostics
+Diagnostics retrieved using **Runbook Automation** can be made available in multiple interfaces such as PagerDuty's Mobil App, Slack, and Microsoft Teams:
 
 ![Diagnostics in Slack](@assets/img/diag_in_slack.png)
 
 ## Examples & Templates
 This guide includes a full section on Examples & Best Practices - a preview of that is shown here:
-
 
 |Category|Examples|
 |:----:|:--------|
@@ -33,5 +42,3 @@ This guide includes a full section on Examples & Best Practices - a preview of t
 [<img src="@assets/img/mysql-logo.png" style="border:none;">](/learning/solutions/automated-diagnostics/examples/databases.html)<br>[**Databases**](/learning/solutions/automated-diagnostics/examples/Databases.html)|_Top Resource Consuming Queries_<br><br> _Blocking Locks_<br><br> _Missing Indexes_
 [<img src="@assets/img/network-switch.png" style="border:none;">](/learning/solutions/automated-diagnostics/examples/network-devices.html)<br>[**Network Devices**](/learning/solutions/automated-diagnostics/examples/network-devices.html)|_BGP Route Flapping_<br><br> _Spanning Tree Issues_<br><br> _Duplex Mismatch_
 [<img src="@assets/img/cloudwatch-logo.png" style="border:none;">](/learning/solutions/automated-diagnostics/examples/observability-integrations.html)<br>[**Observability Integrations**](/learning/solutions/automated-diagnostics/examples/observability-integrations.html)|_Retrieve Application Logs_<br><br> _Surface Relevant Graphs_<br><br> _Capture Time Sensitive Diagnostics_
-
-### **Get started now with the Automated Diagnostics [<span style="color:green"><ins>Solution Guide</ins></span>](/learning/solutions/automated-diagnostics/getting-started.html)**

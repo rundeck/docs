@@ -17,7 +17,7 @@ The following examples are included in our **Automated Diagnostics Project**, wh
 ![](~@assets/img/linux1.png)<br>
 
 #### Parse server logs for common error messages
-![](~@assets/img/linux2.png)<br>
+![Syslog Queries For Common Errors](~@assets/img/linux2.png)
 
 #### Collecting resource diagnostics from the server
 ![](~@assets/img/linux3.png)<br>

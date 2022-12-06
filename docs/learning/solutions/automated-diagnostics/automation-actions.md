@@ -56,11 +56,12 @@ This Automated Action can now be invoked from an incident or from [Event Orchest
 
 ![**Invoke from Incident**](@assets/img/rbactions6.png)
 
-![**Invoke from Event Orchestration**](@assets/img/solutions-auto-diag-event-orchestration.png)
-
-
-
+:::warning Heads Up
+Although the Action can be invoked from PagerDuty, the output of the Job will not yet appear on the Incident Timeline.
+Continue on to the [next section](/learning/solutions/automated-diagnostics/first-diagnostic-runbook) to complete the setup
 :::
+
+
 ::: tab Process Automation
 
 ### Create a PagerDuty API Key
@@ -150,15 +151,15 @@ Install Java 11+ on the machine that will host the runner. We recommend Linux (U
 	- Associate with team(s)<br>
 	  If desired, select one or more **Teams**.  This limits access for this action to members of those teams.  Leave blank to make universally available in the selected services.
 	  <br>![](~@assets/img/paactions3.png)<br><br>
-6. Click Create Action.<br>
-   <br>
-   This Automated Action can now be invoked from an incident or from [Event Orchestration](https://support.pagerduty.com/docs/event-orchestration):<br>
+6. Click Create Action. This Automated Action can now be invoked from an incident or from [Event Orchestration](https://support.pagerduty.com/docs/event-orchestration):<br>
+
+:::warning Heads Up
+Although the Action can be invoked from PagerDuty, the output of the Job will not yet appear on the Incident Timeline. 
+Continue on to the [next section](/learning/solutions/automated-diagnostics/first-diagnostic-runbook) to complete the setup
+:::
 
 ![**Invoke from Incident**](@assets/img/rbactions6.png)
 
-![**Invoke from Event Orchestration**](@assets/img/solutions-auto-diag-event-orchestration.png)
-
-:::
 ::::
 
-### **Complete the Automated Diagnostics Solution by integrating one of the [<span style="color:green"><ins>Example Jobs!</ins></span>](/learning/solutions/automated-diagnostics/linux-diagnostics-example.html)**
+[comment]: <> (### **Complete the Automated Diagnostics Solution by integrating one of the [<span style="color:green"><ins>Example Jobs!</ins></span>]&#40;/learning/solutions/automated-diagnostics/linux-diagnostics-example.html&#41;**)
