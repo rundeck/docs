@@ -1,6 +1,6 @@
 # Node Model Sources
 
-The Resource model source is a way to share information about your infrastructure to Rundeck as Nodes.
+The Resource model source is a way to share information about your infrastructure to Rundeck as [Nodes](/manual/05-nodes.html#overview).
 
 Resource model data is a set of Node descriptors, each with a uniquely identifying name. In addition to Name, some pieces of metadata are required (like `hostname`, and `username`), and some are optional.
 

@@ -98,7 +98,8 @@ module.exports = [{
           children: [
             '/learning/howto/plugin-bootstrap.md',
             '/learning/howto/custom-script-plugin-hello-world.md',
-            '/learning/howto/java-plugin.md'
+            '/learning/howto/java-plugin.md',
+            '/learning/howto/how2extenddocker.md'
           ]
         },
         {
