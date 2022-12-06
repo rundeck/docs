@@ -50,9 +50,7 @@ Next, you will add a new runner in PagerDuty to connect to Runbook Automation.
 7. Click **Next**
 8. Insert `-pd_incident_id ${pagerduty.incidentId}` into the **Enter arguments** field.
    <br>![](~@assets/img/rbactions5.png)<br><br>
-9. Click **Create Action**.
-
-This Automated Action can now be invoked from an incident or from [Event Orchestration](https://support.pagerduty.com/docs/event-orchestration):
+9. Click **Create Action**. This Automated Action can now be invoked from an incident or from [Event Orchestration](https://support.pagerduty.com/docs/event-orchestration):
 
 ![**Invoke from Incident**](@assets/img/rbactions6.png)
 
@@ -149,7 +147,7 @@ Install Java 11+ on the machine that will host the runner. We recommend Linux (U
 	- Associate with team(s)<br>
 	  If desired, select one or more **Teams**.  This limits access for this action to members of those teams.  Leave blank to make universally available in the selected services.
 	  <br>![](~@assets/img/paactions3.png)<br><br>
-6. Click Create Action. This Automated Action can now be invoked from an incident or from [Event Orchestration](https://support.pagerduty.com/docs/event-orchestration):<br>
+6. Click **Create Action**. This Automated Action can now be invoked from an incident or from [Event Orchestration](https://support.pagerduty.com/docs/event-orchestration):<br>
    ![**Invoke from Incident**](@assets/img/rbactions6.png)
 :::warning Heads Up
 Although the Action can be invoked from PagerDuty, the output of the Job will not yet appear on the Incident Timeline. 
