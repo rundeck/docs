@@ -1,0 +1,28 @@
+- defaultTab: nodes
+  description: ''
+  executionEnabled: true
+  group: Administration/Linux
+  id: e4b9f6db-efda-43a4-8f10-52eba1b6c56d
+  loglevel: INFO
+  name: SSH Status
+  nodeFilterEditable: true
+  nodefilters:
+    dispatch:
+      excludePrecedence: true
+      keepgoing: false
+      rankOrder: ascending
+      successOnEmptyNodeFilter: false
+      threadcount: '1'
+    filter: 'name: employees_mysql_db_1 '
+  nodesSelectedByDefault: true
+  plugins:
+    ExecutionLifecycle: {}
+  scheduleEnabled: true
+  schedules: []
+  sequence:
+    commands:
+    - description: Check status of SSH service
+      exec: sudo systemctl status ssh
+    keepgoing: false
+    strategy: node-first
+  uuid: e4b9f6db-efda-43a4-8f10-52eba1b6c56d
