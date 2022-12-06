@@ -647,6 +647,9 @@ java -Xms4g -Xmx8g -jar rundeck.war
 It is also possible to reconfigure the default path for files according to [this page](/developer/14-file-upload-plugins.html#about) using the property in this form:
 
 `framework.plugin.FileUpload.filesystem-temp.basePath=/desired/path`
+
+'''NOTE : If you are using the remote execution policy, you might to know that this “Upload File” option will work properly if you have on your rundeck cluster an NFS, or other shared folder. S3 is not supported yet.
+
 :::
 
 ### Job YAML format
