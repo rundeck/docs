@@ -47,13 +47,13 @@ module.exports = {
       .rule('md')
       .test(/\.md$/)
       .use(path.resolve(__dirname, './nunjucks'))
-        .loader(path.resolve(__dirname, './nunjucks'))
-        .end()
+      .loader(path.resolve(__dirname, './nunjucks'))
+      .end()
   },
   extendMarkdown: md => {
     // use more markdown-it plugins!
-    md.use(require('markdown-it-include'),{
-      root: path.resolve(__dirname,"../")
+    md.use(require('markdown-it-include'), {
+      root: path.resolve(__dirname, "../")
     })
     md.use(require('markdown-it-deflist'))
     md.use(require('markdown-it-implicit-figures'), {
@@ -79,8 +79,8 @@ module.exports = {
       indexName: 'prod_rundeck_docs',
       algoliaOptions: {
         hitsPerPage: 10,
-        facets: [ "version" ],
-        facetFilters: [ `version:${setup.base}` ]
+        facets: ["version"],
+        facetFilters: [`version:${setup.base}`]
       },
     } : undefined,
     searchMaxSuggestions: 15,
