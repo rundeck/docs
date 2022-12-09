@@ -108,7 +108,9 @@ module.exports = [{
           collapsable: true,
           sidebarDepth: 0,
           children: [
-            '/learning/howto/update-rundeck-docs.md'
+            '/learning/howto/update-rundeck-docs.md',
+            '/learning/howto/build-rundeck.md'
+
           ]
         }
       ]
