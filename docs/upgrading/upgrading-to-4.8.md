@@ -4,7 +4,7 @@ To enhance the Security of Rundeck and Process Automation in version 4.8 we adde
 
 ## Usage Scenario
 
-Using Password Authentication against the API as described [in the documentation here](/docs/api/rundeck-api.html#password-authentication).
+Using Password Authentication against the API as described [in the documentation here](/api/rundeck-api.html#password-authentication).
 
 ## Changes required
 
