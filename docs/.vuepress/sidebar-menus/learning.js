@@ -49,7 +49,8 @@ module.exports = [{
               '/learning/howto/apache2-proxy-gssapi.md',
               '/learning/howto/workinglogs.md',
               '/learning/howto/S3-minio.md',
-              '/learning/howto/how2scm.md'
+              '/learning/howto/how2scm.md',
+              '/learning/howto/egress-proxy.md'
           ]
         },
         {

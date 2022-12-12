@@ -34,7 +34,7 @@ The last step skips the basic integration tests, you can avoid that by using the
 
 ### On MacOS
 The process is pretty similar.
-1. Update/update [brew](https://brew.sh/) on your computer:
+1. Update/update [brew](https://brew.sh/) on your computer and then execute the following commands:
 	```
 	brew update
 	```
