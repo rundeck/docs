@@ -1,4 +1,4 @@
-# AWS
+# Installing on AWS
 
 <!---
 
