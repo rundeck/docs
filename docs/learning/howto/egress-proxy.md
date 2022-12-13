@@ -1,5 +1,10 @@
 # How to configure Rundeck behind an Egress Proxy
 
+:::tip
+Though these instructions reference Rundeck, they can also be applied to environments running the Enterprise versions of the product, PagerDuty [Runbook Automation](https://www.pagerduty.com/platform/automation/runbook/) or [Process Automation](https://www.pagerduty.com/platform/automation/process-software/).
+:::
+
+## Overview
 In most organizations, all network infrastructure (including servers) stays isolated from the Internet by default for security reasons. 
 
 In this specific scenario, the only way for Rundeck to reach the Internet is by using a proxy server. While in most situations Rundeck does not need internet access to operate, there are cases where job steps need to be able to reach out to SaaS tools such as AWS, ServiceNow, or Jira.
@@ -96,7 +101,7 @@ This Docker environment contains two containers (nodes): the official Rundeck co
 	ENV RD_USER admin
 	ENV RD_PASSWORD admin
 	```
-	This file allows you to build a custom container, adding the RD CLI tool tothe Rundeck base container.
+	This file allows you to build a custom container, adding the RD CLI tool to the Rundeck base container.
 3. Create a new directory called "conf" and create a new file called "`nginx_denylist.conf`" with the following content:
 	```
 	user www-data;
@@ -133,7 +138,7 @@ This Docker environment contains two containers (nodes): the official Rundeck co
 		}
 	}
 	```
-	This is just the proxy configuration for the NGINX web server (check [this](https://www.nginx.com/resources/wiki/start/topics/examples/full/) basic example). It blocks any connection from the google domain. In this environment, if any system needs to get "outside" (to the Internet), it needs to pass through this proxy server. It's based on [this](https://github.com/reiz/nginx_proxy) project.
+	This is just the proxy configuration for the NGINX web server (check [this](https://www.nginx.com/resources/wiki/start/topics/examples/full/) basic example). It blocks any connection from the google domain. In this environment, if any system needs to get "outside" to the Internet, it needs to pass through this proxy server. It's based on [this](https://github.com/reiz/nginx_proxy) project.
 
 ## Running and testing
 1. Create the network, this is needed by the whole environment and allows you to create the basic external network to reach the Internet using your current network device.

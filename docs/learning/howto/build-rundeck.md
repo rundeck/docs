@@ -34,7 +34,7 @@ The last step skips the basic integration tests, you can avoid that by using the
 
 ### On MacOS
 The process is pretty similar.
-1. Update/update [brew](https://brew.sh/) on your computer and then execute the following commands:
+1. Update/upgrade [brew](https://brew.sh/) on your computer:
 	```
 	brew update
 	```
@@ -77,7 +77,7 @@ First, push your changes to your repository following these steps:
 	```
 3. Once you make your local commit, you can push it to your remote GitHub fork.
 	```
-	git push.
+	git push
 	```
 
 ### Create Pull Request
