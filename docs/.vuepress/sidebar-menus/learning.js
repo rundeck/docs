@@ -49,7 +49,8 @@ module.exports = [{
               '/learning/howto/apache2-proxy-gssapi.md',
               '/learning/howto/workinglogs.md',
               '/learning/howto/S3-minio.md',
-              '/learning/howto/how2scm.md'
+              '/learning/howto/how2scm.md',
+              '/learning/howto/egress-proxy.md'
           ]
         },
         {
@@ -71,7 +72,8 @@ module.exports = [{
               '/learning/howto/passing-variables.md',
               '/learning/howto/calling-apis.md',
               '/learning/howto/log4shell.md',
-              '/learning/howto/use-roi-metrics.md'
+              '/learning/howto/use-roi-metrics.md',
+              '/learning/howto/env-in-notifications.md'
           ]
         },
         {
@@ -107,7 +109,9 @@ module.exports = [{
           collapsable: true,
           sidebarDepth: 0,
           children: [
-            '/learning/howto/update-rundeck-docs.md'
+            '/learning/howto/update-rundeck-docs.md',
+            '/learning/howto/build-rundeck.md'
+
           ]
         }
       ]
