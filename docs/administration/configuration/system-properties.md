@@ -35,6 +35,7 @@ java -server -Dserver.servlet.session.timeout=3600 -Dserver.port=8080 -jar runde
 - `rundeck.jetty.connector.ssl.includedProtocols` Comma-separated list of SSL protocols to include. Default is based on available protocols. See [Disabling SSL Protocols](/administration/security/ssl.md#disabling-ssl-protocols).
 - `rundeck.jetty.connector.ssl.excludedCipherSuites` Comma-separated list of Cipher suites to disable. No default. See [Disabling SSL Protocols](/administration/security/ssl.md#disabling-ssl-protocols).
 - `rundeck.jetty.connector.ssl.includedCipherSuites` Comma-separated list of Cipher suites to enable. Default is based on available cipher suites. See [Disabling SSL Protocols](/administration/security/ssl.md#disabling-ssl-protocols).
+- `rundeck.localExecutor.disabled` Disables the local executor plugin to prevent execution of scripts on the local Rundeck Server.  values: `true`|`false` default is `false`
 - `logging.config` The absolute path to your log4j2 configuration file. This is the Spring Boot log file setting and must be set in rpm,deb, and docker environments for the logging system to initialize properly
 - `log4j.configurationFile` The absolute path to your log4j2 configuration file.
 - `java.io.tmpdir` Specifies the temporary directory used by plugins, such as Node Sources and Workflow steps.
@@ -84,4 +85,5 @@ JAAS_CONF="${JAAS_CONF:-$RDECK_CONFIG/jaas-loginmodule.conf}"
 LOGIN_MODULE="${LOGIN_MODULE:-RDpropertyfilelogin}"
 RDECK_HTTP_PORT=${RDECK_HTTP_PORT:-4440}
 RDECK_HTTPS_PORT=${RDECK_HTTPS_PORT:-4443}
+DISABLED_LOCAL_EXECUTOR=false
 ```
