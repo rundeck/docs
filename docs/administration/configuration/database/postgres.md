@@ -31,7 +31,7 @@ Now, create a user and grant privileges to connect to this DB.
 postgres=# create user rundeckuser with password 'rundeckpassword';
 postgres=# grant ALL privileges on database rundeck to rundeckuser;
 postgres=# \c rundeck;
-postgres=# grant ALL privileges on schema public to rundeckuser;
+rundeck=# grant ALL privileges on schema public to rundeckuser;
 ```
 
 You can then exit the psql prompt.
