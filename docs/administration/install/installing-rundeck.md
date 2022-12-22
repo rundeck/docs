@@ -72,7 +72,7 @@ Add the following entries to `/etc/yum.repos.d/rundeck.repo` replacing any exist
 ```properties
 [rundeckpro]
 name=rundeckpro
-baseurl=https://packages.rundeck.com/pagerduty/rundeck/rpm_any/rpm_any/$basearch
+baseurl=https://packages.rundeck.com/pagerduty/rundeckpro/rpm_any/rpm_any/$basearch
 repo_gpgcheck=1
 gpgcheck=0
 enabled=1
