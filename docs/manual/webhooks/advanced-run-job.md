@@ -262,3 +262,4 @@ data!
 
 You can disable it by adding the following line to the rundeck-config.properties file (requires service restart):
 `rundeck.feature.eventStore.enabled=false`
+It can also be accomplished via the Configuration Management tool in the GUI (Gear Icon > System Configuration), by adding the custom property `rundeck.feature.eventStore.enabled` with value `false`. This method does not require system restart.
