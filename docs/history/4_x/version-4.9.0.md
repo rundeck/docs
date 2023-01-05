@@ -41,9 +41,18 @@ Check out the new features and enhancements for PagerDuty Process Automation (fo
 
 ## Rundeck Open Source Product Updates
 
+* [Package Upgrades for CVE-2022-41881](https://github.com/rundeck/rundeck/pull/8071)
+* [Fix Project Picker not loading when Projects with special characters exist](https://github.com/rundeck/rundeck/pull/8064)
+* [fix error choosing runner on execution runtime](https://github.com/rundeck/rundeck/pull/8063)
+* [Duplicated fields at Notification settings modal](https://github.com/rundeck/rundeck/pull/8061)
+* [upgrade sshj version](https://github.com/rundeck/rundeck/pull/8056)
+* [Run 1386-fix plugin groups deleted when not modified](https://github.com/rundeck/rundeck/pull/8055)
+* [Fix null definitions in plugin groups](https://github.com/rundeck/rundeck/pull/8054)
+* [add secrets for script plugins](https://github.com/rundeck/rundeck/pull/8050)
 * [Fix Missing Execution Clean History Form Display](https://github.com/rundeck/rundeck/pull/8044)
 * [Job Runner Run page GUI ](https://github.com/rundeck/rundeck/pull/8041)
 * [Update spring-sec to fixed version](https://github.com/rundeck/rundeck/pull/8039)
+* [Fix plugin property mappings](https://github.com/rundeck/rundeck/pull/8038)
 * [Fix:Ruleset Plugin fails to evaluate conditions if negative number are used](https://github.com/rundeck/rundeck/pull/8031)
 * [Overflow Scrollbars on Login Page Removal](https://github.com/rundeck/rundeck/pull/8028)
 * [Fix: Dynamic max nodes shown in rundeck GUI](https://github.com/rundeck/rundeck/pull/8026)
@@ -62,9 +71,29 @@ Check out the new features and enhancements for PagerDuty Process Automation (fo
 
 [Here is a link to the full list of public PRs](https://github.com/rundeck/rundeck/pulls?q=is%3Apr+milestone%3A4.9.0+is%3Aclosed)
 
+## Ansible Plugin Updates
+
+
 ## Community Contributors
 
+* Alberto Hormazabal ([ahormazabal](https://github.com/ahormazabal))
+* Imad Jafir ([imad6639](https://github.com/imad6639))
+* Luis Toledo ([ltamaster](https://github.com/ltamaster))
+* Carlos Eduardo ([carlosrfranco](https://github.com/carlosrfranco))
+* Christopher McCarroll-Gilbert ([chrismcg14](https://github.com/chrismcg14))
+* Miguel Ramos ([mishingo](https://github.com/mishingo))
+* Jason Qualman ([qualman](https://github.com/qualman))
+* Jesus Osuna ([Jesus-Osuna-M](https://github.com/Jesus-Osuna-M))
+* Darwis Narvaez ([DarwisNarvaezDev](https://github.com/DarwisNarvaezDev))
+* Greg Schueler ([gschueler](https://github.com/gschueler))
+* Eric He ([ehe-pd](https://github.com/ehe-pd))
 * Patrice Duroux ([peutch](https://github.com/peutch))
+* Leonel Juarez ([L2JE](https://github.com/L2JE))
+* Forrest Evans ([fdevans](https://github.com/fdevans))
+* Sota Kato ([tokagerous](https://github.com/tokagerous))
+* Néstor Fuenzalida ([nestorfm](https://github.com/nestorfm))
+* Nathan Fluegel ([wayfaringson](https://github.com/wayfaringson))
+* daniel.d ([dldrk](https://github.com/dldrk))
 
 
 ## Staff Contributors
