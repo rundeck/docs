@@ -257,3 +257,9 @@ Encountered if the job could not be run due to Rundeck executions being disabled
 You can use the [JsonPath](#jsonpath) `$` as a job option value to send the event as a serialized
 JSON. You can also send parts of the event by crafting a JsonPath that returns structured
 data!
+
+### How do I disable the Debugging feature?
+
+You can disable it by adding the following line to the rundeck-config.properties file (requires service restart):
+`rundeck.feature.eventStore.enabled=false`
+It can also be accomplished via the Configuration Management tool in the GUI (Gear Icon > System Configuration), by adding the custom property `rundeck.feature.eventStore.enabled` with value `false`. This method does not require system restart.
