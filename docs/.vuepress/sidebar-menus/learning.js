@@ -49,7 +49,8 @@ module.exports = [{
               '/learning/howto/apache2-proxy-gssapi.md',
               '/learning/howto/workinglogs.md',
               '/learning/howto/S3-minio.md',
-              '/learning/howto/how2scm.md'
+              '/learning/howto/how2scm.md',
+              '/learning/howto/egress-proxy.md'
           ]
         },
         {
@@ -71,7 +72,8 @@ module.exports = [{
               '/learning/howto/passing-variables.md',
               '/learning/howto/calling-apis.md',
               '/learning/howto/log4shell.md',
-              '/learning/howto/use-roi-metrics.md'
+              '/learning/howto/use-roi-metrics.md',
+              '/learning/howto/env-in-notifications.md'
           ]
         },
         {
@@ -98,7 +100,8 @@ module.exports = [{
           children: [
             '/learning/howto/plugin-bootstrap.md',
             '/learning/howto/custom-script-plugin-hello-world.md',
-            '/learning/howto/java-plugin.md'
+            '/learning/howto/java-plugin.md',
+            '/learning/howto/how2extenddocker.md'
           ]
         },
         {
@@ -106,7 +109,9 @@ module.exports = [{
           collapsable: true,
           sidebarDepth: 0,
           children: [
-            '/learning/howto/update-rundeck-docs.md'
+            '/learning/howto/update-rundeck-docs.md',
+            '/learning/howto/build-rundeck.md'
+
           ]
         }
       ]
@@ -123,12 +128,31 @@ module.exports = [{
           sidebarDepth: 0,
           children: [
             ['/learning/solutions/automated-diagnostics/solution-overview.md','Solution Summary'],
-            ['/learning/solutions/automated-diagnostics/getting-started.md', '1. Getting Started'],
-            ['/learning/solutions/automated-diagnostics/tours.md', '2. Following the Tours'],
-            ['/learning/solutions/automated-diagnostics/jobs.md', '3. Using the Prebuilt Jobs'],
-            ['/learning/solutions/automated-diagnostics/automation-actions.md', '4. Integrating with Automation Actions'],
-            ['/learning/solutions/automated-diagnostics/linux-diagnostics-example.md','5. Example: Linux Host Diagnostics'],
-            ['/learning/solutions/automated-diagnostics/feedback-faq.md', '6. Feedback & FAQ']
+            ['/learning/solutions/automated-diagnostics/getting-started.md', 'Getting Started'],
+            ['/learning/solutions/automated-diagnostics/automation-actions.md', 'Configuring Automation Actions'],
+            ['/learning/solutions/automated-diagnostics/first-diagnostic-runbook.md', 'First Diagnostic Runbook'],
+            ['/learning/solutions/automated-diagnostics/integrating-chat-tools.md', 'Integrating Chat Tools'],
+            {
+                title: 'Examples & Best Practices',
+                path: '/learning/solutions/automated-diagnostics/examples-overview',
+                collapsable: true,
+                sidebarDepth: 0,
+                children: [
+                    ['/learning/solutions/automated-diagnostics/examples/public-cloud-providers.md','Public Cloud Providers'],
+                    ['/learning/solutions/automated-diagnostics/examples/linux.md','Linux'],
+                    ['/learning/solutions/automated-diagnostics/examples/windows.md','Windows'],
+                    ['/learning/solutions/automated-diagnostics/examples/apis.md','SaaS & Internal API\'s'],
+                    ['/learning/solutions/automated-diagnostics/examples/kubernetes.md','Kubernetes'],
+                    ['/learning/solutions/automated-diagnostics/examples/databases.md','Databases'],
+                    ['/learning/solutions/automated-diagnostics/examples/network-devices.md','Network Devices'],
+                    ['/learning/solutions/automated-diagnostics/examples/observability-integrations.md','Observability Integrations']
+                ]
+            },
+            ['/learning/solutions/automated-diagnostics/sending-output-to-pagerduty.md','Sending Output to PagerDuty'],
+            ['/learning/solutions/automated-diagnostics/integrating-with-event-orchestration.md', 'Integrating with Event Orchestration'],
+            ['/learning/solutions/automated-diagnostics/simplifying-diagnostics.md','Simplifying Diagnostics Output'],
+            ['/learning/solutions/automated-diagnostics/automation-beyond-triage.md','Automation Beyond Triage'],
+            ['/learning/solutions/automated-diagnostics/feedback-faq.md', 'Feedback & FAQ']
 //            ['/learning/solutions/auto-incident-kubernetes-logs.md','Example: Kubernetes Logs'],
 //            ['/learning/solutions/auto-diagnostics-github-script.md','Example: Raw Scripts']
           ]

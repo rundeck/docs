@@ -2,6 +2,9 @@
 
 
 Application Load Balancer overview
+
+Typically Application Load Balancer is used here (ALB), due to it can offload HTTPS labels. For example it can listen on Port 443 and forward the traffic to Port 80 in the backend.
+
 An Application Load Balancer functions at the application layer, the seventh layer of the Open Systems Interconnection (OSI) model. After the load balancer receives a request, it evaluates the listener rules in priority order to determine which rule to apply, and then selects a target from the target group for the rule action.
 
 You can add and remove targets from your load balancer as your needs change, without disrupting the overall flow of requests to your application.
@@ -50,7 +53,11 @@ node2.mydomain.com:4440//api/32/system/executions/status?authtoken=<TOKEN_VALUE>
 ```
 ### IMPORTANT! STICKY SESSIONS MUST BE ENABLED.
 
+
 Enable cookie stickiness via the AWS Console, EC2 -> Target Groups -> Your Target Group -> Group Details -> Attributes.
+
+This can be enabled to be managed by AWS Load Balancer or by the Rundeck Application using its' JSESSIONID Cookie.
+The difference is that when the AWS LB option is chosen, you can't set the time for the Cookie duration, and while using the Application Cookie it will timeout according to the Application settings. In the case that you are using an Auto-Scaling group, application Sickness is not recommended.
 
 ![Target Group Attributes](~@assets/img/lb-aws-alb-stickiness1.png)
 

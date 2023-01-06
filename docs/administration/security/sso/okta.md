@@ -104,7 +104,7 @@ menu page in Rundeck.
 
 ### Okta Group Plugin
 
-If Active Directory is integrated into they Okta system, the setup for groups described above may not work. In this case it's possible to configure the Okta user group plugin that is packaged with Rundeck, to pull the user's group information from Okta via the Okta API.
+If Active Directory is integrated into the Okta system, the setup for groups described above may not work. In this case it's possible to configure the Okta user group plugin that is packaged with Rundeck, to pull the user's group information from Okta via the Okta API.
 
 Create an API key in Okta used to to make API requests.
 

@@ -14,7 +14,7 @@ Provider name: `org.rundeck.sqlrunner.SQLRunnerNodeStepPlugin`
 - _SQL script path_: Path to the sql script
 - _SQL inline script_: Alternative to sql script path.
 - _Variables_: comma separated list of variables values too be used as Prepared Statement.
-- _JDBC Driver class name_: e.g. `com.mysql.jdbc.Driver`
+- _JDBC Driver class name_: e.g. `org.mariadb.jdbc.Driver`
 - _JDBC url_: full JDBC url to use for connections
 - _Database username_ connection username
 - _Database password_ connection password
@@ -46,7 +46,7 @@ If you omit the type, it's going to be passed as generic object to the JDBC conn
         <node-step-plugin type='org.rundeck.sqlrunner.SQLRunnerNodeStepPlugin'>
           <configuration>
             <entry key='commit' value='true' />
-            <entry key='jdbcDriver' value='com.mysql.jdbc.Driver' />
+            <entry key='jdbcDriver' value='org.mariadb.jdbc.Driver' />
             <entry key='jdbcUrl' value='asdf' />
             <entry key='password' value='password' />
             <entry key='scriptPath' value='/var/sql/dbupdate.sql' />

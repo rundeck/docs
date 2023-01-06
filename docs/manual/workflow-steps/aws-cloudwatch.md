@@ -51,9 +51,9 @@ These steps outline how to set the AWS Access Keys for a given project.  The cre
 2. In the **Query Settings** section provide the CloudWatch log group that should be queried using Logs Insights.
 3. Select a **Unit of Time** and **Past Time Range** to filter the Logs Insights query time-range. 
 For example, if you want to query logs from the past day, you would select _Days_ as the **Unit of Time** and **_1_** as the **Past Time Range**:
-<br><br><img style='border:1px solid #327af6' src="@assets/img/aws-cloudwatch-logs-query-setting.png" /><br><br>
+![CloudWatch Logs Query Setting](@assets/img/aws-cloudwatch-logs-query-setting.png)<br><br>
 4. Insert the Logs Insights query into the **Query String** text-box:
-<br><br><img style='border:1px solid #327af6' src="@assets/img/aws-cloudwatch-logs-query-string.png" /><br>
+![Ad Hoc CloudWatch Logs Query](@assets/img/aws-cloudwatch-logs-query-string.png)<br>
 
 ::: tip Tip
 You can insert Job Options into the Query String using `${option.my_job_option}` notation. This allows users or events to provide variable parameters to the query at Job execution time.
@@ -66,9 +66,9 @@ Try out the Solution to see how this plugin can be used as part of incident-resp
 ## Execute Saved CloudWatch Logs Query
 
 1. When configuring an Automation Job, add the **Aws / CloudWatch / Execute Saved Query** Workflow Step.
-2. **Query Path**: Provide the folder path where the saved query resides:<br>
-   <img style='border:1px solid #327af6' src="@assets/img/cloudwatch-saved-query-console.png" /><figcaption>Example: The saved query _**fetch-nginx**_ resides in the _**infra/nginx**_ folder path</figcaption><br>
-   <img style='border:1px solid #327af6' src="@assets/img/cloudwatch-saved-query-fields.png"/>
+2. **Query Path**: Provide the folder path where the saved query resides:
+   ![Example: The saved query _**fetch-nginx**_ resides in the _**infra/nginx**_ folder path](@assets/img/cloudwatch-saved-query-console.png)
+   ![Execute Saved Query](@assets/img/cloudwatch-saved-query-fields.png)<br><br>
 3. **Query Name**: Provide the name of the saved query.  In the example above, **`fetch-nginx`** is the name of the saved query.
 4. **Log Groups**: Provide a list of the CloudWatch Log Groups that the saved query will use as the source of logs.  This can be one or multiple Log Groups.
 5. **Unit of Time**: Select a unit of time to define the time-range for the CloudWatch Logs query.

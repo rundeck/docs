@@ -172,6 +172,10 @@ Otherwise, if the response is a redirect chain which results in `200 successful`
 
 The response should set a cookie named `JSESSIONID`.
 
+:::
+In v4.8+ the `JSESSIONID` cookie will change after the first request after authentication. You will have to update your client code to follow redirects for subsequent requests. For example, when using `curl` you would have to use `-b` and `-c` options to update the session cookie in your next request after authentication. Alternately, you could add the `-L` option to the initial login POST, which will follow the redirect after login and update the session cookie.
+:::
+
 ## XML Response Format
 
 :::deprecated
@@ -5964,6 +5968,28 @@ In APIv38 or later:
 
 * `importNodesSources` true/false. If true, import Node Resources Source defined on project properties. If false, do not import the nodes sources.    
 
+**Component Options**
+
+* `importComponents.NAME=true` enable a component for import
+* `importOpts.NAME.KEY=VALUE` set a component option
+
+Project archives may contain "components" which can be imported, beyond the base set of contents.  This includes some data used by Process Automation (Rundeck Enterprise) features.
+
+Components:
+
+* Project Tours (Enterprise). Name: `project-tours`
+* Project Schedules (Enterprise). Name: `Schedule Definitions`
+* Project Calendars (Enterprise). Name: `calendars`
+* Node Wizard Nodes (Enterprise): Name: `node-wizard`
+* Webhooks, name: `webhooks`
+
+For example, to enable Webhook import, you could use `importWebhooks` and `whkRegenAuthTokens` params, but those are simply shortcuts for the following parameters:
+
+* `importComponents.webhooks=true&importOpts.webhooks.regenAuthTokens=true`
+
+Import schedules definitions:
+
+* `importComponents.Schedule%20Definitions=true`
 
 Expected Request Content:
 

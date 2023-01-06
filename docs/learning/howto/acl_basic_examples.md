@@ -148,7 +148,7 @@ by:
 ```
 
 
-The `notBy` is a variation of the `by` clause that only works on `deny`, it follows the same pattern using `username` and `group` and `urn` (to specify a username or group exact match, like u`rn: 'group:some.group'`) entries but in this case, the policy applies to any subject not matched. Example:
+The `notBy` is a variation of the `by` clause that only works on `deny`, it follows the same pattern using `username` and `group` and `urn` (to specify a username or group exact match, like `urn: 'group:some.group'`) entries but in this case, the policy applies to any subject not matched. Example:
 
 
 ```
