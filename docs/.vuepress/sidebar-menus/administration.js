@@ -19,6 +19,7 @@ module.exports = [{
                   '/administration/install/linux-deb',
                   '/administration/install/linux-rpm',
                   '/administration/install/tomcat',
+                  '/administration/install/aws',
                   '/administration/install/windows',
                   '/administration/install/source',
                   '/administration/install/docker'
