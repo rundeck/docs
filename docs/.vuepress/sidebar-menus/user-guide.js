@@ -111,7 +111,7 @@ module.exports = [{
       title: 'Plugins',
       collapsable: false,
       path:'/manual/plugins.md',
-      sidebarDepth: 1,
+      sidebarDepth: 3,
     },
     {
       title: 'Nodes',
