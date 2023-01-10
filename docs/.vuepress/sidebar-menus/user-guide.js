@@ -108,6 +108,12 @@ module.exports = [{
       ]
     },
     {
+      title: 'Plugins',
+      collapsable: false,
+      path:'/manual/plugins.md',
+      sidebarDepth: 1,
+    },
+    {
       title: 'Nodes',
       collapsable: true,
       path:'/manual/05-nodes',
