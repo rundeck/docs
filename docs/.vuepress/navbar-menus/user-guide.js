@@ -8,6 +8,10 @@ module.exports = [
     text: 'Jobs'
   },
   {
+    link: '/manual/plugins',
+    text: 'Plugins'
+  },
+  {
     link: '/manual/05-nodes',
     text: 'Nodes'
   },
