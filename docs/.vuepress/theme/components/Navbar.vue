@@ -2,7 +2,7 @@
   <header class="navbar">
     <div class="banner">
           <p>
-            The <i>Rundeck Enterprise</i> product name has been changed to <b>PagerDuty Process Automation</b>.<br><i>Rundeck Cloud</i> has changed to <b>PagerDuty Runbook Automation</b>. For more info click  <a href="https://www.pagerduty.com/blog/runbook-automation-joins-the-pagerduty-process-automation-portfolio/">here</a>.
+            <b>We need your feedback!</b> Complete the <a href='https://www.surveymonkey.com/r/8ZQ5F2J'>Rundeck Community Survey</a> to provide product feedback and get entered to win some awesome prizes.<br/> <a href='https://www.surveymonkey.com/r/8ZQ5F2J'>Fill out the survey here</a>. Survey is open till January 31, 2023 and prize winners will be notified February 2, 2023.
           </p>
     </div>
     <div class="navbar-content">
