@@ -406,6 +406,26 @@ References:
 - <https://www.owasp.org/index.php/OWASP_Secure_Headers_Project>
 - <https://content-security-policy.com>
 
+
+### Security HTTP Firewall
+
+Rundeck let user to use [Spring Security StrictHttpFirewall](https://docs.spring.io/spring-security/site/docs/current/api/org/springframework/security/web/firewall/StrictHttpFirewall.html) to validate HTTP requests on their headers, URL and body. Any invalid request will be rejected with a BAD REQUEST 400 error.
+
+- `rundeck.security.httpFirewall.enabled`:`true/false`. Default `false`
+
+#### [Host Head Injection Attack](https://portswigger.net/web-security/host-header) Protection
+
+To protect the web application from Host Head Injection attack, admin can config trusted hosts:
+
+- `rundeck.security.httpFirewall.allowedHostnames`:`Comma separated hostnames`
+
+The value for this parameter should be a string of comma separated hostnames. E.g. 
+```properties
+rundeck.security.httpFirewall.allowedHostnames = localhost, 192.168.0.1, www.example.com 
+```
+
+System Admin needs to configure the trusted hostnames based on network setup. The hostname derived from the `grails.serverURL` parameter is always trusted so there is no need to configure it explicitely. 
+
 ### Local Login Form Visibility
 
 - `rundeck.login.localLogin.enabled`:`true/false`. Default `true`
