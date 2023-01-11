@@ -1,10 +1,10 @@
 ---
 
 title: "4.9.0 Release Notes"
-date: ""
+date: "2023-01-11"
 feed:
  enable: true
- description: ""
+ description: "Version 4.9.0 is here!  Check out the new configuration method for Plugins Suites and be on the look out for major updates to the Runner functionality in a future version."
 
 ---
 
@@ -19,25 +19,24 @@ Release Date: PUTADATEHERE
 
 ## Overview
 
-Check out the new features and enhancements for PagerDuty Process Automation (formerly Rundeck Enterprise) and PagerDuty Runbook Automation and Rundeck Community included in this release.
+Check out the new features and enhancements for PagerDuty Process Automation, PagerDuty Runbook Automation, and Rundeck Community included in this release. This release introduces the beta for Plugin Suite Configuration, which simplifies the configuration of plugins.
 
-## Process Automation Updates
-
-> Also includes all Open Source updates from below
+View our Twitch stream review of this release live on January 17 at 10AM Pacific. [Here’s the event link](https://www.twitch.tv/pagerduty/schedule).
 
 ### Highlights
 
-- first highlight
-- second highlight
+- **Plugin Suite Configuration**: We’ve simplified the configuration of plugins so users can build more automation faster. PagerDuty Runbook Automation and Process Automation now provide an easier interface for users to define plugin properties and reduce the number of times a user needs to define common properties across plugins. Now users have a graphical interface for configuring plugin properties at the project and system level using predefined sets of properties on a per plugin suite basis. In version 4.9.0, users can access our first predefined plugin-suite setting for the PagerDuty plugin suite and future releases will include Plugin Groups for our other plugin suites - such as Jira, ServiceNow, and AWS. 
+
+![PD Plugin Config](~@assets/img/relnotes-4.9-pd-config.png)
+
+- This release also includes a number of backend enhancements that will lend themselves to major releases in the coming months.  Stay tuned for announcements regarding major updates to our [Runner](/administration/runner/).
 
 ### Additional Updates
-
 
 * Fix: Cannot navigate through key storage when using approle
 * healthcheck unknown when cache is cleaned
 * Add 30 Day User Count to System Report
 * Upgrade to jQuery 3.6.1
-
 
 ## Rundeck Open Source Product Updates
 
@@ -76,24 +75,8 @@ Check out the new features and enhancements for PagerDuty Process Automation (fo
 
 ## Community Contributors
 
-* Alberto Hormazabal ([ahormazabal](https://github.com/ahormazabal))
-* Imad Jafir ([imad6639](https://github.com/imad6639))
-* Luis Toledo ([ltamaster](https://github.com/ltamaster))
-* Carlos Eduardo ([carlosrfranco](https://github.com/carlosrfranco))
-* Christopher McCarroll-Gilbert ([chrismcg14](https://github.com/chrismcg14))
-* Miguel Ramos ([mishingo](https://github.com/mishingo))
-* Jason Qualman ([qualman](https://github.com/qualman))
-* Jesus Osuna ([Jesus-Osuna-M](https://github.com/Jesus-Osuna-M))
-* Darwis Narvaez ([DarwisNarvaezDev](https://github.com/DarwisNarvaezDev))
-* Greg Schueler ([gschueler](https://github.com/gschueler))
-* Eric He ([ehe-pd](https://github.com/ehe-pd))
 * Patrice Duroux ([peutch](https://github.com/peutch))
-* Leonel Juarez ([L2JE](https://github.com/L2JE))
-* Forrest Evans ([fdevans](https://github.com/fdevans))
 * Sota Kato ([tokagerous](https://github.com/tokagerous))
-* Néstor Fuenzalida ([nestorfm](https://github.com/nestorfm))
-* Nathan Fluegel ([wayfaringson](https://github.com/wayfaringson))
-* daniel.d ([dldrk](https://github.com/dldrk))
 
 
 ## Staff Contributors
@@ -104,6 +87,7 @@ Check out the new features and enhancements for PagerDuty Process Automation (fo
 * Antony Velasquez Ruiz ([avelasquezr](https://github.com/avelasquezr))
 * Carlos Eduardo ([carlosrfranco](https://github.com/carlosrfranco))
 * Christopher McCarroll-Gilbert ([chrismcg14](https://github.com/chrismcg14))
+* Daniel Da Silva ([dldrk](https://github.com/dldrk))
 * Darwis Narvaez ([DarwisNarvaezDev](https://github.com/DarwisNarvaezDev))
 * Eric He ([ehe-pd](https://github.com/ehe-pd))
 * Forrest Evans ([fdevans](https://github.com/fdevans))
@@ -115,6 +99,8 @@ Check out the new features and enhancements for PagerDuty Process Automation (fo
 * Leonel Juarez ([L2JE](https://github.com/L2JE))
 * Luis Toledo ([ltamaster](https://github.com/ltamaster))
 * Miguel Ramos ([mishingo](https://github.com/mishingo))
+* Nathan Fluegel ([wayfaringson](https://github.com/wayfaringson)
+* Néstor Fuenzalida ([nestorfm](https://github.com/nestorfm))
 * Osman Albarran ([Oalbarran94](https://github.com/Oalbarran94))
 * Rodrigo Navarro ([ronaveva](https://github.com/ronaveva))
 * Stephen Joyner ([sjrd218](https://github.com/sjrd218))
