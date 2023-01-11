@@ -33,39 +33,36 @@ View our Twitch stream review of this release live on January 17 at 10AM Pacific
 
 ### Additional Updates
 
-* Fix: Cannot navigate through key storage when using approle
-* healthcheck unknown when cache is cleaned
+* Fix: Hashicorp Vault Issue - Cannot navigate through key storage when using approles
+* Fix: Issue with Healthcheck setting values to `unknown` when cache is cleaned
 * Add 30 Day User Count to System Report
 * Upgrade to jQuery 3.6.1
 
 ## Rundeck Open Source Product Updates
 
+* [Fix: Job activity tab not loading](https://github.com/rundeck/rundeck/pull/8073)
 * [Package Upgrades for CVE-2022-41881](https://github.com/rundeck/rundeck/pull/8071)
-* [Fix Project Picker not loading when Projects with special characters exist](https://github.com/rundeck/rundeck/pull/8064)
-* [fix error choosing runner on execution runtime](https://github.com/rundeck/rundeck/pull/8063)
-* [Duplicated fields at Notification settings modal](https://github.com/rundeck/rundeck/pull/8061)
-* [upgrade sshj version](https://github.com/rundeck/rundeck/pull/8056)
-* [Run 1386-fix plugin groups deleted when not modified](https://github.com/rundeck/rundeck/pull/8055)
-* [Fix null definitions in plugin groups](https://github.com/rundeck/rundeck/pull/8054)
-* [add secrets for script plugins](https://github.com/rundeck/rundeck/pull/8050)
+* [Fix: Project Picker not loading when Projects with special characters exist](https://github.com/rundeck/rundeck/pull/8064)
+* [Fix: Error choosing runner on execution runtime](https://github.com/rundeck/rundeck/pull/8063)
+* [Fix: Duplicated fields on Notification settings modal](https://github.com/rundeck/rundeck/pull/8061)
+* [Upgrade SSHJ Plugin version which includes enchancements and fixes](https://github.com/rundeck/rundeck/pull/8056)
+* [Add secrets support for script based plugins](https://github.com/rundeck/rundeck/pull/8050)
 * [Fix Missing Execution Clean History Form Display](https://github.com/rundeck/rundeck/pull/8044)
 * [Job Runner Run page GUI ](https://github.com/rundeck/rundeck/pull/8041)
-* [Update spring-sec to fixed version](https://github.com/rundeck/rundeck/pull/8039)
-* [Fix plugin property mappings](https://github.com/rundeck/rundeck/pull/8038)
+* [Updates to address CVE-2022-31690, CVE-2022-22978, CVE-2022-31692](https://github.com/rundeck/rundeck/pull/8039)
 * [Fix:Ruleset Plugin fails to evaluate conditions if negative number are used](https://github.com/rundeck/rundeck/pull/8031)
 * [Overflow Scrollbars on Login Page Removal](https://github.com/rundeck/rundeck/pull/8028)
 * [Fix: Dynamic max nodes shown in rundeck GUI](https://github.com/rundeck/rundeck/pull/8026)
 * [Fix: Key-Value data log filter unable to capture empty values](https://github.com/rundeck/rundeck/pull/8024)
-* [fix invalid property name](https://github.com/rundeck/rundeck/pull/8022)
+* [Fix: Invalid property name causing errors when changing project settings](https://github.com/rundeck/rundeck/pull/8022)
 * [Refactor Project to Pass through Data Provider](https://github.com/rundeck/rundeck/pull/8017)
-* [fix incorrect 404 page response for job edit/update page](https://github.com/rundeck/rundeck/pull/8011)
+* [Fix: Incorrect 404 page response for job edit/update page](https://github.com/rundeck/rundeck/pull/8011)
 * [Enabled feature  query API endpoint](https://github.com/rundeck/rundeck/pull/8010)
 * [Upgrade Moment to 2.29.4](https://github.com/rundeck/rundeck/pull/7999)
 * [Upgrade to jQuery 3.6.1 ](https://github.com/rundeck/rundeck/pull/7992)
 * [Job Lifecycle Components](https://github.com/rundeck/rundeck/pull/7984)
 * [Runner Node Executor enhancement ](https://github.com/rundeck/rundeck/pull/7943)
-* [Update messages_fr_FR.properties](https://github.com/rundeck/rundeck/pull/7917)
-* [Enable stepplugin and nodestepplugin in runner](https://github.com/rundeck/rundeck/pull/7828)
+* [Update French Translation Typo](https://github.com/rundeck/rundeck/pull/7917)
 
 
 [Here is a link to the full list of public PRs](https://github.com/rundeck/rundeck/pulls?q=is%3Apr+milestone%3A4.9.0+is%3Aclosed)
