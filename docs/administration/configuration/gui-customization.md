@@ -99,6 +99,14 @@ To customize the link's name of the "Get help" button in Rundeck's GUI Support f
 
 ![Figure: The "Get Help link name changed for a custom value named in the property"](~@assets/img/gui-custom-helpLink-name.png)
 
+### rundeck.gui.workflowGraph
+- Examble: ```false```
+- min version: 4.10
+
+Prevents the ruleset graph renderization.
+
+![Figure: The workflow graph component changes for another more minimalistic](~@assets/img/gui-workflow-graph.png)
+
 ### rundeck.gui.helpLink
 - Example: ```https://yoururlhere.com```
 - min version: 2.x
