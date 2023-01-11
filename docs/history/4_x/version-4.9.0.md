@@ -11,7 +11,7 @@ feed:
 # 4.9.0 Release Notes
 
 Name: <span style="color: peru"><span class="glyphicon glyphicon-phone"></span> "Quintaped peru phone"</span>
-Release Date: PUTADATEHERE
+Release Date: January 11, 2023
 
 - [Download the Releases](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
