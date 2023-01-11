@@ -12,7 +12,9 @@ The Ruleset Workflow Strategy allows Enterprise users to provide more complex lo
 ![Ruleset Strategy](@assets/img/relnotes-344-rulesetdesigner.gif)
 
 ::: warning
-When the Workflow graph contains a large number of jobs to represent, the job edit page may reduce its response speed. By this, PDPAOP has the possibility of prevent the graph renderization if the user set to `false` a property: `rundeck.gui.workflowGraph`. (This can be possible without restarting the system, via [Configuration Manager](/manual/configuration-mgmt/configmgmt.md)) Read more about [the prop](/administration/configuration/gui-customization.md)
+When the Workflow graph contains a large number of jobs, the job edit page may experience performance issues. Use the following setting to disable the graph renderization: `rundeck.gui.workflowGraph` set to `false`.  This can be configured without restarting the system, via [Configuration Manager](/manual/configuration-mgmt/configmgmt.md). 
+
+Read more about [the setting](/administration/configuration/gui-customization.md)
 :::
 
 ## Writing Rules
