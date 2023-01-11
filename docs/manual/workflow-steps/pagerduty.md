@@ -4,8 +4,23 @@
 
 PagerDuty is a software that provides incident response management services to IT operations teams. When an incident is created, PagerDuty makes it easy for IT teams to track that incident for the duration of its life. The Rundeck and PagerDuty integration allows teams to run diagnostic and corrective actions to minimize the duration of the incident, as well as get event notifications within PagerDuty.
 
-:::tip
-Some job steps require specifying the key path in either project settings (`project.pagerduty.api_key_path=keys/pd/api`) or framework.properties (`pagerduty.api_key_path=keys/pd/api`) before configuring the steps.  There are dynamic fields that will populate with Escalation Policies, etc. to help streamline configuration. (Be sure to replace "keys/pd/api" with your own key storage path and key name)
+## Plugin Configuration
+
+To use the PagerDuty plugins: 
+1. Generate a PagerDuty [API Access Key](https://support.pagerduty.com/docs/api-access-keys)
+2. Add that key to [Key Storage](/manual/key-storage/key-storage).
+3. Follow the steps outlined in [Plugin Configuration](/manual/plugins) to select the PagerDuty plugin suite and then select the PagerDuty API Access Key from Key Storage.
+
+:::tip For OSS Users 
+The PagerDuty plugins can be configured in the Project configuration settings by navigating to:
+
+**Project Settings** -> **Edit Configuration** -> **Edit Configuration File** and adding the following property:<br>
+**`project.pagerduty.api_key_path=keys/pd/api`**
+
+The plugins can also be defined at the system level by adding the following to the **`framework.properties`** file:<br>
+**`pagerduty.api_key_path=keys/pd/api`**
+
+In both cases, `keys/pd/api` represent the path in Key Storage where the PagerDuty API Access key resides.
 :::
 
 ## PagerDuty Incident Note
