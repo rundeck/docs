@@ -207,7 +207,6 @@
 
 
 
-
 [/api/V/project/\[PROJECT\]/calendars]:/api/rundeck-api.html#list-project-calendars
 [GET /api/V/project/\[PROJECT\]/calendars]:/api/rundeck-api.html#list-project-calendars
 [POST /api/V/project/\[PROJECT\]/calendars]:/api/rundeck-api.html#create-update-project-calendar
@@ -217,3 +216,5 @@
 [GET /api/V/system/calendars]:/api/rundeck-api.html#list-system-calendars
 [POST /api/V/system/calendars]:/api/rundeck-api.html#create-update-system-calendar
 [DELETE /api/V/system/calendars/\[ID\]]:/api/rundeck-api.html#delete-system-calendar
+
+[GET /api/V/feature/\[featureName\]]:/api/rundeck-api.html#system-feature
