@@ -597,7 +597,7 @@ rundeck server will not appear on the node filter list.
 File listing: remote.aclpolicy
 
 ```yaml .numberLines
-description: Acess for users on remote group
+description: Access for users on remote group
 context:
   project: '.*'
 for:
