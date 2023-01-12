@@ -1,4 +1,5 @@
-# Automated Diagnostics
+## Automated Diagnostics
+---
 
 ## Linux OS & Applications
 
