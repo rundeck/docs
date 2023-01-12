@@ -2,6 +2,7 @@
 
 title: "How to Contribute to Rundeck Documentation"
 date: "2022-08-01"
+image: /images/chevron-logo-red-on-white.png
 feed:
  enable: true
  description: "Help us help everyone!  This article explains ways to contribute to the Rundeck Documentation.  Free swag for new articles!!"
