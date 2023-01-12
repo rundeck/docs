@@ -425,9 +425,12 @@ The value for this parameter should be a string of comma separated hostnames. E.
 rundeck.security.httpFirewall.allowedHostnames = localhost, 192.168.0.1, www.example.com 
 ```
 
-System Admin needs to configure the trusted hostnames based on network setup. 
-
 The hostname derived from the `grails.serverURL` parameter is always trusted so there is no need to configure it explicitely. 
+
+System Admin needs to configure the trusted hostnames based on the deployment strategy. For example:
+
+1. If the Rundeck Appliation Server is exposed directly through a domain name (e.g. `my.domain.name`) or IP address, the domain name or IP address must be added into the allowedHostName list
+2. If the Rundeck Application Server is exposed through a reverse proxy or load balancer which overwrites the HTTP Host head, then Host head value provided by reserve proxy and load balancer should be added into the allowedHostName list.
 
 ### Local Login Form Visibility
 
