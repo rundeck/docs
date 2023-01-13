@@ -2,6 +2,7 @@
 
 title: "Getting Started with ACLs"
 date: "2022-09-01"
+image: /images/chevron-logo-red-on-white.png
 feed:
  enable: true
  description: "Need to provide limited access to your users?  Use this guide to get started with ACLs in Process Automation/Rundeck."
