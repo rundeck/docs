@@ -24,9 +24,9 @@ Add the following entries to `/etc/yum.repos.d/rundeck.repo` replacing any exist
 name=rundeckpro
 baseurl=https://packages.rundeck.com/pagerduty/rundeckpro/rpm_any/rpm_any/$basearch
 repo_gpgcheck=1
-gpgcheck=0
+gpgcheck=1
 enabled=1
-gpgkey=https://packages.rundeck.com/pagerduty/rundeckpro/gpgkey
+gpgkey=https://packages.rundeck.com/pagerduty/rundeckpro/gpgkey,https://docs.rundeck.com/keys/BUILD-GPG-KEY-20230105.key
 sslverify=1
 sslcacert=/etc/pki/tls/certs/ca-bundle.crt
 metadata_expire=300
@@ -74,9 +74,9 @@ Add the following entries to `/etc/yum.repos.d/rundeck.repo` replacing any exist
 name=rundeck
 baseurl=https://packages.rundeck.com/pagerduty/rundeck/rpm_any/rpm_any/$basearch
 repo_gpgcheck=1
-gpgcheck=0
+gpgcheck=1
 enabled=1
-gpgkey=https://packages.rundeck.com/pagerduty/rundeck/gpgkey
+gpgkey=https://packages.rundeck.com/pagerduty/rundeck/gpgkey,https://docs.rundeck.com/keys/BUILD-GPG-KEY-20230105.key
 sslverify=1
 sslcacert=/etc/pki/tls/certs/ca-bundle.crt
 metadata_expire=300
