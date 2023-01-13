@@ -19,12 +19,17 @@
 const docsBase= "https://docs.rundeck.com"
 //include the last version in each minor release
 const previousDocsVersions= [
-        "4.9.0",
-        "4.8.0",
+	"4.10.0",
+    "4.9.0",
+    "4.8.0",
 	"4.7.0",
 	"4.6.1",
 	"4.5.0",
 	"4.4.0",
+	"4.3.0",
+	"4.2.0",
+	"4.1.0",
+	"4.0.0",
 	"3.4.10",
 	"3.3.9",
 	"3.2.9",
