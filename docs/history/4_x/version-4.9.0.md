@@ -33,6 +33,10 @@ Click [here](/manual/plugins) to read the full documentation.
 
 - This release also includes a number of backend enhancements that will lend themselves to major releases in the coming months.  Stay tuned for announcements regarding major updates to our [Runner](/administration/runner/).
 
+:::warning
+Version 4.9.0 utilizes new signing keys for our binary packages.  If your installation process includes validation of the packages using the public key please ensure you are using the new keys documented on the [Download Site](https://download.rundeck.com/)
+:::
+
 ### Additional Updates
 
 * Fix: Hashicorp Vault Issue - Cannot navigate through key storage when using approles
