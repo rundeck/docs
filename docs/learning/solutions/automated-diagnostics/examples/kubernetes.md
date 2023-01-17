@@ -34,4 +34,3 @@ Here is an example Job that retrieves recent Pod logs and Kubernetes events - sp
 Right click [here](https://raw.githubusercontent.com/rundeck/docs/4.0.x/docs/assets/text/sample_k8s_job.yaml) and click **`Save Link As...`** to download the Job definition **YAML** and import the Job to your Automation instance.
 
 ![Example Kubernetes Job Output](@assets/img/example-k8s-job-output.png)
-
