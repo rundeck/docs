@@ -425,7 +425,7 @@ The value for this parameter should be a string of comma separated hostnames. E.
 rundeck.security.httpFirewall.allowedHostnames = localhost, 192.168.0.1, www.example.com 
 ```
 
-The hostname derived from the `grails.serverURL` parameter is always trusted so there is no need to configure it explicitely. 
+The hostname derived from the `grails.serverURL` parameter is always trusted so there is no need to configure it explicitly. 
 
 System Admin needs to configure the trusted hostnames based on the deployment strategy. For example:
 
