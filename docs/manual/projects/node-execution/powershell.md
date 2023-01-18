@@ -50,6 +50,7 @@ Attributes
 - username: The login account name to the remote host.
 - password-storage-path: The path to the file containing the password in the keystore. This path will start with "keys/".
 - connectionUri: Alternate connection parameters as a URI. e.g. "https://hostname:port"
+- output-charset: The character encoding used for outputs of the node. Necessary in very specific cases where the output of commands is not printed correctly using the default charset. Default: 'utf-8'
 
 ### Example resource model definitions
 
@@ -61,7 +62,8 @@ The following example show a node defined using the XML format.
  <node name="winhost123"
        hostname="xxx.xxx.xxx.xxx"
        username="myaccount"
-       password-storage-path="keys/winhost123.passwd" .../>
+       password-storage-path="keys/winhost123.passwd" 
+       output-charset: 'utf-8'.../>
 ```
 
 ## Project Configuration
