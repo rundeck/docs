@@ -429,6 +429,10 @@ The [PAM](#pam) section is a useful comparison as it uses the same method to com
 
 ### Active Directory
 
+:::tip
+The maximum quantity of results that Rundeck is able to retrieve from Active Directory is limited to the value specified for the MaxPageSize parameter within the Active Directory configuration.
+:::
+
 Here is an example configuration for Active Directory. The string _sAMAccountName_ refers to the short user name and is valid in a default Active Directory installation, but may vary in some environments.
 
 ```c .numberLines
