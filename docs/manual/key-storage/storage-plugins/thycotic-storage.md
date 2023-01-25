@@ -12,21 +12,28 @@ Process Automation users have access to the Thycotic Storage Plugin which can be
 
 Below is an example configuration, which can be configured using the *System Configuration* module. Add each setting as a configuration entry.
 
-![Thycotic Configuration](@assets/img/thycotic-config-screen.png)
+:::warning
+Doing it via Configuration Manager Plugin (GUI way to write configuration) will expose sensible fields such as the password. We recommend to use "$RDECK_BASE/rundeck-config.properties" file.
+:::
+
+![Thycotic Configuration](@assets/img/thycoticConfiguration.png)
+
+**Note:** if user use Thycotic Storage Plugin as a second storage provider, and its path preffix is set to ```true```, the keys will be downloaded to a separate folder within "keys" folder, exhibit in the following:
+
+![Thycotic as a Second Provider](@assets/img/thycoticAsASecondProvider.png)
 
 :::
 ::: tab rundeck-config.properties
 Alternatively the settings can be placed in `rundeck-config.properties`
 
 ```
-rundeck.storage.provider.1.type=thycotic-storage
-rundeck.storage.provider.1.path=keys
-rundeck.storage.provider.1.removePathPrefix=true
-rundeck.storage.provider.1.config.username=thycotic-username
-rundeck.storage.provider.1.config.password=password
-rundeck.storage.provider.1.config.address=https://example.secretservercloud.com
-rundeck.storage.provider.1.config.allowSelfSignedCert=true
-rundeck.storage.provider.1.config.maximumResources=100
+rundeck.storage.provider.2.type=thycotic-storage
+rundeck.storage.provider.2.path=keys/thycotic
+rundeck.storage.provider.2.removePathPrefix=true
+rundeck.storage.provider.2.config.username=<username>
+rundeck.storage.provider.2.config.password=<password>
+rundeck.storage.provider.2.config.address=https://<domain>.secretservercloud.com
+rundeck.storage.provider.2.config.allowSelfSignedCert=true
 ```
 :::
 ::::
