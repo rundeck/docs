@@ -34,6 +34,11 @@ node executors are used for a subset of this inventory, the following **Node Enh
 * Attributes to Add:
 ```
 node-executor:awsssmexecutor
+ssm-accessKeyId=MY_AWS_ACCESS_KEY
+ssm-secretKey=keys/path-to-aws-secret
+file-copier:aws-ssm-copier
+ssm-copier-accessKeyId=MY_AWS_ACCESS_KEY
+ssm-copier-secretKey=keys/path-to-aws-secret
 ```
 
 **Use WinRM for All Nodes where the Operating System is Windows**<br>
