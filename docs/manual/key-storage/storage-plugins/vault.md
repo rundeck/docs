@@ -4,6 +4,8 @@
 
 Rundeck offers a [Key Storage Backend](/manual/key-storage/key-storage.html#key-data-storage-converter) plugin for storing Key Store data in [Vault](https://www.vaultproject.io/) and has been verified to work with HCP Vault.
 
+A more [detailed installation How To](/learning/howto/vault-integration.html) is available in our learning section.
+
 :::: tabs
 ::: tab Enterprise Installation
 
@@ -313,6 +315,23 @@ rundeck.storage.provider.1.config.engineVersion=2
 
 By default, the value is set to v1 (1)
 
+Also note that [V2 of the kV Secrets Engine](https://developer.hashicorp.com/vault/docs/secrets/kv/kv-v2#acl-rules) requires updates/changes to any policies you might be using to limit access.
+
+If access is limited to a specific subfolder the following example policy can be used to confirm you have given the proper access for Rundeck to manage the keys.
+
+```
+path "secret_v2/data/your/path/here/*" {
+    capabilities = ["create", "read", "update"]
+}
+
+path "secret_v2/metadata/your/path/here/*" {
+    capabilities = ["read", "delete", "list"]
+}
+
+path "secret_v2/delete/your/path/here/*" {
+    capabilities = ["update"]
+}
+```
 
 ## Minimal version requirements
   * Java 1.8
