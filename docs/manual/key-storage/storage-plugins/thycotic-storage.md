@@ -12,15 +12,7 @@ Process Automation users have access to the Thycotic Storage Plugin which can be
 
 Below is an example configuration, which can be configured using the *System Configuration* module. Add each setting as a configuration entry.
 
-:::warning
-Doing it via Configuration Manager Plugin (GUI way to write configuration) will expose sensible fields such as the password. We recommend to use "$RDECK_BASE/rundeck-config.properties" file.
-:::
-
 ![Thycotic Configuration](@assets/img/thycoticConfiguration.png)
-
-**Note:** if user use Thycotic Storage Plugin as a second storage provider, and its path preffix is set to ```true```, the keys will be downloaded to a separate folder within "keys" folder, exhibit in the following:
-
-![Thycotic as a Second Provider](@assets/img/thycoticAsASecondProvider.png)
 
 :::
 ::: tab rundeck-config.properties
