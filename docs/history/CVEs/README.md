@@ -1,18 +1,15 @@
-# Security Advisories
+# Security Notices
 
-**April 4th, 2022**
-
-The Rundeck / Process Automation team has released a hotfix version `4.0.1` to address the [vulnerabilities in Spring Framework announced here](https://spring.io/blog/2022/03/31/spring-framework-rce-early-announcement).
-
-All future releases will also include this fix.
+Below is colletion of security notices previously filed for Rundeck and Process Automation.  Also included is a list of false positives that vulnerability scanners may find with explanations about why we consider it a false positive.  If there are any concerns about the security of Rundeck or quesitons about a new finding please reach out to us using the [Support Instructions](/about/getting-help.md).
 
 [Download the latest version here](https://download.rundeck.com).
 
-
-## Past Rundeck CVEs
+## Rundeck/Process Automation CVEs
 
 These are the Security Advisories Rundeck has issued in the past.  It is always recommended to upgrade to the current version of Rundeck ({{{rundeckVersion}}}) for the latest security updates.
 
+* [CVE-2022-31044](CVE-2022-31044.md)<br>
+    Key Storage converter plugin mechanism were not enabled correctly in Rundeck 4.2.0 and 4.2.1.
 * [CVE-2022-29186](CVE-2022-29186.md)<br>
     Key Pair Misconfiguration may expose systems.
 * [CVE-2021-41112](CVE-2021-41112.md)<br>
@@ -26,4 +23,7 @@ These are the Security Advisories Rundeck has issued in the past.  It is always 
 * [CVE-2020-11009](CVE-2020-11009.md)<br>
     IDOR can reveal execution data and logs to unauthorized user.
 
-[For information about Log4j / Log4Shell please see this page.](log4j.md)
+## False Positive Findings
+
+* Log4j / Log4Shell will flag a false positive vulnerability related to our JIRA plugins. [More Details on this page](log4j.md)
+* [H2 CVE-2022-45868 false positive](CVE-2022-45868.md).
