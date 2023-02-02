@@ -648,7 +648,8 @@ It is also possible to reconfigure the default path for files according to [this
 
 `framework.plugin.FileUpload.filesystem-temp.basePath=/desired/path`
 
-'''NOTE : If you are using the remote execution policy, you might to know that this “Upload File” option will work properly if you have on your rundeck cluster an NFS, or other shared folder. S3 is not supported yet.
+'''NOTE:
+In a clustered mode, it is important to note that this option by default will only upload the file to a single cluster member (whichever server you are uploading the file on). To address this in a better way, it is recommended that you set the desired path to a directory that is shared across all cluster members. This could be and NFS share or something like it. By doing so, when a file is uploaded, it will be available for all cluster members.
 
 :::
 
