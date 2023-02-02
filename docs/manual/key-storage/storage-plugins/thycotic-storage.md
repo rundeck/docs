@@ -19,14 +19,16 @@ Below is an example configuration, which can be configured using the *System Con
 Alternatively the settings can be placed in `rundeck-config.properties`
 
 ```
-rundeck.storage.provider.2.type=thycotic-storage
-rundeck.storage.provider.2.path=keys/thycotic
-rundeck.storage.provider.2.removePathPrefix=true
-rundeck.storage.provider.2.config.username=<username>
-rundeck.storage.provider.2.config.password=<password>
-rundeck.storage.provider.2.config.address=https://<domain>.secretservercloud.com
-rundeck.storage.provider.2.config.allowSelfSignedCert=true
+rundeck.storage.provider.[index].type=thycotic-storage
+rundeck.storage.provider.[index].path=keys/thycotic
+rundeck.storage.provider.[index].removePathPrefix=true
+rundeck.storage.provider.[index].config.username=<username>
+rundeck.storage.provider.[index].config.password=<password>
+rundeck.storage.provider.[index].config.address=https://<domain>.secretservercloud.com
+rundeck.storage.provider.[index].config.allowSelfSignedCert=true
 ```
+
+> Note: Replace '\[index\]' in your configuration, make sure doesn't override others storage configuration's index.
 :::
 ::::
 
