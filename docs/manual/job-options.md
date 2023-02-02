@@ -476,7 +476,7 @@ Option model providers are configured on a per-Option basis (where a Job may hav
    - OR, an array of Maps, each with two entries, `name` and `value`.
 4. By default, the HTTP(S) response must include the `application/json` content type in the header.
    In case this cannot be controlled, the attribute `project.jobs.disableRemoteOptionJsonCheck` can be set to `true` in the project settings.
-5. On HTTP(S) unsafe characters should be avoided within a URL, they may cause errors since characters will be inconsistent after being encoded.   
+5. On HTTP(S) unsafe characters as `blank/empty space, ", <, >, %, {, }, |, \, ^, ´` should be avoided or encoded within a URL, keep in mind that if encoded the name on the server side should be the same. For more information on unsafe characters see [IETF | Internet Engineering Task Force](https://www.ietf.org/rfc/rfc1738.txt)    
 
 ### Configuration
 
@@ -590,9 +590,9 @@ remote values URL. The property reference is of the form
 like "http://server/options?option2=${option.option2.value}", then that option
 will depend on the value of the "option2" option.
 
-If the `“option2”` value have a unsafe character as `“My value”` the unsafe character 
+If the `“option2”` value has an unsafe character as `“My value”` the unsafe character 
 will be encoded to `"My%20value"` and the URL will be "http://server/options?My%20value",
-the po JSON must be stored as `“My%20value”` on the server side or the request will return a 404 error.
+the pointed JSON must be stored as `“My%20value”` on the server side or the request will return a 404 error.
 
 In the GUI, when the options are loaded, option2 will be shown first, and the
 remote values for option1 will only be loaded once a value has been selected for
