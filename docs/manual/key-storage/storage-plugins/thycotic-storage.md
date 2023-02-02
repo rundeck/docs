@@ -28,7 +28,7 @@ rundeck.storage.provider.[index].config.address=https://<domain>.secretserverclo
 rundeck.storage.provider.[index].config.allowSelfSignedCert=true
 ```
 
-> Note: Replace '\[index\]' in your configuration, make sure doesn't override others storage configuration's index.
+> Note: Replace ```index``` in your configuration, make sure doesn't override others storage configuration's index.
 :::
 ::::
 
