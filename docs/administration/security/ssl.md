@@ -179,7 +179,7 @@ vi $RDECK_BASE/etc/framework.properties
 ::: tab RPM/DEB
 
 ```shell
-vi /etc/rundeck/ssl/framework.properties
+vi /etc/rundeck/framework.properties
 ```
 
 :::

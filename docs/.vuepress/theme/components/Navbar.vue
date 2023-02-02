@@ -1,10 +1,5 @@
 <template>
   <header class="navbar">
-    <div class="banner">
-          <p>
-            <b>We need your feedback!</b> Complete the <a href='https://www.surveymonkey.com/r/8ZQ5F2J'>Rundeck Community Survey</a> to provide product feedback and get entered to win some awesome prizes.<br/> <a href='https://www.surveymonkey.com/r/8ZQ5F2J'>Fill out the survey here</a>. Survey is open till January 31, 2023 and prize winners will be notified February 2, 2023.
-          </p>
-    </div>
     <div class="navbar-content">
     <SidebarButton class="sidebar-button" @toggle-sidebar="$emit('toggle-sidebar')"/>
 

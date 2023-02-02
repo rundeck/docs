@@ -19,6 +19,7 @@ Alternatively the settings can be specified in `framework.properties`for all Jir
 jira.url=https://instance.atlassian.net
 jira.login=user
 jira.auth_token=keys/jira/token
+jira.password-key-storage-path=keys/jira/password
 ```
 
 Configuration can be specific per project as documented in the settings below:
@@ -36,6 +37,7 @@ Password it's a key storage path to the password.
 ```
 project.plugin.WorkflowStep.jira-assigned-issue.login=admin@instance.com
 project.plugin.WorkflowStep.jira-assigned-issue.password=keys/jira/password
+project.plugin.WorkflowStep.jira-assigned-issue.password-key-storage-path=keys/jira/password
 project.plugin.WorkflowStep.jira-assigned-issue.url=https://instance.atlassian.net
 ```
 
@@ -59,6 +61,7 @@ Password it's a key storage path to the password.
 ```
 project.plugin.WorkflowStep.jira-check-issue.login=admin@instance.com
 project.plugin.WorkflowStep.jira-check-issue.password=keys/jira/password
+project.plugin.WorkflowStep.jira-check-issue.password-key-storage-path=keys/jira/password
 project.plugin.WorkflowStep.jira-check-issue.url=https://instance.atlassian.net
 ```
 
@@ -81,6 +84,8 @@ Password it's a keystorage path to the password.
 ```
 project.plugin.WorkflowStep.jira-comment-issue-step.login=admin@instance.com
 project.plugin.WorkflowStep.jira-comment-issue-step.password=keys/jira/password
+project.plugin.WorkflowStep.jira-comment-issue-step.password-key-storage-path=keys/jira/password
+
 project.plugin.WorkflowStep.jira-comment-issue-step.url=https://instance.atlassian.net
 ```
 
@@ -104,6 +109,7 @@ Password it's a keystorage path to the password.
 ```
 project.plugin.WorkflowStep.jira-create-issue.login=admin@instance.com
 project.plugin.WorkflowStep.jira-create-issue.password=keys/jira/password
+project.plugin.WorkflowStep.jira-create-issue.password-key-storage-path=keys/jira/password
 project.plugin.WorkflowStep.jira-create-issue.url=https://instance.atlassian.net
 ```
 
@@ -134,6 +140,7 @@ Password it's a keystorage path to the password.
 ```
 project.plugin.WorkflowStep.jira-update-issue.login=admin@instance.com
 project.plugin.WorkflowStep.jira-update-issue.password=keys/jira/password
+project.plugin.WorkflowStep.jira-update-issue.password-key-storage-path=keys/jira/password
 project.plugin.WorkflowStep.jira-update-issue.url=https://instance.atlassian.net
 ```
 
@@ -161,6 +168,7 @@ Password it's a keystorage path to the password.
 ```
 project.plugin.WorkflowStep.jira-get-issue.login=admin@instance.com
 project.plugin.WorkflowStep.jira-get-issue.password=keys/jira/password
+project.plugin.WorkflowStep.jira-get-issue.password-key-storage-path=keys/jira/password
 project.plugin.WorkflowStep.jira-get-issue.url=https://instance.atlassian.net
 ```
 

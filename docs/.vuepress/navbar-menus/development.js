@@ -17,5 +17,9 @@ module.exports = [{
   {
     text: 'Release Notes',
     link: '/history/'
+  },
+  {
+    text: 'Security Advisories',
+    link: '/history/CVEs/'
   }
 ]
