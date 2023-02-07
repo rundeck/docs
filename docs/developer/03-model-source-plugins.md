@@ -106,6 +106,55 @@ Example script-file: nodes.sh
 exit $?
 ```
 
+Example: Connecting to a linux node by password
+
+```yaml .numberLines
+name: My Resource Model Source
+version: 1.0
+rundeckPluginVersion: 1.2
+author: Pagerduty
+date: 01/01/23
+providers:
+    - name: My Linux Source
+        service: ResourceModelSource
+        plugin-type: script
+        script-interpreter: bash -c
+        script-file: script.sh
+        resource-format: resourceyaml
+        config:
+          - type: String
+            name: password
+            title: Password
+            description: Password from key storage.
+          - type: String
+            name: username
+            title: Username
+            description: Username of node.
+          - type: String
+            name: hostname
+            title: Hostname
+            description: Hostname of node.
+```
+
+Example script-file: script.sh
+
+```bash
+#!/bin/bash
+echo "linux-node:
+  description: Linux node
+  hostname: $RD_CONFIG_HOSTNAME
+  nodename: linux-node
+  username: $RD_CONFIG_USERNAME
+  osArch: x86_64
+  osFamily: Linux
+  osName: Ubuntu
+  osVersion: 7.4.1708
+  ssh-port: 22
+  ssh-authentication: password
+  ssh-password-storage-path: $RD_CONFIG_PASSWORD"
+exit $?
+```
+
 ### Provider Script Requirements
 
 The ResourceModelSource service has expectations about the way your provider script behaves.
