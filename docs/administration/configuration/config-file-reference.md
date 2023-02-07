@@ -647,6 +647,10 @@ java -Xms4g -Xmx8g -jar rundeck.war
 It is also possible to reconfigure the default path for files according to [this page](/developer/14-file-upload-plugins.html#about) using the property in this form:
 
 `framework.plugin.FileUpload.filesystem-temp.basePath=/desired/path`
+
+'''NOTE:
+In a clustered mode, it is important to note that this option by default will only upload the file to a single cluster member (whichever server you are uploading the file on). To address this in a better way, it is recommended that you set the desired path to a directory that is shared across all cluster members. This could be and NFS share or something like it. By doing so, when a file is uploaded, it will be available for all cluster members.
+
 :::
 
 ### Job YAML format
