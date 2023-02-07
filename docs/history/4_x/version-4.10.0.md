@@ -12,7 +12,7 @@ feed:
 # 4.10.0 Release Notes
 
 Name: <span style="color: slategray"><span class="glyphicon glyphicon-tent"></span> "Sphinx slategray tent"</span>
-Release Date: PUTADATEHERE
+Release Date: February 9th, 2023
 
 - [Download the Releases](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
@@ -20,19 +20,23 @@ Release Date: PUTADATEHERE
 
 ## Overview
 
-Check out the new features and enhancements for PagerDuty Process Automation (formerly Rundeck Enterprise) and PagerDuty Runbook Automation and Rundeck Community included in this release.
+Check out the new features and enhancements for PagerDuty Process Automation, PagerDuty Runbook Automation, and Rundeck Community included in this release. This release includes enhancements to our AWS plugins. 
+
+View our Twitch stream review of this release live on February 14 at 10 AM Pacific. [Here’s the event link.](https://www.twitch.tv/pagerduty/schedule)
 
 ## Process Automation Updates
 
-> Also includes all Open Source updates from below
-
 ### Highlights
 
-- first highlight
-- second highlight
+**Enhanced AWS Plugin Suite Configuration**: We have simplified how users can authenticate and set up the integration with their AWS account by utilizing the new configuration mechanism [launched in 4.9.0](/history/4_x/version-4.9.0.md). Previously, users had to configure their AWS credentials in multiple places within the product - such as for the [AWS Job Steps](/manual/job-plugins.md), the [EC2 Node Source](/manual/projects/resource-model-sources/aws.md), [SSM Node Executor](/manual/projects/node-execution/aws-ssm.md), and [ECS Node Executor](/manual/projects/node-execution/aws-ecs.md). Now, users can define their AWS credentials in a single place - either at a Project or System level - and use all of the AWS plugins instantly.
+
+This new enhanced configuration method also removes the need to define AWS credentials in the project-properties configuration file. Users can access an easy-to-use graphical user interface for defining the requisite properties for the integration, which simplifies the setup for new users and configuring new Projects. 
+
+![AWS Plugin Config](~@assets/img/relnotes-4.10.0-awsplugingroup.png)
 
 ### Additional Updates
 
+> Also includes all Open Source updates from below
 
 * Improve No Runner Found error messages
 * Upgrade EC2 nodes plugin to support Region setting
@@ -40,7 +44,6 @@ Check out the new features and enhancements for PagerDuty Process Automation (fo
 * Fix: Cannot edit rulesets if the page is too heavy
 * No longer require Description in Jira Plugins
 * Run-1270: Add Plugin Group support for AWS Suite of plugins
-
 
 ## Rundeck Open Source Product Updates
 
@@ -71,27 +74,12 @@ Check out the new features and enhancements for PagerDuty Process Automation (fo
 
 [Here is a link to the full list of public PRs](https://github.com/rundeck/rundeck/pulls?q=is%3Apr+milestone%3A4.10.0+is%3Aclosed)
 
-## Ansible Plugin Updates
-* [Implement ProxySecretBundleCreator to share keys with the runner](https://github.com/rundeck-plugins/ansible-plugin/pull/330)
-
 
 ## Community Contributors
 
-* Jesus Osuna ([Jesus-Osuna-M](https://github.com/Jesus-Osuna-M))
-* Luis Toledo ([ltamaster](https://github.com/ltamaster))
-* Darwis Narvaez ([DarwisNarvaezDev](https://github.com/DarwisNarvaezDev))
-* Leonel Juarez ([L2JE](https://github.com/L2JE))
-* Carlos Eduardo ([carlosrfranco](https://github.com/carlosrfranco))
-* Alberto Hormazabal ([ahormazabal](https://github.com/ahormazabal))
 * Leandro Marques ([leandromqrs](https://github.com/leandromqrs))
-* Christopher McCarroll-Gilbert ([chrismcg14](https://github.com/chrismcg14))
-* Greg Schueler ([gschueler](https://github.com/gschueler))
-* Eric He ([ehe-pd](https://github.com/ehe-pd))
 * KimDongMin ([haracejacob](https://github.com/haracejacob))
-* Antony Velasquez Ruiz ([avelasquezr](https://github.com/avelasquezr))
-* Jason Qualman ([qualman](https://github.com/qualman))
-* Jake Cohen ([jsboak](https://github.com/jsboak))
-*  ([sokato-mdsol](https://github.com/sokato-mdsol))
+* ([sokato-mdsol](https://github.com/sokato-mdsol))
 * Jim Yanko ([jyanko](https://github.com/jyanko))
 
 
