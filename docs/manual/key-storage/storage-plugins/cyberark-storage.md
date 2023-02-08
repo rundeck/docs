@@ -72,7 +72,7 @@ All of the following are required.
 : By default, the storage plugin will be invoked using the full path that is requested. If set to true, the path used when invoking the storage plugin would not include the prefix. It is recommended to set it to true. If set to false, keys will not be displayed unless a directory is specified in Rundeck.
 
 - **baseURL**
-: The base URL for the cyberark account where the secrets should be saved. For example, `https://services-uscentral.skytap.com:18246`.
+: The base URL for the cyberark account where the secrets should be saved. Using the format: `https://[urltoyourserver]:[port]`.
 
 - **username**
 : Username for an account with access to the secrets that will be used in Rundeck.
