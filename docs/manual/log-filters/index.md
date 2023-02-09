@@ -21,7 +21,7 @@ Conversely, as a different example, for workflow steps that need to feed data to
 
 ## Implmentation
 
-Log Filters can be configured at a Job Step, Job, Project, or Globally across all projects and jobs.
+Log Filters can be configured at a Job Step, Job, and some can be configured at the Project, or Globally across all projects and jobs.
 
 ### Job Step Log Filters
 
@@ -39,7 +39,7 @@ Log Filters can be configured to apply to all Job Steps by configuring them on t
 
 ### Project Log Filters
 
-Certain Log Filters can be configured at the Project Level and would apply to all Jobs within that project.  They are configured in the Project Configuration Settings window.
+The [Mask Passwords](/manual/log-filters/mask-passwords.md) and [Highlight Output](/manual/log-filters/highlight-output.md) Log Filters can be configured at the Project Level and would apply to all Jobs within that project.  They are configured in the Project Configuration Settings window.
 
 Open the Project > Click _Project Settings_ > Click _Edit Configuration_ > Click **Edit Configuration File**
 
@@ -56,7 +56,7 @@ project.globalfilter.2.type=highlight-output
 
 ### Application Global Log Filters
 
-Certain Log Filters can be configured in the Framework file to apply to all jobs run within Rundeck/Process Automation.  
+The [Mask Passwords](/manual/log-filters/mask-passwords.md) and [Highlight Output](/manual/log-filters/highlight-output.md) Log Filters can be configured in the Framework file to apply to all jobs run within Rundeck/Process Automation.  
 
 The example below will configure a blue Password Mask filter, and match the word "input" and highlight it yellow for any job run on the server.
 
