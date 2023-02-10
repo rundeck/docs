@@ -5,14 +5,69 @@
 Process Automation integrates with Amazon Web Services (AWS) through a variety of plugins listed below. 
 By integrating Process Automation with AWS, users can provide a centralized, self-service interface for both simple and complex tasks spanning multiple cloud environments:
 
+[comment]: <> (#### Process Automation AWS Plugins)
+
+[comment]: <> (<table>)
+
+[comment]: <> (<tr>)
+
+[comment]: <> (    <td>Key 1</td>)
+
+[comment]: <> (    <td>Value 1</td>)
+
+[comment]: <> (</tr>)
+
+[comment]: <> (<tr>)
+
+[comment]: <> (    <td>Key 2</td>)
+
+[comment]: <> (    <td>Value 2</td>)
+
+[comment]: <> (</tr>)
+
+[comment]: <> (</table>)
+
+[comment]: <> (|Job Step                                                |                    Node Source                          |                   Node Executor                         |                           Log Storage                   |                       Webhook                           |                         Health Check                     |)
+
+[comment]: <> (---------------------------------------------------------|---------------------------------------------------------|---------------------------------------------------------|---------------------------------------------------------|---------------------------------------------------------|---------------------------------------------------------|)
+
+[comment]: <> (|[Athena - Query]&#40;/manual/workflow-steps/amazon-athena&#41;|[EC2]&#40;/manual/projects/resource-model-sources/aws&#41;|[Systems Manager &#40;SSM&#41;]&#40;/manual/projects/node-execution/aws-ssm&#41;)
+
+[comment]: <> (|[CloudWatch - Query logs]&#40;/manual/workflow-steps/aws-cloudwatch&#41;|[ECS & Fargate]&#40;/manual/projects/resource-model-sources/ecs-fargate&#41;|[ECS & Fargate]&#40;/manual/projects/node-execution/aws-ecs&#41;)
+
+[comment]: <> (|[CloudWatch - Create Log Stream]&#40;/manual/workflow-steps/aws&#41;|)
+
+[comment]: <> (|[EC2 - Start]&#40;/manual/workflow-steps/aws&#41;|)
+
+[comment]: <> (|[EC2 - Start]&#40;/manual/workflow-steps/aws&#41;|)
+
+[comment]: <> (|[EC2 - Restart]&#40;/manual/node-steps/aws&#41;|)
+
+[comment]: <> (|[EC2 - Delete]&#40;/manual/node-steps/aws&#41;|)
+
+[comment]: <> (|[EC2 - Create from Snapshot]&#40;/manual/workflow-steps/aws&#41;|)
+
+[comment]: <> (|[EC2 - Update Autoscale Groups]&#40;/manual/workflow-steps/aws&#41;|)
+
+[comment]: <> (|[ECS & Fargate - Execute Command]&#40;/manual/workflow-steps/aws-ecs-fargate&#41;|)
+
+[comment]: <> (|[ECS & Fargate - Stopped Task Errors]&#40;/manual/workflow-steps/aws-ecs-fargate&#41;|)
+
+[comment]: <> (|[ECS & Fargate - Stop Task]&#40;/manual/workflow-steps/aws-ecs-fargate&#41;|)
+
+[comment]: <> (|[VPC - Configure Flow Logs]&#40;/manual/workflow-steps/aws&#41;|)
+
+[comment]: <> (|[VPC - Enable Network Peering]&#40;/manual/workflow-steps/aws&#41;|)
+
+
 ## Setup
 
 Because Process Automation can be self-hosted _and_ has a Cloud offering [Runbook Automation](/about/cloud/#runbook-automation), there are multiple methods for authenticating with
 AWS:
 
-[**EC2 IAM Role**](#option-1-ec2-iam-role)<br>
-[**ECS Task IAM Role**](#option-2-ecs-iam-role)<br>
-[**Access Key & Secret & Key**](#option-3-access-key-secret-key)
+[**EC2 IAM Role**](#option-1-ec2-iam-role) - For Process Automation hosted on EC2<br>
+[**ECS Task IAM Role**](#option-2-ecs-iam-role) - For Process Automation hosted on ECS<br>
+[**Access Key & Secret & Key**](#option-3-access-key-secret-key) - For Process Automation or Runbook Automation
 
 ### Option 1: EC2 IAM Role
 When self-hosting Process Automation on EC2, the recommended method for integrating with AWS is to assign an IAM role to the EC2 virtual-machines:
@@ -34,6 +89,27 @@ When self-hosting Process Automation on EC2, the recommended method for integrat
 10. Click on **Choose IAM Role** and find the IAM Role you created in **Step 6** then click **Update IAM Role**:
 ![Update IAM Role](@assets/img/aws-update-ec2-iam-role.png)
 
+Now that the IAM Role is attached to the EC2, use the following steps to define this authentication method in Process Automation:
+
+**System Level**
+1. Click on the **System Menu** (gear icon) in the upper right.
+2. Click on **System Configuration**.
+3. Navigate to the **AWS** section and click on the **Pencil Icon** in the upper right.
+4. (Optional) Set a default **Region** to be used for all plugins. 
+5. From the **Credential Provider** field dropdown, select **EC2**.
+6. Click **Save** in the lower right:
+![EC2 Credential Provider - System Level](@assets/img/aws-iam-ec2-system-level.png)
+
+**Project Level**
+1. In the specific project, click on **Project Settings** in the lower left.
+2. Click on **Edit Configuration** then click on **Plugins**.
+3. Click on **+PluginGroup**.
+4. Select **AWS** from the list:
+![AWS Select PluginGroup Project Level](@assets/img/aws-select-plugingroup-project-level.png)
+5. (Optional) Select the default **Region** to be used for all plugins within this project.
+6. From the **Credential Provider** field dropdown, select **EC2**.
+7. Click **Save** in the lower right.
+
 ### Option 2: ECS Task IAM Role
 
 When self-hosting Process Automation on ECS, the recommended method for integrating with AWS is to assign an IAM role to the ECS Task Role:
@@ -54,13 +130,54 @@ When self-hosting Process Automation on ECS, the recommended method for integrat
 10. Scroll down to the **Environment** section and select the role you created for the **Task Role** field:
 ![Assign IAM Role](@assets/img/aws-ecs-assign-task-role.png)
 
+Now that the IAM Role is attached to the ECS Task, use the following steps to define this authentication method in Process Automation:
 
+**System Level**
+1. Click on the **System Menu** (gear icon) in the upper right.
+2. Click on **System Configuration**.
+3. Navigate to the **AWS** section and click on the **Pencil Icon** in the upper right.
+4. (Optional) Set a default **Region** to be used for all plugins.
+5. From the **Credential Provider** field dropdown, select **ECS**.
+6. Click **Save** in the lower right:
+   ![EC2 Credential Provider - System Level](@assets/img/aws-iam-ec2-system-level.png)
+
+**Project Level**
+1. In the specific project, click on **Project Settings** in the lower left.
+2. Click on **Edit Configuration** then click on **Plugins**.
+3. Click on **+PluginGroup**.
+4. Select **AWS** from the list:
+   ![AWS Select PluginGroup Project Level](@assets/img/aws-select-plugingroup-project-level.png)
+5. (Optional) Select the default **Region** to be used for all plugins within this project.
+6. From the **Credential Provider** field dropdown, select **ECS**.
+7. Click **Save** in the lower right.
 
 ### Option 3: Access Key & Secret Key
 
 1. Create an AWS Access Key and Secret Key that is associated with an IAM Role, follow [these instructions](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html).
 2. Once the keys have been downloaded, add the Secret Key into Project or System Key Storage using the Password key type, following [these instructions](/manual/system-configs.html#key-storage).
+   :::tip Tip
+   If using a third party credential-store, such as [Hashicorp Vault](/learning/howto/vault-integration), then skip step 2.
+   :::
 
-If configuring credentials for a particular **Project** - thereby giving AWS access to only the plugins in a specific project - use the following instructions.  Otherwise, see below for configuring AWS credentials in the **System Configuration**.
+Now that the AWS Secret Key has been added to Key Storage, use the following steps to configure authentication for either the entire system or for a specific project:
 
-#### AWS Credentials for a Project
+**System Level**
+1. Click on the **System Menu** (gear icon) in the upper right.
+2. Click on **System Configuration**.
+3. Navigate to the **AWS** section and click on the **Pencil Icon** in the upper right.
+4. Click the **Select** button next to **Key Storage Password** and find the AWS Secret that was saved in step 2 above.
+5. Place your AWS Access Key into the **Access Key ID** field.
+6. (Optional) Set a default **Region** to be used for all plugins
+![AWS Secrets Config System Level](@assets/img/aws-secret-system-level.png)
+7. Click **Save** in the lower right.
+
+**Project Level**
+1. In the specific project, click on **Project Settings** in the lower left.
+2. Click on **Edit Configuration** then click on **Plugins**.
+3. Click on **+PluginGroup**.
+4. Select **AWS** from the list:
+   ![AWS Select PluginGroup Project Level](@assets/img/aws-select-plugingroup-project-level.png)
+5. Click the **Select** button next to **Key Storage Password** and find the AWS Secret that was saved in step 2 above.
+6. Place your AWS Access Key into the **Access Key ID** field.
+7. (Optional) Select the default **Region** to be used for all plugins within this project.
+8. Click **Save** in the lower right.
