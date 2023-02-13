@@ -22,7 +22,7 @@ Release Date: February 13th, 2023
 
 Check out the new features and enhancements for PagerDuty Process Automation, PagerDuty Runbook Automation, and Rundeck Community included in this release. This release includes enhancements to our AWS plugins. 
 
-View our Twitch stream review of this release live on February 14 at 10 AM Pacific. [Here’s the event link.](https://www.twitch.tv/pagerduty/schedule)
+View our Twitch stream review of this release live on February 21 at 10 AM Pacific. [Here’s the event link.](https://www.twitch.tv/pagerduty/schedule)
 
 ## Process Automation Updates
 
