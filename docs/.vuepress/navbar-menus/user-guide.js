@@ -8,7 +8,7 @@ module.exports = [
     text: 'Jobs'
   },
   {
-    link: '/manual/plugins',
+    link: '/manual/plugins/plugins-overview',
     text: 'Plugins'
   },
   {

@@ -109,9 +109,13 @@ module.exports = [{
     },
     {
       title: 'Plugins',
-      collapsable: false,
-      path:'/manual/plugins.md',
-      sidebarDepth: 3,
+      collapsable: true,
+      path:'/manual/plugins/plugins-overview',
+      sidebarDepth: 0,
+      children:[
+        '/manual/plugins/aws-plugins-overview.md',
+        '/manual/plugins/pagerduty-plugins-overview.md'
+      ]
     },
     {
       title: 'Nodes',
