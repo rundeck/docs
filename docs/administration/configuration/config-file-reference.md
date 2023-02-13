@@ -406,6 +406,32 @@ References:
 - <https://www.owasp.org/index.php/OWASP_Secure_Headers_Project>
 - <https://content-security-policy.com>
 
+
+### Security HTTP Firewall
+
+The [Spring Security StrictHttpFirewall](https://docs.spring.io/spring-security/site/docs/current/api/org/springframework/security/web/firewall/StrictHttpFirewall.html) allows the Rundeck Application to validate HTTP requests based on their headers, URL and body. Any invalid request will be rejected with a BAD REQUEST 400 error. To enable use the following setting below in framework.properties or Configuration Management.
+
+- `rundeck.security.httpFirewall.enabled`:`true/false`. Default `false`
+
+#### [Host Head Injection Attack](https://portswigger.net/web-security/host-header) Protection
+
+To protect the web application from Host Header Injection attacks it is possible to add a list of trusted hosts:
+
+- `rundeck.security.httpFirewall.allowedHostnames`:`Comma separated hostnames`
+
+The value for this parameter should be a string of comma separated hostnames. E.g.
+ 
+```properties
+rundeck.security.httpFirewall.allowedHostnames = localhost, 192.168.0.1, www.example.com 
+```
+
+The hostname derived from the `grails.serverURL` parameter is always trusted so there is no need to configure it explicitly. 
+
+System Admin needs to configure the trusted hostnames based on the deployment strategy. For example:
+
+1. If the Rundeck Appliation Server is exposed directly through a domain name (e.g. `my.domain.name`) or IP address, the domain name or IP address must be added into the allowedHostName list
+2. If the Rundeck Application Server is exposed through a reverse proxy or load balancer which overwrites the HTTP Host head, then Host head value provided by reserve proxy and load balancer should be added into the allowedHostName list.
+
 ### Local Login Form Visibility
 
 - `rundeck.login.localLogin.enabled`:`true/false`. Default `true`
