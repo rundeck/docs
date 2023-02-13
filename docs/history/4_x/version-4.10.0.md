@@ -1,7 +1,7 @@
 ---
 
 title: "4.10.0 Release Notes"
-date: "2023-02-09"
+date: "2023-02-13"
 image: /images/chevron-logo-red-on-white.png
 feed:
  enable: true
@@ -12,7 +12,7 @@ feed:
 # 4.10.0 Release Notes
 
 Name: <span style="color: slategray"><span class="glyphicon glyphicon-tent"></span> "Sphinx slategray tent"</span>
-Release Date: February 9th, 2023
+Release Date: February 13th, 2023
 
 - [Download the Releases](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
