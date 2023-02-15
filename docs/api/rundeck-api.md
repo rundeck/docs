@@ -5977,7 +5977,7 @@ Project archives may contain "components" which can be imported, beyond the base
 
 Components:
 
-* Project Tours (Enterprise). Name: `project-tours`
+* Project Tours (Enterprise). Name: `tours-manager`
 * Project Schedules (Enterprise). Name: `Schedule Definitions`
 * Project Calendars (Enterprise). Name: `calendars`
 * Node Wizard Nodes (Enterprise): Name: `node-wizard`
