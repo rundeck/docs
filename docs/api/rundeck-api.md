@@ -4946,6 +4946,7 @@ Content of each Log Entry:
 * `command`: Workflow command context string
 * `node`: Node name
 * `stepctx`: The step context such as `1` or `1/2/3`
+* `metadata`: Map of extra metadata for the entry (API v43+)
 
 **Note for API version 5:**
 
