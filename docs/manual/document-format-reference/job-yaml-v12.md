@@ -133,9 +133,9 @@ In addition, these optional entries can be present:
 
 Alternatively the retry can be set with delay between retries:
 
-    * `120` - indicates 120 seconds
-    * `6h 30m` indicates 6 hours and 30 minutes
-    * `${option.delay}` reference to a job option value
+* `120` - indicates 120 seconds
+* `6h 30m` indicates 6 hours and 30 minutes
+* `${option.delay}` reference to a job option value
 
 Example of retry with delay:
 
@@ -706,9 +706,9 @@ Or use a structure of explicit components. All of these are optional, but likely
 
 `dayofmonth`
 
-    `day`
+`day`
 
-    :    day of month value. (mutually exclusive with `weekday`) Numerical values start with 1.
+:    day of month value. (mutually exclusive with `weekday`) Numerical values start with 1.
 
 `weekday`
 
@@ -843,14 +843,14 @@ Deprecated Example:
 
 Defines a notification for the job. You can include any of `onsuccess`, `onfailure`, `onstart`, `onavgduration`, or `onretryablefailure` notifications. Each type of notification can define any of the built in notifications, or define plugin notifications.
 
-`onsuccess`/`onfailure`/`onstart`/`onavgduration`/`onretryablefailure`
-
 ::: tip
 `onavgduration` also requires the following attribute set at the same level as `notification`
 
 `notifyAvgDurationThreshold` - Add or set a threshold value to the avg duration in order to trigger this notification. Options: - percentage => eg: 20% - time delta => eg: +20s, +20 - absolute time => 30s, 5m Time in seconds if you don't specify time units Can include option value references like ${option.avgDurationThreshold}.
 (see example below)
 :::
+
+`onsuccess`/`onfailure`/`onstart`/`onavgduration`/`onretryablefailure`
 
 : A Map containing either or both of:
 
