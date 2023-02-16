@@ -4946,6 +4946,7 @@ Content of each Log Entry:
 * `command`: Workflow command context string
 * `node`: Node name
 * `stepctx`: The step context such as `1` or `1/2/3`
+* `metadata`: Map of extra metadata for the entry (API v43+)
 
 **Note for API version 5:**
 
@@ -5977,7 +5978,7 @@ Project archives may contain "components" which can be imported, beyond the base
 
 Components:
 
-* Project Tours (Enterprise). Name: `project-tours`
+* Project Tours (Enterprise). Name: `tours-manager`
 * Project Schedules (Enterprise). Name: `Schedule Definitions`
 * Project Calendars (Enterprise). Name: `calendars`
 * Node Wizard Nodes (Enterprise): Name: `node-wizard`

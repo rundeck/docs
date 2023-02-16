@@ -34,6 +34,12 @@ Changes introduced by API Version number:
 **Deprecation**
 * API versions below `{{{ apiDepVersion }}}` are *deprecated*.  Clients using earlier versions should upgrade to use `{{{ apiDepVersion }}}` as the minimum version before release `{{{ apiDepRelease }}}` to avoid errors.
 
+**Version 43**:
+
+* Execution log and state ouput returns extended metadata if API v43+ is used.
+    * [`GET /api/43/execution/[ID]/output/state`][/api/V/execution/\[ID\]/output/state] - Execution output with state
+    * [`GET /api/43/execution/[ID]/output`][/api/V/execution/\[ID\]/output] - Get Execution log output
+  
 **Version 42**:
 
 * Endpoints promoted out of incubating status. These endpoints no longer contain `incubating/` in the endpoint URL, and now require API version 42 minimum.

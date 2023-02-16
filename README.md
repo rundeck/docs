@@ -16,6 +16,50 @@ Run this before the first you start the docs site locally.
 npm install
 ```
 
+## API Documentation Guidelines
+
+### To Add a new API version
+
+1. Add appropriate entries to the `docs/api/rundeck-api-versions.md` file, list all changes associated with the new API version.
+2. Update the `docs/.vuepress/setup.js` API_VERSION
+
+### Add a new API Endpoint
+
+Steps:
+
+1. Define the new API version as defined above.
+1. Add the appropriate documentation section in the `docs/api/rundeck-api.md` file
+
+	Each API endpoint has a minimum API version requirement.  Reference this in the endpoint, such as:
+
+	```
+	Request:
+
+	    GET /api/41/enterprise/license
+	```
+
+	Use a capitalized `[PARAM]` for any parameters in the URL itself.
+
+
+2. Add **Reference Link Definitions** to the `docs/api/api-index-links.md`.  This defines a link name that can be referenced elsewhere.
+	
+	```markdown
+	[/api/V/execution/\[ID\]]:/api/rundeck-api.html#execution-info
+	```
+
+	* Replace the API version with the letter `V`.
+	* Escape `[` and `]` characters with a backslash.
+	* Use the full path to the rundeck-api.html doc
+	* Include the Anchor text to your specific documentation section
+
+
+3. Add back links in the "Index" section in the `docs/api/rundeck-api.md` file
+
+	In the "Index" section, add an entry for the new endpoint in alphabetical order.
+
+4. Add back links in the `docs/api/rundeck-api-versions.md` for the new API version.
+
+
 # How to use
 
 ## Run Locally

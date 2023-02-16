@@ -39,6 +39,10 @@ Many SCM systems provide a "clone" url for http[s] in the form: `http[s]://host.
 Many SCM systems provide a "clone" url for ssh in the form: `git@host.xz:path/to/repo.git`, to make use of this in the default git plugin it is necessary to prepend `ssh://` and replace the `:` with a `/` in the url: `ssh://git@host.xz/path/to/repo.git`
 :::
 
+:::warning
+The plugin will try to resolve the origin based on the URL that is provided to it. So if the user provides an invalid URL, it can cause Rundeck to behave erratically (same behavior as in a server command shell). Please make sure to supply a URL that plausibly resolves to the *.git file.
+:::
+
 **Fetch automatically** automatize the fetch command to be called in background.
 
 ### Job Source Files Configuration
