@@ -76,7 +76,7 @@ Last, capture the Directory (tenant) ID to use in configuring Rundeck.
 
 ## Configure Rundeck to use Azure Active Directory for Authentication
 
-Azure Active Directory integration is configured mainly within the `rundeck-config.properties` file.  Below are the required and optional settings to be added. Be sure to substitute your Directory (tenant) ID, Secret ID and Value (Password) that you previously saved. After making the changes to the config file, a server restart is required.
+Azure Active Directory integration is configured mainly within the `rundeck-config.properties` file.  Below are the required and optional settings to be added. Be sure to substitute your DIRECTORY_TENANT_ID, CLIENT_ID and SECRET_VALUE (Password) that you previously saved. After making the changes to the config file, a server restart is required.
 
 ```properties
 # rundeck-config.properties: Azure SSO
@@ -85,7 +85,7 @@ rundeck.sso.loginButton.enabled=true
 rundeck.sso.loginButton.title=Login with Azure
 rundeck.sso.loginButton.url=oauth/azure
 rundeck.security.oauth.azure.autoConfigUrl=https://login.microsoftonline.com/<DIRECTORY_TENANT_ID>/v2.0
-rundeck.security.oauth.azure.clientId=<SECRET_ID>
+rundeck.security.oauth.azure.clientId=<CLIENT_ID>
 rundeck.security.oauth.azure.clientSecret=<SECRET_VALUE>
 rundeck.security.syncOauthUser=true
 
