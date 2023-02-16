@@ -45,6 +45,9 @@
 
 [/api/V/executions/metrics]:/api/rundeck-api.html#execution-query-metrics
 
+[/api/V/feature/]:/api/rundeck-api.html#get-all-system-feature-status
+[/api/V/feature/\[FEATURE\]]:/api/rundeck-api.html#get-a-system-feature-status
+
 [/api/V/job/\[ID\]]:/api/rundeck-api.html#getting-a-job-definition
 [DELETE /api/V/job/\[ID\]]:/api/rundeck-api.html#deleting-a-job-definition
 

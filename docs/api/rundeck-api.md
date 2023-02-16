@@ -7869,9 +7869,9 @@ Return the information whether a specific system feature is enabled or not.
 
 **Request:**
 
-    GET /api/42/feature/[featureName]
+    GET /api/42/feature/[FEATURE]
 
-The `featureName` parameter should be the feature's configuration name without `rundeck.feature.` prefix and `.enabled` suffix. E.g. For configuration name `rundeck.feature.runner.enabled`, the value of `[featureName]` should be `runner`  
+The `FEATURE` parameter should be the feature's configuration name without `rundeck.feature.` prefix and `.enabled` suffix. E.g. For configuration name `rundeck.feature.runner.enabled`, the value of `[FEATURE]` should be `runner`  
 
 **Response:**
 
@@ -7975,8 +7975,12 @@ Content-Type: `application/json`
 
 * `GET` [Execution Query Metrics](#execution-query-metrics)
 
-[/api/V/feature/\[featureName\]][]
-* `GET` [System feature on/off status](#system-feature) 
+[/api/V/feature/\[FEATURE\]][]
+* `GET` [System feature on/off status][/api/V/feature/\[FEATURE\]]
+
+[/api/V/feature/][]
+* `GET` [All System feature on/off statuses][/api/V/feature/]
+
 
 [/api/V/job/\[ID\]][]
 
