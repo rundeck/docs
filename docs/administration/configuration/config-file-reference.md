@@ -429,7 +429,7 @@ The hostname derived from the `grails.serverURL` parameter is always trusted so 
 
 System Admin needs to configure the trusted hostnames based on the deployment strategy. For example:
 
-1. If the Rundeck Appliation Server is exposed directly through a domain name (e.g. `my.domain.name`) or IP address, the domain name or IP address must be added into the allowedHostName list
+1. If the Rundeck Application Server is exposed directly through a domain name (e.g. `my.domain.name`) or IP address, the domain name or IP address must be added into the allowedHostName list
 2. If the Rundeck Application Server is exposed through a reverse proxy or load balancer which overwrites the HTTP Host head, then Host head value provided by reserve proxy and load balancer should be added into the allowedHostName list.
 
 ### Local Login Form Visibility
