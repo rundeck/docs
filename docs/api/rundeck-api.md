@@ -3038,7 +3038,13 @@ Export the job definitions for in XML or YAML formats.
 
 Optional parameters:
 
-* `format` : can be "xml" or "yaml" to specify the output format. Default is "xml"
+* `format` : can be "xml" or "yaml" or "json" (API v44+) to specify the output format. Default is "xml"
+
+Alternately, specify the `Accept` header to indicate the response type:
+
+* XML: `Accept: application/xml`
+* YAML: `Accept: text/yaml`
+* JSON: `Accept: application/json` (API v44+)
 
 The following parameters can also be used to narrow down the result set.
 
@@ -3048,9 +3054,12 @@ The following parameters can also be used to narrow down the result set.
 
 **Response:**
 
-If you specify `format=xml`, then the output will be in [job-xml](/manual/document-format-reference/job-v20.md) format.
+Depending on the requested format:
 
-If you specify `format=yaml`, then the output will be in [job-yaml](/manual/document-format-reference/job-yaml-v12.md) format.
+* XML: [job-xml](/manual/document-format-reference/job-v20.md) format
+* YAML: [job-yaml](/manual/document-format-reference/job-yaml-v12.md) format
+* JSON: [job-json](/manual/document-format-reference/job-json-v44.md) format (API v44+)
+
 
 If an error occurs, then the output will be in XML format, using the common `result` element described in the [Response Format][] section.
 
@@ -3071,10 +3080,11 @@ One of the following:
 * `Content-Type: multipart/form-data` multipart MIME request part named `xmlBatch` containing the content.
 * `Content-Type: application/xml`, request body is the Jobs XML formatted job definition
 * `Content-Type: application/yaml`, request body is the Jobs YAML formatted job definition
+* `Content-Type: application/json`, request body is the Jobs JSON formatted job definition (API v44+)
 
 Optional parameters:
 
-* `fileformat` : can be "xml" or "yaml" to specify the input format, if multipart of form input is sent. Default is "xml"
+* `fileformat` : can be "xml" or "yaml" or "json" (API v44+) to specify the input format, if multipart of form input is sent. Default is "xml"
 * `dupeOption`: A value to indicate the behavior when importing jobs which already exist.  Value can be "skip", "create", or "update". Default is "create".
 * `uuidOption`: Whether to preserve or remove UUIDs from the imported jobs. Allowed values (**since V9**):
     *  `preserve`: Preserve the UUIDs in imported jobs.  This may cause the import to fail if the UUID is already used. (Default value).
@@ -3154,13 +3164,21 @@ Export a single job definition in XML or YAML formats.
 
 Optional parameters:
 
-* `format` : can be "xml" or "yaml" to specify the output format. Default is "xml"
+* `format` : can be "xml" or "yaml" or "json" (API v44+) to specify the output format. Default is "xml"
+
+Alternately, specify the `Accept` header to indicate the response type:
+
+* XML: `Accept: application/xml`
+* YAML: `Accept: text/yaml`
+* JSON: `Accept: application/json` (API v44+)
 
 **Response:**
 
-If you specify `format=xml`, then the output will be in [job-xml](/manual/document-format-reference/job-v20.md) format.
+Depending on the requested format:
 
-If you specify `format=yaml`, then the output will be in [job-yaml](/manual/document-format-reference/job-yaml-v12.md) format.
+* XML: [job-xml](/manual/document-format-reference/job-v20.md) format
+* YAML: [job-yaml](/manual/document-format-reference/job-yaml-v12.md) format
+* JSON: [job-json](/manual/document-format-reference/job-json-v44.md) format (API v44+)
 
 If an error occurs, then the output will be in XML format, using the common `result` element described in the [Response Format][] section.
 

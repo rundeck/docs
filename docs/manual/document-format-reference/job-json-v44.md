@@ -1,10 +1,12 @@
-# JOB-YAML
+# JOB-JSON
 
-Updated February 25, 2011
+Updated February 16, 2023
 
 # NAME
 
-job-yaml-v13 - The 'job' YAML file declares job entries for Rundeck.
+job-json-v44 - The 'job' JSON file declares job entries for Rundeck.
+
+(NOTE: the JSON structure is identical to the Jobs YAML structure.)
 
 ## Loading and unloading
 
@@ -12,26 +14,26 @@ Rundeck job definitions can be dumped and saved to a file via
 rd jobs list command:
 
 ```bash
-rd jobs list -p project --file /tmp/jobs.yaml -F yaml
+rd jobs list -p project --file /tmp/jobs.yaml -F json
 ```
 
 This file can be batch loaded via [rd] jobs load command:
 
 ```bash
-rd jobs load -p project --file /path/to/jobs.yaml -F yaml
+rd jobs load -p project --file /path/to/jobs.yaml -F json
 ```
 
 [rd]: https://rundeck.github.io/rundeck-cli/
 
 ## Structure
 
-The YAML document can contain multiple Job definitions, in a sequence:
+The JSON document is an array, and can contain multiple Job definitions, in a sequence:
 
-```yaml
-- # job 1
-  name: ...
-- # job 2
-  name: ...
+```json
+[
+    {...job1},
+    {...job2}
+]
 ```
 
 Each Job definition is a Map consisting of some required and some optional entries, as listed below.
@@ -71,35 +73,40 @@ See [GUI Customization](/administration/configuration/gui-customization.md).
 
 A minimal job definition example:
 
-```yaml
-- name: job name
-  description: ''
-  loglevel: INFO
-  sequence:
-    commands:
-      - exec: a command
+```json
+[
+    {
+        "name":"basic job",
+        "description":"",
+        "loglevel":"INFO",
+        "sequence":{
+            "commands":[
+                {
+                "exec":"echo hi"
+                }
+            ]
+        }
+    }
+]
 ```
 
-Extended description using yaml 'literal' scalar string format (beginning with a `|`). Make sure each line is indented to the correct level.
+Multiline strings must be escaped in JSON escape format `\n`:
 
-```yaml
-- name: job name
-  description: |
-    Performs a service
-
-    This is <b>html</b>
-    <ul><li>bulleted list</li></ul>
-
-    <a href="/">Top</a>
-
-    1. this is a markdown numbered list
-    2. second item
-
-    [a link](http://example.com)
-  loglevel: INFO
-  sequence:
-    commands:
-      - exec: a command
+```json
+[
+  {
+    "name": "job name",
+    "description": "Performs a service\n\nThis is <b>html</b>\n<ul><li>bulleted list</li></ul>\n\n<a href=\"/\">Top</a>\n\n1. this is a markdown numbered list\n2. second item\n\n[a link](http://example.com)\n",
+    "loglevel": "INFO",
+    "sequence": {
+      "commands": [
+        {
+          "exec": "a command"
+        }
+      ]
+    }
+  }
+]
 ```
 
 In addition, these optional entries can be present:
@@ -139,16 +146,17 @@ Alternatively the retry can be set with delay between retries:
 
 Example of retry with delay:
 
-```yaml
-  retry:
-      delay: 1h1m1s
-      retry: '${option.retry}'
+```json
+  "retry": {
+    "delay": "1h1m1s",
+    "retry": "${option.retry}"
+  }
 ```
 
 Example of simple retry:
 
-```yaml
-  retry: ${option.retry}
+```json
+  "retry": "${option.retry}"
 ```
 
 `loglimit`
@@ -224,27 +232,44 @@ This defines the Workflow options and execution sequence.
 
 Example:
 
-```yaml
-  sequence:
-    keepgoing: true
-    strategy: node-first
-    commands:
-    - exec: ...
-    - script: ...
-      args: ...
-    - scriptfile: ...
-      args:
-    - scripturl: ...
-      args:
-    - jobref:
-        name: jobname
-        group: group
-        args: args
-    - nodeStep: true/false
-      type: plugin-type
-      configuration:
-        key: value
-        another: value
+```json
+"sequence": {
+    "keepgoing": true,
+    "strategy": "node-first",
+    "commands": [
+      {
+        "exec": "..."
+      },
+      {
+        "script": "...",
+        "args": "..."
+      },
+      {
+        "scriptfile": "...",
+        "args": null
+      },
+      {
+        "scripturl": "...",
+        "args": null
+      },
+      {
+        "jobref": {
+          "name": "jobname",
+          "group": "group",
+          "args": "args"
+        }
+      },
+      {
+        "nodeStep": "true/false",
+        "type": "plugin-type",
+        "configuration": {
+          "key": "value",
+          "another": "value"
+        }
+      }
+    ]
+  }
+
 ```
 
 The sequence has these required entries:
@@ -259,7 +284,7 @@ The sequence has these required entries:
 
 `commands`
 
-: This is a Sequence of: \* One or more [Command Definitions](#command)
+: This is an array of one or more [Command Definitions](#command)
 
 ### Command
 
@@ -326,13 +351,11 @@ This [Command](#command) executes the script content specified.
 
 Example:
 
-```yaml
-   - script: |-
-      #!/bin/bash
-
-      echo this is a script
-      echo this is option value: @option.test@
-    args: arguments passed to the script
+```json
+{
+    "script": "#!/bin/bash\n\necho this is a script\necho this is option value: @option.test@",
+    "args": "arguments passed to the script"
+}
 ```
 
 ### Script File Execution Entry
@@ -349,9 +372,11 @@ This [Command](#command) executes a script file stored on the server.
 
 Example:
 
-```yaml
-  - scriptfile: /path/to/script
-    args: arguments to script
+```json
+{
+    "scriptfile": "/path/to/script",
+    "args": "arguments to script"
+}
 ```
 
 ### Script URL Execution Entry
@@ -368,9 +393,11 @@ This [Command](#command) downloads a script file from a URL and executes it.
 
 Example:
 
-```yaml
-  - scripturl: http://example.com/path/to/script
-    args: arguments to script
+```json
+{
+    "scripturl": "http://example.com/path/to/script",
+    "args": "arguments to script"
+}
 ```
 
 ### Script Interpreter
@@ -383,14 +410,12 @@ For `script`, `scriptfile` and `scripturl`, you can optionally declare an "inter
 
 Example:
 
-```yaml
-   - script: |-
-      #!/bin/bash
-
-      echo this is a script
-      echo this is option value: @option.test@
-    args: arguments passed to the script
-    scriptInterpreter: interpreter -flag
+```json
+{
+    "script": "#!/bin/bash\n\necho this is a script\necho this is option value: @option.test@",
+    "args": "arguments passed to the script",
+    "scriptInterpreter": "interpreter -flag"
+}
 ```
 
 This script will then be executed as:
@@ -435,11 +460,14 @@ This [Command](#command) executes another Rundeck Job.
 
 Example:
 
-```yaml
-  - jobref:
-      group: test
-      name: simple job test
-      args: args for the job
+```json
+{
+    "jobref": {
+      "group": "test",
+      "name": "simple job test",
+      "args": "args for the job"
+    }
+  }
 ```
 
 If `nodeStep` is set to "true", then the Job Reference step will operate as a _Node Step_ instead of the
@@ -478,18 +506,24 @@ The `nodefilters` should contain a `filter` entry. The value is a string definin
 
 Example:
 
-```yaml
-- jobref:
-   name: jobname
-   group: group
-   args: args
-   nodefilters:
-      dispatch:
-        threadcount: 1
-        keepgoing: false
-        rankAttribute: rank
-        rankOrder: descending
-      filter: 'tags: web name: web-.* !os-family: windows'
+```json
+{
+    "jobref": {
+        "name": "jobname",
+        "group": "group",
+        "args": "args",
+        "nodefilters": {
+            "dispatch": {
+                "threadcount": 1,
+                "keepgoing": false,
+                "rankAttribute": "rank",
+                "rankOrder": "descending"
+            },
+            "filter": "tags: web name: web-.* !os-family: windows"
+        }
+    }
+}
+
 ```
 
 ### Plugin Step Entry
@@ -510,40 +544,49 @@ This [Command](#command) executes a plugin. There are two types of step plugins:
 
 Example:
 
-```yaml
-  - nodeStep: false
-    type: jenkins-build
-    configuration:
-      job: "${option.job}"
+```json
+{
+    "nodeStep": false,
+    "type": "jenkins-build",
+    "configuration": {
+        "job": "${option.job}"
+    }
+}
 ```
 
 ### Options
 
 Options for a job can be specified with a list of Maps. Each map contains a `name` key with the name of the option, and the content is a map defining the [Option](#option).
 
-```yaml
-  options:
-  - {definition..}
-  - {definition..}
+```json
+  "options":[
+    {definition..},
+    {definition..}
+  ]
 ```
 
 Note: for backwards compatibility, a Map format is also accepted on import:
 
-```yaml
-  options:
-    optname1:
+```json
+  "options":{
+    "optname1":
+      {definition..},
+    "optname2":
       {definition..}
-    optname2:
-      {definition..}
+  }
 ```
 
 ### Option
 
 An option definition requires at least a `name` key to identify it:
 
-```yaml
-  options:
-  - name: myoption
+```json
+"options": [
+    {
+      "name": "myoption"
+    }
+  ]
+
 ```
 
 Optional map entries are:
@@ -618,38 +661,40 @@ The `description` for an Option will be rendered with Markdown in the GUI.
 
 Example:
 
-```yaml
-  test:
-    required: true
-    description: a test option
-    value: dvalue
-    regex: ^[abcd]value$
-    values:
-    - avalue
-    - bvalue
-    - cvalue
-    multivalued: true
-    delimiter: ','
+```json
+{
+  "name": "option1",
+  "required": true,
+  "description": "a test option",
+  "value": "dvalue",
+  "regex": "^[abcd]value$",
+  "values": [
+    "avalue",
+    "bvalue",
+    "cvalue"
+  ],
+  "multivalued": true,
+  "delimiter": ","
+}
 ```
 
 Example using multiple lines for the description:
 
-```yaml
-  test:
-    required: true
-    description: |
-      example option description
-
-      * this content will be rendered
-      * as markdown
-    value: dvalue
-    regex: ^[abcd]value$
-    values:
-    - avalue
-    - bvalue
-    - cvalue
-    multivalued: true
-    delimiter: ','
+```json
+{
+  "name": "option1",
+  "required": true,
+  "description": "example option description\n\n* this content will be rendered\n* as markdown\n",
+  "value": "dvalue",
+  "regex": "^[abcd]value$",
+  "values": [
+    "avalue",
+    "bvalue",
+    "cvalue"
+  ],
+  "multivalued": true,
+  "delimiter": ","
+}
 ```
 
 #### valuesUrl JSON
@@ -720,23 +765,27 @@ Or use a structure of explicit components. All of these are optional, but likely
 
 Example using crontab string:
 
-```yaml
-    schedule:
-      crontab: '0 30 */6 ? Jan Mon *'
+```json
+  "schedule": {
+    "crontab": "0 30 */6 ? Jan Mon *"
+  }
 ```
 
 Example using structure:
 
-```yaml
-    schedule:
-      time:
-        hour: '05'
-        minute: '01'
-        seconds: '0'
-      month: APR,MAR,MAY
-      year: '*'
-      weekday:
-        day: FRI,MON,TUE
+```json
+  "schedule": {
+    "time": {
+      "hour": "05",
+      "minute": "01",
+      "seconds": "0"
+    },
+    "month": "APR,MAR,MAY",
+    "year": "*",
+    "weekday": {
+      "day": "FRI,MON,TUE"
+    }
+  }
 ```
 
 ### Nodefilters
@@ -775,15 +824,18 @@ The `nodefilters` should contain a `filter` entry. The value is a string definin
 
 Example:
 
-```yaml
-  nodefilters:
-    dispatch:
-      threadcount: 1
-      keepgoing: false
-      excludePrecedence: true
-      rankAttribute: rank
-      rankOrder: descending
-    filter: 'tags: web name: web-.* !os-family: windows'
+```json
+"nodefilters": {
+    "dispatch": {
+      "threadcount": 1,
+      "keepgoing": false,
+      "excludePrecedence": true,
+      "rankAttribute": "rank",
+      "rankOrder": "descending"
+    },
+    "filter": "tags: web name: web-.* !os-family: windows"
+  }
+
 ```
 
 **Note:** The `include` and `exclude` map entries are deprecated and will be removed in a later version of Rundeck.
@@ -824,24 +876,30 @@ The `nodefilters` must also contain ONE of `include` or `exclude` filter specifi
 
 Deprecated Example:
 
-```yaml
-  nodefilters:
-    dispatch:
-      threadcount: 1
-      keepgoing: false
-      excludePrecedence: true
-      rankAttribute: rank
-      rankOrder: descending
-    include:
-      tags: web
-      name: web-.*
-    exclude:
-      os-family: windows
+```json
+"nodefilters": {
+    "dispatch": {
+      "threadcount": 1,
+      "keepgoing": false,
+      "excludePrecedence": true,
+      "rankAttribute": "rank",
+      "rankOrder": "descending"
+    },
+    "include": {
+      "tags": "web",
+      "name": "web-.*"
+    },
+    "exclude": {
+      "os-family": "windows"
+    }
+  }
+
 ```
 
 ### Notification
 
 Defines a notification for the job. You can include any of `onsuccess`, `onfailure`, `onstart`, `onavgduration`, or `onretryablefailure` notifications. Each type of notification can define any of the built in notifications, or define plugin notifications.
+
 
 ::: tip
 `onavgduration` also requires the following attribute set at the same level as `notification`
@@ -852,7 +910,7 @@ Defines a notification for the job. You can include any of `onsuccess`, `onfailu
 
 `onsuccess`/`onfailure`/`onstart`/`onavgduration`/`onretryablefailure`
 
-: A Map containing either or both of:
+:  A Map containing either or both of:
 
     `recipients`
 
@@ -874,47 +932,87 @@ Defines a notification for the job. You can include any of `onsuccess`, `onfailu
 
 Example:
 
-```yaml
-  notifyAvgDurationThreshold: '+30'
-  notification:
-    onavgduration:
-    - email:
-        recipients: test@example.com
-        subject: Job Exceeded average duration
-    - plugin:
-      - type: my-plugin
-        configuration:
-          somekey: somevalue
-    onfailure:
-    - email:
-        recipients: 'tom@example.com,shirley@example.com'
-    - email:
-        attachLog: 'true'
-        attachLogInline: true
-        recipients: manager@example.com
-        subject: JOB-FAILURE
-    onretryablefailure:
-    - plugin:
-      - type: my-plugin
-        configuration:
-          somekey: somevalue
-      - type: my-plugin
-        configuration:
-          somekey: somevalue
-    onstart:
-      email:
-        attachLog: true
-        attachLogInFile: true
-        recipients: tom@example.com
-        subject: JOB-STARTED
-    onsuccess:
-    - format: xml
-      httpMethod: post
-      urls: http://server/callback?id=${execution.id}&status=${execution.status}&trigger=${notification.trigger}
-    - plugin:
-      - type: my-plugin
-        configuration:
-          somekey: somevalue
+```json
+  "notifyAvgDurationThreshold": "+30",
+  "notification": {
+    "onavgduration": [
+      {
+        "email": {
+          "recipients": "test@example.com",
+          "subject": "Job Exceeded average duration"
+        }
+      },
+      {
+        "plugin": [
+          {
+            "type": "my-plugin",
+            "configuration": {
+              "somekey": "somevalue"
+            }
+          }
+        ]
+      }
+    ],
+    "onfailure": [
+      {
+        "email": {
+          "recipients": "tom@example.com,shirley@example.com"
+        }
+      },
+      {
+        "email": {
+          "attachLog": "true",
+          "attachLogInline": true,
+          "recipients": "manager@example.com",
+          "subject": "JOB-FAILURE"
+        }
+      }
+    ],
+    "onretryablefailure": [
+      {
+        "plugin": [
+          {
+            "type": "my-plugin",
+            "configuration": {
+              "somekey": "somevalue"
+            }
+          },
+          {
+            "type": "my-plugin",
+            "configuration": {
+              "somekey": "somevalue"
+            }
+          }
+        ]
+      }
+    ],
+    "onstart": {
+      "email": {
+        "attachLog": true,
+        "attachLogInFile": true,
+        "recipients": "tom@example.com",
+        "subject": "JOB-STARTED"
+      }
+    },
+    "onsuccess": [
+      {
+        "format": "xml",
+        "httpMethod": "post",
+        "urls": "http://server/callback?id=${execution.id}&status=${execution.status}&trigger=${notification.trigger}"
+      },
+      {
+        "plugin": [
+          {
+            "type": "my-plugin",
+            "configuration": {
+              "somekey": "somevalue"
+            }
+          }
+        ]
+      }
+    ]
+  }
+
 ```
 
 #### Another valid format
@@ -922,39 +1020,55 @@ If there is no need to have more than one notification of the same type on **any
 
 Example:
 
-```yaml
-  notifyAvgDurationThreshold: '+30'
-  notification:
-    onstart:
-      email:
-        attachLog: 'true'
-        attachLogInFile: true
-        recipients: tom@example.com
-        subject: JOB-STARTED
-    onfailure:
-      email:
-        recipients: 'tom@example.com,shirley@example.com'
-    onsuccess:
-      urls: 'http://server/callback?id=${execution.id}&status=${execution.status}&trigger=${notification.trigger}'
-      httpMethod: post
-      format: xml
-      plugin:
-        type: my-plugin
-        configuration:
-          somekey: somevalue
-    onavgduration:
-      email:
-        recipients: test@example.com
-        subject: Job Exceeded average duration
-      plugin:
-        type: my-plugin
-        configuration:
-          somekey: somevalue
-    onretryablefailure:
-      plugin:
-        type: my-plugin
-        configuration:
-          somekey: somevalue
+```json
+  "notifyAvgDurationThreshold": "+30",
+  "notification": {
+    "onstart": {
+      "email": {
+        "attachLog": "true",
+        "attachLogInFile": true,
+        "recipients": "tom@example.com",
+        "subject": "JOB-STARTED"
+      }
+    },
+    "onfailure": {
+      "email": {
+        "recipients": "tom@example.com,shirley@example.com"
+      }
+    },
+    "onsuccess": {
+      "urls": "http://server/callback?id=${execution.id}&status=${execution.status}&trigger=${notification.trigger}",
+      "httpMethod": "post",
+      "format": "xml",
+      "plugin": {
+        "type": "my-plugin",
+        "configuration": {
+          "somekey": "somevalue"
+        }
+      }
+    },
+    "onavgduration": {
+      "email": {
+        "recipients": "test@example.com",
+        "subject": "Job Exceeded average duration"
+      },
+      "plugin": {
+        "type": "my-plugin",
+        "configuration": {
+          "somekey": "somevalue"
+        }
+      }
+    },
+    "onretryablefailure": {
+      "plugin": {
+        "type": "my-plugin",
+        "configuration": {
+          "somekey": "somevalue"
+        }
+      }
+    }
+  }
+
 ```
 
 - For more information about the Webhook mechanism used, see the chapter [Integration - Webhooks](/manual/04-jobs.md#webhooks).
@@ -973,12 +1087,13 @@ Defines a Orchestrator Plugin that can be used to determine the order in which n
 
 Example:
 
-```yaml
-    orchestrator:
-    configuration:
-      attribute: sort-attr-on-node
-      sort: highest
-    type: orchestrator-highest-lowest-attribute
+```json
+  "orchestrator": null,
+  "configuration": {
+    "attribute": "sort-attr-on-node",
+    "sort": "highest"
+  },
+  "type": "orchestrator-highest-lowest-attribute"
 ```
 
 #### plugin
@@ -999,12 +1114,16 @@ Defines job-scoped plugin entries, such as Execution Lifecycle Plugins.
 
 Example:
 
-```yaml
-  plugins:
-    ExecutionLifecycle:
-      myplugin: {}
-      anotherPlugin:
-        prop1: value
+```json
+"plugins": {
+    "ExecutionLifecycle": {
+      "myplugin": {},
+      "anotherPlugin": {
+        "prop1": "value"
+      }
+    }
+  }
+
 ```
 
 The `plugins` entry contains an entry for each plugin service, such as `ExecutionLifecycle`.
@@ -1015,4 +1134,4 @@ Each provider may contain a configuration Map, or if there is no configuration f
 # SEE ALSO
 
 
-<http://yaml.org/>
+<https://www.json.org/json-en.html>

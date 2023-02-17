@@ -34,6 +34,13 @@ Changes introduced by API Version number:
 **Deprecation**
 * API versions below `{{{ apiDepVersion }}}` are *deprecated*.  Clients using earlier versions should upgrade to use `{{{ apiDepVersion }}}` as the minimum version before release `{{{ apiDepRelease }}}` to avoid errors.
 
+**Version 44**:
+
+* JSON format added to Job Export and Import APIs. Specify `Accept: application/json` or `?format=json` when exporting, and `Content-Type: application/json` or `?format=json` when importing.
+    * [`POST /api/14/project/[PROJECT]/jobs/import`][/api/V/project/\[PROJECT\]/jobs/import] - Job Import
+    * [`GET /api/44/job/[ID]`][/api/V/job/\[ID\]] - Single Job Export
+    * [`GET /api/44/project/[PROJECT]/jobs/export`][/api/V/project/\[PROJECT\]/jobs/export] - Project Jobs Export
+
 **Version 43**:
 
 * Execution log and state ouput returns extended metadata if API v43+ is used.
