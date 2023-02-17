@@ -20,6 +20,10 @@ Release Date: February 13th, 2023
 
 ## Overview
 
+::: warning
+**Warning**: We have identified a bug in v4.10 and Enterprise Runners which prevents jobs correctly dispatching to the configured project Runner. _If you are relying on the Enterprise Runners, please do not upgrade to v4.10.0_ until the problem is resolved, and use v4.9 for the time being. We are working on releasing a v4.10.1 patch with a fix.
+:::
+
 Check out the new features and enhancements for PagerDuty Process Automation, PagerDuty Runbook Automation, and Rundeck Community included in this release. This release includes enhancements to our AWS plugins. 
 
 View our Twitch stream review of this release live on February 21 at 10 AM Pacific. [Here’s the event link.](https://www.twitch.tv/pagerduty/schedule)
