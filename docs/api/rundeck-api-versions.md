@@ -43,7 +43,8 @@ Changes introduced by API Version number:
 **Version 42**:
 
 * Endpoints promoted out of incubating status. These endpoints no longer contain `incubating/` in the endpoint URL, and now require API version 42 minimum.
-    * [`GET /api/42/feature/[featureName]`][/api/42/feature/\[featureName\]] - Query system feature status. 
+    * [`GET /api/42/feature/[FEATURE]`][/api/V/feature/\[FEATURE\]] - Query system feature status for a feature. 
+    * [`GET /api/42/feature/`][/api/V/feature/] - Get all system feature statuses. 
   
 
 **Version 41**:
