@@ -1,7 +1,7 @@
 # 4.5.0 Release Notes
 
 Name: <span style="color: orchid"><span class="glyphicon glyphicon-tower"></span> "Nessie orchid tower"</span>
-Release Date: August 10th, 2022
+Release Date: August 10, 2022
 
 - [Download the Releases](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
