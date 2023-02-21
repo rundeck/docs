@@ -8988,6 +8988,48 @@ Content-Type: `application/json`:
 
 * `GET` [List Installed Plugins][/api/V/plugin/list]
 
+[/api/V/runnerManagement/checkPing/\[TOKEN\]][]
+
+* `GET` [Check a ping response](#check-a-ping-response)
+
+[/api/V/runnerManagement/download/\[TOKEN\]][]
+
+* `GET` [Download runner Jar](#download-runner-jar)
+
+[/api/V/runnerManagement/runner/\[ID\]/ping][]
+
+* `POST` [Ping the runner](#ping-the-runner)
+
+[/api/V/runnerManagement/runner/\[ID\]/regenerateCreds][]
+
+* `POST` [Regenerate credentials for the Runner](#regenerate-credentials-for-the-runner)
+
+[/api/V/runnerManagement/runner/\[ID\]/tags][]
+
+* `GET` [List tags for the Runner](#list-tags-for-the-runner)
+
+[/api/V/runnerManagement/runner/\[RUNNERID\]][]
+
+* `GET` [Get runner information](#get-runner-information)
+* `POST` [Update the runner](#update-the-runner)
+* `DELETE` [Delete the specified runner](#delete-the-specified-runner)
+
+[/api/V/runnerManagement/runners][]
+
+* `GET` [List available runners](#list-available-runners)
+* `POST` [Create a new Runner](#create-a-new-runner)
+
+[/api/V/runnerManagement/tags][]
+
+* `GET` [List all known tags](#list-all-known-tags)
+
+[/api/V/runnerManagement/ui][]
+
+* `GET` [Get UI info for runner management](#get-ui-info-for-runner-management)
+
+[/api/V/runnerTag/searchTags][]
+
+* `GET` [List tags for the Runner](#list-tags-for-the-runner)
 
 
 ### Incubating
