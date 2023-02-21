@@ -7799,6 +7799,7 @@ Deletes a calendar at system level
 
     204 No Content
 
+
 ## License (Enterprise)
 
 ### View License
@@ -7942,6 +7943,605 @@ Content-Type: `application/json`
 }
 
 ```
+
+## Runner Management
+
+### Check a ping response ###
+
+::: enterprise
+:::
+
+**Request:**
+
+    GET /api/42/runnerManagement/checkPing/[TOKEN]
+
+**Response:**
+
+    200
+
+Content-Type: `application/json`:
+ 
+Schema: PingResponse
+```json
+{
+    "type": "object",
+    "properties": {
+        "completed": {
+            "type": "boolean",
+            "description": ""
+        },
+        "message": {
+            "type": "string",
+            "description": ""
+        },
+        "iserror": {
+            "type": "boolean",
+            "description": ""
+        }
+    },
+    "description": ""
+}
+```
+### Download runner Jar ###
+
+::: enterprise
+:::
+
+**Request:**
+
+    GET /api/41/runnerManagement/download/[TOKEN]
+
+**Response:**
+
+    200
+
+Content-Type: `application/java-archive`:
+
+Java Archive
+
+### Ping the runner ###
+
+::: enterprise
+:::
+
+**Request:**
+
+    POST /api/41/runnerManagement/runner/[ID]/ping
+
+**Response:**
+
+    200
+
+Content-Type: `application/json`:
+ 
+Schema: PingTokenResponse
+```json
+{
+    "type": "object",
+    "properties": {
+        "pingToken": {
+            "type": "string",
+            "description": ""
+        }
+    },
+    "description": ""
+}
+```
+### Regenerate credentials for the Runner ###
+
+::: enterprise
+:::
+
+**Request:**
+
+    POST /api/42/runnerManagement/runner/[ID]/regenerateCreds
+
+**Response:**
+
+    200
+
+Content-Type: `application/json`:
+ 
+Schema: RegenRunnerCredResponse
+```json
+{
+    "type": "object",
+    "properties": {
+        "runnerId": {
+            "type": "string",
+            "description": ""
+        },
+        "token": {
+            "type": "string",
+            "description": "Runner authentication token"
+        },
+        "downloadTk": {
+            "type": "string",
+            "description": "Runner package download token"
+        }
+    },
+    "description": ""
+}
+```
+### List tags for the Runner ###
+
+::: enterprise
+:::
+
+**Request:**
+
+    GET /api/42/runnerManagement/runner/[ID]/tags
+
+**Response:**
+
+    200
+
+Content-Type: `application/json`:
+ 
+```json
+{
+    "type": "array",
+    "items": {
+        "type": "string"
+    }
+}
+```
+### Get runner information ###
+
+::: enterprise
+:::
+
+**Request:**
+
+    GET /api/41/runnerManagement/runner/[RUNNERID]
+
+**Response:**
+
+    200
+
+Content-Type: `application/json`:
+ 
+Schema: RunnerInfo
+```json
+{
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "string",
+            "description": ""
+        },
+        "name": {
+            "type": "string",
+            "description": ""
+        },
+        "description": {
+            "type": "string",
+            "description": ""
+        },
+        "status": {
+            "type": "string",
+            "description": ""
+        },
+        "runnerVersion": {
+            "type": "string",
+            "description": ""
+        },
+        "projectAssociations": {
+            "allOf": [
+                {
+                    "type": "object",
+                    "properties": {
+                        "projectNodeFilters": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "string"
+                            },
+                            "description": ""
+                        }
+                    },
+                    "description": ""
+                },
+                {
+                    "description": ""
+                }
+            ]
+        },
+        "createTime": {
+            "type": "string",
+            "description": "",
+            "format": "date-time"
+        },
+        "lastCheckin": {
+            "type": "string",
+            "description": ""
+        },
+        "lastCheckinAlert": {
+            "type": "boolean",
+            "description": ""
+        },
+        "runningOperations": {
+            "type": "integer",
+            "description": "",
+            "format": "int32"
+        },
+        "uptime": {
+            "type": "integer",
+            "description": "",
+            "format": "int64"
+        },
+        "tagNames": {
+            "type": "array",
+            "description": "",
+            "items": {
+                "type": "string"
+            }
+        }
+    },
+    "description": ""
+}
+```
+### Update the runner ###
+
+::: enterprise
+:::
+
+**Request:**
+
+    POST /api/41/runnerManagement/runner/[RUNNERID]
+
+**Response:**
+
+    200
+
+Content-Type: `application/json`:
+ 
+Schema: RunnerInfo
+```json
+{
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "string",
+            "description": ""
+        },
+        "name": {
+            "type": "string",
+            "description": ""
+        },
+        "description": {
+            "type": "string",
+            "description": ""
+        },
+        "status": {
+            "type": "string",
+            "description": ""
+        },
+        "runnerVersion": {
+            "type": "string",
+            "description": ""
+        },
+        "projectAssociations": {
+            "allOf": [
+                {
+                    "type": "object",
+                    "properties": {
+                        "projectNodeFilters": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "string"
+                            },
+                            "description": ""
+                        }
+                    },
+                    "description": ""
+                },
+                {
+                    "description": ""
+                }
+            ]
+        },
+        "createTime": {
+            "type": "string",
+            "description": "",
+            "format": "date-time"
+        },
+        "lastCheckin": {
+            "type": "string",
+            "description": ""
+        },
+        "lastCheckinAlert": {
+            "type": "boolean",
+            "description": ""
+        },
+        "runningOperations": {
+            "type": "integer",
+            "description": "",
+            "format": "int32"
+        },
+        "uptime": {
+            "type": "integer",
+            "description": "",
+            "format": "int64"
+        },
+        "tagNames": {
+            "type": "array",
+            "description": "",
+            "items": {
+                "type": "string"
+            }
+        }
+    },
+    "description": ""
+}
+```
+### Delete the specified runner ###
+
+::: enterprise
+:::
+
+**Request:**
+
+    DELETE /api/41/runnerManagement/runner/[RUNNERID]
+
+**Response:**
+
+    204
+
+### List available runners ###
+
+::: enterprise
+:::
+
+**Request:**
+
+    GET /api/41/runnerManagement/runners
+
+**Response:**
+
+    200
+
+Content-Type: `application/json`:
+ 
+Schema: RunnerList
+```json
+{
+    "type": "object",
+    "properties": {
+        "runners": {
+            "type": "array",
+            "description": "",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": ""
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": ""
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": ""
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": ""
+                    },
+                    "version": {
+                        "type": "string",
+                        "description": ""
+                    },
+                    "associatedProjects": {
+                        "type": "integer",
+                        "description": "",
+                        "format": "int32"
+                    },
+                    "lastCheckin": {
+                        "type": "string",
+                        "description": ""
+                    },
+                    "lastCheckinAlert": {
+                        "type": "boolean",
+                        "description": ""
+                    },
+                    "selected": {
+                        "type": "boolean",
+                        "description": ""
+                    },
+                    "tagNames": {
+                        "type": "array",
+                        "description": "",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "description": ""
+            }
+        }
+    },
+    "description": ""
+}
+```
+### Create a new Runner ###
+
+::: enterprise
+:::
+
+**Request:**
+
+    POST /api/42/runnerManagement/runners
+
+**Response:**
+
+    200
+
+Content-Type: `application/json`:
+ 
+Schema: NewRunnerResponse
+```json
+{
+    "type": "object",
+    "properties": {
+        "name": {
+            "type": "string",
+            "description": ""
+        },
+        "description": {
+            "type": "string",
+            "description": ""
+        },
+        "projectAssociations": {
+            "type": "object",
+            "additionalProperties": {
+                "type": "string"
+            },
+            "description": ""
+        }
+    },
+    "description": ""
+}
+```
+    400
+
+Content-Type: `application/json`:
+ 
+Schema: ErrorResponse
+```json
+{
+    "type": "object",
+    "properties": {
+        "apiVersion": {
+            "type": "integer",
+            "description": "",
+            "format": "int32"
+        },
+        "errorMessage": {
+            "type": "string",
+            "description": ""
+        },
+        "errorCode": {
+            "type": "string",
+            "description": ""
+        },
+        "error": {
+            "type": "string",
+            "description": ""
+        },
+        "apiversion": {
+            "type": "integer",
+            "description": "",
+            "format": "int32"
+        },
+        "message": {
+            "type": "string",
+            "description": ""
+        }
+    },
+    "description": ""
+}
+```
+### List all known tags ###
+
+::: enterprise
+:::
+
+**Request:**
+
+    GET /api/42/runnerManagement/tags
+
+**Response:**
+
+    200
+
+Content-Type: `application/json`:
+ 
+Schema: TagCountResponse
+```json
+{
+    "type": "object",
+    "properties": {
+        "tags": {
+            "type": "object",
+            "additionalProperties": {
+                "type": "integer",
+                "format": "int32"
+            },
+            "description": ""
+        }
+    },
+    "description": ""
+}
+```
+### Get UI info for runner management ###
+
+::: enterprise
+:::
+
+**Request:**
+
+    GET /api/42/runnerManagement/ui
+
+**Response:**
+
+    200
+
+Content-Type: `application/json`:
+ 
+Schema: UiData
+```json
+{
+    "type": "object",
+    "properties": {
+        "projectCount": {
+            "type": "integer",
+            "description": "",
+            "format": "int32"
+        },
+        "allowedActions": {
+            "type": "array",
+            "description": "",
+            "items": {
+                "type": "string"
+            }
+        },
+        "features": {
+            "type": "array",
+            "description": "",
+            "items": {
+                "type": "string"
+            }
+        }
+    },
+    "description": ""
+}
+```
+### List tags for the Runner ###
+
+::: enterprise
+:::
+
+**Request:**
+
+    GET /api/42/runnerTag/searchTags
+
+**Response:**
+
+    200
+
+Content-Type: `application/json`:
+ 
+```json
+{
+    "type": "array",
+    "items": {
+        "type": "string"
+    }
+}
+```
+
 
 ## Index
 
