@@ -1,7 +1,7 @@
 # 4.0.0 Release Notes
 
 Name: <span style="color: brown"><span class="glyphicon glyphicon-apple"></span> "Kraken brown apple"</span>
-Release Date: March 22nd, 2022
+Release Date: March 22, 2022
 
 - [Download Rundeck](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)

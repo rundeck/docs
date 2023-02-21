@@ -1,6 +1,6 @@
-# Health Checks
+# Load Balancer - Cluster Health Checks
 
-### Health Checks(3.3.4+)
+### Cluster Health Checks(3.3.4+)
 The web load balancer serving traffic to the Rundeck instance should be configured with a health check.
 
 The path for unauthenticated health checks is `/health`.
@@ -15,7 +15,7 @@ node2.mydomain.com:4440/health
 
 This endpoint is enabled by default but can be disabled, see [Configuration](/administration/configuration/config-file-reference.html#load-balancer-health-endpoint).
 
-### Authenticated Health Checks
+### Authenticated Cluster Health Checks
 It is recommend to use unauthenticated health checks to reduce security exposure from load-balancer configurations.  If you wish to use authenticated checks please ensure you are using the least privilege principle.
 
 Please reference the documentation for more information about [API Token Authorization Roles](/administration/security/authorization.html#api-token-authorization-roles).

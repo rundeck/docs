@@ -1,7 +1,7 @@
 # 4.1.0 Release Notes
 
 Name: <span style="color: olivedrab"><span class="glyphicon glyphicon-camera"></span> "Kaiju olivedrab camera"</span>
-Release Date: April 13th, 2022
+Release Date: April 13, 2022
 
 - [Download Rundeck](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)

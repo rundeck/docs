@@ -12,7 +12,7 @@ feed:
 # 4.7.0 Release Notes
 
 Name: <span style="color: yellowgreen"><span class="glyphicon glyphicon-gift"></span> "Orc yellowgreen gift"</span>
-Release Date: October 6th, 2022
+Release Date: October 6, 2022
 
 - [Download the Releases](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)

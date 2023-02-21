@@ -15,6 +15,8 @@ Don't use the H2 embedded database for anything except testing and non-productio
 
 Use an external database service like MariaDB, Mysql, Postgres, Amazon Aurora or Oracle.
 
+> Note: For concerns about [CVE-2022-45868](/history/CVEs/CVE-2022-45868.md) please see [the write up why Rundeck is not vulnerable](/history/CVEs/CVE-2022-45868.md).
+
 ## Database Architecture and Performance Notes
 
 Process Automation supports only one active DB instance serving queries to the Enterprise Cluster. PAOP only supports reading from and writing to a single database instance from all servers in the same cluster. For optimal performance the Process Automation Enterprise Cluster and database instance need to be connected on low latency network (<40ms latency).
