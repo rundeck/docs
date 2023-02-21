@@ -20,11 +20,13 @@ Release Date: February 21, 2023
 
 ## Overview
 
-This release addresses an issue in 4.10.0 which prevented jobs from correctly dispatching to a configured project Runner.  We have also updated some dependency packages in the Runner software to address findings by some security scans.  The following CVEs are fixed with the Runner version in this release: [CVE-2022-42004](https://nvd.nist.gov/vuln/detail/CVE-2022-42004), [CVE-2022-42003](https://nvd.nist.gov/vuln/detail/CVE-2022-42003), [CVE-2022-41881](https://nvd.nist.gov/vuln/detail/CVE-2022-41881).
+This is a minor release that addresses some bugs and CVEs. 
 
-In certain enviornments [CVE-2022-45198](https://nvd.nist.gov/vuln/detail/CVE-2022-45198) and [CVE-2022-45199](https://nvd.nist.gov/vuln/detail/CVE-2022-45199) may be found.  These are false positives and the package is not used in the Enterprise Runner software.
+Highlights:
 
-This release also fixes an issue where [Results Data](/manual/execution-lifecycle/job-retry-failed-nodes.md) and [ROI Metric](/manual/execution-lifecycle/roi-metrics.md) data were not showing properly in the Output logs.
+* We fixed an issue in 4.10.0 which prevented jobs from correctly dispatching to a configured project Runner. 
+*  Additionally we updated some dependency packages in the Runner software to address findings by some security scans.  The following CVEs are fixed with the Runner version in this release: [CVE-2022-42004](https://nvd.nist.gov/vuln/detail/CVE-2022-42004), [CVE-2022-42003](https://nvd.nist.gov/vuln/detail/CVE-2022-42003), and [CVE-2022-41881](https://nvd.nist.gov/vuln/detail/CVE-2022-41881). In certain enviornments [CVE-2022-45198](https://nvd.nist.gov/vuln/detail/CVE-2022-45198) and [CVE-2022-45199](https://nvd.nist.gov/vuln/detail/CVE-2022-45199) may be found.  These are false positives and the package is not used in the Enterprise Runner software.
+* This release also fixes an issue where [Results Data](/manual/execution-lifecycle/job-retry-failed-nodes.md) and [ROI Metric](/manual/execution-lifecycle/roi-metrics.md) data were not showing properly in the Output logs.
 
 
 ## Rundeck Open Source Product Updates
