@@ -1,7 +1,7 @@
 # 4.3.0 Release Notes
 
 Name: <span style="color: turquoise"><span class="glyphicon glyphicon-lamp"></span> "Manticore turquoise lamp"</span>
-Release Date: June 1st, 2022
+Release Date: June 1, 2022
 
 - [Download Rundeck](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)

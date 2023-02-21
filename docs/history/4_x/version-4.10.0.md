@@ -12,7 +12,7 @@ feed:
 # 4.10.0 Release Notes
 
 Name: <span style="color: slategray"><span class="glyphicon glyphicon-tent"></span> "Sphinx slategray tent"</span>
-Release Date: February 13th, 2023
+Release Date: February 13, 2023
 
 - [Download the Releases](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
@@ -21,7 +21,7 @@ Release Date: February 13th, 2023
 ## Overview
 
 ::: warning
-**Warning**: We have identified a bug in v4.10 and Enterprise Runners which prevents jobs correctly dispatching to the configured project Runner. _If you are relying on the Enterprise Runners, please do not upgrade to v4.10.0_ until the problem is resolved, and use v4.9 for the time being. We are working on releasing a v4.10.1 patch with a fix.
+**Warning**: We have identified a bug in v4.10 and Enterprise Runners which prevents jobs correctly dispatching to the configured project Runner. _We recommend that all customers [upgrade to v4.10.1](version-4.10.1.md)_. 
 :::
 
 Check out the new features and enhancements for PagerDuty Process Automation, PagerDuty Runbook Automation, and Rundeck Community included in this release. This release includes enhancements to our AWS plugins. 
