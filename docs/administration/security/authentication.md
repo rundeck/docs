@@ -298,7 +298,8 @@ ldap {
       reportStatistics="true"
       timeoutRead="10000"
       timeoutConnect="20000"
-      nestedGroups="false";
+      nestedGroups="false",
+	  rolePagination="false";
 };
 ```
 
@@ -387,6 +388,9 @@ The `JettyCachingLdapLoginModule` has these configuration properties:
 
 `nestedGroups`
 : "true/false" - Default: false. If true, will resolve all nested groups for authenticated users. For the first user to login after a fresh start it will take a couple of seconds longer, this is when the cache of all nested groups is built. This will happen as often as the cache is refreshed. Uses the cacheDurationMillis for cache timeout. The groups recognized as nested will depend on the `roleBaseDn`, any other role outside of this will not be taken.
+
+`rolePagination`
+: "true/false" - Default: false. If you are using active directory roles paginated, you would need to set this value as "true", otherwise you would only get the roles on the first page.
 
 The `JettyCombinedLdapLoginModule` is extends the previous module, so is configured in almost exactly the same way, but adds these additional configuration options:
 
