@@ -298,8 +298,8 @@ ldap {
       reportStatistics="true"
       timeoutRead="10000"
       timeoutConnect="20000"
-      nestedGroups="false",
-	  rolePagination="false";
+      nestedGroups="false"
+      rolePagination="false";
 };
 ```
 
