@@ -7957,29 +7957,13 @@ Content-Type: `application/json`
 
 **Response:**
 
-    200
-
 Content-Type: `application/json`:
  
-Schema: PingResponse
 ```json
 {
-    "type": "object",
-    "properties": {
-        "completed": {
-            "type": "boolean",
-            "description": ""
-        },
-        "message": {
-            "type": "string",
-            "description": ""
-        },
-        "iserror": {
-            "type": "boolean",
-            "description": ""
-        }
-    },
-    "description": ""
+  "completed": true,
+  "message": "Task completed successfully",
+  "iserror": false
 }
 ```
 ### Download runner Jar ###
@@ -7993,11 +7977,7 @@ Schema: PingResponse
 
 **Response:**
 
-    200
-
-Content-Type: `application/java-archive`:
-
-Java Archive
+Content-Type: `application/java-archive`: Java Archive
 
 ### Ping the runner ###
 
@@ -8010,21 +7990,11 @@ Java Archive
 
 **Response:**
 
-    200
-
 Content-Type: `application/json`:
  
-Schema: PingTokenResponse
 ```json
 {
-    "type": "object",
-    "properties": {
-        "pingToken": {
-            "type": "string",
-            "description": ""
-        }
-    },
-    "description": ""
+  "pingToken": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 }
 ```
 ### Regenerate credentials for the Runner ###
@@ -8038,31 +8008,20 @@ Schema: PingTokenResponse
 
 **Response:**
 
-    200
-
 Content-Type: `application/json`:
  
-Schema: RegenRunnerCredResponse
 ```json
 {
-    "type": "object",
-    "properties": {
-        "runnerId": {
-            "type": "string",
-            "description": ""
-        },
-        "token": {
-            "type": "string",
-            "description": "Runner authentication token"
-        },
-        "downloadTk": {
-            "type": "string",
-            "description": "Runner package download token"
-        }
-    },
-    "description": ""
+  "runnerId": "runner123",
+  "token": "cdb9ff25-4606-4f0b-bf72-119263a25677",
+  "downloadTk": "2804658a-b9a1-869d-08f7-8f30a9455995"
 }
 ```
+
+- `token`: Runner authentication token
+- `downloadTk`: Runner package download token
+
+
 ### List tags for the Runner ###
 
 ::: enterprise
@@ -8074,17 +8033,10 @@ Schema: RegenRunnerCredResponse
 
 **Response:**
 
-    200
-
 Content-Type: `application/json`:
  
 ```json
-{
-    "type": "array",
-    "items": {
-        "type": "string"
-    }
-}
+[  "apple",  "banana",  "cherry",  "date"]
 ```
 ### Get runner information ###
 
@@ -8097,87 +8049,31 @@ Content-Type: `application/json`:
 
 **Response:**
 
-    200
-
 Content-Type: `application/json`:
  
-Schema: RunnerInfo
 ```json
 {
-    "type": "object",
-    "properties": {
-        "id": {
-            "type": "string",
-            "description": ""
-        },
-        "name": {
-            "type": "string",
-            "description": ""
-        },
-        "description": {
-            "type": "string",
-            "description": ""
-        },
-        "status": {
-            "type": "string",
-            "description": ""
-        },
-        "runnerVersion": {
-            "type": "string",
-            "description": ""
-        },
-        "projectAssociations": {
-            "allOf": [
-                {
-                    "type": "object",
-                    "properties": {
-                        "projectNodeFilters": {
-                            "type": "object",
-                            "additionalProperties": {
-                                "type": "string"
-                            },
-                            "description": ""
-                        }
-                    },
-                    "description": ""
-                },
-                {
-                    "description": ""
-                }
-            ]
-        },
-        "createTime": {
-            "type": "string",
-            "description": "",
-            "format": "date-time"
-        },
-        "lastCheckin": {
-            "type": "string",
-            "description": ""
-        },
-        "lastCheckinAlert": {
-            "type": "boolean",
-            "description": ""
-        },
-        "runningOperations": {
-            "type": "integer",
-            "description": "",
-            "format": "int32"
-        },
-        "uptime": {
-            "type": "integer",
-            "description": "",
-            "format": "int64"
-        },
-        "tagNames": {
-            "type": "array",
-            "description": "",
-            "items": {
-                "type": "string"
-            }
-        }
-    },
-    "description": ""
+  "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "name": "My Runner",
+  "description": "A runner for running CI/CD pipelines",
+  "status": "Healthy",
+  "runnerVersion": "0.1.34",
+  "projectAssociations": {
+    "projectNodeFilters": {
+      "project1": ".*",
+      "project2": ".*"
+    }
+  },
+  "createTime": "2022-03-01T12:34:56Z",
+  "lastCheckin": "2 seconds ago",
+  "lastCheckinAlert": false,
+  "runningOperations": 5,
+  "uptime": 86400,
+  "tagNames": [
+    "runner",
+    "pipeline",
+    "automation"
+  ]
 }
 ```
 ### Update the runner ###
@@ -8189,89 +8085,50 @@ Schema: RunnerInfo
 
     POST /api/41/runnerManagement/runner/[RUNNERID]
 
-**Response:**
+Request Content:
+`Content-Type: application/json`
 
-    200
+```json
+{
+  "runnerId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "name": "My Runner",
+  "description": "A runner for running CI/CD pipelines",
+  "assignedProjects": {
+    "project1": ".*",
+    "project2": ".*"
+  },
+  "tagNames": "runner, pipeline, automation"
+}
+
+```
+
+**Response:**
 
 Content-Type: `application/json`:
  
-Schema: RunnerInfo
 ```json
 {
-    "type": "object",
-    "properties": {
-        "id": {
-            "type": "string",
-            "description": ""
-        },
-        "name": {
-            "type": "string",
-            "description": ""
-        },
-        "description": {
-            "type": "string",
-            "description": ""
-        },
-        "status": {
-            "type": "string",
-            "description": ""
-        },
-        "runnerVersion": {
-            "type": "string",
-            "description": ""
-        },
-        "projectAssociations": {
-            "allOf": [
-                {
-                    "type": "object",
-                    "properties": {
-                        "projectNodeFilters": {
-                            "type": "object",
-                            "additionalProperties": {
-                                "type": "string"
-                            },
-                            "description": ""
-                        }
-                    },
-                    "description": ""
-                },
-                {
-                    "description": ""
-                }
-            ]
-        },
-        "createTime": {
-            "type": "string",
-            "description": "",
-            "format": "date-time"
-        },
-        "lastCheckin": {
-            "type": "string",
-            "description": ""
-        },
-        "lastCheckinAlert": {
-            "type": "boolean",
-            "description": ""
-        },
-        "runningOperations": {
-            "type": "integer",
-            "description": "",
-            "format": "int32"
-        },
-        "uptime": {
-            "type": "integer",
-            "description": "",
-            "format": "int64"
-        },
-        "tagNames": {
-            "type": "array",
-            "description": "",
-            "items": {
-                "type": "string"
-            }
-        }
-    },
-    "description": ""
+  "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "name": "My Runner",
+  "description": "A runner for running CI/CD pipelines",
+  "status": "Healthy",
+  "runnerVersion": "0.1.34",
+  "projectAssociations": {
+    "projectNodeFilters": {
+      "project1": ".*",
+      "project2": ".*"
+    }
+  },
+  "createTime": "2022-03-01T12:34:56Z",
+  "lastCheckin": "2 seconds ago",
+  "lastCheckinAlert": false,
+  "runningOperations": 5,
+  "uptime": 86400,
+  "tagNames": [
+    "runner",
+    "pipeline",
+    "automation"
+  ]
 }
 ```
 ### Delete the specified runner ###
@@ -8298,71 +8155,43 @@ Schema: RunnerInfo
 
 **Response:**
 
-    200
-
 Content-Type: `application/json`:
  
 Schema: RunnerList
 ```json
 {
-    "type": "object",
-    "properties": {
-        "runners": {
-            "type": "array",
-            "description": "",
-            "items": {
-                "type": "object",
-                "properties": {
-                    "id": {
-                        "type": "string",
-                        "description": ""
-                    },
-                    "name": {
-                        "type": "string",
-                        "description": ""
-                    },
-                    "description": {
-                        "type": "string",
-                        "description": ""
-                    },
-                    "status": {
-                        "type": "string",
-                        "description": ""
-                    },
-                    "version": {
-                        "type": "string",
-                        "description": ""
-                    },
-                    "associatedProjects": {
-                        "type": "integer",
-                        "description": "",
-                        "format": "int32"
-                    },
-                    "lastCheckin": {
-                        "type": "string",
-                        "description": ""
-                    },
-                    "lastCheckinAlert": {
-                        "type": "boolean",
-                        "description": ""
-                    },
-                    "selected": {
-                        "type": "boolean",
-                        "description": ""
-                    },
-                    "tagNames": {
-                        "type": "array",
-                        "description": "",
-                        "items": {
-                            "type": "string"
-                        }
-                    }
-                },
-                "description": ""
-            }
-        }
+  "runners": [
+    {
+      "id": "runner1",
+      "name": "My Runner",
+      "description": "A runner for running CI/CD pipelines",
+      "status": "Healthy",
+      "version": "1.2.3",
+      "associatedProjects": 2,
+      "lastCheckin": "2022-02-28T12:34:56Z",
+      "lastCheckinAlert": false,
+      "selected": true,
+      "tagNames": [
+        "runner",
+        "ci/cd"
+      ]
     },
-    "description": ""
+    {
+      "id": "runner2",
+      "name": "Another Runner",
+      "description": "A runner for running builds",
+      "status": "Healthy",
+      "version": "1.2.3",
+      "associatedProjects": 1,
+      "lastCheckin": "2022-02-27T01:23:45Z",
+      "lastCheckinAlert": true,
+      "selected": false,
+      "tagNames": [
+        "runner",
+        "builds"
+      ]
+    }
+  ]
 }
 ```
 ### Create a new Runner ###
@@ -8374,73 +8203,50 @@ Schema: RunnerList
 
     POST /api/42/runnerManagement/runners
 
-**Response:**
-
-    200
-
 Content-Type: `application/json`:
- 
-Schema: NewRunnerResponse
 ```json
 {
-    "type": "object",
-    "properties": {
-        "name": {
-            "type": "string",
-            "description": ""
-        },
-        "description": {
-            "type": "string",
-            "description": ""
-        },
-        "projectAssociations": {
-            "type": "object",
-            "additionalProperties": {
-                "type": "string"
-            },
-            "description": ""
-        }
-    },
-    "description": ""
+  "name": "My Runner",
+  "description": "A runner for running CI/CD pipelines",
+  "assignedProjects": {
+    "project1": ".*",
+    "project2": ".*"
+  },
+  "tagNames": "runner, pipeline, automation"
 }
 ```
-    400
+
+
+**Response:**
 
 Content-Type: `application/json`:
  
-Schema: ErrorResponse
 ```json
 {
-    "type": "object",
-    "properties": {
-        "apiVersion": {
-            "type": "integer",
-            "description": "",
-            "format": "int32"
-        },
-        "errorMessage": {
-            "type": "string",
-            "description": ""
-        },
-        "errorCode": {
-            "type": "string",
-            "description": ""
-        },
-        "error": {
-            "type": "string",
-            "description": ""
-        },
-        "apiversion": {
-            "type": "integer",
-            "description": "",
-            "format": "int32"
-        },
-        "message": {
-            "type": "string",
-            "description": ""
-        }
-    },
-    "description": ""
+  "runnerId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "name": "My New Runner",
+  "description": "A project for building and testing software",
+  "projectAssociations": {
+    "project1": ".*",
+    "project2": ".*"
+  },
+  "token": "cdb9ff25-4606-4f0b-bf72-119263a25677",
+  "downloadTk": "2804658a-b9a1-869d-08f7-8f30a9455995"
+}
+```
+
+or error
+
+Content-Type: `application/json`:
+ 
+```json
+{
+  "apiVersion": 41,
+  "errorMessage": "An error occurred while processing the request",
+  "errorCode": "400",
+  "error": "Bad Request",
+  "apiversion": 1,
+  "message": ""
 }
 ```
 ### List all known tags ###
@@ -8454,25 +8260,15 @@ Schema: ErrorResponse
 
 **Response:**
 
-    200
-
 Content-Type: `application/json`:
  
-Schema: TagCountResponse
 ```json
 {
-    "type": "object",
-    "properties": {
-        "tags": {
-            "type": "object",
-            "additionalProperties": {
-                "type": "integer",
-                "format": "int32"
-            },
-            "description": ""
-        }
-    },
-    "description": ""
+  "tags": {
+    "tag1": 3,
+    "tag2": 5,
+    "tag3": 7
+  }
 }
 ```
 ### Get UI info for runner management ###
@@ -8486,36 +8282,20 @@ Schema: TagCountResponse
 
 **Response:**
 
-    200
-
 Content-Type: `application/json`:
  
 Schema: UiData
 ```json
 {
-    "type": "object",
-    "properties": {
-        "projectCount": {
-            "type": "integer",
-            "description": "",
-            "format": "int32"
-        },
-        "allowedActions": {
-            "type": "array",
-            "description": "",
-            "items": {
-                "type": "string"
-            }
-        },
-        "features": {
-            "type": "array",
-            "description": "",
-            "items": {
-                "type": "string"
-            }
-        }
-    },
-    "description": ""
+  "allowedActions":[
+    "create",
+    "update",
+    "delete",
+    "ping",
+    "regen"
+  ],
+  "features":[],
+  "projectCount":2
 }
 ```
 ### List tags for the Runner ###
@@ -8529,17 +8309,10 @@ Schema: UiData
 
 **Response:**
 
-    200
-
 Content-Type: `application/json`:
  
 ```json
-{
-    "type": "array",
-    "items": {
-        "type": "string"
-    }
-}
+["tag1", "tag2", "tag3"]
 ```
 
 
