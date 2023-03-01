@@ -52,6 +52,14 @@ Changes introduced by API Version number:
 * Endpoints promoted out of incubating status. These endpoints no longer contain `incubating/` in the endpoint URL, and now require API version 42 minimum.
     * [`GET /api/42/feature/[FEATURE]`][/api/V/feature/\[FEATURE\]] - Query system feature status for a feature. 
     * [`GET /api/42/feature/`][/api/V/feature/] - Get all system feature statuses. 
+* New Endpoints:
+    * [`GET /api/V/runnerManagement/checkPing/\[TOKEN\]`][GET /api/V/runnerManagement/checkPing/\[TOKEN\]] - Check a ping response
+    * [`POST /api/V/runnerManagement/runner/\[ID\]/regenerateCreds`][POST /api/V/runnerManagement/runner/\[ID\]/regenerateCreds] - Regenerate credentials for the Runner
+    * [`GET /api/V/runnerManagement/runner/\[ID\]/tags`][GET /api/V/runnerManagement/runner/\[ID\]/tags] - List tags for the Runner
+    * [`POST /api/V/runnerManagement/runners`][POST /api/V/runnerManagement/runners] - Create a new Runner
+    * [`GET /api/V/runnerManagement/tags`][GET /api/V/runnerManagement/tags] - List all known tags
+    * [`GET /api/V/runnerManagement/ui`][GET /api/V/runnerManagement/ui] - Get UI info for runner management
+    * [`GET /api/V/runnerTag/searchTags`][GET /api/V/runnerTag/searchTags] - List tags for the Runner
   
 
 **Version 41**:
@@ -68,6 +76,13 @@ Changes introduced by API Version number:
 * New Endpoints:
     * [`POST /api/V/enterprise/cluster/executions/enable`][POST /api/V/enterprise/cluster/executions/enable] - Set Active execution Mode for a cluster member
     * [`POST /api/V/enterprise/cluster/executions/disable`][POST /api/V/enterprise/cluster/executions/disable] - Set Passive execution Mode for a cluster member
+    * [`GET /api/V/runnerManagement/download/\[TOKEN\]`][GET /api/V/runnerManagement/download/\[TOKEN\]] - Download runner Jar
+    * [`POST /api/V/runnerManagement/runner/\[ID\]/ping`][POST /api/V/runnerManagement/runner/\[ID\]/ping] - Ping the runner
+    * [`GET /api/V/runnerManagement/runner/\[RUNNERID\]`][GET /api/V/runnerManagement/runner/\[RUNNERID\]] - Get runner information
+    * [`POST /api/V/runnerManagement/runner/\[RUNNERID\]`][POST /api/V/runnerManagement/runner/\[RUNNERID\]] - Update the runner
+    * [`DELETE /api/V/runnerManagement/runner/\[RUNNERID\]`][DELETE /api/V/runnerManagement/runner/\[RUNNERID\]] - Delete the specified runner
+    * [`GET /api/V/runnerManagement/runners`][GET /api/V/runnerManagement/runners] - List available runners
+
     
 **Version 40**:
 
