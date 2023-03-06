@@ -31,12 +31,11 @@ Check out the new features and enhancements for PagerDuty Process Automation (fo
 
 ### Additional Updates
 
-
 * Upgrade commons-fileupload to address CVE-2023-24998
 * Status Symbol is not required on Progress Badge.  Fixes issues with migration from previous versions.
 * Bundel Kubernetes and Docker plugins into Enterprise Build
 * Fix: Improve Error Output for Update Escalation PD Step
-*  EC2 Health Check now included in AWS Plugin Group
+* EC2 Health Check now included in AWS Plugin Group
 * Add ServiceNow Plugin Suite
 * Fix: Cyberark Keys to Key Provider Path
 * Add Jira Plugin Suite
@@ -46,8 +45,7 @@ Check out the new features and enhancements for PagerDuty Process Automation (fo
 
 ## Rundeck Open Source Product Updates
 
-* [upgrade sshj-plugin to 0.1.6](https://github.com/rundeck/rundeck/pull/8172)
-* [AD paged results default](https://github.com/rundeck/rundeck/pull/8168)
+* [Fix: Issue with SSHJ Plugin where output would be on the wrong steps.](https://github.com/rundeck/rundeck/pull/8172)
 * [Fix: Webhooks not showing proper information After Create](https://github.com/rundeck/rundeck/pull/8167)
 * [Fix: ExecutionLifecycle component is not loaded when a job is imported](https://github.com/rundeck/rundeck/pull/8165)
 * [Upgrade commons-fileupload to address CVE-2023-24998](https://github.com/rundeck/rundeck/pull/8161)
@@ -55,7 +53,7 @@ Check out the new features and enhancements for PagerDuty Process Automation (fo
 * [Establish new section in execution head page for feature use.](https://github.com/rundeck/rundeck/pull/8157)
 * [No Message On GUI For Scheduled Job On Unhealthy Runner](https://github.com/rundeck/rundeck/pull/8152)
 * [Change FeatureService to use an interface instead of the Features enum](https://github.com/rundeck/rundeck/pull/8150)
-* [: Allow Roles pagination when using Active Directory](https://github.com/rundeck/rundeck/pull/8144)
+* [Fix: Now allowed more than 100 users When using Active Directory](https://github.com/rundeck/rundeck/pull/8144)
 * [Fix error handling on job component failure](https://github.com/rundeck/rundeck/pull/8141)
 * [Update chromedriver to 109](https://github.com/rundeck/rundeck/pull/8137)
 * [Update error message for runner not found](https://github.com/rundeck/rundeck/pull/8136)
