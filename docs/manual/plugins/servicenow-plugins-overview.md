@@ -3,7 +3,7 @@
 ## Overview
 
 Process Automation integrates with ServiceNow through a variety of plugins listed below.
-By integrating Process Automation with ServiceNow, users can automate many of their operations around Incidents, Change Requests, Service Request, Tasks and much more.
+By integrating Process Automation with ServiceNow, users can automate many of their operations around Incidents, Change Requests, Service Requests, Tasks and much more.
 These integrations allow operations teams to provide self-service mechanisms to users throughout the business, as well as setup event-driven automation for workflows that involve ServiceNow.
 
 <details><summary> <font size="5">ServiceNow Plugins</font>
