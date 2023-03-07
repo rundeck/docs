@@ -19,11 +19,11 @@ Release Date: March 7th, 2023
 - [Upgrade instructions](/upgrading/)
 - [Watch the Live Stream Release Recap](https://youtu.be/stDTPTNZJNM)
 
-## Enterrprise Update
+## Enterprise Update
 
 * Fixed an issue in 4.10.0 and 4.10.1 which prevented users from properly resetting their passwords on initial login. 
 
->Note: This only affects the Enterpris/Commercial version of the product.  Open Source versions are not affected but new versions are still released as part of the build cycle.
+>Note: This only affects the Enterprise/Commercial version of the product.  Open Source versions are not affected but new versions are still released as part of the build cycle.
 
 
 ## Staff Contributors
