@@ -25,7 +25,7 @@ Additionally, we are announcing some exciting product updates this month. [Sign 
 
 ## Overview
 
-Check out the new features and enhancements for PagerDuty Process Automation, PagerDuty Runbook Automation, and Rundeck Community included in this release. This release includes two new Plugin Suites to simplify configuration of plugins.
+Check out the new features and enhancements for PagerDuty Process Automation, PagerDuty Runbook Automation, and Rundeck Community included in this release. This release includes two new Plugin Suites to simplify configuration of plugins and the release of an official Docker image for the Runner.
 
 ### Highlights
 
