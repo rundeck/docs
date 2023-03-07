@@ -17,17 +17,29 @@ Release Date: March 8th, 2023
 - [Download the Releases](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
 - [Upgrade instructions](/upgrading/)
+- [Twitch Stream March 28th, 2023](https://www.twitch.tv/pagerduty/schedule)
+
+::: 
+Additionally, we are announcing some exciting product updates this month. [Sign up for the launch webinar](https://www.pagerduty.com/resources/webinar/bridging-network-silos-with-new-distributed-automation/?utm_medium=email&utm_source=marketo&utm_campaign=email_customers_Global-Wb-BridgeNetworkSilosDistributedAutomation-Email&utm_content=4.11_release_notes) to learn more.
+:::
 
 ## Overview
 
-Check out the new features and enhancements for PagerDuty Process Automation (formerly Rundeck Enterprise) and PagerDuty Runbook Automation and Rundeck Community included in this release.
-
-## Process Automation Updates
-
-> Also includes all Open Source updates from below
+Check out the new features and enhancements for PagerDuty Process Automation, PagerDuty Runbook Automation, and Rundeck Community included in this release. This release includes two new Plugin Suites to simplify configuration of plugins.
 
 ### Highlights
 
+This release includes new Plugin Suites for ServiceNow and Jira. As a reminder, [Plugin Suites streamline the configuration](/history/4_x/version-4.9.0.md) of plugins. Now users can update plugin configurations from a single location (previously this had to be done in multiple locations). In addition, this release includes an official container image for the [Runner](/administration/runner/#docker).
+
+* The new [ServiceNow Plugin Suite](/manual/plugins/servicenow-plugins-overview.md) has a Node Source and many job steps to help pull in nodes from your CMDB and execute automation back into tables within ServiceNow. The ServiceNow Plugin Suite can be configured on a per-project basis or for the entire system. [Learn more.](/manual/plugins/servicenow-plugins-overview.md) 
+
+![ServiceNow Plugin Config](~@assets/img/relnotes-4.11.0-snplugingroup.png)
+
+* Jira plugins, which support Jira Server and Jira Cloud, have also been added to the Plugin Suite configuration model. Now Jira plugins can be configured in the GUI at the project or System level and applied across different plugin types. To get started with the Jira Suite, click [here](/manual/plugins/jira-plugins-overview.md).
+
+![JIRA Plugin Config](~@assets/img/relnotes-4.11.0-jiraplugingroup.png)
+
+* An official Docker container image for the Runner has been published and is available from [Dockerhub](https://hub.docker.com/r/rundeckpro/runner). The Runner allows users to execute commands, scripts and Job steps within their remote environments using a secure (outbound-only HTTPS) architecture.  With a container-version of the Runner, users can more easily deploy, maintain and scale their Runners - as well as deploy them into their containerized environments for more native automation. [Learn more](/administration/runner/#docker).
 
 ### Additional Updates
 
