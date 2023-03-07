@@ -1,21 +1,19 @@
 # General Upgrade Guide
 
-## Upgrading Clusters
+## Preparing to Upgrade your Server
 
 :::warning
 Before performing an upgrade, it is highly recommend to stop all cluster members and do the following steps, one cluster member, at a time.
 :::
 
-- Download the latest Rundeck version .war from [Rundeck Downloads](https://download.rundeck.com/)
-
-- Copy or move the downloaded rundeck war file into your` $RDECK_BASE` folder
+- Download the latest Rundeck version .war from [Process Automation Downloads](https://www.rundeck.com/enterprise-downloads) _(requires license)_ or [Rundeck OSS Downloads](https://downloads.rundeck.com)
 
 - Stop Rundeck (stop service or kill the process)
 
 - _Windows_ Edit the file start_rundeck.bat located on your `$RDECK_BASE` dir and change the name of your rundeck.war file with the name of the downloaded file, e.g. "rundeckpro-enterprise-{{{rundeckVersionFull}}}.war"
 
 ```
- java %RDECK_CLI_OPTS% %RDECK_SSL_OPTS% -jar rundeckpro-enterprise-3.3.6-20201111.war --skipinstall -d >> %CURDIR%\var\logs\service.log 2>&1
+ java %RDECK_CLI_OPTS% %RDECK_SSL_OPTS% -jar rundeckpro-enterprise-4.10.2-20201111.war --skipinstall -d >> %CURDIR%\var\logs\service.log 2>&1
 
 ```
 
@@ -24,16 +22,16 @@ Before performing an upgrade, it is highly recommend to stop all cluster members
 - Backup both folders, `$RDECK_BASE/server/config` and` $RDECK_BASE/etc`, just in case
 
 - Delete these files and dirs:
-
-```
-$RDECK_BASE/libext/
-$RDECK_BASE/tools/
-$RDECK_BASE/server/lib/
-$RDECK_BASE/server/sbin/
-$RDECK_BASE/var/.firstLogin
-$RDECK_BASE/var/.first-run-3.0.22-20190512
-$RDECK_BASE/var/.install-complete-missing-ver
-```
+    ```
+    $RDECK_BASE/libext/
+    $RDECK_BASE/tools/
+    $RDECK_BASE/server/lib/
+    $RDECK_BASE/server/sbin/
+    $RDECK_BASE/var/.firstLogin
+    $RDECK_BASE/var/.first-run-3.0.22-20190512 (version number may be different)
+    $RDECK_BASE/var/.install-complete-missing-ver
+    ```
+- Copy or move the downloaded rundeck war file into your` $RDECK_BASE` folder
 
 - Start Rundeck from the console and wait until it boots up successfully
 
@@ -46,7 +44,7 @@ java -jar rundeckpro-enterprise-{{{rundeckVersionFull}}}.war
 
 ### Runnable War
 
-To upgrade Rundeck 3 using the runnable war use the following steps:
+To upgrade Rundeck using the runnable war use the following steps:
 
 - Stop Rundeck Service:
 ```sh
@@ -160,7 +158,7 @@ rm $tomcat.base/webapps/rundeck $tomcat.base/webapps/rundeck.war
 rm -rf $rdeck.base/server/lib/rundeck-core* $rdeck.base/var/.install_complete-missing-ver
 ```
 
-- Place the new Rundeck 3 version as the old war file:
+- Place the new Rundeck version as the old war file:
 ```sh
 mv rundeck-{{{rundeckVersionFull}}}.war $tomcat.base/webapps/rundeck.war
 ```
