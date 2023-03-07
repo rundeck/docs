@@ -206,6 +206,27 @@ RUN apt-get update && \
 USER runner
 ```
 
+Working with ansible you will need to provide the inventory information. You can reach that using:
+
+- pass the inventory "inline" in the Jobs definition
+- Copy the inventory or ansible config files to the Dockerfile 
+
+```Dockerfile
+COPY path/ansible.cfg /app/ansible/ansible.cfg
+COPY path/hosts /app/ansible/hosts
+```
+
+- Mount the inventory or ansible config files to the container
+
+```
+docker run -it \
+	-v "$(pwd)/rdrunner-creds:/app/.rdrunner-creds:" \
+	-v "$(pwd)/path/ansible.cfg:/app/ansible/ansible.cfg:" \
+	-v "$(pwd)/path/hosts:/app/ansible/hosts:" \	
+	 rundeckpro/runner:latest
+```
+
+
 ## FAQ
 
 **Does this replace Clustering?**
