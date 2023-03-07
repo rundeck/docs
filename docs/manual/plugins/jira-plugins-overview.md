@@ -16,7 +16,7 @@ These integrations allow operations teams to provide self-service mechanisms to 
 |[**Comment on Issue**](/manual/workflow-steps/jira.html#jira-issue-comment)|Job Step|Append comments to a Jira issue.|
 |[**Create Issue**](/manual/workflow-steps/jira.html#jira-issue-create)|Job Step|Creates a new Jira issue.|
 |[**Update Issue**](/manual/workflow-steps/jira.html#jira-issue-update)|Job Step|Updates an existing Jira issue.|
-|[**Retrieve Issuet**](/manual/workflow-steps/jira.html#jira-issue-get-data)|Job Step|View the data of an existing Jira issue.|
+|[**Retrieve Issue**](/manual/workflow-steps/jira.html#jira-issue-get-data)|Job Step|View the data of an existing Jira issue.|
 |[**Comment on Issue**](/manual/notifications/jira.html#jira-issue-notification-comment)|Notification|Append comments to a Jira issue.|
 |[**Create Issue**](/manual/notifications/jira.html#jira-issue-notification-create)|Notification|Creates a new Jira issue.|
 </details>
@@ -46,9 +46,11 @@ Authentication for the Jira plugins can be configured for the entire system or f
 4. Paste the Jira password into the field.
 5. Click **Save**.
 
-### Project Level Configuration
+Now that the Jira password or auth token has been added to Key Storage, the plugin suite can be configured at a Project or System level:
 
-Use the following steps to configure authentication for the Jira plugins for a specific project.
+
+### Project Level Configuration
+Use the following steps to configure authentication for the Jira plugins for a specific project:
 
 1. In the specific project, click on **Project Settings** in the lower left.
 2. Click on **Edit Configuration** then click on **Plugins**.
