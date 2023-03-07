@@ -7,15 +7,16 @@ Original:
 http://support.rundeck.com/customer/en/portal/articles/2915300-servicenow-plugins)
 --->
 
-For all of the following job steps, you will need to have set the connection credentials. In order to do so, configure the following settings using Configuration Management in the System Menu:
+## Authentication
 
+To configure authentication with ServiceNow for these Job step plugins, follow the steps outlined in [ServiceNow Plugins Overview](/manual/plugins/servicenow-plugins-overview.html) to configure authentication of the ServiceNow plugins.
+
+Alternatively, add the following to the `framework.properties` file:
 ```
 servicenow.url=https://server.service-now.com
 servicenow.login=user
 servicenow.password-key-storage-path=keys/servicenow/pass
 ```
-
-(these can also be applied via `framework.properties`)
 
 ## ServiceNow / Incident / Update State
 
@@ -29,6 +30,10 @@ Rundeck workflow step that changes an incident state
 : The new state of the Incident. It can be the number of the state or the description.
 
 ### Adding dynamic list data
+
+:::tip Tip
+These settings do not need to be set if credentials were configured on the [ServiceNow Plugins Overview](/manual/plugins/servicenow-plugins-overview.html) page.
+:::
 
 With these settings, at project level, the field `state` can be loaded dynamically (calling SN API), for example:
 
@@ -64,8 +69,11 @@ Rundeck workflow step that checks an incident state
 
 ### Adding dynamic list data
 
-With these settings, at project level, the field `state` can be loaded dynamically (calling SN API), for example:
+:::tip Tip
+These settings do not need to be set if credentials were configured on the [ServiceNow Plugins Overview](/manual/plugins/servicenow-plugins-overview.html) page.
+:::
 
+With these settings, at project level, the field `state` can be loaded dynamically (calling SN API), for example:
 ```
 project.plugin.WorkflowStep.Service-Now-Incident-Check-State.login=user
 project.plugin.WorkflowStep.Service-Now-Incident-Check-State.password-key-storage-path=keys/servicenow/pass
@@ -111,8 +119,11 @@ Rundeck workflow step that creates an incident
 
 ### Adding dynamic list data
 
-With these settings, at project level, the fields urgency, impact, priority and Assignment Group can be loaded dynamically, for example:
+:::tip Tip
+These settings do not need to be set if credentials were configured on the [ServiceNow Plugins Overview](/manual/plugins/servicenow-plugins-overview.html) page.
+:::
 
+With these settings, at project level, the fields urgency, impact, priority and Assignment Group can be loaded dynamically, for example:
 ```
 project.plugin.WorkflowStep.Service-Now-Incident-Create.login=admin
 project.plugin.WorkflowStep.Service-Now-Incident-Create.password-key-storage-path=keys/somepath/pass
@@ -149,6 +160,10 @@ Rundeck workflow step that edits an incident
 : This is a field where you can input any additional data that you would like to be sent in the payload.
 
 ### Adding dynamic list data
+
+:::tip Tip
+These settings do not need to be set if credentials were configured on the [ServiceNow Plugins Overview](/manual/plugins/servicenow-plugins-overview.html) page.
+:::
 
 With these settings, at project level, the fields urgency, impact, priority , Assignment Group, state can be loaded dynamically, for example:
 
@@ -209,6 +224,4 @@ Rundeck workflow step that creates a change on ServiceNow
 - **State**
 : State code. If not set, the change will be in New status.
 
-:::tip
-You can also establish the connection at the project level. For more information, see [Establishing the Connection at the Project Level](servicenow-project-specs.md).
-:::
+
