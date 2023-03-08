@@ -62,7 +62,7 @@ Rundeck workflow step that checks an incident state
 
 ![ServiceNow / Incident / Check State](~@assets/img/servicenow-incident-checkstate.png)
 
-- **Number**
+- **Incident Number**
 : The Incident number to be checked.
 - **State**
 : The state to be checked. It can be the number of the state or the description.
@@ -179,6 +179,28 @@ project.plugin.WorkflowStep.Service-Now-Incident-Edit.url=https\://dev63229.serv
 
 For `Assignment Group` and `state` the list is loaded with SN API call.
 
+## ServiceNow / Incident / Update State
+
+Rundeck workflow step that changes an incident state
+
+![ServiceNow / Incident / Update State](~@assets/img/servicenow-incident-updatestate.png)
+
+- **Number**
+: The Incident number to be updated.
+- **newState**
+: The new state of the Incident. It can be the number of the state or the description.
+
+### Adding dynamic list data
+
+With these settings, at project level, the field `state` can be loaded dynamically (calling SN API), for example:
+
+```
+project.plugin.WorkflowStep.Service-Now-Incident-Change-State.url=https://server.service-now.com
+project.plugin.WorkflowStep.Service-Now-Incident-Change-State.login=user
+project.plugin.WorkflowStep.Service-Now-Incident-Change-State.password-key-storage-path=keys/servicenow/pass
+
+```
+
 ## ServiceNow / Incident / View
 
 Rundeck workflow step that views an incident
@@ -188,16 +210,42 @@ Rundeck workflow step that views an incident
 - **Incident Number**
 : This is the incident number of the event that you wish to add the comment to.
 
+
 ## ServiceNow / Change / Check State
 
-Rundeck workflow step that checks the state of a change request
+Rundeck workflow step that checks the state of a Change Request
 
 ![ServiceNow / Change / Check State](~@assets/img/servicenow-change-checkstate.png)
 
-- **Number**
+- **Change Request**
 : Number of the change.
 - **State**
 : State to be checked.
+
+## ServiceNow / Change / Create
+
+Rundeck workflow step that creates a Change Request in ServiceNow
+
+![ServiceNow / Change / Create](~@assets/img/servicenow-change-create.png)
+
+
+- **Assignment Group**
+: The assignment group name or Id to assign.
+- **Description**
+: Short description to be used.
+- **State**
+: State code. If not set, the change will be in New status.
+
+## ServiceNow / Change / Note
+
+Rundeck workflow step that adds a Note to a Change Reqwuest
+
+![ServiceNow / Change / Check State](~@assets/img/servicenow-change-note.png)
+
+- **Change Request**
+: Number of the change.
+- **Note**
+: Note to be added.
 
 ## ServiceNow / Change / Update State
 
@@ -205,23 +253,10 @@ Rundeck workflow step that updates the state of a change request
 
 ![ServiceNow / Change / Update State](~@assets/img/servicenow-change-updatestate.png)
 
-- **Number**
+- **Change Request**
 : Number of the change.
 - **New State**
 : New State to be used.
 
-## ServiceNow / Change / Create
-
-Rundeck workflow step that creates a change on ServiceNow
-
-![ServiceNow / Change / Create](~@assets/img/servicenow-change-create.png)
-
-
-- **Assignment group**
-: The assignment group name or Id to assign.
-- **Description**
-: Short description to be used.
-- **State**
-: State code. If not set, the change will be in New status.
 
 
