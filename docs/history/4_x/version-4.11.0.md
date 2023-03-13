@@ -1,7 +1,7 @@
 ---
 
 title: "4.11.0 Release Notes"
-date: "2023-03-08"
+date: "2023-03-13"
 image: /images/chevron-logo-red-on-white.png
 feed:
  enable: true
@@ -12,7 +12,7 @@ feed:
 # 4.11.0 Release Notes
 
 Name: <span style="color: coral"><span class="glyphicon glyphicon-briefcase"></span> "Satyr coral briefcase"</span>
-Release Date: March 8th, 2023
+Release Date: March 13th, 2023
 
 - [Download the Releases](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)

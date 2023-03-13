@@ -9,7 +9,7 @@ Upgrade instructions [can be found here](/upgrading/).
 
 | Release Version | Release Date      | Enterprise Support Status |
 |-----------------|-------------------|---------------------------|
-| [4.11.0](/history/4_x/version-4.11.0.md) | March 8th, 2023 | Supported |
+| [4.11.0](/history/4_x/version-4.11.0.md) | March 13th, 2023 | Supported |
 | [4.10.2](/history/4_x/version-4.10.2.md) | March 7th, 2023 | Supported |
 | [4.10.1](/history/4_x/version-4.10.1.md) | February 21st, 2023 | Supported |
 | [4.10.0](/history/4_x/version-4.10.0.md) | February 13th, 2023 | Supported |
