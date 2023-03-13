@@ -114,7 +114,9 @@ module.exports = [{
       sidebarDepth: 0,
       children:[
         '/manual/plugins/aws-plugins-overview.md',
-        '/manual/plugins/pagerduty-plugins-overview.md'
+        '/manual/plugins/jira-plugins-overview.md',
+        '/manual/plugins/pagerduty-plugins-overview.md',
+        '/manual/plugins/servicenow-plugins-overview.md'
       ]
     },
     {

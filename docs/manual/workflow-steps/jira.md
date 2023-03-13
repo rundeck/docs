@@ -4,14 +4,8 @@
 As of Rundeck version 3.4.0 the Jira plugins now support Auth Tokens.  Please check the [Release Notes updates here](/history/3_4_x/version-3.4.0.md).
 :::
 
-Configuration of the Jira Workflow Steps can be done centrally using Configuration Management.
-
-1. Create a Key Store entry with the API Token. (Note the path to this key for use later.)
-1. Open **System Menu > Configuration Management**
-1. Set **Jira Login Name**, **Jira Auth token** (use key path from step 1 in plain text), and **Jira base URL**.
-1. Click Save in the Upper Right.
-
-> There is no need to restart.  The JIRA Workflow Step plugins should be ready for use.
+## Authentication
+Follow the steps outlined in [Jira Plugins Overview](/manual/plugins/jira-plugins-overview.html) to configure authentication with Jira for these Job step plugins.
 
 Alternatively the settings can be specified in `framework.properties`for all Jira Workflow Steps.
 
@@ -29,6 +23,10 @@ Configuration can be specific per project as documented in the settings below:
 Search assigned issues by user.
 
 ### Configuration
+
+:::tip Tip
+These settings do not need to be set if credentials were configured on the [Jira Plugins Overview](/manual/plugins/jira-plugins-overview.html) page.
+:::
 
 The Jira connection credentials are set in the `project.properties` file
 for your project.
@@ -54,6 +52,10 @@ Check if the Jira Issue exist by key.
 
 ### Configuration
 
+:::tip Tip
+These settings do not need to be set if credentials were configured on the [Jira Plugins Overview](/manual/plugins/jira-plugins-overview.html) page.
+:::
+
 The Jira connection credentials are set in the `project.properties` file
 for your project.
 Password it's a key storage path to the password.
@@ -76,6 +78,10 @@ To use the plugin, configure the mandatory input.
 Append notification messages to a Jira issue.
 
 ### Configuration
+
+:::tip Tip
+These settings do not need to be set if credentials were configured on the [Jira Plugins Overview](/manual/plugins/jira-plugins-overview.html) page.
+:::
 
 The Jira connection credentials are set in the `project.properties` file
 for your project.
@@ -101,6 +107,10 @@ To use the plugin, configure the mandatory input.
 Creates a new Jira issue.
 
 ### Configuration
+
+:::tip Tip
+These settings do not need to be set if credentials were configured on the [Jira Plugins Overview](/manual/plugins/jira-plugins-overview.html) page.
+:::
 
 The Jira connection credentials are set in the `project.properties` file
 for your project.
@@ -133,6 +143,10 @@ Updates a Jira Issue.
 
 ### Configuration
 
+:::tip Tip
+These settings do not need to be set if credentials were configured on the [Jira Plugins Overview](/manual/plugins/jira-plugins-overview.html) page.
+:::
+
 The Jira connection credentials are set in the `project.properties` file
 for your project.
 Password it's a keystorage path to the password.
@@ -160,6 +174,10 @@ Optional input:
 Retrieve Jira Issue data by key.
 
 ### Configuration
+
+:::tip Tip
+These settings do not need to be set if credentials were configured on the [Jira Plugins Overview](/manual/plugins/jira-plugins-overview.html) page.
+:::
 
 The Jira connection credentials are set in the `project.properties` file
 for your project.

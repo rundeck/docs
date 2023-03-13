@@ -6,20 +6,12 @@ Original:
 http://support.rundeck.com/customer/en/portal/articles/2915300-servicenow-plugins)
 --->
 
+To configure authentication with ServiceNow for these notification plugins, follow the steps outlined in [ServiceNow Plugins Overview](/manual/plugins/servicenow-plugins-overview.html)
+ to set credentials at either a System or Project level.
+
 ## ServiceNow / Incident / Comment
 
-Rundeck Notification plugin to comment an incident
-
-### Configuration
-
-The ServiceNow connection credentials are set in the project.properties file
-for your project.
-
-```
-project.plugin.Notification.Service-Now-Notification.login=user
-project.plugin.Notification.Service-Now-Notification.password=s3cret
-project.plugin.Notification.Service-Now-Notification.url=https://server.service-now.com
-```
+Notification plugin to comment an incident.
 
 ### Usage
 
@@ -30,18 +22,7 @@ To use the plugin, configure this mandatory input:
 
 ## ServiceNow / Incident / Create
 
-Rundeck Notification plugin that creates an incident
-
-### Configuration
-
-The ServiceNow&reg; connection credentials are set in the project.properties file
-for your project.
-
-```
-project.plugin.Notification.Service-Now-Notification-Create.login=user
-project.plugin.Notification.Service-Now-Notification-Create.password=s3cret
-project.plugin.Notification.Service-Now-Notification-Create.url=https://server.service-now.com
-```
+Notification plugin that creates an incident.
 
 ### Usage
 
@@ -59,18 +40,7 @@ These inputs are optional and if left empty the default value of Service now it'
 
 ## ServiceNow / Change / Create
 
-Rundeck Notification plugin to create a ServiceNow&reg; Change
-
-### Configuration
-
-The ServiceNow&reg; connection credentials are set in the project.properties file
-for your project.
-
-```
-project.plugin.Notification.Service-Now-Notification-Change-Create.login=user
-project.plugin.Notification.Service-Now-Notification-Change-Create.password=s3cret
-project.plugin.Notification.Service-Now-Notification-Change-Create.url=https://server.service-now.com
-```
+Notification plugin to create a ServiceNow Change.
 
 ### Usage
 

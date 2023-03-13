@@ -221,3 +221,17 @@
 [DELETE /api/V/system/calendars/\[ID\]]:/api/rundeck-api.html#delete-system-calendar
 
 [GET /api/V/feature/\[featureName\]]:/api/rundeck-api.html#system-feature
+
+[GET /api/V/runnerManagement/checkPing/\[TOKEN\]]:/api/rundeck-api.html#check-a-ping-response
+[GET /api/V/runnerManagement/download/\[TOKEN\]]:/api/rundeck-api.html#download-runner-jar
+[POST /api/V/runnerManagement/runner/\[ID\]/ping]:/api/rundeck-api.html#ping-the-runner
+[POST /api/V/runnerManagement/runner/\[ID\]/regenerateCreds]:/api/rundeck-api.html#regenerate-credentials-for-the-runner
+[GET /api/V/runnerManagement/runner/\[ID\]/tags]:/api/rundeck-api.html#list-tags-for-the-runner
+[GET /api/V/runnerManagement/runner/\[RUNNERID\]]:/api/rundeck-api.html#get-runner-information
+[POST /api/V/runnerManagement/runner/\[RUNNERID\]]:/api/rundeck-api.html#update-the-runner
+[DELETE /api/V/runnerManagement/runner/\[RUNNERID\]]:/api/rundeck-api.html#delete-the-specified-runner
+[GET /api/V/runnerManagement/runners]:/api/rundeck-api.html#list-available-runners
+[POST /api/V/runnerManagement/runners]:/api/rundeck-api.html#create-a-new-runner
+[GET /api/V/runnerManagement/tags]:/api/rundeck-api.html#list-all-known-tags
+[GET /api/V/runnerManagement/ui]:/api/rundeck-api.html#get-ui-info-for-runner-management
+[GET /api/V/runnerTag/searchTags]:/api/rundeck-api.html#list-tags-for-the-runner

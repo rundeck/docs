@@ -113,6 +113,120 @@ If you are installing a Runner on a Windows OS as localhost node, you have to sp
 
 Powershell script steps are fully supported on the Runner. Commands that run through the cmd.exe shell are not supported at the moment.
 
+## Docker
+
+A Runner docker image is available from [Dockerhub](https://hub.docker.com/r/rundeckpro/runner). 
+
+	docker pull rundeckpro/runner
+
+You can use the tag `rundeckpro/runner:latest` for the latest version, or `rundeckpro/runner:$VERSION` for a specific version.
+
+You can use either Environment Variables, or a Volume Mount to specify the Connection parameters for the Runner.  
+
+:::warning API Usage Required
+Currently, to obtain the token for a Runner, you must use the Runner Management API to create the Runner.
+
+See:
+
+* [API > Create A New Runner](/api/rundeck-api.html#create-a-new-runner)
+* [API > Regenerate Credentials For the Runner](/api/rundeck-api.html#regenerate-credentials-for-the-runner)
+
+:::
+
+### Docker Environment Variables
+
+Specify connection info and credentials via Env Vars:
+
+`RUNNER_RUNDECK_SERVER_TOKEN`
+:  The Runner secret token
+
+`RUNNER_RUNDECK_SERVER_URL`
+:  The Server URL
+
+`RUNNER_RUNDECK_CLIENT_ID`
+:  The Runner ID
+
+Example:
+
+```shell
+docker run -it \
+	-e RUNNER_RUNDECK_SERVER_TOKEN=$RUNDECK_RUNNER_TOKEN \
+	-e RUNNER_RUNDECK_SERVER_URL=$RUNDECK_SERVER_URL \
+	-e RUNNER_RUNDECK_CLIENT_ID=$RUNDECK_RUNNER_ID \
+	 rundeckpro/runner:latest
+```
+
+### Docker Volume Mount
+
+`/app/.rdrunner-creds`
+:  Volume Mount path
+
+The contents are in this format:
+
+```shell
+# .rdrunner-creds file contents
+RUNDECK_RUNNER_TOKEN=<TOKEN>
+RUNDECK_SERVER_URL=<URL>
+RUNDECK_RUNNER_ID=<ID>
+```
+
+Example:
+
+```shell
+docker run -it \
+	-v "$(pwd)/rdrunner-creds:/app/.rdrunner-creds:" \
+	 rundeckpro/runner:latest
+```
+
+### Extending the Docker Image
+
+If you are using certain plugins, such as Ansible, Docker, Kubernetes, etc, you may need additional software that is not included in the base image for the Runner.
+
+You will need to create a custom docker image based on the base image.
+
+#### Using Ansible 
+
+Example Dockerfile to add ansible:
+
+```Dockerfile
+ARG RUNNER_VERSION=latest
+FROM rundeckpro/runner:${RUNNER_VERSION}
+
+USER root
+## Install python, pip and ansible
+RUN apt-get update && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+    python3-pip && \
+    pip3 install --upgrade pip && \
+    pip3 install ansible
+
+# include any other necessary packages
+#RUN apt-get -y install sshpass
+
+USER runner
+```
+
+Working with ansible you will need to provide the inventory information. You can reach that using:
+
+- pass the inventory "inline" in the Jobs definition
+- Copy the inventory or ansible config files to the Dockerfile 
+
+```Dockerfile
+COPY path/ansible.cfg /app/ansible/ansible.cfg
+COPY path/hosts /app/ansible/hosts
+```
+
+- Mount the inventory or ansible config files to the container
+
+```
+docker run -it \
+	-v "$(pwd)/rdrunner-creds:/app/.rdrunner-creds:" \
+	-v "$(pwd)/path/ansible.cfg:/app/ansible/ansible.cfg:" \
+	-v "$(pwd)/path/hosts:/app/ansible/hosts:" \	
+	 rundeckpro/runner:latest
+```
+
+
 ## FAQ
 
 **Does this replace Clustering?**
