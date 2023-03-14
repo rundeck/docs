@@ -47,7 +47,7 @@ Log Filters are applied to a Job step to act on the output from that step. Certa
 Rundeck executes Command items on Nodes. The command may be part of a Workflow as defined in a Job, and it may be executed multiple times on different nodes. Rundeck uses the NodeExecutor and FileCopier services as part of the process of executing these commands.
 
 ## Node Filter
-Node filters are expressions that define a set of nodes, usually to be targeted by a job. The basic format is a sequence of `attributename: value` pairs to select nodes which match. You can negate a match by using `!attributename: value`. If you do not specify an attribute name, then the nodename is matched against the bare value.
+Node filters are expressions that define a set of nodes, usually to be targeted by a job. The filter is composed of one or more `attributename: value` pairs.  The combination of those attributes will designate which nodes to match. You can negate a match by using `!attributename: value`. If you do not specify an attribute name, then the nodename is matched against the bare value.
 
 ## Nodes
 A Node is a resource that is either a physical or virtual instance of a network accessible host. Nodes have a few basic attributes but a Node's attributes can be extended to include arbitrary named key/value pairs. Attributes typically describe the properties of a node or reflect the state of the node. One of a Node's built in attributes is called "tags" which are a list of classifications or categories about that Node.
