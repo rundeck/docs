@@ -51,7 +51,7 @@ allowedPlugins:
     - WinRMCheck
 ```
 If a job is configured to run any of the listed plugins on a Local Runner, a runtime error will be raised as illustrated below:
-![Runtime error with a plugin restricted to run Remote only](@assets/img/runner/runner-error-remote-only.png)
+![Runtime error with a plugin restricted to run Remote only](@assets/img/runner-error-remote-only.png)
 
 ## Proxying Runner connections
 

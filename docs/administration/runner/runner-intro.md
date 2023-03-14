@@ -17,7 +17,7 @@ The Runner is a Java based program which uses a polling model to pick up work fr
 
 With the next generation architecture, automation authors can select which Runners will carry out the tasks for a given job using Runner tags. Authors can also choose if tasks will execute on a Runner or if tasks will be dispatched to nodes through the selected Runner set. There are two types of Runners: Local and Remote. The Local Runner tasks execute from the Rundeck instance. The Remote Runner tasks execute from the Runners installed in the environment.
 
-![Private networks scenario](@assets/img/runner/runner-scenario.png)
+![Private networks scenario](@assets/img/runner-scenario.png)
 
 In the example below, we have a job that will span three different environments.
 
