@@ -6,6 +6,12 @@ This is a Node Source plugin that provides node information from ServiceNow's&re
 
 There is a [How To article in the Learning section](/learning/howto/config-sn-nodesource.md) with an example setup.
 
+## Authentication
+
+To configure authentication with ServiceNow for the Node Source plugin, follow the steps outlined in [ServiceNow Plugins Overview](/manual/plugins/servicenow-plugins-overview.html) to configure authentication of the ServiceNow plugins.
+Alternatively, place credentials directly into the Node Source plugin.
+
+
 ## Filters
 
 The plugin offers some **Quick Filters** to gather specific server types from the CMDB.

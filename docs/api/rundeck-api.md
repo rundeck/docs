@@ -3038,7 +3038,13 @@ Export the job definitions for in XML or YAML formats.
 
 Optional parameters:
 
-* `format` : can be "xml" or "yaml" to specify the output format. Default is "xml"
+* `format` : can be "xml" or "yaml" or "json" (API v44+) to specify the output format. Default is "xml"
+
+Alternately, specify the `Accept` header to indicate the response type:
+
+* XML: `Accept: application/xml`
+* YAML: `Accept: text/yaml`
+* JSON: `Accept: application/json` (API v44+)
 
 The following parameters can also be used to narrow down the result set.
 
@@ -3048,9 +3054,12 @@ The following parameters can also be used to narrow down the result set.
 
 **Response:**
 
-If you specify `format=xml`, then the output will be in [job-xml](/manual/document-format-reference/job-v20.md) format.
+Depending on the requested format:
 
-If you specify `format=yaml`, then the output will be in [job-yaml](/manual/document-format-reference/job-yaml-v12.md) format.
+* XML: [job-xml](/manual/document-format-reference/job-v20.md) format
+* YAML: [job-yaml](/manual/document-format-reference/job-yaml-v12.md) format
+* JSON: [job-json](/manual/document-format-reference/job-json-v44.md) format (API v44+)
+
 
 If an error occurs, then the output will be in XML format, using the common `result` element described in the [Response Format][] section.
 
@@ -3071,10 +3080,11 @@ One of the following:
 * `Content-Type: multipart/form-data` multipart MIME request part named `xmlBatch` containing the content.
 * `Content-Type: application/xml`, request body is the Jobs XML formatted job definition
 * `Content-Type: application/yaml`, request body is the Jobs YAML formatted job definition
+* `Content-Type: application/json`, request body is the Jobs JSON formatted job definition (API v44+)
 
 Optional parameters:
 
-* `fileformat` : can be "xml" or "yaml" to specify the input format, if multipart of form input is sent. Default is "xml"
+* `fileformat` : can be "xml" or "yaml" or "json" (API v44+) to specify the input format, if multipart of form input is sent. Default is "xml"
 * `dupeOption`: A value to indicate the behavior when importing jobs which already exist.  Value can be "skip", "create", or "update". Default is "create".
 * `uuidOption`: Whether to preserve or remove UUIDs from the imported jobs. Allowed values (**since V9**):
     *  `preserve`: Preserve the UUIDs in imported jobs.  This may cause the import to fail if the UUID is already used. (Default value).
@@ -3154,13 +3164,21 @@ Export a single job definition in XML or YAML formats.
 
 Optional parameters:
 
-* `format` : can be "xml" or "yaml" to specify the output format. Default is "xml"
+* `format` : can be "xml" or "yaml" or "json" (API v44+) to specify the output format. Default is "xml"
+
+Alternately, specify the `Accept` header to indicate the response type:
+
+* XML: `Accept: application/xml`
+* YAML: `Accept: text/yaml`
+* JSON: `Accept: application/json` (API v44+)
 
 **Response:**
 
-If you specify `format=xml`, then the output will be in [job-xml](/manual/document-format-reference/job-v20.md) format.
+Depending on the requested format:
 
-If you specify `format=yaml`, then the output will be in [job-yaml](/manual/document-format-reference/job-yaml-v12.md) format.
+* XML: [job-xml](/manual/document-format-reference/job-v20.md) format
+* YAML: [job-yaml](/manual/document-format-reference/job-yaml-v12.md) format
+* JSON: [job-json](/manual/document-format-reference/job-json-v44.md) format (API v44+)
 
 If an error occurs, then the output will be in XML format, using the common `result` element described in the [Response Format][] section.
 
@@ -7781,6 +7799,7 @@ Deletes a calendar at system level
 
     204 No Content
 
+
 ## License (Enterprise)
 
 ### View License
@@ -7924,6 +7943,378 @@ Content-Type: `application/json`
 }
 
 ```
+
+## Runner Management
+
+### Check a ping response ###
+
+::: enterprise
+:::
+
+**Request:**
+
+    GET /api/42/runnerManagement/checkPing/[TOKEN]
+
+**Response:**
+
+Content-Type: `application/json`:
+ 
+```json
+{
+  "completed": true,
+  "message": "Task completed successfully",
+  "iserror": false
+}
+```
+### Download runner Jar ###
+
+::: enterprise
+:::
+
+**Request:**
+
+    GET /api/41/runnerManagement/download/[TOKEN]
+
+**Response:**
+
+Content-Type: `application/java-archive`: Java Archive
+
+### Ping the runner ###
+
+::: enterprise
+:::
+
+**Request:**
+
+    POST /api/41/runnerManagement/runner/[ID]/ping
+
+**Response:**
+
+Content-Type: `application/json`:
+ 
+```json
+{
+  "pingToken": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+}
+```
+### Regenerate credentials for the Runner ###
+
+::: enterprise
+:::
+
+**Request:**
+
+    POST /api/42/runnerManagement/runner/[ID]/regenerateCreds
+
+**Response:**
+
+Content-Type: `application/json`:
+ 
+```json
+{
+  "runnerId": "runner123",
+  "token": "cdb9ff25-4606-4f0b-bf72-119263a25677",
+  "downloadTk": "2804658a-b9a1-869d-08f7-8f30a9455995"
+}
+```
+
+- `token`: Runner authentication token
+- `downloadTk`: Runner package download token
+
+
+### List tags for the Runner ###
+
+::: enterprise
+:::
+
+**Request:**
+
+    GET /api/42/runnerManagement/runner/[ID]/tags
+
+**Response:**
+
+Content-Type: `application/json`:
+ 
+```json
+[  "apple",  "banana",  "cherry",  "date"]
+```
+### Get runner information ###
+
+::: enterprise
+:::
+
+**Request:**
+
+    GET /api/41/runnerManagement/runner/[RUNNERID]
+
+**Response:**
+
+Content-Type: `application/json`:
+ 
+```json
+{
+  "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "name": "My Runner",
+  "description": "A runner for running CI/CD pipelines",
+  "status": "Healthy",
+  "runnerVersion": "0.1.34",
+  "projectAssociations": {
+    "projectNodeFilters": {
+      "project1": ".*",
+      "project2": ".*"
+    }
+  },
+  "createTime": "2022-03-01T12:34:56Z",
+  "lastCheckin": "2 seconds ago",
+  "lastCheckinAlert": false,
+  "runningOperations": 5,
+  "uptime": 86400,
+  "tagNames": [
+    "runner",
+    "pipeline",
+    "automation"
+  ]
+}
+```
+### Update the runner ###
+
+::: enterprise
+:::
+
+**Request:**
+
+    POST /api/41/runnerManagement/runner/[RUNNERID]
+
+Request Content:
+`Content-Type: application/json`
+
+```json
+{
+  "runnerId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "name": "My Runner",
+  "description": "A runner for running CI/CD pipelines",
+  "assignedProjects": {
+    "project1": ".*",
+    "project2": ".*"
+  },
+  "tagNames": "runner, pipeline, automation"
+}
+
+```
+
+**Response:**
+
+Content-Type: `application/json`:
+ 
+```json
+{
+  "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "name": "My Runner",
+  "description": "A runner for running CI/CD pipelines",
+  "status": "Healthy",
+  "runnerVersion": "0.1.34",
+  "projectAssociations": {
+    "projectNodeFilters": {
+      "project1": ".*",
+      "project2": ".*"
+    }
+  },
+  "createTime": "2022-03-01T12:34:56Z",
+  "lastCheckin": "2 seconds ago",
+  "lastCheckinAlert": false,
+  "runningOperations": 5,
+  "uptime": 86400,
+  "tagNames": [
+    "runner",
+    "pipeline",
+    "automation"
+  ]
+}
+```
+### Delete the specified runner ###
+
+::: enterprise
+:::
+
+**Request:**
+
+    DELETE /api/41/runnerManagement/runner/[RUNNERID]
+
+**Response:**
+
+    204
+
+### List available runners ###
+
+::: enterprise
+:::
+
+**Request:**
+
+    GET /api/41/runnerManagement/runners
+
+**Response:**
+
+Content-Type: `application/json`:
+ 
+Schema: RunnerList
+```json
+{
+  "runners": [
+    {
+      "id": "runner1",
+      "name": "My Runner",
+      "description": "A runner for running CI/CD pipelines",
+      "status": "Healthy",
+      "version": "1.2.3",
+      "associatedProjects": 2,
+      "lastCheckin": "2022-02-28T12:34:56Z",
+      "lastCheckinAlert": false,
+      "selected": true,
+      "tagNames": [
+        "runner",
+        "ci/cd"
+      ]
+    },
+    {
+      "id": "runner2",
+      "name": "Another Runner",
+      "description": "A runner for running builds",
+      "status": "Healthy",
+      "version": "1.2.3",
+      "associatedProjects": 1,
+      "lastCheckin": "2022-02-27T01:23:45Z",
+      "lastCheckinAlert": true,
+      "selected": false,
+      "tagNames": [
+        "runner",
+        "builds"
+      ]
+    }
+  ]
+}
+```
+### Create a new Runner ###
+
+::: enterprise
+:::
+
+**Request:**
+
+    POST /api/42/runnerManagement/runners
+
+Content-Type: `application/json`:
+```json
+{
+  "name": "My Runner",
+  "description": "A runner for running CI/CD pipelines",
+  "assignedProjects": {
+    "project1": ".*",
+    "project2": ".*"
+  },
+  "tagNames": "runner, pipeline, automation"
+}
+```
+
+
+**Response:**
+
+Content-Type: `application/json`:
+ 
+```json
+{
+  "runnerId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "name": "My New Runner",
+  "description": "A project for building and testing software",
+  "projectAssociations": {
+    "project1": ".*",
+    "project2": ".*"
+  },
+  "token": "cdb9ff25-4606-4f0b-bf72-119263a25677",
+  "downloadTk": "2804658a-b9a1-869d-08f7-8f30a9455995"
+}
+```
+
+or error
+
+Content-Type: `application/json`:
+ 
+```json
+{
+  "apiVersion": 41,
+  "errorMessage": "An error occurred while processing the request",
+  "errorCode": "400",
+  "error": "Bad Request",
+  "apiversion": 1,
+  "message": ""
+}
+```
+### List all known tags ###
+
+::: enterprise
+:::
+
+**Request:**
+
+    GET /api/42/runnerManagement/tags
+
+**Response:**
+
+Content-Type: `application/json`:
+ 
+```json
+{
+  "tags": {
+    "tag1": 3,
+    "tag2": 5,
+    "tag3": 7
+  }
+}
+```
+### Get UI info for runner management ###
+
+::: enterprise
+:::
+
+**Request:**
+
+    GET /api/42/runnerManagement/ui
+
+**Response:**
+
+Content-Type: `application/json`:
+ 
+Schema: UiData
+```json
+{
+  "allowedActions":[
+    "create",
+    "update",
+    "delete",
+    "ping",
+    "regen"
+  ],
+  "features":[],
+  "projectCount":2
+}
+```
+### List tags for the Runner ###
+
+::: enterprise
+:::
+
+**Request:**
+
+    GET /api/42/runnerTag/searchTags
+
+**Response:**
+
+Content-Type: `application/json`:
+ 
+```json
+["tag1", "tag2", "tag3"]
+```
+
 
 ## Index
 
@@ -8370,6 +8761,49 @@ Content-Type: `application/json`
 
 * `GET` [List Installed Plugins][/api/V/plugin/list]
 
+
+[/api/V/runnerManagement/checkPing/\[TOKEN\]](#check-a-ping-response)
+
+* `GET` [Check a ping response](#check-a-ping-response)
+
+[/api/V/runnerManagement/download/\[TOKEN\]](#download-runner-jar)
+
+* `GET` [Download runner Jar](#download-runner-jar)
+
+[/api/V/runnerManagement/runner/\[ID\]/ping](#ping-the-runner)
+
+* `POST` [Ping the runner](#ping-the-runner)
+
+[/api/V/runnerManagement/runner/\[ID\]/regenerateCreds](#regenerate-credentials-for-the-runner)
+
+* `POST` [Regenerate credentials for the Runner](#regenerate-credentials-for-the-runner)
+
+[/api/V/runnerManagement/runner/\[ID\]/tags](#list-tags-for-the-runner)
+
+* `GET` [List tags for the Runner](#list-tags-for-the-runner)
+
+[/api/V/runnerManagement/runner/\[RUNNERID\]](#get-runner-information)
+
+* `GET` [Get runner information](#get-runner-information)
+* `POST` [Update the runner](#update-the-runner)
+* `DELETE` [Delete the specified runner](#delete-the-specified-runner)
+
+[/api/V/runnerManagement/runners](#list-available-runners)
+
+* `GET` [List available runners](#list-available-runners)
+* `POST` [Create a new Runner](#create-a-new-runner)
+
+[/api/V/runnerManagement/tags](#list-all-known-tags)
+
+* `GET` [List all known tags](#list-all-known-tags)
+
+[/api/V/runnerManagement/ui](#get-ui-info-for-runner-management)
+
+* `GET` [Get UI info for runner management](#get-ui-info-for-runner-management)
+
+[/api/V/runnerTag/searchTags](#list-tags-for-the-runner)
+
+* `GET` [List tags for the Runner](#list-tags-for-the-runner)
 
 
 ### Incubating
