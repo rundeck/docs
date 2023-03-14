@@ -145,7 +145,7 @@ workflows:
             branches:
               only:
                 - /4\.[0-9]+\..*/
-								- new-runner-docs
+                - new-runner-docs
             tags:
               only: /^v.*/
       - update_index:
