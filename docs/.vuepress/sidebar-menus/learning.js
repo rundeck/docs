@@ -66,10 +66,11 @@ module.exports = [{
     	{
       	  title: 'Working with Jobs',
       	  collapsable: true,
-      	  sidebarDepth: 1,
+      	  sidebarDepth: 0,
       	  children: [
       	 	  '/learning/howto/jobs/what-is-a-job.md',
-      	 	  '/learning/howto/jobs/pieces-of-a-job.md']
+      	 	  '/learning/howto/jobs/pieces-of-a-job.md'
+      	  ]
         },
     	{
           title: 'Writing Jobs',
