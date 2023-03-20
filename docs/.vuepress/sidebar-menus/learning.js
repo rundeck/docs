@@ -63,7 +63,15 @@ module.exports = [{
               '/learning/howto/revoke-ssh-keys.md'
           ]
         },
-        {
+    	{
+      	  title: 'Working with Jobs',
+      	  collapsable: true,
+      	  sidebarDepth: 1,
+      	  children: [
+      	 	  '/learning/howto/jobs/what-is-a-job.md',
+      	 	  '/learning/howto/jobs/pieces-of-a-job.md']
+        },
+    	{
           title: 'Writing Jobs',
           collapsable: true,
           sidebarDepth: 0,
