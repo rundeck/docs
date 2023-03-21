@@ -66,10 +66,18 @@ module.exports = [{
     	{
       	  title: 'Working with Jobs',
       	  collapsable: true,
-      	  sidebarDepth: 0,
+      	  sidebarDepth: 2,
       	  children: [
       	 	  '/learning/howto/jobs/what-is-a-job.md',
-      	 	  '/learning/howto/jobs/pieces-of-a-job.md'
+      	 	  '/learning/howto/jobs/pieces-of-a-job.md',
+      	 	  '/learning/howto/jobs/how-to-run-a-job.md',
+      	 	  '/learning/howto/jobs/workflow-strategies.md',
+      	 	  '/learning/howto/jobs/node-sources.md',
+      	 	  '/learning/howto/jobs/sharing-jobs.md',
+      	 	  '/learning/howto/jobs/job-options.md',
+      	 	  '/learning/howto/jobs/creating-a-job.md',
+      	 	  '/learning/howto/jobs/job-plugins.md',
+      	 	  '/learning/howto/jobs/commercial-job-features.md'
       	  ]
         },
     	{

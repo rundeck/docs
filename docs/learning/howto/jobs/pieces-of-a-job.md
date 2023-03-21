@@ -15,10 +15,9 @@ A Jobs group is a name (in the field to the right of the Job Name) that helps ke
 The description helps others understand what this job does and when/how to use it.<br>
 If a job description contains more than one line of text, then the first line is used as the job description and the rest is accessible by clicking on the "more" link.<br>
 
-## A Workflow
+## Workflow
 The central piece that is thought of as the job, a workflow is a sequence of steps to be carried out. The steps could include commands, scripts, and/or specific actions. For example: deploying a Kubernetes pod, checking a service availability, etc.<br>
 ![](~@assets/img/jobpieces2.png)<br>
-
 Workflows are a critical part of every Rundeck project. Essentially, the workflow is a series of steps to achieve any goal.<br>
 
 ### Options
@@ -37,11 +36,13 @@ A [step](https://docs.rundeck.com/docs/manual/job-workflows.html#workflow-steps)
 ### Workflow Steps vs Node Steps
 When you create a job and add steps, you will see two different types of steps, Node Steps and Workflow Steps.<br>
 ![](~@assets/img/jobpieces3.png)<br>
-
-[Node steps](https://docs.rundeck.com/docs/manual/job-plugins.html#node-steps) are designed to be dispatched to one or more nodes based on a filter defined in the Nodes section. An example of a node step is a single command or an inline script to be executed on each targeted node.<br>
-[Workflow steps](https://docs.rundeck.com/docs/manual/job-plugins.html#workflow-steps) don't operate in a node context. Instead, these steps run on the local Rundeck server and run only once in a workflow. For example, the "Refresh Project Nodes" workflow step refreshes the Rundeck node cache in case of any change.<br>
+ * [Node steps](https://docs.rundeck.com/docs/manual/job-plugins.html#node-steps) are designed to be dispatched to one or more nodes based on a filter defined in the Nodes section. An example of a node step is a single command or an inline script to be executed on each targeted node.<br>
+ * [Workflow steps](https://docs.rundeck.com/docs/manual/job-plugins.html#workflow-steps) don't operate in a node context. Instead, these steps run on the local Rundeck server and run only once in a workflow. For example, the "Refresh Project Nodes" workflow step refreshes the Rundeck node cache in case of any change.<br>
+ 
 If there is a mix of node and workflow steps (which is common) the steps will be executed in order (based on the [workflow strategy](https://docs.rundeck.com/docs/manual/job-workflows.html#workflow-control-settings)). Node steps may be executed several times, once per node, while the workflow steps will only run once.<br>
-_Note: If you have an idea of what step you are looking for, you can type text in the search field to narrow the list of steps you’ll see._<br>
+:::tip
+If you have an idea of what step you are looking for, you can type text in the search field to narrow the list of steps you’ll see.
+:::
 
 ## Nodes
 ![](~@assets/img/jobpieces4.png)<br>
@@ -95,14 +96,14 @@ This allows you to enable and disable the Job Execution (scheduled or not).<br>
 ## Notifications
 ![](~@assets/img/jobpieces9.png)<br>
 
-Job notifications are often overlooked. Notifications are messages, such as an email or HTTP service push. This is a common area for integration with other tools since a notification could go to another tool when a job begins or when it fails. One or more notifications can be set for the [notification events](https://docs.rundeck.com/docs/manual/jobs/job-notifications.html#notification-events) available.<br>
+Job notifications are often overlooked. Notifications are messages such as an email or HTTP service push. This is a common area for integration with other tools since a notification could go to another tool when a job begins or when it fails. One or more notifications can be set for the [notification events](https://docs.rundeck.com/docs/manual/jobs/job-notifications.html#notification-events) available.<br>
 
 ## Other configurations
 ![](~@assets/img/jobpieces10.png)<br>
 
 These options are generally related to job behavior.<br>
 
-### The Log level
+### Log Level
 The ability to show only the job result ("Normal") or the detailed output ("Debug").<br>
 
 ### Multiple Executions and Limits to Multiple Executions
