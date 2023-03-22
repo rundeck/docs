@@ -1,5 +1,5 @@
 ---
-title: "Runner FAQ"
+title: "FAQs"
 ---
 
 # Enterprise Runner - Frequently Asked Questions

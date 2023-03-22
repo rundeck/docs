@@ -1,5 +1,5 @@
 ---
-title: "Runner Configuration"
+title: "Configuration"
 ---
 
 # Enterprise Runner - Configuration

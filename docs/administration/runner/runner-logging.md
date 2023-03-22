@@ -1,4 +1,4 @@
-# Runner Custom Logging
+# Custom Logging
 
 By default all logs will be written to the directory `${RUNNER_LAUNCH_DIR}/runner/logs`.
 The `runner.log` is the main log.

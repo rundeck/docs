@@ -1,12 +1,15 @@
 ---
-title: "Runner Usage"
+title: "Usage"
 ---
 
 # Using Enterprise Runners in Jobs
 
+## Existing jobs
+Once the new architecture is enabled as described in [Configuration](/administration/runner/runner-setup.html),existing jobs will default to the Local Runner even if no Runner selection is made in the job definition. The Local Runner has equivalent execution context as Process Automation instance/server.
+
 ## Creating jobs with Runners
 
-Once the new architecture is enabled, the Job edit menu will display a new “Nodes & Runners” tab where Node and Runner selection is configured for the job. When creating a job or editing a job, a user can select Runners based on tags with the following options:
+Once the new architecture is enabled as described in [Configuration](/administration/runner/runner-setup.html), the Job edit menu will display a new “Nodes & Runners” tab where Node and Runner selection is configured for the job. When creating a job or editing a job, a user can select Runners based on tags with the following options:
 ![Options to select runners by tags](@assets/img/runner-use-options.png)
 
 - Selecting Runners with “Choose Tags” option from the drop-down list:

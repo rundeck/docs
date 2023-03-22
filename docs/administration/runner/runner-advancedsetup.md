@@ -1,5 +1,5 @@
 ---
-title: "Runner Advanced Setup"
+title: "Advanced Setup"
 ---
 
 
