@@ -22,11 +22,11 @@ It is also possible to execute a Job from the Job page itself though it requires
 The Job execution will display as follows: 
 ![](~@assets/img/how2runajob5.png)
 
-# Debug Output mode
+## Debug Output mode
 In both options described above, it is possible to run the job in debug mode. Just click on the list drop down button (on the right of the "Run Job Now" button) and then select "Run with Debug Output".
 ![](~@assets/img/how2runajob6.png)
 This is useful to increase the Job Output verbosity and identify problems in case of error.
 
-# The Welcome Projects
+## The Welcome Projects
 If the concept of Jobs is new to you, the [Welcome Projects](https://docs.rundeck.com/docs/learning/#getting-started) are a good starting point to learn and test more Jobs concepts. They provide an educational environment to deploy Rundeck and Remote nodes in the same place. 
 The Welcome Projects are not intended for use in actual production. Instead, they serve to demonstrate Rundeck's functionality to users.
