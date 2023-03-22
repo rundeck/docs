@@ -135,14 +135,23 @@ module.exports = [{
             {
                 title: 'Examples & Best Practices',
                 path: '/learning/solutions/automated-diagnostics/examples-overview',
-                collapsable: true,
+                collapsable: false,
                 sidebarDepth: 0,
                 children: [
                     ['/learning/solutions/automated-diagnostics/examples/public-cloud-providers.md','Public Cloud Providers'],
                     ['/learning/solutions/automated-diagnostics/examples/linux.md','Linux'],
                     ['/learning/solutions/automated-diagnostics/examples/windows.md','Windows'],
                     ['/learning/solutions/automated-diagnostics/examples/apis.md','SaaS & Internal API\'s'],
-                    ['/learning/solutions/automated-diagnostics/examples/kubernetes.md','Kubernetes'],
+                    {
+                        title: 'Kubernetes',
+                        path: '/learning/solutions/automated-diagnostics/examples/kubernetes',
+                        collapsable: true,
+                        sidebarDepth: 0,
+                        children: [
+                            ['/learning/solutions/automated-diagnostics/examples/k8s-logs-events.md','Pod Logs & K8s Events'],
+                            ['/learning/solutions/automated-diagnostics/examples/k8s-app-debug-capture.md', 'App Debug State Capture']
+                        ]
+                    },
                     ['/learning/solutions/automated-diagnostics/examples/databases.md','Databases'],
                     ['/learning/solutions/automated-diagnostics/examples/network-devices.md','Network Devices'],
                     ['/learning/solutions/automated-diagnostics/examples/observability-integrations.md','Observability Integrations']
