@@ -136,10 +136,20 @@ Choose **YAML Format** then click **Upload**.
    By default, the Java thread dump is not printed to the log output. Instead, it is saved as a file and can be 
    configured to be sent to another location inside your network or to a storage-service like **S3** or **Blob Storage**.
    :::
-8. 
+8. Toggle open the specific job steps to view their detailed output:
+![Job Output](@assets/img/oss-k8s-java-job-output.png)
 
 ---
 ### Advanced Settings
 
 #### Custom KubeConfig Location or Token Auth
 
+If the KubeConfig file is in a non-standard location, then modify Steps 1 and 2 of the Job to point to the custom kubeconfig location:
+
+1. On the job-run page, click on **Action** -> **Edit this Job...**
+2. Click on **Step 1** and in the **Authentication** section, place the kubeconfig file path into the **Kubernetes Config File Path** field. Click **Save** for the specific job step:
+   ![Custom KubeConfig](@assets/img/custom-kubeconfig-job-step.png)
+3. Repeat the prior step for **Step 2**.
+
+If using an API Token for authentication is preferred over placing the KubeConfig on the Process Automation or Rundeck server, then 
+place the token into the **API Token** field and also provide the **Cluster URL**.
