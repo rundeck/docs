@@ -34,7 +34,7 @@ The Opsadmin and FullAdmin roles are not available in Runbook Automation, and a 
 
 As of March 2023, a new Runner architecture (a.k.a.,distributedAutomation feature) is availale for Runbook Automation customers. 
 1. The new architecture simplifies how Runners are used for automating remote environments. 
-1. With the new architecture, There is a comprehensive list of plugins available to be executed with the Runners: [Remote plugins on Runners](/administration/runner/runner-remoteplugins.md)
+1. With the new architecture, there is a comprehensive list of plugins available to be executed with the Runners: [Remote plugins on Runners](/administration/runner/runner-remoteplugins.md)
 1. The new architecture is off by default so please [review the updated docs](/administration/runners/) on how to enable and use the new features. The documents also cover how to convert to the new architecture from the current default architecture for Runners.
 
 In the current default architecture plugin job steps generally execute in Runbook Automation. However, job steps that implement local NodeExecutor or FileCopier are delegated to execute on the Runner automatically. If a Runner is not configured these "local" steps will fail. Runners that match the node filter specified in the Runner configuration will assume the role of the local node. 
@@ -98,5 +98,5 @@ so in the future. All DNS records resolve to multiple IPs, which you can find by
 querying the A records for your subdomain using `dig` or `nslookup`.
 When using the Runner feature, your system must be able to make outbound
 connections to your subdomain on TCP port 443 (https).
-- **What does the "ConfigurationFailure: Local Executor is disabled" error mean?
-In Runbook Automation local command execution that shells out to the instance is disabled for security reasons. Command execution should be dispatch to nodes or Runners, instead.
+- **What does the "ConfigurationFailure: Local Executor is disabled" error mean?**
+In Runbook Automation local command execution that shells out to the instance is disabled for security reasons. Command execution should be run on the Remote Runners, or dispatched to node through the Remote Runners.
