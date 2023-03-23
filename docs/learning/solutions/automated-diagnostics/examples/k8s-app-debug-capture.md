@@ -114,9 +114,32 @@ To install the Kubernetes plugins just check the following steps:
 
 ### Running Commands in Pods and Capturing Output
 
+:::tip Skip Ahead
+If you are using Runbook Automation, simply look for and select the **Java Thread Dump from Kubernetes Pod** job in the **Automated Diagnostics**
+project. If you do _not_ have the **Automated Diagnostics** project, you can download and import it [here](https://github.com/rundeckpro/automated-diagnostics-project/releases/latest). 
+<br>Then, skip to **Step 5**.
+:::
+
 1. Download the template job by right-clicking and selecting **`Save Link As...`** [here](https://raw.githubusercontent.com/rundeck/welcome-project-community/main/runbooks/yaml/Solutions/Java_Thread_Dump_Kubernetes_Pod.yaml).
-2. 
+2. Navigate to the **Jobs** tab and click on **Job Actions** -> **Upload Definition**.
+3. From the **Choose File** prompt, select the `.yaml` file downloaded in Step 1.
+Choose **YAML Format** then click **Upload**.
+   :::warning Custom Kubernetes Configuration 
+   If the KubeConfig file is not saved in the default location of **`$HOME/.kube/config`** or if using a Kubernetes API Token is preferred, then follow the steps below for [Custom KubeConfig Location or Token Auth](#custom-kubeconfig-location-or-token-auth).
+   :::
+4. If the steps were followed in the [Pre-requisites & Environment Setup](#pre-requisites-environment-setup) section, type **`auto-diagnostics`** into the **Namespace** field.
+5. Type **`tomcat`** into the **Pod Name** field.
+6. (Optional) type **`tomcat`** into the **Contaienr Name** field:
+![Job Input Parameters](@assets/img/oss-k8s-java-job-invoke-screen.png)
+7. Click **Run Job Now**.
+   :::tip Note
+   By default, the Java thread dump is not printed to the log output. Instead, it is saved as a file and can be 
+   configured to be sent to another location inside your network or to a storage-service like **S3** or **Blob Storage**.
+   :::
+8. 
 
+---
+### Advanced Settings
 
-
+#### Custom KubeConfig Location or Token Auth
 
