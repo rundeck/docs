@@ -25,9 +25,12 @@ Additionally, we are announcing some exciting product updates this month. [Sign 
 
 ## Overview
 
-Check out the new features and enhancements for PagerDuty Process Automation, PagerDuty Runbook Automation, and Rundeck Community included in this release. This release includes two new Plugin Suites to simplify configuration of plugins and the release of an official Docker image for the Runner.
+Check out the new features and enhancements for PagerDuty Process Automation, PagerDuty Runbook Automation, and Rundeck Community included in this release. With the release of PagerDuty Runbook Automation 4.11.0 and PagerDuty Process Automation 4.11.0, we are introducing a new architecture for orchestrating worklfows across cloud and hybrid environments through the Enterprise Runners. 
+In addition, this release includes two new Plugin Suites to simplify configuration of plugins and the release of an official Docker image for the Runner.
+
 
 ### Highlights
+The [new architecture for Runnersi](/administration/runner/) offers flexibility to create powerful and resilient cross-environment jobs.The new architecture separates workflow orchestration from task execution. It offers next- generation remote Runners that are now integrated with common infrastructure such as Ansible, Docker, and Kubernetes that execute locally within the private network. The new architecture now allows job authors to develop automated jobs that incorporate multiple environments, and job authors have the flexibility to specify where and how Runners participate in executing distributed job steps.
 
 This release includes new Plugin Suites for ServiceNow and Jira. As a reminder, [Plugin Suites streamline the configuration](/history/4_x/version-4.9.0.md) of plugins. Now users can update plugin configurations from a single location (previously this had to be done in multiple locations). In addition, this release includes an official container image for the [Runner](/administration/runner/#docker).
 
@@ -103,5 +106,6 @@ This release includes new Plugin Suites for ServiceNow and Jira. As a reminder, 
 * Luis Toledo ([ltamaster](https://github.com/ltamaster))
 * Miguel Ramos ([mishingo](https://github.com/mishingo))
 * Osman Albarran ([Oalbarran94](https://github.com/Oalbarran94))
+* Peco Karayanev ([bproverb](https://github.com/bproverb))
 * Rodrigo Navarro ([ronaveva](https://github.com/ronaveva))
 * Stephen Joyner ([sjrd218](https://github.com/sjrd218))

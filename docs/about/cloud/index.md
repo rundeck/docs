@@ -32,49 +32,39 @@ The Opsadmin and FullAdmin roles are not available in Runbook Automation, and a 
 
 ### Job execution
 
-Plugin job steps generally execute in Runbook Automation. However, job steps that implement local NodeExecutor or FileCopier are delegated to execute on the Runner automatically. If a Runner is not configured these "local" steps will fail. Runners that match the node filter target will assume the role of the local node.  
+As of March 2023, a new Runner architecture (a.k.a.,distributedAutomation feature) is availale for Runbook Automation customers. 
+1. The new architecture simplifies how Runners are used for automating remote environments. 
+1. With the new architecture, there is a comprehensive list of plugins available to be executed with the Runners: [Remote plugins on Runners](/administration/runner/runner-remoteplugins.md)
+1. The new architecture is off by default so please [review the updated docs](/administration/runners/) on how to enable and use the new features. The documents also cover how to convert to the new architecture from the current default architecture for Runners.
+
+In the current default architecture plugin job steps generally execute in Runbook Automation. However, job steps that implement local NodeExecutor or FileCopier are delegated to execute on the Runner automatically. If a Runner is not configured these "local" steps will fail. Runners that match the node filter specified in the Runner configuration will assume the role of the local node. 
+With the new architecture we have changed this behavior and now Runners a explicitly selected in the job definition, where Remote plugins are packaged with the Runner and can execute withing the private network where they are deployed. Additionally, there is a Local Runner that represents the Runbook Automation account instance, where plugins other than the [Remote plugins on Runners](/administration/runner/runner-remoteplugins.md) can execute. If the Local Runner is selected for a job containing a plugin that is listed on the remote list above, a runtime error will be raised: "The following plugins cannot be run in the Local Runneri:<remote plugin>"
 
 ### Plugins NOT available in cloud
-The following plugins are not currently available in Runbook Automation at the moment. The following block list is in place:
+The following plugins are not available in Runbook Automation at the moment. The following block list is in place:
 
 ```
-    fileNameEntries:
-      - openssh-node-execution
-      - rundeck-ansible
-      - rundeck-copyfile-plugin
-      - rundeck-localexec
-      - rundeck-script-plugin
-      - rundeckpro-cyberark
-      - local-script
-      - waitfor
-      - aws-s3-steps
-      - rundeck-azure-storage-plugin
-      - rundeckpro-rundeck-filetransfer
-      - command-v
-      - file-v
-      - github-script-plugin
-      - rundeckpro-vmware-plugin
-      - puppet-apply
-    providerNameEntries:
-      NodeExecutor:
-        - local
-        - sshj-ssh
-      FileCopier:
-        - sshj-scp
-        - script-copy
-        - local
-      ResourceModelSource:
-        - file
-        - directory
-        - script
-      FileUpload:
-        - filesystem-temp
+   fileNameEntries:
+      - rundeck-copyfile-plugin
+      - rundeck-localexec
+      - rundeck-script-plugin
+      - rundeckpro-cyberark
+      - github-script-plugin
+      - rundeckpro-vmware-plugin
+    providerNameEntries:
+      FileCopier:
+        - script-copy
+      ResourceModelSource:
+        - file
+        - directory
+        - script
+      FileUpload:
+        - filesystem-temp
 ```
 
+#### Key Storage Access
 
-#### Key Storage
-
-Currently, Runbook Automation can only connect to Cloud based keystore providers (Vault, Thycotic, CyberArk have SaaS solutions) with Runbook Automation keystore plugins. Runbook Automation keystore plugins have no connectivity to on-premise keystores.
+Currently, Runbook Automation can only connect to Cloud based keystore providers (Vault, Thycotic, CyberArk have SaaS solutions) with Runbook Automation keystore plugins. Runbook Automation keystore plugins have no connectivity to on-premise keystores. Connecting with keystores in the private network are coming soon.
 
 #### Runner administration
 [Read the Runner docs](/administration/runner/index.md) about how to install, configure and manage the Runner.
@@ -108,3 +98,5 @@ so in the future. All DNS records resolve to multiple IPs, which you can find by
 querying the A records for your subdomain using `dig` or `nslookup`.
 When using the Runner feature, your system must be able to make outbound
 connections to your subdomain on TCP port 443 (https).
+- **What does the "ConfigurationFailure: Local Executor is disabled" error mean?**
+In Runbook Automation local command execution that shells out to the instance is disabled for security reasons. Command execution should be run on the Remote Runners, or dispatched to node through the Remote Runners.
