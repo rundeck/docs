@@ -28,7 +28,7 @@ How to configure and run Jobs with Runnersets.
 
 List of plugins available on the remote Runners.
 
-## [Advanced topics](/administration/runner/runner-asvancedsetup.md)
+## [Advanced topics](/administration/runner/runner-advancedsetup.md)
 
 Doc covers more adbanved Runner deployment and configuration scenarios.
 
