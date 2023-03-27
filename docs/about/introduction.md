@@ -8,7 +8,7 @@ When used for incident management, Rundeck will help you have shorter incidents 
 
 When used for general operations work, Rundeck will help alleviate the time-consuming and repetitive toil that currently consumes too much of your team's time.
 
-For more information on use cases, see the [New to Rundeck] page.
+For more information on use cases, visit [the Rundeck site](https://www.rundeck.com/).
 
 With Rundeck, it is simple and easy to create workflows (called "jobs") from any of your existing tools or scripts. Trigger Rundeck jobs from the Web GUI, API, CLI, or by schedule. Rundeck's access control features make it easy to safely delegate control of tasks to those traditionally outside of operations.
 
@@ -30,7 +30,6 @@ Built and tested for the enterprise, Process Automation includes exclusive featu
 
 _NOTE: Process Automation was recently renamed from Rundeck Enteprise. You may still see references to Rundeck Enteprise/Pro here and there, as we work to update our documentation. Just know that they are the same thing._
 
-[New to Rundeck]: https://www.rundeck.com/new-to-rundeck
 [Process Automation]: https://www.pagerduty.com/platform/automation/process-software/
 [github]: https://github.com/rundeck/rundeck
 
