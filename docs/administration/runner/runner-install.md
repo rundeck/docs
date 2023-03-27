@@ -22,6 +22,36 @@ Once you have [configured and downloaded a Runner](/administration/runner/runner
 1. Runner Logs are located in the ./runner/logs folder under the folder where the jar was executed from. The runner.log file contains operational and important messages about the runner. operations.log tracks an operation starts and if it succeeds or fails. 
 Read more about [Runner logging configuration](/administration/runner/runner-logging.md) to customize logging.
 
+## Linux service for the Runner 
+We recommend setting up the Runners to run as services through systemd.
+
+1. Create a systemd configuration file `/etc/systemd/system/runner.service` with the following contents:
+```
+[Unit]
+Description=Process Automation Runner 
+
+[Service]
+WorkingDirectory=/opt/apps/runner
+Type=simple
+User=rundeck
+Group=rundeck
+
+# Put your runner's filename here
+ExecStart=/usr/bin/java -jar runner-b40ff722-feac-4f02-9dd1-9b31f677e5a1.jar
+
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+```
+
+1. Run the following shell commands to enable and start the service.
+```
+# sudo systemctl daemon-reload
+# sudo systemctl enable runner
+# sudo service runner start
+```
+
 ## Using Runners in containers
 
 A Runner docker image is available from [Dockerhub](https://hub.docker.com/r/rundeckpro/runner). 
