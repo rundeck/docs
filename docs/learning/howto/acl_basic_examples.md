@@ -316,4 +316,4 @@ by:
 * Find more examples in `/etc/rundeck/etc` path (RPM/DEB based installation), the `.aclpolicy_template` files contain examples of the common ACLs scenarios.
 * The [official documentation](https://docs.rundeck.com/docs/manual/document-format-reference/aclpolicy-v10.html#aclpolicy) explains any ACL element with a definition example.
 * [This](https://resources.rundeck.com/learning/acl-policy-files-by-example/) Rundeck Resources entry by Nathan Fluegel.
-* And the recording from [this](https://rundeck.wistia.com/medias/oq8px2sjn4) Office Hours on Best Practices for Setting up Rundeck ACLs.
+* And the recording from [this](https://www.youtube.com/watch?v=i859f1WG3Bo) Office Hours on Best Practices for Setting up Rundeck ACLs.
