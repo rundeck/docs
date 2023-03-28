@@ -30,7 +30,7 @@ List of plugins available on the remote Runners.
 
 ## [Advanced topics](/administration/runner/runner-advancedsetup.md)
 
-Doc covers more adbanved Runner deployment and configuration scenarios.
+Doc covers more advanced Runner deployment and configuration scenarios.
 
 ## [Custom logging](/administration/runner/runner-logging.md)
 
