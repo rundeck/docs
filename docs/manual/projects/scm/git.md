@@ -68,6 +68,12 @@ Changing this value modifies the file definition and files need to be pushed aga
 
 ### Authentication Configuration
 
+:::warning
+    ***WARNING***
+
+    Git plugin will be disabled from the project if a user doesn't have permissions to access the password/key configured in the plugin to access the desired repository.
+:::
+
 **SSH: Strict Host Key Checking**: If yes, require remote host SSH key is defined in the `~/.ssh/known_hosts` file, otherwise do not verify.
 
 **SSH Key Storage Path** (Optional): A Storage Key path containing the private key to be used with git authentication.
