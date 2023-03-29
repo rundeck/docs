@@ -37,7 +37,9 @@ Although the remote execution policy is reevaluated on every execution, it is **
 
 #### Execution Cleaning
 
-When a 
+For reasons external to the cluster, members may go offline or be interrupted; It is for this reason that the Rundeck Cluster can automatically clean up the executions on certain occasions that we will describe below:
+
+- **Stale Executions**: when a cluster member starts running a job, the job enters in 'Running' state, if during the execution, the cluster member goes offline and there are no cluster members that can perform the "Autotakeover" action, the Job execution will be cleaned up when the cluster scales back into replicas, leaving the job with the "Incomplete" status by default.
 
 #### Policy
 
