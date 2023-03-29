@@ -34,6 +34,11 @@ After the job runs a couple of times it is possible to see that the executions w
 Although the remote execution policy is reevaluated on every execution, it is **also** possible to make cluster members **reevaluate** the remote execution policy **only once** when the job is scheduled. This is possible by setting to **false** the following property:
 `rundeck.clusterMode.remoteScheduledExecutionPolicy.enabled`
 :::
+
+#### Execution Cleaning
+
+When a 
+
 #### Policy
 
 ```
