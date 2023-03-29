@@ -17,7 +17,7 @@ Release Date: March 13th, 2023
 - [Download the Releases](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
 - [Upgrade instructions](/upgrading/)
-- [Twitch Stream March 28th, 2023](https://www.twitch.tv/pagerduty/schedule)
+- [Watch the Live Stream Release Recap](https://youtu.be/bqPzA0S7hIY)
 
 ::: 
 Additionally, we are announcing some exciting product updates this month. [Sign up for the launch webinar](https://www.pagerduty.com/resources/webinar/bridging-network-silos-with-new-distributed-automation/?utm_medium=email&utm_source=marketo&utm_campaign=email_customers_Global-Wb-BridgeNetworkSilosDistributedAutomation-Email&utm_content=4.11_release_notes) to learn more.
