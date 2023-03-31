@@ -191,12 +191,15 @@ Powershell script steps are fully supported on the Runner. Commands that run thr
 
 ### Secure Your Deployment
 
-Please make sure to install the Runner jar into the current user's private directory e.g. The `HOME` direcotry of the user. If the runner was installed in a public accessbile directory, script files created by the runner can be modified by other users in the same OS. Not well-isolated runner installation is exposed to potential security risks:
+We recommend installing Runners in private directories that are only accessible by the user/group holding the runner process (e.g.: `C:\Users\runnerUser\` directory) so that other users are not able to access or even modify script files created by the runner. 
+::: warning
+Not well-isolated runner installations are exposed to potential security risks like:
 
 	1. Privilege escalation, in the case that the runner agent runs with Administrator privileges
 	2. Local user impersonation by allowing code execution in the session of the runner
 	3. Denial of service of the Job functionality for the specific runner
 	4. AV / EDR evasion by facilitating code execution in remote processes
+:::
 
 ## Configure using environment variables 
 
