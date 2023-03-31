@@ -71,7 +71,15 @@ Changing this value modifies the file definition and files need to be pushed aga
 :::warning
     ***WARNING***
 
-    Git plugin will be disabled from the project if a user doesn't have permissions to access the password/key configured in the plugin to access the desired repository.
+    Git plugin will be disabled from the project if a user doesn't have permissions to access the password/key configured in the plugin to access the desired repository, leaving in the GUI and logs messages like the following:
+
+    _GUI_:
+    ![Disabled SCM in Jobs Section](~@assets/img/SCM-403.png)
+    
+    _Console_:
+    ```bash
+    ERROR controllers.MenuController - [SCM disabled] User don't have permissions to the configuration key. Please refer to the system's SCM key owner or administrator for further actions.
+    ```
 :::
 
 **SSH: Strict Host Key Checking**: If yes, require remote host SSH key is defined in the `~/.ssh/known_hosts` file, otherwise do not verify.
