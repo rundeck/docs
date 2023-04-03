@@ -41,16 +41,85 @@ Diagnostics retrieved using **Runbook Automation** can be made available in mult
 ## Examples & Templates
 This guide includes a full section on Examples & Best Practices - a preview of that is shown here:
 
-|Category|Examples|
-|:----:|:--------|
-[<img src="@assets/img/aws-logo.png" style="border:none;">](/learning/solutions/automated-diagnostics/examples/public-cloud-providers.html)<br>[**Amazon Web Services**](/learning/solutions/automated-diagnostics/examples/public-cloud-providers.html)| _Stopped ECS Task Errors_<br><br> _ELB Targets Health_<br><br> _CloudWatch Logs_
-[<img src="@assets/img/azure-logo.png" style="border:none;">](/learning/solutions/automated-diagnostics/examples/public-cloud-providers.html#azure)<br>[**Microsoft Azure**](/learning/solutions/automated-diagnostics/examples/public-cloud-providers.html#azure)|_Function App Health_<br><br> _Troubleshoot Azure File Sync_<br><br> _Load Balancer Health Probes_
-[<img src="@assets/img/google-cloud-logo.png" style="border:none;">](/learning/solutions/automated-diagnostics/examples/public-cloud-providers.html#google-cloud-platform-gcp)<br>[**Google Cloud Platform**](/learning/solutions/automated-diagnostics/examples/public-cloud-providers.html#google-cloud-platform)|_Debug Load Balancer Health Checks_<br><br> _Troubleshooting Firewall Rules_<br><br> _GKE Cluster Connectivity_
-[<img src="@assets/img/linux-logo.png" style="border:none;">](/learning/solutions/automated-diagnostics/examples/linux.html)<br>[**Linux OS**](/learning/solutions/automated-diagnostics/examples/linux.html)|_List Top CPU Consuming Processes_<br><br> _Retrieve Errors from Syslog_<br><br> _List Top Disk Consuming Files_
-[<img src="@assets/img/windows-logo.png" style="border:none;">](/learning/solutions/automated-diagnostics/examples/windows.html)<br>[**Windows OS**](/learning/solutions/automated-diagnostics/examples/windows.html)|_Active Directory Replication Diagnostics_<br><br> _Retrieve IIS Web Server Logs_<br><br> _SMB Connection Failures_
-[<img src="@assets/img/rest-api-logo.png" style="border:none;">](/learning/solutions/automated-diagnostics/examples/apis.html)<br>[**APIs**](/learning/solutions/automated-diagnostics/examples/apis.html)|_Check Internal API Response Body_<br><br> _Retrieve Diagnostics from SaaS Tools_<br><br>
-[<img src="@assets/img/kubernetes-logo.png" style="border:none;">](/learning/solutions/automated-diagnostics/examples/kubernetes.html)<br>[**Kubernetes**](/learning/solutions/automated-diagnostics/examples/kubernetes.html)|_Retrieve Recent Pod Logs_<br><br> _Recent Kubernetes Events_<br><br> _Pod Status & Error Messages_
-[<img src="@assets/img/mysql-logo.png" style="border:none;">](/learning/solutions/automated-diagnostics/examples/databases.html)<br>[**Databases**](/learning/solutions/automated-diagnostics/examples/Databases.html)|_Top Resource Consuming Queries_<br><br> _Blocking Locks_<br><br> _Missing Indexes_
-[<img src="@assets/img/network-switch.png" style="border:none;">](/learning/solutions/automated-diagnostics/examples/network-devices.html)<br>[**Network Devices**](/learning/solutions/automated-diagnostics/examples/network-devices.html)|_BGP Route Flapping_<br><br> _Spanning Tree Issues_<br><br> _Duplex Mismatch_
-[<img src="@assets/img/cloudwatch-logo.png" style="border:none;">](/learning/solutions/automated-diagnostics/examples/observability-integrations.html)<br>[**Observability Integrations**](/learning/solutions/automated-diagnostics/examples/observability-integrations.html)|_Retrieve Application Logs_<br><br> _Surface Relevant Graphs_<br><br> _Capture Time Sensitive Diagnostics_
-
+<style type="text/css">
+.tg  {border:none;border-collapse:collapse;border-spacing:0;margin:0px auto;}
+.tg td{border-style:solid;border-width:0px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;
+  padding:10px 5px;word-break:normal;}
+.tg th{border-style:solid;border-width:0px;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;
+  overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-8jgo{border-color:#ffffff;text-align:center;vertical-align:top}
+@media screen and (max-width: 767px) {.tg {width: auto !important;}.tg col {width: auto !important;}.tg-wrap {overflow-x: auto;-webkit-overflow-scrolling: touch;margin: auto 0px;}}</style>
+<div class="tg-wrap"><table class="tg" style="undefined;table-layout: fixed; width: 1213px">
+<colgroup>
+<col style="width: 286px">
+<col style="width: 274px">
+<col style="width: 325px">
+<col style="width: 328px">
+</colgroup>
+<tbody>
+  <tr>
+    <td class="tg-8jgo"><img src="@assets/img/ecs.png" width="100" height="100" border="0"><br><br>Stopped ECS Task Errors</td>
+    <td class="tg-8jgo"><img src="@assets/img/elb.svg" width="100" height="100"><br><br>ELB Targets Health</td>
+    <td class="tg-8jgo"><img src="@assets/img/cloudwatch-logo.png" width="100" height="100"><br><br>CloudWatch Logs</td>
+    <td class="tg-8jgo"><img src="@assets/img/azure-function.png" width="100" height="100"><br><br>Azure Function App Health</td>
+  </tr>
+  <tr>
+    <td class="tg-8jgo"><img src="@assets/img/azure-logo.png" width="100" height="100"><br><br>Azure File Sync</td>
+    <td class="tg-8jgo"><img src="@assets/img/azure-load-balancer.png" width="100" height="100"><br><br>Load Balancer Health Probes</td>
+    <td class="tg-8jgo"><img src="@assets/img/gcp-load-balancer.png" width="100" height="100"><br><br>Load Balancer Health Checks</td>
+    <td class="tg-8jgo"><img src="@assets/img/gcp-firewall.png" width="100" height="100"><br><br>Troubleshoot Firewall Rules</td>
+  </tr>
+  <tr>
+    <td class="tg-8jgo"><img src="@assets/img/gke-logo.png" width="100" height="100"><br><br>GKE Cluster Connectivity</td>
+    <td class="tg-8jgo"><img src="@assets/img/linux-logo.png" width="100" height="100"><br><br>Top CPU Consuming Processes</td>
+    <td class="tg-8jgo"><img src="@assets/img/linux-logo.png" width="100" height="100"><br><br>Retrieve Errors from Syslog</td>
+    <td class="tg-8jgo"><img src="@assets/img/linux-logo.png" width="100" height="100"><br><br>List Top Disk Consuming Files</td>
+  </tr>
+  <tr>
+    <td class="tg-8jgo"><img src="@assets/img/active-directory-logo.svg" width="100" height="100"><br><br>Active Directory Replication Statistics</td>
+    <td class="tg-8jgo"><img src="@assets/img/windows-logo.png" width="100" height="100"><br><br>Retrieve IIS Web Server Logs</td>
+    <td class="tg-8jgo"><img src="@assets/img/windows-logo.png" width="100" height="100"><br><br>SMB Connection Failures</td>
+    <td class="tg-8jgo"><img src="@assets/img/webhook-logo.jpeg" width="100" height="100"><br><br>API Health Check</td>
+    <td class="tg-8jgo"></td>
+  </tr>
+  <tr>
+    <td class="tg-8jgo"><img src="@assets/img/kubernetes-logo.png" width="100" height="100"><br><br>Recent Pod Logs</td>
+    <td class="tg-8jgo"><img src="@assets/img/kubernetes-logo.png" width="100" height="100"><br><br>Recent Kubernetes Events</td>
+    <td class="tg-8jgo"><img src="@assets/img/kubernetes-logo.png" width="100" height="100"><br><br>Pod Status & Errors</td>
+    <td class="tg-8jgo"><img src="@assets/img/kubernetes-logo.png" width="100" height="100"><br><br>Retrieve Deployment Diagnostics</td>
+  </tr>
+  <tr>
+    <td class="tg-8jgo"><img src="@assets/img/mysql-logo.png" width="100" height="100"><br><br>Top Resource Consuming Queries</td>
+    <td class="tg-8jgo"><img src="@assets/img/mysql-logo.png" width="100" height="100"><br><br>Blocking Locks</td>
+    <td class="tg-8jgo"><img src="@assets/img/mysql-logo.png" width="100" height="100"><br><br>Missing Indexes</td>
+    <td class="tg-8jgo"><img src="@assets/img/network-switch.png" width="100" height="100"><br><br>BGP Route Flapping</td>
+  </tr>
+  <tr>
+    <td class="tg-8jgo"><img src="@assets/img/network-switch.png" width="100" height="100"><br><br>Check Spanning Tree</td>
+    <td class="tg-8jgo"><img src="@assets/img/network-switch.png" width="100" height="100"><br><br>Check Duplex Mismatch</td>
+    <td class="tg-8jgo"><img src="@assets/img/cloudwatch-logo.png" width="100" height="100"><br><br>Retrieve Application Logs</td>
+    <td class="tg-8jgo"><img src="@assets/img/cloudwatch-logo.png" width="100" height="100"><br><br>Retrieve Saved Queries</td>
+  </tr>
+  <tr>
+    <td class="tg-8jgo"><img src="@assets/img/redis-logo.jpeg" width="100" height="100"><br><br>Intrinsic Latency Diagnostics Test</td>
+    <td class="tg-8jgo"><img src="@assets/img/redis-logo.jpeg" width="100" height="100"><br><br>Check Redis Port Listening</td>
+    <td class="tg-8jgo"><img src="@assets/img/redis-logo.jpeg" width="100" height="100"><br><br>Retrieve Redis Memory Statistics</td>
+    <td class="tg-8jgo"><img src="@assets/img/redis-logo.jpeg" width="100" height="100"><br><br>Slow Log Entries</td>
+  </tr>
+  <tr>
+    <td class="tg-8jgo"><img src="@assets/img/rds-logo.png" width="100" height="100"><br><br>Check Database Storage Status</td>
+    <td class="tg-8jgo"><img src="@assets/img/nginx-logo.png" width="100" height="100"><br><br>Query Nginx Status Endpoint</td>
+    <td class="tg-8jgo"><img src="@assets/img/nginx-logo.png" width="100" height="100"><br><br>Retrieve Error Logs</td>
+    <td class="tg-8jgo"><img src="@assets/img/nginx-logo.png" width="100" height="100"><br><br>Test Nginx Configuration</td>
+  </tr>
+  <tr>
+    <td class="tg-8jgo"><img src="@assets/img/postgres-logo.png" width="100" height="100"><br><br>Retrieve Recent PostgreSQL Logs</td>
+    <td class="tg-8jgo"><img src="@assets/img/postgres-logo.png" width="100" height="100"><br><br>Test for PostgreSQL Server Running</td>
+    <td class="tg-8jgo"><img src="@assets/img/cassandra-logo.png" width="100" height="100"><br><br>Check Compaction Statistics</td>
+    <td class="tg-8jgo"><img src="@assets/img/kafka-logo.png" width="100" height="100"><br><br>Describe Kafka Topic</td>
+  </tr>
+  <tr>
+    <td class="tg-8jgo"><img src="@assets/img/kafka-logo.png" width="100" height="100"><br><br>View Topic Messages</td>
+  </tr>
+</tbody>
+</table></div>
