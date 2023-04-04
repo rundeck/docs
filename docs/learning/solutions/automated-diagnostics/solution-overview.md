@@ -58,47 +58,131 @@ This guide includes a full section on Examples & Best Practices - a preview of t
 </colgroup>
 <tbody>
   <tr>
-    <td class="tg-8jgo"><img src="@assets/img/ecs.png" width="100" height="100" border="0"><br><br>Stopped ECS Task Errors</td>
-    <td class="tg-8jgo"><img src="@assets/img/elb.svg" width="100" height="100"><br><br>ELB Targets Health</td>
-    <td class="tg-8jgo"><img src="@assets/img/cloudwatch-logo.png" width="100" height="100"><br><br>CloudWatch Logs</td>
-    <td class="tg-8jgo"><img src="@assets/img/azure-function.png" width="100" height="100"><br><br>Azure Function App Health</td>
+    <td class="tg-8jgo">
+        <a href="/learning/solutions/automated-diagnostics/examples/public-cloud-providers">
+        <img src="@assets/img/ecs.png" width="100" height="100" border="0"><br><br>Stopped ECS Task Errors</a>
+    </td>
+    <td class="tg-8jgo">
+        <a href="/learning/solutions/automated-diagnostics/examples/public-cloud-providers">
+        <img src="@assets/img/elb.svg" width="100" height="100"><br><br>ELB Targets Health</a>
+    </td>
+    <td class="tg-8jgo">
+        <a href="/learning/solutions/automated-diagnostics/examples/public-cloud-providers">
+        <img src="@assets/img/cloudwatch-logo.png" width="100" height="100"><br><br>CloudWatch Logs</a>
+    </td>
+    <td class="tg-8jgo">
+        <a href="/learning/solutions/automated-diagnostics/examples/public-cloud-providers.html#azure">
+        <img src="@assets/img/azure-function.png" width="100" height="100"><br><br>Azure Function App Health</a>
+    </td>
   </tr>
   <tr>
-    <td class="tg-8jgo"><img src="@assets/img/azure-logo.png" width="100" height="100"><br><br>Azure File Sync</td>
-    <td class="tg-8jgo"><img src="@assets/img/azure-load-balancer.png" width="100" height="100"><br><br>Load Balancer Health Probes</td>
-    <td class="tg-8jgo"><img src="@assets/img/gcp-load-balancer.png" width="100" height="100"><br><br>Load Balancer Health Checks</td>
-    <td class="tg-8jgo"><img src="@assets/img/gcp-firewall.png" width="100" height="100"><br><br>Troubleshoot Firewall Rules</td>
+    <td class="tg-8jgo">
+        <a href="/learning/solutions/automated-diagnostics/examples/public-cloud-providers.html#azure">
+        <img src="@assets/img/azure-logo.png" width="100" height="100"><br><br>Azure File Sync</a>
+    </td>
+    <td class="tg-8jgo">
+        <a href="/learning/solutions/automated-diagnostics/examples/public-cloud-providers.html#azure">
+        <img src="@assets/img/azure-load-balancer.png" width="100" height="100"><br><br>Load Balancer Health Probes</a>
+    </td>
+    <td class="tg-8jgo">
+        <a href="/learning/solutions/automated-diagnostics/examples/public-cloud-providers.html#google-cloud-platform-gcp">
+        <img src="@assets/img/gcp-load-balancer.png" width="100" height="100"><br><br>Load Balancer Health Checks</a>
+    </td>
+    <td class="tg-8jgo">
+        <a href="/learning/solutions/automated-diagnostics/examples/public-cloud-providers.html#google-cloud-platform-gcp">
+        <img src="@assets/img/gcp-firewall.png" width="100" height="100"><br><br>Troubleshoot Firewall Rules</a>
+    </td>
   </tr>
   <tr>
-    <td class="tg-8jgo"><img src="@assets/img/gke-logo.png" width="100" height="100"><br><br>GKE Cluster Connectivity</td>
-    <td class="tg-8jgo"><img src="@assets/img/linux-logo.png" width="100" height="100"><br><br>Top CPU Consuming Processes</td>
-    <td class="tg-8jgo"><img src="@assets/img/linux-logo.png" width="100" height="100"><br><br>Retrieve Errors from Syslog</td>
-    <td class="tg-8jgo"><img src="@assets/img/linux-logo.png" width="100" height="100"><br><br>List Top Disk Consuming Files</td>
+    <td class="tg-8jgo">
+        <a href="/learning/solutions/automated-diagnostics/examples/public-cloud-providers.html#google-cloud-platform-gcp">
+        <img src="@assets/img/gke-logo.png" width="100" height="100"><br><br>GKE Cluster Connectivity</a>
+    </td>
+    <td class="tg-8jgo">
+        <a href="/learning/solutions/automated-diagnostics/examples/linux">
+        <img src="@assets/img/linux-logo.png" width="100" height="100"><br><br>Top CPU Consuming Processes</a>
+    </td>
+    <td class="tg-8jgo">
+        <a href="/learning/solutions/automated-diagnostics/examples/linux">
+        <img src="@assets/img/linux-logo.png" width="100" height="100"><br><br>Retrieve Errors from Syslog</a>
+    </td>
+    <td class="tg-8jgo">
+        <a href="/learning/solutions/automated-diagnostics/examples/linux">
+        <img src="@assets/img/linux-logo.png" width="100" height="100"><br><br>List Top Disk Consuming Files</a>
+    </td>
   </tr>
   <tr>
-    <td class="tg-8jgo"><img src="@assets/img/active-directory-logo.svg" width="100" height="100"><br><br>Active Directory Replication Statistics</td>
-    <td class="tg-8jgo"><img src="@assets/img/windows-logo.png" width="100" height="100"><br><br>Retrieve IIS Web Server Logs</td>
-    <td class="tg-8jgo"><img src="@assets/img/windows-logo.png" width="100" height="100"><br><br>SMB Connection Failures</td>
-    <td class="tg-8jgo"><img src="@assets/img/webhook-logo.jpeg" width="100" height="100"><br><br>API Health Check</td>
+    <td class="tg-8jgo">
+        <a href="/learning/solutions/automated-diagnostics/examples/windows">
+        <img src="@assets/img/active-directory-logo.svg" width="100" height="100"><br><br>Active Directory Replication Statistics</a>
+    </td>
+    <td class="tg-8jgo">
+        <a href="/learning/solutions/automated-diagnostics/examples/windows">
+        <img src="@assets/img/windows-logo.png" width="100" height="100"><br><br>Retrieve IIS Web Server Logs</a>
+    </td>
+    <td class="tg-8jgo">
+        <a href="/learning/solutions/automated-diagnostics/examples/windows">
+        <img src="@assets/img/windows-logo.png" width="100" height="100"><br><br>SMB Connection Failures</a>
+    </td>
+    <td class="tg-8jgo">
+        <a href="/learning/solutions/automated-diagnostics/examples/apis">
+        <img src="@assets/img/webhook-logo.jpeg" width="100" height="100"><br><br>API Health Check</a>
+    </td>
     <td class="tg-8jgo"></td>
   </tr>
   <tr>
-    <td class="tg-8jgo"><img src="@assets/img/kubernetes-logo.png" width="100" height="100"><br><br>Recent Pod Logs</td>
-    <td class="tg-8jgo"><img src="@assets/img/kubernetes-logo.png" width="100" height="100"><br><br>Recent Kubernetes Events</td>
-    <td class="tg-8jgo"><img src="@assets/img/kubernetes-logo.png" width="100" height="100"><br><br>Pod Status & Errors</td>
-    <td class="tg-8jgo"><img src="@assets/img/kubernetes-logo.png" width="100" height="100"><br><br>Retrieve Deployment Diagnostics</td>
+    <td class="tg-8jgo">
+        <a href="/learning/solutions/automated-diagnostics/examples/kubernetes">
+        <img src="@assets/img/kubernetes-logo.png" width="100" height="100"><br><br>Recent Pod Logs</a>
+    </td>
+    <td class="tg-8jgo">
+        <a href="/learning/solutions/automated-diagnostics/examples/kubernetes">
+        <img src="@assets/img/kubernetes-logo.png" width="100" height="100"><br><br>Recent Kubernetes Events</a>
+    </td>
+    <td class="tg-8jgo">
+        <a href="/learning/solutions/automated-diagnostics/examples/kubernetes">
+        <img src="@assets/img/kubernetes-logo.png" width="100" height="100"><br><br>Pod Status & Errors</a>
+    </td>
+    <td class="tg-8jgo">
+        <a href="/learning/solutions/automated-diagnostics/examples/kubernetes">
+        <img src="@assets/img/kubernetes-logo.png" width="100" height="100"><br><br>Retrieve Deployment Diagnostics</a>
+    </td>
   </tr>
   <tr>
-    <td class="tg-8jgo"><img src="@assets/img/mysql-logo.png" width="100" height="100"><br><br>Top Resource Consuming Queries</td>
-    <td class="tg-8jgo"><img src="@assets/img/mysql-logo.png" width="100" height="100"><br><br>Blocking Locks</td>
-    <td class="tg-8jgo"><img src="@assets/img/mysql-logo.png" width="100" height="100"><br><br>Missing Indexes</td>
-    <td class="tg-8jgo"><img src="@assets/img/network-switch.png" width="100" height="100"><br><br>BGP Route Flapping</td>
+    <td class="tg-8jgo">
+        <a href="/learning/solutions/automated-diagnostics/examples/databases">
+        <img src="@assets/img/mysql-logo.png" width="100" height="100"><br><br>Top Resource Consuming Queries</a>
+    </td>
+    <td class="tg-8jgo">
+        <a href="/learning/solutions/automated-diagnostics/examples/databases">
+        <img src="@assets/img/mysql-logo.png" width="100" height="100"><br><br>Blocking Locks</a>
+    </td>
+    <td class="tg-8jgo">
+        <a href="/learning/solutions/automated-diagnostics/examples/databases">
+        <img src="@assets/img/mysql-logo.png" width="100" height="100"><br><br>Missing Indexes</a>
+    </td>
+    <td class="tg-8jgo">
+        <a href="/learning/solutions/automated-diagnostics/examples/network-devices">
+        <img src="@assets/img/network-switch.png" width="100" height="100"><br><br>BGP Route Flapping</a>
+    </td>
   </tr>
   <tr>
-    <td class="tg-8jgo"><img src="@assets/img/network-switch.png" width="100" height="100"><br><br>Check Spanning Tree</td>
-    <td class="tg-8jgo"><img src="@assets/img/network-switch.png" width="100" height="100"><br><br>Check Duplex Mismatch</td>
-    <td class="tg-8jgo"><img src="@assets/img/cloudwatch-logo.png" width="100" height="100"><br><br>Retrieve Application Logs</td>
-    <td class="tg-8jgo"><img src="@assets/img/cloudwatch-logo.png" width="100" height="100"><br><br>Retrieve Saved Queries</td>
+    <td class="tg-8jgo">
+        <a href="/learning/solutions/automated-diagnostics/examples/network-devices">
+        <img src="@assets/img/network-switch.png" width="100" height="100"><br><br>Check Spanning Tree</a>
+    </td>
+    <td class="tg-8jgo">
+        <a href="/learning/solutions/automated-diagnostics/examples/network-devices">
+        <img src="@assets/img/network-switch.png" width="100" height="100"><br><br>Check Duplex Mismatch</a>
+    </td>
+    <td class="tg-8jgo">
+        <a href="/learning/solutions/automated-diagnostics/examples/observability-integrations">
+        <img src="@assets/img/cloudwatch-logo.png" width="100" height="100"><br><br>Retrieve Application Logs</a>
+    </td>
+    <td class="tg-8jgo">
+        <a href="/learning/solutions/automated-diagnostics/examples/observability-integrations">
+        <img src="@assets/img/cloudwatch-logo.png" width="100" height="100"><br><br>Retrieve Saved Queries</a>
+    </td>
   </tr>
   <tr>
     <td class="tg-8jgo"><img src="@assets/img/redis-logo.jpeg" width="100" height="100"><br><br>Intrinsic Latency Diagnostics Test</td>
@@ -120,6 +204,8 @@ This guide includes a full section on Examples & Best Practices - a preview of t
   </tr>
   <tr>
     <td class="tg-8jgo"><img src="@assets/img/kafka-logo.png" width="100" height="100"><br><br>View Topic Messages</td>
+    <td class="tg-8jgo"><img src="@assets/img/java-logo.png" width="100" height="100"><br><br>Retrieve Java Thread Dump</td>
+    <td class="tg-8jgo"><img src="@assets/img/java-logo.png" width="100" height="100"><br><br>Retrieve Java Heap Dump</td>
   </tr>
 </tbody>
 </table></div>
