@@ -78,6 +78,8 @@ Use the following command to generate the ssh key pair:
 
 **Password Storage Path** (Optional): A password stored in the Key Storage to be used on the ssh or https git authentication.
 
+**Synchronize Automatically**: Automatically pull remote changes on automatic fetch (this does auto import job changes into rundeck). If false, you can always perform it manually.
+
 ## Git Import Configuration
 
 ![Setup import button](~@assets/img/scm-git-conf-import-button.png)
@@ -99,7 +101,7 @@ Many SCM systems provide a "clone" url for ssh in the form: `git@host.xz:path/to
 
 **Fetch automatically** automatize the fetch command to be called in background.
 
-**Pull automatically** automatically pull remote changes on automatic fetch. If false, you can always perform it manually.
+**Pull automatically** automatically pull remote changes on automatic fetch (this does auto import job changes into rundeck). If false, you can always perform it manually.
 
 ### Job Source Files Configuration
 
@@ -165,3 +167,7 @@ On the other project, to import _project-b_:
 Set **Import UUID Behavior** to `archive`.
 Set **File Path Template** to `project-b/${job.group}${job.name}-${job.sourceId}.${config.format}`.
 Set **Match a Regular Expression?** to `yes` and **Regular Expression** to `project-b/.*\.xml` or `project-b/.*\.yaml`.
+
+:::tip
+It is not recommended to use the same repository and branch when using export and import plugins on the same project.
+:::
