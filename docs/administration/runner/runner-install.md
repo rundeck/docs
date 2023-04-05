@@ -189,6 +189,18 @@ If you are installing a Runner on a Windows OS as localhost node, you have to sp
 
 Powershell script steps are fully supported on the Runner. Commands that run through the cmd.exe shell are not supported at the moment.
 
+### Secure Your Deployment
+
+We recommend installing Runners in private directories that are only accessible by the user/group holding the runner process (e.g.: `C:\Users\runnerUser\` directory) so that other users are not able to access or even modify script files created by the runner. 
+::: warning
+Runner installations that are not isolated properly are exposed to potential security risks:
+
+	1. Privilege escalation, in the case that the runner agent runs with Administrator privileges
+	2. Local user impersonation by allowing code execution in the session of the runner
+	3. Denial of service of the Job functionality for the specific runner
+	4. AV / EDR evasion by facilitating code execution in remote processes
+:::
+
 ## Configure using environment variables 
 
 The Runner properties can be updated through environment variables which can be set when the Runner process is started. This approach is suitable for secure environments where the Runner is deployed because tokens can be kept externally in keystores and updated at runtime when the Runner is launched. Here is an example of the env variables:
