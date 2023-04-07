@@ -473,7 +473,7 @@ allowed values is retrieved from the specified URL:
 
 1. The returned data must be [JSON formatted](http://www.json.org).
 2. It must be accessible via HTTP(S) or on the local disk for the Process Automation or Rundeck server.
-3. It must be in one of two JSON structures, _either_:
+3. It must be in or contain one of two JSON structures, _either_:
    - An array of string values
    - OR, an array of Maps, each with two entries, `name` and `value`.
 4. By default, the HTTP(S) response must include the `application/json` content type in the header.
@@ -551,7 +551,8 @@ Name Value List with default selections:
 
 #### Using Nested JSON Elements
 
-When the required JSON elements return from the remote URL are nested, then use the **Json Path Filter** field.
+When the required JSON elements return from the remote URL are nested, then use the **Json Path Filter** field.<br>
+[Here](https://goessner.net/articles/JsonPath/index.html#e2) is a helpful resource for JSON path syntax.
 
 For example, if the returned JSON is:
 ```
