@@ -64,7 +64,7 @@ module.exports = [{
       title: 'Jobs',
       collapsable: true,
       path: '/manual/04-jobs',
-      sidebarDepth: 1,
+      sidebarDepth: 2,
       children: [
         '/manual/04-jobs',
         '/manual/creating-jobs',

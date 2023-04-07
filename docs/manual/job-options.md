@@ -446,31 +446,33 @@ The path must indicate a stored `password` entry in the storage facility.
 
 ![Storage Path for Secure Option](~@assets/img/jobs-options-secure-storage-path.png)
 
-## Remote option values
+## Option Model Provider
 
-A model of option values can be retrieved from an external source
-called an _option model provider_.
-When the `valuesUrl` is specified for an Option, then the model of
-allowed values is retrieved from the specified URL.
+### Remote URL Job Options
 
-This is useful in a couple of scenarios when Rundeck is used to
-coordinate process that depend on other systems:
+![Remote URL Job Options](@assets/img/remote-url-job-options.png)<br>
 
-- Deploying packages or artifacts produced by a build or CI server, e.g. Jenkins.
+Remote URL Job Options provides a method for retrieving a list of Job Option values from a remote service or file.
+
+Option values can be retrieved from an external source called an _option model provider_.
+
+This is useful in a couple of scenarios when Process Automation is used to
+coordinate processes that depend on other systems:
+
+- Deploying packages or artifacts produced by a build or CI server, such as Jenkins:
   - A list of recent Jenkins build artifacts can be imported as Options data, so that a User can pick an appropriate package name to deploy from a list.
 - Selecting from a set of available environments, defined in a CMDB
 - Any situation in which input variables for your Jobs must be selected from some set of values produced by a different system.
 
-## Option model provider
+When defining the Job in YAML, XML, or JSON the `valuesUrl` is specified for an Option, then the model of
+allowed values is retrieved from the specified URL:
 
-The Option model provider is a mechanism to allow the Options defined for a Job to have some of the possible input values provided by a remote service or database.
-
-Option model providers are configured on a per-Option basis (where a Job may have zero or more Options).
+    <option valuesUrl="http://site.example.com/values.json" ... />
 
 ### Requirements
 
-1. Options model data must be [JSON formatted](http://www.json.org).
-2. It must be accessible via HTTP(S) or on the local disk for the Rundeck server.
+1. The returned data must be [JSON formatted](http://www.json.org).
+2. It must be accessible via HTTP(S) or on the local disk for the Process Automation or Rundeck server.
 3. It must be in one of two JSON structures, _either_:
    - An array of string values
    - OR, an array of Maps, each with two entries, `name` and `value`.
@@ -480,19 +482,23 @@ Option model providers are configured on a per-Option basis (where a Job may hav
 
 ### Configuration
 
-Each Option entry for a Job can be configured to get the set of possible values from a remote URL. If you are authoring the Jobs via [job.xml file format](/manual/document-format-reference/job-v20.md#option), simply add a `valuesUrl` attribute for the `<option>`. If you are modifying the Job in the Rundeck web GUI, you can entry a URL in the "Remote URL" field for the Option.
+1. In the **Workflow** configuration of a Job, click **+ Add an option**
+2. In the **Allowed Values** section, select **Remote URL**
+3. Place the URL for the remote service or the file-location into the **Remote URL** field:
+   ![url](@assets/img/remote-url-job-options-url.png)<br>
+   ::: tip
+   File URL scheme is `file:/path/to/job/options/optA.json`
+   :::
+4. (Optional) If the remote URL service requires authentication, select an **Authentication Type**
+   - Supported authentication methods include: **Basic**, **API Key**, and **Bearer Token**.
+   - Depending on the **Authentication Type** select, place the relevant credentials into the associated fields:
+   ![Auth Methods](@assets/img/remote-url-options-auth-methods.png)
+   - Retrieve the secret for the credentials from **Key Storage** by clicking **Select** next to the **Token** or **Password** field - depending on the auth method selected.
 
-e.g.:
-
-    <option valuesUrl="http://site.example.com/values.json" ... />
-
-::: tip
-File URL scheme is also acceptable (e.g, `file:/path/to/job/options/optA.json`).
-:::
-
-The value data must be returned in JSON data format described below.
 
 ### JSON format
+
+The value data must be returned in JSON data format described below.
 
 Three styles of return data are supported: simple list, simple object, and a name/value list. For a simple list, the list values will be displayed in a pop-up list when running the Job. If a simple object or name/value pairs are returned, then the `name` will be displayed in the list, but the `value` will be used as the input.
 
@@ -543,7 +549,25 @@ Name Value List with default selections:
 ]
 ```
 
-### URL connection parameters
+#### Using Nested JSON Elements
+
+When the required JSON elements return from the remote URL are nested, then use the **Json Path Filter** field.
+
+For example, if the returned JSON is:
+```
+    {
+      "key1":"value1",
+      "key2":
+        {
+          "sub-key3":"value3",
+          "sub-key4":"value4"
+        }
+    }
+```
+
+Then, the list of key-value pairs from **`key2`** can be accessed with **`$.key2`**:
+
+![Nested JSON](@assets/img/remote-url-json-path.png)<br>
 
 You can configure timeouts globally as described in [Configuration - Job Remote Option URL connection parameters](/administration/configuration/config-file-reference.md#rundeck-config.properties).
 
