@@ -7,14 +7,14 @@ The form for defining text options includes the following areas:<br>
 ### Identification
 Option Name and Description are entered here. The Description will be made available to people executing the Job as help text.<br>
 ### Input Type
-"Plain," "Date," "Secure," and "Secure Remote Authentication" are available types. Multi-valued options are only available for input type "Plain".<br>
-* Plain Text 
+_Plain_, _Date_, _Secure_, and _Secure Remote Authentication_ are available types. Multi-valued options are only available for input type _Plain_.<br>
+* **Plain Text**<br>
 The most common type of option in Jobs, Plain Text stores a string to use in any part of the workflow.<br>
-* Date 
+* **Date**<br>
 Date options allows you to define dates as an option. Date options uses the _moment js_ format, and the full reference of this format is available [here](https://momentjs.com/docs/#/displaying/format/).<br>
-* Secure Option 
+* **Secure Option**<br>
 A safe option where the value is hidden when the user enters it. For Secure Options, the GUI displays a password prompt rather than a standard text field or drop-down menu. Unlike other option values, the Secure Option values are not stored with the execution.<br>
-* Remote Secure Option
+* **Remote Secure Option**<br>
 A safe choice that is hidden from scripts and commands and only used for remote authentication. The node executor and node definition must directly support this type of option.<br>
 Passwords for SSH and/or sudo authentication mechanisms can be used with the built-in SSH Provider for node execution. Those passwords are provided via Secure Remote Authentication Options defined in a Job.<br>
 ### Date Format
@@ -37,7 +37,7 @@ The delimiter string that will be used to separate multiple values when the Job 
 ### Select All Values by Default
 If checked, and no default value(s) are specified, all of the remote or local values will be selected by default.<br>
 ## Option Type: File
-![](~@assets/img/jobotions2.png)<br>
+![](~@assets/img/joboptions2.png)<br>
 The option type file permits uploading a file that can be utilized as part of the Job. Areas displayed when setting up a File Option Type are a subset of those available in the Text Option Type.<br>
 ## How to reference options on command steps and script steps
 ### Command Step
