@@ -6,22 +6,30 @@ Process Automation integrates with Azure through a variety of plugins listed bel
 By integrating Process Automation with Azure, users can automate and provide self-service interfaces for operations of their infrastructure and applications.
 These integrations allow operations teams to provide self-service mechanisms to users throughout the business, as well as setup event-driven automation for workflows with Azure.
 
-<details><summary> <font size="5">Jira Plugins</font>
+<details><summary> <font size="5">Azure Plugins</font>
 </summary>
 
 |Plugin Name| Plugin Type| Description|
 |:---------------------------------------------------------|:---------------------------------------------------------:|:---------------------------------------------------------|
-|[**Azure Node Source**](/manual/projects/resource-model-sources/azure)|Node Source|Retrieve Azure VMs for Node Inventory.|
-|[**Check Issue Exists**](/manual/workflow-steps/jira.html#jira-issue-check-exist)|Job Step|Check if the Jira issue exists by key.|
-|[**Comment on Issue**](/manual/workflow-steps/jira.html#jira-issue-comment)|Job Step|Append comments to a Jira issue.|
-|[**Create Issue**](/manual/workflow-steps/jira.html#jira-issue-create)|Job Step|Creates a new Jira issue.|
-|[**Update Issue**](/manual/workflow-steps/jira.html#jira-issue-update)|Job Step|Updates an existing Jira issue.|
-|[**Retrieve Issue**](/manual/workflow-steps/jira.html#jira-issue-get-data)|Job Step|View the data of an existing Jira issue.|
-|[**Comment on Issue**](/manual/notifications/jira.html#jira-issue-notification-comment)|Notification|Append comments to a Jira issue.|
-|[**Create Issue**](/manual/notifications/jira.html#jira-issue-notification-create)|Notification|Creates a new Jira issue.|
+|[**Azure Node Source**](/manual/projects/resource-model-sources/azure)|Node Source|Retrieve Azure virtual machines for Node Inventory.|
+|[**Delete Azure VM**](/manual/node-steps/azure.html#azure-node-delete)|Node Step|Delete an virtual machine.|
+|[**Start Azure VM**](/manual/node-steps/azure.html#azure-node-start)|Node Step|Start (power on) an existing virtual machine.|
+|[**Start Azure VM**](/manual/node-steps/azure.html#azure-node-stop)|Node Step|Stop (power off) an existing virtual machine.|
+|[**Restart Azure VM**](/manual/node-steps/azure.html#azure-node-restart)|Node Step|Restarts an existing virtual machine.|
+|[**Capture VM Snapshot**](/manual/node-steps/azure.html#azure-node-capture)|Node Step|Capture a snapshot of an existing virtual machine.|
+|[**Storage Copy**](/manual/workflow-steps/azure.html#azure-storage-copy)|Workflow Step|Copy or get objects from Azure storage to/from Process Automation (Rundeck).|
+|[**Storage Delete**](/manual/workflow-steps/azure.html#azure-storage-delete)|Workflow Step|Delete blob storage from Azure storage container.|
+|[**Storage List**](/manual/workflow-steps/azure.html#azure-storage-list)|Workflow Step|List blobs from Azure storage container.|
+|[**Create Azure VM**](/manual/workflow-steps/azure.html#azure-vm-create)|Workflow Step|Create a new Azure virtual machine.|
+|[**List Azure VMs**](/manual/workflow-steps/azure.html#azure-vm-list)|Workflow Step|List Azure virtual machines.|
+|[**Start Azure VM**](/manual/workflow-steps/azure.html#azure-vm-start)|Workflow Step|Start (power on) an Azure virtual machines.|
+|[**Stop Azure VM**](/manual/workflow-steps/azure.html#azure-vm-stop)|Workflow Step|Stop (power off) an Azure virtual machines.|
+|[**Azure Log Storage**](/administration/cluster/logstore/azure)|Log Storage|Send execution log files to Azure Storage Account.|
+|[**VM Health Check**](/manual/healthcheckplugins/azure-healthcheck)|Health Check|Check the status of Azure virtual machines.|
+|[**Azure Active Directory SSO**](/administration/security/sso/azure-sso)|Single Sign On|Use Azure Active Directory to authenticate users.|
 </details>
 <br>
-<em>Click to expand to see the full list of Process Automation plugins for Jira.</em>
+<em>Click to expand to see the full list of Process Automation plugins for Azure.</em>
 
 ## Setup
 
