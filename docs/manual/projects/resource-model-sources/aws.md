@@ -22,7 +22,7 @@ The plugin contains all of the required dependencies.
 
 1. Navigate to **Project Settings** -> **Edit Nodes** and select the **Sources** tab.
 1. Click on **Add a new Node Source** and select **AWS EC2 Resources**.
-1. Provide AWS Credentials into the **Access Key** and **Secret Key** fields. The only permissions required for the credentials is `ec2:DescribeInstances`
+1. Provide AWS Credentials into the **Access Key** and **Secret Key** fields. The only IAM permissions required for the credential is `ec2:Describe*`
 1. To specify the region (or multiple regions) to integrate with, fill in the **Endpoint** field with the associated regional endpoint. All endpoints are of the syntax **https:ec2.aws-region.amazonaws.com**.
 For example, the **us-west-1** endpoint is **`https://ec2.us-west-1.amazonaws.com`**. See below for defining multiple regions.
 1. Toggle **Only Running Instances** to determine whether both Running and Stopped instances should be retrieved, or just Running instances.
