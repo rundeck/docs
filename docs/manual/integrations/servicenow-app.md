@@ -41,7 +41,7 @@ The ServiceNow application leverages Rundeck's Webhooks feature to trigger jobs 
 
 ### Importing Webhooks
 
-The Scheduled Scripts module will list the Populate Webhooks Scheduled Script.  This script can be used to import all available webhooks.  By default it comes unscheduled.  In order to keep your webhook listing current the script can be scheduled to run on a regular interval.
+The Scheduled Scripts module will list the Populate Webhooks Scheduled Script.  This script can be used to import all available webhooks.  By default it comes unscheduled.  In order to keep your webhook listing current the script can be scheduled to run on a regular interval.  (Be sure to mark as Active)
 
 ### Calling Webhooks from ServiceNow&reg; Code
 
