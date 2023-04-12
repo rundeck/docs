@@ -152,5 +152,5 @@ export default {
 </script>
 <style lang="stylus">
 .sidebar
-  padding-top 2.8rem
+  padding-top 5rem
 </style>
