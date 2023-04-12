@@ -62,7 +62,7 @@ module.exports = {
   },
   plugins: getPlugins(setup),
   themeConfig: {
-    logo: 'https://www.rundeck.com/hubfs/Assets/website/rundeck-by-pagerduty.svg',
+    logo: 'https://www.rundeck.com/hubfs/Pager%20Duty%20Branding/RundeckbyPagerDuty.svg',
     repo: 'rundeck/docs',
     docsDir: 'docs',
     docsBranch: setup.branch,
