@@ -14,7 +14,9 @@
   font-family: 'Jost';
   font-weight: 700;
 }
-
+main
+  a
+    text-decoration: underline;
 figure
   text-align: center
 
@@ -67,9 +69,16 @@ a.home-link{
 }
 
 .theme-default-content:not(.custom) {
-  max-width: 65%
+  max-width: 90%;
   padding: 6rem 2.5rem 2rem;
 }
+@media screen and (min-width:720px){
+  .theme-default-content:not(.custom) {
+    max-width: 65%
+    padding: 6rem 2.5rem 2rem;
+  }
+}
+
 
 .sidebar-group.is-sub-group>.sidebar-heading:not(.clickable) {
   opacity: 1 !important;
