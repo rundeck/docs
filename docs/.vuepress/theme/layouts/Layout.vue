@@ -153,4 +153,7 @@ export default {
 <style lang="stylus">
 .sidebar
   padding-top 5rem
+@media screen and (min-width:720px)
+  .sidebar
+    padding-top 1rem
 </style>
