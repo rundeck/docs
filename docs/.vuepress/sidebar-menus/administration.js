@@ -51,10 +51,17 @@ module.exports = [{
                 title: 'Runner',
                 collapsable: true,
                 path: '/administration/runner/',
-                sidebarDepth: 1,
+                sidebarDepth: 0,
                 children: [
                   '/administration/runner/',
-                  '/administration/runner/runner-logging'
+                  '/administration/runner/runner-intro.md',
+                  '/administration/runner/runner-setup.md',
+                  '/administration/runner/runner-install.md',
+                  '/administration/runner/runner-config.md',
+                  '/administration/runner/runner-using.md',
+                  '/administration/runner/runner-advancedsetup.md',
+                  '/administration/runner/runner-logging.md',
+                  '/administration/runner/runner-faq.md'
                 ]
               },
               {
