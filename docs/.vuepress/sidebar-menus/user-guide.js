@@ -114,7 +114,6 @@ module.exports = [{
       sidebarDepth: 0,
       children:[
         '/manual/plugins/aws-plugins-overview.md',
-        '/manual/plugins/azure-plugins-suite.md',
         '/manual/plugins/datadog-plugins-overview.md',
         '/manual/plugins/jira-plugins-overview.md',
         '/manual/plugins/pagerduty-plugins-overview.md',
