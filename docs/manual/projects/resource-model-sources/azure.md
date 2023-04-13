@@ -4,18 +4,40 @@
 
 The Azure Resource Model Source Plugin provides the Azure VMs as nodes on a Rundeck Server.
 
+## Authentication
+
+Follow the steps outlined in the [**Azure Plugins Overview**](/manual/plugins/azure-plugins-overview) to configure authentication for Azure Job steps.
+Credentials can be configured on a per Job Step basis, Project basis, or for the entire Process Automation system.
+
 The source code lives at [https://github.com/rundeck-plugins/rundeck-azure-plugin](https://github.com/rundeck-plugins/rundeck-azure-plugin).
 
-### Credentials Settings
+:::tip Rundeck OSS Installations
+For Rundeck OSS installations, use the properties listed below to configure credentials at the Project or System levels.
+:::
 
-Settings related to the Azure connection
+**Client ID**
+: The client ID for the application with access to the tenant to view VMs from.
 
-- **Client ID**: Azure Client ID.
-- **Tenant ID**: Azure Tenant ID.
-- **Subscription ID**: Azure Subscription ID.
-- **Azure Access Key**: Azure Access Key.
-- **Certificate Path**: (Optional) Azure certificate file path (if the access key is not defined).
-- **Certificate Password**: (Optional) Azure certificate Password (if the access key is not defined).
+- **Project setting**: `project.azure.clientId`
+- **Framework Setting**: `azure.clientId`
+
+**Tenant ID**
+: The tenant (organization) in which the VMs live
+
+- **Project setting**: `project.azure.tenantId`
+- **Framework Setting**: `azure.tenantId`
+
+**Subscription ID**
+: The subscription ID for the application with access to the tenant to view VMs from.
+
+- **Project setting**: `project.azure.subscriptionId`
+- **Framework Setting**: `azure.subscriptionId`
+
+**Azure Access Key**
+: The access key for the Azure application that contains access to the proper VMs.
+
+- **Project setting**: `project.azure.keyPath`
+- **Framework Setting**: `azure.keyPath`
 
 ### Other Settings:
 

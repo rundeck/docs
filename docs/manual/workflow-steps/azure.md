@@ -1,6 +1,11 @@
 # Azure Workflow Steps
 
-The Microsoft&reg; Azure cloud computing platform that offers a variety of services including but not limited to storage, networking and analytics. Azure's integration with Rundeck allows you to edit and utilize your Azure services in a Rundeck job.
+The Microsoft Azure cloud computing platform that offers a variety of services including but not limited to storage, networking and analytics. Azure's integration with Process Automation allows you to edit and utilize your Azure services in a Process Automation job.
+
+## Authentication
+
+Follow the steps outlined in the [**Azure Plugins Overview**](/manual/plugins/azure-plugins-overview) to configure authentication for Azure Job steps. 
+Credentials can be configured on a per Job Step basis, Project basis, or for the entire Process Automation system.
 
 ## Azure / Storage / Copy
 
