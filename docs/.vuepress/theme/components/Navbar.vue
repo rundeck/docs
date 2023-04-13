@@ -1,42 +1,38 @@
 <template>
   <header class="navbar">
-    <div class="navbar-content">
-    <SidebarButton class="sidebar-button" @toggle-sidebar="$emit('toggle-sidebar')"/>
+    <div style="display: flex; justify-content: space-between; align-items:center;">
+      <SidebarButton class="sidebar-button" @toggle-sidebar="$emit('toggle-sidebar')"/>
 
-    <RouterLink
-      :to="$localePath"
-      class="home-link"
-    >
-      <div>
-      <object
-        point-event="none"
-        v-if="$site.themeConfig.logo"
-        class="logo"
-        :data="$withBase($site.themeConfig.logo)"
-        :alt="$siteTitle"
-      />
+      <RouterLink
+        :to="$localePath"
+        style=" border:0; width:120px;line-height:0; display:inline-block;display: relative;"
+      >
+        <div>
+          <img :src="$site.themeConfig.logo" 
+          style="width: 100%;border:0; " 
+          v-if="$site.themeConfig.logo" :alt="$siteTitle">
+        </div>
+        <span
+          v-if="$siteTitle"
+          ref="siteName"
+          class="site-name"
+          :class="{ 'can-hide': $site.themeConfig.logo }"
+        >{{ $siteTitle }}</span>
+      </RouterLink>
+
+      <div
+        class="links"
+        :style="linksWrapMaxWidth ? {
+          'max-width': linksWrapMaxWidth + 'px'
+        } : {}"
+      >
+        <AlgoliaSearchBox
+          v-if="isAlgoliaSearch"
+          :options="algolia"
+        />
+        <SearchBox v-else-if="$site.themeConfig.search !== false && $page.frontmatter.search !== false"/>
+        <NavLinks class="can-hide"/>
       </div>
-      <span
-        v-if="$siteTitle"
-        ref="siteName"
-        class="site-name"
-        :class="{ 'can-hide': $site.themeConfig.logo }"
-      >{{ $siteTitle }}</span>
-    </RouterLink>
-
-    <div
-      class="links"
-      :style="linksWrapMaxWidth ? {
-        'max-width': linksWrapMaxWidth + 'px'
-      } : {}"
-    >
-      <AlgoliaSearchBox
-        v-if="isAlgoliaSearch"
-        :options="algolia"
-      />
-      <SearchBox v-else-if="$site.themeConfig.search !== false && $page.frontmatter.search !== false"/>
-      <NavLinks class="can-hide"/>
-    </div>
     </div>
   </header>
 </template>
@@ -104,7 +100,9 @@ $navbar-horizontal-padding = 1.5rem
 .navbar
   height auto
   padding $navbar-vertical-padding $navbar-horizontal-padding
-  line-height $navbarHeight - 1.4rem
+  //line-height $navbarHeight - 1.4rem
+  .nav-links
+    line-height $navbarHeight - 1.4rem
   a, span, img
     display inline-block
   p
@@ -118,7 +116,7 @@ $navbar-horizontal-padding = 1.5rem
   .navbar-content
     position relative
   .sidebar-button
-    margin-top -0.7rem
+    //margin-top -0.7rem
   .logo
     height $navbarHeight - 1.4rem
     min-width $navbarHeight - 1.4rem
@@ -129,13 +127,15 @@ $navbar-horizontal-padding = 1.5rem
     font-weight 600
     color $textColor
     position relative
+  .sidebar-button
+    position: initial;
   .links
     padding-left 1.5rem
     box-sizing border-box
     background-color white
     white-space nowrap
     font-size 0.9rem
-    position absolute
+    // position absolute
     right $navbar-horizontal-padding
     top 0
     display flex
