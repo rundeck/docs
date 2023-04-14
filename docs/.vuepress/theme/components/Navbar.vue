@@ -9,7 +9,7 @@
       >
         <div>
           <img :src="$site.themeConfig.logo" 
-          style="width: 100%;border:0; " 
+          style="width: 100%;border:0; margin: 0px;" 
           v-if="$site.themeConfig.logo" :alt="$siteTitle">
         </div>
         <span

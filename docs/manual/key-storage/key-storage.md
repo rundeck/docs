@@ -25,6 +25,10 @@ See [Plugins User Guide - Configuring Storage Plugins](/administration/configura
 
 ## Key Data Storage Converter
 
+:::tip
+When you have external key storage configured for rundeck, you may not need the storage converter (encryption) for that particular provider. Since it is an external provider of secrets and already have a security layer from provider-side, you don't need an additional layer of encryption.
+:::
+
 Keys can be encrypted in the storage backend by use of a [Storage Converter plugin](/developer/08-storage-converter-plugins.md). A typical plugin would encrypt any private-key data at write time, and decrypt it at read time.
 
 The Storage Converter Plugin handles reading and writing the content for any matching resources. The subsequent data is stored in the storage backend (on-disk or in a database) alongside the metadata for the file. If necessary, the metadata content can also be encrypted by modifying the data map that is provided.
