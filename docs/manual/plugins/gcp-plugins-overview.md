@@ -33,4 +33,67 @@ These integrations allow operations teams to provide self-service mechanisms to 
 |[**Delete VM**](/manual/node-steps/gcp.html#gcp-vm-delete)|Node Step|Delete a Google Compute instance.|
 </details>
 <br>
-<em>Click to expand to see the full list of Process Automation plugins for Azure.</em>
+<em>Click to expand to see the full list of Process Automation plugins for Google Cloud.</em>
+
+## Setup
+
+### GCP Service Account Keys
+
+This section outlines how to retrieve the Service Account keys from Google Cloud. The background for these steps is covered in detail on Google's support site here: [Creating and Managing Service Account Keys](https://cloud.google.com/iam/docs/creating-managing-service-account-keys).
+
+1. Login to your Google Cloud Console at [https://console.cloud.google.com](https://console.cloud.google.com)
+2. Navigate to _IAM & Admin_ > _Service Accounts_<br>
+   ![Service Accounts Menu](@assets/img/howto-gcp-svcacctmenu.png)<br><br>
+3. Click the **Create Service Account** button to start the wizard<br>
+   ![Create Service Account](@assets/img/howto-gcp-createsvcacct.png)<br><br>
+4. Assign the account a **Name** and **ID**.
+5. When selecting **Roles** ensure the role(s) provide enough access to Process Automation to perform the desired tasks.
+6. Click **Done**
+7. Click on the newly created account and navigate to the **Keys** tab.
+8. Click **Add Key** > **Create new key**
+9. Choose **JSON** for _Key Type_ and click **Create**
+10. Save the JSON file somewhere safe where it can be used in a future step.
+
+### Configure Google Cloud Plugin Suite in Process Automation
+
+Authentication for the Google Cloud plugins can be configured for the entire system or for an individual project. 
+Credentials can be optionally be overwritten on a per-plugin basis, such as an individual Job Step.
+
+### Project Level Configuration
+Use the following steps to configure authentication for the Google Cloud plugins for a specific project:
+
+1. In the specific project, click on **Project Settings** in the lower left.
+2. Click on **Edit Configuration** then click on **Plugins**.
+   ![Plugin Suite Project Settings](@assets/img/plugin-groups-project-settings.png)<br>
+3. Click on **+PluginGroup**.
+4. Select **GCP** from the list.
+5. Click **Select** next to the **Key File** field.
+6. Click **+ Add or Upload a Key**
+7. For the **Key Type** dropdown, choose the **Private Key** option.
+8. Click the **Enter text** dropdown and choose the **Upload file** option:
+    ![GCP Upload File](@assets/img/gcp-upload-file.png)
+9. Enter the **Client Secret** value from **Step 10** above.
+10. Provide a **Name** for the secret and click **Save**.
+11. Click **Save** to now use the saved secret from Key Storage.
+12. Enter the **Tenant ID**, **Subscription ID** and **Client ID** from the prior sections into their associated fields:
+    ![Azure Plugins Project](@assets/img/azure-plugingroup-project.png)
+13. Click **Save** for the plugin configuration.
+14. Click **Save** for the Project Settings.
+
+### System Level Configuration
+
+Use the following steps to configure authentication for the Google Cloud plugins for the whole Process Automation system.
+
+1. Click on the **System Menu** (gear icon) in the upper right.
+2. Click on **System Configuration**.
+3. Navigate to the **Azure** section and click on the **Pencil Icon** in the upper right:
+   ![Edit Plugin Suite Sysytem Level](@assets/img/azure-edit-plugingroup-system.png)
+4. Click **Select** next to the **Azure API Key** field.
+5. Click **+ Add or Upload a Keys**
+6. For the **Key Type** dropdown, choose the **Password** option.
+7. Enter the **Client Secret** value from **Step 10** above.
+8. Provide a **Name** for the secret and click **Save**.
+9. Click **Save** to now use the saved secret from Key Storage.
+10. Enter the **Tenant ID**, **Subscription ID** and **Client ID** from the prior sections into their associated fields:
+    ![Azure PluginGroup System](@assets/img/azure-plugingroup-system-config.png)
+11. Click **Save** to commit these changes to the **System Configuration**.
