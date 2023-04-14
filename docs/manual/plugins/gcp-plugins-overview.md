@@ -54,6 +54,14 @@ This section outlines how to retrieve the Service Account keys from Google Cloud
 9. Choose **JSON** for _Key Type_ and click **Create**
 10. Save the JSON file somewhere safe where it can be used in a future step.
 
+#### Project ID
+
+While in the Google Cloud Console, click on the project list in the upper left, next to **Google Cloud**:
+![GCP Project List](@assets/img/gcp-project-list.png)
+
+From the popup, copy the **Project ID** from the **ID** column:
+![GCP Project ID](@assets/img/gcp-project-id.png)
+
 ### Configure Google Cloud Plugin Suite in Process Automation
 
 Authentication for the Google Cloud plugins can be configured for the entire system or for an individual project. 
@@ -72,13 +80,14 @@ Use the following steps to configure authentication for the Google Cloud plugins
 7. For the **Key Type** dropdown, choose the **Private Key** option.
 8. Click the **Enter text** dropdown and choose the **Upload file** option:
     ![GCP Upload File](@assets/img/gcp-upload-file.png)
-9. Enter the **Client Secret** value from **Step 10** above.
-10. Provide a **Name** for the secret and click **Save**.
+9. Click on **Choose File** and select the `.json` file saved from the prior section.
+10. Click **Save** to add this secret to Key Storage.
 11. Click **Save** to now use the saved secret from Key Storage.
-12. Enter the **Tenant ID**, **Subscription ID** and **Client ID** from the prior sections into their associated fields:
-    ![Azure Plugins Project](@assets/img/azure-plugingroup-project.png)
-13. Click **Save** for the plugin configuration.
-14. Click **Save** for the Project Settings.
+12. Enter the **Project ID** captured from the prior section into the **Project ID** field.
+13. Select the **Zone** to set the default zone used by the plugins.
+    ![GCP Project Config](@assets/img/gcp-plugins-project-config.png)
+14. Click **Save** for the plugin configuration.
+15. Click **Save** for the Project Settings.
 
 ### System Level Configuration
 
@@ -86,14 +95,17 @@ Use the following steps to configure authentication for the Google Cloud plugins
 
 1. Click on the **System Menu** (gear icon) in the upper right.
 2. Click on **System Configuration**.
-3. Navigate to the **Azure** section and click on the **Pencil Icon** in the upper right:
-   ![Edit Plugin Suite Sysytem Level](@assets/img/azure-edit-plugingroup-system.png)
-4. Click **Select** next to the **Azure API Key** field.
-5. Click **+ Add or Upload a Keys**
-6. For the **Key Type** dropdown, choose the **Password** option.
-7. Enter the **Client Secret** value from **Step 10** above.
-8. Provide a **Name** for the secret and click **Save**.
-9. Click **Save** to now use the saved secret from Key Storage.
-10. Enter the **Tenant ID**, **Subscription ID** and **Client ID** from the prior sections into their associated fields:
-    ![Azure PluginGroup System](@assets/img/azure-plugingroup-system-config.png)
-11. Click **Save** to commit these changes to the **System Configuration**.
+3. Navigate to the **GCP** section and click on the **Pencil Icon** in the upper right:
+   ![Edit Plugin Suite Sysytem Level](@assets/img/gcp-edit-plugingroup-system.png)
+4. Click **Select** next to the **Key File** field.
+5. Click **+ Add or Upload a Key**
+6. For the **Key Type** dropdown, choose the **Private Key** option.
+7. Click the **Enter text** dropdown and choose the **Upload file** option:
+   ![GCP Upload File](@assets/img/gcp-upload-file.png)
+8. Click on **Choose File** and select the `.json` file saved from the prior section.
+9. Click **Save** to add this secret to Key Storage.
+10. Click **Save** to now use the saved secret from Key Storage.
+11. Enter the **Project ID** captured from the prior section into the **Project ID** field.
+12. Select the **Zone** to set the default zone used by the plugins:
+    ![GCP System Config](@assets/img/gcp-system-config.png)
+13. Click **Save** to commit these changes to the **System Configuration**.
