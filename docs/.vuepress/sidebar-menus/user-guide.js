@@ -119,7 +119,7 @@ module.exports = [{
 
         '/manual/plugins/azure-plugins-overview.md',
         '/manual/plugins/datadog-plugins-overview.md',
-//        '/manual/plugins/gcp-plugins-overview.md',
+        '/manual/plugins/gcp-plugins-overview.md',
         '/manual/plugins/jira-plugins-overview.md',
         '/manual/plugins/pagerduty-plugins-overview.md',
         '/manual/plugins/servicenow-plugins-overview.md'
