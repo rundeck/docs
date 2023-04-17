@@ -4,7 +4,10 @@
 
 
 ## Configuring the Node Source
-To configure Authentication please use this page as a reference to gather the information below. [Creating and Managing Service Account Keys](https://cloud.google.com/iam/docs/creating-managing-service-account-keys).
+
+### Authentication & Configuration
+Follow the steps outlined in the [**Google Cloud Integration Overview**](/manual/plugins/gcp-plugins-overview) doc to configure credentials for the GCP plugins.
+Credentials can be configured on a per Project basis or for the entire Process Automation system.
 
 **Project ID**
 : Specify your GCP Project ID.

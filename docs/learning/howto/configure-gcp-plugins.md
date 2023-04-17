@@ -1,4 +1,4 @@
-# Configuring Google Cloud Platform Plugins
+# Google Cloud Example Project
 
 Google Cloud consists of a set of physical assets, such as computers and hard disk drives, and virtual resources, such as virtual machines (VMs), that are contained in Google's data centers around the globe.
 
@@ -16,22 +16,11 @@ This How To is based on the Process Automation [Welcome Projects](/learning/howt
 - Create at least one [Virtual Machine Instance](https://cloud.google.com/compute/docs/instances) and note which _Zone_ it is created in.
 
 
-## Creating Service Account Keys
+### Authentication & Configuration
+Follow the steps outlined in the [**Google Cloud Integration Overview**](/manual/plugins/gcp-plugins-overview) doc to configure credentials for the GCP plugins.
+Credentials can be configured on a per Project basis or for the entire Process Automation system.
 
-1. Login to your Google Cloud Console at [https://console.cloud.google.com](https://console.cloud.google.com)
-1. Navigate to _IAM & Admin_ > _Service Accounts_
-    ![Service Accounts Menu](@assets/img/howto-gcp-svcacctmenu.png)<br><br>
-1. Click the **Create Service Account** button to start the wizard
-    ![Create Service Account](@assets/img/howto-gcp-createsvcacct.png)<br><br>
-1. Assign the account a **Name** and **ID**.
-1. When selecting **Roles** ensure the role(s) provide give the account enough access to perform the automation tasks you will want do from Rundeck.
-1. Click **Done**
-1. Click on the newly created account and navigate to the **Keys** tab.
-1. Click **Add Key** > **Create new key**
-1. Choose **JSON** for _Key Type_ and click **Create**
-1. Save the JSON file somewhere safe where it can be used in a future step.
-
-## Configuring Rundeck
+## Configuring Process Automation
 
 :::: tabs
 ::: tab 1. Upload Key

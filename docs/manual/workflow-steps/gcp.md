@@ -4,7 +4,9 @@
 
 [Google Cloud Platform](https://cloud.google.com) (GCP) is a cloud service in wide use for dynamic infrastructure; it is easy to start up and shut down Node "Instances" in the cloud.  Use these Rundeck steps to automate common GCP Compute VM actions.
 
-To configure Authentication please use this page as a reference to gather the information below. [Creating and Managing Service Account Keys](https://cloud.google.com/iam/docs/creating-managing-service-account-keys).
+### Authentication & Configuration
+Follow the steps outlined in the [**Google Cloud Integration Overview**](/manual/plugins/gcp-plugins-overview) doc to configure credentials for the GCP plugins.
+Credentials can be configured on a per Project basis or for the entire Process Automation system.
 
 **Project ID**
 : Specify your GCP Project ID.
@@ -21,7 +23,7 @@ This setting can be configured using _System Configuration_ using `gcp.zone` or 
 
 This setting can be configured using _System Configuration_ using `gcp.zone` or project specific using `project.gcp.zone`
 
-## Compute VM VM Workflow Steps (Enterprise Only)
+## Compute VM Workflow Steps (Enterprise Only)
 
 For each of these steps an **Instance Name** will need to be included for the instance to be acted on.
 
