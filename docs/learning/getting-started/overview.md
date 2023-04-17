@@ -1,0 +1,4 @@
+# Getting Started
+As a subset of our Learning content, Getting Started is aimed at users new to Rundeck, Process Automation and/or Runbook Automation.  The focus is to help explain common concepts, terms or processes that are key to using the product.<br><br>
+To learn more about Jobs and how to use them, check out our [Working with Jobs](/learning/getting-started/jobs/overview.md) section.  If you are brand new to the product, you might want to start with [the Tutorial](/learning/tutorial/preparing.md) to get a tour of many core features and why you need them.<br><br>
+If you think of topics that would be good to add to this area, share them by submitting a pull request to our [Docs repository](https://github.com/rundeck/) or email them to [product@rundeck.com](mailto:product@rundeck.com).<br>

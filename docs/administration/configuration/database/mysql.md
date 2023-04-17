@@ -80,7 +80,7 @@ Contents:
 
 ```properties
 dataSource.driverClassName = org.mariadb.jdbc.Driver
-dataSource.url = jdbc:mysql://mysql.rundeck.local/rundeck?autoReconnect=true&useSSL=false
+dataSource.url = jdbc:mysql://myserver/rundeck?autoReconnect=true&useSSL=false
 dataSource.username = rundeckuser
 dataSource.password = rundeckpassword
 ```

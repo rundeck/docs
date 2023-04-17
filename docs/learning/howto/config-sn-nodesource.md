@@ -16,7 +16,7 @@ This exercise configures the [ServiceNow&reg; Node Source](/manual/projects/reso
 **ServiceNow&reg; Steps**
 
 1. Login to your ServiceNow&reg; instance
-1. In the Module Explorer navigate to _Configuration > Severs > All_ <br>or type `cmdb_ci.list` in the Filter Navigator box.
+1. In the Module Explorer navigate to _Configuration > Servers > All_ <br>or type `cmdb_ci.list` in the Filter Navigator box.
 1. Filter the CMDB entries as needed for your Node Source.<br>In our example we have filtered for entries names that start with _node_.
     <br><br>![Example Filtered Results](@assets/img/howto-sn-nodelist.png)<br><br>
 1. In the filter bar right click the last entry in the filter breadcrumbs list and choose **Copy Query**

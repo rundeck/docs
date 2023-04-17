@@ -3,8 +3,8 @@ module.exports = [{
     link: '/learning/index'
   },
   {
-      text: 'Tutorial',
-      link: '/learning/tutorial/preparing'
+      text: 'Getting Started',
+      link: '/learning/getting-started/overview'
   },
   {
       text: 'How To Articles',
@@ -13,5 +13,9 @@ module.exports = [{
   {
       text: 'Solutions',
       link: '/learning/solutions/automated-diagnostics/solution-overview'
+  },
+  {
+      text: 'Terminology',
+      link: '/learning/tutorial/terminology'
   }
 ]

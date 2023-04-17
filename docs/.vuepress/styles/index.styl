@@ -14,7 +14,9 @@
   font-family: 'Jost';
   font-weight: 700;
 }
-
+main
+  a
+    text-decoration: underline;
 figure
   text-align: center
 
@@ -22,8 +24,18 @@ figcaption
   font-style: italic
   text-align: center
 
+main
+  img
+    width: 100%;
+@media screen and (min-width:720px)
+  main
+    img
+      max-height: 70vh;
+      max-width: 100%;
+      width: auto;
 img {
   border: 1px solid #C0C0C0;
+  margin: 15px;
 }
 
 dl
@@ -62,14 +74,24 @@ a.home-link{
   border-bottom: 0 solid;
 }
 
+img.navbar{
+  margin: 0px;
+}
 .sw-update-popup {
   border-color: $accentColor !important;
 }
 
 .theme-default-content:not(.custom) {
-  max-width: 65%
+  max-width: 90%;
   padding: 6rem 2.5rem 2rem;
 }
+@media screen and (min-width:720px){
+  .theme-default-content:not(.custom) {
+    max-width: 65%
+    padding: 6rem 2.5rem 2rem;
+  }
+}
+
 
 .sidebar-group.is-sub-group>.sidebar-heading:not(.clickable) {
   opacity: 1 !important;
