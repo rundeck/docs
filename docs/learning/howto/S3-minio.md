@@ -1,8 +1,7 @@
 # S3 or Minio for Execution Logs
-
-Rundeck execution logs are a set of files generated after each job execution, by default. Rundeck stores them on the local filesystem, however, another way to store these logs is on a dedicated file storage service like [AWS S3](https://aws.amazon.com/s3/).<br><br>
-By delegating this storage to AWS S3 (or any other bucket system like [Minio](https://min.io/)) it’s possible to use some [features](https://aws.amazon.com/s3/features/) like S3 replication, security management, data persistence, and saving space on the local filesystem.<br><br>
-On PagerDuty Process Automation (formerly “Rundeck Enterprise”) cluster [architecture](/administration/cluster/#cluster-overview) should be the default configuration in which any cluster member should store their execution logs.<br><br>
+Rundeck execution logs are a set of files generated after each job execution. By default, Rundeck stores them on the local filesystem. Another way to store these logs is on a dedicated file storage service like [AWS S3](https://aws.amazon.com/s3/).<br><br>
+By delegating this storage to AWS S3 (or any other S3-compatible bucket system like [Minio](https://min.io/)) it’s possible to use some [features](https://aws.amazon.com/s3/features/) like S3 replication, security management, data persistence, and saving space on the local filesystem.<br><br>
+In PagerDuty Process Automation (formerly “Rundeck Enterprise”) [cluster](/administration/cluster/#cluster-overview), S3-compatible storage should be the default configuration to ensure access to logs from any cluster member.<br><br>
 This article explains how to configure Rundeck so that these execution logs are stored on services such as Amazon S3 or Minio.
 
 ## Steps to configure S3 execution logs on Rundeck OSS / Process Automation
@@ -13,7 +12,7 @@ This article explains how to configure Rundeck so that these execution logs are 
    ``` 
 1. S3 Log Storage Plugin<br>
    :::: tabs
-   ::: tab Rundeck Community
+   ::: tab Rundeck
    Add the S3 log storage [plugin](https://github.com/rundeck-plugins/rundeck-s3-log-plugin) on the `libext` directory (at `$RDECK_BASE/libext` directory).<br>
    ```
    wget https://github.com/rundeck-plugins/rundeck-s3-log-plugin/releases/download/v1.0.12/rundeck-s3-log-plugin-1.0.12.jar -P $RDECK_BASE/libext
@@ -25,7 +24,7 @@ This article explains how to configure Rundeck so that these execution logs are 
    ::::
 1. To enable the S3 / Minio log storage plugin, add the following line on the `rundeck-config.properties` file<br>
    :::: tabs
-   ::: tab Rundeck Community
+   ::: tab Rundeck
    ```
    rundeck.execution.logs.fileStoragePlugin=org.rundeck.amazon-s3
    ``` 
@@ -98,7 +97,7 @@ framework.plugin.ExecutionFileStorage.com.rundeck.rundeckpro.amazon-s3.path=logs
 ::: tab Rundeck Community
 
 ### Extending the image
-The  S3 Log Storage Plugin isn’t bundled out of the box with Rundeck OSS, so, to use it on a Docker image is necessary to extend the image using Remco.  [Remco](https://github.com/HeavyHorst/remco) is used to generate the Rundeck configuration files from templates. This allows storing parts of the configuration space in different backends. The default configuration uses environment variables.
+The  S3 Log Storage Plugin isn’t bundled out of the box with Rundeck. To use it on a Docker image it is necessary to extend the image using Remco.  [Remco](https://github.com/HeavyHorst/remco) is used to generate the Rundeck configuration files from templates. This allows storing parts of the configuration space in different backends. The default configuration uses environment variables.
 
 The Remco documentation is available [here](/administration/configuration/docker/extending-configuration.html#extending-docker-configuration).
 

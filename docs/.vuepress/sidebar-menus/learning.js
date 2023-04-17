@@ -5,27 +5,44 @@ module.exports = [{
   children: [
     '/learning/',
     {
-      title: 'Terminology',
+      title: 'Getting Started',
       collapsable: true,
-      path: '/learning/tutorial/terminology',
-      sidebarDepth: 2,
-      children: [
-        '/learning/tutorial/terminology'
-      ]
-    },
-    {
-      title: 'Tutorial',
-      collapsable: true,
+      path: '/learning/getting-started/overview',
       sidebarDepth: 0,
       children: [
-        '/learning/tutorial/preparing',
-        '/learning/tutorial/creatingnodes',
-        '/learning/tutorial/commands',
-        '/learning/tutorial/jobs',
-        '/learning/tutorial/users',
-        '/learning/tutorial/acls',
-        '/learning/tutorial/conclusion'
-      ]
+    	{
+      	  title: 'Tutorial',
+          collapsable: true,
+      	  sidebarDepth: 0,
+      	  children: [
+        	  '/learning/tutorial/preparing',
+        	  '/learning/tutorial/creatingnodes',
+        	  '/learning/tutorial/commands',
+        	  '/learning/tutorial/jobs',
+        	  '/learning/tutorial/users',
+        	  '/learning/tutorial/acls',
+        	  '/learning/tutorial/conclusion'
+      	  ]
+    	},
+      {
+        title: 'Working with Jobs',
+        collapsable: true,
+        path: '/learning/getting-started/jobs/overview',
+        sidebarDepth: 2,
+        children: [
+           '/learning/getting-started/jobs/what-is-a-job.md',
+           '/learning/getting-started/jobs/pieces-of-a-job.md',
+           '/learning/getting-started/jobs/how-to-run-a-job.md',
+           '/learning/getting-started/jobs/workflow-strategies.md',
+           '/learning/getting-started/jobs/node-sources.md',
+           '/learning/getting-started/jobs/sharing-jobs.md',
+           '/learning/getting-started/jobs/job-options.md',
+           '/learning/getting-started/jobs/creating-a-job.md',
+           '/learning/getting-started/jobs/job-plugins.md',
+           '/learning/getting-started/jobs/commercial-job-features.md'
+        ]
+      }
+     ]
     },
     {
       title: 'How To',
@@ -65,7 +82,8 @@ module.exports = [{
               '/learning/howto/revoke-ssh-keys.md'
           ]
         },
-        {
+    	
+    	{
           title: 'Writing Jobs',
           collapsable: true,
           sidebarDepth: 0,
@@ -168,6 +186,15 @@ module.exports = [{
 //            ['/learning/solutions/auto-diagnostics-github-script.md','Example: Raw Scripts']
           ]
         }
+      ]
+    },
+    {
+      title: 'Terminology',
+      collapsable: true,
+      path: '/learning/tutorial/terminology',
+      sidebarDepth: 2,
+      children: [
+        '/learning/tutorial/terminology'
       ]
     }
   ]
