@@ -10,24 +10,6 @@ module.exports = [{
       path: '/learning/getting-started/overview',
       sidebarDepth: 0,
       children: [
-        {
-      	  title: 'Working with Jobs',
-      	  collapsable: true,
-      	  path: '/learning/getting-started/jobs/overview',
-      	  sidebarDepth: 2,
-      	  children: [
-      	 	  '/learning/getting-started/jobs/what-is-a-job.md',
-      	 	  '/learning/getting-started/jobs/pieces-of-a-job.md',
-      	 	  '/learning/getting-started/jobs/how-to-run-a-job.md',
-      	 	  '/learning/getting-started/jobs/workflow-strategies.md',
-      	 	  '/learning/getting-started/jobs/node-sources.md',
-      	 	  '/learning/getting-started/jobs/sharing-jobs.md',
-      	 	  '/learning/getting-started/jobs/job-options.md',
-      	 	  '/learning/getting-started/jobs/creating-a-job.md',
-      	 	  '/learning/getting-started/jobs/job-plugins.md',
-      	 	  '/learning/getting-started/jobs/commercial-job-features.md'
-      	  ]
-        },
     	{
       	  title: 'Tutorial',
           collapsable: true,
@@ -42,7 +24,25 @@ module.exports = [{
         	  '/learning/tutorial/conclusion'
       	  ]
     	},
-      ]
+      {
+        title: 'Working with Jobs',
+        collapsable: true,
+        path: '/learning/getting-started/jobs/overview',
+        sidebarDepth: 2,
+        children: [
+           '/learning/getting-started/jobs/what-is-a-job.md',
+           '/learning/getting-started/jobs/pieces-of-a-job.md',
+           '/learning/getting-started/jobs/how-to-run-a-job.md',
+           '/learning/getting-started/jobs/workflow-strategies.md',
+           '/learning/getting-started/jobs/node-sources.md',
+           '/learning/getting-started/jobs/sharing-jobs.md',
+           '/learning/getting-started/jobs/job-options.md',
+           '/learning/getting-started/jobs/creating-a-job.md',
+           '/learning/getting-started/jobs/job-plugins.md',
+           '/learning/getting-started/jobs/commercial-job-features.md'
+        ]
+      }
+     ]
     },
     {
       title: 'How To',
