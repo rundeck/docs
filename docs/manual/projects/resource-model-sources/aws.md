@@ -1,7 +1,4 @@
 # Amazon EC2 Node Source
-::: enterprise
-:::
-
 [Amazon's EC2](https://aws.amazon.com/ec2/) (Elastic Cloud Compute) is a cloud service that provides on-demand and scalable virtual-machines for dynamic infrastructure.
 It is one of the most popular cloud services used for developing, testing and hosting applications for businesses.
 
