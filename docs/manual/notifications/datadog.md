@@ -2,19 +2,9 @@
 
 Enterprise customers have access to this plugin, that allows you to create an event in Datadog based on the execution status of a job. For example, you can configure it to create an event if the job failed or if the job succeeded.
 
-## Setup 
+## Setup
 
-:::tip
-You will need to have both an API and APP key created in Datadog and ready to use. To create these values in Datadog, navigate to Integrations > APIs and copy and paste the API key. If it doesn't exist yet, create a Rundeck integration and create an API/APP key. 
-:::
-
-To begin, you will need to add the API and APP to the project configuration setting, go to "Project Settings" and select "Edit Configuration." Next, select "Edit Configuarion File" and add the following:
-
-```bash
-project.plugin.Notification.datadog-notification-event.api_key=value
-project.plugin.Notification.datadog-notification-event.app_key=value
-```
-
+Follow the instructions outlined in the [**Datadog Integration Overview**](/manual/plugins/datadog-plugins-overview) to set up authentication with Datadog.
 
 ## Configuration
 

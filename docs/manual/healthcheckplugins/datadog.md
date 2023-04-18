@@ -10,6 +10,9 @@ The DataDog Health Check plugin allow Rundeck to check status of DataDog hosts t
 
 Gather the API Key and APP Key from your DataDog portal.  [Click here for more information from DataDog documentation](https://docs.datadoghq.com/account_management/api-app-keys/).
 
+Follow the instructions outlined in the [**Datadog Integration Overview**](/manual/plugins/datadog-plugins-overview) to set up authentication with Datadog.
+
+
 ## Configuration
 
 ![DataDog HealthCheck Config](@assets/img/healthcheck-datadog-config.png)

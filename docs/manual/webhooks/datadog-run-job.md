@@ -51,7 +51,7 @@
   - **Option Value**
   : This is the value that you want to be passed as the option. This can be any of the fields from the payload. For example, you could select date and it would pass the date from the payload to the option.
 
-  #### Condtions
+  #### Conditions
 
   With this webhook, users have the ability to specify a condition (using data from the event) that needs to be met in order for the job to be executed. In order to do so, you need to specify the following:
 

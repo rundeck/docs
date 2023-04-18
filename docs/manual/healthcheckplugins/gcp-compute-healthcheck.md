@@ -1,6 +1,10 @@
 # Google Cloud Compute Health Check
 
-The Google Cloud Platform(GCP) Compute Health Check can provide health status updates based on whether the Compute instance is running or not.
+The Google Cloud Platform(GCP) Compute Health Check can provide health status updates based on whether the Google Compute instance is running or not.
+
+### Authentication & Configuration
+Follow the steps outlined in the [**Google Cloud Integration Overview**](/manual/plugins/gcp-plugins-overview) doc to configure credentials for the GCP plugins.
+Credentials can be configured on a per Project basis or for the entire Process Automation system.
 
 ![GCP Compute Health Check](@assets/img/healthcheck-gcp-compute.png)
 
