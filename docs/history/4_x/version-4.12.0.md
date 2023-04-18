@@ -1,18 +1,18 @@
 ---
 
 title: "4.12.0 Release Notes"
-date: ""
+date: "2023-04-17"
 image: /images/chevron-logo-red-on-white.png
 feed:
  enable: true
- description: ""
+ description: "Improvements to Kubernetes, Datadog, GCP, Azure and many more enhancements!"
 
 ---
 
 # 4.12.0 Release Notes
 
 Name: <span style="color: orange"><span class="glyphicon glyphicon-flash"></span> "Unicorn orange flash"</span>
-Release Date: PUTADATEHERE
+Release Date: April 17th, 2023
 
 - [Download the Releases](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
