@@ -20,7 +20,9 @@ Release Date: PUTADATEHERE
 
 ## Overview
 
-Check out the new features and enhancements for PagerDuty Process Automation (formerly Rundeck Enterprise) and PagerDuty Runbook Automation and Rundeck Community included in this release.
+Check out the new features and enhancements for PagerDuty Process Automation, PagerDuty Runbook Automation, and Rundeck Community included in this release. This release includes new plugins for Kubernetes, new Plugin Suites for Google Cloud, Datadog, and Azure, performance improvements to the [Enterprise Runner](/administration/runner/runner-install.html), new authentication methods for Remote URL Job Options, and security fixes.
+
+View our Twitch stream review of this release live on May 9. [Here’s the event link.](https://www.twitch.tv/pagerduty/schedule)
 
 ## Process Automation Updates
 
@@ -28,8 +30,31 @@ Check out the new features and enhancements for PagerDuty Process Automation (fo
 
 ### Highlights
 
-- first highlight
-- second highlight
+**Two new Kubernetes plugins**:
+
+* _Describe Pod_ is a Job Node Step plugin that allows users to view the status and details of pods in Kubernetes clusters. When diagnosing incidents, this plugin is useful for understanding whether the container in the pod is behaving as expected, or if there is a configuration issue with the pod. Click [here](/learning/howto/how2kube.html#managing-kubernetes-with-rundeck) for instructions to get set up with the Kubernetes plugins
+
+* _Ephemeral Debug Container_ is also a Job Node Step plugin that allows users to attach an [ephemeral container](https://kubernetes.io/docs/concepts/workloads/pods/ephemeral-containers/) to running pods. This plugin provides a safe method for troubleshooting running pods that may not have debugging utilities in their container image. Capturing debug data from containers can reduce MTTR during incidents or time to identify issues during QA.
+
+![](~@assets/img/relnotes-412-k8s.png)
+
+**New Plugin Suites for Google Cloud, Datadog, and Azure:** [Plugin Suites](/history/4_x/version-4.9.0.html) streamline the configuration of plugins. The Plugin Suites for Google Cloud, Datadog, and Azure reduce the number of steps required to configure plugins across an entire project—or the entire Process Automation or Runbook Automation instance. For example, previously a user would need to configure credentials for both the GCP Node Source and the GCP Job Step plugins. Now those credentials can be configured in a single location.
+
+![](~@assets/img/relnotes-412-gcp.png)
+
+**New PagerDuty Incident Note notification plugin:** Now users can add a note to the Incident timeline in PagerDuty in response to the start, success, failure, or duration of a job. This helps users get an immediate feedback signal on the status of their Job without needing to add extra Job steps to their Job definitions.
+
+**Enterprise Runner enhancements:** Updates to the performance of the Enterprise Runner result in faster Job execution and output. Now, when Jobs or Job steps are executed concurrently on Runners, users can expect up to an 80% reduction in perceived Job duration. This enhancement builds on top of the [new architecture for Runners](/administration/runner/runner-intro.html) that was announced in [4.11.0](/history/4_x/version-4.11.0.html). 
+
+**Updated to Remote URL Job Options:** Now users can pre-populate Job Options Values from remote sources that require authentication. Remote URL Job Options supports multiple authentication methods for making HTTP/S calls to retrieve the list of Job Options. Users can select from the following authentication methods for the remote URL: Basic, API Key, and Bearer Token. The keys for each of these methods can be retrieved from Key Storage. Additionally, users can reference nested JSON elements from the returned payload of the remote URL. Click [here](/manual/job-options.html#remote-url-job-options) for the full documentation. 
+
+![](~@assets/img/relnotes-412-urloption.png)
+
+#### Security fixes
+
+RUN-1629: Upgrade core libraries for CVE-2023-20861
+RUN-1615: Invalidate user sessions upon password change/reset 
+
 
 ### Additional Updates
 
@@ -71,27 +96,10 @@ Check out the new features and enhancements for PagerDuty Process Automation (fo
 
 [Here is a link to the full list of public PRs](https://github.com/rundeck/rundeck/pulls?q=is%3Apr+milestone%3A4.12.0+is%3Aclosed)
 
-## Ansible Plugin Updates
-
-
 ## Community Contributors
 
-* Eric He ([ehe-pd](https://github.com/ehe-pd))
-* Greg Schueler ([gschueler](https://github.com/gschueler))
-* Alberto Hormazabal ([ahormazabal](https://github.com/ahormazabal))
-* Luis Toledo ([ltamaster](https://github.com/ltamaster))
-* Leonel Juarez ([L2JE](https://github.com/L2JE))
-* Christopher McCarroll-Gilbert ([chrismcg14](https://github.com/chrismcg14))
-* Jesus Osuna ([Jesus-Osuna-M](https://github.com/Jesus-Osuna-M))
-* Stephen Joyner ([sjrd218](https://github.com/sjrd218))
-* Rodrigo Navarro ([ronaveva](https://github.com/ronaveva))
-* Darwis Narvaez ([DarwisNarvaezDev](https://github.com/DarwisNarvaezDev))
-* Osman Albarran ([Oalbarran94](https://github.com/Oalbarran94))
 * Jobin Joseph ([nixjobin](https://github.com/nixjobin))
-* Jake Cohen ([jsboak](https://github.com/jsboak))
-* Miguel Ramos ([mishingo](https://github.com/mishingo))
-* Nathan Fluegel ([wayfaringson](https://github.com/wayfaringson))
-* Jeremy Olexa ([jolexa](https://github.com/jolexa))
+
 
 
 ## Staff Contributors
@@ -115,3 +123,4 @@ Check out the new features and enhancements for PagerDuty Process Automation (fo
 * Osman Albarran ([Oalbarran94](https://github.com/Oalbarran94))
 * Rodrigo Navarro ([ronaveva](https://github.com/ronaveva))
 * Stephen Joyner ([sjrd218](https://github.com/sjrd218))
+* Jeremy Olexa ([jolexa](https://github.com/jolexa))
