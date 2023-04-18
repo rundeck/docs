@@ -1,6 +1,6 @@
 ---
 
-title: "{{version.versionString}} Release Notes"
+title: "4.13.0 Release Notes"
 date: ""
 image: /images/chevron-logo-red-on-white.png
 feed:
@@ -9,9 +9,9 @@ feed:
 
 ---
 
-# {{version.versionString}} Release Notes
+# 4.13.0 Release Notes
 
-Name: <span style="color: {{version.color()}}"><span class="glyphicon glyphicon-{{version.icon()}}"></span> "{{version.name()}} {{version.color()}} {{version.icon()}}"</span>
+Name: <span style="color: red"><span class="glyphicon glyphicon-headphones"></span> "Wyvern red headphones"</span>
 Release Date: PUTADATEHERE
 
 - [Download the Releases](https://download.rundeck.com/)
@@ -34,28 +34,27 @@ Check out the new features and enhancements for PagerDuty Process Automation (fo
 ### Additional Updates
 
 
-{% for pull in enterprise.pulls -%}
-* {{ pull.title | replace(r/RUN-[0-9]*:?\s?/g, "") | replace(r/RSE-[0-9]*:?\s?/g, "") | replace(r/RCLOUD-[0-9]*:?\s?/g, "") }}
-{% endfor %}
+
 
 ## Rundeck Open Source Product Updates
 
-{% for pull in core.pulls -%}
-* [{{ pull.title | replace(r/RUN-[0-9]*:?\s?/g, "") | replace(r/RSE-[0-9]*:?\s?/g, "") | replace(r/RCLOUD-[0-9]*:?\s?/g, "") }}]({{pull.html_url}})
-{% endfor %}
+* [Key storage vue fixes](https://github.com/rundeck/rundeck/pull/8254)
+* [Fix: NPE Job Retry with No Failed Nodes](https://github.com/rundeck/rundeck/pull/8225)
+* [Fix: Failed Nodes List Not Filled in Execution](https://github.com/rundeck/rundeck/pull/8163)
+* [Fix: Add liquibase pre-conditions due to upgrades issues](https://github.com/rundeck/rundeck/pull/8095)
 
-[Here is a link to the full list of public PRs](https://github.com/rundeck/rundeck/pulls?q=is%3Apr+milestone%3A{{version.versionString}}+is%3Aclosed)
+
+[Here is a link to the full list of public PRs](https://github.com/rundeck/rundeck/pulls?q=is%3Apr+milestone%3A4.13.0+is%3Aclosed)
 
 ## Ansible Plugin Updates
-{% for pull in ansible.pulls -%}
-* [{{ pull.title | replace(r/RUN-[0-9]*:?\s?/g, "") | replace(r/RSE-[0-9]*:?\s?/g, "") | replace(r/RCLOUD-[0-9]*:?\s?/g, "") }}]({{pull.html_url}})
-{% endfor %}
+
 
 ## Community Contributors
 
-{% for login, user in contributors -%}
-* {{ user.name }} ([{{user.login}}](https://github.com/{{user.login}}))
-{% endfor %}
+* Greg Schueler ([gschueler](https://github.com/gschueler))
+* Darwis Narvaez ([DarwisNarvaezDev](https://github.com/DarwisNarvaezDev))
+* Alexander Abarca ([alexander-variacode](https://github.com/alexander-variacode))
+
 
 ## Staff Contributors
 
