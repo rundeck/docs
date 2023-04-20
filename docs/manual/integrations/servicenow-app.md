@@ -1,4 +1,4 @@
-# Rundeck Automation - ServiceNow Application
+# PagerDuty Process Automation - ServiceNow Application
 
 ::: enterprise
 :::
