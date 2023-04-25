@@ -121,6 +121,7 @@ module.exports = [{
         '/manual/plugins/datadog-plugins-overview.md',
         '/manual/plugins/gcp-plugins-overview.md',
         '/manual/plugins/jira-plugins-overview.md',
+        {title: 'Kubernetes', path: '/manual/plugins/kubernetes-plugins-overview.md'},
         '/manual/plugins/pagerduty-plugins-overview.md',
         '/manual/plugins/servicenow-plugins-overview.md'
       ]
