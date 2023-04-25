@@ -8,6 +8,16 @@ Process Automation integrates with Kubernetes through a variety of plugins liste
 By integrating Process Automation with Kubernetes, users can automate and provide self-service interfaces for operations in their Kubernetes Clusters.
 These integrations allow operations teams to provide self-service mechanisms to users throughout the business, as well as setup event-driven automation for workflows with Kubernetes.
 
+<details><summary> <font size="5">Kubernetes Plugins</font>
+</summary>
+
+|Plugin Name| Plugin Type| Description|
+|:---------------------------------------------------------|:---------------------------------------------------------:|:---------------------------------------------------------|
+|[**Deployment Create**](/manual/node-steps/kubernetes-deployment-plugins)|Node Step|Create a Deployment.|
+</details>
+<br>
+<em>Click to expand to see the full list of Process Automation plugins for Kubernetes.</em>
+
 ## Setup
 
 ### Python Dependencies
@@ -38,6 +48,17 @@ The Kube Config file can be saved to a different location, just be sure to take 
 
 If it is preferred to use a Kubernetes API Token, then follow the instructions outlined [here](https://www.cncf.io/blog/2020/07/31/kubernetes-rbac-101-authentication/) to generate the Service Account Token.
 Once created, save the Token to [Key Storage](/manual/system-configs.html#key-storage) as a **Password** secret type.
+
+### Upload Kubernetes Plugins (Rundeck OSS Only)
+
+Rundeck OSS does not come preloaded with the Kubernetes plugins. To install the Kubernetes plugins, use the following steps:
+
+1. Navigate to the [latest plugin release](https://github.com/rundeck-plugins/kubernetes/releases/latest) on Github and download the **`kubernetes-X.X.XX.zip`** file.<br><br>
+2. In Rundeck, click the **Gear Icon** and then click the **Plugins > Upload Plugin**:
+   ![Upload Plugins Menu](@assets/img/upload-plugins-menu.png)
+3. Click **Browse** and select the downloaded **`.zip`** file from Step 2.
+4. Click **Install**:
+   ![Upload Kubernetes Plugins](@assets/img/upload-k8s-plugins.png)
 
 ## Test Kubernetes Plugins
 
