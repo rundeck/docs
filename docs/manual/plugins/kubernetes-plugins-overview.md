@@ -13,7 +13,26 @@ These integrations allow operations teams to provide self-service mechanisms to 
 
 |Plugin Name| Plugin Type| Description|
 |:---------------------------------------------------------|:---------------------------------------------------------:|:---------------------------------------------------------|
-|[**Deployment Create**](/manual/node-steps/kubernetes-deployment-plugins)|Node Step|Create a Deployment.|
+|[**Create Deployment**](/manual/node-steps/kubernetes-deployment-plugins.html#kubernetes-deployment-create)|Node Step|Create a new deployment.|
+|[**Delete Deployment**](/manual/node-steps/kubernetes-deployment-plugins.html#kubernetes-deployment-delete)|Node Step|Delete an existing deployment.|
+|[**Deployment Status**](/manual/node-steps/kubernetes-deployment-plugins.html#kubernetes-deployment-status)|Node Step|Get the status of an existing deployment.|
+|[**Update Deployment**](/manual/node-steps/kubernetes-deployment-plugins.html#kubernetes-deployment-update)|Node Step|Update an existing deployment.|
+|[**Waitfor Deployment**](/manual/node-steps/kubernetes-deployment-plugins.html#kubernetes-deployment-waitfor)|Node Step|Pause workflow until deployment is complete.|
+|[**Create Job**](/manual/node-steps/kubernetes-job-plugins.html#kubernetes-job-create)|Node Step|Create a new Kubernetes job.|
+|[**Delete Job**](/manual/node-steps/kubernetes-job-plugins.html#kubernetes-job-delete)|Node Step|Delete an existing Kubernetes job.|
+|[**Re-run Job**](/manual/node-steps/kubernetes-job-plugins.html#kubernetes-job-re-run)|Node Step|Re-runs an existing Kubernetes job.|
+|[**Waitfor Job**](/manual/node-steps/kubernetes-job-plugins.html#kubernetes-job-waitfor)|Node Step|Pause workflow until Kubernetes job is complete.|
+|[**Create Service**](/manual/node-steps/kubernetes-service-plugins.html#kubernetes-service-create)|Node Step|Create a new Kubernetes service.|
+|[**Update Service**](/manual/node-steps/kubernetes-service-plugins.html#kubernetes-service-update)|Node Step|Update an existing Kubernetes service.|
+|[**Delete Service**](/manual/node-steps/kubernetes-service-plugins.html#kubernetes-service-delete)|Node Step|Delete an existing Kubernetes service.|
+|[**Create Pod**](/manual/node-steps/kubernetes-pod-plugins.html#kubernetes-pod-create)|Node Step|Create a new Kubernetes pod.|
+|[**Delete Pod**](/manual/node-steps/kubernetes-pod-plugins.html#kubernetes-pod-delete)|Node Step|Delete an existing Kubernetes pod.|
+|[**Describe Pod**](/manual/node-steps/kubernetes-pod-plugins.html#kubernetes-pod-describe)|Node Step|Describe a running Kubernetes pod.|
+|[**Execute Command**](/manual/node-steps/kubernetes-pod-plugins.html#kubernetes-pod-execute-command)|Node Step|Execute a command inside a container in a running pod.|
+|[**Execute Script**](/manual/node-steps/kubernetes-pod-plugins.html#kubernetes-pod-execute-script)|Node Step|Execute a script inside a container in a running pod.|
+|[**Pod Logs**](/manual/node-steps/kubernetes-pod-plugins.html#kubernetes-pod-logs)|Node Step|View the logs of a running pod.|
+|[**Waitfor Pod**](/manual/node-steps/kubernetes-pod-plugins.html#kubernetes-pod-waitfor)|Node Step|Pause workflow executing until pod is in "ready" state.|
+
 </details>
 <br>
 <em>Click to expand to see the full list of Process Automation plugins for Kubernetes.</em>
