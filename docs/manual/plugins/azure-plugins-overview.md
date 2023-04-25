@@ -1,4 +1,4 @@
-# Azure
+# Azure Plugins
 
 ## Overview
 
