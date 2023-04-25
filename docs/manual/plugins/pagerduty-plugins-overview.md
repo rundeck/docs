@@ -1,4 +1,4 @@
-# PagerDuty
+# PagerDuty Plugins
 
 ## Overview
 
