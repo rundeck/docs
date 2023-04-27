@@ -115,9 +115,6 @@ module.exports = [{
       sidebarDepth: 0,
       children:[
         '/manual/plugins/aws-plugins-overview.md',
-
-        '/manual/plugins/datadog-plugins-overview.md',
-
         '/manual/plugins/azure-plugins-overview.md',
         '/manual/plugins/datadog-plugins-overview.md',
         '/manual/plugins/gcp-plugins-overview.md',
