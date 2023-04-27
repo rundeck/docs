@@ -12,7 +12,28 @@ Locate the specific plugin and click on the **i** icon.  All of the plugin prope
 
 This plugin creates a new Kubernetes pod.
 
+**Required fields**:
+* API Version: Kubernetes API Version.
+* Namespace: Namespace where the pod will be created.
+* Pod Name: Name of the pod that will be created.
+* Labels: Comma separated list of key-value pairs for labels that will be added to the pod. 
+* Container Name: Name of the container that will be created in the pod.
+* Image: Name of the container image that will be created within the pod.
 
+**Optional fields**:
+* ImagePullSecrets
+* Container Ports
+* Environment Variables
+* Environment Variables from secret
+* Liveness Probe
+* Readiness Probe
+* Container Command
+* Container Arguments
+* Resource Requests
+* Volume Mounts
+* Volumes
+
+Fields in the **Authentication** section are outlined in the [**Kubernetes Plugins Overview**](/manual/plugins/kubernetes-plugins-overview).
 
 ## Kubernetes / Pod / Delete
 
