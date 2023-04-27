@@ -53,6 +53,8 @@ The SSM File Copier uses both Systems Manager's Run Command as well as S3. The p
 1. `ssm-copier-accessKeyId` and `ssm-copier-secretKey`. These can be set as Node Attributes or at the project or framework levels (e.g. `project.ssm-copier-accessKeyId` and `project.ssm-copier-secretKey`). They can also be set in the Default File Copier (for a given project).  They **do not** need to be set if an IAM Policy has been added to the EC2 that Rundeck is running on.  The permissions associated with these credentials (or IAM Role) must include policies to run commands on remote nodes using SSM _and_ to read and write to a specified S3 bucket.<br><br>
 2. `ssm-copier-bucket` is the S3 bucket that will be used to copy the file from Rundeck to the remote nodes. This can be set as a Node Attribute, in the Default File Copier, or at the project or framework levels (e.g. `project.ssm-copier-bucket`).
 
+The (remote) EC2 instances also need the following permissions `s3:ListBucket` and `s3:GetObject` so that they can pull the script that is dispatched to the S3 bucket. For more information on how this operation works, see [this documentation](https://docs.aws.amazon.com/systems-manager/latest/userguide/integration-s3.html).
+
 ### See it in Action
 This plugin is used in one of the prebuilt Jobs in our [**_Automated Diagnostics Solution_**](/learning/solutions/automated-diagnostics/solution-overview).
 Try out the Solution to see how this plugin can be used as part of incident-response workflows.

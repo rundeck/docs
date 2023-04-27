@@ -114,14 +114,14 @@ module.exports = [{
       path:'/manual/plugins/plugins-overview',
       sidebarDepth: 0,
       children:[
-        '/manual/plugins/aws-plugins-overview.md',
-        '/manual/plugins/azure-plugins-overview.md',
-        '/manual/plugins/datadog-plugins-overview.md',
-        '/manual/plugins/gcp-plugins-overview.md',
-        '/manual/plugins/jira-plugins-overview.md',
+        {title: 'AWS', path: '/manual/plugins/aws-plugins-overview.md'},
+        {title: 'Azure', path: '/manual/plugins/azure-plugins-overview.md'},
+        {title: 'Datadog', path:'/manual/plugins/datadog-plugins-overview.md'},
+        {title: 'Google Cloud', path: '/manual/plugins/gcp-plugins-overview.md'},
+        {title: 'Jira', path: '/manual/plugins/jira-plugins-overview.md'},
         {title: 'Kubernetes', path: '/manual/plugins/kubernetes-plugins-overview.md'},
-        '/manual/plugins/pagerduty-plugins-overview.md',
-        '/manual/plugins/servicenow-plugins-overview.md'
+        {title: 'PagerDuty', path: '/manual/plugins/pagerduty-plugins-overview.md'},
+        {title: 'ServiceNow', path: '/manual/plugins/servicenow-plugins-overview.md'}
       ]
     },
     {
