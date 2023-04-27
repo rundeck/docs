@@ -1,15 +1,14 @@
 # Instance System Requirements
 || Process Automation OnPrem | Rundeck |
-| --- | -------- | --- |
-| Operating Systems | **Supported**:<br>[CentOS/RHEL](/administration/install/linux-rpm.html)<br>[Ubuntu/Debian](/administration/install/linux-deb.html)<br>[Windows Server](/administration/install/windows.html) | **Recommended**:<br>[CentOS/RHEL](/administration/install/linux-rpm.html)<br>[Ubuntu/Debian](/administration/install/linux-deb.html)<br>[Windows Server](/administration/install/windows.html) |
-| RAM | 32GB RAM<br>(16GB JVM Heap) | 8GB RAM<br>(4GB JVM Heap) |
-| CPU | 8 CPUs per instance<br>Equivalent to m4.2xlarge in AWS EC2 | 2 CPUs per instance<br>Equivalent to m4.large in AWS EC2 |
+| --- | ---------- | --- |
+| Operating Systems | **Supported**:<br>[Red Hat Enterprise/Amazon/Oracle Linux](/administration/install/linux-rpm.html)<br>[Ubuntu/Debian](/administration/install/linux-deb.html)<br>[Windows Server](/administration/install/windows.html) | **Recommended**:<br>[Red Hat Enterprise/Amazon/Oracle Linux](/administration/install/linux-rpm.html)<br>[Ubuntu/Debian](/administration/install/linux-deb.html)<br>[Windows Server](/administration/install/windows.html) |
+| Server Profile | **Recommended**:<br>32GB RAM<br>(24GB JVM Heap)<br>8 CPUs per instance<br>*Equivalent to m4.2xlarge in AWS EC2*<br><br>**Minimum**:<br>16GB RAM<br>(12GB JVM Heap)<br>4 CPUs per instance<br>*Equivalent to m4.xlarge in AWS EC2* | <br><br><br><br><br><br><br>**Minimum**:<br>8GB RAM<br>(4GB JVM Heap)<br>2 CPUs per instance<br>*Equivalent to m4.large in AWS EC2*  |
 | [Database](#database) | **Supported**:<br>[MariaDB/MySQL 8+](/administration/configuration/database/mysql.html)<br>[PostgreSQL](/administration/configuration/database/postgres.html) | **Recommended**:<br>[MariaDB/MySQL](/administration/configuration/database/mysql.html)<br> [PostgreSQL](/administration/configuration/database/postgres.html) |
-| [Java](#java) | Java 11 installed on each instance | Java 11 installed on each instance |
+| [Java](#java) | [Java 11](#java) installed on each instance | [Java 11](#java) installed on each instance |
 | [Log Store](#logstore) | **Recommended**:<br>[S3-compatible object store](/learning/howto/S3-minio.html#s3-or-minio-for-execution-logs) | File system or <br>[S3-compatible object store](/learning/howto/S3-minio.html#s3-or-minio-for-execution-logs) |
 | Install Method | [.rpm](/administration/install/linux-rpm.html)<br> [.deb](/administration/install/linux-deb.html)<br>[Java servlet (.war)](/administration/install/jar.html)<br>[Docker](/administration/install/docker.html) | [.rpm](/administration/install/linux-rpm.html)<br>[.deb](/administration/install/linux-deb.html)<br>[Java servlet (.war)](/administration/install/jar.html)<br>[Docker](/administration/install/docker.html) |
-| [Network Ports](#network-access) | 4443 (https)<br>4440 (http)<br>22 (ssh for installation and maintenance) | 4443 (https)<br>4440 (http)<br>22 (ssh for installation and maintenance) |
-| Admin Access | Root (or Administrator on Windows) is not [required or recommended](#adminaccess). | Root (or Administrator on Windows) is not required or recommended. Using a dedicated user account such as "rundeck" is recommended. If there is a need for root access, please set up the Rundeck user to have access via [sudo](https://en.wikipedia.org/wiki/Sudo). |
+| [Network Ports](#network-access) | 4443 (https)<br>4440 (http)<br>22 (Linux machines over SSH)<br>5985 (Windows machines over http)<br>5986 (Windows machines over https) | 4443 (https)<br>4440 (http)<br>22 (Linux machines over SSH)<br>5985 (Windows machines over http)<br>5986 (Windows machines over https) |
+| Admin Access | Root (or Administrator on Windows) is not [required or recommended](#adminaccess). | Root (or Administrator on Windows) is not [required or recommended](#adminaccess). |
 | Browser | Accessing automation typically requires an HTML5 compliant browser. Currently supported version of Mozilla Firefox or Google Chrome are recommended. | Accessing automation typically requires an HTML5 compliant browser. Currently supported version of Mozilla Firefox or Google Chrome are recommended. |
 
 ## Java
@@ -66,14 +65,14 @@ Don't use the H2 embedded database for anything except testing and non-productio
 
 For production instances, use an external database like [MariaDB/MySQL](/administration/configuration/database/mysql.html) or [PostgreSQL](/administration/configuration/database/postgres.html).
 
-Also, be sure to locate your external database on a host(s) with sufficient capacity and performance. Don't create a downstream bottleneck!
+Also, be sure to locate your external database on a host with sufficient capacity and performance. Don't create a downstream bottleneck!
 
 For more about setting the datasource see: [Configuration/Database](/administration/configuration/database/).
 
 ## Logstore<br>
 Rundeck records all job execution data into the Logstore. By default, Rundeck is configured to use the local file system. Normally, that is defined by the framework.logs.dir system setting found in framework.properties.
 
-If you are setting up a clustered Rundeck see: [Configuration/Logstore](/administration/cluster/logstore/).
+For clustered setups with Process Automation, see: [Configuration/Logstore](/administration/cluster/logstore/).
 
 ## Admin Access<br>
 Using a dedicated user account such as "rundeck" is recommended. If there is a need for root access, please set up the Rundeck user to have access via [sudo](https://en.wikipedia.org/wiki/Sudo).
