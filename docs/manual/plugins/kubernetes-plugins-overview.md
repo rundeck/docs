@@ -31,7 +31,9 @@ These integrations allow operations teams to provide self-service mechanisms to 
 |[**Execute Command**](/manual/node-steps/kubernetes-pod-plugins.html#kubernetes-pod-execute-command)|Node Step|Execute a command inside a container in a running pod.|
 |[**Execute Script**](/manual/node-steps/kubernetes-pod-plugins.html#kubernetes-pod-execute-script)|Node Step|Execute a script inside a container in a running pod.|
 |[**Pod Logs**](/manual/node-steps/kubernetes-pod-plugins.html#kubernetes-pod-logs)|Node Step|View the logs of a running pod.|
-|[**Waitfor Pod**](/manual/node-steps/kubernetes-pod-plugins.html#kubernetes-pod-waitfor)|Node Step|Pause workflow executing until pod is in "ready" state.|
+|[**Waitfor Pod**](/manual/node-steps/kubernetes-pod-plugins.html#kubernetes-pod-waitfor)|Node Step|Pause workflow until pod is in "ready" state.|
+|[**Debug Pod**](/manual/node-steps/kubernetes-debug-plugins.html#kubernetes-debug-ephemeral-container)|Node Step|Debug a running container inside an existing pod using an ephemeral container.|
+|[**Waitfor StatefulSet**](/manual/node-steps/kubernetes-statefulset-plugins.html#kubernetes-statefulset-waitfor)|Node Step|Pause workflow until StatefulSet has been successfully deployed.|
 
 </details>
 <br>
