@@ -2,6 +2,8 @@
 
 ## Overview
 
+![](@assets/img/pagerduty-logo.png)
+
 Process Automation integrates with PagerDuty Incident Response through a variety of plugins listed below.
 By integrating Process Automation with Incident Response, users can automatically update incidents, run response plays, add diagnostics and much more.
 

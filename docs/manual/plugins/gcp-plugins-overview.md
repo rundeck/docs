@@ -4,7 +4,7 @@
 :::
 
 ## Overview
-![](@assets/img/gcp-icon.png)
+![](@assets/img/gcp-logo.png)
 
 Process Automation integrates with Google Cloud through a variety of plugins listed below.
 By integrating Process Automation with Google Cloud, users can automate and provide self-service interfaces for operations of their infrastructure and applications.

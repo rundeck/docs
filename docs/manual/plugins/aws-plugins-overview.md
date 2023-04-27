@@ -1,6 +1,7 @@
 # AWS Plugins
 
 ## Overview
+![](@assets/img/aws-logo.png)
 
 Process Automation integrates with Amazon Web Services (AWS) through a variety of plugins listed below. 
 By integrating Process Automation with AWS, users can provide a centralized, self-service interface for both simple and complex tasks spanning multiple cloud environments.

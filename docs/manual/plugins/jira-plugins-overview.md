@@ -2,6 +2,8 @@
 
 ## Overview
 
+![](@assets/img/jira-logo.png)
+
 Process Automation integrates with Jira through a variety of plugins listed below.
 By integrating Process Automation with Jira, users can automate many of their operations around Issues, Projects, IT Service Requests, and much more.
 These integrations allow operations teams to provide self-service mechanisms to users throughout the business, as well as setup event-driven automation for workflows that involve Jira Software and Jira Service Management.

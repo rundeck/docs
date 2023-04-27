@@ -2,6 +2,8 @@
 
 ## Overview
 
+![](@assets/img/azure-plugins-logo.png)
+
 Process Automation integrates with Azure through a variety of plugins listed below.
 By integrating Process Automation with Azure, users can automate and provide self-service interfaces for operations of their infrastructure and applications.
 These integrations allow operations teams to provide self-service mechanisms to users throughout the business, as well as setup event-driven automation for workflows with Azure.
