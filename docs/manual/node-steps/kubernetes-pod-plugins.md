@@ -12,6 +12,8 @@ Locate the specific plugin and click on the **i** icon.  All of the plugin prope
 
 This plugin creates a new Kubernetes pod.
 
+
+
 ## Kubernetes / Pod / Delete
 
 This plugin deletes an existing Kubernetes pod.

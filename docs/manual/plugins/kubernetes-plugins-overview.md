@@ -25,6 +25,7 @@ These integrations allow operations teams to provide self-service mechanisms to 
 |[**Create Service**](/manual/node-steps/kubernetes-service-plugins.html#kubernetes-service-create)|Node Step|Create a new Kubernetes service.|
 |[**Update Service**](/manual/node-steps/kubernetes-service-plugins.html#kubernetes-service-update)|Node Step|Update an existing Kubernetes service.|
 |[**Delete Service**](/manual/node-steps/kubernetes-service-plugins.html#kubernetes-service-delete)|Node Step|Delete an existing Kubernetes service.|
+|[**Pods Node Source**](/manual/projects/resource-model-sources/kubernetes.md)|Resource Model|Populates node inventory with Kubernetes pods.|
 |[**Create Pod**](/manual/node-steps/kubernetes-pod-plugins.html#kubernetes-pod-create)|Node Step|Create a new Kubernetes pod.|
 |[**Delete Pod**](/manual/node-steps/kubernetes-pod-plugins.html#kubernetes-pod-delete)|Node Step|Delete an existing Kubernetes pod.|
 |[**Describe Pod**](/manual/node-steps/kubernetes-pod-plugins.html#kubernetes-pod-describe)|Node Step|Describe a running Kubernetes pod.|

@@ -29,18 +29,19 @@ module.exports = [{
           collapsable: true,
           children: [
             '/manual/projects/resource-model-sources/',
-            '/manual/projects/resource-model-sources/node-wizard',
             '/manual/projects/resource-model-sources/aws',
-            '/manual/projects/resource-model-sources/ecs-fargate',
             '/manual/projects/resource-model-sources/azure',
-            '/manual/projects/resource-model-sources/gcp',
-            '/manual/projects/resource-model-sources/oracle',
-            '/manual/projects/resource-model-sources/datadog',
-            '/manual/projects/resource-model-sources/servicenow',
-            '/manual/projects/resource-model-sources/vmware',
-            '/manual/projects/resource-model-sources/sensu',
             '/manual/projects/resource-model-sources/builtin',
-            '/manual/projects/resource-model-sources/resource-editor'
+            '/manual/projects/resource-model-sources/datadog',
+            '/manual/projects/resource-model-sources/ecs-fargate',
+            '/manual/projects/resource-model-sources/gcp',
+            '/manual/projects/resource-model-sources/kubernetes',
+            '/manual/projects/resource-model-sources/oracle',
+            '/manual/projects/resource-model-sources/node-wizard',
+            '/manual/projects/resource-model-sources/resource-editor',
+            '/manual/projects/resource-model-sources/sensu',
+            '/manual/projects/resource-model-sources/servicenow',
+            '/manual/projects/resource-model-sources/vmware'
           ]
         },
         {
