@@ -20,13 +20,7 @@ There are three components of the setup for using SSM with Process Automation:
 3. S3 Bucket setup. Required for sending scripts and files to EC2s, but not required for sending individual commands.
 
 ### SSM Setup on Remote EC2 Nodes
-::: tip Tip
-The fastest way to set up and use Systems Manager for remote commands is through the [Quick Setup Host Management](https://docs.aws.amazon.com/systems-manager/latest/userguide/quick-setup-host-management.html) from AWS.
-:::
-
-Here are the critical steps:
-
-1. Ensure the SSM Agent is running on remote EC2 instances.<br><br>
+1. Ensure the SSM Agent is running on remote EC2 instances. This can be done following [this AWS documentation](https://docs.aws.amazon.com/systems-manager/latest/userguide/ssm-agent-status-and-restart.html).
 2. Associate an IAM role with the remote EC2 instances that allows for the SSM agent to retrieve tasks from the SSM service.
    * Amazon provides a prebuilt permission policy: **AmazonSSMManagedInstanceCore** that provides the necessary permissions for this operation.
    :::tip Heads Up!
@@ -47,20 +41,130 @@ Here are the critical steps:
       }
     ```
    :::
-3. You can test that you have configured Systems Manager correctly by manually using the [Run Command](https://docs.aws.amazon.com/systems-manager/latest/userguide/run-command.html) feature from AWS:
+3. Add the instances to the SSM inventory. This can be done using the [Quick Setup Host Management](https://docs.aws.amazon.com/systems-manager/latest/userguide/quick-setup-host-management.html).
+4. You can test that you have configured Systems Manager correctly by manually using the [Run Command](https://docs.aws.amazon.com/systems-manager/latest/userguide/run-command.html) feature from AWS:
    <br>![aws-ssm-test-run](@assets/img/aws-ssm-test-run-command.png)<br>
    * Use the **`AWS-RunShellScript`** or **`AWS-RunPowerShellScript`** (for Windows) to test that SSM has been set up properly for the remote EC2 nodes.
 <br>![aws-ssm-test-script](@assets/img/aws-ssm-test-run-script.png)<br>
 
 Additional documentation on this setup can be found in the [Setting up AWS Systems Manager for EC2 instances](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-setting-up-ec2.html).
 
- 
+### IAM Permissions Setup for Process Automation
 
-### Node Executor
-In order for SSM Node Executor to send commands to remote nodes, the following properties must be set on the nodes in Rundeck:
-1. `instanceId` - This is the EC2 instance-id from AWS.  If using the [AWS EC2 Node Source](/administration/projects/resource-model-sources/aws.html#amazon-ec2-node-source), then this property will be automatically applied.<br><br>
-2. `region` - This is the AWS region where the EC2 resides. If using the AWS EC2 Resource Model plugin, then this property will be automatically applied. If you are not using the AWS EC2 Resource Model plugin, then you can add it using the [Attribute Match](/manual/node-enhancers.html#attribute-match) node enhancer.<br><br>
-3. AWS Access ID and Secret Key can be configured in a few ways:
+In order for Process Automation to communicate with remote EC2 instances using SSM, it needs to have permissions to send commands to the SSM service.
+Amazon provides a prebuilt IAM Policy, **AmazonSSMAutomationRole** that can be used for providing the SSM permissions to Process Automation's IAM Role. 
+However, it is recommended to only use this role for testing as it has fairly broad permissions. Below are instructions to use the minimum necessary permissions:
+
+1. Create a new IAM Policy with the following permissions:
+    :::warning Heads Up!
+    Be sure to replace **`<<your AWS account ID>>`** with the Account ID where the remote EC2 instances reside.
+    :::
+    ```
+    {
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Sid": "VisualEditor0",
+                "Effect": "Allow",
+                "Action": "ssm:SendCommand",
+                "Resource": [
+                    "arn:aws:s3:::*",
+                    "arn:aws:ssm:*::document/AWS-RunShellScript",
+                    "arn:aws:ssm:*::document/AWS-RunPowerShellScript",
+                    "arn:aws:ssm:*::document/AWS-RunRemoteScript",
+                    "arn:aws:ec2:*:<<your AWS account ID>>:instance/*"
+                ]
+            },
+            {
+                "Sid": "VisualEditor1",
+                "Effect": "Allow",
+                "Action": [
+                    "ssm:ListCommands",
+                    "ssm:ListCommandInvocations",
+                    "ssm:GetCommandInvocation",
+                    "logs:GetLogEvents"
+                ],
+                "Resource": "*"
+            }
+        ]
+    }
+    ``` 
+2. Attach this policy with the IAM Role that is associated with Process Automation.  If Process Automation is hosted on EC2, then follow [these steps](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html#attach-iam-role) to modify the IAM Role of an EC2. If hosted on ECS, then follow [these steps](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html#specify-task-iam-roles).
+   :::warning IAM Role for ECS
+   If running Process Automation on ECS, then this IAM Policy needs to be attached to the **Task Role**, _not_ the _Task Execution Role_.
+    ::: 
+
+### S3 Bucket Permissions
+In order for scripts and file to be picked up by the SSM agents on the remote nodes, the files are (temporarily) passed through an S3 bucket.
+
+1. Create an S3 bucket that has a bucket policy that allows for objects to be _uploaded_ to it by the IAM policy associated with Process Automation.
+2. Include a permission statement in this policy that allows for the remote EC2 instances to _retrieve_ objects from the bucket.
+3. Here is an example policy:
+    :::warning Heads Up!                                                        
+    Be sure to replace **`<< content >>`** with your AWS Account ID's and ARN's.
+    :::                                                                         
+    ```
+   {
+       "Version": "2012-10-17",
+       "Statement": [
+           {
+               "Effect": "Allow",
+               "Principal": {
+                   "AWS": "arn:aws:iam::<<remote EC2 nodes AWS account ID>>:role/<<ARN associated with remote EC2s>>"
+               },
+               "Action": [
+                   "s3:GetObject",
+                   "s3:ListBucket"
+               ],
+               "Resource": "arn:aws:s3:::automated-diagnostics/*"
+           },
+           {
+               "Effect": "Allow",
+               "Principal": {
+                   "AWS": "arn:aws:iam::<<Process Automation AWS account ID>>:role/<<ARN associated with Process Automation>>"
+               },
+               "Action": [
+                   "s3:PutObject"
+               ],
+               "Resource": "arn:aws:s3:::automated-diagnostics/*"
+           }
+       ]
+   }
+   ```                               
+                               
+
+:::tip Tip!
+You can test that the S3 permissions have been set up correctly by executing a simple script on the remote EC2s through the Systems Manager interface:
+Follow the instructions outlined in [this AWS documentation](https://docs.aws.amazon.com/systems-manager/latest/userguide/integration-s3.html) to set up and run the test.
+:::
+
+## Setup Within Process Automation
+
+### AWS Authentication
+Follow the instructions outlined in the [AWS Plugins Overview](/docs/manual/plugins/aws-plugins-overview.html) to authenticate Process Automation with AWS.
+
+### Node Discovery
+In order to target the EC2 instances, they need to be populated into Process Automation's node inventory. 
+It is recommended to use the [**EC2 Node Source**](/docs/manual/projects/resource-model-sources/aws.html#amazon-ec2-node-source).
+
+:::warning When not using the EC2 Node Source
+If the EC2 Node Source is not being used for node discovery, then be sure that the following **node-attributes** are added to the nodes:
+1. **`instanceId`** - This is the EC2 instance-id from AWS.
+2. **`region`** - This is the AWS region where the EC2 resides.
+Node Attributes can be added when defining a resource-model source [manually](/docs/administration/configuration/plugins/bundled-plugins.html#built-in-resource-model-formats)
+or by using the [Attribute Match](/manual/node-enhancers.html#attribute-match) node enhancer.
+:::
+
+### Enable SSM Node Executor
+
+The SSM Node Executor can be set as the **Default Node Executor** - thereby making it the standard node executor for the whole project:
+
+1. Navigate to 
+
+In order for SSM Node Executor to send commands to remote nodes, the following properties must be set on the nodes in Process Automation:
+1. **`instanceId`** - This is the EC2 instance-id from AWS.  If using the [AWS EC2 Node Source](/administration/projects/resource-model-sources/aws.html#amazon-ec2-node-source), then this property will be automatically applied.<br><br>
+2. **`region`** - This is the AWS region where the EC2 resides. If using the AWS EC2 Resource Model plugin, then this property will be automatically applied. If you are not using the AWS EC2 Resource Model plugin, then you can add it using the [Attribute Match](/manual/node-enhancers.html#attribute-match) node enhancer.<br><br>
+3. 
    <br><br>
    * If Rundeck is running on an EC2 and has an IAM Role applied with the correct permissions - such as the **AmazonSSMAutomationRole**, then the AWS credentials **do not** need to be added into Rundeck. [Here](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html) is the AWS documentation on applying IAM roles to EC2. <br><br>
    * As Node-attributes, these can be applied via the **Mapping Params** field in the [EC2 Node Source](/administration/projects/resource-model-sources/aws.html#amazon-ec2-node-source) plugin.
