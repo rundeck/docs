@@ -15,12 +15,12 @@ Process Automation sends commands to the Systems Manager service, and then the S
 There are three components of the setup for using SSM with Process Automation:
 1. SSM and IAM setup on the remote EC2 nodes.
 2. IAM permissions for Process Automation.
-3. S3 Bucket setup. Required for sending scripts and files to EC2s, but not required for sending individual commands.
+3. S3 Bucket setup. Required for executing scripts and sending files to EC2s, but not required for sending individual commands.
 
 ### SSM Setup on Remote EC2 Nodes
 1. Ensure the SSM Agent is running on remote EC2 instances. This can be done following [this AWS documentation](https://docs.aws.amazon.com/systems-manager/latest/userguide/ssm-agent-status-and-restart.html).
 2. Associate an IAM role with the remote EC2 instances that allows for the SSM agent to retrieve tasks from the SSM service.
-   * Amazon provides a prebuilt permission policy: **AmazonSSMManagedInstanceCore** that provides the necessary permissions for this operation.
+   * AWS provides a prebuilt policy: **AmazonSSMManagedInstanceCore** that provides the necessary permissions for this operation.
    :::tip Heads Up!
      In order to send scripts and files to EC2 instances, the SSM agents also need to be able to retrieve objects from S3. Be sure to add the **`s3:GetObject`** and **`s3:ListObject`** permissions to the remote EC2s IAM role as well.
    ```
@@ -33,7 +33,7 @@ There are three components of the setup for using SSM with Process Automation:
                       "s3:GetObject",
                       "s3:ListBucket"
                   ],
-                  "Resource": "arn:aws:s3:::automated-diagnostics/*"
+                  "Resource": "arn:aws:s3:::<<YOUR S3 BUCKET>>/*"
               }
           ]
       }
@@ -51,7 +51,9 @@ Additional documentation on this setup can be found in the [Setting up AWS Syste
 
 In order for Process Automation to communicate with remote EC2 instances using SSM, it needs to have permissions to send commands to the SSM service.
 Amazon provides a prebuilt IAM Policy, **AmazonSSMAutomationRole** that can be used for providing the SSM permissions to Process Automation's IAM Role. 
-However, it is recommended to only use this role for testing as it has fairly broad permissions. Below are instructions to use the minimum necessary permissions:
+However, it is recommended to **only use this role for testing** as it has fairly broad permissions. 
+
+Here are steps to use a more secure permissions set:
 
 1. Create a new IAM Policy with the following permissions:
     :::warning Heads Up!
@@ -93,7 +95,7 @@ However, it is recommended to only use this role for testing as it has fairly br
     ::: 
 
 ### S3 Bucket Permissions
-In order for scripts and file to be picked up by the SSM agents on the remote nodes, the files are (temporarily) passed through an S3 bucket.
+In order for scripts and files to be picked up by the SSM agents on the remote nodes, the files are (temporarily) passed through an S3 bucket.
 
 1. Create an S3 bucket that has a bucket policy that allows for objects to be _uploaded_ to it by the IAM policy associated with Process Automation.
 2. Include a permission statement in this policy that allows for the remote EC2 instances to _retrieve_ objects from the bucket.
@@ -132,23 +134,24 @@ In order for scripts and file to be picked up by the SSM agents on the remote no
                                
 
 :::tip Tip!
-You can test that the S3 permissions have been set up correctly by executing a simple script on the remote EC2s through the Systems Manager interface:
+You can test that the S3 permissions have been set up correctly by executing a simple script on the remote EC2s through the Systems Manager interface.
 Follow the instructions outlined in [this AWS documentation](https://docs.aws.amazon.com/systems-manager/latest/userguide/integration-s3.html) to set up and run the test.
 :::
 
 ## Setup Within Process Automation
 
 ### AWS Authentication
-Follow the instructions outlined in the [AWS Plugins Overview](/docs/manual/plugins/aws-plugins-overview.html) to authenticate Process Automation with AWS.
+Follow the instructions outlined in the [AWS Plugins Overview](/docs/manual/plugins/aws-plugins-overview.html) for Process Automation to authenticate with AWS.
 
 ### Node Discovery
-In order to target the EC2 instances, they need to be populated into Process Automation's node inventory. 
+In order to target the remote EC2 instances, they need to be populated into Process Automation's node inventory. 
 It is recommended to use the [**EC2 Node Source**](/docs/manual/projects/resource-model-sources/aws.html#amazon-ec2-node-source).
 
 :::warning When not using the EC2 Node Source
-If the EC2 Node Source is not being used for node discovery, then be sure that the following **node-attributes** are added to the nodes:
+If the EC2 Node Source is not used for node discovery, then be sure that the following **node-attributes** are added to the nodes:
 1. **`instanceId`** - This is the EC2 instance-id from AWS.
 2. **`region`** - This is the AWS region where the EC2 resides.
+
 Node Attributes can be added when defining a resource-model source [manually](/docs/administration/configuration/plugins/bundled-plugins.html#built-in-resource-model-formats)
 or by using the [Attribute Match](/manual/node-enhancers.html#attribute-match) node enhancer.
 :::
@@ -167,9 +170,11 @@ The SSM Node Executor can be set as the **Default Node Executor** - thereby maki
 <br><br>
 
 **Individual Nodes and Node Sources Setting**       
-The SSM Node Executor can alternatively be configured on a per **Node Source** or per node basis. To do so, add **`node-executor=awsssmexecutor`** as a node-attribute to the nodes.
+The SSM Node Executor can alternatively be configured on a per **Node Source** or per node basis.<br>
+To do so, add **`node-executor=awsssmexecutor`** as a node-attribute to the nodes.
 
-* For the **EC2 Node Source**, this can be done using the **Mapping Params** field: **`node-executor.default=awsssmexecutor`** and **`file-copier.default=aws-ssm-copier`**:
+* For the **EC2 Node Source**, this can be done using the **Mapping Params** field:<br>
+**`node-executor.default=awsssmexecutor`** and **`file-copier.default=aws-ssm-copier`**
   ![ec2-mapping-params](@assets/img/aws-ssm-ec2-mapping-params.png)
 
 ### Enable SSM File Copier
@@ -186,6 +191,10 @@ The SSM File Copier can be set as the **Default File Copier** - thereby making i
 
 **Individual Nodes and Node Sources Setting**       
 The SSM File Copier can alternatively be configured on a per **Node Source** or per node basis. To do so, add **`file-copier=aws-ssm-copier`** and **`ssm-copier-bucket=S3 bucket name`** as a node-attribute to the nodes.
+
+## Using SSM for Commands and Scripts
+Once the setup is complete, commands that are executed on the specified EC2s - either through the [**Commands**](/docs/manual/06-commands.html#commands-tab-overview) tab or through the **Remote Command** step - will automatically execute through SSM.
+Similarly, scripts that are executed using the **Incline Script** Job step will take place using SSM with S3 as the pass-through mechanism.
 
 ## Using CloudWatch Logs (Optional)
 The example policies in the prior sections enable Process Automation to retrieve logs directly from SSM.  
