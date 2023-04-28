@@ -6,9 +6,9 @@
 The Node Executor and File Copier plugins use [AWS Systems Manager](https://aws.amazon.com/systems-manager/) to send commands, files and scripts to remote nodes.
 
 Using the SSM plugins allows for Process Automation to communicate with EC2 instances through the SSM service, rather than another communication protocol - such as SSH. 
-Process Automation sends commands to the Systems Manager service, and then the Systems Manager agents _pull_ their tasks onto their host EC2s.
+Process Automation sends commands to the Systems Manager service, and then the Systems Manager agents _pull_ their tasks onto their host EC2s. In addition, S3 is used to pass scripts and files to remote nodes.
 
-The File Copier plugin uses Systems Manager _and_ S3 to copy files to remote nodes as well as run scripts on remote nodes.
+![Basic Architecture of Process Automation with SSM](@assets/img/ssm-node-executor-architecture.png)
 
 ## Configuration and Credential Settings
 
