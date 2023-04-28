@@ -2,13 +2,11 @@
 ::: enterprise
 :::
 
-## Description
-The Node Executor and File Copier plugins use [AWS's Systems Manager](https://aws.amazon.com/systems-manager/) (previously named "SSM") to send commands, files and scripts to remote nodes. Specifically, they make use of System Manager's [Run Command](https://docs.aws.amazon.com/systems-manager/latest/userguide/execute-remote-commands.html).
+## Overview
+The Node Executor and File Copier plugins use [AWS Systems Manager](https://aws.amazon.com/systems-manager/) to send commands, files and scripts to remote nodes.
 
-**From AWS's Documentation:**
-_Using Run Command, a capability of AWS Systems Manager, you can remotely and securely manage the configuration of your managed nodes. A managed node is any Amazon Elastic Compute Cloud (Amazon EC2) instance, edge device, or on-premises server or virtual machine (VM) in your hybrid environment that has been configured for Systems Manager._
-
-This means that Rundeck does **not** need direct connectivity to the remote infrastructure. Rather, Rundeck sends commands to the Systems Manager service, and then the Systems Manager agents _pull_ their tasks onto their host EC2s.
+Using the SSM plugins allows for Process Automation to communicate with EC2 instances through the SSM service, rather than another communication protocol - such as SSH. 
+Process Automation sends commands to the Systems Manager service, and then the Systems Manager agents _pull_ their tasks onto their host EC2s.
 
 The File Copier plugin uses Systems Manager _and_ S3 to copy files to remote nodes as well as run scripts on remote nodes.
 
@@ -157,34 +155,76 @@ or by using the [Attribute Match](/manual/node-enhancers.html#attribute-match) n
 
 ### Enable SSM Node Executor
 
+**Project Wide Setting**<br>
 The SSM Node Executor can be set as the **Default Node Executor** - thereby making it the standard node executor for the whole project:
 
-1. Navigate to 
+1. Navigate to **Project Settings** -> **Edit Configuration** -> **Default Node Executor**.
+2. Select the dropdown on the left and select **AWS / SSM / Node Executor**:
+    ![](@assets/img/ssm-select-default-node-executor.png)
+3. If Process Automation is authenticated with AWS through an associated IAM Role, then all the fields can be left as their defaults. Otherwise, fill in the **Access Key ID** and **Secret Key** fields.
+4. See below for using **CloudWatch Logs** for larger log-output.
+5. Optionally modify the **Log Filter Delay** property to be the number of seconds to wait before retrieving logs.
+<br><br>
 
-In order for SSM Node Executor to send commands to remote nodes, the following properties must be set on the nodes in Process Automation:
-1. **`instanceId`** - This is the EC2 instance-id from AWS.  If using the [AWS EC2 Node Source](/administration/projects/resource-model-sources/aws.html#amazon-ec2-node-source), then this property will be automatically applied.<br><br>
-2. **`region`** - This is the AWS region where the EC2 resides. If using the AWS EC2 Resource Model plugin, then this property will be automatically applied. If you are not using the AWS EC2 Resource Model plugin, then you can add it using the [Attribute Match](/manual/node-enhancers.html#attribute-match) node enhancer.<br><br>
-3. 
-   <br><br>
-   * If Rundeck is running on an EC2 and has an IAM Role applied with the correct permissions - such as the **AmazonSSMAutomationRole**, then the AWS credentials **do not** need to be added into Rundeck. [Here](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html) is the AWS documentation on applying IAM roles to EC2. <br><br>
-   * As Node-attributes, these can be applied via the **Mapping Params** field in the [EC2 Node Source](/administration/projects/resource-model-sources/aws.html#amazon-ec2-node-source) plugin.
-     The node-attributes are **`ssm-accessKeyId`** and **`ssm-secretKey`** (this is pointing to a path in Key Storage, so be sure to save your AWS Secret Key in Key Storage, _not_ as a node-attribute). These can also be set at the project or framework levels (e.g. `project.ssm-accessKeyId` and `project.ssm-secretKey`):
-     <br><br>![ec2-mapping-params](@assets/img/aws-ssm-ec2-mapping-params.png)<figcaption>Optionally Set AWS credentials in EC2 Node Source</figcaption><br>
-   * The credentials can also be set via the [Default Node Executor](/manual/project-settings.html#edit-configuration):
-     <br><br>![default-node-executor](@assets/img/aws-ssm-default-node-executor.png)<figcaption>Optionally Configure Credentials via Default Node Executor</figcaption><br>
-4. **Optional Node Executor Settings:**<br><br>
-   1. The log output from AWS Systems Manager's Run Command is truncated to 2500 characters. To see the full log-output for logs longer than 2500 characters, you can have SSM use a CloudWatch log bucket to retrieve the full log output.  
-      To set this up, add the following property in Rundeck as node-attributes: `cloudwatch-log-group`. This can also be set at the project and framework levels (e.g. `project.cloudwatch-log-group`) or in the Default Node Executor. You must also add the **`CloudWatchAgentServerPolicy`** IAM Policy to your Managed Instances (EC2's) in AWS.  More detailed documentation on this can be found [here](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-rc-setting-up-cwlogs.html).<br><br>
-   2. In the event that log output takes a while to start appearing, it can be useful to delay when Rundeck attempts to retrieve the logs from SSM.  Optionally add the `log-retrieve-delay` property as a node-attribute and set the value to be the number of seconds to wait before retrieving logs.
-      This property can also be set at the project and framework levels (e.g. `project.log-retrieve-delay`) or via the Default Node Executor.
+**Individual Nodes and Node Sources Setting**       
+The SSM Node Executor can alternatively be configured on a per **Node Source** or per node basis. To do so, add **`node-executor=awsssmexecutor`** as a node-attribute to the nodes.
 
-### File Copier
-The SSM File Copier uses both Systems Manager's Run Command as well as S3. The plugin requires the following properties to be set:
-1. `ssm-copier-accessKeyId` and `ssm-copier-secretKey`. These can be set as Node Attributes or at the project or framework levels (e.g. `project.ssm-copier-accessKeyId` and `project.ssm-copier-secretKey`). They can also be set in the Default File Copier (for a given project).  They **do not** need to be set if an IAM Policy has been added to the EC2 that Rundeck is running on.  The permissions associated with these credentials (or IAM Role) must include policies to run commands on remote nodes using SSM _and_ to read and write to a specified S3 bucket.<br><br>
-2. `ssm-copier-bucket` is the S3 bucket that will be used to copy the file from Rundeck to the remote nodes. This can be set as a Node Attribute, in the Default File Copier, or at the project or framework levels (e.g. `project.ssm-copier-bucket`).
+* For the **EC2 Node Source**, this can be done using the **Mapping Params** field: **`node-executor.default=awsssmexecutor`** and **`file-copier.default=aws-ssm-copier`**:
+  ![ec2-mapping-params](@assets/img/aws-ssm-ec2-mapping-params.png)
 
-The (remote) EC2 instances also need the following permissions `s3:ListBucket` and `s3:GetObject` so that they can pull the script that is dispatched to the S3 bucket. For more information on how this operation works, see [this documentation](https://docs.aws.amazon.com/systems-manager/latest/userguide/integration-s3.html).
+### Enable SSM File Copier
 
-### See it in Action
+The SSM File Copier is used to execute scripts and transfer files to EC2 instances. Similar to the SSM Node Executor, it can be configured for an entire project or on per Node Source basis.
+
+**Project Wide Setting**<br>
+The SSM File Copier can be set as the **Default File Copier** - thereby making it the standard File Copier for the whole project:
+
+1. Navigate to **Project Settings** -> **Edit Configuration** -> **Default File Copier**.
+2. Select the dropdown on the left and select **AWS / SSM / File Copier**.
+3. Place the name of the S3 bucket into the **Bucket Name** field.
+4. If Process Automation is authenticated with AWS through an associated IAM Role, then the credential fields can be left blank. Otherwise, fill in the **Access Key ID** and **Secret Key** fields.
+
+**Individual Nodes and Node Sources Setting**       
+The SSM File Copier can alternatively be configured on a per **Node Source** or per node basis. To do so, add **`file-copier=aws-ssm-copier`** and **`ssm-copier-bucket=S3 bucket name`** as a node-attribute to the nodes.
+
+## Using CloudWatch Logs (Optional)
+The example policies in the prior sections enable Process Automation to retrieve logs directly from SSM.  
+However, these logs are truncated to 48,000 characters. To view logs that are longer than this limit, CloudWatch logs are used.  
+
+### SSM Agent Permissions for Cloudwatch
+
+In order for the log output to be sent to CloudWatch, the SSM agents on the remote EC2 instances need permissions to communicate with CloudWatch.
+
+Add the following IAM permissions to the IAM Role that is associated with the remote EC2 instances:
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "logs:DescribeLogGroups",
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "logs:CreateLogGroup",
+                "logs:CreateLogStream",
+                "logs:DescribeLogStreams",
+                "logs:PutLogEvents"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+```
+
+Next, add the following permissions to the IAM Role that is associated with Process Automation: **`logs.GetLogEvents`**.
+
+### Enable CloudWatch Configuring in Process Automation
+To use Cloudwatch logs for all SSM output across all nodes that use SSM within the project, specify the **CloudWatch Log Group** in the Node Executor. 
+Alternatively, add the following to the **Mapping Params** **`cloudwatch-log-group.default=<<CloudWatch Log Group Name>>`** on the node source or with **`cloudwatch-log-group=<<CloudWatch Log Group Name>>`** as a node-attribute.
+
+## See it in Action
 This plugin is used in one of the prebuilt Jobs in our [**_Automated Diagnostics Solution_**](/learning/solutions/automated-diagnostics/solution-overview).
 Try out the Solution to see how this plugin can be used as part of incident-response workflows.
