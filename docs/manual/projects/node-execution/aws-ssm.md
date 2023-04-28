@@ -8,27 +8,53 @@ The Node Executor and File Copier plugins use [AWS's Systems Manager](https://aw
 **From AWS's Documentation:**
 _Using Run Command, a capability of AWS Systems Manager, you can remotely and securely manage the configuration of your managed nodes. A managed node is any Amazon Elastic Compute Cloud (Amazon EC2) instance, edge device, or on-premises server or virtual machine (VM) in your hybrid environment that has been configured for Systems Manager._
 
-This means that Rundeck does **not** need direct connectivity to the remote infrastructure. Rather, Rundeck sends commands to AWS Systems Manager, and Systems Manager dispatches the commands to remote nodes via the Systems Manager agents.
+This means that Rundeck does **not** need direct connectivity to the remote infrastructure. Rather, Rundeck sends commands to the Systems Manager service, and then the Systems Manager agents _pull_ their tasks onto their host EC2s.
 
 The File Copier plugin uses Systems Manager _and_ S3 to copy files to remote nodes as well as run scripts on remote nodes.
 
 ## Configuration and Credential Settings
-### Systems Manager Configuration
+
+There are three components of the setup for using SSM with Process Automation:
+1. SSM and IAM setup on the remote EC2 nodes.
+2. IAM permissions for Process Automation.
+3. S3 Bucket setup. Required for sending scripts and files to EC2s, but not required for sending individual commands.
+
+### SSM Setup on Remote EC2 Nodes
 ::: tip Tip
 The fastest way to set up and use Systems Manager for remote commands is through the [Quick Setup Host Management](https://docs.aws.amazon.com/systems-manager/latest/userguide/quick-setup-host-management.html) from AWS.
 :::
-Before configuring these plugins, be sure that you have completed the prerequisites outlined in the [Setting up AWS Systems Manager for EC2 instances](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-setting-up-ec2.html) documentation. The three key steps here are:
 
-1. Ensure the SSM Agent is running on remote nodes.<br><br>
-2. Set up AWS IAM Roles for the target nodes _and_ for Rundeck. If Rundeck is running on an EC2, then this can be an IAM Role that is applied to Rundeck's EC2. Otherwise, these permissions will need to be associated with an Access Key and Secret Key credential pair.<br><br>
-3. Ensure that the remote nodes are added as Managed Nodes in Systems Manager. The fastest way to get started with Managed Nodes is using the [Quick Setup Host Management](https://docs.aws.amazon.com/systems-manager/latest/userguide/quick-setup-host-management.html).<br><br>
-4. You can test that you have configured Systems Manager correctly by manually using the [Run Command](https://docs.aws.amazon.com/systems-manager/latest/userguide/run-command.html) feature from AWS:
-   <br><br>![aws-ssm-test-run](@assets/img/aws-ssm-test-run-command.png)<br>
-   <br>![aws-ssm-test-script](@assets/img/aws-ssm-test-run-script.png)<br>
+Here are the critical steps:
 
-:::warning
-Please read the mentioned AWS documentation and configure the correct permissions to the **EC2 machine** and the user that consumes the AWS SSM API. e.g.: The allowed actions that may be required for the SSM user are `ssm:SendCommand` and `ssm:ListCommandInvocations`, and in the case of the EC2 machine: `s3:GetObject`.
-:::
+1. Ensure the SSM Agent is running on remote EC2 instances.<br><br>
+2. Associate an IAM role with the remote EC2 instances that allows for the SSM agent to retrieve tasks from the SSM service.
+   * Amazon provides a prebuilt permission policy: **AmazonSSMManagedInstanceCore** that provides the necessary permissions for this operation.
+   :::tip Heads Up!
+     In order to send scripts and files to EC2 instances, the SSM agents also need to be able to retrieve objects from S3. Be sure to add the **`s3:GetObject`** and **`s3:ListObject`** permissions to the remote EC2s IAM role as well.
+   ```
+      {  
+          "Version": "2012-10-17",
+          "Statement": [
+              {
+                  "Effect": "Allow",
+                  "Action": [
+                      "s3:GetObject",
+                      "s3:ListBucket"
+                  ],
+                  "Resource": "arn:aws:s3:::automated-diagnostics/*"
+              }
+          ]
+      }
+    ```
+   :::
+3. You can test that you have configured Systems Manager correctly by manually using the [Run Command](https://docs.aws.amazon.com/systems-manager/latest/userguide/run-command.html) feature from AWS:
+   <br>![aws-ssm-test-run](@assets/img/aws-ssm-test-run-command.png)<br>
+   * Use the **`AWS-RunShellScript`** or **`AWS-RunPowerShellScript`** (for Windows) to test that SSM has been set up properly for the remote EC2 nodes.
+<br>![aws-ssm-test-script](@assets/img/aws-ssm-test-run-script.png)<br>
+
+Additional documentation on this setup can be found in the [Setting up AWS Systems Manager for EC2 instances](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-setting-up-ec2.html).
+
+ 
 
 ### Node Executor
 In order for SSM Node Executor to send commands to remote nodes, the following properties must be set on the nodes in Rundeck:
