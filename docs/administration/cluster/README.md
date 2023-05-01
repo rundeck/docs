@@ -7,7 +7,7 @@
 ![Process Automation architecture](~@assets/img/SingleCluster.png)
 
 ## Installation
-To install a Process Automation instance, download the latest version from [here](https://download.rundeck.com/versions.html), and review requirements and deployment steps in the [Cluster Deployment Guide](~@assets/text/pa-deployment-guide.pdf).
+To install a Process Automation instance, download the latest version from [here](https://download.rundeck.com/versions.html), and review requirements and deployment steps in the [Cluster Deployment Guide](/files/pa-deployment-guide.pdf).
 
 ## Requirements
 The Process Automation environment needs the following shared resources:
