@@ -29,12 +29,25 @@ The example photo above is for a notification following a job completing success
 - **Incident ID**: The ID of the incident you want to escalate
 - **Escalation Level**: The level of the escalation policy to move the incident to.
 
-
 ## Run Response Play Notification
 
-![PagerDuty - Escalate Incident Notification Plugin](~@assets/img/notification_runresponse.png)
+![PagerDuty - Run Response Play Notification Plugin](~@assets/img/notification_runresponse.png)
 
 - **Incident ID**: The ID of the incident to run a response play on.
 - **Response Play ID**: The ID of the response play you would like to be run on the incident.
 - **Email**: A valid email address associated with the account the incident is in.
 - **API Key**: The API key for the account containing the incident.
+
+## Add Incident Note Notification
+
+![PagerDuty - Inident Note Notification Plugin](~@assets/img/notification_incidentnote.png)
+
+- **API Key**: The API key for the account containing the incident.
+- **Email**: A valid email address associated with the account the incident is in.
+- **Incident ID**: The ID of the incident to add the note to.
+- **Note**: The note to add to the PagerDuty incident.
+
+_Automated Diagnostics Example Note:_
+
+Beginning Automated Diagnostics job "${job.project}/${job.group}/${job.name}" for incident "${option.pd_incident_id}".
+See the full Rundeck log at: ${job.url}
