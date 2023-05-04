@@ -169,7 +169,10 @@ docker run -it \
 
 These instructions will guide how to install a Runner in Kubernetes.
 
-1. Download a new Runner via API using the following **`curl`** request. Be sure to replace **`[URL]`** and **`[ApiToken]`** **`[ProjectName]`** with your Process Automation instance URL and API Token respectively:
+1. [Create an API Token](/docs/manual/10-user.html#user-api-tokens) or use an existing API Token to download a new Runner via API using the following **`curl`** request. Be sure to replace **`[URL]`** and **`[ApiToken]`** **`[ProjectName]`** with your Process Automation instance URL and API Token respectively:
+    :::tip Heads Up!
+    Be sure to give each Runner a unique name. This is how you will identify one Runner from another in the platform.
+    :::
     ```
     curl --location --request POST 'https://[URL]/api/42/runnerManagement/runners' \
     --header 'Accept: application/json' \
@@ -186,12 +189,12 @@ These instructions will guide how to install a Runner in Kubernetes.
     ```
 2. The response will provide a **`runnerId`** and **`token`**. Here is an example output:
     ```
-    {"description":"Kubernetes runner","downloadTk":"d98d21bb-bc51-40ed-914a-85bcf618ffd0",
+    {"description":"Kubernetes runner","downloadTk":"d98d21bb-not-real-token-85bcf618ffd0",
     "name":"Kubernetes Runner","projectAssociations":{"Kubernetes":".*"},
-    "runnerId":"ad45e0c6-f6d3-4ca3-a0cf-044b4624fff3","token":"NopObWnk1MoeN0U7bqcfWTyavfwJzPTd"}
+    "runnerId":"ad45e0c6-not-real-runner-044b4624fff3","token":"NopObWnk1MnotRealTokenvfwJzPTd"}
     ```
 3. (Optional) Verify that the runner was created as intended by navigating to **System Menu** (upper-right gear icon) -> **Runner Management** and see if the Runner is listed.
-4. (Optional) Create a namespace for the Runner: **`kubectl create namespace rundeck`**
+4. (Optional) Create a Kubernetes namespace for the Runner: **`kubectl create namespace rundeck`**
 5. Create a deployment YAML for the Runner. Be sure to replace **`[namespace]`**, **`[RUNNER ID]`**, **`[TOKEN]`**, and **`[URL]`**:
     ```
     apiVersion: v1
