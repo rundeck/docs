@@ -251,6 +251,12 @@ When a Job step is executed, it has a set of "context" variables that can be acc
 - `job.threadcount`: Threadcount (number of nodes run at once) of the Job
 - `job.filter`: The filter used to select the nodes for this job (if applicable)
 
+#### Step execution context variable (Global scope):
+- `#:exec.exitCode@<node>`: The node specific step (#) exit code.  Examples:
+  - ${2:exit.exitCode} is the exit code for step 2 in the current node.
+  - ${2:exit.exitCode*} is the exit code for step 2 in all nodes.
+  - ${2:exit.exitCode@nodename} is the exit code for step 2 on a specific node.
+
 #### Node context variables (Node scope):
 
 - `node.name`: Name of the Node being executed on
