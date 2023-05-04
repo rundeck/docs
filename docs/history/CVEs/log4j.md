@@ -27,18 +27,27 @@ Downloads:
 **Updates**
 
 _Update May 10, 2022_
-The JIRA plugins bundled with Process Automation utilize the JIRA REST Java Client Library.  This includes a Log4j version 1.2 that will flag security scanners.  Atlassian states that _"Some on-premises products use an Atlassian-maintained fork of Log4j 1.2.17, which is not vulnerable to [CVE-2021-44228][]"_.
-More details at [FAQ from Atlassian](https://confluence.atlassian.com/kb/faq-for-cve-2021-44228-1103069406.html).
-After upgrading to a minimum version listed above, if your installation is not using JIRA it is safe to remove the `rundeckpro-jira-plugins-*.jar` from the `libext` folder.  (You must still update to a version above to mitigate all issues.)
+The JIRA plugins bundled with Process Automation utilize the JIRA REST Java Client Library.  This includes a Log4j version 1.2 that will flag security scanners.  Atlassian states that _"Some on-premises products use an Atlassian-maintained fork of Log4j 1.2.17, which is not vulnerable to [CVE-2021-44228][]"_.  More details at [FAQ from Atlassian](https://confluence.atlassian.com/kb/faq-for-cve-2021-44228-1103069406.html).
+
+_Remediation_
+After upgrading to a minimum version listed above, if your installation is not using JIRA it is safe to remove the `rundeckpro-jira-plugins-*.jar` from Rundeck.  You must still update to a version above to mitigate all issues.  Follow these steps to remove the Jira plugin directly from the downloaded Rundeck WAR file (Java and Windows install), or from the Rundeck WAR file after package installation:
+
+```bash
+    zip -d rundeckpro-{{{rundeckVersionFull}}}.war WEB-INF/rundeck/plugins/rundeckpro-jira-plugins*
+    jar xvf rundeckpro-{{{rundeckVersionFull}}}.war WEB-INF/rundeck/plugins/manifest.properties
+    sed -e "s/,rundeckpro-jira-[^,]*//" -i  WEB-INF/rundeck/plugins/manifest.properties
+    zip -vf rundeckpro-{{{rundeckVersionFull}}}.war WEB-INF/rundeck/plugins/manifest.properties
+
+```
 
 _Update December 20, 2021_
 
-We will be releasing `3.4.9` and `3.3.17` today, which use Log4j version 2.17 to address the latest Log4j [CVE-2021-45105][]
+We released `3.4.9` and `3.3.17` which use Log4j version 2.17 to address the Log4j [CVE-2021-45105][]
 
 
 _Update December 14, 2021, 3pm PST_
 
-We will be releasing `3.4.8` and `3.3.16` today, which use Log4j version 2.16 to address the latest Log4j [CVE-2021-45046][]
+We released `3.4.8` and `3.3.16` which use Log4j version 2.16 to address the Log4j [CVE-2021-45046][]
 
 
 _Update December 14, 2021 10am PST_
