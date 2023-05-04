@@ -165,6 +165,106 @@ docker run -it \
 	 rundeckpro/runner:latest
 ```
 
+## Runner in Kubernetes
+
+These instructions will guide how to install a Runner in Kubernetes.
+
+1. [Create an API Token](/docs/manual/10-user.html#user-api-tokens) or use an existing API Token to download a new Runner via API using the following **`curl`** request. Be sure to replace **`[URL]`** and **`[ApiToken]`** **`[ProjectName]`** with your Process Automation instance URL and API Token respectively:
+    :::tip Heads Up!
+    Be sure to give each Runner a unique name. This is how you will identify one Runner from another in the platform.
+    :::
+    ```
+    curl --location --request POST 'https://[URL]/api/42/runnerManagement/runners' \
+    --header 'Accept: application/json' \
+    --header 'X-Rundeck-Auth-Token: [ApiToken]' \
+    --header 'Content-Type: application/json' \
+    --data-raw '{
+    "name": "Kubernetes Runner",
+    "description": "Kubernetes runner",
+    "assignedProjects": {
+    "[ProjectName]": ".*",
+    },
+    "tagNames": "kubernetes"
+    }'
+    ```
+2. The response will provide a **`runnerId`** and **`token`**. Here is an example output:
+    ```
+    {"description":"Kubernetes runner","downloadTk":"d98d21bb-not-real-token-85bcf618ffd0",
+    "name":"Kubernetes Runner","projectAssociations":{"Kubernetes":".*"},
+    "runnerId":"ad45e0c6-not-real-runner-044b4624fff3","token":"NopObWnk1MnotRealTokenvfwJzPTd"}
+    ```
+3. (Optional) Verify that the runner was created as intended by navigating to **System Menu** (upper-right gear icon) -> **Runner Management** and see if the Runner is listed.
+4. (Optional) Create a Kubernetes namespace for the Runner: **`kubectl create namespace rundeck`**
+5. Create a deployment YAML for the Runner. Be sure to replace **`[namespace]`**, **`[RUNNER ID]`**, **`[TOKEN]`**, and **`[URL]`**:
+    ```
+    apiVersion: v1
+    kind: Pod
+    metadata:
+    namespace: [namespace]
+    name: rundeck-runner
+    labels:
+    app: rundeck-runner
+    spec:
+    containers:
+    - image: rundeckpro/runner
+      imagePullPolicy: IfNotPresent
+      name: rundeck-runner
+      env:
+        - name: RUNNER_RUNDECK_CLIENT_ID
+          value: "[RUNNER ID]"
+        - name: RUNNER_RUNDECK_SERVER_TOKEN
+          value: "[TOKEN]"
+        - name: RUNNER_RUNDECK_SERVER_URL
+          value: "[URL]"
+          lifecycle:
+          postStart:
+          exec:
+          command:
+          - /bin/sh
+          - -c
+          - touch this_is_from_rundeck_runner
+          restartPolicy: Always
+    ```
+6. Creat the deployment: **`kubectl create -f deployment.yml`**.
+7. Confirm that the Runner was deployed successfully: **`kubectl logs -f rundeck-runner --namespace=[NAMESPACE]`**
+8. Verify that the Runner is communicating with Process Automation correctly by looking in the **Status** column on the Runner Management page:
+    ![Runner installed correctly](@assets/img/runner-installed-k8s.png)
+:::tip Tip: Multiple Pods for Scalability
+   Multiple replicas of the Runner container can be associated with a single deployment, though they will appear as a single Runner in Process Automation. 
+    This is useful for horizontally scaling the Runner. Here is an example deployment yaml where 2 replicas are used:
+```
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: rundeck
+  name: rundeck-runner
+  labels:
+    app: rundeck-runner
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: runner
+template:
+  metadata:
+    labels:
+      app: runner
+  spec:
+    containers:
+    - image: rundeckpro/runner
+      imagePullPolicy: IfNotPresent
+      name: rundeck-runner
+      env:
+      - name: RUNNER_RUNDECK_CLIENT_ID
+        value: "[RUNNER ID]"
+      - name: RUNNER_RUNDECK_SERVER_TOKEN
+        value: "[TOKEN]"
+      - name: RUNNER_RUNDECK_SERVER_URL
+        value: "[URL]"
+```
+Verify that the pods were deployed successfully: 
+:::
+
 ## Runner on Windows OS
 
 The “Runner Management” menu will appear on under the “System” settings:
