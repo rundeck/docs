@@ -221,13 +221,10 @@ If the EC2 Node Source is not used for node discovery, then be sure that the fol
 2. **`region`** - This is the AWS region where the EC2 resides.
 :::
 
-### Enable SSM Node Executor
+### Enable SSM Node Executor & File Copier
 
-**Project Wide Setting**<br>
+#### Option 1: Project Wide Configuration
 The SSM Node Executor can be set as the **Default Node Executor** - thereby making it the standard node executor for the whole project:
-:::warning Only For Single Remote Account
-Configure the SSM settings here if you have only a _single_ remote account.
-:::
 
 1. Navigate to **Project Settings** -> **Edit Configuration** -> **Default Node Executor**.
 2. Select the dropdown on the left and select **AWS / SSM / Node Executor**:
@@ -235,27 +232,94 @@ Configure the SSM settings here if you have only a _single_ remote account.
 3. If Process Automation is authenticated with AWS through an associated IAM Role, then all the fields can be left as their defaults.
 4. Click the check-box for **Assume Role**.
 5. Type in the **ARN** of the IAM role in the remote AWS account.
+   * If you have more than one remote account, you can leave this blank.
 6. See below for using **CloudWatch Logs** for larger log-output.
 7. Optionally modify the **Log Filter Delay** property to be the number of seconds to wait before retrieving logs.
-   <br><br>
+   <br>
 
-**Individual Nodes and Node Sources Setting**       
-The SSM Node Executor can alternatively be configured on a per **Node Source** or per node basis.<br>
-To do so, add **`node-executor=awsssmexecutor`** as a node-attribute to the nodes.
+The SSM File Copier can also be set as the **Default File Copier** for the whole project:
+1. Navigate to **Project Settings** -> **Edit Configuration** -> **Default File Copier**.
+2. Select the dropdown on the left and select **AWS / SSM / File Copier**.
+3. Place the name of the S3 bucket into the **Bucket Name** field.
+4. If Process Automation is authenticated with AWS through an associated IAM Role, then the Access Key ID and Secret Key fields can be left blank.
+
+#### Option 2: Individual Nodes and Node Sources Setting      
+The SSM Node Executor and File Copier can alternatively be configured on a per **Node Source** or per node basis.<br>
 
 * For the **EC2 Node Source**, this can be done using the **Mapping Params** field.  Add the following, separated by semicolons:<br>
 **`ssm-assume-role.default=true`**<br>
 **`ssm-assume-role-arn.default=<<ARN of the cross-account role created in the Remote Account>>`**<br>
 **`node-executor.default=awsssmexecutor`** - Only required if SSM Node Executor is _not_ the Default Node Executor for the project.<br>
 **`file-copier.default=aws-ssm-copier`** - Only required if SSM Node Executor is _not_ the Default Node Executor for the project.<br>
+**`ssm-copier-bucket.default=<<S3 bucket name>>`** 
+
+If the same S3 bucket will be used across multiple Node Sources (thereby serving multiple AWS Accounts), _and_ the **Default File Copier** is not set to use SSM, then this can instead be added as a Project level property: **`project.ssm-copier-bucket=<<S3 bucket name>>`**.
 
 :::tip When not using the EC2 Resource Model
 Node Attributes can be added when defining a resource-model source [manually](/docs/administration/configuration/plugins/bundled-plugins.html#built-in-resource-model-formats)
-or by using the [Attribute Match](/manual/node-enhancers.html#attribute-match) node enhancer.
+or by using the [Attribute Match](/manual/node-enhancers.html#attribute-match) node enhancer. Use the same node-attributes listed above without `default`. For example, `ssm-assume-role=true`.
 :::
 
-
-If S3 was configured earlier so that scripts can also be executed and files can be transferred, then also add **`ssm-copier-bucket.default=<<S3 bucket name>>`**.  
-If the same S3 bucket will be used across multiple Node Sources (thereby serving multiple AWS Accounts), then this can instead be added as a Project level property: **`project.ssm-copier-bucket=<<S3 bucket name>>`**.
-
 ## Using CloudWatch Logs
+
+The example policies in the prior sections enable Process Automation to retrieve logs directly from SSM.  
+However, these logs are truncated to 48,000 characters. To view logs that are longer than this limit, CloudWatch logs are used.  
+
+In order to use CloudWatch, specify the CloudWatch Log Group in the Node Executor (therefore to be used across multiple Node Sources) or as a property added to the Mapping Params **`cloudwatch-log-group.default=<<CloudWatch Log Group Name>>`**.
+
+Then, use the policies below for the IAM Roles.  Again, both of these are in the remote account.
+
+**Full policy for Cross-Account-Role:**
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": "ssm:SendCommand",
+            "Resource": [
+                "arn:aws:s3:::*",
+                "arn:aws:ssm:*::document/AWS-RunShellScript",
+                "arn:aws:ssm:*::document/AWS-RunPowerShellScript",
+                "arn:aws:ec2:*:<<REMOTE AWS ACCOUNT ID>>:instance/*"
+            ]
+        },
+        {
+            "Sid": "VisualEditor1",
+            "Effect": "Allow",
+            "Action": [
+                "ssm:ListCommands",
+                "ssm:ListCommandInvocations",
+                "ssm:GetCommandInvocation",
+                "logs:GetLogEvents"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+```
+
+**Policy to add to remote nodes (EC2’s):**
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "logs:DescribeLogGroups",
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "logs:CreateLogGroup",
+                "logs:CreateLogStream",
+                "logs:DescribeLogStreams",
+                "logs:PutLogEvents"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+```
