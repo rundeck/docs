@@ -1,10 +1,11 @@
-# Multi-Account AWS Systems Manager
+# AWS Systems Manager Across Multiple Accounts 
 
 ## Summary
-It is fairly common for companies to have multiple AWS accounts, yet have tasks that need to be implemented across the infrastructure across all accounts.
+It is fairly common for companies to have multiple AWS accounts, yet have tasks that need to be implemented across the infrastructure in all accounts.
 For example, there may be a need to report, patch, or deploy upgrades on all EC2 instances across all AWS accounts.
+
 This _How To_ article outlines how to configure the [SSM Node Executor](/docs/manual/projects/node-execution/aws-ssm) to be used across multiple AWS Accounts.
-The setup walks through configuring Process Automation to execute commands and scripts on EC2 nodes that reside in an AWS account that is separate from the account where Process Automation is running.  
+The setup walks through configuring Process Automation to execute commands and scripts on EC2 nodes that reside in AWS accounts that are separate from the account where Process Automation is running.  
 
 ![Cross Account SSM Architecture](@assets/img/ssm-cross-account-architecture.png)
 
@@ -73,7 +74,7 @@ Be sure to replace **`<<REMOTE AWS ACCOUNT ID>>`** with the AWS account ID of th
 ```
 :::tip Tip! Instance Discovery Permissions
 In order for Process Automation to also be used to discover the EC2 nodes in the remote account, it needs the permissions to list the EC2s. 
-Be sure to add the following policy to the above IAM Role as well:
+If this same IAM Role will be used for instance-discovery, then be sure to add the following policy to the above IAM Role as well:
 ```
 {
    "Effect": "Allow",
@@ -92,7 +93,7 @@ Add the following permission to the IAM Policy above: **`arn:aws:ssm:*::document
 
 1. Create an S3 bucket that has a bucket policy that allows for objects to be _uploaded_ to it by the IAM policy associated with Process Automation.
 2. Include a permission statement in this policy that allows for the remote EC2 instances to _retrieve_ objects from the bucket.
-3. Here is an example policy:
+3. Here is an example **S3 Bucket Policy**:
    :::warning Heads Up!                                                        
    Be sure to replace **`<< content >>`** with your AWS Account ID's and ARN's.
    :::
@@ -154,8 +155,8 @@ Follow the instructions outlined in [this AWS documentation](https://docs.aws.am
 :::
 
 ### Add Trust Policy
-In order for Process Automation to assume the role with the SSM permissions, a Trust Policy must be added to the role. 
-Navigate to the _master account_ (the AWS account where Process Automation is hosted) and copy the **ARN** of the IAM Role associated with the Process Automation hosts (EC2, ECS, or EKS).
+In order for Process Automation to assume the role with the SSM permissions, a Trust Policy must be added to the cross-account role in the remote account. 
+First, navigate to the _master account_ (the AWS account where Process Automation is hosted) and copy the **ARN** of the IAM Role associated with the Process Automation hosts (EC2, ECS, or EKS).
 
 Navigate back to the _remote_ AWS account where the cross-account role can be modified.  Click on **Trust Relationships** then click on **Edit Trust Policy**. Use the following Trust Policy:
 
@@ -184,7 +185,7 @@ Copy the ARN of this IAM Role (in the _Remote_ account).
 
 Navigate back to the _Master_ account (where Process Automation is hosted).  
 Find the IAM Role that is associated with Process Automation, and navigate to modify this IAM role in the IAM Console: use [these instructions for EC2](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html#attach-iam-role), or [these instructions for ECS](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html#specify-task-iam-roles).  
-Now add the following policy to this IAM Role and paste in the ARN of the IAM Role copied from the prior section:
+Now add the following policy to this IAM Role and paste in the ARN of the cross-account IAM Role copied from the _remote account_ from the prior section:
 
 ```
 {
@@ -215,6 +216,8 @@ Follow the instructions outlined in the [AWS Plugins Overview](/docs/manual/plug
 In order to target the remote EC2 instances, they need to be populated into Process Automation's node inventory.
 It is recommended to use the [**EC2 Node Source**](/docs/manual/projects/resource-model-sources/aws.html#amazon-ec2-node-source).
 
+Place the ARN of the cross-account role into the **Assume Role** field.
+
 :::warning When not using the EC2 Node Source
 If the EC2 Node Source is not used for node discovery, then be sure that the following **node-attributes** are added to the nodes:
 1. **`instanceId`** - This is the EC2 instance-id from AWS.
@@ -223,7 +226,19 @@ If the EC2 Node Source is not used for node discovery, then be sure that the fol
 
 ### Enable SSM Node Executor & File Copier
 
-#### Option 1: Project Wide Configuration
+#### Option 1: Individual Nodes and Node Sources Setting
+The SSM Node Executor and File Copier can be configured on a per **Node Source** basis. This is the recommended approach when you have _multiple_ remote accounts.<br>
+
+* For the **EC2 Node Source**, this can be done using the **Mapping Params** field.  Add the following, separated by semicolons:<br>
+  **`ssm-assume-role.default=true`**<br>
+  **`ssm-assume-role-arn.default=<<ARN of the cross-account role created in the Remote Account>>`**<br>
+  **`node-executor.default=awsssmexecutor`** - Only required if SSM Node Executor is _not_ the Default Node Executor for the project.<br>
+  **`file-copier.default=aws-ssm-copier`** - Only required if SSM Node Executor is _not_ the Default Node Executor for the project.<br>
+  **`ssm-copier-bucket.default=<<S3 bucket name>>`**
+
+If the same S3 bucket will be used across multiple Node Sources (thereby serving multiple AWS Accounts), _and_ the **Default File Copier** is not set to use SSM, then this can instead be added as a Project level property: **`project.ssm-copier-bucket=<<S3 bucket name>>`**.
+
+#### Option 2: Project Wide Configuration
 The SSM Node Executor can be set as the **Default Node Executor** - thereby making it the standard node executor for the whole project:
 
 1. Navigate to **Project Settings** -> **Edit Configuration** -> **Default Node Executor**.
@@ -242,18 +257,6 @@ The SSM File Copier can also be set as the **Default File Copier** for the whole
 2. Select the dropdown on the left and select **AWS / SSM / File Copier**.
 3. Place the name of the S3 bucket into the **Bucket Name** field.
 4. If Process Automation is authenticated with AWS through an associated IAM Role, then the Access Key ID and Secret Key fields can be left blank.
-
-#### Option 2: Individual Nodes and Node Sources Setting      
-The SSM Node Executor and File Copier can alternatively be configured on a per **Node Source** or per node basis.<br>
-
-* For the **EC2 Node Source**, this can be done using the **Mapping Params** field.  Add the following, separated by semicolons:<br>
-**`ssm-assume-role.default=true`**<br>
-**`ssm-assume-role-arn.default=<<ARN of the cross-account role created in the Remote Account>>`**<br>
-**`node-executor.default=awsssmexecutor`** - Only required if SSM Node Executor is _not_ the Default Node Executor for the project.<br>
-**`file-copier.default=aws-ssm-copier`** - Only required if SSM Node Executor is _not_ the Default Node Executor for the project.<br>
-**`ssm-copier-bucket.default=<<S3 bucket name>>`** 
-
-If the same S3 bucket will be used across multiple Node Sources (thereby serving multiple AWS Accounts), _and_ the **Default File Copier** is not set to use SSM, then this can instead be added as a Project level property: **`project.ssm-copier-bucket=<<S3 bucket name>>`**.
 
 :::tip When not using the EC2 Resource Model
 Node Attributes can be added when defining a resource-model source [manually](/docs/administration/configuration/plugins/bundled-plugins.html#built-in-resource-model-formats)
