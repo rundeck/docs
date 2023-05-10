@@ -128,7 +128,7 @@ This section will install Rundeck as a Windows Service so it runs in the backgro
 - Download [Rundeck](https://www.rundeck.com/downloads).
 - Unzip the apache-commons-daemon file and place the files including the WAR package in a new created folder (the Rundeck base folder i.e C:\rundeck).
 - Rename WAR package to rundeck.war, rename prunsrv.exe to the service name i.e rundeck.exe, and prunmgr.exe to rundeckw.exe (the "w" character is required).
-- Open a prompt and paste these commands (Administrator user is required to install a service)
+- Open a CMD prompt and paste these commands (Administrator user is required to install a service)
 
 ```batch
   rundeck.exe //IS/rundeck ^
@@ -140,10 +140,6 @@ This section will install Rundeck as a Windows Service so it runs in the backgro
   --StartMode=java ^
   --StartPath=C:\rundeck ^
   --StartParams=-jar#rundeck.war ^
-  --StopMode=exe ^
-  --StopPath=C:\rundeck ^
-  --StopImage=TASKKILL.exe ^
-  --StopTimeout=30 ^
   --PidFile=rundeck.pid ^
   --JvmMs=1024 --JvmMx=4096 ^
   --StdOutput=C:\rundeck\var\logs\service.log ^
