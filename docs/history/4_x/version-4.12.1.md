@@ -1,7 +1,7 @@
 ---
 
 title: "4.12.1 Release Notes"
-date: "2023-05-09"
+date: "2023-05-10"
 image: /images/chevron-logo-red-on-white.png
 feed:
  enable: true
@@ -12,7 +12,7 @@ feed:
 # 4.12.1 Release Notes
 
 Name: <span style="color: orchid"><span class="glyphicon glyphicon-gift"></span> "Unicorn orchid gift"</span>
-Release Date: May 9th, 2023
+Release Date: May 10th, 2023
 
 - [Download the Releases](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
@@ -20,8 +20,11 @@ Release Date: May 9th, 2023
 
 ## Overview
 
+This release contains a hotfix for a potential login issue. A change in 4.12.0 added a new security configuration by default, which can interfere with SSO login authentication flows.
 
+## Updates
 
+This release restores the same behavior as 4.11.0. (Related [Github Issue](https://github.com/rundeck/rundeck/pull/8301)).
 
 ## Staff Contributors
 
