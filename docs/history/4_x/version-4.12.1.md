@@ -22,9 +22,11 @@ Release Date: May 10th, 2023
 
 This release contains a hotfix for a potential login issue. A change in 4.12.0 added a new security configuration by default, which can interfere with SSO login authentication flows.
 
-## Updates
+This release restores the same behavior as 4.11.0.
 
-This release restores the same behavior as 4.11.0. (Related [Github Issue](https://github.com/rundeck/rundeck/pull/8301)).
+## Rundeck Open Source Product Updates
+
+* [Sets SameSite cookie policy to Lax as default to allow OAuth2 SSO flows](https://github.com/rundeck/rundeck/pull/8301)
 
 ## Staff Contributors
 
