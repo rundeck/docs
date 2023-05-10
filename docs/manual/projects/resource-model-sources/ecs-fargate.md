@@ -15,6 +15,79 @@ This plugin is designed to work in tandem with the [ECS Node Executor](/manual/p
 
 ## Configuration
 
+### AWS Permissions
+In order for Process Automation to discover the ECS Tasks and populate them into the node inventory, proper IAM permission must be provided.
+The following permissions are required, but can be restricted in scope:
+**`ecs:ListTasks`**
+**`ecs:ListServices`**
+**`ecs:DescribeTasks`**
+**`ecs:ListTagsForResource`**
+
+If you wish to discover ECS Tasks from _all_ ECS clusters, then you will also need:
+**`ecs:ListClusters`**
+
+Here is a sample IAM Policy that will allow you to discover Tasks from **_all_ clusters**:
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": [
+                "ecs:ListServices",
+                "ecs:DescribeTasks",
+                "ecs:ListTasks",
+                "ecs:ListTagsForResource",
+                "ecs:ListClusters"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+```
+
+Here is a sample IAM Policy that will only discover Tasks from **_specific_ clusters**:
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": [
+                "ecs:ListServices",
+                "ecs:DescribeTasks",
+                "ecs:ListTasks"
+            ],
+            "Resource": "*",
+            "Condition": {
+                "ArnEquals": {
+                    "ecs:cluster": "arn:aws:ecs:us-west-1:<<AccountID>>:cluster/<<clusterName>>"
+                }
+            }
+        },
+        {
+            "Sid": "VisualEditor1",
+            "Effect": "Allow",
+            "Action": [
+                "ecs:ListTagsForResource"
+            ],
+            "Resource": [
+                "arn:aws:ecs:us-west-1:<<AccountID>>:task/*",
+                "arn:aws:ecs:us-west-1:<<AccountID>>:cluster/<<clusterName>>"
+            ]
+        }
+    ]
+}
+```
+
+Once the IAM Policy has been created, attach it to the IAM Role that you have associated with Process Automation or the Access Key credentials.
+
+### Authentication
+There are multiple ways for Process Automation to authenticate with AWS. Follow the instructions outlined in the [AWS Plugins Overview](/docs/manual/plugins/aws-plugins-overview.html) for Process Automation to authenticate with AWS.
+
+### Add Node Source
 You can add the **ECS-Fargate Node Source** by navigating to:<br>
 **Project Settings** -> **Edit Nodes** -> **Sources**
 
@@ -22,38 +95,12 @@ Click on **Add a new Node Source +** and then select **AWS / ECS / Resource Mode
 
 ![ECS Add Node Source](@assets/img/aws-ecs-add-node-source.png)<br>
 
-### Authentication
-
-The plugin can integrate with AWS using either Access Key and Secret Key, or by leveraging the IAM Role associated with the EC2 instance or ECS container that Process Automation is running on.
-
-#### Option 1: Authentication with Access Keys
-
-1. To create an Access Key ID and Secret that is associated with an IAM Role, follow [these instructions](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html).<br><br>
-2. Once the keys have been downloaded, add the Secret Key into Project or System **Key Storage** using the **Password** key type, following [these instructions](/manual/system-configs.html#key-storage).<br><br>
-3. Place the **Access Key** to the first field.<br><br>
-4. Click on **Select** for the **Secret Key** field. Select the Secret Key that was saved to Key Storage in **Step 2**.<br><br>
-   <img style='border:1px solid #327af6' src="@assets/img/aws-ecs-node-source-access-keys.png" />
-
-#### Option 2: Authentication with Instance or Container Role
-
-If Process Automation is self-hosted and running on either an EC2 instance or an ECS container, then the plugin can leverage the IAM Role that has been associated with the instance or container.
-For instructions on how to associate an IAM Role to an EC2, click [here](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html), and for ECS Task Roles, click [here](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html).
-
-Once the IAM Role has been associated with the Instance or Container, simply select **instance** or **container** from the **Credential Provider** property:
-<img style='border:1px solid #327af6' src="@assets/img/aws-ecs-node-source-cred-provider.png" />
-
-:::tip Note
-If using the Credential Provider, then the Access Key and Secret key properties do **not** need to be filled.
-:::
-
-**Region**: Select the AWS region where your ECS Cluster resides.
-
 ### Filtering Clusters, Services, Tasks
 
 Use the following fields to filter the ECS resources that should be added to the node inventory:
 
 #### **ECS Clusters** 
-This is a comma-separated list of ECS clusters. If multiple clusters are defined, then by default all Tasks from those cluster will be added to the node inventory.  
+This is a comma-separated list of ECS clusters. If multiple clusters are defined, then by default all Tasks from those clusters will be added to the node inventory.  
 Use the filters below to further specify which Tasks should be retrieved.
 :::tip Note
 Only clusters from the **region** selected in the previous step will be identified. To add clusters from other regions, add multiple ECS Node Sources to the project.
@@ -100,4 +147,4 @@ to the right of **Container-Image** will filter the displayed containers to thos
 
 ## Executing Commands on ECS Containers
 
-Once the containers have been retrieved as nodes in Process Automation, commands can be executor on one or more containers using the [ECS Node Executor](/manual/projects/node-execution/aws-ecs).
+Once the containers have been retrieved as nodes in Process Automation, commands can be executed on one or more containers using the [ECS Node Executor](/manual/projects/node-execution/aws-ecs).
