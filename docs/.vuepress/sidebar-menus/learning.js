@@ -102,6 +102,7 @@ module.exports = [{
           sidebarDepth: 0,
           children: [
               '/learning/howto/using-webhooks.md',
+              '/learning/howto/cross-account-aws-ssm.md',
               '/learning/howto/pagerduty-notification.md',
               '/learning/howto/using-ansible.md',
               '/learning/howto/config-sn-nodesource.md',
