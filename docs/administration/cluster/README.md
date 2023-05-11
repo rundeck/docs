@@ -4,16 +4,16 @@
 :::
 
 ## Process Automation Architecture
-![Rundeck architecture](~@assets/img/architecture.png)
+![Process Automation architecture](~@assets/img/SingleCluster.png)
 
 ## Installation
-To install a Process Automation instance, download the latest version from [here](https://download.rundeck.com/versions.html), and follow the steps in the [Installation Guide](/administration/install/installing-rundeck.md)
+To install a new Process Automation instance, download the latest version from [here](https://www.rundeck.com/downloads), and review requirements and deployment steps in the <a href="/docs/files/pa-deployment-guide.pdf" download>Cluster Deployment Guide</a>.
 
 ## Requirements
 The Process Automation environment needs the following shared resources:
 
 ### Database
-- All the cluster members must share the same DB:
+- All the cluster instances must share the same DB:
 
   See: [Database Backends](/administration/configuration/database/index.md).
 
@@ -22,7 +22,7 @@ The Process Automation environment needs the following shared resources:
   See: [Storage Facility](/administration/configuration/storage-facility.md)
 
 ### Load Balancer
-A loadbalancer allows you to achieve high availability in your Process Automation installation by routing http traffic across several redundant Process Automation instances.
+A load balancer allows you to achieve high availability in your Process Automation installation by routing http traffic across several redundant Process Automation instances.
 
 - Set the `grails.serverURL` parameter of all cluster members (`rundeck-config.properties`) with the LB URL.
 
@@ -31,7 +31,7 @@ A loadbalancer allows you to achieve high availability in your Process Automatio
 See: [Loadbalancer](/administration/cluster/loadbalancer/index.md)
 
 ### Log Storage
-All Cluster members must share the log storage.
+All Cluster instances must share the same storage location for execution logs.
 
 See: [Logstore](/administration/cluster/logstore/index.md)
 

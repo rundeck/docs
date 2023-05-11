@@ -1,19 +1,23 @@
-# Rundeck Automation - ServiceNow Application
+# PagerDuty Process Automation - ServiceNow Application
 
 ::: enterprise
+:::
+
+::: warning
+Recently our Application was migrated and reimplemented in a new PagerDuty Process Automation verison of the application.  The functionality from the previous 1.x version of the Rundeck Automation application is the same.  All future enhancements will happen on the new application located [here](https://store.servicenow.com/sn_appstore_store.do#!/store/application/1f1cf27adb252110e8744a6c139619f8/).
 :::
 
 Our ServiceNow&reg; application can be found on the ServiceNow&reg; Store.  The application is free to Enterprise customers.  To request the application please contact your Account Executive or Customer Success contact.
 
 ## Requirements
 
-The application is supported on Rome, San Diego, and Tokyo ServiceNow&reg; releases.
+The application is currently supported on San Diego, Tokyo and Utah.
 
-An active commerical license for a currently supported version is also required. (Minimum is 3.4.0)
+An active commerical license for a currently supported version is also required. (Minimum is 4.0)
 
 ## Requesting the application
 
-1. [Visit the Rundeck Application ServiceNow Store page](https://store.servicenow.com/sn_appstore_store.do#!/store/application/6e8e2effdb8f041034a5d487f49619e2/1.0.6).
+1. [Visit the Rundeck Application ServiceNow Store page](https://store.servicenow.com/sn_appstore_store.do#!/store/application/1f1cf27adb252110e8744a6c139619f8/).
 1. Login and click the **Request App** button.
 1. A message will be sent to our team for approval.  Once approved a Customer Success or Support tech will contact with more details.
 
@@ -37,7 +41,7 @@ After the app has been installed in your ServiceNow&reg; instance there will be 
 ## Using the Application
 
 ### How it works
-The ServiceNow application leverages Rundeck's Webhooks feature to trigger jobs in your Rundeck environment.  To create automation within ServiceNow please check out our Learning Article for [How to setup Webhooks to trigger your Rundeck Jobs](/learning/howto/using-webhooks.md).
+The ServiceNow application leverages Process Automation's Webhooks feature to trigger jobs in your environment.  To create automation within ServiceNow please check out our Learning Article for [How to setup Webhooks to trigger your Process Automation Jobs](/learning/howto/using-webhooks.md).
 
 ### Importing Webhooks
 
@@ -45,7 +49,7 @@ The Scheduled Scripts module will list the Populate Webhooks Scheduled Script.  
 
 ### Calling Webhooks from ServiceNow&reg; Code
 
-Upon import webhooks from your Rundeck Projects will be added to the **Rundeck Webhooks** table.  A 'Code Example' field provides basic code that can be used in ServiceNow&reg; Client or Server side scripts to call that specific webhook.
+Upon import webhooks from your Rundeck Projects will be added to the **PagerDuty Webhooks** table.  A 'Code Example' field provides basic code that can be used in ServiceNow&reg; Client or Server side scripts to call that specific webhook.
 
 ![Webhook Record](@assets/img/sn-webhook-record.png)
 

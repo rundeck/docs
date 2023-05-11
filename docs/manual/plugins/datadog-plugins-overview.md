@@ -1,4 +1,4 @@
-# Datadog
+# Datadog Plugins
 
 :::enterprise
 :::

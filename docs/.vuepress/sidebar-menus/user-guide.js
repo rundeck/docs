@@ -29,18 +29,19 @@ module.exports = [{
           collapsable: true,
           children: [
             '/manual/projects/resource-model-sources/',
-            '/manual/projects/resource-model-sources/node-wizard',
             '/manual/projects/resource-model-sources/aws',
-            '/manual/projects/resource-model-sources/ecs-fargate',
             '/manual/projects/resource-model-sources/azure',
-            '/manual/projects/resource-model-sources/gcp',
-            '/manual/projects/resource-model-sources/oracle',
             '/manual/projects/resource-model-sources/datadog',
-            '/manual/projects/resource-model-sources/servicenow',
-            '/manual/projects/resource-model-sources/vmware',
-            '/manual/projects/resource-model-sources/sensu',
+            '/manual/projects/resource-model-sources/ecs-fargate',
+            '/manual/projects/resource-model-sources/gcp',
+            '/manual/projects/resource-model-sources/kubernetes',
             '/manual/projects/resource-model-sources/builtin',
-            '/manual/projects/resource-model-sources/resource-editor'
+            '/manual/projects/resource-model-sources/oracle',
+            '/manual/projects/resource-model-sources/node-wizard',
+            '/manual/projects/resource-model-sources/resource-editor',
+            '/manual/projects/resource-model-sources/sensu',
+            '/manual/projects/resource-model-sources/servicenow',
+            '/manual/projects/resource-model-sources/vmware'
           ]
         },
         {
@@ -113,16 +114,14 @@ module.exports = [{
       path:'/manual/plugins/plugins-overview',
       sidebarDepth: 0,
       children:[
-        '/manual/plugins/aws-plugins-overview.md',
-
-        '/manual/plugins/datadog-plugins-overview.md',
-
-        '/manual/plugins/azure-plugins-overview.md',
-        '/manual/plugins/datadog-plugins-overview.md',
-        '/manual/plugins/gcp-plugins-overview.md',
-        '/manual/plugins/jira-plugins-overview.md',
-        '/manual/plugins/pagerduty-plugins-overview.md',
-        '/manual/plugins/servicenow-plugins-overview.md'
+        {title: 'AWS', path: '/manual/plugins/aws-plugins-overview.md'},
+        {title: 'Azure', path: '/manual/plugins/azure-plugins-overview.md'},
+        {title: 'Datadog', path:'/manual/plugins/datadog-plugins-overview.md'},
+        {title: 'Google Cloud', path: '/manual/plugins/gcp-plugins-overview.md'},
+        {title: 'Jira', path: '/manual/plugins/jira-plugins-overview.md'},
+        {title: 'Kubernetes', path: '/manual/plugins/kubernetes-plugins-overview.md'},
+        {title: 'PagerDuty', path: '/manual/plugins/pagerduty-plugins-overview.md'},
+        {title: 'ServiceNow', path: '/manual/plugins/servicenow-plugins-overview.md'}
       ]
     },
     {

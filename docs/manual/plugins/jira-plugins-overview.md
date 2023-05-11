@@ -1,4 +1,4 @@
-# Jira
+# Jira Plugins
 
 ## Overview
 
