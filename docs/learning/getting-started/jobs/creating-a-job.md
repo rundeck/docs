@@ -100,4 +100,4 @@ Notifications are messages, such as an email or HTTP service push. This is a com
 }
 ```
 ### The Welcome Project
-A good place to learn and practice Rundeck concepts is the Welcome Project, you can check it outout many related concepts [here](https://docs.rundeck.com/docs/learning/howto/welcome-project-starter.html).<br>
+A good place to learn and practice Rundeck concepts is the Welcome Project, you can check it out many related concepts [here](https://docs.rundeck.com/docs/learning/howto/welcome-project-starter.html).<br>

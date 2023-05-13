@@ -36,7 +36,7 @@ com.microsoft.sqlserver.jdbc.SQLServerException: Login failed. The login is from
 
 One solution is to use "localhost" in the jdbc connection
 
-3.- Different arquitecture error
+3.- Different architecture error
 
 ```log
 Configuring Spring Security Core ...

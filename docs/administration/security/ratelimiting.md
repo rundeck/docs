@@ -28,7 +28,7 @@ rundeck.authRateLimiting.refillWindowInSeconds=60
 > Note: There is currently no way to clear a failed attempt lockout besides waiting for refill window to expire without any further failed attempts.
 
 
-## API Endpionts Rate Limiting (Enterprise)
+## API Endpoints Rate Limiting (Enterprise)
 
 :::enterprise
 :::

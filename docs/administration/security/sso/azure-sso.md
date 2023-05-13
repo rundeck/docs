@@ -51,7 +51,7 @@ Next, add the required permissions in Azure.
 
 ### Azure - Create the Application Secret
 
-Next, create an application secret (ID & passsword) that will be used in the Rundeck configuration.  Note, if you lose the secret value/password, you can delete the existing secret and create a new one.
+Next, create an application secret (ID & password) that will be used in the Rundeck configuration.  Note, if you lose the secret value/password, you can delete the existing secret and create a new one.
 
 ![](~@assets/img/sso-azure-05-secret1.jpg)
 

@@ -88,7 +88,7 @@ In addition these properties are defined:
 
 #### Custom Attached Log Output file
 
-When the log output is attached as a file, the file's extension can be defined by adding new settings on rudeck-config.properties.
+When the log output is attached as a file, the file's extension can be defined by adding new settings on rundeck-config.properties.
 For example:
 
 ```properties

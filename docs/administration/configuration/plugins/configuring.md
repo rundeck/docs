@@ -372,7 +372,7 @@ The `db` implementation has no configuration properties.
 
 You can combine multiple Storage Plugins to operate over different branches of the Storage Tree, by defining multiple configurations and using the `path` to locate them within the tree. You could use this, for example, to store some Keys in the database, some on the local filesystem, and some in some other backend provider, such as Vault.
 
-You would defin multiple configurations using sequential index numbers, and apply them to specific `path` locations.
+You would define multiple configurations using sequential index numbers, and apply them to specific `path` locations.
 
 Example:
 
