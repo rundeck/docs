@@ -24,16 +24,26 @@ Navigate to this page by clicking on the "Commands" tab in the navigation
 bar. Alternatively, go to the Nodes tab and choose the "Node Actions" menu
 and select the "Run a command ..." menu item.
 
-![Ad hoc Command](~@assets/img/fig0207.png)
+![Ad-hoc Command](~@assets/img/command-overview.png)
 
 The screenshot above shows the elements of the Commands page user interface.
 
 1. Filter expression - Search expression to match nodes.
 2. Filter results list - Matching nodes presented as a list here.
-3. Command prompt - Enter the command string.
-4. Command dispatch settings - Optional settings to control concurrency and errors.
-5. Run command button - Execute command for command string and matched nodes.
-6. Activity views - Historical views of command executions.
+3. Choose the Targer Runner - Select by Tag or Tags.
+4. Command prompt - Enter the command string.
+5. Command dispatch settings - Optional settings to control concurrency and errors.
+6. Run command button - Execute command for command string and matched nodes.
+7. Activity views - Historical views of command executions.
+
+
+## Selecting a Runner
+
+:::tip New Feature
+Note: This feature is only available after version 4.11 of Process Automation with the new Distributed Automation flag turned on.  [More info](/administration/runner/runner-intro.md).
+:::
+
+Selecting the Runner here will dispatch the commands to an Enterprise Runner instance.
 
 ## Enter a command
 
