@@ -121,6 +121,7 @@ module.exports = [{
         {title: 'Jira', path: '/manual/plugins/jira-plugins-overview.md'},
         {title: 'Kubernetes', path: '/manual/plugins/kubernetes-plugins-overview.md'},
         {title: 'PagerDuty', path: '/manual/plugins/pagerduty-plugins-overview.md'},
+        {title: 'Sensu', path: '/manual/plugins/sensu-plugins-overview.md'},
         {title: 'ServiceNow', path: '/manual/plugins/servicenow-plugins-overview.md'}
       ]
     },
