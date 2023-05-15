@@ -48,7 +48,7 @@ You should _not_ modify the `/etc/rundeck/profile` file directly, as it may be o
 or any changes from the upgrade might not be applied.
 
 Instead, For RPM or DEB installations, you can use environment variables set in a "defaults" file to add
-additional Java Sytem Properties.
+additional Java System Properties.
 
 - RPM install: `/etc/sysconfig/rundeckd`
 - DEB install: `/etc/default/rundeckd`

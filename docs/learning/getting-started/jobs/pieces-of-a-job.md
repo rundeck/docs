@@ -115,7 +115,7 @@ The Limit Multiple Executions is the maximum number of multiple executions. Use 
 #### Job timeout
 Indicates the maximum runtime allowed for a job. After this time expires, the job will be aborted.<br>
 
-#### Jon Retry
+#### Job Retry
 Count indicates the maximum number of times to retry the job if it fails or times out. You can also set a delay between retries.<br>
 
 #### Retry Delay

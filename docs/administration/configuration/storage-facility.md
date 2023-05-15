@@ -62,7 +62,7 @@ It is highly recommended that you configure Rundeck to use a relational database
 
 For information on configuring Rundeck to use specific Databases, see:
 
-- [Administor Guide > Rundeck Configuration > Database](/administration/configuration/database/index.md)
+- [Administration Guide > Rundeck Configuration > Database](/administration/configuration/database/index.md)
 
 To develop your own storage plugin, see:
 

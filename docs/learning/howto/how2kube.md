@@ -26,7 +26,7 @@ Rundeck uses the [Kubernetes workflow step plugin](https://github.com/rundeck-pl
 1. Kubectl to interact with minikube<br>
  Kubectl is a command-line tool for interacting with minikube. Click [here](https://kubernetes.io/docs/tasks/tools/#kubectl) to learn how to install Kubectl<br>
 1. K9s for cluster monitoring (optional)<br>
- K9s is a tool focused on monitoring and interacting with the cluster.  Click [here](https://k9scli.io/topics/install/) to learn how to installk9.<br>
+ K9s is a tool focused on monitoring and interacting with the cluster. Click [here](https://k9scli.io/topics/install/) to learn how to install K9s<br>
 1. Rundeck<br>
 
 ## Kubernetes Rundeck Plugin Prerequisites

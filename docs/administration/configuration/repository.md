@@ -41,7 +41,7 @@ When you enable the Rundeck Repository the following default files and directori
 
 * `RDECK_BASE/server/config/artifact-repositories.yaml` - Repositories are configured in this file.
 * `RDECK_BASE/repository/artifacts` - The directory into which your private plugins will be copied when you use the `upload` command to build your private plugin repository.
-* `RDECK_BASE/repository/installedPlugins` - The directory into which plugins will be copied when you use install them either from the offical Rundeck repository or your private repository.
+* `RDECK_BASE/repository/installedPlugins` - The directory into which plugins will be copied when you use install them either from the official Rundeck repository or your private repository.
 
 Both the `artifacts` and `installedPlugins` locations are configurable using the storage tree mechanism.  
 

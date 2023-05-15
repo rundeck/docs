@@ -265,7 +265,7 @@ You can change port by adding `-Dserver.https.port`:
 java -Drundeck.ssl.config=$RDECK_BASE/server/config/ssl.properties -Dserver.https.port=1234 -jar rundeck-{{{rundeckVersionFull}}}.war
 ```
 
-If successful, there will be a line indicating the SSl connector has started:
+If successful, there will be a line indicating the SSL connector has started:
 
 ```log
 Grails application running at https://localhost:1234 in environment: production
@@ -420,7 +420,7 @@ Use -Dserver.ssl.ciphers to enable the Ciphers
 ```
 
 #### For .RPM and .DEB Systems
-Edit /etc/sysconfig/rundeckd (for .RMP) or /etc/default/rundeckd (for .DEB) and add the flags
+Edit /etc/sysconfig/rundeckd (for .RPM) or /etc/default/rundeckd (for .DEB) and add the flags
 
 ```properties
 RDECK_JVM_OPTS="-Dserver.ssl.enabledProtocols=YourProtocols -Dserver.ssl.ciphers=YourCiphers`
@@ -492,7 +492,7 @@ E.g.:
 grails.serverURL=https://192.168.0.27:8443/rundeckpro
 ```
 
-#### Configure framework.propeties file with port and https protocol
+#### Configure framework.properties file with port and https protocol
 E.g.:
 ```properties
 framework.server.port = 8443
