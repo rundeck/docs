@@ -296,11 +296,11 @@ Table: Application scope generic type actions
 | "             | "                  | `read`             | Read files and list directories in the storage facility |
 | "             | "                  | `delete`           | Delete files in the storage facility                    |
 | `apitoken`    | "username","roles" | `create`           | Create an API Token with specified roles or username    |
-| `runner`      | "username","roles" | `read`             | Read Runner setup/configuration deatils                 |
+| `runner`      | "username","roles" | `read`             | Read Runner setup/configuration details                 |
 | "             | "                  | `create`           | Create new Runner entries                               |
 | "             | "                  | `update`           | Update existing Runner entries                          |
 | "             | "                  | `delete`           | Delete Runner entries                                   |
-| "             | "                  | `ping`             | Execute the ping command to check Runner statu          |
+| "             | "                  | `ping`             | Execute the ping command to check Runner status         |
 | "             | "                  | `regenerate_credentials`| Regenerate a new credential package for a Runner   |
 
 

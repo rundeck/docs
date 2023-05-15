@@ -80,7 +80,7 @@ Optionally use the PagerDuty API Token generated earlier for the Rundeck Job, or
 6. In PagerDuty, navigate to **Automation -> Rundeck Actions -> Add Action**:
 <br><br>![Add Action](@assets/img/solutions-pd-diag-k8s-add-action.png)<br><br>
 7. Fill in the Automation Action details with the desired Name and Description. Select **rundeck** as the type of action and **Diagnostic** as the category.  
-Paste the jod ID into the **Job ID** field and insert `-pd_incident_id ${pagerduty.incidentId}` into the **Rundeck arguments** field:
+Paste the job ID into the **Job ID** field and insert `-pd_incident_id ${pagerduty.incidentId}` into the **Rundeck arguments** field:
 <br><br>![Action Details](@assets/img/solutions-pd-diag-k8s-pd-action.png)<br><br>
 8. Select the Runner that you installed from **Step 3** and then select the same Kubernetes service associated with the Kubernetes Selector from **Step 6** of configuring the Rundeck Job.  
 :::

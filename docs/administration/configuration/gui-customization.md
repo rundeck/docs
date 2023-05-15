@@ -100,7 +100,7 @@ To customize the link's name of the "Get help" button in Rundeck's GUI Support f
 ![Figure: The "Get Help link name changed for a custom value named in the property"](~@assets/img/gui-custom-helpLink-name.png)
 
 ### rundeck.gui.workflowGraph
-- Examble: ```false```
+- Example: ```false```
 - min version: 4.10
 
 Prevents the ruleset graph renderization.
@@ -141,7 +141,7 @@ Shows job information when the user hovers over a job name in various pages.
 - Example: ```(Default: blank)```
 - min version: 3.0.8
 
-HTML displayed on the login page below the login form element but seperate from the login form element. The HTML will be sanitized before display.
+HTML displayed on the login page below the login form element but separate from the login form element. The HTML will be sanitized before display.
 
 
 ### rundeck.gui.login.welcome

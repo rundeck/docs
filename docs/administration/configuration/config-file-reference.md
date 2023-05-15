@@ -168,7 +168,7 @@ generated at project setup time. Each project has a directory within the Rundeck
 | --- | --- |
 | `project.name`                           | Declare the project name. |
 | `project.ssh-authentication`             | SSH authentication type (eg, privateKey). |
-| `project.ssh-keypath`                    | Loal SSH identify file. (Note: this is not a keystorage path but a local file system path.)|
+| `project.ssh-keypath`                    | Load SSH identify file. (Note: this is not a keystorage path but a local file system path.)|
 | `service.FileCopier.default.provider`    | Default script file copier plugin. |
 | `service.NodeExecutor.default.provider`  | Default node executor plugin. |
 | `resources.source.N...`                  | Defines a Resource model source see [Resource Model Sources](/manual/projects/resource-model-sources/). |
@@ -326,7 +326,7 @@ Some of the properties that work with live reloading:
 ### Security HTTP Headers
 
 :::warning
-The HTTP header 'XSS-Protection' has been deprecated by mordern browsers and it use can introduce additional security issues on the client side of the application. Rundeck has deprecated this setting as of version 4.3.0.
+The HTTP header 'XSS-Protection' has been deprecated by modern browsers and it use can introduce additional security issues on the client side of the application. Rundeck has deprecated this setting as of version 4.3.0.
 :::
 
 Rundeck adds some HTTP headers for XSS prevention and other security reasons, as described below.
