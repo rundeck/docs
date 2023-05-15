@@ -93,9 +93,12 @@ function getPlugins(setup) {
         '@vuepress/pwa',
         {
             serviceWorker: true,
-            updatePopup: true,
+            updatePopup: { 
+                    message: "We updated some pages! Click this to see the latest docs.", 
+                    buttonText: "Refresh Now" 
+                },
             generateSWConfig: {
-            globIgnores: ['**/gtm.js']
+               globIgnores: ['**/gtm.js']
             }
         }
         ])
