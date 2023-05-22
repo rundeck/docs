@@ -89,7 +89,7 @@ Docs will be built and published to a base matching a branch name of
 `/4\.[1-9]\..*/`:
 
 - Branch `4.0.x` => `docs.rundeck.com/4.0.x/`
-- Branch `3.3.1` => `docs.rundeck.com/3.3.1/`
+- Branch `3.4.1` => `docs.rundeck.com/3.4.1/`
 
 ## Latest
 
@@ -97,19 +97,19 @@ Docs will be built and published to a base matching a branch name of
 
 Tag a commit to publish to the matching version base as well as
 to the latest:
-- Tag `v3.3.1-20200727` => `docs.rundeck.com/3.3.1/` **AND**
+- Tag `v4.13.0-20230515` => `docs.rundeck.com/4.13.0/` **AND**
 `docs.rundeck.com/docs/`
 
 
 Example Code:
 ```
-git tag -f v4.0.0-20210201
-git push -f origin v4.0.0-20210201
+git tag -f v4.13.0-20230515
+git push -f origin v4.13.0-20230515
 ```
 
 
 ### Maintenance
-For maintenance to docs on previous versions, simply create a branch:
+For maintenance to docs on previous versions, simply switch to or create the branch:
 ```bash
 # For 3.2.8
 git checkout v3.2.8
