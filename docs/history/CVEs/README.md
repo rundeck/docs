@@ -26,4 +26,5 @@ These are the Security Advisories Rundeck has issued in the past.  It is always 
 ## False Positive Findings
 
 * Log4j / Log4Shell will flag a false positive vulnerability related to our JIRA plugins. [More Details on this page](log4j.md)
-* [H2 CVE-2022-45868 false positive](CVE-2022-45868.md).
+* [CVE-2022-45868 H2 DB false positive](CVE-2022-45868.md).
+* [CVE-2022-1471 SnakeYAML false positive](CVE-2022-1471.md).
