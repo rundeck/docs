@@ -83,6 +83,7 @@ dataSource.driverClassName = org.mariadb.jdbc.Driver
 dataSource.url = jdbc:mysql://myserver/rundeck?autoReconnect=true&useSSL=false
 dataSource.username = rundeckuser
 dataSource.password = rundeckpassword
+dataSource.constraintSchema = <schemaName> # By default is the same name as the database.
 ```
 
 Start rundeck. If there is a startup error about database access, ensure that the hostname that the Mysql server sees from the client is the same one granted access in step X.

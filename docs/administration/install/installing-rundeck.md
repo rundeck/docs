@@ -129,6 +129,7 @@ Replace the following tokens in the instructions for each database:
 * `<host>`: The database server hostname.
 * `<rundeckuser>`: The database user with permissions on the `rundeck` database.
 * `<rundeckpassword>`: The password for the Rundeck database user.
+* `<schemaName>`: By default is the same name as the database.
 
 :::: tabs
 
@@ -138,6 +139,7 @@ dataSource.url = jdbc:mysql://<host>/rundeck?autoReconnect=true&useSSL=false
 dataSource.username = <rundeckuser>
 dataSource.password = <rundeckpassword>
 dataSource.driverClassName = org.mariadb.jdbc.Driver
+dataSource.constraintSchema = <schemaName>
 ```
 
 [Detailed MySQL instructions.](/administration/configuration/database/mysql.md)

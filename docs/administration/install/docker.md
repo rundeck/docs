@@ -34,6 +34,7 @@ docker run \
     -e RUNDECK_DATABASE_USERNAME="${DB_USERNAME}" \
     -e RUNDECK_DATABASE_PASSWORD="${DB_PASSWORD}" \
     -e RUNDECK_DATABASE_URL="${DB_URL}" \
+	-e RUNDECK_DATABASE_CONSTRAINT_SCHEMA="${DB_SCHEMA_NAME}" \
     rundeckpro/enterprise:{{{rundeckVersion}}}
 ```
 
