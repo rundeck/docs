@@ -44,7 +44,7 @@ Next, add the required permissions in Azure.
 2. Select **"+ Add a permission"**
 3. Select **"Microsoft Graph"** as the permission type
 4. Select **"Application permissions"**
-5. Enter **"Directory.Read.AlL"** in the search box
+5. Enter **"Directory.Read.All"** in the search box
 6. Select **"Directory"** to expand it
 7. Select **"Directory.Read.All"** under Directory to enable the permission
 8. Select **"Add permission"** at the bottom
@@ -113,6 +113,8 @@ framework.plugin.UserGroupSource.AzureGroupSource.enabled=true
 
 Upon first login to Rundeck using Azure SSO an Azure Admin level user will need to consent to the `Directory.Read.All` permission. Make sure to click the checkbox that asks to consent for the **whole organization**.
 
+<img width="517" alt="image" src="https://github.com/rundeck/docs/assets/58412426/185bf972-577f-4e15-8367-d29fccaae578">
+
 ## Note: Azure Groups
 
 By default, Azure does not send group information in the SSO token. To get a user’s groups the Rundeck plugin uses the MS Graph API to get user/group information. Using this requires additional API permissions that were setup in the App Registration.  The default config file settings enables group mapping.
@@ -126,11 +128,10 @@ If your Azure Active Directory attributes are non-standard, you can specify the 
 If you are having trouble with the Azure SSO integration, these additional config file entries will generate helpful debugging information.  Adding the following lines to the `log4j2.propertie`* file will produce additional debugging output in the `services.log` file.
 
 ```properties
-# log4j2.properties | SSO logging
-logger.oauth2.name=org.springframework.security.oauth2
-logger.oauth2.level=debug
-logger.oauth2.additivity=false
-logger.oauth2.appenderRef.stdout.ref=STDOUT
+logger.spring_security_oauth.name = org.springframework.security.oauth2
+logger.spring_security_oauth.level = debug
+logger.spring_security_oauth.additivity = false
+logger.spring_security_oauth.appenderRef.stdout.ref = STDOUT
 ```
 
 ## Note: Azure Government
