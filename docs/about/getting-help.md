@@ -1,26 +1,19 @@
 # Getting Help
 
-This documentation is the first stop for help or understanding of Rundeck.  For additional support options check out the list below.
+Here at [docs.rundeck.com](https://docs.rundeck.com), you'll find a comprehensive resource for all things Rundeck. Whether you're new to Rundeck or an experienced user, this documentation site is designed to help you harness the power of Rundeck's automation and orchestration capabilities.
 
-## Enterprise Support
+This documentation site serves as a central hub for all your Rundeck-related needs. It offers a wealth of information, including detailed guides, tutorials, reference materials, and best practices to help you get the most out of Rundeck. Whether you're looking for installation instructions, troubleshooting tips, or advanced usage scenarios, you'll find it all here.
 
-Process Automation or Runbook Automation are the only way to get professional support from the creators and maintainers of Rundeck. From advice about your Rundeck usage to help with troubleshooting, our support team has you covered. Standard and 24x7 options are available.  If you are interested in getting professional support [Contact Us here](https://www.rundeck.com/contact).
+## Popular Places to Get Help with Rundeck:
 
-## Public Resources
+1. **Rundeck Documentation**: The official Rundeck Documentation Site at [docs.rundeck.com](https://docs.rundeck.com) provides comprehensive guides, tutorials, and reference materials.
 
-Sometimes questions have already been answered use these resources to engage with the Rundeck community.
+2. **Rundeck Google Group**: Join the Rundeck Google Group at [groups.google.com/g/rundeck-discuss](https://groups.google.com/g/rundeck-discuss) to engage with the Rundeck community.
 
-### Open Discussion Q&A
-- [https://stackoverflow.com/questions/tagged/rundeck](https://stackoverflow.com/questions/tagged/rundeck)
+3. **GitHub Issues**: Search or open issues at the [Rundeck GitHub repository](https://github.com/rundeck/rundeck) to find solutions or report bugs.
 
-## Feedback
+4. **Professional Support**: Access direct assistance from the Rundeck team by visiting [rundeck.com/support](https://www.rundeck.com/support). (Enterprise License Required)
 
-If you find problems with Rundeck, or if you have questions, remarks, or
-ideas about it, please send an email to the Rundeck mailing list.
-[rundeck-discuss@googlegroups.com](mailto:rundeck-discuss@googlegroups.com).
+5. **PagerDuty Community Forums**: Get help with Rundeck and Process Automation at the [PagerDuty Community forums](https://community.pagerduty.com/forum/). Engage with the community, ask questions, and share knowledge.
 
-## Bugs
-
-If you find a bug, please log a Github issue here.
-
-- [https://github.com/rundeck/rundeck/issues](https://github.com/rundeck/rundeck/issues)
+These resources provide various avenues to seek help, connect with the Rundeck community, and access official support to ensure you can make the most of your Rundeck experience.
