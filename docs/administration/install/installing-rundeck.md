@@ -1,5 +1,7 @@
 # Installing Rundeck
 
+Installing Rundeck is a straightforward and efficient way to enhance your organization's workflow automation and streamline your IT operations. Rundeck is an open-source, web-based platform that provides a centralized interface for managing and executing tasks across multiple systems. With its intuitive design and robust features, Rundeck empowers users to create and schedule jobs, run ad-hoc commands, and orchestrate complex workflows with ease. Whether you're a system administrator, developer, or operations team member, installing Rundeck can significantly improve your team's productivity and operational efficiency. In this guide, we will explore the step-by-step process of installing Rundeck, ensuring you have all the necessary components and configuration to unleash the full potential of this powerful tool.
+
 1. [Review the system requirements](/administration/install/system-requirements.md)
 2. [Install Rundeck with chosen method](#installation)
 3. [Configure database](#database-configuration)
@@ -104,12 +106,21 @@ sudo yum install java rundeckpro-enterprise
 
 
 ## Database Configuration
+Rundeck requires a backend database to store and manage various types of data that are integral to its operation. The backend database serves as a repository for critical information such as job definitions, execution history, project configurations, and user accounts. By leveraging a database, Rundeck ensures data integrity, persistence, and scalability, allowing multiple users to collaborate seamlessly and access the platform's features concurrently.
+
+The backend database plays a crucial role in enabling advanced functionalities within Rundeck, such as job scheduling, execution tracking, and historical data analysis. It allows users to define and store job definitions, which consist of instructions, scripts, and parameters necessary for performing tasks. Moreover, the database records execution history, including timestamps, execution statuses, and output logs, enabling users to review and troubleshoot job runs.
+
+Furthermore, the backend database stores project configurations, which encompass project-specific settings, resource definitions, access controls, and notifications. This central storage ensures consistency and facilitates easy management of project-related data.
+
+Overall, the backend database acts as a reliable foundation for Rundeck's core functionalities, providing a structured and efficient means of storing, retrieving, and organizing data essential for effective workflow automation and orchestration.
+
 :::warning
 Rundeck will initialize an on-disk database using the embedded H2 database
 on first start using the stock configurations. Production installations of
 Rundeck running H2 are not supported! Choose a supported database below
 to configure a production installation.
 :::
+
 ### Edit Database Config
 
 :::tip
