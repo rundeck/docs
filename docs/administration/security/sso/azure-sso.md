@@ -44,7 +44,7 @@ Next, add the required permissions in Azure.
 2. Select **"+ Add a permission"**
 3. Select **"Microsoft Graph"** as the permission type
 4. Select **"Application permissions"**
-5. Enter **"Directory.Read.AlL"** in the search box
+5. Enter **"Directory.Read.ALL"** in the search box
 6. Select **"Directory"** to expand it
 7. Select **"Directory.Read.All"** under Directory to enable the permission
 8. Select **"Add permission"** at the bottom
