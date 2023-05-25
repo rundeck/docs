@@ -300,6 +300,8 @@ Some of the properties that work with live reloading:
 
 - `rundeck.security.maxSessions`: If enforceMaxSessions is true, this setting controls the number of active sessions a user is allowed to have. `Default: 1`
 
+- `rundeck.feature.debug.showTracesOnResponse` : `true/false`. Default: `false`. The default behavior is to never return 5xx http responses with any stacktrace in it to hide specific information regarding the backend (stacktraces are only present on the log files).
+
 - `rundeck.security.jaasRolePrefix`: Prefix string to add to each _role_ determined via [JAAS Authentication](/administration/security/authentication.md#jetty-and-jaas-authentication). Default: none.
 
 - `rundeck.security.requiredRole`: `roleName`. If this property is set, all users must be a member of the role specified.
