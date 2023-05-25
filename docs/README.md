@@ -33,9 +33,9 @@ This documentation site serves as a central hub for all your Rundeck-related nee
 
 If you're looking for documentation of older versions of Rundeck, you can access them at the [Old Versions](/manual/old-docs.md) section.
 
-## Process Automation (Commercial Offering)
+## Process Automation
 
-Rundeck's Process Automation, the commercial offering, provides additional features to further enhance your automation capabilities:
+Process Automation, the commercial offering, provides additional features to further enhance your automation capabilities:
 
 ### Enterprise Support
 

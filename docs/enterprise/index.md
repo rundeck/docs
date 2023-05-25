@@ -2,17 +2,28 @@
 
 ## Overview
 
-Rundeck is a server application hosted on a system designated as a central administrative control point. Internally, Rundeck stores job definitions and execution history in a relational database. Output from command and job executions is saved on disk but can be forwarded to remote stores like S3 or Logstash.
+Rundeck is an open-source platform that simplifies and automates operations tasks, enabling teams to efficiently manage their infrastructure and workflows. With its intuitive interface and powerful features, Rundeck empowers both developers and operations teams to collaborate and automate complex processes.  Process Automation, the commercial offering, provides additional features to further enhance your automation capabilities:
 
-Rundeck distributed command execution is performed using a pluggable node execution layer that defaults to SSH but plugins expand use-cases to other means like AWS SSM, Salt, WinRM, or a custom method. Rundeck server configuration includes settings to define the outbound user allowed by the remote hosts. Remote machines are not required to make connections back to the server.
+### Enterprise Support
 
-![Rundeck architecture](~@assets/img/architecture.png)
+With Process Automation, you gain access to enterprise-grade support, ensuring that you have the assistance you need to run Rundeck in production environments. Benefit from timely assistance, troubleshooting, and guidance from the Rundeck team.
 
-The Rundeck application itself is a Java-based web application. The application provides both graphical interface and network interfaces used by the Rundeck shell tools.
+### Clustering
 
-## License
+Process Automation allows you to create a high-availability cluster of Rundeck instances, enabling load balancing and fault tolerance. This ensures that your automation workflows are always available and can handle high volumes of jobs and executions.
 
-See: [Process Automation Licensing and Support](/administration/configuration/license.md)
+### Extensive Integration Plugins
 
-## Features
+Process Automation provides a wide range of integration plugins, allowing you to connect Rundeck with other tools and systems in your infrastructure ecosystem. Seamlessly integrate with popular tools such as Jenkins, Ansible, Git, Slack, and many more, enabling end-to-end automation across your environment.
+
+### Advanced Scheduling Options
+
+Process Automation offers advanced scheduling capabilities, giving you fine-grained control over when and how your jobs and workflows are executed. Schedule jobs based on specific dates, times, intervals, or even trigger them in response to external events or conditions.
+
+### And More
 All of the Process Automation features that are not included in our Open Source offering are covered on our [Why Process Automation?](https://www.rundeck.com/enterprise) page.
+
+## Licenses
+
+Process Automation requires a license which can be obtained by reaching out to our Sales Team.  To install a license See: [Process Automation Licensing and Support](/administration/configuration/license.md)
+
