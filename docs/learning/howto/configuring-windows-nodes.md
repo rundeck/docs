@@ -13,6 +13,18 @@ The [pywinrm plugin](https://github.com/rundeck-plugins/py-winrm-plugin) needs t
 
 ### Requirements:
 
+:::tip
+Make sure that your python installation is same that the one that is exported in your "PATH" environment variable, so the PyWinRm plugin can access its packages.
+- We recommend this commands to check the python installation:
+```
+# Windows OS
+where python - "exaple/path/to/python"
+# linux OS
+which python - "exaple/path/to/python"
+```
+**The path to the executable must be the same if we dispatch the command to the required node with the AD-HOC command functionality.**
+:::
+
 The [pywinrm plugin](https://github.com/rundeck-plugins/py-winrm-plugin) uses the python [WinRM Library](https://github.com/diyan/pywinrm/) to provide the WinRM implementation.
 
 * Python 3.3-3.5 or PyPy2 installed on Rundeck server. _(Python 3 strongly recommended)_
