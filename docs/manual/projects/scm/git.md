@@ -92,7 +92,7 @@ Use the following command to generate the ssh key pair:
 
 **Password Storage Path** (Optional): A password stored in the Key Storage to be used on the ssh or https git authentication.
 
-**Synchronize Automatically**: Automatically pull remote changes on automatic fetch (this does auto import job changes into rundeck). If false, you can always perform it manually.
+**Synchronize Automatically**: Automatically pull remote changes on automatic fetch (this doesn't auto import job changes into rundeck). If false, you can always perform it manually. You should always perform a manual import.
 
 ## Git Import Configuration
 
@@ -115,7 +115,7 @@ Many SCM systems provide a "clone" url for ssh in the form: `git@host.xz:path/to
 
 **Fetch automatically** automatize the fetch command to be called in background.
 
-**Pull automatically** automatically pull remote changes on automatic fetch (this does auto import job changes into rundeck). If false, you can always perform it manually.
+**Pull automatically** automatically pull remote changes on automatic fetch (this doesn't auto import job changes into rundeck). If false, you can always perform it manually. You should always perform a manual import.
 
 ### Job Source Files Configuration
 
