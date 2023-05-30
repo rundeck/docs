@@ -27,7 +27,7 @@ Enable or disable automatic Transfer between the Core and Enterprise Storage lay
 
  `rundeck.feature.enterpriseacltransfer.enabled=true | false`.
 
- The Transfer feature flag will determine whether to automatically transfer ACLs between the Enterprise and Core ACL Storage Layers at Rundeck startup. When the Enterprise ACL Storage Layer feature is enabled, any ACLs that can be transferred will be transferred out of Core and into the Enterprise storage layer. Conversely, when the Transfer feature flag is disabled, ACLs will be transferred back to the Core storage layer.
+The Transfer feature flag will automatically transfer ACLs between the Enterprise and Core ACL Storage Layers at Rundeck startup when enabled. When the Transfer flag is enabled, and Enterprise ACL Storage Layer feature is _enabled_, any ACLs that can be transferred will be transferred out of Core and into the Enterprise storage layer. Conversely, when the Transfer flag is enabled, and Enterprise ACL feature flag is _disabled_, ACLs will be transferred back to the Core storage layer.
 
 If the Transfer feature flag is disabled, no ACLs will be automatically transferred. You can choose to enable the Enterprise ACL Storage Layer while not enabling the automatic Transfer, and only newly created or modified ACLs will use the new storage layer.
 
