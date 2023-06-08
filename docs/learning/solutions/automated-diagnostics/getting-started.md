@@ -17,7 +17,7 @@ For all Process Automation environments, follow the steps below to download and 
 1. Download the latest release of the Automated Diagnostics Solution [here](https://github.com/rundeckpro/automated-diagnostics-project/releases/latest/download/automated-diagnostics.jar).<br>
 
 ### Create a project in your Process Automation environment:
-1. Click the **P** in the upper left corner to navigate to the Main Dashboard <br><br>
+1. Click the **P** in the upper left corner to navigate to the Main Dashboard <br>
 2. Click the blue **New Project+** button:
 ![Add Project](@assets/img/solutions-auto-diag-add-project.png)<br><br>
 3. Copy the following into the **Project Name** field:  **`automated-diagnostics`**
