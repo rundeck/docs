@@ -48,7 +48,7 @@ This release includes new Plugin Suites for ServiceNow and Jira. As a reminder, 
 
 * Upgrade commons-fileupload to address CVE-2023-24998
 * Status Symbol is not required on Progress Badge.  Fixes issues with migration from previous versions.
-* Bundel Kubernetes and Docker plugins into Enterprise Build
+* Bundle Kubernetes and Docker plugins into Enterprise Build
 * Fix: Improve Error Output for Update Escalation PD Step
 * EC2 Health Check now included in AWS Plugin Group
 * Add ServiceNow Plugin Suite
