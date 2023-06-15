@@ -87,6 +87,9 @@ The following plugins are available in the next generation Runners:
 - Kubernetes-Wait-Pod
 - Kubernetes-Execute-Step
 - Kubernetes-InlineScript-Step
+- SQLRunnerNodeStepPlugin
+- vmware-vm-powerops
+- filetransfer
 
 :::
 ::: tab Workflow Steps
@@ -97,6 +100,17 @@ The following plugins are available in the next generation Runners:
 - nixy-waitfor-sleep-workflow-step
 - nixy-waitfor-sleep
 - WinRMCheck
+- github-script-step
+- vmware-vm-clone
+- vmware-vm-clone-template
+- vmware-vm-create
+- vmware-vm-customize
+- vmware-vm-reconfig
 
 :::
+::: tab Key Storage
+- vault-storage
+:::
+
+
 ::::
