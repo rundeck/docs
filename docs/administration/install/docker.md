@@ -1,5 +1,7 @@
 # Running Docker Images
 
+Running Rundeck in Docker offers several advantages, including portability across different environments, consistency in application behavior, isolation from other applications, scalability for handling increased workloads, and simplified deployment and management processes. Docker's containerization enables the packaging of Rundeck and its dependencies into a single container, allowing for easy distribution, deployment, and scaling. This approach ensures that Rundeck operates consistently, reduces compatibility issues, and provides flexibility for customers to run Rundeck in their preferred environments.
+
 Full usage information can be found on the [Docker configuration page](/administration/configuration/docker.md).
 
 :::warning
