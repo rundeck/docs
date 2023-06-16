@@ -7,16 +7,16 @@ Ensure that your server meets the minimum system requirements for Rundeck and ke
 Rundeck requires Java JRE to run. Install the Java Runtime Environment (JRE).<br>
 For example, on Ubuntu, you can use `sudo apt install openjdk-11-jre`<br>
 ### Step 3: [Install Rundeck](https://docs.rundeck.com/docs/administration/install/installing-rundeck.html)
-Add the Rundeck repository to your package manager and install the latest Rundeck version depending on your operating system. For Windows-based servers, follow [this](https://docs.rundeck.com/docs/administration/install/windows.html#installing-on-windows).<br>
+Add the Rundeck repository to your package manager and install the latest Rundeck version depending on your operating system. For Windows-based servers, follow [this](/administration/install/windows.html#installing-on-windows).<br>
 ### Step 4: [Set the right server URL for Rundeck server](https://docs.rundeck.com/docs/administration/install/installing-rundeck.html#server-url)
 Out of the box the Rundeck configurations set the `grails.ServerURL` (`rundeck-config.properties` file) value to `localhost`. To get access from another host, the `grails.ServerURL` must be defined using the server IP address or domain name. <br>
 ### Step 5: [Configure Rundeck against a database](https://docs.rundeck.com/docs/administration/install/installing-rundeck.html#database-configuration)
-By default, Rundeck includes a testing database ([H2](https://docs.rundeck.com/docs/administration/configuration/database/#default-database-h2)). However, this backend isn't recommended for production environments. Configure Rundeck to use an external database as the backend as a best practice.<br>
+By default, Rundeck includes a testing database ([H2](/administration/configuration/database/#default-database-h2)). However, this backend isn't recommended for production environments. Configure Rundeck to use an external database as the backend as a best practice.<br>
 ### Step 6: [Start the Rundeck Server](https://docs.rundeck.com/docs/administration/maintenance/startup.html#startup-and-shutdown)
-To start the Rundeck service, for systemd based systems (like the most popular Linux distributions) you can use the [service tool](https://docs.rundeck.com/docs/administration/maintenance/startup.html#rpm-and-deb). On a war launcher based installation, you can use the [rundeckd script](https://docs.rundeck.com/docs/administration/maintenance/startup.html#launcher).  For Windows servers, set the process up as a [service](https://docs.rundeck.com/docs/administration/install/windows.html#run-rundeck-as-a-service).<br>
+To start the Rundeck service, for systemd based systems (like the most popular Linux distributions) you can use the [service tool](/administration/maintenance/startup.html#rpm-and-deb). On a war launcher based installation, you can use the [rundeckd script](/administration/maintenance/startup.html#launcher).  For Windows servers, set the process up as a [service](/administration/install/windows.html#run-rundeck-as-a-service).<br>
 ### Step 7: Accessing Rundeck
 To access Rundeck, open your favorite web browser and go to `http://ip_or_domainname:4440`. The default admin user name is `admin` (password: `admin`).<br>
 ## Resources
-[Introduction to Rundeck](https://docs.rundeck.com/docs/about/introduction.html)<br>
-[Startup and Shutdown Rundeck](https://docs.rundeck.com/docs/about/introduction.html)<br>
-[Welcome Project tutorial](https://docs.rundeck.com/docs/learning/tutorial/preparing.html)<br>
+[Introduction to Rundeck](/about/introduction.html)<br>
+[Startup and Shutdown Rundeck](/about/introduction.html)<br>
+[Welcome Project tutorial](/learning/tutorial/preparing.html)<br>
