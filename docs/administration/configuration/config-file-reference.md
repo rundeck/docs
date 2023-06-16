@@ -107,6 +107,10 @@ Other settings:
 
 Static authentication tokens for API access:
 
+:::tip
+Make sure your $RDECK_BASE environment variable is pointed correctly to your current installation, otherwise the tokens wont be loaded in runtime.
+:::
+
 You can define the location of a .properties file in framework.properties:
 
 - `rundeck.tokens.file=/etc/rundeck/tokens.properties`
