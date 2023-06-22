@@ -4,7 +4,7 @@ date: "2023-06-22"
 image: /images/chevron-logo-red-on-white.png
 feed:
 enable: true
-description: "Plugins and Ad-Hoc Commands on the Enterprise Runner, plus more Plugin enhancements."
+description: "Upgrade to REMCO 0.12.4 to fix a security vulnerability"
 ---
 # 4.14.1 Release Notes
 Name: <span style="color: red"><span class="glyphicon glyphicon-headphones"></span> "Wyvern red headphones"</span>
