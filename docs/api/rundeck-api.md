@@ -5699,7 +5699,18 @@ If the user has `configure` authorization for the project, then the project conf
 
 Delete an existing projects on the server. Requires 'delete' authorization.
 
-    DELETE /api/11/project/[PROJECT]
+    DELETE /api/45/project/[PROJECT]
+
+Optional Query Parameters:
+
+* `deferred`: (**Since API v45**) If `true`, specifies the deletion process should take place in the background, and the request will be answered before its processed. 
+If `false` the server will wait for the process to finish before answering. Default: `true` 
+
+
+:::tip
+If this endpoint is called with a version prior to 45, the behavior will be the same as using the query parameter `deferred=false`  
+:::
+
 
 Response:
 
