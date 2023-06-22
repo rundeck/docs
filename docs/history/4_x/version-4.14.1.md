@@ -15,7 +15,7 @@ Release Date:June 15th, 2023
 ## Overview
 This release was created to fix a security vulnerability involving REMCO.
 ## Rundeck Open Source Product Updates
-* [Upgrade to REMCO 0.12.4] (https://github.com/rundeck/rundeck/pull/8384)
+* [Upgrade to REMCO 0.12.4](https://github.com/rundeck/rundeck/pull/8384)
 ## Community Contributors
 Submit your own Pull Requests to get recognition here!
 ## Staff Contributors
