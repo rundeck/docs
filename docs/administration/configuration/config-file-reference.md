@@ -105,7 +105,7 @@ Other settings:
 - `execution.script.tokenexpansion.enabled`: Whether inline script token expansion is enabled, default `true`. If `false`, the "Inline Script Content" syntax described in [User Guide - Creating Job Workflows - Context Variables](/manual/job-workflows.md#context-variables) is disabled.
 - `communityNews.disabled`: Default is not set, or false. Disables the external polling of Community News feed. Link will persist but will not poll, and clicking this link will open a new browser tab and navigate to the web-based version of Community News.
 
-Static authentication tokens for API access:
+### Static authentication tokens for API access:
 
 You can define the location of a .properties file in framework.properties:
 
