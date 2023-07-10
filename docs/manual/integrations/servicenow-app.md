@@ -27,7 +27,34 @@ After the app has been installed in your ServiceNow&reg; instance there will be 
 
 > Note: The ServiceNow login account will need the `admin` role and `x_runde_rundeck_it.rundeck_app_user` roles to configure these settings.
 
-1. Create an [API Key](/manual/10-user.md#user-api-tokens) in Rundeck.
+1. Create either a [User API Key](/manual/10-user.md#user-api-tokens) or a [Static API Token](/administration/configuration/config-file-reference.md#static-authentication-tokens-for-api-access)
+    1. The minimum required permissions for the token are:
+        1. Read all or specific projects
+        2. Read all or specific webhooks in the projects necessary
+        3. Post for all or specific webhooks
+    4. Example ACL:
+        ```
+        ---
+        description: Allow servicenow to list projects
+        context:
+          application: 'rundeck'
+        for:
+          project:
+            - allow: [read]
+        by:
+          group: snow_webhooks
+        ---
+        description: Allow servicenow to list and post for all projects webhooks
+        context:
+          project: ".*"
+        for:
+          resource:
+            - equals:
+                kind: webhook
+              allow: [read,post]
+        by:
+          group: snow_webhooks
+        ```
 1. Click **Configure Rundeck Connection** and fill out the fields on the form with your environment details.
     - **Protocol**: Choose if your Rundeck instance is running over `http` or `https`.
     - **Destination**: Enter the IP address or domain name where your Rundeck is running.
