@@ -1914,9 +1914,9 @@ Success response, with a list of roles:
 
 ## User Class
 
-### Userclass Allocations Get allocated User Classes
+### Get allocated User Classes
 
-Get the User Class allocations provided by the License.
+Get the User Class allocations provided/allowed by the License.
 
 The response will contain the allocation state, the current allocations by username, and summary information.
 
@@ -1960,10 +1960,10 @@ User Classes
     "additionalProp3": 0
   }
 }
-``` json
+```
 
 
-### Userclass Available Get available User Classes
+### Get available User Classes
 
 Get a list of User Classes that are available.
 
@@ -1994,9 +1994,9 @@ User Classes
     }
   ]
 }
+```
 
-
-## Userclass Enabled Feature enablement check
+### Feature enablement check
 
 Return whether the feature is enabled. Since v41
 
@@ -2015,10 +2015,10 @@ Feature enablement response
 {
   "enabled": true
 }
-``` json
+```
 
 
-### Userclass Self Get current user's User Class assignment
+### Get current user's User Class assignment
 
 Get the User Class assignment of the current user.
 
@@ -2044,10 +2044,10 @@ User Class assignment
   "username": "string",
   "userclass": "string"
 }
-``` json
+```
 
 
-### Userclass State Get allocated User Class State
+### Get allocated User Class State
 
 Get the User Class state.
 
@@ -2093,10 +2093,10 @@ User Classes
     "additionalProp3": 0
   }
 }
-``` json
+```
 
 
-### Userclass Update Update multiple User Class assignments
+### Update multiple User Class assignments
 
 Allows modifying multiple User Class assignments in one request.
 
@@ -2152,7 +2152,7 @@ User Class allocation information
     "additionalProp3": 0
   }
 }
-``` json
+```
 
 **Response:**
 400
@@ -2166,10 +2166,10 @@ Format Error
   "error": "string",
   "errorCode": "string"
 }
-``` json
+```
 
 
-### Userclass User {Username} Get a user's Class assignment
+### Get a user's Class assignment
 
 Get the User Class assignment of the specified user.
 
@@ -2197,10 +2197,10 @@ User Class assignment
   "username": "string",
   "userclass": "string"
 }
-``` json
+```
 
 
-### Userclass User {Username} Set a user's Class assignment
+### Set a user's Class assignment
 
 Set the User Class assignment of the specified user.
 
@@ -2229,7 +2229,7 @@ User Class assignment
   "username": "string",
   "userclass": "string"
 }
-``` json
+```
 
 
 
@@ -2241,13 +2241,6 @@ User Class Allocation error
 
 
 ``` json
-    
-User Class Allocation error
-
-
-`Content-Type: application/json`:
-
-
 {
   "error": "string",
   "errorCode": "string",
@@ -2262,19 +2255,17 @@ User Class Allocation error
     "additionalProp3": 0
   }
 }
+```
 
-
-### Userclass User {Username} Delete a user's Class assignment
+### Delete a user's Class assignment
 
 Remove the User Class assignment of the specified user.
 
 The response will be 204 No Content if successful.
 
-Authorization required: admin or app_admin access for user resource type.
+Authorization required: `admin` or `app_admin` access for user resource type.
 
 Since v41
-
-
 
 **Request:**
 
