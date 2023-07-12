@@ -1916,13 +1916,13 @@ Success response, with a list of roles:
 
 ### Get allocated User Classes
 
-Get the User Class allocations provided/allowed by the License.
+Get the User Class allocations provided and allowed by the License.
 
 The response will contain the allocation state, the current allocations by username, and summary information.
 
-Authorization required: admin or app_admin access for user resource type.
+Authorization required: `admin` or `app_admin` access for user resource type.
 
-Since v41
+Available in API v41 and greater.
 
 **Request:**
 
@@ -1971,7 +1971,7 @@ The response will be a list of User Class Definitions.
 
 Authorization required: admin or app_admin access for user resource type.
 
-Since v41
+Available in API v41 and greater.
 
 **Request:**
 
@@ -1998,7 +1998,9 @@ User Classes
 
 ### Feature enablement check
 
-Return whether the feature is enabled. Since v41
+Return whether the feature is enabled. 
+
+Available in API v41 and greater.
 
 **Request:**
 
@@ -2022,11 +2024,11 @@ Feature enablement response
 
 Get the User Class assignment of the current user.
 
-The response will contain the user class name, or NONE if unassigned.
+The response will contain the user class name, or **`NONE`** if unassigned.
 
 Authorization required: none.
 
-Since v41
+Available in API v41 and greater.
 
 **Request:**
 
@@ -2053,9 +2055,9 @@ Get the User Class state.
 
 The response will contain the allocation state, and summary information.
 
-Authorization required: admin or app_admin access for user resource type.
+Authorization required: `admin` or `app_admin` access for user resource type.
 
-Since v41
+Available in API v41 and greater.
 
 **Request:**
 
@@ -2102,18 +2104,19 @@ Allows modifying multiple User Class assignments in one request.
 
 This action can operate in one of three behaviors:
 
-If the request contains the allocations definition, those allocations will be set.
-If the request contains bulkRemove value true, and a set of usernames, then the specified usernames will have their user class assignments removed.
-If the request values bulkAssign and usernames are set, then all the specified usernames will be assigned to the User Class specified in bulkAssign.
+1. If the request contains the allocations definition, those allocations will be set.<br>
+2. If the request contains bulkRemove value true, and a set of usernames, then the specified usernames will have their user class assignments removed.<br>
+3. If the request values bulkAssign and usernames are set, then all the specified usernames will be assigned to the User Class specified in bulkAssign.<br>
+
 If the request doesn't match one of these three modes, a 400 error will be returned with error code api.error.item.unsupported-format.
 
 The response will contain the current user class assignments, if successful.
 
-If an allocation error occurs, such as the allocation of the specified User Class is already full, then a User Class Allocation error will be returned with a 400 status code with error code api.error.entitlements.user-class.allocation.exceeded.
+If an allocation error occurs, such as the allocation of the specified User Class is already full, then a User Class Allocation error will be returned with a **`400`** status code with error code **`api.error.entitlements.user-class.allocation.exceeded`**.
 
-Authorization required: admin or app_admin access for user resource type.
+Authorization required: `admin` or `app_admin` access for user resource type.
 
-Since v41
+Available in API v41 and greater.
 
 **Request:**
 
@@ -2173,13 +2176,13 @@ Format Error
 
 Get the User Class assignment of the specified user.
 
-The response will contain the user class name, or NONE if unassigned.
+The response will contain the user class name, or **NONE** if unassigned.
 
 Authorization required for current user: none
 
-Authorization required for other user: admin or app_admin access for user resource type.
+Authorization required for other user: `admin` or `app_admin` access for user resource type.
 
-Since v41
+Available in API v41 and greater.
 
 **Request:**
 
@@ -2206,11 +2209,11 @@ Set the User Class assignment of the specified user.
 
 The response will contain the user class assignment, if successful.
 
-If an allocation error occurs, such as the allocation of the specified User Class is already full, then a User Class Allocation error will be returned with a 400 status code with error code api.error.entitlements.user-class.allocation.exceeded.
+If an allocation error occurs, such as the allocation of the specified User Class is already full, then a User Class Allocation error will be returned with a **`400`** status code with error code **`api.error.entitlements.user-class.allocation.exceeded`**.
 
-Authorization required: admin or app_admin access for user resource type.
+Authorization required: `admin` or `app_admin` access for user resource type.
 
-Since v41
+Available in API v41 and greater.
 
 **Request:**
 
@@ -2261,11 +2264,11 @@ User Class Allocation error
 
 Remove the User Class assignment of the specified user.
 
-The response will be 204 No Content if successful.
+The response will be `204 No Content` if successful.
 
 Authorization required: `admin` or `app_admin` access for user resource type.
 
-Since v41
+Available in API v41 and greater.
 
 **Request:**
 
