@@ -1912,6 +1912,372 @@ Success response, with a list of roles:
 }
 ```
 
+## User Class
+
+### Get allocated User Classes
+
+Get the User Class allocations provided and allowed by the License.
+
+The response will contain the allocation state, the current allocations by username, and summary information.
+
+Authorization required: `admin` or `app_admin` access for user resource type.
+
+Available in API v41 and greater.
+
+**Request:**
+
+    GET /api/44/userclass/allocations
+
+**Response:**
+200
+User Classes
+
+`Content-Type: application/json`:
+
+
+``` json
+{
+  "allocations": {
+    "additionalProp1": "string",
+    "additionalProp2": "string",
+    "additionalProp3": "string"
+  },
+  "state": "string",
+  "message": "string",
+  "summary": {
+    "additionalProp1": 0,
+    "additionalProp2": 0,
+    "additionalProp3": 0
+  },
+  "exceeded": {
+    "additionalProp1": 0,
+    "additionalProp2": 0,
+    "additionalProp3": 0
+  },
+  "entitled": {
+    "additionalProp1": 0,
+    "additionalProp2": 0,
+    "additionalProp3": 0
+  }
+}
+```
+
+
+### Get available User Classes
+
+Get a list of User Classes that are available.
+
+The response will be a list of User Class Definitions.
+
+Authorization required: admin or app_admin access for user resource type.
+
+Available in API v41 and greater.
+
+**Request:**
+
+    GET /api/44/userclass/available
+
+**Response:**
+200
+User Classes
+
+`Content-Type: application/json`:
+
+
+``` json
+{
+  "classes": [
+    {
+      "name": "string",
+      "title": "string",
+      "description": "string"
+    }
+  ]
+}
+```
+
+### Feature enablement check
+
+Return whether the feature is enabled. 
+
+Available in API v41 and greater.
+
+**Request:**
+
+    GET /api/44/userclass/enabled
+
+**Response:**
+200
+Feature enablement response
+
+`Content-Type: application/json`:
+
+
+``` json
+{
+  "enabled": true
+}
+```
+
+
+### Get current user's User Class assignment
+
+Get the User Class assignment of the current user.
+
+The response will contain the user class name, or **`NONE`** if unassigned.
+
+Authorization required: none.
+
+Available in API v41 and greater.
+
+**Request:**
+
+    GET /api/44/userclass/self
+
+**Response:**
+200
+User Class assignment
+
+`Content-Type: application/json`:
+
+
+``` json
+{
+  "username": "string",
+  "userclass": "string"
+}
+```
+
+
+### Get allocated User Class State
+
+Get the User Class state.
+
+The response will contain the allocation state, and summary information.
+
+Authorization required: `admin` or `app_admin` access for user resource type.
+
+Available in API v41 and greater.
+
+**Request:**
+
+    GET /api/44/userclass/state
+
+**Response:**
+200
+User Classes
+
+`Content-Type: application/json`:
+
+
+``` json
+{
+  "allocations": {
+    "additionalProp1": "string",
+    "additionalProp2": "string",
+    "additionalProp3": "string"
+  },
+  "state": "string",
+  "message": "string",
+  "summary": {
+    "additionalProp1": 0,
+    "additionalProp2": 0,
+    "additionalProp3": 0
+  },
+  "exceeded": {
+    "additionalProp1": 0,
+    "additionalProp2": 0,
+    "additionalProp3": 0
+  },
+  "entitled": {
+    "additionalProp1": 0,
+    "additionalProp2": 0,
+    "additionalProp3": 0
+  }
+}
+```
+
+
+### Update multiple User Class assignments
+
+Allows modifying multiple User Class assignments in one request.
+
+This action can operate in one of three behaviors:
+
+1. If the request contains the allocations definition, those allocations will be set.<br>
+2. If the request contains bulkRemove value true, and a set of usernames, then the specified usernames will have their user class assignments removed.<br>
+3. If the request values bulkAssign and usernames are set, then all the specified usernames will be assigned to the User Class specified in bulkAssign.<br>
+
+If the request doesn't match one of these three modes, a 400 error will be returned with error code api.error.item.unsupported-format.
+
+The response will contain the current user class assignments, if successful.
+
+If an allocation error occurs, such as the allocation of the specified User Class is already full, then a User Class Allocation error will be returned with a **`400`** status code with error code **`api.error.entitlements.user-class.allocation.exceeded`**.
+
+Authorization required: `admin` or `app_admin` access for user resource type.
+
+Available in API v41 and greater.
+
+**Request:**
+
+    POST /api/44/userclass/update
+
+**Response:**
+200
+User Class allocation information
+
+
+`Content-Type: application/json`:
+
+
+``` json
+{
+  "allocations": {
+    "additionalProp1": "string",
+    "additionalProp2": "string",
+    "additionalProp3": "string"
+  },
+  "state": "string",
+  "message": "string",
+  "summary": {
+    "additionalProp1": 0,
+    "additionalProp2": 0,
+    "additionalProp3": 0
+  },
+  "exceeded": {
+    "additionalProp1": 0,
+    "additionalProp2": 0,
+    "additionalProp3": 0
+  },
+  "entitled": {
+    "additionalProp1": 0,
+    "additionalProp2": 0,
+    "additionalProp3": 0
+  }
+}
+```
+
+**Response:**
+400
+Format Error
+
+`Content-Type: application/json`:
+
+
+``` json
+{
+  "error": "string",
+  "errorCode": "string"
+}
+```
+
+
+### Get a user's Class assignment
+
+Get the User Class assignment of the specified user.
+
+The response will contain the user class name, or **NONE** if unassigned.
+
+Authorization required for current user: none
+
+Authorization required for other user: `admin` or `app_admin` access for user resource type.
+
+Available in API v41 and greater.
+
+**Request:**
+
+    GET /api/44/userclass/user/username
+
+**Response:**
+200
+User Class assignment
+
+`Content-Type: application/json`:
+
+
+``` json
+{
+  "username": "string",
+  "userclass": "string"
+}
+```
+
+
+### Set a user's Class assignment
+
+Set the User Class assignment of the specified user.
+
+The response will contain the user class assignment, if successful.
+
+If an allocation error occurs, such as the allocation of the specified User Class is already full, then a User Class Allocation error will be returned with a **`400`** status code with error code **`api.error.entitlements.user-class.allocation.exceeded`**.
+
+Authorization required: `admin` or `app_admin` access for user resource type.
+
+Available in API v41 and greater.
+
+**Request:**
+
+    POST /api/44/userclass/user/username
+
+**Response:**
+200
+User Class assignment
+
+
+`Content-Type: application/json`:
+
+
+``` json
+{
+  "username": "string",
+  "userclass": "string"
+}
+```
+
+
+
+**Response:**
+400
+User Class Allocation error
+
+`Content-Type: application/json`:
+
+
+``` json
+{
+  "error": "string",
+  "errorCode": "string",
+  "excessions": {
+    "additionalProp1": 0,
+    "additionalProp2": 0,
+    "additionalProp3": 0
+  },
+  "limits": {
+    "additionalProp1": 0,
+    "additionalProp2": 0,
+    "additionalProp3": 0
+  }
+}
+```
+
+### Delete a user's Class assignment
+
+Remove the User Class assignment of the specified user.
+
+The response will be `204 No Content` if successful.
+
+Authorization required: `admin` or `app_admin` access for user resource type.
+
+Available in API v41 and greater.
+
+**Request:**
+
+    DELETE /api/44/userclass/user/username
+
+**Response:**
+204
+No Content
+
 ## Log Storage
 
 ### Log Storage Info
