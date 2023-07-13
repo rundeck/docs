@@ -778,6 +778,7 @@ Available rendering option keys:
 - `valueConversionFailure` can be used to indicate that if the Private data context, or Storage path data is not present,
     then the config data key should be removed. Allowed values:
     - `remove` - remove the original config property value if the conversion is not successful
+    - `skip` - keep the original config property value if the conversion is not successful
 - `staticTextContentType` if displayType is `STATIC_TEXT`, the content type for the defaultValue text. values:
     - `text/html` render as sanitized HTML
     - `text/x-markdown` convert markdown text to sanitized HTML
