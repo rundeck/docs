@@ -1,17 +1,18 @@
 ---
-title: "4.14.1 Release Notes"
-date: "2023-06-22"
+
+title: "4.14.2 Release Notes"
+date: "2023-07-13"
 image: /images/chevron-logo-red-on-white.png
 feed:
-enable: true
-description: "Upgrade to REMCO 0.12.4 to fix a security vulnerability"
+ enable: true
+ description: "Password Reset Error Page Fix"
+
 ---
 
-# 4.14.1 Release Notes
+# 4.14.2 Release Notes
 
-Name: <span style="color: red"><span class="glyphicon glyphicon-headphones"></span> "Wyvern red headphones"</span>
-
-Release Date:June 15th, 2023
+Name: <span style="color: brown"><span class="glyphicon glyphicon-piggy-bank"></span> "Alicorn brown piggy-bank"</span>
+Release Date: PUTADATEHERE
 
 - [Download the Releases](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
@@ -19,11 +20,8 @@ Release Date:June 15th, 2023
 
 ## Overview
 
-This release was created to fix a security vulnerability involving REMCO.
+Password Reset operations over https were getting error messages on Enteprise versions of the product.  Passwords were still being reset properly, but the user experience resulted in an error screen.
 
-## Rundeck Open Source Product Updates
-
-* [Upgrade to REMCO 0.12.4](https://github.com/rundeck/rundeck/pull/8384)
 
 ## Community Contributors
 
