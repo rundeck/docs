@@ -10,6 +10,10 @@ module.exports = [{
       path: '/learning/getting-started/overview',
       sidebarDepth: 0,
       children: [
+    	['/learning/getting-started/server-setup-overview.md','Overview of On Premise Server Setup'],
+    	['/learning/getting-started/projects-overview.md','Setting up a Project'],
+    	['/learning/getting-started/system-maintenance-overview.md','Overview of On Premise System Maintenance'],
+    	['/learning/getting-started/runners-overview.md','Working with Runners in Process Automation'],
     	{
       	  title: 'Tutorial',
           collapsable: true,
@@ -79,7 +83,8 @@ module.exports = [{
           children: [
               '/learning/howto/ssh-on-linux-nodes.md',
               '/learning/howto/configuring-windows-nodes.md',
-              '/learning/howto/revoke-ssh-keys.md'
+              '/learning/howto/revoke-ssh-keys.md',
+              '/learning/howto/how2winrm-rundeck.md'
           ]
         },
     	

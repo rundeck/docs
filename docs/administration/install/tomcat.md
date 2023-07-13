@@ -1,5 +1,7 @@
 # Rundeck as a Tomcat servlet
 
+Running Rundeck on Tomcat is a popular choice for deploying and hosting this powerful workflow automation platform. Tomcat, an open-source Java servlet container, provides a robust and reliable runtime environment for running Java-based web applications like Rundeck. By utilizing Tomcat, users can leverage its scalability, stability, and extensive ecosystem to ensure optimal performance and efficient management of Rundeck instances. Running Rundeck on Tomcat offers a streamlined deployment process, as Tomcat handles the servlet execution and manages the web application lifecycle. In this guide, we will explore the steps required to set up and run Rundeck on Tomcat, enabling you to take advantage of the combined strengths of Rundeck's workflow automation capabilities and Tomcat's reliable web application hosting environment.
+
 ## Installation on Linux
 
 <!---

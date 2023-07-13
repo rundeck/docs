@@ -25,6 +25,16 @@ The filter form contains a number of fields to limit search:
 After filling the form pressing the "Filter" button, the page will
 display executions matching the search.
 
+## Activity in PagerDuty Process Automation On Premise's Home
+
+On the home page, users can check activity for a specific project, such as failed executions for each project.
+
+:::warning
+Only the **failed** executions will display, excluding "missed" and other status.
+:::
+
+![Project Activity on home page (dark mode)](~@assets/img/rundeckHome.png)
+
 ## Extended date range
 
 It is also possible to search for activity between dates.

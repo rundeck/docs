@@ -51,7 +51,6 @@ View our [Twitch stream review](https://www.twitch.tv/pdcommunity) of this relea
 * [Sets SameSite cookie policy to Lax as default to allow OAuth2 SSO flows](https://github.com/rundeck/rundeck/pull/8301)
 * [Upgrade spring-security to 5.8.3](https://github.com/rundeck/rundeck/pull/8297)
 * [PluginGroups Feature Flag Defaults to true](https://github.com/rundeck/rundeck/pull/8294)
-* [Select Runner For Adhoc Command](https://github.com/rundeck/rundeck/pull/8291)
 * [Fix: Exception handling in job validation with queue+secureOpts](https://github.com/rundeck/rundeck/pull/8283)
 * [Fix: Updated vue-moment dependency to latest moment version](https://github.com/rundeck/rundeck/pull/8280)
 * [Upgrade spring-core CVE-2023-20863](https://github.com/rundeck/rundeck/pull/8270)

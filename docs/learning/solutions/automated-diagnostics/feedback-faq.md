@@ -8,6 +8,7 @@ Your feedback is appreciated - to improve this solution for yourself and others.
 ### FAQ
 #### What products do I need to use the Automated Diagnostics Solution?
 * Runbook Automation or Process Automation users have full access to the Auto-Diagnostics Solution. Rundeck Community users can view the Solution and use some Jobs, but will be limited in their ability to use many Jobs due to dependencies on commercial-only plugins.
+* To get the most value out of the Auto-Diagnostics Solution, it is also recommended to have access to [PagerDuty Automation Actions](https://www.pagerduty.com/platform/automation/actions/).
 
 #### Can users modify the prebuilt automation Jobs?
 * Yes! The prebuilt Jobs will provide you with value almost immediately, however the intent of these is also to show you what’s possible with the Runbook Automation product. You can treat these as templates for your own use-cases.
