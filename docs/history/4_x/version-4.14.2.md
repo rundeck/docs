@@ -1,11 +1,11 @@
 ---
 
 title: "4.14.2 Release Notes"
-date: ""
+date: "2023-07-13"
 image: /images/chevron-logo-red-on-white.png
 feed:
  enable: true
- description: ""
+ description: "Password Reset Error Page Fix"
 
 ---
 
@@ -20,34 +20,12 @@ Release Date: PUTADATEHERE
 
 ## Overview
 
-Check out the new features and enhancements for PagerDuty Process Automation (formerly Rundeck Enterprise) and PagerDuty Runbook Automation and Rundeck Community included in this release.
-
-## Process Automation Updates
-
-> Also includes all Open Source updates from below
-
-### Highlights
-
-- first highlight
-- second highlight
-
-### Additional Updates
-
-
-
-
-## Rundeck Open Source Product Updates
-
-
-
-[Here is a link to the full list of public PRs](https://github.com/rundeck/rundeck/pulls?q=is%3Apr+milestone%3A4.14.2+is%3Aclosed)
-
-## Ansible Plugin Updates
+Password Reset operations over https were getting error messages on Enteprise versions of the product.  Passwords were still being reset properly, but the user experience resulted in an error screen.
 
 
 ## Community Contributors
 
-
+Submit your own Pull Requests to get recognition here!
 
 ## Staff Contributors
 

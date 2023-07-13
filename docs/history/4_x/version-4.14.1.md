@@ -6,19 +6,31 @@ feed:
 enable: true
 description: "Upgrade to REMCO 0.12.4 to fix a security vulnerability"
 ---
+
 # 4.14.1 Release Notes
+
 Name: <span style="color: red"><span class="glyphicon glyphicon-headphones"></span> "Wyvern red headphones"</span>
+
 Release Date:June 15th, 2023
+
 - [Download the Releases](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
 - [Upgrade instructions](/upgrading/)
+
 ## Overview
+
 This release was created to fix a security vulnerability involving REMCO.
+
 ## Rundeck Open Source Product Updates
+
 * [Upgrade to REMCO 0.12.4](https://github.com/rundeck/rundeck/pull/8384)
+
 ## Community Contributors
+
 Submit your own Pull Requests to get recognition here!
+
 ## Staff Contributors
+
 * Greg Schueler ([gschueler](https://github.com/gschueler))
 * Alberto Hormazabal Cespedes ([ahormazabal](https://github.com/ahormazabal))
 * Alexander Abarca ([alexander-variacode](https://github.com/alexander-variacode))
