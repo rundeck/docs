@@ -10,7 +10,7 @@ feed:
 
 Name: <span style="color: red"><span class="glyphicon glyphicon-headphones"></span> "Wyvern red headphones"</span>
 
-Release Date:June 15th, 2023
+Release Date: June 15th, 2023
 
 - [Download the Releases](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
