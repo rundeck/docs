@@ -71,6 +71,10 @@ the current filtering criteria.
 
 ## Bulk Delete Executions
 
+:::tip
+Old executions can be bound to old workflows stored in database just for information purposes, as a better practice, we recommend to clean periodically old executions in order to avoid slowness in the GUI or other problems related with the excesive amount of old records in the database.
+:::
+
 If you have access, you can click the "Bulk Delete" button to enable bulk-edit mode.
 
 ![Activity page bulk delete](~@assets/img/fig08-activity-bulk-delete.png)
