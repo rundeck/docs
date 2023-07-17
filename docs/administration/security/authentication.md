@@ -775,6 +775,8 @@ You will be prompted to enter a username and password. These will be compared ag
 If the login is successful you will see: `Login Succeeded!`
 If the login fails a stacktrace will be printed out which will contain the details about the failure.
 
+**Note:** The authentication test will fail if the bind password is set at the rundeck-config.properties file. In order to work, the --testauth flag requires the bind password set at the JAAS file.
+
 # Container authentication and authorization
 
 Container Authentication provides the Servlet context used by Rundeck
