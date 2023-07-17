@@ -140,6 +140,10 @@ This section will install Rundeck as a Windows Service so it runs in the backgro
   --StartMode=java ^
   --StartPath=C:\rundeck ^
   --StartParams=-jar#rundeck.war ^
+  --StopMode=exe ^
+  --StopPath=C:\rundeck ^
+  --StopImage=TASKKILL.exe ^
+  --StopTimeout=30 ^
   --PidFile=rundeck.pid ^
   --JvmMs=1024 --JvmMx=4096 ^
   --StdOutput=C:\rundeck\var\logs\service.log ^
