@@ -34,7 +34,7 @@ Now, customers can leverage the cross-account, IAM- based authentication method 
 Not only is this method more secure and easy to configure, but it also allows customers to have multiple AWS Accounts integrated with their Runbook Automation 
 instance—thereby allowing for a centralized hub of managing resources across multiple AWS environments
 
-![IAM AWS Auth](@assets/img/aws-iam-auth-rba.jpeg)<br>
+![IAM AWS Auth](@assets/img/aws-iam-auth-rba.png)<br>
 
 #### Key Storage Configuration Enhancement
 Customers can now view and configure Key Storage integrations, such as Vault, Cyberark, and Thycotic, using a new graphical user interface (GUI) 
