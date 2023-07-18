@@ -12,7 +12,8 @@ feed:
 # 4.14.2 Release Notes
 
 Name: <span style="color: brown"><span class="glyphicon glyphicon-piggy-bank"></span> "Alicorn brown piggy-bank"</span>
-Release Date: PUTADATEHERE
+
+Release Date: July 13, 2023
 
 - [Download the Releases](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)

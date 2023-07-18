@@ -26,7 +26,7 @@ Both Rundeck product versions, Enterprise and Community, have a companion set of
 
 Use the [Welcome Projects Starter How To guide](/learning/howto/welcome-project-starter.md) to learn how to get started with these environments.
 
-:::tip Licesnse Required
+:::tip License Required
 Note: The Enterprise version will require a license file. If you aren’t currently an Enterprise customer and you’re interested in using that please [contact us here](https://www.rundeck.com/see-demo).
 :::
 

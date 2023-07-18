@@ -53,6 +53,8 @@ Check out the new features and enhancements for PagerDuty Process Automation (fo
 
 ## Community Contributors
 
+Submit your own Pull Requests to get recognition here!
+
 {% for login, user in contributors -%}
 * {{ user.name }} ([{{user.login}}](https://github.com/{{user.login}}))
 {% endfor %}
