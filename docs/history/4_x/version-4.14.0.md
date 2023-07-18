@@ -7,26 +7,36 @@ feed:
  description: "Plugins and Ad-Hoc Commands on the Enterprise Runner, plus more Plugin enhancements."
 ---
 # 4.14.0 Release Notes
+
 Name: <span style="color: red"><span class="glyphicon glyphicon-headphones"></span> "Wyvern red headphones"</span>
-Release Date:June 15th, 2023
+
+Release Date: June 15th, 2023
+
 - [Download the Releases](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
 - [Upgrade instructions](/upgrading/)
-- [Watch the Live Stream Release Recap](https://youtu.be/e6Rs9BRljAA)
+
 ## Overview
+
 Check out the new features and enhancements for PagerDuty Process Automation, PagerDuty Runbook Automation, and Rundeck Community included in this release.This release includes new enhancements to the user experience, bug fixes around CyberArk, and new versioning for Twistlock security.
 View our [Twitch stream review](https://www.twitch.tv/pdcommunity) of this release live.
+
 ## Highlights
+
 * Enhanced user experience for managing large projects. Previously, when removing existing projects from the system, users would have to wait for the delete operation to complete.  For large projects – such as those with 100,00 executions – this could take upwards of 25 minutes or more. Now, when users delete a project, the operation takes place in the background, eliminating user wait times for the delete operation to complete.
 * Major bug fixes for CyberArk. Two major fixes were implemented that make the Key Storage integration with CyberArk more reliable for the user.
 * Improved security with additional vulnerability scanning coverage. 45 new CVEs have been addressed.
+
 ### Additional Enterprise Updates
+
 * Fix: Cyberark key storage plugin exceptions on startup and null initialization
 * Fix: ECS plugin updated
 * Fix: SSO error causes "White label" error page  release-notes/include to-jira
 * Update Azure plugin group name to be capitalized like other plugin groups
 * Job Runner user-class allowed to read Nodes
+
 ## Rundeck Open Source Product Updates
+
 * [Upgrade to spring boot 2.7.12](https://github.com/rundeck/rundeck/pull/8389)
 * [Fix: references to ctxProject.](https://github.com/rundeck/rundeck/pull/8388)
 * [Fix: notifications not triggering](https://github.com/rundeck/rundeck/pull/8383)
@@ -55,10 +65,15 @@ View our [Twitch stream review](https://www.twitch.tv/pdcommunity) of this relea
 * [Change user summary UI attach to use ui-socket](https://github.com/rundeck/rundeck/pull/8296)
 * [Deferred project delete](https://github.com/rundeck/rundeck/pull/8265)
 * [Add OpenAPI Spec annotations](https://github.com/rundeck/rundeck/pull/8196)
-  [Here is a link to the full list of public PRs](https://github.com/rundeck/rundeck/pulls?q=is%3Apr+milestone%3A4.14.0+is%3Aclosed)
+  
+[Here is a link to the full list of public PRs](https://github.com/rundeck/rundeck/pulls?q=is%3Apr+milestone%3A4.14.0+is%3Aclosed)
+
 ## Community Contributors
+
 Submit your own Pull Requests to get recognition here!
+
 ## Staff Contributors
+
 * Greg Schueler ([gschueler](https://github.com/gschueler))
 * Alberto Hormazabal Cespedes ([ahormazabal](https://github.com/ahormazabal))
 * Alexander Abarca ([alexander-variacode](https://github.com/alexander-variacode))

@@ -43,7 +43,7 @@ Many SCM systems provide a "clone" url for ssh in the form: `git@host.xz:path/to
 The plugin will try to resolve the origin based on the URL that is provided to it. So if the user provides an invalid URL, it can cause Rundeck to behave erratically (same behavior as in a server command shell). Please make sure to supply a URL that plausibly resolves to the *.git file.
 :::
 
-**Fetch automatically** automatize the fetch command to be called in background.
+**Fetch automatically** automatize the fetch command to be called in background (use true always).
 
 ### Job Source Files Configuration
 
@@ -92,7 +92,7 @@ Use the following command to generate the ssh key pair:
 
 **Password Storage Path** (Optional): A password stored in the Key Storage to be used on the ssh or https git authentication.
 
-**Synchronize Automatically**: Automatically pull remote changes on automatic fetch (this does auto import job changes into rundeck). If false, you can always perform it manually.
+**Synchronize Automatically**: Automatically pull remote changes on automatic fetch (this doesn't auto import job changes into rundeck). If false, you can always perform it manually. You should always perform a manual import.
 
 ## Git Import Configuration
 
@@ -113,9 +113,9 @@ Many SCM systems provide a "clone" url for http[s] in the form: `http[s]://host.
 Many SCM systems provide a "clone" url for ssh in the form: `git@host.xz:path/to/repo.git`, to make use of this in the default git plugin it is necessary to prepend `ssh://` and replace the `:` with a `/` in the url: `ssh://git@host.xz/path/to/repo.git`
 :::
 
-**Fetch automatically** automatize the fetch command to be called in background.
+**Fetch automatically** automatize the fetch command to be called in background (use true always).
 
-**Pull automatically** automatically pull remote changes on automatic fetch (this does auto import job changes into rundeck). If false, you can always perform it manually.
+**Pull automatically** automatically pull remote changes on automatic fetch (this doesn't auto import job changes into rundeck). If false, you can always perform it manually. You should always perform a manual import.
 
 ### Job Source Files Configuration
 
