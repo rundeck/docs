@@ -54,7 +54,7 @@ Check out the new features and enhancements for PagerDuty Process Automation (fo
 
 ## Enterprise Runner Updates
 
-**Latest Runner Version:** {{runner.releases[0].name}}
+**Bundled Runner Version:** {{sidecarVersion.version}}
 
 {% for pull in runner.pulls -%}
 * {{ pull.title | replace(r/RUN-[0-9]*:?\s?/g, "") | replace(r/RSE-[0-9]*:?\s?/g, "") | replace(r/RCLOUD-[0-9]*:?\s?/g, "") }}
