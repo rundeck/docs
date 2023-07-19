@@ -1,5 +1,6 @@
 const FS = require('fs')
 const Path = require('path')
+const { Buffer } = require("buffer")
 
 const nunjucks = require('nunjucks')
 
@@ -22,7 +23,9 @@ async function main() {
     context.enterprise = await getRepoData({repo: 'rundeckpro', owner: 'rundeckpro'}, ['release-notes/include'])
     context.docs = await getRepoData({repo: 'docs', owner: 'rundeck'}, [])
     context.ansible = await getRepoData({repo: 'ansible-plugin', owner: 'rundeck-plugins'}, [])
-    context.contributors = {...context.core.contributors, ...context.enterprise.contributors, ...context.docs.contributors, ...context.ansible.contributors}
+    context.runner = await getRepoData({repo: 'sidecar', owner: 'rundeckpro'}, ['release-notes/include'])
+    context.sidecarVersion = await getSideCarVersion({repo: 'rundeckpro', owner: 'rundeckpro'})
+    context.contributors = {...context.core.contributors, ...context.docs.contributors, ...context.ansible.contributors}
     //context.reporters = {...context.core.reporters, ...context.enterprise.reporters}
 
     // FS.writeFileSync('notes.json', JSON.stringify(context))
@@ -47,6 +50,45 @@ async function main() {
     }
 
     FS.writeFileSync(path, notes)
+}
+
+async function getSideCarVersion(repo) {
+    const gh = new Octokit({auth: argv.token || process.env.GH_API_TOKEN})
+
+    const milestones = await gh.issues.listMilestones({...repo})
+
+    const milestone = milestones.data.filter(m => m.title == argv.milestone)[0]
+
+    if (!milestone) {
+        console.error(`GitHub milestone ${argv.milestone} not found!`)
+        //process.exit(1)
+    } else {
+        try {
+            const proRunnerVersion = await gh.repos.getContent({
+                ...repo,
+                path: "gradle.properties",
+                ref: `v${milestone}`
+            })
+            const runnerVersion = proRunnerVersion.data;
+            //console.log(runnerVersion);
+            const content = Buffer.from(runnerVersion.content, "base64").toString();
+            //console.log(`Content:\n${content}\n`);
+            const sidecarVersionLine = content.match(/^sidecarVersion=(.*)/m);
+            if (sidecarVersionLine) {
+                version = sidecarVersionLine[1].trim();
+                console.log(`Sidecar Version: ${version}`);
+            }
+            return {
+                version
+            }
+        } catch (error) {
+            console.error("Sidecar Version Not Found")
+            version = "Version Not Found check for release tag"
+            return {
+                version
+            }
+        }
+    }
 }
 
 async function getRepoData(repo, includeLabels, excludeTags) {
