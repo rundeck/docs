@@ -51,6 +51,15 @@ Check out the new features and enhancements for PagerDuty Process Automation (fo
 * [{{ pull.title | replace(r/RUN-[0-9]*:?\s?/g, "") | replace(r/RSE-[0-9]*:?\s?/g, "") | replace(r/RCLOUD-[0-9]*:?\s?/g, "") }}]({{pull.html_url}})
 {% endfor %}
 
+
+## Enterprise Runner Updates
+
+**Latest Runner Version:** {{runner.releases[0].name}}
+
+{% for pull in runner.pulls -%}
+* {{ pull.title | replace(r/RUN-[0-9]*:?\s?/g, "") | replace(r/RSE-[0-9]*:?\s?/g, "") | replace(r/RCLOUD-[0-9]*:?\s?/g, "") }}
+{% endfor %}
+
 ## Community Contributors
 
 Submit your own Pull Requests to get recognition here!

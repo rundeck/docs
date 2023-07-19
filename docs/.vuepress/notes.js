@@ -22,7 +22,8 @@ async function main() {
     context.enterprise = await getRepoData({repo: 'rundeckpro', owner: 'rundeckpro'}, ['release-notes/include'])
     context.docs = await getRepoData({repo: 'docs', owner: 'rundeck'}, [])
     context.ansible = await getRepoData({repo: 'ansible-plugin', owner: 'rundeck-plugins'}, [])
-    context.contributors = {...context.core.contributors, ...context.enterprise.contributors, ...context.docs.contributors, ...context.ansible.contributors}
+    context.runner = await getRepoData({repo: 'sidecar', owner: 'rundeckpro'}, ['release-notes/include'])
+    context.contributors = {...context.core.contributors, ...context.docs.contributors, ...context.ansible.contributors}
     //context.reporters = {...context.core.reporters, ...context.enterprise.reporters}
 
     // FS.writeFileSync('notes.json', JSON.stringify(context))
@@ -96,11 +97,24 @@ async function getRepoData(repo, includeLabels, excludeTags) {
         reporters[user.data.login] = user.data
     }
 
+    const releasesResponse = await gh.repos.listReleases({
+        ...repo
+      });
+  
+      const releases = releasesResponse.data;
+    // console.log(`Total releases: ${releases.length}`);
+    // console.log("Release List:");
+  
+    //   releases.forEach((release) => {
+    //     console.log(`- ${release.tag_name}`);
+    //   })
+
     return {
         contributors,
         reporters,
         pulls,
-        issues
+        issues,
+        releases
     }
   }
 }
