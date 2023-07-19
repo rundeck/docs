@@ -142,7 +142,7 @@ Many SCM systems provide a "clone" url for ssh in the form: `git@host.xz:path/to
 :::tip
 Use the following command to generate the ssh key pair:
 
-`ssh-keygen -t key-type -m PEM -f key-pair-name -C ""`
+`ssh-keygen -t ed25519 -f key-pair-name -C ""`
 :::
 
 **Password Storage Path** (Optional): A password stored in the Key Storage to be used on the ssh or https git authentication.
