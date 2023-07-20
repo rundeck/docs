@@ -462,6 +462,12 @@ If you are deploying the Rundeck war file to Tomcat, you can manage the session 
     <session-config> <session-timeout>30</session-timeout> </session-config>
 ```
 
+In order to add the HSTS (HTTP Strict Transport Security) security header to the static resources of Rundeck, the configuration must be set directly on the server. The following two flags are used for the embedded Jetty server:
+
+- `rundeck.web.jetty.servlet.stsMaxAgeSeconds`: time in seconds.
+
+- `rundeck.web.jetty.servlet.stsIncludeSubdomains` : `true/false`. Default `false`
+
 ### Multi-URL Setting
 Make sure the `grails.serverURL` is specified (with or without server.servlet.context-path), Set `rundeck.multiURL.enabled=true` and access the service through `grails.serverURL` using a secondary DNS pointing to the same server, the server IP, etc.
 
