@@ -1,18 +1,18 @@
 ---
 
 title: "4.15.0 Release Notes"
-date: ""
+date: "2023-07-20"
 image: /images/chevron-logo-red-on-white.png
 feed:
  enable: true
- description: ""
+ description: "IAM AWS Authentication for RBA and Key Storage Configuration GUI"
 
 ---
 
 # 4.15.0 Release Notes
 
 Name: <span style="color: fuchsia"><span class="glyphicon glyphicon-sunglasses"></span> "Banshee fuchsia sunglasses"</span>
-Release Date: PUTADATEHERE
+Release Date: July 20, 2023
 
 - [Download the Releases](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
@@ -29,74 +29,54 @@ Check out the new features and enhancements for PagerDuty Process Automation (fo
 ### Highlights
 
 #### IAM AWS Authentication for Runbook Automation
-Previously, for customers to use AWS plugins with Runbook Automation, the only supported authentication method was through Access Key and Secret Key. 
-Now, customers can leverage the cross-account, IAM- based authentication method for integrating Runbook Automation with their AWS accounts.  
-Not only is this method more secure and easy to configure, but it also allows customers to have multiple AWS Accounts integrated with their Runbook Automation 
-instance—thereby allowing for a centralized hub of managing resources across multiple AWS environments
+Previously, the only supported authentication method for the AWS plugins with Runbook Automation was through Access Key and Secret Key. 
+Now, customers can leverage the cross-account, IAM based authentication method for integrating Runbook Automation with their AWS accounts.  
+Not only is this method more secure and easy to configure, but it also allows customers to have multiple AWS Accounts integrated with their Runbook Automation instance, thereby allowing for a centralized hub of managing resources across multiple AWS environments
 
 ![IAM AWS Auth](@assets/img/aws-iam-auth-rba.png)<br>
 
 #### Key Storage Configuration Enhancement
-Customers can now view and configure Key Storage integrations, such as Vault, Cyberark, and Thycotic, using a new graphical user interface (GUI) 
-that displays the various integrations available and the necessary fields for each integration. 
-Whereas before, users would have to reference documentation in order to identify the required and optional fields, 
-these are now presented to the user natively within the product. This not only simplifies the setup and management of Key Storage integrations, 
-but also reduces the likelihood of misconfiguration.
+
+Customers can now view and configure Key Storage integrations, such as Vault, Cyberark, and Thycotic, using a new graphical user interface (GUI) which displays the various integrations available and the necessary fields for each integration.  Users no longer have to reference documentation in order to identify the required and optional fields, these are now presented to the user natively within the product. This not only simplifies the setup and management of Key Storage integrations, but also reduces the likelihood of misconfiguration.
 
 ### Additional Updates
 
+## Enterprise Runner Updates
 
+**Bundled Runner Version:** Version Not Found check for release tag
 
 ## Rundeck Open Source Product Updates
 
-* [upgrade sshj-plugin version](https://github.com/rundeck/rundeck/pull/8428)
+* [SSHJ-plugin: Remove use of temporary file to authenticate with password](https://github.com/rundeck/rundeck/pull/8428)
 * [Script plugins, skip exceptions for key storage conversion](https://github.com/rundeck/rundeck/pull/8426)
+* [Fix: Error importing job definition from 4.5](https://github.com/rundeck/rundeck/pull/8423)
 * [Add azure icon to core plugin](https://github.com/rundeck/rundeck/pull/8422)
 * [Upgrade guava due to CVE-2023-2976](https://github.com/rundeck/rundeck/pull/8421)
 * [Fix: Error importing job definition from 4.5 to 4.13](https://github.com/rundeck/rundeck/pull/8404)
 * [Doc: Run API on local environment](https://github.com/rundeck/rundeck/pull/8396)
-* [: LDAP Fix huge number of groups](https://github.com/rundeck/rundeck/pull/8395)
+* [Fix: LDAP Fix huge number of groups](https://github.com/rundeck/rundeck/pull/8395)
 * [Fix error handling format in MenuController forecast and info endpoints](https://github.com/rundeck/rundeck/pull/8394)
 * [Fix/add changeset preconditions](https://github.com/rundeck/rundeck/pull/8393)
-* [fix: authz checks for project type annotations](https://github.com/rundeck/rundeck/pull/8387)
+* [Fix: authz checks for project type annotations](https://github.com/rundeck/rundeck/pull/8387)
 * [Update to remco 0.12.4](https://github.com/rundeck/rundeck/pull/8384)
 * [Fix: unable to upload xml jobs on 4.12 being exported from 4.5](https://github.com/rundeck/rundeck/pull/8376)
-* [Bump snapshot version to 4.15.0](https://github.com/rundeck/rundeck/pull/8375)
-* [Add twistlock scan to build_and_test pipeline](https://github.com/rundeck/rundeck/pull/8374)
-* [key storage plugin config](https://github.com/rundeck/rundeck/pull/8373)
-* [fix: Added a customizer to avoid trace method on root path](https://github.com/rundeck/rundeck/pull/8357)
+* [Key storage plugin config](https://github.com/rundeck/rundeck/pull/8373)
+* [Fix: Added a customizer to avoid trace method on root path](https://github.com/rundeck/rundeck/pull/8357)
 * [Dynamic default values for properties plugins](https://github.com/rundeck/rundeck/pull/8356)
 * [Fix: HTTP Strict Transport Security (HSTS) Header Not Used](https://github.com/rundeck/rundeck/pull/8347)
 * [Fix: Error responses including stacktraces](https://github.com/rundeck/rundeck/pull/8322)
 * [Fix: &quot;Active Connection is required&quot; errors when using s3 log storage](https://github.com/rundeck/rundeck/pull/8319)
-* [Move LogFileStorageRequest to data spi](https://github.com/rundeck/rundeck/pull/8251)
 
 
 [Here is a link to the full list of public PRs](https://github.com/rundeck/rundeck/pulls?q=is%3Apr+milestone%3A4.15.0+is%3Aclosed)
 
-## Ansible Plugin Updates
-
-
 ## Community Contributors
 
-* Luis Toledo ([ltamaster](https://github.com/ltamaster))
-* McG ([chrismcg14](https://github.com/chrismcg14))
-* Alberto Hormazabal ([ahormazabal](https://github.com/ahormazabal))
-* Jesus Osuna ([Jesus-Osuna-M](https://github.com/Jesus-Osuna-M))
-* Leonel Juarez ([L2JE](https://github.com/L2JE))
-* Antony Velasquez Ruiz ([avelasquezr](https://github.com/avelasquezr))
-* Rodrigo Navarro ([ronaveva](https://github.com/ronaveva))
-* Greg Schueler ([gschueler](https://github.com/gschueler))
-* Alexander Abarca ([alexander-variacode](https://github.com/alexander-variacode))
-* Carlos Eduardo ([carlosrfranco](https://github.com/carlosrfranco))
-* José Ortiz ([JoseOrtiz](https://github.com/JoseOrtiz))
-* Forrest Evans ([fdevans](https://github.com/fdevans))
+*  ([rmeloamaro](https://github.com/rmeloamaro))
+*  ([tomerarazy](https://github.com/tomerarazy))
 * Cris Walther ([cwaltherf](https://github.com/cwaltherf))
 *  ([simon-c-msc](https://github.com/simon-c-msc))
-* Darwis Narvaez ([DarwisNarvaezDev](https://github.com/DarwisNarvaezDev))
 * JP Lassnibatt ([jplassnibatt](https://github.com/jplassnibatt))
-* Jake Cohen ([jsboak](https://github.com/jsboak))
-
 
 ## Staff Contributors
 
