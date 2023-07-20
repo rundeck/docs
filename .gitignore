@@ -25,3 +25,4 @@ package-lock.json
 *.ipr
 *~
 docs/assets/img/Admin Guide.docx
+docs/history/4_x/draft.md
