@@ -9,6 +9,18 @@ This allows for targeted automation on EC2 instances - based off of instance-pro
 
 ## Configuring
 
+### Authentication
+Follow the instructions outlined in the [AWS Plugins Overview](/docs/manual/plugins/aws-plugins-overview.html) for Process Automation to authenticate with AWS.
+
+When defining the IAM Role for Runbook Automation or Process Automation, be sure to include the following permissions in the Policy associated with the role:
+
+* **`ec2:describeRegions`**
+* **`ec2.describeAvailabilityZones`**
+* **`ec2.describeInstances`**
+* **`ec2.describeImages`**
+* **`ec2.describeImages`**
+
+
 ### Basic Configuration
 
 ::: warning Note
