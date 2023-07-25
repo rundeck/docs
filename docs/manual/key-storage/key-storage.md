@@ -20,7 +20,13 @@ Rundeck currently supports storage plugins for the following providers:
 
 ### Configuring Storage Plugins
 
-See [Plugins User Guide - Configuring Storage Plugins](/administration/configuration/plugins/configuring.md#storage-plugins).
+Enterprise versions can use the Key Storage Configuration panel to add new Key Storage plugins.  Navigate to the System Menu (gear icon) and select **Key Storage**.  On the Configure Tab choose **Add Storage Plugin+** and select the plugin you'd like to configure.  Open Source versions will be configured in the `rundeck-config.properties` file.
+
+Instructions for each specific Key Storage plugin is covered in their respective sections.
+
+::: tip
+Enterprise versions 4.15.0+ the Storage Plugins have a new configuration process.  If you are configuring on a version older than 4.15 you can access previous doc versions at the [Old Docs](/manual/old-docs.md) page.
+:::
 
 
 ## Key Data Storage Converter
