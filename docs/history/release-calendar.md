@@ -9,6 +9,7 @@ Upgrade instructions [can be found here](/upgrading/).
 
 | Release Version                          | Release Date         | Enterprise Support Status |
 |------------------------------------------|----------------------|---------------------------|
+| [4.15.0](/history/4_x/version-4.15.0.md) | July 25th, 2023      | Supported |
 | [4.14.2](/history/4_x/version-4.14.2.md) | July 13th, 2023      | Supported |
 | [4.14.1](/history/4_x/version-4.14.1.md) | June 22th, 2023      | Supported |
 | [4.14.0](/history/4_x/version-4.14.0.md) | June 15th, 2023      | Supported |
@@ -25,14 +26,6 @@ Upgrade instructions [can be found here](/upgrading/).
 | [4.6.1](/history/4_x/version-4.6.1.md)   | September 14th, 2022 | Supported |
 | [4.6.0](/history/4_x/version-4.6.0.md)   | September 6th, 2022  | Supported |
 | [4.5.0](/history/4_x/version-4.5.0.md)   | August 11th, 2022    | Supported |
-| [4.4.0](/history/4_x/version-4.4.0.md)   | July 14th, 2022      | Supported |
-| [4.3.2](/history/4_x/version-4.3.2.md)   | July 14th, 2022      | Supported |
-| [4.2.3](/history/4_x/version-4.2.3.md)   | July 14th, 2022      | Supported |
-| [4.3.1](/history/4_x/version-4.3.1.md)   | June 15th, 2022      | Supported |
-| [4.2.2](/history/4_x/version-4.2.2.md)   | June 15th, 2022      | Supported |
-| [4.3.0](/history/4_x/version-4.3.0.md)   | June 2nd, 2022       | Supported |
-| [4.2.1](/history/4_x/version-4.2.1.md)   | May 11th, 2022       | Supported |
-| [4.2.0](/history/4_x/version-4.2.0.md)   | May 9th, 2022        | Supported |
 
 
 ::: warning

@@ -10,25 +10,15 @@ The following Lambda plugins are available for PagerDuty Runbook Automation and 
 * [Execute Lambda Function](#execute-lambda-function) - Executes an existing Lambda function.
 * [Lambda Custom Code Execution](#lambda-custom-code-execution) - Creates and executes a new Lambda function with the custom-code provided in the Job step.
 
-These plugins utilize the following properties:
+### Authentication
+Follow the instructions outlined in the [AWS Plugins Overview](/docs/manual/plugins/aws-plugins-overview.html) for Process Automation to authenticate with AWS.
 
-**Access Key ID**
-: Specify your AWS Access key.
+When defining the IAM Role for Runbook Automation or Process Automation, be sure to include the following permissions in the Policy associated with the role:
 
-- **Project setting**: project.aws.access_key
-- **Configuration Management**/**Framework Setting**: aws.access_key
+* **`lambda:InvokeFunction`** - Necessary for both Lambda workflow step plugins.
+* **`lambda:CreateFunction`** - Only if using the _**Lambda Custom Code**_ plugin
+* **`lambda:DeleteFunction`** - Only if **`Delete Function After Execution`** is used with the _**Lambda Custom Code**_ plugin.
 
-**Secret Key**
-: Specify the path to your AWS Secret Key in the Rundeck Key Storage
-
-- **Project setting**: project.aws.secret_key_path
-- **Configuration Management**/**Framework Setting**: aws.secret_key_path
-
-**Region**
-: Specify the region for the node.
-
-- **Project setting**: project.aws.region
-- **Configuration Management**/**Framework Setting**: aws.region
 
 ## Execute Lambda Function
 

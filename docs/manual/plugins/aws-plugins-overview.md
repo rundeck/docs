@@ -44,14 +44,75 @@ _Click to expand to see the full list of Process Automation plugins for AWS:_
 
 ## Setup
 
-Because Process Automation can be self-hosted _and_ has a Cloud offering [Runbook Automation](/about/cloud/#runbook-automation), there are multiple methods for authenticating with
-AWS:
+The steps for integrating with AWS will vary depending on the product you are using:
 
-[**EC2 IAM Role**](#option-1-ec2-iam-role) - For Process Automation hosted on EC2<br>
-[**ECS Task IAM Role**](#option-2-ecs-iam-role) - For Process Automation hosted on ECS<br>
-[**Access Key & Secret & Key**](#option-3-access-key-secret-key) - For Process Automation or Runbook Automation
+[**Runbook Automation**](#aws-integration-for-runbook-automation) - Integration steps for Runbook Automation (Cloud) product.
 
-### Option 1: EC2 IAM Role
+[**Process Automation on EC2**](#process-automation-hosted-on-ec2) - For Process Automation hosted on EC2<br>
+[**Process Automation on ECS**](#process-automation-hosted-on-ecs) - For Process Automation hosted on ECS<br>
+
+[**Access Key & Secret Key**](#alternative-auth-option-access-key-secret-key) - For Process Automation or Runbook Automation when Access Keys are permitted. 
+   :::warning Warning
+   Using the **Access Key and Secret Key** method is the **_least_** recommended approach for integrating with AWS and is the **_least secure_**. 
+   The other methods of integration are highly recommended in place of using Access Key and Secret Key.
+   :::
+
+### AWS Integration for Runbook Automation
+Runbook Automation can be integrated with one or more AWS Accounts using an IAM role with a `**Trust Relationship**`. More details on this authentication mechanism can be found in [this AWS documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html).
+Here is a diagram that outlines this setup process:
+
+![RBA Authentication Process with AWS](@assets/img/aws-iam-auth-diagram.png)
+
+
+Steps for setting up the integration for the entire Runbook Automation instance or for individual projects are outlined below:
+
+**Part 1: In Runbook Automation:**<br>
+To configure the AWS integration for the whole Runbook Automation instance:
+1. Click on the **System Menu** (gear icon) in the upper right.
+2. Click on **System Configuration**.
+3. Navigate to the **AWS** section and click on the **Pencil Icon** in the upper right.
+4. In the **IAM Role Delegation** section, copy the **Account ID** and **External ID** so that they may be used in subsequent steps:
+![IAM AWS Auth](@assets/img/aws-iam-auth-rba-highlights.png)<br>
+5. Leave open this page so that the **`Role ARN`** can be filled in later.
+
+To configure the AWS integration for an individual project:
+1. Navigate to **Project Configuration** within the specific project.
+2. Click on **Edit Configuration** then click on **Plugins**.
+3. Click on **+ Plugin Config** and select **AWS**
+4. In the **IAM Role Delegation** section, copy the **Account ID** and **External ID** so that they may be used in subsequent steps.
+![IAM AWS Auth](@assets/img/aws-iam-auth-rba-highlights.png)<br>
+5. Leave open this page so that the **`Role ARN`** can be filled in later.
+
+
+**Part 2: In AWS Console:**<br>
+1. Go to the AWS Management Console and open the **IAM** console at [https://console.aws.amazon.com/iam/](https://console.aws.amazon.com/iam/).
+2. In the navigation pane of the console, click **Roles** and then click **Create New Role**.
+3. For the **Trusted Entity Type** select **AWS Account** and then select **Another AWS Account**.
+![Another AWS Account](@assets/img/another-aws-account.png)
+4. Paste in the AWS Account ID that was copied from **Step 4** in the prior section into the **Account ID** field.
+5. Click on **Require External ID**.
+6. Paste in the **External ID** that was copied from **Step 4** in the prior section into the **External ID** field.
+7. Click **Next**
+8. Select the _**Permissions Policies**_ to attach to the role.
+   :::tip Policy Selection
+   The selection should align with the specific automation use-case tasks for Runbook Automation.  For example, if Runbook Automation
+   will be used to retrieve and push data to S3, then be sure to include a policy that include the `s3:GetObject` and `s3:PutObject` permissions. 
+   :::
+9. Assign the **Role Name** and optionally add a description. Do **not** modify the `Select trusted entities` section.
+10. Click **Create Role**.
+11. In the IAM Roles list, find and select the newly created IAM Role.
+12. Copy the **`ARN`** to be used in subsequent steps:
+![IAM ARN](@assets/img/aws-copy-iam-arn.png)
+
+**Part 3: In Runbook Automation:**<br>
+1. Paste the **`ARN`** copied from the prior section into the **`Role ARN`** field.
+2. Click **Save** to add this plugin configuration.
+3. Click **Save** to commit the configuration changes to the proejct.
+
+The AWS authentication can be tested using the **Validate Credentials** Job step plugin. Otherwise, being using the rest of the AWS plugins
+that align with the permissions allocated to the IAM Role.
+
+### AWS Integration for Process Automation hosted on EC2
 When self-hosting Process Automation on EC2, the recommended method for integrating with AWS is to assign an IAM role to the EC2 virtual-machines:
 
 1. Go to the AWS Management Console and open the **IAM** console at [https://console.aws.amazon.com/iam/](https://console.aws.amazon.com/iam/).
@@ -92,7 +153,8 @@ Now that the IAM Role is attached to the EC2, use the following steps to define 
 6. From the **Credential Provider** field dropdown, select **EC2**.
 7. Click **Save** in the lower right.
 
-### Option 2: ECS Task IAM Role
+
+### Process Automation hosted on ECS
 
 When self-hosting Process Automation on ECS, the recommended method for integrating with AWS is to assign an IAM role to the ECS Task Role:
 
@@ -133,7 +195,7 @@ Now that the IAM Role is attached to the ECS Task, use the following steps to de
 6. From the **Credential Provider** field dropdown, select **ECS**.
 7. Click **Save** in the lower right.
 
-### Option 3: Access Key & Secret Key
+### Alternative AWS Authentication: Access Key & Secret Key
 
 1. Create an AWS Access Key and Secret Key that is associated with an IAM Role, follow [these instructions](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html).
 2. Once the keys have been downloaded, add the Secret Key into Project or System Key Storage using the Password key type, following [these instructions](/manual/system-configs.html#key-storage).

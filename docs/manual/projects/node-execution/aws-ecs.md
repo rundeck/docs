@@ -81,8 +81,10 @@ This plugin is designed to work in conjunction with the [ECS-Fargate Node Source
    
 ### Configure IAM Policy for Process Automation
 
-The following permissions must be provided to the IAM Role that is assigned to Process Automation - 
-either through Access Keys or assigning an IAM Role (explained in detail below) to the instance that Process Automation is running on:
+### Authentication
+Follow the instructions outlined in the [AWS Plugins Overview](/docs/manual/plugins/aws-plugins-overview.html) for Process Automation to authenticate with AWS.
+
+When defining the IAM Role for Runbook Automation or Process Automation, be sure to include the following permissions in the Policy associated with the role:
 
 **`ecs:ExecuteCommand`**
 
@@ -98,29 +100,6 @@ This IAM policy condition key can be used in tandem with other IAM policy condit
 * **`ecs:enable-execute-command`**
 
 Examples of IAM policies that restrict the access by Process Automation can be found [here](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-exec.html).
-
-### Configure Node Executor within Process Automation
-
-With the IAM policy created in the previous step, there are two methods for providing the IAM role to Process Automation: **Access Keys** _or_ **Instance or Container Profile**.
-
-#### Option 1: Authentication with Access Keys
-
-1. To create an Access Key ID and Secret that is associated with an IAM Role, follow [these instructions](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html).<br><br>
-2. Once the keys have been downloaded, add the Secret Key into Project or System **Key Storage** using the **Password** key type, following [these instructions](/manual/system-configs.html#key-storage).<br><br>
-3. Navigate to **Project Settings -> Edit Configuration -> Default Node Executor**. <br><br>
-4. Enter in the **Access Key** to the first field.<br><br>
-5. Click on **Select** for the **Secret Key** field. Select the Secret Key that was saved to Key Storage in **Step 2**.<br><br>
-6. Click **Save**:
-   <img style='border:1px solid #327af6' src="@assets/img/aws-ecs-default-node-executor.png" />
-
-#### Option 2: Authentication with Instance or Container Role
-
-If Process Automation is self-hosted and running on either an EC2 instance or an ECS container, then the Node Executor can leverage the IAM Role that has been associated with the instance or container.
-For instructions on how to associate an IAM Role to an EC2, click [here](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html), and for ECS Task Roles, click [here](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html).
-
-1. Navigate to **Project Settings -> Edit Configuration -> Edit Configuration File**.<br><br>
-2. If Process Automation is installed on an EC2, then add **`project.aws.credentialProvider=instance`**.  If it is installed on ECS, then add **`project.aws.credentialProvider=container`**.<br><br>
-3. Click **Save** to commit the changes to the Project Configuration File.
 
 ## Executing Commands
 

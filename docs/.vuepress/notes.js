@@ -58,21 +58,24 @@ async function getSideCarVersion(repo) {
     const milestones = await gh.issues.listMilestones({...repo})
 
     const milestone = milestones.data.filter(m => m.title == argv.milestone)[0]
+    
+    //console.log(milestone.title)
 
     if (!milestone) {
         console.error(`GitHub milestone ${argv.milestone} not found!`)
-        //process.exit(1)
+        // process.exit(1)
     } else {
         try {
             const proRunnerVersion = await gh.repos.getContent({
                 ...repo,
                 path: "gradle.properties",
-                ref: `v${milestone}`
+                ref: `v${milestone.title}`
             })
+            //console.log(proRunnerVersion);
             const runnerVersion = proRunnerVersion.data;
-            //console.log(runnerVersion);
+            //console.log(`RunnerVersionvar: ${runnerVersion}`);
             const content = Buffer.from(runnerVersion.content, "base64").toString();
-            //console.log(`Content:\n${content}\n`);
+            // console.log(`Content:\n${content}\n`);
             const sidecarVersionLine = content.match(/^sidecarVersion=(.*)/m);
             if (sidecarVersionLine) {
                 version = sidecarVersionLine[1].trim();
@@ -84,6 +87,7 @@ async function getSideCarVersion(repo) {
         } catch (error) {
             console.error("Sidecar Version Not Found")
             version = "Version Not Found check for release tag"
+            //console.log(error);
             return {
                 version
             }

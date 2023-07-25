@@ -3,25 +3,23 @@
 
 ## Getting Started
 
-[Amazon's EC2](https://aws.amazon.com/ec2/) (Elastic Cloud Compute) is a cloud service in wide use for dynamic infrastructure; it is easy to start up and shut down Node "Instances" in the cloud.  Use these Rundeck steps to automate common EC2 actions.
+[Amazon's EC2](https://aws.amazon.com/ec2/) (Elastic Cloud Compute) is a cloud service in wide use for dynamic infrastructure; it is easy to start up and shut down Node "Instances" in the cloud.  Use these Job steps to automate common EC2 actions.
 
-**Access Key ID**
-: Specify your AWS Access key.
+### Authentication
+Follow the instructions outlined in the [AWS Plugins Overview](/docs/manual/plugins/aws-plugins-overview.html) for Process Automation to authenticate with AWS.
 
-- **Project setting**: project.aws.access_key
-- **Configuration Management**/**Framework Setting**: aws.access_key
+When defining the IAM Role for Runbook Automation or Process Automation, be sure to include the following permissions in the Policy associated with the role:
 
-**Secret Key**
-: Specify the path to your AWS Secret Key in the Rundeck Key Storage
+* **`ec2:StartInstances`** - For the **AWS / VM / Start** step.
+* **`ec2:StopInstances`** - For the **AWS / VM / Stop** step.
+* **`ec2:terminateInstances`** - For the **AWS / VM / Delete** step.
+* **`ec2:createSnapshot`** - For the **AWS / VM / CaptureSnapshot** step.
+* **`logs:createLogStream`** - For the **AWS / Cloud / Audit / Trail / Logs** step.
+* **`ec2:createFlowLogs`** - For the **AWS / Configure / Vpc / Logs / Instance / Groups** step.
+* **`ec2:runInstances`** - For the **AWS / Create / Resource** step.
+* **`ec2:createVPCPeeringConnection`** - For the **AWS / EnableVPC / NetworkPeering** step.
+* **`autoScaling:updateAutoScalingGroup`** - For the **AWS / Autoscaling / Update / Groups** step.
 
-- **Project setting**: project.aws.secret_key_path
-- **Configuration Management**/**Framework Setting**: aws.secret_key_path
-
-**Region**
-: Specify the region for the node.
-
-- **Project setting**: project.aws.region
-- **Configuration Management**/**Framework Setting**: aws.region
 
 ## EC2 VM Workflow Steps (Enterprise Only)
 

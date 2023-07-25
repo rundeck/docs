@@ -304,6 +304,8 @@ Some of the properties that work with live reloading:
 
 - `rundeck.security.maxSessions`: If enforceMaxSessions is true, this setting controls the number of active sessions a user is allowed to have. `Default: 1`
 
+- `rundeck.feature.debug.showTracesOnResponse` : `true/false`. Default: `false`. The default behavior is to never return 5xx http responses with any stacktrace in it to hide specific information regarding the backend (stacktraces are only present on the log files).
+
 - `rundeck.security.jaasRolePrefix`: Prefix string to add to each _role_ determined via [JAAS Authentication](/administration/security/authentication.md#jetty-and-jaas-authentication). Default: none.
 
 - `rundeck.security.requiredRole`: `roleName`. If this property is set, all users must be a member of the role specified.
@@ -461,6 +463,12 @@ If you are deploying the Rundeck war file to Tomcat, you can manage the session 
 ```xml
     <session-config> <session-timeout>30</session-timeout> </session-config>
 ```
+
+In order to add the HSTS (HTTP Strict Transport Security) security header to the static resources of Rundeck, the configuration must be set directly on the server. The following two flags are used for the embedded Jetty server:
+
+- `rundeck.web.jetty.servlet.stsMaxAgeSeconds`: time in seconds.
+
+- `rundeck.web.jetty.servlet.stsIncludeSubdomains` : `true/false`. Default `false`
 
 ### Multi-URL Setting
 Make sure the `grails.serverURL` is specified (with or without server.servlet.context-path), Set `rundeck.multiURL.enabled=true` and access the service through `grails.serverURL` using a secondary DNS pointing to the same server, the server IP, etc.

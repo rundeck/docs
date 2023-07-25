@@ -9,25 +9,14 @@ The following ELB plugins are available for PagerDuty Runbook Automation and Pro
 
 * [Target Group Instance Statuses](#target-group-instance-statuses)
 
-These plugins utilize the following properties:
+### Authentication
+Follow the instructions outlined in the [AWS Plugins Overview](/docs/manual/plugins/aws-plugins-overview.html) for Process Automation to authenticate with AWS.
 
-**Access Key ID**
-: Specify your AWS Access key.
+When defining the IAM Role for Runbook Automation or Process Automation, be sure to include the following permissions in the Policy associated with the role:
 
-- **Project setting**: project.aws.access_key
-- **Configuration Management**/**Framework Setting**: aws.access_key
-
-**Secret Key**
-: Specify the path to your AWS Secret Key in the Rundeck Key Storage
-
-- **Project setting**: project.aws.secret_key_path
-- **Configuration Management**/**Framework Setting**: aws.secret_key_path
-
-**Region**
-: Specify the region for the node.
-
-- **Project setting**: project.aws.region
-- **Configuration Management**/**Framework Setting**: aws.region
+* **`loadBalancing:describeLoadBalancers`**
+* **`loadBalancing:describeTargetGroups`**
+* **`loadBalancing:describeTargetHealth`**
 
 ### Target Group Instance Statuses
 The **AWS / ELB / Target Unhealthy** plugin is a Workflow Step that checks to see if any instances within the Target Groups of a particular ELB are reporting _unhealthy_:
