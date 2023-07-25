@@ -19,15 +19,13 @@ If a full path is not specified for the new keystore, it will create the keystor
 :::
 
 :::: tabs
-::: tab Configuration Management
+::: tab Enterprise Config
 
 Below is an example configuration, which can be configured using the *System Configuration* module. Add each setting as a configuration entry.
 
-![Cyberark Configuration](@assets/img/cyberark-config.png)
+![Cyberark Configuration](@assets/img/keystorage-cyberark-config1.png)
 
-![Cyberark Configuration - continued](@assets/img/cyberark-config2.png)
-
-![Cyberark Configuration - continued](@assets/img/cyberark-config3.png)
+![Cyberark Configuration - continued](@assets/img/keystorage-cyberark-config2.png)
 
 :::
 

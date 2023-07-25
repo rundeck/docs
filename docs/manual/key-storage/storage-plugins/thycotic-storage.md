@@ -8,11 +8,11 @@ Thycotic is a leader in Privileged Access Management solutions providing cloud r
 Process Automation users have access to the Thycotic Storage Plugin which can be used to access password/key data stored in a Thycotic Secret Server.
 
 :::: tabs
-::: tab Configuration Management
+::: tab Enterprise Config
 
 Below is an example configuration, which can be configured using the *System Configuration* module. Add each setting as a configuration entry.
 
-![Thycotic Configuration](@assets/img/thycotic-config-screen.png)
+![Thycotic Configuration](@assets/img/keystorage-thycotic-config.png)
 
 :::
 ::: tab rundeck-config.properties

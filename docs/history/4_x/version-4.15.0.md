@@ -37,7 +37,7 @@ Not only is this method more secure and easy to configure, but it also allows cu
 
 #### Key Storage Configuration Enhancement
 
-Customers can now view and configure Key Storage integrations, such as Vault, Cyberark, and Thycotic, using a new graphical user interface (GUI) which displays the various integrations available and the necessary fields for each integration.  Users no longer have to reference documentation in order to identify the required and optional fields, these are now presented to the user natively within the product. This not only simplifies the setup and management of Key Storage integrations, but also reduces the likelihood of misconfiguration.
+Customers can now view and configure Key Storage integrations, such as Vault, Cyberark, and Thycotic, using a new graphical user interface (GUI) which displays the various integrations available and the necessary fields for each integration.  Users no longer have to reference documentation in order to identify the required and optional fields, these are now presented to the user natively within the product. This not only simplifies the setup and management of Key Storage integrations, but also reduces the likelihood of misconfiguration.  (Existing setups will continue to work and show up in the new configuration screens upon upgrade.)
 
 ### Additional Updates
 

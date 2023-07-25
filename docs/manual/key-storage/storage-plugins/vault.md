@@ -33,11 +33,17 @@ This plugin is bundled with the Enterprise version.  No installation steps requi
 For existing vault storage, it is recommended to remove the default `keys` path added by default for rundeck.
 You can use these settings for an existing vault storage.
 
-::: tab Configuration Management (Enterprise)
+::: tab Enterprise Config
 
 Example configuration using the *System Configuration* module:
 
-![Vault Storage Config](@assets/img/vault-storage-config.png)
+![Vault Storage Config](@assets/img/keystorage-vault-config1.png)
+
+![Vault Storage Config](@assets/img/keystorage-vault-config2.png)
+
+![Vault Storage Config](@assets/img/keystorage-vault-config3.png)
+
+![Vault Storage Config](@assets/img/keystorage-vault-config4.png)
 
 :::
 ::: tab rundeck-config.properties
