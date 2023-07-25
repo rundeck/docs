@@ -45,7 +45,7 @@ Customers can now view and configure [Key Storage integrations](/manual/key-stor
 
 ## Enterprise Runner Updates
 
-**Bundled Runner Version:** 
+**Bundled Runner Version:** 0.1.46
 
 ## Rundeck Open Source Product Updates
 
