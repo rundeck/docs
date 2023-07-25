@@ -1,7 +1,7 @@
 ---
 
 title: "4.15.0 Release Notes"
-date: "2023-07-20"
+date: "2023-07-25"
 image: /images/chevron-logo-red-on-white.png
 feed:
  enable: true
@@ -12,7 +12,7 @@ feed:
 # 4.15.0 Release Notes
 
 Name: <span style="color: fuchsia"><span class="glyphicon glyphicon-sunglasses"></span> "Banshee fuchsia sunglasses"</span>
-Release Date: July 20, 2023
+Release Date: July 25, 2023
 
 - [Download the Releases](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
@@ -29,27 +29,29 @@ Check out the new features and enhancements for PagerDuty Process Automation (fo
 ### Highlights
 
 #### IAM AWS Authentication for Runbook Automation
-Previously, the only supported authentication method for the AWS plugins with Runbook Automation was through Access Key and Secret Key. 
-Now, customers can leverage the cross-account, IAM based authentication method for integrating Runbook Automation with their AWS accounts.  
-Not only is this method more secure and easy to configure, but it also allows customers to have multiple AWS Accounts integrated with their Runbook Automation instance, thereby allowing for a centralized hub of managing resources across multiple AWS environments
+Previously, the only supported authentication method for the [AWS plugins](/manual/plugins/aws-plugins-overview.md) with Runbook Automation was through Access Key and Secret Key.  Now, customers can leverage the cross-account, IAM based authentication method for integrating Runbook Automation with their AWS accounts.  Not only is this method more secure and easy to configure, but it also allows customers to have multiple AWS Accounts integrated with their Runbook Automation instance, thereby allowing for a centralized hub of managing resources across multiple AWS environments
 
 ![IAM AWS Auth](@assets/img/aws-iam-auth-rba.png)<br>
 
 #### Key Storage Configuration Enhancement
 
-Customers can now view and configure Key Storage integrations, such as Vault, Cyberark, and Thycotic, using a new graphical user interface (GUI) which displays the various integrations available and the necessary fields for each integration.  Users no longer have to reference documentation in order to identify the required and optional fields, these are now presented to the user natively within the product. This not only simplifies the setup and management of Key Storage integrations, but also reduces the likelihood of misconfiguration.  (Existing setups will continue to work and show up in the new configuration screens upon upgrade.)
+Customers can now view and configure [Key Storage integrations](/manual/key-storage/key-storage.md), such as [Vault](/manual/key-storage/storage-plugins/vault.md), [Cyberark](/manual/key-storage/storage-plugins/cyberark-storage.md), and [Thycotic](/manual/key-storage/storage-plugins/thycotic-storage.md), using a new graphical user interface (GUI) which displays the various integrations available and the necessary fields for each integration.  Users no longer have to reference documentation in order to identify the required and optional fields, these are now presented to the user natively within the product. This not only simplifies the setup and management of Key Storage integrations, but also reduces the likelihood of misconfiguration.  (Existing setups will continue to work and show up in the new configuration screens upon upgrade.)
 
 ### Additional Updates
 
+* Fixed Cyberark Logo
+* Fix: PagerDuty incident Update, didn&#39;t add a resolution note
+* Fix: Unscheduling a Job In Cluster now works across all members
+
 ## Enterprise Runner Updates
 
-**Bundled Runner Version:** Version Not Found check for release tag
+**Bundled Runner Version:** 
 
 ## Rundeck Open Source Product Updates
 
 * [SSHJ-plugin: Remove use of temporary file to authenticate with password](https://github.com/rundeck/rundeck/pull/8428)
 * [Script plugins, skip exceptions for key storage conversion](https://github.com/rundeck/rundeck/pull/8426)
-* [ Fix: Error importing job definition from 4.5](https://github.com/rundeck/rundeck/pull/8423)
+* [Fix: Error importing job definition from 4.5](https://github.com/rundeck/rundeck/pull/8423)
 * [Add Azure icon to core plugin](https://github.com/rundeck/rundeck/pull/8422)
 * [Upgrade guava due to CVE-2023-2976](https://github.com/rundeck/rundeck/pull/8421)
 * [Doc: Run API on local environment](https://github.com/rundeck/rundeck/pull/8396)
