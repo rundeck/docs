@@ -11,25 +11,23 @@ The following plugins are available for PagerDuty Runbook Automation and Process
 * [Stopped ECS Tasks Error Messages](#stopped-ecs-tasks-error-messages)
 * [Stop an ECS Task](#stop-an-ecs-task)
 
-These plugins utilize the following properties:
+### Authentication
+Follow the instructions outlined in the [AWS Plugins Overview](/docs/manual/plugins/aws-plugins-overview.html) for Process Automation to authenticate with AWS.
 
-**Access Key ID**
-: Specify your AWS Access key.
+When defining the IAM Role for Runbook Automation or Process Automation, be sure to include the permissions required by the specific plugins in the Policy associated with the role:
 
-- **Project setting**: project.aws.access_key
-- **Configuration Management**/**Framework Setting**: aws.access_key
-
-**Secret Key**
-: Specify the path to your AWS Secret Key in the Rundeck Key Storage
-
-- **Project setting**: project.aws.secret_key_path
-- **Configuration Management**/**Framework Setting**: aws.secret_key_path
-
-**Region**
-: Specify the region for the node.
-
-- **Project setting**: project.aws.region
-- **Configuration Management**/**Framework Setting**: aws.region
+* **Run Command**: 
+  * `ssmmessages:CreateControlChannel`
+  * `ssmmessages:CreateDataChannel`
+  * `ssmmessages:OpenControlChannel`
+  * `ssmmessages:OpenDataChannel`
+  
+* **Stopped Task Details**:
+  * `ecs:ListTasks`
+  * `ecs:DescribeTasks`
+  
+* **Stop ECS Task**:
+  * `ecs:StopTask`
 
 ### Send Commands to ECS Containers
 
