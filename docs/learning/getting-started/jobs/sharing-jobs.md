@@ -13,6 +13,15 @@ Default options will usually work for the remaining options. Those options deter
 ![](~@assets/img/impexp2.png)<br>
 Click the Upload button to trigger the actual import.  Once completed, a success message will be displayed.<br>
 ![](~@assets/img/impexp3.png)<br>
+::: warning
+Prior to Rundeck 4.12, when a job was exported/imported in XML format, the ValueListDelimiter was always set to a “,”. If you encounter this error while trying to import a job with enforced values:
+![](~@assets/img/error-xml-import.png)<br>
+It can be solved by adding the following flag to the `rundeck-config.properties` file:
+
+`rundeck.jobsImport.xmlValueListDelimiter=,`
+
+This flag overrides the ValueListDelimiter in the imported job, avoiding inconsistencies when the job have enforced values.
+:::
 ### Exporting a job
 To export a single job, select the job from the Jobs list and then select the Action button.  Select the format for the job definition file from the list.<br>
 ![](~@assets/img/impexp4.png)<br>
