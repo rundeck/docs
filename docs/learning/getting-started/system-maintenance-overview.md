@@ -15,4 +15,4 @@ Java heap size controls how much memory is allocated to the server’s Java appl
 #### [Adjusting Quartz job threadCount](/administration/maintenance/tuning-rundeck.html#quartz-job-threadcount)
 This setting determines the maximum number of concurrent threads that can be run on the server.  By default, it is set fairly low so increasing this value can make the server more productive, especially for large numbers of concurrent jobs or jobs with large numbers of target nodes.<br>
 ## Resources
-#### [Monitoring the server with JMX](h/administration/maintenance/tuning-rundeck.html#jmx-instrumentation)
+#### [Monitoring the server with JMX](/administration/maintenance/tuning-rundeck.html#jmx-instrumentation)
