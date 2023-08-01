@@ -49,8 +49,6 @@ The following plugins are not available in Runbook Automation at the moment. The
       - rundeck-localexec
       - rundeck-script-plugin
       - rundeckpro-cyberark
-      - github-script-plugin
-      - rundeckpro-vmware-plugin
     providerNameEntries:
       FileCopier:
         - script-copy
