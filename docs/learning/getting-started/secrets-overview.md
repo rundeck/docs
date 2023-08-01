@@ -3,12 +3,12 @@ As organizations increasingly rely on Rundeck, it becomes crucial to prioritize 
 
 Rundeck utilizes built-in key storage to save all credentials related to remote nodes (or for other purposes). Also, it’s possible to integrate with other top secret management technologies like Hashicorp Vault, Cyberark Privileged Access, and Thycotic Secret Server.
 
-![](~@assets/img/secrets-1.png)
+![](~@assets/img/secrets-1.png)<br>
 _The interface to upload a key to the Rundeck keystore_
 
 ## Storage Options in Rundeck and Process Automation
 
-### [Rundeck Key Storage]/manual/key-storage/key-storage.html#rundeck-key-storage)
+### [Rundeck Key Storage](/manual/key-storage/key-storage.html#rundeck-key-storage)
 Rundeck Key Storage is the space that Rundeck Admins can use to store current sensitive private key/password data ("keys") storage that can be utilized across Rundeck. By default, Rundeck stores these keys on the internal [backend database](/administration/configuration/database/#database-overview). These keys can be used to customize the automation environment's plugins, node executors, and other components.
 
 Rundeck also has [Key Storage Encryption](/administration/configuration/plugins/bundled-plugins.html#jasypt-encryption-plugin). This enables the encryption of keys and passwords saved on the Rundeck Key Storage (at the Rundeck backend). The following setting allows this encryption and is predefined in the `rundeck-config.properties` file:
