@@ -69,3 +69,6 @@ See: [Remote Job Execution](/administration/configuration/remote-job-execution.m
 This plugin is used for an active/passive configuration. Each cluster member can have its own database.
 
 See [Process Automation Replication](/administration/cluster/replication/index.md)
+
+<a href="/files/pa-deployment-guide.pdf">Cluster Deployment Guide</a>
+<a href="/files/pa-deployment-guide2.pdf">Cluster Deployment Guide2</a>
