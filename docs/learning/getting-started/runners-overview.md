@@ -1,4 +1,7 @@
 # Configuring Enterprise Runners to access remote Nodes
+
+::: enterprise
+:::
 [Enterprise Runners](/administration/runner/pre-4-11-runners.html#runner) are a recent addition to the PagerDuty Process Automation and Runbook Automation architecture. They are primarily used as a method for orchestrating automation in secure, remote environments where direct access to infrastructure and services is restricted.  This is accomplished by using a "reverse proxy" architecture: Runners regularly query (outbound only) the Process Automation Cluster (or Runbook Automation instance) for tasks. Runners are assigned to one or more Projects, and then [Jobs](/learning/getting-started/jobs/what-is-a-job.html) within those Projects can use the Runner to dispatch the Job steps to be executed through the Runner in the remote environment.<br>
 ![](~@assets/img/runnerarch1.png)<br>
 _Example showing Runner architecture (Each remote Runner could be a Runner set)_<br>
@@ -24,6 +27,6 @@ To utilize Runners, there are a few steps to carry out:<br>
 <img src="~@assets/img/runnerarch2.png" width="100%" height="100%" /><br>
 _Jobs are assigned to remote Runners based on tags.  Jobs on nodes in the cluster’s local network can be handled through the Local Runner._<br>
 # Resources
-[Advanced Runner Setup Options]/administration/runner/runner-advancedsetup.html)<br>
+[Advanced Runner Setup Options](/administration/runner/runner-advancedsetup.html)<br>
 [Runner Custom Logging](/administration/runner/runner-logging.html)<br>
 [Runner FAQ](/administration/runner/runner-faq.html)<br>
