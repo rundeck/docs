@@ -3,7 +3,7 @@ As organizations increasingly rely on Rundeck, it becomes crucial to prioritize 
 
 Rundeck utilizes built-in key storage to save all credentials related to remote nodes (or for other purposes). Also, it’s possible to integrate with other top secret management technologies like Hashicorp Vault, Cyberark Privileged Access, and Thycotic Secret Server.
 
-![](~@assets/img/secrets-1.png)
+![](~@assets/img/secrets-1.png)<br>
 _The interface to upload a key to the Rundeck keystore_
 
 ## Storage Options in Rundeck and Process Automation
