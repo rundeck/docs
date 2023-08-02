@@ -123,12 +123,15 @@ The default username and password is "admin".
 ### Run Rundeck as a Service
 
 This section will install Rundeck as a Windows Service so it runs in the background even when a user is not logged in.
+#### Prerequisites
+The JAVA_HOME system environment variable must be set (See [How to set up JAVA_HOME](#set-java_home-in-windows-os) section)
 
-- Download [Apache Commons Daemon](https://dlcdn.apache.org//commons/daemon/binaries/windows/) zip. These binaries wraps Java applications as a Windows service. More info [here](https://commons.apache.org/proper/commons-daemon/procrun.html).
-- Download [Rundeck](https://www.rundeck.com/downloads).
-- Unzip the apache-commons-daemon file and place the files including the WAR package in a new created folder (the Rundeck base folder i.e C:\rundeck).
-- Rename WAR package to rundeck.war, rename prunsrv.exe to the service name i.e rundeck.exe, and prunmgr.exe to rundeckw.exe (the "w" character is required).
-- Open a CMD prompt and paste these commands (Administrator user is required to install a service)
+#### Service Setup
+1. Download [Apache Commons Daemon](https://dlcdn.apache.org//commons/daemon/binaries/windows/) zip. These binaries wraps Java applications as a Windows service. More info [here](https://commons.apache.org/proper/commons-daemon/procrun.html).
+2. Download [Rundeck](https://www.rundeck.com/downloads).
+3. Unzip the apache-commons-daemon file and place the files including the WAR package in a new created folder (the Rundeck base folder i.e C:\rundeck).
+4. Rename WAR package to rundeck.war, rename prunsrv.exe to the service name i.e rundeck.exe, and prunmgr.exe to rundeckw.exe (the "w" character is required).
+5. Open a CMD prompt and paste these commands (Administrator user is required to install a service)
 
 ```batch
   rundeck.exe //IS/rundeck ^
@@ -155,3 +158,26 @@ Now, Rundeck is configured as a Service and can be managed with rundeckw.exe
 
 - Double click the rundeckw.exe binary and a management window will appear to start the service. Stop, Restart or settings like JVM Max memory size can be tweaked from this window.
 - NOTE: This service can also be managed from services.msc console.
+
+##### Set JAVA_HOME in windows OS
+1. Go to *Advanced System Settings*, type "Advanced System Settings" in the windowssearch box and click on the tool.
+   
+![Advanced System Settings in search bar](~@assets/img/win-javahome-1.png)
+
+2. Select the *Advanced* tab, and click on *Environment Variables*
+
+![Find Environment Variables section](~@assets/img/win-javahome-2.png)
+
+3. In *System variables*, click *New* and add a variable with
+Variable Name: JAVA_HOME
+Variable Value: jdk installation directory
+
+![Set JAVA_HOME system variable](~@assets/img/win-javahome-3.png)
+
+:::warning
+Don’t include the \bin directory, only the JDK path. Eg.:
+
+**Correct** – `C:\Program Files\Java\jdk1.8.0_60`
+
+**Wrong** – `C:\Program Files\Java\jdk1.8.0_60\bin`
+:::
