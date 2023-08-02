@@ -135,9 +135,9 @@ attributes discussed above.
     "ssh-key-storage-path": "keys/testkey1.pem",
     "username": "vagrant",
     "osVersion": "10.10.3",
-    "osArch": "x86_64",
+    "osArch": "x86_64",    
     "description": "Rundeck server node",
-    "hostname": "192.168.33.12",
+    "hostname": "192.168.33.12:1022",
     "nodename": "test",
     "osName": "Mac OS X"
   }
