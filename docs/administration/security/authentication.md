@@ -29,9 +29,13 @@ See [Security > Single Sign On](/administration/security/sso.md).
 
 By default, when users who are not granted access to any projects try to login, they are directed to a page that says they don't have any roles at the moment. However, if you would like to require roles to even get passed the login screen, that is possible. If you require roles for sign on, then if a user without a role tries to login, they will not be able to get into the Rundeck portal. In order to require roles for sign on, add the following line to the rundeck-config.properties file:
 ```bash
-rundeck.security.requiredRole=role1,role2,role3
+rundeck.security.requiredRole=role1
 ```
-Where role1, role2, role3 are the names of the groups you wish to grant access to.
+Or if you want several roles, comma-separated roles can be added with the property in plural ```rundeck.security.requiredRoles```, like so:
+```bash
+rundeck.security.requiredRoles=role2,role3,role4
+```
+Where role1, role2, role3 and role4 are the names of the groups you wish to grant access to.
 
 # Jetty and JAAS authentication
 
