@@ -57,7 +57,7 @@ node2.mydomain.com:4440//api/32/system/executions/status?authtoken=<TOKEN_VALUE>
 Enable cookie stickiness via the AWS Console, EC2 -> Target Groups -> Your Target Group -> Group Details -> Attributes.
 
 This can be enabled to be managed by AWS Load Balancer or by the Rundeck Application using its' JSESSIONID Cookie.
-The difference is that when the AWS LB option is chosen, you can't set the time for the Cookie duration, and while using the Application Cookie it will timeout according to the Application settings. In the case that you are using an Auto-Scaling group, application Sickness is not recommended.
+The difference is that when the AWS LB option is chosen, you can't set the time for the Cookie duration, and while using the Application Cookie it will timeout according to the Application settings. In the case that you are using an Auto-Scaling group, application stickiness is not recommended.
 
 ![Target Group Attributes](~@assets/img/lb-aws-alb-stickiness1.png)
 
