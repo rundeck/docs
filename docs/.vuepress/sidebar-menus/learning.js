@@ -10,10 +10,21 @@ module.exports = [{
       path: '/learning/getting-started/overview',
       sidebarDepth: 0,
       children: [
-    	['/learning/getting-started/server-setup-overview.md','Overview of On Premise Server Setup'],
-    	['/learning/getting-started/projects-overview.md','Setting up a Project'],
-    	['/learning/getting-started/system-maintenance-overview.md','Overview of On Premise System Maintenance'],
-    	['/learning/getting-started/runners-overview.md','Working with Runners in Process Automation'],
+        ['/learning/getting-started/nodes-overview.md','Introduction to Nodes'],
+    	['/learning/getting-started/users-overview.md','Introduction to Users'],
+    	['/learning/getting-started/secrets-overview.md','Introduction to Managing Secrets'],
+    	['/learning/getting-started/acl-overview.md','Introduction to Access Control'],
+    	{
+      	  title: 'Setup and Maintenance',
+          collapsable: true,
+      	  sidebarDepth: 1,
+      	  children: [
+        	['/learning/getting-started/server-setup-overview.md','Overview of On Premise Server Setup'],
+    		['/learning/getting-started/projects-overview.md','Setting up a Project'],
+    		['/learning/getting-started/system-maintenance-overview.md','Overview of On Premise System Maintenance'],
+    		['/learning/getting-started/runners-overview.md','Working with Runners in Process Automation'],
+      	  ]
+    	},
     	{
       	  title: 'Tutorial',
           collapsable: true,
