@@ -3324,7 +3324,7 @@ Optional parameters:
 * `runAtTime`: Specify a time to run the job (**API v18** or later).
 * `option.OPTNAME`: Option value for option named `OPTNAME`. If any `option.OPTNAME` parameters are specified,
     the `argString` value is ignored (**API v18** or later).
-
+* `meta.KEY`: Additional extra metadata to store with the execution. Stores a metadata entry named `KEY`. (**API v32** or later).
 `runAtTime`
 :    This is a ISO-8601 date and time stamp with timezone, with optional milliseconds.,
         e.g. `2016-11-23T12:20:55-0800` or `2016-11-23T12:20:55.123-0800`
