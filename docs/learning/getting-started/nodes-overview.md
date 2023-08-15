@@ -1,21 +1,22 @@
 # Intro to Nodes
 
-In Rundeck (or Process/Runbook Automation) context, a [Node](/manual/05-nodes.html#overview) typically refers to a target system or a machine that is under management. It represents a specific server, virtual machine, or any other computing resource that Rundeck interacts with during job execution. Nodes can be physical machines, cloud instances, containers, or whatever object a workflow is going to iterate against.
+In Rundeck (or Process/Runbook Automation) context, a [Node](/manual/05-nodes.html#overview) typically refers to a target system or a machine that is under management. It represents a specific server, virtual machine, or any other computing resource that Rundeck interacts with during job execution. Nodes encompass physical machines, cloud instances, containers, or whatever object a workflow is going to iterate against.
 
-Nodes in Rundeck are typically defined using a Node Source. The Node Source can be created statically (a flat file in one of several industry-standard formats) or dynamically generated from various sources such as databases or cloud provider APIs.
+Nodes in Rundeck are typically defined through a node source.  The node source can be created statically (a flat file in one of several industry-standard formats) or dynamically generated from various sources such as databases or cloud provider APIs. Basically a node source is a resource that defines one node or a collection of nodes.
+
+You can add any number of node sources to a project in rundeck.   Available sources for a specific project are listed when you choose to add or edit a node source for that project.
+Some common node sources are shown in the graphic below:
 
 ![](~@assets/img/nodes-1.png)
 
-_Some of the Node Sources available in Rundeck_
+Each node in a node source has properties associated with it, such as hostname, IP address, username, password, SSH key, and/or other information required to connect to  and manage the node. These properties define the connection details and credentials needed to execute commands or scripts on the Node.  
 
-Each Node in the Node Source has properties associated with it, such as hostname, IP address, username, password, SSH key, or any other information required to connect and manage the Node. These properties define the connection details and credentials needed to execute commands or scripts on the Node.
+Node data is stored in a configuration file.    Below is an example of a static YAML configuration file:
 
 ![](~@assets/img/nodes-2.png)
 
-_An example static yaml file with node data_
+Rundeck uses nodes to execute jobs and workflows. When a job is triggered, Rundeck uses the information from the node source to connect to the specified Nodes and perform the specified actions as needed.  A node source is a method of sharing  information about your infrastructure with Rundeck as [Nodes](/manual/05-nodes.html#overview).
 
-Rundeck uses Nodes to execute jobs and workflows. When a job is triggered, Rundeck uses the information from the Node Source to connect to the specified Nodes and perform the specified actions as needed.  A Node Source is a way to share information about your infrastructure to Rundeck as [Nodes](/manual/05-nodes.html#overview).
+By [configuring the Node Source](/manual/projects/resource-model-sources/#adding-nodes-to-a-project), you can define where Rundeck should find the resource model file or specify the parameters needed to dynamically generating the model. Rundeck periodically fetches the resource model from the specified source, ensuring that it has the most up-to-date information about the nodes in the environment.
 
-By [configuring the Node Source](/manual/projects/resource-model-sources/#adding-nodes-to-a-project), you can define where Rundeck should look for the resource model file or specify the parameters needed to dynamically generate the model. Rundeck periodically fetches the model from the specified source, ensuring that it has the most up-to-date information about the Nodes in the environment.
-
-Nodes and Node Sources exist in the context of a specific Project though multiple Projects might use effectively the same Nodes and model sources.
+Nodes and node sources are associated with a specific project in Rundeck. While different projects might effectively use the same nodes and model sources, they are still defined within the context of individual projects.

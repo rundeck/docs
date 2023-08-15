@@ -55,7 +55,7 @@ A Node is a resource that is either a physical or virtual instance of a network 
 ## Plugins
 Rundeck is built over a flexible platform architecture.  Extending Rundeck functionality is done through _plugins_. Plugins exist to execute commands on nodes, perform steps in a job, send a notification about job status, gather information about the hosts in your network, copy a file to a remote server, store and stream logs, talk to a user directory, and so much more.
 
-The Process Automation version includes built-in plugins to further enhance functionality for [Scheduling](schedules/project-schedules.md) job executions, providing [Guided Tours](tour-manager.md), incorporating [Health Checks](healthchecks.md), and much more.
+The Process Automation version includes built-in plugins to further enhance functionality for [Scheduling](/manual/schedules/project-schedules.md) job executions, providing [Guided Tours](/manual/tour-manager.md), incorporating [Health Checks](/manual/healthchecks.md), and much more.
 
 See [Job Plugins](/manual/job-plugins.md) and [Plugin Developer Guide](/developer/index.md) and [Rundeck Plugins](/plugins/index.md) for more information.
 

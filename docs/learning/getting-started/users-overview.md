@@ -41,7 +41,7 @@ Administrators can easily synchronize user accounts from Active Directory into R
 Rundeck's integration with Microsoft Active Directory streamlines user management processes, enhances security, and provides a centralized platform for managing user access to various resources within the organization.
 
 ### Multiple Authentication Modules Capability
-Rundeck configurations can include several LoginModule definitions, which are processed in the order specified by the configuration Flag. [This](/administration/security/authentication.html#multiple-authentication-modules) entry explains how to configure it.
+Rundeck configurations can include several LoginModule definitions, which are processed in the order specified by the configuration Flag. Refer to [Multiple Authentication Modules](/administration/security/authentication.html#multiple-authentication-modules) in the [Security](/administration/security/default-users.md) section of the Rundeck Administration Guide for more information on setting the configuration Flag.
 
 ### SSO (Process Automation)
 Process Automation offers seamless Single Sign-On (SSO) integration for managing user accounts and authentication. With SSO integration, Rundeck leverages existing identity providers such as Okta, Azure Active Directory, and Ping. This eliminates the need for users to remember multiple usernames and passwords, as they can log in to Rundeck using their existing SSO credentials. 
