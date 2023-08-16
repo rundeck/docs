@@ -116,7 +116,6 @@ Then restart the Rundeck service.
 ![](~@assets/img/elk5.png)
 5. In the "logstash-*" section you can see the Rundeck job activity.  
 ![](~@assets/img/elk6.png)
-<img src="~@assets/img/elk6.png" width="100%" height="100%" /><br>
 
 ## Resources
 * [ELK Documentation](https://www.elastic.co/guide/en/elastic-stack/current/index.html)
