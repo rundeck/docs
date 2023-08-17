@@ -17,6 +17,7 @@ Release Date: July 25, 2023
 - [Download the Releases](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
 - [Upgrade instructions](/upgrading/)
+- [Watch the Live Stream Release Recap](https://youtu.be/t_O6P7dPb1M)
 
 ## Overview
 
