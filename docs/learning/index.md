@@ -1,16 +1,18 @@
 # Learning Rundeck
 
-With Rundeck, it is easy to create automation workflows from existing tools or scripts. The Learning section includes a _[Tutorial](/learning/tutorial/preparing.md)_, _[Getting Started section](/learning/getting-started/jobs/overview.md)_ and _[How to Guides](/learning/howto/overview.md)_ that help new users quickly become productive with the Rundeck server and tools. Instructions are provided for both Enterprise and Community versions of Rundeck.
+PagerDuty provides three different process automation versions.  The open source version is Rundeck.  Previously, the commercial version was referred to as Rundeck Enterprise, since renamed as Process Automation for the traditional on premise product and Runbook Automation for cloud users.
 
-Visit the _[Tutorials](/learning/tutorial/preparing.md)_ to see practical step-by-step guides that help you get your Rundeck account up and running - starting with installing and configuring Rundeck.  The Tutorial section is built around our Welcome Projects that provide product simulations for both Rundeck versions.  
+The Learning section includes _[Tutorials](/learning/tutorial/preparing.md)_, a _[Getting Started section](/learning/getting-started/overview.md)_ and _[How to Guides](/learning/howto/overview.md)_ that help new users quickly become productive with the Rundeck server and tools. Instructions are provided for both Enterprise and Community versions of Rundeck.
 
-Use the [How To Guides](/learning/howto/overview.md) to accomplish tasks using Process Automation/Runbook Automation and where applicable, Rundeck. The How To guides go deeper into specific topics and are sometimes built around the Welcome Project.
+The _[Tutorials](/learning/tutorial/preparing.md)_ are practical step-by-step guides for getting Rundeck installed, configured and running on your system.  They are built around our Welcome Project and provide product simulations for the open source Rundeck, Process Automation and Runbook Automation versions.  
+
+The [How To Guides](/learning/howto/overview.md) provide step by step instructions for accomplishing specific tasks using Process Automation/Runbook Automation and where applicable, Rundeck. New How To guides are developed and added periodically as our team realizes a need for them.
 
 ## Where to Begin
 
 ### Essential Concepts
 
-Several fundamental concepts underly and drive the Rundeck system. If you are a new user, knowing about them will help you more effectively use and integrate Rundeck into your environment.  Content aimed at the newest users is available in the [Getting Started section](/learning/getting-started/jobs/overview.md).  Another place to start is to learn some key Rundeck Terms in our [Terminology Page](/learning/tutorial/terminology.md).
+Several essential concepts underly and drive the Rundeck system. Understanding them will help you more effectively use and integrate Rundeck into your environment.  New users are encouraged to review the concepts provided in the [Getting Started section](/learning/getting-started/jobs/overview.md) and the terms in the [Terminology](/learning/tutorial/terminology.md) section.
 
 ### Using Rundeck
 
@@ -19,15 +21,15 @@ there are a couple ways you can try it.
 
 #### Welcome Projects
 
-Both Rundeck product versions, Enterprise and Community, have a companion set of code at the following links. These code bases allow running Rundeck in a Docker environment with the Welcome Project preloaded.
+Both the commercial (Process/Runbook Automation) and open source (Rundeck) versions have a companion set of code at the following links. These code bases allow running automation in a Docker environment with the Welcome Project preloaded.
 
-- Enterprise: [https://github.com/rundeckpro/welcome-project](https://github.com/rundeckpro/welcome-project)
-- Community: [https://github.com/rundeck/welcome-project-community](https://github.com/rundeck/welcome-project-community)
+- Process Automation/Runbook Automation: [https://github.com/rundeckpro/welcome-project](https://github.com/rundeckpro/welcome-project)
+- Rundeck: [https://github.com/rundeck/welcome-project-community](https://github.com/rundeck/welcome-project-community)
 
 Use the [Welcome Projects Starter How To guide](/learning/howto/welcome-project-starter.md) to learn how to get started with these environments.
 
 :::tip License Required
-Note: The Enterprise version will require a license file. If you aren’t currently an Enterprise customer and you’re interested in using that please [contact us here](https://www.rundeck.com/see-demo).
+Note: The Process Automation version will require a license file. If you are not currently a Process Automation customer and you’re interested in using that please [contact us here](https://www.rundeck.com/see-demo).
 :::
 
 :::warning
@@ -35,14 +37,12 @@ It is possible to run the Welcome Projects in other environments, but some exerc
 :::
 
 #### Download and Install
-Get the latest release at our [download](https://download.rundeck.com/) site and
-  install the Rundeck software. There are several package formats.
-  Choose the one that best suits the target infrastructure.
+Get the latest release at our [download](https://download.rundeck.com/) site and install the Rundeck software. There are several package formats.  Choose the one that best suits the target infrastructure.
 
-  After installation, be sure Rundeck has been started.
-  ::: tip
-  See [Startup](/administration/maintenance/startup.md) to learn how to  startup and shutdown rundeck.
-  :::
+After installation, be sure Rundeck has been started.
+::: tip
+See [Startup](/administration/maintenance/startup.md) to learn how to  startup and shutdown rundeck.
+:::
 
 The default port for the web interface is `4440`. If you
 installed Rundeck on your local machine, go to this URL: `http://localhost:4440`
