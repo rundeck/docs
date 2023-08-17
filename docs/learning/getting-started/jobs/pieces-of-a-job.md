@@ -21,7 +21,7 @@ The central piece that is thought of as the job, a workflow is a sequence of ste
 Workflows are a critical part of every Rundeck project. Essentially, the workflow is a series of steps to achieve any goal.<br>
 
 ### Options
-Options are a central part of any workflow. A required or optional variable, an option includes a range of choices that will be presented to the user when the job is run. For example, the user might be prompted to pick a region when provisioning an AWS instance.<br>
+Options are a central part of any workflow. Options are variables that can be either required or optional, offering a selection of choices presented to the user when they run a job.  For example, when provisioning an AWS instance, the user may be prompted to select a specific region.<br>
 Users supply options by typing in a value or selecting from a menu of choices. A validation pattern ensures input complies with the option requirement. Once selected, the value chosen for the option is available to scripts and commands called by the Job.<br>
 
 ### Workflow Control Steps
