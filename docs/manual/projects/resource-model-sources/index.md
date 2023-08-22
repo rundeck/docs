@@ -8,14 +8,35 @@ Data sources are commonly third-party systems such as [Amazon EC2](/manual/proje
 
 ## Adding Nodes to a Project
 
-To add nodes to a project, add one or more node model sources to a project<br>
-- Click the *Project Settings* gear at the bottom left then *Edit Nodes*<br>
+To add nodes to a project, add one or more node model sources to a project 
 
-![Project Settings Menu](~@assets/img/project-nodes.png)
+1. Click the *Project Settings* gear at the bottom left then *Edit Nodes*<br>
+   ![Project Settings Menu](~@assets/img/project-nodes.png)
+2. Under Edit Nodes, select *Sources* and *Add a new Node Source+*<br>
+   ![Adding a new Node Source](~@assets/img/edit-nodes.png)
+3. If using an Enterprise Runner to discover nodes, then select the appropriate Runner Tag using the **Runner Selector**:<br>
+   ![Node Source Runner Selector](@assets/img/node-source-runner-selector.png)
 
-- Under Edit Nodes, select *Sources* and *Add a new Node Source+*<br>
 
-![Adding a new Node Source](~@assets/img/edit-nodes.png)
+
+:::tip When to use a Runner
+Use a remote Enterprise Runner when the node inventory is not directly accessible by the Process Automation cluster or by Runbook Automation.
+For Example, if the node inventory is stored in an Ansible Inventory file, or is available from the vSphere API, but Runbook Automation does not have
+direct access to these endpoints, then an Enterprise Runner is the recommended mode of discovery.
+:::
+
+:::warning Node Sources Available on Runner
+As of version **`4.16.0`**, the following Node Sources are available to use through the Enterprise Runner:
+* **Ansible Inventory**
+* **VMware***
+* **Kubernetes**
+* **Docker**
+* **File**
+* **Script**
+
+If a Node Source is selected that is not in this list, the following error will appear: `Reason: The datadog-resource-model plugin was not found on Runner ID = US-WEST-1-QA. You may need to upgrade your Runner or select a different Runner.`
+:::
+
 
 ## Resource Model Source Data Formats
 
