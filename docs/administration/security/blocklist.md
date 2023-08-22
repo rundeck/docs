@@ -13,7 +13,7 @@ providerNameEntries:
       - provider-name
 ```
 :::tip
-If you intend to use the fileNameEntries or providerNameEntries, both of these properties must be declared otherwise Rundeck will fail to start.
+Even if one section is blank, it must still be declared. 
 :::
 
 **fileNameEntries**: fileNameEntries will prevent entire plugin jars from being copied into the libext folder during setup/installation. For example. if you want to block every single rundeck Jira plugin, you would replace rundeckpro-plugin-jar-name with `rundeckpro-jira`. Keep in mind that you can still add plugins using the GUI or by putting the plugin (JAR file) right into the `/rundeck/libext folder`.
