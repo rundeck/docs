@@ -46,7 +46,6 @@ Runners can be used to discover nodes in environments that are not directly acce
 ![Node Source Runner](@assets/img/node-source-runner-selector.png)
 Instructions on how to discovery nodes using the Enterprise Runner, click [here](/manual/projects/resource-model-sources/#adding-nodes-to-a-project).
 
-:::warning Node Sources Available on Runner
 As of version **`4.16.0`**, the following Node Sources are available to use through the Enterprise Runner:
 * **Ansible Inventory**
 * **VMware***
@@ -55,5 +54,6 @@ As of version **`4.16.0`**, the following Node Sources are available to use thro
 * **File**
 * **Script**
 
-If a Node Source is selected that is not in this list, the following error will appear: `Reason: The datadog-resource-model plugin was not found on Runner ID = US-WEST-1-QA. You may need to upgrade your Runner or select a different Runner.`
+:::warning Node Sources Available on Runner
+If a Node Source is selected that is not in this list, the following error will appear after the node source tries to gather resources: `Reason: The datadog-resource-model plugin was not found on Runner ID = US-WEST-1-QA. You may need to upgrade your Runner or select a different Runner.` In a future version the Node Source configuration will dynamically know which runners support which Node Source plugins.
 :::
