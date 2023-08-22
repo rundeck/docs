@@ -1,6 +1,6 @@
 # Plugin Blocklist
 
-The Plugin Blocklist can be used when plugins need to be blocked or prevented from being installed or used for security or other use case situations.  To use the plugin blocklist, you will need to create a blocklist yaml file in the following format:
+The Plugin Blocklist can be used when plugins need to be blocked or prevented from being installed or used for security or other use-case situations.  To use the plugin blocklist, you will need to create a blocklist yaml file in the following format:
 
 ```yaml
 fileNameEntries:
@@ -26,7 +26,7 @@ providerNameEntries:
 	none:
 ```
 
-File names entries can be found on `rundeck/libext`.
+File name entries can be found on `rundeck/libext`.
 
 ![Plugins File Names](~@assets/img/blocklist-filename.png)
 
@@ -50,7 +50,7 @@ Provider names can be found by navigating to the System Menu > Plugins > Install
 Once the providers are all listed, add the following config entry to rundeck-config.properties with the path to the file just created:
 ```rundeck.plugins.providerBlockListFile=/path/to/user/blocklist```
 
-If the plugin was correctly blocked with the providerNameEntries you will see the following mesagges:
+If the plugin was correctly blocked with the providerNameEntries you will see the following messages:
 
 ![On Console](~@assets/img/blocklist-console-message.png)
 
