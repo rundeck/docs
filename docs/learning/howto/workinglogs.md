@@ -1,4 +1,4 @@
-# How To Work With Server Logs
+# Work With Server Logs
 
 When you debug internal Rundeck activity related to the system, executions, and auditing, it’s important to know where Rundeck stores all internal information.<br>
 Logs are text files with all internal behavior printed in. In this article we will demonstrate how to locate different logs depending on the Rundeck installation methods, covering RPM/DEB, WAR-based installation, Apache Tomcat, and Docker container.<br>

@@ -1,4 +1,4 @@
-# Troubleshooting Rundeck - Strategies and Tools
+# Troubleshoot Rundeck - Strategies and Tools
 
 ## Introduction
 Rundeck offers a wide range of capabilities, empowering users to automate workflows, schedule jobs, and manage resources efficiently. However, like any software system, it is not immune to issues and glitches that may disrupt its smooth operation. Effective troubleshooting is a crucial skill when it comes to managing and maintaining Rundeck. Having a strong troubleshooting mindset and knowing how to detect problems and determine their underlying causes are very helpful in ensuring the reliability and stability of Rundeck deployments. 
@@ -100,43 +100,43 @@ It is also possible for code to throw an Exception without an explicit throw sta
 ### Other relevant logs
 There are [other logs](/learning/howto/workinglogs.html#other-rundeck-logs) to look for if something gets wrong in Rundeck, most relevant are:
 
-#### rundeck.log
+`rundeck.log`  
 Contains all general applications messages, like warnings and errors.
 
-#### rundeck.audit.log
-This log contains ACL-related authorization messages.
+`rundeck.audit.log`  
+Contains ACL-related authorization messages.
 
-#### rundeck.access.log
-All user access to the Rundeck instance is recorded in this log.
+`rundeck.access.log`  
+User access is recorded in this log.
 
-#### rundeck.api.log
-This log stores all API access events. This is useful to determine the calls from external applications/code to the Rundeck web API.
+`rundeck.api.log`  
+This log stores all API access events. This is useful to determine calls from external applications/code to the web API.
 
-## Common Java Applications Errors
+## Common Java Application Errors
 In this section, we'll look at some common problems in a Java application like Rundeck.
 
 ### Java Exceptions
 Java exceptions can be triggered by a number of circumstances, including internal syntax and logic problems, as well as resource exhaustion. Java exceptions are frequently traceable back to the original Java code, therefore diagnosing this type of mistake requires a solid understanding of Java and its libraries/dependencies.
 
-Common Java Exceptions and Solutions:
+#### Common Java Exceptions and Solutions:
 * NullPointerException
     This exception is thrown when Java attempts to access an item with a 'null' reference value. 
 * IllegalArgumentException
     This exception is thrown when Java attempts to pass an invalid argument to a function or method. 
 
-#### Exception Troubleshooting tips:
+**Exception Troubleshooting tips:**  
 * Check Rundeck system logs for additional information about the exception and the possible root cause (check the [Where to look if something goes wrong](#where-to-look-if-something-goes-wrong) section in this guide).
 * Create a report step by step on the Rundeck GitHub space to replicate the error (check the [Where and how to report a Rundeck bug](#where-and-how-to-report-a-rundeck-bug) section in this guide).
 
 ### Performance Issues
 Java performance issues can be caused by a variety of factors, including inefficient code, poor network connections, and resource contention. Java profiling tools are critical for finding and fixing performance problems.
 
-Performance Troubleshooting Tips:
+**Performance Troubleshooting Tips:**  
 * Check Rundeck system logs to identify possible causes of Java performance issues. The `service.log` file is the main source to obtain information about the Rundeck instance.
 * Use Java monitoring and profiling tools to identify which Java methods and objects are taking too long to process (check the [Monitoring Tools](#monitoring-tools) section in this guide).
 * Adjust Rundeck system parameters such as Heap size or Thread pool size to improve Java's performance (check the [Tuning Rundeck](#tuning-rundeck) section in this guide).
 
-### Out of Memory Errors
+#### Out of Memory Errors
 The `java.lang.OutOfMemoryError` indicates that your application tried to keep more data in memory than it could handle, resulting in random failures from which Rundeck cannot recover.
 
 This error can occur for many reasons, such as:
@@ -144,7 +144,7 @@ This error can occur for many reasons, such as:
 * Native libraries may have been loaded into Java heap space but not released.
 * Java objects may be referred to excessively.
 
-Out of Memory Troubleshooting tips:
+**Out of Memory Troubleshooting Tips:**
 * Increase the Java heap size by adding the `-Xmx` parameter to your Java command line. This will allow Java to allocate more memory for its objects.
 * In case to use other applications on the Java Virtual Machine you may consider reducing the number of applications running in the Java Virtual Machine.
 * Check if the server has sufficient physical memory available.
@@ -202,52 +202,50 @@ JDK Mission Control and VisualVM are two well-regarded options for Java develope
 
 JDK Mission Control is a comprehensive performance analysis and diagnostics tool provided by Oracle for Java applications. It is specifically designed for monitoring and profiling Java applications. 
 
-JDK Mission Control offers various features such as real-time monitoring, profiling, flight recording, and advanced analysis capabilities.
-
 Here is how to use JDK Mission Control to monitor Rundeck:
 
-#### Installation and Configuration
+**Installation and Configuration**
 * Install by downloading from [this link](https://www.oracle.com/java/technologies/javase/products-jmc8-downloads.html). Just download and uncompress the file.
 * Launch JDK Mission Control by executing the "jmc" command, available in the uncompressed directory.
 * Connect to a Rundeck instance by locating the Rundeck process on the left side list and see the available monitoring/profiling options with a right click.
 ![](~@assets/img/trouble2.png)
 
-#### Monitoring Rundeck:
+**Monitoring Rundeck**
 * To start monitoring Rundeck, select “Start JMX Console”.
 * The "Overview" tab presents a summary of CPU usage, memory usage, thread activity, and more.
 * Explore different tabs and views to access detailed information about the JVM, threads, memory, and other components.  
 ![](~@assets/img/trouble3.png)
 
-#### Profiling:
+**Profiling**
 * Click on the "Start Flight Recording" button in the toolbar or right-click on the application and choose "Start Flight Recording".
 * Perform the actions you want to analyze while the recording is active.
 * Once done, stop the recording by clicking the "Stop Flight Recording" button or right-clicking on the application and selecting "Stop Flight Recording".
 * Analyze the recorded data using various views and analysis tools provided by JDK Mission Control.
 
-#### Advanced Analysis and Troubleshooting:
+**Advanced Analysis and Troubleshooting**
 * Explore the various analysis tools and views, such as "Method Profiling", "Lock Instances", "Hot Methods", and "Contention".  These tools help identify bottlenecks, lock contention, and performance hotspots in your application.
     
 ### Visual VM
 ![](~@assets/img/trouble4.png)  
 VisualVM is an analysis tool for Java-based applications. It provides a graphical user interface for monitoring, profiling, and troubleshooting Java applications running on the Java Virtual Machine (JVM). 
 
-#### Download and Installation:
+**Download and Installation**
 * Visit the VisualVM website at[ https://visualvm.github.io/](https://visualvm.github.io/).
 * Click on the "Download" section and select the appropriate version for your operating system.
 * Once downloaded, extract the contents of the archive to a directory of your choice.
 * Launch VisualVM by navigating to the extracted VisualVM directory and executing the `visualvm` executable file (or `visualvm.exe `on Windows).
 
-#### Connecting to a Local Rundeck instance:
+**Connecting to a Local Rundeck instance**
 * Once VisualVM opens, it automatically detects running JVM processes and displays them in the left-hand side panel.
 * Locate the Rundeck app in the list and double-click on it to connect.
 
-#### Monitoring Rundeck:
+**Monitoring Rundeck**
 * After connecting to Rundeck, VisualVM displays a dashboard with real-time monitoring data.
 * The overview tab provides an overview of CPU usage, memory usage, threads, classes, and more.
 * You can explore different tabs and subtabs to access specific information about the JVM, threads, memory, and other components.  
 ![](~@assets/img/trouble5.png)  
 
-#### Profiling:
+**Profiling**
 * To start profiling, select your application from the left-hand side panel and click on the "Profiler" tab.
 * Choose the profiling mode based on your requirements, such as CPU, memory, or sampler.
 * Click on the "CPU" button to begin the CPU profiling session.
@@ -260,7 +258,7 @@ You can report bugs on the Official Rundeck GitHub space located [here](https://
 
 The main requirement is to have a GitHub Account, you can create your account [here](https://github.com/signup).
 
-### Steps to reporting a bug
+**Steps to reporting a bug**
 1. Check Existing Issues  
     Before reporting a bug, it's important to check the existing issues on the Rundeck GitHub repository. Make sure that the bug you encountered hasn't already been reported by someone else. If you find a similar issue, you can comment on that thread to provide additional information.  
 2. Open a New Issue  

@@ -1,4 +1,4 @@
-# How to integrate Hashicorp Vault
+# Integrate with Hashicorp Vault
 
 Out-of-the-box, both PagerDuty Process Automation (PA) & Rundeck Community store all the keys and passwords in their own Key Storage using the database backend. Many customers prefer to use a central Key Storage server to access all keys and passwords from a single secure location. This avoids saving secrets in multiple locations and reduces the risk of key/password leaks.
 

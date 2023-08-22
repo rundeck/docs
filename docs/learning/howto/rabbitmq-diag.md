@@ -1,4 +1,4 @@
-# Diagnostics for RabbitMQ
+# Enable Diagnostics for RabbitMQ
 When troubleshooting RabbitMQ servers or containers, gathering relevant logs, system-level metrics and environment information can provide valuable insights into the overall state of the node. 
 
 To streamline this process, the RabbitMQ team has developed an official [support tools repository](https://github.com/rabbitmq/support-tools). This repository contains the "[rabbitmq-collect-env.sh](https://github.com/rabbitmq/support-tools/blob/main/scripts/rabbitmq-collect-env)" shell script that collects RabbitMQ-specific logs, along with selected OS logs and system-level metrics, to aid in debugging and diagnosing issues.

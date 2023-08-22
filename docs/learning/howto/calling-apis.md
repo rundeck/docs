@@ -1,4 +1,4 @@
-# Calling APIs from Rundeck
+# Call APIs from Rundeck
 
 Modern applications use the [HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP) protocol to communicate with each other and send or obtain information from any web service using [HTTP methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) like GET, POST, or PUT. For example, to obtain a valid user ID from a web service to use it later in another process/application.
 
@@ -10,8 +10,7 @@ If you are using our Enterprise version the plugin is already bundled with your 
 
 ## Community Version Prerequisite
 
-The HTTP Workflows Step plugin isn’t bundled with the Rundeck Community version (is out-of-the-box with [Process Automation](https://www.pagerduty.com/platform/automation/process-software/)), these steps show you
-how to install it.
+The HTTP Workflows Step plugin isn’t bundled with the Rundeck Community version (it is included with [Process Automation](https://www.pagerduty.com/platform/automation/process-software/)).  For Rundeck Community, follow these steps to install it.
 
 1. Go to the **System Menu** (Gear Icon in upper right) **> Plugins > Upload Plugin**.
 1. Copy the plugin file location from the repository _(Latest link as of last update is below)_

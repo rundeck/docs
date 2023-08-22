@@ -1,6 +1,6 @@
 ---
 
-title: "How to Contribute to Rundeck Documentation"
+title: "Contribute to Rundeck Documentation"
 date: "2022-08-01"
 image: /images/chevron-logo-red-on-white.png
 feed:
@@ -9,7 +9,7 @@ feed:
 
 ---
 
-# How to Contribute to Rundeck Documentation
+# Contribute to Rundeck Documentation
 
 Just like our Rundeck Open Source solution, Rundeck Documentation is a shared resource that anyone can help contribute to.  Anything from typo’s to feature clarifications are a helpful way to give back to the Rundeck community.
 

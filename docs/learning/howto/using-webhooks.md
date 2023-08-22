@@ -1,4 +1,4 @@
-# Using Rundeck Webhooks
+# Use Rundeck Webhooks
 
 ## Overview
 

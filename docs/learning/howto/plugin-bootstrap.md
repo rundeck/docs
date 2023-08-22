@@ -1,4 +1,4 @@
-# Using the plugin bootstrap tool
+# Use the plugin bootstrap tool
 [Here](https://github.com/rundeck/plugin-bootstrap/releases) you can download the latest release of the plugin-bootstrap tool.
 
 ### Installing from zip file

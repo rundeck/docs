@@ -85,8 +85,8 @@ module.exports = [{
               '/learning/howto/how2scm.md',
               '/learning/howto/egress-proxy.md',
               '/learning/howto/how2-terra-rd-aws.md',
-              '/learning/howto/troubleshooting.md',
-              '/learning/howto/how2-terra-rd-eks.md'
+              '/learning/howto/how2-terra-rd-eks.md',
+              '/learning/howto/troubleshooting.md'
           ]
         },
         {
