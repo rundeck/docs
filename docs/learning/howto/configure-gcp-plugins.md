@@ -1,4 +1,4 @@
-# Google Cloud Example Project
+# Integrate with Google Cloud Using the Welcome Project
 
 Google Cloud consists of a set of physical assets, such as computers and hard disk drives, and virtual resources, such as virtual machines (VMs), that are contained in Google's data centers around the globe.
 

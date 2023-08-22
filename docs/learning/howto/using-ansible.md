@@ -1,6 +1,6 @@
 ---
 
-title: "Rundeck and Ansible Integration"
+title: "Integrate with Ansible"
 date: "2022-09-20"
 image: /images/chevron-logo-red-on-white.png
 feed:
@@ -9,7 +9,7 @@ feed:
 
 ---
 
-# Rundeck and Ansible Integration
+# Integrate with Ansible
 
 It’s common for Rundeck users to integrate Ansible into their Rundeck. Like Rundeck, Ansible's straightforward design and learning curve make it Operations friendly.
 

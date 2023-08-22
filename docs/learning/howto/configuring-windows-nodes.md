@@ -1,5 +1,5 @@
 
-# Running Jobs on Windows Nodes
+# Connect to Windows Nodes with PyWinRM
 
 Rundeck allows users to execute jobs to remote Windows nodes to manage and automate tasks using Rundeck workflows. This article shows how to add a Windows node and execute Rundeck jobs and commands with windows-based systems.
 

@@ -1,4 +1,4 @@
-# Managing Kubernetes with Rundeck
+# Manage Kubernetes with Rundeck
 
 [Kubernetes](https://kubernetes.io/) (K8s) is an open-source platform for managing containerized services. It is used in many environments, but particularly as part of cloud-native applications where it is important to be able to scale up and down at will.  The architecture makes scaling and recycling container based services easy.  
 

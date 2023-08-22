@@ -1,4 +1,4 @@
-# How to pass captured Key-Value Data into Notifications
+# Pass captured Key-Value Data into Notifications
 :::tip
 Though these instructions reference Rundeck, they can also be applied to environments running the Enterprise versions of the product, PagerDuty [Runbook Automation](https://www.pagerduty.com/platform/automation/runbook/) or [Process Automation](https://www.pagerduty.com/platform/automation/process-software/).
 :::

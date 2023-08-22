@@ -1,4 +1,4 @@
-# Rundeck PagerDuty Notification Plugin
+# Configure Notifications using PagerDuty Plugin
 
 Rundeck integrates with PagerDuty’s incident management platform, which provides notifications, automatic escalations, on-call scheduling, and other functionality to help teams detect and fix problems quickly.
 

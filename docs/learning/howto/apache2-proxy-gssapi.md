@@ -1,16 +1,4 @@
----
-
-title: "Apache 2.4 Reverse Proxy + custom URL + GSSAPI"
-date: "2022-09-02"
-image: /images/chevron-logo-red-on-white.png
-feed:
-  enable: true
-  description: "Rundeck from an Apache2 reverse proxy with a custom url and GSSAPI."
-
----
-
-
-# Apache 2.4 Reverse Proxy + custom URL + GSSAPI
+# Use Apache 2.4 as a Reverse Proxy with custom URL and GSSAPI
 
 This section summarizes one possible configuration setup that can be used to expose Rundeck
 from an apache2 reverse proxy with a custom url path and GSSAPI authentication (with delegated headers).

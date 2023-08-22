@@ -1,4 +1,4 @@
-# How to Use Rundeck Example Jobs
+# Use Rundeck Example Jobs
 
 ## Overview
 

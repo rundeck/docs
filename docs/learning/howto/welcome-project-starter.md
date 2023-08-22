@@ -1,4 +1,4 @@
-# How to Get the Welcome Project Up and Running
+# Get the Welcome Project Up and Running
 
 The Rundeck Welcome Projects are sample projects that show how to configure and use Rundeck. In this guide we show you how to set up, start and run the key parts of the Welcome Projects.
 

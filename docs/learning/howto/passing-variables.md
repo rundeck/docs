@@ -1,6 +1,6 @@
 ---
 
-title: "How to - Passing Data Between Steps"
+title: "Pass Data Between Steps"
 date: "2022-09-10"
 image: /images/chevron-logo-red-on-white.png
 feed:
@@ -9,7 +9,7 @@ feed:
 
 ---
 
-# Passing Data Between Steps
+# Pass Data Between Steps
 
 ## Overview
 Rundeck offers powerful Runbook Automation. Most Runbooks are complicated, multi-step processes.
