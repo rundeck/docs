@@ -28,6 +28,12 @@ Instructions for each specific Key Storage plugin is covered in their respective
 Enterprise versions 4.15.0+ the Storage Plugins have a new configuration process.  If you are configuring on a version older than 4.15 you can access previous doc versions at the [Old Docs](/manual/old-docs.md) page.
 :::
 
+### Configuration on Enterprise Runner
+
+The [Enterprise Runner] can be used to retrieve keys from secrets providers that are directly accessible from the Process Automation cluster or 
+from Runbook Automation due to network boundaries.
+
+
 
 ## Key Data Storage Converter
 
