@@ -4,15 +4,22 @@ from Runbook Automation due to network boundaries.
 For example, if Runbook Automation does not have a direct network path to a self-hosted Hashicorp Vault instance, then a Runner can be placed in the same
 network as Vault and retrieve secrets from Vault to be used by operations on the Runner.
 
+![Key Storage Through Runner](@assets/img/key-storage-runner-browse.png)<br>
+
 :::warning Key Storage Plugin Support
-As of version **`4.16.0`**, integration with Hashicorp Vault is supported on the Runner.
-In future releases, integration with **CyberArk** and **Thycotic** will be available through the Runner.
+As of version **`4.16.0`**, integration with Hashicorp Vault is supported on the Runner.<br>
+In future releases, integration with **CyberArk** and **Thycotic** will also be available through the Runner.
 :::
 
 ## Use Cases
 1. **Remote Node Commands & Scrips** (Node Executors & File Copiers): When SSH or WinRM credentials are stored in a secrets provider, then the Runner can retrieve keys from the provider to authenticate with remote nodes in order to execute commands or scripts.<br><br>
 2. **Internal Tools & Infrastructure** (Job step plugins): When executing Jobs that include steps that integrate with internal tools APIs - such as Jira, Jenkins, homegrown tooling, etc. - or infrastructure such as databases, then the Runner can use secrets to authenticate with these endpoints using best-practice security standards.<br><br>
 3. **Inventory Discovery** (Node Sources): The Runner can be used to discover inventory in secure or remote environments. By retrieving keys from a secrets-provider, the Runner can authenticate with an API endpoint, such as the VMware vSphere API, in order to retrieve the inventory.
+
+:::warning Support for Node Discovery and Remote Commands
+As of version **`4.16.0`**, secrets from the Runner can only be used for Job step plugins - such as HTTP, SQL, Kubernetes, and so on.<br>
+In upcoming releases, support for remote-node commands and scripts as well as inventory discovery will be supported as well.
+:::
 
 ## Handling Secrets
 Given the sensitivity of secrets retrieved by the Runner, the following guardrails have been put in place:
