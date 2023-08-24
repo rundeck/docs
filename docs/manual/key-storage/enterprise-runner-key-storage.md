@@ -1,6 +1,6 @@
 # Key Storage through Enterprise Runner
 The [Enterprise Runner](/administration/runner/runner-intro) can be used to retrieve keys from secrets providers that are _not_ directly accessible from the Process Automation cluster or
-from Runbook Automation due to network boundaries.
+from Runbook Automation due to network/security boundaries.
 For example, if Runbook Automation does not have a direct network path to a self-hosted Hashicorp Vault instance, then a Runner can be placed in the same
 network as Vault and retrieve secrets from Vault to be used by operations on the Runner.
 
@@ -29,9 +29,9 @@ Given the sensitivity of secrets retrieved by the Runner, the following guardrai
 3. Sensitive environment variables set on the Runner are masked in logs, including Job execution logs.  Any environment variables ending with `TOKEN` or `KEY` or `PASSWORD` will be printed as `[SECURE]` in the logs.
 
 ## Configuration
-To configure a Key Storage integration on the Runner, configuration properties are set on the Runner. These properties can be set through the following methods:
+To configure a Key Storage integration on the Runner, **configuration properties are set on the Runner**. These properties can be set through the following methods:
 
-**Note:** These example do not include the full list of configuration properties to optionally set to configure integration with Vault.  The full list of
+**Note:** These examples do not include the full list of configuration properties to configure an integration with Vault.  The full list of
 configuration properties can be found [here](/manual/key-storage/storage-plugins/vault.html#configuration).
 
 ### Example: YAML Configuration File
@@ -100,7 +100,7 @@ With this saved as **`compose.yaml`**, then start the Runner with the standard *
 ## Using Secrets from Runner Key Storage Integrations
 
 Once the Runner has been integrated with a secrets-management provider, such as Vault, then the _paths_ of the secrets can be browsed and selected
-from the Key Storage browser.
+from the Key Storage browser.  The keys are not stored on the Rundeck Server, only the paths are shared with the GUI.
 
 ### Secrets in Job Steps
 
