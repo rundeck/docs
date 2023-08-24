@@ -1,15 +1,16 @@
 # Key Storage through Enterprise Runner
-The [Enterprise Runner](/administration/runner/runner-intro) can be used to retrieve keys from secrets providers that are _not_ directly accessible from the Process Automation cluster or
-from Runbook Automation due to network or security boundaries.
-For example, if Runbook Automation does not have a direct network path to a self-hosted Hashicorp Vault instance, then a Runner can be placed in the same
-network as Vault and retrieve secrets from Vault to be used by operations on the Runner.
+The [Enterprise Runner](/administration/runner/runner-intro) can be used to retrieve keys from secrets providers that are _not_ directly accessible from the Process Automation cluster or from Runbook Automation due to network or security boundaries.
+For example, if Runbook Automation does not have a direct network path to a self-hosted Hashicorp Vault instance, a Runner can be placed in the same network as Vault and retrieve secrets from Vault to be used by operations on the Runner.
 
 ![Key Storage Through Runner](@assets/img/key-storage-runner-browse.png)<br>
 
 ## Use Cases
-1. **Remote Node Commands & Scrips** (Node Executors & File Copiers): When SSH or WinRM credentials are stored in a secrets provider, then the Runner can retrieve keys from the provider to authenticate with remote nodes in order to execute commands or scripts.<br><br>
-2. **Internal Tools & Infrastructure** (Job step plugins): When executing Jobs that include steps that integrate with internal tools APIs - such as Jira, Jenkins, homegrown tooling, etc. - or infrastructure such as databases, then the Runner can use secrets to authenticate with these endpoints using best-practice security standards.<br><br>
-3. **Inventory Discovery** (Node Sources): The Runner can be used to discover inventory in secure or remote environments. By retrieving keys from a secrets-provider, the Runner can authenticate with an API endpoint, such as the VMware vSphere API, in order to retrieve the inventory.
+1. **Internal Tools & Infrastructure** (Job step plugins):  
+When executing Jobs that include steps that integrate with internal tools APIs - such as Jira, Jenkins, homegrown tooling, etc. - or infrastructure such as databases, then the Runner can use secrets to authenticate with these endpoints using best-practice security standards.<br><br>
+1. **Remote Node Commands & Scripts** (Node Executors & File Copiers):  
+When SSH or WinRM credentials are stored in a secrets provider, the Runner can retrieve keys from the provider to authenticate with remote nodes in order to execute commands or scripts.<br><br>
+1. **Inventory Discovery** (Node Sources):  
+The Runner can be used to discover inventory in secure or remote environments. By retrieving keys from a secrets-provider, the Runner can authenticate with an API endpoint, such as the VMware vSphere API, in order to retrieve node inventory.
 
 :::warning Current Limitations
 * As of version **`4.16.0`**, secrets from the Runner can only be used for Job step plugins - such as HTTP, SQL, Kubernetes, and so on.<br>
@@ -17,7 +18,7 @@ The **Remote Node Commands** and the **Inventory Discovery** use-cases listed ab
 
 * As of version **`4.16.0`**, integration with Hashicorp Vault is supported on the Runner.  Integration with **CyberArk** and **Thycotic** through the Runner will also be supported in future releases.
 
-* As of version **`4.16.0`**, if a Runner is directly integrated with a secrets-management provider, then secrets from the native Key Storage facility can not be used by that Runner.
+* As of version **`4.16.0`**, if a Runner is directly integrated with a secrets-management provider, secrets from the native Key Storage facility can not be used by that Runner.
 :::
 
 ## Handling Secrets
@@ -30,8 +31,7 @@ Given the sensitivity of secrets retrieved by the Runner, the following guardrai
 ## Configuration
 To configure a Key Storage integration on the Runner, **configuration properties are set on the Runner**. These properties can be set through the following methods:
 
-**Note:** These examples do not include the full list of configuration properties to configure an integration with Vault.  The full list of
-configuration properties can be found [here](/manual/key-storage/storage-plugins/vault.html#configuration).
+**Note:** These examples do not include the full list of configuration properties to configure an integration with Vault.  The full list of properties can be found [here](/manual/key-storage/storage-plugins/vault.html#configuration).
 
 ### Example: YAML Configuration File
 ```
@@ -94,7 +94,7 @@ services:
         RUNNER_RUNDECK_STORAGE_VAULT_CONFIGURATION_PREFIX: "app"
         ...
 ```
-With this saved as **`compose.yaml`**, then start the Runner with the standard **`docker-compose up`** command.
+After saving this as **`compose.yaml`**, start the Runner with the standard **`docker-compose up`** command.
 
 ## Using Secrets from Runner Key Storage Integrations
 
