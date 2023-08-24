@@ -1,5 +1,4 @@
-
-# Using SSH on Linux/Unix Nodes
+# Use SSH on Linux/Unix Nodes
 
 Rundeck allows users to dispatch jobs to remote Linux/UNIX servers to manage and automate any task using Rundeck workflows. The most common protocol for connecting to Linux/Unix servers is SSH. This is an example of how to add a remote node and configure Rundeck to use SSH to connect to it.
 

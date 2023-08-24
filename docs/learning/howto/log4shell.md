@@ -1,4 +1,4 @@
-# Finding Log4Shell with Rundeck
+# Find Log4Shell with Rundeck
 
 Rundeck prepared a blog about how a Rundeck Administrator might chase down an security vulnerability like the recent issues in Log4j.  This learning article discusses some of the technical details covered in that article and expands on the ideas with steps to implementing a Rundeck Health Check to keep an eye out for vulnerable nodes.
 

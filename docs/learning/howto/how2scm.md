@@ -1,4 +1,4 @@
-# How to Manage Jobs as Code (Source Control Management)
+# Manage Jobs as Code (Source Control Management)
 
 ![](~@assets/img/scm1.png)
 

@@ -1,4 +1,4 @@
-# AWS Systems Manager Across Multiple Accounts 
+# Configure Connections with AWS Systems Manager Across Multiple Accounts 
 
 ## Summary
 It is fairly common for companies to have multiple AWS accounts, yet have tasks that need to be implemented across the infrastructure in all accounts.

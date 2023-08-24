@@ -1,19 +1,6 @@
----
-
-title: "Getting Started with ACLs"
-date: "2022-09-01"
-image: /images/chevron-logo-red-on-white.png
-feed:
- enable: true
- description: "Need to provide limited access to your users?  Use this guide to get started with ACLs in Process Automation/Rundeck."
-
----
-
-# Getting Started with Access Control Examples
-
+# Get Started with Access Control Examples
 
 ### What is an ACL?
-
 ACLs (Access Control Lists) are YAML-based rules that limit/give access to Rundeck elements to any user/role. An ACL Policy is a set of rules that allows/denies access to specific resources such as jobs, projects, keys, passwords, etc.  No one can access or do anything in the system unless it is allowed by one or more ACL Policies.
 
 Rules need to be defined in [YAML format](https://en.wikipedia.org/wiki/YAML) and Rundeck stores the ACLs in two places:
@@ -27,31 +14,22 @@ To see the current ACL rules click on the Gear Icon and then click on the "Acces
 
 ### Getting Started
 
-
 #### Rule Types
-
 Rundeck uses two types of ACL rules: System ACLs and Project ACLs.
 
 * System ACLs cover all elements "outside of a project": System ACL management, project creation, access to system info, access to user summary, etc.
 * Projects ACLs cover all elements "inside a Project": access to jobs, nodes, ad-hoc commands, etc.
 
-
 #### Storage Locations
-
 As mentioned previously, ACL policies can be stored as files on the file system or in the database.  The difference between filesystem and database-stored ACLs is that the first one needs a waiting period to get the changes after creation (around a minute).
 
-
 #### ACL Locations (in the UI)
-
 When creating a new ACL in the UI, there is actually a choice as to where you create an ACL policy and that choice does affect what that policy controls.  The most obvious place to create an ACL policy is under the administrator gear icon at the top right.  If you have access to that and create a policy there, that policy can include both types of ACL rules as described above (System and Project).  However, it is also possible to create rules inside a project (under the Project Settings gear at the bottom left).  Policies created in this second location are only Project ACLs.  The ability to access or edit these is controlled by ACL policies as well. System admins have access to all options but you might wish to let project admins manage the ACL settings inside their own projects.
 
 ### ACL basic components
-
 Rundeck ACLs share the basic structure components, these components are:
 
-
 #### The `context` clause
-
 The `context` section declares the scope of the ensuing policy description. Rundeck ACLs allow two kinds of context: `project` and `application`.  These are equivalent to the rule types mentioned previously.
 
 The first one declares the name of the project(s) for which the policy applies. Its value is a String and can be a regular expression, for which the project name must match to apply.

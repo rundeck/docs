@@ -1,4 +1,4 @@
-# How to Build Rundeck on Ubuntu Linux and macOS from source code
+# Build Rundeck on Ubuntu Linux and macOS from source code
 Rundeck Community users occasionally contribute their knowledge to the source code (for example, they may have fixed a bug). In this article, we will show you how to build Rundeck from the source code available on GitHub so you can contribute back to the project or add any custom new functionality.
 
 ## Requirements

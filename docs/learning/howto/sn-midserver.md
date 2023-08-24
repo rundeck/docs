@@ -1,5 +1,4 @@
-
-# Using a ServiceNow MID Server
+# Use a ServiceNow MID Server
 
 A management, instrumentation, and discovery (MID) Server is a Java application that runs on a server on your local network. MID Servers facilitate communication and data movement between a ServiceNow® instance and external applications, data sources, and services.
 

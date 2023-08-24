@@ -1,15 +1,4 @@
----
-
-title: "Developing a Custom Rundeck Script Plugin"
-date: "2022-09-20"
-image: /images/chevron-logo-red-on-white.png
-feed:
- enable: true
- description: "Need to reuse a script across many different jobs?  Make it a plugin and streamline the setup and updates.  Find more details in the doc."
-
----
-
-# Developing a Custom Rundeck Script Plugin
+# Develop a Custom Rundeck Script Plugin
 
 This tutorial covers:
 

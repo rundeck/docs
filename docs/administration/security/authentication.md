@@ -29,9 +29,9 @@ See [Security > Single Sign On](/administration/security/sso.md).
 
 By default, when users who are not granted access to any projects try to login, they are directed to a page that says they don't have any roles at the moment. However, if you would like to require roles to even get passed the login screen, that is possible. If you require roles for sign on, then if a user without a role tries to login, they will not be able to get into the Rundeck portal. In order to require roles for sign on, add the following line to the rundeck-config.properties file:
 ```bash
-rundeck.security.requiredRole=Your_Role_Name
+rundeck.security.requiredRole=role1,role2,role3
 ```
-where Your_Role_Name is the name of the group you wish to grant access to.
+Where role1, role2, role3 are the names of the groups you wish to grant access to.
 
 # Jetty and JAAS authentication
 
@@ -387,6 +387,9 @@ The `JettyCachingLdapLoginModule` has these configuration properties:
 
 `nestedGroups`
 : "true/false" - Default: false. If true, will resolve all nested groups for authenticated users. For the first user to login after a fresh start it will take a couple of seconds longer, this is when the cache of all nested groups is built. This will happen as often as the cache is refreshed. Uses the cacheDurationMillis for cache timeout. The groups recognized as nested will depend on the `roleBaseDn`, any other role outside of this will not be taken.
+
+`allGroups`
+: "true/false" - Default: `true`. If true, will resolve all nested groups, although you have more than 1000 nested groups, regardless of `SizeLimit Exceeded Error`.
 
 The `JettyCombinedLdapLoginModule` is extends the previous module, so is configured in almost exactly the same way, but adds these additional configuration options:
 
