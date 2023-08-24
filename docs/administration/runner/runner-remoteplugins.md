@@ -108,9 +108,17 @@ The following plugins are available in the next generation Runners:
 - vmware-vm-reconfig
 
 :::
+::: tab Node Source
+- Ansible Inventory
+- VMware 
+- Kubernetes Pods 
+- Docker Containers
+- File Resource Model
+- Script Resource Model
+:::
+
 ::: tab Key Storage
 - vault-storage
 :::
-
 
 ::::
