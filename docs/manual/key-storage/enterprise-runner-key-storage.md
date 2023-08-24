@@ -6,19 +6,18 @@ network as Vault and retrieve secrets from Vault to be used by operations on the
 
 ![Key Storage Through Runner](@assets/img/key-storage-runner-browse.png)<br>
 
-:::warning Key Storage Plugin Support
-As of version **`4.16.0`**, integration with Hashicorp Vault is supported on the Runner.<br>
-In future releases, integration with **CyberArk** and **Thycotic** will also be available through the Runner.
-:::
-
 ## Use Cases
 1. **Remote Node Commands & Scrips** (Node Executors & File Copiers): When SSH or WinRM credentials are stored in a secrets provider, then the Runner can retrieve keys from the provider to authenticate with remote nodes in order to execute commands or scripts.<br><br>
 2. **Internal Tools & Infrastructure** (Job step plugins): When executing Jobs that include steps that integrate with internal tools APIs - such as Jira, Jenkins, homegrown tooling, etc. - or infrastructure such as databases, then the Runner can use secrets to authenticate with these endpoints using best-practice security standards.<br><br>
 3. **Inventory Discovery** (Node Sources): The Runner can be used to discover inventory in secure or remote environments. By retrieving keys from a secrets-provider, the Runner can authenticate with an API endpoint, such as the VMware vSphere API, in order to retrieve the inventory.
 
-:::warning Support for Node Discovery and Remote Commands
-As of version **`4.16.0`**, secrets from the Runner can only be used for Job step plugins - such as HTTP, SQL, Kubernetes, and so on.<br>
-In upcoming releases, support for remote-node commands and scripts as well as inventory discovery will be supported as well.
+:::warning Current Limitations
+* As of version **`4.16.0`**, secrets from the Runner can only be used for Job step plugins - such as HTTP, SQL, Kubernetes, and so on.<br>
+The **Remote Node Commands** and the **Inventory Discovery** use-cases listed above are _not_ yet supported in **`4.16.0`**. 
+
+* As of version **`4.16.0`**, integration with Hashicorp Vault is supported on the Runner.  Integration with **CyberArk** and **Thycotic** through the Runner will also be supported in future releases.
+
+* As of version **`4.16.0`**, if a Runner is directly integrated with a secrets-management provider, then secrets from the native Key Storage facility can not be used by that Runner.
 :::
 
 ## Handling Secrets
@@ -123,10 +122,11 @@ Follow the steps below to use a secret from a Runner in a Job Step plugin:
     ![Job Step Runner Key](@assets/img/job-step-using-runner-key.png)
 
 :::warning Using Secrets from Runners in Jobs
-* In order to use secrets retrieved by a Runner within Jobs, the Runner **Tag** used for secrets must align with **Tag**
+* In order to use secrets retrieved by a Runner within Jobs, the Runner **Tag** used for secrets must align with the **Tag**
 used for the **Runner Selector** in the **Nodes & Runner** tab of the Job configuration.
 
-* If the selected tag used for **Nodes & Runners** and the key storage browser contains more than one Runner, then all Runners with that tag must be integrated with the secrets-management provider.
+* If the selected Runner tag for the Key Storage browser contains more than one Runner, then all Runners with that tag must be integrated with the same secrets-management provider.  
+Therefore, **all Runners with the same Tag must have the same Key Storage configuration**.
 
 This ensures that when a Job is invoked, the Job will behave identically regardless of which Runner is chosen to execute that Job.
 :::
