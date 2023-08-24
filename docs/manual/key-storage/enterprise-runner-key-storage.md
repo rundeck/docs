@@ -97,3 +97,28 @@ services:
 ```
 With this saved as **`compose.yaml`**, then start the Runner with the standard **`docker-compose up`** command.
 
+## Using Secrets from Runner Key Storage Integrations
+
+Once the Runner has been integrated with a secrets-management provider, such as Vault, then the _paths_ of the secrets can be browsed and selected
+from the Key Storage browser.
+
+#### Example: Secrets in Job Step Plugins
+
+Follow the steps below to use a secret from a Runner in a Job Step plugin:
+
+1. Add a step to a Job that relies on a secret.
+2. Click the **`Select...`** button for any key storage field:
+   ![Select Key](@assets/img/http-job-step-select-key.png)
+3. On the left-hand side of the key storage browser, click the **Local Runner** dropdown:
+    ![Key Storage Runner Selector](@assets/img/key-storage-runner-selector.png)
+4. From the dropdown, click **Choose Tags** or **Enter Tag Filter** and then select the Runner that has Key Storage configured.
+5. Initially, there will be a loading screen while the Runner fetches the key paths:
+    ![Key Storage Runner Loading](@assets/img/key-storage-runner-loading.png)
+6. Once loaded, the key paths and directories will be visible in the key storage browser:
+    ![Runner Browse Keys](@assets/img/key-storage-runner-browse.png)
+7. Select the desired key from the secret-management integration:
+   ![Runner Select Key](@assets/img/runner-select-key.png)
+8. Click on **Choose Selected Key**.
+9. In the Job step, the field will now be populated with `runner/path/to/key`:
+    ![Job Step Runner Key](@assets/img/job-step-using-runner-key.png)
+10. 
