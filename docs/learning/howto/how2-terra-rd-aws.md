@@ -1,4 +1,4 @@
-# Deploying Rundeck on AWS with Terraform
+# Deploy Rundeck on AWS with Terraform
 
 ## What is Terraform?
 Terraform is an infrastructure as code (IaC) tool that lets you define reusable and shareable resources with code. Terraform can manage components like computing and networking resources.<br>

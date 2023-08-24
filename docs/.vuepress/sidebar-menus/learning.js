@@ -76,7 +76,8 @@ module.exports = [{
               '/learning/howto/install-centos.md',
               '/learning/howto/migrate-to-mysql.md',
               '/learning/howto/use-terraform-provider.md',
-              '/learning/howto/learn-rd-cli.md',
+              '/learning/howto/learn-rd-cli.md',              
+              '/learning/howto/elk-integration.md',
               '/learning/howto/acl_basic_examples.md',
               '/learning/howto/apache2-proxy-gssapi.md',
               '/learning/howto/workinglogs.md',
@@ -84,7 +85,8 @@ module.exports = [{
               '/learning/howto/how2scm.md',
               '/learning/howto/egress-proxy.md',
               '/learning/howto/how2-terra-rd-aws.md',
-              '/learning/howto/how2-terra-rd-eks.md'
+              '/learning/howto/how2-terra-rd-eks.md',
+              '/learning/howto/troubleshooting.md'
           ]
         },
         {
@@ -109,7 +111,8 @@ module.exports = [{
               '/learning/howto/calling-apis.md',
               '/learning/howto/log4shell.md',
               '/learning/howto/use-roi-metrics.md',
-              '/learning/howto/env-in-notifications.md'
+              '/learning/howto/env-in-notifications.md',
+              '/learning/howto/rabbitmq-diag.md'
           ]
         },
         {

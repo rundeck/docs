@@ -1,4 +1,4 @@
-# Configuring Windows remote nodes on Rundeck
+# Configure WinRM on Windows remote nodes
 <table>
   <tr>
    <td>

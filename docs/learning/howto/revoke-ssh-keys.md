@@ -1,4 +1,4 @@
-# How to Revoke SSH Keys
+# Revoke SSH Keys
 
 This document assumes that your OpenSSH installation’s configuration files reside in `/etc/ssh`. If they do not then please adjust accordingly. All commands were ran/tested on a fresh installation of [Ubuntu 21:10 Impish](https://releases.ubuntu.com/21.10/).
 

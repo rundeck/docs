@@ -1,4 +1,4 @@
-# How to Install Rundeck Community on Centos
+# Install Rundeck Community on Centos
 
 RPM-based Linux distributions are very popular. Rundeck offers the repository and the specific package for this kind of distribution. In this guide, we will show you how to install Rundeck Community on a CentOS 7 operating system.
 
