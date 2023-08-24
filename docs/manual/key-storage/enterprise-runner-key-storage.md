@@ -122,7 +122,7 @@ Follow the steps below to use a secret from a Runner in a Job Step plugin:
     ![Job Step Runner Key](@assets/img/job-step-using-runner-key.png)
 
 :::warning Using Secrets from Runners in Jobs
-* In order to use secrets retrieved by a Runner within Jobs, the Runner **Tag** used for secrets must align with the **Tag**
+* In order to use secrets retrieved by a Runner within Jobs, the Runner **Tag** selected when picking secrets must align with the **Tag**
 used for the **Runner Selector** in the **Nodes & Runner** tab of the Job configuration.
 
 * If the selected Runner tag for the Key Storage browser contains more than one Runner, then all Runners with that tag must be integrated with the same secrets-management provider.  
