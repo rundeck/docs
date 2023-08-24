@@ -40,3 +40,6 @@ This is possible only If the “Runnerset Can be Changed at Runtime” option wa
 The runner carrying out the job execution is displayed at the top of the Job execution activity. Example below: The job below was executed through the “Ansible-Runner”
 ![View runner in a job execution](@assets/img/runner-use-view-activity.png)
 
+## Key Storage through Runner
+The Enterprise Runner can be used to retrieve keys from secrets providers that are _not_ directly accessible from the Process Automation cluster or
+from Runbook Automation due to network or security boundaries.  For configuration and usage details, see [Key Storage through Enterprise Runner](/manual/key-storage/enterprise-runner-key-storage).                                                                                                                          
