@@ -102,7 +102,7 @@ With this saved as **`compose.yaml`**, then start the Runner with the standard *
 Once the Runner has been integrated with a secrets-management provider, such as Vault, then the _paths_ of the secrets can be browsed and selected
 from the Key Storage browser.
 
-#### Example: Secrets in Job Step Plugins
+### Secrets in Job Steps
 
 Follow the steps below to use a secret from a Runner in a Job Step plugin:
 
@@ -121,4 +121,12 @@ Follow the steps below to use a secret from a Runner in a Job Step plugin:
 8. Click on **Choose Selected Key**.
 9. In the Job step, the field will now be populated with `runner/path/to/key`:
     ![Job Step Runner Key](@assets/img/job-step-using-runner-key.png)
-10. 
+
+:::warning Using Secrets from Runners in Jobs
+* In order to use secrets retrieved by a Runner within Jobs, the Runner **Tag** used for secrets must align with **Tag**
+used for the **Runner Selector** in the **Nodes & Runner** tab of the Job configuration.
+
+* If the selected tag used for **Nodes & Runners** and the key storage browser contains more than one Runner, then all Runners with that tag must be integrated with the secrets-management provider.
+
+This ensures that when a Job is invoked, the Job will behave identically regardless of which Runner is chosen to execute that Job.
+:::
