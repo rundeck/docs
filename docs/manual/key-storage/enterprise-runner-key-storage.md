@@ -28,6 +28,8 @@ Given the sensitivity of secrets retrieved by the Runner, the following guardrai
 2. Secrets are masked in logs, including Job execution logs.  Any secrets retrieved by the Runner and printed to the Job log output will appear as `[SECURE]` in the logs.<br><br>
 3. Sensitive environment variables set on the Runner are masked in logs, including Job execution logs.  Any environment variables ending with `TOKEN` or `KEY` or `PASSWORD` will be printed as `[SECURE]` in the logs.
 
+**Note**: Runners can only retrieve secrets from secrets-management providers. Runners can not be used to create new keys or modify existing keys in secrets-management providers.
+
 ## Configuration
 To configure a Key Storage integration on the Runner, **configuration properties are set on the Runner**. These properties can be set through the following methods:
 
