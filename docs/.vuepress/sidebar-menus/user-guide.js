@@ -157,6 +157,7 @@ module.exports = [{
       sidebarDepth: 1,
       children: [
         '/manual/key-storage/key-storage',
+        '/manual/key-storage/enterprise-runner-key-storage.md',
         {
           title: 'Key Storage Plugins',
           collapsable: true,

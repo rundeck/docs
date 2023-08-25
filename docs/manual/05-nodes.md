@@ -27,7 +27,7 @@ Because nodes might have many attributes, it can be helpful to use a naming conv
 
     {namespace}:{name} = {value}
 
-When Rundeck sees an attribute with a name containing a colon it automatically groups them in the UI. For example, the screenshot below shows a node with two attributes under the "web" prefix.
+When Rundeck sees an attribute with a name containing a colon, it automatically groups them in the UI. For example, the screenshot below shows a node with two attributes under the "web" prefix.
 
 ![Attribute namespace](~@assets/img/fig0204-h.png)
 
