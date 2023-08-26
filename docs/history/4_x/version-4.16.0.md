@@ -39,7 +39,7 @@ For further details on configuring and using secrets-management providers with t
 ### Node Inventory Discovery through Enterprise Runner
 This release enables the Runner to be used for discovering nodes and populating the node-inventory through the Runner.  When users select to add a new Node Source through the GUI, there is now an option to select a Runner to use for discovering Nodes in the remote environment.  Through existing Node Source plugins such as Ansible, VMware, Docker and Kubernetes, the Runner will retrieve and send the node data back to the server to be visible in the GUI and targeted for Job and Command execution.  This integration allows customers to automate more tasks in their secure and remote environments where inventory can only be discovered within their environment’s perimeter.
 
-For further details on configuring and using node discovery through the Enterprise Runner, see [this documentation](/docs/manual/projects/resource-model-sources/#adding-nodes-to-a-project).
+For further details on configuring and using node discovery through the Enterprise Runner, see [this documentation](/manual/projects/resource-model-sources/#adding-nodes-to-a-project).
 
 ![Runner Node Sources](@assets/img/node-source-runner-selector.png)
 
