@@ -95,7 +95,7 @@ Prior to this release, the out-of-the-box Default Node Executor for projects was
 
 ## Enterprise Runner Updates
 
-**Bundled Runner Version:** Version Not Found check for release tag
+**Bundled Runner Version:** **`0.1.50`**
 
 * Additional support for File and Script node source plugins
 * Runner can support Key Storage plugins
