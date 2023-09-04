@@ -70,8 +70,8 @@ outbound:
 
 inbound:
 
-- type: custom, protocol TCP, port: 4440, source sg:rundeck-elb
-- type: custom, protocol SSH, port: 20, source sg:rundeck-elb
+- type: custom, protocol TCP, port: 443, source sg:rundeck-elb
+- type: custom, protocol SSH, port: 22, source sg:rundeck-elb
 
 outbound:
 
