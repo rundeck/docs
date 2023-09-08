@@ -103,3 +103,20 @@ git clone https://aur.archlinux.org/rundeck-cli.git
 cd rundeck-cli
 makepkg -i
 ~~~
+
+
+## Windows install
+
+
+Download the `rd-{{{ rundeckCLIVersion }}}.zip` from [github releases](https://github.com/rundeck/rundeck-cli/releases/latest).
+
+To install, unzip the file in your desired installation directory.
+
+Add the $DestinationDirectory\bin folder to Windows PATH.
+
+Set up Windows Environment Variables for RD_URL and RD_TOKEN if desired.
+
+To execute, open a Powershell/CMD and run:
+~~~{.sh}
+rd.bat
+~~~
