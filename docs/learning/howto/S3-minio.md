@@ -4,7 +4,7 @@ By delegating this storage to AWS S3 (or any other S3-compatible bucket system l
 In PagerDuty Process Automation (formerly “Rundeck Enterprise”) [cluster](/administration/cluster/#cluster-overview), S3-compatible storage should be the default configuration to ensure access to logs from any cluster member.<br><br>
 This article explains how to configure Rundeck so that these execution logs are stored on services such as Amazon S3 or Minio.
 
-## Steps to configure S3 execution logs on Rundeck OSS / Process Automation
+## Steps to configure S3 execution logs on Rundeck OSS / Process Automation for Global Config
 
 1. Stop the Rundeck service<br>
    ```
@@ -48,6 +48,7 @@ framework.plugin.ExecutionFileStorage.org.rundeck.amazon-s3.AWSAccessKeyId=your_
 framework.plugin.ExecutionFileStorage.org.rundeck.amazon-s3.AWSSecretKey=your_s3_or_minio_access_key
 framework.plugin.ExecutionFileStorage.org.rundeck.amazon-s3.bucket=test-rundeck-logs
 framework.plugin.ExecutionFileStorage.org.rundeck.amazon-s3.path=logs/${job.project}/${job.execid}.log
+framework.plugin.ExecutionFileStorage.com.rundeck.amazon-s3.region=your_instance_region
 ```
 :::
 ::: tab PagerDuty Process Automation
@@ -58,6 +59,7 @@ framework.plugin.ExecutionFileStorage.com.rundeck.rundeckpro.amazon-s3.AWSAccess
 framework.plugin.ExecutionFileStorage.com.rundeck.rundeckpro.amazon-s3.AWSSecretKey=your_s3_or_minio_access_key
 framework.plugin.ExecutionFileStorage.com.rundeck.rundeckpro.amazon-s3.bucket=test-rundeck-logs
 framework.plugin.ExecutionFileStorage.com.rundeck.rundeckpro.amazon-s3.path=logs/${job.project}/${job.execid}.log
+framework.plugin.ExecutionFileStorage.com.rundeck.rundeckpro.amazon-s3.region=your_instance_region
 ```
 :::
 ::::
@@ -70,6 +72,7 @@ framework.plugin.ExecutionFileStorage.com.rundeck.rundeckpro.amazon-s3.path=logs
 * `AWSSecretKey`: AWS secret key, required if using `AWSAccessKeyId`.
 * `AWSCredentialsFile`: Properties file which contains `accessKey` and `secretKey` entries. The alternative to specifying the `AWSAccessKeyId` and `AWSSecretKey`
 * `bucket`: The name of the S3 bucket to use. This is the shorthand name, eg `test-rundeck-logs`
+* `region`: The Region your Instance is located, eg `us-east-1`
 
 ## Test basic setup
 
@@ -91,6 +94,22 @@ framework.plugin.ExecutionFileStorage.com.rundeck.rundeckpro.amazon-s3.path=logs
 1. Add the following custom properties:<br>
 ![ ](~@assets/img/minio6.png)<br>
 1. Restart the PagerDuty Process Automation service.<br>
+
+## Steps to configure S3 execution logs on Rundeck OSS / Process Automation for individual projects
+
+1. As admin rights users click on `Project Settings` then `Edit Configuration` and then Edit `Configuration File`<br>
+![ ](~@assets/img/minio3.png)<br>
+2. Then add these lines with your information:
+```
+project.plugin.ExecutionFileStorage.com.rundeck.rundeckpro.amazon-s3.AWSAccessKeyId=your_aws_access_key
+project.plugin.ExecutionFileStorage.com.rundeck.rundeckpro.amazon-s3.AWSSecretKey=your_aws_secret_key
+project.plugin.ExecutionFileStorage.com.rundeck.rundeckpro.amazon-s3.bucket=your_s3_bucket_name
+project.plugin.ExecutionFileStorage.com.rundeck.rundeckpro.amazon-s3.path=logs/${job.project}/${job.execid}.log
+project.plugin.ExecutionFileStorage.com.rundeck.rundeckpro.amazon-s3.region=your_instance_region
+```
+
+3. Then click Save button.
+4. Restart the PagerDuty Process Automation service.<br>
 
 ## Docker Config
 :::: tabs
