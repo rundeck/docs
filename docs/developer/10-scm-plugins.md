@@ -27,7 +27,7 @@ configuration contents.
 
 The following properties control how Process Automation interacts with external version control systems, such as Git or Subversion, to fetch and manage project definitions and job configurations. Here's a breakdown of each property:
 
-The properties for the SCM plugin can be added to the system scope in `rundeck-config.properties` or using the `System Configuration` UI.
+The properties for the SCM plugin can be added using the `System Configuration` UI (recommended) or in `rundeck-config.properties`.
 
 `rundeck.scmLoader.delay=value`
 
