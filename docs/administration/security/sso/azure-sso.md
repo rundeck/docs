@@ -117,7 +117,19 @@ Upon first login to Rundeck using Azure SSO an Azure Admin level user will need 
 
 ## Note: Azure Groups
 
-By default, Azure does not send group information in the SSO token. To get a user’s groups the Rundeck plugin uses the MS Graph API to get user/group information. Using this requires additional API permissions that were setup in the App Registration.  The default config file settings enables group mapping.
+By default, Azure does not send group information in the SSO token. You can configure Azure to send group information by adding a groups claim to the token configuration in Azure, however **this method only supports using the group OID as group identifier, but not the group name**.
+
+![](~@assets/img/sso-azure-08-token.png)
+
+
+**If you need to sync user groups by group name**, you need to enable the Rundeck plugin that uses the MS Graph API to get user/group information. Using this requires additional API permissions that were setup in the App Registration.
+To enable this plugin add the following to the `framework.properties` file as described above:
+
+```properties
+# framework.properties: Azure SSO
+# Map Azure groups by default (can be commented out if not mapping group permissions)
+framework.plugin.UserGroupSource.AzureGroupSource.enabled=true
+```
 
 ## Note: firstname, lastname and email attribute mapping
 
