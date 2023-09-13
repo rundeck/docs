@@ -242,7 +242,7 @@ When a Job step is executed, it has a set of "context" variables that can be acc
 - `job.url`: URL to the Job/execution data.
 - `job.execid`: ID of the current Execution
 - `job.executionType` : Execution type, can be `user`, `scheduled` or `user-scheduled` for `Run Job Later` executions
-- `job.username`: Username of the user executing the Job
+- `job.user.name`: Username of the user executing the Job
 - `job.project`: Project name
 - `job.loglevel`: Logging level, one of: 'ERROR','WARN','INFO','VERBOSE','DEBUG'
 - `job.user.email`: Executing user's email address set in [User profile](/manual/10-user.md).
