@@ -34,16 +34,32 @@ Check out the new features and enhancements for PagerDuty Process Automation (fo
 ### Additional Updates
 
 
+* Enhance CyberArk To Support CCP Mode 
+* Upgrade runner to 0.1.51
+*  Fix: Stored Cross-Site Scripting (XSS) in Tour Management
+* Fixed documentation bug in Athena Query Plugin
+* Fix: SSO settings now reload without system restart
+* Typo: ROI metrics plugin description shows wrong API url
 
 
 ## Rundeck Open Source Product Updates
 
-* [add strings, adjust _tabsEdit and fix render of tabs](https://github.com/rundeck/rundeck/pull/8521)
+* [Update project label naming](https://github.com/rundeck/rundeck/pull/8538)
+* [Fix: File System keys unreachable in Rundeck](https://github.com/rundeck/rundeck/pull/8535)
+* [Add default tab name for Nodes](https://github.com/rundeck/rundeck/pull/8534)
+* [Fix: Cannot Import Jobs with Blank Notification&#39;s Config](https://github.com/rundeck/rundeck/pull/8532)
+* [Remove MaxMetaspaceSize flag](https://github.com/rundeck/rundeck/pull/8531)
+* [Inject storage filter and fieldId to Vue](https://github.com/rundeck/rundeck/pull/8530)
+* [fix: short description not shown for node/workflow steps in workflow step create picker](https://github.com/rundeck/rundeck/pull/8526)
+* [Fix sso settings reloading](https://github.com/rundeck/rundeck/pull/8525)
+* [Runner UI fixes in support of the feature in rundeckpro](https://github.com/rundeck/rundeck/pull/8521)
+* [update ansible plugin to 3.2.7](https://github.com/rundeck/rundeck/pull/8513)
 * [runner key selector doesn&#39;t list private keys](https://github.com/rundeck/rundeck/pull/8512)
-* [:A new flag is added to control if we want to show an unexpected value](https://github.com/rundeck/rundeck/pull/8469)
+* [Fix: Key Value data log filter unable to capture empty values](https://github.com/rundeck/rundeck/pull/8511)
+* [Upgrade jdbc mssql driver](https://github.com/rundeck/rundeck/pull/8487)
 * [Fix: Metrics Call Fails in PSQL](https://github.com/rundeck/rundeck/pull/8462)
 * [propagate status result to log filter complete method](https://github.com/rundeck/rundeck/pull/8447)
-* [Rcloud-665: execution to spi](https://github.com/rundeck/rundeck/pull/8433)
+* [Fix typescript build error](https://github.com/rundeck/rundeck/pull/8414)
 * [Vue3 compat build](https://github.com/rundeck/rundeck/pull/8305)
 
 
@@ -64,12 +80,23 @@ Check out the new features and enhancements for PagerDuty Process Automation (fo
 
 Submit your own Pull Requests to get recognition here!
 
+* McG ([chrismcg14](https://github.com/chrismcg14))
+* Jesus Osuna ([Jesus-Osuna-M](https://github.com/Jesus-Osuna-M))
+* José Ortiz ([JoseOrtiz](https://github.com/JoseOrtiz))
+* Darwis Narvaez ([DarwisNarvaezDev](https://github.com/DarwisNarvaezDev))
+* Eric He ([ehe-pd](https://github.com/ehe-pd))
+* Greg Schueler ([gschueler](https://github.com/gschueler))
+* Alberto Hormazabal ([ahormazabal](https://github.com/ahormazabal))
 *  ([smartinellibenedetti](https://github.com/smartinellibenedetti))
 * Luis Toledo ([ltamaster](https://github.com/ltamaster))
-* Antony Velasquez Ruiz ([avelasquezr](https://github.com/avelasquezr))
-* Darwis Narvaez ([DarwisNarvaezDev](https://github.com/DarwisNarvaezDev))
-* Greg Schueler ([gschueler](https://github.com/gschueler))
+* Osman Albarran ([Oalbarran94](https://github.com/Oalbarran94))
 * Stephen Joyner ([sjrd218](https://github.com/sjrd218))
+* J. Casalino ([thedoc31](https://github.com/thedoc31))
+*  ([rodrigoborchert](https://github.com/rodrigoborchert))
+* Elio Espinel ([elioe](https://github.com/elioe))
+* Lucas Canavosio ([lcanavosio](https://github.com/lcanavosio))
+* Alexander Abarca ([alexander-variacode](https://github.com/alexander-variacode))
+* Leonel Juarez ([L2JE](https://github.com/L2JE))
 *  ([simon-c-msc](https://github.com/simon-c-msc))
 
 
