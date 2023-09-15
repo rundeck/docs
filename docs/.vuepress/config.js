@@ -9,6 +9,7 @@ const sidebarDeveloper = require('./sidebar-menus/plugin-development')
 const sidebarLearning = require('./sidebar-menus/learning')
 const sidebarHistory = require('./sidebar-menus/history')
 const sidebarAbout = require('./sidebar-menus/about')
+const sidebarApi = require('./sidebar-menus/api')
 // navbars
 const navbarAbout = require('./navbar-menus/about')
 const navbarUserGuide = require('./navbar-menus/user-guide')
@@ -117,11 +118,7 @@ module.exports = {
       '/learning/': sidebarLearning,
       '/developer/': sidebarDeveloper,
       '/history/': sidebarHistory,
-      '/api/': [
-        '/api/rundeck-api-versions.md',
-        '/api/rundeck-api.md',
-        '/api/apiDocumentation.md'
-      ],
+      '/api/': sidebarApi,
       '/': [
         ''
       ]

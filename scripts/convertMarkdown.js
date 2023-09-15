@@ -1,7 +1,7 @@
 const fs = require('fs');
 const yaml = require('js-yaml');
 
-const inputYamlPath = '/Users/chrismcg/Downloads/rundeck-api.yml';  // Change to your YAML path
+const inputYamlPath = './docs/api/rundeck-api.yml';  // Change to your YAML path
 const outputMdPath = './docs/api/apiDocumentation.md';
 
 // Load YAML and convert to JSON
