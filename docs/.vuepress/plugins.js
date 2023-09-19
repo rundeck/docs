@@ -18,8 +18,8 @@ const feed_options = {
 
 function getPlugins(setup) {
     const plugins = [
-        'vuepress-plugin-element-tabs',
-        [ 'feed', feed_options],
+        '@snippetors/vuepress-plugin-tabs',
+        [ 'vuepress-plugin-feed2', feed_options],
         ['@vuepress/html-redirect', {
           countdown: 0
         }],
