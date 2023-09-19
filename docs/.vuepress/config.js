@@ -1,27 +1,33 @@
-const path = require("path");
+import path from "path";
 
 // sidebars
-const sidebarAdmin = require('./sidebar-menus/administration')
-const sidebarUpgrading = require('./sidebar-menus/upgrading')
-const sidebarUserGuide = require('./sidebar-menus/user-guide')
-const sidebarCommandLineTools = require('./sidebar-menus/command-line-tools')
-const sidebarDeveloper = require('./sidebar-menus/plugin-development')
-const sidebarLearning = require('./sidebar-menus/learning')
-const sidebarHistory = require('./sidebar-menus/history')
-const sidebarAbout = require('./sidebar-menus/about')
-// navbars
-const navbarAbout = require('./navbar-menus/about')
-const navbarUserGuide = require('./navbar-menus/user-guide')
-const navbarLearning = require('./navbar-menus/learning')
-const navbarAdmin = require('./navbar-menus/administration')
-const navbarDevelopment = require('./navbar-menus/development')
+import sidebarAdmin from './sidebar-menus/administration'
+import sidebarUpgrading from './sidebar-menus/upgrading'
+import sidebarUserGuide from './sidebar-menus/user-guide'
+import sidebarCommandLineTools from './sidebar-menus/command-line-tools'
+import sidebarDeveloper from './sidebar-menus/plugin-development'
+import sidebarLearning from './sidebar-menus/learning'
+import sidebarHistory from './sidebar-menus/history';
+import sidebarAbout from './sidebar-menus/about';
 
-const setup = require('./setup')
-const getPlugins = require('./plugins')
+import markdownItInclude from 'markdown-it-include'
+
+import markdownItDeflist from 'markdown-it-deflist'
+import markdownItImplicitFigures from 'markdown-it-implicit-figures'
+
+// navbars
+import navbarAbout from './navbar-menus/about';
+import navbarUserGuide from './navbar-menus/user-guide';
+import navbarLearning from './navbar-menus/learning';
+import navbarAdmin from './navbar-menus/administration';
+import navbarDevelopment from './navbar-menus/development';
+
+import setup from './setup';
+import getPlugins from './plugins';
 
 console.log(setup)
 
-module.exports = {
+export default {
   title: 'Rundeck Docs',
   description: '',
   base: `/${setup.base ? setup.base + '/' : ''}`,
@@ -52,14 +58,15 @@ module.exports = {
   },
   extendMarkdown: md => {
     // use more markdown-it plugins!
-    md.use(require('markdown-it-include'),{
-      root: path.resolve(__dirname,"../")
-    })
-    md.use(require('markdown-it-deflist'))
-    md.use(require('markdown-it-implicit-figures'), {
+    md.use(markdownItInclude, {
+      root: path.resolve(__dirname, "../")
+    });
+    md.use(markdownItDeflist);
+    md.use(markdownItImplicitFigures, {
       figcaption: true
-    })
+    });
   },
+  
   plugins: getPlugins(setup),
   themeConfig: {
     logo: 'https://www.rundeck.com/hubfs/Pager%20Duty%20Branding/RundeckbyPagerDuty.svg',

@@ -1,4 +1,4 @@
-module.exports.RundeckVersion = class RundeckVersion {
+export class RundeckVersion {
     versionString
     versionDate
     colorIdentity

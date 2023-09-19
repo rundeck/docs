@@ -1,4 +1,4 @@
-module.exports = [{
+export default [{
   title: 'Command Line Tool',
   collapsable: false,
   sidebarDepth: 2,

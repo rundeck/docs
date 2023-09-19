@@ -1,4 +1,4 @@
-module.exports = [{
+export default [{
   title: 'Learning',
   collapsable: false,
   sidebarDepth: 2,

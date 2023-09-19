@@ -1,6 +1,6 @@
-const path = require('path');
+import path from 'path';
 
-module.exports = (_, ctx) => ({
+export default (_, ctx) => ({
   // MODIFICATION_FROM_THEME - this alias method is imported without change
   // to point to updated AlgoliaSearchBox.vue
   alias() {
@@ -24,7 +24,7 @@ module.exports = (_, ctx) => ({
       }
     }
 
-    return ret
+    return ret;
   },
 
   extend: '@vuepress/theme-default'

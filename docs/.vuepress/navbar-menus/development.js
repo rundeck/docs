@@ -1,4 +1,4 @@
-module.exports = [{
+export default [{
     text: 'API',
     link: '/api/rundeck-api'
   },

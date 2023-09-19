@@ -20,4 +20,4 @@ const setup = {
     rundeckCLIVersion: process.env.CLI_VERSION || CLI_VERSION
 }
 
-module.exports = setup
+export default setup

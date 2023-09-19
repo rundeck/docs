@@ -1,15 +1,13 @@
-const FS = require('fs')
-const Path = require('path')
-const { Buffer } = require("buffer")
+import FS from 'fs';
+import Path from 'path';
+import { Buffer } from 'buffer';
+import nunjucks from 'nunjucks';
+import { Octokit } from '@octokit/rest';
+import dotenv from 'dotenv';
+import yargs from 'yargs/yargs';
+import { hideBin } from 'yargs/helpers';
+import { RundeckVersion } from './version.js';
 
-const nunjucks = require('nunjucks')
-
-const {Octokit} = require('@octokit/rest')
-require('dotenv').config()
-const yargs = require('yargs/yargs')
-const { hideBin } = require('yargs/helpers')
-
-const {RundeckVersion} = require('./version.js')
 
 const argv = yargs(hideBin(process.argv)).argv
 

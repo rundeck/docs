@@ -1,4 +1,4 @@
-module.exports = [{
+export default [{
   title: 'Plugin Development',
   collapsable: false,
   sidebarDepth: 1,

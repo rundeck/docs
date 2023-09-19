@@ -3,7 +3,7 @@ title: API Reference
 alias: api/index.html
 ---
 
-# API Reference | Version {{{ apiVersion }}}
+# API Reference | Version {{ apiVersion }}
 
 Rundeck provides a Web API for use with your applications.  
 
@@ -11,7 +11,7 @@ Rundeck provides a Web API for use with your applications.
 
 | Current | Minimum | Deprecation |
 |---------|-------------|---------|
-|`{{{ apiVersion }}}` | `{{{ apiMinVersion }}}` | `{{{apiDepVersion}}}`
+|`{{ apiVersion }}` | `{{ apiMinVersion }}` | `{{apiDepVersion}}`
 
 Current
 :   The current version number.

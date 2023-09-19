@@ -1,5 +1,5 @@
-const CP = require('child_process')
-const FS = require('fs')
+import CP from 'child_process'
+import  FS from 'fs'
 
 console.log(process.cwd())
 

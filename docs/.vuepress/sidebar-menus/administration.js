@@ -1,4 +1,4 @@
-module.exports = [{
+export default [{
   title: 'Administration Guide',
   collapsable: false,
   children: [

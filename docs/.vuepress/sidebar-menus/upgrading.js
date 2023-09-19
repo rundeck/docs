@@ -1,4 +1,4 @@
-module.exports = [{
+export default [{
   title: 'Upgrading',
   collapsable: false,
   sidebarDepth: 1,

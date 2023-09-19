@@ -1,22 +1,22 @@
-const _ = require('lodash');
-const fs = require('fs');
-const glob = require('glob');
-const markdownIt = require('markdown-it');
-const meta = require('markdown-it-meta');
+import _ from 'lodash'
+import fs from 'fs'
+import glob from 'glob'
+import markdownIt from 'markdown-it'
+import meta from 'markdown-it-meta'
 
 // Load all MD files in a specified directory and order by metadata 'order' value
 const getChildren = function(parent_path, dir) {
-    files = glob
+    let files = glob
         .sync(parent_path + (dir ? `/${dir}` : '') + '/*.md')
         .map(path => {
             // Instantiate MarkdownIt
-            md = new markdownIt();
+            let md = new markdownIt();
             // Add markdown-it-meta
             md.use(meta);
             // Get the order value
-            file = fs.readFileSync(path, 'utf8');
+            let file = fs.readFileSync(path, 'utf8');
             md.render(file);
-            order = md.meta.order;
+            let order = md.meta.order;
             // Remove "parent_path" and ".md"
             path = path.slice(parent_path.length + 1, -3);
             // Remove "README", making it the de facto index page
@@ -34,7 +34,8 @@ const getChildren = function(parent_path, dir) {
     const children = _.sortBy(files, ['order', 'path'])
         .map(file => file.path);
 
-    return children
+    return children;
 };
 
-module.exports = getChildren
+
+export default getChildren

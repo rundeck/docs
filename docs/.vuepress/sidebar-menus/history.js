@@ -1,6 +1,6 @@
-const getChildren = require('../getHistory')
+import getChildren from '../getHistory'
 
-module.exports = [
+export default [
   {
     title: 'Release Notes',
     collapsable: false,

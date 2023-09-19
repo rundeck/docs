@@ -1,4 +1,4 @@
-module.exports = [{
+export default [{
   title: 'User Guide',
   collapsable: false,
   sidebarDepth: 1,
