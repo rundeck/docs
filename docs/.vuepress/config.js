@@ -1,4 +1,5 @@
 import path from "path";
+import { defaultTheme } from 'vuepress'
 
 // sidebars
 import sidebarAdmin from './sidebar-menus/administration'
@@ -68,53 +69,53 @@ export default {
   },
   
   plugins: getPlugins(setup),
-  themeConfig: {
-    logo: 'https://www.rundeck.com/hubfs/Pager%20Duty%20Branding/RundeckbyPagerDuty.svg',
-    repo: 'rundeck/docs',
-    docsDir: 'docs',
-    docsBranch: setup.branch,
-    editLinks: true,
-    apiVersion: setup.apiVersion,
-    apiDepVersion: setup.apiDepVersion,
-    apiDepRelease: setup.apiDepRelease,
-    apiMinVersion: setup.apiMinVersion,
-    version: setup.rundeckVersion,
-    versionFull: setup.rundeckVersionFull,
-    algolia: setup.base == 'docs' ? {
-      appId: 'GRSXNRCDRG',
-      apiKey: 'c463f74d6f36a5af808650e0f69aadfa',
-      indexName: 'prod_rundeck_docs',
-      algoliaOptions: {
-        hitsPerPage: 10,
-        facets: [ "version" ],
-        facetFilters: [ `version:${setup.base}` ]
-      },
-    } : undefined,
-    searchMaxSuggestions: 15,
-    lastUpdated: 'Last Updated', // string | boolean
-    nav: [
+  theme: defaultTheme({
+     logo: 'https://www.rundeck.com/hubfs/Pager%20Duty%20Branding/RundeckbyPagerDuty.svg',
+     repo: 'rundeck/docs',
+     docsDir: 'docs',
+     docsBranch: setup.branch,
+  //   editLinks: true,
+  //   apiVersion: setup.apiVersion,
+  //   apiDepVersion: setup.apiDepVersion,
+  //   apiDepRelease: setup.apiDepRelease,
+  //   apiMinVersion: setup.apiMinVersion,
+  //   version: setup.rundeckVersion,
+  //   versionFull: setup.rundeckVersionFull,
+  //   algolia: setup.base == 'docs' ? {
+  //     appId: 'GRSXNRCDRG',
+  //     apiKey: 'c463f74d6f36a5af808650e0f69aadfa',
+  //     indexName: 'prod_rundeck_docs',
+  //     algoliaOptions: {
+  //       hitsPerPage: 10,
+  //       facets: [ "version" ],
+  //       facetFilters: [ `version:${setup.base}` ]
+  //     },
+  //   } : undefined,
+  //   searchMaxSuggestions: 15,
+  //   lastUpdated: 'Last Updated', // string | boolean
+     navbar: [
       {
         text: 'About',
-        items: navbarAbout
+        children: navbarAbout
       },
       {
         text: 'User Guide',
-        items: navbarUserGuide
+        children: navbarUserGuide
       },
       {
         text: 'Administration',
-        items: navbarAdmin
+        children: navbarAdmin
       },
       {
         text: 'Learning',
-        items: navbarLearning
+        children: navbarLearning
       },
       {
         text: 'Development',
-        items: navbarDevelopment
+        children: navbarDevelopment
       }
     ],
-    sidebarDepth: 2,
+     sidebarDepth: 2,
     sidebar: {
       '/about/': sidebarAbout,
       '/administration/': sidebarAdmin,
@@ -132,5 +133,6 @@ export default {
         ''
       ]
     }
-  }
+  // }
+})
 }
