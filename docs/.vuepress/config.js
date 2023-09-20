@@ -74,6 +74,8 @@ export default {
      repo: 'rundeck/docs',
      docsDir: 'docs',
      docsBranch: setup.branch,
+     colorMode: 'light',
+     colorModeSwitch: 'false',
   //   editLinks: true,
   //   apiVersion: setup.apiVersion,
   //   apiDepVersion: setup.apiDepVersion,
