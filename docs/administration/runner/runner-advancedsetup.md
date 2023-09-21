@@ -22,7 +22,7 @@ Runner matching and filtering supports Job Options - `${option.NAME}`, which all
 - At runtime (through cli or API calls) we are providing a job option named `runnerTagParameter=myRunnerXYZ`, which will parameterize the Job Option with `myRunnerZYZ` for that job execution.
 - The job will be effectively executed with the Runner that is tagged with `myRunnerZYZ`
 
-Here's an example of a Job Option and Runner Filter configurations:
+Here's an example of a job option and runner filter configurations:
 
 ![Job Option](@assets/img/dynamic_runner_selection_jobOption.png)
 
