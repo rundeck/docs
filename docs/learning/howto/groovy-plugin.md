@@ -6,7 +6,7 @@ By understanding the relevance of custom notification plugins and how they empow
 
 In this how-to guide we will develop a basic groovy-based notification plugin on Rundeck Community.  
 
-_Note: The same instructions are applicable for PagerDuty’s commercial products (Process Automation and Runbook Automation)._
+_Note: The same instructions are applicable for PagerDuty Process Automation._
 
 ## What is a Rundeck Notification?
 
