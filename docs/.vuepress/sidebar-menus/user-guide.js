@@ -106,6 +106,7 @@ module.exports = [{
         '/manual/execution-lifecycle/result-data.md',
         '/manual/execution-lifecycle/roi-metrics.md',
         '/manual/jobs/job-queue.md',
+        '/manual/jobs/ai-generated-runbooks.md'
       ]
     },
     {
@@ -157,6 +158,7 @@ module.exports = [{
       sidebarDepth: 1,
       children: [
         '/manual/key-storage/key-storage',
+        '/manual/key-storage/enterprise-runner-key-storage.md',
         {
           title: 'Key Storage Plugins',
           collapsable: true,

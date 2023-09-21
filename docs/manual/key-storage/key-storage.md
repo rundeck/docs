@@ -28,6 +28,9 @@ Instructions for each specific Key Storage plugin is covered in their respective
 Enterprise versions 4.15.0+ the Storage Plugins have a new configuration process.  If you are configuring on a version older than 4.15 you can access previous doc versions at the [Old Docs](/manual/old-docs.md) page.
 :::
 
+### Key Storage on Enterprise Runner
+The Enterprise Runner can integrate with secrets management providers to retrieve keys that are then used by operations on the Runner. Further details and 
+configuration steps are outlined in [Key Storage through Enterprise Runner](/manual/key-storage/enterprise-runner-key-storage).
 
 ## Key Data Storage Converter
 

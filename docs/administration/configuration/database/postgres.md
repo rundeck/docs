@@ -46,3 +46,9 @@ dataSource.password = rundeckpassword
 With recent Rundeck versions, PostgreSQL connector is bundled.
 
 Now, you can start Rundeck.
+
+## Amazon Aurora PostgreSQL
+:::warning
+Aurora PostgreSQL databases on versions below 15.3.0, display warnings `unrecognized node type: 378` when processing queries, this is harmless since the queries are executed as expected but can be anoying for some users.
+See: [Aurora PostgreSQL 15.3.0 updates page](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraPostgreSQLReleaseNotes/AuroraPostgreSQL.Updates.html#AuroraPostgreSQL.Updates.20180305.1530) 
+:::

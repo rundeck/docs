@@ -1,4 +1,4 @@
-# Configuring Oracle Cloud Infrastructure Plugins
+# Configure Oracle Cloud Infrastructure Plugins
 
 Oracle Cloud Infrastructure (OCI) is a deep and broad platform of public cloud services that enables customers to build and run a wide range of applications in a scalable, secure, highly available, and high-performance environment. <br>_-Oracle Website_
 

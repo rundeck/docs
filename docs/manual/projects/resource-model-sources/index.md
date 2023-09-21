@@ -1,25 +1,40 @@
 # Node Sources Overview
 
-## What is a Resource Model Source?
+## What is a Node Source?
 
-A Resource Model Source is a way to share information about your infrastructure to Rundeck as [Nodes](/manual/05-nodes.html#overview).
+A Node Source _(also referenced as Resource Model Source in some docs)_ is a way to share information about your infrastructure to Rundeck as [Nodes](/manual/05-nodes.html#overview).
 
-Data sources are commonly third-party systems such as [Amazon EC2](/manual/projects/resource-model-sources/aws.html) or [ServiceNow CMBD](/manual/projects/resource-model-sources/servicenow.html), accessed through their API, but could also be [static files or scripts](/manual/projects/resource-model-sources/builtin.html) maintained specifically for this purpose. Some data providers can be accessed directly from the automation interface using the [Resource Editor](/manual/projects/resource-model-sources/resource-editor.html). 
+Sources for Node data are commonly third-party systems such as [Amazon EC2](/manual/projects/resource-model-sources/aws.html) or [ServiceNow CMBD](/manual/projects/resource-model-sources/servicenow.html), accessed through their API, but could also be [static files or scripts](/manual/projects/resource-model-sources/builtin.html) maintained specifically for this purpose. Some data providers can be accessed directly from the automation interface using the [Resource Editor](/manual/projects/resource-model-sources/resource-editor.html). 
 
 ## Adding Nodes to a Project
+To add Nodes to a project, add one or more Node Sources to a project  <br>
+1. Click the *Project Settings* gear at the bottom left, then *Edit Nodes*  <br>
+![Project Settings Menu](~@assets/img/project-nodes.png)  <br>
+2. Under Edit Nodes, select *Sources* and *Add a new Node Source+*  <br>
+![Adding a new Node Source](~@assets/img/edit-nodes.png)  <br>
+3. If using an Enterprise Runner to discover nodes, then select the appropriate Runner Tag using the **Runner Selector**:  <br>
+![Node Source Runner Selector](@assets/img/node-source-runner-selector.png)  <br>  
 
-To add nodes to a project, add one or more node model sources to a project<br>
-- Click the *Project Settings* gear at the bottom left then *Edit Nodes*<br>
+As of version **`4.16.0`**, the following Node Sources are available to use through the Enterprise Runner:
+* **Ansible Inventory**
+* **VMware**
+* **Kubernetes**
+* **Docker**
+* **File**
+* **Script**
 
-![Project Settings Menu](~@assets/img/project-nodes.png)
+:::tip When to use a Runner
+Use a remote Enterprise Runner when the node inventory is not directly accessible by the Process Automation cluster or by Runbook Automation.
+For Example, if the node inventory is stored in an Ansible Inventory file, or is available from the vSphere API, but Runbook Automation does not have
+direct access to these endpoints, then an Enterprise Runner is the recommended mode of discovery.
+:::
 
-- Under Edit Nodes, select *Sources* and *Add a new Node Source+*<br>
+:::warning Node Sources Available on Runner
+If a Node Source is selected that is not in the list above, the following error will appear after the node source tries to gather resources: `Reason: The datadog-resource-model plugin was not found on Runner ID = US-WEST-1-QA. You may need to upgrade your Runner or select a different Runner.` In a future version the Node Source configuration will dynamically know which runners support which Node Source plugins.
+:::
 
-![Adding a new Node Source](~@assets/img/edit-nodes.png)
-
-## Resource Model Source Data Formats
-
-Rundeck makes use of common data formats ([XML](/manual/document-format-reference/resource-v13.html), [JSON](/manual/document-format-reference/resource-json-v10.html) & [YAML](/manual/document-format-reference/resource-yaml-v13.html). Though third-party software may produce these formats natively, it is typical to have to massage the output of one system into the appropriate format to be consumed by Rundeck. Since URLs and HTTP are a lowest-common-denominator for communication, Rundeck only requires that the data Providers make this data available as a file at a URL or on the local disk.<br>
+## Node Source Data Formats
+Rundeck makes use of common data formats ([XML](/manual/document-format-reference/resource-v13.html), [JSON](/manual/document-format-reference/resource-json-v10.html) & [YAML](/manual/document-format-reference/resource-yaml-v13.html)). Though third-party software may produce these formats natively, it is typical to have to massage the output of one system into the appropriate format to be consumed by Rundeck. Since URLs and HTTP are a lowest-common-denominator for communication, Rundeck only requires that the data Providers make this data available as a file at a URL or on the local disk.<br>
 
 ## Managing nodes with mixed Operating Systems
 
@@ -83,4 +98,4 @@ When defining a model source, a single default node executor and file copier is 
 </project>
 ```
 
-Based on this node source file, all commands/jobs dispatched to the Windows node should use the `WinRMPython` node executor and the rest of the nodes should use the default SSH node defined at the project level.
+Based on this Node Source file, all commands/jobs dispatched to the Windows node should use the `WinRMPython` node executor and the rest of the nodes should use the default SSH node defined at the project level.

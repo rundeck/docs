@@ -10,16 +10,18 @@ This allows for targeted automation on EC2 instances - based off of instance-pro
 ## Configuring
 
 ### Authentication
-Follow the instructions outlined in the [AWS Plugins Overview](/docs/manual/plugins/aws-plugins-overview.html) for Process Automation to authenticate with AWS.
+Follow the instructions outlined in the [AWS Plugins Overview](/manual/plugins/aws-plugins-overview.html) for Process Automation to authenticate with AWS.
 
-When defining the IAM Role for Runbook Automation or Process Automation, be sure to include the following permissions in the Policy associated with the role:
+::: tip 
+If using AWS user credentials and a newer plugin version that allows it, store the secret key in Rundeck Key Storage and choose it via the **Secret Key Storage Path** field instead of the **Secret Key** field in your Node Source.
+:::
 
-* **`ec2:describeRegions`**
-* **`ec2.describeAvailabilityZones`**
-* **`ec2.describeInstances`**
-* **`ec2.describeImages`**
-* **`ec2.describeImages`**
+Required EC2 permissions:
 
+* **`ec2:DescribeAvailabilityZones`**
+* **`ec2:DescribeImages`**
+* **`ec2:DescribeInstances`**
+* **`ec2:DescribeRegions`**
 
 ### Basic Configuration
 
@@ -31,14 +33,14 @@ The plugin contains all of the required dependencies.
 
 1. Navigate to **Project Settings** -> **Edit Nodes** and select the **Sources** tab.
 1. Click on **Add a new Node Source** and select **AWS EC2 Resources**.
-1. Provide AWS Credentials into the **Access Key** and **Secret Key** fields. The only IAM permissions required for the credential is `ec2:Describe*`
-1. To specify the region (or multiple regions) to integrate with, fill in the **Endpoint** field with the associated regional endpoint. All endpoints are of the syntax **https:ec2.aws-region.amazonaws.com**.
+1. Provide credentials either via AWS user **or** AWS role. Do not specify both.
+1. To specify the region (or multiple regions) to integrate with, fill in the **Endpoint** field with the associated regional endpoint. All endpoints are of the syntax **`https://ec2.aws-region.amazonaws.com`**.
 For example, the **us-west-1** endpoint is **`https://ec2.us-west-1.amazonaws.com`**. See below for defining multiple regions.
 1. Toggle **Only Running Instances** to determine whether both Running and Stopped instances should be retrieved, or just Running instances.
 1. Click **Save** on the Node Source and then click **Save** again on the Sources configuration page.
 
 ::: tip
-If self-hosting in AWS and an IAM Role is assigned to the infrastructure that your server is running on, then you do not need to fill in the **Access Key** and **Secret Key** fields.
+If self-hosting Rundeck in AWS and an AWS IAM role is assigned to the instance your server is running on, then you do not need to fill in the **Access Key** or **Secret Key** fields.
 :::
 
 ### Advanced Configuration Options
@@ -123,7 +125,7 @@ You can also input **`ALL_REGIONS`** and this will retrieve instances from all t
 For the full list of endpoints, see [Amazon EC2 Regions and Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#ec2_region).
 
 ### Integrating with Multiple AWS Accounts in a Single Project
-It is possible to retrieve EC2's from across multiple AWS account in a single Rundeck project.
+It is possible to retrieve nodes from multiple AWS accounts in a single Rundeck project.
 After configuring the **AWS EC2 Resources** node source with credentials for a given AWS Account, simply click on **Add a new Node Source** and select the **AWS EC2 Resources** option _again_ - this time configuring it with credentials for your other AWS Account.
 There is no limit to the number of AWS Accounts that you can integrate with in a given Rundeck project (or across multiple projects).
 

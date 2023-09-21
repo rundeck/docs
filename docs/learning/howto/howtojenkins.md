@@ -1,4 +1,4 @@
-# How to integrate with Jenkins <br>
+# Integrate with Jenkins <br>
 ![ ](~@assets/img/jenkins1_RDplusJenkins.png)<br>
 [Jenkins](https://www.jenkins.io/) has transformed development tooling by putting control over building pipelines into the hands of individual developers. For Operations, Rundeck delivers the same openness, ease of use, and extensibility - while giving individuals control over defining and creating self-service operations tasks. Rundeck is built specifically to turn any operations procedure into a repeatable and secure service that can be accessed securely via a Web GUI or API. Because it is not focused specifically on building software artifacts, Rundeck jobs can make real changes, update network and infrastructure configuration, and simplify all types of business workflows.<br><br>
 Jenkins and Rundeck integrate well and are commonly used by organizations who are looking to achieve high-velocity and high-quality results across the full Development to Operations lifecycle. In summary, Jenkins manages software build pipelines, and Rundeck manages and provides self-service access to all operations tasks.<br><br>
