@@ -3,7 +3,7 @@
 This is a simple guide for setting up PostgreSQL for use with Rundeck.
 
 :::warning
-PostgreSQL is not the same as EDB (Enterprise DB Postgres). The latter is NOT supported.
+Enterprise DB (EDB), based on Postgres, is not supported for the Process Automation or Rundeck Postgres setup.
 :::
 
 ## Install PostgreSQL
