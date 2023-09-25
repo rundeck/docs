@@ -9,16 +9,14 @@ For example, if Runbook Automation does not have a direct network path to a self
 When executing Jobs that include steps that integrate with internal tools APIs - such as Jira, Jenkins, homegrown tooling, etc. - or infrastructure such as databases, then the Runner can use secrets to authenticate with these endpoints using best-practice security standards.<br><br>
 1. **Remote Node Commands & Scripts** (Node Executors & File Copiers):  
 When SSH or WinRM credentials are stored in a secrets provider, the Runner can retrieve keys from the provider to authenticate with remote nodes in order to execute commands or scripts.<br><br>
-1. **Inventory Discovery** (Node Sources):  
-The Runner can be used to discover inventory in secure or remote environments. By retrieving keys from a secrets-provider, the Runner can authenticate with an API endpoint, such as the VMware vSphere API, in order to retrieve node inventory.
+
+[comment]: <> (1. **Inventory Discovery** &#40;Node Sources&#41;:  )
+
+[comment]: <> (The Runner can be used to discover inventory in secure or remote environments. By retrieving keys from a secrets-provider, the Runner can authenticate with an API endpoint, such as the VMware vSphere API, in order to retrieve node inventory.)
 
 :::warning Current Limitations
-* As of version **`4.16.0`**, secrets from the Runner can only be used for Job step plugins - such as HTTP, SQL, Kubernetes, and so on.<br>
-The **Remote Node Commands** and the **Inventory Discovery** use-cases listed above are _not_ yet supported in **`4.16.0`**. 
-
-* As of version **`4.16.0`**, integration with Hashicorp Vault is supported on the Runner.  Integration with **CyberArk** and **Thycotic** through the Runner will also be supported in future releases.
-
-* As of version **`4.16.0`**, if a Runner is directly integrated with a secrets-management provider, secrets from the native Key Storage facility can not be used by that Runner.
+* Integration with Hashicorp Vault is currently supported on the Runner.  Integration with **CyberArk** and **Thycotic** through the Runner will also be supported in future releases.
+* Secrets from Runners can not be used for Node Sources - This will be supported in future releases.
 :::
 
 ## Handling Secrets
