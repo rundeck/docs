@@ -22,6 +22,12 @@ Runner matching and filtering supports Job Options - `${option.NAME}`, which all
 - At runtime (through cli or API calls) we are providing a job option named `runnerTagParameter=myRunnerXYZ`, which will parameterize the Job Option with `myRunnerZYZ` for that job execution.
 - The job will be effectively executed with the Runner that is tagged with `myRunnerZYZ`
 
+Here's an example of a job option and runner filter configurations:
+
+![Job Option](@assets/img/dynamic_runner_selection_jobOption.png)
+
+![Runner Filter](@assets/img/Dynamic_runner_selection_runnerFilter.png)
+
 ## Restricting plugin execution
 
 The new architecture introduces a new configuration option that controls where plugins are allowed to run. This is desirable in some environments that need to limit what plugins execute in the central Rundeck instance while allowing plugins to the Remote Runners. The following needs to be set in the System Configuration as a custom setting :
