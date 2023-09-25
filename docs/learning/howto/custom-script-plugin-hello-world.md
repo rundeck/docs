@@ -1,4 +1,4 @@
-# Develop a Custom Rundeck Script Plugin
+# Develop a Custom Script Plugin
 
 This tutorial covers:
 

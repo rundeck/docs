@@ -1,4 +1,4 @@
-# Develop a Custom Rundeck Java Plugin
+# Develop a Custom Java Plugin
 
 This tutorial covers:
 
