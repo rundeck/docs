@@ -31,15 +31,16 @@ Rundeck 4.17.0 is here! Check out the new features and enhancements for PagerDut
 #### Runner secrets authentication improvements
 
 Last release we announced support for integrating Runners with secrets-management providers that could be used in Job Step plugins. Now, the keys retrieved from this integration can be used with Node Executor and File Copier plugins as the method for connecting with remote nodes. The Runner can retrieve those secrets from providers like Vault and connect and execute commands or scripts on nodes.
+<br>For details on how to use secret management providers with Runners, see [this documentation](/docs/manual/key-storage/enterprise-runner-key-storage).
 
 #### Runner Key Storage enhancement
 
 Previously, if a Runner was integrated with a secrets-management provider, then a Job executed through that Runner couldn’t use secrets stored in the native Key Storage. With this release, that limitation is no longer in place. Now the Job can use both the Runner (and Key retrieved through the Runner), as well as keys stored in the native Key Storage facility.
-
+<br>For details on how to use secret management providers with Runners, see [this documentation](/docs/manual/key-storage/enterprise-runner-key-storage).
 #### Cross-role and cross-account support for EC2, AWS Systems Manager
 
 This release introduces the ability to use Runbook Automation to execute commands and scripts on EC2 instances spread across multiple AWS Accounts–all from within a single project.  By using the AssumeRole functionality that is now built into both the EC2 Node Source and SSM Node Executor plugins, Runbook Automation can now integrate with multiple AWS IAM Roles that reside in one or multiple AWS Accounts.
-
+<br>To configure the AWS integration with Runbook Automation, see [this documentation](/docs/manual/plugins/aws-plugins-overview.html#aws-integration-for-runbook-automation).
 #### Enhanced feedback message on Enterprise Runners
 
 Previously, if a user chose to use a Node Source that was not available on an Enterprise Runner, they would not see an error message only after they configured and then saved the Node Source. Now, users will see a message whether a given Node Source is available on their Runners when the remote Runners option is selected.
