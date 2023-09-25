@@ -131,7 +131,7 @@ Therefore, **all Runners with the same Tag must have the same Key Storage config
 This ensures that when a Job is invoked, the Job will behave identically regardless of which Runner is chosen to execute that Job.
 :::
 
-### Secret for Node Executors & File Copiers
+### Secrets for Node Executors & File Copiers
 
 Follow the steps below to use a secret from a Runner in a Node Executor or File Copier:
 
@@ -142,6 +142,6 @@ Follow the steps below to use a secret from a Runner in a Node Executor or File 
 ![Select Key Storage](@assets/img/default-node-executor-select-secret.png)
 4. In the popup, click **Local Runner** on the left to choose a remote Runner by Tag or Tag Filter.
 ![Select Runner](@assets/img/default-ne-choose-runner.png)
-5. Select a remote Runner and then navigate the secrets on the right to choose a key from the integrated secrets-management provider.
+5. Select a remote Runner and then navigate the secrets on the right to choose a key from the secrets-management provider that is integrated with the Runner.
 6. Click **Choose Selected Key**.
 7. Scroll to the bottom of the Default Node Executor configuration page and click **Save**.
