@@ -2,6 +2,10 @@
 
 This is a simple guide for setting up PostgreSQL for use with Rundeck.
 
+:::warning
+PostgreSQL is not the same as EDB (Enterprise DB Postgres). The latter is NOT supported.
+:::
+
 ## Install PostgreSQL
 
 You can "yum install" or "apt-get install" the server, or you can download rpms manually if you like. See [PostgreSQL installation](https://wiki.postgresql.org/wiki/Detailed_installation_guides)
