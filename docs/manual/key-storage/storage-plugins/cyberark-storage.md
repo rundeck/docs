@@ -35,10 +35,9 @@ This mode will get secrets using the [Central Credential Provider](https://docs.
 
 This mode has a limitation that it is unable to list the keys in safes.  When writing Process Automation jobs the job author will need to manually enter the path to the key using the following format:
 
-`[provider_path]/[appId]/[safe]/path/to/secret.pem`
+`[provider_path]/[safe]/path/to/secret.pem`
 
 `provider_path` is specified in the config.  Commonly it is set as `keys` but could be different.
-`appId` is the CyberArk Application ID.
 `safe` is the Cyberark Safe where the key is stored.
 `path/to` is the folder path within the safe where the key is stored.
 `secret.pem` is the unique name of the key in that particular folder.
