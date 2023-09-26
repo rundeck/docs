@@ -10,19 +10,19 @@ export default [{
       path: '/learning/getting-started/overview',
       sidebarDepth: 0,
       children: [
-        ['/learning/getting-started/nodes-overview.md','Introduction to Nodes'],
-    	['/learning/getting-started/users-overview.md','Introduction to Users'],
-    	['/learning/getting-started/secrets-overview.md','Introduction to Managing Secrets'],
-    	['/learning/getting-started/acl-overview.md','Introduction to Access Control'],
+      {path: '/learning/getting-started/nodes-overview.md', title: 'Introduction to Nodes'},
+    	{path: '/learning/getting-started/users-overview.md', title: 'Introduction to Users'},
+    	{path: '/learning/getting-started/secrets-overview.md', title: 'Introduction to Managing Secrets'},
+    	{path: '/learning/getting-started/acl-overview.md', title: 'Introduction to Access Control'},
     	{
       	  title: 'Setup and Maintenance',
           collapsable: true,
       	  sidebarDepth: 1,
       	  children: [
-        	['/learning/getting-started/server-setup-overview.md','Overview of On Premise Server Setup'],
-    		['/learning/getting-started/projects-overview.md','Setting up a Project'],
-    		['/learning/getting-started/system-maintenance-overview.md','Overview of On Premise System Maintenance'],
-    		['/learning/getting-started/runners-overview.md','Working with Runners in Process Automation'],
+        	{path: '/learning/getting-started/server-setup-overview.md', title: 'Overview of On Premise Server Setup'},
+    		{path: '/learning/getting-started/projects-overview.md', title: 'Setting up a Project'},
+    		{path: '/learning/getting-started/system-maintenance-overview.md', title: 'Overview of On Premise System Maintenance'},
+    		{path: '/learning/getting-started/runners-overview.md', title: 'Working with Runners in Process Automation'},
       	  ]
     	},
     	{
@@ -65,8 +65,8 @@ export default [{
       path: '/learning/howto/overview',
       sidebarDepth: 0,
       children: [
-        ['/learning/howto/overview.md','Overview'],
-        ['/learning/howto/welcome-project-starter.md','Welcome Projects'],
+        {path: '/learning/howto/overview.md', title: 'Overview'},
+        {path: '/learning/howto/welcome-project-starter.md', title: 'Welcome Projects'},
         {
           title: 'Administration',
           collapsable: true,
@@ -141,6 +141,7 @@ export default [{
             '/learning/howto/plugin-bootstrap.md',
             '/learning/howto/custom-script-plugin-hello-world.md',
             '/learning/howto/java-plugin.md',
+            '/learning/howto/groovy-plugin.md',
             '/learning/howto/how2extenddocker.md'
           ]
         },
@@ -167,43 +168,43 @@ export default [{
           collapsable: true,
           sidebarDepth: 0,
           children: [
-            ['/learning/solutions/automated-diagnostics/solution-overview.md','Solution Summary'],
-            ['/learning/solutions/automated-diagnostics/getting-started.md', 'Getting Started'],
-            ['/learning/solutions/automated-diagnostics/automation-actions.md', 'Configuring Automation Actions'],
-            ['/learning/solutions/automated-diagnostics/first-diagnostic-runbook.md', 'First Diagnostic Runbook'],
-            ['/learning/solutions/automated-diagnostics/integrating-chat-tools.md', 'Integrating Chat Tools'],
+            {path: '/learning/solutions/automated-diagnostics/solution-overview.md', title: 'Solution Summary'},
+            {path: '/learning/solutions/automated-diagnostics/getting-started.md', title:  'Getting Started'},
+            {path: '/learning/solutions/automated-diagnostics/automation-actions.md', title:  'Configuring Automation Actions'},
+            {path: '/learning/solutions/automated-diagnostics/first-diagnostic-runbook.md', title:  'First Diagnostic Runbook'},
+            {path: '/learning/solutions/automated-diagnostics/integrating-chat-tools.md', title:  'Integrating Chat Tools'},
             {
                 title: 'Examples & Best Practices',
                 path: '/learning/solutions/automated-diagnostics/examples-overview',
                 collapsable: false,
                 sidebarDepth: 0,
                 children: [
-                    ['/learning/solutions/automated-diagnostics/examples/public-cloud-providers.md','Public Cloud Providers'],
-                    ['/learning/solutions/automated-diagnostics/examples/linux.md','Linux'],
-                    ['/learning/solutions/automated-diagnostics/examples/windows.md','Windows'],
-                    ['/learning/solutions/automated-diagnostics/examples/apis.md','SaaS & Internal API\'s'],
+                    {path: '/learning/solutions/automated-diagnostics/examples/public-cloud-providers.md', title: 'Public Cloud Providers'},
+                    {path: '/learning/solutions/automated-diagnostics/examples/linux.md', title: 'Linux'},
+                    {path: '/learning/solutions/automated-diagnostics/examples/windows.md', title: 'Windows'},
+                    {path: '/learning/solutions/automated-diagnostics/examples/apis.md', title: 'SaaS & Internal API\'s'},
                     {
                         title: 'Kubernetes',
                         path: '/learning/solutions/automated-diagnostics/examples/kubernetes',
                         collapsable: true,
                         sidebarDepth: 0,
                         children: [
-                            ['/learning/solutions/automated-diagnostics/examples/k8s-logs-events.md','Pod Logs & K8s Events'],
-                            ['/learning/solutions/automated-diagnostics/examples/k8s-app-debug-capture.md', 'App Debug State Capture']
+                            {path: '/learning/solutions/automated-diagnostics/examples/k8s-logs-events.md', title: 'Pod Logs & K8s Events'},
+                            {path: '/learning/solutions/automated-diagnostics/examples/k8s-app-debug-capture.md', title:  'App Debug State Capture'}
                         ]
                     },
-                    ['/learning/solutions/automated-diagnostics/examples/databases.md','Databases'],
-                    ['/learning/solutions/automated-diagnostics/examples/network-devices.md','Network Devices'],
-                    ['/learning/solutions/automated-diagnostics/examples/observability-integrations.md','Observability Integrations']
+                    {path: '/learning/solutions/automated-diagnostics/examples/databases.md', title: 'Databases'},
+                    {path: '/learning/solutions/automated-diagnostics/examples/network-devices.md', title: 'Network Devices'},
+                    {path: '/learning/solutions/automated-diagnostics/examples/observability-integrations.md', title: 'Observability Integrations'}
                 ]
             },
-            ['/learning/solutions/automated-diagnostics/sending-output-to-pagerduty.md','Sending Output to PagerDuty'],
-            ['/learning/solutions/automated-diagnostics/integrating-with-event-orchestration.md', 'Integrating with Event Orchestration'],
-            ['/learning/solutions/automated-diagnostics/simplifying-diagnostics.md','Simplifying Diagnostics Output'],
-            ['/learning/solutions/automated-diagnostics/automation-beyond-triage.md','Automation Beyond Triage'],
-            ['/learning/solutions/automated-diagnostics/feedback-faq.md', 'Feedback & FAQ']
-//            ['/learning/solutions/auto-incident-kubernetes-logs.md','Example: Kubernetes Logs'],
-//            ['/learning/solutions/auto-diagnostics-github-script.md','Example: Raw Scripts']
+            {path: '/learning/solutions/automated-diagnostics/sending-output-to-pagerduty.md', title: 'Sending Output to PagerDuty'},
+            {path: '/learning/solutions/automated-diagnostics/integrating-with-event-orchestration.md', title:  'Integrating with Event Orchestration'},
+            {path: '/learning/solutions/automated-diagnostics/simplifying-diagnostics.md', title: 'Simplifying Diagnostics Output'},
+            {path: '/learning/solutions/automated-diagnostics/automation-beyond-triage.md', title: 'Automation Beyond Triage'},
+            {path: '/learning/solutions/automated-diagnostics/feedback-faq.md', title:  'Feedback & FAQ'}
+//            {path: '/learning/solutions/auto-incident-kubernetes-logs.md', title: 'Example: Kubernetes Logs'},
+//            {path: '/learning/solutions/auto-diagnostics-github-script.md', title: 'Example: Raw Scripts'}
           ]
         }
       ]

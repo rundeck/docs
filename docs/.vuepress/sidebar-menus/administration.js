@@ -87,8 +87,8 @@ export default [{
                     title: 'Docker',
                     collapsable: true,
                     children: [
-                      ['/administration/configuration/docker', 'Configuration Reference'],
-                      ['/administration/configuration/docker/extending-configuration.md', 'Extending Configuration']
+                      {path: '/administration/configuration/docker', title: 'Configuration Reference'},
+                      {path: '/administration/configuration/docker/extending-configuration.md', title: 'Extending Configuration'}
                     ]
                   },
                   '/administration/configuration/hashicorp-consul',

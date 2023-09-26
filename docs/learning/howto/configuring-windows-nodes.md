@@ -29,8 +29,9 @@ The [pywinrm plugin](https://github.com/rundeck-plugins/py-winrm-plugin) uses th
 
 * Python 3.3-3.5 or PyPy2 installed on Rundeck server. _(Python 3 strongly recommended)_
 * Pywinrm library (It can be installed with the following command: `pip install pywinrm`)
+* OpenSSL version 1.1.1 or higher. (openssl version can be checked with the following command: `openssl version - "OpenSSL 1.1.1k"`)
     * `requests-kerberos` and `requests-credssp` are optional.
-
+  
 Note: Due to networking complexity issues this exercise will not work with the Welcome Projects.  These steps assume you have Rundeck installed [using these instructions](/administration/install/installing-rundeck.md).  For more information see the [Additional Information](#additional-information) section.
 
 ## Basic Windows Requirements

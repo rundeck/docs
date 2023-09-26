@@ -48,10 +48,10 @@ The steps for integrating with AWS will vary depending on the product you are us
 
 [**Runbook Automation**](#aws-integration-for-runbook-automation) - Integration steps for Runbook Automation (Cloud) product.
 
-[**Process Automation on EC2**](#process-automation-hosted-on-ec2) - For Process Automation hosted on EC2<br>
+[**Process Automation on EC2**](#aws-integration-for-process-automation-hosted-on-ec2) - For Process Automation hosted on EC2<br>
 [**Process Automation on ECS**](#process-automation-hosted-on-ecs) - For Process Automation hosted on ECS<br>
 
-[**Access Key & Secret Key**](#alternative-auth-option-access-key-secret-key) - For Process Automation or Runbook Automation when Access Keys are permitted. 
+[**Access Key & Secret Key**](#alternative-aws-authentication-access-key-secret-key) - For Process Automation or Runbook Automation when Access Keys are permitted. 
    :::warning Warning
    Using the **Access Key and Secret Key** method is the **_least_** recommended approach for integrating with AWS and is the **_least secure_**. 
    The other methods of integration are highly recommended in place of using Access Key and Secret Key.

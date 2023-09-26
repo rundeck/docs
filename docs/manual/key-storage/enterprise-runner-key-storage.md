@@ -9,16 +9,14 @@ For example, if Runbook Automation does not have a direct network path to a self
 When executing Jobs that include steps that integrate with internal tools APIs - such as Jira, Jenkins, homegrown tooling, etc. - or infrastructure such as databases, then the Runner can use secrets to authenticate with these endpoints using best-practice security standards.<br><br>
 1. **Remote Node Commands & Scripts** (Node Executors & File Copiers):  
 When SSH or WinRM credentials are stored in a secrets provider, the Runner can retrieve keys from the provider to authenticate with remote nodes in order to execute commands or scripts.<br><br>
-1. **Inventory Discovery** (Node Sources):  
-The Runner can be used to discover inventory in secure or remote environments. By retrieving keys from a secrets-provider, the Runner can authenticate with an API endpoint, such as the VMware vSphere API, in order to retrieve node inventory.
+
+[comment]: <> (1. **Inventory Discovery** &#40;Node Sources&#41;:  )
+
+[comment]: <> (The Runner can be used to discover inventory in secure or remote environments. By retrieving keys from a secrets-provider, the Runner can authenticate with an API endpoint, such as the VMware vSphere API, in order to retrieve node inventory.)
 
 :::warning Current Limitations
-* As of version **`4.16.0`**, secrets from the Runner can only be used for Job step plugins - such as HTTP, SQL, Kubernetes, and so on.<br>
-The **Remote Node Commands** and the **Inventory Discovery** use-cases listed above are _not_ yet supported in **`4.16.0`**. 
-
-* As of version **`4.16.0`**, integration with Hashicorp Vault is supported on the Runner.  Integration with **CyberArk** and **Thycotic** through the Runner will also be supported in future releases.
-
-* As of version **`4.16.0`**, if a Runner is directly integrated with a secrets-management provider, secrets from the native Key Storage facility can not be used by that Runner.
+* Integration with Hashicorp Vault is currently supported on the Runner.  Integration with **CyberArk** and **Thycotic** through the Runner will also be supported in future releases.
+* Secrets from Runners can not be used for Node Sources - This will be supported in future releases.
 :::
 
 ## Handling Secrets
@@ -132,3 +130,18 @@ Therefore, **all Runners with the same Tag must have the same Key Storage config
 
 This ensures that when a Job is invoked, the Job will behave identically regardless of which Runner is chosen to execute that Job.
 :::
+
+### Secrets for Node Executors & File Copiers
+
+Follow the steps below to use a secret from a Runner in a Node Executor or File Copier:
+
+1. Within a Project, navigate to **Project Settings** -> **Edit Configuration**.
+2. Click on the **Default Node Executor** tab and select the desired Node Executor from the dropdown:
+![Default Node Executor](@assets/img/default-node-executor-selection.png)
+3. Once a Node Executor has been chosen, click the **Select...** button next to one of the fields that requires a Key Storage selection:
+![Select Key Storage](@assets/img/default-node-executor-select-secret.png)
+4. In the popup, click **Local Runner** on the left to choose a remote Runner by Tag or Tag Filter.
+![Select Runner](@assets/img/default-ne-choose-runner.png)
+5. Select a remote Runner and then navigate the secrets on the right to choose a key from the secrets-management provider that is integrated with the Runner.
+6. Click **Choose Selected Key**.
+7. Scroll to the bottom of the Default Node Executor configuration page and click **Save**.
