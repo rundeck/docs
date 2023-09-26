@@ -3,8 +3,9 @@ import _ from 'lodash'
 import tabsPlugin from '@snippetors/vuepress-plugin-tabs';
 import { feedPlugin } from "vuepress-plugin-feed2";
 import { containerPlugin } from '@vuepress/plugin-container';
-import canonicalPlugin from 'vuepress-plugin-canonical';
 import { copyCodePlugin } from "vuepress-plugin-copy-code2";
+import { docsearchPlugin } from '@vuepress/plugin-docsearch'
+import { path } from '@vuepress/utils'
 //import autoMetaPlugin from "vuepress-plugin-autometa";  // This plugin may not be compatible with Vue2.  Need to check Meta tags to see if they are same as 1.x versions.
 // HTML Redirect doesn't have a Vue2 option yet and V1 doesn't work
 //import htmlRedirect from '@vuepress/plugin-html-redirect';
@@ -58,15 +59,35 @@ function getPlugins(setup) {
                 },
             }
         ),
-        canonicalPlugin({
-            baseURL: 'https://docs.rundeck.com', // base url for your canonical link, optional, default: ''
-            stripExtension: true // strip '.html' , optional, default: false
-        }),
         copyCodePlugin({
             trimContent: true,
             selector: 'div[class*="language-"], extra-class',
             backgroundColor: '#383e4a'
         }),
+        '@vuepress/register-components',
+            {
+                componentsDir: path.resolve(__dirname, './components'),
+            },
+            docsearchPlugin({
+                // options
+                locales: {
+                    '/': {
+                      placeholder: 'Search Documentation',
+                      translations: {
+                        button: {
+                          buttonText: 'Search Documentation',
+                        },
+                      },
+                    }
+                },
+                appId: 'GRSXNRCDRG',
+                apiKey: 'c463f74d6f36a5af808650e0f69aadfa',
+                indexName: 'prod_rundeck_docs',
+                searchParameters: {
+                    hitsPerPage: 10,
+                    facetFilters: [ `version:${setup.base}` ]
+                },
+              }),
     //    autoMetaPlugin(autometa_options),
     //    htmlRedirect({
     //     countdown: 0,

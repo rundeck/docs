@@ -1,5 +1,5 @@
 import path from "path";
-import { defaultTheme } from 'vuepress'
+import { defaultTheme } from '@vuepress/theme-default'
 
 // sidebars
 import sidebarAdmin from './sidebar-menus/administration'
@@ -29,7 +29,6 @@ import getPlugins from './plugins';
 console.log(setup)
 
 export default {
-  title: 'Rundeck Docs',
   description: '',
   base: `/${setup.base ? setup.base + '/' : ''}`,
   configureWebpack: {
