@@ -1,18 +1,18 @@
 export default [{
-  title: 'User Guide',
-  collapsable: false,
+  text: 'User Guide',
+  collapsible: false,
   sidebarDepth: 1,
   children: [
     {
-      title: "Projects",
-      collapsable: true,
-      path: '/manual/projects/',
+      text: "Projects",
+      collapsible: true,
+      link: '/manual/projects/',
       children: [
         '/manual/projects/project-create',
         '/manual/projects/configuration',
         {
-          title: 'SCM',
-          collapsable: true,
+          text: 'SCM',
+          collapsible: true,
           children: [
             '/manual/projects/scm/',
             '/manual/projects/scm/git',
@@ -25,8 +25,8 @@ export default [{
         '/manual/projects/project-archive',
         '/manual/projects/project-delete',
         {
-          title: 'Resource Model Sources',
-          collapsable: true,
+          text: 'Resource Model Sources',
+          collapsible: true,
           children: [
             '/manual/projects/resource-model-sources/',
             '/manual/projects/resource-model-sources/aws',
@@ -45,8 +45,8 @@ export default [{
           ]
         },
         {
-          title: 'Node Execution',
-          collapsable: true,
+          text: 'Node Execution',
+          collapsible: true,
           children: [
 //            '/manual/projects/node-execution/',
             '/manual/projects/node-execution/aws-ecs',
@@ -62,9 +62,9 @@ export default [{
       ]
     },
     {
-      title: 'Jobs',
-      collapsable: true,
-      path: '/manual/04-jobs',
+      text: 'Jobs',
+      collapsible: true,
+      link: '/manual/04-jobs',
       sidebarDepth: 2,
       children: [
         '/manual/04-jobs',
@@ -73,9 +73,9 @@ export default [{
         '/manual/job-options',
         '/manual/jobs/job-notifications',
         {
-          title: 'Log Filters',
-          collapsable: true,
-          path: '/manual/log-filters/',
+          text: 'Log Filters',
+          collapsible: true,
+          link: '/manual/log-filters/',
           sidebarDepth: 1,
           children: [
             '/manual/log-filters/key-value-data.md',
@@ -89,9 +89,9 @@ export default [{
           ]
         },
 //        {
-//            title: 'Job Plugins',
-//            collapsable: true,
-//            path: '/manual/job-plugins',
+//            text: 'Job Plugins',
+//            collapsible: true,
+//            link: '/manual/job-plugins',
 //            sidebarDepth: 1,
 //            children: [
 //
@@ -110,35 +110,35 @@ export default [{
       ]
     },
     {
-      title: 'Plugins',
-      collapsable: true,
-      path:'/manual/plugins/plugins-overview',
+      text: 'Plugins',
+      collapsible: true,
+      link:'/manual/plugins/plugins-overview',
       sidebarDepth: 0,
       children:[
-        {title: 'AWS', path: '/manual/plugins/aws-plugins-overview.md'},
-        {title: 'Azure', path: '/manual/plugins/azure-plugins-overview.md'},
-        {title: 'Datadog', path:'/manual/plugins/datadog-plugins-overview.md'},
-        {title: 'Google Cloud', path: '/manual/plugins/gcp-plugins-overview.md'},
-        {title: 'Jira', path: '/manual/plugins/jira-plugins-overview.md'},
-        {title: 'Kubernetes', path: '/manual/plugins/kubernetes-plugins-overview.md'},
-        {title: 'PagerDuty', path: '/manual/plugins/pagerduty-plugins-overview.md'},
-        {title: 'Sensu', path: '/manual/plugins/sensu-plugins-overview.md'},
-        {title: 'ServiceNow', path: '/manual/plugins/servicenow-plugins-overview.md'}
+        {text: 'AWS', link: '/manual/plugins/aws-plugins-overview.md'},
+        {text: 'Azure', link: '/manual/plugins/azure-plugins-overview.md'},
+        {text: 'Datadog', link:'/manual/plugins/datadog-plugins-overview.md'},
+        {text: 'Google Cloud', link: '/manual/plugins/gcp-plugins-overview.md'},
+        {text: 'Jira', link: '/manual/plugins/jira-plugins-overview.md'},
+        {text: 'Kubernetes', link: '/manual/plugins/kubernetes-plugins-overview.md'},
+        {text: 'PagerDuty', link: '/manual/plugins/pagerduty-plugins-overview.md'},
+        {text: 'Sensu', link: '/manual/plugins/sensu-plugins-overview.md'},
+        {text: 'ServiceNow', link: '/manual/plugins/servicenow-plugins-overview.md'}
       ]
     },
     {
-      title: 'Nodes',
-      collapsable: true,
-      path:'/manual/05-nodes',
+      text: 'Nodes',
+      collapsible: true,
+      link:'/manual/05-nodes',
       sidebarDepth: 1,
       children: [
         '/manual/05-nodes',
         '/manual/node-enhancers.md',
         '/manual/11-node-filters.md',
         {
-          title: 'Health Checks',
-          collapsable: true,
-          path: '/manual/healthchecks',
+          text: 'Health Checks',
+          collapsible: true,
+          link: '/manual/healthchecks',
           sidebarDepth: 2,
           children: [
               '/manual/healthchecks',
@@ -152,16 +152,16 @@ export default [{
       ]
     },
     {
-      title: 'Key Storage',
-      collapsable: true,
-      path: '/manual/key-storage/key-storage',
+      text: 'Key Storage',
+      collapsible: true,
+      link: '/manual/key-storage/key-storage',
       sidebarDepth: 1,
       children: [
         '/manual/key-storage/key-storage',
         '/manual/key-storage/enterprise-runner-key-storage.md',
         {
-          title: 'Key Storage Plugins',
-          collapsable: true,
+          text: 'Key Storage Plugins',
+          collapsible: true,
           children: [
             '/manual/key-storage/storage-plugins/thycotic-storage.md',
             '/manual/key-storage/storage-plugins/vault.md',
@@ -171,15 +171,15 @@ export default [{
       ]
     },
     {
-      title: 'Commands',
-      path: '/manual/06-commands',
-      collapsable: true,
+      text: 'Commands',
+      link: '/manual/06-commands',
+      collapsible: true,
       sidebarDepth: 1
     },
     {
-      title: 'Activity',
-      path: '/manual/08-activity',
-      collapsable: true,
+      text: 'Activity',
+      link: '/manual/08-activity',
+      collapsible: true,
       sidebarDepth: 2,
       children: [
         '/manual/08-activity',
@@ -187,9 +187,9 @@ export default [{
       ]
     },
     {
-      title: 'Schedules (Enterprise)',
-      collapsable: true,
-      path: '/manual/schedules/project-schedules',
+      text: 'Schedules (Enterprise)',
+      collapsible: true,
+      link: '/manual/schedules/project-schedules',
       children: [
         '/manual/schedules/project-schedules.md',
         '/manual/schedules/missedjobfires.md'
@@ -197,15 +197,15 @@ export default [{
       sidebarDepth: 1
     },
     {
-      title: 'Tour Manager (Enterprise)',
-      collapsable: true,
-      path: '/manual/tour-manager.md',
+      text: 'Tour Manager (Enterprise)',
+      collapsible: true,
+      link: '/manual/tour-manager.md',
       sidebarDepth: 1
     },
     {
-      title: 'Calendars (Enterprise)',
-      collapsable: true,
-      path:'/manual/calendars',
+      text: 'Calendars (Enterprise)',
+      collapsible: true,
+      link:'/manual/calendars',
       sidebarDepth: 2,
       children: [
         '/manual/calendars',
@@ -215,14 +215,14 @@ export default [{
       ]
     },
     {
-      title: 'Webhooks',
-      collapsable: true,
-      path: '/manual/webhooks',
+      text: 'Webhooks',
+      collapsible: true,
+      link: '/manual/webhooks',
       sidebarDepth: 2,
       children: [
         '/manual/webhooks',
         {
-          title: 'Webhooks Handlers',
+          text: 'Webhooks Handlers',
           sidebarDepth: 2,
           children: [
             '/manual/webhooks/advanced-run-job',
@@ -237,15 +237,15 @@ export default [{
       ]
     },
     {
-      title: 'Project Settings',
-      collapsable: true,
-      path: '/manual/project-settings',
+      text: 'Project Settings',
+      collapsible: true,
+      link: '/manual/project-settings',
       sidebarDepth: 2
     },
     {
-      title: 'System Menu',
-      collapsable: true,
-      path: '/manual/system-configs',
+      text: 'System Menu',
+      collapsible: true,
+      link: '/manual/system-configs',
       sidebarDepth: 1,
       children: [
           '/manual/system-configs',
@@ -256,19 +256,19 @@ export default [{
           '/manual/configuration-mgmt/configmgmt'
       ]
     },
-    {path: '/manual/10-user.md', title:  'Profile Menu'},
+    {link: '/manual/10-user.md', text:  'Profile Menu'},
     {
-      title: 'Integrations',
-      collapsable: true,
-      path: '/manual/integrations',
+      text: 'Integrations',
+      collapsible: true,
+      link: '/manual/integrations',
       sidebarDepth: 1,
       children: [
           '/manual/integrations/servicenow-app.md'
       ]
     },
     {
-      title: 'Document Formats',
-      collapsable: true,
+      text: 'Document Formats',
+      collapsible: true,
       sidebarDepth: 1,
       children: [
         '/manual/document-format-reference/aclpolicy-v10.md',

@@ -1,29 +1,29 @@
 export default[{
-  title: 'About',
-  collapsable: false,
+  text: 'About',
+  collapsible: false,
   sidebarDepth: 2,
   children: [
     '/about/introduction.md',
     {
-       title: 'Process Automation',
-       collapsable: true,
-       path: '/about/enterprise/',
+       text: 'Process Automation',
+       collapsible: true,
+       link: '/about/enterprise/',
        sidebarDepth: 1,
        children: [
          { 
-          title: 'Overview',
-          path: '/about/enterprise/'
+          text: 'Overview',
+          link: '/about/enterprise/'
         }
     ]},
     {
-       title: 'Runbook Automation',
-       collapsable: true,
-       path: '/about/cloud/',
+       text: 'Runbook Automation',
+       collapsible: true,
+       link: '/about/cloud/',
        sidebarDepth: 1,
        children: [
         { 
-          title: 'Overview',
-          path: '/about/cloud/'
+          text: 'Overview',
+          link: '/about/cloud/'
         }
        ]
     },

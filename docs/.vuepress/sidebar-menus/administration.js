@@ -1,16 +1,16 @@
 export default [{
-  title: 'Administration Guide',
-  collapsable: false,
+  text: 'Administration Guide',
+  collapsible: false,
   children: [
         {
-          title: 'Rundeck / Process Automation',
-          collapsable: true,
+          text: 'Rundeck / Process Automation',
+          collapsible: true,
           sidebarDepth: 1,
           children: [
               {
-                title: 'Installation',
-                collapsable: true,
-                path: '/administration/install/installing-rundeck',
+                text: 'Installation',
+                collapsible: true,
+                link: '/administration/install/installing-rundeck',
                 sidebarDepth: 1,
                 children: [
                   '/administration/install/installing-rundeck',
@@ -26,9 +26,9 @@ export default [{
                 ]
               },
               {
-                title: 'Upgrading',
-                collapsable: true,
-                path: '/upgrading/',
+                text: 'Upgrading',
+                collapsible: true,
+                link: '/upgrading/',
                 sidebarDepth: 1,
                 children: [
                   '/upgrading/',
@@ -42,15 +42,15 @@ export default [{
                 ]
               },
               {
-                title: 'Licensing',
-                collapsable: true,
-                path: '/administration/license',
+                text: 'Licensing',
+                collapsible: true,
+                link: '/administration/license',
                 sidebarDepth: 2
               },
               {
-                title: 'Runner',
-                collapsable: true,
-                path: '/administration/runner/',
+                text: 'Runner',
+                collapsible: true,
+                link: '/administration/runner/',
                 sidebarDepth: 0,
                 children: [
                   '/administration/runner/',
@@ -65,14 +65,14 @@ export default [{
                 ]
               },
               {
-                title: 'Configuration',
-                collapsable: true,
-                path: '/administration/configuration/',
+                text: 'Configuration',
+                collapsible: true,
+                link: '/administration/configuration/',
                 sidebarDepth: 2,
                 children: [
                   {
-                    title: 'Database',
-                    collapsable: true,
+                    text: 'Database',
+                    collapsible: true,
                     children: [
                       '/administration/configuration/database/',
                       '/administration/configuration/database/mysql',
@@ -84,11 +84,11 @@ export default [{
                     ]
                   },
                   {
-                    title: 'Docker',
-                    collapsable: true,
+                    text: 'Docker',
+                    collapsible: true,
                     children: [
-                      {path: '/administration/configuration/docker', title: 'Configuration Reference'},
-                      {path: '/administration/configuration/docker/extending-configuration.md', title: 'Extending Configuration'}
+                      {link: '/administration/configuration/docker', text: 'Configuration Reference'},
+                      {link: '/administration/configuration/docker/extending-configuration.md', text: 'Extending Configuration'}
                     ]
                   },
                   '/administration/configuration/hashicorp-consul',
@@ -99,8 +99,8 @@ export default [{
                   '/administration/configuration/system-properties',
                   '/administration/configuration/encryptable-properties',
                   {
-                    title: 'Plugins',
-                    collapsable: true,
+                    text: 'Plugins',
+                    collapsible: true,
                     children: ['/administration/configuration/plugins/',
                       '/administration/configuration/plugins/installing',
                       '/administration/configuration/plugins/plugin-types',
@@ -113,8 +113,8 @@ export default [{
                 ]
               },
               {
-                title: 'Maintenance',
-                collapsable: true,
+                text: 'Maintenance',
+                collapsible: true,
                 children: [
                   '/administration/maintenance/startup',
                   '/administration/maintenance/logs',
@@ -123,14 +123,14 @@ export default [{
                 ]
               },
               {
-                title: 'Clustering',
-                collapsable: true,
-                path: '/administration/cluster/',
+                text: 'Clustering',
+                collapsible: true,
+                link: '/administration/cluster/',
                 children: [
                   '/administration/cluster/',
                   {
-                    title: 'Load Balancer',
-                    collapsable: true,
+                    text: 'Load Balancer',
+                    collapsible: true,
                     children: [
                       '/administration/cluster/loadbalancer/',
                       '/administration/cluster/loadbalancer/health-check',
@@ -142,8 +142,8 @@ export default [{
                     ]
                   },
                   {
-                    title: 'Log Store',
-                    collapsable: true,
+                    text: 'Log Store',
+                    collapsible: true,
                     children: [
                       '/administration/cluster/logstore/',
                       '/administration/cluster/logstore/azure',
@@ -158,9 +158,9 @@ export default [{
               }
             ]},
     {
-      title: 'Security',
-      collapsable: true,
-      path: '/administration/security/default-users',
+      text: 'Security',
+      collapsible: true,
+      link: '/administration/security/default-users',
       sidebarDepth: 1,
       children: [
         '/administration/security/default-users',
@@ -169,9 +169,9 @@ export default [{
         '/administration/security/acl-policy-editor',
         '/administration/security/ssl',
         {
-          title: 'SSO',
-          collapsable: true,
-          path: '/administration/security/sso',
+          text: 'SSO',
+          collapsible: true,
+          link: '/administration/security/sso',
           sidebarDepth: 1,
           children: [
               '/administration/security/sso/azure-sso.md',

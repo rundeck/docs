@@ -1,6 +1,6 @@
 export default [{
   title: 'Upgrading',
-  collapsable: false,
+  collapsible: false,
   sidebarDepth: 1,
   children: [
     '/upgrading/',

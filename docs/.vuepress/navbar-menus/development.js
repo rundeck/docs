@@ -4,7 +4,7 @@ export default [{
   },
   {
     text: 'Plugin Development',
-    link: '/developer/index'
+    link: '/developer/'
   },
   {
     text: 'Included Plugins',

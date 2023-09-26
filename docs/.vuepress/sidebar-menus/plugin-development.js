@@ -1,6 +1,6 @@
 export default [{
   title: 'Plugin Development',
-  collapsable: false,
+  collapsible: false,
   sidebarDepth: 1,
   children: [
     '/developer/01-plugin-development.md',

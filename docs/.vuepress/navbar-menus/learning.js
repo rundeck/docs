@@ -1,6 +1,6 @@
 export default [{
     text: 'Overview',
-    link: '/learning/index'
+    link: '/learning/'
   },
   {
       text: 'Getting Started',

@@ -1,18 +1,18 @@
 export default [{
-  title: 'Command Line Tool',
-  collapsable: false,
+  text: 'Command Line Tool',
+  collapsible: false,
   sidebarDepth: 2,
-  path: '/rd-cli/',
+  link: '/rd-cli/',
   children: [
-    {path: '/rd-cli/', title: 'Overview'},
-    {path: '/rd-cli/install.md',title: 'Installation'},
-    {path: '/rd-cli/configuration.md',title: 'Configuration'},
-    {path: '/rd-cli/commands.md',title: 'Commands'},
-    {path: '/rd-cli/rd-acl.md',title: 'ACL Tool'},
-    {path: '/rd-cli/scripting.md',title: 'Scripting'},
-    {path: '/rd-cli/ssl.md',title: 'SSL'},
-    {path: '/rd-cli/javalib.md',title: 'JAVA API Library'},
-    {path: '/rd-cli/changes.md',title: 'Change Log'},
-    {path: '/rd-cli/extensions.md',title: 'Extensions'}
+    {link: '/rd-cli/', text: 'Overview'},
+    {link: '/rd-cli/install.md',text: 'Installation'},
+    {link: '/rd-cli/configuration.md',text: 'Configuration'},
+    {link: '/rd-cli/commands.md',text: 'Commands'},
+    {link: '/rd-cli/rd-acl.md',text: 'ACL Tool'},
+    {link: '/rd-cli/scripting.md',text: 'Scripting'},
+    {link: '/rd-cli/ssl.md',text: 'SSL'},
+    {link: '/rd-cli/javalib.md',text: 'JAVA API Library'},
+    {link: '/rd-cli/changes.md',text: 'Change Log'},
+    {link: '/rd-cli/extensions.md',text: 'Extensions'}
   ]
 }]
