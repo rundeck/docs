@@ -26,6 +26,15 @@ module.exports = [{
       	  ]
     	},
     	{
+      	  title: 'Runbook Automation',
+          collapsable: true,
+      	  sidebarDepth: 1,
+      	  children: [
+        	['/learning/getting-started/rba/runner-setup.md','Setting up a Runner'],
+    		['/learning/getting-started/rba/node-setup.md','Adding a Node with Runner'],
+      	  ]
+    	},
+    	{
       	  title: 'Tutorial',
           collapsable: true,
       	  sidebarDepth: 0,
