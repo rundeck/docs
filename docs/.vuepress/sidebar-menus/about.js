@@ -10,7 +10,10 @@ module.exports = [{
        path: '/about/enterprise/',
        sidebarDepth: 1,
        children: [
-         ['/about/enterprise/', 'Overview']
+         { 
+          title: 'Overview',
+          path: '/about/enterprise/'
+        }
     ]},
     {
        title: 'Runbook Automation',
@@ -18,7 +21,10 @@ module.exports = [{
        path: '/about/cloud/',
        sidebarDepth: 1,
        children: [
-         ['/about/cloud/', 'Overview']
+        { 
+          title: 'Overview',
+          path: '/about/cloud/'
+        }
        ]
     },
     '/about/getting-help.md',

@@ -256,7 +256,7 @@ module.exports = [{
           '/manual/configuration-mgmt/configmgmt'
       ]
     },
-    ['/manual/10-user.md', 'Profile Menu'],
+    {path: '/manual/10-user.md', title:  'Profile Menu'},
     {
       title: 'Integrations',
       collapsable: true,

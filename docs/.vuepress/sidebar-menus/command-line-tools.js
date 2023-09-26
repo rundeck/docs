@@ -4,15 +4,15 @@ module.exports = [{
   sidebarDepth: 2,
   path: '/rd-cli/',
   children: [
-    ['/rd-cli/', 'Overview'],
-    ['/rd-cli/install.md','Installation'],
-    ['/rd-cli/configuration.md','Configuration'],
-    ['/rd-cli/commands.md','Commands'],
-    ['/rd-cli/rd-acl.md','ACL Tool'],
-    ['/rd-cli/scripting.md','Scripting'],
-    ['/rd-cli/ssl.md','SSL'],
-    ['/rd-cli/javalib.md','JAVA API Library'],
-    ['/rd-cli/changes.md','Change Log'],
-    ['/rd-cli/extensions.md','Extensions']
+    {path: '/rd-cli/', title: 'Overview'},
+    {path: '/rd-cli/install.md',title: 'Installation'},
+    {path: '/rd-cli/configuration.md',title: 'Configuration'},
+    {path: '/rd-cli/commands.md',title: 'Commands'},
+    {path: '/rd-cli/rd-acl.md',title: 'ACL Tool'},
+    {path: '/rd-cli/scripting.md',title: 'Scripting'},
+    {path: '/rd-cli/ssl.md',title: 'SSL'},
+    {path: '/rd-cli/javalib.md',title: 'JAVA API Library'},
+    {path: '/rd-cli/changes.md',title: 'Change Log'},
+    {path: '/rd-cli/extensions.md',title: 'Extensions'}
   ]
 }]
