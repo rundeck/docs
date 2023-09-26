@@ -29,7 +29,8 @@ import getPlugins from './plugins';
 console.log(setup)
 
 export default {
-  title: 'Rundeck Docs',
+  debug: true,
+  title: '',
   description: '',
   base: `/${setup.base ? setup.base + '/' : ''}`,
   configureWebpack: {
@@ -54,8 +55,8 @@ export default {
       .rule('md')
       .test(/\.md$/)
       .use(path.resolve(__dirname, './nunjucks'))
-        .loader(path.resolve(__dirname, './nunjucks'))
-        .end()
+      .loader(path.resolve(__dirname, './nunjucks'))
+      .end()
   },
   extendMarkdown: md => {
     // use more markdown-it plugins!
@@ -67,37 +68,42 @@ export default {
       figcaption: true
     });
   },
-  
+
   plugins: getPlugins(setup),
   theme: defaultTheme({
-     logo: 'https://www.rundeck.com/hubfs/Pager%20Duty%20Branding/RundeckbyPagerDuty.svg',
-     repo: 'rundeck/docs',
-     docsDir: 'docs',
-     docsBranch: setup.branch,
-     colorMode: 'light',
-     colorModeSwitch: false,
-     lastUpdated: true,
-     contributors: false,
-     editLinks: true,
-  //   apiVersion: setup.apiVersion,
-  //   apiDepVersion: setup.apiDepVersion,
-  //   apiDepRelease: setup.apiDepRelease,
-  //   apiMinVersion: setup.apiMinVersion,
-  //   version: setup.rundeckVersion,
-  //   versionFull: setup.rundeckVersionFull,
-  //   algolia: setup.base == 'docs' ? {
-  //     appId: 'GRSXNRCDRG',
-  //     apiKey: 'c463f74d6f36a5af808650e0f69aadfa',
-  //     indexName: 'prod_rundeck_docs',
-  //     algoliaOptions: {
-  //       hitsPerPage: 10,
-  //       facets: [ "version" ],
-  //       facetFilters: [ `version:${setup.base}` ]
-  //     },
-  //   } : undefined,
-  //   searchMaxSuggestions: 15,
-  //   lastUpdated: 'Last Updated', // string | boolean
-     navbar: [
+    logo: 'https://www.rundeck.com/hubfs/Pager%20Duty%20Branding/RundeckbyPagerDuty.svg',
+    repo: 'rundeck/docs',
+    docsDir: 'docs',
+    docsBranch: setup.branch,
+    colorMode: 'light',
+    colorModeSwitch: false,
+    lastUpdated: true,
+    contributors: false,
+    editLinks: true,
+    themePlugins: {
+      activeHeaderLinks: true,
+      container: true,
+      externalLinkIcon: true,
+    },
+    //   apiVersion: setup.apiVersion,
+    //   apiDepVersion: setup.apiDepVersion,
+    //   apiDepRelease: setup.apiDepRelease,
+    //   apiMinVersion: setup.apiMinVersion,
+    //   version: setup.rundeckVersion,
+    //   versionFull: setup.rundeckVersionFull,
+    //   algolia: setup.base == 'docs' ? {
+    //     appId: 'GRSXNRCDRG',
+    //     apiKey: 'c463f74d6f36a5af808650e0f69aadfa',
+    //     indexName: 'prod_rundeck_docs',
+    //     algoliaOptions: {
+    //       hitsPerPage: 10,
+    //       facets: [ "version" ],
+    //       facetFilters: [ `version:${setup.base}` ]
+    //     },
+    //   } : undefined,
+    //   searchMaxSuggestions: 15,
+    //   lastUpdated: 'Last Updated', // string | boolean
+    navbar: [
       {
         text: 'About',
         children: navbarAbout
@@ -119,7 +125,7 @@ export default {
         children: navbarDevelopment
       }
     ],
-     sidebarDepth: 2,
+    sidebarDepth: 2,
     sidebar: {
       '/about/': sidebarAbout,
       '/administration/': sidebarAdmin,
@@ -137,6 +143,6 @@ export default {
         ''
       ]
     }
-  // }
-})
+    // }
+  })
 }

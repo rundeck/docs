@@ -11,7 +11,7 @@ import { copyCodePlugin } from "vuepress-plugin-copy-code2";
 
 const autometa_options = {
     site: {
-        name   : 'Rundeck / Process Automation Documentation',
+        name: 'Rundeck / Process Automation Documentation',
         twitter: 'rundeck',
     },
     canonical_base: 'https://docs.rundeck.com',
@@ -24,39 +24,57 @@ function getPlugins(setup) {
             hostname: 'docs.rundeck.com',
             rss: true,
             json: true,
-            sort:  entries => _.reverse( _.sortBy( entries, 'date' ) )
+            sort: entries => _.reverse(_.sortBy(entries, 'date'))
         }),
         containerPlugin(
             {
                 type: 'deprecated',
-                defaultTitle: {
-                '/':'Deprecation Warning'
-                },
-            }, 
+                locales: {
+                    '/': {
+                        defaultInfo: 'Deprecation Warning',
+                    }
+                }
+            }
+        ),
+        containerPlugin(
             {
                 type: 'enterprise',
-                defaultTitle: {
-                '/':'Available in PagerDuty Process Automation Commercial products.'
-                },
-            },
+                locales: {
+                    '/': {
+                        defaultInfo: 'Available in PagerDuty Process Automation Commercial products.',
+                    }
+                }
+            }
+        ),
+        containerPlugin(
             {
                 type: 'tutorial',
-                defaultTitle: {
-                '/':'This tutorial is based on example code in the Welcome Projects.'
-                },
+                locales: {
+                    '/': {
+                        defaultInfo: 'This tutorial is based on example code in the Welcome Projects.',
+                    }
+                }
             },
+        containerPlugin(
             {
                 type: 'incubating',
-                defaultTitle: {
-                '/':'Incubating: This Feature or API is new! We may still have a few bugs or change some functionality in the future.'
-                },
-            },
-            {
-                type: 'betafeature',
-                defaultTitle: {
-                '/':'BETA FEATURE'
-                },
+                locales: {
+                    '/': {
+                        defaultInfo: 'Incubating: This feature or API is new! We may still have a few bugs or change some functionality in the future.',
+                    }
+                }
             }
+        ),
+            containerPlugin(
+                {
+                    type: 'betafeature',
+                    locales: {
+                        '/': {
+                            defaultInfo: 'BETA FEATURE',
+                        }
+                    }
+                }
+            )
         ),
         canonicalPlugin({
             baseURL: 'https://docs.rundeck.com', // base url for your canonical link, optional, default: ''
@@ -67,11 +85,11 @@ function getPlugins(setup) {
             selector: 'div[class*="language-"], extra-class',
             backgroundColor: '#383e4a'
         }),
-    //    autoMetaPlugin(autometa_options),
-    //    htmlRedirect({
-    //     countdown: 0,
-    //    })
-        ]
+        //    autoMetaPlugin(autometa_options),
+        //    htmlRedirect({
+        //     countdown: 0,
+        //    })
+    ]
 
     // if (setup.base) {
     //     plugins.unshift([
