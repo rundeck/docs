@@ -126,54 +126,30 @@ Schedules can be defined in YAML format as shown below. Multiple schedules can b
   type: CRON
 ```
 
-`name`
+`name`: Schedule name (required)
 
-:   Schedule name (required)
+`description`: Description (optional)
 
-`description`
+`timeZone`: Time Zone string (optional). Either an abbreviation such as "PST", a full name such as "America/Los_Angeles", or a custom ID such as "GMT-8:00".
 
-:   Description (optional)
+`type`: either `CRON` or `SIMPLE`.
 
-`timeZone`
+`crontabString`: Required if the `type` is `CRON`, specifies the [crontab format][crontab]
 
-:   Time Zone string (optional). Either an abbreviation such as "PST", a full name such as "America/Los_Angeles", or a custom ID such as "GMT-8:00".
+`schedule`: Required if the `type` is `SIMPLE`, specifying `hour`,`minute`,`month`, and `dayOfWeek`:
 
-`type`
+- `hour`:   Hour of day
+- `minute`:   Minutes in hour
+- `dayOfWeek`:   Either `*` for all days, or comma separated list of three-letter day abbreviations. `SUN,MON,TUE,WED,THU,FRI,SAT`
+- `month`:   Either `*` for all months, or comma separated list of three-letter month abbreviations. `JAN,FEB,MAR,APR,MAY,JUN,JUL,AUG,SEP,OCT,NOV,DEC`
 
-:   either `CRON` or `SIMPLE`.
+## Feature Flag
 
+To disabled the Project Schedules feature, add the following settings to rundeck-config.properties
 
-`crontabString`
-
-:   Required if the `type` is `CRON`, specifies the [crontab format][crontab]
-
-
-`schedule`
-
-:   Required if the `type` is `SIMPLE`, specifying `hour`,`minute`,`month`, and `dayOfWeek`:
-
-	`hour`
-	:   Hour of day
-
-	`minute`
-	:   Minutes in hour
-
-	`dayOfWeek`
-
-	:   Either `*` for all days, or comma separated list of three-letter day abbreviations. `SUN,MON,TUE,WED,THU,FRI,SAT`
-
-	`month`
-
-	:   Either `*` for all months, or comma separated list of three-letter month abbreviations. `JAN,FEB,MAR,APR,MAY,JUN,JUL,AUG,SEP,OCT,NOV,DEC`
-
-
-  ## Feature Flag
-
-  To disabled the Project Schedules feature, add the following settings to rundeck-config.properties
-
-  ```properties
-  rundeck.feature.projectSchedules.enabled=false
-  ```
+```properties
+rundeck.feature.projectSchedules.enabled=false
+```
 
 [crontab]: http://www.quartz-scheduler.org/documentation/quartz-2.2.2/tutorials/tutorial-lesson-06.html
 [cronbuilder]: https://www.freeformatter.com/cron-expression-generator-quartz.html
