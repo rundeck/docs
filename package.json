@@ -5,7 +5,7 @@
   "scripts": {
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
-    "docs:no-cache":"vuepress dev docs --no-cache",
+    "docs:no-cache": "vuepress dev docs --no-cache",
     "deploy:github": "npm run docs:build; push-dir --dir=docs/.vuepress/dist --branch=gh-pages --cleanup",
     "notes": "node ./docs/.vuepress/notes.js"
   },
