@@ -1,5 +1,5 @@
 import path from "path";
-import { defaultTheme } from 'vuepress'
+import { defaultTheme } from '@vuepress/theme-default'
 
 // sidebars
 import sidebarAdmin from './sidebar-menus/administration'
