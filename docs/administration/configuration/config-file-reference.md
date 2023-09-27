@@ -89,7 +89,7 @@ Some important settings:
 - `framework.logs.dir`: Directory for log files written by core services and Rundeck Server's Job executions. Default is `$RDECK_BASE/var/logs`
 - `framework.server.username`: Username for connection to the Rundeck server
 - `framework.server.password`: Password for connection to the Rundeck server
-- `framework.rundeck.url`: Base URL for Rundeck server.
+- `framework.server.url`: Base URL for Rundeck server.
 
 SSH Connection settings (See [Projects - Node Execution - SSH](/manual/projects/node-execution/ssh.md)):
 
