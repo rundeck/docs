@@ -50,9 +50,9 @@ SSO integration with Process Automation enhances security, simplifies user manag
 
 Process Automation offers several ways to configure SSO:
 
-[Okta](/administration/security/sso/okta.html#okta-application-configuration)
-[Ping Identity](/administration/security/sso/ping.html#single-signon-ping)
-[Azure Active Directory](/administration/security/sso/azure-sso.html#configuring-azure-active-directory)
+* [Okta](/administration/security/sso/okta.html#okta-application-configuration)
+* [Ping Identity](/administration/security/sso/ping.html#single-signon-ping)
+* [Azure Active Directory](/administration/security/sso/azure-sso.html#configuring-azure-active-directory)
 
 ## [Access Control](/administration/security/authorization.html#access-control-policy-2)
 After understanding the users and roles another crucial topic is about ACL.  An ACL (Access Control List) policy effectively grants or denies system rights depending on a user's username or group memberships. As an example, the user "admin" is a member of the "admin" group and has been assigned the "admin" role, as described above.
