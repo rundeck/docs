@@ -81,9 +81,12 @@ function getPlugins(setup) {
             stripExtension: true // strip '.html' , optional, default: false
         }),
         copyCodePlugin({
-            trimContent: true,
-            selector: 'div[class*="language-"], extra-class',
-            backgroundColor: '#383e4a'
+            locales: {
+                "/": {
+                  // Override copy button label text
+                  copy: "Copy Code",
+                },
+            }
         }),
         //    autoMetaPlugin(autometa_options),
         //    htmlRedirect({

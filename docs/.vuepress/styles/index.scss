@@ -249,22 +249,3 @@ img.navbar {
 .el-tabs--border-card>.el-tabs__header .el-tabs__item:not(.is-disabled):hover {
   color: lighten($accentColor, 15) ;
 }
-
-/* Fixup the code-copy plugin */
-.code-copy {
-  position: absolute;
-  top: 0;
-  right: 0;
-  z-index: 5;
-}
-
-.code-copy>span {
-  color: whitesmoke;
-  bottom: unset;
-  top: 15px;
-}
-
-.code-copy>svg {
-  bottom: unset ;
-  top: 7.5px;
-}
