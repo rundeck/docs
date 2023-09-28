@@ -28,6 +28,7 @@ module.exports = [{
     	{
       	  title: 'Runbook Automation',
           collapsable: true,
+          path: '/learning/getting-started/rba/rba-welcome-overview',
       	  sidebarDepth: 1,
       	  children: [
         	['/learning/getting-started/rba/runner-setup.md','Setting up a Runner'],

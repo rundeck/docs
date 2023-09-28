@@ -1,6 +1,6 @@
 # Create a Runner to connect to remote nodes
 
-[Runners](https://docs.rundeck.com/docs/administration/runner/pre-4-11-runners.html#runner) are a recent addition to the PagerDuty Process Automation and Runbook Automation architecture. They are primarily used as a method for orchestrating automation in secure, remote environments where direct access to infrastructure and services is restricted. This is accomplished by using a "reverse proxy" architecture: Runners regularly query (outbound only) the Runbook Automation instance for tasks. Runners are assigned to one or more Projects, and then [Jobs](https://docs.rundeck.com/docs/learning/getting-started/jobs/what-is-a-job.html) within those Projects can use the Runner to dispatch the Job steps to be executed through the Runner in the remote environment.  
+[Runners](https://docs.rundeck.com/docs/administration/runner/runner-intro.html) are a recent addition to the PagerDuty Process Automation and Runbook Automation architecture. They are primarily used to automate tasks in secure, remote environments where direct access to infrastructure and services is restricted. This is accomplished by using a "reverse proxy" architecture. Runners regularly query (outbound only) the Runbook Automation instance for tasks. Runners are assigned to specific  projects, and then [jobs](https://docs.rundeck.com/docs/learning/getting-started/jobs/what-is-a-job.html) within those projects can be sent to the Runner to execute in the remote environment.  
 ![](~@assets/img/running1.png)  
 _Example showing Runner architecture (Each remote Runner could be multiple Runners)_  
 When Runners are enabled for a job, the execution of Job steps will be delegated to a specific Runner for management. This model offers resiliency as multiple Runners could be enabled for a particular Project so that each Job can be assigned to a specific Runner during high usage windows.  
@@ -24,4 +24,4 @@ The first step in using Runners is to create one in the Runbook Automation inter
 7. Verify that new Runner is connecting to Runbook Automation  
 	From the Runner Management area, there should be a green check mark if a Runner is successfully connecting back to Runbook Automation.  
 ![](~@assets/img/running7.png)  
-Next Step: Add and connect to a node through your Runner  
+Next Step: [Add and connect to a node through your Runner](https://docs.rundeck.com/docs/learning/getting-started/rba/node-setup.html)
