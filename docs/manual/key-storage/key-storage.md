@@ -110,6 +110,8 @@ for:
     - match:
         path: 'keys/project/scratch/.*'
       allow: [read,create,update,delete]
+context:
+  application: rundeck
 ```
 
 
