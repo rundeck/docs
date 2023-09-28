@@ -6,17 +6,9 @@ import { containerPlugin } from '@vuepress/plugin-container';
 import { copyCodePlugin } from "vuepress-plugin-copy-code2";
 import { docsearchPlugin } from '@vuepress/plugin-docsearch'
 import { path } from '@vuepress/utils'
-//import autoMetaPlugin from "vuepress-plugin-autometa";  // This plugin may not be compatible with Vue2.  Need to check Meta tags to see if they are same as 1.x versions.
+import { openGraphPlugin } from 'vuepress-plugin-open-graph'
 // HTML Redirect doesn't have a Vue2 option yet and V1 doesn't work
 //import htmlRedirect from '@vuepress/plugin-html-redirect';
-
-const autometa_options = {
-    site: {
-        name: 'Rundeck / Process Automation Documentation',
-        twitter: 'rundeck',
-    },
-    canonical_base: 'https://docs.rundeck.com',
-}
 
 function getPlugins(setup) {
     const plugins = [
@@ -27,6 +19,10 @@ function getPlugins(setup) {
             json: true,
             sort: entries => _.reverse(_.sortBy(entries, 'date'))
         }),
+        openGraphPlugin({
+           host: 'https://docs.rundeck.com',
+           twitterSite: 'rundeck',
+          }),
         containerPlugin(
             {
                 type: 'deprecated',
@@ -109,7 +105,6 @@ function getPlugins(setup) {
                     facetFilters: [ `version:${setup.base}` ]
                 },
               })
-        //    autoMetaPlugin(autometa_options),
         //    htmlRedirect({
         //     countdown: 0,
         //    })

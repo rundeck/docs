@@ -71,6 +71,7 @@ export default {
 
   plugins: getPlugins(setup),
   theme: defaultTheme({
+    debug: true,
     logo: 'https://www.rundeck.com/hubfs/Pager%20Duty%20Branding/RundeckbyPagerDuty.svg',
     repo: 'rundeck/docs',
     docsDir: 'docs',

@@ -19,11 +19,12 @@
     "ansi-html-community": "0.0.8",
     "core-js": "^2.6.5",
     "express": "^4.18.2",
-    "markdown-it-container": "^3.0.0",
     "glob": "^7.1.4",
+    "markdown-it-container": "^3.0.0",
     "markdown-it-include": "^2.0.0",
     "swagger-ui": "^5.7.2",
-    "vue": "^3.3.4"
+    "vue": "^3.3.4",
+    "vuepress-plugin-open-graph": "^1.5.0"
   },
   "devDependencies": {
     "@octokit/rest": "^18.0.15",
