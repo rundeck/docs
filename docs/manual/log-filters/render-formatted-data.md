@@ -55,9 +55,9 @@ log event, and mark it as `application/json` data type.
 
 ## Examples
 
-![](@assets/img/logfilter-render-example1.png)
+![](/assets/img/logfilter-render-example1.png)
 
-![](@assets/img/logfilter-render-example2.png)
+![](/assets/img/logfilter-render-example2.png)
 
 ### See Also
 

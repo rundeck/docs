@@ -13,17 +13,17 @@ Currently only project admins will be able to access the Schedules module.  In a
 In the Project Sidebar navigation there is now a link called **Schedules**:
 
 
-![Project Schedules Sidebar](~@assets/img/project-schedules-sidebar.png)
+![Project Schedules Sidebar](/assets/img/project-schedules-sidebar.png)
 
 You can click **New Schedule** to create a new Schedule:
 
-![New Schedule](~@assets/img/project-schedules-create-form.png)
+![New Schedule](/assets/img/project-schedules-create-form.png)
 
 Enter a **Name**, and optional **Description**.
 
 Under **Schedule** you can choose *Simple* or *Crontab*, exactly like Job Schedules.
 
-![Schedule Crontab](~@assets/img/project-schedules-create-crontab.png)
+![Schedule Crontab](/assets/img/project-schedules-create-crontab.png)
 
 :::tip
 For crontab format, see [this tutorial][crontab]
@@ -38,13 +38,13 @@ Click **Save**.
 The Schedule will appear in the list:
 
 
-![Schedule List](~@assets/img/project-schedules-list.png)
+![Schedule List](/assets/img/project-schedules-list.png)
 
 ## Schedule Actions
 
 The Actions menu for a Schedule will show these options:
 
-![Action Menu](~@assets/img/project-schedules-action-menu.png)
+![Action Menu](/assets/img/project-schedules-action-menu.png)
 
 ### Edit Schedule
 
@@ -54,7 +54,7 @@ Select **Edit Schedule** to modify the definition.
 
 Select **Assign To Job** to choose jobs that the Schedule applies to.
 
-![Assign Jobs to Schedule](~@assets/img/project-schedules-assign-jobs.png)
+![Assign Jobs to Schedule](/assets/img/project-schedules-assign-jobs.png)
 
 Assigned jobs will be shown on the left, and available jobs will be shown on the right.  You can search for jobs using the search fields to search by name or group.
 
@@ -64,7 +64,7 @@ Click **Unassign** to unassign an assigned Job.
 
 Click **Set Job Options...** on an assigned Job to enter Option values to run the Job.
 
-![Set Job Options](~@assets/img/project-schedules-set-job-options.png)
+![Set Job Options](/assets/img/project-schedules-set-job-options.png)
 
 You can enter options in the form `-optname value` separated by spaces. Click **Save** to save the Job option values.
 
@@ -74,7 +74,7 @@ Click **Save** to save the Job assignments.
 
 The Schedule List will indicate how many Jobs are assigned to the Schedule.  You can click on the Schedule to see the list of assigned Jobs.
 
-![Assigned Job List](~@assets/img/project-schedules-assigned-job-list.png)
+![Assigned Job List](/assets/img/project-schedules-assigned-job-list.png)
 
 ### Download Schedule
 
@@ -90,7 +90,7 @@ Select **Delete Schedule** to delete the Schedule.
 
 Click **Upload Schedule** to upload a YAML schedule definition.
 
-![Upload Schedule](~@assets/img/project-schedules-upload-schedule.png)
+![Upload Schedule](/assets/img/project-schedules-upload-schedule.png)
 
 ## Bulk Delete
 
@@ -98,7 +98,7 @@ If you want to delete multiple schedules, you can click the **Bulk Delete** butt
 
 Select one or more schedules and choose **Delete Selected Schedules**.
 
-![Bulk Delete](~@assets/img/project-schedules-bulk-delete.png)
+![Bulk Delete](/assets/img/project-schedules-bulk-delete.png)
 
 ## Schedule Definition
 

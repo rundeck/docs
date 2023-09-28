@@ -37,11 +37,11 @@ View our Twitch stream review of this release live on May 9. [Here’s the event
 
 * _Ephemeral Debug Container_ is also a Job Node Step plugin that allows users to attach an [ephemeral container](https://kubernetes.io/docs/concepts/workloads/pods/ephemeral-containers/) to running pods. This plugin provides a safe method for troubleshooting running pods that may not have debugging utilities in their container image. Capturing debug data from containers can reduce MTTR during incidents or time to identify issues during QA.
 
-![](~@assets/img/relnotes-412-k8s.png)
+![](/assets/img/relnotes-412-k8s.png)
 
 **New Plugin Suites for Google Cloud, Datadog, and Azure:** [Plugin Suites](/history/4_x/version-4.9.0.html) streamline the configuration of plugins. The Plugin Suites for Google Cloud, Datadog, and Azure reduce the number of steps required to configure plugins across an entire project—or the entire Process Automation or Runbook Automation instance. For example, previously a user would need to configure credentials for both the GCP Node Source and the GCP Job Step plugins. Now those credentials can be configured in a single location.
 
-![](~@assets/img/relnotes-412-gcp.png)
+![](/assets/img/relnotes-412-gcp.png)
 
 **New PagerDuty Incident Note notification plugin:** Now users can add a note to the Incident timeline in PagerDuty in response to the start, success, failure, or duration of a job. This helps users get an immediate feedback signal on the status of their Job without needing to add extra Job steps to their Job definitions.
 
@@ -49,7 +49,7 @@ View our Twitch stream review of this release live on May 9. [Here’s the event
 
 **Updated to Remote URL Job Options:** Now users can pre-populate Job Options Values from remote sources that require authentication. Remote URL Job Options supports multiple authentication methods for making HTTP/S calls to retrieve the list of Job Options. Users can select from the following authentication methods for the remote URL: Basic, API Key, and Bearer Token. The keys for each of these methods can be retrieved from Key Storage. Additionally, users can reference nested JSON elements from the returned payload of the remote URL. Click [here](/manual/job-options.html#remote-url-job-options) for the full documentation. 
 
-![](~@assets/img/relnotes-412-urloption.png)
+![](/assets/img/relnotes-412-urloption.png)
 
 #### Security fixes
 

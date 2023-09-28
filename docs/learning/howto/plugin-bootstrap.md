@@ -88,8 +88,8 @@ Deploy the new plugin on an existant instance or use a [fresh installation](/adm
 
 Once the Rundeck server is up, we must login and click the system menu gear icon, plugins submenu and click on Upload Plugin. AAA
 
-![Upload Plugin Menu](~@assets/img/upload-plugin-submenu.png)
+![Upload Plugin Menu](/assets/img/upload-plugin-submenu.png)
 
 Browse the plugin in the local filesystem or on the internet and install. 
 
-![Browse Plugin and Install](~@assets/img/hellojava-browse-plugin-n-install.png)
+![Browse Plugin and Install](/assets/img/hellojava-browse-plugin-n-install.png)

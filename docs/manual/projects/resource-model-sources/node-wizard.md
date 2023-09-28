@@ -4,7 +4,7 @@
 
 The Node Wizard allows Process Automation admins to manually create Node entries in the Rundeck database using a graphical interface fill in values.
 
-  ![](~@assets/img/nodewiz-source.png)
+  ![](/assets/img/nodewiz-source.png)
 
 ## Adding the Node Source
 To add the Node Wizard Resource Model source open the Project where the Node Source will be added and follow these steps:
@@ -22,11 +22,11 @@ To add the Node Wizard Resource Model source open the Project where the Node Sou
 2. Click **Edit Nodes**.
 3. Click **Modify** button in the _Node Wizard_ entry on the _Edit_ tab.
 
-![](~@assets/img/nodewiz-add-1.png)
+![](/assets/img/nodewiz-add-1.png)
 
 **4\.** Click **Add Node**
 
-![](~@assets/img/nodewiz-add-detail.png)
+![](/assets/img/nodewiz-add-detail.png)
 
 - _Node Name_: This is used as an ID field. Value can be any string. if other sources are added will also be used to tie those entries together with this one.
 - _Description_: A user friendly description of the Node.
@@ -38,7 +38,7 @@ To add the Node Wizard Resource Model source open the Project where the Node Sou
 
 The **Authentication** tab has some optional fields.  If left blank defaults from the project will be used.
 
-![](~@assets/img/nodewiz-add-authentication.png)
+![](/assets/img/nodewiz-add-authentication.png)
 
 - _Username_: Specify the user name used when authenticating to this Node.
 

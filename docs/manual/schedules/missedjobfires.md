@@ -22,7 +22,7 @@ Misfire detection is enabled by default.  If there is a need to change settings 
 1. Click **Add Config**
 1. Add the setting from the list below that needs to be changed.
 
-![Job Misfire Config](@assets/img/misfire-config-mgmt.png)
+![Job Misfire Config](/assets/img/misfire-config-mgmt.png)
 
 [More information about Configuration Management](/manual/configuration-mgmt/configmgmt.md)
 

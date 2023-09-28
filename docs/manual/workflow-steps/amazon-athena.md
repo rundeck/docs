@@ -15,7 +15,7 @@ To learn more about Amazon Athena, click [here](https://aws.amazon.com/athena).
 ## About the Amazon Athena Query Workflow Step Plugin
 
 The Athena Query Workflow Step plugin allows users to make queries through Athena to their S3 data as part of their automated-runbook workflows:
-<img style='border:1px solid #327af6' src="@assets/img/aws-athena-job-step-config.png" /><br>
+<img style='border:1px solid #327af6' src="/assets/img/aws-athena-job-step-config.png" /><br>
 
 ## Configuration
 
@@ -42,11 +42,11 @@ When defining the IAM Role for Runbook Automation or Process Automation, be sure
 5. Provide the S3 Bucket for the results of the SQL query into the **Bucket** field.<br><br>
 6. Select the **Region** where the Athena client and database resides.<br><br>
 7. Optionally provide the **Access Key ID** and **Secret Key** to set the AWS credential on a per Job basis - rather than at the Project or System levels.<br><br>
-<img style='border:1px solid #327af6' src="@assets/img/aws-athena-job-step-config.png" /><br>
+<img style='border:1px solid #327af6' src="/assets/img/aws-athena-job-step-config.png" /><br>
 
 ## Viewing Query Results
 
 When a query to Athena is made through Process Automation, the **first 50 rows** of results from that query are visible in the Log Output of the Job execution:
-<img style='border:1px solid #327af6' src="@assets/img/aws-athena-output.png" /><br>
+<img style='border:1px solid #327af6' src="/assets/img/aws-athena-output.png" /><br>
 
 To view the full log output of the Athena query, navigate to the link provided in the log-output.

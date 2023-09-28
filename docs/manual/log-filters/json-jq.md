@@ -12,24 +12,24 @@ The filter has 3 fields:
 
 The example below will filter the log results of a Rundeck API query. Using the HTTP Request Node Step and a working API token for your Rundeck user:
 
-![](@assets/img/logfilter-jsonjq-example1.png)
+![](/assets/img/logfilter-jsonjq-example1.png)
 
 The API results in our demo Rundeck instance look like this:
 
-![](@assets/img/logfilter-jsonjq-example2.png)
+![](/assets/img/logfilter-jsonjq-example2.png)
 
 Apply the JSON jq key/value Mapper filter to the HTTP Request node step:
 
-![](@assets/img/logfilter-jsonjq-example3.png)
+![](/assets/img/logfilter-jsonjq-example3.png)
 
 Now, when running the job, the log filter creates the following data variable:
 
-![](@assets/img/logfilter-jsonjq-example4.png)
+![](/assets/img/logfilter-jsonjq-example4.png)
 
 So it can be used in later job steps:
 
-![](@assets/img/logfilter-jsonjq-example5.png)
+![](/assets/img/logfilter-jsonjq-example5.png)
 
 With the results:
 
-![](@assets/img/logfilter-jsonjq-example6.png)
+![](/assets/img/logfilter-jsonjq-example6.png)

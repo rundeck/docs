@@ -20,15 +20,15 @@ Definitions on this page are case-sensitive. Copy and paste the code to ensure n
 
 When a job is saved, it is scheduled to run on a server node in the cluster. It is possible to see how many jobs are scheduled to run on each cluster member as well as each job specifically from the cluster manager page :
 
-![Cluster Members with jobs scheduled in](~@assets/img/cluster_members_scheduled_jobs.png)
+![Cluster Members with jobs scheduled in](/assets/img/cluster_members_scheduled_jobs.png)
 
-![Job scheduled in cluster member "3e" (192.168.56.23)](~@assets/img/job_remote_exec_node_assigned.png)
+![Job scheduled in cluster member "3e" (192.168.56.23)](/assets/img/job_remote_exec_node_assigned.png)
 
 After the job runs a couple of times it is possible to see that the executions were run on different cluster members because of the evaluation of the remote execution policy. See The example below of a job assigned to a cluster member *(3e)* and running a local command `hostname -I` on different servers depending on the remote execution policy:
 
-![Remote Execution on server "18" (192.168.56.21)](~@assets/img/job_remote_exec_run1.png)
+![Remote Execution on server "18" (192.168.56.21)](/assets/img/job_remote_exec_run1.png)
 
-![Remote Execution on server "08" (192.168.56.22)](~@assets/img/job_remote_exec_run2.png)
+![Remote Execution on server "08" (192.168.56.22)](/assets/img/job_remote_exec_run2.png)
 
 :::tip
 Although the remote execution policy is reevaluated on every execution, it is **also** possible to make cluster members **reevaluate** the remote execution policy **only once** when the job is scheduled. This is possible by setting to **false** the following property:

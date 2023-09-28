@@ -19,9 +19,9 @@ For all Process Automation environments, follow the steps below to download and 
 ### Create a project in your Process Automation environment:
 1. Click the **P** in the upper left corner to navigate to the Main Dashboard <br><br>
 2. Click the blue **New Project+** button:
-![Add Project](@assets/img/solutions-auto-diag-add-project.png)<br><br>
+![Add Project](/assets/img/solutions-auto-diag-add-project.png)<br><br>
 3. Copy the following into the **Project Name** field:  **`automated-diagnostics`**
-![Name Project](@assets/img/solutions-auto-diag-name-project.png)
+![Name Project](/assets/img/solutions-auto-diag-name-project.png)
     :::warning Heads Up
      Be sure to name the project **`automated-diagnostics`**. Otherwise, some of the prebuilt Jobs and Tours will not function properly.
     :::
@@ -31,7 +31,7 @@ For all Process Automation environments, follow the steps below to download and 
 ### Import the archive file into your new project:
 1. In your new project, click the **gears** in the lower left corner for **Project Settings**<br><br>
 2. Choose **Import Archive** from the menu:
-![Import Archive](@assets/img/solutions-auto-diag-import-archive.png)<br><br>
+![Import Archive](/assets/img/solutions-auto-diag-import-archive.png)<br><br>
 3. For the **Choose a Rundeck archive**, select the **`automated-diagnostics.jar`** from the downloaded resources.<br><br>
 4. Leave all of the import settings as their defaults<br><br>
 5. Click the green **Import** button

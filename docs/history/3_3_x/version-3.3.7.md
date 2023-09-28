@@ -11,7 +11,7 @@ Name: <span style="color: salmon"><span class="glyphicon glyphicon-lamp"></span>
 
 A new [Webhook Debug](/manual/webhooks/advanced-run-job.html#debugging) screen allows admins to review results from recently received webhook requests for setup and troubleshooting.  A visual rules evaluation screen highlights which conditions were met or missed.
 
-![](~@assets/img/wh-debug-batch-sample.png)
+![](/assets/img/wh-debug-batch-sample.png)
 
 ### DataDog Incidents
 

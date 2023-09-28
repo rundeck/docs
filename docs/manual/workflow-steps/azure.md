@@ -11,7 +11,7 @@ Credentials can be configured on a per Job Step basis, Project basis, or for the
 
 This job step allows users to copy files to and from their Azure storage. For example, files can be transferred from Azure to a Rundeck server or a specific node and from a node to Azure storage.
 
-![Azure - Copy](~@assets/img/azure_copy.png)
+![Azure - Copy](/assets/img/azure_copy.png)
 
 - **Storage Account**
 : This is the name of the Azure storage account that you wish to use. To find it, go to storage accounts and copy the name of the account with the files you wish to copy.
@@ -29,7 +29,7 @@ This job step allows users to copy files to and from their Azure storage. For ex
 
 This job step allows users to delete blobs inside of an Azure storage container.
 
-![Azure - Delete](~@assets/img/azure_delete.png)
+![Azure - Delete](/assets/img/azure_delete.png)
 
 - **Storage Account**
 : This is the name of the Azure storage account that you wish to use. To find it, go to storage accounts and copy the name of the account with the files you wish to delete.
@@ -47,7 +47,7 @@ This job step allows users to delete blobs inside of an Azure storage container.
 
 This job step allows users to list all of the contents of a storage container. So, when a container is specified, all of the files that are in that container will be listed following execution.
 
-![Azure - List](~@assets/img/azure_list.png)
+![Azure - List](/assets/img/azure_list.png)
 
 
 - **Storage Account**
@@ -63,7 +63,7 @@ This job step allows users to list all of the contents of a storage container. S
 
 This job step allows users to create a new Virtual Machine hosted by Azure. In order to do so, you need to specify information about the configuration of the virtual machine.
 
-![Azure - Create VM](~@assets/img/azure_create1.png)
+![Azure - Create VM](/assets/img/azure_create1.png)
 
 - **Client ID**
 : This is where you provide the Azure client ID. To find it, choose the application you wish to use and look for the Application ID. This is the same as the client ID.
@@ -83,7 +83,7 @@ This job step allows users to create a new Virtual Machine hosted by Azure. In o
 - **Certificate Password**
 : (Optional if the access key is not defined) This is the password for the Azure certificate.
 
-![Azure - Create VM - VM Properties](~@assets/img/azure_create2.png)
+![Azure - Create VM - VM Properties](/assets/img/azure_create2.png)
 
 - **Region**
 : This is the Azure region you wish to use for the Virtual Machine. An example is "East US."
@@ -109,7 +109,7 @@ This job step allows users to create a new Virtual Machine hosted by Azure. In o
 - **OS Type**
 : This is the operating system you want on the new Virtual Machine (Linux or Windows).
 
-![Azure - Create VM - Network Options](~@assets/img/azure_create3.png)
+![Azure - Create VM - Network Options](/assets/img/azure_create3.png)
 
 - **Primary Network**
 : This is the IP address of the primary network.
@@ -119,7 +119,7 @@ This job step allows users to create a new Virtual Machine hosted by Azure. In o
 
 ## Azure / VM / List
 
-![Azure - List VM - Credentials](~@assets/img/azure_list2.png)
+![Azure - List VM - Credentials](/assets/img/azure_list2.png)
 
 This job step allows users to get a list of all of the Virtual Machines being hosted by Azure.
 
@@ -141,7 +141,7 @@ This job step allows users to get a list of all of the Virtual Machines being ho
 - **Certificate Password**
 : (Optional if the access key is not defined) This is the password for the Azure certificate.
 
-![Azure - List VM - VM Properties](~@assets/img/azure_list3.png)
+![Azure - List VM - VM Properties](/assets/img/azure_list3.png)
 
 - **Region**
 : This is the region of the VMs you want listed.
@@ -159,7 +159,7 @@ This job step allows users to get a list of all of the Virtual Machines being ho
 
 This job step allows users to start a Virtual Machine that is being hosted by Azure.
 
-![Azure - Start VM - Credentials](~@assets/img/azure_start1.png)
+![Azure - Start VM - Credentials](/assets/img/azure_start1.png)
 
 - **Client ID**
 : This is where you provide the Azure client ID. To find it, choose the application you wish to use and look for the Application ID. This is the same as the client ID.
@@ -179,7 +179,7 @@ This job step allows users to start a Virtual Machine that is being hosted by Az
 - **Certificate Password**
 : (Optional if the access key is not defined) This is the password for the Azure certificate.
 
-![Azure - Start VM - VM Properties](~@assets/img/azure_start2.png)
+![Azure - Start VM - VM Properties](/assets/img/azure_start2.png)
 
 - **Resource Group**
 : This is the resource group for the VMs you want listed. To see the different resource groups you have, search for "resource groups" and navigate to that page.
@@ -191,7 +191,7 @@ This job step allows users to start a Virtual Machine that is being hosted by Az
 
 This job step allows users to stop a Virtual Machine that is being hosted by Azure.
 
-![Azure - Stop VM - Credentials](~@assets/img/azure_stop1.png)
+![Azure - Stop VM - Credentials](/assets/img/azure_stop1.png)
 
 - **Client ID**
 : This is where you provide the Azure client ID. To find it, choose the application you wish to use and look for the Application ID. This is the same as the client ID.
@@ -211,7 +211,7 @@ This job step allows users to stop a Virtual Machine that is being hosted by Azu
 - **Certificate Password**
 : (Optional if the access key is not defined) This is the password for the Azure certificate.
 
-![Azure - Stop VM - VM Properties](~@assets/img/azure_stop2.png)
+![Azure - Stop VM - VM Properties](/assets/img/azure_stop2.png)
 
 - **Resource Group**
 : This is the resource group for the VMs you want listed. To see the different resource groups you have, seach for "resource groups" and navigate to that page.

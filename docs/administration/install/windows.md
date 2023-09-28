@@ -29,7 +29,7 @@ java -jar rundeck-{{{rundeckVersionFull}}}.war
 
 This step may take up to 1-2 minutes depending on system performance. When Rundeck is ready, it will be indicated in the Powershell window:
 
-![Windows launcher](~@assets/img/windows-launcher.png)
+![Windows launcher](/assets/img/windows-launcher.png)
 
 After generation is complete, stop the process with `<Crtl+C>` keys and continue with configuration.
 
@@ -116,7 +116,7 @@ To launch, type start_rundeck.bat at the command prompt. To stop Rundeck, you ca
 
 By default, Rundeck will be available on TCP port 4440. To access, go to the following URL on your web browser: `http://servername:4440` (when "servername" is the name of your Windows server).
 
-![Login page](~@assets/img/login-page.png)
+![Login page](/assets/img/login-page.png)
 
 The default username and password is "admin".
 
@@ -162,17 +162,17 @@ Now, Rundeck is configured as a Service and can be managed with rundeckw.exe
 ##### Set JAVA_HOME in windows OS
 1. Go to *Advanced System Settings*, type "Advanced System Settings" in the windowssearch box and click on the tool.
    
-![Advanced System Settings in search bar](~@assets/img/win-javahome-1.png)
+![Advanced System Settings in search bar](/assets/img/win-javahome-1.png)
 
 2. Select the *Advanced* tab, and click on *Environment Variables*
 
-![Find Environment Variables section](~@assets/img/win-javahome-2.png)
+![Find Environment Variables section](/assets/img/win-javahome-2.png)
 
 3. In *System variables*, click *New* and add a variable with
 Variable Name: JAVA_HOME
 Variable Value: jdk installation directory
 
-![Set JAVA_HOME system variable](~@assets/img/win-javahome-3.png)
+![Set JAVA_HOME system variable](/assets/img/win-javahome-3.png)
 
 :::warning
 Don’t include the \bin directory, only the JDK path. Eg.:

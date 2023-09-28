@@ -59,14 +59,14 @@ Options can be created for any stored Job. The Job edit page contains
 an area displaying a summary to existing options and a link to add new
 ones or edit existing ones.
 
-![Add option link](~@assets/img/fig0501.png)
+![Add option link](/assets/img/fig0501.png)
 
 The option summary shows each option and its default value if it defines
 them.
 
 Clicking the "edit" link opens the options editor.
 
-![Option editor](~@assets/img/fig0503.png)
+![Option editor](/assets/img/fig0503.png)
 
 The options editor displays an expanded summary for each defined
 option. Each option is listed with its usage summary,
@@ -94,7 +94,7 @@ existing ones can be changed by pressing their "edit" link.
 
 Choose "Text" from the Option Type:
 
-![Option edit form](~@assets/img/fig0502.png)
+![Option edit form](/assets/img/fig0502.png)
 
 The option definition form is organized into several areas:
 
@@ -144,7 +144,7 @@ choose "Yes" to indicate that a blank value is not allowed.
 
      If a Default Value is set, then it will be used when no value is provided, unless a blank value is allowed and is explicitly specified.
 
-![Option Multivalued Form](~@assets/img/fig-option-multival.png)
+![Option Multivalued Form](/assets/img/fig-option-multival.png)
 
 Multi-valued
 
@@ -164,7 +164,7 @@ dismiss the changes and close the form.
 
 Usage (see below)
 
-![Option Usage](~@assets/img/fig-option-usage.png)
+![Option Usage](/assets/img/fig-option-usage.png)
 
 ### Option timestamp variable
 
@@ -182,7 +182,7 @@ This variable also allows you to add or remove days as you can see below.
 
 Choose "File" from the Option Type:
 
-![File Option Edit Form](~@assets/img/fig-newoption-file.png)
+![File Option Edit Form](/assets/img/fig-newoption-file.png)
 
 The Option Name and Description can be entered.
 
@@ -213,7 +213,7 @@ A Job named "hello" and has an option named "message".
 
 The "hello" Job option signature would be: `-message <>`.
 
-![Option usage](~@assets/img/fig0504.png)
+![Option usage](/assets/img/fig0504.png)
 
 The arguments passed to the script are defined as `${option.message}`.
 
@@ -230,7 +230,7 @@ echo message=@option.message@  ;# access message via replacement token syntax
 When the user runs the "hello" job they will be prompted for the
 "message" value.
 
-![Option entered](~@assets/img/fig0505.png)
+![Option entered](/assets/img/fig0505.png)
 
 Let's assume they chose the word "howdy" in response.
 The output of the Job will be:
@@ -444,13 +444,13 @@ will be loaded as the option value when one is not supplied.
 
 The path must indicate a stored `password` entry in the storage facility.
 
-![Storage Path for Secure Option](~@assets/img/jobs-options-secure-storage-path.png)
+![Storage Path for Secure Option](/assets/img/jobs-options-secure-storage-path.png)
 
 ## Option Model Provider
 
 ### Remote URL Job Options
 
-![Remote URL Job Options](@assets/img/remote-url-job-options.png)<br>
+![Remote URL Job Options](/assets/img/remote-url-job-options.png)<br>
 
 Remote URL Job Options provides a method for retrieving a list of Job Option values from a remote service or file.
 
@@ -485,14 +485,14 @@ allowed values is retrieved from the specified URL:
 1. In the **Workflow** configuration of a Job, click **+ Add an option**
 2. In the **Allowed Values** section, select **Remote URL**
 3. Place the URL for the remote service or the file-location into the **Remote URL** field:
-   ![url](@assets/img/remote-url-job-options-url.png)<br>
+   ![url](/assets/img/remote-url-job-options-url.png)<br>
    ::: tip
    File URL scheme is `file:/path/to/job/options/optA.json`
    :::
 4. (Optional) If the remote URL service requires authentication, select an **Authentication Type**
    - Supported authentication methods include: **Basic**, **API Key**, and **Bearer Token**.
    - Depending on the **Authentication Type** select, place the relevant credentials into the associated fields:
-   ![Auth Methods](@assets/img/remote-url-options-auth-methods.png)
+   ![Auth Methods](/assets/img/remote-url-options-auth-methods.png)
    - Retrieve the secret for the credentials from **Key Storage** by clicking **Select** next to the **Token** or **Password** field - depending on the auth method selected.
 
 
@@ -568,7 +568,7 @@ For example, if the returned JSON is:
 
 Then, the list of key-value pairs from **`key2`** can be accessed with **`$.key2`**:
 
-![Nested JSON](@assets/img/remote-url-json-path.png)<br>
+![Nested JSON](/assets/img/remote-url-json-path.png)<br>
 
 You can configure timeouts globally as described in [Configuration - Job Remote Option URL connection parameters](/administration/configuration/config-file-reference.md#rundeck-config.properties).
 
@@ -700,7 +700,7 @@ for this option will be reloaded.
 If the request for the remote option values fails, then the GUI form
 will display a warning message:
 
-![](~@assets/img/fig0901.png)
+![](/assets/img/fig0901.png)
 
 In this case, the option will be allowed to use a textfield to set the value.
 

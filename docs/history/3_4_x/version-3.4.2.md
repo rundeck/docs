@@ -21,13 +21,13 @@ Use cases for this feature cover a broad range of ideas like API consolidation, 
 
 [Check out the documentation for how to enable the incubating feature.](/manual/execution-lifecycle/result-data.html)
 
-![Result Data Output](@assets/img/relnotes-342-jobdata.png)
+![Result Data Output](/assets/img/relnotes-342-jobdata.png)
 
 ### Ruleset Visualization [Incubating] (Enterprise)
 
 Rulesets can be complicated to write. The Ruleset visualization offers a view of how the Workflow will progress based on the rules written. This feature is enabled by default on 3.4.2 and we have plans to expand the functionality in future releases. Join the discussion on the [Rundeck Forums](https://community.pagerduty.com). (Look for the _Ruleset Visualization - Incubating_ post)
 
-![Ruleset Visualization](@assets/img/relnotes-342-rulesetvisual.gif)
+![Ruleset Visualization](/assets/img/relnotes-342-rulesetvisual.gif)
 
 [Click here learn more about the Ruleset Strategy available in Rundeck Enterprise.](/manual/workflow-strategies/ruleset.md)
 
