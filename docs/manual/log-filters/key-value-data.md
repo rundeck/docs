@@ -30,15 +30,15 @@ Under the Advanced section, there is also an Invalid Character Pattern. This is 
 
 ## Examples
 
-![](/assets/img/logfilter-keyvalue-example1.png)
+![](@assets/img/logfilter-keyvalue-example1.png)
 
 The log filter in this example is fully default, with the Log Data field checked:
 
-![](/assets/img/logfilter-keyvalue-example2.png)
+![](@assets/img/logfilter-keyvalue-example2.png)
 
 The output when the job runs looks like this:
 
-![](/assets/img/logfilter-keyvalue-example3.png)
+![](@assets/img/logfilter-keyvalue-example3.png)
 
 In later job steps, refer to `$data.EXIP` in commands, or `@data.EXIP@` in scripts for the _10.1.1.2_ value.
 

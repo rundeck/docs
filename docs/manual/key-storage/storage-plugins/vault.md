@@ -37,13 +37,13 @@ You can use these settings for an existing vault storage.
 
 Example configuration using the *System Configuration* module:
 
-![Vault Storage Config](/assets/img/keystorage-vault-config1.png)
+![Vault Storage Config](@assets/img/keystorage-vault-config1.png)
 
-![Vault Storage Config](/assets/img/keystorage-vault-config2.png)
+![Vault Storage Config](@assets/img/keystorage-vault-config2.png)
 
-![Vault Storage Config](/assets/img/keystorage-vault-config3.png)
+![Vault Storage Config](@assets/img/keystorage-vault-config3.png)
 
-![Vault Storage Config](/assets/img/keystorage-vault-config4.png)
+![Vault Storage Config](@assets/img/keystorage-vault-config4.png)
 
 :::
 ::: tab rundeck-config.properties

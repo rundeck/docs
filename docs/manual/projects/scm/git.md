@@ -14,11 +14,11 @@ Versions older than 4.5 cannot use `Private Key` method to authenticate to Githu
 
 _Project Settings > Setup SCM_
 
-![Setup SCM Option](/assets/img/scm-git-conf-location.png)
+![Setup SCM Option](~@assets/img/scm-git-conf-location.png)
 
 ## Git Export Configuration
 
-![Setup export button](/assets/img/scm-git-conf-export-button.png)
+![Setup export button](~@assets/img/scm-git-conf-export-button.png)
 
 ### Committer Configuration
 
@@ -74,7 +74,7 @@ Changing this value modifies the file definition and files need to be pushed aga
     Git plugin will be disabled from the project if a user doesn't have permissions to access the password/key configured in the plugin to access the desired repository, leaving in the GUI and logs messages like the following:
 
     _GUI_:
-    ![Disabled SCM in Jobs Section](/assets/img/SCM-403.png)
+    ![Disabled SCM in Jobs Section](~@assets/img/SCM-403.png)
     
     _Console_:
     ```bash
@@ -96,7 +96,7 @@ Use the following command to generate the ssh key pair:
 
 ## Git Import Configuration
 
-![Setup import button](/assets/img/scm-git-conf-import-button.png)
+![Setup import button](~@assets/img/scm-git-conf-import-button.png)
 
 ### Git Repository Configuration
 

@@ -9,7 +9,7 @@ Health Checks allow the ability to check the *Health Status* of Nodes periodical
 It can show the heatlh status visually in the GUI, and use the status to filter out unhealthy nodes when running Jobs.
 
 
-![Health Checks](/assets/img/healthchecks-health-status-ui.png)
+![Health Checks](~@assets/img/healthchecks-health-status-ui.png)
 
 Configure how to determine the Health Statuses of Nodes in Rundeck, using a Command or Script.
 
@@ -66,7 +66,7 @@ Each Health Check will result in a Health Status:
 
 1.  Visit the "Project Settings... > Edit Nodes" page.  Under the Configuration tab, check the "Health Checks Enabled" checkbox:
 
-	![Health Checks Enabled](/assets/img/healthchecks-enabled.png)
+	![Health Checks Enabled](~@assets/img/healthchecks-enabled.png)
 
 	Alternately, in the project configuration properties file, add the configuration:
 
@@ -78,34 +78,34 @@ Each Health Check will result in a Health Status:
 
 2. Visit the sidebar link "Health Checks"
 
-	![Sidebar - Health Checks Link](/assets/img/healthchecks-sidebar-link.png)
+	![Sidebar - Health Checks Link](~@assets/img/healthchecks-sidebar-link.png)
 
 3. Click on the "Configure" Tab, and add a Health Check Plugin.  Here we add the simple Command Health Check plugin, and leave the default command of `uname`. Click "Save" and "Save" again.
 
-	![Configure - Add Health Check Plugin](/assets/img/healthchecks-add-healthcheck-plugin.png)
+	![Configure - Add Health Check Plugin](~@assets/img/healthchecks-add-healthcheck-plugin.png)
 
 
 4.  Return to the Nodes Tab to see a list of nodes.
 
 	There may be a message saying "Unauthorized: cannot execute on node".  If so, add an ACL Policy to allow the Health Check System to run commands and scripts on the target nodes. See [Access Control](#access-control).
 
-	![Health Checks - Unauthorized Warning](/assets/img/healthchecks-unauthorized.png)
+	![Health Checks - Unauthorized Warning](~@assets/img/healthchecks-unauthorized.png)
 
 5. Once Access Control is configured, the checks should be showing up and healthy:
 
-	![Health Checks - Healthy checks](/assets/img/healthchecks-healthy-checks.png)
+	![Health Checks - Healthy checks](~@assets/img/healthchecks-healthy-checks.png)
 
 6. Return to the "Project Settings... > Edit Nodes" page. Under "Enhancers" click "Add a new Node Enhancer"  and choose "Health Status".
 
-	![Health Checks - Add Node Enhancer](/assets/img/healthchecks-add-node-enhancer.png)		
+	![Health Checks - Add Node Enhancer](~@assets/img/healthchecks-add-node-enhancer.png)		
 
 	Option to modify the settings, or keep the defaults.  Make sure "UI Status Attributes" is added, to add UI indicators. Then click "Save" and "Save" again.
 
-	![Health Checks - Add Health Status Enhancer](/assets/img/healthchecks-add-health-status-enhancer.png)			
+	![Health Checks - Add Health Status Enhancer](~@assets/img/healthchecks-add-health-status-enhancer.png)			
 
 7. Visit the "Nodes" link in the Sidebar. There will be healthy status indicators for the nodes:
 
-	![Health Checks - Node Health Status UI](/assets/img/healthchecks-health-status-ui.png)			
+	![Health Checks - Node Health Status UI](~@assets/img/healthchecks-health-status-ui.png)			
 	
 :::tip
 In order to avoid "TaskRejectedException" when having health check enabled with a large number of nodes (over 525). It is recommended to increase the health check queue and pool size to at least match the node list size.
@@ -129,17 +129,17 @@ rundeckpro.healthcheck.statusService.maxPoolSize=36
 
 Use the "Exclude Filter" in Job definitions to filter out unhealthy nodes, while still indicating in the UI those nodes will be excluded.  Make sure to set "Show Excluded Nodes" to "Yes". If some nodes are unhealthy it will show the node but it will be crossed out:
 
-![Health Checks - Job Definition - Exclude Unhealthy Nodes](/assets/img/healthchecks-job-edit-exclude-filter.png)
+![Health Checks - Job Definition - Exclude Unhealthy Nodes](~@assets/img/healthchecks-job-edit-exclude-filter.png)
 
 When a Job is run, the excluded nodes will be indicated and automatically deselected.  Note: if "Show Excluded Nodes" is set to "No", the excluded nodes will not be shown at all.
 
-![Health Checks - Run Job - Exclude Unhealthy Nodes](/assets/img/healthchecks-run-job-excluded-filter.png)
+![Health Checks - Run Job - Exclude Unhealthy Nodes](~@assets/img/healthchecks-run-job-excluded-filter.png)
 
 ## Refresh Cache Before Execution
 
 Enable the "Refresh HealthChecker Cache" plugin to force healthcheck cache to refresh before job execution starts.
 
-![Refresh HealthChecker cache](/assets/img/refresh_healthcheck_cache_exec_lifecycle_plugin.png)
+![Refresh HealthChecker cache](~@assets/img/refresh_healthcheck_cache_exec_lifecycle_plugin.png)
 
 ## Access Control
 

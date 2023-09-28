@@ -39,7 +39,7 @@ It is important to configure the azure resource model plugin before using these 
 
 ### Azure / Node / Delete
 
-![Azure - Delete Node](/assets/img/azure-node-delete.png)
+![Azure - Delete Node](~@assets/img/azure-node-delete.png)
 
 - **Async**
 : Should be set to true if the vm should be deleted asynchronously.
@@ -50,28 +50,28 @@ It is important to configure the azure resource model plugin before using these 
 
 ### Azure / Node / Start
 
-![Azure - Delete Node](/assets/img/azure-node-start.png)
+![Azure - Delete Node](~@assets/img/azure-node-start.png)
 
 - **Async**
 : Should be set to true if the vm should be started asynchronously.
 
 ### Azure / Node / Stop
 
-![Azure - Delete Node](/assets/img/azure-node-stop.png)
+![Azure - Delete Node](~@assets/img/azure-node-stop.png)
 
 - **Async**
 : Should be set to true if the vm should be stopped asynchronously.
 
 ### Azure / Node / Restart
 
-![Azure - Delete Node](/assets/img/azure-node-restart.png)
+![Azure - Delete Node](~@assets/img/azure-node-restart.png)
 
 - **Async**
 : Should be set to true if the vm should be restart asynchronously.
 
 ### Azure / Node / Capture
 
-![Azure - Delete Node](/assets/img/azure-node-capture2.png)
+![Azure - Delete Node](~@assets/img/azure-node-capture2.png)
 
 - **Async**
 : Should be set to true if the vm should be captured asynchronously.

@@ -10,7 +10,7 @@ Make a Enterprise version of this CloudFormation template: https://osgav.run/pag
 
 This document provides instructions to install Process Automation in an HA (cluster) configuration on AWS, taking advantage of ELB, RDS, and S3 for scale and availability.
 
-![Process Automation HA architecture on AWS](/assets/img/aws-architecture.png)
+![Process Automation HA architecture on AWS](~@assets/img/aws-architecture.png)
 
 ## AWS Setup
 
@@ -35,9 +35,9 @@ Create a Role to allow the Rundeck EC2 and S3 plugins to access AWS API so we do
 - Add the role name: rundeckpro-ec2-instance-role
 - Attach the following policies: AmazonS3FullAccess, AmazonEc2ReadOnlyAccess
 
-![](/assets/img/aws-iam.png)
-![](/assets/img/aws-iam-policy1.png)
-![](/assets/img/aws-iam-policy2.png)
+![](~@assets/img/aws-iam.png)
+![](~@assets/img/aws-iam-policy1.png)
+![](~@assets/img/aws-iam-policy2.png)
 
 For further information, see [http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#having-ec2-create-your-key-pair](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#having-ec2-create-your-key-pair)
 
@@ -49,7 +49,7 @@ Several security groups are defined to manage network access between the layers 
 - In the navigation pane, choose Security Groups.
 - Choose Create Security Group.
 
-![](/assets/img/aws-sg.png)
+![](~@assets/img/aws-sg.png)
 
 Create the follow groups:
 
@@ -64,7 +64,7 @@ outbound:
 
 - type: all, protocol: all, port: all, destination 0.0.0.0/0
 
-![](/assets/img/aws-sg-elb.png)
+![](~@assets/img/aws-sg-elb.png)
 
 **sg:rundeck-instances**
 
@@ -77,7 +77,7 @@ outbound:
 
 - type: all, protocol: all, port: all, destination 0.0.0.0/0
 
-![](/assets/img/aws-sg-instances.png)
+![](~@assets/img/aws-sg-instances.png)
 
 **sg:rundeck-rds**
 
@@ -85,7 +85,7 @@ inbound:
 
 - type: mysql, protocol TCP, port: 3306, source: sg-rundeck-instances
 
-![](/assets/img/aws-sg-rds.png)
+![](~@assets/img/aws-sg-rds.png)
 
 For further information, see [http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html#creating-security-group](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html#creating-security-group)
 
@@ -95,11 +95,11 @@ Create a folder in the S3 bucket to store logs called rundeckpro. You will speci
 
 Go into the AWS Management Console and open the Amazon S3 console at [https://console.aws.amazon.com/s3](https://console.aws.amazon.com/s3)
 
-![](/assets/img/aws-s3.png)
+![](~@assets/img/aws-s3.png)
 
 Set Policy:
 
-![](/assets/img/aws-s3-policy.png)
+![](~@assets/img/aws-s3-policy.png)
 
 ```json
 {
@@ -127,11 +127,11 @@ Create an RDS mysql instance, rundeck-rds and place it in the rundeck-rds securi
 - In the navigation pane, click Instances.
 - Click Launch DB Instance to start the Launch DB Instance Wizard.
 
-![](/assets/img/aws-rds.png)
+![](~@assets/img/aws-rds.png)
 
 - Complete the advanced settings:
 
-![](/assets/img/aws-rds-advanced.png)
+![](~@assets/img/aws-rds-advanced.png)
 
 For further information, see [http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CreateInstance.html](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CreateInstance.html)
 
@@ -143,19 +143,19 @@ Create two EC2 instances for the Process Automation cluster. Specify the followi
 - From the console dashboard, choose Launch Instance.
 - Select the AMI image: Amazon Linux AMI 2015.03.0 x86_64 HVM GP2
 
-![](/assets/img/aws-ec2.png)
+![](~@assets/img/aws-ec2.png)
 
 - In the configure instance details, choose the IAM Role: rundeckpro-ec2-instance-role
 
-![](/assets/img/aws-ec2-iam.png)
+![](~@assets/img/aws-ec2-iam.png)
 
 - In the configure Security-group, choose the rundeck-instances
 
-![](/assets/img/aws-ec2-sg.png)
+![](~@assets/img/aws-ec2-sg.png)
 
 - Finally, add the key pair name: rundeckpro-ec2user
 
-![](/assets/img/aws-ec2-key.png)
+![](~@assets/img/aws-ec2-key.png)
 
 For further information, see [http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html#ec2-launch-instance_linux](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html#ec2-launch-instance_linux)
 
@@ -171,20 +171,20 @@ Create the ELB called rundeckpro-ha-elb. If you defined the HTTPS listener, you 
   - 80 (HTTP) forwarding to 4440 (HTTP)
   - 443 (HTTPS, required certificate: rundeckpro-cert) forwarding to 4440 (HTTP)
 
-![](/assets/img/aws-elb.png)
+![](~@assets/img/aws-elb.png)
 
 - Select the security group rundeck-elb
 
-![](/assets/img/aws-elb-sg.png)
+![](~@assets/img/aws-elb-sg.png)
 
 - Add the two EC2 instances to the ELB.
 
-![](/assets/img/aws-elb-ec2.png)
+![](~@assets/img/aws-elb-ec2.png)
 
 - Add Stickiness: cookieName='JSESSIONID'
 
-![](/assets/img/aws-elb-stickiness.png)
+![](~@assets/img/aws-elb-stickiness.png)
 
 - Enable access logs: S3 Location: rdpro-logs
 
-![](/assets/img/aws-elb-logs.png)
+![](~@assets/img/aws-elb-logs.png)

@@ -24,9 +24,9 @@ Runner matching and filtering supports Job Options - `${option.NAME}`, which all
 
 Here's an example of a job option and runner filter configurations:
 
-![Job Option](/assets/img/dynamic_runner_selection_jobOption.png)
+![Job Option](@assets/img/dynamic_runner_selection_jobOption.png)
 
-![Runner Filter](/assets/img/Dynamic_runner_selection_runnerFilter.png)
+![Runner Filter](@assets/img/Dynamic_runner_selection_runnerFilter.png)
 
 ## Restricting plugin execution
 
@@ -57,7 +57,7 @@ allowedPlugins:
     - WinRMCheck
 ```
 If a job is configured to run any of the listed plugins on a Local Runner, a runtime error will be raised as illustrated below:
-![Runtime error with a plugin restricted to run Remote only](/assets/img/runner-error-remote-only.png)
+![Runtime error with a plugin restricted to run Remote only](@assets/img/runner-error-remote-only.png)
 
 ## Proxying Runner connections
 

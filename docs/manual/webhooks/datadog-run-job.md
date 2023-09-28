@@ -9,7 +9,7 @@
   1. To get started, go to Webhooks and select "add."
   2. Click on the drop down menu titled "Choose Webhook Plugin" and select Datadog.
 
-  ![Datadog Webhook - General](/assets/img/wh-datadog-general.png)
+  ![Datadog Webhook - General](~@assets/img/wh-datadog-general.png)
 
   ### General
 
@@ -28,7 +28,7 @@
   - **Enabled**
   : This is whether or not the webhook is enabled. To work properly, the enabled box needs to be checked.
 
-  ![Datadog Webhook - Rule](/assets/img/wh-datadog-rule.png)
+  ![Datadog Webhook - Rule](~@assets/img/wh-datadog-rule.png)
 
   ### Rules
 

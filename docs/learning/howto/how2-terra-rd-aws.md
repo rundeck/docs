@@ -201,7 +201,7 @@ resource "aws_security_group_rule" "all" {
 This file defines the EC2 Rundeck instance. Below are some interesting parameters.<br>
 The `ami` parameter is the EC2 base image. This example will be deployed to the AWS `eu-north-1` region, so the `ami-0bcf2639b551f6b31` AMI must be available in that specific region.<br>
 
-![](/assets/img/terra-aws1.png)
+![](~@assets/img/terra-aws1.png)
 
 The same applies to the `instance_type` parameter, the image must be available in the desired region.<br>
 The `user_data` section (explained [here](https://registry.terraform.io/providers/serverscom/serverscom/latest/docs/guides/user-data)) is a script that updates the whole OS, installs, configures, and launches Rundeck.<br>
@@ -270,23 +270,23 @@ output "public_ip" {
 ### Initializing the Terraform Provider
 The first step to running the Terraform code is to download the AWS provider by using the `terraform init `command. Note that this only happens once.<br>
 
-![](/assets/img/terra-aws2.png)
+![](~@assets/img/terra-aws2.png)
 
 ### Testing the environment before deploying
 Test all resources using the `terraform validate` command. This command checks all files to make sure there are no syntax problems.<br>
 
-![](/assets/img/terra-aws3.png)
+![](~@assets/img/terra-aws3.png)
 
 View all changes using the `terraform plan` command.<br>
 
-![](/assets/img/terra-aws4.png)
+![](~@assets/img/terra-aws4.png)
 
 
 ### Deploying Rundeck
 To deploy Rundeck, use `terraform apply`, check all changes, and type `yes` if all is ok to proceed.<br>
 
-![](/assets/img/terra-aws5.png)
-![](/assets/img/terra-aws6.png)
+![](~@assets/img/terra-aws5.png)
+![](~@assets/img/terra-aws6.png)
 
 Now the Rundeck instance is running at the EC2 instance.<br>
 

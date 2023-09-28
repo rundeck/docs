@@ -21,15 +21,15 @@ to your rundeck-config.properties file.
 
 Each repository that is enabled will show up in the Rundeck user interface when you click the gear icon then go to Plugins>Find Plugin.
 
-![Find Plugins](/assets/img/plugins-find.png)
+![Find Plugins](~@assets/img/plugins-find.png)
 
 When you go to the plugin page you will see each repository and the plugins they provide.
 
 The plugins are each represented by a card. The following image explains the content of the plugin card.  
 
-![Plugin Card](/assets/img/plugin-card.png)
+![Plugin Card](~@assets/img/plugin-card.png)
 
-If you have the official repository enabled you will see some plugins with an install button. These plugins can be immediately installed by clicking the `Install` button. When the plugin is installed, it will be pulled from the Rundeck repository and copied into the correct location in your Rundeck installation. After installation, it is ready for immediate use. Some plugins do not have an install button. Manual installation is required for those plugins. To install those plugins you need to click on the source link icon ![source link icon](/assets/img/repo-source-icon.png), which will take you to the plugins source page, and there you can check for instructions regarding the install of that plugin.
+If you have the official repository enabled you will see some plugins with an install button. These plugins can be immediately installed by clicking the `Install` button. When the plugin is installed, it will be pulled from the Rundeck repository and copied into the correct location in your Rundeck installation. After installation, it is ready for immediate use. Some plugins do not have an install button. Manual installation is required for those plugins. To install those plugins you need to click on the source link icon ![source link icon](~@assets/img/repo-source-icon.png), which will take you to the plugins source page, and there you can check for instructions regarding the install of that plugin.
 
 Installable plugins are also un-installable. Just click the `Uninstall` button to uninstall the plugin. This will delete the plugin from the correct location immediately.
 

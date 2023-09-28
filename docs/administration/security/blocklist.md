@@ -28,7 +28,7 @@ providerNameEntries:
 
 File name entries can be found on `rundeck/libext`.
 
-![Plugins File Names](/assets/img/blocklist-filename.png)
+![Plugins File Names](~@assets/img/blocklist-filename.png)
 
 Use only the plugin file name without the version or file extension as shown in the previous example.
 
@@ -45,13 +45,13 @@ providerNameEntries:
 
 Provider names can be found by navigating to the System Menu > Plugins > Installed Plugins.  Click on the information icon for the plugin and find the provider name in the upper left.
 
-![Provider Name](/assets/img/blocklist-providername.png)
+![Provider Name](~@assets/img/blocklist-providername.png)
 
 Once the providers are all listed, add the following config entry to rundeck-config.properties with the path to the file just created:
 ```rundeck.plugins.providerBlockListFile=/path/to/user/blocklist```
 
 If the plugin was correctly blocked with the providerNameEntries you will see the following messages:
 
-![On Console](/assets/img/blocklist-console-message.png)
+![On Console](~@assets/img/blocklist-console-message.png)
 
-![On GUI](/assets/img/blocklist-gui-message.png)
+![On GUI](~@assets/img/blocklist-gui-message.png)

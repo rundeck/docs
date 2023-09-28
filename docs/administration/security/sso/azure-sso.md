@@ -8,13 +8,13 @@ Rundeck can be configured to use Azure Active Directory authentication by regist
 
 The first thing to do is create a new application registration in Azure.
 
-![](/assets/img/sso-azure-01-appreg1.jpg)
+![](~@assets/img/sso-azure-01-appreg1.jpg)
 
 1. Begin by opening Azure Active Directory in a browser
 2. Select **"App registrations"** on the left
 3. Select **"+ New registration"** near the top
 
-![](/assets/img/sso-azure-02-appreg2.jpg)
+![](~@assets/img/sso-azure-02-appreg2.jpg)
 
 1. Enter **"PagerDuty Process Automation On-Prem"** for the Name (or any name you like)
 2. Leave the default selection for the Support account types
@@ -27,7 +27,7 @@ The first thing to do is create a new application registration in Azure.
 
 Next, add the required permissions in Azure.
 
-![](/assets/img/sso-azure-03-apiperm1.jpg)
+![](~@assets/img/sso-azure-03-apiperm1.jpg)
 
 1. Select **"API permissions"** on the left
 2. Select **"+ Add a permission"**
@@ -38,7 +38,7 @@ Next, add the required permissions in Azure.
 7. Select **"profile"** to enable the permission
 8. Select **"Add permission"** at the bottom
 
-![](/assets/img/sso-azure-04-apiperm2.jpg)
+![](~@assets/img/sso-azure-04-apiperm2.jpg)
 
 1. Select **"API permissions"** on the left
 2. Select **"+ Add a permission"**
@@ -53,14 +53,14 @@ Next, add the required permissions in Azure.
 
 Next, create an application secret (ID & password) that will be used in the Rundeck configuration.  Note, if you lose the secret value/password, you can delete the existing secret and create a new one.
 
-![](/assets/img/sso-azure-05-secret1.jpg)
+![](~@assets/img/sso-azure-05-secret1.jpg)
 
 1. Select **"Certificates & secrets"** on the left
 2. Select **"+ New client secret"**
 3. Enter **"PagerDuty Process Automation On-Prem"** for the Description (or any name you choice)
 4. Select **"Add"** at the bottom
 
-![](/assets/img/sso-azure-06-secret3.png)
+![](~@assets/img/sso-azure-06-secret3.png)
 
 1. Copy the **Value** and store it someplace. You will use it as the clientSecret (password) when configuring Rundeck. (Hint: use the Copy to clipboard button)
 
@@ -68,7 +68,7 @@ Next, create an application secret (ID & password) that will be used in the Rund
 
 Last, capture the Directory (tenant) ID to use in configuring Rundeck.
 
-![](/assets/img/sso-azure-07-dirid2.png)
+![](~@assets/img/sso-azure-07-dirid2.png)
 
 1. Click **"Overview"** on the left
 2. Copy the **"Directory (tenant) ID"** and store it someplace.  You will use it in the URL when configuring Rundeck. (Hint: use the Copy to clipboard button)

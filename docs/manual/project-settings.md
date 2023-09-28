@@ -13,7 +13,7 @@ Edit the Project Name and Description.
 ### Execution History Clean
 When enabled this setting will clean out old executions to help keep your data clean.
 
-![Execution History Clean](/assets/img/execution-history-clean.png)
+![Execution History Clean](~@assets/img/execution-history-clean.png)
 
 ### Execution Mode
 Used to manage job execution and schedule configuration at project level.  If there is a need to disable all job executions for this project, or disabled all scheduled jobs (but still run manually) use the check boxes in this section.
@@ -21,7 +21,7 @@ Used to manage job execution and schedule configuration at project level.  If th
 ### User Interface
 Additional configuration for the user interface for this project that can show or hide helpful information for project users.
 
-![User Interface](/assets/img/project-settings-ui.png)
+![User Interface](@assets/img/project-settings-ui.png)
 
 ### Default Node Executor Configuration
 
@@ -31,7 +31,7 @@ SSH to connect to the remote node, however other implementations can be used.
 
 Select the Default Node Executor you wish to use for all remote Nodes for the project:
 
-![Default Node Executor Choice](/assets/img/fig0712.png)
+![Default Node Executor Choice](~@assets/img/fig0712.png)
 
 You can install more types of Node Executors as plugins, see [Node Execution Plugins](/manual/job-plugins.md#node-execution).
 
@@ -48,7 +48,7 @@ SCP to copy the file to the remote node, however other implementations can be us
 
 Select the Default File Copier you wish to use for all remote Nodes for the project:
 
-![Default File Copier Choice](/assets/img/fig0713.png)
+![Default File Copier Choice](~@assets/img/fig0713.png)
 
 You can install more types of File Copiers as plugins, see [Node Execution Plugins](/manual/job-plugins.md#node-execution).
 
@@ -78,7 +78,7 @@ A project ReadMe can provide some important context for a Project.  The content 
 ## Edit Message of the Day...
 The Message of the Day is a way to communicate important messages to Project users.  The message can be dismissed or hidden after reading using the [x] in the upper right corner.
 
-![Message of the Day](/assets/img/motd-example.png)
+![Message of the Day](~@assets/img/motd-example.png)
 
 More info in the [Projects Section](/manual/projects/project-motd.html)
 

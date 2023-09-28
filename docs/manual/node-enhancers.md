@@ -6,7 +6,7 @@ Rundeck offers node enhancers to help you to better organize, manage and keep up
 
 The attribute match enhancer is a way for you to add new attributes to various nodes. This is done by finding attribute matches. So, any nodes with attributes matching the one specified will have the new attributes added to them.
 
-![Attribute Match](/assets/img/attribute_match.png)
+![Attribute Match](~@assets/img/attribute_match.png)
 
 - **Attribute Matches**
 : This is where you specify the attribute that you want to search for. By doing so, you can add new attributes to the nodes that match based off of what you input this section.
@@ -41,7 +41,7 @@ ssm-copier-accessKeyId=MY_AWS_ACCESS_KEY
 ssm-copier-secretKey=keys/path-to-aws-secret
 ```
 
-![Attribute Match Assigns Node Executor to Specific Nodes](/assets/img/node-enhancer-example.png)
+![Attribute Match Assigns Node Executor to Specific Nodes](@assets/img/node-enhancer-example.png)
 
 **Use WinRM for All Nodes where the Operating System is Windows**<br>
 * Attribute Match: **`osName==windows`** <br>
@@ -59,7 +59,7 @@ winrm-cmd=CMD
 
 This node enhancer allows you to add icons to the nodes that you already have on Rundeck. In order to do so, you need to specify an attribute. By doing so, the icon will be applied only to the nodes that contain that attribute.
 
-![Icon](/assets/img/icon_badge.png)
+![Icon](~@assets/img/icon_badge.png)
 
 - **Attribute Name**
 : This is where you specify the attribute name. Any node that has that attribute will have the icon applied to it.

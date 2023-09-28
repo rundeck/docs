@@ -41,21 +41,21 @@ Can be installed with<br>
 ## Installing the Kubernetes Plugin in Rundeck
 
 1. Go to the System Menu > Plugins > Upload plugin<br>
-![](/assets/img/kube1.png)<br>
+![](~@assets/img/kube1.png)<br>
 1. Put in the latest version .zip file full URL path here.<br>
-![](/assets/img/kube2.png)<br>
+![](~@assets/img/kube2.png)<br>
 1. Click on the "install" button.<br>
 
 ## Kubernetes Model Source
 
 To manage K8s pods as nodes, it's necessary to add the Kubernetes model source.<br>
 1. Go to Project Settings > Edit Nodes<br>
-![](/assets/img/kube3.png)<br>
+![](~@assets/img/kube3.png)<br>
 1. Click on the “Add a new Node Source +" button.<br>
-![](/assets/img/kube4.png)<br>
+![](~@assets/img/kube4.png)<br>
 1. From the list select "Kubernetes / Pods / Resource model"<br>
 1. Save<br>
-	![](/assets/img/kube5.png)<br>
+	![](~@assets/img/kube5.png)<br>
 	:::tip
 	By default and if authentication parameters are not set, the plugin will check the file `~/.kube/config` to get the authentication parameters.<br>
 	Otherwise, you can set the following parameters:<br>
@@ -94,18 +94,18 @@ To manage K8s pods as nodes, it's necessary to add the Kubernetes model source.<
 	kubectl apply -f ./deployment.yaml
 	```
 1. Check if the deployment is running with k9s (just run the `k9s` command).<br>
-![](/assets/img/kube6.png)<br>
+![](~@assets/img/kube6.png)<br>
 1. Go back to Rundeck and refresh the Rundeck model source<br>
-![](/assets/img/kube7.png)<br>
+![](~@assets/img/kube7.png)<br>
 1. Now go to the Commands section and select the Kubernetes pod in the node filter and put any command.<br>
-![](/assets/img/kube8.png)<br>
+![](~@assets/img/kube8.png)<br>
 
 ## Kubernetes Workflow Steps<br>
 
 Next, we’ll simulate a simple deployment using the `Kubernetes / Generic / Create` workflow step, carrying out a MySQL database deployment:<br>
 1. Create a new Job and give it a name.<br>
 1. Select the first Kubernetes step: `Kubernetes / Generic / Create`.<br>
-![](/assets/img/kube9.png)<br>
+![](~@assets/img/kube9.png)<br>
 1. Go to the "YAML String" textbox and add the following YAML content.<br>
 	```
 	apiVersion: apps/v1
@@ -135,11 +135,11 @@ Next, we’ll simulate a simple deployment using the `Kubernetes / Generic / Cre
           value: password
 	```
 1. Save the job and run.<br>
-![](/assets/img/kube10.png)<br>
+![](~@assets/img/kube10.png)<br>
 1. Run k9s to see that the new deployment is available on the minikube cluster:<br>
-![](/assets/img/kube11.png)<br>
+![](~@assets/img/kube11.png)<br>
 1. The new deployment is added to the nodes section. Now it's possible to dispatch commands against the pods or create jobs against them.<br>
-![](/assets/img/kube11.png)<br>
+![](~@assets/img/kube11.png)<br>
 
 ## Other Available Workflow Steps
 

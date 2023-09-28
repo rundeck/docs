@@ -11,7 +11,7 @@ The Failed Login Rate Limiting helps provides protection from brute force login 
 
 To enable Failed Login rate limiting using the following settings in Configuration Management.
 
-![rate-limiting-settings](/assets/img/login-ratelimiting.png)
+![rate-limiting-settings](~@assets/img/login-ratelimiting.png)
 
 or `rundeck-config.properties`
 
@@ -39,7 +39,7 @@ API Endpoints Rate Limiting provides system admin a tool to protect rundeck REST
 
 To enable Failed Login rate limiting using the following settings in Configuration Management.
 
-![rate-limiting-settings](/assets/img/login-ratelimiting.png)
+![rate-limiting-settings](~@assets/img/login-ratelimiting.png)
 
 or `rundeck-config.properties`, e.g.:
 
@@ -60,7 +60,7 @@ Configuration Parameters:
 3. `rundeck.apiRateLimiting.refillWindowInSeconds` - A number defines the time frame size in seconds. Default to 10 seconds.
 
 4. `rundeck.apiRateLimiting.cacheSize` - defines the size of the cache that holds the rate-limit bucket for the AuthToken-based rate limiter. Since there is no session for Auth Token authentication, we need a server-side in-memory cache to hold a rate-limit bucket for every unique token. The cache size to used to set the maximum bucket size to avoid server resources being used out. The default value is 100, for a production deployment system admin must evaluate the right cache size based on the token numbers and deployment scenarios. To monitor the cache overflow event, we added a new JMX metrics `rundeckpro.security.rateLimit.GuavaLoadingCacheBucketHolder.rateLimitCacheOverflowCount`
-   ![rate-limiting-jmx-monitor](/assets/img/rate-limiting-jmx-monitor.png)
+   ![rate-limiting-jmx-monitor](~@assets/img/rate-limiting-jmx-monitor.png)
 System admin can use their monitor tools to capture the Cache overflow event.
 
 5. `rundeck.apiRateLimiting.include` - A string of semicolon separated Rate Limiter algorithm names. It defines which Rate Limitter algorithm will be applied. We have three different Rate Limiter algorithms: Session-Based, AuthToken-Based and Client IP Based, we use this parameter to let system admin choose the desired Rate Limiter algorithm. The valid algorithm names are:

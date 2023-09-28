@@ -4,51 +4,51 @@
 
 Ansible Module workflow step allows executing any Ansible module directly on any Rundeck workflow, it's also available for Node Steps. To use, add a new step, and selecting "Ansible Module".
 
-![Ansible_Module_0](/assets/img/ansible_module_0.png)
+![Ansible_Module_0](~@assets/img/ansible_module_0.png)
 
 On Module textbox just put the module name, [here](https://docs.ansible.com/ansible/latest/modules/modules_by_category.html) you can check all Ansible modules.
 
-![Ansible_Module_1](/assets/img/ansible_module_1.png)
+![Ansible_Module_1](~@assets/img/ansible_module_1.png)
 
 It's possible to pass arguments to modules (for example, any command to execute using the `command` module), just put the name of argument on "Argument" textbox. In the following example, we're passing a command (`pwd`) to `command` module to execute [pwd](https://linux.die.net/man/1/pwd).
 
-![Ansible_Module_2](/assets/img/ansible_module_2.png)
+![Ansible_Module_2](~@assets/img/ansible_module_2.png)
 
 ### Ansible Playbook Inline
 
 Ansible Playbook Inline workflow step allows executing an Ansible playbook definition directly on any Rundeck workflow, it's also available for Node Steps. To use, add a new step, and select "Ansible Playbook".
 
-![Ansible_Inline_0](/assets/img/ansible_inline_0.png)
+![Ansible_Inline_0](~@assets/img/ansible_inline_0.png)
 
 In Playbook textbox just put the Ansible Playbook content, it's important to respect the Ansible Playbook YAML [syntax](https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html).
 
-![Ansible_Inline_1](/assets/img/ansible_inline_1.png)
+![Ansible_Inline_1](~@assets/img/ansible_inline_1.png)
 
 It's possible to pass extra variables to Playbooks. The variable must be defined on Ansible Playbook in this format `"{{ variable_name }}"'`, later, define the format, in the following example we're using a YAML format. Finally, define the variable content on "Extra Variables" textbox (following the format defined on "Syntax Mode"), [options](https://docs.rundeck.com/docs/manual/job-options.html#job-options) and [data](https://docs.rundeck.com/docs/manual/log-filters/key-value-data.html#key-value-data) values are accepted.
 
-![Ansible_Inline_2](/assets/img/ansible_inline_2.png)
+![Ansible_Inline_2](~@assets/img/ansible_inline_2.png)
 
 Another way to pass variables to Ansible inline playbooks is to define as an argument on "Extra Ansible arguments" textbox, using the same inline-playbook defined in the example above, you can define the argument using `-e "variable_name:value"`, [options](https://docs.rundeck.com/docs/manual/job-options.html#job-options) and [data](https://docs.rundeck.com/docs/manual/log-filters/key-value-data.html#key-value-data) values are accepted.
 
-![Ansible_Inline_3](/assets/img/ansible_inline_3.png)
+![Ansible_Inline_3](~@assets/img/ansible_inline_3.png)
 
 ### Ansible Playbook
 
 Ansible Playbook allows to execute Ansible Playbooks files from filesystem, it's also available for Node Step. It's available adding "Ansible Playbook" workflow step on any job.
 
-![Ansible_Playbook_0](/assets/img/ansible_playbook_0.png)
+![Ansible_Playbook_0](~@assets/img/ansible_playbook_0.png)
 
 To reference the playbook file, just put the Ansible Playbook file path at "Playbook" textbox like the following example.
 
-![Ansible_Playbook_1](/assets/img/ansible_playbook_1.png)
+![Ansible_Playbook_1](~@assets/img/ansible_playbook_1.png)
 
 Like Ansible Playbook Inline step, it's possible to use "Extra Variables" textbox to pass any variable defined in your Playbook, it's importaant follow the syntax defined on "Syntax Mode" list. You can use Rundeck [options](https://docs.rundeck.com/docs/manual/job-options.html#job-options) or [data](https://docs.rundeck.com/docs/manual/log-filters/key-value-data.html#key-value-data) values.
 
-![Ansible_Playbook_2](/assets/img/ansible_playbook_2.png)
+![Ansible_Playbook_2](~@assets/img/ansible_playbook_2.png)
 
 Also, it's possible use "Extra Ansible arguments" as the same way of Ansible Playbook Inline step, just define the argument in the following way: `-e "variable_name:value"`, [options](https://docs.rundeck.com/docs/manual/job-options.html#job-options) and [data](https://docs.rundeck.com/docs/manual/log-filters/key-value-data.html#key-value-data) values are accepted.
 
-![Ansible_Playbook_3](/assets/img/ansible_playbook_3.png)
+![Ansible_Playbook_3](~@assets/img/ansible_playbook_3.png)
 
 ### Global Variable
 
@@ -56,55 +56,55 @@ Also, it's possible use "Extra Ansible arguments" as the same way of Ansible Pla
 
 When a global variable step is defined in a referenced job, it exports values into a data variable that can be used in subsequent steps of the parent job. To use, add a new workflow step, and select the "Global Variable" step.
 
-![Global Variable Image 1](/assets/img/global_variable_0.png)
+![Global Variable Image 1](~@assets/img/global_variable_0.png)
 
 On value textbox put the value of the variable to be used, to uplift an existing variable, use a reference to it, like `${data.var1@node1}` or `${data.var1*}`. 
 
-![Global Variable Image 2](/assets/img/global_variable_1.png)
+![Global Variable Image 2](~@assets/img/global_variable_1.png)
 
 To reference a job, add a new step, and select the "Job Reference" step.
 
-![Global Variable Image 3](/assets/img/global_variable_2.png)
+![Global Variable Image 3](~@assets/img/global_variable_2.png)
 
 In order to use the global variable value on a referenced job, the job receiving the exported value must have an option. On the Arguments textbox add the name option, and the global variable name like `-optionToObtainValue ${export.myValue}`.
 
-![Global Variable Image 4](/assets/img/global_variable_3.png)
+![Global Variable Image 4](~@assets/img/global_variable_3.png)
 
 #### Uplift a job context variable
 
 Create a new job, go to the workflow windows, add a new global variable.
 
-![Job context variables 1](/assets/img/uplift-job-context-variable-1.png)
+![Job context variables 1](~@assets/img/uplift-job-context-variable-1.png)
 
 On the value textbox write ${job.NAME_VAR} in our case we will use ${job.id}, on the name textbox write the desired name of the variable to be used as a global variable.
 
-![Job context variables 2](/assets/img/uplift-job-context-variable-2.png)
+![Job context variables 2](~@assets/img/uplift-job-context-variable-2.png)
 
 To test the uplifted variable, create a simple command making reference to the uplifted variable in our case echo ${export.upliftedVariable}.
 
-![Job context variables 3](/assets/img/uplift-job-context-variable-3.png)
+![Job context variables 3](~@assets/img/uplift-job-context-variable-3.png)
 
 #### Uplift a project context variable
 
 Go to project configuration, on this window click on Edit Configuration File.
 
-![Project context variables 1](/assets/img/uplift-project-context-variable-1.png)
+![Project context variables 1](~@assets/img/uplift-project-context-variable-1.png)
 
 Add the desired global variable in our case we are using project.globals.testValue=TEST.
 
-![Project context variables 2](/assets/img/uplift-project-context-variable-2.png)
+![Project context variables 2](~@assets/img/uplift-project-context-variable-2.png)
 
 Create a new job, go to the workflow windows, add a new global variable.
 
-![Project context variables 3](/assets/img/uplift-project-context-variable-3.png)
+![Project context variables 3](~@assets/img/uplift-project-context-variable-3.png)
 
 On the value textbox write ${globals.NAME_VAR} in our case we will use ${globals.testValue}, on the name textbox write the desired name of the variable to be used as a global variable.
 
-![Project context variables 4](/assets/img/uplift-project-context-variable-4.png)
+![Project context variables 4](~@assets/img/uplift-project-context-variable-4.png)
 
 To test the uplifted variable, create a simple command making reference to the uplifted variable in our case echo ${export.upliftedVariable}.
 
-![Project context variables 5](/assets/img/uplift-project-context-variable-5.png)
+![Project context variables 5](~@assets/img/uplift-project-context-variable-5.png)
 
 #### Uplift a node context variable
 
@@ -112,23 +112,23 @@ The Global Variable job step is a workflow step, it will not have access to the 
 
 Create a new job, go to the workflow windows, add a new command node step.
 
-![Node context variables 1](/assets/img/uplift-node-context-variable-1.png)
+![Node context variables 1](~@assets/img/uplift-node-context-variable-1.png)
 
 In this step the node context variables are accessible, do a echo ${node.NAME_VAR} in our case we a using ${node.os-name}.
 
-![Node context variables 2](/assets/img/uplift-node-context-variable-2.png)
+![Node context variables 2](~@assets/img/uplift-node-context-variable-2.png)
 
 Add a log filter to the node step, we are using the key value data to store the result from the echo command on a variable named test.
 
-![Node context variables 3](/assets/img/uplift-node-context-variable-3.png)
+![Node context variables 3](~@assets/img/uplift-node-context-variable-3.png)
 
 Once we have the node context variable captured on our key data value, this variable could be used to be exported as a global variable.
 
-![Node context variables 4](/assets/img/uplift-node-context-variable-4.png)
+![Node context variables 4](~@assets/img/uplift-node-context-variable-4.png)
 
 To test the uplifted variable, create a simple command making reference to the uplifted variable in our case echo ${export.upliftedVariable}.
 
-![Node context variables 5](/assets/img/uplift-node-context-variable-5.png)
+![Node context variables 5](~@assets/img/uplift-node-context-variable-5.png)
 
 #### Collecting values for all target nodes
 
@@ -136,7 +136,7 @@ Use the global variable workflow step to collect data across all target nodes in
 
 Note that you can also collect a value from a single node that is available in steps on the other targeted nodes.
 
-![Values from all target nodes](/assets/img/values-from-all-target-nodes.png)
+![Values from all target nodes](~@assets/img/values-from-all-target-nodes.png)
 
 #### Reference
 
@@ -160,11 +160,11 @@ The global variable step can capture the following groups of variables:
 
 Job State Conditional Step allows to verify if a job is running and/or checks the lastest execution status.
 
-![Job State Conditional step](/assets/img/job-state-conditional-0.png)
+![Job State Conditional step](~@assets/img/job-state-conditional-0.png)
 
 This step has many ways of being configured:
 
-![Job State Conditional configuration](/assets/img/job-state-conditional-1.png)
+![Job State Conditional configuration](~@assets/img/job-state-conditional-1.png)
 
 A. Project name (this is needed only if the job if is an external project).
 
@@ -190,7 +190,7 @@ J. Defines any label to the current step.
 
 We need to run the current job only if another was executed successfully (last execution: *Succeeded*). 
 
-![Job State Conditional example](/assets/img/job-state-conditional-2.png)
+![Job State Conditional example](~@assets/img/job-state-conditional-2.png)
 
 At the beginning of the current job, we add a new Job State Conditional Step to verify another job status.
 
@@ -204,20 +204,20 @@ Finally at the moment of run our job, if the referenced job defines in Job State
 
 The log data step allows you to log all the context data values and view them in a table. 
 
-![Log Data Step](/assets/img/log-data-set.png)
+![Log Data Step](~@assets/img/log-data-set.png)
 
 Debug Only
 : If checked, only runs if the job is run in Debug mode
 
 After execution of the job, you will get a table like this:
 
-![Log Data Step Result](/assets/img/log-data-result.png)
+![Log Data Step Result](~@assets/img/log-data-result.png)
 
 ### Executions Delete
 
 This job step allows you to delete previously run executions by specifying when the executions are from, who executed them and what job thet were executed on. 
 
-![Executions Delete](/assets/img/executions_delete.png)
+![Executions Delete](~@assets/img/executions_delete.png)
 
 - **Status**
 : This is where you specify the status of the executions that you wish to delete. The options are running, succeeded, failed, aborted.
@@ -240,7 +240,7 @@ This job step allows you to delete previously run executions by specifying when 
 - **Job Name List**
 : This allows you to specify numerous jobs names. This is just like Job Name above but now you can add many names separated by commas.
 
-![Executions Delete - continued](/assets/img/executions_delete2.png)
+![Executions Delete - continued](~@assets/img/executions_delete2.png)
 
 - **Job ID List**
 : This allows you to list all of the job IDs that you want included in the deletion. So, you can enter numerous job IDs separated by a comma and those jobs executions will be deleted.
@@ -273,7 +273,7 @@ This job step allows you to delete previously run executions by specifying when 
 
 This job step allows you to wait on the results of other job executions before continuing on to the next job step. This is very helpful if you need a particular execution to run prior to running a job. 
 
-![Executions Wait Result](/assets/img/executions_wait.png)
+![Executions Wait Result](~@assets/img/executions_wait.png)
 
 - **Job Project (optional)**
 : If you enter a value into this box, then it will only search within that specific project, not across all project. If you don't specify, it will not only search that one project but all executions.
@@ -291,7 +291,7 @@ This job step allows you to wait on the results of other job executions before c
 
 This job step allows you to reference execution IDs that you want to retry executing. This is very beneficial in a case where you need a successful execution prior to moving forward with another job.
 
-![Executions Retry](/assets/img/executions_retry.png)
+![Executions Retry](~@assets/img/executions_retry.png)
 
 - **Execution List**
 : This is where you specify the list of executions that you want to retry. Provide the execution IDs, separated by a comma. This is very helpful if you need for certain executions to run successfully prior to continuing with another job. This step allows you to retry those executions before continuing with the job.
@@ -306,7 +306,7 @@ This job step allows you to reference execution IDs that you want to retry execu
 
 This job step allows you to search for an execution based on a variety of factors such as state of execution, job id, etc.
 
-![Executions Search](/assets/img/executions_search.png)
+![Executions Search](~@assets/img/executions_search.png)
 
 - **State**
 : This allows you to specify the state of the execution that you are searching for. The possible options are incomplete, failed and succeeded. 
@@ -328,7 +328,7 @@ This job step allows you to search for an execution based on a variety of factor
 
 This job step allows you to refresh all the nodes in a project. This is beneficial if you want to make sure the nodes are up to date before executing a job. The refreshed nodes will be available in any subsequent Job Reference step, but not within the current workflow. 
 
-![Refresh Project Nodes](/assets/img/refresh_nodes.png)
+![Refresh Project Nodes](~@assets/img/refresh_nodes.png)
 
 - **Sleep (optional)**
 : This is an optional field. If a number is provided (seconds), there will be a period of sleep for that amount of time before the sources are refreshed. 
@@ -338,7 +338,7 @@ This job step allows you to refresh all the nodes in a project. This is benefici
 
 This job step produces data values for the current node.
 
-![Data Step](/assets/img/data_step.png)
+![Data Step](~@assets/img/data_step.png)
 
 - **Data**
 : This is where you provide the data variables and their values for the current node. For example, var1=value.

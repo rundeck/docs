@@ -8,7 +8,7 @@ Follow the instructions outlined in the [**Datadog Integration Overview**](/manu
 
 ## Configuration
 
-![Datadog Notification - Configuration](/assets/img/notification-config.png)
+![Datadog Notification - Configuration](~@assets/img/notification-config.png)
 
 - **Title**
 : This is the event title. It can be anything you want it to be. By default, it includes data about the job and the execution.

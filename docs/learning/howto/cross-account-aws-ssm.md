@@ -7,7 +7,7 @@ For example, there may be a need to report, patch, or deploy upgrades on all EC2
 This _How To_ article outlines how to configure the [SSM Node Executor](/docs/manual/projects/node-execution/aws-ssm) to be used across multiple AWS Accounts.
 The setup walks through configuring Process Automation to execute commands and scripts on EC2 nodes that reside in AWS accounts that are separate from the account where Process Automation is running.  
 
-![Cross Account SSM Architecture](/assets/img/ssm-cross-account-architecture.png)
+![Cross Account SSM Architecture](@assets/img/ssm-cross-account-architecture.png)
 
 Here is the overview of the steps for this setup:<br>
 1. [Configure IAM Roles in Remote Accounts](#configure-iam-roles-in-remote-accounts)
@@ -24,9 +24,9 @@ In the _remote_ AWS account, follow the steps to add EC2’s to the SSM managed 
     * AWS provides a prebuilt policy: **AmazonSSMManagedInstanceCore** that provides the necessary permissions for this operation.
 3. Add the instances to the SSM inventory. This can be done using the [Quick Setup Host Management](https://docs.aws.amazon.com/systems-manager/latest/userguide/quick-setup-host-management.html).
 4. You can test that you have configured Systems Manager correctly by manually using the [Run Command](https://docs.aws.amazon.com/systems-manager/latest/userguide/run-command.html) feature from AWS:
-   <br>![aws-ssm-test-run](/assets/img/aws-ssm-test-run-command.png)<br>
+   <br>![aws-ssm-test-run](@assets/img/aws-ssm-test-run-command.png)<br>
     * Use the **`AWS-RunShellScript`** or **`AWS-RunPowerShellScript`** (for Windows) to test that SSM has been set up properly for the remote EC2 nodes.
-      <br>![aws-ssm-test-script](/assets/img/aws-ssm-test-run-script.png)<br>
+      <br>![aws-ssm-test-script](@assets/img/aws-ssm-test-run-script.png)<br>
 
 Additional documentation on this setup can be found in the [Setting up AWS Systems Manager for EC2 instances](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-setting-up-ec2.html).
 
@@ -243,7 +243,7 @@ The SSM Node Executor can be set as the **Default Node Executor** - thereby maki
 
 1. Navigate to **Project Settings** -> **Edit Configuration** -> **Default Node Executor**.
 2. Select the dropdown on the left and select **AWS / SSM / Node Executor**:
-   ![](/assets/img/ssm-select-default-node-executor.png)
+   ![](@assets/img/ssm-select-default-node-executor.png)
 3. If Process Automation is authenticated with AWS through an associated IAM Role, then all the fields can be left as their defaults.
 4. Click the check-box for **Assume Role**.
 5. Type in the **ARN** of the IAM role in the remote AWS account.

@@ -40,7 +40,7 @@ Credentials can be configured on a per Project basis or for the entire Process A
 1. Click on the _Sources_ tab.
 1. Click **Edit** on the _GCP Cloud / Resource Model_
 1. Enter the **Project ID** from your GCP Project.
-    ![GCP Project ID](/assets/img/howto-gcp-projectid.png)<br><br>
+    ![GCP Project ID](@assets/img/howto-gcp-projectid.png)<br><br>
 1. Select the **Zone** where this Node Source will gather a list of Compute VMs from.
 1. Leave the **Key Path** set to `keys/project/welcome-project/gcp-access-key.json`
 
@@ -51,7 +51,7 @@ Credentials can be configured on a per Project basis or for the entire Process A
 1. Using the filter at the top enter `gcp` to list just the GCP Plugin Configurations.
 1. Leave the **GCP Access Key Path** entry as `keys/project/welcome-project/gcp-access-key.json`.
 1. Gather the **Project ID** from your GCP Project.
-    ![GCP Project ID](/assets/img/howto-gcp-projectid.png)<br><br>
+    ![GCP Project ID](@assets/img/howto-gcp-projectid.png)<br><br>
 1. Enter a Zone that can be used by default.  Job Steps can override the zone at each step or dynamically per node on Node Steps.
 1. Click **Save**
 
@@ -65,7 +65,7 @@ Credentials can be configured on a per Project basis or for the entire Process A
 1. Navigate to the **Nodes** section in the _Welcome to Rundeck_ project.
 1. Search for nodes using `tags: gcpcompute`.<br>If your Node Source is configured correctly and there are VMs in the configured zone they will be listed in the Nodes list.
 
-![GCP Nodes](/assets/img/howto-gcp-gcpnodes.png)
+![GCP Nodes](@assets/img/howto-gcp-gcpnodes.png)
 
 #### Job Steps
 
@@ -75,7 +75,7 @@ After confirming Nodes are being listed choose one that can safely be restarted.
 1. Open _Cloud Services_ > _GCP_ > _Node Steps_ > _VM_ and choose **Restart VM Instance**.
 1. Select the node to be restarted and click **Run Job Now**.
 
-![Restart GCP Node](/assets/img/howto-gcp-restartnode.png)
+![Restart GCP Node](@assets/img/howto-gcp-restartnode.png)
 
 ## More Information
 

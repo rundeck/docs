@@ -10,7 +10,7 @@ Before using the plugin, make sure an API key has been created in Jenkins and is
 
 ## Configure
 
-![Jenkins Notification - Configuration](/assets/img/jenkins-notification.png)
+![Jenkins Notification - Configuration](~@assets/img/jenkins-notification.png)
 
 - **Jenkins URL**
 : This the URL for the Jenkins account. (i.e. http://localhost:8080)
@@ -25,7 +25,7 @@ Before using the plugin, make sure an API key has been created in Jenkins and is
 
 All of the above properties can also be configured in the project configuration or framework.properties, as shown in the image below:
 
-![Jenkins Notification - Properties](/assets/img/jenkins-config.png)
+![Jenkins Notification - Properties](~@assets/img/jenkins-config.png)
 
 
 

@@ -2,7 +2,7 @@
 
 The Profile menu contains items to view your Profile and log out.
 
-![user menu](/assets/img/fig1001.png)
+![user menu](~@assets/img/fig1001.png)
 
 ## Profile
 
@@ -13,7 +13,7 @@ The User Profile page shows user details, Authorization Roles, API Tokens, and p
 This is only applicable for **local** users that were created with the [**User Manager**](/manual/user-management/user-mgmt) or the **`appadmin`** user in Runbook Automation. Users that have authenticated through SSO will not be able to change their password here.
 :::
 
-![Change Password](/assets/img/profile-change-password.png)<br>
+![Change Password](@assets/img/profile-change-password.png)<br>
 
 1. Click on **Change Password** 
 2. Enter a new password into the **Password** field.
@@ -30,7 +30,7 @@ You can modify the email address, first name, and last name, for your own User P
 
 Click "Edit" to edit the values.
 
-![Edit profile](/assets/img/user-edit-profile.png)
+![Edit profile](~@assets/img/user-edit-profile.png)
 
 The email address can be referenced as a [context variable](/manual/job-workflows.md#context-variables)
 from Job notifications as `${job.user.email}`.
@@ -58,7 +58,7 @@ Delete an individual Token by clicking the "Delete" button next to the Token.
 
 Versions which store tokens securely will also allow to provide a token name for identification, and tokens will only be available at creation time.
 
-![user profile](/assets/img/fig-user-api-tokens.png)
+![user profile](~@assets/img/fig-user-api-tokens.png)
 
 Older versions which use unsecured tokens provide a "Show Token" button to view/copy a token.
 
@@ -67,7 +67,7 @@ Older versions which use unsecured tokens provide a "Show Token" button to view/
 
 You can create a new API Token by clicking the "+" button.
 
-![Generate Token](/assets/img/fig-user-generate-token.png)
+![Generate Token](~@assets/img/fig-user-generate-token.png)
 
 You can provide a name to easily identify this token.
 
@@ -77,4 +77,4 @@ You can also specify the duration of the token, or use blank or `0` to have it s
 
 Click "Generate New Token" to create the Token and the token value will appear. **Be sure to save your token. This is the only moment in which you can see the token value.**
 
-![Token Value](/assets/img/fig-user-tokens-onetime-display.png)
+![Token Value](~@assets/img/fig-user-tokens-onetime-display.png)

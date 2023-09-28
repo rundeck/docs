@@ -44,21 +44,21 @@ If you have already created an Azure AD application for Process Automation, skip
 1. Sign in to the [Azure Portal](https://portal.azure.com/)
 2. Select **_Azure Active Directory_**
 3. Click the **+ Add** dropdown and select **App Registration**
-    ![Add app reg](/assets/img/azure-add-app-reg.png)<br><br>
+    ![Add app reg](@assets/img/azure-add-app-reg.png)<br><br>
 4. On the **Register an application** page, provide a name for your application and then select **Accounts in this organizational directory only**.
 5. Click **Register**.
 6. On the **Overview** page, copy the **Application (client) ID** and the **Directory (tenant) ID** and save them to a secure location.
 7. Select **Certificates & secrets** and then select **New client secret**
-    ![New Client Secret](/assets/img/azure-new-client-secret.png)<br><br>
+    ![New Client Secret](@assets/img/azure-new-client-secret.png)<br><br>
 8. On the **Add a client secret** panel, enter a **Description** and select an **Expires** value (in months).
-    ![Client Secret Config](/assets/img/azure-client-secrets-config.png)<br><br>
+    ![Client Secret Config](@assets/img/azure-client-secrets-config.png)<br><br>
 9. Click **Add**.
 10. Copy the **Value** and **Secret ID** from the **Certificates & secrets** page and save them to a secure location.
     :::warning Heads Up!
     Do not skip this step. These values will not be retrievable after you navigate away from this page. The **Value** is required when configuring the plugins in Process Automation.
     :::
 11. Navigate to **Azure Services** > **Subscriptions** and select the link for the **Subscription name**:
-    ![Subscription ID](/assets/img/azure-subscription-id.png)
+    ![Subscription ID](@assets/img/azure-subscription-id.png)
 12. On the **Subscriptions** page, copy the **Subscription ID** and save it to a secure location.
 13. Select **Access control (IAM)** and then select **Add** > **Add role assignment**:
 14. On the **Add role assignment** page, use the search field to find and select a **Role**. You must select at least a **Reader** role to continue.
@@ -113,7 +113,7 @@ Use the following steps to configure authentication for the Azure plugins for a 
 
 1. In the specific project, click on **Project Settings** in the lower left.
 2. Click on **Edit Configuration** then click on **Plugins**.
-   ![Plugin Suite Project Settings](/assets/img/plugin-groups-project-settings.png)<br>
+   ![Plugin Suite Project Settings](@assets/img/plugin-groups-project-settings.png)<br>
 3. Click on **+PluginGroup**.
 4. Select **Azure** from the list.
 5. Click **Select** next to the **Azure API Key** field.
@@ -123,7 +123,7 @@ Use the following steps to configure authentication for the Azure plugins for a 
 9. Provide a **Name** for the secret and click **Save**.
 10. Click **Save** to now use the saved secret from Key Storage.
 11. Enter the **Tenant ID**, **Subscription ID** and **Client ID** from the prior sections into their associated fields:
-    ![Azure Plugins Project](/assets/img/azure-plugingroup-project.png)
+    ![Azure Plugins Project](@assets/img/azure-plugingroup-project.png)
 12. Click **Save** for the plugin configuration.
 13. Click **Save** for the Project Settings.
 
@@ -134,7 +134,7 @@ Use the following steps to configure authentication for the Azure plugins for th
 1. Click on the **System Menu** (gear icon) in the upper right.
 2. Click on **System Configuration**.
 3. Navigate to the **Azure** section and click on the **Pencil Icon** in the upper right:
-   ![Edit Plugin Suite Sysytem Level](/assets/img/azure-edit-plugingroup-system.png)
+   ![Edit Plugin Suite Sysytem Level](@assets/img/azure-edit-plugingroup-system.png)
 4. Click **Select** next to the **Azure API Key** field.
 5. Click **+ Add or Upload a Keys**
 6. For the **Key Type** dropdown, choose the **Password** option.
@@ -142,5 +142,5 @@ Use the following steps to configure authentication for the Azure plugins for th
 8. Provide a **Name** for the secret and click **Save**.
 9. Click **Save** to now use the saved secret from Key Storage.
 10. Enter the **Tenant ID**, **Subscription ID** and **Client ID** from the prior sections into their associated fields:
-    ![Azure PluginGroup System](/assets/img/azure-plugingroup-system-config.png)
+    ![Azure PluginGroup System](@assets/img/azure-plugingroup-system-config.png)
 11. Click **Save** to commit these changes to the **System Configuration**.

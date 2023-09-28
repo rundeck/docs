@@ -37,7 +37,7 @@ View our Twitch stream review of this release live on February 21 at 10 AM Pacif
 
 This new enhanced configuration method also removes the need to define AWS credentials in the project-properties configuration file. Users can access an easy-to-use graphical user interface for defining the requisite properties for the integration, which simplifies the setup for new users and configuring new Projects. Click [here](/manual/plugins/aws-plugins-overview) to see the full documentation.
 
-![AWS Plugin Config](/assets/img/relnotes-4.10.0-awsplugingroup.png)
+![AWS Plugin Config](~@assets/img/relnotes-4.10.0-awsplugingroup.png)
 
 ### Additional Updates
 

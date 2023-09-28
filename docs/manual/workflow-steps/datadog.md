@@ -8,7 +8,7 @@ These instructions can optionally be implemented on a per Job Step basis, but th
 
 ## Datadog / Send Event
 
-![Datadog - Send Event - Configuration](/assets/img/datadog_send.png)
+![Datadog - Send Event - Configuration](~@assets/img/datadog_send.png)
 
 ### Configuration
 
@@ -48,7 +48,7 @@ The following job steps require specifying the API and APP key paths in either p
 
 ## Datadog / Incidents / Create Incident
 
-![Datadog - Create Incident](/assets/img/dd-create-incident.png)
+![Datadog - Create Incident](~@assets/img/dd-create-incident.png)
 
 - **Title**: The title of the new event being created.
 
@@ -72,7 +72,7 @@ Any job steps in the same workflow, following Create Incident can use the incide
 
 ## Datadog / Incidents / Update Status
 
-![Datadog - Update Status](/assets/img/dd-update-incident.png)
+![Datadog - Update Status](~@assets/img/dd-update-incident.png)
 
 - **Title**: The new title of the incident being updated.
 
@@ -92,7 +92,7 @@ Any job steps in the same workflow, following Create Incident can use the incide
 
 ## Datadog / Incidents / Update State
 
-![Datadog - Update State](/assets/img/dd-update-state.png)
+![Datadog - Update State](~@assets/img/dd-update-state.png)
 
 - **Incident ID**: The id of the incident that is being updated. 
 
@@ -106,7 +106,7 @@ Any job steps in the same workflow, following Create Incident can use the incide
 
 ## Datadog / Incidents / Add Task
 
-![Datadog - Add Task](/assets/img/dd-add-task.png)
+![Datadog - Add Task](~@assets/img/dd-add-task.png)
 
 - **Task Content**: This is description of what needs to be done in the task that is being created. 
 
@@ -122,7 +122,7 @@ Any job steps in the same workflow, following add task can use the task ID by re
 
 ## Datadog / Incidents / Complete Task
 
-![Datadog - Complete Task](/assets/img/dd-complete-task.png)
+![Datadog - Complete Task](~@assets/img/dd-complete-task.png)
 
 - **Incident ID**: The ID of the incident to add a task to.
 

@@ -27,7 +27,7 @@ In both cases, `keys/pd/api` represent the path in Key Storage where the PagerDu
 
 This job step allows users to add a note to an existing PagerDuty incident.
 
-![PagerDuty - Add Note](/assets/img/pagerduty_note.png)
+![PagerDuty - Add Note](~@assets/img/pagerduty_note.png)
 
 - **API Token**: The API token associated with the PagerDuty account. In PagerDuty go to Configuration, select API access and either create a new key or use an existing one.
 - **Email**: The email address associated with the API token (whichever user was logged in when the token was created)
@@ -36,7 +36,7 @@ This job step allows users to add a note to an existing PagerDuty incident.
 
 ## PagerDuty Escalate Incident
 
-![PagerDuty - Escalate Incident](/assets/img/pagerduty-escalate-incident.png)
+![PagerDuty - Escalate Incident](~@assets/img/pagerduty-escalate-incident.png)
 
 - **API Key**
 : The API key for the account that contains the incident to update.
@@ -52,7 +52,7 @@ This job step allows users to add a note to an existing PagerDuty incident.
 
 ## PagerDuty Run Response Play
 
-![PagerDuty - Run Response Play](/assets/img/pagerduty-run-response-play.png)
+![PagerDuty - Run Response Play](~@assets/img/pagerduty-run-response-play.png)
 
 - **API Key**
 : The API key for the account that contains the incident to update.
@@ -68,7 +68,7 @@ This job step allows users to add a note to an existing PagerDuty incident.
 
 ## PagerDuty Send Event
 
-![PagerDuty - Send Event](/assets/img/pagerduty-send-event.png)
+![PagerDuty - Send Event](~@assets/img/pagerduty-send-event.png)
 
 - **Dedupe Key**
 : If a dedupe key is specified, it applies all events with matching dedupe key to the same open alert
@@ -111,7 +111,7 @@ framework.pagerduty.service.url = https://events.eu.pagerduty.com
 
 This job step allows users to update the status of an existing PagerDuty incident.
 
-![PagerDuty - Update Status](/assets/img/pagerduty_status.png)
+![PagerDuty - Update Status](~@assets/img/pagerduty_status.png)
 
 - **API Token**: The API token associated with the PagerDuty account
 - **Email**: The email address associated with the API token (whichever user was logged in when the token was created)
@@ -122,7 +122,7 @@ This job step allows users to update the status of an existing PagerDuty inciden
 
 This job step allows users to update an existing PagerDuty incident.
 
-![PagerDuty - Incident Update](/assets/img/pagerduty_update.png)
+![PagerDuty - Incident Update](~@assets/img/pagerduty_update.png)
 
 - **API Token**: The API token associated with the PagerDuty account
 - **Email**: The email address associated with the API token (whichever user was logged in when the token was created)
@@ -133,7 +133,7 @@ This job step allows users to update an existing PagerDuty incident.
 
 ## PagerDuty Get Incident
 
-![PagerDuty - Get Incident](/assets/img/pd-get.png)
+![PagerDuty - Get Incident](~@assets/img/pd-get.png)
 
 - **Incident ID**: The ID of the Incident to get information on.
 - **API Key**: The API key for the account that contains the incident to update.
@@ -142,7 +142,7 @@ This job step allows users to update an existing PagerDuty incident.
 
 This job step allows users to update the escalation policy on a given incident.
 
-![PagerDuty - Update Escalation](/assets/img/pd-update-escalation.png)
+![PagerDuty - Update Escalation](~@assets/img/pd-update-escalation.png)
 
 - **Escalation Policy**: This is the new escalation policy for the incident to use.
 - **Incident ID**: The ID of the incident to update the escalation policy on.
@@ -153,7 +153,7 @@ This job step allows users to update the escalation policy on a given incident.
 
 This job step allows users to specify another escalation policy or another user to assign to an incident.
 
-![PagerDuty - Update Escalation](/assets/img/pd-add.png)
+![PagerDuty - Update Escalation](~@assets/img/pd-add.png)
 
 - **Escalation Policy**: This is the new escalation policy for the incident to use.
 - **Incident ID**: The ID of the incident to update the escalation policy on.
@@ -165,7 +165,7 @@ This job step allows users to specify another escalation policy or another user 
 
 ## PagerDuty Send Change Event
 
-![PagerDuty - Send Change Event](/assets/img/pd_changevent.png)
+![PagerDuty - Send Change Event](~@assets/img/pd_changevent.png)
 
 - **Routing Key**: This is the integration key for an integration on a service. Specify the one for the service where the change event should be sent.
 - **Summary**: A brief text summary of the event.
@@ -182,7 +182,7 @@ framework.pagerduty.service.url = https://events.eu.pagerduty.com
 
 ## PagerDuty Send Impact Metric
 
-![PagerDuty - Send Impact Metric](/assets/img/pd_impactmetric.png)
+![PagerDuty - Send Impact Metric](~@assets/img/pd_impactmetric.png)
 
 >> Note: this feature has been deprecated by PagerDuty and will be removed in a future version of Rundeck.
 

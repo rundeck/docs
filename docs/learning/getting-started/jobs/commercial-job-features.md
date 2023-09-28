@@ -2,7 +2,7 @@
 While most of what has been covered in this Jobs 101 guide has been true for Rundeck, as well as the commercial products, PagerDuty Process Automation and Runbook Automation, there are a few commercial-only features related to Jobs that are worth mentioning.<br>
 ## Job logic - ruleset strategy
 Unlike the relatively simple strategies used in Rundeck (Node First, Parallel and Sequential), Ruleset Strategy provides a method for customizing how workflows will execute in a much more refined manner.  It includes a [scripting language](https://docs.rundeck.com/docs/manual/workflow-strategies/ruleset.html#writing-rules) to define the Job behavior. This allows you to skip steps and make decisions in case of a specific option value, etc.  In general, if you can think of a way to change how your workflow runs, it is probably possible to do it with a ruleset.<br>
-![](/assets/img/commercialfeatures1.gif)<br>
+![](~@assets/img/commercialfeatures1.gif)<br>
 Example of a Ruleset Strategy in the commercial products<br>
 ## Project Schedules
 [As discussed previously](https://docs.rundeck.com/docs/learning/howto/jobs/pieces-of-a-job.html#schedule), any Job can have a schedule associated with it, allowing it to run on some predictable schedule. Using the advanced crontab scheduling options, it is possible to set up a more complex schedule, but each Job is still limited to a single schedule. The project schedules available in the commercial products allow a Job to be executed on more than one schedule at a time.<br>

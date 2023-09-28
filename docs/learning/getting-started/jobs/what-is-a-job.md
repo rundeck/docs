@@ -1,7 +1,7 @@
 # What is a Job?
 A Rundeck / Process Automation Job is a unit that encapsulates a series of ordered steps to solve a problem or perform a task. Some example tasks include provisioning, security, software updates/deployment, change configs, opening ports, and more.<br>
 Jobs are a critical component of any Rundeck / Process Automation Project since they allow users to run powerful workflows that span the different scripts, tools, APIs, and system commands to standardize operations tasks. Jobs offer a way to package up a process and the Rundeck / Process Automation project acts as a central place to store jobs.<br>
-![](/assets/img/job_diagram.png)
+![](~@assets/img/job_diagram.png)
 
 ## Why create a Job?
 * If certain command executions are done repeatedly and represent a routine procedure users can create a Job to standardize and automate the process to make it faster to carry out and more consistent each time it runs.<br>

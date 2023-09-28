@@ -6,14 +6,14 @@ This log filter changes the log output of the steps in a job’s activity logs b
 
 One of the most common use-cases for the Progress Badge is to simplify the verbose output of diagnostics - such as application logs - into content that is consumable by first-responders of incidents.
 
-![PG Output](/assets/img/progress-badge-output.png)<br>
+![PG Output](@assets/img/progress-badge-output.png)<br>
 
 ## Usage
 
 To add the Progress Badge to a job step:
 
 1. Click the **gear** icon in the upper-right of the job step:
-   ![Select Log Filter](/assets/img/add-log-filter.png)
+   ![Select Log Filter](@assets/img/add-log-filter.png)
 2. Click on **Progress Badge** and fill in the fields outlined below:
 
 **Regex**: Optional regex to search the log returns for. If this field is set, the badge will only appear if the regex finds a match.
@@ -75,7 +75,7 @@ The Progress Badge is used to simplify the output of the HTTP diagnostics.
 6. Select the green check-mark emoticon for the **Status Symbol**.
 7. Insert the following into the **Context Variable** field  **`simplified-response`**:
 <p align="center">
-<img width="500" src="/assets/img/completed-progress-badge.png" />
+<img width="500" src="@assets/img/completed-progress-badge.png" />
 </p>
 8. Add _another_ **Progress Badge** Log Filter to the same step.
 9. Insert the following into the **Regex** field: **`HTTP/.*(400|404|500|504|301).*`**
@@ -83,15 +83,15 @@ The Progress Badge is used to simplify the output of the HTTP diagnostics.
 11. Select the red **X** emoticon for the **Status Symbol**.
 12. Insert the following into the **Context Variable** field: **`simplified-response`**.
 <p align="center">
-<img width="500" src="/assets/img/progress-badge-unhealthy.png" />
+<img width="500" src="@assets/img/progress-badge-unhealthy.png" />
 </p>
 
 Now, when a URL returns a **`200`**, the simplified message will be displayed alongside the verbose HTTP response:
-![PG Output](/assets/img/progress-badge-output.png)
+![PG Output](@assets/img/progress-badge-output.png)
 
 This simplified output can then be sent to other tools, such as PagerDuty Incident Response.
 First, add the **PagerDuty / Incident / Note** job step:
-![PagerDuty Step](/assets/img/progress-badge-pd-step.png)
+![PagerDuty Step](@assets/img/progress-badge-pd-step.png)
 <br><br>
 Then, when the job is invoked, the **Text** plus **Status Symbol** will appear on the Incident Timeline:
-![PD Timeline](/assets/img/progress-badge-pd-timeline.png)
+![PD Timeline](@assets/img/progress-badge-pd-timeline.png)

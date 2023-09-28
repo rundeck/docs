@@ -68,10 +68,10 @@ _Groovy plugins don't need compilation._
 1. Create a new job, give it a name, and add a step (e.g.: a `whoami` command)  
 2. Go to the "Notification" tab and click on the "On Start" section, then select the "MyNotificationPlugin" Notification Type.  
 3. Do the same in the "On Success", and "On Failure" sections.  <br>
-	![](/assets/img/groovynote1.png)
+	![](~@assets/img/groovynote1.png)
 1. Save the job.  
 2. Execute the job and examine the stdout output (docker-based environments) or service.log (rpm/deb-based Rundeck instance) file output.  
-	![](/assets/img/groovynote2.png)<br>
+	![](~@assets/img/groovynote2.png)<br>
 If you modify the job to fail intentionally and run it again, you will see the "On Failure" string defined on the custom plugin code.
 
 ## Resources

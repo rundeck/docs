@@ -12,7 +12,7 @@ If this is the first run through of the tutorial there will be a single node in 
 1. Click the `>` next to the server node to see additional attributes of that node.
 1. Clicking attribute values will dynamically filter the nodes based on that value.
 
-![Server Node Output](/assets/img/tutorial-nodes-serveronly.png)
+![Server Node Output](~@assets/img/tutorial-nodes-serveronly.png)
 
 ## Adding Nodes
 

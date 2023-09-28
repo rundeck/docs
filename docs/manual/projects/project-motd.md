@@ -6,16 +6,16 @@ The motd content is interpreted as [markdown](http://commonmark.org/help/) text 
 ## Graphical Interface
 
 To edit the project Message of the Day follow this navigation path.
-![MOTD Menu Selection](/assets/img/motd-menu-item.png)
+![MOTD Menu Selection](~@assets/img/motd-menu-item.png)
 
 Enter the text that needs to be shared with users of this project and click Save.
-![Figure: Project motd](/assets/img/motdgui02.png)
+![Figure: Project motd](~@assets/img/motdgui02.png)
 
 From **Project Settings > Edit Configuration > GUI** choose where the Message of the Day will be displayed.
-![Figure: Project motd](/assets/img/motdgui01.png)
+![Figure: Project motd](~@assets/img/motdgui01.png)
 
 The Message of the Day will be shown when a user has access to that project.
-![Figure: Project motd](/assets/img/motdgui03.png)
+![Figure: Project motd](~@assets/img/motdgui03.png)
 
 ## CLI Usage
 

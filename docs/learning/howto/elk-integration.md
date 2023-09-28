@@ -54,13 +54,13 @@ More information about Logstash pipelines [here](https://www.elastic.co/guide/en
 
 ### Creating the Index Pattern on Kibana
 1. In the Kibana server web interface (listening on the port 5601 by default), click on the top left menu icon and then click on the "Stack Management".  
-![](/assets/img/elk1.png)
+![](~@assets/img/elk1.png)
 2. Now click the "Index Patterns" link (left) and then click on "Check for new data."  
-![](/assets/img/elk2.png)
+![](~@assets/img/elk2.png)
 3. In the Index pattern name field, you should use the pattern `logstash-*`. Click the "Next Step" button.  
-![](/assets/img/elk3.png)
+![](~@assets/img/elk3.png)
 4. On the "Time field" list, select `@timestamp`. Then click on the "Create index pattern" button.  
-![](/assets/img/elk4.png)
+![](~@assets/img/elk4.png)
 
 At this point, the Index Pattern has been created successfully.
 
@@ -113,9 +113,9 @@ Then restart the Rundeck service.
 2. Create a new job.  
 3. Run the Job.  
 4. Go to the Kibana server web gui, click on the top left menu icon and select "Discover''.  
-![](/assets/img/elk5.png)
+![](~@assets/img/elk5.png)
 5. In the "logstash-*" section you can see the Rundeck job activity.  
-![](/assets/img/elk6.png)
+![](~@assets/img/elk6.png)
 
 ## Resources
 * [ELK Documentation](https://www.elastic.co/guide/en/elastic-stack/current/index.html)

@@ -4,7 +4,7 @@
 :::
 
 ## Overview
-![](/assets/img/gcp-icon.png)
+![](@assets/img/gcp-icon.png)
 
 Process Automation integrates with Google Cloud through a variety of plugins listed below.
 By integrating Process Automation with Google Cloud, users can automate and provide self-service interfaces for operations of their infrastructure and applications.
@@ -43,9 +43,9 @@ This section outlines how to retrieve the Service Account keys from Google Cloud
 
 1. Login to your Google Cloud Console at [https://console.cloud.google.com](https://console.cloud.google.com)
 2. Navigate to _IAM & Admin_ > _Service Accounts_<br>
-   ![Service Accounts Menu](/assets/img/howto-gcp-svcacctmenu.png)<br><br>
+   ![Service Accounts Menu](@assets/img/howto-gcp-svcacctmenu.png)<br><br>
 3. Click the **Create Service Account** button to start the wizard<br>
-   ![Create Service Account](/assets/img/howto-gcp-createsvcacct.png)<br><br>
+   ![Create Service Account](@assets/img/howto-gcp-createsvcacct.png)<br><br>
 4. Assign the account a **Name** and **ID**.
 5. When selecting **Roles** ensure the role(s) provide enough access to Process Automation to perform the desired tasks.
 6. Click **Done**
@@ -57,10 +57,10 @@ This section outlines how to retrieve the Service Account keys from Google Cloud
 #### Project ID
 
 While in the Google Cloud Console, click on the project list in the upper left, next to **Google Cloud**:
-![GCP Project List](/assets/img/gcp-project-list.png)
+![GCP Project List](@assets/img/gcp-project-list.png)
 
 From the popup, copy the **Project ID** from the **ID** column:
-![GCP Project ID](/assets/img/gcp-project-id.png)
+![GCP Project ID](@assets/img/gcp-project-id.png)
 
 ### Configure Google Cloud Plugin Suite in Process Automation
 
@@ -72,20 +72,20 @@ Use the following steps to configure authentication for the Google Cloud plugins
 
 1. In the specific project, click on **Project Settings** in the lower left.
 2. Click on **Edit Configuration** then click on **Plugins**.
-   ![Plugin Suite Project Settings](/assets/img/plugin-groups-project-settings.png)<br>
+   ![Plugin Suite Project Settings](@assets/img/plugin-groups-project-settings.png)<br>
 3. Click on **+PluginGroup**.
 4. Select **GCP** from the list.
 5. Click **Select** next to the **Key File** field.
 6. Click **+ Add or Upload a Key**
 7. For the **Key Type** dropdown, choose the **Private Key** option.
 8. Click the **Enter text** dropdown and choose the **Upload file** option:
-    ![GCP Upload File](/assets/img/gcp-upload-file.png)
+    ![GCP Upload File](@assets/img/gcp-upload-file.png)
 9. Click on **Choose File** and select the `.json` file saved from the prior section.
 10. Click **Save** to add this secret to Key Storage.
 11. Click **Save** to now use the saved secret from Key Storage.
 12. Enter the **Project ID** captured from the prior section into the **Project ID** field.
 13. Select the **Zone** to set the default zone used by the plugins.
-    ![GCP Project Config](/assets/img/gcp-plugins-project-config.png)
+    ![GCP Project Config](@assets/img/gcp-plugins-project-config.png)
 14. Click **Save** for the plugin configuration.
 15. Click **Save** for the Project Settings.
 
@@ -96,16 +96,16 @@ Use the following steps to configure authentication for the Google Cloud plugins
 1. Click on the **System Menu** (gear icon) in the upper right.
 2. Click on **System Configuration**.
 3. Navigate to the **GCP** section and click on the **Pencil Icon** in the upper right:
-   ![Edit Plugin Suite Sysytem Level](/assets/img/gcp-edit-plugingroup-system.png)
+   ![Edit Plugin Suite Sysytem Level](@assets/img/gcp-edit-plugingroup-system.png)
 4. Click **Select** next to the **Key File** field.
 5. Click **+ Add or Upload a Key**
 6. For the **Key Type** dropdown, choose the **Private Key** option.
 7. Click the **Enter text** dropdown and choose the **Upload file** option:
-   ![GCP Upload File](/assets/img/gcp-upload-file.png)
+   ![GCP Upload File](@assets/img/gcp-upload-file.png)
 8. Click on **Choose File** and select the `.json` file saved from the prior section.
 9. Click **Save** to add this secret to Key Storage.
 10. Click **Save** to now use the saved secret from Key Storage.
 11. Enter the **Project ID** captured from the prior section into the **Project ID** field.
 12. Select the **Zone** to set the default zone used by the plugins:
-    ![GCP System Config](/assets/img/gcp-system-config.png)
+    ![GCP System Config](@assets/img/gcp-system-config.png)
 13. Click **Save** to commit these changes to the **System Configuration**.

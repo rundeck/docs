@@ -198,7 +198,7 @@ JDK Mission Control and VisualVM are two well-regarded options for Java develope
 
 ### JDK Mission Control
 
-![](/assets/img/trouble1.png)
+![](~@assets/img/trouble1.png)
 
 JDK Mission Control is a comprehensive performance analysis and diagnostics tool provided by Oracle for Java applications. It is specifically designed for monitoring and profiling Java applications. 
 
@@ -208,13 +208,13 @@ Here is how to use JDK Mission Control to monitor Rundeck:
 * Install by downloading from [this link](https://www.oracle.com/java/technologies/javase/products-jmc8-downloads.html). Just download and uncompress the file.
 * Launch JDK Mission Control by executing the "jmc" command, available in the uncompressed directory.
 * Connect to a Rundeck instance by locating the Rundeck process on the left side list and see the available monitoring/profiling options with a right click.
-![](/assets/img/trouble2.png)
+![](~@assets/img/trouble2.png)
 
 **Monitoring Rundeck**
 * To start monitoring Rundeck, select “Start JMX Console”.
 * The "Overview" tab presents a summary of CPU usage, memory usage, thread activity, and more.
 * Explore different tabs and views to access detailed information about the JVM, threads, memory, and other components.  
-![](/assets/img/trouble3.png)
+![](~@assets/img/trouble3.png)
 
 **Profiling**
 * Click on the "Start Flight Recording" button in the toolbar or right-click on the application and choose "Start Flight Recording".
@@ -226,7 +226,7 @@ Here is how to use JDK Mission Control to monitor Rundeck:
 * Explore the various analysis tools and views, such as "Method Profiling", "Lock Instances", "Hot Methods", and "Contention".  These tools help identify bottlenecks, lock contention, and performance hotspots in your application.
     
 ### Visual VM
-![](/assets/img/trouble4.png)  
+![](~@assets/img/trouble4.png)  
 VisualVM is an analysis tool for Java-based applications. It provides a graphical user interface for monitoring, profiling, and troubleshooting Java applications running on the Java Virtual Machine (JVM). 
 
 **Download and Installation**
@@ -243,7 +243,7 @@ VisualVM is an analysis tool for Java-based applications. It provides a graphica
 * After connecting to Rundeck, VisualVM displays a dashboard with real-time monitoring data.
 * The overview tab provides an overview of CPU usage, memory usage, threads, classes, and more.
 * You can explore different tabs and subtabs to access specific information about the JVM, threads, memory, and other components.  
-![](/assets/img/trouble5.png)  
+![](~@assets/img/trouble5.png)  
 
 **Profiling**
 * To start profiling, select your application from the left-hand side panel and click on the "Profiler" tab.
@@ -251,7 +251,7 @@ VisualVM is an analysis tool for Java-based applications. It provides a graphica
 * Click on the "CPU" button to begin the CPU profiling session.
 * Perform the actions you want to analyze, and VisualVM will collect profiling data.
 * Once the session is complete, VisualVM presents the profiling results for further analysis.
-![](/assets/img/trouble6.png)
+![](~@assets/img/trouble6.png)
 
 ## Where and how to report a Rundeck bug
 You can report bugs on the Official Rundeck GitHub space located [here](https://github.com/rundeck/rundeck/issues). The following steps are crucial to report a Rundeck bug officially.

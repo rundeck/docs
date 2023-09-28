@@ -16,16 +16,16 @@ For AWS users, some examples of diagnostics would be:
 There are multiple plugins that allow users to pull diagnostics from common AWS Services:
 
 * [Query CloudWatch Logs](/manual/workflow-steps/aws-cloudwatch.html#amazon-cloudwatch-logs-workflow-step-plugins)
-![Query CloudWatch Logs](/assets/img/aws-cloudwatch-logs-query-string.png)
+![Query CloudWatch Logs](@assets/img/aws-cloudwatch-logs-query-string.png)
 * [Query Athena tables](/manual/workflow-steps/amazon-athena.html#amazon-athena-query-workflow-step)
 * [Check ELB Targets Status](/manual/workflow-steps/aws-elb-workflow-plugin.html#target-group-instance-statuses)
 * [Retrieve failed ECS container messages](/manual/workflow-steps/aws-ecs-fargate.html#stopped-ecs-tasks-error-messages)
 * [Invoke script via Lambda](/manual/workflow-steps/aws-lambda.html#aws-lambda-workflow-steps) 
-![Lambda Function Job Step](/assets/img/aws-custom-lambda-code.png)
+![Lambda Function Job Step](@assets/img/aws-custom-lambda-code.png)
 
 In addition to using the AWS Plugins, it is also possible to harness the AWS CLI within your Automation Instance:
                                                                                  
-![AWS CLI in a Job Step](/assets/img/aws-cli-job-step.png)
+![AWS CLI in a Job Step](@assets/img/aws-cli-job-step.png)
 
 If using Process Automation (on-premise), or a [**Runner**](/administration/runner), then you can also execute scripts that leverage the AWS SDK, such as Boto3 for python.
  
@@ -40,11 +40,11 @@ As an example, you may want to retrieve the health of a Function App:
 az monitor metrics list --resource myresource --resource-group myresourcegroup --resource-type "Microsoft.Web/sites" --metric "HealthCheckStatus" --interval 5m
 ```
 
-![Azure CLI checks health of Function App](/assets/img/azure-cli-health-function-app.png)
+![Azure CLI checks health of Function App](@assets/img/azure-cli-health-function-app.png)
 
 Another example would be to check the health of an Azure container registry:
 
-![Azure CLI checks errors in Container Registry](/assets/img/azure-cli-container-registry-health.png)
+![Azure CLI checks errors in Container Registry](@assets/img/azure-cli-container-registry-health.png)
 
 :::tip Point of Interest
 Azure has a full article [here](https://learn.microsoft.com/en-us/azure/container-registry/container-registry-check-health) dedicated to diagnosing Container Registry behavior.  
@@ -61,7 +61,7 @@ There are multiple plugins that allow users to pull diagnostics from Azure servi
 For users of Google Cloud Platform (GCP), the most common method of retrieving diagnostics from the public cloud platform is by “wrapping around” the **gcloud CLI** using the **Command** Job Step plugin.
 As an example, you can retrieve the current health status of instances in a backend service:
 
-![Gcloud CLI checks backend instances health](/assets/img/gcloud-check-instances-health.png)
+![Gcloud CLI checks backend instances health](@assets/img/gcloud-check-instances-health.png)
 
 :::tip Point of Interest
 This blog from Google Cloud on [**Debugging Health Checks in Load Balancing**](https://cloudplatform.googleblog.com/2015/07/Debugging-Health-Checks-in-Load-Balancing-on-Google-Compute-Engine.html) on Google Compute Engine outlines a number of steps for diagnosing Health Check failures.  

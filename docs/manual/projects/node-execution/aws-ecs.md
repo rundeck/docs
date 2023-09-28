@@ -106,7 +106,7 @@ Examples of IAM policies that restrict the access by Process Automation can be f
 In order to send commands to ECS Containers, first configure the [ECS-Fargate Node Source](/manual/projects/resource-model-sources/ecs-fargate).
 This retrieves the ECS containers and presents them as nodes in Process Automation:
 
-<img style='border:1px solid #327af6' src="/assets/img/aws-ecs-node-inventory.png" />
+<img style='border:1px solid #327af6' src="@assets/img/aws-ecs-node-inventory.png" />
 
 Once the containers have been added as nodes, Process Automation can send commands to them.  This can be done through the **Commands** tab, or using the **Remote Command** Job step:
 
@@ -115,20 +115,20 @@ Once the containers have been added as nodes, Process Automation can send comman
 1. Navigate to the **Commands** tab in the sidebar menu.<br><br>
 2. In the Node Filter field, type in a Node Filter to specify the containers that the command should execute on.  For example, **`ECS:Container-Image: spring.*`** filters only the containers
 where the container image starts with `spring`:
-   <img style='border:1px solid #327af6' src="/assets/img/aws-ecs-node-filter.png" /><br><br>
+   <img style='border:1px solid #327af6' src="@assets/img/aws-ecs-node-filter.png" /><br><br>
 3. In the **Enter a command** field, provide the command to be executed on the filtered containers. Click on **Run on 1 Node**.
-   <img style='border:1px solid #327af6' src="/assets/img/aws-ecs-node-executor-command.png" /><br>
+   <img style='border:1px solid #327af6' src="@assets/img/aws-ecs-node-executor-command.png" /><br>
 
 #### Remote Command Job Step
 
 1. In a new or existing Job, click on **Add a step**.<br><br>
 2. In the **Node Steps** tab, click on **Command**.<br><br>
 3. Provide the command to send to the container and click **Save** to save the Job step:
-   <img style='border:1px solid #327af6' src="/assets/img/aws-ecs-remote-command-step.png" /><br><br>
+   <img style='border:1px solid #327af6' src="@assets/img/aws-ecs-remote-command-step.png" /><br><br>
 4. Towards the top of the page, click on the **Nodes** tab to modify the target Nodes for the Job.<br><br>
 5. The toggle should be set to **Dispatch to Nodes**.<br><br>
 6. In the **Node Filter** field, provide a filter that selects the containers that the commands should be executed on. For example, **`ECS:Container-Image: spring.*`**:
-   <img style='border:1px solid #327af6' src="/assets/img/aws-ecs-job-node-filter.png" /><br><br>
+   <img style='border:1px solid #327af6' src="@assets/img/aws-ecs-job-node-filter.png" /><br><br>
 7. Click **Save** at the bottom of the page to save the Job configuration.
 
 ## Example Job: Java Thread Dump from ECS Container

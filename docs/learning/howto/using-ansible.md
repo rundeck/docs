@@ -59,26 +59,26 @@ In this guide we use three nodes defined as the [Ansible inventory](https://docs
 ## Rundeck/Ansible Integration
 
 1. To run commands via the "Commands" menu or the default "Command" node step in a Rundeck job, we can configure a project with the Ansible node executor as a default. **Create a new project**, go to the **Default Node Executor** tab and select _Ansible Ad-hoc Node Executor_.
-    <br><br>![ Edit Config ](/assets/img/howto-ansible-editconfig.png)<br><br>
+    <br><br>![ Edit Config ](@assets/img/howto-ansible-editconfig.png)<br><br>
 1. In the Ansible Node Executor configuration, set the Executable (usually `/bin/bash`) and define the Ansible config path (usually at `/etc/ansible/ansible.cfg`). Click on the **Generate Inventory** checkbox. Now scroll down and click on the **Save** button.
-    <br><br>![ Node Executor Config ](/assets/img/howto-ansible-defaultnodeexec.png)<br><br>
+    <br><br>![ Node Executor Config ](@assets/img/howto-ansible-defaultnodeexec.png)<br><br>
     The Rundeck-Ansible plugin uses the `rundeck` user as the default user to connect to the Ansible remote inventory nodes. At this point, it’s possible to define the SSH authentication method (`privatekey` and `password`) and the specific Ansible SSH user to connect to the remote inventory nodes. You need to define the username in the SSH User textbox. Depending on the auth method you can select the password from the storage path or the ssh key (also from the filesystem path).
-    <br><br>![ Node Executor Authentication ](/assets/img/howto-ansible-nodeexecauth.png)<br><br>
+    <br><br>![ Node Executor Authentication ](@assets/img/howto-ansible-nodeexecauth.png)<br><br>
 1. Add the Ansible inventory nodes by clicking on **Project Settings** > **Edit Nodes...** and then on **Add new Node Source +**.
-    <br><br>![ Add Node Source ](/assets/img/howto-ansible-addnodesource.png)<br><br>
+    <br><br>![ Add Node Source ](@assets/img/howto-ansible-addnodesource.png)<br><br>
 1.  Choose **Ansible Resource Model Source** and define the Ansible inventory file path on your Rundeck Server (usually at `/etc/ansible/hosts`) and Ansible config path (usually at `/etc/ansible/ansible.cfg`).
-    <br><br>![ Ansible Node Source ](/assets/img/howto-ansible-ansiblenodesource.png)<br><br>
-    <br><br>![ Ansible Node Source Config ](/assets/img/howto-ansible-ansiblesourceconfig.png)<br><br>
+    <br><br>![ Ansible Node Source ](@assets/img/howto-ansible-ansiblenodesource.png)<br><br>
+    <br><br>![ Ansible Node Source Config ](@assets/img/howto-ansible-ansiblesourceconfig.png)<br><br>
     Similar to the node executor configuration, in the “SSH Connection” section it’s possible to define the Authentication method (`privatekey` or `password-based`). Depending on the Authentication method, enter the _user_, _ssh password_, or the _key file path_.
-    <br><br>![ Ansible Node Source Auth ](/assets/img/howto-ansible-ansiblesourceauth.png)<br><br>
+    <br><br>![ Ansible Node Source Auth ](@assets/img/howto-ansible-ansiblesourceauth.png)<br><br>
 1. Now, scroll down and click on the **Save** button.
 1. Click on the **Nodes** option in the left panel to see the nodes defined in the Ansible inventory.
-    <br><br>![ Nodes! ](/assets/img/howto-ansible-nodes.png)<br><br>
+    <br><br>![ Nodes! ](@assets/img/howto-ansible-nodes.png)<br><br>
 
 Time for a quick test.
 
 1. Go to the Commands option in the left panel in the Nodes section, select an Ansible node defined in your Ansible inventory, and run some command (in this example we used “`ls -la`”).
-    <br><br>![ Run Test Commands ](/assets/img/howto-ansible-runcommand.png)<br><br>
+    <br><br>![ Run Test Commands ](@assets/img/howto-ansible-runcommand.png)<br><br>
 1. Now you can run any command/playbooks/inline-playbooks over your Ansible inventory.
 
 ### First Inline-Playbook Inside a Rundeck Job
@@ -98,7 +98,7 @@ Time for a quick test.
 1. Go to the **Nodes tab** in the Job Definition and type the name of an Ansible node as a _Node Filter_.
 1. **Save** the Job
 1. **Run the job**
-    <br><br>![  ](/assets/img/howto-ansible-joboutput.png)<br><br>
+    <br><br>![  ](@assets/img/howto-ansible-joboutput.png)<br><br>
 
 To see the output you may need to switch to the _Log Output_ view.
 
