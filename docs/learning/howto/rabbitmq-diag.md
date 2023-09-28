@@ -25,18 +25,18 @@ This example uses the "rabbitmq-collect-env.sh" script, an open-source tool prov
 Using this Rundeck workflow, you’ll work through the following steps:
 1. **Run the rabbitmq-collect-env script on the RabbitMQ server**:  
 To debug a RabbitMQ server/container, executes the "rabbitmq-collect-env.sh" script on the target node.  The script gathers various logs and environment information and creates a compressed archive file for analysis.  
-![](/assets/img/rabbitmq1.png)
+![](~@assets/img/rabbitmq1.png)
 2. **Analyze the collected data**:  
 Once the "rabbitmq-collect-env" script completes, you will have a compressed archive file containing all the gathered logs and environment information.
 3. **Extract the archive:**  
 Analyze the contents using tools or techniques appropriate for your debugging requirements. Pay attention to RabbitMQ-specific logs, system metrics, and any anomalies that might point to a root cause.  
-![](/assets/img/rabbitmq2.png)
+![](~@assets/img/rabbitmq2.png)
 4. **Send the compressed file to a file server:**  
 The compressed file is posted to an FTP service and all the data generated in step 4 is sent to an external web service as a notification.
-![](/assets/img/rabbitmq3.png)
+![](~@assets/img/rabbitmq3.png)
 5. **Clean up the Rabbit MQ server:**  
 The compressed file is deleted from the RabbitMQ server.
-![](/assets/img/rabbitmq4.png)
+![](~@assets/img/rabbitmq4.png)
 
 So, the following job definition achieves this workflow:
 

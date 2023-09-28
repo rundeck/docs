@@ -2,7 +2,7 @@
 Rundeck Jobs can be configured to prompt the user for input at the time a Job is run. These inputs are called _options_, which simulate a named parameter (required or optional) and are available to the user when the Job is executed. Rundeck Job Options are similar to variables, a space to put a value that will influence how the Job will run. For example, a Job Option might represent whether or not a script will run in a verbose mode or not. Effectively, job options allow a job runner to customize the job in some ways at runtime without having access to change the actual job.<br>
 Rundeck, PagerDuty Process Automation and Runbook Automation have two kinds of options: _text_ and _file_.<br>
 ## Option Type: Text
-![](/assets/img/joboptions1.png)<br>
+![](~@assets/img/joboptions1.png)<br>
 The form for defining text options includes the following areas:<br>
 ### Identification
 Option Name and Description are entered here. The Description will be made available to people executing the Job as help text.<br>
@@ -37,7 +37,7 @@ The delimiter string that will be used to separate multiple values when the Job 
 ### Select All Values by Default
 If checked, and no default value(s) are specified, all of the remote or local values will be selected by default.<br>
 ## Option Type: File
-![](/assets/img/joboptions2.png)<br>
+![](~@assets/img/joboptions2.png)<br>
 The option type file permits uploading a file that can be utilized as part of the Job. Areas displayed when setting up a File Option Type are a subset of those available in the Text Option Type.<br>
 ## How to reference options on command steps and script steps
 ### Command Step

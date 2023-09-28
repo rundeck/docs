@@ -12,7 +12,7 @@ Process Automation users have access to the Thycotic Storage Plugin which can be
 
 Below is an example configuration, which can be configured using the *System Configuration* module. Add each setting as a configuration entry.
 
-![Thycotic Configuration](/assets/img/keystorage-thycotic-config.png)
+![Thycotic Configuration](@assets/img/keystorage-thycotic-config.png)
 
 :::
 ::: tab rundeck-config.properties

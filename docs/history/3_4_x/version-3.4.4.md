@@ -17,19 +17,19 @@ To better support cloud automation at scale, we’ve significantly expanded our 
 
 With these updates, Rundeck users can apply a single script to multiple nodes and can perform similar actions across multiple clouds which, overlaid with other resource contexts, provides users with the ability to create automated processes that span multiple domains.
 
-![AWS/Azure/OCI/GCP](/assets/img/relnotes-344-4clouds.png)
+![AWS/Azure/OCI/GCP](@assets/img/relnotes-344-4clouds.png)
 
 ### New UI based Ruleset Designer [Enterprise]
 
 Jobs with complicated rule steps and conditionals can be hard to understand. To help users better visualize potential pathways according to step rules and conditions, we introduced the Ruleset Visualization as an incubating feature in 3.4.2. With the 3.4.4 release it's now possible to **use the GUI to design your Ruleset** and generate the rules automatically!
 
-![Ruleset Designer](/assets/img/relnotes-344-rulesetdesigner.gif)
+![Ruleset Designer](@assets/img/relnotes-344-rulesetdesigner.gif)
 
 ### Accessible Colors
 
 We’ve updated our color palette with new colors. This update helps make Rundeck more accessible to people with disabilities by enhancing the contrast and overall visual presence of Rundeck. We think the updated color palette looks pretty good too!
 
-![Before Color Changes](/assets/img/relnotes-344-beforeafter.gif)
+![Before Color Changes](@assets/img/relnotes-344-beforeafter.gif)
 
 ## Enterprise Updates
 

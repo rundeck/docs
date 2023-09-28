@@ -1,6 +1,6 @@
 # User Manager
 
-![User Manager Button](/assets/img/usermgr-menu-button.png)
+![User Manager Button](@assets/img/usermgr-menu-button.png)
 
 ## User Summary
 
@@ -12,7 +12,7 @@ This is a listing of all the users that have logged in to Rundeck regardless of 
 
 Enterprise users can leverage the built-in GUI based management and centralized storage of local Rundeck user accounts.
 
-![User Manager Screen](/assets/img/usermgr-manage-users.png)
+![User Manager Screen](@assets/img/usermgr-manage-users.png)
 
 ### Adding Users
 
@@ -28,7 +28,7 @@ Click the **Add User** button in the main window.  Fill out the fields.
 
   ___Bold/Italics___ are minimum required fields.
 
-![Add User Screen](/assets/img/usermgr-add-user.png)
+![Add User Screen](@assets/img/usermgr-add-user.png)
 
 ## Manage Local Groups (Enterprise)
 ::: enterprise
@@ -36,7 +36,7 @@ Click the **Add User** button in the main window.  Fill out the fields.
 
 GUI based management of groups (also sometimes referred to as Roles).
 
-![Group Manager Screen](/assets/img/usermgr-manage-groups.png)
+![Group Manager Screen](@assets/img/usermgr-manage-groups.png)
 
 ### Adding Groups
 
@@ -46,7 +46,7 @@ Click the ***Add Group*** button in the main window.  Fill out the fields and se
   - _Description:_ A nice description of this group of users.
   - _Users:_ Click the green plus sign to add the user to the group.  Click the red minus sign to remove them from the group.
 
-![Group Add Screen](/assets/img/usermgr-add-group.png)
+![Group Add Screen](@assets/img/usermgr-add-group.png)
 
 
 ## Appendix

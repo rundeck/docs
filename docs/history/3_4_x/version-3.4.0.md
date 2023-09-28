@@ -21,7 +21,7 @@ This release is packed with exciting new features and enhancements for both Rund
 
 ### New and Improved UI
 
-![Configuration Management](/assets/img/relnotes-340-newui.png)
+![Configuration Management](~@assets/img/relnotes-340-newui.png)
 
 The most obvious change in our 3.4 release is the newly refreshed and rebuilt User Interface. Our team focused on Intuitive Usability to design some great new changes into the look and feel of Rundeck. These improvements on the surface are simple artistic changes, but behind them are key functional improvements that simply workflow for users. Here are some highlights:
 
@@ -38,14 +38,14 @@ Rundeck prides itself on offering customers the ability to turn a lot of knobs a
 
 With version 3.4 it is now possible to configure Rundeck within the GUI and many of the settings now do not require a restart. The settings are stored in the Rundeck database so they are also shared across all your cluster members immediately. No need to worry about visiting each server console to update that certain setting for each server in your cluster.
 
-![Configuration Management](/assets/img/relnotes-340-config-mgmt.png)
+![Configuration Management](~@assets/img/relnotes-340-config-mgmt.png)
 
 [See the full Configuration Management documentation here.](/manual/configuration-mgmt/configmgmt.md)
 
 ### Job Queuing (Enterprise)
 Some technical operations can’t be run _in parallel_. Depending on the job, if the same one was executed while the previous execution was running, that might create a little havoc on the systems being managed. With Job Queuing when one execution finishes, the next one will start. The ability to queue up all the work that needs to be done at once without risking chaos in production.
 
-![Job Queue Config](/assets/img/jobqueue-config.png)
+![Job Queue Config](~@assets/img/jobqueue-config.png)
 
 [Find the Job Queue documentation here.](/manual/jobs/job-queue.md)
 

@@ -3,12 +3,12 @@
   <tr>
    <td>
    
-![](/assets/img/winrm1.png)
+![](~@assets/img/winrm1.png)
 
    </td>
    <td>
    
-![](/assets/img/winrm2.png)
+![](~@assets/img/winrm2.png)
 
    </td>
   </tr>
@@ -71,29 +71,29 @@ _Note that the WinRM service requires that the Windows Firewall be configured to
 In order to connect exclusively to Windows nodes using WinRM from a particular project, enable PYWinRM as the default node executor.
 
 1. Create a new project and give it a name. 
-![](/assets/img/winrm3.png)
+![](~@assets/img/winrm3.png)
 2. Click on the "Default Node Executor" tab and select "WinRM Node Executor Python" from the Node Executor selector list (the default value is "SSH"). 
 3. Pick the correct version of Python from the "Python Interpreter" list. (Note: some Linux distributions use "Python" to indicate the Python 3 interpreter by default).
-![](/assets/img/winrm4.png)
+![](~@assets/img/winrm4.png)
 4. Click on the "Default File Copier" tab and select "WinRM Python File Copier". 
 5. Pick the appropriate Python version as an interpreter. This enables dispatching scripts against Windows systems. 
-![](/assets/img/winrm5.png)
+![](~@assets/img/winrm5.png)
 6. Scroll down and save the project.
 
 
 ### Adding a Node Source
 Nodes are the servers or other devices that are managed by Rundeck.  Since we don’t have any nodes in this project yet (other than the server itself), we need to set one up by adding a Node Source and entering details about the node.  This is a static method of defining nodes but nodes could also come from an existing source, such as Ansible inventory or AWS EC2.
 1. Add a new node source by clicking on the "Add a new Node Source" button.<br>
-![](/assets/img/winrm6.png)<br>
+![](~@assets/img/winrm6.png)<br>
 2. Select "File" and choose "Resourcexml" from the left dropdown menu under the "Format" section.<br>
 3. Create a full file path that is reachable by the rundeck user, such as `/var/lib/rundeck/resources.xml`. <br>
 4. Select "Generate" and "Writeable" checkboxes and click on the "Save" button.<br>
 5. Click on the "Save" button again.<br>
-![](/assets/img/winrm7.png)<br>
+![](~@assets/img/winrm7.png)<br>
 
 ### Entering Node Details
 1. Go to the "Edit" tab and click on the "Modify" button.<br>
-![](/assets/img/winrm8.png)<br>
+![](~@assets/img/winrm8.png)<br>
 The XML editor should appear, showing a nodeless XML file as follows:<br>
 	```
 	<?xml version="1.0" encoding="UTF-8"?>
@@ -128,7 +128,7 @@ Note that the `hostname` attribute should match the hostname or IP address of th
 4. Enter the Windows user password for the test machine in the "Enter a password" field.
 5. Enter "winpassword" in the "Specify a name" textbox.
 6. Save the password.
-![](/assets/img/winrm9.png)
+![](~@assets/img/winrm9.png)
 7. Now the Windows user password is stored at the `keys/winpassword` Key Storage path (referenced previously by the `winrm-password-storage-path` attribute).
 
 That's it! A Windows node is now available to dispatch commands and jobs.
@@ -140,25 +140,25 @@ Once Nodes have been properly configured, it is possible to run commands or Jobs
 1. From the left-hand menu, navigate to the "Commands" section.<br>
 2. Enter the name of the Windows machine in the "Nodes Filter" field, then press "Enter." The node should now be marked as "Node Matched".<br>
 3. Enter a specific Windows command, such as "dir," then click the "Run on 1 Node" button.<br>
-![](/assets/img/winrm10.png)<br>
+![](~@assets/img/winrm10.png)<br>
 
 If a user has the ability to run commands in the project, this is a way to get details from a node without logging in directly or building a full job.  It is also possible to take a command that has been run and use it to start job creation.  Whether or not a user can run ad hoc commands and which nodes can be targeted are controlled by access control policies.<br>
 
 ### To dispatch Powershell scripts
 1. Navigate to Jobs in the left hand menu<br>
 2. Click create a new job and provide the job with a name<br>
-![](/assets/img/winrm11.png)<br>
+![](~@assets/img/winrm11.png)<br>
 3. Click on the "Nodes" tab, then select the "Dispatch to Nodes" radio button.<br>
 4. Enter the name of the Windows node in the "Node Filter" field, then press "Enter."<br>
 The node should now be reflected in the "Matched Nodes" section.<br>
-![](/assets/img/winrm12.png)<br>
+![](~@assets/img/winrm12.png)<br>
 5. Switch to the "Workflow" tab, then scroll down and click the "Script" step ("Script - Execute an inline script").<br>
 6. Enter the Powershell command you wish to execute in the "Enter the entire script to execute" field (e.g., "Get-Process").<br>
 7. Click the "Advanced" link. This will display two additional options: "Invocation String" and "File Extension."<br>
 8. In the "Invocation String" field, enter powershell.exe. In the "File Extension" field, enter .ps1.<br>
-![](/assets/img/winrm13.png)<br>
+![](~@assets/img/winrm13.png)<br>
 9. Save the job, then run it.<br>
-![](/assets/img/winrm14.png)<br>
+![](~@assets/img/winrm14.png)<br>
 
 ## Resources
 * PyWinRM plugin Github [space](https://github.com/rundeck-plugins/py-winrm-plugin).

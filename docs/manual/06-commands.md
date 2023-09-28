@@ -24,7 +24,7 @@ Navigate to this page by clicking on the "Commands" tab in the navigation
 bar. Alternatively, go to the Nodes tab and choose the "Node Actions" menu
 and select the "Run a command ..." menu item.
 
-![Ad-hoc Command](/assets/img/command-overview.png)
+![Ad-hoc Command](~@assets/img/command-overview.png)
 
 The screenshot above shows the elements of the Commands page user interface.
 
@@ -47,14 +47,14 @@ Selecting the Runner here will dispatch the commands to an Enterprise Runner ins
 
 ## Enter a command
 
-![Input command string](/assets/img/fig0207-a.png)
+![Input command string](~@assets/img/fig0207-a.png)
 
 Enter the command string you wish to execute on the Nodes. This command
 string must be a valid command statement that can be executed on the nodes.
 
 ### Dispatch settings
 
-![Choose dispatch settings](/assets/img/fig0208-b.png "Foo")
+![Choose dispatch settings](~@assets/img/fig0208-b.png "Foo")
 
 The dispatch settings let you control the amount of concurrency and error
 handling for the command execution.
@@ -64,7 +64,7 @@ handling for the command execution.
 
 ## Select the nodes
 
-![Filter the nodes](/assets/img/fig0207-b.png)
+![Filter the nodes](~@assets/img/fig0207-b.png)
 
 You can choose the nodes by either choosing a saved filter or typing in your own
 filter expression. Press the "Search" button to find the matched nodes.
@@ -78,7 +78,7 @@ the Node's attribute values (1).
 You can click the filter links inside the detail
 view to continue building your filter expression (2).
 
-![Node detail](/assets/img/fig0208-a.png)
+![Node detail](~@assets/img/fig0208-a.png)
 
 ## Execute command
 
@@ -91,7 +91,7 @@ The command prompt and run button become disabled until
 the execution completes. Output from the command execution is shown
 below.
 
-![Command execution output](/assets/img/fig0208.png)
+![Command execution output](~@assets/img/fig0208.png)
 
 1. Link to execution page: Every execution has an ID an a separate page to follow it and view a report after it completes.
 2. Collated output: All output is grouped by the node.
@@ -103,7 +103,7 @@ below.
 Once the command execution begins you can monitor its progress on the
 Commands page or a separate execution follow page discussed later.
 
-![Now running a command](/assets/img/fig0207-c.png)
+![Now running a command](~@assets/img/fig0207-c.png)
 
 1. Kill job button: You can kill the execution by pressing this button.
 
@@ -113,9 +113,9 @@ Sometimes it is useful to have a page where just the execution output
 is displayed separately. One purpose is to share a link to others
 interested in following the output messages. Click on the execution id go to the execution follow page.
 
-![Click execution id to follow the execution](/assets/img/fig0207-f.png)
+![Click execution id to follow the execution](~@assets/img/fig0207-f.png)
 
-![Execution follow view](/assets/img/fig0207-d.png)
+![Execution follow view](~@assets/img/fig0207-d.png)
 
 Notice the URL in the location bar of your browser. This URL can
 be shared to others interested in the progress of execution. The URL

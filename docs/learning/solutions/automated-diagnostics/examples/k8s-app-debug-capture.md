@@ -107,10 +107,10 @@ To install the Kubernetes plugins just check the following steps:
 
 1. Navigate to the [latest plugin release](https://github.com/rundeck-plugins/kubernetes/releases/latest) on Github and download the **`kubernetes-X.X.XX.zip`** file.<br><br>
 2. In the Rundeck or Process Automation instance, click the **Gear Icon** and then click the **Plugins > Upload Plugin**:
-   ![Upload Plugins Menu](/assets/img/upload-plugins-menu.png)
+   ![Upload Plugins Menu](@assets/img/upload-plugins-menu.png)
 3. Click **Browse** and select the downloaded **`.zip`** file from Step 2.
 4. Click **Install**:
-   ![Upload Kubernetes Plugins](/assets/img/upload-k8s-plugins.png)
+   ![Upload Kubernetes Plugins](@assets/img/upload-k8s-plugins.png)
 
 ### Running Commands in Pods and Capturing Output
 
@@ -130,14 +130,14 @@ Choose **YAML Format** then click **Upload**.
 4. If the steps were followed in the [Pre-requisites & Environment Setup](#pre-requisites-environment-setup) section, type **`auto-diagnostics`** into the **Namespace** field.
 5. Type **`tomcat`** into the **Pod Name** field.
 6. (Optional) type **`tomcat`** into the **Contaienr Name** field:
-![Job Input Parameters](/assets/img/oss-k8s-java-job-invoke-screen.png)
+![Job Input Parameters](@assets/img/oss-k8s-java-job-invoke-screen.png)
 7. Click **Run Job Now**.
    :::tip Note
    By default, the Java thread dump is not printed to the log output. Instead, it is saved as a file and can be 
    configured to be sent to another location inside your network or to a storage-service like **S3** or **Blob Storage**.
    :::
 8. Toggle open the specific job steps to view their detailed output:
-![Job Output](/assets/img/oss-k8s-java-job-output.png)
+![Job Output](@assets/img/oss-k8s-java-job-output.png)
 
 ---
 ### Advanced Settings
@@ -148,7 +148,7 @@ If the KubeConfig file is in a non-standard location, then modify Steps 1 and 2 
 
 1. On the job-run page, click on **Action** -> **Edit this Job...**
 2. Click on **Step 1** and in the **Authentication** section, place the kubeconfig file path into the **Kubernetes Config File Path** field. Click **Save** for the specific job step:
-   ![Custom KubeConfig](/assets/img/custom-kubeconfig-job-step.png)
+   ![Custom KubeConfig](@assets/img/custom-kubeconfig-job-step.png)
 3. Repeat the prior step for **Step 2**.
 
 If using an API Token for authentication is preferred over placing the KubeConfig on the Process Automation or Rundeck server, then 

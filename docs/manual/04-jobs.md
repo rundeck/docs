@@ -93,7 +93,7 @@ The Job page lets you search for Jobs using the Filter option.
 
 Click the "Filter" link to show the filter options:
 
-![Job filter form](/assets/img/fig0317.png)
+![Job filter form](~@assets/img/fig0317.png)
 
 This will show the Filter fields. Enter a value in any of the filter fields:
 
@@ -108,7 +108,7 @@ fields.
 After pressing the "Filter" button, the Job list will be filtered to
 include only the matching jobs.
 
-![Job filtered list](/assets/img/fig0318.png)
+![Job filtered list](~@assets/img/fig0318.png)
 
 To refine the filter, click on the blue-outlined Filter description,
 and change the filter fields.
@@ -124,12 +124,12 @@ from the filtered listing and then press the
 If you do not see the Run icon, it
 means your login does not have "run" privileges for that job.
 
-![Job run button](/assets/img/fig0319.png)
+![Job run button](~@assets/img/fig0319.png)
 
 If you navigated to the separate job page, press
 the "Run" button there.
 
-![Job run button](/assets/img/fig0319-b.png)
+![Job run button](~@assets/img/fig0319-b.png)
 
 The Run job dialog allows you to input Job options if any,
 Log level, Nodes selection and how you want to follow the execution.
@@ -156,7 +156,7 @@ Activity section of the page, or by going to the [Activity](/manual/08-activity.
 Once you have started running a Job, you can follow the Job's output
 in the Execution page.
 
-![Job execution output](/assets/img/fig0319-c.png)
+![Job execution output](~@assets/img/fig0319-c.png)
 
 On the Jobs list page, look in the "Running" tab in the Activity section of the page
 and click the execution ID's progress bar.
@@ -169,7 +169,7 @@ browser will already have been directed to the Execution Follow page.
 A Job's definition can be shown by clicking on the Definition
 tab in the Job Show page or in the Execution page.
 
-![Job definition](/assets/img/fig0320.png)
+![Job definition](~@assets/img/fig0320.png)
 
 The information in the Job detail view includes:
 
@@ -192,7 +192,7 @@ You can click on any past execution in the list to see the full execution for th
 You can also navigate to the Activity page from the top navigation bar and use the
 search filter to find executions by typing in the job name.
 
-![Job executions matches](/assets/img/fig0310.png)
+![Job executions matches](~@assets/img/fig0310.png)
 
 The Jobs page also contains all executions for the job group shown.
 
@@ -210,4 +210,4 @@ When prompted "Really kill this job?" Click the "Yes" button.
 
 The Job will terminate with a "Killed" completion status.
 
-![Job definition](/assets/img/fig0319-d.png)
+![Job definition](~@assets/img/fig0319-d.png)

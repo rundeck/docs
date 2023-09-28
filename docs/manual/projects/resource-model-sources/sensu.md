@@ -11,7 +11,7 @@ To authenticate Process Automation with Sensu, follow instructions outlined in [
 
 ## Configuration
 
-![Sensu - Node Source](/assets/img/sensu-node-source.png)
+![Sensu - Node Source](~@assets/img/sensu-node-source.png)
 
 - **IP Pattern**
 : If using multiple network addresses, set a pattern to import numerous. All VMs matching the pattern will be imported.

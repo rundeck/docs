@@ -154,11 +154,11 @@ winrm/config/service @{AllowUnencrypted="true"}
 - Select **Local Computer** and then click **Finish**.
 - Go to **Computer Policy\Administrative Templates\System\Credentials Delegation\Allow Delegating Fresh Credentials** → Set to **enabled**
 
-![Enable delegating fresh credentials](/assets/img/allow-delegating-fresh-credentials-1.png)
+![Enable delegating fresh credentials](~@assets/img/allow-delegating-fresh-credentials-1.png)
 
 - Add **WSMAN/\*** to list of computers and check the box for **Concatenate OS defaults with input above**.
 
-![Add servers to list](/assets/img/allow-delegating-fresh-credentials-2.png)
+![Add servers to list](~@assets/img/allow-delegating-fresh-credentials-2.png)
 
 #### Enable CredSSP authentication on Winrm Client
 
@@ -258,7 +258,7 @@ Set-NetConnectionProfile -InterfaceIndex [INTERFAZ_INDEX] -NetworkCategory Priva
 
 It could be necessary to change the user’s log-on in tomcat service when the remote connection does not work:
 
-![Tomcat settings](/assets/img/powershell-troubleshooting.png)
+![Tomcat settings](~@assets/img/powershell-troubleshooting.png)
 
 For more information about installing and configuring Windows Remote Nodes, see [Windows Remote Nodes](https://docs.microsoft.com/en-us/windows/win32/winrm/installation-and-configuration-for-windows-remote-management#:~:text=To%20configure%20WinRM%20with%20default,command%20at%20a%20command%20prompt).
 

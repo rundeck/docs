@@ -20,7 +20,7 @@ When defining the IAM Role for Runbook Automation or Process Automation, be sure
 
 The **AWS / RDS / Status** plugin checks on the status of an existing RDS database instance:
 
-![RDS Plugin Output](/assets/img/aws-rds-status-output.png)<br>
+![RDS Plugin Output](@assets/img/aws-rds-status-output.png)<br>
 
 This can be especially useful when your RDS instance has run out of storage capacity, or when there are other issues with the instance availability.
 

@@ -5,14 +5,14 @@
 Use the command step to call system commands. Enter any command string you
 would type at the terminal on the remote hosts.
 
-![Command step type](/assets/img/fig0404.png)
+![Command step type](~@assets/img/fig0404.png)
 
 ### Script step
 
 Execute the supplied shell script content. Optionally, can pass an
 argument to the script specified in the lower text field.
 
-![Script step type](/assets/img/fig0405.png)
+![Script step type](~@assets/img/fig0405.png)
 
 ::: warning
 If an exception is thrown with the message `Cannot run program, error = 26 Text file busy` when executing the script step, a node attribute `enable-sync=true` can be configured to enable a `sync` command to be executed (in background) before executing the script, avoiding this scenario.
@@ -24,7 +24,7 @@ Executes the script file local to the sever to the filtered Node
 set. Arguments can be passed to the script by specifying them in the
 lower text field.
 
-![Script file step type](/assets/img/fig0406.png)
+![Script file step type](~@assets/img/fig0406.png)
 
 ### Script URL step
 
@@ -32,7 +32,7 @@ Downloads a script from a URL, and executes it to the filtered Node
 set. Arguments can be passed to the script by specifying them in the
 lower text field.
 
-![Script URL step type](/assets/img/fig0406.png)
+![Script URL step type](~@assets/img/fig0406.png)
 
 The URL can contain [Context Variables](/manual/job-workflows.md#context-variables) that will be expanded at runtime.
 
@@ -41,7 +41,7 @@ The URL can contain [Context Variables](/manual/job-workflows.md#context-variabl
 To call another saved Job, create a Job Reference step. Enter the name
 of the Job and its group.
 
-![Job reference step type](/assets/img/fig0407.png)
+![Job reference step type](~@assets/img/fig0407.png)
 
 The Job Reference form provides a Job browser to make it easier to
 select from the existing set of saved Jobs.
@@ -80,7 +80,7 @@ When you choose to use a Job Reference as a _Node Step_, you can use the Node co
 
 You can override the Node Filters used in the referenced Job. Click the "Override Node Filters?" button to expand the Node Filter area.
 
-![Job Reference Node Filter Override](/assets/img/job-ref-node-filter-override.png)
+![Job Reference Node Filter Override](~@assets/img/job-ref-node-filter-override.png)
 
 Enter a new filter in the "Node Filter" input field to preview the matched nodes.
 
@@ -95,7 +95,7 @@ Once you enter a new filter, you can modify the other aspects for the Node Dispa
 
 Copy a file to a destination on a remote node.
 
-![Copy File Step](/assets/img/copy-file-step.png)
+![Copy File Step](~@assets/img/copy-file-step.png)
 
 #### Configuration
 
@@ -118,7 +118,7 @@ Print transfer information
 
 Run a command locally on the server
 
-![Local Command Step](/assets/img/local-command-step.png)
+![Local Command Step](~@assets/img/local-command-step.png)
 
 #### Configuration
 
@@ -129,7 +129,7 @@ Command
 
 Produce data values for a node.
 
-![Data Node Step](/assets/img/data-node-step.png)
+![Data Node Step](~@assets/img/data-node-step.png)
 
 #### Configuration
 
@@ -143,7 +143,7 @@ Format
 
 Performs an HTTP Request with or without authentication (per node)
 
-![HTTP Node Step](/assets/img/http-request-step.png)
+![HTTP Node Step](~@assets/img/http-request-step.png)
 
 #### Configuration
 
@@ -167,7 +167,7 @@ Body
 Request Timeout
 : How long to wait for the request to complete before failing
 
-![HTTP Node Step - Authentication](/assets/img/http-node-step-auth.png)
+![HTTP Node Step - Authentication](~@assets/img/http-node-step-auth.png)
 
 #### Authentication 
 
@@ -197,7 +197,7 @@ For [Script steps](#script-step), [Script file steps](#script-file-step), and [S
 
 Click on the "Advanced" link to reveal the input.
 
-![Advanced Script Settings](/assets/img/job_workflow_script_interpreter.png)
+![Advanced Script Settings](~@assets/img/job_workflow_script_interpreter.png)
 
 Enter a command that will be used as the _invocation_ to run the script, by including `${scriptfile}` to define where the resulting file will appear in the invocation command. For example, you can execute the script using `sudo` by entering:
 
@@ -222,7 +222,7 @@ If an specific encoding is needed when using power shell executor, you can set t
 	
 	powershell [Console]::OutputEncoding = [Text.UTF8Encoding]::utf8 ; "[scriptfile] arguments ..."
 	
-![Script Encoding](/assets/img/powershell_encoding.png)
+![Script Encoding](~@assets/img/powershell_encoding.png)
 :::
 
 

@@ -18,9 +18,9 @@ The values stored are unique entries chosen by the user.  The values are abstrac
 
 1. Choose the _Execution Plugins_ tab.
 1. Check the box for **ROI Metrics Data**.<br><br>
-    ![ROI Metrics Plugin](/assets/img/roi-metrics-data.png)
+    ![ROI Metrics Plugin](~@assets/img/roi-metrics-data.png)
 1. Click **Add Custom Field**.<br><br>
-    ![Add Custom Field](/assets/img/roi-metrics-customfield.png)
+    ![Add Custom Field](~@assets/img/roi-metrics-customfield.png)
 1. Enter a value for:
     - ***Field Label***: This is the friendly name of the field that will be shown when picking a value
     - ***Field Key***: This is the name of the field used in the programmatic output.
@@ -36,11 +36,11 @@ The values stored are unique entries chosen by the user.  The values are abstrac
 
 When the Job is Executed a new Log Output screen called _ROI Metrics Data_ will be shown when the job is complete.
 
-![ROI Metrics New Log Entry](/assets/img/roi-metrics-log-listing.png)
+![ROI Metrics New Log Entry](~@assets/img/roi-metrics-log-listing.png)
 
 Selecting that tab will show a table view of the ROI Metrics.  In the example shown we can see the value provided along with the following metrics included by default:
 
-![ROI Metrics Output](/assets/img/roi-metrics-output.png)
+![ROI Metrics Output](~@assets/img/roi-metrics-output.png)
 
 - Job Duration (in seconds)
 - Job Execution Time (UTC)
@@ -49,6 +49,6 @@ Selecting that tab will show a table view of the ROI Metrics.  In the example sh
 
 The data is also available in JSON format both in the UI and from an API endpoint.  Use our [API Guide](/api/rundeck-api.md) to access the data.
 
-![ROI Metrics JSON](/assets/img/roi-metrics-json.png)
+![ROI Metrics JSON](~@assets/img/roi-metrics-json.png)
 
 For a walk-through of how the ROI Metrics Data may be used and an example job that will help in gathering ROI metric data check out this [Learning Article](/learning/howto/use-roi-metrics.md).

@@ -18,8 +18,8 @@ For more information, see How Elastic Load Balancing works in the [Elastic Load 
 
 <!-- blank line -->
 <figure class="video_container">
-  <video controls="true" allowfullscreen="true" poster="/assets/img/rundeck-enterprise-aws-alb-poster_image.png">
-    <source src="/assets/vid/rundeck-enterprise-aws-alb.mp4" type="video/mp4">
+  <video controls="true" allowfullscreen="true" poster="~@assets/img/rundeck-enterprise-aws-alb-poster_image.png">
+    <source src="~@assets/vid/rundeck-enterprise-aws-alb.mp4" type="video/mp4">
   </video>
 </figure>
 <!-- blank line -->
@@ -59,7 +59,7 @@ Enable cookie stickiness via the AWS Console, EC2 -> Target Groups -> Your Targe
 This can be enabled to be managed by AWS Load Balancer or by the Rundeck Application using its' JSESSIONID Cookie.
 The difference is that when the AWS LB option is chosen, you can't set the time for the Cookie duration, and while using the Application Cookie it will timeout according to the Application settings. In the case that you are using an Auto-Scaling group, application stickiness is not recommended.
 
-![Target Group Attributes](/assets/img/lb-aws-alb-stickiness1.png)
+![Target Group Attributes](~@assets/img/lb-aws-alb-stickiness1.png)
 
 
 Enable cookie stickiness via the AWS CLI.

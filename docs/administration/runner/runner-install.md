@@ -228,7 +228,7 @@ These instructions will guide how to install a Runner in Kubernetes.
 6. Creat the deployment: **`kubectl create -f deployment.yml`**.
 7. Confirm that the Runner was deployed successfully: **`kubectl logs -f rundeck-runner --namespace=[NAMESPACE]`**
 8. Verify that the Runner is communicating with Process Automation correctly by looking in the **Status** column on the Runner Management page:
-    ![Runner installed correctly](/assets/img/runner-installed-k8s.png)
+    ![Runner installed correctly](@assets/img/runner-installed-k8s.png)
 :::tip Tip: Multiple Pods for Scalability
    Multiple replicas of the Runner container can be associated with a single deployment, though they will appear as a single Runner in Process Automation. 
     This is useful for horizontally scaling the Runner. Here is an example deployment yaml where 2 replicas are used:
@@ -269,7 +269,7 @@ Verify that the pods were deployed successfully:
 
 The “Runner Management” menu will appear on under the “System” settings:
 
-![Runner Architecture](/assets/img/runner-management.png)
+![Runner Architecture](@assets/img/runner-management.png)
 
 If you are installing a Runner on a Windows OS as localhost node, you have to specify the “OS Family” setting as “windows”.
 
@@ -279,13 +279,13 @@ If you are installing a Runner on a Windows OS as localhost node, you have to sp
 - Click on "Edit" on the local node.
 - On the field "OS Family" set "windows".
 
-![Runner Architecture](/assets/img/runner-edit-nodes.png)
+![Runner Architecture](@assets/img/runner-edit-nodes.png)
 
-![Runner Architecture](/assets/img/runner-resource-tab.png)
+![Runner Architecture](@assets/img/runner-resource-tab.png)
 
-![Runner Architecture](/assets/img/runner-edit-local.png)
+![Runner Architecture](@assets/img/runner-edit-local.png)
 
-![Runner Architecture](/assets/img/runner-os-family.png)
+![Runner Architecture](@assets/img/runner-os-family.png)
 
 Powershell script steps are fully supported on the Runner. Commands that run through the cmd.exe shell are not supported at the moment.
 

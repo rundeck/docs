@@ -2,7 +2,7 @@
 
 The Email plugin is a builtin notification plugin that sends emails when a job succeeds or fails.
 
-![Email Notification](/assets/img/email-notification.png)
+![Email Notification](~@assets/img/email-notification.png)
 
 **Include log output**
 

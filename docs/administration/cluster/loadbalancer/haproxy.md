@@ -32,4 +32,4 @@ server rundeck3 192.168.0.3:4440 cookie rundeck3 check inter 2000 rise 2 fall 3
 
 Once the web load balancer has been configured with the health check, any instance that is not in "active" mode will not be passed traffic.
 
-![HAProxy status](/assets/img/haproxy-status.png)
+![HAProxy status](~@assets/img/haproxy-status.png)

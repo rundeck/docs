@@ -10,7 +10,7 @@ Rules need to be defined in [YAML format](https://en.wikipedia.org/wiki/YAML) an
 
 To see the current ACL rules click on the Gear Icon and then click on the "Access Control", in this section all ACLs are listed.
 
-![policies](/assets/img/acl_basics_1_policies.png)
+![policies](~@assets/img/acl_basics_1_policies.png)
 
 ### Getting Started
 
@@ -115,7 +115,7 @@ notBy:
 
 To create a new ACL, click on the Gear Icon > Access Control and click on the “+ Create ACL Policy” button (under stored ACL Policies).
 
-![](/assets/img/acl_basics_2_yaml.png)
+![](~@assets/img/acl_basics_2_yaml.png)
 
 Note for those considering the Enterprise product, PagerDuty Process Automation uses a user-friendly wizard to create rules using the GUI directly instead of typing all rules on the YAML text editor.
 
@@ -145,13 +145,13 @@ The following example shows how to create a user and give Access to the MyProjec
 Creating a role and user.
 
 1. As an `admin` user,  click on the Gear Icon and select “User Manager”.<br>
-    ![](/assets/img/acl_basics_3_usermgr.png)<br><br>
+    ![](~@assets/img/acl_basics_3_usermgr.png)<br><br>
 1. Then click on the Manage Local Groups tab, add a new group called `my_group` and save.<br>
-    ![](/assets/img/acl_basics_4_addgroup.png)<br>
-    ![](/assets/img/acl_basics_4_newgroup.png)<br><br>
+    ![](~@assets/img/acl_basics_4_addgroup.png)<br>
+    ![](~@assets/img/acl_basics_4_newgroup.png)<br><br>
 1. Now click on the Manage Local User tab and create a new user called `jdoe` (and click on the `my_group` checkbox to add `jdoe` user to `my_group` role.<br>
-    ![](/assets/img/acl_basics_5_manageusers.png)<br>
-    ![](/assets/img/acl_basics_6_newuser.png)<br><br>
+    ![](~@assets/img/acl_basics_5_manageusers.png)<br>
+    ![](~@assets/img/acl_basics_6_newuser.png)<br><br>
 
 
 #### Creating the ACL via Wizard:
@@ -159,18 +159,18 @@ Creating a role and user.
 
 
 1. Click on the Gear Icon and select “Access Control”<br>
-    ![](/assets/img/acl_basics_7_systemgear.png)<br><br>
+    ![](~@assets/img/acl_basics_7_systemgear.png)<br><br>
 1. Give it a name (“MyACL” in the example) and click on the “New Rule” button.<br>
-    ![](/assets/img/acl_basics_8_storedpolicies.png)<br><br>
+    ![](~@assets/img/acl_basics_8_storedpolicies.png)<br><br>
 1. The first rule is to give read access to a specific project (called “MyProject”). On the context section select “System”, on the “By” section select “Group” and put the `jdoe` role (`my_group`). In the “For” section select “Project” then in the “Params” list select “equals” and put the project name in the next textbox. In the Action just click on “View (read) and click on the “Add Rule” button. Then save the rule.<br>
-    ![](/assets/img/acl_basics_9_guiaddrule.png)<br><br>
+    ![](~@assets/img/acl_basics_9_guiaddrule.png)<br><br>
 1. Add a new rule, in this case a new Project context rule (focused on “MyProject” project and `my_group` Group). Select Job in the “For” section and click on the following actions: “Read”, “View” and “Run”, then save this rule.<br>
-    ![](/assets/img/acl_basics_10_guiaddrule2.png)<br><br>
+    ![](~@assets/img/acl_basics_10_guiaddrule2.png)<br><br>
 1. The third rule allows `my_group` to execute jobs over the Project nodes. Create another Project rule (also focused on the “MyProject” project and my_group Group). In the “For” section select “Node”, in “nodename” (“Params” section) set “matches” in the next list and put the desired node filter (.* to all project nodes). Then select “Read” and “Run” checkboxes in the “Actions” sections and save.<br>
-    ![](/assets/img/acl_basics_11_guiaddrule3.png)<br><br>
+    ![](~@assets/img/acl_basics_11_guiaddrule3.png)<br><br>
 1. Now the ACL is created, if you log in as a jdoe user you can see that the user only can see the MyProject project and their jobs.<br>
-    ![](/assets/img/acl_basics_12_singleproject.png)<br>
-    ![](/assets/img/acl_basics_13_jobexample.png)<br><br>
+    ![](~@assets/img/acl_basics_12_singleproject.png)<br>
+    ![](~@assets/img/acl_basics_13_jobexample.png)<br><br>
 
 
 ## Project Context Example ACL

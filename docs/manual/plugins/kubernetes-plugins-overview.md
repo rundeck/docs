@@ -2,7 +2,7 @@
 
 ## Overview
 
-![](/assets/img/kubernetes-icon.png)
+![](@assets/img/kubernetes-icon.png)
 
 Process Automation integrates with Kubernetes through a variety of plugins listed below.
 By integrating Process Automation with Kubernetes, users can automate and provide self-service interfaces for operations in their Kubernetes Clusters.
@@ -77,10 +77,10 @@ Rundeck OSS does not come preloaded with the Kubernetes plugins. To install the 
 
 1. Navigate to the [latest plugin release](https://github.com/rundeck-plugins/kubernetes/releases/latest) on Github and download the **`kubernetes-X.X.XX.zip`** file.<br><br>
 2. In Rundeck, click the **Gear Icon** and then click the **Plugins > Upload Plugin**:
-   ![Upload Plugins Menu](/assets/img/upload-plugins-menu.png)
+   ![Upload Plugins Menu](@assets/img/upload-plugins-menu.png)
 3. Click **Browse** and select the downloaded **`.zip`** file from Step 2.
 4. Click **Install**:
-   ![Upload Kubernetes Plugins](/assets/img/upload-k8s-plugins.png)
+   ![Upload Kubernetes Plugins](@assets/img/upload-k8s-plugins.png)
 
 ## Test Kubernetes Plugins
 
@@ -93,7 +93,7 @@ execute the plugin in _debug_ mode.
 4. In the **Search step** field type **`Kubernetes`**.
 5. Select the **Kubernetes / Pod / Describe** plugin from the list.
 6. Type in a pod name into the **Name** field.
-![K8s Describe Pod](/assets/img/k8s-describe-pod.png)
+![K8s Describe Pod](@assets/img/k8s-describe-pod.png)
 7. Type in the namespace of the pod in the **Namespace** field.
 8. If the Kube Config file is saved in the directory **`$RDECK_BASE/.kube/config`** (`/var/lib/rundeck/.kube/config`for RPM and Deb), then the authentication fields can be left blank.
    * Otherwise, specify the custom Kube Config location.

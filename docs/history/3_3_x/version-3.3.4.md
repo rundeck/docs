@@ -28,7 +28,7 @@ Rundeck 3.3.4 is another jam packed release.  **Please note the warning above ab
 Rundeck Enterprise users have the option to use [HashiCorp Consul](https://www.consul.io) as a method to edit Rundeck's configuration properties. By doing so, it allows users to manage the configuration for all of their services in one place. In terms of Rundeck, this feature is very beneficial because it allows users to edit configurations across all of their Rundeck instances. So, instead of having to change a configuration for each instance, change it once in Hashicorp and it will apply to all instances. [Check out the docs here.](https://docs.rundeck.com/docs/administration/configuration/hashicorp-consul.html)
 
 The Notification Editor UI/UX has been revamped to better support the growing number of Notification plugins.
-![New Notification Editor](/assets/img/releasenotes-3.3.4-notifications.png)
+![New Notification Editor](~@assets/img/releasenotes-3.3.4-notifications.png)
 Notifications can also now connect to Key Storage for centralized, secure secret retrieval.
 
 Check out the new [configuration documentation](https://docs.rundeck.com/docs/administration/configuration/docker.html) for our Docker builds and information about how the [Remco Templates](https://docs.rundeck.com/docs/administration/configuration/docker/extending-configuration.html) are integrated to their deployment.

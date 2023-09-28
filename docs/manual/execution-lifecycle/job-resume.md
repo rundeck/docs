@@ -52,19 +52,19 @@ In other words, manually-entered Secure Option values will not be available when
 
 To use this plugin, edit or create a Job, and under the "Execution Plugins" tab, enable the checkbox next to the "Resumable" plugin.
 
-![Execution Plugins](/assets/img/figure-job-resume-edit-job-execution-plugins.png)
+![Execution Plugins](~@assets/img/figure-job-resume-edit-job-execution-plugins.png)
 
 When an execution fails at some step, a new menu option is available under the "Run Again…" drop down.
 
-![Resume Execution Menu Item](/assets/img/figure-job-resume-resume-execution-menuitem.png)
+![Resume Execution Menu Item](~@assets/img/figure-job-resume-resume-execution-menuitem.png)
 
 You will see a confirmation page to begin the resumed execution.
 
-![Confirm Resume Execution](/assets/img/figure-job-resume-confirm-resume.png)
+![Confirm Resume Execution](~@assets/img/figure-job-resume-confirm-resume.png)
 
 After confirming, the new execution will begin at the step(s) that previously failed.
 
-![Resumed Execution](/assets/img/figure-job-resume-resumed-execution.png)
+![Resumed Execution](~@assets/img/figure-job-resume-resumed-execution.png)
 
 ## Resume On Retry
 

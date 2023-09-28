@@ -147,15 +147,15 @@ The `secret_secret` item is a string value but the `valueConversion: "STORAGE_PA
 #### Create a key storage entry
 Click on the gear button, go to Key Storage.
 
-![Key Storage System Menu](/assets/img/key-storage-sysmenu-button.png)
+![Key Storage System Menu](~@assets/img/key-storage-sysmenu-button.png)
 
 Click on Add or Upload a Key
 
-![Add a Key Button](/assets/img/key-storage-add-a-key.png)
+![Add a Key Button](~@assets/img/key-storage-add-a-key.png)
 
 Set a key as follows:
 
-![Filled Password Key form](/assets/img/custom-script-plugin-key-storage.png)
+![Filled Password Key form](~@assets/img/custom-script-plugin-key-storage.png)
 
 #### Create a job definition
 To define our job, we create another yaml file, `hello_test_job.yaml`:
@@ -188,4 +188,4 @@ Some values to note:
 
 Run the job and see the output:
 
-![Custom Script Plugin job Output](/assets/img/custom-script-plugin-job-output.png)
+![Custom Script Plugin job Output](~@assets/img/custom-script-plugin-job-output.png)

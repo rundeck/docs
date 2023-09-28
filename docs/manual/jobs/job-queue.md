@@ -29,7 +29,7 @@ check the `Enable Job Queue` option.
 You can also set a queue size limit. When this limit is reached further executions will be rejected until space is
 available. Set empty or 0 for an unlimited queue size.
 
-![Job Queue Config](/assets/img/jobqueue-config.png)
+![Job Queue Config](~@assets/img/jobqueue-config.png)
 
 ## Queuing executions
 
@@ -41,7 +41,7 @@ will be automatically placed at the tail of the queue.
 To view currently queued executions, go to the [Activity Page](/manual/08-activity.md), which will show currently
 running and queued executions.
 
-![Job Queue Activity](/assets/img/jobqueue-activity.png)
+![Job Queue Activity](~@assets/img/jobqueue-activity.png)
 
 ## Removing an execution from the queue.
 

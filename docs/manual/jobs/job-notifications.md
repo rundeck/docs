@@ -11,7 +11,7 @@ You can configure notifications to occur based on different job events or status
 - **On Retryable Failure**: all "failure" notifications that are retryable will be triggered if the Job fails.
 - **Average Duration Exceeded**: Sends a notification when the specified duration threshold has been exceeded. If not specified, the Job Average duration will be used. (See below information for configuration options)
 
-![Notification Events List](/assets/img/notifications-events.png)
+![Notification Events List](~@assets/img/notifications-events.png)
 
 
 ### Configuring Average Duration Exceeded
@@ -32,4 +32,4 @@ For a full list of notification plugins, see [Job Plugins - Notifications](/manu
 - Choose the event for your notification and click the `+ Add Notification` button.
 - Choose the **Notification Type** from the drop down and configure it per the specific plugin details.
 
-![Notification Events Types](/assets/img/notifications-addtype.png)
+![Notification Events Types](~@assets/img/notifications-addtype.png)

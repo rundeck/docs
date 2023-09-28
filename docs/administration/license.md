@@ -16,23 +16,23 @@ Ask for the license key to the support team. Then install the license key via th
 
 Upload the license key using the GUI:
 
-![Upload the license key using the GUI](/assets/img/license-key-gui-1.png)
+![Upload the license key using the GUI](~@assets/img/license-key-gui-1.png)
 
 Click on "No License Key File is installed"
 
-![Click on "No License Key File is installed"](/assets/img/license-key-gui-2.png)
+![Click on "No License Key File is installed"](~@assets/img/license-key-gui-2.png)
 
 Click on "Upload License File"
 
-![Click on "Upload License File"](/assets/img/license-key-gui-3.png)
+![Click on "Upload License File"](~@assets/img/license-key-gui-3.png)
 
 Select the license key file and press "Upload License File"
 
-![Agree to the Rundeck Master Software License Agreement](/assets/img/license-key-gui-3-a.png)
+![Agree to the Rundeck Master Software License Agreement](~@assets/img/license-key-gui-3-a.png)
 
 Agree to the Rundeck Master Software License Agreement and Rundeck Support Policy then click "Confirm"
 
-![View of installed license](/assets/img/license-key-gui-4.png)
+![View of installed license](~@assets/img/license-key-gui-4.png)
 
 ### Via filesystem
 

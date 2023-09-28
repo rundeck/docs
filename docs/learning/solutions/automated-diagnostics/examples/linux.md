@@ -14,13 +14,13 @@ Often, Linux diagnostics are jobs composed of one or more [command](/manual/node
 The following examples are included in our **Automated Diagnostics Project**, which can be downloaded [**here**](https://github.com/rundeckpro/automated-diagnostics-project/releases/latest/download/automated-diagnostics.jar).
 
 #### Check the health of a Linux service such as a web server or database
-![](/assets/img/linux1.png)<br>
+![](~@assets/img/linux1.png)<br>
 
 #### Parse server logs for common error messages
-![Syslog Queries For Common Errors](/assets/img/linux2.png)
+![Syslog Queries For Common Errors](~@assets/img/linux2.png)
 
 #### Collecting resource diagnostics from the server
-![](/assets/img/linux3.png)<br>
+![](~@assets/img/linux3.png)<br>
 
 ## Node Executors for Linux:
 **Process Automation** and **Runbook Automation** offer multiple methods of communicating with Linux servers through the multiple **Node Executors**, 

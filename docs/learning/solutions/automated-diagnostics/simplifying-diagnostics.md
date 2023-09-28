@@ -10,7 +10,7 @@ For example, a common diagnostic job might be grabbing logs related to a web ser
 
 Ideally, simplified diagnostics provides something like a table of results showing status of different pieces of an app stack, each marked with either a green or red icon.  This allows the first responder to know that the focus should be on any components that show red.  This eliminates pulling in a whole group of folks to each run their own initial diagnostics.  Instead, the first responder can pass the baton or take action themselves as appropriate, on an accelerated timeline.
 
-![Automated Diagnostics within PagerDuty](/assets/img/diag-on-pd-timeline.png)
+![Automated Diagnostics within PagerDuty](@assets/img/diag-on-pd-timeline.png)
 
 ### How to simplify diagnostic output
 

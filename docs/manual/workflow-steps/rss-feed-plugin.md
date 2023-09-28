@@ -7,14 +7,14 @@ When these providers have any service degradation, updates are posted to their s
 
 This plugin helps surface these events for customers of the SaaS and Cloud providers - thereby answering the questions of whether an incident is due to an internal issue or a third party.
 
-![RSS Feed Events](/assets/img/rss-feed-output.png)<br>
+![RSS Feed Events](@assets/img/rss-feed-output.png)<br>
 
 ## Configuration
 
 1. In the **Workflow** tab of a job configuration, click on **+ Add a step**.
 2. Click into the **Workflow Steps** tab.
 3. Search for **RSS Feed** and then select **RSS Feed / Retrieve Events**:
-![Find Plugin](/assets/img/rss-feed-find-plugin.png)<br>
+![Find Plugin](@assets/img/rss-feed-find-plugin.png)<br>
 4. In the **RSS Feed Address** field, either select a value from the dropdown, or enter another RSS Feed URL.
 5. For **Time Range**, specify the number of hours or days as the historical period for the RSS events.
 6. Select either **Hours** or **Days** from the **Time Unit** field.
@@ -22,18 +22,18 @@ This plugin helps surface these events for customers of the SaaS and Cloud provi
 
 #### Sample Configuration
 In the example below, the job step will query for the **10** most recent events from within the last **2 hours** from the **AWS Events** RSS Feed:
-![AWS Example](/assets/img/rss-feed-aws-example.png)<br>
+![AWS Example](@assets/img/rss-feed-aws-example.png)<br>
 
 ## Example Job
 
 This example Job will query for recent AWS events.  Depending on whether there has been an unresolved event in the past 3 hours, the [**Progress Badge**](/manual/log-filters/progress-badge.html)
 will display a message indicating whether there have been recent events.  This message is then posted to the Incident Timeline of a PagerDuty Incident:
 
-![Output in Runbook Automation](/assets/img/rss-feed-output-in-rba.png)
+![Output in Runbook Automation](@assets/img/rss-feed-output-in-rba.png)
 
 <br>
 
-![Output in PagerDuty Slack App](/assets/img/rss-feed-output-in-slack.png)
+![Output in PagerDuty Slack App](@assets/img/rss-feed-output-in-slack.png)
 
 <br>
 

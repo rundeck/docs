@@ -4,7 +4,7 @@
 
 User Class Management allows Process Automation customers to assign users to User Classes which act as a super-set of ACL enforcement and licensing seat management.  Each class enforces a pre-set collection of restrictions across all customer defined projects.  The Class Management module included as part of the User Management features will allow customers to assign users to classes to fit their use cases.
 
-![User Class Screen](/assets/img/user-classes.png)
+![User Class Screen](~@assets/img/user-classes.png)
 
 ## User Classes
 
@@ -34,7 +34,7 @@ If the setting is not present `FullUser` is used for OnPrem installations, `AppA
 
 >_Note: “None” would represent no access to anything in Process Automation.  The user could login but would have access to nothing.  This is not an assignable class today and will not show up in the management UI.  It is only available for default assignment._
 
-![User Class Screen](/assets/img/user-classes-config.png)
+![User Class Screen](~@assets/img/user-classes-config.png)
 
 ## Assigning Classes
 

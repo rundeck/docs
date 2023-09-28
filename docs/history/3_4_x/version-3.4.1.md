@@ -18,7 +18,7 @@ Keep your business and its most valuable assets secure. Preventing malicious acc
 
 Building on the great foundation of the UI improvements in 3.4.0, we have updated the Webhooks UI to fit our new UI design.
 
-![Webhooks UI](/assets/img/relnotes-341-webhooksui.gif)
+![Webhooks UI](@assets/img/relnotes-341-webhooksui.gif)
 
 ### Lots of Bug Fixes!
 

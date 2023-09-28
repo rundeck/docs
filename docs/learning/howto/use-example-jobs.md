@@ -24,13 +24,13 @@ All runbook job definitions are located in the `runbooks/yaml` folder inside the
 
 1. Click on the **Jobs** page (left menu) of your Project.
 1. And click on the **Upload a job definition** button.
-    <br><br>![Upload Definition](/assets/img/howto-jobs-uploaddef.png)<br><br>
+    <br><br>![Upload Definition](@assets/img/howto-jobs-uploaddef.png)<br><br>
 1. Click on **Browse** to select any YAML file downloaded from the repository.
-    <br><br>![Select Job Definition](/assets/img/howto-browse-jobdef.png)<br><br>
+    <br><br>![Select Job Definition](@assets/img/howto-browse-jobdef.png)<br><br>
 1. Scroll down and click on the **Upload** button.
 1. Now the job is imported. In the screenshot we chose to upload the _Global Log Filter Usage_ example job.
-    <br><br>![Definition Upload Success](/assets/img/howto-jobdef-success.png)<br><br>
+    <br><br>![Definition Upload Success](@assets/img/howto-jobdef-success.png)<br><br>
 1. Run the job by **clicking on the job name** and then on **Run Job Now**
-    <br><br>![Run Job Now](/assets/img/howto-jobdefs-runjobnow.png)<br><br>
+    <br><br>![Run Job Now](@assets/img/howto-jobdefs-runjobnow.png)<br><br>
 1. Then, you can see the results.
-    <br><br>![Job Results](/assets/img/howto-jobdef-jobresults.png)<br><br>
+    <br><br>![Job Results](@assets/img/howto-jobdef-jobresults.png)<br><br>

@@ -24,7 +24,7 @@ You can configure the plugin to just print the invocation string to the console.
 
 The plugin can be configured as a default node executor and file copier for a Project. Use the Simple Configuration tab to see the configuration properties.
 
-![Project Settings](/assets/img/openssh-project-configuration.png)
+![Project Settings](~@assets/img/openssh-project-configuration.png)
 
 Also, you can define the configuration at Node Level, setting the node-executor and file-copier attributes.
 

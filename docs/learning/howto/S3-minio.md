@@ -79,26 +79,26 @@ framework.plugin.ExecutionFileStorage.com.rundeck.rundeckpro.amazon-s3.region=yo
 1. Start the Rundeck service.<br>
 1. Create a new project.<br>
 1. Create a new job and then execute it, now the execution log is stored in the S3/Minio bucket.<br>
-![ ](/assets/img/minio1.png)<br>
+![ ](~@assets/img/minio1.png)<br>
 1. From Rundeck click on the Gear Icon and then to the Log Storage option, now you can see the Log Storage Activity.<br>
-![ ](/assets/img/minio2.png)<br>
+![ ](~@assets/img/minio2.png)<br>
 
 ## PagerDuty Process Automation (formerly “Rundeck Enterprise”) System Configuration
 
 1. As admin rights users click on the Gear Icon and then click on “System Configuration”.<br>
-![ ](/assets/img/minio3.png)<br>
+![ ](~@assets/img/minio3.png)<br>
 1. Then click on the “+ Add Config” button.<br>
-![ ](/assets/img/minio4.png)<br>
+![ ](~@assets/img/minio4.png)<br>
 1. Add the following property `rundeck.execution.logs.fileStoragePlugin` with the following value `com.rundeck.rundeckpro.amazon-s3`.<br>
-![ ](/assets/img/minio5.png)<br>
+![ ](~@assets/img/minio5.png)<br>
 1. Add the following custom properties:<br>
-![ ](/assets/img/minio6.png)<br>
+![ ](~@assets/img/minio6.png)<br>
 1. Restart the PagerDuty Process Automation service.<br>
 
 ## Steps to configure S3 execution logs on Rundeck OSS / Process Automation for individual projects
 
 1. As admin rights users click on `Project Settings` then `Edit Configuration` and then Edit `Configuration File`<br>
-![ ](/assets/img/minio3.png)<br>
+![ ](~@assets/img/minio3.png)<br>
 2. Then add these lines with your information:
 ```
 project.plugin.ExecutionFileStorage.com.rundeck.rundeckpro.amazon-s3.AWSAccessKeyId=your_aws_access_key
@@ -124,7 +124,7 @@ The Remco documentation is available [here](/administration/configuration/docker
 
 This is the example file structure of a custom Rundeck image with the S3 Log Storage Plugin.<br>
 
-![ ](/assets/img/minio8.png)<br>
+![ ](~@assets/img/minio8.png)<br>
 
 The` Dockerfile` file content (inside docker project base directory)<br>
 
@@ -251,7 +251,7 @@ rundeck.feature.pagedjoblist.enabled=true
 1. Go to the “Commands” Section and dispatch any command against the local node.
 1. Check the Minio web interface (<code>[http://localhost:9001](http://localhost:9001), </code>user:<code> minioadmin, </code>password:<code> minioadmin</code>), now all Rundeck executions are stored on the “rundeck” bucket.<br>
 
-![ ](/assets/img/minio9.png)<br>
+![ ](~@assets/img/minio9.png)<br>
 
 :::
 
@@ -319,7 +319,7 @@ Full Docker example:
 1. Go to the “Commands” Section and dispatch any command against the local node.<br>
 1. Check the Minio web interface in another browser tab (<code>[http://localhost:9001](http://localhost:9001), </code>user:<code> minioadmin, </code>password:<code> minioadmin</code>), now, all Rundeck executions are stored on the “rundeck” bucket.<br>
 
-![ ](/assets/img/minio10.png)<br>
+![ ](~@assets/img/minio10.png)<br>
 
 :::
 ::::
