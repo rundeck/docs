@@ -4,7 +4,7 @@
 :::
 
 ## Overview 
-![](@assets/img/datadog-icon.png)
+![](/assets/img/datadog-icon.png)
 
 Process Automation integrates with Datadog through a variety of plugins listed below.
 By integrating Process Automation with Datadog, users can automate workflows in Datadog in response to alerts or automate diagnostics and remediation in their environment. 
@@ -46,7 +46,7 @@ Authentication for the Datadog plugins can be configured for the entire system o
 
 1. In the specific project, click on **Project Settings** in the lower left.
 2. Click on **Edit Configuration** then click on **Plugins**.
-   ![Plugin Suite Project Settings](@assets/img/plugin-groups-project-settings.png)<br>
+   ![Plugin Suite Project Settings](/assets/img/plugin-groups-project-settings.png)<br>
 3. Click on **+PluginGroup**.
 4. Select **Datadog** from the list.
 5. Click **Select...** next to the **App Key** field.
@@ -54,11 +54,11 @@ Authentication for the Datadog plugins can be configured for the entire system o
 7. Select **Password** for the **Key Type**.
 8. Enter the App Key into the **Enter Text** field.
 9. Provide a name for the secret, such as **`datadog-app-key`**:
-    ![Datadog App Key](@assets/img/datadog-app-key.png)
+    ![Datadog App Key](/assets/img/datadog-app-key.png)
 10. Click **Save** to save the secret into Key Storage and click **Save** again to use the newly create key for the plugin.
 11. Repeat steps **5** through **10** for the **API Key** field and using the **API Key** generated in the prior section.
 12. If your Datadog instance does not use **`https://app.datadoghq.com`** as its URL, then select the **Site URL** dropdown and select the URL that matches your Datadog instance:
-    ![Datadog Plugin Suite Project](@assets/img/datadog-plugin-suite-project.png)
+    ![Datadog Plugin Suite Project](/assets/img/datadog-plugin-suite-project.png)
 13. Click **Save** to commit the plugin suite configuration. Click **Save** to commit the Project Configuration update.
 
 ### System Level Configuration
@@ -68,15 +68,15 @@ Use the following steps to configure authentication for the Datadog plugins for 
 1. Click on the **System Menu** (gear icon) in the upper right.
 2. Click on **System Configuration**.
 3. Navigate to the **Datadog** section and click on the **Pencil Icon** in the upper right:
-   ![Edit Plugin Suite Sysytem Level](@assets/img/datadog-edit-system-plugin-suite.png)
+   ![Edit Plugin Suite Sysytem Level](/assets/img/datadog-edit-system-plugin-suite.png)
 4. Click **Select...** next to the **App Key** field.
 5. Click **+ Add or Upload a Key**.
 6. Select **Password** for the **Key Type**.
 7. Enter the App Key into the **Enter Text** field.
 8. Provide a name for the secret, such as **`datadog-app-key`**:
-   ![Datadog App Key](@assets/img/datadog-app-key.png)<br><br>
+   ![Datadog App Key](/assets/img/datadog-app-key.png)<br><br>
 9. Click **Save** to save the secret into Key Storage and click **Save** again to use the newly create key for the plugin.
 10. Repeat steps **5** through **10** for the **API Key** field and using the **API Key** generated in the prior section.
 11. If your Datadog instance does not use **`https://app.datadoghq.com`** as its URL, then select the **Site URL** dropdown and select the URL that matches your Datadog instance:
-    ![Datadog Plugin Suite System](@assets/img/datadog-system-plugin-suite.png)
+    ![Datadog Plugin Suite System](/assets/img/datadog-system-plugin-suite.png)
 12. Click **Save** to commit the plugin suite configuration update.

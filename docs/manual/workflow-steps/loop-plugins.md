@@ -45,9 +45,9 @@ echo "id: $id"
 echo "name: $name"
 `````
 
-![plugin-config](@assets/img/loop-step-run-script-json-attributes.png)
-![plugin-config](@assets/img/loop-step-run-script-json-definition.png)
-![plugin-config](@assets/img/loop-step-run-script-json-output.png)
+![plugin-config](/assets/img/loop-step-run-script-json-attributes.png)
+![plugin-config](/assets/img/loop-step-run-script-json-definition.png)
+![plugin-config](/assets/img/loop-step-run-script-json-output.png)
 
 ## Run Script until Success
 This plugin runs an inline script until it finishes successfully
@@ -60,4 +60,4 @@ This plugin runs an inline script until it finishes successfully
 * **_Invocation String_**:  (Optional) add the invocation string like: bash, powershell, python, etc.
 * **_File Extension_**: (Optional) add the file extension string like: `.sh`, `.ps1`, `.py`, etc.
 
-![plugin-config](@assets/img/loop-step-run-until-success.png)
+![plugin-config](/assets/img/loop-step-run-until-success.png)

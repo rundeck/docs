@@ -28,13 +28,13 @@ For simple documentation fixes it’s possible to make the changes right in GitH
 1. The content pages are in the /docs/ sub folder. The folder structure here will match what is shown in the URL of the page to be edited. ([https://github.com/rundeck/docs/tree/3.4.x/docs](https://github.com/rundeck/docs/tree/3.4.x/docs))
 1. Navigate to the page that needs to be updated by going to learning > howto and finding the docs-update-exercise.md file
 1. Feel free to add/edit content below the specified heading by clicking on the pencil icon on the GitHub page.
-    ![Edit Page](@assets/img/howto-updatedocs-githubedit.png)
+    ![Edit Page](/assets/img/howto-updatedocs-githubedit.png)
 1. Add content below where it reads “**Edits welcome below this section**” then fill out the **Propose Changes** section with a Subject Line and details explaining the update.
-    ![Propose Changes](@assets/img/howto-updatedocs-githubpropose.png)
+    ![Propose Changes](/assets/img/howto-updatedocs-githubpropose.png)
 1. This form will commit the change and provide a comparison view.  Click on **Create Pull Request** to finalize and send to the Rundeck team for approval.
-    ![Compare Changes](@assets/img/howto-updatedocs-githubcompare.png)
+    ![Compare Changes](/assets/img/howto-updatedocs-githubcompare.png)
 1. Confirm the details in the Pull Request submission and click **Create Pull Request.**
-    ![Submit Pull Request](@assets/img/howto-updatedocs-githubpullreq.png)
+    ![Submit Pull Request](/assets/img/howto-updatedocs-githubpullreq.png)
 
 **Congratulations!**  Keep an eye out for comments/feedback via the comments section from our team.
 

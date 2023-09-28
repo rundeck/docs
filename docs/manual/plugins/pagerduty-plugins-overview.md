@@ -40,14 +40,14 @@ Use the following steps to configure authentication for the PagerDuty plugins fo
 
 1. In the specific project, click on **Project Settings** in the lower left.
 2. Click on **Edit Configuration** then click on **Plugins**.
-![Plugin Suite Project Settings](@assets/img/plugin-groups-project-settings.png)<br>
+![Plugin Suite Project Settings](/assets/img/plugin-groups-project-settings.png)<br>
 3. Click on **+PluginGroup**.
 4. Select **PagerDuty** from the list.
 5. Click **Select** next to the **API Key** field and find the API Access Key stored in Key Storage.
 6. (Optional) Place a valid PagerDuty email address into the **PagerDuty Email** field. Specific plugins, such as **Add Incident Note**, require this field to be provided.
 7. Click **Save** for the plugin configuration.
 8. Click **Save** for the Project Settings:
-![Saving pluing suite settings](@assets/img/saving-plugin-suite-settings.png)<br>
+![Saving pluing suite settings](/assets/img/saving-plugin-suite-settings.png)<br>
 
 ### System Level Configuration
 
@@ -56,8 +56,8 @@ Use the following steps to configure authentication for the PagerDuty plugins fo
 1. Click on the **System Menu** (gear icon) in the upper right.
 2. Click on **System Configuration**.
 3. Navigate to the **PagerDuty** section and click on the **Pencil Icon** in the upper right:
-![Edit Plugin Suite Sysytem Level](@assets/img/edit-plugin-suite-system-level.png)
+![Edit Plugin Suite Sysytem Level](/assets/img/edit-plugin-suite-system-level.png)
 4. Click on **Select** next to the **API Key** field and find the API Access Key stored in Key Storage.
 5. (Optional) Place a valid PagerDuty email address into the **PagerDuty Email** field. Specific plugins, such as **Add Incident Note**, require this field to be provided.
 6. Click **Save** for the plugin configuration:
-![Save PD Plugin System Config](@assets/img/save-pd-system-plugin-config.png)
+![Save PD Plugin System Config](/assets/img/save-pd-system-plugin-config.png)

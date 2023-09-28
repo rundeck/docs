@@ -47,11 +47,11 @@ echo "id: $id"
 echo "name: $name"
 `````
 
-![plugin-step-config](@assets/img/loop-nodestep-run-script-json-atrributes.png)
+![plugin-step-config](/assets/img/loop-nodestep-run-script-json-atrributes.png)
 
-![plugin-step-definition](@assets/img/loop-nodestep-run-script-definition.png)
+![plugin-step-definition](/assets/img/loop-nodestep-run-script-definition.png)
 
-![plugin-step-output](@assets/img/loop-nodestep-run-script-output.png)
+![plugin-step-output](/assets/img/loop-nodestep-run-script-output.png)
 
 ## Run Script until Success
 
@@ -65,5 +65,5 @@ This node step plugin runs an inline script until it finishes successfully (per 
 * **_Invocation String_**:  (Optional) add the invocation string like: bash, powershell, python, etc
 * **_File Extension_**: (Optional) add the file extension string like: .sh, .ps1, .py, etc
 
-![plugin-step-config](@assets/img/loop-nodestep-run-until-success.png)
+![plugin-step-config](/assets/img/loop-nodestep-run-until-success.png)
 

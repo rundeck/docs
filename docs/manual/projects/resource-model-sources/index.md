@@ -9,11 +9,11 @@ Sources for Node data are commonly third-party systems such as [Amazon EC2](/man
 ## Adding Nodes to a Project
 To add Nodes to a project, add one or more Node Sources to a project  <br>
 1. Click the *Project Settings* gear at the bottom left, then *Edit Nodes*  <br>
-![Project Settings Menu](~@assets/img/project-nodes.png)  <br>
+![Project Settings Menu](/assets/img/project-nodes.png)  <br>
 2. Under Edit Nodes, select *Sources* and *Add a new Node Source+*  <br>
-![Adding a new Node Source](~@assets/img/edit-nodes.png)  <br>
+![Adding a new Node Source](/assets/img/edit-nodes.png)  <br>
 3. If using an Enterprise Runner to discover nodes, then select the appropriate Runner Tag using the **Runner Selector**:  <br>
-![Node Source Runner Selector](@assets/img/node-source-runner-selector.png)  <br>  
+![Node Source Runner Selector](/assets/img/node-source-runner-selector.png)  <br>  
 
 As of version **`4.16.0`**, the following Node Sources are available to use through the Enterprise Runner:
 * **Ansible Inventory**

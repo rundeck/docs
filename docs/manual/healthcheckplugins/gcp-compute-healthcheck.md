@@ -6,7 +6,7 @@ The Google Cloud Platform(GCP) Compute Health Check can provide health status up
 Follow the steps outlined in the [**Google Cloud Integration Overview**](/manual/plugins/gcp-plugins-overview) doc to configure credentials for the GCP plugins.
 Credentials can be configured on a per Project basis or for the entire Process Automation system.
 
-![GCP Compute Health Check](@assets/img/healthcheck-gcp-compute.png)
+![GCP Compute Health Check](/assets/img/healthcheck-gcp-compute.png)
 
 - **Node Filter:** This is the node filter that determines which nodes to run this health Check against.  The default is `tags: GCPCOMPUTE`. A `GCPCOMPUTE` tag is applied automatically by the Node Source.  
     >If the Project is using more than one EC2 Node Source for multiple regions it would be important to add the region to the Node Filter to the region this Node

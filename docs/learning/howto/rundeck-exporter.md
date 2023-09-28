@@ -84,7 +84,7 @@ path: /var/lib/grafana/dashboards
 
 The final objective of this integration is to be able to see all of the information from the Rundeck instance in a custom dashboard. The definition of Grafana dashboards is in JSON format, usually at the `/var/lib/grafana/dashboards` path.
 
-![Grafana Dashboard](@assets/img/howto-exporter-dashboard.jpg)
+![Grafana Dashboard](/assets/img/howto-exporter-dashboard.jpg)
 
 The rundeck_exporter project includes a complete dashboard available [here](https://github.com/phsmith/rundeck_exporter/tree/main/examples/grafana), but of course, custom dashboards can be [designed](https://grafana.com/grafana/resources/#create-a-dashboard).
 

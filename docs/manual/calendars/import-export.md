@@ -3,11 +3,11 @@
 
 Project calendars can be exported on the project’s export archive. If Calendar feature is enabled, you will see a checkbox where you can enable the calendar export.
 
-![Project Export](~@assets/img/calendars-project-export.png)
+![Project Export](/assets/img/calendars-project-export.png)
 
 Also, for import project archive, you will see a checkbox where you can define if you want to import the calendars from an archive file.
 
-![Project Export](~@assets/img/calendars-project-import.png)
+![Project Export](/assets/img/calendars-project-import.png)
 
 
 ## Export Calendar on Job Definition

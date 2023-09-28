@@ -47,9 +47,9 @@ This mode has a limitation that it is unable to list the keys in safes.  When wr
 
 Below is an example legacy configuration, which can be configured using the *System Configuration* module. Add each setting as a configuration entry.
 
-![Cyberark Configuration](@assets/img/keystorage-cyberark-config1.png)
+![Cyberark Configuration](/assets/img/keystorage-cyberark-config1.png)
 
-![Cyberark Configuration - continued](@assets/img/keystorage-cyberark-config2.png)
+![Cyberark Configuration - continued](/assets/img/keystorage-cyberark-config2.png)
 
 :::
 

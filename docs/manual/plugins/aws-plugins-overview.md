@@ -61,7 +61,7 @@ The steps for integrating with AWS will vary depending on the product you are us
 Runbook Automation can be integrated with one or more AWS Accounts using an IAM role with a `**Trust Relationship**`. More details on this authentication mechanism can be found in [this AWS documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html).
 Here is a diagram that outlines this setup process:
 
-![RBA Authentication Process with AWS](@assets/img/aws-iam-auth-diagram.png)
+![RBA Authentication Process with AWS](/assets/img/aws-iam-auth-diagram.png)
 
 
 Steps for setting up the integration for the entire Runbook Automation instance or for individual projects are outlined below:
@@ -72,7 +72,7 @@ To configure the AWS integration for the whole Runbook Automation instance:
 2. Click on **System Configuration**.
 3. Navigate to the **AWS** section and click on the **Pencil Icon** in the upper right.
 4. In the **IAM Role Delegation** section, copy the **Account ID** and **External ID** so that they may be used in subsequent steps:
-![IAM AWS Auth](@assets/img/aws-iam-auth-rba-highlights.png)<br>
+![IAM AWS Auth](/assets/img/aws-iam-auth-rba-highlights.png)<br>
 5. Leave open this page so that the **`Role ARN`** can be filled in later.
 
 To configure the AWS integration for an individual project:
@@ -80,7 +80,7 @@ To configure the AWS integration for an individual project:
 2. Click on **Edit Configuration** then click on **Plugins**.
 3. Click on **+ Plugin Config** and select **AWS**
 4. In the **IAM Role Delegation** section, copy the **Account ID** and **External ID** so that they may be used in subsequent steps.
-![IAM AWS Auth](@assets/img/aws-iam-auth-rba-highlights.png)<br>
+![IAM AWS Auth](/assets/img/aws-iam-auth-rba-highlights.png)<br>
 5. Leave open this page so that the **`Role ARN`** can be filled in later.
 
 
@@ -88,7 +88,7 @@ To configure the AWS integration for an individual project:
 1. Go to the AWS Management Console and open the **IAM** console at [https://console.aws.amazon.com/iam/](https://console.aws.amazon.com/iam/).
 2. In the navigation pane of the console, click **Roles** and then click **Create New Role**.
 3. For the **Trusted Entity Type** select **AWS Account** and then select **Another AWS Account**.
-![Another AWS Account](@assets/img/another-aws-account.png)
+![Another AWS Account](/assets/img/another-aws-account.png)
 4. Paste in the AWS Account ID that was copied from **Step 4** in the prior section into the **Account ID** field.
 5. Click on **Require External ID**.
 6. Paste in the **External ID** that was copied from **Step 4** in the prior section into the **External ID** field.
@@ -102,7 +102,7 @@ To configure the AWS integration for an individual project:
 10. Click **Create Role**.
 11. In the IAM Roles list, find and select the newly created IAM Role.
 12. Copy the **`ARN`** to be used in subsequent steps:
-![IAM ARN](@assets/img/aws-copy-iam-arn.png)
+![IAM ARN](/assets/img/aws-copy-iam-arn.png)
 
 **Part 3: In Runbook Automation:**<br>
 1. Paste the **`ARN`** copied from the prior section into the **`Role ARN`** field.
@@ -119,7 +119,7 @@ When self-hosting Process Automation on EC2, the recommended method for integrat
 2. In the navigation pane of the console, click **Roles** and then click **Create New Role**.
 3. For the **Trusted Entity Type** select **AWS service**.
 4. Under **Common use cases** select **EC2** then click **Next**.
-![Select Entity Type](@assets/img/aws-iam-select-entity-type.png)
+![Select Entity Type](/assets/img/aws-iam-select-entity-type.png)
 5. In the **Permissions policies**, select the permission-sets based on the plugins you intend to use.
    - For example, all of the [CloudWatch Logs Plugins](/manual/workflow-steps/aws-cloudwatch) require **`logs:StartQuery`** and **`logs:GetQueryResults`** 
    while the [Execute Saved Query](/manual/workflow-steps/aws-cloudwatch.html#execute-saved-cloudwatch-logs-query) _also_ requires **`logs:DescribeQueryDefinitions`**.
@@ -128,9 +128,9 @@ When self-hosting Process Automation on EC2, the recommended method for integrat
 7. Click **Create Role**.
 8. Navigate to the **EC2** console and click on **Instances**.
 9. Click on the EC2 (or multiple instances if running a clustered setup) and click on **Actions** -> **Security** -> **Modify IAM Role**:
-![Modify IAM Role](@assets/img/aws-modify-iam-role.png)
+![Modify IAM Role](/assets/img/aws-modify-iam-role.png)
 10. Click on **Choose IAM Role** and find the IAM Role you created in **Step 6** then click **Update IAM Role**:
-![Update IAM Role](@assets/img/aws-update-ec2-iam-role.png)
+![Update IAM Role](/assets/img/aws-update-ec2-iam-role.png)
 
 Now that the IAM Role is attached to the EC2, use the following steps to define this authentication method in Process Automation:
 
@@ -141,14 +141,14 @@ Now that the IAM Role is attached to the EC2, use the following steps to define 
 4. (Optional) Set a default **Region** to be used for all plugins. 
 5. From the **Credential Provider** field dropdown, select **EC2**.
 6. Click **Save** in the lower right:
-![EC2 Credential Provider - System Level](@assets/img/aws-iam-ec2-system-level.png)
+![EC2 Credential Provider - System Level](/assets/img/aws-iam-ec2-system-level.png)
 
 **Project Level**
 1. In the specific project, click on **Project Settings** in the lower left.
 2. Click on **Edit Configuration** then click on **Plugins**.
 3. Click on **+PluginGroup**.
 4. Select **AWS** from the list:
-![AWS Select PluginGroup Project Level](@assets/img/aws-select-plugingroup-project-level.png)
+![AWS Select PluginGroup Project Level](/assets/img/aws-select-plugingroup-project-level.png)
 5. (Optional) Select the default **Region** to be used for all plugins within this project.
 6. From the **Credential Provider** field dropdown, select **EC2**.
 7. Click **Save** in the lower right.
@@ -162,7 +162,7 @@ When self-hosting Process Automation on ECS, the recommended method for integrat
 2. In the navigation pane of the console, click **Roles** and then click **Create New Role**.
 3. For the **Trusted Entity Type** select **AWS service**.
 4. Under **Common use cases** find **Elastic Container Task** in the dropdown under **User cases for other AWS services**:
-![ECS IAM Role](@assets/img/aws-ecs-iam-select-use-case.png)
+![ECS IAM Role](/assets/img/aws-ecs-iam-select-use-case.png)
 5. In the **Permissions policies**, select the permission-sets based on the plugins you intend to use.
    - For example, all of the [CloudWatch Logs Plugins](/manual/workflow-steps/aws-cloudwatch) require **`logs:StartQuery`** and **`logs:GetQueryResults`**
      while the [Execute Saved Query](/manual/workflow-steps/aws-cloudwatch.html#execute-saved-cloudwatch-logs-query) _also_ requires **`logs:DescribeQueryDefinitions`**.
@@ -172,7 +172,7 @@ When self-hosting Process Automation on ECS, the recommended method for integrat
 8. Navigate to the **ECS** console and click on **Task Definitions**.
 9. Select the Task Definition used for Process Automation and **Create new revision**.
 10. Scroll down to the **Environment** section and select the role you created for the **Task Role** field:
-![Assign IAM Role](@assets/img/aws-ecs-assign-task-role.png)
+![Assign IAM Role](/assets/img/aws-ecs-assign-task-role.png)
 
 Now that the IAM Role is attached to the ECS Task, use the following steps to define this authentication method in Process Automation:
 
@@ -183,14 +183,14 @@ Now that the IAM Role is attached to the ECS Task, use the following steps to de
 4. (Optional) Set a default **Region** to be used for all plugins.
 5. From the **Credential Provider** field dropdown, select **ECS**.
 6. Click **Save** in the lower right:
-   ![EC2 Credential Provider - System Level](@assets/img/aws-iam-ec2-system-level.png)
+   ![EC2 Credential Provider - System Level](/assets/img/aws-iam-ec2-system-level.png)
 
 **Project Level**
 1. In the specific project, click on **Project Settings** in the lower left.
 2. Click on **Edit Configuration** then click on **Plugins**.
 3. Click on **+PluginGroup**.
 4. Select **AWS** from the list:
-   ![AWS Select PluginGroup Project Level](@assets/img/aws-select-plugingroup-project-level.png)
+   ![AWS Select PluginGroup Project Level](/assets/img/aws-select-plugingroup-project-level.png)
 5. (Optional) Select the default **Region** to be used for all plugins within this project.
 6. From the **Credential Provider** field dropdown, select **ECS**.
 7. Click **Save** in the lower right.
@@ -212,7 +212,7 @@ Now that the AWS Secret Key has been added to Key Storage, use the following ste
 4. Click the **Select** button next to **Key Storage Password** and find the AWS Secret that was saved in step 2 above.
 5. Place your AWS Access Key into the **Access Key ID** field.
 6. (Optional) Set a default **Region** to be used for all plugins
-![AWS Secrets Config System Level](@assets/img/aws-secret-system-level.png)
+![AWS Secrets Config System Level](/assets/img/aws-secret-system-level.png)
 7. Click **Save** in the lower right.
 
 **Project Level**
@@ -220,7 +220,7 @@ Now that the AWS Secret Key has been added to Key Storage, use the following ste
 2. Click on **Edit Configuration** then click on **Plugins**.
 3. Click on **+PluginGroup**.
 4. Select **AWS** from the list:
-   ![AWS Select PluginGroup Project Level](@assets/img/aws-select-plugingroup-project-level.png)
+   ![AWS Select PluginGroup Project Level](/assets/img/aws-select-plugingroup-project-level.png)
 5. Click the **Select** button next to **Key Storage Password** and find the AWS Secret that was saved in step 2 above.
 6. Place your AWS Access Key into the **Access Key ID** field.
 7. (Optional) Select the default **Region** to be used for all plugins within this project.

@@ -33,7 +33,7 @@ Check out the new features and enhancements for PagerDuty Process Automation (fo
 
 With the latest release, customers can integrate the Runner with Hashicorp Vault and use secrets from Vault in their workflows and to discover nodes.  When users navigate to select keys from key Storage, there is now an option to browse and select secrets from Vault that the Runner is integrated with.  While the key names and paths are visible in the GUI, the secrets themselves are not sent to the server.  The integration between Runners and secrets-management instances now enable customers to automate workflows in secure, remote environments where they have self-hosted secrets-stores:
 
-![Runner Key Storage](@assets/img/key-storage-runner-browse.png)
+![Runner Key Storage](/assets/img/key-storage-runner-browse.png)
 
 For further details on configuring and using secrets-management providers with the Enterprise Runner, see [this documentation](/docs/manual/key-storage/enterprise-runner-key-storage).
 
@@ -42,7 +42,7 @@ This release enables the Runner to be used for discovering nodes and populating 
 
 For further details on configuring and using node discovery through the Enterprise Runner, see [this documentation](/manual/projects/resource-model-sources/#adding-nodes-to-a-project).
 
-![Runner Node Sources](@assets/img/node-source-runner-selector.png)
+![Runner Node Sources](/assets/img/node-source-runner-selector.png)
 
 ### SSHJ Default Node Executor for New Projects
 Prior to this release, the out-of-the-box Default Node Executor for projects was the JSCH plugin.  However, this plugin no longer supports the latest SSH security standards – such as the most secure RSA algorithms.  In order to support these latest standards for SSH security, new projects created within Rundeck, Process Automation OnPrem and Runbook automation will use the SSHJ plugin as the Default Node Executor.  Customers who are using the JSCH plugin are not required to switch over to SSHJ and we will continue to support the JSCH Node Executor plugin.

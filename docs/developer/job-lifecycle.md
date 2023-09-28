@@ -31,7 +31,7 @@ After installation, Job Lifecycle Plugins can be enabled in the Project Configur
 
 Select the Job Lifecycle Plugins to enable win the "Project > Edit Configuration" page under the tab named "Job Lifecycle Plugins", or in the project configuration file.
 
-![Job Lifecycle Plugins Tab](~@assets/img/figure-job-lifecycle-plugin-project-configure-page.png)
+![Job Lifecycle Plugins Tab](/assets/img/figure-job-lifecycle-plugin-project-configure-page.png)
 
 Enable a Job Lifecycle plugin named `example`:
 

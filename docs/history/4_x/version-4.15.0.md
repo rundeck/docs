@@ -32,7 +32,7 @@ Check out the new features and enhancements for PagerDuty Process Automation (fo
 #### IAM AWS Authentication for Runbook Automation
 Previously, the only supported authentication method for the [AWS plugins](/manual/plugins/aws-plugins-overview.md) with Runbook Automation was through Access Key and Secret Key.  Now, customers can leverage the cross-account, IAM based authentication method for integrating Runbook Automation with their AWS accounts.  Not only is this method more secure and easy to configure, but it also allows customers to have multiple AWS Accounts integrated with their Runbook Automation instance, thereby allowing for a centralized hub of managing resources across multiple AWS environments
 
-![IAM AWS Auth](@assets/img/aws-iam-auth-rba.png)<br>
+![IAM AWS Auth](/assets/img/aws-iam-auth-rba.png)<br>
 
 #### Key Storage Configuration Enhancement
 

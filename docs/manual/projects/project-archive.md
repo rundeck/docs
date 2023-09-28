@@ -9,7 +9,7 @@ The content of a project, jobs, configuration, readme, motd, project ACLs, execu
 
 ### Graphical Interface
 
-![Export archive](~@assets/img/export_archive.png)
+![Export archive](/assets/img/export_archive.png)
 
 This allows you to totally customize what is included in the exported project archive. You can either check "all" and have all the project configurations exported, or you could go through and select just the areas that you wish to export. So, say you already have a project on Rundeck but you want to move it to another instance. You don't love your current ACL policy so you could select all the checkboxes except "ACL Policies". Then, when you import it into a new instance of Rundeck, you will get all the areas except the ACL Policies which you can recreate for the new instance.
 
@@ -27,7 +27,7 @@ Importing projects with Rundeck is very beneficial when you dont want to rebuild
 
 ### Graphical Interface
 
-![Import archive](~@assets/img/import_archive.png)
+![Import archive](/assets/img/import_archive.png)
 
 When importing a project with Rundeck, there are some things to consider:
 
@@ -43,7 +43,7 @@ When importing a project with Rundeck, there are some things to consider:
 - **ACL Policies**
 : This allows you to specify whether or not you want to import the ACL policies. If you choose "import policies," policies with the same name will be overwitten.
 
-![Import Archive - Continued](~@assets/img/import_archive2.png)
+![Import Archive - Continued](/assets/img/import_archive2.png)
 
 - **Scm**
 : This allows tou to specify whether or not you want to import the SCM (Software Configuration Management) configuration.
@@ -60,7 +60,7 @@ When importing a project with Rundeck, there are some things to consider:
 - **Calendars**
 : This allows you to choose whether or not to import calendars. If you choose "import calendars," then all calendars in the archive will be imported into the project. If not, no calendars will be imported.
 
-![Import Archive - Continued](~@assets/img/import_archive3.png)
+![Import Archive - Continued](/assets/img/import_archive3.png)
 
 - **Schedule Definitions**
 : This allows you to choose whether or not to import schedule definitions from the archive. If "import schedule definitions" is selected, then all schedule definitions in the archive will be imported. If not, then no schedule definitions will be imported and jobs will not run on a schedule.

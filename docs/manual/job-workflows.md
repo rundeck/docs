@@ -32,7 +32,7 @@ See [Command Line Tools and API Acccess][1].
 Workflow execution is controlled by two important settings: _Handling a
 step failure_ and _Strategy_.
 
-![Workflow controls](~@assets/img/fig0401.png)
+![Workflow controls](/assets/img/fig0401.png)
 
 _If a step fails_: This manages what to do if a step incurs an error:
 
@@ -92,7 +92,7 @@ When creating a new Job definition, the Workflow form will be set with
 defaults and have no workflow steps defined. The workflow editor will
 have a form open asking to choose a step type to add.
 
-![Add a step](~@assets/img/fig0402.png)
+![Add a step](/assets/img/fig0402.png)
 
 To add new steps simply press the "Add a step" link inside the workflow
 editor form. This will prompt with a dialog asking which kind of
@@ -101,7 +101,7 @@ form. When the form is completed, press "Save" to add it
 to the sequence. Pressing "Cancel" will close the form and leave the
 sequence unchanged.
 
-![Add a step form](~@assets/img/fig0403.png)
+![Add a step form](/assets/img/fig0403.png)
 
 New steps are always added to the end of the sequence. See
 [Reordering steps](#reordering-steps)
@@ -125,12 +125,12 @@ The order of the Workflow steps can be modified by hovering over any
 step and then clicking and dragging the double arrow icon to the
 desired position.
 
-![Job step reorder](~@assets/img/fig0408.png)
+![Job step reorder](/assets/img/fig0408.png)
 
 A blue horizontal bar helps highlight the position
 where the Job will land.
 
-![Job step reorder](~@assets/img/fig0408a.png)
+![Job step reorder](/assets/img/fig0408a.png)
 
 After releasing the select Job, it will land in the desired position
 and the step order will be updated.
@@ -195,16 +195,16 @@ Error-handlers can be attached to either Node Steps or Workflow Steps, and the t
 
 To add an error handler press the "settings" button on the step to handle.
 
-![Adding an error handler](~@assets/img/fig0410.png)
+![Adding an error handler](/assets/img/fig0410.png)
 
 The form presented includes the normal set of steps that can be added to a workflow.
 
-![Adding an error handler](~@assets/img/fig0410a.png)
+![Adding an error handler](/assets/img/fig0410a.png)
 
 <!---
 The example below shows an error handler that calls a script by URL.
 
-![Example error handler](~@assets/img/fig0411.png)
+![Example error handler](/assets/img/fig0411.png)
 --->
 
 ### Error handler with sequential workflow strategy
@@ -213,7 +213,7 @@ When using Sequential workflow strategy, the error handler gets triggered once i
 
 Here is the log output when using error handler with sequential workflow strategy
 
-![Error handler result for sequential strategy](~@assets/img/fig0410b.png)
+![Error handler result for sequential strategy](/assets/img/fig0410b.png)
 
 ### Context information
 
