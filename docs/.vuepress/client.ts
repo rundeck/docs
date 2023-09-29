@@ -6,6 +6,7 @@ declare const API_MIN_VERSION: string;
 declare const API_DEP_RELEASE: string;
 declare const API_DEP_VERSION: string;
 declare const API_VERSION: string;
+declare const CLI_VERSION: string;
 
 export default defineClientConfig({
   enhance({ app, router, siteData }) {
@@ -16,6 +17,7 @@ export default defineClientConfig({
       $apiDepRelease: { get: () => API_DEP_RELEASE },
       $apiDepVersion: { get: () => API_DEP_VERSION },
       $apiVersion: { get: () => API_VERSION },
+      $cliVersion: { get: () => CLI_VERSION },
 
     });
   },

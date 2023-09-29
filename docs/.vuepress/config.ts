@@ -60,7 +60,8 @@ export default {
     API_DEP_RELEASE: setup.apiDepRelease,
     API_MIN_VERSION: setup.apiMinVersion,
     VERSION: setup.rundeckVersion,
-    VERSION_FULL: setup.rundeckVersionFull
+    VERSION_FULL: setup.rundeckVersionFull,
+    CLI_VERSION: setup.rundeckCLIVersion
   },
 
   plugins: getPlugins(setup),
