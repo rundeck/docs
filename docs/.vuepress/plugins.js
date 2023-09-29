@@ -9,6 +9,7 @@ import { path } from '@vuepress/utils'
 //import autoMetaPlugin from "vuepress-plugin-autometa";  // This plugin may not be compatible with Vue2.  Need to check Meta tags to see if they are same as 1.x versions.
 // HTML Redirect doesn't have a Vue2 option yet and V1 doesn't work
 //import htmlRedirect from '@vuepress/plugin-html-redirect';
+import { pwaPlugin } from "vuepress-plugin-pwa2";
 
 const autometa_options = {
     site: {
@@ -115,21 +116,23 @@ function getPlugins(setup) {
         //    })
     ]
 
-    // if (setup.base) {
-    //     plugins.unshift([
-    //         pwaPlugin(
-    //         {
-    //             serviceWorker: true,
-    //             updatePopup: { 
-    //                 message: "We updated some pages! Click this to see the latest docs.", 
-    //                 buttonText: "Refresh Now" 
-    //             },
-    //             generateSWConfig: {
-    //                 globIgnores: ['**/gtm.js']
-    //             }
-    //         })
-    //     ]);
-    // }
+    if (setup.base) {
+        plugins.unshift([
+            pwaPlugin(
+            {
+                update: "hint",
+                favicon: '/favicon.ico',
+                serviceWorker: true,
+                updatePopup: { 
+                    message: "We updated some pages! Click this to see the latest docs.", 
+                    buttonText: "Refresh Now" 
+                },
+                generateSWConfig: {
+                    globIgnores: ['**/gtm.js']
+                }
+            })
+        ]);
+    }
 
     return plugins;
 }

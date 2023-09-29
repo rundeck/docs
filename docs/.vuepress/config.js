@@ -32,6 +32,7 @@ export default {
   debug: true,
   title: '',
   description: '',
+  shouldPrefetch: false,
   base: `/${setup.base ? setup.base + '/' : ''}`,
   configureWebpack: {
     resolve: {
