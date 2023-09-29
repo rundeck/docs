@@ -2,29 +2,29 @@
 
 All artifacts can be downloaded from: [github releases](https://github.com/rundeck/rundeck-cli/releases/latest)
 
-* [zip install](#zip-install) `rd-{{{ rundeckCLIVersion }}}.zip`/`rd-{{{ rundeckCLIVersion }}}.tar`
-* [standalone executable jar](#jar-install) `rundeck-cli-{{{ rundeckCLIVersion }}}-all.jar`
-* [rpm install](#yum-usage) `rundeck-cli-{{{ rundeckCLIVersion }}}.noarch.rpm`
-* [debian install](#debian-usage) `rundeck-cli-{{{ rundeckCLIVersion }}}_all.deb`
+* [zip install](#zip-install) `rd-{{$cliVersion}}.zip`/`rd-{{$cliVersion}}.tar`
+* [standalone executable jar](#jar-install) `rundeck-cli-{{$cliVersion}}-all.jar`
+* [rpm install](#yum-usage) `rundeck-cli-{{$cliVersion}}.noarch.rpm`
+* [debian install](#debian-usage) `rundeck-cli-{{$cliVersion}}_all.deb`
 * [arch install](#arch-linux-install)
 
 ## Jar install
 
-Download the `rundeck-cli-{{{ rundeckCLIVersion }}}-all.jar` from [github releases](https://github.com/rundeck/rundeck-cli/releases/latest).
+Download the `rundeck-cli-{{$cliVersion}}-all.jar` from [github releases](https://github.com/rundeck/rundeck-cli/releases/latest).
 
 Simply execute:
 
-    java -jar rundeck-cli-{{{ rundeckCLIVersion }}}-all.jar
+    java -jar rundeck-cli-{{$cliVersion}}-all.jar
 
 ## Zip install
 
 
-Download the `rd-{{{ rundeckCLIVersion }}}.zip` from [github releases](https://github.com/rundeck/rundeck-cli/releases/latest).
+Download the `rd-{{$cliVersion}}.zip` from [github releases](https://github.com/rundeck/rundeck-cli/releases/latest).
 
 Install:
 
-    $ unzip rd-{{{ rundeckCLIVersion }}}.zip
-	rd-{{{ rundeckCLIVersion }}}
+    $ unzip rd-{{$cliVersion}}.zip
+	rd-{{$cliVersion}}
 	├── bin
 	│   ├── rd
 	│   └── rd.bat
@@ -33,7 +33,7 @@ Install:
 
 Execute:
 
-    rd-{{{ rundeckCLIVersion }}}/bin/rd
+    rd-{{$cliVersion}}/bin/rd
 
 ## Yum usage
 
@@ -108,7 +108,7 @@ makepkg -i
 ## Windows install
 
 
-Download the `rd-{{{ rundeckCLIVersion }}}.zip` from [github releases](https://github.com/rundeck/rundeck-cli/releases/latest).
+Download the `rd-{{$cliVersion}}.zip` from [github releases](https://github.com/rundeck/rundeck-cli/releases/latest).
 
 To install, unzip the file in your desired installation directory.
 

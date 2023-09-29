@@ -37,7 +37,7 @@ This integration enables Rundeck users to:
 - Use Ansible as the underlying execution framework. Run any command or script and output will be collated by node and step like typical Rundeck output.
 
 ### Pre-Requisites
-- Rundeck installed with version {{{rundeckVersion}}}
+- Rundeck installed with version {{$rundeckVersion}}
 - Ansible binaries installed on Rundeck Server based on [Ansible documentation](https://docs.ansible.com/).
 - Confirmation that Rundeck can SSH as `rundeck` user to the Ansible endpoints defined in the inventory file.
 

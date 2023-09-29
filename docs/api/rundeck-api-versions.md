@@ -2,7 +2,7 @@
 title: API Version History
 ---
 
-# API Version History | Current Version {{{ apiVersion }}}
+# API Version History | Current Version {{$apiVersion}}
 
 This page documents changes to the Rundeck API through-out the versions.  For usage references please see the [API Reference](/api/rundeck-api.md) page.
 
@@ -10,7 +10,7 @@ This page documents changes to the Rundeck API through-out the versions.  For us
 
 | Current  | Minimum | Deprecation |
 |---------|-------------|----------|
-|`{{{ apiVersion }}}` | `{{{ apiMinVersion }}}` | `{{{apiDepVersion}}}`
+|`{{$apiVersion}}` | `{{ $apiMinVersion }}` | `{{$apiDepVersion}}`
 
 Current
 :   The current version number.
@@ -32,7 +32,7 @@ These endpoints are in "Incubating" status, and are subject to change in future 
 Changes introduced by API Version number:
 
 **Deprecation**
-* API versions below `{{{ apiDepVersion }}}` are *deprecated*.  Clients using earlier versions should upgrade to use `{{{ apiDepVersion }}}` as the minimum version before release `{{{ apiDepRelease }}}` to avoid errors.
+* API versions below `{{$apiDepVersion}}` are *deprecated*.  Clients using earlier versions should upgrade to use `{{$apiDepVersion}}` as the minimum version before release `{{ $apiDepRelease }}` to avoid errors.
 
 **Version 44**:
 

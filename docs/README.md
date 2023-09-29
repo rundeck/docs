@@ -5,7 +5,7 @@ title: Rundeck Documentation
 
 # Welcome to the Rundeck Documentation Site!
 
-## Rundeck {{rundeckVersion}} Documentation    
+## Rundeck {{ $rundeckVersion}} Documentation    
 
 Here at [docs.rundeck.com](https://docs.rundeck.com/docs), you'll find a comprehensive resource for all things Rundeck. Whether you're new to Rundeck or an experienced user, this documentation site is designed to help you harness the power of Rundeck's automation and orchestration capabilities.
 

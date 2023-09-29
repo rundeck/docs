@@ -46,6 +46,7 @@
     "vuepress-plugin-copy-code2": "2.0.0-beta.237",
     "vuepress-plugin-feed2": "2.0.0-beta.237",
     "vuepress-plugin-pwa2": "2.0.0-beta.237",
+    "vuepress-plugin-redirect": "^2.0.0-beta.237",
     "yargs": "^16.2.0"
   },
   "postcss": {

@@ -1,7 +1,6 @@
 export default [{
   text: 'User Guide',
   collapsible: false,
-  sidebarDepth: 1,
   children: [
     {
       text: "Projects",
@@ -65,7 +64,6 @@ export default [{
       text: 'Jobs',
       collapsible: true,
       link: '/manual/04-jobs',
-      sidebarDepth: 2,
       children: [
         '/manual/04-jobs',
         '/manual/creating-jobs',
@@ -76,7 +74,6 @@ export default [{
           text: 'Log Filters',
           collapsible: true,
           link: '/manual/log-filters/',
-          sidebarDepth: 1,
           children: [
             '/manual/log-filters/key-value-data.md',
             '/manual/log-filters/quiet-output.md',
@@ -113,7 +110,6 @@ export default [{
       text: 'Plugins',
       collapsible: true,
       link:'/manual/plugins/plugins-overview',
-      sidebarDepth: 0,
       children:[
         {text: 'AWS', link: '/manual/plugins/aws-plugins-overview.md'},
         {text: 'Azure', link: '/manual/plugins/azure-plugins-overview.md'},
@@ -130,7 +126,6 @@ export default [{
       text: 'Nodes',
       collapsible: true,
       link:'/manual/05-nodes',
-      sidebarDepth: 1,
       children: [
         '/manual/05-nodes',
         '/manual/node-enhancers.md',
@@ -139,7 +134,6 @@ export default [{
           text: 'Health Checks',
           collapsible: true,
           link: '/manual/healthchecks',
-          sidebarDepth: 2,
           children: [
               '/manual/healthchecks',
               '/manual/healthcheckplugins/datadog.md',
@@ -155,7 +149,6 @@ export default [{
       text: 'Key Storage',
       collapsible: true,
       link: '/manual/key-storage/key-storage',
-      sidebarDepth: 1,
       children: [
         '/manual/key-storage/key-storage',
         '/manual/key-storage/enterprise-runner-key-storage.md',
@@ -174,13 +167,11 @@ export default [{
       text: 'Commands',
       link: '/manual/06-commands',
       collapsible: true,
-      sidebarDepth: 1
     },
     {
       text: 'Activity',
       link: '/manual/08-activity',
       collapsible: true,
-      sidebarDepth: 2,
       children: [
         '/manual/08-activity',
         '/manual/07-executions'
@@ -194,19 +185,16 @@ export default [{
         '/manual/schedules/project-schedules.md',
         '/manual/schedules/missedjobfires.md'
       ],
-      sidebarDepth: 1
     },
     {
       text: 'Tour Manager (Enterprise)',
       collapsible: true,
       link: '/manual/tour-manager.md',
-      sidebarDepth: 1
     },
     {
       text: 'Calendars (Enterprise)',
       collapsible: true,
       link:'/manual/calendars',
-      sidebarDepth: 2,
       children: [
         '/manual/calendars',
         '/manual/calendars/system-calendars.md',
@@ -218,12 +206,10 @@ export default [{
       text: 'Webhooks',
       collapsible: true,
       link: '/manual/webhooks',
-      sidebarDepth: 2,
       children: [
         '/manual/webhooks',
         {
           text: 'Webhooks Handlers',
-          sidebarDepth: 2,
           children: [
             '/manual/webhooks/advanced-run-job',
             '/manual/webhooks/pagerduty-run-job',
@@ -240,13 +226,11 @@ export default [{
       text: 'Project Settings',
       collapsible: true,
       link: '/manual/project-settings',
-      sidebarDepth: 2
     },
     {
       text: 'System Menu',
       collapsible: true,
       link: '/manual/system-configs',
-      sidebarDepth: 1,
       children: [
           '/manual/system-configs',
           '/manual/user-management/user-mgmt',
@@ -261,7 +245,6 @@ export default [{
       text: 'Integrations',
       collapsible: true,
       link: '/manual/integrations',
-      sidebarDepth: 1,
       children: [
           '/manual/integrations/servicenow-app.md'
       ]
@@ -269,7 +252,6 @@ export default [{
     {
       text: 'Document Formats',
       collapsible: true,
-      sidebarDepth: 1,
       children: [
         '/manual/document-format-reference/aclpolicy-v10.md',
         '/manual/document-format-reference/job-v20.md',

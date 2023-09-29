@@ -8,7 +8,7 @@ Rundeck has a separately installable CLI client tool called `rd`.  This installa
 
 ## Details
 
-Version: [{{{rundeckCLIVersion}}}](https://rundeck.github.io/rundeck-cli/changes/)
+Version: [{{$cliVersion}}](https://rundeck.github.io/rundeck-cli/changes/)
 
 * [Source Code on Github](https://github.com/rundeck/rundeck-cli)
 * [Issues](https://github.com/rundeck/rundeck-cli/issues)

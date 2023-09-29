@@ -23,7 +23,7 @@ For customers who use installed Process Automation using the .war, there are a c
 1. Define the environment variable just like RPM, Debian and Docker users by adding the following to the `/etc/rundeck/profile` file:
 2. Pass the property as a flag when starting Process Automation. An example of that would look like the following:
 ```
-java -Xmx4g -Drundeck.consul.enabled=true -jar rundeck-{{{rundeckVersionFull}}}.war
+java -Xmx4g -Drundeck.consul.enabled=true -jar rundeck-{{$rundeckVersionFull}}.war
 ```
 
 ### Setting the Consul server in Process Automation
