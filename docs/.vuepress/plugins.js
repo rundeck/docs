@@ -7,7 +7,7 @@ import { copyCodePlugin } from "vuepress-plugin-copy-code2";
 import { docsearchPlugin } from '@vuepress/plugin-docsearch'
 import { path } from '@vuepress/utils'
 import { registerComponentsPlugin } from '@vuepress/plugin-register-components'
-//import autoMetaPlugin from "vuepress-plugin-autometa";  // This plugin may not be compatible with Vue2.  Need to check Meta tags to see if they are same as 1.x versions.
+import { pwaPlugin } from "vuepress-plugin-pwa2";
 import { redirectPlugin } from "vuepress-plugin-redirect";
 
 const autometa_options = {
@@ -116,7 +116,6 @@ function getPlugins(setup) {
         copyCodePlugin({
             locales: {
                 "/": {
-                  // Override copy button label text
                   copy: "Copy Code",
                 },
             }
@@ -126,7 +125,6 @@ function getPlugins(setup) {
                 componentsDir: path.resolve(__dirname, './components'),
             },
             docsearchPlugin({
-                // options
                 locales: {
                     '/': {
                       placeholder: 'Search Documentation',
@@ -145,27 +143,25 @@ function getPlugins(setup) {
                     facetFilters: [ `version:${setup.base}` ]
                 },
               })
-        //    autoMetaPlugin(autometa_options),
-        //    htmlRedirect({
-        //     countdown: 0,
-        //    })
     ]
 
-    // if (setup.base) {
-    //     plugins.unshift([
-    //         pwaPlugin(
-    //         {
-    //             serviceWorker: true,
-    //             updatePopup: { 
-    //                 message: "We updated some pages! Click this to see the latest docs.", 
-    //                 buttonText: "Refresh Now" 
-    //             },
-    //             generateSWConfig: {
-    //                 globIgnores: ['**/gtm.js']
-    //             }
-    //         })
-    //     ]);
-    // }
+    if (setup.base) {
+        plugins.unshift([
+            pwaPlugin(
+            {
+                update: "hint",
+                favicon: '/favicon.ico',
+                serviceWorker: true,
+                updatePopup: { 
+                    message: "We updated some pages! Click this to see the latest docs.", 
+                    buttonText: "Refresh Now" 
+                },
+                generateSWConfig: {
+                    globIgnores: ['**/gtm.js']
+                }
+            })
+        ]);
+    }
 
     return plugins;
 }
