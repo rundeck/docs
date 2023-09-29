@@ -7,8 +7,7 @@ import { copyCodePlugin } from "vuepress-plugin-copy-code2";
 import { docsearchPlugin } from '@vuepress/plugin-docsearch'
 import { path } from '@vuepress/utils'
 //import autoMetaPlugin from "vuepress-plugin-autometa";  // This plugin may not be compatible with Vue2.  Need to check Meta tags to see if they are same as 1.x versions.
-// HTML Redirect doesn't have a Vue2 option yet and V1 doesn't work
-//import htmlRedirect from '@vuepress/plugin-html-redirect';
+import { redirectPlugin } from "vuepress-plugin-redirect";
 
 const autometa_options = {
     site: {
@@ -21,6 +20,37 @@ const autometa_options = {
 function getPlugins(setup) {
     const plugins = [
         tabsPlugin([""]),
+        redirectPlugin({
+            config: {
+                '/manual/01-introduction.html' : '/introduction/introduction.html',
+                '/manual/03-getting-started.html' : '/learning/index.html',
+                '/manual/02-getting-help.html' : '/introduction/getting-help.html',
+                '/administration/configuration/license.html' : '/administration/license.html',
+                '/manual/servicenow-app.html' : '/manual/integrations/servicenow-app.html',
+                '/administration/security/key-storage.html' : '/manual/key-storage/key-storage.html',
+                '/administration/key-storage/key-storage.html' : '/manual/key-storage/key-storage.html',
+                '/administration/security/storage-plugins.html' : '/manual/key-storage/key-plugins.html',
+                '/administration/key-storage/storage-plugins.html' : '/manual/key-storage/key-plugins.html',
+                '/administration/security/storage-plugins/cyberark-storage.html' : '/manual/key-storage/storage-plugins/cyberark-storage.html',
+                '/administration/key-storage/storage-plugins/cyberark-storage.html' : '/manual/key-storage/storage-plugins/cyberark-storage.html',
+                '/administration/security/storage-plugins/thycotic-storage.html' : '/manual/key-storage/storage-plugins/thycotic-storage.html',
+                '/administration/key-storage/storage-plugins/thycotic-storage.html' : '/manual/key-storage/storage-plugins/thycotic-storage.html',
+                '/administration/security/storage-plugins/vault.html' : '/manual/key-storage/storage-plugins/vault.html',
+                '/manual/command-line-tools/index.html' : '/rd-cli/index.html',
+                '/manual/command-line-tools/rd.html' : '/rd-cli/index.html',
+                '/manual/command-line-tools/rd-acl.html' : '/rd-cli/rd-ext-acl.html',
+                '/history/cves/' : '/history/CVEs/',
+                '/introduction/introduction.html' : '/about/introduction.html',
+                '/introduction/getting-help.html' : '/about/getting-help.html',
+                '/administration/architecture-and-deployment/system-architecture.html' : '/about/enterprise/index.html',
+                '/administration/architecture-and-deployment/aws.html' : '/administration/install/aws.html',
+                '/administration/projects/' : '/manual/projects/',
+                '/manual/12-webhooks.html' : '/manual/webhooks.html',
+                '/history/4_0_x/version-4.0.0.html' : '/history/4_x/version-4.0.0.html',
+                '/manual/workflow-steps/aws-athena' : '/manual/workflow-steps/amazon-athena.html',
+                '/enterprise/quickstart.html' : '/enterprise/index.html'
+            }
+          }),
         feedPlugin({
             hostname: 'docs.rundeck.com',
             rss: true,
