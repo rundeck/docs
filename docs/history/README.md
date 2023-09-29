@@ -2,7 +2,8 @@
 
 ## Most Recent Release Notes
 
-[Our most recent release is {{$rundeckVersion}}](4_x/version-{{$rundeckVersion}}.md)
+<RouterLink :to="`4_x/version-${$rundeckVersion}.md`">Our most recent release is {{ $rundeckVersion }}</RouterLink>
+
 
 Also check out the 4.0 release list of larger feature enhancements for our Enterprise and Open Source versions of Rundeck.
 
