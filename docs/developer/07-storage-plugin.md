@@ -32,6 +32,6 @@ Refer to the [Rundeck Storage API javadocs]({{{javaDocStorageApiBase}}}) for mor
 
 **Additional Compile-time Dependency**
 
-Your build tool will need to include `org.rundeck:rundeck-storage-api:{{{rundeckVersionFull}}}` as a dependency.
+Your build tool will need to include `org.rundeck:rundeck-storage-api:{{$rundeckVersionFull}}` as a dependency.
 
-See: [org.rundeck:rundeck-storage-api:\{{{rundeckVersionFull}}}](https://search.maven.org/artifact/org.rundeck/rundeck-storage-api/{{{rundeckVersionFull}}}/jar)
+See: [org.rundeck:rundeck-storage-api:\{{$rundeckVersionFull}}](https://search.maven.org/artifact/org.rundeck/rundeck-storage-api/{{$rundeckVersionFull}}/jar)

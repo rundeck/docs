@@ -1,7 +1,6 @@
 export default [{
-  title: 'Plugin Development',
+  text: 'Plugin Development',
   collapsible: false,
-  sidebarDepth: 1,
   children: [
     '/developer/01-plugin-development.md',
     '/developer/02-plugin-annotations.md',

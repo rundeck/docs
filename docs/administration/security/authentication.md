@@ -103,7 +103,7 @@ In this example,
 we'll setup a new user named "jsmith", with a password of "mypass":
 
 ```
-$ java -jar rundeck-{{{rundeckVersionFull}}}.war --encryptpwd Jetty
+$ java -jar rundeck-{{$rundeckVersionFull}}.war --encryptpwd Jetty
 Required values are marked with: *
 Username (Optional, but necessary for Crypt encoding):
 jsmith    <-----Type this value
@@ -230,7 +230,7 @@ You can simply specify the system properties on the java commandline:
 java -Drundeck.jaaslogin=true \
      -Dloginmodule.name=ldap \
      -Dloginmodule.conf.name=jaas-ldap.conf \
-     -jar rundeck-{{{rundeckVersionFull}}}.war
+     -jar rundeck-{{$rundeckVersionFull}}.war
 ```
 
 Otherwise, if you are starting the Executable War via the supplied `rundeckd` script, you can modify the `RDECK_JVM` value in the `$RDECK_BASE/etc/profile` file to add two JVM arguments:
@@ -765,7 +765,7 @@ If you would like to test your Jaas configuration without restarting Rundeck eve
 ldap example:
 
 ```sh
-$ java -Drundeck.jaaslogin=true -Dloginmodule.conf.name=jaas-ldap.conf -Dloginmodule.name=ldap -jar rundeck-{{{rundeckVersionFull}}}.war --testauth
+$ java -Drundeck.jaaslogin=true -Dloginmodule.conf.name=jaas-ldap.conf -Dloginmodule.name=ldap -jar rundeck-{{$rundeckVersionFull}}.war --testauth
 Checking file: $RDECK_BASE/server/config/jaas-ldap.conf
 Checking login module: ldap
 Enter user name: ldapuser

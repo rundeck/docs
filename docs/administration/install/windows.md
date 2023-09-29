@@ -18,13 +18,13 @@ When Rundeck is started for the first time, it generates the configuration files
 for Enterprise:
 
 ```
-java -jar rundeckpro-enterprise-{{{rundeckVersionFull}}}.war
+java -jar rundeckpro-enterprise-{{$rundeckVersionFull}}.war
 ```
 
 or this for the community edition:
 
 ```
-java -jar rundeck-{{{rundeckVersionFull}}}.war
+java -jar rundeck-{{$rundeckVersionFull}}.war
 ```
 
 This step may take up to 1-2 minutes depending on system performance. When Rundeck is ready, it will be indicated in the Powershell window:
@@ -97,7 +97,7 @@ Process Automation version:
 ```batch
 set CURDIR=%~dp0
 call %CURDIR%etc\profile.bat
-java %RDECK_CLI_OPTS% %RDECK_SSL_OPTS% -jar rundeckpro-enterprise-{{{rundeckVersionFull}}}.war --skipinstall -d  >> %CURDIR%\var\logs\service.log  2>&1
+java %RDECK_CLI_OPTS% %RDECK_SSL_OPTS% -jar rundeckpro-enterprise-{{$rundeckVersionFull}}.war --skipinstall -d  >> %CURDIR%\var\logs\service.log  2>&1
 ```
 
 for community:
@@ -105,7 +105,7 @@ for community:
 ```batch
 set CURDIR=%~dp0
 call %CURDIR%etc\profile.bat
-java %RDECK_CLI_OPTS% %RDECK_SSL_OPTS% -jar rundeck-{{{rundeckVersionFull}}}.war --skipinstall -d  >> %CURDIR%\var\logs\service.log  2>&1
+java %RDECK_CLI_OPTS% %RDECK_SSL_OPTS% -jar rundeck-{{$rundeckVersionFull}}.war --skipinstall -d  >> %CURDIR%\var\logs\service.log  2>&1
 ```
 
 

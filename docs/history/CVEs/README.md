@@ -6,7 +6,7 @@ Below is colletion of security notices previously filed for Rundeck and Process 
 
 ## Rundeck/Process Automation CVEs
 
-These are the Security Advisories Rundeck has issued in the past.  It is always recommended to upgrade to the current version of Rundeck ({{{rundeckVersion}}}) for the latest security updates.
+These are the Security Advisories Rundeck has issued in the past.  It is always recommended to upgrade to the current version of Rundeck ({{$rundeckVersion}}) for the latest security updates.
 
 * [CVE-2022-31044](CVE-2022-31044.md)<br>
     Key Storage converter plugin mechanism were not enabled correctly in Rundeck 4.2.0 and 4.2.1.

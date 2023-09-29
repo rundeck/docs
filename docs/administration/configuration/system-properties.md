@@ -10,7 +10,7 @@ If you are using [Executable War](/administration/install/jar.md) to start Runde
 on the commandline, using the `-Dpropertyname=value` syntax. Add a `-D` for each property:
 
 ```sh
-java -server -Dserver.servlet.session.timeout=3600 -Dserver.port=8080 -jar rundeck-{{{rundeckVersionFull}}}.war
+java -server -Dserver.servlet.session.timeout=3600 -Dserver.port=8080 -jar rundeck-{{$rundeckVersionFull}}.war
 ```
 
 ## Properties Reference

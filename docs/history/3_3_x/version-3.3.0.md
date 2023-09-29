@@ -77,7 +77,7 @@ See [Upgrading to Rundeck 3.3](/upgrading/upgrading-to-rundeck-3.3.html) for det
 Notices for future changes that may require code changes.
 
 ::: warning
-API version `{{{ apiDepVersion }}}` will become the minimum version in a future release: Rundeck `{{{ apiDepRelease }}}`.
+API version `{{$apiDepVersion}}` will become the minimum version in a future release: Rundeck `{{ $apiDepRelease }}`.
 
 Clients specifying API versions below the Deprecation version should upgrade to use it as the minimum version before then.
 :::

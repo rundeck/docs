@@ -6,6 +6,7 @@ import { containerPlugin } from '@vuepress/plugin-container';
 import { copyCodePlugin } from "vuepress-plugin-copy-code2";
 import { docsearchPlugin } from '@vuepress/plugin-docsearch'
 import { path } from '@vuepress/utils'
+import { registerComponentsPlugin } from '@vuepress/plugin-register-components'
 //import autoMetaPlugin from "vuepress-plugin-autometa";  // This plugin may not be compatible with Vue2.  Need to check Meta tags to see if they are same as 1.x versions.
 import { redirectPlugin } from "vuepress-plugin-redirect";
 
@@ -19,6 +20,11 @@ const autometa_options = {
 
 function getPlugins(setup) {
     const plugins = [
+        registerComponentsPlugin({
+            components: {
+                RundeckSwaggerUi: path.resolve(__dirname, './components/RundeckSwaggerUi.vue'),
+              },
+          }),
         tabsPlugin([""]),
         redirectPlugin({
             config: {
