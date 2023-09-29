@@ -10,7 +10,7 @@ Before performing an upgrade, it is highly recommend to stop all cluster members
 
 - Stop Rundeck (stop service or kill the process)
 
-- _Windows_ Edit the file start_rundeck.bat located on your `$RDECK_BASE` dir and change the name of your rundeck.war file with the name of the downloaded file, e.g. "rundeckpro-enterprise-{{{rundeckVersionFull}}}.war"
+- _Windows_ Edit the file start_rundeck.bat located on your `$RDECK_BASE` dir and change the name of your rundeck.war file with the name of the downloaded file, e.g. "rundeckpro-enterprise-{{$rundeckVersionFull}}.war"
 
 ```
  java %RDECK_CLI_OPTS% %RDECK_SSL_OPTS% -jar rundeckpro-enterprise-4.10.2-20201111.war --skipinstall -d >> %CURDIR%\var\logs\service.log 2>&1
@@ -36,7 +36,7 @@ Before performing an upgrade, it is highly recommend to stop all cluster members
 - Start Rundeck from the console and wait until it boots up successfully
 
 ```
-java -jar rundeckpro-enterprise-{{{rundeckVersionFull}}}.war
+java -jar rundeckpro-enterprise-{{$rundeckVersionFull}}.war
 
 ```
 
@@ -68,7 +68,7 @@ rm var/.install_complete-missing-ver
 
 - Copy the new war file to `$RDECK_BASE` and install it:
 ```sh
-java -jar rundeck-{{{rundeckVersionFull}}}.war --installonly
+java -jar rundeck-{{$rundeckVersionFull}}.war --installonly
 ```
 
 - Start Rundeck 3:
@@ -86,7 +86,7 @@ The upgrade process can be done using the `.deb` file or using the command `apt-
 **If using deb package**
 
 ```sh
-sudo dpkg -i rundeck-{{{rundeckVersionFull}}}.deb
+sudo dpkg -i rundeck-{{$rundeckVersionFull}}.deb
 ```
 
 **If using apt-get**
@@ -125,7 +125,7 @@ drwxr-x--- 1 rundeck rundeck 4096 Jun  4 16:08 ssl
 
 
 ```sh
-$ rpm -U rundeck-{{{rundeckVersionFull}}}.rpm
+$ rpm -U rundeck-{{$rundeckVersionFull}}.rpm
 
 warning: /etc/rundeck/framework.properties created as /etc/rundeck/framework.properties.rpmnew
 warning: /etc/rundeck/rundeck-config.properties created as /etc/rundeck/rundeck-config.properties.rpmnew
@@ -160,7 +160,7 @@ rm -rf $rdeck.base/server/lib/rundeck-core* $rdeck.base/var/.install_complete-mi
 
 - Place the new Rundeck version as the old war file:
 ```sh
-mv rundeck-{{{rundeckVersionFull}}}.war $tomcat.base/webapps/rundeck.war
+mv rundeck-{{$rundeckVersionFull}}.war $tomcat.base/webapps/rundeck.war
 ```
 
 - Start Tomcat

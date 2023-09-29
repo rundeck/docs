@@ -1,7 +1,6 @@
 export default [{
   text: 'Learning',
   collapsible: true,
-  sidebarDepth: 1,
   children: [
     '/learning/',
     {

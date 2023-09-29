@@ -16,15 +16,15 @@ the full set of configuration options.
 
 ## Open Source Rundeck
 
-[rundeck/rundeck:{{{rundeckVersion}}}](https://hub.docker.com/r/rundeck/rundeck/)
+[rundeck/rundeck:{{$rundeckVersion}}](https://hub.docker.com/r/rundeck/rundeck/)
 
 ```sh
-docker run --name some-rundeck -p 4440:4440 -v data:/home/rundeck/server/data rundeck/rundeck:{{{rundeckVersion}}}
+docker run --name some-rundeck -p 4440:4440 -v data:/home/rundeck/server/data rundeck/rundeck:{{$rundeckVersion}}
 ```
 
 ## Process Automation (formerly Rundeck Enterprise)
 
-[rundeckpro/enterprise:{{{rundeckVersion}}}](https://hub.docker.com/r/rundeckpro/enterprise/)
+[rundeckpro/enterprise:{{$rundeckVersion}}](https://hub.docker.com/r/rundeckpro/enterprise/)
 The following example invocation will require an accessible MySQL instance
 with a database, user, and the required privileges setup:
 
@@ -36,7 +36,7 @@ docker run \
     -e RUNDECK_DATABASE_USERNAME="${DB_USERNAME}" \
     -e RUNDECK_DATABASE_PASSWORD="${DB_PASSWORD}" \
     -e RUNDECK_DATABASE_URL="${DB_URL}" \
-    rundeckpro/enterprise:{{{rundeckVersion}}}
+    rundeckpro/enterprise:{{$rundeckVersion}}
 ```
 
 ## Example Configurations

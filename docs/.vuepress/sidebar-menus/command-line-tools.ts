@@ -1,7 +1,6 @@
 export default [{
   text: 'Command Line Tool',
   collapsible: false,
-  sidebarDepth: 2,
   link: '/rd-cli/',
   children: [
     {link: '/rd-cli/', text: 'Overview'},

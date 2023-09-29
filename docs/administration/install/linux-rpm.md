@@ -47,7 +47,7 @@ sudo yum update rundeckpro-enterprise
 Download rpm package from the [download page](https://download.rundeck.com/) and run:
 
 ```bash
-sudo rpm -i rundeckpro-enterprise-{{{rundeckVersionFull}}}-1.noarch.rpm
+sudo rpm -i rundeckpro-enterprise-{{$rundeckVersionFull}}-1.noarch.rpm
 ```
 :::
 
@@ -87,7 +87,7 @@ metadata_expire=300
 Download rpm package from the [download page](https://download.rundeck.com) and run:
 
 ```bash
-sudo rpm -i rundeck-{{{rundeckVersionFull}}}-1.noarch.rpm
+sudo rpm -i rundeck-{{$rundeckVersionFull}}-1.noarch.rpm
 ```
 :::
 

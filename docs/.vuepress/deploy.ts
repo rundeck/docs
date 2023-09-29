@@ -17,9 +17,12 @@ if (TAG) {
 
     console.log(capture)
 
-    version = capture[1]
-    date = capture[2]
-    maint = capture[3]
+    if(capture){
+        version = capture[1]
+        date = capture[2]
+        maint = capture[3]
+    }
+    
 
     env = {
         RUNDECK_VERSION: version,

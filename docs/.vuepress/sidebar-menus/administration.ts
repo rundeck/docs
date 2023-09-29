@@ -5,13 +5,11 @@ export default [{
         {
           text: 'Rundeck / Process Automation',
           collapsible: true,
-          sidebarDepth: 1,
           children: [
               {
                 text: 'Installation',
                 collapsible: true,
                 link: '/administration/install/installing-rundeck',
-                sidebarDepth: 1,
                 children: [
                   '/administration/install/installing-rundeck',
                   '/administration/install/system-requirements',
@@ -29,7 +27,6 @@ export default [{
                 text: 'Upgrading',
                 collapsible: true,
                 link: '/upgrading/',
-                sidebarDepth: 1,
                 children: [
                   '/upgrading/',
                   '/upgrading/upgrading',
@@ -45,13 +42,11 @@ export default [{
                 text: 'Licensing',
                 collapsible: true,
                 link: '/administration/license',
-                sidebarDepth: 2
               },
               {
                 text: 'Runner',
                 collapsible: true,
                 link: '/administration/runner/',
-                sidebarDepth: 0,
                 children: [
                   '/administration/runner/',
                   '/administration/runner/runner-intro.md',
@@ -68,7 +63,6 @@ export default [{
                 text: 'Configuration',
                 collapsible: true,
                 link: '/administration/configuration/',
-                sidebarDepth: 2,
                 children: [
                   {
                     text: 'Database',
@@ -161,7 +155,6 @@ export default [{
       text: 'Security',
       collapsible: true,
       link: '/administration/security/default-users',
-      sidebarDepth: 1,
       children: [
         '/administration/security/default-users',
         '/administration/security/authentication',
@@ -172,7 +165,6 @@ export default [{
           text: 'SSO',
           collapsible: true,
           link: '/administration/security/sso',
-          sidebarDepth: 1,
           children: [
               '/administration/security/sso/azure-sso.md',
               '/administration/security/sso/okta.md',
