@@ -23,7 +23,8 @@
     "markdown-it-container": "^3.0.0",
     "markdown-it-include": "^2.0.0",
     "swagger-ui": "^5.7.2",
-    "vue": "^3.3.4"
+    "vue": "^3.3.4",
+    "vuepress-plugin-open-graph": "^1.5.1"
   },
   "devDependencies": {
     "@octokit/rest": "^18.0.15",

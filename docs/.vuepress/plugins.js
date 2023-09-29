@@ -6,17 +6,12 @@ import { containerPlugin } from '@vuepress/plugin-container';
 import { copyCodePlugin } from "vuepress-plugin-copy-code2";
 import { docsearchPlugin } from '@vuepress/plugin-docsearch'
 import { path } from '@vuepress/utils'
+import { openGraphPlugin } from 'vuepress-plugin-open-graph'
+// HTML Redirect doesn't have a Vue2 option yet and V1 doesn't work
+//import htmlRedirect from '@vuepress/plugin-html-redirect';
 import { registerComponentsPlugin } from '@vuepress/plugin-register-components'
 import { pwaPlugin } from "vuepress-plugin-pwa2";
 import { redirectPlugin } from "vuepress-plugin-redirect";
-
-const autometa_options = {
-    site: {
-        name: 'Rundeck / Process Automation Documentation',
-        twitter: 'rundeck',
-    },
-    canonical_base: 'https://docs.rundeck.com',
-}
 
 function getPlugins(setup) {
     const plugins = [
@@ -63,6 +58,10 @@ function getPlugins(setup) {
             json: true,
             sort: entries => _.reverse(_.sortBy(entries, 'date'))
         }),
+        openGraphPlugin({
+           host: 'https://docs.rundeck.com',
+           twitterSite: 'rundeck',
+          }),
         containerPlugin(
             {
                 type: 'deprecated',
