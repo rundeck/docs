@@ -45,7 +45,6 @@ export default {
     ['script', { src: '/js/gtm.js', defer: true }]
   ],
   extendMarkdown: md => {
-    // use more markdown-it plugins!
     md.use(markdownItInclude, {
       root: path.resolve(__dirname, "../")
     });
@@ -66,7 +65,6 @@ export default {
 
   plugins: getPlugins(setup),
   theme: defaultTheme({
-    debug: true,
     logo: 'https://www.rundeck.com/hubfs/Pager%20Duty%20Branding/RundeckbyPagerDuty.svg',
     repo: 'rundeck/docs',
     docsDir: 'docs',
@@ -79,24 +77,6 @@ export default {
       activeHeaderLinks: true,
       externalLinkIcon: true,
     },
-    //   apiVersion: setup.apiVersion,
-    //   apiDepVersion: setup.apiDepVersion,
-    //   apiDepRelease: setup.apiDepRelease,
-    //   apiMinVersion: setup.apiMinVersion,
-    //   version: setup.rundeckVersion,
-    //   versionFull: setup.rundeckVersionFull,
-    //   algolia: setup.base == 'docs' ? {
-    //     appId: 'GRSXNRCDRG',
-    //     apiKey: 'c463f74d6f36a5af808650e0f69aadfa',
-    //     indexName: 'prod_rundeck_docs',
-    //     algoliaOptions: {
-    //       hitsPerPage: 10,
-    //       facets: [ "version" ],
-    //       facetFilters: [ `version:${setup.base}` ]
-    //     },
-    //   } : undefined,
-    //   searchMaxSuggestions: 15,
-    //   lastUpdated: 'Last Updated', // string | boolean
     navbar: [
       {
         text: 'About',

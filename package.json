@@ -32,6 +32,8 @@
     "@vuepress/plugin-container": "2.0.0-beta.67",
     "@vuepress/plugin-docsearch": "2.0.0-beta.67",
     "@vuepress/plugin-html-redirect": "^0.2.1",
+    "@vuepress/plugin-pwa": "^2.0.0-beta.67",
+    "@vuepress/plugin-pwa-popup": "^2.0.0-beta.67",
     "@vuepress/plugin-register-components": "2.0.0-beta.67",
     "@vuepress/theme-default": "2.0.0-beta.67",
     "dotenv": "^8.2.0",
@@ -45,7 +47,6 @@
     "vuepress-plugin-autometa": "^0.1.13",
     "vuepress-plugin-copy-code2": "2.0.0-beta.237",
     "vuepress-plugin-feed2": "2.0.0-beta.237",
-    "vuepress-plugin-pwa2": "2.0.0-beta.237",
     "vuepress-plugin-redirect": "^2.0.0-beta.237",
     "yargs": "^16.2.0"
   },

@@ -7,10 +7,9 @@ import { copyCodePlugin } from "vuepress-plugin-copy-code2";
 import { docsearchPlugin } from '@vuepress/plugin-docsearch'
 import { path } from '@vuepress/utils'
 import { openGraphPlugin } from 'vuepress-plugin-open-graph'
-// HTML Redirect doesn't have a Vue2 option yet and V1 doesn't work
-//import htmlRedirect from '@vuepress/plugin-html-redirect';
 import { registerComponentsPlugin } from '@vuepress/plugin-register-components'
-import { pwaPlugin } from "vuepress-plugin-pwa2";
+import { pwaPlugin } from '@vuepress/plugin-pwa'
+import { pwaPopupPlugin } from '@vuepress/plugin-pwa-popup'
 import { redirectPlugin } from "vuepress-plugin-redirect";
 
 function getPlugins(setup) {
@@ -20,6 +19,17 @@ function getPlugins(setup) {
                 RundeckSwaggerUi: path.resolve(__dirname, './components/RundeckSwaggerUi.vue'),
               },
           }),
+        pwaPlugin({
+            skipWaiting: false,
+        }),
+        pwaPopupPlugin({
+        locales: {
+            '/': {
+                message: 'New content is available.',
+                buttonText: 'Refresh',
+            },
+        }
+        }),
         tabsPlugin([""]),
         redirectPlugin({
             config: {
@@ -91,6 +101,7 @@ function getPlugins(setup) {
                     }
                 }
             },
+        ),
         containerPlugin(
             {
                 type: 'incubating',
@@ -101,16 +112,15 @@ function getPlugins(setup) {
                 }
             }
         ),
-            containerPlugin(
-                {
-                    type: 'betafeature',
-                    locales: {
-                        '/': {
-                            defaultInfo: 'BETA FEATURE',
-                        }
+        containerPlugin(
+            {
+                type: 'betafeature',
+                locales: {
+                    '/': {
+                        defaultInfo: 'BETA FEATURE',
                     }
                 }
-            )
+            }
         ),
         copyCodePlugin({
             locales: {
@@ -120,45 +130,45 @@ function getPlugins(setup) {
             }
         }),
         '@vuepress/register-components',
-            {
-                componentsDir: path.resolve(__dirname, './components'),
+        {
+            componentsDir: path.resolve(__dirname, './components'),
+        },
+        docsearchPlugin({
+            locales: {
+                '/': {
+                    placeholder: 'Search Documentation',
+                    translations: {
+                    button: {
+                        buttonText: 'Search Documentation',
+                    },
+                    },
+                }
             },
-            docsearchPlugin({
-                locales: {
-                    '/': {
-                      placeholder: 'Search Documentation',
-                      translations: {
-                        button: {
-                          buttonText: 'Search Documentation',
-                        },
-                      },
-                    }
-                },
-                appId: 'GRSXNRCDRG',
-                apiKey: 'c463f74d6f36a5af808650e0f69aadfa',
-                indexName: 'prod_rundeck_docs',
-                searchParameters: {
-                    hitsPerPage: 10,
-                    facetFilters: [ `version:${setup.base}` ]
-                },
-              })
+            appId: 'GRSXNRCDRG',
+            apiKey: 'c463f74d6f36a5af808650e0f69aadfa',
+            indexName: 'prod_rundeck_docs',
+            searchParameters: {
+                hitsPerPage: 10,
+                facetFilters: [ `version:${setup.base}` ]
+            },
+        })
     ]
 
     if (setup.base) {
         plugins.unshift([
-            pwaPlugin(
-            {
-                update: "hint",
-                favicon: '/favicon.ico',
-                serviceWorker: true,
-                updatePopup: { 
-                    message: "We updated some pages! Click this to see the latest docs.", 
-                    buttonText: "Refresh Now" 
-                },
-                generateSWConfig: {
-                    globIgnores: ['**/gtm.js']
-                }
-            })
+            // pwaPlugin(
+            // {
+            //     update: "hint",
+            //     favicon: '/favicon.ico',
+            //     serviceWorker: true,
+            //     updatePopup: { 
+            //         message: "We updated some pages! Click this to see the latest docs.", 
+            //         buttonText: "Refresh Now" 
+            //     },
+            //     generateSWConfig: {
+            //         globIgnores: ['**/gtm.js']
+            //     }
+            // })
         ]);
     }
 
