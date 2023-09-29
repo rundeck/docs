@@ -49,7 +49,7 @@ Previously, if a user chose to use a Node Source that was not available on an En
 ### Additional Updates
 
 * [Enhance CyberArk To Support CCP Mode](/manual/key-storage/storage-plugins/cyberark-storage.md)
-* Upgrade runner to 0.1.51
+* Upgrade runner to 0.1.52
 * Fix: Stored Cross-Site Scripting (XSS) in Tour Management
 * Fixed documentation bug in Athena Query Plugin
 * Fix: SSO settings now reload without system restart
@@ -89,7 +89,7 @@ Previously, if a user chose to use a Node Source that was not available on an En
 
 ## Enterprise Runner Updates
 
-**Bundled Runner Version:** 0.1.51
+**Bundled Runner Version:** 0.1.52
 
 ## Community Contributors
 
