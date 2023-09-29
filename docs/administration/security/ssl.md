@@ -16,7 +16,7 @@ This document describes how to configure Rundeck for SSL/HTTPS support, and assu
 Do a first-run of the launcher, as it will create the base directory for Rundeck and generate configuration files. _(This is not necessary for RPM/DEB installations)_
 
 ```properties
-cd $RDECK_BASE;  java -jar {{{rundeckVersion}}}.war
+cd $RDECK_BASE;  java -jar {{$rundeckVersion}}.war
 ```
 
 This will start the server and generate necessary config files. Press Ctrl-C to shut down the server after the message below is shown in the terminal:
@@ -256,13 +256,13 @@ export RDECK_HTTPS_PORT=1234
 Tell the launcher where to read the ssl.properties
 
 ```shell
-java -Drundeck.ssl.config=$RDECK_BASE/server/config/ssl.properties -jar rundeck-{{{rundeckVersionFull}}}.war
+java -Drundeck.ssl.config=$RDECK_BASE/server/config/ssl.properties -jar rundeck-{{$rundeckVersionFull}}.war
 ```
 
 You can change port by adding `-Dserver.https.port`:
 
 ```shell
-java -Drundeck.ssl.config=$RDECK_BASE/server/config/ssl.properties -Dserver.https.port=1234 -jar rundeck-{{{rundeckVersionFull}}}.war
+java -Drundeck.ssl.config=$RDECK_BASE/server/config/ssl.properties -Dserver.https.port=1234 -jar rundeck-{{$rundeckVersionFull}}.war
 ```
 
 If successful, there will be a line indicating the SSL connector has started:

@@ -8,7 +8,6 @@ export default[{
        text: 'Process Automation',
        collapsible: true,
        link: '/about/enterprise/',
-       sidebarDepth: 1,
        children: [
          { 
           text: 'Overview',
@@ -19,7 +18,6 @@ export default[{
        text: 'Runbook Automation',
        collapsible: true,
        link: '/about/cloud/',
-       sidebarDepth: 1,
        children: [
         { 
           text: 'Overview',

@@ -1,7 +1,6 @@
 export default [{
-  title: 'Upgrading',
+  text: 'Upgrading',
   collapsible: false,
-  sidebarDepth: 1,
   children: [
     '/upgrading/',
     '/upgrading/upgrading',

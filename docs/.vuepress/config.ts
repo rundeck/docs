@@ -34,13 +34,6 @@ export default {
   description: '',
   shouldPrefetch: false,
   base: `/${setup.base ? setup.base + '/' : ''}`,
-  configureWebpack: {
-    resolve: {
-      alias: {
-        '@assets': path.resolve(__dirname, "../assets")
-      }
-    }
-  },
   head: [
     ['script', {}, `
       (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -51,14 +44,6 @@ export default {
     `],
     ['script', { src: '/js/gtm.js', defer: true }]
   ],
-  chainWebpack: config => {
-    config.module
-      .rule('md')
-      .test(/\.md$/)
-      .use(path.resolve(__dirname, './nunjucks'))
-      .loader(path.resolve(__dirname, './nunjucks'))
-      .end()
-  },
   extendMarkdown: md => {
     // use more markdown-it plugins!
     md.use(markdownItInclude, {
@@ -68,6 +53,14 @@ export default {
     md.use(markdownItImplicitFigures, {
       figcaption: true
     });
+  },
+  define: {
+    API_VERSION: setup.apiVersion,
+    API_DEP_VERSION: setup.apiDepVersion,
+    API_DEP_RELEASE: setup.apiDepRelease,
+    API_MIN_VERSION: setup.apiMinVersion,
+    VERSION: setup.rundeckVersion,
+    VERSION_FULL: setup.rundeckVersionFull
   },
 
   plugins: getPlugins(setup),
@@ -80,10 +73,8 @@ export default {
     colorModeSwitch: false,
     lastUpdated: true,
     contributors: false,
-    editLinks: true,
     themePlugins: {
       activeHeaderLinks: true,
-      container: true,
       externalLinkIcon: true,
     },
     //   apiVersion: setup.apiVersion,
@@ -128,15 +119,15 @@ export default {
     ],
     sidebarDepth: 2,
     sidebar: {
-      '/about/': sidebarAbout,
-      '/administration/': sidebarAdmin,
-      '/upgrading/': sidebarUpgrading,
-      '/rd-cli/': sidebarCommandLineTools,
-      '/manual/': sidebarUserGuide,
-      '/learning/': sidebarLearning,
-      '/developer/': sidebarDeveloper,
-      '/history/': sidebarHistory,
-      '/api/': [
+       '/about/': sidebarAbout,
+       '/administration/': sidebarAdmin,
+       '/upgrading/': sidebarUpgrading,
+       '/rd-cli/': sidebarCommandLineTools,
+       '/manual/': sidebarUserGuide,
+       '/learning/': sidebarLearning,
+       '/developer/': sidebarDeveloper,
+       '/history/': sidebarHistory,
+       '/api/': [
         '/api/rundeck-api-versions.md',
         '/api/rundeck-api.md'
       ],

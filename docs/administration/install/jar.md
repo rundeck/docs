@@ -13,12 +13,12 @@ Use the executable war as an alternative to a system package:
     ```
 1. Copy the executable war to the installation directory.
     ```bash
-    cp rundeck-{{{rundeckVersionFull}}}.war $RDECK_BASE
+    cp rundeck-{{$rundeckVersionFull}}.war $RDECK_BASE
     ```
 1. Change directory and run the WAR.
     ```bash
     cd $RDECK_BASE
-    java -Xmx4g -jar rundeck-{{{rundeckVersionFull}}}.war
+    java -Xmx4g -jar rundeck-{{$rundeckVersionFull}}.war
     ```
 1. Wait for the Started message.
     ```
@@ -57,7 +57,7 @@ When you need to update rundeck and you can not find the relevant section on the
 - download the new war
 - open a prompt, optionally setting RDECK_BASE and launch --installonly
     ```sh
-    java -jar rundeck-{{{rundeckVersionFull}}}.war --installonly
+    java -jar rundeck-{{$rundeckVersionFull}}.war --installonly
     ```
 - copy over your customizations
 - don't forget, e.g., sqljdbc41.jar in `%RDECK_BASE%\server\lib`
@@ -68,7 +68,7 @@ When you need to update rundeck and you can not find the relevant section on the
 The executable war can take a number of options to specify how the server should start. If you execute with a "-h" you will see the usage information:
 
 ```bash
-java -Xmx4g -jar rundeck-{{{rundeckVersionFull}}}.war -h
+java -Xmx4g -jar rundeck-{{$rundeckVersionFull}}.war -h
 ```
 
 ```
