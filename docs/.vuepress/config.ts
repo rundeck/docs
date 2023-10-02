@@ -12,6 +12,7 @@ import { registerComponentsPlugin } from '@vuepress/plugin-register-components'
 import { pwaPlugin } from '@vuepress/plugin-pwa'
 import { pwaPopupPlugin } from '@vuepress/plugin-pwa-popup'
 import { redirectPlugin } from "vuepress-plugin-redirect";
+import VitePluginNunjucksMd from './vite-plugin-nunjucks'
 
 // sidebars
 import sidebarAdmin from './sidebar-menus/administration'
@@ -76,6 +77,9 @@ export default defineUserConfig({
 
   bundler: viteBundler({
     // vite bundler options here
+    viteOptions: {
+      plugins:[VitePluginNunjucksMd()]
+    }
   }),
 
   //Plugins Config
