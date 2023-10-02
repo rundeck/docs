@@ -33,6 +33,7 @@ import navbarUserGuide from './navbar-menus/user-guide';
 import navbarLearning from './navbar-menus/learning';
 import navbarAdmin from './navbar-menus/administration';
 import navbarDevelopment from './navbar-menus/development';
+import markdownItReplaceVars from './markdown-it-replace-vars'
 
 //Get setup variables
 import setup from './setup';
@@ -54,7 +55,12 @@ export default defineUserConfig({
     `],
     ['script', { src: '/js/gtm.js', defer: true }]
   ],
-  extendMarkdown: md => {
+  extendsMarkdown: md => {
+    md.use(markdownItReplaceVars, 'custom_token_replace', function (content) {
+      return content.replace(/\{\{\s*\$(\w+)\s*\}\}/g, (a,b)=> {
+          return setup[b]||a
+      });
+    })
     md.use(markdownItInclude, {
       root: path.resolve(__dirname, "../")
     });
