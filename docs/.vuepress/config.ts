@@ -1,6 +1,6 @@
 import _ from 'lodash'
-import { defaultTheme, defineUserConfig, viteBundler } from 'vuepress';
 
+import { defaultTheme, defineUserConfig, viteBundler } from 'vuepress';
 import tabsPlugin from '@snippetors/vuepress-plugin-tabs';
 import { feedPlugin } from 'vuepress-plugin-feed2';
 import { containerPlugin } from '@vuepress/plugin-container';
@@ -24,7 +24,6 @@ import sidebarHistory from './sidebar-menus/history';
 import sidebarAbout from './sidebar-menus/about';
 
 import markdownItInclude from 'markdown-it-include'
-
 import markdownItDeflist from 'markdown-it-deflist'
 import markdownItImplicitFigures from 'markdown-it-implicit-figures'
 
