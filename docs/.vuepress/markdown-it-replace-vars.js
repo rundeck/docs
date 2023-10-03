@@ -6,7 +6,6 @@ export default function ( md, ruleName, transform) {
     
           if(state.tokens[index].content){
               state.tokens[index].content = transform(state.tokens[index].content)
-              continue
           }
           if(state.tokens[index].children){
             let children = state.tokens[index].children;
