@@ -11,7 +11,7 @@ Each option value requires specific settings in the Project Configuration settin
 
 To use these plugins, add an Option to your Job and select the Allowed Values list entry.
 
-![JIRA Dynamic Options](@assets/img/jira-options.png)
+![JIRA Dynamic Options](/assets/img/jira-options.png)
 
 ### Project Configuration Settings
 

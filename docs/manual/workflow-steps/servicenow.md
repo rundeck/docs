@@ -22,7 +22,7 @@ servicenow.password-key-storage-path=keys/servicenow/pass
 
 Rundeck workflow step that changes an incident state
 
-![ServiceNow / Incident / Update State](~@assets/img/servicenow-incident-updatestate.png)
+![ServiceNow / Incident / Update State](/assets/img/servicenow-incident-updatestate.png)
 
 - **Number**
 : The Incident number to be updated.
@@ -48,7 +48,7 @@ project.plugin.WorkflowStep.Service-Now-Incident-Change-State.password-key-stora
 
 Rundeck workflow step that checks assigned incidents
 
-![ServiceNow / Incident / Check Assigned](~@assets/img/servicenow-incident-checkassigned.png)
+![ServiceNow / Incident / Check Assigned](/assets/img/servicenow-incident-checkassigned.png)
 
 - **Caller**
 : The username of the Caller field on the Incident.
@@ -60,7 +60,7 @@ Rundeck workflow step that checks assigned incidents
 
 Rundeck workflow step that checks an incident state
 
-![ServiceNow / Incident / Check State](~@assets/img/servicenow-incident-checkstate.png)
+![ServiceNow / Incident / Check State](/assets/img/servicenow-incident-checkstate.png)
 
 - **Incident Number**
 : The Incident number to be checked.
@@ -87,7 +87,7 @@ project.plugin.WorkflowStep.Service-Now-Incident-Check-State.url=https://server.
 
 Rundeck workflow step that comments an incident
 
-![ServiceNow / Incident / Comment](~@assets/img/servicenow-incident-comment.png)
+![ServiceNow / Incident / Comment](/assets/img/servicenow-incident-comment.png)
 
 - **Incident Number**
 : This is the incident number of the event that you wish to add the comment to.
@@ -98,7 +98,7 @@ Rundeck workflow step that comments an incident
 
 Rundeck workflow step that creates an incident
 
-![ServiceNow / Incident / Create](~@assets/img/servicenow-incident-create.png)
+![ServiceNow / Incident / Create](/assets/img/servicenow-incident-create.png)
 
 - **Caller**
 : The username of the Caller field on the Incident.
@@ -140,7 +140,7 @@ For `Assignment Group` the list is loaded with an SN API call.
 
 Rundeck workflow step that edits an incident
 
-![ServiceNow / Incident / Edit](~@assets/img/servicenow-incident-edit.png)
+![ServiceNow / Incident / Edit](/assets/img/servicenow-incident-edit.png)
 
 - **Incident Number**
 : This is the incident number of the event that you wish to add the comment to.
@@ -183,7 +183,7 @@ For `Assignment Group` and `state` the list is loaded with SN API call.
 
 Rundeck workflow step that changes an incident state
 
-![ServiceNow / Incident / Update State](~@assets/img/servicenow-incident-updatestate.png)
+![ServiceNow / Incident / Update State](/assets/img/servicenow-incident-updatestate.png)
 
 - **Number**
 : The Incident number to be updated.
@@ -205,7 +205,7 @@ project.plugin.WorkflowStep.Service-Now-Incident-Change-State.password-key-stora
 
 Rundeck workflow step that views an incident
 
-![ServiceNow / Incident / View](~@assets/img/servicenow-incident-view.png)
+![ServiceNow / Incident / View](/assets/img/servicenow-incident-view.png)
 
 - **Incident Number**
 : This is the incident number of the event that you wish to add the comment to.
@@ -215,7 +215,7 @@ Rundeck workflow step that views an incident
 
 Rundeck workflow step that checks the state of a Change Request
 
-![ServiceNow / Change / Check State](~@assets/img/servicenow-change-checkstate.png)
+![ServiceNow / Change / Check State](/assets/img/servicenow-change-checkstate.png)
 
 - **Change Request**
 : Number of the change.
@@ -226,7 +226,7 @@ Rundeck workflow step that checks the state of a Change Request
 
 Rundeck workflow step that creates a Change Request in ServiceNow
 
-![ServiceNow / Change / Create](~@assets/img/servicenow-change-create.png)
+![ServiceNow / Change / Create](/assets/img/servicenow-change-create.png)
 
 
 - **Assignment Group**
@@ -240,7 +240,7 @@ Rundeck workflow step that creates a Change Request in ServiceNow
 
 Rundeck workflow step that adds a Note to a Change Reqwuest
 
-![ServiceNow / Change / Check State](~@assets/img/servicenow-change-note.png)
+![ServiceNow / Change / Check State](/assets/img/servicenow-change-note.png)
 
 - **Change Request**
 : Number of the change.
@@ -251,7 +251,7 @@ Rundeck workflow step that adds a Note to a Change Reqwuest
 
 Rundeck workflow step that updates the state of a change request
 
-![ServiceNow / Change / Update State](~@assets/img/servicenow-change-updatestate.png)
+![ServiceNow / Change / Update State](/assets/img/servicenow-change-updatestate.png)
 
 - **Change Request**
 : Number of the change.

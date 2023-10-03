@@ -30,7 +30,7 @@ View our Twitch stream review of this release live on January 17 at 10AM Pacific
 - **Plugin Suite Configuration**: We’ve simplified the configuration of plugins so users can build more automation faster. PagerDuty Runbook Automation and Process Automation now provide an easier interface for users to define plugin properties and reduce the number of times a user needs to define common properties across plugins. Now users have a graphical interface for configuring plugin properties at the project and system level using predefined sets of properties on a per plugin suite basis. In version 4.9.0, users can access our first predefined plugin-suite setting for the PagerDuty plugin suite and future releases will include Plugin Groups for our other plugin suites - such as Jira, ServiceNow, and AWS.<br>
 Click [here](/manual/plugins) to read the full documentation.
 
-![PD Plugin Config](~@assets/img/relnotes-4.9-pd-config.png)
+![PD Plugin Config](/assets/img/relnotes-4.9-pd-config.png)
 
 - This release also includes a number of backend enhancements that will lend themselves to major releases in the coming months.  Stay tuned for announcements regarding major updates to our [Runner](/administration/runner/).
 

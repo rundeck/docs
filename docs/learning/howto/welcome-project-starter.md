@@ -84,24 +84,24 @@ To access Rundeck, head to[ http://localhost:4440](http://localhost:4440) in you
 
 Log in using the following credentials: username: `admin` and password: `admin`
 
-![Login Page](@assets/img/login-page.png)
+![Login Page](/assets/img/login-page.png)
 
 ## Navigating Welcome Project
 
 After logging in, you will see the following screen:
 
-![alt_text](@assets/img/howto-project-list.png)
+![alt_text](/assets/img/howto-project-list.png)
 
 Click the project name.
 
-![alt_text](@assets/img/howto-welcome-project-dashboard.png)
+![alt_text](/assets/img/howto-welcome-project-dashboard.png)
 
 In the left nav bar the options available are:
 
 *   Dashboard, to view the project description, Readme, and executions summary. Process Automation users may see additional visualizations for schedules and execution history.
 *   Jobs, the welcome project available jobs.
 
-![alt_text](@assets/img/howto-welcome-joblist.png)
+![alt_text](/assets/img/howto-welcome-joblist.png)
 
 *   Nodes: where rundeck displays all nodes
 *   Commands: dispatch individual commands to available nodes

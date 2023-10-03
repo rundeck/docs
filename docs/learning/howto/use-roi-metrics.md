@@ -31,9 +31,9 @@ Customer X has decided to track how much time is saved with their newly implemen
 1. On the Workflow Tab add a single `Command` step with the command `sleep 5`.  (Assumes this will be running on Linux host)
 1. Choose the _Execution Plugins_ tab.
 1. Check the box for **ROI Metrics Data**.<br><br>
-    ![ROI Metrics Plugin](~@assets/img/roi-metrics-data.png)
+    ![ROI Metrics Plugin](/assets/img/roi-metrics-data.png)
 1. Click **Add Custom Field**.<br><br>
-    ![Add Custom Field](~@assets/img/roi-metrics-customfield.png)
+    ![Add Custom Field](/assets/img/roi-metrics-customfield.png)
 1. Enter a value for:
     - ***Field Label***: `Hours Saved`
     - ***Field Key***: `hours`

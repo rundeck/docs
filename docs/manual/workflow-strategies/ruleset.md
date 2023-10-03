@@ -9,7 +9,7 @@ The [3.4.4 release](/history/3_4_x/version-3.4.4.md) includes updates to our inc
 
 The Ruleset Workflow Strategy allows Enterprise users to provide more complex logic around job step execution.  To use the Ruleset Strategy choose _Ruleset_ on the Workflow tab when editing a Job.
 
-![Ruleset Strategy](@assets/img/relnotes-344-rulesetdesigner.gif)
+![Ruleset Strategy](/assets/img/relnotes-344-rulesetdesigner.gif)
 
 ::: warning
 When the Workflow graph contains a large number of jobs, the job edit page may experience performance issues. Use the following setting to disable the graph renderization: `rundeck.gui.workflowGraph` set to `false`.  This can be configured without restarting the system, via [Configuration Manager](/manual/configuration-mgmt/configmgmt.md). 

@@ -7,7 +7,7 @@ Before jumping into your Automation instance, first [create a PagerDuty API Key]
 This will be used to add the Diagnostic data onto the PagerDuty Incident.
 
 Navigate into your Automation instance.  In the **Automated Diagnostics** project, click on the **Third Party Service Disruptions** job:
-![First Diagnostic Runbook](@assets/img/first-diagnostic-runbook.png)
+![First Diagnostic Runbook](/assets/img/first-diagnostic-runbook.png)
 
 This Job retrieves recent service-disruptions from Public-cloud or SaaS providers:
 Click **Run Job Now**.  You will see whether there have been recent incidents for the specific Public-cloud or SaaS provider.
@@ -40,7 +40,7 @@ Navigate to an Incident - either active or resolved - on the Service associated 
 Click on **Run Job**.
 
 When the page is refreshed, the following should now be visible on the Incident **Timeline**:
-![First Diagnostics Output](@assets/img/third-party-service-disruptions-output.png)
+![First Diagnostics Output](/assets/img/third-party-service-disruptions-output.png)
 
 The output you see in PagerDuty is different from the content seen in the log output of the Diagnostic Runbook.  
 This is to demonstrate how verbose log data can be “simplified” so that a responder can make quick, informed decisions on where to start investigating or whom to pull in for assistance.
@@ -68,7 +68,7 @@ Details for other error codes can be found [here](https://developer.pagerduty.co
 ## Diagnostics in Chat Tools
 
 The diagnostic data that you see in the Incident Timeline will also appear in the PagerDuty mobile app:
-![Diagnostic results displayed in Slack](@assets/img/diag_in_slack.png)
+![Diagnostic results displayed in Slack](/assets/img/diag_in_slack.png)
 
 However, a large number of users manage and communicate incidents out of their company’s chat tool - such as **Slack** or **Microsoft Teams**.  If you have already integrated these tools with PagerDuty, then the Diagnostics will appear in the Channels/Teams that are connected with Services or specific incidents.
 

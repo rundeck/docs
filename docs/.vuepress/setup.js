@@ -19,7 +19,7 @@ const setup = {
     apiMinVersion: API_MIN_VER,
     rundeckVersion: process.env.RUNDECK_VERSION || RUNDECK_VERSION,
     rundeckVersionFull: process.env.RUNDECK_VERSION_FULL || RUNDECK_VERSION_FULL,
-    rundeckCLIVersion: process.env.CLI_VERSION || CLI_VERSION
+    cliVersion: process.env.CLI_VERSION || CLI_VERSION
 }
 
 export default setup

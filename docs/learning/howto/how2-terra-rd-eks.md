@@ -1,6 +1,6 @@
 # Deploy Rundeck on AWS EKS with Terraform
 
-![](~@assets/img/terra-eks1.png)
+![](/assets/img/terra-eks1.png)
 
 Amazon Elastic Kubernetes Service (Amazon EKS) is a fully-managed Kubernetes service that simplifies the process of building, securing, operating, and maintaining Kubernetes clusters on AWS. Amazon EKS automatically manages the Kubernetes nodes, containers, application availability and stored cluster data.<br>
 Deploying Rundeck on EKS takes advantage of Kubernetes capabilities such as auto-scaling, portability and availability.  This makes it a strong choice for cloud deployments.  Consequently, it’s common to see Rundeck implemented on Kubernetes clusters.<br>
@@ -71,7 +71,7 @@ kubectl config set-context --current --namespace=bangarang
 ```
 
 #### This should be reflected by `oss-test-cluster` (`bangarang` namespace) using `k9s`
-![](~@assets/img/terra-eks2.png)
+![](/assets/img/terra-eks2.png)
 
 ## Deployment
 
@@ -107,7 +107,7 @@ kubectl get service
 ```
 
 #### Result should look like this:
-![](~@assets/img/terra-eks3.png)
+![](/assets/img/terra-eks3.png)
 Note: The "EXTERNAL-IP" column is the Service URL for the Rundeck deployment. Copy it for use in the next step.<br>
 
 ### Deploying Rundeck to EKS
@@ -150,10 +150,10 @@ kubectl apply -f rundeck-deployment.yaml
 ```
 
 The deployment should look as follows in `k9`:<br>
-![](~@assets/img/terra-eks4.png)
+![](/assets/img/terra-eks4.png)
 Rundeck is available via the service's external URL.<br>
 
-![](~@assets/img/terra-eks5.png)
+![](/assets/img/terra-eks5.png)
 ### Uninstalling
 
 #### To uninstall the Rundeck deployment use:

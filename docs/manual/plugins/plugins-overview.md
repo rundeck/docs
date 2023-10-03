@@ -37,13 +37,13 @@ or add the following **_Custom Config_** to [Configuration Management](/manual/c
 **Property Value** = **`true`**
 :::
 
-![Plugin Suite Project Settings](@assets/img/plugin-groups-project-settings.png)<br>
+![Plugin Suite Project Settings](/assets/img/plugin-groups-project-settings.png)<br>
 
 Click on **PluginGroup+** and select the desired Plugin Suite from the list.
 
 The properties for the chosen plugin-suite will now be available to configure.  Once the properties are filled in, click **Save** for that plugin-suite.  Then click **Save** at the bottom of the page:
 
-![Saving pluing suite settings](@assets/img/saving-plugin-suite-settings.png)<br>
+![Saving pluing suite settings](/assets/img/saving-plugin-suite-settings.png)<br>
 
 When the configuration is saved, all plugins for the given suite in that project will default to these properties. 
 
@@ -53,7 +53,7 @@ To configure a plugin-suite for the system - thereby spanning all projects - cli
 
 Navigate to the plugin-suite name - such as PagerDuty - and click the **Pencil Icon** in the upper right:
 
-![Edit Plugin Suite Sysytem Level](@assets/img/edit-plugin-suite-system-level.png)<br>
+![Edit Plugin Suite Sysytem Level](/assets/img/edit-plugin-suite-system-level.png)<br>
 
 Place the properties into their associated fields and then click **Save**.  
 

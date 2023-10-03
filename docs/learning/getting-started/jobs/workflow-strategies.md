@@ -2,7 +2,7 @@
 
 ## Workflow Behavior
 The Workflow Strategy that’s assigned as part of each job definition determines how the steps are processed within a Job's Workflow. The strategy will determine whether steps will be executed node by node and/or whether job steps should be executed in parallel or sequentially.<br>
-![](~@assets/img/workflow1.png)<br>
+![](/assets/img/workflow1.png)<br>
 The following are the strategies available to Jobs in Rundeck / Process Automation.<br>
 ### Node First
 The default behavior executes all steps defined in the job on a node before proceeding to the next node. Each node will be completed before the next node begins executing the workflow.
@@ -21,9 +21,9 @@ This strategy runs on more than one node in parallel. Instead of having to compl
 The Thread Count, on the nodes tab in the job page, designates the maximum number of parallel threads to use. This example uses a job with three nodes in parallel.
 Example:
 To run a job on multiple nodes in parallel in Rundeck (e.g: against three nodes), set ThreadCount = 3 and dispatch the job against three nodes.
-![](~@assets/img/workflow2.gif)
+![](/assets/img/workflow2.gif)
 By using a thread count of 3, the job will execute on 3 nodes at any one time, moving on to a new node each time one completes.
-![](~@assets/img/workflow3.png)<br>
+![](/assets/img/workflow3.png)<br>
 ### Sequential
 This strategy runs each step in order so you can execute one step on all nodes before proceeding to the next step.<br>
 Example:<br>

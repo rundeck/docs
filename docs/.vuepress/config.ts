@@ -7,8 +7,8 @@ import { docsearchPlugin } from '@vuepress/plugin-docsearch';
 import { getDirname, path } from '@vuepress/utils';
 import { openGraphPlugin } from 'vuepress-plugin-open-graph';
 import { registerComponentsPlugin } from '@vuepress/plugin-register-components';
-import { pwaPlugin } from '@vuepress/plugin-pwa';
-import { pwaPopupPlugin } from '@vuepress/plugin-pwa-popup';
+// import { pwaPlugin } from '@vuepress/plugin-pwa';
+// import { pwaPopupPlugin } from '@vuepress/plugin-pwa-popup';
 import { redirectPlugin } from "vuepress-plugin-redirect";
 import { googleAnalyticsPlugin } from '@vuepress/plugin-google-analytics';
 
@@ -40,9 +40,19 @@ const __dirname = getDirname(import.meta.url);
 import setup from './setup';
 console.log(setup)
 
+const compareDate = (
+  dateA: Date | string | undefined,
+  dateB: Date | string | undefined,
+): number => {
+  if (!dateA || !(dateA instanceof Date)) return 1;
+  if (!dateB || !(dateB instanceof Date)) return -1;
+  return dateB.getTime() - dateA.getTime();
+};
+
 export default defineUserConfig({
   //debug: true,
   title: '',
+  debug: false,
   description: '',
   shouldPrefetch: false,
   base: `/${setup.base ? setup.base + '/' : ''}`,
@@ -69,7 +79,7 @@ export default defineUserConfig({
     API_MIN_VERSION: setup.apiMinVersion,
     VERSION: setup.rundeckVersion,
     VERSION_FULL: setup.rundeckVersionFull,
-    CLI_VERSION: setup.rundeckCLIVersion
+    CLI_VERSION: setup.cliVersion
   },
 
   //Theme Config
@@ -84,6 +94,10 @@ export default defineUserConfig({
     pageInfo: false,
     contributors: false,
     plugins: {
+      pwa: {
+        update: 'available',
+        cacheHTML: true
+      },
       mdEnhance: {
         tabs: true,
         codetabs: true,
@@ -92,9 +106,8 @@ export default defineUserConfig({
         hostname: 'https://docs.rundeck.com',
         rss: true,
         json: true,
-        filter: ({ frontmatter }: Page): boolean =>
-            frontmatter.feed !== undefined,
-        sort: ({ frontmatter }: Page): number => _.reverse(_.sortBy(entries, frontmatter.date))
+        filter: ({ frontmatter, filePathRelative }: Page): boolean => !(frontmatter.feed === undefined || frontmatter.home || !filePathRelative || frontmatter.article === false || frontmatter.feed === false),
+        sort: ({ pageA }: Page, {pageB}: Page): number => compareDate(pageA.frontmatter.date, pageB.frontmatter.date)
       },
       components: {
           components: [
@@ -162,17 +175,17 @@ export default defineUserConfig({
             RundeckSwaggerUi: path.resolve(__dirname, './components/RundeckSwaggerUI.vue'),
           },
       }),
-    pwaPlugin({
-        skipWaiting: false,
-    }),
-    pwaPopupPlugin({
-    locales: {
-        '/': {
-            message: 'New content is available.',
-            buttonText: 'Refresh',
-        },
-    }
-    }),
+    // pwaPlugin({
+    //     skipWaiting: false,
+    // }),
+    // pwaPopupPlugin({
+    // locales: {
+    //     '/': {
+    //         message: 'New content is available.',
+    //         buttonText: 'Refresh',
+    //     },
+    // }
+    // }),
     redirectPlugin({
         config: {
             '/manual/01-introduction.html' : '/introduction/introduction.html',

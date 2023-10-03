@@ -6,11 +6,6 @@ PagerDuty's [Automation Actions](https://www.rundeck.com/rundeck-actions) provid
 
 This solution provides instructions for setting up Automation Actions to retrieve and invoke a script from Github in order to reduce investigation and troubleshooting time.
 
-Watch a demo of **Automation Actions** here:
-<span v-pre><br><script src="https://fast.wistia.com/embed/medias/cb0x7fwnz1.jsonp" async></script><script src="https://fast.wistia.com/assets/external/E-v1.js" async></script><div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><div class="wistia_embed wistia_async_cb0x7fwnz1 seo=false videoFoam=true" style="height:100%;position:relative;width:100%"><div class="wistia_swatch" style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;"><img src="https://fast.wistia.com/embed/medias/cb0x7fwnz1/swatch" style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" alt="" aria-hidden="true" onload="this.parentNode.style.opacity=1;" /></div></div></div></div></span>
-
-
-
 ## Create Automation Actions Runner
 :::tip Prerequisites
 In order to install the Automation Actions runner, you must have a server available where you can install Java 11+. Linux is the recommended operating system, though you can optionally run the Automation-Actions Jar in a container.
@@ -47,7 +42,7 @@ In order to install the Automation Actions runner, you must have a server availa
 9. [Optional] Verify activity in runner.log:
     * `tail -f /home/ubuntu/rundeck_runner/runner/logs/runner.log`
 10. Check the runner’s status in PagerDuty. A green checkmark indicates that the runner is active and running successfully. A red circle indicates that the runner is not running or there is a problem with the runner:
-    <br><br>![runner-status](@assets/img/solutions-raw-script-runner-status.png)<br>
+    <br><br>![runner-status](/assets/img/solutions-raw-script-runner-status.png)<br>
 
 ## Create Diagnostic Data Automation Action
 Once the runner is running successfully, you can add an action.
@@ -56,7 +51,7 @@ Once the runner is running successfully, you can add an action.
 2. Enter the desired values for the **Name** and **Describe the Action** fields.
 3. Use the **Script** type for the _Select Type_ dropdown.
 4. Use the **Diagnostic** options for the _Type of Action_ dropdown:
-   <br>![action-options](@assets/img/solutions-raw-script-action-options.png)<br><br>
+   <br>![action-options](/assets/img/solutions-raw-script-action-options.png)<br><br>
 5. In the **Define Your Action** field, you have the option to edit and execute a raw script here, or use commands to pull a script (e.g. from Github), then invoke and delete it from the Runner.
    :::warning Notice
    These scripts are sample code to demonstrate the different ways you can implement Automation Actions. They are not meant for use within your production environment.
@@ -92,8 +87,8 @@ Once the runner is running successfully, you can add an action.
 
 ## Invoke Diagnostic Data Action
 Now that the Runner has been deployed and the Automation Action has been configured, when incidents are created on the Services associated with the Automation Action, there will be an option in the **Run Actions** dropdown that will trigger the automation:
-<br><br>![invoke-action](@assets/img/solutions-raw-script-invoke-action.png)<br>
+<br><br>![invoke-action](/assets/img/solutions-raw-script-invoke-action.png)<br>
 This will produce records on the Incident Timeline showing that this Action was invoked.  Click on **output report**:
-<br><br>![timeline-output](@assets/img/solutions-raw-script-timeline-output.png)<br>
+<br><br>![timeline-output](/assets/img/solutions-raw-script-timeline-output.png)<br>
 This will take you to the output report page where you can view the log-output of the Automation Action:
-<br><br>![output-report](@assets/img/solutions-raw-script-view-report.png)
+<br><br>![output-report](/assets/img/solutions-raw-script-view-report.png)

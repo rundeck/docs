@@ -12,26 +12,26 @@ The HTTP Notification Step plugin is required to follow this example. The plugin
 ### Creating a Global Variable
 1. Create a new job and add a command step that just displays all environment variables with the `env` command.
 2. Add a Key Value Data log filter to capture the user name. 
-![](~@assets/img/notification1.png)
+![](/assets/img/notification1.png)
 3. For the pattern, enter the following regex `^(USER)\s*=\s*(.+)$ `
  Also, check the Log Data box.
-![](~@assets/img/notification2.png)
+![](/assets/img/notification2.png)
 4. Create a new global variable using Key-Value Data. 
-![](~@assets/img/notification3.png)
+![](/assets/img/notification3.png)
 5.Add `${data.USER*}` on the Value text field, “export” on the Group text field, and “myglobal” in the "Name" text field.
-![](~@assets/img/notification4.png)
+![](/assets/img/notification4.png)
 6. To test the exported variable, add a new step to print it: echo `${export.mydata.`Save it and run it to test, the result should be the Key Value Data content.
-![](~@assets/img/notification5.png)
+![](/assets/img/notification5.png)
 
 ### Using the Variable in notifications
 1. The exported variable is usable on any notification.  Edit the job by clicking on the "Notifications'' tab.  
-![](~@assets/img/notification6.png)
+![](/assets/img/notification6.png)
 2. Click on "+ Add Notification" in the "On Success" section.
-![](~@assets/img/notification7.png)
+![](/assets/img/notification7.png)
 3. In the "Notification Type" section put the HTTP URL to send the test exported variable content. You can test this using your own unique url from this site: [https://webhook.site](https://webhook.site) (Go there in your browser to get one).  On the "HTTP Method" select "POST" and put the exported variable in the "Body" section in this format `${export.myglobal}.`
-![](~@assets/img/notification8.png)
+![](/assets/img/notification8.png)
 4. Run the job and see the exported variable content from the HTTP service (containing the Key Data variable) on the test site.
-![](~@assets/img/notification9.png)
+![](/assets/img/notification9.png)
 
 ## Job Definition Example (in YAML format) to [import](https://docs.rundeck.com/docs/manual/creating-jobs.html#importing-job-definitions) and test.
 

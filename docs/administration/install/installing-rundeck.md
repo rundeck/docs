@@ -12,12 +12,13 @@ Installing Rundeck is a straightforward and efficient way to enhance your organi
 Docker is fastest way to try out Rundeck
 :::
 
-:::: tabs
+::: tabs
 
 
-::: tab Docker
+@tab Docker
 
 ### Quick Start
+
 ```bash
 docker run --rm -it -p 4440:4440 rundeckpro/enterprise:{{$rundeckVersion}}
 ```
@@ -28,9 +29,9 @@ in Docker Compose!** These examples cover common configuration scenarios includi
 connecting to each supported database.
 
 [Detailed Docker instructions can be found here.](/administration/install/docker.md)  
-:::
 
-::: tab Deb
+
+@tab Deb
 ### Quick Install
 ```bash
 curl https://raw.githubusercontent.com/rundeck/packaging/main/scripts/deb-setup.sh 2> /dev/null | sudo bash -s rundeckpro
@@ -57,9 +58,9 @@ sudo apt-get install rundeckpro-enterprise
 ```
 
 [Detailed deb instructions can be found here.](/administration/install/linux-deb.md)  
-:::
 
-::: tab Rpm
+
+@tab Rpm
 ### Quick Install
 ```bash
 curl https://raw.githubusercontent.com/rundeck/packaging/main/scripts/rpm-setup.sh 2> /dev/null | sudo bash -s rundeckpro
@@ -89,21 +90,19 @@ sudo yum install java rundeckpro-enterprise
 ```
 
 [Detailed rpm instructions can be found here.](/administration/install/linux-rpm.md)  
-:::
 
 
 
-::: tab Tomcat
+
+@tab Tomcat
 [Check here for detailed Tomcat installation instructions.](/administration/install/tomcat.md)  
-:::
 
-::: tab Windows
+
+@tab Windows
 [Check here for detailed Windows installation instructions.](/administration/install/windows.md)
+
+
 :::
-
-::::
-###
-
 
 ## Database Configuration
 Rundeck requires a backend database to store and manage various types of data that are integral to its operation. The backend database serves as a repository for critical information such as job definitions, execution history, project configurations, and user accounts. By leveraging a database, Rundeck ensures data integrity, persistence, and scalability, allowing multiple users to collaborate seamlessly and access the platform's features concurrently.

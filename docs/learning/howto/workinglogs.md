@@ -34,7 +34,7 @@ To follow the `service.log` content (equivalent to the command `tail -f /var/log
 docker logs <container_id> –follow
 ```
 
-![docker-logs](@assets/img/logs_docker.png)
+![docker-logs](/assets/img/logs_docker.png)
 
 Where `<container_id>` is the Rundeck container ID, you can check with the `docker ps` command, more information [here](https://docs.docker.com/engine/reference/commandline/ps/).
 

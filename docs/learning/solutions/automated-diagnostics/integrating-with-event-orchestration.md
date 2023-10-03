@@ -19,7 +19,7 @@ As of December 2022, Event Orchestration can integrate with Automation Actions s
 :::
 
 1. As part of defining a [Service Rule](https://support.pagerduty.com/docs/event-orchestration#service-rules), navigate to the **Process Automation** tab:
-   ![Service Rule Configuration](~@assets/img/solutions-auto-diag-event-orchestration.png)<br><br>
+   ![Service Rule Configuration](/assets/img/solutions-auto-diag-event-orchestration.png)<br><br>
 2. In the **Automation Action** dropdown, select an Action from the list.
    :::tip Automation Actions
    If you have not yet configured an **Automation Action**, complete this first by following the [**Configuring Automation Actions**](/learning/solutions/automated-diagnostics/automation-actions)

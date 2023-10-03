@@ -112,7 +112,7 @@ Or, to use SSM:<br>
 
 To declare Node Executors on a subset of EC2's within a given Node Source, use the **Attribute Match** Enhancer.  For example, to specify the **WinRM** Node Executor for just Windows EC2's, use `osName==windows`
 in the _Attribute Match_ box and `node-executor:WinRMPython` in the _Attributes to Add_ box:
-![attribute-match](@assets/img/ec2-node-enhancer-attribute-match.png)
+![attribute-match](/assets/img/ec2-node-enhancer-attribute-match.png)
 
 ::: tip Note
 If a Node Executor is not specified for the Node Source, then the Project's [Default Node Executor](/manual/project-settings.html#edit-configuration) will be used.

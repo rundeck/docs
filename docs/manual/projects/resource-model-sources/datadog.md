@@ -7,13 +7,13 @@ Process Automation users have the ability to use this plugin to import their hos
 
 ## Connection
 
-![Datadog Resource Model - Connection](~@assets/img/resource-connect.png)
+![Datadog Resource Model - Connection](/assets/img/resource-connect.png)
 
 Follow the instructions outlined in the [**Datadog Integration Overview**](/manual/plugins/datadog-plugins-overview) to set up authentication with Datadog.
 
 ## Configuration
 
-![Datadog Resource Model - Configuration](~@assets/img/resource-config.png)
+![Datadog Resource Model - Configuration](/assets/img/resource-config.png)
 
 - **Attribute Prefix**
 : This creates an attribute prefix for all the attributes for that host. For example, on attribute is "isMuted" which is a boolean to determine if the host is muted. Instead, it would appear as dd.isMuted is you put "dd" here.

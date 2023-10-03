@@ -10,7 +10,7 @@ To add nodes to your Rundeck instances, see [Configure - Resource Model Sources 
 
 Navigate to this page by clicking on the "Nodes" link in the navigation menu.
 
-![Nodes page](~@assets/img/fig0204-a.png)
+![Nodes page](/assets/img/fig0204-a.png)
 
 The screenshot above shows the elements of the Nodes page user interface.
 
@@ -29,7 +29,7 @@ Because nodes might have many attributes, it can be helpful to use a naming conv
 
 When Rundeck sees an attribute with a name containing a colon, it automatically groups them in the UI. For example, the screenshot below shows a node with two attributes under the "web" prefix.
 
-![Attribute namespace](~@assets/img/fig0204-h.png)
+![Attribute namespace](/assets/img/fig0204-h.png)
 
 In this example, there are 9 attributes listed.
 
@@ -43,7 +43,7 @@ As you click search links in the node detail view, that attribute is placed in t
 
 The screenshot below shows a case where two nodes were found that were tagged "www" have an attribute named web:pid and with their web:state attribute value "RUNNING".
 
-![Nodes filtering links](~@assets/img/fig0204-b.png)
+![Nodes filtering links](/assets/img/fig0204-b.png)
 
 1. Clicking the single node view icon filters the list down to just that node.
 2. Find nodes with this Tag (e,g just nodes with tagged "www").
@@ -52,13 +52,13 @@ The screenshot below shows a case where two nodes were found that were tagged "w
 
 The next screenshot shows a single node view. Notice the nodes unique name is entered in the filter form.
 
-![Single node view](~@assets/img/fig0204-c1.png)
+![Single node view](/assets/img/fig0204-c1.png)
 
 ## Node filtering
 
 A _node filter_ is a search pattern that matches a set of nodes. Rundeck node filters let you match Nodes based on a pattern like "tags" or any node attribute. You can define node filters that include and exclude nodes based on sets of patterns. While a node filter can specifically reference nodes using their unique name, filter patterns are more resilient to changes in your environment and better handle dynamically provisioned servers.
 
-![Filtered nodes](~@assets/img/fig0204-c.png)
+![Filtered nodes](/assets/img/fig0204-c.png)
 
 1. Filter expression
 2. Column labeled by attribute name
@@ -71,7 +71,7 @@ For full syntax information see the [Node Filters](/manual/11-node-filters.md) c
 
 If you forget the syntax, press the help button in the filter form and a dialog containing a cheat sheet will be displayed (see screenshot below).
 
-![Filter expressions help](~@assets/img/fig0204-c2.png)
+![Filter expressions help](/assets/img/fig0204-c2.png)
 
 To exclude nodes that match a pattern place a "!" (exclamation point) to negate that part of the match.
 
@@ -81,18 +81,18 @@ To exclude nodes that match a pattern place a "!" (exclamation point) to negate 
 
 Often times you will want to go back to a set of nodes that matched a filter. You can save the filter and give it a name by pressing the "down arrow" button to the left of the search field.
 
-![Create a filter](~@assets/img/fig0204-d1.png)
+![Create a filter](/assets/img/fig0204-d1.png)
 
 
 The example below shows the dialog to confirm saving a new filter.
 
-![Filtered nodes](~@assets/img/fig0204-d.png)
+![Filtered nodes](/assets/img/fig0204-d.png)
 
 1. Filter name
 
 The saved filters become available in the Filters menu in other parts of rundeck, like in the Nodes page, when creating Jobs or running Commands.
 
-![Saved Filters menu](~@assets/img/fig0204-e.png)
+![Saved Filters menu](/assets/img/fig0204-e.png)
 
 1. Named filter in menu
 
@@ -103,13 +103,13 @@ Often times you are browsing and filtering nodes because you want to do somethin
 - Run a command. Choosing this menu item will forward your browser to the Commands page.
 - Create a job. Choosing this menu item will forward you to the Job create page and enter the filter expression in the edit form.
 
-![Node actions menu](~@assets/img/fig0204-f.png)
+![Node actions menu](/assets/img/fig0204-f.png)
 
 Users that don't have sufficient privileges granted by the ACL will show that menu item disabled.
 
 The example below shows that the user can't create Job for those nodes.
 
-![Not authorized in menu](~@assets/img/fig0204-g.png)
+![Not authorized in menu](/assets/img/fig0204-g.png)
 
 ## Related Command line tools
 

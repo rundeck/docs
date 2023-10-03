@@ -7,13 +7,13 @@ Nodes in Rundeck are typically defined through a node source.  The node source c
 You can add any number of node sources to a project in rundeck.   Available sources for a specific project are listed when you choose to add or edit a node source for that project.
 Some common node sources are shown in the graphic below:
 
-![](~@assets/img/nodes-1.png)
+![](/assets/img/nodes-1.png)
 
 Each node in a node source has properties associated with it, such as hostname, IP address, username, password, SSH key, and/or other information required to connect to  and manage the node. These properties define the connection details and credentials needed to execute commands or scripts on the Node.  
 
 Node data is stored in a configuration file.    Below is an example of a static YAML configuration file:
 
-![](~@assets/img/nodes-2.png)
+![](/assets/img/nodes-2.png)
 
 Rundeck uses nodes to execute jobs and workflows. When a job is triggered, Rundeck uses the information from the node source to connect to the specified Nodes and perform the specified actions as needed.  A node source is a method of sharing  information about your infrastructure with Rundeck as [Nodes](/manual/05-nodes.html#overview).
 

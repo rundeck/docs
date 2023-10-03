@@ -37,4 +37,4 @@ It is also very common for users to want to “wrap around” the Kubernetes com
 
 [comment]: <> (Right click [here]&#40;https://raw.githubusercontent.com/rundeck/docs/4.0.x/docs/assets/text/sample_k8s_job.yaml&#41; and click **`Save Link As...`** to download the Job definition **YAML** and import the Job to your Automation instance.)
 
-[comment]: <> (![Example Kubernetes Job Output]&#40;@assets/img/example-k8s-job-output.png&#41;)
+[comment]: <> (![Example Kubernetes Job Output]&#40;/assets/img/example-k8s-job-output.png&#41;)

@@ -15,8 +15,8 @@ The selected text regex has several options. A regex without a capture group wil
 
 ## Example
 
-![](@assets/img/logfilter-highlight-example1.png)
+![](/assets/img/logfilter-highlight-example1.png)
 
 This setting will filter the log output looking for an initial “0” (zero) in the attached job step’s log output. If it matches, the result will look like this:
 
-![](@assets/img/logfilter-highlight-example2.png)
+![](/assets/img/logfilter-highlight-example2.png)

@@ -9,7 +9,7 @@ It's recommended that you follow the included Tours before starting to use this.
 To initiate any Tour, click the Tours icon at the bottom right of your screen (next to the light bulb icon) and select the Tour you’d like.
 :::
 
-![Initiate Tours](@assets/img/solutions-auto-diag-initiate-tours.png)<br>
+![Initiate Tours](/assets/img/solutions-auto-diag-initiate-tours.png)<br>
 
 ### Included Tours
 
@@ -25,7 +25,7 @@ To initiate any Tour, click the Tours icon at the bottom right of your screen (n
 
 <br>
 
-![Example Tour](@assets/img/solutions-auto-diag-example-tour.png)
+![Example Tour](/assets/img/solutions-auto-diag-example-tour.png)
 <center>_Example Tour Interface_</center>
 
 ### **After following the tours, you can now use the [<span style="color:green"><ins>Prebuilt Automation Jobs!</ins></span>](/learning/solutions/automated-diagnostics/jobs.html)**

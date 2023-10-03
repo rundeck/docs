@@ -21,9 +21,9 @@ Many Rundeck users utilize the ServiceNow Rundeck Application to trigger provisi
 1. Navigate to **System Web Services** > **REST Message**
 1. Click the _Rundeck - API_ Entry
 1. For each entry in the _HTTP Methods_ menu , click on the method name to open the record
-    ![](@assets/img/howto-snmidserver-1.png)
+    ![](/assets/img/howto-snmidserver-1.png)
 1. After opening the record, click on the ‘HTTP Request’ tab and select the MID Server.
-    ![](@assets/img/howto-snmidserver-2.png)
+    ![](/assets/img/howto-snmidserver-2.png)
 1. Click **Update** at the bottom of the page to save the change for each record.
 
 ## More Information
