@@ -1,8 +1,7 @@
 import _ from 'lodash'
 
-import { defaultTheme, defineUserConfig } from 'vuepress';
+import { defineUserConfig } from 'vuepress';
 import { hopeTheme } from "vuepress-theme-hope";
-import tabsPlugin from '@snippetors/vuepress-plugin-tabs';
 import { containerPlugin } from '@vuepress/plugin-container';
 import { docsearchPlugin } from '@vuepress/plugin-docsearch';
 import { path } from '@vuepress/utils';
@@ -12,7 +11,7 @@ import { pwaPlugin } from '@vuepress/plugin-pwa';
 import { pwaPopupPlugin } from '@vuepress/plugin-pwa-popup';
 import { redirectPlugin } from "vuepress-plugin-redirect";
 import { googleAnalyticsPlugin } from '@vuepress/plugin-google-analytics';
-import { componentsPlugin } from "vuepress-plugin-components";
+
 
 // sidebars
 import sidebarAdmin from './sidebar-menus/administration'
@@ -84,13 +83,17 @@ export default defineUserConfig({
     pageInfo: false,
     contributors: false,
     plugins: {
-        feed: {
-          hostname: 'https://docs.rundeck.com',
-          rss: true,
-          json: true,
-          filter: ({ frontmatter }: Page): boolean =>
-              frontmatter.feed !== undefined,
-          sort: ({ frontmatter }: Page): number => _.reverse(_.sortBy(entries, frontmatter.date))
+      mdEnhance: {
+        tabs: true,
+        codetabs: true,
+      },
+      feed: {
+        hostname: 'https://docs.rundeck.com',
+        rss: true,
+        json: true,
+        filter: ({ frontmatter }: Page): boolean =>
+            frontmatter.feed !== undefined,
+        sort: ({ frontmatter }: Page): number => _.reverse(_.sortBy(entries, frontmatter.date))
       },
       components: {
           components: [
@@ -169,7 +172,6 @@ export default defineUserConfig({
         },
     }
     }),
-    tabsPlugin([""]),
     redirectPlugin({
         config: {
             '/manual/01-introduction.html' : '/introduction/introduction.html',
