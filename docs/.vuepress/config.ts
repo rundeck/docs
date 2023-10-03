@@ -12,6 +12,7 @@ import { registerComponentsPlugin } from '@vuepress/plugin-register-components'
 import { pwaPlugin } from '@vuepress/plugin-pwa'
 import { pwaPopupPlugin } from '@vuepress/plugin-pwa-popup'
 import { redirectPlugin } from "vuepress-plugin-redirect";
+import { googleAnalyticsPlugin } from '@vuepress/plugin-google-analytics'
 
 // sidebars
 import sidebarAdmin from './sidebar-menus/administration'
@@ -46,14 +47,14 @@ export default defineUserConfig({
   shouldPrefetch: false,
   base: `/${setup.base ? setup.base + '/' : ''}`,
   head: [
-    ['script', {}, `
-      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','GTM-5QNBBN6');
-    `],
-    ['script', { src: '/js/gtm.js', defer: true }]
+    // ['script', {}, `
+    //   (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    //   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    //   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    //   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    //   })(window,document,'script','dataLayer','GTM-5QNBBN6');
+    // `],
+    // ['script', { src: '/js/gtm.js', defer: true }]
   ],
   extendsMarkdown: md => {
     md.use(markdownItReplaceVars, 'custom_token_replace', function (content) {
@@ -146,6 +147,10 @@ export default defineUserConfig({
        host: 'https://docs.rundeck.com',
        twitterSite: 'rundeck',
       }),
+    googleAnalyticsPlugin({
+      id: 'G-LYC4H41P9E',
+      debug: true
+    }),
     containerPlugin(
         {
             type: 'deprecated',
