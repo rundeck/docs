@@ -1,29 +1,33 @@
 {
-    "index_name": "prod_rundeck_docs",
-    "js_render": false,
-    "start_urls": [
-      {
-          "url": "https://docs.rundeck.com/(?P<version>.*?)/",
-          "variables": {
-              "version": [
-                  "docs",
-                  "4.17.0"
-              ]
-          }
+  "index_name": "dev_rundeck_docs",
+  "js_render": false,
+  "start_urls": [
+    {
+      "url": "https://docs.rundeck.com/(?P<version>.*?)/",
+      "variables": {
+        "version": [
+          "docs"
+        ]
       }
-    ],
-    "stop_urls": [
-      "https://docs.rundeck.com/.*?/history/[1,2,3].*?/.*"
-    ],
-    "selectors": {
-      "lvl0": "[class*='content '] h1",
-      "lvl1": "[class*='content '] h2",
-      "lvl2": "[class*='content '] h3",
-      "lvl3": "[class*='content '] h4",
-      "lvl4": "[class*='content '] h5",
-      "lvl5": "[class*='content '] h5",
+    }
+  ],
+  "stop_urls": [
+    "https://docs.rundeck.com/.*?/history/[1,2,3].*?/.*"
+  ],
+  "selectors": {
+    "default": {
+      "lvl0": {
+        "selector": ".theme-default-content h1",
+        "global": true,
+        "default_value": "Documentation"
+      },
+      "lvl1": ".theme-default-content h2",
+      "lvl2": ".theme-default-content h3",
+      "lvl3": ".theme-default-content h4",
+      "lvl4": ".theme-default-content h5",
+      "lvl5": ".theme-default-content h5",
       "text": {
-        "selector": "//div[contains(@class, \"content\")]//p | //div[contains(@class, \"content\")]//pre[string-length(string()) < 5000]",
+        "selector": "//div[contains(@class, \"theme-default-content\")]//li | //div[contains(@class, \"theme-default-content\")]//p | //div[contains(@class, \"theme-default-content\")]//pre[string-length(string()) < 5000]",
         "type": "xpath"
       },
       "lang": {
@@ -31,15 +35,16 @@
         "type": "xpath",
         "global": true
       }
-    },
-    "selectors_exclude": [
-      ".table-of-contents"
-    ],
-    "strip_chars": " .,;:#",
-    "custom_settings": {
-      "attributesForFaceting": [
-          "version",
-          "lang"
-      ]
     }
+  },
+  "selectors_exclude": [
+    ".table-of-contents"
+  ],
+  "strip_chars": " .,;:#",
+  "custom_settings": {
+    "attributesForFaceting": [
+      "version",
+      "lang"
+    ]
   }
+}
