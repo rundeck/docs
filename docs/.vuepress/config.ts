@@ -159,7 +159,7 @@ export default defineUserConfig({
   plugins: [
     registerComponentsPlugin({
         components: {
-            RundeckSwaggerUi: path.resolve(__dirname, './components/RundeckSwaggerUi.vue'),
+            RundeckSwaggerUi: path.resolve(__dirname, './components/RundeckSwaggerUI.vue'),
           },
       }),
     pwaPlugin({
