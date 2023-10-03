@@ -159,7 +159,8 @@ export default defineUserConfig({
        '/history/': sidebarHistory,
        '/api/': [
         '/api/rundeck-api-versions.md',
-        '/api/rundeck-api.md'
+        '/api/rundeck-api.md',
+        '/api/api-spec.md'
       ],
       '/': [
         ''
