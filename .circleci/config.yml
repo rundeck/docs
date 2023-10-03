@@ -30,7 +30,7 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
       # run tests!
-      - run: node docs/.vuepress/deploy.js $CIRCLE_TAG
+      - run: node docs/.vuepress/deploy.ts $CIRCLE_TAG
       - slack/notify:
           channel: C01D3B233DJ
           event: fail
