@@ -4,7 +4,7 @@ import { defineUserConfig } from 'vuepress';
 import { hopeTheme } from "vuepress-theme-hope";
 import { containerPlugin } from '@vuepress/plugin-container';
 import { docsearchPlugin } from '@vuepress/plugin-docsearch';
-import { path } from '@vuepress/utils';
+import { getDirname, path } from '@vuepress/utils';
 import { openGraphPlugin } from 'vuepress-plugin-open-graph';
 import { registerComponentsPlugin } from '@vuepress/plugin-register-components';
 import { pwaPlugin } from '@vuepress/plugin-pwa';
@@ -36,6 +36,7 @@ import navbarDevelopment from './navbar-menus/development';
 import markdownItReplaceVars from './markdown-it-replace-vars'
 
 //Get setup variables
+const __dirname = getDirname(import.meta.url);
 import setup from './setup';
 console.log(setup)
 
