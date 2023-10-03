@@ -156,7 +156,7 @@ System Configuration, Access Control, System Report, Log Storage,
 List Plugins, Password Utility and Execution model.
 
 ::: tip
-See [Configure](/manual/system.configs.md)
+See [Configure](/manual/system-configs.md)
 :::
 
 #### User

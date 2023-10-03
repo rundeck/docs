@@ -33,7 +33,7 @@ The HTTP Notification Step plugin is required to follow this example. The plugin
 4. Run the job and see the exported variable content from the HTTP service (containing the Key Data variable) on the test site.
 ![](/assets/img/notification9.png)
 
-## Job Definition Example (in YAML format) to [import](https://docs.rundeck.com/docs/manual/creating-jobs.html#importing-job-definitions) and test.
+## Job Definition Example (in YAML format) to [import](/manual/creating-jobs.md#importing-job-definitions) and test.
 
 ```
 - defaultTab: nodes
@@ -83,6 +83,6 @@ The HTTP Notification Step plugin is required to follow this example. The plugin
 
 ## Resources
 
-* [Key Value Data usage](https://docs.rundeck.com/docs/manual/log-filters/key-value-data.html#key-value-data) (Rundeck documentation).
-* [Passing data between steps](https://docs.rundeck.com/docs/learning/howto/passing-variables.html) (Rundeck how-to article).
+* [Key Value Data usage](/manual/log-filters/key-value-data.md#key-value-data) (Rundeck documentation).
+* [Passing data between steps](/learning/howto/passing-variables.md) (Rundeck how-to article).
 * [Rundeck Feature Tutorial: Output Processing and Data Passing](https://www.youtube.com/watch?v=ao2SvpspWl4) (Youtube video).

@@ -6,7 +6,7 @@ There are two Welcome Projects, a Community Welcome Project focused on the Runde
 
 ### Disclaimer
 
-The Welcome Projects are meant to show users how Rundeck works and are not designed to be used in production. Some of the setup/installation methods used in this environment are not recommended for production deployments. Do not run this environment for production purposes or with sensitive data. For installation best practices follow our documentation ([https://docs.rundeck.com/docs/](https://docs.rundeck.com/docs/)) site and guidance from our world-class Support team.
+The Welcome Projects are meant to show users how Rundeck works and are not designed to be used in production. Some of the setup/installation methods used in this environment are not recommended for production deployments. Do not run this environment for production purposes or with sensitive data. For installation best practices follow our documentation ([https://docs.rundeck.com/docs/](/)) site and guidance from our world-class Support team.
 
 ## Rundeck Basic Terminology
 
@@ -127,7 +127,7 @@ In the left nav bar the options available are:
 
 ## Familiarize Yourself with Rundeck!
 
-Once your environment is fully operational, [start the Tutorial here](https://docs.rundeck.com/docs/learning/tutorial/preparing.html).
+Once your environment is fully operational, [start the Tutorial here](/learning/tutorial/preparing.md).
 
 ## Stop the Environment
 

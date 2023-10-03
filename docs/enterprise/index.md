@@ -25,5 +25,5 @@ All of the Process Automation features that are not included in our Open Source 
 
 ## Licenses
 
-Process Automation requires a license which can be obtained by reaching out to our Sales Team.  To install a license See: [Process Automation Licensing and Support](/administration/configuration/license.md)
+Process Automation requires a license which can be obtained by reaching out to our Sales Team.  To install a license See: [Process Automation Licensing and Support](/administration/license.md)
 

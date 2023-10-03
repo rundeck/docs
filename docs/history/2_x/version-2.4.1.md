@@ -13,7 +13,7 @@ This release has bug fixes.
 
 ## Compatibility notes
 
-See the [release notes for v2.4.0](http://rundeck.org/2.4.0/history/version-2.4.0.html)
+See the [release notes for v2.4.0](http://rundeck.org/2.4.0/history/2_x/version-2.4.0.html)
 
 ## Contributors
 

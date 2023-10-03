@@ -14,7 +14,7 @@ These integrations allow operations teams to provide self-service mechanisms to 
 |[**Update Incident State**](/manual/workflow-steps/servicenow.html#servicenow-incident-update-state)|Job Step|Incident|
 |[**Check Incident Assigned**](/manual/workflow-steps/servicenow.html#servicenow-incident-check-assigned)|Job Step|Incident|
 |[**Check Incident State**](/workflow-steps/servicenow.html#servicenow-incident-check-state)|Job Step|Incident|
-|[**Comment Incident**](/docs/manual/workflow-steps/servicenow.html#servicenow-incident-comment)|Job Step|Incident|
+|[**Comment Incident**](/manual/workflow-steps/servicenow.html#servicenow-incident-comment)|Job Step|Incident|
 |[**Create Incident**](/manual/workflow-steps/servicenow.html#servicenow-incident-create)|Job Step|Incident|
 |[**Edit Incident**](/manual/workflow-steps/servicenow.html#servicenow-incident-edit)|Job Step|Incident|
 |[**View Incident**](/manual/workflow-steps/servicenow.html#servicenow-incident-view)|Job Step|Incident|

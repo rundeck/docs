@@ -18,7 +18,7 @@ curl --location --request POST 'http://localhost:4440/api/41/job/50aa1e22-3e75-4
 
 An API delivers a user response to a Rundeck Instance and sends the proper response back to a user. 
 
-You can find a complete Rundeck API reference [here](https://docs.rundeck.com/docs/api/rundeck-api.html).
+You can find a complete Rundeck API reference [here](/api/rundeck-api.md).
 
 
 # Postman
@@ -28,9 +28,9 @@ Postman is an API platform for building and using APIs. Postman simplifies each 
 
 # Running the Welcome Project and New User Token Creation
 
-This tutorial is based on the Welcome Project and Community Welcome Project ([here](https://docs.rundeck.com/docs/learning/howto/welcome-project-starter.html) is how to run both projects). You can use both to test some Rundeck API endpoints.
+This tutorial is based on the Welcome Project and Community Welcome Project ([here](/learning/howto/welcome-project-starter.md) is how to run both projects). You can use both to test some Rundeck API endpoints.
 
-1. Launch the Welcome Project (or Community Welcome Project) following [these](https://docs.rundeck.com/docs/learning/howto/welcome-project-starter.html#installing-the-welcome-project) instructions.
+1. Launch the Welcome Project (or Community Welcome Project) following [these](/learning/howto/welcome-project-starter.md#installing-the-welcome-project) instructions.
 
 2. Enter as an admin user (user: `admin`, password: `admin`).
 
@@ -198,6 +198,6 @@ To export a request, click on the code icon (right) and select the language. The
 
 # Resources
 
-A complete Rundeck API reference is available [here](https://docs.rundeck.com/docs/api/rundeck-api.html).
+A complete Rundeck API reference is available [here](/api/rundeck-api.md).
 
 [Here](https://documenter.getpostman.com/view/95797/rundeck/7TNfX9k#36bbd9c4-3186-56f4-aae2-90f5c9f097a8) are a lot of examples of Postman and Rundeck API endpoints calls.

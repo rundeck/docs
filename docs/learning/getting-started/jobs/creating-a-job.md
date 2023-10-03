@@ -21,8 +21,8 @@ To create a Job in Rundeck (or the commercial Process Automation products), foll
 9. Scroll down and add a new step, a "Command” step in the "Node Steps" tab.<br>
 <img src="/assets/img/createajob9.png" width="80%" height="80%" /><br>
 ### Workflow Step vs Node Step<br>
-[Node steps](https://docs.rundeck.com/docs/manual/job-plugins.html#node-steps) are designed to be dispatched to one or more nodes based on a filter defined in the Nodes section. An example of a node step is a single command or an inline script to be executed on each targeted node.<br>
-[Workflow steps](https://docs.rundeck.com/docs/manual/job-plugins.html#workflow-steps) don't operate in a node context. Instead, these steps run on the local Rundeck server and run only once in a workflow. For example, the "Refresh Project Nodes" workflow step refreshes the Rundeck node cache in case of any change.<br>
+[Node steps](/manual/job-plugins.md#node-steps) are designed to be dispatched to one or more nodes based on a filter defined in the Nodes section. An example of a node step is a single command or an inline script to be executed on each targeted node.<br>
+[Workflow steps](/manual/job-plugins.md#workflow-steps) don't operate in a node context. Instead, these steps run on the local Rundeck server and run only once in a workflow. For example, the "Refresh Project Nodes" workflow step refreshes the Rundeck node cache in case of any change.<br>
 10. Add the following command: 
 ```
 echo "option value is: ${option.opt1}"
@@ -54,7 +54,7 @@ This will run the job every 30 seconds (`0/30`), on every minute (`*`), on every
 2. Select "Send Webhook" in the "Notification Type" section. Then put the HTTP service URL to receive the data in the "URLs'' box. This example uses the [webhook.site](https://webhook.site) test URL. Access this website, to obtain an auto generated URL to receive any call. Set "POST" in the "Method" section and "JSON'' in the "Payload format" section.<br>
 <img src="/assets/img/createajob18.png" width="80%" height="80%" /><br>
 ### Job Notifications
-Notifications are messages, such as an email or HTTP service push. This is a common area for integration with other tools since a notification could go to another tool when a Job begins or when it fails. One or more notifications can be set for the [notification events](https://docs.rundeck.com/docs/manual/jobs/job-notifications.html#notification-events) available.<br>
+Notifications are messages, such as an email or HTTP service push. This is a common area for integration with other tools since a notification could go to another tool when a Job begins or when it fails. One or more notifications can be set for the [notification events](/manual/jobs/job-notifications.md#notification-events) available.<br>
 #### Available Notifications scenarios
 * **Start**: When the Job starts, all "start" notifications will be triggered.<br>
 * **On Success**: When the Job finishes executing, all "success" notifications will be triggered if the Job is successful.<br>
@@ -100,4 +100,4 @@ Notifications are messages, such as an email or HTTP service push. This is a com
 }
 ```
 ### The Welcome Project
-A good place to learn and practice Rundeck concepts is the Welcome Project, you can check it out many related concepts [here](https://docs.rundeck.com/docs/learning/howto/welcome-project-starter.html).<br>
+A good place to learn and practice Rundeck concepts is the Welcome Project, you can check it out many related concepts [here](/learning/howto/welcome-project-starter.md).<br>

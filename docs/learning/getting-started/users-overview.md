@@ -29,11 +29,11 @@ On Process Automation, local users can be managed via [the web-based User Manage
 
 ### LDAP  / Active Directory Integration
 
-#### [LDAP](https://docs.rundeck.com/docs/administration/security/authentication.html#ldap)
+#### [LDAP](/administration/security/authentication.md#ldap)
 With LDAP,  Rundeck administrators can easily create, modify, and delete user accounts, assign roles and permissions, and control user access to various resources. This centralized solution streamlines user management processes, improves security, and enhances operational efficiency by providing a unified interface for managing user accounts across multiple systems and applications.
 
 
-#### [Microsoft Active Directory](https://docs.rundeck.com/docs/administration/security/authentication.html#active-directory)
+#### [Microsoft Active Directory](/administration/security/authentication.md#active-directory)
 Rundeck offers seamless integration with Microsoft Active Directory, enabling efficient management of user accounts within an organization. By integrating with Active Directory, Rundeck leverages its robust user management capabilities, including user creation, modification, and deletion. 
 
 Administrators can easily synchronize user accounts from Active Directory into Rundeck, ensuring consistency and eliminating the need for duplicate user management. This integration also allows for fine-grained access control, where administrators can assign permissions and roles to users based on their Active Directory groups or attributes. 
@@ -69,4 +69,4 @@ Check the ACL overview [here](/learning/getting-started/acl-overview.html).
 * [OKTA Documentation](https://help.okta.com/en-us/Content/index.htm?cshid=csh-index)
 * [Ping Documentation](https://docs.pingidentity.com/)
 * [Azure Active Directory Documentation](https://learn.microsoft.com/en-us/azure/active-directory/fundamentals/)
-* [Rundeck Docs](https://docs.rundeck.com/docs/)
+* [Rundeck Docs](/)

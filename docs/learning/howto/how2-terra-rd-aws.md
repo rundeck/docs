@@ -295,5 +295,5 @@ With the `terraform destroy` command, all the resources will be destroyed.<br>
 
 ## Resources
 * Terraform [Documentation](https://www.terraform.io/docs) (Terraform Official Documentation).<br>
-* Rundeck installation on [CentOS /](https://docs.rundeck.com/docs/learning/howto/install-centos.html#how-to-install-rundeck-community-on-centos) RedHat-based Operating Systems (Rundeck Documentation).<br>
-* Rundeck Terraform Provider [How-to](https://docs.rundeck.com/docs/learning/howto/use-terraform-provider.html#use-terraform-to-automate-rundeck) (Rundeck Learning Section).<br>
+* Rundeck installation on [CentOS /](/learning/howto/install-centos.md#how-to-install-rundeck-community-on-centos) RedHat-based Operating Systems (Rundeck Documentation).<br>
+* Rundeck Terraform Provider [How-to](/learning/howto/use-terraform-provider.md#use-terraform-to-automate-rundeck) (Rundeck Learning Section).<br>

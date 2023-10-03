@@ -10,7 +10,7 @@ This guide explores the significance of troubleshooting in the context of Rundec
 The methods below will assist you in developing a troubleshooting plan in the event of an error. Rundeck is more than simply a Java program; it includes numerous plugins and integrations which could generate different kinds of errors.
 
 1. Understand Rundeck  
-    Familiarize yourself with Rundeck architecture, components, plugins and dependencies. Study the [documentation](https://docs.rundeck.com/docs/) and gain a good understanding of how it works, including its configuration, deployment, and integration points.  
+    Familiarize yourself with Rundeck architecture, components, plugins and dependencies. Study the [documentation](/) and gain a good understanding of how it works, including its configuration, deployment, and integration points.  
 2. Reproduce the Issue  
     Replicate the problem you are experiencing in a _non-production_ environment. Note the steps you take to trigger the issue and any specific conditions or inputs required. This will help in isolating the problem and narrowing down potential causes.  
 3. Check the relevant Logs  

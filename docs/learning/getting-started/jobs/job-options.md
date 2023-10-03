@@ -23,7 +23,7 @@ If Date Input Type is selected, users provide a date format to be used when sele
 If the option is not otherwise supplied by the user, it will automatically be set to the default value.  This applies to cases when an option hasn’t been specified among the arguments and the task is executed using the command-line or an API. The use of the Default Value will be overridden if a blank value is given via the command-line or API.<br>
 ### Allowed values
 This can contain a static list of values or a URL to a server providing option data. Values can be specified as a comma separated list as seen above but can also be requested from an external source using a "remote URL".<br>
-An external source known as a [remote option provider](https://docs.rundeck.com/docs/manual/job-options.html#option-model-provider) can be used to obtain a list of permitted option values. Permitted values are retrieved from the specified URL when the valuesUrl parameter for an Option is specified.<br>
+An external source known as a [remote option provider](/manual/job-options.md#option-model-provider) can be used to obtain a list of permitted option values. Permitted values are retrieved from the specified URL when the valuesUrl parameter for an Option is specified.<br>
 ### Restrictions
 This defines criteria on which inputs to allow. If "Enforced from values" is set to "true", Rundeck will only present a popup menu containing allowed options. If set to "false", a text field will also be presented to enter other values. Enter a regular expression in the "Match Regular Expression" field to be evaluated when the Job is run.<br>
 ### Requirement

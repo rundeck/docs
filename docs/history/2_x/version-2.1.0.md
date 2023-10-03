@@ -20,7 +20,7 @@ This release enhances the Rundeck API and provides a facility for storing Key fi
 
 *Upgrade notes:*
 
-1. If you are upgrading from 2.0.1 or earlier, see the notes about schema changes in the previous release notes: [2.0.2 Release Notes](/history/version-2.0.2.md).
+1. If you are upgrading from 2.0.1 or earlier, see the notes about schema changes in the previous release notes: [2.0.2 Release Notes](/history/2_x/version-2.0.2.md).
 2. See the [Upgrading Guide](/upgrading/upgrading.md)
 
 ## Contributors

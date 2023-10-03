@@ -37,7 +37,7 @@ With the latest release, customers can integrate the Runner with Hashicorp Vault
 
 ![Runner Key Storage](/assets/img/key-storage-runner-browse.png)
 
-For further details on configuring and using secrets-management providers with the Enterprise Runner, see [this documentation](/docs/manual/key-storage/enterprise-runner-key-storage).
+For further details on configuring and using secrets-management providers with the Enterprise Runner, see [this documentation](/manual/key-storage/enterprise-runner-key-storage).
 
 ### Node Inventory Discovery through Enterprise Runner
 This release enables the Runner to be used for discovering nodes and populating the node-inventory through the Runner.  When users select to add a new Node Source through the GUI, there is now an option to select a Runner to use for discovering Nodes in the remote environment.  Through existing Node Source plugins such as Ansible, VMware, Docker and Kubernetes, the Runner will retrieve and send the node data back to the server to be visible in the GUI and targeted for Job and Command execution.  This integration allows customers to automate more tasks in their secure and remote environments where inventory can only be discovered within their environment’s perimeter.

@@ -169,7 +169,7 @@ docker run -it \
 
 These instructions will guide how to install a Runner in Kubernetes.
 
-1. [Create an API Token](/docs/manual/10-user.html#user-api-tokens) or use an existing API Token to download a new Runner via API using the following **`curl`** request. Be sure to replace **`[URL]`** and **`[ApiToken]`** **`[ProjectName]`** with your Process Automation instance URL and API Token respectively:
+1. [Create an API Token](/manual/10-user.html#user-api-tokens) or use an existing API Token to download a new Runner via API using the following **`curl`** request. Be sure to replace **`[URL]`** and **`[ApiToken]`** **`[ProjectName]`** with your Process Automation instance URL and API Token respectively:
     :::tip Heads Up!
     Be sure to give each Runner a unique name. This is how you will identify one Runner from another in the platform.
     :::

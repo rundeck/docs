@@ -52,7 +52,7 @@ RD-CLI is available as a separate install from Rundeck Open Source/Enterprise fo
 
 ## Configuration
 
-Rundeck CLI needs the Rundeck instance connection information and valid credentials (via user/password method or using a valid token), check [here](https://docs.rundeck.com/docs/manual/10-user.html#generate-api-token) to know how to generate a valid user token on Rundeck.
+Rundeck CLI needs the Rundeck instance connection information and valid credentials (via user/password method or using a valid token), check [here](/manual/10-user.md#generate-api-token) to know how to generate a valid user token on Rundeck.
 
 ### Connection info env vars
 

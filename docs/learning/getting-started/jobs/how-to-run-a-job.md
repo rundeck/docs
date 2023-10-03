@@ -28,5 +28,5 @@ In both options described above, it is possible to run the job in debug mode. Ju
 This is useful to increase the Job Output verbosity and identify problems in case of error.
 
 ## The Welcome Projects
-If the concept of Jobs is new to you, the [Welcome Projects](https://docs.rundeck.com/docs/learning/#getting-started) are a good starting point to learn and test more Jobs concepts. They provide an educational environment to deploy Rundeck and Remote nodes in the same place. 
+If the concept of Jobs is new to you, the [Welcome Projects](/learning/#getting-started) are a good starting point to learn and test more Jobs concepts. They provide an educational environment to deploy Rundeck and Remote nodes in the same place. 
 The Welcome Projects are not intended for use in actual production. Instead, they serve to demonstrate Rundeck's functionality to users.

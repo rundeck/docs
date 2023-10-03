@@ -4,7 +4,7 @@
 It is fairly common for companies to have multiple AWS accounts, yet have tasks that need to be implemented across the infrastructure in all accounts.
 For example, there may be a need to report, patch, or deploy upgrades on all EC2 instances across all AWS accounts.
 
-This _How To_ article outlines how to configure the [SSM Node Executor](/docs/manual/projects/node-execution/aws-ssm) to be used across multiple AWS Accounts.
+This _How To_ article outlines how to configure the [SSM Node Executor](/manual/projects/node-execution/aws-ssm) to be used across multiple AWS Accounts.
 The setup walks through configuring Process Automation to execute commands and scripts on EC2 nodes that reside in AWS accounts that are separate from the account where Process Automation is running.  
 
 ![Cross Account SSM Architecture](/assets/img/ssm-cross-account-architecture.png)
@@ -210,11 +210,11 @@ If running Process Automation on ECS, then this IAM Policy needs to be attached 
 ## Configure Node Executor in Process Automation
 
 ### AWS Authentication
-Follow the instructions outlined in the [AWS Plugins Overview](/docs/manual/plugins/aws-plugins-overview.html) for Process Automation to authenticate with AWS.
+Follow the instructions outlined in the [AWS Plugins Overview](/manual/plugins/aws-plugins-overview.html) for Process Automation to authenticate with AWS.
 
 ### Node Discovery
 In order to target the remote EC2 instances, they need to be populated into Process Automation's node inventory.
-It is recommended to use the [**EC2 Node Source**](/docs/manual/projects/resource-model-sources/aws.html#amazon-ec2-node-source).
+It is recommended to use the [**EC2 Node Source**](/manual/projects/resource-model-sources/aws.html#amazon-ec2-node-source).
 
 Place the ARN of the cross-account role into the **Assume Role** field.
 
@@ -259,7 +259,7 @@ The SSM File Copier can also be set as the **Default File Copier** for the whole
 4. If Process Automation is authenticated with AWS through an associated IAM Role, then the Access Key ID and Secret Key fields can be left blank.
 
 :::tip When not using the EC2 Resource Model
-Node Attributes can be added when defining a resource-model source [manually](/docs/administration/configuration/plugins/bundled-plugins.html#built-in-resource-model-formats)
+Node Attributes can be added when defining a resource-model source [manually](/administration/configuration/plugins/bundled-plugins.html#built-in-resource-model-formats)
 or by using the [Attribute Match](/manual/node-enhancers.html#attribute-match) node enhancer. Use the same node-attributes listed above without `default`. For example, `ssm-assume-role=true`.
 :::
 

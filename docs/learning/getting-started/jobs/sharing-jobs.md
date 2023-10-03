@@ -49,7 +49,7 @@ On the Import Archive screen, click Choose File to select the archive.<br>
 Of the remaining options on this page, the only ones that matter for a jobs-only import are Imported Jobs and Referenced Jobs Validation.  Once those have been set, click the green import button at the bottom of the page.<br>
 ![](/assets/img/impexp12.png)<br>
 ## Related Resources
-[Exporting and importing jobs with the API](https://docs.rundeck.com/docs/api/rundeck-api.html#exporting-jobs)<br>
-[SCM Git Plugin](https://docs.rundeck.com/docs/manual/projects/scm/git.html)<br>
-[Job YAML file format](https://docs.rundeck.com/docs/manual/document-format-reference/job-yaml-v12.html)<br>
-[Job XML file format](https://docs.rundeck.com/docs/manual/document-format-reference/job-v20.html)<br>
+[Exporting and importing jobs with the API](/api/rundeck-api.md#exporting-jobs)<br>
+[SCM Git Plugin](/manual/projects/scm/git.md)<br>
+[Job YAML file format](/manual/document-format-reference/job-yaml-v12.md)<br>
+[Job XML file format](/manual/document-format-reference/job-v20.md)<br>

@@ -71,7 +71,7 @@ Hashicorp recommends using AppRoles for authenticating and governing access for 
 :::: tabs
 ::: tab PagerDuty Process Automation
 
-The Vault Storage plugin is bundled by default with PagerDuty Process Automation.  To use the plugin, you need to add properties using the [System Configuration](https://docs.rundeck.com/docs/manual/configuration-mgmt/configmgmt.html#managing-configuration) feature.
+The Vault Storage plugin is bundled by default with PagerDuty Process Automation.  To use the plugin, you need to add properties using the [System Configuration](/manual/configuration-mgmt/configmgmt.md#managing-configuration) feature.
 
 PA includes a Configuration Management module to set configuration settings via the GUI and store them in the product database. Database storage shares configuration options with all your cluster members and centralizes configuration.
 

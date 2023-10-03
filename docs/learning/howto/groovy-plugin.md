@@ -77,5 +77,5 @@ If you modify the job to fail intentionally and run it again, you will see the "
 ## Resources
 
 * [Apache Groovy site](http://www.groovy-lang.org/) 
-* [Rundeck Plugin development](https://docs.rundeck.com/docs/developer/01-plugin-development.html#plugin-development) 
-* [Notification plugins development](https://docs.rundeck.com/docs/developer/05-notification-plugins.html)
+* [Rundeck Plugin development](/developer/01-plugin-development.md#plugin-development) 
+* [Notification plugins development](/developer/05-notification-plugins.md)

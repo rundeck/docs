@@ -5,7 +5,7 @@ Rundeck integrates with PagerDuty’s incident management platform, which provid
 In this guide we will show you how to trigger an event in PagerDuty after executing a job in Rundeck. This functionality is available in both Rundeck Community and Enterprise.   
 
 :::tip
-Note, there are many more [PagerDuty plugins](https://docs.rundeck.com/docs/manual/webhooks/pagerduty-run-job.html) available for Process Automation users
+Note, there are many more [PagerDuty plugins](/manual/webhooks/pagerduty-run-job.md) available for Process Automation users
 :::
 
 Rundeck Notifications are actions triggered based on the result of a Job that was executed.  There are five conditions that can trigger Rundeck notifications, those conditions are:

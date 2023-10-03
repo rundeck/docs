@@ -12,7 +12,7 @@ The following plugins are available for PagerDuty Runbook Automation and Process
 * [Stop an ECS Task](#stop-an-ecs-task)
 
 ### Authentication
-Follow the instructions outlined in the [AWS Plugins Overview](/docs/manual/plugins/aws-plugins-overview.html) for Process Automation to authenticate with AWS.
+Follow the instructions outlined in the [AWS Plugins Overview](/manual/plugins/aws-plugins-overview.html) for Process Automation to authenticate with AWS.
 
 When defining the IAM Role for Runbook Automation or Process Automation, be sure to include the permissions required by the specific plugins in the Policy associated with the role:
 

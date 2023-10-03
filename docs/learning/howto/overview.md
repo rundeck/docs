@@ -23,7 +23,7 @@ Available Guides by Section
 [Set up Apache 2.4 as a Reverse Proxy](/learning/howto/apache2-proxy-gssapi.md)  
 [How to Work with Server Logs](/learning/howto/workinglogs.md)  
 [Set up S3 or Minio for Execution Logs](/learning/howto/S3-minio.md)  
-[How to Manage Jobs as Code](learning/howto/how2scm.md)  
+[How to Manage Jobs as Code](/learning/howto/how2scm.md)  
 [Configure Rundeck behind an egress proxy](/learning/howto/egress-proxy.md)  
 [Deploy Rundeck on AWS with Terraform](/learning/howto/how2-terra-rd-aws.md)  
 [Deploy Rundeck on AWS EKS with Terraform](/learning/howto/how2-terra-rd-eks.md)  

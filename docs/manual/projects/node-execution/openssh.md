@@ -49,5 +49,5 @@ Also, you can define the configuration at Node Level, setting the node-executor 
 Using this plugin with Windows Server nodes is not recommended.
 This plugin uses the `scp` command, which has issues with Windows machines since it
 is not natively installed. Adding OpenSSH will result in the same issues.  (Tested on Windows Server 2019)
-It is recommended to use [this plugin](https://docs.rundeck.com/docs/learning/howto/configuring-windows-nodes.html#running-jobs-on-windows-nodes) when the remote node is a Windows OS.
+It is recommended to use [this plugin](/learning/howto/configuring-windows-nodes.md#running-jobs-on-windows-nodes) when the remote node is a Windows OS.
 :::

@@ -85,7 +85,7 @@ Here is a sample IAM Policy that will only discover Tasks from **_specific_ clus
 Once the IAM Policy has been created, attach it to the IAM Role that you have associated with Process Automation or the Access Key credentials.
 
 ### Authentication
-There are multiple ways for Process Automation to authenticate with AWS. Follow the instructions outlined in the [AWS Plugins Overview](/docs/manual/plugins/aws-plugins-overview.html) for Process Automation to authenticate with AWS.
+There are multiple ways for Process Automation to authenticate with AWS. Follow the instructions outlined in the [AWS Plugins Overview](/manual/plugins/aws-plugins-overview.html) for Process Automation to authenticate with AWS.
 
 ### Add Node Source
 You can add the **ECS-Fargate Node Source** by navigating to:<br>

@@ -34,7 +34,7 @@ For Rundeck OSS installations, use the properties listed below to configure cred
 - **Framework Setting**: `azure.keyPath`
 
 :::tip
-It is important to configure the azure resource model plugin before using these steps: [Azure Resource Model](https://docs.rundeck.com/docs/manual/projects/resource-model-sources/azure.html#azure-enterprise)
+It is important to configure the azure resource model plugin before using these steps: [Azure Resource Model](/manual/projects/resource-model-sources/azure.md#azure-enterprise)
 :::
 
 ### Azure / Node / Delete

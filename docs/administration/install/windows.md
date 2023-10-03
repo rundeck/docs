@@ -2,9 +2,9 @@
 
 ### Prerequisites
 
-Before proceeding to install Rundeck, check all system [requirements](https://docs.rundeck.com/docs/administration/install/system-requirements.html) to make sure that the server can run Rundeck, also, make sure that the Windows user has sufficient rights to install software.
+Before proceeding to install Rundeck, check all system [requirements](/administration/install/system-requirements.md) to make sure that the server can run Rundeck, also, make sure that the Windows user has sufficient rights to install software.
 
-Be sure to install the appropriate Java Software Development Kit per the [requirements](https://docs.rundeck.com/docs/administration/install/system-requirements.html).
+Be sure to install the appropriate Java Software Development Kit per the [requirements](/administration/install/system-requirements.md).
 
 ### Installing Rundeck on Windows based systems and first run
 

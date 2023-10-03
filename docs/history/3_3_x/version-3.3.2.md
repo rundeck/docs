@@ -6,7 +6,7 @@ Name: <span style="color: plum"><span class="glyphicon glyphicon-glass"></span> 
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
 
 ## Overview
-This release introduces the ability to use Secure Options in [Remote Job Executions](https://docs.rundeck.com/docs/administration/configuration/remote-job-execution.html).  The Enterprise version supports remote execution of jobs within a cluster so that jobs can be forwarded to other cluster members instead of being run locally.  Secure Job Options would cause those forwarded jobs to fail.  Now the option values are passed securely between the cluster members and the jobs will run.  
+This release introduces the ability to use Secure Options in [Remote Job Executions](/administration/configuration/remote-job-execution.md).  The Enterprise version supports remote execution of jobs within a cluster so that jobs can be forwarded to other cluster members instead of being run locally.  Secure Job Options would cause those forwarded jobs to fail.  Now the option values are passed securely between the cluster members and the jobs will run.  
 
 This release also builds on our original 3.3.0 release and improves the speed of Rundeck by introducing additional caching and other performance enhancements.
 

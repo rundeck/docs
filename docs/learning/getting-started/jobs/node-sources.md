@@ -38,7 +38,7 @@ Select the preferred Node Source type (such as Ansible)<br>
 <img src="/assets/img/nodes6-selectansiblesource.png" width="60%" height="60%" /><br>
 Provide details on where and how to connect to the new Node Source nodes.<br>
 <img src="/assets/img/nodes7-ansiblesourcedetails.png" width="80%" height="80%" /><br>
-For an Ansible Node Source, the primary settings to be concerned with are paths to the Ansible binaries, the Ansible inventory file and Ansible config file. For more details on integrating with Ansible, look [here](https://docs.rundeck.com/docs/learning/howto/using-ansible.html#how-to-integrate-ansible-with-rundeck). Click the green Save button to complete the source.<br>
+For an Ansible Node Source, the primary settings to be concerned with are paths to the Ansible binaries, the Ansible inventory file and Ansible config file. For more details on integrating with Ansible, look [here](/learning/howto/using-ansible.md#how-to-integrate-ansible-with-rundeck). Click the green Save button to complete the source.<br>
 <img src="/assets/img/nodes8-savesave2.png" width="80%" height="80%" /><br>
 To commit your node source changes to the database, select the second green Save button at the bottom of the Sources page. There are warning messages at top and bottom to remind you to save here.<br>
 
@@ -65,7 +65,7 @@ To remove a Node Source, return to the Sources tab under Edit Nodes and use the 
 Node Sources are established at the project level and represent a specific static or dynamic set of nodes available within that project. Node sources are not related directly to a job. A dynamic source is dynamic in the sense that the nodes returned by the source can change over time based on what’s included in the source database or system.<br>
 Node Filters, on the other hand, are generally established in the context of a job to identify which nodes will be targeted by that job. Node filters are also dynamic but not in the same sense. A node filter is composed of one or more attribute/value pairs that must be matched to be included in the filter and therefore targeted by that job. Which nodes are included in the filter set can change based on which nodes from Node Sources match the Node Filter at the time the job runs.<br>
 ## Resources
-[Information on the static sources and available file formats](https://docs.rundeck.com/docs/manual/projects/resource-model-sources/builtin.html#file-source)<br>
-[More Information on Node Sources](https://docs.rundeck.com/docs/manual/projects/resource-model-sources/#what-is-a-resource-model-source)<br>
+[Information on the static sources and available file formats](/manual/projects/resource-model-sources/builtin.md#file-source)<br>
+[More Information on Node Sources](/manual/projects/resource-model-sources/#what-is-a-resource-model-source)<br>
 [Detailed Documentation Related to Ansible Integration](https://github.com/rundeck-plugins/ansible-plugin)<br>
-[Making Custom Node Sources Editable](https://docs.rundeck.com/docs/manual/projects/resource-model-sources/resource-editor.html#resource-model-source)<br>
+[Making Custom Node Sources Editable](/manual/projects/resource-model-sources/resource-editor.md#resource-model-source)<br>

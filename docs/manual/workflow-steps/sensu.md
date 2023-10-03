@@ -5,7 +5,7 @@
 
 ## Authentication
 
-To authenticate Process Automation with Sensu, follow instructions outlined in [this documentation](/docs/manual/plugins/sensu-plugins-overview.md).
+To authenticate Process Automation with Sensu, follow instructions outlined in [this documentation](/manual/plugins/sensu-plugins-overview.md).
 
 ## Sensu / Check / Create
 

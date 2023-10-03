@@ -87,5 +87,5 @@ By adding remco template files, create a new `rundeck.feature.joblifecycleplugin
 	```
 
 ## Resources
-* [Extending Rundeck Image using Remco](https://docs.rundeck.com/docs/administration/configuration/docker/extending-configuration.html#extending-docker-configuration) (Rundeck documentation).
+* [Extending Rundeck Image using Remco](/administration/configuration/docker/extending-configuration.md#extending-docker-configuration) (Rundeck documentation).
 * [Here](https://github.com/rundeck/docker-zoo/tree/master/config) is a good Remco templating system example.

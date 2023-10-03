@@ -9,9 +9,9 @@ In this guide we'll cover:
 
 # Prerequisites
 
-If you planning to install CentOS 7 on a physical server consider the minimum requirements [defined here](https://docs.centos.org/en-US/centos/install-guide/Steps-x86/#sect-installation-planning-system-specifications-x86). Considering the [minimum Rundeck requirements](https://docs.rundeck.com/docs/administration/install/system-requirements.html#system-requirements), these specs should be up to at least 4GB of RAM, 2 cores per instance, and 20 GB of hard disk space.  You can see all of the available mirrors to [download the Centos 7 ISO install image here](http://isoredirect.centos.org/centos/7/isos/x86_64/).
+If you planning to install CentOS 7 on a physical server consider the minimum requirements [defined here](https://docs.centos.org/en-US/centos/install-guide/Steps-x86/#sect-installation-planning-system-specifications-x86). Considering the [minimum Rundeck requirements](/administration/install/system-requirements.md#system-requirements), these specs should be up to at least 4GB of RAM, 2 cores per instance, and 20 GB of hard disk space.  You can see all of the available mirrors to [download the Centos 7 ISO install image here](http://isoredirect.centos.org/centos/7/isos/x86_64/).
 
-To install CentOS 7 on a cloud instance (with any provider like Amazon Web Services or Microsoft&reg; Azure), make sure to cover the Rundeck [minimal requirements defined here](https://docs.rundeck.com/docs/administration/install/system-requirements.html#system-requirements). In the case of Amazon Web Services, make sure to use an instance size of _m4.large or larger_.
+To install CentOS 7 on a cloud instance (with any provider like Amazon Web Services or Microsoft&reg; Azure), make sure to cover the Rundeck [minimal requirements defined here](/administration/install/system-requirements.md#system-requirements). In the case of Amazon Web Services, make sure to use an instance size of _m4.large or larger_.
 
 [You can find the full guide to install Centos 7 here](https://docs.centos.org/en-US/centos/install-guide/).
 
@@ -102,6 +102,6 @@ After installing Rundeck, by default the instance’s hostname is `localhost. `Y
 
 ## Additional Resources
 
-*   [Rundeck System Requirements](https://docs.rundeck.com/docs/administration/install/system-requirements.html#system-requirements)
-*   [Rundeck installation on Red Hat/Centos](https://docs.rundeck.com/docs/administration/install/linux-rpm.html#installing-on-centos-or-red-hat-linux-distributions)
-*   [About the rundeck-config.properties file](https://docs.rundeck.com/docs/administration/configuration/config-file-reference.html#rundeck-config-properties)
+*   [Rundeck System Requirements](/administration/install/system-requirements.md#system-requirements)
+*   [Rundeck installation on Red Hat/Centos](/administration/install/linux-rpm.md#installing-on-centos-or-red-hat-linux-distributions)
+*   [About the rundeck-config.properties file](/administration/configuration/config-file-reference.md#rundeck-config-properties)
