@@ -9,7 +9,7 @@ The Runner, available for both Process Automation and Runbook Automation securel
 
 The Runner is a Java based program which uses a polling model to pick up work from the Automation Server.  During each polling cycle (every 5 seconds) the Runner checks for executions that it is responsible for.  Communication from the Runner to the Automation Server happens over https and is initiated from the Runner.  This allows for enhanced firewall security as ports no longer need to be open for the Automation Server to talk to nodes over more sensitive ports. _(e.g. SSH/22)_
 
-![Runner Architecture](@assets/img/runner-arch-diagram.png)
+![Runner Architecture](/assets/img/runner-arch-diagram.png)
 
 
 ## Installation
@@ -93,7 +93,7 @@ java -Dmicronaut.http.client.proxy-type=http -Dmicronaut.http.client.proxy-addre
 
 The “Runner Management” menu will appear on under the “System” settings:
 
-![Runner Architecture](@assets/img/runner-management.png)
+![Runner Architecture](/assets/img/runner-management.png)
 
 If you are installing a Runner on a Windows OS as localhost node, you have to specify the “OS Family” setting as “windows”.
 
@@ -103,13 +103,13 @@ If you are installing a Runner on a Windows OS as localhost node, you have to sp
 - Click on "Edit" on the local node.
 - On the field "OS Family" set "windows".
 
-![Runner Architecture](@assets/img/runner-edit-nodes.png)
+![Runner Architecture](/assets/img/runner-edit-nodes.png)
 
-![Runner Architecture](@assets/img/runner-resource-tab.png)
+![Runner Architecture](/assets/img/runner-resource-tab.png)
 
-![Runner Architecture](@assets/img/runner-edit-local.png)
+![Runner Architecture](/assets/img/runner-edit-local.png)
 
-![Runner Architecture](@assets/img/runner-os-family.png)
+![Runner Architecture](/assets/img/runner-os-family.png)
 
 Powershell script steps are fully supported on the Runner. Commands that run through the cmd.exe shell are not supported at the moment.
 

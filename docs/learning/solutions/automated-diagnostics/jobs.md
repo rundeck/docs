@@ -44,7 +44,7 @@ Redis|Slow Log Entries
 ### How to Use the Node Filter Job Option
 All Jobs that send commands to a remote-node have a predefined Node Filter set to `{$option.node_filter}`:
 
-![Node Filter](@assets/img/solutions-auto-diag-node-filter.png)<br>
+![Node Filter](/assets/img/solutions-auto-diag-node-filter.png)<br>
 
 This is so that target-nodes can be specified in the Job invocations from [**PagerDuty Automation Actions**](https://www.pagerduty.com/platform/automation/actions/) - as described in the next section of this Solution Guide.
 
@@ -54,9 +54,9 @@ To target specific Nodes for the prebuilt Jobs within the Runbook Automation Int
 1. Select **`Change the Target Nodes`**
 2. Click the dropdown to the left of **`${option.node_filter}`**
 3. Click on **Show all nodes**
-![Change Nodes](@assets/img/solutions-auto-diag-change-nodes.png)<br><br>
+![Change Nodes](/assets/img/solutions-auto-diag-change-nodes.png)<br><br>
 4. Click on an individual Node, and click the small **Arrow** to the right of the Node Name:
-![Select Node](@assets/img/solutions-auto-diag-select-node.png)<br>
+![Select Node](/assets/img/solutions-auto-diag-select-node.png)<br>
 
 This will allow you to target the _individual_ node selected.  If you want to target multiple Nodes, see the [Node Filter Documentation](/manual/11-node-filters).
 

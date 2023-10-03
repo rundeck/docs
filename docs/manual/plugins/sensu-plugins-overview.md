@@ -2,7 +2,7 @@
 
 ## Overview
 
-![](@assets/img/sensu-logo.png)
+![](/assets/img/sensu-logo.png)
 
 Process Automation integrates with Sensu through a variety of plugins listed below.
 By integrating Process Automation with Sensu, users can automate and provide self-service interfaces for operations in their Sensu instance
@@ -53,13 +53,13 @@ Use the following steps to configure authentication for the Sensu plugins for a 
 
 1. In the specific project, click on **Project Settings** in the lower left.
 2. Click on **Edit Configuration** then click on **Plugins**.
-   ![Plugin Suite Project Settings](@assets/img/plugin-groups-project-settings.png)<br>
+   ![Plugin Suite Project Settings](/assets/img/plugin-groups-project-settings.png)<br>
 3. Click on **+PluginGroup**.
 4. Select **Sensu** from the list.
 5. Click **Select** next to the **Key File** field.
 6. Select the Sensu API key that was placed in Key Storage in the prior section.
 7. Paste the API URL for your Sensu instance into the **API URL** field:
-    ![Sensu Plugin Suite Project Config](@assets/img/sensu-pluginsgroup-project.png)<br>
+    ![Sensu Plugin Suite Project Config](/assets/img/sensu-pluginsgroup-project.png)<br>
 8. Click **Save** to add the Plugin Suite to the Project.
 9. Click **Save** to commit the Project configuration changes.
 

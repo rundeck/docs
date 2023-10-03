@@ -42,7 +42,7 @@ Authentication for the ServiceNow plugins can be configured for the entire syste
 3. Click **+Add or Upload a Key**. Select **Password** for the Key Type.
 4. Paste the ServiceNow password into the field.
 5. Click **Save**:
-![Add Password to Key Storage](@assets/img/servicenow-add-pw-keystorage.png)
+![Add Password to Key Storage](/assets/img/servicenow-add-pw-keystorage.png)
 
 **Project Key Storage**
 <br>Place the ServiceNow credentials into the Project Key Storage if only a specific project should use these ServiceNow credentials.
@@ -58,7 +58,7 @@ Use the following steps to configure authentication for the ServiceNow plugins f
 
 1. In the specific project, click on **Project Settings** in the lower left.
 2. Click on **Edit Configuration** then click on **Plugins**.
-   ![Plugin Suite Project Settings](@assets/img/plugin-groups-project-settings.png)<br>
+   ![Plugin Suite Project Settings](/assets/img/plugin-groups-project-settings.png)<br>
 3. Click on **+PluginGroup**.
 4. Select **ServiceNow** from the list.
 5. Add your ServiceNow instance URL to the **Server URL** field.
@@ -66,7 +66,7 @@ Use the following steps to configure authentication for the ServiceNow plugins f
 7. Click **Select** next to the **Password Key Storage Path** field and find the ServiceNow password from the prior section stored in Key Storage.
 8. Click **Save** for the plugin configuration.
 9. Click **Save** for the Project Settings:
-   ![Saving Plugin suite settings](@assets/img/servicenow-save-plugin-suite-project.png)<br>
+   ![Saving Plugin suite settings](/assets/img/servicenow-save-plugin-suite-project.png)<br>
 
 ### System Level Configuration
 
@@ -75,9 +75,9 @@ Use the following steps to configure authentication for the ServiceNow plugins f
 1. Click on the **System Menu** (gear icon) in the upper right.
 2. Click on **System Configuration**.
 3. Navigate to the **ServiceNow** section and click on the **Pencil Icon** in the upper right:
-   ![Edit Plugin Suite Sysytem Level](@assets/img/servicenow-edit-system-plugin-suite.png)
+   ![Edit Plugin Suite Sysytem Level](/assets/img/servicenow-edit-system-plugin-suite.png)
 4. Add your ServiceNow instance URL to the **Server URL** field.
 5. Place an active ServiceNow username into the **User name** field. This user must have sufficient permissions to perform the actions that will be automated by Process Automation.
 6. Click **Select** next to the **Password Key Storage Path** field and find the ServiceNow password from the prior section stored in Key Storage.
 7. Click **Save** for the plugin configuration:
-   ![Save ServiceNow Plugin System Config](@assets/img/servicenow-save-system-plugin-suite.png)
+   ![Save ServiceNow Plugin System Config](/assets/img/servicenow-save-system-plugin-suite.png)

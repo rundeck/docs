@@ -17,7 +17,7 @@ Terraform is an open-source infrastructure as code software tool created by Hash
 
 1. Login as `admin` to your Welcome Project (same steps Community or Enterprise)
 1. In the upper right corner click the person icon and choose Profile
-    ![User > Profile](@assets/img/howto-user-profile.png)
+    ![User > Profile](/assets/img/howto-user-profile.png)
 1. Click the plus (**+**) next to **User API Tokens**
 1. Name the token `terraform`
 1. User can remain `admin`
@@ -26,7 +26,7 @@ Terraform is an open-source infrastructure as code software tool created by Hash
 
 A box will pop up.  Be sure to copy the API Token somewhere before clicking **Close**.  The API token will be used in the next Exercise.
 
-![Copy API Token](@assets/img/howto-copy-apikey.png)
+![Copy API Token](/assets/img/howto-copy-apikey.png)
 
 :::
 ::: tab Terraform Exercise 1

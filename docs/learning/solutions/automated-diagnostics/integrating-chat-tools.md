@@ -10,16 +10,16 @@ Depending on the chat tool you use, you will want to follow the [Slack Integrati
 
 Once those integrations are complete and a Channel or Team has been linked to a PagerDuty Service or Incident, the diagnostics from the runbook will appear in the chat tool when they are posted to the Incident Timeline:
 
-![Diagnostic results displayed in Slack](@assets/img/diag_in_slack.png)
+![Diagnostic results displayed in Slack](/assets/img/diag_in_slack.png)
 
 <br>
 
-![Automation Actions in Microsoft Teams](@assets/img/auto-actions-ms-teams.png)
+![Automation Actions in Microsoft Teams](/assets/img/auto-actions-ms-teams.png)
 
 ## Invoking Diagnostics from Chat Tools
 PagerDuty’s Slack and Microsoft Teams integrations also provide the ability to invoke Automation Actions:
 
-![Invoke Automation Actions from Slack](@assets/img/invoke-actions-from-slack.png)
+![Invoke Automation Actions from Slack](/assets/img/invoke-actions-from-slack.png)
 
 This can be useful for **“refreshing” the diagnostics**, which can assist with providing status updates to stakeholders.  
 

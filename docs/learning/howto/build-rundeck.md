@@ -19,7 +19,7 @@ Here are the steps to clone and build the Rundeck Open Source Project from the o
 	sudo apt-get -y install nodejs
 	```
 3. Fork the Rundeck repository on your GitHub account.  Go to the Rundeck project in Github: `https://github.com/rundeck/rundeck` and click on the "Fork" button. Follow the fork process and you will see a copy of the Rundeck repository in your GitHub account.
-	![](~@assets/img/buildrd1.png)
+	![](/assets/img/buildrd1.png)
 4. Download your forked Rundeck source code from GitHub:
 	```
 	git clone https://github.com/YourGitHub/rundeck
@@ -51,7 +51,7 @@ The process is pretty similar.
 	brew install node
 	```
 4. Fork the Rundeck repository on your GitHub account by visiting the Rundeck project in Github URL: `https://github.com/rundeck/rundeck` and clicking on the "Fork" button. Follow the fork process and you will see a copy of the Rundeck repository in your GitHub account.
-	![](~@assets/img/buildrd1.png)
+	![](/assets/img/buildrd1.png)
 5. Download your Rundeck fork source code from GitHub:
 	```
 	git clone https://github.com/YourGitHub/rundeck

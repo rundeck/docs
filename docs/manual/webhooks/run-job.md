@@ -13,7 +13,7 @@ This Plugin only handles JSON payloads.
 Add a new webhook in the UI, then pick the *Run Job* webhook event plugin.  
 You will see the following configuration options in the `Plugin Configuration` section.
 
-![Run Job Config](~@assets/img/webhook-run-job-plugin.png)
+![Run Job Config](/assets/img/webhook-run-job-plugin.png)
 
 Once you have saved the webhook, you will see a `Post Url`. You can post a test message to
 that Url using curl, httpie or your favorite API Client to ensure that it runs the job as expected.
@@ -78,11 +78,11 @@ These variables can be used in the webhook setting for Options by specifying:
 
 ### Example
 
-![Run Job Example](~@assets/img/webhook-run-job-example.png)
+![Run Job Example](/assets/img/webhook-run-job-example.png)
 
 Another note is that the Options will be sent to the job even if those options have not been configured on that job.  To reference the values passed from the webhook use `${option.<value>}` to reference the values in the job steps.  Below is an example job definition that corresponds with the example Webhook image shown above.
 
-![Run Job Workflow Example](~@assets/img/webhook-run-job-examplejob.png)
+![Run Job Workflow Example](/assets/img/webhook-run-job-examplejob.png)
 
 ```yaml
 - defaultTab: nodes

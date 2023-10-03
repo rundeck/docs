@@ -53,4 +53,4 @@ Rundeck requires every user to login. The default installation
 defines an "admin" user with access to perform all actions.
 Use "admin" for username and password.
 
-![Login form](~@assets/img/fig0202.png)
+![Login form](/assets/img/fig0202.png)

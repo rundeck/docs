@@ -14,15 +14,15 @@ Then, on the `System > Password Utility` menu option.
 
 You will see your plugin on the available encoders list
 
-![Figure: Encoders List](~@assets/img/password-utility-plugin-list.png)
+![Figure: Encoders List](/assets/img/password-utility-plugin-list.png)
 
 Select your plugin and the plugin's attributes will be displayed on the form.
 
-![Figure: Encoders Form](~@assets/img/password-utility-plugin-form.png)
+![Figure: Encoders Form](/assets/img/password-utility-plugin-form.png)
 
 Finally, run the encryption
 
-![Figure: Encoders Result](~@assets/img/password-utility-plugin-result.png)
+![Figure: Encoders Result](/assets/img/password-utility-plugin-result.png)
 
 
 ## Java Plugin Type

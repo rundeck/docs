@@ -38,25 +38,25 @@ This tutorial is based on the Welcome Project and Community Welcome Project ([he
 
 
 
-![](~@assets/img/api_1_profile.png)
+![](/assets/img/api_1_profile.png)
 
 
 4. Click on the "+" button.
 
 
 
-![](~@assets/img/api_2_tokens.png)
+![](/assets/img/api_2_tokens.png)
 
 
 5. Give a name to the token and then save it.
 
 
 
-![](~@assets/img/api_3_gen_token.png)
+![](/assets/img/api_3_gen_token.png)
 
 
 
-![](~@assets/img/api_4_save_token.png)
+![](/assets/img/api_4_save_token.png)
 
 
 # Creating a Postman Collection and The First Rundeck API Call (Rundeck System Info)
@@ -65,20 +65,20 @@ This tutorial is based on the Welcome Project and Community Welcome Project ([he
 
 
 
-![](~@assets/img/api_5_post_coll.png)
+![](/assets/img/api_5_post_coll.png)
 
 2. Give it a name, in the “variables” tab define the Rundeck instance hostname (as `localhost` in this example), port (`4440` as default Rundeck TCP port), and API version (`41` at this moment), this variable definition avoids the need to edit each request in case of hostname/port/api version change. Then click on the "Save" button. 
 
 
 
-![](~@assets/img/api_6_post_name.png)
+![](/assets/img/api_6_post_name.png)
 
 
 3. Now go click on the  “Authorization” tab, select “API Key” on Type, put `X-Rundeck-Auth-Token` in the “Key” textbox, and add the variable `rdeck_api_token` created in the previous step (using the `{{rdeck_api_token}}` notation), finally on “Add to” list, select “Header” and click on the Save button.
 
 
 
-![](~@assets/img/api_7_post_auth.png)
+![](/assets/img/api_7_post_auth.png)
 
 The Collection is created so now we can get some data from Rundeck using the API.
 
@@ -86,7 +86,7 @@ The Collection is created so now we can get some data from Rundeck using the API
 
 
 
-![](~@assets/img/api_8_post_addreq.png)
+![](/assets/img/api_8_post_addreq.png)
 
 4. To get the Rundeck System Information select the "GET" method and the following endpoint:
 
@@ -98,7 +98,7 @@ To test it, just click on the "Send" blue button at the right of the endpoint st
 
 
 
-![](~@assets/img/api_9_post_send.png)
+![](/assets/img/api_9_post_send.png)
 
 
 # Running a Rundeck Job
@@ -109,7 +109,7 @@ To run a Rundeck Job from the API, the method "POST" is needed.
 
 
 
-![](~@assets/img/api_10_post_runjob.png)
+![](/assets/img/api_10_post_runjob.png)
 
 2. Select the "POST" method and the following endpoint:
 
@@ -131,7 +131,7 @@ The `3a13fca8-4d42-417e-812b-5f2f700dccb3` string is the Rundeck job ID.
 
 
 
-![](~@assets/img/api_11_post_send.png)
+![](/assets/img/api_11_post_send.png)
 
 
 # Running a Job with Options
@@ -166,11 +166,11 @@ The `05029d94-bde4-487a-ac0d-03fc7f659c38` string is the job ID.
 
 
 
-![](~@assets/img/api_12_post_raw.png)
+![](/assets/img/api_12_post_raw.png)
 
 
 
-![](~@assets/img/api_13_logs.png)
+![](/assets/img/api_13_logs.png)
 
 5. Click on Save Icon.
 
@@ -189,10 +189,10 @@ To export a request, click on the code icon (right) and select the language. The
 
 
 
-![](~@assets/img/api_14_post_export.png)
+![](/assets/img/api_14_post_export.png)
 
 
-![](~@assets/img/api_15_post_export.png)
+![](/assets/img/api_15_post_export.png)
 
 
 

@@ -43,6 +43,7 @@ console.log(setup)
 export default defineUserConfig({
   //debug: true,
   title: '',
+  debug: false,
   description: '',
   shouldPrefetch: false,
   base: `/${setup.base ? setup.base + '/' : ''}`,
@@ -92,9 +93,8 @@ export default defineUserConfig({
         hostname: 'https://docs.rundeck.com',
         rss: true,
         json: true,
-        filter: ({ frontmatter }: Page): boolean =>
-            frontmatter.feed !== undefined,
-        sort: ({ frontmatter }: Page): number => _.reverse(_.sortBy(entries, frontmatter.date))
+        filter: ({ frontmatter, filePathRelative }: Page): boolean => !(frontmatter.feed === undefined || frontmatter.home || !filePathRelative || frontmatter.article === false || frontmatter.feed === false),
+        sort: ({ frontmatter }: Page): number => frontmatter.date - Date()
       },
       components: {
           components: [

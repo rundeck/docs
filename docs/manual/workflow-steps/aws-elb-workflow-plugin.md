@@ -21,7 +21,7 @@ When defining the IAM Role for Runbook Automation or Process Automation, be sure
 ### Target Group Instance Statuses
 The **AWS / ELB / Target Unhealthy** plugin is a Workflow Step that checks to see if any instances within the Target Groups of a particular ELB are reporting _unhealthy_:
 
-![ELB Status Plugin](@assets/img/aws-elb-status-check-plugin.png)<br>
+![ELB Status Plugin](/assets/img/aws-elb-status-check-plugin.png)<br>
 
 Identifying unhealthy instances for a given load balancer can be a challenge because there can be multiple target-groups associated with a given load balancer, and multiple instances associated within a Target Group.
 This plugin checks all instances for all Target Groups "within" a given ELB and returns any that are "unhealthy."

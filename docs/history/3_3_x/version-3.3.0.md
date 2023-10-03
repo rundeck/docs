@@ -15,32 +15,32 @@ This release includes a long list of useful feature enhancements for our Enterpr
 #### Schedules
 [Schedules](/manual/schedules/project-schedules) can be configured independently from jobs as stand-alone schedules to centralize the management of how often jobs run.
 
-![Schedule Creation](~@assets/img/project-schedules-create-form.png)
+![Schedule Creation](/assets/img/project-schedules-create-form.png)
 
 #### Calendars
 [Calendars](/manual/calendars) takes the Schedules offering to a level above time based execution to true Schedule based executions.  Define Ad-Hoc Calendars and let Rundeck know when a job is allowed to run or might be blacked out.
 
-![Calendars List](~@assets/img/relnotes-330-calendars.png)
+![Calendars List](/assets/img/relnotes-330-calendars.png)
 
 ### Guided Tour Manager (Enterprise)
 A new Rundeck [Guided Tours Manager](/manual/tour-manager) provide an authoring environment to build customizable, interactive walk-throughs to end users to help demonstrate Rundeck processes.  Tours can be used as guidance for first-time users getting familiar with the system, or provide step-by-step instructions for how to execute longer processes.  Tours can now be managed in product with a new UI/Markdown editor to design tour definitions. Guided Tours can be built as System Tours and are available to all projects or Project Tours and tied to that individual project.  As part of this Enterprise update Tours are stored in the Rundeck database so they are easily shared to all members in clustered environments.
 
-![Tours Example](~@assets/img/relnotes-330-tourdemo.gif)
+![Tours Example](/assets/img/relnotes-330-tourdemo.gif)
 
 ### New Log Viewer
 A completely re-architected Log Viewer loads job activity faster with improved usability options.  Along with significant performance improvements the new log viewer includes light/dark theme options, and no longer takes over the browser while loading large job output.  There is also the ability to send a URL that link directly to specific lines in the output to streamline collaborative troubleshooting.
 
-![Log Viewer](~@assets/img/relnotes-330-eventview.png)
+![Log Viewer](/assets/img/relnotes-330-eventview.png)
 
 ### User/Group Management Wizard (Enterprise)
 Rundeck user accounts can now be added/managed directly in the Enterprise version of Rundeck. Define local users and groups quickly and easily from the new [User Manager](/manual/user-management/user-mgmt.html#manage-local-users) administration interface.
 
-![User Manager Screen](~@assets/img/usermgr-manage-users.png)
+![User Manager Screen](/assets/img/usermgr-manage-users.png)
 
 ### Node Wizard Plugin (Enterprise)
 New [Node Wizard plugin](/manual/projects/resource-model-sources/node-wizard) is built-in to Process Automation for managing node entries local to Rundeck.  The node data is stored in the Rundeck database for easy sharing in clustered environments.  The plugin can still merge values with other Node Sources but offer direct value settings with a friendly GUI based interface.  No need to write complicated JSON/YAML for local Node Sources!
 
-![Node Editor](~@assets/img/relnotes-330-nodeedit.png)
+![Node Editor](/assets/img/relnotes-330-nodeedit.png)
 
 ### Job Tags
 Use Job Tags to take your Runbook organization to a new level.  Quickly find jobs based on keywords chosen for each job.

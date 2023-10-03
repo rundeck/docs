@@ -91,15 +91,15 @@ gradle build
 
 Now that we've deployed our plugin, we want to make sure that we can use it in a job. Log into the local Rundeck at [http://localhost:4440/](http://localhost:4440/) with the default user `admin` and password `admin`. Then create a new job in the `hello-project` project:
 
-![Create a new job](~@assets/img/create-job.png)
+![Create a new job](/assets/img/create-job.png)
 
 In the job creation screen, fill in some name like "My Java Plugin job" in Job Name. Then scroll to the "Add a Step" section, type "hellojava" in the search box and click the "Workflow Steps" tab to find the hellojava plugin.
 
-![Add hellojava step](~@assets/img/add-step-hellojava.png)
+![Add hellojava step](/assets/img/add-step-hellojava.png)
 
 Click the hellojava plugin, fill in some text in the Example string parameter field, then click Save to add the step to the job. Click on Create to create the job with the new plugin in its workflow and finally run the job by clicking on Run Job Now.
 
-![Plugin log output](~@assets/img/hellojava-log-output-1.png)
+![Plugin log output](/assets/img/hellojava-log-output-1.png)
 
 If the job succeeded with some output similar to the screenshot, then your Java plugin is working!
 
@@ -189,7 +189,7 @@ Change the plugin version property from the `rundeck-plugins/hellojava/build.gra
 
 Then re-run the job from the Rundeck GUI and you should see it print out a list of files.
 
-![Updated plugin log output](~@assets/img/hellojava-log-output-2.png)
+![Updated plugin log output](/assets/img/hellojava-log-output-2.png)
 
 Success!
 

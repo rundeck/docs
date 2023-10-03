@@ -36,11 +36,11 @@ This release includes new Plugin Suites for ServiceNow and Jira. As a reminder, 
 
 * The new [ServiceNow Plugin Suite](/manual/plugins/servicenow-plugins-overview.md) has a Node Source and many job steps to help pull in nodes from your CMDB and execute automation back into tables within ServiceNow. The ServiceNow Plugin Suite can be configured on a per-project basis or for the entire system. [Learn more.](/manual/plugins/servicenow-plugins-overview.md) 
 
-![ServiceNow Plugin Config](~@assets/img/relnotes-4.11.0-snplugingroup.png)
+![ServiceNow Plugin Config](/assets/img/relnotes-4.11.0-snplugingroup.png)
 
 * Jira plugins, which support Jira Server and Jira Cloud, have also been added to the Plugin Suite configuration model. Now Jira plugins can be configured in the GUI at the project or System level and applied across different plugin types. To get started with the Jira Suite, click [here](/manual/plugins/jira-plugins-overview.md).
 
-![JIRA Plugin Config](~@assets/img/relnotes-4.11.0-jiraplugingroup.png)
+![JIRA Plugin Config](/assets/img/relnotes-4.11.0-jiraplugingroup.png)
 
 * An official Docker container image for the Runner has been published and is available from [Dockerhub](https://hub.docker.com/r/rundeckpro/runner). The Runner allows users to execute commands, scripts and Job steps within their remote environments using a secure (outbound-only HTTPS) architecture.  With a container-version of the Runner, users can more easily deploy, maintain and scale their Runners - as well as deploy them into their containerized environments for more native automation. [Learn more](/administration/runner/#docker).
 
