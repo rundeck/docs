@@ -1,12 +1,12 @@
 # Javascript Node CircleCI 2.1 configuration file
 version: 2.1
 orbs:
-  slack: circleci/slack@4.4.0
+  slack: circleci/slack@4.12.5
 jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: cimg/node:12.22.10
+      - image: cimg/node:18.18.0
         environment:
           NODE_OPTIONS="--max-old-space-size=6144"
     resource_class: medium+
@@ -127,7 +127,7 @@ jobs:
             }
   update_index:
     machine:
-      image: ubuntu-2004:202201-02
+      image: cimg/2023.09-20.04
     working_directory: ~/repo
     steps:
       - checkout
@@ -145,7 +145,7 @@ workflows:
             branches:
               only:
                 - /4\.[0-9]+\..*/
-                - new-runner-docs
+                - vuepress2-migration
             tags:
               only: /^v.*/
       - update_index:
