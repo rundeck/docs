@@ -1,5 +1,4 @@
-import CP from 'child_process'
-import  FS from 'fs'
+import {execSync} from 'node:child_process';
 
 console.log(process.cwd())
 
@@ -9,7 +8,7 @@ const TAG = process.argv[2]
 let version, date, maint, env
 if (TAG) {
 
-    const rdCLIVersion = CP.execSync('curl -H "Accept: application/vnd.github+json" https://api.github.com/repos/rundeck/rundeck-cli/releases | jq -r \'.[0].tag_name\' | sed \'s/v//\'').toString()
+    const rdCLIVersion = execSync('curl -H "Accept: application/vnd.github+json" https://api.github.com/repos/rundeck/rundeck-cli/releases | jq -r \'.[0].tag_name\' | sed \'s/v//\'').toString()
 
     console.log("CLI Version: ", rdCLIVersion)
 
@@ -33,7 +32,7 @@ if (TAG) {
     console.log(version, date, maint)
 }
 
-const branch = CP.execSync('git rev-parse --abbrev-ref HEAD').toString().trim()
+const branch = execSync('git rev-parse --abbrev-ref HEAD').toString().trim()
 
 const base = version || branch
 
@@ -57,7 +56,7 @@ if (version && !maint) {
 
 function build(env) {
     console.log('Building with env:', env)
-    CP.execSync('npm run docs:build', {stdio: "inherit", env: {...process.env, ...env}})
+    execSync('npm run docs:build', {stdio: "inherit", env: {...process.env, ...env}})
 }
 
 function syncS3(base) {
@@ -67,5 +66,5 @@ function syncS3(base) {
     }
 
     console.log('Syncing to s3 base:', base)
-    CP.execSync(`aws s3 sync --acl public-read --delete docs/.vuepress/dist/ s3://docs.rundeck.com/${base}/`, {stdio: "inherit"})
+    execSync(`aws s3 sync --acl public-read --delete docs/.vuepress/dist/ s3://docs.rundeck.com/${base}/`, {stdio: "inherit"})
 }
