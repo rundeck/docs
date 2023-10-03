@@ -3,8 +3,8 @@
 </template>
 
 <script>
-import SwaggerUI from 'swagger-ui';
-import 'swagger-ui/dist/swagger-ui.css';
+import { SwaggerUIBundle } from 'swagger-ui-dist';
+import 'swagger-ui-dist/swagger-ui.css';
 
 export default {
   name: "RundeckSwaggerUi",
@@ -14,9 +14,12 @@ export default {
     }
   },
   mounted() {
-      SwaggerUI({
+      SwaggerUIBundle({
           url: this.specUrl,
-          dom_id: '#swagger'
+          dom_id: '#swagger',
+          presets: [
+            SwaggerUIBundle.presets.apis
+          ]
       })
   }
 }
