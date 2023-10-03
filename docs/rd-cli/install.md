@@ -2,7 +2,7 @@
 
 All artifacts can be downloaded from: [github releases](https://github.com/rundeck/rundeck-cli/releases/latest)
 
-* [zip install](#zip-install) _rd-{{$cliVersion}}.zip_ / _rd-{{$cliVersion}}.tar_
+* [zip install](#zip-install) `rd-{{$cliVersion}}.zip` / `rd-{{$cliVersion}}.tar`
 * [standalone executable jar](#jar-install) _rundeck-cli-{{$cliVersion}}-all.jar_
 * [rpm install](#yum-usage) _rundeck-cli-{{$cliVersion}}.noarch.rpm_
 * [debian install](#debian-usage) _rundeck-cli-{{$cliVersion}}_all.deb_
