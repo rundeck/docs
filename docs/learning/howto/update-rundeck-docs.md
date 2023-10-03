@@ -1,7 +1,7 @@
 ---
 
 title: "Contribute to Rundeck Documentation"
-date: "2022-08-01"
+date: 2022-08-01
 image: /images/chevron-logo-red-on-white.png
 feed:
  enable: true

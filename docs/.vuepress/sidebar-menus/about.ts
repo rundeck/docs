@@ -1,7 +1,7 @@
 export default[{
   text: 'About',
   collapsible: false,
-  sidebarDepth: 2,
+  headerDepth: 2,
   children: [
     '/about/introduction.md',
     {

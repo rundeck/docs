@@ -89,7 +89,7 @@ export default [{
 //            text: 'Job Plugins',
 //            collapsible: true,
 //            link: '/manual/job-plugins',
-//            sidebarDepth: 1,
+//            headerDepth: 1,
 //            children: [
 //
 //                '/manual/node-steps',

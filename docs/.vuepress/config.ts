@@ -1,18 +1,18 @@
 import _ from 'lodash'
 
-import { defaultTheme, defineUserConfig, viteBundler } from 'vuepress';
+import { defaultTheme, defineUserConfig } from 'vuepress';
+import { hopeTheme } from "vuepress-theme-hope";
 import tabsPlugin from '@snippetors/vuepress-plugin-tabs';
-import { feedPlugin } from 'vuepress-plugin-feed2';
 import { containerPlugin } from '@vuepress/plugin-container';
-import { copyCodePlugin } from "vuepress-plugin-copy-code2";
-import { docsearchPlugin } from '@vuepress/plugin-docsearch'
-import { path } from '@vuepress/utils'
-import { openGraphPlugin } from 'vuepress-plugin-open-graph'
-import { registerComponentsPlugin } from '@vuepress/plugin-register-components'
-import { pwaPlugin } from '@vuepress/plugin-pwa'
-import { pwaPopupPlugin } from '@vuepress/plugin-pwa-popup'
+import { docsearchPlugin } from '@vuepress/plugin-docsearch';
+import { path } from '@vuepress/utils';
+import { openGraphPlugin } from 'vuepress-plugin-open-graph';
+import { registerComponentsPlugin } from '@vuepress/plugin-register-components';
+import { pwaPlugin } from '@vuepress/plugin-pwa';
+import { pwaPopupPlugin } from '@vuepress/plugin-pwa-popup';
 import { redirectPlugin } from "vuepress-plugin-redirect";
-import { googleAnalyticsPlugin } from '@vuepress/plugin-google-analytics'
+import { googleAnalyticsPlugin } from '@vuepress/plugin-google-analytics';
+import { componentsPlugin } from "vuepress-plugin-components";
 
 // sidebars
 import sidebarAdmin from './sidebar-menus/administration'
@@ -41,20 +41,12 @@ import setup from './setup';
 console.log(setup)
 
 export default defineUserConfig({
-  debug: true,
+  //debug: true,
   title: '',
   description: '',
   shouldPrefetch: false,
   base: `/${setup.base ? setup.base + '/' : ''}`,
   head: [
-    // ['script', {}, `
-    //   (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    //   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    //   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    //   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    //   })(window,document,'script','dataLayer','GTM-5QNBBN6');
-    // `],
-    // ['script', { src: '/js/gtm.js', defer: true }]
   ],
   extendsMarkdown: md => {
     md.use(markdownItReplaceVars, 'custom_token_replace', function (content) {
@@ -80,9 +72,83 @@ export default defineUserConfig({
     CLI_VERSION: setup.rundeckCLIVersion
   },
 
-
-  bundler: viteBundler({
-    // vite bundler options here
+  //Theme Config
+  theme: hopeTheme({
+    logo: 'https://www.rundeck.com/hubfs/Pager%20Duty%20Branding/RundeckbyPagerDuty.svg',
+    repo: 'rundeck/docs',
+    docsDir: 'docs',
+    docsBranch: setup.branch,
+    repoDisplay: true,
+    darkmode: 'disable',
+    lastUpdated: true,
+    pageInfo: false,
+    contributors: false,
+    plugins: {
+        feed: {
+          hostname: 'https://docs.rundeck.com',
+          rss: true,
+          json: true,
+          filter: ({ frontmatter }: Page): boolean =>
+              frontmatter.feed !== undefined,
+          sort: ({ frontmatter }: Page): number => _.reverse(_.sortBy(entries, frontmatter.date))
+      },
+      components: {
+          components: [
+            "FontIcon",
+            "PDF",
+            "VideoPlayer",
+            "YouTube",
+          ],
+          componentOptions: {
+            fontIcon: {
+              assets: "fontawesome",
+            },
+            pdf: {
+              pdfjs: "/assets/lib/pdfjs/",
+            },
+          }
+      }
+    },
+    navbar: [
+      {
+        text: 'About',
+        children: navbarAbout
+      },
+      {
+        text: 'User Guide',
+        children: navbarUserGuide
+      },
+      {
+        text: 'Administration',
+        children: navbarAdmin
+      },
+      {
+        text: 'Learning',
+        children: navbarLearning
+      },
+      {
+        text: 'Development',
+        children: navbarDevelopment
+      }
+    ],
+    sidebar: {
+       '/about/': sidebarAbout,
+       '/administration/': sidebarAdmin,
+       '/upgrading/': sidebarUpgrading,
+       '/rd-cli/': sidebarCommandLineTools,
+       '/manual/': sidebarUserGuide,
+       '/learning/': sidebarLearning,
+       '/developer/': sidebarDeveloper,
+       '/history/': sidebarHistory,
+       '/api/': [
+        '/api/rundeck-api-versions.md',
+        '/api/rundeck-api.md'
+      ],
+      '/': [
+        ''
+      ]
+    }
+    // }
   }),
 
   //Plugins Config
@@ -135,17 +201,9 @@ export default defineUserConfig({
             '/enterprise/quickstart.html' : '/enterprise/index.html'
         }
       }),
-    feedPlugin({
-        hostname: 'https://docs.rundeck.com',
-        rss: true,
-        json: true,
-        filter: ({ frontmatter }: Page): boolean =>
-            frontmatter.feed !== undefined,
-        sort: ({ frontmatter }: Page): number => _.reverse(_.sortBy(entries, frontmatter.date))
-    }),
     openGraphPlugin({
-       host: 'https://docs.rundeck.com',
-       twitterSite: 'rundeck',
+        host: 'https://docs.rundeck.com',
+        twitterSite: 'rundeck',
       }),
     googleAnalyticsPlugin({
       id: 'G-LYC4H41P9E',
@@ -201,13 +259,6 @@ export default defineUserConfig({
             }
         }
     ),
-    copyCodePlugin({
-        locales: {
-            "/": {
-              copy: "Copy Code",
-            },
-        }
-    }),
     registerComponentsPlugin({
         componentsDir: path.resolve(__dirname, './components'),
     }),
@@ -224,68 +275,12 @@ export default defineUserConfig({
         },
         appId: 'GRSXNRCDRG',
         apiKey: 'c463f74d6f36a5af808650e0f69aadfa',
-        indexName: 'prod_rundeck_docs',
+        indexName: 'dev_rundeck_docs',
         searchParameters: {
             hitsPerPage: 10,
             facetFilters: [ `version:${setup.base}` ]
         },
-    })
+    }),
+          
   ],
-
-  //Theme Config
-  theme: defaultTheme({
-    logo: 'https://www.rundeck.com/hubfs/Pager%20Duty%20Branding/RundeckbyPagerDuty.svg',
-    repo: 'rundeck/docs',
-    docsDir: 'docs',
-    docsBranch: setup.branch,
-    colorMode: 'light',
-    colorModeSwitch: false,
-    lastUpdated: true,
-    contributors: false,
-    themePlugins: {
-      activeHeaderLinks: true,
-      externalLinkIcon: true,
-    },
-    navbar: [
-      {
-        text: 'About',
-        children: navbarAbout
-      },
-      {
-        text: 'User Guide',
-        children: navbarUserGuide
-      },
-      {
-        text: 'Administration',
-        children: navbarAdmin
-      },
-      {
-        text: 'Learning',
-        children: navbarLearning
-      },
-      {
-        text: 'Development',
-        children: navbarDevelopment
-      }
-    ],
-    sidebarDepth: 2,
-    sidebar: {
-       '/about/': sidebarAbout,
-       '/administration/': sidebarAdmin,
-       '/upgrading/': sidebarUpgrading,
-       '/rd-cli/': sidebarCommandLineTools,
-       '/manual/': sidebarUserGuide,
-       '/learning/': sidebarLearning,
-       '/developer/': sidebarDeveloper,
-       '/history/': sidebarHistory,
-       '/api/': [
-        '/api/rundeck-api-versions.md',
-        '/api/rundeck-api.md'
-      ],
-      '/': [
-        ''
-      ]
-    }
-    // }
-  })
 })

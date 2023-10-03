@@ -1,7 +1,7 @@
 ---
 
 title: "Integrate with Ansible"
-date: "2022-09-20"
+date: 2022-09-20
 image: /images/chevron-logo-red-on-white.png
 feed:
  enable: true

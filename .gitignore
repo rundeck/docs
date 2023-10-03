@@ -28,3 +28,7 @@ package-lock.json
 *~
 docs/assets/img/Admin Guide.docx
 docs/history/4_x/draft.md
+node_modules/
+hope/.vuepress/.cache/
+hope/.vuepress/.temp/
+hope/.vuepress/dist/

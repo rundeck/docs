@@ -1,7 +1,7 @@
 ---
 
 title: "Learn the Rundeck CLI"
-date: "2022-08-10"
+date: 2022-08-10
 image: /images/chevron-logo-red-on-white.png
 feed:
  enable: true

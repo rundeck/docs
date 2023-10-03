@@ -1,7 +1,7 @@
 ---
 
 title: "4.7.0 Release Notes"
-date: "2022-10-06"
+date: 2022-10-06
 image: /images/chevron-logo-red-on-white.png
 feed:
  enable: true

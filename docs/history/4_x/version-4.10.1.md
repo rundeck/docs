@@ -1,7 +1,7 @@
 ---
 
 title: "4.10.1 Release Notes"
-date: "2023-02-21"
+date: 2023-02-21
 image: /images/chevron-logo-red-on-white.png
 feed:
  enable: true

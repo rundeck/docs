@@ -6,18 +6,18 @@ $codeBgColor: #282c34 !default;
 @font-face {
     font-family: 'Jost';
     src: url(https://cdn2.hubspot.net/hubfs/2768099/assets/webfonts/Jost-BoldItalic.woff2) format("woff2"), url(https://cdn2.hubspot.net/hubfs/2768099/assets/webfonts/Jost-BoldItalic.woff) format("woff");
-    font-weight: 700;
+    font-weight: 600;
     font-style: italic
   }
 
 @font-face {
     font-family: 'Jost';
     src: url(https://cdn2.hubspot.net/hubfs/2768099/assets/webfonts/Jost-Bold.woff2) format("woff2"), url(https://cdn2.hubspot.net/hubfs/2768099/assets/webfonts/Jost-Bold.woff) format("woff");
-    font-weight: 700;
+    font-weight: 600;
     font-style: normal
   }
 
-.theme-default-content h1,
+.theme-container h1,
 h2,
 h3,
 h4,
@@ -27,157 +27,12 @@ h6 {
   font-weight: 700;
 }
 
-main {
-  a {
-    text-decoration: underline;
-  }
-
-  figure {
-    text-align: center;
-  }
-
-  figcaption {
-    font-style: italic;
-    text-align: center;
-  }
-
-  img {
-    width: 100%;
-  }
-}
-
-@media screen and (min-width:720px) {
-  main {
-    img {
-      max-height: 70vh;
-    }
-
-    max-width: 100%;
-    width: auto;
-  }
-}
-
-img {
-  border: 1px solid #C0C0C0;
-  margin: 10px;
-}
-
-dl {
-  line-height: 1.7 dt {
-    font-weight: bold
-  }
-
-  .navbar {
-    .site-name {
-      display: none;
-    }
-  }
-}
-
-a.home-link {
-  position: relative;
-}
-
-@media only screen and (max-width:60.5em) {
-  a.home-link {
-    width: 50%;
-    text-align: center;
-  }
-}
-
-.navbar .logo {
-  border-style: none;
-  margin-right: 0;
-  vertical-align: top;
-  margin-top: 0;
-  pointer-events: none;
-  position: absolute;
-  max-height: auto;
-  top: 0px;
-  height: 100%;
-}
-
-.navbar {
-  box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.10);
-  border-bottom: 0 solid;
-}
-
-img.navbar {
-  margin: 0px;
+#navbar img {
+  border: 0;
 }
 
 .sw-update-popup {
   border-color: $accentColor ;
-}
-
-.theme-default-content:not(.custom) {
-  max-width: 90%;
-  padding: 6rem 2.5rem 2rem;
-}
-
-@media screen and (min-width:720px) {
-  .theme-default-content:not(.custom) {
-    max-width: 65%;
-    padding: 6rem 2.5rem 2rem;
-  }
-}
-
-
-.sidebar-group.is-sub-group>.sidebar-heading:not(.clickable) {
-  opacity: 1 ;
-}
-
-.content__default ol {
-  list-style: none;
-  counter-reset: my-awesome-counter;
-}
-
-.content__default ol>li {
-  counter-increment: my-awesome-counter;
-  position: relative;
-}
-
-.content__default ol>li::before {
-  content: counter(my-awesome-counter) ". ";
-  position: absolute;
-  font-weight: bold;
-  display: contents;
-  width: 1em;
-  margin-left: -1em;
-}
-
-.content__default ul {
-  list-style: none;
-  /* Remove default bullets */
-}
-
-.content__default ul>li::before {
-  position: absolute;
-}
-
-.content__default ul>li::before {
-  content: "\2022";
-  /* Add content: \2022 is the CSS Code/unicode for a bullet */
-  font-weight: bold;
-  /* If you want it to be bold */
-  display: inline-block;
-  /* Needed to add space between the bullet and the text */
-  width: 1em;
-  /* Also needed for space (tweak if needed) */
-  margin-left: -1em;
-  /* Also needed for space (tweak if needed) */
-}
-
-@media screen and (max-width: 1150px) and (min-width:720px) {
-  .navbar a.home-link {
-    max-width: 25px;
-    overflow: hidden;
-  }
-
-  img {
-    width: 225px;
-    height: 30px;
-  }
 }
 
 .custom-container.enterprise {

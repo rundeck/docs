@@ -1,7 +1,7 @@
 ---
 
 title: "4.15.0 Release Notes"
-date: "2023-07-25"
+date: 2023-07-25
 image: /images/chevron-logo-red-on-white.png
 feed:
  enable: true
@@ -18,6 +18,8 @@ Release Date: July 25, 2023
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
 - [Upgrade instructions](/upgrading/)
 - [Watch the Live Stream Release Recap](https://youtu.be/t_O6P7dPb1M)
+
+<YouTube id="t_O6P7dPb1M" />
 
 ## Overview
 

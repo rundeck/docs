@@ -1,7 +1,7 @@
 ---
 
 title: "Pass Data Between Steps"
-date: "2022-09-10"
+date: 2022-09-10
 image: /images/chevron-logo-red-on-white.png
 feed:
  enable: true

@@ -1,7 +1,7 @@
 ---
 
 title: "Use ROI Metric Data"
-date: "2023-01-07"
+date: 2023-01-07
 image: /images/chevron-logo-red-on-white.png
 feed:
   enable: true
