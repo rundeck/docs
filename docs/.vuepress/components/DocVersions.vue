@@ -2,16 +2,12 @@
 
 	<label>
 	Version:
-
 		<select onchange="if(this.value){document.location=this.value}">
 			<option value="" >-Select-</option>
 			<optgroup :label="group.label" v-for="group in versions" :key="group.label">
 			<option v-for="vers in group.values" :value="docsbase+'/'+vers" :key="vers">{{vers}}</option>
 			</optgroup>
 		</select>
-
-
-            </select>
 	</label>
 </template>
 
