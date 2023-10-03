@@ -4,8 +4,7 @@ title: "Learn the Rundeck CLI"
 date: 2022-08-10
 image: /images/chevron-logo-red-on-white.png
 feed:
- enable: true
- description: "The Rundeck CLI is a great way to streamline repeated Rundeck tasks or programmatically manage your installation. Learn more about using it today. "
+  description: "The Rundeck CLI is a great way to streamline repeated Rundeck tasks or programmatically manage your installation. Learn more about using it today. "
 
 ---
 

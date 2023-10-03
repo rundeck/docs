@@ -4,8 +4,7 @@ title: "4.10.2 Release Notes"
 date: 2023-03-07
 image: /images/chevron-logo-red-on-white.png
 feed:
- enable: true
- description: "Version 4.10.2 is here. This release fixes an issue with 4.10.0 and 4.10.1 related to password resets.  Check Release Notes for more info."
+  description: "Version 4.10.2 is here. This release fixes an issue with 4.10.0 and 4.10.1 related to password resets.  Check Release Notes for more info."
 
 ---
 

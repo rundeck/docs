@@ -4,8 +4,7 @@ title: "Integrate with Ansible"
 date: 2022-09-20
 image: /images/chevron-logo-red-on-white.png
 feed:
- enable: true
- description: "One popular pairing for Rundeck users is integrating Ansible playbooks into Rundeck to orchestrate and schedule workflows across multiple tools. Like Rundeck, Ansible's straightforward design and learning curve make it Operations friendly. Learn how you can integrate Rundeck with Ansible. "
+  description: "One popular pairing for Rundeck users is integrating Ansible playbooks into Rundeck to orchestrate and schedule workflows across multiple tools. Like Rundeck, Ansible's straightforward design and learning curve make it Operations friendly. Learn how you can integrate Rundeck with Ansible. "
 
 ---
 

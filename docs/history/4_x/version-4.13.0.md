@@ -4,8 +4,7 @@ title: "4.13.0 Release Notes"
 date: 2023-05-15
 image: /images/chevron-logo-red-on-white.png
 feed:
- enable: true
- description: "Plugins and Ad-Hoc Commands on the Enterprise Runner, plus more Plugin enhancements."
+  description: "Plugins and Ad-Hoc Commands on the Enterprise Runner, plus more Plugin enhancements."
 
 ---
 

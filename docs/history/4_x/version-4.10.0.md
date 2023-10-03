@@ -4,8 +4,7 @@ title: "4.10.0 Release Notes"
 date: 2023-02-13
 image: /images/chevron-logo-red-on-white.png
 feed:
- enable: true
- description: "Version 4.10.0 is here! Check out the new Plugin Group for AWS plugins."
+  description: "Version 4.10.0 is here! Check out the new Plugin Group for AWS plugins."
 
 ---
 

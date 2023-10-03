@@ -4,8 +4,7 @@ title: "Learn more about Automated Diagnostics"
 date: 2022-10-01
 image: /images/chevron-logo-red-on-white.png
 feed:
- enable: true
- description: "Did you know the majority of incident duration is spent in diagnosis? Speeding up diagnosis of issues gets you to the the resolution much quicker.  Learn how Automated Diagnostics saves time and reduces interruptions throughout an incident by allowing responders to efficiently triage problems, only escalating to engineers who can resolve the issue. Resolvers have the data they need on hand, and this troubleshooting data is captured in the incident response record for future retrospectives."
+  description: "Did you know the majority of incident duration is spent in diagnosis? Speeding up diagnosis of issues gets you to the the resolution much quicker.  Learn how Automated Diagnostics saves time and reduces interruptions throughout an incident by allowing responders to efficiently triage problems, only escalating to engineers who can resolve the issue. Resolvers have the data they need on hand, and this troubleshooting data is captured in the incident response record for future retrospectives."
 
 ---
 

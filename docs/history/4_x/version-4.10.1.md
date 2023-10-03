@@ -4,8 +4,7 @@ title: "4.10.1 Release Notes"
 date: 2023-02-21
 image: /images/chevron-logo-red-on-white.png
 feed:
- enable: true
- description: "Version 4.10.1 is here. This release fixes some issues with 4.10.0.  Check Release Notes for more info."
+  description: "Version 4.10.1 is here. This release fixes some issues with 4.10.0.  Check Release Notes for more info."
 
 ---
 

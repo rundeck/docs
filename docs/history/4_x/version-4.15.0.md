@@ -4,8 +4,7 @@ title: "4.15.0 Release Notes"
 date: 2023-07-25
 image: /images/chevron-logo-red-on-white.png
 feed:
- enable: true
- description: "IAM AWS Authentication for RBA and Key Storage Configuration GUI"
+  description: "IAM AWS Authentication for RBA and Key Storage Configuration GUI"
 
 ---
 

@@ -1,4 +1,105 @@
-$accentColor: #066F30 !default;
-$textColor: #2c3e50 !default;
-$borderColor: #eaecef !default;
-$codeBgColor: #282c34 !default;
+// Color Config
+
+$theme-color: #3eaf7c !default;
+$theme-color: #066F30;
+
+$text-color: (
+  light: #2c3e50,
+  dark: #9e9e9e,
+) !default;
+$bg-color: (
+  light: #fff,
+  dark: #0d1117,
+) !default;
+$bg-color-secondary: (
+  light: #f8f8f8,
+  dark: #161b22,
+) !default;
+$bg-color-tertiary: (
+  light: #efeef4,
+  dark: #21262c,
+) !default;
+$border-color: (
+  light: #eaecef,
+  dark: #30363d,
+) !default;
+
+// shadow
+$box-shadow: (
+  light: #f0f1f2,
+  dark: #282a32,
+) !default;
+$card-shadow: (
+  light: rgb(0 0 0 / 15%),
+  dark: rgb(0 0 0 / 30%),
+) !default;
+
+// constants
+$black: (
+  light: #000,
+  dark: #fff,
+);
+$dark-grey: (
+  light: #666,
+  dark: #999,
+);
+$light-grey: (
+  light: #999,
+  dark: #666,
+);
+$white: (
+  light: #fff,
+  dark: #000,
+);
+$grey3: (
+  light: #333,
+  dark: #bbb,
+);
+$grey12: (
+  light: #bbb,
+  dark: #333,
+);
+
+/* layout */
+@font-face {
+    font-family: 'Jost';
+    src: url(https://cdn2.hubspot.net/hubfs/2768099/assets/webfonts/Jost-BoldItalic.woff2) format("woff2"), url(https://cdn2.hubspot.net/hubfs/2768099/assets/webfonts/Jost-BoldItalic.woff) format("woff");
+    font-weight: 600;
+    font-style: italic
+  }
+
+@font-face {
+    font-family: 'Jost';
+    src: url(https://cdn2.hubspot.net/hubfs/2768099/assets/webfonts/Jost-Bold.woff2) format("woff2"), url(https://cdn2.hubspot.net/hubfs/2768099/assets/webfonts/Jost-Bold.woff) format("woff");
+    font-weight: 600;
+    font-style: normal
+  }
+  
+// navbar
+$navbar-height: 3.75rem !default;
+$navbar-horizontal-padding: 1.5rem !default;
+$navbar-vertical-padding: 0.7rem !default;
+$navbar-mobile-height: 3.25rem !default;
+$navbar-mobile-horizontal-padding: 1rem !default;
+$navbar-mobile-vertical-padding: 0.5rem !default;
+
+// sidebar
+$sidebar-width: 18rem !default;
+$sidebar-mobile-width: 16rem !default;
+
+// content
+$content-width: 780px !default;
+$content-width: 3000px;
+$home-page-width: 1160px !default;
+
+// font
+$font-family: 'Jost, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", STHeiti, "Microsoft YaHei", SimSun, sans-serif' !default;
+$font-family-heading: 'Jost, Georgia Pro, Crimson, Georgia, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", STHeiti, "Microsoft YaHei", SimSun, sans-serif' !default;
+
+// code
+$font-family-mono: 'Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace' !default;
+$line-numbers-width: 2.5rem !default;
+
+// transition
+$color-transition: "0.3s ease" !default;
+$transform-transition: "0.3s ease" !default;

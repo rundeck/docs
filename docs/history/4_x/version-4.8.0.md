@@ -4,8 +4,7 @@ title: "4.8.0 Release Notes"
 date: 2022-11-10
 image: /images/chevron-logo-red-on-white.png
 feed:
- enable: true
- description: "Version 4.8.0 is here! Check out the new RSS Feed Plugin that will help streamline Automated Diagnostics and Resume Jobs using Ruleset and Parallel Strategies."
+  description: "Version 4.8.0 is here! Check out the new RSS Feed Plugin that will help streamline Automated Diagnostics and Resume Jobs using Ruleset and Parallel Strategies."
 
 ---
 

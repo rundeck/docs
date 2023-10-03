@@ -4,8 +4,7 @@ title: "4.11.0 Release Notes"
 date: 2023-03-13
 image: /images/chevron-logo-red-on-white.png
 feed:
- enable: true
- description: "Version 4.11.0 is here. More Plugin Suites and JSON Job Exports.  Check Release Notes for more info."
+  description: "Version 4.11.0 is here. More Plugin Suites and JSON Job Exports.  Check Release Notes for more info."
 
 ---
 

@@ -4,8 +4,7 @@ title: "4.16.0 Release Notes"
 date: 2023-08-24
 image: /images/chevron-logo-red-on-white.png
 feed:
- enable: true
- description: "Key Storage and Node Sources on the Enterprise Runner!"
+  description: "Key Storage and Node Sources on the Enterprise Runner!"
 
 ---
 

@@ -4,8 +4,7 @@ title: "Pass Data Between Steps"
 date: 2022-09-10
 image: /images/chevron-logo-red-on-white.png
 feed:
- enable: true
- description: "Multi-Step workflows often require sharing data from one step to another. Check out the examples in this 'How to' for the diffrerent ways data can be shared through out a workflow."
+  description: "Multi-Step workflows often require sharing data from one step to another. Check out the examples in this 'How to' for the diffrerent ways data can be shared through out a workflow."
 
 ---
 

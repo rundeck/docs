@@ -1,22 +1,3 @@
-$accentColor: #066F30 !default;
-$textColor: #2c3e50 !default;
-$borderColor: #eaecef !default;
-$codeBgColor: #282c34 !default;
-
-@font-face {
-    font-family: 'Jost';
-    src: url(https://cdn2.hubspot.net/hubfs/2768099/assets/webfonts/Jost-BoldItalic.woff2) format("woff2"), url(https://cdn2.hubspot.net/hubfs/2768099/assets/webfonts/Jost-BoldItalic.woff) format("woff");
-    font-weight: 600;
-    font-style: italic
-  }
-
-@font-face {
-    font-family: 'Jost';
-    src: url(https://cdn2.hubspot.net/hubfs/2768099/assets/webfonts/Jost-Bold.woff2) format("woff2"), url(https://cdn2.hubspot.net/hubfs/2768099/assets/webfonts/Jost-Bold.woff) format("woff");
-    font-weight: 600;
-    font-style: normal
-  }
-
 .theme-container h1,
 h2,
 h3,
@@ -25,14 +6,6 @@ h5,
 h6 {
   font-family: 'Jost';
   font-weight: 700;
-}
-
-#navbar img {
-  border: 0;
-}
-
-.sw-update-popup {
-  border-color: $accentColor ;
 }
 
 .custom-container.enterprise {
@@ -94,13 +67,4 @@ h6 {
   .custom-container-title {
     margin: 0.5rem;
   }
-}
-
-/* Tabs */
-.el-tabs--border-card>.el-tabs__header .el-tabs__item.is-active {
-  color: $accentColor ;
-}
-
-.el-tabs--border-card>.el-tabs__header .el-tabs__item:not(.is-disabled):hover {
-  color: lighten($accentColor, 15) ;
 }

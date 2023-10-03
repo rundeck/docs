@@ -4,8 +4,7 @@ title: "4.9.0 Release Notes"
 date: 2023-01-11
 image: /images/chevron-logo-red-on-white.png
 feed:
- enable: true
- description: "Version 4.9.0 is here!  Check out the new configuration method for Plugins Suites and be on the look out for major updates to the Runner functionality in a future version."
+  description: "Version 4.9.0 is here!  Check out the new configuration method for Plugins Suites and be on the look out for major updates to the Runner functionality in a future version."
 
 ---
 
