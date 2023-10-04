@@ -1,6 +1,6 @@
 export default [{
   text: 'Learning',
-  collapsible: true,
+  collapsible: false,
   children: [
     '/learning/',
     {
