@@ -26,6 +26,10 @@ export default[{
        ]
     },
     '/about/getting-help.md',
-    '/about/licensing.md'
+    '/about/licensing.md',
+    {
+      text: 'Release Notes',
+      link: '/history/'
+    }
   ]
 }]
