@@ -95,7 +95,7 @@ export default defineUserConfig({
     contributors: false,
     plugins: {
       pwa: {
-        update: 'available',
+        update: 'hint',
         cacheHTML: true
       },
       mdEnhance: {
