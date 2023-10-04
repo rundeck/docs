@@ -176,17 +176,6 @@ export default defineUserConfig({
             RundeckSwaggerUi: path.resolve(__dirname, './components/RundeckSwaggerUI.vue'),
           },
       }),
-    // pwaPlugin({
-    //     skipWaiting: false,
-    // }),
-    // pwaPopupPlugin({
-    // locales: {
-    //     '/': {
-    //         message: 'New content is available.',
-    //         buttonText: 'Refresh',
-    //     },
-    // }
-    // }),
     redirectPlugin({
         config: {
             '/manual/01-introduction.html' : '/introduction/introduction.html',
@@ -222,6 +211,7 @@ export default defineUserConfig({
         host: 'https://docs.rundeck.com',
         twitterSite: 'rundeck',
       }),
+    // We can revisit this when GT4 tag is ready.
     // googleAnalyticsPlugin({
     //   id: 'G-LYC4H41P9E',
     //   debug: true
