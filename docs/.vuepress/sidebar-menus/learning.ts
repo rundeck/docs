@@ -41,6 +41,7 @@ export default [{
           link: '/learning/getting-started/jobs/overview',
           collapsible: true,
           children: [
+            '/learning/getting-started/jobs/overview',
             '/learning/getting-started/jobs/what-is-a-job.md',
             '/learning/getting-started/jobs/pieces-of-a-job.md',
             '/learning/getting-started/jobs/how-to-run-a-job.md',
