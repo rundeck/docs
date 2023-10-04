@@ -90,6 +90,8 @@ export default defineUserConfig({
     docsBranch: setup.branch,
     repoDisplay: true,
     darkmode: 'toggle',
+    prevLink: false,
+    nextLink: false,
     lastUpdated: true,
     pageInfo: false,
     contributors: false,

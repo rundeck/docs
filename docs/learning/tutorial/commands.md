@@ -1,3 +1,13 @@
+---
+prev:
+  link: '/learning/tutorial/creatingnodes.md'
+  text: "Getting Started - Nodes"
+next:
+  link: '/learning/tutorial/jobs.md'
+  text: "Getting Started - Jobs/Activity"
+
+---
+
 # 2. Getting Started - Commands
 
 :::tutorial

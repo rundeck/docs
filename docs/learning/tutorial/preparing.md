@@ -1,3 +1,13 @@
+---
+
+next:
+  link: '/learning/tutorial/creatingnodes.md'
+  text: "Getting Started - Nodes"
+
+---
+
+
+
 # 0. Getting Started - Tutorial Preparations
 
 The _Tutorial_ section is built around our Welcome Projects. The Rundeck Welcome Projects are sample projects that show how to configure and use Rundeck.

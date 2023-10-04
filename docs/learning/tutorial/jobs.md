@@ -1,3 +1,15 @@
+---
+prev:
+  link: '/learning/tutorial/commands.md'
+  text: "Getting Started - Commands"
+next:
+  link: '/learning/tutorial/users.md'
+  text: "Getting Started - Users"
+
+---
+
+
+
 # 3. Getting Started - Jobs / Activity
 
 :::tutorial

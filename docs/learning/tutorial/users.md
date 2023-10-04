@@ -1,3 +1,13 @@
+---
+prev:
+  link: '/learning/tutorial/commands.md'
+  text: "Getting Started - Commands"
+next:
+  link: '/learning/tutorial/acls.md'
+  text: "Getting Started - Access Control Lists"
+
+---
+
 # 4. Getting Started - Users
 
 :::tutorial

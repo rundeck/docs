@@ -1,3 +1,14 @@
+---
+prev:
+  link: '/learning/tutorial/commands.md'
+  text: "Getting Started - Preparing"
+next:
+  link: '/learning/tutorial/commands.md'
+  text: "Getting Started - Commands"
+
+---
+
+
 # 1. Getting Started - Nodes
 
 :::tutorial
