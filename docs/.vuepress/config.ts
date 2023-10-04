@@ -84,12 +84,12 @@ export default defineUserConfig({
 
   //Theme Config
   theme: hopeTheme({
-    logo: 'https://www.rundeck.com/hubfs/Pager%20Duty%20Branding/RundeckbyPagerDuty.svg',
+    logo: '/images/RundeckbyPagerDuty.svg',
     repo: 'rundeck/docs',
     docsDir: 'docs',
     docsBranch: setup.branch,
     repoDisplay: true,
-    darkmode: 'disable',
+    darkmode: 'toggle',
     lastUpdated: true,
     pageInfo: false,
     contributors: false,
@@ -97,6 +97,9 @@ export default defineUserConfig({
       pwa: {
         update: 'hint',
         cacheHTML: true
+      },
+      prismjs: {
+        light: 'night-owl'
       },
       mdEnhance: {
         tabs: true,

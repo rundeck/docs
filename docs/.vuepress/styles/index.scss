@@ -72,3 +72,9 @@ h6 {
 .theme-hope-content:not(.custom) .swagger h3:first-child {
   margin-top: 0px !important;
 }
+
+html[data-theme=dark] {
+  img[src*="/images/RundeckbyPagerDuty.svg"] {
+    content: url("/images/RundeckbyPagerDutyDark.svg")
+  }
+}
