@@ -294,7 +294,7 @@ export default defineUserConfig({
         apiKey: 'c463f74d6f36a5af808650e0f69aadfa',
         indexName: 'dev_rundeck_docs',
         searchParameters: {
-            hitsPerPage: 10,
+            hitsPerPage: 100,
             facetFilters: [ `version:${setup.base}` ]
         },
     }),

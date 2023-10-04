@@ -11,7 +11,7 @@ const CLI_VERSION='2.0.1'
 const REPO_BRANCH='4.0.x'
 
 const setup = {
-    base: process.env.DOC_BASE,
+    base: process.env.DOC_BASE || '',
     branch: process.env.DOC_BRANCH || REPO_BRANCH,
     apiVersion: API_VERSION,
     apiDepVersion: API_DEP_VER,

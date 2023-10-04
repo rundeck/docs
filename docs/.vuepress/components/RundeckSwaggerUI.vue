@@ -1,21 +1,26 @@
 <template>
-  <div class="swagger" id="swagger"></div>
+  <div class="swagger" id="swagger" style="margin-top: 0;">
+    {{ specFile }}
+  </div>
 </template>
 
 <script>
 import { SwaggerUIBundle } from 'swagger-ui-dist';
-import 'swagger-ui-dist/swagger-ui.css';
+//import 'swagger-ui-dist/swagger-ui.css';
+import '../styles/swagger-ui.css'
+import { withBase } from '@vuepress/client'
 
 export default {
   name: "RundeckSwaggerUi",
+  props: ['specFile'],
   data() {
     return {
-      specUrl: '/files/rundeck-api.yml'
+      specUrl: this.specFile
     }
   },
   mounted() {
       SwaggerUIBundle({
-          url: this.specUrl,
+          url: withBase(this.specUrl),
           dom_id: '#swagger',
           presets: [
             SwaggerUIBundle.presets.apis
