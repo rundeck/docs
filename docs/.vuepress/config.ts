@@ -222,10 +222,10 @@ export default defineUserConfig({
         host: 'https://docs.rundeck.com',
         twitterSite: 'rundeck',
       }),
-    googleAnalyticsPlugin({
-      id: 'G-LYC4H41P9E',
-      debug: true
-    }),
+    // googleAnalyticsPlugin({
+    //   id: 'G-LYC4H41P9E',
+    //   debug: true
+    // }),
     containerPlugin(
         {
             type: 'deprecated',
