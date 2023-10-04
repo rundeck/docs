@@ -1,4 +1,4 @@
-# Database Overview
+# Database Configuration Overview
 
 - [MySQL](/administration/configuration/database/mysql.md)
 - [PostgreSQL](/administration/configuration/database/postgres.md)
