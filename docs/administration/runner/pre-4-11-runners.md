@@ -16,8 +16,8 @@ The Runner is a Java based program which uses a polling model to pick up work fr
 
 Follow these steps to install a Runner:
 
-:::: tabs
-::: tab Creating and configuring a Runner
+::: tabs
+@tab Creating and configuring a Runner
 
 1. Under the _System Menu_ (gear icon upper-right) choose **Runner Management**
 1. Choose **Create Runner**.
@@ -26,8 +26,7 @@ Follow these steps to install a Runner:
 1. [This step is optional] On this page choose which project(s) the Runner is active for.  The Assigned toggle will enable the Runner for _All Nodes_ (`.*`) in that project. After the Runner is created you can edit the Runner assignment and adjust the node filter to target a subset of nodes. Click **Next**.
 1. On the **Confirmation** step, click on **Download** and save the Runner JAR binary file. Note that the JAR file must be used only for the environment that it is configured for. Click **Finish**.
 
-:::
-::: tab Installing a Runner
+@tab Installing a Runner
 
 Pre-Requisites:
 - Same [OS requirements as Rundeck](/administration/install/system-requirements.md)
@@ -39,7 +38,6 @@ Pre-Requisites:
 Connection can be confirmed on the Runner Management page on the _Last Checkin_ line.  If there are errors in the output resolve those using troubleshooting steps below.
 
 :::
-::::
 
 :::tip
 To enable the Runner features you have to add the following property in `rundeck-config.properties` file and restart the Process Automation cluster or instance. This feature has been enabled on Docker installations since v4.5.0 and is also enabled by default for Runbook Automation.	

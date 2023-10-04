@@ -140,9 +140,9 @@ Replace the following tokens in the instructions for each database:
 * `<rundeckuser>`: The database user with permissions on the `rundeck` database.
 * `<rundeckpassword>`: The password for the Rundeck database user.
 
-:::: tabs
+::: tabs
 
-::: tab MySQL
+@tab MySQL
 ```properties
 dataSource.url = jdbc:mysql://<host>/rundeck?autoReconnect=true&useSSL=false
 dataSource.username = <rundeckuser>
@@ -151,9 +151,9 @@ dataSource.driverClassName = org.mariadb.jdbc.Driver
 ```
 
 [Detailed MySQL instructions.](/administration/configuration/database/mysql.md)
-:::
 
-::: tab PostgreSQL
+
+@tab PostgreSQL
 ```properties
 dataSource.driverClassName = org.postgresql.Driver
 dataSource.url = jdbc:postgresql://<host>/rundeck
@@ -162,9 +162,9 @@ dataSource.password=<rundeckpassword>
 ```
 
 [Detailed PostgreSQL instructions.](/administration/configuration/database/postgres.md)
-:::
 
-::: tab SQL Server
+
+@tab SQL Server
 ```properties
 dataSource.driverClassName = com.microsoft.sqlserver.jdbc.SQLServerDriver
 dataSource.url = jdbc:sqlserver://<host>;DatabaseName=RUNDECK
@@ -173,10 +173,10 @@ dataSource.password = <rundeckpassword>
 ```
 
 [Detailed SQL Server instructions.](/administration/configuration/database/mssql.md)
-:::
 
 
-::: tab Oracle
+
+@tab Oracle
 ```properties
 dataSource.url = jdbc:oracle:thin:@<host>:1521:orcl # (change server name and instance name)
 dataSource.driverClassName = oracle.jdbc.OracleDriver
@@ -187,9 +187,9 @@ dataSource.properties.validationQuery = SELECT 1 FROM DUAL
 ```
 
 [Detailed Oracle instructions.](/administration/configuration/database/oracle.md)
-:::
 
-::::
+
+:::
 
 :::warning
 When using passwords with **special characters**, ensure there are **no spaces** between the equal sign and the value provided: `dataSource.password=<rundeckpassword>`

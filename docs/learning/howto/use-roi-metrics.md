@@ -21,8 +21,8 @@ feed:
 
 Customer X has decided to track how much time is saved with their newly implemented Automation job (uniquely titled `ROI Job`).  They know from historical ticket-data that doing the same work manually - prior to writing this job - took around 75 minutes across all teams, start to finish.  The job now runs in just seconds.  To configure the job follow the steps or download the job definition.
 
-:::: tabs
-::: tab Steps to Create
+::: tabs
+@tab Steps to Create
 
 
 1. Create a new Job.
@@ -43,8 +43,7 @@ Customer X has decided to track how much time is saved with their newly implemen
 1. Run the job and look for the ROI Metrics Data tab.  Confirm that the data is populated.
 1. Run the job a few more times so we have multiple executions.
 
-:::
-::: tab Download Job Definition
+@tab Download Job Definition
 
 Copy the Job Definition below and paste into a plain text file.  Then import to your Process Automation server.  (Version 4.7.0 minimum)
 
@@ -75,14 +74,13 @@ Copy the Job Definition below and paste into a plain text file.  Then import to 
 ```
 
 :::
-::::
 
 ## Gathering Data
 
 >This section assumes familiarity with fundamental Rundeck operations like Creating User API Tokens, editing/importing jobs, etc.
 
-:::: tabs
-::: tab Setup Steps
+::: tabs
+@tab Setup Steps
 
 - Configure a [User API Key](/manual/10-user.md#user-api-tokens) with the necessary access to gather metrics from the job/project where your data is located.
 - Save the User API Key in the Key Storage by going to **Project Settings** > **Key Storage** and adding the key there.
@@ -92,8 +90,7 @@ Copy the Job Definition below and paste into a plain text file.  Then import to 
 
 Run the job to gather data and see a list of JSON output for any jobs with ROI data.
 
-:::
-::: tab Gather Metrics Job Definition
+@tab Gather Metrics Job Definition
 
 Copy the Job Definition below and paste into a plain text file.  Then import to your Process Automation server.  (Version 4.7.0 minimum)
 
@@ -212,4 +209,3 @@ Copy the Job Definition below and paste into a plain text file.  Then import to 
 ```
 
 :::
-::::

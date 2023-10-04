@@ -6,8 +6,8 @@ In this list of project based ACLs the UserAccess policy governs the rights `ali
 
 In the following Exercise we will allow Alice to also run AdHoc Commands:
 
-:::: tabs
-::: tab Enterprise Exercise:
+::: tabs
+@tab Enterprise Exercise:
 
 1. Click **Project Settings > Access Control**
 1. Click **+ Create ACL Policy** button
@@ -22,8 +22,7 @@ In the following Exercise we will allow Alice to also run AdHoc Commands:
 1. Click **Add Rule**
 1. Click **Save**
 
-:::
-::: tab Community Exercise:
+@tab Community Exercise:
 1. Click **Project Settings > Access Control**
 1. Click **+ Create ACL Policy** button
 1. Name: `AllowCommands` _(no spaces)_
@@ -44,7 +43,6 @@ In the following Exercise we will allow Alice to also run AdHoc Commands:
 
 >The code tells Rundeck to Allow Alice to run adhoc commands.
 :::
-::::
 
 Return to the Alice Incognito window and refresh the browser. A new option for Commands should appear in the left navigation menu.
 

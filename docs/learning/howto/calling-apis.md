@@ -28,7 +28,7 @@ The HTTP Workflows Step plugin isn’t bundled with the Rundeck Community versio
 For this exercise we will use the site [httpbin.org](http://httpbin.org/) test website, [httpbin.org](http://httpbin.org/) is a simple HTTP request and response service written in python by Ken Reitz. This is not a site owned or run by PagerDuty.  **Note: Don't send any sensitive data.** This site is simply used as a test.  If you would like to run your own their site has more information about using their [Docker Images](https://github.com/postmanlabs/httpbin#httpbin1-http-request--response-service).
 :::
 
-:::: tabs
+::: tabs
 1. Go to the jobs page.
 1. Click on the **Create a new job** button.
 1. On the **Details** tab, give your job a name.
@@ -45,13 +45,11 @@ For this exercise we will use the site [httpbin.org](http://httpbin.org/) test w
     ![HTTP Request Saved](/assets/img/howto-http-request-step.png)
 1. Scroll down and click on the **Create** button.
 1. Then click on the **Run Job Now** button.
-::: tab Enterprise Exercise
+@tab Enterprise Exercise
+
+@tab Community Exercise
 
 :::
-::: tab Community Exercise
-
-:::
-::::
 
 ## Other Parameters
 Other parameters available:

@@ -20,8 +20,8 @@ The [Rundeck PagerDuty Notification Plugin](https://github.com/rundeck-plugins/p
 
 
 ## Installing the plugin
-:::: tabs
-::: tab Community Install
+::: tabs
+@tab Community Install
 
 1. Go to Gear Icon (upper right) > Plugins > Find plugins.
     <br><br>![Find Plugins](/assets/img/howto-pdnotif-findplugin.png)<br><br>
@@ -30,13 +30,11 @@ The [Rundeck PagerDuty Notification Plugin](https://github.com/rundeck-plugins/p
     <br><br>![alt_text](/assets/img/howto-pdnotif-installplugin.png)<br><br>
 4. After a few seconds the plugins are installed on your Rundeck Instance.
 
-:::
-::: tab Enterprise Install
+@tab Enterprise Install
 
 The PagerDuty Notification plugin is bundled with Enterprise builds.  No need to install separately.
 
 :::
-::::
 
 ## Configuring PagerDuty
 >(Same Steps for Community and Enterprise)
@@ -54,8 +52,8 @@ A fundamental requirement is the PagerDuty integration key, which connects the R
 
 These steps will configure the Notification plugin globally (across all Rundeck projects). There are options to configure the plugin per project covered in the [main documentation](https://github.com/rundeck-plugins/pagerduty-notification#configuration).
 
-:::: tabs
-::: tab Community Steps
+::: tabs
+@tab Community Steps
 
 1. Stop the Rundeck service: `systemctl stop rundeckd`.
 1. With any text editor open the `framework.properties` file (located at `/etc/rundeck` path).
@@ -65,8 +63,7 @@ framework.plugin.Notification.PagerDutyNotification.service_key=your-service-key
 ```
 1. Save the file.
 1. Start the Rundeck service: `systemctl start rundeckd.`
-:::
-::: tab Enterprise Steps
+@tab Enterprise Steps
 
 Process Automation includes a Configuration Management module to set configuration settings via the GUI and store them in the Rundeck database. Database storage shares configuration options with all your cluster members and centralizes configuration.
 
@@ -81,7 +78,6 @@ Process Automation includes a Configuration Management module to set configurati
 
 Now, Process Automation is configured to use PagerDuty notifications, no restart is required.
 :::
-::::
 
 ## Sending Notifications to a PagerDuty Service.
 

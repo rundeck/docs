@@ -68,8 +68,8 @@ Hashicorp recommends using AppRoles for authenticating and governing access for 
 
 ## Configuring Vault with PA / Rundeck
 
-:::: tabs
-::: tab PagerDuty Process Automation
+::: tabs
+@tab PagerDuty Process Automation
 
 The Vault Storage plugin is bundled by default with PagerDuty Process Automation.  To use the plugin, you need to add properties using the [System Configuration](/manual/configuration-mgmt/configmgmt.md#managing-configuration) feature.
 
@@ -85,8 +85,7 @@ PA includes a Configuration Management module to set configuration settings via 
 ![](/assets/img/Vault5.png)<br>
 1. From the Vault side, check the secret/rundeck path and see the stored key.<br>
 ![](/assets/img/Vault6.png)<br>
-:::
-::: tab Rundeck Community
+@tab Rundeck Community
 
 1. Stop the Rundeck service.
 1. Download the Vault Storage Plugin jar file from [here](https://github.com/rundeck-plugins/vault-storage/releases) and save it to the `libext` directory.
@@ -119,8 +118,7 @@ PA includes a Configuration Management module to set configuration settings via 
 ![](/assets/img/Vault7.png)<br>
 1. From the Vault side, check the secret/rundeck path and see the Rundeck stored key.<br>
 ![](/assets/img/Vault8.png)<br>
-:::
-::: tab Properties Explained
+@tab Properties Explained
 
 Properties explained:
 * `rundeck.storage.provider.[index].config.approleId`: This value should be set to the Role ID gathered in the Vault setup steps.
@@ -137,4 +135,3 @@ Properties explained:
 * `rundeck.storage.provider.[index].removePathPrefix`: This is set to 'true' to prevent Rundeck from adding the `keys` path to Vault.
 
 :::
-::::

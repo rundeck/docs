@@ -42,8 +42,8 @@ This mode has a limitation that it is unable to list the keys in safes.  When wr
 `path/to` is the folder path within the safe where the key is stored.
 `secret.pem` is the unique name of the key in that particular folder.
 
-:::: tabs
-::: tab Example Enterprise Config
+::: tabs
+@tab Example Enterprise Config
 
 Below is an example legacy configuration, which can be configured using the *System Configuration* module. Add each setting as a configuration entry.
 
@@ -51,9 +51,7 @@ Below is an example legacy configuration, which can be configured using the *Sys
 
 ![Cyberark Configuration - continued](/assets/img/keystorage-cyberark-config2.png)
 
-:::
-
-::: tab rundeck-config.properties
+@tab rundeck-config.properties
 Alternatively the settings can be placed in `rundeck-config.properties` (Example shows Legacy Mode)
 ```
 rundeck.storage.provider.1.type=cyberark-storage
@@ -84,7 +82,6 @@ rundeck.storage.provider.1.config.nameOfCCPWebService=NameOfWebService
 ```
 
 :::
-::::
 
 
 ### Setting Descriptions

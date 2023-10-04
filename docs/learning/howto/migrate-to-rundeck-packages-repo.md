@@ -14,13 +14,10 @@ Rundeck has rotated the signing key used to sign release packages. All previousl
 `deb`, `rpm`, and `war` packages have been re-signed and uploaded. The new public key can be found [here in the Rundeck packaging repo](https://github.com/rundeck/packaging/blob/main/pubring.gpg).
 :::
 
+### Enterprise
 
-:::::::: tabs
-
-::::::: tab Enterprise
-
-:::: tabs
-::: tab Deb
+::: tabs
+@tab Deb
 ### Quick setup script
 The [quick setup script](https://github.com/rundeck/packaging/blob/main/scripts/deb-setup.sh) will configure the Process Automation repository,
 import the new repository signing key, and update apt. Legacy configuration
@@ -48,9 +45,7 @@ Update apt cache:
 sudo apt-get update
 ```
 
-:::
-
-::: tab Rpm
+@tab Rpm
 ### Quick setup script
 The [quick setup script](https://github.com/rundeck/packaging/blob/main/scripts/rpm-setup.sh) will configure the Process Automation repository. Legacy configuration
 will be replaced.
@@ -77,20 +72,18 @@ sslcacert=/etc/pki/tls/certs/ca-bundle.crt
 metadata_expire=300
 ```
 
-:::
-
-::: tab War
+@tab War
 Visit the [Rundeck download page](https://download.rundeck.com) for updated direct
 download links.
+
 :::
-::::
-
-:::::::
 
 
-::::::: tab Community
-:::: tabs
-::: tab Deb
+### Community
+
+::: tabs
+
+@tab Deb
 ### Quick setup script
 The [quick setup script](https://github.com/rundeck/packaging/blob/main/scripts/deb-setup.sh) will configure the Rundeck Community repository,
 import the new repository signing key, and update apt. Legacy configuration
@@ -118,9 +111,7 @@ Update apt cache:
 sudo apt-get update
 ```
 
-:::
-
-::: tab Rpm
+@tab Rpm
 ### Quick setup script
 The [quick setup script](https://github.com/rundeck/packaging/blob/main/scripts/rpm-setup.sh) will configure the Process Automation repository. Legacy configuration
 will be replaced.
@@ -147,12 +138,7 @@ sslcacert=/etc/pki/tls/certs/ca-bundle.crt
 metadata_expire=300
 ```
 
-:::
-
-::: tab War
+@tab War
 Visit the [Rundeck download page](https://docs.rundeck.com/downloads.html) for updated direct
 download links.
 :::
-:::::::
-
-::::::::

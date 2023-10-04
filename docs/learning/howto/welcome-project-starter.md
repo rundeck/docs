@@ -21,8 +21,8 @@ Before starting, knowing basic Rundeck terminology is useful. All basic concepts
 
 To install the Welcome Project you need to download the latest release:
 
-:::: tabs
-::: tab Community Welcome Project
+::: tabs
+@tab Community Welcome Project
 
 Navigate to: [https://github.com/rundeck/welcome-project-community](https://github.com/rundeck/welcome-project-community)
 
@@ -30,8 +30,7 @@ Navigate to: [https://github.com/rundeck/welcome-project-community](https://gith
 1. Download the Source Code (.zip) file.
 1. Extract the contents to a folder on your local hard drive.
 
-:::
-::: tab Enterprise Welcome Project
+@tab Enterprise Welcome Project
 
 Navigate to: [https://github.com/rundeckpro/welcome-project](https://github.com/rundeckpro/welcome-project)
 
@@ -42,7 +41,6 @@ Navigate to: [https://github.com/rundeckpro/welcome-project](https://github.com/
 _WARNING_: A license is required for the Process Automation Welcome Project. A Process Automation Trial license can be requested from here [https://www.rundeck.com/see-demo](https://www.rundeck.com/see-demo).
 
 :::
-::::
 
 ## Building the Environment
 

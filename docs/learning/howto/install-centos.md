@@ -58,8 +58,8 @@ The main package requirement for Rundeck is Java 11.
 
 After installing Rundeck, by default the instance’s hostname is `localhost. `You won’t be able to access the Rundeck instance from any node on the network so you need to configure Rundeck to use the hostname where it is installed.
 
-:::: tabs
-::: tab Community Exercise
+::: tabs
+@tab Community Exercise
 
 1. Stop the Rundeck Service.
     ```
@@ -98,7 +98,6 @@ After installing Rundeck, by default the instance’s hostname is `localhost. `Y
     Now the Rundeck service is available using the hostname and from any network location:
     `http://your-rundeck-hostname:4440`
 :::
-::::
 
 ## Additional Resources
 

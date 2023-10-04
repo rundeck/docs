@@ -85,8 +85,8 @@ Create a Windows-based project on the Rundeck instance.
 ## Adding a Windows Test Node
 
 Now Rundeck should ask about the model source. Let's start with the Windows node definition.
-:::: tabs
-::: tab Enterprise Steps
+::: tabs
+@tab Enterprise Steps
 1. Click on the **Add a new Node Source +** button.
 1. Select **Node Wizard**.
     <br><br>![Node Wizard](/assets/img/howto-winnode-nodewizardsource.png)<br><br>
@@ -106,8 +106,7 @@ Now Rundeck should ask about the model source. Let's start with the Windows node
 1. Click **Add Node** to save that node entry.
 1. Click the **Save** button under the list of nodes.
 
-:::
-::: tab Community Steps
+@tab Community Steps
 1. Click on the **Add a new Node Source +** button.
 1. Select **File**
     <br><br>![File Source Logo](/assets/img/howto-winnode-filesource.png)<br><br>
@@ -130,7 +129,6 @@ Now Rundeck should ask about the model source. Let's start with the Windows node
     ```
 1. **Save the entry.<br>The node is available now by clicking on the "Nodes" section in the left sidebar and setting the filter to `.*`
 :::
-::::
 
 Don't forget to add the Windows user password to the Rundeck key storage.
 

@@ -20,8 +20,8 @@ If this is the first run through of the tutorial there will be a single node in 
 
 There are multiple ways to add Nodes to Rundeck. Using the Node Wizard Resource Model is the simplest way to add a node to the project.
 
-:::: tabs
-::: tab Enterprise Exercise:
+::: tabs
+@tab Enterprise Exercise:
 
 Included in Enterprise is the Node Wizard Node Source.  Use that to add a new node by following these steps:
 
@@ -37,8 +37,7 @@ Included in Enterprise is the Node Wizard Node Source.  Use that to add a new no
 1. Repeat the steps above for **node2**
 1. Click the Save button under the list of nodes.
 
-:::
-::: tab Community Exercise
+@tab Community Exercise
 
 1. Click **Project Settings | Edit Nodes**
 1. Click the Modify button under the `File /home/rundeck/resources.yml` entry.
@@ -56,7 +55,6 @@ Included in Enterprise is the Node Wizard Node Source.  Use that to add a new no
 >YAML is specific about indentation so be sure to check your formatting.  (tip: use **two spaces** not a _tab_)
 
 :::
-::::
 ### Checking your Nodes
 
 1. Click the **Nodes** entry in the Project Menu

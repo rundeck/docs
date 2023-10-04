@@ -57,7 +57,7 @@ Once the runner is running successfully, you can add an action.
    These scripts are sample code to demonstrate the different ways you can implement Automation Actions. They are not meant for use within your production environment.
    :::
    ::::tabs
-   ::: tab Raw Script
+   @tab Raw Script
    ```
    #!/usr/bin/env python3
 
@@ -70,7 +70,7 @@ Once the runner is running successfully, you can add an action.
    print(response) 
    ```
    :::
-   ::: tab Pull Script from Github
+   @tab Pull Script from Github
    ```                                                                                                                            
    wget -O validate_synthetic.py https://raw.githubusercontent.com/your_github/internal_ops_scripts/main/validate_vpn_synthetic.py
                                                                                                                                   

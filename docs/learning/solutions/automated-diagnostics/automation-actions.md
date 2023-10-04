@@ -8,8 +8,8 @@ The prebuilt Jobs in the Automated Diagnostics solution are designed to be invok
 The steps for configuration differ for **Runbook Automation** and **Process Automation** (self-hosted). Be sure to select the correct tab below for the applicable instructions.
 :::
 
-:::: tabs
-::: tab Runbook Automation
+::: tabs
+@tab Runbook Automation
 
 ### Create a Runbook Automation API Key
 
@@ -57,9 +57,7 @@ Next, you will add a new runner in PagerDuty to connect to Runbook Automation.
 :::warning Heads Up
 Although the Action can be invoked from PagerDuty, the output of the Job will not yet appear on the Incident Timeline.
 Continue on to the [next section](/learning/solutions/automated-diagnostics/first-diagnostic-runbook) to complete the setup
-:::
-
-::: tab Process Automation
+@tab Process Automation
 ### Create a PagerDuty API Key
 In the PagerDuty web app:
 
@@ -153,7 +151,5 @@ Install Java 11+ on the machine that will host the runner. We recommend Linux (U
 Although the Action can be invoked from PagerDuty, the output of the Job will not yet appear on the Incident Timeline. 
 Continue on to the [next section](/learning/solutions/automated-diagnostics/first-diagnostic-runbook) to complete the setup
 :::
-
-::::
 
 [comment]: <> (### **Complete the Automated Diagnostics Solution by integrating one of the [<span style="color:green"><ins>Example Jobs!</ins></span>]&#40;/learning/solutions/automated-diagnostics/linux-diagnostics-example.html&#41;**)

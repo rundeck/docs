@@ -22,8 +22,8 @@ Credentials can be configured on a per Project basis or for the entire Process A
 
 ## Configuring Process Automation
 
-:::: tabs
-::: tab 1. Upload Key
+::: tabs
+@tab 1. Upload Key
 
 1. Login to Rundeck as `admin`.
 1. Open the **Welcome to Rundeck** project entry.
@@ -32,8 +32,7 @@ Credentials can be configured on a per Project basis or for the entire Process A
 1. In the dropdown select **Upload File** and choose the JSON file from the earlier steps.
 1. Click **Save**
 
-:::
-::: tab 2. Configuring Node Source
+@tab 2. Configuring Node Source
 
 1. Open the **Welcome to Rundeck** project.
 1. Open **Project Settings** > **Edit Nodes**.
@@ -44,8 +43,7 @@ Credentials can be configured on a per Project basis or for the entire Process A
 1. Select the **Zone** where this Node Source will gather a list of Compute VMs from.
 1. Leave the **Key Path** set to `keys/project/welcome-project/gcp-access-key.json`
 
-:::
-::: tab 3. Configure Settings for Job Steps
+@tab 3. Configure Settings for Job Steps
 
 1. Open **System Menu** (gear icon) > **System Configuration**.
 1. Using the filter at the top enter `gcp` to list just the GCP Plugin Configurations.
@@ -56,7 +54,6 @@ Credentials can be configured on a per Project basis or for the entire Process A
 1. Click **Save**
 
 :::
-::::
 
 ### Confirming GCP Plugins are working
 

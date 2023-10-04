@@ -10,8 +10,8 @@ The following assumes your Welcome Projects are running under Docker Desktop. We
 
 ## Exercise
 
-:::: tabs
-::: tab MacOS
+::: tabs
+@tab MacOS
 
 
 1. Install `socat` using [HomeBrew Instructions](https://formulae.brew.sh/formula/socat).
@@ -23,13 +23,11 @@ The following assumes your Welcome Projects are running under Docker Desktop. We
 
 The `socat` command will remain running until you use _Control-C_ to exit.
 
-:::
-::: tab Windows
+@tab Windows
 
 Steps coming soon, but should be essentially the same as the MacOS once you have `socat` installed.
 
-:::
-::: tab Linux
+@tab Linux
 
 1. Install `socat` using your package manager:
     - Deb: `apt-get update && apt-get install socat`

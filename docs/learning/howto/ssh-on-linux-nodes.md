@@ -25,8 +25,8 @@ Rundeck can store the authentication keys necessary to authenticate to our Linux
 ## Adding Nodes
 Now, it’s time to add the remote node.
 
-:::: tabs
-::: tab Enterprise Exercise
+::: tabs
+@tab Enterprise Exercise
 
 Included in Enterprise is the Node Wizard Node Source. Use that to add a new node by following these steps:
 
@@ -46,8 +46,7 @@ Included in Enterprise is the Node Wizard Node Source. Use that to add a new nod
 1. Click **Add Node** to save that node entry.
 1. Click the **Save** button under the list of nodes.
     <br>![Save Node Wizard](/assets/img/howto-ssh-savenodewizard.png)
-:::
-::: tab Community Exercise
+@tab Community Exercise
 Rundeck Community
 1. Click **Project Settings | Edit Nodes**
     ![Key Entry](/assets/img/howto-ssh-editnodes.png)
@@ -81,7 +80,6 @@ remote-node:
 
 In the *hostname* attribute, place the DNS name of our remote node. In *username* the user who is trying to access the SSH server, In *ssh-key-storage-path* specifies the path that was created in key storage earlier.
 :::
-::::
 
 ## Running Commands on Nodes
 **Let’s dispatch some commands!**

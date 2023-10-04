@@ -7,15 +7,14 @@ Thycotic is a leader in Privileged Access Management solutions providing cloud r
 
 Process Automation users have access to the Thycotic Storage Plugin which can be used to access password/key data stored in a Thycotic Secret Server.
 
-:::: tabs
-::: tab Enterprise Config
+::: tabs
+@tab Enterprise Config
 
 Below is an example configuration, which can be configured using the *System Configuration* module. Add each setting as a configuration entry.
 
 ![Thycotic Configuration](/assets/img/keystorage-thycotic-config.png)
 
-:::
-::: tab rundeck-config.properties
+@tab rundeck-config.properties
 Alternatively the settings can be placed in `rundeck-config.properties`
 
 ```
@@ -30,7 +29,6 @@ rundeck.storage.provider.[index].config.allowSelfSignedCert=true
 
 > Note: Replace ```index``` in your configuration, make sure doesn't override others storage configuration's index.
 :::
-::::
 
 ### Setting Descriptions
 

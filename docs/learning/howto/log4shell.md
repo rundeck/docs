@@ -20,8 +20,8 @@ To add the job definitions to a project of your own follow these steps:
 1. Choose the `installation.yaml` file and click **Upload**.  (Repeat for `scanner.yaml`)
 1. Run the _Scan Directory for Log4Shell_ job.  (No need to run the install job first.  The scanner job does that if it's missing.)
 
-:::: tabs
-::: tab Installation Job
+::: tabs
+@tab Installation Job
 ```
 - defaultTab: nodes
   description: ''
@@ -54,8 +54,7 @@ To add the job definitions to a project of your own follow these steps:
     keepgoing: false
     strategy: node-first
 ```
-:::
-::: tab Scanning Job
+@tab Scanning Job
 ```
 - defaultTab: nodes
   description: ''

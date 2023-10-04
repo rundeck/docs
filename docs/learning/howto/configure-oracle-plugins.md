@@ -30,8 +30,8 @@ This How To is based on the Process Automation [Welcome Projects](/learning/howt
 
 ## Configuring Rundeck
 
-:::: tabs
-::: tab 1. Upload Key
+::: tabs
+@tab 1. Upload Key
 
 1. Login to Rundeck as `admin`.
 1. Open the **Welcome to Rundeck** project entry.
@@ -40,8 +40,7 @@ This How To is based on the Process Automation [Welcome Projects](/learning/howt
 1. In the dropdown select **Upload File** and choose the `oracle-key.pem` file from the earlier steps.
 1. Click **Save**
 
-:::
-::: tab 2. Configure Node Source
+@tab 2. Configure Node Source
 
 1. Open the **Welcome to Rundeck** project.
 1. Open **Project Settings** > **Edit Nodes**.
@@ -52,8 +51,7 @@ This How To is based on the Process Automation [Welcome Projects](/learning/howt
 1. Enter the **Fingerprint**
 2. Enter the Region value where your nodes will be gathered from.
 
-:::
-::: tab 3. Configure Settings for Job Steps
+@tab 3. Configure Settings for Job Steps
 
 1. Open **System Menu** (gear icon) > **System Configuration**.
 1. Using the filter at the top enter `oracle` to list only the Oracle Plugin Configurations.
@@ -63,8 +61,7 @@ This How To is based on the Process Automation [Welcome Projects](/learning/howt
 1. Enter a Zone that can be used by default.  Job Steps can override the zone at each step or dynamically per node on Node Steps.
 1. Click **Save**
 
-:::
-::: tab 4. Configure Health Check
+@tab 4. Configure Health Check
 
 1. Open the **Welcome to Rundeck** project.
 1. Click on **Health Checks**
@@ -76,7 +73,6 @@ This How To is based on the Process Automation [Welcome Projects](/learning/howt
 1. Enter the Region value where your nodes are gathered from.
 
 :::
-::::
 
 ### Confirming oracle Plugins are working
 

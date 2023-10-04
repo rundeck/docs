@@ -2,9 +2,9 @@
 
 
 ## Installing Rundeck
-:::: tabs
+::: tabs
 
-::: tab Enterprise
+@tab Enterprise
 ### Quick install with yum
 
 You can use this script to add the Process Automation yum repo:
@@ -49,9 +49,9 @@ Download rpm package from the [download page](https://download.rundeck.com/) and
 ```bash
 sudo rpm -i rundeckpro-enterprise-{{$rundeckVersionFull}}-1.noarch.rpm
 ```
-:::
 
-::: tab Community
+
+@tab Community
 ### Quick install with yum
 
 You can use this script to add the Rundeck yum repo and install Rundeck:
@@ -90,8 +90,6 @@ Download rpm package from the [download page](https://download.rundeck.com) and 
 sudo rpm -i rundeck-{{$rundeckVersionFull}}-1.noarch.rpm
 ```
 :::
-
-::::
 
 ## Starting Rundeck
 

@@ -6,8 +6,8 @@
 Jobs provide a means to encapsulate a process. A Job is a configuration representing input options, the steps in the process, a filter expression that matches the nodes where those steps will execute, and execution control parameters that specify if steps are run in parallel and what to do if an error occurs in one of the steps.
 Rundeck lets you organize and execute Jobs and observe the progress as the Job is running. You can view a list of the currently running Jobs or drill down to see the output of individual executing steps. Job executions can also be aborted if they need to be stopped.
 
-:::: tabs
-::: tab Enterprise Exercise:
+::: tabs
+@tab Enterprise Exercise:
 
 Now that we have multiple nodes let's run a job against those nodes.
 
@@ -19,8 +19,7 @@ Now that we have multiple nodes let's run a job against those nodes.
 
 There are additional example jobs in the Welcome Project that gather performance metrics and check the status of services to explore as well.
 
-:::
-::: tab Community Exercise:
+@tab Community Exercise:
 1. Click the **Jobs** in the left navigation menu.
 1. Under the _Administration/Linux_ folder find the **Gather Linux Versions** job.
 1. Click on the Name of the job.
@@ -30,7 +29,6 @@ There are additional example jobs in the Welcome Project that gather performance
 There are additional example jobs in the Welcome Project that gather performance metrics and check the status of services to explore as well.
 
 :::
-::::
 
 ## Activity
 

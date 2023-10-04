@@ -43,11 +43,11 @@ If you are new to Rundeck, we recommend finishing the exercises in the [Getting 
 
 ## Using Input Option Variables
 Input Option are values that are provided at the start of running a job. They may be represented as a form on the Job Execution page or populated by a Webhook or other call.
-:::: tabs
+::: tabs
 
 This Exercise shows an example of how to use an Input Variables.
 
-::: tab Enterprise Exercise
+@tab Enterprise Exercise
 1. Open the **Jobs** section in the Welcome Project.
 1. Expand the **Variables > Variables in Job Steps** folders.
 1. *Edit* the **Using Input Options in command and scripts** job.
@@ -55,8 +55,7 @@ This Exercise shows an example of how to use an Input Variables.
 1. The Option Name is `input` and the Option Label is `My Input`
 1. To reference this variable Job Steps will use `${option.input_key}` and Script Steps would use `@option.input_key@`
 
-:::
-::: tab Community Exercise
+@tab Community Exercise
 1. Open the **Jobs** section in the Welcome Project.
 1. Expand the **Variables > Variables in Job Steps** folders.
 1. *Edit* the **Using Input Options in command and scripts** job.
@@ -64,7 +63,6 @@ This Exercise shows an example of how to use an Input Variables.
 1. The Option Name is `input` and the Option Label is `My Input`
 1. To reference this variable Job Steps will use `${option.input_key}` and Script Steps would use `@option.input_key@`
 :::
-::::
 
 ## Using Step Data Variables
 
@@ -85,9 +83,16 @@ This is important to keep in mind because when a job is run against more than on
 Referencing variables from Command Steps use a different syntax than referencing them from within a Script. Most Job Steps are Command Steps and will follow a format of:
 `${data.MyKeyName}`.  Scripts will reference variables by enclosing them in @ symbols: `@data.MyKeyName@`
 
-:::: tabs
+::: tabs
 In this Exercise we'll highlight the dynamics between all of these scenarios.
-::: tab Enterprise Exercise
+@tab Enterprise Exercise
+1. Open the **Jobs** section in the Welcome Project.
+1. Expand the **Variables > Variables in Job Steps** folders.
+1. Edit the **Using Step Data Variables** job.
+1. Job Step 1 is executing a simple `hostname` command and capturing that output with a **Log Filter**. The Log Filter sets the variable name to `MyKeyName`.
+1. Job Step 2 is an example of a **Node _Command_ Step** using data from Step 1 by calling `${data.MyKeyName}`.
+1. Job Step 3 is an example of a **Node _Script_ Step** using data from Step 1 by calling `@data.MyKeyName@`.
+@tab Community Exercise
 1. Open the **Jobs** section in the Welcome Project.
 1. Expand the **Variables > Variables in Job Steps** folders.
 1. Edit the **Using Step Data Variables** job.
@@ -95,23 +100,14 @@ In this Exercise we'll highlight the dynamics between all of these scenarios.
 1. Job Step 2 is an example of a **Node _Command_ Step** using data from Step 1 by calling `${data.MyKeyName}`.
 1. Job Step 3 is an example of a **Node _Script_ Step** using data from Step 1 by calling `@data.MyKeyName@`.
 :::
-::: tab Community Exercise
-1. Open the **Jobs** section in the Welcome Project.
-1. Expand the **Variables > Variables in Job Steps** folders.
-1. Edit the **Using Step Data Variables** job.
-1. Job Step 1 is executing a simple `hostname` command and capturing that output with a **Log Filter**. The Log Filter sets the variable name to `MyKeyName`.
-1. Job Step 2 is an example of a **Node _Command_ Step** using data from Step 1 by calling `${data.MyKeyName}`.
-1. Job Step 3 is an example of a **Node _Script_ Step** using data from Step 1 by calling `@data.MyKeyName@`.
-:::
-::::
 
 ### Node vs Workflow Steps (Multi-Node Example)
 The **Using Step Data Variables** job in the previous section was configured to only execute against the Rundeck Server.
 To highlight the difference when running against multiple nodes, let's run the **Multi-Node Example** job and explore its output and configuration.
 >Note: It is recommended to configure multiple Nodes as detailed in the Getting Started Tutorial.
 
-:::: tabs
-::: tab Enterprise Exercise
+::: tabs
+@tab Enterprise Exercise
 1. Open the **Jobs** section in the Welcome Project.
 1. Expand the **Variables > Variables in Job Steps** folders.
 1. Run the **Multi-Node Example Job**
@@ -119,8 +115,7 @@ To highlight the difference when running against multiple nodes, let's run the *
 1. Since there are now multiple nodes that the _Command_ and _Script_ steps are run against we will see more output than before.
 2. Each Node will have different output for the `hostname` command. This is because those job steps are *Node Steps*. Each step output line will have a node associated with it on the right. (If you are in *Log Output* view look for the blue text)
 
-:::
-::: tab Community Exercise
+@tab Community Exercise
 1. Open the **Jobs** section in the Welcome Project.
 1. Expand the **Variables > Variables in Job Steps** folders.
 1. Run the **Multi-Node Example Job**
@@ -128,7 +123,6 @@ To highlight the difference when running against multiple nodes, let's run the *
 1. Since there are now multiple nodes that the _Command_ and _Script_ steps are run against we will see more output than before.
 2. Each Node will have different output for the `hostname` command. This is because those job steps are *Node Steps*. Each step output line will have a node associated with it on the right. (If you are in *Log Output* view look for the blue text)
 :::
-::::
 
 A common sticking point is when _Workflow Steps_ need to use a variable value from a _Node Step_.
 

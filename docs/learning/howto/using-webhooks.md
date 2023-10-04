@@ -16,8 +16,8 @@ Webhooks are configured within a project. The [Welcome Projects](/learning/index
 
 > Note: If you haven't followed the Exercise Steps in the Tutorial we encourage starting with that walk-through and leverage our Welcome Projects for the Exercises.
 
-:::: tabs
-::: tab Enterprise Highlights
+::: tabs
+@tab Enterprise Highlights
 
 1. Click on **Webhooks** in the Project Menu and choose the `Run Jobs - Webhook Example` entry.
 1. The **Post URL** is the URL that external systems would submit a POST http event to trigger this webhook.
@@ -27,15 +27,13 @@ Webhooks are configured within a project. The [Welcome Projects](/learning/index
 1. Expanding the rule by clicking **Edit** to see the details.
 1. The rule is running a job called `Demo/Linux/Gather Linux Versions - Docker` against all nodes `(.*)`
 
-:::
-::: tab Community Highlights
+@tab Community Highlights
 1. Click on **Webhooks** in the Project Menu and choose the `Run Job - Webhook Example` entry.
 1. The **Post URL** is the URL that external systems would submit a POST http event to trigger this webhook.
 1. Name **Run Job - Webhook Example**
 1. On the **Handler Configuration** tab, the **Webhook Handler** is **Run Job** _(more on this in future steps)_
 1. The webhook is running a job called `Demo/Linux/Gather Linux Versions - Docker` against all nodes `(.*)`
 :::
-::::
 
 ## Webhook Handlers
 
@@ -68,8 +66,8 @@ There is a Debug tab, but likely at this stage there are no events that have bee
 
 ## Webhook Exercise
 
-:::: tabs
-::: tab Enterprise Exercise
+::: tabs
+@tab Enterprise Exercise
 1. Navigate to **Webhooks** in the Project Menu.
 1. Click **Create Webhook** Button.
 1. In the Window on the right enter `Check Process Status` for **Name**.
@@ -84,8 +82,7 @@ There is a Debug tab, but likely at this stage there are no events that have bee
 1. Click the **Add Condition** button.
 1. Enter `$.process` for the **Event Field** and change the operator to **exists** and set Value to `.`.
 1. Click the **Create Webhook** button.
-:::
-::: tab Community Exercise
+@tab Community Exercise
 1. Navigate to **Webhooks** in the Project Menu.
 1. Click **Add** Button.
 1. In the Window on the right enter `Check Process Status` for **Name**.
@@ -96,7 +93,6 @@ There is a Debug tab, but likely at this stage there are no events that have bee
 1. Enter `.*` for the Node Filter to run against all nodes.
 1. Click the **Create Webhook** button.
 :::
-::::
 
 After following these steps and clicking Create Webhook the URL will be populated. Click your new Webhook on the left and copy the **Post URL** to your clipboard.
 

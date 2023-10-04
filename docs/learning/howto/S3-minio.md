@@ -11,25 +11,25 @@ This article explains how to configure Rundeck so that these execution logs are 
    systemctl stop rundeckd
    ``` 
 1. S3 Log Storage Plugin<br>
-   :::: tabs
-   ::: tab Rundeck
+   ::: tabs
+   @tab Rundeck
    Add the S3 log storage [plugin](https://github.com/rundeck-plugins/rundeck-s3-log-plugin) on the `libext` directory (at `$RDECK_BASE/libext` directory).<br>
    ```
    wget https://github.com/rundeck-plugins/rundeck-s3-log-plugin/releases/download/v1.0.12/rundeck-s3-log-plugin-1.0.12.jar -P $RDECK_BASE/libext
    ```
    :::
-   ::: tab PagerDuty Process Automation
+   @tab PagerDuty Process Automation
    Process Automation includes its own plugin for this out of the box<br>  
    :::
    ::::
 1. To enable the S3 / Minio log storage plugin, add the following line on the `rundeck-config.properties` file<br>
-   :::: tabs
-   ::: tab Rundeck
+   ::: tabs
+   @tab Rundeck
    ```
    rundeck.execution.logs.fileStoragePlugin=org.rundeck.amazon-s3
    ``` 
    :::
-   ::: tab PagerDuty Process Automation
+   @tab PagerDuty Process Automation
 
    ```
    rundeck.execution.logs.fileStoragePlugin=com.rundeck.rundeckpro.amazon-s3
@@ -39,8 +39,8 @@ This article explains how to configure Rundeck so that these execution logs are 
    :::: 
 1. Then open the `framework.properties` file and add the S3 / Minio bucket info as follow:
 
-:::: tabs
-::: tab Rundeck Community
+::: tabs
+@tab Rundeck Community
 
 ```
 framework.plugin.ExecutionFileStorage.org.rundeck.amazon-s3.endpoint=http://192.168.1.14:9000
@@ -50,8 +50,7 @@ framework.plugin.ExecutionFileStorage.org.rundeck.amazon-s3.bucket=test-rundeck-
 framework.plugin.ExecutionFileStorage.org.rundeck.amazon-s3.path=logs/${job.project}/${job.execid}.log
 framework.plugin.ExecutionFileStorage.com.rundeck.amazon-s3.region=your_instance_region
 ```
-:::
-::: tab PagerDuty Process Automation
+@tab PagerDuty Process Automation
 
 ```
 framework.plugin.ExecutionFileStorage.com.rundeck.rundeckpro.amazon-s3.endpoint=http://192.168.1.14:9000
@@ -62,7 +61,6 @@ framework.plugin.ExecutionFileStorage.com.rundeck.rundeckpro.amazon-s3.path=logs
 framework.plugin.ExecutionFileStorage.com.rundeck.rundeckpro.amazon-s3.region=your_instance_region
 ```
 :::
-::::
 
 **Definitions:**
 
@@ -112,8 +110,8 @@ project.plugin.ExecutionFileStorage.com.rundeck.rundeckpro.amazon-s3.region=your
 4. Restart the PagerDuty Process Automation service.<br>
 
 ## Docker Config
-:::: tabs
-::: tab Rundeck Community
+::: tabs
+@tab Rundeck Community
 
 ### Extending the image
 The  S3 Log Storage Plugin isn’t bundled out of the box with Rundeck. To use it on a Docker image it is necessary to extend the image using Remco.  [Remco](https://github.com/HeavyHorst/remco) is used to generate the Rundeck configuration files from templates. This allows storing parts of the configuration space in different backends. The default configuration uses environment variables.
@@ -253,9 +251,7 @@ rundeck.feature.pagedjoblist.enabled=true
 
 ![ ](/assets/img/minio9.png)<br>
 
-:::
-
-::: tab PagerDuty Process Automation
+@tab PagerDuty Process Automation
 
 The following env vars are included on the Process Automation Docker image by default and are needed to enable S3/Minio log storage on the Docker container:
 
@@ -322,7 +318,6 @@ Full Docker example:
 ![ ](/assets/img/minio10.png)<br>
 
 :::
-::::
 
 ## Resources
 
