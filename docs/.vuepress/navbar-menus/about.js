@@ -18,5 +18,9 @@ export default [
   {
     text: 'Licensing',
     link: '/about/licensing'
+  },
+  {
+    text: 'Release Notes',
+    link: '/history/'
   }
 ]
