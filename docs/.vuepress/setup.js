@@ -6,7 +6,7 @@ const API_VERSION='44'
 const API_DEP_REL='5.0.0'
 const API_DEP_VER='14'
 const API_MIN_VER='11'
-const CLI_VERSION='2.0.1'
+const CLI_VERSION='2.0.6'
 
 const REPO_BRANCH='4.0.x'
 
