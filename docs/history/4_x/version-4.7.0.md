@@ -15,8 +15,11 @@ Release Date: October 6, 2022
 
 - [Download the Releases](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
-- [Watch the Live Stream Release Recap](https://youtu.be/jTqfAmExg_Y)
 - [Upgrade instructions](/upgrading/)
+- [Watch the Live Stream Release Recap](https://youtu.be/jTqfAmExg_Y)
+
+
+<YouTube id="jTqfAmExg_Y"/>
 
 ## Overview
 

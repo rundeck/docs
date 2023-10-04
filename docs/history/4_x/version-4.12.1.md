@@ -18,6 +18,8 @@ Release Date: May 10th, 2023
 - [Upgrade instructions](/upgrading/)
 - [Watch the Live Stream Release Recap](https://youtu.be/e6Rs9BRljAA)
 
+<YouTube id="e6Rs9BRljAA"/>
+
 ## Overview
 
 This release contains a hotfix for a potential login issue. A change in 4.12.0 added a new security configuration by default, which can interfere with SSO login authentication flows.

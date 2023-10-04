@@ -18,6 +18,8 @@ Release Date: January 11, 2023
 - [Upgrade instructions](/upgrading/)
 - [Watch the Live Stream Release Recap](https://www.youtube.com/watch?v=VIdp90P5zFk&ab_channel=PagerDutyInc)
 
+<YouTube id="VIdp90P5zFk"/>
+
 ## Overview
 
 Check out the new features and enhancements for PagerDuty Process Automation, PagerDuty Runbook Automation, and Rundeck Community included in this release. This release introduces the beta for Plugin Suite Configuration, which simplifies the configuration of plugins.

@@ -18,6 +18,8 @@ Release Date: May 15th, 2023
 - [Upgrade instructions](/upgrading/)
 - [Watch the Live Stream Release Recap](https://youtu.be/e6Rs9BRljAA)
 
+<YouTube id="e6Rs9BRljAA"/>
+
 ## Overview
 
 Check out the new features and enhancements for PagerDuty Process Automation, PagerDuty Runbook Automation, and Rundeck Community included in this release. This release includes enhancements to the [Enterprise Runner](/administration/runner/), the SSM Node Executor plugins, and a new plugin suite. See below for the full release highlights.

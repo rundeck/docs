@@ -18,6 +18,8 @@ Release Date: April 17th, 2023
 - [Upgrade instructions](/upgrading/)
 - [Watch the Live Stream Release Recap](https://youtu.be/e6Rs9BRljAA)
 
+<YouTube id="e6Rs9BRljAA"/>
+
 ## Overview
 
 Check out the new features and enhancements for PagerDuty Process Automation, PagerDuty Runbook Automation, and Rundeck Community included in this release. This release includes new plugins for Kubernetes, new Plugin Suites for Google Cloud, Datadog, and Azure, performance improvements to the [Enterprise Runner](/administration/runner/runner-install.html), new authentication methods for Remote URL Job Options, and security fixes.
