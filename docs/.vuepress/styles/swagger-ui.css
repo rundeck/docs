@@ -1,6 +1,7 @@
 .swagger-ui {
     color: #3b4151;
-    font-family: sans-serif
+    font-family: sans-serif;
+    background-color: white;
         /*! normalize.css v7.0.0 | MIT License | github.com/necolas/normalize.css */
 }
 
@@ -297,7 +298,8 @@
 .swagger-ui th,
 .swagger-ui tr,
 .swagger-ui ul {
-    box-sizing: border-box
+    box-sizing: border-box;
+    background-color: white;
 }
 
 .swagger-ui .aspect-ratio {
@@ -9805,7 +9807,7 @@
 }
 
 .swagger-ui .responses-inner {
-    padding: 20px
+    padding: 20px;
 }
 
 .swagger-ui .responses-inner h4,
@@ -9830,7 +9832,7 @@
     color: #909090;
     font-family: monospace;
     font-size: 11px;
-    font-weight: 600
+    font-weight: 600;
 }
 
 .swagger-ui .response-col_links {
@@ -10002,7 +10004,7 @@
 
 .swagger-ui .response-controls {
     display: flex;
-    padding-top: 1em
+    padding-top: 1em;
 }
 
 .swagger-ui .response-control-media-type {
@@ -10888,7 +10890,9 @@
 }
 
 .swagger-ui .servers table tr {
-    width: 30em
+    width: 30em;
+    background-color: white;
+    text-decoration-color: #000000;
 }
 
 .swagger-ui .servers table td {
@@ -10896,7 +10900,8 @@
     max-width: 15em;
     padding-bottom: 10px;
     padding-top: 10px;
-    vertical-align: middle
+    vertical-align: middle;
+    border: 0;
 }
 
 .swagger-ui .servers table td:first-of-type {
@@ -10905,18 +10910,21 @@
 
 .swagger-ui .servers table td input {
     height: 100%;
-    width: 100%
+    width: 100%;
+    color: black;
 }
 
 .swagger-ui .servers .computed-url {
-    margin: 2em 0
+    margin: 2em 0;
 }
 
 .swagger-ui .servers .computed-url code {
     display: inline-block;
     font-size: 16px;
     margin: 0 1em;
-    padding: 4px
+    padding: 4px;
+    background-color: #666666;
+    color: white;
 }
 
 .swagger-ui .servers-title {
@@ -10960,7 +10968,8 @@
 
 .swagger-ui table tbody tr td {
     padding: 10px 0 0;
-    vertical-align: top
+    vertical-align: top;
+    border-color: #cfd4db;
 }
 
 .swagger-ui table tbody tr td:first-of-type {
@@ -10976,7 +10985,8 @@
     font-size: 12px;
     font-weight: 700;
     padding: 12px 0;
-    text-align: left
+    text-align: left;
+    border-color: #cfd4db;
 }
 
 .swagger-ui .parameters-col_description {
@@ -11177,7 +11187,8 @@
 }
 
 .swagger-ui .info pre {
-    font-size: 14px
+    font-size: 14px;
+    background-color: #707070;
 }
 
 .swagger-ui .info li,
