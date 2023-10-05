@@ -77,4 +77,7 @@ html[data-theme=dark] {
   img[src*="/images/RundeckbyPagerDuty.svg"] {
     content: url("/images/RundeckbyPagerDutyDark.svg")
   }
+  
+  $theme-color: #3eaf7c;
+
 }
