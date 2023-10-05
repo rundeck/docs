@@ -9279,7 +9279,13 @@
 }
 
 .swagger-ui .opblock-tag svg {
-    transition: all .4s
+    transition: all .4s;
+    fill: var(--text-color);
+}
+
+.swagger-ui .unlocked,
+.swagger-ui .arrow {
+    fill: var(--text-color);
 }
 
 .swagger-ui .opblock-tag small {
@@ -10529,7 +10535,7 @@
 }
 
 .swagger-ui .dialog-ux .modal-ux {
-    background: #fff;
+    background: var(--bg-color);
     border: 1px solid #ebebeb;
     border-radius: 4px;
     box-shadow: 0 10px 30px 0 rgba(0, 0, 0, .2);
@@ -10550,15 +10556,14 @@
 }
 
 .swagger-ui .dialog-ux .modal-ux-content p {
-    color: #41444e;
-    color: #3b4151;
+    color: var(--text-color);
     font-family: sans-serif;
     font-size: 12px;
     margin: 0 0 5px
 }
 
 .swagger-ui .dialog-ux .modal-ux-content h4 {
-    color: #3b4151;
+    color: var(--text-color);
     font-family: sans-serif;
     font-size: 18px;
     font-weight: 600;
@@ -10582,7 +10587,7 @@
 }
 
 .swagger-ui .dialog-ux .modal-ux-header h3 {
-    color: #3b4151;
+    color: var(--text-color);
     flex: 1;
     font-family: sans-serif;
     font-size: 20px;
@@ -12947,7 +12952,7 @@ html[data-theme=dark] {
         background: 0 0;
         border: 2px solid gray;
         box-shadow: rgba(0, 0, 0, .1) 0 1px 2px;
-        color: #b5bac9;
+        color: var(--text-color);
     }
 
     .swagger-ui .btn:hover {
@@ -12958,7 +12963,6 @@ html[data-theme=dark] {
     .swagger-ui .btn.cancel {
         background-color: transparent;
         border-color: #a72a2a;
-        color: #e69999;
     }
 
     .swagger-ui .btn.cancel:hover {
