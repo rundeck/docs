@@ -127,7 +127,8 @@ jobs:
             }
   update_index:
     machine:
-      image: cimg/base:2023.09-20.04
+      image: ubuntu-2004:2023.07.1
+		resource_class: medium
     working_directory: ~/repo
     steps:
       - checkout
