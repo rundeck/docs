@@ -6,13 +6,12 @@ Rundeck offers a [Key Storage Backend](/manual/key-storage/key-storage.html#key-
 
 A more [detailed installation How To](/learning/howto/vault-integration.html) is available in our learning section.
 
-:::: tabs
-::: tab Enterprise Installation
+::: tabs
+@tab Enterprise Installation
 
 This plugin is bundled with the Enterprise version.  No installation steps required.
 
-:::
-::: tab Community Installation
+@tab Community Installation
   * Download and start [Rundeck](https://www.rundeck.com/downloads). It will automatically create the necessary directories.
   * Clone this repository. Build using `gradle` wrapper:
     ```
@@ -22,31 +21,29 @@ This plugin is bundled with the Enterprise version.  No installation steps requi
   * Restart Rundeck.
 
 :::
-::::
 
 ## Configuration
 
 ### Quick Start
 
-:::: tabs
+::: tabs
 
 For existing vault storage, it is recommended to remove the default `keys` path added by default for rundeck.
 You can use these settings for an existing vault storage.
 
-::: tab Enterprise Config
+@tab Enterprise Config
 
 Example configuration using the *System Configuration* module:
 
-![Vault Storage Config](@assets/img/keystorage-vault-config1.png)
+![Vault Storage Config](/assets/img/keystorage-vault-config1.png)
 
-![Vault Storage Config](@assets/img/keystorage-vault-config2.png)
+![Vault Storage Config](/assets/img/keystorage-vault-config2.png)
 
-![Vault Storage Config](@assets/img/keystorage-vault-config3.png)
+![Vault Storage Config](/assets/img/keystorage-vault-config3.png)
 
-![Vault Storage Config](@assets/img/keystorage-vault-config4.png)
+![Vault Storage Config](/assets/img/keystorage-vault-config4.png)
 
-:::
-::: tab rundeck-config.properties
+@tab rundeck-config.properties
 
 ```
 rundeck.storage.provider.1.type=vault-storage
@@ -59,7 +56,6 @@ rundeck.storage.provider.1.config.storageBehaviour=vault
 ```
 
 :::
-::::
 
 ### Settings Descriptions
 

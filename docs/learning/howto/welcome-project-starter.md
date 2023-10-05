@@ -6,7 +6,7 @@ There are two Welcome Projects, a Community Welcome Project focused on the Runde
 
 ### Disclaimer
 
-The Welcome Projects are meant to show users how Rundeck works and are not designed to be used in production. Some of the setup/installation methods used in this environment are not recommended for production deployments. Do not run this environment for production purposes or with sensitive data. For installation best practices follow our documentation ([https://docs.rundeck.com/docs/](https://docs.rundeck.com/docs/)) site and guidance from our world-class Support team.
+The Welcome Projects are meant to show users how Rundeck works and are not designed to be used in production. Some of the setup/installation methods used in this environment are not recommended for production deployments. Do not run this environment for production purposes or with sensitive data. For installation best practices follow our documentation ([https://docs.rundeck.com/docs/](/)) site and guidance from our world-class Support team.
 
 ## Rundeck Basic Terminology
 
@@ -21,8 +21,8 @@ Before starting, knowing basic Rundeck terminology is useful. All basic concepts
 
 To install the Welcome Project you need to download the latest release:
 
-:::: tabs
-::: tab Community Welcome Project
+::: tabs
+@tab Community Welcome Project
 
 Navigate to: [https://github.com/rundeck/welcome-project-community](https://github.com/rundeck/welcome-project-community)
 
@@ -30,8 +30,7 @@ Navigate to: [https://github.com/rundeck/welcome-project-community](https://gith
 1. Download the Source Code (.zip) file.
 1. Extract the contents to a folder on your local hard drive.
 
-:::
-::: tab Enterprise Welcome Project
+@tab Enterprise Welcome Project
 
 Navigate to: [https://github.com/rundeckpro/welcome-project](https://github.com/rundeckpro/welcome-project)
 
@@ -42,7 +41,6 @@ Navigate to: [https://github.com/rundeckpro/welcome-project](https://github.com/
 _WARNING_: A license is required for the Process Automation Welcome Project. A Process Automation Trial license can be requested from here [https://www.rundeck.com/see-demo](https://www.rundeck.com/see-demo).
 
 :::
-::::
 
 ## Building the Environment
 
@@ -84,24 +82,24 @@ To access Rundeck, head to[ http://localhost:4440](http://localhost:4440) in you
 
 Log in using the following credentials: username: `admin` and password: `admin`
 
-![Login Page](@assets/img/login-page.png)
+![Login Page](/assets/img/login-page.png)
 
 ## Navigating Welcome Project
 
 After logging in, you will see the following screen:
 
-![alt_text](@assets/img/howto-project-list.png)
+![alt_text](/assets/img/howto-project-list.png)
 
 Click the project name.
 
-![alt_text](@assets/img/howto-welcome-project-dashboard.png)
+![alt_text](/assets/img/howto-welcome-project-dashboard.png)
 
 In the left nav bar the options available are:
 
 *   Dashboard, to view the project description, Readme, and executions summary. Process Automation users may see additional visualizations for schedules and execution history.
 *   Jobs, the welcome project available jobs.
 
-![alt_text](@assets/img/howto-welcome-joblist.png)
+![alt_text](/assets/img/howto-welcome-joblist.png)
 
 *   Nodes: where rundeck displays all nodes
 *   Commands: dispatch individual commands to available nodes
@@ -127,7 +125,7 @@ In the left nav bar the options available are:
 
 ## Familiarize Yourself with Rundeck!
 
-Once your environment is fully operational, [start the Tutorial here](https://docs.rundeck.com/docs/learning/tutorial/preparing.html).
+Once your environment is fully operational, [start the Tutorial here](/learning/tutorial/preparing.md).
 
 ## Stop the Environment
 

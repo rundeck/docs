@@ -8,7 +8,7 @@ This release brings some impressive new performance enhancements to the Jobs Lis
 
 Also in this release a new ACL permission to allow or restrict Job Execution History separately from actions that can be done on a job. This opens the ability to share job results without allowing any other access to the job itself. [Here’s the documentation](https://docs.rundeck.com/3.2.x/administration/security/authorization.html#project-scope-resources-and-actions) on for using this new ACL action called `view_history`.
 
-We have also included in this release a new Enterprise Job Execution Plugin that enhances the [Job Retry Options](https://docs.rundeck.com/docs/manual/creating-jobs.html#retry) already included in Rundeck. With this plugin Retries will only be attempted on Nodes that failed or were not started. [Read more and see an example here.](https://docs.rundeck.com/3.2.x/manual/execution-lifecycle/job-retry-failed-nodes.html)
+We have also included in this release a new Enterprise Job Execution Plugin that enhances the [Job Retry Options](/manual/creating-jobs.html#retry) already included in Rundeck. With this plugin Retries will only be attempted on Nodes that failed or were not started. [Read more and see an example here.](https://docs.rundeck.com/3.2.x/manual/execution-lifecycle/job-retry-failed-nodes.md)
 
 ## Upgrading
 

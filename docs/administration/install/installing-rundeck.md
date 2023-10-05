@@ -12,14 +12,15 @@ Installing Rundeck is a straightforward and efficient way to enhance your organi
 Docker is fastest way to try out Rundeck
 :::
 
-:::: tabs
+::: tabs
 
 
-::: tab Docker
+@tab Docker
 
 ### Quick Start
+
 ```bash
-docker run --rm -it -p 4440:4440 rundeckpro/enterprise:{{{rundeckVersion}}}
+docker run --rm -it -p 4440:4440 rundeckpro/enterprise:{{$rundeckVersion}}
 ```
 
 ### Docker Compose
@@ -28,9 +29,9 @@ in Docker Compose!** These examples cover common configuration scenarios includi
 connecting to each supported database.
 
 [Detailed Docker instructions can be found here.](/administration/install/docker.md)  
-:::
 
-::: tab Deb
+
+@tab Deb
 ### Quick Install
 ```bash
 curl https://raw.githubusercontent.com/rundeck/packaging/main/scripts/deb-setup.sh 2> /dev/null | sudo bash -s rundeckpro
@@ -57,9 +58,9 @@ sudo apt-get install rundeckpro-enterprise
 ```
 
 [Detailed deb instructions can be found here.](/administration/install/linux-deb.md)  
-:::
 
-::: tab Rpm
+
+@tab Rpm
 ### Quick Install
 ```bash
 curl https://raw.githubusercontent.com/rundeck/packaging/main/scripts/rpm-setup.sh 2> /dev/null | sudo bash -s rundeckpro
@@ -89,21 +90,19 @@ sudo yum install java rundeckpro-enterprise
 ```
 
 [Detailed rpm instructions can be found here.](/administration/install/linux-rpm.md)  
-:::
 
 
 
-::: tab Tomcat
+
+@tab Tomcat
 [Check here for detailed Tomcat installation instructions.](/administration/install/tomcat.md)  
-:::
 
-::: tab Windows
+
+@tab Windows
 [Check here for detailed Windows installation instructions.](/administration/install/windows.md)
+
+
 :::
-
-::::
-###
-
 
 ## Database Configuration
 Rundeck requires a backend database to store and manage various types of data that are integral to its operation. The backend database serves as a repository for critical information such as job definitions, execution history, project configurations, and user accounts. By leveraging a database, Rundeck ensures data integrity, persistence, and scalability, allowing multiple users to collaborate seamlessly and access the platform's features concurrently.
@@ -141,9 +140,9 @@ Replace the following tokens in the instructions for each database:
 * `<rundeckuser>`: The database user with permissions on the `rundeck` database.
 * `<rundeckpassword>`: The password for the Rundeck database user.
 
-:::: tabs
+::: tabs
 
-::: tab MySQL
+@tab MySQL
 ```properties
 dataSource.url = jdbc:mysql://<host>/rundeck?autoReconnect=true&useSSL=false
 dataSource.username = <rundeckuser>
@@ -152,9 +151,9 @@ dataSource.driverClassName = org.mariadb.jdbc.Driver
 ```
 
 [Detailed MySQL instructions.](/administration/configuration/database/mysql.md)
-:::
 
-::: tab PostgreSQL
+
+@tab PostgreSQL
 ```properties
 dataSource.driverClassName = org.postgresql.Driver
 dataSource.url = jdbc:postgresql://<host>/rundeck
@@ -163,9 +162,9 @@ dataSource.password=<rundeckpassword>
 ```
 
 [Detailed PostgreSQL instructions.](/administration/configuration/database/postgres.md)
-:::
 
-::: tab SQL Server
+
+@tab SQL Server
 ```properties
 dataSource.driverClassName = com.microsoft.sqlserver.jdbc.SQLServerDriver
 dataSource.url = jdbc:sqlserver://<host>;DatabaseName=RUNDECK
@@ -174,10 +173,10 @@ dataSource.password = <rundeckpassword>
 ```
 
 [Detailed SQL Server instructions.](/administration/configuration/database/mssql.md)
-:::
 
 
-::: tab Oracle
+
+@tab Oracle
 ```properties
 dataSource.url = jdbc:oracle:thin:@<host>:1521:orcl # (change server name and instance name)
 dataSource.driverClassName = oracle.jdbc.OracleDriver
@@ -188,9 +187,9 @@ dataSource.properties.validationQuery = SELECT 1 FROM DUAL
 ```
 
 [Detailed Oracle instructions.](/administration/configuration/database/oracle.md)
-:::
 
-::::
+
+:::
 
 :::warning
 When using passwords with **special characters**, ensure there are **no spaces** between the equal sign and the value provided: `dataSource.password=<rundeckpassword>`

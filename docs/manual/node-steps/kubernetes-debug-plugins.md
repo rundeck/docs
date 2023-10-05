@@ -11,7 +11,7 @@ To learn more about debugging in Kubernetes with ephemeral containers, see the [
 
 ## Setup
 
-Follow the steps outlined in the [**Kubernetes Plugins Overview**](/docs/manual/plugins/kubernetes-plugins-overview) to configure authentication for Kubernetes Job steps.
+Follow the steps outlined in the [**Kubernetes Plugins Overview**](/manual/plugins/kubernetes-plugins-overview) to configure authentication for Kubernetes Job steps.
 Credentials can be configured on a per Job Step basis, Project basis, or for the entire Process Automation system.
 
 To see property syntax for configuring properties at the Project or System level, navigate to **System Menu** (gear icon in the upper-right) -> **Plugins** -> **Installed Plugins**.
@@ -30,4 +30,4 @@ The following fields are **optional**:
 * Name of a container within the running pod that the ephemeral container should target. The ephemeral container will be run in the namespaces (IPC, PID, etc) of the Target Container. If not set then the ephemeral container uses the namespaces configured in the Pod spec. See the official Kubernetes documentation [here](https://kubernetes.io/docs/tasks/debug/debug-application/debug-running-pod/#ephemeral-container) for further details.
 * Print Pod Spec: This will print the pod details to the log output after the ephemeral container has been added.
 
-All of the fields in the **Authentication** section are outlined in the [**Kubernetes Plugins Overview**](/docs/manual/plugins/kubernetes-plugins-overview).
+All of the fields in the **Authentication** section are outlined in the [**Kubernetes Plugins Overview**](/manual/plugins/kubernetes-plugins-overview).

@@ -11,4 +11,4 @@ It can be used to pass the input JSON parameter to the [Loop / Step / Run Script
 * **_Path_** The path of the context variable (you will access the context variable using ${group.path}
 * **_Log Data_** Print the captured value
 
-![plugin-config](@assets/img/loop-log-filter.png)
+![plugin-config](/assets/img/loop-log-filter.png)

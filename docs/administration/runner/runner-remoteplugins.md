@@ -4,8 +4,8 @@ title: "Remote plugins"
 # Enterprise Runner - Remote plugins available on the Runner
 The following plugins are available in the next generation Runners:
  
-:::: tabs
-::: tab Node Executors
+::: tabs
+@tab Node Executors
 - local
 - sshj-ssh
 - ssh-exec
@@ -14,8 +14,7 @@ The following plugins are available in the next generation Runners:
 - docker-container-node-executor
 - Kubernetes-node-executor
 
-:::
-::: tab File Copiers
+@tab File Copiers
 - ssh-copier
 - sshj-scp
 - com.batix.rundeck.plugins.AnsibleFileCopier
@@ -23,8 +22,7 @@ The following plugins are available in the next generation Runners:
 - docker-container-file-copier
 - Kubernetes-file-copier
 
-:::
-::: tab Node Steps
+@tab Node Steps
 - nixy-local-node-step
 - nixy-waitfor-dir-exists
 - nixy-waitfor-contains
@@ -91,8 +89,7 @@ The following plugins are available in the next generation Runners:
 - vmware-vm-powerops
 - filetransfer
 
-:::
-::: tab Workflow Steps
+@tab Workflow Steps
 - com.batix.rundeck.plugins.AnsiblePlaybookWorkflowStep
 - com.batix.rundeck.plugins.AnsiblePlaybookInlineWorkflowStep
 - com.batix.rundeck.plugins.AnsibleModuleWorkflowStep
@@ -107,18 +104,13 @@ The following plugins are available in the next generation Runners:
 - vmware-vm-customize
 - vmware-vm-reconfig
 
-:::
-::: tab Node Source
+@tab Node Source
 - Ansible Inventory
 - VMware 
 - Kubernetes Pods 
 - Docker Containers
 - File Resource Model
 - Script Resource Model
-:::
-
-::: tab Key Storage
+@tab Key Storage
 - vault-storage
 :::
-
-::::

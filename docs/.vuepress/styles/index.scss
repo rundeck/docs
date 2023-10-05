@@ -1,0 +1,81 @@
+.theme-container h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Jost';
+  font-weight: 700;
+}
+
+.custom-container.enterprise {
+  background-color: #f3f5f7;
+  border-color: #06ac38;
+  padding: 0.1rem 1.5rem;
+  border-left-width: 0.5rem;
+  border-left-style: solid;
+  margin: 1rem 0;
+
+  .custom-container-title {
+    margin: 0.5rem;
+  }
+}
+
+.custom-container.tutorial {
+  background-color: #f3f5f7;
+  border-color: #06ac38;
+  padding: 0.1rem 1.5rem;
+  border-left-width: 0.5rem;
+  border-left-style: solid;
+  margin: 1rem 0;
+
+  .custom-container-title {
+    margin: 0.5rem
+  }
+}
+
+.custom-container.incubating {
+  background-color: #f3f5f7;
+  border-color: #d46300;
+  padding: 0.1rem 1.5rem;
+  border-left-width: 0.5rem;
+  border-left-style: solid;
+  margin: 1rem 0;
+
+  .custom-container-title {
+    margin: 0.5rem;
+  }
+}
+
+.custom-container.betafeature {
+  background-color: #f3f5f7;
+  border-color: #48a1f5;
+  padding: 0.1rem 1.5rem;
+  border-left-width: 0.5rem;
+  border-left-style: solid;
+  margin: 1rem 0;
+}
+
+.custom-container.deprecated {
+  background-color: #fbfbd8;
+  border-color: #d4d400;
+  padding: 0.1rem 1.5rem;
+  border-left-width: 0.5rem;
+  border-left-style: solid;
+  margin: 1rem 0;
+
+  .custom-container-title {
+    margin: 0.5rem;
+  }
+}
+
+.theme-hope-content:not(.custom) .swagger h3:first-child {
+  margin-top: 0px !important;
+}
+
+html[data-theme=dark] {
+  img[src*="/images/RundeckbyPagerDuty.svg"] {
+    content: url("/images/RundeckbyPagerDutyDark.svg")
+  };
+  --theme-color: var(--theme-color-dark)
+}

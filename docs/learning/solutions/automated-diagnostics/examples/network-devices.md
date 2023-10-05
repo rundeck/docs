@@ -38,7 +38,7 @@ The following commands are useful for troubleshooting duplex issues:
 ### Ansible Integration
 Ansible is a popular configuration management solution often used for managing network devices. 
 Many customers use PagerDuty Process Automation as an intuitive graphical-user-interface (GUI) on top of Ansible, or as a way to integrate Ansible with other tools in their worksflows.
-As with many other integrations, configuration of Ansible is handled through a built-in [plugin](https://docs.rundeck.com/docs/learning/howto/using-ansible.html#rundeck-and-ansible-integration) that assumes Ansible is installed on the same server as Process Automation.
+As with many other integrations, configuration of Ansible is handled through a built-in [plugin](/learning/howto/using-ansible.md#rundeck-and-ansible-integration) that assumes Ansible is installed on the same server as Process Automation.
 
 The Ansible integration is configured on a per-project basis and is composed of 3 main pieces:
 * **Ansible Resource Model Source**<br>

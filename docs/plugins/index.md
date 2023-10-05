@@ -89,4 +89,4 @@ SCM | [Job Replication](/manual/projects/scm/job-replication.md) | Replicates jo
 SSO | [Okta](/administration/security/sso.md) | Allows you to use Okta to log into Rundeck | Enterprise
 Storage Converter | [Encyption](/administration/configuration/plugins/bundled-plugins.md#jasypt-encryption-plugin) | Encrypts Key Storage and Project configuration data | Built-in
 Webhook | [Run Job](/manual/webhooks/run-job.md) | Runs a job when a webhook event is received | Built In
-Webhook | [Routing Run Job](./webhooks/routing-run-job.md) | Advanced rule processing of webhook event data to run jobs. | Enterprise
+Webhook | [Routing Run Job](/manual/webhooks/advanced-run-job.md) | Advanced rule processing of webhook event data to run jobs. | Enterprise

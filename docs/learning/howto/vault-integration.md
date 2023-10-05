@@ -18,10 +18,10 @@ If you don’t already have Vault installed follow these steps:
 1. Uncompress the file and save the executable in a specific location in this example is saved on `/home/user/Programs/vault`
 1. Start the server with `./vault server -dev` command.
 1. Check the output, you can see the Vault server URL and use the token to access it.<br><br>
-![](~@assets/img/Vault1.png)<br><br>
+![](/assets/img/Vault1.png)<br><br>
 Checking the VAULT_ADDR URL in any browser you can see the Vault web interface.  Use the Vault output’s Root Token to login.<br><br>
-![](~@assets/img/Vault2.png)<br><br>
-![](~@assets/img/Vault3.png)<br><br>
+![](/assets/img/Vault2.png)<br><br>
+![](/assets/img/Vault3.png)<br><br>
 
 For more [Vault Setup instructions see their documentation here](https://developer.hashicorp.com/vault/docs/install).
 
@@ -68,25 +68,24 @@ Hashicorp recommends using AppRoles for authenticating and governing access for 
 
 ## Configuring Vault with PA / Rundeck
 
-:::: tabs
-::: tab PagerDuty Process Automation
+::: tabs
+@tab PagerDuty Process Automation
 
-The Vault Storage plugin is bundled by default with PagerDuty Process Automation.  To use the plugin, you need to add properties using the [System Configuration](https://docs.rundeck.com/docs/manual/configuration-mgmt/configmgmt.html#managing-configuration) feature.
+The Vault Storage plugin is bundled by default with PagerDuty Process Automation.  To use the plugin, you need to add properties using the [System Configuration](/manual/configuration-mgmt/configmgmt.md#managing-configuration) feature.
 
 PA includes a Configuration Management module to set configuration settings via the GUI and store them in the product database. Database storage shares configuration options with all your cluster members and centralizes configuration.
 
 1. Click on the gear icon (upper right) and select “System Configuration”.
 1. Add these properties:<br>
-    ![](~@assets/img/Vault4.png)<br>
-    ![](~@assets/img/Vault9.png)<br>
-    ![](~@assets/img/Vault10.png)<br><br>
+    ![](/assets/img/Vault4.png)<br>
+    ![](/assets/img/Vault9.png)<br>
+    ![](/assets/img/Vault10.png)<br><br>
 1. Restart the PDPA / Rundeck service.
 1. To save a key or password, just click on the Gear Icon (Up to right) select “Key Storage” and save the password or key on any path.<br>
-![](~@assets/img/Vault5.png)<br>
+![](/assets/img/Vault5.png)<br>
 1. From the Vault side, check the secret/rundeck path and see the stored key.<br>
-![](~@assets/img/Vault6.png)<br>
-:::
-::: tab Rundeck Community
+![](/assets/img/Vault6.png)<br>
+@tab Rundeck Community
 
 1. Stop the Rundeck service.
 1. Download the Vault Storage Plugin jar file from [here](https://github.com/rundeck-plugins/vault-storage/releases) and save it to the `libext` directory.
@@ -116,11 +115,10 @@ PA includes a Configuration Management module to set configuration settings via 
     ```
 1. Start the Rundeck service.<br>
 1. To save any key or password, just click on the Gear Icon (Up to right) select “Key Storage” and save any password or key.<br>
-![](~@assets/img/Vault7.png)<br>
+![](/assets/img/Vault7.png)<br>
 1. From the Vault side, check the secret/rundeck path and see the Rundeck stored key.<br>
-![](~@assets/img/Vault8.png)<br>
-:::
-::: tab Properties Explained
+![](/assets/img/Vault8.png)<br>
+@tab Properties Explained
 
 Properties explained:
 * `rundeck.storage.provider.[index].config.approleId`: This value should be set to the Role ID gathered in the Vault setup steps.
@@ -137,4 +135,3 @@ Properties explained:
 * `rundeck.storage.provider.[index].removePathPrefix`: This is set to 'true' to prevent Rundeck from adding the `keys` path to Vault.
 
 :::
-::::

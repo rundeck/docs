@@ -2,9 +2,9 @@
 
 ### Prerequisites
 
-Before proceeding to install Rundeck, check all system [requirements](https://docs.rundeck.com/docs/administration/install/system-requirements.html) to make sure that the server can run Rundeck, also, make sure that the Windows user has sufficient rights to install software.
+Before proceeding to install Rundeck, check all system [requirements](/administration/install/system-requirements.md) to make sure that the server can run Rundeck, also, make sure that the Windows user has sufficient rights to install software.
 
-Be sure to install the appropriate Java Software Development Kit per the [requirements](https://docs.rundeck.com/docs/administration/install/system-requirements.html).
+Be sure to install the appropriate Java Software Development Kit per the [requirements](/administration/install/system-requirements.md).
 
 ### Installing Rundeck on Windows based systems and first run
 
@@ -18,18 +18,18 @@ When Rundeck is started for the first time, it generates the configuration files
 for Enterprise:
 
 ```
-java -jar rundeckpro-enterprise-{{{rundeckVersionFull}}}.war
+java -jar rundeckpro-enterprise-{{$rundeckVersionFull}}.war
 ```
 
 or this for the community edition:
 
 ```
-java -jar rundeck-{{{rundeckVersionFull}}}.war
+java -jar rundeck-{{$rundeckVersionFull}}.war
 ```
 
 This step may take up to 1-2 minutes depending on system performance. When Rundeck is ready, it will be indicated in the Powershell window:
 
-![Windows launcher](~@assets/img/windows-launcher.png)
+![Windows launcher](/assets/img/windows-launcher.png)
 
 After generation is complete, stop the process with `<Crtl+C>` keys and continue with configuration.
 
@@ -97,7 +97,7 @@ Process Automation version:
 ```batch
 set CURDIR=%~dp0
 call %CURDIR%etc\profile.bat
-java %RDECK_CLI_OPTS% %RDECK_SSL_OPTS% -jar rundeckpro-enterprise-{{{rundeckVersionFull}}}.war --skipinstall -d  >> %CURDIR%\var\logs\service.log  2>&1
+java %RDECK_CLI_OPTS% %RDECK_SSL_OPTS% -jar rundeckpro-enterprise-{{$rundeckVersionFull}}.war --skipinstall -d  >> %CURDIR%\var\logs\service.log  2>&1
 ```
 
 for community:
@@ -105,7 +105,7 @@ for community:
 ```batch
 set CURDIR=%~dp0
 call %CURDIR%etc\profile.bat
-java %RDECK_CLI_OPTS% %RDECK_SSL_OPTS% -jar rundeck-{{{rundeckVersionFull}}}.war --skipinstall -d  >> %CURDIR%\var\logs\service.log  2>&1
+java %RDECK_CLI_OPTS% %RDECK_SSL_OPTS% -jar rundeck-{{$rundeckVersionFull}}.war --skipinstall -d  >> %CURDIR%\var\logs\service.log  2>&1
 ```
 
 
@@ -116,7 +116,7 @@ To launch, type start_rundeck.bat at the command prompt. To stop Rundeck, you ca
 
 By default, Rundeck will be available on TCP port 4440. To access, go to the following URL on your web browser: `http://servername:4440` (when "servername" is the name of your Windows server).
 
-![Login page](~@assets/img/login-page.png)
+![Login page](/assets/img/login-page.png)
 
 The default username and password is "admin".
 
@@ -162,17 +162,17 @@ Now, Rundeck is configured as a Service and can be managed with rundeckw.exe
 ##### Set JAVA_HOME in windows OS
 1. Go to *Advanced System Settings*, type "Advanced System Settings" in the windowssearch box and click on the tool.
    
-![Advanced System Settings in search bar](~@assets/img/win-javahome-1.png)
+![Advanced System Settings in search bar](/assets/img/win-javahome-1.png)
 
 2. Select the *Advanced* tab, and click on *Environment Variables*
 
-![Find Environment Variables section](~@assets/img/win-javahome-2.png)
+![Find Environment Variables section](/assets/img/win-javahome-2.png)
 
 3. In *System variables*, click *New* and add a variable with
 Variable Name: JAVA_HOME
 Variable Value: jdk installation directory
 
-![Set JAVA_HOME system variable](~@assets/img/win-javahome-3.png)
+![Set JAVA_HOME system variable](/assets/img/win-javahome-3.png)
 
 :::warning
 Don’t include the \bin directory, only the JDK path. Eg.:

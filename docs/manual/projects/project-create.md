@@ -6,22 +6,22 @@ A project can be created either from the graphical console or using the [rd] she
 
 In the graphical console, you will notice a Project Picker in the top navigation bar.  This is the primary access to the different projects.  To see the full Project Menu click on _View All Projects_ or click the Rundeck logo in the upper left of the screen.
 
-![Project Picker](~@assets/img/project-picker.png)
+![Project Picker](/assets/img/project-picker.png)
 
-![Full Project Menu](~@assets/img/project-list-full.png)
+![Full Project Menu](/assets/img/project-list-full.png)
 
 If no projects exist, the project menu will not be displayed you will be prompted to create a new project.
 
-![Creat a project](~@assets/img/project-list-empty.png)
+![Creat a project](/assets/img/project-list-empty.png)
 
 When one or more projects exist, a project can be created by either
 clicking on the "New Project" link in the full project menu.
 
-![Creat a project](~@assets/img/project-list-newbutton.png)
+![Creat a project](/assets/img/project-list-newbutton.png)
 
 Press the "New Project" button to create a project.
 
-![Figure: Create project prompt](~@assets/img/project-create-blank.png)
+![Figure: Create project prompt](/assets/img/project-create-blank.png)
 
 _Details_
 

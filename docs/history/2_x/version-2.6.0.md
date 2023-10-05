@@ -21,7 +21,7 @@ Name: <span style="color: chocolate"><span class="glyphicon glyphicon-gift"></sp
 	* Filesystem ACLs are now used for "global" level access control
 	* Project ACLs are limited to manage the specific project, and are stored in the DB
 * ACL validation improvements
-	* see the `rd-acl` tool [validate command](/manpages/man1/rd-acl.md#validate-command)
+	* see the `rd-acl` tool [validate command](/rd-cli/rd-acl.md#validate-command)
 	* Invalid filesystem ACLs are logged in the service log
 	* Invalid project ACLs uploaded via API will be rejected
 * Example Orchestrator plugins now bundled

@@ -1,6 +1,6 @@
 # Monitor a Rundeck Instance Using Prometheus and Grafana
 
-Using Rundeck [metrics](/docs/api/rundeck-api.md#metrics-data) users can monitor the health of any Rundeck instance (workload, CPU usage, memory amount, scheduled jobs, running jobs, etc). Some users find it helpful to display these metrics on a dashboard. Using a combination of Prometheus, Grafana, and a custom Prometheus exporter (rundeck_exporter) these metrics can be shown on a dashboard for a glance viewing.
+Using Rundeck [metrics](/api/rundeck-api.md#metrics-data) users can monitor the health of any Rundeck instance (workload, CPU usage, memory amount, scheduled jobs, running jobs, etc). Some users find it helpful to display these metrics on a dashboard. Using a combination of Prometheus, Grafana, and a custom Prometheus exporter (rundeck_exporter) these metrics can be shown on a dashboard for a glance viewing.
 
 The Rundeck Community team has developed an easy way to see how the Rundeck, rundeck_exporter, Prometheus, and Grafana integration works [using this Docker demo project](https://github.com/rundeck/rundeck-exporter-demo). In this article, we will describe how the Docker demo is configured to help users understand how this integration works.
 
@@ -28,7 +28,7 @@ First, you need an API token belonging to a user who has access to the Rundeck i
 
 In the Docker demonstration project, a static token API called `rundecktoken` was defined.
 
-In [this link](https://docs.rundeck.com/docs/manual/10-user.html#generate-api-token) you can see how to create an API token. In [this link](https://docs.rundeck.com/docs/administration/configuration/config-file-reference.html#framework-properties) you can see how to create it statically on the `tokens.properties` file and then referenced on the `framework.properties` file.
+In [this link](/manual/10-user.html#generate-api-token) you can see how to create an API token. In [this link](/administration/configuration/config-file-reference\.md#framework-properties) you can see how to create it statically on the `tokens.properties` file and then referenced on the `framework.properties` file.
 
 
 ## rundeck_exporter Configuration
@@ -84,7 +84,7 @@ path: /var/lib/grafana/dashboards
 
 The final objective of this integration is to be able to see all of the information from the Rundeck instance in a custom dashboard. The definition of Grafana dashboards is in JSON format, usually at the `/var/lib/grafana/dashboards` path.
 
-![Grafana Dashboard](@assets/img/howto-exporter-dashboard.jpg)
+![Grafana Dashboard](/assets/img/howto-exporter-dashboard.jpg)
 
 The rundeck_exporter project includes a complete dashboard available [here](https://github.com/phsmith/rundeck_exporter/tree/main/examples/grafana), but of course, custom dashboards can be [designed](https://grafana.com/grafana/resources/#create-a-dashboard).
 

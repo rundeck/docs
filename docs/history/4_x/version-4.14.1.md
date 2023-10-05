@@ -1,9 +1,8 @@
 ---
 title: "4.14.1 Release Notes"
-date: "2023-06-22"
+date: 2023-06-22
 image: /images/chevron-logo-red-on-white.png
 feed:
-enable: true
 description: "Upgrade to REMCO 0.12.4 to fix a security vulnerability"
 ---
 

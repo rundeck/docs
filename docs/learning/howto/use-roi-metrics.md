@@ -1,11 +1,10 @@
 ---
 
 title: "Use ROI Metric Data"
-date: "2023-01-07"
+date: 2023-01-07
 image: /images/chevron-logo-red-on-white.png
 feed:
-  enable: true
-  description: "Automation saves time and money with every job execution. Tracking that over time can help provide insight to the value of your automation efforts.  Use the ROI Metrics plugin to store value of each job run.   The ROI Metrics integration tracks user-defined value of each job execution and stores key value pairs against jobs to help you understand the ROI per job execution."
+    description: "Automation saves time and money with every job execution. Tracking that over time can help provide insight to the value of your automation efforts.  Use the ROI Metrics plugin to store value of each job run.   The ROI Metrics integration tracks user-defined value of each job execution and stores key value pairs against jobs to help you understand the ROI per job execution."
 
 ---
 
@@ -22,8 +21,8 @@ feed:
 
 Customer X has decided to track how much time is saved with their newly implemented Automation job (uniquely titled `ROI Job`).  They know from historical ticket-data that doing the same work manually - prior to writing this job - took around 75 minutes across all teams, start to finish.  The job now runs in just seconds.  To configure the job follow the steps or download the job definition.
 
-:::: tabs
-::: tab Steps to Create
+::: tabs
+@tab Steps to Create
 
 
 1. Create a new Job.
@@ -31,9 +30,9 @@ Customer X has decided to track how much time is saved with their newly implemen
 1. On the Workflow Tab add a single `Command` step with the command `sleep 5`.  (Assumes this will be running on Linux host)
 1. Choose the _Execution Plugins_ tab.
 1. Check the box for **ROI Metrics Data**.<br><br>
-    ![ROI Metrics Plugin](~@assets/img/roi-metrics-data.png)
+    ![ROI Metrics Plugin](/assets/img/roi-metrics-data.png)
 1. Click **Add Custom Field**.<br><br>
-    ![Add Custom Field](~@assets/img/roi-metrics-customfield.png)
+    ![Add Custom Field](/assets/img/roi-metrics-customfield.png)
 1. Enter a value for:
     - ***Field Label***: `Hours Saved`
     - ***Field Key***: `hours`
@@ -44,8 +43,7 @@ Customer X has decided to track how much time is saved with their newly implemen
 1. Run the job and look for the ROI Metrics Data tab.  Confirm that the data is populated.
 1. Run the job a few more times so we have multiple executions.
 
-:::
-::: tab Download Job Definition
+@tab Download Job Definition
 
 Copy the Job Definition below and paste into a plain text file.  Then import to your Process Automation server.  (Version 4.7.0 minimum)
 
@@ -76,14 +74,13 @@ Copy the Job Definition below and paste into a plain text file.  Then import to 
 ```
 
 :::
-::::
 
 ## Gathering Data
 
 >This section assumes familiarity with fundamental Rundeck operations like Creating User API Tokens, editing/importing jobs, etc.
 
-:::: tabs
-::: tab Setup Steps
+::: tabs
+@tab Setup Steps
 
 - Configure a [User API Key](/manual/10-user.md#user-api-tokens) with the necessary access to gather metrics from the job/project where your data is located.
 - Save the User API Key in the Key Storage by going to **Project Settings** > **Key Storage** and adding the key there.
@@ -93,8 +90,7 @@ Copy the Job Definition below and paste into a plain text file.  Then import to 
 
 Run the job to gather data and see a list of JSON output for any jobs with ROI data.
 
-:::
-::: tab Gather Metrics Job Definition
+@tab Gather Metrics Job Definition
 
 Copy the Job Definition below and paste into a plain text file.  Then import to your Process Automation server.  (Version 4.7.0 minimum)
 
@@ -142,7 +138,7 @@ Copy the Job Definition below and paste into a plain text file.  Then import to 
 
       Note: this script doesn't take into account paging yet. Only returns a max of 100 entries as full JSON.
 
-      [https://docs.rundeck.com/docs/api/rundeck-api.html#execution-query](https://docs.rundeck.com/docs/api/rundeck-api.html#execution-query)
+      [https://docs.rundeck.com/docs/api/rundeck-api.html#execution-query](/api/rundeck-api.md#execution-query)
     label: Time Range for Executions
     name: time-range
     required: true
@@ -213,4 +209,3 @@ Copy the Job Definition below and paste into a plain text file.  Then import to 
 ```
 
 :::
-::::

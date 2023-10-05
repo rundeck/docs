@@ -1,11 +1,10 @@
 ---
 
 title: "4.9.0 Release Notes"
-date: "2023-01-11"
+date: 2023-01-11
 image: /images/chevron-logo-red-on-white.png
 feed:
- enable: true
- description: "Version 4.9.0 is here!  Check out the new configuration method for Plugins Suites and be on the look out for major updates to the Runner functionality in a future version."
+  description: "Version 4.9.0 is here!  Check out the new configuration method for Plugins Suites and be on the look out for major updates to the Runner functionality in a future version."
 
 ---
 
@@ -19,6 +18,8 @@ Release Date: January 11, 2023
 - [Upgrade instructions](/upgrading/)
 - [Watch the Live Stream Release Recap](https://www.youtube.com/watch?v=VIdp90P5zFk&ab_channel=PagerDutyInc)
 
+<YouTube id="VIdp90P5zFk"/>
+
 ## Overview
 
 Check out the new features and enhancements for PagerDuty Process Automation, PagerDuty Runbook Automation, and Rundeck Community included in this release. This release introduces the beta for Plugin Suite Configuration, which simplifies the configuration of plugins.
@@ -30,7 +31,7 @@ View our Twitch stream review of this release live on January 17 at 10AM Pacific
 - **Plugin Suite Configuration**: We’ve simplified the configuration of plugins so users can build more automation faster. PagerDuty Runbook Automation and Process Automation now provide an easier interface for users to define plugin properties and reduce the number of times a user needs to define common properties across plugins. Now users have a graphical interface for configuring plugin properties at the project and system level using predefined sets of properties on a per plugin suite basis. In version 4.9.0, users can access our first predefined plugin-suite setting for the PagerDuty plugin suite and future releases will include Plugin Groups for our other plugin suites - such as Jira, ServiceNow, and AWS.<br>
 Click [here](/manual/plugins) to read the full documentation.
 
-![PD Plugin Config](~@assets/img/relnotes-4.9-pd-config.png)
+![PD Plugin Config](/assets/img/relnotes-4.9-pd-config.png)
 
 - This release also includes a number of backend enhancements that will lend themselves to major releases in the coming months.  Stay tuned for announcements regarding major updates to our [Runner](/administration/runner/).
 

@@ -41,13 +41,13 @@ This provides a way to get vital diagnostic information directly from the live d
 
 For example, using the **`SHOW FULL PROCESSLIST;`** will show the running queries, their associated state and duration:
 
-![](~@assets/img/mysql-diagnostic1.png)
+![](/assets/img/mysql-diagnostic1.png)
 
 **Query services and logs on the database’s host node**: In many environments, the database is a service running on a Linux or Windows server. 
 Through node steps, it is possible to run commands to get status information about the database service. 
 
 For example, you can query the **MySQL Slow Query** log file to parse long queries and group similar queries together:
 
-![](~@assets/img/mysql-diagnostic2.png)
+![](/assets/img/mysql-diagnostic2.png)
 
 

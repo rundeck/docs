@@ -1,4 +1,4 @@
-module.exports = [
+export default [
   {
     text: 'Installation',
     link: '/administration/install/installing-rundeck'

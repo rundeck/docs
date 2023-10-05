@@ -24,7 +24,7 @@ Where `path` is the path created above
 
 ## Send Event
 
-![Sensu - Send Event Notification](~@assets/img/sensu-notification1.png)
+![Sensu - Send Event Notification](/assets/img/sensu-notification1.png)
 
 - **Entity Namespace**
 : This is the namespace that the event should be organized in.
@@ -47,7 +47,7 @@ Where `path` is the path created above
 - **Is Silence?**
 : If checked, the event will be silenced.
 
-![Sensu - Send Event Notification - continued](~@assets/img/sensu-notification2.png)
+![Sensu - Send Event Notification - continued](/assets/img/sensu-notification2.png)
 
 - **Check Interval**
 : This is the interval to run the check on.

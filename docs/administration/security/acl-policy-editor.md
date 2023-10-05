@@ -3,7 +3,9 @@
 :::enterprise
 :::
 
-For basic instructions on how to get started with Rundeck ACL Policies, check out this [Basic ACL Tutorial](/learning/howto/acl_basic_examples.md).
+For basic instructions on how to get started with Rundeck ACL Policies, check out this [Basic ACL Tutorial](/learning/howto/acl_basic_examples.md).  Or check out hte video below:
+
+<YouTube id="i859f1WG3Bo"/>
 
 ## Access Control Pages
 
@@ -14,14 +16,14 @@ System > Access Control
 
     Click the System Gear icon in the navigation header, and choose "Access Control"
 
-    ![System Access Control Menu](~@assets/img/acl-editor-system-menu.png)
+    ![System Access Control Menu](/assets/img/acl-editor-system-menu.png)
 
 Project Settings > Access Control
 :   This page manages Project context ACL Policies
 
     Select a Project.  In the Project menu sidebar, expand "Project Settings", click "Access Control"
 
-    ![Project Access Control Menu](~@assets/img/acl-editor-project-menu.png)
+    ![Project Access Control Menu](/assets/img/acl-editor-project-menu.png)
 
 
 ## Listing ACL Policies
@@ -42,7 +44,7 @@ Local Filesystem ACL Policies (System context only)
 
 In Process Automation you can also see an "Access Levels" tab, which allows testing the current Access Levels for users and groups across all loaded ACL Policy files.
 
-![System Access Control Page](~@assets/img/acl-editor-system.png)
+![System Access Control Page](/assets/img/acl-editor-system.png)
 
 **Project Context**:
 
@@ -58,19 +60,19 @@ You can edit the YAML format for the ACL Policy directly. (In Process Automation
 See the [Access Control Policy](/administration/security/authorization.md#access-control-policy-2) and [aclpolicy](/manual/document-format-reference/aclpolicy-v10.html) pages for more information.
 :::
 
-![Edit Access Control Policy YAML](~@assets/img/acl-editor-edit-system-yaml.png)
+![Edit Access Control Policy YAML](/assets/img/acl-editor-edit-system-yaml.png)
 
 ### Validation
 
 If your ACL Policy YAML fails validation checks, attempting to save it will display a validation error:
 
-![Validation Error](~@assets/img/acl-editor-yaml-validation-error.png)
+![Validation Error](/assets/img/acl-editor-yaml-validation-error.png)
 
 ## Editing ACL Rules (Enterprise)
 
 In Process Automation, by default you will see the Rules editor which allows defining ACL Policy rules with a simpler wizard UI.
 
-![ACL Editor Rules List](~@assets/img/acl-editor-edit-rules-list.png)
+![ACL Editor Rules List](/assets/img/acl-editor-edit-rules-list.png)
 
 The list displays all rules for the ACL Policy file, with the "By", "Action", "For", and "Context" information displayed.
 
@@ -84,7 +86,7 @@ your ACL Policy.
 
 Create a new rule by clicking the "New Rule" button.
 
-![Add ACL Rule](~@assets/img/acl-editor-new-rule1.png)
+![Add ACL Rule](/assets/img/acl-editor-new-rule1.png)
 
 Description
 :   Enter a textual description of the policy (optional)
@@ -98,17 +100,17 @@ By/Not By
 For
 :   This section defines the Resource Type the rule applies to.  Different Resource Types are available depending on whether the rule is for System or Project context.
 
-![System Resource Types](~@assets/img/acl-editor-new-rule-system-resources.png)
+![System Resource Types](/assets/img/acl-editor-new-rule-system-resources.png)
 
 More information about System Context Resource types are in the [Access Control Policy > Application Scope Resources and Actions](/administration/security/authorization.html#application-scope-resources-and-actions) page.
 
-![Project Resource Types](~@assets/img/acl-editor-new-rule-project-resources.png)
+![Project Resource Types](/assets/img/acl-editor-new-rule-project-resources.png)
 
 More information about Project Context Resource types are in the [Access Control Policy > Project Scope Resources and Actions](/administration/security/authorization.html#project-scope-resources-and-actions) page.
 
 After choosing the Resource Type, some types will display a set of "Params" allowing you to specify which resource(s) of that type the rule applies to.
 
-![System Resource Type Project](~@assets/img/acl-editor-new-rule-system-restype-project.png)
+![System Resource Type Project](/assets/img/acl-editor-new-rule-system-restype-project.png)
 
 ::: warning
 If you leave the Params section blank, the rule will apply to *all* resources of the chosen type.
@@ -118,7 +120,7 @@ Different comparator types can be selected depending on the data available, e.g.
 
 Finally, choose whether to Allow or Deny an action, and check the actions to apply.
 
-![Rule Actions](~@assets/img/acl-editor-new-rule-system-actions.png)
+![Rule Actions](/assets/img/acl-editor-new-rule-system-actions.png)
 
 The special action `*` can be used to match *all* actions for the resource.
 
@@ -126,7 +128,7 @@ Click "Add Rule" to add the rule to the Policy.
 
 You will now see the rule in the Rules list:
 
-![New Rule Added](~@assets/img/acl-editor-new-rule-added.png)
+![New Rule Added](/assets/img/acl-editor-new-rule-added.png)
 
 Finally, **Save** your ACL Policy.
 
@@ -136,7 +138,7 @@ In the Access Control Pages, you can click the "Access Levels" Tab to test Acces
 
 In the System Context page you can choose between System context access level checks, or click "Project" and choose a Project name to view Project context access levels.
 
-![System Access Levels Tab](~@assets/img/acl-system-access-levels-tab.png)
+![System Access Levels Tab](/assets/img/acl-system-access-levels-tab.png)
 
 ::: tip
 In the Project Context page you will only be able to view access level checks for that Project.
@@ -144,11 +146,11 @@ In the Project Context page you will only be able to view access level checks fo
 
 Choose whether to test a Group or User access level.  Choose Group (world icon) or User (profile icon).
 
-![Access Levels Test Subject](~@assets/img/acl-system-access-levels-subject.png)
+![Access Levels Test Subject](/assets/img/acl-system-access-levels-subject.png)
 
 If you choose Group, enter a Group name or choose one from the drop down list. You can enter multiple values separated by commas.
 
-![Access Levels Group Entry](~@assets/img/acl-system-access-levels-group-entry.png)
+![Access Levels Group Entry](/assets/img/acl-system-access-levels-group-entry.png)
 
 ### Seeing What is Allowed
 
@@ -162,11 +164,11 @@ A **Rejected** action means that no ACL policy explicitly either allows or denie
 
 By default Authorized and Denied actions are displayed when you select a resource, and Rejected actions are not shown. This can be changed using these checkboxes:
 
-![Show Authorization Selection](~@assets/img/acl-access-level-display-checks.png)
+![Show Authorization Selection](/assets/img/acl-access-level-display-checks.png)
 
 If Rejected is checked, any actions which are not allowed or denied will be displayed as a button you can click to create a new ACL Rule.
 
-![Rejected Action: Create a Rule](~@assets/img/acl-access-level-rejected-create-btn.png)
+![Rejected Action: Create a Rule](/assets/img/acl-access-level-rejected-create-btn.png)
 
 Clicking the button will take you to the [ACL Rule Editor](#editing-acl-rules-enterprise) for a new ACL Policy, and present the Create Rule form with all of the necessary details filled in.
 
@@ -178,17 +180,17 @@ System Access Tab
 :   Shows access levels for system level resources, as well as an overview of general access levels for all Projects. Click on a Project Name to switch to that Context.
 
 
-![System Access](~@assets/img/acl-access-level-system-access.png)
+![System Access](/assets/img/acl-access-level-system-access.png)
 
 Key Storage Tab
 :   Shows access levels for Key Storage resources. Click on a Key resource to see access levels.
 
-![Key Storage Access](~@assets/img/acl-access-level-key-storage-access.png)
+![Key Storage Access](/assets/img/acl-access-level-key-storage-access.png)
 
 API Tokens Tab
 :   Shows access levels for API Token generation. Enter a Username, or enter or select a Role.  Access levels for creating API tokens with those details will be shown.
 
-![API Token Creation Access](~@assets/img/acl-access-level-api-token-access.png)
+![API Token Creation Access](/assets/img/acl-access-level-api-token-access.png)
 
 
 ### Project Access Level Checks
@@ -198,12 +200,12 @@ In the Project Context Access Control page, or if you select a Project in the Sy
 General Tab
 :   Shows the Access Levels for the project itself, the Project ACLs, and Generic resources such as Events, Adhoc executions, and overall Job and Node level access.
 
-![Project General Access](~@assets/img/acl-access-level-project-general-tab.png)
+![Project General Access](/assets/img/acl-access-level-project-general-tab.png)
 
 Jobs Tab
 :   Allows you to query for Jobs, or click "List All Jobs" to view all Jobs.  
 
-	![Project Jobs Access](~@assets/img/acl-access-level-project-jobs-tab.png)
+	![Project Jobs Access](/assets/img/acl-access-level-project-jobs-tab.png)
 
 	::: tip
 	Note: Check the **Show: Rejected** checkbox if you see no Jobs in the list and the message "No Access", if you wish to see all jobs which have no Allowed or Denied access.
@@ -212,4 +214,4 @@ Jobs Tab
 Nodes Tab
 :   Allows you to query for Nodes, or click the "List All Nodes" to view all Nodes.
 
-	![Project Nodes Access](~@assets/img/acl-access-level-project-nodes-tab.png)
+	![Project Nodes Access](/assets/img/acl-access-level-project-nodes-tab.png)

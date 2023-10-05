@@ -8,6 +8,8 @@ Release Date: September 6, 2022
 - [Watch the Live Stream Release Recap](https://youtu.be/fEHQfrTJ87Y)
 - [Upgrade instructions](/upgrading/)
 
+<YouTube id="fEHQfrTJ87Y"/>
+
 ## Overview
 
 Check out the new features and enhancements for PagerDuty Process Automation (formerly Rundeck Enterprise) and PagerDuty Runbook Automation and Rundeck Community included in this release. This release includes a new plugin for AWS Athena so that job definitions can include SQL queries against Amazon S3, an enhancement of the Amazon ECS node source plugin to handle multiple clusters within the same region, and a number of security and compliance enhancements and bug fixes.

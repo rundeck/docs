@@ -1,11 +1,10 @@
 ---
 
 title: "4.7.0 Release Notes"
-date: "2022-10-06"
+date: 2022-10-06
 image: /images/chevron-logo-red-on-white.png
 feed:
- enable: true
- description: "Version 4.7.0 is here!  The release includes a new plugin for CloudWatch that simplifies the management of diagnostics queries, an incubating feature that helps users understand the ROI of jobs, and a number of security and compliance updates and bug fixes."
+  description: "Version 4.7.0 is here!  The release includes a new plugin for CloudWatch that simplifies the management of diagnostics queries, an incubating feature that helps users understand the ROI of jobs, and a number of security and compliance updates and bug fixes."
 
 ---
 
@@ -16,8 +15,11 @@ Release Date: October 6, 2022
 
 - [Download the Releases](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
-- [Watch the Live Stream Release Recap](https://youtu.be/jTqfAmExg_Y)
 - [Upgrade instructions](/upgrading/)
+- [Watch the Live Stream Release Recap](https://youtu.be/jTqfAmExg_Y)
+
+
+<YouTube id="jTqfAmExg_Y"/>
 
 ## Overview
 

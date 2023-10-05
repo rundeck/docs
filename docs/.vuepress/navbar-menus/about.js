@@ -1,4 +1,4 @@
-module.exports = [
+export default [
   {
     text: 'Introduction',
     link: '/about/introduction'
@@ -18,5 +18,9 @@ module.exports = [
   {
     text: 'Licensing',
     link: '/about/licensing'
+  },
+  {
+    text: 'Release Notes',
+    link: '/history/'
   }
 ]

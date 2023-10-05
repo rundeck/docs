@@ -11,7 +11,7 @@ options can be constructed from event data!
 
 ## General Settings
 
-![](~@assets/img/wh-routing-rule-overview.png)
+![](/assets/img/wh-routing-rule-overview.png)
 
 ### Batch Key (optional)
 The batch key makes it possible to extract a list from
@@ -30,7 +30,7 @@ the event and run each item through the action processing.
 The batch key `$.messages` could be used to process each item
 individually.
 
-**Note:** Enabling Batch Key executes all items concurrently. Therefore, the job associated with the Webhook must have [Multiple Executions](https://docs.rundeck.com/docs/manual/creating-jobs.html#multiple-executions) enabled and a value large enough to support the number of items extracted from the list.
+**Note:** Enabling Batch Key executes all items concurrently. Therefore, the job associated with the Webhook must have [Multiple Executions](/manual/creating-jobs.md#multiple-executions) enabled and a value large enough to support the number of items extracted from the list.
 
 :::tip
 The batch key supports JsonPath deep scanning. A key
@@ -44,7 +44,7 @@ webhook events are received. This will be reflected in the logs. Batches
 are extracted before applying the event ID key to each item.
 
 ## Actions
-![](~@assets/img/wh-routing-rule-rule-overview.png)
+![](/assets/img/wh-routing-rule-rule-overview.png)
 :::tip
 Actions can be individually enabled/disabled!
 :::
@@ -76,7 +76,7 @@ Job options to be supplied during job execution. Use [JsonPath](#jsonpath) or
 
 Each action can have multiple Conditions. Based on the [Policy](#policy), the action will apply when all or any of the conditions are satisfied.  Each Condition defines a Field selector using JsonPath, a particular match type (defined below), and a value.
 
-![Oh noes :O](~@assets/img/wh-routing-rule-conditions-overview.png)
+![Oh noes :O](/assets/img/wh-routing-rule-conditions-overview.png)
 
 ### Policy
 
@@ -183,7 +183,7 @@ JsonPath can also be embedded in the Template string using the `${path('$.foo')}
 `The value is ${path('$.foo')}` -> `The value is bar`
 
 ## Debugging
-![](~@assets/img/wh-debug-button-highlight.png)
+![](/assets/img/wh-debug-button-highlight.png)
 
 The Advanced Run Job handler(and most Enterprise webhook handlers based in its action engine)
 provides a debug view into webhook processing. Detailed evaluation results from recently received
@@ -196,7 +196,7 @@ actions, and conditions are as they were when the webhook request was evaluated.
 :::
 
 ### Overview
-![](~@assets/img/wh-debug-batch-sample.png)
+![](/assets/img/wh-debug-batch-sample.png)
 
 **Refresh**  
 Clicking the refresh button will fetch the latest results. The selected result will automatically change
@@ -221,7 +221,7 @@ This section will display the action evaluation results for each configured acti
 will include the rendered job options, condition results with extracted request data, and the job run status.
 
 ### Action Results
-![](~@assets/img/wh-debug-rule-results.png)
+![](/assets/img/wh-debug-rule-results.png)
 
 In this sample the action **was not satisfied** because one of the conditions did not match. The received webhook
 is missing the property `$.fizz` which was required to *equals* `buzz`.
@@ -238,17 +238,17 @@ Errors encountered processing the webhook or running the job will be displayed i
 a few common errors.
 
 #### Job Already Running
-![](~@assets/img/wh-debug-error-already-running.png)
+![](/assets/img/wh-debug-error-already-running.png)
 
 This error is encountered if the job is not configured for parallel execution.
 
 #### Batch Key Path Missing
-![](~@assets/img/wh-debug-error-batch-missing.png)
+![](/assets/img/wh-debug-error-batch-missing.png)
 
 If the the webhook is configured with a batch key, and the path does not exist, this error will appear.
 
 #### Executions Disabled
-![](~@assets/img/wh-debug-error-executions-disabled.png)
+![](/assets/img/wh-debug-error-executions-disabled.png)
 
 Encountered if the job could not be run due to Rundeck executions being disabled.
 

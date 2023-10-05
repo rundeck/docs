@@ -8,7 +8,7 @@ The slack notification plugin offers Enterprise users the ability to send execut
 - **On Avg. Duration**: the execution exceeded the average duration of the job
 - **On Retryable Failure**: the job failed but will be retried
 
-![Slack - Notification Plugin](~@assets/img/slack-notification.png)
+![Slack - Notification Plugin](/assets/img/slack-notification.png)
 
 - **Webhook Base URL**
 : This is the base API URL to send the notification to. To find it, go to your slack app's dashboard. Select "Incoming Webhooks" and make sure the "Activate Incoming Webhooks" is set to on. Now that is is on, choose "Add new Webhook to Workspace" and choose the channel you would like the notifications to be posted in. After it is created, you will see a URL that looks like this:

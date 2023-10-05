@@ -21,7 +21,7 @@ Extending the base Rundeck Docker image happens for a variety of reasons, includ
 A custom Remco template requires a defined folder structure. For example, a parent folder called `remco` is required, with two folders inside called `resource.d` and `templates`.
 
 Rundeck Docker structure with Remco:
-![](~@assets/img/dockerstructure.png)
+![](/assets/img/dockerstructure.png)
 
 Inside the `resource.d` folder, `.toml` files must be created. These files define the source and destination path where the configuration files will be copied. 
 
@@ -87,5 +87,5 @@ By adding remco template files, create a new `rundeck.feature.joblifecycleplugin
 	```
 
 ## Resources
-* [Extending Rundeck Image using Remco](https://docs.rundeck.com/docs/administration/configuration/docker/extending-configuration.html#extending-docker-configuration) (Rundeck documentation).
+* [Extending Rundeck Image using Remco](/administration/configuration/docker/extending-configuration.md#extending-docker-configuration) (Rundeck documentation).
 * [Here](https://github.com/rundeck/docker-zoo/tree/master/config) is a good Remco templating system example.

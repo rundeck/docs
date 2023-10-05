@@ -3,7 +3,7 @@
 ::: enterprise
 :::
 [Enterprise Runners](/administration/runner/pre-4-11-runners.html#runner) are a recent addition to the PagerDuty Process Automation and Runbook Automation architecture. They are primarily used as a method for orchestrating automation in secure, remote environments where direct access to infrastructure and services is restricted.  This is accomplished by using a "reverse proxy" architecture: Runners regularly query (outbound only) the Process Automation Cluster (or Runbook Automation instance) for tasks. Runners are assigned to one or more Projects, and then [Jobs](/learning/getting-started/jobs/what-is-a-job.html) within those Projects can use the Runner to dispatch the Job steps to be executed through the Runner in the remote environment.<br>
-![](~@assets/img/runnerarch1.png)<br>
+![](/assets/img/runnerarch1.png)<br>
 _Example showing Runner architecture (Each remote Runner could be a Runner set)_<br>
 When Runners are enabled for a job, the execution of Job steps will be delegated to a specific Runner for management. This model offers resiliency as multiple Runners could be enabled for a particular Project so that each Job can be assigned to a specific Runner during high usage windows.<br>
 To utilize Runners, there are a few steps to carry out:<br>
@@ -24,7 +24,7 @@ To utilize Runners, there are a few steps to carry out:<br>
 ## Configure Jobs for Runners
 4. [Add Runner tags to Jobs](/administration/runner/runner-using.html)<br>
     New jobs will prompt authors to choose tags which represent Runners or Runner sets by tags.  It is important to review existing Jobs to ensure that they have appropriate tags selected as well.
-<img src="~@assets/img/runnerarch2.png" width="100%" height="100%" /><br>
+<img src="/assets/img/runnerarch2.png" width="100%" height="100%" /><br>
 _Jobs are assigned to remote Runners based on tags.  Jobs on nodes in the cluster’s local network can be handled through the Local Runner._<br>
 # Resources
 [Advanced Runner Setup Options](/administration/runner/runner-advancedsetup.html)<br>

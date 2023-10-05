@@ -9,7 +9,7 @@ Date: 2014-11-06
 
 Fix more regressions in executing remote inline script steps.
 
-See [2.3.0 release notes](/history/version-2.3.0.md).
+See [2.3.0 release notes](/history/2_x/version-2.3.0.md).
 
 ## Contributors
 

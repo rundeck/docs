@@ -15,7 +15,7 @@ Follow the instructions outlined in the [**Datadog Integration Overview**](/manu
 
 ## Configuration
 
-![DataDog HealthCheck Config](@assets/img/healthcheck-datadog-config.png)
+![DataDog HealthCheck Config](/assets/img/healthcheck-datadog-config.png)
 
 **Node Filter**: This is the Node Filter used to determine which nodes the HealthCheck is run against.
 

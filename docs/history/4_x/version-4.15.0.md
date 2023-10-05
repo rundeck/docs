@@ -1,11 +1,10 @@
 ---
 
 title: "4.15.0 Release Notes"
-date: "2023-07-25"
+date: 2023-07-25
 image: /images/chevron-logo-red-on-white.png
 feed:
- enable: true
- description: "IAM AWS Authentication for RBA and Key Storage Configuration GUI"
+  description: "IAM AWS Authentication for RBA and Key Storage Configuration GUI"
 
 ---
 
@@ -18,6 +17,8 @@ Release Date: July 25, 2023
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
 - [Upgrade instructions](/upgrading/)
 - [Watch the Live Stream Release Recap](https://youtu.be/t_O6P7dPb1M)
+
+<YouTube id="t_O6P7dPb1M" />
 
 ## Overview
 
@@ -32,7 +33,7 @@ Check out the new features and enhancements for PagerDuty Process Automation (fo
 #### IAM AWS Authentication for Runbook Automation
 Previously, the only supported authentication method for the [AWS plugins](/manual/plugins/aws-plugins-overview.md) with Runbook Automation was through Access Key and Secret Key.  Now, customers can leverage the cross-account, IAM based authentication method for integrating Runbook Automation with their AWS accounts.  Not only is this method more secure and easy to configure, but it also allows customers to have multiple AWS Accounts integrated with their Runbook Automation instance, thereby allowing for a centralized hub of managing resources across multiple AWS environments
 
-![IAM AWS Auth](@assets/img/aws-iam-auth-rba.png)<br>
+![IAM AWS Auth](/assets/img/aws-iam-auth-rba.png)<br>
 
 #### Key Storage Configuration Enhancement
 

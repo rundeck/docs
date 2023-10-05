@@ -62,7 +62,7 @@ After the app has been installed in your ServiceNow&reg; instance there will be 
     - **API Key**: Paste in the API Key from Step 1
     - **API Version**: In rare occurrences the API version can be adjusted.  Default and minimum version is `34`.
 
-![Configuration Settings](@assets/img/sn-properties-config.png)
+![Configuration Settings](/assets/img/sn-properties-config.png)
 
 
 ## Using the Application
@@ -78,7 +78,7 @@ The Scheduled Scripts module will list the Populate Webhooks Scheduled Script.  
 
 Upon import webhooks from your Rundeck Projects will be added to the **PagerDuty Webhooks** table.  A 'Code Example' field provides basic code that can be used in ServiceNow&reg; Client or Server side scripts to call that specific webhook.
 
-![Webhook Record](@assets/img/sn-webhook-record.png)
+![Webhook Record](/assets/img/sn-webhook-record.png)
 
 ```javascript
 var rd = new Rundeck();

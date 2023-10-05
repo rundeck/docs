@@ -7,13 +7,13 @@ Follow the instructions outlined in the [**Datadog Integration Overview**](/manu
 
 ## Configuration
 
-![Datadog - Dispatch to Nodes](~@assets/img/datadog-dispatch.png)
+![Datadog - Dispatch to Nodes](/assets/img/datadog-dispatch.png)
 
 For both of the following steps, you will need to dispatch these steps to specific nodes for execution. In order to do so, when defining the job, select the tab "Nodes." Select "Dispatch to Nodes" and select the nodes that you wish to be muted/unmuted.
 
 ## Mute Host
 
-![Datadog - Mute Host](~@assets/img/datadog-mute.png)
+![Datadog - Mute Host](/assets/img/datadog-mute.png)
 
 - **Message**
 : This is the message that you want to be added when the host is muting. It can be used to describe who ran it, why, etc.

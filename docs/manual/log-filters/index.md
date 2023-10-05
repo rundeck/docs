@@ -27,7 +27,7 @@ Log Filters can be configured at a Job Step, Job, and some can be configured at 
 
 Job Filters are added to a Job Step using the Add Log Filter button on the step:
 
-![Add Job Step Log Filter](@assets/img/logfilter-jobstep-add.png)
+![Add Job Step Log Filter](/assets/img/logfilter-jobstep-add.png)
 
 Choose the type of Log Filter and configure it using the instruction in the links above for that Filter type.
 
@@ -35,7 +35,7 @@ Choose the type of Log Filter and configure it using the instruction in the link
 
 Log Filters can be configured to apply to all Job Steps by configuring them on the "Global Log Filters" section within the Job Edit screen.
 
-![Add Job Log Filter](@assets/img/logfilter-job-add.png)
+![Add Job Log Filter](/assets/img/logfilter-job-add.png)
 
 ### Project Log Filters
 

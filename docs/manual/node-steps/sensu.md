@@ -5,15 +5,15 @@
 
 ## Authentication
 
-To authenticate Process Automation with Sensu, follow instructions outlined in [this documentation](/docs/manual/plugins/sensu-plugins-overview.md).
+To authenticate Process Automation with Sensu, follow instructions outlined in [this documentation](/manual/plugins/sensu-plugins-overview.md).
 
 ## Configuration
 
-![Sensu - Dispatch to Nodes](~@assets/img/datadog-dispatch.png)
+![Sensu - Dispatch to Nodes](/assets/img/datadog-dispatch.png)
 
 ## Sensu / Get Check Info
 
-![Sensu - Get Check](~@assets/img/sensu-get-check.png)
+![Sensu - Get Check](/assets/img/sensu-get-check.png)
 
 - **Check Name**
 : This is the name of the check to gather information about. Set the API URL and API key in the project/framework settings prior to creating the job, there will be a list of checks that are currently in Sensu to choose from.
@@ -26,7 +26,7 @@ To authenticate Process Automation with Sensu, follow instructions outlined in [
 
 ## Sensu / Create / Silence Entry
 
-![Sensu - Create Silenced Entry](~@assets/img/sensu-create-silenced.png)
+![Sensu - Create Silenced Entry](/assets/img/sensu-create-silenced.png)
 
 - **Check Name**
 : This is the check to delete a silence entry from. If the API URL and API key are set in the project/framework settings prior to creating the job, there will be a list of checks that are currently in Sensu to choose from.
@@ -51,7 +51,7 @@ To authenticate Process Automation with Sensu, follow instructions outlined in [
 
 ## Sensu / Delete / Silence Entry
 
-![Sensu - Delete Silenced Entry](~@assets/img/sensu-delete-silenced.png)
+![Sensu - Delete Silenced Entry](/assets/img/sensu-delete-silenced.png)
 
 - **Check Name**
 : This is the check to delete a silence entry from. If the API URL and API key are set in the project/framework settings prior to creating the job, there will be a list of checks that are currently in Sensu to choose from.
@@ -64,7 +64,7 @@ To authenticate Process Automation with Sensu, follow instructions outlined in [
 
 ## Sensu / Event / Create
 
-![Sensu - Create Event](~@assets/img/sensu-create-event.png)
+![Sensu - Create Event](/assets/img/sensu-create-event.png)
 
 - **Check Name**
 : This is the check to set on the new event. If the API URL and API key are set in the project/framework settings prior to creating the job, there will be a list of check options that are currently in Sensu to choose from.
@@ -92,7 +92,7 @@ To authenticate Process Automation with Sensu, follow instructions outlined in [
 
 ## Sensu / Run ad hoc Check
 
-![Sensu - Run ad hoc Check](~@assets/img/sensu-ad-hoc.png)
+![Sensu - Run ad hoc Check](/assets/img/sensu-ad-hoc.png)
 
 - **Check Name**
 : This is the check to run. If the API URL and API key are set in the project/framework settings prior to creating the job, there will be a list of check options that are currently in Sensu to choose from.

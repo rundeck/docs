@@ -12,9 +12,9 @@ with them. It is recommended to install the `openjdk-11-jre-headless` package ma
 sudo apt-get install openjdk-11-jre-headless
 ```
 
-:::: tabs
+::: tabs
 
-::: tab Enterprise
+@tab Enterprise
 
 ### Quick install with apt
 ```bash
@@ -58,11 +58,11 @@ dpkg --purge rundeckpro-enterprise && apt install rundeckpro-enterprise
 Download `deb` package from [the download page](https://download.rundeck.com/) and run:
 
 ```bash
-sudo dpkg -i rundeckpro-enterprise_{{{rundeckVersionFull}}}-1_all.deb
+sudo dpkg -i rundeckpro-enterprise_{{$rundeckVersionFull}}-1_all.deb
 ```
-:::
 
-::: tab Community
+
+@tab Community
 ### Quick install with apt
 
 ```bash
@@ -92,11 +92,11 @@ sudo apt-get install rundeck
 Download deb package from [the download page](https://docs.rundeck.com/downloads.html) and run:
 
 ```bash
-sudo dpkg -i rundeck_{{{rundeckVersionFull}}}-1_all.deb
+sudo dpkg -i rundeck_{{$rundeckVersionFull}}-1_all.deb
 ```
-:::
 
-::::
+
+:::
 ## Starting Rundeck
 
 To start Rundeck:

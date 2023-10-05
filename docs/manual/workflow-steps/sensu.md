@@ -5,11 +5,11 @@
 
 ## Authentication
 
-To authenticate Process Automation with Sensu, follow instructions outlined in [this documentation](/docs/manual/plugins/sensu-plugins-overview.md).
+To authenticate Process Automation with Sensu, follow instructions outlined in [this documentation](/manual/plugins/sensu-plugins-overview.md).
 
 ## Sensu / Check / Create
 
-![Sensu - Create Check](~@assets/img/sensu-create-check.png)
+![Sensu - Create Check](/assets/img/sensu-create-check.png)
 
 - **Check Name**
 : This is the name of the check to create.
@@ -38,7 +38,7 @@ To authenticate Process Automation with Sensu, follow instructions outlined in [
 
 ## Sensu / Delete / Silence
 
-![Sensu - Delete a Silence on a Check](~@assets/img/sensuwf-delete-silence.png)
+![Sensu - Delete a Silence on a Check](/assets/img/sensuwf-delete-silence.png)
 
 - **Check Name**
 : This is the check the silenced entry should be deleted on. If the API URL and API key are set in the project/framework settings prior to creating the job, there will be a list of checks that are currently in Sensu to choose from
@@ -48,7 +48,7 @@ To authenticate Process Automation with Sensu, follow instructions outlined in [
 
 ## Sensu / Create / Silence Entry
 
-![Sensu - Create Silenced Entry](~@assets/img/sensu-create-silenced.png)
+![Sensu - Create Silenced Entry](/assets/img/sensu-create-silenced.png)
 
 - **Check Name**
 : This is the check to create a silenced entry for. If the API URL and API key are set in the project/framework settings prior to creating the job, there will be a list of checks that are currently in Sensu to choose from

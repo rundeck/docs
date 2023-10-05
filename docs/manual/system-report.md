@@ -10,7 +10,7 @@ The Enterprise System Report provides a breakdown of the Rundeck server's system
 The **General** tab provides a quick snapshot view of the Rundeck server instance.  
 Information about CPU, Uptime, Memory and important version information can all be seen at a glance.
 
-![System Report - General Tab](~@assets/img/system-report-general.png)
+![System Report - General Tab](/assets/img/system-report-general.png)
 
 ## Diagnostics
 
@@ -23,7 +23,7 @@ To protect sensitive data configuration entries are classified in two ways:
 - **Concealed Data** is hidden by default but can be revealed in the Rundeck GUI only by clicking Show Data on that particular data entry.  
 This would be for IP addresses, user names, etc.  This information may be necessary for troubleshooting.
 
-![System Report - Diagnostic Tab](~@assets/img/system-report-showdata.gif)
+![System Report - Diagnostic Tab](/assets/img/system-report-showdata.gif)
 
 ### Export Report
 
@@ -31,7 +31,7 @@ To streamline support requests we have added the ability to export data from the
 to look for common misconfigurations that cause issues.  When on the Diagnostic tab click the **Export Report** button.
 It is possible to export specific sections as needed in either JSON format or plain text format.
 
-![System Report - Export Report Window](~@assets/img/system-report-exportreport.png)
+![System Report - Export Report Window](/assets/img/system-report-exportreport.png)
 
 Items in the configuration marked as Secure or Concealed data (described above) will not be included in the export files.
 

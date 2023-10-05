@@ -1,5 +1,5 @@
-const nunjucks = require('nunjucks')
-const setup = require('./setup')
+import nunjucks from 'nunjucks'
+import setup from './setup'
 
 nunjucks.configure({
     autoescape: false,
@@ -20,7 +20,7 @@ const config = {
     javaDocStorageApiBase: `https://static.javadoc.io/org.rundeck/rundeck-storage-api/`+setup.rundeckVersionFull
 }
 
-module.exports = function(source) {
+export default function(source) {
     const isProd = process.env.NODE_ENV === 'production'
     const isServer = this.target === 'node'
 

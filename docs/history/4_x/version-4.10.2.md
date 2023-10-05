@@ -1,11 +1,10 @@
 ---
 
 title: "4.10.2 Release Notes"
-date: "2023-03-07"
+date: 2023-03-07
 image: /images/chevron-logo-red-on-white.png
 feed:
- enable: true
- description: "Version 4.10.2 is here. This release fixes an issue with 4.10.0 and 4.10.1 related to password resets.  Check Release Notes for more info."
+  description: "Version 4.10.2 is here. This release fixes an issue with 4.10.0 and 4.10.1 related to password resets.  Check Release Notes for more info."
 
 ---
 
@@ -18,6 +17,8 @@ Release Date: March 7th, 2023
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
 - [Upgrade instructions](/upgrading/)
 - [Watch the Live Stream Release Recap](https://youtu.be/stDTPTNZJNM)
+
+<YouTube id="stDTPTNZJNM"/>
 
 ## Enterprise Update
 

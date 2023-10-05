@@ -12,12 +12,12 @@ Terraform is an open-source infrastructure as code software tool created by Hash
 
 ## Exercise
 
-:::: tabs
-::: tab Create an API Key
+::: tabs
+@tab Create an API Key
 
 1. Login as `admin` to your Welcome Project (same steps Community or Enterprise)
 1. In the upper right corner click the person icon and choose Profile
-    ![User > Profile](@assets/img/howto-user-profile.png)
+    ![User > Profile](/assets/img/howto-user-profile.png)
 1. Click the plus (**+**) next to **User API Tokens**
 1. Name the token `terraform`
 1. User can remain `admin`
@@ -26,10 +26,9 @@ Terraform is an open-source infrastructure as code software tool created by Hash
 
 A box will pop up.  Be sure to copy the API Token somewhere before clicking **Close**.  The API token will be used in the next Exercise.
 
-![Copy API Token](@assets/img/howto-copy-apikey.png)
+![Copy API Token](/assets/img/howto-copy-apikey.png)
 
-:::
-::: tab Terraform Exercise 1
+@tab Terraform Exercise 1
 
 1. Create a working directory on your machine for this exercise.
 1. Copy the contents from the **Terraform Plan File** (tabs below) to a file called `rundeck-build.tf` in your working directory.
@@ -45,8 +44,7 @@ The following items will have been added to your Welcome Project
 - Two entries in the Key Storage under the "terraform" folder
 - A new ACL Entry that would allow any one in the "terraform" group full access to this project and read access to others.  (Note: The group is not created, but for extra credit give it a try!)
 
-:::
-::: tab Terraform Exercise 2
+@tab Terraform Exercise 2
 > This requires a success with Exercise 1
 
 To see the power of managing Rundeck Projects with Terraform we can make some minor adjustments to the Plan File and apply those changes.
@@ -58,10 +56,9 @@ To see the power of managing Rundeck Projects with Terraform we can make some mi
 The project will be updated with a new Label value.  To confirm click the Rundeck logo in the upper left of the interface to load the project list.
 
 :::
-::::
 
-:::: tabs
-::: tab Terraform Plan File
+::: tabs
+@tab Terraform Plan File
 
 ```
 terraform {
@@ -130,8 +127,7 @@ resource "rundeck_acl_policy" "example" {
 }
 
 ```
-:::
-::: tab ACL Example File
+@tab ACL Example File
 ```
 by:
   group: terraform
@@ -167,7 +163,6 @@ context:
 ```
 
 :::
-::::
 
 ## More Information
 

@@ -1,4 +1,4 @@
-module.exports = [
+export default [
   {
     link: '/manual/projects/',
     text: 'Projects'

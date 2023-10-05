@@ -28,7 +28,9 @@ Two dimensions of information dictate authorization inside Rundeck:
   action*s to a _group_ or _user_.
 
 The remainder of this section will describe how to use the access
-control policy.
+control policy, or watch the video below for an overview:
+
+<YouTube id="i859f1WG3Bo"/>
 
 ## Access control policy
 

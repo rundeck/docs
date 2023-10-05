@@ -17,7 +17,7 @@ Check out the new features and enhancements for Rundeck Enterprise and Rundeck C
 
 ### Updated Vault Plugin
 
-[HashiCorp Vault](https://www.vaultproject.io/) continues to be a very popular way for users to manage secrets in Rundeck. The Vault plugin update in this release includes more logging and the ability to support authentication to a different namespace from where the passwords are stored.  [Find the updated documentation here](/administration/key-storage/storage-plugins/vault.md).
+[HashiCorp Vault](https://www.vaultproject.io/) continues to be a very popular way for users to manage secrets in Rundeck. The Vault plugin update in this release includes more logging and the ability to support authentication to a different namespace from where the passwords are stored.  [Find the updated documentation here](/manual/key-storage/storage-plugins/vault.md).
 
 ## Enterprise Updates
 

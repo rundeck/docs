@@ -14,7 +14,7 @@ This release has primarily bugfixes.
 ## Enhancements
 
 * CLI tools can authenticate to the server using environment variables instead of the credentials stored in the framework.properties file.
-	* see [CLI Tool Authentication](/manpages/man1/rd.md)
+	* see [CLI Tool Authentication](/rd-cli/index.md)
 
 ## Upgrading to 2.5
 

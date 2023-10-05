@@ -11,25 +11,25 @@ This article explains how to configure Rundeck so that these execution logs are 
    systemctl stop rundeckd
    ``` 
 1. S3 Log Storage Plugin<br>
-   :::: tabs
-   ::: tab Rundeck
+   ::: tabs
+   @tab Rundeck
    Add the S3 log storage [plugin](https://github.com/rundeck-plugins/rundeck-s3-log-plugin) on the `libext` directory (at `$RDECK_BASE/libext` directory).<br>
    ```
    wget https://github.com/rundeck-plugins/rundeck-s3-log-plugin/releases/download/v1.0.12/rundeck-s3-log-plugin-1.0.12.jar -P $RDECK_BASE/libext
    ```
    :::
-   ::: tab PagerDuty Process Automation
+   @tab PagerDuty Process Automation
    Process Automation includes its own plugin for this out of the box<br>  
    :::
    ::::
 1. To enable the S3 / Minio log storage plugin, add the following line on the `rundeck-config.properties` file<br>
-   :::: tabs
-   ::: tab Rundeck
+   ::: tabs
+   @tab Rundeck
    ```
    rundeck.execution.logs.fileStoragePlugin=org.rundeck.amazon-s3
    ``` 
    :::
-   ::: tab PagerDuty Process Automation
+   @tab PagerDuty Process Automation
 
    ```
    rundeck.execution.logs.fileStoragePlugin=com.rundeck.rundeckpro.amazon-s3
@@ -39,8 +39,8 @@ This article explains how to configure Rundeck so that these execution logs are 
    :::: 
 1. Then open the `framework.properties` file and add the S3 / Minio bucket info as follow:
 
-:::: tabs
-::: tab Rundeck Community
+::: tabs
+@tab Rundeck Community
 
 ```
 framework.plugin.ExecutionFileStorage.org.rundeck.amazon-s3.endpoint=http://192.168.1.14:9000
@@ -50,8 +50,7 @@ framework.plugin.ExecutionFileStorage.org.rundeck.amazon-s3.bucket=test-rundeck-
 framework.plugin.ExecutionFileStorage.org.rundeck.amazon-s3.path=logs/${job.project}/${job.execid}.log
 framework.plugin.ExecutionFileStorage.com.rundeck.amazon-s3.region=your_instance_region
 ```
-:::
-::: tab PagerDuty Process Automation
+@tab PagerDuty Process Automation
 
 ```
 framework.plugin.ExecutionFileStorage.com.rundeck.rundeckpro.amazon-s3.endpoint=http://192.168.1.14:9000
@@ -62,7 +61,6 @@ framework.plugin.ExecutionFileStorage.com.rundeck.rundeckpro.amazon-s3.path=logs
 framework.plugin.ExecutionFileStorage.com.rundeck.rundeckpro.amazon-s3.region=your_instance_region
 ```
 :::
-::::
 
 **Definitions:**
 
@@ -79,26 +77,26 @@ framework.plugin.ExecutionFileStorage.com.rundeck.rundeckpro.amazon-s3.region=yo
 1. Start the Rundeck service.<br>
 1. Create a new project.<br>
 1. Create a new job and then execute it, now the execution log is stored in the S3/Minio bucket.<br>
-![ ](~@assets/img/minio1.png)<br>
+![ ](/assets/img/minio1.png)<br>
 1. From Rundeck click on the Gear Icon and then to the Log Storage option, now you can see the Log Storage Activity.<br>
-![ ](~@assets/img/minio2.png)<br>
+![ ](/assets/img/minio2.png)<br>
 
 ## PagerDuty Process Automation (formerly “Rundeck Enterprise”) System Configuration
 
 1. As admin rights users click on the Gear Icon and then click on “System Configuration”.<br>
-![ ](~@assets/img/minio3.png)<br>
+![ ](/assets/img/minio3.png)<br>
 1. Then click on the “+ Add Config” button.<br>
-![ ](~@assets/img/minio4.png)<br>
+![ ](/assets/img/minio4.png)<br>
 1. Add the following property `rundeck.execution.logs.fileStoragePlugin` with the following value `com.rundeck.rundeckpro.amazon-s3`.<br>
-![ ](~@assets/img/minio5.png)<br>
+![ ](/assets/img/minio5.png)<br>
 1. Add the following custom properties:<br>
-![ ](~@assets/img/minio6.png)<br>
+![ ](/assets/img/minio6.png)<br>
 1. Restart the PagerDuty Process Automation service.<br>
 
 ## Steps to configure S3 execution logs on Rundeck OSS / Process Automation for individual projects
 
 1. As admin rights users click on `Project Settings` then `Edit Configuration` and then Edit `Configuration File`<br>
-![ ](~@assets/img/minio3.png)<br>
+![ ](/assets/img/minio3.png)<br>
 2. Then add these lines with your information:
 ```
 project.plugin.ExecutionFileStorage.com.rundeck.rundeckpro.amazon-s3.AWSAccessKeyId=your_aws_access_key
@@ -112,8 +110,8 @@ project.plugin.ExecutionFileStorage.com.rundeck.rundeckpro.amazon-s3.region=your
 4. Restart the PagerDuty Process Automation service.<br>
 
 ## Docker Config
-:::: tabs
-::: tab Rundeck Community
+::: tabs
+@tab Rundeck Community
 
 ### Extending the image
 The  S3 Log Storage Plugin isn’t bundled out of the box with Rundeck. To use it on a Docker image it is necessary to extend the image using Remco.  [Remco](https://github.com/HeavyHorst/remco) is used to generate the Rundeck configuration files from templates. This allows storing parts of the configuration space in different backends. The default configuration uses environment variables.
@@ -124,7 +122,7 @@ The Remco documentation is available [here](/administration/configuration/docker
 
 This is the example file structure of a custom Rundeck image with the S3 Log Storage Plugin.<br>
 
-![ ](~@assets/img/minio8.png)<br>
+![ ](/assets/img/minio8.png)<br>
 
 The` Dockerfile` file content (inside docker project base directory)<br>
 
@@ -251,11 +249,9 @@ rundeck.feature.pagedjoblist.enabled=true
 1. Go to the “Commands” Section and dispatch any command against the local node.
 1. Check the Minio web interface (<code>[http://localhost:9001](http://localhost:9001), </code>user:<code> minioadmin, </code>password:<code> minioadmin</code>), now all Rundeck executions are stored on the “rundeck” bucket.<br>
 
-![ ](~@assets/img/minio9.png)<br>
+![ ](/assets/img/minio9.png)<br>
 
-:::
-
-::: tab PagerDuty Process Automation
+@tab PagerDuty Process Automation
 
 The following env vars are included on the Process Automation Docker image by default and are needed to enable S3/Minio log storage on the Docker container:
 
@@ -319,10 +315,9 @@ Full Docker example:
 1. Go to the “Commands” Section and dispatch any command against the local node.<br>
 1. Check the Minio web interface in another browser tab (<code>[http://localhost:9001](http://localhost:9001), </code>user:<code> minioadmin, </code>password:<code> minioadmin</code>), now, all Rundeck executions are stored on the “rundeck” bucket.<br>
 
-![ ](~@assets/img/minio10.png)<br>
+![ ](/assets/img/minio10.png)<br>
 
 :::
-::::
 
 ## Resources
 

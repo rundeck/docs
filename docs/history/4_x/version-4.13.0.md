@@ -1,11 +1,10 @@
 ---
 
 title: "4.13.0 Release Notes"
-date: "2023-05-15"
+date: 2023-05-15
 image: /images/chevron-logo-red-on-white.png
 feed:
- enable: true
- description: "Plugins and Ad-Hoc Commands on the Enterprise Runner, plus more Plugin enhancements."
+  description: "Plugins and Ad-Hoc Commands on the Enterprise Runner, plus more Plugin enhancements."
 
 ---
 
@@ -18,6 +17,8 @@ Release Date: May 15th, 2023
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
 - [Upgrade instructions](/upgrading/)
 - [Watch the Live Stream Release Recap](https://youtu.be/e6Rs9BRljAA)
+
+<YouTube id="e6Rs9BRljAA"/>
 
 ## Overview
 

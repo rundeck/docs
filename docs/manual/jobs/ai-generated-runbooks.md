@@ -6,11 +6,11 @@ This feature is still in beta and therefore the behavior and performance of this
 
 **AI-Generated Runbooks** provides an AI-enhanced approach to creating new automation Jobs.  Through natural-language prompts, users can generate the baseline starting-point for the Job definition.
 
-![Job Preview](@assets/img/ai-gen-rba-job-preview.png)<br>
+![Job Preview](/assets/img/ai-gen-rba-job-preview.png)<br>
 
 The AI-Generated Runbooks feature helps new users get started with Runbook Automation. Through example prompts, new users quickly learn the types of use-cases that Runbook Automation is suited to address.
 
-![Example Prompts Provide Context to New Users](@assets/img/ai-gen-rba-example-prompt.png)
+![Example Prompts Provide Context to New Users](/assets/img/ai-gen-rba-example-prompt.png)
 
 <br>
 AI-Generated Runbooks also helps experienced authors of Jobs by reducing the time spent creating the Job definition and searching through third-party technical documentation.
@@ -25,10 +25,10 @@ New users and current Process Automation customers are encouraged to [start a tr
 
 To enable _AI-Generated Runbooks_:<br>
 1. Navigate to the AI Manager through the System Menu (gear icon in the upper-right):
-   ![AI Manager Menu](@assets/img/ai-manager-menu.png)
+   ![AI Manager Menu](/assets/img/ai-manager-menu.png)
 2. Click the checkbox to `**Enable AI Generated Runbooks**`
 3. Select the projects where the feature should be enabled:
-   ![Enable in Projects](@assets/img/enable-ai-in-project.png)
+   ![Enable in Projects](/assets/img/enable-ai-in-project.png)
 4. Click **Save**.
 
 :::warning First Time Configuration
@@ -41,11 +41,11 @@ To use _AI-Generated Runbooks_:<br>
 
 1. Navigate to the **Jobs** tab.
 2. Click on **Generate Job**:
-   ![Generate Job](@assets/img/jobs-page-generate-job.png)
+   ![Generate Job](/assets/img/jobs-page-generate-job.png)
 3. Select from the example prompts, or type in a custom prompt for a task to be automated through Runbook Automation:
-   ![Typing in Prompt](@assets/img/ai-gen-rba-example-prompt.png)
+   ![Typing in Prompt](/assets/img/ai-gen-rba-example-prompt.png)
 4. Click on **Generate Job**.  This will generate a Job Preview:
-   ![Job Preview](@assets/img/ai-gen-rba-job-preview.png)
+   ![Job Preview](/assets/img/ai-gen-rba-job-preview.png)
 5. Review the Job Preview.  If the generated Job is insufficient, either click **Discard** or type in a new prompt.  Otherwise, click on **Continue to Job Editor**.
 6. From the Job editor, modify the Job definition as needed and then click **Create**.
 
@@ -61,7 +61,7 @@ In this circumstance, it is ok to retry the same prompt again and with minimal w
 ### Job Review Best Practices
 Since the content of the Job is generated using a large-language model, it is best-practice to review the generated content for accuracy.  Once reviewed and adjusted, it is also
 best-practice to test the Job in a non-production environment.  These best practices are presented to the user when the Job is created using _AI-Generated Runbooks_:
-![Generated Job Best Practices](@assets/img/ai-gen-rba-created-job.png)<br>
+![Generated Job Best Practices](/assets/img/ai-gen-rba-created-job.png)<br>
 
 ## AI Model and Security
 _AI-Generated Runbooks_ is powered by a combination of a large-language generative AI model and [prompt-engineering](https://en.wikipedia.org/wiki/Prompt_engineering).
@@ -69,7 +69,7 @@ _AI-Generated Runbooks_ is powered by a combination of a large-language generati
 Through this configuration, **the only data sent to the generative AI model is the text entered into the prompt field.**  No other data about your environment, 
 existing Jobs or the source of the prompt is sent to the AI model.  Furthermore, **the AI model is not trained on the text entered into the prompt.**
 
-For further questions about the AI Model and security, please [contact support](/docs/about/getting-help.html). 
+For further questions about the AI Model and security, please [contact support](/about/getting-help.html). 
 
 [comment]: <> (Current limitations)
 ## Current Limitations

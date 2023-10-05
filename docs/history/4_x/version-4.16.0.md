@@ -1,11 +1,10 @@
 ---
 
 title: "4.16.0 Release Notes"
-date: "2023-08-24"
+date: 2023-08-24
 image: /images/chevron-logo-red-on-white.png
 feed:
- enable: true
- description: "Key Storage and Node Sources on the Enterprise Runner!"
+  description: "Key Storage and Node Sources on the Enterprise Runner!"
 
 ---
 
@@ -18,6 +17,8 @@ Release Date: August 24th, 2023
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
 - [Upgrade instructions](/upgrading/)
 - [Watch the Live Stream Release Recap](https://youtu.be/TIpVdDikdYM)
+
+<YouTube id="TIpVdDikdYM" />
 
 ## Overview
 
@@ -33,16 +34,16 @@ Check out the new features and enhancements for PagerDuty Process Automation (fo
 
 With the latest release, customers can integrate the Runner with Hashicorp Vault and use secrets from Vault in their workflows and to discover nodes.  When users navigate to select keys from key Storage, there is now an option to browse and select secrets from Vault that the Runner is integrated with.  While the key names and paths are visible in the GUI, the secrets themselves are not sent to the server.  The integration between Runners and secrets-management instances now enable customers to automate workflows in secure, remote environments where they have self-hosted secrets-stores:
 
-![Runner Key Storage](@assets/img/key-storage-runner-browse.png)
+![Runner Key Storage](/assets/img/key-storage-runner-browse.png)
 
-For further details on configuring and using secrets-management providers with the Enterprise Runner, see [this documentation](/docs/manual/key-storage/enterprise-runner-key-storage).
+For further details on configuring and using secrets-management providers with the Enterprise Runner, see [this documentation](/manual/key-storage/enterprise-runner-key-storage).
 
 ### Node Inventory Discovery through Enterprise Runner
 This release enables the Runner to be used for discovering nodes and populating the node-inventory through the Runner.  When users select to add a new Node Source through the GUI, there is now an option to select a Runner to use for discovering Nodes in the remote environment.  Through existing Node Source plugins such as Ansible, VMware, Docker and Kubernetes, the Runner will retrieve and send the node data back to the server to be visible in the GUI and targeted for Job and Command execution.  This integration allows customers to automate more tasks in their secure and remote environments where inventory can only be discovered within their environment’s perimeter.
 
 For further details on configuring and using node discovery through the Enterprise Runner, see [this documentation](/manual/projects/resource-model-sources/#adding-nodes-to-a-project).
 
-![Runner Node Sources](@assets/img/node-source-runner-selector.png)
+![Runner Node Sources](/assets/img/node-source-runner-selector.png)
 
 ### SSHJ Default Node Executor for New Projects
 Prior to this release, the out-of-the-box Default Node Executor for projects was the JSCH plugin.  However, this plugin no longer supports the latest SSH security standards – such as the most secure RSA algorithms.  In order to support these latest standards for SSH security, new projects created within Rundeck, Process Automation OnPrem and Runbook automation will use the SSHJ plugin as the Default Node Executor.  Customers who are using the JSCH plugin are not required to switch over to SSHJ and we will continue to support the JSCH Node Executor plugin.

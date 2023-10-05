@@ -9,15 +9,15 @@ The Runner, available for both Process Automation and Runbook Automation securel
 
 The Runner is a Java based program which uses a polling model to pick up work from the Automation Server.  During each polling cycle (every 5 seconds) the Runner checks for executions that it is responsible for.  Communication from the Runner to the Automation Server happens over https and is initiated from the Runner.  This allows for enhanced firewall security as ports no longer need to be open for the Automation Server to talk to nodes over more sensitive ports. _(e.g. SSH/22)_
 
-![Runner Architecture](@assets/img/runner-arch-diagram.png)
+![Runner Architecture](/assets/img/runner-arch-diagram.png)
 
 
 ## Installation
 
 Follow these steps to install a Runner:
 
-:::: tabs
-::: tab Creating and configuring a Runner
+::: tabs
+@tab Creating and configuring a Runner
 
 1. Under the _System Menu_ (gear icon upper-right) choose **Runner Management**
 1. Choose **Create Runner**.
@@ -26,8 +26,7 @@ Follow these steps to install a Runner:
 1. [This step is optional] On this page choose which project(s) the Runner is active for.  The Assigned toggle will enable the Runner for _All Nodes_ (`.*`) in that project. After the Runner is created you can edit the Runner assignment and adjust the node filter to target a subset of nodes. Click **Next**.
 1. On the **Confirmation** step, click on **Download** and save the Runner JAR binary file. Note that the JAR file must be used only for the environment that it is configured for. Click **Finish**.
 
-:::
-::: tab Installing a Runner
+@tab Installing a Runner
 
 Pre-Requisites:
 - Same [OS requirements as Rundeck](/administration/install/system-requirements.md)
@@ -39,7 +38,6 @@ Pre-Requisites:
 Connection can be confirmed on the Runner Management page on the _Last Checkin_ line.  If there are errors in the output resolve those using troubleshooting steps below.
 
 :::
-::::
 
 :::tip
 To enable the Runner features you have to add the following property in `rundeck-config.properties` file and restart the Process Automation cluster or instance. This feature has been enabled on Docker installations since v4.5.0 and is also enabled by default for Runbook Automation.	
@@ -93,7 +91,7 @@ java -Dmicronaut.http.client.proxy-type=http -Dmicronaut.http.client.proxy-addre
 
 The “Runner Management” menu will appear on under the “System” settings:
 
-![Runner Architecture](@assets/img/runner-management.png)
+![Runner Architecture](/assets/img/runner-management.png)
 
 If you are installing a Runner on a Windows OS as localhost node, you have to specify the “OS Family” setting as “windows”.
 
@@ -103,13 +101,13 @@ If you are installing a Runner on a Windows OS as localhost node, you have to sp
 - Click on "Edit" on the local node.
 - On the field "OS Family" set "windows".
 
-![Runner Architecture](@assets/img/runner-edit-nodes.png)
+![Runner Architecture](/assets/img/runner-edit-nodes.png)
 
-![Runner Architecture](@assets/img/runner-resource-tab.png)
+![Runner Architecture](/assets/img/runner-resource-tab.png)
 
-![Runner Architecture](@assets/img/runner-edit-local.png)
+![Runner Architecture](/assets/img/runner-edit-local.png)
 
-![Runner Architecture](@assets/img/runner-os-family.png)
+![Runner Architecture](/assets/img/runner-os-family.png)
 
 Powershell script steps are fully supported on the Runner. Commands that run through the cmd.exe shell are not supported at the moment.
 

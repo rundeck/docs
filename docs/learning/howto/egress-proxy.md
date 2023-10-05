@@ -15,7 +15,7 @@ This guide demonstrates how to add the correct parameters to reach a proxy serve
 
 ### Linux based Rundeck instance
 
-If your Rundeck instance needs a proxy server to access the internet add the following line in the `rundeckd` [file](https://docs.rundeck.com/docs/administration/configuration/system-properties.html#rpm-and-deb), located at` /etc/sysconfig/rundeckd `in RedHat/CentOS/Rocky based Linux distributions or `/etc/default/rundeckd `on Debian/Ubuntu based Linux distributions. If the file isn't present, you can create it.
+If your Rundeck instance needs a proxy server to access the internet add the following line in the `rundeckd` [file](/administration/configuration/system-properties.md#rpm-and-deb), located at` /etc/sysconfig/rundeckd `in RedHat/CentOS/Rocky based Linux distributions or `/etc/default/rundeckd `on Debian/Ubuntu based Linux distributions. If the file isn't present, you can create it.
 
 ```
 RDECK_JVM_OPTS="-Dhttp.proxySet=true -Dhttp.proxyHost=proxy_server_hostname -Dhttp.proxyPort=8888 -Dhttps.proxySet=true -Dhttps.proxyHost=proxy_server_hostname -Dhttps.proxyPort=8888 -Dhttp.nonProxyHosts=any_direct_host"
@@ -23,7 +23,7 @@ RDECK_JVM_OPTS="-Dhttp.proxySet=true -Dhttp.proxyHost=proxy_server_hostname -Dht
 
 ### Windows based Rundeck instance
 
-On [Windows](https://docs.rundeck.com/docs/administration/install/windows.html#installing-on-windows) based instances, the process is quite different. Just add these parameters to the `RDECK_CLI_OPTS` variable in the `profile.bat` file:
+On [Windows](/administration/install/windows.md#installing-on-windows) based instances, the process is quite different. Just add these parameters to the `RDECK_CLI_OPTS` variable in the `profile.bat` file:
 
 ```
 set RDECK_CLI_OPTS=-Xms2048m -Xmx4096m -Dhttp.proxySet=true -Dhttp.proxyHost=proxy_server_hostname -Dhttp.proxyPort=8888 -Dhttps.proxySet=true -Dhttps.proxyHost=proxy_server_hostname -Dhttps.proxyPort=8888 -Dhttp.nonProxyHosts=any_direct_host
@@ -177,4 +177,4 @@ This command downloads and installs the plugin from the official plugin reposito
 
 ## Resources
 * [Oracle proxy documentation.](https://docs.oracle.com/javase/8/docs/technotes/guides/net/proxies.html)
-* [Rundeck JVM settings.](https://docs.rundeck.com/docs/administration/configuration/system-properties.html#rpm-and-deb)
+* [Rundeck JVM settings.](/administration/configuration/system-properties.md#rpm-and-deb)

@@ -1,6 +1,6 @@
-var cmp = require('semver-compare');
+import cmp from 'semver-compare'
 
-var getChildren = require('./getChildren')
+import getChildren from './getChildren'
 
 
 function getHistory(parent, dir) {
@@ -11,4 +11,4 @@ function getHistory(parent, dir) {
     return sorted
 }
 
-module.exports = getHistory
+export default getHistory

@@ -8,7 +8,7 @@ The Node Executor and File Copier plugins use [AWS Systems Manager](https://aws.
 Using the SSM plugins allows for Process Automation to communicate with EC2 instances through the SSM service, rather than another communication protocol - such as SSH. 
 Process Automation sends commands to the Systems Manager service, and then the Systems Manager agents _pull_ their tasks onto their host EC2s. In addition, S3 is used to pass scripts and files to remote nodes.
 
-![Basic Architecture of Process Automation with SSM](@assets/img/ssm-node-executor-architecture.png)
+![Basic Architecture of Process Automation with SSM](/assets/img/ssm-node-executor-architecture.png)
 
 ## Configuration and Credential Settings
 
@@ -41,9 +41,9 @@ There are three components of the setup for using SSM with Process Automation:
    :::
 3. Add the instances to the SSM inventory. This can be done using the [Quick Setup Host Management](https://docs.aws.amazon.com/systems-manager/latest/userguide/quick-setup-host-management.html).
 4. You can test that you have configured Systems Manager correctly by manually using the [Run Command](https://docs.aws.amazon.com/systems-manager/latest/userguide/run-command.html) feature from AWS:
-   <br>![aws-ssm-test-run](@assets/img/aws-ssm-test-run-command.png)<br>
+   <br>![aws-ssm-test-run](/assets/img/aws-ssm-test-run-command.png)<br>
    * Use the **`AWS-RunShellScript`** or **`AWS-RunPowerShellScript`** (for Windows) to test that SSM has been set up properly for the remote EC2 nodes.
-<br>![aws-ssm-test-script](@assets/img/aws-ssm-test-run-script.png)<br>
+<br>![aws-ssm-test-script](/assets/img/aws-ssm-test-run-script.png)<br>
 
 Additional documentation on this setup can be found in the [Setting up AWS Systems Manager for EC2 instances](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-setting-up-ec2.html).
 
@@ -141,18 +141,18 @@ Follow the instructions outlined in [this AWS documentation](https://docs.aws.am
 ## Setup Within Process Automation
 
 ### AWS Authentication
-Follow the instructions outlined in the [AWS Plugins Overview](/docs/manual/plugins/aws-plugins-overview.html) for Process Automation to authenticate with AWS.
+Follow the instructions outlined in the [AWS Plugins Overview](/manual/plugins/aws-plugins-overview.html) for Process Automation to authenticate with AWS.
 
 ### Node Discovery
 In order to target the remote EC2 instances, they need to be populated into Process Automation's node inventory. 
-It is recommended to use the [**EC2 Node Source**](/docs/manual/projects/resource-model-sources/aws.html#amazon-ec2-node-source).
+It is recommended to use the [**EC2 Node Source**](/manual/projects/resource-model-sources/aws.html#amazon-ec2-node-source).
 
 :::warning When not using the EC2 Node Source
 If the EC2 Node Source is not used for node discovery, then be sure that the following **node-attributes** are added to the nodes:
 1. **`instanceId`** - This is the EC2 instance-id from AWS.
 2. **`region`** - This is the AWS region where the EC2 resides.
 
-Node Attributes can be added when defining a resource-model source [manually](/docs/administration/configuration/plugins/bundled-plugins.html#built-in-resource-model-formats)
+Node Attributes can be added when defining a resource-model source [manually](/administration/configuration/plugins/bundled-plugins.html#built-in-resource-model-formats)
 or by using the [Attribute Match](/manual/node-enhancers.html#attribute-match) node enhancer.
 :::
 
@@ -163,7 +163,7 @@ The SSM Node Executor can be set as the **Default Node Executor** - thereby maki
 
 1. Navigate to **Project Settings** -> **Edit Configuration** -> **Default Node Executor**.
 2. Select the dropdown on the left and select **AWS / SSM / Node Executor**:
-    ![](@assets/img/ssm-select-default-node-executor.png)
+    ![](/assets/img/ssm-select-default-node-executor.png)
 3. If Process Automation is authenticated with AWS through an associated IAM Role, then all the fields can be left as their defaults. Otherwise, fill in the **Access Key ID** and **Secret Key** fields.
 4. See below for using **CloudWatch Logs** for larger log-output.
 5. Optionally modify the **Log Filter Delay** property to be the number of seconds to wait before retrieving logs.
@@ -175,7 +175,7 @@ To do so, add **`node-executor=awsssmexecutor`** as a node-attribute to the node
 
 * For the **EC2 Node Source**, this can be done using the **Mapping Params** field:<br>
 **`node-executor.default=awsssmexecutor`** and **`file-copier.default=aws-ssm-copier`**
-  ![ec2-mapping-params](@assets/img/aws-ssm-ec2-mapping-params.png)
+  ![ec2-mapping-params](/assets/img/aws-ssm-ec2-mapping-params.png)
 
 ### Enable SSM File Copier
 
@@ -193,7 +193,7 @@ The SSM File Copier can be set as the **Default File Copier** - thereby making i
 The SSM File Copier can alternatively be configured on a per **Node Source** or per node basis. To do so, add **`file-copier=aws-ssm-copier`** and **`ssm-copier-bucket=S3 bucket name`** as a node-attribute to the nodes.
 
 ## Using SSM for Commands and Scripts
-Once the setup is complete, commands that are executed on the specified EC2s - either through the [**Commands**](/docs/manual/06-commands.html#commands-tab-overview) tab or through the **Remote Command** step - will automatically execute through SSM.
+Once the setup is complete, commands that are executed on the specified EC2s - either through the [**Commands**](/manual/06-commands.html#commands-tab-overview) tab or through the **Remote Command** step - will automatically execute through SSM.
 Similarly, scripts that are executed using the **Incline Script** Job step will take place using SSM with S3 as the pass-through mechanism.
 
 ## Using CloudWatch Logs (Optional)

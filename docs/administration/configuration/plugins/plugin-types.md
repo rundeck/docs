@@ -12,7 +12,7 @@ In this document "plugin" and "provider" are used somewhat interchangeably. When
 referring to an actual file containing the provider implementations we will say
 "plugin file".
 
-![Rundeck Providers and Plugin Files](~@assets/img/fig1102.png)
+![Rundeck Providers and Plugin Files](/assets/img/fig1102.png)
 
 Rundeck supports several different types of plugins to perform different kinds
 of services:
@@ -39,9 +39,9 @@ Each Service makes use of "Providers". Each Provider has a unique "Provider Name
 that is used to identify it, and most Services have default Providers unless
 you specify different ones to use.
 
-![Rundeck Services and Providers](~@assets/img/fig1101.png)
-![Rundeck Services and Providers](~@assets/img/fig1101_2.png)
-![Rundeck Services and Providers](~@assets/img/fig1101_3.png)
+![Rundeck Services and Providers](/assets/img/fig1101.png)
+![Rundeck Services and Providers](/assets/img/fig1101_2.png)
+![Rundeck Services and Providers](/assets/img/fig1101_3.png)
 
 Rundeck Plugin Files can contain more than one Provider.
 

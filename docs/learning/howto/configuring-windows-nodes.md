@@ -75,48 +75,47 @@ It's important to allow access to the 5985 port via Windows Firewall (any betwee
 Create a Windows-based project on the Rundeck instance.
 
 1. Create a new project: **Name** `windows`, and  **Label` Windows Jobs`**
-    <br><br>![Create Project](@assets/img/howto-winnode-createproject.png)<br><br>
+    <br><br>![Create Project](/assets/img/howto-winnode-createproject.png)<br><br>
 1. Go to the Default Node Executor tab and then select **WinRM Node Executor Python**. It may be necessary to set the Python interpreter textbox to `python3` interpreter as the command/path.
-    <br><br>![Node Executor](@assets/img/howto-winnode-nodeexec.png)<br><br>
+    <br><br>![Node Executor](/assets/img/howto-winnode-nodeexec.png)<br><br>
 1. Go to the **Default File Copier** tab and select the **WinRM Python File Copier**. Similar to the previous step, it may be necessary to define the Python interpreter textbox as `python3` interpreter for the command/path.
-    <br><br>![File Copier](@assets/img/howto-winnode-filecopy.png)<br><br>
+    <br><br>![File Copier](/assets/img/howto-winnode-filecopy.png)<br><br>
 1. Click on the **Create** button.
 
 ## Adding a Windows Test Node
 
 Now Rundeck should ask about the model source. Let's start with the Windows node definition.
-:::: tabs
-::: tab Enterprise Steps
+::: tabs
+@tab Enterprise Steps
 1. Click on the **Add a new Node Source +** button.
 1. Select **Node Wizard**.
-    <br><br>![Node Wizard](@assets/img/howto-winnode-nodewizardsource.png)<br><br>
+    <br><br>![Node Wizard](/assets/img/howto-winnode-nodewizardsource.png)<br><br>
 1. Click **Save** on the _Node Wizard Source_.
 1. Click **Save** on the _Sources_ tab.
 1. Switch to the _Edit_ tab.
 1. Click the Modify button under the Node Wizard entry.
-    <br><br>![Modify Wizard](@assets/img/howto-winnode-modifynodesource.png)<br><br>
+    <br><br>![Modify Wizard](/assets/img/howto-winnode-modifynodesource.png)<br><br>
 1. Set the *Node Name* to `mywindows`
 1. Set *HostName* to the IP address of your Windows Host.
 1. Set *OS Family* to `Windows`
-   <br><br>![Wizard Detail](@assets/img/howto-winnode-wizarddetail.png)<br><br>
+   <br><br>![Wizard Detail](/assets/img/howto-winnode-wizarddetail.png)<br><br>
 1. Click the **Authentication Tab** at the top.
 1. Enter your user name for the *UserName*. (e.g. _Administrator_)
-    <br><br>![Wizard Authentication](@assets/img/howto-winnode-wizardauth.png)<br><br>
+    <br><br>![Wizard Authentication](/assets/img/howto-winnode-wizardauth.png)<br><br>
 1. Set the _Password Storage Path_ to `keys/project/windows/windows.password`
 1. Click **Add Node** to save that node entry.
 1. Click the **Save** button under the list of nodes.
 
-:::
-::: tab Community Steps
+@tab Community Steps
 1. Click on the **Add a new Node Source +** button.
 1. Select **File**
-    <br><br>![File Source Logo](@assets/img/howto-winnode-filesource.png)<br><br>
+    <br><br>![File Source Logo](/assets/img/howto-winnode-filesource.png)<br><br>
 1. In the _Format_ section, click on the right list and select the **resourceyaml** option.
 1. Put the file's desired path including the file name and extension. (e.g. `~/windows-nodes.yaml`)
 1. Select check boxes for **Generate**, **Include Server Node** and **Writeable** checkboxes, and then click on the **Save** buttons (_there are two_).
-    <br><br>![File Source Details](@assets/img/howto-winnode-filesourcedetails.png)<br><br>
+    <br><br>![File Source Details](/assets/img/howto-winnode-filesourcedetails.png)<br><br>
 1. Now click on the _Edit_ tab, and click on the **Modify** button.
-    <br><br>![File Source Code](@assets/img/howto-winnode-modifyfilesource.png)<br><br>
+    <br><br>![File Source Code](/assets/img/howto-winnode-modifyfilesource.png)<br><br>
 1. Add the following node definition in the node definition text area.  Make sure you use your own nodes IP Address for _hostname_ and login name for _username_
     ```
     mywindows:
@@ -130,15 +129,14 @@ Now Rundeck should ask about the model source. Let's start with the Windows node
     ```
 1. **Save the entry.<br>The node is available now by clicking on the "Nodes" section in the left sidebar and setting the filter to `.*`
 :::
-::::
 
 Don't forget to add the Windows user password to the Rundeck key storage.
 
 1. Go to the _System Menu(Gear Icon) > Key Storage_.
-    <br><br>![Key Storage](@assets/img/howto-winnode-keystorage.png)<br><br>
+    <br><br>![Key Storage](/assets/img/howto-winnode-keystorage.png)<br><br>
 1. Click on the **+ Add or Upload a Key** button.
 1. Enter the Windows password as shown in the image and save.
-    <br><br>![Key Storage Entry](@assets/img/howto-winnode-keystorageentry.png)<br><br>
+    <br><br>![Key Storage Entry](/assets/img/howto-winnode-keystorageentry.png)<br><br>
 >Enterprise Users may need to add `project/windows` to the Storage Path line.
 
 
@@ -154,7 +152,7 @@ Now it's time to send some commands against the windows remote machine.
     ```
 1. On the _Enter a command_ textbox type: `dir` (listing directories and files).
 1. Click on the **Run on 1 Node** button.
-    <br><br>![Success](@assets/img/howto-winnode-commandsuccess.png)<br><br>
+    <br><br>![Success](/assets/img/howto-winnode-commandsuccess.png)<br><br>
 
 
 And now your Windows node is ready to receive PowerShell commands from the Rundeck instance.

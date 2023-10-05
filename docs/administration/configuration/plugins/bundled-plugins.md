@@ -40,7 +40,7 @@ For more detail see [Script Plugin](/manual/projects/node-execution/script.md).
 
 Executes an external script file to perform the command, useful for developing your own plugin with the [Script Plugin Development](/developer/01-plugin-development.md#script-plugin-development) model.
 
-File: `rundeck-script-plugin-{{{rundeckVersionFull}}}.jar`
+File: `rundeck-script-plugin-{{$rundeckVersionFull}}.jar`
 
 ## Stub Plugin
 
@@ -74,13 +74,13 @@ You can also test some failure scenarios by configuring the following node attri
 You could, for example, disable or test an entire project's workflows or jobs by
 simply setting the `project.properties` node executor provider to `stub`.
 
-File: `rundeck-stub-plugin-{{{rundeckVersionFull}}}.jar`
+File: `rundeck-stub-plugin-{{$rundeckVersionFull}}.jar`
 
 ## Local Execution Plugin
 
 A Node Step plugin which executes a command locally instead of on a target node.
 
-File: `rundeck-localexec-plugin-{{{rundeckVersionFull}}}.jar`
+File: `rundeck-localexec-plugin-{{$rundeckVersionFull}}.jar`
 
 ## Job State Plugin
 
@@ -88,7 +88,7 @@ Provides a Workflow Step:
 
 - Job State Conditional: Can query and assert the state of another Job, such as running, succeeded, failed, etc, and optionally halt the current execution.
 
-File: `rundeck-job-state-plugin-{{{rundeckVersionFull}}}.jar`
+File: `rundeck-job-state-plugin-{{$rundeckVersionFull}}.jar`
 
 ## Flow Control Plugin
 
@@ -96,7 +96,7 @@ Provides a Workflow Step:
 
 - Flow Control: Can halt the execution with a custom status, useful as an Error handler.
 
-File: `rundeck-flow-control-plugin-{{{rundeckVersionFull}}}.jar`
+File: `rundeck-flow-control-plugin-{{$rundeckVersionFull}}.jar`
 
 ## Jasypt Encryption Plugin
 
@@ -173,7 +173,7 @@ rundeck.config.storage.converter.1.config.algorithm=PBEWITHSHA256AND128BITAES-CB
 rundeck.config.storage.converter.1.config.provider=BC
 ```
 
-File: `rundeck-jasypt-encryption-plugin-{{{rundeckVersionFull}}}.jar`
+File: `rundeck-jasypt-encryption-plugin-{{$rundeckVersionFull}}.jar`
 
 :::tip
 Note: the specific PBE algorithms available for use with the `encryptorType=custom` come from installed JCE providers.  BouncyCastle is included but others are provided by the specific JDK you use.  Here is a sample list of PBE providers using BouncyCastle and OpenJDK 1.8:
@@ -230,10 +230,10 @@ PBE ALGORITHMS:
 
 Provides SCM Export and SCM Import providers for Git.
 
-File: `rundeck-git-plugin-{{{rundeckVersionFull}}}.jar`
+File: `rundeck-git-plugin-{{$rundeckVersionFull}}.jar`
 
 ## Copy File Plugin
 
 Provides a Node Step that can copy a file to a node, using the Node's File Copier.
 
-File: `rundeck-copyfile-plugin-{{{rundeckVersionFull}}}.jar`
+File: `rundeck-copyfile-plugin-{{$rundeckVersionFull}}.jar`

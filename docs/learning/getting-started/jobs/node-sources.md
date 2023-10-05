@@ -15,15 +15,15 @@ Static sources come in 4 varieties: file, url, directory and script. File (in .y
 
 #### Edit Nodes
 Select the Project Settings gear icon at the bottom left and then select Edit Nodes<br>
-<img src="~@assets/img/nodes1-editnodes.png" width="40%" height="40%" /><br>
+<img src="/assets/img/nodes1-editnodes.png" width="40%" height="40%" /><br>
 Click the blue Add a New Source button at the bottom<br>
-<img src="~@assets/img/nodes2-addnewsource.png" width="80%" height="80%" /><br>
+<img src="/assets/img/nodes2-addnewsource.png" width="80%" height="80%" /><br>
 Select the preferred Node Source type (such as File)<br>
-<img src="~@assets/img/nodes3-selectfilesource.png" width="60%" height="60%" /><br>
+<img src="/assets/img/nodes3-selectfilesource.png" width="60%" height="60%" /><br>
 Provide details on where and how to connect to the new Node Source<br>
-<img src="~@assets/img/nodes4-filesourcedetails.png" width="80%" height="80%" /><br>
+<img src="/assets/img/nodes4-filesourcedetails.png" width="80%" height="80%" /><br>
 For a file Node Source, the required elements are the File Path (on the Rundeck server) and the Format. If permissions have been set appropriately, select Writable to have the ability to edit the Node Source in the Rundeck interface. Click the green Save button to complete the source.<br>
-<img src="~@assets/img/nodes5-savesave.png" width="80%" height="80%" /><br>
+<img src="/assets/img/nodes5-savesave.png" width="80%" height="80%" /><br>
 To commit your node source changes to the database, select the second green Save button at the bottom of the Sources page. There are warning messages at top and bottom to remind you to save here.<br>
 
 ### Adding a Dynamic Source
@@ -31,20 +31,20 @@ The details needed for dynamic sources vary greatly based on the wide variety of
 
 #### Edit Nodes
 Select the Project Settings gear icon at the bottom left and then select Edit Nodes<br>
-<img src="~@assets/img/nodes1-editnodes.png" width="40%" height="40%" /><br>
+<img src="/assets/img/nodes1-editnodes.png" width="40%" height="40%" /><br>
 Click the blue Add a New Source button at the bottom<br>
-<img src="~@assets/img/nodes2-addnewsource.png" width="80%" height="80%" /><br>
+<img src="/assets/img/nodes2-addnewsource.png" width="80%" height="80%" /><br>
 Select the preferred Node Source type (such as Ansible)<br>
-<img src="~@assets/img/nodes6-selectansiblesource.png" width="60%" height="60%" /><br>
+<img src="/assets/img/nodes6-selectansiblesource.png" width="60%" height="60%" /><br>
 Provide details on where and how to connect to the new Node Source nodes.<br>
-<img src="~@assets/img/nodes7-ansiblesourcedetails.png" width="80%" height="80%" /><br>
-For an Ansible Node Source, the primary settings to be concerned with are paths to the Ansible binaries, the Ansible inventory file and Ansible config file. For more details on integrating with Ansible, look [here](https://docs.rundeck.com/docs/learning/howto/using-ansible.html#how-to-integrate-ansible-with-rundeck). Click the green Save button to complete the source.<br>
-<img src="~@assets/img/nodes8-savesave2.png" width="80%" height="80%" /><br>
+<img src="/assets/img/nodes7-ansiblesourcedetails.png" width="80%" height="80%" /><br>
+For an Ansible Node Source, the primary settings to be concerned with are paths to the Ansible binaries, the Ansible inventory file and Ansible config file. For more details on integrating with Ansible, look [here](/learning/howto/using-ansible.md#how-to-integrate-ansible-with-rundeck). Click the green Save button to complete the source.<br>
+<img src="/assets/img/nodes8-savesave2.png" width="80%" height="80%" /><br>
 To commit your node source changes to the database, select the second green Save button at the bottom of the Sources page. There are warning messages at top and bottom to remind you to save here.<br>
 
 ## Editing Data in Node Sources
 Not all node sources allow for direct modification of the contained data. Where it is possible, access to that data is available under the Edit tab when you go to Edit Sources. There will be a Modify button associated with each source that can be changed. One sort of Source like this would be a File Node Source that has been marked as writable.<br>
-<img src="~@assets/img/nodes9-modifysource.png" width="60%" height="60%" /><br>
+<img src="/assets/img/nodes9-modifysource.png" width="60%" height="60%" /><br>
 Changing the data for connecting to a source happens in the same area where sources get added, the Sources tab under Edit Nodes.<br>
 Note: Refreshing nodes with updated metadata is controlled by the “cache delay” setting under Edit Nodes | Configuration.  By default, that means that the system checks for new content every 30 seconds.<br>
 
@@ -54,18 +54,18 @@ Effectively, enhancers direct the system to look for nodes that match specific c
 
 #### Adding an Enhancer
 To add an Enhancer, Click the blue Add a New Enhancer button at the bottom of the Enhancers tab under Edit Nodes<br>
-<img src="~@assets/img/nodes10-addenhancer.png" width="80%" height="80%" /><br>
+<img src="/assets/img/nodes10-addenhancer.png" width="80%" height="80%" /><br>
 #### Enhancer Example
 In the screenshot example, a node with a specific name is being enhanced with two attributes that change how it will be connected to (using SSM) as well as getting a specific tag (ssm).<br>
-<img src="~@assets/img/nodes11-enhancerdetails.png" width="100%" height="100%" /><br>
+<img src="/assets/img/nodes11-enhancerdetails.png" width="100%" height="100%" /><br>
 ## Removing Node Sources
 To remove a Node Source, return to the Sources tab under Edit Nodes and use the red delete button associated with the Node Source you want to remove. Note that by deleting the source you aren’t removing the file or other source data. You are simply disconnecting this project from that source data, which will remove the associated nodes from Rundeck and the ability to target those nodes with Jobs or Commands.<br>
-<img src="~@assets/img/nodes12-deletesource.png" width="80%" height="80%" /><br>
+<img src="/assets/img/nodes12-deletesource.png" width="80%" height="80%" /><br>
 ## How is a Node Source Different from a Node Filter?
 Node Sources are established at the project level and represent a specific static or dynamic set of nodes available within that project. Node sources are not related directly to a job. A dynamic source is dynamic in the sense that the nodes returned by the source can change over time based on what’s included in the source database or system.<br>
 Node Filters, on the other hand, are generally established in the context of a job to identify which nodes will be targeted by that job. Node filters are also dynamic but not in the same sense. A node filter is composed of one or more attribute/value pairs that must be matched to be included in the filter and therefore targeted by that job. Which nodes are included in the filter set can change based on which nodes from Node Sources match the Node Filter at the time the job runs.<br>
 ## Resources
-[Information on the static sources and available file formats](https://docs.rundeck.com/docs/manual/projects/resource-model-sources/builtin.html#file-source)<br>
-[More Information on Node Sources](https://docs.rundeck.com/docs/manual/projects/resource-model-sources/#what-is-a-resource-model-source)<br>
+[Information on the static sources and available file formats](/manual/projects/resource-model-sources/builtin.md#file-source)<br>
+[More Information on Node Sources](/manual/projects/resource-model-sources/#what-is-a-resource-model-source)<br>
 [Detailed Documentation Related to Ansible Integration](https://github.com/rundeck-plugins/ansible-plugin)<br>
-[Making Custom Node Sources Editable](https://docs.rundeck.com/docs/manual/projects/resource-model-sources/resource-editor.html#resource-model-source)<br>
+[Making Custom Node Sources Editable](/manual/projects/resource-model-sources/resource-editor.md#resource-model-source)<br>

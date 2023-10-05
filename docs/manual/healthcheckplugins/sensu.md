@@ -5,9 +5,9 @@
 
 ## Authentication
 
-To authenticate Process Automation with Sensu, follow instructions outlined in [this documentation](/docs/manual/plugins/sensu-plugins-overview.md).
+To authenticate Process Automation with Sensu, follow instructions outlined in [this documentation](/manual/plugins/sensu-plugins-overview.md).
 
-![Sensu - Health Check](~@assets/img/sensu-health.png)
+![Sensu - Health Check](/assets/img/sensu-health.png)
 
 - **Node Filter**
 : Specify a node filte here, and only the nodes matching the filter will use the health check.

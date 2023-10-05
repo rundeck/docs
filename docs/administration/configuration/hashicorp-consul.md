@@ -23,7 +23,7 @@ For customers who use installed Process Automation using the .war, there are a c
 1. Define the environment variable just like RPM, Debian and Docker users by adding the following to the `/etc/rundeck/profile` file:
 2. Pass the property as a flag when starting Process Automation. An example of that would look like the following:
 ```
-java -Xmx4g -Drundeck.consul.enabled=true -jar rundeck-{{{rundeckVersionFull}}}.war
+java -Xmx4g -Drundeck.consul.enabled=true -jar rundeck-{{$rundeckVersionFull}}.war
 ```
 
 ### Setting the Consul server in Process Automation
@@ -44,10 +44,10 @@ If a key/value pair is defined that conflicts with a setting configured in a fil
 
 ## Example: Using HashiCorp for a Cluster
 
-![Consul - Dispatching to Specific Instance](~@assets/img/rundeck-server-id.png)
+![Consul - Dispatching to Specific Instance](/assets/img/rundeck-server-id.png)
 
 If using a cluster of Process Automation instances, then you can specify the server id when creating the folder for the config key/values. Looking at the example above, there are two different folders created inside of the config directory. One called Process Automation and one called Process Automation with a long id after it. That is how to specify a server to have all the configuration settings applied to. By just naming the folder Process Automation, we apply the configuration to all members of the cluster. So, in order to apply the configuration to just one instance, we need to create a directory called "rundeck,{server_id}"(as shown in image above). To find the the server id, click on the gears icon in the top right hand corner of Process Automation and select "System Report." On the next page, you will see the following box containing your server UUID:
-![Server ID](~@assets/img/server-id-location.png)
+![Server ID](/assets/img/server-id-location.png)
 
 :::warning
 If a server ID is specified, those configuration settings will always override the settings specified for all instances in the "rundeck" folder.

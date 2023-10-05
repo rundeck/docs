@@ -1,11 +1,10 @@
 ---
 
 title: "4.11.0 Release Notes"
-date: "2023-03-13"
+date: 2023-03-13
 image: /images/chevron-logo-red-on-white.png
 feed:
- enable: true
- description: "Version 4.11.0 is here. More Plugin Suites and JSON Job Exports.  Check Release Notes for more info."
+  description: "Version 4.11.0 is here. More Plugin Suites and JSON Job Exports.  Check Release Notes for more info."
 
 ---
 
@@ -18,6 +17,8 @@ Release Date: March 13th, 2023
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
 - [Upgrade instructions](/upgrading/)
 - [Watch the Live Stream Release Recap](https://youtu.be/bqPzA0S7hIY)
+
+<YouTube id="bqPzA0S7hIY"/>
 
 ::: 
 Additionally, we are announcing some exciting product updates this month. [Sign up for the launch webinar](https://www.pagerduty.com/resources/webinar/bridging-network-silos-with-new-distributed-automation/?utm_medium=email&utm_source=marketo&utm_campaign=email_customers_Global-Wb-BridgeNetworkSilosDistributedAutomation-Email&utm_content=4.11_release_notes) to learn more.
@@ -36,11 +37,11 @@ This release includes new Plugin Suites for ServiceNow and Jira. As a reminder, 
 
 * The new [ServiceNow Plugin Suite](/manual/plugins/servicenow-plugins-overview.md) has a Node Source and many job steps to help pull in nodes from your CMDB and execute automation back into tables within ServiceNow. The ServiceNow Plugin Suite can be configured on a per-project basis or for the entire system. [Learn more.](/manual/plugins/servicenow-plugins-overview.md) 
 
-![ServiceNow Plugin Config](~@assets/img/relnotes-4.11.0-snplugingroup.png)
+![ServiceNow Plugin Config](/assets/img/relnotes-4.11.0-snplugingroup.png)
 
 * Jira plugins, which support Jira Server and Jira Cloud, have also been added to the Plugin Suite configuration model. Now Jira plugins can be configured in the GUI at the project or System level and applied across different plugin types. To get started with the Jira Suite, click [here](/manual/plugins/jira-plugins-overview.md).
 
-![JIRA Plugin Config](~@assets/img/relnotes-4.11.0-jiraplugingroup.png)
+![JIRA Plugin Config](/assets/img/relnotes-4.11.0-jiraplugingroup.png)
 
 * An official Docker container image for the Runner has been published and is available from [Dockerhub](https://hub.docker.com/r/rundeckpro/runner). The Runner allows users to execute commands, scripts and Job steps within their remote environments using a secure (outbound-only HTTPS) architecture.  With a container-version of the Runner, users can more easily deploy, maintain and scale their Runners - as well as deploy them into their containerized environments for more native automation. [Learn more](/administration/runner/#docker).
 

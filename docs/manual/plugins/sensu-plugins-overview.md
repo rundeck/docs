@@ -2,7 +2,7 @@
 
 ## Overview
 
-![](@assets/img/sensu-logo.png)
+![](/assets/img/sensu-logo.png)
 
 Process Automation integrates with Sensu through a variety of plugins listed below.
 By integrating Process Automation with Sensu, users can automate and provide self-service interfaces for operations in their Sensu instance
@@ -13,16 +13,16 @@ as well as invoke automated workflows in response to Sensu alerts.
 
 |Plugin Name| Plugin Type| Description|
 |:---------------------------------------------------------|:---------------------------------------------------------:|:---------------------------------------------------------|
-|[**Get Check Info**](/docs/manual/node-steps/sensu.html#sensu-get-check-info)|Node Step|Get Check info from an Entity.|
-|[**Create Silence Entry**](/docs/manual/node-steps/sensu.html#sensu-create-silence-entry)|Node Step|Create a Silence for a check of a selected entity.|
-|[**Delete Silence Entry**](/docs/manual/node-steps/sensu.html#sensu-delete-silence-entry)|Node Step|Delete a Silence for a check of a selected entity.|
-|[**Create Event**](/docs/manual/node-steps/sensu.html#sensu-event-create)|Node Step|Create a new Sensu event.|
-|[**Run Ad Hoc Check**](/docs/manual/node-steps/sensu.html#sensu-run-ad-hoc-check)|Node Step|Create an Ad Hoc Check Execution Request.|
-|[**Create Check**](/docs/manual/workflow-steps/sensu.html#sensu-check-create)|Workflow Step|Create a new Check.|
-|[**Delete a Silence Check**](/docs/manual/workflow-steps/sensu.html#sensu-delete-silence)|Workflow Step|Delete a Silence for a check of a selected entity.|
-|[**Create a Silence Entry**](/docs/manual/workflow-steps/sensu.html#sensu-create-silence-entry)|Workflow Step|Create a Silence for a check of a selected entity.|
-|[**Sensu Node Source**](/docs/manual/projects/resource-model-sources/sensu.html#sensu-node-source)|Node Source|Populate node inventory with hosts from Sensu.|
-|[**Node Health Check**](/docs/manual/healthcheckplugins/sensu.html#sensu-health-check-enterprise)|Health Check|Display node health based on host health in Sensu.|
+|[**Get Check Info**](/manual/node-steps/sensu.html#sensu-get-check-info)|Node Step|Get Check info from an Entity.|
+|[**Create Silence Entry**](/manual/node-steps/sensu.html#sensu-create-silence-entry)|Node Step|Create a Silence for a check of a selected entity.|
+|[**Delete Silence Entry**](/manual/node-steps/sensu.html#sensu-delete-silence-entry)|Node Step|Delete a Silence for a check of a selected entity.|
+|[**Create Event**](/manual/node-steps/sensu.html#sensu-event-create)|Node Step|Create a new Sensu event.|
+|[**Run Ad Hoc Check**](/manual/node-steps/sensu.html#sensu-run-ad-hoc-check)|Node Step|Create an Ad Hoc Check Execution Request.|
+|[**Create Check**](/manual/workflow-steps/sensu.html#sensu-check-create)|Workflow Step|Create a new Check.|
+|[**Delete a Silence Check**](/manual/workflow-steps/sensu.html#sensu-delete-silence)|Workflow Step|Delete a Silence for a check of a selected entity.|
+|[**Create a Silence Entry**](/manual/workflow-steps/sensu.html#sensu-create-silence-entry)|Workflow Step|Create a Silence for a check of a selected entity.|
+|[**Sensu Node Source**](/manual/projects/resource-model-sources/sensu.html#sensu-node-source)|Node Source|Populate node inventory with hosts from Sensu.|
+|[**Node Health Check**](/manual/healthcheckplugins/sensu.html#sensu-health-check-enterprise)|Health Check|Display node health based on host health in Sensu.|
 
 </details>
 <br>
@@ -53,13 +53,13 @@ Use the following steps to configure authentication for the Sensu plugins for a 
 
 1. In the specific project, click on **Project Settings** in the lower left.
 2. Click on **Edit Configuration** then click on **Plugins**.
-   ![Plugin Suite Project Settings](@assets/img/plugin-groups-project-settings.png)<br>
+   ![Plugin Suite Project Settings](/assets/img/plugin-groups-project-settings.png)<br>
 3. Click on **+PluginGroup**.
 4. Select **Sensu** from the list.
 5. Click **Select** next to the **Key File** field.
 6. Select the Sensu API key that was placed in Key Storage in the prior section.
 7. Paste the API URL for your Sensu instance into the **API URL** field:
-    ![Sensu Plugin Suite Project Config](@assets/img/sensu-pluginsgroup-project.png)<br>
+    ![Sensu Plugin Suite Project Config](/assets/img/sensu-pluginsgroup-project.png)<br>
 8. Click **Save** to add the Plugin Suite to the Project.
 9. Click **Save** to commit the Project configuration changes.
 

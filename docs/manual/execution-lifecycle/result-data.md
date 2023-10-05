@@ -5,13 +5,13 @@
 This plugin allows Jobs to export a JSON file as the result of an execution, which will be stored alongside the output log file.
 The JSON file can be retrieved via the API as JSON data, and shown in the GUI.
 
-![Result Data Output](@assets/img/jobdata-output.png)
+![Result Data Output](/assets/img/jobdata-output.png)
 
 This allows a Job to be executed, and a JSON result returned, customized to contain data that is relevant to the outcome of the Job.
 
 There are currently two different Plugins that can be used to produce JSON data for a Job.
 
-![Result Data Plugins](@assets/img/jobdata-plugins.png)
+![Result Data Plugins](/assets/img/jobdata-plugins.png)
 
 ## Requirements
 

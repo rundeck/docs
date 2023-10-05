@@ -59,7 +59,7 @@ Rundeck requires every user to login. The default installation
 defines an "admin" user with access to perform all actions.
 Use "admin" for username and password.
 
-![Login form](~@assets/img/fig0202.png)
+![Login form](/assets/img/fig0202.png)
 
 ## Project setup
 
@@ -88,7 +88,7 @@ For those with Rundeck administrator access, the System settings can be accessed
 
 Finally, the user profile and logout functions are found under the User icon.
 
-![Top level navigation](~@assets/img/fig0201.png)
+![Top level navigation](/assets/img/fig0201.png)
 
 #### Projects menu
 
@@ -156,7 +156,7 @@ System Configuration, Access Control, System Report, Log Storage,
 List Plugins, Password Utility and Execution model.
 
 ::: tip
-See [Configure](/manual/system.configs.md)
+See [Configure](/manual/system-configs.md)
 :::
 
 #### User

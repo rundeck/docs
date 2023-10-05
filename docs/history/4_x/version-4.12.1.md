@@ -1,11 +1,10 @@
 ---
 
 title: "4.12.1 Release Notes"
-date: "2023-05-10"
+date: 2023-05-10
 image: /images/chevron-logo-red-on-white.png
 feed:
- enable: true
- description: "Hotfix Release: Important SSO fix included in 4.12.1"
+  description: "Hotfix Release: Important SSO fix included in 4.12.1"
 
 ---
 
@@ -18,6 +17,8 @@ Release Date: May 10th, 2023
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
 - [Upgrade instructions](/upgrading/)
 - [Watch the Live Stream Release Recap](https://youtu.be/e6Rs9BRljAA)
+
+<YouTube id="e6Rs9BRljAA"/>
 
 ## Overview
 

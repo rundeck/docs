@@ -1,11 +1,10 @@
 ---
 
 title: "4.8.0 Release Notes"
-date: "2022-11-10"
+date: 2022-11-10
 image: /images/chevron-logo-red-on-white.png
 feed:
- enable: true
- description: "Version 4.8.0 is here! Check out the new RSS Feed Plugin that will help streamline Automated Diagnostics and Resume Jobs using Ruleset and Parallel Strategies."
+  description: "Version 4.8.0 is here! Check out the new RSS Feed Plugin that will help streamline Automated Diagnostics and Resume Jobs using Ruleset and Parallel Strategies."
 
 ---
 
@@ -16,8 +15,11 @@ Release Date: November 10, 2022
 
 - [Download the Releases](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
+- [Upgrade instructions](/upgrading/) 
 - [Watch the Live Stream Release Recap](https://youtu.be/UgOePLEIcfw)
-- [Upgrade instructions](/upgrading/)
+
+
+<YouTube id="UgOePLEIcfw"/>
 
 ## Overview
 

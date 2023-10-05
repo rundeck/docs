@@ -60,7 +60,7 @@ This UI does not support bulk operations or SCM operations and does not display 
 When this property has been enabled, a new project configuration property will be added to the project `User Interface` configuration tab called `Default Job List`
 You can use the drop-down menu to toggle the job list component for the project.
 
-![Figure: Select Project Job List Component](~@assets/img/configure-default-job-list.png)
+![Figure: Select Project Job List Component](/assets/img/configure-default-job-list.png)
 
 ### rundeck.gui.defaultJobList
 - Example: ```grouped```
@@ -97,7 +97,7 @@ URL for the link used by the app header icon.
 
 To customize the link's name of the "Get help" button in Rundeck's GUI Support footer.
 
-![Figure: The "Get Help link name changed for a custom value named in the property"](~@assets/img/gui-custom-helpLink-name.png)
+![Figure: The "Get Help link name changed for a custom value named in the property"](/assets/img/gui-custom-helpLink-name.png)
 
 ### rundeck.gui.workflowGraph
 - Example: ```false```
@@ -105,7 +105,7 @@ To customize the link's name of the "Get help" button in Rundeck's GUI Support f
 
 Prevents the ruleset graph renderization.
 
-![Figure: The workflow graph component changes for another more minimalistic](~@assets/img/gui-workflow-graph.png)
+![Figure: The workflow graph component changes for another more minimalistic](/assets/img/gui-workflow-graph.png)
 
 ### rundeck.gui.helpLink
 - Example: ```https://yoururlhere.com```
@@ -113,7 +113,7 @@ Prevents the ruleset graph renderization.
 
 To customize the Url of the "Get Help" button in Rundeck's GUI Support footer.
 
-![Figure: The "Get Help link redirects to a custom link named in the property"](~@assets/img/gui-custom-helpLink.png)
+![Figure: The "Get Help link redirects to a custom link named in the property"](/assets/img/gui-custom-helpLink.png)
 
 
 ### rundeck.gui.realJobTree

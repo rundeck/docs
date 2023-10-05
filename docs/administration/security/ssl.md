@@ -10,13 +10,13 @@ This document describes how to configure Rundeck for SSL/HTTPS support, and assu
 
 **1.** Before beginning:
 
-:::: tabs
-::: tab WAR
+::: tabs
+@tab WAR
 
 Do a first-run of the launcher, as it will create the base directory for Rundeck and generate configuration files. _(This is not necessary for RPM/DEB installations)_
 
 ```properties
-cd $RDECK_BASE;  java -jar {{{rundeckVersion}}}.war
+cd $RDECK_BASE;  java -jar {{$rundeckVersion}}.war
 ```
 
 This will start the server and generate necessary config files. Press Ctrl-C to shut down the server after the message below is shown in the terminal:
@@ -25,9 +25,7 @@ This will start the server and generate necessary config files. Press Ctrl-C to 
 Grails application running at http://localhost:4440 in environment: production
 ```
 
-:::
-
-::: tab DEB
+@tab DEB
 
 Just have rundeck installed: 
 
@@ -38,9 +36,7 @@ Stop the service if running:
 systemctl stop rundeckd
 ```
 
-:::
-
-::: tab RPM
+@tab RPM
 
 Just have rundeck installed: 
 
@@ -52,7 +48,6 @@ service rundeckd stop
 ```
 
 :::
-::::
 
 
 **2.** Using the [keytool] command, generate a keystore for use as the server cert and client truststore. Specify passwords for key and keystore:
@@ -61,23 +56,20 @@ service rundeckd stop
 
 Make sure to use the correct `$HOSTNAME` value both here and in response to the prompts below.
 
-:::: tabs
-::: tab WAR
+::: tabs
+@tab WAR
 
 ```shell
 keytool -keystore $RDECK_BASE/etc/keystore -ext san=dns:$HOSTNAME -alias rundeck -genkey -keyalg RSA -keypass adminadmin -storepass adminadmin
 ```
 
-:::
-
-::: tab RPM/DEB
+@tab RPM/DEB
 
 ```shell
 keytool -keystore /etc/rundeck/ssl/keystore -ext san=dns:$HOSTNAME -alias rundeck -genkey -keyalg RSA -keypass adminadmin -storepass adminadmin
 ```
 
 :::
-::::
 
 :::tip 
 Modern SSL clients no longer use the "CN" value of a certificate to validate the hostname, and require that the hostname be included in the SubjectAlternativeName field. The flag `-ext san=dns:$HOSTNAME` includes a "SubjectAlternativeName" when generating the certificate. Newer clients may fail with an error about validating the hostname if this is empty or does not contain a matching value. The flag value can include multiple entries such as `-ext san=dns:x.tld,dns:y.tld`.
@@ -111,46 +103,40 @@ For RPM/DEB installations, see the configuration layout for better understanding
 **3.** CLI tools that communicate to the Rundeck server need to trust the SSL certificate provided by the server. They are preconfigured to look for a truststore at the location:
 `$RDECK_BASE/etc/truststore`. Copy the keystore as the truststore for CLI tools:
 
-:::: tabs
-::: tab WAR
+::: tabs
+@tab WAR
 
 ```shell
 cp $RDECK_BASE/etc/keystore $RDECK_BASE/etc/truststore
 ```
 
-:::
-
-::: tab RPM/DEB
+@tab RPM/DEB
 
 ```shell
 cp /etc/rundeck/ssl/keystore /etc/rundeck/ssl/truststore
 ```
 
 :::
-::::
 
 
 
 
 **4.** Modify the ssl.properties file to specify the full path location of the keystore and the appropriate passwords:
 
-:::: tabs
-::: tab WAR
+::: tabs
+@tab WAR
 
 ```shell
 vi $RDECK_BASE/server/config/ssl.properties
 ```
 
-:::
-
-::: tab RPM/DEB
+@tab RPM/DEB
 
 ```shell
 vi /etc/rundeck/ssl/ssl.properties
 ```
 
 :::
-::::
 
 
 An example ssl.properties file (from the RPM and DEB packages).
@@ -167,23 +153,20 @@ The ssl.properties default keystore and truststore location path for war install
 
 **5.** Configure client properties. Modify the file:
 
-:::: tabs
-::: tab WAR
+::: tabs
+@tab WAR
 
 ```shell
 vi $RDECK_BASE/etc/framework.properties
 ```
 
-:::
-
-::: tab RPM/DEB
+@tab RPM/DEB
 
 ```shell
 vi /etc/rundeck/framework.properties
 ```
 
 :::
-::::
 
 
 Set them to the appropriate https protocol, ip,and change the port to 4443, or to the value from `-Dserver.https.port` runtime configuration property.
@@ -195,16 +178,14 @@ framework.server.port=4443
 
 **6.** Configure server URL so that Rundeck knows its external address. 
 
-:::: tabs
-::: tab WAR
+::: tabs
+@tab WAR
 Modify the file 
 ```shell
 vi $RDECK_BASE/server/config/rundeck-config.properties
 ```
 
-:::
-
-::: tab RPM/DEB
+@tab RPM/DEB
 
 Modify the file 
 ```shell
@@ -212,7 +193,6 @@ vi /etc/rundeck/rundeck-config.properties
 ```
 
 :::
-::::
 
 
 Change the following properties to include the appropriate https protocol, hostname and port. _(The port value can also be extracted from `-Dserver.https.port` runtime configuration property)_
@@ -223,8 +203,8 @@ grails.serverURL=https://localhost:4443
 
 **7.** _For WAR installations skip this step_
 
-:::: tabs
-::: tab DEB
+::: tabs
+@tab DEB
 
 Create/edit `/etc/default/rundeckd`:
 
@@ -233,9 +213,7 @@ export RUNDECK_WITH_SSL=true
 export RDECK_HTTPS_PORT=1234
 ```
 
-:::
-
-::: tab RPM
+@tab RPM
 
 Create/edit `/etc/sysconfig/rundeckd`:
 
@@ -245,24 +223,23 @@ export RDECK_HTTPS_PORT=1234
 ```
 
 :::
-::::
 
 
 **8.** Start the server.
 
-:::: tabs
-::: tab WAR
+::: tabs
+@tab WAR
 
 Tell the launcher where to read the ssl.properties
 
 ```shell
-java -Drundeck.ssl.config=$RDECK_BASE/server/config/ssl.properties -jar rundeck-{{{rundeckVersionFull}}}.war
+java -Drundeck.ssl.config=$RDECK_BASE/server/config/ssl.properties -jar rundeck-{{$rundeckVersionFull}}.war
 ```
 
 You can change port by adding `-Dserver.https.port`:
 
 ```shell
-java -Drundeck.ssl.config=$RDECK_BASE/server/config/ssl.properties -Dserver.https.port=1234 -jar rundeck-{{{rundeckVersionFull}}}.war
+java -Drundeck.ssl.config=$RDECK_BASE/server/config/ssl.properties -Dserver.https.port=1234 -jar rundeck-{{$rundeckVersionFull}}.war
 ```
 
 If successful, there will be a line indicating the SSL connector has started:
@@ -271,16 +248,13 @@ If successful, there will be a line indicating the SSL connector has started:
 Grails application running at https://localhost:1234 in environment: production
 ```
 
-:::
-
-::: tab RPM/DEB
+@tab RPM/DEB
 
 ```shell
 service rundeckd start
 ```
 
 :::
-::::
 
 :::warning
 Make sure the entering packets to the used port are not being filtered by any kind of firewall rule.

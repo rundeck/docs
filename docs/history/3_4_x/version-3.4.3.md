@@ -13,8 +13,8 @@ Check out the new features and enhancements for Rundeck Enterprise and Rundeck C
 
 ## Security Fixes
 
-* [CVE-2021-39132: YAML deserialization can run untrusted code.](/history/CVEs/CVE-2021-39132.md)
-* [CVE-2021-39133: Cross-Site Request Forgery (CSRF) can run untrusted code on Rundeck server](/history/CVEs/CVE-2021-39133.md)
+* [CVE-2021-39132: YAML deserialization can run untrusted code.](/history/cves/CVE-2021-39132.md)
+* [CVE-2021-39133: Cross-Site Request Forgery (CSRF) can run untrusted code on Rundeck server](/history/cves/CVE-2021-39133.md)
 
 
 ## Enterprise Updates

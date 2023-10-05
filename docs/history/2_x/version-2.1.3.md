@@ -11,7 +11,7 @@ Fix several bugs, including a temporary fix for issue #821: [Job references repo
 
 *Upgrade notes:*
 
-1. If you are upgrading from 2.0.1 or earlier, see the notes about schema changes in the previous release notes: [2.0.2 Release Notes](/history/version-2.0.2.md).
+1. If you are upgrading from 2.0.1 or earlier, see the notes about schema changes in the previous release notes: [2.0.2 Release Notes](/history/2_x/version-2.0.2.md).
 2. See the [Upgrading Guide](http://rundeck.org/2.1.0/upgrading/index.html)
 
 ## Contributors

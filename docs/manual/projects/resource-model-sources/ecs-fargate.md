@@ -9,7 +9,7 @@ AWS **Fargate** is a serverless compute engine that is compatible with both Amaz
 
 The **Amazon ECS-Fargate Node Source** retrieves the running containers in ECS and adds them to the Node Inventory in **PagerDuty Process Automation** and **Runbook Automation**:
 
-![ECS Node Attributes](@assets/img/aws-ecs-node-attributes.png)<br>
+![ECS Node Attributes](/assets/img/aws-ecs-node-attributes.png)<br>
 
 This plugin is designed to work in tandem with the [ECS Node Executor](/manual/projects/node-execution/aws-ecs) to send commands to containers.
 
@@ -85,7 +85,7 @@ Here is a sample IAM Policy that will only discover Tasks from **_specific_ clus
 Once the IAM Policy has been created, attach it to the IAM Role that you have associated with Process Automation or the Access Key credentials.
 
 ### Authentication
-There are multiple ways for Process Automation to authenticate with AWS. Follow the instructions outlined in the [AWS Plugins Overview](/docs/manual/plugins/aws-plugins-overview.html) for Process Automation to authenticate with AWS.
+There are multiple ways for Process Automation to authenticate with AWS. Follow the instructions outlined in the [AWS Plugins Overview](/manual/plugins/aws-plugins-overview.html) for Process Automation to authenticate with AWS.
 
 ### Add Node Source
 You can add the **ECS-Fargate Node Source** by navigating to:<br>
@@ -93,7 +93,7 @@ You can add the **ECS-Fargate Node Source** by navigating to:<br>
 
 Click on **Add a new Node Source +** and then select **AWS / ECS / Resource Model**:
 
-![ECS Add Node Source](@assets/img/aws-ecs-add-node-source.png)<br>
+![ECS Add Node Source](/assets/img/aws-ecs-add-node-source.png)<br>
 
 ### Filtering Clusters, Services, Tasks
 
@@ -110,7 +110,7 @@ The ECS cluster names can be found on the **Clusters** main page in the Console 
 
     aws ecs list-clusters
 
-![ECS List Clusters](@assets/img/aws-ecs-list-clusters.png)<br><br>
+![ECS List Clusters](/assets/img/aws-ecs-list-clusters.png)<br><br>
 
 #### **Filter Behavior** 
 Determine whether to include or exclude ECS Tasks that match the following filter properties.  
@@ -133,7 +133,7 @@ tasks _except_ those associated with the "calendar-service" would be retrieved.
 
 Once configured, the Node Source will retrieve all ECS Tasks in the specified clusters and list them on the **Nodes** page:
 
-![View ECS Containers on Nodes Page](@assets/img/aws-ecs-node-attributes.png)
+![View ECS Containers on Nodes Page](/assets/img/aws-ecs-node-attributes.png)
 
 By clicking on one of the ECS specific node-attributes, you can filter the nodes page to display just ECS containers - thereby removing all other Node types.
 For example, click on **Cluster-ARN** will result in the node-filter **ECS:Cluster-ARN:.*** (as shown in the screenshot above).
@@ -142,8 +142,8 @@ In order to filter on a specific subset of containers, click on the spyglass to 
 This will filter the nodes page to display strictly the ECS containers that match the selected attribute.  For example, select the spyglass 
 to the right of **Container-Image** will filter the displayed containers to those with that specific container image:
 
-![ECS Containers Spyglass](@assets/img/aws-ecs-select-spyglass.png)<br><br>
-![ECS Filtered Containers](@assets/img/aws-ecs-filtered-containers.png)<br>
+![ECS Containers Spyglass](/assets/img/aws-ecs-select-spyglass.png)<br><br>
+![ECS Filtered Containers](/assets/img/aws-ecs-filtered-containers.png)<br>
 
 ## Executing Commands on ECS Containers
 

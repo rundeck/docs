@@ -1,3 +1,13 @@
+---
+prev:
+  link: '/learning/tutorial/commands.md'
+  text: "Getting Started - Commands"
+next:
+  link: '/learning/tutorial/acls.md'
+  text: "Getting Started - Access Control Lists"
+
+---
+
 # 4. Getting Started - Users
 
 :::tutorial
@@ -12,8 +22,8 @@ The User Summary tab shows a list of users configured on the Rundeck system.
 
 Follow the Exercise below to add your own user:
 
-:::: tabs
-::: tab Enterprise Exercise
+::: tabs
+@tab Enterprise Exercise
 
 Our Enterprise product has a User Manager section that allows Rundeck admins to create local user accounts using a GUI interface.
 
@@ -23,13 +33,11 @@ To manage existing users or add an new one:_[optional]_
 1. Choose **Manage Local Users**
 1. Edit/Add users as needed.
 
-:::
-::: tab Community Exercise
+@tab Community Exercise
 
 Manually adding users for the Community Project is not recommended for these exercises.  More details [how to configure users is located here](/administration/security/authentication.md).
 
 :::
-::::
 
 After following the exercise above, confirm using these steps.
 1. Open a New Incognito Browser window. (e.g. File > New Incognito Window)
