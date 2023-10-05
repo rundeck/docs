@@ -127,7 +127,7 @@ jobs:
             }
   update_index:
     machine:
-      image: cimg/2023.09-20.04
+      image: cimg/base:2023.09-20.04
     working_directory: ~/repo
     steps:
       - checkout
