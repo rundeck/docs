@@ -145,7 +145,6 @@ workflows:
             branches:
               only:
                 - /4\.[0-9]+\..*/
-                - vuepress2-migration
             tags:
               only: /^v.*/
       - update_index:
