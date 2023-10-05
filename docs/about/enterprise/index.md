@@ -1,4 +1,4 @@
-# Process Automation Version
+# Process Automation
 
 Process Automation is a server application hosted in a local or private cloud environment as a central administrative control point. Internally, Process Automation stores job definitions and execution history in a relational database. Output from command and job executions is saved on disk but can be forwarded to remote stores like S3 or Logstash.
 
