@@ -8,6 +8,11 @@ h6 {
   font-weight: 700;
 }
 
+//This is used to fix Code on the old API page for request and response strings.
+.theme-hope-content pre:not([class]) code {
+  color: var(--code-bg-color);
+}
+
 .custom-container.enterprise {
   background-color: #f3f5f7;
   border-color: #06ac38;

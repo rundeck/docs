@@ -174,8 +174,10 @@ Otherwise, if the response is a redirect chain which results in `200 successful`
 
 The response should set a cookie named `JSESSIONID`.
 
-:::
+::: tip
+
 In v4.8+ the `JSESSIONID` cookie will change after the first request after authentication. You will have to update your client code to follow redirects for subsequent requests. For example, when using `curl` you would have to use `-b` and `-c` options to update the session cookie in your next request after authentication. Alternately, you could add the `-L` option to the initial login POST, which will follow the redirect after login and update the session cookie.
+
 :::
 
 ## XML Response Format

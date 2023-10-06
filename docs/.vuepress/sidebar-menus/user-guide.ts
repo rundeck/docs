@@ -7,6 +7,7 @@ export default [{
       collapsible: true,
       link: '/manual/projects/',
       children: [
+        '/manual/projects/',
         '/manual/projects/project-create',
         '/manual/projects/configuration',
         {
