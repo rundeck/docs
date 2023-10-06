@@ -3,7 +3,7 @@ title: API Reference
 alias: api/index.html
 ---
 
-# API Reference | Version {{ apiVersion }}
+# API Reference | Version {{ $apiVersion }}
 
 Rundeck provides a Web API for use with your applications.  
 
