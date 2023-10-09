@@ -24,14 +24,13 @@ export default [{
           ]
         },
         {
-      	  title: 'Runbook Automation',
-          collapsable: true,
-          path: '/learning/getting-started/rba/rba-welcome-overview',
-      	  sidebarDepth: 1,
+      	  text: 'Runbook Automation',
+          collapsible: true,
+          link: '/learning/getting-started/rba/rba-welcome-overview',
       	  children: [
-      	  	['/learning/getting-started/rba/rba-welcome-overview','Getting Started with Runbook Automation']
-        	['/learning/getting-started/rba/runner-setup.md','Setting up a Runner'],
-    		['/learning/getting-started/rba/node-setup.md','Adding a Node with Runner'],
+      	  	{ link: '/learning/getting-started/rba/rba-welcome-overview', text: 'Getting Started with Runbook Automation'},
+      	  	{ link: '/learning/getting-started/rba/runner-setup.md', text: 'Setting up a Runner'},
+      	  	{ link: '/learning/getting-started/rba/node-setup.md', text: 'Adding a Node with Runner'},
       	  ]
     	},
         {
