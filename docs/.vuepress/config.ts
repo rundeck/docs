@@ -1,16 +1,15 @@
 import _ from 'lodash'
 
-import { defineUserConfig } from 'vuepress';
+import { defineUserConfig, Page } from 'vuepress';
 import { hopeTheme } from "vuepress-theme-hope";
 import { containerPlugin } from '@vuepress/plugin-container';
 import { docsearchPlugin } from '@vuepress/plugin-docsearch';
 import { getDirname, path } from '@vuepress/utils';
 import { openGraphPlugin } from 'vuepress-plugin-open-graph';
 import { registerComponentsPlugin } from '@vuepress/plugin-register-components';
-// import { pwaPlugin } from '@vuepress/plugin-pwa';
-// import { pwaPopupPlugin } from '@vuepress/plugin-pwa-popup';
 import { redirectPlugin } from "vuepress-plugin-redirect";
-import { googleAnalyticsPlugin } from '@vuepress/plugin-google-analytics';
+import { compareDate } from "vuepress-shared/node";
+//import { googleAnalyticsPlugin } from '@vuepress/plugin-google-analytics';
 
 
 // sidebars
@@ -40,19 +39,9 @@ const __dirname = getDirname(import.meta.url);
 import setup from './setup';
 console.log(setup)
 
-const compareDate = (
-  dateA: Date | string | undefined,
-  dateB: Date | string | undefined,
-): number => {
-  if (!dateA || !(dateA instanceof Date)) return 1;
-  if (!dateB || !(dateB instanceof Date)) return -1;
-  return dateB.getTime() - dateA.getTime();
-};
-
 export default defineUserConfig({
-  //debug: true,
-  title: '',
   debug: false,
+  title: '',
   description: '',
   shouldPrefetch: false,
   base: `/${setup.base ? setup.base + '/' : ''}`,
@@ -84,6 +73,7 @@ export default defineUserConfig({
 
   //Theme Config
   theme: hopeTheme({
+    debug: true,
     logo: '/images/RundeckbyPagerDuty.svg',
     repo: 'rundeck/docs',
     docsDir: 'docs',
@@ -112,7 +102,11 @@ export default defineUserConfig({
         rss: true,
         json: true,
         filter: ({ frontmatter, filePathRelative }: Page): boolean => !(frontmatter.feed === undefined || frontmatter.home || !filePathRelative || frontmatter.article === false || frontmatter.feed === false),
-        sort: ({ pageA }: Page, {pageB}: Page): number => compareDate(pageA.frontmatter.date, pageB.frontmatter.date)
+        sorter: (
+          pageA: Page,
+          pageB: Page,
+        ): number =>
+          compareDate( pageA.frontmatter.date, pageB.frontmatter.date)
       },
       components: {
           components: [
