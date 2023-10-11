@@ -108,7 +108,7 @@ Apache Commons Daemon, often referred to simply as Commons Daemon, is a set of J
 
 To register the Enterprise Runner as a service, check the following steps:
 
-1. Download Apache Commons Daemons binaries from this location.
+1. Download Apache Commons Daemons binaries from [this](https://dlcdn.apache.org//commons/daemon/binaries/windows/) location.
 
 2. Uncompress the file and copy the `prunmgr.exe` and `prunsrv.exe` files to the `C:\runner\` folder.
 
@@ -213,6 +213,6 @@ The service is down and unregistered from Windows Services.
 
 ## Resources
 
-[Enterprise Runner](https://docs.rundeck.com/docs/administration/runner/pre-4-11-runners.html#runner)<br>
+[Enterprise Runner](/administration/runner/pre-4-11-runners.md#runner)<br>
 [Apache Commons Daemon Documentation](https://commons.apache.org/proper/commons-daemon/)<br>
 [NSSM Documentation](https://nssm.cc/usage)
