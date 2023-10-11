@@ -1,4 +1,4 @@
-## How to Install the Enterprise Runner as a Service on Windows
+# Enterprise Runner as Windows Service
 
 Hosting the [Enterprise Runner](/administration/runner/) as a service offers several key advantages. 
 First and foremost, it ensures the reliability and availability of your automation processes. 
@@ -12,10 +12,10 @@ This guide will walk through the process of installing the Enterprise Runner as 
 
 Both methods ensure that users can leverage the full potential of this essential component of the Process Automation platform.
 
-## Enterprise Runner Generation
+## Enterprise Runner Installation
 
 :::tip Note
-NOTE: Skip Steps 1-4 can be skipped if you have already installed a Runner in Process Automation.
+Skip this section if you have already installed an Enterprise Runner on a Windows host.
 :::
 
 1. Stop your Process Automation instance service.
@@ -52,7 +52,7 @@ Also, set the `server.address` parameter to receive connections from any network
 
 ![Runner Project Association](/assets/img/raas9.png)<br>
 
-9. Click the "Download" button to get the Enterprise Runner `.jar` file, this file must be run in the Windows target node. Click the "Close and Complete" button.
+9. Click the "Download" button to get the Enterprise Runner `.jar` file, this file must be run on the Windows host. Click the "Close and Complete" button.
 
 ![Confirmation Screen](/assets/img/raas6.png)<br>
 
@@ -70,9 +70,9 @@ Also, set the `server.address` parameter to receive connections from any network
 
 The runner was configured on our Project, now, let's test the runner from the Windows machine.
 
-## Preparing and testing the Enterprise Runner on the remote Windows target node
+## Preparing and Testing the Enterprise Runner on the Windows Host
 
-Before configuring the Enterprise Runner as a service, a good starting point could be to test the connection between the Enterprise Runner and the Runbook/Process Automation instance. To do so, check the following steps:
+Before configuring the Enterprise Runner as a service, a good starting point could be to test the connection between the Enterprise Runner and the Runbook or Process Automation instance. To do so, check the following steps:
 
 1. Review the Enterprise Runner requirements, the major need being Java 11 JRE and the `JAVA_HOME` environment variable configured.
 
