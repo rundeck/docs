@@ -67,6 +67,7 @@ export default [{
           text: 'Administration',
           collapsible: true,
           children: [
+            '/learning/howto/runner-service-windows.md',
             '/learning/howto/migrate-to-rundeck-packages-repo.md',
             '/learning/howto/install-centos.md',
             '/learning/howto/migrate-to-mysql.md',
