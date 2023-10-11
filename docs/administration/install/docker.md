@@ -46,7 +46,7 @@ has many docker compose example projects. Check it out for use as a quick config
 
 - [Basic quick-start with persistent storage](https://github.com/rundeck/docker-zoo/tree/master/basic)
 - [Mysql database backend](https://github.com/rundeck/docker-zoo/tree/master/mysql)
-- [Oracle database backend](https://github.com/rundeck/docker-zoo/tree/master/oracle)
+- [Oracle database backend](https://github.com/rundeck/docker-zoo/tree/master/oraclexe)
 - [LDAP configuration](https://github.com/rundeck/docker-zoo/tree/master/ldap)
 - [Cloud deployment example](https://github.com/rundeck/docker-zoo/tree/master/cloud)
 - And more!
