@@ -102,6 +102,7 @@ sudo dpkg -i rundeck_{{$rundeckVersionFull}}-1_all.deb
 To start Rundeck:
 
 ```bash
+sudo systemctl daemon-reload
 sudo service rundeckd start
 ```
 
