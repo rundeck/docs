@@ -259,3 +259,4 @@ export class RundeckVersion {
     };
 
 };
+export default RundeckVersion;
