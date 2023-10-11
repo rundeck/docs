@@ -8,6 +8,10 @@ h6 {
   font-weight: 700;
 }
 
+img {
+  border: 1px solid #C0C0C0;
+}
+
 //This is used to fix Code on the old API page for request and response strings.
 .theme-hope-content pre:not([class]) code {
   color: var(--text-color);
