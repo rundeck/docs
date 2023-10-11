@@ -1,14 +1,10 @@
----
-title: "Automation Runner as a Service on Windows"
----
-
 ## How to Install the Automation Runner as a Service on Windows
 
 The Automation Runner is a Java-based software that picks up tasks from the Automation Server via a polling technique. The Automation Runner checks for executions that it is accountable for during each polling cycle (every 5 seconds). Communication between the Automation Runner and the Automation Server occurs via HTTPS and is started by the Automation Runner. This improves firewall security because ports no longer need to be open for the Automation Server to communicate with nodes via more sensitive ports. (e.g. SSH/22).
 
 Executing the Automation Runner as a service offers several key advantages. First and foremost, it ensures the reliability and availability of your automation processes. By transforming Automation Runner into a Windows service, you create a persistent, background application that starts automatically with the system, even if no user is logged in. This not only enhances system resilience but also facilitates unattended operation, allowing your automated tasks to execute without human intervention.
 
-In thisProc guide, we will walk you through the process of installing Automation Runner as a Windows service in two ways (via the NSSM tool, and via the Apache Commons Daemon tool), ensuring that you can leverage the full potential of this essential tool in your automation and orchestration endeavors.
+In this guide, we will walk you through the process of installing Automation Runner as a Windows service in two ways (via the NSSM tool, and via the Apache Commons Daemon tool), ensuring that you can leverage the full potential of this essential tool in your automation and orchestration endeavors.
 
 ## Automation Runner Generation
 
@@ -26,7 +22,7 @@ This line enables the Automation Runner functionality on Process Automation. Run
 
 Check the `grails.serverURL` property on the `rundeck-config.properties` file (must be configured with the external Process Automation URL/IP, e.g. `grails.serverURL=http://my_rundeck_server:4440`) to ensure that your Process Automation instance is accessible by the remote node.
 
-Also, set the server.address parameter to receive connections from any network location; for testing purposes, set it to `server.address=0.0.0.0` (to receive connections from any LAN node).
+Also, set the `server.address` parameter to receive connections from any network location; for testing purposes, set it to `server.address=0.0.0.0` (to receive connections from any LAN node).
 
 3. Save the file and start the Process Automation Instance.
 
@@ -34,35 +30,35 @@ Also, set the server.address parameter to receive connections from any network l
 
 5. Click on the Gear Icon (up to right) and then on the "Runner Management" link.
 
-![Runner Management](/assets/img/raas7.jpg)
+![Runner Management](/assets/img/raas7.png)
 
 6. Click on "+ Create Runner" button.
 
-![Creating a Automation Runner](/assets/img/raas10.jpg)
+![Creating a Automation Runner](/assets/img/raas10.png)
 
 7. Give it a name and an optional description, then click the "Next" button.
 
-![Runner Name and Description](/assets/img/raas14.jpg)
+![Runner Name and Description](/assets/img/raas14.png)
 
 8. Click the switch to associate the Automation Runner with a "ProjectRUNNER" created in step 4. Click the "Next" button.
 
-![Runner Project Association](/assets/img/raas9.jpg)
+![Runner Project Association](/assets/img/raas9.png)
 
 9. Click the "Download" button to get the Automation Runner `.jar` file, this file must be run in the Windows target node. Click the "Close and Complete" button.
 
-![Confirmation Screen](/assets/img/raas6.jpg)
+![Confirmation Screen](/assets/img/raas6.png)
 
 10. Now go to Project Settings > Edit Nodes.
 
-![Edit Nodes](/assets/img/raas12.jpg)
+![Edit Nodes](/assets/img/raas12.png)
 
 11. On the Local model source, click the "Edit" button.
 
-![Local Model Source](/assets/img/raas4.jpg)
+![Local Model Source](/assets/img/raas4.png)
 
 12. Scroll down and put "windows" on the "OS Family" field, then save.
 
-![Runner OS Family](/assets/img/raas1.jpg)
+![Runner OS Family](/assets/img/raas1.png)
 
 The runner was configured on our Project, now, let's test the runner from the Windows machine.
 
@@ -74,7 +70,7 @@ Before configuring the Automation Runner as a service, a good starting point cou
 
 2. Make a new folder, such as `C:\runner\` in this example.
 
-3. Place the .jar file created in the previous section in the folder `C:\runner\`.
+3. Place the `.jar` file created in the previous section in the folder `C:\runner\`.
 
 4. Rename the file as `runner.jar`.
 
@@ -84,15 +80,15 @@ Before configuring the Automation Runner as a service, a good starting point cou
 
 7. Go to your project, select the Gear Icon (up to right), and then the "Runner Management" link.
 
-![Automation Runner list](/assets/img/raas11.jpg)
+![Automation Runner list](/assets/img/raas11.png)
 
 8. When you see your Automation Runner created in the previous section, click the "Actions" button and select "Ping".
 
-![Runner Ping test](/assets/img/raas13.jpg)
+![Runner Ping test](/assets/img/raas13.png)
 
 9. You will see the ping response at the top of the screen, this means the connectivity between Runbook/Process Automation instance and Automation Runner is OK.
 
-![Ping test successfully](/assets/img/raas3.jpg)
+![Ping test successfully](/assets/img/raas3.png)
 
 10. Back to the Windows remote node and stop the Automation Runner with the following key combination: `Ctrl+C` on the CMD terminal.
 
@@ -151,11 +147,11 @@ You will see the following messages:
 
 8. Scroll down the Service list and locate the "Runner" service.
 
-![Launching services.msc](/assets/img/raas2.jpg)
+![Launching services.msc](/assets/img/raas2.png)
 
 9. Click the right button and select "Start", after a couple of seconds, the service must be shown as "Running" status.
 
-![Windows Services](/assets/img/raas5.jpg)
+![Windows Services](/assets/img/raas5.png)
 
 ### How to remove the service
 
@@ -171,7 +167,7 @@ Now, the service is down and unregistered from Windows Services.
 
 ## An alternative way: Installing the Automation Runner service through NSSM
 
-NSSM (Non-Sucking Service Manager) is a program used to register and manage services in Windows. It provides a user-friendly interface for creating and configuring Windows services without the need for complex command-line instructions. NSSM is particularly useful for running applications or scripts as services, ensuring that they start automatically with Windows, and can run in the background without user interaction. NSSM simplifies the process of working with Windows services, making it accessible for both experienced administrators and users who may not be familiar with the intricacies of service management on Windows.
+NSSM is a program used to register and manage services in Windows. It provides a user-friendly interface for creating and configuring Windows services without the need for complex command-line instructions. NSSM is particularly useful for running applications or scripts as services, ensuring that they start automatically with Windows, and can run in the background without user interaction. NSSM simplifies the process of working with Windows services, making it accessible for both experienced administrators and users who may not be familiar with the intricacies of service management on Windows.
 
 NOTE: NSSM is an inactive project, the last build was released in 2014.
 
@@ -183,7 +179,7 @@ NOTE: NSSM is an inactive project, the last build was released in 2014.
 
 4. Execute `./nssm.exe install "Runner"`. A new window will appear.
 
-![NSSM Service Editor](/assets/img/raas8.jpg)
+![NSSM Service Editor](/assets/img/raas8.png)
 
 5. On the "Path" field put the Java 11 JRE binary path (including the `java.exe` at the end).
 
@@ -203,7 +199,7 @@ NOTE: NSSM is an inactive project, the last build was released in 2014.
 
 2. Stop the service with the following command: `nssm stop "Runner"`.
 
-3. Then, remove the service with `nssm remove "Runner" confirm` command.
+3. Then, remove the service with the `nssm remove "Runner" confirm` command.
 
 The service is down and unregistered from Windows Services.
 
