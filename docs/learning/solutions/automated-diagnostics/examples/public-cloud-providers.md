@@ -68,6 +68,6 @@ This blog from Google Cloud on [**Debugging Health Checks in Load Balancing**](h
 These steps can be treated as a runbook and “transposed” into your Automation instance using the Remote Command
 :::
 
- There are multiple plugins that allow users to pull diagnostics from Azure services:
+ There are multiple plugins that allow users to pull diagnostics from GCP services:
 * [**GCP Compute Engine - Node Source**](/manual/projects/resource-model-sources/gcp.html)
 * [**GCP Compute Engine - Health Check**](/manual/healthcheckplugins/gcp-compute-healthcheck.html)
