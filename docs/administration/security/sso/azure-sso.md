@@ -102,13 +102,7 @@ rundeck.ssoSyncAttribNames.email=preferred_username
 #rundeck.security.oauth.azure.principleKeys=preferred_username
 ```
 
-And in `framework.properties` file:
 
-```properties
-# framework.properties: Azure SSO
-# Map Azure groups by default (can be commented out if not mapping group permissions)
-framework.plugin.UserGroupSource.AzureGroupSource.enabled=true
-```
 ### Important: First Login Approval
 
 Upon first login to Rundeck using Azure SSO an Azure Admin level user will need to consent to the `Directory.Read.All` permission. Make sure to click the checkbox that asks to consent for the **whole organization**.
@@ -123,7 +117,8 @@ By default, Azure does not send group information in the SSO token. You can conf
 
 
 **If you need to sync user groups by group name**, you need to enable the Rundeck plugin that uses the MS Graph API to get user/group information. Using this requires additional API permissions that were setup in the App Registration.
-To enable this plugin add the following to the `framework.properties` file as described above:
+
+To enable this plugin, enable the *Enable Azure UserGroupSource Plugin* setting in the **System Configuration** page (config key `framework.plugin.UserGroupSource.AzureGroupSource.enabled`), or add the following to the `framework.properties` file:
 
 ```properties
 # framework.properties: Azure SSO
