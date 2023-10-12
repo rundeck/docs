@@ -88,10 +88,6 @@ Optional Entries:
 
 : URL to an external resource model editor service.
 
-`sshport`
-
-: The connection port to use, 22 by default
-
 `ssh-key-storage-path`
 
 : The path to the SSH key in the Rundeck Key store. For example: keys/ec2/west.pem
