@@ -11,7 +11,7 @@ feed:
 # 4.17.1 Release Notes
 
 Name: <span style="color: slategray"><span class="glyphicon glyphicon-flash"></span> "Basilisk slategray flash"</span>
-Release Date: PUTADATEHERE
+Release Date: October 16, 2023
 
 - [Download the Releases](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
@@ -31,19 +31,21 @@ Check out the new features and enhancements for PagerDuty Process Automation (fo
 
 ### Additional Updates
 
+* Upgrade Jetty due CVE-2023-36478
+* fix: system calendar not appearing
+* Fix issues with job reference using group/name with Runners
+* Fix: Schedules Not Paginated
+* Update default unix node executor/file copier in node wizard to SSHJ
+* Fix: ECS Stop Task Plugin uses correct stop code now
 
 ## Rundeck Open Source Product Updates
 
 * [Upgrade Jetty due CVE-2023-36478](https://github.com/rundeck/rundeck/pull/8614)
-* [[release/4.17.x] Merge pull request #8595 from rundeck/-runner-name](https://github.com/rundeck/rundeck/pull/8598)
 * [manual backport](https://github.com/rundeck/rundeck/pull/8596)
-* [[release/4.17.x] Merge pull request #8560 from rundeck/](https://github.com/rundeck/rundeck/pull/8591)
 * [fix log viewer progress bar](https://github.com/rundeck/rundeck/pull/8589)
 * [Disable resource model runner selector for only local plugins](https://github.com/rundeck/rundeck/pull/8560)
 
-
 [Here is a link to the full list of public PRs](https://github.com/rundeck/rundeck/pulls?q=is%3Apr+milestone%3A4.17.1+is%3Aclosed)
-
 
 ## Enterprise Runner Updates
 
