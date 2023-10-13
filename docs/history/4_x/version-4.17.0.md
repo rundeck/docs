@@ -16,7 +16,9 @@ Release Date: September, 25, 2023
 - [Download the Releases](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
 - [Upgrade instructions](/upgrading/)
-- [Watch the Live Stream Release Recap on Oct 2nd, 2023 at 10:30am (PDT)](https://www.twitch.tv/pdcommunity)
+- [Watch the Live Stream Release Recap](https://www.youtube.com/watch?v=OiS2a962pAE)
+
+<YouTube id="OiS2a962pAE"/>
 
 ## Overview
 
