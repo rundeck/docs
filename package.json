@@ -30,6 +30,7 @@
   },
   "devDependencies": {
     "@octokit/rest": "^18.0.15",
+    "@scalar/api-reference": "^0.7.5",
     "@types/swagger-ui": "^3.52.0",
     "@vuepress/client": "2.0.0-beta.67",
     "@vuepress/plugin-container": "2.0.0-beta.67",
