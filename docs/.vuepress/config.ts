@@ -9,6 +9,7 @@ import { openGraphPlugin } from 'vuepress-plugin-open-graph';
 import { registerComponentsPlugin } from '@vuepress/plugin-register-components';
 import { redirectPlugin } from "vuepress-plugin-redirect";
 import { compareDate } from "vuepress-shared/node";
+import { nodePolyfills } from 'vite-plugin-node-polyfills';
 //import { googleAnalyticsPlugin } from '@vuepress/plugin-google-analytics';
 
 
@@ -175,6 +176,20 @@ export default defineUserConfig({
             RundeckSwaggerUi: path.resolve(__dirname, './components/RundeckSwaggerUI.vue'),
           },
       }),
+    nodePolyfills({
+      // To exclude specific polyfills, add them to this list.
+      exclude: [
+        'fs', // Excludes the polyfill for `fs` and `node:fs`.
+      ],
+      // Whether to polyfill specific globals.
+      globals: {
+        Buffer: true, // can also be 'build', 'dev', or false
+        global: true,
+        process: true,
+      },
+      // Whether to polyfill `node:` protocol imports.
+      protocolImports: true,
+    }),
     redirectPlugin({
         config: {
             '/manual/01-introduction.html' : '/introduction/introduction.html',
