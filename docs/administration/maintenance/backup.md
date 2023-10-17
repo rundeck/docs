@@ -8,17 +8,13 @@ You can use the [rd] tool.
 
 (1) Export the jobs. You will have to do this for each project
 
-    ```bash
+
     rd jobs list -f /path/to/backup/dir/project1/jobs.xml -p project1
     rd jobs list -f /path/to/backup/dir/project2/jobs.xml -p project2
-    ...
-    ```
 
 (2) Stop the server. See: [startup and shutdown](/administration/maintenance/startup.md). (Rundeck data file backup should only be done with the server down.)
 
-    ```bash
     rundeckd stop
-    ```
 
 (3) Copy the data files. (Assumes file datastore configuration). The
 location of the data directory depends on the installation method:
@@ -26,26 +22,18 @@ location of the data directory depends on the installation method:
 - RPM install: `/var/lib/rundeck/data`
 - Launcher install: `$RDECK_BASE/server/data`
 
-
-    ```bash
     cp -r data /path/to/backup/dir
-    ```
-
+  
 (4) Copy the log (execution output) files.
 
 - RPM install: `/var/lib/rundeck/logs`
 - Launcher install: `$RDECK_BASE/var/logs`
 
-
-    ```bash
     cp -r logs /path/to/backup/dir
-    ```
 
 (5) Start the server
 
-    ```bash
     rundeckd start
-    ```
     
 Other files you might want to backup and their locations:
 - ACL Policies - `$RDECK_BASE/etc`
@@ -58,29 +46,21 @@ Other files you might want to backup and their locations:
 
 (1) Stop the server. See: [startup and shutdown](/administration/maintenance/startup.md). (Rundeck recovery should only be done with the server down.)
 
-    ``` bash
     rundeckd stop
-    ```
 
 (2) Restore data/logs dir from backup (Refer to above for appropriate log/data path):
 
-    ``` bash
     cp -r /path/to/backup/logs logspath
     cp -r /path/to/backup/data datapath
-    ```
 
 (3) Start the server:
 
-    ``` bash
     rundeckd start
-    ```
 
 (4) Reload the Job definitions. You will have to do this for each project:
 
-    ``` bash
     rd jobs load -f /path/to/backup/dir/project1/jobs.xml -p project1
     rd jobs load -f /path/to/backup/dir/project2/jobs.xml -p project2
-    ```
 
 ## Project Import and Export
 
@@ -137,25 +117,24 @@ will have to configure those separately for the new or updated project.
 
 ### Export/Import keys. 
 
-- Scenario 1 : where keys are saved in filesystem 
+- Scenario 1: where keys are saved in the filesystem 
 
-If you keep the same filesystem and you upgrade rundeck. The keys will be migrated to the the new rundeck instance. 
+If you keep the same filesystem and you upgrade rundeck. The keys will be migrated to the new rundeck instance. 
 
 Example "rundeck.config.properties" Includes
-bash ´´´
-rundeck.storage.provider.1.type=file
-´´´
+
+    rundeck.storage.provider.1.type=file
 
 or if this line is missing the keys will be stored in your filesystem. 
 
 - Scenario 2: where keys are saved in Database. 
 
 If you perform a complete Database Dump and "rundeck-config.properties" Includes for example
-bash ´´´
-rundeck.storage.provider.1.type=db
-´´´
+
+    rundeck.storage.provider.1.type=db
+
 You should see the same keys in the new instance of rundeck. 
 
 - Scenario 3: Keys are saved in Database and you are moving to a different database provider
 
-In this case you may need to manually create the keys in the new instance 
+In this case, you may need to manually create the keys in the new instance 
