@@ -6,12 +6,13 @@ Rundeck Documentation project.
 ## Getting starting
 
 ### Dependencies
-* NodeJS (`lts/hydrogen` or version `18.18.0` is the supported version)
+* NodeJS `lts/hydrogen` or version `18.18.0` is the currently supported version.
+* NVM is helpful in making sure your machine is using the currently supported versions as we upgrade in the future.
 
 ### Recommended setup steps
 Install `nvm` to manage your NodeJS installations.
 
-Run `nvm install lts/hydrogen; nvm use lts/hydrogen` to install and set the NodeJS version.
+Run `nvm install; nvm use;` to install and set the NodeJS version.  (it will use the `.nvmrc` file in the root of this directory as the version we are currently supporting.)
 
 Run this before the first you start the docs site locally.
 
