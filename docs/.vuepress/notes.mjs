@@ -94,7 +94,7 @@ async function getRepoData(repo, includeLabels) {
   const milestone = milestones.data.find((m) => m.title === argv.milestone);
 
   if (!milestone) {
-    console.error(`GitHub milestone ${argv.milestone} not found!`);
+    console.error(`GitHub milestone ${argv.milestone} not found on ${repo.owner}/${repo.repo}.`);
   } else {
     const issuesResp = await gh.paginate(gh.issues.listForRepo, {
       ...repo,
