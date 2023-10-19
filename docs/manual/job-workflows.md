@@ -36,8 +36,8 @@ step failure_ and _Strategy_.
 
 _If a step fails_: This manages what to do if a step incurs an error:
 
-- Stop at the failed step: Fail immediately (default).
-- Run remaining steps before failing: Continue to next steps and fail the job at the end.
+- **Stop at the failed step**: Fail immediately (default).
+- **Run remaining steps before failing**: Continue to next steps and fail the job at the end.
 
 The default is to fail immediately but depending on the procedure at
 hand it is possible to choose to have the execution continue.

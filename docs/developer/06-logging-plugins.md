@@ -6,7 +6,7 @@ A Logging provider stores or forwards execution log data.
 
 ### About Rundeck Logging
 
-When Rundeck executes a Job or adhoc execution, it runs workflow steps across multiple nodes and channels all output from these steps into a log for the execution. This log contains the output from each step, as well as metadata about the context that the event occurred in, such as the node name, date stamp, and contextual data about the step being executed.
+When Rundeck executes a Job or adhoc execution, it runs workflow steps across multiple nodes and channels all output from these steps into a log for the execution. This log contains the output from each step as well as metadata about the context that the event occurred in, such as node name, date stamp, and contextual data about the step being executed.
 
 This logging system consists of these components:
 
@@ -14,13 +14,13 @@ This logging system consists of these components:
 - _Streaming Log Reader_ - One input for reading the log data
 
 When an execution starts, it writes log events to all outputs until it is done.
-When a user views the execution log in the Rundeck GUI, or accesses it via the API, the input component is used to read the log events for the specific Execution.
+When a user views the execution log in the Rundeck GUI or accesses it via the API, the input component is used to read the log events for the specific Execution.
 
 Rundeck provides a built-in Reader and Writer, by writing the log output to a formatted file on disk, stored in the `var/logs` directory. This is the _Local File Log_.
 
 In addition, in Rundeck 2.0+, each execution generates a _state_ file, which contains information about how each step and node executed. This file is also stored on disk.
 
-However local storage of log files is not always ideal, such as when deploying of Rundeck in a cloud environment where local disk storage could be ephemeral, or when clustering multiple Rundeck servers. In those cases, it would be useful to have a way to store the log file and state file somewhere else, and retrieve them when necessary.
+However, local storage of log files is not always ideal, such as when deploying of Rundeck in a cloud environment where local disk storage could be ephemeral, or when clustering multiple Rundeck servers. In those cases, it would be useful to have a way to store the log file and state file somewhere else, and retrieve them when necessary.
 
 Rundeck has another component:
 
@@ -36,7 +36,7 @@ Events are read from either a Reader plugin, or the **Local File Log**:
 
 ![Reader plugins](~@assets/img/log_storage2.png)
 
-When the **Local File Log** is used, the logs can be asynchronously stored to a Storage plugin after they are completed. Later, the logs can be asynchronously retrieved via the Storage plugin to be used by the **Local File Log**:
+When the **Local File Log** is used, the logs can be asynchronously written to a Storage plugin after they are completed. Later, the logs can be asynchronously retrieved via the Storage plugin to be used by the **Local File Log**:
 
 ![Storage plugins](~@assets/img/log_storage3.png)
 
@@ -73,7 +73,7 @@ There are three types of plugins that can be created:
 
 ## Configuration
 
-See the chapter [Plugins User Guide - Configuring - Logging](/administration/configuration/plugins/configuring.md#logging-plugin-configuration).
+See the chapter [Plugins User Guide - Configuring - Logging](/administration/configuration/plugins/configuring.md#logging-plugin-configuration) for information on log configuration.
 
 ## Plugin Development
 
@@ -96,13 +96,13 @@ Your plugin class should implement the appropriate Java interface as described i
 - [StreamingLogReader](#streaminglogreader)
 - [ExecutionFileStorage](#executionfilestorage)
 
-To define configuration properties for your plugin, you use the same mechanisms as for Workflow Steps, described under the chapter [Plugin Annotations - Plugin Descriptions](/developer/02-plugin-annotations.md#plugin-description).
+To define configuration properties for your plugin, use the same mechanisms as for Workflow Steps as described under the chapter [Plugin Annotations - Plugin Descriptions](/developer/02-plugin-annotations.md#plugin-description).
 
 The simplest way to do this is to use [Plugin Annotations - Plugin Properties](/developer/02-plugin-annotations.md#plugin-properties).
 
 ### Groovy plugin type
 
-For info about the Groovy plugin development method see the [Plugin Development - Groovy Plugin Development](/developer/01-plugin-development.md#groovy-plugin-development) chapter.
+For info about the Groovy plugin development method, see the [Plugin Development - Groovy Plugin Development](/developer/01-plugin-development.md#groovy-plugin-development) chapter.
 
 Create a Groovy script, and define your plugin by calling the `rundeckPlugin` method, and pass it both the Class of the type of plugin, and a Closure used to build the plugin object.
 
@@ -136,12 +136,10 @@ Note that the Map keys will not start with `job.`, simply use the variable name,
 In addition, for ExecutionFileStorage plugins, another map entry named `filetype` will be specified, which indicates which type of file is being stored. You need to use this filetype as part of the identifier for storing or retrieving the file.
 
 ## StreamingLogWriter
-
-The `StreamingLogWriter` ([javadoc]({{{javaDocBase}}}/com/dtolabs/rundeck/core/logging/StreamingLogWriter.html)) system receives log events from an execution and writes them somewhere.
+The `StreamingLogWriter` ([javadoc]({{{javaDocBase}}}/com/dtolabs/rundeck/core/logging/StreamingLogWriter.html)) system receives log events from an execution and writes them somewhere.  
 
 ### Java StreamingLogWriter
-
-Create a Java class that implements the interface [StreamingLogWriterPlugin]({{{javaDocBase}}}/com/dtolabs/rundeck/plugins/logging/StreamingLogWriterPlugin.html):
+Create a Java class that implements the interface [StreamingLogWriterPlugin]({{{javaDocBase}}}/com/dtolabs/rundeck/plugins/logging/StreamingLogWriterPlugin.html):  
 
 ```java
 /**
@@ -159,7 +157,7 @@ public interface StreamingLogWriterPlugin extends StreamingLogWriter {
 }
 ```
 
-This extends `StreamingLogWriter`:
+This extends `StreamingLogWriter`:  
 
 ```java
 /**
