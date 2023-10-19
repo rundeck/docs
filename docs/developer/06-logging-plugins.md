@@ -136,7 +136,8 @@ Note that the Map keys will not start with `job.`, simply use the variable name,
 In addition, for ExecutionFileStorage plugins, another map entry named `filetype` will be specified, which indicates which type of file is being stored. You need to use this filetype as part of the identifier for storing or retrieving the file.
 
 ### Importing executions
-When importing executions they not always come along with their log files since they can be present in a remote log storage, resulting on execution logs that might not follow the expected path, eg:
+When importing executions they not always come along with their log files since they can be present in a remote log storage, resulting on execution logs that might not follow the expected path, eg:  
+
 ```
 # The server has the following path configured for the ExecutionFileStorage
 path = path/to/logs/${job.project}/${job.execid}.log
@@ -146,8 +147,10 @@ log-path = path/to/logs/P-example/5.log
 
 # But if the execution was imported from another server, the log file path could be
 log-path = other/path/to/logs/Other-Project/999.log
-```
-The Logging plugins must be aware of this and can make use of `outputfilepath`,`isRemoteFilePath` and `execIdForLogStore` variables which are present on the execution context (`v > 4.17.0`) to solve these cases. The mark used to spot these cases is `isRemoteFilePath`, eg:
+```  
+
+The Logging plugins must be aware of this and can make use of `outputfilepath`,`isRemoteFilePath` and `execIdForLogStore` variables which are present on the execution context (`v > 4.17.0`) to solve these cases. The mark used to spot these cases is `isRemoteFilePath`, eg:  
+
 ```
 # For both Cases, the path configured for the ExecutionFileStorage is
 path = path/to/logs/${job.project}/${job.execid}.log
@@ -171,7 +174,7 @@ isRemoteFilePath == 'true'
 execIdForLogStore == '999'
 ### To access this log file, the log plugin can skip the configured path and use the outputfilepath directly (and the "execIdForLogStore" variable if it uses it in remote file metadata):
 log-path = 'other/path/to/logs/Other-Project/999.log' # If the log file is present in the same storage configured in the server and the server has access to the path, the log will be retrieved corretly
-```
+```  
 
 ## StreamingLogWriter
 
