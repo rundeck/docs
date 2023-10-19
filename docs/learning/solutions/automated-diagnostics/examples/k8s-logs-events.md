@@ -9,6 +9,6 @@ If any pods are "unhealthy," then the engineer will look at recent logs and Kube
 To do this troubleshooting effectively not only requires the right set of permissions, but also involves multiple commands that require a decent familiarity with Kubernetes.
 
 Here is an example Job that retrieves recent Pod logs and Kubernetes events - specifically for unhealthy pods - using **`kubectl`**:
-Right click [here](https://raw.githubusercontent.com/rundeck/docs/4.0.x/docs/.vuepress/public/assets/text/sample_k8s_job.yaml) and click **`Save Link As...`** to download the Job definition **YAML** and import the Job to your Automation instance.
+Right click [here](/assets/text/sample_k8s_job.yaml) and click **`Save Link As...`** to download the Job definition **YAML** and import the Job to your Automation instance.
 
 ![Example Kubernetes Job Output](/assets/img/example-k8s-job-output.png)
