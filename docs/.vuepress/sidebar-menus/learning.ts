@@ -134,7 +134,9 @@ export default [{
             '/learning/howto/rundeck-exporter.md',
             '/learning/howto/vault-integration.md',
             '/learning/howto/howtojenkins.md',
-            '/learning/howto/how2kube.md'
+            '/learning/howto/how2kube.md',
+            '/learning/howto/actions-with-rba.md',
+            '/learning/howto/events-with-rba.md'
           ]
         },
         {
