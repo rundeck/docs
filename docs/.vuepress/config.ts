@@ -211,7 +211,8 @@ export default defineUserConfig({
             '/learning/tutorial/preparing.html' : '/learning/tutorial/index.html',
             '/learning/howto/overview.html' : '/learning/howto/index.html',
             '/learning/getting-started/overview.html' : '/learning/getting-started/index.html',
-            '/plugins/' : '/manual/plugins/full-list'
+            '/plugins/' : '/manual/plugins/full-list',
+            '/learning/getting-started/rba/rba-welcome-overview.html' : '/learning/getting-started/rba/index.html'
         }
       }),
     openGraphPlugin({
