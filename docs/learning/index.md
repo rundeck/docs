@@ -12,7 +12,7 @@ The [How To Guides](/learning/howto/index.md) provide step by step instructions 
 
 ### Essential Concepts
 
-Several essential concepts underly and drive the Rundeck system. Understanding them will help you more effectively use and integrate Rundeck into your environment.  New users are encouraged to review the concepts provided in the [Getting Started section](/learning/getting-started/jobs/overview.md) and the terms in the [Terminology](/learning/tutorial/terminology.md) section.
+Several essential concepts underly and drive the Rundeck system. Understanding them will help you more effectively use and integrate Rundeck into your environment.  New users are encouraged to review the concepts provided in the [Getting Started section](/learning/getting-started/jobs/index.md) and the terms in the [Terminology](/learning/tutorial/terminology.md) section.
 
 ### Using Rundeck
 
