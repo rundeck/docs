@@ -142,9 +142,9 @@ export default [{
     {
       text: 'Key Storage',
       collapsible: true,
-      link: '/manual/key-storage/key-storage',
+      link: '/manual/key-storage/index',
       children: [
-        '/manual/key-storage/key-storage',
+        '/manual/key-storage/index',
         '/manual/key-storage/enterprise-runner-key-storage.md',
         {
           text: 'Key Storage Plugins',

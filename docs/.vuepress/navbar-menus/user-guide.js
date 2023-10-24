@@ -21,7 +21,7 @@ export default [
   },
   {
     text: 'Key Storage',
-    link: '/manual/key-storage/key-storage'
+    link: '/manual/key-storage/index'
   },
   {
     link: '/manual/06-commands',

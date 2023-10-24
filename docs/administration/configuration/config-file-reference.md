@@ -512,7 +512,7 @@ The [Project Setup - Project Definitions](/manual/projects/project-create.md#pro
 
 ### Key Storage settings
 
-The [Key storage](/manual/key-storage/key-storage.md) mechanism is configured within this file, see:
+The [Key storage](/manual/key-storage/index.md) mechanism is configured within this file, see:
 
 - [Configuring Storage Plugins](/administration/configuration/plugins/configuring.md#storage-plugins)
 - [Configuring Storage Converter Plugins](/administration/configuration/plugins/configuring.md#storage-converter-plugins)

@@ -213,7 +213,8 @@ export default defineUserConfig({
             '/learning/getting-started/overview.html' : '/learning/getting-started/index.html',
             '/plugins/' : '/manual/plugins/full-list',
             '/learning/getting-started/rba/rba-welcome-overview.html' : '/learning/getting-started/rba/index.html',
-            '/learning/getting-started/jobs/overview' : '/learning/getting-started/jobs/index'
+            '/learning/getting-started/jobs/overview.html' : '/learning/getting-started/jobs/index.html',
+            '/manual/key-storage/key-storage.html' : '/manual/key-storage/index.html'
         }
       }),
     openGraphPlugin({

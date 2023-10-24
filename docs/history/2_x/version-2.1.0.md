@@ -12,7 +12,7 @@ This release enhances the Rundeck API and provides a facility for storing Key fi
 * Project management improvements:
     - Project Delete action in the Configuration page
     - [Project create/config/delete APIs](/api/index.md#changes)
-- [Key storage facility](/manual/key-storage/key-storage.md):
+- [Key storage facility](/manual/key-storage/index.md):
     + [Upload public or private keys via API](/api/index.md#changes)
     + store the key file data on disk or in the DB
     + Use private keys for SSH
