@@ -26,9 +26,9 @@ export default [{
         {
       	  text: 'Runbook Automation',
           collapsible: true,
-          link: '/learning/getting-started/rba/rba-welcome-overview',
+          link: '/learning/getting-started/rba/index',
       	  children: [
-      	  	{ link: '/learning/getting-started/rba/rba-welcome-overview', text: 'Getting Started with Runbook Automation'},
+      	  	{ link: '/learning/getting-started/rba/index', text: 'Getting Started with Runbook Automation'},
       	  	{ link: '/learning/getting-started/rba/runner-setup.md', text: 'Setting up a Runner'},
       	  	{ link: '/learning/getting-started/rba/node-setup.md', text: 'Adding a Node with Runner'},
       	  ]
