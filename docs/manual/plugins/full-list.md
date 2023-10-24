@@ -1,9 +1,4 @@
----
-sidebar: false
----
-# Rundeck Plugins
-
----
+# Rundeck Plugins List
 
 This document lists the plugins **distributed with Rundeck and Process Automation**.
 

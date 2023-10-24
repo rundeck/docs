@@ -5,10 +5,10 @@ export default [{
     '/learning/',
     {
       text: 'Getting Started',
-      link: '/learning/getting-started/overview',
+      link: '/learning/getting-started/index',
       collapsible: true,
       children: [
-        { link: '/learning/getting-started/overview', text: 'Overview'},
+        { link: '/learning/getting-started/index', text: 'Overview'},
         { link: '/learning/getting-started/nodes-overview.md', text: 'Introduction to Nodes' },
         { link: '/learning/getting-started/users-overview.md', text: 'Introduction to Users' },
         { link: '/learning/getting-started/secrets-overview.md', text: 'Introduction to Managing Secrets' },
@@ -36,8 +36,9 @@ export default [{
         {
           text: 'Tutorial',
           collapsible: true,
+          link: '/learning/tutorial/index',
           children: [
-            '/learning/tutorial/preparing',
+            '/learning/tutorial/index',
             '/learning/tutorial/creatingnodes',
             '/learning/tutorial/commands',
             '/learning/tutorial/jobs',
@@ -68,10 +69,10 @@ export default [{
     },
     {
       text: 'How To',
-      link: '/learning/howto/overview',
+      link: '/learning/howto/index',
       collapsible: true,
       children: [
-        { link: '/learning/howto/overview.md', text: 'Overview' },
+        { link: '/learning/howto/index.md', text: 'Overview' },
         { link: '/learning/howto/welcome-project-starter.md', text: 'Welcome Projects' },
         {
           text: 'Administration',
@@ -164,19 +165,20 @@ export default [{
       children: [
         {
           text: 'Automated Diagnostics',
-          link: '/learning/solutions/automated-diagnostics/solution-overview',
+          link: '/learning/solutions/automated-diagnostics/index',
           collapsible: true,
           children: [
-            { link: '/learning/solutions/automated-diagnostics/solution-overview.md', text: 'Solution Summary' },
+            { link: '/learning/solutions/automated-diagnostics/index.md', text: 'Solution Summary' },
             { link: '/learning/solutions/automated-diagnostics/getting-started.md', text: 'Getting Started' },
             { link: '/learning/solutions/automated-diagnostics/automation-actions.md', text: 'Configuring Automation Actions' },
             { link: '/learning/solutions/automated-diagnostics/first-diagnostic-runbook.md', text: 'First Diagnostic Runbook' },
             { link: '/learning/solutions/automated-diagnostics/integrating-chat-tools.md', text: 'Integrating Chat Tools' },
             {
               text: 'Examples & Best Practices',
-              link: '/learning/solutions/automated-diagnostics/examples-overview',
+              link: '/learning/solutions/automated-diagnostics/examples-overview.md',
               collapsible: true,
               children: [
+                { link: '/learning/solutions/automated-diagnostics/examples-overview.md', text: 'Examples Overview' },
                 { link: '/learning/solutions/automated-diagnostics/examples/public-cloud-providers.md', text: 'Public Cloud Providers' },
                 { link: '/learning/solutions/automated-diagnostics/examples/linux.md', text: 'Linux' },
                 { link: '/learning/solutions/automated-diagnostics/examples/windows.md', text: 'Windows' },
@@ -186,6 +188,7 @@ export default [{
                   link: '/learning/solutions/automated-diagnostics/examples/kubernetes',
                   collapsible: true,
                   children: [
+                    { link: '/learning/solutions/automated-diagnostics/examples/kubernetes', text: 'Kubernetes Examples' },
                     { link: '/learning/solutions/automated-diagnostics/examples/k8s-logs-events.md', text: 'Pod Logs & K8s Events' },
                     { link: '/learning/solutions/automated-diagnostics/examples/k8s-app-debug-capture.md', text: 'App Debug State Capture' }
                   ]

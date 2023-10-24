@@ -24,8 +24,8 @@ This documentation site serves as a central hub for all your Rundeck-related nee
 ### Key Features of the Rundeck Documentation Site:
 
 1. **[Getting Started Guides](/learning/index.md)**: If you're new to Rundeck, our getting started guides will walk you through the installation process, configuration, and provide a foundation for understanding the core concepts.<br><br>
-2. **[Tutorials](/learning/howto/overview.md)**: Step-by-step tutorials cover a wide range of use cases, demonstrating how to automate routine tasks, create workflows, integrate with other tools, and more.<br><br>
-3. **[API Documentation](/api/rundeck-api.md)**: Explore the Rundeck API documentation to learn how to interact with Rundeck programmatically and integrate it into your existing infrastructure and tooling.<br><br>
+2. **[Tutorials](/learning/howto/index.md)**: Step-by-step tutorials cover a wide range of use cases, demonstrating how to automate routine tasks, create workflows, integrate with other tools, and more.<br><br>
+3. **[API Documentation](/api/index.md)**: Explore the Rundeck API documentation to learn how to interact with Rundeck programmatically and integrate it into your existing infrastructure and tooling.<br><br>
 4. **[Release Notes](/history/index.md)**: Stay up to date with the latest features, enhancements, and bug fixes in each Rundeck release. [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)<br><br>
 
 If you're looking for documentation of older versions of Rundeck, you can access them at the [Old Versions](/manual/old-docs.md) section.

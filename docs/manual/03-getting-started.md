@@ -13,7 +13,7 @@ help you use or integrate Rundeck into your environment.
 - **Projects**: A _[project](/manual/projects/index.md)_ is a place to separate management activity.
   All Rundeck activities occur within the context of a project.
   Multiple projects can be maintained on the same Rundeck server.
-- **Jobs** : A _job_ encapsulates a sequence of steps, job options and nodes where the steps execute. See [Jobs](/manual/04-jobs.md) and [Creating Jobs](/manual/creating-jobs.md).
+- **Jobs** : A _job_ encapsulates a sequence of steps, job options and nodes where the steps execute. See [Jobs](/manual/jobs.md) and [Creating Jobs](/manual/creating-jobs.md).
 - **Nodes**: A _[node](/manual/05-nodes.md)_ is a resource that is either a physical or virtual instance
   of a network accessible host.
   A _resource model_ is a representation of Nodes in a project.
@@ -34,7 +34,7 @@ help you use or integrate Rundeck into your environment.
 
   Our Enterprise version includes built-in plugins to further enhance functionality for [Scheduling](schedules/project-schedules.md) job executions, providing [Guided Tours](tour-manager.md), incorporating [Health Checks](healthchecks.md), and much more.
 
-  See [Job Plugins](/manual/job-plugins.md) and [Plugin Developer Guide](/developer/index.md) and [Rundeck Plugins](/plugins/index.md).
+  See [Job Plugins](/manual/job-plugins.md) and [Plugin Developer Guide](/developer/index.md) and [Rundeck Plugins](/manual/plugins/index.md).
 
 ## Download and Installation
 
@@ -109,7 +109,7 @@ Jobs matching the filtering criteria. These filter settings can be
 saved to a user profile. Only authorized jobs will be visible.
 
 ::: tip
-See [Jobs](/manual/04-jobs.md).
+See [Jobs](/manual/jobs.md).
 :::
 
 #### Nodes
@@ -183,7 +183,7 @@ See the [Command line tools](/manual/command-line-tools/index.md).
 You can also use the Web API to interface with all aspects of Node
 and Job execution.
 
-See the [Rundeck API](/api/rundeck-api.md) page for a reference on the
+See the [Rundeck API](/api/index.md) page for a reference on the
 endpoints and examples.
 
 ## Document Formats

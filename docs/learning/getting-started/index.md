@@ -9,7 +9,7 @@ The Getting Started section is aimed at users new to Rundeck, Process Automation
 [Overview of System Maintenance](/learning/getting-started/system-maintenance-overview.md)  
 [Working with Projects](/learning/getting-started/projects-overview.md)  
 [Managing Runners](/learning/getting-started/runners-overview.md)  
-[Tutorials](/learning/tutorial/preparing.md)  
+[Tutorials](/learning/tutorial/index.md)  
 
 <br><br>
 If you think of topics that would be good to add to this area, share them by submitting a pull request to our [Docs repository](https://github.com/rundeck/) or email them to [product@rundeck.com](mailto:product@rundeck.com).<br>

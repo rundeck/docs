@@ -40,7 +40,7 @@ You can insert Job Options into the Query String using `${option.my_job_option}`
 :::
 
 ### See it in Action
-This plugin is used in one of the prebuilt Jobs in our [**_Automated Diagnostics Solution_**](/learning/solutions/automated-diagnostics/solution-overview).
+This plugin is used in one of the prebuilt Jobs in our [**_Automated Diagnostics Solution_**](/learning/solutions/automated-diagnostics/index.md).
 Try out the Solution to see how this plugin can be used as part of incident-response workflows.
 
 ## Execute Saved CloudWatch Logs Query

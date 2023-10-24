@@ -124,9 +124,9 @@ rd projects create -p MyProject -- \
 
 ### API Usage
 
-Project creation can be achieved via the [API](/api/rundeck-api.md).
+Project creation can be achieved via the [API](/api/index.md).
 
-[Create projects](/api/rundeck-api.md#project-creation):
+[Create projects](/api/index.md#project-creation):
 
 ```
 POST /api/13/projects

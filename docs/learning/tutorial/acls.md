@@ -8,7 +8,7 @@ next:
 
 ---
 
-# 5. Getting Started - Access Control Lists
+# Getting Started - Access Control Lists
 
 Role Based Access can be managed at the system or project specific level.
 

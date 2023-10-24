@@ -8,7 +8,7 @@ export default [{
   },
   {
     text: 'Included Plugins',
-    link: '/plugins/'
+    link: '/manual/plugins/full-list'
   },
   {
     text: 'RD - Command Line Interface',

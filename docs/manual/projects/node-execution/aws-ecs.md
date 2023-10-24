@@ -132,4 +132,4 @@ where the container image starts with `spring`:
 7. Click **Save** at the bottom of the page to save the Job configuration.
 
 ## Example Job: Java Thread Dump from ECS Container
-A sample implementation of executing commands on ECS containers can be seen in our [**Automated Diagnostics Solution**](/learning/solutions/automated-diagnostics/solution-overview).
+A sample implementation of executing commands on ECS containers can be seen in our [**Automated Diagnostics Solution**](/learning/solutions/automated-diagnostics/index.md).

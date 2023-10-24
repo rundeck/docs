@@ -10,7 +10,7 @@ next:
 
 
 
-# 3. Getting Started - Jobs / Activity
+# Getting Started - Jobs / Activity
 
 :::tutorial
 :::

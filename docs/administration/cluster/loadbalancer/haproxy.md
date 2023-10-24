@@ -15,7 +15,7 @@ a custom health check for Rundeck.
 
 The web load balancer serving traffic to the Rundeck instance should be configured with the health check.
 
-- Add the "httpchk" with the URI of the [execution status API endpoint](/api/rundeck-api.md#get-current-execution-mode). The token value that you want to use is needed.
+- Add the "httpchk" with the URI of the [execution status API endpoint](/api/index.md#get-current-execution-mode). The token value that you want to use is needed.
 - Add the "http-check" with the expected status (in this case 200)
 
 ```

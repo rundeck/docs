@@ -1,14 +1,18 @@
 export default [
   {
+    link: '/manual/index.md',
+    text: 'Overview'
+  },
+  {
     link: '/manual/projects/',
     text: 'Projects'
   },
   {
-    link: '/manual/04-jobs',
+    link: '/manual/jobs.md',
     text: 'Jobs'
   },
   {
-    link: '/manual/plugins/plugins-overview',
+    link: '/manual/plugins/index.md',
     text: 'Plugins'
   },
   {

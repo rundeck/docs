@@ -37,7 +37,7 @@ These files, which are the standard job format for exchanging jobs between insta
 Rundeck lets you organize and execute Jobs and observe the progress as the Job is running. You can view a list of the currently running Jobs or drill down to see the output of individual executing steps.
 
 ## Key Storage
-The Key Storage facility provides GUI backed by an [API](/api/rundeck-api.md#key-storage) to manage public, private keys and passwords.
+The Key Storage facility provides GUI backed by an [API](/api/index.md#key-storage) to manage public, private keys and passwords.
 These stored keys are used by many different types of Rundeck plugins.  The Key Storage entries can also be used in Job definitions as secure value inputs.
 
 ## Log Filters
@@ -57,7 +57,7 @@ Rundeck is built over a flexible platform architecture.  Extending Rundeck funct
 
 The Process Automation version includes built-in plugins to further enhance functionality for [Scheduling](/manual/schedules/project-schedules.md) job executions, providing [Guided Tours](/manual/tour-manager.md), incorporating [Health Checks](/manual/healthchecks.md), and much more.
 
-See [Job Plugins](/manual/job-plugins.md) and [Plugin Developer Guide](/developer/index.md) and [Rundeck Plugins](/plugins/index.md) for more information.
+See [Job Plugins](/manual/job-plugins.md) and [Plugin Developer Guide](/developer/index.md) and [Rundeck Plugins](/manual/plugins/index.md) for more information.
 
 ## Projects
 A project is a place within Rundeck to separate management activity. All Rundeck activities (such as jobs or commands) occur within the context of a project. Multiple projects can be maintained on the same Rundeck server. 

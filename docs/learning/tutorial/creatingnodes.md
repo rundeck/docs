@@ -9,7 +9,7 @@ next:
 ---
 
 
-# 1. Getting Started - Nodes
+# Getting Started - Nodes
 
 :::tutorial
 :::

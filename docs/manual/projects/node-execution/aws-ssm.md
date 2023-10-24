@@ -235,5 +235,5 @@ To use Cloudwatch logs for all SSM output across all nodes that use SSM within t
 Alternatively, add the following to the **Mapping Params** **`cloudwatch-log-group.default=<<CloudWatch Log Group Name>>`** on the node source or with **`cloudwatch-log-group=<<CloudWatch Log Group Name>>`** as a node-attribute.
 
 ## See it in Action
-This plugin is used in one of the prebuilt Jobs in our [**_Automated Diagnostics Solution_**](/learning/solutions/automated-diagnostics/solution-overview).
+This plugin is used in one of the prebuilt Jobs in our [**_Automated Diagnostics Solution_**](/learning/solutions/automated-diagnostics/index.md).
 Try out the Solution to see how this plugin can be used as part of incident-response workflows.
