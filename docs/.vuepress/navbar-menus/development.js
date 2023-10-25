@@ -1,6 +1,6 @@
 export default [{
     text: 'API',
-    link: '/api/rundeck-api'
+    link: '/api/'
   },
   {
     text: 'Plugin Development',
