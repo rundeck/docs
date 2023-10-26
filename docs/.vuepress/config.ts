@@ -214,7 +214,8 @@ export default defineUserConfig({
             '/plugins/' : '/manual/plugins/full-list',
             '/learning/getting-started/rba/rba-welcome-overview.html' : '/learning/getting-started/rba/index.html',
             '/learning/getting-started/jobs/overview.html' : '/learning/getting-started/jobs/index.html',
-            '/manual/key-storage/key-storage.html' : '/manual/key-storage/index.html'
+            '/manual/key-storage/key-storage.html' : '/manual/key-storage/index.html',
+            '/api/rundeck-api.html' : '/api/index.html'
         }
       }),
     openGraphPlugin({
