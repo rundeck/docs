@@ -45,7 +45,7 @@ running and queued executions.
 
 ## Removing an execution from the queue.
 
-To cancel a queued execution, go to the execution detail page and [kill it](/manual/04-jobs.md#killing-jobs). 
+To cancel a queued execution, go to the execution detail page and [kill it](/manual/jobs.md#killing-jobs). 
 
 ## Disabling queue system entirely.
 

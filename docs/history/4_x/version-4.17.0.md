@@ -55,6 +55,7 @@ Previously, if a user chose to use a Node Source that was not available on an En
 * Fixed documentation bug in Athena Query Plugin
 * Fix: SSO settings now reload without system restart
 * Typo: ROI metrics plugin description shows wrong API url
+* Allow combining properties in selector definitions for ServiceNow Node Sources
 
 
 ## Rundeck Open Source Product Updates

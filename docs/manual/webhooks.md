@@ -11,7 +11,7 @@ Click on `Webhooks` to go to the webhook administration page to add, configure, 
 
 ![Webhook Administration](/assets/img/webhook-admin.png)
 
-The [Webhook API](/api/rundeck-api.md#webhooks-beta) or using the rd cli tool can also manage webhooks.
+The [Webhook API](/api/index.md#webhooks-beta) or using the rd cli tool can also manage webhooks.
 
 ### Webhook HTTP Authorization String
 

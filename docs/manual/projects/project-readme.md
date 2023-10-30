@@ -24,7 +24,7 @@ rd projects configure set -p MyProject -- \
 
 ## API Usage
 
-[Project readme/motd modification](/api/rundeck-api.md#project-readme-file)
+[Project readme/motd modification](/api/index.md#project-readme-file)
 
     PUT /api/13/project/MyProject/readme.md
     Content-Type: text/plain

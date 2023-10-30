@@ -8,7 +8,7 @@ next:
 
 ---
 
-# 2. Getting Started - Commands
+# Getting Started - Commands
 
 :::tutorial
 :::

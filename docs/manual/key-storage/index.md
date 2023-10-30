@@ -128,7 +128,7 @@ Rundeck provides these built-in implementations:
 
 ### API Details
 
-The [Key Storage API](/api/rundeck-api.md#key-storage) is provided through the standard Rundeck HTTP API. Rundeck should be configured to use HTTPS, and all API access requires either an authentication token, or username and password authentication.
+The [Key Storage API](/api/index.md#key-storage) is provided through the standard Rundeck HTTP API. Rundeck should be configured to use HTTPS, and all API access requires either an authentication token, or username and password authentication.
 
 > For users who want overwrite the project defined key storage structure and allow key access at the system level would have to set the configuration property:
 ```yaml

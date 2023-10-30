@@ -9,7 +9,7 @@ Rundeck includes a Git plugin for SCM management of Jobs.
 
 To develop a SCM Plugin, see [Plugin Developer Guide - SCM Plugins](/developer/10-scm-plugins.md).
 
-Project SCM can be configured in the GUI, or via the [API](/api/rundeck-api.md#scm).
+Project SCM can be configured in the GUI, or via the [API](/api/index.md#scm).
 
 In the GUI:
 

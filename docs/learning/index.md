@@ -2,17 +2,17 @@
 
 PagerDuty provides three different process automation versions.  The open source version is Rundeck.  Previously, the commercial version was referred to as Rundeck Enterprise, since renamed as Process Automation for the traditional on premise product and Runbook Automation for cloud users.
 
-The Learning section includes _[Tutorials](/learning/tutorial/preparing.md)_, a _[Getting Started section](/learning/getting-started/overview.md)_ and _[How to Guides](/learning/howto/overview.md)_ that help new users quickly become productive with the Rundeck server and tools. Instructions are provided for both Enterprise and Community versions of Rundeck.
+The Learning section includes _[Tutorials](/learning/tutorial/index.md)_, a _[Getting Started section](/learning/getting-started/index.md)_ and _[How to Guides](/learning/howto/index.md)_ that help new users quickly become productive with the Rundeck server and tools. Instructions are provided for both Enterprise and Community versions of Rundeck.
 
-The _[Tutorials](/learning/tutorial/preparing.md)_ are practical step-by-step guides for getting Rundeck installed, configured and running on your system.  They are built around our Welcome Project and provide product simulations for the open source Rundeck, Process Automation and Runbook Automation versions.  
+The _[Tutorials](/learning/tutorial/index.md)_ are practical step-by-step guides for getting Rundeck installed, configured and running on your system.  They are built around our Welcome Project and provide product simulations for the open source Rundeck, Process Automation and Runbook Automation versions.  
 
-The [How To Guides](/learning/howto/overview.md) provide step by step instructions for accomplishing specific tasks using Process Automation/Runbook Automation and where applicable, Rundeck. New How To guides are developed and added periodically as our team realizes a need for them.
+The [How To Guides](/learning/howto/index.md) provide step by step instructions for accomplishing specific tasks using Process Automation/Runbook Automation and where applicable, Rundeck. New How To guides are developed and added periodically as our team realizes a need for them.
 
 ## Where to Begin
 
 ### Essential Concepts
 
-Several essential concepts underly and drive the Rundeck system. Understanding them will help you more effectively use and integrate Rundeck into your environment.  New users are encouraged to review the concepts provided in the [Getting Started section](/learning/getting-started/jobs/overview.md) and the terms in the [Terminology](/learning/tutorial/terminology.md) section.
+Several essential concepts underly and drive the Rundeck system. Understanding them will help you more effectively use and integrate Rundeck into your environment.  New users are encouraged to review the concepts provided in the [Getting Started section](/learning/getting-started/jobs/index.md) and the terms in the [Terminology](/learning/tutorial/terminology.md) section.
 
 ### Using Rundeck
 

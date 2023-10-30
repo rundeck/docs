@@ -18,7 +18,7 @@ curl --location --request POST 'http://localhost:4440/api/41/job/50aa1e22-3e75-4
 
 An API delivers a user response to a Rundeck Instance and sends the proper response back to a user. 
 
-You can find a complete Rundeck API reference [here](/api/rundeck-api.md).
+You can find a complete Rundeck API reference [here](/api/index.md).
 
 
 # Postman
@@ -198,6 +198,6 @@ To export a request, click on the code icon (right) and select the language. The
 
 # Resources
 
-A complete Rundeck API reference is available [here](/api/rundeck-api.md).
+A complete Rundeck API reference is available [here](/api/index.md).
 
 [Here](https://documenter.getpostman.com/view/95797/rundeck/7TNfX9k#36bbd9c4-3186-56f4-aae2-90f5c9f097a8) are a lot of examples of Postman and Rundeck API endpoints calls.

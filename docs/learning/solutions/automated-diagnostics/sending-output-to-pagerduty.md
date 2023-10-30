@@ -6,7 +6,7 @@
 By default, your automated diagnostics jobs will display their results in logging visible in the Automation interface.  There are a few extra steps necessary to transport those logs or some subset over to your PagerDuty incidents.  This section will walk you through steps to simplify output in a job and send it to a PagerDuty incident.  These steps assume that you have already completed **Tour 4: Send Diagnostic Data to PagerDuty**, which ensures that you have connected your Automation interface to your PagerDuty instance at the infrastructure level.
 
 ### Example
-To carry out these steps, you’ll need a job that we can modify for our purposes.  Since most of the jobs in this Solution already have these steps completed, we’ll start with a fresh job which you can import and work with.  You can download that job [here](http:///assets/text/ssh_status.yaml).
+To carry out these steps, you’ll need a job that we can modify for our purposes.  Since most of the jobs in this Solution already have these steps completed, we’ll start with a fresh job which you can import and work with.  You can copy the job definition at the [bottom of the page](#job-definition).
 
 1. In the Jobs section of your project, click **New Job**
    ![](/assets/img/sending1.png)<br><br>
@@ -69,3 +69,42 @@ To carry out these steps, you’ll need a job that we can modify for our purpose
 5. Set a **Step Label** to identify what this job step does
 6. Save the job step and job to save your changes<br>
    ![](/assets/img/sending15.png)
+
+
+### Job Definition
+
+Copy and paste this content into a file and import to your project.
+::: code-tabs
+
+@tab yaml
+```yaml
+- defaultTab: nodes
+  description: ''
+  executionEnabled: true
+  group: Administration/Linux
+  id: e4b9f6db-efda-43a4-8f10-52eba1b6c56d
+  loglevel: INFO
+  name: SSH Status
+  nodeFilterEditable: true
+  nodefilters:
+    dispatch:
+      excludePrecedence: true
+      keepgoing: false
+      rankOrder: ascending
+      successOnEmptyNodeFilter: false
+      threadcount: '1'
+    filter: 'name: employees_mysql_db_1 '
+  nodesSelectedByDefault: true
+  plugins:
+    ExecutionLifecycle: {}
+  scheduleEnabled: true
+  schedules: []
+  sequence:
+    commands:
+    - description: Check status of SSH service
+      exec: sudo systemctl status ssh
+    keepgoing: false
+    strategy: node-first
+  uuid: e4b9f6db-efda-43a4-8f10-52eba1b6c56d
+```
+:::

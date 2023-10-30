@@ -213,6 +213,6 @@ The service is down and unregistered from Windows Services.
 
 ## Resources
 
-[Enterprise Runner](/docs/administration/runner/pre-4-11-runners.md#runner)<br>
+[Enterprise Runner](/administration/runner/pre-4-11-runners.md#runner)<br>
 [Apache Commons Daemon Documentation](https://commons.apache.org/proper/commons-daemon/)<br>
 [NSSM Documentation](https://nssm.cc/usage)

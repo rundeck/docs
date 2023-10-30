@@ -106,7 +106,7 @@ The following fields are used for configuration the Workflow Step plugin to send
 * **Task ID**: The ID the task associated with the specified container.
 * **Command**: The shell command you wish to run on the specified container.
 * **Container Region**: The region where the container's cluster is located.
-* **Access Key ID**: AWS Access Key. This can be set in the Project configuration properties with `project.aws.access_key` or in [Configuration Management](/manual/configuration-mgmt/configmgmt).
+* **Access Key ID**: AWS Access Key. This can be set in the Project configuration properties with `project.aws.access_key` or in [Configuration Management](/manual/configuration-mgmt/configmgmt.md).
 * **Secret Key**: AWS Secret Key. Click the **Select** button to choose your AWS Secret from Key Storage. This can be set in the Project configuration properties with `project.aws.secret_key_path`.
 
 ![**Example Configuration**](/assets/img/aws-ecs-command-example-config.png)
@@ -122,7 +122,7 @@ If this executes successfully, you would see the following output in the Job out
 ![Command Output Logs](/assets/img/aws-ecs-command-log-output.png)<br>                   
 
 To use this Job step as part of a larger workflow, or to create a **_"self service interface"_**, you will likely want to use a Job Option (shown below) or a Data Variable
-as the input for the command.  See here for more details on [Job Options](/manual/job-options) and [Data Variables](/learning/howto/passing-variables):
+as the input for the command.  See here for more details on [Job Options](/manual/job-options) and [Data Variables](/learning/howto/passing-variables.md):
 
 ![Using Job Options](/assets/img/aws-ecs-command-job-options.png)<br><br>
 

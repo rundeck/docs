@@ -4,7 +4,7 @@ title: API Version History
 
 # API Version History | Current Version {{$apiVersion}}
 
-This page documents changes to the Rundeck API through-out the versions.  For usage references please see the [API Reference](/api/rundeck-api.md) page.
+This page documents changes to the Rundeck API through-out the versions.  For usage references please see the [API Reference](/api/index.md) page.
 
 ## API Version Number
 
@@ -263,7 +263,7 @@ Changes introduced by API Version number:
 * Updated responses for Executions
     - Executions results include custom status strings.
     - Documented `timedout`,`failed-with-retry`, and `scheduled` status values.
-    - See [Listing Running Executions](/api/rundeck-api.md#listing-running-executions)
+    - See [Listing Running Executions](/api/index.md#listing-running-executions)
 
 **Version 17**:
 
@@ -312,7 +312,7 @@ Changes introduced by API Version number:
 
 **Version 14**:
 
-**Note**: this document now has an [Index](/api/rundeck-api.md#index) listing API paths.
+**Note**: this document now has an [Index](/api/index.md#index) listing API paths.
 
 * Deprecated Endpoints with no replacement
     - `/api/2/project/[PROJECT]/resources/refresh`
@@ -385,20 +385,20 @@ Corrections:
 
 * New endpoints
     - `/api/13/project/[PROJECT]/readme.md` and `/api/13/project/[PROJECT]/motd.md`
-        - [Project Readme File](/api/rundeck-api.md#project-readme-file) (`GET`, `PUT`, `DELETE`)
+        - [Project Readme File](/api/index.md#project-readme-file) (`GET`, `PUT`, `DELETE`)
 
 **Version 12**:
 
 * New endpoints
     - `POST /api/12/executions/delete`
-        - [Bulk delete executions](/api/rundeck-api.md#bulk-delete-executions)
+        - [Bulk delete executions](/api/index.md#bulk-delete-executions)
 * Updated endpoints
     - `DELETE /api/12/execution/[ID]`
-        - [Delete an execution](/api/rundeck-api.md#delete-an-execution)
+        - [Delete an execution](/api/index.md#delete-an-execution)
     - `DELETE /api/12/job/[ID]/executions`
-        - [Delete all executions for a job](/api/rundeck-api.md#delete-all-executions-for-a-job)
+        - [Delete all executions for a job](/api/index.md#delete-all-executions-for-a-job)
     - `POST /api/12/job/[ID]/executions`
-        - [Run a Job](/api/rundeck-api.md#running-a-job)
+        - [Run a Job](/api/index.md#running-a-job)
 
 
 **Version 11**:
@@ -415,61 +415,61 @@ In this version, all new and updated endpoints support XML or JSON request and r
 
 * New endpoints
     - `/api/11/project/[PROJECT]/config`
-        - PUT and GET for [Project Configuration](/api/rundeck-api.md#project-configuration)
+        - PUT and GET for [Project Configuration](/api/index.md#project-configuration)
     - `/api/11/project/[PROJECT]/config/[KEY]`
-        + PUT, GET, DELETE for [Project Configuration Keys](/api/rundeck-api.md#project-configuration-keys)
+        + PUT, GET, DELETE for [Project Configuration Keys](/api/index.md#project-configuration-keys)
     - `/api/11/project/[PROJECT]/export`
-        + GET to retrieve archive of a project - [Project Archive Export](/api/rundeck-api.md#project-archive-export)
+        + GET to retrieve archive of a project - [Project Archive Export](/api/index.md#project-archive-export)
     - `/api/11/project/[PROJECT]/import`
-        + PUT to import an archive to a project - [Project Archive Import](/api/rundeck-api.md#project-archive-import)
+        + PUT to import an archive to a project - [Project Archive Import](/api/index.md#project-archive-import)
     - `/api/11/storage/keys/[PATH]`
-        + GET, POST, PUT, DELETE: manage stored keys - [Key Storage](/api/rundeck-api.md#key-storage)
+        + GET, POST, PUT, DELETE: manage stored keys - [Key Storage](/api/index.md#key-storage)
     - `/api/11/tokens`
-        + GET: List all auth tokens - [List Tokens](/api/rundeck-api.md#list-tokens)
-        + POST: Generate a token for a user - [Create a Token](/api/rundeck-api.md#create-a-token)
+        + GET: List all auth tokens - [List Tokens](/api/index.md#list-tokens)
+        + POST: Generate a token for a user - [Create a Token](/api/index.md#create-a-token)
     - `/api/11/tokens/[user]`
-        + GET: List auth tokens defined for a user - [List Tokens](/api/rundeck-api.md#list-tokens)
-        + POST: Generate a token for a user - [Create a Token](/api/rundeck-api.md#create-a-token)
+        + GET: List auth tokens defined for a user - [List Tokens](/api/index.md#list-tokens)
+        + POST: Generate a token for a user - [Create a Token](/api/index.md#create-a-token)
     - `/api/11/token/[tokenID]`
-        + GET: get a token - [Get a token](/api/rundeck-api.md#get-a-tokens)
-        + DELETE: delete a token - [Delete a Token](/api/rundeck-api.md#delete-a-token)
+        + GET: get a token - [Get a token](/api/index.md#get-a-tokens)
+        + DELETE: delete a token - [Delete a Token](/api/index.md#delete-a-token)
 * Updated endpoints
     - `/api/11/project/[PROJECT]`
-        + DELETE method can delete a project - [Project Deletion](/api/rundeck-api.md#project-deletion)
-        + GET method response updated - [Getting Project Info](/api/rundeck-api.md#getting-project-info)
+        + DELETE method can delete a project - [Project Deletion](/api/index.md#project-deletion)
+        + GET method response updated - [Getting Project Info](/api/index.md#getting-project-info)
     - `/api/11/projects`
-        + POST method can be used to create a new project - [Project creation](/api/rundeck-api.md#project-creation)
+        + POST method can be used to create a new project - [Project creation](/api/index.md#project-creation)
 
 **Version 10**:
 
 * New endpoints
-    - `/api/10/execution/[ID]/state` - [Execution State](/api/rundeck-api.md#execution-state)
+    - `/api/10/execution/[ID]/state` - [Execution State](/api/index.md#execution-state)
         + Retrieve workflow step and node state information
-    - `/api/10/execution/[ID]/output/state` - [Execution Output with State](/api/rundeck-api.md#execution-output-with-state)
+    - `/api/10/execution/[ID]/output/state` - [Execution Output with State](/api/index.md#execution-output-with-state)
         + Retrieve log output with state change information
-    - `/api/10/execution/[ID]/output/node/[NODENAME]` and `/api/10/execution/[ID]/output/step/[STEPCTX]` - [Execution Output](/api/rundeck-api.md#execution-output)
+    - `/api/10/execution/[ID]/output/node/[NODENAME]` and `/api/10/execution/[ID]/output/step/[STEPCTX]` - [Execution Output](/api/index.md#execution-output)
         + Retrieve log output for a particular node or step
         + Can combine both node and step context
 * Updated endpoints
-    - `/api/10/execution/[ID]` - [Execution Info](/api/rundeck-api.md#execution-info)
+    - `/api/10/execution/[ID]` - [Execution Info](/api/index.md#execution-info)
         + added `successfulNodes` and `failedNodes` detail.
         + added `job/options` data
 
 **Version 9**:
 
 * Updated endpoints
-    * `/api/9/executions/running` - [Listing Running Executions](/api/rundeck-api.md#listing-running-executions)
+    * `/api/9/executions/running` - [Listing Running Executions](/api/index.md#listing-running-executions)
         * Allow `project=*` to list running executions across all projects
         * Result data now includes `project` attribute for each `<execution>`.
-    * `/api/9/jobs/import` - [Importing Jobs](/api/rundeck-api.md#importing-jobs)
+    * `/api/9/jobs/import` - [Importing Jobs](/api/index.md#importing-jobs)
         * Add `uuidOption` parameter to allow removing imported UUIDs to avoid creation conflicts.
 
 **Version 8**:
 
 * Updated endpoints
-    * `/api/8/run/script` and `/api/8/run/url` -  [Running Adhoc Scripts](/api/rundeck-api.md#running-adhoc-scripts) and [Running Adhoc Script URLs](/api/rundeck-api.md#running-adhoc-script-urls)
+    * `/api/8/run/script` and `/api/8/run/url` -  [Running Adhoc Scripts](/api/index.md#running-adhoc-scripts) and [Running Adhoc Script URLs](/api/index.md#running-adhoc-script-urls)
         * Added two optional parameters for `scriptInterpreter` and `interpreterArgsQuoted`
-    * `/api/8/jobs/import` -  [Importing Jobs](/api/rundeck-api.md#importing-jobs)
+    * `/api/8/jobs/import` -  [Importing Jobs](/api/index.md#importing-jobs)
         * Added an optional parameter `project` which will override any project defined in the Job definition contexts.  If used, the job definitions do not need a `project` value in them.
 * Removed endpoints
     * `/api/1/report/create`
@@ -478,13 +478,13 @@ In this version, all new and updated endpoints support XML or JSON request and r
 **Version 7**:
 
 * Add **Incubator** endpoint
-    * PUT `/api/7/incubator/jobs/takeoverSchedule` - [Takeover Schedule in Cluster Mode](/api/rundeck-api.md#takeover-schedule-in-cluster-mode)
+    * PUT `/api/7/incubator/jobs/takeoverSchedule` - [Takeover Schedule in Cluster Mode](/api/index.md#takeover-schedule-in-cluster-mode)
         * incubating feature for cluster mode schedule takeover
 
 **Version 6**:
 
 * Updated endpoints
-    * `/api/6/execution/[ID]/output` - [Execution Output](/api/rundeck-api.md#execution-output)
+    * `/api/6/execution/[ID]/output` - [Execution Output](/api/index.md#execution-output)
         * XML format has changed for API v6: entry log content is now specified as a `log` attribute value
         * The old XML format will still be used for queries using `/api/5`
         * Fixed invalid XML when no format was specified and XML was used by default
@@ -497,43 +497,43 @@ Added in Rundeck 1.4.6, 1.5.1:
 * New feature for some endpoints:
     * new `asUser` parameter can record an action (run or abort) as having been performed by another user
     * Affected endpoints
-        * [Running a Job](/api/rundeck-api.md#running-a-job)
-        * [Running Adhoc Commands](/api/rundeck-api.md#running-adhoc-commands)
-        * [Running Adhoc Scripts](/api/rundeck-api.md#running-adhoc-scripts)
-        * [Running Adhoc Script URLs](/api/rundeck-api.md#running-adhoc-script-urls)
-        * [Aborting Executions](/api/rundeck-api.md#aborting-executions)
+        * [Running a Job](/api/index.md#running-a-job)
+        * [Running Adhoc Commands](/api/index.md#running-adhoc-commands)
+        * [Running Adhoc Scripts](/api/index.md#running-adhoc-scripts)
+        * [Running Adhoc Script URLs](/api/index.md#running-adhoc-script-urls)
+        * [Aborting Executions](/api/index.md#aborting-executions)
 
 * New endpoint
-    * `/api/5/jobs/delete` - [Bulk Job Delete](/api/rundeck-api.md#bulk-job-delete)
+    * `/api/5/jobs/delete` - [Bulk Job Delete](/api/index.md#bulk-job-delete)
 * New endpoint
-    * `/api/5/execution/[ID]/output` - [Execution Output](/api/rundeck-api.md#execution-output)
+    * `/api/5/execution/[ID]/output` - [Execution Output](/api/index.md#execution-output)
 * New endpoint
-    * `/api/5/executions` - [Execution Query](/api/rundeck-api.md#execution-query)
+    * `/api/5/executions` - [Execution Query](/api/index.md#execution-query)
 * Updated endpoints
-    * `/api/1/history` - [Listing History](/api/rundeck-api.md#listing-history)
+    * `/api/1/history` - [Listing History](/api/index.md#listing-history)
         * new filter parameters added for including or excluding reports for exact job group/name values: `jobListFilter` and `excludeJobListFilter`
 
 **Version 4**:
 
 * New endpoint
-    * `/api/4/run/url` - [Running Adhoc Script URLs](/api/rundeck-api.md#running-adhoc-script-urls)
+    * `/api/4/run/url` - [Running Adhoc Script URLs](/api/index.md#running-adhoc-script-urls)
 
 **Version 3**:
 
 * Updated endpoints
-    * `/api/1/resources` - [Listing Resources](/api/rundeck-api.md#listing-resources)
+    * `/api/1/resources` - [Listing Resources](/api/index.md#listing-resources)
         * `format` parameter can now use any supported Resource Format Parser format name.
-    * `/api/2/project/[PROJECT]/resources` - [Updating and Listing Resources for a Project](/api/rundeck-api.md#updating-and-listing-resources-for-a-project)
+    * `/api/2/project/[PROJECT]/resources` - [Updating and Listing Resources for a Project](/api/index.md#updating-and-listing-resources-for-a-project)
         * `POST` request Content-Type can be any MIME type supported by a Resource Format Parser plugin.
 
 **Version 2**:
 
 * New endpoints
-    * `/api/2/project/[PROJECT]/jobs` - [Listing Jobs for a Project](/api/rundeck-api.md#listing-jobs-for-a-project)
-    * `/api/2/project/[PROJECT]/resources` - [Updating and Listing Resources for a Project](/api/rundeck-api.md#updating-and-listing-resources-for-a-project)
-    * `/api/2/project/[PROJECT]/resources/refresh` - [Refreshing Resources for a Project](/api/rundeck-api.md#refreshing-resources-for-a-project)
+    * `/api/2/project/[PROJECT]/jobs` - [Listing Jobs for a Project](/api/index.md#listing-jobs-for-a-project)
+    * `/api/2/project/[PROJECT]/resources` - [Updating and Listing Resources for a Project](/api/index.md#updating-and-listing-resources-for-a-project)
+    * `/api/2/project/[PROJECT]/resources/refresh` - [Refreshing Resources for a Project](/api/index.md#refreshing-resources-for-a-project)
 * Updated endpoints
-    * `/api/1/jobs` - [Listing Jobs](/api/rundeck-api.md#listing-jobs)
+    * `/api/1/jobs` - [Listing Jobs](/api/index.md#listing-jobs)
         * Additional parameters added
 
 

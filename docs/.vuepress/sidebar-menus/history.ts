@@ -10,8 +10,8 @@ export default [
       {
         text: "Security Advisories",
         collapsible: true,
-        link: '/history/CVEs/',
-        children: getChildren('docs/history', 'CVEs'),
+        link: '/history/cves/',
+        children: getChildren('docs/history', 'cves'),
       },
       {
         text: '4.x',

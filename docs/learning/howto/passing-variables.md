@@ -15,7 +15,7 @@ Rundeck offers powerful Runbook Automation. Most Runbooks are complicated, multi
 
 This guide will show various examples of how to share data from one step to another through the use of Log Filters.
 
-> Note: If you haven't followed the Exercise Steps in the [Tutorial](/learning/tutorial/preparing.md) we encourage starting with that walk-through.
+> Note: If you haven't followed the Exercise Steps in the [Tutorial](/learning/tutorial/index.md) we encourage starting with that walk-through.
 
 ### Type of Variables
 When a Job step is executed, it has a set of *context variables* that you can access in the Job step. There are several sets of context variables, including: the Job context `job`, the Node context `node`, the Option context `option`, and the Step Data Context `data`.
@@ -38,7 +38,7 @@ As part of the Welcome Projects we have built some example jobs to highlight how
 It's important to note that Node Steps (steps run against nodes) and Workflow Steps (steps run from the Rundeck server) store variables differently. The examples will also show how to use the variables from different types of steps and highlight common trouble spots.
 
 ::: tip Important Exercise Prerequisite
-If you are new to Rundeck, we recommend finishing the exercises in the [Getting Started Tutorial](/learning/tutorial/preparing.md) first. Terminology and actions in the following exercise will assume you have completed that Tutorial.
+If you are new to Rundeck, we recommend finishing the exercises in the [Getting Started Tutorial](/learning/tutorial/index.md) first. Terminology and actions in the following exercise will assume you have completed that Tutorial.
 :::
 
 ## Using Input Option Variables

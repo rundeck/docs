@@ -1,6 +1,6 @@
 # Monitor a Rundeck Instance Using Prometheus and Grafana
 
-Using Rundeck [metrics](/api/rundeck-api.md#metrics-data) users can monitor the health of any Rundeck instance (workload, CPU usage, memory amount, scheduled jobs, running jobs, etc). Some users find it helpful to display these metrics on a dashboard. Using a combination of Prometheus, Grafana, and a custom Prometheus exporter (rundeck_exporter) these metrics can be shown on a dashboard for a glance viewing.
+Using Rundeck [metrics](/api/index.md#metrics-data) users can monitor the health of any Rundeck instance (workload, CPU usage, memory amount, scheduled jobs, running jobs, etc). Some users find it helpful to display these metrics on a dashboard. Using a combination of Prometheus, Grafana, and a custom Prometheus exporter (rundeck_exporter) these metrics can be shown on a dashboard for a glance viewing.
 
 The Rundeck Community team has developed an easy way to see how the Rundeck, rundeck_exporter, Prometheus, and Grafana integration works [using this Docker demo project](https://github.com/rundeck/rundeck-exporter-demo). In this article, we will describe how the Docker demo is configured to help users understand how this integration works.
 

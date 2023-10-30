@@ -2,7 +2,7 @@
 
 Rundeck allows users to dispatch jobs to remote Linux/UNIX servers to manage and automate any task using Rundeck workflows. The most common protocol for connecting to Linux/Unix servers is SSH. This is an example of how to add a remote node and configure Rundeck to use SSH to connect to it.
 
-_Note: If this is the first time adding remote nodes. It is suggested to review the [Rundeck Tutorial](/learning/tutorial/preparing.md) before adding remote SSH nodes. This exercise assumes some experience with Linux, SSH Keys, and Rundeck basics covered in the Tutorial._
+_Note: If this is the first time adding remote nodes. It is suggested to review the [Rundeck Tutorial](/learning/tutorial/index.md) before adding remote SSH nodes. This exercise assumes some experience with Linux, SSH Keys, and Rundeck basics covered in the Tutorial._
 
 :::warning
 This documentation is for use with the [Welcome Projects](/learning/) on non-production instances.  It is strongly recommended to follow best practices when generating, managing and configuring SSH keys and access.  For detailed configuration of SSH use [this documentation](/manual/projects/node-execution/ssh.md).

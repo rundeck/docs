@@ -21,6 +21,6 @@ Two installation methods are supported:
 
 Process Automation can also install as a WAR file into an external container like Tomcat.
 
-[See the Installation section for more details on Process Automation setup.](/administration/install/installing-rundeck.md)
+[See the Installation section for more details on Process Automation setup.](/administration/install/index.md)
 
 Assuming the system requirements are met, Process Automation can be installed either from source, system package or via the launcher.

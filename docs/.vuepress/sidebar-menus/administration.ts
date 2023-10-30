@@ -9,9 +9,9 @@ export default [{
               {
                 text: 'Installation',
                 collapsible: true,
-                link: '/administration/install/installing-rundeck',
+                link: '/administration/install/index',
                 children: [
-                  '/administration/install/installing-rundeck',
+                  '/administration/install/index',
                   '/administration/install/system-requirements',
                   '/administration/install/jar',
                   '/administration/install/linux-deb',
@@ -25,11 +25,14 @@ export default [{
               },
               {
                 text: 'Upgrading',
-                collapsible: true,
+                collapsible: false,
                 link: '/upgrading/',
                 children: [
                   '/upgrading/',
                   '/upgrading/upgrading',
+                  '/upgrading/upgrading-to-4.8.md',
+                  '/upgrading/upgrading-to-4.1.md',
+                  '/upgrading/upgrading-to-4.md',
                   '/upgrading/upgrading-to-rundeck-3.4.md',
                   '/upgrading/upgrading-to-rundeck-3.3.4.md',
                   '/upgrading/upgrading-to-rundeck-3.3.md',
@@ -64,6 +67,7 @@ export default [{
                 collapsible: true,
                 link: '/administration/configuration/',
                 children: [
+                  '/administration/configuration/',
                   {
                     text: 'Database',
                     collapsible: true,
@@ -109,7 +113,9 @@ export default [{
               {
                 text: 'Maintenance',
                 collapsible: true,
+                link: '/administration/maintenance/',
                 children: [
+                  '/administration/maintenance/',
                   '/administration/maintenance/startup',
                   '/administration/maintenance/logs',
                   '/administration/maintenance/backup',

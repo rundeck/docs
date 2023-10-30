@@ -8,7 +8,7 @@ next:
 
 ---
 
-# 4. Getting Started - Users
+# Getting Started - Users
 
 :::tutorial
 :::

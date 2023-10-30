@@ -34,7 +34,7 @@ rd projects configure set -p MyProject -- --project.gui.motd.display=projectList
 
 ## API Usage
 
-[Project motd/motd modification](/api/rundeck-api.md#project-motd-file)
+[Project motd/motd modification](/api/index.md#project-motd-file)
 
 As we saw above, setting the motd using the GUI is the easiest way, less used is the API, but you can accomplish the same as by GUI or rd-cli, using below example:
 

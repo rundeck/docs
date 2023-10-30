@@ -50,7 +50,7 @@ This release has bug fixes and new features, including some GUI improvements.
 ## Compatibility notes
 
 
-A bug in API v11 XML responses caused them to sometimes be incorrectly wrapped in a `<result>` element, this has now been corrected.  See the [API Docs](/api/rundeck-api.md) for information.  The Rundeck API Java Client library has been updated to workaround this issue (for previous versions of Rundeck).
+A bug in API v11 XML responses caused them to sometimes be incorrectly wrapped in a `<result>` element, this has now been corrected.  See the [API Docs](/api/index.md) for information.  The Rundeck API Java Client library has been updated to workaround this issue (for previous versions of Rundeck).
 
 ## What is "americano indigo briefcase"?
 

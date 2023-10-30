@@ -405,8 +405,8 @@ For more information on Key Value data, see [Multiline Regex Capture](/manual/lo
 
 Jobs can be exported or imported in XML or Yaml format using the API or the `rd` CLI tool.
 
-- [Exporting Jobs](/api/rundeck-api.md#exporting-jobs)
-- [Importing Jobs](/api/rundeck-api.md#importing-jobs)
+- [Exporting Jobs](/api/index.md#exporting-jobs)
+- [Importing Jobs](/api/index.md#importing-jobs)
 - [RD CLI Tool][rd]
 
 [quartz scheduler crontrigger]: http://www.quartz-scheduler.org/api/2.2.1/org/quartz/CronTrigger.html

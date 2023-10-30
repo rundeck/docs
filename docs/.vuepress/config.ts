@@ -14,7 +14,6 @@ import { compareDate } from "vuepress-shared/node";
 
 // sidebars
 import sidebarAdmin from './sidebar-menus/administration'
-import sidebarUpgrading from './sidebar-menus/upgrading'
 import sidebarUserGuide from './sidebar-menus/user-guide'
 import sidebarCommandLineTools from './sidebar-menus/command-line-tools'
 import sidebarDeveloper from './sidebar-menus/plugin-development'
@@ -150,15 +149,16 @@ export default defineUserConfig({
     sidebar: {
        '/about/': sidebarAbout,
        '/administration/': sidebarAdmin,
-       '/upgrading/': sidebarUpgrading,
+       '/upgrading/': sidebarAdmin,
        '/rd-cli/': sidebarCommandLineTools,
        '/manual/': sidebarUserGuide,
        '/learning/': sidebarLearning,
        '/developer/': sidebarDeveloper,
        '/history/': sidebarHistory,
        '/api/': [
+        '/api/index.md',
         '/api/rundeck-api-versions.md',
-        '/api/rundeck-api.md',
+        '/api/api_basics.md',
         '/api/api-spec.md'
       ],
       '/': [
@@ -180,6 +180,7 @@ export default defineUserConfig({
             '/manual/01-introduction.html' : '/introduction/introduction.html',
             '/manual/03-getting-started.html' : '/learning/index.html',
             '/manual/02-getting-help.html' : '/introduction/getting-help.html',
+            '/manual/04-jobs.html' : '/manual/jobs.html',
             '/administration/configuration/license.html' : '/administration/license.html',
             '/manual/servicenow-app.html' : '/manual/integrations/servicenow-app.html',
             '/administration/security/key-storage.html' : '/manual/key-storage/key-storage.html',
@@ -203,7 +204,18 @@ export default defineUserConfig({
             '/manual/12-webhooks.html' : '/manual/webhooks.html',
             '/history/4_0_x/version-4.0.0.html' : '/history/4_x/version-4.0.0.html',
             '/manual/workflow-steps/aws-athena' : '/manual/workflow-steps/amazon-athena.html',
-            '/enterprise/quickstart.html' : '/enterprise/index.html'
+            '/enterprise/quickstart.html' : '/enterprise/index.html',
+            '/learning/solutions/automated-diagnostics/solution-overview.html' : '/learning/solutions/automated-diagnostics/index.html',
+            '/manual/plugins/plugins-overview.html' : '/manual/plugins/index.html',
+            '/administration/install/installing-rundeck' : '/administration/install/index',
+            '/learning/tutorial/preparing.html' : '/learning/tutorial/index.html',
+            '/learning/howto/overview.html' : '/learning/howto/index.html',
+            '/learning/getting-started/overview.html' : '/learning/getting-started/index.html',
+            '/plugins/' : '/manual/plugins/full-list',
+            '/learning/getting-started/rba/rba-welcome-overview.html' : '/learning/getting-started/rba/index.html',
+            '/learning/getting-started/jobs/overview.html' : '/learning/getting-started/jobs/index.html',
+            '/manual/key-storage/key-storage.html' : '/manual/key-storage/index.html',
+            '/api/rundeck-api.html' : '/api/index.html'
         }
       }),
     openGraphPlugin({
