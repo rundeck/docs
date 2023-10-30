@@ -7,6 +7,7 @@ Specific instructions for upgrading to specific Rundeck Versions is below.
 **When upgrading from multiple versions behind be sure to follow all interim upgrade steps.  For example: Going from 3.3.13 to 4.1 means reviewing the 3.4 and 4.0 notes as well.**
 :::
 
+- [Upgrade to Process Automation OnPrem 4.8](upgrading-to-4.8.md)
 - [Upgrade to Process Automation OnPrem 4.1](upgrading-to-4.1.md)
 - [Upgrade to Process Automation OnPrem 4.0](upgrading-to-4.md)
 - [Upgrade to Rundeck 3.4](upgrading-to-rundeck-3.4.md)
