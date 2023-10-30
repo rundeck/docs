@@ -195,36 +195,36 @@ These instructions will guide how to install a Runner in Kubernetes.
     ```
 3. (Optional) Verify that the runner was created as intended by navigating to **System Menu** (upper-right gear icon) -> **Runner Management** and see if the Runner is listed.
 4. (Optional) Create a Kubernetes namespace for the Runner: **`kubectl create namespace rundeck`**
-5. Create a deployment YAML for the Runner. Be sure to replace **`[namespace]`**, **`[RUNNER ID]`**, **`[TOKEN]`**, and **`[URL]`**:
-    ```
-    apiVersion: v1
-    kind: Pod
-    metadata:
-    namespace: [namespace]
-    name: rundeck-runner
-    labels:
+5. Create a deployment YAML for the Runner. Be sure to replace **`[namespace]`**, **`[RUNNER ID]`**, **`[TOKEN]`**, and **`[INSTANCE-SUBDOMAIN]`**:
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  namespace: [namespace]
+  name: rundeck-runner
+  labels:
     app: rundeck-runner
-    spec:
-    containers:
-    - image: rundeckpro/runner
-      imagePullPolicy: IfNotPresent
-      name: rundeck-runner
-      env:
-        - name: RUNNER_RUNDECK_CLIENT_ID
-          value: "[RUNNER ID]"
-        - name: RUNNER_RUNDECK_SERVER_TOKEN
-          value: "[TOKEN]"
-        - name: RUNNER_RUNDECK_SERVER_URL
-          value: "[URL]"
-          lifecycle:
-          postStart:
-          exec:
+spec:
+  containers:
+  - image: rundeckpro/runner
+    imagePullPolicy: IfNotPresent
+    name: rundeck-runner
+    env:
+      - name: RUNNER_RUNDECK_CLIENT_ID
+        value: "[RUNNER ID]"
+      - name: RUNNER_RUNDECK_SERVER_TOKEN
+        value: "[TOKEN]"
+      - name: RUNNER_RUNDECK_SERVER_URL
+        value: "https://[INSTANCE-SUBDOMAIN].runbook.pagerduty.cloud"
+    lifecycle:
+      postStart:
+        exec:
           command:
           - /bin/sh
           - -c
           - touch this_is_from_rundeck_runner
-          restartPolicy: Always
-    ```
+  restartPolicy: Always
+```
 6. Creat the deployment: **`kubectl create -f deployment.yml`**.
 7. Confirm that the Runner was deployed successfully: **`kubectl logs -f rundeck-runner --namespace=[NAMESPACE]`**
 8. Verify that the Runner is communicating with Process Automation correctly by looking in the **Status** column on the Runner Management page:
