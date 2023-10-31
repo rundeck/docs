@@ -58,7 +58,7 @@ The steps for integrating with AWS will vary depending on the product you are us
    :::
 
 ### AWS Integration for Runbook Automation
-Runbook Automation can be integrated with one or more AWS Accounts using an IAM role with a `**Trust Relationship**`. More details on this authentication mechanism can be found in [this AWS documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html).
+Runbook Automation can be integrated with one or more AWS Accounts using an IAM role with a **`Trust Relationship`**. More details on this authentication mechanism can be found in [this AWS documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html).
 Here is a diagram that outlines this setup process:
 
 ![RBA Authentication Process with AWS](/assets/img/aws-iam-auth-diagram.png)
