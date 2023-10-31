@@ -253,9 +253,9 @@ When a Job step is executed, it has a set of "context" variables that can be acc
 
 #### Step execution context variable (Global scope):
 - `#:exec.exitCode@<node>`: The node specific step (#) exit code.  Examples:
-  - ${2:exit.exitCode} is the exit code for step 2 in the current node.
-  - ${2:exit.exitCode*} is the exit code for step 2 in all nodes.
-  - ${2:exit.exitCode@nodename} is the exit code for step 2 on a specific node.
+  - ${2:exec.exitCode} is the exit code for step 2 in the current node.
+  - ${2:exec.exitCode*} is the exit code for step 2 in all nodes.
+  - ${2:exec.exitCode@nodename} is the exit code for step 2 on a specific node.
 
 #### Node context variables (Node scope):
 
