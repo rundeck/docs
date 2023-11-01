@@ -52,7 +52,7 @@ export default defineUserConfig({
       'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
       })(window,document,'script','dataLayer','GTM-5QNBBN6');
     `],
-    ['script', { src: setup.base + '/js/gtm.js', defer: true }],
+    ['script', { src: '/js/gtm.js', defer: true }],
   ],
   extendsMarkdown: md => {
     md.use(markdownItReplaceVars, 'custom_token_replace', function (content) {
