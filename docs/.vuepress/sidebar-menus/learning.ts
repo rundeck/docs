@@ -1,3 +1,5 @@
+import getChildren from '../getHistory'
+
 export default [{
   text: 'Learning',
   collapsible: false,
@@ -77,10 +79,9 @@ export default [{
         {
           text: 'ACL Recipes',
           collapsible: true,
-          link: '/learning/howto/acls/index.md',
+          link: '/learning/howto/acls/',
           children: [
-            '/learning/howto/acls/index.md',
-            { link: '/learning/howto/acls/group-project-full.md', text: 'Group/Project Full Access'}
+            ...getChildren('docs/learning/', 'howto/acls')
           ]
         },
         {
