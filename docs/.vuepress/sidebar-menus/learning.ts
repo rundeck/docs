@@ -75,6 +75,15 @@ export default [{
         { link: '/learning/howto/index.md', text: 'Overview' },
         { link: '/learning/howto/welcome-project-starter.md', text: 'Welcome Projects' },
         {
+          text: 'ACL Recipes',
+          collapsible: true,
+          link: '/learning/howto/acls/index.md',
+          children: [
+            '/learning/howto/acls/index.md',
+            { link: '/learning/howto/acls/group-project-full.md', text: 'Group/Project Full Access'}
+          ]
+        },
+        {
           text: 'Administration',
           collapsible: true,
           children: [
