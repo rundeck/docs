@@ -1,18 +1,18 @@
 ---
 
 title: "4.17.2 Release Notes"
-date: ""
+date: 2023-11-07
 image: /images/chevron-logo-red-on-white.png
 feed:
  enable: true
- description: ""
+ description: "Bug fixes for ServiceNow, Ansible plugins and performance enhancements."
 
 ---
 
 # 4.17.2 Release Notes
 
 Name: <span style="color: turquoise"><span class="glyphicon glyphicon-gift"></span> "Basilisk turquoise gift"</span>
-Release Date: PUTADATEHERE
+Release Date: November 7th, 2023
 
 - [Download the Releases](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
@@ -22,14 +22,11 @@ Release Date: PUTADATEHERE
 
 Check out the new features and enhancements for PagerDuty Process Automation (formerly Rundeck Enterprise) and PagerDuty Runbook Automation and Rundeck Community included in this release.
 
+This is a smaller point release version that fixes some urgent bugs.
+
 ## Process Automation Updates
 
 > Also includes all Open Source updates from below
-
-### Highlights
-
-- first highlight
-- second highlight
 
 ### Additional Updates
 
