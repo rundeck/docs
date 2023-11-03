@@ -1,4 +1,4 @@
-import getChildren from '../getHistory'
+import getChildren from '../getChildren'
 
 export default [{
   text: 'Learning',
