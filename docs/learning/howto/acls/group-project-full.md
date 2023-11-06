@@ -14,6 +14,7 @@ Find and replace these values with your own.
 - Project Unique ID: `prj-sandbox`
 - Group: `grp-sandbox-full`
 
+Steps to implement are covered in the [overivew page](index.md).
 
 ## ACL Code
 ``` yaml
