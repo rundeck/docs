@@ -5,7 +5,7 @@ order: 100
 
 # ACL Recipes Overview
 
-Access Control Lists (ACLs) are incredibly powerful.  The engine is very flexible for many different use cases.  This HowTo section is dedicated to helping share ACL use cases to jump start providing proper access to users.  If you are just getting started with ACLs it is recommended to check out [this article](/learning/howto/acl_basic_examples.md) first for a good overview.
+Access Control Lists (ACLs) are incredibly powerful.  The engine is very flexible for many different use cases.  This HowTo section is dedicated to helping share ACL use cases to jump start providing proper access to users.  If you are just getting started with ACLs it is recommended to **[read this article](/learning/howto/acl_basic_examples.md) first** to get an understanding of the ACL system.
 
 Below there are instructions how to use the ACL recipes shared in this section.  If you have requests for a specific recipe please feel free to [submit a request on our Forums](https://community.pagerduty.com/forum/c/runbook-automation-process-automation).
 
