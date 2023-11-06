@@ -7,100 +7,52 @@ order: 200
 
 ## Use Case Description
 
-Rundeck Admin would like to assign a specific Rundeck Group full access to a single project and it's related Key Storage entries.
+Assign a specified User Group full access to a single project and the related project Key Storage entries.
 
 ## Code Description
 Find and replace these values with your own.
-- Project Unique ID: `Sandbox`
-- Group: `sandbox-full`
+- Project Unique ID: `prj-sandbox`
+- Group: `grp-sandbox-full`
 
 
 ## ACL Code
 ``` yaml
-# Let's add comments to each entry to help the learning process.
 by:
-  group: sandbox-full
-description: Allow [export, delete_execution, configure, read] for project
+  group: grp-sandbox-full
+description: Allow grp-sandbox-full full access for project prj-sandbox.
 for:
   project:
   - allow:
-    - read
-    - delete_execution
-    - configure
-    - export
+    - '*'
     equals:
-      name: Sandbox
+      name: prj-sandbox
 context:
   application: rundeck
 ---
-# Allows sandbox-full group full access to run AdHoc commands within the Sandbox project.
 by:
-  group: sandbox-full
-description: Commands
+  group: grp-sandbox-full
+description: Allows grp-sandbox-full group full access to run AdHoc commands within the prj-sandbox project.
 for:
   adhoc:
   - allow:
     - '*'
 context:
-  project: Sandbox
+  project: prj-sandbox
 ---
-# Describe
 by:
-  group: sandbox-full
-description: Jobs
+  group: grp-sandbox-full
+description: Allows grp-sandbox-full group full access to Jobs within the prj-sandbox project.
 for:
   job:
   - allow:
     - '*'
 context:
-  project: Sandbox
+  project: prj-sandbox
 
 ---
-# Describe
 by:
-  group: sandbox-full
-description: Allow [*] for storage
-for:
-  storage:
-  - allow:
-    - '*'
-    equals:
-      path: keys/project/Sandbox
-      name: .*
-context:
-  project: Sandbox
-
----
-# Describe
-by:
-  group: sandbox-full
-description: Nodes
-for:
-  node:
-  - allow:
-    - '*'
-context:
-  project: Sandbox
-
----
-# Describe
-by:
-  group: sandbox-full
-description: Nodes (All)
-for:
-  resource:
-  - allow:
-    - '*'
-    equals:
-      kind: node
-context:
-  project: Sandbox
-
----
-# Describe
-by:
-  group: sandbox-full
-description: Jobs (All)
+  group: grp-sandbox-full
+description: Allows grp-sandbox-full group full access to Jobs within the prj-sandbox project.
 for:
   resource:
   - allow:
@@ -108,13 +60,51 @@ for:
     equals:
       kind: job
 context:
-  project: Sandbox
+  project: prj-sandbox
 
 ---
-# Describe
+#Note: Be sure to update the path statement with the proper project ID along with the context/project entry.
 by:
-  group: sandbox-full
-description: Events
+  group: grp-sandbox-full
+description: Allows grp-sandbox-full group full access to all keys the Project specific Key Storage section.
+for:
+  storage:
+  - allow:
+    - '*'
+    equals:
+      path: keys/project/prj-sandbox
+      name: .*
+context:
+  project: prj-sandbox
+
+---
+by:
+  group: grp-sandbox-full
+description: Allows grp-sandbox-full group full access to all Nodes within the prj-sandbox project.
+for:
+  node:
+  - allow:
+    - '*'
+context:
+  project: prj-sandbox
+
+---
+by:
+  group: grp-sandbox-full
+description: Allows grp-sandbox-full group full access to all Nodes within the prj-sandbox project.
+for:
+  resource:
+  - allow:
+    - '*'
+    equals:
+      kind: node
+context:
+  project: prj-sandbox
+
+---
+by:
+  group: grp-sandbox-full
+description: Allows grp-sandbox-full group full access to manage Activity entries within the prj-sandbox project.
 for:
   resource:
   - allow:
@@ -122,13 +112,12 @@ for:
     equals:
       kind: event
 context:
-  project: Sandbox
+  project: prj-sandbox
 
 ---
-# Describe
 by:
-  group: sandbox-full
-description: Webhooks
+  group: grp-sandbox-full
+description: Allows grp-sandbox-full group full access to manage Webhook entries within the prj-sandbox project.
 for:
   resource:
   - allow:
@@ -136,6 +125,6 @@ for:
     equals:
       kind: webhook
 context:
-  project: Sandbox
+  project: prj-sandbox
 
 ```

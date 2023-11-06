@@ -7,34 +7,32 @@ order: 300
 
 ## Use Case Description
 
-Rundeck Admin would like to assign a specific Rundeck Group access to only run jobs in a single project.  It should allow running jobs with Key Storage entries and against all nodes in the project.
+Assign a specific Rundeck Group access to only run jobs in a single project.  It will allow running jobs with project Key Storage entries and against all nodes in the project.
 
 ## Code Description
 Find and replace these values with your own.
-- Project Unique ID: `Sandbox`
-- Group: `sandbox-exec`
+- Project Unique ID: `prj-sandbox`
+- Group: `grp-sandbox-exec`
 
 
 ## ACL Code
 
 ``` yaml
-# Description
 by:
-  group: sandbox-exec
-description: Release Ops Project Access
+  group: grp-sandbox-exec
+description: Allows grp-sandbox-exec the ability to read the prj-prjoect.
 for:
   project:
   - allow:
     - read
     equals:
-      name: devops
+      name: prj-sandbox
 context:
   application: rundeck
 ---
-#Description 
 by:
-  group: sandbox-exec
-description: Jobs - Run Only
+  group: grp-sandbox-exec
+description: Allows grp-sandbox-exec the ability to view/read/run Jobs in the prj-sandbox project.
 for:
   job:
   - allow:
@@ -43,12 +41,12 @@ for:
     - read
     - run
 context:
-  project: devops
+  project: prj-sandbox
 ---
-#Description
+#This entry allows the group permissions to read the nodes in the project.
 by:
-  group: sandbox-exec
-description: All Nodes
+  group: grp-sandbox-exec
+description: Allows grp-sandbox-exec the ability to read and refresh Nodes in the prj-sandbox project.
 for:
   resource:
   - allow:
@@ -57,51 +55,35 @@ for:
     equals:
       kind: node
 context:
-  project: devops
+  project: prj-sandbox
 ---
-#Description
+# Combined with the entry above, this entry allows the group access do specific actions on the nodes returned from the list in the entry above.
 by:
-  group: sandbox-exec
-description: Allow [read, run] for node
+  group: grp-sandbox-exec
+description: Allows grp-sandbox-exec the ability to read details from and run jobs against Nodes available in the prj-sandbox project.
 for:
   node:
   - allow:
     - read
     - run
 context:
-  project: devops
+  project: prj-sandbox
 ---
-#Description
 by:
-  group: sandbox-exec
-description: Allow [read] for keys/GitHub storage
+  group: grp-sandbox-exec
+description: Allows grp-sandbox-exec the ability to read Project Key Storage entries in the prj-sandbox folder and any subfolders.
 for:
   storage:
   - allow:
     - read
     match:
-      path: keys/GitHub(/.*)?
+      path: keys/project/prj-sandbox(/.*)?
 context:
   application: rundeck
 ---
-#Description
 by:
-  group: sandbox-exec
-description: Allow [read] for keys folder in storage
-for:
-  storage:
-  - allow:
-    - read
-    equals:
-      path: keys
-context:
-  application: rundeck
-
----
-#Description
-by:
-  group: sandbox-exec
-description: Allow [read] for (All) event
+  group: grp-sandbox-exec
+description: Allows grp-sandbox-exec the ability to read the prj-prjoect Activity Log.
 for:
   resource:
   - allow:
@@ -109,5 +91,5 @@ for:
     equals:
       kind: event
 context:
-  project: devops
+  project: prj-sandbox
 ```
