@@ -14,7 +14,7 @@ Find and replace these values with your own.
 - Project Unique ID: `prj-sandbox`
 - Group: `grp-sandbox-exec`
 
-Steps to implement are covered in the [overivew page](index.md).
+Steps to implement are covered in the [overview page](index.md).
 
 ## ACL Code
 
