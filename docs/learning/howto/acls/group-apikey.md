@@ -11,7 +11,7 @@ Assign members of a specific Rundeck Group access to create API keys associated 
 
 ## Code Description
 Find and replace these values with your own.
-- Group: `grp-sandbox-exec`
+- Group: `grp-api-access`
 
 Steps to implement are covered in the [overview page](index.md).
 
@@ -28,5 +28,5 @@ for:
     equals:
       kind: apitoken
 by:
-  group: grp-sandbox-exec
+  group: grp-api-access
 ```
