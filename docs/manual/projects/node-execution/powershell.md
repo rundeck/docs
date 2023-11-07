@@ -1,4 +1,4 @@
-# PowerShell Node Execution
+# WinRM Node Execution
 
 <!---
 Original:
@@ -9,10 +9,10 @@ These plugins are only applicable to Process Automation deployments on Windows S
 
 There are two plugins:
 
-- **File Copier**: Copies files to the remote node for execution by the Node Executor. This plugin would be used to execute any Script steps in your workflows, or to copy your own files stored on the Process Automation host.
-- **Node Executor**: Executes the command and script steps.
+- **WinRM File Copier**: Copies files to the remote node for execution by the Node Executor. This plugin would be used to execute any Script steps in your workflows, or to copy your own files stored on the Process Automation host.
+- **WinRM Node Executor Python**: Executes the command and script steps.
 
-The plugins can be enabled in the Project Configuration page by selecting the PowerShell Node Executor and PowerShell File Copier as the default Node Executor and File Copiers.
+The plugins can be enabled in the Project Configuration page by selecting the WinRM Node Executor Python and WinRM File Copier as the default Node Executor and File Copiers.
 
 ## Authentication Types
 
@@ -85,7 +85,7 @@ or
 keys/users/${job.username}.password
 ```
 
-## WinRM Setting to use PowerShell Plugin
+## WinRM Setting to use WinRM Node Executor Plugin
 
 In order to connect Rundeck with remote Windows nodes, it is necessary to set WinRM in both, the server and the remote nodes.
 
