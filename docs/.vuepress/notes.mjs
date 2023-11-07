@@ -18,8 +18,6 @@ const ghToken = process.env.GH_API_TOKEN;
 
 dotenv.config();
 
-console.log(ghToken)
-
 async function main() {
   const context = {};
   context.core = await getRepoData({ repo: 'rundeck', owner: 'rundeck' }, []);
@@ -44,7 +42,7 @@ async function main() {
   } else {
     outPath = path.join(pathBase, `version-${argv.milestone}.md`);
   }
-
+  console.log(notes);
   fs.writeFileSync(outPath, notes);
 }
 
@@ -94,7 +92,7 @@ async function getRepoData(repo, includeLabels) {
   const milestone = milestones.data.find((m) => m.title === argv.milestone);
 
   if (!milestone) {
-    console.error(`GitHub milestone ${argv.milestone} not found!`);
+    console.error(`GitHub milestone ${argv.milestone} not found on ${repo.owner}/${repo.repo}.`);
   } else {
     const issuesResp = await gh.paginate(gh.issues.listForRepo, {
       ...repo,

@@ -36,6 +36,9 @@ When importing a project with Rundeck, there are some things to consider:
 
 - **Executions**
 : This allows you to choose whether or not you existing executions and their history to be imported. If "import all" is selected, it will create new executions and history reports from the archive.
+::: warning
+If any of the imported executions include **logs in a remote storage**, those log files are not imported **until they are accessed later**. In order to view the remotely stored log files, they **must still be present in the remote storage** and the receiving server **must have the necessary permissions** (from the remote storage provider side) to access the log file path.  
+:::
 
 - **Configuration**
 : This allows you to specify whether you want to import the configuration properties of the project. If "import project configuration" is chosen, the project configuration will be overwritten with the properties stored in the archive. If not, the configurations will not be used.
