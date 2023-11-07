@@ -1,5 +1,5 @@
 ---
-title: "Group/Project Job Execute Only"
+title: "Group/Project Execute Only"
 order: 300
 ---
 

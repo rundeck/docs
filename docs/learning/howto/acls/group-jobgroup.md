@@ -7,7 +7,7 @@ order: 400
 
 ## Use Case Description
 
-Assign a specific Rundeck Group access to only run jobs in a specific Job Group (folder), in a single project.  It will allow running jobs against all nodes in the project.
+Assign a specific Rundeck Group access to only run jobs in a specific Job Group (folder), in a specified project.  It will allow running jobs against all nodes in the project.
 
 ## Code Description
 Find and replace these values with your own.

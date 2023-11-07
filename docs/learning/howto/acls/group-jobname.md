@@ -7,7 +7,7 @@ order: 500
 
 ## Use Case Description
 
-Assign a specific Rundeck Group access to run a single named job in a single project.  It will allow running that job against all nodes in the project.
+Assign a specific Rundeck Group access to run a single, named Job in a specified project.  It will allow running that job against all nodes in the project.
 
 ## Code Description
 Find and replace these values with your own.
