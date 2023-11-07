@@ -25,7 +25,7 @@ An active commerical license for a currently supported version is also required.
 
 After the app has been installed in your ServiceNow&reg; instance there will be a new "Rundeck Automation" Module Group.
 
-> Note: The ServiceNow login account will need the `admin` role and `x_runde_rundeck_it.rundeck_app_user` roles to configure these settings.
+> Note: The ServiceNow login account will need the `admin` role and `x_pd_process_autom.app_user` roles to configure these settings.
 
 1. Create either a [User API Key](/manual/10-user.md#user-api-tokens) or a [Static API Token](/administration/configuration/config-file-reference.md#static-authentication-tokens-for-api-access)
     - The minimum required permissions for the token are:
