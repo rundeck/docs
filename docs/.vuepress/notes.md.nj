@@ -1,7 +1,7 @@
 ---
 
 title: "{{version.versionString}} Release Notes"
-date: ""
+date: 2021-01-01
 image: /images/chevron-logo-red-on-white.png
 feed:
  enable: true
