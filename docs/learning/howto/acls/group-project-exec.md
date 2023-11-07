@@ -7,7 +7,7 @@ order: 300
 
 ## Use Case Description
 
-Assign a specific Rundeck Group access to only run jobs in a single project.  It will allow running jobs with project Key Storage entries and against all nodes in the project.
+Assign a specific Rundeck Group access to only run all jobs in a specified project.  This policy also allows read access to the project Key Storage entries and against all nodes in the project.
 
 ## Code Description
 Find and replace these values with your own.
