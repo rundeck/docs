@@ -11,8 +11,7 @@ Assign a specific Rundeck Group access to manage and create Runners.  Valid for 
 
 ## Code Description
 Find and replace these values with your own.
-- Project Unique ID: `prj-sandbox`
-- Group: `grp-sandbox-exec`
+- Group: `grp-runner-manage`
 
 Steps to implement are covered in the [overview page](index.md).
 
@@ -26,7 +25,7 @@ for:
   runner:
   - allow: [read,ping,create]
 by:
-  group: grp-sandbox-exec
+  group: grp-runner-manage
 ---
 description: Allow [admin, read] for Runners as a resource
 context:
@@ -37,5 +36,5 @@ for:
     equals:
       kind: runner
 by:
-  group: grp-sandbox-exec
+  group: grp-runner-manage
 ```
