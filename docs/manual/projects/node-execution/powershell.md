@@ -34,7 +34,12 @@ You can configure the plugins to use a password via the Key Storage facility whe
 
 - password storage - using a password that is stored in the Key Storage facility.
 
-You can either configure the password or password storage path at a project-wide level, or on a per-node basis.
+You can configure the username and password or password storage path at a project-wide level, on a per-node basis or upon job execution.
+
+To pass the credentials upon job execution, it is required for the job to have the following job options:
+
+- username: to override the username defined in Project or Node settings.
+- winrmpassword: to overrise the password defined in the Project or Node settings. This should be using 'Secure 'Input Type.
 
 ### Password Storage
 
