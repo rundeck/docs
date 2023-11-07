@@ -6,7 +6,7 @@ order: 600
 # Group/API Key Create User API Ke
 
 ## Use Case Description
-
+Users who don't have admin access may not have the ability to create API tokens.  To create tokens for yourself, add this snippet to your ACL policies for and appropriate group.
 Assign members of a specific Rundeck Group access to create API keys associated with their username.
 
 ## Code Description
