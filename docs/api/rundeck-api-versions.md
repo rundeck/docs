@@ -35,6 +35,11 @@ Changes introduced by API Version number:
 API versions below `{{$apiDepVersion}}` are *deprecated*.  Clients using earlier versions should upgrade to use `{{$apiDepVersion}}` as the minimum version before release `{{ $apiDepRelease }}` to avoid errors.
 :::
 
+### Version 45
+
+* Delete Project API runs in deferred mode if v45+ is used. Specify `?deferred=false` to run in synchronous mode.
+    * [`DELETE /api/45/project/[PROJECT]`][DELETE /api/V/project/\[PROJECT\]] - Project Deletion
+
 ### Version 44
 
 * JSON format added to Job Export and Import APIs. Specify `Accept: application/json` or `?format=json` when exporting, and `Content-Type: application/json` or `?format=json` when importing.
