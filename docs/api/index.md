@@ -7820,11 +7820,11 @@ Same response as [Setup SCM Plugin for a Project](#setup-scm-plugin-for-a-projec
 Required Fields:    
 `id`  
 `project`
+`roles`
 
 Along with the required fields you may send only the fields you want to update.
 
-When updating a webhook you may not change the user associated with a webhook,
-so suppling the `user` field will have no effect. Also, specifying an `authToken` field has no effect.
+When updating a webhook you may not change the user associated with a webhook or the authToken. Suppling the `user` field will have no effect. Also, specifying an `authToken` field has no effect.
 
 `Content-Type: application/json`:
 
