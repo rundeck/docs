@@ -4,7 +4,7 @@ Using or testing API calls as a part of any integration or development process c
 
 In this document, we learn how to centralize Rundeck API calls using the Postman application, and provide a way to export those calls to any script or programming language.
 
-# The Rundeck API
+## The Rundeck API
 
 Rundeck provides a Web API for use with your applications. An API (Application Programming Interface) is a set of functions (called Endpoints) that allows applications to access data and interact with a Web Application, e.g: a test curl POST call to run a job from the shell:
 
@@ -21,12 +21,12 @@ An API delivers a user response to a Rundeck Instance and sends the proper respo
 You can find a complete Rundeck API reference [here](/api/index.md).
 
 
-# Postman
+## Postman
 
 Postman is an API platform for building and using APIs. Postman simplifies each step of the API lifecycle and streamlines collaboration so you can create better APIs. With Postman it's possible to create a Collection and then save any API endpoint call there. Postman is available [here](https://www.postman.com/downloads/), and the installation process is described [here](https://learning.postman.com/docs/getting-started/installation-and-updates/).
 
 
-# Running the Welcome Project and New User Token Creation
+## Running the Welcome Project and New User Token Creation
 
 This tutorial is based on the Welcome Project and Community Welcome Project ([here](/learning/howto/welcome-project-starter.md) is how to run both projects). You can use both to test some Rundeck API endpoints.
 
@@ -59,7 +59,7 @@ This tutorial is based on the Welcome Project and Community Welcome Project ([he
 ![](/assets/img/api_4_save_token.png)
 
 
-# Creating a Postman Collection and The First Rundeck API Call (Rundeck System Info)
+## Creating a Postman Collection and The First Rundeck API Call (Rundeck System Info)
 
 1. Launch Postman and then click on the "Create a new Collection" link.
 
@@ -101,7 +101,7 @@ To test it, just click on the "Send" blue button at the right of the endpoint st
 ![](/assets/img/api_9_post_send.png)
 
 
-# Running a Rundeck Job
+## Running a Rundeck Job
 
 To run a Rundeck Job from the API, the method "POST" is needed.
 
@@ -134,7 +134,7 @@ The `3a13fca8-4d42-417e-812b-5f2f700dccb3` string is the Rundeck job ID.
 ![](/assets/img/api_11_post_send.png)
 
 
-# Running a Job with Options
+## Running a Job with Options
 
 The Welcome Project job called "Using Input Options in command and scripts" contains an option to test it on Postman.
 
@@ -181,7 +181,7 @@ The `05029d94-bde4-487a-ac0d-03fc7f659c38` string is the job ID.
 8. Go to the Rundeck instance, click on the Activity icon (left) and see the last execution.
 
 
-# Export Postman Requests to Any Language
+## Export Postman Requests to Any Language
 
 Postman provides the ability to export a request to other languages like Python or JavaScript. 
 
@@ -196,7 +196,7 @@ To export a request, click on the code icon (right) and select the language. The
 
 
 
-# Resources
+## Resources
 
 A complete Rundeck API reference is available [here](/api/index.md).
 

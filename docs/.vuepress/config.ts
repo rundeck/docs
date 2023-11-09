@@ -18,19 +18,21 @@ import sidebarUserGuide from './sidebar-menus/user-guide'
 import sidebarCommandLineTools from './sidebar-menus/command-line-tools'
 import sidebarDeveloper from './sidebar-menus/plugin-development'
 import sidebarLearning from './sidebar-menus/learning'
-import sidebarHistory from './sidebar-menus/history';
-import sidebarAbout from './sidebar-menus/about';
+import sidebarHistory from './sidebar-menus/history'
+import sidebarAbout from './sidebar-menus/about'
+import apiMenu from './sidebar-menus/api'
+
 
 import markdownItInclude from 'markdown-it-include'
 import markdownItDeflist from 'markdown-it-deflist'
 import markdownItImplicitFigures from 'markdown-it-implicit-figures'
 
 // navbars
-import navbarAbout from './navbar-menus/about';
-import navbarUserGuide from './navbar-menus/user-guide';
-import navbarLearning from './navbar-menus/learning';
-import navbarAdmin from './navbar-menus/administration';
-import navbarDevelopment from './navbar-menus/development';
+import navbarAbout from './navbar-menus/about'
+import navbarUserGuide from './navbar-menus/user-guide'
+import navbarLearning from './navbar-menus/learning'
+import navbarAdmin from './navbar-menus/administration'
+import navbarDevelopment from './navbar-menus/development'
 import markdownItReplaceVars from './markdown-it-replace-vars'
 
 //Get setup variables
@@ -163,12 +165,7 @@ export default defineUserConfig({
        '/learning/': sidebarLearning,
        '/developer/': sidebarDeveloper,
        '/history/': sidebarHistory,
-       '/api/': [
-        '/api/index.md',
-        '/api/rundeck-api-versions.md',
-        '/api/api_basics.md',
-        '/api/api-spec.md'
-      ],
+       '/api/': apiMenu,
       '/': [
         ''
       ]
