@@ -37,7 +37,7 @@ API versions below `{{$apiDepVersion}}` are *deprecated*.  Clients using earlier
 
 ### Version 45
 
-* Delete Project API runs in deferred mode if v45+ is used. Specify `?deferred=false` to run in synchronous mode.
+* [Delete Project API](/api/#project-deletion) runs in deferred mode if v45+ is used. Specify `?deferred=false` to run in synchronous mode.
     * [`DELETE /api/45/project/[PROJECT]`][DELETE /api/V/project/\[PROJECT\]] - Project Deletion
 
 ### Version 44
