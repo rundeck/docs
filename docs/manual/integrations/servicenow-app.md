@@ -11,7 +11,7 @@ Our ServiceNow&reg; application can be found on the ServiceNow&reg; Store.  The 
 
 ## Requirements
 
-The application is currently supported on San Diego, Tokyo and Utah.
+The application is currently supported on Tokyo, Utah and Vancouver.
 
 An active commerical license for a currently supported version is also required. ([See Release Calendar for current supported versions](/history/release-calendar.md))
 
