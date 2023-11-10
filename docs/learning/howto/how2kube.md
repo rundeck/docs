@@ -145,8 +145,8 @@ Next, we’ll simulate a simple deployment using the `Kubernetes / Generic / Cre
 
 The following plugins allow you to deploy/un-deploy applications and run/re-run jobs on Kubernetes. For example, you can create a deployment, services, ingress, etc., and update or delete those Kubernetes resources.<br>
 1. _Create / Update / Delete / Check / Wait a Deployment_<br>
-These steps manage deployment resources.  You can create, update or delete a deployment and check its status.<br>
+These steps manage Kubernetes Deployment resources.  You can create, update or delete a deployment and check its status.<br>
 1. _Create / Update / Delete Services_<br>
-These steps manage services resources. You can create, update or delete a service.<br>
+These steps manage Kubernetes Service resources. You can create, update or delete a service.<br>
 1. _Create / Delete / Re-run Jobs_<br>
-These steps manage services resources. You can create or delete a Job.<br>
+These steps manage Kubernetes Job resources. You can create or delete a Job.<br>
