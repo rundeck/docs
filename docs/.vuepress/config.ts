@@ -202,7 +202,6 @@ export default defineUserConfig({
             '/manual/command-line-tools/rd-acl.html' : '/rd-cli/rd-ext-acl.html',
             '/history/cves/' : '/history/CVEs/',
             '/introduction/introduction.html' : '/about/introduction.html',
-            '/introduction/getting-help.html' : '/about/getting-help.html',
             '/administration/architecture-and-deployment/system-architecture.html' : '/about/enterprise/index.html',
             '/administration/architecture-and-deployment/aws.html' : '/administration/install/aws.html',
             '/administration/projects/' : '/manual/projects/',
@@ -222,18 +221,13 @@ export default defineUserConfig({
             '/manual/key-storage/key-storage.html' : '/manual/key-storage/index.html',
             '/api/rundeck-api.html' : '/api/index.html',
             '/introduction/getting-help.html/manual/job-options.html' : '/manual/job-options.html#option-model-provider',
-            '/introduction/getting-help.html/administration/maintenance/tuning-rundeck.html':'/administration/maintenance/tuning-rundeck.html#quartz-job-threadcount'
+            '/introduction/getting-help.html/administration/maintenance/tuning-rundeck.html' : '/administration/maintenance/tuning-rundeck.html#quartz-job-threadcount'
         }
       }),
     openGraphPlugin({
         host: 'https://docs.rundeck.com',
         twitterSite: 'rundeck',
       }),
-    // We can revisit this when GT4 tag is ready.
-    // googleAnalyticsPlugin({
-    //   id: 'G-LYC4H41P9E',
-    //   debug: true
-    // }),
     containerPlugin(
         {
             type: 'deprecated',
