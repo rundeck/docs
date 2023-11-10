@@ -67,8 +67,8 @@ Currently, to obtain the token for a Runner, you must use the Runner Management 
 
 See:
 
-* [API > Create A New Runner](/api/rundeck-api.html#create-a-new-runner)
-* [API > Regenerate Credentials For the Runner](/api/rundeck-api.html#regenerate-credentials-for-the-runner)
+* [API > Create A New Runner](/api/#create-a-new-runner)
+* [API > Regenerate Credentials For the Runner](/api/#regenerate-credentials-for-the-runner)
 
 :::
 
