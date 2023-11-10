@@ -8458,7 +8458,7 @@ Content-Type: `application/json`:
   ]
 }
 ```
-### Update the runner ###
+### Update the runner information ###
 
 ::: enterprise
 :::
