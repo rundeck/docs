@@ -220,7 +220,9 @@ export default defineUserConfig({
             '/learning/getting-started/rba/rba-welcome-overview.html' : '/learning/getting-started/rba/index.html',
             '/learning/getting-started/jobs/overview.html' : '/learning/getting-started/jobs/index.html',
             '/manual/key-storage/key-storage.html' : '/manual/key-storage/index.html',
-            '/api/rundeck-api.html' : '/api/index.html'
+            '/api/rundeck-api.html' : '/api/index.html',
+            '/introduction/getting-help.html/manual/job-options.html' : '/manual/job-options.html#option-model-provider',
+            '/introduction/getting-help.html/administration/maintenance/tuning-rundeck.html':'/administration/maintenance/tuning-rundeck.html#quartz-job-threadcount'
         }
       }),
     openGraphPlugin({
