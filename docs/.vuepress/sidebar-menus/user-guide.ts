@@ -43,7 +43,7 @@ export default [{
             '/manual/projects/resource-model-sources/resource-editor',
             '/manual/projects/resource-model-sources/sensu',
             '/manual/projects/resource-model-sources/servicenow',
-            '/manual/projects/resource-model-sources/url-transformer',
+            '/manual/projects/resource-model-sources/http-json',
             '/manual/projects/resource-model-sources/vmware'
           ]
         },
