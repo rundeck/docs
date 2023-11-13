@@ -3,9 +3,11 @@
 :::enterprise
 :::
 
-For basic instructions on how to get started with Rundeck ACL Policies, check out this [Basic ACL Tutorial](/learning/howto/acl_basic_examples.md).  Or check out hte video below:
+For basic instructions on how to get started with Rundeck ACL Policies, check out this [Basic ACL Tutorial](/learning/howto/acl_basic_examples.md).  Or check out the video below:
 
 <YouTube id="i859f1WG3Bo"/>
+
+For examples and use case specific implementations check out the [ACL Examples](/learning/howto/acls/) section of the How To articles.
 
 ## Access Control Pages
 
