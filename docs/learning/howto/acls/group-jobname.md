@@ -47,7 +47,7 @@ for:
      - allow: [read]
 by:
   group: grp-sandbox-exec
-  ---
+---
 description: Allow [read] for key storage access at the project level.  If accessing keys outside the project context, you'll need a comparable system-level rule.
 context:
   project: prj-sandbox
