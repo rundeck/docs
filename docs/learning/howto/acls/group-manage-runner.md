@@ -32,7 +32,8 @@ context:
   application: rundeck
 for:
   resource:
-  - allow: [admin,read]
+  - allow:
+    - '*'
     equals:
       kind: runner
 by:
