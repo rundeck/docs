@@ -1,18 +1,18 @@
 ---
 
 title: "4.17.3 Release Notes"
-date: 2021-11-14
+date: 2021-11-13
 image: /images/chevron-logo-red-on-white.png
 feed:
  enable: true
- description: "Bug Fixes"
+ description: "Bug Fixes for Process Automation/Rundeck"
 
 ---
 
 # 4.17.3 Release Notes
 
 Name: <span style="color: violet"><span class="glyphicon glyphicon-glass"></span> "Basilisk violet glass"</span>
-Release Date: PUTADATEHERE
+Release Date: November 13, 2023
 
 - [Download the Releases](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
@@ -37,24 +37,14 @@ Bundle of fixes for PagerDuty Process Automation (formerly Rundeck Enterprise), 
 
 [Here is a link to the full list of public PRs](https://github.com/rundeck/rundeck/pulls?q=is%3Apr+milestone%3A4.17.3+is%3Aclosed)
 
-## Ansible Plugin Updates
-
-
-
 ## Enterprise Runner Updates
 
-**Bundled Runner Version:** Version Not Found check for release tag
-
-
+**Bundled Runner Version:** 0.1.53
 
 ## Community Contributors
 
 Submit your own Pull Requests to get recognition here!
 
-*  ([github-actions[bot]](https://github.com/github-actions[bot]))
-* Greg Schueler ([gschueler](https://github.com/gschueler))
-* Luis Toledo ([ltamaster](https://github.com/ltamaster))
-* Lucas Canavosio ([lcanavosio](https://github.com/lcanavosio))
 *  ([rmeloamaro](https://github.com/rmeloamaro))
 * Jai Govindani ([jai](https://github.com/jai))
 * Bruno Dias ([brmdias](https://github.com/brmdias))
