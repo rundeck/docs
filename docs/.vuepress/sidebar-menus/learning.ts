@@ -1,3 +1,5 @@
+import getChildren from '../getChildren'
+
 export default [{
   text: 'Learning',
   collapsible: false,
@@ -74,6 +76,14 @@ export default [{
       children: [
         { link: '/learning/howto/index.md', text: 'Overview' },
         { link: '/learning/howto/welcome-project-starter.md', text: 'Welcome Projects' },
+        {
+          text: 'ACL Recipes',
+          collapsible: true,
+          link: '/learning/howto/acls/',
+          children: [
+            ...getChildren('docs/learning/', 'howto/acls')
+          ]
+        },
         {
           text: 'Administration',
           collapsible: true,
