@@ -20,7 +20,9 @@ Release Date: November 13, 2023
 
 ## Overview
 
-Bundle of fixes for PagerDuty Process Automation (formerly Rundeck Enterprise), PagerDuty Runbook Automation and Rundeck Community included in this release.
+This release addresses [CVE-2023-47112](/history/cves/cve-2023-47112.md) where specified job information endpoints were not properly authenticated.  Pleasae refer to [CVE-2023-47112](/history/cves/cve-2023-47112.md) for details.
+
+Also includes other fixes for PagerDuty Process Automation (formerly Rundeck Enterprise), PagerDuty Runbook Automation and Rundeck Community included in this release.
 
 ## Process Automation Updates
 
@@ -31,7 +33,7 @@ Bundle of fixes for PagerDuty Process Automation (formerly Rundeck Enterprise), 
 
 ## Rundeck Open Source Product Updates
 
-* [Backport-4.17.x: fix 2055](https://github.com/rundeck/rundeck/pull/8668)
+* [Fix: CVE-2023-47112 - Job information endpoints not properly authorized](https://github.com/rundeck/rundeck/pull/8668)
 * [Fix runtimeException Error on Script Resource Model](https://github.com/rundeck/rundeck/pull/8658)
 
 
