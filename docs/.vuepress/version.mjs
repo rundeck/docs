@@ -189,8 +189,10 @@ export class RundeckVersion {
         'Rainier',
         'Shasta',
         'Stanley',
+        'Tupungato',
         'Vinson',
-        'Whitney'
+        'Whitney',
+        'Wycheproof'
     ]
 
     splitVersion(versionString) {
