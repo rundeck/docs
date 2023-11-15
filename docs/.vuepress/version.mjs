@@ -166,7 +166,7 @@ export class RundeckVersion {
         'Aoraki',
         'Carstenz',
         'Chimborazo',
-        'Denali',
+        'Denali', //Dave Darby
         'Elbrus',
         'Erebus',
         'Etna',
@@ -175,6 +175,7 @@ export class RundeckVersion {
         'Fansiban',
         'Foraker',
         'Fuji',
+        'Hood', //Greg Schueler
         'K2',
         'Kilimanjaro',
         'Kinabalu',
@@ -186,6 +187,7 @@ export class RundeckVersion {
         'Monte Fitz Roy',
         'Olympus',
         'Parinacota',
+        'Provincia', //Luis Toledo
         'Rainier',
         'Shasta',
         'Stanley',
