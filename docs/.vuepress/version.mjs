@@ -8,7 +8,7 @@ export class RundeckVersion {
     serverName
     serverUuid
     versionData
-    nameTilt = 21
+    nameTilt = 31
 
     constructor(data) {
         this.versionString = data['versionString'];
