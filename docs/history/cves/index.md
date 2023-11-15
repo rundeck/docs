@@ -8,8 +8,10 @@ Below is colletion of security notices previously filed for Rundeck and Process 
 
 These are the Security Advisories Rundeck has issued in the past.  It is always recommended to upgrade to the current version of Rundeck ({{$rundeckVersion}}) for the latest security updates.
 
+* [CVE-2023-48222](cve-2023-48222.md)<br>
+    Authenticated users can view or delete jobs for which they do not have authorization.
 * [CVE-2023-47112](cve-2023-47112.md)<br>
-    Endpoints not properly authorized allowing read access to job information.
+    Authenticated users can view job names and groups for which they do not have read authorization.
 * [CVE-2022-31044](CVE-2022-31044.md)<br>
     Key Storage converter plugin mechanism were not enabled correctly in Rundeck 4.2.0 and 4.2.1.
 * [CVE-2022-29186](CVE-2022-29186.md)<br>
