@@ -12,7 +12,7 @@ export default [
       {
         text: "Security Advisories",
         collapsible: true,
-        children: getHistory('docs/history/', 'cves'),
+        children: getChildren('docs/history/', 'cves'),
       },
       {
         text: '4.x',
