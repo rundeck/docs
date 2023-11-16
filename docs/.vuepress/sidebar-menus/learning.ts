@@ -93,6 +93,7 @@ export default [{
             '/learning/howto/install-centos.md',
             '/learning/howto/migrate-to-mysql.md',
             '/learning/howto/use-terraform-provider.md',
+            '/learning/howto/terraform-jobs.md',
             '/learning/howto/learn-rd-cli.md',
             '/learning/howto/elk-integration.md',
             '/learning/howto/acl_basic_examples.md',
