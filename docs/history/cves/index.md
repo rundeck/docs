@@ -1,5 +1,4 @@
 ---
-title: "Security Notices"
 order: 100
 ---
 
