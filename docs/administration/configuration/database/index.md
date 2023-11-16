@@ -15,7 +15,7 @@ Don't use the H2 embedded database for anything except testing and non-productio
 
 Use an external database service like MariaDB, Mysql, Postgres, Amazon Aurora or Oracle.
 
-> Note: For concerns about [CVE-2022-45868](/history/cves/CVE-2022-45868.md) please see [the write up why Rundeck is not vulnerable](/history/cves/CVE-2022-45868.md).
+> Note: For concerns about [CVE-2022-45868](/history/cves/cve-2022-45868.md) please see [the write up why Rundeck is not vulnerable](/history/cves/cve-2022-45868.md).
 
 ## Database Architecture and Performance Notes
 
