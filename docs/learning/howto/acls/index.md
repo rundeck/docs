@@ -27,7 +27,7 @@ To use the examples in this section in your Enterprise Process Automation soluti
 2. Click on **Create ACL Policy**
 3. Give the policy a unique name.  (The name can only contain the following characters `a-zA-Z0-9,.+_-` so no spaces or wildly special characters)
 4. Find/Replace the values as specified on each use case page in your favorite text editor.
-5. Click on the **Editor** tab and paste the example poilcy into the edtior.
+5. Click on the **Editor** tab and paste the example policy into the edtior.
 6. Click Save and test thoroughly.
 
 @tab Community
@@ -38,7 +38,7 @@ To use the examples in this section in your Enterprise Process Automation soluti
 1. Click on **Create ACL Policy**
 1. Give the policy a unique name.  (The name can only contain the following characters `a-zA-Z0-9,.+_-` so no spaces or wildly special characters)
 1. Find/Replace the values as specified on each use case page in your favorite text editor.
-1. Paste the example poilcy into the edtior.
+1. Paste the example policy into the edtior.
 1. Click Save and test thoroughly.
 
 :::
