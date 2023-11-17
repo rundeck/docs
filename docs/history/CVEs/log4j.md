@@ -1,3 +1,7 @@
+---
+order: 1500
+---
+
 # Log4Shell / Log4j Security
 
 In December 2021 Rundeck Engineering team was made aware of the "Log4Shell" vulnerabilities related to Log4j.  This page documents the fixes put in place by the team as vulnerabilities were identified.
