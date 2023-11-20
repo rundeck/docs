@@ -290,7 +290,7 @@ You can learn more about the `terraform init` command [here](https://developer.h
 2. Type `yes` and press the Enter key. The Rundeck project, including the sample task, has been built.
 3. You may use the `terraform show` command to check the current status of this implementation.
 4. In your web browser, navigate to the Rundeck instance. The project, job, key, and ACL are all present.  
-![](/assets/img/tf-job5.png)  
+![](/assets/img/tf-jobs5.png)  
 
 ## Rolling back
 When we need to undo all modifications, we can accomplish it by following these procedures.  
