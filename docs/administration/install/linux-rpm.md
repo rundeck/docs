@@ -1,7 +1,12 @@
-# Installing on CentOS or Red Hat Linux distributions
+# Installing on Red Hat, Amazon or Oracle Linux distributions
 
 
 ## Installing Rundeck
+
+:::warning
+Rundeck depends on **Java 11**. The **Java 14** packages will satisfy this dependency however Rundeck will not function properly with them. It is recommended to install the `openjdk-11-jre-headless` package manually.
+:::
+
 ::: tabs
 
 @tab Enterprise
