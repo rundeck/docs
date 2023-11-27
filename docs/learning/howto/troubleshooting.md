@@ -150,13 +150,14 @@ This error can occur for many reasons, such as:
 * Check if the server has sufficient physical memory available.
 
 #### Database LockException
-When rundeck starts it needs to check for the database status to be up to date. This process is handled by liquibase migration progress (this process runs always, it is not only related to an upgrade).
-When having an interruption while starting rundeck, the database can get into an "stuck" state while performing the liquibase migration process, this prevents rundeck from starting. You can recover from this state, but must be carefull
+When Rundeck/Process Automation starts it needs to check for the database status to be up to date. This process is handled by a Liquibase migration progress (this process runs each time the software starts, it is not only related to an upgrade).
 
-1. Make sure there are no rundeck instances running.
-2. Once all rundeck instances are down, you can perform an update directly to the DB and change the "LOCKED" status
-3. Update table "DATABASECHANGELOGLOCK" field "LOCKED" to false (some databases uses 0/1 instead of a boolean, if that is the case, set the value to 0)
-4. You can now start rundeck again and it should be able to obtain lock and perform the liquibase migration process just fine
+If there is an interruption while starting Rundeck/Process Automation, the database can get into an "stuck" state while performing the Liquibase migration process, this can prevent Rundeck/Process Automation from starting. It is possible to recover from this state, but the steps must be carefully followed.
+
+1. Make sure there are no Rundeck/Process Automation instances running.
+2. Once all instances are down, perform an update directly to the DB and change the "LOCKED" status
+3. Update table "DATABASECHANGELOGLOCK" field "LOCKED" to `false`. (Some databases uses `0/1` instead of a text, if that is the case, set the value to `0`)
+4. You can now start the software again and it should be able to obtain lock and perform the Liquibase migration process.
 
 Update example query
 `update DATABASECHANGELOGLOCK set LOCKED = false where ID = 1`
