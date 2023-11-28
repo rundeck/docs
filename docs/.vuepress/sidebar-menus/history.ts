@@ -8,10 +8,10 @@ export default [
     children: [
       ...getChildren('docs/history'),
       {
-        text: "Security Advisories",
+        text: '5.x',
         collapsible: true,
-        link: '/history/cves/',
-        children: getChildren('docs/history', 'cves'),
+        link: '/history/',
+        children: getChildren('docs/history', '5_x')
       },
       {
         text: '4.x',
@@ -60,6 +60,12 @@ export default [
         collapsible: true,
         link: '/history/',
         children: getChildren('docs/history', '1_x'),
+      },
+      {
+        text: "Security Advisories",
+        collapsible: true,
+        link: '/history/cves/',
+        children: getChildren('docs/history', 'cves'),
       }
     ],
   },
