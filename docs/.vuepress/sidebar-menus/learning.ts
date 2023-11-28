@@ -104,7 +104,8 @@ export default [{
             '/learning/howto/egress-proxy.md',
             '/learning/howto/how2-terra-rd-aws.md',
             '/learning/howto/how2-terra-rd-eks.md',
-            '/learning/howto/troubleshooting.md'
+            '/learning/howto/troubleshooting.md',
+            '/learning/howto/customize-gui.md'
           ]
         },
         {
@@ -147,7 +148,9 @@ export default [{
             '/learning/howto/howtojenkins.md',
             '/learning/howto/how2kube.md',
             '/learning/howto/actions-with-rba.md',
-            '/learning/howto/events-with-rba.md'
+            '/learning/howto/events-with-rba.md',
+            '/learning/howto/email-gmail.md',
+            '/learning/howto/email-outlook.md'
           ]
         },
         {
