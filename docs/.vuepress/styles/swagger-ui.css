@@ -9488,7 +9488,7 @@
 
 .swagger-ui .opblock .opblock-summary-path {
     flex-shrink: 0;
-    max-width: calc(100% - 110px - 15rem)
+    max-width: 100%
 }
 
 @media(max-width:640px) {

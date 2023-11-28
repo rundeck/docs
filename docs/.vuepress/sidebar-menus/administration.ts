@@ -25,7 +25,7 @@ export default [{
               },
               {
                 text: 'Upgrading',
-                collapsible: false,
+                collapsible: true,
                 link: '/upgrading/',
                 children: [
                   '/upgrading/',

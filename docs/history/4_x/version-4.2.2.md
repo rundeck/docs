@@ -14,4 +14,4 @@ Release Date: June 15, 2022
 This release has been superseded by version [`4.2.3`](version-4.2.3.md).  Please upgrade if you are currently using `4.2.0`, `4.2.1`, or `4.2.2`.
 :::
 
-For more details about the issue please read our [CVE-2022-31044](/history/cves/CVE-2022-31044.md) page.
+For more details about the issue please read our [CVE-2022-31044](/history/cves/cve-2022-31044.md) page.

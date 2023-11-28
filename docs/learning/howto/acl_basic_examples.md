@@ -1,4 +1,4 @@
-# Get Started with Access Control Examples
+# Get Started with Access Control
 
 ### What is an ACL?
 ACLs (Access Control Lists) are YAML-based rules that limit/give access to Rundeck elements to any user/role. An ACL Policy is a set of rules that allows/denies access to specific resources such as jobs, projects, keys, passwords, etc.  No one can access or do anything in the system unless it is allowed by one or more ACL Policies.
@@ -285,13 +285,9 @@ by:
   group: myrole
 ```
 
-
-
 # Resources
 
-
-
-* Find more examples in `/etc/rundeck/etc` path (RPM/DEB based installation), the `.aclpolicy_template` files contain examples of the common ACLs scenarios.
+* Find more examples in the [ACL Recipes](/learning/howto/acls/index.md) section and in `/etc/rundeck/etc` path (RPM/DEB based installation), the `.aclpolicy_template` files contain examples of common ACLs scenarios.
 * The [official documentation](/manual/document-format-reference/aclpolicy-v10.md#aclpolicy) explains any ACL element with a definition example.
-* [This](https://resources.rundeck.com/learning/acl-policy-files-by-example/) Rundeck Resources entry by Nathan Fluegel.
+* [This Rundeck Resources](https://resources.rundeck.com/learning/acl-policy-files-by-example/) entry by Nathan Fluegel.
 * And the recording from [this](https://www.youtube.com/watch?v=i859f1WG3Bo) Office Hours on Best Practices for Setting up Rundeck ACLs.
