@@ -24,9 +24,9 @@ to have access via [sudo].
 - **[JAVA](#java) 8 or 11 Installed.**
 - **2 CPUs**
   - 2 CPUs per instance
-- **4 GB RAM**
-  - 4GB for the JVM instance
-- **20 GB hard disk**
+- **8 GB RAM**
+  - 8GB for the JVM instance
+- **40 GB hard disk**
 - **Database**
   - Mysql version
   - Mariadb version
@@ -45,7 +45,8 @@ to have access via [sudo].
 
 Rundeck is a Java-Servlet based server and therefore requires the Java runtime.
 
-As of version 3.3.0 Rundeck supports either Java 8 or Java 11.  Java must be installed prior to running the install process. [Open JDK](http://openjdk.java.net/) and [Sun/Oracle](https://java.com/) JVMs are supported.
+As of version 5.0 Rundeck requires Java 11. (Java 17 support is still being certfied.)  Java must be installed prior to running the install process. [Open JDK](http://openjdk.java.net/) and [Sun/Oracle](https://java.com/) JVMs are supported.
+
 Ensure the JAVA_HOME environment variable defined in your environment before running the launcher. The RPM will use the java found on your path. See [Setting JAVA_HOME](/administration/maintenance/startup.md#setting-java_home) if you want to run a different version of java.
 
 Verify your Java version to check it meets the requirement:
@@ -56,19 +57,13 @@ $ java -version
 Example output (actual version numbers can vary)
 
 ```
-java version "1.8.0_131"
-Java(TM) SE Runtime Environment (build 1.8.0_131-b11)
-Java HotSpot(TM) 64-Bit Server VM (build 25.131-b11, mixed mode)
-```
-_or_
-```
 java version "11.0.7" 2020-04-14 LTS
 Java(TM) SE Runtime Environment 18.9 (build 11.0.7+8-LTS)
 Java HotSpot(TM) 64-Bit Server VM 18.9 (build 11.0.7+8-LTS, mixed mode)
 ```
 
 :::tip
-Note: Rundeck versions 3.2.x only run on Java 1.8
+Note: Rundeck versions 3.2.x only run on Java 1.8, Rundeck 3.3 through 4.0 will work on Java 1.8 or 11.
 :::
 
 ### Network access
