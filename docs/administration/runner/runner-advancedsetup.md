@@ -85,6 +85,63 @@ java -Dmicronaut.http.client.proxy-type=http -Dmicronaut.http.client.proxy-addre
 1. `-Dmicronaut.http.client.proxy-username` is set to the user that is allowed to connect through the secure proxy.
 1. `-Dmicronaut.http.client.proxy-password` is set to the secure proxy user password.
 
+## Runner connection to a Process Automation using self signed certificate
+
+If Process Automation is configured to use a self signed certificate, here is how to lauch the Runner for a successful connectivity.
+
+:::tip Note
+Below steps work also when Process Automation is behind a Load Balancer using self signed certificate.
+:::
+
+There are several ways to set the Process Automation's certificate where the Runner will be launched.
+
+### Cacerts file
+Add the `process_automation.crt` certificate to the OS's cacerts file.
+```sh
+sudo keytool -import -alias MYALIAS -file process_automation.crt -cacerts -storepass changeit
+```
+To verify it is imported:
+```sh
+sudo keytool -list -cacerts -storepass changeit | grep MYALIAS
+```
+### Other truststore
+:::tip Tip
+Keep in mind the `file:` part in the path field.
+:::
+
+#### Directly from command line
+```sh
+java -Dmicronaut.ssl.trust-store.path=file:/path/to/truststore -Dmicronaut.ssl.trust-store.password=PASSWORD -jar runner.jar
+```
+#### Using environment variables
+```sh
+export MICRONAUT_HTTP_CLIENT_SSL_TRUST_STORE_PATH=file:/path/to/truststore
+export MICRONAUT_HTTP_CLIENT_SSL_TRUST_STORE_PASSWORD=PASSWORD
+java -jar runner.jar
+```
+#### From a config file
+Config file:
+```sh
+cat application.yaml
+micronaut:
+  http:
+    client:
+      ssl:
+        enabled: true
+        trust-store:
+          path: file:/path/to/truststore
+          password: PASSWORD
+```
+```sh
+java -Dmicronaut.config.files=/path/to/application.yaml -jar runner.jar
+```
+#### Docker env vars
+```
+MICRONAUT_HTTP_CLIENT_SSL_TRUST_STORE_PATH=file:/path/to/truststore
+MICRONAUT_HTTP_CLIENT_SSL_TRUST_STORE_PASSWORD=PASSWORD
+```
+Truststore file must be in the proper path in the image.
+
 ## Runner APIs
 
 [Runner APIs](/api/index.md) are available to create,edit,download, and delete Runners. 
