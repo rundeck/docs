@@ -13,7 +13,7 @@ export default [
         text: '5.x',
         collapsible: true,
         link: '/history/',
-        children: getChildren('docs/history', '5_x')
+        children: getChildren('docs/history/', '5_x')
       },
       {
         text: '4.x',
