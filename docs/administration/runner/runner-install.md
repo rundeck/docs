@@ -210,12 +210,12 @@ spec:
     imagePullPolicy: IfNotPresent
     name: rundeck-runner
     env:
-      - name: RUNNER_RUNDECK_CLIENT_ID
-        value: "[RUNNER ID]"
-      - name: RUNNER_RUNDECK_SERVER_TOKEN
-        value: "[TOKEN]"
-      - name: RUNNER_RUNDECK_SERVER_URL
-        value: "https://[INSTANCE-SUBDOMAIN].runbook.pagerduty.cloud"
+    - name: RUNNER_RUNDECK_CLIENT_ID
+      value: "[RUNNER ID]"
+    - name: RUNNER_RUNDECK_SERVER_TOKEN
+      value: "[TOKEN]"
+    - name: RUNNER_RUNDECK_SERVER_URL
+      value: "https://[INSTANCE-SUBDOMAIN].runbook.pagerduty.cloud"
     lifecycle:
       postStart:
         exec:
