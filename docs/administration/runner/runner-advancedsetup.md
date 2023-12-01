@@ -87,10 +87,10 @@ java -Dmicronaut.http.client.proxy-type=http -Dmicronaut.http.client.proxy-addre
 
 ## Runner connection to a Process Automation using self signed certificate
 
-If Process Automation is configured to use a self signed certificate, here is how to lauch the Runner for a successful connectivity.
+If Process Automation is configured to use a self signed certificate, here is how to lauch the Runner for a successful connection.
 
 :::tip Note
-Below steps work also when Process Automation is behind a Load Balancer using self signed certificate.
+Below steps work also when Process Automation is behind a Load Balancer using a self signed certificate.
 :::
 
 There are several ways to set the Process Automation's certificate where the Runner will be launched.
