@@ -605,7 +605,7 @@ If we want to map the object "address" in the first object inside the following 
 
 You'll see the rendering options:
 
-![Rendering properties keys in the list]()
+![Rendering properties keys in the list](/assets/img/filtered-options.png)
 
 You can configure timeouts globally as described in [Configuration - Job Remote Option URL connection parameters](/administration/configuration/config-file-reference.md#rundeck-config.properties).
 
