@@ -26,7 +26,7 @@ Available Guides by Section
 [How to Manage Jobs as Code](/learning/howto/how2scm.md)  
 [Configure Rundeck behind an egress proxy](/learning/howto/egress-proxy.md)  
 [Deploy Rundeck on AWS with Terraform](/learning/howto/how2-terra-rd-aws.md)  
-[Deploy Rundeck on AWS EKS with Terraform](/learning/howto/how2-terra-rd-eks.md)  
+[Deploy Rundeck on AWS EKS](/learning/howto/how2-terra-rd-eks.md)  
 
 ## Managing Nodes
 [Use SSH on Linux/UNIX nodes](/learning/howto/ssh-on-linux-nodes.md)  
