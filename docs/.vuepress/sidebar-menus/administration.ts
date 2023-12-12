@@ -30,6 +30,7 @@ export default [{
                 children: [
                   '/upgrading/',
                   '/upgrading/upgrading',
+                  '/upgrading/upgrading-to-5.0.md',
                   '/upgrading/upgrading-to-4.8.md',
                   '/upgrading/upgrading-to-4.1.md',
                   '/upgrading/upgrading-to-4.md',
