@@ -16,7 +16,7 @@ In release 5.0.0 the lib version of the h2 database was updated to `2.2.220`.  T
 
 ```
 [2022-04-14T16:06:22,414] ERROR pool.HikariPool - HikariPool-1 - Exception during pool initialization.
-org.h2.jdbc.JdbcSQLNonTransientException: General error: "The write format 1 is smaller than the supported format 2 [2.2.220/5]" [50000-210]
+org.h2.jdbc.JdbcSQLNonTransientException: General error: "The write format 2 is smaller than the supported format 3 [2.2.220/5]" [50000-210]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:573) ~[h2-2.2.220.jar!/:?]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:496) ~[h2-2.2.220.jar!/:?]
 ```
