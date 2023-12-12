@@ -22,14 +22,14 @@ Release Date: PUTADATEHERE
 
 Check out the new features and enhancements for PagerDuty Process Automation (formerly Rundeck Enterprise) and PagerDuty Runbook Automation and Rundeck Community included in this release.
 
-## Process Automation Updates
-
-> Also includes all Open Source updates from below
-
 ### Highlights
 
 - first highlight
 - second highlight
+
+## Process Automation Updates
+
+> Also includes all Open Source updates from below
 
 ### Additional Updates
 
@@ -50,11 +50,6 @@ Check out the new features and enhancements for PagerDuty Process Automation (fo
 {% for pull in ansible.pulls -%}
 * [{{ pull.title | replace(r/RUN-[0-9]*:?\s?/g, "") | replace(r/RSE-[0-9]*:?\s?/g, "") | replace(r/RCLOUD-[0-9]*:?\s?/g, "") | replace(r/RDC-[0-9]*:?\s?/g, "") }}]({{pull.html_url}})
 {% endfor %}
-
-
-## Enterprise Runner Updates
-
-**Bundled Runner Version:** {{sidecarVersion.version}}
 
 {% for pull in runner.pulls -%}
 * {{ pull.title | replace(r/RUN-[0-9]*:?\s?/g, "") | replace(r/RSE-[0-9]*:?\s?/g, "") | replace(r/RCLOUD-[0-9]*:?\s?/g, "") | replace(r/RDC-[0-9]*:?\s?/g, "") }}

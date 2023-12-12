@@ -1,11 +1,11 @@
 ---
 
 title: "5.0.0 Release Notes"
-date: 2024-12-06
+date: 2024-12-14
 image: /images/chevron-logo-red-on-white.png
 feed:
  enable: true
- description: "Version 5.0 is Available now."
+ description: "Rundeck/Process Automation 5.0 is here!"
 
 ---
 
@@ -23,34 +23,48 @@ Be sure to follow the [Upgrade instructions](/upgrading/) when moving to version
 
 ## Overview
 
-Rundeck/Process Automation 5.0 is here! This release updates the underlying foundations of the Rundeck/Process Automation platform to open up more opportunities for enhancements and improvements in the 5.x series.
+Rundeck/Process Automation 5.0 is here! This release updates the underlying foundations of the Rundeck and Process Automation platform to open up more opportunities for enhancements and improvements in the 5.x series.
+ 
+Our major version releases typically center around updates to the foundational libraries we use to build Rundeck. The result is a more stable, extensible, and secure product from the extensive library updates.  There are also commonly breaking changes or key upgrade steps to be aware of.  For this 5.0 release, we still included some enhancements and have more planned throughout the 5.x release cycle.
 
-## Improvements
+### Runner Key Storage GUI for Resource Model Sources.
 
-* Runner Key Storage GUI for Resource Model Sources
-* Performance improvement to Jobs List of up to 85% after conversion to Node and refactoring loading process.
-* Java 11 is now the minimum required version, and we are currently working on certifying Java 17.
+Content TBD
 
-## “Under the hood” updates
+### Jobs List Performance
 
-Our major version releases always center around updates to the foundational libraries we use to build Rundeck. The following highlights some of those new versions. The result is a more stable, extensible and secure product from the extensive library updates included.
+We refactored the backend of the Job Lists, resulting in a performance improvement of up to 85%.  This will be most noticeable for Projects and a lot of grouped jobs.
 
-* Grails 6 is now the foundation for Rundeck and Process Automation products.
-* Builds are now completed using Node 18
-* Started conversion of pages from old UI code to Vue.  This effort will be on-going through the 5.x series and bring performance improvements.
+### Java 11 Minimum Required
+To align the product with some of the foundational updates listed below the 5.0 version now requires Java 11.
 
-## Deprecations
+Java 17 as a runtime is “provisionally supported” with this release.  Customers are welcome to try it, but there may be issues that we haven’t found yet.
 
-* Remove Job and Report saved filters from being stored in the database.
-* Remove Node filters from being stored in the database. They are now only stored locally on the browser.
-* Minimum API version is now `14`.
+### Deprecations
 
-## Additional Improvements
+Saved Job, Report, and Node filters are no longer stored in the database.  Node Filters are now stored locally on the browser and we will be updating Job and Report filters to function the same way in a future release.
 
-* Upgrade H2 database to resolve CVE-2022-45868.  (Please see Upgrade Notes if using H2.)
-* Clearer logging messaging when running into Database Lock issues.
-* `rdCLI` tools now supports JSON job definitions.
+### API Changes
 
+The new Current API version is now `46`. The new API depreciation version is `17`. This means that future Rundeck releases will have a minimum API version of `17`.  Customers should ensure that code using the API is updated accordingly.
+
+Check the API Versions page for all the details.
+
+## Runner Versioning
+
+With this release the versioning for the Enterprise Runner is now aligned with the build version of the product.  The Runner version included in this release will be `5.0.0`
+
+### “Under the hood” updates
+
+Grails 6 is now the foundation for Rundeck and Process Automation products.
+Builds are now completed using Node 18
+Started conversion of pages from old UI code to Vue.  This effort will be on-going through the 5.x series and will bring performance improvements.
+
+### Additional Improvements/Changes
+
+Upgraded H2 database to resolve CVE-2022-45868.  (Please see Upgrade Notes if using H2.)
+Clearer logging messaging when running into Database Lock issues.
+The  `rdCLI`  tool now supports JSON job definitions.
 
 > Also includes all Open Source updates from below
 
@@ -83,10 +97,6 @@ Our major version releases always center around updates to the foundational libr
 * [Fix: Error handler not working as expected with Ansible Node Step](https://github.com/rundeck-plugins/ansible-plugin/pull/343)
 * [Fixing ANSIBLE_BINARIES_DIR_PATH resolution](https://github.com/rundeck-plugins/ansible-plugin/pull/342)
 * [Dedicated log filter plugin to capture the output of ansible set_stats module](https://github.com/rundeck-plugins/ansible-plugin/pull/341)
-
-## Enterprise Runner Updates
-
-**Bundled Runner Version:** 0.1.54
 
 ## Community Contributors
 
