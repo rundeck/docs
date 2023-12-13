@@ -83,12 +83,17 @@ Some endpoints also support using a `format` query parameter to specify the expe
 ## XML support
 
 :::deprecated
-XML support is *deprecated* and will be removed in a future version.
+
+XML request and response support is *deprecated* and will be removed in a future release.
+
+(This does not apply to "Document Formats" such as Jobs or Node resources.)
+
+Legacy XML API behavior is not enabled by default, it can be enabled with a configuration flag:
+
+    rundeck.feature.legacyXml.enabled=true
+
+Please see [previous 4.x versions](/manual/old-docs.md) of the API documentation for reference to XML response formats.
 :::
-
-
-XML results can be retrieved by sending the HTTP "Accept" header with a `application/xml` value.  XML request content is supported when the HTTP "Content-Type" header specifies `application/xml`.
-
 
 ## Authentication
 
@@ -168,42 +173,16 @@ In v4.8+ the `JSESSIONID` cookie will change after the first request after authe
 
 :::
 
-## XML Response Format
-
-:::deprecated
-XML support is *deprecated* and will be removed in a future version.
-:::
-
-XML responses will have only the content indicated in the appropriate endpoint documentation.
 
 ## Error Responses
 
-Errors in XML format will be in the form:
-
-``` xml
-<result error="true" apiversion="X">
-    <!-- error included if error="true" -->
-    <error>
-        <message><!-- error message text --></message>
-        <!-- ... multiple message elements -->
-    </error>
-</result>
-```
-
-If an error occurred, then the `error` attribute of the `<result>` element will be "true"
-
-Some `<error>` responses will include a `code` attribute giving a specific type
-of error code, in addition to the message.
-
-The `apiversion` attribute will be set to the latest version of the API
-supported by the server.
 
 Errors in JSON format will be in the form:
 
 ``` json
 {
     "error": true,
-    "errorCode: "code",
+    "errorCode": "code",
     "message": "message",
     "apiversion": "X"
 }
@@ -248,50 +227,6 @@ List all tokens or all tokens for a specific user.
 
 - `name` attribute added **since V37**
 
-`application/xml`:
-
-```xml
-<tokens user="user3" count="4">
-  <token user="user3" id="ece75ac8-2791-442e-b179-a9907d83fd05"
-  creator="user3" name="Admin RD-CLI">
-    <expiration>2017-03-25 14:16:50.848 PDT</expiration>
-    <roles>
-      <role>DEV_99</role>
-      <role>FEDCD25B-C945-48D3-9821-A10D44535EA4</role>
-    </roles>
-    <expired>false</expired>
-  </token>
-  <token user="user3" id="abcb096f-cef4-451a-bd2b-43284a3ff2ad"
-  creator="user3" name="CI Server">
-    <expiration>2017-03-25 14:17:12.935 PDT</expiration>
-    <roles>
-      <role>SVC_XYZ</role>
-      <role>devops</role>
-      <role>user3</role>
-    </roles>
-    <expired>false</expired>
-  </token>
-  <token user="user3" id="a99bd86d-0125-4eaa-9b16-caded4485476"
-  creator="user3" name="GitHub Integration">
-    <expiration>2018-03-24 14:17:26.253 PDT</expiration>
-    <roles>
-      <role>user</role>
-      <role>FEDCD25B-C945-48D3-9821-A10D44535EA4</role>
-    </roles>
-    <expired>false</expired>
-  </token>
-  <token user="user3" id="c13de457-c429-4476-9acd-e1c89e3c2928"
-  creator="user3">
-    <expiration>2017-03-24 14:18:55.699 PDT</expiration>
-    <roles>
-      <role>USER_ACCOUNT</role>
-    </roles>
-    <expired>true</expired>
-  </token>
-</tokens>
-```
-
-`application/json`:
 
 ```json
 [
@@ -350,28 +285,6 @@ List all tokens or all tokens for a specific user.
 
 **Note: removed since Rundeck 3.3.8**
 
-`application/xml`:
-
-All users:
-
-``` xml
-<tokens count='3' allusers='true'>
-  <token id='DRUVEuCdENoPkUpDkcDcdd6PeKkPdurc' user='alice' />
-  <token id='VprOpDeDP3KcK2dp37p5DoD6o53cc82D' user='bob' />
-  <token id='EveKe1KSRORnUN28D09eERDN3OvO4S6N' user='frank' />
-</tokens>
-```
-
-For a specific user:
-
-``` xml
-<tokens count='1' user='alice'>
-  <token id='DRUVEuCdENoPkUpDkcDcdd6PeKkPdurc' user='alice' />
-</tokens>
-```
-
-`application/json`:
-
 ``` json
 [
   {
@@ -406,22 +319,6 @@ Get a specified auth token metadata.
 The token includes the `creator` of the token, as well as the `user` (the effective username) of the token.
 The `id` is the unique ID, and the `name` (since v37) is the name given at creation.
 
-`application/xml`
-
-``` xml
-<?xml version="1.0" encoding="utf-8"?>
-<token user="user3" id="c13de457-c429-4476-9acd-e1c89e3c2928"
-creator="user3" name="CI Server Token">
-  <expiration>2017-03-24T21:18:55Z</expiration>
-  <roles>
-    <role>USER_ACCOUNT</role>
-  </roles>
-  <expired>true</expired>
-</token>
-```
-
-`application/json`
-
 ``` json
 {
   "user": "user3",
@@ -441,21 +338,6 @@ creator="user3" name="CI Server Token">
 The token includes the `creator` of the token, as well as the `user` (the effective username) of the token.
 The `id` is the unique ID, and the `token` value is the token string.
 
-`application/xml`
-
-``` xml
-<?xml version="1.0" encoding="utf-8"?>
-<token user="user3" token="VjkbX2zUAwnXjDIbRYFp824tF5X2N7W1"
-id="c13de457-c429-4476-9acd-e1c89e3c2928" creator="user3">
-  <expiration>2017-03-24T21:18:55Z</expiration>
-  <roles>
-    <role>USER_ACCOUNT</role>
-  </roles>
-  <expired>true</expired>
-</token>
-```
-
-`application/json`
 
 ``` json
 {
@@ -475,13 +357,6 @@ id="c13de457-c429-4476-9acd-e1c89e3c2928" creator="user3">
 
 The `id` value returned is the token string.
 
-`application/xml`
-
-``` xml
-<token id='DuV0UoDUDkoR38Evd786cdRsed6uSNdP' user='alice' />
-```
-
-`application/json`
 
 ``` json
 {
@@ -515,21 +390,6 @@ then the generated token will have all roles as the authenticated user.
 **For API v37 and later**: You can provide a `name` parameter to name the created token.
 
 
-
-`Content-type: application/xml`
-
-``` xml
-<user user="alice" roles="sre,dev" duration="120d" name="Example Token"/>
-```
-
-Requesting all available roles for the same user:
-
-``` xml
-<user user="alice" roles="*" duration="120d" name="Example Token"/>
-```
-
-`Content-type: application/json`
-
 ``` json
 {
   "user": "alice",
@@ -557,21 +417,6 @@ Requesting all available roles for the same user:
 
 - `name` attribute added **since V37**
 
-`application/xml`
-
-``` xml
-<token user="alice" token="4ehYi11hDHtxwVK6it4IhNFvbQcYmAJp"
-id="4073a4c5-336c-4157-942a-41639379c100" creator="admin" name="Example Token">
-  <expiration>2017-07-22T22:45:18Z</expiration>
-  <roles>
-    <role>dev</role>
-    <role>sre</role>
-  </roles>
-  <expired>false</expired>
-</token>
-```
-
-`application/json`
 
 ``` json
 {
@@ -590,14 +435,6 @@ id="4073a4c5-336c-4157-942a-41639379c100" creator="admin" name="Example Token">
 ```
 
 **Response (API version: 18 and earlier):**
-
-`application/xml`
-
-``` xml
-<token user="alice" token="RZ9vHnHif4C46xLVvfq4ZVBrkZs3iNuQ" />
-```
-
-`application/json`
 
 ``` json
 {
@@ -933,64 +770,6 @@ Parameters: none
 
 Success response, with included system info and stats in this format:
 
-`Content-Type: application/xml`:
-
-``` xml
-<system>
-    <timestamp epoch="1305909785806" unit="ms">
-        <datetime>2011-05-20T16:43:05Z</datetime>
-    </timestamp>
-    <rundeck>
-        <version>1.2.1</version>
-        <apiversion>2</apiversion>
-        <build>1.2.1-0-beta</build>
-        <node>Venkman.local</node>
-        <base>/Users/greg/rundeck121</base>
-        <serverUUID>3E43E30D-F3D7-45AA-942A-04D5BAFED8CA</serverUUID>
-    </rundeck>
-    <executions active="true" executionMode="active" />
-    <os>
-        <arch>x86_64</arch>
-        <name>Mac OS X</name>
-        <version>10.6.7</version>
-    </os>
-    <jvm>
-        <name>Java HotSpot(TM) 64-Bit Server VM</name>
-        <vendor>Apple Inc.</vendor>
-        <version>19.1-b02-334</version>
-    </jvm>
-    <stats>
-        <uptime duration="300584" unit="ms">
-            <since epoch="1305909485222" unit="ms">
-                <datetime>2011-05-20T16:38:05Z</datetime>
-            </since>
-        </uptime>
-        <cpu>
-            <loadAverage unit="percent">0.40234375</loadAverage>
-            <processors>4</processors>
-        </cpu>
-        <memory unit="byte">
-            <max>477233152</max>
-            <free>76626216</free>
-            <total>257163264</total>
-        </memory>
-        <scheduler>
-            <running>0</running>
-            <threadPoolSize>10</threadPoolSize>
-        </scheduler>
-        <threads>
-            <active>24</active>
-        </threads>
-    </stats>
-    <metrics href='http://dignan:4440/api/25/metrics/metrics?pretty=true' contentType='application/json' />
-    <threadDump href='http://dignan:4440/api/25/metrics/threads' contentType='text/plain' />
-    <healthcheck href='http://dignan:4440/api/25/metrics/healthcheck' contentType='application/json' />
-    <ping href='http://dignan:4440/api/25/metrics/ping' contentType='text/plain' />
-</system>
-```
-
-
-`Content-Type: application/json`:
 
 ``` json
 {
@@ -1640,32 +1419,6 @@ Get a list of all the users.
 
 Success response, with a list of users:
 
-`Content-Type: application/xml`:
-
-``` xml
-<user>
-  <login>user</login>
-  <firstName>Name</firstName>
-  <lastName>LastName</lastName>
-  <email>user@server.com</email>
-  <created>2017-10-01 09:00:20.44</created>
-  <updated>2018-08-24 10:53:02.751</updated>
-  <lastJob>2018-08-28 10:35:00.495</lastJob>
-  <tokens>1</tokens>
-</user>
-<user>
-  <login>admin</login>
-  <firstName />
-  <lastName />
-  <email>admin@server.com</email>
-  <created>2016-07-17 14:42:20.44</created>
-  <updated>2018-08-24 10:53:02.751</updated>
-  <lastJob>2018-08-28 10:35:00.495</lastJob>
-  <tokens>6</tokens>
-</user>
-```
-
-`Content-Type: application/json`:
 
 ``` json
 [{
@@ -1710,18 +1463,6 @@ Get same user profile data.
 
 Success response, with profile data:
 
-`Content-Type: application/xml`:
-
-``` xml
-<user>
-  <login>user</login>
-  <firstName>Name</firstName>
-  <lastName>LastName</lastName>
-  <email>user@server.com</email>
-</user>
-```
-
-`Content-Type: application/json`:
 
 ``` json
 {
@@ -1745,18 +1486,6 @@ Get another user profile data. Requires system `admin` permission.
 
 Success response, with profile data:
 
-`Content-Type: application/xml`:
-
-``` xml
-<user>
-  <login>user</login>
-  <firstName>Name</firstName>
-  <lastName>LastName</lastName>
-  <email>user@server.com</email>
-</user>
-```
-
-`Content-Type: application/json`:
 
 ``` json
 {
@@ -1775,18 +1504,6 @@ Modify same user profile data.
 
     POST /api/21/user/info/
 
-XML Content:
-
-``` xml
-<user>
-  <firstName>Name</firstName>
-  <lastName>LastName</lastName>
-  <email>user@server.com</email>
-</user>
-```
-
-or JSON Content:
-
 ``` json
 {
     "firstName":"Name",
@@ -1799,18 +1516,6 @@ or JSON Content:
 
 Success response, with profile updated data:
 
-`Content-Type: application/xml`:
-
-``` xml
-<user>
-  <login>user</login>
-  <firstName>Name</firstName>
-  <lastName>LastName</lastName>
-  <email>user@server.com</email>
-</user>
-```
-
-`Content-Type: application/json`:
 
 ``` json
 {
@@ -1829,18 +1534,6 @@ Modify another user profile data. Requires system `admin` permission.
 
     POST /api/21/user/info/[User]
 
-XML Content:
-
-``` xml
-<user>
-  <firstName>Name</firstName>
-  <lastName>LastName</lastName>
-  <email>user@server.com</email>
-</user>
-```
-
-or JSON Content:
-
 ``` json
 {
     "firstName":"Name",
@@ -1852,19 +1545,6 @@ or JSON Content:
 **Response:**
 
 Success response, with profile updated data:
-
-`Content-Type: application/xml`:
-
-``` xml
-<user>
-  <login>user</login>
-  <firstName>Name</firstName>
-  <lastName>LastName</lastName>
-  <email>user@server.com</email>
-</user>
-```
-
-`Content-Type: application/json`:
 
 ``` json
 {
@@ -1887,16 +1567,6 @@ Get a list of the authenticated user's roles
 
 Success response, with a list of roles:
 
-`Content-Type: application/xml`:
-
-``` xml
-<roles>
-  <role>admin</role>
-  <role>user</role>
-</roles>
-```
-
-`Content-Type: application/json`:
 
 ``` json
 {
@@ -2284,20 +1954,6 @@ Get Log Storage information and stats.
 
 Success response, with log storage info and stats in this format:
 
-`Content-Type: application/xml`:
-
-``` xml
-<logStorage enabled="true" pluginName="NAME">
-  <succeededCount>349</succeededCount>
-  <failedCount>0</failedCount>
-  <queuedCount>0</queuedCount>
-  <totalCount>349</totalCount>
-  <incompleteCount>0</incompleteCount>
-  <missingCount>0</missingCount>
-</logStorage>
-```
-
-`Content-Type: application/json`:
 
 ``` json
 {
@@ -2353,25 +2009,6 @@ List all executions with incomplete log storage.
     GET /api/17/system/logstorage/incomplete
 
 **Response:**
-
-`Content-Type: application/xml`:
-
-```xml
-<logstorage>
-  <incompleteExecutions total="[#]" max="20" offset="0">
-    <execution id="[EXECID]" project="[PROJECT]" href="[API HREF]" permalink="[GUI HREF]">
-      <storage incompleteFiletypes="[TYPES]" queued="true/false" failed="true/false" date="[DATE]" localFilesPresent="true/false">
-        <errors>
-          <message>[error message]</message>
-          <message>[error message...]</message>
-        </errors>
-    </storage>
-    </execution>
-    ...
-</logstorage>
-```
-
-`Content-Type: application/json`:
 
 ```json
 {
@@ -2448,13 +2085,6 @@ Resume processing incomplete Log Storage uploads.
 
 **Response:**
 
-`Content-Type: application/xml`:
-
-```xml
-<logStorage resumed='true' />
-```
-
-`Content-Type: application/json`:
 
 ``` json
 {
@@ -2479,13 +2109,6 @@ Enables executions, allowing adhoc and manual and scheduled jobs to be run.
 
 **Response**
 
-`Content-Type: application/xml`:
-
-``` xml
-<executions executionMode="active"/>
-```
-
-`Content-Type: application/json`:
 
 ``` json
 {
@@ -2503,13 +2126,6 @@ POST /api/{{ $apiMinVersion }}/system/executions/disable
 
 **Response**
 
-`Content-Type: application/xml`:
-
-``` xml
-<executions executionMode="passive"/>
-```
-
-`Content-Type: application/json`:
 
 ``` json
 {
@@ -2532,16 +2148,6 @@ To return a 503 when the mode is **passive** add `?passiveAs503=true` to the API
 GET /api/32/system/executions/status
 
 **Response**
-
-`Content-Type: application/xml`:
-
-``` xml
-<executions executionMode="active"/>
-or
-<executions executionMode="passive"/>
-```
-
-`Content-Type: application/json`:
 
 ``` json
 {"executionMode":"active"}
@@ -2571,68 +2177,7 @@ Alternately, specify a job ID to takeover only a single Job's schedule.
 
     PUT /api/{{ $apiMinVersion }}/scheduler/takeover
 
-Either XML or JSON request.
-
-`Content-Type: application/xml`:
-
-XML Document containing:
-
-* `<takeoverSchedule>` top level element
-  * optional `<server>` element, with one of required attributes:
-    * `uuid` server UUID to take over from
-    * `all` value of `true` to take over from all servers
-  * optional `<project>` element, required attribute: `name`
-  * optional `<job`> element, with attribute:
-    * `id` Job UUID to take over.
-
-Example for a single server UUID:
-
-``` xml
-<takeoverSchedule>
-    <server uuid="[UUID]" />
-</takeoverSchedule>
-```
-
-Example for all servers:
-
-``` xml
-<takeoverSchedule>
-    <server all="true"/>
-</takeoverSchedule>
-```
-
-Example for all servers and a specific project:
-
-``` xml
-<takeoverSchedule>
-    <server all="true"/>
-    <project name="[PROJECT]"/>
-</takeoverSchedule>
-```
-
-Example for a single Job:
-
-``` xml
-<takeoverSchedule>
-    <job id="[UUID]"/>
-</takeoverSchedule>
-```
-
-Example for multiple Jobs: (**since API v32**)
-
-``` xml
-<takeoverSchedule>
-    <server all="true"/>
-    <job id="[UUID]"/>
-    <job id="[UUID]"/>
-</takeoverSchedule>
-```
-
-**Note**: The `<server>` element can be the root of the document request for backwards compatibility.
-
-`Content-Type: application/json`:
-
-A JSON object.
+Request JSON object:
 
 * optional `server` entry, with one of these required entries:
     * `uuid` server UUID to take over from
@@ -2681,84 +2226,6 @@ Specify multiple jobs: (**since API v32**)
 
 **Response:**
 
-If request was XML, then a `<result>` element containing the following elements:
-
-*  `takeoverSchedule`
-    * `self`
-        * `server`
-            *  `@uuid` - this cluster server's UUID
-    *  `server`
-        *  `@uuid` - requested server UUID to take over, if specified in the request
-        *  `@all` - `true` if requested
-    *  `project` - name of project, if specified in request
-    *  `job`
-        *  `@id` - requested job UUID to take over, if specified in the request
-    *  `jobs` - set of successful and failed jobs taken over
-        *  `successful`/`failed` - job set
-            *  `@count` number of jobs in the set
-            *  `job` - one element for each job
-                *  `@id` Job ID
-                *  `@href` Job API HREF
-                *  `@permalink` Job GUI HREF
-                *  `@previous-owner` UUID of the cluster server that was the previous schedule owner
-
-Example XML Response, when `uuid` was specified:
-
-``` xml
-<result success="true">
-    <takeoverSchedule>
-        <self>
-          <server uuid='C677C663-F902-4B97-B8AC-4AA57B58DDD6' />
-        </self>
-        <server uuid='8F3D5976-2232-4529-847B-8E45764608E3' />
-        <jobs total='2'>
-          <successful count='2'>
-            <job id='a1aa53ac-73a6-4ead-bbe4-34afbff8e057'
-            href='http://localhost:9090/api/{{ $apiMinVersion }}/job/a1aa53ac-73a6-4ead-bbe4-34afbff8e057'
-            permalink='http://localhost:9090/rundeck/job/show/a1aa53ac-73a6-4ead-bbe4-34afbff8e057'
-            previous-owner="8F3D5976-2232-4529-847B-8E45764608E3" />
-            <job id='116e2025-7895-444a-88f7-d96b4f19fdb3'
-            href='http://localhost:9090/api/{{ $apiMinVersion }}/job/116e2025-7895-444a-88f7-d96b4f19fdb3'
-            permalink='http://localhost:9090/rundeck/job/show/116e2025-7895-444a-88f7-d96b4f19fdb3'
-            previous-owner="8F3D5976-2232-4529-847B-8E45764608E3" />
-          </successful>
-          <failed count='0'></failed>
-        </jobs>
-    </takeoverSchedule>
-</result>
-```
-
-Example XML Response, when `all` was specified:
-
-``` xml
-<result success="true">
-    <takeoverSchedule>
-        <self>
-          <server uuid='C677C663-F902-4B97-B8AC-4AA57B58DDD6' />
-        </self>
-        <server all='true' />
-        <jobs total='2'>
-          ...
-        </jobs>
-    </takeoverSchedule>
-</result>
-```
-
-Example XML Response, when `project` was specified:
-
-``` xml
-<result success="true">
-    <takeoverSchedule>
-        <self>
-          <server uuid='C677C663-F902-4B97-B8AC-4AA57B58DDD6' />
-        </self>
-        <project name='My Project' />
-        <jobs total='2'>
-          ...
-        </jobs>
-    </takeoverSchedule>
-</result>
-```
 
 JSON response for `uuid` specified:
 
@@ -2973,18 +2440,6 @@ For more information about ACL Policies see:
 
 **Response:**
 
-`Content-Type: application/xml`:  A `<resource>` containing more resources within a `<contents>` element:
-
-``` xml
-<resource path="" type="directory" href="http://server/api/{{ $apiMinVersion }}/system/acl/">
-  <contents>
-    <resource path="name.aclpolicy" type="file" href="http://server/api/{{ $apiMinVersion }}/system/acl/name.aclpolicy" name="name.aclpolicy"/>
-  </contents>
-</resource>
-```
-
-`Content-Type: application/json`
-
 `resources` contains a list of entries for each policy
 
 ``` json
@@ -3007,7 +2462,7 @@ For more information about ACL Policies see:
 ### Get an ACL Policy
 
 Retrieve the YAML text of the ACL Policy file.  If YAML or text content is requested, the contents will be returned directly.
-Otherwise if XML or JSON is requested, the YAML text will be wrapped within that format.
+Otherwise if JSON is requested, the YAML text will be wrapped within that format.
 
 **Request:**
 
@@ -3036,19 +2491,6 @@ by:
 }
 ```
 
-`Content-Type: application/xml`:  The content is wrapped in a `CDATA` section to preserve whitespace formatting.
-
-``` xml
-<contents><![CDATA[description: "my policy"
-context:
-  application: rundeck
-for:
-  project:
-    - allow: read
-by:
-  group: build]]></contents>
-```
-
 
 ### Create an ACL Policy
 
@@ -3060,7 +2502,7 @@ Use `POST` to create a policy.
 
 If the `Content-Type` is `application/yaml` or `text/plain`, then the request body is the ACL policy contents directly.
 
-Otherwise, you can use XML or JSON in the same format as returned by [Get an ACL Policy](#get-an-acl-policy):
+Otherwise, you can use JSON in the same format as returned by [Get an ACL Policy](#get-an-acl-policy):
 
 `Content-Type: application/json`
 
@@ -3069,19 +2511,6 @@ Otherwise, you can use XML or JSON in the same format as returned by [Get an ACL
   "contents": "description: \"my policy\"\ncontext:\n  application: rundeck\nfor:\n  project:\n    - allow: read\nby:\n  group: build"
 }
 
-```
-
-`Content-Type: application/xml`
-
-``` xml
-<contents><![CDATA[description: "my policy"
-context:
-  application: rundeck
-for:
-  project:
-    - allow: read
-by:
-  group: build]]></contents>
 ```
 
 **Response:**
@@ -3130,20 +2559,6 @@ Because each [ACLPOLICY][] document can contain multiple Yaml documents, each wi
 ```
 
 
-`Content-Type: application/xml`
-
-``` xml
-<validation valid="false">
-  <policy id="file1.aclpolicy[1]">
-    <error>reason text...</error>
-    <error>reason2 text...</error>
-  </policy>
-  <policy id="file1.aclpolicy[2]">
-    <error>reason text...</error>
-  </policy>
-</validation>
-```
-
 ### Update an ACL Policy
 
 Use `PUT` to update a policy.
@@ -3152,7 +2567,7 @@ Use `PUT` to update a policy.
 
     PUT /api/{{ $apiMinVersion }}/system/acl/name.aclpolicy
 
-You can use Yaml, XML or JSON in the same request format as used by [Create an ACL Policy](#create-an-acl-policy).
+You can use Yaml or JSON in the same request format as used by [Create an ACL Policy](#create-an-acl-policy).
 
 **Response:**
 
@@ -3215,23 +2630,6 @@ The following parameters can also be used to narrow down the result set.
 
 **Response**
 
-`Content-Type: application/xml`:
-
-``` xml
-<jobs count="1">
-    <job id="ID" href="[API url]" permalink="[GUI URL]" scheduled="true/false" scheduleEnabled="true/false"
-       enabled="true/false"
-       >
-        <name>Job Name</name>
-        <group>Job Name</group>
-        <project>Project Name</project>
-        <description>...</description>
-    </job>
-</jobs>
-```
-
-`Content-Type: application/json`
-
 ``` json
 [
   {
@@ -3260,22 +2658,6 @@ In Cluster mode, additional information about what server UUID is the schedule o
 * `serverNodeUUID` UUID of the schedule owner server for this job
 * `serverOwner` boolean value whether the target server is the owner, `true/false`.
 
-`Content-Type: application/xml`:
-
-``` xml
-<job id="ID" href="[API url]" permalink="[GUI URL]" scheduled="true/false" scheduleEnabled="true/false"
-  enabled="true/false"
-  serverNodeUUID="[UUID]"
-  serverOwner="true/false"
-  >
-    <name>Job Name</name>
-    <group>Job Name</group>
-    <project>Project Name</project>
-    <description>...</description>
-</job>
-```
-
-`Content-Type: application/json`
 
 ``` json
 [
@@ -3388,7 +2770,7 @@ See [Listing Running Executions](#listing-running-executions).
 
 ### Exporting Jobs
 
-Export the job definitions for in XML or YAML formats.
+Export the job definitions for in XML, YAML, or JSON formats.
 
 **Request:**
 
@@ -3396,7 +2778,7 @@ Export the job definitions for in XML or YAML formats.
 
 Optional parameters:
 
-* `format` : can be "xml" or "yaml" or "json" (API v44+) to specify the output format. Default is "xml"
+* `format` : can be "xml" or "yaml" or "json" (API v44+) to specify the output format. Default is "json"
 
 Alternately, specify the `Accept` header to indicate the response type:
 
@@ -3419,11 +2801,9 @@ Depending on the requested format:
 * JSON: [job-json](/manual/document-format-reference/job-json-v44.md) format (API v44+)
 
 
-If an error occurs, then the output will be in XML format, using the common `result` element described in the [Response Format][] section.
-
 ### Importing Jobs ###
 
-Import job definitions in XML or YAML formats.
+Import job definitions in XML, YAML, or JSON formats.
 
 **Request:**
 
@@ -3442,7 +2822,7 @@ One of the following:
 
 Optional parameters:
 
-* `fileformat` : can be "xml" or "yaml" or "json" (API v44+) to specify the input format, if multipart of form input is sent. Default is "xml"
+* `fileformat` : can be "xml" or "yaml" or "json" (API v44+) to specify the input format, if multipart of form input is sent. Default is "json"
 * `dupeOption`: A value to indicate the behavior when importing jobs which already exist.  Value can be "skip", "create", or "update". Default is "create".
 * `uuidOption`: Whether to preserve or remove UUIDs from the imported jobs. Allowed values (**since V9**):
     *  `preserve`: Preserve the UUIDs in imported jobs.  This may cause the import to fail if the UUID is already used. (Default value).
@@ -3452,38 +2832,6 @@ Optional parameters:
 
 A set of status results.  Each imported job definition will be either "succeeded", "failed" or "skipped".  These status sections contain a `count` attribute declaring how many jobs they contain.  Within each one there will be 0 or more `job` elements.
 
-`Content-Type: application/xml`:
-
-``` xml
-<result success="true">
-    <succeeded count="x">
-        <!-- job elements -->
-    </succeeded>
-    <failed count="x">
-        <!-- job elements -->
-    </failed>
-    <skipped count="x">
-        <!-- job elements -->
-    </skipped>
-</result>
-```
-
-Each Job element will be of the form:
-
-``` xml
-<job index="x" href="[API url]">
-    <!-- ID, href, and permalink may not be present if the job was not created yet -->
-    <id>ID</id>
-    <permalink>[GUI url]</permalink>
-    <name>job name</name>
-    <group>job group</group>
-    <project>job project</project>
-    <!--if within the failed section, then an error section will be included -->
-    <error>Error message</error>
-</job>
-```
-
-`Content-Type: application/json`:
 
 ``` json
 {
@@ -3514,7 +2862,7 @@ Each array may contain a job data object:
 
 ### Getting a Job Definition ###
 
-Export a single job definition in XML or YAML formats.
+Export a single job definition in XML, YAML, or JSON formats.
 
 **Request:**
 
@@ -3522,7 +2870,7 @@ Export a single job definition in XML or YAML formats.
 
 Optional parameters:
 
-* `format` : can be "xml" or "yaml" or "json" (API v44+) to specify the output format. Default is "xml"
+* `format` : can be "xml" or "yaml" or "json" (API v44+) to specify the output format. Default is "json"
 
 Alternately, specify the `Accept` header to indicate the response type:
 
@@ -3538,7 +2886,6 @@ Depending on the requested format:
 * YAML: [job-yaml](/manual/document-format-reference/job-yaml-v12.md) format
 * JSON: [job-json](/manual/document-format-reference/job-json-v44.md) format (API v44+)
 
-If an error occurs, then the output will be in XML format, using the common `result` element described in the [Response Format][] section.
 
 ### Deleting a Job Definition ###
 
@@ -3569,7 +2916,7 @@ Either Query parameters:
 * `ids`: The Job IDs to delete, can be specified multiple times
 * `idlist`: The Job IDs to delete as a single comma-separated string.
 
-Or JSON/XML content:
+Or JSON content:
 
 `Content-Type: application/json`
 
@@ -3585,50 +2932,6 @@ Or JSON/XML content:
 
 Note: you can combine `ids` with `idlist`
 
-`application/xml` response:
-
-The common `result` element described in the [Response Format][] section, indicating success or failure and any messages.
-
-If successful, then the `result` will contain a `deleteJobs` element with two sections of results, `succeeded` and `failed`:
-
-``` xml
-<deleteJobs requestCount="#" allsuccessful="true/false">
-    <succeeded count="1">
-        <deleteJobRequest id="[job ID]">
-            <message>[message]</message>
-        </deleteJobRequest>
-    </succeeded>
-    <failed count="1">
-        <deleteJobRequest id="[job ID]" errorCode="[code]">
-            <error>[message]</error>
-        </deleteJobRequest>
-    </failed>
-</deleteJobs>
-```
-
-
-`deleteJobs` will have two attributes:
-
-* `requestCount`: the number of job IDs that were in the delete request
-* `allsuccessful`: true/false: true if all job deletes were successful, false otherwise.
-
-The response may contain only one of `succeeded` or `failed`, depending on the result.
-
-The `succeeded` and `failed` sections contain multiple `deleteJobRequest` elements.
-
-Each `deleteJobRequest` under the `succeeded` section will contain:
-
-* `id` attribute - the Job ID
-* `message` sub-element - result message for the delete request
-
-
-Each `deleteJobRequest` under the `failed` section will contain:
-
-* `id` attribute - the Job ID
-* `error` sub-element - result error message for the delete request
-* `errorCode` attribute - a code indicating the type of failure, currently one of `failed`, `unauthorized` or `notfound`.
-
-`application/json` response:
 
 
 ``` json
@@ -3660,13 +2963,6 @@ Enable executions for a job. (ACL requires `toggle_execution` action for a job.)
 
 **Response:**
 
-`application/xml`
-
-```xml
-<success>true</success>
-```
-
-`application/json`
 
 ```json
 {"success":true}
@@ -3724,7 +3020,7 @@ Query parameters:
 * `ids`: The Job IDs to delete, can be specified multiple times
 * `idlist`: The Job IDs to delete as a single comma-separated string.
 
-Or JSON/XML content:
+Or JSON content:
 
 `Content-Type: application/json`
 
@@ -3742,45 +3038,6 @@ Note: you can combine `ids` with `idlist`.
 
 **Response:**
 
-If successful, then the `result` will contain a `toggleExecution` element with two sections of results, `succeeded` and `failed`:
-
-``` xml
-<toggleExecution enabled="true" requestCount="#" allsuccessful="true/false">
-    <succeeded count="1">
-        <toggleExecutionResult id="[job ID]">
-            <message>[message]</message>
-        </toggleExecutionResult>
-    </succeeded>
-    <failed count="1">
-        <toggleExecutionResult id="[job ID]" errorCode="[code]">
-            <error>[message]</error>
-        </toggleExecutionResult>
-    </failed>
-</toggleExecution>
-```
-
-
-`toggleExecution` has these attributes:
-
-* `enabled`: `true` or `false`, depending on whether `enable` or `disable` was requested.
-* `requestCount`: the number of job IDs that were in the request
-* `allsuccessful`: true/false: true if all modifications were successful, false otherwise.
-
-The response may contain only one of `succeeded` or `failed`, depending on the result.
-
-The `succeeded` and `failed` sections contain multiple `toggleExecutionResult` elements.
-
-Each `toggleExecutionResult` under the `succeeded` section will contain:
-
-* `id` attribute - the Job ID
-* `message` sub-element - result message for the request
-
-
-Each `toggleExecutionResult` under the `failed` section will contain:
-
-* `id` attribute - the Job ID
-* `error` sub-element - result error message for the request
-* `errorCode` attribute - a code indicating the type of failure, currently one of `failed`, `unauthorized` or `notfound`.
 
 `application/json` response:
 
@@ -3804,6 +3061,10 @@ The list of succeeded/failed will contain objects of this form:
   "message": "(success or failure message)"
 }
 ```
+
+* `id` attribute - the Job ID
+* `error` sub-element - result error message for the request
+* `errorCode` attribute - a code indicating the type of failure, currently one of `failed`, `unauthorized` or `notfound`.
 
 ### Bulk Toggle Job Schedules
 
@@ -3821,7 +3082,7 @@ Query parameters:
 * `ids`: The Job IDs to delete, can be specified multiple times
 * `idlist`: The Job IDs to delete as a single comma-separated string.
 
-Or JSON/XML content:
+Or JSON content:
 
 `Content-Type: application/json`
 
@@ -3838,48 +3099,6 @@ Or JSON/XML content:
 Note: you can combine `ids` with `idlist`.
 
 **Response:**
-
-If successful, then the `result` will contain a `toggleSchedule` element with two sections of results, `succeeded` and `failed`:
-
-``` xml
-<toggleSchedule enabled="true" requestCount="#" allsuccessful="true/false">
-    <succeeded count="1">
-        <toggleScheduleResult id="[job ID]">
-            <message>[message]</message>
-        </toggleScheduleResult>
-    </succeeded>
-    <failed count="1">
-        <toggleScheduleResult id="[job ID]" errorCode="[code]">
-            <error>[message]</error>
-        </toggleScheduleResult>
-    </failed>
-</toggleSchedule>
-```
-
-
-`toggleSchedule` has these attributes:
-
-* `enabled`: `true` or `false`, depending on whether `enable` or `disable` was requested.
-* `requestCount`: the number of job IDs that were in the request
-* `allsuccessful`: true/false: true if all modifications were successful, false otherwise.
-
-The response may contain only one of `succeeded` or `failed`, depending on the result.
-
-The `succeeded` and `failed` sections contain multiple `toggleScheduleResult` elements.
-
-Each `toggleScheduleResult` under the `succeeded` section will contain:
-
-* `id` attribute - the Job ID
-* `message` sub-element - result message for the request
-
-
-Each `toggleScheduleResult` under the `failed` section will contain:
-
-* `id` attribute - the Job ID
-* `error` sub-element - result error message for the request
-* `errorCode` attribute - a code indicating the type of failure, currently one of `failed`, `unauthorized` or `notfound`.
-
-`application/json` response:
 
 
 ``` json
@@ -3902,6 +3121,11 @@ The list of succeeded/failed will contain objects of this form:
 }
 ```
 
+
+* `id` attribute - the Job ID
+* `error` sub-element - result error message for the request
+* `errorCode` attribute - a code indicating the type of failure, currently one of `failed`, `unauthorized` or `notfound`.
+
 ### Get Job Metadata
 
 Get metadata about a specific job.
@@ -3912,20 +3136,6 @@ Get metadata about a specific job.
 
 **Response:**
 
-`Content-Type: application/xml`: A single `job` element in the same format as [Listing Jobs](#listing-jobs):
-
-``` xml
-<job id="ID" href="[API url]" permalink="[GUI URL]" scheduled="true/false" scheduleEnabled="true/false"
-   enabled="true/false" averageDuration="[ms]"
-   >
-    <name>Job Name</name>
-    <group>Job Name</group>
-    <project>Project Name</project>
-    <description>...</description>
-</job>
-```
-
-`Content-Type: application/json`
 
 A single object:
 
@@ -3979,19 +3189,6 @@ is the option name. The filename is specified normally within the multi-part req
 
 **Response:**
 
-`Content-Type: application/xml`:
-
-``` xml
-<jobFileUpload>
-  <total>$total</total>
-  <options>
-    <entry key="$optionName">$fileKey</entry>
-    <!-- ... -->
-  </options>
-</jobFileUpload>
-```
-
-`Content-Type: application/json`:
 
 ``` json
 {
@@ -4100,27 +3297,6 @@ Query Parameters:
 }
 ```
 
-```xml
-<jobFiles>
-  <paging offset="0" max="20" total="1" count="1" />
-  <files>
-    <file id="023057ee-418f-4da7-9ae5-e065ac91eb5a">
-      <user>admin</user>
-      <fileState>temp</fileState>
-      <sha>
-      9284ed4fd7fe1346904656f329db6cc49c0e7ae5b8279bff37f96bc6eb59baad</sha>
-      <jobId>7b3fff59-7a2d-4a31-a5b2-dd26177c823c</jobId>
-      <dateCreated>2017-02-24 14:57:32.746 PST</dateCreated>
-      <serverNodeUUID>
-      3425B691-7319-4EEE-8425-F053C628B4BA</serverNodeUUID>
-      <fileName />
-      <size>12</size>
-      <expirationDate>2017-02-24 14:58:02.655 PST</expirationDate>
-      <execId />
-    </file>
-  </files>
-</jobFiles>
-```
 
 ### Get Info About an Uploaded File
 
@@ -4148,20 +3324,6 @@ Get info about an uploaded file given its ID.
 }
 ```
 
-```xml
-<file id="f985864b-fa1b-4e09-af7a-4315e9908372">
-  <user>admin</user>
-  <fileState>deleted</fileState>
-  <sha>9284ed4fd7fe1346904656f329db6cc49c0e7ae5b8279bff37f96bc6eb59baad</sha>
-  <jobId>7b3fff59-7a2d-4a31-a5b2-dd26177c823c</jobId>
-  <dateCreated>2017-02-24 11:10:33.829 PST</dateCreated>
-  <serverNodeUUID>3425B691-7319-4EEE-8425-F053C628B4BA</serverNodeUUID>
-  <fileName />
-  <size>12</size>
-  <expirationDate>2017-02-24 11:11:03.741 PST</expirationDate>
-  <execId>2741</execId>
-</file>
-```
 
 ### Get Job Forecast
 
@@ -4188,24 +3350,6 @@ Query Parameters:
 
 **Response:**
 
-`Content-Type: application/xml`: A single job element with the array `futureScheduledExecutions`:
-
-``` xml
-<job id="ID" href="[API url]" permalink="[GUI URL]" scheduled="true/false" scheduleEnabled="true/false"
-   enabled="true/false" averageDuration="[ms]"
-   >
-    <name>Job Name</name>
-    <group>Job Group</group>
-    <futureScheduledExecutions>
-        <date>[W3C date]</date>
-        <date>[W3C date]</date>
-    </futureScheduledExecutions>
-    <project>Project Name</project>
-    <description>...</description>
-</job>
-```
-
-`Content-Type: application/json`
 
 A single object:
 
@@ -4326,76 +3470,7 @@ Optional Query Parameters:
 
 * `jobIdFilter`: Specifies a Job ID, the results will only contain running executions for the given job. **Since API v32**
 
-Response with `Content-Type: application/xml`: An `<executions>` element containing multiple `<execution>` elements.
-
-``` xml
-<executions count="[count]" offset="[offset]" max="[max]" total="[total]">
-    <execution...>...</execution>
-    <execution...>...</execution>
-</executions>
-```
-
-The `executions` element will have paging attributes:
-
-* `max`: maximum number of results per page
-* `offset`: offset from first of all results
-* `total`: total number of results
-* `count`: number of results in the response
-
-Each `execution` of the form:
-
-``` xml
-<execution id="[ID]" href="[url]" permalink="[url]" status="[status]" project="[project]">
-    <user>[user]</user>
-    <date-started unixtime="[unixtime]">[datetime]</date-started>
-    <customStatus>[string]</customStatus>
-
-    <!-- optional job context if the execution is associated with a job -->
-    <job id="jobID" averageDuration="[milliseconds]" href="[API url]" permalink="[GUI url]">
-        <name>..</name>
-        <group>..</group>
-        <description>..</description>
-        <!-- optional if arguments are passed to the job since v10 -->
-        <options>
-            <option name="optname" value="optvalue"/>...
-        </options>
-    </job>
-
-    <!-- description of the execution -->
-    <description>...</description>
-
-    <!-- argString (arguments) of the execution -->
-    <argstring>...</argstring>
-
-    <!-- if Rundeck is in cluster mode -->
-    <serverUUID>...</serverUUID>
-
-    <!-- The following elements included only if the execution has ended -->
-
-    <!-- the completion time of the execution -->
-    <date-ended unixtime="[unixtime]">[datetime]</date-ended>
-
-    <!-- if the execution was aborted, the username who aborted it: -->
-    <abortedby>[username]</abortedby>
-
-    <!-- if the execution was is finished, a list of node names that succeeded -->
-    <successfulNodes>
-        <node name="node1"/>
-        <node name="node2"/>
-    </successfulNodes>
-
-    <!-- if the execution was is finished, a list of node names that failed -->
-    <failedNodes>
-        <node name="node3"/>
-        <node name="node4"/>
-    </failedNodes>
-
-</execution>
-```
-
-**Since API v14, JSON format is available**
-
-Response with `Content-Type: application/json`:
+**Response:**
 
 It contains a `paging` entry with paging information, and an `executions` entry with execution information:
 
@@ -4494,10 +3569,6 @@ Get the status for an execution by ID.
 
 **Response:**
 
-With `Content-Type: application/xml`:
-
-A single `<execution>` item, see [Listing Running Executions](#listing-running-executions).
-
 With `Content-Type: application/json`, a single object:
 
 ``` json
@@ -4570,27 +3641,6 @@ List input files used for an execution.
   ]
 }
 ```
-```xml
-<executionFiles>
-  <files>
-    <file id="382c7596-435b-4103-8781-6b32fbd629b2">
-      <user>admin</user>
-      <fileState>deleted</fileState>
-      <sha>
-      9284ed4fd7fe1346904656f329db6cc49c0e7ae5b8279bff37f96bc6eb59baad</sha>
-      <jobId>7b3fff59-7a2d-4a31-a5b2-dd26177c823c</jobId>
-      <dateCreated>2017-02-24 15:26:48.197 PST</dateCreated>
-      <serverNodeUUID>
-      3425B691-7319-4EEE-8425-F053C628B4BA</serverNodeUUID>
-      <fileName />
-      <size>12</size>
-      <expirationDate>2017-02-24 15:27:18.65 PST</expirationDate>
-      <execId>2837</execId>
-    </file>
-  </files>
-</executionFiles>
-```
-
 ### Delete an Execution
 
 Delete an execution by ID.
@@ -4622,11 +3672,10 @@ The IDs can be specified in two ways:
         POST /api/12/executions/delete?ids=1,2,17
         Content-Length: 0
 
-2. Using a request body of either XML or JSON data.
+2. Using a request body of JSON data.
 
 If using a request body, the formats are specified below:
 
-`Content-Type: application/json`
 
 ``` json
 {"ids": [ 1, 2, 17 ] }
@@ -4638,21 +3687,8 @@ If using a request body, the formats are specified below:
 [ 1, 2, 17 ]
 ```
 
-`Content-Type: application/xml`
-
-``` xml
-<executions>
-    <execution id="1"/>
-    <execution id="2"/>
-    <execution id="17"/>
-</executions>
-```
-
 Response:
 
-The response format will be either `xml` or `json`, depending on the `Accept` header.
-
-`Content-Type: application/json`
 
 ``` json
 {
@@ -4684,20 +3720,6 @@ The JSON fields will be:
 * `successCount`: number of deletion attempts that succeeded
 * `allsuccessful`: true if all deletions were successful
 * `requestCount`: number of requested execution deletions
-
-`Content-Type: application/xml`
-
-``` xml
-<deleteExecutions requestCount='4' allsuccessful='false'>
-  <successful count='0' />
-  <failed count='4'>
-    <execution id='131' message='Unauthorized: Delete execution 131' />
-    <execution id='109' message='Not found: 109' />
-    <execution id='81' message='Not found: 81' />
-    <execution id='74' message='Not found: 74' />
-  </failed>
-</deleteExecutions>
-```
 
 ### Execution Query
 
@@ -4772,22 +3794,6 @@ Paging parameters `max` and `offset` will have no effect on the result.
 
 **Response**
 
-`Content-Type: application/xml`
-
-A single result element with `<duration>` containing duration info, and `<total>` with total count.
-
-``` xml
-<result>
-  <duration>
-    <average>0s</average>
-    <min>0s</min>
-    <max>39s</max>
-  </duration>
-  <total>1325</total>
-</result>
-```
-
-`Content-Type: application/json`
 
 An object with `duration` entry containing duration stats, and a `total` entry with total executions.
 
@@ -4813,7 +3819,6 @@ Get detail about the node and step state of an execution by ID. The execution ca
 
 Specify expected output format with the `Accept: ` HTTP header. Supported formats:
 
-* `application/xml`
 * `application/json`
 
 The content of the response contains state information for different parts of the workflow:
@@ -4858,12 +3863,6 @@ Each Workflow Section within the result set will contain these structures
 
 Consists of a sequence of node name entries, identifying each entry by a name.
 
-In XML, a sequence of `node` elements:
-
-      <node name="abc" />
-      <node name="xyz" />
-      <!-- ... more node elements -->
-
 In JSON, an array of node names.
 
 **Overall Node State List**
@@ -4878,23 +3877,6 @@ State Indicators:
 * `stepctx` Step Context Identifier
 * `executionState` execution state for this step and node
 
-In XML:
-
-``` xml
-<node name="abc">
-  <steps>
-    <step>
-      <stepctx>1</stepctx>
-      <executionState>SUCCEEDED</executionState>
-    </step>
-    <step>
-      <stepctx>2/1</stepctx>
-      <executionState>SUCCEEDED</executionState>
-    </step>
-  </steps>
-</node>
-<!-- more node elements -->
-```
 
 In JSON: an object where each key is a node name, and the value is an array of State indicators.  A state indicator is an object with two keys, `stepctx` and `executionState`
 
@@ -4917,7 +3899,6 @@ In JSON: an object where each key is a node name, and the value is an array of S
 
 A list of Step State information.  Each step is identified by its number in the workflow (starting at 1) and its step context
 
-* `num` the step number (XML)
 * `id` the step number (JSON)
 * `stepctx` the step context identifier in the workflow
 * general overall state information for the step
@@ -4941,17 +3922,6 @@ A sequence of state details for a set of Nodes for the containing step. Each ent
     - `updateTime` last update time
     - `executionState` overall execution state
 
-In XML:
-
-``` xml
-<nodeState name="abc">
-  <startTime>2014-01-13T20:58:59Z</startTime>
-  <updateTime>2014-01-13T20:59:04Z</updateTime>
-  <endTime>2014-01-13T20:59:04Z</endTime>
-  <executionState>SUCCEEDED</executionState>
-</nodeState>
-<!-- more nodeState elements -->
-```
 
 In JSON: an object with node names as keys.  Values are objects containing the state information entries.
 
@@ -4966,107 +3936,6 @@ In JSON: an object with node names as keys.  Values are objects containing the s
 }
 ```
 
-**Full XML Example**
-
-
-``` xml
-<result success="true">
-  <executionState id="135">
-    <startTime>2014-01-13T20:58:59Z</startTime>
-    <updateTime>2014-01-13T20:59:10Z</updateTime>
-    <stepCount>2</stepCount>
-    <allNodes>
-      <nodes>
-        <node name="dignan" />
-      </nodes>
-    </allNodes>
-    <targetNodes>
-      <nodes>
-        <node name="dignan" />
-      </nodes>
-    </targetNodes>
-    <executionId>135</executionId>
-    <serverNode>dignan</serverNode>
-    <endTime>2014-01-13T20:59:10Z</endTime>
-    <executionState>SUCCEEDED</executionState>
-    <completed>true</completed>
-    <steps>
-      <step stepctx="1" id="1">
-        <startTime>2014-01-13T20:58:59Z</startTime>
-        <nodeStep>true</nodeStep>
-        <updateTime>2014-01-13T20:58:59Z</updateTime>
-        <endTime>2014-01-13T20:59:04Z</endTime>
-        <executionState>SUCCEEDED</executionState>
-        <nodeStates>
-          <nodeState name="dignan">
-            <startTime>2014-01-13T20:58:59Z</startTime>
-            <updateTime>2014-01-13T20:59:04Z</updateTime>
-            <endTime>2014-01-13T20:59:04Z</endTime>
-            <executionState>SUCCEEDED</executionState>
-          </nodeState>
-        </nodeStates>
-      </step>
-      <step stepctx="2" id="2">
-        <startTime>2014-01-13T20:59:04Z</startTime>
-        <nodeStep>false</nodeStep>
-        <updateTime>2014-01-13T20:59:10Z</updateTime>
-        <hasSubworkflow>true</hasSubworkflow>
-        <endTime>2014-01-13T20:59:10Z</endTime>
-        <executionState>SUCCEEDED</executionState>
-        <workflow>
-          <startTime>2014-01-13T20:59:04Z</startTime>
-          <updateTime>2014-01-13T20:59:10Z</updateTime>
-          <stepCount>1</stepCount>
-          <allNodes>
-            <nodes>
-              <node name="dignan" />
-            </nodes>
-          </allNodes>
-          <targetNodes>
-            <nodes>
-              <node name="dignan" />
-            </nodes>
-          </targetNodes>
-          <endTime>2014-01-13T20:59:10Z</endTime>
-          <executionState>SUCCEEDED</executionState>
-          <completed>true</completed>
-          <steps>
-            <step stepctx="2/1" id="1">
-              <startTime>2014-01-13T20:59:04Z</startTime>
-              <nodeStep>true</nodeStep>
-              <updateTime>2014-01-13T20:59:04Z</updateTime>
-              <endTime>2014-01-13T20:59:10Z</endTime>
-              <executionState>SUCCEEDED</executionState>
-              <nodeStates>
-                <nodeState name="dignan">
-                  <startTime>2014-01-13T20:59:04Z</startTime>
-                  <updateTime>2014-01-13T20:59:10Z</updateTime>
-                  <endTime>2014-01-13T20:59:10Z</endTime>
-                  <executionState>SUCCEEDED</executionState>
-                </nodeState>
-              </nodeStates>
-            </step>
-          </steps>
-        </workflow>
-      </step>
-    </steps>
-    <nodes>
-      <node name="dignan">
-        <steps>
-          <step>
-            <stepctx>1</stepctx>
-            <executionState>SUCCEEDED</executionState>
-          </step>
-          <step>
-            <stepctx>2/1</stepctx>
-            <executionState>SUCCEEDED</executionState>
-          </step>
-        </steps>
-      </node>
-    </nodes>
-  </executionState>
-</result>
-```
 
 **Full JSON example**
 
@@ -5189,9 +4058,9 @@ Get the output for an execution by ID.  The execution can be currently running o
     GET /api/{{ $apiMinVersion }}/execution/[ID]/output/node/[NODE]/step/[STEPCTX]
     GET /api/{{ $apiMinVersion }}/execution/[ID]/output/step/[STEPCTX]
 
-The log output for each execution is stored in a file on the Rundeck server, and this API endpoint allows you to retrieve some or all of the output, in several possible formats: json, XML, and plain text.  When retrieving the plain text output, some metadata about the log is included in HTTP Headers.  JSON and XML output formats include metadata about each output log line, as well as metadata about the state of the execution and log file, and your current index location in the file.
+The log output for each execution is stored in a file on the Rundeck server, and this API endpoint allows you to retrieve some or all of the output, in several possible formats: json, and plain text.  When retrieving the plain text output, some metadata about the log is included in HTTP Headers.  JSON output format includes metadata about each output log line, as well as metadata about the state of the execution and log file, and your current index location in the file.
 
-Output can be selected by Node or Step Context or both as of API v10.
+Output can be selected by Node or Step Context or both.
 
 Several parameters can be used to retrieve only part of the output log data.  You can use these parameters to more efficiently retrieve the log content over time while an execution is running.
 
@@ -5250,7 +4119,6 @@ Specifying an output format can occur in several ways.  The simplest ways are to
 When using a URL format, use one of these values for the format:
 
 * `json`
-* `xml`
 * `text`
 
 To use a URL parameter, add a `?format=` parameter to your request.
@@ -5263,27 +4131,23 @@ To use a URL extension, add a ".[format]" to the end of the URL, but prior to an
 
 E.g.:
 
-    GET /api/{{ $apiMinVersion }}/execution/3/output.xml?offset=120
+    GET /api/{{ $apiMinVersion }}/execution/3/output.json?offset=120
 
 #### Output Format using Accept Header
 
 You can also specify the format using Content Negotiation techniques by including an `Accept` header in your request, and specifying a valid MIME-type to represent one of the formats:
 
-* For XML, `text/xml` or `application/xml`
 * For JSON, `application/json` or `text/json`
 * For plain text, `text/plain`
 
 E.g.:
 
     GET /api/{{ $apiMinVersion }}/execution/3/output
-    Accept: */xml
+    Accept: */json
 
 #### Output Content
 
 The result will contain a set of data values reflecting the execution's status, as well as the status and read location in the output file.
-
-* In JSON, there will be an object containing these entries.
-* In XML, within the standard [Response Format][] `result` there will be an `output` element, containing these sub-elements, each with a text value.
 
 Entries:
 
@@ -5309,8 +4173,7 @@ Entries:
 
 Each log entry will be included in a section called `entries`.
 
-* In JSON, `entries` will contain an array of Objects, each containing the following format
-* In XML, the `entries` element will contain a sequence of `entry` elements
+* `entries` will contain an array of Objects, each containing the following format
 
 Content of each Log Entry:
 
@@ -5323,11 +4186,6 @@ Content of each Log Entry:
 * `node`: Node name
 * `stepctx`: The step context such as `1` or `1/2/3`
 * `metadata`: Map of extra metadata for the entry (API v43+)
-
-**Note for API version 5:**
-
-For API requests using version `5` only, the XML `entry` will have the log message as the text value. Otherwise the log entry
-value will be within the `log` attribute.
 
 
 ##### Log Entries in Compacted Form (API v21+)
@@ -5343,8 +4201,7 @@ In JSON format, if the `compactedAttr` value is `log` in the response data, and 
 When no values changed from the previous Log Entry, the Log Entry will be an empty hash.
 
 When an entry value is not present in the subsequent Log Entry, but was present in the previous
-one, in JSON this will be represented with a `null` value, and in XML the entry name will be
-included in a `removed` attribute.
+one, in JSON this will be represented with a `null` value.
 
 Example (JSON):
 
@@ -5385,23 +4242,6 @@ this Log Entry.
     }
   ]
 }
-```
-
-Example (XML) with the same sequence as above:
-
-```xml
-<output>
-  <id>1</id>
-  <!-- ... snip ... -->
-  <compacted>true</compacted>
-  <entries>
-    <entry time='17:00:00' absolute_time='1970-01-02T01:00:00Z' log='This is the first log message' level='NORMAL' user="bob" node="anode1" stepctx="1"/>
-    <entry log='This is the second log message' />
-    <entry />
-    <entry log='This is the fourth log message' level='DEBUG' stepctx='2' />
-    <entry log='This is the fifth log message' removed='node,stepctx' />
-  </entries>
-</output>
 ```
 
 #### Text Format Content
@@ -5460,15 +4300,6 @@ Optional Parameters:
 
 **Response:**
 
-`Content-Type: application/xml`: The result will contain a `success/message` element will contain a descriptive message.  The status of the abort action will be included as an element:
-
-``` xml
-<abort status="[abort-state]">
-    <execution id="[id]" status="[status]"/>
-</abort>
-```
-
-`Content-Type: application/json`:
 
 ``` json
 {
@@ -5586,15 +4417,6 @@ Or the request can be `Content-type: application/json`:
 
 **Response:**
 
-`Content-Type: application/xml`: A success message, and a single `<execution>` item identifying the
-new execution by ID:
-
-``` xml
-<execution id="X" href="[API Href]" permalink="[GUI href]"/>
-```
-
-`Content-Type: application/json`:
-
 ``` json
 {
   "message": "Immediate execution scheduled (X)",
@@ -5657,15 +4479,6 @@ If using a json document with Content-type: `application/json`:
 
 #### Response
 
-`Content-Type: application/xml`: A success message, and a single `<execution>` item identifying the
-new execution by ID:
-
-``` xml
-<execution id="X" href="[API Href]" permalink="[GUI href]"/>
-```
-
-`Content-Type: application/json`:
-
 ``` json
 {
   "message": "Immediate execution scheduled (X)",
@@ -5695,8 +4508,8 @@ With Content-Type: `application/x-www-form-urlencoded` form or query parameters 
 * `nodeThreadcount`: threadcount to use
 * `nodeKeepgoing`: if "true", continue executing on other nodes even if some fail.
 * `asUser` : specifies a username identifying the user who ran the script. Requires `runAs` permission.
-* `scriptInterpreter`: a command to use to run the script (*since version 8*)
-* `interpreterArgsQuoted`: `true`/`false`: if true, the script file and arguments will be quoted as the last argument to the `scriptInterpreter` (*since version 8*)
+* `scriptInterpreter`: a command to use to run the script
+* `interpreterArgsQuoted`: `true`/`false`: if true, the script file and arguments will be quoted as the last argument to the `scriptInterpreter`
 * `fileExtension`: extension of of the script file on the remote node (*since version 14*)
 
 Node filter parameters as described under [Using Node Filters](#using-node-filters)
@@ -5723,15 +4536,6 @@ If using a json document with Content-type: `application/json`:
 
 A success message, and a single `<execution>` item identifying the
 new execution by ID:
-
-``` xml
-<execution id="X" href="[API Href]" permalink="[GUI href]"/>
-```
-
-**Since API version 8**: The script interpreter and whether the arguments to the interpreter are quoted can be specified.
-
-
-`Content-Type: application/json`:
 
 ``` json
 {
@@ -5781,59 +4585,13 @@ Content-Type: [...]
 
 ### List keys ####
 
-Lists resources at the specified PATH, provides a JSON or XML response based on the `Accept` request header.
+Lists resources at the specified PATH.
 
 Each resource has a type of `file` or `directory`.
 
     GET /api/{{ $apiMinVersion }}/storage/keys/[PATH]/
 
-Response:
-
-`application/xml`
-
-``` xml
-<resource path='keys' type='directory'
-url='http://dignan.local:4440/api/{{ $apiMinVersion }}/storage/keys'>
-  <contents count='3'>
-    <resource path='keys/test1.pem' type='file'
-    url='http://dignan.local:4440/api/{{ $apiMinVersion }}/storage/keys/test1.pem'
-    name='test1.pem'>
-      <resource-meta>
-        <Rundeck-content-type>
-        application/octet-stream</Rundeck-content-type>
-        <Rundeck-content-size>1679</Rundeck-content-size>
-        <Rundeck-content-mask>content</Rundeck-content-mask>
-        <Rundeck-key-type>private</Rundeck-key-type>
-      </resource-meta>
-    </resource>
-    <resource path='keys/test1.pub' type='file'
-    url='http://dignan.local:4440/api/{{ $apiMinVersion }}/storage/keys/test1.pub'
-    name='test1.pub'>
-      <resource-meta>
-        <Rundeck-content-type>
-        application/pgp-keys</Rundeck-content-type>
-        <Rundeck-content-size>393</Rundeck-content-size>
-        <Rundeck-key-type>public</Rundeck-key-type>
-      </resource-meta>
-    </resource>
-    <resource path='keys/monkey1.pub' type='file'
-    url='http://dignan.local:4440/api/{{ $apiMinVersion }}/storage/keys/monkey1.pub'
-    name='monkey1.pub'>
-      <resource-meta>
-        <Rundeck-content-type>
-        application/pgp-keys</Rundeck-content-type>
-        <Rundeck-content-size>640198</Rundeck-content-size>
-        <Rundeck-key-type>public</Rundeck-key-type>
-      </resource-meta>
-    </resource>
-    <resource path='keys/subdir' type='directory'
-    url='http://dignan.local:4440/api/{{ $apiMinVersion }}/storage/keys/subdir'>
-    </resource>
-  </contents>
-</resource>
-```
-
-`application/json`
+**Response:**
 
 ``` json
 {
@@ -5890,28 +4648,9 @@ url='http://dignan.local:4440/api/{{ $apiMinVersion }}/storage/keys'>
 
 Returns the metadata about the stored key file.
 
-Provides a JSON or XML response based on the `Accept` request header:
-
     GET /api/{{ $apiMinVersion }}/storage/keys/[PATH]/[FILE]
 
 Response:
-
-`application/xml`
-
-``` xml
-<resource path='keys/test1.pub' type='file'
-url='http://dignan.local:4440/api/{{ $apiMinVersion }}/storage/keys/test1.pub'
-name='test1.pub'>
-  <resource-meta>
-    <Rundeck-content-type>
-    application/pgp-keys</Rundeck-content-type>
-    <Rundeck-content-size>393</Rundeck-content-size>
-    <Rundeck-key-type>public</Rundeck-key-type>
-  </resource-meta>
-</resource>
-```
-
-`application/json`
 
 ``` json
 {
@@ -5988,21 +4727,6 @@ Create a new project.
 
     POST /api/{{ $apiMinVersion }}/projects
 
-XML content:
-
-`Content-Type: application/xml`
-
-``` xml
-<project>
-    <name>name</name>
-    <config>
-        <property key="propname" value="propvalue"/>
-        <!-- ... -->
-    </config>
-</project>
-```
-
-JSON content:
 
 `Content-Type: application/json`
 
@@ -6010,7 +4734,7 @@ JSON content:
 { "name": "myproject", "config": { "propname":"propvalue" } }
 ```
 
-Response:  XML or JSON project definition of the form indicated in the [Getting Project Info](#getting-project-info) section.
+Response:  JSON project definition of the form indicated in the [Getting Project Info](#getting-project-info) section.
 
 ### Getting Project Info ###
 
@@ -6020,28 +4744,6 @@ Get information about a project.
 
 **Response:**
 
-XML or JSON is determined by the `Accept` request header.
-
-`Content-Type: application/xml`
-
-``` xml
-<project url="http://server:4440/api/{{ $apiMinVersion }}/project/NAME">
-    <name>Project Name</name>
-    <description>...</description>
-    <!-- additional items -->
-</project>
-```
-
-If the user has `configure` authorization for the project, then the project configuration properties are included in the response.
-
-``` xml
-<config>
-    <property key="[name]" value="[value]"/>
-    <!-- ... -->
-</config>
-```
-
-`Content-Type: application/json`
 
 ``` json
 {
@@ -6082,18 +4784,6 @@ Retrieve or modify the project configuration data.  Requires `configure` authori
 
     GET /api/{{ $apiMinVersion }}/project/[PROJECT]/config
 
-Response, based on `Accept` header:
-
-`Content-Type: application/xml`
-
-``` xml
-<config>
-    <property key="name" value="value"/>
-    <!-- ... -->
-</config>
-```
-
-`Content-Type: application/json`
 
 ``` json
 {
@@ -6118,17 +4808,6 @@ Replaces all configuration data with the submitted values.
     PUT /api/{{ $apiMinVersion }}/project/[PROJECT]/config
 
 Content:
-
-`Content-Type: application/xml`
-
-``` xml
-<config>
-    <property key="key" value="value"/>
-    <!-- ... -->
-</config>
-```
-
-`Content-Type: application/json`
 
 ``` json
 {
@@ -6155,12 +4834,6 @@ URL:
     /api/{{ $apiMinVersion }}/project/[PROJECT]/config/[KEY]
 
 Request and response formats:
-
-`application/xml`:
-
-``` xml
-<property key="[KEY]" value="key value"/>
-```
 
 `application/json`:
 
@@ -6303,13 +4976,6 @@ with [/api/V/project/[PROJECT]/export/download/[TOKEN]][/api/V/project/\[PROJECT
 
 **Response:**
 
-`application/xml`
-
-``` xml
-<projectExport token="[TOKEN]" ready="true/false" precentage="#">
-</projectExport>
-```
-
 `application/json`
 
 ``` json
@@ -6392,44 +5058,12 @@ Response will indicate whether the imported contents had any errors:
 
 *All imported jobs and files were successful:*
 
-`application/xml`
-
-``` xml
-<import status="successful">
-</import>
-```
-
-`application/json`
-
 ``` json
 {"import_status":"successful"}
 ```
 
 *Some imported files failed:*
 
-`application/xml`
-
-``` xml
-<import status="failed">
-    <errors count="[#]">
-        <error>Job ABC could not be validated: ...</error>
-        <error>Job XYZ could not be validated: ...</error>
-    </errors>
-    <executionErrors count="[#]">
-        <error>Execution 123 could not be imported: ...</error>
-        <error>Execution 456 could not be imported: ...</error>
-    </executionErrors>
-    <aclErrors count="[#]">
-        <error>file.aclpolicy could not be validated: ...</error>
-        <error>file2.aclpolicy could not be validated: ...</error>
-    </aclErrors>
-    <otherErrors count="[#]"><!-- since API v35 -->
-        <error>webhooks could not be validated: ...</error>
-    </otherErrors>
-</import>
-```
-
-`application/json`
 
 ``` json
 {
@@ -6489,7 +5123,6 @@ source had any error, that is included as `errors`.
 Resources data includes any `description` provided by the source, whether it is `empty`, and
 whether it is `writeable`.  The `href` indicates the URL for [Listing and Updating the resources for the source][/api/V/project/\[PROJECT\]/source/\[INDEX\]/resources].
 
-`application/json`
 
 ``` json
 [
@@ -6515,26 +5148,6 @@ whether it is `writeable`.  The `href` indicates the URL for [Listing and Updati
 ]
 ```
 
-`application/xml`
-
-``` xml
-<?xml version="1.0" encoding="utf-8"?>
-<sources project="atest" count="2">
-  <source index="1" type="file">
-    <resources href="http://ecto1.local:4440/api/23/project/atest/source/1/resources"
-    writeable="true" empty="false">
-      <description>
-      /Users/greg/rundeck2.11/projects/atest/etc/resources.xml</description>
-    </resources>
-  </source>
-  <source index="2" type="stub">
-    <resources href="http://ecto1.local:4440/api/23/project/atest/source/2/resources"
-    writeable="false" />
-     <errors>File does not exist:
-    /Users/greg/rundeck2.11/projects/atest/etc/resources2.xml</errors>
-  </source>
-</sources>
-```
 
 #### Get a Resource Model Source for a Project
 
@@ -6588,7 +5201,7 @@ can be managed via the API. (See [Project Readme.md](/manual/projects/project-re
 
 Method: `GET`, `PUT` and `DELETE`.
 
-Format: XML, JSON and plain text formats.
+Format: JSON and plain text formats.
 
 #### GET Readme File
 
@@ -6600,14 +5213,6 @@ Response format depends on the `Accept:` HTTP header.
 `text/plain`:
 
     The readme contents
-
-`application/xml`:
-
-```xml
-<contents>The readme contents</contents>
-```
-
-*Note*: XML output will use CDATA to preserve formatting of the contents
 
 `application/json`:
 
@@ -6724,43 +5329,14 @@ The format for the `jobListFilter` and `excludeJobListFilter` is the job's group
 
 **Response:**
 
-`Content-Type: application/xml`:
-
-``` xml
-<events count="1">
-    <event starttime="[unixtime]" endtime="[unixtime]">
-      <title>[job title, or "adhoc"]</title>
-      <status>[status]</status>
-      <summary>[summary text]</summary>
-      <node-summary succeeded="[X]" failed="[Y]" total="[Z]"/>
-      <user>[user]</user>
-      <project>[project]</project>
-      <date-started>[start date]</date-started>
-      <date-ended>[end date]</date-ended>
-      <!-- if the execution was aborted, the username who aborted it: -->
-      <abortedby>[username]</abortedby>
-      <!-- if associated with an Execution, include the execution id: -->
-      <execution id="[execid]" href="[api href]" permalink="[gui href]"/>
-      <!-- if associated with a Job, include the Job ID: -->
-      <job id="[jobid]"  href="[api href]" permalink="[gui href]"/>
-    </event>
-</events>
-```
-
-The `events` element will also have `max`, `offset`, and `total` attributes, to indicate the state of paged results.  E.G:
-
-``` xml
-<events count="8" total="268" max="20" offset="260">
-...
-</events>
-```
+Paging information:
 
 `total` is the total number of events matching the query parameters.
 `count` is the number of events included in the results.
 `max` is the paging size as specified in the request, or with the default value of 20.
 `offset` is the offset specified, or default value of 0.
 
-**As of v14**: the `<execution>` and `<job>` elements will have a `href` attribute with the URL to the API for that resource, and a `permalink` attribute with the URL to the GUI view for the job or execution.
+The entries have a `href` attribute with the URL to the API for that resource, and a `permalink` attribute with the URL to the GUI view for the job or execution.
 
 `Content-Type: application/json`:
 
@@ -6819,8 +5395,7 @@ List or query the resources for a project.
 Optional Parameters:
 
 * `format` : Result format. Can use "xml", "yaml" or "json", or an installed ResourceFormat plugin name.
-    * Default is 'json' (API v23 and later)
-    * Default is 'xml' (API v22 and earlier)
+    * Default is 'json'
 * Node Filter parameters: You can select resources to include and exclude in the result set, see [Using Node Filters](#using-node-filters) below.
 
 Accept header:
@@ -6913,25 +5488,6 @@ Each plugin has these properties:
 * `description` descriptive text for the plugin
 
 
-`Content-Type: application/xml`:
-
-``` xml
-<scmPluginList>
-  <integration>[$integration]</integration>
-  <plugins>
-    <scmPluginDescription>
-      <configured>[$boolean]</configured>
-      <description>[$string]</description>
-      <enabled>[$boolean]</enabled>
-      <title>[$string]</title>
-      <type>[$type]</type>
-    </scmPluginDescription>
-  </plugins>
-</scmPluginList>
-```
-
-`Content-Type: application/json`:
-
 ``` json
 {
   "integration": "$integration",
@@ -6973,40 +5529,6 @@ Input fields have a number of properties:
 * `values` if the type is `Select` or `FreeSelect`, a list of string values to choose from
 
 
-`Content-Type: application/xml`:
-
-``` xml
-<scmPluginSetupInput>
-  <integration>$integration</integration>
-  <type>$type</type>
-  <fields>
-    <scmPluginInputField>
-      <defaultValue>$string</defaultValue>
-      <description>$string</description>
-      <name>$string</name>
-      <renderingOptions>
-        <entry key="$string">$string</entry>
-        <!-- <entry ... -->
-      </renderingOptions>
-      <required>$boolean</required>
-      <scope>$string</scope>
-      <title>$string</title>
-      <type>$string</type>
-      <values>
-        <!-- may be empty -->
-        <string>$string</string>
-        <string>$string</string>
-        <!-- <string ... -->
-      </values>
-    </scmPluginInputField>
-    <!--
-    <scmPluginInputField>...</scmPluginInputField>
-     -->
-  </fields>
-</scmPluginSetupInput>
-```
-
-`Content-Type: application/json`:
 
 ``` json
 {
@@ -7046,19 +5568,6 @@ If a validation error occurs with the configuration, then the response will incl
 
 Content:
 
-`Content-Type: application/xml`
-
-``` xml
-<scmPluginConfig>
-    <config>
-        <entry key="key">value</entry>
-        <entry key="key2">value2</entry>
-        <!-- ... -->
-    </config>
-</scmPluginConfig>
-```
-
-`Content-Type: application/json`
 
 ``` json
 {
@@ -7076,19 +5585,6 @@ If a validation error occurs, the response will include information about the re
 
     HTTP/1.1 400 Bad Request
 
-`Content-Type: application/xml`:
-
-``` xml
-<scmActionResult>
-  <message>Some input values were not valid.</message>
-  <nextAction />
-  <success>false</success>
-  <validationErrors>
-    <entry key="dir">required</entry>
-    <entry key="url">required</entry>
-  </validationErrors>
-</scmActionResult>
-```
 
 `Content-Type: application/json`:
 
@@ -7108,16 +5604,6 @@ If the result is successful:
 
     HTTP/1.1 200 OK
 
-`Content-Type: application/xml`:
-
-``` xml
-<scmActionResult>
-  <message>$string</message>
-  <success>true</success>
-  <nextAction />
-  <validationErrors/>
-</scmActionResult>
-```
 
 `Content-Type: application/json`:
 
@@ -7204,25 +5690,6 @@ Export plugin values for `synchState`:
 * `CREATE_NEEDED` - some jobs need to be added to the repo
 
 
-`Content-Type: application/xml`:
-
-``` xml
-<scmProjectStatus>
-
-  <actions>
-    <string>action1</string>
-    <string>action2</string>
-  </actions>
-
-  <integration>$integration</integration>
-  <message>$string</message>
-  <project>$project</project>
-  <synchState>$state</synchState>
-</scmProjectStatus>
-```
-
-`Content-Type: application/json`:
-
 ``` json
 {
   "actions": ['action1','action2',..],
@@ -7255,23 +5722,6 @@ Otherwise the response contains:
 * `project` project name
 * `type` plugin type name
 
-`Content-Type: application/xml`:
-
-``` xml
-<scmProjectPluginConfig>
-  <config>
-    <entry key="key">value</entry>
-    <entry key="key2">value2</entry>
-    <!-- <entry ..>...</entry> -->
-  </config>
-  <enabled>$boolean</enabled>
-  <integration>$integration</integration>
-  <project>$project</project>
-  <type>$type</type>
-</scmProjectPluginConfig>
-```
-
-`Content-Type: application/json`:
 
 ``` json
 {
@@ -7304,11 +5754,9 @@ which can be selected for the action, they will also be associated with a Job af
 
 **Response**
 
-`Content-Type: application/xml`:
+The content of input fields is the same as shown in [Get SCM Plugin Input Fields](#get-scm-plugin-input-fields).
 
-The content of `<scmPluginInputField>` is the same as shown in [Get SCM Plugin Input Fields](#get-scm-plugin-input-fields).
-
-`scmExportActionItem` values:
+`exportItems` values:
 
 * `itemId` - ID of the repo item, e.g. a file path
 * `job` - job information
@@ -7320,7 +5768,7 @@ The content of `<scmPluginInputField>` is the same as shown in [Get SCM Plugin I
 * `originalId` - ID of a repo item if the job was renamed and now is stored at a different repo path, or empty/null
 * `status` - file status String, the same value as in the `$synchState` of [Get Job SCM Status](#get-job-scm-status).
 
-`scmImportActionItem` values:
+`importItems` values:
 
 * `itemId` - ID of the repo item, e.g. a file path
 * `job` - job information, may be empty/null
@@ -7332,50 +5780,6 @@ The content of `<scmPluginInputField>` is the same as shown in [Get SCM Plugin I
 * `status` - file status String, the same value as in the `$synchState` of [Get Job SCM Status](#get-job-scm-status).
 
 
-
-``` xml
-<scmActionInput>
-  <actionId>$actionId</actionId>
-  <description />
-  <fields>
-    <scmPluginInputField>...</scmPluginInputField>
-  </fields>
-  <integration>$integration</integration>
-  <title>$string</title>
-  <importItems>
-    <!-- import only -->
-    <scmImportActionItem>
-      <deleted>$boolean</deleted>
-      <itemId>$string</itemId>
-      <job>
-        <!-- job tag may be empty if no associated job-->
-          <groupPath>$jobgroup</groupPath>
-          <jobId>$jobid</jobId>
-          <jobName>$jobname</jobName>
-      </job>
-      <tracked>$boolean</tracked>
-      <status>$string</status>
-    </scmImportActionItem>
-  </importItems>
-  <exportItems>
-    <!-- export only -->
-    <scmExportActionItem>
-      <deleted>$boolean</deleted>
-      <itemId>$string</itemId>
-      <job>
-        <groupPath>$jobgroup</groupPath>
-        <jobId>$jobid</jobId>
-        <jobName>$jobname</jobName>
-      </job>
-      <originalId>$string</originalId>
-      <renamed>$boolean</renamed>
-      <status>$string</status>
-    </scmExportActionItem>
-  </exportItems>
-</scmActionInput>
-```
-
-`Content-Type: application/json`:
 
 The content of `"fields"` array is the same as shown in [Get SCM Plugin Input Fields](#get-scm-plugin-input-fields).
 
@@ -7444,30 +5848,6 @@ will not automatically delete a renamed item.
 
     POST /api/15/project/[PROJECT]/scm/[INTEGRATION]/action/[ACTION_ID]
 
-`Content-Type: application/xml`:
-
-``` xml
-<scmAction>
-    <input>
-        <entry key="message">$commitMessage</entry>
-    </input>
-    <jobs>
-        <job jobId="$jobId"/>
-    </jobs>
-    <items>
-        <item itemId="$itemId"/>
-    </items>
-    <deleted>
-        <item itemId="$itemId"/>
-    </deleted>
-    <deletedJobs>
-        <job jobId="$jobId"/>
-    </deletedJobs>
-</scmAction>
-```
-
-`Content-Type: application/json`:
-
 ``` json
 {
     "input":{
@@ -7518,35 +5898,6 @@ Export plugin values for `$synchState`:
 * `CREATE_NEEDED` - Job needs to be added to the repo
 
 
-`Content-Type: application/xml`:
-
-``` xml
-<scmJobStatus>
-  <actions>
-    <string>$action</string>
-    <!--
-    <string>$action2</string>
-    -->
-  </actions>
-  <commit>
-    <author>$commitAuthor</author>
-    <commitId>$commitId</commitId>
-    <date>$commitDate</date>
-    <info>
-      <entry key="key">value</entry>
-      <!-- <entry key="..">...</entry> -->
-    </info>
-    <message>$commitMessage</message>
-  </commit>
-  <id>$jobId</id>
-  <integration>$integration</integration>
-  <message>$statusMessage</message>
-  <project>$project</project>
-  <synchState>$synchState</synchState>
-</scmJobStatus>
-```
-
-`Content-Type: application/json`:
 
 ``` json
 {
@@ -7587,27 +5938,6 @@ The `commit` info will be the same structure as in [Get Job SCM Status](#get-job
 
 For `import` only, `incomingCommit` will indicate the to-be-imported change.
 
-For `application/xml`, the `diffContent` will use a CDATA section to preserve whitespace.
-
-
-`Content-Type: application/xml`:
-
-``` xml
-<scmJobDiff>
-  <commit>
-    <!-- commit info -->
-  </commit>
-  <diffContent><![CDATA[...]]></diffContent>
-  <id>$jobId</id>
-  <incomingCommit>
-    <!-- import only: incoming commit info -->
-  </incomingCommit>
-  <integration>$integration</integration>
-  <project>$project</project>
-</scmJobDiff>
-```
-
-`Content-Type: application/json`:
 
 ``` json
 {
@@ -7654,17 +5984,6 @@ The `items` and `deleted` sections are not used.
 
 Only the `input` values need to be specified:
 
-`Content-Type: application/xml`:
-
-``` xml
-<scmAction>
-    <input>
-        <entry key="message">$commitMessage</entry>
-    </input>
-</scmAction>
-```
-
-`Content-Type: application/json`:
 
 ``` json
 {
