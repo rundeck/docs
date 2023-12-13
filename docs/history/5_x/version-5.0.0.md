@@ -44,6 +44,8 @@ Java 17 as a runtime is “provisionally supported” with this release.  Custom
 
 Saved Job, Report, and Node filters are no longer stored in the database.  Node Filters are now stored locally on the browser and we will be updating Job and Report filters to function the same way in a future release.
 
+Apache Tomcat is no longer a supported Application Server platform for Rundeck or Process Automation.
+
 ### API Changes
 
 The new Current API version is now `46`. The new API depreciation version is `17`. This means that future Rundeck releases will have a minimum API version of `17`.  Customers should ensure that code using the API is updated accordingly.
