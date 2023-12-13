@@ -12,7 +12,7 @@ feed:
 # 5.0.0 Release Notes
 
 Name: <span style="color: brown"><span class="glyphicon glyphicon-apple"></span> "Denali brown apple"</span>
-Release Date: December 6th, 2023
+Release Date: December 14th, 2023
 
 - [Download the Releases](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
@@ -58,17 +58,15 @@ With this release the versioning for the Enterprise Runner is now aligned with t
 
 ### “Under the hood” updates
 
-Grails 6 is now the foundation for Rundeck and Process Automation products.
-
-Builds are now completed using Node 18
-
-Started conversion of pages from old UI code to Vue.  This effort will be on-going through the 5.x series and will bring performance improvements across the product.
+- Grails 6 is now the foundation for Rundeck and Process Automation products.
+- Builds are now completed using Node 18.
+- Started conversion of pages from old UI code to Vue.  This effort will be on-going through the 5.x series and will bring performance improvements across the product.
 
 ### Additional Improvements/Changes
 
-Upgraded H2 database to resolve CVE-2022-45868.  (Please see Upgrade Notes if using H2.)
-Clearer logging messaging when running into Database Lock issues.
-The  `rdCLI`  tool now supports JSON job definitions.
+- Upgraded H2 database to resolve CVE-2022-45868.  (Please see Upgrade Notes if using H2.)
+- Clearer logging messaging when running into Database Lock issues.
+- The  `rdCLI` tool version 2.0.8 now supports JSON job definitions.
 
 > Also includes all Open Source updates from below
 
