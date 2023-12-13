@@ -54,12 +54,6 @@ Rundeck Launcher:
 $RDECK_BASE/etc/
 ```
 
-Rundeck + Tomcat:
-
-```
-$RDECK_BASE/etc/
-```
-
 ### Store license in database
 
 If you would like to store your license in your database rather than your filesystem, turn on the following setting:

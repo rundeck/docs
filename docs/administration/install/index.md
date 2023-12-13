@@ -123,7 +123,7 @@ to configure a production installation.
 ### Edit Database Config
 
 :::tip
-The Rundeck database(or schema) should be setup in advance. The following
+The Rundeck database (or schema) should be setup in advance. The following
 assumes the database is named `rundeck`.
 :::
 
