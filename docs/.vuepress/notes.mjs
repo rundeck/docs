@@ -25,7 +25,7 @@ async function main() {
   context.docs = await getRepoData({ repo: 'docs', owner: 'rundeck' }, []);
   context.ansible = await getRepoData({ repo: 'ansible-plugin', owner: 'rundeck-plugins' }, []);
   context.runner = await getRepoData({ repo: 'sidecar', owner: 'rundeckpro' }, ['release-notes/include']);
-  context.sidecarVersion = await getSideCarVersion({ repo: 'rundeckpro', owner: 'rundeckpro' });
+  //context.sidecarVersion = await getSideCarVersion({ repo: 'rundeckpro', owner: 'rundeckpro' });
   context.contributors = { ...context.core.contributors, ...context.docs.contributors, ...context.ansible.contributors };
 
   context.version = new RundeckVersion({ versionString: argv.milestone });
@@ -46,43 +46,43 @@ async function main() {
   fs.writeFileSync(outPath, notes);
 }
 
-async function getSideCarVersion(repo) {
-  const gh = new Octokit({ auth: argv.token || process.env.GH_API_TOKEN });
+// async function getSideCarVersion(repo) {
+//   const gh = new Octokit({ auth: argv.token || process.env.GH_API_TOKEN });
 
-  const milestones = await gh.issues.listMilestones({ ...repo });
+//   const milestones = await gh.issues.listMilestones({ ...repo });
 
-  const milestone = milestones.data.find((m) => m.title === argv.milestone);
+//   const milestone = milestones.data.find((m) => m.title === argv.milestone);
 
-  if (!milestone) {
-    console.error(`GitHub milestone ${argv.milestone} not found!`);
-  } else {
-    try {
-      const proRunnerVersion = await gh.repos.getContent({
-        ...repo,
-        path: 'gradle.properties',
-        ref: `v${milestone.title}`,
-      });
+//   if (!milestone) {
+//     console.error(`GitHub milestone ${argv.milestone} not found!`);
+//   } else {
+//     try {
+//       const proRunnerVersion = await gh.repos.getContent({
+//         ...repo,
+//         path: 'gradle.properties',
+//         ref: `v${milestone.title}`,
+//       });
 
-      const runnerVersion = proRunnerVersion.data;
-      const content = Buffer.from(runnerVersion.content, 'base64').toString();
-      const sidecarVersionLine = content.match(/^sidecarVersion=(.*)/m);
+//       const runnerVersion = proRunnerVersion.data;
+//       const content = Buffer.from(runnerVersion.content, 'base64').toString();
+//       const sidecarVersionLine = content.match(/^sidecarVersion=(.*)/m);
 
-      if (sidecarVersionLine) {
-        const version = sidecarVersionLine[1].trim();
-        console.log(`Sidecar Version: ${version}`);
-        return {
-          version,
-        };
-      }
-    } catch (error) {
-      console.error('Sidecar Version Not Found');
-      const version = 'Version Not Found check for release tag';
-      return {
-        version,
-      };
-    }
-  }
-}
+//       if (sidecarVersionLine) {
+//         const version = sidecarVersionLine[1].trim();
+//         console.log(`Sidecar Version: ${version}`);
+//         return {
+//           version,
+//         };
+//       }
+//     } catch (error) {
+//       console.error('Sidecar Version Not Found');
+//       const version = 'Version Not Found check for release tag';
+//       return {
+//         version,
+//       };
+//     }
+//   }
+// }
 
 async function getRepoData(repo, includeLabels) {
   const gh = new Octokit({ auth: process.env.GH_API_TOKEN });

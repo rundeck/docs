@@ -68,6 +68,7 @@
 [/api/V/job/\[ID\]/input/file]:/api/index.md#upload-a-file-for-a-job-option
 [POST /api/V/job/\[ID\]/input/file]:/api/index.md#upload-a-file-for-a-job-option
 [/api/V/job/\[ID\]/input/files]:/api/index.md#list-files-uploaded-for-a-job
+[/api/V/job/\[ID\]/meta]:/api/index.md#get-job-ui-metadata
 
 [/api/V/job/\[ID\]/forecast]:/api/index.md#get-job-forecast
 [GET /api/V/job/\[ID\]/forecast]:/api/index.md#get-job-forecast
@@ -77,6 +78,7 @@
 [/api/V/job/\[ID\]/schedule/disable]:/api/index.md#disable-scheduling-for-a-job
 
 [/api/V/job/\[ID\]/run]:/api/index.md#running-a-job
+[/api/V/job/\[ID\]/tags]:/api/index.md#get-job-tags-enterprise
 [/api/V/job/\[ID\]/workflow]:/api/index.md#get-job-workflow
 
 [/api/V/jobs/delete]:/api/index.md#bulk-job-delete
@@ -135,9 +137,15 @@
 
 [/api/V/project/\[PROJECT\]/jobs]:/api/index.md#listing-jobs
 
+[/api/V/project/\[PROJECT\]/jobs/browse]:/api/index.md#project-job-group-browse
+
 [/api/V/project/\[PROJECT\]/jobs/export]:/api/index.md#exporting-jobs
 
 [/api/V/project/\[PROJECT\]/jobs/import]:/api/index.md#importing-jobs
+
+[/api/V/project/\[PROJECT\]/jobTags/query]:/api/index.md#query-project-job-tags-enterprise
+
+[/api/V/project/\[PROJECT\]/meta]:/api/index.md#get-project-ui-metadata
 
 [/api/V/project/\[PROJECT\]/resources]:/api/index.md#listing-resources
 
@@ -152,6 +160,8 @@
 [/api/V/project/\[PROJECT\]/run/script]:/api/index.md#running-adhoc-scripts
 
 [/api/V/project/\[PROJECT\]/run/url]:/api/index.md#running-adhoc-script-urls
+
+[/api/V/project/\[PROJECT\]/scm/toggle]:/api/index.md#toggle-scm-for-a-project
 
 [/api/V/scheduler/takeover]:/api/index.md#takeover-schedule-in-cluster-mode
 

@@ -336,7 +336,6 @@ path "secret_v2/delete/your/path/here/*" {
 ```
 
 ## Minimal version requirements
-  * Java 1.8
   * Rundeck 3.3.0
   * Vault 0.9.0
 

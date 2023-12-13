@@ -25,11 +25,12 @@ export default [{
               },
               {
                 text: 'Upgrading',
-                collapsible: false,
+                collapsible: true,
                 link: '/upgrading/',
                 children: [
                   '/upgrading/',
                   '/upgrading/upgrading',
+                  '/upgrading/upgrading-to-5.0.md',
                   '/upgrading/upgrading-to-4.8.md',
                   '/upgrading/upgrading-to-4.1.md',
                   '/upgrading/upgrading-to-4.md',
