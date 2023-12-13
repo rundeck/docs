@@ -4292,6 +4292,63 @@ jobs ID
 if the step is a node step. Implicitly `"true"` if not present and not a job step.
 * `workflow`: If step is a job reference contains the sub-workflow
 
+### Get Job UI Metadata
+
+Get metadata for a specific job.
+
+Authorization required: `read` or `view` for the Job.
+
+Since: v46
+
+**Request:**
+
+    GET /api/46/job/[ID]/meta
+
+Request parameters:
+
+* `meta` - Comma-separated list of metadata item names to include, or "*" for all (default)
+
+**Response:**
+
+```json
+[
+  {
+    "name":"name",
+    "data":{ ... }
+  },
+
+  {
+    "name":"name2",
+    "data":{ ... }
+  },
+]
+```
+
+### Get Job Tags (Enterprise)
+
+::: enterprise  
+:::
+
+Returns the list of tags for a job.
+
+Requires Authorization: `read` or `view` for the Job
+
+Since: v46
+
+**Request:**
+
+    GET /api/46/job/[ID]/tags
+
+**Response:**
+
+```json
+[
+  "taga",
+  "tagb"
+]
+```
+
+
 ## Executions
 
 ### Getting Executions for a Job
@@ -6699,6 +6756,147 @@ See [Update an ACL Policy](#update-an-acl-policy) for request and response.
     DELETE /api/13/project/[PROJECT]/acl/name.aclpolicy
 
 See [Delete an ACL Policy](#delete-an-acl-policy)
+
+#### Query Project Job Tags (Enterprise)
+
+::: enterprise  
+:::
+
+Returns the list of available tags, along with the count of jobs per each tag, for the job 
+query result received.
+
+Since: v46
+
+**Request:**
+
+    GET /api/46/project/[PROJECT]/jobTags/query
+
+Request Parameters:
+
+* See [Listing Jobs](#listing-jobs)
+
+**Response:**
+
+```json
+{
+  "tag": 123,
+  "tag2": 2
+}
+```
+
+#### Get Project UI Metadata
+
+Get project metadata.
+
+Requires `read` authorization for the project resource.
+
+Since: v46
+
+**Request:**
+
+    GET /api/46/project/[PROJECT]/meta
+
+Request Parameters:
+
+* `meta` - Comma-separated list of metadata items to include, or "*" for all (default)
+
+**Response:**
+
+```json
+[
+  {
+    "name":"name",
+    "data": { ... }
+  }
+]
+```
+
+#### Project Job Group browse
+
+Query the jobs at a specific group path. Response includes the list of immediate jobs matching the query in the exact path, 
+and the names of job Groups starting at that path.
+
+Authorization required: `read` or `view` for the Job.
+
+Since: v46
+
+**Request:**
+
+    GET /api/46/project/[PROJECT]/jobs/browse
+
+Query Parameters:
+* `path` - Group path root, or blank for the root
+* `meta` - Comma-separated list of metadata items to include, or "*" for all
+* `breakpoint` - Breakpoint, max number of jobs to load with metadata, if more results than the 
+breakpoint are available, no metadata will be loaded
+
+* Additional query parameters, see [Listing Jobs](#listing-jobs).
+
+**Response**
+
+```json
+{
+  "items": [
+    {
+      "description": "",
+      "groupPath": null,
+      "id": "6b7e6ee4-a120-4639-9375-4417a6e6d3d0",
+      "job": true,
+      "jobName": "job1",
+      "meta": null
+    },
+    {
+      "description": "",
+      "groupPath": null,
+      "id": "41b2f0a3-b140-4fac-bbc9-48a8d51ffc52",
+      "job": true,
+      "jobName": "job2",
+      "meta": null
+    },
+    {
+      "description": null,
+      "groupPath": "apath",
+      "id": null,
+      "job": false,
+      "jobName": null,
+      "meta": null
+    },
+}
+```
+
+#### Toggle SCM for a Project
+
+Toggle SCM enabled/disabled for a Project.
+
+This endpoint will enable or disable all configured SCM plugins for the project. 
+Specify whether to enable or disable in the request body.
+
+This action is idempotent.
+
+Authorization Required: `configure` for the Project resource (app context)
+
+Since: v46
+
+
+**Request:**
+
+    POST /api/14/project/[PROJECT]/scm/toggle
+
+```json
+{
+  "enabled":true/false
+}
+```
+
+**Response:**
+
+Indicates if a change was made.
+
+```json
+{
+  "modified":true/false
+}
+```
 
 ## Listing History
 
