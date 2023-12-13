@@ -25,15 +25,15 @@ Deprecation
 
 For tips on getting started with the API, check out these [API Basics](/api/api_basics.md) .  For information on historical version changes please see [API Version History](/api/rundeck-api-versions.md). Please note of any [incubating endpoints](/api/rundeck-api-versions.md#incubating_endpoints) that may be subject to change.
 
-Check out our Beta [Swagger](/api/api-spec.md) docs too!
+Check out our Beta [OpenAPI Spec/Swagger](/api/api-spec.md) docs too!
 
 ### Usage
 
 For API endpoints described in this document, the *minimum* API version required for their
 use is indicated by the URL used, e.g.:
 
-    /api/11/system/info
-    /api/14/projects
+    /api/{{ $apiMinVersion }}/system/info
+    /api/{{ $apiMinVersion }}/projects
 
 This means you must use at least the API version indicated to access the
 endpoint, unless otherwise noted. Some features or functionality for the
@@ -44,19 +44,6 @@ The API Version Number is required to be included in all API calls within the UR
 If the version number is not included or if the requested version number is unsupported, then the API call will fail.  The error response will include the code "api-version-unsupported" and have HTTP status code of `400 Bad Request`:
 
 
-`Content-Type: application/xml`:
-
-``` xml
-<result error="true">
-    <error code="api-version-unsupported">
-        <message>
-        Unsupported API Version "1". API Request: /rundeck/api/1/project/test/jobs. Reason: Minimum supported version: 11
-        </message>
-    </error>
-</result>
-```
-
-
 `Content-Type: application/json`:
 
 ``` json
@@ -64,7 +51,7 @@ If the version number is not included or if the requested version number is unsu
   "error": true,
   "apiversion": 14,
   "errorCode": "api.error.api-version.unsupported",
-  "message": "Unsupported API Version \"1\". API Request: /api/1/project/test/resources. Reason: Minimum supported version: 11"
+  "message": "Unsupported API Version \"1\". API Request: /api/1/project/test/resources. Reason: Minimum supported version: {{ $apiMinVersion }}"
 }
 ```
 
@@ -78,14 +65,14 @@ The Rundeck server has a "Base URL", where you access the server. Your Rundeck S
 
 The root URL path for all calls to the API in this version is:
 
-    $RUNDECK_SERVER_URL/api/2
+    $RUNDECK_SERVER_URL/api/{{ $apiVersion }}
 
-## JSON Support
+## JSON API
 
 
 The API uses JSON for all API-level information.  Some import/export features support YAML, XML, or `text/plain` formatted documents.
 
-As of API version 14, all endpoints support JSON format, with content type `application/json`, with one exception ([/api/V/project/[PROJECT]/jobs/export][/api/V/project/\[PROJECT\]/jobs/export]).
+All endpoints support JSON format, with content type `application/json`. 
 
 JSON results can be retrieved by sending the HTTP "Accept" header with a `application/json` value.  JSON request content is supported when the HTTP "Content-Type" header specifies `application/json`.
 
@@ -143,12 +130,12 @@ Examples:
 
 Using the URL parameter to request the project list:
 
-    GET /api/11/projects?authtoken=E4rNvVRV378knO9dp3d73O0cs1kd0kCd HTTP/1.1
+    GET /api/{{ $apiMinVersion }}/projects?authtoken=E4rNvVRV378knO9dp3d73O0cs1kd0kCd HTTP/1.1
     ...
 
 Using the HTTP Header:
 
-    GET /api/11/projects HTTP/1.1
+    GET /api/{{ $apiMinVersion }}/projects HTTP/1.1
     X-Rundeck-Auth-Token: E4rNvVRV378knO9dp3d73O0cs1kd0kCd
     ...
 
@@ -254,8 +241,8 @@ List all tokens or all tokens for a specific user.
 
 **Request:**
 
-    GET /api/11/tokens
-    GET /api/11/tokens/[USER]
+    GET /api/{{ $apiMinVersion }}/tokens
+    GET /api/{{ $apiMinVersion }}/tokens/[USER]
 
 **Response (API version: 19 and later):**
 
@@ -412,7 +399,7 @@ Get a specified auth token metadata.
 
 **Request:**
 
-    GET /api/11/token/[ID]
+    GET /api/{{ $apiMinVersion }}/token/[ID]
 
 **Response (API version: 19) (Rundeck 3.3.8 and later):**
 
@@ -509,8 +496,8 @@ Create a new token for a specific user. Specify custom roles and duration if aut
 
 **Request:**
 
-    POST /api/11/tokens
-    POST /api/11/tokens/[USER]
+    POST /api/{{ $apiMinVersion }}/tokens
+    POST /api/{{ $apiMinVersion }}/tokens/[USER]
 
 The user specified must either be part of the URL, or be part of the request content.
 
@@ -625,7 +612,7 @@ Delete a specified auth token.
 
 **Request:**
 
-    DELETE /api/11/token/[ID]
+    DELETE /api/{{ $apiMinVersion }}/token/[ID]
 
 Response:
 
@@ -938,7 +925,7 @@ Get Rundeck server information and stats.
 
 **Request:**
 
-    GET /api/14/system/info
+    GET /api/{{ $apiMinVersion }}/system/info
 
 Parameters: none
 
@@ -2478,7 +2465,7 @@ Resume processing incomplete Log Storage uploads.
 ## Execution Mode ##
 
 Change the server execution mode to ACTIVE or PASSIVE.  The state of the current
-execution mode can be viewed via the [`/api/14/system/info`][/api/V/system/info]
+execution mode can be viewed via the [`/api/{{ $apiMinVersion }}/system/info`][/api/V/system/info]
 endpoint, or the [`/api/32/system/executions/status`][/api/V/system/executions/status]
 endpoint.
 
@@ -2488,7 +2475,7 @@ Enables executions, allowing adhoc and manual and scheduled jobs to be run.
 
 **Request:**
 
-    POST /api/14/system/executions/enable
+    POST /api/{{ $apiMinVersion }}/system/executions/enable
 
 **Response**
 
@@ -2512,7 +2499,7 @@ Disables executions, preventing adhoc and manual and scheduled jobs from running
 
 **Request:**
 
-POST /api/14/system/executions/disable
+POST /api/{{ $apiMinVersion }}/system/executions/disable
 
 **Response**
 
@@ -2582,7 +2569,7 @@ Alternately, specify a job ID to takeover only a single Job's schedule.
 
 **Request**
 
-    PUT /api/14/scheduler/takeover
+    PUT /api/{{ $apiMinVersion }}/scheduler/takeover
 
 Either XML or JSON request.
 
@@ -2727,11 +2714,11 @@ Example XML Response, when `uuid` was specified:
         <jobs total='2'>
           <successful count='2'>
             <job id='a1aa53ac-73a6-4ead-bbe4-34afbff8e057'
-            href='http://localhost:9090/api/14/job/a1aa53ac-73a6-4ead-bbe4-34afbff8e057'
+            href='http://localhost:9090/api/{{ $apiMinVersion }}/job/a1aa53ac-73a6-4ead-bbe4-34afbff8e057'
             permalink='http://localhost:9090/rundeck/job/show/a1aa53ac-73a6-4ead-bbe4-34afbff8e057'
             previous-owner="8F3D5976-2232-4529-847B-8E45764608E3" />
             <job id='116e2025-7895-444a-88f7-d96b4f19fdb3'
-            href='http://localhost:9090/api/14/job/116e2025-7895-444a-88f7-d96b4f19fdb3'
+            href='http://localhost:9090/api/{{ $apiMinVersion }}/job/116e2025-7895-444a-88f7-d96b4f19fdb3'
             permalink='http://localhost:9090/rundeck/job/show/116e2025-7895-444a-88f7-d96b4f19fdb3'
             previous-owner="8F3D5976-2232-4529-847B-8E45764608E3" />
           </successful>
@@ -2782,13 +2769,13 @@ JSON response for `uuid` specified:
       "failed": [],
       "successful": [
         {
-          "href": "http://dignan:4440/api/14/job/a1aa53ac-73a6-4ead-bbe4-34afbff8e057",
+          "href": "http://dignan:4440/api/{{ $apiMinVersion }}/job/a1aa53ac-73a6-4ead-bbe4-34afbff8e057",
           "permalink": "http://dignan:4440/job/show/a1aa53ac-73a6-4ead-bbe4-34afbff8e057",
           "id": "a1aa53ac-73a6-4ead-bbe4-34afbff8e057",
           "previous-owner": "8F3D5976-2232-4529-847B-8E45764608E3"
         },
         {
-          "href": "http://dignan:4440/api/14/job/116e2025-7895-444a-88f7-d96b4f19fdb3",
+          "href": "http://dignan:4440/api/{{ $apiMinVersion }}/job/116e2025-7895-444a-88f7-d96b4f19fdb3",
           "permalink": "http://dignan:4440/job/show/116e2025-7895-444a-88f7-d96b4f19fdb3",
           "id": "116e2025-7895-444a-88f7-d96b4f19fdb3",
           "previous-owner": "8F3D5976-2232-4529-847B-8E45764608E3"
@@ -2982,16 +2969,16 @@ For more information about ACL Policies see:
 
 **Request:**
 
-    GET /api/14/system/acl/
+    GET /api/{{ $apiMinVersion }}/system/acl/
 
 **Response:**
 
 `Content-Type: application/xml`:  A `<resource>` containing more resources within a `<contents>` element:
 
 ``` xml
-<resource path="" type="directory" href="http://server/api/14/system/acl/">
+<resource path="" type="directory" href="http://server/api/{{ $apiMinVersion }}/system/acl/">
   <contents>
-    <resource path="name.aclpolicy" type="file" href="http://server/api/14/system/acl/name.aclpolicy" name="name.aclpolicy"/>
+    <resource path="name.aclpolicy" type="file" href="http://server/api/{{ $apiMinVersion }}/system/acl/name.aclpolicy" name="name.aclpolicy"/>
   </contents>
 </resource>
 ```
@@ -3004,13 +2991,13 @@ For more information about ACL Policies see:
 {
   "path": "",
   "type": "directory",
-  "href": "http://server/api/14/system/acl/",
+  "href": "http://server/api/{{ $apiMinVersion }}/system/acl/",
   "resources": [
     {
       "path": "name.aclpolicy",
       "type": "file",
       "name": "name.aclpolicy",
-      "href": "http://server/api/14/system/acl/name.aclpolicy"
+      "href": "http://server/api/{{ $apiMinVersion }}/system/acl/name.aclpolicy"
     },
     ...
   ]
@@ -3024,7 +3011,7 @@ Otherwise if XML or JSON is requested, the YAML text will be wrapped within that
 
 **Request:**
 
-    GET /api/14/system/acl/name.aclpolicy
+    GET /api/{{ $apiMinVersion }}/system/acl/name.aclpolicy
 
 **Response:**
 
@@ -3069,7 +3056,7 @@ Use `POST` to create a policy.
 
 **Request:**
 
-    POST /api/14/system/acl/name.aclpolicy
+    POST /api/{{ $apiMinVersion }}/system/acl/name.aclpolicy
 
 If the `Content-Type` is `application/yaml` or `text/plain`, then the request body is the ACL policy contents directly.
 
@@ -3163,7 +3150,7 @@ Use `PUT` to update a policy.
 
 **Request:**
 
-    PUT /api/14/system/acl/name.aclpolicy
+    PUT /api/{{ $apiMinVersion }}/system/acl/name.aclpolicy
 
 You can use Yaml, XML or JSON in the same request format as used by [Create an ACL Policy](#create-an-acl-policy).
 
@@ -3187,7 +3174,7 @@ Delete an ACL policy file.
 
 **Request:**
 
-    DELETE /api/14/system/acl/name.aclpolicy
+    DELETE /api/{{ $apiMinVersion }}/system/acl/name.aclpolicy
 
 **Response:**
 
@@ -3207,7 +3194,7 @@ List the jobs that exist for a project.
 
 **Request:**
 
-    GET  /api/14/project/[PROJECT]/jobs
+    GET  /api/{{ $apiMinVersion }}/project/[PROJECT]/jobs
 
 The following parameters can also be used to narrow down the result set.
 
@@ -3316,7 +3303,7 @@ Run a job specified by ID.
 
 **Request:**
 
-    POST /api/11/job/[ID]/run
+    POST /api/{{ $apiMinVersion }}/job/[ID]/run
     POST /api/12/job/[ID]/executions
 
 Optional parameters:
@@ -3405,7 +3392,7 @@ Export the job definitions for in XML or YAML formats.
 
 **Request:**
 
-    GET /api/14/project/[PROJECT]/jobs/export
+    GET /api/{{ $apiMinVersion }}/project/[PROJECT]/jobs/export
 
 Optional parameters:
 
@@ -3440,7 +3427,7 @@ Import job definitions in XML or YAML formats.
 
 **Request:**
 
-    POST /api/14/project/[PROJECT]/jobs/import
+    POST /api/{{ $apiMinVersion }}/project/[PROJECT]/jobs/import
 
 Request Content:
 
@@ -3511,7 +3498,7 @@ Each array may contain a job data object:
 ``` json
 {
   "index": 1,
-  "href": "http://madmartigan.local:4440/api/14/job/3b6c19f6-41ee-475f-8fd0-8f1a26f27a9a",
+  "href": "http://madmartigan.local:4440/api/{{ $apiMinVersion }}/job/3b6c19f6-41ee-475f-8fd0-8f1a26f27a9a",
   "id": "3b6c19f6-41ee-475f-8fd0-8f1a26f27a9a",
   "name": "restart",
   "group": "app2/dev",
@@ -3531,7 +3518,7 @@ Export a single job definition in XML or YAML formats.
 
 **Request:**
 
-    GET /api/11/job/[ID]
+    GET /api/{{ $apiMinVersion }}/job/[ID]
 
 Optional parameters:
 
@@ -3559,7 +3546,7 @@ Delete a single job definition.
 
 **Request:**
 
-    DELETE /api/11/job/[ID]
+    DELETE /api/{{ $apiMinVersion }}/job/[ID]
 
 **Response:**
 
@@ -3573,8 +3560,8 @@ Delete multiple job definitions at once.
 
 Both of the following are valid options for doing a bulk delete of jobs. However, if you are hoping to pass a body with the request, then you must use the POST method since the DELETE method does not allow for request bodies.
 
-    DELETE /api/11/jobs/delete
-    POST /api/11/jobs/delete
+    DELETE /api/{{ $apiMinVersion }}/jobs/delete
+    POST /api/{{ $apiMinVersion }}/jobs/delete
 
 
 Either Query parameters:
@@ -3669,7 +3656,7 @@ Enable executions for a job. (ACL requires `toggle_execution` action for a job.)
 
 **Request:**
 
-    POST /api/14/job/[ID]/execution/enable
+    POST /api/{{ $apiMinVersion }}/job/[ID]/execution/enable
 
 **Response:**
 
@@ -3691,7 +3678,7 @@ Disable all executions for a job (scheduled or manual). (ACL requires `toggle_ex
 
 **Request:**
 
-    POST /api/14/job/[ID]/execution/disable
+    POST /api/{{ $apiMinVersion }}/job/[ID]/execution/disable
 
 **Response:**
 
@@ -3703,7 +3690,7 @@ Enable the schedule for a job. (ACL requires `toggle_schedule` action for a job.
 
 **Request:**
 
-    POST /api/14/job/[ID]/schedule/enable
+    POST /api/{{ $apiMinVersion }}/job/[ID]/schedule/enable
 
 **Response:**
 
@@ -3715,7 +3702,7 @@ Disable the schedule for a job. (ACL requires `toggle_schedule` action for a job
 
 **Request:**
 
-    POST /api/14/job/[ID]/schedule/disable
+    POST /api/{{ $apiMinVersion }}/job/[ID]/schedule/disable
 
 **Response:**
 
@@ -3729,8 +3716,8 @@ Executions will be enabled or disabled, depending on the URL used:
 
 **Request:**
 
-    POST /api/14/jobs/execution/enable
-    POST /api/14/jobs/execution/disable
+    POST /api/{{ $apiMinVersion }}/jobs/execution/enable
+    POST /api/{{ $apiMinVersion }}/jobs/execution/disable
 
 Query parameters:
 
@@ -3826,8 +3813,8 @@ Schedules will be enabled or disabled, depending on the URL used:
 
 **Request:**
 
-    POST /api/14/jobs/schedule/enable
-    POST /api/14/jobs/schedule/disable
+    POST /api/{{ $apiMinVersion }}/jobs/schedule/enable
+    POST /api/{{ $apiMinVersion }}/jobs/schedule/disable
 
 Query parameters:
 
@@ -4300,7 +4287,7 @@ Get the list of executions for a Job.
 
 **Request:**
 
-    GET /api/11/job/[ID]/executions
+    GET /api/{{ $apiMinVersion }}/job/[ID]/executions
 
 Optional Query Parameters:
 
@@ -4331,7 +4318,7 @@ List the currently running executions for a project
 
 **Request:**
 
-    GET /api/14/project/[PROJECT]/executions/running
+    GET /api/{{ $apiMinVersion }}/project/[PROJECT]/executions/running
 
 Note: `PROJECT` is the project name, or use `*` for all projects.
 
@@ -4503,7 +4490,7 @@ Get the status for an execution by ID.
 
 **Request:**
 
-    GET /api/11/execution/[ID]
+    GET /api/{{ $apiMinVersion }}/execution/[ID]
 
 **Response:**
 
@@ -4718,7 +4705,7 @@ Query for Executions based on Job or Execution details.
 
 **Request:**
 
-    GET /api/14/project/[PROJECT]/executions
+    GET /api/{{ $apiMinVersion }}/project/[PROJECT]/executions
 
 The following parameters can also be used to narrow down the result set.
 
@@ -4822,7 +4809,7 @@ Get detail about the node and step state of an execution by ID. The execution ca
 
 **Request:**
 
-    GET /api/11/execution/[ID]/state
+    GET /api/{{ $apiMinVersion }}/execution/[ID]/state
 
 Specify expected output format with the `Accept: ` HTTP header. Supported formats:
 
@@ -5197,10 +5184,10 @@ Get the output for an execution by ID.  The execution can be currently running o
 
 **Request:**
 
-    GET /api/11/execution/[ID]/output
-    GET /api/11/execution/[ID]/output/node/[NODE]
-    GET /api/11/execution/[ID]/output/node/[NODE]/step/[STEPCTX]
-    GET /api/11/execution/[ID]/output/step/[STEPCTX]
+    GET /api/{{ $apiMinVersion }}/execution/[ID]/output
+    GET /api/{{ $apiMinVersion }}/execution/[ID]/output/node/[NODE]
+    GET /api/{{ $apiMinVersion }}/execution/[ID]/output/node/[NODE]/step/[STEPCTX]
+    GET /api/{{ $apiMinVersion }}/execution/[ID]/output/step/[STEPCTX]
 
 The log output for each execution is stored in a file on the Rundeck server, and this API endpoint allows you to retrieve some or all of the output, in several possible formats: json, XML, and plain text.  When retrieving the plain text output, some metadata about the log is included in HTTP Headers.  JSON and XML output formats include metadata about each output log line, as well as metadata about the state of the execution and log file, and your current index location in the file.
 
@@ -5270,13 +5257,13 @@ To use a URL parameter, add a `?format=` parameter to your request.
 
 E.g.:
 
-    GET /api/11/execution/3/output?format=json
+    GET /api/{{ $apiMinVersion }}/execution/3/output?format=json
 
 To use a URL extension, add a ".[format]" to the end of the URL, but prior to any URL parameters.
 
 E.g.:
 
-    GET /api/11/execution/3/output.xml?offset=120
+    GET /api/{{ $apiMinVersion }}/execution/3/output.xml?offset=120
 
 #### Output Format using Accept Header
 
@@ -5288,7 +5275,7 @@ You can also specify the format using Content Negotiation techniques by includin
 
 E.g.:
 
-    GET /api/11/execution/3/output
+    GET /api/{{ $apiMinVersion }}/execution/3/output
     Accept: */xml
 
 #### Output Content
@@ -5441,8 +5428,8 @@ Get the metadata associated with workflow step state changes along with the log 
 
 **Request:**
 
-    GET /api/11/execution/[ID]/output/state
-    GET /api/11/execution/[ID]/output/state?stateOnly=true
+    GET /api/{{ $apiMinVersion }}/execution/[ID]/output/state
+    GET /api/{{ $apiMinVersion }}/execution/[ID]/output/state?stateOnly=true
 
 This API endpoint provides the sequential log of state changes for steps and nodes, optionally interleaved with the actual log output.
 
@@ -5464,7 +5451,7 @@ Abort a running execution by ID.
 
 **Request:**
 
-    GET /api/11/execution/[ID]/abort
+    GET /api/{{ $apiMinVersion }}/execution/[ID]/abort
 
 Optional Parameters:
 
@@ -5572,8 +5559,8 @@ Run a command string.
 
 **Request:**
 
-    GET /api/14/project/[PROJECT]/run/command
-    POST /api/14/project/[PROJECT]run/command
+    GET /api/{{ $apiMinVersion }}/project/[PROJECT]/run/command
+    POST /api/{{ $apiMinVersion }}/project/[PROJECT]run/command
 
 The necessary content can be supplied as request Parameters:
 
@@ -5625,7 +5612,7 @@ Run a script.
 
 **Request:**
 
-    POST /api/14/project/[PROJECT]/run/script
+    POST /api/{{ $apiMinVersion }}/project/[PROJECT]/run/script
 
 Request Content:
 
@@ -5696,8 +5683,8 @@ Run a script downloaded from a URL.  (**API version 4** required.)
 
 **Request:**
 
-    POST /api/14/project/[PROJECT]/run/url
-    GET /api/14/project/[PROJECT]/run/url
+    POST /api/{{ $apiMinVersion }}/project/[PROJECT]/run/url
+    GET /api/{{ $apiMinVersion }}/project/[PROJECT]/run/url
 
 The request can be form content, or a JSON document.
 
@@ -5770,7 +5757,7 @@ Note: Private Keys and Passwords can be uploaded but not retrieved directly with
 
 URL:
 
-    /api/11/storage/keys/[PATH]/[FILE]
+    /api/{{ $apiMinVersion }}/storage/keys/[PATH]/[FILE]
 
 ### Upload Keys ####
 
@@ -5783,12 +5770,12 @@ Specify the type of key via the `Content-type` header:
 Use `POST` to create a new file, or `PUT` to modify an existing file.
 
 ```
-POST /api/11/storage/keys/[PATH]/[FILE]
+POST /api/{{ $apiMinVersion }}/storage/keys/[PATH]/[FILE]
 Content-Type: [...]
 ```
 
 ```
-PUT /api/11/storage/keys/[PATH]/[FILE]
+PUT /api/{{ $apiMinVersion }}/storage/keys/[PATH]/[FILE]
 Content-Type: [...]
 ```
 
@@ -5798,7 +5785,7 @@ Lists resources at the specified PATH, provides a JSON or XML response based on 
 
 Each resource has a type of `file` or `directory`.
 
-    GET /api/11/storage/keys/[PATH]/
+    GET /api/{{ $apiMinVersion }}/storage/keys/[PATH]/
 
 Response:
 
@@ -5806,10 +5793,10 @@ Response:
 
 ``` xml
 <resource path='keys' type='directory'
-url='http://dignan.local:4440/api/11/storage/keys'>
+url='http://dignan.local:4440/api/{{ $apiMinVersion }}/storage/keys'>
   <contents count='3'>
     <resource path='keys/test1.pem' type='file'
-    url='http://dignan.local:4440/api/11/storage/keys/test1.pem'
+    url='http://dignan.local:4440/api/{{ $apiMinVersion }}/storage/keys/test1.pem'
     name='test1.pem'>
       <resource-meta>
         <Rundeck-content-type>
@@ -5820,7 +5807,7 @@ url='http://dignan.local:4440/api/11/storage/keys'>
       </resource-meta>
     </resource>
     <resource path='keys/test1.pub' type='file'
-    url='http://dignan.local:4440/api/11/storage/keys/test1.pub'
+    url='http://dignan.local:4440/api/{{ $apiMinVersion }}/storage/keys/test1.pub'
     name='test1.pub'>
       <resource-meta>
         <Rundeck-content-type>
@@ -5830,7 +5817,7 @@ url='http://dignan.local:4440/api/11/storage/keys'>
       </resource-meta>
     </resource>
     <resource path='keys/monkey1.pub' type='file'
-    url='http://dignan.local:4440/api/11/storage/keys/monkey1.pub'
+    url='http://dignan.local:4440/api/{{ $apiMinVersion }}/storage/keys/monkey1.pub'
     name='monkey1.pub'>
       <resource-meta>
         <Rundeck-content-type>
@@ -5840,7 +5827,7 @@ url='http://dignan.local:4440/api/11/storage/keys'>
       </resource-meta>
     </resource>
     <resource path='keys/subdir' type='directory'
-    url='http://dignan.local:4440/api/11/storage/keys/subdir'>
+    url='http://dignan.local:4440/api/{{ $apiMinVersion }}/storage/keys/subdir'>
     </resource>
   </contents>
 </resource>
@@ -5858,13 +5845,13 @@ url='http://dignan.local:4440/api/11/storage/keys'>
         "Rundeck-content-size": "1679",
         "Rundeck-content-type": "application/octet-stream"
       },
-      "url": "http://dignan.local:4440/api/11/storage/keys/test1.pem",
+      "url": "http://dignan.local:4440/api/{{ $apiMinVersion }}/storage/keys/test1.pem",
       "name": "test1.pem",
       "type": "file",
       "path": "keys/test1.pem"
     },
     {
-      "url": "http://dignan.local:4440/api/11/storage/keys/subdir",
+      "url": "http://dignan.local:4440/api/{{ $apiMinVersion }}/storage/keys/subdir",
       "type": "directory",
       "path": "keys/subdir"
     },
@@ -5874,7 +5861,7 @@ url='http://dignan.local:4440/api/11/storage/keys'>
         "Rundeck-content-size": "640198",
         "Rundeck-content-type": "application/pgp-keys"
       },
-      "url": "http://dignan.local:4440/api/11/storage/keys/monkey1.pub",
+      "url": "http://dignan.local:4440/api/{{ $apiMinVersion }}/storage/keys/monkey1.pub",
       "name": "monkey1.pub",
       "type": "file",
       "path": "keys/monkey1.pub"
@@ -5885,13 +5872,13 @@ url='http://dignan.local:4440/api/11/storage/keys'>
         "Rundeck-content-size": "393",
         "Rundeck-content-type": "application/pgp-keys"
       },
-      "url": "http://dignan.local:4440/api/11/storage/keys/test1.pub",
+      "url": "http://dignan.local:4440/api/{{ $apiMinVersion }}/storage/keys/test1.pub",
       "name": "test1.pub",
       "type": "file",
       "path": "keys/test1.pub"
     }
   ],
-  "url": "http://dignan.local:4440/api/11/storage/keys",
+  "url": "http://dignan.local:4440/api/{{ $apiMinVersion }}/storage/keys",
   "type": "directory",
   "path": "keys"
 }
@@ -5905,7 +5892,7 @@ Returns the metadata about the stored key file.
 
 Provides a JSON or XML response based on the `Accept` request header:
 
-    GET /api/11/storage/keys/[PATH]/[FILE]
+    GET /api/{{ $apiMinVersion }}/storage/keys/[PATH]/[FILE]
 
 Response:
 
@@ -5913,7 +5900,7 @@ Response:
 
 ``` xml
 <resource path='keys/test1.pub' type='file'
-url='http://dignan.local:4440/api/11/storage/keys/test1.pub'
+url='http://dignan.local:4440/api/{{ $apiMinVersion }}/storage/keys/test1.pub'
 name='test1.pub'>
   <resource-meta>
     <Rundeck-content-type>
@@ -5933,7 +5920,7 @@ name='test1.pub'>
     "Rundeck-content-size": "393",
     "Rundeck-content-type": "application/pgp-keys"
   },
-  "url": "http://dignan.local:4440/api/11/storage/keys/test1.pub",
+  "url": "http://dignan.local:4440/api/{{ $apiMinVersion }}/storage/keys/test1.pub",
   "name": "test1.pub",
   "type": "file",
   "path": "keys/test1.pub"
@@ -5944,7 +5931,7 @@ name='test1.pub'>
 
 Provides the **public key** content if the `Accept` request header matches `*/*` or `application/pgp-keys`:
 
-    GET /api/11/storage/keys/[PATH]/[FILE]
+    GET /api/{{ $apiMinVersion }}/storage/keys/[PATH]/[FILE]
 
 **Retrieving private key or password file contents is not allowed.**
 
@@ -5952,7 +5939,7 @@ A GET request for a private key file if the `Accept` request header matches `*/*
 or a password if the request header matches `*/*` or `application/x-rundeck-data-password`
 will result in a `403 Unauthorized` response.
 
-    GET /api/11/storage/keys/[PATH]/[FILE]
+    GET /api/{{ $apiMinVersion }}/storage/keys/[PATH]/[FILE]
     Accept: application/octet-stream
     ...
 
@@ -5965,7 +5952,7 @@ Response:
 
 Deletes the file if it exists and returns `204` response.
 
-    DELETE /api/11/storage/keys/[PATH]/[FILE]
+    DELETE /api/{{ $apiMinVersion }}/storage/keys/[PATH]/[FILE]
 
 ## Projects
 
@@ -5975,7 +5962,7 @@ List the existing projects on the server.
 
 **Request:**
 
-    GET /api/11/projects
+    GET /api/{{ $apiMinVersion }}/projects
 
 **Response:**
 
@@ -5999,7 +5986,7 @@ See [Getting Project Info](#getting-project-info) section.
 
 Create a new project.
 
-    POST /api/11/projects
+    POST /api/{{ $apiMinVersion }}/projects
 
 XML content:
 
@@ -6029,7 +6016,7 @@ Response:  XML or JSON project definition of the form indicated in the [Getting 
 
 Get information about a project.
 
-    GET /api/11/project/[PROJECT]
+    GET /api/{{ $apiMinVersion }}/project/[PROJECT]
 
 **Response:**
 
@@ -6038,7 +6025,7 @@ XML or JSON is determined by the `Accept` request header.
 `Content-Type: application/xml`
 
 ``` xml
-<project url="http://server:4440/api/11/project/NAME">
+<project url="http://server:4440/api/{{ $apiMinVersion }}/project/NAME">
     <name>Project Name</name>
     <description>...</description>
     <!-- additional items -->
@@ -6060,7 +6047,7 @@ If the user has `configure` authorization for the project, then the project conf
 {
   "description": "",
   "name": "NAME",
-  "url": "http://server:4440/api/11/project/NAME",
+  "url": "http://server:4440/api/{{ $apiMinVersion }}/project/NAME",
   "config": {  }
 }
 
@@ -6093,7 +6080,7 @@ Retrieve or modify the project configuration data.  Requires `configure` authori
 
 #### GET Project Configuration ####
 
-    GET /api/11/project/[PROJECT]/config
+    GET /api/{{ $apiMinVersion }}/project/[PROJECT]/config
 
 Response, based on `Accept` header:
 
@@ -6128,7 +6115,7 @@ Replaces all configuration data with the submitted values.
 
 **Request:**
 
-    PUT /api/11/project/[PROJECT]/config
+    PUT /api/{{ $apiMinVersion }}/project/[PROJECT]/config
 
 Content:
 
@@ -6165,7 +6152,7 @@ Retrieve, change or delete individual configuration properties by their key.  Re
 
 URL:
 
-    /api/11/project/[PROJECT]/config/[KEY]
+    /api/{{ $apiMinVersion }}/project/[PROJECT]/config/[KEY]
 
 Request and response formats:
 
@@ -6191,13 +6178,13 @@ key value
 
 Retrieve the value.
 
-    GET /api/11/project/[PROJECT]/config/[KEY]
+    GET /api/{{ $apiMinVersion }}/project/[PROJECT]/config/[KEY]
 
 #### PUT Project Configuration Key ####
 
 Set the value.
 
-    PUT /api/11/project/[PROJECT]/config/[KEY]
+    PUT /api/{{ $apiMinVersion }}/project/[PROJECT]/config/[KEY]
 
 Example JSON Payload:
     `{"value": "value-for-key"}`
@@ -6206,7 +6193,7 @@ Example JSON Payload:
 
 Delete the key.
 
-    DELETE /api/11/project/[PROJECT]/config/[KEY]
+    DELETE /api/{{ $apiMinVersion }}/project/[PROJECT]/config/[KEY]
 
 Response will be
 
@@ -6217,7 +6204,7 @@ Response will be
 Export a zip archive of the project.  Requires `export` authorization for the project. Performs the export synchronously.
 (See [Project Archive Export Async][/api/V/project/\[PROJECT\]/export/async] for asynchronous export.)
 
-    GET /api/11/project/[PROJECT]/export
+    GET /api/{{ $apiMinVersion }}/project/[PROJECT]/export
 
 Response content type is `application/zip`
 
@@ -6232,7 +6219,7 @@ In APIv19 or later:
 
 By default, exportALL=true. So, in order to not export empty data, you need to include one of the following flags. For example:
 ```
-GET /api/11/project/[PROJECT]/export?exportAll=false
+GET /api/{{ $apiMinVersion }}/project/[PROJECT]/export?exportAll=false
 ```
 
 * `exportAll` true/false, include all project contents (default: true)
@@ -6266,12 +6253,12 @@ GET /api/34/project/[PROJECT]/export?exportAll=true&whkIncludeAuthTokens=true
 
 GET Examples:
 
-    GET /api/11/project/AlphaProject/export?executionIds=1,4,9
-    GET /api/11/project/AlphaProject/export?executionIds=1&executionIds=4&executionIds=9
+    GET /api/{{ $apiMinVersion }}/project/AlphaProject/export?executionIds=1,4,9
+    GET /api/{{ $apiMinVersion }}/project/AlphaProject/export?executionIds=1&executionIds=4&executionIds=9
 
 Post:
 
-    POST /api/11/project/AlphaProject/export
+    POST /api/{{ $apiMinVersion }}/project/AlphaProject/export
     Content-Type: application/x-www-form-urlencoded
 
     executionIds=1&executionIds=4&executionIds=9&...    
@@ -6297,7 +6284,7 @@ In APIv19 or later:
 
 By default, exportALL=true. So, in order to not export empty data, you need to include one of the following flags. For example:
 ```
-GET /api/11/project/[PROJECT]/export?exportAll=false
+GET /api/{{ $apiMinVersion }}/project/[PROJECT]/export?exportAll=false
 ```
 
 * `exportAll` true/false, include all project contents (default: true)
@@ -6349,7 +6336,7 @@ Response content type is `application/zip`
 
 Import a zip archive to the project. Requires `import` authorization for the project.
 
-    PUT /api/14/project/[PROJECT]/import{?jobUuidOption,importExecutions,importConfig,importACL,importScm}
+    PUT /api/{{ $apiMinVersion }}/project/[PROJECT]/import{?jobUuidOption,importExecutions,importConfig,importACL,importScm}
 
 Parameters:
 
@@ -6484,7 +6471,7 @@ A GET request returns all the resources for the project.
 
 **Request:**
 
-    GET /api/11/project/[PROJECT]/resources
+    GET /api/{{ $apiMinVersion }}/project/[PROJECT]/resources
 
 See [Listing Resources](#listing-resources).
 
@@ -6706,7 +6693,7 @@ List the event history for a project.
 
 **Request:**
 
-    GET /api/14/project/[PROJECT]/history
+    GET /api/{{ $apiMinVersion }}/project/[PROJECT]/history
 
 Optional Parameters:
 
@@ -6827,7 +6814,7 @@ List or query the resources for a project.
 
 **Request:**
 
-    GET /api/14/project/[PROJECT]/resources
+    GET /api/{{ $apiMinVersion }}/project/[PROJECT]/resources
 
 Optional Parameters:
 
@@ -6852,7 +6839,7 @@ Get a specific resource within a project.
 
 **Request:**
 
-    GET /api/14/project/[PROJECT]/resource/[NAME]
+    GET /api/{{ $apiMinVersion }}/project/[PROJECT]/resource/[NAME]
 
 Optional Parameters:
 
