@@ -1,18 +1,18 @@
 ---
 
 title: "4.17.4 Release Notes"
-date: 2021-01-01
+date: 2023-12-13
 image: /images/chevron-logo-red-on-white.png
 feed:
  enable: true
- description: ""
+ description: "4.17.4 - Fix Whale Log Crashes"
 
 ---
 
 # 4.17.4 Release Notes
 
 Name: <span style="color: yellowgreen"><span class="glyphicon glyphicon-globe"></span> "Basilisk yellowgreen globe"</span>
-Release Date: PUTADATEHERE
+Release Date: December 13th, 2023
 
 - [Download the Releases](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
@@ -26,37 +26,9 @@ Check out the new features and enhancements for PagerDuty Process Automation (fo
 
 > Also includes all Open Source updates from below
 
-### Highlights
+### Overview
 
-- first highlight
-- second highlight
-
-### Additional Updates
-
-
-
-
-## Rundeck Open Source Product Updates
-
-
-
-[Here is a link to the full list of public PRs](https://github.com/rundeck/rundeck/pulls?q=is%3Apr+milestone%3A4.17.4+is%3Aclosed)
-
-## Ansible Plugin Updates
-
-
-
-## Enterprise Runner Updates
-
-**Bundled Runner Version:** Version Not Found check for release tag
-
-
-
-## Community Contributors
-
-Submit your own Pull Requests to get recognition here!
-
-
+This release fixes a bug in 4.17.3 with Large Log files causing instability on browsers and causig a crash.
 
 ## Staff Contributors
 
