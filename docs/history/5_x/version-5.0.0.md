@@ -29,16 +29,14 @@ Our major version releases typically center around updates to the foundational l
 
 ### Runner Key Storage GUI for Resource Model Sources.
 
-Content TBD
+With [version 4.16.0](/history/4_x/version-4.16.0.md), the Enterprise Runner became capable of populating the Node Inventory with nodes that can only be accessed internally - such as VMware virtual machines and Kubernetes pods.  Now, if accessing the inventory for these nodes requires a secret - such as an API Key for VMware - that secret can be retrieved by the Runner from a self-hosted secrets management provider, such as Hashicorp Vault.  This allows users to populate the Node Inventory through the Runner - even when the source of those nodes are secured by a secret.
 
 ### Jobs List Performance
 
-We refactored the backend of the Job Lists, resulting in a performance improvement of up to 85%.  This will be most noticeable for Projects and a lot of grouped jobs.
+The Job Lists UI has been fully refactored on the backend, resulting in a performance improvement of up to 85%.  This will be most noticeable for Projects and a lot of grouped jobs.
 
 ### Java 11 Minimum Required
 To align the product with some of the foundational updates listed below the 5.0 version now requires Java 11.
-
-Java 17 as a runtime is “provisionally supported” with this release.  Customers are welcome to try it, but there may be issues that we haven’t found yet.
 
 ### Deprecations
 
@@ -50,7 +48,9 @@ Apache Tomcat is no longer a supported Application Server platform for Rundeck o
 
 The new Current API version is now `46`. The new API depreciation version is `17`. This means that future Rundeck releases will have a minimum API version of `17`.  Customers should ensure that code using the API is updated accordingly.
 
-Check the API Versions page for all the details.
+XML Support on the API is being deprecated and starting with the 5.x series we will only be supporting the JSON input and output options.  (Note: Job definitions in XML format are still supported)
+
+Check the [API Versions page](/api/rundeck-api-versions.md) for all the details.
 
 ## Runner Versioning
 
@@ -59,8 +59,10 @@ With this release the versioning for the Enterprise Runner is now aligned with t
 ### “Under the hood” updates
 
 Grails 6 is now the foundation for Rundeck and Process Automation products.
+
 Builds are now completed using Node 18
-Started conversion of pages from old UI code to Vue.  This effort will be on-going through the 5.x series and will bring performance improvements.
+
+Started conversion of pages from old UI code to Vue.  This effort will be on-going through the 5.x series and will bring performance improvements across the product.
 
 ### Additional Improvements/Changes
 
