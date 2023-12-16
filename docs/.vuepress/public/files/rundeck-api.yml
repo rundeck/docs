@@ -5,7 +5,7 @@ info:
   license:
     name: Apache 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0.html
-  version: "45"
+  version: "46"
 externalDocs:
   description: Original Rundeck API Documentation
   url: https://docs.rundeck.com/docs/api/rundeck-api.html
@@ -866,14 +866,13 @@ paths:
       tags:
       - execution
       summary: Delete an Execution
-      description: |
+      description: |+
         Delete an execution by ID.
 
         Authorization requirement: Requires the `delete_execution` action allowed for a `project` in the `application` context.
 
         See: [Administration - Access Control Policy - Application Scope Resources and Actions](https://docs.rundeck.com/docs/administration/security/authorization.html#application-scope-resources-and-actions)
 
-        Since: V12
       operationId: apiExecutionDelete
       parameters:
       - name: id
@@ -984,7 +983,7 @@ paths:
       description: |+
         Get the output for an execution by ID. The execution can be currently running or may have already completed. Output can be filtered down to a specific node or workflow step.
 
-        The log output for each execution is stored in a file on the Rundeck server, and this API endpoint allows you to retrieve some or all of the output, in several possible formats: json, XML, and plain text. When retrieving the plain text output, some metadata about the log is included in HTTP Headers. JSON and XML output formats include metadata about each output log line, as well as metadata about the state of the execution and log file, and your current index location in the file.
+        The log output for each execution is stored in a file on the Rundeck server, and this API endpoint allows you to retrieve some or all of the output, in several possible formats: json, and plain text. When retrieving the plain text output, some metadata about the log is included in HTTP Headers. JSON includes metadata about each output log line, as well as metadata about the state of the execution and log file, and your current index location in the file.
 
         Output can be selected by Node or Step Context or both as of API v10.
 
@@ -1082,7 +1081,6 @@ paths:
         schema:
           type: string
           enum:
-          - xml
           - json
           - text
       responses:
@@ -1090,27 +1088,26 @@ paths:
           description: "Log Output Response. \n\nThe result will contain a set of\
             \ data values reflecting the execution's status, as well as the status\
             \ and read location in the output file.\n\n* In JSON, there will be an\
-            \ object containing these entries.\n* In XML, there will be an `output`\
-            \ element, containing these sub-elements, each with a text value.\n* In\
-            \ plain text format, HTTP headers will include some information about\
-            \ the loging state, but individual log entries will only be returned in\
-            \ textual form without metadata.\n\nEntries:\n\n* `id`: ID of the execution\n\
-            * `message`: optional text message indicating why no entries were returned\n\
-            * `error`: optional text message indicating an error case\n* `unmodified`:\
-            \ true/false, (optional) \"true\" will be returned if the `lastmod` parameter\
-            \ was used and the file had not changed\n* `empty`: true/false, (optional)\
-            \ \"true\" will be returned if the log file does not exist or is empty,\
-            \ which may occur if the log data is requested before any output has been\
-            \ stored.\n* `offset`: Byte offset to read for the next set of data\n\
-            * `completed`: true/false, \"true\" if the current log entries or request\
-            \ parameters include all of the available data\n* `execCompleted`: true/false,\
-            \ \"true\" if the execution has completed.\n* `hasFailedNodes`: true/false,\
-            \ \"true\" if the execution has recorded a list of failed nodes\n* `execState`:\
-            \ execution state, one of \"running\",\"succeeded\",\"failed\",\"aborted\"\
-            \n* `lastModified`: (long integer), millisecond timestamp of the last\
-            \ modification of the log file\n* `execDuration`: (long integer), millisecond\
-            \ duration of the execution\n* `percentLoaded`: (float), (optional) percentage\
-            \ of the output which has been loaded by the parameters to this request\n\
+            \ object containing these fields.\n* In plain text format, HTTP headers\
+            \ will include some information about the loging state, but individual\
+            \ log entries will only be returned in textual form without metadata.\n\
+            \nContents:\n\n* `id`: ID of the execution\n* `message`: optional text\
+            \ message indicating why no entries were returned\n* `error`: optional\
+            \ text message indicating an error case\n* `unmodified`: true/false, (optional)\
+            \ \"true\" will be returned if the `lastmod` parameter was used and the\
+            \ file had not changed\n* `empty`: true/false, (optional) \"true\" will\
+            \ be returned if the log file does not exist or is empty, which may occur\
+            \ if the log data is requested before any output has been stored.\n* `offset`:\
+            \ Byte offset to read for the next set of data\n* `completed`: true/false,\
+            \ \"true\" if the current log entries or request parameters include all\
+            \ of the available data\n* `execCompleted`: true/false, \"true\" if the\
+            \ execution has completed.\n* `hasFailedNodes`: true/false, \"true\" if\
+            \ the execution has recorded a list of failed nodes\n* `execState`: execution\
+            \ state, one of \"running\",\"succeeded\",\"failed\",\"aborted\"\n* `lastModified`:\
+            \ (long integer), millisecond timestamp of the last modification of the\
+            \ log file\n* `execDuration`: (long integer), millisecond duration of\
+            \ the execution\n* `percentLoaded`: (float), (optional) percentage of\
+            \ the output which has been loaded by the parameters to this request\n\
             * `totalSize`: (integer), total bytes available in the output file\n*\
             \ `filter` - if a `node` or `step` filter was used\n    - `nodename` -\
             \ value of the node name filter\n    - `stepctx` - value of the step context\
@@ -1119,8 +1116,7 @@ paths:
             \ entry key used by default for fully compacted entries (API v21+)\n\n\
             Each log entry will be included in a section called `entries`.\n\n* In\
             \ JSON, `entries` will contain an array of Objects, each containing the\
-            \ following format\n* In XML, the `entries` element will contain a sequence\
-            \ of `entry` elements\n\nContent of each Log Entry:\n\n* `time`: Timestamp\
+            \ following format\n\nContent of each Log Entry object:\n\n* `time`: Timestamp\
             \ in format: \"HH:MM:SS\"\n* `absolute_time`: Timestamp in format: \"\
             yyyy-MM-dd'T'HH:mm:ssZ\"\n* `level`: Log level, one of: ERROR,WARN,NORMAL,VERBOSE,DEBUG,OTHER\n\
             * `log`: The log message\n* `user`: User name\n* `command`: Workflow command\
@@ -1140,8 +1136,7 @@ paths:
             When no values changed from the previous Log Entry, the Log Entry will\
             \ be an empty object.\n\nWhen an entry value is not present in the subsequent\
             \ Log Entry, but was present in the previous\none, in JSON this will be\
-            \ represented with a `null` value, and in XML the entry name will be\n\
-            included in a `removed` attribute."
+            \ represented with a `null` value."
           headers:
             X-Rundeck-ExecOutput-Error:
               description: The `error` field (text format only)
@@ -2541,6 +2536,41 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/JobFileUpload'
+  /job/{id}/meta:
+    get:
+      tags:
+      - jobs
+      summary: Get Job Metadata
+      description: |-
+        Get metadata for a specific job.
+
+        Authorization required: `read` or `view` for the Job.
+
+        Since: v46
+      operationId: apiJobMeta
+      parameters:
+      - name: id
+        in: path
+        description: Job ID
+        required: true
+        schema:
+          type: string
+      - name: meta
+        in: query
+        description: "Comma-separated list of metadata items to include, or \"*\"\
+          \ for all (default)"
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Job results
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ItemMeta'
   /job/{id}/retry/{executionId}:
     post:
       tags:
@@ -6009,6 +6039,106 @@ paths:
                         "enabled": true
                       }
                     ]
+  /project/{project}/jobs/browse:
+    get:
+      tags:
+      - jobs
+      summary: Browse jobs at a path
+      description: |-
+        Browse the jobs at a specific group path.
+
+        Authorization required: `read` or `view` for the Job.
+
+        Since: v46
+      operationId: apiJobBrowseGet_docs
+      parameters:
+      - name: project
+        in: path
+        description: Project name
+        required: true
+        schema:
+          type: string
+      - name: path
+        in: query
+        description: "Group path root, or blank for the root"
+        required: true
+        schema:
+          type: string
+      - name: meta
+        in: query
+        description: "Comma-separated list of metadata items to include, or \"*\"\
+          \ for all"
+        required: true
+        schema:
+          type: string
+      - name: breakpoint
+        in: query
+        description: "Breakpoint, max number of jobs to load with metadata, if more\
+          \ results than the \nbreakpoint are available, no metadata will be loaded"
+        required: true
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: Job results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobBrowseResponse'
+    post:
+      tags:
+      - jobs
+      summary: Query jobs at a path
+      description: |-
+        Query the jobs at a specific group path.
+
+        Authorization required: `read` or `view` for the Job.
+
+        Since: v46
+      operationId: apiJobBrowse
+      parameters:
+      - name: project
+        in: path
+        description: Project name
+        required: true
+        schema:
+          type: string
+      - name: path
+        in: query
+        description: "Group path root, or blank for the root"
+        required: true
+        schema:
+          type: string
+      - name: meta
+        in: query
+        description: "Comma-separated list of metadata items to include, or \"*\"\
+          \ for all"
+        required: true
+        schema:
+          type: string
+      - name: breakpoint
+        in: query
+        description: "Breakpoint, max number of jobs to load with metadata, if more\
+          \ results than the \nbreakpoint are available, no metadata will be loaded"
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        description: Query parameters
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RdJobQueryInput'
+            examples:
+              example:
+                value: ""
+      responses:
+        "200":
+          description: Job results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobBrowseResponse'
   /project/{project}/jobs/export:
     get:
       tags:
@@ -6302,6 +6432,40 @@ paths:
                         "desc": "a basic job"
                       }
                     ]
+  /project/{project}/meta:
+    get:
+      tags:
+      - project
+      summary: Get project metadata
+      description: |-
+        Get project metadata.
+
+        Requires `read` authorization for the project resource.
+        Since: v46
+      operationId: apiProjectMeta
+      parameters:
+      - name: project
+        in: path
+        description: Project name
+        required: true
+        schema:
+          type: string
+      - name: meta
+        in: query
+        description: "Comma-separated list of metadata items to include, or \"*\"\
+          \ for all (default)"
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Project Metadata results
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ItemMeta'
   /project/{project}/resource/{name}:
     get:
       tags:
@@ -6732,6 +6896,42 @@ paths:
                       id: 1
                       href: "[API Href]"
                       permalink: "[GUI Href]"
+  /project/{project}/scm/toggle:
+    post:
+      tags:
+      - plugins
+      - scm
+      summary: Toggle SCM for a Project
+      description: " Toggle SCM enabled/disabled for a Project.\n\nThis endpoint will\
+        \ enable or disable all configured SCM plugins for the project. \nSpecify\
+        \ whether to enable or disable in the request body.\n\nThis action is idempotent.\n\
+        \nAuthorization Required: `configure` for the Project resource (app context)\n\
+        \nSince: v46"
+      operationId: apiProjectToggleSCM
+      parameters:
+      - name: project
+        in: path
+        description: Project Name
+        required: true
+        schema:
+          type: string
+      requestBody:
+        description: Configuration values for the plugin.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ScmToggleRequest'
+            examples:
+              example:
+                value:
+                  enabled: true
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScmToggleResponse'
   /project/{project}/scm/{integration}/action/{actionId}:
     post:
       tags:
@@ -10938,35 +11138,6 @@ components:
       description: Create Token request using a comma-separated string for Roles
       allOf:
       - $ref: '#/components/schemas/CreateTokenBase'
-    DataEntry:
-      type: object
-      properties:
-        key:
-          type: string
-          description: Entry key
-        value:
-          type: object
-        description:
-          type: string
-          description: Description for UI
-        label:
-          type: string
-          description: Name to display in UI
-        unit:
-          type: string
-          description: Unit
-        status:
-          type: string
-          description: Entry status indication for UI.
-        secured:
-          type: boolean
-          description: Marks entry as secured. Content will never be displayed.
-        concealed:
-          type: boolean
-          description: Marks entry as concealed. Content will be concealed but available.
-        whitelist:
-          type: boolean
-          description: "if true, will not be concealed or secured automatically"
     DataSet:
       type: object
       properties:
@@ -10977,9 +11148,26 @@ components:
         entries:
           type: array
           items:
-            $ref: '#/components/schemas/DataEntry'
+            $ref: '#/components/schemas/IDataEntry'
         big:
           type: boolean
+    DefaultMessageSourceResolvable:
+      required:
+      - code
+      type: object
+      properties:
+        code:
+          type: string
+        codes:
+          type: array
+          items:
+            type: string
+        defaultMessage:
+          type: string
+        arguments:
+          type: array
+          items:
+            type: object
     DeleteBulkRequest:
       type: object
       properties:
@@ -11025,11 +11213,11 @@ components:
     ErrorResponse:
       type: object
       properties:
+        errorCode:
+          type: string
         apiVersion:
           type: integer
           format: int32
-        errorCode:
-          type: string
         errorMessage:
           type: string
         error:
@@ -11039,6 +11227,38 @@ components:
           format: int32
         message:
           type: string
+    Errors:
+      type: object
+      properties:
+        errorCount:
+          type: integer
+          format: int32
+        objectName:
+          type: string
+        nestedPath:
+          type: string
+        globalErrorCount:
+          type: integer
+          format: int32
+        globalErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ObjectError'
+        globalError:
+          $ref: '#/components/schemas/ObjectError'
+        fieldErrorCount:
+          type: integer
+          format: int32
+        fieldErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldError'
+        allErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ObjectError'
+        fieldError:
+          $ref: '#/components/schemas/FieldError'
     EventRoutingResult:
       type: object
       properties:
@@ -11085,6 +11305,75 @@ components:
         name:
           type: string
           description: "since: v42"
+    FieldError:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/ObjectError'
+      - $ref: '#/components/schemas/DefaultMessageSourceResolvable'
+      - required:
+        - field
+        properties:
+          bindingFailure:
+            type: boolean
+          rejectedValue:
+            type: object
+          field:
+            type: string
+    IDataEntry:
+      type: object
+      properties:
+        key:
+          type: string
+        value:
+          type: object
+        description:
+          type: string
+        label:
+          type: string
+        unit:
+          type: string
+        status:
+          type: string
+        secured:
+          type: boolean
+        concealed:
+          type: boolean
+        whitelist:
+          type: boolean
+    ItemMeta:
+      type: object
+      properties:
+        name:
+          type: string
+        data:
+          type: object
+          additionalProperties: true
+    JobBrowseItemData:
+      type: object
+      properties:
+        job:
+          type: boolean
+        groupPath:
+          type: string
+        jobName:
+          type: string
+        description:
+          type: string
+        id:
+          type: string
+        meta:
+          type: array
+          items:
+            $ref: '#/components/schemas/ItemMeta'
+    JobBrowseResponse:
+      type: object
+      properties:
+        path:
+          type: string
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/JobBrowseItemData'
     JobFileInfo:
       type: object
       properties:
@@ -11187,6 +11476,31 @@ components:
       - STARTED
       - NOT_FOUND
       - UNKNOWN_ERROR
+    LicenseEntitlement:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          $ref: '#/components/schemas/LicenseEntitlementDescription'
+        value:
+          type: object
+          additionalProperties:
+            type: string
+      description: License Entitlement Information
+    LicenseEntitlementDescription:
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        properties:
+          type: array
+          items:
+            type: object
+            additionalProperties:
+              type: string
     LicenseInfoResponse:
       type: object
       properties:
@@ -11258,6 +11572,10 @@ components:
           type: string
         invalidCode:
           type: string
+        entitlements:
+          type: array
+          items:
+            $ref: '#/components/schemas/LicenseEntitlement'
       description: License Information
     LinkListResponse:
       type: object
@@ -11347,6 +11665,15 @@ components:
             type: object
             additionalProperties:
               type: string
+    ObjectError:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/DefaultMessageSourceResolvable'
+      - required:
+        - objectName
+        properties:
+          objectName:
+            type: string
     OutputStream:
       type: object
     Paging:
@@ -11496,6 +11823,66 @@ components:
           type: string
           description: "The state of asynch loading of the remote file, one of AVAILABLE_REMOTE\
             \ or PENDING_LOCAL"
+    RdJobQueryInput:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/RdPageable'
+      - properties:
+          errors:
+            $ref: '#/components/schemas/Errors'
+          inputParamMap:
+            type: object
+            additionalProperties: true
+          jobFilter:
+            type: string
+          jobExactFilter:
+            type: string
+          projFilter:
+            type: string
+          groupPath:
+            type: string
+          groupPathExact:
+            type: string
+          descFilter:
+            type: string
+          loglevelFilter:
+            type: string
+          idlist:
+            type: string
+          scheduledFilter:
+            type: boolean
+          scheduleEnabledFilter:
+            type: boolean
+          executionEnabledFilter:
+            type: boolean
+          serverNodeUUIDFilter:
+            type: string
+          daysAhead:
+            type: integer
+            format: int32
+          runJobLaterFilter:
+            type: boolean
+          paginatedRequired:
+            type: boolean
+          sortBy:
+            type: string
+          sortOrder:
+            type: string
+    RdPageable:
+      type: object
+      properties:
+        errors:
+          $ref: '#/components/schemas/Errors'
+        sortOrders:
+          type: array
+          items:
+            $ref: '#/components/schemas/SortOrder'
+        max:
+          type: integer
+          format: int32
+        offset:
+          type: integer
+          format: int32
     RegenRunnerCredResponse:
       type: object
       properties:
@@ -12016,10 +12403,27 @@ components:
           description: "empty, or a list of action ID strings."
           items:
             type: string
+    ScmToggleRequest:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+    ScmToggleResponse:
+      type: object
+      properties:
+        modified:
+          type: boolean
     SetUserclassModel:
       type: object
       properties:
         userclass:
+          type: string
+    SortOrder:
+      type: object
+      properties:
+        column:
+          type: string
+        direction:
           type: string
     Source:
       type: object

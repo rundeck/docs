@@ -8,7 +8,7 @@ export class RundeckVersion {
     serverName
     serverUuid
     versionData
-    nameTilt = 21
+    nameTilt = 32
 
     constructor(data) {
         this.versionString = data['versionString'];
@@ -140,7 +140,6 @@ export class RundeckVersion {
       'Eloi',
       'Firedrake',
       'Griffin',
-      // 'Gorgon',
       'Gremlin',
       'Hobgoblin',
       'Hippogriff',
@@ -156,15 +155,47 @@ export class RundeckVersion {
       'Orc',
       'Phoenix',
       'Quintaped',
-      // 'R',
       'Sphinx',
       'Satyr',
-      // 'T',
       'Unicorn',
-      // 'V',
-      'Wyvern',
-
+      'Wyvern'
     ];
+
+    names5 = [
+        'Aconcagua',
+        'Aoraki',
+        'Carstenz',
+        'Chimborazo',
+        'Denali', //Dave Darby
+        'Elbrus',
+        'Erebus',
+        'Etna',
+        'Everest',
+        'Fairweather',
+        'Fansiban',
+        'Foraker',
+        'Fuji',
+        'Hood', //Greg Schueler
+        'K2',
+        'Kilimanjaro',
+        'Kinabalu',
+        'Kirkjufell',
+        'Logan',
+        'Matterhorn',
+        'Mauna Kea',
+        'Mont Blanc',
+        'Monte Fitz Roy',
+        'Olympus',
+        'Parinacota',
+        'Provincia', //Luis Toledo
+        'Rainier',
+        'Shasta',
+        'Stanley',
+        'Tupungato',
+        'Vinson',
+        'Whitney',
+        'Wycheproof'
+    ]
 
     splitVersion(versionString) {
         var partsa = String(versionString).split(' ');
@@ -234,6 +265,9 @@ export class RundeckVersion {
     nameForVersion4 = (val) => {
         return this.inList(this.names4, val);
     };
+    nameForVersion5 = (val) => {
+        return this.inList(this.names5, val);
+    };
     iconForVersion(val) {
         return this.inList(this.glyphicons2, val);
     };
@@ -247,7 +281,15 @@ export class RundeckVersion {
         return this.colorForVersion(this.versionData[this.colorIdentity]);
     };
     name() {
-        var func = this.versionData.major === 4 ? this.nameForVersion4 : this.nameForVersion;
+        var func;
+        if (this.versionData.major === 4) {
+            func = this.nameForVersion4;
+        } else {
+            if (this.versionData.major === 5) {
+                func = this.nameForVersion5;
+            } else {
+            func = this.nameForVersion;
+        }}
         return func(this.versionData[this.nameIdentity] + this.nameTilt);
     };
     icon() {
