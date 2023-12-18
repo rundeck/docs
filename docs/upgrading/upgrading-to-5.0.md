@@ -45,13 +45,13 @@ Before migration - copy and backup the database files somewhere safe:
         `grailsdb.mv.db`
         `grailsdb.trace.db`
 
-### Migration
+### Migration from 4.1+ to 5.0
 
 #### STEP 1: Generate the new version database
 
 Open a shell terminal and navigate into the `h2-v2-migration` git repo. Execute the `migration.sh` shell command.
 
-    $_>/bin/sh migration.sh -f ${backup_directory}/grailsdb -u ${username} -p ${password}
+    $_>/bin/sh migration.sh -f ${backup_directory}/grailsdb -u ${username} -p ${password} -s v2 -d v3
 
 
 - The `-f` parameter is required and should be the full path to the backup database file without the extension.
@@ -59,10 +59,16 @@ Open a shell terminal and navigate into the `h2-v2-migration` git repo. Execute 
     - If your Rundeck installation is RPM/Deb/War use `sa` for the user name.
     - If your Rundeck installation is from Docker the user name is blank. (leave `-u` out of command)
 - The optional `-p` parameter is used for database password. If it is not provided, an empty string will be used.
+- - The optional `-s` parameter is used to set the source h2 database version. Valid values are `v1` or `v2`. If not
+  provided, `v2` will be used.
+- The optional `-d` parameter is used to set the destination h2 database version. Valid values are `v2` or `v3`. If not
+  provided, `v3` will be used.
 
 By default, the `username` and `password` parameters are both empty string. If you have any custom setup, please use your customized values.
 
 The migration.sh script will create a `output` folder at current location and put all generated files (including the v2 database file) into it.
+
+> Migrating the database directly from a 4.0 or lower (`v1`) to the 5.0 version (`v3`) did work in tests, but be sure to review all other upgrade considerations between your old version and new version.
 
 
 #### STEP 2: Deploy the new version database
