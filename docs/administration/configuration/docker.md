@@ -143,6 +143,10 @@ Defaults to `jdbc:h2:file:/home/rundeck/server/data/grailsdb;DB_CLOSE_ON_EXIT=FA
 
 This will configure the setting for `grails.plugin.databasemigration.updateOnStart` used in [Upgrading to the 3.4](/upgrading/upgrading-to-rundeck-3.4.md). Defaults to `true`.
 
+`RUNDECK_SERVER_SESSION_TIMEOUT=86400`
+
+This will increase the session timeout to 24h, enabling users to stay logged in longer.
+
 ### Database
 
 `RUNDECK_DATABASE_DRIVER`
