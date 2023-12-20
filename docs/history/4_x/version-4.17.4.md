@@ -28,7 +28,7 @@ Check out the new features and enhancements for PagerDuty Process Automation (fo
 
 ### Overview
 
-This release fixes a bug in 4.17.3 with Large Log files causing instability on browsers and causig a crash.
+This release fixes a bug in 4.17.3 with Large Log files causing instability on browsers and causing a crash.
 
 ## Staff Contributors
 
