@@ -1,4 +1,5 @@
 ---
+pageClass: custom-page-class
 home: true
 icon: home
 heroText:  Rundeck Documentation
