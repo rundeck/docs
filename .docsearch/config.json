@@ -1,13 +1,12 @@
 {
-  "index_name": "prod_rundeck_docs",
+  "index_name": "dev_rundeck_docs",
   "js_render": false,
   "start_urls": [
     {
       "url": "https://docs.rundeck.com/(?P<version>.*?)/",
       "variables": {
         "version": [
-          "docs",
-          "4.17.4"
+          "vuepress2-migration"
         ]
       }
     }

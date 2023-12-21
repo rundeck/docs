@@ -106,7 +106,7 @@ List and manage Jobs.
        enable         - Enable execution for a job
        info           - Get info about a Job by ID (API v18)
        list           - List jobs found in a project, or download Job definitions (-f)
-       load           - Load Job definitions from a file in JSON, XML or YAML format
+       load           - Load Job definitions from a file in XML or YAML format
        purge          - Delete jobs matching the query parameters
        reschedule     - Enable schedule for a job
        unschedule     - Disable schedule for a job

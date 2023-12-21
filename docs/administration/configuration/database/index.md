@@ -15,7 +15,7 @@ Don't use the H2 embedded database for anything except testing and non-productio
 
 Use an external database service like MariaDB, Mysql, Postgres, Amazon Aurora or Oracle.
 
-> Note: For concerns about [CVE-2022-45868](/history/cves/cve-2022-45868.md) please see [the write up why Rundeck is not vulnerable](/history/cves/cve-2022-45868.md).
+> Note: For concerns about [CVE-2022-45868](/history/cves/CVE-2022-45868.md) please see [the write up why Rundeck is not vulnerable](/history/cves/CVE-2022-45868.md).
 
 ## Database Architecture and Performance Notes
 
@@ -30,7 +30,7 @@ You specify the `dataSource.` configuration properties.
 Here is the default, set up for the default embedded H2 database:
 
 ```properties
-dataSource.url = jdbc:h2:file:/var/lib/rundeck/data/rundeckdb;DB_CLOSE_ON_EXIT=FALSE;NON_KEYWORDS=MONTH,HOUR,MINUTE,YEAR,SECONDS
+dataSource.url = jdbc:h2:file:/var/lib/rundeck/data/grailsdb;MVCC=true
 ```
 
 `dataSource.dbCreate` specifies how the behavior that Hibernate should take when it

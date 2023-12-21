@@ -1,4 +1,4 @@
-# Cross-Account Orchestration with AWS Systems Manager
+# Configure Connections with AWS Systems Manager Across Multiple Accounts 
 
 ## Summary
 It is fairly common for companies to have multiple AWS accounts, yet have tasks that need to be implemented across the infrastructure in all accounts.
@@ -7,24 +7,7 @@ For example, there may be a need to report, patch, or deploy upgrades on all EC2
 This _How To_ article outlines how to configure the [SSM Node Executor](/manual/projects/node-execution/aws-ssm) to be used across multiple AWS Accounts.
 The setup walks through configuring Process Automation to execute commands and scripts on EC2 nodes that reside in AWS accounts that are separate from the account where Process Automation is running.  
 
-:::tabs
-@tab Runbook Automation
-![Cross Account SSM Architecture - RBA](/assets/img/ssm-rba-architecture.png)<br>
-
-1. Runbook Automation integrates with "Master" Account using [direct integration](/manual/plugins/aws-plugins-overview.html#aws-integration-for-runbook-automation).
-2. IAM Role in Master account has Trust Relationship with IAM ARNs in remote accounts.
-3. Runbook Automation uses _Assume Role_ function to adopt permissions for remote accounts.
-4. Automation is dispatched to EC2's through SSM using remote account IAM role.
-
-@tab Process Automation OnPrem
-![Cross Account SSM Architecture](/assets/img/ssm-cross-account-architecture.png)<br>
-
-1. Process Automation is hosted in "Master" account - on EC2, EKS or ECS.
-2. Through [AWS integration](/manual/plugins/aws-plugins-overview.html#aws-integration-for-process-automation-hosted-on-ec2), Process Automation inherits entitlements from IAM Role associated with EC2, EKS or ECS.
-3. IAM role from Master account has Trust Relationship with IAM role in remote accounts.
-4. Automation is dispatched to EC2's through SSM using remote account IAM role.
-
-:::
+![Cross Account SSM Architecture](/assets/img/ssm-cross-account-architecture.png)
 
 Here is the overview of the steps for this setup:<br>
 1. [Configure IAM Roles in Remote Accounts](#configure-iam-roles-in-remote-accounts)
@@ -172,14 +155,8 @@ Follow the instructions outlined in [this AWS documentation](https://docs.aws.am
 :::
 
 ### Add Trust Policy
-In order for Process or Runbook Automation to assume the role with the SSM permissions, a Trust Policy must be added to the cross-account role in the remote account. 
-First, navigate to the _master account_ and copy the **ARN** of the IAM Role associated with Process Automation.
-
-:::tip Master Account Reference
-For Runbook Automation (Cloud), the _master account_ is the AWS Account that is integrated through the Project or System using the [AWS PluginGroup](/manual/plugins/aws-plugins-overview.html#aws-integration-for-runbook-automation).
-
-For Process Automation (self hosted), the _master account_ is the AWS Account where Process Automation is hosted - either [on EC2](/manual/plugins/aws-plugins-overview.html#aws-integration-for-process-automation-hosted-on-ec2) or [on ECS](/manual/plugins/aws-plugins-overview.html#process-automation-hosted-on-ecs). 
-:::
+In order for Process Automation to assume the role with the SSM permissions, a Trust Policy must be added to the cross-account role in the remote account. 
+First, navigate to the _master account_ (the AWS account where Process Automation is hosted) and copy the **ARN** of the IAM Role associated with the Process Automation hosts (EC2, ECS, or EKS).
 
 Navigate back to the _remote_ AWS account where the cross-account role can be modified.  Click on **Trust Relationships** then click on **Edit Trust Policy**. Use the following Trust Policy:
 
@@ -206,8 +183,8 @@ Copy the ARN of this IAM Role (in the _Remote_ account).
 
 ## Update IAM Role in Master Account
 
-Navigate back to the _master account_.  
-Find the IAM Role that is associated with Process Automation, and navigate to modify this IAM role in the IAM Console.  For Process Automation OnPrem (self-hosted), see [these instructions for EC2](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html#attach-iam-role), or [these instructions for ECS](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html#specify-task-iam-roles).  
+Navigate back to the _Master_ account (where Process Automation is hosted).  
+Find the IAM Role that is associated with Process Automation, and navigate to modify this IAM role in the IAM Console: use [these instructions for EC2](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html#attach-iam-role), or [these instructions for ECS](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html#specify-task-iam-roles).  
 Now add the following policy to this IAM Role and paste in the ARN of the cross-account IAM Role copied from the _remote account_ from the prior section:
 
 ```

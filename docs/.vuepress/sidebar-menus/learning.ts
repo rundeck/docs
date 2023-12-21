@@ -1,16 +1,14 @@
-import getChildren from '../getChildren'
-
 export default [{
   text: 'Learning',
-  collapsible: false,
+  collapsible: true,
   children: [
     '/learning/',
     {
       text: 'Getting Started',
-      link: '/learning/getting-started/index',
+      link: '/learning/getting-started/overview',
       collapsible: true,
       children: [
-        { link: '/learning/getting-started/index', text: 'Overview'},
+        { link: '/learning/getting-started/overview', text: 'Overview'},
         { link: '/learning/getting-started/nodes-overview.md', text: 'Introduction to Nodes' },
         { link: '/learning/getting-started/users-overview.md', text: 'Introduction to Users' },
         { link: '/learning/getting-started/secrets-overview.md', text: 'Introduction to Managing Secrets' },
@@ -26,21 +24,10 @@ export default [{
           ]
         },
         {
-      	  text: 'Runbook Automation',
-          collapsible: true,
-          link: '/learning/getting-started/rba/index',
-      	  children: [
-      	  	{ link: '/learning/getting-started/rba/index', text: 'Getting Started with Runbook Automation'},
-      	  	{ link: '/learning/getting-started/rba/runner-setup.md', text: 'Setting up a Runner'},
-      	  	{ link: '/learning/getting-started/rba/node-setup.md', text: 'Adding a Node with Runner'},
-      	  ]
-    	},
-        {
           text: 'Tutorial',
           collapsible: true,
-          link: '/learning/tutorial/index',
           children: [
-            '/learning/tutorial/index',
+            '/learning/tutorial/preparing',
             '/learning/tutorial/creatingnodes',
             '/learning/tutorial/commands',
             '/learning/tutorial/jobs',
@@ -51,10 +38,9 @@ export default [{
         },
         {
           text: 'Working with Jobs',
-          link: '/learning/getting-started/jobs/index',
+          link: '/learning/getting-started/jobs/overview',
           collapsible: true,
           children: [
-            '/learning/getting-started/jobs/index',
             '/learning/getting-started/jobs/what-is-a-job.md',
             '/learning/getting-started/jobs/pieces-of-a-job.md',
             '/learning/getting-started/jobs/how-to-run-a-job.md',
@@ -71,29 +57,19 @@ export default [{
     },
     {
       text: 'How To',
-      link: '/learning/howto/index',
+      link: '/learning/howto/overview',
       collapsible: true,
       children: [
-        { link: '/learning/howto/index.md', text: 'Overview' },
+        { link: '/learning/howto/overview.md', text: 'Overview' },
         { link: '/learning/howto/welcome-project-starter.md', text: 'Welcome Projects' },
-        {
-          text: 'ACL Recipes',
-          collapsible: true,
-          link: '/learning/howto/acls/',
-          children: [
-            ...getChildren('docs/learning/', 'howto/acls')
-          ]
-        },
         {
           text: 'Administration',
           collapsible: true,
           children: [
-            '/learning/howto/runner-service-windows.md',
             '/learning/howto/migrate-to-rundeck-packages-repo.md',
             '/learning/howto/install-centos.md',
             '/learning/howto/migrate-to-mysql.md',
             '/learning/howto/use-terraform-provider.md',
-            '/learning/howto/terraform-jobs.md',
             '/learning/howto/learn-rd-cli.md',
             '/learning/howto/elk-integration.md',
             '/learning/howto/acl_basic_examples.md',
@@ -104,8 +80,7 @@ export default [{
             '/learning/howto/egress-proxy.md',
             '/learning/howto/how2-terra-rd-aws.md',
             '/learning/howto/how2-terra-rd-eks.md',
-            '/learning/howto/troubleshooting.md',
-            '/learning/howto/customize-gui.md'
+            '/learning/howto/troubleshooting.md'
           ]
         },
         {
@@ -146,11 +121,7 @@ export default [{
             '/learning/howto/rundeck-exporter.md',
             '/learning/howto/vault-integration.md',
             '/learning/howto/howtojenkins.md',
-            '/learning/howto/how2kube.md',
-            '/learning/howto/actions-with-rba.md',
-            '/learning/howto/events-with-rba.md',
-            '/learning/howto/email-gmail.md',
-            '/learning/howto/email-outlook.md'
+            '/learning/howto/how2kube.md'
           ]
         },
         {
@@ -181,20 +152,19 @@ export default [{
       children: [
         {
           text: 'Automated Diagnostics',
-          link: '/learning/solutions/automated-diagnostics/index',
+          link: '/learning/solutions/automated-diagnostics/solution-overview',
           collapsible: true,
           children: [
-            { link: '/learning/solutions/automated-diagnostics/index.md', text: 'Solution Summary' },
+            { link: '/learning/solutions/automated-diagnostics/solution-overview.md', text: 'Solution Summary' },
             { link: '/learning/solutions/automated-diagnostics/getting-started.md', text: 'Getting Started' },
             { link: '/learning/solutions/automated-diagnostics/automation-actions.md', text: 'Configuring Automation Actions' },
             { link: '/learning/solutions/automated-diagnostics/first-diagnostic-runbook.md', text: 'First Diagnostic Runbook' },
             { link: '/learning/solutions/automated-diagnostics/integrating-chat-tools.md', text: 'Integrating Chat Tools' },
             {
               text: 'Examples & Best Practices',
-              link: '/learning/solutions/automated-diagnostics/examples-overview.md',
+              link: '/learning/solutions/automated-diagnostics/examples-overview',
               collapsible: true,
               children: [
-                { link: '/learning/solutions/automated-diagnostics/examples-overview.md', text: 'Examples Overview' },
                 { link: '/learning/solutions/automated-diagnostics/examples/public-cloud-providers.md', text: 'Public Cloud Providers' },
                 { link: '/learning/solutions/automated-diagnostics/examples/linux.md', text: 'Linux' },
                 { link: '/learning/solutions/automated-diagnostics/examples/windows.md', text: 'Windows' },
@@ -204,7 +174,6 @@ export default [{
                   link: '/learning/solutions/automated-diagnostics/examples/kubernetes',
                   collapsible: true,
                   children: [
-                    { link: '/learning/solutions/automated-diagnostics/examples/kubernetes', text: 'Kubernetes Examples' },
                     { link: '/learning/solutions/automated-diagnostics/examples/k8s-logs-events.md', text: 'Pod Logs & K8s Events' },
                     { link: '/learning/solutions/automated-diagnostics/examples/k8s-app-debug-capture.md', text: 'App Debug State Capture' }
                   ]

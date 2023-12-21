@@ -1,18 +1,14 @@
 export default [
   {
-    link: '/manual/index.md',
-    text: 'Overview'
-  },
-  {
     link: '/manual/projects/',
     text: 'Projects'
   },
   {
-    link: '/manual/jobs.md',
+    link: '/manual/04-jobs',
     text: 'Jobs'
   },
   {
-    link: '/manual/plugins/index.md',
+    link: '/manual/plugins/plugins-overview',
     text: 'Plugins'
   },
   {
@@ -21,7 +17,7 @@ export default [
   },
   {
     text: 'Key Storage',
-    link: '/manual/key-storage/index'
+    link: '/manual/key-storage/key-storage'
   },
   {
     link: '/manual/06-commands',

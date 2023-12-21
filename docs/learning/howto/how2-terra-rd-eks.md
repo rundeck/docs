@@ -1,4 +1,4 @@
-# Deploy Rundeck on AWS EKS
+# Deploy Rundeck on AWS EKS with Terraform
 
 ![](/assets/img/terra-eks1.png)
 

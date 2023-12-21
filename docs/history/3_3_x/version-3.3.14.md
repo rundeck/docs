@@ -12,8 +12,8 @@ This release contains a few minor back ported updates from Rundeck 3.4.0 series 
 
 ## Security Fixes
 
-* [CVE-2021-39132: YAML deserialization can run untrusted code.](/history/cves/cve-2021-39132.md)
-* [CVE-2021-39133: Cross-Site Request Forgery (CSRF) can run untrusted code on Rundeck server](/history/cves/cve-2021-39133.md)
+* [CVE-2021-39132: YAML deserialization can run untrusted code.](/history/cves/CVE-2021-39132.md)
+* [CVE-2021-39133: Cross-Site Request Forgery (CSRF) can run untrusted code on Rundeck server](/history/cves/CVE-2021-39133.md)
 
 
 ## Core Product Updates

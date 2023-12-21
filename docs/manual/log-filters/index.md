@@ -19,7 +19,7 @@ Conversely, as a different example, for workflow steps that need to feed data to
 - [JSON JQ](/manual/log-filters/json-jq.md)
 - [Multi-line Regex](/manual/log-filters/multi-line-regex.md)
 
-## Implementation
+## Implmentation
 
 Log Filters can be configured at a Job Step, Job, and some can be configured at the Project, or Globally across all projects and jobs.
 

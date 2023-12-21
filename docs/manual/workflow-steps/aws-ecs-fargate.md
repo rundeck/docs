@@ -106,7 +106,7 @@ The following fields are used for configuration the Workflow Step plugin to send
 * **Task ID**: The ID the task associated with the specified container.
 * **Command**: The shell command you wish to run on the specified container.
 * **Container Region**: The region where the container's cluster is located.
-* **Access Key ID**: AWS Access Key. This can be set in the Project configuration properties with `project.aws.access_key` or in [Configuration Management](/manual/configuration-mgmt/configmgmt.md).
+* **Access Key ID**: AWS Access Key. This can be set in the Project configuration properties with `project.aws.access_key` or in [Configuration Management](/manual/configuration-mgmt/configmgmt).
 * **Secret Key**: AWS Secret Key. Click the **Select** button to choose your AWS Secret from Key Storage. This can be set in the Project configuration properties with `project.aws.secret_key_path`.
 
 ![**Example Configuration**](/assets/img/aws-ecs-command-example-config.png)
@@ -122,7 +122,7 @@ If this executes successfully, you would see the following output in the Job out
 ![Command Output Logs](/assets/img/aws-ecs-command-log-output.png)<br>                   
 
 To use this Job step as part of a larger workflow, or to create a **_"self service interface"_**, you will likely want to use a Job Option (shown below) or a Data Variable
-as the input for the command.  See here for more details on [Job Options](/manual/job-options) and [Data Variables](/learning/howto/passing-variables.md):
+as the input for the command.  See here for more details on [Job Options](/manual/job-options) and [Data Variables](/learning/howto/passing-variables):
 
 ![Using Job Options](/assets/img/aws-ecs-command-job-options.png)<br><br>
 
@@ -152,13 +152,3 @@ In order to use the _Workflow_ step plugin, you will need to specify the Cluster
 
 The IAM Policies required to use this plugin are:
 * **`ecs:StopTask`**
-
-#### Assume Role ARN
-
-There are cases when it is beneficial to use a different IAM Role than the one used for the [AWS PluginGroup](/manual/plugins/aws-plugins-overview.html#setup) for the integration to retrieve the ECS Tasks and add them to the node inventory.
-For example, to target ECS Tasks from across multiple AWS Accounts, then a different IAM Role needs to be "assumed" in order to retrieve tasks from each AWS Account.
-
-The **Assume Role ARN** field can be populated with an IAM Role ARN that Runbook or Process Automation can assume _after_ an authentication method has been provided through the PluginGroup.
-
-By default, this plugin will use the `assume-role-arn` node-attribute from the ECS tasks added to the inventory through the [ECS Node Source](/manual/projects/resource-model-sources/ecs-fargate.html). 
-This can be overridden by placing an IAM role ARN into the field. 

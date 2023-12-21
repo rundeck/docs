@@ -8,15 +8,6 @@ h6 {
   font-weight: 700;
 }
 
-.theme-hope-content img {
-  border: 1px solid #C0C0C0;
-}
-
-//This is used to fix Code on the old API page for request and response strings.
-.theme-hope-content pre:not([class]) code {
-  color: var(--text-color);
-}
-
 .custom-container.enterprise {
   background-color: #f3f5f7;
   border-color: #06ac38;
@@ -80,11 +71,4 @@ h6 {
 
 .theme-hope-content:not(.custom) .swagger h3:first-child {
   margin-top: 0px !important;
-}
-
-html[data-theme=dark] {
-  img[src*="/images/RundeckbyPagerDuty.svg"] {
-    content: url("/images/RundeckbyPagerDutyDark.svg")
-  };
-  --theme-color: var(--theme-color-dark)
 }

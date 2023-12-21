@@ -8,7 +8,7 @@ PagerDuty is a software that provides incident response management services to I
 
 To use the PagerDuty plugins: 
 1. Generate a PagerDuty [API Access Key](https://support.pagerduty.com/docs/api-access-keys)
-2. Add that key to [Key Storage](/manual/key-storage/index).
+2. Add that key to [Key Storage](/manual/key-storage/key-storage).
 3. Follow the steps outlined in [Plugin Configuration](/manual/plugins) to select the PagerDuty plugin suite and then select the PagerDuty API Access Key from Key Storage.
 
 :::tip For OSS Users 

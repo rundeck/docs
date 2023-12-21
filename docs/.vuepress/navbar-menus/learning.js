@@ -4,15 +4,15 @@ export default [{
   },
   {
       text: 'Getting Started',
-      link: '/learning/getting-started/index'
+      link: '/learning/getting-started/overview'
   },
   {
       text: 'How To Articles',
-      link: '/learning/howto/index'
+      link: '/learning/howto/overview'
   },
   {
       text: 'Solutions',
-      link: '/learning/solutions/automated-diagnostics/index.md'
+      link: '/learning/solutions/automated-diagnostics/solution-overview'
   },
   {
       text: 'Terminology',

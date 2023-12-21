@@ -123,7 +123,7 @@ At this time, the Runner will execute Node Executor and File Copier steps.  This
 
 **Do Runners participate in node discovery?**
 
-Not at this time.  To dynamically update nodes use custom scripting and the [APIs](/api/index.md#updating-and-listing-resources-for-a-project) to update the node lists remotely.
+Not at this time.  To dynamically update nodes use custom scripting and the [APIs](/api/rundeck-api.md#updating-and-listing-resources-for-a-project) to update the node lists remotely.
 
 **Can multiple Runners run in parallel?**
 

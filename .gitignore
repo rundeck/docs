@@ -27,7 +27,7 @@ package-lock.json
 *.ipr
 *~
 docs/assets/img/Admin Guide.docx
-draft.md
+docs/history/4_x/draft.md
 node_modules/
 hope/.vuepress/.cache/
 hope/.vuepress/.temp/

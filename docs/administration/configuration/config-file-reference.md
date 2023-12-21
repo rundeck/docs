@@ -121,7 +121,7 @@ The `tokens.properties` file should contain static authentication tokens you wis
     username2: token_string1;token_string2, role2
     ...
 
-The token_strings can be used as Authentication tokens to the [API](/api/index.md#token-authentication).
+The token_strings can be used as Authentication tokens to the [API](/api/rundeck-api.md#token-authentication).
 
 To ease the rotation of tokens, several tokens can be specified by separating them with a semicolon.
 
@@ -512,7 +512,7 @@ The [Project Setup - Project Definitions](/manual/projects/project-create.md#pro
 
 ### Key Storage settings
 
-The [Key storage](/manual/key-storage/index.md) mechanism is configured within this file, see:
+The [Key storage](/manual/key-storage/key-storage.md) mechanism is configured within this file, see:
 
 - [Configuring Storage Plugins](/administration/configuration/plugins/configuring.md#storage-plugins)
 - [Configuring Storage Converter Plugins](/administration/configuration/plugins/configuring.md#storage-converter-plugins)
@@ -599,7 +599,7 @@ Metrics names are:
 - `ping`
 - `healthcheck`
 
-See: [API > List Metrics](/api/index.md#list-metrics).
+See: [API > List Metrics](/api/rundeck-api.md#list-metrics).
 
 ### Pagination defaults
 

@@ -84,7 +84,7 @@ hellojava-0.1.0.jar
 
 ### Deploying the plugin to a local environment
 
-Deploy the new plugin on an existant instance or use a [fresh installation](/administration/install/index.html#installation). 
+Deploy the new plugin on an existant instance or use a [fresh installation](/administration/install/installing-rundeck.html#installation). 
 
 Once the Rundeck server is up, we must login and click the system menu gear icon, plugins submenu and click on Upload Plugin. AAA
 

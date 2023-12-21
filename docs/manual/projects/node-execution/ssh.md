@@ -29,7 +29,7 @@ The SSH plugin also includes support for a secondary Sudo Password Authenticatio
 
 ### Using Key Storage for SSH
 
-Passwords, Passphrases and Private Keys can all be stored in the [Key Storage Facility](/manual/key-storage/index.md) and used with the built-in SSH plugins for Node Execution and File Copying.
+Passwords, Passphrases and Private Keys can all be stored in the [Key Storage Facility](/manual/key-storage/key-storage.md) and used with the built-in SSH plugins for Node Execution and File Copying.
 
 For specific usage, see below.
 

@@ -47,7 +47,7 @@ Selecting that tab will show a table view of the ROI Metrics.  In the example sh
 - Job ID
 - Execution ID
 
-The data is also available in JSON format both in the UI and from an API endpoint.  Use our [API Guide](/api/index.md) to access the data.
+The data is also available in JSON format both in the UI and from an API endpoint.  Use our [API Guide](/api/rundeck-api.md) to access the data.
 
 ![ROI Metrics JSON](/assets/img/roi-metrics-json.png)
 

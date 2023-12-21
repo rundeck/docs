@@ -3,14 +3,14 @@
 All artifacts can be downloaded from: [github releases](https://github.com/rundeck/rundeck-cli/releases/latest)
 
 * [zip install](#zip-install) `rd-{{$cliVersion}}.zip` / `rd-{{$cliVersion}}.tar`
-* [standalone executable jar](#jar-install) `rundeck-cli-{{$cliVersion}}-all.jar`
-* [rpm install](#yum-usage) `rundeck-cli-{{$cliVersion}}.noarch.rpm`
-* [debian install](#debian-usage) `rundeck-cli-{{$cliVersion}}_all.deb`
+* [standalone executable jar](#jar-install) _rundeck-cli-{{$cliVersion}}-all.jar_
+* [rpm install](#yum-usage) _rundeck-cli-{{$cliVersion}}.noarch.rpm_
+* [debian install](#debian-usage) _rundeck-cli-{{$cliVersion}}_all.deb_
 * [arch install](#arch-linux-install)
 
 ## Jar install
 
-Download the `rundeck-cli-{{$cliVersion}}-all.jar` from [github releases](https://github.com/rundeck/rundeck-cli/releases/latest).
+Download the _rundeck-cli-{{$cliVersion}}-all.jar_ from [github releases](https://github.com/rundeck/rundeck-cli/releases/latest).
 
 Simply execute:
 ```bash

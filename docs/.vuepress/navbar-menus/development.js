@@ -1,6 +1,6 @@
 export default [{
     text: 'API',
-    link: '/api/'
+    link: '/api/rundeck-api'
   },
   {
     text: 'Plugin Development',
@@ -8,7 +8,7 @@ export default [{
   },
   {
     text: 'Included Plugins',
-    link: '/manual/plugins/full-list'
+    link: '/plugins/'
   },
   {
     text: 'RD - Command Line Interface',
