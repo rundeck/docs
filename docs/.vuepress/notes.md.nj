@@ -1,7 +1,7 @@
 ---
 
 title: "{{version.versionString}} Release Notes"
-date: 2024-01-01
+date: ""
 image: /images/chevron-logo-red-on-white.png
 feed:
  enable: true
@@ -22,14 +22,14 @@ Release Date: PUTADATEHERE
 
 Check out the new features and enhancements for PagerDuty Process Automation (formerly Rundeck Enterprise) and PagerDuty Runbook Automation and Rundeck Community included in this release.
 
+## Process Automation Updates
+
+> Also includes all Open Source updates from below
+
 ### Highlights
 
 - first highlight
 - second highlight
-
-## Process Automation Updates
-
-> Also includes all Open Source updates from below
 
 ### Additional Updates
 
@@ -50,6 +50,11 @@ Check out the new features and enhancements for PagerDuty Process Automation (fo
 {% for pull in ansible.pulls -%}
 * [{{ pull.title | replace(r/RUN-[0-9]*:?\s?/g, "") | replace(r/RSE-[0-9]*:?\s?/g, "") | replace(r/RCLOUD-[0-9]*:?\s?/g, "") | replace(r/RDC-[0-9]*:?\s?/g, "") }}]({{pull.html_url}})
 {% endfor %}
+
+
+## Enterprise Runner Updates
+
+**Bundled Runner Version:** {{sidecarVersion.version}}
 
 {% for pull in runner.pulls -%}
 * {{ pull.title | replace(r/RUN-[0-9]*:?\s?/g, "") | replace(r/RSE-[0-9]*:?\s?/g, "") | replace(r/RCLOUD-[0-9]*:?\s?/g, "") | replace(r/RDC-[0-9]*:?\s?/g, "") }}
@@ -72,6 +77,7 @@ Submit your own Pull Requests to get recognition here!
 * Carlos Eduardo ([carlosrfranco](https://github.com/carlosrfranco))
 * Christopher McCarroll-Gilbert ([chrismcg14](https://github.com/chrismcg14))
 * Darwis Narvaez ([DarwisNarvaezDev](https://github.com/DarwisNarvaezDev))
+* Eric He ([ehe-pd](https://github.com/ehe-pd))
 * Forrest Evans ([fdevans](https://github.com/fdevans))
 * Imad Jafir ([imad6639](https://github.com/imad6639))
 * Jake Cohen ([jsboak](https://github.com/jsboak))

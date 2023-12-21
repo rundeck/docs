@@ -341,7 +341,7 @@ Allowed values:
 ## logging
 
 An optional logging limit, and the action to perform if the limit is reached.
-(See [Jobs - Log Limit](/manual/jobs.md#log-limit)).
+(See [Jobs - Log Limit](/manual/04-jobs.md#log-limit)).
 
 ```xml
 <logging limit='1KB' limitAction='halt' status='aborted' />
@@ -1335,7 +1335,7 @@ _Example_
 If having two or more notifications of the same type in any trigger, the last metioned approach is not a valid webhook notification definition.
 :::
 
-- For more information about the Webhook mechanism used, see the chapter [Integration - Webhooks](/manual/jobs.md#webhooks).
+- For more information about the Webhook mechanism used, see the chapter [Integration - Webhooks](/manual/04-jobs.md#webhooks).
 
 ### plugin
 

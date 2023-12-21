@@ -8,7 +8,7 @@ Release Date: June 1, 2022
 - [Upgrade instructions](/upgrading/)
 
 :::warning
- Due to [CVE-2022-31044](/history/cves/cve-2022-31044.md) this version has been superseded by version [`4.3.2`](version-4.3.2.md).  `4.3.0` is not vulnerable to the issue, but does not remediate if 4.2.0/4.2.1 were used previously.
+ Due to [CVE-2022-31044](/history/cves/CVE-2022-31044.md) this version has been superseded by version [`4.3.2`](version-4.3.2.md).  `4.3.0` is not vulnerable to the issue, but does not remediate if 4.2.0/4.2.1 were used previously.
 :::
 
 ## Overview

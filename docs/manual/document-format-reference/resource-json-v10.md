@@ -1,17 +1,21 @@
-# Defining Nodes in JSON Format
+# RESOURCE-JSON
 
-This docuement describes the Rundeck resource model document JSON format.
+Updated February 25, 2011
+
+# NAME
+
+resource-json-v10 - describes the Rundeck resource model document Json format
 
 The `resource` JSON document declares a resource model used by a Rundeck Project to define the set of Nodes that are available.
 
-See <http://json.org> for more information about JSON.
+See <http://json.org> for more information about json.
 
 ## Structure
 
 The resource format supports several JSON formats. In all cases a Node is represented by a JSON Map called a [Node Entry](#node-entry). The document structure can be:
 
-- A Map with node names as keys, and Node Entries as values
-- An Array of Node Entries
+- a Map with node names as keys, and Node Entries as values
+- an Array of Node Entries
 
 Using Map of Node Entries is the preferred format.
 

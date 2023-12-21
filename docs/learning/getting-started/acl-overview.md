@@ -27,12 +27,7 @@ Roles are assigned based on [access control policies](/administration/security/a
 New ACL policies can be created through files on the server’s file system or through the access control GUI (the only option with Runbook Automation).  
 
 # ACL Policy Examples
-The  ACL policy examples provided in this section can be imported into your system for use. Before importing, make sure to input the correct project names and group names that the policy will affect.  Once imported, the policies can only be modified by a user with Full User or Admin access.
-
-## Variables in ACL Examples
-Find and replace these values with your own.
-- Project Unique ID: `prj-sandbox`
-- Group: `grp-sandbox-exec` 
+The  ACL policy examples provided in this section can be imported into your system for use. Before importing, make sure to input the correct project names and group names that the policy will affect.  Once imported, the policies can only be modified by a user with Full User or Admin access. 
 
 ## System Level
 System level policies are created and stored in the System Menu (gear icon) under Access Control.  It's important to note that for project access, system-level configurations must be accompanied by a project-level policy. Examples of project level policies are provided  in the next [section](#Project-Level).
@@ -57,19 +52,20 @@ for:
       allow: generate_user_token # allow access to create user apitoken
   project:
     - match:
-        name: 'prj-sandbox'
+        name: 'ReplaceWithYourProjectNameHere'
       allow: [read] # allow read access to Project named
   project_acl:
     - match:
-        name: 'prj-sandbox'
+        name: 'ReplaceWithYourProjectNameHere'
       allow: [read] # allow the ability to see but not edit project-specific ACL files
   storage:
     - allow: [read] # allow read access to keys and passwords stored in key storage
 by:
-  group: 'grp-sandbox-exec'
+  group: 'ReplaceWithYourGroupNameHere'
 ```
 
 ### Example policy  to provide access to a single Project, including access to all runners (Commercial Only)
+
 
 ```
 description: Provide access for members of a specific Group for basic rights in a single Project, including access to all Runners
@@ -90,24 +86,29 @@ for:
     - allow: [ping, read, create] # Allow [ping, read, create] for runner
   project:
     - match:
-        name: 'prj-sandbox'
+        name: 'ReplaceWithYourProjectNameHere'
       allow: [read] # allow read access to Project named
   project_acl:
     - match:
-        name: 'prj-sandbox'
+        name: 'ReplaceWithYourProjectNameHere'
       allow: [read] # allow the ability to see but not edit project-specific ACL files
   storage:
     - allow: [read] # allow read access to keys and passwords stored in key storage
 by:
-  group: 'grp-sandbox-exec'
+  group: 'ReplaceWithYourGroupNameHere
 ```
 
+
+
 ## Project Level
+
 The ACL Project Level examples in this section apply to a specific project and can be created or modified either at the system level or inside the project, under the project settings menu, under the Access Control section.
 
 It's important to note that project-level policies will only be effective if there is a corresponding system-level policy that grants access to the project. Refer to the system-level policies mentioned [above ](#System-Level) to ensure that the necessary access to the project is provided.
 
+
 ### Example policy to provide access to run jobs in a single project
+
 
 ```
 description: Project-level ACL for a specific Group
@@ -124,7 +125,7 @@ for:
   node:
     - allow: [read,run] # allow read/run for nodes
 by:
-  group: 'grp-sandbox-exec'
+  group: 'ReplaceWithYourGroupNameHere'
 ```
 
 ### Example policy to provide access to modify and run jobs in a single project
@@ -147,7 +148,7 @@ for:
   node:
     - allow: [read,run] # allow read/run for nodes
 by:
-  group: 'grp-sandbox-exec'
+  group: 'ReplaceWithYourGroupNameHere'
 ```
 
 # User Classes (Commercial Only)
@@ -158,7 +159,6 @@ Currently, there are two User Classes available for assignment: : `Full User` (k
 [To assign a class to a user](/manual/user-management/user-classes.html#assigning-classes), a Full User can navigate to the system menu (gear icon) and access User Manager | User Classes.  It is important to note that assigning a User Class will not give a user access to anything until they also match an ACL policy that provides the necessary access, such as a combination of those listed above.
 
 # Resources
-* [ACL Recipes](/learning/howto/acls/)
 * [Setting up Authentication](/administration/security/authentication.html)
 * [Getting Started with ACLs](/learning/howto/acl_basic_examples.html)
 * [Webinar on ACL Best Practices](https://www.youtube.com/watch?v=i859f1WG3Bo)

@@ -1,15 +1,12 @@
 export default [{
   text: 'User Guide',
   collapsible: false,
-  link: '/manual/',
   children: [
-    { link: '/manual/', text: 'User Guide Overview'},
     {
       text: "Projects",
       collapsible: true,
       link: '/manual/projects/',
       children: [
-        '/manual/projects/',
         '/manual/projects/project-create',
         '/manual/projects/configuration',
         {
@@ -43,7 +40,6 @@ export default [{
             '/manual/projects/resource-model-sources/resource-editor',
             '/manual/projects/resource-model-sources/sensu',
             '/manual/projects/resource-model-sources/servicenow',
-            '/manual/projects/resource-model-sources/http-json',
             '/manual/projects/resource-model-sources/vmware'
           ]
         },
@@ -67,9 +63,9 @@ export default [{
     {
       text: 'Jobs',
       collapsible: true,
-      link: '/manual/jobs',
+      link: '/manual/04-jobs',
       children: [
-        '/manual/jobs',
+        '/manual/04-jobs',
         '/manual/creating-jobs',
         '/manual/job-workflows',
         '/manual/job-options',
@@ -79,7 +75,6 @@ export default [{
           collapsible: true,
           link: '/manual/log-filters/',
           children: [
-            '/manual/log-filters/',
             '/manual/log-filters/key-value-data.md',
             '/manual/log-filters/quiet-output.md',
             '/manual/log-filters/progress-badge.md',
@@ -90,6 +85,18 @@ export default [{
             '/manual/log-filters/multi-line-regex.md'
           ]
         },
+//        {
+//            text: 'Job Plugins',
+//            collapsible: true,
+//            link: '/manual/job-plugins',
+//            headerDepth: 1,
+//            children: [
+//
+//                '/manual/node-steps',
+//                '/manual/workflow-steps',
+//
+//            ]
+//        }
         '/manual/job-plugins',
         '/manual/execution-lifecycle/job-resume.md',
         '/manual/execution-lifecycle/job-retry-failed-nodes.md',
@@ -102,9 +109,8 @@ export default [{
     {
       text: 'Plugins',
       collapsible: true,
-      link:'/manual/plugins/index',
+      link:'/manual/plugins/plugins-overview',
       children:[
-        {text: 'Overview', link: '/manual/plugins/index'},
         {text: 'AWS', link: '/manual/plugins/aws-plugins-overview.md'},
         {text: 'Azure', link: '/manual/plugins/azure-plugins-overview.md'},
         {text: 'Datadog', link:'/manual/plugins/datadog-plugins-overview.md'},
@@ -113,8 +119,7 @@ export default [{
         {text: 'Kubernetes', link: '/manual/plugins/kubernetes-plugins-overview.md'},
         {text: 'PagerDuty', link: '/manual/plugins/pagerduty-plugins-overview.md'},
         {text: 'Sensu', link: '/manual/plugins/sensu-plugins-overview.md'},
-        {text: 'ServiceNow', link: '/manual/plugins/servicenow-plugins-overview.md'},
-        {text: 'Full List', link: '/manual/plugins/full-list'}
+        {text: 'ServiceNow', link: '/manual/plugins/servicenow-plugins-overview.md'}
       ]
     },
     {
@@ -143,9 +148,9 @@ export default [{
     {
       text: 'Key Storage',
       collapsible: true,
-      link: '/manual/key-storage/index',
+      link: '/manual/key-storage/key-storage',
       children: [
-        '/manual/key-storage/index',
+        '/manual/key-storage/key-storage',
         '/manual/key-storage/enterprise-runner-key-storage.md',
         {
           text: 'Key Storage Plugins',

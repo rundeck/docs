@@ -16,7 +16,7 @@ Some settings and screenshots show Enterprise version features and may not be av
 
 ## Key Storage
 
-The Key Storage facility provides GUI backed by an [API](/api/index.md#key-storage) to manage public, private keys and passwords.
+The Key Storage facility provides GUI backed by an [API](/api/rundeck-api.md#key-storage) to manage public, private keys and passwords.
 These stored keys are used by many different types of Rundeck plugins.  The Key Storage entries can also be used in Job definitions as secure value inputs.
 
 Keys can be stored either using an uploaded file or as text input.
@@ -98,7 +98,7 @@ information for sharing with our support team.  More details are on the [Enterpr
 
 ![System Report Page](/assets/img/fig0703.png)
 
-This information is also available via the API: [API > System Info](/api/index.md#system-info)
+This information is also available via the API: [API > System Info](/api/rundeck-api.md#system-info)
 
 ## Log Storage
 

@@ -20,26 +20,26 @@ Import Changes:
 
 New Features:
 
-- Jobs Options now have a [File input type](/manual/jobs.md#file-option-type).
+- Jobs Options now have a [File input type](/manual/04-jobs.md#file-option-type).
   _ Uploaded files are stored temporarily on the server while the execution runs
-  _ [API support](/api/index.md#upload-a-file-for-a-job-option)
+  _ [API support](/api/rundeck-api.md#upload-a-file-for-a-job-option)
 - API Token Roles
   _ API Tokens now have associated Roles and Expiration date.
   _ [Access Control](/administration/security/authorization.md#api-token-authorization-roles):
   _ Authorized users can generate a token with their own roles.
   _ Authorized users can specify other access roles.
   _ [Admins can specify maximum token lifetime](/administration/configuration/config-file-reference.md#security).
-  _ [API support](/api/index.md#authentication-tokens)
+  _ [API support](/api/rundeck-api.md#authentication-tokens)
 - Job editor autocomplete supports global variables
 - Project configuration for displaying Readme/Motd on Projects List or Project Home page
 - Project configuration for collapsing/expanding Job groups by default
 - Project Archive Export: User can select what to include in the archive
-  _ [API support](/api/index.md#project-archive-export)
-  _ [API supports async export](/api/index.md#project-archive-export-async)
+  _ [API support](/api/rundeck-api.md#project-archive-export)
+  _ [API supports async export](/api/rundeck-api.md#project-archive-export-async)
 - New Step Plugin: Refresh nodes. Causes Rundeck to refresh the nodes list for the project, so that subsequent Job Reference steps can use any new nodes.
 - File Copy Plugin: Recursive and wildcard file copy
 - Job Options: Multivalue options can be selected by default
-- Job Options: [Remote Option values can specify default selections](/manual/jobs.md#json-format)
+- Job Options: [Remote Option values can specify default selections](/manual/04-jobs.md#json-format)
 
 Other changes:
 

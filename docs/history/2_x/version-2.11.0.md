@@ -93,7 +93,7 @@ If you want to continue using filesystem storage for project config/readme/motd 
 
 Upgrading an existing `filesystem` configuration to `db` is automatic, and project configs/readme/motd will be loaded into DB storage at system startup.
 
-To encrypt the DB storage, you will need to [enable encryption for the "Project Configuration" storage layer](/manual/plugins/full-list.md#jasypt-encryption-plugin).
+To encrypt the DB storage, you will need to [enable encryption for the "Project Configuration" storage layer](/plugins/index.md#jasypt-encryption-plugin).
 
 ## Contributors
 

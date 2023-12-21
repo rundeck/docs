@@ -18,7 +18,7 @@ org.h2.jdbc.JdbcSQLNonTransientException: General error: "The write format 1 is 
 ### H2 Migration Options
 
 :::tip
-Note: If you are using one of the **[supported production databases](/administration/install/index.html#database-configuration)** these migration steps can be ignored.
+Note: If you are using one of the **[supported production databases](/administration/install/installing-rundeck.html#database-configuration)** these migration steps can be ignored.
 :::
 
 **If you don't need to keep the data in your old H2 database:**
@@ -43,14 +43,14 @@ Before migration - copy and backup the database files somewhere safe:
         `grailsdb.mv.db`
         `grailsdb.trace.db`
 
-### Migration to 4.1 from previous versions
+### Migration
 
 #### STEP 1: Generate the new version database
 
 Open a shell terminal and navigate into the `h2-v2-migration` git repo. Execute the `migration.sh` shell command.
 
 
-    $_>/bin/sh migration.sh -f ${backup_directory}/grailsdb -u ${username} -p ${password} -s v1 -d v2
+    $_>/bin/sh migration.sh -f ${backup_directory}/grailsdb -u ${username} -p ${password}
 
 
 - The `-f` parameter is required and should be the full path to the backup database file without the extension.
@@ -58,10 +58,6 @@ Open a shell terminal and navigate into the `h2-v2-migration` git repo. Execute 
     - If your Rundeck installation is RPM/Deb/War use `sa` for the user name.
     - If your Rundeck installation is from Docker the user name is blank. (leave `-u` out of command)
 - The optional `-p` parameter is used for database password. If it is not provided, an empty string will be used.
-- The optional `-s` parameter is used to set the source h2 database version. Valid values are `v1` or `v2`. If not
-  provided, `v2` will be used.
-- The optional `-d` parameter is used to set the destination h2 database version. Valid values are `v2` or `v3`. If not
-  provided, `v3` will be used.
 
 By default, the `username` and `password` parameters are both empty string. If you have any custom setup, please use your customized values.
 

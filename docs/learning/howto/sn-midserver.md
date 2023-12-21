@@ -16,7 +16,7 @@ Many Rundeck users utilize the ServiceNow Rundeck Application to trigger provisi
 
 ​​After the store app has been successfully installed in your ServiceNow® instance, you can complete the following steps to configure a specific MID Server to use.
 
-> Note: The ServiceNow login account will need the `web_service_admin` role and `x_pd_process_autom.app_user` roles to configure these settings.
+> Note: The ServiceNow login account will need the `web_service_admin` role and `x_runde_rundeck_it.rundeck_app_user` roles to configure these settings.
 
 1. Navigate to **System Web Services** > **REST Message**
 1. Click the _Rundeck - API_ Entry

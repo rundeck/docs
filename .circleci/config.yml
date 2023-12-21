@@ -127,8 +127,7 @@ jobs:
             }
   update_index:
     machine:
-      image: ubuntu-2004:2023.07.1
-    resource_class: medium
+      image: cimg/2023.09-20.04
     working_directory: ~/repo
     steps:
       - checkout
@@ -145,7 +144,8 @@ workflows:
           filters:
             branches:
               only:
-                - /[4,5]\.[0-9]+\..*/
+                - /4\.[0-9]+\..*/
+                - vuepress2-migration
             tags:
               only: /^v.*/
       - update_index:

@@ -138,7 +138,7 @@ Copy the Job Definition below and paste into a plain text file.  Then import to 
 
       Note: this script doesn't take into account paging yet. Only returns a max of 100 entries as full JSON.
 
-      [https://docs.rundeck.com/docs/api/rundeck-api.html#execution-query](/api/index.md#execution-query)
+      [https://docs.rundeck.com/docs/api/rundeck-api.html#execution-query](/api/rundeck-api.md#execution-query)
     label: Time Range for Executions
     name: time-range
     required: true

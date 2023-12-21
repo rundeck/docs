@@ -4,7 +4,7 @@
 
 Notifications are actions that are performed when a Job starts or finishes.
 
-Currently, there are five conditions that can trigger notifications:
+Currently there are five conditions that can trigger notifications:
 
 - `onstart` - the Job started
 - `onsuccess` - the Job completed without error
@@ -36,7 +36,7 @@ The Configuration data is fully custom depending on your plugin, and is describe
 Notifications can be run on their own thread by setting the following properties in the rundeck-config.properties file:
 
 `rundeck.feature.notificationsOwnThread.enabled`: ('true','false') When set to 'true' it will trigger the notifications on a separate thread.
-`rundeck.notification.threadTimeOut`: (numeric, in milliseconds, defaults to 120000ms) When you set the notifications to be triggered on a separate thread, you can also set a time out for the notification thread so that it must be sent before a certain time.
+`rundeck.notification.threadTimeOut`: (numeric, in miliseconds, defaults to 120000ms) When you set the notifications to be triggered on a separate thread, you can also set a time out for the notification thread so that it must be sent before a certain time.
 
 
 #### Property References
@@ -59,7 +59,7 @@ the value.
 The execution data is included as a Map called `execution`
 containing the following keys and values:
 
-> Note: The context variables that will be available for users to use on inputs on the GUI will depend on the specific notification plugin.
+> Note: The context variables that will be available for users to use on inputs on the gui will depend on the specific notification plugin.
 
 `execution.id`: ID of the execution
 
@@ -203,13 +203,13 @@ public class ExampleNotificationPlugin implements NotificationPlugin{
 
 ## Groovy Plugin Type
 
-Notification supports the Groovy Plugin Type.
+Notification support the Groovy Plugin Type.
 
 To define metadata about your plugin, and configuration properties, see the [Plugin Development - Groovy Plugin Development](/developer/01-plugin-development.md#groovy-plugin-development) chapter.
 
 To create a Groovy based plugin, create a file named `MyNotificationPlugin.groovy` in the plugins directory for Rundeck.
 
-To make the plugin available, as well as after any plugin code modifications, you must restart Rundeck.
+You must restart rundeck to make the plugin available the first time, but you can subsequently update the .groovy script without restarting Rundeck.
 
 [Groovy Plugin Development](/developer/01-plugin-development.md#groovy-plugin-development)
 
@@ -224,7 +224,7 @@ rundeckPlugin(NotificationPlugin){
 }
 ```
 
-In this case, we use the same `NotificationPlugin` interface used for Java plugins.
+In this case we use the same `NotificationPlugin` interface used for Java plugins.
 
 ### Notification handlers
 

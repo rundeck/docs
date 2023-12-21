@@ -31,8 +31,3 @@ Will never process more than the given percentage of nodes per run at one time r
 Percent
 
 : Max Percentage (e.g. `33` for 33%)
-
-
-## Highest - Lowest
-
-[See Docs here](highest-lowest.md)

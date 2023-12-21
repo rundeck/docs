@@ -87,14 +87,6 @@ Once the IAM Policy has been created, attach it to the IAM Role that you have as
 ### Authentication
 There are multiple ways for Process Automation to authenticate with AWS. Follow the instructions outlined in the [AWS Plugins Overview](/manual/plugins/aws-plugins-overview.html) for Process Automation to authenticate with AWS.
 
-#### Assume Role ARN
-
-There are cases when it is beneficial to use a different IAM Role than the one used for the [AWS PluginGroup](/manual/plugins/aws-plugins-overview.html#setup) for the integration to retrieve the ECS Tasks and add them to the node inventory.
-For example, to target ECS Tasks from across multiple AWS Accounts, then a different IAM Role needs to be "assumed" in order to retrieve tasks from each AWS Account.  
-
-The **Assume Role ARN** field can be populated with an IAM Role ARN that Runbook or Process Automation can assume _after_ an authentication method has been provided through the PluginGroup.
-
-
 ### Add Node Source
 You can add the **ECS-Fargate Node Source** by navigating to:<br>
 **Project Settings** -> **Edit Nodes** -> **Sources**

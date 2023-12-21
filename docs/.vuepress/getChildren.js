@@ -18,10 +18,10 @@ const getChildren = function(parent_path, dir) {
             md.render(file);
             let order = md.meta.order;
             // Remove "parent_path" and ".md"
-            path = path.slice(parent_path.length);
-            // Remove "index", making it the de facto index page
-            if (path.endsWith('index.md')) {
-               path = path.slice(0, -8);
+            path = path.slice(parent_path.length + 1, -3);
+            // Remove "README", making it the de facto index page
+            if (path.endsWith('README')) {
+                path = path.slice(0, -6);
             }
 
             return {

@@ -241,9 +241,6 @@ When a Job step is executed, it has a set of "context" variables that can be acc
 - `job.id`: ID of the Job
 - `job.url`: URL to the Job/execution data.
 - `job.execid`: ID of the current Execution
-- `job.outputfilepath`: Contains the path to the log file for the current execution which can be local or remote.
-- `job.isRemoteFilePath`: This is a flag (`"true"`, `"false"`) to identify if the path in `outputfilepath` corresponds to the server file system or a remote file.
-- `job.execIdForLogStore`: The execution id of the log file which isn't necessarily the same as the `execid` (eg: if the execution was imported from another project).
 - `job.executionType` : Execution type, can be `user`, `scheduled` or `user-scheduled` for `Run Job Later` executions
 - `job.username`: Username of the user executing the Job
 - `job.project`: Project name
@@ -256,9 +253,9 @@ When a Job step is executed, it has a set of "context" variables that can be acc
 
 #### Step execution context variable (Global scope):
 - `#:exec.exitCode@<node>`: The node specific step (#) exit code.  Examples:
-  - ${2:exec.exitCode} is the exit code for step 2 in the current node.
-  - ${2:exec.exitCode*} is the exit code for step 2 in all nodes.
-  - ${2:exec.exitCode@nodename} is the exit code for step 2 on a specific node.
+  - ${2:exit.exitCode} is the exit code for step 2 in the current node.
+  - ${2:exit.exitCode*} is the exit code for step 2 in all nodes.
+  - ${2:exit.exitCode@nodename} is the exit code for step 2 on a specific node.
 
 #### Node context variables (Node scope):
 
@@ -408,8 +405,8 @@ For more information on Key Value data, see [Multiline Regex Capture](/manual/lo
 
 Jobs can be exported or imported in XML or Yaml format using the API or the `rd` CLI tool.
 
-- [Exporting Jobs](/api/index.md#exporting-jobs)
-- [Importing Jobs](/api/index.md#importing-jobs)
+- [Exporting Jobs](/api/rundeck-api.md#exporting-jobs)
+- [Importing Jobs](/api/rundeck-api.md#importing-jobs)
 - [RD CLI Tool][rd]
 
 [quartz scheduler crontrigger]: http://www.quartz-scheduler.org/api/2.2.1/org/quartz/CronTrigger.html
