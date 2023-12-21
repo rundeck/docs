@@ -32,7 +32,7 @@ If you are using password authentication with the Rundeck API, the JSESSIONID co
 :::
 ### Highlights
 
-**RSS Feed Plugin** - Our new [RSS Feed Plugin](/manual/workflow-steps/rss-feed-plugin.md) helps users quickly understand whether an incident is due to an internal issue or a third-party. The RSS Feed Plugin allows users to query and parse RSS feeds for events from SaaS tools and public cloud providers. For users deploying the [Automated-Diagnostics Solution](/learning/solutions/automated-diagnostics/solution-overview.md), this plugin provides a logical first step for implementation.
+**RSS Feed Plugin** - Our new [RSS Feed Plugin](/manual/workflow-steps/rss-feed-plugin.md) helps users quickly understand whether an incident is due to an internal issue or a third-party. The RSS Feed Plugin allows users to query and parse RSS feeds for events from SaaS tools and public cloud providers. For users deploying the [Automated-Diagnostics Solution](/learning/solutions/automated-diagnostics/index.md), this plugin provides a logical first step for implementation.
 
 **Job Resume now works with Parallel/Ruleset strategies** - It's now possible to execute previously failed step(s) with the same inputs on Parallel and Ruleset execution strategies.  When enabled on a Job, the plugin will record the internal Workflow State as the Execution progresses. When one or more steps fail, the Workflow State prior to executing the failed step(s) is recorded and stored and can be restarted if needed.  [Check out all the details here](/manual/execution-lifecycle/job-resume.md).
 

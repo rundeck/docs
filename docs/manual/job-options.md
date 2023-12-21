@@ -177,7 +177,6 @@ This variable also allows you to add or remove days as you can see below.
 
 `${DATE-2:format}` two days ago
 
-
 ### File Option Type
 
 Choose "File" from the Option Type:
@@ -350,7 +349,6 @@ Which allows the shell will correctly handle the input value by quoting it.
 
 ### Using non-escaped values
 
-
 If the job needs to provide an option in its raw, unescaped form it is possible to use the `unquotedoption` context lookup key instead of `option`.
 
 For example:
@@ -361,12 +359,12 @@ In a script similarly use `@unquotedoption.name@` instead of `@option.name@`.
 Using non-escaped values can expose the environment to security risks like Command injection (but not limited to command injection!).
 :::
 
->  Consider the following example where a user is allowed to supply a list of directories to an hypothetical backup job. Let's also suppose the job processed the directory list with `tar -zcvf /tmp/archive.tgz @unquotedoption.targetdirs@`. Then a malicious user could trick the job into running an extra command by supplying this value for:
-`targetdirs`: `/etc /home /var/lib/redis; rm -rf /`.  
-Then, depending on the user privileges, the script will happily nuke as many directories
-and files as it can on the target node.  
-You can limit the risk by adopting appropriate regex masks, coding the script
-defensively, and using the least privilege principle.
+> Consider the following example where a user is allowed to supply a list of directories to an hypothetical backup job. Let's also suppose the job processed the directory list with `tar -zcvf /tmp/archive.tgz @unquotedoption.targetdirs@`. Then a malicious user could trick the job into running an extra command by supplying this value for:
+> `targetdirs`: `/etc /home /var/lib/redis; rm -rf /`.  
+> Then, depending on the user privileges, the script will happily nuke as many directories
+> and files as it can on the target node.  
+> You can limit the risk by adopting appropriate regex masks, coding the script
+> defensively, and using the least privilege principle.
 
 ## Secure Options
 
@@ -439,7 +437,7 @@ So the arguments for the Job Reference might look like this:
 
 ### Secure Options using Key Storage
 
-Secure options can specify a Storage Path in lieu of a default value. This path to the [Key Storage Facility](/manual/key-storage/key-storage.md)
+Secure options can specify a Storage Path in lieu of a default value. This path to the [Key Storage Facility](/manual/key-storage/index.md)
 will be loaded as the option value when one is not supplied.
 
 The path must indicate a stored `password` entry in the storage facility.
@@ -478,7 +476,7 @@ allowed values is retrieved from the specified URL:
    - OR, an array of Maps, each with two entries, `name` and `value`.
 4. By default, the HTTP(S) response must include the `application/json` content type in the header.
    In case this cannot be controlled, the attribute `project.jobs.disableRemoteOptionJsonCheck` can be set to `true` in the project settings.
-5. On HTTP(S) unsafe characters as `blank/empty space, ", <, >, %, {, }, |, \, ^, ´` should be avoided or encoded within a URL, keep in mind that if encoded the name on the server side should be the same. For more information on unsafe characters see [IETF | Internet Engineering Task Force](https://www.ietf.org/rfc/rfc1738.txt)    
+5. On HTTP(S) unsafe characters as `blank/empty space, ", <, >, %, {, }, |, \, ^, ´` should be avoided or encoded within a URL, keep in mind that if encoded the name on the server side should be the same. For more information on unsafe characters see [IETF | Internet Engineering Task Force](https://www.ietf.org/rfc/rfc1738.txt)
 
 ### Configuration
 
@@ -492,9 +490,8 @@ allowed values is retrieved from the specified URL:
 4. (Optional) If the remote URL service requires authentication, select an **Authentication Type**
    - Supported authentication methods include: **Basic**, **API Key**, and **Bearer Token**.
    - Depending on the **Authentication Type** select, place the relevant credentials into the associated fields:
-   ![Auth Methods](/assets/img/remote-url-options-auth-methods.png)
+     ![Auth Methods](/assets/img/remote-url-options-auth-methods.png)
    - Retrieve the secret for the credentials from **Key Storage** by clicking **Select** next to the **Token** or **Password** field - depending on the auth method selected.
-
 
 ### JSON format
 
@@ -511,7 +508,7 @@ _Examples_
 Simple List:
 
 ```json
-["x value for test","y value for test"]
+["x value for test", "y value for test"]
 ```
 
 This will populate the select menu with the given values.
@@ -519,7 +516,7 @@ This will populate the select menu with the given values.
 Simple Object:
 
 ```json
-{ "Name": "value1", "Name2":"value2" }
+{ "Name": "value1", "Name2": "value2" }
 ```
 
 This will populate the select menu to show the names and use the values.
@@ -528,9 +525,9 @@ Name Value List:
 
 ```json
 [
-  {"name":"X Label", "value":"x value"},
-  {"name":"Y Label", "value":"y value"},
-  {"name":"A Label", "value":"a value"}
+  { "name": "X Label", "value": "x value" },
+  { "name": "Y Label", "value": "y value" },
+  { "name": "A Label", "value": "a value" }
 ]
 ```
 
@@ -543,9 +540,9 @@ Name Value List with default selections:
 
 ```json
 [
-  {"name":"X Label", "value":"x value", "selected": true},
-  {"name":"Y Label", "value":"y value"},
-  {"name":"A Label", "value":"a value", "selected": true}
+  { "name": "X Label", "value": "x value", "selected": true },
+  { "name": "Y Label", "value": "y value" },
+  { "name": "A Label", "value": "a value", "selected": true }
 ]
 ```
 
@@ -555,6 +552,7 @@ When the required JSON elements return from the remote URL are nested, then use 
 [Here](https://goessner.net/articles/JsonPath/index.html#e2) is a helpful resource for JSON path syntax.
 
 For example, if the returned JSON is:
+
 ```
     {
       "key1":"value1",
@@ -569,6 +567,45 @@ For example, if the returned JSON is:
 Then, the list of key-value pairs from **`key2`** can be accessed with **`$.key2`**:
 
 ![Nested JSON](/assets/img/remote-url-json-path.png)<br>
+
+If we want to map the object "address" in the first object inside the following list, You can use this filter: `$.[0].adress`:
+
+```
+[
+  {
+    "id": 1,
+    "name": "Leanne Graham",
+    "address": {
+      "street": "Kulas Light",
+      "suite": "Apt. 556",
+      "city": "Gwenborough",
+      "zipcode": "92998-3874",
+      "geo": {
+        "lat": "-37.3159",
+        "lng": "81.1496"
+      }
+    },
+  },
+  {
+    "id": 2,
+    "name": "Ervin Howell",
+    "address": {
+      "street": "Kulas Light",
+      "suite": "Apt. 556",
+      "city": "Gwenborough",
+      "zipcode": "92998-3874",
+      "geo": {
+        "lat": "-37.3159",
+        "lng": "81.1496"
+      }
+    }
+  }
+]
+```
+
+You'll see the rendering options:
+
+![Rendering properties keys in the list](/assets/img/filtered-options.png)
 
 You can configure timeouts globally as described in [Configuration - Job Remote Option URL connection parameters](/administration/configuration/config-file-reference.md#rundeck-config.properties).
 
@@ -615,7 +652,7 @@ remote values URL. The property reference is of the form
 like "http://server/options?option2=${option.option2.value}", then that option
 will depend on the value of the "option2" option.
 
-If the `“option2”` value has an unsafe character as `“My value”` the unsafe character 
+If the `“option2”` value has an unsafe character as `“My value”` the unsafe character
 will be encoded to `"My%20value"` and the URL will be "http://server/options?My%20value",
 the pointed JSON must be stored as `“My%20value”` on the server side or the request will return a 404 error.
 

@@ -57,4 +57,4 @@ Want to learn more or give it a test run?
 [Check out the Learning Page for a Welcome Tutorial](/learning/)
 
 Already itching to install it? Jump ahead to
-[Installing Rundeck](/administration/install/installing-rundeck.md).
+[Installing Rundeck](/administration/install/index.md).

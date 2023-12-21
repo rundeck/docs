@@ -1,7 +1,7 @@
 export default [
   {
     text: 'Installation',
-    link: '/administration/install/installing-rundeck'
+    link: '/administration/install/index'
   },
   {
     text: 'Upgrading',

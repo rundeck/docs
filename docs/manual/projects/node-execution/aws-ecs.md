@@ -16,7 +16,7 @@ Sending commands to ECS containers makes it easier to collect diagnostic informa
 this allows users to easily interact with various processes in your containers and troubleshoot applications. In production scenarios,
 this enables break-glass access to containers to debug issues.
 
-This plugin is designed to work in conjunction with the [ECS-Fargate Node Source](/manual/projects/resource-model-sources/ecs-fargate).
+This plugin is designed to work in conjunction with the [ECS-Fargate Node Source](/manual/projects/resource-model-sources/ecs-fargate.md).
 
 ## Configuration
 
@@ -103,7 +103,7 @@ Examples of IAM policies that restrict the access by Process Automation can be f
 
 ## Executing Commands
 
-In order to send commands to ECS Containers, first configure the [ECS-Fargate Node Source](/manual/projects/resource-model-sources/ecs-fargate).
+In order to send commands to ECS Containers, first configure the [ECS-Fargate Node Source](/manual/projects/resource-model-sources/ecs-fargate.md).
 This retrieves the ECS containers and presents them as nodes in Process Automation:
 
 <img style='border:1px solid #327af6' src="/assets/img/aws-ecs-node-inventory.png" />
@@ -132,4 +132,4 @@ where the container image starts with `spring`:
 7. Click **Save** at the bottom of the page to save the Job configuration.
 
 ## Example Job: Java Thread Dump from ECS Container
-A sample implementation of executing commands on ECS containers can be seen in our [**Automated Diagnostics Solution**](/learning/solutions/automated-diagnostics/solution-overview).
+A sample implementation of executing commands on ECS containers can be seen in our [**Automated Diagnostics Solution**](/learning/solutions/automated-diagnostics/index.md).

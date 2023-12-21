@@ -1,4 +1,4 @@
-# Use Terraform to Automate Rundeck
+# Getting Started with Terraform and Rundeck
 
 Terraform is an open-source infrastructure as code software tool created by HashiCorp. Users define and provide data center infrastructure using a declarative configuration language known as HashiCorp Configuration Language, or optionally JSON.
 
@@ -32,12 +32,13 @@ A box will pop up.  Be sure to copy the API Token somewhere before clicking **Cl
 
 1. Create a working directory on your machine for this exercise.
 1. Copy the contents from the **Terraform Plan File** (tabs below) to a file called `rundeck-build.tf` in your working directory.
-1. Replace the `your-auth-token` value on line 13 with the value from the Create API Key steps.
-1. Copy the contents from the **ACL Example File** (tabs below) to a file called `acl.yaml` in your working directory.
-1. In your computer's terminal program navigate to your working directory.
-1. Execute the command `terraform init`
-1. Execute the command `terraform apply`
-1. Type `yes` to confirm the changes
+2. Ensure the value for `url` is accurate for your Rundeck instance. (The default will work with the Welcome Projects)
+3. Replace the `your-auth-token` value on line 13 with the value from the Create API Key steps.
+4. Copy the contents from the **ACL Example File** (tabs below) to a file called `acl.yaml` in your working directory.
+5. In your computer's terminal program navigate to your working directory.
+6. Execute the command `terraform init`
+7. Execute the command `terraform apply`
+8. Type `yes` to confirm the changes
 
 The following items will have been added to your Welcome Project
 - A new Project called "Terraform Example"

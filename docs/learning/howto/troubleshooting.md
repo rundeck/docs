@@ -149,6 +149,31 @@ This error can occur for many reasons, such as:
 * In case to use other applications on the Java Virtual Machine you may consider reducing the number of applications running in the Java Virtual Machine.
 * Check if the server has sufficient physical memory available.
 
+#### Database LockException
+When Rundeck/Process Automation starts it needs to check for the database status to be up to date. This process is handled by a Liquibase migration progress (this process runs each time the software starts, it is not only related to an upgrade).
+
+If there is an interruption while starting Rundeck/Process Automation, the database can get into an "stuck" state while performing the Liquibase migration process, this can prevent Rundeck/Process Automation from starting. It is possible to recover from this state, but the steps must be carefully followed.
+
+1. Make sure there are no Rundeck/Process Automation instances running.
+2. Once all instances are down, perform an update directly to the DB and change the "LOCKED" status
+3. Update table "DATABASECHANGELOGLOCK" field "LOCKED" to `false`. (Some databases uses `0/1` instead of a text, if that is the case, set the value to `0`)
+4. You can now start the software again and it should be able to obtain lock and perform the Liquibase migration process.
+
+Update example query
+`update DATABASECHANGELOGLOCK set LOCKED = false where ID = 1`
+
+`Example stacktrace of a stuck db`
+```
+[2023-11-22T16:21:28,445] ERROR rundeckapp.Application [main] - Cannot obtain lock on table DATABASECHANGELOGLOCK. This could be due to a database connection issue when starting a Process Automation instance. 
+To force the unlock you must first make sure that are no Process Automation instances running using this DB. You can change the lock status directly on the database and start Process Automation again by setting 'LOCKED' field in the table 'DATABASECHANGELOGLOCK' as false (or 0 depending on the database)
+liquibase.exception.LockException: Could not acquire change log lock.  Currently locked by MY_PC (192.168.3.29) since 11/20/23, 2:20 PM
+	at liquibase.lockservice.StandardLockService.waitForLock(StandardLockService.java:275) ~[liquibase-core-4.19.0.jar:?]
+	at liquibase.Liquibase.lambda$update$1(Liquibase.java:239) ~[liquibase-core-4.19.0.jar:?]
+	at liquibase.Scope.lambda$child$0(Scope.java:180) ~[liquibase-core-4.19.0.jar:?]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.19.0.jar:?]
+	at liquibase.Scope.child(Scope.java:179) ~[liquibase-core-4.19.0.jar:?]
+```
+
 ## Tuning Rundeck to avoid performance problems
 Efficiently tuning Rundeck for optimal performance is crucial, particularly in production environments where speed and reliability are essential.
 

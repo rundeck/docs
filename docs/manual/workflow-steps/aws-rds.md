@@ -30,5 +30,5 @@ This can be especially useful when your RDS instance has run out of storage capa
 * **Target RDS Region**: The AWS region where the RDS instance resides.
 
 ### See it in Action
-This plugin is used in one of the prebuilt Jobs in our [**_Automated Diagnostics Solution_**](/learning/solutions/automated-diagnostics/solution-overview).
+This plugin is used in one of the prebuilt Jobs in our [**_Automated Diagnostics Solution_**](/learning/solutions/automated-diagnostics/index.md).
 Try out the Solution to see how this plugin can be used as part of incident-response workflows.

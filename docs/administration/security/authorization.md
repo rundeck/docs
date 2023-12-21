@@ -57,8 +57,8 @@ Rundeck loads ACL Policy definitions from these locations:
 
 - All `*.aclpolicy` files found in the rundeck `etc` dir, which is either `/etc/rundeck` (rpm and debian install defaults),
   or `$RDECK_BASE/etc` (launcher/war configuration).
-- System level policies created via the [System ACLs API](/api/rundeck-api.md#acls)
-- Project level policies created via the [Project ACLs API](/api/rundeck-api.md#project-acls), limited only to project context policies for a specific project.
+- System level policies created via the [System ACLs API](/api/index.md#acls)
+- Project level policies created via the [Project ACLs API](/api/index.md#project-acls), limited only to project context policies for a specific project.
 
 ### Lifecycle
 
@@ -174,11 +174,11 @@ job. Which means this corresponds to a generic resource with a "kind" called "jo
 In Rundeck 2.8.x and later, Authentication Tokens are given a set of _Authorization Roles_ at generation time,
 so the access levels for the Token depend on how it was generated.
 
-See: [API Token](/api/rundeck-api.md#token-authentication) usage instructions.
+See: [API Token](/api/index.md#token-authentication) usage instructions.
 
 See below: [API Token Authorization][].
 
-(**Note:** In Rundeck 2.7.x and earlier, clients of the [Web API](/api/rundeck-api.md) may use the [Token Authentication](/api/rundeck-api.md#token-authentication) method. These clients are
+(**Note:** In Rundeck 2.7.x and earlier, clients of the [Web API](/api/index.md) may use the [Token Authentication](/api/index.md#token-authentication) method. These clients are
 placed in the special authorization group called `api_token_group`.)
 
 [api token authorization]: #api-token-authorization
@@ -477,7 +477,7 @@ _Note_: see [Node resource properties](#node-resource-properties) for more node 
 
 _Note_: Jobs can be referenced using "name" and "group" or using "uuid".
 
-_Note_: `runAs` and `killAs` actions only apply to certain API endpoints, and allow running jobs or adhoc executions or killing executions to be performed with a different username attached as the author of the action. See [Rundeck API - Running a Job](/api/rundeck-api.md#running-a-job).
+_Note_: `runAs` and `killAs` actions only apply to certain API endpoints, and allow running jobs or adhoc executions or killing executions to be performed with a different username attached as the author of the action. See [Rundeck API - Running a Job](/api/index.md#running-a-job).
 
 _Note_:
 Job deletion requires allowing the 'delete' action

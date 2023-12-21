@@ -14,12 +14,12 @@ This release has many new features and bugfixes, and contains some refactoring u
 * Upgraded grails framework, which adds support for Java 8 (and removes Java 6)
 * Can now store Project definition and configuration in the database (optional), see [Project Definitions](/manual/projects/configuration.md#project-definitions) and information in the [Upgrade Guide](/upgrading/index.md).
 * Improved GUI for administering a project: modify Project configuration file contents, and readme.md/motd.md contents. Project archiving is also now performed asynchronously.
-* New Jasypt encryption plugin can be used for Key Storage and Project Configuration, see [Jasypt Encryption Converter Plugin](/plugins/index.md#jasypt-encryption-converter-plugin)
+* New Jasypt encryption plugin can be used for Key Storage and Project Configuration, see [Jasypt Encryption Converter Plugin](/manual/plugins/full-list.md#jasypt-encryption-converter-plugin)
 * Support Key Storage password for SSH sudo and SSH private key passphrase
 * New workflow step plugin: Assert state of another Job, optionally halt workflow with custom status string
 * New `rd-acl` commandline tool can list test and generate .aclpolicy file contents, see [rd-acl](/rd-cli/rd-acl.md)
 * New Orchestrator plugin point. Orchestrators can be used to batch and sequence the matched nodes used in node dispatching, e.g.: only allow a certain % to run simultaneously.
-	* [Plugins User Guide -  Orchestrator Plugins](/plugins/index.md)
+	* [Plugins User Guide -  Orchestrator Plugins](/manual/plugins/full-list.md)
 	* [Plugin Developer Guide -  Orchestrator Plugin](/developer/09-orchestrator-plugin.md)
 	* [Example code](https://github.com/rundeck/rundeck/tree/development/examples/example-java-orchestrator-plugin)
 * Added hybrid LDAP + properties file group authentication for JAAS (`JettyCombinedLdapLoginModule`)

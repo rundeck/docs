@@ -18,7 +18,7 @@ Each Project can enable a single `ScmImport` and/or `ScmExport` plugin.
 
 This is done in the SCM Configuration page in the Rundeck GUI.
 
-Alternately, you can use the [Rundeck API - SCM](/api/rundeck-api.md#scm).
+Alternately, you can use the [Rundeck API - SCM](/api/index.md#scm).
 
 SCM Configuration for a project is _not_ stored in the `project.properties`
 configuration contents.

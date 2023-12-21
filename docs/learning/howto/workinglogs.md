@@ -38,10 +38,6 @@ docker logs <container_id> –follow
 
 Where `<container_id>` is the Rundeck container ID, you can check with the `docker ps` command, more information [here](https://docs.docker.com/engine/reference/commandline/ps/).
 
-### **Apache Tomcat Installation**
-
-For Apache Tomcat installations, all `service.log` content is stored in the Tomcat `catalina.out` file, more information [here](https://tomcat.apache.org/tomcat-9.0-doc/logging.html#Console).
-
 ## Other Rundeck Logs
 
 Rundeck stores all activity information in multiples files, those files are:

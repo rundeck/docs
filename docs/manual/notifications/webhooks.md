@@ -9,7 +9,7 @@ When a Rundeck Job webhook notification is triggered, the server will send a POS
 
 #### Execution Notification Content
 
-The default content of the POST request will be XML, with a single `<notification>` root element. This element will contain `<executions..><execution>...</execution></executions>` content. This inner content is of the same format as the XML returned from the Web API for Execution information. See the chapter [API - Listing Running Executions](/api/rundeck-api.md#listing-running-executions) for more information.
+The default content of the POST request will be XML, with a single `<notification>` root element. This element will contain `<executions..><execution>...</execution></executions>` content. This inner content is of the same format as the XML returned from the Web API for Execution information. See the chapter [API - Listing Running Executions](/api/index.md#listing-running-executions) for more information.
 
 Attributes of the `notification` element will include:
 

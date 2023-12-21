@@ -5,7 +5,7 @@ Rundeck allows users to execute jobs to remote Windows nodes to manage and autom
 
 To communicate with Windows nodes, Rundeck uses an out-of-the-box [Node Execution/ File Copier plugin](https://github.com/rundeck-plugins/py-winrm-plugin) that uses the [WinRM](https://docs.microsoft.com/en-us/windows/win32/winrm/portal) (Windows Remote Management) protocol.
 
->Note: If this is the first time adding remote nodes, we suggest reviewing the [Rundeck Tutorial](/learning/tutorial/preparing.md) before adding Windows nodes. This exercise assumes some experience with Windows and Rundeck basics covered in the Tutorial.
+>Note: If this is the first time adding remote nodes, we suggest reviewing the [Rundeck Tutorial](/learning/tutorial/index.md) before adding Windows nodes. This exercise assumes some experience with Windows and Rundeck basics covered in the Tutorial.
 
 ## Basic pywinrm Plugin Requirements
 
@@ -32,7 +32,7 @@ The [pywinrm plugin](https://github.com/rundeck-plugins/py-winrm-plugin) uses th
 * OpenSSL version 1.1.1 or higher. (openssl version can be checked with the following command: `openssl version - "OpenSSL 1.1.1k"`)
     * `requests-kerberos` and `requests-credssp` are optional.
   
-Note: Due to networking complexity issues this exercise will not work with the Welcome Projects.  These steps assume you have Rundeck installed [using these instructions](/administration/install/installing-rundeck.md).  For more information see the [Additional Information](#additional-information) section.
+Note: Due to networking complexity issues this exercise will not work with the Welcome Projects.  These steps assume you have Rundeck installed [using these instructions](/administration/install/index.md).  For more information see the [Additional Information](#additional-information) section.
 
 ## Basic Windows Requirements
 

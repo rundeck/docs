@@ -59,7 +59,7 @@ For calling Rundeck jobs from Jenkins, the Rundeck Jenkins plugin plays a key ro
 ![ ](/assets/img/jenkins17_shellcommand.png)<br>
 1. Now it's time to call the Rundeck job, scroll down and locate the "Add post-build action button", then select Rundeck.<br>
 ![ ](/assets/img/jenkins18_callrundeck.png)<br>
-1. This step uses the general plugin configuration. So, it isn't necessary to fill in the username, password, and token textboxes. The step needs the [Job ID](/manual/04-jobs.md#job-uuids) to launch it.  Once that is entered, click on the "Save" button.<br>
+1. This step uses the general plugin configuration. So, it isn't necessary to fill in the username, password, and token textboxes. The step needs the [Job ID](/manual/jobs.md#job-uuids) to launch it.  Once that is entered, click on the "Save" button.<br>
 ![ ](/assets/img/jenkins19_jobid.png)<br>
 1. Now run the Jenkins build by clicking the "Build Now" link (on the left menu).<br>
 ![ ](/assets/img/jenkins20_buildnow.png)<br>

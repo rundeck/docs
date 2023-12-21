@@ -2,10 +2,7 @@
 
 Tested version
 
-- Rundeck 3.0.6 TEAM
-- SQL Server 2017 Express
-- Windows 2012 R2
-- Java 1.8
+- Currently Supported Rundeck version and related system requirements.
 
 To enable security mode with SQL Server when executing rundeck.
 

@@ -2,7 +2,7 @@
 
 The Rundeck Welcome Projects are sample projects that show how to configure and use Rundeck. In this guide we show you how to set up, start and run the key parts of the Welcome Projects.
 
-There are two Welcome Projects, a Community Welcome Project focused on the Rundeck Open Source and a Welcome Project focused on Process Automation. Once you have the environment set up, you will want to follow the steps in the [Getting Started Tutorial](/learning/tutorial/preparing.md).
+There are two Welcome Projects, a Community Welcome Project focused on the Rundeck Open Source and a Welcome Project focused on Process Automation. Once you have the environment set up, you will want to follow the steps in the [Getting Started Tutorial](/learning/tutorial/index.md).
 
 ### Disclaimer
 
@@ -125,7 +125,7 @@ In the left nav bar the options available are:
 
 ## Familiarize Yourself with Rundeck!
 
-Once your environment is fully operational, [start the Tutorial here](/learning/tutorial/preparing.md).
+Once your environment is fully operational, [start the Tutorial here](/learning/tutorial/index.md).
 
 ## Stop the Environment
 

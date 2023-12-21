@@ -1,4 +1,4 @@
-# Process Automation Version
+# Process Automation
 
 Process Automation is a server application hosted in a local or private cloud environment as a central administrative control point. Internally, Process Automation stores job definitions and execution history in a relational database. Output from command and job executions is saved on disk but can be forwarded to remote stores like S3 or Logstash.
 
@@ -21,6 +21,6 @@ Two installation methods are supported:
 
 Process Automation can also install as a WAR file into an external container like Tomcat.
 
-[See the Installation section for more details on Process Automation setup.](/administration/install/installing-rundeck.md)
+[See the Installation section for more details on Process Automation setup.](/administration/install/index.md)
 
 Assuming the system requirements are met, Process Automation can be installed either from source, system package or via the launcher.

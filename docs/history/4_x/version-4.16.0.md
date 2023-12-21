@@ -50,6 +50,7 @@ Prior to this release, the out-of-the-box Default Node Executor for projects was
 
 ### Additional Updates
 
+* Fixed: Issues were jobs with runners fail if the cluster member executing the job is not the same member communicating with the runner.
 * Fix: System report statistics are not loading
 * Support for file and script resource models to be executed in a Runner
 * Fix: Cleanup misfire tracker properly when job was deleted

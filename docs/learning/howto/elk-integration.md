@@ -18,7 +18,7 @@ In the case of Rundeck, integrating with ELK has some of the following advantage
 
 **Search and Filtering Capabilities:** ELK offers robust search and filtering capabilities, enabling you to efficiently search and analyze Rundeck logs. With ELK, you can perform full-text searches, filter logs based on specific criteria (e.g., job names, execution IDs, error messages), and use advanced querying techniques to identify patterns and anomalies in Rundeck log data. 
 
-**Visualization and Dashboards: **Kibana, a component of ELK, provides powerful visualization capabilities. By integrating Rundeck logs with Kibana, you can create custom dashboards and visualizations to present log data in a meaningful way. 
+**Visualization and Dashboards:** Kibana, a component of ELK, provides powerful visualization capabilities. By integrating Rundeck logs with Kibana, you can create custom dashboards and visualizations to present log data in a meaningful way. 
 
 ## ELK Configuration
 

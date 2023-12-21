@@ -180,4 +180,4 @@ So the JavaScript for integrating with Rundeck is then added to the following pa
 
 To complete the round-trip of editing a Node and then showing the results back in Rundeck, the ndbtest project would have to export XML formatted Resource data, and then your Rundeck project.properties file would have to point to the appropriate URL. (This is left as an exercise to the reader.)
 
-[Tutorial](/learning/tutorial/preparing.md)
+[Tutorial](/learning/tutorial/index.md)

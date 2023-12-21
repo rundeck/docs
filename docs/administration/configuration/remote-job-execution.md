@@ -55,7 +55,7 @@ Choose from the following `<Policy>` settings:
 - `Random` - Executes randomly among allowed members
 - `RoundRobin` - Executes round-robin style among allowed members
 - `Preset` - Executes on one other preset member
-- `Load` - Executes on a member based on load (Requires Enterprise Cluster 2.3.0 or a later release. See Enable Load Balanced Policy)
+- `Load` - Executes on a member based on load (Requires Enterprise Cluster 2.3.0 or a later release. See [Load Balanced Execution Policy](#load-balanced-execution-policy))
 
 #### List of Allowed Members
 

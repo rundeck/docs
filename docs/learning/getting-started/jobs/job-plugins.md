@@ -1,5 +1,5 @@
 # Job Plugins
-[Plugins](/manual/plugins/plugins-overview.md#plugins) are a key element of Rundeck and the PagerDuty Process Automation products. They get used [in many different ways](/plugins/) in different parts of the product. Most commonly, they are used to allow integration with third-party tools.<br>
+[Plugins](/manual/plugins/index.md#plugins) are a key element of Rundeck and the PagerDuty Process Automation products. They get used [in many different ways](/plugins/) in different parts of the product. Most commonly, they are used to allow integration with third-party tools.<br>
 When talking about plugins in the context of jobs, many of the common node steps and workflow steps are plugins, as are notifications, node orchestrators and log filters (among other things). Creating plugins for jobs allows users to use the same script across multiple jobs. This can be very useful for instances where teams or users are using the same steps in multiple jobs.<br>
 
 ## Plugin development

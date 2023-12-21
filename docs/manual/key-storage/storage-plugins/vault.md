@@ -2,7 +2,7 @@
 
 [Hashicorp Vault](https://www.vaultproject.io/) is a tool for securely accessing secrets. A secret is anything that you want to tightly control access to, such as API keys, passwords, or certificates. Vault provides a unified interface to any secret, while providing tight access control and recording a detailed audit log.
 
-Rundeck offers a [Key Storage Backend](/manual/key-storage/key-storage.html#key-data-storage-converter) plugin for storing Key Store data in [Vault](https://www.vaultproject.io/) and has been verified to work with HCP Vault.
+Rundeck offers a [Key Storage Backend](/manual/key-storage/index.html#key-data-storage-converter) plugin for storing Key Store data in [Vault](https://www.vaultproject.io/) and has been verified to work with HCP Vault.
 
 A more [detailed installation How To](/learning/howto/vault-integration.html) is available in our learning section.
 
@@ -336,7 +336,6 @@ path "secret_v2/delete/your/path/here/*" {
 ```
 
 ## Minimal version requirements
-  * Java 1.8
   * Rundeck 3.3.0
   * Vault 0.9.0
 
