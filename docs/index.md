@@ -4,9 +4,9 @@ icon: home
 heroText:  Rundeck Documentation
 //heroImage: /assets/img/pd-background.png
 bgImage: /assets/img/pd-background.png
-//bgImageDark: /assets/img/pd-background.png
+bgImageDark: /assets/img/pd-background.png
 //bgImageStyle:
-// background-attachment: fixed
+//background-attachment: fixed
 // tagline: Rundeck Documentation
 actions:
 - text: Intro 💡
@@ -202,107 +202,3 @@ highlights:
       link: https://community.pagerduty.com/forum/c/runbook-automation-process-automation
 
 ---
-
-<style>
-.main-title {
-  margin: 0.5rem 0;
-
-  background: linear-gradient(
-    120deg,
-    var(--theme-color-light),
-    var(--theme-color) 30%,
-    color.adjust(hope-config.$theme-color, $hue: 60deg) 100%
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-
-  font-weight: bold;
-  font-size: 3.6rem;
-  font-family: var(--font-family);
-  line-height: 1.5;
-
-
-  @media (max-width: hope-config.$tablet) {
-    margin: 0;
-  }
-
-  @media (max-width: hope-config.$pad) {
-    font-size: 2.5rem;
-    text-align: center;
-  }
-
-  @media (max-width: hope-config.$tablet) {
-    font-size: 2.25rem;
-    text-align: center;
-  }
-
-  @media (max-width: hope-config.$mobile) {
-    margin: 0 auto;
-    font-size: 2rem;
-  }
-}
-</style>
-
-[comment]: <> (---)
-
-[comment]: <> (sidebar: false)
-
-[comment]: <> (title: Rundeck Documentation)
-
-[comment]: <> (---)
-
-[comment]: <> (<br>)
-
-[comment]: <> (## Rundeck {{ $rundeckVersion}} Documentation    )
-
-[comment]: <> (Here at [docs.rundeck.com]&#40;https://docs.rundeck.com/docs&#41;, you'll find a comprehensive resource for all things Rundeck. Whether you're new to Rundeck or an experienced user, this documentation site is designed to help you harness the power of Rundeck's automation and orchestration capabilities.)
-
-[comment]: <> (Rundeck is an open-source platform that simplifies and automates operations tasks, enabling teams to efficiently manage their infrastructure and workflows. With its intuitive interface and powerful features, Rundeck empowers both developers and operations teams to collaborate and automate complex processes.)
-
-[comment]: <> (- **Automate Complex Workflows**: Design and execute sophisticated workflows, chaining together tasks, commands, and scripts, enabling end-to-end automation of your operational processes.)
-
-[comment]: <> (- **Manage and Schedule Jobs**: Easily schedule and manage jobs across your infrastructure, allowing you to streamline and automate routine tasks efficiently.)
-
-[comment]: <> (- **Control Access and Security**: Implement fine-grained access controls and security policies to ensure that only authorized users can perform specific actions within Rundeck.)
-
-[comment]: <> (- **Monitor and Track Executions**: Gain visibility into job executions, monitor their progress, and capture detailed logs and reports for auditing and troubleshooting purposes.)
-
-[comment]: <> (This documentation site serves as a central hub for all your Rundeck-related needs. It offers a wealth of information, including detailed guides, tutorials, reference materials, and best practices to help you get the most out of Rundeck. Whether you're looking for installation instructions, troubleshooting tips, or advanced usage scenarios, you'll find it all here.)
-
-[comment]: <> (### Key Features of the Rundeck Documentation Site:)
-
-[comment]: <> (1. **[Getting Started Guides]&#40;/learning/index.md&#41;**: If you're new to Rundeck, our getting started guides will walk you through the installation process, configuration, and provide a foundation for understanding the core concepts.<br><br>)
-
-[comment]: <> (2. **[Tutorials]&#40;/learning/howto/overview.md&#41;**: Step-by-step tutorials cover a wide range of use cases, demonstrating how to automate routine tasks, create workflows, integrate with other tools, and more.<br><br>)
-
-[comment]: <> (3. **[API Documentation]&#40;/api/rundeck-api.md&#41;**: Explore the Rundeck API documentation to learn how to interact with Rundeck programmatically and integrate it into your existing infrastructure and tooling.<br><br>)
-
-[comment]: <> (4. **[Release Notes]&#40;/history/&#41;**: Stay up to date with the latest features, enhancements, and bug fixes in each Rundeck release. [Sign up for Release Notes]&#40;https://www.rundeck.com/release-notes-signup&#41;<br><br>)
-
-[comment]: <> (If you're looking for documentation of older versions of Rundeck, you can access them at the [Old Versions]&#40;/manual/old-docs.md&#41; section.)
-
-[comment]: <> (## Process Automation)
-
-[comment]: <> (Process Automation, the commercial offering, provides additional features to further enhance your automation capabilities:)
-
-[comment]: <> (### Enterprise Support)
-
-[comment]: <> (With Process Automation, you gain access to enterprise-grade support, ensuring that you have the assistance you need to run Rundeck in production environments. Benefit from timely assistance, troubleshooting, and guidance from the Rundeck team.)
-
-[comment]: <> (### Clustering)
-
-[comment]: <> (Process Automation allows you to create a high-availability cluster of Rundeck instances, enabling load balancing and fault tolerance. This ensures that your automation workflows are always available and can handle high volumes of jobs and executions.)
-
-[comment]: <> (### Extensive Integration Plugins)
-
-[comment]: <> (Process Automation provides a wide range of integration plugins, allowing you to connect Rundeck with other tools and systems in your infrastructure ecosystem. Seamlessly integrate with popular tools such as Jenkins, Ansible, Git, Slack, and many more, enabling end-to-end automation across your environment.)
-
-[comment]: <> (### Advanced Scheduling Options)
-
-[comment]: <> (Process Automation offers advanced scheduling capabilities, giving you fine-grained control over when and how your jobs and workflows are executed. Schedule jobs based on specific dates, times, intervals, or even trigger them in response to external events or conditions.)
-
-[comment]: <> (### And More)
-
-[comment]: <> (We strive to keep the documentation up to date, providing accurate and relevant information to support your Rundeck journey. If you have any questions or suggestions, please don't hesitate to reach out to us. Your feedback is invaluable in helping us improve the documentation and ensure a seamless experience for all users.)
-
-[comment]: <> (Thank you for choosing Rundeck, and we hope you find the documentation site a valuable resource in your automation and orchestration endeavors!)
