@@ -25,8 +25,8 @@ highlights:
 - header: Featured Resources  
   description: Explore Rundeck documentation to find step-by-step instructions, code samples, and reference information.
   // image: /assets/image/markdown.svg
-  bgImage: /assets/img/pd-background.png
-  bgImageDark: /assets/img/pd-background.png
+  //bgImage: /assets/img/pd-background.png
+  //bgImageDark: /assets/img/pd-background.png
   bgImageStyle:
   background-repeat: repeat
   background-size: initial
@@ -111,128 +111,95 @@ highlights:
       details: Create your flowchart in Markdown
       link: ./guide/markdown/flowchart.html
 
-
-
-- header: Improved layouts
-  description: An awesome responsive layout with full a11y support.
-  image: /assets/image/layout.svg
-  bgImage: https://theme-hope-assets.vuejs.press/bg/5-light.svg
-  bgImageDark: https://theme-hope-assets.vuejs.press/bg/5-dark.svg
-  highlights:
-    - title: Layout
-      icon: object-group
-      details: Improved navbar, sidebar, page nav and new breadcrumb, footer and toc. We also bring you a brand new homepage.
-      link: ./guide/layout/
-
-    - title: Dark Mode
-      icon: circle-half-stroke
-      details: Switch between light and dark modes freely
-      link: ./guide/interface/darkmode.html
-
-    - title: Customizable Theme Color
-      icon: palette
-      details: Customize theme color
-      link: ./guide/interface/theme-color.html
-
-    - title: Slide Page
-      icon: person-chalkboard
-      details: Adding slide pages to display things you like
-      link: ./guide/layout/slides
-
-    - title: More
-      icon: ellipsis
-      details: RTL layout, print support, fullscreen button, etc.
-      link: ./guide/interface/others.html
-
 - header: New features
-  image: /assets/image/features.svg
+  //image: /assets/image/features.svg
   bgImage: https://theme-hope-assets.vuejs.press/bg/1-light.svg
   bgImageDark: https://theme-hope-assets.vuejs.press/bg/1-dark.svg
   features:
-    - title: Pageviews and Comments
-      icon: comment-dots
-      details: Start pageview statistics and comment support with Waline
-      link: ./guide/feature/comment.html
+    - title: Secrets via Distributed Automation
+      icon: key
+      details: Automate workflows with remote-hosted secrets storage.
+      link: /history/4_x/version-4.16.0.html#secrets-management-integrations-through-enterprise-runner
 
-    - title: Article Information
-      icon: circle-info
-      details: Add author, writing date, reading time, word count and other information to your article
-      link: ./guide/feature/page-info.html
+    - title: Remote Node Inventory
+      icon: computer
+      details: Automate tasks in secure and remote environments, where inventory can only be discovered within the environment’s perimeter.
+      link: /history/4_x/version-4.16.0.html#node-inventory-discovery-through-enterprise-runner
 
-    - title: Article Encryption
+    - title: Cross Role/Account support for AWS
+      icon: shuffle
+      details: Integrate with multiple AWS IAM Roles that reside in one or multiple AWS Accounts.
+      link: /history/4_x/version-4.17.0.html#cross-role-and-cross-account-support-for-ec2-aws-systems-manager
+
+    - title: Plugin Suite Configuration
+      icon: gears
+      details: Consolidates configuration for plugin suites like AWS, Sensu, and more!
+      link: /history/4_x/version-4.9.0.html#highlights
+
+    - title: Track the ROI of your Automation
+      icon: arrow-trend-up
+      details: Track time and money saved to see insights into the effectiveness of your Automation.
+      link: /history/4_x/version-4.7.0.html#highlights
+
+    - title: Performance Enhancements
+      icon: gauge-high
+      details: Our new 5.0 release includes UI performance improvements up to 85%.
+      link: /history/5_x/version-5.0.0.html#jobs-list-performance
+
+- header: Distributed Automation
+  description: With the Distributed Automation architecture, DevOps and Operations teams can manage automation in a central UI while delegating tasks within different private networks or multi-cloud environments without needing to open external firewall ports.
+  //image: /assets/image/layout.svg
+  bgImage: https://theme-hope-assets.vuejs.press/bg/3-light.svg
+  bgImageDark: https://theme-hope-assets.vuejs.press/bg/3-dark.svg
+  highlights:
+    - title: Remote Task Execution
+      icon: arrow-down-up-lock
+      details: Run Scripts, discover nodes, gather secrets in remote environments.
+      link: /administration/runner/runner-intro.html
+
+    - title: Secure Communications
       icon: lock
-      details: Encrypt you articles based on page links, so that only the one you want could see them
-      link: ./guide/feature/encrypt.html
+      details: Enhanced security as ports no longer need to be open for the Automation Server to talk over sensitive ports.
+      link: /administration/runner/runner-intro.html
 
-    - title: Search
-      icon: search
-      details: Support docsearch and client search
-      link: ./guide/feature/search.html
+    - title: AWS SSM Execution
+      icon: aws
+      details: Allows Process Automation to communicate with EC2 instances through the SSM service, rather than another communication protocol.
+      link: /manual/projects/node-execution/aws-ssm.html
 
-    - title: Copy Code Blocks
-      icon: copy
-      details: Copy codes with one click in code blocks
-      link: ./guide/feature/copy-code.html
+    - title: Remote Secrets
+      icon: key
+      details: Keep passwords in their secure environments with remote access via the Enterprise Runner.
+      link: history/4_x/version-4.16.0.html#secrets-management-integrations-through-enterprise-runner
 
-    - title: Image Preview
-      icon: image
-      details: Support viewing, zooming, sharing your page images like a gallery
-      link: ./guide/feature/photo-swipe.html
+    - title: More
+      icon: ellipsis
+      details: 
+      link: /administration/runner/runner-intro.html
 
-- header: Blogging
-  description: Create personal blog with theme
-  image: /assets/image/blog.svg
+
+
+- header: Collaborate
+  description: Join our Community Forums to collaborate with our team.
+  //image: /assets/image/blog.svg
   bgImage: https://theme-hope-assets.vuejs.press/bg/5-light.svg
   bgImageDark: https://theme-hope-assets.vuejs.press/bg/5-dark.svg
   highlights:
-    - title: Blog features
-      icon: blog
-      details: Listing your articles with their dates, tags and categories
-      link: ./guide/blog/intro.html
+    - title: Keep up on the Latest
+      icon: square-rss
+      details: Keep up on what's new in the latest releases.
+      link: https://community.pagerduty.com/forum/c/runbook-automation-process-automation
 
-    - title: Blog homepage
-      icon: blog
-      details: New blog homepage
-      link: ./guide/blog/home.html
+    - title: Collaborate with other community members
+      icon: slideshare
+      details: Join in dicsussions and share your own Automation tips and tricks.
+      link: https://community.pagerduty.com/forum/c/runbook-automation-process-automation
 
-    - title: Blogger info
+    - title: Join the Leaderboard
       icon: circle-info
-      details: Customize avatar, name, slogan, introduction and social links
-      link: ./guide/blog/blogger.html
+      details: Try to take over the top spot in the leaderboard by finishing challenges.
+      link: https://community.pagerduty.com/forum/c/runbook-automation-process-automation
 
-    - title: Timeline
-      icon: clock
-      details: Read through blog posts in a timeline
-      link: ./guide/blog/timeline.html
-
-- header: Advanced
-  description: Advanced features to improve site SEO and user experience
-  image: /assets/image/advanced.svg
-  bgImage: https://theme-hope-assets.vuejs.press/bg/4-light.svg
-  bgImageDark: https://theme-hope-assets.vuejs.press/bg/4-dark.svg
-  highlights:
-    - title: SEO Enhancement
-      icon: dumbbell
-      details: Optimize pages for search engines
-      link: ./guide/advanced/seo.html
-
-    - title: Sitemap
-      icon: sitemap
-      details: Generate a Sitemap for your site
-      link: ./guide/advanced/sitemap.html
-
-    - title: Feed
-      icon: rss
-      details: Generate feed to allow users to subscribe it
-      link: ./guide/advanced/feed.html
-
-    - title: PWA
-      icon: mobile-screen
-      details: Make your site more like an APP
-      link: ./guide/advanced/pwa.html
-
-copyright: false
-footer: MIT Licensed | Copyright © 2019-present Mr.Hope
 ---
 
 <style>
