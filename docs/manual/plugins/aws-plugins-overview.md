@@ -26,8 +26,8 @@ _Click to expand to see the full list of Process Automation plugins for AWS:_
 |**ECS**|[Stopped Task Errors](/manual/workflow-steps/aws-ecs-fargate.md)|Job Step|
 |**ECS**|[Stop Task](/manual/workflow-steps/aws-ecs-fargate.md)|Job Step|
 |**ELB**|[Unhealthy Target Group Instances](/manual/workflow-steps/aws-elb-workflow-plugin.md)|Job Step|
-|**Lambda**|[Execute Lambda Function](/manual/workflow-steps/aws-lambda.html#execute-lambda-function.md)|Job Step|
-|**Lambda**|[Execute Custom-Code Lambda Function](/manual/workflow-steps/aws-lambda.html#lambda-custom-code-execution.md)|Job Step|
+|**Lambda**|[Execute Lambda Function](/manual/workflow-steps/aws-lambda.md#execute-lambda-function)|Job Step|
+|**Lambda**|[Execute Custom-Code Lambda Function](/manual/workflow-steps/aws-lambda.md#lambda-custom-code-execution)|Job Step|
 |**RDS**|[Check Instance Status](/manual/workflow-steps/aws-rds.md)|Job Step|
 |**S3**|[Copy Files from Local to S3 or S3 to local](https://github.com/rundeck-plugins/aws-s3-steps.md)|Job Step|
 |**S3**|[List S3 objects](https://github.com/rundeck-plugins/aws-s3-steps.md)|Job Step|

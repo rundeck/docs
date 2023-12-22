@@ -21,9 +21,9 @@ Release Date: November 13, 2023
 ## Overview
 
 This release addresses two CVE announcements for Rundeck/Process Automation:
-- [CVE-2023-48222](cve-2023-48222.md)<br>
+- [CVE-2023-48222](/history/cves/cve-2023-48222.md)<br>
     Authenticated users can view or delete jobs for which they do not have authorization.
-- [CVE-2023-47112](cve-2023-47112.md)<br>
+- [CVE-2023-47112](/history/cves/cve-2023-47112.md)<br>
     Authenticated users can view job names and groups for which they do not have read authorization.
 
 Also includes other fixes for PagerDuty Process Automation (formerly Rundeck Enterprise), PagerDuty Runbook Automation and Rundeck Community included in this release.
