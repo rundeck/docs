@@ -10,13 +10,13 @@ bgImageDark: /assets/img/pd-background.png
 // tagline: Rundeck Documentation
 actions:
 - text: Intro 💡
-  link: ./guide/get-started/intro.html
+  link: /about/introduction.html
 - text: Tutorial 🧭
-  link: ./cookbook/tutorial/
-- text: Download Opensource 🛠
-  link: ./config/
+  link: /learning/getting-started/
+- text: Download 🛠
+  link: https://download.rundeck.com
 - text: Start a Trial 🪀
-  link: https://stackblitz.com/fork/vuepress-theme-hope
+  link: https://www.pagerduty.com/sign-up/runbook-automation/
 
 
 highlights:
