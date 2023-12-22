@@ -26,7 +26,7 @@ actions:
 highlights:
 
 - header: Featured Resources  
-  description: Explore Rundeck documentation to find step-by-step instructions, code samples, and reference information.
+  description: Explore Runbook Automation documentation to find step-by-step instructions, code samples, and reference information.
   // image: /assets/image/markdown.svg
   //bgImage: /assets/img/pd-background.png
   //bgImageDark: /assets/img/pd-background.png
@@ -34,84 +34,84 @@ highlights:
   background-repeat: repeat
   background-size: initial
   features:
-    - title: Learn fundamentals
+    - title: Learn Fundamentals
       icon: book 
-      details: Learn Rundeck fundamentals and key concepts
+      details: Runbook Automation fundamentals and key concepts
       link: /learning/
 
     - title: Distributed Automation
       icon: /assets/img/runner-icon.png
-      details: Use tasklist in Markdown
+      details: Automation across network and physical boundaries 
       link: /administration/runner/runner-intro.html
 
     - title: Integrations & Plugins
       icon: shuffle
-      details: Your Markdown now support footnotes
+      details: Orchestrate across the tooling ecosystem
       link: /manual/plugins/
   
     - title: Automated Incident Response
       icon: /assets/img/pd-icon.png
-      details: Add cards in Markdown
+      details: Diagnostics and Remediation
       link: /learning/solutions/automated-diagnostics/
 
     - title: AWS Automation
       icon:  /assets/img/aws-logo.png
-      details: Group similar content with tabs and switch them together
+      details: Cloudwatch, Fargate, SSM, and more
       link: /manual/plugins/aws-plugins-overview.html
 
     - title: Azure Automation
       icon: /assets/img/azure-logo.png
-      details: Group similar codes with tabs
+      details: VMs, Blob Storage, Active Directory SSO, and more
       link: /manual/plugins/azure-plugins-overview.html
 
     - title: Google Cloud Automation
       icon: /assets/img/gcp-icon.png
-      details: Allow you to add attributes for Markdown content
+      details: GCE, Cloud SQL, VPC Peering, and more
       link: /manual/plugins/gcp-plugins-overview.html
 
     - title: Kubernetes Automation
       icon: /assets/img/kubernetes-icon.png
-      details: Your Markdown now support superscript and subscript
+      details: Deployments, debugging, provisioning and more
       link: /manual/plugins/kubernetes-plugins-overview.html
 
     - title: Windows Automation
       icon: /assets/img/windows-logo.png
-      details: Use tasklist in Markdown
+      details: Self service interface for IT Ops tasks
       link: ./guide/markdown/tasklist.html
 
     - title: Linux Automation
       icon: /assets/img/linux-logo.png
-      details: Decorate Markdown content with styles
+      details: Standardize systems across global footprint
       link: /learning/howto/configuring-windows-nodes.html
 
     - title: Ansible Integration
       icon: /assets/img/ansible-icon.png
-      details: Let you decide to align paragraphs in the way you like
+      details: Orchestrate Ansible across numerous environments 
       link: /learning/howto/using-ansible.html#how-to-integrate-ansible-with-rundeck
 
     - title: ServiceNow Integration
       icon: /assets/img/snow-icon.png
-      details: Create your flowchart in Markdown
+      details: Create, update and resolve tickets within Runbook Automation
       link: /manual/plugins/servicenow-plugins-overview.html
 
     - title: Administration
       icon: screwdriver-wrench
-      details: Mark words and sentences in Markdown
+      details: Manage users, roles, and global configuration
       link: /administration/
 
     - title: Security
       icon: lock
-      details: improve syntax to specify size and color scheme
+      details: Harden the deployment to adhere to security best practices
       link: /administration/security/
 
     - title: API Documentation
       icon: code
-      details: Create your flowchart in Markdown
+      details: Develop against the Runbook Automation API
       link: /api/
   
     - title: Contact Support
       icon: phone
-      details: Display charts in Markdown
+      details: Get help through the Community or Professional Support
       link: /about/getting-help.html
 
 
