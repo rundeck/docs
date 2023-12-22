@@ -1,7 +1,8 @@
 ---
 home: true
 icon: home
-//heroText:  Welcome to Docs
+heroText:  Welcome to Docs
+tagline: Runbook Automation | Process Automation | Rundeck
 //heroImage: /assets/img/pd-background.png
 bgImage: /assets/img/pd-background.png
 bgImageDark: /assets/img/pd-background.png
