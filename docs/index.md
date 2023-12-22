@@ -32,84 +32,85 @@ highlights:
   background-size: initial
   features:
     - title: Learn fundamentals
-      //icon: edit
+      icon: book 
       details: Learn Rundeck fundamentals and key concepts
       link: ./guide/markdown/others.html#link-check
 
-    - title: Download & Upgrade
-      //icon:
-      details: Let you decide to align paragraphs in the way you like
-      link: ./guide/markdown/align.html
-
-    - title: Remote Commands & Scripts
-      //icon: iconfont icon-shell
-      details: Decorate Markdown content with styles
-      link: ./guide/markdown/container.html
-
-    - title: AWS Automation
-      //icon:  fa-brands fa-aws
-      details: Group similar content with tabs and switch them together
-      link: ./guide/markdown/tabs.html
-
-    - title: Azure Automation
-      //icon: code
-      details: Group similar codes with tabs
-      link: ./guide/markdown/code-tabs.html
-
-    - title: Google Cloud Automation
-      //icon: code
-      details: Allow you to add attributes for Markdown content
-      link: ./guide/markdown/attrs.html
-
-    - title: Kubernetes Automation
-      //icon: superscript
-      details: Your Markdown now support superscript and subscript
-      link: ./guide/markdown/sup-sub.html
-
     - title: Distributed Automation
-      //icon: condition
-      details: Use tasklist in Markdown
-      link: ./guide/markdown/tasklist.html
-
-    - title: Windows Automation
-      //icon: windows
+      icon: /assets/img/runner-icon.png
       details: Use tasklist in Markdown
       link: ./guide/markdown/tasklist.html
 
     - title: Integrations & Plugins
-      //icon: quote-left
+      icon: shuffle
       details: Your Markdown now support footnotes
       link: ./guide/markdown/footnote.html
+  
+    - title: Automated Incident Response
+      icon: /assets/img/pd-icon.png
+      details: Add cards in Markdown
+      link: ./guide/markdown/card.html
+
+    - title: AWS Automation
+      icon:  /assets/img/aws-logo.png
+      details: Group similar content with tabs and switch them together
+      link: ./guide/markdown/tabs.html
+
+    - title: Azure Automation
+      icon: /assets/img/azure-logo.png
+      details: Group similar codes with tabs
+      link: ./guide/markdown/code-tabs.html
+
+    - title: Google Cloud Automation
+      icon: /assets/img/gcp-icon.png
+      details: Allow you to add attributes for Markdown content
+      link: ./guide/markdown/attrs.html
+
+    - title: Kubernetes Automation
+      icon: /assets/img/kubernetes-icon.png
+      details: Your Markdown now support superscript and subscript
+      link: ./guide/markdown/sup-sub.html
+
+    - title: Windows Automation
+      icon: /assets/img/windows-logo.png
+      details: Use tasklist in Markdown
+      link: ./guide/markdown/tasklist.html
+
+    - title: Linux Automation
+      icon: /assets/img/linux-logo.png
+      details: Decorate Markdown content with styles
+      link: ./guide/markdown/container.html
+
+    - title: Ansible Integration
+      icon: /assets/img/ansible-icon.png
+      details: Let you decide to align paragraphs in the way you like
+      link: ./guide/markdown/align.html
+
+    - title: ServiceNow Integration
+      icon: /assets/img/snow-icon.png
+      details: Create your flowchart in Markdown
+      link: ./guide/markdown/flowchart.html
 
     - title: Administration
-      //icon: highlighter
+      icon: screwdriver-wrench
       details: Mark words and sentences in Markdown
       link: ./guide/markdown/mark.html
 
     - title: Security
-      //icon: image
+      icon: lock
       details: improve syntax to specify size and color scheme
       link: ./guide/markdown/image.html
 
-    - title: Automated Incident Response
-      //icon: square
-      details: Add cards in Markdown
-      link: ./guide/markdown/card.html
-
+    - title: API Documentation
+      icon: code
+      details: Create your flowchart in Markdown
+      link: ./guide/markdown/flowchart.html
+  
     - title: Contact Support
-      //icon: support
+      icon: phone
       details: Display charts in Markdown
       link: ./guide/markdown/chart.html
 
-    - title: Release Notes
-      //icon: route
-      details: Create your flowchart in Markdown
-      link: ./guide/markdown/flowchart.html
-
-    - title: API Documentation
-      //icon: code
-      details: Create your flowchart in Markdown
-      link: ./guide/markdown/flowchart.html
 
 - header: New features
   //image: /assets/image/features.svg
