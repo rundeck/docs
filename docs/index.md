@@ -37,42 +37,42 @@ highlights:
     - title: Learn fundamentals
       icon: book 
       details: Learn Rundeck fundamentals and key concepts
-      link: ./guide/markdown/others.html#link-check
+      link: /learning/
 
     - title: Distributed Automation
       icon: /assets/img/runner-icon.png
       details: Use tasklist in Markdown
-      link: ./guide/markdown/tasklist.html
+      link: /administration/runner/runner-intro.html
 
     - title: Integrations & Plugins
       icon: shuffle
       details: Your Markdown now support footnotes
-      link: ./guide/markdown/footnote.html
+      link: /manual/plugins/
   
     - title: Automated Incident Response
       icon: /assets/img/pd-icon.png
       details: Add cards in Markdown
-      link: ./guide/markdown/card.html
+      link: /learning/solutions/automated-diagnostics/
 
     - title: AWS Automation
       icon:  /assets/img/aws-logo.png
       details: Group similar content with tabs and switch them together
-      link: ./guide/markdown/tabs.html
+      link: /manual/plugins/aws-plugins-overview.html
 
     - title: Azure Automation
       icon: /assets/img/azure-logo.png
       details: Group similar codes with tabs
-      link: ./guide/markdown/code-tabs.html
+      link: /manual/plugins/azure-plugins-overview.html
 
     - title: Google Cloud Automation
       icon: /assets/img/gcp-icon.png
       details: Allow you to add attributes for Markdown content
-      link: ./guide/markdown/attrs.html
+      link: /manual/plugins/gcp-plugins-overview.html
 
     - title: Kubernetes Automation
       icon: /assets/img/kubernetes-icon.png
       details: Your Markdown now support superscript and subscript
-      link: ./guide/markdown/sup-sub.html
+      link: /manual/plugins/kubernetes-plugins-overview.html
 
     - title: Windows Automation
       icon: /assets/img/windows-logo.png
@@ -82,37 +82,37 @@ highlights:
     - title: Linux Automation
       icon: /assets/img/linux-logo.png
       details: Decorate Markdown content with styles
-      link: ./guide/markdown/container.html
+      link: /learning/howto/configuring-windows-nodes.html
 
     - title: Ansible Integration
       icon: /assets/img/ansible-icon.png
       details: Let you decide to align paragraphs in the way you like
-      link: ./guide/markdown/align.html
+      link: /learning/howto/using-ansible.html#how-to-integrate-ansible-with-rundeck
 
     - title: ServiceNow Integration
       icon: /assets/img/snow-icon.png
       details: Create your flowchart in Markdown
-      link: ./guide/markdown/flowchart.html
+      link: /manual/plugins/servicenow-plugins-overview.html
 
     - title: Administration
       icon: screwdriver-wrench
       details: Mark words and sentences in Markdown
-      link: ./guide/markdown/mark.html
+      link: /administration/
 
     - title: Security
       icon: lock
       details: improve syntax to specify size and color scheme
-      link: ./guide/markdown/image.html
+      link: /administration/security/
 
     - title: API Documentation
       icon: code
       details: Create your flowchart in Markdown
-      link: ./guide/markdown/flowchart.html
+      link: /api/
   
     - title: Contact Support
       icon: phone
       details: Display charts in Markdown
-      link: ./guide/markdown/chart.html
+      link: /about/getting-help.html
 
 
 - header: New features
