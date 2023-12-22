@@ -9,13 +9,17 @@ bgImageDark: /assets/img/pd-background.png
 //background-attachment: fixed
 // tagline: Rundeck Documentation
 actions:
-- text: Intro 💡
+- text: Intro
+  icon: circle-play
   link: /about/introduction.html
-- text: Tutorial 🧭
+- text: Tutorial 
+  icon: graduation-cap
   link: /learning/getting-started/
-- text: Download 🛠
+- text: Download
+  icon: download
   link: https://download.rundeck.com
-- text: Start a Trial 🪀
+- text: Start a Trial
+  icon: /assets/img/pd-icon-small.png
   link: https://www.pagerduty.com/sign-up/runbook-automation/
 
 
