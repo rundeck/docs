@@ -1,7 +1,7 @@
 ---
 home: true
 icon: home
-heroText:  Welcome to Docs
+//heroText:  Welcome to Docs
 //heroImage: /assets/img/pd-background.png
 bgImage: /assets/img/pd-background.png
 bgImageDark: /assets/img/pd-background.png
