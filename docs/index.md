@@ -11,7 +11,6 @@ bgImageDark: /assets/img/pd-background.png
 actions:
 - text: Intro 💡
   link: ./guide/get-started/intro.html
-  type: primary
 - text: Tutorial 🧭
   link: ./cookbook/tutorial/
 - text: Download Opensource 🛠
