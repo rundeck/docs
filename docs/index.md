@@ -77,12 +77,12 @@ highlights:
     - title: Windows Automation
       icon: /assets/img/windows-logo.png
       details: Self service interface for IT Ops tasks.
-      link: ./guide/markdown/tasklist.html
+      link: /learning/howto/configuring-windows-nodes.html
 
     - title: Linux Automation
       icon: /assets/img/linux-logo.png
       details: Standardize systems across global footprint.
-      link: /learning/howto/configuring-windows-nodes.html
+      link: /learning/howto/ssh-on-linux-nodes.html
 
     - title: Ansible Integration
       icon: /assets/img/ansible-icon.png
