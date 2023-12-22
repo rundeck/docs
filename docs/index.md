@@ -1,57 +1,208 @@
 ---
-sidebar: false
-title: Rundeck Documentation
+home: true
+icon: home
+heroText:  Welcome to Docs
+tagline: Runbook Automation | Process Automation | Rundeck
+//heroImage: /assets/img/pd-background.png
+bgImage: /assets/img/pd-background.png
+bgImageDark: /assets/img/pd-background.png
+//bgImageStyle:
+//background-attachment: fixed
+// tagline: Rundeck Documentation
+actions:
+- text: Intro
+  icon: circle-play
+  link: /about/introduction.html
+- text: Tutorial 
+  icon: graduation-cap
+  link: /learning/getting-started/
+- text: Download
+  icon: download
+  link: https://download.rundeck.com
+- text: Start a Trial
+  icon: /assets/img/pd-icon-small.png
+  link: https://www.pagerduty.com/sign-up/runbook-automation/
+
+
+highlights:
+
+- header: Featured Resources  
+  description: Explore Runbook Automation documentation to find step-by-step instructions, code samples, and reference information.
+  // image: /assets/image/markdown.svg
+  //bgImage: /assets/img/pd-background.png
+  //bgImageDark: /assets/img/pd-background.png
+  bgImageStyle:
+  background-repeat: repeat
+  background-size: initial
+  features:
+    - title: Learn Fundamentals
+      icon: book 
+      details: Runbook Automation fundamentals and key concepts.
+      link: /learning/
+
+    - title: Distributed Automation
+      icon: /assets/img/runner-icon.png
+      details: Automation across network and physical boundaries.
+      link: /administration/runner/runner-intro.html
+
+    - title: Integrations & Plugins
+      icon: shuffle
+      details: Orchestrate across the tooling ecosystem.
+      link: /manual/plugins/
+  
+    - title: Automated Incident Response
+      icon: /assets/img/pd-icon.png
+      details: Diagnostics and Remediation.
+      link: /learning/solutions/automated-diagnostics/
+
+    - title: AWS Automation
+      icon:  /assets/img/aws-icon-small.png
+      details: Cloudwatch, Fargate, SSM, and more.
+      link: /manual/plugins/aws-plugins-overview.html
+
+    - title: Azure Automation
+      icon: /assets/img/azure-logo.png
+      details: VMs, Blob Storage, Active Directory SSO, and more.
+      link: /manual/plugins/azure-plugins-overview.html
+
+    - title: Google Cloud Automation
+      icon: /assets/img/gcp-icon.png
+      details: GCE, Cloud SQL, VPC Peering, and more.
+      link: /manual/plugins/gcp-plugins-overview.html
+
+    - title: Kubernetes Automation
+      icon: /assets/img/kubernetes-icon.png
+      details: Deployments, debugging, provisioning and more.
+      link: /manual/plugins/kubernetes-plugins-overview.html
+
+    - title: Windows Automation
+      icon: /assets/img/windows-logo.png
+      details: Self service interface for IT Ops tasks.
+      link: /learning/howto/configuring-windows-nodes.html
+
+    - title: Linux Automation
+      icon: /assets/img/linux-logo.png
+      details: Standardize systems across global footprint.
+      link: /learning/howto/ssh-on-linux-nodes.html
+
+    - title: Ansible Integration
+      icon: /assets/img/ansible-icon.png
+      details: Orchestrate Ansible across numerous environments.
+      link: /learning/howto/using-ansible.html#how-to-integrate-ansible-with-rundeck
+
+    - title: ServiceNow Integration
+      icon: /assets/img/snow-icon.png
+      details: Create, update and resolve tickets within Runbook Automation.
+      link: /manual/plugins/servicenow-plugins-overview.html
+
+    - title: Administration
+      icon: screwdriver-wrench
+      details: Manage users, roles, and global configuration.
+      link: /administration/
+
+    - title: Security
+      icon: lock
+      details: Harden the deployment to adhere to security best practices.
+      link: /administration/security/
+
+    - title: API Documentation
+      icon: code
+      details: Develop against the Runbook Automation API.
+      link: /api/
+  
+    - title: Contact Support
+      icon: phone
+      details: Get help through the Community or Professional Support.
+      link: /about/getting-help.html
+
+
+- header: New features
+  //image: /assets/image/features.svg
+  bgImage: /images/waveform-light-04.svg
+  bgImageDark: /images/waveform-dark-04.svg
+  features:
+    - title: Secrets via Distributed Automation
+      icon: key
+      details: Automate workflows with remote-hosted secrets storage.
+      link: /history/4_x/version-4.16.0.html#secrets-management-integrations-through-enterprise-runner
+
+    - title: Remote Node Inventory
+      icon: computer
+      details: Automate tasks in secure and remote environments, where inventory can only be discovered within the environment’s perimeter.
+      link: /history/4_x/version-4.16.0.html#node-inventory-discovery-through-enterprise-runner
+
+    - title: Cross Role/Account support for AWS
+      icon: shuffle
+      details: Integrate with multiple AWS IAM Roles that reside in one or multiple AWS Accounts.
+      link: /history/4_x/version-4.17.0.html#cross-role-and-cross-account-support-for-ec2-aws-systems-manager
+
+    - title: Plugin Suite Configuration
+      icon: gears
+      details: Consolidates configuration for plugin suites like AWS, Sensu, and more!
+      link: /history/4_x/version-4.9.0.html#highlights
+
+    - title: Track the ROI of your Automation
+      icon: arrow-trend-up
+      details: Track time and money saved to see insights into the effectiveness of your Automation.
+      link: /history/4_x/version-4.7.0.html#highlights
+
+    - title: Performance Enhancements
+      icon: gauge-high
+      details: Our new 5.0 release includes UI performance improvements up to 85%.
+      link: /history/5_x/version-5.0.0.html#jobs-list-performance
+
+- header: Distributed Automation
+  description: With the Distributed Automation architecture, DevOps and Operations teams can manage automation in a central UI while delegating tasks within different private networks or multi-cloud environments without needing to open external firewall ports.
+  //image: /assets/image/layout.svg
+  bgImage: /images/waveform-light-14.svg
+  bgImageDark: /images/waveform-dark-14.svg
+  highlights:
+    - title: Remote Task Execution
+      icon: arrow-down-up-lock
+      details: Run Scripts, discover nodes, gather secrets in remote environments.
+      link: /administration/runner/runner-intro.html
+
+    - title: Secure Communications
+      icon: lock
+      details: Enhanced security as ports no longer need to be open for the Automation Server to talk over sensitive ports.
+      link: /administration/runner/runner-intro.html
+
+    - title: AWS SSM Execution
+      icon: /assets/img/aws-icon-small.png
+      details: Allows Process Automation to communicate with EC2 instances through the SSM service, rather than another communication protocol.
+      link: /learning/howto/cross-account-aws-ssm.html
+
+    - title: Remote Secrets
+      icon: key
+      details: Keep passwords in their secure environments with remote access via the Enterprise Runner.
+      link: history/4_x/version-4.16.0.html#secrets-management-integrations-through-enterprise-runner
+
+    - title: More
+      icon: ellipsis
+      details: 
+      link: /administration/runner/runner-intro.html
+
+
+
+- header: Collaborate
+  description: Join our Community Forums to collaborate with our team.
+  //image: /assets/image/blog.svg
+  bgImage: /images/waveform-light-02.svg
+  bgImageDark: /images/waveform-dark-02.svg
+  highlights:
+    - title: Keep up on the Latest
+      icon: square-rss
+      details: Keep up on what's new in the latest releases.
+      link: https://community.pagerduty.com/forum/c/runbook-automation-process-automation
+
+    - title: Collaborate with other community members
+      icon: share
+      details: Join in dicsussions and share your own Automation tips and tricks.
+      link: https://community.pagerduty.com/forum/c/runbook-automation-process-automation
+
+    - title: Join the Leaderboard
+      icon: circle-info
+      details: Try to take over the top spot in the leaderboard by finishing challenges.
+      link: https://community.pagerduty.com/forum/c/runbook-automation-process-automation
+
 ---
-
-# Welcome to the Rundeck Documentation Site!
-
-## Rundeck {{ $rundeckVersion}} Documentation    
-
-Here at [docs.rundeck.com](https://docs.rundeck.com/docs), you'll find a comprehensive resource for all things Rundeck. Whether you're new to Rundeck or an experienced user, this documentation site is designed to help you harness the power of Rundeck's automation and orchestration capabilities.
-
-Rundeck is an open-source platform that simplifies and automates operations tasks, enabling teams to efficiently manage their infrastructure and workflows. With its intuitive interface and powerful features, Rundeck empowers both developers and operations teams to collaborate and automate complex processes.
-
-- **Automate Complex Workflows**: Design and execute sophisticated workflows, chaining together tasks, commands, and scripts, enabling end-to-end automation of your operational processes.
-
-- **Manage and Schedule Jobs**: Easily schedule and manage jobs across your infrastructure, allowing you to streamline and automate routine tasks efficiently.
-
-- **Control Access and Security**: Implement fine-grained access controls and security policies to ensure that only authorized users can perform specific actions within Rundeck.
-
-- **Monitor and Track Executions**: Gain visibility into job executions, monitor their progress, and capture detailed logs and reports for auditing and troubleshooting purposes.
-
-This documentation site serves as a central hub for all your Rundeck-related needs. It offers a wealth of information, including detailed guides, tutorials, reference materials, and best practices to help you get the most out of Rundeck. Whether you're looking for installation instructions, troubleshooting tips, or advanced usage scenarios, you'll find it all here.
-
-### Key Features of the Rundeck Documentation Site:
-
-1. **[Getting Started Guides](/learning/index.md)**: If you're new to Rundeck, our getting started guides will walk you through the installation process, configuration, and provide a foundation for understanding the core concepts.<br><br>
-2. **[Tutorials](/learning/howto/index.md)**: Step-by-step tutorials cover a wide range of use cases, demonstrating how to automate routine tasks, create workflows, integrate with other tools, and more.<br><br>
-3. **[API Documentation](/api/index.md)**: Explore the Rundeck API documentation to learn how to interact with Rundeck programmatically and integrate it into your existing infrastructure and tooling.<br><br>
-4. **[Release Notes](/history/index.md)**: Stay up to date with the latest features, enhancements, and bug fixes in each Rundeck release. [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)<br><br>
-
-If you're looking for documentation of older versions of Rundeck, you can access them at the [Old Versions](/manual/old-docs.md) section.
-
-## Process Automation
-
-Process Automation, the commercial offering, provides additional features to further enhance your automation capabilities:
-
-### Enterprise Support
-
-With Process Automation, you gain access to enterprise-grade support, ensuring that you have the assistance you need to run Rundeck in production environments. Benefit from timely assistance, troubleshooting, and guidance from the Rundeck team.
-
-### Clustering
-
-Process Automation allows you to create a high-availability cluster of Rundeck instances, enabling load balancing and fault tolerance. This ensures that your automation workflows are always available and can handle high volumes of jobs and executions.
-
-### Extensive Integration Plugins
-
-Process Automation provides a wide range of integration plugins, allowing you to connect Rundeck with other tools and systems in your infrastructure ecosystem. Seamlessly integrate with popular tools such as Jenkins, Ansible, Git, Slack, and many more, enabling end-to-end automation across your environment.
-
-### Advanced Scheduling Options
-
-Process Automation offers advanced scheduling capabilities, giving you fine-grained control over when and how your jobs and workflows are executed. Schedule jobs based on specific dates, times, intervals, or even trigger them in response to external events or conditions.
-
-### And More
-
-We strive to keep the documentation up to date, providing accurate and relevant information to support your Rundeck journey. If you have any questions or suggestions, please don't hesitate to reach out to us. Your feedback is invaluable in helping us improve the documentation and ensure a seamless experience for all users.
-
-Thank you for choosing Rundeck, and we hope you find the documentation site a valuable resource in your automation and orchestration endeavors!

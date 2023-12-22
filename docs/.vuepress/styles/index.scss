@@ -1,3 +1,8 @@
+@use "@sass-palette/hope-config";
+@use "sass:color";
+@use "sass:list";
+@use "vuepress-shared/styles/shining";
+
 .theme-container h1,
 h2,
 h3,
@@ -6,6 +11,113 @@ h5,
 h6 {
   font-family: 'Jost';
   font-weight: 700;
+}
+
+
+#main-title {
+    -webkit-text-fill-color: var(--text-color);
+    color: var(--text-color);
+    text-align: center;
+}
+
+.vp-description{
+  text-align: center;
+  max-width: unset;
+}
+
+.vp-feature {
+  color: var(--text-color)
+}
+
+.vp-feature-bg + .vp-feature {
+  color: var(--text-color)
+}
+
+.vp-highlight {
+  color: var(--text-color)
+}
+
+.vp-feature-item {
+  position: relative;
+
+  box-shadow: 0 1.5px 3px 0 #00000026;
+  border: 2px solid var(--ifm-color-emphasis-200);
+
+  display: block;
+  flex-basis: calc(33% - 3rem);
+
+  margin: 0.5rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+
+  color: inherit;
+
+  transition:
+    background var(--color-transition),
+    box-shadow var(--color-transition),
+    transform var(--transform-transition);
+
+  @media (min-width: hope-config.$pc) {
+    flex-basis: calc(25% - 3rem);
+  }
+
+  @media (max-width: hope-config.$pad) {
+    flex-basis: calc(50% - 3rem);
+  }
+
+  @media (max-width: hope-config.$tablet) {
+    flex-basis: 100%;
+    font-size: 0.95rem;
+  }
+
+  @media (max-width: hope-config.$mobile) {
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+  }
+
+  &.link {
+    cursor: pointer;
+
+    @media print {
+      text-decoration: none;
+    }
+  }
+
+  .icon {
+    display: inline-block;
+
+    width: 1.1em;
+    margin-inline-end: 0.5rem;
+
+    color: var(--theme-color);
+
+    font-weight: normal;
+    font-size: 1.1em;
+  }
+
+  &:hover {
+    background-color: var(--bg-color-secondary);
+    box-shadow: 0 2px 12px 0 var(--card-shadow);
+    transform: translate(-2px, -2px);
+    transform: scale(1.05);
+
+    .vp-feature-bg + .vp-feature & {
+      background-color: transparent;
+    }
+  }
+
+  &:only-child {
+    flex-basis: 100%;
+  }
+
+  &:first-child:nth-last-child(2),
+  &:nth-child(2):last-child {
+    flex-basis: calc(50% - 3rem);
+
+    @media (max-width: hope-config.$tablet) {
+      flex-basis: 100%;
+    }
+  }
 }
 
 .theme-hope-content img {
@@ -88,3 +200,4 @@ html[data-theme=dark] {
   };
   --theme-color: var(--theme-color-dark)
 }
+
