@@ -15,9 +15,21 @@ h6 {
 
 
 #main-title {
-    -webkit-text-fill-color: #2c3e50;
+    -webkit-text-fill-color: var(--text-color);
+    color: var(--text-color);
     text-align: center;
+}
 
+.vp-feature {
+  color: var(--text-color)
+}
+
+.vp-feature-bg + .vp-feature {
+  color: var(--text-color)
+}
+
+.vp-highlight {
+  color: var(--text-color)
 }
 
 .vp-feature-item {
