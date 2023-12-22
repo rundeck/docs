@@ -1,23 +1,22 @@
 ---
-pageClass: custom-page-class
 home: true
 icon: home
 heroText:  Rundeck Documentation
-// heroImage: /assets/img/pd-background.png
-// bgImage: /assets/img/pd-background.png
+//heroImage: /assets/img/pd-background.png
+bgImage: /assets/img/pd-background.png
 //bgImageDark: /assets/img/pd-background.png
 //bgImageStyle:
 // background-attachment: fixed
 // tagline: Rundeck Documentation
 actions:
-- text: Tutorial 🧭
-  link: ./cookbook/tutorial/
-  type: primary
 - text: Intro 💡
   link: ./guide/get-started/intro.html
-- text: Config 🛠
+  type: primary
+- text: Tutorial 🧭
+  link: ./cookbook/tutorial/
+- text: Download Opensource 🛠
   link: ./config/
-- text: Online Demo 🪀
+- text: Start a Trial 🪀
   link: https://stackblitz.com/fork/vuepress-theme-hope
 
 
@@ -26,7 +25,7 @@ highlights:
 - header: Featured Resources  
   description: Explore Rundeck documentation to find step-by-step instructions, code samples, and reference information.
   // image: /assets/image/markdown.svg
-  // bgImage: /assets/img/pd-background.png
+  bgImage: /assets/img/pd-background.png
   bgImageDark: /assets/img/pd-background.png
   bgImageStyle:
   background-repeat: repeat
