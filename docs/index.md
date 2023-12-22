@@ -55,7 +55,7 @@ highlights:
       link: /learning/solutions/automated-diagnostics/
 
     - title: AWS Automation
-      icon:  /assets/img/aws-logo.png
+      icon:  /assets/img/aws-icon-small.png
       details: Cloudwatch, Fargate, SSM, and more.
       link: /manual/plugins/aws-plugins-overview.html
 
@@ -167,9 +167,9 @@ highlights:
       link: /administration/runner/runner-intro.html
 
     - title: AWS SSM Execution
-      icon: aws
+      icon: /assets/img/aws-icon-small.png
       details: Allows Process Automation to communicate with EC2 instances through the SSM service, rather than another communication protocol.
-      link: /manual/projects/node-execution/aws-ssm.html
+      link: /learning/howto/cross-account-aws-ssm.html
 
     - title: Remote Secrets
       icon: key
@@ -195,7 +195,7 @@ highlights:
       link: https://community.pagerduty.com/forum/c/runbook-automation-process-automation
 
     - title: Collaborate with other community members
-      icon: slideshare
+      icon: share
       details: Join in dicsussions and share your own Automation tips and tricks.
       link: https://community.pagerduty.com/forum/c/runbook-automation-process-automation
 
