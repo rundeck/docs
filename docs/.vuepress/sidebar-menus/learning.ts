@@ -105,7 +105,8 @@ export default [{
             '/learning/howto/how2-terra-rd-aws.md',
             '/learning/howto/how2-terra-rd-eks.md',
             '/learning/howto/troubleshooting.md',
-            '/learning/howto/customize-gui.md'
+            '/learning/howto/customize-gui.md',
+            '/learning/howto/runner-paop-selfsigned.md'
           ]
         },
         {
