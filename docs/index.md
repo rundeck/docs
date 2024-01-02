@@ -197,12 +197,22 @@ highlights:
 
     - title: Collaborate with other community members
       icon: share
-      details: Join in dicsussions and share your own Automation tips and tricks.
+      details: Join in discussions and share your own Automation tips and tricks.
       link: https://community.pagerduty.com/forum/c/runbook-automation-process-automation
 
     - title: Join the Leaderboard
       icon: circle-info
       details: Try to take over the top spot in the leaderboard by finishing challenges.
       link: https://community.pagerduty.com/forum/c/runbook-automation-process-automation
+
+    - title: Contribute to Docs
+      icon:  pen-to-square
+      details: See something to add or clarify? We always appreciate contributions to our docs site.
+      link: /learning/howto/update-rundeck-docs.html
+
+    - title: Contribute to the OSS Project
+      icon:  code-branch
+      details: Rundeck is an open source project, and we encourage community feedback and contributions.
+      link: https://github.com/rundeck/rundeck
 
 ---
