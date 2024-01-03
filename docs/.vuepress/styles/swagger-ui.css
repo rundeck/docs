@@ -11739,53 +11739,7 @@
 /*# sourceMappingURL=swagger-ui.css.map*/
 
 html[data-theme=dark] {
-
-    a {
-        color: #8c8cfa;
-    }
-
-    ::-webkit-scrollbar-track-piece {
-        background-color: rgba(255, 255, 255, .2) !important;
-    }
-
-    ::-webkit-scrollbar-track {
-        background-color: rgba(255, 255, 255, .3) !important;
-    }
-
-    ::-webkit-scrollbar-thumb {
-        background-color: rgba(255, 255, 255, .5) !important;
-    }
-
-    embed[type="application/pdf"] {
-        filter: invert(90%);
-    }
-
-    html {
-        background: #1f1f1f !important;
-        box-sizing: border-box;
-        filter: contrast(100%) brightness(100%) saturate(100%);
-        overflow-y: scroll;
-    }
-
-    body {
-        background: #1f1f1f;
-        background-color: #1f1f1f;
-        background-image: none !important;
-    }
-
-    button,
-    input,
-    select,
-    textarea {
-        background-color: #1f1f1f;
-        color: #bfbfbf;
-    }
-
-    font,
-    html {
-        color: #bfbfbf;
-    }
-
+    
     .swagger-ui,
     .swagger-ui section h3 {
         color: #b5bac9;
