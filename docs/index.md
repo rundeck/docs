@@ -156,7 +156,7 @@ highlights:
   //image: /assets/image/layout.svg
   //bgImage: /images/waveform-light-14.svg
   //bgImageDark: /images/waveform-dark-14.svg
-  highlights:
+  features:
     - title: Remote Task Execution
       icon: arrow-down-up-lock
       details: Run Scripts, discover nodes, gather secrets in remote environments.

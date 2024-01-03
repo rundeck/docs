@@ -202,29 +202,33 @@ html[data-theme=dark] {
   --theme-color: var(--theme-color-dark);
 
   #main-title .a {
-    color: #FFF;
-  }
-
-  .vp-feature {
     color: #fff;
   }
 
+  .vp-feature {
+    color: var(--text-color);
+  }
+
   #main-title {
-    color: #FFF;
-    -webkit-text-fill-color: #FFF;
+    color: #fff;
+    -webkit-text-fill-color: #fff;
   } 
 
   .vp-description {
     color: #fff;
   }
 
+  .vp-highlight {
+    color: var(--text-color);
+  }
+
   .vp-feature {
-    color: #fff;
+    color: var(--text-color);
   }
 
   .vp-feature-item {
     position: relative;
-  
+    background-color: #383838d1;
     box-shadow: 0 1.5px 3px 0 #f8f8f87d;
     border: 2px solid var(--ifm-color-emphasis-200);
   
