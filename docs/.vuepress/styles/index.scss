@@ -198,6 +198,19 @@ html[data-theme=dark] {
   img[src*="/images/RundeckbyPagerDuty.svg"] {
     content: url("/images/RundeckbyPagerDutyDark.svg")
   };
-  --theme-color: var(--theme-color-dark)
-}
+  
+  --theme-color: var(--theme-color-dark);
 
+  #main-title .a {
+    color: unset;
+  }
+
+  #main-title {
+    color: #FFF;
+    -webkit-text-fill-color: #FFF;
+  } 
+
+  .vp-description {
+    color: #fff;
+  }
+}
