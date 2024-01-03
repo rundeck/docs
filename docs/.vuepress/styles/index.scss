@@ -202,7 +202,7 @@ html[data-theme=dark] {
   --theme-color: var(--theme-color-dark);
 
   #main-title .a {
-    color: unset;
+    color: #FFF;
   }
 
   #main-title {
@@ -213,4 +213,9 @@ html[data-theme=dark] {
   .vp-description {
     color: #fff;
   }
+
+  .vp-feature {
+    color: #fff;
+  }
+
 }
