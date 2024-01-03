@@ -189,7 +189,7 @@ highlights:
   //image: /assets/image/blog.svg
   bgImage: /images/waveform-light-02.svg
   bgImageDark: /images/waveform-dark-02.svg
-  highlights:
+  features:
     - title: Keep up on the Latest
       icon: square-rss
       details: Keep up on what's new in the latest releases.
@@ -198,11 +198,6 @@ highlights:
     - title: Collaborate with other community members
       icon: share
       details: Join in discussions and share your own Automation tips and tricks.
-      link: https://community.pagerduty.com/forum/c/runbook-automation-process-automation
-
-    - title: Join the Leaderboard
-      icon: circle-info
-      details: Try to take over the top spot in the leaderboard by finishing challenges.
       link: https://community.pagerduty.com/forum/c/runbook-automation-process-automation
 
     - title: Contribute to Docs
