@@ -118,8 +118,8 @@ highlights:
 
 - header: New features
   //image: /assets/image/features.svg
-  bgImage: /images/waveform-light-04.svg
-  bgImageDark: /images/waveform-dark-04.svg
+  //bgImage: /images/waveform-light-04.svg
+  //bgImageDark: /images/waveform-dark-04.svg
   features:
     - title: Secrets via Distributed Automation
       icon: key
@@ -154,8 +154,8 @@ highlights:
 - header: Distributed Automation
   description: With the Distributed Automation architecture, DevOps and Operations teams can manage automation in a central UI while delegating tasks within different private networks or multi-cloud environments without needing to open external firewall ports.
   //image: /assets/image/layout.svg
-  bgImage: /images/waveform-light-14.svg
-  bgImageDark: /images/waveform-dark-14.svg
+  //bgImage: /images/waveform-light-14.svg
+  //bgImageDark: /images/waveform-dark-14.svg
   highlights:
     - title: Remote Task Execution
       icon: arrow-down-up-lock
@@ -187,8 +187,8 @@ highlights:
 - header: Collaborate
   description: Join our Community Forums to collaborate with our team.
   //image: /assets/image/blog.svg
-  bgImage: /images/waveform-light-02.svg
-  bgImageDark: /images/waveform-dark-02.svg
+  //bgImage: /images/waveform-light-02.svg
+  //bgImageDark: /images/waveform-dark-02.svg
   features:
     - title: Keep up on the Latest
       icon: square-rss
