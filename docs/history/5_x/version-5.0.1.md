@@ -1,18 +1,18 @@
 ---
 
 title: "5.0.1 Release Notes"
-date: 2024-01-01
+date: 2024-01-09
 image: /images/chevron-logo-red-on-white.png
 feed:
  enable: true
- description: ""
+ description: "Important Fixes | New Signing Key"
 
 ---
 
 # 5.0.1 Release Notes
 
 Name: <span style="color: coral"><span class="glyphicon glyphicon-bell"></span> "Denali coral bell"</span>
-Release Date: PUTADATEHERE
+Release Date: January 9th, 2024
 
 - [Download the Releases](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
@@ -24,36 +24,23 @@ Check out the new features and enhancements for PagerDuty Process Automation (fo
 
 ### Highlights
 
-- first highlight
-- second highlight
+This release fixes some key issues found in the 5.0.0 release.  This release fixes the following issues:
+- The JSON/JQ Log Filter was not properly capturing data into workflow variables.
+- Certain data context variables were not being passed properly to the Enterprise Runner resulting in jobs failing to execute.
 
-## Process Automation Updates
-
-> Also includes all Open Source updates from below
-
-### Additional Updates
-
-
-
+There is a new signing key to validate binaries starting with version 5.0.1.  The new key can be downloaded [here](https://docs.rundeck.com/keys/BUILD-GPG-KEY-20240108.key)
 
 ## Rundeck Open Source Product Updates
 
-* [WIP: resolve replace token for inline script plugin before is sent to the runner](https://github.com/rundeck/rundeck/pull/8784)
-
+* [Fix: step labels unavailable for workflow strategy](https://github.com/rundeck/rundeck/pull/8797)
+* [Fix replace token for command plugin](https://github.com/rundeck/rundeck/pull/8791)
+* [Resolve replace token for inline script plugin before is sent to the runner](https://github.com/rundeck/rundeck/pull/8784)
 
 [Here is a link to the full list of public PRs](https://github.com/rundeck/rundeck/pulls?q=is%3Apr+milestone%3A5.0.1+is%3Aclosed)
-
-## Ansible Plugin Updates
-
-
-
 
 ## Community Contributors
 
 Submit your own Pull Requests to get recognition here!
-
-* Luis Toledo ([ltamaster](https://github.com/ltamaster))
-
 
 ## Staff Contributors
 
