@@ -28,7 +28,7 @@ This release fixes some key issues found in the 5.0.0 release.  This release fix
 - The JSON/JQ Log Filter was not properly capturing data into workflow variables.
 - Certain data context variables were not being passed properly to the Enterprise Runner resulting in jobs failing to execute.
 
-There is a new signing key to validate binaries starting with version 5.0.1.  The new key can be downloaded [here](https://docs.rundeck.com/keys/BUILD-GPG-KEY-20240108.key)
+There is a **new signing key** to validate binaries starting with version 5.0.1.  The new key can be downloaded [here](https://docs.rundeck.com/keys/BUILD-GPG-KEY-20240108.key)
 
 ## Rundeck Open Source Product Updates
 
