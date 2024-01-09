@@ -20,7 +20,8 @@ export default [{
                   '/administration/install/aws',
                   '/administration/install/windows',
                   '/administration/install/source',
-                  '/administration/install/docker'
+                  '/administration/install/docker',
+                  '/administration/install/signingkeys'
                 ]
               },
               {
