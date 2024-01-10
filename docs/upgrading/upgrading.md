@@ -1,10 +1,10 @@
 # General Upgrade Guide
 
-## Preparing to Upgrade your Server
+## Preparing to Upgrade
 
-:::warning
-Before performing an upgrade, it is highly recommend to stop all cluster members and do the following steps, one cluster member, at a time.
-:::
+Prior to upgrading it is important to read the specific version upgrade steps covered in this section.  Due to the complex nature of the solution some versions require specific steps to ensure a successful upgrade.  Any version speicific steps will be covered in those pages.  The details below cover the overall process for upgrading to any version.
+
+## Preparing to Upgrade your Server
 
 - Download the latest Rundeck version .war from [Process Automation Downloads](https://www.rundeck.com/enterprise-downloads) _(requires license)_ or [Rundeck OSS Downloads](https://downloads.rundeck.com)
 
