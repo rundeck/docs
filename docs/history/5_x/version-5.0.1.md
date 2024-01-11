@@ -32,9 +32,10 @@ There is a **new signing key** to validate binaries starting with version 5.0.1.
 
 ## Rundeck Open Source Product Updates
 
-* [Fix: step labels unavailable for workflow strategy](https://github.com/rundeck/rundeck/pull/8797)
+* [Update Jgit version for CVE-2023-4759](https://github.com/rundeck/rundeck/pull/8809)
+* [fix: step labels unavailable for workflow strategy](https://github.com/rundeck/rundeck/pull/8797)
 * [Fix replace token for command plugin](https://github.com/rundeck/rundeck/pull/8791)
-* [Resolve replace token for inline script plugin before is sent to the runner](https://github.com/rundeck/rundeck/pull/8784)
+
 
 [Here is a link to the full list of public PRs](https://github.com/rundeck/rundeck/pulls?q=is%3Apr+milestone%3A5.0.1+is%3Aclosed)
 
