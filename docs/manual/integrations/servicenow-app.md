@@ -23,7 +23,7 @@ An active commerical license for a currently supported version is also required.
 
 ## Configuration Steps
 
-After the app has been installed in your ServiceNow&reg; instance there will be a new "Rundeck Automation" Module Group.
+After the app has been installed in your ServiceNow&reg; instance there will be a new "PagerDuty Automation" Module Group.
 
 > Note: The ServiceNow login account will need the `admin` role and `x_pd_process_autom.app_user` roles to configure these settings.
 
