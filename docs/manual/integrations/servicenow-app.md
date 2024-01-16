@@ -15,15 +15,17 @@ The application is currently supported on Tokyo, Utah and Vancouver.
 
 An active commerical license for a currently supported version is also required. ([See Release Calendar for current supported versions](/history/release-calendar.md))
 
+If you are integrating ServiceNow&reg; to Process Automation On-Prem, network ingress traffic must be allowed from the ServiceNow&reg; instance(s) to the PagerDuty Automation load balancer or server.
+
 ## Requesting the application
 
-1. [Visit the Rundeck Application ServiceNow Store page](https://store.servicenow.com/sn_appstore_store.do#!/store/application/1f1cf27adb252110e8744a6c139619f8/).
+1. [Visit the PagerDuty Application ServiceNow Store page](https://store.servicenow.com/sn_appstore_store.do#!/store/application/1f1cf27adb252110e8744a6c139619f8/).
 1. Login and click the **Request App** button.
 1. A message will be sent to our team for approval.  Once approved a Customer Success or Support tech will contact with more details.
 
 ## Configuration Steps
 
-After the app has been installed in your ServiceNow&reg; instance there will be a new "Rundeck Automation" Module Group.
+After the app has been installed in your ServiceNow&reg; instance there will be a new "PagerDuty Automation" Module Group.
 
 > Note: The ServiceNow login account will need the `admin` role and `x_pd_process_autom.app_user` roles to configure these settings.
 
@@ -32,7 +34,7 @@ After the app has been installed in your ServiceNow&reg; instance there will be 
         - Read all or specific projects
         - Read all or specific webhooks in the projects necessary
         - The application sending will need to be able to POST to the webhook endpoints as well.  There is not an ACL for this, but ensure that firewalls, etc. allow access.
-        - Example ACL: (Note: This assumes a group called `sn_app_integration` is created with the rights for the account holding the integraiton API key.)
+        - Example ACL: (Note: This assumes a group called `sn_app_integration` is created with the rights for the account holding the integration API key.)
         ```
         ---
         description: Allow servicenow to list projects

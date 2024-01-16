@@ -31,7 +31,7 @@ _Project Settings > Setup SCM_
 **Git url** and **Branch** are the common repository settings.
 - For `HTTP/HTTPS` urls use the form: `http[s]://user@host.xz[:port]/path/to/repo.git`
 :::tip
-Many SCM systems provide a "clone" url for http[s] in the form: `http[s]://host.xz/path/to/repo.git`, to make use of this in the default git plugin it is necessary to add it the scm user with an `@` sign in the url: `http[s]://scm-user@host.xz/path/to/repo.git`
+Many SCM systems provide a "clone" url for http[s] in the form: `http[s]://host.xz/path/to/repo.git`, to make use of this in the default git plugin it is necessary to add the scm user with an `@` sign in the url: `http[s]://scm-user@host.xz/path/to/repo.git`
 :::
 
 - For `SSH` urls use the form: `ssh://user@host.xz[:port]/path/to/repo.git`
@@ -62,9 +62,9 @@ Changing this value modifies the file definition and files need to be pushed aga
 - `${job.project}` - project name
 - `${job.id}` - job UUID
 - `${job.sourceId}` - Original Job UUID, this is a random UUID different from `${job.id}` (See above `original` UUID Behavior)
-- `${config.format}` - Serialization format `xml` or `yaml`.
+- `${config.format}` - Serialization format `xml`, `yaml` or `json` format.
 
-**Format** store files using `xml` or `yaml` format.
+**Format** store files using `xml`, `yaml` or `json` format.
 
 ### Authentication Configuration
 
@@ -132,7 +132,7 @@ Many SCM systems provide a "clone" url for ssh in the form: `git@host.xz:path/to
 - `${job.project}` - project name
 - `${job.id}` - job UUID
 - `${job.sourceId}` - Original Job UUID, this is a random UUID different from `${job.id}` (See above `archive` UUID Behavior)
-- `${config.format}` - Serialization format `xml` or `yaml`.
+- `${config.format}` - Serialization format `xml`, `yaml` or `json` format.
 
 ### Authentication Configuration
 
@@ -175,12 +175,12 @@ In another project, called _project-b_ on this example, use the same configurati
 On the first project, to import jobs from _project-a_ in the last example:
 Set **Import UUID Behavior** to `archive`.
 Set **File Path Template** to `project-a/${job.group}${job.name}-${job.sourceId}.${config.format}`.
-Set **Match a Regular Expression?** to `yes` and **Regular Expression** to `project-a/.*\.xml` or `project-a/.*\.yaml`.
+Set **Match a Regular Expression?** to `yes` and **Regular Expression** to `project-a/.*\.xml`, `project-a/.*\.yaml` or `project-a/.*\.json`.
 
 On the other project, to import _project-b_:
 Set **Import UUID Behavior** to `archive`.
 Set **File Path Template** to `project-b/${job.group}${job.name}-${job.sourceId}.${config.format}`.
-Set **Match a Regular Expression?** to `yes` and **Regular Expression** to `project-b/.*\.xml` or `project-b/.*\.yaml`.
+Set **Match a Regular Expression?** to `yes` and **Regular Expression** to `project-b/.*\.xml`, `project-b/.*\.yaml` or `project-a/.*\.json`.
 
 :::tip
 It is not recommended to use the same repository and branch when using export and import plugins on the same project.

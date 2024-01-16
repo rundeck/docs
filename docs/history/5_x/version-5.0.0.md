@@ -17,6 +17,10 @@ Release Date: December 14th, 2023
 - [Download the Releases](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
 
+::: danger Please use version 5.0.1
+We have found some issues with Log Filters and passing data to the Enterprise Runner.  Please use the [5.0.1 Release](version-5.0.1.md) when upgrading.
+:::
+
 ::: warning Upgrade Steps
 Be sure to follow the [Upgrade instructions](/upgrading/) when moving to version 5.0 or higher.  There are new minimum Java versions and other important information.
 :::
