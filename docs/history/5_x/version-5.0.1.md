@@ -1,7 +1,7 @@
 ---
 
 title: "5.0.1 Release Notes"
-date: 2024-01-09
+date: 2024-01-15
 image: /images/chevron-logo-red-on-white.png
 feed:
  enable: true
@@ -12,7 +12,7 @@ feed:
 # 5.0.1 Release Notes
 
 Name: <span style="color: coral"><span class="glyphicon glyphicon-bell"></span> "Denali coral bell"</span>
-Release Date: January 9th, 2024
+Release Date: January 15th, 2024
 
 - [Download the Releases](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
