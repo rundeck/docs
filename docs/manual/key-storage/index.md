@@ -14,9 +14,10 @@ Rundeck offers users the option to use a storage plugin to store key store data 
 
 Rundeck currently supports storage plugins for the following providers:
 
-- [Thycotic Secret Server](/manual/key-storage/storage-plugins/thycotic-storage.md)
-- [Vault Storage](/manual/key-storage/storage-plugins/vault.md)
+- [AWS Secrets Manager](/manual/key-storage/storage-plugins/aws-secrets-manager.md)
 - [Cyberark Storage](/manual/key-storage/storage-plugins/cyberark-storage.md)
+- [Thycotic Secret Server](/manual/key-storage/storage-plugins/thycotic-storage.md)
+- [Hashicorp Vault](/manual/key-storage/storage-plugins/vault.md)
 
 ### Configuring Storage Plugins
 
