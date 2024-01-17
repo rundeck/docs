@@ -5063,7 +5063,7 @@ Import a zip archive to the project. Requires `import` authorization for the pro
 
 Parameters:
 
-+ `asyncImport` (optional, boolean, `true/false`) ... If true, an asynchronous project import process will be started, more info [here](#asynchronous-import).
++ `asyncImport` (optional, boolean, `true/false`, default: `false`) ... If true, an asynchronous project import process will be started, more info [here](#asynchronous-import).
 + `jobUuidOption` (optional, string, `preserve/remove`) ... Option declaring how duplicate Job UUIDs should be handled. If `preserve` (default) then imported job UUIDs will not be modified, and may conflict with jobs in other projects. If `remove` then all job UUIDs will be removed before importing.
 + `importExecutions` (optional, boolean, `true/false`) ... If true, import all executions and logs from the archive (default). If false, do not import executions or logs.
 + `importConfig` (optional,boolean,`true/false`) ... If true, import the project configuration from the archive. If false, do not import the project configuration (default).
