@@ -5063,6 +5063,7 @@ Import a zip archive to the project. Requires `import` authorization for the pro
 
 Parameters:
 
++ `asyncImport` (optional, boolean, `true/false`, default: `false`) ... If true, an asynchronous project import process will be started, more info [here](#asynchronous-import).
 + `jobUuidOption` (optional, string, `preserve/remove`) ... Option declaring how duplicate Job UUIDs should be handled. If `preserve` (default) then imported job UUIDs will not be modified, and may conflict with jobs in other projects. If `remove` then all job UUIDs will be removed before importing.
 + `importExecutions` (optional, boolean, `true/false`) ... If true, import all executions and logs from the archive (default). If false, do not import executions or logs.
 + `importConfig` (optional,boolean,`true/false`) ... If true, import the project configuration from the archive. If false, do not import the project configuration (default).
@@ -5144,6 +5145,35 @@ Response will indicate whether the imported contents had any errors:
 ```
 
 * `other_errors` included since *API v35*
+
+### Asynchronous Import
+
+If the import is called with the parameter `asyncImport=true`, a different process will be started, in which we will obtain a response similar to this:
+
+`{"import_status":"successful","successful":true}`
+
+The response does not mean that the process has ended or that the import was carried out successfully, means that an asynchronous process has started.
+
+The status of the asynchronous process could be requested through another query to the API:
+
+- [Asyncronous Import Status](#asynchronous-import-status)
+
+### Asynchronous Import Status
+
+Users can check the status of an asynchronous project import process through the endpoint:
+
+- `/api/$apiVersion/project/$project/import/status`
+
+By doing so, users can receive a response similar to this:
+
+`{
+  "lastUpdate": "<update>",
+  "lastUpdated": "<timestamp>",
+  "errors": "<errors>"
+}
+`
+
+The endpoint can be requested an infinite number of times from the start of the process until it ends.
 
 ### Updating and Listing Resources for a Project
 
