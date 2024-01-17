@@ -114,8 +114,8 @@ rundeckPlugin(OptionValuesPlugin) {
 ## Script Plugin Type
 
 Options will be picked up from the script between the markers `==START_OPTIONS==` and `==END_OPTIONS==`.
-Echo your options in the format of `value:label`.
-The label will be the appear in the dropdown list, and the associated value will be used as the value passed
+Echo your options in the format of `label:value`.
+The label will appear in the dropdown list, and the associated value will be used as the value passed
 to the option.
 
 ```
@@ -124,6 +124,34 @@ to the option.
 echo "==START_OPTIONS=="
 echo "opt1:First Option"
 echo "opt2:Second Option"
+echo "==END_OPTIONS=="
+
+```
+
+### Automated values in Option Values plugins
+
+The subprocess spawn by Rundeck when populating the Option values does uses the following environment variables:
+
+```
+RD_PLUGIN_SCRIPTFILE=/my/rundeck/libext/cache/optionproviderplugin/script.sh
+RD_PLUGIN_FILE=/my/rundeck/libext/optionproviderplugin
+PWD=/my/rundeck
+RD_PLUGIN_BASE=/my/rundeck/libext/cache/optionproviderplugin
+SHLVL=1
+_=/usr/bin/env
+```
+
+In order to use additional environment variables and programs (like rd-cli) to provide automated values to the option, some scripting will be necessary within the custom plugin code to achieve this.
+
+**Example**
+
+```
+#!/usr/bin/env bash
+
+source ~/rd-cli.conf
+
+echo "==START_OPTIONS=="
+rd projects list -% "Random Project:%name" | shuf | head -1
 echo "==END_OPTIONS=="
 
 ```
