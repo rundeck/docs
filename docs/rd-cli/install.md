@@ -120,3 +120,7 @@ To execute, open a Powershell/CMD and run:
 ~~~{.sh}
 rd.bat
 ~~~
+
+:::tip To avoid conflicts with 'rd' Windows command to delete a directory, you should rename your 'rd.bat' file to something else, like 'rdcli.bat' :::
+
+
