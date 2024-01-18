@@ -18,17 +18,25 @@ If it is not running, start Postgres (with `service postgresql-<version> start` 
 
 Switch to 'postgres' user and use the 'psql' commandline tool to access the db:
 
-    $ su postgres
-    $ psql
+```bash
+$: su postgres
+$: psql
+```
 
 Once you have the 'postgres=#'' prompt, enter the following commands to create the rundeck database:
 
-    postgres=# create database rundeck;
+```shell
+postgres=# create database rundeck;
+```
 
 Now, create a user and grant privileges to connect to this DB.
 
-    postgres=# create user rundeckuser with password 'rundeckpassword';
-    postgres=# grant ALL privileges on database rundeck to rundeckuser;
+```shell
+postgres=# create user rundeckuser with password 'rundeckpassword';
+postgres=# grant ALL privileges on database rundeck to rundeckuser;
+postgres=# \c rundeck;
+rundeck=# grant ALL privileges on schema public to rundeckuser;
+```
 
 You can then exit the psql prompt.
 
