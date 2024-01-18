@@ -77,7 +77,7 @@ To use this secret and the SSH Key for connecting to nodes:
 ![SSHJ](/assets/img/sshj-node-executor.png)
 4. Click **Select...** next to the **SSH Key Storage Path** field:
 ![Key Selector](/assets/img/ssh-key-storage-selector.png)
-5. From within the popup, click on the folder that was configured for AWS Secrets Manager.  In the prior **Configuration** section, the example was **`aws-secrets`**:
+5. From within the popup, click on the folder that was configured for AWS Secrets Manager (in the prior section, the example used was **`aws-secrets`**):
 ![Secrets Folder](/assets/img/aws-secrets-folder-popup.png)
 6. Within this folder, select the SSH Key for the Node Executor.
 7. Click **Choose Selected Key**.
@@ -103,7 +103,7 @@ This example assumes that you already have an [**Enterprise Runner**](/administr
    * MS SQL: `com.microsoft.sqlserver.jdbc.SQLServerDriver`
    * Postgres: `org.postgresql.Driver` (also Aurora compatible)
    * Oracle: `oracle.jdbc.OracleDriver`
-9. In the **JDBC url** field, type in the connection string with the following format:<br> `jdbc:mysql://db-name.cj3ixhryi3fb.us-west-2.rds.amazonaws.com:3306`
+9. In the **JDBC url** field, type in the connection string with the following format:<br> `jdbc:mysql://db-name.cj3ixhryi3fb.us-west-2.rds.amazonaws.com:3306/db-name`
 10. Type in the **username** to connect to the database. 
 11. Click **Select...** next to the **Password from key storage** field.
 12. Navigate through the directories of the RDS keys in AWS Secrets manager.
