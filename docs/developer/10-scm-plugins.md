@@ -38,13 +38,13 @@ The properties for the SCM plugin can be added using the `System Configuration` 
 `rundeck.scmLoader.interval=value`
 
    - **Purpose**: This property determines the interval (in seconds) at which the SCM loader will check the SCM repository for changes and update the Rundeck project accordingly.
-   - **Default Value**: 20 seconds
+   - **Default Value**: 20 Seconds
    - **Usage**: You can modify this value to specify how often Rundeck should poll the SCM repository for updates. A shorter interval means more frequent checks for changes, while a longer interval reduces the frequency of checks. Choose an appropriate value based on your SCM repository's update frequency and performance considerations.
 
 `rundeck.scmLoader.init.delay=value`
 
    - **Purpose**: This property sets an initial delay (in seconds) before the SCM loader performs its first check after Rundeck has started.
-   - **Default Value**: 10 seconds
+   - **Default Value**: 0 Seconds
    - **Usage**: Similar to the first property, this one introduces a delay, but it affects the initial check for updates after Rundeck has started. You might use this delay to allow other components or services to complete their startup procedures before SCM synchronization begins.
 
 `rundeck.scmLoader.init.retry=value`

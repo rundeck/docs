@@ -1,7 +1,16 @@
-# Installing on CentOS or Red Hat Linux distributions
+# Installing on Red Hat, Amazon or Oracle Linux distributions
 
 
 ## Installing Rundeck
+
+:::warning
+Rundeck depends on **Java 11**. The **Java 14** packages will satisfy this dependency however Rundeck will not function properly with them. It is recommended to install the `openjdk-11-jre-headless` package manually.
+:::
+
+``` bash
+sudo yum install java-11-openjdk-devel
+```
+
 ::: tabs
 
 @tab Enterprise
@@ -26,7 +35,7 @@ baseurl=https://packages.rundeck.com/pagerduty/rundeckpro/rpm_any/rpm_any/$basea
 repo_gpgcheck=1
 gpgcheck=1
 enabled=1
-gpgkey=https://packages.rundeck.com/pagerduty/rundeckpro/gpgkey,https://docs.rundeck.com/keys/BUILD-GPG-KEY-20230105.key
+gpgkey=https://packages.rundeck.com/pagerduty/rundeckpro/gpgkey,https://docs.rundeck.com/keys/BUILD-GPG-KEY-{{ $gpgKeyDate }}.key
 sslverify=1
 sslcacert=/etc/pki/tls/certs/ca-bundle.crt
 metadata_expire=300
@@ -76,7 +85,7 @@ baseurl=https://packages.rundeck.com/pagerduty/rundeck/rpm_any/rpm_any/$basearch
 repo_gpgcheck=1
 gpgcheck=1
 enabled=1
-gpgkey=https://packages.rundeck.com/pagerduty/rundeck/gpgkey,https://docs.rundeck.com/keys/BUILD-GPG-KEY-20230105.key
+gpgkey=https://packages.rundeck.com/pagerduty/rundeck/gpgkey,https://docs.rundeck.com/keys/BUILD-GPG-KEY-{{ $gpgKeyDate }}.key
 sslverify=1
 sslcacert=/etc/pki/tls/certs/ca-bundle.crt
 metadata_expire=300

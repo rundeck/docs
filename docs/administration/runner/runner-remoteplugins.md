@@ -87,6 +87,7 @@ The following plugins are available in the next generation Runners:
 - Kubernetes-InlineScript-Step
 - SQLRunnerNodeStepPlugin
 - vmware-vm-powerops
+- script-file-command
 - filetransfer
 
 @tab Workflow Steps

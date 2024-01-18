@@ -152,3 +152,13 @@ In order to use the _Workflow_ step plugin, you will need to specify the Cluster
 
 The IAM Policies required to use this plugin are:
 * **`ecs:StopTask`**
+
+#### Assume Role ARN
+
+There are cases when it is beneficial to use a different IAM Role than the one used for the [AWS PluginGroup](/manual/plugins/aws-plugins-overview.html#setup) for the integration to retrieve the ECS Tasks and add them to the node inventory.
+For example, to target ECS Tasks from across multiple AWS Accounts, then a different IAM Role needs to be "assumed" in order to retrieve tasks from each AWS Account.
+
+The **Assume Role ARN** field can be populated with an IAM Role ARN that Runbook or Process Automation can assume _after_ an authentication method has been provided through the PluginGroup.
+
+By default, this plugin will use the `assume-role-arn` node-attribute from the ECS tasks added to the inventory through the [ECS Node Source](/manual/projects/resource-model-sources/ecs-fargate.html). 
+This can be overridden by placing an IAM role ARN into the field. 

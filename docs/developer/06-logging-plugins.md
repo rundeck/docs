@@ -135,6 +135,47 @@ Note that the Map keys will not start with `job.`, simply use the variable name,
 
 In addition, for ExecutionFileStorage plugins, another map entry named `filetype` will be specified, which indicates which type of file is being stored. You need to use this filetype as part of the identifier for storing or retrieving the file.
 
+### Importing executions
+When importing executions they not always come along with their log files since they can be present in a remote log storage, resulting on execution logs that might not follow the expected path, eg:  
+
+```
+# The server has the following path configured for the ExecutionFileStorage
+path = path/to/logs/${job.project}/${job.execid}.log
+
+# Given a project "P-example" and an execution with id "5" we would expect the log to be present in the path
+log-path = path/to/logs/P-example/5.log
+
+# But if the execution was imported from another server, the log file path could be
+log-path = other/path/to/logs/Other-Project/999.log
+```  
+
+The Logging plugins must be aware of this and can make use of `outputfilepath`,`isRemoteFilePath` and `execIdForLogStore` variables which are present on the execution context (`v > 4.17.0`) to solve these cases. The mark used to spot these cases is `isRemoteFilePath`, eg:  
+
+```
+# For both Cases, the path configured for the ExecutionFileStorage is
+path = path/to/logs/${job.project}/${job.execid}.log
+
+## Case 1 (Execution was created in the current server)
+### Given an execution with the following context
+execid == '5'
+project == 'my-project'
+outputfilepath == '/local/path/to/cached/file/5.rdlog'
+isRemoteFilePath == 'false'
+execIdForLogStore == '5'
+### To access this log file, the log plugin must use the configured path and expand it using the context variables of the given execution to find the log in:
+log-path = 'path/to/logs/my-project/5.log'
+
+## Case 2 (imported execution)
+## Given an execution with the following context
+execid == '6'
+project == 'my-project'
+outputfilepath == 'other/path/to/logs/Other-Project/999.log'
+isRemoteFilePath == 'true'
+execIdForLogStore == '999'
+### To access this log file, the log plugin can skip the configured path and use the outputfilepath directly (and the "execIdForLogStore" variable if it uses it in remote file metadata):
+log-path = 'other/path/to/logs/Other-Project/999.log' # If the log file is present in the same storage configured in the server and the server has access to the path, the log will be retrieved corretly
+```  
+
 ## StreamingLogWriter
 
 The `StreamingLogWriter` ([javadoc]({{{javaDocBase}}}/com/dtolabs/rundeck/core/logging/StreamingLogWriter.html)) system receives log events from an execution and writes them somewhere.

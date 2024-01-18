@@ -9,7 +9,7 @@ Effective user management allows administrators to assign appropriate roles and 
 
 ### What is a [User](/learning/tutorial/users.html#_4-getting-started-users)?
 
-A Rundeck user is an individual or entity who interacts with ~~the ~~Runeck to perform certain tasks or access specific features. Users are identified and distinguished from each other through unique credentials, such as a local username and password, or other authentication methods like the OKTA SSO authentication method.
+A Rundeck user is an individual or entity who interacts with ~~the ~~ Rundeck to perform certain tasks or access specific features. Users are identified and distinguished from each other through unique credentials, such as a local username and password, or other authentication methods like the OKTA SSO authentication method.
 
 ### What is a [Role](/manual/10-user.html#user-groups)?
 

@@ -1,10 +1,10 @@
 # General Upgrade Guide
 
-## Preparing to Upgrade your Server
+## Preparing to Upgrade
 
-:::warning
-Before performing an upgrade, it is highly recommend to stop all cluster members and do the following steps, one cluster member, at a time.
-:::
+Prior to upgrading it is important to read the specific version upgrade steps covered in this section.  Due to the complex nature of the solution some versions require specific steps to ensure a successful upgrade.  Any version speicific steps will be covered in those pages.  The details below cover the overall process for upgrading to any version.
+
+## Preparing to Upgrade your Server
 
 - Download the latest Rundeck version .war from [Process Automation Downloads](https://www.rundeck.com/enterprise-downloads) _(requires license)_ or [Rundeck OSS Downloads](https://downloads.rundeck.com)
 
@@ -139,36 +139,3 @@ rundeck.server.uuid = XXXXXXXXXXXXXXX
 $ yum upgrade rundeck
 ```
 
-### Tomcat War deployment
-
-- Stop Tomcat
-
-- In case you have customs plugins in `libext` folder, backup them. For example, you can move the full `libext`:
-```sh
-mv $rdeck.base/libext $rdeck.base/libext.3
-```
-
-- Remove old version deployment and war file:
-```sh
-rm $tomcat.base/webapps/rundeck $tomcat.base/webapps/rundeck.war
-```
-
-- Remove previous "source" content:
-```sh
-rm -rf $rdeck.base/server/lib/rundeck-core* $rdeck.base/var/.install_complete-missing-ver
-```
-
-- Place the new Rundeck version as the old war file:
-```sh
-mv rundeck-{{$rundeckVersionFull}}.war $tomcat.base/webapps/rundeck.war
-```
-
-- Start Tomcat
-
-- Copy the "custom" plugins back to `$rdeck.base/libext` folder.
-
-#### NOTES FOR TOMCAT:
-
-- Due to changes in authentication, `tomcat-users.xml` and other Tomcat's authentication modules no longer work, you should configure users as described in [Authenticating Users](/administration/security/authentication.md#authenticating-users).
-- If you do not have `-Drundeck.config.location` defined or configured in `$tomcat.base/bin/setenv.sh` file (`tomcat.base\bin\setenv.bat` for Windows), Rundeck will read its config file from this location: `$rdeck.base/server/config/rundeck-config.properties`.
-- You **must** define the `server.servlet.context-path` (`server.contextPath` for versions prior to 3.3) value in `rundeck-config.properties` to properly tell Rundeck about the context path used by tomcat. See [Installation on Tomcat](/administration/install/tomcat.md).

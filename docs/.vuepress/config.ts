@@ -18,19 +18,21 @@ import sidebarUserGuide from './sidebar-menus/user-guide'
 import sidebarCommandLineTools from './sidebar-menus/command-line-tools'
 import sidebarDeveloper from './sidebar-menus/plugin-development'
 import sidebarLearning from './sidebar-menus/learning'
-import sidebarHistory from './sidebar-menus/history';
-import sidebarAbout from './sidebar-menus/about';
+import sidebarHistory from './sidebar-menus/history'
+import sidebarAbout from './sidebar-menus/about'
+import apiMenu from './sidebar-menus/api'
+
 
 import markdownItInclude from 'markdown-it-include'
 import markdownItDeflist from 'markdown-it-deflist'
 import markdownItImplicitFigures from 'markdown-it-implicit-figures'
 
 // navbars
-import navbarAbout from './navbar-menus/about';
-import navbarUserGuide from './navbar-menus/user-guide';
-import navbarLearning from './navbar-menus/learning';
-import navbarAdmin from './navbar-menus/administration';
-import navbarDevelopment from './navbar-menus/development';
+import navbarAbout from './navbar-menus/about'
+import navbarUserGuide from './navbar-menus/user-guide'
+import navbarLearning from './navbar-menus/learning'
+import navbarAdmin from './navbar-menus/administration'
+import navbarDevelopment from './navbar-menus/development'
 import markdownItReplaceVars from './markdown-it-replace-vars'
 
 //Get setup variables
@@ -163,12 +165,7 @@ export default defineUserConfig({
        '/learning/': sidebarLearning,
        '/developer/': sidebarDeveloper,
        '/history/': sidebarHistory,
-       '/api/': [
-        '/api/index.md',
-        '/api/rundeck-api-versions.md',
-        '/api/api_basics.md',
-        '/api/api-spec.md'
-      ],
+       '/api/': apiMenu,
       '/': [
         ''
       ]
@@ -205,7 +202,6 @@ export default defineUserConfig({
             '/manual/command-line-tools/rd-acl.html' : '/rd-cli/rd-ext-acl.html',
             '/history/cves/' : '/history/CVEs/',
             '/introduction/introduction.html' : '/about/introduction.html',
-            '/introduction/getting-help.html' : '/about/getting-help.html',
             '/administration/architecture-and-deployment/system-architecture.html' : '/about/enterprise/index.html',
             '/administration/architecture-and-deployment/aws.html' : '/administration/install/aws.html',
             '/administration/projects/' : '/manual/projects/',
@@ -223,18 +219,15 @@ export default defineUserConfig({
             '/learning/getting-started/rba/rba-welcome-overview.html' : '/learning/getting-started/rba/index.html',
             '/learning/getting-started/jobs/overview.html' : '/learning/getting-started/jobs/index.html',
             '/manual/key-storage/key-storage.html' : '/manual/key-storage/index.html',
-            '/api/rundeck-api.html' : '/api/index.html'
+            '/api/rundeck-api.html' : '/api/index.html',
+            '/introduction/getting-help.html/manual/job-options.html' : '/manual/job-options.html#option-model-provider',
+            '/introduction/getting-help.html/administration/maintenance/tuning-rundeck.html' : '/administration/maintenance/tuning-rundeck.html#quartz-job-threadcount'
         }
       }),
     openGraphPlugin({
         host: 'https://docs.rundeck.com',
         twitterSite: 'rundeck',
       }),
-    // We can revisit this when GT4 tag is ready.
-    // googleAnalyticsPlugin({
-    //   id: 'G-LYC4H41P9E',
-    //   debug: true
-    // }),
     containerPlugin(
         {
             type: 'deprecated',

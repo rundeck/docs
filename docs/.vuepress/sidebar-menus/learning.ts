@@ -1,3 +1,5 @@
+import getChildren from '../getChildren'
+
 export default [{
   text: 'Learning',
   collapsible: false,
@@ -75,6 +77,14 @@ export default [{
         { link: '/learning/howto/index.md', text: 'Overview' },
         { link: '/learning/howto/welcome-project-starter.md', text: 'Welcome Projects' },
         {
+          text: 'ACL Recipes',
+          collapsible: true,
+          link: '/learning/howto/acls/',
+          children: [
+            ...getChildren('docs/learning/', 'howto/acls')
+          ]
+        },
+        {
           text: 'Administration',
           collapsible: true,
           children: [
@@ -83,6 +93,7 @@ export default [{
             '/learning/howto/install-centos.md',
             '/learning/howto/migrate-to-mysql.md',
             '/learning/howto/use-terraform-provider.md',
+            '/learning/howto/terraform-jobs.md',
             '/learning/howto/learn-rd-cli.md',
             '/learning/howto/elk-integration.md',
             '/learning/howto/acl_basic_examples.md',
@@ -93,7 +104,9 @@ export default [{
             '/learning/howto/egress-proxy.md',
             '/learning/howto/how2-terra-rd-aws.md',
             '/learning/howto/how2-terra-rd-eks.md',
-            '/learning/howto/troubleshooting.md'
+            '/learning/howto/troubleshooting.md',
+            '/learning/howto/customize-gui.md',
+            '/learning/howto/runner-paop-selfsigned.md'
           ]
         },
         {
@@ -136,7 +149,9 @@ export default [{
             '/learning/howto/howtojenkins.md',
             '/learning/howto/how2kube.md',
             '/learning/howto/actions-with-rba.md',
-            '/learning/howto/events-with-rba.md'
+            '/learning/howto/events-with-rba.md',
+            '/learning/howto/email-gmail.md',
+            '/learning/howto/email-outlook.md'
           ]
         },
         {

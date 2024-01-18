@@ -137,11 +137,15 @@ the container.
 
 `RUNDECK_DATABASE_URL`
 
-Defaults to `jdbc:h2:file:/home/rundeck/server/data/grailsdb;MVCC=true`. The default configuration utilizes an h2 file for data storage.
+Defaults to `jdbc:h2:file:/home/rundeck/server/data/grailsdb;DB_CLOSE_ON_EXIT=FALSE`. The default configuration utilizes an h2 file for data storage.
 
 `RUNDECK_DATABASE_MIGRATE_ONSTART`
 
 This will configure the setting for `grails.plugin.databasemigration.updateOnStart` used in [Upgrading to the 3.4](/upgrading/upgrading-to-rundeck-3.4.md). Defaults to `true`.
+
+`RUNDECK_SERVER_SESSION_TIMEOUT=86400`
+
+This will increase the session timeout to 24h, enabling users to stay logged in longer.
 
 ### Database
 
