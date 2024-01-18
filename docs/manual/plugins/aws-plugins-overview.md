@@ -8,38 +8,39 @@ By integrating Process Automation with AWS, users can provide a centralized, sel
 _Click to expand to see the full list of Process Automation plugins for AWS:_
 <details><summary> <font size="5">Process Automation AWS Plugins</font> </summary>
 
-|AWS Service Type|Plugin | Plugin Type|
-|:---------------------------------------------------------:|---------------------------------------------------------|:---------------------------------------------------------:|
-|**Athena**|[Query Athena Table](/manual/workflow-steps/amazon-athena.md)|Job Step|
-|**CloudWatch**|[Query CloudWatch logs On Demand](/manual/workflow-steps/aws-cloudwatch.md)|Job Step|
-|**CloudWatch**|[Execute Saved CloudWatch Logs Query](/manual/workflow-steps/aws-cloudwatch.md)|Job Step|
-|**CloudWatch**|[Create CloudWatch Log Stream](/manual/workflow-steps/aws.md)|Job Step|
-|**EC2**|[Start EC2](/manual/workflow-steps/aws.md)|Job Step|
-|**EC2**|[Restart EC2](/manual/node-steps/aws.md)|Job Step|
-|**EC2**|[Delete EC2](/manual/node-steps/aws.md)|Job Step|
-|**EC2**|[Create EC2 from Snapshot](/manual/workflow-steps/aws.md)|Job Step|
-|**EC2**|[Update EC2 Autoscale Groups](/manual/workflow-steps/aws.md)|Job Step|
-|**EC2**|[EC2 Node Source](/manual/projects/resource-model-sources/aws.md)|Node Source|
-|**ECS**|[ECS & Fargate Node Source](/manual/projects/resource-model-sources/ecs-fargate.md)|Node Source|
-|**ECS**|[ECS & Fargate Node Executor](/manual/projects/node-execution/aws-ecs.md)|Node Executor|
-|**ECS**|[Execute Command](/manual/workflow-steps/aws-ecs-fargate.md)|Job Step|
-|**ECS**|[Stopped Task Errors](/manual/workflow-steps/aws-ecs-fargate.md)|Job Step|
-|**ECS**|[Stop Task](/manual/workflow-steps/aws-ecs-fargate.md)|Job Step|
-|**ELB**|[Unhealthy Target Group Instances](/manual/workflow-steps/aws-elb-workflow-plugin.md)|Job Step|
-|**Lambda**|[Execute Lambda Function](/manual/workflow-steps/aws-lambda.md#execute-lambda-function)|Job Step|
-|**Lambda**|[Execute Custom-Code Lambda Function](/manual/workflow-steps/aws-lambda.md#lambda-custom-code-execution)|Job Step|
-|**RDS**|[Check Instance Status](/manual/workflow-steps/aws-rds.md)|Job Step|
-|**S3**|[Copy Files from Local to S3 or S3 to local](https://github.com/rundeck-plugins/aws-s3-steps.md)|Job Step|
-|**S3**|[List S3 objects](https://github.com/rundeck-plugins/aws-s3-steps.md)|Job Step|
-|**S3**|[Create an S3 Bucket](https://github.com/rundeck-plugins/aws-s3-steps.md)|Job Step|
-|**S3**|[Move Files from Local to S3 or S3 to local](https://github.com/rundeck-plugins/aws-s3-steps.md)|Job Step|
-|**S3**|[Delete an S3 Bucket](https://github.com/rundeck-plugins/aws-s3-steps.md)|Job Step|
-|**S3**|[Sync Directories and S3 Prefixes](https://github.com/rundeck-plugins/aws-s3-steps.md)|Job Step|
-|**S3**|[S3 Log Storage](/administration/cluster/logstore/s3.md)|Log Storage|
-|**Systems Manager (SSM)**|[SSM Node Executor](/manual/projects/node-execution/aws-ssm.md)|Node Executor|
-|**Systems Manager (SSM)**|[SSM File Copier & Scripts](/manual/projects/node-execution/aws-ssm.md)|File Copier|
-|**VPC**|[Configure Flow Logs](/manual/workflow-steps/aws.md)|Job Step|
-|**VPC**|[Enable Network Peering](/manual/workflow-steps/aws.md)|Job Step|
+|     AWS Service Type      |Plugin | Plugin Type|
+|:-------------------------:|---------------------------------------------------------|:---------------------------------------------------------:|
+|        **Athena**         |[Query Athena Table](/manual/workflow-steps/amazon-athena.md)|Job Step|
+|      **CloudWatch**       |[Query CloudWatch logs On Demand](/manual/workflow-steps/aws-cloudwatch.md)|Job Step|
+|      **CloudWatch**       |[Execute Saved CloudWatch Logs Query](/manual/workflow-steps/aws-cloudwatch.md)|Job Step|
+|      **CloudWatch**       |[Create CloudWatch Log Stream](/manual/workflow-steps/aws.md)|Job Step|
+|          **EC2**          |[Start EC2](/manual/workflow-steps/aws.md)|Job Step|
+|          **EC2**          |[Restart EC2](/manual/node-steps/aws.md)|Job Step|
+|          **EC2**          |[Delete EC2](/manual/node-steps/aws.md)|Job Step|
+|          **EC2**          |[Create EC2 from Snapshot](/manual/workflow-steps/aws.md)|Job Step|
+|          **EC2**          |[Update EC2 Autoscale Groups](/manual/workflow-steps/aws.md)|Job Step|
+|          **EC2**          |[EC2 Node Source](/manual/projects/resource-model-sources/aws.md)|Node Source|
+|          **ECS**          |[ECS & Fargate Node Source](/manual/projects/resource-model-sources/ecs-fargate.md)|Node Source|
+|          **ECS**          |[ECS & Fargate Node Executor](/manual/projects/node-execution/aws-ecs.md)|Node Executor|
+|          **ECS**          |[Execute Command](/manual/workflow-steps/aws-ecs-fargate.md)|Job Step|
+|          **ECS**          |[Stopped Task Errors](/manual/workflow-steps/aws-ecs-fargate.md)|Job Step|
+|          **ECS**          |[Stop Task](/manual/workflow-steps/aws-ecs-fargate.md)|Job Step|
+|          **ELB**          |[Unhealthy Target Group Instances](/manual/workflow-steps/aws-elb-workflow-plugin.md)|Job Step|
+|        **Lambda**         |[Execute Lambda Function](/manual/workflow-steps/aws-lambda.md#execute-lambda-function)|Job Step|
+|        **Lambda**         |[Execute Custom-Code Lambda Function](/manual/workflow-steps/aws-lambda.md#lambda-custom-code-execution)|Job Step|
+|          **RDS**          |[Check Instance Status](/manual/workflow-steps/aws-rds.md)|Job Step|
+|          **S3**           |[Copy Files from Local to S3 or S3 to local](https://github.com/rundeck-plugins/aws-s3-steps.md)|Job Step|
+|          **S3**           |[List S3 objects](https://github.com/rundeck-plugins/aws-s3-steps.md)|Job Step|
+|          **S3**           |[Create an S3 Bucket](https://github.com/rundeck-plugins/aws-s3-steps.md)|Job Step|
+|          **S3**           |[Move Files from Local to S3 or S3 to local](https://github.com/rundeck-plugins/aws-s3-steps.md)|Job Step|
+|          **S3**           |[Delete an S3 Bucket](https://github.com/rundeck-plugins/aws-s3-steps.md)|Job Step|
+|          **S3**           |[Sync Directories and S3 Prefixes](https://github.com/rundeck-plugins/aws-s3-steps.md)|Job Step|
+|          **S3**           |[S3 Log Storage](/administration/cluster/logstore/s3.md)|Log Storage|
+|    **Secrets Manager**    |[AWS Secrets Manager](/manual/key-storage/storage-plugins/aws-secrets-manager.md)|Key Storage|
+| **Systems Manager (SSM)** |[SSM Node Executor](/manual/projects/node-execution/aws-ssm.md)|Node Executor|
+| **Systems Manager (SSM)** |[SSM File Copier & Scripts](/manual/projects/node-execution/aws-ssm.md)|File Copier|
+|          **VPC**          |[Configure Flow Logs](/manual/workflow-steps/aws.md)|Job Step|
+|          **VPC**          |[Enable Network Peering](/manual/workflow-steps/aws.md)|Job Step|
 </details>
 
 ## Setup
