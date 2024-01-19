@@ -30,6 +30,11 @@ java version "11.0.7" 2020-04-14 LTS
 Java(TM) SE Runtime Environment 18.9 (build 11.0.7+8-LTS)
 Java HotSpot(TM) 64-Bit Server VM 18.9 (build 11.0.7+8-LTS, mixed mode)
 ```
+
+::: warning Java Versions
+At this time the 5.x series ONLY supports Java 11.  Java 17+ is not currently validated or tested so we recommend using version 11.
+:::
+
 ## Network access
 
 When the server starts, it binds to several TCP ports by default:
