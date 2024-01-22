@@ -2,6 +2,7 @@
 
 Cyberark is a leader in Privileged Access Management solutions providing cloud ready, easy to use security solutions across the complete privileged access surface.  A centralized password management system provides visibility and control to protect privileges from attack.  Cyberark's solution is built for the Enterprise to enforce strong password business policies and prevent data breaches.
 
+## Prerequisites
 This storage plugin requires having the JRE installed, as well as the java keytool. In order to provide the correct authentication to the plugin, store the RootCA certificate, the client certificate and the client private key in key stores and specify them in `rundeck-config.properties`. For more information on creating/using a keystore, see [Java Keystore](https://www.ibm.com/docs/en/cognos-tm1/10.2.2?topic=ictocyoiatwas-add-certificates-jre-keystore). 
 
 **Below is an example of how to import a certificate using the command-line:**
@@ -14,8 +15,8 @@ keytool -import -file "C:\Path\to\certificateFile.crt" -keystore "C:\Path\to\Key
 keytool -importkeystore -deststorepass [password] -destkeystore [new-keystore.jks] -srckeystore [keystore-filename.p12] -srcstoretype PKCS12```
 ```
 
-:::warning
-If a full path is not specified for the new keystore, it will create the keystore in the directory the command was run from. Take note of all the keystore names and passwords as they are created, they will be needed to configure Rundeck. Once the certificates and private key are in keystore(s), add them to Rundeck using `rundeck-config.properties` or Rundeck Config Management, as shown below:
+:::warning Keystore Paths
+If a full path is not specified for the new keystore, it will create the keystore in the directory the command was run from. Take note of all the keystore names and passwords as they are created, they will be needed to configure Runbook Automation. Once the certificates and private key are in keystore(s), add them to Runbook Automation using `rundeck-config.properties` or in Key Storage Config, as shown below.
 :::
 
 ## Operating Modes
@@ -42,14 +43,55 @@ This mode has a limitation that it is unable to list the keys in safes.  When wr
 `path/to` is the folder path within the safe where the key is stored.
 `secret.pem` is the unique name of the key in that particular folder.
 
+## Configuration
+
 ::: tabs
-@tab Example Enterprise Config
+@tab Key Storage Config (GUI)
 
-Below is an example legacy configuration, which can be configured using the *System Configuration* module. Add each setting as a configuration entry.
+Use the following steps to configure the CyberArk plugin for key storage:
 
-![Cyberark Configuration](/assets/img/keystorage-cyberark-config1.png)
+1. Navigate to the System Menu (gear icon in the upper right).
+2. Click on **Key Storage**:
+   ![Key Storage Menu](/assets/img/key-storage-menu.png)
+3. Navigate to the **Configure** tab.
+4. Click on **Add Storage Plugin +**.
+5. Click on **CyberArk Storage**
 
-![Cyberark Configuration - continued](/assets/img/keystorage-cyberark-config2.png)
+Fill in the fields for the integration: 
+
+* **Key Storage Path**: The path in the Runbook Automation storage tree to apply the plugin. If `keys` is specified, then all keys and directories added to Key Storage will also be added to CyberArk.
+* **Remove Path Prefix**: By default, the storage plugin will be invoked using the full path that is requested. If set to true, the path used when invoking the storage plugin would not include the prefix. It is **recommended to set this to true**. If set to false, keys will not be displayed unless an existing directory is specified in Runbook Automation.
+* **username**: Username for an account with access to the secrets that will be used in Runbook Automation.
+* **password**: The password for a user in the account where the secrets are stored.
+* **mode**: The mode for interacting with CyberArk. See above for descriptions of the various modes.
+* **nameOfCCPWebService**: If using `ccp` mode this can be used to specify the name of the CCP Web Service.  Default (if setting is not specified) is `AIMWebService`.
+* **base-URL**: The base URL for the CyberArk account where the secrets should be saved. Use the format: `https://[urltoyourserver]:[port]`.
+* **app-id**: The app ID for the application with the safes to use secrets from.
+* **platform-id**: Platform ID to use when creating a new secret from Runbook Automation's key storage. I.e. WinServerLocal
+* **create-username**: Default user name applied when creating a new password entry in CyberArk.
+* **clientKeystore**: The path to the key store that contains the client certificate. (Must be of type `JKS`)
+* **clientKeystorePassword**: The password for the key store that contains the client certificate.
+* **rootCAKeystore**: The path to the key store containing the RootCA certificate. (Must be of type `JKS`)
+* **rootCAKeystorePassword**: The password for the key store containing the RootCA certificate.
+* **privateKeyStore**: The path to the key store containing the user's private key. (Must be of type `JKS`)
+* **privateKeystorePassword**: The password for the key store containing the user's private key.
+* **privateKeyPassword**: Password to access the private key.
+* **rootCAName**: The name that the Root CA Certificate is saved under in the key store.
+* **clientCertName**: The name that the Client Certificate is saved under in the key store.
+* **privateKeyName**: Alias for the private key in the keystore.
+* **credentialUrl**: CyberArk Credential Provider URL for REST API mode.
+* **credentialAppId**: CyberArk Credential Provider AppId for REST API mode.
+* **credentialSafe**: CyberArk Credential Provider Safe for REST API mode.
+* **credentialPath**: CyberArk Credential Provider Safe for REST API mode.
+
+Below is an example configuration:
+
+![CyberArk Full Config](/assets/img/cyberark-config-full.png)<br>
+
+[//]: # (![Cyberark Configuration]&#40;/assets/img/keystorage-cyberark-config1.png&#41;)
+
+[//]: # ()
+[//]: # (![Cyberark Configuration - continued]&#40;/assets/img/keystorage-cyberark-config2.png&#41;)
 
 @tab rundeck-config.properties
 Alternatively the settings can be placed in `rundeck-config.properties` (Example shows Legacy Mode)
@@ -82,70 +124,3 @@ rundeck.storage.provider.1.config.nameOfCCPWebService=NameOfWebService
 ```
 
 :::
-
-
-### Setting Descriptions
-All of the following are required.
-
-- **type**
-: This specifies the storage plugin to use. For Cyberark, the value should always be `cyberark-storage`.
-
-- **mode**
-: There are two modes of operation for the Cyberark plugin. `legacy` is the default mode.  `ccp` uses the [Central Credential Provider](https://docs.cyberark.com/AAM-CP/13.0/en/Content/CCP/The-Central%20-Credential-Provider.htm) (CCP) web service configuration. (see above for details on `ccp` mode)
-
-- **path**
-: The path in Rundeck storage tree to apply the plugin. If just `keys` is specified, then all keys added to Rundeck Key Storage will also be added to Cyberark.
-
-- **removePathPrefix**
-: By default, the storage plugin will be invoked using the full path that is requested. If set to true, the path used when invoking the storage plugin would not include the prefix. It is recommended to set it to true. If set to false, keys will not be displayed unless a directory is specified in Rundeck.
-
-- **baseURL**
-: The base URL for the cyberark account where the secrets should be saved. Using the format: `https://[urltoyourserver]:[port]`.
-
-- **username**
-: Username for an account with access to the secrets that will be used in Rundeck.
-
-- **password**
-: The password for a user in the account where the secrets should be stored.
-
-- **appId**
-: The app ID for the application with the safes to use secrets from.
-
-- **platformId**
-: Platform ID to use when creating a new secret from Rundeck's key storage. I.e. WinServerLocal
-
-- **createUsername**
-: Default user name applied when creating a new password entry in Cyberark.
-
-- **clientKeystore**
-: The path to the key store that contains the client certificate. (Must be of type `JKS`)
-
-- **clientKeystorePassword**
-: The password for the key store that contains the client certificate.
-
-- **rootCAKeystore**
-: The path to the key store containing the RootCA certificate. (Must be of type `JKS`)
-
-- **rootCAKeystorePassword**
-: The password for the key store containing the RootCA certificate.
-
-- **privateKeyKeystore**
-: The path to the key store containing the user's private key. (Must be of type `JKS`)
-
-- **privateKeyKeystorePassword**
-: The password for the key store containing the user's private key.
-
-- **privateKeyAlias**
-: The name the private key is saved under in the key store.
-
-- **privateKeyPassword**
-: Password to access the private key.
-
-- **rootCAName**
-: The name that the Root CA Certificate is saved under in the key store.
-
-- **clientCertName**
-: The name that the Client Certificate is saved under in the key store.
-
-- **nameOfCCPWebService**
-: If using `ccp` mode this can be used to specify the name of the CCP Web Service.  Default (if setting is not specified) is `AIMWebService`.
