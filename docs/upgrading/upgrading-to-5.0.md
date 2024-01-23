@@ -13,6 +13,42 @@ Before upgrading to version 5.0 please ensure that your system is using Java 11.
 As part of the upgrade to 5.0/5.0.1 it is important to upgrade any Enterprise Runner instances after immediately upgrading the servers.
 :::
 
+To have the runner updated, you must download the latest version. There are the following ways to download the runner:
+
+**By Rundeck UI:**
+
+1. Access the Runner Management page from the system menu
+
+![Runner Management Menu](/assets/img/runner_management_menu.png)
+
+2. Open action menu for the runner
+
+![Runner Action Menu](/assets/img/runner_download_action.png)
+
+3. Regenerate the credentials
+
+![Runner Regenerate Credentials](/assets/img/runner_regenerate_cred.png)
+
+4. And Download the Runner package
+
+![Runner Download](/assets/img/runner_download_package.png)
+
+**Via API:** 
+The Runner can be downloaded from `https://[URL]/api/{api_version}/runnerManagement/download/{token}`
+
+**Using docker container:**
+It can be updated by using the new docker image `rundeckpro/runner:5.0.1-20240115`
+
+Once you have downloaded the latest version, follow these steps to update the Runner instance:
+
+1. stop the runner
+2. replace the installed version with the newest version
+3. restart the runner.
+
+The Runner version can be checked in the Runner Management page by accessing the runner details.
+
+![Runner Details](/assets/img/runner_details.png)
+
 ## H2 Database Upgrade
 
 :::tip
