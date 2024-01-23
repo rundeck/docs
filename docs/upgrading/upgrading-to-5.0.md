@@ -1,10 +1,17 @@
-# Rundeck 5.0.0 Upgrade Notes
+# Rundeck 5.0 Upgrade Notes
 
 These notes cover any detailed steps necessary when upgrading from a previous version of Rundeck or Process Automation to the 5.0.0 version.
 
 ## Java 11 Minimum
 
 Before upgrading to version 5.0 please ensure that your system is using Java 11.  The Rundeck 4.x series does support Java 11 so the upgrade can be done in place if your current installation is already on that version.
+
+
+## Enterprise Runner Upgrade
+
+::: warning Upgrade Runners
+As part of the upgrade to 5.0/5.0.1 it is important to upgrade any Enterprise Runner instances after immediately upgrading the servers.
+:::
 
 ## H2 Database Upgrade
 
