@@ -161,7 +161,7 @@ rundeck.storage.provider.1.config.nameOfCCPWebService=NameOfWebService
 
 The [Enterprise Runner](/administration/runner/runner-intro.html) can be used to integrate with CyberArk. This is useful when CyberArk is hosted in an environment that is not directly accessible from Runbook Automation - whether self-hosted or Cloud.
 
-The following provides examples of how to configure the Enterprise Runner to connect to Secret Server:
+The following provides examples of how to configure the Enterprise Runner to connect to CyberArk:
 
 ::: tabs
 @tab YAML Config File
