@@ -13,7 +13,7 @@ Before upgrading to version 5.0 please ensure that your system is using Java 11.
 As part of the upgrade to 5.0/5.0.1 it is important to upgrade any Enterprise Runner instances after immediately upgrading the servers.
 :::
 
-To have the runner updated, you must download the latest version. There are the following ways to download the runner:
+Update the Enterprise Runner by downloading the latest version. There are the following ways to download the runner:
 
 **By Rundeck UI:**
 
@@ -37,13 +37,13 @@ To have the runner updated, you must download the latest version. There are the 
 The Runner can be downloaded from `https://[URL]/api/{api_version}/runnerManagement/download/{token}`
 
 **Using docker container:**
-It can be updated by using the new docker image `rundeckpro/runner:5.0.1-20240115`
+It can be updated by using the newest docker image.  (example `rundeckpro/runner:5.0.1-20240115`)
 
 Once you have downloaded the latest version, follow these steps to update the Runner instance:
 
-1. stop the runner
-2. replace the installed version with the newest version
-3. restart the runner.
+1. Stop the runner
+2. Replace the installed version with the newest version
+3. Restart the runner.
 
 The Runner version can be checked in the Runner Management page by accessing the runner details.
 
