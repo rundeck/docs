@@ -1,10 +1,53 @@
-# Rundeck 5.0.0 Upgrade Notes
+# Rundeck 5.0 Upgrade Notes
 
 These notes cover any detailed steps necessary when upgrading from a previous version of Rundeck or Process Automation to the 5.0.0 version.
 
 ## Java 11 Minimum
 
 Before upgrading to version 5.0 please ensure that your system is using Java 11.  The Rundeck 4.x series does support Java 11 so the upgrade can be done in place if your current installation is already on that version.
+
+
+## Enterprise Runner Upgrade
+
+::: warning Upgrade Runners
+As part of the upgrade to 5.0/5.0.1 it is important to upgrade any Enterprise Runner instances immediately after upgrading the servers.
+:::
+
+Update the Enterprise Runner by downloading the latest version. Here are the following ways to download the runner:
+
+### Rundeck UI:
+
+1. Access the Runner Management page from the system menu
+
+![Runner Management Menu](/assets/img/runner_management_menu.png)
+
+2. Open action menu for the runner
+
+![Runner Action Menu](/assets/img/runner_download_action.png)
+
+3. Regenerate the credentials
+
+![Runner Regenerate Credentials](/assets/img/runner_regenerate_cred.png)
+
+4. And Download the Runner package
+
+![Runner Download](/assets/img/runner_download_package.png)
+
+### Via API: 
+The Runner can be downloaded from `https://[URL]/api/{api_version}/runnerManagement/download/{token}`
+
+### Using Docker Container:
+It can be updated by using the newest docker image.  (example `rundeckpro/runner:5.0.1-20240115`)
+
+Once you have downloaded the latest version, follow these steps to update the Runner instance:
+
+1. Stop the runner
+2. Replace the installed version with the newest version
+3. Restart the runner.
+
+The Runner version can be checked in the Runner Management page by accessing the runner details.
+
+![Runner Details](/assets/img/runner_details.png)
 
 ## H2 Database Upgrade
 
