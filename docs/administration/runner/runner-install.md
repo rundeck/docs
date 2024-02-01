@@ -58,7 +58,10 @@ A Runner docker image is available from [Dockerhub](https://hub.docker.com/r/run
 
 	docker pull rundeckpro/runner
 
-You can use the tag `rundeckpro/runner:$VERSION` for a specific version.
+You can use the tag `rundeckpro/runner:$VERSION` for a specific version, where `$VERSION` is set with:
+```
+export $VERSION=5.1.0
+```
 
 You can use either Environment Variables, or a Volume Mount to specify the Connection parameters for the Runner.  
 
