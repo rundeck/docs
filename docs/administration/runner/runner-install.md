@@ -58,7 +58,10 @@ A Runner docker image is available from [Dockerhub](https://hub.docker.com/r/run
 
 	docker pull rundeckpro/runner
 
-You can use the tag `rundeckpro/runner:latest` for the latest version, or `rundeckpro/runner:$VERSION` for a specific version.
+You can use the tag `rundeckpro/runner:$VERSION` for a specific version, where `$VERSION` is set with:
+```
+export $VERSION=5.1.0
+```
 
 You can use either Environment Variables, or a Volume Mount to specify the Connection parameters for the Runner.  
 
@@ -92,7 +95,7 @@ docker run -it \
 	-e RUNNER_RUNDECK_SERVER_TOKEN=$RUNDECK_RUNNER_TOKEN \
 	-e RUNNER_RUNDECK_SERVER_URL=$RUNDECK_SERVER_URL \
 	-e RUNNER_RUNDECK_CLIENT_ID=$RUNDECK_RUNNER_ID \
-	 rundeckpro/runner:latest
+	 rundeckpro/runner:{{ $rundeckVersion }}
 ```
 
 ### Docker Volume Mount
@@ -114,7 +117,7 @@ Example:
 ```shell
 docker run -it \
 	-v "$(pwd)/rdrunner-creds:/app/.rdrunner-creds:" \
-	 rundeckpro/runner:latest
+	 rundeckpro/runner:{{ $rundeckVersion }}
 ```
 
 ### Extending the Docker Image
@@ -128,7 +131,7 @@ You will need to create a custom docker image based on the base image.
 Example Dockerfile to add ansible:
 
 ```Dockerfile
-ARG RUNNER_VERSION=latest
+ARG RUNNER_VERSION={{ $rundeckVersion }}
 FROM rundeckpro/runner:${RUNNER_VERSION}
 
 USER root
@@ -162,7 +165,7 @@ docker run -it \
 	-v "$(pwd)/rdrunner-creds:/app/.rdrunner-creds:" \
 	-v "$(pwd)/path/ansible.cfg:/app/ansible/ansible.cfg:" \
 	-v "$(pwd)/path/hosts:/app/ansible/hosts:" \	
-	 rundeckpro/runner:latest
+	 rundeckpro/runner:{{ $rundeckVersion }}
 ```
 
 ## Runner in Kubernetes
