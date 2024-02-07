@@ -1,18 +1,18 @@
 ---
 
 title: "5.0.2 Release Notes"
-date: 2024-01-01
+date: 2024-02-08
 image: /images/chevron-logo-red-on-white.png
 feed:
  enable: true
- description: ""
+ description: "Important Compatibility Updates for 5.X"
 
 ---
 
 # 5.0.2 Release Notes
 
 Name: <span style="color: deeppink"><span class="glyphicon glyphicon-book"></span> "Denali deeppink book"</span>
-Release Date: PUTADATEHERE
+Release Date: February 8th, 2024
 
 - [Download the Releases](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
@@ -20,49 +20,34 @@ Release Date: PUTADATEHERE
 
 ## Overview
 
-Check out the new features and enhancements for PagerDuty Process Automation (formerly Rundeck Enterprise) and PagerDuty Runbook Automation and Rundeck Community included in this release.
+The 5.0 and 5.0.1 releases had some un-intended compatibility issues that this 5.0.2 version is meant to address.  Details listed below about the issues from previous versions and the changes included.
 
-### Highlights
+### Release Details
 
-- first highlight
-- second highlight
+::: warning Upgrade Steps
+Be sure to follow the [Upgrade instructions](/upgrading/) when moving to version 5.0 or higher.  There are new minimum Java versions and other important information.
+:::
 
-## Process Automation Updates
+#### Remove mandatory Enterprise Runner upgrade.
 
-> Also includes all Open Source updates from below
+It is no longer requried to update the Enterprise Runner when upgrading to 5.x.
 
-### Additional Updates
+#### 5.x job definitions can now work on 4.x
 
+This version does fix an issue where job definitions created in 5.x were not usable in older product versions.  It's important to note that not all job definitions are backwards compaitible if the job uses plugins or features not available on the older system, but this fix addressed some foundational issues with taking job definitions backwards.
 
+#### XML API Support
+XML Support for the API is deprecated and future endpoints/ehancements will not support XML, but there is an option to turn it on for legacy needs.  This version repaired an issue when enabling "legacyXML" feature of the API.
 
+#### JSON/JQ Filter Quoting Behavior
 
-## Rundeck Open Source Product Updates
-
-* [backport to 5.0.x](https://github.com/rundeck/rundeck/pull/8887)
-* [[release/5.1.x] Merge pull request #8882 from rundeck/](https://github.com/rundeck/rundeck/pull/8886)
-* [fix: feature flag defaultEnabled doesn&#39;t work](https://github.com/rundeck/rundeck/pull/8882)
-* [[release/5.0.x] Merge pull request #8868 from rundeck/](https://github.com/rundeck/rundeck/pull/8881)
-* [[release/5.0.x] Merge pull request #8874 from rundeck/export-job-def-config-data](https://github.com/rundeck/rundeck/pull/8875)
-* [Fix: Plugin config data was not being exported](https://github.com/rundeck/rundeck/pull/8874)
-* [[release/5.0.x] Merge pull request #8862 from rundeck/job-defs-compatibility](https://github.com/rundeck/rundeck/pull/8866)
-* [Keep job definitions created in 5.x working in previous versions](https://github.com/rundeck/rundeck/pull/8862)
-* [[release/5.0.x] Merge pull request #8845 from rundeck/enh/legacy-xml-defaultenabled](https://github.com/rundeck/rundeck/pull/8847)
-
-
-[Here is a link to the full list of public PRs](https://github.com/rundeck/rundeck/pulls?q=is%3Apr+milestone%3A5.0.2+is%3Aclosed)
-
-## Ansible Plugin Updates
-
-
+In 5.0 we updated the JSON/JQ libraries and from that update the behavior of the filter improved in the form of perfoming much closer to a command line version of `jq`.  In order to maintain compatibiliy with previously written jobs this version adds a feature flag to allow it to continue to add quotes as seen in previous product versions.
 
 
 ## Community Contributors
 
 Submit your own Pull Requests to get recognition here!
 
-* Greg Schueler ([gschueler](https://github.com/gschueler))
-*  ([github-actions[bot]](https://github.com/github-actions[bot]))
-* Carlos Eduardo ([carlosrfranco](https://github.com/carlosrfranco))
 * Rui Melo Amaro ([rmeloamaro](https://github.com/rmeloamaro))
 
 

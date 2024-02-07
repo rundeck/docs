@@ -1,4 +1,4 @@
-# Rundeck 5.0 Upgrade Notes
+# Rundeck 5.0.x Upgrade Notes
 
 These notes cover any detailed steps necessary when upgrading from a previous version of Rundeck or Process Automation to the 5.0.0 version.
 
@@ -9,8 +9,12 @@ Before upgrading to version 5.0 please ensure that your system is using Java 11.
 
 ## Enterprise Runner Upgrade
 
+::: No longer mandatory with 5.0.2
+Note: As of version 5.0.2 this update is not mandatory at the time of upgrading, but is recommended for the best performance and full functionality.
+:::
+
 ::: warning Upgrade Runners
-As part of the upgrade to 5.0/5.0.1 it is important to upgrade any Enterprise Runner instances immediately after upgrading the servers.
+If you plan to or have already upgraded to 5.0.0 or 5.0.1 they reuired an upgraded Enterprise Runner to function properly.
 :::
 
 Update the Enterprise Runner by downloading the latest version. Here are the following ways to download the runner:
