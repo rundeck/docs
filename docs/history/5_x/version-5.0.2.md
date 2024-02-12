@@ -41,7 +41,7 @@ XML Support for the API is deprecated and future endpoints/ehancements will not 
 
 #### JSON/JQ Filter Quoting Behavior
 
-In 5.0 we updated the JSON/JQ libraries and from that update the behavior of the filter improved in the form of perfoming much closer to a command line version of `jq`.  In order to maintain compatibiliy with previously written jobs this version adds a feature flag to allow it to continue to add quotes as seen in previous product versions.
+In 5.0 we updated the JSON/JQ libraries and from that update the behavior of the filter improved in the form of perfoming much closer to a command line version of `jq`.  This version adds an option flag to allow it to continue to add quotes as seen in previous product versions.  New instances of the JSON/JQ Log filter will default to the new/improved behavior.  Existing jobs will maintain the original behavior until a change is made to that log filter.
 
 
 ## Community Contributors
