@@ -30,18 +30,18 @@ Be sure to follow the [Upgrade instructions](/upgrading/) when moving to version
 
 #### Remove mandatory Enterprise Runner upgrade.
 
-It is no longer requried to update the Enterprise Runner when upgrading to 5.x.
+It is no longer required to update the Enterprise Runner when upgrading to 5.x.
 
 #### 5.x job definitions can now work on 4.x
 
-This version does fix an issue where job definitions created in 5.x were not usable in older product versions.  It's important to note that not all job definitions are backwards compaitible if the job uses plugins or features not available on the older system, but this fix addressed some foundational issues with taking job definitions backwards.
+This version does fix an issue where job definitions created in 5.x were not usable in older product versions.  It's important to note that not all job definitions are backwards compatible if the job uses plugins or features not available on the older system, but this fix addressed some foundational issues with backwards compatibility for job definitions.
 
 #### XML API Support
-XML Support for the API is deprecated and future endpoints/ehancements will not support XML, but there is an option to turn it on for legacy needs.  This version repaired an issue when enabling "legacyXML" feature of the API.
+XML Support for the API is deprecated and future endpoints/enhancements will not support XML, but there is an option to turn it on for legacy needs.  This version repaired an issue when enabling "legacyXML" feature of the API.
 
 #### JSON/JQ Filter Quoting Behavior
 
-In 5.0 we updated the JSON/JQ libraries and from that update the behavior of the filter improved in the form of perfoming much closer to a command line version of `jq`.  This version adds an option flag to allow it to continue to add quotes as seen in previous product versions.  New instances of the JSON/JQ Log filter will default to the new/improved behavior.  Existing jobs will maintain the original behavior until a change is made to that log filter.
+In 5.0 we updated the JSON/JQ libraries and from that update the behavior of the filter improved in the form of performing much closer to a command line version of `jq`.  This version adds an option flag to allow it to continue to add quotes as seen in previous product versions.  New instances of the JSON/JQ Log filter will default to the new/improved behavior.  Existing jobs will maintain the original behavior until a change is made to that log filter.
 
 
 ## Community Contributors
