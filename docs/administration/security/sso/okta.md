@@ -15,11 +15,11 @@ Login to the Okta web portal and configure a new application.
 
 - Create a new web application.
   - Configure the application with "Authorization Code" Grant type allowed.
-  - Add the following URL to `Login Redirect URIs` (it's possible to add more than one):
+  - Add the following URL to `Sign-In Redirect URIs` (it's possible to add more than one):
     `<rundeck base url>/login/oauth2/code/okta`. Example: `http://localhost:4440/login/oauth2/code/okta`
   - Copy the Client ID and Client Secret provided by Okta for use in next section.
 - Create groups with the same name as the roles configured on Rundeck. Map users to those groups.
-- Under the API menu, open the Authorization Servers configuration and add a new claim with the following information:
+- Under the "Security > API" menu, select the default Authorization server, click the Claims tab. add a new claim with the following information:
   - Name: groups
   - Include in Token Type: `ID Token` with `Userinfo/id_token_request`
   - Value Types: `Groups`
