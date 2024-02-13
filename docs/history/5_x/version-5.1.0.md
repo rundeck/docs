@@ -28,9 +28,13 @@ Note: All fixes from the [5.0.2 release](version-5.0.2.md) are included in this 
 
 #### AWS Secrets Manager
 
-AWS Secrets Manager provides users with a service to manage, retrieve, and rotate database credentials, application credentials, OAuth tokens, API keys, and other secrets throughout their lifecycles. Many AWS services store and use secrets in Secrets Manager.
+[AWS Secrets Manager](/manual/key-storage/storage-plugins/aws-secrets-manager.md) provides users with a service to manage, retrieve, and rotate database credentials, application credentials, OAuth tokens, API keys, and other secrets throughout their lifecycles. Many AWS services store and use secrets in Secrets Manager.
 
 This integration allows users to retrieve secrets from the AWS Secrets Manager service and use those secrets for connecting to resources such as VMs, databases, other tools, and much more.
+
+#### CyberArk and Thycotic Key Storage plugins
+
+The [Cyberark](/manual/key-storage/storage-plugins/cyberark-storage.md) and [Thycotic](/manual/key-storage/storage-plugins/thycotic-storage.md) Key Storage plugins are now available on the [Enterprise Runner](/manual/key-storage/enterprise-runner-key-storage.md).
 
 
 ## Process Automation Updates
