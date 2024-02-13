@@ -1,7 +1,7 @@
 ---
 
 title: "5.0.2 Release Notes"
-date: 2024-02-08
+date: 2024-02-12
 image: /images/chevron-logo-red-on-white.png
 feed:
  enable: true
@@ -12,7 +12,7 @@ feed:
 # 5.0.2 Release Notes
 
 Name: <span style="color: deeppink"><span class="glyphicon glyphicon-book"></span> "Denali deeppink book"</span>
-Release Date: February 8th, 2024
+Release Date: February 12th, 2024
 
 - [Download the Releases](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
