@@ -28,6 +28,9 @@ Note: All fixes from the [5.0.2 release](version-5.0.2.md) are included in this 
 
 #### AWS Secrets Manager
 
+AWS Secrets Manager provides users with a service to manage, retrieve, and rotate database credentials, application credentials, OAuth tokens, API keys, and other secrets throughout their lifecycles. Many AWS services store and use secrets in Secrets Manager.
+
+This integration allows users to retrieve secrets from the AWS Secrets Manager service and use those secrets for connecting to resources such as VMs, databases, other tools, and much more.
 
 
 ## Process Automation Updates
