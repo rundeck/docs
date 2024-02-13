@@ -28,14 +28,17 @@ Note: All fixes from the [5.0.2 release](version-5.0.2.md) are included in this 
 
 #### AWS Secrets Manager
 
-[AWS Secrets Manager](/manual/key-storage/storage-plugins/aws-secrets-manager.md) provides users with a service to manage, retrieve, and rotate database credentials, application credentials, OAuth tokens, API keys, and other secrets throughout their lifecycles. Many AWS services store and use secrets in Secrets Manager.
-
-This integration allows users to retrieve secrets from the AWS Secrets Manager service and use those secrets for connecting to resources such as VMs, databases, other tools, and much more.
+This new Key Storage integration with AWS Secrets Manager can retrieve and use secrets stored in AWS for Jobs, node discovery, and dispatch. 
+The integration can connect with multiple AWS accounts and retrieve secrets from across any number of AWS regions, giving users a quick method for tying in their existing secrets management to Runbook Automation.
+<br>See the full [AWS Secrets Manager documentation](/manual/key-storage/storage-plugins/aws-secrets-manager.md) for more details.<br>
+![AWS Secrets](/assets/img/aws-secrets-highlight.gif)
 
 #### CyberArk and Thycotic Key Storage plugins
 
-The [Cyberark](/manual/key-storage/storage-plugins/cyberark-storage.md) and [Thycotic](/manual/key-storage/storage-plugins/thycotic-storage.md) Key Storage plugins are now available on the [Enterprise Runner](/manual/key-storage/enterprise-runner-key-storage.md).
-
+The [Enterprise Runner](/administration/runner/runner-intro.md) can now integrate with CyberArk Secrets Manager and Thycotic Secret Server. 
+These integrations enable customers to retrieve and use secrets within Runbook Automation (self-hosted or cloud) from a CyberArk or Thycotic instance that is not directly accessible from Runbook Automation.  
+This allows customers to continue using their existing secrets-management provider and not store, copy or save those secrets within Runbook Automation. 
+Full documentation for Thycotic can be found [here](/manual/key-storage/storage-plugins/thycotic-storage.md) and for Cyberark [here](/manual/key-storage/storage-plugins/cyberark-storage).
 
 ## Process Automation Updates
 
