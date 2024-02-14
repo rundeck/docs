@@ -22,7 +22,7 @@ Release Date: February 14th, 2024
 
 Check out the new features and enhancements for PagerDuty Process Automation (formerly Rundeck Enterprise) and PagerDuty Runbook Automation and Rundeck Community included in this release.
 
-Note: All fixes from the [5.0.2 release](version-5.0.2.md) are included in this version.
+All fixes from the [5.0.2 release](version-5.0.2.md) are also included in this version.
 
 ### Highlights
 
@@ -55,6 +55,8 @@ Full documentation for Thycotic can be found [here](/manual/key-storage/storage-
 
 
 ## Rundeck Open Source Product Updates
+
+**Important**: Pacakage and binary signing for our Community edition products, for versions 5.1.0 and late, now uses SHA256.
 
 * [Fix: legacyXml flag not working](https://github.com/rundeck/rundeck/pull/8868)
 * [NPE While Reading Null Default Values for Secure Options](https://github.com/rundeck/rundeck/pull/8859)
