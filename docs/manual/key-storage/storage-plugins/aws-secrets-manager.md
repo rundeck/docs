@@ -10,8 +10,7 @@ This integration allows users to retrieve secrets from the AWS Secrets Manager s
 ## Setup
 
 ### Authentication
-The AWS Secrets integration uses authentication set through the AWS Plugin within System Configuration. If this is already configured, continue on to the next section. 
-
+The AWS Secrets integration uses authentication set through the AWS Plugin within System Configuration. If this is already configured, continue on to the next section.<br>
 Otherwise, follow the instructions [**here**](/manual/plugins/aws-plugins-overview.html#setup) and choose the auth type that aligns with your Runbook Automation deployment type.
 
 ### Configuration
@@ -36,7 +35,8 @@ Otherwise, follow the instructions [**here**](/manual/plugins/aws-plugins-overvi
     Amazon firmly states that the **Access Key** and **Secret Key** method of authentication should only be used for testing purposes and should not be used for any production use-cases.
     For more information, click [here](https://docs.aws.amazon.com/IAM/latest/UserGuide/security-creds.html#sec-alternatives-to-long-term-access-keys).
     :::
-10. Select the **Region** where the secrets are stored in AWS Secrets Manager.
+10. Select the **Regions** where the secrets are stored in AWS Secrets Manager.
+    * If multiple regions are selected, then the integration will retrieve secrets from all selected regions.
 11. Optionally choose to include or exclude secrets that contain a specific substring.
 12. Click **Save** to commit changes for the integration.
 13. Click **Save** to add this integration to the Key Storage configuration.
