@@ -14,10 +14,6 @@ When SSH or WinRM credentials are stored in a secrets provider, the Runner can r
 
 [comment]: <> (The Runner can be used to discover inventory in secure or remote environments. By retrieving keys from a secrets-provider, the Runner can authenticate with an API endpoint, such as the VMware vSphere API, in order to retrieve node inventory.)
 
-:::warning Current Limitations
-* Integration with Hashicorp Vault is currently supported on the Runner.  Integration with **CyberArk** and **Thycotic** through the Runner will also be supported in future releases.
-* Secrets from Runners can not be used for Node Sources - This will be supported in future releases.
-:::
 
 ## Handling Secrets
 Given the sensitivity of secrets retrieved by the Runner, the following guardrails have been put in place:

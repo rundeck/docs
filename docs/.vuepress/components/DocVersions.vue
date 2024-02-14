@@ -15,6 +15,7 @@
 const docsBase= "https://docs.rundeck.com"
 //include the last version in each minor release
 const previousDocsVersions= [
+  "5.1.0",
   "5.0.2",
   "5.0.1", 	
   "5.0.0",
