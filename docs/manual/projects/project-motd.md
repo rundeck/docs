@@ -27,9 +27,10 @@ rd projects readme put -p MyProject --motd -t "This is the **motd** for MyProjec
 
 Now, you must add a property to set where to show the motd message, these options are `projectList` to show it in the main list of projects, `projectHome` to show it in the project view, or `navbar` to have a button in the navigation bar to display the motd at will, you could add more than one option as comma separated attributes:
 
-Example to show the motd in the project list and in the main project
-```bash
-rd projects configure set -p MyProject -- --project.gui.motd.display=projectList,projectHome
+Example to show that motd in the project list and the main project
+
+```
+rd projects configure update -p MyProject -- --project.gui.motd.display=projectList,projectHome
 ```
 
 ## API Usage
