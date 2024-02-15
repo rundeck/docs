@@ -56,7 +56,7 @@ Full documentation for Thycotic can be found [here](/manual/key-storage/storage-
 
 ## Rundeck Open Source Product Updates
 
-**Important**: Pacakage and binary signing for our Community edition products, for versions 5.1.0 and late, now uses SHA256.
+**Important**: Package and binary signing for our Community edition products, for versions 5.1.0 and late, now uses SHA256.
 
 * [Fix: legacyXml flag not working](https://github.com/rundeck/rundeck/pull/8868)
 * [NPE While Reading Null Default Values for Secure Options](https://github.com/rundeck/rundeck/pull/8859)
