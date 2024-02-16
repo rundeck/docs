@@ -4,7 +4,7 @@ Integrating Rundeck logs with an ELK server allows you to centralize, analyze, a
 ## What is ELK?
 ELK is an acronym for Elasticsearch, Logstash, and Kibana, which are three open-source tools that are commonly used together for log management and data analysis purposes. Here's a brief description of each component:
 
-**Elasticsearch:** Elasticsearch is a distributed, scalable, and highly available search and analytics engine. It is designed to store, search, and analyze large volumes of data in real-time. Elasticsearch is built on top of Apache Lucene and provides full-text search capabilities along with advanced querying and filtering options.
+**Elasticsearch:** Elasticsearch is a distributed, scalable, and highly available search and analytics engine. It is designed to store, search, and analyze large volumes of data in real time. Elasticsearch is built on top of Apache Lucene and provides full-text search capabilities and advanced querying and filtering options.
 
 **Logstash:** Logstash is a data processing pipeline that ingests and transforms data from various sources. It collects data from different inputs, such as log files, databases, or message queues, and applies filters and transformations to parse and structure the data. Logstash then sends the processed data to Elasticsearch for indexing and storage.
 
@@ -14,7 +14,7 @@ One of the most common use cases of the ELK stack is centralized log management 
 
 In the case of Rundeck, integrating with ELK has some of the following advantages:
 
-**Centralized Log Storage:** Rundeck generates various logs that provide valuable insights into job executions, system activity, and user interactions. By integrating Rundeck logs with an ELK server, you can consolidate all the logs in a central location. This centralization simplifies log management, ensures data integrity, and allows for easy access to historical log information.
+**Centralized Log Storage:** Rundeck generates logs that provide valuable insights into job executions, system activity, and user interactions. By integrating Rundeck logs with an ELK server, you can consolidate all the logs in a central location. This centralization simplifies log management, ensures data integrity, and allows for easy access to historical log information.
 
 **Search and Filtering Capabilities:** ELK offers robust search and filtering capabilities, enabling you to efficiently search and analyze Rundeck logs. With ELK, you can perform full-text searches, filter logs based on specific criteria (e.g., job names, execution IDs, error messages), and use advanced querying techniques to identify patterns and anomalies in Rundeck log data. 
 
@@ -25,7 +25,7 @@ In the case of Rundeck, integrating with ELK has some of the following advantage
 ### Creating the Logstash Pipeline
 In Logstash, a pipeline refers to a sequence of stages through which data flows for processing. Each stage in the pipeline performs a specific task, such as input data collection, data transformation, filtering, and output to a destination. A Logstash pipeline typically consists of three main components: input, filter, and output.
 
-To configure the Logstash pipeline, you need to create a configuration file that describes the sequence of inputs, filters, and outputs. Here's a step-by-step process. In this example, let's create a Rundeck specific pipeline as follow:
+To configure the Logstash pipeline, you need to create a configuration file that describes the sequence of inputs, filters, and outputs. Here's a step-by-step process. In this example, let's create a Rundeck specific pipeline as follows:
 
 1. Create a new configuration file with a `.conf` extension (`rundeck.conf`).  
 2. Open the configuration file in a text editor and enter the following content:  
@@ -53,7 +53,7 @@ To configure the Logstash pipeline, you need to create a configuration file that
 More information about Logstash pipelines [here](https://www.elastic.co/guide/en/logstash/current/configuration.html). 
 
 ### Creating the Index Pattern on Kibana
-1. In the Kibana server web interface (listening on the port 5601 by default), click on the top left menu icon and then click on the "Stack Management".  
+1. In the Kibana server web interface (listening on port 5601 by default), click on the top left menu icon and then click on the "Stack Management".  
 ![](/assets/img/elk1.png)
 2. Now click the "Index Patterns" link (left) and then click on "Check for new data."  
 ![](/assets/img/elk2.png)
@@ -98,21 +98,13 @@ Add the following line on the `rundeck-config.properties` file.
 rundeck.execution.logs.streamingWriterPlugins=LogstashPlugin
 ```
 
-### framework.properties file Configuration
-Add the following lines on the `framework.properties` file.
-
-```
-framework.plugin.StreamingLogWriter.LogstashPlugin.port=9600 
-framework.plugin.StreamingLogWriter.LogstashPlugin.host=localhost
-```
-
 Then restart the Rundeck service.
 
 ## Testing the Rundeck/Kibana Integration
 1. On Rundeck, create a new project.  
 2. Create a new job.  
 3. Run the Job.  
-4. Go to the Kibana server web gui, click on the top left menu icon and select "Discover''.  
+4. Go to the Kibana server web GUI, click on the top left menu icon, and select "Discover''.  
 ![](/assets/img/elk5.png)
 5. In the "logstash-*" section you can see the Rundeck job activity.  
 ![](/assets/img/elk6.png)
