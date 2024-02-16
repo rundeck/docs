@@ -113,5 +113,7 @@ The following plugins are available in the next generation Runners:
 - File Resource Model
 - Script Resource Model
 @tab Key Storage
+- cyberark-storage
+- thycotic-storage
 - vault-storage
 :::
