@@ -1,7 +1,7 @@
 ---
 
 title: "5.0.0 Release Notes"
-date: 2024-12-14
+date: 2023-12-14
 image: /images/chevron-logo-red-on-white.png
 feed:
  enable: true
