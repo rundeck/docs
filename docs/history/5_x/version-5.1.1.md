@@ -20,7 +20,7 @@ Release Date: February 26th, 2024
 
 ## Overview
 
-This release patches the included Postgres JDBC Driver against the Critical [CVE-2024-1597](https://nvd.nist.gov/vuln/detail/CVE-2024-1597).  There is also a fix to the Ansible librarires to address an issue when using Ansible and the SSHAgent.
+This release patches the included Postgres JDBC Driver against the Critical [CVE-2024-1597](https://nvd.nist.gov/vuln/detail/CVE-2024-1597).  There is also a fix to the Ansible libraries to address an issue when using Ansible and the SSHAgent.
 
 :::warning Upgrade Runners
 After upgrading the server software the Enterprise Runners will also need to be patched as they contain the driver file to facilitate running the `SQL Run Step`.
