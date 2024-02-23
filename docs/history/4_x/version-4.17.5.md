@@ -38,9 +38,9 @@ Check out the new features and enhancements for PagerDuty Process Automation (fo
 
 ## Rundeck Open Source Product Updates
 
-* [[release/4.17.x] Merge pull request #8933 from rundeck/](https://github.com/rundeck/rundeck/pull/8943)
-* [Backport/release/4.17.x/pr 8826](https://github.com/rundeck/rundeck/pull/8880)
-* [[release/4.17.x] Merge pull request #8685 from rundeck/fix/rse-790_job-option-description-too-long](https://github.com/rundeck/rundeck/pull/8794)
+* [Update Postgres driver to patch CVE-2024-1597](https://github.com/rundeck/rundeck/pull/8943)
+* [Rdcli is not working properly updating projects on severals rundeck versions](https://github.com/rundeck/rundeck/pull/8880)
+* [Fix: Job option description too long](https://github.com/rundeck/rundeck/pull/8794)
 
 
 [Here is a link to the full list of public PRs](https://github.com/rundeck/rundeck/pulls?q=is%3Apr+milestone%3A4.17.5+is%3Aclosed)
