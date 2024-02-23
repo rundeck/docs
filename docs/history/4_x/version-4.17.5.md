@@ -1,18 +1,18 @@
 ---
 
 title: "4.17.5 Release Notes"
-date: 2024-01-01
+date: 2024-02-26
 image: /images/chevron-logo-red-on-white.png
 feed:
  enable: true
- description: ""
+ description: "Patch Postgres JDBC on 4.17.x"
 
 ---
 
 # 4.17.5 Release Notes
 
 Name: <span style="color: brown"><span class="glyphicon glyphicon-grain"></span> "Jörmungandr brown grain"</span>
-Release Date: PUTADATEHERE
+Release Date: February 26th, 2024
 
 - [Download the Releases](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
@@ -20,21 +20,11 @@ Release Date: PUTADATEHERE
 
 ## Overview
 
-Check out the new features and enhancements for PagerDuty Process Automation (formerly Rundeck Enterprise) and PagerDuty Runbook Automation and Rundeck Community included in this release.
+This release patches the included Postgres JDBC Driver against the Critical [CVE-2024-1597](https://nvd.nist.gov/vuln/detail/CVE-2024-1597).
 
-### Highlights
-
-- first highlight
-- second highlight
-
-## Process Automation Updates
-
-> Also includes all Open Source updates from below
-
-### Additional Updates
-
-
-
+:::warning Upgrade Runners
+After upgrading the server software the Enterprise Runners will also need to be patched as they contain the driver file to facilitate running the `SQL Run Step`.
+:::
 
 ## Rundeck Open Source Product Updates
 
@@ -45,17 +35,9 @@ Check out the new features and enhancements for PagerDuty Process Automation (fo
 
 [Here is a link to the full list of public PRs](https://github.com/rundeck/rundeck/pulls?q=is%3Apr+milestone%3A4.17.5+is%3Aclosed)
 
-## Ansible Plugin Updates
-
-
-
-
 ## Community Contributors
 
 Submit your own Pull Requests to get recognition here!
-
-*  ([github-actions[bot]](https://github.com/github-actions[bot]))
-* Luis Toledo ([ltamaster](https://github.com/ltamaster))
 
 
 ## Staff Contributors
