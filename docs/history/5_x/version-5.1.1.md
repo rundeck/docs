@@ -38,8 +38,6 @@ After upgrading the server software the Enterprise Runners will also need to be 
 
 Submit your own Pull Requests to get recognition here!
 
-*  ([github-actions[bot]](https://github.com/github-actions[bot]))
-
 
 ## Staff Contributors
 
