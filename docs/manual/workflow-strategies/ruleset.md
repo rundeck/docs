@@ -74,7 +74,7 @@ Conditions can define additional checks that must pass before a step can run, or
 
 > Note: Curly braces are not needed to reference context variable key names.  Option, Global, and Workflow Step variables are accessible by the Ruleset Strategy.  _Node Context_ variables are not available to Ruleset Conditions.
 
-### How to archive an OR condition    
+### How to achieve an OR condition    
 
 To achieve an OR condition you can evaluate two times the options than should be satisfied to allow the steps to be executed, as shown on the following example code this double evaluation must be done in two separate lines. 
 
@@ -88,7 +88,7 @@ To achieve an OR condition you can evaluate two times the options than should be
 In this case steps 3,4,5 will be executed if one or both conditions are satisfied.
 
 
-### How to archive an AND condition
+### How to achieve an AND condition
 
 To achieve an AND condition you can apply two or more evaluations on the same line, if all conditions are satisfied the steps will be executed.
 
