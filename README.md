@@ -1,12 +1,10 @@
 # Rundeck Documentation
 Rundeck Documentation project.
 
-*!!!! We have updated to VuePress 2 and are now using Node 18 for builds. Note updated instruction below !!!*
-
 ## Getting starting
 
 ### Dependencies
-* NodeJS `lts/hydrogen` or version `18.18.0` is the currently supported version.
+* NodeJS `lts/hydrogen` or version `18.18.0` is the currently supported and only version that should be used.
 * NVM is helpful in making sure your machine is using the currently supported versions as we upgrade in the future.
 
 ### Recommended setup steps
