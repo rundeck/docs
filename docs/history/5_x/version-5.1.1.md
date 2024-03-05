@@ -1,7 +1,7 @@
 ---
 
 title: "5.1.1 Release Notes"
-date: 2024-02-26
+date: 2024-03-05
 image: /images/chevron-logo-red-on-white.png
 feed:
  enable: true
@@ -12,7 +12,7 @@ feed:
 # 5.1.1 Release Notes
 
 Name: <span style="color: orange"><span class="glyphicon glyphicon-cutlery"></span> "Elbrus orange cutlery"</span>
-Release Date: February 26th, 2024
+Release Date: March 5th, 2024
 
 - [Download the Releases](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)

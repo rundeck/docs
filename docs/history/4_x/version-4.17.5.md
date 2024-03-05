@@ -1,7 +1,7 @@
 ---
 
 title: "4.17.5 Release Notes"
-date: 2024-02-26
+date: 2024-03-04
 image: /images/chevron-logo-red-on-white.png
 feed:
  enable: true
@@ -12,7 +12,7 @@ feed:
 # 4.17.5 Release Notes
 
 Name: <span style="color: brown"><span class="glyphicon glyphicon-grain"></span> "Jörmungandr brown grain"</span>
-Release Date: February 26th, 2024
+Release Date: March 4th, 2024
 
 - [Download the Releases](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
