@@ -31,8 +31,9 @@ These are the Security Advisories Rundeck has issued in the past.  It is always 
 * [CVE-2020-11009](cve-2020-11009.md)<br>
     IDOR can reveal execution data and logs to unauthorized user.
 
-## False Positive Findings
+## Additional CVE Notes
 
 * Log4j / Log4Shell will flag a false positive vulnerability related to our JIRA plugins. [More Details on this page](log4j.md)
 * [CVE-2022-45868 H2 DB false positive](cve-2022-45868.md).
 * [CVE-2022-1471 SnakeYAML false positive](cve-2022-1471.md).
+* [CVE-2024-1597 Postgres JDBC Driver Vulnerability](cve-2024-1597.md).

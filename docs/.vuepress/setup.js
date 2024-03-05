@@ -1,7 +1,7 @@
 import { BaseTransition } from "vue"
 
-const RUNDECK_VERSION='4.17.5'
-const RUNDECK_VERSION_FULL='4.17.5-SNAPSHOT'
+const RUNDECK_VERSION='5.1.1'
+const RUNDECK_VERSION_FULL='5.1.1-SNAPSHOT'
 const API_VERSION='46'
 const API_DEP_REL='6.0.0'
 const API_DEP_VER='17'
