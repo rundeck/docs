@@ -51,7 +51,7 @@ rundeck.clusterMode.autotakeover.sleep = 300
 If for some reason, your Rundeck instance goes offline while a job is running and that job gets marked as incomplete, jobs configured with retry settings are taken over by another online instance using the recover execution policy. To use the recover execution policy, add the following to your `rundeck-config.properties` file:
 
 ```properties
-# enable auto cleanup of stale jobs on member death
+# enable auto cleanup of stale jobs on member death (default: false)
 rundeck.clusterMode.recoverExecutions.enabled=true
 
 # policy for members to accept as targets of auto cleanup. Can be 'Any' or 'Static'
