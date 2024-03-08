@@ -88,10 +88,3 @@ java -Dmicronaut.http.client.proxy-type=http -Dmicronaut.http.client.proxy-addre
 ## Runner APIs
 
 [Runner APIs](/api/index.md) are available to create,edit,download, and delete Runners. 
-
-## Recovering Executions
-
-When the server is shutdown gracefully in a cluster environment while executions are running using runners, this executions are not recovered by default. This results in executions stuck in running state that are marked later as incomplete with no recovering actions taken. To avoid this, make use of the ***recover executions*** feature, which takes all the running executions from dead members and retry them following the desired policy. 
-
-* [Setup Recover Executions on Docker Environment](/administration/configuration/docker.md#cluster)
-* [Setup Recover Executions through System Properties](/administration/cluster/autotakeover/#autotakeover-recover-executions)
