@@ -82,6 +82,27 @@ Create a Windows-based project on the Rundeck instance.
     <br><br>![File Copier](/assets/img/howto-winnode-filecopy.png)<br><br>
 1. Click on the **Create** button.
 
+### Additional Configuration
+The following properties can optionally be set in the WinRM Node Executor and WinRM File Copier:
+
+* **`No SSL Verification`**: When this is set to `true`, SSL is not validated in the WinRM communication. This can be overridden on nodes with `winrm-nossl`.  <br><br>
+  * **`Disable TLS 1.2`**: Check this box to execute over TLS 1.0 <br><br>
+* **`WinRM Transport Protocol`**: Optionally choose HTTP or HTTPS for the WinRM transport protocol. This can be overridden on nodes with `winrm-transport`. <br><br>
+* **`WinRM Port`**: The WinRM port to use. The default is port 5985.  This can be overridden on nodes with `winrm-port`. <br><br>
+* **`Certificate Path`**: The path for SSL verification. This can be overridden on nodes with `winrm-certpath`. <br><br>
+* **`Connect/Read Times Out`**: The maximum seconds to wait before an HTTP connect/read times out (default 30). This value should be slightly higher than operation timeout, as the server can block *at least* that long. This can be overridden on nodes with `winrm-readtimeout`. <br><br>
+* **`Proxy`**: Optionally specify a proxy address for communicating with Windows nodes. Example HTTP proxy strings are `http://server:port` and `http://user:pass@server:port`. An example SOCKS5 proxy string is `socks5://user:pass@server:port`.<br><br>
+* **`Operation Timeout`**: The maximum allowed time in seconds for any single wsman HTTP operation (default 20). Note that operation timeouts while receiving output will be silently retried indefinitely. This can be overridden on nodes with `winrm-operationtimeout`.<br><br>
+* **`Shell`**: The Windows shell interpreter. Options include `cmd` and `powershell`.  This can be overridden on nodes `winrm-shell`.<br><br>
+* **`Script Exit Behavior`**: Script Exit Behaviour. Options include:
+  * `console` (default): if the std-error console has data, the process fails. 
+  * `exitcode`: script won't fail by default, the user must control the exit code, such as by using a try/catch block. See [this link](https://github.com/rundeck-plugins/py-winrm-plugin/tree/master#running-scripts) for more details.<br><br>
+* **`Retry connection`**: Retry the connection to the node if the connection fails. This can be overridden on nodes with `winrm-retry-connection`.<br><br>
+* **`Retry Connection Delay`**: Delay in seconds between each retry attempt. This can be overridden on nodes with `winrm-retry-connection-delay`.<br><br>
+* **`krb5 Config File`**: Path to a `krb5.conf` file, either on the Runbook Automation server or Enterprise Runner's host.<br><br>
+  * **`Kerberos Delegations`**: If True, TGT is sent to target server to allow multiple hops.<br><br>
+* **`Clean Escaping`**: Cleans unnecessarily Escaped characters on commands.<br><br>
+
 ## Adding a Windows Test Node
 
 Now Rundeck should ask about the model source. Let's start with the Windows node definition.
