@@ -22,13 +22,13 @@ Release Date: March 14th, 2023
 
 This release fixes the following issues:
 
- Nodes were not showing properly in certain scenarios. If users didn't have `system: read`  permissions, they wouldn't be able to see the project's nodes and would get a 403 error.  Nodes would also have trouble being displayed if they contained a url to edit them (e.g AWS Nodes).
+Nodes were not showing properly in certain scenarios. If users didn't have `system: read`  permissions, they wouldn't be able to see the project's nodes and would get a 403 error.  Nodes would also have trouble being displayed if they contained a url to edit them (e.g AWS Nodes).
 
-When AWS plugins were configured at project level, using plugin group config, was not working in the `5.1.0` and `5.1.1` versions and resulted in Authentication Errors.
+When AWS authentication was configured at the project level using plugin group config, AWS plugins would not properly authenticate in versions `5.1.0` and `5.1.1`.
 
 ## Runbook/Process Automation Updates
 
-* Fix AwsPluginGroup not working when set config at project level
+* Fix AwsPluginGroup not working when the configuration was set at the project level.
 
 
 ## Rundeck Open Source Product Updates
