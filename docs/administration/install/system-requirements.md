@@ -8,7 +8,7 @@
 | [Log Store](#logstore) | **Recommended**:<br>[S3-compatible object store](/learning/howto/S3-minio.html#s3-or-minio-for-execution-logs) | File system or <br>[S3-compatible object store](/learning/howto/S3-minio.html#s3-or-minio-for-execution-logs) |
 | Install Method | [.rpm](/administration/install/linux-rpm.html)<br> [.deb](/administration/install/linux-deb.html)<br>[Java servlet (.war)](/administration/install/jar.html)<br>[Docker](/administration/install/docker.html) | [.rpm](/administration/install/linux-rpm.html)<br>[.deb](/administration/install/linux-deb.html)<br>[Java servlet (.war)](/administration/install/jar.html)<br>[Docker](/administration/install/docker.html) |
 | [Network Ports](#network-access) | 4443 (https)<br>4440 (http)<br>22 (Linux machines over SSH)<br>5985 (Windows machines over http)<br>5986 (Windows machines over https) | 4443 (https)<br>4440 (http)<br>22 (Linux machines over SSH)<br>5985 (Windows machines over http)<br>5986 (Windows machines over https) |
-| Admin Access | Root (or Administrator on Windows) is not [required or recommended](#adminaccess). | Root (or Administrator on Windows) is not [required or recommended](#adminaccess). |
+| Admin Access | Root (or Administrator on Windows) is not [required or recommended](#admin-access). | Root (or Administrator on Windows) is not [required or recommended](#admin-access). |
 | Browser | Accessing automation typically requires an HTML5 compliant browser. Currently supported version of Mozilla Firefox or Google Chrome are recommended. | Accessing automation typically requires an HTML5 compliant browser. Currently supported version of Mozilla Firefox or Google Chrome are recommended. |
 
 ## Java

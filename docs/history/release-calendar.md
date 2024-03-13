@@ -10,10 +10,12 @@ Upgrade instructions [can be found here](/upgrading/).
 | Release Version                          | Release Date         | Enterprise Support Status |
 |------------------------------------------|----------------------|---------------------------|
 | [5.2.0](/history/5_x/version-5.2.0.md)   | TBD    | Supported |
+| [5.1.1](/history/5_x/version-5.1.1.md)   | March 5th, 2024    | Supported |
 | [5.1.0](/history/5_x/version-5.1.0.md)   | February 14th, 2024    | Supported |
 | [5.0.2](/history/5_x/version-5.0.2.md)   | February 12th, 2024    | Supported |
 | [5.0.1](/history/5_x/version-5.0.1.md)   | January 15th, 2024    | Supported |
 | [5.0.0](/history/5_x/version-5.0.0.md)   | December 14th, 2023    | Supported |
+| [4.17.5](/history/4_x/version-4.17.5.md) | March 4th, 2024    | Maintenance Support |
 | [4.17.4](/history/4_x/version-4.17.4.md) | December 13th, 2023    | Maintenance Support |
 | [4.17.3](/history/4_x/version-4.17.3.md) | November 13th, 2023    | Maintenance Support |
 | [4.17.2](/history/4_x/version-4.17.2.md) | November 7th, 2023   | Maintenance Support |
@@ -41,3 +43,4 @@ The 4.x series will not be provided back port security fixes after the 1 year an
 
 Any versions not listed here are now out of support.  We encourage everyone on these versions to update to a currently supported version.
 :::
+
