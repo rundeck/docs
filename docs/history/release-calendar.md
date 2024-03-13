@@ -30,10 +30,6 @@ Upgrade instructions [can be found here](/upgrading/).
 | [4.12.1](/history/4_x/version-4.12.1.md) | May 10th, 2023       | Maintenance Support |
 | [4.12.0](/history/4_x/version-4.12.0.md) | April 12th, 2023     | Maintenance Support |
 | [4.11.0](/history/4_x/version-4.11.0.md) | March 13th, 2023     | Maintenance Support |
-| [4.10.2](/history/4_x/version-4.10.2.md) | March 7th, 2023      | Maintenance Support |
-| [4.10.1](/history/4_x/version-4.10.1.md) | February 21st, 2023  | Maintenance Support |
-| [4.10.0](/history/4_x/version-4.10.0.md) | February 13th, 2023  | Maintenance Support |
-| [4.9.0](/history/4_x/version-4.9.0.md)   | January 11th, 2023   | Maintenance Support |
 
 
 ::: warning
