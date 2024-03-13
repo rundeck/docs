@@ -5,7 +5,7 @@ date: 2024-03-14
 image: /images/chevron-logo-red-on-white.png
 feed:
  enable: true
- description: "Important fix to 5.1.x for AWS Node Sources"
+ description: "Fixes for Node Display and AWS Project Configuration"
 
 ---
 
@@ -20,29 +20,28 @@ Release Date: March 14th, 2023
 
 ## Overview
 
-Check out the new features and enhancements for PagerDuty Process Automation (formerly Rundeck Enterprise) and PagerDuty Runbook Automation and Rundeck Community included in this release.
+This release fixes the following issues:
 
-### Highlights
+ Nodes were not showing properly in certain scenarios. If users didn't have `system: read`  permissions, they wouldn't be able to see the project's nodes and would get a 403 error.  Nodes would also have trouble being displayed if they contained a url to edit them (e.g AWS Nodes).
 
-- first highlight
-- second highlight
+When AWS plugins were configured at project level, using plugin group config, was not working in the `5.1.0` and `5.1.1` versions and resulted in Authentication Errors.
 
-## Process Automation Updates
+## Runbook/Process Automation Updates
 
-> Also includes all Open Source updates from below
-
-### Additional Updates
-
-
+* Fix AwsPluginGroup not working when set config at project level
 
 
 ## Rundeck Open Source Product Updates
 
-
+* [Fix for nodes not showing ](https://github.com/rundeck/rundeck/pull/8990)
+* [Replace api call for fetching execution modes for nodes](https://github.com/rundeck/rundeck/pull/8988)
 
 [Here is a link to the full list of public PRs](https://github.com/rundeck/rundeck/pulls?q=is%3Apr+milestone%3A5.1.2+is%3Aclosed)
 
 
+## Community Contributors
+
+Submit your own Pull Requests to get recognition here!
 
 ## Staff Contributors
 
