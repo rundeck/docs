@@ -36,9 +36,10 @@ Upgrade instructions [can be found here](/upgrading/).
 
 
 ::: warning
-With the release of [version 4.0.0](4_x/version-4.0.0.html) the 3.4.x series was placed into Maintenance Support status. All fixes to the product will be made in the 4.x series.  Critical Security bugs may be back ported to the 3.4.x series as determined by the PagerDuty Automation Product Team.
+With the release of [version 5.0.0](5_x/version-5.0.0.html) the 4.x series was placed into Maintenance Support status. All fixes to the product will be made in the 4.x series.  Critical Security bugs may be back ported to the 4.x series as determined by the PagerDuty Automation Product Team.
 
-The 3.4.x series will not be provided back port security fixes after the 1 year anniversary of 4.0.0 on March 23rd, 2023.
+The 4.x series will not be provided back port security fixes after the 1 year anniversary of 5.0.0 on December 14th, 2024.
 
-The 3.3.x series and older are now out of support.  We encourage everyone on these versions to update to a currently supported version.
+Any versions not listed here are now out of support.  We encourage everyone on these versions to update to a currently supported version.
 :::
+
