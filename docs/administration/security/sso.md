@@ -35,3 +35,207 @@ The Rundeck OAuth2 configuration now has support for auto configuration from you
 To use the auto configuration you only need to supply the base url to your OAuth provider endpoint, your client id and client secret, and Rundeck will do the rest.
 Please see the documentation links above for detailed instructions.
 :::
+
+
+## Generic SSO login using OAuth2/OpenID
+
+It is also possible to configure Single Sign-On with other providers supporting the OAuth2 or OpenID protocol,
+using the [Authorization Code Flow](https://oauth.net/2/grant-types/authorization-code/). You'd need to adapt
+the following configuration options to your provider's specifics:
+
+### Configure the OpenID provider using autodiscovery
+
+To configure your provider using its autodicsovery endpoint, you need to set the following properties:
+
+```properties
+# OpenID discovery endpoint URL of the OpenID provider
+rundeck.security.oauth.PROVIDER_NAME.autoConfigUrl=https://my-oidc-provider.com/.well-known/openid-configuration
+# Client ID defined by the OpenID provider
+rundeck.security.oauth.PROVIDER_NAME.clientId=<CLIENT_ID>
+# Client Secret defined by the OpenID provider
+rundeck.security.oauth.PROVIDER_NAME.clientSecret=<CLIENT_SECRET>
+# Scopes to request from the OpenID provider. Default is 'openid profile email'. 
+rundeck.security.oauth.PROVIDER_NAME.scope = openid profile email groups
+# OAuth token attribute containing the user authorization groups. Default is 'groups'.
+rundeck.security.oauth.PROVIDER_NAME.authorityProperty = YOUR_MAPPED_GROUPS_ATTRIBUTE
+```
+
+### Manual OpenID configuration
+
+To configure your provider manually, you need to set the following properties:
+
+```properties
+# Client ID defined by the OpenID provider
+rundeck.security.oauth.PROVIDER_NAME.clientId = <CLIENT_ID>
+# Client Secret defined by the OpenID provider
+rundeck.security.oauth.PROVIDER_NAME.clientSecret = <CLIENT_SECRET>
+# OAuth token endpoint URL of the OpenID provider
+rundeck.security.oauth.PROVIDER_NAME.accessTokenUri = <okta service url>/v1/token
+# OAuth authorization endpoint URL of the OpenID provider
+rundeck.security.oauth.PROVIDER_NAME.userAuthorizationUri = <okta service url>/v1/authorize
+# OAuth user info endpoint URL of the OpenID provider
+rundeck.security.oauth.PROVIDER_NAME.userInfoUri = <okta service url>/v1/userinfo
+# OAuth JWK set endpoint URL of the OpenID provider
+rundeck.security.oauth.PROVIDER_NAME.jwkSetUri = <okta service url>/v1/keys
+# Scopes to request from the OpenID provider. Default is 'openid profile email'.
+# If supported by your provider, adding the 'groups' scope is also recommended.
+rundeck.security.oauth.PROVIDER_NAME.scope = openid profile email
+# Name of the token attribute or scope containing the list of authorization groups, if supported by the provider. Default is 'groups'.
+rundeck.security.oauth.PROVIDER_NAME.authorityProperty = groups
+# Comma-separated list of attributes to search for the user's principal name.
+rundeck.security.oauth.PROVIDER_NAME.principleKeys = "user,username,userid,user_id,login,id,name,sub"
+# Client HTTP Authentication method - Options are 'basic' or 'post'. Default is 'post'
+rundeck.security.oauth.PROVIDER_NAME.clientAuthenticationMethod = post
+```
+
+
+### Configure the SSO Login Button
+
+```properties
+# Show the login button on the login screen.
+rundeck.sso.loginButton.enabled=true
+# Login button label
+rundeck.sso.loginButton.title=Login with SSO
+# Url to the provider oauth entrypoint. Use the same key used to identify your provider above.
+rundeck.sso.loginButton.url=oauth/PROVIDER_NAME
+```
+
+### Sync User Profile From OAuth2
+
+You can sync the information provided by your OAuth2 provider with the profile information inside Rundeck using the following properties:
+
+```properties
+rundeck.security.syncOauthUser=true
+```
+On SSO login, the token sent by the Oauth2 provider will be examined for the `email` `given_name` and `family_name` attributes
+which should be populated when using the default scopes (`openid email profile`).
+Rundeck will save this information to the appropriate fields in the user's Rundeck profile.
+
+If the token sent by your Oauth2 provider does not use the standard attributes for passing user information you can specify
+the attributes in your token that carry the email, first, and last names using the following properties.
+
+```properties
+rundeck.ssoSyncAttribNames.firstname=custom-firstname-attrib
+rundeck.ssoSyncAttribNames.lastname=custom-lastname-attrib
+rundeck.ssoSyncAttribNames.email=custom-email-attrib
+```
+
+## Enabling OAuth Resource Server and JWT token authentication support (5.1.0 and above)
+
+**Starting in Rundeck 5.1.0**, Rundeck can act as an OAuth2 Resource Server and validate JWT tokens from issued by an external OAuth2 provider.
+
+General steps to make use of this feature are:
+
+* Follow your provider documentation to configure a new client application using the client_credentials grant type
+in your OAuth2 provider. Make sure to obtain its client id and client secret.
+  * Azure: https://learn.microsoft.com/en-us/azure/active-directory-b2c/client-credentials-grant-flow?pivots=b2c-user-flow
+  * Okta: https://developer.okta.com/docs/guides/implement-grant-type/clientcreds/main/#next-steps
+  * Ping: https://docs.pingidentity.com/r/en-us/pingone/pingone_edit_application_oidc
+
+Enable the Rundeck oauth resource server adding the needed properties to [Configuration Management](/manual/configuration-mgmt/configmgmt.md) or your `rundeck-config.properties` file:
+
+### Simple Configuration
+
+```properties
+# Enable OAuth2 Resource Server support, default is false.
+rundeck.security.oauth.PROVIDER_NAME.resourceserver.enabled=true
+# Issuer URI supplied by the OAuth2 provider to fetch the public key to validate the JWT token.
+# URI that can either be an OpenID Connect discovery endpoint or an OAuth 2.0 Authorization Server Metadata endpoint defined by RFC 8414.
+# It is recommended that this URL matches the 'iss' claim within the provided JWT tokens.
+# If no 'issuer-uri', 'jwkSetUri' or 'publicKeyLocation' is provided, the value of 'rundeck.security.oauth.PROVIDER_NAME.autoConfigUrl' will be used.
+rundeck.security.oauth.PROVIDER_NAME.resourceserver.jwt.issuer-uri=https://my.oauth2.provider.com/.well-known/openid-configuration
+```
+### Full JWT Configuration
+
+```properties
+# Enable OAuth2 Resource Server support, default is false.
+rundeck.security.oauth.PROVIDER_NAME.resourceserver.enabled=true
+# Issuer URI supplied by the OAuth2 provider to fetch the public key to validate the JWT token.
+# URI that can either be an OpenID Connect discovery endpoint or an OAuth 2.0 Authorization Server Metadata endpoint defined by RFC 8414.
+# It is recommended that this URL matches the 'iss' claim within the provided JWT tokens.
+rundeck.security.oauth.PROVIDER_NAME.resourceserver.jwt.issuer-uri=https://my.oauth2.provider.com/.well-known/openid-configuration
+# URI to fetch the JSON Web Key (JWK) Set from the OAuth2 provider to validate the JWT token.
+# This will override the configuration obtainer by the 'issuer-uri' property.
+rundeck.security.oauth.PROVIDER_NAME.resourceserver.jwt.jwkSetUri=https://my.oauth2.provider.com/.well-known/jwks.json
+# Location of the RSA public key to validate the JWT token. This can be a file path or a URL.
+# Only used if both 'issuer-uri' and 'jwkSetUri' are not provided.
+rundeck.security.oauth.PROVIDER_NAME.resourceserver.jwt.publicKeyLocation=file:///local/file/path/to/rsa-public-key.pem
+# (Optional) List of audiences that the JWT token must contain. This is used to validate the 'aud' claim in the JWT token.
+rundeck.security.oauth.PROVIDER_NAME.resourceserver.jwt.audiences=audience_defined_in_provider
+# List of additional claim names to be used as authorities (groups).
+# Default is "scope,scp,roles" 
+rundeck.security.oauth.PROVIDER_NAME.resourceserver.jwt.authorities-claim-names=scope,scp,roles
+# (Optional) Prefix to attach to the authorities (groups) extracted from the JWT token.
+rundeck.security.oauth.PROVIDER_NAME.resourceserver.jwt.authority-prefix=PREFIX_
+# List of JWS algorithms to use to validate the JWT token. Default is "RS256"
+rundeck.security.oauth.PROVIDER_NAME.resourceserver.jwt.jws-algorithms=RS256
+# Name of the claim in the JWT token that contains the principal name. Default is "sub"
+rundeck.security.oauth.PROVIDER_NAME.resourceserver.jwt.principalClaimName=sub
+```
+
+### Obtain a token from your OAuth2 provider
+
+Using the data from your OAuth2 provider, you can obtain a token using the client_credentials grant type. For example, using `curl`:
+
+```shell
+curl -X POST --location "https://my.provider.endpoint.com/token" \
+    -H "Content-Type: application/x-www-form-urlencoded" \
+    -H "Accept: application/json" \
+    -d "grant_type=client_credentials&client_id=my_client_id&client_secret=my_client_secret&scope=scope_to_request"
+```
+
+The response obtained will contain the JWT token that can be used to authenticate with Rundeck.
+
+```json
+{
+  "token_type": "Bearer",
+  "expires_in": 3599,
+  "ext_expires_in": 3599,
+  "access_token": "provided_access_token_value"
+}
+```
+
+Using the received `access_token` value, you can authenticate with Rundeck using the `Authorization` header with the `Bearer` scheme:
+
+```shell
+curl -X GET --location "http://my.rundeck.com:4440/api/42/projects" \
+    -H "Authorization: Bearer provided_access_token_value" \
+    -H "Accept: application/json"
+```
+
+### JWT Auth token request examples
+
+#### Azure Entra ID
+
+```shell
+curl -X POST --location "https://login.microsoftonline.com/TENANT_ID/oauth2/v2.0/token" \
+    -H "Content-Type: application/x-www-form-urlencoded" \
+    -H "Accept: application/json" \
+    -d "grant_type=client_credentials&client_id=CLIENT_ID&client_secret=CLIENT_SECRET&scope=REQUESTED_SCOPE"
+```
+
+#### Okta
+
+```shell
+curl -X POST --location "https://my-okta-instance.okta.com/oauth2/default/v1/token" \
+    -H "Content-Type: application/x-www-form-urlencoded" \
+    -H "Accept: application/json" \
+    -d "grant_type=client_credentials&client_id=CLIENT_ID&client_secret=CLIENT_SECRET&scope=REQUESTED_SCOPE"
+```
+
+#### Ping
+
+```shell
+curl -X POST --location "https://auth.pingone.com/TENANT_ID/as/token" \
+    -H "Content-Type: application/x-www-form-urlencoded" \
+    -H "Accept: application/json" \
+    -d "grant_type=client_credentials&client_id=CLIENT_ID&client_secret=CLIENT_SECRET&scope=REQUESTED_SCOPE"
+```
+
+## Debugging tips
+
+If you are having trouble with the SSO integration, these additional entries in `rundeck-config.properties` will generate helpful debugging information:
+```properties
+logging.level.rundeckpro.security=DEBUG
+logging.level.org.springframework.security.oauth2=DEBUG
+```
