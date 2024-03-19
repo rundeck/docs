@@ -102,7 +102,7 @@ or with a username and password.
 
 Note that in either case, **it is recommended that you enable SSL Support for the Rundeck server** so that communication is encrypted at all times. For more information about using SSL, see [Security - Configuring Rundeck for SSL](/administration/security/ssl.md).
 
-### Token Authentication
+### API Token Authentication
 
 Token Authentication consists of including a string known as an "API Token" with every
 request to the Rundeck API.
@@ -172,6 +172,10 @@ The response should set a cookie named `JSESSIONID`.
 In v4.8+ the `JSESSIONID` cookie will change after the first request after authentication. You will have to update your client code to follow redirects for subsequent requests. For example, when using `curl` you would have to use `-b` and `-c` options to update the session cookie in your next request after authentication. Alternately, you could add the `-L` option to the initial login POST, which will follow the redirect after login and update the session cookie.
 
 :::
+
+### JWT Token Authentication
+
+In order to leverage dynamic tokens for API Authentication follow the [setup instructions for Enabling OAuth Server Token Authentication](/administration/security/sso.html#enabling-oauth-resource-server-and-jwt-token-authentication-support-5-1-0-and-above). 
 
 
 ## Error Responses

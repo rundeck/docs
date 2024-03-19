@@ -122,7 +122,7 @@ rundeck.ssoSyncAttribNames.email=custom-email-attrib
 
 ## Enabling OAuth Resource Server and JWT token authentication support (5.1.0 and above)
 
-**Starting in Rundeck 5.1.0**, Rundeck can act as an OAuth2 Resource Server and validate JWT tokens from issued by an external OAuth2 provider.
+**Starting in Rundeck 5.1.0**, Rundeck can act as an OAuth2 Resource Server and validate JWT tokens from issued by an external OAuth2 provider.  This can be used to leverage [SSO logins on the API](/api/#jwt-token-authentication).
 
 General steps to make use of this feature are:
 
