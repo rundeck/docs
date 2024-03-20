@@ -54,13 +54,13 @@ export default [
         text: '1.x',
         collapsible: true,
         link: '/history/',
-        children: getChildren('docs/history', '1_x'),
+        children: getChildren('docs/history/', '1_x'),
       },
       {
         text: "Security Advisories",
         collapsible: true,
         link: '/history/cves/',
-        children: getChildren('docs/history', 'cves'),
+        children: getChildren('docs/history/', 'cves'),
       }
     ],
   },
