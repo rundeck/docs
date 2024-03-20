@@ -37,7 +37,7 @@ Upgrade instructions [can be found here](/upgrading/).
 
 
 ::: warning
-With the release of [version 5.0.0](5_x/version-5.0.0.html) the 4.x series was placed into Maintenance Support status. All fixes to the product will be made in the 4.x series.  Critical Security bugs may be back ported to the 4.x series as determined by the PagerDuty Automation Product Team.
+With the release of [version 5.0.0](5_x/version-5.0.0.html) the 4.x series was placed into Maintenance Support status. All fixes to the product will be made in the 5.x series.  Critical bugs may be back ported to the 4.x series as determined by the PagerDuty Automation Product Team.
 
 The 4.x series will not be provided back port security fixes after the 1 year anniversary of 5.0.0 on December 14th, 2024.
 
