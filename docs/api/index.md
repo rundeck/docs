@@ -173,9 +173,20 @@ In v4.8+ the `JSESSIONID` cookie will change after the first request after authe
 
 :::
 
-### JWT Token Authentication
+### JWT Token Authentication (Enterprise)
 
-In order to leverage dynamic tokens for API Authentication follow the [setup instructions for Enabling OAuth Server Token Authentication](/administration/security/sso.html#enabling-oauth-resource-server-and-jwt-token-authentication-support-5-1-0-and-above). 
+:::enterprise
+:::
+
+Starting from **5.1.0**, Rundeck can act as an OAuth Resource Server and accept dynamic JWT tokens issued by an
+OAuth/OIDC provider for API Authentication.
+
+To call the API authenticating with a JWT token, you must include it in the `Authorization` header using the `Bearer` schema:
+
+    GET /api/{{ $apiMinVersion }}/projects HTTP/1.1
+    Authorization: Bearer <jwt_token>
+
+In order to leverage dynamic tokens for API Authentication follow the [setup instructions for Enabling the OAuth Resource Server](/administration/security/sso.html#enabling-oauth-resource-server-and-jwt-token-authentication-support). 
 
 
 ## Error Responses
