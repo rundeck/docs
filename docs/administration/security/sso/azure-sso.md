@@ -80,7 +80,6 @@ Azure Active Directory integration is configured mainly within the `rundeck-conf
 
 ```properties
 # rundeck-config.properties: Azure SSO
-rundeck.security.oauth.enabled=true
 rundeck.sso.loginButton.enabled=true
 rundeck.sso.loginButton.title=Login with Azure
 rundeck.sso.loginButton.url=oauth/azure

@@ -40,9 +40,6 @@ rundeck.sso.loginButton.url=oauth/ping
 #### Auto Configuration (3.3.0 and above)
 
 ```properties
-#Enable the OAuth SSO feature
-rundeck.security.oauth.enabled=true
-
 rundeck.security.oauth.ping.clientId = YOUR_CLIENT_ID_HERE
 rundeck.security.oauth.ping.clientSecret = YOUR_CLIENT_SECRET_HERE
 rundeck.security.oauth.ping.autoConfigUrl = https://sso.connect.pingidentity.com
@@ -54,9 +51,6 @@ rundeck.security.oauth.ping.authorityProperty = YOUR_MAPPED_GROUPS_ATTRIBUTE
 Example:
 
 ```properties
-#Enable the OAuth SSO feature
-rundeck.security.oauth.enabled=true
-
 rundeck.security.oauth.ping.clientId = YOUR_CLIENT_ID_HERE
 rundeck.security.oauth.ping.clientSecret = YOUR_CLIENT_SECRET_HERE
 rundeck.security.oauth.ping.accessTokenUri = 	https://sso.connect.pingidentity.com/sso/as/token.oauth2

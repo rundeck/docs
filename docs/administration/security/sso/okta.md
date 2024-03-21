@@ -42,8 +42,6 @@ rundeck.sso.loginButton.url=oauth/okta
 
 #### Auto Configuration Method (3.3.0 and above)
 ```properties
-#Enable the OAuth SSO feature
-rundeck.security.oauth.enabled=true
 #The first two come from the Client Credentials section on your Application configuration page in Okta
 rundeck.security.oauth.okta.clientId = (Okta Client ID)
 rundeck.security.oauth.okta.clientSecret = (Okta Secret Key)
@@ -70,9 +68,6 @@ rundeck.security.oauth.okta.authorityProperty = YOUR_MAPPED_GROUPS_ATTRIBUTE
 Add the following properties via [Configuration Management](/manual/configuration-mgmt/configmgmt.md) (recommended) or `rundeck-config.properties` file:
 
 ```properties
-#Enable the OAuth SSO feature
-rundeck.security.oauth.enabled=true
-
 #The first two come from the Client Credentials section on your Application configuration page in Okta
 rundeck.security.oauth.okta.clientId = (Okta Client ID)
 rundeck.security.oauth.okta.clientSecret = (Okta Secret Key)
