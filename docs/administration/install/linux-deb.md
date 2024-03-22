@@ -23,7 +23,7 @@ curl https://raw.githubusercontent.com/rundeck/packaging/main/scripts/deb-setup.
 
 Import the repo signing key:
 ```bash
-curl -L https://packages.rundeck.com/pagerduty/rundeckpro/gpgkey | sudo apt-key add -
+curl -fsSL https://packages.rundeck.com/pagerduty/rundeck/gpgkey | sudo tee /etc/apt/trusted.gpg.d/rundeck-key.asc && chown root:root /etc/apt/trusted.gpg.d/rundeck-key.asc && chmod 644 /etc/apt/trusted.gpg.d/rundeck-key.asc
 ```
 
 Add the following to `/etc/apt/sources.list.d/rundeck.list` replacing existing entries:
