@@ -1,4 +1,4 @@
-# PowerShell Node Execution
+# WinRM Node Execution
 
 <!---
 Original:
@@ -9,10 +9,10 @@ These plugins are only applicable to Process Automation deployments on Windows S
 
 There are two plugins:
 
-- **File Copier**: Copies files to the remote node for execution by the Node Executor. This plugin would be used to execute any Script steps in your workflows, or to copy your own files stored on the Process Automation host.
-- **Node Executor**: Executes the command and script steps.
+- **WinRM File Copier**: Copies files to the remote node for execution by the Node Executor. This plugin would be used to execute any Script steps in your workflows, or to copy your own files stored on the Process Automation host.
+- **WinRM Node Executor Python**: Executes the command and script steps.
 
-The plugins can be enabled in the Project Configuration page by selecting the PowerShell Node Executor and PowerShell File Copier as the default Node Executor and File Copiers.
+The plugins can be enabled in the Project Configuration page by selecting the WinRM Node Executor Python and WinRM File Copier as the default Node Executor and File Copiers.
 
 ## Authentication Types
 
@@ -34,7 +34,12 @@ You can configure the plugins to use a password via the Key Storage facility whe
 
 - password storage - using a password that is stored in the Key Storage facility.
 
-You can either configure the password or password storage path at a project-wide level, or on a per-node basis.
+You can configure the username and password or password storage path at a project-wide level, on a per-node basis or upon job execution.
+
+To pass the credentials upon job execution, it is required for the job to have the following job options:
+
+- username: to override the username defined in Project or Node settings.
+- winrmpassword: to overrise the password defined in the Project or Node settings. This should be using 'Secure 'Input Type.
 
 ### Password Storage
 
@@ -80,7 +85,7 @@ or
 keys/users/${job.username}.password
 ```
 
-## WinRM Setting to use PowerShell Plugin
+## WinRM Setting to use WinRM Node Executor Plugin
 
 In order to connect Rundeck with remote Windows nodes, it is necessary to set WinRM in both, the server and the remote nodes.
 
