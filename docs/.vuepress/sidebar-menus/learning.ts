@@ -151,7 +151,8 @@ export default [{
             '/learning/howto/actions-with-rba.md',
             '/learning/howto/events-with-rba.md',
             '/learning/howto/email-gmail.md',
-            '/learning/howto/email-outlook.md'
+            '/learning/howto/email-outlook.md',
+            '/learning/howto/community-incidents.md'
           ]
         },
         {
