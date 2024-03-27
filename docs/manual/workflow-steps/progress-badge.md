@@ -2,7 +2,7 @@
 
 The Progress Badge Plugin included with Process Automation can create graphic badges to be rendered on the Log Output tab.
 
-See also: (/manual/log-filters/progress-badge.md).
+See also: [Log Filter Progress Badge (Enterprise)](/manual/log-filters/progress-badge.md)
 
 Render a single badge using input options:
 
