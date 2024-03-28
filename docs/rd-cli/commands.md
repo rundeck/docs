@@ -199,7 +199,7 @@ Manage Project configuration
 
 Run a Job.
 
-    Usage: run [options] -- -OPT VAL -OPT2 VAL...
+    Usage: run [options] -- -OPT "VAL" -OPT2 "VAL"...
          [--filter -F value] : A node filter string
          [--follow -f] : Follow execution output as it runs
          [--id -i value] : Run the Job with this IDENTIFIER

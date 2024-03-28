@@ -143,7 +143,7 @@ This Docker environment contains two containers (nodes): the official Rundeck co
 ## Running and testing
 1. Create the network, this is needed by the whole environment and allows you to create the basic external network to reach the Internet using your current network device.
 	```
-	docker network create --driver bridge ex
+	docker network create --driver bridge ext
 	```
 2.  Build the environment:
 	```
