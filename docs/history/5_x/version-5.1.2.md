@@ -1,7 +1,7 @@
 ---
 
 title: "5.1.2 Release Notes"
-date: 2024-03-36
+date: 2024-02-28
 image: /images/chevron-logo-red-on-white.png
 feed:
  enable: true
@@ -12,7 +12,7 @@ feed:
 # 5.1.2 Release Notes
 
 Name: <span style="color: orchid"><span class="glyphicon glyphicon-flag"></span> "Elbrus orchid flag"</span>
-Release Date: March 26th, 2023
+Release Date: March 28th, 2023
 
 - [Download the Releases](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
