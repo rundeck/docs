@@ -26,6 +26,8 @@ Nodes were not showing properly in certain scenarios. If users didn't have `syst
 
 When AWS authentication was configured at the project level using plugin group config, AWS plugins would not properly authenticate in versions `5.1.0` and `5.1.1`.
 
+Fixes to a scneario when upgrading to versions after 4.17.0 would result in an inability to delete executions properly.
+
 ## Runbook/Process Automation Updates
 
 * Fix AwsPluginGroup not working when the configuration was set at the project level.
@@ -35,6 +37,7 @@ When AWS authentication was configured at the project level using plugin group c
 
 * [Fix for nodes not showing ](https://github.com/rundeck/rundeck/pull/8990)
 * [Replace api call for fetching execution modes for nodes](https://github.com/rundeck/rundeck/pull/8988)
+* [Fix error when deleting jobs after upgrade.](https://github.com/rundeck/rundeck/pull/9014)
 
 [Here is a link to the full list of public PRs](https://github.com/rundeck/rundeck/pulls?q=is%3Apr+milestone%3A5.1.2+is%3Aclosed)
 
