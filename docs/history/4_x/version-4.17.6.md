@@ -1,7 +1,7 @@
 ---
 
 title: "4.17.6 Release Notes"
-date: 2024-04-01
+date: 2024-04-02
 image: /images/chevron-logo-red-on-white.png
 feed:
  enable: true
@@ -12,7 +12,7 @@ feed:
 # 4.17.6 Release Notes
 
 Name: <span style="color: coral"><span class="glyphicon glyphicon-headphones"></span> "Jörmungandr coral headphones"</span>
-Release Date: April 1st, 2024
+Release Date: April 2nd, 2024
 
 - [Download the Releases](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
