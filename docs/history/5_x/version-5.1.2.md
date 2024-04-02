@@ -26,7 +26,7 @@ Nodes were not showing properly in certain scenarios. If users didn't have `syst
 
 When AWS authentication was configured at the project level using plugin group config, AWS plugins would not properly authenticate in versions `5.1.0` and `5.1.1`.
 
-Fixes to a scenario when upgrading to versions after 4.17.0 would result in an inability to delete executions properly.
+Fixes to a scenario when upgrading to versions after 4.17.0 would result in an inability to delete jobs properly.
 
 ## Runbook/Process Automation Updates
 

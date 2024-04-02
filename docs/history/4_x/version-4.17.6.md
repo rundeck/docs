@@ -20,7 +20,7 @@ Release Date: April 2nd, 2024
 
 ## Overview
 
-Fixes to a scenario when upgrading to versions after 4.17.0 would result in an inability to delete executions properly.
+Fixes to a scenario when upgrading to versions after 4.17.0 would result in an inability to delete jobs.
 
 ## Rundeck Open Source Product Updates
 
