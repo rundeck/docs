@@ -1,18 +1,18 @@
 ---
 
-title: "5.1.2 Release Notes"
-date: 2024-03-28
+title: "4.17.6 Release Notes"
+date: 2024-04-02
 image: /images/chevron-logo-red-on-white.png
 feed:
  enable: true
- description: "Fixes for Node Display and AWS Project Configuration"
+ description: "4.17 Execution Deletion issues Fixed"
 
 ---
 
-# 5.1.2 Release Notes
+# 4.17.6 Release Notes
 
-Name: <span style="color: orchid"><span class="glyphicon glyphicon-flag"></span> "Elbrus orchid flag"</span>
-Release Date: March 28th, 2023
+Name: <span style="color: coral"><span class="glyphicon glyphicon-headphones"></span> "Jörmungandr coral headphones"</span>
+Release Date: April 2nd, 2024
 
 - [Download the Releases](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
@@ -20,26 +20,14 @@ Release Date: March 28th, 2023
 
 ## Overview
 
-This release fixes the following issues:
-
-Nodes were not showing properly in certain scenarios. If users didn't have `system: read`  permissions, they wouldn't be able to see the project's nodes and would get a 403 error.  Nodes would also have trouble being displayed if they contained a url to edit them (e.g AWS Nodes).
-
-When AWS authentication was configured at the project level using plugin group config, AWS plugins would not properly authenticate in versions `5.1.0` and `5.1.1`.
-
-Fixes to a scenario when upgrading to versions after 4.17.0 would result in an inability to delete jobs properly.
-
-## Runbook/Process Automation Updates
-
-* Fix AwsPluginGroup not working when the configuration was set at the project level.
-
+Fixes to a scenario when upgrading to versions after 4.17.0 would result in an inability to delete jobs.
 
 ## Rundeck Open Source Product Updates
 
-* [Fix for nodes not showing ](https://github.com/rundeck/rundeck/pull/8990)
-* [Replace api call for fetching execution modes for nodes](https://github.com/rundeck/rundeck/pull/8988)
-* [Fix error when deleting jobs after upgrade.](https://github.com/rundeck/rundeck/pull/9014)
+* [Fix error when deleting jobs after upgrade](https://github.com/rundeck/rundeck/pull/9013)
 
-[Here is a link to the full list of public PRs](https://github.com/rundeck/rundeck/pulls?q=is%3Apr+milestone%3A5.1.2+is%3Aclosed)
+
+[Here is a link to the full list of public PRs](https://github.com/rundeck/rundeck/pulls?q=is%3Apr+milestone%3A4.17.6+is%3Aclosed)
 
 
 ## Community Contributors
