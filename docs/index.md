@@ -1,7 +1,7 @@
 ---
 home: true
 icon: home
-title: Rundeck | Process Automation Documenation
+title: Rundeck | Process Automation Documentation
 heroText:  Welcome to Docs
 tagline: Runbook Automation | Process Automation | Rundeck
 //heroImage: /assets/img/pd-background.png
