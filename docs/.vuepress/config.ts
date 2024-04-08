@@ -9,7 +9,7 @@ import { openGraphPlugin } from 'vuepress-plugin-open-graph';
 import { registerComponentsPlugin } from '@vuepress/plugin-register-components';
 import { redirectPlugin } from "vuepress-plugin-redirect";
 import { compareDate } from "vuepress-shared/node";
-//import { googleAnalyticsPlugin } from '@vuepress/plugin-google-analytics';
+import { googleAnalyticsPlugin } from '@vuepress/plugin-google-analytics';
 
 
 // sidebars
@@ -47,14 +47,14 @@ export default defineUserConfig({
   shouldPrefetch: false,
   base: `/${setup.base ? setup.base + '/' : ''}`,
   head: [
-    ['script', {}, `
-      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','GTM-5QNBBN6');
-    `],
-    ['script', { src: '/' + setup.base + '/js/gtm.js', defer: true }],
+  //   ['script', {}, `
+  //     (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  //     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  //     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  //     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  //     })(window,document,'script','dataLayer','GTM-5QNBBN6');
+  //   `],
+  //   ['script', { src: '/' + setup.base + '/js/gtm.js', defer: true }],
   ],
   extendsMarkdown: md => {
     md.use(markdownItReplaceVars, 'custom_token_replace', function (content) {
@@ -179,6 +179,9 @@ export default defineUserConfig({
         components: {
             RundeckSwaggerUi: path.resolve(__dirname, './components/RundeckSwaggerUI.vue'),
           },
+      }),
+      googleAnalyticsPlugin({
+        id: 'G-05XJ24KPYH',
       }),
     redirectPlugin({
         config: {

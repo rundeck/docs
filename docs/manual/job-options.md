@@ -168,7 +168,7 @@ Usage (see below)
 
 ### Option timestamp variable
 
-You can use the string `${DATE:format}` as a job option value (either as default value or as input by the user), which will be converted when the job/command is executed.
+You can use the string `${DATE:format}` as a job option value (either as a default value or as input by the user), which will be converted when the job/command is executed.
 This variable also allows you to add or remove days as you can see below.
 
 `${DATE:format}` current date in format used by the Java [SimpleDateFormatter](https://docs.oracle.com/javase/7/docs/api/java/text/SimpleDateFormat.html)
@@ -568,7 +568,7 @@ Then, the list of key-value pairs from **`key2`** can be accessed with **`$.key2
 
 ![Nested JSON](/assets/img/remote-url-json-path.png)<br>
 
-If we want to map the object "address" in the first object inside the following list, You can use this filter: `$.[0].adress`:
+If we want to map the object "address" in the first object inside the following list, You can use this filter: `$.[0].address`:
 
 ```
 [
@@ -584,7 +584,7 @@ If we want to map the object "address" in the first object inside the following 
         "lat": "-37.3159",
         "lng": "81.1496"
       }
-    },
+    }
   },
   {
     "id": 2,
@@ -702,7 +702,7 @@ Properties available for Job context:
 - `rundeck.serverUUID`: UUID of the Rundeck server node (cluster mode)
 - `rundeck.basedir`: File path of the Rundeck base dir (`file://` URLs only)
 
-Additionally the `rundeck.*` properties can be specified without the `job.` prefix, e.g. `${rundeck.basedir}`.
+Additionally, the `rundeck.*` properties can be specified without the `job.` prefix, e.g. `${rundeck.basedir}`.
 
 To include Option information in the URL, specify a variable of the
 form \${option._property_}:
@@ -739,7 +739,7 @@ will display a warning message:
 
 ![](/assets/img/fig0901.png)
 
-In this case, the option will be allowed to use a textfield to set the value.
+In this case, the option will be allowed to use a text field to set the value.
 
 ## Linking to Jobs and providing option values
 
@@ -747,7 +747,7 @@ You can create a URL to link to a specific Job, and pre-fill some of the option 
 
 Query Parameters format for options:
 
-- `opt.NAME` : provide a value for an option named `NAME`
+- `opt.NAME`: provide a value for an option named `NAME`
 
 For example, if the URL for the Job is:
 

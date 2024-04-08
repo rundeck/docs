@@ -74,14 +74,17 @@ The Progress Badge is used to simplify the output of the HTTP diagnostics.
 5. Insert "Healthy" into the **Text** field.
 6. Select the green check-mark emoticon for the **Status Symbol**.
 7. Insert the following into the **Context Variable** field  **`simplified-response`**:
+
 <p align="center">
 <img width="500" src="/assets/img/completed-progress-badge.png" />
 </p>
+
 8. Add _another_ **Progress Badge** Log Filter to the same step.
 9. Insert the following into the **Regex** field: **`HTTP/.*(400|404|500|504|301).*`**
 10. Insert "Unhealthy" into the **Text** field.
 11. Select the red **X** emoticon for the **Status Symbol**.
 12. Insert the following into the **Context Variable** field: **`simplified-response`**.
+
 <p align="center">
 <img width="500" src="/assets/img/progress-badge-unhealthy.png" />
 </p>
