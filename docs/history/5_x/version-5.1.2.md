@@ -12,7 +12,7 @@ feed:
 # 5.1.2 Release Notes
 
 Name: <span style="color: orchid"><span class="glyphicon glyphicon-flag"></span> "Elbrus orchid flag"</span>
-Release Date: March 28th, 2023
+Release Date: March 28th, 2024
 
 - [Download the Releases](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
