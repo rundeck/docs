@@ -13,6 +13,38 @@ This integration allows users to retrieve secrets from the AWS Secrets Manager s
 The AWS Secrets integration uses authentication set through the AWS Plugin within System Configuration. If this is already configured, continue on to the next section.<br>
 Otherwise, follow the instructions [**here**](/manual/plugins/aws-plugins-overview.html#setup) and choose the auth type that aligns with your Runbook Automation deployment type.
 
+### IAM Permissions 
+
+The following permissions are required for the AWS Secrets Manager integration to _retrieve_ secrets:
+
+* **`secretsmanager:ListSecrets`**
+* **`secretsmanager:GetSecretValue`** 
+
+Here is an example IAM policy that can be attached to the IAM Role that is used for the AWS Secrets Manager integration:
+
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "secretsmanager:GetSecretValue",
+                "secretsmanager:ListSecrets"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+```
+
+Optionally, also use the following permissions to _add_, _update_ or _delete_ secrets:
+
+* **`secretsmanager:PutSecretValue`**
+* **`secretsmanager:UpdateSecret`**
+* **`secretsmanager:DeleteSecret`**
+
+
 ### Configuration
 1. Navigate to the **System Menu** (gear icon in the upper right).
 2. Click on **Key Storage**.
