@@ -15,7 +15,7 @@ Otherwise, follow the instructions [**here**](/manual/plugins/aws-plugins-overvi
 
 ### IAM Permissions 
 
-The following permissions are required for the AWS Secrets Manager integration to work correctly:
+The following permissions are required for the AWS Secrets Manager integration to _retrieve_ secrets:
 
 * **`secretsmanager:ListSecrets`**
 * **`secretsmanager:GetSecretValue`** 
@@ -37,6 +37,13 @@ Here is an example IAM policy that can be attached to the IAM Role that is used 
     ]
 }
 ```
+
+Optionally, also use the following permissions to _add_, _update_ or _delete_ secrets:
+
+* **`secretsmanager:PutSecretValue`**
+* **`secretsmanager:UpdateSecret`**
+* **`secretsmanager:DeleteSecret`**
+
 
 ### Configuration
 1. Navigate to the **System Menu** (gear icon in the upper right).
