@@ -21,6 +21,18 @@ You can click **New Schedule** to create a new Schedule:
 
 Enter a **Name**, and optional **Description**.
 
+### Retain Schedules
+
+For jobs developed without Project Schedules assigned to them, the schedules may become disconnected from those jobs when importing them via SCM or other methods. The **`Retain Schedules`** checkbox is used to maintain job-to-schedule associations currently assigned when a job is imported without schedules.  To retain the schedule assignment when importing a job, check this box.
+
+::: tip Additional Clarification
+This feature was introduced in version `5.2.0`.  For backwards compatibility leave the checkbox off (default).  If schedules are being disconnected from jobs upon import and that behavior is not desired, check the box for each schedule where jobs should remain scheduled.
+
+This has no impact on schedules configured directly on the job, only Project Schedule associations.
+:::
+
+### Schedules
+
 Under **Schedule** you can choose *Simple* or *Crontab*, exactly like Job Schedules.
 
 ![Schedule Crontab](/assets/img/project-schedules-create-crontab.png)
