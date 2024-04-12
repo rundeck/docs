@@ -110,3 +110,8 @@ It is possible to use the Welcome Project environment with this [Project File](h
 1. Run the **Install Ansible on Rundeck Server** Job to install Ansible.
 
 The other jobs have descriptions for what they do and are aligned with this tutorial.
+
+## Notes
+It's advisable to segment extensive inventories into smaller groups or files containing approximately 1000 nodes each. Consequently, for every 1000 nodes, establish a dedicated source node for the respective group.
+The information described above is based on the recommendations described in the Ansible documentation.
+[Ansible - Intro Inventory](https://docs.ansible.com/ansible/latest/inventory_guide/intro_inventory.html)
