@@ -10,9 +10,12 @@ Once you have [configured and downloaded a Runner](/administration/runner/runner
 
 ### Pre-Requisites
 
-- Same [OS requirements as Rundeck](/administration/install/system-requirements.md)
+- Install on Windows or Linux.
+    - The Runner supports the same operating systems as the central cluster which are listed [here](/administration/install/system-requirements.html).
+    - Note that the Runner can be installed on a *different* operating system than the central cluster.
 - Java 11 is required to run the Runner JAR file.
-- The Runner binary size is 61MB. 
+- The Runner binary size is 61MB.
+- Resource-allocation guidelines for the Enterprise Runner are outlined [here](/administration/runner/runner-config.html#resource-allocation).
 
 ### Install steps
 
