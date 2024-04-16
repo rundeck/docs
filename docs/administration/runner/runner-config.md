@@ -68,7 +68,7 @@ The Runner summary page has a new Tags column added to the list. The column shou
 
 ### Resource Allocation
 
-- If setting up Enterprise Runners on virtualized environments, here are baseline recommendations:
+- If setting up Enterprise Runners on virtualized environments, here are baseline recommendations.  These are _general_ guidelines and the actual resource requirements may vary based on the workload and the number of concurrent executions.  It is recommended to monitor the Runner's performance - such as CPU, Memory, and Network Latency - and adjust the resources accordingly.
 
   |               | **Minimum** | **Medium** | **Large** |
   |---------------|-------------|------------|-----------|
