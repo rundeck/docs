@@ -66,7 +66,7 @@ terraform {
   required_providers {
     rundeck = {
       source  = "rundeck/rundeck"
-      version = "0.4.2"
+      version = "0.4.5"
     }
   }
 }
