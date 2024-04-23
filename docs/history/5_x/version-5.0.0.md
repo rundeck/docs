@@ -16,6 +16,7 @@ Release Date: December 14th, 2023
 
 - [Download the Releases](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
+- [Watch the Live Stream Release Recap](https://www.youtube.com/live/lcQJQRfI92c?si=QP_RIUNrwlrvXpsh)
 
 ::: danger Please use version 5.0.2
 We have found some issues with Log Filters and passing data to the Enterprise Runner.  Please use the [5.0.2 Release](version-5.0.2.md) when upgrading.

@@ -17,6 +17,7 @@ Release Date: April 10th, 2024
 - [Download the Releases](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
 - [Upgrade instructions](/upgrading/)
+- [Watch the Live Stream Release Recap - Coming Sooon](#)
 
 ## Overview
 
