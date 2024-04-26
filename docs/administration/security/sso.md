@@ -39,13 +39,17 @@ Please see the documentation links above for detailed instructions.
 
 ## Generic SSO login using OpenID Connect
 
-It is also possible to configure Single Sign-On with providers supporting the OAuth2 or OpenID Connect protocol,
-using the [Authorization Code Flow](https://oauth.net/2/grant-types/authorization-code/). You'd need to adapt
-the following configuration options to your provider's specifics:
+It is also possible to configure Single Sign-On with providers that support the OAuth2 or OpenID Connect protocol,
+using the [Authorization Code Flow](https://oauth.net/2/grant-types/authorization-code/). Adapt
+the following configuration options to your provider's specific requirements:
+
+:::tip Note
+All the configuration properties below can be set in the [Configuration Management](/manual/configuration-mgmt/configmgmt.md) interface or in the `rundeck-config.properties` file.
+:::
 
 ### Configure the OpenID provider using autodiscovery
 
-To configure your provider using its autodiscovery endpoint, you need to set the following properties:
+To configure the OpenID provider using its autodiscovery endpoint, set the following properties:
 
 ```properties
 # OpenID discovery endpoint URL of the OpenID provider
@@ -67,7 +71,7 @@ rundeck.security.oauth.PROVIDER_NAME.authorityProperty = YOUR_MAPPED_GROUPS_ATTR
 
 ### Manual OpenID configuration
 
-To configure your provider manually, you need to set the following properties:
+To configure the provider manually, set the following properties:
 
 ```properties
 # Client ID defined by the OpenID provider
@@ -118,14 +122,14 @@ rundeck.sso.loginButton.url=oauth/PROVIDER_NAME
 
 ### Sync User Profile From OAuth2
 
-You can sync the information provided by your OAuth2 provider with the profile information inside Rundeck using the following properties:
+Information provided by your OAuth2 provider can be synced with the profile information inside Runbook Automation using the following properties:
 
 ```properties
 rundeck.security.syncOauthUser=true
 ```
 On SSO login, the token sent by the Oauth2 provider will be examined for the `email` `given_name` and `family_name` attributes
 which should be populated when using the default scopes (`openid email profile`).
-Rundeck will save this information to the appropriate fields in the user's Rundeck profile.
+Runbook Automation will save this information to the appropriate fields in the user's profile.
 
 If the token sent by your Oauth2 provider does not use the standard attributes for passing user information you can specify
 the attributes in your token that carry the email, first, and last names using the following properties.
@@ -136,9 +140,9 @@ rundeck.ssoSyncAttribNames.lastname=custom-lastname-attrib
 rundeck.ssoSyncAttribNames.email=custom-email-attrib
 ```
 
-## Enabling OAuth Resource Server and JWT token authentication support
+## Enabling OAuth Resource Server and JWT Token Authentication Support
 
-**Starting from Rundeck 5.1.0**, Rundeck can act as an OAuth2 Resource Server and validate JWT tokens issued
+**Starting from Runbook Automation 5.1.0**, the platform can act as an OAuth2 Resource Server and validate JWT tokens issued
 by an external OAuth2 or OIDC provider. This can be used to leverage [SSO logins on the API](/api/#jwt-token-authentication-enterprise).
 
 General steps to make use of this feature are:
@@ -149,7 +153,7 @@ Make sure to obtain its client id, client secret, and endpoint URLs.
   * [Okta Documentation](https://developer.okta.com/docs/guides/implement-grant-type/clientcreds/main/#next-steps)
   * [Ping Documentation](https://docs.pingidentity.com/r/en-us/pingone/pingone_edit_application_oidc)
 
-* Enable the Rundeck oauth resource server adding the needed properties to [Configuration Management](/manual/configuration-mgmt/configmgmt.md) or your `rundeck-config.properties` file.
+* Enable the Runbook Automation Oauth resource server adding the needed properties to [Configuration Management](/manual/configuration-mgmt/configmgmt.md) or your `rundeck-config.properties` file.
 
 ### Simple Configuration
 
@@ -164,12 +168,12 @@ rundeck.security.oauth.PROVIDER_NAME.resourceserver.enabled=true
 rundeck.security.oauth.PROVIDER_NAME.resourceserver.jwt.issuer-uri=https://my.oidc.provider.jwt.issuer.uri/
 ```
 
-### Obtain a token from your OAuth2 provider
+### Obtain a Token from the OAuth2 Provider
 
-Once you have correctly configured a client application within your OIDC provider,
-you can obtain a token using their variation of the [OAuth access token API](https://www.oauth.com/oauth2-servers/access-tokens/) with the `client_credentials` grant type.
+Once the client application within the OIDC provider has been configured,
+a token can be obtained using the variation of the [OAuth access token API](https://www.oauth.com/oauth2-servers/access-tokens/) with the `client_credentials` grant type.
 
-A typical `curl` request to the access token endpoint would look like this:
+A typical `curl` request to the access token endpoint looks like this:
 
 ```shell
 curl --request POST --location "https://my.oidc-provider.endpoint.com/token" \
@@ -182,7 +186,7 @@ curl --request POST --location "https://my.oidc-provider.endpoint.com/token" \
     
 ```
 
-The response obtained will contain the JWT token that can be used to authenticate with Rundeck.
+The response obtained will contain the JWT token that can be used to authenticate with Runbook Automation.
 
 ```json
 {
@@ -193,9 +197,9 @@ The response obtained will contain the JWT token that can be used to authenticat
 }
 ```
 
-### Using the jwt token to authenticate with Rundeck
+### Using the JWT Token to Authenticate with Rundeck
 
-With the token obtained from your OIDC provider, you can authenticate with Rundeck using the `Authorization` header with the `Bearer` scheme:
+With the token obtained from the OIDC provider, authenticate with Runbook Automation using the `Authorization` header with the `Bearer` scheme:
 
 ```shell
 curl -X GET --location "http://my.rundeck.com/api/42/projects" \
@@ -203,7 +207,7 @@ curl -X GET --location "http://my.rundeck.com/api/42/projects" \
     -H "Accept: application/json"
 ```
 
-### Full JWT Configuration options
+### Full JWT Configuration Options
 
 ```properties
 # Enable OAuth2 Resource Server support, default is false.
@@ -241,7 +245,7 @@ rundeck.security.oauth.PROVIDER_NAME.resourceserver.jwt.principalClaimName=sub
 ```
 
 
-### JWT Auth token request examples
+### JWT Auth Token Request Examples
 
 #### Azure Entra ID
 
@@ -281,7 +285,7 @@ curl -X POST --location "https://auth.pingone.com/TENANT_ID/as/token" \
 ```
 
 #### Example JWT Token
-You can use a JWT token decoder to inspect the contents of your token and check its information matches your 
+Use a JWT token decoder to inspect the contents of the token and check its information matches the expected 
 configuration.  [jwt.io](https://jwt.io/) is a popular choice.
 
 A typical JWT token would look like this:
@@ -310,7 +314,7 @@ A typical JWT token would look like this:
 }
 ```
 
-It's recommended the value in the `iss` claim matches your `issuer-uri` configuration.
+It is recommended that the value in the `iss` claim matches the `issuer-uri` configuration.
 
 
 ## Troubleshooting

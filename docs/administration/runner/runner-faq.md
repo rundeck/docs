@@ -20,3 +20,6 @@ Not at this time. To dynamically update nodes use custom scripting and the APIs 
 
 Yes, multiple runners can be configured with the same tags. At this time only one Runner in the Runnerset with the same tags will execute tasks for a given job.
 
+## Does this work with Health Checks?
+
+As of the current product version Health Checks via the Runner are not yet supported.

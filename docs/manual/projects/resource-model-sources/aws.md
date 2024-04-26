@@ -61,7 +61,7 @@ The mapping declares the node attributes that will be set, and what their values
 Here is the default mapping:
 ```
 description.default=EC2 node instance
-editUrl.default=https://console.aws.amazon.com/ec2/home#s=Instances&selectInstance=${node.instanceId}
+editUrl.default=https://console.aws.amazon.com/ec2/home#Instances:search=${node.instanceId}
 hostname.selector=publicDnsName,privateIpAddress
 sshport.default=22
 sshport.selector=tags/ssh_config_Port
