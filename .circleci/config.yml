@@ -146,7 +146,7 @@ workflows:
             branches:
               only:
                 - /[4,5]\.[0-9]+\..*/
-								- vuepress-update
+                - vuepress-update
             tags:
               only: /^v.*/
       - update_index:
