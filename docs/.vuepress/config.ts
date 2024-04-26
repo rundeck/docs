@@ -1,12 +1,8 @@
-import _ from 'lodash'
-
-import { webpackBundler } from '@vuepress/bundler-webpack'
-import { viteBundler } from '@vuepress/bundler-vite'
-
+import _ from 'lodash';
+import { viteBundler } from '@vuepress/bundler-vite';
 import { defineUserConfig, Page } from 'vuepress';
 import { hopeTheme } from "vuepress-theme-hope";
 import { containerPlugin } from '@vuepress/plugin-container';
-import { docsearchPlugin } from '@vuepress/plugin-docsearch';
 import { getDirname, path } from '@vuepress/utils';
 import { openGraphPlugin } from 'vuepress-plugin-open-graph';
 import { registerComponentsPlugin } from '@vuepress/plugin-register-components';
