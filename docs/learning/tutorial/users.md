@@ -13,7 +13,7 @@ next:
 :::tutorial
 :::
 
-Adding User accounts to Rundeck can be done in many ways. Process Automation supports [Single Sign-On solutions](/administration/security/sso.md), [LDAP Authentication](/administration/security/authentication.html#ldap) and a variety of other options.
+Adding User accounts to Rundeck can be done in many ways. Process Automation supports [Single Sign-On solutions](/administration/security/sso/index.md), [LDAP Authentication](/administration/security/authentication.html#ldap) and a variety of other options.
 
 The User Summary tab shows a list of users configured on the Rundeck system.
 

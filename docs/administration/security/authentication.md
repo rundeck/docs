@@ -22,7 +22,7 @@ and specifically for Jetty,
 
 # Single Sign On
 
-See [Security > Single Sign On](/administration/security/sso.md).
+See [Security > Single Sign On](/administration/security/sso/index.md).
 
 # Require Roles For Sign On
 

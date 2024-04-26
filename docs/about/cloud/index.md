@@ -20,7 +20,7 @@ Runbook Automation will take care of security patching, protection, monitoring, 
 
 ## Getting access
 
-Runbook Automation can be evaluated and purchased under the Automation category [here](https://www.pagerduty.com/pricing/). PagerDuty and Runbook Automation accounts are separate at the moment,however, Single Sign On (ex. Okta or Azure AD) for both products can be configured resulting in a unified login experience. [Read the doc](/administration/security/sso.md) on how to configure SSO with Rundeck.
+Runbook Automation can be evaluated and purchased under the Automation category [here](https://www.pagerduty.com/pricing/). PagerDuty and Runbook Automation accounts are separate at the moment,however, Single Sign On (ex. Okta or Azure AD) for both products can be configured resulting in a unified login experience. [Read the doc](/administration/security/sso/index.md) on how to configure SSO with Rundeck.
 
 ## Runbook Automation and Process Automation differences
 

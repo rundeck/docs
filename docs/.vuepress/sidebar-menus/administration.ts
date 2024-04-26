@@ -172,8 +172,9 @@ export default [{
         {
           text: 'SSO',
           collapsible: true,
-          link: '/administration/security/sso',
+          link: '/administration/security/sso/',
           children: [
+              '/administration/security/sso/index.md',
               '/administration/security/sso/azure-sso.md',
               '/administration/security/sso/okta.md',
               '/administration/security/sso/ping.md'

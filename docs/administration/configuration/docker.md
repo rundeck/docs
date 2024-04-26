@@ -257,7 +257,7 @@ Set the threadCount value to the max number of threads you want to run concurren
 
 #### OAUTH
 For oauth configuration below replace `XXXX` with the provider name(ie `okta`).
-See the [SSO Documentation](/administration/security/sso.md) for more information.
+See the [SSO Documentation](/administration/security/sso/index.md) for more information.
 
 `RUNDECK_SECURITY_OAUTH_XXXX_CLIENTID`  
 `RUNDECK_SECURITY_OAUTH_XXXX_CLIENTSECRET`  

@@ -237,7 +237,8 @@ export default defineUserConfig({
             '/manual/key-storage/key-storage.html' : '/manual/key-storage/index.html',
             '/api/rundeck-api.html' : '/api/index.html',
             '/introduction/getting-help.html/manual/job-options.html' : '/manual/job-options.html#option-model-provider',
-            '/introduction/getting-help.html/administration/maintenance/tuning-rundeck.html' : '/administration/maintenance/tuning-rundeck.html#quartz-job-threadcount'
+            '/introduction/getting-help.html/administration/maintenance/tuning-rundeck.html' : '/administration/maintenance/tuning-rundeck.html#quartz-job-threadcount',
+            '/administration/security/sso.html':'/administration/security/sso/index.html'
         }
       }),
     openGraphPlugin({
