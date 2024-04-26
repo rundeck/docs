@@ -19,7 +19,9 @@ Release Date: February 14th, 2024
 - [Upgrade instructions](/upgrading/)
 - [Watch the Live Stream Release Recap](https://www.youtube.com/live/dEA2h4Iuh1k?si=xiNDxeSJ5EyMHzxO)
 
-<YouTube id="dEA2h4Iuh1k"/>
+<VidStack 
+  src="youtube/dEA2h4Iuh1k"
+/>
 
 
 ## Overview

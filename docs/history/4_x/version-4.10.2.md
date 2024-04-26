@@ -18,7 +18,7 @@ Release Date: March 7th, 2023
 - [Upgrade instructions](/upgrading/)
 - [Watch the Live Stream Release Recap](https://youtu.be/stDTPTNZJNM)
 
-<YouTube id="stDTPTNZJNM"/>
+<VidStack src="youtube/stDTPTNZJNM"/>
 
 ## Enterprise Update
 

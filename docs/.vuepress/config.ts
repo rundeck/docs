@@ -1,5 +1,8 @@
 import _ from 'lodash'
 
+import { webpackBundler } from '@vuepress/bundler-webpack'
+import { viteBundler } from '@vuepress/bundler-vite'
+
 import { defineUserConfig, Page } from 'vuepress';
 import { hopeTheme } from "vuepress-theme-hope";
 import { containerPlugin } from '@vuepress/plugin-container';
@@ -7,8 +10,8 @@ import { docsearchPlugin } from '@vuepress/plugin-docsearch';
 import { getDirname, path } from '@vuepress/utils';
 import { openGraphPlugin } from 'vuepress-plugin-open-graph';
 import { registerComponentsPlugin } from '@vuepress/plugin-register-components';
-import { redirectPlugin } from "vuepress-plugin-redirect";
-import { compareDate } from "vuepress-shared/node";
+import { redirectPlugin } from "@vuepress/plugin-redirect";
+import { dateSorter } from "@vuepress/helper";
 import { googleAnalyticsPlugin } from '@vuepress/plugin-google-analytics';
 
 
@@ -41,6 +44,10 @@ import setup from './setup';
 console.log(setup)
 
 export default defineUserConfig({
+  bundler: viteBundler({
+    viteOptions: {},
+    vuePluginOptions: {},
+  }),
   debug: false,
   title: '',
   description: '',
@@ -95,6 +102,25 @@ export default defineUserConfig({
     pageInfo: false,
     contributors: false,
     plugins: {
+      docsearch: {
+          locales: {
+            '/': {
+                placeholder: 'Search Documentation',
+                translations: {
+                button: {
+                    buttonText: 'Search Documentation',
+                },
+                },
+            }
+        },
+        appId: 'GRSXNRCDRG',
+        apiKey: 'c463f74d6f36a5af808650e0f69aadfa',
+        indexName: 'prod_rundeck_docs',
+        searchParameters: {
+            hitsPerPage: 100,
+            facetFilters: [ `version:${setup.base}` ]
+        },
+      },
       pwa: {
         update: 'hint',
         cacheHTML: true
@@ -115,14 +141,13 @@ export default defineUserConfig({
           pageA: Page,
           pageB: Page,
         ): number =>
-          compareDate( pageA.frontmatter.date, pageB.frontmatter.date)
+          dateSorter( pageA.frontmatter.date, pageB.frontmatter.date)
       },
       components: {
           components: [
             "FontIcon",
             "PDF",
-            "VideoPlayer",
-            "YouTube",
+            "VidStack"
           ],
           componentOptions: {
             fontIcon: {
@@ -284,25 +309,8 @@ export default defineUserConfig({
     registerComponentsPlugin({
         componentsDir: path.resolve(__dirname, './components'),
     }),
-    docsearchPlugin({
-        locales: {
-            '/': {
-                placeholder: 'Search Documentation',
-                translations: {
-                button: {
-                    buttonText: 'Search Documentation',
-                },
-                },
-            }
-        },
-        appId: 'GRSXNRCDRG',
-        apiKey: 'c463f74d6f36a5af808650e0f69aadfa',
-        indexName: 'prod_rundeck_docs',
-        searchParameters: {
-            hitsPerPage: 100,
-            facetFilters: [ `version:${setup.base}` ]
-        },
-    }),
+    // docsearchPlugin({
+    //     }),
           
   ],
 })
