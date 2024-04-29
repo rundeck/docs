@@ -9,7 +9,8 @@ Upgrade instructions [can be found here](/upgrading/).
 
 | Release Version                          | Release Date         | Enterprise Support Status |
 |------------------------------------------|----------------------|---------------------------|
-| [5.2.0](/history/5_x/version-5.2.0.md)   | TBD    | Supported |
+| [5.2.0](/history/5_x/version-5.2.0.md)   | April 30, 2024    | Supported |
+| [5.2.0](/history/5_x/version-5.2.0.md)   | April 10, 2024   | Supported |
 | [5.1.2](/history/5_x/version-5.1.1.md)   | March 28th, 2024    | Supported |
 | [5.1.1](/history/5_x/version-5.1.1.md)   | March 5th, 2024    | Supported |
 | [5.1.0](/history/5_x/version-5.1.0.md)   | February 14th, 2024    | Supported |
