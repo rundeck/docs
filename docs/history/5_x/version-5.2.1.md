@@ -19,10 +19,7 @@ Release Date: April 30, 2024
 - [Upgrade instructions](/upgrading/)
 
 ## Overview
-
-Check out the new features and enhancements for PagerDuty Process Automation (formerly Rundeck Enterprise) and PagerDuty Runbook Automation and Rundeck Community included in this release.
-
-
+This is a patch release that fixes an issue where the usage of Enterprise Runners will produce a heavy workload on the database, potentially causing general degradation, job failures and runner timeouts.
 
 
 ## Staff Contributors
