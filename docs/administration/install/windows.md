@@ -175,9 +175,9 @@ Variable Value: jdk installation directory
 ![Set JAVA_HOME system variable](/assets/img/win-javahome-3.png)
 
 :::warning
-Don’t include the \bin directory, only the JDK path. Eg.:
+Don’t include the \bin directory, only the JDK path. Example: (path specifics may vary)
 
-**Correct** – `C:\Program Files\Java\jdk1.8.0_60`
+**Correct** – `C:\Program Files\Java\jdk-11`
 
-**Wrong** – `C:\Program Files\Java\jdk1.8.0_60\bin`
+**Wrong** – `C:\Program Files\Java\jdk-11\bin`
 :::
