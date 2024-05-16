@@ -21,19 +21,42 @@ Release Date: PUTADATEHERE
 
 ## Overview
 
-Check out the new features and enhancements for PagerDuty Process Automation (formerly Rundeck Enterprise) and PagerDuty Runbook Automation and Rundeck Community included in this release.
+Version 5.3.0 is here! Check out the new features and enhancements for PagerDuty Runbook Automation (formerly Rundeck Enterprise) and Rundeck Community included in this release.
 
 ### Highlights
 
-- first highlight
-- second highlight
+#### Project Runner Management Early Access
+While the [Enterprise Runner](/administration/runner/) serves as a mechanism for securely dispatching automation to remote environments, Enterprise Runners are also used to give teams independence around how they run their automation. Users can now create, download, and manage Runners from within Projects. This gives teams more autonomy and flexibility with their automation and decreases their dependency on the tool administrators of Runbook Automation (cloud or self-hosted).
+To try out the feature, submit the [Early Access form here](https://www.pagerduty.com/early-access/) and select *Project Runner Management*.  We will respond promptly with instructions on how to enable the feature. Read more about Runner management [here](/administration/runner/runner-management/managing-runners).
 
-## Process Automation Updates
+![Project Runner Management](/assets/img/project-runner-management.png)<br>
 
-> Also includes all Open Source updates from below
+### New PagerDuty Job Steps
+Among the more common use cases for Runbook Automation (cloud or self-hosted) is incident automation — either for retrieving diagnostics or carrying out remediation. To assist users with further automating the incident process, Runbook Automation can now natively invoke [PagerDuty Incident Workflows](https://support.pagerduty.com/docs/incident-workflows). 
+This release includes both a Job Step and a Notification plugin to start an Incident Workflow. 
+These plugins better enable users to connect the technical infrastructure processes with the communication and collaboration processes as part of their incident response.
+Read more about the new plugins [here](/manual/plugins/pagerduty-plugins-overview).
+
+### SFTP Option for Script Execution & File Transfer
+The SSH File Transfer plugin (powered by SSHJ) now includes an option to use SFTP (Secure File Transfer Protocol) instead of SCP (Secure Copy Protocol) for securely executing scripts and transferring files.  As of recently, SFTP is the recommended method for dispatching files over networks.  In conjunction with the Enterprise Runner, this allows users to confidently execute scripts and transfer files in their most secure environments.  
+We will continue to support SCP in the SSHJ plugin for the foreseeable future.  Read more about the SFTP option for our SSHJ plugin [here](/manual/projects/node-execution/ssh.html#file-copy-via-sftp).
+
+Note: SCP was flagged with a Moderate level CVE by Red Hat. You can read the details of the CVE [here](https://access.redhat.com/security/cve/cve-2020-15778).
 
 ### Additional Updates
 
+* Performance improvement for Runbook Automation users with large numbers of Job executions through Runners.
+* [Update http-step plugin to mitigate CVE-2023-24621](https://github.com/rundeck-plugins/http-step/pull/29)
+* Additional plugin credentials are now treated as secrets:
+  * `framework.plugin.UserGroupSource.OktaGroupSource.apiToken`
+  * `rundeck.security.oauth.okta.clientSecret`
+  * `rundeck.security.oauth.azure.clientSecret`
+  * `framework.plugin.ExecutionFileStorage.org.rundeck.amazon-s3.AWSSecretKey`
+* Additional ACL policies for project-based Runner management
+* Fix: OpenSSH CopyFile not working on Docker
+* Fix: duplicate user entries when using LDAP and case sensitivity
+* Fix: Error when using step labels with Ruleset workflow strategy
+* 
 
 
 
