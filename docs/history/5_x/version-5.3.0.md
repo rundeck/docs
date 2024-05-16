@@ -45,6 +45,7 @@ Note: SCP was flagged with a Moderate level CVE by Red Hat. You can read the det
 
 ### Additional Updates
 
+* [Configurable maximum log size for Job execution logs](/administration/configuration/config-file-reference.html#execution-log-settings)
 * Performance improvement for Runbook Automation users with large numbers of Job executions through Runners.
 * [Update http-step plugin to mitigate CVE-2023-24621](https://github.com/rundeck-plugins/http-step/pull/29)
 * Additional plugin credentials are now treated as secrets:
@@ -56,7 +57,14 @@ Note: SCP was flagged with a Moderate level CVE by Red Hat. You can read the det
 * Fix: OpenSSH CopyFile not working on Docker
 * Fix: duplicate user entries when using LDAP and case sensitivity
 * Fix: Error when using step labels with Ruleset workflow strategy
-* 
+* Fix: Autotakeover resuming executions that use a Runner
+* Update Azure and SSHJ plugins to mitigate CVE-2021-29425
+* Update spring to 5.3.34 to mitigate CVE-2024-22262
+* Fix: log event metadata produces errors when using specific log filters
+* Update nimbus-jose dependencies and constraints to mitigate CVE-2023-52428
+* Fix: Docker image ignoring value of `JVM_MAX_RAM_PERCENTAGE`
+* Fix: intermittent 500 errors when querying the execution metrics through the API
+* Upgrade Grails to 6.1 
 
 
 
