@@ -27,7 +27,7 @@ In the example below, we have a job that will span three different environments.
 1. Step 7 (Run DB Lock Check) is also a reference job similar to step 1 and 5, but executes a Powershell command through the WinRM plugin and targets nodes in the third environment through a separate Remote Runner.
 
 
-## Pre-Requisites
+## Prerequisites
 
 The new architecture is available with v4.11+ of Process Automation. The new architecture is off by default and can be turned on with a system setting. The Runner authentication and communication architecture is the same between the two generations of Runners. The new Runners use new APIs, management UI, and have a new and more extensive set of plugins available.
 

@@ -53,14 +53,45 @@ export default [{
                 collapsible: true,
                 link: '/administration/runner/',
                 children: [
-                  '/administration/runner/',
-                  '/administration/runner/runner-intro.md',
-                  '/administration/runner/runner-setup.md',
-                  '/administration/runner/runner-install.md',
-                  '/administration/runner/runner-config.md',
-                  '/administration/runner/runner-using.md',
+                  {link:'/administration/runner/', text: 'Runner Overview'},
+                  {
+                    text: 'Runner Installation',
+                    collapsible: true,
+                    children: [
+                      '/administration/runner/runner-installation/creating-runners.md',
+                      {text:'Installing Runners',link:'/administration/runner/runner-installation/runner-install.md'},
+                    ]
+                  },
+                  {
+                    text: 'Runner Configuration',
+                    collapsible: true,
+                    children: [
+                        '/administration/runner/runner-configuration/runner-config.md',
+                    ]
+                  },
+                  {
+                    text: "Runner Management",
+                    collapsible: true,
+                    children: [
+                      '/administration/runner/runner-management/managing-runners.md',
+                      '/administration/runner/runner-management/runner-logging.md',
+                    ]
+                  },
+                  {
+                    text: 'Using Runners',
+                    collapsible: true,
+                    children: [
+                      '/administration/runner/using-runners/runner-using.md',
+                    ]
+                  },
+                  {
+                    text: 'Plugins on Runners',
+                    collapsible: true,
+                    children: [
+                      '/administration/runner/runner-plugins/runner-plugins.md',
+                    ]
+                  },
                   '/administration/runner/runner-advancedsetup.md',
-                  '/administration/runner/runner-logging.md',
                   '/administration/runner/runner-faq.md'
                 ]
               },

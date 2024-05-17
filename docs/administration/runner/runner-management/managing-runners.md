@@ -38,6 +38,20 @@ To assign a Runner to a project, follow these steps:
 
 The Runner can now be used within the designated projects for various tasks such as job execution, node discovery, and secrets-management integration.
 
+In order to assign a Runner to a Project, the user must have the following ACL permission:
+
+```
+by:
+  group: my-user-group-name
+description: Allow [update] for runner
+for:
+  runner:
+  - allow:
+    - update
+context:
+  application: rundeck
+```
+
 ### Managing Runners within a Project
 
 At the Project level, users can create, edit, and delete Runners for that specific Project.
@@ -54,6 +68,27 @@ From this interface, users can:
 - Create a new Runner. For detailed steps, see [Creating a Runner](/administration/runner/runner-installation/create-a-runner).
 - Edit an existing Runner. For detailed steps, see [Configuring a Runner](/administration/runner/runner-configuration/runner-config).
 - Delete Runners.  For detailed steps, see [Deleting a Runner](/administration/runner/runner-installation/delete-a-runner).
+
+#### Removing a Runner from a Project
+
+To remove a Runner from a Project, follow these steps:
+
+1. From the Project level Runner management interface, click on the **Actions** dropdown and select **Remove from project**.
+2. From the confirmation popup, select **Ok**.
+
+In order to remove a Runner from a Project, the user must have the following ACL permission:
+
+```
+by:
+  group: my-user-group-name
+description: Allow [delete] for runner
+for:
+  runner:
+  - allow:
+    - delete
+context:
+  project: my-project-name
+```
 
 ### Changing Runners from Single to Multiple Projects
 
