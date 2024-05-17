@@ -4,20 +4,18 @@ title: "Installation"
 
 # Enterprise Runner - Installation
 
-## Installing Runners in remote locations
-
-Once you have [configured and downloaded a Runner](/administration/runner/runner-config.md), upload the binary to the environment where it will run, follow the install instructions and launch the runner.
+Once you have [created and downloaded a Runner](/administration/runner/runner-installation/creating-runners.md), upload the binary to the environment where it will run and use the following the installation instructions to launch the runner.
 
 ### Pre-Requisites
 
-- Install on Windows or Linux.
-    - The Runner supports the same operating systems as the central cluster which are listed [here](/administration/install/system-requirements.html).
-    - Note that the Runner can be installed on a *different* operating system than the central cluster.
+- Runners can be installed on Windows, Linux or in containers.
+    - The operating systems that we officially support for the Runner are listed [here](/administration/install/system-requirements.html).
+    - Note that the Runner can be installed on a *different* operating system than the self-hosted cluster.
 - Java 11 is required to run the Runner JAR file.
-- The Runner binary size is 61MB.
+- The Runner binary size is 164MB.
 - Resource-allocation guidelines for the Enterprise Runner are outlined [here](/administration/runner/runner-config.html#resource-allocation).
 
-### Install steps
+### Basic Installation steps
 
 1. Copy the Runner JAR file that was saved when the Runner was created to the server and directory where it will run.
 1. Execute `java -jar runner_filename.jar` to start the service.
@@ -25,8 +23,8 @@ Once you have [configured and downloaded a Runner](/administration/runner/runner
 1. Runner Logs are located in the ./runner/logs folder under the folder where the jar was executed from. The runner.log file contains operational and important messages about the runner. operations.log tracks an operation starts and if it succeeds or fails. 
 Read more about [Runner logging configuration](/administration/runner/runner-logging.md) to customize logging.
 
-## Linux service for the Runner 
-We recommend setting up the Runners to run as services through systemd.
+## Linux Service for the Runner 
+The Runner can be installed as a `systemd` service on Linux systems.
 
 1. Create a systemd configuration file `/etc/systemd/system/runner.service` with the following contents:
 ```
@@ -55,21 +53,21 @@ WantedBy=multi-user.target
 # sudo service runner start
 ```
 
-## Using Runners in containers
+## Deploying Runners in Containers
 
 A Runner docker image is available from [Dockerhub](https://hub.docker.com/r/rundeckpro/runner). 
 
 	docker pull rundeckpro/runner
 
-You can use the tag `rundeckpro/runner:$VERSION` for a specific version, where `$VERSION` is set with:
+Use the tag `rundeckpro/runner:$VERSION` for a specific version, where `$VERSION` is set with:
 ```
 export $VERSION=5.1.0
 ```
 
-You can use either Environment Variables, or a Volume Mount to specify the Connection parameters for the Runner.  
+Use either Environment Variables, or a Volume Mount to specify the Connection parameters for the Runner.  
 
 :::warning API Usage Required
-Currently, to obtain the token for a Runner, you must use the Runner Management API to create the Runner.
+Currently, to obtain the token for a Runner, use the Runner Management API to create the Runner.
 
 See:
 
@@ -129,7 +127,7 @@ If you are using certain plugins, such as Ansible, Docker, Kubernetes, etc, you 
 
 You will need to create a custom docker image based on the base image.
 
-#### Using Ansible 
+#### Example: Install Runner & Ansible in Container 
 
 Example Dockerfile to add ansible:
 
@@ -171,7 +169,7 @@ docker run -it \
 	 rundeckpro/runner:{{ $rundeckVersion }}
 ```
 
-## Runner in Kubernetes
+## Deploying Runners in Kubernetes
 
 These instructions will guide how to install a Runner in Kubernetes.
 
@@ -271,7 +269,7 @@ template:
 Verify that the pods were deployed successfully: 
 :::
 
-## Runner on Windows OS
+## Using the Runner on Windows
 
 The “Runner Management” menu will appear on under the “System” settings:
 
@@ -317,7 +315,9 @@ RUNNER_RUNDECK_SERVER_TOKEN=8FpagGtalnxnv1fmllyYYz4quhNHpBR8
 RUNNER_RUNDECK_SERVER_URL=http://192.168.100.2:4440/
 ```
 
-## Removing Runners
+[//]: # (## Removing Runners)
 
-Before removing a Runner it is advisable to verify that there are other active runners tagged with the same tags. This will ensure that jobs that are configured with those tags have at least one available Remote runner to carry out the tasks for the job.
+[//]: # ()
+[//]: # (Before removing a Runner it is advisable to verify that there are other active runners tagged with the same tags. This will ensure that jobs that are configured with those tags have at least one available Remote runner to carry out the tasks for the job.)
 
+[//]: # ()

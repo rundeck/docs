@@ -1,7 +1,6 @@
 ---
 title: "Plugins Installed on Runners"
 ---
-# Enterprise Runner - Remote plugins available on the Runner
 The following plugins are available in the next generation Runners:
  
 ::: tabs

@@ -54,6 +54,11 @@ context:
 
 ### Managing Runners within a Project
 
+:::tip Early Access Feature
+The ability to manage Runners at the Project level is an early access feature.  
+To gain access, please [submit this form](https://www.pagerduty.com/early-access/) and someone from our team will reach out promptly.
+:::
+
 At the Project level, users can create, edit, and delete Runners for that specific Project.
 However, Runners created at the Project level are only available for use within that Project and cannot be used in other Projects.
 
@@ -105,3 +110,49 @@ However, when a Runner is assigned to multiple Projects, then users within Proje
 ![_Users can only remove a Runner from a Project when it is assigned to multiple Projects_](/assets/img/multi-project-runner-abilities.png)
 
 This is because when a Runner spans multiple Projects it is considered a _shared resource_.
+
+
+### Viewing Runner details
+
+A new section Tags is available  at the bottom of the Runner information page. Like in the summary page, a list of associated tags are displayed.
+
+![View details](/assets/img/runner-config-viewdetails.png)
+
+### Editing Runners
+
+A new Tags input field was added to allow a adding or removing tags after a Runner has been created.
+
+![Edit Runners](/assets/img/runner-config-edit.png)
+
+### Listing Runners
+
+The Runner summary page has a new Tags column added to the list. The column shouldn’t display if the feature is disabled. Runner tags are listed if available.
+
+![List Runners](/assets/img/runner-config-list.png)
+
+### Runners Status
+
+| **Icon** | **Status** | **Description**                                                                                                                                                                                                    |
+|----------|------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|   ![New](/assets/img/runner_new.png)       | New        | Runner has been downloaded but it has not yet sent a first status signal to Runbook Automation.                                                                                                            |
+|   ![Healthy](/assets/img/runner_healthy.png)       | Healthy    | Runner has connected to Runbook Automation and has reported a _Last Check-in_ at a reasonable time. Heartbeats are sent every 5 seconds from the Runner.                                                |
+|    ![Unhealthy](/assets/img/runner_unhealthy.png)      | Unhealthy  | Runner has connected to Runbook Automation but experiencing a high workload. This status is set to safeguard the execution times and tells Runbook Automation to utilize another Runner - if available. |
+|    ![Unknown](/assets/img/runner_unknown.png)      | Unknown    | Runner may have lost connectivity to Runbook Automation. The Unknown status is assumed if the Runner does not report a heartbeat to Runbook Automation within the last 30 seconds.  |
+|    ![Down](/assets/img/runner_down.png)      | Down       | Runner is unavailable to execute any workload. A Runner will assume this status in the event of a graceful shutdown or if the Last Check-in is greater than 120 seconds.                                    |
+
+- An **Unhealthy** state is related to the number of concurrent operations (and tasks) being executed on the runner ( you can check the number of concurrent operations via the API endpoint [Get runner information](/api/#get-runner-information) under the variable **runningOperations**
+- The maximum number of concurrent executions can be tuned, as stated [here](/docs/administration/runner/runner-advancedsetup.html#:~:text=with%20a%20tunable%20maximum%20number%20of%20simultaneous%20operations%20(default%3A%2050)) - by default the limit is set to 50. It can be tuned using the parameter ` -Drunner.operations.maxRunning=<EXEC_LIMIT>` when deploying a Runner. However, please note the following:
+    - The execution limit is linked to the available resources set for the runner process. Although a maximum number of executions can be established via this parameter, the Runner will throttle the number of executions based on the available resources (CPU, Memory, Stack Memory and Heap Space in Java) as well as the number of tasks associated with that execution.
+    - A Runner will report an **Unhealthy** state to Runbook Automation whenever this limit has been hit. Executions will be queued in memory rather than immediately scheduled to a CPU core.
+    - It is recommended to review the allocated resources to the machine and the Runner process when a Runner is reporting as **Unhealthy**.  Runners can be scaled vertically by allocating additional compute resources to the Java process, as well as horizontally by deploying additional Runners with the same Tags and Project assignments.
+
+### Resource Allocation
+
+- If setting up Enterprise Runners on virtualized environments, here are baseline recommendations.  These are _general_ guidelines and the actual resource requirements may vary based on the workload and the number of concurrent executions.  It is recommended to monitor the Runner's performance - such as CPU, Memory, and Network Latency - and adjust the resources accordingly.
+
+  |               | **Minimum** | **Medium** | **Large** |
+    |---------------|-------------|------------|-----------|
+  | **vCPU**      | 4 cores     | 8 cores    | 12 cores  |
+  | **Memory**    | 8 GiB       | 16 GiB     | 32 GiB    |
+  | **Java Heap** | 6 GiB       | 12 GiB     | 24 GiB    |
+  | **Storage**   | 40 GiB      | 40 GiB     | 40 GiB    |

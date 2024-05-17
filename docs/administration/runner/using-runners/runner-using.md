@@ -1,5 +1,5 @@
 ---
-title: "Usage"
+title: "Runners for Job Execution"
 ---
 
 # Using Enterprise Runners in Jobs
@@ -10,7 +10,8 @@ Once the new architecture is enabled as described in [Configuration](/administra
 ## Creating jobs with Runners
 
 Once the new architecture is enabled as described in [Configuration](/administration/runner/runner-setup.html), the Job edit menu will display a new “Nodes & Runners” tab where Node and Runner selection is configured for the job. When creating a job or editing a job, a user can select Runners based on tags with the following options:
-![Options to select runners by tags](/assets/img/runner-use-options.png)
+
+![Options to select runners by tags](/assets/img/runner-use-options.png)<br>
 
 - Selecting Runners with “Choose Tags” option from the drop-down list:
     ![Selecting runners by tags selection](/assets/img/runner-use-options-checkbox.png)
@@ -41,24 +42,5 @@ The runner carrying out the job execution is displayed at the top of the Job exe
 ![View runner in a job execution](/assets/img/runner-use-view-activity.png)
 
 
-## Key Storage through Runner
-The Enterprise Runner can be used to retrieve keys from secrets providers that are _not_ directly accessible from the Process Automation cluster or
-from Runbook Automation due to network or security boundaries.  For configuration and usage details, see [Key Storage through Enterprise Runner](/manual/key-storage/enterprise-runner-key-storage).                                                                                                                          
+                                                                                                                     
 
-## Node Discovery with Runners
-
-Runners can be used to discover nodes in environments that are not directly accessible from the Process Automation cluster or from Runbook Automation:
-![Node Source Runner](/assets/img/node-source-runner-selector.png)
-Instructions on how to discover nodes using the Enterprise Runner, click [here](/manual/projects/resource-model-sources/#adding-nodes-to-a-project).
-
-As of version **`4.16.0`**, the following Node Sources are available to use through the Enterprise Runner:
-* **Ansible Inventory**
-* **VMware***
-* **Kubernetes**
-* **Docker**
-* **File**
-* **Script**
-
-:::warning Node Sources Available on Runner
-If a Node Source is selected that is not in this list, the following error will appear after the node source tries to gather resources: `Reason: The datadog-resource-model plugin was not found on Runner ID = US-WEST-1-QA. You may need to upgrade your Runner or select a different Runner.` In a future version, the Node Source configuration will dynamically know which runners support which Node Source plugins.
-:::

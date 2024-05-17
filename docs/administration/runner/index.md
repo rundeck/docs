@@ -26,3 +26,15 @@ In the example below, we have a job that will span three different environments.
 1. Step 5 (Check System Resources) is also a reference job similar to step 1, but executes an Ansible playbook through the Ansible plugin and targets nodes in the second environment through a separate Remote Runner.
 1. Step 7 (Run DB Lock Check) is also a reference job similar to step 1 and 5, but executes a Powershell command through the WinRM plugin and targets nodes in the third environment through a separate Remote Runner.
 
+## Enabling the Latest Runner Features
+
+:::tip Enabled by Default for Docker and Runbook Automation SaaS
+This feature has been enabled on Docker installations since v4.5.0 and is also enabled by default for Runbook Automation. 
+If using either Docker or Runbook Automation, the feature is enabled by default and no further action is required.
+:::
+
+To use the latest Enterprise Runner features, the following feature-flags must be enabled in **System Configuration** or optionally in the `rundeck-config.properties` file if using the self-hosted software.
+
+`rundeck.feature.runner.enabled=true`
+
+`rundeck.feature.distributedAutomation.enabled = true`
