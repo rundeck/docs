@@ -22,7 +22,7 @@ This User Class, when assigned, will allow a user to run jobs and view output on
 
 ### Default Class Assignment
 
-By default users are assigned to the Full User class.  This is configurable if customers would like to assign a different class by adding the following entry to the Configuration Management UI.
+By default users are assigned to the Full User class.  This is configurable for OnPrem installations if customers would like to assign a different class by adding the following entry to the Configuration Management UI.
 
 ```
 rundeck.license.entitlements.userClass.autoAssignUserClass
