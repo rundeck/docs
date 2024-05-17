@@ -16,7 +16,7 @@ This document describes how to configure Rundeck for SSL/HTTPS support, and assu
 Do a first-run of the launcher, as it will create the base directory for Rundeck and generate configuration files. _(This is not necessary for RPM/DEB installations)_
 
 ```properties
-cd $RDECK_BASE;  java -jar {{$rundeckVersion}}.war
+cd $RDECK_BASE;  java -jar rundeck-{{$rundeckVersionFull}}.war
 ```
 
 This will start the server and generate necessary config files. Press Ctrl-C to shut down the server after the message below is shown in the terminal:
