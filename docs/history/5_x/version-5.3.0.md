@@ -66,6 +66,7 @@ Note: SCP was flagged with a Moderate level CVE by Red Hat. You can read the det
 * Update nimbus-jose dependencies and constraints to mitigate CVE-2023-52428
 * Fix: Docker image ignoring value of `JVM_MAX_RAM_PERCENTAGE`
 * Fix: intermittent 500 errors when querying the execution metrics through the API
+* Fix: Database errors when upgrading to 5.2.0 while using Microsoft SQL Server.
 * Upgrade Grails to 6.1 
 
 
