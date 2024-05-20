@@ -15,6 +15,17 @@ Once you have [created and downloaded a Runner](/administration/runner/runner-in
 - The Runner binary size is 164MB.
 - Resource-allocation guidelines for the Enterprise Runner are outlined [here](/administration/runner/runner-config.html#resource-allocation).
 
+#### Resource Allocation
+
+If setting up Enterprise Runners on virtualized environments, here are baseline recommendations.  These are _**general**_ guidelines and the actual resource requirements may vary based on the workload and the number of concurrent executions.  It is recommended to monitor the Runner's performance - such as CPU, Memory, and Network Latency - and adjust the resources accordingly.
+
+  |               | **Minimum** | **Medium** | **Large** |
+  |---------------|-------------|------------|-----------|
+  | **vCPU**      | 4 cores     | 8 cores    | 12 cores  |
+  | **Memory**    | 8 GiB       | 16 GiB     | 32 GiB    |
+  | **Java Heap** | 6 GiB       | 12 GiB     | 24 GiB    |
+  | **Storage**   | 40 GiB      | 40 GiB     | 40 GiB    |
+
 ### Basic Installation steps
 
 1. Copy the Runner JAR file that was saved when the Runner was created to the server and directory where it will run.

@@ -1,4 +1,5 @@
 ---
+redirectFrom: /administration/runner/runner-config
 title: "Custom Configuration"
 ---
 

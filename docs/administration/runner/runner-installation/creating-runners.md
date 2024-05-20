@@ -6,7 +6,7 @@ To learn more about the Runner architecture and use-cases, see the [Runner Overv
 
 ## Prerequisites
 
-Before creating a Runner, ensure that you have read the [Prerequisites](/administration/runner/runner-overview.html#prerequisites) section of the Runner Overview.
+Before creating a Runner, ensure that you have read the [prerequisites](/administration/runner/#enabling-the-latest-runner-features) section of the Runner Overview.
 
 
 ## Creating Runners from System Level
