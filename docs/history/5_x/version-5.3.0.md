@@ -133,24 +133,6 @@ Note: SCP was flagged with a Moderate level CVE by Red Hat. You can read the det
 
 Submit your own Pull Requests to get recognition here!
 
-* McG ([chrismcg14](https://github.com/chrismcg14))
-* Rodrigo Navarro ([ronaveva](https://github.com/ronaveva))
-* Jesus Osuna ([Jesus-Osuna-M](https://github.com/Jesus-Osuna-M))
-* Greg Schueler ([gschueler](https://github.com/gschueler))
-*  ([jayas006](https://github.com/jayas006))
-* Jake Cohen ([jsboak](https://github.com/jsboak))
-* Carlos Eduardo ([carlosrfranco](https://github.com/carlosrfranco))
-* Alberto Hormazabal ([ahormazabal](https://github.com/ahormazabal))
-*  ([smartinellibenedetti](https://github.com/smartinellibenedetti))
-* José Ortiz ([JoseOrtiz](https://github.com/JoseOrtiz))
-* Luis Toledo ([ltamaster](https://github.com/ltamaster))
-* Darwis Narvaez ([DarwisNarvaezDev](https://github.com/DarwisNarvaezDev))
-* Leonel Juarez ([L2JE](https://github.com/L2JE))
-* Antony Velasquez Ruiz ([avelasquezr](https://github.com/avelasquezr))
-* Rui Melo Amaro ([rmeloamaro](https://github.com/rmeloamaro))
-* Alexander Abarca ([alexander-variacode](https://github.com/alexander-variacode))
-
-
 ## Staff Contributors
 
 * Greg Schueler ([gschueler](https://github.com/gschueler))
@@ -160,6 +142,7 @@ Submit your own Pull Requests to get recognition here!
 * Carlos Eduardo ([carlosrfranco](https://github.com/carlosrfranco))
 * Christopher McCarroll-Gilbert ([chrismcg14](https://github.com/chrismcg14))
 * Darwis Narvaez ([DarwisNarvaezDev](https://github.com/DarwisNarvaezDev))
+* Dave Darby ([David Darby](https://github.com/ddarby-hike))
 * Forrest Evans ([fdevans](https://github.com/fdevans))
 * Imad Jafir ([imad6639](https://github.com/imad6639))
 * Jake Cohen ([jsboak](https://github.com/jsboak))
