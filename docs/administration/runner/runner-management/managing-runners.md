@@ -1,3 +1,7 @@
+---
+redirectFrom: /administration/runner/management
+---
+
 # Managing Runners
 
 ## Overview

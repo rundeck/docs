@@ -23,13 +23,15 @@ Release Date: PUTADATEHERE
 
 Version 5.3.0 is here! Check out the new features and enhancements for PagerDuty Runbook Automation (formerly Rundeck Enterprise) and Rundeck Community included in this release.
 
-### Highlights
+## Highlights
 
-#### Project Runner Management Early Access
-While the [Enterprise Runner](/administration/runner/) serves as a mechanism for securely dispatching automation to remote environments, Enterprise Runners are also used to give teams independence around how they run their automation. Users can now create, download, and manage Runners from within Projects. This gives teams more autonomy and flexibility with their automation and decreases their dependency on the tool administrators of Runbook Automation (cloud or self-hosted).
-To try out the feature, submit the [Early Access form here](https://www.pagerduty.com/early-access/) and select *Project Runner Management*.  We will respond promptly with instructions on how to enable the feature. Read more about Runner management [here](/administration/runner/runner-management/managing-runners).
+### Project Runner Management Early Access
+Users can now create, download, and manage [Enterprise Runners](/administration/runner/) from within Projects. 
+This gives teams more autonomy and flexibility with their automation and decreases their dependency on the tool administrators of Runbook Automation (cloud or self-hosted).
 
-![Project Runner Management](/assets/img/project-runner-management.png)<br>
+![Project Runner Management](/assets/img/project-runner-management.gif)<br>
+
+To try out project-based Runner Management, submit the [Early Access form here](https://www.pagerduty.com/early-access/) and select **Project Runner Management**.  We will respond promptly with instructions on how to enable the feature. Read more about Runner management [here](/administration/runner/runner-management/managing-runners).
 
 ### New PagerDuty Job Steps
 Among the more common use cases for Runbook Automation (cloud or self-hosted) is incident automation — either for retrieving diagnostics or carrying out remediation. To assist users with further automating the incident process, Runbook Automation can now natively invoke [PagerDuty Incident Workflows](https://support.pagerduty.com/docs/incident-workflows). 
@@ -39,7 +41,7 @@ Read more about the new plugins [here](/manual/plugins/pagerduty-plugins-overvie
 
 ### SFTP Option for Script Execution & File Transfer
 The SSH File Transfer plugin (powered by SSHJ) now includes an option to use SFTP (Secure File Transfer Protocol) instead of SCP (Secure Copy Protocol) for securely executing scripts and transferring files.  As of recently, SFTP is the recommended method for dispatching files over networks.  In conjunction with the Enterprise Runner, this allows users to confidently execute scripts and transfer files in their most secure environments.  
-We will continue to support SCP in the SSHJ plugin for the foreseeable future.  Read more about the SFTP option for our SSHJ plugin [here](/manual/projects/node-execution/ssh.html#file-copy-via-sftp).
+We will continue to support SCP in the SSHJ plugin for the foreseeable future.  Read more about the SFTP option for our SSHJ plugin [here](/manual/projects/node-execution/ssh.html#sftp-file-copier).
 
 Note: SCP was flagged with a Moderate level CVE by Red Hat. You can read the details of the CVE [here](https://access.redhat.com/security/cve/cve-2020-15778).
 

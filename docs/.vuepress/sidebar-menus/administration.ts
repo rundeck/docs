@@ -49,7 +49,7 @@ export default [{
                 link: '/administration/license',
               },
               {
-                text: 'Runner',
+                text: 'Enterprise Runner',
                 collapsible: true,
                 link: '/administration/runner/',
                 children: [
@@ -75,13 +75,16 @@ export default [{
                     children: [
                       '/administration/runner/runner-management/managing-runners.md',
                       '/administration/runner/runner-management/runner-logging.md',
+                      '/administration/runner/runner-management/upgrading-runners.md',
                     ]
                   },
                   {
                     text: 'Using Runners',
                     collapsible: true,
                     children: [
-                      '/administration/runner/using-runners/runner-using.md',
+                      {link:'/administration/runner/using-runners/runner-using.md',text: "Job Execution"},
+                      '/administration/runner/using-runners/runners-for-node-discovery.md',
+                      {link:'/administration/runner/using-runners/runners-with-key-storage.md',text: "Key Storage"},
                     ]
                   },
                   {
@@ -89,10 +92,11 @@ export default [{
                     collapsible: true,
                     children: [
                       '/administration/runner/runner-plugins/runner-plugins.md',
+                      {link:'/administration/runner/runner-plugins/restricting-plugin-execution.md',text: "Restricting Plugin Execution"},
                     ]
                   },
                   '/administration/runner/runner-advancedsetup.md',
-                  '/administration/runner/runner-faq.md'
+//                   '/administration/runner/runner-faq.md'
                 ]
               },
               {
