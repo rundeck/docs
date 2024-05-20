@@ -556,6 +556,18 @@ rundeck.execution.logs.output.limitAction = truncate
     * a. `halt`: kills the step and leave the job with status 'failed'.
     * b. `truncate`: the step will not stop, but no more log output will be generated.
 
+**Logviewer Max Size**:
+
+The maximum size for the logs viewed in the GUI can be set with the following property: 
+
+`rundeck.logviewer.maxLogSize`
+
+If the log file is larger than this value, the log viewer will display a "Whale Log" message indicating that the log is too large to display:
+
+![Whale Log](/assets/img/whale-log-error.png)<br>
+
+The default value for this property is 3MB.
+
 ### Metrics Capturing
 
 Rundeck captures metrics using the [Metrics](http://metrics.dropwizard.io/3.0.2/) library.

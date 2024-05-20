@@ -49,19 +49,62 @@ export default [{
                 link: '/administration/license',
               },
               {
-                text: 'Runner',
+                text: 'Enterprise Runner',
                 collapsible: true,
                 link: '/administration/runner/',
                 children: [
-                  '/administration/runner/',
-                  '/administration/runner/runner-intro.md',
-                  '/administration/runner/runner-setup.md',
-                  '/administration/runner/runner-install.md',
-                  '/administration/runner/runner-config.md',
-                  '/administration/runner/runner-using.md',
-                  '/administration/runner/runner-advancedsetup.md',
-                  '/administration/runner/runner-logging.md',
-                  '/administration/runner/runner-faq.md'
+                  {link:'/administration/runner/', text: 'Runner Overview'},
+                  {
+                    text: 'Runner Installation',
+                    collapsible: true,
+                    children: [
+                      '/administration/runner/runner-installation/creating-runners.md',
+                      {text:'Installing Runners',link:'/administration/runner/runner-installation/runner-install.md'},
+                    ]
+                  },
+                  {
+                    text: 'Runner Configuration',
+                    collapsible: true,
+                    children: [
+                        '/administration/runner/runner-configuration/runner-config.md',
+                    ]
+                  },
+                  {
+                    text: "Runner Management",
+                    collapsible: true,
+                    children: [
+                      '/administration/runner/runner-management/managing-runners.md',
+                      '/administration/runner/runner-management/runner-logging.md',
+                      '/administration/runner/runner-management/upgrading-runners.md',
+                      {link:'/administration/runner/runner-management/runner-high-availability.md',text:"Runner High Availability"}
+                    ]
+                  },
+                  {
+                    text: 'Using Runners',
+                    collapsible: true,
+                    children: [
+                      {link:'/administration/runner/using-runners/runner-using.md',text: "Job Execution"},
+                      '/administration/runner/using-runners/runners-for-node-discovery.md',
+                      {link:'/administration/runner/using-runners/runners-with-key-storage.md',text: "Key Storage"},
+                    ]
+                  },
+                  {
+                    text: 'Plugins on Runners',
+                    collapsible: true,
+                    children: [
+                      '/administration/runner/runner-plugins/runner-plugins.md',
+                      {link:'/administration/runner/runner-plugins/restricting-plugin-execution.md',text: "Restricting Plugin Execution"},
+                    ]
+                  },
+                  {
+                      text: 'Troubleshooting',
+                        collapsible: true,
+                        children: [
+                            '/administration/runner/runner-troubleshooting/troubleshooting-runners.md'
+                        ]
+                  }
+//                   '/administration/runner/runner-advancedsetup.md',
+//                   '/administration/runner/runner-faq.md'
                 ]
               },
               {
