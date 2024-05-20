@@ -180,6 +180,16 @@ Configuring LDAP consists of defining a JAAS config file (e.g. "jaas-ldap.conf")
 The jaas-ldap.conf file cannot have comments. Adding a `#` character will break parsing in JAAS.
 :::
 
+### Case-Insensitive username
+
+When authenticating in Rundeck with external authentication providers, it is possible to log in using different combinations of uppercase and lowercase letters in the username, which could lead to the incorrect consumption of a user class licenses. Using the following property will prevent additional licenses from being consumed when logging in as "examplename" or "EXAMPLENAME":
+
+`rundeck.feature.caseInsensitiveUsername.enabled=true/false`
+
+Default value: `false`
+
+This property can be added in two ways: through the GUI in the System Configuration or by editing the rundeck-config.properties file.
+
 #### Sync Rundeck profile from LDAP user attributes
 
 You can use LDAP user attributes to update the email, first name, and last name properties of your Rundeck users.
