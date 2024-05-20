@@ -12,7 +12,7 @@ feed:
 # 5.3.0 Release Notes
 
 Name: <span style="color: turquoise"><span class="glyphicon glyphicon-lamp"></span> "Etna turquoise lamp"</span>
-Release Date: PUTADATEHERE
+Release Date: May 20th, 2024
 
 - [Download the Releases](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
