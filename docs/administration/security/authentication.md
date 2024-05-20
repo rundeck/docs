@@ -182,7 +182,9 @@ The jaas-ldap.conf file cannot have comments. Adding a `#` character will break 
 
 ### Case-Insensitive username
 
+
 When authenticating in Rundeck with external authentication providers, it is possible to log in using different combinations of uppercase and lowercase letters in the username, which could lead to the incorrect consumption of a user class licenses. Ussing the following property will prevent additional licenses from being consumed when logging in as "examplename" or "EXAMPLENAME":
+
 
 `rundeck.feature.caseInsensitiveUsername.enabled=true/false`
 
