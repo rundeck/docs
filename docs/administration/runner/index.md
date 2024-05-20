@@ -13,12 +13,12 @@ The Runner is equipped with most of the same plugins as Runbook and Process Auto
 
 Tasks can be carried out over multiple environments simultaneously, thereby reducing the time and complexity of orchestrating automation across disparate environments.
 
-### How It Works
+### Runner Architecture Overview
 
 ![Runners Orchestrate Automation Across All Environment Types](/assets/img/runner-how-it-works.png)<br>
 
-1. The Runner uses a **polling model** to pick up work from the Automation Server. During each polling cycle the Runner checks for executions that it is responsible for.
-2. Communication from the Runner to Runbook and Process Automation happens over **`HTTPS`** and is initiated from the Runner. This implies that no firewall ports need to be open for Runbook or Process Automation to talk to remote environments. 
+1. The Runner uses a **polling model** to pick up work from Process or Runbook Automation. During each polling cycle the Runner checks for executions that it is responsible for.
+2. Communication from the Runner to Runbook and Process Automation happens over **`HTTPS`** and is initiated from the Runner. This implies that no inbound firewall ports need to be open for the Runner. 
 3. Tasks come into the Runner's queue from users and tools that are interfacing with Runbook and Process Automation.
 4. The Runner retrieves tasks from the response of queries to Runbook and Process Automation and performs them in the remote environment.
 5. Output of the task is sent back to Runbook and Process Automation for logging and reporting.

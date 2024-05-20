@@ -76,6 +76,7 @@ export default [{
                       '/administration/runner/runner-management/managing-runners.md',
                       '/administration/runner/runner-management/runner-logging.md',
                       '/administration/runner/runner-management/upgrading-runners.md',
+                      {link:'/administration/runner/runner-management/runner-high-availability.md',text:"Runner High Availability"}
                     ]
                   },
                   {
@@ -95,7 +96,14 @@ export default [{
                       {link:'/administration/runner/runner-plugins/restricting-plugin-execution.md',text: "Restricting Plugin Execution"},
                     ]
                   },
-                  '/administration/runner/runner-advancedsetup.md',
+                  {
+                      text: 'Troubleshooting',
+                        collapsible: true,
+                        children: [
+                            '/administration/runner/runner-troubleshooting/troubleshooting-runners.md'
+                        ]
+                  }
+//                   '/administration/runner/runner-advancedsetup.md',
 //                   '/administration/runner/runner-faq.md'
                 ]
               },

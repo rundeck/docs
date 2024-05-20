@@ -41,6 +41,16 @@ This is possible only If the “Runnerset Can be Changed at Runtime” option wa
 The runner carrying out the job execution is displayed at the top of the Job execution activity. Example below: The job below was executed through the “Ansible-Runner”
 ![View runner in a job execution](/assets/img/runner-use-view-activity.png)
 
+## Dynamic Runner selection through job options
 
-                                                                                                                     
+Runner matching and filtering supports Job Options - `${option.NAME}`, which allows changing the Runners for the job based on dynamic input through API calls or the rundeck-cli. The Job Options behavior is the same for Runner selection as with using it with commands or other workflow steps.  For example:
+- A job is configured with a Runner filter value set to `${option.runnerTagParameter}`
+- At runtime (through cli or API calls) we are providing a job option named `runnerTagParameter=myRunnerXYZ`, which will parameterize the Job Option with `myRunnerZYZ` for that job execution.
+- The job will be effectively executed with the Runner that is tagged with `myRunnerZYZ`
+
+Here's an example of a job option and runner filter configurations:
+
+![Job Option](/assets/img/dynamic_runner_selection_jobOption.png)
+
+![Runner Filter](/assets/img/Dynamic_runner_selection_runnerFilter.png)                                                                                                                     
 
