@@ -1,5 +1,5 @@
 # Key Storage through Enterprise Runner
-The [Enterprise Runner](/administration/runner/runner-intro) can be used to retrieve keys from secrets providers that are _not_ directly accessible from the Process Automation cluster or from Runbook Automation due to network or security boundaries.
+The [Enterprise Runner](/administration/runner/index.md) can be used to retrieve keys from secrets providers that are _not_ directly accessible from the Process Automation cluster or from Runbook Automation due to network or security boundaries.
 For example, if Runbook Automation does not have a direct network path to a self-hosted Hashicorp Vault instance, a Runner can be placed in the same network as Vault and retrieve secrets from Vault to be used by operations on the Runner.
 
 ![Key Storage Through Runner](/assets/img/key-storage-runner-browse.png)<br>

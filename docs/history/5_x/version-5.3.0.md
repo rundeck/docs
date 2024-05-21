@@ -26,7 +26,7 @@ Version 5.3.0 is here! Check out the new features and enhancements for PagerDuty
 ## Highlights
 
 ### Project Runner Management Early Access
-Users can now create, download, and manage [Enterprise Runners](/administration/runner/) from within Projects. 
+Users can now create, download, and manage [Enterprise Runners](/administration/runner/index.md) from within Projects. 
 This gives teams more autonomy and flexibility with their automation and decreases their dependency on the tool administrators of Runbook Automation (cloud or self-hosted).
 
 ![Project Runner Management](/assets/img/project-runner-management.gif)<br>
@@ -37,17 +37,17 @@ To try out project-based Runner Management, submit the [Early Access form here](
 Among the more common use cases for Runbook Automation (cloud or self-hosted) is incident automation — either for retrieving diagnostics or carrying out remediation. To assist users with further automating the incident process, Runbook Automation can now natively invoke [PagerDuty Incident Workflows](https://support.pagerduty.com/docs/incident-workflows). 
 This release includes both a Job Step and a Notification plugin to start an Incident Workflow. 
 These plugins better enable users to connect the technical infrastructure processes with the communication and collaboration processes as part of their incident response.
-Read more about the new plugins [here](/manual/plugins/pagerduty-plugins-overview).
+Read more about the new plugins [here](/manual/plugins/pagerduty-plugins-overview.md).
 
 ### SFTP Option for Script Execution & File Transfer
 The SSH File Transfer plugin (powered by SSHJ) now includes an option to use SFTP (Secure File Transfer Protocol) instead of SCP (Secure Copy Protocol) for securely executing scripts and transferring files.  As of recently, SFTP is the recommended method for dispatching files over networks.  In conjunction with the Enterprise Runner, this allows users to confidently execute scripts and transfer files in their most secure environments.  
-We will continue to support SCP in the SSHJ plugin for the foreseeable future.  Read more about the SFTP option for our SSHJ plugin [here](/manual/projects/node-execution/ssh.html#sftp-file-copier).
+We will continue to support SCP in the SSHJ plugin for the foreseeable future.  Read more about the SFTP option for our SSHJ plugin [here](/manual/projects/node-execution/ssh.md#sftp-file-copier).
 
 Note: SCP was flagged with a Moderate level CVE by Red Hat. You can read the details of the CVE [here](https://access.redhat.com/security/cve/cve-2020-15778).
 
 ### Additional Updates
 
-* [Configurable maximum log size for Job execution logs](/administration/configuration/config-file-reference.html#execution-log-settings)
+* [Configurable maximum log size for Job execution logs](/administration/configuration/config-file-reference.md#execution-log-settings)
 * Performance improvement for Runbook Automation users with large numbers of Job executions through Runners.
 * [Update http-step plugin to mitigate CVE-2023-24621](https://github.com/rundeck-plugins/http-step/pull/29)
 * Additional plugin credentials are now treated as secrets:

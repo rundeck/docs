@@ -32,7 +32,7 @@ For Runners hosted on virtual-machines, the upgrade process is as follows:
 
 @tab REST API
 1. Retrieve the **Runner ID** of the Runner to upgrade.
-    - This can be done by [listing the Runners via the API](/api/#list-available-runners) and noting the Runner ID:
+    - This can be done by [listing the Runners via the API](/api#list-available-runners) and noting the Runner ID:
       - **```GET /api/41/runnerManagement/runners```**
     - The **Runner ID** is also visible in the Runbook Automation console:
       ![Runner ID](/assets/img/retrieve-runner-id.png)<br>
@@ -60,8 +60,8 @@ For example, if using a proxy-host, be sure to include the proxy-host informatio
 
 ## Runners Hosted in Docker
 
-For Runners hosted in containers, the upgrade process uses the same steps as those outlined in the [Deploying Runners in Containers](/administration/runner/runner-installation/runner-install.html#deploying-runners-in-containers) document.
+For Runners hosted in containers, the upgrade process uses the same steps as those outlined in the [Deploying Runners in Containers](/administration/runner/runner-installation/runner-install.md#deploying-runners-in-containers) document.
 
 ## Runners Hosted in Kubernetes
 
-For Runners hosted in Kubernetes, the upgrade process uses the same steps as those outlined in the [Deploying Runners in Kubernetes](/administration/runner/runner-installation/runner-install.html#deploying-runners-in-kubernetes) document.
+For Runners hosted in Kubernetes, the upgrade process uses the same steps as those outlined in the [Deploying Runners in Kubernetes](/administration/runner/runner-installation/runner-install.md#deploying-runners-in-kubernetes) document.

@@ -9,11 +9,10 @@ Once you have [created and downloaded a Runner](/administration/runner/runner-in
 ### Pre-Requisites
 
 - Runners can be installed on Windows, Linux or in containers.
-    - The operating systems that we officially support for the Runner are listed [here](/administration/install/system-requirements.html).
+    - The operating systems that we officially support for the Runner are listed [here](/administration/install/system-requirements.md).
     - Note that the Runner can be installed on a *different* operating system than the self-hosted cluster.
 - Java 11 is required to run the Runner JAR file.
 - The Runner binary size is 164MB.
-- Resource-allocation guidelines for the Enterprise Runner are outlined [here](/administration/runner/runner-config.html#resource-allocation).
 
 #### Resource Allocation
 
@@ -32,7 +31,7 @@ If setting up Enterprise Runners on virtualized environments, here are baseline 
 1. Execute `java -jar runner_filename.jar` to start the service.
 1. Connection can be confirmed on the Runner Management page on the Last Checkin line. If there are errors in the output resolve those using troubleshooting steps below: 
 1. Runner Logs are located in the ./runner/logs folder under the folder where the jar was executed from. The runner.log file contains operational and important messages about the runner. operations.log tracks an operation starts and if it succeeds or fails. 
-Read more about [Runner logging configuration](/administration/runner/runner-logging.md) to customize logging.
+Read more about [Runner logging configuration](/administration/runner-management/runner-logging.md) to customize logging.
 
 ## Linux Service for the Runner 
 The Runner can be installed as a `systemd` service on Linux systems.
@@ -82,8 +81,8 @@ Currently, to obtain the token for a Runner, use the Runner Management API to cr
 
 See:
 
-* [API > Create A New Runner](/api/#create-a-new-runner)
-* [API > Regenerate Credentials For the Runner](/api/#regenerate-credentials-for-the-runner)
+* [API > Create A New Runner](/api#create-a-new-runner)
+* [API > Regenerate Credentials For the Runner](/api#regenerate-credentials-for-the-runner)
 
 :::
 
@@ -184,7 +183,7 @@ docker run -it \
 
 These instructions will guide how to install a Runner in Kubernetes.
 
-1. [Create an API Token](/manual/10-user.html#user-api-tokens) or use an existing API Token to download a new Runner via API using the following **`curl`** request. Be sure to replace **`[URL]`** and **`[ApiToken]`** **`[ProjectName]`** with your Process Automation instance URL and API Token respectively:
+1. [Create an API Token](/manual/10-user.md#user-api-tokens) or use an existing API Token to download a new Runner via API using the following **`curl`** request. Be sure to replace **`[URL]`** and **`[ApiToken]`** **`[ProjectName]`** with your Process Automation instance URL and API Token respectively:
     :::tip Heads Up!
     Be sure to give each Runner a unique name. This is how you will identify one Runner from another in the platform.
     :::
