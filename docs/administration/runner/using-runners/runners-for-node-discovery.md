@@ -3,7 +3,7 @@
 Runners can be used to discover nodes in environments that are not directly accessible from the Process Automation cluster or from Runbook Automation:
 
 ![Node Source Runner](/assets/img/node-source-runner-selector.png)<br>
-Instructions on how to discover nodes using the Enterprise Runner, click [here](/manual/projects/resource-model-sources/#adding-nodes-to-a-project).
+Instructions on how to discover nodes using the Enterprise Runner, click [here](/manual/projects/resource-model-sources#adding-nodes-to-a-project).
 
 As of version **`4.16.0`**, the following Node Sources are available to use through the Enterprise Runner:
 * **Ansible Inventory**
