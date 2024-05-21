@@ -1,3 +1,7 @@
+---
+redirectFrom: /administration/runner/runner-intro
+---
+
 # Enterprise Runner
 
 ::: enterprise
