@@ -32,7 +32,7 @@ For Runners hosted on virtual-machines, the upgrade process is as follows:
 
 @tab REST API
 1. Retrieve the **Runner ID** of the Runner to upgrade.
-    - This can be done by [listing the Runners via the API](/api#list-available-runners) and noting the Runner ID:
+    - This can be done by [listing the Runners via the API](/api/index.md#list-available-runners) and noting the Runner ID:
       - **```GET /api/41/runnerManagement/runners```**
     - The **Runner ID** is also visible in the Runbook Automation console:
       ![Runner ID](/assets/img/retrieve-runner-id.png)<br>
