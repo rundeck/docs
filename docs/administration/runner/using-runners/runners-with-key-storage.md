@@ -27,7 +27,7 @@ Given the sensitivity of secrets retrieved by the Runner, the following guardrai
 ## Configuration
 To configure a Key Storage integration on the Runner, **configuration properties are set on the Runner**. These properties can be set through the following methods:
 
-**Note:** These examples do not include the full list of configuration properties to configure an integration with Vault.  The full list of properties can be found [here](/manual/key-storage/storage-plugins/vault.html#configuration).
+**Note:** These examples do not include the full list of configuration properties to configure an integration with Vault.  The full list of properties can be found [here](/manual/key-storage/storage-plugins/vault.md#configuration).
 
 ### Example: YAML Configuration File
 ```

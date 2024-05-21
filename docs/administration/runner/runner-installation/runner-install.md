@@ -31,7 +31,7 @@ If setting up Enterprise Runners on virtualized environments, here are baseline 
 1. Execute `java -jar runner_filename.jar` to start the service.
 1. Connection can be confirmed on the Runner Management page on the Last Checkin line. If there are errors in the output resolve those using troubleshooting steps below: 
 1. Runner Logs are located in the ./runner/logs folder under the folder where the jar was executed from. The runner.log file contains operational and important messages about the runner. operations.log tracks an operation starts and if it succeeds or fails. 
-Read more about [Runner logging configuration](/administration/runner-management/runner-logging.md) to customize logging.
+Read more about [Runner logging configuration](/administration/runner/runner-management/runner-logging.md) to customize logging.
 
 ## Linux Service for the Runner 
 The Runner can be installed as a `systemd` service on Linux systems.
@@ -81,8 +81,8 @@ Currently, to obtain the token for a Runner, use the Runner Management API to cr
 
 See:
 
-* [API > Create A New Runner](/api#create-a-new-runner)
-* [API > Regenerate Credentials For the Runner](/api#regenerate-credentials-for-the-runner)
+* [API > Create A New Runner](/api/index.md#create-a-new-runner)
+* [API > Regenerate Credentials For the Runner](/api/index.md#regenerate-credentials-for-the-runner)
 
 :::
 
