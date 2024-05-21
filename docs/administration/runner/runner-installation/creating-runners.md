@@ -2,11 +2,11 @@
 
 The Enterprise Runner can be used to dispatch automation to remote environments and to give teams flexibility with their automation with Projects.
 
-To learn more about the Runner architecture and use-cases, see the [Runner Overview](/administration/runner.md).
+To learn more about the Runner architecture and use-cases, see the [Runner Overview](/administration/runner/index.md).
 
 ## Prerequisites
 
-Before creating a Runner, ensure that you have read the [prerequisites](/docs/administration/runner/#enabling-the-latest-runner-features.md) section of the Runner Overview.
+Before creating a Runner, ensure that you have read the [prerequisites](/administration/runner#enabling-the-latest-runner-features) section of the Runner Overview.
 
 
 ## Creating Runners from System Level
