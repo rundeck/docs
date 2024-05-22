@@ -64,6 +64,48 @@ The ability to manage Runners at the Project level is an early access feature.
 To gain access, please [submit this form](https://www.pagerduty.com/early-access/) and someone from our team will reach out promptly.
 :::
 
+:::warning AppAdmin ACL Policy
+If using the prebuilt AppAdmin ACL Policy (stored on the local filesystem), the following permissions must be **added** to it in order to manage Runners at the Project level:
+```
+runner:
+  - allow: '*' # allow read/write/delete for all Runners
+```
+Therefore, the AppAdmin ACL Policy should look like this:
+```
+description: Admin, all access.
+context:
+  project: '.*' # all projects
+for:
+  resource:
+    - allow: '*' # allow read/create all kinds
+  adhoc:
+    - allow: '*' # allow read/running/killing adhoc jobs
+  job: 
+    - allow: '*' # allow read/write/delete/run/kill of all jobs
+  node:
+    - allow: '*' # allow read/run for all nodes
+  runner:
+    - allow: '*' # allow read/write/delete for all Runners
+by:
+  group: admin
+---
+description: Admin, all access.
+context:
+  application: 'rundeck'
+for:
+  resource:
+    - allow: '*' # allow create of projects
+  project:
+    - allow: '*' # allow view/admin of all projects
+  project_acl:
+    - allow: '*' # allow admin of all project-level ACL policies
+  storage:
+    - allow: '*' # allow read/create/update/delete for all /keys/* storage content
+by:
+  group: admin
+```
+:::
+
 At the Project level, users can create, edit, and delete Runners for that specific Project.
 However, Runners created at the Project level are only available for use within that Project and cannot be used in other Projects.
 
@@ -109,11 +151,11 @@ When a Runner is assigned to a single Project, then users within a Project and w
 - Delete the Runner
 - Regenerate Credentials
 
-![_Changes of any kind can be made to Runners assigned to a single Project_](/assets/img/single-project-runner-abilities.png)
+![_Changes of any kind can be made to Runners assigned to a **single** Project_](/assets/img/single-project-runner-abilities.png)
 
 However, when a Runner is assigned to multiple Projects, then users within Projects can only remove the Runner from their Project. They cannot make other changes to the Runner.
 
-![_Users can only remove a Runner from a Project when it is assigned to multiple Projects_](/assets/img/multi-project-runner-abilities.png)
+![_Users can only remove a Runner from a Project when it is assigned to **multiple** Projects_](/assets/img/multi-project-runner-abilities.png)
 
 This is because when a Runner spans multiple Projects it is considered a _shared resource_.
 
@@ -122,19 +164,19 @@ This is because when a Runner spans multiple Projects it is considered a _shared
 
 A new section Tags is available  at the bottom of the Runner information page. Like in the summary page, a list of associated tags are displayed.
 
-![View details](/assets/img/runner-config-viewdetails.png)
+![View details](/assets/img/runner-config-viewdetails.png)<br>
 
 ### Editing Runners
 
 A new Tags input field was added to allow a adding or removing tags after a Runner has been created.
 
-![Edit Runners](/assets/img/runner-config-edit.png)
+![Edit Runners](/assets/img/runner-config-edit.png)<br>
 
 ### Listing Runners
 
 The Runner summary page has a new Tags column added to the list. The column shouldn’t display if the feature is disabled. Runner tags are listed if available.
 
-![List Runners](/assets/img/runner-config-list.png)
+![List Runners](/assets/img/runner-config-list.png)<br>
 
 ### Runners Status
 
