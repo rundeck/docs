@@ -26,7 +26,7 @@ With the next generation architecture, automation authors can select which Runne
 In the example below, we have a job that will span three different environments.
 
 1. The 1st step (Check Cloud Services Status) is a reference job that is configured with a Remote Runner which will execute a Kubernetes plugin as a workflow step. 
-1. Steps 2,3, and 4 are configured to run on the Local Runner. 
+1. Steps 2, 3, and 4 are configured to run on the Local Runner. 
 1. Step 5 (Check System Resources) is also a reference job similar to step 1, but executes an Ansible playbook through the Ansible plugin and targets nodes in the second environment through a separate Remote Runner. 
 1. Step 7 (Run DB Lock Check) is also a reference job similar to step 1 and 5, but executes a Powershell command through the WinRM plugin and targets nodes in the third environment through a separate Remote Runner.
 

@@ -5,7 +5,7 @@ title: "Runners for Job Execution"
 # Using Enterprise Runners in Jobs
 
 ## Existing jobs
-When the Enterprise Runner feature is enabled as described in the [Overview](/administration/runner/index.md#enabling-the-latest-runner-features),existing jobs will default to the Local Runner even if no Runner selection is made in the job definition. The Local Runner has equivalent execution context as Process Automation cluster or Runbook Automation service.
+When the Enterprise Runner feature is enabled as described in the [Overview](/administration/runner/index.md#enabling-the-latest-runner-features),existing jobs will default to the Local Runner even if no Runner selection is made in the job definition. The Local Runner operates with an execution context equivalent to that of a Process Automation cluster or Runbook Automation service.
 
 ## Creating jobs with Runners
 
