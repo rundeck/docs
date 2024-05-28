@@ -20,7 +20,7 @@ Runbook Automation will take care of security patching, protection, monitoring, 
 
 ## Getting access
 
-Runbook Automation can be evaluated and purchased under the Automation category [here](https://www.pagerduty.com/pricing/). PagerDuty and Runbook Automation accounts are separate at the moment,however, Single Sign On (ex. Okta or Azure AD) for both products can be configured resulting in a unified login experience. [Read the doc](/administration/security/sso.md) on how to configure SSO with Rundeck.
+Runbook Automation can be evaluated and purchased under the Automation category [here](https://www.pagerduty.com/pricing/). PagerDuty and Runbook Automation accounts are separate at the moment, however, Single Sign On (ex. Okta or Azure AD) for both products can be configured resulting in a unified login experience. [Read the doc](/administration/security/sso.md) on how to configure SSO with Rundeck.
 
 ## Runbook Automation and Process Automation differences
 
@@ -32,7 +32,7 @@ The Opsadmin and FullAdmin roles are not available in Runbook Automation, and a 
 
 ### Job execution
 
-As of March 2023, a new Runner architecture (a.k.a.,distributedAutomation feature) is availale for Runbook Automation customers. 
+As of March 2023, a new Runner architecture (a.k.a. distributedAutomation feature) is availale for Runbook Automation customers. 
 1. The new architecture simplifies how Runners are used for automating remote environments. 
 1. With the new architecture, there is a comprehensive list of plugins available to be executed with the Runners: [Remote plugins on Runners](/administration/runner/runner-remoteplugins.md)
 1. The new architecture is off by default so please [review the updated docs](/administration/runner/) on how to enable and use the new features. The documents also cover how to convert to the new architecture from the current default architecture for Runners.
