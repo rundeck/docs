@@ -23,6 +23,15 @@ Release Date: May 20th, 2024
 
 Version 5.3.0 is here! Check out the new features and enhancements for PagerDuty Runbook Automation (formerly Rundeck Enterprise) and Rundeck Community included in this release.
 
+:::warning Concurrent Executions Performance Degradation
+There is a bug in this release that causes execution failures when there are 10 or more concurrent executions. 
+To mitigate this issue, add the following to Configuration Management or to `rundeck-config.properties`:
+```
+dataSource.properties.maximumPoolSize=100
+```
+A permanent fix will be available in the next release.
+:::
+
 ## Highlights
 
 ### Project Runner Management Early Access
