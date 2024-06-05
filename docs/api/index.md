@@ -3363,7 +3363,7 @@ Query Parameters:
 
 **Since v48**:
 
-Includes average duration in the response.
+Includes average duration in the response. And information regarding if the respective project has executions and scheduled disabled.
 
 **Response:**
 
@@ -3387,6 +3387,8 @@ A single object:
     "description": "[description]",
     "project": "[project]",
     "averageDuration": "[timestamp]",
+    "projectDisableExecutions": true/false,
+    "projectDisableSchedule": true/false,
     "name": "[name]"
 }
 ```
