@@ -35,6 +35,12 @@ Changes introduced by API Version number:
 API versions below `{{$apiDepVersion}}` are *deprecated*.  Clients using earlier versions should upgrade to use `{{$apiDepVersion}}` as the minimum version before release `{{ $apiDepRelease }}` to avoid errors.
 :::
 
+### Version 48
+
+* Updated Endpoints:
+  * [`GET /api/V/job/[ID]/forecast`][GET /api/V/job/\[ID\]/forecast] - Forecast now includes average duration, and information if the project has executions and scheduling disabled
+
+
 ### Version 46
 
 * New Endpoints
