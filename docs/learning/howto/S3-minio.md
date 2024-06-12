@@ -1,6 +1,11 @@
 # Configure S3 or Minio for Storing Execution Logs
 Rundeck execution logs are a set of files generated after each job execution. By default, Rundeck stores them on the local filesystem. Another way to store these logs is on a dedicated file storage service like [AWS S3](https://aws.amazon.com/s3/).<br><br>
-By delegating this storage to AWS S3 (or any other S3-compatible bucket system like [Minio](https://min.io/)) it’s possible to use some [features](https://aws.amazon.com/s3/features/) like S3 replication, security management, data persistence, and saving space on the local filesystem.<br><br>
+By delegating this storage to AWS S3 it’s possible to leverage [features](https://aws.amazon.com/s3/features/) like S3 replication, security management, data persistence, and saving space on the local filesystem.<br><br>
+
+::: warning
+Other S3-compatible bucket system like [Minio](https://min.io/) may work with the S3 plugin, but compatibility is not guaranteed.  Minio in this example is used for example purposes and does not imply support.
+:::
+
 In PagerDuty Process Automation (formerly “Rundeck Enterprise”) [cluster](/administration/cluster/#cluster-overview), S3-compatible storage should be the default configuration to ensure access to logs from any cluster member.<br><br>
 This article explains how to configure Rundeck so that these execution logs are stored on services such as Amazon S3 or Minio.
 

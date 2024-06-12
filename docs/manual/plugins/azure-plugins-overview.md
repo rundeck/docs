@@ -14,7 +14,7 @@ These integrations allow operations teams to provide self-service mechanisms to 
 |[**Azure Node Source**](/manual/projects/resource-model-sources/azure)|Node Source|Retrieve Azure virtual machines for Node Inventory.|
 |[**Delete Azure VM**](/manual/node-steps/azure.html#azure-node-delete)|Node Step|Delete an virtual machine.|
 |[**Start Azure VM**](/manual/node-steps/azure.html#azure-node-start)|Node Step|Start (power on) an existing virtual machine.|
-|[**Start Azure VM**](/manual/node-steps/azure.html#azure-node-stop)|Node Step|Stop (power off) an existing virtual machine.|
+|[**Stop Azure VM**](/manual/node-steps/azure.html#azure-node-stop)|Node Step|Stop (power off) an existing virtual machine.|
 |[**Restart Azure VM**](/manual/node-steps/azure.html#azure-node-restart)|Node Step|Restarts an existing virtual machine.|
 |[**Capture VM Snapshot**](/manual/node-steps/azure.html#azure-node-capture)|Node Step|Capture a snapshot of an existing virtual machine.|
 |[**Storage Copy**](/manual/workflow-steps/azure.html#azure-storage-copy)|Workflow Step|Copy or get objects from Azure storage to/from Process Automation (Rundeck).|

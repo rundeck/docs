@@ -43,6 +43,17 @@ All SSH Keys and Passwords are stored under the `keys/` top-level path.
 
 You can embed context property references within the key storage path such as `${job.project}`. See [User Guide - Creating Job Workflows - Context Variables](/manual/job-workflows.md#context-variables).
 
+### SFTP File Copier
+
+To use SFTP as the method for dispatching files and executing scripts against remote nodes, use the following steps:
+
+1. Navigate to **Project Settings** -> **Edit Configuration**.
+2. Click on **Default File Copier**.
+3. From dropdown menu, select **SSHJ-SCP**:
+    ![SSHJ-SCP File Copier](/assets/img/sshj-scp-file-copier.png)
+4. Scroll to the bottom of the configuration page and select the checkbox for **Use SFTP**:
+    ![Use SFTP](/assets/img/use-sftp.png)
+
 ### SCP File Copier
 
 In addition to the general SSH configuration mentioned for in this section, some additional configuration can be done for SCP.

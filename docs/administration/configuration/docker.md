@@ -288,6 +288,11 @@ See the [SSO Documentation](/administration/security/sso/index.md) for more info
 `RUNDECK_PLUGIN_CLUSTER_REMOTEEXECUTION_PREFERREDTAGS=*`  
 `RUNDECK_PLUGIN_CLUSTER_REMOTEEXECUTION_ACTIVEONLY=true`  
 
+
+Toggle Remote Abort feature, which forwards an abort request to the cluster member which is processing the Execution (Enabled by default).
+
+`RUNDECK_PLUGIN_CLUSTER_REMOTEABORT_ENABLED=false`
+
 ### Execution Log Storage
 
 #### S3
