@@ -12,7 +12,7 @@ Install `nvm` to manage your NodeJS installations.
 
 Run `nvm install; nvm use;` to install and set the NodeJS version.  (it will use the `.nvmrc` file in the root of this directory as the version we are currently supporting.)
 
-Run this before the first you start the docs site locally.
+After setting the proper Node version, run this `npm` command before the first you start the docs site locally.
 
 ```
 npm install
