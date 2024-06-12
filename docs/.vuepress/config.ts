@@ -6,7 +6,6 @@ import { containerPlugin } from '@vuepress/plugin-container';
 import { getDirname, path } from '@vuepress/utils';
 import { openGraphPlugin } from 'vuepress-plugin-open-graph';
 import { registerComponentsPlugin } from '@vuepress/plugin-register-components';
-import { redirectPlugin } from "@vuepress/plugin-redirect";
 import { dateSorter } from "@vuepress/helper";
 import { googleAnalyticsPlugin } from '@vuepress/plugin-google-analytics';
 
@@ -109,6 +108,51 @@ export default defineUserConfig({
             facetFilters: [ `version:${setup.base}` ]
         },
       },
+      redirect: {
+        config: {
+          '/manual/01-introduction.html' : '/introduction/introduction.html',
+          '/manual/03-getting-started.html' : '/learning/index.html',
+          '/manual/02-getting-help.html' : '/introduction/getting-help.html',
+          '/manual/04-jobs.html' : '/manual/jobs.html',
+          '/administration/configuration/license.html' : '/administration/license.html',
+          '/manual/servicenow-app.html' : '/manual/integrations/servicenow-app.html',
+          '/administration/security/key-storage.html' : '/manual/key-storage/key-storage.html',
+          '/administration/key-storage/key-storage.html' : '/manual/key-storage/key-storage.html',
+          '/administration/security/storage-plugins.html' : '/manual/key-storage/key-plugins.html',
+          '/administration/key-storage/storage-plugins.html' : '/manual/key-storage/key-plugins.html',
+          '/administration/security/storage-plugins/cyberark-storage.html' : '/manual/key-storage/storage-plugins/cyberark-storage.html',
+          '/administration/key-storage/storage-plugins/cyberark-storage.html' : '/manual/key-storage/storage-plugins/cyberark-storage.html',
+          '/administration/security/storage-plugins/thycotic-storage.html' : '/manual/key-storage/storage-plugins/thycotic-storage.html',
+          '/administration/key-storage/storage-plugins/thycotic-storage.html' : '/manual/key-storage/storage-plugins/thycotic-storage.html',
+          '/administration/security/storage-plugins/vault.html' : '/manual/key-storage/storage-plugins/vault.html',
+          '/manual/command-line-tools/index.html' : '/rd-cli/index.html',
+          '/manual/command-line-tools/rd.html' : '/rd-cli/index.html',
+          '/manual/command-line-tools/rd-acl.html' : '/rd-cli/rd-ext-acl.html',
+          '/history/cves/' : '/history/CVEs/',
+          '/introduction/introduction.html' : '/about/introduction.html',
+          '/administration/architecture-and-deployment/system-architecture.html' : '/about/enterprise/index.html',
+          '/administration/architecture-and-deployment/aws.html' : '/administration/install/aws.html',
+          '/administration/projects/' : '/manual/projects/',
+          '/manual/12-webhooks.html' : '/manual/webhooks.html',
+          '/history/4_0_x/version-4.0.0.html' : '/history/4_x/version-4.0.0.html',
+          '/manual/workflow-steps/aws-athena' : '/manual/workflow-steps/amazon-athena.html',
+          '/enterprise/quickstart.html' : '/enterprise/index.html',
+          '/learning/solutions/automated-diagnostics/solution-overview.html' : '/learning/solutions/automated-diagnostics/index.html',
+          '/manual/plugins/plugins-overview.html' : '/manual/plugins/index.html',
+          '/administration/install/installing-rundeck' : '/administration/install/index',
+          '/learning/tutorial/preparing.html' : '/learning/tutorial/index.html',
+          '/learning/howto/overview.html' : '/learning/howto/index.html',
+          '/learning/getting-started/overview.html' : '/learning/getting-started/index.html',
+          '/plugins/' : '/manual/plugins/full-list',
+          '/learning/getting-started/rba/rba-welcome-overview.html' : '/learning/getting-started/rba/index.html',
+          '/learning/getting-started/jobs/overview.html' : '/learning/getting-started/jobs/index.html',
+          '/manual/key-storage/key-storage.html' : '/manual/key-storage/index.html',
+          '/api/rundeck-api.html' : '/api/index.html',
+          '/introduction/getting-help.html/manual/job-options.html' : '/manual/job-options.html#option-model-provider',
+          '/introduction/getting-help.html/administration/maintenance/tuning-rundeck.html' : '/administration/maintenance/tuning-rundeck.html#quartz-job-threadcount',
+          '/administration/security/sso.html':'/administration/security/sso/index.html'
+       }
+      },
       pwa: {
         update: 'hint',
         cacheHTML: true
@@ -195,51 +239,6 @@ export default defineUserConfig({
       }),
       googleAnalyticsPlugin({
         id: 'G-05XJ24KPYH',
-      }),
-    redirectPlugin({
-        config: {
-            '/manual/01-introduction.html' : '/introduction/introduction.html',
-            '/manual/03-getting-started.html' : '/learning/index.html',
-            '/manual/02-getting-help.html' : '/introduction/getting-help.html',
-            '/manual/04-jobs.html' : '/manual/jobs.html',
-            '/administration/configuration/license.html' : '/administration/license.html',
-            '/manual/servicenow-app.html' : '/manual/integrations/servicenow-app.html',
-            '/administration/security/key-storage.html' : '/manual/key-storage/key-storage.html',
-            '/administration/key-storage/key-storage.html' : '/manual/key-storage/key-storage.html',
-            '/administration/security/storage-plugins.html' : '/manual/key-storage/key-plugins.html',
-            '/administration/key-storage/storage-plugins.html' : '/manual/key-storage/key-plugins.html',
-            '/administration/security/storage-plugins/cyberark-storage.html' : '/manual/key-storage/storage-plugins/cyberark-storage.html',
-            '/administration/key-storage/storage-plugins/cyberark-storage.html' : '/manual/key-storage/storage-plugins/cyberark-storage.html',
-            '/administration/security/storage-plugins/thycotic-storage.html' : '/manual/key-storage/storage-plugins/thycotic-storage.html',
-            '/administration/key-storage/storage-plugins/thycotic-storage.html' : '/manual/key-storage/storage-plugins/thycotic-storage.html',
-            '/administration/security/storage-plugins/vault.html' : '/manual/key-storage/storage-plugins/vault.html',
-            '/manual/command-line-tools/index.html' : '/rd-cli/index.html',
-            '/manual/command-line-tools/rd.html' : '/rd-cli/index.html',
-            '/manual/command-line-tools/rd-acl.html' : '/rd-cli/rd-ext-acl.html',
-            '/history/cves/' : '/history/CVEs/',
-            '/introduction/introduction.html' : '/about/introduction.html',
-            '/administration/architecture-and-deployment/system-architecture.html' : '/about/enterprise/index.html',
-            '/administration/architecture-and-deployment/aws.html' : '/administration/install/aws.html',
-            '/administration/projects/' : '/manual/projects/',
-            '/manual/12-webhooks.html' : '/manual/webhooks.html',
-            '/history/4_0_x/version-4.0.0.html' : '/history/4_x/version-4.0.0.html',
-            '/manual/workflow-steps/aws-athena' : '/manual/workflow-steps/amazon-athena.html',
-            '/enterprise/quickstart.html' : '/enterprise/index.html',
-            '/learning/solutions/automated-diagnostics/solution-overview.html' : '/learning/solutions/automated-diagnostics/index.html',
-            '/manual/plugins/plugins-overview.html' : '/manual/plugins/index.html',
-            '/administration/install/installing-rundeck' : '/administration/install/index',
-            '/learning/tutorial/preparing.html' : '/learning/tutorial/index.html',
-            '/learning/howto/overview.html' : '/learning/howto/index.html',
-            '/learning/getting-started/overview.html' : '/learning/getting-started/index.html',
-            '/plugins/' : '/manual/plugins/full-list',
-            '/learning/getting-started/rba/rba-welcome-overview.html' : '/learning/getting-started/rba/index.html',
-            '/learning/getting-started/jobs/overview.html' : '/learning/getting-started/jobs/index.html',
-            '/manual/key-storage/key-storage.html' : '/manual/key-storage/index.html',
-            '/api/rundeck-api.html' : '/api/index.html',
-            '/introduction/getting-help.html/manual/job-options.html' : '/manual/job-options.html#option-model-provider',
-            '/introduction/getting-help.html/administration/maintenance/tuning-rundeck.html' : '/administration/maintenance/tuning-rundeck.html#quartz-job-threadcount',
-            '/administration/security/sso.html':'/administration/security/sso/index.html'
-        }
       }),
     openGraphPlugin({
         host: 'https://docs.rundeck.com',
