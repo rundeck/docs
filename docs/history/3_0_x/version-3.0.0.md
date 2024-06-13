@@ -67,7 +67,7 @@ Pre-authentication modes should work as they did before.
 
 *SSO Integration*
 
-Okta integration is included in Rundeck Pro. See [Rundeck SSO](/administration/security/sso.md)
+Okta integration is included in Rundeck Pro. See [Rundeck SSO](/administration/security/sso/index.md)
 
 ## Thanks
 

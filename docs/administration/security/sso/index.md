@@ -7,9 +7,9 @@ Rundeck Single SignOn is available in both Process Automation and Runbook Automa
 
 There are 3 supported SSO solutions available:
 
-- [Okta](sso/okta.md)
-- [Ping](sso/ping.md)
-- [Azure Active Directory](sso/azure-sso.md)
+- [Okta](okta.md)
+- [Ping](ping.md)
+- [Azure Active Directory](azure-sso.md)
 
 It is possible to connect other OpenID Connect based solutions, but functionality may be limited.
 
@@ -21,7 +21,7 @@ When Upgrading, you must change the redirect url configured with your OAuth prov
 The Login Redirect URI has changed.  
 Change it from `/user/oauth/` to `/login/oauth2/code/`
 
-See vendor specific details for [Okta](sso/okta.md) and [Ping](sso/ping.md).
+See vendor specific details for [Okta](okta.md) and [Ping](ping.md).
 :::
 
 :::warning

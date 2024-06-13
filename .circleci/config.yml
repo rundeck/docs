@@ -6,7 +6,7 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: cimg/node:18.18.0
+      - image: cimg/node:18.19.0
         environment:
           NODE_OPTIONS="--max-old-space-size=6144"
     resource_class: medium+
@@ -20,7 +20,7 @@ jobs:
           keys:
             - v1-dependencies-{{ checksum "package.json" }}
             # fallback to using the latest cache if no exact match is found
-            - v1-dependencies-
+            #- v1-dependencies-
       - run: sudo apt-get update && sudo apt-get install -y apt-transport-https
       - run: sudo apt-get update && sudo apt-get -y install python3-dev python3-pip libpython2-dev
       - run: sudo pip3 install 'awscli==1.29.58'
@@ -146,6 +146,7 @@ workflows:
             branches:
               only:
                 - /[4,5]\.[0-9]+\..*/
+                - vuepress-update
             tags:
               only: /^v.*/
       - update_index:

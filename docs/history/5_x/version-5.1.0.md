@@ -19,7 +19,9 @@ Release Date: February 14th, 2024
 - [Upgrade instructions](/upgrading/)
 - [Watch the Live Stream Release Recap](https://www.youtube.com/live/dEA2h4Iuh1k?si=xiNDxeSJ5EyMHzxO)
 
-<YouTube id="dEA2h4Iuh1k"/>
+<VidStack 
+  src="youtube/dEA2h4Iuh1k"
+/>
 
 
 ## Overview
@@ -39,7 +41,7 @@ The integration can connect with multiple AWS accounts and retrieve secrets from
 
 #### CyberArk and Thycotic Key Storage plugins
 
-The [Enterprise Runner](/administration/runner/runner-intro.md) can now integrate with CyberArk Secrets Manager and Thycotic Secret Server. 
+The [Enterprise Runner](/administration/runner/) can now integrate with CyberArk Secrets Manager and Thycotic Secret Server. 
 These integrations enable customers to retrieve and use secrets within Runbook Automation (self-hosted or cloud) from a CyberArk or Thycotic instance that is not directly accessible from Runbook Automation.  
 This allows customers to continue using their existing secrets-management provider and not store, copy or save those secrets within Runbook Automation. 
 Full documentation for Thycotic can be found [here](/manual/key-storage/storage-plugins/thycotic-storage.md) and for Cyberark [here](/manual/key-storage/storage-plugins/cyberark-storage).
