@@ -6,11 +6,11 @@ redirectTo: /administration/runner/index.md
 
 Building and orchestrating automation in complex multi-cloud and remote environments presents several challenges. The first challenge is that DevOps and Operations engineers need an alternative  to run automation in secure application environments that mandate a zero trust architecture where accessing private networks through SSH is deprecated. Next, significant engineering effort is required to deploy and manage automation that performs well across many remote environments and geographical regions. Lastly, creating resilient automation runbooks is time consuming and prone to error when coordinating a variety of complex environments.
 
-We are introducing a next generation architecture to address these challenges. With the new Process Automation architecture,  DevOps and Operations engineers can easily manage automation in a central UI while delegating job execution within different private networks or multi-cloud environments without needing to open SSH ports for accessing those networks. The new architecture separates workflow orchestration from task execution. It offers next generation remote Runners that include common integration plugins like Ansible and Kubernetes that execute locally to the application environment.
+We are introducing a next generation architecture to address these challenges. With the new Runbook Automation architecture,  DevOps and Operations engineers can easily manage automation in a central UI while delegating job execution within different private networks or multi-cloud environments without needing to open SSH ports for accessing those networks. The new architecture separates workflow orchestration from task execution. It offers next generation remote Runners that include common integration plugins like Ansible and Kubernetes that execute locally to the application environment.
 
 ![Next generation automation](/assets/img/architecture-nextgen.png)
 
-The Runner, available for both Process Automation and Runbook Automation, securely opens up network/communication between data centers and the Automation Cluster. The Runner is a Remote Execution hub for Node Steps to run on specified endpoints, rather than from the Automation server itself.
+The Runner, available for both Runbook Automation, securely opens up network/communication between data centers and the Automation Cluster. The Runner is a Remote Execution hub for Node Steps to run on specified endpoints, rather than from the Automation server itself.
 
 ## System Architecture
 
@@ -33,22 +33,22 @@ In the example below, we have a job that will span three different environments.
 
 ## Prerequisites
 
-The new architecture is available with v4.11+ of Process Automation. The new architecture is off by default and can be turned on with a system setting. The Runner authentication and communication architecture is the same between the two generations of Runners. The new Runners use new APIs, management UI, and have a new and more extensive set of plugins available.
+The new architecture is available with v4.11+ of Runook Automation. The new architecture is off by default and can be turned on with a system setting. The Runner authentication and communication architecture is the same between the two generations of Runners. The new Runners use new APIs, management UI, and have a new and more extensive set of plugins available.
 
 ## Setup steps
 
-If the enterprise Runners are enabled you can skip setting the runner.enabled setting. If you have not enabled the Runner feature please do so by doing the following: Add the following property in rundeck-config.properties file and restart the Process Automation. This feature has been enabled on Docker installations since v4.5.0 and is also enabled by default for Runbook Automation:
+If the enterprise Runners are enabled you can skip setting the runner.enabled setting. If you have not enabled the Runner feature please do so by doing the following: Add the following property in rundeck-config.properties file and restart the Runbook Automation. This feature has been enabled on Docker installations since v4.5.0 and is also enabled by default for Runbook Automation:
 
 `rundeck.feature.runner.enabled=true`
 
-To enable the new architecture, a new configuration feature flag was added to enable/disable the new UI components for managing and running jobs with Runners. The feature flag will turn on all the new UI and APIs. The flag can be added through  “Add config” n the System Configuration UI. Applying this setting does not require a restart of Process Automation.
+To enable the new architecture, a new configuration feature flag was added to enable/disable the new UI components for managing and running jobs with Runners. The feature flag will turn on all the new UI and APIs. The flag can be added through  “Add config” n the System Configuration UI. Applying this setting does not require a restart of Runbook Automation.
 
 `rundeck.feature.distributedAutomation.enabled = true`
 
 
-## Upgrade Notes for customers previously using Runners before Process Automation version 4.11
+## Upgrade Notes for customers previously using Runners before Runbook Automation version 4.11
 
-This section applies only for installations that have deployed the previous generation architecture of Process Automation Runners (this does not apply to Automation Action Runners). You can disable the new architecture by changing the setting to false which will revert to the previous behaviors and UIs of the Runners. Toggling the feature on and off does NOT change Job or Runner data, but it does change how jobs use Runners and the Process Automation UI.
+This section applies only for installations that have deployed the previous generation architecture of Runbook Automation Runners (this does not apply to Automation Action Runners). You can disable the new architecture by changing the setting to false which will revert to the previous behaviors and UIs of the Runners. Toggling the feature on and off does NOT change Job or Runner data, but it does change how jobs use Runners and the Runbook Automation UI.
 
 If you are using the previous generation of Runners before v4.11, and want to enable the new architecture please review how the new architecture behaves - [Overview](/administration/runner/runner-intro.html), [Configuration](/administration/runner/runner-config.html) and [Usage](/administration/runner/runner-using.html) of the new Runners before making changes. The new architecture uses Runner tags that are referenced in Jobs when selecting which Runners will carry out a task instead of relying on node filters hardcoded in the Runner configruation. Once reviewed, update the configuration of your Runners and the jobs using them with the following steps:
 

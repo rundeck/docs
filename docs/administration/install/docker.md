@@ -22,7 +22,7 @@ the full set of configuration options.
 docker run --name some-rundeck -p 4440:4440 -v data:/home/rundeck/server/data rundeck/rundeck:{{$rundeckVersion}}
 ```
 
-## Process Automation (formerly Rundeck Enterprise)
+## Runbook Automation Self-Hosted
 
 [rundeckpro/enterprise:{{$rundeckVersion}}](https://hub.docker.com/r/rundeckpro/enterprise/)
 The following example invocation will require an accessible MySQL instance

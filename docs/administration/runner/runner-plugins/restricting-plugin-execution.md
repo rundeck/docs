@@ -6,7 +6,7 @@ The latest Runners have a new configuration option that controls where plugins a
 There are two lists within the configuration file:
 
 * `allowedPlugins` - This section lists the plugins that are restricted to always run on the remote Runners.
-* `localExecutionPlugins` - This section lists the plugins that are restricted to always run on the "central" Process Automation server.
+* `localExecutionPlugins` - This section lists the plugins that are restricted to always run on the "central" Runbook Automation server.
 
 Both lists are optional and therefore the file can include one section and not the other. Plugins are referenced by their provider name which can be looked up in the Plugins list under System.
 For example the following configuration will restrict WinRM and Docker plugins to only execute on the Remote Runners:

@@ -5,7 +5,7 @@
 
 ### Cluster Remote Execution
 
-This feature allows Process Automation cluster members to forward job executions to
+This feature allows Runbook Automation Self-Hosted cluster members to forward job executions to
 other cluster members based on a policy configuration. By default, each member
 of the cluster executes jobs locally and does not forward them. You can define
 multiple profiles and assign different projects to different profiles. If a job
@@ -159,12 +159,10 @@ rundeck.clusterMode.remoteExecution.profile.Linux.config.uuid=<UUID1>
 
 ### Load Balanced Execution Policy
 
-This feature allows Process Automation cluster members to forward job executions to
+This feature allows  cluster members to forward job executions to
 other cluster members based on statistics calculated by the heartbeat process
 of each cluster member. Load is calculated for each member based on thread
 ratio and the percentage of CPU.
-
-> **Note:** You must be running Process Automation 2.3.1 or a later release to use this feature.
 
 **Example**
 
