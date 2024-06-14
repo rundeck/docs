@@ -7,7 +7,7 @@ order: 400
 
 ## Use Case Description
 
-Assign a specific Rundeck Group access to manage and create Runners.  Valid for Process Automation and Runbook Automation only
+Assign a specific Rundeck Group access to manage and create Runners.  Valid for Runbook Automation commercial products only.
 
 ## Code Description
 Find and replace these values with your own.

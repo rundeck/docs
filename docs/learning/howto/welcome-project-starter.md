@@ -2,7 +2,7 @@
 
 The Rundeck Welcome Projects are sample projects that show how to configure and use Rundeck. In this guide we show you how to set up, start and run the key parts of the Welcome Projects.
 
-There are two Welcome Projects, a Community Welcome Project focused on the Rundeck Open Source and a Welcome Project focused on Process Automation. Once you have the environment set up, you will want to follow the steps in the [Getting Started Tutorial](/learning/tutorial/index.md).
+There are two Welcome Projects, a Community Welcome Project focused on the Rundeck Open Source and a Welcome Project focused on Runbook Automation. Once you have the environment set up, you will want to follow the steps in the [Getting Started Tutorial](/learning/tutorial/index.md).
 
 ### Disclaimer
 
@@ -38,7 +38,7 @@ Navigate to: [https://github.com/rundeckpro/welcome-project](https://github.com/
 1. Download the Source Code (.zip) file.
 1. Extract the contents to a folder on your local hard drive.
 
-_WARNING_: A license is required for the Process Automation Welcome Project. A Process Automation Trial license can be requested from here [https://www.rundeck.com/see-demo](https://www.rundeck.com/see-demo).
+_WARNING_: A license is required for the Runbook Automation Welcome Project. A Runbook Automation Trial license can be requested from here [https://www.rundeck.com/see-demo](https://www.rundeck.com/see-demo).
 
 :::
 
@@ -96,7 +96,7 @@ Click the project name.
 
 In the left nav bar the options available are:
 
-*   Dashboard, to view the project description, Readme, and executions summary. Process Automation users may see additional visualizations for schedules and execution history.
+*   Dashboard, to view the project description, Readme, and executions summary. Runbook Automation users may see additional visualizations for schedules and execution history.
 *   Jobs, the welcome project available jobs.
 
 ![alt_text](/assets/img/howto-welcome-joblist.png)

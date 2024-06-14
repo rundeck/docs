@@ -3,7 +3,7 @@
 ## Introduction
 Rundeck offers a wide range of capabilities, empowering users to automate workflows, schedule jobs, and manage resources efficiently. However, like any software system, it is not immune to issues and glitches that may disrupt its smooth operation. Effective troubleshooting is a crucial skill when it comes to managing and maintaining Rundeck. Having a strong troubleshooting mindset and knowing how to detect problems and determine their underlying causes are very helpful in ensuring the reliability and stability of Rundeck deployments. 
 
-This guide explores the significance of troubleshooting in the context of Rundeck and provides practical insights on where to look for common problems, how to analyze them, and how to report on them. By mastering the art of troubleshooting, you will be better equipped to identify and address any issues that arise, maximizing the productivity and efficiency of your Rundeck environment.  These strategies and tools should work equally well with a Process Automation commercial installation.
+This guide explores the significance of troubleshooting in the context of Rundeck and provides practical insights on where to look for common problems, how to analyze them, and how to report on them. By mastering the art of troubleshooting, you will be better equipped to identify and address any issues that arise, maximizing the productivity and efficiency of your Rundeck environment.  These strategies and tools should work equally well with a Runbook Automation commercial installation.
 
 ## Troubleshooting Strategy 
 
@@ -150,11 +150,11 @@ This error can occur for many reasons, such as:
 * Check if the server has sufficient physical memory available.
 
 #### Database LockException
-When Rundeck/Process Automation starts it needs to check for the database status to be up to date. This process is handled by a Liquibase migration progress (this process runs each time the software starts, it is not only related to an upgrade).
+When Rundeck/Runbook Automation starts it needs to check for the database status to be up to date. This process is handled by a Liquibase migration progress (this process runs each time the software starts, it is not only related to an upgrade).
 
-If there is an interruption while starting Rundeck/Process Automation, the database can get into an "stuck" state while performing the Liquibase migration process, this can prevent Rundeck/Process Automation from starting. It is possible to recover from this state, but the steps must be carefully followed.
+If there is an interruption while starting Rundeck/Runbook Automation, the database can get into an "stuck" state while performing the Liquibase migration process, this can prevent Rundeck/Runbook Automation from starting. It is possible to recover from this state, but the steps must be carefully followed.
 
-1. Make sure there are no Rundeck/Process Automation instances running.
+1. Make sure there are no Rundeck/Runbook Automation instances running.
 2. Once all instances are down, perform an update directly to the DB and change the "LOCKED" status
 3. Update table "DATABASECHANGELOGLOCK" field "LOCKED" to `false`. (Some databases uses `0/1` instead of a text, if that is the case, set the value to `0`)
 4. You can now start the software again and it should be able to obtain lock and perform the Liquibase migration process.
@@ -164,8 +164,8 @@ Update example query
 
 `Example stacktrace of a stuck db`
 ```
-[2023-11-22T16:21:28,445] ERROR rundeckapp.Application [main] - Cannot obtain lock on table DATABASECHANGELOGLOCK. This could be due to a database connection issue when starting a Process Automation instance. 
-To force the unlock you must first make sure that are no Process Automation instances running using this DB. You can change the lock status directly on the database and start Process Automation again by setting 'LOCKED' field in the table 'DATABASECHANGELOGLOCK' as false (or 0 depending on the database)
+[2023-11-22T16:21:28,445] ERROR rundeckapp.Application [main] - Cannot obtain lock on table DATABASECHANGELOGLOCK. This could be due to a database connection issue when starting a Runbook Automation instance. 
+To force the unlock you must first make sure that are no Runbook Automation instances running using this DB. You can change the lock status directly on the database and start Runbook Automation again by setting 'LOCKED' field in the table 'DATABASECHANGELOGLOCK' as false (or 0 depending on the database)
 liquibase.exception.LockException: Could not acquire change log lock.  Currently locked by MY_PC (192.168.3.29) since 11/20/23, 2:20 PM
 	at liquibase.lockservice.StandardLockService.waitForLock(StandardLockService.java:275) ~[liquibase-core-4.19.0.jar:?]
 	at liquibase.Liquibase.lambda$update$1(Liquibase.java:239) ~[liquibase-core-4.19.0.jar:?]
