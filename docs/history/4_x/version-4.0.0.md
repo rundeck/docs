@@ -17,7 +17,7 @@ Warning:  This release contains a bug that will cause issues in environments usi
 
 ## Rundeck Enterprise has a new Name
 
-With the introduction of version 4.0 the Rundeck Enterprise version will be renamed to _PagerDuty Process Automation OnPrem_.  The Rundeck Cloud version announced late in 2021 is Generally Available and will be known as _PagerDuty Runbook Automation._ [Read more about Runbook Automation](/about/cloud/index.md). The Open Source version will continue to be _Rundeck._  The renames will take some time to implement, so bear with us as we update pages, documentation, and other areas of our new ecosystem.
+With the introduction of version 4.0 the Rundeck Enterprise version will be renamed to _PagerDuty Runbook Automation Self-Hosted_.  The Rundeck Cloud version announced late in 2021 is Generally Available and will be known as _PagerDuty Runbook Automation._ [Read more about Runbook Automation](/about/cloud/index.md). The Open Source version will continue to be _Rundeck._  The renames will take some time to implement, so bear with us as we update pages, documentation, and other areas of our new ecosystem.
 
 ## Enterprise Runner
 

@@ -5,7 +5,7 @@ date: 2023-12-14
 image: /images/chevron-logo-red-on-white.png
 feed:
  enable: true
- description: "Rundeck/Process Automation 5.0 is here!"
+ description: "Rundeck/Runbook Automation 5.0 is here!"
 
 ---
 
@@ -30,7 +30,7 @@ Be sure to follow the [Upgrade instructions](/upgrading/) when moving to version
 
 ## Overview
 
-Rundeck/Process Automation 5.0 is here! This release updates the underlying foundations of the Rundeck and Process Automation platform to open up more opportunities for enhancements and improvements in the 5.x series.
+Rundeck/Runbook Automation 5.0 is here! This release updates the underlying foundations of the Rundeck and Runbook Automation platform to open up more opportunities for enhancements and improvements in the 5.x series.
  
 Our major version releases typically center around updates to the foundational libraries we use to build Rundeck. The result is a more stable, extensible, and secure product from the extensive library updates.  There are also commonly breaking changes or key upgrade steps to be aware of.  For this 5.0 release, we still included some enhancements and have more planned throughout the 5.x release cycle.
 
@@ -49,7 +49,7 @@ To align the product with some of the foundational updates listed below the 5.0 
 
 Saved Job, Report, and Node filters are no longer stored in the database.  Node Filters are now stored locally on the browser and we will be updating Job and Report filters to function the same way in a future release.
 
-Apache Tomcat is no longer a supported Application Server platform for Rundeck or Process Automation.
+Apache Tomcat is no longer a supported Application Server platform for Rundeck or Runbook Automation.
 
 ### API Changes
 
@@ -65,7 +65,7 @@ With this release the versioning for the Enterprise Runner is now aligned with t
 
 ### “Under the hood” updates
 
-- Grails 6 is now the foundation for Rundeck and Process Automation products.
+- Grails 6 is now the foundation for Rundeck and Runbook Automation products.
 - Builds are now completed using Node 18.
 - Started conversion of pages from old UI code to Vue.  This effort will be on-going through the 5.x series and will bring performance improvements across the product.
 

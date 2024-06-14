@@ -14,7 +14,7 @@ Warning: This version of Rundeck updates the libraries used for the built-in H2 
 
 ## Overview
 
-Check out the new features and enhancements for the commercial products (Runbook Automation and Process Automation On Prem formerly Rundeck Enterprise) and Rundeck Community included in this release.
+Check out the new features and enhancements for the commercial products (Runbook Automation Self-Hosted, formerly Rundeck Enterprise, and the Runbook Automation SaaS offering) and Rundeck Community included in this release.
 
 - H2 is updated to version 2.x to address a Critical vulnerability.
 - Fixed scenario where `https` connections were reverting to `http` when running behind a load balancer.
