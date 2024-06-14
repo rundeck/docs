@@ -2,11 +2,11 @@
 
 ## Overview
 
-Process Automation integrates with Amazon Web Services (AWS) through a variety of plugins listed below. 
-By integrating Process Automation with AWS, users can provide a centralized, self-service interface for both simple and complex tasks spanning multiple cloud environments.
+Runbook Automation integrates with Amazon Web Services (AWS) through a variety of plugins listed below. 
+By integrating Runbook Automation with AWS, users can provide a centralized, self-service interface for both simple and complex tasks spanning multiple cloud environments.
 
-_Click to expand to see the full list of Process Automation plugins for AWS:_
-<details><summary> <font size="5">Process Automation AWS Plugins</font> </summary>
+_Click to expand to see the full list of Runbook Automation plugins for AWS:_
+<details><summary> <font size="5">Runbook Automation AWS Plugins</font> </summary>
 
 |     AWS Service Type      |Plugin | Plugin Type|
 |:-------------------------:|---------------------------------------------------------|:---------------------------------------------------------:|
@@ -49,10 +49,10 @@ The steps for integrating with AWS will vary depending on the product you are us
 
 [**Runbook Automation**](#aws-integration-for-runbook-automation) - Integration steps for Runbook Automation (Cloud) product.
 
-[**Process Automation on EC2**](#aws-integration-for-process-automation-hosted-on-ec2) - For Process Automation hosted on EC2<br>
-[**Process Automation on ECS**](#process-automation-hosted-on-ecs) - For Process Automation hosted on ECS<br>
+[**Runbook Automation on EC2**](#aws-integration-for-process-automation-hosted-on-ec2) - For Runbook Automation hosted on EC2<br>
+[**Runbook Automation on ECS**](#process-automation-hosted-on-ecs) - For Runbook Automation hosted on ECS<br>
 
-[**Access Key & Secret Key**](#alternative-aws-authentication-access-key-secret-key) - For Process Automation or Runbook Automation when Access Keys are permitted. 
+[**Access Key & Secret Key**](#alternative-aws-authentication-access-key-secret-key) - For Runbook Automation when Access Keys are permitted. 
    :::warning Warning
    Using the **Access Key and Secret Key** method is the **_least_** recommended approach for integrating with AWS and is the **_least secure_**. 
    The other methods of integration are highly recommended in place of using Access Key and Secret Key.
@@ -113,8 +113,8 @@ To configure the AWS integration for an individual project:
 The AWS authentication can be tested using the **Validate Credentials** Job step plugin. Otherwise, being using the rest of the AWS plugins
 that align with the permissions allocated to the IAM Role.
 
-### AWS Integration for Process Automation hosted on EC2
-When self-hosting Process Automation on EC2, the recommended method for integrating with AWS is to assign an IAM role to the EC2 virtual-machines:
+### AWS Integration for Runbook Automation hosted on EC2
+When self-hosting Runbook Automation on EC2, the recommended method for integrating with AWS is to assign an IAM role to the EC2 virtual-machines:
 
 1. Go to the AWS Management Console and open the **IAM** console at [https://console.aws.amazon.com/iam/](https://console.aws.amazon.com/iam/).
 2. In the navigation pane of the console, click **Roles** and then click **Create New Role**.
@@ -133,7 +133,7 @@ When self-hosting Process Automation on EC2, the recommended method for integrat
 10. Click on **Choose IAM Role** and find the IAM Role you created in **Step 6** then click **Update IAM Role**:
 ![Update IAM Role](/assets/img/aws-update-ec2-iam-role.png)
 
-Now that the IAM Role is attached to the EC2, use the following steps to define this authentication method in Process Automation:
+Now that the IAM Role is attached to the EC2, use the following steps to define this authentication method in Runbook Automation:
 
 **System Level**
 1. Click on the **System Menu** (gear icon) in the upper right.
@@ -155,9 +155,9 @@ Now that the IAM Role is attached to the EC2, use the following steps to define 
 7. Click **Save** in the lower right.
 
 
-### Process Automation hosted on ECS
+### Runbook Automation hosted on ECS
 
-When self-hosting Process Automation on ECS, the recommended method for integrating with AWS is to assign an IAM role to the ECS Task Role:
+When self-hosting Runbook Automation on ECS, the recommended method for integrating with AWS is to assign an IAM role to the ECS Task Role:
 
 1. Go to the AWS Management Console and open the **IAM** console at [https://console.aws.amazon.com/iam/](https://console.aws.amazon.com/iam/).
 2. In the navigation pane of the console, click **Roles** and then click **Create New Role**.
@@ -171,11 +171,11 @@ When self-hosting Process Automation on ECS, the recommended method for integrat
 6. Specify a **Role Name** and a **Description**.  Do not change the **Select trusted entities**.
 7. Click **Create Role**.
 8. Navigate to the **ECS** console and click on **Task Definitions**.
-9. Select the Task Definition used for Process Automation and **Create new revision**.
+9. Select the Task Definition used for Runbook Automation and **Create new revision**.
 10. Scroll down to the **Environment** section and select the role you created for the **Task Role** field:
 ![Assign IAM Role](/assets/img/aws-ecs-assign-task-role.png)
 
-Now that the IAM Role is attached to the ECS Task, use the following steps to define this authentication method in Process Automation:
+Now that the IAM Role is attached to the ECS Task, use the following steps to define this authentication method in Runbook Automation:
 
 **System Level**
 1. Click on the **System Menu** (gear icon) in the upper right.

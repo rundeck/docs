@@ -40,7 +40,7 @@ This mode is provided as the default for backwards compatibility on instances th
 This mode will get secrets using the [Central Credential Provider](https://docs.cyberark.com/AAM-CP/13.0/en/Content/CCP/The-Central%20-Credential-Provider.htm) (CCP) web service configuration.  To setup Cyberark for this method follow [this docmentation](https://docs.cyberark.com/AAM-CP/13.0/en/Content/CCP/Configure_CCPWindows.htm).
 
 
-This mode has a limitation that it is unable to list the keys in safes.  When writing Process Automation jobs the job author will need to manually enter the path to the key using the following format:
+This mode has a limitation that it is unable to list the keys in safes.  When writing Runbook Automation jobs the job author will need to manually enter the path to the key using the following format:
 
 `[provider_path]/[safe]/path/to/secret.pem`
 

@@ -4,7 +4,7 @@ The Google Cloud Platform(GCP) Compute Health Check can provide health status up
 
 ### Authentication & Configuration
 Follow the steps outlined in the [**Google Cloud Integration Overview**](/manual/plugins/gcp-plugins-overview) doc to configure credentials for the GCP plugins.
-Credentials can be configured on a per Project basis or for the entire Process Automation system.
+Credentials can be configured on a per Project basis or for the entire Runbook Automation system.
 
 ![GCP Compute Health Check](/assets/img/healthcheck-gcp-compute.png)
 

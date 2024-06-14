@@ -10,7 +10,7 @@ This allows for targeted automation on EC2 instances - based off of instance-pro
 ## Configuring
 
 ### Authentication
-Follow the instructions outlined in the [AWS Plugins Overview](/manual/plugins/aws-plugins-overview.html) for Process Automation to authenticate with AWS.
+Follow the instructions outlined in the [AWS Plugins Overview](/manual/plugins/aws-plugins-overview.html) for Runbook Automation to authenticate with AWS.
 
 ::: tip 
 If using AWS user credentials and a newer plugin version that allows it, store the secret key in Rundeck Key Storage and choose it via the **Secret Key Storage Path** field instead of the **Secret Key** field in your Node Source.

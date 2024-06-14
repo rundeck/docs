@@ -2,8 +2,8 @@
 
 ## Overview
 
-Process Automation integrates with PagerDuty Incident Response through a variety of plugins listed below.
-By integrating Process Automation with Incident Response, users can automatically update incidents, run response plays, add diagnostics and much more.
+Runbook Automation integrates with PagerDuty Incident Response through a variety of plugins listed below.
+By integrating Runbook Automation with Incident Response, users can automatically update incidents, run response plays, add diagnostics and much more.
 
 ## Plugins
 
@@ -59,7 +59,7 @@ Use the following steps to configure authentication for the PagerDuty plugins fo
 
 ### System Level Configuration
 
-Use the following steps to configure authentication for the PagerDuty plugins for the whole Process Automation system.
+Use the following steps to configure authentication for the PagerDuty plugins for the whole Runbook Automation system.
 
 1. Click on the **System Menu** (gear icon) in the upper right.
 2. Click on **System Configuration**.

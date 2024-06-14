@@ -7,7 +7,7 @@
 
 AWS **Fargate** is a serverless compute engine that is compatible with both Amazon Elastic Container Service (ECS) and Amazon Elastic Kubernetes Service (EKS).
 
-The **Amazon ECS-Fargate Node Source** retrieves the running containers in ECS and adds them to the Node Inventory in **PagerDuty Process Automation** and **Runbook Automation**:
+The **Amazon ECS-Fargate Node Source** retrieves the running containers in ECS and adds them to the Node Inventory in **Runbook Automation**:
 
 ![ECS Node Attributes](/assets/img/aws-ecs-node-attributes.png)<br>
 
@@ -16,7 +16,7 @@ This plugin is designed to work in tandem with the [ECS Node Executor](/manual/p
 ## Configuration
 
 ### AWS Permissions
-In order for Process Automation to discover the ECS Tasks and populate them into the node inventory, proper IAM permission must be provided.
+In order for Runbook Automation to discover the ECS Tasks and populate them into the node inventory, proper IAM permission must be provided.
 The following permissions are required, but can be restricted in scope:
 **`ecs:ListTasks`**
 **`ecs:ListServices`**
@@ -82,17 +82,17 @@ Here is a sample IAM Policy that will only discover Tasks from **_specific_ clus
 }
 ```
 
-Once the IAM Policy has been created, attach it to the IAM Role that you have associated with Process Automation or the Access Key credentials.
+Once the IAM Policy has been created, attach it to the IAM Role that you have associated with Runbook Automation or the Access Key credentials.
 
 ### Authentication
-There are multiple ways for Process Automation to authenticate with AWS. Follow the instructions outlined in the [AWS Plugins Overview](/manual/plugins/aws-plugins-overview.html) for Process Automation to authenticate with AWS.
+There are multiple ways for Runbook Automation to authenticate with AWS. Follow the instructions outlined in the [AWS Plugins Overview](/manual/plugins/aws-plugins-overview.html) for Runbook Automation to authenticate with AWS.
 
 #### Assume Role ARN
 
 There are cases when it is beneficial to use a different IAM Role than the one used for the [AWS PluginGroup](/manual/plugins/aws-plugins-overview.html#setup) for the integration to retrieve the ECS Tasks and add them to the node inventory.
 For example, to target ECS Tasks from across multiple AWS Accounts, then a different IAM Role needs to be "assumed" in order to retrieve tasks from each AWS Account.  
 
-The **Assume Role ARN** field can be populated with an IAM Role ARN that Runbook or Process Automation can assume _after_ an authentication method has been provided through the PluginGroup.
+The **Assume Role ARN** field can be populated with an IAM Role ARN that Runbook or Runbook Automation can assume _after_ an authentication method has been provided through the PluginGroup.
 
 
 ### Add Node Source
@@ -155,4 +155,4 @@ to the right of **Container-Image** will filter the displayed containers to thos
 
 ## Executing Commands on ECS Containers
 
-Once the containers have been retrieved as nodes in Process Automation, commands can be executed on one or more containers using the [ECS Node Executor](/manual/projects/node-execution/aws-ecs).
+Once the containers have been retrieved as nodes in Runbook Automation, commands can be executed on one or more containers using the [ECS Node Executor](/manual/projects/node-execution/aws-ecs).

@@ -2,8 +2,8 @@
 
 ## Overview
 
-Process Automation integrates with Azure through a variety of plugins listed below.
-By integrating Process Automation with Azure, users can automate and provide self-service interfaces for operations of their infrastructure and applications.
+Runbook Automation integrates with Azure through a variety of plugins listed below.
+By integrating Runbook Automation with Azure, users can automate and provide self-service interfaces for operations of their infrastructure and applications.
 These integrations allow operations teams to provide self-service mechanisms to users throughout the business, as well as setup event-driven automation for workflows with Azure.
 
 <details><summary> <font size="5">Azure Plugins</font>
@@ -17,7 +17,7 @@ These integrations allow operations teams to provide self-service mechanisms to 
 |[**Stop Azure VM**](/manual/node-steps/azure.html#azure-node-stop)|Node Step|Stop (power off) an existing virtual machine.|
 |[**Restart Azure VM**](/manual/node-steps/azure.html#azure-node-restart)|Node Step|Restarts an existing virtual machine.|
 |[**Capture VM Snapshot**](/manual/node-steps/azure.html#azure-node-capture)|Node Step|Capture a snapshot of an existing virtual machine.|
-|[**Storage Copy**](/manual/workflow-steps/azure.html#azure-storage-copy)|Workflow Step|Copy or get objects from Azure storage to/from Process Automation (Rundeck).|
+|[**Storage Copy**](/manual/workflow-steps/azure.html#azure-storage-copy)|Workflow Step|Copy or get objects from Azure storage to/from Runbook Automation (Rundeck).|
 |[**Storage Delete**](/manual/workflow-steps/azure.html#azure-storage-delete)|Workflow Step|Delete blob storage from Azure storage container.|
 |[**Storage List**](/manual/workflow-steps/azure.html#azure-storage-list)|Workflow Step|List blobs from Azure storage container.|
 |[**Create Azure VM**](/manual/workflow-steps/azure.html#azure-vm-create)|Workflow Step|Create a new Azure virtual machine.|
@@ -29,16 +29,16 @@ These integrations allow operations teams to provide self-service mechanisms to 
 |[**Azure Active Directory SSO**](/administration/security/sso/azure-sso)|Single Sign On|Use Azure Active Directory to authenticate users.|
 </details>
 <br>
-<em>Click to expand to see the full list of Process Automation plugins for Azure.</em>
+<em>Click to expand to see the full list of Runbook Automation plugins for Azure.</em>
 
 ## Setup
 
 ### Create a New App Registration in Azure
 
-Use the following steps to create and authorize an app in Azure to provide access to Process Automation plugins:
+Use the following steps to create and authorize an app in Azure to provide access to Runbook Automation plugins:
 
 :::tip Tip
-If you have already created an Azure AD application for Process Automation, skip to [Existing App Registration](#existing-app-registration).
+If you have already created an Azure AD application for Runbook Automation, skip to [Existing App Registration](#existing-app-registration).
 :::
 
 1. Sign in to the [Azure Portal](https://portal.azure.com/)
@@ -55,7 +55,7 @@ If you have already created an Azure AD application for Process Automation, skip
 9. Click **Add**.
 10. Copy the **Value** and **Secret ID** from the **Certificates & secrets** page and save them to a secure location.
     :::warning Heads Up!
-    Do not skip this step. These values will not be retrievable after you navigate away from this page. The **Value** is required when configuring the plugins in Process Automation.
+    Do not skip this step. These values will not be retrievable after you navigate away from this page. The **Value** is required when configuring the plugins in Runbook Automation.
     :::
 11. Navigate to **Azure Services** > **Subscriptions** and select the link for the **Subscription name**:
     ![Subscription ID](/assets/img/azure-subscription-id.png)
@@ -104,7 +104,7 @@ If you have already created an Azure AD application for Process Automation, skip
 You won't be able to see this value again after you leave this page.
 :::
 
-### Configure Azure Plugin Suite in Process Automation
+### Configure Azure Plugin Suite in Runbook Automation
 
 Authentication for the Azure plugins can be configured for the entire system or for an individual project. Credentials can be optionally be overwritten on a per-plugin basis, such as an individual Job Step.
 
@@ -129,7 +129,7 @@ Use the following steps to configure authentication for the Azure plugins for a 
 
 ### System Level Configuration
 
-Use the following steps to configure authentication for the Azure plugins for the whole Process Automation system.
+Use the following steps to configure authentication for the Azure plugins for the whole Runbook Automation system.
 
 1. Click on the **System Menu** (gear icon) in the upper right.
 2. Click on **System Configuration**.

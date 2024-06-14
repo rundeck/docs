@@ -3,11 +3,11 @@
 :::enterprise
 :::
 
-Process Automation users have the ability to use this plugin to import their host list in Sensu by creating nodes matching all the hosts. This makes it easy to import nodes from Sensu.
+Runbook Automation users have the ability to use this plugin to import their host list in Sensu by creating nodes matching all the hosts. This makes it easy to import nodes from Sensu.
 
 ## Authentication
 
-To authenticate Process Automation with Sensu, follow instructions outlined in [this documentation](/manual/plugins/sensu-plugins-overview.md).
+To authenticate Runbook Automation with Sensu, follow instructions outlined in [this documentation](/manual/plugins/sensu-plugins-overview.md).
 
 ## Configuration
 

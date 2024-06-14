@@ -4,7 +4,7 @@ The Azure Resource Model Source Plugin provides the Azure VMs as nodes on a Rund
 ## Authentication
 
 Follow the steps outlined in the [**Azure Plugins Overview**](/manual/plugins/azure-plugins-overview) to configure authentication for Azure Job steps.
-Credentials can be configured on a per Job Step basis, Project basis, or for the entire Process Automation system.
+Credentials can be configured on a per Job Step basis, Project basis, or for the entire Runbook Automation system.
 
 The source code lives at [https://github.com/rundeck-plugins/rundeck-azure-plugin](https://github.com/rundeck-plugins/rundeck-azure-plugin).
 

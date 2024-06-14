@@ -5,16 +5,16 @@
 ## Overview
 The Node Executor and File Copier plugins use [AWS Systems Manager](https://aws.amazon.com/systems-manager/) to send commands, files and scripts to remote nodes.
 
-Using the SSM plugins allows for Process Automation to communicate with EC2 instances through the SSM service, rather than another communication protocol - such as SSH. 
-Process Automation sends commands to the Systems Manager service, and then the Systems Manager agents _pull_ their tasks onto their host EC2s. In addition, S3 is used to pass scripts and files to remote nodes.
+Using the SSM plugins allows for Runbook Automation to communicate with EC2 instances through the SSM service, rather than another communication protocol - such as SSH. 
+Runbook Automation sends commands to the Systems Manager service, and then the Systems Manager agents _pull_ their tasks onto their host EC2s. In addition, S3 is used to pass scripts and files to remote nodes.
 
-![Basic Architecture of Process Automation with SSM](/assets/img/ssm-node-executor-architecture.png)
+![Basic Architecture of Runbook Automation with SSM](/assets/img/ssm-node-executor-architecture.png)
 
 ## Configuration and Credential Settings
 
-There are three components of the setup for using SSM with Process Automation:
+There are three components of the setup for using SSM with Runbook Automation:
 1. SSM and IAM setup on the remote EC2 nodes.
-2. IAM permissions for Process Automation.
+2. IAM permissions for Runbook Automation.
 3. S3 Bucket setup. Required for executing scripts and sending files to EC2s, but not required for sending individual commands.
 
 ### SSM Setup on Remote EC2 Nodes
@@ -47,10 +47,10 @@ There are three components of the setup for using SSM with Process Automation:
 
 Additional documentation on this setup can be found in the [Setting up AWS Systems Manager for EC2 instances](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-setting-up-ec2.html).
 
-### IAM Permissions Setup for Process Automation
+### IAM Permissions Setup for Runbook Automation
 
-In order for Process Automation to communicate with remote EC2 instances using SSM, it needs to have permissions to send commands to the SSM service.
-Amazon provides a prebuilt IAM Policy, **AmazonSSMAutomationRole** that can be used for providing the SSM permissions to Process Automation's IAM Role. 
+In order for Runbook Automation to communicate with remote EC2 instances using SSM, it needs to have permissions to send commands to the SSM service.
+Amazon provides a prebuilt IAM Policy, **AmazonSSMAutomationRole** that can be used for providing the SSM permissions to Runbook Automation's IAM Role. 
 However, it is recommended to **only use this role for testing** as it has fairly broad permissions. 
 
 Here are steps to use a more secure permissions set:
@@ -89,15 +89,15 @@ Here are steps to use a more secure permissions set:
         ]
     }
     ``` 
-2. Attach this policy with the IAM Role that is associated with Process Automation.  If Process Automation is hosted on EC2, then follow [these steps](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html#attach-iam-role) to modify the IAM Role of an EC2. If hosted on ECS, then follow [these steps](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html#specify-task-iam-roles).
+2. Attach this policy with the IAM Role that is associated with Runbook Automation.  If Runbook Automation is hosted on EC2, then follow [these steps](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html#attach-iam-role) to modify the IAM Role of an EC2. If hosted on ECS, then follow [these steps](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html#specify-task-iam-roles).
    :::warning IAM Role for ECS
-   If running Process Automation on ECS, then this IAM Policy needs to be attached to the **Task Role**, _not_ the _Task Execution Role_.
+   If running Runbook Automation on ECS, then this IAM Policy needs to be attached to the **Task Role**, _not_ the _Task Execution Role_.
     ::: 
 
 ### S3 Bucket Permissions
 In order for scripts and files to be picked up by the SSM agents on the remote nodes, the files are (temporarily) passed through an S3 bucket.
 
-1. Create an S3 bucket that has a bucket policy that allows for objects to be _uploaded_ to it by the IAM policy associated with Process Automation.
+1. Create an S3 bucket that has a bucket policy that allows for objects to be _uploaded_ to it by the IAM policy associated with Runbook Automation.
 2. Include a permission statement in this policy that allows for the remote EC2 instances to _retrieve_ objects from the bucket.
 3. Here is an example policy:
     :::warning Heads Up!                                                        
@@ -121,7 +121,7 @@ In order for scripts and files to be picked up by the SSM agents on the remote n
            {
                "Effect": "Allow",
                "Principal": {
-                   "AWS": "arn:aws:iam::<<Process Automation AWS account ID>>:role/<<ARN associated with Process Automation>>"
+                   "AWS": "arn:aws:iam::<<Runbook Automation AWS account ID>>:role/<<ARN associated with Runbook Automation>>"
                },
                "Action": [
                    "s3:PutObject"
@@ -138,13 +138,13 @@ You can test that the S3 permissions have been set up correctly by executing a s
 Follow the instructions outlined in [this AWS documentation](https://docs.aws.amazon.com/systems-manager/latest/userguide/integration-s3.html) to set up and run the test.
 :::
 
-## Setup Within Process Automation
+## Setup Within Runbook Automation
 
 ### AWS Authentication
-Follow the instructions outlined in the [AWS Plugins Overview](/manual/plugins/aws-plugins-overview.html) for Process Automation to authenticate with AWS.
+Follow the instructions outlined in the [AWS Plugins Overview](/manual/plugins/aws-plugins-overview.html) for Runbook Automation to authenticate with AWS.
 
 ### Node Discovery
-In order to target the remote EC2 instances, they need to be populated into Process Automation's node inventory. 
+In order to target the remote EC2 instances, they need to be populated into Runbook Automation's node inventory. 
 It is recommended to use the [**EC2 Node Source**](/manual/projects/resource-model-sources/aws.html#amazon-ec2-node-source).
 
 :::warning When not using the EC2 Node Source
@@ -164,7 +164,7 @@ The SSM Node Executor can be set as the **Default Node Executor** - thereby maki
 1. Navigate to **Project Settings** -> **Edit Configuration** -> **Default Node Executor**.
 2. Select the dropdown on the left and select **AWS / SSM / Node Executor**:
     ![](/assets/img/ssm-select-default-node-executor.png)
-3. If Process Automation is authenticated with AWS through an associated IAM Role, then all the fields can be left as their defaults. Otherwise, fill in the **Access Key ID** and **Secret Key** fields.
+3. If Runbook Automation is authenticated with AWS through an associated IAM Role, then all the fields can be left as their defaults. Otherwise, fill in the **Access Key ID** and **Secret Key** fields.
 4. See below for using **CloudWatch Logs** for larger log-output.
 5. Optionally modify the **Log Filter Delay** property to be the number of seconds to wait before retrieving logs.
 <br><br>
@@ -187,7 +187,7 @@ The SSM File Copier can be set as the **Default File Copier** - thereby making i
 1. Navigate to **Project Settings** -> **Edit Configuration** -> **Default File Copier**.
 2. Select the dropdown on the left and select **AWS / SSM / File Copier**.
 3. Place the name of the S3 bucket into the **Bucket Name** field.
-4. If Process Automation is authenticated with AWS through an associated IAM Role, then the credential fields can be left blank. Otherwise, fill in the **Access Key ID** and **Secret Key** fields.
+4. If Runbook Automation is authenticated with AWS through an associated IAM Role, then the credential fields can be left blank. Otherwise, fill in the **Access Key ID** and **Secret Key** fields.
 
 **Individual Nodes and Node Sources Setting**       
 The SSM File Copier can alternatively be configured on a per **Node Source** or per node basis. To do so, add **`file-copier=aws-ssm-copier`** and **`ssm-copier-bucket=S3 bucket name`** as a node-attribute to the nodes.
@@ -197,7 +197,7 @@ Once the setup is complete, commands that are executed on the specified EC2s - e
 Similarly, scripts that are executed using the **Incline Script** Job step will take place using SSM with S3 as the pass-through mechanism.
 
 ## Using CloudWatch Logs (Optional)
-The example policies in the prior sections enable Process Automation to retrieve logs directly from SSM.  
+The example policies in the prior sections enable Runbook Automation to retrieve logs directly from SSM.  
 However, these logs are truncated to 48,000 characters. To view logs that are longer than this limit, CloudWatch logs are used.  
 
 ### SSM Agent Permissions for Cloudwatch
@@ -228,9 +228,9 @@ Add the following IAM permissions to the IAM Role that is associated with the re
 }
 ```
 
-Next, add the following permissions to the IAM Role that is associated with Process Automation: **`logs.GetLogEvents`**.
+Next, add the following permissions to the IAM Role that is associated with Runbook Automation: **`logs.GetLogEvents`**.
 
-### Enable CloudWatch Configuring in Process Automation
+### Enable CloudWatch Configuring in Runbook Automation
 To use Cloudwatch logs for all SSM output across all nodes that use SSM within the project, specify the **CloudWatch Log Group** in the Node Executor. 
 Alternatively, add the following to the **Mapping Params** **`cloudwatch-log-group.default=<<CloudWatch Log Group Name>>`** on the node source or with **`cloudwatch-log-group=<<CloudWatch Log Group Name>>`** as a node-attribute.
 

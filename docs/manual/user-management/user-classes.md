@@ -2,7 +2,7 @@
 
 ## Overview
 
-User Class Management allows Process Automation customers to assign users to User Classes which act as a super-set of ACL enforcement and licensing seat management.  Each class enforces a pre-set collection of restrictions across all customer defined projects.  The Class Management module included as part of the User Management features will allow customers to assign users to classes to fit their use cases.
+User Class Management allows Runbook Automation customers to assign users to User Classes which act as a super-set of ACL enforcement and licensing seat management.  Each class enforces a pre-set collection of restrictions across all customer defined projects.  The Class Management module included as part of the User Management features will allow customers to assign users to classes to fit their use cases.
 
 ![User Class Screen](/assets/img/user-classes.png)
 
@@ -12,7 +12,7 @@ User Classes act as a super set of ACLs.  Rundeck uses a lowest privilege model.
 
 ### Full User
 
-This User Class allows full access to the Process Automation environment.
+This User Class allows full access to the Runbook Automation environment.
 
 ### Job Runner
 
@@ -32,7 +32,7 @@ Possible values are: `[FullUser | JobRunner | None]`
 
 If the setting is not present `FullUser` is used for OnPrem installations, `AppAdmin` is used for Cloud.
 
->_Note: “None” would represent no access to anything in Process Automation.  The user could login but would have access to nothing.  This is not an assignable class today and will not show up in the management UI.  It is only available for default assignment._
+>_Note: “None” would represent no access to anything in Runbook Automation.  The user could login but would have access to nothing.  This is not an assignable class today and will not show up in the management UI.  It is only available for default assignment._
 
 ![User Class Screen](/assets/img/user-classes-config.png)
 
@@ -40,7 +40,7 @@ If the setting is not present `FullUser` is used for OnPrem installations, `AppA
 
 To assign a class to a user:
 
-1. Login to Process Automation as an admin equivalent account.
+1. Login to Runbook Automation as an admin equivalent account.
 1. Open the System Menu (gear icon) and select **User Manager**
 1. Select the User Classes Tab
 1. Click **Assign a New User**
