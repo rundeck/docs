@@ -5,7 +5,7 @@ export default[{
   children: [
     '/about/introduction.md',
     {
-       text: 'Process Automation',
+       text: 'Runbook Automation Self-Hosted',
        collapsible: true,
        link: '/about/enterprise/',
        children: [
@@ -15,7 +15,7 @@ export default[{
         }
     ]},
     {
-       text: 'Runbook Automation',
+       text: 'Runbook Automation SaaS',
        collapsible: true,
        link: '/about/cloud/',
        children: [

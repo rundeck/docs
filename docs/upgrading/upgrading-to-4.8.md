@@ -1,6 +1,6 @@
 # Rundeck 4.8 Upgrade Notes
 
-To enhance the Security of Rundeck and Process Automation in version 4.8 we added some new behavior to the Login Process.  In order to prevent certain types of attacks the session cookie will change after the first request after authentication.  If you have any processes using the API with Password Authentication, it is important to ensure you update those scripts using the guidance below.
+To enhance the Security of Rundeck and Runbook Automation in version 4.8 we added some new behavior to the Login Process.  In order to prevent certain types of attacks the session cookie will change after the first request after authentication.  If you have any processes using the API with Password Authentication, it is important to ensure you update those scripts using the guidance below.
 
 ## Usage Scenario
 

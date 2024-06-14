@@ -6,7 +6,7 @@ Prior to upgrading it is important to read the specific version upgrade steps co
 
 ## Preparing to Upgrade your Server
 
-- Download the latest Rundeck version .war from [Process Automation Downloads](https://www.rundeck.com/enterprise-downloads) _(requires license)_ or [Rundeck OSS Downloads](https://downloads.rundeck.com)
+- Download the latest Rundeck version .war from [Runbook Automation Downloads](https://www.rundeck.com/enterprise-downloads) _(requires license)_ or [Rundeck OSS Downloads](https://downloads.rundeck.com)
 
 - Stop Rundeck (stop service or kill the process)
 
