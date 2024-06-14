@@ -2,7 +2,7 @@
 
 ## First Diagnostics Runbook
 
-Now that your **Runbook Automation** or **Process Automation** instance has been integrated with Automation Actions, you’re ready to invoke your first Diagnostic Runbook.  
+Now that your **Runbook Automation** instance has been integrated with Automation Actions, you’re ready to invoke your first Diagnostic Runbook.  
 Before jumping into your Automation instance, first [create a PagerDuty API Key](https://support.pagerduty.com/docs/api-access-keys) and copy or save it somewhere to be used later.  
 This will be used to add the Diagnostic data onto the PagerDuty Incident.
 

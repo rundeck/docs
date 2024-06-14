@@ -12,7 +12,7 @@ Let's walk through an example for how to target a specific host with our diagnos
 4. Copy the field name for this host identifier.
 5. Navigate to edit the **Automation Action** you created in the prior section:
     * **Automation -> Automation Actions** Click on the Action you created and then click on **Edit**
-6. Add the following to the **Enter Process Automation arguments** field:
+6. Add the following to the **Enter Runbook Automation arguments** field:
    * **`-node_filter ${pd.alert.details.orig-source}`**
    * Replace `orig-source` with the field name from **Step 4**:<br><br>
 ![Add Node Filter](/assets/img/solutions-auto-diag-add-node-filter.png)<br><br>
@@ -27,12 +27,12 @@ If the configuration was successful, the Automated Diagnostic Job will execute a
 ![Timeline Notes](/assets/img/solutions-auto-diag-timeline-notes.png)
 
 ::: warning Heads Up!
-If the parameters in the **Process Automation Arguments** (_Step 6_) do not match those in the Job Options of the associated Runbook Automation Job, 
+If the parameters in the **Runbook Automation Arguments** (_Step 6_) do not match those in the Job Options of the associated Runbook Automation Job, 
 then you will see the following log in the Automation Actions output report:
 ```
 Rundeck communication error. Status: 400
 ```
-Be sure that _**all**_ Job Options are present in the **Process Automation Arguments** and that they are all spelled exactly the same.
+Be sure that _**all**_ Job Options are present in the **Runbook Automation Arguments** and that they are all spelled exactly the same.
 :::
 
 ### Instance Attributes for Automation Actions Node Filter
@@ -43,7 +43,7 @@ For example, in Runbook Automation, EC2's might be discovered by their display-n
 ![EC2 Nodes](/assets/img/solutions-auto-diag-ec2-nodes.png)<br><br>
 In this case, we would use the **`instanceId`** node-attribute:<br><br>
 ![EC2 Node Attribute](/assets/img/solutions-auto-diag-ec2-node-attribute.png)<br><br>
-So in Automation Actions, the **Process Automation Arguments** would be <br> 
+So in Automation Actions, the **Runbook Automation Arguments** would be <br> 
 **`-node_filter instanceId:${pd.alert.details.orig-source}`**, as shown here:<br><br>
 ![Action Node Syntax](/assets/img/solutions-auto-diag-actions-node-filter.png)<br><br>
 

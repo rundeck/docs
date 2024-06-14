@@ -27,7 +27,7 @@ In addition to using the AWS Plugins, it is also possible to harness the AWS CLI
                                                                                  
 ![AWS CLI in a Job Step](/assets/img/aws-cli-job-step.png)
 
-If using Process Automation (on-premise), or a [**Runner**](/administration/runner), then you can also execute scripts that leverage the AWS SDK, such as Boto3 for python.
+If using Runbook Automation Self-Hosted, or a [**Runner**](/administration/runner), then you can also execute scripts that leverage the AWS SDK, such as Boto3 for python.
  
 These multiple methods of communication with AWS allow you to be flexible in your approach for retrieving Diagnostics or managing your AWS environments.
                     
