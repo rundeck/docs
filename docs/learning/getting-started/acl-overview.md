@@ -1,7 +1,7 @@
 # Overview of Access Control
 
 # Introduction
-Access control is a key element of Rundeck and Runbook/Process Automation. This fundamental component governs the permissions and privileges granted to users, determined by their respective usernames, group memberships or [user classes](/manual/user-management/user-classes.html) (in the case of commercial products). It guarantees that users have access to specific resources and functionalities within the system.
+Access control is a key element of Rundeck and Runbook Automation. This fundamental component governs the permissions and privileges granted to users, determined by their respective usernames, group memberships or [user classes](/manual/user-management/user-classes.html) (in the case of commercial products). It guarantees that users have access to specific resources and functionalities within the system.
 
 # Access Control List (ACL) policies
 Access Control List (ACL) policies are composed of one or more rules that designate a set of permissions for users that match a certain username or group pattern. 
@@ -151,7 +151,7 @@ by:
 ```
 
 # User Classes (Commercial Only)
-Our commercial products (Runbook Automation and Process Automation) have an additional element used in Access Control, based on the license in use.  User Classes act as a superset of ACLs;  a user cannot be given a role that provides more permissions than the user class that they are assigned.  
+The Runbook Automation products have an additional element used in Access Control, based on the license in use.  User Classes act as a superset of ACLs;  a user cannot be given a role that provides more permissions than the user class that they are assigned.  
 
 Currently, there are two User Classes available for assignment: : `Full User` (known as `AppAdmin` in Runbook Automation) and `Job Runner.`  The `Full User` class is essentially equivalent to the built-in admin user, possessing super-user privileges to perform any action.   The `Job Runner` class is effectively the same as the built-in “user” account , providing standard user capabilities.  The availability of these User Classes in your system and the number you are entitled to depend on your specific commercial license.
 

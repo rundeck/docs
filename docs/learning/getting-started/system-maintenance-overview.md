@@ -1,5 +1,5 @@
 # Overview of System Maintenance for On-Premise Servers
-In managing a Rundeck server or Process Automation cluster, it is worth looking at log management and server tuning. The notes about execution logs are also relevant for Runbook Automation.<br>
+In managing a Rundeck server or Runbook Automation cluster, it is worth looking at log management and server tuning. The notes about execution logs are also relevant for Runbook Automation.<br>
 ### Managing and Pruning Logs
 There are two different types of logs that need to be considered and managed.  First, there are system logs that are written and stored on each Rundeck server.  The second type of logs are the logs for each job execution, which are stored by default on the server but could be stored in an alternate location using the S3 plugin.<br>
 #### Server System Logs

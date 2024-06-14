@@ -1,5 +1,5 @@
 # Transferring Rundeck Jobs
-Jobs are a core element of Rundeck and PagerDuty Process Automation.  Often users want to use the same jobs in different Rundeck projects or instances. Consequently, jobs are intended to be portable so that they can be transferred between projects or between instances. Jobs can be exported (or authored) using industry-standard file formats (.yaml, .json and .xml) for easy transfer.<br>
+Jobs are a core element of Rundeck and PagerDuty Runbook Automation.  Often users want to use the same jobs in different Rundeck projects or instances. Consequently, jobs are intended to be portable so that they can be transferred between projects or between instances. Jobs can be exported (or authored) using industry-standard file formats (.yaml, .json and .xml) for easy transfer.<br>
 ### Projects
 A project is a place within Rundeck to separate management activity. All Rundeck activities (such as jobs or commands) occur within the context of a project and multiple projects can be maintained on the same Rundeck instance.<br>
 Projects are independent from one another, so can be used to organize unrelated systems within a single Rundeck installation. This is useful for managing different teams, infrastructures, environments or applications.<br>
