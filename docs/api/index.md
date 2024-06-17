@@ -3361,7 +3361,9 @@ Query Parameters:
 * `max`: Maximum number of items to return (default: no limit).
 * `past`: `true` to return an inverse forecast, that is, considering the current scheduler, when it should have run. Note this forecast is only referential, since it will not take into account if the job could have been disabled or not yet been created. **Since API v32**
 
+**Since v48**:
 
+Includes average duration in the response. And information regarding if the respective project has executions and scheduled disabled.
 
 **Response:**
 
@@ -3384,6 +3386,9 @@ A single object:
     "group": "[group]",
     "description": "[description]",
     "project": "[project]",
+    "averageDuration": "[timestamp]",
+    "projectDisableExecutions": true/false,
+    "projectDisableSchedule": true/false,
     "name": "[name]"
 }
 ```

@@ -18,7 +18,7 @@ Release Date: July 25, 2023
 - [Upgrade instructions](/upgrading/)
 - [Watch the Live Stream Release Recap](https://youtu.be/t_O6P7dPb1M)
 
-<YouTube id="t_O6P7dPb1M" />
+<VidStack src="youtube/t_O6P7dPb1M"/>
 
 ## Overview
 
