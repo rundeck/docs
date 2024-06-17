@@ -1,18 +1,18 @@
 ---
 
 title: "5.4.0 Release Notes"
-date: 2024-01-01
+date: 2024-06-18
 image: /images/chevron-logo-red-on-white.png
 feed:
  enable: true
- description: ""
+ description: "Cyberark Integration can now use REST. New Job Steps"
 
 ---
 
 # 5.4.0 Release Notes
 
 Name: <span style="color: deeppink"><span class="glyphicon glyphicon-piggy-bank"></span> "Everest deeppink piggy-bank"</span>
-Release Date: PUTADATEHERE
+Release Date: June 18, 2024
 
 - [Download the Releases](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
@@ -21,12 +21,39 @@ Release Date: PUTADATEHERE
 
 ## Overview
 
-Check out the new features and enhancements for PagerDuty Process Automation (formerly Rundeck Enterprise) and PagerDuty Runbook Automation and Rundeck Community included in this release.
+Check out the new features and enhancements for PagerDuty Runbook Automation and Rundeck Community edition included in this release.
 
 ### Highlights
 
-- first highlight
-- second highlight
+#### Reminder: Project Runner Management Early Access
+
+With 5.3.0 we announced Early Access to project-based Runner management. If you are interested in testing out the feature and providing us feedback, fill out our [Early Access form](https://www.pagerduty.com/early-access/) and we’ll reach out promptly. 
+
+**Project Runner Management Early Access** 
+
+While the Enterprise Runner serves as a mechanism for securely dispatching automation to remote environments, Enterprise Runners are also used to give teams independence around how they run their automation. Users can now create, download, and manage Runners from within Projects. This gives teams more autonomy and flexibility with their automation and decreases their dependency on the tool administrators of Runbook Automation (cloud or self-hosted).
+
+To try out the feature, submit the [Early Access form here](https://www.pagerduty.com/early-access/) and select _Project Runner Management. _ We will respond promptly with instructions on how to enable the feature. Read more about Runner Management [here](https://docs.rundeck.com/docs/administration/runner/runner-management/managing-runners.html).
+
+![Runner Management EA](/assets/img/relnotes-540-runners.png) 
+
+#### CyberArk Integration Enhancements
+
+Customers integrate Runbook Automation with secrets management providers - such as CyberArk - as a means to secure and standardize how keys and passwords are utilized within automation across their organization.  This latest release now allows users to integrate with CyberArk through a more secure method, where the CyberArk API credentials no longer need to be stored in Runbook Automation.  This allows users to follow CyberArk’s best-practices for configuring integrations.  In addition, users can now configure separate endpoints for the Credential Provider and the API web-server in Runbook Automation – allowing for easier integration with various CyberArk deployment configurations.
+
+![Cyberark REST Config](/assets/img/relnotes-540-cyberark.png) 
+
+#### New PagerDuty Job Steps
+
+Among the more common use cases for Runbook Automation (cloud or self-hosted) is incident automation—either for retrieving diagnostics or carrying out remediation. To assist users with further automating the incident process, Runbook Automation can now natively invoke PagerDuty Incident Workflows. This release includes both a Job Step and a Notification plugin to start an Incident Workflow.  These plugins better enable users to connect the technical infrastructure processes with the communication and collaboration processes as part of their incident response.  
+
+Read more about the new plugins [here](/manual/plugins/pagerduty-plugins-overview.html).
+
+#### SFTP Option for Script Execution & File Transfer
+
+The SSH File Transfer plugin (powered by SSHJ) now includes an option to use SFTP (Secure File Transfer Protocol) instead of SCP (Secure Copy Protocol) for securely executing scripts and transfering files.  As of recently, SFTP is the recommended method for dispatching files over networks.  In conjunction with the Enterprise Runner, this allows users to confidently execute scripts and transfer files in their most secure environments.  We will continue to support SCP in the SSHJ plugin for the foreseeable future.  Read more about the SFTP option for our SSHJ plugin [here](/manual/projects/node-execution/ssh.html#sftp-file-copier).
+
+Note: SCP was flagged with a **Moderate** level CVE by Red Hat. You can read the details of the CVE [here](https://access.redhat.com/security/cve/cve-2020-15778). 
 
 ## Process Automation Updates
 
@@ -35,49 +62,33 @@ Check out the new features and enhancements for PagerDuty Process Automation (fo
 ### Additional Updates
 
 
+* Updated awssdk library to mitigate CVE-2024-29025
+* CyberArk plugin enhancements 
 
 
 ## Rundeck Open Source Product Updates
 
-* [change on forecast api to fetch future executions for &quot;run job later&quot;](https://github.com/rundeck/rundeck/pull/9169)
+* [When posting to a disabled webhook return a 404](https://github.com/rundeck/rundeck/pull/9179)
+* [Change on forecast api to fetch future executions for &quot;run job later&quot;](https://github.com/rundeck/rundeck/pull/9169)
 * [Fix: Main docs link goes to 404](https://github.com/rundeck/rundeck/pull/9167)
-* [Fix pipeline](https://github.com/rundeck/rundeck/pull/9166)
 * [Restores Tomcat JDBC pool.](https://github.com/rundeck/rundeck/pull/9162)
-* [add runner permissions to admin.aclpolicy template](https://github.com/rundeck/rundeck/pull/9149)
-* [qaf migration](https://github.com/rundeck/rundeck/pull/9147)
+* [Add runner permissions to admin.aclpolicy template](https://github.com/rundeck/rundeck/pull/9149)
 * [update API, update tests and bump API version](https://github.com/rundeck/rundeck/pull/9143)
-* [[] Enables building arm64 Docker images locally](https://github.com/rundeck/rundeck/pull/9141)
+* [Enables building arm64 Docker images locally](https://github.com/rundeck/rundeck/pull/9141)
 * [relabel property](https://github.com/rundeck/rundeck/pull/9136)
-* [qaf migration execution mode](https://github.com/rundeck/rundeck/pull/9134)
 * [Login as local user doesn&#39;t evaluate case sensitive feature](https://github.com/rundeck/rundeck/pull/9123)
-* [, , :nextUI: convert forecast page](https://github.com/rundeck/rundeck/pull/9121)
-* [Feature rundeck.feature.caseInsensitiveUsername.enabled doesn&#39;t show on System configuration page](https://github.com/rundeck/rundeck/pull/9120)
-* [fix config for detectFirstrun](https://github.com/rundeck/rundeck/pull/9118)
+* [nextUI: Converted forecast page](https://github.com/rundeck/rundeck/pull/9121)
+* [Feature undeck.feature.caseInsensitiveUsername.enabled doesn&#39;t show on System configuration page](https://github.com/rundeck/rundeck/pull/9120)
 * [fix: npe during cleanup incomplete executions](https://github.com/rundeck/rundeck/pull/9114)
-* [RPL-8: QAF Migration - WebhooksPage updated](https://github.com/rundeck/rundeck/pull/9099)
 * [Update webpack 4 to 5](https://github.com/rundeck/rundeck/pull/8968)
 * [Fixes on Docker images directories and permissions](https://github.com/rundeck/rundeck/pull/8841)
 
 
 [Here is a link to the full list of public PRs](https://github.com/rundeck/rundeck/pulls?q=is%3Apr+milestone%3A5.4.0+is%3Aclosed)
 
-## Ansible Plugin Updates
-
-
-
-
 ## Community Contributors
 
 Submit your own Pull Requests to get recognition here!
-
-*  ([smartinellibenedetti](https://github.com/smartinellibenedetti))
-* Jesus Osuna ([Jesus-Osuna-M](https://github.com/Jesus-Osuna-M))
-* Charlie ([ChuckCrawford](https://github.com/ChuckCrawford))
-* Jake Cohen ([jsboak](https://github.com/jsboak))
-* Rodrigo Navarro ([ronaveva](https://github.com/ronaveva))
-* Greg Schueler ([gschueler](https://github.com/gschueler))
-* Alexander Abarca ([alexander-variacode](https://github.com/alexander-variacode))
-* Alberto Hormazabal ([ahormazabal](https://github.com/ahormazabal))
 
 
 ## Staff Contributors
