@@ -5,7 +5,7 @@ date: 2024-06-18
 image: /images/chevron-logo-red-on-white.png
 feed:
  enable: true
- description: "Cyberark Integration can now use REST. New Job Steps"
+ description: "Cyberark Integration can now use REST, Security Fixes"
 
 ---
 
