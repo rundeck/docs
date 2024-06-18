@@ -454,7 +454,7 @@ Remote URL Job Options provides a method for retrieving a list of Job Option val
 
 Option values can be retrieved from an external source called an _option model provider_.
 
-This is useful in a couple of scenarios when Process Automation is used to
+This is useful in a couple of scenarios when Runbook Automation is used to
 coordinate processes that depend on other systems:
 
 - Deploying packages or artifacts produced by a build or CI server, such as Jenkins:
@@ -470,7 +470,7 @@ allowed values is retrieved from the specified URL:
 ### Requirements
 
 1. The returned data must be [JSON formatted](http://www.json.org).
-2. It must be accessible via HTTP(S) or on the local disk for the Process Automation or Rundeck server.
+2. It must be accessible via HTTP(S) or on the local disk for the Runbook Automation or Rundeck server.
 3. It must be in or contain one of two JSON structures, _either_:
    - An array of string values
    - OR, an array of Maps, each with two entries, `name` and `value`.

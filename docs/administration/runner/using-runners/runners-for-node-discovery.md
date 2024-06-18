@@ -1,6 +1,6 @@
 # Node Discovery
 
-Runners can be used to discover nodes in environments that are not directly accessible from the Process Automation cluster or from Runbook Automation:
+Runners can be used to discover nodes in environments that are not directly accessible from the from Runbook Automation Self-Hosted or SaaS:
 
 ![Node Source Runner](/assets/img/node-source-runner-selector.png)<br>
 Instructions on how to discover nodes using the Enterprise Runner, click [here](/manual/projects/resource-model-sources/index.md#adding-nodes-to-a-project).

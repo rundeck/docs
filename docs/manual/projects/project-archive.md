@@ -80,5 +80,5 @@ rd projects archives import -p MyProject --file MyProject.zip
 ```
 
 ::: tip
-Note: Some options like Tours, Calendars, Schedules, etc are only available in Process Automation.
+Note: Some options like Tours, Calendars, Schedules, etc are only available in Runbook Automation.
 :::

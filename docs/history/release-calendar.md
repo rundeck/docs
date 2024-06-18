@@ -1,6 +1,6 @@
 # Rundeck Release Calendar
 
-Process Automation offers support for released versions up to one year from release date.  The following calendar represents the currently supported versions and their original release dates.  It is strongly recommended to plan upgrades ahead of the one year anniversary.
+Runbook Automation offers support for released versions up to one year from release date.  The following calendar represents the currently supported versions and their original release dates.  It is strongly recommended to plan upgrades ahead of the one year anniversary.
 
 Updated versions can be downloaded from [https://download.rundeck.com](https://download.rundeck.com)
 

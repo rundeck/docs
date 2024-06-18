@@ -10,6 +10,6 @@ This documentation site serves as a central hub for all your Rundeck-related nee
 2. **Rundeck Google Group**: Join the Rundeck Google Group at [groups.google.com/g/rundeck-discuss](https://groups.google.com/g/rundeck-discuss) to engage with the Rundeck community.<br><br>
 3. **GitHub Issues**: Search or open issues at the [Rundeck GitHub repository](https://github.com/rundeck/rundeck) to find solutions or report bugs.<br><br>
 4. **Professional Support**: Access direct assistance from the Rundeck team by visiting [rundeck.com/support](https://www.rundeck.com/support). (Enterprise License Required)<br><br>
-5. **PagerDuty Community Forums**: Get help with Rundeck and Process Automation at the [PagerDuty Community forums](https://community.pagerduty.com/forum/). Engage with the community, ask questions, and share knowledge.
+5. **PagerDuty Community Forums**: Get help with Rundeck and Runbook Automation at the [PagerDuty Community forums](https://community.pagerduty.com/forum/). Engage with the community, ask questions, and share knowledge.
 
 These resources provide various avenues to seek help, connect with the Rundeck community, and access official support to ensure you can make the most of your Rundeck experience.

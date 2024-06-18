@@ -1,9 +1,9 @@
 ---
 home: true
 icon: home
-title: Rundeck | Process Automation Documentation
+title: Rundeck | Runbook Automation Documentation
 heroText:  Welcome to Docs
-tagline: Runbook Automation | Process Automation | Rundeck
+tagline: Runbook Automation | Rundeck
 //heroImage: /assets/img/pd-background.png
 bgImage: /assets/img/pd-background.png
 bgImageDark: /assets/img/pd-background.png
@@ -170,7 +170,7 @@ highlights:
 
     - title: AWS SSM Execution
       icon: /assets/img/aws-icon-small.png
-      details: Allows Process Automation to communicate with EC2 instances through the SSM service, rather than another communication protocol.
+      details: Allows Runbook Automation to communicate with EC2 instances through the SSM service, rather than another communication protocol.
       link: /learning/howto/cross-account-aws-ssm.html
 
     - title: Remote Secrets

@@ -1,12 +1,12 @@
 # Logstore
 
-Process Automation Cluster instances must share the same logstore. Job execution output is stored locally to the Process Automation instance that ran the job but this output can be loaded into a common storage facility (eg, AWS S3, WebDAV, custom).
+Runbook Automation Self-Hosted Cluster instances must share the same logstore. Job execution output is stored locally to the Runbook Automation instance that ran the job but this output can be loaded into a common storage facility (eg, AWS S3, WebDAV, custom).
 
-With a configured logstore, the executing Process Automation instance copies the local output file to the logstore after job completion. If the standby Process Automation instance is activated, any request for that output log will cause the standby to retrieve it from the logstore and copy it locally for future access.
+With a configured logstore, the executing Runbook Automation instance copies the local output file to the logstore after job completion. If the standby Runbook Automation instance is activated, any request for that output log will cause the standby to retrieve it from the logstore and copy it locally for future access.
 
 Rundeck will make multiple attempts to store a log file if the logstore is unavailable.
 
-All Process Automation Cluster members must share the same log storage, this can be achieved in two ways:
+All Runbook Automation Cluster members must share the same log storage, this can be achieved in two ways:
 
 ## Log storage plugin
 

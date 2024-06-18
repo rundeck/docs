@@ -3,7 +3,7 @@
 ::: enterprise
 :::
 
-Rundeck Single SignOn is available in both Process Automation and Runbook Automation.  This feature allows for streamlined and centralized access management of Rundeck users.
+Rundeck Single SignOn is available in both versions of Runbook Automation.  This feature allows for streamlined and centralized access management of Rundeck users.
 
 There are 3 supported SSO solutions available:
 

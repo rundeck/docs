@@ -20,11 +20,11 @@ Release Date: November 7th, 2023
 
 ## Overview
 
-Check out the new features and enhancements for PagerDuty Process Automation (formerly Rundeck Enterprise) and PagerDuty Runbook Automation and Rundeck Community included in this release.
+Check out the new features and enhancements for PagerDuty Runbook Automation and Rundeck Community included in this release.
 
 This is a smaller point release version that fixes some urgent bugs.
 
-## Process Automation Updates
+## Runbook Automation Updates
 
 > Also includes all Open Source updates from below
 

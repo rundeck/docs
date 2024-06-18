@@ -1,6 +1,6 @@
 # Github Script Plugin (Enterprise)
 
-The Github script plugin is a Workflow Step plugin included with Process Automation that runs a command located on a GitHub repo.
+The Github script plugin is a Workflow Step plugin included with Runbook Automation that runs a command located on a GitHub repo.
 
 ![Github Script WF Step Plugin View](/assets/img/gh-script-step-plugin.png)
 

@@ -7,8 +7,8 @@ Sumo Logic provides cloud monitoring, log management, Cloud SIEM tools, and real
 The **Sumo Logic workflow steps** allows users to automate operational tasks - such as retrieving logs for incident diagnostics - by integrating with a Sumo Logic instance.
 
 There are two Workflow Step plugins for Sumo Logic:
-* [Create and Execute Query Search Job](#execute-a-new-query-in-sumo-logic) - Executes a new logs query in Sumo Logic to surface log data in PagerDuty Process Automation.
-* [Execute a Saved Search Query](#execute-a-saved-query-in-sumo-logic) - Executes an existing, saved logs query in Sumo Logic to surface log data in PagerDuty Process Automation.
+* [Create and Execute Query Search Job](#execute-a-new-query-in-sumo-logic) - Executes a new logs query in Sumo Logic to surface log data in PagerDuty Runbook Automation.
+* [Execute a Saved Search Query](#execute-a-saved-query-in-sumo-logic) - Executes an existing, saved logs query in Sumo Logic to surface log data in PagerDuty Runbook Automation.
 
 ![Create Query Example](/assets/img/sumo-logic-create-query-example.png)<br>
 
@@ -26,7 +26,7 @@ There are two Workflow Step plugins for Sumo Logic:
 7. Click **Create Key** to generate the key.
 8. The window displays the generated Access ID and Access Key. Copy both before clicking **Close**. (These will only be shown once.).
 
-### Process Automation Setup
+### Runbook Automation Setup
 
 #### Add Access Key to Key Storage
 1. Click on the System Menu (**gear** icon in upper-right) and click on **Key Storage**.

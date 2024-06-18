@@ -29,7 +29,7 @@ Be sure to follow the [Upgrade instructions](/upgrading/) when moving to version
 
 ## Overview
 
-Check out the new features and enhancements for PagerDuty Process Automation (formerly Rundeck Enterprise) and PagerDuty Runbook Automation and Rundeck Community included in this release.
+Check out the new features and enhancements for PagerDuty Runbook Automation and Rundeck Community included in this release.
 
 ### Highlights
 

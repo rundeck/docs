@@ -5827,7 +5827,7 @@ paths:
         in: query
         description: |-
           Enable a component for import.
-          Project archives may contain "components" which can be imported, beyond the base set of contents. This includes some data used by Process Automation (Rundeck Enterprise) features.
+          Project archives may contain "components" which can be imported, beyond the base set of contents. This includes some data used by Runbook Automation (Rundeck Enterprise) features.
 
           For example, to enable Webhook import, you could use `importWebhooks` and `whkRegenAuthTokens` params, but those are simply shortcuts for the following parameters:
 

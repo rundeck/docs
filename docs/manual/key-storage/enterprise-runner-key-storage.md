@@ -1,5 +1,5 @@
 # Key Storage through Enterprise Runner
-The [Enterprise Runner](/administration/runner/runner-intro) can be used to retrieve keys from secrets providers that are _not_ directly accessible from the Process Automation cluster or from Runbook Automation due to network or security boundaries.
+The [Enterprise Runner](/administration/runner/runner-intro) can be used to retrieve keys from secrets providers that are _not_ directly accessible from Runbook Automation due to network or security boundaries.
 For example, if Runbook Automation does not have a direct network path to a self-hosted Hashicorp Vault instance, a Runner can be placed in the same network as Vault and retrieve secrets from Vault to be used by operations on the Runner.
 
 ![Key Storage Through Runner](/assets/img/key-storage-runner-browse.png)<br>
@@ -18,7 +18,7 @@ When SSH or WinRM credentials are stored in a secrets provider, the Runner can r
 ## Handling Secrets
 Given the sensitivity of secrets retrieved by the Runner, the following guardrails have been put in place:
 
-1. Secrets retrieved by a Runner can only be used for operations executed on that Runner.  These secrets are not sent back to the Process Automation cluster or Runbook Automation instance.  Therefore, these secrets can not be used for plugins that do not reside on the Runner.<br><br>
+1. Secrets retrieved by a Runner can only be used for operations executed on that Runner.  These secrets are not sent back to the Runbook Automation instance.  Therefore, these secrets can not be used for plugins that do not reside on the Runner.<br><br>
 2. Secrets are masked in logs, including Job execution logs.  Any secrets retrieved by the Runner and printed to the Job log output will appear as `[SECURE]` in the logs.<br><br>
 3. Sensitive environment variables set on the Runner are masked in logs, including Job execution logs.  Any environment variables ending with `TOKEN` or `KEY` or `PASSWORD` will be printed as `[SECURE]` in the logs.
 

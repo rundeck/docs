@@ -107,7 +107,7 @@ To add the job definitions to a project of your own follow these steps:
 
 ## Setting up a Health Check
 
-Health Checks (available in Process Automation) will run commands periodically to determine the health of a system.  We can apply this to the Log4Shell situation and add a Health Check to see if a machine needs to be patched.
+Health Checks (available in Runbook Automation) will run commands periodically to determine the health of a system.  We can apply this to the Log4Shell situation and add a Health Check to see if a machine needs to be patched.
 
 ### Setup Steps
 

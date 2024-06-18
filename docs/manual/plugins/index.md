@@ -2,7 +2,7 @@
 
 ## Overview
 
-Process Automation is a sophisticated orchestration platform with numerous types of integrations called _plugins_. 
+Runbook Automation is a sophisticated orchestration platform with numerous types of integrations called _plugins_. 
 
 The functionality of plugins ranges from executing commands on nodes, performing steps in a workflow, sending notifications about job status, gathering information about the hosts on a network, copying a file to a remote server, storing and streaming logs, and much more.
 

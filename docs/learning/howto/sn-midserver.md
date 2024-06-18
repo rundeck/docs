@@ -2,7 +2,7 @@
 
 A management, instrumentation, and discovery (MID) Server is a Java application that runs on a server on your local network. MID Servers facilitate communication and data movement between a ServiceNow® instance and external applications, data sources, and services.
 
-Many Rundeck users utilize the ServiceNow Rundeck Application to trigger provisioning, diagnostic, and repair actions from ServiceNow ITSM workflows. The [Rundeck Automation App available in the ServiceNow Store](https://store.servicenow.com/sn_appstore_store.do#!/store/application/1f1cf27adb252110e8744a6c139619f8/) can be configured to use a MID Server to facilitate secure communications from ServiceNow® to your on-premise Process Automation installation.
+Many Rundeck users utilize the ServiceNow Rundeck Application to trigger provisioning, diagnostic, and repair actions from ServiceNow ITSM workflows. The [Rundeck Automation App available in the ServiceNow Store](https://store.servicenow.com/sn_appstore_store.do#!/store/application/1f1cf27adb252110e8744a6c139619f8/) can be configured to use a MID Server to facilitate secure communications from ServiceNow® to your on-premise Runbook Automation installation.
 
 > Note: MID Servers can only be used for sending outgoing HTTP messages from ServiceNow to Rundeck that are calling webhooks.  Rundeck will still need to communicate directly with the ServiceNow API for job steps.
 
@@ -10,7 +10,7 @@ Many Rundeck users utilize the ServiceNow Rundeck Application to trigger provisi
 
 * The ​​[Rundeck Automation ServiceNow® Store App](https://store.servicenow.com/sn_appstore_store.do#!/store/application/1f1cf27adb252110e8744a6c139619f8) must be installed. For more information on requesting access to the store app, see  [Rundeck Automation - ServiceNow Application](/manual/integrations/servicenow-app.md#rundeck-automation-servicenow-application) for details.
 * A [ServiceNow Mid Server](https://docs.servicenow.com/bundle/rome-servicenow-platform/page/product/mid-server/concept/mid-server-landing.html) is already installed and working within your local environment.
-* Note, the Rundeck ServiceNow App is only available to Process Automation users.
+* Note, the Rundeck ServiceNow App is only available to Runbook Automation users.
 
 ## Configuration Steps
 

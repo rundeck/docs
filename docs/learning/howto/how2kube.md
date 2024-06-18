@@ -4,7 +4,7 @@
 
 Kubernetes services, support, and tools are widely available and very customizable and can be used in two different ways in the context of Rundeck.  K8s can be used to automate the build and management of Rundeck as a container.  For the purposes of this article, we’ll be focused on the more common way to use Kubernetes and Rundeck together, managing a complete Kubernetes cluster environment.
 
-The article is written assuming use of Rundeck Community, our open-source offering, but can also be done using the commercial version, [PagerDuty Process Automation](https://www.pagerduty.com/platform/automation/process-software/).
+The article is written assuming use of Rundeck Community, our open-source offering, but can also be done using the commercial version, [PagerDuty Runbook Automation](https://www.pagerduty.com/platform/automation/process-software/).
 
 ## Kubernetes and Rundeck
 

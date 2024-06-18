@@ -1,6 +1,6 @@
 # Integrate with Hashicorp Vault
 
-Out-of-the-box, both PagerDuty Process Automation (PA) & Rundeck Community store all the keys and passwords in their own Key Storage using the database backend. Many customers prefer to use a central Key Storage server to access all keys and passwords from a single secure location. This avoids saving secrets in multiple locations and reduces the risk of key/password leaks.
+Out-of-the-box, both PagerDuty Runbook Automation & Rundeck Community store all the keys and passwords in their own Key Storage using the database backend. Many customers prefer to use a central Key Storage server to access all keys and passwords from a single secure location. This avoids saving secrets in multiple locations and reduces the risk of key/password leaks.
 
 This article will demonstrate how to integrate PA/Rundeck Community with the Hashicorp Vault plugin.
 
@@ -69,9 +69,9 @@ Hashicorp recommends using AppRoles for authenticating and governing access for 
 ## Configuring Vault with PA / Rundeck
 
 ::: tabs
-@tab PagerDuty Process Automation
+@tab PagerDuty Runbook Automation
 
-The Vault Storage plugin is bundled by default with PagerDuty Process Automation.  To use the plugin, you need to add properties using the [System Configuration](/manual/configuration-mgmt/configmgmt.md#managing-configuration) feature.
+The Vault Storage plugin is bundled by default with PagerDuty Runbook Automation.  To use the plugin, you need to add properties using the [System Configuration](/manual/configuration-mgmt/configmgmt.md#managing-configuration) feature.
 
 PA includes a Configuration Management module to set configuration settings via the GUI and store them in the product database. Database storage shares configuration options with all your cluster members and centralizes configuration.
 

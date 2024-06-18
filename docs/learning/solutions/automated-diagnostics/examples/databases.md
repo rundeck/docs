@@ -34,7 +34,7 @@ Diagnostics here would be to check that the logs are sized correctly for the tra
 
 ## Mechanisms for Automated Diagnostics
 
-**Runbook Automation** and **Process Automation** provide the following mechanisms that make it easy to automatically diagnose database-related incidents:
+**Runbook Automation** provide the following mechanisms that make it easy to automatically diagnose database-related incidents:
 
 [**SQLRunner Plugin**](/manual/node-steps/sqlrunner.html#sqlrunner-plugin-enterprise):  The SQLRunner plugin is a node step that can execute a **`.sql`** script against a database endpoint. 
 This provides a way to get vital diagnostic information directly from the live database.

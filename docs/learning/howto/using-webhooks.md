@@ -40,7 +40,7 @@ Webhooks are configured within a project. The [Welcome Projects](/learning/index
 In the previous step we noted the _Advanced Run Job_ (Enterprise)/_Run Job_ (Community) Webhook Handlers.
 Webhook Event Handlers are custom handlers that can be developed as [Rundeck Plugins](/developer/16-webhook-plugins.md) to interact with external systems.
 They can respond to authentication calls, pre-process inputs, and provide configuration defaults for specific systems.
-Process Automation includes Webhook Handlers for [PagerDuty](/manual/webhooks/pagerduty-run-job.md), [GitHub](/manual/webhooks/github-webhook.md), [AWS SNS](/manual/webhooks/aws-sns-webhook.md), [DataDog](/manual/webhooks/datadog-run-job.md) and many more.
+Runbook Automation includes Webhook Handlers for [PagerDuty](/manual/webhooks/pagerduty-run-job.md), [GitHub](/manual/webhooks/github-webhook.md), [AWS SNS](/manual/webhooks/aws-sns-webhook.md), [DataDog](/manual/webhooks/datadog-run-job.md) and many more.
 
 ## Enterprise Features
 
@@ -60,7 +60,7 @@ All of the solution specific Enterprise Webhook Handlers (PagerDuty, GitHub, AWS
 
 >_“Why didn’t my webhook do X?!”_
 
-Process Automation includes a Webhook Debugger integrated with the Webhook builder. The Debugger makes troubleshooting incoming webhooks and why they did (or did not) trigger certain rules in the Advanced Rule Processing Handlers.
+Runbook Automation includes a Webhook Debugger integrated with the Webhook builder. The Debugger makes troubleshooting incoming webhooks and why they did (or did not) trigger certain rules in the Advanced Rule Processing Handlers.
 
 There is a Debug tab, but likely at this stage there are no events that have been logged to see debug information for. We will show the Debugger during the Exercise later.
 

@@ -7,7 +7,7 @@
 
 ### Authentication & Configuration
 Follow the steps outlined in the [**Google Cloud Integration Overview**](/manual/plugins/gcp-plugins-overview) doc to configure credentials for the GCP plugins.
-Credentials can be configured on a per Project basis or for the entire Process Automation system.
+Credentials can be configured on a per Project basis or for the entire Runbook Automation system.
 
 **Project ID**
 : Specify your GCP Project ID.

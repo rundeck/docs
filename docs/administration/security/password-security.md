@@ -3,7 +3,7 @@
 :::enterprise
 :::
 
-Process Automation includes the [User Manager](/manual/user-management/user-mgmt.md) functionality to easily create local Rundeck logins. Rundeck 4.0+ include options to enforce password complexity.
+Runbook Automation includes the [User Manager](/manual/user-management/user-mgmt.md) functionality to easily create local Rundeck logins. Rundeck 4.0+ include options to enforce password complexity.
 
 ## Password Length
 

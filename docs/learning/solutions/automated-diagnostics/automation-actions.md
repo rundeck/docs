@@ -2,10 +2,10 @@
 
 ## Integrating with Automation Actions
 
-The prebuilt Jobs in the Automated Diagnostics solution are designed to be invoked from [Automation Actions](https://www.pagerduty.com/platform/automation/actions/), though they can be invoked from within the Runbook Automation or Process Automation interface as well.  
+The prebuilt Jobs in the Automated Diagnostics solution are designed to be invoked from [Automation Actions](https://www.pagerduty.com/platform/automation/actions/), though they can be invoked from within the Runbook Automation interface as well.  
 
 :::tip Heads Up
-The steps for configuration differ for **Runbook Automation** and **Process Automation** (self-hosted). Be sure to select the correct tab below for the applicable instructions.
+The steps for configuration differ for **Runbook Automation SaaS** and **Runbook Automation Self-Hosted**. Be sure to select the correct tab below for the applicable instructions.
 :::
 
 ::: tabs
@@ -57,7 +57,7 @@ Next, you will add a new runner in PagerDuty to connect to Runbook Automation.
 :::warning Heads Up
 Although the Action can be invoked from PagerDuty, the output of the Job will not yet appear on the Incident Timeline.
 Continue on to the [next section](/learning/solutions/automated-diagnostics/first-diagnostic-runbook) to complete the setup
-@tab Process Automation
+@tab Runbook Automation
 ### Create a PagerDuty API Key
 In the PagerDuty web app:
 
@@ -67,7 +67,7 @@ In the PagerDuty web app:
 4. A unique **API key** will be generated. Copy it to a safe place, as you will not have access to copy this key again. Once it has been copied, click **Close**. 
    * If you lose a key you will need to delete it and create a new one.
 
-### Create a Process Automation API Key
+### Create a Runbook Automation API Key
 1. Click on the _**User Icon**_ in the upper-right and click on **Profile**.
 2. To the right of **User API Tokens**, click **+**:
    <br>![RD Token](/assets/img/solutions-pd-diag-k8s-rd-token.png)<br><br>
@@ -79,7 +79,7 @@ In the PagerDuty web app:
 Next, you will add a new runner to generate an ID and secret.
 
 1. In PagerDuty, navigate to **Automation -> Automation Actions -> Runners tab -> +Add Runner**
-2. Select **Process Automation** as the type of Runner and click **Next**
+2. Select **Runbook Automation** as the type of Runner and click **Next**
    <br>![](/assets/img/parunner1.png)<br><br>
 3. Enter a **Name** and **Description** and associate with Teams if desired.  Then click **Next**.
    <br>![](/assets/img/parunner2.png)<br><br>
@@ -87,7 +87,7 @@ Next, you will add a new runner to generate an ID and secret.
    <br>![](/assets/img/parunner3.png)<br><br>
 #### In a text editor
 1. Open **`credentials.pdrunner-creds`** in your preferred text editor, replace **`<API_Token>`** with the PagerDuty API key from step 4 above.
-5. Add a line **`rundeck_url:`** followed by your Process Automation URL and a line with **`rundeck_token:`** followed by your Process Automation API Token:
+5. Add a line **`rundeck_url:`** followed by your Runbook Automation URL and a line with **`rundeck_token:`** followed by your Runbook Automation API Token:
 ```
 id:XXXXXXXXXXXXXXXXXXXXXXX3P1C
 secret:XXXXXXXXXXXXXXXXXXXX2I4B
@@ -131,12 +131,12 @@ Install Java 11+ on the machine that will host the runner. We recommend Linux (U
    <br>![](/assets/img/paactions5.png)<br><br>
 5. Create an Automation Action<br>
 	- Type and Category<br>
-	  **Select type:** Select Process Automation<br>
+	  **Select type:** Select Runbook Automation<br>
 	  **Select category:** Diagnostic<br>
 	- Define your action<br>
-	  **Enter Process Automation Job ID:**<br>
-	  Paste the Job UUID you copied from the Process Automation server<br>
-	  **Enter Process Automation arguments:**<br>
+	  **Enter Runbook Automation Job ID:**<br>
+	  Paste the Job UUID you copied from the Runbook Automation server<br>
+	  **Enter Runbook Automation arguments:**<br>
          **`-pd_incident_id ${pagerduty.incidentId}`**<br>
 	- Name and description<br>
 	  Enter the desired **Name** (such as Third Party Service Disruptions) and **Description**<br>

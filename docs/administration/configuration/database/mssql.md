@@ -16,7 +16,7 @@ dataSource.password = rundeckpassword
 ```
 ### Sql Server Configuration
 
-In certain instances, the default configuration of Sql Server has presented challenges in ensuring the seamless operation of Rundeck oss and Process Automation. These challenges include encountering deadlocks within numerous transactions, primarily attributed to Sql Server's distinct approach to managing concurrent data access at the row level, which differs from other database systems. Fortunately, these issues can be addressed through reconfiguration to enhance performance and facilitate smoother operations in such scenarios.
+In certain instances, the default configuration of Sql Server has presented challenges in ensuring the seamless operation of Rundeck Open Source and Runbook Automation. These challenges include encountering deadlocks within numerous transactions, primarily attributed to Sql Server's distinct approach to managing concurrent data access at the row level, which differs from other database systems. Fortunately, these issues can be addressed through reconfiguration to enhance performance and facilitate smoother operations in such scenarios.
 
 In Microsoft SQL Server (MSSQL), there exists a flag that allows you to modify the behavior of transactions when using the READ_COMMITTED isolation level. This flag is named 'is_read_committed_snapshot_on.' To determine its current status, you can execute the following query on your database:
 

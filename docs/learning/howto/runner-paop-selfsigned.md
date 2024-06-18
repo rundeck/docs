@@ -1,13 +1,13 @@
-# Runner connection to a Process Automation using self signed certificate
+# Runner connection to a Runbook Automation Self-Hosted using self signed certificate
 
 We recommend the usage of real certificates, but we also know that there are situations when you need to test using self signed certificates.
-If Process Automation is configured to use a self signed certificate, here is how to launch the Runner for a successful connectivity.
+If Runbook Automation Self-Hosted is configured to use a self signed certificate, here is how to launch the Runner for a successful connectivity.
 
 :::tip Note
-Below steps work also when Process Automation is behind a Load Balancer using self signed certificate.
+Below steps work also when Runbook Automation is behind a Load Balancer using self signed certificate.
 :::
 
-There are several ways to set the Process Automation's certificate where the Runner will be launched.
+There are several ways to set the Runbook Automation's certificate where the Runner will be launched.
 
 ## Cacerts file
 Add the `process_automation.crt` certificate to the OS's cacerts file.

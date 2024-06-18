@@ -12,7 +12,7 @@ Release Date: July 14, 2022
 
 ## Overview
 
-Check out the new features and enhancements for PagerDuty Process Automation (formerly Rundeck Enterprise) and PagerDuty Runbook Automation (announced as Rundeck Cloud) and Rundeck Community included in this release.
+Check out the new features and enhancements for PagerDuty Runbook Automation Self-Hosted (formerly Rundeck Enterprise) and PagerDuty Runbook Automation (announced as Rundeck Cloud) and Rundeck Community included in this release.
 
 ## New AWS Plugins
 New AWS Job Step Plugins for ECS (Fargate) and Lambda are available for Commercial product users. See details about specific plugin functionality below:

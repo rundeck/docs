@@ -6,22 +6,22 @@ title: "Feature setup and compatibility"
 
 ## Pre-Requisites
 
-The new architecture is available with v4.11+ of Process Automation. The new architecture is off by default and can be turned on with a system setting. The Runner authentication and communication architecture is the same between the two generations of Runners. The new Runners use new APIs, management UI, and have a new and more extensive set of plugins available. 
+The new architecture is available with v4.11+ of Runbook Automation. The new architecture is off by default and can be turned on with a system setting. The Runner authentication and communication architecture is the same between the two generations of Runners. The new Runners use new APIs, management UI, and have a new and more extensive set of plugins available. 
 
 ## Setup steps
 
-If the enterprise Runners are enabled you can skip setting the runner.enabled setting. If you have not enabled the Runner feature please do so by doing the following: Add the following property in rundeck-config.properties file and restart the Process Automation. This feature has been enabled on Docker installations since v4.5.0 and is also enabled by default for Runbook Automation:
+If the enterprise Runners are enabled you can skip setting the runner.enabled setting. If you have not enabled the Runner feature please do so by doing the following: Add the following property in rundeck-config.properties file and restart the Runbook Automation. This feature has been enabled on Docker installations since v4.5.0 and is also enabled by default for Runbook Automation:
 
 `rundeck.feature.runner.enabled=true`
 
-To enable the new architecture, a new configuration feature flag was added to enable/disable the new UI components for managing and running jobs with Runners. The feature flag will turn on all the new UI and APIs. The flag can be added through  “Add config” n the System Configuration UI. Applying this setting does not require a restart of Process Automation.
+To enable the new architecture, a new configuration feature flag was added to enable/disable the new UI components for managing and running jobs with Runners. The feature flag will turn on all the new UI and APIs. The flag can be added through  “Add config” n the System Configuration UI. Applying this setting does not require a restart of Runbook Automation.
 
 `rundeck.feature.distributedAutomation.enabled = true`
 
 
-## Upgrade Notes for customers previously using Runners before Process Automation version 4.11
+## Upgrade Notes for customers previously using Runners before Runbook Automation version 4.11
 
-This section applies only for installations that have deployed the previous generation architecture of Process Automation Runners (this does not apply to Automation Action Runners). You can disable the new architecture by changing the setting to false which will revert to the previous behaviors and UIs of the Runners. Toggling the feature on and off does NOT change Job or Runner data, but it does change how jobs use Runners and the Process Automation UI.
+This section applies only for installations that have deployed the previous generation architecture of Runbook Automation Runners (this does not apply to Automation Action Runners). You can disable the new architecture by changing the setting to false which will revert to the previous behaviors and UIs of the Runners. Toggling the feature on and off does NOT change Job or Runner data, but it does change how jobs use Runners and the Runbook Automation UI.
 
 If you are using the previous generation of Runners before v4.11, and want to enable the new architecture please review how the new architecture behaves - [Overview](/administration/runner/runner-intro.html), [Configuration](/administration/runner/runner-config.html) and [Usage](/administration/runner/runner-using.html) of the new Runners before making changes. The new architecture uses Runner tags that are referenced in Jobs when selecting which Runners will carry out a task instead of relying on node filters hardcoded in the Runner configruation. Once reviewed, update the configuration of your Runners and the jobs using them with the following steps:
 

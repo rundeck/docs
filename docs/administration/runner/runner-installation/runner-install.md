@@ -39,7 +39,7 @@ The Runner can be installed as a `systemd` service on Linux systems.
 1. Create a systemd configuration file `/etc/systemd/system/runner.service` with the following contents:
 ```
 [Unit]
-Description=Process Automation Runner 
+Description=Runbook Automation Runner 
 
 [Service]
 WorkingDirectory=/opt/apps/runner
@@ -183,7 +183,7 @@ docker run -it \
 
 These instructions will guide how to install a Runner in Kubernetes.
 
-1. [Create an API Token](/manual/10-user.md#user-api-tokens) or use an existing API Token to download a new Runner via API using the following **`curl`** request. Be sure to replace **`[URL]`** and **`[ApiToken]`** **`[ProjectName]`** with your Process Automation instance URL and API Token respectively:
+1. [Create an API Token](/manual/10-user.md#user-api-tokens) or use an existing API Token to download a new Runner via API using the following **`curl`** request. Be sure to replace **`[URL]`** and **`[ApiToken]`** **`[ProjectName]`** with your Runbook Automation instance URL and API Token respectively:
     :::tip Heads Up!
     Be sure to give each Runner a unique name. This is how you will identify one Runner from another in the platform.
     :::
@@ -241,10 +241,10 @@ spec:
 ```
 6. Creat the deployment: **`kubectl create -f deployment.yml`**.
 7. Confirm that the Runner was deployed successfully: **`kubectl logs -f rundeck-runner --namespace=[NAMESPACE]`**
-8. Verify that the Runner is communicating with Process Automation correctly by looking in the **Status** column on the Runner Management page:
+8. Verify that the Runner is communicating with Runbook Automation correctly by looking in the **Status** column on the Runner Management page:
     ![Runner installed correctly](/assets/img/runner-installed-k8s.png)
 :::tip Tip: Multiple Pods for Scalability
-   Multiple replicas of the Runner container can be associated with a single deployment, though they will appear as a single Runner in Process Automation. 
+   Multiple replicas of the Runner container can be associated with a single deployment, though they will appear as a single Runner in Runbook Automation. 
     This is useful for horizontally scaling the Runner. Here is an example deployment yaml where 2 replicas are used:
 ```
 apiVersion: apps/v1

@@ -22,7 +22,7 @@ Release Date: May 15th, 2023
 
 ## Overview
 
-Check out the new features and enhancements for PagerDuty Process Automation, PagerDuty Runbook Automation, and Rundeck Community included in this release. This release includes enhancements to the [Enterprise Runner](/administration/runner/), the SSM Node Executor plugins, and a new plugin suite. See below for the full release highlights.
+Check out the new features and enhancements for PagerDuty Runbook Automation, and Rundeck Community included in this release. This release includes enhancements to the [Enterprise Runner](/administration/runner/), the SSM Node Executor plugins, and a new plugin suite. See below for the full release highlights.
 
 View our [Twitch stream review](https://www.twitch.tv/pdcommunity) of this release live on May 16. 
 
@@ -31,7 +31,7 @@ View our [Twitch stream review](https://www.twitch.tv/pdcommunity) of this relea
 * **Plugins on Enterprise Runner:** The [Enterprise Runner](/administration/runner/#enterprise-runner-overview) is used to automate tasks in secure, remote environments. With this latest release, the SQL Run Command, Github Run Script, VMware Node Steps, and File Transfer plugins have been added to the Runner’s capabilities. These additions enable users to more quickly author automation for their remote environments by using plugins instead of scripts and commands.
 * **Ad-hoc commands through Runner:** There are cases when it is useful to quickly run on-demand commands to a selection of nodes - such as checking package version information or tmp directory files. Ad-hoc commands can now be run through the Enterprise Runner, allowing users to specify a Runner to execute commands on one or multiple nodes. This helps with both ad-hoc tasks as well as improving the setup and testing experience of the Enterprise Runner.
 * **SSM across multiple AWS accounts:** The [AWS Systems Manager plugins](/manual/projects/node-execution/aws-ssm.md#aws-systems-manager-ssm-node-executor-plugins) enable users to execute commands and scripts across their EC2 instances and ECS containers. Users can now orchestrate automation across all of their AWS accounts from a single project, reducing time and potential for human error for critical tasks. Read the [technical How To article](/learning/howto/cross-account-aws-ssm.md) to learn more.
-* **Sensu Plugin Suite:** The new Sensu plugin suite makes it easier for users to set up and manage the integration between Process Automation and Sensu.  Whereas before users would have to configure the properties for the integration of the Project or Framework configuration file, this can now be configured in the Plugin Suite user-interface (see below).
+* **Sensu Plugin Suite:** The new Sensu plugin suite makes it easier for users to set up and manage the integration between Runbook Automation and Sensu.  Whereas before users would have to configure the properties for the integration of the Project or Framework configuration file, this can now be configured in the Plugin Suite user-interface (see below).
 
 ### Security Updates
 

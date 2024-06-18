@@ -112,7 +112,7 @@ curl -L -o https://repo1.maven.org/maven2/mysql/mysql-connector-java/${MYSQLJ_VE
 ```
 
 ## Amazon Aurora MySQL
-Process Automation v4.8+ supports Amazon Aurora MySQL v5.7 with the mysql standard jdbc driver or [https://awslabs.github.io/aws-mysql-jdbc](https://awslabs.github.io/aws-mysql-jdbc) driver when regional/zone DR failover is required. 
+Runbook Automation v4.8+ supports Amazon Aurora MySQL v5.7 with the mysql standard jdbc driver or [https://awslabs.github.io/aws-mysql-jdbc](https://awslabs.github.io/aws-mysql-jdbc) driver when regional/zone DR failover is required. 
 
 
 ### Additional Articles

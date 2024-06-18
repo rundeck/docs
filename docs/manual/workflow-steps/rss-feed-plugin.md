@@ -38,7 +38,7 @@ will display a message indicating whether there have been recent events.  This m
 <br>
 
 1. Copy the YAML below and save to a **`.yaml`** file.  
-2. Upload the Job definition to your Runbook Automation or Process Automation instance.
+2. Upload the Job definition to your Runbook Automation instance.
 3. [Optional] Fill in the **API Key** and **Email** fields for the **PagerDuty Incident Note** step to post the output to the PagerDuty Incident timeline.
 
 ```

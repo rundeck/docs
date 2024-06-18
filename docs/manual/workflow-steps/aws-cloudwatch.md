@@ -10,16 +10,16 @@ The CloudWatch Logs workflow step plugins allows users to execute queries to you
 
 There are two CloudWatch Logs plugins:
 
-[AWS / CloudWatch / Logs](#execute-ad-hoc-cloudwatch-logs-query): Users can insert CloudWatch Logs Insights queries directly into the Runbook and Process Automation Job Step.
+[AWS / CloudWatch / Logs](#execute-ad-hoc-cloudwatch-logs-query): Users can insert CloudWatch Logs Insights queries directly into the Runbook Automation Job Step.
 
-[AWS / CloudWatch / Execute Saved Query](#execute-saved-cloudwatch-logs-query): Users specify a saved Logs Insights query in CloudWatch for Runbook and Process Automation to execute.
+[AWS / CloudWatch / Execute Saved Query](#execute-saved-cloudwatch-logs-query): Users specify a saved Logs Insights query in CloudWatch for Runbook Automation to execute.
 
 ## Getting Started
 
 ### Authentication
-Follow the instructions outlined in the [AWS Plugins Overview](/manual/plugins/aws-plugins-overview.html) for Process Automation to authenticate with AWS.
+Follow the instructions outlined in the [AWS Plugins Overview](/manual/plugins/aws-plugins-overview.html) for Runbook Automation to authenticate with AWS.
 
-When defining the IAM Role for Runbook Automation or Process Automation, be sure to include the following permissions in the Policy associated with the role:
+When defining the IAM Role for Runbook Automation, be sure to include the following permissions in the Policy associated with the role:
 
 * **`logs:StartQuery`**
 * **`logs:GetQueryResults`**

@@ -1,5 +1,5 @@
 # Integrate PagerDuty Automation Actions with Runbook Automation  
-PagerDuty Automation Actions invoke jobs staged in Runbook Automation. An Action can also invoke a script run by an installed Process Automation Runner. By associating Automation Actions with a PagerDuty service, PagerDuty responders get push-button access to a library of defined diagnostic or remediation actions, resulting in shorter resolution times and fewer disruptive escalations.  
+PagerDuty Automation Actions invoke jobs staged in Runbook Automation. An Action can also invoke a script run by an installed Runbook Automation Runner. By associating Automation Actions with a PagerDuty service, PagerDuty responders get push-button access to a library of defined diagnostic or remediation actions, resulting in shorter resolution times and fewer disruptive escalations.  
 ![](/assets/img/aarba1.png)  
 Automation Actions can also be used as part of an Event Orchestration to enrich incident data with diagnostics information or perform remediation actions on incidents automatically.  
 
@@ -55,4 +55,4 @@ On your PagerDuty service:
 
 ## Resources
 * [PagerDuty Automation Actions](https://support.pagerduty.com/docs/automation-actions).
-* [Process Automation Tokens](/manual/10-user.html#user-api-tokens).
+* [Runbook Automation Tokens](/manual/10-user.html#user-api-tokens).

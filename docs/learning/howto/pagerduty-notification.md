@@ -5,7 +5,7 @@ Rundeck integrates with PagerDuty’s incident management platform, which provid
 In this guide we will show you how to trigger an event in PagerDuty after executing a job in Rundeck. This functionality is available in both Rundeck Community and Enterprise.   
 
 :::tip
-Note, there are many more [PagerDuty plugins](/manual/webhooks/pagerduty-run-job.md) available for Process Automation users
+Note, there are many more [PagerDuty plugins](/manual/webhooks/pagerduty-run-job.md) available for Runbook Automation users
 :::
 
 Rundeck Notifications are actions triggered based on the result of a Job that was executed.  There are five conditions that can trigger Rundeck notifications, those conditions are:
@@ -65,7 +65,7 @@ framework.plugin.Notification.PagerDutyNotification.service_key=your-service-key
 1. Start the Rundeck service: `systemctl start rundeckd.`
 @tab Enterprise Steps
 
-Process Automation includes a Configuration Management module to set configuration settings via the GUI and store them in the Rundeck database. Database storage shares configuration options with all your cluster members and centralizes configuration.
+Runbook Automation includes a Configuration Management module to set configuration settings via the GUI and store them in the Rundeck database. Database storage shares configuration options with all your cluster members and centralizes configuration.
 
 1. Click on the **System Menu > System Configuration**.
     <br><br>![System Configuration](/assets/img/howto-pdnotif-systemconf.png)<br><br>
@@ -76,7 +76,7 @@ Process Automation includes a Configuration Management module to set configurati
 4. Press the **Save** button in the top right to save the Config changes.
     <br><br>![Save Configuration](/assets/img/howto-pdnotif-saveconf.png)<br><br>
 
-Now, Process Automation is configured to use PagerDuty notifications, no restart is required.
+Now, Runbook Automation is configured to use PagerDuty notifications, no restart is required.
 :::
 
 ## Sending Notifications to a PagerDuty Service.

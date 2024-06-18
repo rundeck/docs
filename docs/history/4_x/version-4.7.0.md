@@ -23,21 +23,21 @@ Release Date: October 6, 2022
 
 ## Overview
 
-Check out the new features and enhancements for PagerDuty Process Automation (formerly Rundeck Enterprise), PagerDuty Runbook Automation, and Rundeck Community included in this release. This release includes a new plugin for CloudWatch that simplifies the management of diagnostics queries, an incubating feature that helps users understand the return on investment (ROI) of jobs, and a number of security and compliance updates and bug fixes.
+Check out the new features and enhancements for PagerDuty Runbook Automation, and Rundeck Community included in this release. This release includes a new plugin for CloudWatch that simplifies the management of diagnostics queries, an incubating feature that helps users understand the return on investment (ROI) of jobs, and a number of security and compliance updates and bug fixes.
 
 View our Twitch stream review of this release live on Wednesday, October 12 at 10AM Pacific. [Here’s the event link](https://www.twitch.tv/pagerduty/schedule?seriesID=792f972e-f876-4135-b6c2-6ea30a5c0330).
 
-## Process Automation Updates
+## Runbook Automation Updates
 
 > Also includes all Open Source updates from below
 
 ### Highlights
 
-**ROI Metrics Data (incubating)** - Process Automation provides value with each workflow execution. Users report saving time, money, and often a combination of both. Now, Process Automation users have a way to track time and money saved, as well as begin to see insights into the effectiveness of teams and projects.
+**ROI Metrics Data (incubating)** - Runbook Automation provides value with each workflow execution. Users report saving time, money, and often a combination of both. Now, Runbook Automation users have a way to track time and money saved, as well as begin to see insights into the effectiveness of teams and projects.
 
 The ROI Metrics integration tracks user-defined value of each job execution and stores key value pairs against jobs to help you understand the ROI per job execution. The metrics accessible via API for further analysis. Find out more [here](/manual/execution-lifecycle/roi-metrics.md).
 
-**CloudWatch Logs Saved Query plugin** - This new plugin can help users improve incident response and streamline reporting. Amazon customers often save queries for CloudWatch Logs Insights for common reporting and investigation tasks. Now, Runbook Automation and Process Automation customers can use this plugin to execute saved queries as Job steps within their automated runbooks. This allows domain-experts to delegate queries to others as self-service. For incident response, this plugin also helps automate diagnostics by giving responders the ability to pull logs into a PagerDuty incident without escalating to experts. Full details and documentation for the new plugin can be found [here](/manual/workflow-steps/aws-cloudwatch.md).
+**CloudWatch Logs Saved Query plugin** - This new plugin can help users improve incident response and streamline reporting. Amazon customers often save queries for CloudWatch Logs Insights for common reporting and investigation tasks. Now, Runbook Automation customers can use this plugin to execute saved queries as Job steps within their automated runbooks. This allows domain-experts to delegate queries to others as self-service. For incident response, this plugin also helps automate diagnostics by giving responders the ability to pull logs into a PagerDuty incident without escalating to experts. Full details and documentation for the new plugin can be found [here](/manual/workflow-steps/aws-cloudwatch.md).
 
 **Enhanced Progress Badge Plugin** - The Progress Badge plugin can create graphic badges that render on the Log Output tab. Now, the enhanced Progress Badge allows users to present simplified log-output text to other job-steps and provides the option to include emoticon status-symbols. For users implementing Automated Diagnostics, this gives domain-experts the ability to simplify diagnostics in an easier to consume way. Find the full documentation for the enhanced plugin [here](/manual/log-filters/progress-badge.md).
 
