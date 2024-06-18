@@ -288,6 +288,10 @@ See the [SSO Documentation](/administration/security/sso/index.md) for more info
 `RUNDECK_PLUGIN_CLUSTER_REMOTEEXECUTION_PREFERREDTAGS=*`  
 `RUNDECK_PLUGIN_CLUSTER_REMOTEEXECUTION_ACTIVEONLY=true`  
 
+`RUNDECK_PLUGIN_CLUSTER_RECOVEREXECUTIONS_ENABLED=true`  
+`RUNDECK_PLUGIN_CLUSTER_RECOVEREXECUTIONS_POLICY=Any`  
+`RUNDECK_PLUGIN_CLUSTER_RECOVEREXECUTIONS_DELAY=60`  
+`RUNDECK_PLUGIN_CLUSTER_RECOVEREXECUTIONS_SLEEP=180`
 
 Toggle Remote Abort feature, which forwards an abort request to the cluster member which is processing the Execution (Enabled by default).
 
