@@ -10,5 +10,5 @@
     </AnnounceBox>
 </template>
 <script setup lang="ts">
-  import AnnounceBox from "vuepress-theme-hope/components/Homepage.js";
+  import AnnounceBox from "vuepress-theme-hope/components/HomePage.js";
 </script>
