@@ -19,11 +19,11 @@ Release Date: November 10, 2022
 - [Watch the Live Stream Release Recap](https://youtu.be/UgOePLEIcfw)
 
 
-<YouTube id="UgOePLEIcfw"/>
+<VidStack src="youtube/UgOePLEIcfw"/>
 
 ## Overview
 
-Check out the new features and enhancements for PagerDuty Process Automation, PagerDuty Runbook Automation, and Rundeck Community included in this release. This release includes a new plugin that shows queries status pages from cloud providers and SaaS tools to help users quickly understand if a performance degradation is due to a third party and a number of security and compliance updates and bug fixes.
+Check out the new features and enhancements for PagerDuty Runbook Automation, and Rundeck Community included in this release. This release includes a new plugin that shows queries status pages from cloud providers and SaaS tools to help users quickly understand if a performance degradation is due to a third party and a number of security and compliance updates and bug fixes.
 
 View our Twitch stream review of this release live on Wednesday, November 15 at 10AM Pacific. [Here’s the event link](https://www.twitch.tv/pagerduty/schedule?seriesID=792f972e-f876-4135-b6c2-6ea30a5c0330).
 
@@ -36,7 +36,7 @@ If you are using password authentication with the Rundeck API, the JSESSIONID co
 
 **Job Resume now works with Parallel/Ruleset strategies** - It's now possible to execute previously failed step(s) with the same inputs on Parallel and Ruleset execution strategies.  When enabled on a Job, the plugin will record the internal Workflow State as the Execution progresses. When one or more steps fail, the Workflow State prior to executing the failed step(s) is recorded and stored and can be restarted if needed.  [Check out all the details here](/manual/execution-lifecycle/job-resume.md).
 
-_Patched CVE-2022-42889_ - A recent security announcement was released for Apache’s common-text library. Rundeck and Process Automation products were not using the library in a vulnerable way, but we still went ahead and made updates to the patched versions to reduce false positives for customers that might be scanning for vulnerabilities.
+_Patched CVE-2022-42889_ - A recent security announcement was released for Apache’s common-text library. Rundeck and Runbook Automation products were not using the library in a vulnerable way, but we still went ahead and made updates to the patched versions to reduce false positives for customers that might be scanning for vulnerabilities.
 
 ### Process/Runbook Automation Updates
 

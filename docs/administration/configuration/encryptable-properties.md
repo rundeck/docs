@@ -1,19 +1,19 @@
-# Process Automation Config Property Encryption
+# Runbook Automation Config Property Encryption
 
 :::enterprise
 :::
 
-All Process Automation bundles come with a feature that allows you to encrypt the values in the rundeck-config.properties file.
+All Runbook Automation bundles come with a feature that allows you to encrypt the values in the rundeck-config.properties file.
 
 ### Approach
 
-To use encrypted properties in Process Automation you will have a master password that will be used to encrypt and decrypt the other passwords you wish to use in the rundeck-config.properties file.
+To use encrypted properties in Runbook Automation you will have a master password that will be used to encrypt and decrypt the other passwords you wish to use in the rundeck-config.properties file.
 
 For instance you might want to encrypt the bind password to your LDAP server. Let's say your LDAP bind password is `binder123`. You will need a master password to encrypt this value. We will use `1PwdToBindThem$` for the master password.
 
 ### Encrypting Property values
 
-Process Automation has a feature to allow you to generate encrypted passwords using the Jasypt encryption library. The following instructions show how to encrypt a password with this utility from the command line.
+Runbook Automation has a feature to allow you to generate encrypted passwords using the Jasypt encryption library. The following instructions show how to encrypt a password with this utility from the command line.
 
 cd into the directory where your rundeck.war is located
 run:
@@ -54,7 +54,7 @@ In our example we would add it to the java variable in `/etc/sysconfig/rundeckd`
 RDECK_JVM_SETTINGS=-Drd.encryption.default.password=1PwdToBindThem$
 ```
 
-Then we would start our Process Automation installation. After the application has completed the bootstrap process and is responding to requests, the environment variable can be unset for security purposes.
+Then we would start our Runbook Automation installation. After the application has completed the bootstrap process and is responding to requests, the environment variable can be unset for security purposes.
 
 ### Advanced Usage
 

@@ -10,7 +10,7 @@ This feature is intended to be used in situations where execution of Node Steps 
 
 ## What plugins are available to run with the Enterprise Runners?
 
-Please review the [list of supported Remote Runner plugins.](/administration/runner/runner-remoteplugins.md)
+Please review the [list of supported Remote Runner plugins.](/administration/runner/runner-plugins/runner-plugins.md)
 
 ## Do Runners participate in node discovery?
 

@@ -18,13 +18,13 @@ Release Date: September, 25, 2023
 - [Upgrade instructions](/upgrading/)
 - [Watch the Live Stream Release Recap](https://www.youtube.com/watch?v=OiS2a962pAE)
 
-<YouTube id="OiS2a962pAE"/>
+<VidStack src="youtube/OiS2a962pAE"/>
 
 ## Overview
 
-Rundeck 4.17.0 is here! Check out the new features and enhancements for PagerDuty Process Automation, PagerDuty Runbook Automation, and Rundeck Community included in this release.
+Rundeck 4.17.0 is here! Check out the new features and enhancements for PagerDuty Runbook Automation, and Rundeck Community included in this release.
 
-## Process Automation Updates
+## Runbook Automation Updates
 
 > Also includes all Open Source updates from below
 

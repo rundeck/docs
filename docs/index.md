@@ -1,9 +1,9 @@
 ---
 home: true
 icon: home
-title: Rundeck | Process Automation Documentation
+title: Rundeck | Runbook Automation Documentation
 heroText:  Welcome to Docs
-tagline: Runbook Automation | Process Automation | Rundeck
+tagline: Runbook Automation | Rundeck
 //heroImage: /assets/img/pd-background.png
 bgImage: /assets/img/pd-background.png
 bgImageDark: /assets/img/pd-background.png
@@ -44,7 +44,7 @@ highlights:
     - title: Distributed Automation
       icon: /assets/img/runner-icon.png
       details: Automation across network and physical boundaries.
-      link: /administration/runner/runner-intro.html
+      link: /administration/runner/
 
     - title: Integrations & Plugins
       icon: shuffle
@@ -122,6 +122,11 @@ highlights:
   //bgImage: /images/waveform-light-04.svg
   //bgImageDark: /images/waveform-dark-04.svg
   features:
+    - title: Project Runner Management
+      icon: /assets/img/runner-icon.png
+      details: Manage Runners within the context of a project.
+      link: /administration/runner/runner-management/managing-runners.md#managing-runners-within-a-project
+
     - title: Secrets via Distributed Automation
       icon: key
       details: Automate workflows with remote-hosted secrets storage.
@@ -147,11 +152,6 @@ highlights:
       details: Track time and money saved to see insights into the effectiveness of your Automation.
       link: /history/4_x/version-4.7.0.html#highlights
 
-    - title: Performance Enhancements
-      icon: gauge-high
-      details: Our new 5.0 release includes UI performance improvements up to 85%.
-      link: /history/5_x/version-5.0.0.html#jobs-list-performance
-
 - header: Distributed Automation
   description: With the Distributed Automation architecture, DevOps and Operations teams can manage automation in a central UI while delegating tasks within different private networks or multi-cloud environments without needing to open external firewall ports.
   //image: /assets/image/layout.svg
@@ -170,7 +170,7 @@ highlights:
 
     - title: AWS SSM Execution
       icon: /assets/img/aws-icon-small.png
-      details: Allows Process Automation to communicate with EC2 instances through the SSM service, rather than another communication protocol.
+      details: Allows Runbook Automation to communicate with EC2 instances through the SSM service, rather than another communication protocol.
       link: /learning/howto/cross-account-aws-ssm.html
 
     - title: Remote Secrets

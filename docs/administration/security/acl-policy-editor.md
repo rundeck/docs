@@ -5,7 +5,7 @@
 
 For basic instructions on how to get started with Rundeck ACL Policies, check out this [Basic ACL Tutorial](/learning/howto/acl_basic_examples.md).  Or check out the video below:
 
-<YouTube id="i859f1WG3Bo"/>
+<VidStack src="youtube/i859f1WG3Bo"/>
 
 For examples and use case specific implementations check out the [ACL Examples](/learning/howto/acls/) section of the How To articles.
 
@@ -44,7 +44,7 @@ Local Filesystem ACL Policies (System context only)
 
     These policies *cannot* be modified via the web GUI.
 
-In Process Automation you can also see an "Access Levels" tab, which allows testing the current Access Levels for users and groups across all loaded ACL Policy files.
+In Runbook Automation you can also see an "Access Levels" tab, which allows testing the current Access Levels for users and groups across all loaded ACL Policy files.
 
 ![System Access Control Page](/assets/img/acl-editor-system.png)
 
@@ -56,7 +56,7 @@ The Project context Access Control page is similar to the System Access Control 
 
 Choose "Edit" or "Create" to modify an ACL Policy.
 
-You can edit the YAML format for the ACL Policy directly. (In Process Automation, click the "Editor" tab to view the YAML editor.)
+You can edit the YAML format for the ACL Policy directly. (In Runbook Automation, click the "Editor" tab to view the YAML editor.)
 
 ::: tip
 See the [Access Control Policy](/administration/security/authorization.md#access-control-policy-2) and [aclpolicy](/manual/document-format-reference/aclpolicy-v10.html) pages for more information.
@@ -72,7 +72,7 @@ If your ACL Policy YAML fails validation checks, attempting to save it will disp
 
 ## Editing ACL Rules (Enterprise)
 
-In Process Automation, by default you will see the Rules editor which allows defining ACL Policy rules with a simpler wizard UI.
+In Runbook Automation, by default you will see the Rules editor which allows defining ACL Policy rules with a simpler wizard UI.
 
 ![ACL Editor Rules List](/assets/img/acl-editor-edit-rules-list.png)
 

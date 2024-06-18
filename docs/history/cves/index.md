@@ -4,11 +4,11 @@ order: 100
 
 # Security Notices
 
-Below is colletion of security notices previously filed for Rundeck and Process Automation.  Also included is a list of false positives that vulnerability scanners may find with explanations about why we consider it a false positive.  If there are any concerns about the security of Rundeck or quesitons about a new finding please reach out to us using the [Support Instructions](/about/getting-help.md).
+Below is colletion of security notices previously filed for Rundeck and Runbook Automation.  Also included is a list of false positives that vulnerability scanners may find with explanations about why we consider it a false positive.  If there are any concerns about the security of Rundeck or quesitons about a new finding please reach out to us using the [Support Instructions](/about/getting-help.md).
 
 [Download the latest version here](https://download.rundeck.com).
 
-## Rundeck/Process Automation CVEs
+## Rundeck/Runbook Automation CVEs
 
 These are the Security Advisories Rundeck has issued in the past.  It is always recommended to upgrade to the current version of Rundeck ({{$rundeckVersion}}) for the latest security updates.
 

@@ -18,7 +18,7 @@ Release Date: March 13th, 2023
 - [Upgrade instructions](/upgrading/)
 - [Watch the Live Stream Release Recap](https://youtu.be/bqPzA0S7hIY)
 
-<YouTube id="bqPzA0S7hIY"/>
+<VidStack src="youtube/bqPzA0S7hIY"/>
 
 ::: 
 Additionally, we are announcing some exciting product updates this month. [Sign up for the launch webinar](https://www.pagerduty.com/resources/webinar/bridging-network-silos-with-new-distributed-automation/?utm_medium=email&utm_source=marketo&utm_campaign=email_customers_Global-Wb-BridgeNetworkSilosDistributedAutomation-Email&utm_content=4.11_release_notes) to learn more.
@@ -26,14 +26,14 @@ Additionally, we are announcing some exciting product updates this month. [Sign 
 
 ## Overview
 
-Check out the new features and enhancements for PagerDuty Process Automation, PagerDuty Runbook Automation, and Rundeck Community included in this release. With the release of PagerDuty Runbook Automation 4.11.0 and PagerDuty Process Automation 4.11.0, we are introducing a new architecture for orchestrating workflows across cloud and hybrid environments through the Enterprise Runners. 
+Check out the new features and enhancements for PagerDuty Runbook Automation, and Rundeck Community included in this release. With the release of PagerDuty Runbook Automation 4.11.0 we are introducing a new architecture for orchestrating workflows across cloud and hybrid environments through the Enterprise Runners. 
 In addition, this release includes two new Plugin Suites to simplify configuration of plugins and the release of an official Docker image for the Runner.
 
 
 ### Highlights
 The [new architecture for Runners](/administration/runner/) offers flexibility to create powerful and resilient cross-environment jobs. The new architecture separates workflow orchestration from task execution. It offers next- generation remote Runners that are now packaged with common plugins such as Ansible, Docker, and Kubernetes that execute locally within the private network. The new architecture now allows job authors to develop automated jobs that incorporate multiple environments, and job authors have the flexibility to specify where and how Runners participate in executing distributed job steps.
 
-This release includes new Plugin Suites for ServiceNow and Jira. As a reminder, [Plugin Suites streamline the configuration](/history/4_x/version-4.9.0.md) of plugins. Now users can update plugin configurations from a single location (previously this had to be done in multiple locations). In addition, this release includes an official container image for the [Runner](/administration/runner/runner-install.md).
+This release includes new Plugin Suites for ServiceNow and Jira. As a reminder, [Plugin Suites streamline the configuration](/history/4_x/version-4.9.0.md) of plugins. Now users can update plugin configurations from a single location (previously this had to be done in multiple locations). In addition, this release includes an official container image for the [Runner](/administration/runner/runner-installation/runner-install.md).
 
 * The new [ServiceNow Plugin Suite](/manual/plugins/servicenow-plugins-overview.md) has a Node Source and many job steps to help pull in nodes from your CMDB and execute automation back into tables within ServiceNow. The ServiceNow Plugin Suite can be configured on a per-project basis or for the entire system. [Learn more.](/manual/plugins/servicenow-plugins-overview.md) 
 

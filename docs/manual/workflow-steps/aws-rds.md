@@ -5,14 +5,14 @@
 
 Amazon Relational Database Service (RDS) is a collection of managed services that makes it simple to set up, operate, and scale databases in the cloud.
 
-The following RDS plugins are available for PagerDuty Runbook Automation and Process Automation:
+The following RDS plugins are available for PagerDuty Runbook Automation:
 
 * [RDS Instance Status](#rds-instance-status)
 
 ### Authentication
-Follow the instructions outlined in the [AWS Plugins Overview](/manual/plugins/aws-plugins-overview.html) for Process Automation to authenticate with AWS.
+Follow the instructions outlined in the [AWS Plugins Overview](/manual/plugins/aws-plugins-overview.html) for Runbook Automation to authenticate with AWS.
 
-When defining the IAM Role for Runbook Automation or Process Automation, be sure to include the following permissions in the Policy associated with the role:
+When defining the IAM Role for Runbook Automation, be sure to include the following permissions in the Policy associated with the role:
 
 * **`rds:describeDBInstances`**
 

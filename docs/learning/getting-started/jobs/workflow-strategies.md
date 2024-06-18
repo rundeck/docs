@@ -3,7 +3,7 @@
 ## Workflow Behavior
 The Workflow Strategy that’s assigned as part of each job definition determines how the steps are processed within a Job's Workflow. The strategy will determine whether steps will be executed node by node and/or whether job steps should be executed in parallel or sequentially.<br>
 ![](/assets/img/workflow1.png)<br>
-The following are the strategies available to Jobs in Rundeck / Process Automation.<br>
+The following are the strategies available to Jobs in Rundeck / Runbook Automation.<br>
 ### Node First
 The default behavior executes all steps defined in the job on a node before proceeding to the next node. Each node will be completed before the next node begins executing the workflow.
 Example:
@@ -35,5 +35,5 @@ Example:<br>
 5.   NodeA    step#3
 6.   NodeB      "
 ```
-### Ruleset (Process Automation exclusive strategy)
-The three strategies listed above are available on Rundeck as well as PagerDuty Process Automation (the commercial products). The fourth strategy is only available to commercial customers. The [Ruleset Workflow Strategy](/manual/workflow-strategies/ruleset.html#ruleset-workflow-strategy-plugin) allows commercial users to provide more complex logic around job step execution. For example, a job might have most steps executed sequentially but a few specific ones run in parallel.  For more details on what is available in the Ruleset Strategy, click [here](/manual/workflow-strategies/ruleset\.md#ruleset-workflow-strategy-plugin).<br>
+### Ruleset (Runbook Automation exclusive strategy)
+The three strategies listed above are available on Rundeck as well as PagerDuty Runbook Automation (the commercial products). The fourth strategy is only available to commercial customers. The [Ruleset Workflow Strategy](/manual/workflow-strategies/ruleset.html#ruleset-workflow-strategy-plugin) allows commercial users to provide more complex logic around job step execution. For example, a job might have most steps executed sequentially but a few specific ones run in parallel.  For more details on what is available in the Ruleset Strategy, click [here](/manual/workflow-strategies/ruleset\.md#ruleset-workflow-strategy-plugin).<br>

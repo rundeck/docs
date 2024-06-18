@@ -19,7 +19,7 @@ Use an external database service like MariaDB, Mysql, Postgres, Amazon Aurora or
 
 ## Database Architecture and Performance Notes
 
-Process Automation supports only one active DB instance serving queries to the Enterprise Cluster. PAOP only supports reading from and writing to a single database instance from all servers in the same cluster. For optimal performance the Process Automation Enterprise Cluster and database instance need to be connected on low latency network (<40ms latency).
+Runbook Automation Self-Hosted supports only one active DB instance serving queries to the Enterprise Cluster. PAOP only supports reading from and writing to a single database instance from all servers in the same cluster. For optimal performance the  Enterprise Cluster and database instance need to be connected on low latency network (<40ms latency).
 
 ### Customize the Datasource
 

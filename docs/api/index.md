@@ -3361,7 +3361,9 @@ Query Parameters:
 * `max`: Maximum number of items to return (default: no limit).
 * `past`: `true` to return an inverse forecast, that is, considering the current scheduler, when it should have run. Note this forecast is only referential, since it will not take into account if the job could have been disabled or not yet been created. **Since API v32**
 
+**Since v48**:
 
+Includes average duration in the response. And information regarding if the respective project has executions and scheduled disabled.
 
 **Response:**
 
@@ -3384,6 +3386,9 @@ A single object:
     "group": "[group]",
     "description": "[description]",
     "project": "[project]",
+    "averageDuration": "[timestamp]",
+    "projectDisableExecutions": true/false,
+    "projectDisableSchedule": true/false,
     "name": "[name]"
 }
 ```
@@ -5100,7 +5105,7 @@ In APIv38 or later:
 * `importComponents.NAME=true` enable a component for import
 * `importOpts.NAME.KEY=VALUE` set a component option
 
-Project archives may contain "components" which can be imported, beyond the base set of contents.  This includes some data used by Process Automation (Rundeck Enterprise) features.
+Project archives may contain "components" which can be imported, beyond the base set of contents.  This includes some data used by Runbook Automation (Rundeck Enterprise) features.
 
 Components:
 
@@ -6500,7 +6505,7 @@ ok
 :::
 
 
-Manage System and Project Calendars in Process Automation.
+Manage System and Project Calendars in Runbook Automation.
 
 ### List System Calendars
 Get all calendars at system level.
@@ -6738,7 +6743,7 @@ Deletes a calendar at system level
 ::: enterprise  
 :::
 
-Returns metadata about the current License for Process Automation.
+Returns metadata about the current License for Runbook Automation.
 
 **Request:**
 
@@ -6786,7 +6791,7 @@ Returns metadata about the current License for Process Automation.
 ::: enterprise  
 :::
 
-Uploads a license key for Process Automation.
+Uploads a license key for Runbook Automation.
 
 **Request:**
 
@@ -6795,11 +6800,11 @@ Uploads a license key for Process Automation.
 
 Request Content:
 
-The Process Automation License key file.
+The Runbook Automation License key file.
 
 Optional Parameters:
 
-* `license_agreement`: `true` to agree with the Process Automation License.
+* `license_agreement`: `true` to agree with the Runbook Automation License.
 
 **Response:**
 

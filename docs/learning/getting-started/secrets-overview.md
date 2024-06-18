@@ -6,7 +6,7 @@ Rundeck utilizes built-in key storage to save all credentials related to remote 
 ![](/assets/img/secrets-1.png)<br>
 _The interface to upload a key to the Rundeck keystore_
 
-## Storage Options in Rundeck and Process Automation
+## Storage Options in Rundeck and Runbook Automation
 
 ### [Rundeck Key Storage](/manual/key-storage/index.html#rundeck-key-storage)
 Rundeck Key Storage is the space that Rundeck Admins can use to store current sensitive private key/password data ("keys") storage that can be utilized across Rundeck. By default, Rundeck stores these keys on the internal [backend database](/administration/configuration/database/#database-overview). These keys can be used to customize the automation environment's plugins, node executors, and other components.
@@ -28,7 +28,7 @@ rundeck.storage.converter.1.config.provider=BC
 ### [Hashicorp Vault Integration](/learning/howto/vault-integration.html#how-to-integrate-hashicorp-vault)
 HashiCorp Vault is a highly regarded open-source tool that provides a centralized and secure solution for managing secrets, encryption keys, and sensitive data in modern IT environments. Acting as a robust secrets management platform, Vault offers a wide range of features including secret storage, dynamic secret generation, secure access controls, and encryption as a service.
 
-## Additional Storage Options in PagerDuty Process Automation
+## Additional Storage Options in PagerDuty Runbook Automation
 
 ### [Thycotic Secret Server Integration](/manual/key-storage/storage-plugins/thycotic-storage.html#thycotic-storage-plugin-enterprise)
 Thycotic Secret Server is a Privileged Access Management (PAM) solution designed to secure and streamline the management of sensitive secrets and privileged credentials within organizations. It provides a centralized repository for storing and managing secrets, including passwords, SSH keys, database credentials, and API tokens. 

@@ -3,16 +3,16 @@
 ::: enterprise
 :::
 
-## Process Automation Architecture
-![Process Automation architecture](/assets/img/SingleCluster.png)
+## Runbook Automation Self-Hosted Architecture
+![Runbook Automation Self-Hosted architecture](/assets/img/SingleCluster.png)
 
 ## Installation
-To install a new Process Automation instance, download the latest version from [here](https://www.rundeck.com/downloads), and review requirements and deployment steps in the Deployment Guide.
+To install a new Runbook Automation instance, download the latest version from [here](https://www.rundeck.com/downloads), and review requirements and deployment steps in the Deployment Guide.
 
 <PDF url="/files/pa-deployment-guide.pdf" page="1"/>
 
 ## Requirements
-The Process Automation environment needs the following shared resources:
+The Runbook Automation environment needs the following shared resources:
 
 ### Database
 - All the cluster instances must share the same DB:
@@ -24,7 +24,7 @@ The Process Automation environment needs the following shared resources:
   See: [Storage Facility](/administration/configuration/storage-facility.md)
 
 ### Load Balancer
-A load balancer allows you to achieve high availability in your Process Automation installation by routing http traffic across several redundant Process Automation instances.
+A load balancer allows you to achieve high availability in your Runbook Automation installation by routing http traffic across several redundant Runbook Automation instances.
 
 - Set the `grails.serverURL` parameter of all cluster members (`rundeck-config.properties`) with the LB URL.
 
@@ -58,16 +58,16 @@ See: [Node Model Sources](/manual/projects/resource-model-sources/index.md)
 ## Features:
 
 ### Autotakeover
-Scheduled jobs are owned by the last cluster member who modified them. Jobs can also be controlled using Cluster Manager. If a cluster member goes down, all scheduled jobs on that cluster member must be moved to another cluster node. This process can be performed automatically using the heartbeat and Autotakeover features in Process Automation version 2.1.0 and later releases.
+Scheduled jobs are owned by the last cluster member who modified them. Jobs can also be controlled using Cluster Manager. If a cluster member goes down, all scheduled jobs on that cluster member must be moved to another cluster node. This process can be performed automatically using the heartbeat and Autotakeover features in Runbook Automation version 2.1.0 and later releases.
 
 See: [Autotakeover](/administration/cluster/autotakeover/index.md)
 
 ### Cluster Remote Execution Policy
-This feature allows Process Automation cluster members to forward job executions to other cluster members based on a policy configuration.
+This feature allows Runbook Automation cluster members to forward job executions to other cluster members based on a policy configuration.
 
 See: [Remote Job Execution](/administration/configuration/remote-job-execution.md)
 
-### Process Automation Replication
+### Runbook Automation Replication
 This plugin is used for an active/passive configuration. Each cluster member can have its own database.
 
-See [Process Automation Replication](/administration/cluster/replication/index.md)
+See [Runbook Automation Replication](/administration/cluster/replication/index.md)

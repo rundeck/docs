@@ -40,7 +40,7 @@ The screenshot above shows the elements of the Commands page user interface.
 ## Selecting a Runner
 
 :::tip New Feature
-Note: This feature is only available after version 4.11 of Process Automation with the new Distributed Automation flag turned on.  [More info](/administration/runner/runner-intro.md).
+Note: This feature is only available after version 4.11 of Runbook Automation with the new Distributed Automation flag turned on.  [More info](/administration/runner/index.md).
 :::
 
 Selecting the Runner here will dispatch the commands to an Enterprise Runner instance.

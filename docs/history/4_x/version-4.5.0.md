@@ -8,13 +8,13 @@ Release Date: August 10, 2022
 - [Watch the Live Stream Release Recap](https://youtu.be/tZqSPUrT5IU)
 - [Upgrade instructions](/upgrading/)
 
-<YouTube id="tZqSPUrT5IU"/>
+<VidStack src="youtube/tZqSPUrT5IU"/>
 
 ## Overview
 
-Check out the new features and enhancements for PagerDuty Process Automation (formerly Rundeck Enterprise) and PagerDuty Runbook Automation and Rundeck Community included in this release.
+Check out the new features and enhancements for PagerDuty Runbook Automation Self-Hosted (formerly Rundeck Enterprise) and PagerDuty Runbook Automation and Rundeck Community included in this release.
 
-## Process Automation Updates
+## Runbook Automation Updates
 
 > Also includes all Open Source updates from below
 

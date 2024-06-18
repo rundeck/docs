@@ -25,7 +25,7 @@ The filter form contains a number of fields to limit search:
 After filling the form pressing the "Filter" button, the page will
 display executions matching the search.
 
-## Activity in PagerDuty Process Automation On Premise's Home
+## Activity in PagerDuty Runbook Automation Self-Hosted Home
 
 On the home page, users can check activity for a specific project, such as failed executions for each project.
 
@@ -62,7 +62,7 @@ failed.
 
 ![Execution view](/assets/img/fig0216.png)
 
-You can find below the possible **Execution Status** an Execution can assume in Process Automation.
+You can find below the possible **Execution Status** an Execution can assume in Runbook Automation.
 
 | **Status**        | **Icon**                               | **Colour** | **Description**                                                                                                                                                                                                                                                                        |
 |-------------------|----------------------------------------|------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|

@@ -4,7 +4,7 @@
 
 When responding to incidents related to Linux servers, there are many sorts of diagnostics that can be run. 
 Unlike some cloud diagnostics, connecting to Linux servers will involve using [node executors](/manual/projects/node-execution/builtin.html) to connect. 
-Node executors will be utilized by [Runners](/administration/runner/#installation) with Runbook Automation or directly by servers with Process Automation (on-premise).  
+Node executors will be utilized by [Runners](/administration/runner/#installation) with Runbook Automation or directly by servers with Runbook Automation Self-Hosted.  
 Node executors are configured as part of node definitions at the project level or per-node and then used as needed at job run-time by the Runner or server.  
 
 Often, Linux diagnostics are jobs composed of one or more [command](/manual/node-steps/builtin.html#command-step) or [script](/manual/node-steps/builtin.html#script-step) steps that gather data from the node about resources or services on that node.
@@ -23,7 +23,7 @@ The following examples are included in our **Automated Diagnostics Project**, wh
 ![](/assets/img/linux3.png)<br>
 
 ## Node Executors for Linux:
-**Process Automation** and **Runbook Automation** offer multiple methods of communicating with Linux servers through the multiple **Node Executors**, 
+**Runbook Automation** offer multiple methods of communicating with Linux servers through the multiple **Node Executors**, 
 such as these:
 
 * [SSH](/manual/projects/node-execution/ssh.html)

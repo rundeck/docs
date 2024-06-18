@@ -3,7 +3,7 @@
 :::enterprise
 :::
 
-The Runner, available for both Process Automation and Runbook Automation securely opens up network/communication between data centers and the Automation Cluster.  The Runner is a Remote Execution hub for Node Steps to run on specified endpoints, rather than from the Automation server itself.  
+The Runner, available for both Runbook Automation securely opens up network/communication between data centers and the Automation Cluster.  The Runner is a Remote Execution hub for Node Steps to run on specified endpoints, rather than from the Automation server itself.  
 
 ## Architecture
 
@@ -40,7 +40,7 @@ Connection can be confirmed on the Runner Management page on the _Last Checkin_ 
 :::
 
 :::tip
-To enable the Runner features you have to add the following property in `rundeck-config.properties` file and restart the Process Automation cluster or instance. This feature has been enabled on Docker installations since v4.5.0 and is also enabled by default for Runbook Automation.	
+To enable the Runner features you have to add the following property in `rundeck-config.properties` file and restart the Runbook Automation cluster or instance. This feature has been enabled on Docker installations since v4.5.0 and is also enabled by default for Runbook Automation.	
 ```
 rundeck.feature.runner.enabled=true
 ```
@@ -62,7 +62,7 @@ It is possible to edit each project Node Filter individually if needed.  Use the
 
 ### Troubleshooting
 
-Runner Logs are located in the `./runner/logs` folder under the folder where the jar was executed from.  The `runner.log` file contains operational and important messages about the runner.  `operations.log` tracks an operation starts and if it succeeds or fails.  [Read more about logging and setting up custom logging](runner-logging.md).
+Runner Logs are located in the `./runner/logs` folder under the folder where the jar was executed from.  The `runner.log` file contains operational and important messages about the runner.  `operations.log` tracks an operation starts and if it succeeds or fails.  [Read more about logging and setting up custom logging](runner-management/runner-logging.md).
 
 ### Proxying Runner connections
 Runners can be configured to connect through a HTTP/HTTPS proxy. Proxies are commonly used to centralize and secure outbound traffic from the datacenter to internet services. The proxy configuration is optional and is added as java command line arguments when the runner process is started.

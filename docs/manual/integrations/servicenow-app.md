@@ -1,10 +1,10 @@
-# PagerDuty Process Automation - ServiceNow Application
+# PagerDuty Runbook Automation - ServiceNow Application
 
 ::: enterprise
 :::
 
 ::: warning
-Recently our Application was migrated and reimplemented in a new PagerDuty Process Automation verison of the application.  The functionality from the previous 1.x version of the Rundeck Automation application is the same.  All future enhancements will happen on the new application located [here](https://store.servicenow.com/sn_appstore_store.do#!/store/application/1f1cf27adb252110e8744a6c139619f8/).
+Recently our Application was migrated and reimplemented in a new PagerDuty Runbook Automation verison of the application.  The functionality from the previous 1.x version of the Rundeck Automation application is the same.  All future enhancements will happen on the new application located [here](https://store.servicenow.com/sn_appstore_store.do#!/store/application/1f1cf27adb252110e8744a6c139619f8/).
 :::
 
 Our ServiceNow&reg; application can be found on the ServiceNow&reg; Store.  The application is free to Enterprise customers.  To request the application please contact your Account Executive or Customer Success contact.
@@ -15,7 +15,7 @@ The application is currently supported on Tokyo, Utah and Vancouver.
 
 An active commerical license for a currently supported version is also required. ([See Release Calendar for current supported versions](/history/release-calendar.md))
 
-If you are integrating ServiceNow&reg; to Process Automation On-Prem, network ingress traffic must be allowed from the ServiceNow&reg; instance(s) to the PagerDuty Automation load balancer or server.
+If you are integrating ServiceNow&reg; to Runbook Automation Self-Hosted, network ingress traffic must be allowed from the ServiceNow&reg; instance(s) to the PagerDuty Automation load balancer or server.
 
 ## Requesting the application
 
@@ -70,7 +70,7 @@ After the app has been installed in your ServiceNow&reg; instance there will be 
 ## Using the Application
 
 ### How it works
-The ServiceNow application leverages Process Automation's Webhooks feature to trigger jobs in your environment.  To create automation within ServiceNow please check out our Learning Article for [How to setup Webhooks to trigger your Process Automation Jobs](/learning/howto/using-webhooks.md).
+The ServiceNow application leverages Runbook Automation's Webhooks feature to trigger jobs in your environment.  To create automation within ServiceNow please check out our Learning Article for [How to setup Webhooks to trigger your Runbook Automation Jobs](/learning/howto/using-webhooks.md).
 
 ### Importing Webhooks
 

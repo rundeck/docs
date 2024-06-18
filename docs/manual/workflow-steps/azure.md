@@ -1,11 +1,11 @@
 # Azure Workflow Steps
 
-The Microsoft Azure cloud computing platform that offers a variety of services including but not limited to storage, networking and analytics. Azure's integration with Process Automation allows you to edit and utilize your Azure services in a Process Automation job.
+The Microsoft Azure cloud computing platform that offers a variety of services including but not limited to storage, networking and analytics. Azure's integration with Runbook Automation allows you to edit and utilize your Azure services in a Runbook Automation job.
 
 ## Authentication
 
 Follow the steps outlined in the [**Azure Plugins Overview**](/manual/plugins/azure-plugins-overview) to configure authentication for Azure Job steps. 
-Credentials can be configured on a per Job Step basis, Project basis, or for the entire Process Automation system.
+Credentials can be configured on a per Job Step basis, Project basis, or for the entire Runbook Automation system.
 
 ## Azure / Storage / Copy
 

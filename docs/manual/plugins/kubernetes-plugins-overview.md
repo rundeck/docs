@@ -4,8 +4,8 @@
 
 ![](/assets/img/kubernetes-icon.png)
 
-Process Automation integrates with Kubernetes through a variety of plugins listed below.
-By integrating Process Automation with Kubernetes, users can automate and provide self-service interfaces for operations in their Kubernetes Clusters.
+Runbook Automation integrates with Kubernetes through a variety of plugins listed below.
+By integrating Runbook Automation with Kubernetes, users can automate and provide self-service interfaces for operations in their Kubernetes Clusters.
 These integrations allow operations teams to provide self-service mechanisms to users throughout the business, as well as setup event-driven automation for workflows with Kubernetes.
 
 <details><summary> <font size="5">Kubernetes Plugins</font>
@@ -38,13 +38,13 @@ These integrations allow operations teams to provide self-service mechanisms to 
 
 </details>
 <br>
-<em>Click to expand to see the full list of Process Automation plugins for Kubernetes.</em>
+<em>Click to expand to see the full list of Runbook Automation plugins for Kubernetes.</em>
 
 ## Setup
 
 ### Python Dependencies
 
-In order to use the Kubernetes python must be installed on the Process Automation cluster-members or on the [Enterprise Runner](/administration/runner/runner-intro) - depending on where the
+In order to use the Kubernetes python must be installed on the Runbook Automation cluster-members or on the [Enterprise Runner](/administration/runner/runner-intro) - depending on where the
 connection to Kubernetes is going to originate.  
 
 The Kubernetes plugins will work with both **Python 2.7.x** and **Python 3.x.x**.
@@ -101,7 +101,7 @@ execute the plugin in _debug_ mode.
 10. Click **Save** on the Job Step and then **Save** to save the Job.
 11. Click **Run Job Now** to test that the configuration is correct.
 
-Now that configuration is complete, take a look at use-cases for Process Automation with Kubernetes such as 
+Now that configuration is complete, take a look at use-cases for Runbook Automation with Kubernetes such as 
 [Capturing Debug Data from Apps in Kubernetes](/learning/solutions/automated-diagnostics/examples/k8s-app-debug-capture) 
 or [Managing Kubernetes with Rundeck](/learning/howto/how2kube.html#managing-kubernetes-with-rundeck).
 

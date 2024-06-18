@@ -4,16 +4,16 @@ Oracle Cloud Infrastructure (OCI) is a deep and broad platform of public cloud s
 
 [Read more about Oracle Cloud here.](https://www.oracle.com/cloud/)
 
-This How To will highlight some of the key steps to configuring the Oracle Cloud plugins included in our Process Automation version.  The background for these steps is covered in detail on Oracle's support site here: [Launching your first Linux Instance](https://docs.oracle.com/en-us/iaas/Content/GSG/Reference/overviewworkflow.htm#Tutorial__Launching_Your_First_Linux_Instance)
+This How To will highlight some of the key steps to configuring the Oracle Cloud plugins included in our Runbook Automation version.  The background for these steps is covered in detail on Oracle's support site here: [Launching your first Linux Instance](https://docs.oracle.com/en-us/iaas/Content/GSG/Reference/overviewworkflow.htm#Tutorial__Launching_Your_First_Linux_Instance)
 
 > Note: These instructions are based on the Welcome Project and provide an example of how to use the plugins in the easiest way.  For full documentation and implementation please refer to the User Manual.
 
 ## Pre-Requisites
 
-This How To is based on the Process Automation [Welcome Projects](/learning/howto/welcome-project-starter.md).
+This How To is based on the Runbook Automation [Welcome Projects](/learning/howto/welcome-project-starter.md).
 
 - Rundeck Welcome Project version 1.5<br>
-    _(Process Automation 3.4.4 is min product version)_
+    _(Runbook Automation 3.4.4 is min product version)_
 - Administrative access to an Oracle Cloud environment
 - Create at least one [Virtual Machine Instance](https://docs.oracle.com/en-us/iaas/Content/Compute/Tasks/launchinginstance.htm) and note which _Zone_ it is created in.
 

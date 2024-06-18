@@ -5,16 +5,22 @@
 
 Amazon ECS is a fully managed container orchestration service that makes it easy for you to deploy, manage, and scale containerized applications.
 
-The following plugins are available for PagerDuty Runbook Automation and Process Automation:
+The following plugins are available for PagerDuty Runbook Automation:
 
-* [Send Commands to ECS Containers](#send-commands-to-ecs-containers)
-* [Stopped ECS Tasks Error Messages](#stopped-ecs-tasks-error-messages)
-* [Stop an ECS Task](#stop-an-ecs-task)
+- [AWS Elastic Container Service (ECS) Workflow Steps](#aws-elastic-container-service-ecs-workflow-steps)
+    - [Authentication](#authentication)
+    - [Send Commands to ECS Containers](#send-commands-to-ecs-containers)
+      - [Prerequisites](#prerequisites)
+      - [Configuration](#configuration)
+      - [Executing Job Step](#executing-job-step)
+    - [Stopped ECS Tasks Error Messages](#stopped-ecs-tasks-error-messages)
+    - [Stop an ECS Task](#stop-an-ecs-task)
+      - [Assume Role ARN](#assume-role-arn)
 
 ### Authentication
-Follow the instructions outlined in the [AWS Plugins Overview](/manual/plugins/aws-plugins-overview.html) for Process Automation to authenticate with AWS.
+Follow the instructions outlined in the [AWS Plugins Overview](/manual/plugins/aws-plugins-overview.html) for Runbook Automation to authenticate with AWS.
 
-When defining the IAM Role for Runbook Automation or Process Automation, be sure to include the permissions required by the specific plugins in the Policy associated with the role:
+When defining the IAM Role for Runbook Automation, be sure to include the permissions required by the specific plugins in the Policy associated with the role:
 
 * **Run Command**: 
   * `ssmmessages:CreateControlChannel`
@@ -158,7 +164,7 @@ The IAM Policies required to use this plugin are:
 There are cases when it is beneficial to use a different IAM Role than the one used for the [AWS PluginGroup](/manual/plugins/aws-plugins-overview.html#setup) for the integration to retrieve the ECS Tasks and add them to the node inventory.
 For example, to target ECS Tasks from across multiple AWS Accounts, then a different IAM Role needs to be "assumed" in order to retrieve tasks from each AWS Account.
 
-The **Assume Role ARN** field can be populated with an IAM Role ARN that Runbook or Process Automation can assume _after_ an authentication method has been provided through the PluginGroup.
+The **Assume Role ARN** field can be populated with an IAM Role ARN that Runbook Automation can assume _after_ an authentication method has been provided through the PluginGroup.
 
 By default, this plugin will use the `assume-role-arn` node-attribute from the ECS tasks added to the inventory through the [ECS Node Source](/manual/projects/resource-model-sources/ecs-fargate.html). 
 This can be overridden by placing an IAM role ARN into the field. 

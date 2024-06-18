@@ -23,7 +23,7 @@ To add the Progress Badge to a job step:
 **Status Symbol**: Optional emoticon to append to the text in the log-output.
 
 ::: warning Status Symbol Support
-For users that are self-hosting Process Automation, in order for Job definitions to support the Status Symbols, the database must support 4-Byte characters.
+For users that are self-hosting Runbook Automation, in order for Job definitions to support the Status Symbols, the database must support 4-Byte characters.
 As noted [here](/administration/configuration/database/mysql), MySQL 5.7 does not enable 4-Byte character support by default. <br>
 This can be enabled by adding the following to `my.cnf` (Linux) or `my.ini` (Windows):
 ```
@@ -61,7 +61,7 @@ A full list of supported emoji are listed here:
 
 ## Example: Simplified HTTP Diagnostics 
 
-In this scenario, Process Automation is used to check on an HTTP endpoint and inform the user whether the HTTP response is "healthy" or "unhealthy."
+In this scenario, Runbook Automation is used to check on an HTTP endpoint and inform the user whether the HTTP response is "healthy" or "unhealthy."
 The Progress Badge is used to simplify the output of the HTTP diagnostics.
 
 1. Add a Job Option `endpoint-to-check`.  This will be the URL that is queried for an HTTP response.

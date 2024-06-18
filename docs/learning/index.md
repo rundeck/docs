@@ -1,12 +1,12 @@
 # Learning Rundeck
 
-PagerDuty provides three different process automation versions.  The open source version is Rundeck.  Previously, the commercial version was referred to as Rundeck Enterprise, since renamed as Process Automation for the traditional on premise product and Runbook Automation for cloud users.
+PagerDuty provides three different process automation versions.  The open source version is Rundeck.  Previously, the commercial version was referred to as Rundeck Enterprise, since renamed as Runbook Automation Self-Hosted for the traditional on premise product and Runbook Automation SaaS available as a hosted cloud platform.
 
 The Learning section includes _[Tutorials](/learning/tutorial/index.md)_, a _[Getting Started section](/learning/getting-started/index.md)_ and _[How to Guides](/learning/howto/index.md)_ that help new users quickly become productive with the Rundeck server and tools. Instructions are provided for both Enterprise and Community versions of Rundeck.
 
-The _[Tutorials](/learning/tutorial/index.md)_ are practical step-by-step guides for getting Rundeck installed, configured and running on your system.  They are built around our Welcome Project and provide product simulations for the open source Rundeck, Process Automation and Runbook Automation versions.  
+The _[Tutorials](/learning/tutorial/index.md)_ are practical step-by-step guides for getting Rundeck installed, configured and running on your system.  They are built around our Welcome Project and provide product simulations for the open source Rundeck, Runbook Automation Self-Hosted and Runbook Automation versions.  
 
-The [How To Guides](/learning/howto/index.md) provide step by step instructions for accomplishing specific tasks using Process Automation/Runbook Automation and where applicable, Rundeck. New How To guides are developed and added periodically as our team realizes a need for them.
+The [How To Guides](/learning/howto/index.md) provide step by step instructions for accomplishing specific tasks using Runbook Automation and where applicable, Rundeck. New How To guides are developed and added periodically as our team realizes a need for them.
 
 ## Where to Begin
 
@@ -21,15 +21,15 @@ there are a couple ways you can try it.
 
 #### Welcome Projects
 
-Both the commercial (Process/Runbook Automation) and open source (Rundeck) versions have a companion set of code at the following links. These code bases allow running automation in a Docker environment with the Welcome Project preloaded.
+Both the commercial (Runbook Automation) and open source (Rundeck) versions have a companion set of code at the following links. These code bases allow running automation in a Docker environment with the Welcome Project preloaded.
 
-- Process Automation/Runbook Automation: [https://github.com/rundeckpro/welcome-project](https://github.com/rundeckpro/welcome-project)
+- Runbook Automation: [https://github.com/rundeckpro/welcome-project](https://github.com/rundeckpro/welcome-project)
 - Rundeck: [https://github.com/rundeck/welcome-project-community](https://github.com/rundeck/welcome-project-community)
 
 Use the [Welcome Projects Starter How To guide](/learning/howto/welcome-project-starter.md) to learn how to get started with these environments.
 
 :::tip License Required
-Note: The Process Automation version will require a license file. If you are not currently a Process Automation customer and you’re interested in using that please [contact us here](https://www.rundeck.com/see-demo).
+Note: The Runbook Automation Self-Hosted version will require a license file. If you are not currently a Runbook Automation customer and you’re interested in using that please [contact us here](https://www.rundeck.com/see-demo).
 :::
 
 :::warning

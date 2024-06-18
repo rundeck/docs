@@ -20,6 +20,6 @@ export default [{
   },
   {
     text: 'Security Advisories',
-    link: '/history/CVEs/'
+    link: '/history/cves/'
   }
 ]

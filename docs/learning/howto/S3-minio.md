@@ -1,10 +1,15 @@
 # Configure S3 or Minio for Storing Execution Logs
 Rundeck execution logs are a set of files generated after each job execution. By default, Rundeck stores them on the local filesystem. Another way to store these logs is on a dedicated file storage service like [AWS S3](https://aws.amazon.com/s3/).<br><br>
-By delegating this storage to AWS S3 (or any other S3-compatible bucket system like [Minio](https://min.io/)) it’s possible to use some [features](https://aws.amazon.com/s3/features/) like S3 replication, security management, data persistence, and saving space on the local filesystem.<br><br>
-In PagerDuty Process Automation (formerly “Rundeck Enterprise”) [cluster](/administration/cluster/#cluster-overview), S3-compatible storage should be the default configuration to ensure access to logs from any cluster member.<br><br>
+By delegating this storage to AWS S3 it’s possible to leverage [features](https://aws.amazon.com/s3/features/) like S3 replication, security management, data persistence, and saving space on the local filesystem.<br><br>
+
+::: warning
+Other S3-compatible bucket system like [Minio](https://min.io/) may work with the S3 plugin, but compatibility is not guaranteed.  Minio in this example is used for example purposes and does not imply support.
+:::
+
+In PagerDuty Runbook Automation (formerly “Rundeck Enterprise”) [cluster](/administration/cluster/#cluster-overview), S3-compatible storage should be the default configuration to ensure access to logs from any cluster member.<br><br>
 This article explains how to configure Rundeck so that these execution logs are stored on services such as Amazon S3 or Minio.
 
-## Steps to configure S3 execution logs on Rundeck OSS / Process Automation for Global Config
+## Steps to configure S3 execution logs on Rundeck OSS / Runbook Automation for Global Config
 
 1. Stop the Rundeck service<br>
    ```
@@ -18,8 +23,8 @@ This article explains how to configure Rundeck so that these execution logs are 
    wget https://github.com/rundeck-plugins/rundeck-s3-log-plugin/releases/download/v1.0.12/rundeck-s3-log-plugin-1.0.12.jar -P $RDECK_BASE/libext
    ```
    :::
-   @tab PagerDuty Process Automation
-   Process Automation includes its own plugin for this out of the box<br>  
+   @tab PagerDuty Runbook Automation
+   Runbook Automation includes its own plugin for this out of the box<br>  
    :::
    ::::
 1. To enable the S3 / Minio log storage plugin, add the following line on the `rundeck-config.properties` file<br>
@@ -29,7 +34,7 @@ This article explains how to configure Rundeck so that these execution logs are 
    rundeck.execution.logs.fileStoragePlugin=org.rundeck.amazon-s3
    ``` 
    :::
-   @tab PagerDuty Process Automation
+   @tab PagerDuty Runbook Automation
 
    ```
    rundeck.execution.logs.fileStoragePlugin=com.rundeck.rundeckpro.amazon-s3
@@ -50,7 +55,7 @@ framework.plugin.ExecutionFileStorage.org.rundeck.amazon-s3.bucket=test-rundeck-
 framework.plugin.ExecutionFileStorage.org.rundeck.amazon-s3.path=logs/${job.project}/${job.execid}.log
 framework.plugin.ExecutionFileStorage.com.rundeck.amazon-s3.region=your_instance_region
 ```
-@tab PagerDuty Process Automation
+@tab PagerDuty Runbook Automation
 
 ```
 framework.plugin.ExecutionFileStorage.com.rundeck.rundeckpro.amazon-s3.endpoint=http://192.168.1.14:9000
@@ -81,7 +86,7 @@ framework.plugin.ExecutionFileStorage.com.rundeck.rundeckpro.amazon-s3.region=yo
 1. From Rundeck click on the Gear Icon and then to the Log Storage option, now you can see the Log Storage Activity.<br>
 ![ ](/assets/img/minio2.png)<br>
 
-## PagerDuty Process Automation (formerly “Rundeck Enterprise”) System Configuration
+## PagerDuty Runbook Automation (formerly “Rundeck Enterprise”) System Configuration
 
 1. As admin rights users click on the Gear Icon and then click on “System Configuration”.<br>
 ![ ](/assets/img/minio3.png)<br>
@@ -91,9 +96,9 @@ framework.plugin.ExecutionFileStorage.com.rundeck.rundeckpro.amazon-s3.region=yo
 ![ ](/assets/img/minio5.png)<br>
 1. Add the following custom properties:<br>
 ![ ](/assets/img/minio6.png)<br>
-1. Restart the PagerDuty Process Automation service.<br>
+1. Restart the PagerDuty Runbook Automation service.<br>
 
-## Steps to configure S3 execution logs on Rundeck OSS / Process Automation for individual projects
+## Steps to configure S3 execution logs on Rundeck OSS / Runbook Automation for individual projects
 
 1. As admin rights users click on `Project Settings` then `Edit Configuration` and then Edit `Configuration File`<br>
 ![ ](/assets/img/minio3.png)<br>
@@ -107,7 +112,7 @@ project.plugin.ExecutionFileStorage.com.rundeck.rundeckpro.amazon-s3.region=your
 ```
 
 3. Then click Save button.
-4. Restart the PagerDuty Process Automation service.<br>
+4. Restart the PagerDuty Runbook Automation service.<br>
 
 ## Docker Config
 ::: tabs
@@ -251,9 +256,9 @@ rundeck.feature.pagedjoblist.enabled=true
 
 ![ ](/assets/img/minio9.png)<br>
 
-@tab PagerDuty Process Automation
+@tab PagerDuty Runbook Automation
 
-The following env vars are included on the Process Automation Docker image by default and are needed to enable S3/Minio log storage on the Docker container:
+The following env vars are included on the Runbook Automation Docker image by default and are needed to enable S3/Minio log storage on the Docker container:
 
 ```
 RUNDECK_PLUGIN_EXECUTIONFILESTORAGE_NAME

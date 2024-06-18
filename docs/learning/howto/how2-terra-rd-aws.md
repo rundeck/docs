@@ -4,7 +4,7 @@
 Terraform is an infrastructure as code (IaC) tool that lets you define reusable and shareable resources with code. Terraform can manage components like computing and networking resources.<br>
 It is possible to quickly deploy and/or destroy a complete Rundeck environment using Terraform, as opposed to spending time doing the same thing manually using the AWS web interface / AWS CLI tool. Terraform allows you to deploy, release, and scale a fully functional Rundeck instance in a cloud infrastructure from a code definition (defined in `.tf` files).<br>
 With the IaC focus, a complete Rundeck production environment may be preserved for instantaneous redeployment in exact accordance with specifications. Additionally, a Terraform deployment lets you manage the resources in each layer jointly and takes care of dependencies between tiers automatically.<br>
-In this guide, we will show you how to deploy Rundeck (or commercial Process Automation) on AWS cloud infrastructure using a Terraform deployment project.<br>
+In this guide, we will show you how to deploy Rundeck (or commercial Runbook Automation) on AWS cloud infrastructure using a Terraform deployment project.<br>
 
 ## Prerequisites
 To complete the tasks in this guide you’ll first need to install the following:<br>

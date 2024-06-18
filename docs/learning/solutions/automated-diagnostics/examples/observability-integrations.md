@@ -14,7 +14,7 @@ Some monitoring tools provide "diagnostic level" statistics - such as top cpu co
 
 ## Mechanisms for Automated Diagnostics
 
-**Runbook Automation** and **Process Automation** provide a handful of plugins that make it easy to integrate with common monitoring tools:
+**Runbook Automation** provides a handful of plugins that make it easy to integrate with common monitoring tools:
 
 ### CloudWatch Logs
 The [CloudWatch Logs Ad Hoc Query](/manual/workflow-steps/aws-cloudwatch#execute-ad-hoc-cloudwatch-logs-query) plugin allows users to insert a Logs Insights query into a Job to surface logs from CloudWatch.

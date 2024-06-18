@@ -18,15 +18,15 @@ Release Date: April 17th, 2023
 - [Upgrade instructions](/upgrading/)
 - [Watch the Live Stream Release Recap](https://youtu.be/e6Rs9BRljAA)
 
-<YouTube id="e6Rs9BRljAA"/>
+<VidStack src="youtube/e6Rs9BRljAA"/>
 
 ## Overview
 
-Check out the new features and enhancements for PagerDuty Process Automation, PagerDuty Runbook Automation, and Rundeck Community included in this release. This release includes new plugins for Kubernetes, new Plugin Suites for Google Cloud, Datadog, and Azure, performance improvements to the [Enterprise Runner](/administration/runner/runner-install.html), new authentication methods for Remote URL Job Options, and security fixes.
+Check out the new features and enhancements for PagerDuty Runbook Automation, and Rundeck Community included in this release. This release includes new plugins for Kubernetes, new Plugin Suites for Google Cloud, Datadog, and Azure, performance improvements to the [Enterprise Runner](/administration/runner/runner-install.html), new authentication methods for Remote URL Job Options, and security fixes.
 
 View our Twitch stream review of this release live on May 9. [Here’s the event link.](https://www.twitch.tv/pagerduty/schedule)
 
-## Process Automation Updates
+## Runbook Automation Updates
 
 > Also includes all Open Source updates from below
 
@@ -40,7 +40,7 @@ View our Twitch stream review of this release live on May 9. [Here’s the event
 
 ![](/assets/img/relnotes-412-k8s.png)
 
-**New Plugin Suites for Google Cloud, Datadog, and Azure:** [Plugin Suites](/history/4_x/version-4.9.0.html) streamline the configuration of plugins. The Plugin Suites for Google Cloud, Datadog, and Azure reduce the number of steps required to configure plugins across an entire project—or the entire Process Automation or Runbook Automation instance. For example, previously a user would need to configure credentials for both the GCP Node Source and the GCP Job Step plugins. Now those credentials can be configured in a single location.
+**New Plugin Suites for Google Cloud, Datadog, and Azure:** [Plugin Suites](/history/4_x/version-4.9.0.html) streamline the configuration of plugins. The Plugin Suites for Google Cloud, Datadog, and Azure reduce the number of steps required to configure plugins across an entire project—or the entire Runbook Automation instance. For example, previously a user would need to configure credentials for both the GCP Node Source and the GCP Job Step plugins. Now those credentials can be configured in a single location.
 
 ![](/assets/img/relnotes-412-gcp.png)
 

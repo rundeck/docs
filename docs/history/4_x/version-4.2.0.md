@@ -13,7 +13,7 @@ Release Date: May 11, 2022
 
 ## Overview
 
-Check out the new features and enhancements for the commercial products (Runbook Automation and Process Automation On Prem formerly Rundeck Enterprise) and Rundeck Community included in this release. Release includes:
+Check out the new features and enhancements for the commercial products (Runbook Automation Self-Hosted, formerly Rundeck Enterprise, and the Runbook Automation SaaS offering) and Rundeck Community included in this release. Release includes:
 
 - New AWS ECS/Fargate Node Source.
 - More security fixes from a valued community member. Thank you @paulcalabro for the Pull Requests.

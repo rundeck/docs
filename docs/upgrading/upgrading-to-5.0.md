@@ -1,6 +1,6 @@
 # Rundeck 5.0.x Upgrade Notes
 
-These notes cover any detailed steps necessary when upgrading from a previous version of Rundeck or Process Automation to the 5.0.0 version.
+These notes cover any detailed steps necessary when upgrading from a previous version of Rundeck or Runbook Automation to the 5.0.0 version.
 
 ## Java 11 Minimum
 

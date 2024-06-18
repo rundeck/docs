@@ -39,7 +39,7 @@ The Ping redirect callback url will be: `https://{your-rundeck-host}/login/oauth
 
 #### Auto Configuration
 The Rundeck Oauth2 configuration now has support for auto configuration from your OIDC compliant provider.
-To use the auto configuration you only need to supply the base url to your oauth provider endpoint, your client id and client secret, and Rundeck will do the rest.  For full details on Auto configurations use [the documentation here](/administration/security/sso.md).
+To use the auto configuration you only need to supply the base url to your oauth provider endpoint, your client id and client secret, and Rundeck will do the rest.  For full details on Auto configurations use [the documentation here](/administration/security/sso/index.md).
 
 #### jskSetUri
 :::warning
@@ -48,7 +48,7 @@ an additional `jwkSetUri` property.
 :::
 This allows Rundeck to obtain the signing keys necessary to verify the jwt tokens sent from your oauth provider.
 
-Please see [the documentation here](/administration/security/sso.md) for detailed instructions and property format.
+Please see [the documentation here](/administration/security/sso/index.md) for detailed instructions and property format.
 
 ## Incompatible plugin versions
 

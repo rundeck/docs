@@ -1,6 +1,6 @@
 # Single SignOn (SSO) - Azure Active Directory
 
-Rundeck can be configured to use Azure Active Directory authentication by registering a new application in Azure Active Directory and configuring PagerDuty Process Automation to use it.
+Rundeck can be configured to use Azure Active Directory authentication by registering a new application in Azure Active Directory and configuring Runbook Automation to use it.
 
 ## Configuring Azure Active Directory
 
@@ -16,11 +16,11 @@ The first thing to do is create a new application registration in Azure.
 
 ![](/assets/img/sso-azure-02-appreg2.jpg)
 
-1. Enter **"PagerDuty Process Automation On-Prem"** for the Name (or any name you like)
+1. Enter **"PagerDuty Runbook Automation Self-Hosted"** for the Name (or any name you like)
 2. Leave the default selection for the Support account types
 3. Select **"Web"** for the Redirect URI type
 4. Enter **"https://*<paop.company.com>*/login/oauth2/code/azure"** for the Redirect URI  
-    *Note: This URL should be your PagerDuty Process Automation URL*
+    *Note: This URL should be your Runbook Automation URL*
 5. Select **"Register"** at the bottom
 
 ### Azure - Add the required application permissions
@@ -57,7 +57,7 @@ Next, create an application secret (ID & password) that will be used in the Rund
 
 1. Select **"Certificates & secrets"** on the left
 2. Select **"+ New client secret"**
-3. Enter **"PagerDuty Process Automation On-Prem"** for the Description (or any name you choice)
+3. Enter **"Runbook Automation"** for the Description (or any name you choice)
 4. Select **"Add"** at the bottom
 
 ![](/assets/img/sso-azure-06-secret3.png)

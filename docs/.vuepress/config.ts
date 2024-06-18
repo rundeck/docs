@@ -1,14 +1,12 @@
-import _ from 'lodash'
-
+import _ from 'lodash';
+import { viteBundler } from '@vuepress/bundler-vite';
 import { defineUserConfig, Page } from 'vuepress';
 import { hopeTheme } from "vuepress-theme-hope";
 import { containerPlugin } from '@vuepress/plugin-container';
-import { docsearchPlugin } from '@vuepress/plugin-docsearch';
 import { getDirname, path } from '@vuepress/utils';
 import { openGraphPlugin } from 'vuepress-plugin-open-graph';
 import { registerComponentsPlugin } from '@vuepress/plugin-register-components';
-import { redirectPlugin } from "vuepress-plugin-redirect";
-import { compareDate } from "vuepress-shared/node";
+import { dateSorter } from "@vuepress/helper";
 import { googleAnalyticsPlugin } from '@vuepress/plugin-google-analytics';
 
 
@@ -41,20 +39,16 @@ import setup from './setup';
 console.log(setup)
 
 export default defineUserConfig({
+  bundler: viteBundler({
+    viteOptions: {},
+    vuePluginOptions: {},
+  }),
   debug: false,
   title: '',
   description: '',
   shouldPrefetch: false,
   base: `/${setup.base ? setup.base + '/' : ''}`,
   head: [
-  //   ['script', {}, `
-  //     (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  //     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  //     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  //     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  //     })(window,document,'script','dataLayer','GTM-5QNBBN6');
-  //   `],
-  //   ['script', { src: '/' + setup.base + '/js/gtm.js', defer: true }],
   ],
   extendsMarkdown: md => {
     md.use(markdownItReplaceVars, 'custom_token_replace', function (content) {
@@ -95,6 +89,70 @@ export default defineUserConfig({
     pageInfo: false,
     contributors: false,
     plugins: {
+      docsearch: {
+          locales: {
+            '/': {
+                placeholder: 'Search Documentation',
+                translations: {
+                button: {
+                    buttonText: 'Search Documentation',
+                },
+                },
+            }
+        },
+        appId: 'GRSXNRCDRG',
+        apiKey: 'c463f74d6f36a5af808650e0f69aadfa',
+        indexName: 'prod_rundeck_docs',
+        searchParameters: {
+            hitsPerPage: 100,
+            facetFilters: [ `version:${setup.base}` ]
+        },
+      },
+      redirect: {
+        config: {
+          '/manual/01-introduction.html' : '/introduction/introduction.html',
+          '/manual/03-getting-started.html' : '/learning/index.html',
+          '/manual/02-getting-help.html' : '/introduction/getting-help.html',
+          '/manual/04-jobs.html' : '/manual/jobs.html',
+          '/administration/configuration/license.html' : '/administration/license.html',
+          '/manual/servicenow-app.html' : '/manual/integrations/servicenow-app.html',
+          '/administration/security/key-storage.html' : '/manual/key-storage/key-storage.html',
+          '/administration/key-storage/key-storage.html' : '/manual/key-storage/key-storage.html',
+          '/administration/security/storage-plugins.html' : '/manual/key-storage/key-plugins.html',
+          '/administration/key-storage/storage-plugins.html' : '/manual/key-storage/key-plugins.html',
+          '/administration/security/storage-plugins/cyberark-storage.html' : '/manual/key-storage/storage-plugins/cyberark-storage.html',
+          '/administration/key-storage/storage-plugins/cyberark-storage.html' : '/manual/key-storage/storage-plugins/cyberark-storage.html',
+          '/administration/security/storage-plugins/thycotic-storage.html' : '/manual/key-storage/storage-plugins/thycotic-storage.html',
+          '/administration/key-storage/storage-plugins/thycotic-storage.html' : '/manual/key-storage/storage-plugins/thycotic-storage.html',
+          '/administration/security/storage-plugins/vault.html' : '/manual/key-storage/storage-plugins/vault.html',
+          '/manual/command-line-tools/index.html' : '/rd-cli/index.html',
+          '/manual/command-line-tools/rd.html' : '/rd-cli/index.html',
+          '/manual/command-line-tools/rd-acl.html' : '/rd-cli/rd-ext-acl.html',
+          '/history/cves/' : '/history/CVEs/',
+          '/introduction/introduction.html' : '/about/introduction.html',
+          '/administration/architecture-and-deployment/system-architecture.html' : '/about/enterprise/index.html',
+          '/administration/architecture-and-deployment/aws.html' : '/administration/install/aws.html',
+          '/administration/projects/' : '/manual/projects/',
+          '/manual/12-webhooks.html' : '/manual/webhooks.html',
+          '/history/4_0_x/version-4.0.0.html' : '/history/4_x/version-4.0.0.html',
+          '/manual/workflow-steps/aws-athena' : '/manual/workflow-steps/amazon-athena.html',
+          '/enterprise/quickstart.html' : '/enterprise/index.html',
+          '/learning/solutions/automated-diagnostics/solution-overview.html' : '/learning/solutions/automated-diagnostics/index.html',
+          '/manual/plugins/plugins-overview.html' : '/manual/plugins/index.html',
+          '/administration/install/installing-rundeck' : '/administration/install/index',
+          '/learning/tutorial/preparing.html' : '/learning/tutorial/index.html',
+          '/learning/howto/overview.html' : '/learning/howto/index.html',
+          '/learning/getting-started/overview.html' : '/learning/getting-started/index.html',
+          '/plugins/' : '/manual/plugins/full-list',
+          '/learning/getting-started/rba/rba-welcome-overview.html' : '/learning/getting-started/rba/index.html',
+          '/learning/getting-started/jobs/overview.html' : '/learning/getting-started/jobs/index.html',
+          '/manual/key-storage/key-storage.html' : '/manual/key-storage/index.html',
+          '/api/rundeck-api.html' : '/api/index.html',
+          '/introduction/getting-help.html/manual/job-options.html' : '/manual/job-options.html#option-model-provider',
+          '/introduction/getting-help.html/administration/maintenance/tuning-rundeck.html' : '/administration/maintenance/tuning-rundeck.html#quartz-job-threadcount',
+          '/administration/security/sso.html':'/administration/security/sso/index.html'
+       }
+      },
       pwa: {
         update: 'hint',
         cacheHTML: true
@@ -115,14 +173,13 @@ export default defineUserConfig({
           pageA: Page,
           pageB: Page,
         ): number =>
-          compareDate( pageA.frontmatter.date, pageB.frontmatter.date)
+          dateSorter( pageA.frontmatter.date, pageB.frontmatter.date)
       },
       components: {
           components: [
             "FontIcon",
             "PDF",
-            "VideoPlayer",
-            "YouTube",
+            "VidStack"
           ],
           componentOptions: {
             fontIcon: {
@@ -171,8 +228,19 @@ export default defineUserConfig({
       ]
     }
     // }
-  }),
-
+  }, 
+  {custom: true},
+),
+  alias: {
+  "@theme-hope/components/HomePage": path.resolve(
+    __dirname,
+    "./components/HomePageAnnounce.vue",
+  ),
+  "@theme-hope/modules/sidebar/components/Sidebar": path.resolve(
+    __dirname,
+    "./components/SidebarAnnounce.vue",
+  ),
+  },
   //Plugins Config
   plugins: [
     registerComponentsPlugin({
@@ -182,50 +250,6 @@ export default defineUserConfig({
       }),
       googleAnalyticsPlugin({
         id: 'G-05XJ24KPYH',
-      }),
-    redirectPlugin({
-        config: {
-            '/manual/01-introduction.html' : '/introduction/introduction.html',
-            '/manual/03-getting-started.html' : '/learning/index.html',
-            '/manual/02-getting-help.html' : '/introduction/getting-help.html',
-            '/manual/04-jobs.html' : '/manual/jobs.html',
-            '/administration/configuration/license.html' : '/administration/license.html',
-            '/manual/servicenow-app.html' : '/manual/integrations/servicenow-app.html',
-            '/administration/security/key-storage.html' : '/manual/key-storage/key-storage.html',
-            '/administration/key-storage/key-storage.html' : '/manual/key-storage/key-storage.html',
-            '/administration/security/storage-plugins.html' : '/manual/key-storage/key-plugins.html',
-            '/administration/key-storage/storage-plugins.html' : '/manual/key-storage/key-plugins.html',
-            '/administration/security/storage-plugins/cyberark-storage.html' : '/manual/key-storage/storage-plugins/cyberark-storage.html',
-            '/administration/key-storage/storage-plugins/cyberark-storage.html' : '/manual/key-storage/storage-plugins/cyberark-storage.html',
-            '/administration/security/storage-plugins/thycotic-storage.html' : '/manual/key-storage/storage-plugins/thycotic-storage.html',
-            '/administration/key-storage/storage-plugins/thycotic-storage.html' : '/manual/key-storage/storage-plugins/thycotic-storage.html',
-            '/administration/security/storage-plugins/vault.html' : '/manual/key-storage/storage-plugins/vault.html',
-            '/manual/command-line-tools/index.html' : '/rd-cli/index.html',
-            '/manual/command-line-tools/rd.html' : '/rd-cli/index.html',
-            '/manual/command-line-tools/rd-acl.html' : '/rd-cli/rd-ext-acl.html',
-            '/history/cves/' : '/history/CVEs/',
-            '/introduction/introduction.html' : '/about/introduction.html',
-            '/administration/architecture-and-deployment/system-architecture.html' : '/about/enterprise/index.html',
-            '/administration/architecture-and-deployment/aws.html' : '/administration/install/aws.html',
-            '/administration/projects/' : '/manual/projects/',
-            '/manual/12-webhooks.html' : '/manual/webhooks.html',
-            '/history/4_0_x/version-4.0.0.html' : '/history/4_x/version-4.0.0.html',
-            '/manual/workflow-steps/aws-athena' : '/manual/workflow-steps/amazon-athena.html',
-            '/enterprise/quickstart.html' : '/enterprise/index.html',
-            '/learning/solutions/automated-diagnostics/solution-overview.html' : '/learning/solutions/automated-diagnostics/index.html',
-            '/manual/plugins/plugins-overview.html' : '/manual/plugins/index.html',
-            '/administration/install/installing-rundeck' : '/administration/install/index',
-            '/learning/tutorial/preparing.html' : '/learning/tutorial/index.html',
-            '/learning/howto/overview.html' : '/learning/howto/index.html',
-            '/learning/getting-started/overview.html' : '/learning/getting-started/index.html',
-            '/plugins/' : '/manual/plugins/full-list',
-            '/learning/getting-started/rba/rba-welcome-overview.html' : '/learning/getting-started/rba/index.html',
-            '/learning/getting-started/jobs/overview.html' : '/learning/getting-started/jobs/index.html',
-            '/manual/key-storage/key-storage.html' : '/manual/key-storage/index.html',
-            '/api/rundeck-api.html' : '/api/index.html',
-            '/introduction/getting-help.html/manual/job-options.html' : '/manual/job-options.html#option-model-provider',
-            '/introduction/getting-help.html/administration/maintenance/tuning-rundeck.html' : '/administration/maintenance/tuning-rundeck.html#quartz-job-threadcount'
-        }
       }),
     openGraphPlugin({
         host: 'https://docs.rundeck.com',
@@ -246,7 +270,7 @@ export default defineUserConfig({
             type: 'enterprise',
             locales: {
                 '/': {
-                    defaultInfo: 'Available in PagerDuty Process Automation Commercial products.',
+                    defaultInfo: 'Available in PagerDuty Runbook Automation Commercial products.',
                 }
             }
         }
@@ -283,26 +307,6 @@ export default defineUserConfig({
     ),
     registerComponentsPlugin({
         componentsDir: path.resolve(__dirname, './components'),
-    }),
-    docsearchPlugin({
-        locales: {
-            '/': {
-                placeholder: 'Search Documentation',
-                translations: {
-                button: {
-                    buttonText: 'Search Documentation',
-                },
-                },
-            }
-        },
-        appId: 'GRSXNRCDRG',
-        apiKey: 'c463f74d6f36a5af808650e0f69aadfa',
-        indexName: 'prod_rundeck_docs',
-        searchParameters: {
-            hitsPerPage: 100,
-            facetFilters: [ `version:${setup.base}` ]
-        },
-    }),
-          
+    })   
   ],
 })

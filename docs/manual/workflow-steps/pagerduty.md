@@ -50,6 +50,17 @@ This job step allows users to add a note to an existing PagerDuty incident.
 - **Incident ID**
 : The ID of the incident to run the response play for.
 
+## Start Incident Workflow 
+
+- **Incident Workflow ID**
+: The ID of the incident workflow to start.
+
+- **Incident ID**
+: The ID of the incident for which the Incident Workflow should run.
+
+- **API Key**
+: Optionally define the PagerDuty API Key here. By default, the API Key is used from the PagerDuty integration configuration at the Project or System levels.
+
 ## PagerDuty Run Response Play
 
 ![PagerDuty - Run Response Play](/assets/img/pagerduty-run-response-play.png)

@@ -28,7 +28,7 @@ PagerDuty provides a solution that helps users start automating diagnostics quic
 
 <br>
 
-![Verbose Diagnostics in Process Automation](/assets/img/diag-verbose-output.png)
+![Verbose Diagnostics in Runbook Automation](/assets/img/diag-verbose-output.png)
 
 As an example, if an incident is triggered for a service running in Kubernetes, PagerDuty Runbook Automation can retrieve information from logs, API’s, databases and other sources that support this service.  This could be triggered with the click of a button or through event-driven invocation.
 

@@ -18,13 +18,13 @@ Release Date: August 24th, 2023
 - [Upgrade instructions](/upgrading/)
 - [Watch the Live Stream Release Recap](https://youtu.be/TIpVdDikdYM)
 
-<YouTube id="TIpVdDikdYM" />
+<VidStack src="youtube/TIpVdDikdYM"/>
 
 ## Overview
 
-Check out the new features and enhancements for PagerDuty Process Automation (formerly Rundeck Enterprise) and PagerDuty Runbook Automation and Rundeck Community included in this release.
+Check out the new features and enhancements for PagerDuty Runbook Automation and Rundeck Community included in this release.
 
-## Process Automation Updates
+## Runbook Automation Updates
 
 > Also includes all Open Source updates from below
 
@@ -46,7 +46,7 @@ For further details on configuring and using node discovery through the Enterpri
 ![Runner Node Sources](/assets/img/node-source-runner-selector.png)
 
 ### SSHJ Default Node Executor for New Projects
-Prior to this release, the out-of-the-box Default Node Executor for projects was the JSCH plugin.  However, this plugin no longer supports the latest SSH security standards – such as the most secure RSA algorithms.  In order to support these latest standards for SSH security, new projects created within Rundeck, Process Automation OnPrem and Runbook automation will use the SSHJ plugin as the Default Node Executor.  Customers who are using the JSCH plugin are not required to switch over to SSHJ and we will continue to support the JSCH Node Executor plugin.
+Prior to this release, the out-of-the-box Default Node Executor for projects was the JSCH plugin.  However, this plugin no longer supports the latest SSH security standards – such as the most secure RSA algorithms.  In order to support these latest standards for SSH security, new projects created within Rundeck and Runbook Automation will use the SSHJ plugin as the Default Node Executor.  Customers who are using the JSCH plugin are not required to switch over to SSHJ and we will continue to support the JSCH Node Executor plugin.
 
 ### Additional Updates
 

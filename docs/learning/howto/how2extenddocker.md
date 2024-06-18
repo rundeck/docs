@@ -1,7 +1,7 @@
 # Extend the Rundeck Docker image
 
 ## What is Docker?
-Docker is a platform used by many organizations to run virtualized applications.  In addition to managing servers that are Docker containers, it is possible to run Rundeck (or PagerDuty Process Automation) in a Docker container.  The default Rundeck Docker image uses standard [variables](/administration/configuration/docker.html#environment-variables) to configure the main Rundeck settings. However, specific, non-standard variables can be added to use third-party plugins or add specific non-standard functionality.
+Docker is a platform used by many organizations to run virtualized applications.  In addition to managing servers that are Docker containers, it is possible to run Rundeck (or PagerDuty Runbook Automation) in a Docker container.  The default Rundeck Docker image uses standard [variables](/administration/configuration/docker.html#environment-variables) to configure the main Rundeck settings. However, specific, non-standard variables can be added to use third-party plugins or add specific non-standard functionality.
 When using Docker, the image must be complete and nothing extra can be installed once the container is started. All configuration files, required software, etc., must be incorporated when the image is built and custom configurations must be exposed via environment variables.
 
 

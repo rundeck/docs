@@ -11,7 +11,7 @@ This allows you to:
 ## GUI customization parameters
 
 `rundeck.gui.instanceName`   
-It allows you to define a name for your Process Automation instance in a clustered environment. The Instance name will be displayed on the top right corner of your instance on all pages and the Login Screen. Example with the value "Production".
+It allows you to define a name for your Runbook Automation instance in a clustered environment. The Instance name will be displayed on the top right corner of your instance on all pages and the Login Screen. Example with the value "Production".
 
 `rundeck.gui.instanceNameLabelColor`  
 Sets the instance label background color in HEX format. The example below with `c` (Red).
@@ -20,7 +20,7 @@ Sets the instance label background color in HEX format. The example below with `
 Sets the instance label text color in HEX format. The default value is #FFFFFF (White).
 
 `rundeck.gui.title`  
-Allows you to change the title presented in the web browser. The default value is "Process Automation".
+Allows you to change the title presented in the web browser.
 
 `rundeck.gui.login.welcome`  
 Allow you to define a welcome message (in plain text format) to be displayed on the login page. For example with the value "Welcome to PROD Rundeck".
@@ -32,10 +32,10 @@ Allow you to define a welcome message (HTML Formatted) to be displayed on the lo
 `rundeck.gui.login.footerMessageHtml`  
 Allow you to define a footer message (HTML Formatted) to be displayed on the login page. For example with the value "PRODUCTION".
 
-`rundeck.gui.clusterIdentityInHeader`  (**Only for Runbook Automation / Process Automation products**)   
+`rundeck.gui.clusterIdentityInHeader`  (**Only for Runbook Automation products**)   
 For clusterized environments, when set as true it will display your server name/ID in the page header.
 
-`rundeck.gui.clusterIdentityInFooter` (**Only for Runbook Automation / Process Automation products**)   
+`rundeck.gui.clusterIdentityInFooter` (**Only for Runbook Automation products**)   
 For clusterized environments, when set as true it will display your server name/ID in the page footer.
 
 ## Gui Customization Example

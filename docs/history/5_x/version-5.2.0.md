@@ -19,18 +19,18 @@ Release Date: April 10th, 2024
 - [Upgrade instructions](/upgrading/)
 - [Watch the Live Stream Release Recap](https://www.youtube.com/live/uWhAQuWckQ0?si=_YLNK-oohOcYKVi8)
 
-<YouTube id="uWhAQuWckQ0"/>
+<VidStack src="youtube/uWhAQuWckQ0"/>
 
 
 ## Overview
 
-Check out the new features and enhancements for PagerDuty Process Automation (formerly Rundeck Enterprise) and PagerDuty Runbook Automation and Rundeck Community included in this release.
+Check out the new features and enhancements for PagerDuty Runbook Automation (formerly Rundeck Enterprise) and PagerDuty Runbook Automation and Rundeck Community included in this release.
 
 ### Highlights
 
 Our 5.2.0 release is focused on bug fixes, CVE remediation and testing.  The team spent time revamping our testing framework and migrating tests into that new model.  There is also effort being put into the UI code to modernize, and standardize it to Vue to bring performance improvements and simplify building future enhancements.
 
-## Process Automation Updates
+## Runbook Automation Updates
 
 > Also includes all Open Source updates from below
 
