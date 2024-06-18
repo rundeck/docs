@@ -228,8 +228,19 @@ export default defineUserConfig({
       ]
     }
     // }
-  }),
-
+  }, 
+  {custom: true},
+),
+  alias: {
+  "@theme-hope/components/HomePage": path.resolve(
+    __dirname,
+    "./components/HomePageAnnounce.vue",
+  ),
+  "@theme-hope/modules/sidebar/components/Sidebar": path.resolve(
+    __dirname,
+    "./components/SidebarAnnounce.vue",
+  ),
+  },
   //Plugins Config
   plugins: [
     registerComponentsPlugin({
