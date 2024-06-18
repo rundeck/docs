@@ -25,7 +25,7 @@ A Rundeck instance includes a default full administrative user called `admin` (w
 ### [Managing Users Locally in a File](/administration/security/authentication.html#propertyfileloginmodule)
 Out of the Box, Rundeck uses a local file to manage users, this file is the `realm.properties` and it's located at `/etc/rundeck` path (RPM/DEB based installations) or `$RDECK_BASE/server/config` path (WAR launcher-based installations).
 
-On Process Automation, local users can be managed via [the web-based User Manager](/manual/user-management/user-mgmt.html#manage-local-users-enterprise).
+On Runbook Automation, local users can be managed via [the web-based User Manager](/manual/user-management/user-mgmt.html#manage-local-users-enterprise).
 
 ### LDAP  / Active Directory Integration
 
@@ -43,12 +43,12 @@ Rundeck's integration with Microsoft Active Directory streamlines user managemen
 ### Multiple Authentication Modules Capability
 Rundeck configurations can include several LoginModule definitions, which are processed in the order specified by the configuration Flag. Refer to [Multiple Authentication Modules](/administration/security/authentication.html#multiple-authentication-modules) in the [Security](/administration/security/default-users.md) section of the Rundeck Administration Guide for more information on setting the configuration Flag.
 
-### SSO (Process Automation)
-Process Automation offers seamless Single Sign-On (SSO) integration for managing user accounts and authentication. With SSO integration, Rundeck leverages existing identity providers such as Okta, Azure Active Directory, and Ping. This eliminates the need for users to remember multiple usernames and passwords, as they can log in to Rundeck using their existing SSO credentials. 
+### SSO (Runbook Automation)
+Runbook Automation offers seamless Single Sign-On (SSO) integration for managing user accounts and authentication. With SSO integration, Rundeck leverages existing identity providers such as Okta, Azure Active Directory, and Ping. This eliminates the need for users to remember multiple usernames and passwords, as they can log in to Rundeck using their existing SSO credentials. 
 
-SSO integration with Process Automation enhances security, simplifies user management, and provides a unified authentication experience across various systems and applications, ensuring a streamlined and efficient user access control process.
+SSO integration with Runbook Automation enhances security, simplifies user management, and provides a unified authentication experience across various systems and applications, ensuring a streamlined and efficient user access control process.
 
-Process Automation offers several ways to configure SSO:
+Runbook Automation offers several ways to configure SSO:
 
 * [Okta](/administration/security/sso/okta.html#okta-application-configuration)
 * [Ping Identity](/administration/security/sso/ping.html#single-signon-ping)

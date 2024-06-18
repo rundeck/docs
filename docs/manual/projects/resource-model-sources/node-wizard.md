@@ -2,7 +2,7 @@
 ::: enterprise
 :::
 
-The Node Wizard allows Process Automation admins to manually create Node entries in the Rundeck database using a graphical interface fill in values.
+The Node Wizard allows Runbook Automation admins to manually create Node entries in the Rundeck database using a graphical interface fill in values.
 
   ![](/assets/img/nodewiz-source.png)
 

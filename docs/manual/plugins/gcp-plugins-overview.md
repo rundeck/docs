@@ -6,8 +6,8 @@
 ## Overview
 ![](/assets/img/gcp-icon.png)
 
-Process Automation integrates with Google Cloud through a variety of plugins listed below.
-By integrating Process Automation with Google Cloud, users can automate and provide self-service interfaces for operations of their infrastructure and applications.
+Runbook Automation integrates with Google Cloud through a variety of plugins listed below.
+By integrating Runbook Automation with Google Cloud, users can automate and provide self-service interfaces for operations of their infrastructure and applications.
 These integrations allow operations teams to provide self-service mechanisms to users throughout the business, as well as setup event-driven automation for workflows with Google Cloud.
 
 <details><summary> <font size="5">Google Cloud Plugins</font>
@@ -33,7 +33,7 @@ These integrations allow operations teams to provide self-service mechanisms to 
 |[**Delete VM**](/manual/node-steps/gcp.html#gcp-vm-delete)|Node Step|Delete a Google Compute instance.|
 </details>
 <br>
-<em>Click to expand to see the full list of Process Automation plugins for Google Cloud.</em>
+<em>Click to expand to see the full list of Runbook Automation plugins for Google Cloud.</em>
 
 ## Setup
 
@@ -47,7 +47,7 @@ This section outlines how to retrieve the Service Account keys from Google Cloud
 3. Click the **Create Service Account** button to start the wizard<br>
    ![Create Service Account](/assets/img/howto-gcp-createsvcacct.png)<br><br>
 4. Assign the account a **Name** and **ID**.
-5. When selecting **Roles** ensure the role(s) provide enough access to Process Automation to perform the desired tasks.
+5. When selecting **Roles** ensure the role(s) provide enough access to Runbook Automation to perform the desired tasks.
 6. Click **Done**
 7. Click on the newly created account and navigate to the **Keys** tab.
 8. Click **Add Key** > **Create new key**
@@ -62,7 +62,7 @@ While in the Google Cloud Console, click on the project list in the upper left, 
 From the popup, copy the **Project ID** from the **ID** column:
 ![GCP Project ID](/assets/img/gcp-project-id.png)
 
-### Configure Google Cloud Plugin Suite in Process Automation
+### Configure Google Cloud Plugin Suite in Runbook Automation
 
 Authentication for the Google Cloud plugins can be configured for the entire system or for an individual project. 
 Credentials can be optionally be overwritten on a per-plugin basis, such as an individual Job Step.
@@ -91,7 +91,7 @@ Use the following steps to configure authentication for the Google Cloud plugins
 
 ### System Level Configuration
 
-Use the following steps to configure authentication for the Google Cloud plugins for the whole Process Automation system.
+Use the following steps to configure authentication for the Google Cloud plugins for the whole Runbook Automation system.
 
 1. Click on the **System Menu** (gear icon) in the upper right.
 2. Click on **System Configuration**.

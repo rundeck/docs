@@ -2,7 +2,8 @@
 ## Getting Started
 
 ::: tip Prerequisites
-To use the Automated Diagnostics Solution, you must either have a **PagerDuty Runbook Automation** license or a **Process Automation** license.
+To use the Automated Diagnostics Solution, you must have a **PagerDuty Runbook Automation** (Self-Hosted or SaaS) instance available.
+
 See the [FAQ](/learning/solutions/automated-diagnostics/feedback-faq) for details on how to use with **Rundeck Community**.
 If you do not have a license for either of these products, [contact us](https://www.pagerduty.com/contact-us/runbook-automation/) to learn more.
 
@@ -12,11 +13,11 @@ If you do not have a license for either of these products, [contact us](https://
 **Runbook Automation** instances are preloaded with the Automated Diagnostics project.  If you do not see the project in your Runbook Automation instance, 
 follow the instructions below.
 
-For all Process Automation environments, follow the steps below to download and import the Automated Diagnostics Jobs and Tours:
+For all Runbook Automation environments, follow the steps below to download and import the Automated Diagnostics Jobs and Tours:
 ### Download the **Automated Diagnostics Solution package**.
 1. Download the latest release of the Automated Diagnostics Solution [here](https://github.com/rundeckpro/automated-diagnostics-project/releases/latest/download/automated-diagnostics.jar).<br>
 
-### Create a project in your Process Automation environment:
+### Create a project in your Runbook Automation environment:
 1. Click the **P** in the upper left corner to navigate to the Main Dashboard <br><br>
 2. Click the blue **New Project+** button:
 ![Add Project](/assets/img/solutions-auto-diag-add-project.png)<br><br>

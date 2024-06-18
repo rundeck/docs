@@ -5,15 +5,15 @@
 
 AWS Lambda is a serverless, event-driven compute service that lets you run code for virtually any type of application or backend service without provisioning or managing servers.
 
-The following Lambda plugins are available for PagerDuty Runbook Automation and Process Automation:
+The following Lambda plugins are available for PagerDuty Runbook Automation:
 
 * [Execute Lambda Function](#execute-lambda-function) - Executes an existing Lambda function.
 * [Lambda Custom Code Execution](#lambda-custom-code-execution) - Creates and executes a new Lambda function with the custom-code provided in the Job step.
 
 ### Authentication
-Follow the instructions outlined in the [AWS Plugins Overview](/manual/plugins/aws-plugins-overview.html) for Process Automation to authenticate with AWS.
+Follow the instructions outlined in the [AWS Plugins Overview](/manual/plugins/aws-plugins-overview.html) for Runbook Automation to authenticate with AWS.
 
-When defining the IAM Role for Runbook Automation or Process Automation, be sure to include the following permissions in the Policy associated with the role:
+When defining the IAM Role for Runbook Automation, be sure to include the following permissions in the Policy associated with the role:
 
 * **`lambda:InvokeFunction`** - Necessary for both Lambda workflow step plugins.
 * **`lambda:CreateFunction`** - Only if using the _**Lambda Custom Code**_ plugin

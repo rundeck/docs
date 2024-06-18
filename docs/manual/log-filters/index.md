@@ -56,7 +56,7 @@ project.globalfilter.2.type=highlight-output
 
 ### Application Global Log Filters
 
-The [Mask Passwords](/manual/log-filters/mask-passwords.md) and [Highlight Output](/manual/log-filters/highlight-output.md) Log Filters can be configured in the Framework file to apply to all jobs run within Rundeck/Process Automation.  
+The [Mask Passwords](/manual/log-filters/mask-passwords.md) and [Highlight Output](/manual/log-filters/highlight-output.md) Log Filters can be configured in the Framework file to apply to all jobs run within Rundeck/Runbook Automation.  
 
 The example below will configure a blue Password Mask filter, and match the word "input" and highlight it yellow for any job run on the server.
 

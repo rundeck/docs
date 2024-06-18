@@ -17,7 +17,7 @@ Rundeck Projects, Jobs, and Keys can be created and configured via Terraform usi
 3. Basic knowledge about Linux terminal usage.
 
 :::tip
-Though these instructions are written for the open source Rundeck application, they are also applicable for PagerDuty Process Automation.
+Though these instructions are written for the open source Rundeck application, they are also applicable for PagerDuty Runbook Automation.
 :::
 
 ## Configuring the Rundeck Instance

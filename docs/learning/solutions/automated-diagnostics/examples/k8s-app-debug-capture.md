@@ -9,7 +9,7 @@ To accomplish this, the manual process could be messy: launch the pod shell and 
 
 With the [Kubernetes plugins](/learning/howto/how2kube), commands can be issued directly to a Kubernetes pod, and the output can be captured and persisted in various services like S3, an email, an SFTP server, or an HTTP web service, all of this in a single workflow.
 
-This article demonstrates how to automate this process using Rundeck, Process Automation, and Runbook Automation.
+This article demonstrates how to automate this process using Rundeck or Runbook Automation.
 
 ## Pre-requisites & Environment Setup
 
@@ -94,19 +94,19 @@ After configuring the entire environment let's deploy a simple Tomcat pod using 
    NAME 	READY   STATUS	RESTARTS   AGE
    tomcat   1/1 	Running   0      	42s
    ```
-   With the Tomcat pod now running, we can retrieve diagnostics using Rundeck or Process Automation or Runbook Automation.
+   With the Tomcat pod now running, we can retrieve diagnostics using Rundeck or Runbook Automation.
 
 ### Plugin installation
 
 :::tip Skip Ahead
-You can skip this section if you have using [**Process Automation**](https://www.pagerduty.com/platform/automation/) version 4.11 (or greater) or [**Runbook Automation**](https://www.pagerduty.com/platform/automation/runbook/), 
+You can skip this section if you have using [**Runbook Automation**](https://www.pagerduty.com/platform/automation/) version 4.11 (or greater) or [**Runbook Automation**](https://www.pagerduty.com/platform/automation/runbook/), 
 or if you have already uploaded the latest [Kubernetes plugins](https://github.com/rundeck-plugins/kubernetes).
 :::
 
 To install the Kubernetes plugins just check the following steps:
 
 1. Navigate to the [latest plugin release](https://github.com/rundeck-plugins/kubernetes/releases/latest) on Github and download the **`kubernetes-X.X.XX.zip`** file.<br><br>
-2. In the Rundeck or Process Automation instance, click the **Gear Icon** and then click the **Plugins > Upload Plugin**:
+2. In the Rundeck or Runbook Automation instance, click the **Gear Icon** and then click the **Plugins > Upload Plugin**:
    ![Upload Plugins Menu](/assets/img/upload-plugins-menu.png)
 3. Click **Browse** and select the downloaded **`.zip`** file from Step 2.
 4. Click **Install**:
@@ -151,5 +151,5 @@ If the KubeConfig file is in a non-standard location, then modify Steps 1 and 2 
    ![Custom KubeConfig](/assets/img/custom-kubeconfig-job-step.png)
 3. Repeat the prior step for **Step 2**.
 
-If using an API Token for authentication is preferred over placing the KubeConfig on the Process Automation or Rundeck server, then 
+If using an API Token for authentication is preferred over placing the KubeConfig on the Runbook Automation or Rundeck server, then 
 place the token into the **API Token** field and also provide the **Cluster URL**.

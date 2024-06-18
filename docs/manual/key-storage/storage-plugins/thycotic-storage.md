@@ -5,7 +5,7 @@
 
 Delinea (formerly Thycotic) is a leader in Privileged Access Management solutions providing cloud ready, easy to use security solutions across the complete privileged access surface.  A centralized password management system provides visibility and control to protect privileges from attack.  Delinea's solution is built for the Enterprise to enforce strong password business policies and prevent data breaches.  [Read more about their solution here](https://delinea.com/products/secret-server).
 
-Process Automation users have access to the Delinea Storage Plugin which can be used to access password/key data stored in a Delinea Secret Server.
+Runbook Automation users have access to the Delinea Storage Plugin which can be used to access password/key data stored in a Delinea Secret Server.
 
 ## Configuration
 

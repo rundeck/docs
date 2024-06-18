@@ -17,7 +17,7 @@ Release Date: June 15th, 2023
 
 ## Overview
 
-Check out the new features and enhancements for PagerDuty Process Automation, PagerDuty Runbook Automation, and Rundeck Community included in this release.This release includes new enhancements to the user experience, bug fixes around CyberArk, and new versioning for Twistlock security.
+Check out the new features and enhancements for PagerDuty Runbook Automation, and Rundeck Community included in this release.This release includes new enhancements to the user experience, bug fixes around CyberArk, and new versioning for Twistlock security.
 View our [Twitch stream review](https://www.twitch.tv/pdcommunity) of this release live.
 
 ## Highlights

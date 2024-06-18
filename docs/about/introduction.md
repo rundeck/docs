@@ -22,15 +22,15 @@ Out of the box, Rundeck gives you capabilities that would be expensive to develo
 
 Rundeck Open Source is free open source software licensed under the [Apache Software License v2.0](http://www.apache.org/licenses/LICENSE-2.0.html), and you can participate in the project on [GitHub]. For those who write and run Rundeck jobs at small-scale usage (e.g., limited use or within a team), the open-source Rundeck delivers you the features you need, for free, _forever_.
 
-#### Process Automation (formerly Rundeck Enterprise)
+#### Runbook Automation (formerly Rundeck Enterprise / Process Automation)
 
-The focus of [Process Automation], our commercial offering, is on making Rundeck production-ready and enterprise-scale. Process Automation, built on the open source Rundeck, is the bundle of software and services you need to run Rundeck as an enterprise-class service.
+The focus of [Runbook Automation], our commercial offering, is on making Rundeck production-ready and enterprise-scale. Runbook Automation, built on the open source Rundeck, is the bundle of software and services you need to run Rundeck as an enterprise-class service.
 
-Built and tested for the enterprise, Process Automation includes exclusive features (including clustering/HA, advanced workflow, enhanced ACL management, enhanced dashboards/visualization) and Process Automation exclusive plugins. Professional support and on-boarding services are also part of the Process Automation subscription bundle.
+Built and tested for the enterprise, Runbook Automation includes exclusive features (including clustering/HA, advanced workflow, enhanced ACL management, enhanced dashboards/visualization) and Runbook Automation exclusive plugins. Professional support and on-boarding services are also part of the Runbook Automation subscription bundle.
 
-_NOTE: Process Automation was recently renamed from Rundeck Enteprise. You may still see references to Rundeck Enteprise/Pro here and there, as we work to update our documentation. Just know that they are the same thing._
+_NOTE: Runbook Automation was renamed from Process Automation and even farther back Rundeck Enterprise. There may still be references to Rundeck Enteprise/Pro and Process Automation here and there, as we work to update our documentation. Just know that they are all the same thing._
 
-[Process Automation]: https://www.pagerduty.com/platform/automation/process-software/
+[Runbook Automation]: https://www.pagerduty.com/platform/automation/process-software/
 [github]: https://github.com/rundeck/rundeck
 
 ## Who makes Rundeck?

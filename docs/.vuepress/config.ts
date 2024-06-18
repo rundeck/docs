@@ -270,7 +270,7 @@ export default defineUserConfig({
             type: 'enterprise',
             locales: {
                 '/': {
-                    defaultInfo: 'Available in PagerDuty Process Automation Commercial products.',
+                    defaultInfo: 'Available in PagerDuty Runbook Automation Commercial products.',
                 }
             }
         }

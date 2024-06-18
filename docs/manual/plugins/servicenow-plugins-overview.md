@@ -2,8 +2,8 @@
 
 ## Overview
 
-Process Automation integrates with ServiceNow through a variety of plugins listed below.
-By integrating Process Automation with ServiceNow, users can automate many of their operations around Incidents, Change Requests, Service Requests, Tasks and much more.
+Runbook Automation integrates with ServiceNow through a variety of plugins listed below.
+By integrating Runbook Automation with ServiceNow, users can automate many of their operations around Incidents, Change Requests, Service Requests, Tasks and much more.
 These integrations allow operations teams to provide self-service mechanisms to users throughout the business, as well as setup event-driven automation for workflows that involve ServiceNow.
 
 <details><summary> <font size="5">ServiceNow Plugins</font>
@@ -27,7 +27,7 @@ These integrations allow operations teams to provide self-service mechanisms to 
 |[**ServiceNow Node Source**](/manual/projects/resource-model-sources/servicenow.html#servicenow-node-source-enterprise)|Node Source|CMDB|
 </details>
 <br>
-<em>Click to expand to see the full list of Process Automation plugins for ServiceNow</em>
+<em>Click to expand to see the full list of Runbook Automation plugins for ServiceNow</em>
 
 ## Setup
 
@@ -36,7 +36,7 @@ Authentication for the ServiceNow plugins can be configured for the entire syste
 ### Add ServiceNow Account Password to Key Storage
 
 **System Key Storage**
-<br>Place the ServiceNow credentials into the System Key Storage if all Process Automation Projects will share the same ServiceNow credentials.
+<br>Place the ServiceNow credentials into the System Key Storage if all Runbook Automation Projects will share the same ServiceNow credentials.
 1. Click on the **System Menu** (gear icon) in the upper right.
 2. Click on **Key Storage**
 3. Click **+Add or Upload a Key**. Select **Password** for the Key Type.
@@ -62,7 +62,7 @@ Use the following steps to configure authentication for the ServiceNow plugins f
 3. Click on **+PluginGroup**.
 4. Select **ServiceNow** from the list.
 5. Add your ServiceNow instance URL to the **Server URL** field.
-6. Place an active ServiceNow username into the **User name** field. This user must have sufficient permissions to perform the actions that will be automated by Process Automation.
+6. Place an active ServiceNow username into the **User name** field. This user must have sufficient permissions to perform the actions that will be automated by Runbook Automation.
 7. Click **Select** next to the **Password Key Storage Path** field and find the ServiceNow password from the prior section stored in Key Storage.
 8. Click **Save** for the plugin configuration.
 9. Click **Save** for the Project Settings:
@@ -70,14 +70,14 @@ Use the following steps to configure authentication for the ServiceNow plugins f
 
 ### System Level Configuration
 
-Use the following steps to configure authentication for the ServiceNow plugins for the whole Process Automation system.
+Use the following steps to configure authentication for the ServiceNow plugins for the whole Runbook Automation system.
 
 1. Click on the **System Menu** (gear icon) in the upper right.
 2. Click on **System Configuration**.
 3. Navigate to the **ServiceNow** section and click on the **Pencil Icon** in the upper right:
    ![Edit Plugin Suite Sysytem Level](/assets/img/servicenow-edit-system-plugin-suite.png)
 4. Add your ServiceNow instance URL to the **Server URL** field.
-5. Place an active ServiceNow username into the **User name** field. This user must have sufficient permissions to perform the actions that will be automated by Process Automation.
+5. Place an active ServiceNow username into the **User name** field. This user must have sufficient permissions to perform the actions that will be automated by Runbook Automation.
 6. Click **Select** next to the **Password Key Storage Path** field and find the ServiceNow password from the prior section stored in Key Storage.
 7. Click **Save** for the plugin configuration:
    ![Save ServiceNow Plugin System Config](/assets/img/servicenow-save-system-plugin-suite.png)

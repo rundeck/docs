@@ -4,12 +4,12 @@ export default [
     link: '/about/introduction'
   },
   {
-    text: 'Process Automation',
-    link: '/about/enterprise/'
-  },
-  {
     text: 'Runbook Automation',
     link: '/about/cloud/'
+  },
+  {
+    text: 'Runbook Automation - Self Hosted',
+    link: '/about/enterprise/'
   },
   {
     text: 'Getting Help',

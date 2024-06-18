@@ -4,8 +4,8 @@
 
 ![](/assets/img/sensu-logo.png)
 
-Process Automation integrates with Sensu through a variety of plugins listed below.
-By integrating Process Automation with Sensu, users can automate and provide self-service interfaces for operations in their Sensu instance
+Runbook Automation integrates with Sensu through a variety of plugins listed below.
+By integrating Runbook Automation with Sensu, users can automate and provide self-service interfaces for operations in their Sensu instance
 as well as invoke automated workflows in response to Sensu alerts.
 
 <details><summary> <font size="5">Sensu Plugins</font>
@@ -26,24 +26,24 @@ as well as invoke automated workflows in response to Sensu alerts.
 
 </details>
 <br>
-<em>Click to expand to see the full list of Process Automation plugins for Sensu.</em>
+<em>Click to expand to see the full list of Runbook Automation plugins for Sensu.</em>
 
 ## Setup
 
 ### Retrieve & Upload Sensu API Key
 
-This section outlines how to save a Sensu API Key into Process Automation.
+This section outlines how to save a Sensu API Key into Runbook Automation.
 
 1. Generate a new Sensu API key by following the steps outlined [here.](https://docs.sensu.io/sensu-go/latest/api/core/apikeys/#create-a-new-api-key)
 2. Once the new key has been generated, save it somewhere temporarily. 
-3. In Process Automation, navigate to **System Menu** (gear icon) -> **Key Storage**.
+3. In Runbook Automation, navigate to **System Menu** (gear icon) -> **Key Storage**.
 4. Click **+ Add or Upload a Key**.
 5. For the **Key Type** dropdown select **Password**.
 6. Paste the Sensu Api Key into the **Enter Text** field.
 7. Provide a name for the key in Key Storage. 
 8. Click **Save.**
 
-### Configure Sensu Plugin Suite in Process Automation
+### Configure Sensu Plugin Suite in Runbook Automation
 
 Authentication for the Sensu plugins can be configured for the entire system or for an individual project.
 Credentials can be optionally be overwritten on a per-plugin basis, such as an individual Job Step.
@@ -65,7 +65,7 @@ Use the following steps to configure authentication for the Sensu plugins for a 
 
 ### System Level Configuration
 
-Use the following steps to configure authentication for the Sensu plugins for the whole Process Automation system.
+Use the following steps to configure authentication for the Sensu plugins for the whole Runbook Automation system.
 
 1. Click on the **System Menu** (gear icon) in the upper right.
 2. Click on **System Configuration**.

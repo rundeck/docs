@@ -5,7 +5,7 @@ date: 2023-11-13
 image: /images/chevron-logo-red-on-white.png
 feed:
  enable: true
- description: "Bug Fixes for Process Automation/Rundeck"
+ description: "Bug Fixes for Runbook Automation/Rundeck"
 
 ---
 
@@ -20,15 +20,15 @@ Release Date: November 13, 2023
 
 ## Overview
 
-This release addresses two CVE announcements for Rundeck/Process Automation:
+This release addresses two CVE announcements for Rundeck/Runbook Automation:
 - [CVE-2023-48222](/history/cves/cve-2023-48222.md)<br>
     Authenticated users can view or delete jobs for which they do not have authorization.
 - [CVE-2023-47112](/history/cves/cve-2023-47112.md)<br>
     Authenticated users can view job names and groups for which they do not have read authorization.
 
-Also includes other fixes for PagerDuty Process Automation (formerly Rundeck Enterprise), PagerDuty Runbook Automation and Rundeck Community included in this release.
+Also includes other fixes for PagerDuty Runbook Automation and Rundeck Community included in this release.
 
-## Process Automation Updates
+## Runbook Automation Updates
 
 * Fix: Error with authentication using assume-role if using EC2/ECS credential provider
 * Fix: ERROR 500 When creating ACL on Rundeck 4.16 + Postgres/Oracle

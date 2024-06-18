@@ -117,7 +117,7 @@ To create a new ACL, click on the Gear Icon > Access Control and click on the â€
 
 ![](/assets/img/acl_basics_2_yaml.png)
 
-Note for those considering the Enterprise product, PagerDuty Process Automation uses a user-friendly wizard to create rules using the GUI directly instead of typing all rules on the YAML text editor.
+Note for those considering the Enterprise product, PagerDuty Runbook Automation uses a user-friendly wizard to create rules using the GUI directly instead of typing all rules on the YAML text editor.
 
 
 ## System Context ACL Example
@@ -138,7 +138,7 @@ by:
   group: my_role
 ```
 
-### PagerDuty Process Automation On-Prem ACL Wizard Example
+### PagerDuty Runbook Automation ACL Wizard Example
 
 The following example shows how to create a user and give Access to the MyProject project and their jobs and nodes exclusively.
 

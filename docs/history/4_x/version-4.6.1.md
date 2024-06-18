@@ -9,9 +9,9 @@ Release Date: September 14, 2022
 
 ## Overview
 
-Check out the new features and enhancements for PagerDuty Process Automation (formerly Rundeck Enterprise) and PagerDuty Runbook Automation and Rundeck Community included in this release.
+Check out the new features and enhancements for PagerDuty Runbook Automation and Rundeck Community included in this release.
 
-## Process Automation / Rundeck Open Source Product Updates
+## Runbook Automation / Rundeck Open Source Product Updates
 
 * [Fix : Update snakeyaml to 1.31 to address High Severity CVE-2022-25857](https://github.com/rundeck/rundeck/pull/7894)
 

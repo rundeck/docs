@@ -21,7 +21,7 @@ This can help keep stakeholders up to date on the progress of achieving full-ser
 
 ## Remediation
 While Automated Diagnostics is an excellent first-step for introducing “machine automation” into the incident-response process, auto-remediation is the logical next step.  
-Automation Actions and Process Automation provide all the necessary features and functionality to allow you to implement safe, known fixes as part of your reliability practices.  
+Automation Actions and Runbook Automation provide all the necessary features and functionality to allow you to implement safe, known fixes as part of your reliability practices.  
 Here are a few common categories of auto-remediation:
 
 **1. Restarting a service running on a Windows or Linux operating system.**<br>
@@ -35,7 +35,7 @@ Here are a few common categories of auto-remediation:
 For an example implementation, here is a [**webinar recording**](https://www.youtube.com/watch?v=4jAf6cbxsgo&ab_channel=Rundeck) of implementing auto-remediation with Rundeck and Sensu.
 
 ## Service-Request & Self-Service Automation
-Beyond the incident-response use-cases outlined above, **Process Automation** can be used to automate and delegate a number of technical tasks spanning categories such as:
+Beyond the incident-response use-cases outlined above, **Runbook Automation** can be used to automate and delegate a number of technical tasks spanning categories such as:
 
 **Environment provisioning**<br>
 **Configuration changes**<br>

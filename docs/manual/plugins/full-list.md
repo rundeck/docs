@@ -1,6 +1,6 @@
 # Rundeck Plugins List
 
-This document lists the plugins **distributed with Rundeck and Process Automation**.
+This document lists the plugins **distributed with Rundeck and Runbook Automation**.
 
 Also see: [Plugin Development Guide](/developer/index.md).
 

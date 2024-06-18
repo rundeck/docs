@@ -1,7 +1,7 @@
 # Creating a Rundeck Job
 This article brings all of the Job pieces together to construct a single Job.<br>
 ## Create a basic Rundeck Job
-To create a Job in Rundeck (or the commercial Process Automation products), follow these steps:<br>
+To create a Job in Rundeck (or the commercial Runbook Automation products), follow these steps:<br>
 1. Create a new Project by clicking on the "Create New Project" button if you have not already done so. Otherwise, select a Project from the Project list and skip to step 4.<br>
 ![](/assets/img/createajob1.png)<br>
 2. Give the Project a name and a short description ("Project Name" and "Description” fields).<br>

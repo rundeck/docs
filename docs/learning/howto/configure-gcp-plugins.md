@@ -4,23 +4,23 @@ Google Cloud consists of a set of physical assets, such as computers and hard di
 
 [Read more about Google Cloud here.](https://cloud.google.com/docs/overview)
 
-This How To will highlight some of the key steps to configuring the Google Cloud plugins included in our Process Automation version.  The background for these steps is covered in detail on Google's support site here: [Creating and Managing Service Account Keys](https://cloud.google.com/iam/docs/creating-managing-service-account-keys).
+This How To will highlight some of the key steps to configuring the Google Cloud plugins included in our Runbook Automation version.  The background for these steps is covered in detail on Google's support site here: [Creating and Managing Service Account Keys](https://cloud.google.com/iam/docs/creating-managing-service-account-keys).
 
 ## Pre-Requisites
 
-This How To is based on the Process Automation [Welcome Projects](/learning/howto/welcome-project-starter.md).
+This How To is based on the Runbook Automation [Welcome Projects](/learning/howto/welcome-project-starter.md).
 
 - Rundeck Welcome Project version 1.5<br>
-    _(Process Automation 3.4.4 is min product version)_
+    _(Runbook Automation 3.4.4 is min product version)_
 - Administrative access to a Google Cloud environment
 - Create at least one [Virtual Machine Instance](https://cloud.google.com/compute/docs/instances) and note which _Zone_ it is created in.
 
 
 ### Authentication & Configuration
 Follow the steps outlined in the [**Google Cloud Integration Overview**](/manual/plugins/gcp-plugins-overview) doc to configure credentials for the GCP plugins.
-Credentials can be configured on a per Project basis or for the entire Process Automation system.
+Credentials can be configured on a per Project basis or for the entire Runbook Automation system.
 
-## Configuring Process Automation
+## Configuring Runbook Automation
 
 ::: tabs
 @tab 1. Upload Key

@@ -1,5 +1,5 @@
 # Instance System Requirements
-|| Process Automation OnPrem | Rundeck |
+|| Runbook Automation Self-Hosted | Rundeck Open Source |
 | --- | ---------- | --- |
 | Operating Systems | **Supported**:<br>[Red Hat Enterprise 8+/Amazon 2+/Oracle Linux 8+](/administration/install/linux-rpm.html)<br>[Ubuntu 22.04.3+/Debian 11.8+](/administration/install/linux-deb.html)<br>[Windows Server 2019+](/administration/install/windows.html) | **Recommended**:<br>[Red Hat Enterprise 8+/Amazon 2+/Oracle Linux 8+](/administration/install/linux-rpm.html)<br>[Ubuntu 22.04.3+/Debian11.8+](/administration/install/linux-deb.html)<br>[Windows Server 2019+](/administration/install/windows.html) |
 | Server Profile | **Recommended**:<br>32GB RAM<br>(24GB JVM Heap)<br>8 CPUs per instance<br>*Equivalent to m4.2xlarge in AWS EC2*<br><br>**Minimum**:<br>16GB RAM<br>(12GB JVM Heap)<br>4 CPUs per instance<br>*Equivalent to m4.xlarge in AWS EC2* | <br><br><br><br><br><br><br>**Minimum**:<br>8GB RAM<br>(4GB JVM Heap)<br>2 CPUs per instance<br>*Equivalent to m4.large in AWS EC2*  |
@@ -64,7 +64,7 @@ There are various ways for installing SSH on Windows; we recommend [Cygwin (open
 
 ## Database
 
-When you install the default Rundeck (Or PagerDuty Process Automation) configuration, it will use H2, an embedded database. It is convenient to have an embedded database when testing or using it for a non-critical purpose. Using the H2 database is not considered safe for production because it is not resilient if Rundeck is not shutdown gracefully. When shutdown gracefully, Rundeck can write the data (kept in memory) to disk. If Rundeck is forcefully shutdown, the data is not guaranteed to be written to file on disk and will likely cause truncation and corruption.
+When you install the default Rundeck (Or Runbook Automation Self-Hosted) configuration, it will use H2, an embedded database. It is convenient to have an embedded database when testing or using it for a non-critical purpose. Using the H2 database is not considered safe for production because it is not resilient if Rundeck is not shutdown gracefully. When shutdown gracefully, Rundeck can write the data (kept in memory) to disk. If Rundeck is forcefully shutdown, the data is not guaranteed to be written to file on disk and will likely cause truncation and corruption.
 
 Don't use the H2 embedded database for anything except testing and non-production.
 
@@ -77,7 +77,7 @@ For more about setting the datasource see: [Configuration/Database](/administrat
 ## Logstore<br>
 Rundeck records all job execution data into the Logstore. By default, Rundeck is configured to use the local file system. Normally, that is defined by the framework.logs.dir system setting found in framework.properties.
 
-For clustered setups with Process Automation, see: [Configuration/Logstore](/administration/cluster/logstore/).
+For clustered setups with Runbook Automation, see: [Configuration/Logstore](/administration/cluster/logstore/).
 
 ## Admin Access<br>
 Using a dedicated user account such as "rundeck" is recommended. If there is a need for root access, please set up the Rundeck user to have access via [sudo](https://en.wikipedia.org/wiki/Sudo).

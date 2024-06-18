@@ -1,6 +1,6 @@
 # Intro to Setting up a New Server
 Installing a Rundeck server involves a series of crucial steps that must be executed with precision and attention to detail. When done correctly, it can provide organizations with a powerful platform to automate routine tasks, improve operational efficiency, and enhance collaboration between teams.<br>
-The following steps show you how to prepare the Server properly.  These steps are also valid for PagerDuty Process Automation.<br>
+The following steps show you how to prepare the Server properly.  These steps are also valid for PagerDuty Runbook Automation.<br>
 ### Step 1: [Prepare the Server](/administration/install/system-requirements.md)
 Ensure that your server meets the minimum system requirements for Rundeck and keep all the server packages updated.<br>
 ### Step 2: [Install Java](/administration/install/system-requirements.md#java)

@@ -26,7 +26,7 @@ Release Date: February 14th, 2024
 
 ## Overview
 
-Check out the new features and enhancements for PagerDuty Process Automation (formerly Rundeck Enterprise) and PagerDuty Runbook Automation and Rundeck Community included in this release.
+Check out the new features and enhancements for PagerDuty Runbook Automation and Rundeck Community included in this release.
 
 All fixes from the [5.0.2 release](version-5.0.2.md) are also included in this version.
 
@@ -46,7 +46,7 @@ These integrations enable customers to retrieve and use secrets within Runbook A
 This allows customers to continue using their existing secrets-management provider and not store, copy or save those secrets within Runbook Automation. 
 Full documentation for Thycotic can be found [here](/manual/key-storage/storage-plugins/thycotic-storage.md) and for Cyberark [here](/manual/key-storage/storage-plugins/cyberark-storage).
 
-## Process Automation Updates
+## Runbook Automation Updates
 
 > Also includes all Open Source updates from Rundeck section below
 

@@ -10,7 +10,7 @@ If you are using our Enterprise version the plugin is already bundled with your 
 
 ## Community Version Prerequisite
 
-The HTTP Workflows Step plugin isn’t bundled with the Rundeck Community version (it is included with [Process Automation](https://www.pagerduty.com/platform/automation/process-software/)).  For Rundeck Community, follow these steps to install it.
+The HTTP Workflows Step plugin isn’t bundled with the Rundeck Community version (it is included with [Runbook Automation](https://www.pagerduty.com/platform/automation/process-software/)).  For Rundeck Community, follow these steps to install it.
 
 1. Go to the **System Menu** (Gear Icon in upper right) **> Plugins > Upload Plugin**.
 1. Copy the plugin file location from the repository _(Latest link as of last update is below)_

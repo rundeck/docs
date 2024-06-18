@@ -3,7 +3,7 @@
 :::enterprise
 :::
 
-Process Automation users have the ability to use this plugin to import their host list in Datadog by creating nodes matching all the hosts. This makes it easy to import nodes from Datadog.
+Runbook Automation users have the ability to use this plugin to import their host list in Datadog by creating nodes matching all the hosts. This makes it easy to import nodes from Datadog.
 
 ## Connection
 

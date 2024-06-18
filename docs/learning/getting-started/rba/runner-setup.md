@@ -8,7 +8,7 @@ next:
 
 # Create a Runner to connect to remote nodes
 
-[Runners](/administration/runner/) are a recent addition to the PagerDuty Process Automation and Runbook Automation architecture. They are primarily used to automate tasks in secure, remote environments where direct access to infrastructure and services is restricted. This is accomplished by using a "reverse proxy" architecture. Runners regularly query (outbound only) the Runbook Automation instance for tasks. Runners are assigned to specific  projects, and then [jobs](/learning/getting-started/jobs/what-is-a-job.md) within those projects can be sent to the Runner to execute in the remote environment.  
+[Runners](/administration/runner/) are a recent addition to the PagerDuty Runbook Automation and Runbook Automation architecture. They are primarily used to automate tasks in secure, remote environments where direct access to infrastructure and services is restricted. This is accomplished by using a "reverse proxy" architecture. Runners regularly query (outbound only) the Runbook Automation instance for tasks. Runners are assigned to specific  projects, and then [jobs](/learning/getting-started/jobs/what-is-a-job.md) within those projects can be sent to the Runner to execute in the remote environment.  
 ![Runner diagram](/assets/img/running1.png)  
 _Example showing Runner architecture (Each remote Runner could be multiple Runners)_<br>  
 When Runners are enabled for a job, the execution of Job steps will be delegated to a specific Runner for management. This model offers resiliency as multiple Runners could be enabled for a particular Project so that each Job can be assigned to a specific Runner during high usage windows.  

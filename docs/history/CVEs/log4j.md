@@ -31,7 +31,7 @@ Downloads:
 **Updates**
 
 _Update May 10, 2022_
-The JIRA plugins bundled with Process Automation utilize the JIRA REST Java Client Library.  This includes a Log4j version 1.2 that will flag security scanners.  Atlassian states that _"Some on-premises products use an Atlassian-maintained fork of Log4j 1.2.17, which is not vulnerable to [CVE-2021-44228][]"_.
+The JIRA plugins bundled with Runbook Automation utilize the JIRA REST Java Client Library.  This includes a Log4j version 1.2 that will flag security scanners.  Atlassian states that _"Some on-premises products use an Atlassian-maintained fork of Log4j 1.2.17, which is not vulnerable to [CVE-2021-44228][]"_.
 More details at [FAQ from Atlassian](https://confluence.atlassian.com/kb/faq-for-cve-2021-44228-1103069406.html).
 After upgrading to a minimum version listed above, if your installation is not using JIRA it is safe to remove the `rundeckpro-jira-plugins-*.jar` from the `libext` folder.  (You must still update to a version above to mitigate all issues.)
 

@@ -10,15 +10,15 @@ This guide will walk through the process of installing the Enterprise Runner as 
 * [Apache Commons tool](#installing-the-enterprise-runner-service-through-apache-commons-daemon)<br>
 * [NSSM tool](#an-alternative-way-installing-the-enterprise-runner-service-through-nssm)
 
-Both methods ensure that users can leverage the full potential of this essential component of the Process Automation platform.
+Both methods ensure that users can leverage the full potential of this essential component of the Runbook Automation platform.
 
-## Enterprise Runner Installation
+## Enterprise Runner Installation for Runbook Automation Self-Hosted
 
 :::tip Note
 Skip this section if you have already installed an Enterprise Runner on a Windows host.
 :::
 
-1. Stop your Process Automation instance service.
+1. Stop the Runbook Automation server instance service.
 
 2. Edit the `rundeck-config.properties` file and add the following line:
 
@@ -26,13 +26,13 @@ Skip this section if you have already installed an Enterprise Runner on a Window
 rundeck.feature.runner.enabled=true
 ```
 
-This line enables the Enterprise Runner functionality on Process Automation. Runbook Automation includes this feature out of the box.
+This line enables the Enterprise Runner functionality on Runbook Automation Self-Hosted. Runbook Automation SaaS includes this feature out of the box.
 
-Check the `grails.serverURL` property on the `rundeck-config.properties` file (must be configured with the external Process Automation URL/IP, e.g. `grails.serverURL=http://my_rundeck_server:4440`) to ensure that your Process Automation instance is accessible by the remote node.
+Check the `grails.serverURL` property on the `rundeck-config.properties` file (must be configured with the external Runbook Automation URL/IP, e.g. `grails.serverURL=http://my_rundeck_server:4440`) to ensure that your Runbook Automation instance is accessible by the remote node.
 
 Also, set the `server.address` parameter to receive connections from any network location; for testing purposes, set it to `server.address=0.0.0.0` (to receive connections from any LAN node).
 
-3. Save the file and start the Process Automation Instance.
+3. Save the file and start the Runbook Automation Instance.
 
 4. Log in and then, create a new test project called ProjectRUNNER.
 
@@ -72,7 +72,7 @@ The runner was configured on our Project, now, let's test the runner from the Wi
 
 ## Preparing and Testing the Enterprise Runner on the Windows Host
 
-Before configuring the Enterprise Runner as a service, a good starting point could be to test the connection between the Enterprise Runner and the Runbook or Process Automation instance. To do so, check the following steps:
+Before configuring the Enterprise Runner as a service, a good starting point could be to test the connection between the Enterprise Runner and the Runbook Automation instance. To do so, check the following steps:
 
 1. Review the Enterprise Runner requirements, the major need being Java 11 JRE and the `JAVA_HOME` environment variable configured.
 
@@ -94,7 +94,7 @@ Before configuring the Enterprise Runner as a service, a good starting point cou
 
 ![Runner Ping test](/assets/img/raas13.png)<br>
 
-9. You will see the ping response at the top of the screen, this means the connectivity between Runbook/Process Automation instance and Enterprise Runner is OK.
+9. You will see the ping response at the top of the screen, this means the connectivity between Runbook Automation instance and Enterprise Runner is OK.
 
 ![Ping test successfully](/assets/img/raas3.png)<br>
 

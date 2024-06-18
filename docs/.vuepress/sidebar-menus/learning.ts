@@ -22,7 +22,7 @@ export default [{
             { link: '/learning/getting-started/server-setup-overview.md', text: 'Overview of On Premise Server Setup' },
             { link: '/learning/getting-started/projects-overview.md', text: 'Setting up a Project' },
             { link: '/learning/getting-started/system-maintenance-overview.md', text: 'Overview of On Premise System Maintenance' },
-            { link: '/learning/getting-started/runners-overview.md', text: 'Working with Runners in Process Automation' },
+            { link: '/learning/getting-started/runners-overview.md', text: 'Working with Runners in Runbook Automation' },
           ]
         },
         {
