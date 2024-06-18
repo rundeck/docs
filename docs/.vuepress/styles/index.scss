@@ -25,6 +25,24 @@ h6 {
   text-align: center;
 }
 
+.homepage-announce {
+  background-color: var(--theme-color-mask); /* Green color */
+  /*border-radius: 10px; /* Rounded corners */
+  padding: 1px 0px; /* Padding inside the box */
+  font-size: 16px; /* Small font size */
+  margin: 0px; /* outside padding */
+  text-align: center; /* Center the text */
+  }
+
+.sidebar-announce {
+    background-color: var(--theme-color-mask); /* Green color */
+    border-radius: 10px; /* Rounded corners */
+    padding: 1px 8px; /* Padding inside the box */
+    font-size: 14px; /* Small font size */
+    margin: 10px; /* outside padding */
+    text-align: center; /* Center the text */
+    }
+
 .vp-description{
   text-align: center;
   max-width: unset;
