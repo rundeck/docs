@@ -3,7 +3,8 @@
   "js_render": false,
   "start_urls": [
     {
-      "url": "https://docs.rundeck.com/(?P<version>.*?)/",
+      /*"url": "https://docs.rundeck.com/(?P<version>.*?)/",*/
+      "url": "https://docs.rundeck.com/",
       "variables": {
         "version": [
           "docs",
