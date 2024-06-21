@@ -13,28 +13,28 @@ These integrations allow operations teams to provide self-service mechanisms to 
 
 |Plugin Name| Plugin Type| Description|
 |:---------------------------------------------------------|:---------------------------------------------------------:|:---------------------------------------------------------|
-|[**Create Deployment**](/manual/node-steps/kubernetes-deployment-plugins.html#kubernetes-deployment-create)|Node Step|Create a new deployment.|
-|[**Delete Deployment**](/manual/node-steps/kubernetes-deployment-plugins.html#kubernetes-deployment-delete)|Node Step|Delete an existing deployment.|
-|[**Deployment Status**](/manual/node-steps/kubernetes-deployment-plugins.html#kubernetes-deployment-status)|Node Step|Get the status of an existing deployment.|
-|[**Update Deployment**](/manual/node-steps/kubernetes-deployment-plugins.html#kubernetes-deployment-update)|Node Step|Update an existing deployment.|
-|[**Waitfor Deployment**](/manual/node-steps/kubernetes-deployment-plugins.html#kubernetes-deployment-waitfor)|Node Step|Pause workflow until deployment is complete.|
-|[**Create Job**](/manual/node-steps/kubernetes-job-plugins.html#kubernetes-job-create)|Node Step|Create a new Kubernetes job.|
-|[**Delete Job**](/manual/node-steps/kubernetes-job-plugins.html#kubernetes-job-delete)|Node Step|Delete an existing Kubernetes job.|
-|[**Re-run Job**](/manual/node-steps/kubernetes-job-plugins.html#kubernetes-job-re-run)|Node Step|Re-runs an existing Kubernetes job.|
-|[**Waitfor Job**](/manual/node-steps/kubernetes-job-plugins.html#kubernetes-job-waitfor)|Node Step|Pause workflow until Kubernetes job is complete.|
-|[**Create Service**](/manual/node-steps/kubernetes-service-plugins.html#kubernetes-service-create)|Node Step|Create a new Kubernetes service.|
-|[**Update Service**](/manual/node-steps/kubernetes-service-plugins.html#kubernetes-service-update)|Node Step|Update an existing Kubernetes service.|
-|[**Delete Service**](/manual/node-steps/kubernetes-service-plugins.html#kubernetes-service-delete)|Node Step|Delete an existing Kubernetes service.|
+|[**Create Deployment**](/manual/node-steps/kubernetes-deployment-plugins.md#kubernetes-deployment-create)|Node Step|Create a new deployment.|
+|[**Delete Deployment**](/manual/node-steps/kubernetes-deployment-plugins.md#kubernetes-deployment-delete)|Node Step|Delete an existing deployment.|
+|[**Deployment Status**](/manual/node-steps/kubernetes-deployment-plugins.md#kubernetes-deployment-status)|Node Step|Get the status of an existing deployment.|
+|[**Update Deployment**](/manual/node-steps/kubernetes-deployment-plugins.md#kubernetes-deployment-update)|Node Step|Update an existing deployment.|
+|[**Waitfor Deployment**](/manual/node-steps/kubernetes-deployment-plugins.md#kubernetes-deployment-waitfor)|Node Step|Pause workflow until deployment is complete.|
+|[**Create Job**](/manual/node-steps/kubernetes-job-plugins.md#kubernetes-job-create)|Node Step|Create a new Kubernetes job.|
+|[**Delete Job**](/manual/node-steps/kubernetes-job-plugins.md#kubernetes-job-delete)|Node Step|Delete an existing Kubernetes job.|
+|[**Re-run Job**](/manual/node-steps/kubernetes-job-plugins.md#kubernetes-job-re-run)|Node Step|Re-runs an existing Kubernetes job.|
+|[**Waitfor Job**](/manual/node-steps/kubernetes-job-plugins.md#kubernetes-job-waitfor)|Node Step|Pause workflow until Kubernetes job is complete.|
+|[**Create Service**](/manual/node-steps/kubernetes-service-plugins.md#kubernetes-service-create)|Node Step|Create a new Kubernetes service.|
+|[**Update Service**](/manual/node-steps/kubernetes-service-plugins.md#kubernetes-service-update)|Node Step|Update an existing Kubernetes service.|
+|[**Delete Service**](/manual/node-steps/kubernetes-service-plugins.md#kubernetes-service-delete)|Node Step|Delete an existing Kubernetes service.|
 |[**Pods Node Source**](/manual/projects/resource-model-sources/kubernetes.md)|Resource Model|Populates node inventory with Kubernetes pods.|
-|[**Create Pod**](/manual/node-steps/kubernetes-pod-plugins.html#kubernetes-pod-create)|Node Step|Create a new Kubernetes pod.|
-|[**Delete Pod**](/manual/node-steps/kubernetes-pod-plugins.html#kubernetes-pod-delete)|Node Step|Delete an existing Kubernetes pod.|
-|[**Describe Pod**](/manual/node-steps/kubernetes-pod-plugins.html#kubernetes-pod-describe)|Node Step|Describe a running Kubernetes pod.|
-|[**Execute Command**](/manual/node-steps/kubernetes-pod-plugins.html#kubernetes-pod-execute-command)|Node Step|Execute a command inside a container in a running pod.|
-|[**Execute Script**](/manual/node-steps/kubernetes-pod-plugins.html#kubernetes-pod-execute-script)|Node Step|Execute a script inside a container in a running pod.|
-|[**Pod Logs**](/manual/node-steps/kubernetes-pod-plugins.html#kubernetes-pod-logs)|Node Step|View the logs of a running pod.|
-|[**Waitfor Pod**](/manual/node-steps/kubernetes-pod-plugins.html#kubernetes-pod-waitfor)|Node Step|Pause workflow until pod is in "ready" state.|
-|[**Debug Pod**](/manual/node-steps/kubernetes-debug-plugins.html#kubernetes-debug-ephemeral-container)|Node Step|Debug a running container inside an existing pod using an ephemeral container.|
-|[**Waitfor StatefulSet**](/manual/node-steps/kubernetes-statefulset-plugins.html#kubernetes-statefulset-waitfor)|Node Step|Pause workflow until StatefulSet has been successfully deployed.|
+|[**Create Pod**](/manual/node-steps/kubernetes-pod-plugins.md#kubernetes-pod-create)|Node Step|Create a new Kubernetes pod.|
+|[**Delete Pod**](/manual/node-steps/kubernetes-pod-plugins.md#kubernetes-pod-delete)|Node Step|Delete an existing Kubernetes pod.|
+|[**Describe Pod**](/manual/node-steps/kubernetes-pod-plugins.md#kubernetes-pod-describe)|Node Step|Describe a running Kubernetes pod.|
+|[**Execute Command**](/manual/node-steps/kubernetes-pod-plugins.md#kubernetes-pod-execute-command)|Node Step|Execute a command inside a container in a running pod.|
+|[**Execute Script**](/manual/node-steps/kubernetes-pod-plugins.md#kubernetes-pod-execute-script)|Node Step|Execute a script inside a container in a running pod.|
+|[**Pod Logs**](/manual/node-steps/kubernetes-pod-plugins.md#kubernetes-pod-logs)|Node Step|View the logs of a running pod.|
+|[**Waitfor Pod**](/manual/node-steps/kubernetes-pod-plugins.md#kubernetes-pod-waitfor)|Node Step|Pause workflow until pod is in "ready" state.|
+|[**Debug Pod**](/manual/node-steps/kubernetes-debug-plugins.md#kubernetes-debug-ephemeral-container)|Node Step|Debug a running container inside an existing pod using an ephemeral container.|
+|[**Waitfor StatefulSet**](/manual/node-steps/kubernetes-statefulset-plugins.md#kubernetes-statefulset-waitfor)|Node Step|Pause workflow until StatefulSet has been successfully deployed.|
 
 </details>
 <br>
@@ -69,7 +69,7 @@ By default, the Kubernetes plugins look for a Kube Config file at **`$RDECK_BASE
 The Kube Config file can be saved to a different location, just be sure to take note of where it is saved for later steps.
 
 If it is preferred to use a Kubernetes API Token, then follow the instructions outlined [here](https://www.cncf.io/blog/2020/07/31/kubernetes-rbac-101-authentication/) to generate the Service Account Token.
-Once created, save the Token to [Key Storage](/manual/system-configs.html#key-storage) as a **Password** secret type.
+Once created, save the Token to [Key Storage](/manual/system-configs.md#key-storage) as a **Password** secret type.
 
 ### Upload Kubernetes Plugins (Rundeck OSS Only)
 
@@ -103,7 +103,7 @@ execute the plugin in _debug_ mode.
 
 Now that configuration is complete, take a look at use-cases for Runbook Automation with Kubernetes such as 
 [Capturing Debug Data from Apps in Kubernetes](/learning/solutions/automated-diagnostics/examples/k8s-app-debug-capture) 
-or [Managing Kubernetes with Rundeck](/learning/howto/how2kube.html#managing-kubernetes-with-rundeck).
+or [Managing Kubernetes with Rundeck](/learning/howto/how2kube.md#managing-kubernetes-with-rundeck).
 
 
 
