@@ -64,8 +64,47 @@ The ability to manage Runners at the Project level is an early access feature.
 To gain access, please [submit this form](https://www.pagerduty.com/early-access/) and someone from our team will reach out promptly.
 :::
 
-:::warning AppAdmin ACL Policy
-If using the prebuilt AppAdmin ACL Policy (stored on the local filesystem), the following permissions must be **added** to it in order to manage Runners at the Project level:
+At the Project level, users can create, edit, and delete Runners for that specific Project.
+However, Runners created at the Project level are only available for use within that Project and cannot be used in other Projects.
+
+To access the Project level Runner management interface, navigate to a specific Project and then select **Runner Management** from the left navbar.
+
+The Runner Management interface will display a list of all Runners in the Project:
+
+![Project Runners](/assets/img/project-management-runners-list.png)<br>
+
+From this interface, users can:
+
+- Create a new Runner. For detailed steps, see [Creating a Runner](/administration/runner/runner-installation/creating-runners.md).
+- Edit an existing Runner. For detailed steps, see [Configuring a Runner](/administration/runner/runner-configuration/runner-config.md).
+
+[//]: # (- Delete Runners.  For detailed steps, see [Deleting a Runner]&#40;/administration/runner/runner-installation/delete-a-runner&#41;.)
+
+#### Removing a Runner from a Project
+
+To remove a Runner from a Project, follow these steps:
+
+1. From the Project level Runner management interface, click on the **Actions** dropdown and select **Remove from project**.
+2. From the confirmation popup, select **Ok**.
+
+In order to remove a Runner from a Project, the user must have the following ACL permission:
+
+```
+by:
+  group: my-user-group-name
+description: Allow [delete] for runner
+for:
+  runner:
+  - allow:
+    - delete
+context:
+  project: my-project-name
+```
+
+:::tip Upgrading from Earlier Self Hosted product versions
+If using the self-hosted product and upgrading a version earlier than 5.3.0, the AppAdmin ACL policy stored on the local filesystem may need to be updated.
+
+The following permissions must be **added** to it in order to manage Runners at the Project level:
 ```
 runner:
   - allow: '*' # allow read/write/delete for all Runners
@@ -105,43 +144,6 @@ by:
   group: admin
 ```
 :::
-
-At the Project level, users can create, edit, and delete Runners for that specific Project.
-However, Runners created at the Project level are only available for use within that Project and cannot be used in other Projects.
-
-To access the Project level Runner management interface, navigate to a specific Project and then select **Runner Management** from the left navbar.
-
-The Runner Management interface will display a list of all Runners in the Project:
-
-![Project Runners](/assets/img/project-management-runners-list.png)<br>
-
-From this interface, users can:
-
-- Create a new Runner. For detailed steps, see [Creating a Runner](/administration/runner/runner-installation/creating-runners.md).
-- Edit an existing Runner. For detailed steps, see [Configuring a Runner](/administration/runner/runner-configuration/runner-config.md).
-
-[//]: # (- Delete Runners.  For detailed steps, see [Deleting a Runner]&#40;/administration/runner/runner-installation/delete-a-runner&#41;.)
-
-#### Removing a Runner from a Project
-
-To remove a Runner from a Project, follow these steps:
-
-1. From the Project level Runner management interface, click on the **Actions** dropdown and select **Remove from project**.
-2. From the confirmation popup, select **Ok**.
-
-In order to remove a Runner from a Project, the user must have the following ACL permission:
-
-```
-by:
-  group: my-user-group-name
-description: Allow [delete] for runner
-for:
-  runner:
-  - allow:
-    - delete
-context:
-  project: my-project-name
-```
 
 ### Changing Runners from Single to Multiple Projects
 
