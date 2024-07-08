@@ -247,6 +247,7 @@ Place the ARN of the cross-account role into the **Assume Role** field.
 If the EC2 Node Source is not used for node discovery, then be sure that the following **node-attributes** are added to the nodes:
 1. **`instanceId`** - This is the EC2 instance-id from AWS.
 2. **`region`** - This is the AWS region where the EC2 resides.
+3. **`osFamily`**  - This is the os Family you need to specify if is a Windows node.
 :::
 
 ### Enable SSM Node Executor & File Copier
