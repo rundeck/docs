@@ -1,7 +1,8 @@
 ---
 title: API Reference
 alias: api/index.html
-headerDepth: 1
+headerDepth: 3
+sidebarDepth: 3
 ---
 
 # API Reference | Version {{ $apiVersion }}
