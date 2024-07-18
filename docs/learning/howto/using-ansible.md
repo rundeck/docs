@@ -112,10 +112,14 @@ It is possible to use the Welcome Project environment with this [Project File](h
 The other jobs have descriptions for what they do and are aligned with this tutorial.
 
 ## Inventory File
-When Gather Facts is false, the inventory file is read as Yaml data. At the moment, it only supports up to 10MB of data, which supports around 19,000 nodes. However, it depends on the operating system.
-When the limit is exceeded it throws this error in the rundeck.log file:
+When Gather Facts is false, the inventory file is read as Yaml data. It supports up to 10MB of data by default, which supports around 19,000 nodes. However, it depends on the operating system.
+
+This parameter can be increased if necessary in this field:
+<br><br>![ Yaml Data Size ](/assets/img/howto-ansible-yaml-data-size.png)<br><br>
+
+When the limit is exceeded it throws this error in rundeck.log file:
 ```
-org.yaml.snakeyaml.error.YAMLException: The incoming YAML document exceeds the limit: 10485760 code points.
+ResourceModelSourceException: Cannot load yaml data coming from Ansible: The incoming YAML document exceeds the limit: 10485760 code points.
 ```
 
 ## Notes
