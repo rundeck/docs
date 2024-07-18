@@ -101,15 +101,6 @@ Time for a quick test.
 
 To see the output you may need to switch to the _Log Output_ view.
 
-## Additional Information
-
-It is possible to use the Welcome Project environment with this [Project File](https://github.com/rundeckpro/welcome-project/raw/main/supplements/ansible.rdproject.jar).
-
-1. Create a new project called `ansible` (or another name if that one is taken)
-1. Open the Ansible Project and use _Project Settings_ > _Import Archive_ to import the file.
-1. Run the **Install Ansible on Rundeck Server** Job to install Ansible.
-
-The other jobs have descriptions for what they do and are aligned with this tutorial.
 
 ## Inventory File
 When Gather Facts is false, the inventory file is read as Yaml data. It supports up to 10MB of data by default, which supports around 19,000 nodes. However, it depends on the operating system.
@@ -121,6 +112,17 @@ When the limit is exceeded it throws this error in rundeck.log file:
 ```
 ResourceModelSourceException: Cannot load yaml data coming from Ansible: The incoming YAML document exceeds the limit: 10485760 code points.
 ```
+
+## Additional Information
+
+It is possible to use the Welcome Project environment with this [Project File](https://github.com/rundeckpro/welcome-project/raw/main/supplements/ansible.rdproject.jar).
+
+1. Create a new project called `ansible` (or another name if that one is taken)
+1. Open the Ansible Project and use _Project Settings_ > _Import Archive_ to import the file.
+1. Run the **Install Ansible on Rundeck Server** Job to install Ansible.
+
+The other jobs have descriptions for what they do and are aligned with this tutorial.
+
 
 ## Notes
 It's advisable to segment extensive inventories into smaller groups or files containing approximately 1000 nodes each. Consequently, for every 1000 nodes, establish a dedicated source node for the respective group.
