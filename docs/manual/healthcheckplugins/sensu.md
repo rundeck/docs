@@ -5,7 +5,7 @@
 
 ## Authentication
 
-To authenticate Process Automation with Sensu, follow instructions outlined in [this documentation](/manual/plugins/sensu-plugins-overview.md).
+To authenticate Runbook Automation with Sensu, follow instructions outlined in [this documentation](/manual/plugins/sensu-plugins-overview.md).
 
 ![Sensu - Health Check](/assets/img/sensu-health.png)
 

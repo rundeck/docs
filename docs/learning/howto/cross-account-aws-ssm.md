@@ -5,7 +5,7 @@ It is fairly common for companies to have multiple AWS accounts, yet have tasks 
 For example, there may be a need to report, patch, or deploy upgrades on all EC2 instances across all AWS accounts.
 
 This _How To_ article outlines how to configure the [SSM Node Executor](/manual/projects/node-execution/aws-ssm) to be used across multiple AWS Accounts.
-The setup walks through configuring Process Automation to execute commands and scripts on EC2 nodes that reside in AWS accounts that are separate from the account where Process Automation is running.  
+The setup walks through configuring Runbook Automation to execute commands and scripts on EC2 nodes that reside in AWS accounts that are separate from the account where Runbook Automation is running.  
 
 :::tabs
 @tab Runbook Automation
@@ -16,21 +16,23 @@ The setup walks through configuring Process Automation to execute commands and s
 3. Runbook Automation uses _Assume Role_ function to adopt permissions for remote accounts.
 4. Automation is dispatched to EC2's through SSM using remote account IAM role.
 
-@tab Process Automation OnPrem
+@tab Runbook Automation Self-Hosted
 ![Cross Account SSM Architecture](/assets/img/ssm-cross-account-architecture.png)<br>
 
-1. Process Automation is hosted in "Master" account - on EC2, EKS or ECS.
-2. Through [AWS integration](/manual/plugins/aws-plugins-overview.html#aws-integration-for-process-automation-hosted-on-ec2), Process Automation inherits entitlements from IAM Role associated with EC2, EKS or ECS.
+1. Runbook Automation is hosted in "Master" account - on EC2, EKS or ECS.
+2. Through [AWS integration](/manual/plugins/aws-plugins-overview.html#aws-integration-for-process-automation-hosted-on-ec2), Runbook Automation inherits entitlements from IAM Role associated with EC2, EKS or ECS.
 3. IAM role from Master account has Trust Relationship with IAM role in remote accounts.
 4. Automation is dispatched to EC2's through SSM using remote account IAM role.
 
 :::
 
 Here is the overview of the steps for this setup:<br>
-1. [Configure IAM Roles in Remote Accounts](#configure-iam-roles-in-remote-accounts)
-2. [Update IAM Role in Master Account](#update-iam-role-in-master-account)
-3. [Configure Node Executor in Process Automation](#configure-node-executor-in-process-automation)
-4. [Using CloudWatch Logs](#using-cloudwatch-logs) (Optional)
+- [Cross-Account Orchestration with AWS Systems Manager](#cross-account-orchestration-with-aws-systems-manager)
+  - [Summary](#summary)
+  - [Configure IAM Roles in Remote Accounts](#configure-iam-roles-in-remote-accounts)
+    - [IAM Role for Remote EC2s](#iam-role-for-remote-ec2s)
+    - [IAM Role for Cross Account Node Execution](#iam-role-for-cross-account-node-execution)
+    - [File Copier \& Script Executor Permissions](#file-copier--script-executor-permissions)
 
 ## Configure IAM Roles in Remote Accounts
 
@@ -90,7 +92,7 @@ Be sure to replace **`<<REMOTE AWS ACCOUNT ID>>`** with the AWS account ID of th
 }
 ```
 :::tip Tip! Instance Discovery Permissions
-In order for Process Automation to also be used to discover the EC2 nodes in the remote account, it needs the permissions to list the EC2s. 
+In order for Runbook Automation to also be used to discover the EC2 nodes in the remote account, it needs the permissions to list the EC2s. 
 If this same IAM Role will be used for instance-discovery, then be sure to add the following policy to the above IAM Role as well:
 ```
 {
@@ -108,7 +110,7 @@ Use the following steps to set up the ability to execute scripts on, or transfer
 
 Add the following permission to the IAM Policy above: **`arn:aws:ssm:*::document/AWS-RunRemoteScript`**.
 
-1. Create an S3 bucket that has a bucket policy that allows for objects to be _uploaded_ to it by the IAM policy associated with Process Automation.
+1. Create an S3 bucket that has a bucket policy that allows for objects to be _uploaded_ to it by the IAM policy associated with Runbook Automation.
 2. Include a permission statement in this policy that allows for the remote EC2 instances to _retrieve_ objects from the bucket.
 3. Here is an example **S3 Bucket Policy**:
    :::warning Heads Up!                                                        
@@ -132,7 +134,7 @@ Add the following permission to the IAM Policy above: **`arn:aws:ssm:*::document
            {
                "Effect": "Allow",
                "Principal": {
-                   "AWS": "arn:aws:iam::<<Process Automation AWS account ID>>:role/<<ARN associated with Process Automation>>"
+                   "AWS": "arn:aws:iam::<<Runbook Automation AWS account ID>>:role/<<ARN associated with Runbook Automation>>"
                },
                "Action": [
                    "s3:PutObject"
@@ -173,12 +175,12 @@ Follow the instructions outlined in [this AWS documentation](https://docs.aws.am
 
 ### Add Trust Policy
 In order for Process or Runbook Automation to assume the role with the SSM permissions, a Trust Policy must be added to the cross-account role in the remote account. 
-First, navigate to the _master account_ and copy the **ARN** of the IAM Role associated with Process Automation.
+First, navigate to the _master account_ and copy the **ARN** of the IAM Role associated with Runbook Automation.
 
 :::tip Master Account Reference
 For Runbook Automation (Cloud), the _master account_ is the AWS Account that is integrated through the Project or System using the [AWS PluginGroup](/manual/plugins/aws-plugins-overview.html#aws-integration-for-runbook-automation).
 
-For Process Automation (self hosted), the _master account_ is the AWS Account where Process Automation is hosted - either [on EC2](/manual/plugins/aws-plugins-overview.html#aws-integration-for-process-automation-hosted-on-ec2) or [on ECS](/manual/plugins/aws-plugins-overview.html#process-automation-hosted-on-ecs). 
+For Runbook Automation Self=Hosted, the _master account_ is the AWS Account where Runbook Automation is hosted - either [on EC2](/manual/plugins/aws-plugins-overview.html#aws-integration-for-process-automation-hosted-on-ec2) or [on ECS](/manual/plugins/aws-plugins-overview.html#process-automation-hosted-on-ecs). 
 :::
 
 Navigate back to the _remote_ AWS account where the cross-account role can be modified.  Click on **Trust Relationships** then click on **Edit Trust Policy**. Use the following Trust Policy:
@@ -191,7 +193,7 @@ Navigate back to the _remote_ AWS account where the cross-account role can be mo
 			"Effect": "Allow",
 			"Principal": {
 				"AWS": [
-					"<<ARN associated with Process Automation>>"
+					"<<ARN associated with Runbook Automation>>"
 				]
 			},
 			"Action": "sts:AssumeRole",
@@ -207,7 +209,7 @@ Copy the ARN of this IAM Role (in the _Remote_ account).
 ## Update IAM Role in Master Account
 
 Navigate back to the _master account_.  
-Find the IAM Role that is associated with Process Automation, and navigate to modify this IAM role in the IAM Console.  For Process Automation OnPrem (self-hosted), see [these instructions for EC2](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html#attach-iam-role), or [these instructions for ECS](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html#specify-task-iam-roles).  
+Find the IAM Role that is associated with Runbook Automation, and navigate to modify this IAM role in the IAM Console.  For Runbook Automation Self-Hosted, see [these instructions for EC2](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html#attach-iam-role), or [these instructions for ECS](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html#specify-task-iam-roles).  
 Now add the following policy to this IAM Role and paste in the ARN of the cross-account IAM Role copied from the _remote account_ from the prior section:
 
 ```
@@ -227,16 +229,16 @@ Now add the following policy to this IAM Role and paste in the ARN of the cross-
 ```
 
 :::warning IAM Role for ECS
-If running Process Automation on ECS, then this IAM Policy needs to be attached to the **Task Role**, _not_ the _Task Execution Role_.
+If running Runbook Automation on ECS, then this IAM Policy needs to be attached to the **Task Role**, _not_ the _Task Execution Role_.
 :::
 
-## Configure Node Executor in Process Automation
+## Configure Node Executor in Runbook Automation
 
 ### AWS Authentication
-Follow the instructions outlined in the [AWS Plugins Overview](/manual/plugins/aws-plugins-overview.html) for Process Automation to authenticate with AWS.
+Follow the instructions outlined in the [AWS Plugins Overview](/manual/plugins/aws-plugins-overview.html) for Runbook Automation to authenticate with AWS.
 
 ### Node Discovery
-In order to target the remote EC2 instances, they need to be populated into Process Automation's node inventory.
+In order to target the remote EC2 instances, they need to be populated into Runbook Automation's node inventory.
 It is recommended to use the [**EC2 Node Source**](/manual/projects/resource-model-sources/aws.html#amazon-ec2-node-source).
 
 Place the ARN of the cross-account role into the **Assume Role** field.
@@ -245,6 +247,7 @@ Place the ARN of the cross-account role into the **Assume Role** field.
 If the EC2 Node Source is not used for node discovery, then be sure that the following **node-attributes** are added to the nodes:
 1. **`instanceId`** - This is the EC2 instance-id from AWS.
 2. **`region`** - This is the AWS region where the EC2 resides.
+3. **`osFamily`**  - This is the os Family you need to specify if is a Windows node.
 :::
 
 ### Enable SSM Node Executor & File Copier
@@ -267,7 +270,7 @@ The SSM Node Executor can be set as the **Default Node Executor** - thereby maki
 1. Navigate to **Project Settings** -> **Edit Configuration** -> **Default Node Executor**.
 2. Select the dropdown on the left and select **AWS / SSM / Node Executor**:
    ![](/assets/img/ssm-select-default-node-executor.png)
-3. If Process Automation is authenticated with AWS through an associated IAM Role, then all the fields can be left as their defaults.
+3. If Runbook Automation is authenticated with AWS through an associated IAM Role, then all the fields can be left as their defaults.
 4. Click the check-box for **Assume Role**.
 5. Type in the **ARN** of the IAM role in the remote AWS account.
    * If you have more than one remote account, you can leave this blank.
@@ -279,7 +282,7 @@ The SSM File Copier can also be set as the **Default File Copier** for the whole
 1. Navigate to **Project Settings** -> **Edit Configuration** -> **Default File Copier**.
 2. Select the dropdown on the left and select **AWS / SSM / File Copier**.
 3. Place the name of the S3 bucket into the **Bucket Name** field.
-4. If Process Automation is authenticated with AWS through an associated IAM Role, then the Access Key ID and Secret Key fields can be left blank.
+4. If Runbook Automation is authenticated with AWS through an associated IAM Role, then the Access Key ID and Secret Key fields can be left blank.
 
 :::tip When not using the EC2 Resource Model
 Node Attributes can be added when defining a resource-model source [manually](/administration/configuration/plugins/bundled-plugins.html#built-in-resource-model-formats)
@@ -288,7 +291,7 @@ or by using the [Attribute Match](/manual/node-enhancers.html#attribute-match) n
 
 ## Using CloudWatch Logs
 
-The example policies in the prior sections enable Process Automation to retrieve logs directly from SSM.  
+The example policies in the prior sections enable Runbook Automation to retrieve logs directly from SSM.  
 However, these logs are truncated to 48,000 characters. To view logs that are longer than this limit, CloudWatch logs are used.  
 
 In order to use CloudWatch, specify the CloudWatch Log Group in the Node Executor (therefore to be used across multiple Node Sources) or as a property added to the Mapping Params **`cloudwatch-log-group.default=<<CloudWatch Log Group Name>>`**.

@@ -1,5 +1,5 @@
 # What are the pieces of a job?
-The following elements are the essential parts of a Rundeck / Process Automation Job.<br>
+The following elements are the essential parts of a Rundeck / Runbook Automation Job.<br>
 
 ## Job Identification information
 The identification section of a job (labeled Details) is the first tab when defining a job.<br>

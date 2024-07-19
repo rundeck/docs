@@ -12,7 +12,7 @@ Details are also provided on the various mechanisms that can be used to integrat
 For example, with many technologies, there are options to integrate using plugins, command-line interfaces (CLIs), or API calls.
 
 In addition, many sections include example Jobs that can be imported into your Automation Instance - helping you get started quickly with Automated Diagnostics.  
-Other prebuilt Jobs are included in the Automated Diagnostics Solution package, which is preinstalled for Runbook Automation customers and can be downloaded for Process Automation customers from the [getting started](/learning/solutions/automated-diagnostics/getting-started) section.
+Other prebuilt Jobs are included in the Automated Diagnostics Solution package, which is preinstalled for Runbook Automation customers and can be downloaded for Runbook Automation customers from the [getting started](/learning/solutions/automated-diagnostics/getting-started) section.
 
 <style type="text/css">
 .tg  {border:none;border-collapse:collapse;border-spacing:0;margin:0px auto;}

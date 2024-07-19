@@ -7,7 +7,7 @@
 
 The Failed Login Rate Limiting helps provides protection from brute force login attempts on Rundeck.
 
-> Note: This setting is turned off by default on new installations of Process Automation but is recommended to be turned on in production use.
+> Note: This setting is turned off by default on new installations of Runbook Automation but is recommended to be turned on in production use.
 
 To enable Failed Login rate limiting using the following settings in Configuration Management.
 

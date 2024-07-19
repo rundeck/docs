@@ -68,7 +68,7 @@ saying that the user cannot be found. Once that users logs in one time it is pos
 
 >_“Why didn’t my webhook do X?!”_
 
-Process Automation includes a Webhook Debugger integrated with the Webhook builder. The Debugger makes troubleshooting incoming webhooks and why they did (or did not) trigger certain rules in the Advanced Rule Processing Handlers.
+Runbook Automation includes a Webhook Debugger integrated with the Webhook builder. The Debugger makes troubleshooting incoming webhooks and why they did (or did not) trigger certain rules in the Advanced Rule Processing Handlers.
 
 ![Debug Panel](/assets/img/wh-debug-panel.png)
 

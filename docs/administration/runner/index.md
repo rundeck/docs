@@ -9,11 +9,11 @@ redirectFrom: /administration/runner/runner-intro
 
 ### Orchestrating Automation Across Disparate Environments
 
-The Enterprise Runner allows for dispatching automation to remote environments that Runbook or Process Automation can not reach directly.
+The Enterprise Runner allows for dispatching automation to remote environments that Runbook Automation can not reach directly.
 
 This architecture allows for orchestrating various tasks and automation playbooks across multiple environments, including secure and remote environments.
 
-The Runner is equipped with most of the same plugins as Runbook and Process Automation, making it easy to use the Runner with existing automation.
+The Runner is equipped with most of the same plugins Runbook Automation, making it easy to use the Runner with existing automation.
 
 Tasks can be carried out over multiple environments simultaneously, thereby reducing the time and complexity of orchestrating automation across disparate environments.
 
@@ -22,13 +22,13 @@ Tasks can be carried out over multiple environments simultaneously, thereby redu
 ![Runners Orchestrate Automation Across All Environment Types](/assets/img/runner-how-it-works.png)<br>
 
 1. The Runner uses a **polling model** to pick up work from Process or Runbook Automation. During each polling cycle the Runner checks for executions that it is responsible for.
-2. Communication from the Runner to Runbook and Process Automation happens over **`HTTPS`** and is initiated from the Runner. This implies that no inbound firewall ports need to be open for the Runner. 
-3. Tasks come into the Runner's queue from users and tools that are interfacing with Runbook and Process Automation.
-4. The Runner retrieves tasks from the response of queries to Runbook and Process Automation and performs them in the remote environment.
-5. Output of the task is sent back to Runbook and Process Automation for logging and reporting.
+2. Communication from the Runner to Runbook Automation happens over **`HTTPS`** and is initiated from the Runner. This implies that no inbound firewall ports need to be open for the Runner. 
+3. Tasks come into the Runner's queue from users and tools that are interfacing with Runbook Automation.
+4. The Runner retrieves tasks from the response of queries to Runbook Automation and performs them in the remote environment.
+5. Output of the task is sent back to Runbook Automation for logging and reporting.
     - The output or result of the tasks can then be used to **trigger subsequent tasks or workflows**.
-6. The Runner can use secrets retrieved from a **secrets provider** that is not directly accessible from Runbook or Process Automation.
-    - Secrets retrieved this way **stay within the Runner's environment** and are **not sent back to Runbook or Process Automation.**
+6. The Runner can use secrets retrieved from a **secrets provider** that is not directly accessible from Runbook Automation.
+    - Secrets retrieved this way **stay within the Runner's environment** and are **not sent back to Runbook Automation.**
 7. The Runner can use existing automation tools or communicate directly with infrastructure and APIs in the remote environment.
    - The Runner can be used to discover inventory in secure or remote environments. 
 8. The Runner can be deployed as a container within Kubernetes clusters to perform actions within the cluster.
@@ -45,13 +45,13 @@ Tasks can be carried out over multiple environments simultaneously, thereby redu
 [//]: # (Building and orchestrating automation in complex multi-cloud and remote environments presents several challenges. The first challenge is that DevOps and Operations engineers need an alternative  to run automation in secure application environments that mandate a zero trust architecture where accessing private networks through SSH is deprecated. Next, significant engineering effort is required to deploy and manage automation that performs well across many remote environments and geographical regions. Lastly, creating resilient automation runbooks is time consuming and prone to error when coordinating a variety of complex environments.)
 
 [//]: # ()
-[//]: # (We are introducing a next generation architecture to address these challenges. With the new Process Automation architecture,  DevOps and Operations engineers can easily manage automation in a central UI while delegating job execution within different private networks or multi-cloud environments without needing to open SSH ports for accessing those networks. The new architecture separates workflow orchestration from task execution. It offers next generation remote Runners that include common integration plugins like Ansible and Kubernetes that execute locally to the application environment.)
+[//]: # (We are introducing a next generation architecture to address these challenges. With the new Runbook Automation architecture,  DevOps and Operations engineers can easily manage automation in a central UI while delegating job execution within different private networks or multi-cloud environments without needing to open SSH ports for accessing those networks. The new architecture separates workflow orchestration from task execution. It offers next generation remote Runners that include common integration plugins like Ansible and Kubernetes that execute locally to the application environment.)
 
 [//]: # ()
 [//]: # (![Next generation automation]&#40;/assets/img/architecture-nextgen.png&#41;)
 
 [//]: # ()
-[//]: # (The Runner, available for both Process Automation and Runbook Automation, securely opens up network/communication between data centers and the Automation Cluster. The Runner is a Remote Execution hub for Node Steps to run on specified endpoints, rather than from the Automation server itself.)
+[//]: # (The Runner, available for both Runbook Automation, securely opens up network/communication between data centers and the Automation Cluster. The Runner is a Remote Execution hub for Node Steps to run on specified endpoints, rather than from the Automation server itself.)
 
 [//]: # ()
 [//]: # (## System Architecture)

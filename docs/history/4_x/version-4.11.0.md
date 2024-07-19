@@ -26,7 +26,7 @@ Additionally, we are announcing some exciting product updates this month. [Sign 
 
 ## Overview
 
-Check out the new features and enhancements for PagerDuty Process Automation, PagerDuty Runbook Automation, and Rundeck Community included in this release. With the release of PagerDuty Runbook Automation 4.11.0 and PagerDuty Process Automation 4.11.0, we are introducing a new architecture for orchestrating workflows across cloud and hybrid environments through the Enterprise Runners. 
+Check out the new features and enhancements for PagerDuty Runbook Automation, and Rundeck Community included in this release. With the release of PagerDuty Runbook Automation 4.11.0 we are introducing a new architecture for orchestrating workflows across cloud and hybrid environments through the Enterprise Runners. 
 In addition, this release includes two new Plugin Suites to simplify configuration of plugins and the release of an official Docker image for the Runner.
 
 

@@ -4,7 +4,7 @@
 
 Amazon Elastic Kubernetes Service (Amazon EKS) is a fully-managed Kubernetes service that simplifies the process of building, securing, operating, and maintaining Kubernetes clusters on AWS. Amazon EKS automatically manages the Kubernetes nodes, containers, application availability and stored cluster data.<br>
 Deploying Rundeck on EKS takes advantage of Kubernetes capabilities such as auto-scaling, portability and availability.  This makes it a strong choice for cloud deployments.  Consequently, it’s common to see Rundeck implemented on Kubernetes clusters.<br>
-This guide explains how to configure different tools that interact with the AWS EKS and how to deploy a basic Rundeck (or commercial Process Automation) deployment on an AWS EKS Cluster.<br>
+This guide explains how to configure different tools that interact with the AWS EKS and how to deploy a basic Rundeck (or commercial Runbook Automation) deployment on an AWS EKS Cluster.<br>
 
 ## Requirements
 

@@ -99,7 +99,7 @@ this menu, too.
 #### Dashboard
 
 View the project description, Readme and executions summary.
-Process Automation users may see additional visualizations for schedules and execution history.
+Runbook Automation users may see additional visualizations for schedules and execution history.
 
 #### Jobs
 

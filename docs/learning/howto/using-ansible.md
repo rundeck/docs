@@ -101,6 +101,9 @@ Time for a quick test.
 
 To see the output you may need to switch to the _Log Output_ view.
 
+## Gather Facts
+When Gather Facts is enabled, Ansible collects information from the nodes and verifies if it is possible to connect to them. On the other hand, when Gather Facts is disabled, Ansible skips the connection validation, significantly saving time and reducing CPU and RAM usage.
+In addition, it is necessary to modify this property in ansible.cfg file to _"duplicate_dict_key=ignore"_, this is to avoid a warning message when are duplicate node names.
 
 ## Inventory File
 When Gather Facts is false, the inventory file is read as Yaml data. It supports up to 10MB of data by default, which supports around 19,000 nodes. However, it depends on the operating system.

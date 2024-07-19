@@ -16,7 +16,7 @@
 
 Rundeck is a popular automation tool and  many organizations use it to manage their IT infrastructure. It can easily manage and automate tasks on various operating systems including Windows. In this tutorial, we'll walk through the process of configuring Windows nodes on Rundeck Open Source and how to dispatch commands and Powershell scripts on them.
 
-By the end of this tutorial, you'll have a good understanding of how to set up and manage Windows nodes on Rundeck Open Source and how to leverage its powerful features to automate various tasks on your Windows infrastructure.  These instructions would also work for PagerDuty Process Automation, the commercial counterpart to Rundeck.
+By the end of this tutorial, you'll have a good understanding of how to set up and manage Windows nodes on Rundeck Open Source and how to leverage its powerful features to automate various tasks on your Windows infrastructure.  These instructions would also work for PagerDuty Runbook Automation, the commercial counterpart to Rundeck.
 
 ## The WinRM Protocol
 WinRM (Windows Remote Management) is a protocol developed by Microsoft that enables administrators to remotely manage computers running Windows operating systems.
@@ -33,7 +33,7 @@ The Overthere WinRM plugin was originally developed by the Rundeck community and
 
 Users who require WinRM functionality in Rundeck are encouraged to use the PyWinRM plugin, which has active development and community support.
 
-The PyWinRM plugin is included out of the box with Rundeck and Process Automation and does not require extra steps to install it on any Rundeck/Process Automation instance.
+The PyWinRM plugin is included out of the box with Rundeck and Runbook Automation and does not require extra steps to install it.
 
 ## Configuration Steps
 The following section explains how to configure Windows to use WinRM and Rundeck to dispatch commands and scripts over WinRM against Windows nodes.

@@ -8,9 +8,9 @@ http://support.rundeck.com/customer/en/portal/articles/2338371-rundeck-pro-ha-fo
 Make a Enterprise version of this CloudFormation template: https://osgav.run/page/projects/rundeck-cloudformation.html
 --->
 
-This document provides instructions to install Process Automation in an HA (cluster) configuration on AWS, taking advantage of ELB, RDS, and S3 for scale and availability.
+This document provides instructions to instal Runbook Automation Self-Hosted in an HA (cluster) configuration on AWS, taking advantage of ELB, RDS, and S3 for scale and availability.
 
-![Process Automation HA architecture on AWS](/assets/img/aws-architecture.png)
+![ HA architecture on AWS](/assets/img/aws-architecture.png)
 
 ## AWS Setup
 
@@ -18,7 +18,7 @@ This section describes the AWS environment setup needed before the Rundeck softw
 
 ### Key Pair
 
-Create a key pair to access the Process Automation EC2 instances, rundeckpro-ec2user. This key pair will be specified when it is time to launch the EC2 instances later on. This is also the key pair used to ssh to the EC2 instances.
+Create a key pair to access the  EC2 instances, rundeckpro-ec2user. This key pair will be specified when it is time to launch the EC2 instances later on. This is also the key pair used to ssh to the EC2 instances.
 
 - Open the Amazon EC2 console at: [https://console.aws.amazon.com/ec2/](https://console.aws.amazon.com/ec2/)
 - Go to navigation panel of the AWS console, under NETWORK & SECURITY, choose Key Pairs.
@@ -137,7 +137,7 @@ For further information, see [http://docs.aws.amazon.com/AmazonRDS/latest/UserGu
 
 ### EC2
 
-Create two EC2 instances for the Process Automation cluster. Specify the following when launching the instance:
+Create two EC2 instances for the  cluster. Specify the following when launching the instance:
 
 - Open the Amazon EC2 console at https://console.aws.amazon.com/ec2/.
 - From the console dashboard, choose Launch Instance.

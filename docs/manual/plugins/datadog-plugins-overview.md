@@ -6,8 +6,8 @@
 ## Overview 
 ![](/assets/img/datadog-icon.png)
 
-Process Automation integrates with Datadog through a variety of plugins listed below.
-By integrating Process Automation with Datadog, users can automate workflows in Datadog in response to alerts or automate diagnostics and remediation in their environment. 
+Runbook Automation integrates with Datadog through a variety of plugins listed below.
+By integrating Runbook Automation with Datadog, users can automate workflows in Datadog in response to alerts or automate diagnostics and remediation in their environment. 
 These integrations allow operations teams to provide self-service mechanisms to users throughout the business, as well as setup event-driven automation for workflows that involve Datadog.
 
 <details><summary> <font size="5">Datadog Plugins</font>
@@ -29,7 +29,7 @@ These integrations allow operations teams to provide self-service mechanisms to 
 |[**Datadog Webhook**](/manual/webhooks/datadog-run-job)|Webhook|Automatically run jobs in response to webhooks sent from Datadog.|
 </details>
 <br>
-<em>Click to expand to see the full list of Process Automation plugins for Datadog.</em>
+<em>Click to expand to see the full list of Runbook Automation plugins for Datadog.</em>
 
 ## Configuration
 
@@ -38,7 +38,7 @@ These integrations allow operations teams to provide self-service mechanisms to 
 Follow [this documentation](https://docs.datadoghq.com/account_management/api-app-keys/) from Datadog to generate an API Key and an Application ("App") Key. 
 Define the **Scopes** of the App Key based on the Plugins you intend to use.  Save the API and App Keys to a secure location so that they may be used in the next section.
 
-### Configure Plugin Suite in Process Automation
+### Configure Plugin Suite in Runbook Automation
 
 Authentication for the Datadog plugins can be configured for the entire system or for an individual project.
 
@@ -63,7 +63,7 @@ Authentication for the Datadog plugins can be configured for the entire system o
 
 ### System Level Configuration
 
-Use the following steps to configure authentication for the Datadog plugins for the whole Process Automation system.
+Use the following steps to configure authentication for the Datadog plugins for the whole Runbook Automation system.
 
 1. Click on the **System Menu** (gear icon) in the upper right.
 2. Click on **System Configuration**.

@@ -15,7 +15,7 @@ Now that a Runner has been configured, the next goal is to run a job on a test m
 
 ## Add key to keystore
 
-PagerDuty’s Process Automation products have a built-in keystore for storing keys and passwords.  In this section, you’ll upload the private key needed to connect from the Runner to the test node.
+PagerDuty’s Runbook Automation products have a built-in keystore for storing keys and passwords.  In this section, you’ll upload the private key needed to connect from the Runner to the test node.
 
 1. Access Key Storage for the Project by clicking the Project Settings gear at the bottom left and then click Key Storage  
 ![Choose key Storage under Project Settings](/assets/img/noderun1.png)  

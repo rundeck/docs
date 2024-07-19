@@ -3,7 +3,7 @@
 :::enterprise
 :::
 
-The Runner, available for both Process Automation and Runbook Automation securely opens up network/communication between data centers and the Automation Cluster.  The Runner is a Remote Execution hub for Node Steps to run on specified endpoints, rather than from the Automation server itself.  
+The Runner, available for both Runbook Automation securely opens up network/communication between data centers and the Automation Cluster.  The Runner is a Remote Execution hub for Node Steps to run on specified endpoints, rather than from the Automation server itself.  
 
 ## Architecture
 
@@ -40,7 +40,7 @@ Connection can be confirmed on the Runner Management page on the _Last Checkin_ 
 :::
 
 :::tip
-To enable the Runner features you have to add the following property in `rundeck-config.properties` file and restart the Process Automation cluster or instance. This feature has been enabled on Docker installations since v4.5.0 and is also enabled by default for Runbook Automation.	
+To enable the Runner features you have to add the following property in `rundeck-config.properties` file and restart the Runbook Automation cluster or instance. This feature has been enabled on Docker installations since v4.5.0 and is also enabled by default for Runbook Automation.	
 ```
 rundeck.feature.runner.enabled=true
 ```

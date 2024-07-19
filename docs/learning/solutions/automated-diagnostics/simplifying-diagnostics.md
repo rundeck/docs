@@ -4,7 +4,7 @@
 
 ### Why simplify diagnostic output?
 
-With PagerDuty Process Automation, it is possible to provide very granular diagnostic data.  However, granular logs are often not what is needed by an initial responder in the incident response process. Granular data is often not actionable without a lot of specialized knowledge. Consequently, many organizations will provide simplified diagnostic “highlights” as part of their diagnostic jobs, to make it easier for the first responders to determine the next step without having to do a lot of interpretation.
+With PagerDuty Runbook Automation, it is possible to provide very granular diagnostic data.  However, granular logs are often not what is needed by an initial responder in the incident response process. Granular data is often not actionable without a lot of specialized knowledge. Consequently, many organizations will provide simplified diagnostic “highlights” as part of their diagnostic jobs, to make it easier for the first responders to determine the next step without having to do a lot of interpretation.
 
 For example, a common diagnostic job might be grabbing logs related to a web server.  A specialist who knows the web server might be able to easily look at the full log or log snippets and know what to do but a first responder would need to check a lot of notes or wikis to know how to interpret and take action.  By using progress badges in the diagnostic job, it is possible to call out specific errors with text and emoticons to make it easier to interpret current status.  The text associated with each badge could even indicate what to do for each error.
 

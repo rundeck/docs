@@ -1,7 +1,8 @@
 ---
 title: API Reference
 alias: api/index.html
-headerDepth: 1
+headerDepth: 3
+sidebarDepth: 3
 ---
 
 # API Reference | Version {{ $apiVersion }}
@@ -5105,7 +5106,7 @@ In APIv38 or later:
 * `importComponents.NAME=true` enable a component for import
 * `importOpts.NAME.KEY=VALUE` set a component option
 
-Project archives may contain "components" which can be imported, beyond the base set of contents.  This includes some data used by Process Automation (Rundeck Enterprise) features.
+Project archives may contain "components" which can be imported, beyond the base set of contents.  This includes some data used by Runbook Automation (Rundeck Enterprise) features.
 
 Components:
 
@@ -6505,7 +6506,7 @@ ok
 :::
 
 
-Manage System and Project Calendars in Process Automation.
+Manage System and Project Calendars in Runbook Automation.
 
 ### List System Calendars
 Get all calendars at system level.
@@ -6743,7 +6744,7 @@ Deletes a calendar at system level
 ::: enterprise  
 :::
 
-Returns metadata about the current License for Process Automation.
+Returns metadata about the current License for Runbook Automation.
 
 **Request:**
 
@@ -6791,7 +6792,7 @@ Returns metadata about the current License for Process Automation.
 ::: enterprise  
 :::
 
-Uploads a license key for Process Automation.
+Uploads a license key for Runbook Automation.
 
 **Request:**
 
@@ -6800,11 +6801,11 @@ Uploads a license key for Process Automation.
 
 Request Content:
 
-The Process Automation License key file.
+The Runbook Automation License key file.
 
 Optional Parameters:
 
-* `license_agreement`: `true` to agree with the Process Automation License.
+* `license_agreement`: `true` to agree with the Runbook Automation License.
 
 **Response:**
 

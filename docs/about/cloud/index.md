@@ -22,9 +22,9 @@ Runbook Automation will take care of security patching, protection, monitoring, 
 
 Runbook Automation can be evaluated and purchased under the Automation category [here](https://www.pagerduty.com/pricing/). PagerDuty and Runbook Automation accounts are separate at the moment, however, Single Sign On (ex. Okta or Azure AD) for both products can be configured resulting in a unified login experience. [Read the doc](/administration/security/sso/index.md) on how to configure SSO with Rundeck.
 
-## Runbook Automation and Process Automation differences
+## Self Hostd and SaaS differences
 
-Runbook Automation and Process Automation share the same software foundation. However, there are differences stemming from the different deployment architectures in what user classes and plugins are available and how job execution is carried out. 
+Runbook Automation has two versions available; Self Hosted and SaaS.  Both share the same software foundation, however there are differences stemming from the different deployment architectures in what user classes and plugins are available and how job execution is carried out. 
 
 ### User roles and classes
 
@@ -82,7 +82,7 @@ The highest privilege access for the APIs will be api keys with AppAdmin access.
 
 ## Licensing
 
-Licensing is provisioned and updated automatically once a subscription is purchased for Runbook Automation. Unlike Process Automation, account admins do not have permissions to update their license directly. For more details please check [here](https://www.pagerduty.com/pricing/).
+Licensing is provisioned and updated automatically once a subscription is purchased for Runbook Automation. Account admins do not have permissions to update their license directly. For more details please check [here](https://www.pagerduty.com/pricing/).
 
 ## FAQ
 

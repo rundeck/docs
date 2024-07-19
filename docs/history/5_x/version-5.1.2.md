@@ -28,7 +28,7 @@ When AWS authentication was configured at the project level using plugin group c
 
 Fixes to a scenario when upgrading to versions after 4.17.0 would result in an inability to delete jobs properly.
 
-## Runbook/Process Automation Updates
+## Runbook/Runbook Automation Updates
 
 * Fix AwsPluginGroup not working when the configuration was set at the project level.
 

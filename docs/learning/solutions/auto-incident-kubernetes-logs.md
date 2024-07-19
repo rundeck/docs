@@ -8,7 +8,7 @@ The design principles outlined in this solution are applicable to most other use
 
 ::: tip Solution Prerequisites
 
-For this guide, Process Automation or Rundeck Community must be installed and running. Instructions for both products are provided below.
+For this guide, Runbook Automation or Rundeck Community must be installed and running. Instructions for both products are provided below.
 
 A PagerDuty account with the **Automation Actions** add-on enabled is also required.
 Automation Actions is available as an add-on for Business and Digital Operations pricing plans. Please [contact us](https://www.pagerduty.com/contact-us/rundeck-actions-long/) if you would like to upgrade your plan or to trial Automation Actions.
@@ -19,14 +19,14 @@ This solution is meant to demonstrate design principles, and therefore the steps
 
 ### Configure Rundeck Job
 ::: tabs
-@tab Process Automation
+@tab Runbook Automation
 1. **In PagerDuty**, generate an API Access Key with (at minimum) _Responder_ permissions.
 This can either be a [General Access API Key](https://support.pagerduty.com/docs/api-access-keys#section-generate-a-general-access-rest-api-key)
 or a [User Token API Key](https://support.pagerduty.com/docs/api-access-keys#section-generate-a-user-token-rest-api-key).
 2. Copy the PagerDuty API Key into Rundeck's [Key Storage](/manual/system-configs.html#key-storage) as a Password or into your secrets-manager that is integrated with Rundeck.
 3. Download the sample Rundeck Job YAML from this [link](https://raw.githubusercontent.com/rundeckpro/welcome-project/main/runbooks/yaml/solutions/Auto-Diagnostics__-_Kubernetes_Logs.yaml).
 (Right click and select **Save Link As...** and be sure to append `.yaml` to the file name). **Note** that this Job definition will only work with Rundeck _Enterprise_. Click the **Rundeck Community** tab if you are using Rundeck Community.                                                                                                                             
-4. Upload the sample job to your Process Automation instance by navigating to the **Jobs** tab, selecting **Job Actions** in the upper-right, then selecting **Upload Definition**.
+4. Upload the sample job to your Runbook Automation instance by navigating to the **Jobs** tab, selecting **Job Actions** in the upper-right, then selecting **Upload Definition**.
 You can find more detailed instructions for uploading a Job Definition [here](/manual/creating-jobs.html#importing-job-definitions).
 <br><br>![Upload Job](/assets/img/solutions-pd-diag-k8s-upload-job.png)<br><br>
 5. Edit the Job by clicking **Edit This Job**:
@@ -64,7 +64,7 @@ If you run the Job directly from the Rundeck Interface, the Job will fail on Ste
 The PagerDuty Automation Actions Runner is installed in your environment and requires **outbound-only** access to the PagerDuty SaaS platform as well as bi-directional communication with your Rundeck instance.
 You do not need to allow for any inbound protocols from PagerDuty to your infrastructure.
 :::tabs
-@tab Process Automation
+@tab Runbook Automation
 1. Create a Rundeck User API Token by navigating to **User Icon** -> **Profile** and click the **+** next to **User API Tokens**:
 <br><br>![RD Token](/assets/img/solutions-pd-diag-k8s-rd-token.png)
 2. Enter a **Name** for the API Token and choose a **Role** that has the correct levels of permissions to invoke the uploaded Job.

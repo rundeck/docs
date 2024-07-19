@@ -3,7 +3,7 @@ export default [{
   collapsible: false,
   children: [
         {
-          text: 'Rundeck / Process Automation',
+          text: 'Rundeck / Runbook Automation',
           collapsible: true,
           children: [
               {

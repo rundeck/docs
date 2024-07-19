@@ -64,8 +64,47 @@ The ability to manage Runners at the Project level is an early access feature.
 To gain access, please [submit this form](https://www.pagerduty.com/early-access/) and someone from our team will reach out promptly.
 :::
 
-:::warning AppAdmin ACL Policy
-If using the prebuilt AppAdmin ACL Policy (stored on the local filesystem), the following permissions must be **added** to it in order to manage Runners at the Project level:
+At the Project level, users can create, edit, and delete Runners for that specific Project.
+However, Runners created at the Project level are only available for use within that Project and cannot be used in other Projects.
+
+To access the Project level Runner management interface, navigate to a specific Project and then select **Runner Management** from the left navbar.
+
+The Runner Management interface will display a list of all Runners in the Project:
+
+![Project Runners](/assets/img/project-management-runners-list.png)<br>
+
+From this interface, users can:
+
+- Create a new Runner. For detailed steps, see [Creating a Runner](/administration/runner/runner-installation/creating-runners.md).
+- Edit an existing Runner. For detailed steps, see [Configuring a Runner](/administration/runner/runner-configuration/runner-config.md).
+
+[//]: # (- Delete Runners.  For detailed steps, see [Deleting a Runner]&#40;/administration/runner/runner-installation/delete-a-runner&#41;.)
+
+#### Removing a Runner from a Project
+
+To remove a Runner from a Project, follow these steps:
+
+1. From the Project level Runner management interface, click on the **Actions** dropdown and select **Remove from project**.
+2. From the confirmation popup, select **Ok**.
+
+In order to remove a Runner from a Project, the user must have the following ACL permission:
+
+```
+by:
+  group: my-user-group-name
+description: Allow [delete] for runner
+for:
+  runner:
+  - allow:
+    - delete
+context:
+  project: my-project-name
+```
+
+:::tip Upgrading from Earlier Self Hosted product versions
+If using the self-hosted product and upgrading a version earlier than 5.3.0, the AppAdmin ACL policy stored on the local filesystem may need to be updated.
+
+The following permissions must be **added** to it in order to manage Runners at the Project level:
 ```
 runner:
   - allow: '*' # allow read/write/delete for all Runners
@@ -105,43 +144,6 @@ by:
   group: admin
 ```
 :::
-
-At the Project level, users can create, edit, and delete Runners for that specific Project.
-However, Runners created at the Project level are only available for use within that Project and cannot be used in other Projects.
-
-To access the Project level Runner management interface, navigate to a specific Project and then select **Runner Management** from the left navbar.
-
-The Runner Management interface will display a list of all Runners in the Project:
-
-![Project Runners](/assets/img/project-management-runners-list.png)<br>
-
-From this interface, users can:
-
-- Create a new Runner. For detailed steps, see [Creating a Runner](/administration/runner/runner-installation/creating-runners.md).
-- Edit an existing Runner. For detailed steps, see [Configuring a Runner](/administration/runner/runner-configuration/runner-config.md).
-
-[//]: # (- Delete Runners.  For detailed steps, see [Deleting a Runner]&#40;/administration/runner/runner-installation/delete-a-runner&#41;.)
-
-#### Removing a Runner from a Project
-
-To remove a Runner from a Project, follow these steps:
-
-1. From the Project level Runner management interface, click on the **Actions** dropdown and select **Remove from project**.
-2. From the confirmation popup, select **Ok**.
-
-In order to remove a Runner from a Project, the user must have the following ACL permission:
-
-```
-by:
-  group: my-user-group-name
-description: Allow [delete] for runner
-for:
-  runner:
-  - allow:
-    - delete
-context:
-  project: my-project-name
-```
 
 ### Changing Runners from Single to Multiple Projects
 
@@ -193,3 +195,15 @@ The Runner summary page has a new Tags column added to the list. The column shou
     - The execution limit is linked to the available resources set for the runner process. Although a maximum number of executions can be established via this parameter, the Runner will throttle the number of executions based on the available resources (CPU, Memory, Stack Memory and Heap Space in Java) as well as the number of tasks associated with that execution.
     - A Runner will report an **Unhealthy** state to Runbook Automation whenever this limit has been hit. Executions will be queued in memory rather than immediately scheduled to a CPU core.
     - It is recommended to review the allocated resources to the machine and the Runner process when a Runner is reporting as **Unhealthy**.  Runners can be scaled vertically by allocating additional compute resources to the Java process, as well as horizontally by deploying additional Runners with the same Tags and Project assignments.
+
+### Ping Runners
+
+Users can check that a Runner is available via an ad hoc "ping" operation: 
+
+1. When managing a Runner - either at the Project or System level - click on the **Ping** button in the upper right:
+    ![Ping Runner](/assets/img/ping-runner.png)<br>
+2. After a few seconds, the response will appear in the upper right.
+3. If the Runner is available, the response show that the message was received:
+    ![Ping Runner Response](/assets/img/runner-ping-response.png)<br>
+4. If the Runner is unavailable, the response will show that the ping response timed out:
+    ![Ping Runner Unavailable](/assets/img/runner-ping-unavailable.png)<br>

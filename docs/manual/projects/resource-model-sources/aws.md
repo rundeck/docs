@@ -10,7 +10,7 @@ This allows for targeted automation on EC2 instances - based off of instance-pro
 ## Configuring
 
 ### Authentication
-Follow the instructions outlined in the [AWS Plugins Overview](/manual/plugins/aws-plugins-overview.html) for Process Automation to authenticate with AWS.
+Follow the instructions outlined in the [AWS Plugins Overview](/manual/plugins/aws-plugins-overview.html) for Runbook Automation to authenticate with AWS.
 
 ::: tip 
 If using AWS user credentials and a newer plugin version that allows it, store the secret key in Rundeck Key Storage and choose it via the **Secret Key Storage Path** field instead of the **Secret Key** field in your Node Source.
@@ -105,7 +105,7 @@ A few of the most common Node Executors are [SSH](/manual/projects/node-executio
 With EC2's, there is also the option to use [AWS's Systems Manager (SSM)](/manual/projects/node-execution/aws-ssm.html#description).
 
 In order to specify a Node Executor for _all_ EC2's, add the associated Node Executor properties to the **Mapping Params** field.  For example, to use SSH:<br>
-`ssh-keypath.default=keys/us-west-1-privKey;username.default=ubuntu`
+`ssh-key-storage-path.default=keys/us-west-1-privKey;username.default=ubuntu`
 
 Or, to use SSM:<br>
 `ssm-accessKeyId.default=MY_AWS_ACCESS_KEY;ssm-secretKey.default=keys/aws_access_key`

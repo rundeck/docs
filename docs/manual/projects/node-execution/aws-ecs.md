@@ -79,16 +79,16 @@ This plugin is designed to work in conjunction with the [ECS-Fargate Node Source
     }
     ```
    
-### Configure IAM Policy for Process Automation
+### Configure IAM Policy for Runbook Automation
 
 ### Authentication
-Follow the instructions outlined in the [AWS Plugins Overview](/manual/plugins/aws-plugins-overview.html) for Process Automation to authenticate with AWS.
+Follow the instructions outlined in the [AWS Plugins Overview](/manual/plugins/aws-plugins-overview.html) for Runbook Automation to authenticate with AWS.
 
-When defining the IAM Role for Runbook Automation or Process Automation, be sure to include the following permissions in the Policy associated with the role:
+When defining the IAM Role for Runbook Automation or Runbook Automation, be sure to include the following permissions in the Policy associated with the role:
 
 **`ecs:ExecuteCommand`**
 
-This IAM policy condition key can be used in tandem with other IAM policy condition keys to limit the access that Process Automation has within ECS:
+This IAM policy condition key can be used in tandem with other IAM policy condition keys to limit the access that Runbook Automation has within ECS:
 
 * **`aws:ResourceTag/clusterTagKey`**
 * **`ecs:ResourceTag/clusterTagKey`**
@@ -99,16 +99,16 @@ This IAM policy condition key can be used in tandem with other IAM policy condit
 * **`ecs:task`**
 * **`ecs:enable-execute-command`**
 
-Examples of IAM policies that restrict the access by Process Automation can be found [here](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-exec.html).
+Examples of IAM policies that restrict the access by Runbook Automation can be found [here](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-exec.html).
 
 ## Executing Commands
 
 In order to send commands to ECS Containers, first configure the [ECS-Fargate Node Source](/manual/projects/resource-model-sources/ecs-fargate.md).
-This retrieves the ECS containers and presents them as nodes in Process Automation:
+This retrieves the ECS containers and presents them as nodes in Runbook Automation:
 
 <img style='border:1px solid #327af6' src="/assets/img/aws-ecs-node-inventory.png" />
 
-Once the containers have been added as nodes, Process Automation can send commands to them.  This can be done through the **Commands** tab, or using the **Remote Command** Job step:
+Once the containers have been added as nodes, Runbook Automation can send commands to them.  This can be done through the **Commands** tab, or using the **Remote Command** Job step:
 
 #### Ad-hoc Commands through the Commands Tab
 

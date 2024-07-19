@@ -45,7 +45,7 @@ Customer X has decided to track how much time is saved with their newly implemen
 
 @tab Download Job Definition
 
-Copy the Job Definition below and paste into a plain text file.  Then import to your Process Automation server.  (Version 4.7.0 minimum)
+Copy the Job Definition below and paste into a plain text file.  Then import to your Runbook Automation Self-Hosted server.  (Version 4.7.0 minimum)
 
 ```
 - defaultTab: nodes
@@ -92,7 +92,7 @@ Run the job to gather data and see a list of JSON output for any jobs with ROI d
 
 @tab Gather Metrics Job Definition
 
-Copy the Job Definition below and paste into a plain text file.  Then import to your Process Automation server.  (Version 4.7.0 minimum)
+Copy the Job Definition below and paste into a plain text file.  Then import to your Runbook Automation Self-Hosted server.  (Version 4.7.0 minimum)
 
 >Note: This is only an example job to show the different calls to make to get a list of ROI data.  This script is not officially supported.
 
@@ -108,7 +108,7 @@ Copy the Job Definition below and paste into a plain text file.  Then import to 
   nodeFilterEditable: false
   options:
   - description: |-
-      Provide the URL of the Process Automation server.  Leave off the trailing slash, but include any port number needed.
+      Provide the URL of the Runbook Automation server.  Leave off the trailing slash, but include any port number needed.
 
       e.g. `http://my.rundeck.local.dom:4440`
     label: Rundeck URL

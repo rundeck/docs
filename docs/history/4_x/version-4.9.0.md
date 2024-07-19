@@ -22,13 +22,13 @@ Release Date: January 11, 2023
 
 ## Overview
 
-Check out the new features and enhancements for PagerDuty Process Automation, PagerDuty Runbook Automation, and Rundeck Community included in this release. This release introduces the beta for Plugin Suite Configuration, which simplifies the configuration of plugins.
+Check out the new features and enhancements for PagerDuty Runbook Automation, and Rundeck Community included in this release. This release introduces the beta for Plugin Suite Configuration, which simplifies the configuration of plugins.
 
 View our Twitch stream review of this release live on January 17 at 10AM Pacific. [Here’s the event link](https://www.twitch.tv/pagerduty/schedule).
 
 ### Highlights
 
-- **Plugin Suite Configuration**: We’ve simplified the configuration of plugins so users can build more automation faster. PagerDuty Runbook Automation and Process Automation now provide an easier interface for users to define plugin properties and reduce the number of times a user needs to define common properties across plugins. Now users have a graphical interface for configuring plugin properties at the project and system level using predefined sets of properties on a per plugin suite basis. In version 4.9.0, users can access our first predefined plugin-suite setting for the PagerDuty plugin suite and future releases will include Plugin Groups for our other plugin suites - such as Jira, ServiceNow, and AWS.<br>
+- **Plugin Suite Configuration**: We’ve simplified the configuration of plugins so users can build more automation faster. PagerDuty Runbook Automation now provides an easier interface for users to define plugin properties and reduce the number of times a user needs to define common properties across plugins. Now users have a graphical interface for configuring plugin properties at the project and system level using predefined sets of properties on a per plugin suite basis. In version 4.9.0, users can access our first predefined plugin-suite setting for the PagerDuty plugin suite and future releases will include Plugin Groups for our other plugin suites - such as Jira, ServiceNow, and AWS.<br>
 Click [here](/manual/plugins) to read the full documentation.
 
 ![PD Plugin Config](/assets/img/relnotes-4.9-pd-config.png)

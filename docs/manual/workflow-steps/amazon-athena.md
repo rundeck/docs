@@ -22,12 +22,12 @@ The Athena Query Workflow Step plugin allows users to make queries through Athen
 Before queries can be made through Athena, data must be made available in S3. For documentation on connecting to data sources, click [here](https://docs.aws.amazon.com/athena/latest/ug/work-with-data-stores.html)
 
 Once Athena has been connected with a data source, it is recommended by AWS to start with the **AWS Managed Policies** for Athena.  These can be found [here](https://docs.aws.amazon.com/athena/latest/ug/managed-policies.html).
-Permissions can then be modified to suit the specific use-case for Process Automation.
+Permissions can then be modified to suit the specific use-case for Runbook Automation.
 
 ### Authentication
-Follow the instructions outlined in the [AWS Plugins Overview](/manual/plugins/aws-plugins-overview.html) for Process Automation to authenticate with AWS.
+Follow the instructions outlined in the [AWS Plugins Overview](/manual/plugins/aws-plugins-overview.html) for Runbook Automation to authenticate with AWS.
 
-When defining the IAM Role for Runbook Automation or Process Automation, be sure to include the following permissions in the Policy associated with the role:
+When defining the IAM Role for Runbook Automation, be sure to include the following permissions in the Policy associated with the role:
 
 * **`athena:StartQueryExecution`**
 * **`athena:getQueryExecution`**
@@ -46,7 +46,7 @@ When defining the IAM Role for Runbook Automation or Process Automation, be sure
 
 ## Viewing Query Results
 
-When a query to Athena is made through Process Automation, the **first 50 rows** of results from that query are visible in the Log Output of the Job execution:
+When a query to Athena is made through Runbook Automation, the **first 50 rows** of results from that query are visible in the Log Output of the Job execution:
 <img style='border:1px solid #327af6' src="/assets/img/aws-athena-output.png" /><br>
 
 To view the full log output of the Athena query, navigate to the link provided in the log-output.

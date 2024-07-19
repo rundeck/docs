@@ -5,7 +5,7 @@ title: "Runners for Job Execution"
 # Using Enterprise Runners in Jobs
 
 ## Existing jobs
-When the Enterprise Runner feature is enabled as described in the [Overview](/administration/runner/index.md#enabling-the-latest-runner-features),existing jobs will default to the Local Runner even if no Runner selection is made in the job definition. The Local Runner operates with an execution context equivalent to that of a Process Automation cluster or Runbook Automation service.
+When the Enterprise Runner feature is enabled as described in the [Overview](/administration/runner/index.md#enabling-the-latest-runner-features),existing jobs will default to the Local Runner even if no Runner selection is made in the job definition. The Local Runner operates with an execution context equivalent to that of the Runbook Automation service.
 
 ## Creating jobs with Runners
 
@@ -27,7 +27,7 @@ The “Runnerset Can be Changed at Runtime” option controls if the Runnerset s
 
 ## Dispatching to Nodes with Runners
 
-Once you have picked a Runnerset for the Job, you can choose how the Runner should behave by selecting a Dispatch mode: “Run on Runner” or “Dispatch to Nodes through Runner”. If you select “Dispatch to Nodes through Runner”, the nodes related options will display and those are identical to previous versions of Process Automation.<br>
+Once you have picked a Runnerset for the Job, you can choose how the Runner should behave by selecting a Dispatch mode: “Run on Runner” or “Dispatch to Nodes through Runner”. If you select “Dispatch to Nodes through Runner”, the nodes related options will display and those are identical to previous versions of Runbook Automation.<br>
 ![Dispatching jobs through runners](/assets/img/runner-use-dispatch-nodes.png)
 
 ## Running jobs with Runners

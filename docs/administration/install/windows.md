@@ -92,7 +92,7 @@ server.address=0.0.0.0
 
 Create a file called `start_rundeck.bat` with your favorite text editor with the contents shown below. Make sure the .war filename matches the war file you downloaded:
 
-Process Automation version:
+Runbook Automation version:
 
 ```batch
 set CURDIR=%~dp0

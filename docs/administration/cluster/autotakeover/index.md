@@ -10,7 +10,7 @@ To support Autotakeover, you must first:
 
 ### Configure Autotakeover
 
-Scheduled jobs are owned by the last cluster member who modified them. Jobs can also be controlled using Cluster Manager. If a cluster member goes down, all scheduled jobs on that cluster member must be moved to another cluster node. This process can be performed automatically using the heartbeat and Autotakeover features in Process Automation version 2.1.0 and later releases.
+Scheduled jobs are owned by the last cluster member who modified them. Jobs can also be controlled using Cluster Manager. If a cluster member goes down, all scheduled jobs on that cluster member must be moved to another cluster node. This process can be performed automatically using the heartbeat and Autotakeover features in Runbook Automation.
 
 Configure the heartbeat by adding the following settings in `rundeck-config.properties`:
 
@@ -51,7 +51,7 @@ rundeck.clusterMode.autotakeover.sleep = 300
 If for some reason, your Rundeck instance goes offline while a job is running and that job gets marked as incomplete, jobs configured with retry settings are taken over by another online instance using the recover execution policy. To use the recover execution policy, add the following to your `rundeck-config.properties` file:
 
 ```properties
-# enable auto cleanup of stale jobs on member death
+# enable auto cleanup of stale jobs on member death (default: true)
 rundeck.clusterMode.recoverExecutions.enabled=true
 
 # policy for members to accept as targets of auto cleanup. Can be 'Any' or 'Static'

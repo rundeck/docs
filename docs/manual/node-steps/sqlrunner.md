@@ -1,6 +1,6 @@
 # SQL Runner Plugin (Enterprise)
 
-The SQLRunner plugin is a node step plugin included with Process Automation that executes a .sql script against a JDBC URL.
+The SQLRunner plugin is a node step plugin included with Runbook Automation that executes a .sql script against a JDBC URL.
 
 ## Usage
 
