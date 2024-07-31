@@ -40,7 +40,7 @@
     "@vuepress/plugin-pwa": "^2.0.0-rc.26",
     "@vuepress/plugin-redirect": "^2.0.0-rc.26",
     "@vuepress/plugin-register-components": "^2.0.0-rc.21",
-    "@vuepress/theme-default": "^2.0.0-rc.26",
+    "@vuepress/theme-default": "^2.0.0-rc.40",
     "dashjs": "^4.7.4",
     "dotenv": "^8.6.0",
     "fs": "^0.0.1-security",
