@@ -52,6 +52,12 @@ To define the Node Filter for a Runner:
 5. Define the Node Filter using the **Node Filter** field.
 6. Click **Save Configuration**.
 
+:::tip Nodes Without a Runner Association
+Nodes that do not match the Node Filter of any Runner will be dispatched to using the Runbook Automation cluster (self-hosted).  When using Runbook Automation Cloud, commands and scripts can be dispatched to these nodes using the [AWS Systems Manager](/manual/projects/node-execution/aws-ssm.html) Node Executor. Node Step plugins that target public endpoints - such as AWS or Datadog node step plugins - can also be used through Runbook Automation Cloud when no Runner is assigned to those nodes.
+
+This ensures that all nodes are dispatched for execution, even if they do not match the Node Filter of a Runner.
+:::
+
 ### Example Remote Dispatch Node Filter
 
 A common use-case for defining a Node Filter for a Runner is to declare a given region or data-center that a Runner is responsible for.
