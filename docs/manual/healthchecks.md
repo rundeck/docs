@@ -13,7 +13,7 @@ The Health Checks feature is not yet compatible with Enterprise Runners. If you 
 This will be addressed in an upcoming release
 :::
 
-![Health Checks](/assets/img/healthchecks-health-status-ui.png)
+![Health Checks](/assets/img/healthchecks-health-status-ui.png)<br>
 
 Configure how to determine the Health Statuses of Nodes in Rundeck, using a Command or Script.
 
