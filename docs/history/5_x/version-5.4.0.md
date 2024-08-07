@@ -23,6 +23,10 @@ Release Date: June 18, 2024
 
 ## Overview
 
+:::warning
+If you have updated from a Rundeck version of 4.16.0 or earlier to version 5.4.0 there is a UI bug that prevents the display of certain execution records.  This issue is fixed with version 5.5.0 and there is no impact to the underlying data.  [Please see Release Notes for 5.5.0 here](version-5.5.0.md).
+:::
+
 Check out the new features and enhancements for PagerDuty Runbook Automation and Rundeck Community edition included in this release.
 
 ### Highlights
