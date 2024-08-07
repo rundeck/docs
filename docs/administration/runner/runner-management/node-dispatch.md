@@ -13,9 +13,8 @@ The Node Dispatch settings of a Runner defines which nodes are assigned to a Run
 Enabling the _**Runner as a Node**_ adds the Runner as a node to the node inventory.  When this node is targeted with a node-step within a Job or with a command from the Commands page,
 the Runner will execute the step locally. This is useful for running automation tasks that require the Runner to execute a command or script on the local host.
 
-:::tip Simple Node Execution
-When a Runner is enabled as a node, then commands and scripts that target that node will be executed locally on the Runner's host.<br>
-This node therefore does not need to have a node-executor plugin enabled.
+:::warning Runner Version Requirement
+To use the Runner as a Node feature and target the Runner's host with command and script steps, the Runner must be at version 5.5.0 or later.
 :::
 
 Nodes that represent Runners are designated with a Runner icon in the node inventory and do not require configuring a node source for the Runner's to be added to the inventory.
