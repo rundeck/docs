@@ -37,6 +37,8 @@ There are many cases where users need to execute automation tasks on the Runnerâ
 
 With this release, Runnerâ€™s hosts are natively added as nodes to the Node Inventory and can be targeted with automation. This reduces the time to set up your Project for automation and simplifies the Job creation and execution. Full documentation on the Runners as Nodes can be found [here](/administration/runner/runner-management/node-dispatch.html).
 
+![Runner as a Node](/assets/img/runner-as-node-commands-tab.png)<br>
+
 #### Missing Executions Fix
 If you had upgraded to our 5.4.0 release and noticed some executions missing from the UI this is fixed in 5.5.0.  This only affected customers that have previously run version 4.16.0 and older that upgraded to 5.4.0.  With the upgrade to 5.5.0 the executions are shown properly in the UI.
 
