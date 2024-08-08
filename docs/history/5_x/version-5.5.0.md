@@ -5,7 +5,7 @@ date: 2024-08-08
 image: /images/chevron-logo-red-on-white.png
 feed:
  enable: true
- description: ""
+ description: "Major Enterprise Runner Enhancements and important bug fix."
 
 ---
 
@@ -34,6 +34,9 @@ Full documentation on the Runner’s Remote Node Dispatch can be found [here](/a
 There are many cases where users need to execute automation tasks on the Runner’s host.  A frequent example of this includes retrieving an artifact, script, or Ansible playbook from Git.  It is also common for customers with a physically distributed footprint - such as in retail, hospitality, or food & beverage - to place a single Runner in each location and then target each location with automation.  Previously, the configuration and execution of automation for these use-cases was complex and non-intuitive.
 
 With this release, Runner’s hosts are natively added as nodes to the Node Inventory and can be targeted with automation. This reduces the time to set up your Project for automation and simplifies the Job creation and execution. Full documentation on the Runners as Nodes can be found [here](/administration/runner/runner-management/node-dispatch.html).
+
+#### Missing Executions Fix
+If you had upgraded to our 5.4.0 release and noticed some executions missing from the UI this is fixed in 5.5.0.  This only affected customers that have previously run version 4.16.0 and older that upgraded to 5.4.0.  With the upgrade to 5.5.0 the executions are shown properly in the UI.
 
 
 ## Runbook Automation Updates
