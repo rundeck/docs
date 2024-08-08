@@ -51,6 +51,9 @@ To define the Node Filter for a Runner:
 5. Define the Node Filter using the **Node Filter** field.
 6. Click **Save Configuration**.
 
+![Remote Node Dispatch](/assets/img/runner-node-filter.png)
+_Runners are dynamically chosen for Job execution based on the Runner's Node Filter_
+
 :::tip Nodes Without a Runner Association
 Nodes that do not match the Node Filter of any Runner will be dispatched to using the Runbook Automation cluster (self-hosted).  When using Runbook Automation Cloud, commands and scripts can be dispatched to these nodes using the [AWS Systems Manager](/manual/projects/node-execution/aws-ssm.html) Node Executor. Node Step plugins that target public endpoints - such as AWS or Datadog node step plugins - can also be used through Runbook Automation Cloud when no Runner is assigned to those nodes.
 

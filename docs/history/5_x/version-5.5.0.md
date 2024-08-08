@@ -25,8 +25,16 @@ Check out the new features and enhancements for PagerDuty Runbook Automation com
 
 ### Highlights
 
-- first highlight
-- second highlight
+#### Automatic Runner Selection for Job Execution
+The Enterprise Runner is most commonly used to dispatch automation to nodes within environments that are not directly accessible by Runbook Automation (cloud or self hosted).  With this latest enhancement, users can assign subsets of their node inventory to each Runner so that the Runners used for Job execution are dynamically selected.  This reduces the complexity of Job authoring and enables customers to target multiple environments with a single Job execution.
+
+Full documentation on the Runner’s Remote Node Dispatch can be found [here](/administration/runner/runner-management/node-dispatch.html).
+
+#### Runners as Nodes
+There are many cases where users need to execute automation tasks on the Runner’s host.  A frequent example of this includes retrieving an artifact, script, or Ansible playbook from Git.  It is also common for customers with a physically distributed footprint - such as in retail, hospitality, or food & beverage - to place a single Runner in each location and then target each location with automation.  Previously, the configuration and execution of automation for these use-cases was complex and non-intuitive.
+
+With this release, Runner’s hosts are natively added as nodes to the Node Inventory and can be targeted with automation. This reduces the time to set up your Project for automation and simplifies the Job creation and execution. Full documentation on the Runners as Nodes can be found [here](/administration/runner/runner-management/node-dispatch.html).
+
 
 ## Runbook Automation Updates
 
