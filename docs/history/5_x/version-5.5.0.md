@@ -30,6 +30,8 @@ The Enterprise Runner is most commonly used to dispatch automation to nodes with
 
 Full documentation on the Runner’s Remote Node Dispatch can be found [here](/administration/runner/runner-management/node-dispatch.html).
 
+![Runner Node Dispatch](/assets/img/runner-node-dispatch.png)<br>
+
 #### Runners as Nodes
 There are many cases where users need to execute automation tasks on the Runner’s host.  A frequent example of this includes retrieving an artifact, script, or Ansible playbook from Git.  It is also common for customers with a physically distributed footprint - such as in retail, hospitality, or food & beverage - to place a single Runner in each location and then target each location with automation.  Previously, the configuration and execution of automation for these use-cases was complex and non-intuitive.
 
