@@ -14,7 +14,7 @@ Like in the earlier example, begin by pressing the "New Job" menu item.
 Within the new job form:
 
 For "Job Name", enter "info" and for the "Group", enter "administration/resources".
-If you want to specify your own UUID you can enter it in the field.
+If you want to specify your own UUID you can enter it in the UUID field on the Other tab.
 Otherwise a unique value will be set for you.
 Providing a description will become helpful to other users to understand the intent and purpose for the Job.
 
