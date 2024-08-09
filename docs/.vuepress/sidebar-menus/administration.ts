@@ -63,17 +63,12 @@ export default [{
                     ]
                   },
                   {
-                    text: 'Runner Configuration',
-                    collapsible: true,
-                    children: [
-                        '/administration/runner/runner-configuration/runner-config.md',
-                    ]
-                  },
-                  {
                     text: "Runner Management",
                     collapsible: true,
                     children: [
                       '/administration/runner/runner-management/managing-runners.md',
+                      '/administration/runner/runner-management/project-dispatch-configuration.md',
+                      '/administration/runner/runner-management/node-dispatch.md',
                       '/administration/runner/runner-management/monitoring-runners.md',
                       '/administration/runner/runner-management/runner-logging.md',
                       '/administration/runner/runner-management/upgrading-runners.md',
@@ -103,7 +98,12 @@ export default [{
                         children: [
                             '/administration/runner/runner-troubleshooting/troubleshooting-runners.md'
                         ]
-                  }
+                  },
+                {
+                  text: 'Advanced Configuration',
+                  collapsible: true,
+                  link: '/administration/runner/runner-config'
+                }
 //                   '/administration/runner/runner-advancedsetup.md',
 //                   '/administration/runner/runner-faq.md'
                 ]

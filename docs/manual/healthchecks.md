@@ -8,8 +8,12 @@
 Health Checks allow the ability to check the *Health Status* of Nodes periodically and on-demand.
 It can show the heatlh status visually in the GUI, and use the status to filter out unhealthy nodes when running Jobs.
 
+:::warning Limitation with Enterprise Runners
+The Health Checks feature is not yet compatible with Enterprise Runners. If you have Enterprise Runners enabled, Health Checks will show nodes as unhealthy.
+This will be addressed in an upcoming release
+:::
 
-![Health Checks](/assets/img/healthchecks-health-status-ui.png)
+![Health Checks](/assets/img/healthchecks-health-status-ui.png)<br>
 
 Configure how to determine the Health Statuses of Nodes in Rundeck, using a Command or Script.
 
