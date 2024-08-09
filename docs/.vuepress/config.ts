@@ -51,9 +51,9 @@ export default defineUserConfig({
   head: [
   ],
   extendsMarkdown: md => {
-    md.use(markdownItReplaceVars, 'custom_token_replace', function (content) {
-      return content.replace(/\{\{\s*\$(\w+)\s*\}\}/g, (a,b)=> {
-          return setup[b]||a
+    md.use(markdownItReplaceVars, 'custom_token_replace', function (content:string) {
+      return content.replace(/(?:\{\{|%7B%7B)\s*\$(\w+)\s*(?:\}\}|%7D%7D)/g, (match:string,varName:string)=> {
+        return varName && setup[varName] || match
       });
     })
     md.use(markdownItInclude, {
