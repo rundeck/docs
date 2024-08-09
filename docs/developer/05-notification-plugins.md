@@ -167,7 +167,7 @@ Java examples.
 Java-based plugins can be developed just as any other Rundeck plugin, as described in the chapter [Plugin Development - Java Plugin Development](/developer/01-plugin-development.md#java-plugin-development).
 
 These plugin classes should implement the interface
-[NotificationPlugin]({{{javaDocBase}}}/com/dtolabs/rundeck/plugins/notification/NotificationPlugin.html):
+[NotificationPlugin]({{$javaDocBase}}/com/dtolabs/rundeck/plugins/notification/NotificationPlugin.html):
 
 ```java
 public interface NotificationPlugin {

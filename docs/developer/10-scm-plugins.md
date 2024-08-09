@@ -57,14 +57,14 @@ The properties for the SCM plugin can be added using the `System Configuration` 
 
 - _Note_: Refer to [Java Development](/developer/01-plugin-development.md#java-plugin-development) for information about developing a Java plugin for Rundeck.
 
-The plugin interface is [ScmExportPluginFactory]({{{javaDocBase}}}/com/dtolabs/rundeck/plugins/scm/ScmExportPluginFactory.html).
+The plugin interface is [ScmExportPluginFactory]({{$javaDocBase}}/com/dtolabs/rundeck/plugins/scm/ScmExportPluginFactory.html).
 This factory type should produce a [ScmExportPlugin][] object.
 
-The plugin interface is [ScmImportPluginFactory]({{{javaDocBase}}}/com/dtolabs/rundeck/plugins/scm/ScmImportPluginFactory.html).
+The plugin interface is [ScmImportPluginFactory]({{$javaDocBase}}/com/dtolabs/rundeck/plugins/scm/ScmImportPluginFactory.html).
 This factory type should produce a [ScmImportPlugin][] object.
 
-[scmexportplugin]: {{{javaDocBase}}}/com/dtolabs/rundeck/plugins/scm/ScmExportPlugin.html
-[scmimportplugin]: {{{javaDocBase}}}/com/dtolabs/rundeck/plugins/scm/ScmImportPlugin.html
+[scmexportplugin]: {{$javaDocBase}}/com/dtolabs/rundeck/plugins/scm/ScmExportPlugin.html
+[scmimportplugin]: {{$javaDocBase}}/com/dtolabs/rundeck/plugins/scm/ScmImportPlugin.html
 
 ## Localization
 
