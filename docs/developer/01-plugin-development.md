@@ -53,7 +53,7 @@ Rundeck's jars are published to the central Maven repository so you can simply s
 For gradle, use:
 
 ```java
-compile(group:'org.rundeck', name: 'rundeck-core', version: '{{$rundeckVersionFull}}')
+implementation(group:'org.rundeck', name: 'rundeck-core', version: '{{$rundeckVersionFull}}')
 ```
 
 For maven use:
