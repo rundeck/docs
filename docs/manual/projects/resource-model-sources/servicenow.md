@@ -104,8 +104,9 @@ osFamily.default=unix
 ```
 
 ## Notes
-The API sometimes returns incomplete or malformed JSON data due to timeouts caused by processing large amounts of information. This can be indicated by an error message within the JSON response. To fix this, you can adjust a setting in ServiceNow to increase the timeout duration.
-By default is 60 seconds.
+The ServiceNow API sometimes returns incomplete or malformed JSON data due to timeouts caused by processing large amounts of information. This can be indicated by an error message within the JSON response. To fix this, you can adjust a setting in ServiceNow to increase the timeout duration.
+
+The ServiceNow default is 60 seconds.  Increasing the value may help address this timeout issue.
 
 ```
 System Definition > Transaction Quota Rules > REST Table API request timeout
