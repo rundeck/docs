@@ -105,6 +105,11 @@ Plugins can contain one or more Service Provider implementations.
 Each plugin file could contain multiple Providers for different types of services,
 however typically each plugin file would contain only providers related in some fashion.
 
+Configuration services:
+
+- `PluginGroup` - defines Plugin Properties shared across a set of related plugins: [javadoc]({{$javaDocBase}}/com/dtolabs/rundeck/plugins/config/PluginGroup.html).
+  - See: [Plugin Groups](/developer/plugin-groups.md)
+
 Node Execution services:
 
 - `NodeExecutor` - executes a command on a node [javadoc]({{$javaDocBase}}/com/dtolabs/rundeck/core/execution/service/NodeExecutor.html).

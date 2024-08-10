@@ -4,6 +4,7 @@ export default [{
   children: [
     '/developer/01-plugin-development.md',
     '/developer/02-plugin-annotations.md',
+    '/developer/plugin-groups.md',
     '/developer/03-model-source-format-parser-generator-plugins.md',
     '/developer/03-model-source-plugins.md',
     '/developer/03-step-plugins.md',
