@@ -55,11 +55,12 @@
     "semver-compare": "^1.0.0",
     "vidstack": "^1.11.19",
     "vue": "^3.3.4",
-    "vuepress": "^2.0.0-rc.13",
+    "vuepress": "^2.0.0-rc.14",
     "vuepress-plugin-autometa": "^0.1.13",
     "vuepress-plugin-components": "^2.0.0-rc.37",
     "vuepress-shared": "^2.0.0-rc.37",
-    "vuepress-theme-hope": "^2.0.0-rc.49",
+    /*Looking for version 53 to resolve dependency issues*/
+    "vuepress-theme-hope": "2.0.0-rc.52",
     "yargs": "^16.2.0"
   },
   "postcss": {
