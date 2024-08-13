@@ -23,9 +23,9 @@ npm install
 Our API Docuementation is now handled by OpenAPI spec and presented using Swagger UI.
 
 
-# How to 
+# How To 
 
-## run locally for Development
+## Run Locally for Development
 
 ```
 npm run docs:dev
