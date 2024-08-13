@@ -53,7 +53,7 @@ Rundeck's jars are published to the central Maven repository so you can simply s
 For gradle, use:
 
 ```java
-compile(group:'org.rundeck', name: 'rundeck-core', version: '{{$rundeckVersionFull}}')
+implementation(group:'org.rundeck', name: 'rundeck-core', version: '{{$rundeckVersionFull}}')
 ```
 
 For maven use:
@@ -104,6 +104,11 @@ executing steps, getting information about Nodes or sending notifications.
 Plugins can contain one or more Service Provider implementations.
 Each plugin file could contain multiple Providers for different types of services,
 however typically each plugin file would contain only providers related in some fashion.
+
+Configuration services:
+
+- `PluginGroup` - defines Plugin Properties shared across a set of related plugins: [javadoc]({{$javaDocBase}}/com/dtolabs/rundeck/plugins/config/PluginGroup.html).
+  - See: [Plugin Groups](/developer/plugin-groups.md)
 
 Node Execution services:
 
