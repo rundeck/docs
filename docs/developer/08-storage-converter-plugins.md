@@ -16,9 +16,9 @@ See: [Configuring the Storage Converter Plugin](/manual/key-storage/index.md#con
 
 - _Note_: Refer to [Java Development](/developer/01-plugin-development.md#java-plugin-development) for information about developing a Java plugin for Rundeck.
 
-The plugin interface is [StorageConverterPlugin]({{{javaDocBase}}}/com/dtolabs/rundeck/plugins/storage/StorageConverterPlugin.html).
+The plugin interface is [StorageConverterPlugin]({{$javaDocBase}}/com/dtolabs/rundeck/plugins/storage/StorageConverterPlugin.html).
 
-The service name is [`StorageConverter`]({{{javaDocBase}}}/com/dtolabs/rundeck/plugins/ServiceNameConstants.html#StorageConverter).
+The service name is [`StorageConverter`]({{$javaDocBase}}/com/dtolabs/rundeck/plugins/ServiceNameConstants.html#StorageConverter).
 
 SEE ALSO: [rundeck-storage-api]({{{javaDocStorageApiBase}}}).
 

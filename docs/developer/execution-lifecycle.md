@@ -45,7 +45,7 @@ Refer to [Java Development](/developer/01-plugin-development.md#java-plugin-deve
 
 Implement the `ExecutionLifecyclePlugin` interface:
 
-* [ExecutionLifecyclePlugin]({{{javaDocBase}}}/com/dtolabs/rundeck/plugins/jobs/ExecutionLifecyclePlugin.html)
+* [ExecutionLifecyclePlugin]({{$javaDocBase}}/com/dtolabs/rundeck/plugins/jobs/ExecutionLifecyclePlugin.html)
 
 Define your class with the `@Plugin` annotation, with a service name of `ExecutionLifecycle`
 
@@ -75,7 +75,7 @@ class MyPlugin implements ExecutionLifecyclePlugin{
 }
 ```
 
-The [JobExecutionEvent]({{{javaDocBase}}}/com/dtolabs/rundeck/plugins/jobs/JobExecutionEvent.html) type allows access to the ExecutionContext,
+The [JobExecutionEvent]({{$javaDocBase}}/com/dtolabs/rundeck/plugins/jobs/JobExecutionEvent.html) type allows access to the ExecutionContext,
 and other information about the Job and Execution.
 
 To modify the ExecutionContext within the `beforeJobStarts` method, you should create a new StepExecutionContext object, by building from the original available from the JobExecutionEvent object, and returning the new context object within the ExecutionLifecycleStatus object.
@@ -94,7 +94,7 @@ Map<String, String> mapData = ...;
 newContext.getSharedDataContext().merge(ContextView.global(), DataContextUtils.context("myplugin", mapData));
 ```
 
-Your method should return a [ExecutionLifecycleStatus]({{{javaDocBase}}}/com/dtolabs/rundeck/plugins/jobs/ExecutionLifecycleStatus.html) object, which indicates
+Your method should return a [ExecutionLifecycleStatus]({{$javaDocBase}}/com/dtolabs/rundeck/plugins/jobs/ExecutionLifecycleStatus.html) object, which indicates
 whether your plugin was successful or not, and can include new execution context data to use for the remaining execution.
 
 This example returns a new ExecutionLifecycleStatus with the newly constructed StepExecutionContext:

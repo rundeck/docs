@@ -71,7 +71,7 @@ Refer to [Java Development](/developer/01-plugin-development.md#java-plugin-deve
 
 Implement the `JobLifecyclePlugin` interface:
 
-* [JobLifecyclePlugin]({{{javaDocBase}}}/com/dtolabs/rundeck/plugins/jobs/JobLifecyclePlugin.html)
+* [JobLifecyclePlugin]({{$javaDocBase}}/com/dtolabs/rundeck/plugins/jobs/JobLifecyclePlugin.html)
 
 
 Define your class with the `@Plugin` annotation, with a service name of `JobLifecycle`
@@ -102,24 +102,24 @@ class MyPlugin implements JobLifecyclePlugin{
 }
 ```
 
-The `beforeJobExecution` method will be called before the execution is created.  The [JobPreExecutionEvent]({{{javaDocBase}}}/com/dtolabs/rundeck/plugins/jobs/JobPreExecutionEvent.html) type allows access to information about the Job, and includes
+The `beforeJobExecution` method will be called before the execution is created.  The [JobPreExecutionEvent]({{$javaDocBase}}/com/dtolabs/rundeck/plugins/jobs/JobPreExecutionEvent.html) type allows access to information about the Job, and includes
 the option values that will be used for the execution. The return value from your method can modify the option values used in the execution, or prevent the execution from
 occurring.
 
-You can use [JobLifecycleStatusImpl.builder\(\)]({{{javaDocBase}}}/com/dtolabs/rundeck/core/jobs/JobLifecycleStatusImpl.html) to build the JobLifecycleStatus result.
+You can use [JobLifecycleStatusImpl.builder\(\)]({{$javaDocBase}}/com/dtolabs/rundeck/core/jobs/JobLifecycleStatusImpl.html) to build the JobLifecycleStatus result.
 
 * if `isSuccessful()` returns `false`, the execution will be prevented.  The value in `errorMessage` will be logged as an error.
 * otherwise, if `isUseNewValues()` returns `true`:
   * if `getOptionValues()` is not null, the values returned will be added to the Map used for the execution.
 
-The [JobPersistEvent]({{{javaDocBase}}}/com/dtolabs/rundeck/plugins/jobs/JobPersistEvent.html) type allows access to information about the Job before it is persisted.
+The [JobPersistEvent]({{$javaDocBase}}/com/dtolabs/rundeck/plugins/jobs/JobPersistEvent.html) type allows access to information about the Job before it is persisted.
 
 * if `isSuccessful()` returns `false`, the create/update will be prevented.  The value in `errorMessage` will be returned as a validation error.
 * otherwise, if `isUseNewValues()` returns `true`:
   * if `getOptions()` is not null, the options defined will be *replaced* by the options returned here. If you want to preserve the initial values, you will
   have to include them in the result as well. 
 
-You can use [JobOptionImpl.builder\(\)]({{{javaDocBase}}}/com/dtolabs/rundeck/plugins/jobs/JobOptionImpl.html) to create new JobOption values.
+You can use [JobOptionImpl.builder\(\)]({{$javaDocBase}}/com/dtolabs/rundeck/plugins/jobs/JobOptionImpl.html) to create new JobOption values.
 
 
 ## Example Code

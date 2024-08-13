@@ -45,7 +45,7 @@ the same name and type is defined.
 Rundeck's jars are published to the central Maven repository so you can simply specify a dependency in your build file.
 
 - `rundeck-core` is the primary build dependency for most plugin types
-  - [org.rundeck:rundeck-core:{{ $rundeckVersionFull }}](https://search.maven.org/artifact/org.rundeck/rundeck-core/{{ $rundeckVersionFull }}/jar)
+  - [org.rundeck:rundeck-core:{{ $rundeckVersionFull }}](https://search.maven.org/artifact/org.rundeck/rundeck-core/{{$rundeckVersionFull}}/jar)
 
 - `rundeck-storage-api` is also required for [Storage Plugin](/developer/07-storage-plugin.md).
   - [org.rundeck:rundeck-storage-api:{{$rundeckVersionFull}}](https://search.maven.org/artifact/org.rundeck/rundeck-storage-api/{{$rundeckVersionFull}}/jar)
@@ -107,14 +107,14 @@ however typically each plugin file would contain only providers related in some 
 
 Node Execution services:
 
-- `NodeExecutor` - executes a command on a node [javadoc]({{{javaDocBase}}}/com/dtolabs/rundeck/core/execution/service/NodeExecutor.html).
-- `FileCopier` - copies a file to a node [javadoc]({{{javaDocBase}}}/com/dtolabs/rundeck/core/execution/service/FileCopier.html).
+- `NodeExecutor` - executes a command on a node [javadoc]({{$javaDocBase}}/com/dtolabs/rundeck/core/execution/service/NodeExecutor.html).
+- `FileCopier` - copies a file to a node [javadoc]({{$javaDocBase}}/com/dtolabs/rundeck/core/execution/service/FileCopier.html).
 
 Resource model services:
 
-- `ResourceModelSource` - produces a set of Node definitions for a project [javadoc]({{{javaDocBase}}}/com/dtolabs/rundeck/core/resources/ResourceModelSource.html).
-- `ResourceFormatParser` - parses a document into a set of Node resources [javadoc]({{{javaDocBase}}}/com/dtolabs/rundeck/core/resources/format/ResourceFormatParser.html).
-- `ResourceFormatGenerator` - generates a document from a set of Node resources [javadoc]({{{javaDocBase}}}/com/dtolabs/rundeck/core/resources/format/ResourceFormatGenerator.html).
+- `ResourceModelSource` - produces a set of Node definitions for a project [javadoc]({{$javaDocBase}}/com/dtolabs/rundeck/core/resources/ResourceModelSource.html).
+- `ResourceFormatParser` - parses a document into a set of Node resources [javadoc]({{$javaDocBase}}/com/dtolabs/rundeck/core/resources/format/ResourceFormatParser.html).
+- `ResourceFormatGenerator` - generates a document from a set of Node resources [javadoc]({{$javaDocBase}}/com/dtolabs/rundeck/core/resources/format/ResourceFormatGenerator.html).
 
 Workflow Step services (described in [Workflow Step Plugin](/developer/03-step-plugins.md)):
 
@@ -153,7 +153,7 @@ provider of a particular service.
 You should choose a unique but simple name for your provider.
 
 Each plugin class must have the
-[Plugin]({{{javaDocBase}}}/com/dtolabs/rundeck/core/plugins/Plugin.html) annotation applied to it.
+[Plugin]({{$javaDocBase}}/com/dtolabs/rundeck/core/plugins/Plugin.html) annotation applied to it.
 
 ```java
 @Plugin(name="myprovider", service="NodeExecutor")
@@ -169,7 +169,7 @@ class will be constructed with this constructor and passed the Framework
 instance.
 
 You may log messages to the ExecutionListener available via
-[ExecutionContext#getExecutionListener()]({{{javaDocBase}}}/com/dtolabs/rundeck/core/execution/ExecutionContext.html) method.
+[ExecutionContext#getExecutionListener()]({{$javaDocBase}}/com/dtolabs/rundeck/core/execution/ExecutionContext.html) method.
 
 You can also send output to `System.err` and `System.out` and it will be
 captured as output of the execution.
@@ -190,14 +190,14 @@ careful not to use un-threadsafe operations.
 
 Some plugin methods return a "Result" interface which indicates the result status of the call to the plugin class. If there is an error, some plugins allow an Exception to be thrown or for the error to be included in the Result class. In both cases, there is a "FailureReason" that must be specified.
 See the javadoc:
-[FailureReason]({{{javaDocBase}}}/com/dtolabs/rundeck/core/execution/workflow/steps/FailureReason.html).
+[FailureReason]({{$javaDocBase}}/com/dtolabs/rundeck/core/execution/workflow/steps/FailureReason.html).
 
 This can be any implementation of the FailureReason interface, and this object's `toString()` method will be used to return the reason value (for example, it is passed to Error Handler steps in a Workflow as the "result.reason" string). The mechanism used internally is to provide an Enum implementation of the FailureReason interface, and to enumerate the possible reasons for failure within the enum.
 
 You are encouraged to re-use existing FailureReasons as much as possible as they provide some basic failure causes. Existing classes:
 
-- [NodeStepFailureReason]({{{javaDocBase}}}/com/dtolabs/rundeck/core/execution/workflow/steps/node/NodeStepFailureReason.html)
-- [StepFailureReason]({{{javaDocBase}}}/com/dtolabs/rundeck/core/execution/workflow/steps/StepFailureReason.html)
+- [NodeStepFailureReason]({{$javaDocBase}}/com/dtolabs/rundeck/core/execution/workflow/steps/node/NodeStepFailureReason.html)
+- [StepFailureReason]({{$javaDocBase}}/com/dtolabs/rundeck/core/execution/workflow/steps/StepFailureReason.html)
 
 ### Plugin Descriptions
 
@@ -212,18 +212,18 @@ There are several ways to declare your plugin's Description:
 **Collaborator interface**
 
 Implement the
-[DescriptionBuilder.Collaborator]({{{javaDocBase}}}/com/dtolabs/rundeck/plugins/util/DescriptionBuilder.Collaborator.html) interface
+[DescriptionBuilder.Collaborator]({{$javaDocBase}}/com/dtolabs/rundeck/plugins/util/DescriptionBuilder.Collaborator.html) interface
 in your plugin class, and it will be given an opportunity to perform actions on the Builder object before it finally constructs a Description.
 
 **Describable interface**
 
 If you want to build the Description object yourself, you can do so by
 implementing the
-[Describable]({{{javaDocBase}}}/com/dtolabs/rundeck/core/plugins/configuration/Describable.html)
+[Describable]({{$javaDocBase}}/com/dtolabs/rundeck/core/plugins/configuration/Describable.html)
 interface. Return a
-[Description]({{{javaDocBase}}}/com/dtolabs/rundeck/core/plugins/configuration/Description.html) instance. You can
+[Description]({{$javaDocBase}}/com/dtolabs/rundeck/core/plugins/configuration/Description.html) instance. You can
 construct one by using the
-[DescriptionBuilder]({{{javaDocBase}}}/com/dtolabs/rundeck/plugins/util/DescriptionBuilder.html) builder class.
+[DescriptionBuilder]({{$javaDocBase}}/com/dtolabs/rundeck/plugins/util/DescriptionBuilder.html) builder class.
 
 **Description Annotations**
 
@@ -240,7 +240,7 @@ Within a Description object you can define a set of Property objects, which repr
 
 Some plugin types support using Java Annotations to define properties, see [Plugin Annotations](/developer/02-plugin-annotations.md).
 
-For the remaining plugin types, the Properties must be defined using the other interfaces described above, typically with the use of a [PropertyBuilder]({{{javaDocBase}}}/com/dtolabs/rundeck/plugins/util/PropertyBuilder.html).
+For the remaining plugin types, the Properties must be defined using the other interfaces described above, typically with the use of a [PropertyBuilder]({{$javaDocBase}}/com/dtolabs/rundeck/plugins/util/PropertyBuilder.html).
 
 **Rendering Options**
 
@@ -251,7 +251,7 @@ You can specify "rendering options" to affect the property being rendered in the
 
 For more information see the options under [Property Rendering options](#property-rendering-options).
 
-A set of constants for the supported rendering option keys and some values are provided in the [StringRenderingConstants]({{{javaDocBase}}}/com/dtolabs/rundeck/core/plugins/configuration/StringRenderingConstants.html).
+A set of constants for the supported rendering option keys and some values are provided in the [StringRenderingConstants]({{$javaDocBase}}/com/dtolabs/rundeck/core/plugins/configuration/StringRenderingConstants.html).
 
 ### Internationalization/Localization for Jar files
 
