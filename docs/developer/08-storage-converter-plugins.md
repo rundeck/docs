@@ -20,7 +20,7 @@ The plugin interface is [StorageConverterPlugin]({{$javaDocBase}}/com/dtolabs/ru
 
 The service name is [`StorageConverter`]({{$javaDocBase}}/com/dtolabs/rundeck/plugins/ServiceNameConstants.html#StorageConverter).
 
-SEE ALSO: [rundeck-storage-api]({{{javaDocStorageApiBase}}}).
+SEE ALSO: [rundeck-storage-api]({{$javaDocStorageApiBase}}).
 
 ```java
 import com.dtolabs.rundeck.core.plugins.Plugin;
