@@ -24,7 +24,7 @@ See: [Configuring the Storage Plugins](/manual/key-storage/index.md#configuring-
 
 This simply extends [Tree]({{$javaDocBase}}/org/rundeck/storage/api/Tree.html) to store resource of type [ResourceMeta]({{$javaDocBase}}/com/dtolabs/rundeck/core/storage/ResourceMeta.html).
 
-Refer to the [Rundeck Storage API javadocs]({{{javaDocStorageApiBase}}}) for more information about the underlying storage API.
+Refer to the [Rundeck Storage API javadocs]({{$javaDocStorageApiBase}}) for more information about the underlying storage API.
 
 **Service Name**
 
