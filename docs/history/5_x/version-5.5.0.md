@@ -52,7 +52,7 @@ If you had upgraded to our 5.4.0 release and noticed some executions missing fro
 
 * Resource Model Runner filter is not displayed as expected
 * PagerDuty webhook plugin should return 400 on mismatched signature instead of 500
-* Fix: Runner - Cyberark Key Storage Plugin Doesn&#39;t Work with CCP Mde
+* Fix: Runner - Cyberark Key Storage Plugin Doesn&#39;t Work with CCP Mode
 
 
 ## Rundeck Open Source Product Updates
