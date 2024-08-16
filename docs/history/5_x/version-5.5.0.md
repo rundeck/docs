@@ -17,7 +17,11 @@ Release Date: August 8th, 2024
 - [Download the Releases](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
 - [Upgrade instructions](/upgrading/)
-- [Catch us on Twitch for the Live Stream Release Video](https://www.twitch.tv/pagerduty)
+- [Watch the Live Stream Release Recap](https://www.youtube.com/watch?v=bIIuIKV8jpo)
+
+<VidStack src="youtube/bIIuIKV8jpo"/>
+
+
 
 ## Overview
 
