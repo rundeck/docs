@@ -17,7 +17,7 @@ There are two options available for this configuration: **Automatic** and **Manu
 
 ### Automatic Runner Selection
 
-When **Automatic** is selected, the system will automatically select the Runners to use for Job execution based on the mapping of nodes to Runners as configured in the [**Node Dispatch**](/administration/runner/runner-management/node-dispatch.html).
+When **Automatic** is selected, the system will automatically select the Runners to use for Job execution based on the mapping of nodes to Runners as configured in the [**Node Dispatch**](/administration/runner/runner-management/node-dispatch.md).
 
 With the **Automatic** setting, users do not select which Runner to use within the Job definition.  Rather, Runners are automatically chosen for execution based on the node filter of the Runner's **Node Dispatch** configuration.
 
@@ -32,7 +32,7 @@ In addition, the **Automatic** settings allows for targeting multiple environmen
 
 ### Manual Runner Selection
 
-When **Manual** is selected, users must explicitly select the Runner to use within the Job definition.  This is done by configuring [Tags on Runners](/administration/runner/runner-management/managing-runners.html#runner-tags) and then selecting a specific Tag or applying a Tag filter within the Job definition.
+When **Manual** is selected, users must explicitly select the Runner to use within the Job definition.  This is done by configuring [Tags on Runners](/administration/runner/runner-management/managing-runners.md#runner-tags) and then selecting a specific Tag or applying a Tag filter within the Job definition.
 
 ![Runner Selector Manual](/assets/img/runner-selector-manual-dispatch.png)<br>
 
