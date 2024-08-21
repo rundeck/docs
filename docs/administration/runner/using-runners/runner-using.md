@@ -1,5 +1,6 @@
 ---
 title: "Job Execution with Enterprise Runners"
+redirectFrom: /administration/runner/runner-using
 ---
 
 # Using Enterprise Runners in Jobs

@@ -25,8 +25,8 @@ The Runner Management interface will display a list of all Runners in the system
 From this interface, users can:
 
 - Create a new Runner. For detailed steps, see [Creating a Runner](/administration/runner/runner-installation/creating-runners.md).
-- Edit an existing Runner. For detailed steps, see [Configuring a Runner](/administration/runner/runner-configuration/runner-config.md).
-- Assign Runners to Projects.  For detailed steps, see [Assigning Runners to Projects](#assign-runners-to-projects).
+- [Edit a Runner's Tags](#runner-tags).
+- [Assigning Runners to Projects](#assign-runners-to-projects).
 
 [//]: # (- Delete Runners.  For detailed steps, see [Deleting a Runner]&#40;/administration/runner/runner-installation/delete-a-runner&#41;.)
 
@@ -75,8 +75,10 @@ The Runner Management interface will display a list of all Runners in the Projec
 
 From this interface, users can:
 
-- Create a new Runner. For detailed steps, see [Creating a Runner](/administration/runner/runner-installation/creating-runners.md).
-- Edit an existing Runner. For detailed steps, see [Configuring a Runner](/administration/runner/runner-configuration/runner-config.md).
+- [Creating a new Runner](/administration/runner/runner-installation/creating-runners.md).
+- [Modify a Runner's Node Dispatch Settings](/administration/runner/runner-management/node-dispatch.md).
+- [Edit a Runner's Tags](#runner-tags).
+- [Remove a Runner from a Project](#removing-a-runner-from-a-project).
 
 [//]: # (- Delete Runners.  For detailed steps, see [Deleting a Runner]&#40;/administration/runner/runner-installation/delete-a-runner&#41;.)
 
