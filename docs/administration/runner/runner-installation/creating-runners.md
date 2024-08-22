@@ -58,7 +58,7 @@ context:
   application: rundeck
 ---
 by:
-  group: runneradmin
+  group: my-user-group-name
 description: Allow creation of apitokens (general)
 for:
   apitoken:
@@ -68,7 +68,7 @@ context:
   application: rundeck
 ---
 by:
-  group: runneradmin
+  group: my-user-group-name
 description: Restrict apitoken creation to only generate_service_token to be used for Runners
 for:
   resource:
@@ -79,6 +79,7 @@ for:
 context:
   application: rundeck
 ```
+* Change **`my-user-group-name`** in the above ACL policy to the name of the user group that needs to have these permissions.
 
 :::warning Error Without API Permissions
 If the user does not have the necessary API permissions, the following error will be displayed when attempting to create a Runner:
