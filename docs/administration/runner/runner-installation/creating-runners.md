@@ -80,6 +80,14 @@ context:
   application: rundeck
 ```
 
+:::warning Error Without API Permissions
+If the user does not have the necessary API permissions, the following error will be displayed when attempting to create a Runner:
+
+**`Error: Failed to create runner due to server side error: Unauthorized: generate API token`**
+
+To resolve this error, ensure that the user has the necessary API permissions.
+:::
+
 ## Creating Runners within a Project
 
 :::tip Early Access Feature
