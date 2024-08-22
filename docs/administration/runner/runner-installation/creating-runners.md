@@ -56,6 +56,28 @@ for:
       kind: runner
 context:
   application: rundeck
+---
+by:
+  group: runneradmin
+description: Allow creation of apitokens (general)
+for:
+  apitoken:
+  - allow:
+    - create
+context:
+  application: rundeck
+---
+by:
+  group: runneradmin
+description: Restrict apitoken creation to only generate_service_token to be used for Runners
+for:
+  resource:
+  - allow:
+    - generate_service_token
+    equals:
+      kind: apitoken
+context:
+  application: rundeck
 ```
 
 ## Creating Runners within a Project
@@ -113,4 +135,26 @@ for:
     - read
 context:
   project: my-project-name
+---
+by:
+  group: runneradmin
+description: Allow creation of apitokens (general)
+for:
+  apitoken:
+  - allow:
+    - create
+context:
+  application: rundeck
+---
+by:
+  group: runneradmin
+description: Restrict apitoken creation to only generate_service_token to be used for Runners
+for:
+  resource:
+  - allow:
+    - generate_service_token
+    equals:
+      kind: apitoken
+context:
+  application: rundeck
 ```
