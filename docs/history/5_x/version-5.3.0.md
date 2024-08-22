@@ -14,7 +14,7 @@ feed:
 Name: <span style="color: turquoise"><span class="glyphicon glyphicon-lamp"></span> "Etna turquoise lamp"</span>
 Release Date: May 20th, 2024
 
-- [Download the Releases](https://download.rundeck.com/)
+- Download the Release: [Open Source](https://www.rundeck.com/community-downloads/5.3.0) | [Self-Hosted](https://www.rundeck.com/enterprise-downloads/5.3.0)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
 - [Upgrade instructions](/upgrading/)
 - [Watch the Live Stream Release Recap](https://www.youtube.com/live/HDOnqXi6cS0?si=igWP0LG5S4SRzFnn)
