@@ -138,7 +138,8 @@ export default [{
               '/manual/healthcheckplugins/aws-ec2-healthcheck.md',
               '/manual/healthcheckplugins/gcp-compute-healthcheck.md'
           ]
-        }
+        },
+        {text: "Node Sources", link: '/manual/projects/resource-model-sources/'}
       ]
     },
     {
