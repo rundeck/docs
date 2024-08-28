@@ -1,3 +1,7 @@
+---
+redirectTo: /administration/runner/index
+---
+
 # Runner
 
 :::enterprise
