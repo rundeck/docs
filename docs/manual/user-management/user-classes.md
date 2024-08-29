@@ -22,7 +22,7 @@ This User Class, when assigned, will allow a user to run jobs and view output on
 
 ### Default Class Assignment
 
-By default users are assigned to the Full User class.  This is configurable for OnPrem installations if customers would like to assign a different class by adding the following entry to the Configuration Management UI. This is not available in the Cloud offering.
+By default users are assigned to the Full User class.  This is configurable for OnPrem installations if customers would like to assign a different class by adding the following entry to the Configuration Management UI.
 
 ```
 rundeck.license.entitlements.userClass.autoAssignUserClass
@@ -33,6 +33,10 @@ Possible values are: `[FullUser | JobRunner | None]`
 If the setting is not present `FullUser` is used for OnPrem installations, `AppAdmin` is used for Cloud.
 
 >_Note: “None” would represent no access to anything in Runbook Automation.  The user could login but would have access to nothing.  This is not an assignable class today and will not show up in the management UI.  It is only available for default assignment._
+
+::: warning
+This is not available in the Cloud offering.
+:::
 
 ![User Class Screen](/assets/img/user-classes-config.png)
 
