@@ -46,7 +46,7 @@ Refer to [Java Development](/developer/01-plugin-development.md#java-plugin-deve
 
 #### Implement the `AuditEventListenerPlugin` interface:
 
-* [AuditEventListenerPlugin]({{{javaDocBase}}}/com/dtolabs/rundeck/core/audit/AuditEventListenerPlugin.html)
+* [AuditEventListenerPlugin]({{$javaDocBase}}/com/dtolabs/rundeck/core/audit/AuditEventListenerPlugin.html)
 
 Define your class with the `@Plugin` annotation, with a service name of `AuditEventListener`
 

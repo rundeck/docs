@@ -115,3 +115,4 @@ System Definition > Transaction Quota Rules > REST Table API request timeout
 In addition, to reduce the query time for nodes per page on the ServiceNow API and avoid timeouts, you can use the 'Limit by page' field to limit the number of results returned per request.
 
 [Limit by page](/assets/img/servicenow-limit-by-page.png)
+

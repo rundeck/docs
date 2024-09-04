@@ -42,8 +42,6 @@ _If a step fails_: This manages what to do if a step incurs an error:
 The default is to fail immediately but depending on the procedure at
 hand it is possible to choose to have the execution continue.
 
-<!--- Out of date? Node First, Parallel, Sequential, Ruleset Workflow Strategy --->
-
 _Strategy_: Controls the order of execution of steps and command
 dispatch to nodes: _Node-oriented_ and _Step-oriented_.
 
@@ -53,33 +51,7 @@ dispatch to nodes: _Node-oriented_ and _Step-oriented_.
   step.
 - _Parallel_: Run all steps in parallel.
 
-The following illustrations contrast the strategies showing how three
-steps proceed across two nodes.
-
-Node First flow illustrated:
-
-```
-1.   NodeA    step#1
-2.     "      step#2
-3.     "      step#3
-4.   NodeB    step#1
-5.     "      step#2
-6.     "      step#3
-```
-
-Sequential flow illustrated:
-
-```
-1.   NodeA    step#1
-2.   NodeB      "
-3.   NodeA    step#2
-4.   NodeB      "
-5.   NodeA    step#3
-6.   NodeB      "
-```
-
-The process being automated will determine which strategy is
-correct, though the node-oriented flow is more commonplace.
+[See more details here](/manual/workflow-strategies/)
 
 For more complex workflow strategy rules, see [Ruleset Workflow Strategy Plugin](/manual/workflow-strategies/ruleset.md)
 

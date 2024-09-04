@@ -57,4 +57,4 @@ Methods:
 - `removeFile(String refid)`: (unused) may be called to remove the file
 - `InternalState transitionState(String reference, ExternalState state)`: plugin should retain or delete the file
 
-[fileuploadplugin]: {{{javaDocBase}}}/com/dtolabs/rundeck/plugins/file/FileUploadPlugin.html
+[fileuploadplugin]: {{$javaDocBase}}/com/dtolabs/rundeck/plugins/file/FileUploadPlugin.html

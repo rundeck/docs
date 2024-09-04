@@ -17,7 +17,7 @@ of serialized data is a filename or a MIME type.
 ### ResourceFormatParser
 
 For Parsers, your provider class must implement the interface
-[ResourceFormatParser]({{{javaDocBase}}}/com/dtolabs/rundeck/core/resources/format/ResourceFormatParser.html):
+[ResourceFormatParser]({{$javaDocBase}}/com/dtolabs/rundeck/core/resources/format/ResourceFormatParser.html):
 
 ```java
 public interface ResourceFormatParser {
@@ -47,7 +47,7 @@ public interface ResourceFormatParser {
 ### ResourceFormatGenerator
 
 For Generators, your provider class must implement the interface
-[ResourceFormatGenerator]({{{javaDocBase}}}/com/dtolabs/rundeck/core/resources/format/ResourceFormatGenerator.html):
+[ResourceFormatGenerator]({{$javaDocBase}}/com/dtolabs/rundeck/core/resources/format/ResourceFormatGenerator.html):
 
 ```java
 public interface ResourceFormatGenerator {

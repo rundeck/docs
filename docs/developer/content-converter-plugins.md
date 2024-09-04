@@ -43,7 +43,7 @@ Log Event metadata, and the `content-meta:` prefix removed.
 
 ## Java Plugin Type
 
-Plugins must implement the [ContentConverterPlugin] interface, and declare as a provider of service [`ContentConverter`]({{{javaDocBase}}}/com/dtolabs/rundeck/plugins/ServiceNameConstants.html#ContentConverter).
+Plugins must implement the [ContentConverterPlugin] interface, and declare as a provider of service [`ContentConverter`]({{$javaDocBase}}/com/dtolabs/rundeck/plugins/ServiceNameConstants.html#ContentConverter).
 
 Methods:
 
@@ -52,7 +52,7 @@ Methods:
 - `String getOutputDataTypeForContentDataType(Class<?> clazz, String dataType)`: gets the data type string for the input data type.
 - `Object convert(Object data, String dataType, Map<String,String> metadata)`: Convert the input data type to the output object, includes metadata about the log event as described in [Log Metadata](#log-metadata).
 
-[contentconverterplugin]: {{{javaDocBase}}}/com/dtolabs/rundeck/plugins/logs/ContentConverterPlugin.html
+[contentconverterplugin]: {{$javaDocBase}}/com/dtolabs/rundeck/plugins/logs/ContentConverterPlugin.html
 
 ### Groovy ContentConverter
 

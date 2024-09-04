@@ -56,7 +56,38 @@ for:
       kind: runner
 context:
   application: rundeck
+---
+by:
+  group: my-user-group-name
+description: Allow creation of apitokens (general)
+for:
+  apitoken:
+  - allow:
+    - create
+context:
+  application: rundeck
+---
+by:
+  group: my-user-group-name
+description: Restrict apitoken creation to only generate_service_token to be used for Runners
+for:
+  resource:
+  - allow:
+    - generate_service_token
+    equals:
+      kind: apitoken
+context:
+  application: rundeck
 ```
+* Change **`my-user-group-name`** in the above ACL policy to the name of the user group that needs to have these permissions.
+
+:::warning Error Without API Permissions
+If the user does not have the necessary API permissions, the following error will be displayed when attempting to create a Runner:
+
+**`Error: Failed to create runner due to server side error: Unauthorized: generate API token`**
+
+To resolve this error, ensure that the user has the necessary API permissions.
+:::
 
 ## Creating Runners within a Project
 
@@ -113,4 +144,26 @@ for:
     - read
 context:
   project: my-project-name
+---
+by:
+  group: runneradmin
+description: Allow creation of apitokens (general)
+for:
+  apitoken:
+  - allow:
+    - create
+context:
+  application: rundeck
+---
+by:
+  group: runneradmin
+description: Restrict apitoken creation to only generate_service_token to be used for Runners
+for:
+  resource:
+  - allow:
+    - generate_service_token
+    equals:
+      kind: apitoken
+context:
+  application: rundeck
 ```

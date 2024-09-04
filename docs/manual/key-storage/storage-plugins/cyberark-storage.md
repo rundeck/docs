@@ -153,7 +153,7 @@ rundeck.storage.provider.1.config.nameOfCCPWebService=NameOfWebService
 
 ## Integration Through Enterprise Runner
 
-The [Enterprise Runner](/administration/runner/runner-intro.html) can be used to integrate with CyberArk. This is useful when CyberArk is hosted in an environment that is not directly accessible from Runbook Automation - whether self-hosted or Cloud.
+The [Enterprise Runner](/administration/runner/index.html) can be used to integrate with CyberArk. This is useful when CyberArk is hosted in an environment that is not directly accessible from Runbook Automation - whether self-hosted or Cloud.
 
 The following provides examples of how to configure the Enterprise Runner to connect to CyberArk:
 
@@ -185,10 +185,26 @@ runner:
             clientCertName: "clientcert"
 ```
 
+
 Save this file in the directory where the Runner `.jar` is located and then invoke the Runner with the following command:
 
 ```
 java -Dmicronaut.config.files=runner-props.yaml -jar runner-{{unique-runner-id}}.jar
+```
+
+::: tip CCP Mode
+
+CCP Mode requires the explicit configuration of the availability check path that is used to determine if the CyberArk service is available.
+```
+    runner:
+      rundeck:
+          storage:
+            cyberark:
+              availabilityCheckPath: WinServerLocal-account-Administrator
+              <...>
+              configuration:
+                mode: ccp
+                <...>
 ```
 
 @tab Environment Variables
@@ -217,6 +233,14 @@ When using environment variables, the Runner can be invoked with just:
 java -jar runner-{{unique-runner-id}}.jar
 ```
 
+::: tip CCP Mode
+
+CCP Mode requires the explicit configuration of the availability check path that is used to determine if the CyberArk service is available.
+```
+export RUNNER_RUNDECK_STORAGE_CYBERARK_CONFIGURATION_MODE="ccp"
+export RUNNER_RUNDECK_STORAGE_CYBERARK_AVAILABILITY_CHECK_PATH="WinServerLocal-account-Administrator"
+```
+
 @tab Docker Compose
 
 Here is an example `docker-compose` for the Runner with the configuration properties:
@@ -243,6 +267,15 @@ services:
          RUNNER_RUNDECK_STORAGE_CYBERARK_CONFIGURATION_PRIVATE_KEY_NAME="client_1-28"
          RUNNER_RUNDECK_STORAGE_CYBERARK_CONFIGURATION_ROOT_CA_NAME="rootcert"
          RUNNER_RUNDECK_STORAGE_CYBERARK_CONFIGURATION_CLIENT_CERT_NAME="clientcert"
+```
+
+::: tip CCP Mode
+
+CCP Mode requires the explicit configuration of the availability check path that is used to determine if the CyberArk service is available.
+```
+      environment:
+        RUNNER_RUNDECK_STORAGE_CYBERARK_CONFIGURATION_MODE="ccp"
+        RUNNER_RUNDECK_STORAGE_CYBERARK_AVAILABILITY_CHECK_PATH="WinServerLocal-account-Administrator"
 ```
 
 :::

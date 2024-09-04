@@ -3513,6 +3513,7 @@ Get the list of executions for a Job.
 
 Optional Query Parameters:
 
+* `includeJobRef`: Include the executions from referenced jobs. If unspecified, the default value will be false. **Since API v50**
 * `status`: the status of executions you want to be returned.  Must be one of "succeeded", "failed", "aborted", or "running".  If this parameter is blank or unset, include all executions.
 * Paging parameters:
     * `max`: indicate the maximum number of results to return. If unspecified, all results will be returned.
