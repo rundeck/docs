@@ -16,7 +16,6 @@ export default [{
                   '/administration/install/jar',
                   '/administration/install/linux-deb',
                   '/administration/install/linux-rpm',
-                  '/administration/install/tomcat',
                   '/administration/install/aws',
                   '/administration/install/windows',
                   '/administration/install/source',
