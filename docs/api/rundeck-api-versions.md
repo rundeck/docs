@@ -35,6 +35,11 @@ Changes introduced by API Version number:
 API versions below `{{$apiDepVersion}}` are *deprecated*.  Clients using earlier versions should upgrade to use `{{$apiDepVersion}}` as the minimum version before release `{{ $apiDepRelease }}` to avoid errors.
 :::
 
+### Version 50
+
+* Updated Endpoints:
+  * [`GET /api/V/job/[ID]/executions`][GET /api/V/job/\[ID\]/executions] - Now supports `includeJobRef` parameter to include executions from job reference in the response
+
 ### Version 48
 
 * Updated Endpoints:

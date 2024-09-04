@@ -2236,6 +2236,12 @@ paths:
         description: "indicate the 0-indexed offset for the first result to \nreturn."
         schema:
           type: integer
+      - name: includeJobRef
+        in: query
+        description: "Include the executions from referenced jobs. If \nunspecified,\
+          \ the default value will be true. Since API v50"
+        schema:
+          type: boolean
       responses:
         "200":
           description: Executions results
