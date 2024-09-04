@@ -94,10 +94,6 @@ sudo yum install java rundeckpro-enterprise
 
 
 
-@tab Tomcat
-[Check here for detailed Tomcat installation instructions.](/administration/install/tomcat.md)  
-
-
 @tab Windows
 [Check here for detailed Windows installation instructions.](/administration/install/windows.md)
 
