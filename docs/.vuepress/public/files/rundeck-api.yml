@@ -2239,7 +2239,7 @@ paths:
       - name: includeJobRef
         in: query
         description: "Include the executions from referenced jobs. If \nunspecified,\
-          \ the default value will be true. Since API v50"
+          \ the default value will be false. Since API v50"
         schema:
           type: boolean
       responses:
