@@ -7,7 +7,7 @@ To gain access, please [submit this form](https://www.pagerduty.com/early-access
 
 The Node Dispatch settings of a Runner defines which nodes are assigned to a Runner for the dispatch of automation tasks.
 
-**Note:** _Node Dispatch_ settings for Runners is only available for projects that use **Automatic** for **_Runner Selection for Job Execution_**. This can be toggled through the [Project Dispatch Configuration](/administration/runner/runner-management/project-dispatch-configuration) and is the default for all new projects.
+**Note:** _Node Dispatch_ settings for Runners is only available for projects that use **Automatic** for **_Runner Selection for Job Execution_**. This can be toggled through the [Project Dispatch Configuration](/administration/runner/runner-management/project-dispatch-configuration.md) and is the default for all new projects.
 
 ## Runner as a Node
 Enabling the _**Runner as a Node**_ adds the Runner as a node to the node inventory.  When this node is targeted with a node-step within a Job or with a command from the Commands page,
@@ -41,7 +41,7 @@ To still use the Local Node Source, but prevent the execution of commands and sc
 
 Enabling the _**Remote Node Dispatch**_ setting allows the Runner to dispatch commands, scripts and api-calls to _remote_ nodes using protocols such as SSH, WinRM and HTTP/S.  This is necessary for securely dispatching to nodes from Runbook Automation Cloud or to nodes that are not directly accessible from the self-hosted cluster.
 
-The mapping of which nodes a given Runner is responsible for is defined using a [**Node Filter**](/manual/11-node-filters.html).  When the Node Filter is defined for a Runner, then Job steps that target the nodes that match the filter will be dispatched _through_ the Runner for execution.
+The mapping of which nodes a given Runner is responsible for is defined using a [**Node Filter**](/manual/11-node-filters.md).  When the Node Filter is defined for a Runner, then Job steps that target the nodes that match the filter will be dispatched _through_ the Runner for execution.
 
 To define the Node Filter for a Runner:
 1. Navigate to the **Runner Management** page within the Project.
@@ -55,7 +55,7 @@ To define the Node Filter for a Runner:
 _Runners are dynamically chosen for Job execution based on the Runner's Node Filter_
 
 :::tip Nodes Without a Runner Association
-Nodes that do not match the Node Filter of any Runner will be dispatched to using the Runbook Automation cluster (self-hosted).  When using Runbook Automation Cloud, commands and scripts can be dispatched to these nodes using the [AWS Systems Manager](/manual/projects/node-execution/aws-ssm.html) Node Executor. Node Step plugins that target public endpoints - such as AWS or Datadog node step plugins - can also be used through Runbook Automation Cloud when no Runner is assigned to those nodes.
+Nodes that do not match the Node Filter of any Runner will be dispatched to using the Runbook Automation cluster (self-hosted).  When using Runbook Automation Cloud, commands and scripts can be dispatched to these nodes using the [AWS Systems Manager](/manual/projects/node-execution/aws-ssm.md) Node Executor. Node Step plugins that target public endpoints - such as AWS or Datadog node step plugins - can also be used through Runbook Automation Cloud when no Runner is assigned to those nodes.
 
 This ensures that all nodes are dispatched for execution, even if they do not match the Node Filter of a Runner.
 :::
@@ -74,7 +74,7 @@ Taking this a step further, a Runner could be responsible for only **_Windows_**
 
 ![Remote node dispatch windows example](/assets/img/remote-node-dispatch-windows-example.png)<br>
 
-For more information on defining Node Filters, see the [Node Filters](/manual/11-node-filters.html) documentation.
+For more information on defining Node Filters, see the [Node Filters](/manual/11-node-filters.md) documentation.
 
 ## Overlapping Node Filters
 

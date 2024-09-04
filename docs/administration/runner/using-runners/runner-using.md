@@ -1,19 +1,20 @@
 ---
 title: "Job Execution with Enterprise Runners"
+redirectFrom: /administration/runner/runner-using
 ---
 
 # Using Enterprise Runners in Jobs
 
 ## Automatic Runner Selection for Job Execution
 
-When a Project is configured to use **Automatic** for the [**Project Dispatch Configuration**](/administration/runner/runner-management/project-dispatch-configuration.html), the system will automatically select the Runners to use for Job execution based on the mapping of nodes to Runners as configured in the [Node Dispatch](/administration/runner/runner-management/node-dispatch.md) settings.
+When a Project is configured to use **Automatic** for the [**Project Dispatch Configuration**](/administration/runner/runner-management/project-dispatch-configuration.md), the system will automatically select the Runners to use for Job execution based on the mapping of nodes to Runners as configured in the [Node Dispatch](/administration/runner/runner-management/node-dispatch.md) settings.
 This means that the Job definition does not require selecting a Runner, as the system will automatically choose the Runner based on the nodes that are targeted by the Job.
 
 For example, if the Node Filter for a Job is defined as `region: "us-west-1,us-east-1"` and there are two Runners within this Project, one with a Node Filter of `region: "us-west-1"` and the other with a Node Filter of `region: "us-east-1"`, the system will automatically select the Runner with the `us-west-1` Node Filter for nodes that are targeted within US-WEST-1 and similarly for US-EAST-1. 
 
 ## Manual Runner Selection for Job Execution
 
-When a Project is configured to use **Manual** for the [**Project Dispatch Configuration**](/administration/runner/runner-management/project-dispatch-configuration.html), users must explicitly specify the Runners that can be used for the Job within the Job definition.
+When a Project is configured to use **Manual** for the [**Project Dispatch Configuration**](/administration/runner/runner-management/project-dispatch-configuration.md), users must explicitly specify the Runners that can be used for the Job within the Job definition.
 
 :::warning Single Environment per Execution Constraint
 When **Manual** is selected, only a single Runner will be utilized for a given Job execution. This can be prohibitive when attempting to target multiple environments where those environments can only be accessed by using a Runner deployed in each environment.
@@ -65,5 +66,5 @@ Here's an example of a job option and runner filter configurations:
 ![Runner Filter](/assets/img/Dynamic_runner_selection_runnerFilter.png)                                                                                                                     
 
 #### Migrating Jobs to use Runners with Manual Runner Selection
-When **Manual** is selected in [**Project Dispatch Configuration**](/administration/runner/runner-management/project-dispatch-configuration.html), existing jobs will default to the Local Runner even if no Runner selection is made in the job definition. The Local Runner operates with an execution context equivalent to that of the Runbook Automation service.
+When **Manual** is selected in [**Project Dispatch Configuration**](/administration/runner/runner-management/project-dispatch-configuration.md), existing jobs will default to the Local Runner even if no Runner selection is made in the job definition. The Local Runner operates with an execution context equivalent to that of the Runbook Automation service.
 

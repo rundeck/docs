@@ -10,9 +10,9 @@ Orchestrators are configured in a Job definition, see: [Jobs - Orchestrator](/ma
 Refer to [Java Development](/developer/01-plugin-development.md#java-plugin-development) for information about developing a Java plugin for Rundeck.
 :::
 
-The plugin interface is [OrchestratorPlugin]({{{javaDocBase}}}/com/dtolabs/rundeck/plugins/orchestrator/OrchestratorPlugin.html).
+The plugin interface is [OrchestratorPlugin]({{$javaDocBase}}/com/dtolabs/rundeck/plugins/orchestrator/OrchestratorPlugin.html).
 
-This is actually a Factory pattern, which produces an [Orchestrator]({{{javaDocBase}}}/com/dtolabs/rundeck/plugins/orchestrator/Orchestrator.html) instance.
+This is actually a Factory pattern, which produces an [Orchestrator]({{$javaDocBase}}/com/dtolabs/rundeck/plugins/orchestrator/Orchestrator.html) instance.
 
 The `Orchestrator` instance is responsible for determining what order and how many nodes are available to execute on.
 

@@ -14,7 +14,7 @@ feed:
 Name: <span style="color: deeppink"><span class="glyphicon glyphicon-piggy-bank"></span> "Everest deeppink piggy-bank"</span>
 Release Date: June 18, 2024
 
-- [Download the Releases](https://download.rundeck.com/)
+- Download the Release: [Open Source](https://www.rundeck.com/community-downloads/5.4.0) | [Self-Hosted](https://www.rundeck.com/enterprise-downloads/5.4.0)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
 - [Upgrade instructions](/upgrading/)
 - [Watch the Live Stream Release Recap](https://www.youtube.com/live/VqAAjBK0I5E?si=25hA6mmqyRSXh1yP)

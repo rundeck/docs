@@ -7,7 +7,7 @@ Instructions on how to discover nodes using the Enterprise Runner, click [here](
 
 As of version **`4.16.0`**, the following Node Sources are available to use through the Enterprise Runner:
 * **Ansible Inventory**
-* **VMware***
+* **VMware**
 * **Kubernetes**
 * **Docker**
 * **File**

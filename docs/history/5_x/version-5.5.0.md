@@ -14,10 +14,14 @@ feed:
 Name: <span style="color: orchid"><span class="glyphicon glyphicon-tower"></span> "Fairweather orchid tower"</span>
 Release Date: August 8th, 2024
 
-- [Download the Releases](https://download.rundeck.com/)
+- Download the Release: [Open Source](https://www.rundeck.com/community-downloads/5.5.0) | [Self-Hosted](https://www.rundeck.com/enterprise-downloads/5.5.0)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
 - [Upgrade instructions](/upgrading/)
-- [Catch us on Twitch for the Live Stream Release Video](https://www.twitch.tv/pagerduty)
+- [Watch the Live Stream Release Recap](https://www.youtube.com/watch?v=bIIuIKV8jpo)
+
+<VidStack src="youtube/bIIuIKV8jpo"/>
+
+
 
 ## Overview
 
@@ -52,7 +56,7 @@ If you had upgraded to our 5.4.0 release and noticed some executions missing fro
 
 * Resource Model Runner filter is not displayed as expected
 * PagerDuty webhook plugin should return 400 on mismatched signature instead of 500
-* Fix: Runner - Cyberark Key Storage Plugin Doesn&#39;t Work with CCP Mde
+* Fix: Runner - Cyberark Key Storage Plugin Doesn&#39;t Work with CCP Mode
 
 
 ## Rundeck Open Source Product Updates

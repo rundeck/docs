@@ -14,7 +14,7 @@ feed:
 Name: <span style="color: coral"><span class="glyphicon glyphicon-bell"></span> "Denali coral bell"</span>
 Release Date: January 15th, 2024
 
-- [Download the Releases](https://download.rundeck.com/)
+- Download the Release: [Open Source](https://www.rundeck.com/community-downloads/5.0.1) | [Self-Hosted](https://www.rundeck.com/enterprise-downloads/5.0.1)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
 - [Upgrade instructions](/upgrading/)
 

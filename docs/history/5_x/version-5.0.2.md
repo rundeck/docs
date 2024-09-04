@@ -14,7 +14,7 @@ feed:
 Name: <span style="color: deeppink"><span class="glyphicon glyphicon-book"></span> "Denali deeppink book"</span>
 Release Date: February 12th, 2024
 
-- [Download the Releases](https://download.rundeck.com/)
+- Download the Release: [Open Source](https://www.rundeck.com/community-downloads/5.0.2) | [Self-Hosted](https://www.rundeck.com/enterprise-downloads/5.0.2)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
 - [Upgrade instructions](/upgrading/)
 

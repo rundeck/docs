@@ -96,7 +96,8 @@ export default [{
         '/manual/execution-lifecycle/result-data.md',
         '/manual/execution-lifecycle/roi-metrics.md',
         '/manual/jobs/job-queue.md',
-        '/manual/jobs/ai-generated-runbooks.md'
+        '/manual/jobs/ai-generated-runbooks.md',
+        '/manual/workflow-strategies'
       ]
     },
     {
@@ -137,7 +138,8 @@ export default [{
               '/manual/healthcheckplugins/aws-ec2-healthcheck.md',
               '/manual/healthcheckplugins/gcp-compute-healthcheck.md'
           ]
-        }
+        },
+        {text: "Node Sources", link: '/manual/projects/resource-model-sources/'}
       ]
     },
     {
