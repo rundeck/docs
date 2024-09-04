@@ -456,14 +456,6 @@ will suppress the non-SSO login form.
 
 - `server.servlet.session.timeout`: timeout in seconds.
 
-Note: This setting applies _only_ to the embedded Jetty server, which is used for standalone war launcher, rpm or deb installs. It does not work for Tomcat installation.
-
-If you are deploying the Rundeck war file to Tomcat, you can manage the session timeout setting in the `$TomcatBase/conf/web.xml` file. The setting is in minutes.
-
-```xml
-    <session-config> <session-timeout>30</session-timeout> </session-config>
-```
-
 In order to add the HSTS (HTTP Strict Transport Security) security header to the static resources of Rundeck, the configuration must be set directly on the server. The following two flags are used for the embedded Jetty server:
 
 - `rundeck.web.jetty.servlet.stsMaxAgeSeconds`: time in seconds.

@@ -1,7 +1,7 @@
 # Work With Server Logs
 
 When you debug internal Rundeck activity related to the system, executions, and auditing, it’s important to know where Rundeck stores all internal information.<br>
-Logs are text files with all internal behavior printed in. In this article we will demonstrate how to locate different logs depending on the Rundeck installation methods, covering RPM/DEB, WAR-based installation, Apache Tomcat, and Docker container.<br>
+Logs are text files with all internal behavior printed in. In this article we will demonstrate how to locate different logs depending on the Rundeck installation methods, covering RPM/DEB, WAR-based installation, and Docker container.<br>
 
 ## Default Log Location
 By default, log files are located at the `/var/log/rundeck` path in the RPM/DEB installations and on WAR-based installations in the `$RDECK_BASE/server/logs` path.<br>
@@ -17,7 +17,7 @@ The first place to see anything related to Rundeck is the `service.log` file. Th
 
 For Windows-based instances, the installation process [covers using](/administration/install/windows.html#configuring-rundeck) the standard stdout output to the `service.log` file.<br>
 
-## Service.log content on Docker container and Apache Tomcat
+## Service.log content on Docker container
 
 ### **Docker Container Installation**
 
