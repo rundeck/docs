@@ -7253,6 +7253,452 @@ Content-Type: `application/json`:
 ```
 
 
+### Save Project Context Runner Config ###
+
+::: enterprise
+:::
+
+**Request:**
+
+    POST /api/41/project/[PROJECT]/runnerManagement/config
+
+Content-Type: `application/json`:
+```json
+{
+"project": "Project Name",
+"automatic": true
+}
+```
+
+**Response:**
+
+Content-Type: `application/json`:
+
+```json
+{
+  "project": "Project Name",
+  "automatic": true
+}
+```
+
+
+
+### Get Project Context Runner Config ###
+
+::: enterprise
+:::
+
+**Request:**
+
+    GET /api/41/project/[PROJECT]/runnerManagement/config
+
+**Response:**
+
+Content-Type: `application/json`:
+
+```json
+{
+  "project": "Project Name",
+  "automatic": true
+}
+```
+
+### Create a new Runner Project level ###
+
+::: enterprise
+:::
+
+**Request:**
+
+    POST /api/41/project/[PROJECT]/runnerManagement/runners
+
+Content-Type: `application/json`:
+```json
+{
+  "name": "My Runner",
+  "description": "A runner for running CI/CD pipelines",
+  "tagNames": "runner, pipeline, automation"
+}
+```
+
+
+**Response:**
+
+Content-Type: `application/json`:
+
+```json
+{
+  "runnerId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "name": "My New Runner",
+  "description": "A project for building and testing software",
+  "projectAssociations": {
+    "project1": ".*"
+  },
+  "token": "cdb9ff25-4606-4f0b-bf72-119263a25677",
+  "downloadTk": "2804658a-b9a1-869d-08f7-8f30a9455995"
+}
+```
+
+or error
+
+Content-Type: `application/json`:
+
+```json
+{
+  "apiVersion": 41,
+  "errorMessage": "An error occurred while processing the request",
+  "errorCode": "400",
+  "error": "Bad Request",
+  "apiversion": 1,
+  "message": ""
+}
+```
+
+### List available runners project level ###
+
+::: enterprise
+:::
+
+**Request:**
+
+    GET /api/41/project/[PROJECT]/runnerManagement/runners
+
+**Response:**
+
+Content-Type: `application/json`:
+
+Schema: RunnerList
+```json
+{
+  "runners": [
+    {
+      "id": "runner1",
+      "name": "My Runner",
+      "description": "A runner for running CI/CD pipelines",
+      "status": "Healthy",
+      "version": "1.2.3",
+      "associatedProjects": 1,
+      "lastCheckin": "2022-02-28T12:34:56Z",
+      "lastCheckinAlert": false,
+      "selected": true,
+      "tagNames": [
+        "runner",
+        "ci/cd"
+      ]
+    },
+    {
+      "id": "runner2",
+      "name": "Another Runner",
+      "description": "A runner for running builds",
+      "status": "Healthy",
+      "version": "1.2.3",
+      "associatedProjects": 1,
+      "lastCheckin": "2022-02-27T01:23:45Z",
+      "lastCheckinAlert": true,
+      "selected": false,
+      "tagNames": [
+        "runner",
+        "builds"
+      ]
+    }
+  ]
+}
+```
+
+
+
+### Update Runner Definition project level ###
+
+::: enterprise
+:::
+
+**Request:**
+
+    POST /api/41/project/[PROJECT]/runnerManagement/runner/[RUNNERID]
+
+Request Content:
+`Content-Type: application/json`
+
+```json
+{
+  "name": "My Runner",
+  "description": "A runner for running CI/CD pipelines",
+  "tagNames": "runner, pipeline, automation",
+  "projectAssociations": {
+    "project1": ".*"
+  }
+}
+
+```
+
+**Response:**
+
+Content-Type: `application/json`:
+
+```json
+{
+  "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "name": "My Runner",
+  "description": "A runner for running CI/CD pipelines",
+  "status": "Healthy",
+  "runnerVersion": "0.1.34",
+  "projectAssociations": {
+    "projectNodeFilters": {
+      "project1": ".*"
+    }
+  },
+  "createTime": "2022-03-01T12:34:56Z",
+  "lastCheckin": "2 seconds ago",
+  "lastCheckinAlert": false,
+  "runningOperations": 5,
+  "uptime": 86400,
+  "tagNames": [
+    "runner",
+    "pipeline",
+    "automation"
+  ],
+  "runnerAsNodeEnabled": true,
+  "remoteNodeDispatch": true,
+  "runnerNodeFilter": ".*"
+}
+```
+
+
+### Get runner information project level ###
+
+::: enterprise
+:::
+
+**Request:**
+
+    GET /api/41/project/[PROJECT]/runnerManagement/runner/[RUNNERID]
+
+**Response:**
+
+Content-Type: `application/json`:
+
+```json
+{
+  "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "name": "My Runner",
+  "description": "A runner for running CI/CD pipelines",
+  "status": "Healthy",
+  "runnerVersion": "0.1.34",
+  "projectAssociations": {
+    "projectNodeFilters": {
+      "project1": ".*"
+    }
+  },
+  "createTime": "2022-03-01T12:34:56Z",
+  "lastCheckin": "2 seconds ago",
+  "lastCheckinAlert": false,
+  "runningOperations": 5,
+  "uptime": 86400,
+  "tagNames": [
+    "runner",
+    "pipeline",
+    "automation"
+  ],
+  "runnerAsNodeEnabled": true,
+  "remoteNodeDispatch": true,
+  "runnerNodeFilter": ".*"
+}
+```
+
+### Delete the specified runner at project level ###
+
+::: enterprise
+:::
+
+**Request:**
+
+    DELETE /api/41/project/[PROJECT]/runnerManagement/runner/[RUNNERID]
+
+**Response:**
+
+    204
+
+### Ping the runner at project level ###
+
+::: enterprise
+:::
+
+**Request:**
+
+    POST /api/41/project/[PROJECT]/runnerManagement/runner/[ID]/ping
+
+**Response:**
+
+Content-Type: `application/json`:
+
+```json
+{
+  "pingToken": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+}
+```
+
+
+### Check a ping response project level ###
+
+::: enterprise
+:::
+
+**Request:**
+
+    GET /api/41/project/[PROJECT]/runnerManagement/checkPing/[TOKEN]
+
+**Response:**
+
+Content-Type: `application/json`:
+
+```json
+{
+  "completed": true,
+  "message": "Task completed successfully",
+  "iserror": false
+}
+```
+
+### Regenerate credentials for the Runner project level ###
+
+::: enterprise
+:::
+
+**Request:**
+
+    POST /api/41/project/[PROJECT]/runnerManagement/runner/[ID]/regenerateCreds
+
+**Response:**
+
+Content-Type: `application/json`:
+
+```json
+{
+  "runnerId": "runner123",
+  "token": "cdb9ff25-4606-4f0b-bf72-119263a25677",
+  "downloadTk": "2804658a-b9a1-869d-08f7-8f30a9455995"
+}
+```
+
+- `token`: Runner authentication token
+- `downloadTk`: Runner package download token
+
+### Download runner Jar project level ###
+
+::: enterprise
+:::
+
+**Request:**
+
+    GET /api/41/project/[PROJECT]/runnerManagement/download/[TOKEN]
+
+**Response:**
+
+Content-Type: `application/java-archive`: Java Archive
+
+
+### Remove Project Association From the Runner ###
+
+::: enterprise
+:::
+
+**Request:**
+
+    POST /api/41/project/[PROJECT]/runnerManagement/runner/[RUNNERID]/removeProjectAssociation
+
+Request Content:
+`Content-Type: application/json`
+
+```json
+{
+  "name": "My Runner",
+  "description": "A runner for running CI/CD pipelines",
+  "projectAssociations": {
+    "project1": ".*"
+  }
+}
+
+```
+
+**Response:**
+
+Content-Type: `application/json`:
+
+```json
+{
+  "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "name": "My Runner",
+  "description": "A runner for running CI/CD pipelines",
+  "status": "Healthy",
+  "runnerVersion": "0.1.34",
+  "projectAssociations": {
+    "project1": ".*"
+  },
+  "createTime": "2022-03-01T12:34:56Z",
+  "lastCheckin": "2 seconds ago",
+  "lastCheckinAlert": false,
+  "runningOperations": 5,
+  "uptime": 86400,
+  "tagNames": [
+    "runner",
+    "pipeline",
+    "automation"
+  ],
+  "runnerAsNodeEnabled": true,
+  "remoteNodeDispatch": true,
+  "runnerNodeFilter": ".*"
+}
+```
+
+
+### Update Runner Node Dispatch at project context ###
+
+::: enterprise
+:::
+
+**Request:**
+
+    POST /api/42/project/[PROJECT]/runnerManagement/nodeDispatch/config
+
+Content-Type: `application/json`:
+```json
+{
+"runnerId": "Runner ID",
+"runnerAsNodeEnabled": true,
+"remoteNodeDispatch": true,
+"runnerNodeFilter": ".*"
+}
+```
+
+**Response:**
+
+Content-Type: `application/json`:
+
+```json
+{
+  "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "name": "My Runner",
+  "description": "A runner for running CI/CD pipelines",
+  "status": "Healthy",
+  "runnerVersion": "0.1.34",
+  "projectAssociations": {
+    "project1": ".*"
+  },
+  "createTime": "2022-03-01T12:34:56Z",
+  "lastCheckin": "2 seconds ago",
+  "lastCheckinAlert": false,
+  "runningOperations": 5,
+  "uptime": 86400,
+  "tagNames": [
+    "runner",
+    "pipeline",
+    "automation"
+  ],
+  "runnerAsNodeEnabled": true,
+  "remoteNodeDispatch": true,
+  "runnerNodeFilter": ".*"
+}
+```
 ## Index
 
 [/api/V/config/refresh][]
@@ -7728,7 +8174,7 @@ Content-Type: `application/json`:
 [/api/V/runnerManagement/runners](#list-available-runners)
 
 * `GET` [List available runners](#list-available-runners)
-* `POST` [Create a new Runner](#create-a-new-runner)
+* `POST` [Create a new  Runner](#create-a-new-runner)
 
 [/api/V/runnerManagement/tags](#list-all-known-tags)
 
@@ -7741,6 +8187,48 @@ Content-Type: `application/json`:
 [/api/V/runnerTag/searchTags](#list-tags-for-the-runner)
 
 * `GET` [List tags for the Runner](#list-tags-for-the-runner)
+
+[/api/V/project/\[PROJECT\]/runnerManagement/config](#save-project-context-runner-config)
+
+* `GET` [Save Project Context Runner Config](#save-project-context-runner-config)
+* `POST` [Get Project Context Runner Config](#get-project-context-runner-config)
+
+[/api/V/project/\[PROJECT\]/runnerManagement/runners](#create-a-new-runner-project-level)
+
+* `POST` [Create a new Runner Project level](#create-a-new-runner-project-level)
+* `GET` [List available runners project level](#list-available-runners-project-level)
+
+[/api/V/project/\[PROJECT\]/runnerManagement/runner/\[RUNNERID\]](#update-runner-definition-project-level)
+
+* `POST` [Create a new Runner Project level](#update-runner-definition-project-level)
+* `GET` [Get runner information project level](#get-runner-information-project-level)
+* `DELETE` [Delete the specified runner at project level](#delete-the-specified-runner-at-project-level)
+
+
+[/api/V/project/\[PROJECT\]/runnerManagement/runner/\[ID\]/ping](#ping-the-runner-at-project-level)
+
+* `POST` [Ping the runner at project level](#ping-the-runner-at-project-level)
+
+[/api/V/project/\[PROJECT\]/runnerManagement/checkPing/\[TOKEN\]](#check-a-ping-response-project-level)
+
+* `GET` [Check a ping response project level](#check-a-ping-response-project-level)
+
+
+[/api/V/project/\[PROJECT\]/runnerManagement/runner/\[ID\]/regenerateCreds](#regenerate-credentials-for-the-runner-project-level)
+
+* `POST` [Regenerate credentials for the Runner project level](#regenerate-credentials-for-the-runner-project-level)
+
+[/api/V/project/\[PROJECT\]/runnerManagement/download/\[TOKEN\]](#download-runner-jar-project-level)
+
+* `GET` [Download runner Jar project level](#download-runner-jar-project-level)
+
+[/api/V/project/\[PROJECT\]/runnerManagement/runner/\[RUNNERID\]/removeProjectAssociation](#remove-project-association-from-the-runner)
+
+* `POST` [Remove Project Association From the Runner](#remove-project-association-from-the-runner)
+
+[/api/V/project/\[PROJECT\]/runnerManagement/nodeDispatch/config](#update-runner-node-dispatch-at-project-context)
+
+* `POST` [Update Runner Node Dispatch at project context](#update-runner-node-dispatch-at-project-context)
 
 
 ### Incubating
