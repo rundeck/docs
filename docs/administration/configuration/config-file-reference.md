@@ -13,7 +13,7 @@ installation methods.
     ├── artifact-repositories.yaml
     ├── framework.properties
     ├── jaas-loginmodule.conf
-    ├── log4j.properties
+    ├── log4j2.properties
     ├── profile
     ├── project.properties
     ├── realm.properties
