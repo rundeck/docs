@@ -53,7 +53,7 @@ installation methods.
     $RDECK_BASE/server/config/
     ├── artifact-repositories.yaml
     ├── jaas-loginmodule.conf
-    ├── log4j.properties
+    ├── log4j2.properties
     ├── realm.properties
     ├── rundeck-config.properties
     └── ssl.properties
