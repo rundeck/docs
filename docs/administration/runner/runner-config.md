@@ -33,4 +33,15 @@ java -Dmicronaut.http.client.proxy-type=http -Dmicronaut.http.client.proxy-addre
 
 [Runner APIs](/api#runner-management) are available to create, edit, download, and delete Runners.
 
+## Override temporary directory
 
+To override the temporary directory used by the Runner, add these parameters when starting it.
+
+`runner.rundeck.overrideTempDir:` 'true' to override the temporary directory, or 'false' to retain the default directory '/temp'.
+
+`runner.dirs.tmp:` the new temporary directory.
+
+Example:
+```
+java -Drunner.rundeck.overrideTempDir=true -Drunner.dirs.tmp=/your/custom/dir -jar runner.jar
+```
