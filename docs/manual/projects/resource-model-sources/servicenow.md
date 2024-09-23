@@ -20,7 +20,7 @@ For example, if there are 2000 nodes in the ServiceNow instance, the plugin will
 Some ServiceNow instances are faster than others, therefore this parameter may be increased to shorten the time it takes to bring up the total number of nodes.
 On the other hand, if this number increases too much, the API may take too long and return a time-out.
 
-[Limit by page](/assets/img/servicenow-paging-limit.png)
+![Limit by page](/assets/img/servicenow-paging-limit.png)
 
 ## Filters
 
