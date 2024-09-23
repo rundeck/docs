@@ -378,14 +378,14 @@ Example:
 
 ```properties
 rundeck.storage.provider.1.type=db
-rundeck.storage.provider.1.path=/keys
+rundeck.storage.provider.1.path=keys
 
 rundeck.storage.provider.2.type=file
-rundeck.storage.provider.2.path=/keys/local
+rundeck.storage.provider.2.path=keys/local
 rundeck.storage.provider.2.config.baseDir=/var/local/rundeck
 
-rundeck.storage.provider.3.type=vault-plugin
-rundeck.storage.provider.3.path=/keys/vault
+rundeck.storage.provider.3.type=vault-storage
+rundeck.storage.provider.3.path=keys/vault
 rundeck.storage.provider.3.removePathPrefix=true
 ```
 
