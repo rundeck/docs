@@ -97,7 +97,8 @@ export default [{
         '/manual/execution-lifecycle/roi-metrics.md',
         '/manual/jobs/job-queue.md',
         '/manual/jobs/ai-generated-runbooks.md',
-        '/manual/workflow-strategies'
+        '/manual/workflow-strategies/index.md',
+        {text:'Ruleset Workflow Strategy (Enterprise)', link:'/manual/workflow-strategies/ruleset.md'}
       ]
     },
     {
