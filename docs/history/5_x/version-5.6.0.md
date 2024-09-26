@@ -36,7 +36,7 @@ Our 5.6.0 release is focused on bug fixes, CVE remediation and testing.  We have
 * Fix CVE-2023-5072
 * Fix CVE-2023-51074
 * Fix: It is now possible to change TMP dir in Runners
-* Run-2412: HTTP request step not working in framework and project configuration level
+* HTTP request step not working in framework and project configuration level
 
 
 ## Rundeck Open Source Product Updates
