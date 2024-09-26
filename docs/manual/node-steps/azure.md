@@ -2,7 +2,7 @@
 
 ## Getting Started
 
-Follow the steps outlined in the [**Azure Plugins Overview**](/manual/plugins/azure-plugins-overview) to configure authentication for Azure Job steps.
+Follow the steps outlined in the [**Azure Plugins Overview**](/manual/plugins/azure-plugins-overview.md) to configure authentication for Azure Job steps.
 Credentials can be configured on a per Job Step basis, Project basis, or for the entire Runbook Automation system.
 
 :::tip Rundeck OSS Installations
