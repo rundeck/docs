@@ -29,13 +29,6 @@ A plugin _suite_ is a group of plugins that share a set of the same properties. 
 
 To configure a plugin-suite for a project, navigate to **Project Settings** -> **Edit Configuration** -> **Plugins**:
 
-:::warning Enable Beta Feature
-Configuring plugins at the project level using the following user-interface is in beta. For plugin suites that have not yet been added to this feature, use the [Graphical Interface for Project Configuration](/manual/projects/configuration).<br><br>
-To enable this feature, add **`rundeck.feature.pluginGroups.enabled=true`** to the `framework.properties` file,
-or add the following **_Custom Config_** to [Configuration Management](/manual/configuration-mgmt/configmgmt):<br>
-**Property Name** = **`rundeck.feature.pluginGroups.enabled`**<br>
-**Property Value** = **`true`**
-:::
 
 ![Plugin Suite Project Settings](/assets/img/plugin-groups-project-settings.png)<br>
 
