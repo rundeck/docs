@@ -97,7 +97,14 @@ export default [{
         '/manual/execution-lifecycle/roi-metrics.md',
         '/manual/jobs/job-queue.md',
         '/manual/jobs/ai-generated-runbooks.md',
-        '/manual/workflow-strategies'
+        {
+            text: 'Workflow Strategies',
+            collapsible: true,
+            children: [
+                {text: 'Node First, Sequential, Parallel', link: '/manual/workflow-strategies/index.md'},
+                {text: 'Ruleset', link: '/manual/workflow-strategies/ruleset.md'}
+                ]
+        }
       ]
     },
     {
