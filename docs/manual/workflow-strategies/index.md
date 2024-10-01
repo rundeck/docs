@@ -29,22 +29,22 @@ Node First flow illustrated:
 
 ```
 1.   NodeA    step#1
-2.     "      step#2
-3.     "      step#3
+2.   NodeA    step#2
+3.   NodeA    step#3
 4.   NodeB    step#1
-5.     "      step#2
-6.     "      step#3
+5.   NodeB    step#2
+6.   NodeB    step#3
 ```
 
 Sequential flow illustrated:
 
 ```
 1.   NodeA    step#1
-2.   NodeB      "
+2.   NodeB    step#1
 3.   NodeA    step#2
-4.   NodeB      "
+4.   NodeB    step#2
 5.   NodeA    step#3
-6.   NodeB      "
+6.   NodeB    step#3  
 ```
 
 The process being automated will determine which strategy is
