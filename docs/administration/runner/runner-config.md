@@ -59,5 +59,5 @@ java -Drunner.rundeck.overrideTempDir=true -Drunner.dirs.tmp=/your/custom/dir -j
 
 ## Runner APIs
 
-[Runner APIs](/api#runner-management) are available to create, edit, download, and delete Runners.
+[Runner APIs](/api/index.md#runner-management) are available to create, edit, download, and delete Runners.
 
