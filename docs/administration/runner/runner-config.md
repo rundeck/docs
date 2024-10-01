@@ -29,9 +29,20 @@ java -Dmicronaut.http.client.proxy-type=http -Dmicronaut.http.client.proxy-addre
 1. `-Dmicronaut.http.client.proxy-username` is set to the user that is allowed to connect through the secure proxy.
 1. `-Dmicronaut.http.client.proxy-password` is set to the secure proxy user password.
 
-## Runner APIs
+## Configure Java Heap Size
 
-[Runner APIs](/api#runner-management) are available to create, edit, download, and delete Runners.
+To configure the Java heap size for the Runner, add these parameters when starting it.
+
+`-Xms` sets the initial Java heap size.
+
+`-Xmx` sets the maximum Java heap size.
+
+Example:
+```
+java -Xms4g -Xmx6g -jar runner.jar
+```
+
+In this example, the Runner will start with an initial heap size of 4GB and can use a maximum of 6GB.
 
 ## Override temporary directory
 
@@ -45,3 +56,8 @@ Example:
 ```
 java -Drunner.rundeck.overrideTempDir=true -Drunner.dirs.tmp=/your/custom/dir -jar runner.jar
 ```
+
+## Runner APIs
+
+[Runner APIs](/api/index.md#runner-management) are available to create, edit, download, and delete Runners.
+
