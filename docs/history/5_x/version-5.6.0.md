@@ -17,7 +17,9 @@ Release Date: September 12, 2024
 - Download the Releases: [Open Source](https://www.rundeck.com/community-downloads/5.6.0) | [Self-Hosted](https://www.rundeck.com/enterprise-downloads/5.6.0)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
 - [Upgrade instructions](/upgrading/)
-- [Catch us on Twitch for the Live Stream Release Video](https://www.twitch.tv/pagerduty)
+- [Watch the Live Stream Release Recap](https://www.youtube.com/watch?v=AVf0Pwafza0)
+
+<VidStack src="youtube/AVf0Pwafza0"/>
 
 ## Overview
 
@@ -30,7 +32,7 @@ Our 5.6.0 release is focused on bug fixes, CVE remediation and testing.  We have
 * Fix CVE-2023-5072
 * Fix CVE-2023-51074
 * Fix: It is now possible to change TMP dir in Runners
-* Run-2412: HTTP request step not working in framework and project configuration level
+* HTTP request step not working in framework and project configuration level
 
 
 ## Rundeck Open Source Product Updates
