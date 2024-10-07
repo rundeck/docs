@@ -173,7 +173,8 @@ This plugin execute an HTTP/S request to a remote endpoint.
 * **Body**: The body of the HTTP request.
 * **Request Timeout**: The timeout in milliseconds for the HTTP request.
 * **Validate SSL Certificates**: If true, validate the SSL certificate of the remote endpoint.
-* **Authentication**: Optionally set the method of authentication to use - Basic or OAuth 2.0.
+* **Authentication**: Optionally set the method of authentication to use - Basic or OAuth 2.0.<br>
+  ![HTTP Node Step - Authentication](/assets/img/http-node-step-auth.png)<br>
 * **Username/Client ID**: The username or client ID used for authentication.
 * **Password/Client Secret**: The password or secret key used for authentication. Select a secret from Key Storage.
 * **OAuth Token URL**: If using OAuth, provide the endpoint URL at which to obtain tokens.
@@ -190,7 +191,7 @@ This plugin execute an HTTP/S request to a remote endpoint.
     * Project properties: `project.plugin.WorkflowNodeStep.edu.ohio.ais.rundeck.HttpWorkflowNodeStepPlugin.useJvmProxySettings=true`
     * Framework properties: `framework.plugin.WorkflowNodeStep.edu.ohio.ais.rundeck.HttpWorkflowNodeStepPlugin.useJvmProxySettings=true`
     :::
-* **Proxy IP**: The host of the proxy server. This can 
+* **Proxy IP**: The host of the proxy server. This can be an IP address or a hostname.
 * **Proxy Port**: The port of the proxy server.
 
 :::tip
@@ -198,8 +199,6 @@ This plugin doesn't support unsafe characters.<br>
 If you get this error message: `Illegal character in scheme name at index` it means that an unsafe character was used in the HTTP Request.
 All unsafe characters must always be encoded within a URL. For more information on unsafe characters see [IETF | Internet Engineering Task Force](https://www.ietf.org/rfc/rfc1738.txt)
 :::
-
-![HTTP Node Step - Authentication](/assets/img/http-node-step-auth.png)
 
 ## Notes
 
