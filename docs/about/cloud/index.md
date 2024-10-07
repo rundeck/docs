@@ -32,7 +32,7 @@ The Opsadmin and FullAdmin roles are not available in Runbook Automation, and a 
 
 ### Job execution
 
-As of March 2023, a new Runner architecture (a.k.a. distributedAutomation feature) is availale for Runbook Automation customers. 
+As of March 2023, a new Runner architecture (a.k.a. distributedAutomation feature) is available for Runbook Automation customers. 
 1. The new architecture simplifies how Runners are used for automating remote environments. 
 1. With the new architecture, there is a comprehensive list of plugins available to be executed with the Runners: [Remote plugins on Runners](/administration/runner/runner-plugins/runner-plugins.md)
 1. The new architecture is off by default so please [review the updated docs](/administration/runner/) on how to enable and use the new features. The documents also cover how to convert to the new architecture from the current default architecture for Runners.
