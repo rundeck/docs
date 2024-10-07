@@ -141,7 +141,7 @@ Format
 
 ### HTTP Request Node Step
 
-This plugin execute an HTTP/S request to a remote endpoint.
+This plugin executes an HTTP/S request to a remote endpoint.
 
 ![HTTP Node Step](/assets/img/http-request-step.png)<br>
 
