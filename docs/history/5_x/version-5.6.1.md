@@ -1,0 +1,78 @@
+---
+
+title: "5.6.1 Release Notes"
+date: 2024-01-01
+image: /images/chevron-logo-red-on-white.png
+feed:
+ enable: true
+ description: ""
+
+---
+
+# 5.6.1 Release Notes
+
+Name: <span style="color: sandybrown"><span class="glyphicon glyphicon-camera"></span> "Fansiban sandybrown camera"</span>
+Release Date: PUTADATEHERE
+
+- Download the Releases: [Open Source](https://www.rundeck.com/community-downloads/5.6.1) | [Self-Hosted](https://www.rundeck.com/enterprise-downloads/5.6.1)
+- [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
+- [Upgrade instructions](/upgrading/)
+- [Catch us on Twitch for the Live Stream Release Video](https://www.twitch.tv/pagerduty)
+
+## Overview
+
+Check out the new features and enhancements for PagerDuty Runbook Automation commercial offerings and Rundeck Community included in this release.
+
+### Highlights
+
+- first highlight
+- second highlight
+
+## Runbook Automation Updates
+
+> Also includes all Open Source updates from below
+
+### Additional Updates
+
+
+
+
+## Rundeck Open Source Product Updates
+
+
+
+[Here is a link to the full list of public PRs](https://github.com/rundeck/rundeck/pulls?q=is%3Apr+milestone%3A5.6.1+is%3Aclosed)
+
+## Ansible Plugin Updates
+
+
+
+
+## Community Contributors
+
+Submit your own Pull Requests to get recognition here!
+
+
+
+## Staff Contributors
+
+* Greg Schueler ([gschueler](https://github.com/gschueler))
+* Alberto Hormazabal Cespedes ([ahormazabal](https://github.com/ahormazabal))
+* Alexander Abarca ([alexander-variacode](https://github.com/alexander-variacode))
+* Alexander Grachtchouk ([mrdubr](https://github.com/mrdubr))
+* Antony Velasquez Ruiz ([avelasquezr](https://github.com/avelasquezr))
+* Carlos Eduardo ([carlosrfranco](https://github.com/carlosrfranco))
+* Christopher McCarroll-Gilbert ([chrismcg14](https://github.com/chrismcg14))
+* Charlie Crawford ([ChuckCrawford](https://github.com/ChuckCrawford))
+* Darwis Narvaez ([DarwisNarvaezDev](https://github.com/DarwisNarvaezDev))
+* Forrest Evans ([fdevans](https://github.com/fdevans))
+* Imad Jafir ([imad6639](https://github.com/imad6639))
+* Jake Cohen ([jsboak](https://github.com/jsboak))
+* Jason Brooks ([jbrookspd](https://github.com/jbrookspd))
+* Jesus Osuna ([Jesus-Osuna-M](https://github.com/Jesus-Osuna-M))
+* Leonel Juarez ([L2JE](https://github.com/L2JE))
+* Luis Toledo ([ltamaster](https://github.com/ltamaster))
+* Oscar Cerda ([ocerda](https://github.com/ocerda))
+* Rodrigo Navarro ([ronaveva](https://github.com/ronaveva))
+* Sarah Martinelli Benedetti ([smartinellibenedetti](https://github.com/smartinellibenedetti))
+* Stephen Joyner ([sjrd218](https://github.com/sjrd218))
