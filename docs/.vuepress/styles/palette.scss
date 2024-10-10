@@ -23,6 +23,10 @@ $border-color: (
   light: #eaecef,
   dark: #30363d,
 ) !default;
+$announce-color: (
+  light: rgba(6, 111, 48, .15),
+  dark: #666,
+) !default;
 
 // shadow
 $box-shadow: (

@@ -26,7 +26,7 @@ h6 {
 }
 
 .homepage-announce {
-  background-color: var(--theme-color-mask); /* Green color */
+  background-color: var(--announce-color); /* Green color */
   /*border-radius: 10px; /* Rounded corners */
   padding: 1px 0px; /* Padding inside the box */
   font-size: 16px; /* Small font size */
@@ -35,7 +35,7 @@ h6 {
   }
 
 .sidebar-announce {
-    background-color: var(--theme-color-mask); /* Green color */
+    background-color: var(--announce-color); /* Green color */
     border-radius: 10px; /* Rounded corners */
     padding: 1px 8px; /* Padding inside the box */
     font-size: 14px; /* Small font size */
