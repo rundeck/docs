@@ -14,7 +14,7 @@ feed:
 Name: <span style="color: brown"><span class="glyphicon glyphicon-apple"></span> "Denali brown apple"</span>
 Release Date: December 14th, 2023
 
-- [Download the Releases](https://download.rundeck.com/)
+- Download the Release: [Open Source](https://www.rundeck.com/community-downloads/5.0.0) | [Self-Hosted](https://www.rundeck.com/enterprise-downloads/5.0.0)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
 - [Watch the Live Stream Release Recap](https://www.youtube.com/live/lcQJQRfI92c?si=QP_RIUNrwlrvXpsh)
 

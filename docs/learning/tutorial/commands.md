@@ -3,7 +3,7 @@ prev:
   link: '/learning/tutorial/creatingnodes.md'
   text: "Getting Started - Nodes"
 next:
-  link: '/learning/tutorial/jobs.md'
+  link: '/learning/tutorial/index.md'
   text: "Getting Started - Jobs/Activity"
 
 ---

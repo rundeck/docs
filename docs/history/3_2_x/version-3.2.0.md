@@ -9,7 +9,7 @@ See [Upgrading to Rundeck 3.2](/upgrading/upgrading-to-rundeck-3.2.html).
 
 ### Job Resume (Enterprise)
 
-The new [Job Resume Plugin \(Enterprise\)](/manual/execution-lifecycle/job-resume.md) allows you to manually or automatically resume an execution at a failed step.
+The new [Job Resume Plugin \(Enterprise\)](/manual/jobs/job-resume.md) allows you to manually or automatically resume an execution at a failed step.
 
 ![Execution Plugins](/assets/img/figure-job-resume-edit-job-execution-plugins.png)
 

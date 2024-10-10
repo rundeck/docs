@@ -1,8 +1,8 @@
 # Upgrading Overview
 
-- [General Upgrade Guide](upgrading.md) - General upgrading guide for Rundeck/Runbook Automation
+- [General Upgrade Guide](upgrading.md) - General upgrading guide for Rundeck / Runbook Automation
 
-Specific instructions for upgrading to specific Rundeck Versions is below.  
+Specific instructions for upgrading to specific Rundeck versions is below.  
 ::: warning
 **When upgrading from multiple versions behind be sure to follow all interim upgrade steps.  For example: Going from 3.3.13 to 4.1 means reviewing the 3.4 and 4.0 notes as well.**
 :::

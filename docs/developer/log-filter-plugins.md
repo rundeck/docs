@@ -4,7 +4,7 @@
 
 Log Filter plugins provide a way to process logging output from commands, scripts and other workflow step types. They can filter the output (remove, add, modify), or they can be used to capture or convert the output. They can also add metadata to the logs, or emit new log data.
 
-Log Filter plugins implement the [LogFilterPlugin]({{{javaDocBase}}}/com/dtolabs/rundeck/plugins/logging/LogFilterPlugin.html) interface, and provider the `LogFilter` service.
+Log Filter plugins implement the [LogFilterPlugin]({{$javaDocBase}}/com/dtolabs/rundeck/plugins/logging/LogFilterPlugin.html) interface, and provider the `LogFilter` service.
 
 ## Behavior
 
@@ -30,10 +30,10 @@ It can also control how the log event is handled:
 - `quiet`: the final loglevel should be set to VERBOSE
 - `remove`: the log event should not be processed further
 
-[logfilterplugin]: {{{javaDocBase}}}/com/dtolabs/rundeck/plugins/logging/LogFilterPlugin.html
-[pluginloggingcontext]: {{{javaDocBase}}}/com/dtolabs/rundeck/core/logging/PluginLoggingContext.html
-[logeventcontrol]: {{{javaDocBase}}}/com/dtolabs/rundeck/core/logging/LogEventControl.html
-[logevent]: {{{javaDocBase}}}/com/dtolabs/rundeck/core/logging/LogEvent.html
+[logfilterplugin]: {{$javaDocBase}}/com/dtolabs/rundeck/plugins/logging/LogFilterPlugin.html
+[pluginloggingcontext]: {{$javaDocBase}}/com/dtolabs/rundeck/core/logging/PluginLoggingContext.html
+[logeventcontrol]: {{$javaDocBase}}/com/dtolabs/rundeck/core/logging/LogEventControl.html
+[logevent]: {{$javaDocBase}}/com/dtolabs/rundeck/core/logging/LogEvent.html
 
 ### Groovy LogFilter
 

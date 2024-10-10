@@ -141,7 +141,7 @@ Note that you can also collect a value from a single node that is available in s
 #### Reference
 
 The global variable step can capture the following groups of variables:
--   [Context](/manual/job-workflows.md#context-variables) variable, such as project and job.
+-   [Context](/manual/jobs/job-workflows.md#context-variables) variable, such as project and job.
 -   Data variable captured by a [key-value](/manual/log-filters/key-value-data.md), Multiline regex, or JQ log filter
 
 

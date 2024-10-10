@@ -5,7 +5,7 @@ info:
   license:
     name: Apache 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0.html
-  version: "46"
+  version: "48"
 externalDocs:
   description: Original Rundeck API Documentation
   url: https://docs.rundeck.com/docs/api/rundeck-api.html
@@ -1980,6 +1980,56 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/FeatureEnabledResult'
+  /home/summary:
+    get:
+      tags:
+      - executions
+      - projects
+      - summary
+      summary: Summary of executions and projects
+      description: |
+        Get Summary information about executions and projects.
+
+        Since: V45
+      operationId: apiHomeSummary
+      responses:
+        "200":
+          description: |
+            Success response, with summary information.
+
+            Fields:
+
+            `execCount`
+
+            :   Number of executions
+
+            `totalFailedCount`
+
+            :   Number of failed executions in the last 24 hours
+
+            `recentUsers`
+
+            :   Name of users who triggered executions in the last 24 hours
+
+            `recentProjects`
+
+            :   Name of projects with executions in the last 24 hours
+
+            `frameworkNodeName`
+
+            :   Name of framework node
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HomeSummary'
+              examples:
+                example:
+                  value:
+                    execCount: 0
+                    totalFailedCount: 0
+                    recentUsers: []
+                    recentProjects: []
+                    frameworkNodeName: localhost
   /job/{id}:
     get:
       tags:
@@ -2186,6 +2236,12 @@ paths:
         description: "indicate the 0-indexed offset for the first result to \nreturn."
         schema:
           type: integer
+      - name: includeJobRef
+        in: query
+        description: "Include the executions from referenced jobs. If \nunspecified,\
+          \ the default value will be false. Since API v50"
+        schema:
+          type: boolean
       responses:
         "200":
           description: Executions results
@@ -2389,6 +2445,7 @@ paths:
       summary: Get Job Forecast
       description: |-
         Get Metadata for the job including a schedule forecast for a specific amount of time of the job by ID.
+        (**API v48** or later): forecast includes information about one time scheduled execution, and information if the project related to the job allows executions and scheduling
 
         Authorization required: `read` or `view` for the Job
 
@@ -2540,7 +2597,7 @@ paths:
     get:
       tags:
       - jobs
-      summary: Get Job Metadata
+      summary: Get Job UI Metadata
       description: |-
         Get metadata for a specific job.
 
@@ -2557,8 +2614,8 @@ paths:
           type: string
       - name: meta
         in: query
-        description: "Comma-separated list of metadata items to include, or \"*\"\
-          \ for all (default)"
+        description: "Comma-separated list of metadata item names to include, or \"\
+          *\" for all (default)"
         required: true
         schema:
           type: string
@@ -3649,12 +3706,24 @@ paths:
 
         Authorization required: `read` for project resource
       operationId: apiProjectList
+      parameters:
+      - name: meta
+        in: query
+        description: "Comma-separated list of metadata items to include, or \"*\"\
+          \ for all"
+        required: false
+        allowEmptyValue: false
+        schema:
+          type: string
       responses:
         "200":
           description: "\n*Since API version 26*: add the project `label` to the response\n\
             \n*Since API version 33*: add the project `created` date to the response.\
             \ This is based on the creation of the \n`project.properties` file in\
-            \ the file system or in the DB storage."
+            \ the file system or in the DB storage.\n\n*Since API version 47*: add\
+            \ the project `metadata` to the response. To retrieve this information,\
+            \ use the query param meta\n(Comma-separated list of metadata items to\
+            \ include, or \"*\" for all (default))."
           content:
             application/json:
               schema:
@@ -4467,6 +4536,13 @@ paths:
         allowEmptyValue: false
         schema:
           type: string
+      - name: enablePluginValidation
+        in: query
+        description: Enable plugin validation
+        required: false
+        allowEmptyValue: false
+        schema:
+          type: boolean
       requestBody:
         content:
           application/json:
@@ -6088,13 +6164,11 @@ paths:
     post:
       tags:
       - jobs
-      summary: Query jobs at a path
-      description: |-
-        Query the jobs at a specific group path.
-
-        Authorization required: `read` or `view` for the Job.
-
-        Since: v46
+      summary: Project Job Group browse
+      description: "Query the jobs at a specific group path. Response includes the\
+        \ list of immediate jobs matching the query in the exact path, \nand the names\
+        \ of job Groups starting at that path.\n\nAuthorization required: `read` or\
+        \ `view` for the Jobs.\n\nSince: v46"
       operationId: apiJobBrowse
       parameters:
       - name: project
@@ -6383,6 +6457,60 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApiErrorResponse'
+  /project/{project}/jobs/validateOption:
+    post:
+      summary: Validate an option
+      description: "Validates an option defintion for a job, returns any validation\
+        \ errors.\n\nIf any validation errors occur, the response will use code 400,\
+        \ otherwise 200 will be returned.\n\nThe request body should be a JSON object\
+        \ describing a Job Option definition, \nand a `jobWasScheduled` parameter\
+        \ to indicate if the job was scheduled.\n\nThe data format corresponds with\
+        \ a Job Option definition in Job JSON format, with these additional fields:\n\
+        \n* `remoteUrlAuthenticationType`: the type of authentication to use for a\
+        \ remote URL\n* `configRemoteUrl`: a configuration object for the remote URL\
+        \ values\n* `valuesType`: indicates the type of chosen values list, one of\
+        \ \"url\", \"list\", or a Option Values plugin type.\n\n\nSince: V47"
+      operationId: apiValidateOption
+      parameters:
+      - name: project
+        in: path
+        description: Project name
+        required: true
+        schema:
+          type: string
+      - name: jobWasScheduled
+        in: query
+        description: True if job was scheduled
+        required: true
+        schema:
+          type: boolean
+      requestBody:
+        description: Option validation request
+        content:
+          application/json:
+            schema:
+              properties:
+                optionData:
+                  $ref: '#/components/schemas/OptionValidateRequest'
+              allOf:
+              - $ref: '#/components/schemas/OptionValidateRequest'
+              - properties:
+                  optionData:
+                    $ref: '#/components/schemas/OptionValidateRequest'
+      responses:
+        "200":
+          description: Option validation with no errors
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OptionValidateResponse'
+        "400":
+          description: "Option validation with errors, the messages will contain the\
+            \ validation errors keyed by input field path"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OptionValidateResponse'
   /project/{project}/listAllJobs:
     get:
       tags:
@@ -6436,7 +6564,7 @@ paths:
     get:
       tags:
       - project
-      summary: Get project metadata
+      summary: Get Project UI Metadata
       description: |-
         Get project metadata.
 
@@ -8184,6 +8312,362 @@ paths:
           description: Runner Download
           content:
             application/java-archive: {}
+  /runnerManagement/project/{project}/runner/{id}/regenerateCreds:
+    post:
+      tags:
+      - enterprise
+      summary: Regenerate Runner Creds at Project context
+      description: "Regenerate credentials for the Runner at Project context. Since:\
+        \ V42"
+      operationId: regenerateProjectRunnerCreds
+      parameters:
+      - name: project
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Runner Regenerated Credentials
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RegenRunnerCredResponse'
+  /runnerManagement/project/{project}/runnerManagement/checkPing/{token}:
+    get:
+      tags:
+      - enterprise
+      summary: Check Runner Ping at Project Context
+      description: "Check a ping response at project context. Since: V42"
+      operationId: projectCheckPing
+      parameters:
+      - name: token
+        in: path
+        description: Ping Token
+        required: true
+        schema:
+          type: string
+      - name: project
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Ping Runner Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PingResponse'
+  /runnerManagement/project/{project}/runnerManagement/config:
+    get:
+      tags:
+      - enterprise
+      summary: Get Project Context Runner Configuration
+      description: "Get project context runner configuration. Since: V41"
+      operationId: projectContextRunnerConfig
+      parameters:
+      - name: project
+        in: path
+        description: Project Name
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Project Context Runner Configuration
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectContextRunnerConfig'
+    post:
+      tags:
+      - enterprise
+      summary: Save Project Context Runner Config
+      description: "Save project context runner config. Since: V41"
+      operationId: saveProjectContextRunnerConfig
+      parameters:
+      - name: project
+        in: path
+        description: Project Name
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                runnerConfigRequest:
+                  $ref: '#/components/schemas/SaveProjectRunnerConfigRequest'
+        required: true
+      responses:
+        "200":
+          description: Project Context Runner Config Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectContextRunnerConfig'
+  /runnerManagement/project/{project}/runnerManagement/download/{token}:
+    get:
+      tags:
+      - enterprise
+      summary: Download Runner at Project Context
+      description: "Download runner Jar at project context. Since: V41"
+      operationId: projectDownloadRunner
+      parameters:
+      - name: token
+        in: path
+        description: Download Token
+        required: true
+        schema:
+          type: string
+      - name: project
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Runner Download
+          content:
+            application/java-archive: {}
+  /runnerManagement/project/{project}/runnerManagement/runner/{id}/ping:
+    post:
+      tags:
+      - enterprise
+      summary: Ping a Runner at Project Context
+      description: "Ping the runner at project context. Since: V41"
+      operationId: pingProjectRunner
+      parameters:
+      - name: id
+        in: path
+        description: Runner ID
+        required: true
+        schema:
+          type: integer
+      - name: project
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Ping Runner Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PingTokenResponse'
+  /runnerManagement/project/{project}/runnerManagement/runner/{runnerId}:
+    get:
+      tags:
+      - enterprise
+      summary: Get Runner Info at Project Context
+      description: "Get runner information at project context. Since: V41"
+      operationId: projectRunnerInfo
+      parameters:
+      - name: runnerId
+        in: path
+        description: Runner ID
+        required: true
+        schema:
+          type: integer
+      - name: project
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Runner Info
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RunnerInfo'
+    post:
+      tags:
+      - enterprise
+      summary: Update Runner Definition  at Project context
+      description: "Update the runner at Project context. Since: V41"
+      operationId: saveProjectRunner
+      parameters:
+      - name: project
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: runnerId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/UpdateRunnerRequest'
+              - properties:
+                  data:
+                    $ref: '#/components/schemas/UpdateRunnerRequest'
+      responses:
+        "200":
+          description: New runner
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RunnerInfo'
+    delete:
+      tags:
+      - enterprise
+      summary: Delete Runner
+      description: "Delete the specified runner. Since: V41"
+      operationId: deleteProjectRunner
+      parameters:
+      - name: project
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: runnerId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "204":
+          description: No Content
+  /runnerManagement/project/{project}/runnerManagement/runner/{runnerId}/removeProjectAssociation:
+    post:
+      tags:
+      - enterprise
+      summary: Remove Project Association From the Runner
+      description: "Remove project association from the runner at project context.\
+        \ Since: V41"
+      operationId: removeProjectAssociation
+      parameters:
+      - name: project
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: runnerId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateRunnerRequest'
+      responses:
+        "200":
+          description: New runner
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RunnerInfo'
+  /runnerManagement/project/{project}/runnerManagement/runners:
+    get:
+      tags:
+      - enterprise
+      summary: List Runners at project context
+      description: "List available runners associated to the project. Since: V41"
+      operationId: listProjectRunners
+      parameters:
+      - name: tags
+        in: query
+        description: List of tags
+        schema:
+          type: string
+      - name: localOnly
+        in: query
+        description: Include local runner only
+        schema:
+          type: boolean
+      - name: filter
+        in: query
+        description: Use filter string
+        schema:
+          type: string
+      - name: status
+        in: query
+        description: Filter by runner status
+        schema:
+          type: string
+      - name: project
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Runner List Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RunnerList'
+    post:
+      tags:
+      - enterprise
+      summary: Create a Runner at Project Context
+      description: "Create a new Runner at project context. Since: V42"
+      operationId: createProjectRunner
+      parameters:
+      - name: project
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                newRunnerRequest:
+                  $ref: '#/components/schemas/CreateRunnerRequest'
+        required: true
+      responses:
+        "200":
+          description: New runner created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NewRunnerResponse'
+        "400":
+          description: Failed to create the runner
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /runnerManagement/projectUi:
+    get:
+      tags:
+      - enterprise
+      summary: Get UI info for runner management at project context
+      description: "Get UI info for runner management at project context. Since: V43"
+      operationId: projectUi
+      parameters:
+      - name: project
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Runner Management UI
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UiData'
   /runnerManagement/runner/{id}/keys:
     get:
       tags:
@@ -10887,7 +11371,7 @@ paths:
                 example:
                   value:
                     err: Error message
-        "503":
+        "404":
           description: Webhook not enabled
           content:
             application/json:
@@ -11233,6 +11717,12 @@ components:
         errorCount:
           type: integer
           format: int32
+        allErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ObjectError'
+        fieldError:
+          $ref: '#/components/schemas/FieldError'
         objectName:
           type: string
         nestedPath:
@@ -11253,12 +11743,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/FieldError'
-        allErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/ObjectError'
-        fieldError:
-          $ref: '#/components/schemas/FieldError'
     EventRoutingResult:
       type: object
       properties:
@@ -11306,19 +11790,41 @@ components:
           type: string
           description: "since: v42"
     FieldError:
+      required:
+      - field
       type: object
-      allOf:
-      - $ref: '#/components/schemas/ObjectError'
-      - $ref: '#/components/schemas/DefaultMessageSourceResolvable'
-      - required:
-        - field
-        properties:
-          bindingFailure:
-            type: boolean
-          rejectedValue:
-            type: object
-          field:
+      properties:
+        bindingFailure:
+          type: boolean
+        rejectedValue:
+          type: object
+        field:
+          type: string
+    HomeSummary:
+      required:
+      - execCount
+      - frameworkNodeName
+      - recentProjects
+      - recentUsers
+      - totalFailedCount
+      type: object
+      properties:
+        execCount:
+          type: integer
+          format: int32
+        totalFailedCount:
+          type: integer
+          format: int32
+        recentUsers:
+          type: array
+          items:
             type: string
+        recentProjects:
+          type: array
+          items:
+            type: string
+        frameworkNodeName:
+          type: string
     IDataEntry:
       type: object
       properties:
@@ -11453,6 +11959,10 @@ components:
           items:
             type: string
             format: date-time
+        projectDisableExecutions:
+          type: boolean
+        projectDisableSchedule:
+          type: boolean
     JobOption:
       type: object
       properties:
@@ -11674,6 +12184,67 @@ components:
         properties:
           objectName:
             type: string
+    OptionInput:
+      type: object
+    OptionValidateRequest:
+      type: object
+      properties:
+        type:
+          type: string
+        storagePath:
+          type: string
+        valuesUrl:
+          type: string
+        value:
+          type: string
+        values:
+          type: array
+          items:
+            type: string
+        secure:
+          type: boolean
+        valueExposed:
+          type: boolean
+        valuesType:
+          type: string
+        remoteUrlAuthenticationType:
+          type: string
+        configRemoteUrl:
+          type: object
+          additionalProperties: true
+        optionType:
+          type: string
+        defaultStoragePath:
+          type: string
+        realValuesUrl:
+          type: string
+          format: url
+        defaultValue:
+          type: string
+        valuesList:
+          type: string
+        optionValues:
+          type: array
+          items:
+            type: string
+        secureInput:
+          type: boolean
+        secureExposed:
+          type: boolean
+      allOf:
+      - $ref: '#/components/schemas/OptionInput'
+    OptionValidateResponse:
+      type: object
+      properties:
+        valid:
+          type: boolean
+        messages:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+          description: Mapping of input key to list of validation error messages
     OutputStream:
       type: object
     Paging:
@@ -11773,6 +12344,8 @@ components:
           type: string
         preserveuuid:
           type: boolean
+        asyncImport:
+          type: boolean
     ProjectCalendarsResponse:
       type: object
       properties:
@@ -11784,6 +12357,13 @@ components:
           type: boolean
       description: Response to POST request to to create or update a calendar at project
         level
+    ProjectContextRunnerConfig:
+      type: object
+      properties:
+        project:
+          type: string
+        automatic:
+          type: boolean
     ProjectModeLaterRequest:
       type: object
       properties:
@@ -11828,6 +12408,10 @@ components:
       allOf:
       - $ref: '#/components/schemas/RdPageable'
       - properties:
+          sortBy:
+            type: string
+          sortOrder:
+            type: string
           errors:
             $ref: '#/components/schemas/Errors'
           inputParamMap:
@@ -11864,10 +12448,6 @@ components:
             type: boolean
           paginatedRequired:
             type: boolean
-          sortBy:
-            type: string
-          sortOrder:
-            type: string
     RdPageable:
       type: object
       properties:
@@ -12096,10 +12676,19 @@ components:
           type: array
           items:
             type: string
+        uiData:
+          $ref: '#/components/schemas/UiData'
         providers:
           type: array
           items:
             $ref: '#/components/schemas/RunnerProviderSummary'
+    SaveProjectRunnerConfigRequest:
+      type: object
+      properties:
+        project:
+          type: string
+        automatic:
+          type: boolean
     ScmAction:
       type: object
       properties:

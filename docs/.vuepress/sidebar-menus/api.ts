@@ -5,8 +5,7 @@ export default[{
     {
       text: 'API Reference',
       link: '/api/',
-      collapsible: true,
-      headerDepth: 1
+      collapsible: true
     },
     '/api/rundeck-api-versions.md',
     '/api/api_basics.md',

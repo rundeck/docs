@@ -13,7 +13,7 @@ installation methods.
     ├── artifact-repositories.yaml
     ├── framework.properties
     ├── jaas-loginmodule.conf
-    ├── log4j.properties
+    ├── log4j2.properties
     ├── profile
     ├── project.properties
     ├── realm.properties
@@ -102,7 +102,7 @@ Other settings:
 
 - `rundeck.server.uuid`: This is used to manually specify the server UUID for certain cluster and licensing needs.
 - `framework.log.dispatch.console.format`: Default format for non-terse node execution logging run by the `dispatch` CLI tool.
-- `execution.script.tokenexpansion.enabled`: Whether inline script token expansion is enabled, default `true`. If `false`, the "Inline Script Content" syntax described in [User Guide - Creating Job Workflows - Context Variables](/manual/job-workflows.md#context-variables) is disabled.
+- `execution.script.tokenexpansion.enabled`: Whether inline script token expansion is enabled, default `true`. If `false`, the "Inline Script Content" syntax described in [User Guide - Creating Job Workflows - Context Variables](/manual/jobs/job-workflows.md#context-variables) is disabled.
 - `communityNews.disabled`: Default is not set, or false. Disables the external polling of Community News feed. Link will persist but will not poll, and clicking this link will open a new browser tab and navigate to the web-based version of Community News.
 
 ### Static authentication tokens for API access:
@@ -456,14 +456,6 @@ will suppress the non-SSO login form.
 
 - `server.servlet.session.timeout`: timeout in seconds.
 
-Note: This setting applies _only_ to the embedded Jetty server, which is used for standalone war launcher, rpm or deb installs. It does not work for Tomcat installation.
-
-If you are deploying the Rundeck war file to Tomcat, you can manage the session timeout setting in the `$TomcatBase/conf/web.xml` file. The setting is in minutes.
-
-```xml
-    <session-config> <session-timeout>30</session-timeout> </session-config>
-```
-
 In order to add the HSTS (HTTP Strict Transport Security) security header to the static resources of Rundeck, the configuration must be set directly on the server. The following two flags are used for the embedded Jetty server:
 
 - `rundeck.web.jetty.servlet.stsMaxAgeSeconds`: time in seconds.
@@ -623,7 +615,7 @@ rundeck.pagination.default.max=20
 
 ### Job Remote Option URL connection parameters
 
-Change the defaults for for [Job Remote Option Value URLs](/manual/job-options.md#remote-option-values) loading.
+Change the defaults for for [Job Remote Option Value URLs](/manual/jobs/job-options.md#remote-option-values) loading.
 
 **Socket read timeout**
 

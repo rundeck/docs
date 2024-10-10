@@ -42,8 +42,6 @@ _If a step fails_: This manages what to do if a step incurs an error:
 The default is to fail immediately but depending on the procedure at
 hand it is possible to choose to have the execution continue.
 
-<!--- Out of date? Node First, Parallel, Sequential, Ruleset Workflow Strategy --->
-
 _Strategy_: Controls the order of execution of steps and command
 dispatch to nodes: _Node-oriented_ and _Step-oriented_.
 
@@ -53,35 +51,9 @@ dispatch to nodes: _Node-oriented_ and _Step-oriented_.
   step.
 - _Parallel_: Run all steps in parallel.
 
-The following illustrations contrast the strategies showing how three
-steps proceed across two nodes.
+[See more details here](/manual/workflow-strategies/)
 
-Node First flow illustrated:
-
-```
-1.   NodeA    step#1
-2.     "      step#2
-3.     "      step#3
-4.   NodeB    step#1
-5.     "      step#2
-6.     "      step#3
-```
-
-Sequential flow illustrated:
-
-```
-1.   NodeA    step#1
-2.   NodeB      "
-3.   NodeA    step#2
-4.   NodeB      "
-5.   NodeA    step#3
-6.   NodeB      "
-```
-
-The process being automated will determine which strategy is
-correct, though the node-oriented flow is more commonplace.
-
-For more complex workflow strategy rules, see [Ruleset Workflow Strategy Plugin](/manual/workflow-strategies/ruleset.md)
+For more complex workflow strategy rules, see [Ruleset Workflow Strategy Plugin](/manual/jobs/workflow-strategies/ruleset.md)
 
 ## Workflow steps
 
@@ -116,8 +88,8 @@ workflow step.
 
 Steps in a workflow can be either _Node Steps_ or _Workflow Steps_.
 
-- Node Steps operate once on each Node, which could be multiple times within a workflow. For a full list of Node Steps, see [Job Plugins - Node Steps](/manual/job-plugins.md#node-steps)
-- Workflow Steps operate only once in the workflow. For a full list of Workflow Steps, see [Workflow Steps](/manual/job-plugins.md#workflow-steps)
+- Node Steps operate once on each Node, which could be multiple times within a workflow. For a full list of Node Steps, see [Job Plugins - Node Steps](/manual/jobs/job-plugins/index.md#node-steps)
+- Workflow Steps operate only once in the workflow. For a full list of Workflow Steps, see [Workflow Steps](/manual/jobs/job-plugins/index.md#workflow-steps)
 
 ## Reordering steps
 
@@ -321,7 +293,7 @@ The following values may be available after the job is finished (not available f
 - `execution.dateEndedW3c`: End time as W3C formatted string
 - `execution.abortedby`: User who aborted the execution
 
-Option context variables are referred to as `option.NAME` (more about [Job Options](/manual/job-options.md).)
+Option context variables are referred to as `option.NAME` (more about [Job Options](/manual/jobs/job-options.md).)
 
 :::tip
 There may be additional context variables available, such as `data.*` values when using the [Data Capture Job Filter Plugins](#data-capture-job-filter-plugins).

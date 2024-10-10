@@ -216,7 +216,7 @@ configuration properties that you can specify. Each combination of trigger and
 Notification type has a unique configuration.
 
 When defining configuration values for a plugin, you can usually substitute
-any "Job context variables" that are listed under [User Guide - Creating Job Workflows - Context Variables](/manual/job-workflows.md#context-variables). (Note: Some configuration properties of a plugin may not support this feature.)
+any "Job context variables" that are listed under [User Guide - Creating Job Workflows - Context Variables](/manual/jobs/job-workflows.md#context-variables). (Note: Some configuration properties of a plugin may not support this feature.)
 
 In addition, you can also use these variables:
 
@@ -378,14 +378,14 @@ Example:
 
 ```properties
 rundeck.storage.provider.1.type=db
-rundeck.storage.provider.1.path=/keys
+rundeck.storage.provider.1.path=keys
 
 rundeck.storage.provider.2.type=file
-rundeck.storage.provider.2.path=/keys/local
+rundeck.storage.provider.2.path=keys/local
 rundeck.storage.provider.2.config.baseDir=/var/local/rundeck
 
-rundeck.storage.provider.3.type=vault-plugin
-rundeck.storage.provider.3.path=/keys/vault
+rundeck.storage.provider.3.type=vault-storage
+rundeck.storage.provider.3.path=keys/vault
 rundeck.storage.provider.3.removePathPrefix=true
 ```
 

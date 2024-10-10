@@ -19,8 +19,6 @@ Two installation methods are supported:
 
 - Launcher: The launcher is intended for quick setup, to get the software running right away. Perfect for bootstrapping a project or trying a new feature.
 
-Runbook Automation can also install as a WAR file into an external container like Tomcat.
-
 [See the Installation section for more details on Runbook Automation setup.](/administration/install/index.md)
 
 Assuming the system requirements are met, Runbook Automation can be installed either from source, system package or via the launcher.

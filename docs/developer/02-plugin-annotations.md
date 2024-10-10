@@ -17,7 +17,7 @@ ResourceModelSource, NodeExecutor and FileCopier plugins currently do not suppor
 ## Plugin Description
 
 You can define the display name, and descriptive text about your plugin by adding a
-[PluginDescription]({{{javaDocBase}}}/com/dtolabs/rundeck/plugins/descriptions/PluginDescription.html) annotation to your plugin class.
+[PluginDescription]({{$javaDocBase}}/com/dtolabs/rundeck/plugins/descriptions/PluginDescription.html) annotation to your plugin class.
 
 Attributes of `@PluginDescription`:
 
@@ -41,7 +41,7 @@ no descriptive text when displayed.
 
 You can supply additional metadata about the plugin implementation, using the
 [\@PluginMetadata][] annotation.
-You can provide multiple metadata entries with a [\@PluginMeta]({{{javaDocBase}}}/com/dtolabs/rundeck/plugins/descriptions/PluginMeta.html)
+You can provide multiple metadata entries with a [\@PluginMeta]({{$javaDocBase}}/com/dtolabs/rundeck/plugins/descriptions/PluginMeta.html)
 annotation, which can contain multiple [\@PluginMetadata][] values.
 
 Example:
@@ -67,7 +67,7 @@ public class MyPlugin implements StepPlugin{
 
 See [Provider Metadata](/developer/01-plugin-development.md#provider-metadata-1) for information about what metadata keys may be used.
 
-[\@pluginmetadata]: {{{javaDocBase}}}/com/dtolabs/rundeck/plugins/descriptions/PluginMetadata.html
+[\@pluginmetadata]: {{$javaDocBase}}/com/dtolabs/rundeck/plugins/descriptions/PluginMetadata.html
 
 ## Plugin Properties
 
@@ -85,9 +85,9 @@ workflow configuration.
 
 These annotation classes are used:
 
-- [PluginProperty]({{{javaDocBase}}}/com/dtolabs/rundeck/plugins/descriptions/PluginProperty.html) - Declares a class field as a plugin configuration property
-- [SelectValues]({{{javaDocBase}}}/com/dtolabs/rundeck/plugins/descriptions/SelectValues.html) - Declares a String property to be a "Select" property, which defines a set of input values that can be chosen from a list. Can be used with `multiOption` attribute to declare a `Set`, `List` or `String[]` and allow multiple values to be chosen. If `multiOption` is used with a String, the value will be the values joined with a `,` (comma).
-- [TextArea]({{{javaDocBase}}}/com/dtolabs/rundeck/plugins/descriptions/TextArea.html) - Declares a String property to be rendered as a multi-line text area in the Rundeck GUI.
+- [PluginProperty]({{$javaDocBase}}/com/dtolabs/rundeck/plugins/descriptions/PluginProperty.html) - Declares a class field as a plugin configuration property
+- [SelectValues]({{$javaDocBase}}/com/dtolabs/rundeck/plugins/descriptions/SelectValues.html) - Declares a String property to be a "Select" property, which defines a set of input values that can be chosen from a list. Can be used with `multiOption` attribute to declare a `Set`, `List` or `String[]` and allow multiple values to be chosen. If `multiOption` is used with a String, the value will be the values joined with a `,` (comma).
+- [TextArea]({{$javaDocBase}}/com/dtolabs/rundeck/plugins/descriptions/TextArea.html) - Declares a String property to be rendered as a multi-line text area in the Rundeck GUI.
 
 Attributes:
 
@@ -121,7 +121,7 @@ private String fruit;
 
 ## Property Scopes
 
-You can define the scope for a property by adding `scope` to the PluginProperty annotation. Refer to the class [PropertyScope]({{{javaDocBase}}}/com/dtolabs/rundeck/core/plugins/configuration/PropertyScope.html).
+You can define the scope for a property by adding `scope` to the PluginProperty annotation. Refer to the class [PropertyScope]({{$javaDocBase}}/com/dtolabs/rundeck/core/plugins/configuration/PropertyScope.html).
 
 The default effective scope if you do not specify it in the annotation is `InstanceOnly`.
 

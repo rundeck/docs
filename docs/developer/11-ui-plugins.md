@@ -112,7 +112,7 @@ See [Plugin Icons](/developer/01-plugin-development.md#plugin-icons).
 Refer to [Java Development](/developer/01-plugin-development.md#java-plugin-development) for information about developing a Java plugin for Rundeck.
 :::
 
-The plugin interface is [UIPlugin]({{{javaDocBase}}}/com/dtolabs/rundeck/plugins/rundeck/UIPlugin.html).
+The plugin interface is [UIPlugin]({{$javaDocBase}}/com/dtolabs/rundeck/plugins/rundeck/UIPlugin.html).
 
 ```java
 
@@ -259,7 +259,7 @@ function loadi18nHtmlTemplate(file){
 
 Here are some [UI Plugin Examples][example-code].
 
-[uiplugin]: {{{javaDocBase}}}/com/dtolabs/rundeck/plugins/rundeck/UIPlugin.html
+[uiplugin]: {{$javaDocBase}}/com/dtolabs/rundeck/plugins/rundeck/UIPlugin.html
 [knockout]: https://knockoutjs.com/
 [jquery]: https://jquery.com/
 [example-code]: https://github.com/rundeck-plugins/ui-plugin-examples/

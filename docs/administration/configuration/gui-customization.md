@@ -203,7 +203,7 @@ Sets the default value for users logged status to show on summary page (it will 
 - Example: ```(Default: 100)```
 - min version: 3.4.4
 
-Sets the maximum number of nodes to be displayed on [Matched Nodes](/manual/creating-jobs.md#node-dispatching-and-filtering) session in job edit page.
+Sets the maximum number of nodes to be displayed on [Matched Nodes](/manual/jobs/creating-jobs.md#node-dispatching-and-filtering) session in job edit page.
 
 
 ### rundeck.gui.keystorage.downloadenabled

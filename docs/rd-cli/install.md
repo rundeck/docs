@@ -8,6 +8,15 @@ All artifacts can be downloaded from: [github releases](https://github.com/runde
 * [debian install](#debian-usage) `rundeck-cli-{{$cliVersion}}_all.deb`
 * [arch install](#arch-linux-install)
 
+## Homebrew
+
+Installation is now available via [homebrew](https://brew.sh).
+
+```
+brew tap rundeck/rundeck-cli
+brew install rundeck-cli
+```
+
 ## Jar install
 
 Download the `rundeck-cli-{{$cliVersion}}-all.jar` from [github releases](https://github.com/rundeck/rundeck-cli/releases/latest).

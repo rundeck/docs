@@ -2,7 +2,7 @@
 title: "Plugins Installed on Runners"
 ---
 The following plugins are available in the next generation Runners:
- 
+
 ::: tabs
 @tab Node Executors
 - local
@@ -115,4 +115,8 @@ The following plugins are available in the next generation Runners:
 - cyberark-storage
 - thycotic-storage
 - vault-storage
+:::
+
+:::warning Health Checks Limitation
+The Health Checks feature is not yet compatible with Enterprise Runners. If you have Enterprise Runners enabled, Health Checks will show nodes as unhealthy. This will be addressed in an upcoming release.
 :::

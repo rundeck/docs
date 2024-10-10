@@ -2,7 +2,7 @@
 
 Modern applications use the [HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP) protocol to communicate with each other and send or obtain information from any web service using [HTTP methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) like GET, POST, or PUT. For example, to obtain a valid user ID from a web service to use it later in another process/application.
 
-To make those HTTP calls we can use an [inline-script](/manual/node-steps/builtin.md#script-step)] with a [cURL](https://curl.se/) command inside, curl is used in scripts or commands to transfer data and it’s available for any operating system. But this implies maintaining a lot of code inside a Rundeck workflow.
+To make those HTTP calls we can use an [inline-script](/manual/jobs/job-plugins/node-steps/builtin.md#script-step)] with a [cURL](https://curl.se/) command inside, curl is used in scripts or commands to transfer data and it’s available for any operating system. But this implies maintaining a lot of code inside a Rundeck workflow.
 
 Rundeck’s Job Steps offer a more user-friendly way to make these calls. For HTTP calls, use the [HTTP Workflow Step Plugin](https://resources.rundeck.com/plugins/rundeck-http-workflow-step-plugin/) in Rundeck. This plugin will send HTTP calls to any web service or HTTP endpoint. The returned data can then be used in subsequent steps. (Check out our [Passing Variables](/learning/howto/passing-variables.md) guide).
 

@@ -1,7 +1,7 @@
 # Job Queue (Enterprise)
 
 By default, jobs can only have a single execution running at a time, and further attempts
-to execute it will be prevented unless the [Multiple Executions](/manual/creating-jobs.md#multiple-executions)
+to execute it will be prevented unless the [Multiple Executions](/manual/jobs/creating-jobs.md#multiple-executions)
 settings is enabled to allow parallel execution of jobs.
 
 In contrast, Job Queuing allow jobs to run a single execution at a time, but accepting new executions and placing
@@ -17,7 +17,7 @@ Enabling a job's queue will override Multiple Execution settings.
 :::
 
 ::: warning
-As of 3.4.0, jobs with [secure options](/manual/job-options.md#secure-options) don't support job queuing.
+As of 3.4.0, jobs with [secure options](/manual/jobs/job-options.md#secure-options) don't support job queuing.
 :::
 
 
@@ -45,7 +45,7 @@ running and queued executions.
 
 ## Removing an execution from the queue.
 
-To cancel a queued execution, go to the execution detail page and [kill it](/manual/jobs.md#killing-jobs). 
+To cancel a queued execution, go to the execution detail page and [kill it](/manual/jobs/index.md#killing-jobs). 
 
 ## Disabling queue system entirely.
 

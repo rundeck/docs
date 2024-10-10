@@ -11,6 +11,16 @@ There is a [How To article in the Learning section](/learning/howto/config-sn-no
 To configure authentication with ServiceNow for the Node Source plugin, follow the steps outlined in [ServiceNow Plugins Overview](/manual/plugins/servicenow-plugins-overview.html) to configure authentication of the ServiceNow plugins.
 Alternatively, place credentials directly into the Node Source plugin.
 
+## Paging limit
+
+Default value: 500
+
+This parameter is used to reduce the query time for nodes per page on the ServiceNow API and avoid timeouts.
+For example, if there are 2000 nodes in the ServiceNow instance, the plugin will fetch them in small groups of 500 (default value), therefore 4 calls will be made to the API until the total number of nodes is complete.
+Some ServiceNow instances are faster than others, therefore this parameter may be increased to shorten the time it takes to bring up the total number of nodes.
+On the other hand, if this number increases too much, the API may take too long and return a time-out.
+
+![Limit by page](/assets/img/servicenow-paging-limit.png)
 
 ## Filters
 
@@ -101,4 +111,13 @@ In the case only the default value exists, this fixed value are going to be set.
 
 ```
 osFamily.default=unix
+```
+
+## Notes
+The ServiceNow API sometimes returns incomplete or malformed JSON data due to timeouts caused by processing large amounts of information. This can be indicated by an error message within the JSON response. To fix this, you can adjust a setting in ServiceNow to increase the timeout duration.
+
+The ServiceNow default is 60 seconds.  Increasing the value may help address this timeout issue.
+
+```
+System Definition > Transaction Quota Rules > REST Table API request timeout
 ```

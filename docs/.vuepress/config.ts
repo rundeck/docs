@@ -51,9 +51,9 @@ export default defineUserConfig({
   head: [
   ],
   extendsMarkdown: md => {
-    md.use(markdownItReplaceVars, 'custom_token_replace', function (content) {
-      return content.replace(/\{\{\s*\$(\w+)\s*\}\}/g, (a,b)=> {
-          return setup[b]||a
+    md.use(markdownItReplaceVars, 'custom_token_replace', function (content:string) {
+      return content.replace(/(?:\{\{|%7B%7B)\s*\$(\w+)\s*(?:\}\}|%7D%7D)/g, (match:string,varName:string)=> {
+        return varName && setup[varName] || match
       });
     })
     md.use(markdownItInclude, {
@@ -150,7 +150,58 @@ export default defineUserConfig({
           '/api/rundeck-api.html' : '/api/index.html',
           '/introduction/getting-help.html/manual/job-options.html' : '/manual/job-options.html#option-model-provider',
           '/introduction/getting-help.html/administration/maintenance/tuning-rundeck.html' : '/administration/maintenance/tuning-rundeck.html#quartz-job-threadcount',
-          '/administration/security/sso.html':'/administration/security/sso/index.html'
+          '/administration/security/sso.html' : '/administration/security/sso/index.html',
+          '/manual/creating-jobs.html' : '/manual/jobs/creating-jobs.html',
+          '/manual/jobs.md' : '/manual/jobs/index.md',
+          '/manual/job-options.html' : '/manual/jobs/job-options.html',
+          '/manual/node-steps/aws.html' : '/manual/jobs/job-plugins/node-steps/aws.html',
+          '/manual/node-steps/azure.html' : '/manual/jobs/job-plugins/node-steps/azure.html',
+          '/manual/node-steps/builtin.html' : '/manual/jobs/job-plugins/node-steps/builtin.html',
+          '/manual/node-steps/datadog.html' : '/manual/jobs/job-plugins/node-steps/datadog.html',
+          '/manual/node-steps/gcp.html' : '/manual/jobs/job-plugins/node-steps/gcp.html',
+          '/manual/node-steps/jira.html' : '/manual/jobs/job-plugins/node-steps/jira.html',
+          '/manual/node-steps/kubernetes-debug-plugins.html' : '/manual/jobs/job-plugins/node-steps/kubernetes-debug-plugins.html',
+          '/manual/node-steps/kubernetes-deployment-plugins.html' : '/manual/jobs/job-plugins/node-steps/kubernetes-deployment-plugins.html',
+          '/manual/node-steps/kubernetes-job-plugins.html' : '/manual/jobs/job-plugins/node-steps/kubernetes-job-plugins.html',
+          '/manual/node-steps/kubernetes-pod-plugins.html' : '/manual/jobs/job-plugins/node-steps/kubernetes-pod-plugins.html',
+          '/manual/node-steps/kubernetes-service-plugins.html' : '/manual/jobs/job-plugins/node-steps/kubernetes-service-plugins.html',
+          '/manual/node-steps/kubernetes-statefulset-plugins.html' : '/manual/jobs/job-plugins/node-steps/kubernetes-statefulset-plugins.html',
+          '/manual/node-steps/loop-plugins.html' : '/manual/jobs/job-plugins/node-steps/loop-plugins.html',
+          '/manual/node-steps/oracle.html' : '/manual/jobs/job-plugins/node-steps/oracle.html',
+          '/manual/node-steps/sensu.html' : '/manual/jobs/job-plugins/node-steps/sensu.html',
+          '/manual/node-steps/sqlrunner.html' : '/manual/jobs/job-plugins/node-steps/sqlrunner.html',
+          '/manual/node-steps/vmware.html' : '/manual/jobs/job-plugins/node-steps/vmware.html',
+          '/manual/workflow-steps/amazon-athena.html' : '/manual/jobs/job-plugins/workflow-steps/amazon-athena.html',
+          '/manual/workflow-steps/aws-cloudwatch.html' : '/manual/jobs/job-plugins/workflow-steps/aws-cloudwatch.html',
+          '/manual/workflow-steps/aws-ecs-fargate.html' : '/manual/jobs/job-plugins/workflow-steps/aws-ecs-fargate.html',
+          '/manual/workflow-steps/aws-elb-workflow-plugin.html' : '/manual/jobs/job-plugins/workflow-steps/aws-elb-workflow-plugin.html',
+          '/manual/workflow-steps/aws-lambda.html' : '/manual/jobs/job-plugins/workflow-steps/aws-lambda.html',
+          '/manual/workflow-steps/aws-rds.html' : '/manual/jobs/job-plugins/workflow-steps/aws-rds.html',
+          '/manual/workflow-steps/aws.html' : '/manual/jobs/job-plugins/workflow-steps/aws.html',
+          '/manual/workflow-steps/azure.html' : '/manual/jobs/job-plugins/workflow-steps/azure.html',
+          '/manual/workflow-steps/builtin.html' : '/manual/jobs/job-plugins/workflow-steps/builtin.html',
+          '/manual/workflow-steps/datadog.html' : '/manual/jobs/job-plugins/workflow-steps/datadog.html',
+          '/manual/workflow-steps/file-transfer.html' : '/manual/jobs/job-plugins/workflow-steps/file-transfer.html',
+          '/manual/workflow-steps/gcp.html' : '/manual/jobs/job-plugins/workflow-steps/gcp.html',
+          '/manual/workflow-steps/github.html' : '/manual/jobs/job-plugins/workflow-steps/github.html',
+          '/manual/workflow-steps/jira.html' : '/manual/jobs/job-plugins/workflow-steps/jira.html',
+          '/manual/workflow-steps/loop-plugins.html' : '/manual/jobs/job-plugins/workflow-steps/loop-plugins.html',
+          '/manual/workflow-steps/oracle.html' : '/manual/jobs/job-plugins/workflow-steps/oracle.html',
+          '/manual/workflow-steps/pagerduty.html' : '/manual/jobs/job-plugins/workflow-steps/pagerduty.html',
+          '/manual/workflow-steps/progress-badge.html' : '/manual/jobs/job-plugins/workflow-steps/progress-badge.html',
+          '/manual/workflow-steps/rss-feed-plugin.html' : '/manual/jobs/job-plugins/workflow-steps/rss-feed-plugin.html',
+          '/manual/workflow-steps/sensu.html' : '/manual/jobs/job-plugins/workflow-steps/sensu.html',
+          '/manual/workflow-steps/servicenow-project-specs.html' : '/manual/jobs/job-plugins/workflow-steps/servicenow-project-specs.html',
+          '/manual/workflow-steps/servicenow.html' : '/manual/jobs/job-plugins/workflow-steps/servicenow.html',
+          '/manual/workflow-steps/sumo-logic.html' : '/manual/jobs/job-plugins/workflow-steps/sumo-logic.html',
+          '/manual/workflow-steps/vmware.html' : '/manual/jobs/job-plugins/workflow-steps/vmware.html',
+          '/manual/execution-lifecycle/job-resume.html' : '/manual/jobs/job-resume.html',
+          '/manual/execution-lifecycle/job-retry-failed-nodes.html' : '/manual/jobs/job-retry-failed-nodes.html',
+          '/manual/job-workflows.html' : '/manual/jobs/job-workflows.html',
+          '/manual/execution-lifecycle/result-data.html' : '/manual/jobs/result-data.html',
+          '/manual/execution-lifecycle/roi-metrics.html' : '/manual/jobs/roi-metrics.html',
+          '/manual/workflow-strategies.html' : '/manual/jobs/workflow-strategies.html',
+          '/manual/workflow-strategies/ruleset.html' : '/manual/jobs/workflow-strategies/ruleset.html'
        }
       },
       pwa: {

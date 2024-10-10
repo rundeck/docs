@@ -67,9 +67,9 @@ Previous plugin implementations will work without modification.
 
 There are three types of plugins that can be created:
 
-- [StreamingLogWriter](#streaminglogwriter) - provides a stream-like mechanism for writing log events ([javadoc]({{{javaDocBase}}}/com/dtolabs/rundeck/core/logging/StreamingLogWriter.html)).
-- [StreamingLogReader](#streaminglogreader) - provides a stream-like mechanism for reading log events ([javadoc]({{{javaDocBase}}}/com/dtolabs/rundeck/core/logging/StreamingLogReader.html)).
-- [ExecutionFileStorage](#executionfilestorage) - provides a way to both store and retrieve entire log files and execution state files ([javadoc]({{{javaDocBase}}}/com/dtolabs/rundeck/core/logging/ExecutionFileStorage.html)).
+- [StreamingLogWriter](#streaminglogwriter) - provides a stream-like mechanism for writing log events ([javadoc]({{$javaDocBase}}/com/dtolabs/rundeck/core/logging/StreamingLogWriter.html)).
+- [StreamingLogReader](#streaminglogreader) - provides a stream-like mechanism for reading log events ([javadoc]({{$javaDocBase}}/com/dtolabs/rundeck/core/logging/StreamingLogReader.html)).
+- [ExecutionFileStorage](#executionfilestorage) - provides a way to both store and retrieve entire log files and execution state files ([javadoc]({{$javaDocBase}}/com/dtolabs/rundeck/core/logging/ExecutionFileStorage.html)).
 
 ## Configuration
 
@@ -129,7 +129,7 @@ Java examples.
 
 All three plugin types are given a Map of Execution "context data". This is a dataset with information about the Execution that produced the log events.
 
-This data map is the same as the "Job context variables" available when you execute a job or adhoc script, as described in the chapter [Job Workflows - Context Variables](/manual/job-workflows.md#context-variables).
+This data map is the same as the "Job context variables" available when you execute a job or adhoc script, as described in the chapter [Job Workflows - Context Variables](/manual/jobs/job-workflows.md#context-variables).
 
 Note that the Map keys will not start with `job.`, simply use the variable name, such as `execid`.
 
@@ -178,11 +178,11 @@ log-path = 'other/path/to/logs/Other-Project/999.log' # If the log file is prese
 
 ## StreamingLogWriter
 
-The `StreamingLogWriter` ([javadoc]({{{javaDocBase}}}/com/dtolabs/rundeck/core/logging/StreamingLogWriter.html)) system receives log events from an execution and writes them somewhere.
+The `StreamingLogWriter` ([javadoc]({{$javaDocBase}}/com/dtolabs/rundeck/core/logging/StreamingLogWriter.html)) system receives log events from an execution and writes them somewhere.
 
 ### Java StreamingLogWriter
 
-Create a Java class that implements the interface [StreamingLogWriterPlugin]({{{javaDocBase}}}/com/dtolabs/rundeck/plugins/logging/StreamingLogWriterPlugin.html):
+Create a Java class that implements the interface [StreamingLogWriterPlugin]({{$javaDocBase}}/com/dtolabs/rundeck/plugins/logging/StreamingLogWriterPlugin.html):
 
 ```java
 /**
@@ -307,7 +307,7 @@ Additionally, these plugins should be able to report a `totalSize` (in an opaque
 
 ### Java StreamingLogReader
 
-Create a Java class that implements the interface [StreamingLogReaderPlugin]({{{javaDocBase}}}/com/dtolabs/rundeck/plugins/logging/StreamingLogReaderPlugin.html):
+Create a Java class that implements the interface [StreamingLogReaderPlugin]({{$javaDocBase}}/com/dtolabs/rundeck/plugins/logging/StreamingLogReaderPlugin.html):
 
 ```java
 /**
@@ -327,7 +327,7 @@ public interface StreamingLogReaderPlugin extends StreamingLogReader {
 }
 ```
 
-This extends the interface [StreamingLogReader]({{{javaDocBase}}}/com/dtolabs/rundeck/core/logging/StreamingLogReader.html):
+This extends the interface [StreamingLogReader]({{$javaDocBase}}/com/dtolabs/rundeck/core/logging/StreamingLogReader.html):
 
 ```java
 /**
@@ -516,12 +516,12 @@ The plugin is used in this manner:
 
 The `ExecutionFileStorage` system is asked to store and retrieve entire log files and state files for a specific execution.
 
-The Java interface for these plugins is [ExecutionFileStoragePlugin]({{{javaDocBase}}}/com/dtolabs/rundeck/plugins/logging/ExecutionFileStoragePlugin.html).
+The Java interface for these plugins is [ExecutionFileStoragePlugin]({{$javaDocBase}}/com/dtolabs/rundeck/plugins/logging/ExecutionFileStoragePlugin.html).
 
 Additional optional interfaces provide extended behaviors that your plugin can adopt:
 
-- [ExecutionMultiFileStorage](#executionmultifilestorage) - adds a method to store all available files in one method call ([javadoc]({{{javaDocBase}}}/com/dtolabs/rundeck/core/logging/ExecutionMultiFileStorage.html)).
-- [ExecutionFileStorageOptions](#executionfilestorageoptions) - define whether both retrieve and store are supported ([javadoc]({{{javaDocBase}}}/com/dtolabs/rundeck/core/logging/ExecutionFileStorageOptions.html)).
+- [ExecutionMultiFileStorage](#executionmultifilestorage) - adds a method to store all available files in one method call ([javadoc]({{$javaDocBase}}/com/dtolabs/rundeck/core/logging/ExecutionMultiFileStorage.html)).
+- [ExecutionFileStorageOptions](#executionfilestorageoptions) - define whether both retrieve and store are supported ([javadoc]({{$javaDocBase}}/com/dtolabs/rundeck/core/logging/ExecutionFileStorageOptions.html)).
 
 Execution file storage allows Rundeck to store the files elsewhere, in case local file storage is not suitable for long-term retention.
 
@@ -568,7 +568,7 @@ If there is an error discovering availability, your plugin should throw an Excep
 
 This optional interface for you Java plugin indicates that `store` requests should all be made at once via the `storeMultiple` method.
 
-- [ExecutionMultiFileStorage javadoc]({{{javaDocBase}}}/com/dtolabs/rundeck/core/logging/ExecutionMultiFileStorage.html)
+- [ExecutionMultiFileStorage javadoc]({{$javaDocBase}}/com/dtolabs/rundeck/core/logging/ExecutionMultiFileStorage.html)
 
 `storeMultiple` will be passed a [MultiFileStorageRequest][] allowing access to the available file data, and a callback method for
 your plugin to use to indicate the success/failure for storage of each file type. Your plugin must call `storageResultForFiletype(filetype, boolean)`
@@ -586,11 +586,11 @@ will be given access to a `execution.xml` filetype. This file is the XML seriali
 This optional interface allows your plugin to indicate whether both `store` and `retrieve` operations are available.
 The default if you do not implement this is that both operations are available.
 
-- [ExecutionFileStorageOptions javadoc]({{{javaDocBase}}}/com/dtolabs/rundeck/core/logging/ExecutionFileStorageOptions.html)
+- [ExecutionFileStorageOptions javadoc]({{$javaDocBase}}/com/dtolabs/rundeck/core/logging/ExecutionFileStorageOptions.html)
 
 ### Java ExecutionFileStorage
 
-Create a Java class that implements the interface [ExecutionFileStoragePlugin]({{{javaDocBase}}}/com/dtolabs/rundeck/plugins/logging/ExecutionFileStoragePlugin.html):
+Create a Java class that implements the interface [ExecutionFileStoragePlugin]({{$javaDocBase}}/com/dtolabs/rundeck/plugins/logging/ExecutionFileStoragePlugin.html):
 
 ```java
 /**
@@ -620,7 +620,7 @@ public interface ExecutionFileStoragePlugin extends ExecutionFileStorage {
 }
 ```
 
-This extends the interface [ExecutionFileStorage]({{{javaDocBase}}}/com/dtolabs/rundeck/core/logging/ExecutionFileStorage.html):
+This extends the interface [ExecutionFileStorage]({{$javaDocBase}}/com/dtolabs/rundeck/core/logging/ExecutionFileStorage.html):
 
 ```java
 /**
@@ -812,4 +812,4 @@ The plugin is used in this manner:
 3. Else if `store` is defined:
    - The `store` closure is called when a file needs to be stored, with the filetype, the [contextual data](#execution-context-data), configuration Map, and InputStream which will produce the log data. Additionally `length` and `lastModified` properties are in the closure binding, providing the file length, and last modification Date.
 
-[multifilestoragerequest]: {{{javaDocBase}}}/com/dtolabs/rundeck/core/logging/MultiFileStorageRequest.html
+[multifilestoragerequest]: {{$javaDocBase}}/com/dtolabs/rundeck/core/logging/MultiFileStorageRequest.html

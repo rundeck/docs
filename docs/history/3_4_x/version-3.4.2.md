@@ -29,7 +29,7 @@ Rulesets can be complicated to write. The Ruleset visualization offers a view of
 
 ![Ruleset Visualization](/assets/img/relnotes-342-rulesetvisual.gif)
 
-[Click here learn more about the Ruleset Strategy available in Rundeck Enterprise.](/manual/workflow-strategies/ruleset.md)
+[Click here learn more about the Ruleset Strategy available in Rundeck Enterprise.](/manual/jobs/workflow-strategies/ruleset.md)
 
 ### Azure Node Steps (Enterprise)
 

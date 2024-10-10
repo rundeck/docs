@@ -21,8 +21,8 @@ To create a Job in Rundeck (or the commercial Runbook Automation products), foll
 9. Scroll down and add a new step, a "Command” step in the "Node Steps" tab.<br>
 <img src="/assets/img/createajob9.png" width="80%" height="80%" /><br>
 ### Workflow Step vs Node Step<br>
-[Node steps](/manual/job-plugins.md#node-steps) are designed to be dispatched to one or more nodes based on a filter defined in the Nodes section. An example of a node step is a single command or an inline script to be executed on each targeted node.<br>
-[Workflow steps](/manual/job-plugins.md#workflow-steps) don't operate in a node context. Instead, these steps run on the local Rundeck server and run only once in a workflow. For example, the "Refresh Project Nodes" workflow step refreshes the Rundeck node cache in case of any change.<br>
+[Node steps](/manual/jobs/job-plugins/index.md#node-steps) are designed to be dispatched to one or more nodes based on a filter defined in the Nodes section. An example of a node step is a single command or an inline script to be executed on each targeted node.<br>
+[Workflow steps](/manual/jobs/job-plugins/index.md#workflow-steps) don't operate in a node context. Instead, these steps run on the local Rundeck server and run only once in a workflow. For example, the "Refresh Project Nodes" workflow step refreshes the Rundeck node cache in case of any change.<br>
 10. Add the following command: 
 ```
 echo "option value is: ${option.opt1}"

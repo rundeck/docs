@@ -14,7 +14,7 @@ feed:
 Name: <span style="color: orange"><span class="glyphicon glyphicon-cutlery"></span> "Elbrus orange cutlery"</span>
 Release Date: March 5th, 2024
 
-- [Download the Releases](https://download.rundeck.com/)
+- Download the Release: [Open Source](https://www.rundeck.com/community-downloads/5.1.1) | [Self-Hosted](https://www.rundeck.com/enterprise-downloads/5.1.1)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
 - [Upgrade instructions](/upgrading/)
 

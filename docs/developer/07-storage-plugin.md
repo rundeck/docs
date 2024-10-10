@@ -20,15 +20,15 @@ See: [Configuring the Storage Plugins](/manual/key-storage/index.md#configuring-
 
 **Plugin Interface**
 
-- [StoragePlugin]({{{javaDocBase}}}/com/dtolabs/rundeck/plugins/storage/StoragePlugin.html)
+- [StoragePlugin]({{$javaDocBase}}/com/dtolabs/rundeck/plugins/storage/StoragePlugin.html)
 
-This simply extends [Tree]({{{javaDocBase}}}/org/rundeck/storage/api/Tree.html) to store resource of type [ResourceMeta]({{{javaDocBase}}}/com/dtolabs/rundeck/core/storage/ResourceMeta.html).
+This simply extends [Tree]({{$javaDocBase}}/org/rundeck/storage/api/Tree.html) to store resource of type [ResourceMeta]({{$javaDocBase}}/com/dtolabs/rundeck/core/storage/ResourceMeta.html).
 
-Refer to the [Rundeck Storage API javadocs]({{{javaDocStorageApiBase}}}) for more information about the underlying storage API.
+Refer to the [Rundeck Storage API javadocs]({{$javaDocStorageApiBase}}) for more information about the underlying storage API.
 
 **Service Name**
 
-- [`Storage`]({{{javaDocBase}}}/com/dtolabs/rundeck/plugins/ServiceNameConstants.html#Storage)
+- [`Storage`]({{$javaDocBase}}/com/dtolabs/rundeck/plugins/ServiceNameConstants.html#Storage)
 
 **Additional Compile-time Dependency**
 

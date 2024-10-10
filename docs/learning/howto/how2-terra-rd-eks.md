@@ -169,8 +169,8 @@ kubectl delete service rundeck-svc
 ```
 
 ## Resources
-* AWS EKS [Introduction](https://eksctl.io/introduction/)<br>
+* AWS EKS [Introduction](https://aws.amazon.com/eks/)<br>
 * AWS CLI [Documentation](https://aws.amazon.com/cli/)<br>
-* EKS CTL [Introduction](https://eksctl.io/introduction/)<br>
+* EKS CTL [Getting Started](https://eksctl.io/getting-started/)<br>
 * Kubectl [Getting Started](https://kubernetes.io/docs/setup/)<br>
 * Rundeck K8s [examples](https://github.com/rundeck/docker-zoo/tree/master/kubernetes) (DockerZoo)<br>

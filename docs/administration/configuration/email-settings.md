@@ -38,7 +38,7 @@ For the extended configuration properties, it needs to be appended to the proper
 
 ## Notification email settings
 
-The URL and From: address used in [Job email notifications](/manual/creating-jobs.md#job-notifications) are managed via the settings located in the rundeck-config.properties file.
+The URL and From: address used in [Job email notifications](/manual/jobs/creating-jobs.md#job-notifications) are managed via the settings located in the rundeck-config.properties file.
 
 The two properties are:
 

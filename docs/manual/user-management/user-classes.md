@@ -34,6 +34,10 @@ If the setting is not present `FullUser` is used for OnPrem installations, `AppA
 
 >_Note: “None” would represent no access to anything in Runbook Automation.  The user could login but would have access to nothing.  This is not an assignable class today and will not show up in the management UI.  It is only available for default assignment._
 
+::: warning
+This is not available in the Cloud offering.
+:::
+
 ![User Class Screen](/assets/img/user-classes-config.png)
 
 ## Assigning Classes
