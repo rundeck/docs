@@ -13,13 +13,13 @@ Below is a list of the new integration features included in 3.3.3:
 
 A full suite of plugins for Datadog.  It's now possible to use
 [Datadog as a Node Source](/manual/projects/resource-model-sources/datadog.md)
-for your infrastructure, Send Datadog event payloads as a [Workflow](/manual/workflow-steps/datadog.md)[/Node Step](/manual/node-steps/datadog.md) or
-[Notification](/manual/notifications/datadog.md), and [Mute/Unmute hosts](/manual/node-steps/datadog.md#mute-host) during a workflow
+for your infrastructure, Send Datadog event payloads as a [Workflow](/manual/jobs/job-plugins/workflow-steps/datadog.md)[/Node Step](/manual/jobs/job-plugins/node-steps/datadog.md) or
+[Notification](/manual/notifications/datadog.md), and [Mute/Unmute hosts](/manual/jobs/job-plugins/node-steps/datadog.md#mute-host) during a workflow
 
-New [PagerDuty Workflow Steps](/manual/workflow-steps/pagerduty.md) for "Escalate Incident", "Run Response Play"
+New [PagerDuty Workflow Steps](/manual/jobs/job-plugins/workflow-steps/pagerduty.md) for "Escalate Incident", "Run Response Play"
 and "Send V2 Event".
 
-Updated and enhanced [ServiceNow&reg; plugins](/manual/workflow-steps/servicenow.md) allow job writers to add any field to
+Updated and enhanced [ServiceNow&reg; plugins](/manual/jobs/job-plugins/workflow-steps/servicenow.md) allow job writers to add any field to
 the respective tables for incidents and change records.
 
 A new [Amazon Web Services (AWS) SNS Webhook Plugin](/manual/webhooks/aws-sns-webhook.md)
