@@ -40,7 +40,7 @@ later sections, the topic of Job creation will be covered where
 you will learn about steps and job options
 
 If you want to skip ahead, you can go straight to
-[Creating Jobs](/manual/creating-jobs.md).
+[Creating Jobs](/manual/jobs/creating-jobs.md).
 
 ## Job groups
 

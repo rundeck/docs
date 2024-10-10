@@ -97,7 +97,7 @@ The value for the retry can be:
 
 Each execution will be started with context variables
 indicating the current retry attempt and whether it was a retry.
-See [Context Variables](/manual/job-workflows.md#context-variables).
+See [Context Variables](/manual/jobs/job-workflows.md#context-variables).
 
 Optionally a delay between retries can be established:
 
@@ -177,7 +177,7 @@ The option "Continue running on any remaining nodes before failing the step" wil
 In addition to entering static values that match the nodes, you can also use
 more dynamic values.
 
-If you have defined Options for the Job (see [Job Options](/manual/job-options.md)), you
+If you have defined Options for the Job (see [Job Options](/manual/jobs/job-options.md)), you
 can use the values submitted by the user when the job is executed as part of the
 node filtering.
 
@@ -240,7 +240,7 @@ If cluster mode is enabled, any change to the execution schedule when editing a 
 ### Job Notifications
 
 Job notifications are messages triggered by a job event.
-[More details here about Job Notifications](jobs/job-notifications.md).
+[More details here about Job Notifications](job-notifications.md).
 
 ## Deleting Jobs
 

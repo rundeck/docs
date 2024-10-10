@@ -37,7 +37,7 @@ A variety of new features will help enhance the security of your Automation solu
 
 * New! [AWS Systems Manager](/manual/projects/node-execution/aws-ssm.md) plugins mean Rundeck does not need direct connectivity to remote AWS infrastructure. Rather, Rundeck sends commands to AWS Systems Manager, and Systems Manager dispatches the commands to remote nodes via the Systems Manager agents.
 * [Azure Active Directory Single SignOn](/administration/security/sso/azure-sso.md) is now documented and built into Rundeck Enterprise.  
-* [PagerDuty User Management Job Steps](/manual/workflow-steps/pagerduty.md) allow adding/removing and getting lists of your PagerDuty user accounts.
+* [PagerDuty User Management Job Steps](/manual/jobs/job-plugins/workflow-steps/pagerduty.md) allow adding/removing and getting lists of your PagerDuty user accounts.
 * [Thycotic Key Storage Plugin](/manual/key-storage/storage-plugins/thycotic-storage.md) can now use all password types.
 
 

@@ -102,7 +102,7 @@ Other settings:
 
 - `rundeck.server.uuid`: This is used to manually specify the server UUID for certain cluster and licensing needs.
 - `framework.log.dispatch.console.format`: Default format for non-terse node execution logging run by the `dispatch` CLI tool.
-- `execution.script.tokenexpansion.enabled`: Whether inline script token expansion is enabled, default `true`. If `false`, the "Inline Script Content" syntax described in [User Guide - Creating Job Workflows - Context Variables](/manual/job-workflows.md#context-variables) is disabled.
+- `execution.script.tokenexpansion.enabled`: Whether inline script token expansion is enabled, default `true`. If `false`, the "Inline Script Content" syntax described in [User Guide - Creating Job Workflows - Context Variables](/manual/jobs/job-workflows.md#context-variables) is disabled.
 - `communityNews.disabled`: Default is not set, or false. Disables the external polling of Community News feed. Link will persist but will not poll, and clicking this link will open a new browser tab and navigate to the web-based version of Community News.
 
 ### Static authentication tokens for API access:
@@ -615,7 +615,7 @@ rundeck.pagination.default.max=20
 
 ### Job Remote Option URL connection parameters
 
-Change the defaults for for [Job Remote Option Value URLs](/manual/job-options.md#remote-option-values) loading.
+Change the defaults for for [Job Remote Option Value URLs](/manual/jobs/job-options.md#remote-option-values) loading.
 
 **Socket read timeout**
 

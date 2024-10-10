@@ -12,7 +12,7 @@ Name: <span style="color: chocolate"><span class="glyphicon glyphicon-gift"></sp
 ## New Features
 
 * SCM Plugin with Git implementation (preliminary release)
-* Per-job logging limits, such as max line count or file size, see [Jobs - Log Limit](/manual/jobs.md#log-limit)
+* Per-job logging limits, such as max line count or file size, see [Jobs - Log Limit](/manual/jobs/index.md#log-limit)
 * Active/passive execution mode: disable all executions on the server
 * Per-Job schedule and execution toggling: disable scheduled or all executions for a single job
 * UI updates to Nodes and Commands pages

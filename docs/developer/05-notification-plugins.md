@@ -43,7 +43,7 @@ Notifications can be run on their own thread by setting the following properties
 
 The specific data values of the Configuration section are allowed to have
 embedded Property References as described in the
-[Jobs - Context Variables](/manual/job-workflows.md#context-variables) section.
+[Jobs - Context Variables](/manual/jobs/job-workflows.md#context-variables) section.
 
 For example, when a user configures your plugin, they could embed an option value using: `${option.myoption}`. This value will be replaced with the runtime option value before being passed to your plugin.
 
@@ -119,7 +119,7 @@ The following values may be available after the job is finished (not available f
 
 `job.averageDuration`: Average job duration in Milliseconds, if available
 
-`execution.context` - this is a map containing all of the context variables available to the execution when it ran or will run, such as [Jobs - Context Variables](/manual/job-workflows.md#context-variables). The contents of this Map are the specific context namespaces and variables.
+`execution.context` - this is a map containing all of the context variables available to the execution when it ran or will run, such as [Jobs - Context Variables](/manual/jobs/job-workflows.md#context-variables). The contents of this Map are the specific context namespaces and variables.
 
 `execution.context.option`: a Map containing all Job Option keys/values.
 

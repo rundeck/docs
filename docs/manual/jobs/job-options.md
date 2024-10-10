@@ -204,7 +204,7 @@ The `option.NAME` variable will contain a unique ID identifying the uploaded fil
 Option values can be passed to scripts as an argument or referenced
 inside the script via a named token. Each option value is defined in the Options context variables as `option.NAME`.
 
-See the [Context Variables](/manual/job-workflows.md#context-variables) Section.
+See the [Context Variables](/manual/jobs/job-workflows.md#context-variables) Section.
 
 **Example:**
 
@@ -405,7 +405,7 @@ Secure Remote Authentication Options have some limitations compared to Plain and
 
 ### Using Secure Options with Job References
 
-When you [define a Job Reference step in a workflow](/manual/node-steps/builtin.md#job-reference-step), you can specify the arguments that are passed to it. You can pass Secure Option values and Secure Remote Authentication Option values from a top-level job to a Job Reference, but option values _cannot be passed into another option of a different type_. So a parent job can only pass option values to the Job reference if the option type is the same between the jobs.
+When you [define a Job Reference step in a workflow](/manual/jobs/job-plugins/node-steps/builtin.md#job-reference-step), you can specify the arguments that are passed to it. You can pass Secure Option values and Secure Remote Authentication Option values from a top-level job to a Job Reference, but option values _cannot be passed into another option of a different type_. So a parent job can only pass option values to the Job reference if the option type is the same between the jobs.
 
 This constraint is to maintain the security design of these options:
 

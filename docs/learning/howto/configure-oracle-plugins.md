@@ -95,6 +95,6 @@ After confirming Nodes are being listed choose one that can safely be restarted.
 
 ## More Information
 
-- [Oracle Node Step Plugins](/manual/node-steps/oracle.md)
-- [Oracle Workflow Step Plugins](/manual/workflow-steps/oracle.md)
+- [Oracle Node Step Plugins](/manual/jobs/job-plugins/node-steps/oracle.md)
+- [Oracle Workflow Step Plugins](/manual/jobs/job-plugins/workflow-steps/oracle.md)
 - [Oracle Node Source Plugin](/manual/projects/resource-model-sources/oracle.md)

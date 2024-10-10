@@ -9,14 +9,14 @@ When you enable this plugin for a job, with retry options set, the plugin will r
 ## Requirements
 
 ::: warning
-This plugin works in conjunction with the "Retry" options for Jobs enabled.  [Please read more about those settings here](/manual/creating-jobs.md#retry).
+This plugin works in conjunction with the "Retry" options for Jobs enabled.  [Please read more about those settings here](/manual/jobs/creating-jobs.md#retry).
 :::
 
 
 
 ## Usage
 
-To use this plugin, edit or create a Job, and under the "Execution Plugins" tab,  and configure the [Retry options](/manual/creating-jobs.md#retry).
+To use this plugin, edit or create a Job, and under the "Execution Plugins" tab,  and configure the [Retry options](/manual/jobs/creating-jobs.md#retry).
 ![Retry Job Settings](/assets/img/retry-failed-jobs-retry.png)
 
 On the Execution Plug-ins tab enable the checkbox next to the "Retry on failed nodes" plugin.
