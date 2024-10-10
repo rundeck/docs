@@ -232,6 +232,12 @@ html[data-theme=dark] {
     color: var(--text-color);
   }
 
+  img.icon{
+   background-color: rgba(255, 255, 255, 0.9);
+   border: 2px solid rgba(255, 255, 255, 0.9);
+   border-radius: 1px;
+  }
+
   #main-title {
     color: #fff;
     -webkit-text-fill-color: #fff;
