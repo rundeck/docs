@@ -57,7 +57,7 @@ Rundeck is built over a flexible platform architecture.  Extending Rundeck funct
 
 The Runbook Automation version includes built-in plugins to further enhance functionality for [Scheduling](/manual/schedules/project-schedules.md) job executions, providing [Guided Tours](/manual/tour-manager.md), incorporating [Health Checks](/manual/healthchecks.md), and much more.
 
-See [Job Plugins](/manual/job-plugins.md) and [Plugin Developer Guide](/developer/index.md) and [Rundeck Plugins](/manual/plugins/index.md) for more information.
+See [Job Plugins](/manual/jobs/job-plugins/index.md) and [Plugin Developer Guide](/developer/index.md) and [Rundeck Plugins](/manual/plugins/index.md) for more information.
 
 ## Projects
 A project is a place within Rundeck to separate management activity. All Rundeck activities (such as jobs or commands) occur within the context of a project. Multiple projects can be maintained on the same Rundeck server. 

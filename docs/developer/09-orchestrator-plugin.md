@@ -2,7 +2,7 @@
 
 ## Configuring
 
-Orchestrators are configured in a Job definition, see: [Jobs - Orchestrator](/manual/creating-jobs.md#orchestrator).
+Orchestrators are configured in a Job definition, see: [Jobs - Orchestrator](/manual/jobs/creating-jobs.md#orchestrator).
 
 ## Java Plugin Type
 

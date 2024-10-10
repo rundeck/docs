@@ -32,7 +32,7 @@ Click "Edit" to edit the values.
 
 ![Edit profile](/assets/img/user-edit-profile.png)
 
-The email address can be referenced as a [context variable](/manual/job-workflows.md#context-variables)
+The email address can be referenced as a [context variable](/manual/jobs/job-workflows.md#context-variables)
 from Job notifications as `${job.user.email}`.
 
 The email address and name will also be used by SCM plugins for commit identification.  (See: [Git Plugin - Committer Configuration](/manual/projects/scm/git.md#committer-configuration)).
