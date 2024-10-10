@@ -67,9 +67,9 @@ export default [{
     {
       text: 'Jobs',
       collapsible: true,
-      link: '/manual/jobs/',
+      link: '/manual/jobs/index.md',
       children: [
-//         '/manual/jobs',
+        {text: 'Overview', link:'/manual/jobs/index.md'},
         '/manual/jobs/creating-jobs',
         '/manual/jobs/job-workflows',
         '/manual/jobs/job-options',
@@ -92,9 +92,10 @@ export default [{
         },
         {
             text:'Job Step Plugins',
-            link: '/manual/jobs/job-plugins/index',
+            link: '/manual/jobs/job-plugins/index.md',
             collapsible: true,
             children: [
+                {text: 'Overview', link: '/manual/jobs/job-plugins/index.md'},
                 {
                     text: 'Node Steps',
                     collapsible: false,
