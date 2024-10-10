@@ -146,7 +146,7 @@ workflows:
           filters:
             branches:
               only: 
-							  - /[4,5]\.[0-9]+\..*/
+                - /[4,5]\.[0-9]+\..*/
             tags:
               only: /^v.*/
       - update_index:
