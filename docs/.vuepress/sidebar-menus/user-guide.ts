@@ -75,22 +75,6 @@ export default [{
         '/manual/jobs/job-options',
         '/manual/jobs/job-notifications',
         {
-          text: 'Log Filters',
-          collapsible: true,
-          link: '/manual/log-filters/',
-          children: [
-            '/manual/log-filters/',
-            '/manual/log-filters/key-value-data.md',
-            '/manual/log-filters/quiet-output.md',
-            '/manual/log-filters/progress-badge.md',
-            '/manual/log-filters/highlight-output.md',
-            '/manual/log-filters/render-formatted-data.md',
-            '/manual/log-filters/mask-passwords.md',
-            '/manual/log-filters/json-jq.md',
-            '/manual/log-filters/multi-line-regex.md'
-          ]
-        },
-        {
             text:'Job Step Plugins',
             link: '/manual/jobs/job-plugins/index.md',
             collapsible: true,
@@ -171,11 +155,27 @@ export default [{
                     }
                 ]
             },
+        '/manual/jobs/job-queue.md',
         '/manual/jobs/job-resume.md',
         '/manual/jobs/job-retry-failed-nodes.md',
+        {
+                          text: 'Log Filters',
+                          collapsible: true,
+                          link: '/manual/log-filters/',
+                          children: [
+                            '/manual/log-filters/',
+                            '/manual/log-filters/key-value-data.md',
+                            '/manual/log-filters/quiet-output.md',
+                            '/manual/log-filters/progress-badge.md',
+                            '/manual/log-filters/highlight-output.md',
+                            '/manual/log-filters/render-formatted-data.md',
+                            '/manual/log-filters/mask-passwords.md',
+                            '/manual/log-filters/json-jq.md',
+                            '/manual/log-filters/multi-line-regex.md'
+                          ]
+                },
         '/manual/jobs/result-data.md',
         '/manual/jobs/roi-metrics.md',
-        '/manual/jobs/job-queue.md',
         '/manual/jobs/ai-generated-runbooks.md',
         {
             text: 'Workflow Strategies',
