@@ -18,4 +18,4 @@ The second iteration of the Rundeck notification user interface includes dropdow
 
  If you decide that you would rather use the legacy interface you may run into issues.
 
- For more specific information on the types of notifications and in-depth instructions on how to use them, see [here](/manual/job-plugins.md#notifications).
+ For more specific information on the types of notifications and in-depth instructions on how to use them, see [here](/manual/jobs/job-plugins/index.md#notifications).

@@ -50,4 +50,4 @@ Sequential flow illustrated:
 The process being automated will determine which strategy is
 correct, though the node-oriented flow is more commonplace.
 
-For more complex workflow strategy rules, see [Ruleset Workflow Strategy Plugin](/manual/workflow-strategies/ruleset.md)
+For more complex workflow strategy rules, see [Ruleset Workflow Strategy Plugin](/manual/jobs/workflow-strategies/ruleset.md)

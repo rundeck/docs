@@ -216,7 +216,7 @@ configuration properties that you can specify. Each combination of trigger and
 Notification type has a unique configuration.
 
 When defining configuration values for a plugin, you can usually substitute
-any "Job context variables" that are listed under [User Guide - Creating Job Workflows - Context Variables](/manual/job-workflows.md#context-variables). (Note: Some configuration properties of a plugin may not support this feature.)
+any "Job context variables" that are listed under [User Guide - Creating Job Workflows - Context Variables](/manual/jobs/job-workflows.md#context-variables). (Note: Some configuration properties of a plugin may not support this feature.)
 
 In addition, you can also use these variables:
 

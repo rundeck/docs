@@ -53,7 +53,7 @@ dispatch to nodes: _Node-oriented_ and _Step-oriented_.
 
 [See more details here](/manual/workflow-strategies/)
 
-For more complex workflow strategy rules, see [Ruleset Workflow Strategy Plugin](/manual/workflow-strategies/ruleset.md)
+For more complex workflow strategy rules, see [Ruleset Workflow Strategy Plugin](/manual/jobs/workflow-strategies/ruleset.md)
 
 ## Workflow steps
 
@@ -88,8 +88,8 @@ workflow step.
 
 Steps in a workflow can be either _Node Steps_ or _Workflow Steps_.
 
-- Node Steps operate once on each Node, which could be multiple times within a workflow. For a full list of Node Steps, see [Job Plugins - Node Steps](/manual/job-plugins.md#node-steps)
-- Workflow Steps operate only once in the workflow. For a full list of Workflow Steps, see [Workflow Steps](/manual/job-plugins.md#workflow-steps)
+- Node Steps operate once on each Node, which could be multiple times within a workflow. For a full list of Node Steps, see [Job Plugins - Node Steps](/manual/jobs/job-plugins/index.md#node-steps)
+- Workflow Steps operate only once in the workflow. For a full list of Workflow Steps, see [Workflow Steps](/manual/jobs/job-plugins/index.md#workflow-steps)
 
 ## Reordering steps
 
@@ -293,7 +293,7 @@ The following values may be available after the job is finished (not available f
 - `execution.dateEndedW3c`: End time as W3C formatted string
 - `execution.abortedby`: User who aborted the execution
 
-Option context variables are referred to as `option.NAME` (more about [Job Options](/manual/job-options.md).)
+Option context variables are referred to as `option.NAME` (more about [Job Options](/manual/jobs/job-options.md).)
 
 :::tip
 There may be additional context variables available, such as `data.*` values when using the [Data Capture Job Filter Plugins](#data-capture-job-filter-plugins).

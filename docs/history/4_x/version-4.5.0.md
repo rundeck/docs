@@ -20,7 +20,7 @@ Check out the new features and enhancements for PagerDuty Runbook Automation Sel
 
 ### Highlights
 
-* **Sumo Logic Job Step Plugins:** Now Sumo Logic users can automate operational tasks - such as retrieving logs for incident diagnostics - by integrating with a Sumo Logic instance. [[Docs](/manual/workflow-steps/sumo-logic.md)]
+* **Sumo Logic Job Step Plugins:** Now Sumo Logic users can automate operational tasks - such as retrieving logs for incident diagnostics - by integrating with a Sumo Logic instance. [[Docs](/manual/jobs/job-plugins/workflow-steps/sumo-logic.md)]
 
 * **ECS Node Executor Plugin:** Users can now run commands across multiple ECS containers in a single Job Step or from the Commands tab.  This makes it easier to accomplish tasks such as retrieving time-critical diagnostics during an incident before containers are redeployed.
 
@@ -30,7 +30,7 @@ Check out the new features and enhancements for PagerDuty Runbook Automation Sel
 * Set Runner on by Default in [Docker Remco](/administration/configuration/docker/extending-configuration.md)
 * Fix: Jobs not running after removing a project from a [System Calendar](/manual/calendars.md)
 * Fix: [Azure Log Storage](/administration/cluster/logstore/azure.md) generating duplicate folders for executions
-* [Loop Script Plugins](/manual/workflow-steps/loop-plugins.md)
+* [Loop Script Plugins](/manual/jobs/job-plugins/workflow-steps/loop-plugins.md)
 * Fix: Dependency Graph gets truncated in some views
 * Fix: [Cyberark Plugin](/manual/key-storage/storage-plugins/cyberark-storage.md) now properly serializes return payload from API
 
