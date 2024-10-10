@@ -145,7 +145,7 @@ workflows:
             - slack-secrets
           filters:
             branches:
-              only: 
+              only:
                 - /[4,5]\.[0-9]+\..*/
             tags:
               only: /^v.*/
