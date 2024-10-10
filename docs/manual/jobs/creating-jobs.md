@@ -240,7 +240,7 @@ If cluster mode is enabled, any change to the execution schedule when editing a 
 ### Job Notifications
 
 Job notifications are messages triggered by a job event.
-[More details here about Job Notifications](jobs/job-notifications.md).
+[More details here about Job Notifications](job-notifications.md).
 
 ## Deleting Jobs
 

@@ -1,4 +1,15 @@
-# Job plugins
+# Job Step Plugins
+
+Jobs are composed of _steps_ that define the actions to be taken against target nodes, tools or data.
+
+There are two types of steps in Runbook Automation Jobs:
+
+* **Node Steps** are designed to iterate across one or more target endpoints - such as VMs, databases or Kubernetes clusters. An example of a node step is a single command or an inline script to be executed on each targeted node.<br>
+* **Workflow Steps** execute once per Job invocation and do not operate in a node context. For example, the "Refresh Project Nodes" workflow step refreshes the node cache in case of any change.<br> 
+
+The order of the execution of the steps is defined by the [workflow strategy](/manual/jobs/workflow-strategies/index.md).
+
+If there is a mix of node and workflow steps (which is common) the steps will be executed in order (based on the [workflow strategy](/manual/job-workflows.md#workflow-control-settings)). Node steps may be executed several times, once per node, while the workflow steps will only run once.<br>
 
 ## Node Steps
 
