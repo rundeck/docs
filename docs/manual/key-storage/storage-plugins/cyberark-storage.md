@@ -48,7 +48,7 @@ Use the following steps to configure the CyberArk plugin for key storage:
     :::warning Note "legacy" mode
     Prior versions of Runbook Automation used `legacy` mode to use the REST API.  To support prior versions, `legacy` can still be used in the **Mode** field, and it will behave the same as `REST`.
     :::
-  * The `CCP` mode will get secrets using the [Central Credential Provider](https://docs.cyberark.com/AAM-CP/13.0/en/Content/CCP/The-Central%20-Credential-Provider.htm) (CCP) web service configuration.  To setup Cyberark for this method follow [this docmentation](https://docs.cyberark.com/AAM-CP/13.0/en/Content/CCP/Configure_CCPWindows.htm).
+  * The `CCP` mode will get secrets using the [Central Credential Provider](https://docs.cyberark.com/AAM-CP/13.0/en/Content/CCP/The-Central%20-Credential-Provider.htm) (CCP) web service configuration.  To setup Cyberark for this method follow [this documentation](https://docs.cyberark.com/AAM-CP/13.0/en/Content/CCP/Configure_CCPWindows.htm).
     This mode has a limitation that it is unable to list the keys in safes.  When writing Process Automation jobs the job author will need to manually enter the path to the key using the following format:
    `[provider_path]/[safe]/path/to/secret.pem`
     * `provider_path` is specified in the config.  Commonly it is set as `keys` but could be different.
