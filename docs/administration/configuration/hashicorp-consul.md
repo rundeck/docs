@@ -1,4 +1,4 @@
-# HashiCorp Consul (Enterprise)
+# HashiCorp Consul (Commercial)
 
 :::enterprise
 :::

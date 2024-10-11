@@ -1,6 +1,6 @@
 # Node Enhancers
 
-Rundeck offers node enhancers to help you to better organize, manage and keep up to date on the status of your nodes. There are three different node enhancers: Attribute Match, Icon and Health Check (Enterprise).  
+Rundeck offers node enhancers to help you to better organize, manage and keep up to date on the status of your nodes. There are three different node enhancers: Attribute Match, Icon and Health Check (Commercial).  
 
 ## Attribute Match
 
@@ -70,6 +70,6 @@ This node enhancer allows you to add icons to the nodes that you already have on
 - **Icon Name**
 : This is where you specify the icon that you want to apply to the nodes. In order to do so, you need to choose an icon from either the Font-Awesome icons or the Glyphicon icons. Depending which you choose, the name needs to start with "glyphicon-" or "fa-."
 
-## Health Checks (Enterprise)
+## Health Checks (Commercial)
 
 Our Enterprise customers also have access to a health check node enhancer. To learn more, please visit [Health Checks](/manual/healthchecks.md).

@@ -1,4 +1,4 @@
-# Loop Script Plugins (Enterprise)
+# Loop Script Plugins (Commercial)
 
 These plugins add the functionality of running inline scripts, using the node executor and file copier, inside a loop. 
 So far the plugin has two different iteration types: iterating a JSON array and iterating the script until it finishes successful (exit code zero)

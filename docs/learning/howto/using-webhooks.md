@@ -37,7 +37,7 @@ Webhooks are configured within a project. The [Welcome Projects](/learning/index
 
 ## Webhook Handlers
 
-In the previous step we noted the _Advanced Run Job_ (Enterprise)/_Run Job_ (Community) Webhook Handlers.
+In the previous step we noted the _Advanced Run Job_ (Commercial)/_Run Job_ (Community) Webhook Handlers.
 Webhook Event Handlers are custom handlers that can be developed as [Rundeck Plugins](/developer/16-webhook-plugins.md) to interact with external systems.
 They can respond to authentication calls, pre-process inputs, and provide configuration defaults for specific systems.
 Runbook Automation includes Webhook Handlers for [PagerDuty](/manual/webhooks/pagerduty-run-job.md), [GitHub](/manual/webhooks/github-webhook.md), [AWS SNS](/manual/webhooks/aws-sns-webhook.md), [DataDog](/manual/webhooks/datadog-run-job.md) and many more.

@@ -1,4 +1,4 @@
-# VMWare Workflow Steps (Enterprise)
+# VMWare Workflow Steps (Commercial)
 
 ## Clone VM Workflow Step
 

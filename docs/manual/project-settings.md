@@ -70,7 +70,7 @@ See [Node Sources](/manual/projects/resource-model-sources/) for more details.
 Take advantage of the node enhancers that Rundeck offers by adding them to your nodes. See [Node Enhancers](/manual/node-enhancers.md) for more details.
 
 ## Access Control
-Control access to the project with [ACL Policy GUI](/administration/security/acl-policy-editor.html) (Enterprise) or [Access Control Policy](/administration/security/authorization.html) files.
+Control access to the project with [ACL Policy GUI](/administration/security/acl-policy-editor.html) (Commercial) or [Access Control Policy](/administration/security/authorization.html) files.
 
 ## Edit Readme...
 A project ReadMe can provide some important context for a Project.  The content can be formatted using Markdown and can displayed on the Project's home page and as part of the Project Listing.

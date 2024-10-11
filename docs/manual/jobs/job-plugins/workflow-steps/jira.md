@@ -1,4 +1,4 @@
-# Jira Workflow Steps (Enterprise)
+# Jira Workflow Steps (Commercial)
 
 ::: tip Upgrade Notice
 As of Rundeck version 3.4.0 the Jira plugins now support Auth Tokens.  Please check the [Release Notes updates here](/history/3_4_x/version-3.4.0.md).

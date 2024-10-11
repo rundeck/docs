@@ -11,7 +11,7 @@ This release includes a long list of useful feature enhancements for our Enterpr
 
 ## Enhancements
 
-### Enhanced Scheduling Options (Enterprise)
+### Enhanced Scheduling Options (Commercial)
 #### Schedules
 [Schedules](/manual/schedules/project-schedules) can be configured independently from jobs as stand-alone schedules to centralize the management of how often jobs run.
 
@@ -22,7 +22,7 @@ This release includes a long list of useful feature enhancements for our Enterpr
 
 ![Calendars List](/assets/img/relnotes-330-calendars.png)
 
-### Guided Tour Manager (Enterprise)
+### Guided Tour Manager (Commercial)
 A new Rundeck [Guided Tours Manager](/manual/tour-manager) provide an authoring environment to build customizable, interactive walk-throughs to end users to help demonstrate Rundeck processes.  Tours can be used as guidance for first-time users getting familiar with the system, or provide step-by-step instructions for how to execute longer processes.  Tours can now be managed in product with a new UI/Markdown editor to design tour definitions. Guided Tours can be built as System Tours and are available to all projects or Project Tours and tied to that individual project.  As part of this Enterprise update Tours are stored in the Rundeck database so they are easily shared to all members in clustered environments.
 
 ![Tours Example](/assets/img/relnotes-330-tourdemo.gif)
@@ -32,12 +32,12 @@ A completely re-architected Log Viewer loads job activity faster with improved u
 
 ![Log Viewer](/assets/img/relnotes-330-eventview.png)
 
-### User/Group Management Wizard (Enterprise)
+### User/Group Management Wizard (Commercial)
 Rundeck user accounts can now be added/managed directly in the Enterprise version of Rundeck. Define local users and groups quickly and easily from the new [User Manager](/manual/user-management/user-mgmt.html#manage-local-users) administration interface.
 
 ![User Manager Screen](/assets/img/usermgr-manage-users.png)
 
-### Node Wizard Plugin (Enterprise)
+### Node Wizard Plugin (Commercial)
 New [Node Wizard plugin](/manual/projects/resource-model-sources/node-wizard) is built-in to Runbook Automation for managing node entries local to Rundeck.  The node data is stored in the Rundeck database for easy sharing in clustered environments.  The plugin can still merge values with other Node Sources but offer direct value settings with a friendly GUI based interface.  No need to write complicated JSON/YAML for local Node Sources!
 
 ![Node Editor](/assets/img/relnotes-330-nodeedit.png)

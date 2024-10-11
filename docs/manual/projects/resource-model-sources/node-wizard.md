@@ -1,4 +1,4 @@
-# Node Wizard (Enterprise)
+# Node Wizard (Commercial)
 ::: enterprise
 :::
 

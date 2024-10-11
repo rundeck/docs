@@ -10,7 +10,7 @@ Release Date: July 16, 2021
 ## Overview
 Check out the new features and enhancements for both Rundeck Enterprise and Open Source in this release.
 
-### CyberArk Key Storage Plugin (Enterprise)
+### CyberArk Key Storage Plugin (Commercial)
 
 Keep your business and its most valuable assets secure. Preventing malicious account or credential access starts with sound privileged access management. The new [CyberArk plugin ](/manual/key-storage/storage-plugins/cyberark-storage.md)joined existing Rundeck plugins with [Thycotic](/manual/key-storage/storage-plugins/thycotic-storage.md) and [HashiCorp Vault](/manual/key-storage/storage-plugins/vault.md) to provide Rundeck users more options for secrets management. The CyberArk Key Storage Plugin can be used as a Key Storage backend for Rundeck. Use secrets from CyberArk in your automation scripts, Rundeck configuration, etc.
 

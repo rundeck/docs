@@ -1,4 +1,4 @@
-# AWS SNS Webhook Plugin (Enterprise)
+# AWS SNS Webhook Plugin (Commercial)
 ::: enterprise
 :::
 

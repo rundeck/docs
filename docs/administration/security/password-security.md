@@ -1,4 +1,4 @@
-# User Manager Password Security (Enterprise)
+# User Manager Password Security (Commercial)
 
 :::enterprise
 :::

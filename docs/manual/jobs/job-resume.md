@@ -1,4 +1,4 @@
-# Job Resume Plugin (Enterprise)
+# Job Resume Plugin (Commercial)
 ::: enterprise
 :::
 

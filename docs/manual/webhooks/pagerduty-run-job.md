@@ -1,4 +1,4 @@
-# PagerDuty Webhooks (Enterprise)
+# PagerDuty Webhooks (Commercial)
 ::: enterprise
 :::
 

@@ -1,4 +1,4 @@
-# CyberArk Key Storage Plugin (Enterprise)
+# CyberArk Key Storage Plugin (Commercial)
 
 CyberArk is a leader in Privileged Access Management solutions providing cloud ready, easy to use security solutions across the complete privileged access surface.  A centralized password management system provides visibility and control to protect privileges from attack.  CyberArk's solution is built for the Enterprise to enforce strong password business policies and prevent data breaches.
 

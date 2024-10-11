@@ -174,7 +174,7 @@ In v4.8+ the `JSESSIONID` cookie will change after the first request after authe
 
 :::
 
-### JWT Token Authentication (Enterprise)
+### JWT Token Authentication (Commercial)
 
 :::enterprise
 :::
@@ -2353,7 +2353,7 @@ List the scheduled Jobs with their schedule owned by the target cluster server.
 The same format as [Listing Jobs](#listing-jobs).
 
 
-### Set Active Mode for a Cluster Member (Enterprise)
+### Set Active Mode for a Cluster Member (Commercial)
 
 :::enterprise
 :::
@@ -2392,7 +2392,7 @@ URL Parameters:
 `uuid`
 :   The target cluster member UUID
 
-### Set Passive Mode for a Cluster Member (Enterprise)
+### Set Passive Mode for a Cluster Member (Commercial)
 
 :::enterprise
 :::
@@ -3476,7 +3476,7 @@ Request parameters:
 ]
 ```
 
-### Get Job Tags (Enterprise)
+### Get Job Tags (Commercial)
 
 ::: enterprise  
 :::
@@ -5111,10 +5111,10 @@ Project archives may contain "components" which can be imported, beyond the base
 
 Components:
 
-* Project Tours (Enterprise). Name: `tours-manager`
-* Project Schedules (Enterprise). Name: `Schedule Definitions`
-* Project Calendars (Enterprise). Name: `calendars`
-* Node Wizard Nodes (Enterprise): Name: `node-wizard`
+* Project Tours (Commercial). Name: `tours-manager`
+* Project Schedules (Commercial). Name: `Schedule Definitions`
+* Project Calendars (Commercial). Name: `calendars`
+* Node Wizard Nodes (Commercial): Name: `node-wizard`
 * Webhooks, name: `webhooks`
 
 For example, to enable Webhook import, you could use `importWebhooks` and `whkRegenAuthTokens` params, but those are simply shortcuts for the following parameters:
@@ -5401,7 +5401,7 @@ See [Update an ACL Policy](#update-an-acl-policy) for request and response.
 
 See [Delete an ACL Policy](#delete-an-acl-policy)
 
-#### Query Project Job Tags (Enterprise)
+#### Query Project Job Tags (Commercial)
 
 ::: enterprise  
 :::
@@ -6501,7 +6501,7 @@ The default response is:
 ok
 ```
 
-## Calendars (Enterprise)
+## Calendars (Commercial)
 
 ::: enterprise  
 :::
@@ -6738,7 +6738,7 @@ Deletes a calendar at system level
     204 No Content
 
 
-## License (Enterprise)
+## License (Commercial)
 
 ### View License
 

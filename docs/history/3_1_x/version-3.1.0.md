@@ -60,8 +60,8 @@ are a few highlights:
   * Configuration to allow unsantized html in log output. [#4784](https://github.com/rundeck/rundeck/pull/4784)
 * API: Scheduler takeover endpoint can specify multiple job IDs
 * Added option to Enable/Disable notifications for Referenced Jobs [#5026](https://github.com/rundeck/rundeck/pull/5026)
-* (Enterprise) License key can be shared among cluster members using database storage
-* (Enterprise) Execution cleanup process can clean up executions from dead cluster members
+* (Commercial) License key can be shared among cluster members using database storage
+* (Commercial) Execution cleanup process can clean up executions from dead cluster members
  
 ## Bug Fixes
 
@@ -70,7 +70,7 @@ are a few highlights:
 * Fixed node enhancer plugins not working [#5005](https://github.com/rundeck/rundeck/pull/5005)
 * JAAS/property file login module: username should not be added as a role
 * Admin view of user Profile page with lots of API tokens will load correctly
-* (Enterprise) Cluster manager: can select all orphan jobs to reassign scheduler owner
+* (Commercial) Cluster manager: can select all orphan jobs to reassign scheduler owner
 
 ## Security
 
@@ -79,15 +79,15 @@ are a few highlights:
 ## Plugins
 
 * Added "Attribute Match Node Enhancer" plugin for customizing node icons and injecting new node attributes based on other attributes
-* (Enterprise) Ruleset workflow strategy can use variables on both sides of conditional comparisons
-* (Enterprise) SQL Runner can use inline SQL script
-* (Enterprise) File Transfer source allows wildcards
+* (Commercial) Ruleset workflow strategy can use variables on both sides of conditional comparisons
+* (Commercial) SQL Runner can use inline SQL script
+* (Commercial) File Transfer source allows wildcards
 
 ## Docker
 * Images are OpenShift compatible [#4826](https://github.com/rundeck/rundeck/pull/4826)
 * Sync Rundeck profile from LDAP user attributes config option [#4995](https://github.com/rundeck/rundeck/pull/4995)
 * Template added for plugin repository feature [#5040](https://github.com/rundeck/rundeck/pull/5040)
-* (Enterprise) Updated cluster config defaults so that clustering works
+* (Commercial) Updated cluster config defaults so that clustering works
 more naturally OOTB
 
 ## Issues

@@ -1,4 +1,4 @@
-# Delinea Storage Plugin (Enterprise)
+# Delinea Storage Plugin (Commercial)
 
 :::enterprise
 :::

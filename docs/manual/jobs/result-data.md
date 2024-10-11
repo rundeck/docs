@@ -1,4 +1,4 @@
-# Result Data Plugins (Enterprise)
+# Result Data Plugins (Commercial)
 ::: enterprise
 :::
 

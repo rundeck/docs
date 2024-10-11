@@ -1,8 +1,8 @@
-# Progress Badge Workflow Step (Enterprise)
+# Progress Badge Workflow Step (Commercial)
 
 The Progress Badge Plugin included with Runbook Automation can create graphic badges to be rendered on the Log Output tab.
 
-See also: [Log Filter Progress Badge (Enterprise)](/manual/log-filters/progress-badge.md)
+See also: [Log Filter Progress Badge (Commercial)](/manual/log-filters/progress-badge.md)
 
 Render a single badge using input options:
 

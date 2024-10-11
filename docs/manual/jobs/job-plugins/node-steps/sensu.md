@@ -1,4 +1,4 @@
-# Sensu Node Steps (Enterprise)
+# Sensu Node Steps (Commercial)
 
 ::: enterprise
 :::

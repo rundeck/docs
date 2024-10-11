@@ -1,4 +1,4 @@
-# RSS Feed Plugin (Enterprise)
+# RSS Feed Plugin (Commercial)
 ::: enterprise
 :::
 

@@ -1,4 +1,4 @@
-# Health Checks (Enterprise)
+# Health Checks (Commercial)
 
 ::: enterprise
 :::

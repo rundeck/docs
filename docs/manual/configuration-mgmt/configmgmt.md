@@ -1,4 +1,4 @@
-# Configuration Management (Enterprise)
+# Configuration Management (Commercial)
 
 :::enterprise
 :::

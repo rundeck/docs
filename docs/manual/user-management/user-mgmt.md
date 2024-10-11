@@ -6,7 +6,7 @@
 
 This is a listing of all the users that have logged in to Rundeck regardless of the source of users.
 
-## Manage Local Users (Enterprise)
+## Manage Local Users (Commercial)
 ::: enterprise
 :::
 
@@ -30,7 +30,7 @@ Click the **Add User** button in the main window.  Fill out the fields.
 
 ![Add User Screen](/assets/img/usermgr-add-user.png)
 
-## Manage Local Groups (Enterprise)
+## Manage Local Groups (Commercial)
 ::: enterprise
 :::
 

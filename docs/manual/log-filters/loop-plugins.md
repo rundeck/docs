@@ -1,4 +1,4 @@
-# Store and Validate JSON (Enterprise)
+# Store and Validate JSON (Commercial)
 
 ## Log Filter Store and Validate JSON
 

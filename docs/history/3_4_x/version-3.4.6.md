@@ -19,7 +19,7 @@ The Rundeck Enterprise Runner securely opens up network/communication between da
 
 > This incubating feature is available for preview in this version. Try out the Enterprise Runner, free of charge, while it's incubating and let us know what you think. This feature will be licensed separately once generally available.
 
-## ServiceNow Rundeck Application Certified on Rome (Enterprise)
+## ServiceNow Rundeck Application Certified on Rome (Commercial)
 
 The [ServiceNow Rundeck Application](https://store.servicenow.com/sn_appstore_store.do#!/store/application/6e8e2effdb8f041034a5d487f49619e2/1.0.6) is now certified on Rome.
 

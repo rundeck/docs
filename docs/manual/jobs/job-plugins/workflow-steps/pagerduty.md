@@ -1,4 +1,4 @@
-# PagerDuty Workflow Steps (Enterprise)
+# PagerDuty Workflow Steps (Commercial)
 
 ## What is PagerDuty?
 

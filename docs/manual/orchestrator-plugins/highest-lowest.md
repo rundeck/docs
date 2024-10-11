@@ -1,4 +1,4 @@
-# Highest/Lowest Attribute Value (Enterprise)
+# Highest/Lowest Attribute Value (Commercial)
 
 This Orchestrator plugin picks one node with either the highest or lowest value of a certain attribute.
 

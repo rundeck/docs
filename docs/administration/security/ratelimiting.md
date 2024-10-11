@@ -1,9 +1,9 @@
-# Rate Limiting (Enterprise)
+# Rate Limiting (Commercial)
 
 :::enterprise
 :::
 
-## Failed Login Rate Limiting (Enterprise)
+## Failed Login Rate Limiting (Commercial)
 
 The Failed Login Rate Limiting helps provides protection from brute force login attempts on Rundeck.
 
@@ -28,7 +28,7 @@ rundeck.authRateLimiting.refillWindowInSeconds=60
 > Note: There is currently no way to clear a failed attempt lockout besides waiting for refill window to expire without any further failed attempts.
 
 
-## API Endpoints Rate Limiting (Enterprise)
+## API Endpoints Rate Limiting (Commercial)
 
 :::enterprise
 :::

@@ -1,4 +1,4 @@
-# GitHub Webhook Plugin (Enterprise)
+# GitHub Webhook Plugin (Commercial)
 ::: enterprise
 :::
 

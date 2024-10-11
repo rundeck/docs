@@ -6,4 +6,4 @@ Execution Lifecycle Plugins allow custom behaviors to occur when a job is run.
 
 - [Job Resume](/manual/jobs/job-resume.md)
 - [Job Retry Failed Nodes](/manual/jobs/job-retry-failed-nodes.md)
-- [Result Data (Enterprise)](/manual/jobs/result-data.md)
+- [Result Data (Commercial)](/manual/jobs/result-data.md)

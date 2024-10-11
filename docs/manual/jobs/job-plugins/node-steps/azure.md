@@ -1,4 +1,4 @@
-# Azure Node Steps (Enterprise)
+# Azure Node Steps (Commercial)
 
 ## Getting Started
 

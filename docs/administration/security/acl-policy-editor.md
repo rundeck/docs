@@ -70,7 +70,7 @@ If your ACL Policy YAML fails validation checks, attempting to save it will disp
 
 ![Validation Error](/assets/img/acl-editor-yaml-validation-error.png)
 
-## Editing ACL Rules (Enterprise)
+## Editing ACL Rules (Commercial)
 
 In Runbook Automation, by default you will see the Rules editor which allows defining ACL Policy rules with a simpler wizard UI.
 
@@ -134,7 +134,7 @@ You will now see the rule in the Rules list:
 
 Finally, **Save** your ACL Policy.
 
-## Access Level Checks (Enterprise)
+## Access Level Checks (Commercial)
 
 In the Access Control Pages, you can click the "Access Levels" Tab to test Access Levels for users and groups.
 

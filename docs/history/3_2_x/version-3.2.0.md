@@ -7,13 +7,13 @@ See [Upgrading to Rundeck 3.2](/upgrading/upgrading-to-rundeck-3.2.html).
 
 ## Enhancements
 
-### Job Resume (Enterprise)
+### Job Resume (Commercial)
 
 The new [Job Resume Plugin \(Enterprise\)](/manual/jobs/job-resume.md) allows you to manually or automatically resume an execution at a failed step.
 
 ![Execution Plugins](/assets/img/figure-job-resume-edit-job-execution-plugins.png)
 
-### Node Health Checks (Enterprise)
+### Node Health Checks (Commercial)
 
 [Node Health Checks](/manual/healthchecks.md) let you run commands or scripts to check if nodes are healthy. Filter out unhealthy nodes before executing jobs. Capture data and add it to node attributes. See Node Health status in the Node list.
 

@@ -1,4 +1,4 @@
-# Github Script Plugin (Enterprise)
+# Github Script Plugin (Commercial)
 
 The Github script plugin is a Workflow Step plugin included with Runbook Automation that runs a command located on a GitHub repo.
 

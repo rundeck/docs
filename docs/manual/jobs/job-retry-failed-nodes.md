@@ -1,4 +1,4 @@
-# Job Retry Failed Nodes (Enterprise)
+# Job Retry Failed Nodes (Commercial)
 ::: enterprise
 :::
 

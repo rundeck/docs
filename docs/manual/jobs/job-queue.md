@@ -1,4 +1,4 @@
-# Job Queue (Enterprise)
+# Job Queue (Commercial)
 
 By default, jobs can only have a single execution running at a time, and further attempts
 to execute it will be prevented unless the [Multiple Executions](/manual/jobs/creating-jobs.md#multiple-executions)

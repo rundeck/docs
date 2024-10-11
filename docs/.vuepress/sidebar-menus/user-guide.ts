@@ -262,7 +262,7 @@ export default [{
       ]
     },
     {
-      text: 'Schedules (Enterprise)',
+      text: 'Schedules (Commercial)',
       collapsible: true,
       link: '/manual/schedules/project-schedules',
       children: [
@@ -271,12 +271,12 @@ export default [{
       ],
     },
     {
-      text: 'Tour Manager (Enterprise)',
+      text: 'Tour Manager (Commercial)',
       collapsible: true,
       link: '/manual/tour-manager.md',
     },
     {
-      text: 'Calendars (Enterprise)',
+      text: 'Calendars (Commercial)',
       collapsible: true,
       link:'/manual/calendars',
       children: [

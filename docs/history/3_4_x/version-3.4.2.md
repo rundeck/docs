@@ -11,7 +11,7 @@ Release Date: August 4, 2021
 
 Check out the new features and enhancements for Rundeck Enterprise and Rundeck Community as well as a few incubating features included in this release. Incubating features are functionality released as ideas with the goal of getting feedback from our users. Look for posts in the [Rundeck Forums](https://community.pagerduty.com) to join the discussion about **Result Data** and **Ruleset Visualization**.
 
-### Result Data [Incubating] (Enterprise)
+### Result Data [Incubating] (Commercial)
 
 The new Result Data feature brings easier to digest output data to Rundeck.
 
@@ -23,7 +23,7 @@ Use cases for this feature cover a broad range of ideas like API consolidation, 
 
 ![Result Data Output](/assets/img/relnotes-342-jobdata.png)
 
-### Ruleset Visualization [Incubating] (Enterprise)
+### Ruleset Visualization [Incubating] (Commercial)
 
 Rulesets can be complicated to write. The Ruleset visualization offers a view of how the Workflow will progress based on the rules written. This feature is enabled by default on 3.4.2 and we have plans to expand the functionality in future releases. Join the discussion on the [Rundeck Forums](https://community.pagerduty.com). (Look for the _Ruleset Visualization - Incubating_ post)
 
@@ -31,7 +31,7 @@ Rulesets can be complicated to write. The Ruleset visualization offers a view of
 
 [Click here learn more about the Ruleset Strategy available in Rundeck Enterprise.](/manual/jobs/workflow-strategies/ruleset.md)
 
-### Azure Node Steps (Enterprise)
+### Azure Node Steps (Commercial)
 
 Now it's more practical to manage larger deployments in Microsoft&reg; Azure with more detailed cloud automation features. New node steps were introduced to add Cloud Automation to your Rundeck workflows. Control your imported nodes in Rundeck by using the following new job steps:
 
@@ -40,7 +40,7 @@ Now it's more practical to manage larger deployments in Microsoft&reg; Azure wit
 * Restart a Virtual Machine
 * Delete a Virtual Machine
 
-### ServiceNow&reg; Node Source Custom Filters (Enterprise)
+### ServiceNow&reg; Node Source Custom Filters (Commercial)
 
 In 3.4.2, we have added the ability to specify custom filters when setting up the ServiceNow&reg; Node Source. Now it’s possible to gather the nodes you want into your Rundeck project. Use a filter against any CMDB table and gather the results as nodes from ServiceNow&reg;.
 

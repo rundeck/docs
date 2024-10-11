@@ -1,4 +1,4 @@
-# Datadog Notification Plugin (Enterprise)
+# Datadog Notification Plugin (Commercial)
 
 Enterprise customers have access to this plugin, that allows you to create an event in Datadog based on the execution status of a job. For example, you can configure it to create an event if the job failed or if the job succeeded.
 

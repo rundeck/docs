@@ -1,4 +1,4 @@
-# Datadog Node Steps (Enterprise)
+# Datadog Node Steps (Commercial)
 
 ## Getting Started
 

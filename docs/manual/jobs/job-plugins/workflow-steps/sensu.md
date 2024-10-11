@@ -1,4 +1,4 @@
-# Sensu Workflow Steps (Enterprise)
+# Sensu Workflow Steps (Commercial)
 
 ::: enterprise
 :::
