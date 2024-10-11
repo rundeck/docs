@@ -25,8 +25,8 @@ If you would like to match the node name attribute, use 'nodename' instead of 'n
 
 #### Assign a Node Executor to a Subset of Node Inventory
 There are times when it is useful to declare a specific node-executor for a subset of the node inventory.  This is easily accomplished using Node Enhancers.
-For example, when the [EC2 Node Source](/manual/projects/resource-model-sources/aws.html#amazon-ec2-node-source) is added, the [Default Node Executor](/manual/project-settings.html#default-node-executor-configuration) - such as **SSH** -
-is automatically assigned to all the imported EC2's for that Node Source.  In order to specify that the [WinRM](/learning/howto/configuring-windows-nodes.html#basic-pywinrm-plugin-requirements) or the [Systems Manager (SSM)](/manual/projects/node-execution/aws-ssm.html#aws-systems-manager-ssm-node-executor-plugins)
+For example, when the [EC2 Node Source](/manual/projects/resource-model-sources/aws.md#amazon-ec2-node-source) is added, the [Default Node Executor](/manual/project-settings.md#default-node-executor-configuration) - such as **SSH** -
+is automatically assigned to all the imported EC2's for that Node Source.  In order to specify that the [WinRM](/learning/howto/configuring-windows-nodes.md#basic-pywinrm-plugin-requirements) or the [Systems Manager (SSM)](/manual/projects/node-execution/aws-ssm.md#aws-systems-manager-ssm-node-executor-plugins)
 node executors are used for a subset of this inventory, the following **Node Enhancer** configurations could be utilized:
 
 **Use SSM for All Nodes with SSM in the Node Name:**<br>

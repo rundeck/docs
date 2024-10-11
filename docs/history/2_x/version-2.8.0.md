@@ -44,7 +44,7 @@ New Features:
 Other changes:
 
 - [Optional `Referer` Header verification for CSRF attack prevention](/administration/configuration/config-file-reference.md#security)
-- Plugin properties support [`Options` multivalue type](/developer/01-plugin-development.md#plugin-properties) and [java annotations](http://rundeck.org/docs/developer/plugin-annotations.html#plugin-properties)
+- Plugin properties support [`Options` multivalue type](/developer/01-plugin-development.md#plugin-properties) and [java annotations](http://rundeck.org/docs/developer/plugin-annotations.md#plugin-properties)
 
 Bugfixes:
 

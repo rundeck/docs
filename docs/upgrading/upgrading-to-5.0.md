@@ -56,7 +56,7 @@ The Runner version can be checked in the Runner Management page by accessing the
 ## H2 Database Upgrade
 
 :::tip
-Note: If you are using one of the **[supported production databases](/administration/install/index.html#database-configuration)** these migration steps can be ignored.
+Note: If you are using one of the **[supported production databases](/administration/install/index.md#database-configuration)** these migration steps can be ignored.
 :::
 
 In release 5.0.0 the lib version of the h2 database was updated to `2.2.220`.  The old version of the H2 database is not compatible with the newer library. Since the old library has a critical security vulnerability we have not included it in the release and there is no mechanism to migrate the 1.x database in the version automatically by Rundeck.  When attempting an in-place upgrade from a previous version to 5.0.0+ using H2 Rundeck startup will fail.

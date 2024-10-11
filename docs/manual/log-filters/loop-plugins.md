@@ -3,7 +3,7 @@
 ## Log Filter Store and Validate JSON
 
 The "Store and Validate JSON" Log filter plugin validate and store a JSON string in the job context. 
-It can be used to pass the input JSON parameter to the [Loop / Step / Run Script from a JSON Array](/manual/workflow-steps/loop-plugins.html)  and [Loop / Node Step / Run Script from a JSON Array](/manual/node-steps/loop-plugins.html)  plugins
+It can be used to pass the input JSON parameter to the [Loop / Step / Run Script from a JSON Array](/manual/workflow-steps/loop-plugins.md)  and [Loop / Node Step / Run Script from a JSON Array](/manual/node-steps/loop-plugins.md)  plugins
 
 ### Plugin Configuration
 

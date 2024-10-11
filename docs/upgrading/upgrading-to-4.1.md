@@ -18,7 +18,7 @@ org.h2.jdbc.JdbcSQLNonTransientException: General error: "The write format 1 is 
 ### H2 Migration Options
 
 :::tip
-Note: If you are using one of the **[supported production databases](/administration/install/index.html#database-configuration)** these migration steps can be ignored.
+Note: If you are using one of the **[supported production databases](/administration/install/index.md#database-configuration)** these migration steps can be ignored.
 :::
 
 **If you don't need to keep the data in your old H2 database:**

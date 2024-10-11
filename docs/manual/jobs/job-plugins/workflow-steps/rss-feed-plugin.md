@@ -26,7 +26,7 @@ In the example below, the job step will query for the **10** most recent events 
 
 ## Example Job
 
-This example Job will query for recent AWS events.  Depending on whether there has been an unresolved event in the past 3 hours, the [**Progress Badge**](/manual/log-filters/progress-badge.html)
+This example Job will query for recent AWS events.  Depending on whether there has been an unresolved event in the past 3 hours, the [**Progress Badge**](/manual/log-filters/progress-badge.md)
 will display a message indicating whether there have been recent events.  This message is then posted to the Incident Timeline of a PagerDuty Incident:
 
 ![Output in Runbook Automation](/assets/img/rss-feed-output-in-rba.png)

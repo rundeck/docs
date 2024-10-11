@@ -23,7 +23,7 @@ This release has many new features and bugfixes, and contains some refactoring u
 	* [Plugin Developer Guide -  Orchestrator Plugin](/developer/09-orchestrator-plugin.md)
 	* [Example code](https://github.com/rundeck/rundeck/tree/development/examples/example-java-orchestrator-plugin)
 * Added hybrid LDAP + properties file group authentication for JAAS (`JettyCombinedLdapLoginModule`)
-	* [Administration - Authentication - Combining LDAP with other modules](/administration/authenticating-users.html#combining-ldap-with-other-modules)
+	* [Administration - Authentication - Combining LDAP with other modules](/administration/authenticating-users.md#combining-ldap-with-other-modules)
 
 ## Upgrading
 

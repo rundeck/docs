@@ -3,7 +3,7 @@
 Name: <span style="color: aquamarine"><span class="glyphicon glyphicon-knight"></span> "nacho aquamarine knight"</span>
 
 ## Upgrading
-See [Upgrading to Rundeck 3.2](/upgrading/upgrading-to-rundeck-3.2.html).
+See [Upgrading to Rundeck 3.2](/upgrading/upgrading-to-rundeck-3.2.md).
 
 ## Enhancements
 

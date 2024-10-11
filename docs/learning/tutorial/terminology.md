@@ -28,8 +28,8 @@ An option represents a named Job parameter (required or optional) that will be o
 ## Job Steps
 A Job Step is an individual unit of work that a Job might do. A job can have multiple, ordered steps that each do a different unit of work. 
 There are two types of steps available:
- - [Node steps](/manual/job-plugins.html#node-steps) are designed to be dispatched to one or more nodes, based on a filter defined in the Nodes section. An example of a node step is a single command or an inline script to be executed on each targeted node.
- - [Workflow steps](/manual/job-plugins.html#workflow-steps) don't operate in a node context. Instead, these steps run on the local Rundeck server and run only once in a workflow. For example, the "Refresh Project Nodes" workflow step refreshes the Rundeck node cache in case of any change.
+ - [Node steps](/manual/job-plugins.md#node-steps) are designed to be dispatched to one or more nodes, based on a filter defined in the Nodes section. An example of a node step is a single command or an inline script to be executed on each targeted node.
+ - [Workflow steps](/manual/job-plugins.md#workflow-steps) don't operate in a node context. Instead, these steps run on the local Rundeck server and run only once in a workflow. For example, the "Refresh Project Nodes" workflow step refreshes the Rundeck node cache in case of any change.
 
 ## Jobs
 Job definitions are files in either the XML or YAML file format that contain the job code.

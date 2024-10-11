@@ -15,12 +15,12 @@ For AWS users, some examples of diagnostics would be:
 
 There are multiple plugins that allow users to pull diagnostics from common AWS Services:
 
-* [Query CloudWatch Logs](/manual/workflow-steps/aws-cloudwatch.html#amazon-cloudwatch-logs-workflow-step-plugins)
+* [Query CloudWatch Logs](/manual/workflow-steps/aws-cloudwatch.md#amazon-cloudwatch-logs-workflow-step-plugins)
 ![Query CloudWatch Logs](/assets/img/aws-cloudwatch-logs-query-string.png)
-* [Query Athena tables](/manual/workflow-steps/amazon-athena.html#amazon-athena-query-workflow-step)
-* [Check ELB Targets Status](/manual/workflow-steps/aws-elb-workflow-plugin.html#target-group-instance-statuses)
-* [Retrieve failed ECS container messages](/manual/workflow-steps/aws-ecs-fargate.html#stopped-ecs-tasks-error-messages)
-* [Invoke script via Lambda](/manual/workflow-steps/aws-lambda.html#aws-lambda-workflow-steps) 
+* [Query Athena tables](/manual/workflow-steps/amazon-athena.md#amazon-athena-query-workflow-step)
+* [Check ELB Targets Status](/manual/workflow-steps/aws-elb-workflow-plugin.md#target-group-instance-statuses)
+* [Retrieve failed ECS container messages](/manual/workflow-steps/aws-ecs-fargate.md#stopped-ecs-tasks-error-messages)
+* [Invoke script via Lambda](/manual/workflow-steps/aws-lambda.md#aws-lambda-workflow-steps) 
 ![Lambda Function Job Step](/assets/img/aws-custom-lambda-code.png)
 
 In addition to using the AWS Plugins, it is also possible to harness the AWS CLI within your Automation Instance:
@@ -53,8 +53,8 @@ A diagnostic runbook could incorporate the <br>**`az acr check-health`** command
 
 There are multiple plugins that allow users to pull diagnostics from Azure services:
 
-* [**Azure Node Source**](/manual/projects/resource-model-sources/azure.html#azure-node-source)
-* [**Azure Node Health Checks**](/manual/healthcheckplugins/azure-healthcheck.html#azure-health-check-enterprise-only)
+* [**Azure Node Source**](/manual/projects/resource-model-sources/azure.md#azure-node-source)
+* [**Azure Node Health Checks**](/manual/healthcheckplugins/azure-healthcheck.md#azure-health-check-enterprise-only)
 
 ### Google Cloud Platform (GCP)                                                   
 
@@ -69,5 +69,5 @@ These steps can be treated as a runbook and “transposed” into your Automatio
 :::
 
  There are multiple plugins that allow users to pull diagnostics from GCP services:
-* [**GCP Compute Engine - Node Source**](/manual/projects/resource-model-sources/gcp.html)
-* [**GCP Compute Engine - Health Check**](/manual/healthcheckplugins/gcp-compute-healthcheck.html)
+* [**GCP Compute Engine - Node Source**](/manual/projects/resource-model-sources/gcp.md)
+* [**GCP Compute Engine - Health Check**](/manual/healthcheckplugins/gcp-compute-healthcheck.md)

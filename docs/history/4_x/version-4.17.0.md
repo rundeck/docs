@@ -42,7 +42,7 @@ Previously, if a Runner was integrated with a secrets-management provider, then 
 #### Cross-role and cross-account support for EC2, AWS Systems Manager
 
 This release introduces the ability to use Runbook Automation to execute commands and scripts on EC2 instances spread across multiple AWS Accounts–all from within a single project.  By using the AssumeRole functionality that is now built into both the EC2 Node Source and SSM Node Executor plugins, Runbook Automation can now integrate with multiple AWS IAM Roles that reside in one or multiple AWS Accounts.
-<br>To configure the AWS integration with Runbook Automation, see [this documentation](/manual/plugins/aws-plugins-overview.html#aws-integration-for-runbook-automation).
+<br>To configure the AWS integration with Runbook Automation, see [this documentation](/manual/plugins/aws-plugins-overview.md#aws-integration-for-runbook-automation).
 #### Enhanced feedback message on Enterprise Runners
 
 Previously, if a user chose to use a Node Source that was not available on an Enterprise Runner, they would not see an error message only after they configured and then saved the Node Source. Now, users will see a message whether a given Node Source is available on their Runners when the remote Runners option is selected.

@@ -24,11 +24,11 @@ In Playbook textbox just put the Ansible Playbook content, it's important to res
 
 ![Ansible_Inline_1](/assets/img/ansible_inline_1.png)
 
-It's possible to pass extra variables to Playbooks. The variable must be defined on Ansible Playbook in this format `"{{ variable_name }}"'`, later, define the format, in the following example we're using a YAML format. Finally, define the variable content on "Extra Variables" textbox (following the format defined on "Syntax Mode"), [options](/manual/job-options.html#job-options) and [data](/manual/log-filters/key-value-data\.md#key-value-data) values are accepted.
+It's possible to pass extra variables to Playbooks. The variable must be defined on Ansible Playbook in this format `"{{ variable_name }}"'`, later, define the format, in the following example we're using a YAML format. Finally, define the variable content on "Extra Variables" textbox (following the format defined on "Syntax Mode"), [options](/manual/job-options.md#job-options) and [data](/manual/log-filters/key-value-data\.md#key-value-data) values are accepted.
 
 ![Ansible_Inline_2](/assets/img/ansible_inline_2.png)
 
-Another way to pass variables to Ansible inline playbooks is to define as an argument on "Extra Ansible arguments" textbox, using the same inline-playbook defined in the example above, you can define the argument using `-e "variable_name:value"`, [options](/manual/job-options.html#job-options) and [data](/manual/log-filters/key-value-data\.md#key-value-data) values are accepted.
+Another way to pass variables to Ansible inline playbooks is to define as an argument on "Extra Ansible arguments" textbox, using the same inline-playbook defined in the example above, you can define the argument using `-e "variable_name:value"`, [options](/manual/job-options.md#job-options) and [data](/manual/log-filters/key-value-data\.md#key-value-data) values are accepted.
 
 ![Ansible_Inline_3](/assets/img/ansible_inline_3.png)
 
@@ -42,11 +42,11 @@ To reference the playbook file, just put the Ansible Playbook file path at "Play
 
 ![Ansible_Playbook_1](/assets/img/ansible_playbook_1.png)
 
-Like Ansible Playbook Inline step, it's possible to use "Extra Variables" textbox to pass any variable defined in your Playbook, it's importaant follow the syntax defined on "Syntax Mode" list. You can use Rundeck [options](/manual/job-options.html#job-options) or [data](/manual/log-filters/key-value-data\.md#key-value-data) values.
+Like Ansible Playbook Inline step, it's possible to use "Extra Variables" textbox to pass any variable defined in your Playbook, it's importaant follow the syntax defined on "Syntax Mode" list. You can use Rundeck [options](/manual/job-options.md#job-options) or [data](/manual/log-filters/key-value-data\.md#key-value-data) values.
 
 ![Ansible_Playbook_2](/assets/img/ansible_playbook_2.png)
 
-Also, it's possible use "Extra Ansible arguments" as the same way of Ansible Playbook Inline step, just define the argument in the following way: `-e "variable_name:value"`, [options](/manual/job-options.html#job-options) and [data](/manual/log-filters/key-value-data\.md#key-value-data) values are accepted.
+Also, it's possible use "Extra Ansible arguments" as the same way of Ansible Playbook Inline step, just define the argument in the following way: `-e "variable_name:value"`, [options](/manual/job-options.md#job-options) and [data](/manual/log-filters/key-value-data\.md#key-value-data) values are accepted.
 
 ![Ansible_Playbook_3](/assets/img/ansible_playbook_3.png)
 

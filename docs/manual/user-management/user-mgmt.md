@@ -52,4 +52,4 @@ Click the ***Add Group*** button in the main window.  Fill out the fields and se
 ## Appendix
 
 ### Including Admin Users
-By default the Rundeck admin user is not listed in the User Manager.  There are some options available in `rundeck-config.properties` to configure whether admin accounts are available in this module.  [They are documented here](/administration/configuration/config-file-reference.html#rundeck-config-properties) and prefixed with `rundeck.security.dblogin.`
+By default the Rundeck admin user is not listed in the User Manager.  There are some options available in `rundeck-config.properties` to configure whether admin accounts are available in this module.  [They are documented here](/administration/configuration/config-file-reference.md#rundeck-config-properties) and prefixed with `rundeck.security.dblogin.`

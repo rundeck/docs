@@ -31,7 +31,7 @@ The Notification Editor UI/UX has been revamped to better support the growing nu
 ![New Notification Editor](/assets/img/releasenotes-3.3.4-notifications.png)
 Notifications can also now connect to Key Storage for centralized, secure secret retrieval.
 
-Check out the new [configuration documentation](/administration/configuration/docker.html) for our Docker builds and information about how the [Remco Templates](/administration/configuration/docker/extending-configuration\.md) are integrated to their deployment.
+Check out the new [configuration documentation](/administration/configuration/docker.md) for our Docker builds and information about how the [Remco Templates](/administration/configuration/docker/extending-configuration\.md) are integrated to their deployment.
 
 
 

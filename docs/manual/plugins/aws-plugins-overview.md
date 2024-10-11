@@ -123,7 +123,7 @@ When self-hosting Runbook Automation on EC2, the recommended method for integrat
 ![Select Entity Type](/assets/img/aws-iam-select-entity-type.png)
 5. In the **Permissions policies**, select the permission-sets based on the plugins you intend to use.
    - For example, all of the [CloudWatch Logs Plugins](/manual/jobs/job-plugins/workflow-steps/aws-cloudwatch) require **`logs:StartQuery`** and **`logs:GetQueryResults`** 
-   while the [Execute Saved Query](/manual/jobs/job-plugins/workflow-steps/aws-cloudwatch.html#execute-saved-cloudwatch-logs-query) _also_ requires **`logs:DescribeQueryDefinitions`**.
+   while the [Execute Saved Query](/manual/jobs/job-plugins/workflow-steps/aws-cloudwatch.md#execute-saved-cloudwatch-logs-query) _also_ requires **`logs:DescribeQueryDefinitions`**.
 <br>Then click **Next**.
 6. Specify a **Role Name** and a **Description**.  Do not change the **Select trusted entities**.
 7. Click **Create Role**.
@@ -166,7 +166,7 @@ When self-hosting Runbook Automation on ECS, the recommended method for integrat
 ![ECS IAM Role](/assets/img/aws-ecs-iam-select-use-case.png)
 5. In the **Permissions policies**, select the permission-sets based on the plugins you intend to use.
    - For example, all of the [CloudWatch Logs Plugins](/manual/jobs/job-plugins/workflow-steps/aws-cloudwatch) require **`logs:StartQuery`** and **`logs:GetQueryResults`**
-     while the [Execute Saved Query](/manual/jobs/job-plugins/workflow-steps/aws-cloudwatch.html#execute-saved-cloudwatch-logs-query) _also_ requires **`logs:DescribeQueryDefinitions`**.
+     while the [Execute Saved Query](/manual/jobs/job-plugins/workflow-steps/aws-cloudwatch.md#execute-saved-cloudwatch-logs-query) _also_ requires **`logs:DescribeQueryDefinitions`**.
 <br>Then click **Next**.
 6. Specify a **Role Name** and a **Description**.  Do not change the **Select trusted entities**.
 7. Click **Create Role**.
@@ -199,7 +199,7 @@ Now that the IAM Role is attached to the ECS Task, use the following steps to de
 ### Alternative AWS Authentication: Access Key & Secret Key
 
 1. Create an AWS Access Key and Secret Key that is associated with an IAM Role, follow [these instructions](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html).
-2. Once the keys have been downloaded, add the Secret Key into Project or System Key Storage using the Password key type, following [these instructions](/manual/system-configs.html#key-storage).
+2. Once the keys have been downloaded, add the Secret Key into Project or System Key Storage using the Password key type, following [these instructions](/manual/system-configs.md#key-storage).
    :::tip Tip
    If using a third party credential-store, such as [Hashicorp Vault](/learning/howto/vault-integration), then skip step 2.
    :::

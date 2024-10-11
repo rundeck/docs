@@ -60,4 +60,4 @@ To target specific Nodes for the prebuilt Jobs within the Runbook Automation Int
 
 This will allow you to target the _individual_ node selected.  If you want to target multiple Nodes, see the [Node Filter Documentation](/manual/11-node-filters).
 
-### **With the Prebuilt Jobs, you can [<span style="color:green"><ins>integrate with Automation Actions!</ins></span>](/learning/solutions/automated-diagnostics/automation-actions.html)**
+### **With the Prebuilt Jobs, you can [<span style="color:green"><ins>integrate with Automation Actions!</ins></span>](/learning/solutions/automated-diagnostics/automation-actions.md)**

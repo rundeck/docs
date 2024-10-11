@@ -38,5 +38,5 @@ For all Runbook Automation environments, follow the steps below to download and 
 5. Click the green **Import** button
    ::: tip Note
    The Tours in the Automated Diagnostics Solution will help you integrate the product with various services (such as AWS) and other PagerDuty products.  
-   If you are looking for a more general introduction to PagerDuty’s Automation products, it is recommended to review the contents of the [Welcome Project](/learning/howto/welcome-project-starter.html).
+   If you are looking for a more general introduction to PagerDuty’s Automation products, it is recommended to review the contents of the [Welcome Project](/learning/howto/welcome-project-starter.md).
    :::

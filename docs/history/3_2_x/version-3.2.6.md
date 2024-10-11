@@ -14,7 +14,7 @@ This release fixes [CVE-2020-11009](https://github.com/rundeck/rundeck/security/
 
 ## Upgrading
 
-See [Upgrading to Rundeck 3.2](/upgrading/upgrading-to-rundeck-3.2.html) for full details.
+See [Upgrading to Rundeck 3.2](/upgrading/upgrading-to-rundeck-3.2.md) for full details.
 
 ## Issues
 

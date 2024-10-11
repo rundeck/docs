@@ -11,7 +11,7 @@ The setup walks through configuring Runbook Automation to execute commands and s
 @tab Runbook Automation
 ![Cross Account SSM Architecture - RBA](/assets/img/ssm-rba-architecture.png)<br>
 
-1. Runbook Automation integrates with "Master" Account using [direct integration](/manual/plugins/aws-plugins-overview.html#aws-integration-for-runbook-automation).
+1. Runbook Automation integrates with "Master" Account using [direct integration](/manual/plugins/aws-plugins-overview.md#aws-integration-for-runbook-automation).
 2. IAM Role in Master account has Trust Relationship with IAM ARNs in remote accounts.
 3. Runbook Automation uses _Assume Role_ function to adopt permissions for remote accounts.
 4. Automation is dispatched to EC2's through SSM using remote account IAM role.
@@ -20,7 +20,7 @@ The setup walks through configuring Runbook Automation to execute commands and s
 ![Cross Account SSM Architecture](/assets/img/ssm-cross-account-architecture.png)<br>
 
 1. Runbook Automation is hosted in "Master" account - on EC2, EKS or ECS.
-2. Through [AWS integration](/manual/plugins/aws-plugins-overview.html#aws-integration-for-process-automation-hosted-on-ec2), Runbook Automation inherits entitlements from IAM Role associated with EC2, EKS or ECS.
+2. Through [AWS integration](/manual/plugins/aws-plugins-overview.md#aws-integration-for-process-automation-hosted-on-ec2), Runbook Automation inherits entitlements from IAM Role associated with EC2, EKS or ECS.
 3. IAM role from Master account has Trust Relationship with IAM role in remote accounts.
 4. Automation is dispatched to EC2's through SSM using remote account IAM role.
 
@@ -178,9 +178,9 @@ In order for Process or Runbook Automation to assume the role with the SSM permi
 First, navigate to the _master account_ and copy the **ARN** of the IAM Role associated with Runbook Automation.
 
 :::tip Master Account Reference
-For Runbook Automation (Cloud), the _master account_ is the AWS Account that is integrated through the Project or System using the [AWS PluginGroup](/manual/plugins/aws-plugins-overview.html#aws-integration-for-runbook-automation).
+For Runbook Automation (Cloud), the _master account_ is the AWS Account that is integrated through the Project or System using the [AWS PluginGroup](/manual/plugins/aws-plugins-overview.md#aws-integration-for-runbook-automation).
 
-For Runbook Automation Self=Hosted, the _master account_ is the AWS Account where Runbook Automation is hosted - either [on EC2](/manual/plugins/aws-plugins-overview.html#aws-integration-for-process-automation-hosted-on-ec2) or [on ECS](/manual/plugins/aws-plugins-overview.html#process-automation-hosted-on-ecs). 
+For Runbook Automation Self=Hosted, the _master account_ is the AWS Account where Runbook Automation is hosted - either [on EC2](/manual/plugins/aws-plugins-overview.md#aws-integration-for-process-automation-hosted-on-ec2) or [on ECS](/manual/plugins/aws-plugins-overview.md#process-automation-hosted-on-ecs). 
 :::
 
 Navigate back to the _remote_ AWS account where the cross-account role can be modified.  Click on **Trust Relationships** then click on **Edit Trust Policy**. Use the following Trust Policy:
@@ -235,11 +235,11 @@ If running Runbook Automation on ECS, then this IAM Policy needs to be attached 
 ## Configure Node Executor in Runbook Automation
 
 ### AWS Authentication
-Follow the instructions outlined in the [AWS Plugins Overview](/manual/plugins/aws-plugins-overview.html) for Runbook Automation to authenticate with AWS.
+Follow the instructions outlined in the [AWS Plugins Overview](/manual/plugins/aws-plugins-overview.md) for Runbook Automation to authenticate with AWS.
 
 ### Node Discovery
 In order to target the remote EC2 instances, they need to be populated into Runbook Automation's node inventory.
-It is recommended to use the [**EC2 Node Source**](/manual/projects/resource-model-sources/aws.html#amazon-ec2-node-source).
+It is recommended to use the [**EC2 Node Source**](/manual/projects/resource-model-sources/aws.md#amazon-ec2-node-source).
 
 Place the ARN of the cross-account role into the **Assume Role** field.
 
@@ -285,8 +285,8 @@ The SSM File Copier can also be set as the **Default File Copier** for the whole
 4. If Runbook Automation is authenticated with AWS through an associated IAM Role, then the Access Key ID and Secret Key fields can be left blank.
 
 :::tip When not using the EC2 Resource Model
-Node Attributes can be added when defining a resource-model source [manually](/administration/configuration/plugins/bundled-plugins.html#built-in-resource-model-formats)
-or by using the [Attribute Match](/manual/node-enhancers.html#attribute-match) node enhancer. Use the same node-attributes listed above without `default`. For example, `ssm-assume-role=true`.
+Node Attributes can be added when defining a resource-model source [manually](/administration/configuration/plugins/bundled-plugins.md#built-in-resource-model-formats)
+or by using the [Attribute Match](/manual/node-enhancers.md#attribute-match) node enhancer. Use the same node-attributes listed above without `default`. For example, `ssm-assume-role=true`.
 :::
 
 ## Using CloudWatch Logs

@@ -28,4 +28,4 @@ To initiate any Tour, click the Tours icon at the bottom right of your screen (n
 ![Example Tour](/assets/img/solutions-auto-diag-example-tour.png)
 <center>_Example Tour Interface_</center>
 
-### **After following the tours, you can now use the [<span style="color:green"><ins>Prebuilt Automation Jobs!</ins></span>](/learning/solutions/automated-diagnostics/jobs.html)**
+### **After following the tours, you can now use the [<span style="color:green"><ins>Prebuilt Automation Jobs!</ins></span>](/learning/solutions/automated-diagnostics/jobs.md)**

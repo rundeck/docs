@@ -36,7 +36,7 @@ Next, configure the plugin to point at the Rundeck instance.<br>
 ![ ](/assets/img/jenkins8_configsys.png)<br>
 1. Now, with the Rundeck plugin installed, a new "Rundeck" section is available on the main Jenkins options.  In that section, click on the "Add Rundeck" button.<br>
 ![ ](/assets/img/jenkins9_addrundeck.png)<br>
-1. Give it a name, URL (specifying the full URL Rundeck instance including the port, 4440 in this case), username/password or auth token (to learn how to create auth token please visit [this](/manual/10-user.html#user-api-tokens) doc entry), and the API version. <br>
+1. Give it a name, URL (specifying the full URL Rundeck instance including the port, 4440 in this case), username/password or auth token (to learn how to create auth token please visit [this](/manual/10-user.md#user-api-tokens) doc entry), and the API version. <br>
 ![ ](/assets/img/jenkins10_testconnection.png) <br>
 1. To check if all information is well configured, click on the "Test Connection" button, if all is right, you can see a "Your Rundeck instance is alive, and your credentials are valid!" message, and just click on the “Save” button.<br>
 ![ ](/assets/img/jenkins11_saveconfig.png)<br>

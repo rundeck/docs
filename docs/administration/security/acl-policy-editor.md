@@ -59,7 +59,7 @@ Choose "Edit" or "Create" to modify an ACL Policy.
 You can edit the YAML format for the ACL Policy directly. (In Runbook Automation, click the "Editor" tab to view the YAML editor.)
 
 ::: tip
-See the [Access Control Policy](/administration/security/authorization.md#access-control-policy-2) and [aclpolicy](/manual/document-format-reference/aclpolicy-v10.html) pages for more information.
+See the [Access Control Policy](/administration/security/authorization.md#access-control-policy-2) and [aclpolicy](/manual/document-format-reference/aclpolicy-v10.md) pages for more information.
 :::
 
 ![Edit Access Control Policy YAML](/assets/img/acl-editor-edit-system-yaml.png)
@@ -104,11 +104,11 @@ For
 
 ![System Resource Types](/assets/img/acl-editor-new-rule-system-resources.png)
 
-More information about System Context Resource types are in the [Access Control Policy > Application Scope Resources and Actions](/administration/security/authorization.html#application-scope-resources-and-actions) page.
+More information about System Context Resource types are in the [Access Control Policy > Application Scope Resources and Actions](/administration/security/authorization.md#application-scope-resources-and-actions) page.
 
 ![Project Resource Types](/assets/img/acl-editor-new-rule-project-resources.png)
 
-More information about Project Context Resource types are in the [Access Control Policy > Project Scope Resources and Actions](/administration/security/authorization.html#project-scope-resources-and-actions) page.
+More information about Project Context Resource types are in the [Access Control Policy > Project Scope Resources and Actions](/administration/security/authorization.md#project-scope-resources-and-actions) page.
 
 After choosing the Resource Type, some types will display a set of "Params" allowing you to specify which resource(s) of that type the rule applies to.
 

@@ -48,7 +48,7 @@ There are two Workflow Step plugins for Sumo Logic:
 6. In the **Query String** text box, place the Sumo logs query:
 <img style='border:1px solid #327af6' src="/assets/img/sumo-add-query.png" />
     :::tip Tip
-     It is possible to include variables in the query by making use of [Job Options](/manual/job-options) and [Context Variables](/manual/job-workflows.html#context-variable-usage).
+     It is possible to include variables in the query by making use of [Job Options](/manual/job-options) and [Context Variables](/manual/job-workflows.md#context-variable-usage).
     For example, if the job uses a log filter to capture the **`_collector`** from a prior step and saved in a variable **`${data.collector}`**, this could be passed into the Query String:
     <br><br><img style='border:1px solid #327af6' src="/assets/img/sumo-use-data-variable.png" />
     :::

@@ -33,7 +33,7 @@ A completely re-architected Log Viewer loads job activity faster with improved u
 ![Log Viewer](/assets/img/relnotes-330-eventview.png)
 
 ### User/Group Management Wizard (Commercial)
-Rundeck user accounts can now be added/managed directly in the Enterprise version of Rundeck. Define local users and groups quickly and easily from the new [User Manager](/manual/user-management/user-mgmt.html#manage-local-users) administration interface.
+Rundeck user accounts can now be added/managed directly in the Enterprise version of Rundeck. Define local users and groups quickly and easily from the new [User Manager](/manual/user-management/user-mgmt.md#manage-local-users) administration interface.
 
 ![User Manager Screen](/assets/img/usermgr-manage-users.png)
 
@@ -52,8 +52,8 @@ A new License Status API has been added to allow programmatic checking of your i
 Significant updates to the backend offer performance increases and improved security options.  Below are the high level highlights:
 
 - Backend updated to Grails 4 which now support Java 11.
-- Spring Security 5 upgrade including [OAuth2 updates](/administration/security/sso). (Be sure to read [docs for changes required when upgrading](/upgrading/upgrading-to-rundeck-3.3.html))
-- Logging system upgraded to [Log4J2](https://logging.apache.org/log4j/2.x/) (Be sure to read [docs for changes required when upgrading](/upgrading/upgrading-to-rundeck-3.3.html))
+- Spring Security 5 upgrade including [OAuth2 updates](/administration/security/sso). (Be sure to read [docs for changes required when upgrading](/upgrading/upgrading-to-rundeck-3.3.md))
+- Logging system upgraded to [Log4J2](https://logging.apache.org/log4j/2.x/) (Be sure to read [docs for changes required when upgrading](/upgrading/upgrading-to-rundeck-3.3.md))
 
 ### Docker Updates
 - Base image updated to **Ubuntu 18.04 LTS**
@@ -71,7 +71,7 @@ The default is `75%`.
 A significant documentation revamp was done as part of the 3.3.x release.  It can be [found here](https://docs.rundeck.com/) and covers all the new features and functionality.
 
 ## Upgrading
-See [Upgrading to Rundeck 3.3](/upgrading/upgrading-to-rundeck-3.3.html) for details about how to upgrade from 3.2.  If you are upgrading from a version prior to 3.2 be sure to [start here](/upgrading/).
+See [Upgrading to Rundeck 3.3](/upgrading/upgrading-to-rundeck-3.3.md) for details about how to upgrade from 3.2.  If you are upgrading from a version prior to 3.2 be sure to [start here](/upgrading/).
 
 ## Notices
 Notices for future changes that may require code changes.

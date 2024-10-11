@@ -11,7 +11,7 @@ So far the plugin has two different iteration types: iterating a JSON array and 
 ## Run Script from a Json Array
 
 This node step plugin runs an inline script based on a provided JSON Array  (per each node).  
-In order to capture the JSON array in previous steps (data context), you can use the [Loop / Log Filter / Store and Validate JSON](/manual/log-filters/loop-plugins.html) log filter plugging.
+In order to capture the JSON array in previous steps (data context), you can use the [Loop / Log Filter / Store and Validate JSON](/manual/log-filters/loop-plugins.md) log filter plugging.
 
 ### Plugin Configuration
 

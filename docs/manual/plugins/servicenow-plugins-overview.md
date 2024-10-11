@@ -11,20 +11,20 @@ These integrations allow operations teams to provide self-service mechanisms to 
 
 |Plugin Name| Plugin Type| ServiceNow Table|
 |:---------------------------------------------------------|---------------------------------------------------------|:---------------------------------------------------------:|
-|[**Update Incident State**](/manual/workflow-steps/servicenow.html#servicenow-incident-update-state)|Job Step|Incident|
-|[**Check Incident Assigned**](/manual/workflow-steps/servicenow.html#servicenow-incident-check-assigned)|Job Step|Incident|
-|[**Check Incident State**](/workflow-steps/servicenow.html#servicenow-incident-check-state)|Job Step|Incident|
-|[**Comment Incident**](/manual/workflow-steps/servicenow.html#servicenow-incident-comment)|Job Step|Incident|
-|[**Create Incident**](/manual/workflow-steps/servicenow.html#servicenow-incident-create)|Job Step|Incident|
-|[**Edit Incident**](/manual/workflow-steps/servicenow.html#servicenow-incident-edit)|Job Step|Incident|
-|[**View Incident**](/manual/workflow-steps/servicenow.html#servicenow-incident-view)|Job Step|Incident|
-|[**Check Change State**](/manual/workflow-steps/servicenow.html#servicenow-change-check-state)|Job Step|Change|
-|[**Update Change State**](/manual/workflow-steps/servicenow.html#servicenow-change-update-state)|Job Step|Change|
-|[**Create Change Request**](/manual/workflow-steps/servicenow.html#servicenow-change-create)|Job Step|Change|
-|[**Create Incident**](/manual/notifications/servicenow.html#servicenow-incident-create)|Notification|Incident|
-|[**Comment Incident**](/manual/notifications/servicenow.html#servicenow®-notification-plugins)|Notification|Incident|
-|[**Create Change Request**](/manual/notifications/servicenow.html#servicenow-change-create)|Notification|Change|
-|[**ServiceNow Node Source**](/manual/projects/resource-model-sources/servicenow.html#servicenow-node-source-enterprise)|Node Source|CMDB|
+|[**Update Incident State**](/manual/workflow-steps/servicenow.md#servicenow-incident-update-state)|Job Step|Incident|
+|[**Check Incident Assigned**](/manual/workflow-steps/servicenow.md#servicenow-incident-check-assigned)|Job Step|Incident|
+|[**Check Incident State**](/workflow-steps/servicenow.md#servicenow-incident-check-state)|Job Step|Incident|
+|[**Comment Incident**](/manual/workflow-steps/servicenow.md#servicenow-incident-comment)|Job Step|Incident|
+|[**Create Incident**](/manual/workflow-steps/servicenow.md#servicenow-incident-create)|Job Step|Incident|
+|[**Edit Incident**](/manual/workflow-steps/servicenow.md#servicenow-incident-edit)|Job Step|Incident|
+|[**View Incident**](/manual/workflow-steps/servicenow.md#servicenow-incident-view)|Job Step|Incident|
+|[**Check Change State**](/manual/workflow-steps/servicenow.md#servicenow-change-check-state)|Job Step|Change|
+|[**Update Change State**](/manual/workflow-steps/servicenow.md#servicenow-change-update-state)|Job Step|Change|
+|[**Create Change Request**](/manual/workflow-steps/servicenow.md#servicenow-change-create)|Job Step|Change|
+|[**Create Incident**](/manual/notifications/servicenow.md#servicenow-incident-create)|Notification|Incident|
+|[**Comment Incident**](/manual/notifications/servicenow.md#servicenow®-notification-plugins)|Notification|Incident|
+|[**Create Change Request**](/manual/notifications/servicenow.md#servicenow-change-create)|Notification|Change|
+|[**ServiceNow Node Source**](/manual/projects/resource-model-sources/servicenow.md#servicenow-node-source-enterprise)|Node Source|CMDB|
 </details>
 <br>
 <em>Click to expand to see the full list of Runbook Automation plugins for ServiceNow</em>

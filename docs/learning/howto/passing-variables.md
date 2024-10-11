@@ -134,6 +134,6 @@ If your job is run against a single node it is also possible to use the `*` char
 Using other Context variables follows the same format.
 
 To see what variables might be available check out the list here:
-[Context Variables Documentation](/manual/job-workflows.html#context-variables)
+[Context Variables Documentation](/manual/job-workflows.md#context-variables)
 
 To check variable values during your workflow use the Workflow Step titled **Log Data Step**.

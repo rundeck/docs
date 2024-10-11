@@ -1,7 +1,7 @@
 # Establishing A ServiceNow&reg; Connection at the Project Level
 
 :::warning Head Up!
-There is an easier way to configure ServiceNow plugins at the Project Level.  See [ServiceNow Plugins Overview](/manual/plugins/servicenow-plugins-overview.html) for instructions.
+There is an easier way to configure ServiceNow plugins at the Project Level.  See [ServiceNow Plugins Overview](/manual/plugins/servicenow-plugins-overview.md) for instructions.
 :::
 
 For all the different ServiceNow&reg; job steps, the connection can also be established at the project level. In order to do so, add the following to your project configuration file, depending on which job step you are utilizing:

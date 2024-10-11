@@ -32,10 +32,10 @@ Webhooks were feature flagged in `3.1.x` and disabled by default.  Your instance
 :::
 
 ### Advanced Run Job (Commercial)
-The [condition](/manual/webhooks/advanced-run-job.html#conditions) type `matches` has been renamed to `equals`. Webhooks using `Advanced Run Job` with `matches` conditions will need to be updated to work properly. These configurations can be updated by:  
+The [condition](/manual/webhooks/advanced-run-job.md#conditions) type `matches` has been renamed to `equals`. Webhooks using `Advanced Run Job` with `matches` conditions will need to be updated to work properly. These configurations can be updated by:  
 
 - Loading the webhook in the UI, selecting `equals` on the appropriate conditions, and then saving
 
    **OR**
 
-- Updating the webhooks configuration through the [API](/api/rundeck-api.html#webhooks-incubating)
+- Updating the webhooks configuration through the [API](/api/rundeck-api.md#webhooks-incubating)

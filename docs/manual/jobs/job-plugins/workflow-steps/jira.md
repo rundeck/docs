@@ -5,7 +5,7 @@ As of Rundeck version 3.4.0 the Jira plugins now support Auth Tokens.  Please ch
 :::
 
 ## Authentication
-Follow the steps outlined in [Jira Plugins Overview](/manual/plugins/jira-plugins-overview.html) to configure authentication with Jira for these Job step plugins.
+Follow the steps outlined in [Jira Plugins Overview](/manual/plugins/jira-plugins-overview.md) to configure authentication with Jira for these Job step plugins.
 
 Alternatively the settings can be specified in `framework.properties`for all Jira Workflow Steps.
 
@@ -25,7 +25,7 @@ Search assigned issues by user.
 ### Configuration
 
 :::tip Tip
-These settings do not need to be set if credentials were configured on the [Jira Plugins Overview](/manual/plugins/jira-plugins-overview.html) page.
+These settings do not need to be set if credentials were configured on the [Jira Plugins Overview](/manual/plugins/jira-plugins-overview.md) page.
 :::
 
 The Jira connection credentials are set in the `project.properties` file
@@ -53,7 +53,7 @@ Check if the Jira Issue exist by key.
 ### Configuration
 
 :::tip Tip
-These settings do not need to be set if credentials were configured on the [Jira Plugins Overview](/manual/plugins/jira-plugins-overview.html) page.
+These settings do not need to be set if credentials were configured on the [Jira Plugins Overview](/manual/plugins/jira-plugins-overview.md) page.
 :::
 
 The Jira connection credentials are set in the `project.properties` file
@@ -80,7 +80,7 @@ Append notification messages to a Jira issue.
 ### Configuration
 
 :::tip Tip
-These settings do not need to be set if credentials were configured on the [Jira Plugins Overview](/manual/plugins/jira-plugins-overview.html) page.
+These settings do not need to be set if credentials were configured on the [Jira Plugins Overview](/manual/plugins/jira-plugins-overview.md) page.
 :::
 
 The Jira connection credentials are set in the `project.properties` file
@@ -109,7 +109,7 @@ Creates a new Jira issue.
 ### Configuration
 
 :::tip Tip
-These settings do not need to be set if credentials were configured on the [Jira Plugins Overview](/manual/plugins/jira-plugins-overview.html) page.
+These settings do not need to be set if credentials were configured on the [Jira Plugins Overview](/manual/plugins/jira-plugins-overview.md) page.
 :::
 
 The Jira connection credentials are set in the `project.properties` file
@@ -144,7 +144,7 @@ Updates a Jira Issue.
 ### Configuration
 
 :::tip Tip
-These settings do not need to be set if credentials were configured on the [Jira Plugins Overview](/manual/plugins/jira-plugins-overview.html) page.
+These settings do not need to be set if credentials were configured on the [Jira Plugins Overview](/manual/plugins/jira-plugins-overview.md) page.
 :::
 
 The Jira connection credentials are set in the `project.properties` file
@@ -176,7 +176,7 @@ Retrieve Jira Issue data by key.
 ### Configuration
 
 :::tip Tip
-These settings do not need to be set if credentials were configured on the [Jira Plugins Overview](/manual/plugins/jira-plugins-overview.html) page.
+These settings do not need to be set if credentials were configured on the [Jira Plugins Overview](/manual/plugins/jira-plugins-overview.md) page.
 :::
 
 The Jira connection credentials are set in the `project.properties` file

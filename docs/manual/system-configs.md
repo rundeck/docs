@@ -126,7 +126,7 @@ Use the [Developer Docs](/api/rundeck-api) to write your own plugin!  Upload it 
 ## Users
 Use this section to see a summary of User accounts and, with Enterprise, manage local user accounts with a GUI based editor.
 
-[More details about the Users section can be found here](/manual/user-management/user-mgmt.html).
+[More details about the Users section can be found here](/manual/user-management/user-mgmt.md).
 
 ## Licenses
 

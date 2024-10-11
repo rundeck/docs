@@ -10,7 +10,7 @@ The following ELB plugins are available for PagerDuty Runbook Automation:
 * [Target Group Instance Statuses](#target-group-instance-statuses)
 
 ### Authentication
-Follow the instructions outlined in the [AWS Plugins Overview](/manual/plugins/aws-plugins-overview.html) for Runbook Automation to authenticate with AWS.
+Follow the instructions outlined in the [AWS Plugins Overview](/manual/plugins/aws-plugins-overview.md) for Runbook Automation to authenticate with AWS.
 
 When defining the IAM Role for Runbook Automation, be sure to include the following permissions in the Policy associated with the role:
 

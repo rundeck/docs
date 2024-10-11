@@ -16,10 +16,10 @@ The Remote Execution Policy feature was originally meant for "run now" job execu
 ### Enterprise Plugins
 #### PagerDuty
 More PagerDuty Plugin Updates!  The Enterprise plugin suite now includes the following:
-- [Get Incident Information](/manual/workflow-steps/pagerduty.html#pagerduty-get-incident) (Job Workflow Step)
-- [Update Escalation](/manual/workflow-steps/pagerduty.html#pagerduty-update-escalation-policy) (Job Workflow Step)
-- [Add Additional Responders](/manual/workflow-steps/pagerduty.html#pagerduty-add-additional-responders) (Job Workflow Step)
-- [PagerDuty Generic V3 Webhook Processor](/manual/webhooks/pagerduty-run-job.html#getting-started) (Webhook Plugin)
+- [Get Incident Information](/manual/workflow-steps/pagerduty.md#pagerduty-get-incident) (Job Workflow Step)
+- [Update Escalation](/manual/workflow-steps/pagerduty.md#pagerduty-update-escalation-policy) (Job Workflow Step)
+- [Add Additional Responders](/manual/workflow-steps/pagerduty.md#pagerduty-add-additional-responders) (Job Workflow Step)
+- [PagerDuty Generic V3 Webhook Processor](/manual/webhooks/pagerduty-run-job.md#getting-started) (Webhook Plugin)
 
 [Click Here to see a full list of the Enterprise version PagerDuty Plugin features.](https://resources.rundeck.com/plugins/pagerduty-enterprise-plugins/)
 
@@ -27,12 +27,12 @@ More PagerDuty Plugin Updates!  The Enterprise plugin suite now includes the fol
 We have also worked with **[Sensu](https://www.sensu.io/)** on a new suite of plugins.  Here is what's included:
 - [Sensu Entity Node Source](/manual/projects/resource-model-sources/sensu.md)
 - [Sensu Entity Health Check Plugin](/manual/healthcheckplugins/sensu.md)
-- [Get Check Info](/manual/node-steps/sensu.html#sensu-get-check-info) (Node Step)
-- [Create/Remove Silence for an Entity](/manual/node-steps/sensu.html#sensu-create-silence-entry) (Node Steps)
-- [Send Event](/manual/node-steps/sensu.html#sensu-event-create) (Node Step)
-- [Run Ad Hoc Check](/manual/node-steps/sensu.html#sensu-run-ad-hoc-check) (Node Step)
-- [Create a Check](/manual/workflow-steps/sensu.html#sensu-check-create) (Workflow Step)
-- [Create/Delete a Silence entry](/manual/workflow-steps/sensu.html#sensu-create-silence-entry) (Workflow Step)
+- [Get Check Info](/manual/node-steps/sensu.md#sensu-get-check-info) (Node Step)
+- [Create/Remove Silence for an Entity](/manual/node-steps/sensu.md#sensu-create-silence-entry) (Node Steps)
+- [Send Event](/manual/node-steps/sensu.md#sensu-event-create) (Node Step)
+- [Run Ad Hoc Check](/manual/node-steps/sensu.md#sensu-run-ad-hoc-check) (Node Step)
+- [Create a Check](/manual/workflow-steps/sensu.md#sensu-check-create) (Workflow Step)
+- [Create/Delete a Silence entry](/manual/workflow-steps/sensu.md#sensu-create-silence-entry) (Workflow Step)
 - [Send Event as Notification](/manual/notifications/sensu.md) (Notification Plugin)
 
 ### Additional Improvements

@@ -62,7 +62,7 @@ rundeck.storage.provider.[index].config.allowSelfSignedCert=true
 
 ## Delinea through Enterprise Runner
 
-The [Enterprise Runner](/administration/runner/runner-intro.html) can be used to integrate with Delinea Secret Server. This is useful when Delinea is hosted in an environment that is not directly accessible from Runbook Automation.
+The [Enterprise Runner](/administration/runner/runner-intro.md) can be used to integrate with Delinea Secret Server. This is useful when Delinea is hosted in an environment that is not directly accessible from Runbook Automation.
 
 The following provides examples of how to configure the Enterprise Runner to connect to Secret Server:
 

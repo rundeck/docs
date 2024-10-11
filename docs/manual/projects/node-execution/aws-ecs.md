@@ -82,7 +82,7 @@ This plugin is designed to work in conjunction with the [ECS-Fargate Node Source
 ### Configure IAM Policy for Runbook Automation
 
 ### Authentication
-Follow the instructions outlined in the [AWS Plugins Overview](/manual/plugins/aws-plugins-overview.html) for Runbook Automation to authenticate with AWS.
+Follow the instructions outlined in the [AWS Plugins Overview](/manual/plugins/aws-plugins-overview.md) for Runbook Automation to authenticate with AWS.
 
 When defining the IAM Role for Runbook Automation or Runbook Automation, be sure to include the following permissions in the Policy associated with the role:
 

@@ -73,7 +73,7 @@ then a "defaultValue" of that option will be used if it is defined. If a
 required option does not have a default value, then the execution will fail
 because the option is not specified.
 
-Job References can be run as either _Node Steps_ or _Workflow Steps_ (see [Workflow Steps : Types of Steps](/manual/job-workflows.html#workflow-steps)).
+Job References can be run as either _Node Steps_ or _Workflow Steps_ (see [Workflow Steps : Types of Steps](/manual/job-workflows.md#workflow-steps)).
 When you choose to use a Job Reference as a _Node Step_, you can use the Node context variables within the arguments string to the Job.
 
 #### Overriding Node Filters

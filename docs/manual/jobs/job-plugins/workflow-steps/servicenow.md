@@ -9,7 +9,7 @@ http://support.rundeck.com/customer/en/portal/articles/2915300-servicenow-plugin
 
 ## Authentication
 
-To configure authentication with ServiceNow for these Job step plugins, follow the steps outlined in [ServiceNow Plugins Overview](/manual/plugins/servicenow-plugins-overview.html) to configure authentication of the ServiceNow plugins.
+To configure authentication with ServiceNow for these Job step plugins, follow the steps outlined in [ServiceNow Plugins Overview](/manual/plugins/servicenow-plugins-overview.md) to configure authentication of the ServiceNow plugins.
 
 Alternatively, add the following to the `framework.properties` file:
 ```
@@ -32,7 +32,7 @@ Rundeck workflow step that changes an incident state
 ### Adding dynamic list data
 
 :::tip Tip
-These settings do not need to be set if credentials were configured on the [ServiceNow Plugins Overview](/manual/plugins/servicenow-plugins-overview.html) page.
+These settings do not need to be set if credentials were configured on the [ServiceNow Plugins Overview](/manual/plugins/servicenow-plugins-overview.md) page.
 :::
 
 With these settings, at project level, the field `state` can be loaded dynamically (calling SN API), for example:
@@ -70,7 +70,7 @@ Rundeck workflow step that checks an incident state
 ### Adding dynamic list data
 
 :::tip Tip
-These settings do not need to be set if credentials were configured on the [ServiceNow Plugins Overview](/manual/plugins/servicenow-plugins-overview.html) page.
+These settings do not need to be set if credentials were configured on the [ServiceNow Plugins Overview](/manual/plugins/servicenow-plugins-overview.md) page.
 :::
 
 With these settings, at project level, the field `state` can be loaded dynamically (calling SN API), for example:
@@ -120,7 +120,7 @@ Rundeck workflow step that creates an incident
 ### Adding dynamic list data
 
 :::tip Tip
-These settings do not need to be set if credentials were configured on the [ServiceNow Plugins Overview](/manual/plugins/servicenow-plugins-overview.html) page.
+These settings do not need to be set if credentials were configured on the [ServiceNow Plugins Overview](/manual/plugins/servicenow-plugins-overview.md) page.
 :::
 
 With these settings, at project level, the fields urgency, impact, priority and Assignment Group can be loaded dynamically, for example:
@@ -162,7 +162,7 @@ Rundeck workflow step that edits an incident
 ### Adding dynamic list data
 
 :::tip Tip
-These settings do not need to be set if credentials were configured on the [ServiceNow Plugins Overview](/manual/plugins/servicenow-plugins-overview.html) page.
+These settings do not need to be set if credentials were configured on the [ServiceNow Plugins Overview](/manual/plugins/servicenow-plugins-overview.md) page.
 :::
 
 With these settings, at project level, the fields urgency, impact, priority , Assignment Group, state can be loaded dynamically, for example:

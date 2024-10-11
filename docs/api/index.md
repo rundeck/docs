@@ -110,7 +110,7 @@ request to the Rundeck API.
 
 To obtain an API Token, you must first log in to the Rundeck GUI using a user account.
 Click on your username in the header of the page, and you will be shown your User Profile page.
-From this page you can [manage your API Tokens](/manual/10-user.html#user-api-tokens).
+From this page you can [manage your API Tokens](/manual/10-user.md#user-api-tokens).
 
 **Note**: You must have appropriate authorization to generate a token. See [API Token Authorization](/administration/security/authorization.md#api-token-authorization).
 
@@ -187,7 +187,7 @@ To call the API authenticating with a JWT token, you must include it in the `Aut
     GET /api/{{ $apiMinVersion }}/projects HTTP/1.1
     Authorization: Bearer <jwt_token>
 
-In order to leverage dynamic tokens for API Authentication follow the [setup instructions for Enabling the OAuth Resource Server](/administration/security/sso.html#enabling-oauth-resource-server-and-jwt-token-authentication-support). 
+In order to leverage dynamic tokens for API Authentication follow the [setup instructions for Enabling the OAuth Resource Server](/administration/security/sso.md#enabling-oauth-resource-server-and-jwt-token-authentication-support). 
 
 
 ## Error Responses
@@ -4405,7 +4405,7 @@ If the `[abort-state]` is "failed", then `[reason]` will be a textual descriptio
 ::: enterprise  
 :::
 
-Check whether the execution has Result Data created by a Job using the [Result Data feature](/manual/execution-lifecycle/result-data.html).
+Check whether the execution has Result Data created by a Job using the [Result Data feature](/manual/execution-lifecycle/result-data.md).
 
 **Request:**
 
@@ -4430,7 +4430,7 @@ Successful response:
 :::
 
 
-Retrieve the Result Data created by a Job using the [Result Data feature](/manual/execution-lifecycle/result-data.html) in JSON format.
+Retrieve the Result Data created by a Job using the [Result Data feature](/manual/execution-lifecycle/result-data.md) in JSON format.
 
 :::tip
 In a Rundeck Cluster, Result Data may not be locally available and must be retrieved by the server asynchronously before it can be returned.

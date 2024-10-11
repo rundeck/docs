@@ -70,7 +70,7 @@ See [Node Sources](/manual/projects/resource-model-sources/) for more details.
 Take advantage of the node enhancers that Rundeck offers by adding them to your nodes. See [Node Enhancers](/manual/node-enhancers.md) for more details.
 
 ## Access Control
-Control access to the project with [ACL Policy GUI](/administration/security/acl-policy-editor.html) (Commercial) or [Access Control Policy](/administration/security/authorization.html) files.
+Control access to the project with [ACL Policy GUI](/administration/security/acl-policy-editor.md) (Commercial) or [Access Control Policy](/administration/security/authorization.md) files.
 
 ## Edit Readme...
 A project ReadMe can provide some important context for a Project.  The content can be formatted using Markdown and can displayed on the Project's home page and as part of the Project Listing.
@@ -80,7 +80,7 @@ The Message of the Day is a way to communicate important messages to Project use
 
 ![Message of the Day](/assets/img/motd-example.png)
 
-More info in the [Projects Section](/manual/projects/project-motd.html)
+More info in the [Projects Section](/manual/projects/project-motd.md)
 
 ## Setup SCM...
 
@@ -89,12 +89,12 @@ More info in the [Projects Section > SCM](/manual/projects/scm/)
 ## Export Archive...
 Use this to export the Project to an Archive file for backup or migration purposes.
 
-More info in the [Projects Section](/manual/projects/project-archive.html#export-archive).
+More info in the [Projects Section](/manual/projects/project-archive.md#export-archive).
 
 ## Import Archive...
 Use this to import a Project archive file.
 
-More info in the [Projects Section](/manual/projects/project-archive.html#import-archive).
+More info in the [Projects Section](/manual/projects/project-archive.md#import-archive).
 
 ## Delete Project...
 Use this to delete the project.  Note it will delete all associated jobs, node sources, etc.
@@ -102,4 +102,4 @@ Use this to delete the project.  Note it will delete all associated jobs, node s
 ## Plugins Control
 Plugins Control can be used to selectively enable/disable plugins available to this project.
 
-More info in the [Projects Section](/manual/projects/plugin-control.html).
+More info in the [Projects Section](/manual/projects/plugin-control.md).

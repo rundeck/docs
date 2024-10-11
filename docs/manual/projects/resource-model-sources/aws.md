@@ -10,7 +10,7 @@ This allows for targeted automation on EC2 instances - based off of instance-pro
 ## Configuring
 
 ### Authentication
-Follow the instructions outlined in the [AWS Plugins Overview](/manual/plugins/aws-plugins-overview.html) for Runbook Automation to authenticate with AWS.
+Follow the instructions outlined in the [AWS Plugins Overview](/manual/plugins/aws-plugins-overview.md) for Runbook Automation to authenticate with AWS.
 
 ::: tip 
 If using AWS user credentials and a newer plugin version that allows it, store the secret key in Rundeck Key Storage and choose it via the **Secret Key Storage Path** field instead of the **Secret Key** field in your Node Source.
@@ -101,8 +101,8 @@ This would remove the "stopping" tag selector, and add a new "ami_id" selector.
 
 ### Connecting to EC2's for Commands and Scripts
 In order to execute commands or scripts on EC2's, a **Node Executor** must be specified - either for the full Node Source or for a subset of EC2's within the Node Source.
-A few of the most common Node Executors are [SSH](/manual/projects/node-execution/ssh.html#ssh-node-execution), [WinRM](/learning/howto/configuring-windows-nodes.html) and [Powershell](/manual/projects/node-execution/powershell.html), and [Ansible](/learning/howto/using-ansible.html#rundeck-ansible-integration).<br>
-With EC2's, there is also the option to use [AWS's Systems Manager (SSM)](/manual/projects/node-execution/aws-ssm.html#description).
+A few of the most common Node Executors are [SSH](/manual/projects/node-execution/ssh.md#ssh-node-execution), [WinRM](/learning/howto/configuring-windows-nodes.md) and [Powershell](/manual/projects/node-execution/powershell.md), and [Ansible](/learning/howto/using-ansible.md#rundeck-ansible-integration).<br>
+With EC2's, there is also the option to use [AWS's Systems Manager (SSM)](/manual/projects/node-execution/aws-ssm.md#description).
 
 In order to specify a Node Executor for _all_ EC2's, add the associated Node Executor properties to the **Mapping Params** field.  For example, to use SSH:<br>
 `ssh-key-storage-path.default=keys/us-west-1-privKey;username.default=ubuntu`
@@ -115,7 +115,7 @@ in the _Attribute Match_ box and `node-executor:WinRMPython` in the _Attributes 
 ![attribute-match](/assets/img/ec2-node-enhancer-attribute-match.png)
 
 ::: tip Note
-If a Node Executor is not specified for the Node Source, then the Project's [Default Node Executor](/manual/project-settings.html#edit-configuration) will be used.
+If a Node Executor is not specified for the Node Source, then the Project's [Default Node Executor](/manual/project-settings.md#edit-configuration) will be used.
 :::
 
 ### Integrating with Multiple Regions

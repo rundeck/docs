@@ -6,7 +6,7 @@ Runbook Automation is a sophisticated orchestration platform with numerous types
 
 The functionality of plugins ranges from executing commands on nodes, performing steps in a workflow, sending notifications about job status, gathering information about the hosts on a network, copying a file to a remote server, storing and streaming logs, and much more.
 
-This section is a guide for the basic configuration of plugins. For a detailed list of the various types of plugins, click [here](/administration/configuration/plugins/plugin-types.html#types-of-plugins).
+This section is a guide for the basic configuration of plugins. For a detailed list of the various types of plugins, click [here](/administration/configuration/plugins/plugin-types.md#types-of-plugins).
 
 For administrators and advanced-users, here is additional documentation on Installing Plugins and [advanced configuration settings](/administration/configuration/plugins/configuring).
 

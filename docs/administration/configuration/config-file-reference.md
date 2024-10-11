@@ -310,7 +310,7 @@ Some of the properties that work with live reloading:
 
 - `rundeck.security.requiredRole`: `roleName`. If this property is set, all users must be a member of the role specified.
 
-- `rundeck.security.dblogin.enabled`: `true|false`. (Commercial) This option is enabled by default in version 3.3.0 to allow creation of local Rundeck users.  [More Info](/manual/user-management/user-mgmt.html#manage-local-users)
+- `rundeck.security.dblogin.enabled`: `true|false`. (Commercial) This option is enabled by default in version 3.3.0 to allow creation of local Rundeck users.  [More Info](/manual/user-management/user-mgmt.md#manage-local-users)
 
 - `rundeck.security.dblogin.createAdminUserAndRoles`: `true|false`.  Enabling this feature adds the admin user and roles . (See `rundeck.security.dblogin.enabled`) Default is `false` so that no admin user or role is created by default.
 
@@ -686,7 +686,7 @@ java -Xms4g -Xmx8g -jar rundeck.war
 ```
 
 :::tip
-It is also possible to reconfigure the default path for files according to [this page](/developer/14-file-upload-plugins.html#about) using the property in this form:
+It is also possible to reconfigure the default path for files according to [this page](/developer/14-file-upload-plugins.md#about) using the property in this form:
 
 `framework.plugin.FileUpload.filesystem-temp.basePath=/desired/path`
 
