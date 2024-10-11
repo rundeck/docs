@@ -7,22 +7,22 @@ By implementing a comprehensive user management strategy, organizations can not 
 
 Effective user management allows administrators to assign appropriate roles and permissions, ensuring only authorized personnel can perform specific actions within the Rundeck environment. This helps mitigate the risk of unauthorized access, data breaches, and potential disruptions to critical operations.
 
-### What is a [User](/learning/tutorial/users.html#_4-getting-started-users)?
+### What is a [User](/learning/tutorial/users.md#_4-getting-started-users)?
 
 A Rundeck user is an individual or entity who interacts with ~~the ~~ Rundeck to perform certain tasks or access specific features. Users are identified and distinguished from each other through unique credentials, such as a local username and password, or other authentication methods like the OKTA SSO authentication method.
 
-### What is a [Role](/manual/10-user.html#user-groups)?
+### What is a [Role](/manual/10-user.md#user-groups)?
 
 A Role is a grouping or categorization of users with similar permissions and access rights. Roles are defined to simplify the management of user permissions and provide a structured approach to controlling access to different features and resources.
 
 Out of the box Rundeck stores users and roles in a file called `realm.properties` (see the "[Managing Users Locally in a File](#Managing-Users-Locally-in-a-File)" section).
 
-### The [Admin](/administration/security/default-users.html#full-admin) User and Role
+### The [Admin](/administration/security/default-users.md#full-admin) User and Role
 A Rundeck instance includes a default full administrative user called `admin` (with an `admin` role). See the following section to see how to change the default user name and password.
 
 ## Different Authentication Options
 
-### [Managing Users Locally in a File](/administration/security/authentication.html#propertyfileloginmodule)
+### [Managing Users Locally in a File](/administration/security/authentication.md#propertyfileloginmodule)
 Out of the Box, Rundeck uses a local file to manage users, this file is the `realm.properties` and it's located at `/etc/rundeck` path (RPM/DEB based installations) or `$RDECK_BASE/server/config` path (WAR launcher-based installations).
 
 On Runbook Automation, local users can be managed via [the web-based User Manager](/manual/user-management/user-mgmt.html#manage-local-users-enterprise).
