@@ -8237,7 +8237,7 @@ Content-Type: `application/json`:
 
 (none)
 
-[ACLPOLICY]:../manual/document-format-reference/aclpolicy-v10.html
+[ACLPOLICY]:../manual/document-format-reference/aclpolicy-v10.md
 
 
 !!!include(api/api-index-links.md)!!!

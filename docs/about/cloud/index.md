@@ -41,7 +41,7 @@ In the current default architecture plugin job steps generally execute in Runboo
 With the new architecture we have changed this behavior and now Runners a explicitly selected in the job definition, where Remote plugins are packaged with the Runner and can execute withing the private network where they are deployed. Additionally, there is a Local Runner that represents the Runbook Automation account instance, where plugins other than the [Remote plugins on Runners](/administration/runner/runner-plugins/runner-plugins.md) can execute. If the Local Runner is selected for a job containing a plugin that is listed on the remote list above, a runtime error will be raised: "The following plugins cannot be run in the Local Runner: `<remote plugin>`"
 
 #### Key Storage Access
-Runbook Automation can integrate with both SaaS and self-hosted secrets-management providers.  For self-hosted secrets management providers, use [Key Storage through the Enterprise Runner](/manual/key-storage/enterprise-runner-key-storage.html).
+Runbook Automation can integrate with both SaaS and self-hosted secrets-management providers.  For self-hosted secrets management providers, use [Key Storage through the Enterprise Runner](/manual/key-storage/enterprise-runner-key-storage.md).
 
 #### Runner administration
 [Read the Runner docs](/administration/runner/index.md) about how to install, configure and manage the Runner.

@@ -172,7 +172,7 @@ A new section Tags is available  at the bottom of the Runner information page. L
 
 ### Runner Tags
 
-Runner Tags are used to select on or more Runners for specific operations - such as for Job execution when using [**Manual Runner Dispatch Configuration**](/administration/runner/runner-management/project-dispatch-configuration.html#manual-runner-selection) or when using [Runners for Node Source](/administration/runner/using-runners/runners-for-node-discovery.md) plugins.
+Runner Tags are used to select on or more Runners for specific operations - such as for Job execution when using [**Manual Runner Dispatch Configuration**](/administration/runner/runner-management/project-dispatch-configuration.md#manual-runner-selection) or when using [Runners for Node Source](/administration/runner/using-runners/runners-for-node-discovery.md) plugins.
 
 Tag selection within the **Runner Selector** uses _and_ logic to define the inclusive set of Runners. For example, if a Job is configured to run on Runners with the tags `LINUX` and `DEV`, then only Runners that have _both_ tags will be listed as usable for the Job.
 
