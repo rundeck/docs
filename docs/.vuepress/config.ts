@@ -8,7 +8,7 @@ import { openGraphPlugin } from 'vuepress-plugin-open-graph';
 import { registerComponentsPlugin } from '@vuepress/plugin-register-components';
 import { dateSorter } from "@vuepress/helper";
 import { googleAnalyticsPlugin } from '@vuepress/plugin-google-analytics';
-
+import { markdownTabPlugin } from '@vuepress/plugin-markdown-tab';
 
 // sidebars
 import sidebarAdmin from './sidebar-menus/administration'
@@ -211,10 +211,6 @@ export default defineUserConfig({
       prismjs: {
         light: 'night-owl'
       },
-      mdEnhance: {
-        tabs: true,
-        codetabs: true,
-      },
       feed: {
         hostname: 'https://docs.rundeck.com',
         rss: true,
@@ -294,6 +290,12 @@ export default defineUserConfig({
   },
   //Plugins Config
   plugins: [
+    markdownTabPlugin({
+      // Enable code tabs
+      codeTabs: true,
+      // Enable tabs
+      tabs: true,
+    }),
     registerComponentsPlugin({
         components: {
             RundeckSwaggerUi: path.resolve(__dirname, './components/RundeckSwaggerUI.vue'),
