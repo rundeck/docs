@@ -40,7 +40,7 @@ Example raw payload
 `-myopt ${data.prop2}`
 
 You can also get the following webhook context properties:
-```code
+```
 #a uniquely generated id for the webhook event
 ${webhook.id}
 

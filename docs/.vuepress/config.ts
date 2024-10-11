@@ -208,9 +208,6 @@ export default defineUserConfig({
         update: 'hint',
         cacheHTML: true
       },
-      prismjs: {
-        light: 'night-owl'
-      },
       feed: {
         hostname: 'https://docs.rundeck.com',
         rss: true,

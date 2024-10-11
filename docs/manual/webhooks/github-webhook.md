@@ -46,7 +46,7 @@ Example raw payload
 `-repo ${data.repository.name} -action ${data.action} -issue_title ${data.issue.title}`
 
 You can also get the following webhook context properties:
-```code
+```
 #a uniquely generated id for the webhook event
 ${webhook.id}
 
