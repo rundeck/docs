@@ -2,7 +2,7 @@
 [Amazon's EC2](https://aws.amazon.com/ec2/) (Elastic Cloud Compute) is a cloud service that provides on-demand and scalable virtual-machines for dynamic infrastructure.
 It is one of the most popular cloud services used for developing, testing and hosting applications for businesses.
 
-In order to automate tasks on EC2's - such as executing commands or rebooting - the instances must be populated into Rundeck's [Node Inventory](/manual/projects/resource-model-sources/).
+In order to automate tasks on EC2's - such as executing commands or rebooting - the instances must be populated into Rundeck's [Node Inventory](/manual/projects/resource-model-sources/index.md).
 
 The **EC2 Node Source**, which retrieves the EC2 instances from one or more regions, is bundled into Runbook Automation and is also accessible to Community users [here](https://github.com/rundeck-plugins/rundeck-ec2-nodes-plugin).
 This allows for targeted automation on EC2 instances - based off of instance-properties, tags, regions or Account ID's.

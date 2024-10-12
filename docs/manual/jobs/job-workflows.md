@@ -51,7 +51,7 @@ dispatch to nodes: _Node-oriented_ and _Step-oriented_.
   step.
 - _Parallel_: Run all steps in parallel.
 
-[See more details here](/manual/workflow-strategies/)
+[See more details here](/manual/workflow-strategies/index.md)
 
 For more complex workflow strategy rules, see [Ruleset Workflow Strategy Plugin](/manual/jobs/workflow-strategies/ruleset.md)
 

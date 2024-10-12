@@ -28,7 +28,7 @@ Users supply options by typing in a value or selecting from a menu of choices. A
 Before getting to the actual steps, there are options that control what should happen if a step fails. There are also options for [workflow strategy](/manual/jobs/job-workflows.md#workflow-control-settings) that can change the overall approach to steps and order they may be executed.<br>
 
 ### Global Log Filters and Job Step Log Filters
-A [log filter](/manual/log-filters/) processes a workflow step's output, which may be transformed, given metadata for use by additional filters or renderers, or otherwise modified.  At this point in the job definition, it is possible to add Global Log filters which process the whole job output. Later in the job definition, it’s possible to add Log Filter on individual job steps that would process only the step output.  In either case (global or per job step), multiple log filters can be applied to the same sequence.<br>
+A [log filter](/manual/log-filters/index.md) processes a workflow step's output, which may be transformed, given metadata for use by additional filters or renderers, or otherwise modified.  At this point in the job definition, it is possible to add Global Log filters which process the whole job output. Later in the job definition, it’s possible to add Log Filter on individual job steps that would process only the step output.  In either case (global or per job step), multiple log filters can be applied to the same sequence.<br>
 
 ### Steps
 A [step](/manual/jobs/job-workflows.md#workflow-steps) is the minimal Rundeck project element that does an action like a command, a script, an HTTP call, etc.  A job might have just a single job step but usually, there will be multiple steps.<br>

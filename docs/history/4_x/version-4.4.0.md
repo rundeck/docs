@@ -6,7 +6,7 @@ Release Date: July 14, 2022
 - [Download Rundeck](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
 - [Watch the Live Stream Release Recap](https://youtu.be/HAjCUEQfAow)
-- [Upgrade instructions](/upgrading/)
+- [Upgrade instructions](/upgrading/index.md)
 
 <VidStack src="youtube/HAjCUEQfAow"/>
 

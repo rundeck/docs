@@ -1,6 +1,6 @@
 # How to Run a Rundeck Job
 
-Having already covered [what a Job](/learning/howto/jobs/what-is-a-job.md) is and [the pieces of a Job](/learning/howto/jobs/pieces-of-a-job.md), this article covers how to run a Rundeck Job. There are two ways to run a Rundeck Job interactively: from the project page and from the job itself. Though not covered directly in this article, Jobs could also be triggered through the [API](/api/rundeck-api.md) or [CLI](/rd-cli/).
+Having already covered [what a Job](/learning/howto/jobs/what-is-a-job.md) is and [the pieces of a Job](/learning/howto/jobs/pieces-of-a-job.md), this article covers how to run a Rundeck Job. There are two ways to run a Rundeck Job interactively: from the project page and from the job itself. Though not covered directly in this article, Jobs could also be triggered through the [API](/api/rundeck-api.md) or [CLI](/rd-cli/index.md).
 
 
 ## From the Project page

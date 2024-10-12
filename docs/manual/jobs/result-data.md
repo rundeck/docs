@@ -19,7 +19,7 @@ There are currently two different Plugins that can be used to produce JSON data 
 Enable and configure one of these plugins in the *Execution Lifecycle* tab when editing a Job.
 
 ::: tip Configuration Tip
-Currently, the data for this feature is stored as file based logs.  To ensure resiliency please be sure that a [LogStore](/administration/cluster/logstore/) is configured to backup the files.
+Currently, the data for this feature is stored as file based logs.  To ensure resiliency please be sure that a [LogStore](/administration/cluster/logstore/index.md) is configured to backup the files.
 :::
 
 

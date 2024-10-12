@@ -16,14 +16,14 @@ Release Date: January 15th, 2024
 
 - Download the Release: [Open Source](https://www.rundeck.com/community-downloads/5.0.1) | [Self-Hosted](https://www.rundeck.com/enterprise-downloads/5.0.1)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
-- [Upgrade instructions](/upgrading/)
+- [Upgrade instructions](/upgrading/index.md)
 
 ::: danger Please use version 5.0.2
 We have found some issues with Log Filters and passing data to the Enterprise Runner.  Please use the [5.0.2 Release](version-5.0.2.md) when upgrading.
 :::
 
 ::: warning Upgrade Steps
-Be sure to follow the [Upgrade instructions](/upgrading/) when moving to version 5.0 or higher.  There are new minimum Java versions and other important information.
+Be sure to follow the [Upgrade instructions](/upgrading/index.md) when moving to version 5.0 or higher.  There are new minimum Java versions and other important information.
 :::
 
 

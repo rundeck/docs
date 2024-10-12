@@ -5,7 +5,7 @@ Release Date: March 22, 2022
 
 - [Download Rundeck](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
-- [Upgrade instructions](/upgrading/)
+- [Upgrade instructions](/upgrading/index.md)
 
 # Rundeck 4.0 Release Notes
 
@@ -21,7 +21,7 @@ With the introduction of version 4.0 the Rundeck Enterprise version will be rena
 
 ## Enterprise Runner
 
-With version 4.0 the [Enterprise Runner](/administration/runner/) will be Generally Available. The Enterprise Runner is built to meet the latest zero-trust security models. The Runner is deployed behind the firewall where it securely connects to nodes and executes automation tasks within the network zone. It calls back to the cluster endpoint via HTTPS to fetch the task list. This deployment model eliminates the need for SSH tunnels between zones.
+With version 4.0 the [Enterprise Runner](/administration/runner/index.md) will be Generally Available. The Enterprise Runner is built to meet the latest zero-trust security models. The Runner is deployed behind the firewall where it securely connects to nodes and executes automation tasks within the network zone. It calls back to the cluster endpoint via HTTPS to fetch the task list. This deployment model eliminates the need for SSH tunnels between zones.
 
 ## Enhanced Security Features
 

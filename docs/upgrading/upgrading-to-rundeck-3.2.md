@@ -2,7 +2,7 @@
 
 
 ::: tip
-See other [Upgrading](/upgrading/) Documents if you are upgrading from 3.0 or earlier.
+See other [Upgrading](/upgrading/index.md) Documents if you are upgrading from 3.0 or earlier.
 :::
 
 ## Upgrading from Rundeck 3.0 Using Debian/RPM packaging

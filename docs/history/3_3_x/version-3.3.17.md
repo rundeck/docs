@@ -5,7 +5,7 @@ Release Date: December 20, 2021
 
 - [Download Rundeck](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
-- [Upgrade instructions](/upgrading/)
+- [Upgrade instructions](/upgrading/index.md)
 
 ## Overview
 
@@ -16,7 +16,7 @@ Release Date: December 20, 2021
  * [Log4J CVE-2021-45046](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-45046)  
  * [Log4J CVE-2021-45105](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-45105)  
 
- For more information check out our [Log4j Security page](/history/cves/).
+ For more information check out our [Log4j Security page](/history/cves/index.md).
 :::
 
 ## Core Product Updates

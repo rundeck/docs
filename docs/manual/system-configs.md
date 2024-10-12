@@ -102,7 +102,7 @@ This information is also available via the API: [API > System Info](/api/index.m
 
 ## Log Storage
 
-See [Logstore](/administration/cluster/logstore/)
+See [Logstore](/administration/cluster/logstore/index.md)
 
 ## Plugins
 

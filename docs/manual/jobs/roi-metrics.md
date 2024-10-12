@@ -9,7 +9,7 @@
 Automation provides value with each execution of a job.  A job can save time, dollars, and most likely a combination of both.  The ROI (return on investment) Metrics integration will help track the user-defined value of each job execution. **ROI Metrics Data** stores arbitrary key value pairs against your job to help understand your ROI per job execution. The metrics will be stored against the each execution of the job, and accessible via API for further analysis. There is also relevant default execution data to help you further understand your savings.
 
 ::: tip Configuration Tip
-Currently, the data for this feature is stored as file based logs.  To ensure resiliency please be sure that a [LogStore](/administration/cluster/logstore/) is configured to backup the files.
+Currently, the data for this feature is stored as file based logs.  To ensure resiliency please be sure that a [LogStore](/administration/cluster/logstore/index.md) is configured to backup the files.
 :::
 
 ## Configuring ROI Metrics

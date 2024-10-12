@@ -5,7 +5,7 @@ Release Date: June 15, 2021
 
 - [Download Rundeck](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
-- [Upgrade instructions](/upgrading/)
+- [Upgrade instructions](/upgrading/index.md)
 
 ::: warning
 Please be sure to follow the [Upgrading Guidance](/upgrading/index.md) when upgrading to 3.4.0 from a previous version.

@@ -15,7 +15,7 @@ Release Date: October 6, 2022
 
 - [Download the Releases](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
-- [Upgrade instructions](/upgrading/)
+- [Upgrade instructions](/upgrading/index.md)
 - [Watch the Live Stream Release Recap](https://youtu.be/jTqfAmExg_Y)
 
 

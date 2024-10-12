@@ -5,7 +5,7 @@ Jobs are arranged in Job Groups (folders) based on their purpose or related tech
 
 :::tip Note
 Many of these Jobs depend on a method of sending of commands to remote-nodes (such as EC2's). 
-Follow the SSM Tour outlined in the [Tours section](/learning/solutions/automated-diagnostics/tours) to use Systems Manager, or install an [Enterprise Runner](/administration/runner/) for SSH so that Runbook Automation can send commands to the remote-nodes.  
+Follow the SSM Tour outlined in the [Tours section](/learning/solutions/automated-diagnostics/tours.md) to use Systems Manager, or install an [Enterprise Runner](/administration/runner/index.md) for SSH so that Runbook Automation can send commands to the remote-nodes.  
 :::
 
 Group|Job Name

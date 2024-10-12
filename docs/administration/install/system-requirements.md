@@ -72,12 +72,12 @@ For production instances, use an external database like [MariaDB/MySQL](/adminis
 
 Also, be sure to locate your external database on a host with sufficient capacity and performance. Don't create a downstream bottleneck!
 
-For more about setting the datasource see: [Configuration/Database](/administration/configuration/database/).
+For more about setting the datasource see: [Configuration/Database](/administration/configuration/database/index.md).
 
 ## Logstore<br>
 Rundeck records all job execution data into the Logstore. By default, Rundeck is configured to use the local file system. Normally, that is defined by the framework.logs.dir system setting found in framework.properties.
 
-For clustered setups with Runbook Automation, see: [Configuration/Logstore](/administration/cluster/logstore/).
+For clustered setups with Runbook Automation, see: [Configuration/Logstore](/administration/cluster/logstore/index.md).
 
 ## Admin Access<br>
 Using a dedicated user account such as "rundeck" is recommended. If there is a need for root access, please set up the Rundeck user to have access via [sudo](https://en.wikipedia.org/wiki/Sudo).

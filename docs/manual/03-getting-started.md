@@ -1,6 +1,6 @@
 # Getting Started
 
-The best way to get started with Rundeck is through our [Learning section](/learning/).  
+The best way to get started with Rundeck is through our [Learning section](/learning/index.md).  
 [Terminology](/learning/tutorial/terminology), [Tutorials](/learning/tutorial/preparing) and
 [How To articles](/learning/how-to/overview) that show the many ways to use Rundeck.
 
@@ -41,7 +41,7 @@ help you use or integrate Rundeck into your environment.
 If a running Rundeck instance isn't already available to you,
 there are a couple ways you can try it.
 
-- Check out the Docker based Welcome Projects described on the [Learning Overview Page](/learning/).
+- Check out the Docker based Welcome Projects described on the [Learning Overview Page](/learning/index.md).
 - Visit our download site [download](http://rundeck.org/downloads.html) and
   install the Rundeck software. There are several package formats.
   Choose the one that best suits the target infrastructure.

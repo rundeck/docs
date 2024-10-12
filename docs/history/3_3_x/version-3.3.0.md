@@ -71,7 +71,7 @@ The default is `75%`.
 A significant documentation revamp was done as part of the 3.3.x release.  It can be [found here](https://docs.rundeck.com/) and covers all the new features and functionality.
 
 ## Upgrading
-See [Upgrading to Rundeck 3.3](/upgrading/upgrading-to-rundeck-3.3.md) for details about how to upgrade from 3.2.  If you are upgrading from a version prior to 3.2 be sure to [start here](/upgrading/).
+See [Upgrading to Rundeck 3.3](/upgrading/upgrading-to-rundeck-3.3.md) for details about how to upgrade from 3.2.  If you are upgrading from a version prior to 3.2 be sure to [start here](/upgrading/index.md).
 
 ## Notices
 Notices for future changes that may require code changes.

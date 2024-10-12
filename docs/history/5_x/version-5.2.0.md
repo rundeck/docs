@@ -16,7 +16,7 @@ Release Date: April 10th, 2024
 
 - Download the Release: [Open Source](https://www.rundeck.com/community-downloads/5.2.0) | [Self-Hosted](https://www.rundeck.com/enterprise-downloads/5.2.0)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
-- [Upgrade instructions](/upgrading/)
+- [Upgrade instructions](/upgrading/index.md)
 - [Watch the Live Stream Release Recap](https://www.youtube.com/live/uWhAQuWckQ0?si=_YLNK-oohOcYKVi8)
 
 <VidStack src="youtube/uWhAQuWckQ0"/>

@@ -6,7 +6,7 @@ Release Date: August 10, 2022
 - [Download the Releases](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
 - [Watch the Live Stream Release Recap](https://youtu.be/tZqSPUrT5IU)
-- [Upgrade instructions](/upgrading/)
+- [Upgrade instructions](/upgrading/index.md)
 
 <VidStack src="youtube/tZqSPUrT5IU"/>
 
@@ -37,7 +37,7 @@ Check out the new features and enhancements for PagerDuty Runbook Automation Sel
 
 ## Rundeck Open Source Product Updates
 
-* [Changed default SCM SSH authentication to SSHJ](https://github.com/rundeck/rundeck/pull/7763) The [SCM integration](/manual/projects/scm/) now uses SSHJ for SSH authentication by default (previously JSCH). GitHub has tightened up their SSH key requirements and now requires SSH-RSA 2 keys. The new default for ssh-keygen via OpenSSH is not supported by JSCH.
+* [Changed default SCM SSH authentication to SSHJ](https://github.com/rundeck/rundeck/pull/7763) The [SCM integration](/manual/projects/scm/index.md) now uses SSHJ for SSH authentication by default (previously JSCH). GitHub has tightened up their SSH key requirements and now requires SSH-RSA 2 keys. The new default for ssh-keygen via OpenSSH is not supported by JSCH.
 * [Upgrade grails to 5.1.9](https://github.com/rundeck/rundeck/pull/7829)
 * [Upgrade spring to 5.3.20](https://github.com/rundeck/rundeck/pull/7823)
 * [Fix: Unable to update Webhooks when changing handler settings in 4.4.0](https://github.com/rundeck/rundeck/pull/7820)

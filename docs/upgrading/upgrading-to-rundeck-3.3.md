@@ -3,7 +3,7 @@
 
 ::: tip
 This document highlights changes for users upgrading from Rundeck 3.2.
-See other [Upgrading](/upgrading/) Documents if you are upgrading from 3.1 or earlier.
+See other [Upgrading](/upgrading/index.md) Documents if you are upgrading from 3.1 or earlier.
 :::
 
 ## MySQL

@@ -158,7 +158,7 @@ Currently, there are two User Classes available for assignment: : `Full User` (k
 [To assign a class to a user](/manual/user-management/user-classes.md#assigning-classes), a Full User can navigate to the system menu (gear icon) and access User Manager | User Classes.  It is important to note that assigning a User Class will not give a user access to anything until they also match an ACL policy that provides the necessary access, such as a combination of those listed above.
 
 # Resources
-* [ACL Recipes](/learning/howto/acls/)
+* [ACL Recipes](/learning/howto/acls/index.md)
 * [Setting up Authentication](/administration/security/authentication.md)
 * [Getting Started with ACLs](/learning/howto/acl_basic_examples.md)
 * [Webinar on ACL Best Practices](https://www.youtube.com/watch?v=i859f1WG3Bo)

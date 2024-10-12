@@ -5,7 +5,7 @@ Release Date: November, 11 2021
 
 - [Download Rundeck](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
-- [Upgrade instructions](/upgrading/)
+- [Upgrade instructions](/upgrading/index.md)
 
 ## Overview
 
@@ -13,7 +13,7 @@ Check out the new features and enhancements for Rundeck Enterprise and Rundeck C
 
 ## Enterprise Runner (Incubating)
 
-The Rundeck Enterprise Runner securely opens up network/communication between data centers and the Rundeck Enterprise Cluster. The Runner is a Remote Execution hub for Node Steps to run on specified endpoints, rather than from the Rundeck server itself.  [Check out the documentation here](/administration/runner/).
+The Rundeck Enterprise Runner securely opens up network/communication between data centers and the Rundeck Enterprise Cluster. The Runner is a Remote Execution hub for Node Steps to run on specified endpoints, rather than from the Rundeck server itself.  [Check out the documentation here](/administration/runner/index.md).
 
 ![Runner Architecture](/assets/img/runner-arch-diagram.png)
 

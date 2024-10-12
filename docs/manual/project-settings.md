@@ -63,7 +63,7 @@ These sources contain the node definitions for the project.
 A default source will be defined listing the Rundeck Host as a node as a result of the initial project creation.
 You can configure additional Node Sources to gather all the node information relevant to this project.
 
-See [Node Sources](/manual/projects/resource-model-sources/) for more details.
+See [Node Sources](/manual/projects/resource-model-sources/index.md) for more details.
 
 ## Node Enhancers
 
@@ -84,7 +84,7 @@ More info in the [Projects Section](/manual/projects/project-motd.md)
 
 ## Setup SCM...
 
-More info in the [Projects Section > SCM](/manual/projects/scm/)
+More info in the [Projects Section > SCM](/manual/projects/scm/index.md)
 
 ## Export Archive...
 Use this to export the Project to an Archive file for backup or migration purposes.

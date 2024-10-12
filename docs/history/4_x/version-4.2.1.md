@@ -5,7 +5,7 @@ Release Date: May 11, 2022
 
 - [Download Rundeck](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
-- [Upgrade instructions](/upgrading/)
+- [Upgrade instructions](/upgrading/index.md)
 
 :::danger
  Due to [CVE-2022-31044](/history/cves/cve-2022-31044.md) this version has been superseded by version [4.2.2](version-4.2.2.md).

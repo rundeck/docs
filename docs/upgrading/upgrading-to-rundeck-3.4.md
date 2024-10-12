@@ -2,7 +2,7 @@
 
 ::: tip
 This document highlights changes for users upgrading **_from_ Rundeck 3.3**.
-See other [Upgrading](/upgrading/) Documents if you are upgrading from 3.2 or earlier.
+See other [Upgrading](/upgrading/index.md) Documents if you are upgrading from 3.2 or earlier.
 :::
 
 ## Package Repositories
