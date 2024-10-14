@@ -2,12 +2,12 @@
 
 AWS S3 provides object storage through a web service interface. The following S3 plugins are available for PagerDuty Runbook Automation:
 
-* [S3 Copy Object (aws / s3 / cp)](#s3-copy-object)
-* [S3 Delete Object (aws / s3 / rm)](#s3-delete-object)
-* [S3 List Objects (aws / s3 / ls)](#s3-list-objects)
-* [S3 Sync Directories (aws / s3 / sync)](#s3-sync-directories)
-* [S3 Move Object (aws / s3 / mv)](#s3-move-object)
-* [S3 Create Bucket (aws / s3 / mb)](#s3-create-bucket)
+* [**S3 Copy Object (aws / s3 / cp)**](#s3-copy-object)
+* [**S3 Delete Object (aws / s3 / rm)**](#s3-delete-object)
+* [**S3 List Objects (aws / s3 / ls)**](#s3-list-objects)
+* [**S3 Sync Directories (aws / s3 / sync)**](#s3-sync-directories)
+* [**S3 Move Object (aws / s3 / mv)**](#s3-move-object)
+* [**S3 Create Bucket (aws / s3 / mb)**](#s3-create-bucket)
 
 :::tip Open Source Plugins
 The AWS S3 plugins are open source and available on [GitHub](https://github.com/rundeck-plugins/aws-s3-steps)

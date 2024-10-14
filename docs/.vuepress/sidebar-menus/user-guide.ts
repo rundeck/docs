@@ -85,7 +85,10 @@ export default [{
                     collapsible: false,
                     children: [
                         {text: 'AWS EC2', link: '/manual/jobs/job-plugins/node-steps/aws', icon: '/assets/img/aws-icon.png'},
+                        {text: 'AWS ECS', link: '/manual/jobs/job-plugins/node-steps/aws-ecs', icon: '/assets/img/aws-icon.png'},
+                        {text: 'AWS Lambda', link: '/manual/jobs/job-plugins/node-steps/aws-lambda', icon: '/assets/img/aws-icon.png'},
                         {text: 'AWS S3', link: '/manual/jobs/job-plugins/node-steps/aws-s3', icon: '/assets/img/aws-icon.png'},
+                        {text: 'Azure Storage', link: '/manual/jobs/job-plugins/node-steps/azure-storage', icon: '/assets/img/azure-logo.png'},
                         {text: 'Azure VM', link: '/manual/jobs/job-plugins/node-steps/azure', icon: '/assets/img/azure-logo.png'},
                         {text: 'Command', link: '/manual/jobs/job-plugins/node-steps/builtin.md#command-step', icon: '/assets/img/command-icon.png'},
                         {text: 'Copy File', link: '/manual/jobs/job-plugins/node-steps/builtin.md#copy-file-step', icon: '/assets/img/file-icon.png'},
@@ -129,7 +132,6 @@ export default [{
                         {text: 'AWS ELB', link: '/manual/jobs/job-plugins/workflow-steps/aws-elb-workflow-plugin', icon: '/assets/img/aws-icon.png'},
                         {text: 'AWS Lambda', link: '/manual/jobs/job-plugins/workflow-steps/aws-lambda', icon: '/assets/img/aws-icon.png'},
                         {text: 'AWS RDS', link: '/manual/jobs/job-plugins/workflow-steps/aws-rds', icon: '/assets/img/aws-icon.png'},
-                        {text: 'Azure Storage', link: '/manual/jobs/job-plugins/workflow-steps/azure.md#azure-storage-copy', icon: '/assets/img/azure-logo.png'},
                         {text: 'Azure VM', link: '/manual/jobs/job-plugins/workflow-steps/azure.md#azure-vm-create', icon: '/assets/img/azure-logo.png'},
                         {text: 'Executions Delete', link: '/manual/jobs/job-plugins/workflow-steps/builtin.md#executions-delete',icon: '/assets/img/pd-icon.png'},
                         {text: 'Executions Retry', link: '/manual/jobs/job-plugins/workflow-steps/builtin.md#executions-retry',icon: '/assets/img/pd-icon.png'},

@@ -7,57 +7,6 @@ The Microsoft Azure cloud computing platform that offers a variety of services i
 Follow the steps outlined in the [**Azure Plugins Overview**](/manual/plugins/azure-plugins-overview) to configure authentication for Azure Job steps. 
 Credentials can be configured on a per Job Step basis, Project basis, or for the entire Runbook Automation system.
 
-## Azure / Storage / Copy
-
-This job step allows users to copy files to and from their Azure storage. For example, files can be transferred from Azure to a Rundeck server or a specific node and from a node to Azure storage.
-
-![Azure - Copy](/assets/img/azure_copy.png)
-
-- **Storage Account**
-: This is the name of the Azure storage account that you wish to use. To find it, go to storage accounts and copy the name of the account with the files you wish to copy.
-
-- **Access Key**
-: This is the access key that will grant access to your Azure account. To find it, go to storage accounts, choose the storage account you wish to use and select access keys under settings.
-
-- **Source**
-: This is the path to the file you want to copy. It can be either an Azure URI or a local path (azure://container/path/file.ext or file://some/path/file.ext)
-
-- **Destination**
-: This is the path to where you want the file to be copied to. It can be either an Azue URI or a local path (azure://container/path/file.ext or file://some/path/file.ext)
-
-## Azure / Storage / Delete
-
-This job step allows users to delete blobs inside of an Azure storage container.
-
-![Azure - Delete](/assets/img/azure_delete.png)
-
-- **Storage Account**
-: This is the name of the Azure storage account that you wish to use. To find it, go to storage accounts and copy the name of the account with the files you wish to delete.
-
-- **Access Key**
-: This is the access key that will grant access to your Azure account. To find it, go to storage accounts, choose the storage account you wish to use and select access keys under settings.
-
-- **Container Name**
-: This is the name of the Azure container that the file you want to delete is in. To find it, go to storage accounts, select the account you wish to use, click containers and then copy the name of the container you wish to use.
-
-- **Blob Path**
-: This is the path to the file that you want to delete. If the file is in a subfolder include the whole path like 'path/file.ext'
-
-## Azure / Storage / List
-
-This job step allows users to list all of the contents of a storage container. So, when a container is specified, all of the files that are in that container will be listed following execution.
-
-![Azure - List](/assets/img/azure_list.png)
-
-
-- **Storage Account**
-: This is the name of the Azure storage account that you wish to use. To find it, go to storage accounts and copy the name of the account with the container you wish to list.
-
-- **Access Key**
-: This is the access key that will grant access to your Azure account. To find it, go to storage accounts, choose the storage account you wish to use and select access keys under settings.
-
-- **Container Name**
-: This is the name of the Azure container that the file you want to delete is in. To find it, go to storage accounts, select the account you wish to use, click containers and then copy the name of the container you wish to use.
 
 ## Azure / VM / Create
 
