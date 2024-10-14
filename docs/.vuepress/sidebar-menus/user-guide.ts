@@ -132,7 +132,6 @@ export default [{
                         {text: 'AWS ELB', link: '/manual/jobs/job-plugins/workflow-steps/aws-elb-workflow-plugin', icon: '/assets/img/aws-icon.png'},
                         {text: 'AWS Lambda', link: '/manual/jobs/job-plugins/workflow-steps/aws-lambda', icon: '/assets/img/aws-icon.png'},
                         {text: 'AWS RDS', link: '/manual/jobs/job-plugins/workflow-steps/aws-rds', icon: '/assets/img/aws-icon.png'},
-                        {text: 'Azure Storage', link: '/manual/jobs/job-plugins/workflow-steps/azure.md#azure-storage-copy', icon: '/assets/img/azure-logo.png'},
                         {text: 'Azure VM', link: '/manual/jobs/job-plugins/workflow-steps/azure.md#azure-vm-create', icon: '/assets/img/azure-logo.png'},
                         {text: 'Executions Delete', link: '/manual/jobs/job-plugins/workflow-steps/builtin.md#executions-delete',icon: '/assets/img/pd-icon.png'},
                         {text: 'Executions Retry', link: '/manual/jobs/job-plugins/workflow-steps/builtin.md#executions-retry',icon: '/assets/img/pd-icon.png'},
