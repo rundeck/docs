@@ -9,6 +9,10 @@ AWS S3 provides object storage through a web service interface. The following S3
 * [S3 Move Object (aws / s3 / mv)](#s3-move-object)
 * [S3 Create Bucket (aws / s3 / mb)](#s3-create-bucket)
 
+:::tip Open Source Plugins
+The AWS S3 plugins are open source and available on [GitHub](https://github.com/rundeck-plugins/aws-s3-steps)
+:::
+
 ### Authentication
 
 Authentication for the AWS S3 plugins is handled by configuring the AWS Credentials within the plugins or by assigning an IAM Role to the Runbook Automation instance or Enterprise Runner.
