@@ -12,6 +12,8 @@ The Docker node step plugins provide automation steps for Docker containers. The
 
 ## Docker Container Plugins
 
+The Docker node step plugins work in tandem with the [**Docker Node Source**](/manual/projects/resource-model-sources/docker.md). While the Node Source is not required, it provides an easy mechanism for iterating an automation task over multiple containers.
+
 ### Execute Command in Container
 
 The **docker / container / execute** plugin is a Workflow Node Step that executes a command in an existing container. The plugin requires the following fields:
