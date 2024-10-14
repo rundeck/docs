@@ -1,4 +1,4 @@
-# Workflow Strategies
+# Workflow Strategies 
 
 Workflow execution is controlled by two important settings: _Handling a
 step failure_ and _Strategy_.
