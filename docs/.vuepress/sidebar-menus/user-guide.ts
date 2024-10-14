@@ -91,6 +91,7 @@ export default [{
                         {text: 'Copy File', link: '/manual/jobs/job-plugins/node-steps/builtin.md#copy-file-step', icon: '/assets/img/file-icon.png'},
                         {text: 'Data Step', link: '/manual/jobs/job-plugins/node-steps/builtin.md#data-node-step',icon: '/assets/img/pd-icon.png'},
                         {text: 'Datadog', link: '/manual/jobs/job-plugins/node-steps/datadog', icon: '/assets/img/datadog.svg'},
+                        {text: 'Docker', link: '/manual/jobs/job-plugins/node-steps/docker', icon: '/assets/img/docker-logo.png'},
                         {text: 'Google Cloud Compute', link: '/manual/jobs/job-plugins/node-steps/gcp', icon: '/assets/img/gcp-icon.png'},
                         {text: 'HTTP Request', link: '/manual/jobs/job-plugins/node-steps/builtin.md#http-request-node-step', icon: '/assets/img/http-icon.png'},
                         {text: 'Kubernetes Debug', link: '/manual/jobs/job-plugins/node-steps/kubernetes-debug-plugins', icon: '/assets/img/kubernetes-icon.png'},
