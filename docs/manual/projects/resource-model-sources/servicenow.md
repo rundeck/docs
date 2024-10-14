@@ -1,4 +1,4 @@
-# ServiceNow Node Source (Enterprise)
+# ServiceNow Node Source (Commercial)
 ::: enterprise
 :::
 
@@ -8,7 +8,7 @@ There is a [How To article in the Learning section](/learning/howto/config-sn-no
 
 ## Authentication
 
-To configure authentication with ServiceNow for the Node Source plugin, follow the steps outlined in [ServiceNow Plugins Overview](/manual/plugins/servicenow-plugins-overview.html) to configure authentication of the ServiceNow plugins.
+To configure authentication with ServiceNow for the Node Source plugin, follow the steps outlined in [ServiceNow Plugins Overview](/manual/plugins/servicenow-plugins-overview.md) to configure authentication of the ServiceNow plugins.
 Alternatively, place credentials directly into the Node Source plugin.
 
 ## Paging limit

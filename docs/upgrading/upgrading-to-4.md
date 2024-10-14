@@ -1,7 +1,7 @@
 # Rundeck 4.0 Upgrade Notes
 
 ::: tip
-This document highlights changes for users upgrading _from_ Rundeck 3.4. See other [Upgrading](/upgrading/) Documents if you are upgrading from 3.3 or earlier.
+This document highlights changes for users upgrading _from_ Rundeck 3.4. See other [Upgrading](/upgrading/index.md) Documents if you are upgrading from 3.3 or earlier.
 :::
 
 :::danger

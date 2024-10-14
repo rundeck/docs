@@ -33,7 +33,7 @@ Select the Default Node Executor you wish to use for all remote Nodes for the pr
 
 ![Default Node Executor Choice](/assets/img/fig0712.png)
 
-You can install more types of Node Executors as plugins, see [Node Execution Plugins](/manual/job-plugins.md#node-execution).
+You can install more types of Node Executors as plugins, see [Node Execution Plugins](/manual/jobs/job-plugins/index.md#node-execution).
 
 ::: tip
 When using SSH node executor and SCP file copier, the properties will be shared between the file copier and the node executor, so any change made for the node executor will affect the file copier and vice versa. If a more specific configuration is required, this can be done directly in the node definition.
@@ -50,7 +50,7 @@ Select the Default File Copier you wish to use for all remote Nodes for the proj
 
 ![Default File Copier Choice](/assets/img/fig0713.png)
 
-You can install more types of File Copiers as plugins, see [Node Execution Plugins](/manual/job-plugins.md#node-execution).
+You can install more types of File Copiers as plugins, see [Node Execution Plugins](/manual/jobs/job-plugins/index.md#node-execution).
 
 ::: tip
 When using SCP file copier and SSH node executor, the properties will be shared between the file copier and the node executor, so any change made for the file copier will affect the node executor and vice versa. If a more specific configuration is required, this can be done directly in the node definition.
@@ -63,14 +63,14 @@ These sources contain the node definitions for the project.
 A default source will be defined listing the Rundeck Host as a node as a result of the initial project creation.
 You can configure additional Node Sources to gather all the node information relevant to this project.
 
-See [Node Sources](/manual/projects/resource-model-sources/) for more details.
+See [Node Sources](/manual/projects/resource-model-sources/index.md) for more details.
 
 ## Node Enhancers
 
 Take advantage of the node enhancers that Rundeck offers by adding them to your nodes. See [Node Enhancers](/manual/node-enhancers.md) for more details.
 
 ## Access Control
-Control access to the project with [ACL Policy GUI](/administration/security/acl-policy-editor.html) (Enterprise) or [Access Control Policy](/administration/security/authorization.html) files.
+Control access to the project with [ACL Policy GUI](/administration/security/acl-policy-editor.md) (Commercial) or [Access Control Policy](/administration/security/authorization.md) files.
 
 ## Edit Readme...
 A project ReadMe can provide some important context for a Project.  The content can be formatted using Markdown and can displayed on the Project's home page and as part of the Project Listing.
@@ -80,21 +80,21 @@ The Message of the Day is a way to communicate important messages to Project use
 
 ![Message of the Day](/assets/img/motd-example.png)
 
-More info in the [Projects Section](/manual/projects/project-motd.html)
+More info in the [Projects Section](/manual/projects/project-motd.md)
 
 ## Setup SCM...
 
-More info in the [Projects Section > SCM](/manual/projects/scm/)
+More info in the [Projects Section > SCM](/manual/projects/scm/index.md)
 
 ## Export Archive...
 Use this to export the Project to an Archive file for backup or migration purposes.
 
-More info in the [Projects Section](/manual/projects/project-archive.html#export-archive).
+More info in the [Projects Section](/manual/projects/project-archive.md#export-archive).
 
 ## Import Archive...
 Use this to import a Project archive file.
 
-More info in the [Projects Section](/manual/projects/project-archive.html#import-archive).
+More info in the [Projects Section](/manual/projects/project-archive.md#import-archive).
 
 ## Delete Project...
 Use this to delete the project.  Note it will delete all associated jobs, node sources, etc.
@@ -102,4 +102,4 @@ Use this to delete the project.  Note it will delete all associated jobs, node s
 ## Plugins Control
 Plugins Control can be used to selectively enable/disable plugins available to this project.
 
-More info in the [Projects Section](/manual/projects/plugin-control.html).
+More info in the [Projects Section](/manual/projects/plugin-control.md).

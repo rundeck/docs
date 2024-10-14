@@ -5,7 +5,7 @@ Though these instructions reference Rundeck, they can also be applied to environ
 
 ## Overview
 Job notifications are messages triggered by a job event. Notifications can occur based on different job events or statuses via email or by calling a webhook. Rundeck users commonly add job results or job key-value data on the notification result to store the job result in the service that receives the notification. In this article, we will show you how to capture useful data and add it to any job notification.
-The HTTP Notification Step plugin is required to follow this example. The plugin is available [here](https://github.com/rundeck-plugins/http-notification) and instructions to install it in Rundeck are [here](/administration/configuration/plugins/installing.html#installation).
+The HTTP Notification Step plugin is required to follow this example. The plugin is available [here](https://github.com/rundeck-plugins/http-notification) and instructions to install it in Rundeck are [here](/administration/configuration/plugins/installing.md#installation).
 
 ## Step-by-step example
 
@@ -33,7 +33,7 @@ The HTTP Notification Step plugin is required to follow this example. The plugin
 4. Run the job and see the exported variable content from the HTTP service (containing the Key Data variable) on the test site.
 ![](/assets/img/notification9.png)
 
-## Job Definition Example (in YAML format) to [import](/manual/creating-jobs.md#importing-job-definitions) and test.
+## Job Definition Example (in YAML format) to [import](/manual/jobs/creating-jobs.md#importing-job-definitions) and test.
 
 ```
 - defaultTab: nodes

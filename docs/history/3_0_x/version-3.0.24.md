@@ -15,7 +15,7 @@ Name: <span style="color: rebeccapurple"><span class="glyphicon glyphicon-tent">
 * Fixed node enhancers not working when using filesystem project config [#5066](https://github.com/rundeck/rundeck/pull/5066)
 * Fix potential NPE in node enhancer [#5068](https://github.com/rundeck/rundeck/pull/5068)
 * Numeruous CVEs addressed by library version bumps in [#5048](https://github.com/rundeck/rundeck/pull/5048)
-* (Enterprise) Fixed failure in **File Transfer Plugin** when using backup source with non-default port
+* (Commercial) Fixed failure in **File Transfer Plugin** when using backup source with non-default port
 
 ## Issues
 

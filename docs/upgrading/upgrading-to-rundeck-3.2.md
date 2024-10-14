@@ -2,7 +2,7 @@
 
 
 ::: tip
-See other [Upgrading](/upgrading/) Documents if you are upgrading from 3.0 or earlier.
+See other [Upgrading](/upgrading/index.md) Documents if you are upgrading from 3.0 or earlier.
 :::
 
 ## Upgrading from Rundeck 3.0 Using Debian/RPM packaging
@@ -31,11 +31,11 @@ An error with this message may occur in the Rundeck console at startup:
 Webhooks were feature flagged in `3.1.x` and disabled by default.  Your instance may not have used Webhooks prior to the 3.2 release.  If you did not use Webhooks prior to version 3.2 you can skip this issue.
 :::
 
-### Advanced Run Job (Enterprise)
-The [condition](/manual/webhooks/advanced-run-job.html#conditions) type `matches` has been renamed to `equals`. Webhooks using `Advanced Run Job` with `matches` conditions will need to be updated to work properly. These configurations can be updated by:  
+### Advanced Run Job (Commercial)
+The [condition](/manual/webhooks/advanced-run-job.md#conditions) type `matches` has been renamed to `equals`. Webhooks using `Advanced Run Job` with `matches` conditions will need to be updated to work properly. These configurations can be updated by:  
 
 - Loading the webhook in the UI, selecting `equals` on the appropriate conditions, and then saving
 
    **OR**
 
-- Updating the webhooks configuration through the [API](/api/rundeck-api.html#webhooks-incubating)
+- Updating the webhooks configuration through the [API](/api/rundeck-api.md#webhooks-incubating)

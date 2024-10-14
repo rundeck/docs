@@ -1,6 +1,6 @@
 # Enterprise Runner as Windows Service
 
-Hosting the [Enterprise Runner](/administration/runner/) as a service offers several key advantages. 
+Hosting the [Enterprise Runner](/administration/runner/index.md) as a service offers several key advantages. 
 First and foremost, it ensures the reliability and availability of your automation processes. 
 By transforming Enterprise Runner into a Windows service, it becomes a persistent, background application that starts automatically with the system, even if no user is logged in. 
 This not only enhances system resilience but also facilitates unattended operation, allowing your automated tasks to execute without human intervention.

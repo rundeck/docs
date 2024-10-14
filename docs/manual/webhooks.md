@@ -42,11 +42,11 @@ They can respond to authentication calls, pre-process inputs, and provide config
 
 Rundeck includes the following Webhook Handlers:
 
-* [Advanced Run Job (Enterprise)](./webhooks/advanced-run-job.md)
-* [PagerDuty Run Job (Enterprise)](./webhooks/pagerduty-run-job.md)
-* [DataDog Run Job  (Enterprise)](./webhooks/datadog-run-job.md)
-* [AWS SNS (Enterprise)](./webhooks/aws-sns-webhook.md)
-* [GitHub (Enterprise)](./webhooks/github-webhook.md)
+* [Advanced Run Job (Commercial)](./webhooks/advanced-run-job.md)
+* [PagerDuty Run Job (Commercial)](./webhooks/pagerduty-run-job.md)
+* [DataDog Run Job  (Commercial)](./webhooks/datadog-run-job.md)
+* [AWS SNS (Commercial)](./webhooks/aws-sns-webhook.md)
+* [GitHub (Commercial)](./webhooks/github-webhook.md)
 * [Run Job](./webhooks/run-job.md)
 * [Log Events](./webhooks/log-events.md)
 

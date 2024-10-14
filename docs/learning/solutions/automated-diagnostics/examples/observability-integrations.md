@@ -28,4 +28,4 @@ Insert a Sumo Logic logs query into your Automation instance to surface logs fro
 ![Sumo Logic logs Query](/assets/img/sumo-logic-create-query-example.png)<br>
 
 ### HTTP Request Step Plugin
-The [HTTP Request Plugin](/manual/node-steps/builtin.html#http-node-step) can make an API call to your monitoring tools to retrieve relevant diagnostic data.
+The [HTTP Request Plugin](/manual/node-steps/builtin.md#http-node-step) can make an API call to your monitoring tools to retrieve relevant diagnostic data.

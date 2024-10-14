@@ -28,7 +28,7 @@ Check out the new features and enhancements for the commercial products (Runbook
 
 We continue to add plugins to help automate cloud operations. New plugins include:
 
-- [Job Steps to pull AWS CloudWatch](/manual/workflow-steps/aws-cloudwatch.md) logs into Job Output. These new plugins retrieve diagnostic data from AWS infrastructure and applications making it easier to run automated diagnostics for AWS across multiple accounts and products.
+- [Job Steps to pull AWS CloudWatch](/manual/jobs/job-plugins/workflow-steps/aws-cloudwatch.md) logs into Job Output. These new plugins retrieve diagnostic data from AWS infrastructure and applications making it easier to run automated diagnostics for AWS across multiple accounts and products.
 - [AWS EC2 Node Health Check](/manual/healthcheckplugins/aws-ec2-healthcheck.md)
 - [GCP Compute Node Health Check](/manual/healthcheckplugins/gcp-compute-healthcheck.md)
 - Ability to set custom DataDog API URLs for customers outside the U.S.

@@ -85,11 +85,11 @@ Here is a sample IAM Policy that will only discover Tasks from **_specific_ clus
 Once the IAM Policy has been created, attach it to the IAM Role that you have associated with Runbook Automation or the Access Key credentials.
 
 ### Authentication
-There are multiple ways for Runbook Automation to authenticate with AWS. Follow the instructions outlined in the [AWS Plugins Overview](/manual/plugins/aws-plugins-overview.html) for Runbook Automation to authenticate with AWS.
+There are multiple ways for Runbook Automation to authenticate with AWS. Follow the instructions outlined in the [AWS Plugins Overview](/manual/plugins/aws-plugins-overview.md) for Runbook Automation to authenticate with AWS.
 
 #### Assume Role ARN
 
-There are cases when it is beneficial to use a different IAM Role than the one used for the [AWS PluginGroup](/manual/plugins/aws-plugins-overview.html#setup) for the integration to retrieve the ECS Tasks and add them to the node inventory.
+There are cases when it is beneficial to use a different IAM Role than the one used for the [AWS PluginGroup](/manual/plugins/aws-plugins-overview.md#setup) for the integration to retrieve the ECS Tasks and add them to the node inventory.
 For example, to target ECS Tasks from across multiple AWS Accounts, then a different IAM Role needs to be "assumed" in order to retrieve tasks from each AWS Account.  
 
 The **Assume Role ARN** field can be populated with an IAM Role ARN that Runbook or Runbook Automation can assume _after_ an authentication method has been provided through the PluginGroup.

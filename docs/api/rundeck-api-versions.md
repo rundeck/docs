@@ -49,8 +49,8 @@ API versions below `{{$apiDepVersion}}` are *deprecated*.  Clients using earlier
 ### Version 46
 
 * New Endpoints
-   * [`GET /api/46/project/[PROJECT]/jobTags/query`][/api/V/project/\[PROJECT\]/jobTags/query] - Query Project Job Tags (Enterprise) 
-   * [`GET /api/46/job/[ID]/tags`][/api/V/job/\[ID\]/tags] - Get Job Tags (Enterprise)
+   * [`GET /api/46/project/[PROJECT]/jobTags/query`][/api/V/project/\[PROJECT\]/jobTags/query] - Query Project Job Tags (Commercial) 
+   * [`GET /api/46/job/[ID]/tags`][/api/V/job/\[ID\]/tags] - Get Job Tags (Commercial)
    * [`GET /api/46/project/[PROJECT]/meta`][/api/V/project/\[PROJECT\]/meta] - Get Project UI Metadata
    * [`GET /api/46/project/[PROJECT]/jobs/browse`][/api/V/project/\[PROJECT\]/jobs/browse] - Project Job Group browse
    * [`GET /api/46/job/[ID]/meta`][/api/V/job/\[ID\]/meta] - Get Job UI Metadata

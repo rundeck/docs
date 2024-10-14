@@ -5,7 +5,7 @@ A very common type of diagnostic job is to query an API as a way of measuring ap
 This could be a common SaaS API or might be querying the API of an internal application.  
 
 In either case, this is accomplished by using the [HTTP Request workflow step](https://resources.rundeck.com/plugins/rundeck-http-workflow-step-plugin/), which can send an http request and trigger further steps based on the response code.  
-Whatever data is returned by the http step can be used in later steps in a workflow through the use of [custom variables](/learning/howto/passing-variables.html).  
+Whatever data is returned by the http step can be used in later steps in a workflow through the use of [custom variables](/learning/howto/passing-variables.md).  
 
 ![HTTP Request plugin can query external or internal APIs](/assets/img/http-step.png)
 

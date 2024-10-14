@@ -1,4 +1,4 @@
-# Progress Badge (Enterprise)
+# Progress Badge (Commercial)
 ::: enterprise
 :::
 

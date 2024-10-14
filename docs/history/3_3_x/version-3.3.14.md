@@ -4,7 +4,7 @@ Name: <span style="color: thistle"><span class="glyphicon glyphicon-pushpin"></s
 
 - [Download Rundeck](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
-- [Upgrade instructions](/upgrading/)
+- [Upgrade instructions](/upgrading/index.md)
 
 ## Overview
 

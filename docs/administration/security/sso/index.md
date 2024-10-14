@@ -1,4 +1,4 @@
-# Rundeck SSO Security (Enterprise)
+# Rundeck SSO Security (Commercial)
 
 ::: enterprise
 :::

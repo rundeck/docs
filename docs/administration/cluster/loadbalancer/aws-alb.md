@@ -40,7 +40,7 @@ node2.mydomain.com:4440/health
 ### Authenticated Health Checks
 It is recommend to use unauthenticated health checks to reduce security exposure from load-balancer configurations.  If you wish to use authenticated checks please ensure you are using the least privilege principle.
 
-Please reference the documentation for more information about [API Token Authorization Roles](/administration/security/authorization.html#api-token-authorization-roles).
+Please reference the documentation for more information about [API Token Authorization Roles](/administration/security/authorization.md#api-token-authorization-roles).
 
 ```
 $host:$port/api/32/system/executions/status?authtoken=<TOKEN_VALUE>

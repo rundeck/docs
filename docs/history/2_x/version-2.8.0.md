@@ -20,7 +20,7 @@ Import Changes:
 
 New Features:
 
-- Jobs Options now have a [File input type](/manual/jobs.md#file-option-type).
+- Jobs Options now have a [File input type](/manual/jobs/index.md#file-option-type).
   _ Uploaded files are stored temporarily on the server while the execution runs
   _ [API support](/api/index.md#upload-a-file-for-a-job-option)
 - API Token Roles
@@ -39,12 +39,12 @@ New Features:
 - New Step Plugin: Refresh nodes. Causes Rundeck to refresh the nodes list for the project, so that subsequent Job Reference steps can use any new nodes.
 - File Copy Plugin: Recursive and wildcard file copy
 - Job Options: Multivalue options can be selected by default
-- Job Options: [Remote Option values can specify default selections](/manual/jobs.md#json-format)
+- Job Options: [Remote Option values can specify default selections](/manual/jobs/index.md#json-format)
 
 Other changes:
 
 - [Optional `Referer` Header verification for CSRF attack prevention](/administration/configuration/config-file-reference.md#security)
-- Plugin properties support [`Options` multivalue type](/developer/01-plugin-development.md#plugin-properties) and [java annotations](http://rundeck.org/docs/developer/plugin-annotations.html#plugin-properties)
+- Plugin properties support [`Options` multivalue type](/developer/01-plugin-development.md#plugin-properties) and [java annotations](http://rundeck.org/docs/developer/plugin-annotations.md#plugin-properties)
 
 Bugfixes:
 

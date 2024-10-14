@@ -12,9 +12,9 @@ First, let's create a Runbook Automation API token. This is necessary to run a J
 ![](/assets/img/aarba2.png)  
 2. Click on the "+" icon (besides "User API Tokens" title).  
 ![](/assets/img/aarba3.png)  
-3. Generate the token and save it in a safe place. For more info on creating an API token and the available options, click [here](/api/api_basics.html#running-the-welcome-project-and-new-user-token-creation).  Once you have closed the pop-up window  you won't be able to see the token again.  
+3. Generate the token and save it in a safe place. For more info on creating an API token and the available options, click [here](/api/api_basics.md#running-the-welcome-project-and-new-user-token-creation).  Once you have closed the pop-up window  you won't be able to see the token again.  
 ![](/assets/img/aarba4.png)  
-4. Now create a new test Project and then create a new job.  For details on creating a job, click [here](/learning/getting-started/jobs/creating-a-job.html#create-a-basic-rundeck-job).  
+4. Now create a new test Project and then create a new job.  For details on creating a job, click [here](/learning/getting-started/jobs/creating-a-job.md#create-a-basic-rundeck-job).  
 
 ### In PagerDuty: Generate the Actions Runner
 The PagerDuty Actions Runner is essential for carrying out certain tasks triggered from an incident. The following steps are necessary to create the Actions Runner:  
@@ -55,4 +55,4 @@ On your PagerDuty service:
 
 ## Resources
 * [PagerDuty Automation Actions](https://support.pagerduty.com/docs/automation-actions).
-* [Runbook Automation Tokens](/manual/10-user.html#user-api-tokens).
+* [Runbook Automation Tokens](/manual/10-user.md#user-api-tokens).

@@ -1,7 +1,7 @@
 # Audit Trail Log
 
 Starting from version `4.6.0` rundeck provides an audit trail log to record user and system activity.
-By default, this file is named `rundeck.audit.events.log` and is located at the [default log directory](/administration/configuration/config-file-reference.html#framework-properties).
+By default, this file is named `rundeck.audit.events.log` and is located at the [default log directory](/administration/configuration/config-file-reference.md#framework-properties).
 
 This file will record tracked activity events and store relevant data such as origin information, resources involved and action performed.
 

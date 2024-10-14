@@ -102,7 +102,7 @@ Other settings:
 
 - `rundeck.server.uuid`: This is used to manually specify the server UUID for certain cluster and licensing needs.
 - `framework.log.dispatch.console.format`: Default format for non-terse node execution logging run by the `dispatch` CLI tool.
-- `execution.script.tokenexpansion.enabled`: Whether inline script token expansion is enabled, default `true`. If `false`, the "Inline Script Content" syntax described in [User Guide - Creating Job Workflows - Context Variables](/manual/job-workflows.md#context-variables) is disabled.
+- `execution.script.tokenexpansion.enabled`: Whether inline script token expansion is enabled, default `true`. If `false`, the "Inline Script Content" syntax described in [User Guide - Creating Job Workflows - Context Variables](/manual/jobs/job-workflows.md#context-variables) is disabled.
 - `communityNews.disabled`: Default is not set, or false. Disables the external polling of Community News feed. Link will persist but will not poll, and clicking this link will open a new browser tab and navigate to the web-based version of Community News.
 
 ### Static authentication tokens for API access:
@@ -175,7 +175,7 @@ generated at project setup time. Each project has a directory within the Rundeck
 | `project.ssh-keypath`                    | Load SSH identify file. (Note: this is not a keystorage path but a local file system path.)|
 | `service.FileCopier.default.provider`    | Default script file copier plugin. |
 | `service.NodeExecutor.default.provider`  | Default node executor plugin. |
-| `resources.source.N...`                  | Defines a Resource model source see [Resource Model Sources](/manual/projects/resource-model-sources/). |
+| `resources.source.N...`                  | Defines a Resource model source see [Resource Model Sources](/manual/projects/resource-model-sources/index.md). |
 | `project.globals.X` | [Defines a Project Global variable](#project-global-execution-variables) |
 
 Here's an example that configures a File source:
@@ -247,7 +247,7 @@ loglevel, datasource configuration, and
 
 The following sections describe configuration values for this file.
 
-#### Live Configuration Refreshing (Enterprise)
+#### Live Configuration Refreshing (Commercial)
 
 You can make changes in the rundeck-config.properties file and then get Rundeck to reload the config without having to restart.  
 The following steps give the process for live reloading:
@@ -310,7 +310,7 @@ Some of the properties that work with live reloading:
 
 - `rundeck.security.requiredRole`: `roleName`. If this property is set, all users must be a member of the role specified.
 
-- `rundeck.security.dblogin.enabled`: `true|false`. (Enterprise) This option is enabled by default in version 3.3.0 to allow creation of local Rundeck users.  [More Info](/manual/user-management/user-mgmt.html#manage-local-users)
+- `rundeck.security.dblogin.enabled`: `true|false`. (Commercial) This option is enabled by default in version 3.3.0 to allow creation of local Rundeck users.  [More Info](/manual/user-management/user-mgmt.md#manage-local-users)
 
 - `rundeck.security.dblogin.createAdminUserAndRoles`: `true|false`.  Enabling this feature adds the admin user and roles . (See `rundeck.security.dblogin.enabled`) Default is `false` so that no admin user or role is created by default.
 
@@ -625,7 +625,7 @@ rundeck.pagination.default.max=20
 
 ### Job Remote Option URL connection parameters
 
-Change the defaults for for [Job Remote Option Value URLs](/manual/job-options.md#remote-option-values) loading.
+Change the defaults for for [Job Remote Option Value URLs](/manual/jobs/job-options.md#remote-option-values) loading.
 
 **Socket read timeout**
 
@@ -696,7 +696,7 @@ java -Xms4g -Xmx8g -jar rundeck.war
 ```
 
 :::tip
-It is also possible to reconfigure the default path for files according to [this page](/developer/14-file-upload-plugins.html#about) using the property in this form:
+It is also possible to reconfigure the default path for files according to [this page](/developer/14-file-upload-plugins.md#about) using the property in this form:
 
 `framework.plugin.FileUpload.filesystem-temp.basePath=/desired/path`
 

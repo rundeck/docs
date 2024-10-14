@@ -1,4 +1,4 @@
-# Jenkins Notification Plugin (Enterprise)
+# Jenkins Notification Plugin (Commercial)
 
 Enterprise customers have access to this plugin that allows for triggering a build in Jenkins based off the execution status of a Rundeck job.
 

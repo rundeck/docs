@@ -57,7 +57,7 @@ Then execute this sql:
 Set the datasource URL to point to the Mysql host, with appropriate database name,
 username and password.
 
-See [Configuring Rundeck](/administration/configuration/database/mysql.html#configuring-rundeck) for details.
+See [Configuring Rundeck](/administration/configuration/database/mysql.md#configuring-rundeck) for details.
 
 ## Configure Project Config in DB
 

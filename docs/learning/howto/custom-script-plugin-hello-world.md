@@ -184,7 +184,7 @@ Some values to note:
 
 #### Run the Test Job
 
-[Create a project](/manual/projects/project-create.md) and [upload the job definition](/manual/creating-jobs.html#importing-job-definitions) for our `hello_test_job.yaml`
+[Create a project](/manual/projects/project-create.md) and [upload the job definition](/manual/creating-jobs.md#importing-job-definitions) for our `hello_test_job.yaml`
 
 Run the job and see the output:
 

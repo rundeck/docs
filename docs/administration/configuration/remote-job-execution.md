@@ -197,7 +197,7 @@ rundeck.clusterMode.remoteExecution.config.groupWeight=4,3,2
 
 ### Cluster Remote Execution with Secure Options
 
-When forwarding executions which include [Secure Options](/manual/job-options.md#secure-options), option values will be delivered
+When forwarding executions which include [Secure Options](/manual/jobs/job-options.md#secure-options), option values will be delivered
 between cluster members using encrypted messaging by default.
 
 This behavior and the encryption configuration can be changed configuring the following parameters in `rundeck-config.properties`:

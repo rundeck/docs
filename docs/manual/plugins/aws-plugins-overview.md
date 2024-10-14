@@ -10,25 +10,25 @@ _Click to expand to see the full list of Runbook Automation plugins for AWS:_
 
 |     AWS Service Type      |Plugin | Plugin Type|
 |:-------------------------:|---------------------------------------------------------|:---------------------------------------------------------:|
-|        **Athena**         |[Query Athena Table](/manual/workflow-steps/amazon-athena.md)|Job Step|
-|      **CloudWatch**       |[Query CloudWatch logs On Demand](/manual/workflow-steps/aws-cloudwatch.md)|Job Step|
-|      **CloudWatch**       |[Execute Saved CloudWatch Logs Query](/manual/workflow-steps/aws-cloudwatch.md)|Job Step|
-|      **CloudWatch**       |[Create CloudWatch Log Stream](/manual/workflow-steps/aws.md)|Job Step|
-|          **EC2**          |[Start EC2](/manual/workflow-steps/aws.md)|Job Step|
-|          **EC2**          |[Restart EC2](/manual/node-steps/aws.md)|Job Step|
-|          **EC2**          |[Delete EC2](/manual/node-steps/aws.md)|Job Step|
-|          **EC2**          |[Create EC2 from Snapshot](/manual/workflow-steps/aws.md)|Job Step|
-|          **EC2**          |[Update EC2 Autoscale Groups](/manual/workflow-steps/aws.md)|Job Step|
+|        **Athena**         |[Query Athena Table](/manual/jobs/job-plugins/workflow-steps/amazon-athena.md)|Job Step|
+|      **CloudWatch**       |[Query CloudWatch logs On Demand](/manual/jobs/job-plugins/workflow-steps/aws-cloudwatch.md)|Job Step|
+|      **CloudWatch**       |[Execute Saved CloudWatch Logs Query](/manual/jobs/job-plugins/workflow-steps/aws-cloudwatch.md)|Job Step|
+|      **CloudWatch**       |[Create CloudWatch Log Stream](/manual/jobs/job-plugins/workflow-steps/aws.md)|Job Step|
+|          **EC2**          |[Start EC2](/manual/jobs/job-plugins/workflow-steps/aws.md)|Job Step|
+|          **EC2**          |[Restart EC2](/manual/jobs/job-plugins/node-steps/aws.md)|Job Step|
+|          **EC2**          |[Delete EC2](/manual/jobs/job-plugins/node-steps/aws.md)|Job Step|
+|          **EC2**          |[Create EC2 from Snapshot](/manual/jobs/job-plugins/workflow-steps/aws.md)|Job Step|
+|          **EC2**          |[Update EC2 Autoscale Groups](/manual/jobs/job-plugins/workflow-steps/aws.md)|Job Step|
 |          **EC2**          |[EC2 Node Source](/manual/projects/resource-model-sources/aws.md)|Node Source|
 |          **ECS**          |[ECS & Fargate Node Source](/manual/projects/resource-model-sources/ecs-fargate.md)|Node Source|
 |          **ECS**          |[ECS & Fargate Node Executor](/manual/projects/node-execution/aws-ecs.md)|Node Executor|
-|          **ECS**          |[Execute Command](/manual/workflow-steps/aws-ecs-fargate.md)|Job Step|
-|          **ECS**          |[Stopped Task Errors](/manual/workflow-steps/aws-ecs-fargate.md)|Job Step|
-|          **ECS**          |[Stop Task](/manual/workflow-steps/aws-ecs-fargate.md)|Job Step|
-|          **ELB**          |[Unhealthy Target Group Instances](/manual/workflow-steps/aws-elb-workflow-plugin.md)|Job Step|
-|        **Lambda**         |[Execute Lambda Function](/manual/workflow-steps/aws-lambda.md#execute-lambda-function)|Job Step|
-|        **Lambda**         |[Execute Custom-Code Lambda Function](/manual/workflow-steps/aws-lambda.md#lambda-custom-code-execution)|Job Step|
-|          **RDS**          |[Check Instance Status](/manual/workflow-steps/aws-rds.md)|Job Step|
+|          **ECS**          |[Execute Command](/manual/jobs/job-plugins/workflow-steps/aws-ecs-fargate.md)|Job Step|
+|          **ECS**          |[Stopped Task Errors](/manual/jobs/job-plugins/workflow-steps/aws-ecs-fargate.md)|Job Step|
+|          **ECS**          |[Stop Task](/manual/jobs/job-plugins/workflow-steps/aws-ecs-fargate.md)|Job Step|
+|          **ELB**          |[Unhealthy Target Group Instances](/manual/jobs/job-plugins/workflow-steps/aws-elb-workflow-plugin.md)|Job Step|
+|        **Lambda**         |[Execute Lambda Function](/manual/jobs/job-plugins/workflow-steps/aws-lambda.md#execute-lambda-function)|Job Step|
+|        **Lambda**         |[Execute Custom-Code Lambda Function](/manual/jobs/job-plugins/workflow-steps/aws-lambda.md#lambda-custom-code-execution)|Job Step|
+|          **RDS**          |[Check Instance Status](/manual/jobs/job-plugins/workflow-steps/aws-rds.md)|Job Step|
 |          **S3**           |[Copy Files from Local to S3 or S3 to local](https://github.com/rundeck-plugins/aws-s3-steps.md)|Job Step|
 |          **S3**           |[List S3 objects](https://github.com/rundeck-plugins/aws-s3-steps.md)|Job Step|
 |          **S3**           |[Create an S3 Bucket](https://github.com/rundeck-plugins/aws-s3-steps.md)|Job Step|
@@ -39,8 +39,8 @@ _Click to expand to see the full list of Runbook Automation plugins for AWS:_
 |    **Secrets Manager**    |[AWS Secrets Manager](/manual/key-storage/storage-plugins/aws-secrets-manager.md)|Key Storage|
 | **Systems Manager (SSM)** |[SSM Node Executor](/manual/projects/node-execution/aws-ssm.md)|Node Executor|
 | **Systems Manager (SSM)** |[SSM File Copier & Scripts](/manual/projects/node-execution/aws-ssm.md)|File Copier|
-|          **VPC**          |[Configure Flow Logs](/manual/workflow-steps/aws.md)|Job Step|
-|          **VPC**          |[Enable Network Peering](/manual/workflow-steps/aws.md)|Job Step|
+|          **VPC**          |[Configure Flow Logs](/manual/jobs/job-plugins/workflow-steps/aws.md)|Job Step|
+|          **VPC**          |[Enable Network Peering](/manual/jobs/job-plugins/workflow-steps/aws.md)|Job Step|
 </details>
 
 ## Setup
@@ -122,8 +122,8 @@ When self-hosting Runbook Automation on EC2, the recommended method for integrat
 4. Under **Common use cases** select **EC2** then click **Next**.
 ![Select Entity Type](/assets/img/aws-iam-select-entity-type.png)
 5. In the **Permissions policies**, select the permission-sets based on the plugins you intend to use.
-   - For example, all of the [CloudWatch Logs Plugins](/manual/workflow-steps/aws-cloudwatch) require **`logs:StartQuery`** and **`logs:GetQueryResults`** 
-   while the [Execute Saved Query](/manual/workflow-steps/aws-cloudwatch.html#execute-saved-cloudwatch-logs-query) _also_ requires **`logs:DescribeQueryDefinitions`**.
+   - For example, all of the [CloudWatch Logs Plugins](/manual/jobs/job-plugins/workflow-steps/aws-cloudwatch) require **`logs:StartQuery`** and **`logs:GetQueryResults`** 
+   while the [Execute Saved Query](/manual/jobs/job-plugins/workflow-steps/aws-cloudwatch.md#execute-saved-cloudwatch-logs-query) _also_ requires **`logs:DescribeQueryDefinitions`**.
 <br>Then click **Next**.
 6. Specify a **Role Name** and a **Description**.  Do not change the **Select trusted entities**.
 7. Click **Create Role**.
@@ -165,8 +165,8 @@ When self-hosting Runbook Automation on ECS, the recommended method for integrat
 4. Under **Common use cases** find **Elastic Container Task** in the dropdown under **User cases for other AWS services**:
 ![ECS IAM Role](/assets/img/aws-ecs-iam-select-use-case.png)
 5. In the **Permissions policies**, select the permission-sets based on the plugins you intend to use.
-   - For example, all of the [CloudWatch Logs Plugins](/manual/workflow-steps/aws-cloudwatch) require **`logs:StartQuery`** and **`logs:GetQueryResults`**
-     while the [Execute Saved Query](/manual/workflow-steps/aws-cloudwatch.html#execute-saved-cloudwatch-logs-query) _also_ requires **`logs:DescribeQueryDefinitions`**.
+   - For example, all of the [CloudWatch Logs Plugins](/manual/jobs/job-plugins/workflow-steps/aws-cloudwatch) require **`logs:StartQuery`** and **`logs:GetQueryResults`**
+     while the [Execute Saved Query](/manual/jobs/job-plugins/workflow-steps/aws-cloudwatch.md#execute-saved-cloudwatch-logs-query) _also_ requires **`logs:DescribeQueryDefinitions`**.
 <br>Then click **Next**.
 6. Specify a **Role Name** and a **Description**.  Do not change the **Select trusted entities**.
 7. Click **Create Role**.
@@ -199,7 +199,7 @@ Now that the IAM Role is attached to the ECS Task, use the following steps to de
 ### Alternative AWS Authentication: Access Key & Secret Key
 
 1. Create an AWS Access Key and Secret Key that is associated with an IAM Role, follow [these instructions](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html).
-2. Once the keys have been downloaded, add the Secret Key into Project or System Key Storage using the Password key type, following [these instructions](/manual/system-configs.html#key-storage).
+2. Once the keys have been downloaded, add the Secret Key into Project or System Key Storage using the Password key type, following [these instructions](/manual/system-configs.md#key-storage).
    :::tip Tip
    If using a third party credential-store, such as [Hashicorp Vault](/learning/howto/vault-integration), then skip step 2.
    :::

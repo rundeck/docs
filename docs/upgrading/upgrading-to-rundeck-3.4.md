@@ -2,7 +2,7 @@
 
 ::: tip
 This document highlights changes for users upgrading **_from_ Rundeck 3.3**.
-See other [Upgrading](/upgrading/) Documents if you are upgrading from 3.2 or earlier.
+See other [Upgrading](/upgrading/index.md) Documents if you are upgrading from 3.2 or earlier.
 :::
 
 ## Package Repositories
@@ -44,7 +44,7 @@ In the example above make sure the value at `<APIVERSION>` is 11 or higher.
 ## Project ACLs for Key Storage
 Project ACLs for Key Storage implements a new dynamic within the Key Storage component.  If the existing Key Storage (from version 3.3 and previous) is organized by project name (e.g. `keys/project-name/folder/key) `care should be taken to ensure that rights are properly granted.  [More information about this feature can be found here](/administration/security/project-acl.md).
 
-## Enterprise ACL Storage Layer (Enterprise)
+## Enterprise ACL Storage Layer (Commercial)
 
 Rundeck Enterprise 3.4.0 adds a more efficient Enterprise ACL Storage Layer, which improves application performance if you have many ACLs. This feature is enabled by default and will automatically transfer ACLs from the Core ACL Storage Layer at startup if they exist. Newly added or changed ACLs will use the new Enterprise ACL Storage Layer. The new storage layer stores ACLs in the database in a format that allows them to be queried more efficiently, and improves performance when there are many ACLs. A caveat is that if regular expressions are used in the `by:` clause of ACLs, those ACLs cannot be queried efficiently, and remain stored only in the Core storage layer. Regular expressions are detected by a simple check for characters common to regular expressions such as `+`, `.`, `*` etc. If you have a `.` in usernames or group names, and do not want it to be treated as a regular expression, you should use a [URN in the by clause explicitly](/manual/document-format-reference/aclpolicy-v10.md#by).
 
@@ -71,14 +71,14 @@ Known file resources stored in each project's directory, such as readme/message-
 
 You can remove the `rundeck.projectsStorageType` configuration key from your rundeck-config.properties file
 
-## JIRA Plugins Require Updated Authentication (Enterprise)
+## JIRA Plugins Require Updated Authentication (Commercial)
 
 >Note: These steps also apply to Rundeck version 3.3.13
 
 The JIRA Plugins now require an authentication token as opposed to the password used to login to the account. However, there are two options for proceeding with the authentication token.
 
 ::: tabs
-@tab Configuration Management (Enterprise)
+@tab Configuration Management (Commercial)
 
 Use the enterprise configuration management to configure the properties centrally and share with all cluster members. ([Link To learn more about this option](/manual/configuration-mgmt/configmgmt.md#managing-configuration))
 

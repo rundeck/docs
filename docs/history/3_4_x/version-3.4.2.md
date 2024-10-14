@@ -5,13 +5,13 @@ Release Date: August 4, 2021
 
 - [Download Rundeck](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
-- [Upgrade instructions](/upgrading/)
+- [Upgrade instructions](/upgrading/index.md)
 
 ## Overview
 
 Check out the new features and enhancements for Rundeck Enterprise and Rundeck Community as well as a few incubating features included in this release. Incubating features are functionality released as ideas with the goal of getting feedback from our users. Look for posts in the [Rundeck Forums](https://community.pagerduty.com) to join the discussion about **Result Data** and **Ruleset Visualization**.
 
-### Result Data [Incubating] (Enterprise)
+### Result Data [Incubating] (Commercial)
 
 The new Result Data feature brings easier to digest output data to Rundeck.
 
@@ -19,19 +19,19 @@ Log Output can be long, complicated, and often lacks focus. Use this feature to 
 
 Use cases for this feature cover a broad range of ideas like API consolidation, simplifying results for technicians, and more. Jobs can now be thought of as composable functions that return data. Share your own use case ideas as well on the [Rundeck Forums](https://community.pagerduty.com). (Look for the _Result Data - Incubating_ post)
 
-[Check out the documentation for how to enable the incubating feature.](/manual/execution-lifecycle/result-data.html)
+[Check out the documentation for how to enable the incubating feature.](/manual/execution-lifecycle/result-data.md)
 
 ![Result Data Output](/assets/img/relnotes-342-jobdata.png)
 
-### Ruleset Visualization [Incubating] (Enterprise)
+### Ruleset Visualization [Incubating] (Commercial)
 
 Rulesets can be complicated to write. The Ruleset visualization offers a view of how the Workflow will progress based on the rules written. This feature is enabled by default on 3.4.2 and we have plans to expand the functionality in future releases. Join the discussion on the [Rundeck Forums](https://community.pagerduty.com). (Look for the _Ruleset Visualization - Incubating_ post)
 
 ![Ruleset Visualization](/assets/img/relnotes-342-rulesetvisual.gif)
 
-[Click here learn more about the Ruleset Strategy available in Rundeck Enterprise.](/manual/workflow-strategies/ruleset.md)
+[Click here learn more about the Ruleset Strategy available in Rundeck Enterprise.](/manual/jobs/workflow-strategies/ruleset.md)
 
-### Azure Node Steps (Enterprise)
+### Azure Node Steps (Commercial)
 
 Now it's more practical to manage larger deployments in Microsoft&reg; Azure with more detailed cloud automation features. New node steps were introduced to add Cloud Automation to your Rundeck workflows. Control your imported nodes in Rundeck by using the following new job steps:
 
@@ -40,11 +40,11 @@ Now it's more practical to manage larger deployments in Microsoft&reg; Azure wit
 * Restart a Virtual Machine
 * Delete a Virtual Machine
 
-### ServiceNow&reg; Node Source Custom Filters (Enterprise)
+### ServiceNow&reg; Node Source Custom Filters (Commercial)
 
 In 3.4.2, we have added the ability to specify custom filters when setting up the ServiceNow&reg; Node Source. Now it’s possible to gather the nodes you want into your Rundeck project. Use a filter against any CMDB table and gather the results as nodes from ServiceNow&reg;.
 
-[Check out the updated documentation here](/manual/projects/resource-model-sources/servicenow.html)
+[Check out the updated documentation here](/manual/projects/resource-model-sources/servicenow.md)
 
 ## Enterprise Updates
 

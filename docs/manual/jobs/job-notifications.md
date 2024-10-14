@@ -24,7 +24,7 @@ NoteCan include option value references like ${option.avgDurationThreshold}.
 
 Notification Types the actions that can be performed at each of the events above.
 
-For a full list of notification plugins, see [Job Plugins - Notifications](/manual/job-plugins.md#notifications)
+For a full list of notification plugins, see [Job Plugins - Notifications](/manual/jobs/job-plugins/index.md#notifications)
 
 ## Configuring Notifications
 

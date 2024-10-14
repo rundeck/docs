@@ -26,7 +26,7 @@ Misfire detection is enabled by default.  If there is a need to change settings 
 
 [More information about Configuration Management](/manual/configuration-mgmt/configmgmt.md)
 
-Alternatively it's possible to configure the Missed Job Fires feature by adding the following settings in [`rundeck-config.properties`](/administration/configuration/config-file-reference.html#rundeck-config-properties):
+Alternatively it's possible to configure the Missed Job Fires feature by adding the following settings in [`rundeck-config.properties`](/administration/configuration/config-file-reference.md#rundeck-config-properties):
 
 ```properties
 #Enable the misfire marking feature

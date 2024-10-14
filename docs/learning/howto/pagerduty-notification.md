@@ -88,7 +88,7 @@ Now, Runbook Automation is configured to use PagerDuty notifications, no restart
    <br><br>![Add Notification](/assets/img/howto-pdnotif-addnotification.png)<br><br>
 1. In the Notification Type list select "PagerDuty".
    <br><br>![Select PagerDuty](/assets/img/howto-pdnotif-addpdnotif.png)<br><br>
-1. The Incident subject is editable, by default the plugins include [job context variables](/manual/job-workflows.html#context-variables). Click on the **Save** button for the Notification and **Save** button for the job.
+1. The Incident subject is editable, by default the plugins include [job context variables](/manual/job-workflows.md#context-variables). Click on the **Save** button for the Notification and **Save** button for the job.
 1. Run the job.
 
 When you check the PagerDuty service incidents, you should see a new triggered incident is created.

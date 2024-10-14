@@ -5,7 +5,7 @@ Jobs are arranged in Job Groups (folders) based on their purpose or related tech
 
 :::tip Note
 Many of these Jobs depend on a method of sending of commands to remote-nodes (such as EC2's). 
-Follow the SSM Tour outlined in the [Tours section](/learning/solutions/automated-diagnostics/tours) to use Systems Manager, or install an [Enterprise Runner](/administration/runner/) for SSH so that Runbook Automation can send commands to the remote-nodes.  
+Follow the SSM Tour outlined in the [Tours section](/learning/solutions/automated-diagnostics/tours.md) to use Systems Manager, or install an [Enterprise Runner](/administration/runner/index.md) for SSH so that Runbook Automation can send commands to the remote-nodes.  
 :::
 
 Group|Job Name
@@ -60,4 +60,4 @@ To target specific Nodes for the prebuilt Jobs within the Runbook Automation Int
 
 This will allow you to target the _individual_ node selected.  If you want to target multiple Nodes, see the [Node Filter Documentation](/manual/11-node-filters).
 
-### **With the Prebuilt Jobs, you can [<span style="color:green"><ins>integrate with Automation Actions!</ins></span>](/learning/solutions/automated-diagnostics/automation-actions.html)**
+### **With the Prebuilt Jobs, you can [<span style="color:green"><ins>integrate with Automation Actions!</ins></span>](/learning/solutions/automated-diagnostics/automation-actions.md)**

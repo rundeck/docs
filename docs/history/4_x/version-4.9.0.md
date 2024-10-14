@@ -15,7 +15,7 @@ Release Date: January 11, 2023
 
 - [Download the Releases](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
-- [Upgrade instructions](/upgrading/)
+- [Upgrade instructions](/upgrading/index.md)
 - [Watch the Live Stream Release Recap](https://www.youtube.com/watch?v=VIdp90P5zFk&ab_channel=PagerDutyInc)
 
 <VidStack src="youtube/VIdp90P5zFk"/>
@@ -33,7 +33,7 @@ Click [here](/manual/plugins) to read the full documentation.
 
 ![PD Plugin Config](/assets/img/relnotes-4.9-pd-config.png)
 
-- This release also includes a number of backend enhancements that will lend themselves to major releases in the coming months.  Stay tuned for announcements regarding major updates to our [Runner](/administration/runner/).
+- This release also includes a number of backend enhancements that will lend themselves to major releases in the coming months.  Stay tuned for announcements regarding major updates to our [Runner](/administration/runner/index.md).
 
 :::warning
 Version 4.9.0 utilizes new signing keys for our binary packages.  If your installation process includes validation of the packages using the public key please ensure you are using the new keys documented on the [Download Site](https://download.rundeck.com/)

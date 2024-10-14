@@ -1,4 +1,4 @@
-# System Report (Enterprise)
+# System Report (Commercial)
 
 :::enterprise
 :::

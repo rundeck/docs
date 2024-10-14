@@ -23,11 +23,11 @@ This solution is meant to demonstrate design principles, and therefore the steps
 1. **In PagerDuty**, generate an API Access Key with (at minimum) _Responder_ permissions.
 This can either be a [General Access API Key](https://support.pagerduty.com/docs/api-access-keys#section-generate-a-general-access-rest-api-key)
 or a [User Token API Key](https://support.pagerduty.com/docs/api-access-keys#section-generate-a-user-token-rest-api-key).
-2. Copy the PagerDuty API Key into Rundeck's [Key Storage](/manual/system-configs.html#key-storage) as a Password or into your secrets-manager that is integrated with Rundeck.
+2. Copy the PagerDuty API Key into Rundeck's [Key Storage](/manual/system-configs.md#key-storage) as a Password or into your secrets-manager that is integrated with Rundeck.
 3. Download the sample Rundeck Job YAML from this [link](https://raw.githubusercontent.com/rundeckpro/welcome-project/main/runbooks/yaml/solutions/Auto-Diagnostics__-_Kubernetes_Logs.yaml).
 (Right click and select **Save Link As...** and be sure to append `.yaml` to the file name). **Note** that this Job definition will only work with Rundeck _Enterprise_. Click the **Rundeck Community** tab if you are using Rundeck Community.                                                                                                                             
 4. Upload the sample job to your Runbook Automation instance by navigating to the **Jobs** tab, selecting **Job Actions** in the upper-right, then selecting **Upload Definition**.
-You can find more detailed instructions for uploading a Job Definition [here](/manual/creating-jobs.html#importing-job-definitions).
+You can find more detailed instructions for uploading a Job Definition [here](/manual/creating-jobs.md#importing-job-definitions).
 <br><br>![Upload Job](/assets/img/solutions-pd-diag-k8s-upload-job.png)<br><br>
 5. Edit the Job by clicking **Edit This Job**:
 <br><br>![Edit Job](/assets/img/solutions-pd-diag-k8s-edit-job.png)<br><br>
@@ -42,7 +42,7 @@ This Rundeck Job is meant to be invoked from PagerDuty, not through the Rundeck 
 If you run the Job directly from the Rundeck Interface, the Job will fail on Step 2, as it is expecting to have the PagerDuty incident ID as an input parameter.
 @tab Rundeck Community
 9. Download the sample Rundeck Job YAML from this [link](https://raw.githubusercontent.com/rundeck/welcome-project-community/main/runbooks/yaml/Solutions/Auto-Diagnostics_-_Kubernetes_Logs.yaml).
-   (Right click and select **Save Link As...** and be sure to append `.yaml` to the file name). You can find more detailed instructions for uploading a Job Definition [here](/manual/creating-jobs.html#importing-job-definitions).
+   (Right click and select **Save Link As...** and be sure to append `.yaml` to the file name). You can find more detailed instructions for uploading a Job Definition [here](/manual/creating-jobs.md#importing-job-definitions).
 10. Edit the Job by clicking **Edit This Job**:
 <br><br>![Edit CMNTY Job](/assets/img/solutions-pd-diag-k8s-edit-cmnty-job.png)<br><br>
 11. Click into the **Workflow** tab and then in the **Options** section, select the `k8s_selector` option, and modify the selector to determine which pods to pull logs from:

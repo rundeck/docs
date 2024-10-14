@@ -141,19 +141,19 @@ Follow the instructions outlined in [this AWS documentation](https://docs.aws.am
 ## Setup Within Runbook Automation
 
 ### AWS Authentication
-Follow the instructions outlined in the [AWS Plugins Overview](/manual/plugins/aws-plugins-overview.html) for Runbook Automation to authenticate with AWS.
+Follow the instructions outlined in the [AWS Plugins Overview](/manual/plugins/aws-plugins-overview.md) for Runbook Automation to authenticate with AWS.
 
 ### Node Discovery
 In order to target the remote EC2 instances, they need to be populated into Runbook Automation's node inventory. 
-It is recommended to use the [**EC2 Node Source**](/manual/projects/resource-model-sources/aws.html#amazon-ec2-node-source).
+It is recommended to use the [**EC2 Node Source**](/manual/projects/resource-model-sources/aws.md#amazon-ec2-node-source).
 
 :::warning When not using the EC2 Node Source
 If the EC2 Node Source is not used for node discovery, then be sure that the following **node-attributes** are added to the nodes:
 1. **`instanceId`** - This is the EC2 instance-id from AWS.
 2. **`region`** - This is the AWS region where the EC2 resides.
 
-Node Attributes can be added when defining a resource-model source [manually](/administration/configuration/plugins/bundled-plugins.html#built-in-resource-model-formats)
-or by using the [Attribute Match](/manual/node-enhancers.html#attribute-match) node enhancer.
+Node Attributes can be added when defining a resource-model source [manually](/administration/configuration/plugins/bundled-plugins.md#built-in-resource-model-formats)
+or by using the [Attribute Match](/manual/node-enhancers.md#attribute-match) node enhancer.
 :::
 
 ### Enable SSM Node Executor
@@ -193,7 +193,7 @@ The SSM File Copier can be set as the **Default File Copier** - thereby making i
 The SSM File Copier can alternatively be configured on a per **Node Source** or per node basis. To do so, add **`file-copier=aws-ssm-copier`** and **`ssm-copier-bucket=S3 bucket name`** as a node-attribute to the nodes.
 
 ## Using SSM for Commands and Scripts
-Once the setup is complete, commands that are executed on the specified EC2s - either through the [**Commands**](/manual/06-commands.html#commands-tab-overview) tab or through the **Remote Command** step - will automatically execute through SSM.
+Once the setup is complete, commands that are executed on the specified EC2s - either through the [**Commands**](/manual/06-commands.md#commands-tab-overview) tab or through the **Remote Command** step - will automatically execute through SSM.
 Similarly, scripts that are executed using the **Incline Script** Job step will take place using SSM with S3 as the pass-through mechanism.
 
 ## Using CloudWatch Logs (Optional)

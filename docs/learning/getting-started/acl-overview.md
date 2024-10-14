@@ -1,7 +1,7 @@
 # Overview of Access Control
 
 # Introduction
-Access control is a key element of Rundeck and Runbook Automation. This fundamental component governs the permissions and privileges granted to users, determined by their respective usernames, group memberships or [user classes](/manual/user-management/user-classes.html) (in the case of commercial products). It guarantees that users have access to specific resources and functionalities within the system.
+Access control is a key element of Rundeck and Runbook Automation. This fundamental component governs the permissions and privileges granted to users, determined by their respective usernames, group memberships or [user classes](/manual/user-management/user-classes.md) (in the case of commercial products). It guarantees that users have access to specific resources and functionalities within the system.
 
 # Access Control List (ACL) policies
 Access Control List (ACL) policies are composed of one or more rules that designate a set of permissions for users that match a certain username or group pattern. 
@@ -22,7 +22,7 @@ A policy can be (and often is) composed of both project context and system conte
         * Best practice is to manage all project context policies at the project level if a team will be managing access within their own project.
 * System context rules must be in place to define at least general access to a project before project context policies are effective. 
 
-Roles are assigned based on [access control policies](/administration/security/authorization.html).  Effectively, an ACL policy assigns or denies system rights based on usernames and group memberships. For example, a user called “jo” might only be able to run Jobs within specific projects based on the fact that she is a member of the “SupportTeam” group.  
+Roles are assigned based on [access control policies](/administration/security/authorization.md).  Effectively, an ACL policy assigns or denies system rights based on usernames and group memberships. For example, a user called “jo” might only be able to run Jobs within specific projects based on the fact that she is a member of the “SupportTeam” group.  
 
 New ACL policies can be created through files on the server’s file system or through the access control GUI (the only option with Runbook Automation).  
 
@@ -155,11 +155,11 @@ The Runbook Automation products have an additional element used in Access Contro
 
 Currently, there are two User Classes available for assignment: : `Full User` (known as `AppAdmin` in Runbook Automation) and `Job Runner.`  The `Full User` class is essentially equivalent to the built-in admin user, possessing super-user privileges to perform any action.   The `Job Runner` class is effectively the same as the built-in “user” account , providing standard user capabilities.  The availability of these User Classes in your system and the number you are entitled to depend on your specific commercial license.
 
-[To assign a class to a user](/manual/user-management/user-classes.html#assigning-classes), a Full User can navigate to the system menu (gear icon) and access User Manager | User Classes.  It is important to note that assigning a User Class will not give a user access to anything until they also match an ACL policy that provides the necessary access, such as a combination of those listed above.
+[To assign a class to a user](/manual/user-management/user-classes.md#assigning-classes), a Full User can navigate to the system menu (gear icon) and access User Manager | User Classes.  It is important to note that assigning a User Class will not give a user access to anything until they also match an ACL policy that provides the necessary access, such as a combination of those listed above.
 
 # Resources
-* [ACL Recipes](/learning/howto/acls/)
-* [Setting up Authentication](/administration/security/authentication.html)
-* [Getting Started with ACLs](/learning/howto/acl_basic_examples.html)
+* [ACL Recipes](/learning/howto/acls/index.md)
+* [Setting up Authentication](/administration/security/authentication.md)
+* [Getting Started with ACLs](/learning/howto/acl_basic_examples.md)
 * [Webinar on ACL Best Practices](https://www.youtube.com/watch?v=i859f1WG3Bo)
 * [ACL Policy Documentation](/manual/document-format-reference/aclpolicy-v10.md)

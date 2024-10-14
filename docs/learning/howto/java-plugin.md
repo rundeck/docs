@@ -181,7 +181,7 @@ class HellojavaSpec extends Specification {
 }
 ```
 
-We'll leave the `getContext()` helper method there so we can mock the context when writing tests later. But for now, we're ready to compile by running `./gradlew build` and [deploy using your instance gui](/learning/howto/java-plugin.html#deploying-the-plugin-to-a-local-environment).
+We'll leave the `getContext()` helper method there so we can mock the context when writing tests later. But for now, we're ready to compile by running `./gradlew build` and [deploy using your instance gui](/learning/howto/java-plugin.md#deploying-the-plugin-to-a-local-environment).
 
 :::tip
 Change the plugin version property from the `rundeck-plugins/hellojava/build.gradle` file.

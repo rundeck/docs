@@ -69,7 +69,7 @@ _AI-Generated Runbooks_ is powered by a combination of a large-language generati
 Through this configuration, **the only data sent to the generative AI model is the text entered into the prompt field.**  No other data about your environment, 
 existing Jobs or the source of the prompt is sent to the AI model.  Furthermore, **the AI model is not trained on the text entered into the prompt.**
 
-For further questions about the AI Model and security, please [contact support](/about/getting-help.html). 
+For further questions about the AI Model and security, please [contact support](/about/getting-help.md). 
 
 [comment]: <> (Current limitations)
 ## Current Limitations

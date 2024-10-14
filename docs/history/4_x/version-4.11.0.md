@@ -15,7 +15,7 @@ Release Date: March 13th, 2023
 
 - [Download the Releases](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
-- [Upgrade instructions](/upgrading/)
+- [Upgrade instructions](/upgrading/index.md)
 - [Watch the Live Stream Release Recap](https://youtu.be/bqPzA0S7hIY)
 
 <VidStack src="youtube/bqPzA0S7hIY"/>
@@ -31,7 +31,7 @@ In addition, this release includes two new Plugin Suites to simplify configurati
 
 
 ### Highlights
-The [new architecture for Runners](/administration/runner/) offers flexibility to create powerful and resilient cross-environment jobs. The new architecture separates workflow orchestration from task execution. It offers next- generation remote Runners that are now packaged with common plugins such as Ansible, Docker, and Kubernetes that execute locally within the private network. The new architecture now allows job authors to develop automated jobs that incorporate multiple environments, and job authors have the flexibility to specify where and how Runners participate in executing distributed job steps.
+The [new architecture for Runners](/administration/runner/index.md) offers flexibility to create powerful and resilient cross-environment jobs. The new architecture separates workflow orchestration from task execution. It offers next- generation remote Runners that are now packaged with common plugins such as Ansible, Docker, and Kubernetes that execute locally within the private network. The new architecture now allows job authors to develop automated jobs that incorporate multiple environments, and job authors have the flexibility to specify where and how Runners participate in executing distributed job steps.
 
 This release includes new Plugin Suites for ServiceNow and Jira. As a reminder, [Plugin Suites streamline the configuration](/history/4_x/version-4.9.0.md) of plugins. Now users can update plugin configurations from a single location (previously this had to be done in multiple locations). In addition, this release includes an official container image for the [Runner](/administration/runner/runner-installation/runner-install.md).
 

@@ -4,7 +4,7 @@ Name: <span style="color: tan"><span class="glyphicon glyphicon-plane"></span> "
 
 - [Download Rundeck](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
-- [Upgrade instructions](/upgrading/)
+- [Upgrade instructions](/upgrading/index.md)
 
 ## Overview
 

@@ -3,7 +3,7 @@
 ## Overview 
 
 The Kubernetes Resource Model populates the Runbook Automation or Rundeck node-inventory with Kubernetes pods.  By populating the node inventory, 
-pods can be targeted with node-steps thereby enabling users to iterate operations across each pod.  For example, users my leverage the [Pod Logs](/manual/node-steps/kubernetes-pod-plugins.html#kubernetes-pod-logs)
+pods can be targeted with node-steps thereby enabling users to iterate operations across each pod.  For example, users my leverage the [Pod Logs](/manual/node-steps/kubernetes-pod-plugins.md#kubernetes-pod-logs)
 step to retrieve the last 10 log-lines from all pods that have specific labels.
 
 ## Setup

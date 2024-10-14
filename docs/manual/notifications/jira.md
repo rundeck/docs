@@ -1,7 +1,7 @@
-# Jira Notification Plugins (Enterprise)
+# Jira Notification Plugins (Commercial)
 
 ## Authentication
-Follow the steps outlined in [Jira Plugins Overview](/manual/plugins/jira-plugins-overview.html) to configure authentication with Jira for these Notification plugins.
+Follow the steps outlined in [Jira Plugins Overview](/manual/plugins/jira-plugins-overview.md) to configure authentication with Jira for these Notification plugins.
 
 ## Jira / Issue / Notification Comment
 

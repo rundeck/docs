@@ -20,14 +20,14 @@ In certain instances, the default configuration of Sql Server has presented chal
 
 In Microsoft SQL Server (MSSQL), there exists a flag that allows you to modify the behavior of transactions when using the READ_COMMITTED isolation level. This flag is named 'is_read_committed_snapshot_on.' To determine its current status, you can execute the following query on your database:
 
-```conf1
+```sql
 SELECT is_read_committed_snapshot_on, snapshot_isolation_state_desc,snapshot_isolation_state
 FROM sys.databases
 WHERE name = 'RundeckDBName'
 ```
 
 Output:
-```output
+```sql
 |is_read_committed_snapshot_on|snapshot_isolation_state_desc|snapshot_isolation_state|
 |-----------------------------|-----------------------------|------------------------|
 |0                            |OFF                          |0                       |
@@ -35,7 +35,7 @@ Output:
 
 This flag can be a valuable tool for mitigating deadlocks by enabling transactions to access the last committed value of a row without waiting for other transactions to release their locks. To enable this feature:
 
-```conf2
+```sql
 ALTER DATABASE RundeckDBName  
 SET ALLOW_SNAPSHOT_ISOLATION ON  
   

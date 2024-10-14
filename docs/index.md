@@ -194,12 +194,12 @@ highlights:
     - title: Keep up on the Latest
       icon: square-rss
       details: Keep up on what's new in the latest releases.
-      link: https://community.pagerduty.com/forum/c/runbook-automation-process-automation
+      link: https://community.pagerduty.com/ask-a-product-question-2
 
     - title: Collaborate with other community members
       icon: share
       details: Join in discussions and share your own Automation tips and tricks.
-      link: https://community.pagerduty.com/forum/c/runbook-automation-process-automation
+      link: https://community.pagerduty.com/ask-a-product-question-2
 
     - title: Contribute to Docs
       icon:  pen-to-square
