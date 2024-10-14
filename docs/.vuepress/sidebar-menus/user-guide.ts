@@ -91,7 +91,7 @@ export default [{
                         {text: 'Data Step', link: '/manual/jobs/job-plugins/node-steps/builtin.md#data-node-step',icon: '/assets/img/pd-icon.png'},
                         {text: 'Datadog', link: '/manual/jobs/job-plugins/node-steps/datadog', icon: '/assets/img/datadog.svg'},
                         {text: 'Google Cloud Compute', link: '/manual/jobs/job-plugins/node-steps/gcp', icon: '/assets/img/gcp-icon.png'},
-                        {text: 'HTTP Request', link: '/manual/jobs/job-plugins/node-steps/builtin.md#http-node-step', icon: '/assets/img/http-icon.png'},
+                        {text: 'HTTP Request', link: '/manual/jobs/job-plugins/node-steps/builtin.md#http-request-node-step', icon: '/assets/img/http-icon.png'},
                         {text: 'Kubernetes Debug', link: '/manual/jobs/job-plugins/node-steps/kubernetes-debug-plugins', icon: '/assets/img/kubernetes-icon.png'},
                         {text: 'Kubernetes Deployments', link: '/manual/jobs/job-plugins/node-steps/kubernetes-deployment-plugins', icon: '/assets/img/kubernetes-icon.png'},
                         {text: 'Kubernetes Job', link: '/manual/jobs/job-plugins/node-steps/kubernetes-job-plugins', icon: '/assets/img/kubernetes-icon.png'},
@@ -183,10 +183,11 @@ export default [{
         '/manual/jobs/ai-generated-runbooks.md',
         {
             text: 'Workflow Strategies',
+            link: '/manual/jobs/workflow-strategies/index.md',
             collapsible: true,
             children: [
-                {text: 'Node First, Sequential, Parallel', link: '/manual/workflow-strategies/index.md'},
-                {text: 'Ruleset', link: '/manual/workflow-strategies/ruleset.md'}
+                {text: 'Node First, Sequential, Parallel', link: '/manual/jobs/workflow-strategies/index.md'},
+                {text: 'Ruleset (Commercial)', link: '/manual/jobs/workflow-strategies/ruleset.md'}
                 ]
         }
       ]
