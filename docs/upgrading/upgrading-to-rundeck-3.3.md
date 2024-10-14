@@ -3,7 +3,7 @@
 
 ::: tip
 This document highlights changes for users upgrading from Rundeck 3.2.
-See other [Upgrading](/upgrading/) Documents if you are upgrading from 3.1 or earlier.
+See other [Upgrading](/upgrading/index.md) Documents if you are upgrading from 3.1 or earlier.
 :::
 
 ## MySQL
@@ -81,7 +81,7 @@ Please refer to the Log4j 2 [documentation](https://logging.apache.org/log4j/2.x
 Rundeck 3.3.x requires a new system property to define the destination for your Rundeck logs to be set in your Tomcat launch JAVA_OPTS.  
 :::
 
-Ensure you have set the `rundeck.server.logDir` to the directory that will hold your Rundeck logs. [Full Tomcat setup instructions](/administration/install/tomcat.html).
+Ensure you have set the `rundeck.server.logDir` to the directory that will hold your Rundeck logs. [Full Tomcat setup instructions](/administration/install/tomcat.md).
 
 ```bash
 $ cat setenv.sh

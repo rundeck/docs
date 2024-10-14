@@ -5,7 +5,7 @@ Release Date: June 15, 2021
 
 - [Download Rundeck](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
-- [Upgrade instructions](/upgrading/)
+- [Upgrade instructions](/upgrading/index.md)
 
 ::: warning
 Please be sure to follow the [Upgrading Guidance](/upgrading/index.md) when upgrading to 3.4.0 from a previous version.
@@ -32,7 +32,7 @@ The most obvious change in our 3.4 release is the newly refreshed and rebuilt Us
 [Download this release](https://www.rundeck.com/downloads) and check out all the new improvements!
 
 
-### Configuration Management (Enterprise)
+### Configuration Management (Commercial)
 
 Rundeck prides itself on offering customers the ability to turn a lot of knobs and flip a lot of switches when it comes to features and functionality. That configuration management used to happen on the server console, in text files such as `rundeck-config.properties` on the file system. Subsequently many of those settings also required a restart of Rundeck to take effect.
 
@@ -42,26 +42,26 @@ With version 3.4 it is now possible to configure Rundeck within the GUI and many
 
 [See the full Configuration Management documentation here.](/manual/configuration-mgmt/configmgmt.md)
 
-### Job Queuing (Enterprise)
+### Job Queuing (Commercial)
 Some technical operations can’t be run _in parallel_. Depending on the job, if the same one was executed while the previous execution was running, that might create a little havoc on the systems being managed. With Job Queuing when one execution finishes, the next one will start. The ability to queue up all the work that needs to be done at once without risking chaos in production.
 
 ![Job Queue Config](/assets/img/jobqueue-config.png)
 
 [Find the Job Queue documentation here.](/manual/jobs/job-queue.md)
 
-### Thycotic Key Storage Plugin (Enterprise)
+### Thycotic Key Storage Plugin (Commercial)
 The new Thycotic Key Storage plugin replaces the built-in Key Storage (where Rundeck keeps all your sensitive passwords and certificates) with the Thycotic backend. All your keys that are already in Thycotic are now readily accessible within Rundeck Jobs or for configuring various parts of the system.
 
 ![Thycotic Key Storage](https://thycotic.com/wp-content/uploads/2020/05/Thycotic-Logo-Full-Color.png)
 
 [Configure Thycotic as your Key Storage Backend here.](/manual/key-storage/storage-plugins/thycotic-storage.md)
 
-### PagerDuty V3 Webhook Signatures (Enterprise)
+### PagerDuty V3 Webhook Signatures (Commercial)
 Rundeck 3.3.6 included a new Webhook Processor for PagerDuty V3 Webhooks. The 3.4.0 release adds new functionality to those webhook processors to add additional validation and security to your webhook calls.
 
 [Find the PagerDuty Webhook Signatures Documentation here.](/manual/webhooks/pagerduty-run-job.md#v3-webhook-signature-verification)
 
-### Project Based ACLs for Key Storage (Enterprise)
+### Project Based ACLs for Key Storage (Commercial)
 Rundeck 3.4 adds new functionality to the Access Control List functionality. Rundeck aims to streamline sharing your Runbook Automation Projects with all your users. Adding Project Level ACLs for the Key Storage component allows Rundeck admins to combine all the important access rights within a project definition, which streamlines adding new users with the appropriate permissions in Rundeck.
 
 Be sure to check out the [Upgrade Notes](/upgrading/upgrading-to-rundeck-3.4.md) and Documentation for this new feature.

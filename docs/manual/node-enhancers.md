@@ -1,6 +1,6 @@
 # Node Enhancers
 
-Rundeck offers node enhancers to help you to better organize, manage and keep up to date on the status of your nodes. There are three different node enhancers: Attribute Match, Icon and Health Check (Enterprise).  
+Rundeck offers node enhancers to help you to better organize, manage and keep up to date on the status of your nodes. There are three different node enhancers: Attribute Match, Icon and Health Check (Commercial).  
 
 ## Attribute Match
 
@@ -25,8 +25,8 @@ If you would like to match the node name attribute, use 'nodename' instead of 'n
 
 #### Assign a Node Executor to a Subset of Node Inventory
 There are times when it is useful to declare a specific node-executor for a subset of the node inventory.  This is easily accomplished using Node Enhancers.
-For example, when the [EC2 Node Source](/manual/projects/resource-model-sources/aws.html#amazon-ec2-node-source) is added, the [Default Node Executor](/manual/project-settings.html#default-node-executor-configuration) - such as **SSH** -
-is automatically assigned to all the imported EC2's for that Node Source.  In order to specify that the [WinRM](/learning/howto/configuring-windows-nodes.html#basic-pywinrm-plugin-requirements) or the [Systems Manager (SSM)](/manual/projects/node-execution/aws-ssm.html#aws-systems-manager-ssm-node-executor-plugins)
+For example, when the [EC2 Node Source](/manual/projects/resource-model-sources/aws.md#amazon-ec2-node-source) is added, the [Default Node Executor](/manual/project-settings.md#default-node-executor-configuration) - such as **SSH** -
+is automatically assigned to all the imported EC2's for that Node Source.  In order to specify that the [WinRM](/learning/howto/configuring-windows-nodes.md#basic-pywinrm-plugin-requirements) or the [Systems Manager (SSM)](/manual/projects/node-execution/aws-ssm.md#aws-systems-manager-ssm-node-executor-plugins)
 node executors are used for a subset of this inventory, the following **Node Enhancer** configurations could be utilized:
 
 **Use SSM for All Nodes with SSM in the Node Name:**<br>
@@ -70,6 +70,6 @@ This node enhancer allows you to add icons to the nodes that you already have on
 - **Icon Name**
 : This is where you specify the icon that you want to apply to the nodes. In order to do so, you need to choose an icon from either the Font-Awesome icons or the Glyphicon icons. Depending which you choose, the name needs to start with "glyphicon-" or "fa-."
 
-## Health Checks (Enterprise)
+## Health Checks (Commercial)
 
 Our Enterprise customers also have access to a health check node enhancer. To learn more, please visit [Health Checks](/manual/healthchecks.md).

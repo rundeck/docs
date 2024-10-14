@@ -15,14 +15,14 @@ Release Date: May 15th, 2023
 
 - [Download the Releases](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
-- [Upgrade instructions](/upgrading/)
+- [Upgrade instructions](/upgrading/index.md)
 - [Watch the Live Stream Release Recap](https://youtu.be/e6Rs9BRljAA)
 
 <VidStack src="youtube/e6Rs9BRljAA"/>
 
 ## Overview
 
-Check out the new features and enhancements for PagerDuty Runbook Automation, and Rundeck Community included in this release. This release includes enhancements to the [Enterprise Runner](/administration/runner/), the SSM Node Executor plugins, and a new plugin suite. See below for the full release highlights.
+Check out the new features and enhancements for PagerDuty Runbook Automation, and Rundeck Community included in this release. This release includes enhancements to the [Enterprise Runner](/administration/runner/index.md), the SSM Node Executor plugins, and a new plugin suite. See below for the full release highlights.
 
 View our [Twitch stream review](https://www.twitch.tv/pdcommunity) of this release live on May 16. 
 

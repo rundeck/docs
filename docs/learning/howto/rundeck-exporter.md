@@ -28,7 +28,7 @@ First, you need an API token belonging to a user who has access to the Rundeck i
 
 In the Docker demonstration project, a static token API called `rundecktoken` was defined.
 
-In [this link](/manual/10-user.html#generate-api-token) you can see how to create an API token. In [this link](/administration/configuration/config-file-reference\.md#framework-properties) you can see how to create it statically on the `tokens.properties` file and then referenced on the `framework.properties` file.
+In [this link](/manual/10-user.md#generate-api-token) you can see how to create an API token. In [this link](/administration/configuration/config-file-reference\.md#framework-properties) you can see how to create it statically on the `tokens.properties` file and then referenced on the `framework.properties` file.
 
 
 ## rundeck_exporter Configuration

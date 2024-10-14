@@ -29,7 +29,7 @@ Grails application running at http://localhost:4440 in environment: production
 
 Just have rundeck installed: 
 
-[Rundeck Installation Guide](/administration/install/index.html#installation)
+[Rundeck Installation Guide](/administration/install/index.md#installation)
 
 Stop the service if running:
 ```bash
@@ -40,7 +40,7 @@ systemctl stop rundeckd
 
 Just have rundeck installed: 
 
-[Installing on CentOS or Red Hat Linux distributions](/administration/install/linux-rpm.html#installing-rundeck)
+[Installing on CentOS or Red Hat Linux distributions](/administration/install/linux-rpm.md#installing-rundeck)
 
 Stop the service if running:
 ```bash

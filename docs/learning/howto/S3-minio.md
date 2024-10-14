@@ -121,7 +121,7 @@ project.plugin.ExecutionFileStorage.com.rundeck.rundeckpro.amazon-s3.region=your
 ### Extending the image
 The  S3 Log Storage Plugin isn’t bundled out of the box with Rundeck. To use it on a Docker image it is necessary to extend the image using Remco.  [Remco](https://github.com/HeavyHorst/remco) is used to generate the Rundeck configuration files from templates. This allows storing parts of the configuration space in different backends. The default configuration uses environment variables.
 
-The Remco documentation is available [here](/administration/configuration/docker/extending-configuration.html#extending-docker-configuration).
+The Remco documentation is available [here](/administration/configuration/docker/extending-configuration.md#extending-docker-configuration).
 
 ### Full Docker Minio / Rundeck example
 
@@ -326,6 +326,6 @@ Full Docker example:
 
 ## Resources
 
-* [S3/Minio Log Storage configuration](/administration/cluster/logstore/s3.html#s3-log-storage-plugin) (Rundeck documentation).
+* [S3/Minio Log Storage configuration](/administration/cluster/logstore/s3.md#s3-log-storage-plugin) (Rundeck documentation).
 * [S3 Log Storage Plugin GitHub space](https://github.com/rundeck-plugins/rundeck-s3-log-plugin).
-* [Extending Rundeck Docker Image](/administration/configuration/docker/extending-configuration.html#extending-configuration) (Rundeck Documentation).
+* [Extending Rundeck Docker Image](/administration/configuration/docker/extending-configuration.md#extending-configuration) (Rundeck Documentation).

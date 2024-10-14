@@ -1,4 +1,4 @@
-# Project Schedules (Enterprise)
+# Project Schedules (Commercial)
 
 ::: enterprise
 :::

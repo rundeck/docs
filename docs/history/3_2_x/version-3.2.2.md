@@ -3,7 +3,7 @@
 Name: <span style="color: brown"><span class="glyphicon glyphicon-leaf"></span> "nacho brown leaf"</span>
 
 ## Upgrading
-See [Upgrading to Rundeck 3.2](/upgrading/upgrading-to-rundeck-3.2.html).
+See [Upgrading to Rundeck 3.2](/upgrading/upgrading-to-rundeck-3.2.md).
 
 
 ## Issues

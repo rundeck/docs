@@ -5,7 +5,7 @@ You may need to restrict access to plugins for certain projects.
 
 Only enabled plugins are visible to job writers in the Job Edit page.
 
-## Graphical Interface (Enterprise)
+## Graphical Interface (Commercial)
 
 The Plugin Control page lets you enable and disable specific plugins.
 

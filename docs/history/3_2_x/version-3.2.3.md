@@ -3,7 +3,7 @@
 Name: <span style="color: burlywood"><span class="glyphicon glyphicon-music"></span> "nacho burlywood music"</span>
 
 ## Upgrading
-See [Upgrading to Rundeck 3.2](/upgrading/upgrading-to-rundeck-3.2.html).
+See [Upgrading to Rundeck 3.2](/upgrading/upgrading-to-rundeck-3.2.md).
 
 ## Issues
 

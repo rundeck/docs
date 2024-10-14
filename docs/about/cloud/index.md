@@ -35,13 +35,13 @@ The Opsadmin and FullAdmin roles are not available in Runbook Automation, and a 
 As of March 2023, a new Runner architecture (a.k.a. distributedAutomation feature) is available for Runbook Automation customers. 
 1. The new architecture simplifies how Runners are used for automating remote environments. 
 1. With the new architecture, there is a comprehensive list of plugins available to be executed with the Runners: [Remote plugins on Runners](/administration/runner/runner-plugins/runner-plugins.md)
-1. The new architecture is off by default so please [review the updated docs](/administration/runner/) on how to enable and use the new features. The documents also cover how to convert to the new architecture from the current default architecture for Runners.
+1. The new architecture is off by default so please [review the updated docs](/administration/runner/index.md) on how to enable and use the new features. The documents also cover how to convert to the new architecture from the current default architecture for Runners.
 
 In the current default architecture plugin job steps generally execute in Runbook Automation. However, job steps that implement local NodeExecutor or FileCopier are delegated to execute on the Runner automatically. If a Runner is not configured these "local" steps will fail. Runners that match the node filter specified in the Runner configuration will assume the role of the local node. 
 With the new architecture we have changed this behavior and now Runners a explicitly selected in the job definition, where Remote plugins are packaged with the Runner and can execute withing the private network where they are deployed. Additionally, there is a Local Runner that represents the Runbook Automation account instance, where plugins other than the [Remote plugins on Runners](/administration/runner/runner-plugins/runner-plugins.md) can execute. If the Local Runner is selected for a job containing a plugin that is listed on the remote list above, a runtime error will be raised: "The following plugins cannot be run in the Local Runner: `<remote plugin>`"
 
 #### Key Storage Access
-Runbook Automation can integrate with both SaaS and self-hosted secrets-management providers.  For self-hosted secrets management providers, use [Key Storage through the Enterprise Runner](/manual/key-storage/enterprise-runner-key-storage.html).
+Runbook Automation can integrate with both SaaS and self-hosted secrets-management providers.  For self-hosted secrets management providers, use [Key Storage through the Enterprise Runner](/manual/key-storage/enterprise-runner-key-storage.md).
 
 #### Runner administration
 [Read the Runner docs](/administration/runner/index.md) about how to install, configure and manage the Runner.

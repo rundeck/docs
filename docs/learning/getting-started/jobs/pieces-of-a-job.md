@@ -25,21 +25,21 @@ Options are a central part of any workflow. Options are variables that can be ei
 Users supply options by typing in a value or selecting from a menu of choices. A validation pattern ensures input complies with the option requirement. Once selected, the value chosen for the option is available to scripts and commands called by the Job.<br>
 
 ### Workflow Control Steps
-Before getting to the actual steps, there are options that control what should happen if a step fails. There are also options for [workflow strategy](/manual/job-workflows.md#workflow-control-settings) that can change the overall approach to steps and order they may be executed.<br>
+Before getting to the actual steps, there are options that control what should happen if a step fails. There are also options for [workflow strategy](/manual/jobs/job-workflows.md#workflow-control-settings) that can change the overall approach to steps and order they may be executed.<br>
 
 ### Global Log Filters and Job Step Log Filters
-A [log filter](/manual/log-filters/) processes a workflow step's output, which may be transformed, given metadata for use by additional filters or renderers, or otherwise modified.  At this point in the job definition, it is possible to add Global Log filters which process the whole job output. Later in the job definition, it’s possible to add Log Filter on individual job steps that would process only the step output.  In either case (global or per job step), multiple log filters can be applied to the same sequence.<br>
+A [log filter](/manual/log-filters/index.md) processes a workflow step's output, which may be transformed, given metadata for use by additional filters or renderers, or otherwise modified.  At this point in the job definition, it is possible to add Global Log filters which process the whole job output. Later in the job definition, it’s possible to add Log Filter on individual job steps that would process only the step output.  In either case (global or per job step), multiple log filters can be applied to the same sequence.<br>
 
 ### Steps
-A [step](/manual/job-workflows.md#workflow-steps) is the minimal Rundeck project element that does an action like a command, a script, an HTTP call, etc.  A job might have just a single job step but usually, there will be multiple steps.<br>
+A [step](/manual/jobs/job-workflows.md#workflow-steps) is the minimal Rundeck project element that does an action like a command, a script, an HTTP call, etc.  A job might have just a single job step but usually, there will be multiple steps.<br>
 
 ### Workflow Steps vs Node Steps
 When you create a job and add steps, you will see two different types of steps, Node Steps and Workflow Steps.<br>
 ![](/assets/img/jobpieces3-nodevsworkflow.png)<br>
- * [Node steps](/manual/job-plugins.md#node-steps) are designed to be dispatched to one or more nodes based on a filter defined in the Nodes section. An example of a node step is a single command or an inline script to be executed on each targeted node.<br>
- * [Workflow steps](/manual/job-plugins.md#workflow-steps) don't operate in a node context. Instead, these steps run on the local Rundeck server and run only once in a workflow. For example, the "Refresh Project Nodes" workflow step refreshes the Rundeck node cache in case of any change.<br>
+ * [Node steps](/manual/jobs/job-plugins/index.md#node-steps) are designed to be dispatched to one or more nodes based on a filter defined in the Nodes section. An example of a node step is a single command or an inline script to be executed on each targeted node.<br>
+ * [Workflow steps](/manual/jobs/job-plugins/index.md#workflow-steps) don't operate in a node context. Instead, these steps run on the local Rundeck server and run only once in a workflow. For example, the "Refresh Project Nodes" workflow step refreshes the Rundeck node cache in case of any change.<br>
  
-If there is a mix of node and workflow steps (which is common) the steps will be executed in order (based on the [workflow strategy](/manual/job-workflows.md#workflow-control-settings)). Node steps may be executed several times, once per node, while the workflow steps will only run once.<br>
+If there is a mix of node and workflow steps (which is common) the steps will be executed in order (based on the [workflow strategy](/manual/jobs/job-workflows.md#workflow-control-settings)). Node steps may be executed several times, once per node, while the workflow steps will only run once.<br>
 :::tip
 If you have an idea of what step you are looking for, you can type text in the search field to narrow the list of steps you’ll see.
 :::
@@ -69,7 +69,7 @@ This box will display all nodes that match the node filter which helps to confir
 No by default, setting this to yes would allow users to change the node filter at run time if running the job directly.  Users would be limited to nodes they have access to via ACL but it is usually simplest if the filter is not editable.<br>
 
 ### Other node Options
-There are many other options below the main node filter but most are not used often.  Details on each are available in the [creating jobs page](/manual/creating-jobs.md#creating-a-job).<br>
+There are many other options below the main node filter but most are not used often.  Details on each are available in the [creating jobs page](/manual/jobs/creating-jobs.md#creating-a-job).<br>
 
 ## Schedule
 ![](/assets/img/jobpieces5-5-schedule.png)<br>

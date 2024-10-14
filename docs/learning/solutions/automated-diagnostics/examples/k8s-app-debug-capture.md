@@ -34,7 +34,7 @@ This section outlines how to create a sample Kubernetes (EKS) cluster that can b
 
    `aws configure`
 
-   If working locally, provide an AWS Profile Access Key and Secret Key - otherwise it is recommended to use [IAM Roles](/manual/plugins/aws-plugins-overview.html#option-1-ec2-iam-role).
+   If working locally, provide an AWS Profile Access Key and Secret Key - otherwise it is recommended to use [IAM Roles](/manual/plugins/aws-plugins-overview.md#option-1-ec2-iam-role).
 
 #### 2. EKSCTL Configuration
 

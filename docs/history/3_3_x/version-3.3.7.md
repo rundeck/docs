@@ -9,7 +9,7 @@ Name: <span style="color: salmon"><span class="glyphicon glyphicon-lamp"></span>
 
 ### Webhooks: Enhanced Debugging Visibility
 
-A new [Webhook Debug](/manual/webhooks/advanced-run-job.html#debugging) screen allows admins to review results from recently received webhook requests for setup and troubleshooting.  A visual rules evaluation screen highlights which conditions were met or missed.
+A new [Webhook Debug](/manual/webhooks/advanced-run-job.md#debugging) screen allows admins to review results from recently received webhook requests for setup and troubleshooting.  A visual rules evaluation screen highlights which conditions were met or missed.
 
 ![](/assets/img/wh-debug-batch-sample.png)
 
@@ -19,7 +19,7 @@ New Workflows steps allow DataDog users to create / update Incidents and add Tas
 
 ### Config Refresh
 
-You can make changes in the rundeck-config.properties file and then get Rundeck to reload the config without having to restart. [Check out details here.](/administration/configuration/config-file-reference.html#live-configuration-refreshing-enterprise)
+You can make changes in the rundeck-config.properties file and then get Rundeck to reload the config without having to restart. [Check out details here.](/administration/configuration/config-file-reference.md#live-configuration-refreshing-enterprise)
 
 ### Additional Improvements
 

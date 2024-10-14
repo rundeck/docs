@@ -146,5 +146,5 @@ This option can be disabled using the following flag:
 ```
 
 Set the value to `false` to disable the download/view option. By default, the attribute is set `true`.
-This attribute can be set using the System Configuration (Enterprise) or adding the configuration in `rundeck-config.properties`
+This attribute can be set using the System Configuration (Commercial) or adding the configuration in `rundeck-config.properties`
 

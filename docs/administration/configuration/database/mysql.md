@@ -58,6 +58,7 @@ Test access (if it's from localhost) by running:
 
 Verify the "rundeck" database is present using:
 
+```sql
     mysql> show databases;
     +--------------------+
     | Database           |
@@ -66,6 +67,7 @@ Verify the "rundeck" database is present using:
     | rundeck            |
     +--------------------+
     2 rows in set (0.00 sec)
+```
 
 ## Configuring Rundeck
 

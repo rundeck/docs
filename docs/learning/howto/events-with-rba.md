@@ -15,7 +15,7 @@ The following requirements are necessary to follow this guide:
 ## Runbook Automation Configuration
 First, create a Runbook Automation job and webhook to be called by PagerDuty in case of an incident creation.  
 1. Create a new Project.  
-2. Create a Job. This job takes the current hostname and stores this value in a data value. Learn more about passing data between steps [here](/learning/howto/passing-variables.html#passing-data-between-steps). Check the following job definition example:  
+2. Create a Job. This job takes the current hostname and stores this value in a data value. Learn more about passing data between steps [here](/learning/howto/passing-variables.md#passing-data-between-steps). Check the following job definition example:  
 
 ```
 - defaultTab: nodes
@@ -142,4 +142,4 @@ Check the Runbook Automation Activity to validate that the job was triggered by 
 [PagerDuty Basics.](https://support.pagerduty.com/docs/introduction)
 [Runbook Automation Terminology.](/learning/#essential-concepts)
 [PagerDuty Event Orchestration.](https://support.pagerduty.com/docs/event-orchestration)
-[Runbook Automation Webhooks.](/manual/webhooks.html#webhooks)
+[Runbook Automation Webhooks.](/manual/webhooks.md#webhooks)

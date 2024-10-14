@@ -32,7 +32,7 @@ Click "Edit" to edit the values.
 
 ![Edit profile](/assets/img/user-edit-profile.png)
 
-The email address can be referenced as a [context variable](/manual/job-workflows.md#context-variables)
+The email address can be referenced as a [context variable](/manual/jobs/job-workflows.md#context-variables)
 from Job notifications as `${job.user.email}`.
 
 The email address and name will also be used by SCM plugins for commit identification.  (See: [Git Plugin - Committer Configuration](/manual/projects/scm/git.md#committer-configuration)).
@@ -41,7 +41,7 @@ The email address and name will also be used by SCM plugins for commit identific
 
 The "Groups" section lists the user groups (aka Roles) that are granted to the user. This are used for checking ACL policies for allowed actions in Rundeck.  User Groups are provided by the authentication system, such as LDAP or Active Directory.
 
-For information on configuring Authentication see [Administration Guide - Authenticating Users](/administration/security/authentication.html#authenticating-users).
+For information on configuring Authentication see [Administration Guide - Authenticating Users](/administration/security/authentication.md#authenticating-users).
 
 ### User API Tokens
 

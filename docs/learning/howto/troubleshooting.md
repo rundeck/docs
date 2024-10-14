@@ -44,7 +44,7 @@ Location:
 * For RPM/DEB based installations
     In the `/var/log/rundeck` directory
 * For WAR-based installations
-    In the `$RDECK_BASE/var/log` path (the service needs to be launched using the `$RDECK_BASE/sbin/rundeckd` script, the process is described[ here](/administration/maintenance/startup.html#launcher)).	
+    In the `$RDECK_BASE/var/log` path (the service needs to be launched using the `$RDECK_BASE/sbin/rundeckd` script, the process is described[ here](/administration/maintenance/startup.md#launcher)).	
 * For Windows-based instances
     Defined on the launch `.bat `script.
 * For docker containers
@@ -98,7 +98,7 @@ It is also possible for code to throw an Exception without an explicit throw sta
 * There are some other examples in the [Java Language Specification](https://docs.oracle.com/javase/tutorial/essential/exceptions/runtime.html), so it’s important to be aware that Exceptions can arise without being explicitly thrown.
 
 ### Other relevant logs
-There are [other logs](/learning/howto/workinglogs.html#other-rundeck-logs) to look for if something gets wrong in Rundeck, most relevant are:
+There are [other logs](/learning/howto/workinglogs.md#other-rundeck-logs) to look for if something gets wrong in Rundeck, most relevant are:
 
 `rundeck.log`  
 Contains all general applications messages, like warnings and errors.
@@ -184,13 +184,13 @@ By gaining expertise in these optimization techniques and learning how to apply 
 ### File Descriptors
 A File Descriptor is a unique identifier or reference to an open file within a computer operating system. In most operating systems, including the different Linux “flavors”, file descriptors are used to access various types of input and output (I/O) resources such as files, sockets, pipes, and devices. When a file is opened, the operating system assigns a file descriptor to it, which is used to interact with and perform operations on the file.
 
-If your Rundeck instance attempts to exceed the limit, you will see an error like the one shown below in your [service.log](/administration/maintenance/logs.html) file.  
+If your Rundeck instance attempts to exceed the limit, you will see an error like the one shown below in your [service.log](/administration/maintenance/logs.md) file.  
 
 ```
 Too many open files
 ```
 
-To solve it, follow [this documentation entry](/administration/maintenance/tuning-rundeck.html#file-descriptors).
+To solve it, follow [this documentation entry](/administration/maintenance/tuning-rundeck.md#file-descriptors).
 
 ### Java Heap Size
 In Java, the heap is a region of memory that is used for dynamic memory allocation. The Java Heap is specifically allocated for objects created by Java programs during runtime. The Java Heap size refers to the total amount of memory allocated to the Java Virtual Machine (JVM) for the heap.
@@ -205,7 +205,7 @@ By adjusting these options on the Rundeck launch script, you can control the ini
 
 It is important to strike a balance by setting an appropriate heap size based on factors such as the size and complexity of the application, expected workload, and available system resources.
 
-Take a look at the official documentation-related [entry](/administration/maintenance/tuning-rundeck.html#java-heap-size).
+Take a look at the official documentation-related [entry](/administration/maintenance/tuning-rundeck.md#java-heap-size).
 
 ### Quartz job `threadCount`
 In Quartz (a crucial Rundeck component), the `threadCount` refers to the number of worker threads that are available for executing jobs and triggers within the scheduler. Each thread in Quartz is responsible for executing a job or trigger at the specified time or based on the configured schedule.
@@ -214,7 +214,7 @@ The value of `threadCount` indicates the maximum number of simultaneous job exec
 
 The `threadCount` configuration is crucial for controlling the concurrency and throughput of your Quartz scheduler. It allows you to control how many jobs can be executed concurrently and ensures that the scheduler can handle the workload efficiently. By adjusting the `threadCount` based on your application's requirements and the available system resources, you can optimize the job execution and prevent overloading the system.
 
-If your workload needs more than the default concurrent threads (10) follow [this doc entry](/administration/maintenance/tuning-rundeck.html#quartz-job-threadcount) to configure Rundeck properly.
+If your workload needs more than the default concurrent threads (10) follow [this doc entry](/administration/maintenance/tuning-rundeck.md#quartz-job-threadcount) to configure Rundeck properly.
 
 ## Monitoring Tools
 Java monitoring tools play a vital role in ensuring the smooth operation and optimal performance of Java applications. These tools provide valuable insights into the runtime behavior, resource utilization, and potential bottlenecks within the application. 

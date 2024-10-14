@@ -5,7 +5,7 @@ Release Date: March 22, 2022
 
 - [Download Rundeck](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
-- [Upgrade instructions](/upgrading/)
+- [Upgrade instructions](/upgrading/index.md)
 
 # Rundeck 4.0 Release Notes
 
@@ -21,14 +21,14 @@ With the introduction of version 4.0 the Rundeck Enterprise version will be rena
 
 ## Enterprise Runner
 
-With version 4.0 the [Enterprise Runner](/administration/runner/) will be Generally Available. The Enterprise Runner is built to meet the latest zero-trust security models. The Runner is deployed behind the firewall where it securely connects to nodes and executes automation tasks within the network zone. It calls back to the cluster endpoint via HTTPS to fetch the task list. This deployment model eliminates the need for SSH tunnels between zones.
+With version 4.0 the [Enterprise Runner](/administration/runner/index.md) will be Generally Available. The Enterprise Runner is built to meet the latest zero-trust security models. The Runner is deployed behind the firewall where it securely connects to nodes and executes automation tasks within the network zone. It calls back to the cluster endpoint via HTTPS to fetch the task list. This deployment model eliminates the need for SSH tunnels between zones.
 
 ## Enhanced Security Features
 
 A variety of new features will help enhance the security of your Automation solution.
 
 * [User Class Management](/manual/user-management/user-classes.md) is available to help manage your licensed users and what they are allowed to do.
-* [Enhanced Webhook Security](/manual/webhooks.html#webhook-http-authorization-string) with Authorization strings that can be regenerated and provide another layer of security.
+* [Enhanced Webhook Security](/manual/webhooks.md#webhook-http-authorization-string) with Authorization strings that can be regenerated and provide another layer of security.
 * [Password Complexity ](/administration/security/password-security.md)can be enabled for [User Manager](/manual/user-management/user-mgmt.md) to encourage local users to use more secure passwords.  Complexity can be set by length and guess-ability.
 * [Password Reset by Email](/manual/user-management/password-reset.md) is now available for local users from [User Manager](/manual/user-management/user-mgmt.md) systems with email notifications configured.  Instead of setting a user’s password this will send them a 1 time link to set their own password.
 * [Failed Login Rate Limiting](/administration/security/ratelimiting.md) will help prevent brute force attempts by locking accounts after a configurable number of failed logins.
@@ -37,7 +37,7 @@ A variety of new features will help enhance the security of your Automation solu
 
 * New! [AWS Systems Manager](/manual/projects/node-execution/aws-ssm.md) plugins mean Rundeck does not need direct connectivity to remote AWS infrastructure. Rather, Rundeck sends commands to AWS Systems Manager, and Systems Manager dispatches the commands to remote nodes via the Systems Manager agents.
 * [Azure Active Directory Single SignOn](/administration/security/sso/azure-sso.md) is now documented and built into Rundeck Enterprise.  
-* [PagerDuty User Management Job Steps](/manual/workflow-steps/pagerduty.md) allow adding/removing and getting lists of your PagerDuty user accounts.
+* [PagerDuty User Management Job Steps](/manual/jobs/job-plugins/workflow-steps/pagerduty.md) allow adding/removing and getting lists of your PagerDuty user accounts.
 * [Thycotic Key Storage Plugin](/manual/key-storage/storage-plugins/thycotic-storage.md) can now use all password types.
 
 

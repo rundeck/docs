@@ -28,8 +28,8 @@ An option represents a named Job parameter (required or optional) that will be o
 ## Job Steps
 A Job Step is an individual unit of work that a Job might do. A job can have multiple, ordered steps that each do a different unit of work. 
 There are two types of steps available:
- - [Node steps](/manual/job-plugins.html#node-steps) are designed to be dispatched to one or more nodes, based on a filter defined in the Nodes section. An example of a node step is a single command or an inline script to be executed on each targeted node.
- - [Workflow steps](/manual/job-plugins.html#workflow-steps) don't operate in a node context. Instead, these steps run on the local Rundeck server and run only once in a workflow. For example, the "Refresh Project Nodes" workflow step refreshes the Rundeck node cache in case of any change.
+ - [Node steps](/manual/job-plugins.md#node-steps) are designed to be dispatched to one or more nodes, based on a filter defined in the Nodes section. An example of a node step is a single command or an inline script to be executed on each targeted node.
+ - [Workflow steps](/manual/job-plugins.md#workflow-steps) don't operate in a node context. Instead, these steps run on the local Rundeck server and run only once in a workflow. For example, the "Refresh Project Nodes" workflow step refreshes the Rundeck node cache in case of any change.
 
 ## Jobs
 Job definitions are files in either the XML or YAML file format that contain the job code.
@@ -57,7 +57,7 @@ Rundeck is built over a flexible platform architecture.  Extending Rundeck funct
 
 The Runbook Automation version includes built-in plugins to further enhance functionality for [Scheduling](/manual/schedules/project-schedules.md) job executions, providing [Guided Tours](/manual/tour-manager.md), incorporating [Health Checks](/manual/healthchecks.md), and much more.
 
-See [Job Plugins](/manual/job-plugins.md) and [Plugin Developer Guide](/developer/index.md) and [Rundeck Plugins](/manual/plugins/index.md) for more information.
+See [Job Plugins](/manual/jobs/job-plugins/index.md) and [Plugin Developer Guide](/developer/index.md) and [Rundeck Plugins](/manual/plugins/index.md) for more information.
 
 ## Projects
 A project is a place within Rundeck to separate management activity. All Rundeck activities (such as jobs or commands) occur within the context of a project. Multiple projects can be maintained on the same Rundeck server. 

@@ -4,7 +4,7 @@
 
 A _Node_ is a resource that is either a physical or virtual instance of a network accessible host. Nodes have a few basic attributes but a Node's attributes can be extended to include arbitrary named key/value pairs. Each node has a uniquely identifying name. In addition to `name`, some pieces of metadata are required (like `hostname` and `username`) and some are optional. Attributes typically describe the properties of a node or reflect the state of the node. One of a Node's built in attributes is called "tags" which is a list of classifications or categories about that Node.
 
-To add nodes to your Rundeck instances, see [Configure - Resource Model Sources Configuration](/manual/projects/resource-model-sources/)
+To add nodes to your Rundeck instances, see [Configure - Resource Model Sources Configuration](/manual/projects/resource-model-sources/index.md)
 
 ## Nodes tab overview
 

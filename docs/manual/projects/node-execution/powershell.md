@@ -5,7 +5,7 @@ Original:
 http://support.rundeck.com/customer/en/portal/articles/1939728-powershell-plugins)
 --->
 
-These plugins are only applicable to Runbook Automation deployments on Windows Servers.
+These plugins will only execute through Runbook Automation installed on Windows or an Enterprise Runner installed on Windows.
 
 There are two plugins:
 

@@ -1,4 +1,4 @@
-# Sensu Health Check (Enterprise)
+# Sensu Health Check (Commercial)
 
 :::enterprise
 :::

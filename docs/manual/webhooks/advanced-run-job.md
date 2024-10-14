@@ -1,4 +1,4 @@
-# Advanced Run Job Webhook (Enterprise)
+# Advanced Run Job Webhook (Commercial)
 ::: enterprise
 :::
 
@@ -30,7 +30,7 @@ the event and run each item through the action processing.
 The batch key `$.messages` could be used to process each item
 individually.
 
-**Note:** Enabling Batch Key executes all items concurrently. Therefore, the job associated with the Webhook must have [Multiple Executions](/manual/creating-jobs.md#multiple-executions) enabled and a value large enough to support the number of items extracted from the list.
+**Note:** Enabling Batch Key executes all items concurrently. Therefore, the job associated with the Webhook must have [Multiple Executions](/manual/jobs/creating-jobs.md#multiple-executions) enabled and a value large enough to support the number of items extracted from the list.
 
 :::tip
 The batch key supports JsonPath deep scanning. A key

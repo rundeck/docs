@@ -20,7 +20,7 @@ This guide will show various examples of how to share data from one step to anot
 ### Type of Variables
 When a Job step is executed, it has a set of *context variables* that you can access in the Job step. There are several sets of context variables, including: the Job context `job`, the Node context `node`, the Option context `option`, and the Step Data Context `data`.
 
-Click here for more documentation on: [Context Variables](/manual/job-workflows.md#context-variables)
+Click here for more documentation on: [Context Variables](/manual/jobs/job-workflows.md#context-variables)
 
 ### Other Terminology
 
@@ -134,6 +134,6 @@ If your job is run against a single node it is also possible to use the `*` char
 Using other Context variables follows the same format.
 
 To see what variables might be available check out the list here:
-[Context Variables Documentation](/manual/job-workflows.html#context-variables)
+[Context Variables Documentation](/manual/job-workflows.md#context-variables)
 
 To check variable values during your workflow use the Workflow Step titled **Log Data Step**.

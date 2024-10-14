@@ -13,9 +13,9 @@ The first place to see anything related to Rundeck is the `service.log` file. Th
 #### The `service.log` file is located:
 
 * In the `/var/log/rundeck` path on RPM/DEB installations
-* In WAR-based installations, the log file is located at the `$RDECK_BASE/var/log` path (the service needs to be launched using the `$RDECK_BASE/sbin/rundeckd` script, the process is described [here](/administration/maintenance/startup.html#launcher).<br>
+* In WAR-based installations, the log file is located at the `$RDECK_BASE/var/log` path (the service needs to be launched using the `$RDECK_BASE/sbin/rundeckd` script, the process is described [here](/administration/maintenance/startup.md#launcher).<br>
 
-For Windows-based instances, the installation process [covers using](/administration/install/windows.html#configuring-rundeck) the standard stdout output to the `service.log` file.<br>
+For Windows-based instances, the installation process [covers using](/administration/install/windows.md#configuring-rundeck) the standard stdout output to the `service.log` file.<br>
 
 ## Service.log content on Docker container
 

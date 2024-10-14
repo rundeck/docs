@@ -25,7 +25,7 @@ We have found some issues with Log Filters and passing data to the Enterprise Ru
 :::
 
 ::: warning Upgrade Steps
-Be sure to follow the [Upgrade instructions](/upgrading/) when moving to version 5.0 or higher.  There are new minimum Java versions and other important information.
+Be sure to follow the [Upgrade instructions](/upgrading/index.md) when moving to version 5.0 or higher.  There are new minimum Java versions and other important information.
 :::
 
 ## Overview

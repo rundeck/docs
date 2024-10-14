@@ -8,7 +8,7 @@ export default [
     text: 'Projects'
   },
   {
-    link: '/manual/jobs.md',
+    link: '/manual/jobs/',
     text: 'Jobs'
   },
   {

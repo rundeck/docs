@@ -54,7 +54,7 @@ _NOTE: Runbook Automation was renamed from Process Automation and even farther b
 - Use any scripting language
 
 Want to learn more or give it a test run?
-[Check out the Learning Page for a Welcome Tutorial](/learning/)
+[Check out the Learning Page for a Welcome Tutorial](/learning/index.md)
 
 Already itching to install it? Jump ahead to
 [Installing Rundeck](/administration/install/index.md).

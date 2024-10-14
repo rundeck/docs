@@ -15,7 +15,7 @@ Release Date: February 13, 2023
 
 - [Download the Releases](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
-- [Upgrade instructions](/upgrading/)
+- [Upgrade instructions](/upgrading/index.md)
 - [Watch the Live Stream Release Recap](https://youtu.be/stDTPTNZJNM)
 
 <VidStack src="youtube/stDTPTNZJNM"/>
@@ -34,7 +34,7 @@ View our Twitch stream review of this release live on February 21 at 10 AM Pacif
 
 ### Highlights
 
-**Enhanced AWS Plugin Suite Configuration**: We have simplified how users can authenticate and set up the integration with their AWS account by utilizing the new configuration mechanism [launched in 4.9.0](/history/4_x/version-4.9.0.md). Previously, users had to configure their AWS credentials in multiple places within the product - such as for the [AWS Job Steps](/manual/job-plugins.md), the [EC2 Node Source](/manual/projects/resource-model-sources/aws.md), [SSM Node Executor](/manual/projects/node-execution/aws-ssm.md), and [ECS Node Executor](/manual/projects/node-execution/aws-ecs.md). Now, users can define their AWS credentials in a single place - either at a Project or System level - and use all of the AWS plugins instantly.
+**Enhanced AWS Plugin Suite Configuration**: We have simplified how users can authenticate and set up the integration with their AWS account by utilizing the new configuration mechanism [launched in 4.9.0](/history/4_x/version-4.9.0.md). Previously, users had to configure their AWS credentials in multiple places within the product - such as for the [AWS Job Steps](/manual/jobs/job-plugins/index.md), the [EC2 Node Source](/manual/projects/resource-model-sources/aws.md), [SSM Node Executor](/manual/projects/node-execution/aws-ssm.md), and [ECS Node Executor](/manual/projects/node-execution/aws-ecs.md). Now, users can define their AWS credentials in a single place - either at a Project or System level - and use all of the AWS plugins instantly.
 
 This new enhanced configuration method also removes the need to define AWS credentials in the project-properties configuration file. Users can access an easy-to-use graphical user interface for defining the requisite properties for the integration, which simplifies the setup for new users and configuring new Projects. Click [here](/manual/plugins/aws-plugins-overview) to see the full documentation.
 

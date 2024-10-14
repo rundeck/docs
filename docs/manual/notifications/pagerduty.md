@@ -1,4 +1,4 @@
-# PagerDuty Notifications Plugins (Enterprise)
+# PagerDuty Notifications Plugins (Commercial)
 
 PagerDuty notification plugins can be added to jobs within Rundeck so alerts go to PagerDuty. When one of the following conditions is met, it will create an event in PagerDuty:
 

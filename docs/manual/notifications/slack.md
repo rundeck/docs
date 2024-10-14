@@ -1,4 +1,4 @@
-# Slack Notification Plugin (Enterprise)
+# Slack Notification Plugin (Commercial)
 
 The slack notification plugin offers Enterprise users the ability to send execution notifications to a certain slack channel given a certain event. When one of the following conditions is met, a notification will be sent to slack, depending which you chose:
 

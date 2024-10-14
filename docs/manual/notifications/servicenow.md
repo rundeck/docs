@@ -6,7 +6,7 @@ Original:
 http://support.rundeck.com/customer/en/portal/articles/2915300-servicenow-plugins)
 --->
 
-To configure authentication with ServiceNow for these notification plugins, follow the steps outlined in [ServiceNow Plugins Overview](/manual/plugins/servicenow-plugins-overview.html)
+To configure authentication with ServiceNow for these notification plugins, follow the steps outlined in [ServiceNow Plugins Overview](/manual/plugins/servicenow-plugins-overview.md)
  to set credentials at either a System or Project level.
 
 ## ServiceNow / Incident / Comment

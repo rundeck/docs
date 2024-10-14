@@ -4,7 +4,7 @@ Runbook Automation offers support for released versions up to one year from rele
 
 Updated versions can be downloaded from [https://download.rundeck.com](https://download.rundeck.com)
 
-Upgrade instructions [can be found here](/upgrading/).
+Upgrade instructions [can be found here](/upgrading/index.md).
 
 
 | Release Version                          | Release Date         | Enterprise Support Status |

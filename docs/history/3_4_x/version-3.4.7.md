@@ -5,7 +5,7 @@ Release Date: December, 10 2021
 
 - [Download Rundeck](https://download.rundeck.com/)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
-- [Upgrade instructions](/upgrading/)
+- [Upgrade instructions](/upgrading/index.md)
 
 :::danger Important Security Update
  The security patches in this release has been superseded by the [3.4.9 release](/history/3_4_x/version-3.4.9.md).  Please upgrade to that version.

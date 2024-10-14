@@ -9,7 +9,7 @@ One significant update in this release is an update to the AWS SDK version used 
 
 ## Upgrading
 
-See [Upgrading to Rundeck 3.2](/upgrading/upgrading-to-rundeck-3.2.html).
+See [Upgrading to Rundeck 3.2](/upgrading/upgrading-to-rundeck-3.2.md).
 
 ## Issues
 

@@ -5,7 +5,7 @@
 Configuration files for the project (previously stored on-disk) are stored in the database. (Since Rundeck 3.4).
 
 This includes the project configuration properties (aka `project.properties`), `readme.md` and `motd.md`. Additionally, some ACLs may be stored this way 
-if the Enterprise ACL Storage feature is not used, or the ACL files cannot be used with it. (See [Rundeck 3.4 > Enterprise ACL Storage Layer (Enterprise)](/upgrading/upgrading-to-rundeck-3.4.md#enterprise-acl-storage-layer-enterprise))
+if the Enterprise ACL Storage feature is not used, or the ACL files cannot be used with it. (See [Rundeck 3.4 > Enterprise ACL Storage Layer (Commercial)](/upgrading/upgrading-to-rundeck-3.4.md#enterprise-acl-storage-layer-enterprise))
 
 This uses the Rundeck **Storage Facility** to store the file contents, which can be
 configured to use an Encryption plugin. See [Storage Facility - Using Encryption](/administration/configuration/storage-facility.md#using-encryption).

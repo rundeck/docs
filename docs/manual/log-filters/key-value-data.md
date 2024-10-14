@@ -6,7 +6,7 @@ The Key Value Data log filter can parse the output of a workflow step with a reg
 This plugin can only capture data values which are logged within a single line of log output.
 
 If you want to capture multiple lines of output, see 
-the [Multiline Regex Capture](/manual/log-filters/multi-line-regex.html#usage) plugin.
+the [Multiline Regex Capture](/manual/log-filters/multi-line-regex.md#usage) plugin.
 :::
 
 ## Usage
@@ -44,4 +44,4 @@ In later job steps, refer to `$data.EXIP` in commands, or `@data.EXIP@` in scrip
 
 ## See Also
 
-* [Multiline Regex Capture](/manual/log-filters/multi-line-regex.html#usage) which can capture multiple lines of log output into a data variable.
+* [Multiline Regex Capture](/manual/log-filters/multi-line-regex.md#usage) which can capture multiple lines of log output into a data variable.

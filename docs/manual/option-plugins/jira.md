@@ -1,4 +1,4 @@
-# Jira Dynamic Option Plugins (Enterprise)
+# Jira Dynamic Option Plugins (Commercial)
 
 The Jira Dynamic Option Plugins can provide dynamic lists as Option Inputs for your workflows.
 

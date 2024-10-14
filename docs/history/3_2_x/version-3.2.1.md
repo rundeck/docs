@@ -3,7 +3,7 @@
 Name: <span style="color: blue"><span class="glyphicon glyphicon-lamp"></span> "nacho blue lamp"</span>
 
 ## Upgrading
-See [Upgrading to Rundeck 3.2](/upgrading/upgrading-to-rundeck-3.2.html).
+See [Upgrading to Rundeck 3.2](/upgrading/upgrading-to-rundeck-3.2.md).
 
 ## Issues
 

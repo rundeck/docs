@@ -110,7 +110,7 @@ request to the Rundeck API.
 
 To obtain an API Token, you must first log in to the Rundeck GUI using a user account.
 Click on your username in the header of the page, and you will be shown your User Profile page.
-From this page you can [manage your API Tokens](/manual/10-user.html#user-api-tokens).
+From this page you can [manage your API Tokens](/manual/10-user.md#user-api-tokens).
 
 **Note**: You must have appropriate authorization to generate a token. See [API Token Authorization](/administration/security/authorization.md#api-token-authorization).
 
@@ -174,7 +174,7 @@ In v4.8+ the `JSESSIONID` cookie will change after the first request after authe
 
 :::
 
-### JWT Token Authentication (Enterprise)
+### JWT Token Authentication (Commercial)
 
 :::enterprise
 :::
@@ -187,7 +187,7 @@ To call the API authenticating with a JWT token, you must include it in the `Aut
     GET /api/{{ $apiMinVersion }}/projects HTTP/1.1
     Authorization: Bearer <jwt_token>
 
-In order to leverage dynamic tokens for API Authentication follow the [setup instructions for Enabling the OAuth Resource Server](/administration/security/sso.html#enabling-oauth-resource-server-and-jwt-token-authentication-support). 
+In order to leverage dynamic tokens for API Authentication follow the [setup instructions for Enabling the OAuth Resource Server](/administration/security/sso.md#enabling-oauth-resource-server-and-jwt-token-authentication-support). 
 
 
 ## Error Responses
@@ -2353,7 +2353,7 @@ List the scheduled Jobs with their schedule owned by the target cluster server.
 The same format as [Listing Jobs](#listing-jobs).
 
 
-### Set Active Mode for a Cluster Member (Enterprise)
+### Set Active Mode for a Cluster Member (Commercial)
 
 :::enterprise
 :::
@@ -2392,7 +2392,7 @@ URL Parameters:
 `uuid`
 :   The target cluster member UUID
 
-### Set Passive Mode for a Cluster Member (Enterprise)
+### Set Passive Mode for a Cluster Member (Commercial)
 
 :::enterprise
 :::
@@ -3476,7 +3476,7 @@ Request parameters:
 ]
 ```
 
-### Get Job Tags (Enterprise)
+### Get Job Tags (Commercial)
 
 ::: enterprise  
 :::
@@ -4405,7 +4405,7 @@ If the `[abort-state]` is "failed", then `[reason]` will be a textual descriptio
 ::: enterprise  
 :::
 
-Check whether the execution has Result Data created by a Job using the [Result Data feature](/manual/execution-lifecycle/result-data.html).
+Check whether the execution has Result Data created by a Job using the [Result Data feature](/manual/execution-lifecycle/result-data.md).
 
 **Request:**
 
@@ -4430,7 +4430,7 @@ Successful response:
 :::
 
 
-Retrieve the Result Data created by a Job using the [Result Data feature](/manual/execution-lifecycle/result-data.html) in JSON format.
+Retrieve the Result Data created by a Job using the [Result Data feature](/manual/execution-lifecycle/result-data.md) in JSON format.
 
 :::tip
 In a Rundeck Cluster, Result Data may not be locally available and must be retrieved by the server asynchronously before it can be returned.
@@ -5111,10 +5111,10 @@ Project archives may contain "components" which can be imported, beyond the base
 
 Components:
 
-* Project Tours (Enterprise). Name: `tours-manager`
-* Project Schedules (Enterprise). Name: `Schedule Definitions`
-* Project Calendars (Enterprise). Name: `calendars`
-* Node Wizard Nodes (Enterprise): Name: `node-wizard`
+* Project Tours (Commercial). Name: `tours-manager`
+* Project Schedules (Commercial). Name: `Schedule Definitions`
+* Project Calendars (Commercial). Name: `calendars`
+* Node Wizard Nodes (Commercial): Name: `node-wizard`
 * Webhooks, name: `webhooks`
 
 For example, to enable Webhook import, you could use `importWebhooks` and `whkRegenAuthTokens` params, but those are simply shortcuts for the following parameters:
@@ -5401,7 +5401,7 @@ See [Update an ACL Policy](#update-an-acl-policy) for request and response.
 
 See [Delete an ACL Policy](#delete-an-acl-policy)
 
-#### Query Project Job Tags (Enterprise)
+#### Query Project Job Tags (Commercial)
 
 ::: enterprise  
 :::
@@ -6501,7 +6501,7 @@ The default response is:
 ok
 ```
 
-## Calendars (Enterprise)
+## Calendars (Commercial)
 
 ::: enterprise  
 :::
@@ -6738,7 +6738,7 @@ Deletes a calendar at system level
     204 No Content
 
 
-## License (Enterprise)
+## License (Commercial)
 
 ### View License
 
@@ -8237,7 +8237,7 @@ Content-Type: `application/json`:
 
 (none)
 
-[ACLPOLICY]:../manual/document-format-reference/aclpolicy-v10.html
+[ACLPOLICY]:../manual/document-format-reference/aclpolicy-v10.md
 
 
 !!!include(api/api-index-links.md)!!!

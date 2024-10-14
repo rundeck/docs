@@ -10,7 +10,7 @@ This guide will show how to configure Rundeck behind NGINX and Apache httpd web 
 
 # Rundeck Default Configuration
 
-The first step is to install Rundeck, the process is described [here](/administration/install/), and make sure that the Rundeck service is running.
+The first step is to install Rundeck, the process is described [here](/administration/install/index.md), and make sure that the Rundeck service is running.
 
 By default Rundeck listens to the `4440` port on `localhost`. The main idea of the reverse proxy is that the webserver takes the default Rundeck port and redirects to the URL specified in the web server, in this example the main root domain name "localhost":
 

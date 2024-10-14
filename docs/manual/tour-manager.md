@@ -1,4 +1,4 @@
-# Guided Tour Manager (Enterprise)
+# Guided Tour Manager (Commercial)
 
 ::: enterprise
 :::

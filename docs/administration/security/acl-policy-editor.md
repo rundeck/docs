@@ -7,7 +7,7 @@ For basic instructions on how to get started with Rundeck ACL Policies, check ou
 
 <VidStack src="youtube/i859f1WG3Bo"/>
 
-For examples and use case specific implementations check out the [ACL Examples](/learning/howto/acls/) section of the How To articles.
+For examples and use case specific implementations check out the [ACL Examples](/learning/howto/acls/index.md) section of the How To articles.
 
 ## Access Control Pages
 
@@ -59,7 +59,7 @@ Choose "Edit" or "Create" to modify an ACL Policy.
 You can edit the YAML format for the ACL Policy directly. (In Runbook Automation, click the "Editor" tab to view the YAML editor.)
 
 ::: tip
-See the [Access Control Policy](/administration/security/authorization.md#access-control-policy-2) and [aclpolicy](/manual/document-format-reference/aclpolicy-v10.html) pages for more information.
+See the [Access Control Policy](/administration/security/authorization.md#access-control-policy-2) and [aclpolicy](/manual/document-format-reference/aclpolicy-v10.md) pages for more information.
 :::
 
 ![Edit Access Control Policy YAML](/assets/img/acl-editor-edit-system-yaml.png)
@@ -70,7 +70,7 @@ If your ACL Policy YAML fails validation checks, attempting to save it will disp
 
 ![Validation Error](/assets/img/acl-editor-yaml-validation-error.png)
 
-## Editing ACL Rules (Enterprise)
+## Editing ACL Rules (Commercial)
 
 In Runbook Automation, by default you will see the Rules editor which allows defining ACL Policy rules with a simpler wizard UI.
 
@@ -104,11 +104,11 @@ For
 
 ![System Resource Types](/assets/img/acl-editor-new-rule-system-resources.png)
 
-More information about System Context Resource types are in the [Access Control Policy > Application Scope Resources and Actions](/administration/security/authorization.html#application-scope-resources-and-actions) page.
+More information about System Context Resource types are in the [Access Control Policy > Application Scope Resources and Actions](/administration/security/authorization.md#application-scope-resources-and-actions) page.
 
 ![Project Resource Types](/assets/img/acl-editor-new-rule-project-resources.png)
 
-More information about Project Context Resource types are in the [Access Control Policy > Project Scope Resources and Actions](/administration/security/authorization.html#project-scope-resources-and-actions) page.
+More information about Project Context Resource types are in the [Access Control Policy > Project Scope Resources and Actions](/administration/security/authorization.md#project-scope-resources-and-actions) page.
 
 After choosing the Resource Type, some types will display a set of "Params" allowing you to specify which resource(s) of that type the rule applies to.
 
@@ -134,7 +134,7 @@ You will now see the rule in the Rules list:
 
 Finally, **Save** your ACL Policy.
 
-## Access Level Checks (Enterprise)
+## Access Level Checks (Commercial)
 
 In the Access Control Pages, you can click the "Access Levels" Tab to test Access Levels for users and groups.
 

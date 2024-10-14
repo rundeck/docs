@@ -631,7 +631,7 @@ To diagnose this, begin by checking two bits:
 2. Read the messages inside the `rundeck.audit.log` log file. The
    authorization facility generates fairly low level messages describing
    how the policy is matched to the user context.
-3. Use the [rd-acl](/manual/command-line-tools/rd-acl.html) tool to test and validate your policy files
+3. Use the [rd-acl](/manual/command-line-tools/rd-acl.md) tool to test and validate your policy files
 
 For each entry in the audit log, you'll see all decisions leading up to either a
 AUTHORIZED or a REJECTED message. It's not uncommon to see REJECTED
