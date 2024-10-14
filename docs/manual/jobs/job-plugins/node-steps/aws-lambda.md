@@ -7,7 +7,7 @@ AWS Lambda is a serverless, event-driven compute service that lets you run code 
 
 The following Lambda plugins are available for PagerDuty Runbook Automation:
 
-* [Execute Lambda Function (AWS / Lambda / Invoke)](#execute-lambda-function) - Executes an existing Lambda function.
+* [**Execute Lambda Function (AWS / Lambda / Invoke)**](#execute-lambda-function) - Executes an existing Lambda function.
 
 ### Authentication
 Follow the instructions outlined in the [AWS Plugins Overview](/manual/plugins/aws-plugins-overview.md) for Runbook Automation to authenticate with AWS.

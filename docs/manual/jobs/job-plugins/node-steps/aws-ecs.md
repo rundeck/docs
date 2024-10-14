@@ -7,7 +7,7 @@ Amazon ECS is a fully managed container orchestration service that makes it easy
 
 The following plugins are available for PagerDuty Runbook Automation:
 
-* [ECS Stop Task (AWS / ECS/ Stop / Task)](#ecs-stop-task)
+* [**ECS Stop Task (AWS / ECS/ Stop / Task)**](#ecs-stop-task)
 
 ### Authentication
 Follow the instructions outlined in the [AWS Plugins Overview](/manual/plugins/aws-plugins-overview.md) for Runbook Automation to authenticate with AWS.
