@@ -1,57 +1,26 @@
 ---
 
 title: "5.6.1 Release Notes"
-date: 2024-01-01
+date: 2024-10-14
 image: /images/chevron-logo-red-on-white.png
 feed:
  enable: true
- description: ""
+ description: "Fix to Critical bug related to scheduled jobs."
 
 ---
 
 # 5.6.1 Release Notes
 
 Name: <span style="color: sandybrown"><span class="glyphicon glyphicon-camera"></span> "Fansiban sandybrown camera"</span>
-Release Date: PUTADATEHERE
+Release Date: October 14th, 2024
 
 - Download the Releases: [Open Source](https://www.rundeck.com/community-downloads/5.6.1) | [Self-Hosted](https://www.rundeck.com/enterprise-downloads/5.6.1)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
-- [Upgrade instructions](/upgrading/)
-- [Catch us on Twitch for the Live Stream Release Video](https://www.twitch.tv/pagerduty)
+- [Upgrade instructions](/upgrading/index.md)
 
 ## Overview
 
-Check out the new features and enhancements for PagerDuty Runbook Automation commercial offerings and Rundeck Community included in this release.
-
-### Highlights
-
-- first highlight
-- second highlight
-
-## Runbook Automation Updates
-
-> Also includes all Open Source updates from below
-
-### Additional Updates
-
-
-
-
-## Rundeck Open Source Product Updates
-
-
-
-[Here is a link to the full list of public PRs](https://github.com/rundeck/rundeck/pulls?q=is%3Apr+milestone%3A5.6.1+is%3Aclosed)
-
-## Ansible Plugin Updates
-
-
-
-
-## Community Contributors
-
-Submit your own Pull Requests to get recognition here!
-
+This release fixes a critical issue where scheduled jobs are no longer executed after making unrelated edits to the job.  This can happen in verison 5.6.0 when the jobs is edited via API, job/project imports, SCM, or direct job editing.
 
 
 ## Staff Contributors

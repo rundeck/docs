@@ -21,6 +21,10 @@ Release Date: September 12, 2024
 
 <VidStack src="youtube/AVf0Pwafza0"/>
 
+::: caution
+This release contains a critical issue where scheduled jobs are no longer executed after making unrelated edits to the job.  This can happen when the jobs is edited via API, job/project imports, SCM, or direct job editing.  It is strongly recommended to use or upgrade to [version 5.6.1](version-5.6.1.md).
+:::
+
 ## Overview
 
 Our 5.6.0 release is focused on bug fixes, CVE remediation and testing.  We have also continued our efforts into the UI code to modernize, and standardize it to Vue. This will bring performance improvements and simplify building future enhancements.
