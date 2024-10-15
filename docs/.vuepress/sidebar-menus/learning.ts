@@ -227,17 +227,11 @@ export default [{
         },
         {
           text: 'Containers',
+          link: '/learning/solutions/containers/index.md',
           collapsible: true,
           children: [
-            {
-              text: 'Containers',
-              link: '/learning/solutions/containers/index.md',
-              collapsible: true,
-              children: [
-                { link: '/learning/solutions/containers/index.md', text: 'Solution Summary'},
-                { link: '/learning/solutions/containers/getting-started.md', text: 'Getting Started'}
-              ]
-            }
+            { link: '/learning/solutions/containers/index.md', text: 'Solution Summary'},
+            { link: '/learning/solutions/containers/getting-started.md', text: 'Getting Started'}
           ]
         }
       ]
