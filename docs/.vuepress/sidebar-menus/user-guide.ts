@@ -160,6 +160,7 @@ export default [{
                         {text: 'ServiceNow', link: '/manual/jobs/job-plugins/workflow-steps/servicenow', icon: '/assets/img/snow-icon.png'},
                         {text: 'Sumo Logic', link: '/manual/jobs/job-plugins/workflow-steps/sumo-logic', icon: '/assets/img/sumo-icon.png'},
                         {text: 'VMware', link: '/manual/jobs/job-plugins/workflow-steps/vmware', icon: '/assets/img/VMware-logo.png'},
+                        {text: 'WinRM', link: '/manual/jobs/job-plugins/workflow-steps/winrm-check', icon: '/assets/img/windows-logo.png'}
                         ]
                     }
                 ]
