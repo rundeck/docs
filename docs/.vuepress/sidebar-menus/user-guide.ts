@@ -107,6 +107,7 @@ export default [{
                         {text: 'Jira', link: '/manual/jobs/job-plugins/node-steps/jira', icon: '/assets/img/jira-icon.svg'},
                         {text: 'Local Command Step', link: '/manual/jobs/job-plugins/node-steps/builtin.md#local-command-step', icon: '/assets/img/command-icon.png'},
                         {text: 'Loop Script', link: '/manual/jobs/job-plugins/node-steps/loop-plugins',icon: '/assets/img/pd-icon.png'},
+                        {text: 'nixy', link: '/manual/jobs/job-plugins/node-steps/nixy', icon: '/assets/img/unix-icon.png'},
                         {text: 'Oracle Cloud', link: '/manual/jobs/job-plugins/node-steps/oracle', icon: '/assets/img/oracle-icon.png'},
                         {text: 'PS1 File Grep', link: '/manual/jobs/job-plugins/node-steps/ps1-file-grep.md', icon: '/assets/img/powershell-icon.png'},
                         {text: 'PS1 File Wait', link: '/manual/jobs/job-plugins/node-steps/ps1-file-wait.md', icon: '/assets/img/powershell-icon.png'},
