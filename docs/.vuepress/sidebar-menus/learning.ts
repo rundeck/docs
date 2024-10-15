@@ -178,11 +178,12 @@ export default [{
     },
     {
       text: 'Solutions',
+      link: '/learning/solutions/index.md',
       collapsible: true,
       children: [
         {
           text: 'Automated Diagnostics',
-          link: '/learning/solutions/automated-diagnostics/index',
+          link: '/learning/solutions/automated-diagnostics/index.md',
           collapsible: true,
           children: [
             { link: '/learning/solutions/automated-diagnostics/index.md', text: 'Solution Summary' },
@@ -220,8 +221,23 @@ export default [{
             { link: '/learning/solutions/automated-diagnostics/simplifying-diagnostics.md', text: 'Simplifying Diagnostics Output' },
             { link: '/learning/solutions/automated-diagnostics/automation-beyond-triage.md', text: 'Automation Beyond Triage' },
             { link: '/learning/solutions/automated-diagnostics/feedback-faq.md', text: 'Feedback & FAQ' }
-            //            {link: '/learning/solutions/auto-incident-kubernetes-logs.md', text: 'Example: Kubernetes Logs'},
-            //            {link: '/learning/solutions/auto-diagnostics-github-script.md', text: 'Example: Raw Scripts'}
+            //            {link: '/learning/solutions/automated-diagnostics/examples/auto-incident-kubernetes-logs.md', text: 'Example: Kubernetes Logs'},
+            //            {link: '/learning/solutions/automated-diagnostics/examples/auto-diagnostics-github-script.md', text: 'Example: Raw Scripts'}
+          ]
+        },
+        {
+          text: 'Containers',
+          collapsible: true,
+          children: [
+            {
+              text: 'Containers',
+              link: '/learning/solutions/containers/index.md',
+              collapsible: true,
+              children: [
+                { link: '/learning/solutions/containers/index.md', text: 'Solution Summary'},
+                { link: '/learning/solutions/containers/getting-started.md', text: 'Getting Started'}
+              ]
+            }
           ]
         }
       ]
