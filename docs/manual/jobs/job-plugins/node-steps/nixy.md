@@ -23,6 +23,10 @@ The *nixy plugins provide various file and command operations through node step 
 * [**Wait for Local Ping (nixy / waitfor / local / ping)**](#wait-for-local-ping)
 * [**Wait for Local Port Open (nixy / waitfor / local / port-open)**](#wait-for-local-port-open)
 
+:::tip Open Source Plugins
+The *nixy plugins are open source and available on [GitHub](https://github.com/rundeck-plugins/nixy-step-plugins).
+:::
+
 ### File Contains
 
 The **File Contains** plugin checks if a file contains a specific pattern. The plugin requires the following fields:
