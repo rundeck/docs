@@ -24,19 +24,19 @@ PagerDuty provides a solution that helps users start automating diagnostics quic
 <tbody>
   <tr>
     <td class="tg-8jgo">
-        <a href="/docs/learning/solutions/automated-diagnostics/examples/kubernetes">
+        <a href="/learning/solutions/automated-diagnostics/examples/kubernetes.html">
         <img src="/assets/img/kubernetes-logo.png" width="100" height="100"><br><br>Recent Pod Logs</a>
     </td>
     <td class="tg-8jgo">
-        <a href="/docs/learning/solutions/automated-diagnostics/examples/kubernetes">
+        <a href="/learning/solutions/automated-diagnostics/examples/kubernetes.html">
         <img src="/assets/img/kubernetes-logo.png" width="100" height="100"><br><br>Recent Kubernetes Events</a>
     </td>
     <td class="tg-8jgo">
-        <a href="/docs/learning/solutions/automated-diagnostics/examples/kubernetes">
+        <a href="/learning/solutions/automated-diagnostics/examples/kubernetes.html">
         <img src="/assets/img/kubernetes-logo.png" width="100" height="100"><br><br>Pod Status & Errors</a>
     </td>
     <td class="tg-8jgo">
-        <a href="/docs/learning/solutions/automated-diagnostics/examples/kubernetes">
+        <a href="/learning/solutions/automated-diagnostics/examples/kubernetes.html">
         <img src="/assets/img/kubernetes-logo.png" width="100" height="100"><br><br>Retrieve Deployment Diagnostics</a>
     </td>
   </tr>
