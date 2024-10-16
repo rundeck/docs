@@ -194,7 +194,7 @@ highlights:
     - title: Keep up on the Latest
       icon: square-rss
       details: Keep up on what's new in the latest releases.
-      link: https://community.pagerduty.com/ask-a-product-question-2
+      link: https://community.pagerduty.com/announcements-6
 
     - title: Collaborate with other community members
       icon: share
