@@ -398,6 +398,16 @@ rundeck.security.httpHeaders.provider.csp.config.img-src=self https://media.rund
 rundeck.security.httpHeaders.provider.csp.config.form-action=self
 
 #######
+# Enable Cache Control headers (default true).
+
+# This will add the following headers to prevent caching of responses:
+#    Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+#    Pragma: no-cache
+#    Expires: 0
+
+rundeck.security.httpHeaders.provider.cache-control.enabled=true
+
+#######
 # enable any custom additional headers (default: false)
 #
 # rundeck.security.httpHeaders.provider.custom.enabled=true
