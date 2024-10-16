@@ -14,6 +14,14 @@ There are multiple use-cases and benefits to the Containers solution. Here are a
 ### Prebuilt Automation 
 PagerDuty provides a solution that helps users start automating diagnostics quickly. This Solution consists of **prebuilt Automation Jobs** that show how the use cases above can be implemented in your environment.  (Note: Some of these solutions may exist in other Solution Packages.)
 
+<style type="text/css">
+.tg  {border:none;border-collapse:collapse;border-spacing:0;margin:0px auto;}
+.tg td{border-style:solid;border-width:0px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;
+  padding:10px 5px;word-break:normal;}
+.tg th{border-style:solid;border-width:0px;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;
+  overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-8jgo{border-color:#ffffff;text-align:center;vertical-align:top}
+@media screen and (max-width: 767px) {.tg {width: auto !important;}.tg col {width: auto !important;}.tg-wrap {overflow-x: auto;-webkit-overflow-scrolling: touch;margin: auto 0px;}}</style>
 <div class="tg-wrap"><table class="tg" style="undefined;table-layout: fixed; width: 1212px">
 <colgroup>
 <col style="width: 303px">
