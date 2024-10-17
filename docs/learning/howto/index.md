@@ -65,3 +65,4 @@ Available Guides by Section
 ## Contributing
 [Contribute to Documentation](/learning/howto/update-rundeck-docs.md)  
 [Build Rundeck from Source Code](/learning/howto/build-rundeck.md)  
+[Contribute to Rundeck's Translations](/learning/howto/contribute-rundeck-translation.md)
