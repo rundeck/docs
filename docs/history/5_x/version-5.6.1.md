@@ -20,7 +20,7 @@ Release Date: October 14th, 2024
 
 ## Overview
 
-This release fixes a critical issue where scheduled jobs are no longer executed after making unrelated edits to the job.  This can happen in verison 5.6.0 when the jobs is edited via API, job/project imports, SCM, or direct job editing.
+This release fixes a critical issue where scheduled jobs are no longer executed after making unrelated edits to the job.  This can happen in version 5.6.0 when the jobs is edited via API, job/project imports, SCM, or direct job editing.
 
 
 ## Staff Contributors
