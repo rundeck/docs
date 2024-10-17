@@ -1,4 +1,4 @@
-# Solution - Containers
+# Container Solutions
 
 ## Overview
 Automating container management with Runbook Automation can significantly enhance your business operations by streamlining and simplifying the deployment, scaling, and maintenance of containerized applications. By leveraging Rundeck's powerful automation capabilities, you can reduce manual intervention, minimize human error, and ensure consistent and reliable execution of tasks. This leads to increased efficiency and productivity, as routine and repetitive tasks are handled automatically, freeing up your IT team to focus on more strategic initiatives. 
@@ -14,39 +14,10 @@ There are multiple use-cases and benefits to the Containers solution. Here are a
 ### Prebuilt Automation 
 PagerDuty provides a solution that helps users start automating diagnostics quickly. This Solution consists of **prebuilt Automation Jobs** that show how the use cases above can be implemented in your environment.  (Note: Some of these solutions may exist in other Solution Packages.)
 
-<style type="text/css">
-.tg  {border:none;border-collapse:collapse;border-spacing:0;margin:0px auto;}
-.tg td{border-style:solid;border-width:0px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;
-  padding:10px 5px;word-break:normal;}
-.tg th{border-style:solid;border-width:0px;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;
-  overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg .tg-8jgo{border-color:#ffffff;text-align:center;vertical-align:top}
-@media screen and (max-width: 767px) {.tg {width: auto !important;}.tg col {width: auto !important;}.tg-wrap {overflow-x: auto;-webkit-overflow-scrolling: touch;margin: auto 0px;}}</style>
-<div class="tg-wrap"><table class="tg" style="undefined;table-layout: fixed; width: 1212px">
-<colgroup>
-<col style="width: 303px">
-<col style="width: 303px">
-<col style="width: 303px">
-<col style="width: 303px">
-</colgroup>
-<tbody>
-  <tr>
-    <td class="tg-8jgo">
-        <a href="/learning/solutions/automated-diagnostics/examples/kubernetes.html">
-        <img src="/assets/img/kubernetes-logo.png" width="100" height="100"><br><br>Recent Pod Logs</a>
-    </td>
-    <td class="tg-8jgo">
-        <a href="/learning/solutions/automated-diagnostics/examples/kubernetes.html">
-        <img src="/assets/img/kubernetes-logo.png" width="100" height="100"><br><br>Recent Kubernetes Events</a>
-    </td>
-    <td class="tg-8jgo">
-        <a href="/learning/solutions/automated-diagnostics/examples/kubernetes.html">
-        <img src="/assets/img/kubernetes-logo.png" width="100" height="100"><br><br>Pod Status & Errors</a>
-    </td>
-    <td class="tg-8jgo">
-        <a href="/learning/solutions/automated-diagnostics/examples/kubernetes.html">
-        <img src="/assets/img/kubernetes-logo.png" width="100" height="100"><br><br>Retrieve Deployment Diagnostics</a>
-    </td>
-  </tr>
-</tbody>
-</table></div>
+
+| Examples |
+| --- |
+| <img src="/assets/img/kubernetes-logo.png" width="30" height="30"> [Recent Pod Logs](/learning/solutions/containers/kubernetes.md) |
+| <img src="/assets/img/kubernetes-logo.png" width="30" height="30"> [Recent Kubernetes Events](/learning/solutions/containers/kubernetes.md) |
+| <img src="/assets/img/kubernetes-logo.png" width="30" height="30"> [Pod Status & Errors](/learning/solutions/containers/kubernetes.md) |
+| <img src="/assets/img/kubernetes-logo.png" width="30" height="30"> [Retrieve Deployment Diagnostics](/learning/solutions/containers/kubernetes.md) |

@@ -1,17 +1,22 @@
-# Containers
-## Getting Started
+# Getting Started with Soutions
 
 ::: tip Prerequisites
-To use the Containers Solution, you must have a **PagerDuty Runbook Automation** (Self-Hosted or SaaS) instance available.
+To use any the Example Solutions, you must have a **PagerDuty Runbook Automation** (Self-Hosted or SaaS) instance available.
 
 If you do not have a license for either of these products, [contact us](https://www.pagerduty.com/contact-us/runbook-automation/) to learn more.
 
-**You must be running at least version 5.5.0 to use this Solution.** New instances of Runbook Automation have the Solution installed and included by default.<br>
+**You must be running a currently supported product version at a minimum.**  Specific jobs may require specific product versions due to newer plugin releases.  Those will be captured in the job's descriptions.
+
+New instances of Runbook Automation Cloud have the Solution installed and included by default. [Request a Trial here](https://www.pagerduty.com/sign-up/runbook-automation/)<br>
 :::
 
-For all Runbook Automation environments, follow the steps below to download and import the Jobs and Tours:
+## Setup
+
+For existing Runbook Automation environments, follow the steps below to download and import the Example Content:
+
 ### Download the **Automated Diagnostics Solution package**.
-1. Download the latest release of the Solution [here](#).<br>
+
+1. Download the latest release of the Solution [here](https://github.com/rundeckpro/solutions-content/releases/latest).
 
 ### Create a project in your Runbook Automation environment:
 1. Click the **P** in the upper left corner to navigate to the Main Dashboard <br><br>

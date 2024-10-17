@@ -7,3 +7,7 @@ Automated diagnostics is a solution provided by integrating PagerDuty's Incident
 [Containers](/learning/solutions/containers/index.md)
 
 Automating container management rocks!
+
+[Database Management](/learning/solutions/database-management/index.md)
+
+Automate your databases dude.

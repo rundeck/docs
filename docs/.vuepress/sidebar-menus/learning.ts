@@ -201,17 +201,6 @@ export default [{
                 { link: '/learning/solutions/automated-diagnostics/examples/linux.md', text: 'Linux' },
                 { link: '/learning/solutions/automated-diagnostics/examples/windows.md', text: 'Windows' },
                 { link: '/learning/solutions/automated-diagnostics/examples/apis.md', text: 'SaaS & Internal API\'s' },
-                {
-                  text: 'Kubernetes',
-                  link: '/learning/solutions/automated-diagnostics/examples/kubernetes',
-                  collapsible: true,
-                  children: [
-                    { link: '/learning/solutions/automated-diagnostics/examples/kubernetes', text: 'Kubernetes Examples' },
-                    { link: '/learning/solutions/automated-diagnostics/examples/k8s-logs-events.md', text: 'Pod Logs & K8s Events' },
-                    { link: '/learning/solutions/automated-diagnostics/examples/k8s-app-debug-capture.md', text: 'App Debug State Capture' }
-                  ]
-                },
-                { link: '/learning/solutions/automated-diagnostics/examples/databases.md', text: 'Databases' },
                 { link: '/learning/solutions/automated-diagnostics/examples/network-devices.md', text: 'Network Devices' },
                 { link: '/learning/solutions/automated-diagnostics/examples/observability-integrations.md', text: 'Observability Integrations' }
               ]
@@ -221,8 +210,6 @@ export default [{
             { link: '/learning/solutions/automated-diagnostics/simplifying-diagnostics.md', text: 'Simplifying Diagnostics Output' },
             { link: '/learning/solutions/automated-diagnostics/automation-beyond-triage.md', text: 'Automation Beyond Triage' },
             { link: '/learning/solutions/automated-diagnostics/feedback-faq.md', text: 'Feedback & FAQ' }
-            //            {link: '/learning/solutions/automated-diagnostics/examples/auto-incident-kubernetes-logs.md', text: 'Example: Kubernetes Logs'},
-            //            {link: '/learning/solutions/automated-diagnostics/examples/auto-diagnostics-github-script.md', text: 'Example: Raw Scripts'}
           ]
         },
         {
@@ -231,9 +218,28 @@ export default [{
           collapsible: true,
           children: [
             { link: '/learning/solutions/containers/index.md', text: 'Solution Summary'},
-            { link: '/learning/solutions/containers/getting-started.md', text: 'Getting Started'}
+            {
+              text: 'Kubernetes',
+              link: '/learning/solutions/automated-diagnostics/examples/kubernetes',
+              collapsible: true,
+              children: [
+                { link: '/learning/solutions/containers/kubernetes', text: 'Kubernetes Examples' },
+                { link: '/learning/solutions/containers/k8s-logs-events.md', text: 'Pod Logs & K8s Events' },
+                { link: '/learning/solutions/containers/k8s-app-debug-capture.md', text: 'App Debug State Capture' }
+              ]
+            },
           ]
-        }
+        },
+        {
+          text: 'Database Mangement',
+          link: '/learning/solutions/database-management/index.md',
+          collapsible: true,
+          children: [
+            { link: '/learning/solutions/database-management/index.md', text: 'Solution Summary' },
+            { link: '/learning/solutions/database-management/db-and-autodiag.md', text: 'Databases + Auto Diagnostics' },
+          ]
+        },
+        { link: '/learning/solutions/getting-started.md', text: 'Getting Started with Solutions'}
       ]
     },
     {
