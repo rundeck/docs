@@ -161,12 +161,12 @@ highlights:
     - title: Remote Task Execution
       icon: arrow-down-up-lock
       details: Run Scripts, discover nodes, gather secrets in remote environments.
-      link: /administration/runner/runner-intro.html
+      link: /administration/runner/runner-overview.html
 
     - title: Secure Communications
       icon: lock
       details: Enhanced security as ports no longer need to be open for the Automation Server to talk over sensitive ports.
-      link: /administration/runner/runner-intro.html
+      link: /administration/runner/runner-overview.html
 
     - title: AWS SSM Execution
       icon: /assets/img/aws-icon-small.png

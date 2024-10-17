@@ -20,7 +20,7 @@ npm install
 
 ## API Documentation Guidelines
 
-Our API Docuementation is now handled by OpenAPI spec and presented using Swagger UI.
+Our API Documentation is now handled by OpenAPI spec and presented using Swagger UI.
 
 
 # How To 
