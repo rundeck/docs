@@ -170,8 +170,8 @@ export default [{
           collapsible: true,
           children: [
             '/learning/howto/update-rundeck-docs.md',
-            '/learning/howto/build-rundeck.md'
-
+            '/learning/howto/build-rundeck.md',
+            '/learning/howto/contribute-rundeck-translation.md'
           ]
         }
       ]
