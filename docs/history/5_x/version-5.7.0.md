@@ -5,7 +5,7 @@ date: 2024-10-21
 image: /images/chevron-logo-red-on-white.png
 feed:
  enable: true
- description: "Security and Bug Fixes"
+ description: "Project Runner Management is GA!"
 
 ---
 
@@ -25,8 +25,9 @@ Check out the new features and enhancements for PagerDuty Runbook Automation com
 
 ### Highlights
 
-- first highlight
-- second highlight
+Project Runner Management, announced in version 5.5.0 is now Generally Available.  We appreciate all the feedback during the Early Access program.  Check out the docs on this feature here and watch a demo on the [5.5.0 release notes page](version-5.5.0.md).
+
+There are also quite a few package updates across the platform to address security findings submitted by the community.
 
 ## Runbook Automation Updates
 
