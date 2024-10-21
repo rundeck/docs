@@ -25,7 +25,7 @@ Check out the new features and enhancements for PagerDuty Runbook Automation com
 
 ### Highlights
 
-Project Runner Management, announced in version 5.5.0 is now Generally Available.  We appreciate all the feedback during the Early Access program.  Check out the docs on this feature here and watch a demo on the [5.5.0 release notes page](version-5.5.0.md).
+[Project Runner Management](/administration/runner/runner-management/managing-runners.md#managing-runners-within-a-project), announced in version 5.3.0 is now Generally Available.  We appreciate all the feedback during the Early Access program.  Check out the docs on this feature here and watch a demo on the [5.3.0 release notes page](version-5.3.0.md).
 
 There are also quite a few package updates across the platform to address security findings submitted by the community.
 
