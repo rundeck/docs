@@ -222,7 +222,7 @@ export default [{
             { link: '/learning/solutions/containers/index.md', text: 'Solution Summary'},
             {
               text: 'Kubernetes',
-              link: '/learning/solutions/automated-diagnostics/examples/kubernetes',
+              link: '/learning/solutions/containers/kubernetes',
               collapsible: true,
               children: [
                 { link: '/learning/solutions/containers/kubernetes', text: 'Kubernetes Examples' },
