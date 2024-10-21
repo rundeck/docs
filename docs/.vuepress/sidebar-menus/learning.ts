@@ -181,6 +181,8 @@ export default [{
       link: '/learning/solutions/index.md',
       collapsible: true,
       children: [
+        { link: '/learning/solutions/index.md', text: 'Solutions Overview'},
+        { link: '/learning/solutions/getting-started.md', text: 'Getting Started with Solutions'},
         {
           text: 'Automated Diagnostics',
           link: '/learning/solutions/automated-diagnostics/index.md',
@@ -238,8 +240,7 @@ export default [{
             { link: '/learning/solutions/database-management/index.md', text: 'Solution Summary' },
             { link: '/learning/solutions/database-management/db-and-autodiag.md', text: 'Databases + Auto Diagnostics' },
           ]
-        },
-        { link: '/learning/solutions/getting-started.md', text: 'Getting Started with Solutions'}
+        }
       ]
     },
     {
