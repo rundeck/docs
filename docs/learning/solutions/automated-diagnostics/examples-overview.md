@@ -32,15 +32,15 @@ Other prebuilt Jobs are included in the Automated Diagnostics Solution package, 
 <tbody>
   <tr>
     <td class="tg-8jgo">
-        <a href="/docs/learning/solutions/automated-diagnostics/examples/public-cloud-providers">
+        <a href="/docs/learning/solutions/automated-diagnostics/examples/public-cloud-providers.html">
         <img src="/assets/img/ecs.png" width="100" height="100" border="0"><br><br>Stopped ECS Task Errors</a>
     </td>
     <td class="tg-8jgo">
-        <a href="/docs/learning/solutions/automated-diagnostics/examples/public-cloud-providers">
+        <a href="/docs/learning/solutions/automated-diagnostics/examples/public-cloud-providers.html">
         <img src="/assets/img/elb.svg" width="100" height="100"><br><br>ELB Targets Health</a>
     </td>
     <td class="tg-8jgo">
-        <a href="/docs/learning/solutions/automated-diagnostics/examples/public-cloud-providers">
+        <a href="/docs/learning/solutions/automated-diagnostics/examples/public-cloud-providers.html">
         <img src="/assets/img/cloudwatch-logo.png" width="100" height="100"><br><br>CloudWatch Logs</a>
     </td>
     <td class="tg-8jgo">
@@ -72,88 +72,88 @@ Other prebuilt Jobs are included in the Automated Diagnostics Solution package, 
         <img src="/assets/img/gke-logo.png" width="100" height="100"><br><br>GKE Cluster Connectivity</a>
     </td>
     <td class="tg-8jgo">
-        <a href="/docs/learning/solutions/automated-diagnostics/examples/linux">
+        <a href="/docs/learning/solutions/automated-diagnostics/examples/linux.html">
         <img src="/assets/img/linux-logo.png" width="100" height="100"><br><br>Top CPU Consuming Processes</a>
     </td>
     <td class="tg-8jgo">
-        <a href="/docs/learning/solutions/automated-diagnostics/examples/linux">
+        <a href="/docs/learning/solutions/automated-diagnostics/examples/linux.html">
         <img src="/assets/img/linux-logo.png" width="100" height="100"><br><br>Retrieve Errors from Syslog</a>
     </td>
     <td class="tg-8jgo">
-        <a href="/docs/learning/solutions/automated-diagnostics/examples/linux">
+        <a href="/docs/learning/solutions/automated-diagnostics/examples/linux.html">
         <img src="/assets/img/linux-logo.png" width="100" height="100"><br><br>List Top Disk Consuming Files</a>
     </td>
   </tr>
   <tr>
     <td class="tg-8jgo">
-        <a href="/docs/learning/solutions/automated-diagnostics/examples/windows">
+        <a href="/docs/learning/solutions/automated-diagnostics/examples/windows.html">
         <img src="/assets/img/active-directory-logo.svg" width="100" height="100"><br><br>Active Directory Replication Statistics</a>
     </td>
     <td class="tg-8jgo">
-        <a href="/docs/learning/solutions/automated-diagnostics/examples/windows">
+        <a href="/docs/learning/solutions/automated-diagnostics/examples/windows.html">
         <img src="/assets/img/windows-logo.png" width="100" height="100"><br><br>Retrieve IIS Web Server Logs</a>
     </td>
     <td class="tg-8jgo">
-        <a href="/docs/learning/solutions/automated-diagnostics/examples/windows">
+        <a href="/docs/learning/solutions/automated-diagnostics/examples/windows.html">
         <img src="/assets/img/windows-logo.png" width="100" height="100"><br><br>SMB Connection Failures</a>
     </td>
     <td class="tg-8jgo">
-        <a href="/docs/learning/solutions/automated-diagnostics/examples/apis">
+        <a href="/docs/learning/solutions/automated-diagnostics/examples/apis.html">
         <img src="/assets/img/webhook-logo.jpeg" width="100" height="100"><br><br>API Health Check</a>
     </td>
     <td class="tg-8jgo"></td>
   </tr>
   <tr>
     <td class="tg-8jgo">
-        <a href="/docs/learning/solutions/automated-diagnostics/examples/kubernetes">
+        <a href="/docs/learning/solutions/automated-diagnostics/examples/kubernetes.html">
         <img src="/assets/img/kubernetes-logo.png" width="100" height="100"><br><br>Recent Pod Logs</a>
     </td>
     <td class="tg-8jgo">
-        <a href="/docs/learning/solutions/automated-diagnostics/examples/kubernetes">
+        <a href="/docs/learning/solutions/automated-diagnostics/examples/kubernetes.html">
         <img src="/assets/img/kubernetes-logo.png" width="100" height="100"><br><br>Recent Kubernetes Events</a>
     </td>
     <td class="tg-8jgo">
-        <a href="/docs/learning/solutions/automated-diagnostics/examples/kubernetes">
+        <a href="/docs/learning/solutions/automated-diagnostics/examples/kubernetes.html">
         <img src="/assets/img/kubernetes-logo.png" width="100" height="100"><br><br>Pod Status & Errors</a>
     </td>
     <td class="tg-8jgo">
-        <a href="/docs/learning/solutions/automated-diagnostics/examples/kubernetes">
+        <a href="/docs/learning/solutions/automated-diagnostics/examples/kubernetes.html">
         <img src="/assets/img/kubernetes-logo.png" width="100" height="100"><br><br>Retrieve Deployment Diagnostics</a>
     </td>
   </tr>
   <tr>
     <td class="tg-8jgo">
-        <a href="/docs/learning/solutions/automated-diagnostics/examples/databases">
+        <a href="/docs/learning/solutions/automated-diagnostics/examples/databases.html">
         <img src="/assets/img/mysql-logo.png" width="100" height="100"><br><br>Top Resource Consuming Queries</a>
     </td>
     <td class="tg-8jgo">
-        <a href="/docs/learning/solutions/automated-diagnostics/examples/databases">
+        <a href="/docs/learning/solutions/automated-diagnostics/examples/databases.html">
         <img src="/assets/img/mysql-logo.png" width="100" height="100"><br><br>Blocking Locks</a>
     </td>
     <td class="tg-8jgo">
-        <a href="/docs/learning/solutions/automated-diagnostics/examples/databases">
+        <a href="/docs/learning/solutions/automated-diagnostics/examples/databases.html">
         <img src="/assets/img/mysql-logo.png" width="100" height="100"><br><br>Missing Indexes</a>
     </td>
     <td class="tg-8jgo">
-        <a href="/docs/learning/solutions/automated-diagnostics/examples/network-devices">
+        <a href="/docs/learning/solutions/automated-diagnostics/examples/network-devices.html">
         <img src="/assets/img/network-switch.png" width="100" height="100"><br><br>BGP Route Flapping</a>
     </td>
   </tr>
   <tr>
     <td class="tg-8jgo">
-        <a href="/docs/learning/solutions/automated-diagnostics/examples/network-devices">
+        <a href="/docs/learning/solutions/automated-diagnostics/examples/network-devices.html">
         <img src="/assets/img/network-switch.png" width="100" height="100"><br><br>Check Spanning Tree</a>
     </td>
     <td class="tg-8jgo">
-        <a href="/docs/learning/solutions/automated-diagnostics/examples/network-devices">
+        <a href="/docs/learning/solutions/automated-diagnostics/examples/network-devices.html">
         <img src="/assets/img/network-switch.png" width="100" height="100"><br><br>Check Duplex Mismatch</a>
     </td>
     <td class="tg-8jgo">
-        <a href="/docs/learning/solutions/automated-diagnostics/examples/observability-integrations">
+        <a href="/docs/learning/solutions/automated-diagnostics/examples/observability-integrations.html">
         <img src="/assets/img/cloudwatch-logo.png" width="100" height="100"><br><br>Retrieve Application Logs</a>
     </td>
     <td class="tg-8jgo">
-        <a href="/docs/learning/solutions/automated-diagnostics/examples/observability-integrations">
+        <a href="/docs/learning/solutions/automated-diagnostics/examples/observability-integrations.html">
         <img src="/assets/img/cloudwatch-logo.png" width="100" height="100"><br><br>Retrieve Saved Queries</a>
     </td>
   </tr>

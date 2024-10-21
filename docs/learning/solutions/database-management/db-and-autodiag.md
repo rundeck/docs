@@ -1,6 +1,5 @@
-# Automated Diagnostics
+# Database Management + Automated Diagonstics
 
-## Databases
 Designing and building databases for today's modern applications is difficult and bugs can be hard to reproduce for the following reasons:
 
 **High Concurrency:** Potentially millions of users may be accessing and updating records simultaneously.
@@ -9,7 +8,7 @@ Designing and building databases for today's modern applications is difficult an
 
 **Log Levels**: It is common practice to _not_ log at the "debug level" in production.
 
-Using **Automated Diagnostics** can help with debugging database issues experienced in production by gathering as much information as possible when an incident occurs.
+Pairing the Datbase Management solutions with [**Automated Diagnostics**](/learning/soltions/automated-diagnostics/index.md) can help with debugging database issues experienced in production by gathering as much information as possible when an incident occurs and providing those details to first responders or subject matter experts proactively.
 
 ## Examples
 

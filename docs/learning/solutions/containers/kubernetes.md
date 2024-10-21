@@ -1,7 +1,4 @@
-#### Automated Diagnostics
----
-
-## Kubernetes
+## Kubernetes Solutions
 Kubernetes is an open-source platform that allows for the management on a containers on a large scale. 
 Developers, IT administrators, and DevOps engineers use Kubernetes to automate the deployment, scaling, maintenance, scheduling, and operation of _"containerized"_ applications and services. 
 Kubernetes is frequently used for managing microservices applications with multiple service instances, where each microservice is deployed in an individual container. 
