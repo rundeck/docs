@@ -17,7 +17,7 @@ There are multiple use-cases and benefits to the Daabase Management solution. He
 **Capacity Planning and Scaling:** Monitor database usage trends and automate the provisioning or scaling of database resources (e.g., adding storage, increasing memory) based on predefined triggers or schedules, or make ad-hoc requests that can be approved through WFA.
 
 
-To see example content check out the [Getting Started with Solutions] page.
+To see example content listed below check out the [Getting Started with Solutions](/learning/solutions/getting-started.md) page.
 
 | Examples |
 | --- |
