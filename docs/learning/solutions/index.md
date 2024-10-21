@@ -33,12 +33,12 @@ highlights:
   features:
     - title: Automated Diagnostics
       icon: book 
-      details: Automated diagnostics is a solution provided by integrating PagerDuty's Incident Response and Runbook Automation products. By automating the retrieval of “diagnostic” data during incidents, you can shorten the length of incidents, reduce the number of individuals paged to help with resolution, and gather evidence for fixing the root-cause after the incident.
+      details: Gone are the days of manual troubleshooting! Empower your teams to orchestrate your container environments effortlessly, ensuring seamless integration between your infrastructure and business-critical applications. When things go sideways, use these solutions to diagnose and resolve problems before they escalate.
       link: /learning/solutions/automated-diagnostics/index.md
 
     - title: Containers
       icon: /assets/img/runner-icon.png
-      details: Automating container management rocks!
+      details: Think of PagerDuty Automation as your container command center, where you can manage distributed environments at scale without the headache. Whether it’s handling container sprawl or automating response playbooks, you stay in control with real-time insights and automated resolutions—keeping everything running at peak performance.
       link: /learning/solutions/containers/index.md
 
     - title: Database Management
