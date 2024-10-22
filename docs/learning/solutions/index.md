@@ -19,6 +19,9 @@ actions:
 - text: Get the Code
   icon: code-branch
   link: https://github.com/rundeckpro/automated-diagnostics-project
+- text: Learning Rundeck
+  icon: graduation-cap
+  link: /learning/index.md
 
 highlights:
 
@@ -43,7 +46,7 @@ highlights:
 
     - title: Database Management
       icon: shuffle
-      details: Orchestrate across the tooling ecosystem.
+      details: Database administrators (DBAs) face numerous challenges related to data security, maintaining high availability, and optimizing performance.  Check out how Automation can make these problems yesterday's stress.
       link: /learning/solutions/database-management/index.md
   
 ---
