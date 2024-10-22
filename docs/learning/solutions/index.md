@@ -18,7 +18,7 @@ actions:
   link: https://www.pagerduty.com/sign-up/runbook-automation/
 - text: Get the Code
   icon: code-branch
-  link: https://github.com/rundeckpro/solutions-content
+  link: https://github.com/rundeckpro/automated-diagnostics-project
 
 highlights:
 

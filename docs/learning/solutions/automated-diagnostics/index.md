@@ -10,14 +10,14 @@ feed:
 
 # Automated Diagnostics
 
-## What is PagerDuty's Automated Diagnostics Solution?
+### Overview
 Automated diagnostics is a solution provided by integrating PagerDuty's Incident Response and Runbook Automation products. By automating the retrieval of “diagnostic” data during incidents, you can shorten the length of incidents, reduce the number of individuals paged to help with resolution, and gather evidence for fixing the root-cause after the incident.
 
 ### Use Cases
 There are multiple use-cases and benefits to the Automated Diagnostics solution. Here are a few of the most common examples:
-1. **Improve Triage**: surfacing diagnostic data can improve the time spent troubleshooting and the number of people pulled into incidents.
-2. **Capture Environment State**: by capturing the _environment_ or _application_ "state" during an incident, operations engineers and developers have _evidence_ to help them fix code-level bugs and configuration errors - perhaps a while after the incident has been resolved.
-3. **Realtime Updates**: by querying backend services in realtime, an Incident Commander can more easily provide updates to stakeholders during an incident.
+- **Improve Triage**: surfacing diagnostic data can improve the time spent troubleshooting and the number of people pulled into incidents.
+- **Capture Environment State**: by capturing the _environment_ or _application_ "state" during an incident, operations engineers and developers have _evidence_ to help them fix code-level bugs and configuration errors - perhaps a while after the incident has been resolved.
+- **Realtime Updates**: by querying backend services in realtime, an Incident Commander can more easily provide updates to stakeholders during an incident.
 
 For more details on these use-cases, see [**this section**](/learning/solutions/automated-diagnostics/automation-beyond-triage) of the solution-guide.
 
