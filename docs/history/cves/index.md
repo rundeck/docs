@@ -4,7 +4,7 @@ order: 100
 
 # Security Notices
 
-Below is colletion of security notices previously filed for Rundeck and Runbook Automation.  Also included is a list of false positives that vulnerability scanners may find with explanations about why we consider it a false positive.  If there are any concerns about the security of Rundeck or quesitons about a new finding please reach out to us using the [Support Instructions](/about/getting-help.md).
+Below is a collection of security notices previously filed for Rundeck and Runbook Automation.  Also included is a list of false positives that vulnerability scanners may find with explanations about why we consider it a false positive.  If there are any concerns about the security of Rundeck or questions about a new finding please reach out to us using the [Support Instructions](/about/getting-help.md).
 
 [Download the latest version here](https://download.rundeck.com).
 

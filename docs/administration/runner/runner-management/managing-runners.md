@@ -59,11 +59,6 @@ context:
 
 ### Managing Runners within a Project
 
-:::tip Early Access Feature
-The ability to manage Runners at the Project level is an early access feature.  
-To gain access, please [submit this form](https://www.pagerduty.com/early-access/) and someone from our team will reach out promptly.
-:::
-
 At the Project level, users can create, edit, and delete Runners for that specific Project.
 However, Runners created at the Project level are only available for use within that Project and cannot be used in other Projects.
 
