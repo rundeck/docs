@@ -1,14 +1,16 @@
 ## Docker Container Plugins
 
-The Docker node step plugins provide automation steps for Docker containers. The following plugins are available:
+The Docker node step plugins provide job steps to manage and inspect Docker containers. The following plugins are available:
 
-* [**Execute Command in Container (docker / container / execute)**](#execute-command-in-container)
-* [**Inspect Container (docker / container / inspect)**](#inspect-docker-container)
-* [**Pause Container (docker / container / pause)**](#pause-docker-container)
-* [**Unpause Container (docker / container / unpause)**](#unpause-docker-container)
-* [**Kill Container (docker / container / kill)**](#kill-docker-container)
-* [**Container Stats (docker / container / stats)**](#docker-container-stats)
-* [**Run Image (docker / image / run)**](#run-docker-image)
+- [Docker Container Plugins](#docker-container-plugins)
+- [Docker Container Plugins](#docker-container-plugins-1)
+  - [Execute Command in Container](#execute-command-in-container)
+  - [Inspect Docker Container](#inspect-docker-container)
+  - [Pause Docker Container](#pause-docker-container)
+  - [Unpause Docker Container](#unpause-docker-container)
+  - [Kill Docker Container](#kill-docker-container)
+  - [Docker Container Stats](#docker-container-stats)
+  - [Run Docker Image](#run-docker-image)
 
 ## Docker Container Plugins
 
@@ -19,7 +21,7 @@ The Docker node step plugins work in tandem with the [**Docker Node Source**](/m
 The **docker / container / execute** plugin is a Workflow Node Step that executes a command in an existing container. The plugin requires the following fields:
 
 * **container**: The container to dispatch the command.
-  * Example: `my-container`
+  * Example: `my-container` or use `${node.name}` if the Docker Node Source is configured in tandem.
 * **command**: The command string to execute in the container.
   * Example: `ls -la`
 * **user**: User to execute command as.
@@ -37,7 +39,7 @@ The **docker / container / execute** plugin is a Workflow Node Step that execute
 The **docker / container / inspect** plugin is a Workflow Node Step that inspects the state of the container. The plugin requires the following fields:
 
 * **container**: The container ID.
-  * Example: `my-container-id`
+  * Example: `my-container-id` or use `${node.name}` if the Docker Node Source is configured in tandem.
 * **debug**: Write debug messages to stderr.
 
 ![inspect container](/assets/img/docker-inspect-container-node-step.png)<br>
@@ -47,7 +49,7 @@ The **docker / container / inspect** plugin is a Workflow Node Step that inspect
 The **docker / container / pause** plugin is a Workflow Node Step that pauses all processes within the container. The plugin requires the following fields:
 
 * **container**: The container ID.
-  * Example: `my-container-id`
+  * Example: `my-container-id` or use `${node.name}` if the Docker Node Source is configured in tandem.
 * **debug**: Write debug messages to stderr.
 
 ![Pause container](/assets/img/docker-pause-container-node-step.png)<br>
@@ -57,7 +59,7 @@ The **docker / container / pause** plugin is a Workflow Node Step that pauses al
 The **docker / container / unpause** plugin is a Workflow Node Step that unpauses all processes within the container. The plugin requires the following fields:
 
 * **container**: The container ID.
-  * Example: `my-container-id`
+  * Example: `my-container-id` or use `${node.name}` if the Docker Node Source is configured in tandem.
 * **debug**: Write debug messages to stderr.
 
 ### Kill Docker Container
@@ -65,7 +67,7 @@ The **docker / container / unpause** plugin is a Workflow Node Step that unpause
 The **docker / container / kill** plugin is a Workflow Node Step that kills the running container. The plugin requires the following fields:
 
 * **container**: The container ID.
-  * Example: `my-container-id`
+  * Example: `my-container-id` or use `${node.name}` if the Docker Node Source is configured in tandem.
 * **signal**: Signal to send to the container.
   * Default: `KILL`
 * **debug**: Write debug messages to stderr.
@@ -75,7 +77,7 @@ The **docker / container / kill** plugin is a Workflow Node Step that kills the 
 The **docker / container / stats** plugin is a Workflow Node Step that displays container resource usage statistics (no-stream). The plugin requires the following fields:
 
 * **container**: The container ID.
-  * Example: `my-container-id`
+  * Example: `my-container-id` or use `${node.name}` if the Docker Node Source is configured in tandem.
 * **format**: Pretty-print images using a Go template.
   * Default: `table {{.Container}}\t{{.CPUPerc}}\t{{.MemUsage}}\t{{.NetIO}}\t{{.BlockIO}}`
 * **debug**: Write debug messages to stderr.
