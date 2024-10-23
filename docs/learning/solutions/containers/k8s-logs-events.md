@@ -1,6 +1,3 @@
-#### Automated Diagnostics
----
-
 # Template Job: Recent Pod logs and Kubernetes Events
 
 When an issue arises with applications deployed in Kubernetes, one of the first common actions taken by engineers is to check the health of Pods.

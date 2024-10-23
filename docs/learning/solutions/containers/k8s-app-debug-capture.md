@@ -1,6 +1,3 @@
-#### Automated Diagnostics
----
-
 # Capturing Debug Data from Apps in Kubernetes
 
 Similar to how applications are analyzed in non-containerized environments, it is possible to debug and examine the state of programs running inside Kubernetes containers. This is helpful for identifying failure points, memory leaks, and other types of issues.

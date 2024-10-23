@@ -220,6 +220,7 @@ export default [{
           collapsible: true,
           children: [
             { link: '/learning/solutions/containers/index.md', text: 'Solution Summary'},
+            { link: '/learning/solutions/containers/docker-execute.md', text: 'Docker - Run a Command in a Container'},
             {
               text: 'Kubernetes',
               link: '/learning/solutions/containers/kubernetes',
