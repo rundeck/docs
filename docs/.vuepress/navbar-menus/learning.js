@@ -12,7 +12,7 @@ export default [{
   },
   {
       text: 'Solutions',
-      link: '/learning/solutions/automated-diagnostics/index.md'
+      link: '/learning/solutions/index.md'
   },
   {
       text: 'Terminology',
