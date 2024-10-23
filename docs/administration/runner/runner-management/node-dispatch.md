@@ -34,7 +34,7 @@ Nodes that represent Runners are dependent on the **Local** Node Source to be co
 
 ![Local node source](/assets/img/local-node-source.png)<br>
 
-To still use the Local Node Source, but prevent the execution of commands and scripts on the Runbook Automation cluster members, set the property **`rundeck.localExecutor.disabled=true`** in the `rundeck-config.properties` file or **`DISABLED_LOCAL_EXECUTOR=true`** for Docker installations.
+To still use the Local Node Source, but prevent the execution of commands and scripts on the Runbook Automation cluster members, set the JVM system property **`rundeck.localExecutor.disabled=true`** or **`DISABLED_LOCAL_EXECUTOR=true`** for Docker installations.
 :::
 
 ## Remote Node Dispatch 
