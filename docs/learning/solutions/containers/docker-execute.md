@@ -22,7 +22,7 @@ Executing a coommand in a Docker Container can be beneficial in many ways to Dev
 #### Running the Job
 
 :::tip
-To find the Docker jobs quickly in the job lising click on the `docker` tag at the top of the list.
+To find the Docker jobs quickly in the job listing click on the `docker` tag at the top of the list.
 :::
 
 ![Select Job Image](/assets/img/solutions-docker-selectjob.png)
