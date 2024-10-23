@@ -1,10 +1,10 @@
 # Executing Commands in Docker Containers
 
-Executing a coommand in a Docker Container can be beneficial in many ways to DevOps teams.  Docker can dynamically provide very specific environments which allow for controlled testing and execution of commands.  In this solution example we will run a simple command in a Docker Image.
+Executing a command in a Docker Container can be beneficial in many ways to DevOps teams.  Docker can dynamically provide very specific environments which allow for controlled testing and execution of commands.  In this solution example we will run a simple command in a Docker Image.
 
 ## Pre-requisites & Environment Setup
 
-- For ease of testing, have an [Enterprise Runner](/administration/runner/runner-overview.md) running on the same host that is running Docker and use the A[utomatic Runner Dispatch](/administration/runner/runner-management/project-dispatch-configuration.md) setup.
+- For ease of testing, have an [Enterprise Runner](/administration/runner/runner-overview.md) running on the same host that is running Docker and use the [Automatic Runner Dispatch](/administration/runner/runner-management/project-dispatch-configuration.md) setup.
 - Must setup Docker Node Source before running this job.
 - The example job assumes the base OS of Docker image is Linux based.
 
@@ -17,7 +17,7 @@ Executing a coommand in a Docker Container can be beneficial in many ways to Dev
 4. Choose the `docker / container / model` entry.
 5. Specify your Runner and **Save**.
 
-[More specifics about setting up this Node Source can be found on it's documenation page here.](/manual/projects/resource-model-sources/docker.md)
+[More specifics about setting up this Node Source can be found on it's documentation page here.](/manual/projects/resource-model-sources/docker.md)
 
 #### Running the Job
 
