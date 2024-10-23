@@ -36,7 +36,7 @@ highlights:
   features:
     - title: Automated Diagnostics
       icon: book 
-      details: Gone are the days of manual troubleshooting! Empower your teams to safely manage environments they don't own, ensuring seamless support for your infrastructure and business-critical applications. When things go sideways, use these solutions to diagnose and resolve problems before they escalate.
+      details: Gone are the days of manual troubleshooting! Empower your teams to orchestrate your infrastructure environments effortlessly, ensuring seamless integration between your infrastructure and business-critical applications. When things go sideways, use these solutions to diagnose and resolve problems before they escalate.
       link: /learning/solutions/automated-diagnostics/index.md
 
     - title: Containers
