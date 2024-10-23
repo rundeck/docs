@@ -7,7 +7,7 @@ Help to improve Rundeck's translation to your language by submitting new transla
 * Machine with git installed
 * IDE that can search the codebase like Visual Studio Code or Intellij
 * Knowledge about how to open projects in this IDE and how to search for occurrences
-* Have the project running locally by following the steps before the session `Contributing to Rundeck` described in this [link](./build-rundeck.md)
+* Have the project running locally by following the [Contributing to Rundeck](./build-rundeck.md) steps before getting started.
 
 ## How to add a translation
 
@@ -68,4 +68,8 @@ Please follow these steps:
 | ja_JP         | Japanese   |
 | pt_BR         | Portuguese |
 | zh_CN         | Chinese    |
+
+## Questions?
+
+Got Questions after trying everything above? [Ask us in our Forums!](https://community.pagerduty.com/ask-a-product-question-2)
 
