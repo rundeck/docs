@@ -2,7 +2,6 @@
 
 The Docker node step plugins provide job steps to manage and inspect Docker containers. The following plugins are available:
 
-- [Docker Container Plugins](#docker-container-plugins)
 - [Docker Container Plugins](#docker-container-plugins-1)
   - [Execute Command in Container](#execute-command-in-container)
   - [Inspect Docker Container](#inspect-docker-container)

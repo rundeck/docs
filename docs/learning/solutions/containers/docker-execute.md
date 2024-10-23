@@ -25,7 +25,7 @@ Executing a command in a Docker Container can be beneficial in many ways to DevO
 To find the Docker jobs quickly in the job listing click on the `docker` tag at the top of the list.
 :::
 
-![Select Job Image](/assets/img/solutions-docker-selectjob.png)
+![Select Job Image](/assets/img/solutions-docker-selectjob.png)<br>
 
 The default node filter for this job is `tags: "docker"`.  Nodes discovered by the Docker node source above will automatically get this tag assigned to them.  If you'd like to run the job on a particular container select it from the list.
 
