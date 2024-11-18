@@ -1,5 +1,3 @@
-> :warning: **WARNING**>> Only add one Node Source at a time. Adding multiple Node Sources simultaneously can cause UUID duplication conflicts.
-
 ## GCP GKE Resource Model Source
 
 The GCP GKE (Google Kubernetes Engine) Resource Model Source allows you to import your GKE clusters as nodes within Rundeck. This plugin provides node source functionality for managing and executing jobs on your Google Cloud Platform Kubernetes clusters directly from Rundeck.
