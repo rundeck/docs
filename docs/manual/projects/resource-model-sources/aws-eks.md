@@ -1,5 +1,3 @@
-> :warning: **WARNING**>> Only add one Node Source at a time. Adding multiple Node Sources simultaneously can cause UUID duplication conflicts.
-
 ## AWS EKS Resource Model Source
 
 The AWS EKS (Elastic Kubernetes Service) Resource Model Source allows you to import your EKS clusters as nodes within Rundeck. This enables you to manage and execute jobs on your Kubernetes clusters directly from Rundeck.
