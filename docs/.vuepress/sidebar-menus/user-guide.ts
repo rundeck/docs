@@ -32,6 +32,7 @@ export default [{
           children: [
             '/manual/projects/resource-model-sources/',
             '/manual/projects/resource-model-sources/aws',
+            '/manual/projects/resource-model-sources/aws-eks',
             '/manual/projects/resource-model-sources/azure',
             '/manual/projects/resource-model-sources/datadog',
             {text:'Docker', link:'/manual/projects/resource-model-sources/docker'},
