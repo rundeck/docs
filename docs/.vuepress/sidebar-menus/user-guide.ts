@@ -37,6 +37,7 @@ export default [{
             {text:'Docker', link:'/manual/projects/resource-model-sources/docker'},
             '/manual/projects/resource-model-sources/ecs-fargate',
             '/manual/projects/resource-model-sources/gcp',
+            '/manual/projects/resource-model-sources/gcp-gke',
             '/manual/projects/resource-model-sources/kubernetes',
             '/manual/projects/resource-model-sources/builtin',
             '/manual/projects/resource-model-sources/oracle',
