@@ -40,7 +40,6 @@ Each GKE cluster will be represented as a node with the following attributes:
 - `kubernetes-cluster-endpoint`: The API server endpoint of the cluster
 - `kubernetes-use-pod-service-account`: Whether to use pod service account for authentication
 - `kubernetes-cloud-provider`: Set to "gcp-gke"
-- `node-source-uuid`: A unique identifier for the node source
 
 ### Authentication Modes
 
