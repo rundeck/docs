@@ -31,10 +31,6 @@ To set up credentials:
   - Path to the GCP credentials in Key Storage
   - Region/Zone specification
 
-### Installation
-
-To manually build and install the plugin:
-
 ### Node Attributes
 
 Each GKE cluster will be represented as a node with the following attributes:
