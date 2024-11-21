@@ -20,9 +20,8 @@ To configure the GCP GKE Resource Model Source:
 
 You can configure GCP credentials at three levels:
 
-1. Node Source level
-2. Project level
-3. System level
+1. Resource Model Configuration
+2. Plugin Group Properties
 
 To set up credentials:
 
@@ -36,40 +35,16 @@ To set up credentials:
 
 To manually build and install the plugin:
 
-1. Build the plugin:
-  ```bash
-  ./gradlew :plugins:gcp-plugins:build
-  ```
-  Or skip tests with:
-  ```bash
-  ./gradlew :plugins:gcp-plugins:build -x test -x integrationTest
-  ```
-
-2. Install the plugin by copying the JAR to the `libext` directory:
-  ```bash
-  cp /<path_to_repository>/rundeckpro/plugins/cloud-aws-plugins/build/libs/rundeckpro-gcp-plugins-5.7.0-SNAPSHOT.jar ~/rundeck/libext/
-  ```
-
 ### Node Attributes
 
 Each GKE cluster will be represented as a node with the following attributes:
 
-- `nodename`: The name of the GKE cluster
-- `hostname`: The endpoint of the GKE cluster
 - `gcp-project-id`: The GCP project ID containing the cluster
 - `gcp-location`: The GCP region/zone of the cluster
 - `kubernetes-cluster-endpoint`: The API server endpoint of the cluster
 - `kubernetes-use-pod-service-account`: Whether to use pod service account for authentication
 - `kubernetes-cloud-provider`: Set to "gcp-gke"
 - `node-source-uuid`: A unique identifier for the node source
-
-### Usage
-
-Once configured, you can use these nodes like any other Rundeck nodes. You can target them in your jobs using their attributes, for example:
-
-- To target all GKE nodes: `kubernetes-cloud-provider: gcp-gke`
-- To target nodes in a specific project: `gcp-project-id: my-project`
-- To target a specific cluster: `nodename: my-cluster-name`
 
 ### Authentication Modes
 
