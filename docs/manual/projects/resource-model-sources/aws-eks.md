@@ -20,48 +20,17 @@ authentication.
 
 You can configure AWS credentials at three levels:
 
-1. Node Source level
-2. Project level
-3. System level
-
-To set up credentials:
-
-1. Create a new Key Storage entry for your AWS Secret Access Key.
-2. In the plugin configuration, provide:
-   - AWS Access Key ID
-   - Path to the AWS Secret Access Key in Key Storage
-
-If you encounter a "Key Storage access denied" error, you may need to add an ACL policy:
-
-```yaml
-by:
-  group: [admin]
-for:
-  storage:
-    - allows: [read]
-      match:
-        name: 'keys/aws/.*'
-description: Allow admin group to read AWS keys
-```
+1. Resource Model Configuration
+2. Plugin Group Properties
 
 ### Node Attributes
 
 Each EKS cluster will be represented as a node with the following attributes:
 
-- `nodename`: The name of the EKS cluster
-- `hostname`: The endpoint of the EKS cluster
 - `gcp-location`: The AWS region/zone of the cluster
 - `kubernetes-cluster-endpoint`: The API server endpoint of the cluster
 - `kubernetes-use-pod-service-account`: Whether to use pod service account for authentication
 - `kubernetes-cloud-provider`: Set to "aws-eks"
-- `node-source-uuid`: The UUID of this node source
-
-### Usage
-
-Once configured, you can use these nodes like any other Rundeck nodes. You can target them in your jobs using their attributes, for example:
-
-- To target all EKS nodes: `kubernetes-cloud-provider: aws-eks`
-- To target a specific cluster: `nodename: my-cluster-name`
 
 ### Troubleshooting
 
