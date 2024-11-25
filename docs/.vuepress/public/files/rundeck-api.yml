@@ -11436,6 +11436,12 @@ components:
           type: object
           additionalProperties: true
           description: "Map of metadata about the plugin if present. Since: v40"
+        isHighlighted:
+          type: boolean
+          description: "Indication of whether the plugin is marked as highlighted. Since: v51"
+        highlightedOrder:
+          type: integer
+          description: "Order of the highlighted plugin. Since: v51"
     ApiRunAdhocRequest:
       type: object
       properties:

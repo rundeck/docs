@@ -35,6 +35,11 @@ Changes introduced by API Version number:
 API versions below `{{$apiDepVersion}}` are *deprecated*.  Clients using earlier versions should upgrade to use `{{$apiDepVersion}}` as the minimum version before release `{{ $apiDepRelease }}` to avoid errors.
 :::
 
+### Version 51
+
+* Updated Endpoints:
+    * [`GET /api/V/plugin/list`][GET /api/V/plugin/list] - Plugin detail includes `isHighlighted` and `highlightedOrder`
+
 ### Version 50
 
 * Updated Endpoints:
