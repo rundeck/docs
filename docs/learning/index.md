@@ -1,5 +1,5 @@
 # Learning Rundeck
-
+.
 PagerDuty provides three different process automation versions.  The open source version is Rundeck.  Previously, the commercial version was referred to as Rundeck Enterprise, since renamed as Runbook Automation Self-Hosted for the traditional on premise product and Runbook Automation SaaS available as a hosted cloud platform.
 
 The Learning section includes _[Tutorials](/learning/tutorial/index.md)_, a _[Getting Started section](/learning/getting-started/index.md)_ and _[How to Guides](/learning/howto/index.md)_ that help new users quickly become productive with the Rundeck server and tools. Instructions are provided for both Enterprise and Community versions of Rundeck.
