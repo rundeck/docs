@@ -18,9 +18,9 @@ Make sure that your python installation is same that the one that is exported in
 - We recommend this commands to check the python installation:
 ```
 # Windows OS
-where python - "exaple/path/to/python"
+where python - "example/path/to/python"
 # linux OS
-which python - "exaple/path/to/python"
+which python - "example/path/to/python"
 ```
 **The path to the executable must be the same if we dispatch the command to the required node with the AD-HOC command functionality.**
 :::
