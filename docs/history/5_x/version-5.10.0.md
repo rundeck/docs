@@ -16,7 +16,10 @@ feed:
 
 ## Official Support for Java 17
 
-Rundeck and Enterprise Runners on version 5.10.0 now support Java 17, bringing significant advantages to enterprise customers through its Long Term Support (LTS) status and enhanced performance capabilities. With Java 17 LTS support extending until September 2029, organizations can confidently deploy Rundeck knowing they have a stable, supported foundation for years to come. The upgrade delivers notable performance improvements through enhanced G1 Garbage Collection, resulting in more predictable pause times and better memory management. Users will experience faster startup times and reduced memory footprint, particularly beneficial for containerized deployments and cloud environments. Existing Rundeck deployments running on Java 11 can be upgraded seamlessly to Java 17, maintaining backward compatibility with existing automation workflows and custom plugins.
+Rundeck and Enterprise Runners on version 5.10.0 now support Java 17, bringing significant advantages to enterprise customers through its Long Term Support (LTS) status and enhanced performance capabilities. 
+With Java 17 LTS support extending until September 2029, organizations can confidently deploy Rundeck and Runners knowing they have a stable, supported foundation for years to come. 
+The upgrade delivers notable performance improvements through enhanced G1 Garbage Collection, resulting in more predictable pause times and better memory management. 
+Users will experience faster startup times and reduced memory footprint, particularly beneficial for containerized deployments and cloud environments. Existing Rundeck and Runner deployments running on Java 11 can be upgraded seamlessly to Java 17, maintaining backward compatibility with existing automation workflows and custom plugins.
 
 ## Enhanced Runner Install Experience
 
