@@ -20,6 +20,9 @@ Rundeck 5.10.0 now supports Java 17, bringing significant advantages to enterpri
 
 ## Enhanced Runner Install Experience
 
+Enterprise Runners provide the crucial mechanism for securely dispatching automation to infrastructure within your environments. As Runners are regularly created by both new and existing users, the installation experience is critical for reducing the time to get up and running with Runbook Automation. With this latest release, we have significantly improved the process to create and install new Runners. Users now select the platform type for their Runners  – such as Linux, Windows, Docker or Kubernetes – and then they are presented with the necessary commands to immediately install the Runner of the chosen type. This significantly reduces the steps required to stand up new Runners and enables new teams to get started within their Runbook Automation Projects with greater ease.
+
+![Runner Install](/assets/img/relnotes-510-runnerinstall.png)
 
 ## Runbook Automation Updates
 
