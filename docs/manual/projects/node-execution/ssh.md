@@ -339,7 +339,7 @@ The Sudo password(s) can be provided in two ways:
 - [Sudo Password as a Job Option](#sudo-password-as-a-job-option)
 - [Sudo Password Storage](#sudo-password-storage)
 
-To enable Sudo Password Authentication, set the `sudo-command-enabled` property/attribute to `true`.
+To enable Sudo Password Authentication, set the `sudo-command-enabled` property/attribute to `true`. In case you are using SSHJ, ensure that the property/attribute `always-set-pty` is set as `true`.
 
 You can configure the way the Sudo Password Authentication works by setting these properties at the Node, Project or Rundeck scopes. Simply set the attribute name on a Node, the `project.NAME` in project.properties, or `framework.NAME` in framework.properties:
 
@@ -359,6 +359,11 @@ You can configure the way the Sudo Password Authentication works by setting thes
 - `sudo-fail-on-response-timeout` - true/false. If true, fail on timeout looking for failure message. (default: `false`)
 
 Note: the default values have been set for the unix "sudo" command, but can be overridden if you need to customize the interaction.
+
+:::tip Bracketed Paste Mode
+When Bracketed Paste Mode is enabled in the target node, the Sudo Password Authentication may not work properly. If that is the case, you will see "[?2004h" and "[?2004l" charsets on the shell when PTY is enabled and when a sudo command is executed.
+To check the status of this shell variable value, you can run the command - `bind -V | grep enable-bracketed-paste`. To disable it, append the set `enable-bracketed-paste` off on `/etc/inputrc`
+:::
 
 #### Sudo Password as a Job Option
 
