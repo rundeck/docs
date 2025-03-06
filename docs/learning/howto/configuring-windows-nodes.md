@@ -89,6 +89,7 @@ The following properties can optionally be set in the WinRM Node Executor and Wi
   * **`Disable TLS 1.2`**: Check this box to execute over TLS 1.0 <br><br>
 * **`WinRM Transport Protocol`**: Optionally choose HTTP or HTTPS for the WinRM transport protocol. This can be overridden on nodes with `winrm-transport`. <br><br>
 * **`WinRM Port`**: The WinRM port to use. The default is port 5985.  This can be overridden on nodes with `winrm-port`. <br><br>
+* **`WinRM Username`**: Optional username. The username can be set at node level (using the attribute `username`) or at job level (using an input option called `username`). <br><br>
 * **`Certificate Path`**: The path for SSL verification. This can be overridden on nodes with `winrm-certpath`. <br><br>
 * **`Connect/Read Times Out`**: The maximum seconds to wait before an HTTP connect/read times out (default 30). This value should be slightly higher than operation timeout, as the server can block *at least* that long. This can be overridden on nodes with `winrm-readtimeout`. <br><br>
 * **`Proxy`**: Optionally specify a proxy address for communicating with Windows nodes. Example HTTP proxy strings are `http://server:port` and `http://user:pass@server:port`. An example SOCKS5 proxy string is `socks5://user:pass@server:port`.<br><br>
