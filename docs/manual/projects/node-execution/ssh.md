@@ -13,6 +13,8 @@ The essential node properties include:
 
 Authentication must be configured using either SSH public/private key pairs or SSH Password authentication for both SSH and SCP operations.
 
+There are multiple options for SSH plugin suites.  The current recommended option is the `SSH-J` package which supports the latest encryption algorithms.
+
 ## Basic Configuration
 
 Standard node configuration involves:
@@ -26,8 +28,6 @@ This configuration enables both remote command execution and script deployment c
 ## Security Considerations
 
 For enhanced security, it is recommended to implement firewall rules that restrict SSH access (port 22) to authorized endpoints only. Additional configuration options are detailed in the subsequent sections.
-
-This overview provides a clearer structure, maintains a professional tone, and presents the information in a more organized manner while preserving all essential technical details.
 
 ## Additional Configuration
 
