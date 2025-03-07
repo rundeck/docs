@@ -1,29 +1,39 @@
 # SSH Node Execution
 
-Rundeck by default uses SSH to execute commands on remote nodes, SCP to copy scripts to remote nodes, and locally executes commands and scripts for the local (server) node.
+Rundeck employs SSH as its default protocol for remote command execution and SCP for script file transfers to remote nodes. For local (server) nodes, commands and scripts are executed directly on the system.
 
-The SSH plugin expects each node definition to have the following properties in order to create the SSH connection:
+## Core Requirements
+
+The SSH plugin requires specific node configuration parameters for establishing secure connections:
+
+The essential node properties include:
 
 - `hostname`: the hostname of the remote node. It can be in the format "hostname:port" to indicate that a non-default port should be used. The default port is 22.
 - `username`: the username to connect to the remote node.
 
-In addition, for both SSH and SCP, you must either configure a public/private keypair for the remote node or configure the node for SSH Password authentication.
+Authentication must be configured using either SSH public/private key pairs or SSH Password authentication for both SSH and SCP operations.
 
-Out of the box typical node configuration to make use of these is simple.
+There are multiple options for SSH plugin suites.  The current recommended option is the `SSH-J` package which supports the latest encryption algorithms, and is set as the default for new projects.
 
-- Set the `hostname` attribute for the nodes. It can be in the format "hostname:port" to indicate that a non-default port should be used. The default port is 22.
-- Set the `username` attribute for the nodes to the username to connect to the remote node.
-- set up public/private key authentication from the Rundeck server to the nodes
+## Basic Configuration
 
-This will allow remote command and script execution on the nodes.
+Standard node configuration involves:
 
-:::warning
-  It is recommended that firewalls be used to only allow access to SSH nodes on port 22 from known endpoints.
-:::
+- Defining the hostname attribute (format: "hostname:port", with port 22 as default)
+- Specifying the username attribute for remote access
+- Implementing public/private key authentication between the Rundeck server and target nodes
 
-See below for more configuration options.
+This configuration enables both remote command execution and script deployment capabilities.
 
-**Sudo Password Authentication**
+## Security Considerations
+
+For enhanced security, it is recommended to implement firewall rules that restrict SSH access (port 22) to authorized endpoints only. Additional configuration options are detailed in the subsequent sections.
+
+## Additional Configuration
+
+See below for more configuration scenarios and options.
+
+### Sudo Password Authentication
 
 The SSH plugin also includes support for a secondary Sudo Password Authentication. This simulates a user writing a password to the terminal into a password prompt when invoking a "sudo" command that requires password authentication.
 
@@ -41,7 +51,7 @@ All SSH Keys and Passwords are stored under the `keys/` top-level path.
 
 **Note:** In general if a "key storage path" and another configuration option are both specified, the "key storage path" will be used.
 
-You can embed context property references within the key storage path such as `${job.project}`. See [User Guide - Creating Job Workflows - Context Variables](/manual/jobs/job-workflows.md#context-variables).
+It is possible to embed context property references within the key storage path such as `${job.project}`. See [User Guide - Creating Job Workflows - Context Variables](/manual/jobs/job-workflows.md#context-variables).
 
 ### SFTP File Copier
 
@@ -85,7 +95,7 @@ The username used to connect via SSH is taken from the `username` Node attribute
 
 - `username="user1"`
 
-This value can also include a property reference if you want to dynamically change it, for example to the name of the current Rundeck user, or the username submitted as a Job Option value:
+This value can also include a property reference to dynamically change it, for example to the name of the current Rundeck user, or the username submitted as a Job Option value:
 
 - `${job.username}` - uses the username of the user executing the Rundeck execution.
 - `${option.someUsername}` - uses the value of a job option named "someUsername".
@@ -147,7 +157,11 @@ If the Private Key is encrypted with a passphrase, see: [SSH Private Key Passphr
 
 The default authentication mechanism is public/private key using a **private key file** stored locally on disk.
 
-The built-in SSH connector allows the private key file to be specified in several different ways. You can configure it per-node, per-project, or per-Rundeck instance.
+The built-in SSH connector allows the private key file to be specified in several different ways. It can be configured at these levels:
+
+ - Node
+ - Project
+ - Rundeck instance / Server
 
 When connecting to the remote node, Rundeck will look for a property/attribute specifying the location of the **private key file**, in this order, with the first match having precedence:
 
@@ -155,9 +169,9 @@ When connecting to the remote node, Rundeck will look for a property/attribute s
 2. **Project level**: `project.ssh-keypath` property in `project.properties`. Applies to any project node by default.
 3. **Rundeck level**: `framework.ssh-keypath` property in `framework.properties`. Applies to all projects by default.
 
-If you private key is encrypted with a passphrase, then you can use a "Secure Remote Authentication Option" to prompt the user to enter the passphrase when executing on the Node. See below.
+If the private key is encrypted with a passphrase use a "Secure Remote Authentication Option" to prompt the user to enter the passphrase when executing on the Node. See below.
 
-You can embed context property references within the keypath such as `${job.project}`. See [User Guide - Creating Job Workflows - Context Variables](/manual/jobs/job-workflows.md#context-variables).
+It is possible to embed context property references within the keypath such as `${job.project}`. See [User Guide - Creating Job Workflows - Context Variables](/manual/jobs/job-workflows.md#context-variables).
 
 #### SSH Private Key Storage
 
@@ -169,7 +183,7 @@ When connecting to the remote node, Rundeck will look for a property/attribute s
 2. **Project level**: `project.ssh-key-storage-path` property in `project.properties`. Applies to any project node by default.
 3. **Rundeck level**: `framework.ssh-key-storage-path` property in `framework.properties`. Applies to all projects by default.
 
-If you private key is encrypted with a passphrase, see [SSH Private Key Passphrase](#ssh-private-key-passphrase) below.
+If the private key is encrypted with a passphrase, see [SSH Private Key Passphrase](#ssh-private-key-passphrase) below.
 
 ### SSH Private Key Passphrase
 
@@ -182,11 +196,11 @@ Choose a method to provide a passphrase:
 
 #### SSH Private Key Passphrase with a Job Option
 
-You can use a Job Option for a passphrase for privateKey authentication. When the user executes the Job, they are prompted for the key's passphrase. The Secure Remote Authentication Option value for the passphrase is not stored in the database, and is used only for that execution.
+[Job Options](/manual/jobs/job-options.md) can be used to supply a passphrase for privateKey authentication. When the user executes the Job, they are prompted for the key's passphrase. The Secure Remote Authentication Option value for the passphrase is not stored in the database, and is used only for that execution.
 
 Passphrases are input either via the GUI or arguments to the job if executed via CLI or API.
 
-First, configure a Job, and include an Option definition where `secureInput` is set to `true`. The name of this option can be anything you want, but the default value of `sshKeyPassphrase` assumed by the node configuration is easiest.
+First, configure a Job, and include an Option definition where `secureInput` is set to `true`. The name of this option can be anything, but the default value of `sshKeyPassphrase` assumed by the node configuration is easiest.
 
 If the value is not `sshKeyPassphrase`, then make sure to set the following attribute on each Node for password authentication:
 
@@ -264,7 +278,7 @@ Passwords for the nodes are input either via the GUI or arguments to the job if 
 1. The Job must define a Secure Remote Authentication Option to prompt the user for the password before execution.
 2. All Nodes using this method must have an equivalent Secure Remote Authentication Option defined, or may use the same option name (or the default) if they share authentication passwords.
 
-First configure a Job and include one or more Option definitions where Secure Remote Authentication type is selected. (In XML/YAML, `secure` is set to `true`, and `valueExposed` is set to `false`.) The name of this option can be anything you want, but the default value of `sshPassword` assumed by the node configuration is easiest. If you need multiple different passwords for different nodes, you must define multiple options in this way.
+First configure a Job and include one or more Option definitions where Secure Remote Authentication type is selected. (In XML/YAML, `secure` is set to `true`, and `valueExposed` is set to `false`.) The name of this option can be anything, but the default value of `sshPassword` assumed by the node configuration is easiest. In order to use multiple different passwords for different nodes, the job must be define multiple options in this way.
 
 If the option name is not `sshPassword`, then make sure to set the following attribute on each Node for password authentication:
 
@@ -325,7 +339,7 @@ An example Node using password storage:
 
 ### Secondary Sudo Password Authentication
 
-The SSH provider supports a secondary authentication mechanism: Sudo password authentication. This is useful if your security requirements are such that you require the SSH connection to be under a specific user's account instead of a generic "rundeck" account, and you still need to allow "sudo" level commands to be executed requiring a password to be entered.
+The SSH provider includes support for Sudo password authentication as a secondary authentication mechanism. This capability proves valuable in environments where security requirements mandate SSH connections through specific user accounts rather than generic "rundeck" accounts, while still enabling password-protected sudo-level command execution.
 
 This works in the following way:
 
@@ -339,9 +353,9 @@ The Sudo password(s) can be provided in two ways:
 - [Sudo Password as a Job Option](#sudo-password-as-a-job-option)
 - [Sudo Password Storage](#sudo-password-storage)
 
-To enable Sudo Password Authentication, set the `sudo-command-enabled` property/attribute to `true`.
+To enable Sudo Password Authentication, set the `sudo-command-enabled` property/attribute to `true`. When using SSHJ, ensure that the property/attribute `always-set-pty` is set as `true`.
 
-You can configure the way the Sudo Password Authentication works by setting these properties at the Node, Project or Rundeck scopes. Simply set the attribute name on a Node, the `project.NAME` in project.properties, or `framework.NAME` in framework.properties:
+The Sudo Password Authentication configuration can be managed through properties set at the Node, Project, or Rundeck scope levels. The configuration is controlled by setting the attribute name on a Node, defining `project.NAME` in project.properties, or specifying `framework.NAME` in framework.properties.
 
 - `sudo-command-enabled` - set to "true" to enable Sudo Password Authentication.
 - `sudo-command-pattern` - a regular expression to detect when a command execution should expect to require Sudo authentication. Default pattern is `^sudo$`.
@@ -358,13 +372,19 @@ You can configure the way the Sudo Password Authentication works by setting thes
 - `sudo-fail-on-prompt-timeout` - true/false. If true, fail execution if timeout reached looking for password prompt. (default: `true`)
 - `sudo-fail-on-response-timeout` - true/false. If true, fail on timeout looking for failure message. (default: `false`)
 
-Note: the default values have been set for the unix "sudo" command, but can be overridden if you need to customize the interaction.
+Note: The default values have been set for the unix "sudo" command, but can be overridden if needed to customize the interaction.
+
+:::tip Bracketed Paste Mode
+Sudo Password Authentication may experience compatibility issues when Bracketed Paste Mode is enabled on the target node. This condition can be identified by the presence of "[?2004h" and "[?2004l" character sequences in the shell output during PTY-enabled sudo command execution.
+
+To check the status of this shell variable value run the command - `bind -V | grep enable-bracketed-paste`. To disable it, append the set `enable-bracketed-paste` off on `/etc/inputrc`
+:::
 
 #### Sudo Password as a Job Option
 
 Job Option Passwords for the nodes are input either via the GUI or arguments to the job if executed via CLI or API.
 
-Configure a Job, and include an Option definition where `secureInput` is set to `true`. The name of this option can be anything you want, but the default value of `sudoPassword` recognized by the plugin can be used.
+Configure a Job, and include an Option definition where `secureInput` is set to `true`. The name of this option can be anything, but the default value of `sudoPassword` recognized by the plugin can be used.
 
 If the value is not `sudoPassword`, then make sure to set the following attribute on each Node for password authentication:
 
@@ -425,7 +445,7 @@ See example Node configuration below:
 
 ### Multiple Sudo Password Authentication
 
-You can enable a further level of sudo password support for a node. If you have the requirement of executing a chain of "sudo" commands, such as "sudo -u user1 sudo -u user2 command", and need to enable password input for both levels of sudo. This is possible by configuring a secondary set of properties for your node/project/framework.
+Additional sudo password support can be enabled at the node level to accommodate multi-level sudo command chains. For scenarios requiring nested sudo commands (e.g., "sudo -u user1 sudo -u user2 command"), password input functionality for multiple sudo levels can be implemented through a secondary set of node/project/framework properties.
 
 The configuration properties are the same as those for the first-level of sudo password authentication described in [Configuring Secondary Sudo Password Authentication](#secondary-sudo-password-authentication), but with a prefix of "sudo2-" instead of "sudo-", such as:
 
@@ -440,17 +460,16 @@ If a value for "sudo2-password-option" is not set, then a default value of `opti
 
 The sudo authentication mechanism uses two regular expressions to test whether it should be invoked.
 
-For the first sudo authentication, the "sudo-command-pattern" value is matched against the **first component of the command being executed**. The default value for this pattern is `^sudo$`. So a command like "sudo -u user1 some command" will match correctly. You can modify the regular expression (e.g. to support "su"), but it will always only match against the first part of the command.
+The initial sudo authentication process matches the "sudo-command-pattern" value against the command's first component. The pattern's default value is ^sudo$, which correctly matches commands structured like "sudo -u user1 some command". While the regular expression can be modified (for example, to accommodate "su"), the pattern matching is strictly limited to the command's first component.
 
-If "sudo2-command-enabled" is "true", then the "sudo2-command-pattern" is also checked and if it matches then another sudo authentication is enabled. However this regular expression is tested against the **entire command string** to make it possible to determine whether it should be enabled. The default value is `^sudo .+? sudo .*$`. If necessary you should customize the value.
+If "sudo2-command-enabled" is "true", then the "sudo2-command-pattern" is also checked and if it matches then another sudo authentication is enabled. However this regular expression is tested against the **entire command string** to make it possible to determine whether it should be enabled. The default value is `^sudo .+? sudo .*$`.  It may be necessary to customize this value.
+
 
 ### SSH Agent support
 
-Note: **Incubator feature**
-
 This will start `/usr/bin/ssh-agent` on each command step execution (if enabled), inject the private key the job would normally use in the agent, make the agent available on the newly created jsch connection and enable agent forwarding on the connection. Once the job is done the ssh-agent is killed. Optionally ssh-agent can be started with `-t <ttl>` which will guarantee the private key will be flushed at that time if by some chance it's not killed.
 
-Obviously with this enabled you cannot rely on Rundeck to limit what hosts are accessible to your users, proper key management is required on all hosts.
+When this feature is enabled, host access control cannot be managed through Rundeck alone. Proper SSH key management must be implemented and maintained across all hosts to ensure security.
 
 New variables are:
 
@@ -482,7 +501,7 @@ local-ttl-ssh-agent=<time in sec>
 - SSH can be configured for either _password_ based authentication or _public/private key_ based authentication.
 - For public/private key authentication:
   - There are many resources available on how to configure ssh to use public key authentication  instead of passwords such as [this article from ArchLinux](https://wiki.archlinux.org/title/SSH_keys).
-  - If your private key file has a passphrase, each Job definition that will execute on the node must be configured correctly.
+  - If the private key file has a passphrase, each Job definition that will execute on the node must be configured correctly.
 - For password authentication:
   - each Node definition must be configured to allow password authentication
   - each Job definition that will use it must be configured correctly
@@ -518,7 +537,7 @@ Here's an example of SSH RSA key generation on a Linux system:
     |                 |
     +-----------------+
 
-If you're using OpenSSH-Client 8.0p1-6build1 or higher (which is installed on Ubuntu 19.10 and up) you'll need to change your key generation:
+When using OpenSSH-Client 8.0p1-6build1 or higher (which is installed on Ubuntu 19.10 and up) it is necessary to change the key generation:
 
     $ ssh-keygen -t rsa -b 4096 -m PEM
     Generating public/private rsa key pair.
@@ -548,7 +567,7 @@ To be able to directly ssh to remote machines, an SSH public key of the client s
 
 Follow the steps given below to enable ssh to remote machines.
 
-Generate a new SSH Key using steps above.  Never use an existing key unless you know its origin.
+A new SSH key should be generated following the previously outlined steps. For security purposes, existing keys should not be utilized unless their origin can be verified with certainty.
 
 The ssh public key should be copied to the `authorized_keys` file of the remote machine. The public key will be available in `~/.ssh/id_rsa.pub` file.
 
@@ -574,7 +593,7 @@ The permission for the .ssh directory of the remote machine should be read/write
     $ ls -la
     drwx------   2 raj  staff    68 Nov 22 18:19 .ssh
 
-If you are running Rundeck on Windows, we heartily recommend using [Cygwin] on Windows as it includes SSH and a number of Unix-like tools that are useful when you work in a command line environment.
+For Windows-based Rundeck installations, [Cygwin] is recommended as it provides SSH functionality and essential Unix-like command line utilities that facilitate system operations.
 
 [cygwin]: https://cygwin.org/
 
