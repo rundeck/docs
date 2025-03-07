@@ -13,7 +13,7 @@ The essential node properties include:
 
 Authentication must be configured using either SSH public/private key pairs or SSH Password authentication for both SSH and SCP operations.
 
-There are multiple options for SSH plugin suites.  The current recommended option is the `SSH-J` package which supports the latest encryption algorithms.
+There are multiple options for SSH plugin suites.  The current recommended option is the `SSH-J` package which supports the latest encryption algorithms, and is set as the default for new projects.
 
 ## Basic Configuration
 
