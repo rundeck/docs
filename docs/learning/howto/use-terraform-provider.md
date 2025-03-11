@@ -4,6 +4,10 @@ Terraform is an open-source infrastructure as code software tool created by Hash
 
 [The Rundeck Terraform provider](https://registry.terraform.io/providers/rundeck/rundeck/latest/docs) allows Terraform to create and configure Projects, Jobs and Keys in Rundeck. The project resource allows Rundeck projects to be managed by Terraform. In Rundeck a project is the container object for a set of jobs and the configuration for which servers those jobs can be run on.
 
+:::note
+Note: This provider is community-supported. While Rundeck/PagerDuty staff review and approve pull requests, new feature development is driven by community contributions. We welcome and encourage community involvement at the [open source repository](https://github.com/rundeck/terraform-provider-rundeck).
+:::
+
 ## Pre-Requisites
 
 - This Exercise is build based on the Welcome Projects.  Please ensure you have completed the tutorial and have that environment running.

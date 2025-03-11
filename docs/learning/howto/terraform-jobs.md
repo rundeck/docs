@@ -3,6 +3,10 @@ Terraform is an open-source Infrastructure as Code (IaC) tool used in IT and Dev
 
 Terraform then takes this configuration and interacts with cloud providers or on-premises infrastructure to create, modify, or delete resources to match the defined configuration. This approach makes it easy to version and manage infrastructure, collaborate with team members, and ensure consistency across different environments.
 
+:::note
+Note: This provider is community-supported. While Rundeck/PagerDuty staff review and approve pull requests, new feature development is driven by community contributions. We welcome and encourage community involvement at the [open source repository](https://github.com/rundeck/terraform-provider-rundeck).
+:::
+
 ## What is a Terraform Provider?
 A "provider" is a plugin that serves as an interface between Terraform and a specific infrastructure or service provider. Providers are essential components in Terraform because they enable the tool to interact with various cloud, virtualization, and other infrastructure platforms.
 
