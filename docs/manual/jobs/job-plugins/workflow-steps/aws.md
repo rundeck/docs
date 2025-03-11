@@ -41,7 +41,7 @@ When defining the IAM Role for Runbook Automation, be sure to include the follow
 For most of these steps an **Instance ID** will need to be included for the instance to be acted on.  
 
 ::: tip
-Since these are workflow steps, the node inventory is not used as part of these steps.   [More details on the AWS node-steps here](/manual/jobs/job-steps/node-steps/aws.md).
+Since these are workflow steps, the node inventory is not used as part of these steps.   [More details on the AWS node-steps here](/manual/jobs/job-plugins/node-steps/aws.md).
 :::
 
 ### AWS / VM / Start

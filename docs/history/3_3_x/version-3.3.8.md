@@ -20,7 +20,7 @@ In an effort to enhance the security of Rundeck Authentication tokens are now st
 
 The Rundeck/Jenkins integration [received an update](https://plugins.jenkins.io/rundeck/#documentation) that addressed some open issues.  We've also added some Option Value and Notification plugins to the Enterprise product to supplement the updated Jenkins code:
 
-- [Post Deployment Notification Plugin](/manual/notifications/jenkins.md)
+- [Post Deployment Notification Plugin](/learning/howto/howtojenkins.md)
 - Artifacts Option Value Plugin
 - Build Option Value Plugin
 
