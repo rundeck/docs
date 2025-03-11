@@ -36,6 +36,14 @@ Nodes that represent Runners are dependent on the **Local** Node Source to be co
 To still use the Local Node Source, but prevent the execution of commands and scripts on the Runbook Automation cluster members, set the JVM system property **`rundeck.localExecutor.disabled=true`** or **`DISABLED_LOCAL_EXECUTOR=true`** for Docker installations.
 :::
 
+:::warning Local Node Source Requirement
+If Run on Runner option is selected in the job **Local** Node Source to be configured.  Removing the Local Node Source will result in the removal of the Runner nodes from the inventory.
+
+![Local node source](/assets/img/local-node-source.png)<br>
+
+To still use the Local Node Source, but prevent the execution of commands and scripts on the Runbook Automation cluster members, set the JVM system property **`rundeck.localExecutor.disabled=true`** or **`DISABLED_LOCAL_EXECUTOR=true`** for Docker installations.
+:::
+
 ## Remote Node Dispatch 
 
 Enabling the _**Remote Node Dispatch**_ setting allows the Runner to dispatch commands, scripts and api-calls to _remote_ nodes using protocols such as SSH, WinRM and HTTP/S.  This is necessary for securely dispatching to nodes from Runbook Automation Cloud or to nodes that are not directly accessible from the self-hosted cluster.
