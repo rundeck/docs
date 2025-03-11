@@ -25,7 +25,7 @@ MySQL 5.7 is in extended support but does not have the `utf8mb4` as a default ch
 
 ### MySQL 5.6
 
-MySQL 5.6 is End-of-Life and no longer fully supported as a backend.  Rundeck strongly recommends upgrading in-use instances of MySQL 5.6.
+MySQL 5.6 is End-of-Life and no longer fully supported as a backend.  Rundeck strongly recommends upgrading in-use instances of MySQL 5.6 to version 8.
 
 ## Setup Rundeck Database
 
@@ -114,7 +114,8 @@ curl -L -o https://repo1.maven.org/maven2/mysql/mysql-connector-java/${MYSQLJ_VE
 ```
 
 ## Amazon Aurora MySQL
-Runbook Automation v4.8+ supports Amazon Aurora MySQL v5.7 with the mysql standard jdbc driver or [https://awslabs.github.io/aws-mysql-jdbc](https://awslabs.github.io/aws-mysql-jdbc) driver when regional/zone DR failover is required. 
+
+Runbook Automation supports the use of the [AWS Advanced JDBC Wrapper](https://github.com/aws/aws-advanced-jdbc-wrapper) for Amazon Aurora MySQL implementations.
 
 
 ### Additional Articles
