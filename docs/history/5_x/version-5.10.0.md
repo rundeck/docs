@@ -1,7 +1,7 @@
 ---
 
 title: "5.10.0 Release Notes"
-date: 2025-03-05
+date: 2025-03-14
 image: /images/chevron-logo-red-on-white.png
 description: "Rundeck | Runbook Automation Releases 5.10.0 - Java 17 Support and Enhanced Runner Setup"
 feed:
@@ -66,7 +66,7 @@ For full details on the enhanced Runner install experience, please refer to the 
 
 Name: <span style="color: slategray"><span class="glyphicon glyphicon-tent"></span> "K2 slategray tent"</span>
 
-Release Date: March 5th, 2025
+Release Date: March 14th, 2025
 
 
 ## Community Contributors
