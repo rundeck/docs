@@ -14,6 +14,8 @@ feed:
 
 ## Overview
 
+<VidStack src="youtube/EQE1pUIe_Lg"/>
+
 ### Azure Key Storage
 
 [Azure Key Storage](/manual/key-storage/storage-plugins/azure-vault.md) is released for Runbook Automation SAAS customers.  [Azure Key Vault](https://azure.microsoft.com/en-us/products/key-vault) is a cloud-based service for secure storage and management of sensitive data. It allows controlled access to confidential information such as API keys, passwords, certificates, and cryptographic keys.  This integration enables users to retrieve **secrets** from Azure Key Vault and utilize them for secure connections to various resources including virtual machines, databases, other tools, and more.  
