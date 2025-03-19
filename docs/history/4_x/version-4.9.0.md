@@ -18,7 +18,7 @@ Release Date: January 11, 2023
 - [Upgrade instructions](/upgrading/index.md)
 - [Watch the Live Stream Release Recap](https://www.youtube.com/watch?v=VIdp90P5zFk&ab_channel=PagerDutyInc)
 
-<VidStack src="youtube/VIdp90P5zFk"/>
+<VidStack src="youtube/VIdp90P5zFk" poster="https://img.youtube.com/vi/VIdp90P5zFk/hqdefault.jpg"/>
 
 ## Overview
 

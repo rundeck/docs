@@ -20,7 +20,7 @@ Our 5.4.0 release adds support for configuring separate endpoints for Credential
 If you have updated from a Rundeck version of 4.16.0 or earlier to version 5.4.0 there is a UI bug that prevents the display of certain execution records.  This issue is fixed with version 5.5.0 and there is no impact to the underlying data.  [Please see Release Notes for 5.5.0 here](version-5.5.0.md).
 :::
 
-<VidStack src="youtube/VqAAjBK0I5E"/>
+<VidStack src="youtube/VqAAjBK0I5E" poster="https://img.youtube.com/vi/VqAAjBK0I5E/hqdefault.jpg"/>
 
 ### Highlights
 

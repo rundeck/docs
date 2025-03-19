@@ -16,7 +16,7 @@ feed:
 
 Check out the new features and enhancements for PagerDuty Runbook Automation commercial offerings and Rundeck Community included in this release.
 
-<VidStack src="youtube/bIIuIKV8jpo"/>
+<VidStack src="youtube/bIIuIKV8jpo" poster="https://img.youtube.com/vi/bIIuIKV8jpo/hqdefault.jpg"/>
 
 ### Highlights
 

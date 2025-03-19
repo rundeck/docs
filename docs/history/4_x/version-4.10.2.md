@@ -18,7 +18,7 @@ Release Date: March 7th, 2023
 - [Upgrade instructions](/upgrading/index.md)
 - [Watch the Live Stream Release Recap](https://youtu.be/stDTPTNZJNM)
 
-<VidStack src="youtube/stDTPTNZJNM"/>
+<VidStack src="youtube/stDTPTNZJNM" poster="https://img.youtube.com/vi/stDTPTNZJNM/maxresdefault.jpg"/>
 
 ## Enterprise Update
 

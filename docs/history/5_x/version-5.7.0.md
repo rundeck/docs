@@ -18,7 +18,7 @@ feed:
 
 There are also quite a few package updates across the platform to address security findings submitted by the community.
 
-<VidStack src="youtube/4Pcr1k0LDTQ"/>
+<VidStack src="youtube/4Pcr1k0LDTQ" poster="https://img.youtube.com/vi/4Pcr1k0LDTQ/maxresdefault.jpg"/>
 
 ## Runbook Automation Updates
 

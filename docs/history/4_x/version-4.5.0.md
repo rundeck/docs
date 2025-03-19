@@ -8,8 +8,6 @@ Release Date: August 10, 2022
 - [Watch the Live Stream Release Recap](https://youtu.be/tZqSPUrT5IU)
 - [Upgrade instructions](/upgrading/index.md)
 
-<VidStack src="youtube/tZqSPUrT5IU"/>
-
 ## Overview
 
 Check out the new features and enhancements for PagerDuty Runbook Automation Self-Hosted (formerly Rundeck Enterprise) and PagerDuty Runbook Automation and Rundeck Community included in this release.

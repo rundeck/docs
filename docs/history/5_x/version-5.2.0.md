@@ -16,7 +16,7 @@ feed:
 
 Our 5.2.0 release is focused on bug fixes, CVE remediation and testing.  The team spent time revamping our testing framework and migrating tests into that new model.  There is also effort being put into the UI code to modernize, and standardize it to Vue to bring performance improvements and simplify building future enhancements.
 
-<VidStack src="youtube/uWhAQuWckQ0"/>
+<VidStack src="youtube/uWhAQuWckQ0" poster="https://img.youtube.com/vi/uWhAQuWckQ0/hqdefault.jpg"/>
 
 ## Runbook Automation Updates
 

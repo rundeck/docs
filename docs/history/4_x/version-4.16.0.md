@@ -18,7 +18,7 @@ Release Date: August 24th, 2023
 - [Upgrade instructions](/upgrading/index.md)
 - [Watch the Live Stream Release Recap](https://youtu.be/TIpVdDikdYM)
 
-<VidStack src="youtube/TIpVdDikdYM"/>
+<VidStack src="youtube/TIpVdDikdYM" poster="https://img.youtube.com/vi/TIpVdDikdYM/maxresdefault.jpg"/>
 
 ## Overview
 

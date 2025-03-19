@@ -14,7 +14,7 @@ feed:
 
 ## Overview
 
-<VidStack src="youtube/EQE1pUIe_Lg"/>
+<VidStack src="youtube/EQE1pUIe_Lg" poster="https://img.youtube.com/vi/EQE1pUIe_Lg/maxresdefault.jpg"/>
 
 ### Azure Key Storage
 

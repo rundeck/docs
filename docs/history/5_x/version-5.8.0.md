@@ -15,7 +15,7 @@ feed:
 
 The updated Kubernetes Plugin Suite for Rundeck introduces powerful features including dynamic cluster discovery for EKS/AKS/GKE, cloud provider authentication, and native in-cluster support from Runner, all without Python dependencies. These enhancements enable automated cluster management, simplified authentication, and efficient bulk operations across multiple clusters, making it easier for teams to manage Kubernetes infrastructure at scale while reducing manual effort and improving security.
 
-<VidStack src="youtube/WsRWF6P2Kyc"/>
+<VidStack src="youtube/WsRWF6P2Kyc" poster="https://img.youtube.com/vi/WsRWF6P2Kyc/maxresdefault.jpg"/>
 
 ### Updated Kubernetes Plugin Suite
 

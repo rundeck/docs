@@ -5,7 +5,7 @@
 
 For basic instructions on how to get started with Rundeck ACL Policies, check out this [Basic ACL Tutorial](/learning/howto/acl_basic_examples.md).  Or check out the video below:
 
-<VidStack src="youtube/i859f1WG3Bo"/>
+<VidStack src="youtube/i859f1WG3Bo" poster="https://img.youtube.com/vi/i859f1WG3Bo/maxresdefault.jpg"/>
 
 For examples and use case specific implementations check out the [ACL Examples](/learning/howto/acls/index.md) section of the How To articles.
 

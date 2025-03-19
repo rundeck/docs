@@ -26,7 +26,7 @@ We have found some issues with Log Filters and passing data to the Enterprise Ru
 Be sure to follow the [Upgrade instructions](/upgrading/index.md) when moving to version 5.0 or higher.  There are new minimum Java versions and other important information.
 :::
 
-<VidStack src="youtube/lcQJQRfI92c"/>
+<VidStack src="youtube/lcQJQRfI92c" poster="https://img.youtube.com/vi/lcQJQRfI92c/hqdefault.jpg"/>
 
 ### Runner Key Storage GUI for Resource Model Sources.
 

@@ -14,7 +14,7 @@ feed:
 
 ## Overview
 
-<VidStack src="youtube/wQtpht0VPNg"/>
+<VidStack src="youtube/wQtpht0VPNg" poster="https://img.youtube.com/vi/wQtpht0VPNg/maxresdefault.jpg"/>
     
 ### Official Support for Java 17
 

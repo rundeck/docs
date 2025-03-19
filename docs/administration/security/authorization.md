@@ -14,7 +14,7 @@ Two dimensions of information dictate authorization inside Rundeck:
 
 The remainder of this section will describe how to use the access control policy, or watch the video below for an overview:
 
-<VidStack src="youtube/i859f1WG3Bo"/>
+<VidStack src="youtube/i859f1WG3Bo" poster="https://img.youtube.com/vi/i859f1WG3Bo/maxresdefault.jpg"/>
 
 ## Access control policy
 

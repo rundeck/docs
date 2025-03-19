@@ -25,7 +25,7 @@ dataSource.properties.maximumPoolSize=100
 A permanent fix will be available in the next release.
 :::
 
-<VidStack src="youtube/HDOnqXi6cS0"/>
+<VidStack src="youtube/HDOnqXi6cS0" poster="https://img.youtube.com/vi/HDOnqXi6cS0/maxresdefault.jpg"/>
 
 ## Highlights
 

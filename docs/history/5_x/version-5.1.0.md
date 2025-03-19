@@ -16,7 +16,7 @@ feed:
 
 The latest release introduces AWS Secrets Manager integration for seamless secret retrieval across multiple AWS accounts and regions, alongside new Enterprise Runner integrations with CyberArk Secrets Manager and Thycotic Secret Server. These key storage enhancements enable organizations to securely manage secrets within their existing infrastructure while using Runbook Automation, eliminating the need to store sensitive credentials directly within the platform.
 
-<VidStack src="youtube/dEA2h4Iuh1k"/>
+<VidStack src="youtube/dEA2h4Iuh1k" poster="https://img.youtube.com/vi/dEA2h4Iuh1k/hqdefault.jpg"/>
 
 All fixes from the [5.0.2 release](version-5.0.2.md) are also included in this version.
 

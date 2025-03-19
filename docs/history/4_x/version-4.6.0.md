@@ -8,7 +8,7 @@ Release Date: September 6, 2022
 - [Watch the Live Stream Release Recap](https://youtu.be/fEHQfrTJ87Y)
 - [Upgrade instructions](/upgrading/index.md)
 
-<VidStack src="youtube/fEHQfrTJ87Y"/>
+<VidStack src="youtube/fEHQfrTJ87Y" poster="https://img.youtube.com/vi/fEHQfrTJ87Y/hqdefault.jpg"/>
 
 ## Overview
 

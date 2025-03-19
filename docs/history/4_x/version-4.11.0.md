@@ -18,7 +18,7 @@ Release Date: March 13th, 2023
 - [Upgrade instructions](/upgrading/index.md)
 - [Watch the Live Stream Release Recap](https://youtu.be/bqPzA0S7hIY)
 
-<VidStack src="youtube/bqPzA0S7hIY"/>
+<VidStack src="youtube/bqPzA0S7hIY" poster="https://img.youtube.com/vi/bqPzA0S7hIY/hqdefault.jpg"/>
 
 ::: 
 Additionally, we are announcing some exciting product updates this month. [Sign up for the launch webinar](https://www.pagerduty.com/resources/webinar/bridging-network-silos-with-new-distributed-automation/?utm_medium=email&utm_source=marketo&utm_campaign=email_customers_Global-Wb-BridgeNetworkSilosDistributedAutomation-Email&utm_content=4.11_release_notes) to learn more.

@@ -19,7 +19,7 @@ Release Date: November 10, 2022
 - [Watch the Live Stream Release Recap](https://youtu.be/UgOePLEIcfw)
 
 
-<VidStack src="youtube/UgOePLEIcfw"/>
+<VidStack src="youtube/UgOePLEIcfw" poster="https://img.youtube.com/vi/UgOePLEIcfw/hqdefault.jpg"/>
 
 ## Overview
 
