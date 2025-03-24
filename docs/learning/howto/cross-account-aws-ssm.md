@@ -145,7 +145,7 @@ Add the following permission to the IAM Policy above: **`arn:aws:ssm:*::document
    }
    ```
 
-:::tip Tip! Multiple ARNs to Access S3
+:::tip Tip #1 Multiple ARNs to Access S3
 Multiple ARNs can be added to the Principal by using a list:
 ```
 "Principal": 
@@ -153,7 +153,15 @@ Multiple ARNs can be added to the Principal by using a list:
    "AWS":["arn:aws:iam::<AccountBId>:role/<AccountBRole>",  "arn:aws:iam::<AccountCId>:role/<AccountCRole>"]
 }
 ```
-:::
+:::tip Tip #2 Use AWS Organizations ID
+Instead of listing all the ARNs for all the account roles, you can use the AWS Organization ID as a condition in your bucket policy.
+```
+    condition {
+      test     = "StringEquals"
+      variable = "aws:PrincipalOrgID"
+      values   = [data.aws_organizations_organization.org.id]
+    }
+```
 
 Then, in the _remote_ AWS account, modify the IAM Role associated with the EC2s (earlier referenced as **AmazonSSMManagedInstanceCore**) and add the following permissions
 ```
