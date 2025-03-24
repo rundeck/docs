@@ -23,6 +23,10 @@ The *nixy plugins provide various file and command operations through node step 
 * [**Wait for Local Ping (nixy / waitfor / local / ping)**](#wait-for-local-ping)
 * [**Wait for Local Port Open (nixy / waitfor / local / port-open)**](#wait-for-local-port-open)
 
+:::warning OS compatability
+These plugins are only compatible with nodes running Unix-based operating systems.
+:::
+
 :::tip Open Source Plugins
 The *nixy plugins are open source and available on [GitHub](https://github.com/rundeck-plugins/nixy-step-plugins).
 :::
