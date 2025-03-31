@@ -57,7 +57,7 @@ Next, you will add a new runner in PagerDuty to connect to Runbook Automation.
 :::warning Heads Up
 Although the Action can be invoked from PagerDuty, the output of the Job will not yet appear on the Incident Timeline.
 Continue on to the [next section](/learning/solutions/automated-diagnostics/first-diagnostic-runbook) to complete the setup
-@tab Runbook Automation
+@tab Automation Actions
 ### Create a PagerDuty API Key
 In the PagerDuty web app:
 
