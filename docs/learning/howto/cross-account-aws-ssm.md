@@ -125,11 +125,16 @@ Add the following permission to the IAM Policy above: **`arn:aws:ssm:*::document
                "Principal": {
                    "AWS": "arn:aws:iam::<<remote EC2 nodes AWS account ID>>:role/<<ARN associated with remote EC2s>>"
                },
-               "Action": [
-                   "s3:GetObject",
-                   "s3:ListBucket"
-               ],
+               "Action": "s3:GetObject",
                "Resource": "arn:aws:s3:::<<name of S3 bucket>>/*"
+           },
+           {
+            	"Effect": "Allow",
+            	"Principal": {
+                    "AWS": "arn:aws:iam::<<remote EC2 nodes AWS account ID>>:role/<<ARN associated with remote EC2s>>"
+            	},
+            	"Action": "s3:ListBucket",
+            	"Resource": "arn:aws:s3:::<<name of S3 bucket>>"
            },
            {
                "Effect": "Allow",
@@ -137,7 +142,8 @@ Add the following permission to the IAM Policy above: **`arn:aws:ssm:*::document
                    "AWS": "arn:aws:iam::<<Runbook Automation AWS account ID>>:role/<<ARN associated with Runbook Automation>>"
                },
                "Action": [
-                   "s3:PutObject"
+                   "s3:PutObject",
+                   "s3:DeleteObject"
                ],
                "Resource": "arn:aws:s3:::<<name of S3 bucket>>/*"
            }
