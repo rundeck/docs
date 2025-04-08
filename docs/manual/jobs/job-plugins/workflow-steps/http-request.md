@@ -11,23 +11,23 @@ This plugin executes an HTTP/S request to a remote endpoint.
 * **Headers**: Additional headers to include in the request.  The headers can be added in YAML or JSON format.
     * YAML example:
     * ```yaml
-    - name: "User-Agent"
-      value: "Buddy"
-    - name: "Content-Type"
-      value: "application/json"
-    ```
+      - name: "User-Agent"
+        value: "Buddy"
+      - name: "Content-Type"
+        value: "application/json"
+      ```
 
     * JSON example:
     * ```json 
-    {
-       "name": "User-Agent",
-       "value": "Buddy"
-    },
-    {
-       "name": "Content-Type",
-       "value": "application/json"
-    }
-    ```
+      {
+         "name": "User-Agent",
+         "value": "Buddy"
+      },
+      {
+         "name": "Content-Type",
+         "value": "application/json"
+      }
+      ```
 
 * **Body**: The body of the HTTP request.
 * **Request Timeout**: The timeout in milliseconds for the HTTP request.
