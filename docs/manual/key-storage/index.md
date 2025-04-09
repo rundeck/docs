@@ -137,15 +137,28 @@ The [Key Storage API](/api/index.md#key-storage) is provided through the standar
      rundeck.feature.projectKeyStorage.enabled=false
 ```
 
-### Enable/Disable public key GUI download option 
+### Enable/Disable public key download
 
-By default, the key storage allows users to view and download public keys. 
-This option can be disabled using the following flag:
+By default, the key storage doesn't allow users to download the content of public keys from API or GUI.
+This option can be enabled using the following flag:
 
 ```yaml
-     rundeck.gui.keystorage.downloadenabled=false
+     rundeck.feature.publicKeysDownload.enabled=true
 ```
 
-Set the value to `false` to disable the download/view option. By default, the attribute is set `true`.
+Set the value to `true` to enable the download public key content. By default, the attribute is set `false`.
+This attribute can be set using the System Configuration (Enterprise) or adding the configuration in `rundeck-config.properties`
+
+#### Enable/Disable public key GUI download option
+
+Once enabled the download of public key content flag, the key storage doesn't allow users to view and download public keys from the GUI by default.
+This option can be enabled using the following flag:
+
+```yaml
+     rundeck.gui.keystorage.downloadenabled=true
+```
+
+Set the value to `true` to enable the download/view option. By default, the attribute is set `false`.
 This attribute can be set using the System Configuration (Commercial) or adding the configuration in `rundeck-config.properties`
+
 
