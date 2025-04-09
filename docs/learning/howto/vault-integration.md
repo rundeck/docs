@@ -134,4 +134,10 @@ Properties explained:
 * `rundeck.storage.provider.[index].config.engineVersion`: Vault Engine Version Key/Value Secret Engine Config.<br>
 * `rundeck.storage.provider.[index].removePathPrefix`: This is set to 'true' to prevent Rundeck from adding the `keys` path to Vault.
 
+:::tip Authentication via LDAP on the Hashicorp Vault plugin
+* Insert the Username and Password in the corresponding fields 
+	* **Username**: Required for user/password and LDAP authentication backend
+	* **Password**: Required for user/password and LDAP authentication backend.
+On the field `Userpass Mount name` change from the default value 'userpass' to 'ldap'
+:::
 :::
