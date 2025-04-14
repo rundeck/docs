@@ -1,4 +1,4 @@
-## AWS Lambda Node Steps
+# AWS Lambda Node Steps
 
 :::enterprise
 :::

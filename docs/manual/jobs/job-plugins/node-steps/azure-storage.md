@@ -1,4 +1,4 @@
-## Azure Storage Node Steps
+# Azure Storage Node Steps
 
 Azure Storage is a cloud service for storing large amounts of unstructured data, such as text or binary data. Azure Storage is highly scalable and available, and can be accessed from anywhere in the world over HTTP or HTTPS.
 

@@ -1,4 +1,4 @@
-## AWS Elastic Container Service (ECS) Node Steps
+# AWS Elastic Container Service (ECS) Node Steps
 
 :::enterprise
 :::

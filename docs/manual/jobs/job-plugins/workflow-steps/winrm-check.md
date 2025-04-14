@@ -1,8 +1,9 @@
-## WinRM Check Plugin
+# WinRM Check Plugin
 
 The WinRM Check plugin provides a way to check the connection with a remote node using winrm-python. The following WinRM Check plugin is available for PagerDuty Runbook Automation:
 
-* [**WinRM Check Step (WinRMCheck)**](#winrm-check-step)
+- [WinRM Check Plugin](#winrm-check-plugin)
+    - [WinRM Check Step](#winrm-check-step)
 
 :::tip Open Source Plugin
 The WinRM Check plugin is open source and available on [GitHub](https://github.com/rundeck-plugins/py-winrm-plugin).

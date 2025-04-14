@@ -1,4 +1,4 @@
-## AWS VPC Workflow Steps
+# AWS VPC Workflow Steps
 
 :::enterprise
 :::
@@ -7,8 +7,10 @@ AWS VPC (Virtual Private Cloud) is a service that contains AWS resources in a vi
 
 The following VPC plugins are available for PagerDuty Runbook Automation:
 
-* [**Configure VPC Flow Logs** (AWS / Configure / VPC / Logs)](#configure-vpc-flow-logs)
-* [**Enable VPC Network Peering** (AWS / Enable VPC / Network Peering)](#enable-vpc-network-peering)
+- [AWS VPC Workflow Steps](#aws-vpc-workflow-steps)
+    - [Authentication](#authentication)
+    - [Configure VPC Flow Logs](#configure-vpc-flow-logs)
+    - [Enable VPC Network Peering](#enable-vpc-network-peering)
 
 ### Authentication
 

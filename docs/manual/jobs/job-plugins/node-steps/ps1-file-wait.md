@@ -1,4 +1,4 @@
-PS1 File Wait - Wait for Windows File Presence
+# PS1 File Wait - Wait for Windows File Presence
 
 The **PS1 File Wait** plugin waits for a file on a Windows node to exist. The plugin is useful for waiting for a file at a specific path to exist.
 

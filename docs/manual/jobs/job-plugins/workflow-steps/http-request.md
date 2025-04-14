@@ -1,4 +1,4 @@
-## HTTP Request Workflow Step
+# HTTP Request Workflow Step
 
 This plugin executes an HTTP/S request to a remote endpoint.
 

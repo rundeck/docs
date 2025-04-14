@@ -1,15 +1,16 @@
-## Docker Container Plugins
+# Docker Container Plugins
 
 The Docker node step plugins provide job steps to manage and inspect Docker containers. The following plugins are available:
 
-- [Docker Container Plugins](#docker-container-plugins-1)
-  - [Execute Command in Container](#execute-command-in-container)
-  - [Inspect Docker Container](#inspect-docker-container)
-  - [Pause Docker Container](#pause-docker-container)
-  - [Unpause Docker Container](#unpause-docker-container)
-  - [Kill Docker Container](#kill-docker-container)
-  - [Docker Container Stats](#docker-container-stats)
-  - [Run Docker Image](#run-docker-image)
+- [Docker Container Plugins](#docker-container-plugins)
+  - [Docker Container Plugins](#docker-container-plugins-1)
+    - [Execute Command in Container](#execute-command-in-container)
+    - [Inspect Docker Container](#inspect-docker-container)
+    - [Pause Docker Container](#pause-docker-container)
+    - [Unpause Docker Container](#unpause-docker-container)
+    - [Kill Docker Container](#kill-docker-container)
+    - [Docker Container Stats](#docker-container-stats)
+    - [Run Docker Image](#run-docker-image)
 
 ## Docker Container Plugins
 

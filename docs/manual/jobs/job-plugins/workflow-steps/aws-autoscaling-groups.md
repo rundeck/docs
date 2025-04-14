@@ -1,4 +1,4 @@
-## AWS Autoscaling Group Workflow Steps
+# AWS Autoscaling Group Workflow Steps
 
 :::enterprise
 :::
@@ -7,7 +7,9 @@ AWS Autoscaling Groups (ASG) are a collection of EC2 instances that are managed 
 
 The following ASG plugins are available for PagerDuty Runbook Automation:
 
-* [**Update Autoscaling Group** (AWS / Autoscaling / Update / Groups)](#update-autoscaling-group)
+- [AWS Autoscaling Group Workflow Steps](#aws-autoscaling-group-workflow-steps)
+    - [Authentication](#authentication)
+    - [Update Autoscaling Group](#update-autoscaling-group)
 
 ![ASG Plugin](/assets/img/aws-update-autoscaling-group.png)<br>
 
