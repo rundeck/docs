@@ -19,7 +19,6 @@ Upgrade instructions [can be found here](/upgrading/index.md).
 | [5.5.0](/history/5_x/version-5.5.0.md)   | August 8th, 2024   | Supported |
 | [5.4.0](/history/5_x/version-5.4.0.md)   | June 18th, 2024   | Supported |
 | [5.3.0](/history/5_x/version-5.3.0.md)   | May 20th, 2024   | Supported |
-| [5.2.0](/history/5_x/version-5.2.0.md)   | April 10th, 2024    | Supported |
 
 ::: warning
 Any versions not listed here are now out of support.  We encourage everyone on older versions to update to a currently supported version.
