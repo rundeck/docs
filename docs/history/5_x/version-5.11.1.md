@@ -1,7 +1,7 @@
 ---
 
 title: "5.11.1 Release Notes"
-date: 2025-04-15
+date: 2025-04-16
 image: /images/chevron-logo-red-on-white.png
 description: "Rundeck | Runbook Automation Releases <VERSION> <DESCRIPTION>"
 feed:
@@ -31,7 +31,7 @@ This point release addresses three critical issues that were identified in versi
 
 Name: <span style="color: deeppink"><span class="glyphicon glyphicon-bullhorn"></span> "Kilimanjaro deeppink bullhorn"</span>
 
-Release Date: April 15, 2025
+Release Date: April 16, 2025
 
 
 ## Community Contributors
