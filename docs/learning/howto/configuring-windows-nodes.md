@@ -1,7 +1,7 @@
 
 # Connect to Windows Nodes with PyWinRM
 
-Rundeck allows users to execute jobs to remote Windows nodes to manage and automate tasks using Rundeck workflows. This article shows how to add a Windows node and execute Rundeck jobs and commands with windows-based systems.
+Rundeck allows users to execute jobs on remote Windows nodes to manage and automate tasks using Rundeck workflows. This article shows how to add a Windows node and execute Rundeck jobs and commands with Windows-based systems.
 
 To communicate with Windows nodes, Rundeck uses an out-of-the-box [Node Execution/ File Copier plugin](https://github.com/rundeck-plugins/py-winrm-plugin) that uses the [WinRM](https://docs.microsoft.com/en-us/windows/win32/winrm/portal) (Windows Remote Management) protocol.
 
@@ -15,7 +15,7 @@ The [pywinrm plugin](https://github.com/rundeck-plugins/py-winrm-plugin) needs t
 
 :::tip
 Make sure that your python installation is same that the one that is exported in your "PATH" environment variable, so the PyWinRm plugin can access its packages.
-- We recommend this commands to check the python installation:
+- We recommend these commands to check the Python installation:
 ```
 # Windows OS
 where python - "example/path/to/python"
@@ -25,18 +25,18 @@ which python - "example/path/to/python"
 **The path to the executable must be the same if we dispatch the command to the required node with the AD-HOC command functionality.**
 :::
 
-The [pywinrm plugin](https://github.com/rundeck-plugins/py-winrm-plugin) uses the python [WinRM Library](https://github.com/diyan/pywinrm/) to provide the WinRM implementation.
+The [pywinrm plugin](https://github.com/rundeck-plugins/py-winrm-plugin) uses the Python [WinRM Library](https://github.com/diyan/pywinrm/) to provide the WinRM implementation.
 
-* Python 3.3-3.5 or PyPy2 installed on Rundeck server. _(Python 3 strongly recommended)_
+* CPython 3.8+ or PyPy3
 * Pywinrm library (It can be installed with the following command: `pip install pywinrm`)
 * OpenSSL version 1.1.1 or higher. (openssl version can be checked with the following command: `openssl version - "OpenSSL 1.1.1k"`)
     * `requests-kerberos` and `requests-credssp` are optional.
   
-Note: Due to networking complexity issues this exercise will not work with the Welcome Projects.  These steps assume you have Rundeck installed [using these instructions](/administration/install/index.md).  For more information see the [Additional Information](#additional-information) section.
+Note: Due to networking complexity issues this exercise will not work with the Welcome Projects.  These steps assume you have Rundeck installed [using these instructions](/administration/install/index.md).  For more information, see the [Additional Information](#additional-information) section.
 
 ## Basic Windows Requirements
 
-To follow this How to Guide, your Windows system needs the following requirements:
+To follow this How-to Guide, your Windows system needs the following requirements:
 
 * A Windows node in the same network as the Rundeck instance
 * Windows Server 2008 R2 or above
@@ -68,7 +68,7 @@ The first step is to configure the Windows machine. To do this, go to the Window
 It's important to allow access to the 5985 port via Windows Firewall (any between the Rundeck server and the node), to receive the remote requests.
 :::
 
->Note: These settings are for Exercise purposes only and do not represent the most secure method of implementing.  Please follow your own security guidelines for production implementations.
+>Note: These settings are for Exercise purposes only and do not represent the most secure method of implementation.  Please follow your own security guidelines for production implementations.
 
 ## Rundeck Configuration
 
@@ -165,7 +165,7 @@ Don't forget to add the Windows user password to the Rundeck key storage.
 
 ### Testing the New Windows Remote Node
 
-Now it's time to send some commands against the windows remote machine.
+Now it's time to send some commands against the Windows remote machine.
 
 1. Click on the **Commands** section on the left sidebar.
 1. On the **Nodes** section use a filter to dispatch only to the Windows machine, type:
