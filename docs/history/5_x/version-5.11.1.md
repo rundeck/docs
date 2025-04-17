@@ -25,7 +25,7 @@ This point release addresses three critical issues that were identified in versi
 - Download the Releases: [Open Source](https://www.rundeck.com/community-downloads/5.11.1) | [Self-Hosted](https://www.rundeck.com/enterprise-downloads/5.11.1)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
 - [Upgrade instructions](/upgrading/index.md)
-- [Catch us on Twitch for the Live Stream Release Video](https://www.twitch.tv/pagerduty)
+- [Catch us on LinkedIn for the Live Stream Release Videos](https://www.linkedin.com/company/pagerduty/events)
 
 ## Version Info
 

@@ -24,8 +24,6 @@ Release Date: May 15th, 2023
 
 Check out the new features and enhancements for PagerDuty Runbook Automation, and Rundeck Community included in this release. This release includes enhancements to the [Enterprise Runner](/administration/runner/index.md), the SSM Node Executor plugins, and a new plugin suite. See below for the full release highlights.
 
-View our [Twitch stream review](https://www.twitch.tv/pdcommunity) of this release live on May 16. 
-
 ## Highlights
 
 * **Plugins on Enterprise Runner:** The [Enterprise Runner](/administration/runner/#enterprise-runner-overview) is used to automate tasks in secure, remote environments. With this latest release, the SQL Run Command, Github Run Script, VMware Node Steps, and File Transfer plugins have been added to the Runner’s capabilities. These additions enable users to more quickly author automation for their remote environments by using plugins instead of scripts and commands.

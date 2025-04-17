@@ -25,8 +25,6 @@ Release Date: October 6, 2022
 
 Check out the new features and enhancements for PagerDuty Runbook Automation, and Rundeck Community included in this release. This release includes a new plugin for CloudWatch that simplifies the management of diagnostics queries, an incubating feature that helps users understand the return on investment (ROI) of jobs, and a number of security and compliance updates and bug fixes.
 
-View our Twitch stream review of this release live on Wednesday, October 12 at 10AM Pacific. [Here’s the event link](https://www.twitch.tv/pagerduty/schedule?seriesID=792f972e-f876-4135-b6c2-6ea30a5c0330).
-
 ## Runbook Automation Updates
 
 > Also includes all Open Source updates from below

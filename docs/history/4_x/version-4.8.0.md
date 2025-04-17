@@ -25,8 +25,6 @@ Release Date: November 10, 2022
 
 Check out the new features and enhancements for PagerDuty Runbook Automation, and Rundeck Community included in this release. This release includes a new plugin that shows queries status pages from cloud providers and SaaS tools to help users quickly understand if a performance degradation is due to a third party and a number of security and compliance updates and bug fixes.
 
-View our Twitch stream review of this release live on Wednesday, November 15 at 10AM Pacific. [Here’s the event link](https://www.twitch.tv/pagerduty/schedule?seriesID=792f972e-f876-4135-b6c2-6ea30a5c0330).
-
 :::warning
 If you are using password authentication with the Rundeck API, the JSESSIONID cookie will change after the first request after authentication. You will have to update your client code to follow redirects for subsequent requests. For example, when using curl you would have to use -b and -c options to update the session cookie in your next request after authentication. Alternately, you could add the -L option to the initial login POST, which will follow the redirect after login and update the session cookie.
 :::

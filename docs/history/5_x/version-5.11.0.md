@@ -18,6 +18,8 @@ feed:
 5.11.0 has been updated to fix some critical bugs.  Please use the [5.11.1 Release](version-5.11.1.md).
 :::
 
+<VidStack src="youtube/u-JcLa9XcJQ" poster="https://img.youtube.com/vi/u-JcLa9XcJQ/maxresdefault.jpg"/>
+
 ### MongoDB Job Step Plugin
 
 MongoDB is a widely adopted NoSQL database known for its flexibility and ease of use, making it a popular choice for modern application development. With our new [MongoDB job step plugin](/manual/jobs/job-plugins/workflow-steps/mongodb.md), you can now run arbitrary queries against your MongoDB databases as part of your Runbook Automation workflows. This enables teams to perform tasks–such as automating diagnostics, data validation, and operational checks—while exposing those tasks through safe, self-service interfaces. It’s a powerful way to reduce manual effort, eliminate DB access bottlenecks, and bring MongoDB operations into your existing automation ecosystem.  Our [MongoDB How-To article](/learning/howto/how2mongodb.md) has a full walk through how to setup and test the plugin.
@@ -55,7 +57,7 @@ The SQL Query job plugin is commonly used to automate tasks or provide a self-se
 - Download the Releases: [Open Source](https://www.rundeck.com/community-downloads/5.11.0) | [Self-Hosted](https://www.rundeck.com/enterprise-downloads/5.11.0)
 - [Sign up for Release Notes](https://www.rundeck.com/release-notes-signup)
 - [Upgrade instructions](/upgrading/index.md)
-- [Catch us on Twitch for the Live Stream Release Video](https://www.twitch.tv/pagerduty)
+- [Catch us on LinkedIn for the Live Stream Release Videos](https://www.linkedin.com/company/pagerduty/events)
 
 ## Version Info
 
