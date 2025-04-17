@@ -167,6 +167,7 @@ export default [{
                         {text: 'Job State Conditional', link: '/manual/jobs/job-plugins/workflow-steps/builtin.md#job-state-conditional',icon: '/assets/img/pd-icon.png'},
                         {text: 'Log Data', link: '/manual/jobs/job-plugins/workflow-steps/builtin.md#log-data-step',icon: '/assets/img/pd-icon.png'},
                         {text: 'Loop Script', link: '/manual/jobs/job-plugins/workflow-steps/loop-plugins',icon: '/assets/img/pd-icon.png'},
+                        {text: 'MongoDB Command Runner', link: '/manual/jobs/job-plugins/workflow-steps/mongodb', icon: '/assets/img/mongodb-logo.png'},
                         {text: 'Oracle', link: '/manual/jobs/job-plugins/workflow-steps/oracle', icon: '/assets/img/oracle-icon.png'},
                         {text: 'PagerDuty', link: '/manual/jobs/job-plugins/workflow-steps/pagerduty', icon: '/assets/img/pd-icon.png'},
                         {text: 'Progress Badge', link: '/manual/jobs/job-plugins/workflow-steps/progress-badge', icon: '/assets/img/pd-icon.png'},
