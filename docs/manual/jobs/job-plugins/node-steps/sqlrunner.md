@@ -1,97 +1,107 @@
 # SQL Runner Plugin (Commercial)
 
-The SQLRunner plugin is a node step plugin included with Runbook Automation that executes a .sql script against a JDBC URL.
+The SQL Runner Plugin is a node step plugin that enables direct execution of SQL scripts and commands within your Rundeck workflows. This plugin supports running SQL statements against any database with JDBC connectivity, making it versatile for database automation tasks. Whether you need to perform database updates, run queries, or execute complex SQL scripts, this plugin provides a robust way to integrate database operations into your automation workflows.
 
-## Usage
-
-Add "SQLRunner Plugin" as a step in a workflow.
-
-Provider name: `org.rundeck.sqlrunner.SQLRunnerNodeStepPlugin`
+![SQL Runner Plugin](/assets/img/sqlrunner-plugin.png)
 
 ## Configuration
 
-- _Statement Delimiter_: Single character used to define the end of a statement when multiple statements are present. Default: '/'
-- _SQL script path_: Path to the sql script
-- _SQL inline script_: Alternative to sql script path.
-- _Variables_: comma separated list of variables values too be used as Prepared Statement.
-- _JDBC Driver class name_: e.g. `org.mariadb.jdbc.Driver`
-- _JDBC url_: full JDBC url to use for connections
-- _Database username_ connection username
-- _Database password_ connection password
-- _Auto commit flag_: if true, a `Connection::commit()` will be called after the script.
+### Script Configuration
 
+- **Statement Delimiter** (optional)
+  : Single character used to define the end of a statement when multiple statements are present
+  - Default: '/'
+  - Can be overridden in the script using the comment: `-- delimiter = ;`
 
-:::tip
-Use a comment `-- delimiter = ;` at the beggining of the script file or inline script to override the **statement delimiter** property.
+- **SQL Script Source** (required, choose one)
+  - **SQL script path**: File path or URL to the SQL script
+    - Supports local files and HTTP(S) URLs
+  - **SQL command(s)**: Inline SQL commands
+    - Supports option value references (e.g., `${option.tablename}`)
+    - Multiple statements supported
+
+:::note
+If both script path and inline commands are provided, the plugin will use the script path and ignore the inline commands.
 :::
 
-## Usage of variables
+### Database Connection
 
-The variable text field can receive a comma separated list of variables values too be used as Prepared Statement, this is, replacing a `?` variable in the script.
-The list of variables  can be a list of values comma separated or using the format `type:value`.
-If you omit the type, it's going to be passed as generic object to the JDBC connector, this works only on some cases.
-## Example Job XML
+- **JDBC Driver class name** (required)
+  : The full class name of the JDBC driver
+  - Example: `org.mariadb.jdbc.Driver`
+  - Common drivers:
+    - PostgreSQL: `org.postgresql.Driver`
+    - MySQL: `com.mysql.jdbc.Driver`
+    - MariaDB: `org.mariadb.jdbc.Driver`
+    - Oracle: `oracle.jdbc.OracleDriver`
 
-```xml
-<joblist>
-  <job>
-    <description></description>
-    <executionEnabled>true</executionEnabled>
-    <id>c9704ff9-c34f-455e-aa4b-8f98eae9ed5b</id>
-    <loglevel>INFO</loglevel>
-    <name>SQL Test</name>
-    <scheduleEnabled>true</scheduleEnabled>
-    <sequence keepgoing='false' strategy='node-first'>
-      <command>
-        <node-step-plugin type='org.rundeck.sqlrunner.SQLRunnerNodeStepPlugin'>
-          <configuration>
-            <entry key='commit' value='true' />
-            <entry key='jdbcDriver' value='org.mariadb.jdbc.Driver' />
-            <entry key='jdbcUrl' value='asdf' />
-            <entry key='password' value='password' />
-            <entry key='scriptPath' value='/var/sql/dbupdate.sql' />
-            <entry key='user' value='user' />
-          </configuration>
-        </node-step-plugin>
-      </command>
-    </sequence>
-    <uuid>c9704ff9-c34f-455e-aa4b-8f98eae9ed5b</uuid>
-  </job>
-</joblist>
-```
+- **JDBC URL** (required)
+  : The complete JDBC connection URL
+  - Format varies by database type
+  - Examples:
+    - PostgreSQL: `jdbc:postgresql://hostname:5432/database`
+    - MySQL: `jdbc:mysql://hostname:3306/database`
 
-## Example Job XML using variables
+### Authentication
 
-```xml
-<joblist>
-   <job>
-      <description />
-      <context>
-         <options preserveOrder="true">
-            <option name="name" required="true" />
-         </options>
-      </context>
-      <executionEnabled>true</executionEnabled>
-      <id>2d782a36-c06b-47fa-8ceb-7fcc9ff9fab7</id>
-      <loglevel>INFO</loglevel>
-      <name>SQL_test</name>v
-      <scheduleEnabled>true</scheduleEnabled>
-      <sequence keepgoing="false" strategy="node-first">
-         <command>
-            <node-step-plugin type="org.rundeck.sqlrunner.SQLRunnerNodeStepPlugin">
-               <configuration>
-                  <entry key="commit" value="true" />
-                  <entry key="jdbcDriver" value="org.postgresql.Driver" />
-                  <entry key="jdbcUrl" value="jdbc:postgresql://wintermute/rundeck" />
-                  <entry key="password" value="rundeck" />
-                  <entry key="scriptBody" value="INSERT INTO test (id, version, args, date) VALUES(0, ?, ?, now());" />
-                  <entry key="user" value="rundeck" />
-                  <entry key="variables" value="int:0,string:${option.name}" />
-               </configuration>
-            </node-step-plugin>
-         </command>
-      </sequence>
-      <uuid>2d782a36-c06b-47fa-8ceb-7fcc9ff9fab7</uuid>
-   </job>
-</joblist>
-```
+- **Username** (required)
+  : Database connection username
+
+- **Password** (required, choose one method)
+  - **Password from key storage**: Securely stored in Rundeck's Key Storage
+  - **Direct Password**: Plain text password (not recommended for production)
+
+### Execution Options
+
+- **Auto commit flag**
+  : Controls transaction behavior
+  - If true, executes `Connection::commit()` after the script
+  - Default: false
+
+- **Variables**
+  : Comma-separated list of values for prepared statements
+  - Replaces `?` placeholders in the SQL script
+  - Format: `type:value` or simple `value`
+  - Supported types:
+    - `boolean`: Boolean values
+    - `byte`: Byte values
+    - `short`: Short integers
+    - `int`: Integers
+    - `long`: Long integers
+    - `float`: Float numbers
+    - `double`: Double numbers
+    - `string`: Text strings
+
+- **Output Format**
+  : Controls how query results are displayed
+  - Options:
+    - `text`: Simple text output (default)
+    - `table`: CSV-formatted table
+    - `json`: JSON format
+
+## Notes and Tips
+
+:::tip
+For scripts with multiple statements, you can override the delimiter using a comment at the beginning of your script:
+
+-- delimiter = ;
+CREATE TABLE users (...);
+INSERT INTO users (...);
+:::
+
+:::warning
+When using password storage, ensure the key storage path is correctly set and accessible to the Rundeck server.
+:::
+
+- Supports both local and URL-based script sources
+- Variables can be used for prepared statements to prevent SQL injection
+- Results can be formatted as text, CSV tables, or JSON
+- Transaction control through auto-commit configuration
+- Compatible with any database providing JDBC drivers
+
+## Security Considerations
+
+- Use Key Storage for database passwords instead of plain text
+- Consider using prepared statements with variables for dynamic SQL
+- Ensure proper database user permissions
+- Validate SQL scripts before deployment
