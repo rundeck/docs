@@ -140,6 +140,7 @@ export default [{
             '/learning/howto/using-webhooks.md',
             '/learning/howto/cross-account-aws-ssm.md',
             '/learning/howto/pagerduty-notification.md',
+            '/learning/howto/how2mongodb.md',
             '/learning/howto/using-ansible.md',
             '/learning/howto/config-sn-nodesource.md',
             '/learning/howto/configure-gcp-plugins.md',

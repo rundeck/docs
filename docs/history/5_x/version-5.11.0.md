@@ -20,7 +20,7 @@ feed:
 
 ### MongoDB Job Step Plugin
 
-MongoDB is a widely adopted NoSQL database known for its flexibility and ease of use, making it a popular choice for modern application development. With our new MongoDB job step plugin, you can now run arbitrary queries against your MongoDB databases as part of your Runbook Automation workflows. This enables teams to perform tasks–such as automating diagnostics, data validation, and operational checks—while exposing those tasks through safe, self-service interfaces. It’s a powerful way to reduce manual effort, eliminate DB access bottlenecks, and bring MongoDB operations into your existing automation ecosystem.
+MongoDB is a widely adopted NoSQL database known for its flexibility and ease of use, making it a popular choice for modern application development. With our new [MongoDB job step plugin](/manual/jobs/job-plugins/workflow-steps/mongodb.md), you can now run arbitrary queries against your MongoDB databases as part of your Runbook Automation workflows. This enables teams to perform tasks–such as automating diagnostics, data validation, and operational checks—while exposing those tasks through safe, self-service interfaces. It’s a powerful way to reduce manual effort, eliminate DB access bottlenecks, and bring MongoDB operations into your existing automation ecosystem.  Our [MongoDB How-To article](/learning/howto/how2mongodb.md) has a full walk through how to setup and test the plugin.
 
 ![MongoDB Command Runner](/assets/img/relnotes-511-mongo.png)<br>
 
