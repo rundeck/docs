@@ -2,6 +2,8 @@
 
 The MongoDB Command Step plugin allows you to execute MongoDB commands and queries directly from your Rundeck workflows. MongoDB is a popular NoSQL database that stores data in flexible, JSON-like documents, making it ideal for applications that need to handle diverse and changing data structures. Unlike traditional relational databases, MongoDB's document model allows for nested data structures, arrays, and dynamic schemas. This plugin supports both standard MongoDB deployments and MongoDB Atlas (MongoDB's cloud database service), giving you the flexibility to interact with your MongoDB databases through Rundeck jobs. Whether you need to query collections, perform aggregations, update documents, or manage database operations, this plugin provides a straightforward way to integrate MongoDB operations into your automation workflows.
 
+![MongoDB Command Runner](/assets/img/relnotes-511-mongo.png)<br>
+
 ## Configuration
 
 ### Connection Options
