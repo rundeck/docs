@@ -67,6 +67,7 @@ If there is a mix of node and workflow steps (which is common) the steps will be
 - [Sumo Logic (Commercial)](/manual/jobs/job-plugins/workflow-steps/sumo-logic.md)
 - [Loop Script Plugins (Commercial)](/manual/jobs/job-plugins/workflow-steps/loop-plugins.md)
 - [RSS Feed Plugin (Commercial)](/manual/jobs/job-plugins/workflow-steps/rss-feed-plugin.md)
+- [MongoDB Command Runner](/manual/jobs/job-plugins/workflow-steps/mongodb.md)
 
 ## Notifications
 
