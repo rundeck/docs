@@ -28,7 +28,7 @@ MongoDB is a widely adopted NoSQL database known for its flexibility and ease of
 
 ### JSON and Table for SQL Query Plugin
 
-The SQL Query job plugin is commonly used to automate tasks or provide a self-service mechanism for interfacing with SQL databases–such as MySQL, MSSQL, Oracle and so on.  Previously, the job step would always return the output of the query as plain-text log-lines.  Now, with this latest enhancement, users can select a format from a list of options, including JSON and CSV.  These output options allow for the SQL output to be viewable as a HTML table in the GUI, and provides an easier method to capture specific data elements using log filters–for example, using the JQ log filter with the JSON output format.  This enhancement both provides an improved visual experience of retrieving database data but also reduces the steps to use that data in subsequent workflow steps.
+The [SQL Runner Node Step plugin](/manual/jobs/job-plugins/node-steps/sqlrunner.md) is commonly used to automate tasks or provide a self-service mechanism for interfacing with SQL databases–such as MySQL, MSSQL, Oracle and so on.  Previously, the step would always return the output of the query as plain-text log-lines.  Now, with this latest enhancement, users can select a format from a list of options, including JSON and CSV.  These output options allow for the SQL output to be viewable as a HTML table in the GUI, and provides an easier method to capture specific data elements using log filters–for example, using the JQ log filter with the JSON output format.  This enhancement both provides an improved visual experience of retrieving database data but also reduces the steps to use that data in subsequent workflow steps.
 
 
 
