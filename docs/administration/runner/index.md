@@ -33,20 +33,16 @@ Tasks can be carried out over multiple environments simultaneously, thereby redu
    - The Runner can be used to discover inventory in secure or remote environments. 
 8. The Runner can be deployed as a container within Kubernetes clusters to perform actions within the cluster.
 
-For more details on how the Runner operates, see [**Runner Concepts & Architecture**](/administration/runner/concepts.md).
-
-### Replicas Overview
+## Replicas Overview
 
 Runners are composed of one or more **Replicas**. Each Replica is a separate instance of the Runner that can be deployed on different servers, virtual-machines or containers. 
 Replicas can be used to scale the Runner's capacity and provide redundancy.
 
 When a task is assigned to a Runner - such as a Job execution, fetching nodes or retrieving secrets - then any Replica of that Runner can pick up the task. This allows for load balancing and fault tolerance.
 
-![Replicas Architecutre](/assets/img/replicas-architecture.png)<br>
+For more details on how Replicas operate, see the [Runner-Replica Model](/administration/runner/runner-management/runner-replica-model.md).
 
-For more details on how Replicas operate, see [**Runner Replicas**](/administration/runner/concepts.md#runner-replicas).
-
-### Enabling the Latest Runner Features
+## Enabling the Latest Runner Features
 
 To use the latest Enterprise Runner features, the following feature-flag must be enabled in **System Configuration** or optionally in the `rundeck-config.properties` file if using the self-hosted software.
 

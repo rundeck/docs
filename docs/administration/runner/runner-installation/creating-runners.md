@@ -34,50 +34,51 @@ If setting up Enterprise Runners on virtualized environments, here are baseline 
 To create a Runner at the **System level**, users will need the following ACL permissions:
 
 ```acl
-by:
-  group: my-user-group-name
-description: Allow creating of Runners at the System level
-for:
-  runner:
-  - allow:
-    - create
-context:
-  application: rundeck
 
----
-by:
-group: my-user-group-name
-description: Allow "write" access within Runner management at the System level
-for:
-resource:
-- allow:
-    - admin
-      equals:
-      kind: runner
-      context:
+    by:
+      group: my-user-group-name
+    description: Allow creating of Runners at the System level
+    for:
+      runner:
+      - allow:
+        - create
+    context:
       application: rundeck
----
-by:
-group: my-user-group-name
-description: Allow creation of apitokens (general)
-for:
-apitoken:
-- allow:
-    - create
-      context:
-      application: rundeck
----
-by:
-group: my-user-group-name
-description: Restrict apitoken creation to only generate_service_token to be used for Runners
-for:
-resource:
-- allow:
-    - generate_service_token
-      equals:
-      kind: apitoken
-      context:
-      application: rundeck
+    
+    ---
+    by:
+    group: my-user-group-name
+    description: Allow "write" access within Runner management at the System level
+    for:
+    resource:
+    - allow:
+        - admin
+          equals:
+          kind: runner
+          context:
+          application: rundeck
+    ---
+    by:
+    group: my-user-group-name
+    description: Allow creation of apitokens (general)
+    for:
+    apitoken:
+    - allow:
+        - create
+          context:
+          application: rundeck
+    ---
+    by:
+    group: my-user-group-name
+    description: Restrict apitoken creation to only generate_service_token to be used for Runners
+    for:
+    resource:
+    - allow:
+        - generate_service_token
+          equals:
+          kind: apitoken
+          context:
+          application: rundeck
 ```
 
 * Change **`my-user-group-name`** in the above ACL policy to the name of the user group that needs to have these permissions.
@@ -90,51 +91,51 @@ resource:
 To create a Runner within a Project, users will need the following ACL permissions:
 
 ```acl
-by:
-  group: my-user-group-name
-description: Allow "write" for runner feature within specific project
-for:
-  resource:
-  - allow:
-    - admin
-    equals:
-      kind: runner
-context:
-  project: my-project-name
-
----
-by:
-  group: my-user-group-name
-description: Allow [create, read] for runners within specific project
-for:
-  runner:
-  - allow:
-    - create
-    - read
-context:
-  project: my-project-name
----
-by:
-  group: runneradmin
-description: Allow creation of apitokens (general)
-for:
-  apitoken:
-  - allow:
-    - create
-context:
-  application: rundeck
----
-by:
-  group: runneradmin
-description: Restrict apitoken creation to only generate_service_token to be used for Runners
-for:
-  resource:
-  - allow:
-    - generate_service_token
-    equals:
-      kind: apitoken
-context:
-  application: rundeck
+    by:
+      group: my-user-group-name
+    description: Allow "write" for runner feature within specific project
+    for:
+      resource:
+      - allow:
+        - admin
+        equals:
+          kind: runner
+    context:
+      project: my-project-name
+    
+    ---
+    by:
+      group: my-user-group-name
+    description: Allow [create, read] for runners within specific project
+    for:
+      runner:
+      - allow:
+        - create
+        - read
+    context:
+      project: my-project-name
+    ---
+    by:
+      group: runneradmin
+    description: Allow creation of apitokens (general)
+    for:
+      apitoken:
+      - allow:
+        - create
+    context:
+      application: rundeck
+    ---
+    by:
+      group: runneradmin
+    description: Restrict apitoken creation to only generate_service_token to be used for Runners
+    for:
+      resource:
+      - allow:
+        - generate_service_token
+        equals:
+          kind: apitoken
+    context:
+      application: rundeck
 ```
 
 * Change **`my-user-group-name`** in the above ACL policy to the name of the user group that needs to have these permissions.
