@@ -53,6 +53,7 @@ export default [{
                 link: '/administration/runner/',
                 children: [
                   {link:'/administration/runner/', text: 'Runner Overview'},
+                  {link: '/administration/runner/concepts.md', text: "Concepts & Architecture"},
                   {
                     text: 'Runner Installation',
                     collapsible: true,
