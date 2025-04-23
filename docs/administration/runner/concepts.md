@@ -4,6 +4,12 @@
 
 ## Runner Replicas
 
+### Advantages of Replicas
+
+* **Scalability**
+* **Fault Tolerance**
+* **Consistency & Predictability Guardrails**
+
 ## Ephemeral vs. Persistent Replicas
 
 ## Affinity & Reference Jobs
