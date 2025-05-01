@@ -54,7 +54,13 @@ export default defineUserConfig({
         exclude: ['@vuepress/theme-hope']
       }
     },
-    vuePluginOptions: {},
+    vuePluginOptions: {
+      template: {
+        compilerOptions: {
+          isCustomElement: (tag) => ['openapi-explorer'].includes(tag)
+        }
+      }
+    },
   }),
   debug: false,
   title: '',
@@ -341,6 +347,7 @@ export default defineUserConfig({
     registerComponentsPlugin({
       components: {
         RundeckSwaggerUi: path.resolve(__dirname, './components/RundeckSwaggerUI.vue'),
+        OpenApiExplorer: path.resolve(__dirname, './components/OpenApiExplorer.vue')
       },
     }),
     googleAnalyticsPlugin({
