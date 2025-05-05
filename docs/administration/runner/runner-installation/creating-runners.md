@@ -21,10 +21,10 @@ If setting up Enterprise Runners on virtualized environments, here are baseline 
 
 |               | **Minimum** | **Medium** | **Large** |
   |---------------|-------------|------------|-----------|
-| **vCPU**      | 4 cores     | 8 cores    | 12 cores  |
-| **Memory**    | 8 GiB       | 16 GiB     | 32 GiB    |
-| **Java Heap** | 6 GiB       | 12 GiB     | 24 GiB    |
-| **Storage**   | 40 GiB      | 40 GiB     | 40 GiB    |
+| **vCPU**      | 2 core      | 4 cores    | 8 cores   |
+| **Memory**    | 4 GiB       | 8 GiB      | 16 GiB    |
+| **Java Heap** | 2 GiB       | 6 GiB      | 12 GiB    |
+| **Storage**   | 8 GiB       | 20 GiB     | 20 GiB    |
 
 ### Permissions
 

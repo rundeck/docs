@@ -27,8 +27,8 @@ When a task is assigned to a Runner - such as a Job execution, fetching nodes, o
 Since any Replica can pick up a task for a Runner, it is important to **ensure that Replica hosts are configured to be as identical as possible**. Doing so results in consistent behavior as tasks are picked up by the Replicas.
 
 Runbook Automation does provide some built-in consistency guardrails, such as:
-* When a Runner is created and "Windows" is selected as the Deployment Type, then all Replicas for that Runner must be deployed on Windows hosts. The same is true for Linux.
-* When Replicas for a given Runner differ in agent version, then a warning is shown in the GUI informing the user that it is best practice to keep Replicas in aligned with the same version.
+* **Operating System Alignment**: When a Runner is created and "Windows" is selected as the Deployment Type, then all Replicas for that Runner must be deployed on Windows hosts. The same is true for Linux.
+* **Version Alignment**: When Replicas for a given Runner differ in agent version, then a warning is shown in the GUI informing the user that it is best practice to keep Replicas in aligned with the same version.
 
 :::tip Example
 
@@ -66,7 +66,7 @@ There are many advantages to using multiple Replicas for a Runner:
 
 * **Scalability**: By adding more Replicas, the Runner can handle more tasks and scale to meet demand.
 * **Fault Tolerance**: If one Replica goes offline, the other Replicas can continue to pick up tasks, ensuring that the Runner remains operational.
-* **Consistency & Predictability Guardrails**: Rather than creating multiple Runners and managing them separately, Replicas allow for a single Runner to be deployed across multiple hosts. This allows for consistent behavior and predictable task execution.
+* **Consistency & Predictability Guardrails**: Rather than creating multiple Runners and manually ensuring they are configured identically, Replicas allow for a single Runner to be deployed across multiple hosts. This allows for consistent behavior and predictable task execution.
 
 ## Ephemeral vs. Persistent Replicas
 
@@ -94,14 +94,19 @@ In order to handle stateful operations - such as temporarily saving files on the
 
 The **Local Runner** refers to the Runbook Automation cluster or SaaS instance itself. When using the [Manual Runner Selection](/docs/administration/runner/runner-management/project-dispatch-configuration.md#manual-runner-selection), the Local Runner can be selected which will result in the Job being executed on the Runbook Automation cluster itself.
 
-## Example Architectures
+[//]: # (## Example Architectures)
 
-The following are example architectures that can be implemented using the Enterprise Runner. These examples are not exhaustive, but rather a starting point for understanding how the Runner can be used in various environments.
+[//]: # ()
+[//]: # (The following are example architectures that can be implemented using the Enterprise Runner. These examples are not exhaustive, but rather a starting point for understanding how the Runner can be used in various environments.)
 
-### Disparate Cloud Environments
+[//]: # ()
+[//]: # (### Disparate Cloud Environments)
 
-### Hybrid Cloud
+[//]: # ()
+[//]: # (### Hybrid Cloud)
 
-### Physical & Remote Locations
+[//]: # ()
+[//]: # (### Physical & Remote Locations)
 
-### Multi-Team Segmentation
+[//]: # ()
+[//]: # (### Multi-Team Segmentation)

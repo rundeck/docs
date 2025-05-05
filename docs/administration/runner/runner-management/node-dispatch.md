@@ -36,14 +36,6 @@ Nodes that represent Runners are dependent on the **Local** Node Source to be co
 To still use the Local Node Source, but prevent the execution of commands and scripts on the Runbook Automation cluster members, set the JVM system property **`rundeck.localExecutor.disabled=true`** or **`DISABLED_LOCAL_EXECUTOR=true`** for Docker installations.
 :::
 
-:::warning Local Node Source Requirement
-If Run on Runner option is selected in the job **Local** Node Source to be configured.  Removing the Local Node Source will result in the removal of the Runner nodes from the inventory.
-
-![Local node source](/assets/img/local-node-source.png)<br>
-
-To still use the Local Node Source, but prevent the execution of commands and scripts on the Runbook Automation cluster members, set the JVM system property **`rundeck.localExecutor.disabled=true`** or **`DISABLED_LOCAL_EXECUTOR=true`** for Docker installations.
-:::
-
 ## Remote Node Dispatch 
 
 Enabling the _**Remote Node Dispatch**_ setting allows the Runner to dispatch commands, scripts and api-calls to _remote_ nodes using protocols such as SSH, WinRM and HTTP/S.  This is necessary for securely dispatching to nodes from Runbook Automation Cloud or to nodes that are not directly accessible from the self-hosted cluster.
@@ -55,6 +47,7 @@ To define the Node Filter for a Runner:
 2. Select the Runner by clicking on the Runner's name.
 3. Click on the **Node Dispatch** tab.
 4. Enable the _**Remote Node Dispatch**_ setting.
+    ![](/assets/img/runner-node-dispatch.png)
 5. Define the Node Filter using the **Node Filter** field.
 6. Click **Save Configuration**.
 
@@ -90,6 +83,4 @@ When defining Node Filters for Runners, it is possible to have filters on multip
 For example, one Runner may have the node filter ```region: "us-west-1"``` and another Runner may have the node filter ```region: "us-west-1" osFamily: "windows"```.
 In this case, Jobs steps that target _Windows_ nodes in the _US-WEST-1_ region could be dispatched through **_either_** Runner.
 
-While this can be useful for redundancy purposes, it requires careful considering that both Runners and their hosts are configured as identically as possible to reduce the likelihood of unpredictable behavior.
-
-Native high-availability and horizontal scaling of Runners is planned for a future release.
+It is recommended to **avoid overlapping Node Filters for Runners**, as this can lead to confusion and unexpected behavior.  Instead, it is recommended to use Replicas to scale the Runner's capacity and provide redundancy.
