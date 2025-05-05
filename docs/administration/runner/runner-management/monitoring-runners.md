@@ -22,7 +22,7 @@ The status of a Runner is displayed in the **Runners** page. The status is repre
 
 The status of a Runner replica is displayed on the list of Replicas for a specific Runner. The status is represented by an icon and a description. The following table describes the different statuses:
 
-
+Health --> Unknown (after ___ seconds) --> Down (after ___ seconds)
 
 ## Ping Runners
 
