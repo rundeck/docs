@@ -21,26 +21,82 @@ The **Runner** is composed of one or more **Replicas**. Each Replica is a separa
 
 When a task is assigned to a Runner - such as a Job execution, fetching nodes, or retrieving secrets - any Replica of that Runner can pick up the task. This allows for load balancing and fault tolerance.
 
+![](/assets/img/replicas-architecture.png)
+<p style="text-align: center;"><em>A single Replica is assigned to a given task, but any Replica can pick up the task.</em></p>
+
 Since any Replica can pick up a task for a Runner, it is important to **ensure that Replica hosts are configured to be as identical as possible**. Doing so results in consistent behavior as tasks are picked up by the Replicas.
 
 Runbook Automation does provide some built-in consistency guardrails, such as:
 * When a Runner is created and "Windows" is selected as the Deployment Type, then all Replicas for that Runner must be deployed on Windows hosts. The same is true for Linux.
 * When Replicas for a given Runner differ in agent version, then a warning is shown in the GUI informing the user that it is best practice to keep Replicas in aligned with the same version.
 
+:::tip Example
+
+## Runner & Replica Operations Example
+
+In this example, a Job is executed that targets nodes that span two different environments - such as **`US-WEST`** and **`US-EAST`**.
+
+![](/assets/img/runner-job-example-node-filter.png)<br>
+
+Two Runners are configured in the Project where this Job is executed: one that is assigned to nodes in **`US-WEST`** and another that is assigned to nodes **`US-EAST`**.
+This is configured through the [Node Filter](/administration/runner/runner-management/node-dispatch.md#remote-node-dispatch) of each Runner:
+
+![](/assets/img/runner-node-filters-example.png)<br>
+
+When this Job is invoked, the system identifies which Runners are responsible for the nodes that are targeted by the Job. In this case, the system will select the Runner that is assigned to **`US-WEST`** for nodes in **`US-WEST`** and the Runner that is assigned to **`US-EAST`** for nodes in **`US-EAST`**.
+
+Next, the system will also identify an individual Replica per Runner that should be used for this Job execution. The selection of the Replica is based on the current load of the Replicas - as determined by the number of active tasks assigned to the Replicas.
+
+![](/assets/img/us-west-replicas.png)
+<p style="text-align: center;"><em>A single Replica is assigned to a Job execution on a per-Runner basis.</em></p>
+
+In other words, the Replica with the fewest current operations from the **`US-WEST`** Runner will be selected and assigned the node-steps for the nodes in **`US-WEST`**. The same selection process will take place for the **`US-EAST`** Runner:
+
+![](/assets/img/replicas-architecture.png)
+
+As the Job executes, the log-output of the node-steps for the Job will show the Runner that was used for the step, and hovering the cursor of this show the specific Replica that was used for the step:
+
+**<<NEED PICTURE DEMONSTRATING RUNNER + REPLICA SELECTION FOR NODE STEPS>>**
+
+:::
 
 ### Advantages of Replicas
 
-* **Scalability**
-* **Fault Tolerance**
-* **Consistency & Predictability Guardrails**
+There are many advantages to using multiple Replicas for a Runner:
+
+* **Scalability**: By adding more Replicas, the Runner can handle more tasks and scale to meet demand.
+* **Fault Tolerance**: If one Replica goes offline, the other Replicas can continue to pick up tasks, ensuring that the Runner remains operational.
+* **Consistency & Predictability Guardrails**: Rather than creating multiple Runners and managing them separately, Replicas allow for a single Runner to be deployed across multiple hosts. This allows for consistent behavior and predictable task execution.
 
 ## Ephemeral vs. Persistent Replicas
 
+A Runner can be configured to treat its Replicas as either **Ephemeral** or **Persistent**.
+
+![Ephemeral Replicas Toggle](/assets/img/ephemeral-replicas-toggle.png)
+_When creating a Runner, the **Treat Replicas as Ephemeral** toggle can be enabled or disabled._
+
+### Ephemeral Replicas
+
+Enable the **Treat Replicas as Ephemeral** option when Replicas will be dynamically created and destroyed through container or VM orchestration - such as Kubernetes or VM auto-scaling-groups. 
+
+When enabled, the Runner will automatically remove Replicas that are no longer available after 10 minutes. As such, the Runner's overall health is only changed when _no_ Replicas are available - but not changed when individual Replicas are no longer available.
+
+This "expiration window" can be changed by setting the system property **`TBD`** to a different value.
+
+Replicas cannot be manually added or removed by the GUI or API when this option is enabled, rather they must be managed through the third-party orchestration tool - such as Kubernetes or VM auto-scaling-groups.
+
 ## Affinity & Reference Jobs
+
+When a Job is initiated, a Runner's Replica is selected to execute the Job steps that target nodes - when those nodes are assigned to a Runner via the [Runner's Node Filter](/administration/runner/runner-management/node-dispatch.md#remote-node-dispatch).
+In order to handle stateful operations - such as temporarily saving files on the Replica's host - the Runner's Replica that is chosen for a given Job execution is the same Replica that is used for all node-steps within that Job. Similarly, if a Job Reference step is used, then the steps within the referenced Job (that target the same nodes as the "Parent" Job) will be executed on the same Replica.
 
 ## Local Runner
 
+The **Local Runner** refers to the Runbook Automation cluster or SaaS instance itself. When using the [Manual Runner Selection](/docs/administration/runner/runner-management/project-dispatch-configuration.md#manual-runner-selection), the Local Runner can be selected which will result in the Job being executed on the Runbook Automation cluster itself.
+
 ## Example Architectures
+
+The following are example architectures that can be implemented using the Enterprise Runner. These examples are not exhaustive, but rather a starting point for understanding how the Runner can be used in various environments.
 
 ### Disparate Cloud Environments
 

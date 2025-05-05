@@ -40,7 +40,9 @@ Replicas can be used to scale the Runner's capacity and provide redundancy.
 
 When a task is assigned to a Runner - such as a Job execution, fetching nodes or retrieving secrets - then any Replica of that Runner can pick up the task. This allows for load balancing and fault tolerance.
 
-For more details on how Replicas operate, see the [Runner-Replica Model](/administration/runner/runner-management/runner-replica-model.md).
+![Replicas Architecutre](/assets/img/replicas-architecture.png)<br>
+
+For more details on how Replicas operate, see [Runner Replicas](/administration/runner/concepts.md#runner-replicas).
 
 ## Enabling the Latest Runner Features
 
