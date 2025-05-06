@@ -54,9 +54,9 @@ In other words, the Replica with the fewest current operations from the **`US-WE
 
 ![](/assets/img/replicas-architecture.png)
 
-As the Job executes, the log-output of the node-steps for the Job will show the Runner that was used for the step, and hovering the cursor of this show the specific Replica that was used for the step:
+As the Job executes, the log-output of the node-steps for the Job will show the Runner that was used for the step, and clicking on the Runner name will show the specific Replica ID that was used for the step:
 
-**<<NEED PICTURE DEMONSTRATING RUNNER + REPLICA SELECTION FOR NODE STEPS>>**
+![](/assets/img/replica-job-exec-output.png)<br>
 
 :::
 
