@@ -5,7 +5,7 @@ info:
   license:
     name: Apache 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0.html
-  version: "48"
+  version: "52"
 externalDocs:
   description: Original Rundeck API Documentation
   url: https://docs.rundeck.com/docs/api/rundeck-api.html
@@ -41,6 +41,196 @@ paths:
                   value:
                     apiversion: 44
                     href: http://localhost:4441/api/44
+  /authorizations/application/{kind}:
+    get:
+      tags:
+      - authorization
+      summary: Get authorizations for an application resource kind
+      description: "Get authorizations for the supplied set of actions for the subject\
+        \ executing the API call. \nEvaluation is made in the context of the application\
+        \ for the supplied resource kind.\n\n**INCUBATING**: This endpoint is in \"\
+        incubating\" status, and may change."
+      operationId: appContextAuthorizationsForResourceKind
+      parameters:
+      - name: kind
+        in: path
+        description: Resource Kind
+        required: true
+        schema:
+          type: string
+      - name: actions
+        in: query
+        description: Actions to check authorization for
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        "200":
+          description: Action authorizations
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AuthorizationsResponse"
+  /authorizations/application/{type}/{specifier}:
+    get:
+      tags:
+      - authorization
+      summary: Get authorizations for an application type with specifier
+      description: "Get authorizations for the supplied set of actions for the subject\
+        \ executing the API call. \nEvaluation is made in the context of the application\
+        \ for the supplied type and specifier.\n\n**INCUBATING**: This endpoint is\
+        \ in \"incubating\" status, and may change."
+      operationId: appContextAuthorizationsForTypeWithSpecifier
+      parameters:
+      - name: type
+        in: path
+        description: Resource Type
+        required: true
+        schema:
+          type: string
+      - name: specifier
+        in: path
+        description: Resource specifier
+        required: true
+        schema:
+          type: string
+      - name: actions
+        in: query
+        description: Actions to check authorization for
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        "200":
+          description: Action authorizations
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AuthorizationsResponse"
+  /authorizations/project/{project}/job/{specifier}:
+    get:
+      tags:
+      - authorization
+      summary: Get authorizations for a job
+      description: "Get authorizations for the supplied set of actions for the subject\
+        \ executing the API call. \nEvaluation is made in the context of the project\
+        \ for the supplied job.\n\n**INCUBATING**: This endpoint is in \"incubating\"\
+        \ status, and may change."
+      operationId: projectContextAuthorizationsForJob
+      parameters:
+      - name: project
+        in: path
+        description: Project Name
+        required: true
+        schema:
+          type: string
+      - name: specifier
+        in: path
+        description: Job Id
+        required: true
+        schema:
+          type: string
+      - name: actions
+        in: query
+        description: Actions to check authorization for
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        "200":
+          description: Action authorizations
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AuthorizationsResponse"
+  /authorizations/project/{project}/{kind}:
+    get:
+      tags:
+      - authorization
+      summary: Get authorizations for a project resource kind
+      description: "Get authorizations for the supplied set of actions for the subject\
+        \ executing the API call. \nEvaluation is made in the context of the project\
+        \ for the supplied resource kind.\n\n**INCUBATING**: This endpoint is in \"\
+        incubating\" status, and may change."
+      operationId: projectContextAuthorizationsForResourceKind
+      parameters:
+      - name: project
+        in: path
+        description: Project Name
+        required: true
+        schema:
+          type: string
+      - name: kind
+        in: path
+        description: Resource Kind
+        required: true
+        schema:
+          type: string
+      - name: actions
+        in: query
+        description: Actions to check authorization for
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        "200":
+          description: Action authorizations
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AuthorizationsResponse"
+  /authorizations/project/{project}/{type}/{specifier}:
+    get:
+      tags:
+      - authorization
+      summary: Get authorizations for a type with specifier
+      description: "Get authorizations for the supplied set of actions for the subject\
+        \ executing the API call. \nEvaluation is made in the context of the project\
+        \ for the type with a specifier.\n\n**INCUBATING**: This endpoint is in \"\
+        incubating\" status, and may change."
+      operationId: projectContextAuthorizationsForTypeWithSpecifier
+      parameters:
+      - name: project
+        in: path
+        description: Project Name
+        required: true
+        schema:
+          type: string
+      - name: type
+        in: path
+        description: Resource Type
+        required: true
+        schema:
+          type: string
+      - name: specifier
+        in: path
+        description: Resource specifier
+        required: true
+        schema:
+          type: string
+      - name: actions
+        in: query
+        description: Actions to check authorization for
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        "200":
+          description: Action authorizations
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AuthorizationsResponse"
   /config/delete:
     post:
       tags:
@@ -640,7 +830,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/LicenseInfoResponse'
+                $ref: "#/components/schemas/LicenseInfoResponse"
     post:
       tags:
       - enterprise
@@ -676,7 +866,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/basic'
+                $ref: "#/components/schemas/basic"
               examples:
                 example:
                   value:
@@ -686,7 +876,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiErrorResponse'
+                $ref: "#/components/schemas/ApiErrorResponse"
               examples:
                 example:
                   value:
@@ -726,7 +916,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/WebhookEvaluation'
+                  $ref: "#/components/schemas/WebhookEvaluation"
   /enterprise/system-report/datasets:
     get:
       tags:
@@ -748,7 +938,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/SystemReportItem'
+                  $ref: "#/components/schemas/SystemReportItem"
               examples:
                 example:
                   value: |
@@ -806,7 +996,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/DataSet'
+                  $ref: "#/components/schemas/DataSet"
   /execution/{id}:
     get:
       tags:
@@ -960,7 +1150,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ExecutionFileInfoList'
+                $ref: "#/components/schemas/ExecutionFileInfoList"
               examples:
                 example:
                   value:
@@ -1363,7 +1553,7 @@ paths:
       - enterprise
       summary: "Get Execution Result Data [Enterprise]"
       description: |
-        Retrieve the Result Data created by a Job using the [Result Data feature](https://docs.rundeck.com/docs/manual/jobs/result-data.html) in JSON format.
+        Retrieve the Result Data created by a Job using the [Result Data feature](https://docs.rundeck.com/docs/manual/execution-lifecycle/result-data.html) in JSON format.
 
         Note: In a Rundeck Cluster, Result Data may not be locally available and must be retrieved by the server asynchronously before it can be returned.
 
@@ -1398,20 +1588,20 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResultDataLoadingState'
+                $ref: "#/components/schemas/ResultDataLoadingState"
         "404":
           description: Data was not available.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResultDataBasicErrorResponse'
+                $ref: "#/components/schemas/ResultDataBasicErrorResponse"
   /execution/{id}/result/dataAvailable:
     get:
       tags:
       - enterprise
       summary: "Check Execution Result Data Availability [Enterprise]"
       description: |
-        Check whether the execution has Result Data created by a Job using the [Result Data feature](https://docs.rundeck.com/docs/manual/jobs/result-data.html).
+        Check whether the execution has Result Data created by a Job using the [Result Data feature](https://docs.rundeck.com/docs/manual/execution-lifecycle/result-data.html).
 
         Since: v40
       operationId: apiExecutionDataAvailable
@@ -1428,14 +1618,14 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResultDataAvailableResponse'
+                $ref: "#/components/schemas/ResultDataAvailableResponse"
         "404":
           description: "No data can be retrieved for the Execution. If an error occurred,\
             \ the `error` entry will contain a description of the error."
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResultDataBasicErrorResponse'
+                $ref: "#/components/schemas/ResultDataBasicErrorResponse"
   /execution/{id}/roimetrics/available:
     get:
       tags:
@@ -1458,13 +1648,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RoiMetricsController.DataAvailableResponse'
+                $ref: "#/components/schemas/RoiMetricsController.DataAvailableResponse"
         "404":
           description: No Data Availability Response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RoiMetricsController.DataAvailableResponse'
+                $ref: "#/components/schemas/RoiMetricsController.DataAvailableResponse"
   /execution/{id}/roimetrics/data:
     get:
       tags:
@@ -1501,13 +1691,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ROIDataLoadingState'
+                $ref: "#/components/schemas/ROIDataLoadingState"
         "404":
           description: Data was not available.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ROIDataBasicErrorResponse'
+                $ref: "#/components/schemas/ROIDataBasicErrorResponse"
   /execution/{id}/state:
     get:
       tags:
@@ -1695,8 +1885,8 @@ paths:
           application/json:
             schema:
               oneOf:
-              - $ref: '#/components/schemas/DeleteBulkRequest'
-              - $ref: '#/components/schemas/DeleteBulkRequestLong'
+              - $ref: "#/components/schemas/DeleteBulkRequest"
+              - $ref: "#/components/schemas/DeleteBulkRequestLong"
               - type: array
                 items:
                   type: object
@@ -1715,7 +1905,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DeleteBulkResponse'
+                $ref: "#/components/schemas/DeleteBulkResponse"
               examples:
                 example:
                   value:
@@ -1932,7 +2122,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/MetricsQueryResponse'
+                $ref: "#/components/schemas/MetricsQueryResponse"
               examples:
                 example:
                   value:
@@ -1957,7 +2147,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/FeatureEnabledResult'
+                  $ref: "#/components/schemas/FeatureEnabledResult"
   /feature/{featureName}:
     get:
       tags:
@@ -1979,7 +2169,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/FeatureEnabledResult'
+                $ref: "#/components/schemas/FeatureEnabledResult"
   /home/summary:
     get:
       tags:
@@ -2021,7 +2211,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/HomeSummary'
+                $ref: "#/components/schemas/HomeSummary"
               examples:
                 example:
                   value:
@@ -2081,19 +2271,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiErrorResponse'
+                $ref: "#/components/schemas/ApiErrorResponse"
         "403":
           description: Unauthorized
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiErrorResponse'
+                $ref: "#/components/schemas/ApiErrorResponse"
         "415":
           description: Unsupported Media type.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiErrorResponse'
+                $ref: "#/components/schemas/ApiErrorResponse"
     delete:
       tags:
       - jobs
@@ -2120,19 +2310,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiErrorResponse'
+                $ref: "#/components/schemas/ApiErrorResponse"
         "403":
           description: Unauthorized
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiErrorResponse'
+                $ref: "#/components/schemas/ApiErrorResponse"
         "409":
           description: Unauthorized
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiErrorResponse'
+                $ref: "#/components/schemas/ApiErrorResponse"
         "200":
           description: apiJobDelete 200 response
           content:
@@ -2238,8 +2428,9 @@ paths:
           type: integer
       - name: includeJobRef
         in: query
-        description: "Include the executions from referenced jobs. If \nunspecified,\
-          \ the default value will be false. Since API v50"
+        description: |-
+          if true, include executions from the job reference
+          in the results. Default is false.  Requires API version 50 or later.
         schema:
           type: boolean
       responses:
@@ -2437,7 +2628,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DeleteBulkResponse'
+                $ref: "#/components/schemas/DeleteBulkResponse"
   /job/{id}/forecast:
     get:
       tags:
@@ -2483,7 +2674,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/JobInfo'
+                $ref: "#/components/schemas/JobInfo"
   /job/{id}/info:
     get:
       tags:
@@ -2511,7 +2702,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/JobInfo'
+                $ref: "#/components/schemas/JobInfo"
   /job/{id}/input/file:
     post:
       tags:
@@ -2549,7 +2740,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/JobFileUpload'
+                $ref: "#/components/schemas/JobFileUpload"
   /job/{id}/input/file/{optionName}:
     post:
       tags:
@@ -2592,7 +2783,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/JobFileUpload'
+                $ref: "#/components/schemas/JobFileUpload"
   /job/{id}/meta:
     get:
       tags:
@@ -2627,7 +2818,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/ItemMeta'
+                  $ref: "#/components/schemas/ItemMeta"
   /job/{id}/retry/{executionId}:
     post:
       tags:
@@ -3012,7 +3203,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ScmActionResult'
+                $ref: "#/components/schemas/ScmActionResult"
               examples:
                 example:
                   value:
@@ -3025,7 +3216,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ScmActionResult'
+                $ref: "#/components/schemas/ScmActionResult"
               examples:
                 example:
                   value:
@@ -3120,7 +3311,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ScmActionInput'
+                $ref: "#/components/schemas/ScmActionInput"
   /job/{id}/scm/{integration}/diff:
     get:
       tags:
@@ -3164,7 +3355,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ScmJobDiff'
+                $ref: "#/components/schemas/ScmJobDiff"
               examples:
                 example:
                   value:
@@ -3227,7 +3418,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ScmJobStatus'
+                $ref: "#/components/schemas/ScmJobStatus"
               examples:
                 example:
                   value:
@@ -3326,14 +3517,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ApiBulkJobDeleteRequest'
+              $ref: "#/components/schemas/ApiBulkJobDeleteRequest"
       responses:
         "200":
           description: Summary of bulk delete results
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DeleteBulkResponse'
+                $ref: "#/components/schemas/DeleteBulkResponse"
               examples:
                 example:
                   value:
@@ -3380,7 +3571,7 @@ paths:
             application/json:
               schema:
                 type: object
-          $ref: '#/paths/~1jobs~1delete/post/responses/200'
+          $ref: "#/paths/~1jobs~1delete/post/responses/200"
   /jobs/execution/disable:
     post:
       tags:
@@ -3412,7 +3603,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ApiBulkJobDeleteRequest'
+              $ref: "#/components/schemas/ApiBulkJobDeleteRequest"
       responses:
         "200":
           description: "Bulk toggle result.\n\nFailed results will contain:\n\n* `id`\
@@ -3467,7 +3658,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ApiBulkJobDeleteRequest'
+              $ref: "#/components/schemas/ApiBulkJobDeleteRequest"
       responses:
         "200":
           description: "Bulk toggle result.\n\nFailed results will contain:\n\n* `id`\
@@ -3513,7 +3704,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/JobFileInfo'
+                $ref: "#/components/schemas/JobFileInfo"
               examples:
                 example:
                   value:
@@ -3558,7 +3749,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ApiBulkJobDeleteRequest'
+              $ref: "#/components/schemas/ApiBulkJobDeleteRequest"
       responses:
         "200":
           description: "Bulk toggle result.\n\nFailed results will contain:\n\n* `id`\
@@ -3613,7 +3804,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ApiBulkJobDeleteRequest'
+              $ref: "#/components/schemas/ApiBulkJobDeleteRequest"
       responses:
         "200":
           description: "Bulk toggle result.\n\nFailed results will contain:\n\n* `id`\
@@ -3663,13 +3854,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/LinkListResponse'
+                $ref: "#/components/schemas/LinkListResponse"
         "404":
           description: Error response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiErrorResponse'
+                $ref: "#/components/schemas/ApiErrorResponse"
               examples:
                 example:
                   value:
@@ -3695,7 +3886,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/ApiPluginListProvider'
+                  $ref: "#/components/schemas/ApiPluginListProvider"
   /project/projects:
     get:
       tags:
@@ -3843,7 +4034,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiErrorResponse'
+                $ref: "#/components/schemas/ApiErrorResponse"
   /project/{project}/acl/{path}:
     get:
       tags:
@@ -3921,7 +4112,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiErrorResponse'
+                $ref: "#/components/schemas/ApiErrorResponse"
     put:
       tags:
       - project
@@ -4039,7 +4230,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiErrorResponse'
+                $ref: "#/components/schemas/ApiErrorResponse"
     post:
       tags:
       - project
@@ -4163,13 +4354,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiErrorResponse'
+                $ref: "#/components/schemas/ApiErrorResponse"
         "400":
           description: Bad request if validation failure
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiErrorResponse'
+                $ref: "#/components/schemas/ApiErrorResponse"
     delete:
       tags:
       - project
@@ -4203,7 +4394,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiErrorResponse'
+                $ref: "#/components/schemas/ApiErrorResponse"
   /project/{project}/calendars:
     get:
       tags:
@@ -4307,7 +4498,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ProjectCalendarsResponse'
+                $ref: "#/components/schemas/ProjectCalendarsResponse"
               examples:
                 example:
                   value:
@@ -4510,7 +4701,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiErrorResponse'
+                $ref: "#/components/schemas/ApiErrorResponse"
     put:
       tags:
       - project
@@ -4582,7 +4773,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiErrorResponse'
+                $ref: "#/components/schemas/ApiErrorResponse"
     delete:
       tags:
       - project
@@ -4636,7 +4827,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ProjectModeLaterRequest'
+              $ref: "#/components/schemas/ProjectModeLaterRequest"
             examples:
               Disable-Schedule:
                 value:
@@ -4654,7 +4845,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ModeLaterResponse'
+                $ref: "#/components/schemas/ModeLaterResponse"
               examples:
                 example:
                   value:
@@ -4666,7 +4857,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ModeLaterResponse'
+                $ref: "#/components/schemas/ModeLaterResponse"
               examples:
                 example:
                   value:
@@ -4698,7 +4889,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ProjectModeLaterRequest'
+              $ref: "#/components/schemas/ProjectModeLaterRequest"
             examples:
               Enable-Schedule:
                 value:
@@ -4716,7 +4907,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ModeLaterResponse'
+                $ref: "#/components/schemas/ModeLaterResponse"
               examples:
                 example:
                   value:
@@ -4728,7 +4919,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ModeLaterResponse'
+                $ref: "#/components/schemas/ModeLaterResponse"
               examples:
                 example:
                   value:
@@ -5035,7 +5226,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/MetricsQueryResponse'
+                $ref: "#/components/schemas/MetricsQueryResponse"
   /project/{project}/executions/running:
     get:
       tags:
@@ -5250,20 +5441,20 @@ paths:
         in: query
         required: true
         schema:
-          $ref: '#/components/schemas/ProjectArchiveParams'
+          $ref: "#/components/schemas/ProjectArchiveParams"
       responses:
         "200":
           description: The project exported zip archive file
           content:
             application/zip:
               schema:
-                $ref: '#/components/schemas/OutputStream'
+                $ref: "#/components/schemas/OutputStream"
         "400":
           description: Bad request if it has error in the parameters
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiErrorResponse'
+                $ref: "#/components/schemas/ApiErrorResponse"
   /project/{project}/export/async:
     get:
       tags:
@@ -5380,7 +5571,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiErrorResponse'
+                $ref: "#/components/schemas/ApiErrorResponse"
   /project/{project}/export/download/{token}:
     get:
       tags:
@@ -5413,13 +5604,13 @@ paths:
           content:
             application/zip:
               schema:
-                $ref: '#/components/schemas/OutputStream'
+                $ref: "#/components/schemas/OutputStream"
         "400":
           description: Bad request
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiErrorResponse'
+                $ref: "#/components/schemas/ApiErrorResponse"
   /project/{project}/export/status/{token}:
     get:
       tags:
@@ -5465,7 +5656,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiErrorResponse'
+                $ref: "#/components/schemas/ApiErrorResponse"
   /project/{project}/healthcheck/enhancer:
     get:
       tags:
@@ -5552,7 +5743,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/BasicErrorResponse'
+                $ref: "#/components/schemas/BasicErrorResponse"
   /project/{project}/healthcheck/refresh/all:
     post:
       tags:
@@ -5634,13 +5825,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/BasicErrorResponse'
+                $ref: "#/components/schemas/BasicErrorResponse"
         "404":
           description: Not Found
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/BasicErrorResponse'
+                $ref: "#/components/schemas/BasicErrorResponse"
   /project/{project}/healthcheck/status/all:
     get:
       tags:
@@ -5903,7 +6094,7 @@ paths:
         in: query
         description: |-
           Enable a component for import.
-          Project archives may contain "components" which can be imported, beyond the base set of contents. This includes some data used by Runbook Automation (Rundeck Enterprise) features.
+          Project archives may contain "components" which can be imported, beyond the base set of contents. This includes some data used by Process Automation (Rundeck Enterprise) features.
 
           For example, to enable Webhook import, you could use `importWebhooks` and `whkRegenAuthTokens` params, but those are simply shortcuts for the following parameters:
 
@@ -5929,7 +6120,7 @@ paths:
               type: string
               properties:
                 archiveParams:
-                  $ref: '#/components/schemas/ProjectArchiveParams'
+                  $ref: "#/components/schemas/ProjectArchiveParams"
               format: binary
       responses:
         "200":
@@ -5968,7 +6159,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiErrorResponse'
+                $ref: "#/components/schemas/ApiErrorResponse"
   /project/{project}/jobs:
     get:
       tags:
@@ -6097,7 +6288,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/JobInfo'
+                  $ref: "#/components/schemas/JobInfo"
               examples:
                 example:
                   value: |-
@@ -6160,7 +6351,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/JobBrowseResponse'
+                $ref: "#/components/schemas/JobBrowseResponse"
     post:
       tags:
       - jobs
@@ -6202,7 +6393,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/RdJobQueryInput'
+              $ref: "#/components/schemas/RdJobQueryInput"
             examples:
               example:
                 value: ""
@@ -6212,7 +6403,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/JobBrowseResponse'
+                $ref: "#/components/schemas/JobBrowseResponse"
   /project/{project}/jobs/export:
     get:
       tags:
@@ -6456,7 +6647,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiErrorResponse'
+                $ref: "#/components/schemas/ApiErrorResponse"
   /project/{project}/jobs/validateOption:
     post:
       summary: Validate an option
@@ -6491,26 +6682,26 @@ paths:
             schema:
               properties:
                 optionData:
-                  $ref: '#/components/schemas/OptionValidateRequest'
+                  $ref: "#/components/schemas/OptionValidateRequest"
               allOf:
-              - $ref: '#/components/schemas/OptionValidateRequest'
+              - $ref: "#/components/schemas/OptionValidateRequest"
               - properties:
                   optionData:
-                    $ref: '#/components/schemas/OptionValidateRequest'
+                    $ref: "#/components/schemas/OptionValidateRequest"
       responses:
         "200":
           description: Option validation with no errors
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/OptionValidateResponse'
+                $ref: "#/components/schemas/OptionValidateResponse"
         "400":
           description: "Option validation with errors, the messages will contain the\
             \ validation errors keyed by input field path"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/OptionValidateResponse'
+                $ref: "#/components/schemas/OptionValidateResponse"
   /project/{project}/listAllJobs:
     get:
       tags:
@@ -6593,7 +6784,32 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/ItemMeta'
+                  $ref: "#/components/schemas/ItemMeta"
+  /project/{project}/nodes/tags:
+    get:
+      tags:
+      - nodes
+      - project
+      summary: List tags for project nodes
+      description: |-
+        List tags for project nodes.
+
+        Since: v52
+      operationId: apiTagsForNodes
+      parameters:
+      - name: project
+        in: path
+        description: Project Name
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: The tags for nodes.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TagsForNodesResponse"
   /project/{project}/resource/{name}:
     get:
       tags:
@@ -6623,7 +6839,7 @@ paths:
             application/json:
               schema:
                 type: object
-          $ref: '#/paths/~1project~1%7Bproject%7D~1resources/get/responses/200'
+          $ref: "#/paths/~1project~1%7Bproject%7D~1resources/get/responses/200"
   /project/{project}/resources:
     get:
       tags:
@@ -6766,7 +6982,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ApiRunAdhocRequest'
+              $ref: "#/components/schemas/ApiRunAdhocRequest"
             examples:
               example:
                 value:
@@ -6871,23 +7087,23 @@ paths:
               type: string
               properties:
                 runAdhocRequest:
-                  $ref: '#/components/schemas/ApiRunAdhocRequest'
+                  $ref: "#/components/schemas/ApiRunAdhocRequest"
           application/x-www-form-urlencoded:
             schema:
               type: string
               properties:
                 runAdhocRequest:
-                  $ref: '#/components/schemas/ApiRunAdhocRequest'
+                  $ref: "#/components/schemas/ApiRunAdhocRequest"
           application/json:
             schema:
               properties:
                 runAdhocRequest:
-                  $ref: '#/components/schemas/ApiRunAdhocRequest'
+                  $ref: "#/components/schemas/ApiRunAdhocRequest"
               allOf:
-              - $ref: '#/components/schemas/ApiRunAdhocRequest'
+              - $ref: "#/components/schemas/ApiRunAdhocRequest"
               - properties:
                   runAdhocRequest:
-                    $ref: '#/components/schemas/ApiRunAdhocRequest'
+                    $ref: "#/components/schemas/ApiRunAdhocRequest"
             examples:
               example:
                 value:
@@ -6990,12 +7206,12 @@ paths:
             schema:
               properties:
                 runAdhocRequest:
-                  $ref: '#/components/schemas/ApiRunAdhocRequest'
+                  $ref: "#/components/schemas/ApiRunAdhocRequest"
               allOf:
-              - $ref: '#/components/schemas/ApiRunAdhocRequest'
+              - $ref: "#/components/schemas/ApiRunAdhocRequest"
               - properties:
                   runAdhocRequest:
-                    $ref: '#/components/schemas/ApiRunAdhocRequest'
+                    $ref: "#/components/schemas/ApiRunAdhocRequest"
             examples:
               example:
                 value:
@@ -7024,6 +7240,473 @@ paths:
                       id: 1
                       href: "[API Href]"
                       permalink: "[GUI Href]"
+  /project/{project}/runnerManagement/checkPing/{token}:
+    get:
+      tags:
+      - enterprise
+      summary: Check Runner Ping at Project Context
+      description: "Check a ping response at project context. Since: V42"
+      operationId: projectCheckPing
+      parameters:
+      - name: token
+        in: path
+        description: Ping Token
+        required: true
+        schema:
+          type: string
+      - name: project
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Ping Runner Response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PingResponse"
+  /project/{project}/runnerManagement/config:
+    get:
+      tags:
+      - enterprise
+      summary: Get Project Context Runner Configuration
+      description: "Get project context runner configuration. Since: V41"
+      operationId: projectContextRunnerConfig
+      parameters:
+      - name: project
+        in: path
+        description: Project Name
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Project Context Runner Configuration
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProjectContextRunnerConfig"
+    post:
+      tags:
+      - enterprise
+      summary: Save Project Context Runner Config
+      description: "Save project context runner config. Since: V41"
+      operationId: saveProjectContextRunnerConfig
+      parameters:
+      - name: project
+        in: path
+        description: Project Name
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                runnerConfigRequest:
+                  $ref: "#/components/schemas/SaveProjectRunnerConfigRequest"
+        required: true
+      responses:
+        "200":
+          description: Project Context Runner Config Response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProjectContextRunnerConfig"
+  /project/{project}/runnerManagement/download/{token}:
+    get:
+      tags:
+      - enterprise
+      summary: Download Runner at Project Context
+      description: "Download runner Jar at project context. Since: V41"
+      operationId: projectDownloadRunner
+      parameters:
+      - name: token
+        in: path
+        description: Download Token
+        required: true
+        schema:
+          type: string
+      - name: project
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Runner Download
+          content:
+            application/java-archive: {}
+  /project/{project}/runnerManagement/nodeDispatch/config:
+    post:
+      tags:
+      - enterprise
+      summary: Update Runner Node Dispatch at project context
+      description: Update the Runner Node Dispatch at project context
+      operationId: saveProjectRunnerNodeDispatchSettings
+      parameters:
+      - name: project
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: "#/components/schemas/UpdateRunnerNodeDispatchRequest"
+              - properties:
+                  data:
+                    $ref: "#/components/schemas/UpdateRunnerNodeDispatchRequest"
+      responses:
+        "200":
+          description: Edited runner
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RunnerInfo"
+  /project/{project}/runnerManagement/runner/{id}/ping:
+    post:
+      tags:
+      - enterprise
+      summary: Ping a Runner at Project Context
+      description: "Ping the runner at project context. Since: V41"
+      operationId: pingProjectRunner
+      parameters:
+      - name: id
+        in: path
+        description: Runner ID
+        required: true
+        schema:
+          type: integer
+      - name: project
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Ping Runner Response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PingTokenResponse"
+  /project/{project}/runnerManagement/runner/{id}/regenerateCreds:
+    post:
+      tags:
+      - enterprise
+      summary: Regenerate Runner Creds at Project context
+      description: "Regenerate credentials for the Runner at Project context. Since:\
+        \ V42"
+      operationId: regenerateProjectRunnerCreds
+      parameters:
+      - name: project
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Runner Regenerated Credentials
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RegenRunnerCredResponse"
+  /project/{project}/runnerManagement/runner/{runnerId}:
+    get:
+      tags:
+      - enterprise
+      summary: Get Runner Info at Project Context
+      description: "Get runner information at project context. Since: V41"
+      operationId: projectRunnerInfo
+      parameters:
+      - name: runnerId
+        in: path
+        description: Runner ID
+        required: true
+        schema:
+          type: integer
+      - name: project
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Runner Info
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RunnerInfo"
+    post:
+      tags:
+      - enterprise
+      summary: Update Runner Definition  at Project context
+      description: "Update the runner at Project context. Since: V41"
+      operationId: saveProjectRunner
+      parameters:
+      - name: project
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: runnerId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: "#/components/schemas/UpdateRunnerRequest"
+              - properties:
+                  data:
+                    $ref: "#/components/schemas/UpdateRunnerRequest"
+      responses:
+        "200":
+          description: New runner
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RunnerInfo"
+    delete:
+      tags:
+      - enterprise
+      summary: Delete Runner
+      description: "Delete the specified runner. Since: V41"
+      operationId: deleteProjectRunner
+      parameters:
+      - name: project
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: runnerId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "204":
+          description: No Content
+  /project/{project}/runnerManagement/runner/{runnerId}/removeProjectAssociation:
+    post:
+      tags:
+      - enterprise
+      summary: Remove Project Association From the Runner
+      description: "Remove project association from the runner at project context.\
+        \ Since: V41"
+      operationId: removeProjectAssociation
+      parameters:
+      - name: project
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: runnerId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateRunnerRequest"
+      responses:
+        "200":
+          description: New runner
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RunnerInfo"
+  /project/{project}/runnerManagement/runner/{runnerId}/replica/{replicaId}:
+    delete:
+      tags:
+      - enterprise
+      summary: Delete Runner Replica at Project Context
+      description: "Delete the specified runner replica no ephemeral mode. Since:\
+        \ V41"
+      operationId: deleteProjectRunnerReplica
+      parameters:
+      - name: project
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: runnerId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: replicaId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "204":
+          description: No Content
+  /project/{project}/runnerManagement/runner/{runnerId}/replicas:
+    get:
+      tags:
+      - enterprise
+      summary: List Runners Replicas at Project Context
+      description: "List available runners Replicas. Since: V41"
+      operationId: listProjectRunnersReplicas
+      parameters:
+      - name: project
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: runnerId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Runner Replicas List Response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RunnerReplicaList"
+    post:
+      tags:
+      - enterprise
+      summary: Create a Runner at Project Context
+      description: "Create a new Runner at project context. Since: V42"
+      operationId: createProjectNoEphemeralReplica
+      parameters:
+      - name: project
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: runnerId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: New runner created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NewRunnerResponse"
+        "400":
+          description: Failed to create the runner
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+  /project/{project}/runnerManagement/runners:
+    get:
+      tags:
+      - enterprise
+      summary: List Runners at project context
+      description: "List available runners associated to the project. Since: V41"
+      operationId: listProjectRunners
+      parameters:
+      - name: tags
+        in: query
+        description: List of tags
+        schema:
+          type: string
+      - name: localOnly
+        in: query
+        description: Include local runner only
+        schema:
+          type: boolean
+      - name: filter
+        in: query
+        description: Use filter string
+        schema:
+          type: string
+      - name: status
+        in: query
+        description: Filter by runner status
+        schema:
+          type: string
+      - name: project
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Runner List Response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RunnerList"
+    post:
+      tags:
+      - enterprise
+      summary: Create a Runner at Project Context
+      description: "Create a new Runner at project context. Since: V42"
+      operationId: createProjectRunner
+      parameters:
+      - name: project
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                newRunnerRequest:
+                  $ref: "#/components/schemas/CreateRunnerRequest"
+        required: true
+      responses:
+        "200":
+          description: New runner created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NewRunnerResponse"
+        "400":
+          description: Failed to create the runner
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+  /project/{project}/runnerManagement/ui:
+    get:
+      tags:
+      - enterprise
+      summary: Get UI info for runner management at project context
+      description: "Get UI info for runner management at project context. Since: V43"
+      operationId: projectUi
+      parameters:
+      - name: project
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Runner Management UI
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UiData"
   /project/{project}/scm/toggle:
     post:
       tags:
@@ -7048,7 +7731,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ScmToggleRequest'
+              $ref: "#/components/schemas/ScmToggleRequest"
             examples:
               example:
                 value:
@@ -7059,7 +7742,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ScmToggleResponse'
+                $ref: "#/components/schemas/ScmToggleResponse"
   /project/{project}/scm/{integration}/action/{actionId}:
     post:
       tags:
@@ -7116,7 +7799,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ScmAction'
+              $ref: "#/components/schemas/ScmAction"
         required: true
       responses:
         "200":
@@ -7124,7 +7807,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ScmActionResult'
+                $ref: "#/components/schemas/ScmActionResult"
   /project/{project}/scm/{integration}/action/{actionId}/input:
     get:
       tags:
@@ -7174,7 +7857,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ScmActionInput'
+                $ref: "#/components/schemas/ScmActionInput"
   /project/{project}/scm/{integration}/config:
     get:
       tags:
@@ -7210,7 +7893,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ScmProjectPluginConfig'
+                $ref: "#/components/schemas/ScmProjectPluginConfig"
         "404":
           description: "Not Found, plugin is not configured"
   /project/{project}/scm/{integration}/plugin/{type}/disable:
@@ -7254,7 +7937,7 @@ paths:
             application/json:
               schema:
                 type: object
-          $ref: '#/paths/~1project~1%7Bproject%7D~1scm~1%7Bintegration%7D~1plugin~1%7Btype%7D~1setup/post/responses/200'
+          $ref: "#/paths/~1project~1%7Bproject%7D~1scm~1%7Bintegration%7D~1plugin~1%7Btype%7D~1setup/post/responses/200"
   /project/{project}/scm/{integration}/plugin/{type}/enable:
     post:
       tags:
@@ -7296,7 +7979,7 @@ paths:
             application/json:
               schema:
                 type: object
-          $ref: '#/paths/~1project~1%7Bproject%7D~1scm~1%7Bintegration%7D~1plugin~1%7Btype%7D~1setup/post/responses/200'
+          $ref: "#/paths/~1project~1%7Bproject%7D~1scm~1%7Bintegration%7D~1plugin~1%7Btype%7D~1setup/post/responses/200"
   /project/{project}/scm/{integration}/plugin/{type}/input:
     get:
       tags:
@@ -7340,7 +8023,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ScmPluginSetupInput'
+                $ref: "#/components/schemas/ScmPluginSetupInput"
   /project/{project}/scm/{integration}/plugin/{type}/setup:
     post:
       tags:
@@ -7400,13 +8083,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ScmActionResult'
+                $ref: "#/components/schemas/ScmActionResult"
         "400":
           description: Validation or input error occurred.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ScmActionResult'
+                $ref: "#/components/schemas/ScmActionResult"
   /project/{project}/scm/{integration}/plugins:
     get:
       tags:
@@ -7439,7 +8122,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ScmPluginList'
+                $ref: "#/components/schemas/ScmPluginList"
   /project/{project}/scm/{integration}/status:
     get:
       tags:
@@ -7475,7 +8158,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ScmProjectStatus'
+                $ref: "#/components/schemas/ScmProjectStatus"
         "404":
           description: "Not Found, plugin is not configured"
   /project/{project}/source/{index}:
@@ -7510,7 +8193,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Source'
+                $ref: "#/components/schemas/Source"
               examples:
                 example:
                   value:
@@ -7552,7 +8235,7 @@ paths:
             application/json:
               schema:
                 type: object
-          $ref: '#/paths/~1project~1%7Bproject%7D~1resources/get/responses/200'
+          $ref: "#/paths/~1project~1%7Bproject%7D~1resources/get/responses/200"
     post:
       tags:
       - nodes
@@ -7622,13 +8305,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiErrorResponse'
+                $ref: "#/components/schemas/ApiErrorResponse"
         "200":
           content:
             application/json:
               schema:
                 type: object
-          $ref: '#/paths/~1project~1%7Bproject%7D~1source~1%7Bindex%7D~1resources/get/responses/200'
+          $ref: "#/paths/~1project~1%7Bproject%7D~1source~1%7Bindex%7D~1resources/get/responses/200"
   /project/{project}/sources:
     get:
       tags:
@@ -7657,7 +8340,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Source'
+                  $ref: "#/components/schemas/Source"
               examples:
                 example:
                   value: |-
@@ -7726,13 +8409,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TourManagerSuccessResponse'
+                $ref: "#/components/schemas/TourManagerSuccessResponse"
         "400":
           description: Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TourManagerErrorResponse'
+                $ref: "#/components/schemas/TourManagerErrorResponse"
   /project/{project}/tours:
     get:
       tags:
@@ -7757,7 +8440,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Manifest'
+                $ref: "#/components/schemas/Manifest"
   /project/{project}/tours/resource/{path}:
     get:
       tags:
@@ -7788,7 +8471,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Tour'
+                $ref: "#/components/schemas/Tour"
   /project/{project}/tours/{path}:
     post:
       tags:
@@ -7819,21 +8502,21 @@ paths:
           application/json:
             schema:
               oneOf:
-              - $ref: '#/components/schemas/Manifest'
-              - $ref: '#/components/schemas/Tour'
+              - $ref: "#/components/schemas/Manifest"
+              - $ref: "#/components/schemas/Tour"
       responses:
         "200":
           description: Successful
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TourManagerSuccessResponse'
+                $ref: "#/components/schemas/TourManagerSuccessResponse"
         "400":
           description: Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TourManagerErrorResponse'
+                $ref: "#/components/schemas/TourManagerErrorResponse"
   /project/{project}/webhook:
     post:
       tags:
@@ -8175,7 +8858,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiErrorResponse'
+                $ref: "#/components/schemas/ApiErrorResponse"
     put:
       tags:
       - project
@@ -8238,7 +8921,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiErrorResponse'
+                $ref: "#/components/schemas/ApiErrorResponse"
     delete:
       tags:
       - project
@@ -8271,7 +8954,30 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiErrorResponse'
+                $ref: "#/components/schemas/ApiErrorResponse"
+  /runner/startup:
+    get:
+      tags:
+      - enterprise
+      summary: "Runner: Init agent process to register replicas [Enterprise Runner]"
+      description: Validate a replica when it is run for the first time
+      operationId: startupOperation
+      requestBody:
+        content:
+          application/json: {}
+      responses:
+        "200":
+          description: Start UP Response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/StartUpResponse"
+        "400":
+          description: Failed to init the runner
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
   /runnerManagement/checkPing/{token}:
     get:
       tags:
@@ -8292,7 +8998,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PingResponse'
+                $ref: "#/components/schemas/PingResponse"
   /runnerManagement/download/{token}:
     get:
       tags:
@@ -8312,362 +9018,6 @@ paths:
           description: Runner Download
           content:
             application/java-archive: {}
-  /runnerManagement/project/{project}/runner/{id}/regenerateCreds:
-    post:
-      tags:
-      - enterprise
-      summary: Regenerate Runner Creds at Project context
-      description: "Regenerate credentials for the Runner at Project context. Since:\
-        \ V42"
-      operationId: regenerateProjectRunnerCreds
-      parameters:
-      - name: project
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: id
-        in: path
-        required: true
-        schema:
-          type: string
-      responses:
-        "200":
-          description: Runner Regenerated Credentials
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RegenRunnerCredResponse'
-  /runnerManagement/project/{project}/runnerManagement/checkPing/{token}:
-    get:
-      tags:
-      - enterprise
-      summary: Check Runner Ping at Project Context
-      description: "Check a ping response at project context. Since: V42"
-      operationId: projectCheckPing
-      parameters:
-      - name: token
-        in: path
-        description: Ping Token
-        required: true
-        schema:
-          type: string
-      - name: project
-        in: path
-        required: true
-        schema:
-          type: string
-      responses:
-        "200":
-          description: Ping Runner Response
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PingResponse'
-  /runnerManagement/project/{project}/runnerManagement/config:
-    get:
-      tags:
-      - enterprise
-      summary: Get Project Context Runner Configuration
-      description: "Get project context runner configuration. Since: V41"
-      operationId: projectContextRunnerConfig
-      parameters:
-      - name: project
-        in: path
-        description: Project Name
-        required: true
-        schema:
-          type: string
-      responses:
-        "200":
-          description: Project Context Runner Configuration
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProjectContextRunnerConfig'
-    post:
-      tags:
-      - enterprise
-      summary: Save Project Context Runner Config
-      description: "Save project context runner config. Since: V41"
-      operationId: saveProjectContextRunnerConfig
-      parameters:
-      - name: project
-        in: path
-        description: Project Name
-        required: true
-        schema:
-          type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                runnerConfigRequest:
-                  $ref: '#/components/schemas/SaveProjectRunnerConfigRequest'
-        required: true
-      responses:
-        "200":
-          description: Project Context Runner Config Response
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProjectContextRunnerConfig'
-  /runnerManagement/project/{project}/runnerManagement/download/{token}:
-    get:
-      tags:
-      - enterprise
-      summary: Download Runner at Project Context
-      description: "Download runner Jar at project context. Since: V41"
-      operationId: projectDownloadRunner
-      parameters:
-      - name: token
-        in: path
-        description: Download Token
-        required: true
-        schema:
-          type: string
-      - name: project
-        in: path
-        required: true
-        schema:
-          type: string
-      responses:
-        "200":
-          description: Runner Download
-          content:
-            application/java-archive: {}
-  /runnerManagement/project/{project}/runnerManagement/runner/{id}/ping:
-    post:
-      tags:
-      - enterprise
-      summary: Ping a Runner at Project Context
-      description: "Ping the runner at project context. Since: V41"
-      operationId: pingProjectRunner
-      parameters:
-      - name: id
-        in: path
-        description: Runner ID
-        required: true
-        schema:
-          type: integer
-      - name: project
-        in: path
-        required: true
-        schema:
-          type: string
-      responses:
-        "200":
-          description: Ping Runner Response
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PingTokenResponse'
-  /runnerManagement/project/{project}/runnerManagement/runner/{runnerId}:
-    get:
-      tags:
-      - enterprise
-      summary: Get Runner Info at Project Context
-      description: "Get runner information at project context. Since: V41"
-      operationId: projectRunnerInfo
-      parameters:
-      - name: runnerId
-        in: path
-        description: Runner ID
-        required: true
-        schema:
-          type: integer
-      - name: project
-        in: path
-        required: true
-        schema:
-          type: string
-      responses:
-        "200":
-          description: Runner Info
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RunnerInfo'
-    post:
-      tags:
-      - enterprise
-      summary: Update Runner Definition  at Project context
-      description: "Update the runner at Project context. Since: V41"
-      operationId: saveProjectRunner
-      parameters:
-      - name: project
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: runnerId
-        in: path
-        required: true
-        schema:
-          type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              allOf:
-              - $ref: '#/components/schemas/UpdateRunnerRequest'
-              - properties:
-                  data:
-                    $ref: '#/components/schemas/UpdateRunnerRequest'
-      responses:
-        "200":
-          description: New runner
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RunnerInfo'
-    delete:
-      tags:
-      - enterprise
-      summary: Delete Runner
-      description: "Delete the specified runner. Since: V41"
-      operationId: deleteProjectRunner
-      parameters:
-      - name: project
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: runnerId
-        in: path
-        required: true
-        schema:
-          type: string
-      responses:
-        "204":
-          description: No Content
-  /runnerManagement/project/{project}/runnerManagement/runner/{runnerId}/removeProjectAssociation:
-    post:
-      tags:
-      - enterprise
-      summary: Remove Project Association From the Runner
-      description: "Remove project association from the runner at project context.\
-        \ Since: V41"
-      operationId: removeProjectAssociation
-      parameters:
-      - name: project
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: runnerId
-        in: path
-        required: true
-        schema:
-          type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/UpdateRunnerRequest'
-      responses:
-        "200":
-          description: New runner
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RunnerInfo'
-  /runnerManagement/project/{project}/runnerManagement/runners:
-    get:
-      tags:
-      - enterprise
-      summary: List Runners at project context
-      description: "List available runners associated to the project. Since: V41"
-      operationId: listProjectRunners
-      parameters:
-      - name: tags
-        in: query
-        description: List of tags
-        schema:
-          type: string
-      - name: localOnly
-        in: query
-        description: Include local runner only
-        schema:
-          type: boolean
-      - name: filter
-        in: query
-        description: Use filter string
-        schema:
-          type: string
-      - name: status
-        in: query
-        description: Filter by runner status
-        schema:
-          type: string
-      - name: project
-        in: path
-        required: true
-        schema:
-          type: string
-      responses:
-        "200":
-          description: Runner List Response
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RunnerList'
-    post:
-      tags:
-      - enterprise
-      summary: Create a Runner at Project Context
-      description: "Create a new Runner at project context. Since: V42"
-      operationId: createProjectRunner
-      parameters:
-      - name: project
-        in: path
-        required: true
-        schema:
-          type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                newRunnerRequest:
-                  $ref: '#/components/schemas/CreateRunnerRequest'
-        required: true
-      responses:
-        "200":
-          description: New runner created
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/NewRunnerResponse'
-        "400":
-          description: Failed to create the runner
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-  /runnerManagement/projectUi:
-    get:
-      tags:
-      - enterprise
-      summary: Get UI info for runner management at project context
-      description: "Get UI info for runner management at project context. Since: V43"
-      operationId: projectUi
-      parameters:
-      - name: project
-        in: query
-        required: true
-        schema:
-          type: string
-      responses:
-        "200":
-          description: Runner Management UI
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UiData'
   /runnerManagement/runner/{id}/keys:
     get:
       tags:
@@ -8702,7 +9052,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TagCountResponse'
+                $ref: "#/components/schemas/TagCountResponse"
   /runnerManagement/runner/{id}/ping:
     post:
       tags:
@@ -8723,7 +9073,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PingTokenResponse'
+                $ref: "#/components/schemas/PingTokenResponse"
   /runnerManagement/runner/{id}/regenerateCreds:
     post:
       tags:
@@ -8743,7 +9093,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RegenRunnerCredResponse'
+                $ref: "#/components/schemas/RegenRunnerCredResponse"
   /runnerManagement/runner/{id}/tags:
     get:
       tags:
@@ -8787,7 +9137,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RunnerInfo'
+                $ref: "#/components/schemas/RunnerInfo"
     post:
       tags:
       - enterprise
@@ -8805,17 +9155,17 @@ paths:
           application/json:
             schema:
               allOf:
-              - $ref: '#/components/schemas/UpdateRunnerRequest'
+              - $ref: "#/components/schemas/UpdateRunnerRequest"
               - properties:
                   data:
-                    $ref: '#/components/schemas/UpdateRunnerRequest'
+                    $ref: "#/components/schemas/UpdateRunnerRequest"
       responses:
         "200":
           description: New runner
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RunnerInfo'
+                $ref: "#/components/schemas/RunnerInfo"
     delete:
       tags:
       - enterprise
@@ -8831,6 +9181,73 @@ paths:
       responses:
         "204":
           description: No Content
+  /runnerManagement/runner/{runnerId}/replica/{replicaId}:
+    delete:
+      tags:
+      - enterprise
+      summary: Delete Runner Replica
+      description: "Delete the specified runner replica no ephemeral mode. Since:\
+        \ V52"
+      operationId: deleteRunnerReplica
+      parameters:
+      - name: runnerId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: replicaId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "204":
+          description: No Content
+  /runnerManagement/runner/{runnerId}/replicas:
+    get:
+      tags:
+      - enterprise
+      summary: List Runners Replicas
+      description: "List available runners Replicas. Since: V41"
+      operationId: listRunnersReplicas
+      parameters:
+      - name: runnerId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Runner Replicas List Response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RunnerReplicaList"
+    post:
+      tags:
+      - enterprise
+      summary: Create a Runner Replica in no-ephemeral mode
+      description: "Create a new Runner Replica. Since: V42"
+      operationId: createNoEphemeralReplica
+      parameters:
+      - name: runnerId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: New runner replica created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NewRunnerReplicaResponse"
+        "400":
+          description: Failed to create the runner replica
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
   /runnerManagement/runners:
     get:
       tags:
@@ -8865,7 +9282,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RunnerList'
+                $ref: "#/components/schemas/RunnerList"
     post:
       tags:
       - enterprise
@@ -8879,7 +9296,7 @@ paths:
               type: object
               properties:
                 newRunnerRequest:
-                  $ref: '#/components/schemas/CreateRunnerRequest'
+                  $ref: "#/components/schemas/CreateRunnerRequest"
         required: true
       responses:
         "200":
@@ -8887,13 +9304,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/NewRunnerResponse'
+                $ref: "#/components/schemas/NewRunnerResponse"
         "400":
           description: Failed to create the runner
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: "#/components/schemas/ErrorResponse"
   /runnerManagement/tags:
     get:
       tags:
@@ -8914,7 +9331,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TagCountResponse'
+                $ref: "#/components/schemas/TagCountResponse"
   /runnerManagement/ui:
     get:
       tags:
@@ -8928,7 +9345,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/UiData'
+                $ref: "#/components/schemas/UiData"
   /runnerTag/searchTags:
     get:
       tags:
@@ -8983,7 +9400,7 @@ paths:
             application/json:
               schema:
                 type: object
-          $ref: '#/paths/~1project~1%7Bproject%7D~1jobs/get/responses/200'
+          $ref: "#/paths/~1project~1%7Bproject%7D~1jobs/get/responses/200"
   /scheduler/server/{uuid}/jobs:
     get:
       tags:
@@ -9011,7 +9428,7 @@ paths:
             application/json:
               schema:
                 type: object
-          $ref: '#/paths/~1project~1%7Bproject%7D~1jobs/get/responses/200'
+          $ref: "#/paths/~1project~1%7Bproject%7D~1jobs/get/responses/200"
   /scheduler/takeover:
     put:
       tags:
@@ -9196,7 +9613,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/LoginRoleData'
+                $ref: "#/components/schemas/LoginRoleData"
     post:
       tags:
       - enterprise
@@ -9323,7 +9740,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/LoginRoleData'
+                  $ref: "#/components/schemas/LoginRoleData"
               examples:
                 example:
                   value: |-
@@ -9401,7 +9818,7 @@ paths:
             application/json:
               schema:
                 type: object
-          $ref: '#/paths/~1secure~1roles/get/responses/200'
+          $ref: "#/paths/~1secure~1roles/get/responses/200"
   /secure/user/{id}:
     get:
       tags:
@@ -9678,7 +10095,7 @@ paths:
         schema:
           type: string
       requestBody:
-        $ref: '#/paths/~1storage~1keys~1%7Bpath%7D/post/requestBody'
+        $ref: "#/paths/~1storage~1keys~1%7Bpath%7D/post/requestBody"
       responses:
         "403":
           description: Unauthorized
@@ -9689,7 +10106,7 @@ paths:
             application/json:
               schema:
                 type: object
-          $ref: '#/paths/~1storage~1keys~1%7Bpath%7D/get/responses/200'
+          $ref: "#/paths/~1storage~1keys~1%7Bpath%7D/get/responses/200"
     post:
       tags:
       - key storage
@@ -9879,14 +10296,14 @@ paths:
           pattern: \w+.aclpolicy
           type: string
       requestBody:
-        $ref: '#/paths/~1system~1acl~1%7Bpath%7D/post/requestBody'
+        $ref: "#/paths/~1system~1acl~1%7Bpath%7D/post/requestBody"
       responses:
         "404":
           description: Not Found
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiErrorResponse'
+                $ref: "#/components/schemas/ApiErrorResponse"
         "400":
           description: |-
             Validation failure. If Validation fails, the body will contain a list of validation errors.
@@ -9913,7 +10330,7 @@ paths:
             application/json:
               schema:
                 type: object
-          $ref: '#/paths/~1system~1acl~1%7Bpath%7D/get/responses/200'
+          $ref: "#/paths/~1system~1acl~1%7Bpath%7D/get/responses/200"
     post:
       tags:
       - acls
@@ -10011,7 +10428,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiErrorResponse'
+                $ref: "#/components/schemas/ApiErrorResponse"
         "400":
           description: |-
             Validation failure. If Validation fails, the body will contain a list of validation errors.
@@ -10063,7 +10480,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiErrorResponse'
+                $ref: "#/components/schemas/ApiErrorResponse"
         "200":
           description: apiSystemAcls_DELETE_docs 200 response
           content:
@@ -10157,7 +10574,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ProjectCalendarsResponse'
+                $ref: "#/components/schemas/ProjectCalendarsResponse"
               examples:
                 example:
                   value:
@@ -10228,7 +10645,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ExecutionModeResult'
+                $ref: "#/components/schemas/ExecutionModeResult"
   /system/executions/disable/later:
     post:
       tags:
@@ -10246,7 +10663,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ModeLaterRequest'
+              $ref: "#/components/schemas/ModeLaterRequest"
             examples:
               example:
                 value:
@@ -10259,7 +10676,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ModeLaterResponse'
+                $ref: "#/components/schemas/ModeLaterResponse"
               examples:
                 example:
                   value:
@@ -10271,7 +10688,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ModeLaterResponse'
+                $ref: "#/components/schemas/ModeLaterResponse"
               examples:
                 example:
                   value:
@@ -10300,7 +10717,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ExecutionModeResult'
+                $ref: "#/components/schemas/ExecutionModeResult"
   /system/executions/enable/later:
     post:
       tags:
@@ -10318,7 +10735,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ModeLaterRequest'
+              $ref: "#/components/schemas/ModeLaterRequest"
             examples:
               example:
                 value:
@@ -10331,7 +10748,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ModeLaterResponse'
+                $ref: "#/components/schemas/ModeLaterResponse"
               examples:
                 example:
                   value:
@@ -10343,7 +10760,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ModeLaterResponse'
+                $ref: "#/components/schemas/ModeLaterResponse"
               examples:
                 example:
                   value:
@@ -10375,7 +10792,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ExecutionModeResult'
+                $ref: "#/components/schemas/ExecutionModeResult"
               examples:
                 active:
                   value:
@@ -10389,7 +10806,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ExecutionModeResult'
+                $ref: "#/components/schemas/ExecutionModeResult"
               examples:
                 passive:
                   value:
@@ -10407,7 +10824,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SystemInfoModel'
+                $ref: "#/components/schemas/SystemInfoModel"
   /system/logstorage:
     get:
       tags:
@@ -10496,7 +10913,7 @@ paths:
         in: query
         required: false
         schema:
-          $ref: '#/components/schemas/BaseQuery'
+          $ref: "#/components/schemas/BaseQuery"
       responses:
         "200":
           description: |2-
@@ -10626,13 +11043,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TourManagerSuccessResponse'
+                $ref: "#/components/schemas/TourManagerSuccessResponse"
         "400":
           description: Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TourManagerErrorResponse'
+                $ref: "#/components/schemas/TourManagerErrorResponse"
   /system/tours:
     get:
       tags:
@@ -10650,7 +11067,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Manifest'
+                $ref: "#/components/schemas/Manifest"
   /system/tours/resource/{path}:
     get:
       tags:
@@ -10675,7 +11092,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Tour'
+                $ref: "#/components/schemas/Tour"
   /system/tours/{path}:
     post:
       tags:
@@ -10700,21 +11117,21 @@ paths:
           application/json:
             schema:
               oneOf:
-              - $ref: '#/components/schemas/Manifest'
-              - $ref: '#/components/schemas/Tour'
+              - $ref: "#/components/schemas/Manifest"
+              - $ref: "#/components/schemas/Tour"
       responses:
         "200":
           description: Successful
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TourManagerSuccessResponse'
+                $ref: "#/components/schemas/TourManagerSuccessResponse"
         "400":
           description: Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TourManagerErrorResponse'
+                $ref: "#/components/schemas/TourManagerErrorResponse"
   /token/{tokenid}:
     get:
       tags:
@@ -10737,13 +11154,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Token'
+                $ref: "#/components/schemas/Token"
         "404":
           description: Not Found
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiErrorResponse'
+                $ref: "#/components/schemas/ApiErrorResponse"
     delete:
       tags:
       - tokens
@@ -10765,7 +11182,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiErrorResponse'
+                $ref: "#/components/schemas/ApiErrorResponse"
         "200":
           description: apiTokenDelete 200 response
           content:
@@ -10794,7 +11211,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Token'
+                  $ref: "#/components/schemas/Token"
     post:
       tags:
       - tokens
@@ -10825,8 +11242,8 @@ paths:
           application/json:
             schema:
               oneOf:
-              - $ref: '#/components/schemas/CreateToken'
-              - $ref: '#/components/schemas/CreateTokenStringRoles'
+              - $ref: "#/components/schemas/CreateToken"
+              - $ref: "#/components/schemas/CreateTokenStringRoles"
             examples:
               list-of-roles:
                 summary: Using a list of roles
@@ -10851,7 +11268,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Token'
+                $ref: "#/components/schemas/Token"
         "200":
           description: apiTokenCreate 200 response
           content:
@@ -10878,7 +11295,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RemoveExpiredTokens'
+                $ref: "#/components/schemas/RemoveExpiredTokens"
   /tours/endpoints:
     get:
       tags:
@@ -10912,13 +11329,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiErrorResponse'
+                $ref: "#/components/schemas/ApiErrorResponse"
         "404":
           description: Not found
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiErrorResponse'
+                $ref: "#/components/schemas/ApiErrorResponse"
         "200":
           description: User Profile Data
           content:
@@ -10959,7 +11376,7 @@ paths:
             application/json:
               schema:
                 type: object
-          $ref: '#/paths/~1user~1info/get/responses/200'
+          $ref: "#/paths/~1user~1info/get/responses/200"
   /user/info/{username}:
     get:
       tags:
@@ -10985,7 +11402,7 @@ paths:
             application/json:
               schema:
                 type: object
-          $ref: '#/paths/~1user~1info/get/responses/200'
+          $ref: "#/paths/~1user~1info/get/responses/200"
     post:
       tags:
       - user
@@ -11022,7 +11439,7 @@ paths:
             application/json:
               schema:
                 type: object
-          $ref: '#/paths/~1user~1info/get/responses/200'
+          $ref: "#/paths/~1user~1info/get/responses/200"
   /user/list:
     get:
       tags:
@@ -11118,7 +11535,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/UserClassAllocationResponse'
+                $ref: "#/components/schemas/UserClassAllocationResponse"
   /userclass/available:
     get:
       tags:
@@ -11139,7 +11556,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/UserClassList'
+                $ref: "#/components/schemas/UserClassList"
   /userclass/enabled:
     get:
       tags:
@@ -11153,7 +11570,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EnabledResponse'
+                $ref: "#/components/schemas/EnabledResponse"
   /userclass/self:
     get:
       tags:
@@ -11174,7 +11591,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/UserClassResponse'
+                $ref: "#/components/schemas/UserClassResponse"
   /userclass/state:
     get:
       tags:
@@ -11195,7 +11612,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/UserClassAllocationResponse'
+                $ref: "#/components/schemas/UserClassAllocationResponse"
   /userclass/update:
     post:
       tags:
@@ -11221,7 +11638,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UserClassAllocationChange'
+              $ref: "#/components/schemas/UserClassAllocationChange"
             examples:
               update-user-class:
                 summary: Specify the user class name
@@ -11233,13 +11650,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/UserClassAllocationResponse'
+                $ref: "#/components/schemas/UserClassAllocationResponse"
         "400":
           description: Format error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/BasicError'
+                $ref: "#/components/schemas/BasicError"
   /userclass/user/{username}:
     get:
       tags:
@@ -11263,7 +11680,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/UserClassResponse'
+                $ref: "#/components/schemas/UserClassResponse"
     post:
       tags:
       - enterprise
@@ -11291,7 +11708,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/SetUserclassModel'
+              $ref: "#/components/schemas/SetUserclassModel"
             examples:
               set-user-class:
                 summary: Specify the user class name
@@ -11303,13 +11720,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/UserClassResponse'
+                $ref: "#/components/schemas/UserClassResponse"
         "400":
           description: User Class Allocation error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/UserClassAllocationError'
+                $ref: "#/components/schemas/UserClassAllocationError"
     delete:
       tags:
       - enterprise
@@ -11383,6 +11800,21 @@ paths:
       - webhookTokenHeader: []
 components:
   schemas:
+    ActionAuthorization:
+      required:
+      - actionName
+      - isAuthorized
+      type: object
+      properties:
+        actionName:
+          type: string
+          description: Action name
+          example: read
+        isAuthorized:
+          type: boolean
+          description: Action authorization flag
+          example: true
+      description: Action authorization
     ApiBulkJobDeleteRequest:
       type: object
       properties:
@@ -11434,14 +11866,17 @@ components:
           description: "URL to icon file for the plugin if present. Since: v40"
         providerMetadata:
           type: object
-          additionalProperties: true
+          additionalProperties:
+            type: string
           description: "Map of metadata about the plugin if present. Since: v40"
         isHighlighted:
           type: boolean
-          description: "Indication of whether the plugin is marked as highlighted. Since: v51"
+          description: "Indication of whether the plugin is marked as highlighted.\
+            \ Since: v51"
         highlightedOrder:
           type: integer
           description: "Order of the highlighted plugin. Since: v51"
+          format: int32
     ApiRunAdhocRequest:
       type: object
       properties:
@@ -11476,6 +11911,23 @@ components:
           type: object
           additionalProperties:
             type: string
+    AuthorizationsResponse:
+      required:
+      - actionAuthorizations
+      - authorizationContext
+      - resource
+      type: object
+      properties:
+        authorizationContext:
+          type: object
+        resource:
+          type: object
+        actionAuthorizations:
+          type: array
+          description: Action authorization
+          items:
+            $ref: "#/components/schemas/ActionAuthorization"
+      description: Authorizations
     BaseQuery:
       type: object
       properties:
@@ -11557,7 +12009,7 @@ components:
         value:
           type: string
         condition:
-          $ref: '#/components/schemas/ConditionType'
+          $ref: "#/components/schemas/ConditionType"
     ConditionEvaluation:
       type: object
       properties:
@@ -11566,9 +12018,9 @@ components:
         value:
           type: object
         condition:
-          $ref: '#/components/schemas/Condition'
+          $ref: "#/components/schemas/Condition"
         error:
-          $ref: '#/components/schemas/Exception'
+          $ref: "#/components/schemas/Exception"
     ConditionType:
       type: string
       enum:
@@ -11595,6 +12047,14 @@ components:
           type: object
           additionalProperties:
             type: string
+        projectRunnerAsNode:
+          type: object
+          additionalProperties:
+            type: boolean
+        installationType:
+          type: string
+        replicaType:
+          type: string
     CreateToken:
       type: object
       properties:
@@ -11605,7 +12065,7 @@ components:
             type: string
       description: Create Token request using a list of Roles
       allOf:
-      - $ref: '#/components/schemas/CreateTokenBase'
+      - $ref: "#/components/schemas/CreateTokenBase"
     CreateTokenBase:
       type: object
       properties:
@@ -11627,7 +12087,7 @@ components:
           description: "since: v19"
       description: Create Token request using a comma-separated string for Roles
       allOf:
-      - $ref: '#/components/schemas/CreateTokenBase'
+      - $ref: "#/components/schemas/CreateTokenBase"
     DataSet:
       type: object
       properties:
@@ -11638,7 +12098,7 @@ components:
         entries:
           type: array
           items:
-            $ref: '#/components/schemas/IDataEntry'
+            $ref: "#/components/schemas/IDataEntry"
         big:
           type: boolean
     DefaultMessageSourceResolvable:
@@ -11694,7 +12154,7 @@ components:
         failures:
           type: array
           items:
-            $ref: '#/components/schemas/FailedItem'
+            $ref: "#/components/schemas/FailedItem"
     EnabledResponse:
       type: object
       properties:
@@ -11723,12 +12183,6 @@ components:
         errorCount:
           type: integer
           format: int32
-        allErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/ObjectError'
-        fieldError:
-          $ref: '#/components/schemas/FieldError'
         objectName:
           type: string
         nestedPath:
@@ -11739,25 +12193,31 @@ components:
         globalErrors:
           type: array
           items:
-            $ref: '#/components/schemas/ObjectError'
+            $ref: "#/components/schemas/ObjectError"
         globalError:
-          $ref: '#/components/schemas/ObjectError'
+          $ref: "#/components/schemas/ObjectError"
         fieldErrorCount:
           type: integer
           format: int32
         fieldErrors:
           type: array
           items:
-            $ref: '#/components/schemas/FieldError'
+            $ref: "#/components/schemas/FieldError"
+        allErrors:
+          type: array
+          items:
+            $ref: "#/components/schemas/ObjectError"
+        fieldError:
+          $ref: "#/components/schemas/FieldError"
     EventRoutingResult:
       type: object
       properties:
         event:
-          $ref: '#/components/schemas/RouterEvent'
+          $ref: "#/components/schemas/RouterEvent"
         ruleRoutingResults:
           type: array
           items:
-            $ref: '#/components/schemas/RuleRoutingResult'
+            $ref: "#/components/schemas/RuleRoutingResult"
     Exception:
       type: object
     ExecutionFileInfoList:
@@ -11766,11 +12226,11 @@ components:
       type: object
       properties:
         paging:
-          $ref: '#/components/schemas/Paging'
+          $ref: "#/components/schemas/Paging"
         files:
           type: array
           items:
-            $ref: '#/components/schemas/JobFileInfo'
+            $ref: "#/components/schemas/JobFileInfo"
     ExecutionModeResult:
       type: object
       properties:
@@ -11796,16 +12256,19 @@ components:
           type: string
           description: "since: v42"
     FieldError:
-      required:
-      - field
       type: object
-      properties:
-        bindingFailure:
-          type: boolean
-        rejectedValue:
-          type: object
-        field:
-          type: string
+      allOf:
+      - $ref: "#/components/schemas/ObjectError"
+      - $ref: "#/components/schemas/DefaultMessageSourceResolvable"
+      - required:
+        - field
+        properties:
+          bindingFailure:
+            type: boolean
+          rejectedValue:
+            type: object
+          field:
+            type: string
     HomeSummary:
       required:
       - execCount
@@ -11876,7 +12339,7 @@ components:
         meta:
           type: array
           items:
-            $ref: '#/components/schemas/ItemMeta'
+            $ref: "#/components/schemas/ItemMeta"
     JobBrowseResponse:
       type: object
       properties:
@@ -11885,7 +12348,7 @@ components:
         items:
           type: array
           items:
-            $ref: '#/components/schemas/JobBrowseItemData'
+            $ref: "#/components/schemas/JobBrowseItemData"
     JobFileInfo:
       type: object
       properties:
@@ -11998,7 +12461,7 @@ components:
         name:
           type: string
         description:
-          $ref: '#/components/schemas/LicenseEntitlementDescription'
+          $ref: "#/components/schemas/LicenseEntitlementDescription"
         value:
           type: object
           additionalProperties:
@@ -12091,7 +12554,7 @@ components:
         entitlements:
           type: array
           items:
-            $ref: '#/components/schemas/LicenseEntitlement'
+            $ref: "#/components/schemas/LicenseEntitlement"
       description: License Information
     LinkListResponse:
       type: object
@@ -12099,18 +12562,18 @@ components:
         _links:
           type: object
           additionalProperties:
-            $ref: '#/components/schemas/link'
+            $ref: "#/components/schemas/link"
           description: Available named links
       description: API links
     LoginRoleData:
       type: object
       properties:
-        description:
-          type: string
         id:
           type: integer
           format: int64
         authority:
+          type: string
+        description:
           type: string
     Manifest:
       type: object
@@ -12122,7 +12585,7 @@ components:
         tours:
           type: array
           items:
-            $ref: '#/components/schemas/Tour'
+            $ref: "#/components/schemas/Tour"
     MetricsQueryResponse:
       type: object
       properties:
@@ -12130,7 +12593,7 @@ components:
           type: integer
           format: int64
         duration:
-          $ref: '#/components/schemas/MetricsQueryResponse.Duration'
+          $ref: "#/components/schemas/MetricsQueryResponse.Duration"
     MetricsQueryResponse.Duration:
       type: object
       properties:
@@ -12168,10 +12631,21 @@ components:
           type: boolean
         msg:
           type: string
+    NewRunnerReplicaResponse:
+      type: object
+      properties:
+        token:
+          type: string
+        runnerId:
+          type: string
+        replicaId:
+          type: string
+        downloadTk:
+          type: string
     NewRunnerResponse:
       type: object
       allOf:
-      - $ref: '#/components/schemas/RegenRunnerCredResponse'
+      - $ref: "#/components/schemas/RegenRunnerCredResponse"
       - properties:
           name:
             type: string
@@ -12184,7 +12658,7 @@ components:
     ObjectError:
       type: object
       allOf:
-      - $ref: '#/components/schemas/DefaultMessageSourceResolvable'
+      - $ref: "#/components/schemas/DefaultMessageSourceResolvable"
       - required:
         - objectName
         properties:
@@ -12238,7 +12712,7 @@ components:
         secureExposed:
           type: boolean
       allOf:
-      - $ref: '#/components/schemas/OptionInput'
+      - $ref: "#/components/schemas/OptionInput"
     OptionValidateResponse:
       type: object
       properties:
@@ -12271,6 +12745,8 @@ components:
     PingResponse:
       type: object
       properties:
+        runnerId:
+          type: string
         completed:
           type: boolean
         message:
@@ -12356,7 +12832,7 @@ components:
       type: object
       properties:
         calendar:
-          $ref: '#/components/schemas/Calendar'
+          $ref: "#/components/schemas/Calendar"
         msg:
           type: string
         saved:
@@ -12396,7 +12872,7 @@ components:
       description: Request to enable/disable executions or schedules after a time
         delay.
       allOf:
-      - $ref: '#/components/schemas/ModeLaterRequest'
+      - $ref: "#/components/schemas/ModeLaterRequest"
     ROIDataBasicErrorResponse:
       type: object
       properties:
@@ -12412,14 +12888,29 @@ components:
     RdJobQueryInput:
       type: object
       allOf:
-      - $ref: '#/components/schemas/RdPageable'
+      - $ref: "#/components/schemas/RdPageable"
       - properties:
+          errors:
+            $ref: "#/components/schemas/Errors"
+          scheduledFilter:
+            type: boolean
+          scheduleEnabledFilter:
+            type: boolean
+          executionEnabledFilter:
+            type: boolean
+          serverNodeUUIDFilter:
+            type: string
+          daysAhead:
+            type: integer
+            format: int32
+          runJobLaterFilter:
+            type: boolean
+          paginatedRequired:
+            type: boolean
           sortBy:
             type: string
           sortOrder:
             type: string
-          errors:
-            $ref: '#/components/schemas/Errors'
           inputParamMap:
             type: object
             additionalProperties: true
@@ -12439,33 +12930,18 @@ components:
             type: string
           idlist:
             type: string
-          scheduledFilter:
-            type: boolean
-          scheduleEnabledFilter:
-            type: boolean
-          executionEnabledFilter:
-            type: boolean
-          serverNodeUUIDFilter:
-            type: string
-          daysAhead:
-            type: integer
-            format: int32
-          runJobLaterFilter:
-            type: boolean
-          paginatedRequired:
-            type: boolean
     RdPageable:
       type: object
       properties:
-        errors:
-          $ref: '#/components/schemas/Errors'
-        sortOrders:
-          type: array
-          items:
-            $ref: '#/components/schemas/SortOrder'
         max:
           type: integer
           format: int32
+        sortOrders:
+          type: array
+          items:
+            $ref: "#/components/schemas/SortOrder"
+        errors:
+          $ref: "#/components/schemas/Errors"
         offset:
           type: integer
           format: int32
@@ -12480,6 +12956,8 @@ components:
         downloadTk:
           type: string
           description: Runner package download token
+        replicaId:
+          type: string
     RemoveExpiredTokens:
       type: object
       properties:
@@ -12535,7 +13013,7 @@ components:
       type: object
       properties:
         meta:
-          $ref: '#/components/schemas/RouterEventMetadata'
+          $ref: "#/components/schemas/RouterEventMetadata"
         event:
           type: object
           additionalProperties: true
@@ -12556,7 +13034,7 @@ components:
         enabled:
           type: boolean
         policy:
-          $ref: '#/components/schemas/PolicyType'
+          $ref: "#/components/schemas/PolicyType"
         jobId:
           type: string
         jobArgString:
@@ -12564,7 +13042,7 @@ components:
         jobOptions:
           type: array
           items:
-            $ref: '#/components/schemas/JobOption'
+            $ref: "#/components/schemas/JobOption"
         nodeFilter:
           type: string
         user:
@@ -12572,25 +13050,25 @@ components:
         conditions:
           type: array
           items:
-            $ref: '#/components/schemas/Condition'
+            $ref: "#/components/schemas/Condition"
     RuleEvaluation:
       type: object
       properties:
         satisfied:
           type: boolean
         rule:
-          $ref: '#/components/schemas/RoutingRule'
+          $ref: "#/components/schemas/RoutingRule"
         conditionEvaluations:
           type: array
           items:
-            $ref: '#/components/schemas/ConditionEvaluation'
+            $ref: "#/components/schemas/ConditionEvaluation"
     RuleRoutingResult:
       type: object
       properties:
         ruleEvaluation:
-          $ref: '#/components/schemas/RuleEvaluation'
+          $ref: "#/components/schemas/RuleEvaluation"
         jobRunStatus:
-          $ref: '#/components/schemas/JobRunStatus'
+          $ref: "#/components/schemas/JobRunStatus"
         jobId:
           type: string
         executionId:
@@ -12612,10 +13090,10 @@ components:
           type: string
         status:
           type: string
-        runnerVersion:
+        version:
           type: string
         projectAssociations:
-          $ref: '#/components/schemas/RunnerProjectAssociations'
+          $ref: "#/components/schemas/RunnerProjectAssociations"
         createTime:
           type: string
           format: date-time
@@ -12633,17 +13111,46 @@ components:
           type: array
           items:
             type: string
+        runnerAsNodeEnabled:
+          type: boolean
+        remoteNodeDispatch:
+          type: boolean
+        runnerNodeFilter:
+          type: string
+        replicaType:
+          $ref: "#/components/schemas/RunnerReplicaType"
+        installationType:
+          $ref: "#/components/schemas/RunnerInstallationType"
+    RunnerInstallationType:
+      type: string
+      enum:
+      - LINUX
+      - WINDOWS
+      - KUBERNETES
+      - DOCKER
     RunnerList:
       type: object
       properties:
         runners:
           type: array
           items:
-            $ref: '#/components/schemas/RunnerSummary'
+            $ref: "#/components/schemas/RunnerSummary"
     RunnerProjectAssociations:
       type: object
       properties:
         projectNodeFilters:
+          type: object
+          additionalProperties:
+            type: string
+        projectRunnerAsNodeEnabled:
+          type: object
+          additionalProperties:
+            type: boolean
+        projectRemoteNodeDispatch:
+          type: object
+          additionalProperties:
+            type: boolean
+        projectRunnerNodeFilter:
           type: object
           additionalProperties:
             type: string
@@ -12656,6 +13163,47 @@ components:
           type: string
         pluginName:
           type: string
+    RunnerReplicaList:
+      type: object
+      properties:
+        replicas:
+          type: array
+          items:
+            $ref: "#/components/schemas/RunnerReplicaSummary"
+    RunnerReplicaSummary:
+      type: object
+      properties:
+        replicaId:
+          type: string
+        runnerId:
+          type: string
+        sessionId:
+          type: string
+        status:
+          type: string
+        version:
+          type: string
+        hostname:
+          type: string
+        installationPath:
+          type: string
+        ipAddress:
+          type: string
+        createTime:
+          type: string
+          format: date-time
+        lastCheckin:
+          type: string
+        lastCheckinAlert:
+          type: boolean
+        uptime:
+          type: integer
+          format: int64
+    RunnerReplicaType:
+      type: string
+      enum:
+      - EPHEMERAL
+      - MANUAL
     RunnerSummary:
       type: object
       properties:
@@ -12674,6 +13222,8 @@ components:
           format: int32
         lastCheckin:
           type: string
+        runnerAsNodeEnabled:
+          type: boolean
         lastCheckinAlert:
           type: boolean
         selected:
@@ -12683,11 +13233,31 @@ components:
           items:
             type: string
         uiData:
-          $ref: '#/components/schemas/UiData'
+          $ref: "#/components/schemas/UiData"
+        runnerNodeFilter:
+          type: string
+        remoteNodeDispatch:
+          type: boolean
+        replicaType:
+          $ref: "#/components/schemas/RunnerReplicaType"
+        installationType:
+          $ref: "#/components/schemas/RunnerInstallationType"
         providers:
           type: array
           items:
-            $ref: '#/components/schemas/RunnerProviderSummary'
+            $ref: "#/components/schemas/RunnerProviderSummary"
+        runnerReplicas:
+          type: integer
+          format: int32
+        healthyRunnerReplicas:
+          type: integer
+          format: int32
+        runningOperations:
+          type: integer
+          format: int32
+        uptime:
+          type: integer
+          format: int64
     SaveProjectRunnerConfigRequest:
       type: object
       properties:
@@ -12742,15 +13312,15 @@ components:
         fields:
           type: array
           items:
-            $ref: '#/components/schemas/ScmPluginInputField'
+            $ref: "#/components/schemas/ScmPluginInputField"
         importItems:
           type: array
           items:
-            $ref: '#/components/schemas/ScmImportActionItem'
+            $ref: "#/components/schemas/ScmImportActionItem"
         exportItems:
           type: array
           items:
-            $ref: '#/components/schemas/ScmExportActionItem'
+            $ref: "#/components/schemas/ScmExportActionItem"
     ScmActionResult:
       type: object
       properties:
@@ -12794,7 +13364,7 @@ components:
           description: "ID of a repo item if the job was renamed and now is stored\
             \ at a different repo path, or empty/null"
         job:
-          $ref: '#/components/schemas/JobReference'
+          $ref: "#/components/schemas/JobReference"
         deleted:
           type: boolean
           description: whether the job was deleted and requires deleting the associated
@@ -12813,7 +13383,7 @@ components:
           type: string
           description: "ID of the repo item, e.g. a file path"
         job:
-          $ref: '#/components/schemas/JobReference'
+          $ref: "#/components/schemas/JobReference"
         tracked:
           type: boolean
           description: true if there is an associated `job`
@@ -12834,9 +13404,9 @@ components:
         integration:
           type: string
         commit:
-          $ref: '#/components/schemas/ScmCommit'
+          $ref: "#/components/schemas/ScmCommit"
         incomingCommit:
-          $ref: '#/components/schemas/ScmCommit'
+          $ref: "#/components/schemas/ScmCommit"
         diffContent:
           type: string
     ScmJobStatus:
@@ -12857,7 +13427,7 @@ components:
           items:
             type: string
         commit:
-          $ref: '#/components/schemas/ScmCommit'
+          $ref: "#/components/schemas/ScmCommit"
     ScmPluginDescription:
       type: object
       properties:
@@ -12921,7 +13491,7 @@ components:
         plugins:
           type: array
           items:
-            $ref: '#/components/schemas/ScmPluginDescription'
+            $ref: "#/components/schemas/ScmPluginDescription"
     ScmPluginSetupInput:
       type: object
       properties:
@@ -12932,7 +13502,7 @@ components:
         fields:
           type: array
           items:
-            $ref: '#/components/schemas/ScmPluginInputField'
+            $ref: "#/components/schemas/ScmPluginInputField"
     ScmProjectPluginConfig:
       type: object
       properties:
@@ -13033,7 +13603,16 @@ components:
         errors:
           type: string
         resources:
-          $ref: '#/components/schemas/Resources'
+          $ref: "#/components/schemas/Resources"
+    StartUpResponse:
+      type: object
+      properties:
+        error:
+          type: boolean
+        replicaId:
+          type: string
+        replicaType:
+          type: string
     Step:
       type: object
       properties:
@@ -13054,7 +13633,7 @@ components:
       properties:
         system:
           allOf:
-          - $ref: '#/components/schemas/system'
+          - $ref: "#/components/schemas/system"
           - description: System Information
       description: System Information
     SystemReportItem:
@@ -13072,6 +13651,33 @@ components:
           additionalProperties:
             type: integer
             format: int32
+    TagForNodes:
+      required:
+      - name
+      - nodeCount
+      type: object
+      properties:
+        name:
+          type: string
+          description: Tag name
+          example: infra
+        nodeCount:
+          type: integer
+          description: Count of nodes associated with the tag
+          format: int32
+          example: 5
+      description: Tag with node count
+    TagsForNodesResponse:
+      required:
+      - tags
+      type: object
+      properties:
+        tags:
+          type: array
+          description: List of tags
+          items:
+            $ref: "#/components/schemas/TagForNodes"
+      description: Tags
     Token:
       type: object
       properties:
@@ -13116,7 +13722,7 @@ components:
         steps:
           type: array
           items:
-            $ref: '#/components/schemas/Step'
+            $ref: "#/components/schemas/Step"
     TourManagerErrorResponse:
       type: object
       properties:
@@ -13141,6 +13747,24 @@ components:
           type: array
           items:
             type: string
+        runnerInstanceTypes:
+          type: array
+          items:
+            type: string
+    UpdateRunnerNodeDispatchRequest:
+      required:
+      - runnerId
+      type: object
+      properties:
+        runnerId:
+          minLength: 1
+          type: string
+        runnerAsNodeEnabled:
+          type: boolean
+        remoteNodeDispatch:
+          type: boolean
+        runnerNodeFilter:
+          type: string
     UpdateRunnerRequest:
       required:
       - runnerId
@@ -13159,6 +13783,10 @@ components:
             type: string
         tagNames:
           type: string
+        installationType:
+          type: string
+        replicaType:
+          type: string
     UserClassAllocationChange:
       type: object
       properties:
@@ -13171,7 +13799,7 @@ components:
         bulkRemove:
           type: boolean
       allOf:
-      - $ref: '#/components/schemas/UserClassAllocationModel'
+      - $ref: "#/components/schemas/UserClassAllocationModel"
     UserClassAllocationError:
       type: object
       properties:
@@ -13188,7 +13816,7 @@ components:
             format: int64
           description: "Allowed User Class assignment limits, by user class name"
       allOf:
-      - $ref: '#/components/schemas/BasicError'
+      - $ref: "#/components/schemas/BasicError"
     UserClassAllocationModel:
       type: object
       properties:
@@ -13226,7 +13854,7 @@ components:
             format: int64
           description: Entitled allocations count by user class name.
       allOf:
-      - $ref: '#/components/schemas/UserClassAllocationModel'
+      - $ref: "#/components/schemas/UserClassAllocationModel"
     UserClassDefinition:
       type: object
       properties:
@@ -13242,7 +13870,7 @@ components:
         classes:
           type: array
           items:
-            $ref: '#/components/schemas/UserClassDefinition'
+            $ref: "#/components/schemas/UserClassDefinition"
     UserClassResponse:
       type: object
       properties:
@@ -13267,7 +13895,7 @@ components:
         routingResults:
           type: array
           items:
-            $ref: '#/components/schemas/EventRoutingResult'
+            $ref: "#/components/schemas/EventRoutingResult"
     basic:
       type: object
       properties:
@@ -13278,7 +13906,7 @@ components:
       type: object
       properties:
         loadAverage:
-          $ref: '#/components/schemas/loadAverage'
+          $ref: "#/components/schemas/loadAverage"
         processors:
           type: integer
           format: int32
@@ -13411,39 +14039,39 @@ components:
       type: object
       properties:
         uptime:
-          $ref: '#/components/schemas/uptime'
+          $ref: "#/components/schemas/uptime"
         cpu:
-          $ref: '#/components/schemas/cpu'
+          $ref: "#/components/schemas/cpu"
         memory:
-          $ref: '#/components/schemas/memory'
+          $ref: "#/components/schemas/memory"
         scheduler:
-          $ref: '#/components/schemas/scheduler'
+          $ref: "#/components/schemas/scheduler"
         threads:
-          $ref: '#/components/schemas/threads'
+          $ref: "#/components/schemas/threads"
       description: Stat Information
     system:
       type: object
       properties:
         timestamp:
-          $ref: '#/components/schemas/timestamp'
+          $ref: "#/components/schemas/timestamp"
         rundeck:
-          $ref: '#/components/schemas/rundeck'
+          $ref: "#/components/schemas/rundeck"
         executions:
-          $ref: '#/components/schemas/executions'
+          $ref: "#/components/schemas/executions"
         os:
-          $ref: '#/components/schemas/os'
+          $ref: "#/components/schemas/os"
         jvm:
-          $ref: '#/components/schemas/jvm'
+          $ref: "#/components/schemas/jvm"
         stats:
-          $ref: '#/components/schemas/stats'
+          $ref: "#/components/schemas/stats"
         metrics:
-          $ref: '#/components/schemas/metrics'
+          $ref: "#/components/schemas/metrics"
         threadDump:
-          $ref: '#/components/schemas/threadDump'
+          $ref: "#/components/schemas/threadDump"
         healthcheck:
-          $ref: '#/components/schemas/healthcheck'
+          $ref: "#/components/schemas/healthcheck"
         ping:
-          $ref: '#/components/schemas/ping'
+          $ref: "#/components/schemas/ping"
         extended:
           type: object
           additionalProperties: true
@@ -13483,7 +14111,7 @@ components:
         unit:
           type: string
         since:
-          $ref: '#/components/schemas/since'
+          $ref: "#/components/schemas/since"
       description: Uptime Information
   securitySchemes:
     rundeckApiToken:
