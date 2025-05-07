@@ -34,6 +34,7 @@ If both script path and inline commands are provided, the plugin will use the sc
     - MySQL: `com.mysql.jdbc.Driver`
     - MariaDB: `org.mariadb.jdbc.Driver`
     - Oracle: `oracle.jdbc.OracleDriver`
+    - Microsoft: `com.microsoft.sqlserver.jdbc.SQLServerDriver`
 
 - **JDBC URL** (required)
   : The complete JDBC connection URL
