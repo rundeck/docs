@@ -29,4 +29,3 @@ _Jobs are assigned to remote Runners based on tags.  Jobs on nodes in the cluste
 # Resources
 [Advanced Runner Setup Options](/administration/runner/)<br>
 [Runner Custom Logging](/administration/runner/runner-management/runner-logging.md)<br>
-[Runner FAQ](/administration/runner/runner-faq.md)<br>

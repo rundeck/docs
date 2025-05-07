@@ -151,7 +151,7 @@ rundeck.security.oauth.PROVIDER_NAME.principleKeys=email
 ## Enabling OAuth Resource Server and JWT Token Authentication Support
 
 **Starting from Runbook Automation 5.1.0**, the platform can act as an OAuth2 Resource Server and validate JWT tokens issued
-by an external OAuth2 or OIDC provider. This can be used to leverage [SSO logins on the API](/api/#jwt-token-authentication-enterprise).
+by an external OAuth2 or OIDC provider. This can be used to leverage [SSO logins on the API](/api/#jwt-token-authentication-commercial).
 
 General steps to make use of this feature are:
 
