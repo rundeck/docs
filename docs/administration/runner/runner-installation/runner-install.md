@@ -227,13 +227,7 @@ docker run -it \
 
 [//]: # (    ```)
 
-[//]: # (    curl --location --request POST 'https://[URL]/api/42/runnerManagement/runners' \)
 
-[//]: # (    --header 'Accept: application/json' \)
-
-[//]: # (    --header 'X-Rundeck-Auth-Token: [ApiToken]' \)
-
-[//]: # (    --header 'Content-Type: application/json' \)
 
 [//]: # (    --data-raw '{)
 

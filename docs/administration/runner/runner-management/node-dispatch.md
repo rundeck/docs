@@ -12,6 +12,12 @@ The Node Dispatch settings of a Runner defines which nodes are assigned to a Run
 Enabling the _**Runner as a Node**_ adds the Runner as a node to the node inventory.  When this node is targeted with a node-step within a Job or with a command from the Commands page,
 the Runner will execute the step locally. This is useful for running automation tasks that require the Runner to execute a command or script on the local host.
 
+:::tip Runners with Multiple Replicas
+When a Runner has multiple Replicas, only a single node is created for the Runner in the node inventory.  This is because any Replica can pick up the tasks assigned to a Runner, including local-execution tasks.
+Therefore, when a command or a script is dispatched to the Runner node, any Replica of the Runner can pick up the task and execute it locally.
+:::
+
+
 :::warning Runner Version Requirement
 To use the Runner as a Node feature and target the Runner's host with command and script steps, the Runner must be at version 5.5.0 or later.
 :::
@@ -38,7 +44,7 @@ To still use the Local Node Source, but prevent the execution of commands and sc
 
 ## Remote Node Dispatch 
 
-Enabling the _**Remote Node Dispatch**_ setting allows the Runner to dispatch commands, scripts and api-calls to _remote_ nodes using protocols such as SSH, WinRM and HTTP/S.  This is necessary for securely dispatching to nodes from Runbook Automation Cloud or to nodes that are not directly accessible from the self-hosted cluster.
+Enabling the _**Remote Node Dispatch**_ setting allows the Runner to dispatch commands, scripts and API calls to _remote_ nodes using protocols such as SSH, WinRM and HTTP/S.  This is necessary for securely dispatching to nodes from Runbook Automation Cloud or to nodes that are not directly accessible from the self-hosted cluster.
 
 The mapping of which nodes a given Runner is responsible for is defined using a [**Node Filter**](/manual/11-node-filters.md).  When the Node Filter is defined for a Runner, then Job steps that target the nodes that match the filter will be dispatched _through_ the Runner for execution.
 
@@ -54,13 +60,14 @@ To define the Node Filter for a Runner:
 ![Remote Node Dispatch](/assets/img/runner-node-filter.png)
 _Runners are dynamically chosen for Job execution based on the Runner's Node Filter_
 
-:::tip Nodes Without a Runner Association
+:::warning Nodes Without a Runner Association
 Nodes that do not match the Node Filter of any Runner will be dispatched to using the Runbook Automation cluster (self-hosted).  When using Runbook Automation Cloud, commands and scripts can be dispatched to these nodes using the [AWS Systems Manager](/manual/projects/node-execution/aws-ssm.md) Node Executor. Node Step plugins that target public endpoints - such as AWS or Datadog node step plugins - can also be used through Runbook Automation Cloud when no Runner is assigned to those nodes.
 
 This ensures that all nodes are dispatched for execution, even if they do not match the Node Filter of a Runner.
 :::
 
-### Example Remote Dispatch Node Filter
+::: tip Example 
+## Remote Dispatch Node Filter Example
 
 A common use-case for defining a Node Filter for a Runner is to declare a given region or data-center that a Runner is responsible for.
 
@@ -75,7 +82,7 @@ Taking this a step further, a Runner could be responsible for only **_Windows_**
 ![Remote node dispatch windows example](/assets/img/remote-node-dispatch-windows-example.png)<br>
 
 For more information on defining Node Filters, see the [Node Filters](/manual/11-node-filters.md) documentation.
-
+:::
 ## Overlapping Node Filters
 
 When defining Node Filters for Runners, it is possible to have filters on multiple Runners that overlap their assignments of the node inventory. In other words, a given node may be mapped to more than one Runner.
