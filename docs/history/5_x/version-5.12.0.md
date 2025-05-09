@@ -1,7 +1,7 @@
 ---
 
 title: "5.12.0 Release Notes"
-date: 2025-05-07
+date: 2025-05-12
 image: /images/chevron-logo-red-on-white.png
 description: "Rundeck | Runbook Automation Releases 5.12.0 - HTTP Response Range Checks and security updates."
 feed:
@@ -51,7 +51,7 @@ The HTTP Request step plugin just got smarter! We've streamlined the configurati
 
 Name: <span style="color: orange"><span class="glyphicon glyphicon-flash"></span> "Kinabalu orange flash"</span>
 
-Release Date: May 7th, 2025
+Release Date: May 12th, 2025
 
 
 ## Community Contributors
@@ -65,8 +65,6 @@ Submit your own Pull Requests to get recognition here!
 * Alexander Abarca ([alexander-variacode](https://github.com/alexander-variacode))
 * Alexander Grachtchouk ([mrdubr](https://github.com/mrdubr))
 * Carlos Eduardo ([carlosrfranco](https://github.com/carlosrfranco))
-* Christopher McCarroll-Gilbert ([chrismcg14](https://github.com/chrismcg14))
-* Charlie Crawford ([ChuckCrawford](https://github.com/ChuckCrawford))
 * Forrest Evans ([fdevans](https://github.com/fdevans))
 * Jake Cohen ([jsboak](https://github.com/jsboak))
 * Jason Brooks ([jbrookspd](https://github.com/jbrookspd))
