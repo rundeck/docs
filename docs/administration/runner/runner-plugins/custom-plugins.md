@@ -1,6 +1,6 @@
 # Custom Plugins on the Enterprise Runner
 
-Enterprise Runners allow remote execution and workflow orchestration close to target infrastructure. To extend Runbook Automation functionality, customers can [develop their own custom plugins](//developer/01-plugin-development.md). The Enterprise Runner supports the following plugin types:
+Enterprise Runners allow remote execution and workflow orchestration close to target infrastructure. To extend Runbook Automation functionality, customers can [develop their own custom plugins](/developer/01-plugin-development.md). The Enterprise Runner supports the following plugin types:
 
 * Node Step
 * Workflow Step
@@ -13,7 +13,8 @@ The installation process varies depending on how the Runner is deployed: on a vi
 
 ## Prerequisites
 
-In order for the plugin to be configurable in the GUI, the plugin must also be uploaded to the server.  This can be done through the GUI ([example](/learning/howto/how2kube.md#installing-the-kubernetes-plugin-in-rundeck)) or manually [copying the plugin artifacts](/administration/configuration/plugins/installing.md) to the plugins directory.
+1. In order for the plugin to be configurable in the GUI, the plugin must also be uploaded to the server.  This can be done through the GUI ([example](/learning/howto/how2kube.md#installing-the-kubernetes-plugin-in-rundeck)) or manually [copying the plugin artifacts](/administration/configuration/plugins/installing.md) to the plugins directory.
+2. The server and Runner must be on version `5.0.0` or later.
 
 **Currently this is only supported on Self-Hosted versions of Runbook Automation.**
 
