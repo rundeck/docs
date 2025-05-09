@@ -1,19 +1,25 @@
-# Adding Custom Plugins to the Enterprise Runner
+# Custom Plugins on the Enterprise Runner
 
-Enterprise Runners allow remote execution and workflow orchestration close to target infrastructure. To extend Runbook Automation functionality, customers can [develop](/api/) and upload their own custom plugins. In order for customer-written plugins to be usable through the Enterprise Runner, follow the steps outlined below. Today, the Enterprise Runner supports the following plugin types:
+Enterprise Runners allow remote execution and workflow orchestration close to target infrastructure. To extend Runbook Automation functionality, customers can [develop their own custom plugins](/developer/). The Enterprise Runner supports the following plugin types:
+
 * Node Step
 * Workflow Step
 * Node Source
 * Key Storage
 * Node Executor
 * File Copier
+
 The installation process varies depending on how the Runner is deployed: on a virtual machine, in a Docker container, or in Kubernetes. This article provides clear instructions for each deployment model.
 
-## Prerequisites 
-The following steps outline adding the plugin to the Runner.  In order for the plugin to be configurable in the GUI, the plugin must also be uploaded to the server.  This can be done through the GUI ([example](/learning/howto/how2kube.md#installing-the-kubernetes-plugin-in-rundeck)) or manually [copying the plugin artifacts](/administration/configuration/plugins/installing.md) to the plugins directory.
+## Prerequisites
+
+In order for the plugin to be configurable in the GUI, the plugin must also be uploaded to the server.  This can be done through the GUI ([example](/learning/howto/how2kube.md#installing-the-kubernetes-plugin-in-rundeck)) or manually [copying the plugin artifacts](/administration/configuration/plugins/installing.md) to the plugins directory.
+
+**Currently this is only supported on Self-Hosted versions of Runbook Automation.**
 
 ## Adding Plugins to a Runner Deployed on a Virtual Machine
-When the Enterprise Runner is installed on a virtual machine (VM), custom plugin installation is straightforward:
+
+When the Enterprise Runner is installed on a virtual machine (VM) or traditional server platform:
 
 1. Locate the Runner Installation Directory. This is the directory where the Runner JAR was initialized.
 2. Copy Your Plugin to the `plugins` Directory
@@ -37,6 +43,7 @@ Copy the plugin into the container:
 `docker cp ./my-custom-plugin.zip <container-name>:/app/runner/plugins/`
 
 #### Custom Docker Image
+
 Create a Dockerfile:
 ```
 FROM rundeckpro/runner:5.10-RBA-<your-version>
