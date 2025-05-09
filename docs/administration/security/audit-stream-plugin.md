@@ -39,11 +39,8 @@ This plugin streams **Rundeck audit events** to external systems via secure, con
 
 Access these properties via the System Configuration menu under Plugins → Audit Stream.
 
-Rundeck must be restarted after applying changes.
-
 ### AWS API Gateway Example
 
-- Set these configurations:
 ```properties
 framework.plugin.AuditEventListener.WebhookAuditListener.webhookUrl=https://api-id.execute-api.us-west-2.amazonaws.com/prod/webhook
 framework.plugin.AuditEventListener.WebhookAuditListener.securityType=AWS_SIGV4
@@ -59,7 +56,6 @@ framework.plugin.AuditEventListener.WebhookAuditListener.awsSecretKey=<your-secr
 
 ### Azure Function Example
 
-- Set these configurations:
 
 ```properties
 framework.plugin.AuditEventListener.WebhookAuditListener.webhookUrl=https://<your-function-app>.azurewebsites.net/api/rundeckwebhook
@@ -70,7 +66,6 @@ framework.plugin.AuditEventListener.WebhookAuditListener.azureHeaderName=x-funct
 
 ### Bearer Token Example
 
-- Set these configurations:
 
 ```properties
 framework.plugin.AuditEventListener.WebhookAuditListener.webhookUrl=https://api.example.com/secure-audit
@@ -79,9 +74,7 @@ framework.plugin.AuditEventListener.WebhookAuditListener.authToken=<your-bearer-
 ```
 ### Custom Headers Example (Datadog, New Relic, etc.)
 
-Datadog:
-
-- Set these configurations:
+#### Datadog:
 
 ```properties
 framework.plugin.AuditEventListener.WebhookAuditListener.webhookUrl=https://api.datadoghq.com/api/v2/events
@@ -89,24 +82,25 @@ framework.plugin.AuditEventListener.WebhookAuditListener.securityType=NONE
 framework.plugin.AuditEventListener.WebhookAuditListener.customHeaders=DD-API-KEY:your_api_key,DD-APPLICATION-KEY:your_app_key,Accept:application/json
 ```
 
-New Relic:
 
-- Set these configurations:
+#### New Relic:
 
 ```properties
 framework.plugin.AuditEventListener.WebhookAuditListener.webhookUrl=https://insights-collector.newrelic.com/v1/accounts/YOUR_ACCOUNT_ID/events
 framework.plugin.AuditEventListener.WebhookAuditListener.securityType=NONE
 framework.plugin.AuditEventListener.WebhookAuditListener.customHeaders=X-Insert-Key:your_insert_key      //This key must have type: INGEST - LICENSE
 ```
+> Ensure your insert key is of type INGEST – LICENSE
 
-- Set the X-Insert-Key custom header (Ensure the key is of type INGEST – LICENSE):
 
-No Authentication:
+
+#### No Authentication:
 
 ```properties
 framework.plugin.AuditEventListener.WebhookAuditListener.webhookUrl=https://internal.example.com/webhook
 framework.plugin.AuditEventListener.WebhookAuditListener.securityType=NONE
 ```
+
 
 ### Event Filtering
 
