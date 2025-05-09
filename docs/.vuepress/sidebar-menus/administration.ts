@@ -229,7 +229,8 @@ export default [{
         '/administration/security/password-security',
         '/administration/security/ratelimiting',
         '/administration/security/blocklist',
-        '/administration/security/audit-trail'
+        '/administration/security/audit-trail',
+        '/administration/security/audit-stream-plugin'
       ]
     }
   ]
