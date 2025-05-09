@@ -43,93 +43,78 @@ Rundeck must be restarted after applying changes.
 
 ### AWS API Gateway Example
 
-- Set the Webhook URL:
-
-![](/assets/img/audit-stream-aws-url.png)
-
-- Set the Security Type to AWS_SIGV4
-
-![](/assets/img/audit-stream-aws-sigv4.png)
-
-- Set the AWS Region:
-
-![](/assets/img/audit-stream-aws-region.png)
-
-- Set the AWS Service Name:
-
-![](/assets/img/audit-stream-aws-service.png)
-
+- Set these configurations:
+```properties
+framework.plugin.AuditEventListener.WebhookAuditListener.webhookUrl=https://api-id.execute-api.us-west-2.amazonaws.com/prod/webhook
+framework.plugin.AuditEventListener.WebhookAuditListener.securityType=AWS_SIGV4
+framework.plugin.AuditEventListener.WebhookAuditListener.awsRegion=us-west-2
+framework.plugin.AuditEventListener.WebhookAuditListener.awsService=execute-api
+```
 - Optional: If you haven’t configured credentials in Rundeck’s Key Storage, you can set them here:
 
-![](/assets/img/audit-stream-aws-access-key.png)
-![](/assets/img/audit-stream-aws-secret-key.png)
-
+```properties
+framework.plugin.AuditEventListener.WebhookAuditListener.awsAccessKey=<your-access-key>
+framework.plugin.AuditEventListener.WebhookAuditListener.awsSecretKey=<your-secret-key>
+```
 
 ### Azure Function Example
 
-- Set the Webhook URL:
+- Set these configurations:
 
-![](/assets/img/audit-stream-azure-url.png)
-
-- Set the Security Type to AZURE_SAS:
-
-![](/assets/img/audit-stream-azure-sas.png)
-
-- Set the Azure SAS Header Name (e.g., x-functions-key):
-
-![](/assets/img/audit-stream-azure-header.png)
-
-- Set the Azure SAS Token
-
-![](/assets/img/audit-stream-azure-token.png)
+```properties
+framework.plugin.AuditEventListener.WebhookAuditListener.webhookUrl=https://<your-function-app>.azurewebsites.net/api/rundeckwebhook
+framework.plugin.AuditEventListener.WebhookAuditListener.securityType=AZURE_SAS
+framework.plugin.AuditEventListener.WebhookAuditListener.azureSasToken=<your-function-key>
+framework.plugin.AuditEventListener.WebhookAuditListener.azureHeaderName=x-functions-key
+```
 
 ### Bearer Token Example
 
-- Set the Webhook URL:
+- Set these configurations:
 
-![](/assets/img/audit-stream-bearer-url.png)
-
-- Set the Security Type to BEARER
-
-![](/assets/img/audit-stream-bearer.png)
-
-- Set the Bearer Token
-
-![](/assets/img/audit-stream-bearer-token.png)
-
-
+```properties
+framework.plugin.AuditEventListener.WebhookAuditListener.webhookUrl=https://api.example.com/secure-audit
+framework.plugin.AuditEventListener.WebhookAuditListener.securityType=BEARER
+framework.plugin.AuditEventListener.WebhookAuditListener.authToken=<your-bearer-token>
+```
 ### Custom Headers Example (Datadog, New Relic, etc.)
 
 Datadog:
 
-- Set the Webhook URL:
+- Set these configurations:
 
-![](/assets/img/audit-stream-datadog-url.png)
-
-
-- Set the required custom headers
-
-![](/assets/img/audit-stream-datadog-headers.png)
-
+```properties
+framework.plugin.AuditEventListener.WebhookAuditListener.webhookUrl=https://api.datadoghq.com/api/v2/events
+framework.plugin.AuditEventListener.WebhookAuditListener.securityType=NONE
+framework.plugin.AuditEventListener.WebhookAuditListener.customHeaders=DD-API-KEY:your_api_key,DD-APPLICATION-KEY:your_app_key,Accept:application/json
+```
 
 New Relic:
 
-- Set the Webhook URL:
+- Set these configurations:
 
-![](/assets/img/audit-stream-newrelic-url.png)
-
+```properties
+framework.plugin.AuditEventListener.WebhookAuditListener.webhookUrl=https://insights-collector.newrelic.com/v1/accounts/YOUR_ACCOUNT_ID/events
+framework.plugin.AuditEventListener.WebhookAuditListener.securityType=NONE
+framework.plugin.AuditEventListener.WebhookAuditListener.customHeaders=X-Insert-Key:your_insert_key      //This key must have type: INGEST - LICENSE
+```
 
 - Set the X-Insert-Key custom header (Ensure the key is of type INGEST – LICENSE):
 
-![](/assets/img/audit-stream-newrelic-headers.png)
+No Authentication:
 
-
+```properties
+framework.plugin.AuditEventListener.WebhookAuditListener.webhookUrl=https://internal.example.com/webhook
+framework.plugin.AuditEventListener.WebhookAuditListener.securityType=NONE
+```
 
 ### Event Filtering
 
 You can filter which audit events are sent by listing specific actionType values:
 
-![](/assets/img/audit-stream-included-events.png)
+```properties
+framework.plugin.AuditEventListener.WebhookAuditListener.includedEvents=run,create,login_success
+```
 
 #### Common `actionType` Values
 
@@ -149,9 +134,13 @@ You can filter which audit events are sent by listing specific actionType values
 
 You can configure the HTTP connection timeout (in seconds). The default is 30:
 
-![](/assets/img/audit-stream-timeout.png)
+```properties
+framework.plugin.AuditEventListener.WebhookAuditListener.timeout=20
+```
 
-## Sample JSON Payloads
+## JSON Payload Format Sent to Webhook Endpoints
+
+The following are example JSON payloads sent by the plugin, formatted based on the destination provider (e.g., Datadog, New Relic, etc). These payloads can be used to test or validate integration.
 
 ### Default (e.g. Azure, AWS, or custom)
 ```json
