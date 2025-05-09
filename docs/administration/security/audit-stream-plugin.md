@@ -119,7 +119,7 @@ New Relic:
 ![](/assets/img/audit-stream-newrelic-url.png)
 
 
-- Set the X-Insert-Key custom header(Ensure the key is of type INGEST – LICENSE):
+- Set the X-Insert-Key custom header (Ensure the key is of type INGEST – LICENSE):
 
 ![](/assets/img/audit-stream-newrelic-headers.png)
 
