@@ -47,7 +47,7 @@ Copy the plugin into the container:
 
 Create a Dockerfile:
 ```
-FROM rundeckpro/runner:5.10-RBA-<your-version>
+FROM rundeckpro/runner:5.10-RBA-<your-version> # Replace <your-version> with the appropriate version identifier for your deployment.
 COPY my-custom-plugin.zip /app/runner/plugins/
 ```
 
