@@ -3,11 +3,11 @@
 :::enterprise
 :::
 
-This plugin streams **Rundeck audit events** to external systems via secure, configurable webhooks. It's useful for sending logs to tools like **Datadog**, **New Relic**, **Sumo Logic**, or custom endpoints.
+This plugin streams **Rundeck audit events** to external systems via secure, configurable webhooks. It's useful for sending specific event logs to tools like **Datadog**, **New Relic**, **Sumo Logic**, or custom endpoints.
 
 ---
 
-## 🚀 What It Does
+## What It Does
 
 - Sends audit events as JSON via HTTP POST requests
 - Supports authentication methods required by major observability providers
@@ -16,7 +16,7 @@ This plugin streams **Rundeck audit events** to external systems via secure, con
 
 ---
 
-## ✅ Prerequisites
+## Prerequisites
 
 - Rundeck version **4.17.0 or higher**
 - An external system that can receive and process HTTP webhooks
@@ -24,7 +24,7 @@ This plugin streams **Rundeck audit events** to external systems via secure, con
 
 ---
 
-## 🔐 Supported Authentication Methods
+## Supported Authentication Methods
 
 | Type        | Description                                                       |
 |-------------|-------------------------------------------------------------------|
@@ -35,10 +35,11 @@ This plugin streams **Rundeck audit events** to external systems via secure, con
 
 ---
 
-## 🔧 Configuration Guide
+## Configuration Guide
 
 Access these properties via the System Configuration menu under Plugins → Audit Stream.
-⚠️ Rundeck must be restarted after applying changes.
+
+Rundeck must be restarted after applying changes.
 
 ### AWS API Gateway Example
 
@@ -124,7 +125,7 @@ New Relic:
 
 
 
-### 📥 Event Filtering
+### Event Filtering
 
 You can filter which audit events are sent by listing specific actionType values:
 
@@ -150,7 +151,7 @@ You can configure the HTTP connection timeout (in seconds). The default is 30:
 
 ![](/assets/img/audit-stream-timeout.png)
 
-## 🧾 Sample JSON Payloads
+## Sample JSON Payloads
 
 ### Default (e.g. Azure, AWS, or custom)
 ```json
@@ -213,14 +214,7 @@ You can configure the HTTP connection timeout (in seconds). The default is 30:
 ```
 
 
-## 🐛 Troubleshooting Tips
+## Troubleshooting Tips
 
 - Check that your webhook endpoint is reachable from the Rundeck host.
-- Ensure HTTPS is used (the plugin logs a warning otherwise).
-- Enable debug logging in Rundeck to see plugin output.
 - If using AWS SIGV4, make sure the IAM role or access keys have permissions.
-
-
-## 📫 Need Help?
-
-For setup support or questions, reach out in your team’s Rundeck support Slack channel or raise an internal ticket with the plugin maintainers.
