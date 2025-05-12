@@ -11,6 +11,10 @@ Enterprise Runners allow remote execution and workflow orchestration close to ta
 
 The installation process varies depending on how the Runner is deployed: on a virtual machine, in a Docker container, or in Kubernetes. This article provides clear instructions for each deployment model.
 
+:::warning Only Available on Runbook Automation Self-Hosted
+The custom plugin feature is only available on the self-hosted version of Runbook Automation. It is not available on the cloud version.
+:::
+
 ## Prerequisites
 
 1. In order for the plugin to be configurable in the GUI, the plugin must also be uploaded to the server.  This can be done through the GUI ([example](/learning/howto/how2kube.md#installing-the-kubernetes-plugin-in-rundeck)) or manually [copying the plugin artifacts](/administration/configuration/plugins/installing.md) to the plugins directory.
