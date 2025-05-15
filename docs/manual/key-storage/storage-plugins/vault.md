@@ -162,7 +162,7 @@ rundeck.storage.provider.[index].config.clientPemFile=/path/clientPemFile
 rundeck.storage.provider.[index].config.clientKeyPemFile=/path/clientKeyPemFile
 ```
 
-* **namespace**: Define the Hashicorp namespace for the integration.  If root is needed leave blank or set to `root/`
+* **(Enterprise Config) Namespace**: Define the Hashicorp namespace for the integration.  If root is needed leave blank or set to `root/`
 ```
 rundeck.storage.provider.[index].config.namespace=hashicorpNamespace
 ```
