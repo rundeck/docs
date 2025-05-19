@@ -2,7 +2,7 @@
 
 [MongoDB](https://www.mongodb.com/) is a popular NoSQL database that stores data in flexible, JSON-like documents. This guide demonstrates how to use Rundeck's MongoDB Command Step Plugin to automate database operations, manage collections, and integrate MongoDB operations into your automation workflows.
 
-This article assumes you're using PagerDuty Process Automation (formerly Rundeck Enterprise) version 5.11.1 or later.
+This article assumes you're using Runbook Automation SAAS.  The MongoDB plugins will be fully implmented in version 5.13.0 for the Self Hosted product.
 
 ## Prerequisites for This Tutorial
 
@@ -28,7 +28,7 @@ Next, create an admin user by connecting to MongoDB and running:
 ```
 use admin
 db.createUser({
-   user: "root",
+   user: "admin",
    pwd: "securePassword",
    roles: [ "userAdminAnyDatabase" ]
 })
@@ -71,7 +71,7 @@ For a basic MongoDB step configuration:
 - **Server:** "yourMongoServer"
 - **Port:** "27017" (or leave blank as this is the default)
 - **Database:** "ecommerce_db"
-- **Username:** "root"
+- **Username:** "admin"
 - **Password:** keys/mongodb
 - **Command:**
 ```json
@@ -139,7 +139,7 @@ Provided below is a multi-step job definition for setting up a complete e-commer
 
 Assumptions made in the job steps:
 - MongoDB host name is configured as `mongodb`
-- MongoDB user name is configured as `root`
+- MongoDB user name is configured as `admin`
 - Password is stored in Key Storage at `keys/mongodb`
 
 
@@ -157,8 +157,9 @@ To use this job:
 1. Save it as a YAML file (e.g., mongodb-ecommerce-setup.yaml)
 1. Import it into your Rundeck instance
 1. Ensure the MongoDB password is stored in the specified key storage path
-1. Update the mongoHost value to match your MongoDB server
-1. Run the job
+2. Ensure that `mongodb` hostname is resolvable, if not update the steps with the right hostname.
+3. Update the mongoHost value to match your MongoDB server
+4. Run the job
 
 The job will execute each step in sequence, creating a complete e-commerce database setup. The final step verifies the setup by counting the products collection.
 
@@ -167,265 +168,275 @@ The job will execute each step in sequence, creating a complete e-commerce datab
   description: 'Sets up a complete e-commerce database with products, customers, and orders'
   executionEnabled: true
   group: MongoDB
+  id: mongodb-ecommerce-setup
   loglevel: INFO
   name: MongoDB E-Commerce Setup
   nodeFilterEditable: false
-  plugins:
-    ExecutionLifecycle: {}
+  nodefilters:
+    dispatch:
+      excludePrecedence: true
+      keepgoing: false
+      rankOrder: ascending
+      successOnEmptyNodeFilter: false
+      threadcount: '1'
+    filter: 'tags: "RUNNER"'
+  nodesSelectedByDefault: false
   scheduleEnabled: true
-  schedules: []
   sequence:
     commands:
-    # Step 1: Create and populate products collection
-    - configuration:
-        mongoCommand: |-
-          {
-            insert: "products",
-            documents: [
-              {
-                name: "Laptop",
-                price: 999.99,
-                category: "Electronics",
-                stock: 50,
-                specifications: {
-                  brand: "TechBrand",
-                  model: "Pro2024",
-                  ram: "16GB",
-                  storage: "512GB SSD"
-                }
-              },
-              {
-                name: "Smartphone",
-                price: 699.99,
-                category: "Electronics",
-                stock: 100,
-                specifications: {
-                  brand: "MobileX",
-                  model: "X12",
-                  ram: "8GB",
-                  storage: "256GB"
-                }
-              },
-              {
-                name: "Coffee Maker",
-                price: 79.99,
-                category: "Appliances",
-                stock: 30,
-                specifications: {
-                  brand: "HomeBrew",
-                  model: "CM100",
-                  capacity: "12 cups"
-                }
-              }
-            ]
-          }
-        mongoDatabase: ecommerce_db
-        mongoHost: mongodb
-        mongoType: MongoDB
-        mongoUser: root
-        outputMode: RELAXED
-        passwordStoragePath: keys/mongodb
-      description: Create Products Collection
-      nodeStep: false
-      type: mongodb
+      # Step 1: Create Database
+      - configuration:
+          mongoCommand: |-
+            {
+              "dropDatabase": 1
+            }
+          mongoDatabase: ecommerce_db
+          mongoHost: mongodb
+          mongoType: MongoDB
+          mongoUser: admin
+          outputMode: RELAXED
+          passwordStoragePath: keys/mongodb
+        description: Drop existing database if exists
+        nodeStep: true
+        type: mongodb-nodestep
 
-    # Step 2: Create and populate customers collection
-    - configuration:
-        mongoCommand: |-
-          {
-            insert: "customers",
-            documents: [
-              {
-                firstName: "John",
-                lastName: "Doe",
-                email: "john.doe@email.com",
-                address: {
-                  street: "123 Main St",
-                  city: "Boston",
-                  state: "MA",
-                  zipCode: "02108"
-                },
-                phoneNumber: "555-0123"
-              },
-              {
-                firstName: "Jane",
-                lastName: "Smith",
-                email: "jane.smith@email.com",
-                address: {
-                  street: "456 Oak Ave",
-                  city: "Chicago",
-                  state: "IL",
-                  zipCode: "60601"
-                },
-                phoneNumber: "555-0124"
-              }
-            ]
-          }
-        mongoDatabase: ecommerce_db
-        mongoHost: mongodb
-        mongoType: MongoDB
-        mongoUser: root
-        outputMode: RELAXED
-        passwordStoragePath: keys/mongodb
-      description: Create Customers Collection
-      nodeStep: false
-      type: mongodb
+      # Step 2: Create Products Collection
+      - configuration:
+          mongoCommand: |-
+            {
+              "create": "products"
+            }
+          mongoDatabase: ecommerce_db
+          mongoHost: mongodb
+          mongoType: MongoDB
+          mongoUser: admin
+          outputMode: RELAXED
+          passwordStoragePath: keys/mongodb
+        description: Create Products Collection
+        nodeStep: true
+        type: mongodb-nodestep
 
-    # Step 3: Create and populate orders collection
-    - configuration:
-        mongoCommand: |-
-          {
-            insert: "orders",
-            documents: [
-              {
-                orderId: "ORD001",
-                customerId: { $db.customers.findOne({email: "john.doe@email.com"})._id },
-                orderDate: new Date("2024-04-17"),
-                items: [
-                  {
-                    productId: { $db.products.findOne({name: "Laptop"})._id },
-                    quantity: 1,
-                    price: 999.99
+      # Step 3: Insert Products
+      - configuration:
+          mongoCommand: |-
+            {
+              "insert": "products",
+              "documents": [
+                {
+                  "name": "Laptop",
+                  "price": 999.99,
+                  "category": "Electronics",
+                  "stock": 50,
+                  "specifications": {
+                    "brand": "TechBrand",
+                    "model": "Pro2024",
+                    "ram": "16GB",
+                    "storage": "512GB SSD"
                   }
-                ],
-                totalAmount: 999.99,
-                status: "completed"
-              },
-              {
-                orderId: "ORD002",
-                customerId: { $db.customers.findOne({email: "jane.smith@email.com"})._id },
-                orderDate: new Date("2024-04-16"),
-                items: [
-                  {
-                    productId: { $db.products.findOne({name: "Smartphone"})._id },
-                    quantity: 1,
-                    price: 699.99
+                },
+                {
+                  "name": "Smartphone",
+                  "price": 699.99,
+                  "category": "Electronics",
+                  "stock": 100,
+                  "specifications": {
+                    "brand": "MobileX",
+                    "model": "X12",
+                    "ram": "8GB",
+                    "storage": "256GB"
+                  }
+                },
+                {
+                  "name": "Coffee Maker",
+                  "price": 79.99,
+                  "category": "Appliances",
+                  "stock": 30,
+                  "specifications": {
+                    "brand": "HomeBrew",
+                    "model": "CM100",
+                    "capacity": "12 cups"
+                  }
+                }
+              ]
+            }
+          mongoDatabase: ecommerce_db
+          mongoHost: mongodb
+          mongoType: MongoDB
+          mongoUser: admin
+          outputMode: RELAXED
+          passwordStoragePath: keys/mongodb
+        description: Insert Products
+        nodeStep: true
+        type: mongodb-nodestep
+
+      # Step 4: Create Customers Collection
+      - configuration:
+          mongoCommand: |-
+            {
+              "create": "customers"
+            }
+          mongoDatabase: ecommerce_db
+          mongoHost: mongodb
+          mongoType: MongoDB
+          mongoUser: admin
+          outputMode: RELAXED
+          passwordStoragePath: keys/mongodb
+        description: Create Customers Collection
+        nodeStep: true
+        type: mongodb-nodestep
+
+      # Step 5: Insert Customers
+      - configuration:
+          mongoCommand: |-
+            {
+              "insert": "customers",
+              "documents": [
+                {
+                  "firstName": "John",
+                  "lastName": "Doe",
+                  "email": "john.doe@email.com",
+                  "address": {
+                    "street": "123 Main St",
+                    "city": "Boston",
+                    "state": "MA",
+                    "zipCode": "02108"
                   },
-                  {
-                    productId: { $db.products.findOne({name: "Coffee Maker"})._id },
-                    quantity: 1,
-                    price: 79.99
-                  }
-                ],
-                totalAmount: 779.98,
-                status: "processing"
-              }
-            ]
-          }
-        mongoDatabase: ecommerce_db
-        mongoHost: mongodb
-        mongoType: MongoDB
-        mongoUser: root
-        outputMode: RELAXED
-        passwordStoragePath: keys/mongodb
-      description: Create Orders Collection
-      nodeStep: false
-      type: mongodb
-
-    # Step 4: Create indexes for products
-    - configuration:
-        mongoCommand: |-
-          {
-            createIndexes: "products",
-            indexes: [
-              {
-                key: { name: 1 },
-                name: "idx_product_name"
-              },
-              {
-                key: { category: 1 },
-                name: "idx_product_category"
-              }
-            ]
-          }
-        mongoDatabase: ecommerce_db
-        mongoHost: mongodb
-        mongoType: MongoDB
-        mongoUser: root
-        outputMode: RELAXED
-        passwordStoragePath: keys/mongodb
-      description: Create Product Indexes
-      nodeStep: false
-      type: mongodb
-
-    # Step 5: Create indexes for customers
-    - configuration:
-        mongoCommand: |-
-          {
-            createIndexes: "customers",
-            indexes: [
-              {
-                key: { email: 1 },
-                name: "idx_customer_email",
-                unique: true
-              }
-            ]
-          }
-        mongoDatabase: ecommerce_db
-        mongoHost: mongodb
-        mongoType: MongoDB
-        mongoUser: root
-        outputMode: RELAXED
-        passwordStoragePath: keys/mongodb
-      description: Create Customer Indexes
-      nodeStep: false
-      type: mongodb
-
-    # Step 6: Create indexes for orders
-    - configuration:
-        mongoCommand: |-
-          {
-            createIndexes: "orders",
-            indexes: [
-              {
-                key: { orderId: 1 },
-                name: "idx_order_id",
-                unique: true
-              },
-              {
-                key: { customerId: 1 },
-                name: "idx_customer_id"
-              }
-            ]
-          }
-        mongoDatabase: ecommerce_db
-        mongoHost: mongodb
-        mongoType: MongoDB
-        mongoUser: root
-        outputMode: RELAXED
-        passwordStoragePath: keys/mongodb
-      description: Create Order Indexes
-      nodeStep: false
-      type: mongodb
-
-    # Step 7: Verify setup with collection counts
-    - configuration:
-        mongoCommand: |-
-          {
-            aggregate: "products",
-            pipeline: [
-              {
-                $group: {
-                  _id: null,
-                  count: { $sum: 1 }
+                  "phoneNumber": "555-0123"
+                },
+                {
+                  "firstName": "Jane",
+                  "lastName": "Smith",
+                  "email": "jane.smith@email.com",
+                  "address": {
+                    "street": "456 Oak Ave",
+                    "city": "Chicago",
+                    "state": "IL",
+                    "zipCode": "60601"
+                  },
+                  "phoneNumber": "555-0124"
                 }
-              }
-            ],
-            cursor: {}
-          }
-        mongoDatabase: ecommerce_db
-        mongoHost: mongodb
-        mongoType: MongoDB
-        mongoUser: root
-        outputMode: RELAXED
-        passwordStoragePath: keys/mongodb
-      description: Verify Products Count
-      nodeStep: false
-      type: mongodb
+              ]
+            }
+          mongoDatabase: ecommerce_db
+          mongoHost: mongodb
+          mongoType: MongoDB
+          mongoUser: admin
+          outputMode: RELAXED
+          passwordStoragePath: keys/mongodb
+        description: Insert Customers
+        nodeStep: true
+        type: mongodb-nodestep
+
+      # Step 6: Create Orders Collection
+      - configuration:
+          mongoCommand: |-
+            {
+              "create": "orders"
+            }
+          mongoDatabase: ecommerce_db
+          mongoHost: mongodb
+          mongoType: MongoDB
+          mongoUser: admin
+          outputMode: RELAXED
+          passwordStoragePath: keys/mongodb
+        description: Create Orders Collection
+        nodeStep: true
+        type: mongodb-nodestep
+
+      # Step 7: Create Indexes
+      - configuration:
+          mongoCommand: |-
+            {
+              "createIndexes": "products",
+              "indexes": [
+                {
+                  "key": { "name": 1 },
+                  "name": "idx_product_name"
+                },
+                {
+                  "key": { "category": 1 },
+                  "name": "idx_product_category"
+                }
+              ]
+            }
+          mongoDatabase: ecommerce_db
+          mongoHost: mongodb
+          mongoType: MongoDB
+          mongoUser: admin
+          outputMode: RELAXED
+          passwordStoragePath: keys/mongodb
+        description: Create Product Indexes
+        nodeStep: true
+        type: mongodb-nodestep
+
+      - configuration:
+          mongoCommand: |-
+            {
+              "createIndexes": "customers",
+              "indexes": [
+                {
+                  "key": { "email": 1 },
+                  "name": "idx_customer_email",
+                  "unique": true
+                }
+              ]
+            }
+          mongoDatabase: ecommerce_db
+          mongoHost: mongodb
+          mongoType: MongoDB
+          mongoUser: admin
+          outputMode: RELAXED
+          passwordStoragePath: keys/mongodb
+        description: Create Customer Indexes
+        nodeStep: true
+        type: mongodb-nodestep
+
+      - configuration:
+          mongoCommand: |-
+            {
+              "createIndexes": "orders",
+              "indexes": [
+                {
+                  "key": { "orderId": 1 },
+                  "name": "idx_order_id",
+                  "unique": true
+                },
+                {
+                  "key": { "customerId": 1 },
+                  "name": "idx_customer_id"
+                }
+              ]
+            }
+          mongoDatabase: ecommerce_db
+          mongoHost: mongodb
+          mongoType: MongoDB
+          mongoUser: admin
+          outputMode: RELAXED
+          passwordStoragePath: keys/mongodb
+        description: Create Order Indexes
+        nodeStep: true
+        type: mongodb-nodestep
+
+      # Step 8: Verify Setup
+      - configuration:
+          mongoCommand: |-
+            {
+              "find": "products",
+              "limit": 1
+            }
+          mongoDatabase: ecommerce_db
+          mongoHost: mongodb
+          mongoType: MongoDB
+          mongoUser: admin
+          outputMode: RELAXED
+          passwordStoragePath: keys/mongodb
+        description: Verify Products
+        nodeStep: true
+        type: mongodb-nodestep
 
     keepgoing: false
     strategy: node-first
-  tags: mongodb,ecommerce,setup
+  tags: 'ecommerce,mongodb,setup'
   uuid: mongodb-ecommerce-setup
 ```
 
