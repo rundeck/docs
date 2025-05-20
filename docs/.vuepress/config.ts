@@ -9,6 +9,7 @@ import { registerComponentsPlugin } from '@vuepress/plugin-register-components';
 import { dateSorter } from "@vuepress/helper";
 import { googleAnalyticsPlugin } from '@vuepress/plugin-google-analytics';
 import { removePwaPlugin } from '@vuepress/plugin-remove-pwa';
+import { prismjsPlugin } from '@vuepress/plugin-prismjs';
 
 // sidebars
 import sidebarAdmin from './sidebar-menus/administration'
@@ -309,7 +310,12 @@ export default defineUserConfig({
     },
     markdown: {
       tabs: true,
-      codeTabs: true
+      codeTabs: true,
+      highlighter: {
+        type: 'prismjs',
+        collapsedLines: false,
+        themes: { light: 'coldark-cold', dark: 'dracula' },
+      }
     }
   },
     { custom: true },
