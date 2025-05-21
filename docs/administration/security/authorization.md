@@ -391,7 +391,7 @@ actions you can restrict in the project scope:
 | "          | "             | `create`                 | Create new Runner entries                      |
 | "          | "             | `update`                 | Update existing Runner entries                 |
 | "          | "             | `delete`                 | Delete Runner entries                          |
-|            | "             | `ping`                   | Execute the ping command to check Runner status |
+| "          | "             | `ping`                   | Execute the ping command to check Runner status |
 | "          | "             | `regenerate_credentials` | Regenerate a new credential package for a Runner|
 
 Type Properties Actions Description
