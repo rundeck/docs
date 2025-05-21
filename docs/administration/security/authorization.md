@@ -424,7 +424,11 @@ Type Properties Actions Description
 | "       |                                   | `view_history`     | View job executions history                                                         |
 | `node`  | "rundeck_server", "nodename", ... | `read`             | View the node in the UI (see [Node resource properties](#node-resource-properties)) |
 | "       |                                   | `run`              | Run jobs/adhoc on the node                                                          |
-| `runner` |  "project", "id"                 | `read`             | Read Runner Listing                                                                 |
+| `runner` |  "name", "id", "tags"            | `read`             | Read Runner Listing                                                                 |
+| "       |                                   | `create`           | Create new Runner entries                                                           |
+| "       |                                   | `update`           | Update existing Runner entries                                                      |
+| "       |                                   | `delete`           | Delete Runner entries                                                               |
+| "       |                                   | `ping`             | Execute the ping command to check Runner status                                     |
 | "       |                                   | `admin`            | Full access to manage Runners                                                       |
 
 
@@ -436,9 +440,6 @@ _Note_: `runAs` and `killAs` actions only apply to certain API endpoints, and al
 
 _Note_:
 Job deletion requires allowing the 'delete' action both at the generic type and specific resource levels.
-
-_Note_:
-`runner` properties "project" is looking for a project name, and "id" is for the Runner's ID.
 
 Recall that defining rules for a generic resource type is done in this way:
 
