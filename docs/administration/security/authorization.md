@@ -235,7 +235,7 @@ actions you can restrict in the application scope:
 | "          | "             |none        | `create`                 | Create new Runner entries                      |
 | "          | "             |none        | `update`                 | Update existing Runner entries                 |
 | "          | "             |none        | `delete`                 | Delete Runner entries                          |
-|            | "             |none        | `ping`                   | Execute the ping command to check Runner status |
+| "          | "             |none        | `ping`                   | Execute the ping command to check Runner status |
 | "          | "             |none        | `regenerate_credentials` | Regenerate a new credential package for a Runner|
 
 Table: Application scope generic type actions
