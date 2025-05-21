@@ -203,8 +203,12 @@ These are the Application scope actions that can be allowed or denied via the ac
   - Uninstalling plugins `uninstall`
   - Full access `admin`
 - Managing Runners
-  - Read Access to All Runner configuration `read`
-  - Full Admin access to All Runner Configuration `admin`
+  - Read Runner configuration details. `read`
+  - Create new Runner entries. `create`
+  - Update existing Runner entries. `update`
+  - Delete Runner entries. `delete`
+  - Execute the ping command to check Runner status. `ping`
+  - Regenerate a new credential package for a Runner. `regenerate_credentials`
 
 The following table summarizes the generic and specific resources and the
 actions you can restrict in the application scope:
@@ -421,6 +425,7 @@ Type Properties Actions Description
 | `node`  | "rundeck_server", "nodename", ... | `read`             | View the node in the UI (see [Node resource properties](#node-resource-properties)) |
 | "       |                                   | `run`              | Run jobs/adhoc on the node                                                          |
 | `runner` |  "project", "id"                 | `read`             | Read Runner Listing                                                                 |
+| "       |                                   | `admin`            | Full access to manage Runners                                                       |
 
 
 _Note_: see [Node resource properties](#node-resource-properties) for more node resource properties for authorization.
