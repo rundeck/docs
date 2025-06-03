@@ -13,6 +13,8 @@ feed:
 # 5.12.0 Release Notes
 
 ## Overview
+<VidStack src="youtube/nHTkiOw30Zs" poster="https://img.youtube.com/vi/nHTkiOw30Zs/maxresdefault.jpg"/>
+
 
 ## Improved HTTP Response Validation in the HTTP Request Plugin
 
