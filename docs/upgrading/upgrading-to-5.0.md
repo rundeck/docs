@@ -14,7 +14,7 @@ Note: As of version 5.0.2 this update is not mandatory at the time of upgrading,
 :::
 
 ::: warning Upgrade Runners
-If you plan to or have already upgraded to 5.0.0 or 5.0.1 they reuired an upgraded Enterprise Runner to function properly.
+If you plan to or have already upgraded to 5.0.0 or 5.0.1, they required an upgraded Enterprise Runner to function properly.
 :::
 
 Update the Enterprise Runner by downloading the latest version. Here are the following ways to download the runner:
