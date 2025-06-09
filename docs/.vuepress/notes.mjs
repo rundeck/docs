@@ -94,8 +94,8 @@ async function getRepoData(repo, includeLabels) {
     const contributors = {};
     const reporters = {};
 
-    for (const p of pulls) {'
-      if (excludeUsernames.includes(p.user.login)) continue;'
+    for (const p of pulls) {
+      if (excludeUsernames.includes(p.user.login)) continue;
       if (contributors[p.user.login]) continue;
       const user = await gh.users.getByUsername({ username: p.user.login });
       contributors[user.data.login] = user.data;
