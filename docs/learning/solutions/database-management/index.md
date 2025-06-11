@@ -22,5 +22,5 @@ To see example content listed below check out the [Getting Started with Solution
 | <img src="/assets/img/postgres-logo.png" width="30" height="30"> [Postgres - Backup and Restore](/learning/solutions/database-management/postgres-backup-restore.md) |
 | <img src="/assets/img/postgres-logo.png" width="30" height="30"> [Postgres - Reindex a database](/learning/solutions/database-management/postgres-reindex.md) |
 | <img src="/assets/img/postgres-logo.png" width="30" height="30"> [Postgres - Execute a Stored Procedure](/learning/solutions/database-management/postgres-storedprocedure.md) |
-| <img src="/assets/img/mongodb-logo.png" width="30" height="30"> [MongoDB - Build an Example Database](/learning/solutions/database-management/postgres-storedprocedure.md) |
+| <img src="/assets/img/mongodb-logo.png" width="30" height="30"> [MongoDB - Build an Example Database](/learning/solutions/database-management/mongo-example.md) |
 
