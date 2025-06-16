@@ -1,7 +1,7 @@
 ---
 
 title: "5.13.0 Release Notes"
-date: 2025-06-12
+date: 2025-06-25
 image: /images/chevron-logo-red-on-white.png
 description: "Rundeck | Runbook Automation Releases 5.13.0 - New Job Metrics and ROI Graphs"
 feed:
@@ -84,7 +84,7 @@ The Webhook Audit Listener plugin enables real-time streaming of Rundeck audit e
 
 Name: <span style="color: red"><span class="glyphicon glyphicon-headphones"></span> "Kirkjufell red headphones"</span>
 
-Release Date: June 12th, 2025
+Release Date: June 25th, 2025
 
 
 ## Community Contributors
