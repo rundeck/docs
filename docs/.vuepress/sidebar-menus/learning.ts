@@ -240,9 +240,10 @@ export default [{
           children: [
             { link: '/learning/solutions/database-management/index.md', text: 'Solution Summary' },
             { link: '/learning/solutions/database-management/db-and-autodiag.md', text: 'Databases + Auto Diagnostics' },
-            { link: '/learning/solutions/database-management/postgres-reindex.md', text: 'Reindex PostgreSQL Database' },
-            { link: '/learning/solutions/database-management/postgres-backup-restore.md', text: 'Backup and Restore PostgreSQL' },
-            { link: '/learning/solutions/database-management/postgres-storedprocedure.md', text: 'Executing PostgreSQL Stored Procedures' },
+            { link: '/learning/solutions/database-management/postgres-reindex.md', text: 'PostgreSQL Reindex Database' },
+            { link: '/learning/solutions/database-management/postgres-backup-restore.md', text: 'PostgreSQL Backup and Restore' },
+            { link: '/learning/solutions/database-management/postgres-storedprocedure.md', text: 'PostgreSQL Executing Stored Procedures' },
+            { link: '/learning/solutions/database-management/mongo-example.md', text: 'MongoDB Executing Commands' },
           ]
         },
         {

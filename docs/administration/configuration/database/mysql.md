@@ -117,6 +117,8 @@ curl -L -o https://repo1.maven.org/maven2/mysql/mysql-connector-java/${MYSQLJ_VE
 
 Runbook Automation supports the use of the [AWS Advanced JDBC Wrapper](https://github.com/aws/aws-advanced-jdbc-wrapper) for Amazon Aurora MySQL implementations.
 
+## Azure Database for MySQL - Flexible Server
+MySQL database services running MySQL version 8.0 and later, such as Azure Database for MySQL - Flexible Servers, will have the attribute [Generated invisible primary keys (GIPKs)](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_sql_generate_invisible_primary_key) enabled by default in all Azure Database for MySQL - Flexible Server instances, as stated here: [Link](https://learn.microsoft.com/en-us/azure/mysql/flexible-server/concepts-limitations#:~:text=server%20parameters.-,Generated,-invisible%20primary%20keys), leading to potentially problems when used with Rundeck/Runbook Automation. For this service to be used with Rundeck, access the Azure Portal > Server parameters > Search for sql_generate_invisible_primary_key  > Change its value to OFF 
 
 ### Additional Articles
 
