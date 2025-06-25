@@ -18,7 +18,7 @@ This plugin streams **Rundeck audit events** to external systems via secure, con
 
 ## Prerequisites
 
-- Rundeck version **4.17.0 or higher**
+- Rundeck version **5.13.0 or higher**
 - An external system that can receive and process HTTP webhooks
 - HTTPS endpoint access from the Rundeck server
 
