@@ -79,4 +79,4 @@ _How can I know if the error has happened in my environment previously?_
 
 _How can I monitor or check for older versions of the Runner?_
 
-A Runbook Automation administrator can login and navigate to the Runner Management panel.  Any version older than `5.13-RBA-20250625` (SaaS) / `5.13.0-20250625` (Self-Hosted) should be updated.  Use the Actions dropdown and click “Download Runner” and follow the prompts to Regenerate Credentials and download a new Runner instance.
+A Runbook Automation administrator can login and navigate to the Runner Management panel.  Any version older than `5.13-RBA-20250617` (SaaS) / `5.13.0-20250625` (Self-Hosted) should be updated.  Use the Actions dropdown and click “Download Runner” and follow the prompts to Regenerate Credentials and download a new Runner instance.
