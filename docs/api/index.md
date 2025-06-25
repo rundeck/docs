@@ -4750,6 +4750,8 @@ Provides the **public key** content if the `Accept` request header matches `*/*`
 
     GET /api/{{ $apiMinVersion }}/storage/keys/[PATH]/[FILE]
 
+NOTE: Since Rundeck 5.11.0, downloading Public Key Content is disabled by default unless enabled via configuration, see [Rundeck Key Storage > Enable/Disable public key download](/manual/key-storage.md#enable-disable-public-key-download).
+
 **Retrieving private key or password file contents is not allowed.**
 
 A GET request for a private key file if the `Accept` request header matches `*/*` or `application/octet-stream`,
