@@ -43,7 +43,7 @@ These are the Security Advisories Rundeck has issued in the past.  It is always 
 * [CVE-2023-34034 Spring Security False Positive](cve-2023-34034.md).
 * [CVE-2024-1597 Postgres JDBC Driver Vulnerability](cve-2024-1597.md).
 * [CVE-2024-6104 go-retryablehttp can leak basic auth credentials to log files](cve-2024-6104.md).
-* [CVE-2024-22257 Spring Security False Finding](cve-2025-22257.md).
+* [CVE-2024-22257 Spring Security False Finding](cve-2024-22257.md).
 * [CVE-2023-39017 Quartz Scheduler false positive](cve-2023-39017.md).
 * [CVE-2024-24786 Protobuf finding in Remco](cve-2024-38807.md).
 * [CVE-2024-38807 Spring Boot false positive](cve-2024-38807.md).
