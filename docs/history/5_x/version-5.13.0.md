@@ -14,6 +14,14 @@ feed:
 
 ## Overview
 
+
+::: danger Important Security Update
+
+:::
+A security vulnerability was identified and patched in the Enterprise Runner component where certain password patterns containing regex special characters (particularly multiple '+' characters) could bypass the password masking mechanism, potentially exposing sensitive information in error logs. This issue affected Enterprise Runner versions used with Process Automation 4.14.0 through 5.12.0, but did not impact Open Source Rundeck or the Process Automation server itself. The vulnerability has been remediated in version 5.13.0, which includes fixes in both the server and runner components to prevent exposure of secrets containing regex special characters. *Process Automation Self Hosted customers should upgrade both their server and all Enterprise Runners* to version 5.13.0 or later for complete remediation.  Process Automation SaaS servers are already updated, customers should proceed directly to upgrading all their Enterprise Runners.
+
+[Full details on on this page](/history/cves/2025-06-runner-security.md)
+
 ### Job Metrics
 The Job Metrics plugin provides comprehensive visualization and analysis of your Rundeck job execution patterns, success rates, and timing trends through an intuitive dashboard interface.
 
@@ -32,7 +40,7 @@ The ROI Summary plugin brings your automation's financial impact to life through
 
 ### Webhook Audit Listener
 
-The Webhook Audit Listener plugin enables real-time streaming of Rundeck audit events to external systems through configurable webhook endpoints. This allows teams to integrate Rundeck’s audit trail with external monitoring, logging, or security platforms.
+The [Webhook Audit Listener plugin](/administration/security/audit-stream-plugin.md) enables real-time streaming of Rundeck audit events to external systems through configurable webhook endpoints. This allows teams to integrate Rundeck’s audit trail with external monitoring, logging, or security platforms.
 
 ## Runbook Automation Updates
 
