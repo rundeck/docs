@@ -1,6 +1,6 @@
 ---
 title: Password Exposure in Runner Logs
-order: 70
+order: 45
 ---
 
 ## Security Advisory: Password Masking Failure Exposing Secrets in Enterprise Runner Log Output
