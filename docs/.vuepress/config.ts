@@ -145,7 +145,7 @@ export default defineUserConfig({
       },
       redirect: {
         config: {
-          `/history/cves/2025-06-05-runnersecurity.html` : '/history/cves/2025-06-05-runner-security.html',
+          `/history/cves/2025-06-05-runnersecurity.html` : '/history/cves/2025-06-runner-security.html',
           '/manual/01-introduction.html': '/introduction/introduction.html',
           '/manual/03-getting-started.html': '/learning/index.html',
           '/manual/02-getting-help.html': '/introduction/getting-help.html',
