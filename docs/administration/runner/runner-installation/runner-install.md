@@ -8,55 +8,6 @@ For most use-cases, the steps outlined in the [Creating Runner](/administration/
 
 However, there are some advanced installation options that you may want to consider depending on your environment and requirements.
 
-[//]: # (Once you have [created and downloaded a Runner]&#40;/administration/runner/runner-installation/creating-runners.md&#41;, upload the binary to the environment where it will run and use the following the installation instructions to launch the runner.)
-
-[//]: # (### Pre-Requisites)
-
-[//]: # ()
-[//]: # (- Runners can be installed on Windows, Linux or in containers.)
-
-[//]: # (    - The operating systems that we officially support for the Runner are listed [here]&#40;/administration/install/system-requirements.md&#41;.)
-
-[//]: # (    - Note that the Runner can be installed on a *different* operating system than the self-hosted cluster.)
-
-[//]: # (- Java 11 or Java 17 JRE installed on the Runner's host.)
-
-[//]: # ()
-[//]: # (- The Runner binary size is 164MB.)
-
-[//]: # ()
-[//]: # (#### Resource Allocation)
-
-[//]: # ()
-[//]: # (If setting up Enterprise Runners on virtualized environments, here are baseline recommendations.  These are _**general**_ guidelines and the actual resource requirements may vary based on the workload and the number of concurrent executions.  It is recommended to monitor the Runner's performance - such as CPU, Memory, and Network Latency - and adjust the resources accordingly.)
-
-[//]: # ()
-[//]: # (  |               | **Minimum** | **Medium** | **Large** |)
-
-[//]: # (  |---------------|-------------|------------|-----------|)
-
-[//]: # (  | **vCPU**      | 4 cores     | 8 cores    | 12 cores  |)
-
-[//]: # (  | **Memory**    | 8 GiB       | 16 GiB     | 32 GiB    |)
-
-[//]: # (  | **Java Heap** | 6 GiB       | 12 GiB     | 24 GiB    |)
-
-[//]: # (  | **Storage**   | 40 GiB      | 40 GiB     | 40 GiB    |)
-
-[//]: # ()
-[//]: # (### Basic Installation steps)
-
-[//]: # ()
-[//]: # (1. Copy the Runner JAR file that was saved when the Runner was created to the server and directory where it will run.)
-
-[//]: # (1. Execute `java -jar runner_filename.jar` to start the service.)
-
-[//]: # (1. Connection can be confirmed on the Runner Management page on the Last Checkin line. If there are errors in the output resolve those using troubleshooting steps below: )
-
-[//]: # (1. Runner Logs are located in the ./runner/logs folder under the folder where the jar was executed from. The runner.log file contains operational and important messages about the runner. operations.log tracks an operation starts and if it succeeds or fails. )
-
-[//]: # (Read more about [Runner logging configuration]&#40;/administration/runner/runner-management/runner-logging.md&#41; to customize logging.)
-
 ## Linux Service for the Runner 
 The Runner can be installed as a `systemd` service on Linux systems.
 
@@ -461,9 +412,3 @@ RUNNER_RUNDECK_SERVER_TOKEN=8FpagGtalnxnv1fmllyYYz4quhNHpBR8
 RUNNER_RUNDECK_SERVER_URL=http://192.168.100.2:4440/
 ```
 
-[//]: # (## Removing Runners)
-
-[//]: # ()
-[//]: # (Before removing a Runner it is advisable to verify that there are other active runners tagged with the same tags. This will ensure that jobs that are configured with those tags have at least one available Remote runner to carry out the tasks for the job.)
-
-[//]: # ()

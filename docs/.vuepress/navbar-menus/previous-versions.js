@@ -3,6 +3,13 @@ export default [
         text: 'Version 5.x',
         children: [
             {
+                text: "5.13.0",
+                link: "https://docs.rundeck.com/5.13.0/"
+            },            {
+                text: "5.12.0",
+                link: "https://docs.rundeck.com/5.12.0/"
+            },
+            {
                 text: "5.11.1",
                 link: "https://docs.rundeck.com/5.11.1/"
             },

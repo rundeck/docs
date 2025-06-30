@@ -38,8 +38,6 @@ Release Date: April 16, 2025
 
 Submit your own Pull Requests to get recognition here!
 
-* Luis Toledo ([ltamaster](https://github.com/ltamaster))
-
 
 ## Staff Contributors
 
