@@ -6,7 +6,7 @@ A _Node_ is a resource that is either a physical or virtual instance of a networ
 
 
 :::tip Note on Node Name Whitespace
-When [generating inventories from Rundeck to Ansible](https://docs.rundeck.com/docs/learning/howto/using-ansible.html), node names must not contain whitespace characters (such as spaces or tabs). Ansible treats whitespace as a separator, which can lead to parsing errors or unexpected behavior if included in node names. To ensure compatibility and avoid issues, always use names without spaces—consider using underscores (_) or hyphens (-) instead. For example, use web_server_01 or db-node-2 rather than web server 01.
+When [generating inventories from Rundeck to Ansible](/learning/howto/using-ansible.md), node names must not contain whitespace characters (such as spaces or tabs). Ansible treats whitespace as a separator, which can lead to parsing errors or unexpected behavior if included in node names. To ensure compatibility and avoid issues, always use names without spaces—consider using underscores (_) or hyphens (-) instead. For example, use web_server_01 or db-node-2 rather than web server 01.
 :::
 
 To add nodes to your Rundeck instances, see [Configure - Resource Model Sources Configuration](/manual/projects/resource-model-sources/index.md)
@@ -118,5 +118,5 @@ The example below shows that the user can't create Job for those nodes.
 
 ## Related Command line tools
 
-[rd nodes](https://docs.rundeck.com/docs/rd-cli/commands.html#nodes)
+[rd nodes](docs/rd-cli/commands.md)
 ~ List nodes via the `rd` tool.
