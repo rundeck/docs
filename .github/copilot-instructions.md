@@ -6,7 +6,7 @@ You are an AI assistant helping maintain the Rundeck documentation site.
 - This repository contains documentation for Rundeck, an open-source job scheduler and runbook automation tool
 - Documentation is primarily written in Markdown and organized by product versions
 - Documentation follows a specific structure with product versions, features, and administration guides
-- Documentation is built using Vuepress 2 and the Hope Theme.
+- Documentation is built using VuePress 2 and the Hope Theme.
 
 ## Key Documentation Guidelines
 - Use clear, concise language
