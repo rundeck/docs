@@ -12,6 +12,8 @@ Below is a collection of security notices previously filed for Rundeck and Runbo
 
 These are the Security Advisories Rundeck has issued in the past.  It is always recommended to upgrade to the current version of Rundeck ({{$rundeckVersion}}) for the latest security updates.
 
+* [Command Injection via Job Options](2025-07-option-escaping.md)<br>
+    Command Injection in Job Options Due to Incomplete Escaping
 * [Runner Security Issue - June 2025](2025-06-runner-security.md)<br>
     Password Masking Failure Exposing Secrets in Enterprise Runner Log Output.
 * [CVE-2023-48222](cve-2023-48222.md)<br>
