@@ -22,3 +22,5 @@ Your base URL would look like this: `https://hooks.slack.com/services`
 - **Slack Channel**
 : This is the slack channel where you would like the notification to be posted. It should be in the following format: #slack-channel.
  
+- **Custom Template**
+: Filename of a custom Freemarker template to use for the notification.  The template should be installed in "/var/lib/rundeck/libext/templates/\<filename\>".  Leave blank to use the default template.
