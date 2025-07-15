@@ -320,8 +320,6 @@ export default defineUserConfig({
   },
     { custom: true },
   ),
-  alias: {
-  },
   //Plugins Config
   plugins: [
     removePwaPlugin({
