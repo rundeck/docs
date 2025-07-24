@@ -5814,7 +5814,7 @@ The request body is expected to contain entries for all of the `required` input 
 
 If a validation error occurs with the configuration, then the response will include detail about the errors.
 
-For INTEGRATION use "import" or "export".
+Valid INTEGRATION values are: "import" and "export".
 
 For TYPE use "git-import" or "git-export".
 
