@@ -5814,6 +5814,10 @@ The request body is expected to contain entries for all of the `required` input 
 
 If a validation error occurs with the configuration, then the response will include detail about the errors.
 
+For INTEGRATION use "import" or "export".
+
+For TYPE use "git-import" or "git-export".
+
 **Request**
 
     POST /api/15/project/[PROJECT]/scm/[INTEGRATION]/plugin/[TYPE]/setup
