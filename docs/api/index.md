@@ -5816,7 +5816,7 @@ If a validation error occurs with the configuration, then the response will incl
 
 Valid INTEGRATION values are: "import" and "export".
 
-For TYPE use "git-import" or "git-export".
+For TYPE, the only supported values are "git-import" and "git-export".
 
 **Request**
 
