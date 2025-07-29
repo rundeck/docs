@@ -1,7 +1,8 @@
 ---
 title: API Reference
 alias: api/index.html
-headerDepth: 3
+toc:
+  levels: [2, 3]
 ---
 
 # API Reference | Version {{ $apiVersion }}
@@ -4750,7 +4751,7 @@ Provides the **public key** content if the `Accept` request header matches `*/*`
 
     GET /api/{{ $apiMinVersion }}/storage/keys/[PATH]/[FILE]
 
-NOTE: Since Rundeck 5.11.0, downloading Public Key Content is disabled by default unless enabled via configuration, see [Rundeck Key Storage > Enable/Disable public key download](/manual/key-storage.md#enable-disable-public-key-download).
+NOTE: Since Rundeck 5.11.0, downloading Public Key Content is disabled by default unless enabled via configuration, see [Rundeck Key Storage > Enable/Disable public key download](manual/key-storage/#enable-disable-public-key-download).
 
 **Retrieving private key or password file contents is not allowed.**
 
@@ -5812,6 +5813,10 @@ Configure and enable a plugin for a project.
 The request body is expected to contain entries for all of the `required` input fields for the plugin.
 
 If a validation error occurs with the configuration, then the response will include detail about the errors.
+
+Valid INTEGRATION values are: "import" and "export".
+
+For TYPE, the only supported values are "git-import" and "git-export".
 
 **Request**
 

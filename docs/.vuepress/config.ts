@@ -9,7 +9,6 @@ import { registerComponentsPlugin } from '@vuepress/plugin-register-components';
 import { dateSorter } from "@vuepress/helper";
 import { googleAnalyticsPlugin } from '@vuepress/plugin-google-analytics';
 import { removePwaPlugin } from '@vuepress/plugin-remove-pwa';
-import { prismjsPlugin } from '@vuepress/plugin-prismjs';
 
 // sidebars
 import sidebarAdmin from './sidebar-menus/administration'
@@ -97,7 +96,7 @@ export default defineUserConfig({
 
   //Theme Config
   theme: hopeTheme({
-    debug: true,
+    debug: process.env.NODE_ENV === 'development',
     logo: '/images/RundeckbyPagerDuty.svg',
     repo: 'rundeck/docs',
     docsDir: 'docs',
@@ -322,24 +321,6 @@ export default defineUserConfig({
   },
     { custom: true },
   ),
-  alias: {
-    "@theme-hope/components/HomePage": path.resolve(
-      __dirname,
-      "./components/HomePageAnnounce.vue",
-    ),
-    "@theme-hope/modules/sidebar/components/Sidebar": path.resolve(
-      __dirname,
-      "./components/SidebarAnnounce.vue",
-    ),
-    "@theme-hope/layouts/NotFound": path.resolve(
-      __dirname,
-      "./components/notFoundCustom.vue",
-    ),
-    "@theme-hope/modules/navbar/components/Navbar": path.resolve(
-      __dirname,
-      "./components/CustomNavBar.vue",
-    ),
-  },
   //Plugins Config
   plugins: [
     removePwaPlugin({

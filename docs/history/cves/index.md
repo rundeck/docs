@@ -12,6 +12,8 @@ Below is a collection of security notices previously filed for Rundeck and Runbo
 
 These are the Security Advisories Rundeck has issued in the past.  It is always recommended to upgrade to the current version of Rundeck ({{$rundeckVersion}}) for the latest security updates.
 
+* [Command Injection via Job Options](2025-07-option-escaping.md)<br>
+    Command Injection in Job Options Due to Incomplete Escaping
 * [Runner Security Issue - June 2025](2025-06-runner-security.md)<br>
     Password Masking Failure Exposing Secrets in Enterprise Runner Log Output.
 * [CVE-2023-48222](cve-2023-48222.md)<br>
@@ -49,5 +51,6 @@ These are the Security Advisories Rundeck has issued in the past.  It is always 
 * [CVE-2024-38807 Spring Boot false positive](cve-2024-38807.md).
 * [CVE-2024-38816 Path traversal vulnerability in functional web frameworks](cve-2024-38816.md).
 * [CVE-2024-38819 Path traversal vulnerability in functional web frameworks #2](cve-2024-38819.md).
+* [CVE-2024-38820 Spring Framework's DataBinder false positive](cve-2024-38820.md).
 * [CVE-2024-38827 Locale-sensitive string case conversion methods](cve-2024-38827.md).
 * [CVE-2024-45338 golang/x/net 0.20.0](cve-2024-38819.md).

@@ -4,6 +4,11 @@
 
 A _Node_ is a resource that is either a physical or virtual instance of a network accessible host. Nodes have a few basic attributes but a Node's attributes can be extended to include arbitrary named key/value pairs. Each node has a uniquely identifying name. In addition to `name`, some pieces of metadata are required (like `hostname` and `username`) and some are optional. Attributes typically describe the properties of a node or reflect the state of the node. One of a Node's built in attributes is called "tags" which is a list of classifications or categories about that Node.
 
+
+:::tip Note on Node Name Whitespace
+When [generating inventories from Rundeck to Ansible](/learning/howto/using-ansible.md), node names must not contain whitespace characters (such as spaces or tabs). Ansible treats whitespace as a separator, which can lead to parsing errors or unexpected behavior if included in node names. To ensure compatibility and avoid issues, always use names without spaces—consider using underscores (_) or hyphens (-) instead. For example, use web_server_01 or db-node-2 rather than web server 01.
+:::
+
 To add nodes to your Rundeck instances, see [Configure - Resource Model Sources Configuration](/manual/projects/resource-model-sources/index.md)
 
 ## Nodes tab overview
@@ -113,5 +118,5 @@ The example below shows that the user can't create Job for those nodes.
 
 ## Related Command line tools
 
-[rd nodes](https://rundeck.github.io/rundeck-cli/commands/#nodes)
+[rd nodes](/rd-cli/commands.md)
 ~ List nodes via the `rd` tool.
