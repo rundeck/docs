@@ -347,6 +347,13 @@ echo "$1"
 
 Which allows the shell will correctly handle the input value by quoting it.
 
+::: tip
+When running a command, the value of `${option.name}` will be escaped with single quotes by default.
+You can change this behavior when using cmd commands by setting the node attribute `shell-escaping-interpreter` to `cmd` 
+or setting the project property `project.plugin.Shell.Escaping.interpreter` to `cmd`.
+This will escape the option value by adding a `^` before any special characters.
+:::
+
 ### Using non-escaped values
 
 If the job needs to provide an option in its raw, unescaped form it is possible to use the `unquotedoption` context lookup key instead of `option`.
