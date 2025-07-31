@@ -71,6 +71,10 @@ export default [
             collapsible: true,
             children: [
               {
+                text: "5.14.0",
+                link: "https://docs.rundeck.com/5.14.0/"
+              },
+              {
                 text: "5.13.0",
                 link: "https://docs.rundeck.com/5.13.0/"
               },
