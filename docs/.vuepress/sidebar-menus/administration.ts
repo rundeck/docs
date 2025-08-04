@@ -53,7 +53,6 @@ export default [{
                 link: '/administration/runner/',
                 children: [
                   {link:'/administration/runner/', text: 'Runner Overview'},
-                  {link: '/administration/runner/concepts.md', text: "Concepts & Architecture"},
                   {
                     text: 'Runner Installation',
                     collapsible: true,
@@ -67,8 +66,8 @@ export default [{
                     collapsible: true,
                     children: [
                       '/administration/runner/runner-management/managing-runners.md',
+                      '/administration/runner/runner-management/project-dispatch-configuration.md',
                       '/administration/runner/runner-management/node-dispatch.md',
-                      '/administration/runner/runner-management/managing-replicas.md',
                       '/administration/runner/runner-management/monitoring-runners.md',
                       '/administration/runner/runner-management/runner-logging.md',
                       '/administration/runner/runner-management/upgrading-runners.md',
@@ -79,7 +78,6 @@ export default [{
                     text: 'Using Runners',
                     collapsible: true,
                     children: [
-                        '/administration/runner/using-runners/project-dispatch-configuration.md',
                       {link:'/administration/runner/using-runners/runner-using.md',text: "Job Execution"},
                       '/administration/runner/using-runners/runners-for-node-discovery.md',
                       {link:'/administration/runner/using-runners/runners-with-key-storage.md',text: "Key Storage"},
