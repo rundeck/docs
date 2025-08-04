@@ -19,7 +19,7 @@ The status of Replicas can be seen by navigating to the **Replicas** tab of the 
 |-------------------|---------------------------------------------------------------------------------------------------------------------------------|
 | **New** | The Replica has been created but not yet started. Heartbeats are sent from the Replica every 2 seconds.|
 | **Healthy** | The Replica is currently running and available for tasks.|
-| **Unhealth** | The Replica has connected to Runbook Automation but is experiencing a high workload. This status is set to safeguard the execution times and tells Runbook Automation to utilize another Replica - if available.|
+| **Unhealthy** | The Replica has connected to Runbook Automation but is experiencing a high workload. This status is set to safeguard the execution times and tells Runbook Automation to utilize another Replica - if available.|
 | **Unknown** | The server has not heard from the Replica in 30 seconds. Tasks will not be assigned to this Replica.|
 | **Down** | The Replica has not been heard from in 120 seconds. Tasks will not be assigned to this Replica.|
 
