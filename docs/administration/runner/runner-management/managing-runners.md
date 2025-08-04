@@ -63,7 +63,6 @@ From this interface, users can:
 - Create a new Runner. For detailed steps, see [Creating a Runner](/administration/runner/runner-installation/creating-runners.md).
 - [Edit a Runner's Tags](#runner-tags).
 - [Assigning Runners to Projects](#assign-runners-to-projects).
-- [Manage a Runner's Replicas]
 
 [//]: # (- Delete Runners.  For detailed steps, see [Deleting a Runner]&#40;/administration/runner/runner-installation/delete-a-runner&#41;.)
 
