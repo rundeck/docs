@@ -1,10 +1,10 @@
 # Rundeck Documentation
 Rundeck Documentation project.
 
-## Getting starting
+## Getting Started
 
 ### Dependencies
-* NodeJS `lts/hydrogen` or version `18.19.0` is the currently supported and only version that should be used.
+* NodeJS version `22.12.0` is the currently supported and only version that should be used.
 * NVM is helpful in making sure your machine is using the currently supported versions as we upgrade in the future.
 
 ### Recommended setup steps
@@ -18,10 +18,7 @@ After setting the proper Node version, run this `npm` command before the first y
 npm install
 ```
 
-## API Documentation Guidelines
-
-Our API Documentation is now handled by OpenAPI spec and presented using Swagger UI.
-
+>Note: It may be helpful to delete any existing `node_modules` folder and the `package-lock.json` file before running npm install.
 
 # How To 
 
@@ -77,6 +74,13 @@ git checkout v3.2.8
 git checkout -b 3.2.8
 git push origin
 ```
+
+## Documentation Structure
+
+The documentation is organized as follows:
+- `/docs/` - Main documentation content
+- `/docs/.vuepress/` - VuePress configuration
+- `/docs/.vuepress/public/assets/img/` - Images Folder
 
 # How to Create Release Notes
 

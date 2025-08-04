@@ -47,11 +47,6 @@ This is possible only If the “Runnerset Can be Changed at Runtime” option wa
 Once you have picked a Runnerset for the Job, you can choose how the Runner should behave by selecting a Dispatch mode: “Run on Runner” or “Dispatch to Nodes through Runner”. If you select “Dispatch to Nodes through Runner”, the nodes related options will display and those are identical to previous versions of Runbook Automation.<br>
 ![Dispatching jobs through runners](/assets/img/runner-use-dispatch-nodes.png)
 
-#### Job Output with Manual Runner Selection
-
-The runner carrying out the job execution is displayed at the top of the Job execution activity. Example below: The job below was executed through the “Ansible-Runner”<br>
-![View runner in a job execution](/assets/img/runner-use-view-activity.png)
-
 #### Manual Runner Selection through Job options
 
 Runner matching and filtering supports Job Options - `${option.NAME}`, which allows changing the Runners for the job based on dynamic input through API calls or the rundeck-cli. The Job Options behavior is the same for Runner selection as with using it with commands or other workflow steps.  For example:
@@ -68,3 +63,7 @@ Here's an example of a job option and runner filter configurations:
 #### Migrating Jobs to use Runners with Manual Runner Selection
 When **Manual** is selected in [**Project Dispatch Configuration**](/administration/runner/runner-management/project-dispatch-configuration.md), existing jobs will default to the Local Runner even if no Runner selection is made in the job definition. The Local Runner operates with an execution context equivalent to that of the Runbook Automation service.
 
+## Job Output with Manual Runner Selection
+
+The runner carrying out the job execution is displayed at the top of the Job execution activity. Example below: The job below was executed through the “Ansible-Runner”<br>
+![View runner in a job execution](/assets/img/runner-use-view-activity.png)

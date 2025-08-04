@@ -162,7 +162,6 @@ docker run -it \
 	 rundeckpro/runner:{{ $rundeckVersion }}
 ```
 
-
 ## Secure the Runner Deployment
 
 We recommend installing Runners in private directories that are only accessible by the user/group holding the runner process (e.g.: `C:\Users\runnerUser\` directory) so that other users are not able to access or even modify script files created by the runner. 

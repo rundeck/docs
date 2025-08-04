@@ -1,7 +1,8 @@
 ---
 title: API Reference
 alias: api/index.html
-headerDepth: 3
+toc:
+  levels: [2, 3]
 ---
 
 # API Reference | Version {{ $apiVersion }}
@@ -5812,6 +5813,10 @@ Configure and enable a plugin for a project.
 The request body is expected to contain entries for all of the `required` input fields for the plugin.
 
 If a validation error occurs with the configuration, then the response will include detail about the errors.
+
+Valid INTEGRATION values are: "import" and "export".
+
+For TYPE, the only supported values are "git-import" and "git-export".
 
 **Request**
 
