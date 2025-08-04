@@ -89,6 +89,7 @@ export default [{
                     children: [
                       '/administration/runner/runner-plugins/runner-plugins.md',
                       {link:'/administration/runner/runner-plugins/restricting-plugin-execution.md',text: "Restricting Plugin Execution"},
+                      {link:'/administration/runner/runner-plugins/custom-plugins.md',text: "Custom Plugins"}
                     ]
                   },
                   {
@@ -229,7 +230,8 @@ export default [{
         '/administration/security/password-security',
         '/administration/security/ratelimiting',
         '/administration/security/blocklist',
-        '/administration/security/audit-trail'
+        '/administration/security/audit-trail',
+        '/administration/security/audit-stream-plugin'
       ]
     }
   ]

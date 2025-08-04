@@ -33,6 +33,15 @@ Here is the overview of the steps for this setup:<br>
     - [IAM Role for Remote EC2s](#iam-role-for-remote-ec2s)
     - [IAM Role for Cross Account Node Execution](#iam-role-for-cross-account-node-execution)
     - [File Copier \& Script Executor Permissions](#file-copier--script-executor-permissions)
+    - [Add Trust Policy](#add-trust-policy)
+  - [Update IAM Role in Master Account](#update-iam-role-in-master-account)
+  - [Configure Node Executor in Runbook Automation](#configure-node-executor-in-runbook-automation)
+    - [AWS Authentication](#aws-authentication)
+    - [Node Discovery](#node-discovery)
+    - [Enable SSM Node Executor \& File Copier](#enable-ssm-node-executor--file-copier)
+      - [Option 1: Individual Nodes and Node Sources Setting](#option-1-individual-nodes-and-node-sources-setting)
+      - [Option 2: Project Wide Configuration](#option-2-project-wide-configuration)
+  - [Using CloudWatch Logs](#using-cloudwatch-logs)
 
 ## Configure IAM Roles in Remote Accounts
 
@@ -63,8 +72,7 @@ And the policy must allow for the **AWS-RunShellScript** and **AWS-RunPowerShell
 Be sure to replace **`<<REMOTE AWS ACCOUNT ID>>`** with the AWS account ID of the _remote_ account:
 :::
 
-```
-{
+```json
     "Version": "2012-10-17",
     "Statement": [
         {
@@ -94,7 +102,7 @@ Be sure to replace **`<<REMOTE AWS ACCOUNT ID>>`** with the AWS account ID of th
 :::tip Tip! Instance Discovery Permissions
 In order for Runbook Automation to also be used to discover the EC2 nodes in the remote account, it needs the permissions to list the EC2s. 
 If this same IAM Role will be used for instance-discovery, then be sure to add the following policy to the above IAM Role as well:
-```
+```json
 {
    "Effect": "Allow",
    "Action": "ec2:Describe*",
@@ -116,7 +124,7 @@ Add the following permission to the IAM Policy above: **`arn:aws:ssm:*::document
    :::warning Heads Up!                                                        
    Be sure to replace **`<< content >>`** with your AWS Account ID's and ARN's.
    :::
-    ```
+    ```json
    {
        "Version": "2012-10-17",
        "Statement": [
@@ -153,7 +161,7 @@ Add the following permission to the IAM Policy above: **`arn:aws:ssm:*::document
 
 :::tip Tip #1 Multiple ARNs to Access S3
 Multiple ARNs can be added to the Principal by using a list:
-```
+```json
 "Principal": 
 {
    "AWS":["arn:aws:iam::<AccountBId>:role/<AccountBRole>",  "arn:aws:iam::<AccountCId>:role/<AccountCRole>"]
@@ -161,7 +169,7 @@ Multiple ARNs can be added to the Principal by using a list:
 ```
 :::tip Tip #2 Use AWS Organizations ID
 Instead of listing all the ARNs for all the account roles, you can use the AWS Organization ID as a condition in your bucket policy.
-```
+```json
     condition {
       test     = "StringEquals"
       variable = "aws:PrincipalOrgID"
@@ -170,7 +178,7 @@ Instead of listing all the ARNs for all the account roles, you can use the AWS O
 ```
 
 Then, in the _remote_ AWS account, modify the IAM Role associated with the EC2s (earlier referenced as **AmazonSSMManagedInstanceCore**) and add the following permissions
-```
+```json
 {
    "Effect": "Allow",
    "Action": [
@@ -199,7 +207,7 @@ For Runbook Automation Self=Hosted, the _master account_ is the AWS Account wher
 
 Navigate back to the _remote_ AWS account where the cross-account role can be modified.  Click on **Trust Relationships** then click on **Edit Trust Policy**. Use the following Trust Policy:
 
-```
+```json
 {
 	"Version": "2012-10-17",
 	"Statement": [
@@ -226,7 +234,7 @@ Navigate back to the _master account_.
 Find the IAM Role that is associated with Runbook Automation, and navigate to modify this IAM role in the IAM Console.  For Runbook Automation Self-Hosted, see [these instructions for EC2](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html#attach-iam-role), or [these instructions for ECS](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html#specify-task-iam-roles).  
 Now add the following policy to this IAM Role and paste in the ARN of the cross-account IAM Role copied from the _remote account_ from the prior section:
 
-```
+```json
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -313,7 +321,7 @@ In order to use CloudWatch, specify the CloudWatch Log Group in the Node Executo
 Then, use the policies below for the IAM Roles.  Again, both of these are in the remote account.
 
 **Full policy for Cross-Account-Role:**
-```
+```json
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -344,7 +352,7 @@ Then, use the policies below for the IAM Roles.  Again, both of these are in the
 ```
 
 **Policy to add to remote nodes (EC2’s):**
-```
+```json
 {
     "Version": "2012-10-17",
     "Statement": [

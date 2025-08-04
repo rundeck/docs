@@ -14,11 +14,11 @@ you feel is suitable for your environment.
 
 See [JAAS](https://en.wikipedia.org/wiki/Java_Authentication_and_Authorization_Service) and specifically for Jetty, [JAAS for Jetty](https://wiki.eclipse.org/Jetty/Feature/JAAS).
 
-# Single Sign On
+## Single Sign On
 
 See [Security > Single Sign On](/administration/security/sso/index.md).
 
-# Require Roles For Sign On
+### Require Roles For Sign On
 
 By default, when users who are not granted access to any projects try to login, they are directed to a page that says they don't have any roles at the moment. However, if you would like to require roles to even get passed the login screen, that is possible. If you require roles for sign on, then if a user without a role tries to login, they will not be able to get into the Rundeck portal. In order to require roles for sign on, add the following line to the rundeck-config.properties file:
 ```bash
@@ -26,7 +26,7 @@ rundeck.security.requiredRole=role1,role2,role3
 ```
 Where role1, role2, role3 are the names of the groups you wish to grant access to.
 
-# Jetty and JAAS authentication
+## Jetty and JAAS authentication
 
 Rundeck has three basic JAAS modules.
 
@@ -38,7 +38,7 @@ By default a new installation uses the realm.properties method.  Each method det
 
     rundeck.security.jaasRolePrefix=PREFIX_
 
-## PropertyFileLoginModule
+### PropertyFileLoginModule
 
 :::warning
 It is recommended to use `BCRYPT` encrypted passwords with `realm.properties` as it is the most secure option available. Avoid `plain`, `MD5`, and `CRYPT`.
@@ -744,7 +744,7 @@ Based on the flags, JAAS would attempt the following for authentication:
 1. If auth succeeds, finish with successful authentication
 1. If auth fails, finish with failed authentication
 
-# Jaas Authorization Testing
+## Jaas Authorization Testing
 
 If you would like to test your Jaas configuration without restarting Rundeck every time you make a change to your Jaas configuration, you can add the `--testauth` option:
 
@@ -766,7 +766,7 @@ If the login fails a stacktrace will be printed out which will contain the detai
 
 **Note:** The authentication test will fail if the bind password is set at the rundeck-config.properties file. In order to work, the --testauth flag requires the bind password set at the JAAS file.
 
-# Container authentication and authorization
+## Container authentication and authorization
 
 Container Authentication provides the Servlet context used by Rundeck
 with a few mechanisms to determine what roles the user has.
@@ -787,9 +787,9 @@ rundeck.security.authorization.containerPrincipal.enabled=false
 rundeck.security.authorization.container.enabled=false
 ```
 
-# Preauthenticated Mode
+## Preauthenticated Mode
 
-## Preauthenticated Mode using headers
+### Preauthenticated Mode using headers
 
 If you have a proxy sitting in front of your Rundeck installation that authenticates your users, you can send the authenticated user and groups to Rundeck via HTTP headers. Set the following properties in your `rundeck-config.properties` file.
 
@@ -829,7 +829,7 @@ rundeck.security.authorization.preauthenticated.userLastNameHeader=X-Forwarded-U
 rundeck.security.authorization.preauthenticated.userEmailHeader=X-Forwarded-User-Email
 ```
 
-## Preauthenticated mode logout redirection
+### Preauthenticated mode logout redirection
 
 If you are running preauthenticated mode and wish to redirect to a custom logout url on user logout, set the following properties:
 

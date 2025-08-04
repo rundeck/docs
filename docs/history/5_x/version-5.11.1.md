@@ -38,9 +38,6 @@ Release Date: April 16, 2025
 
 Submit your own Pull Requests to get recognition here!
 
-*  ([github-actions[bot]](https://github.com/github-actions[bot]))
-* Luis Toledo ([ltamaster](https://github.com/ltamaster))
-
 
 ## Staff Contributors
 

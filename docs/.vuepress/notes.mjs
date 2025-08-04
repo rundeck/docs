@@ -13,6 +13,25 @@ const argv = _yargs(hideBin(process.argv)).argv;
 const template = fs.readFileSync('./docs/.vuepress/notes.md.nj');
 
 const excludeLabels = ['release-notes/exclude'];
+// List of usernames to exclude from contributors
+const excludeUsernames = [
+  'github-actions[bot]',
+  'dependabot[bot]',
+  'fdevans',
+  'gschueler',
+  'alexander-variacode',
+  'mrdubr',
+  'carlosrfranco',
+  'chrismcg14',
+  'ChuckCrawford',
+  'jsboak',
+  'jbrookspd',
+  'Jesus-Osuna-M',
+  'hiawvp',
+  'ltamaster',
+  'ronaveva',
+  'smartinellibenedetti'
+];
 
 const ghToken = process.env.GH_API_TOKEN;
 
@@ -46,44 +65,6 @@ async function main() {
   fs.writeFileSync(outPath, notes);
 }
 
-// async function getSideCarVersion(repo) {
-//   const gh = new Octokit({ auth: argv.token || process.env.GH_API_TOKEN });
-
-//   const milestones = await gh.issues.listMilestones({ ...repo });
-
-//   const milestone = milestones.data.find((m) => m.title === argv.milestone);
-
-//   if (!milestone) {
-//     console.error(`GitHub milestone ${argv.milestone} not found!`);
-//   } else {
-//     try {
-//       const proRunnerVersion = await gh.repos.getContent({
-//         ...repo,
-//         path: 'gradle.properties',
-//         ref: `v${milestone.title}`,
-//       });
-
-//       const runnerVersion = proRunnerVersion.data;
-//       const content = Buffer.from(runnerVersion.content, 'base64').toString();
-//       const sidecarVersionLine = content.match(/^sidecarVersion=(.*)/m);
-
-//       if (sidecarVersionLine) {
-//         const version = sidecarVersionLine[1].trim();
-//         console.log(`Sidecar Version: ${version}`);
-//         return {
-//           version,
-//         };
-//       }
-//     } catch (error) {
-//       console.error('Sidecar Version Not Found');
-//       const version = 'Version Not Found check for release tag';
-//       return {
-//         version,
-//       };
-//     }
-//   }
-// }
-
 async function getRepoData(repo, includeLabels) {
   const gh = new Octokit({ auth: process.env.GH_API_TOKEN });
 
@@ -114,12 +95,14 @@ async function getRepoData(repo, includeLabels) {
     const reporters = {};
 
     for (const p of pulls) {
+      if (excludeUsernames.includes(p.user.login)) continue;
       if (contributors[p.user.login]) continue;
       const user = await gh.users.getByUsername({ username: p.user.login });
       contributors[user.data.login] = user.data;
     }
 
     for (const i of issues) {
+      if (excludeUsernames.includes(i.user.login)) continue;
       if (reporters[i.user.login]) continue;
       const user = await gh.users.getByUsername({ username: i.user.login });
       reporters[user.data.login] = user.data;

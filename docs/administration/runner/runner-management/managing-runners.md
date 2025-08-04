@@ -2,15 +2,51 @@
 redirectFrom: /administration/runner/management
 ---
 
-# Managing Runners
-
-## Overview
+# System & Project Runner Management
 
 Runners can be managed at the System level as well as at the Project level of Runbook Automation (cloud and self-hosted).
 Both the System and Project level management interfaces allow users to create, edit, and delete Runners.  
-However, there are specific actions that can only take place depending on whether operating in the System or Project level.
+However, there are specific actions that can only take place in the System Level - such as assigning a Runner to multiple projects - or at the Project level - such as defining the Node Filter for dispatching to nodes.
 
-### Managing Runners at the System level
+## System Level Runner Management
+<br>
+<details>
+    <summary><u>ACL Permissions for Managing Runners at <strong>System</strong> level</u></summary>
+
+To manage a Runner at the **System level**, users will need the following ACL permissions:
+
+```acl
+---
+by:
+  group: my-user-group-name
+description: Update Runners at System Level
+for:
+  runner:
+  - allow:
+    - update
+    - delete
+    - read
+context:
+  application: rundeck
+
+---
+by:
+  group: my-user-group-name
+description: Write Access to Runner Feature at System Level
+for:
+  resource:
+  - allow:
+    - read
+    - admin
+    equals:
+      kind: runner
+context:
+  application: rundeck
+```
+
+* Change **`my-user-group-name`** in the above ACL policy to the name of the user group that needs to have these permissions.
+
+</details> 
 
 At the System level, in addition to creating, editing, and deleting Runners, users can also assign Runners to Projects.
 
@@ -30,7 +66,7 @@ From this interface, users can:
 
 [//]: # (- Delete Runners.  For detailed steps, see [Deleting a Runner]&#40;/administration/runner/runner-installation/delete-a-runner&#41;.)
 
-#### Assigning Runners to Projects
+### Assigning Runners to Projects
 
 To assign a Runner to a project, follow these steps:
 
@@ -43,21 +79,45 @@ To assign a Runner to a project, follow these steps:
 
 The Runner can now be used within the designated projects for various tasks such as job execution, node discovery, and secrets-management integration.
 
-In order to assign a Runner to a Project, the user must have the following ACL permission:
+## Managing Runners within a Project
+<br>
+<details>
+    <summary><u>ACL Permissions for Creating Runners at <strong>Project</strong> level</u></summary>
 
-```
+To create a Runner within a Project, users will need the following ACL permissions:
+
+```acl
+---
 by:
   group: my-user-group-name
-description: Allow [update] for runner
+description: Manage Existing Runners within Project
 for:
   runner:
   - allow:
+    - read
     - update
+    - delete
 context:
-  application: rundeck
+  project: my-project-name
+
+---
+by:
+  group: my-user-group-name
+description: Write access to Runners at the Project Level
+for:
+  resource:
+  - allow:
+    - read
+    - admin
+    equals:
+      kind: runner
+context:
+  project: my-project-name
 ```
 
-### Managing Runners within a Project
+* Change **`my-user-group-name`** in the above ACL policy to the name of the user group that needs to have these permissions.
+
+</details>
 
 At the Project level, users can create, edit, and delete Runners for that specific Project.
 However, Runners created at the Project level are only available for use within that Project and cannot be used in other Projects.
@@ -77,7 +137,7 @@ From this interface, users can:
 
 [//]: # (- Delete Runners.  For detailed steps, see [Deleting a Runner]&#40;/administration/runner/runner-installation/delete-a-runner&#41;.)
 
-#### Removing a Runner from a Project
+### Removing a Runner from a Project
 
 To remove a Runner from a Project, follow these steps:
 
@@ -142,7 +202,7 @@ by:
 ```
 :::
 
-### Changing Runners from Single to Multiple Projects
+## Changing Runners from Single to Multiple Projects
 
 When a Runner is assigned to a single Project, then users within a Project and with the appropriate permissions can make any changes to the Runner from the Project level interface. This includes the ability to:
 - Edit the Runner's Name
@@ -158,14 +218,7 @@ However, when a Runner is assigned to multiple Projects, then users within Proje
 
 This is because when a Runner spans multiple Projects it is considered a _shared resource_.
 
-
-### Viewing Runner details
-
-A new section Tags is available  at the bottom of the Runner information page. Like in the summary page, a list of associated tags are displayed.
-
-![View details](/assets/img/runner-config-viewdetails.png)<br>
-
-### Runner Tags
+## Runner Tags
 
 Runner Tags are used to select on or more Runners for specific operations - such as for Job execution when using [**Manual Runner Dispatch Configuration**](/administration/runner/runner-management/project-dispatch-configuration.md#manual-runner-selection) or when using [Runners for Node Source](/administration/runner/using-runners/runners-for-node-discovery.md) plugins.
 

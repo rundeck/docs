@@ -102,7 +102,7 @@ export default defineUserConfig({
 
   //Theme Config
   theme: hopeTheme({
-    debug: true,
+    debug: process.env.NODE_ENV === 'development',
     logo: '/images/RundeckbyPagerDuty.svg',
     repo: 'rundeck/docs',
     docsDir: 'docs',
@@ -150,6 +150,7 @@ export default defineUserConfig({
       },
       redirect: {
         config: {
+          '/history/cves/2025-06-05-runnersecurity.html' : '/history/cves/2025-06-runner-security.html',
           '/manual/01-introduction.html': '/introduction/introduction.html',
           '/manual/03-getting-started.html': '/learning/index.html',
           '/manual/02-getting-help.html': '/introduction/getting-help.html',
@@ -315,29 +316,16 @@ export default defineUserConfig({
     },
     markdown: {
       tabs: true,
-      codeTabs: true
+      codeTabs: true,
+      highlighter: {
+        type: 'prismjs',
+        collapsedLines: false,
+        themes: { light: 'coldark-cold', dark: 'dracula' },
+      }
     }
   },
     { custom: true },
   ),
-  alias: {
-    "@theme-hope/components/HomePage": path.resolve(
-      __dirname,
-      "./components/HomePageAnnounce.vue",
-    ),
-    "@theme-hope/modules/sidebar/components/Sidebar": path.resolve(
-      __dirname,
-      "./components/SidebarAnnounce.vue",
-    ),
-    "@theme-hope/layouts/NotFound": path.resolve(
-      __dirname,
-      "./components/notFoundCustom.vue",
-    ),
-    "@theme-hope/modules/navbar/components/Navbar": path.resolve(
-      __dirname,
-      "./components/CustomNavBar.vue",
-    ),
-  },
   //Plugins Config
   plugins: [
     removePwaPlugin({

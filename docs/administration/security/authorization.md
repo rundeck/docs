@@ -203,8 +203,12 @@ These are the Application scope actions that can be allowed or denied via the ac
   - Uninstalling plugins `uninstall`
   - Full access `admin`
 - Managing Runners
-  - Read Access to All Runner configuration `read`
-  - Full Admin access to All Runner Configuration `admin`
+  - Read Runner configuration details. `read`
+  - Create new Runner entries. `create`
+  - Update existing Runner entries. `update`
+  - Delete Runner entries. `delete`
+  - Execute the ping command to check Runner status. `ping`
+  - Regenerate a new credential package for a Runner. `regenerate_credentials`
 
 The following table summarizes the generic and specific resources and the
 actions you can restrict in the application scope:
@@ -231,8 +235,12 @@ actions you can restrict in the application scope:
 | "          | "             | none       | `install`                | Install plugins                                |
 | "          | "             | none       | `uninstall`              | Uninstall plugins                              |
 | "          | "             | none       | `admin`                  | Full access                                    |
-| "          | `runner`      | none       | `read`                   | Read Access to Runners                         |
-| "          | "             | none       | `admin`                  | Full access to manage Runners                  |
+| "          | `runner`      | none       | `read`                   | Read Runner setup/configuration details        |
+| "          | "             |none        | `create`                 | Create new Runner entries                      |
+| "          | "             |none        | `update`                 | Update existing Runner entries                 |
+| "          | "             |none        | `delete`                 | Delete Runner entries                          |
+| "          | "             |none        | `ping`                   | Execute the ping command to check Runner status |
+| "          | "             |none        | `regenerate_credentials` | Regenerate a new credential package for a Runner|
 
 Table: Application scope generic type actions
 
@@ -257,15 +265,6 @@ Table: Application scope generic type actions
 | "             | "                  | `read`             | Read files and list directories in the storage facility |
 | "             | "                  | `delete`           | Delete files in the storage facility                    |
 | `apitoken`    | "username","roles" | `create`           | Create an API Token with specified roles or username    |
-| `runner`      | "username","roles" | `read`             | Read Runner setup/configuration details                 |
-| "             | "                  | `create`           | Create new Runner entries                               |
-| "             | "                  | `update`           | Update existing Runner entries                          |
-| "             | "                  | `delete`           | Delete Runner entries                                   |
-| "             | "                  | `ping`             | Execute the ping command to check Runner status         |
-| "             | "                  | `regenerate_credentials`| Regenerate a new credential package for a Runner   |
-
-
-
 
 ---
 
@@ -392,6 +391,12 @@ actions you can restrict in the project scope:
 | "          | "             | `update`     | Update access                                 |
 | "          | "             | `delete`     | Delete access                                 |
 | "          | "             | `post`       | Post to webhook access                        |
+| "          | `runner`      | `read`                   | Read Runner setup/configuration details        |
+| "          | "             | `create`                 | Create new Runner entries                      |
+| "          | "             | `update`                 | Update existing Runner entries                 |
+| "          | "             | `delete`                 | Delete Runner entries                          |
+| "          | "             | `ping`                   | Execute the ping command to check Runner status |
+| "          | "             | `regenerate_credentials` | Regenerate a new credential package for a Runner|
 
 Type Properties Actions Description
 
@@ -419,6 +424,12 @@ Type Properties Actions Description
 | "       |                                   | `view_history`     | View job executions history                                                         |
 | `node`  | "rundeck_server", "nodename", ... | `read`             | View the node in the UI (see [Node resource properties](#node-resource-properties)) |
 | "       |                                   | `run`              | Run jobs/adhoc on the node                                                          |
+| `runner` |  "name", "id", "tags"            | `read`             | Read Runner Listing                                                                 |
+| "       |                                   | `create`           | Create new Runner entries                                                           |
+| "       |                                   | `update`           | Update existing Runner entries                                                      |
+| "       |                                   | `delete`           | Delete Runner entries                                                               |
+| "       |                                   | `ping`             | Execute the ping command to check Runner status                                     |
+| "       |                                   | `admin`            | Full access to manage Runners                                                       |
 
 
 _Note_: see [Node resource properties](#node-resource-properties) for more node resource properties for authorization.
