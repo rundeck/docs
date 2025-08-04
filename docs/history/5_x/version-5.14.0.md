@@ -3,7 +3,7 @@
 title: "5.14.0 Release Notes"
 date: 2025-08-04
 image: /images/chevron-logo-red-on-white.png
-description: "Rundeck | Runbook Automation Releases <VERSION> <DESCRIPTION>"
+description: "Rundeck | Runbook Automation Releases 5.14.0 | Security and Stability improvements"
 feed:
  enable: true
  description: "Lots of fixes and Security enhancements"
