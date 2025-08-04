@@ -21,14 +21,19 @@ If setting up Enterprise Runners on virtualized environments, here are baseline 
 
 |               | **Minimum** | **Medium** | **Large** |
   |---------------|-------------|------------|-----------|
-| **vCPU**      | 4 cores     | 8 cores    | 12 cores  |
-| **Memory**    | 8 GiB       | 16 GiB     | 32 GiB    |
-| **Java Heap** | 6 GiB       | 12 GiB     | 24 GiB    |
-| **Storage**   | 40 GiB      | 40 GiB     | 40 GiB    |
+| **vCPU**      | 2 core      | 4 cores    | 8 cores   |
+| **Memory**    | 4 GiB       | 8 GiB      | 16 GiB    |
+| **Java Heap** | 2 GiB       | 6 GiB      | 12 GiB    |
+| **Storage**   | 8 GiB       | 20 GiB     | 20 GiB    |
 
 ### Permissions
+
+<details>
+    <summary> ACL Permissions for Creating Runners at <strong>System</strong> level</summary>
+
 To create a Runner at the **System level**, users will need the following ACL permissions:
-```
+
+```acl
 by:
   group: my-user-group-name
 description: Allow creating of Runners at the System level
@@ -41,42 +46,50 @@ context:
 
 ---
 by:
-  group: my-user-group-name
+group: my-user-group-name
 description: Allow "write" access within Runner management at the System level
 for:
-  resource:
-  - allow:
+resource:
+- allow:
     - admin
-    equals:
+      equals:
       kind: runner
-context:
-  application: rundeck
+      context:
+      application: rundeck
 ---
 by:
-  group: my-user-group-name
+group: my-user-group-name
 description: Allow creation of apitokens (general)
 for:
-  apitoken:
-  - allow:
+apitoken:
+- allow:
     - create
-context:
-  application: rundeck
+      context:
+      application: rundeck
 ---
 by:
-  group: my-user-group-name
+group: my-user-group-name
 description: Restrict apitoken creation to only generate_service_token to be used for Runners
 for:
-  resource:
-  - allow:
+resource:
+- allow:
     - generate_service_token
-    equals:
+      equals:
       kind: apitoken
-context:
-  application: rundeck
+      context:
+      application: rundeck
 ```
 
+* Change **`my-user-group-name`** in the above ACL policy to the name of the user group that needs to have these permissions.
+
+</details> 
+<br>
+<details>
+    <summary> ACL Permissions for Creating Runners at <strong>Project</strong> level</summary>
+
 To create a Runner within a Project, users will need the following ACL permissions:
-```
+
+```acl
 by:
   group: my-user-group-name
 description: Allow "write" for runner feature within specific project
@@ -126,6 +139,9 @@ context:
 
 * Change **`my-user-group-name`** in the above ACL policy to the name of the user group that needs to have these permissions.
 
+</details>
+
+
 :::warning Error Without API Permissions
 If the user does not have the necessary API permissions, the following error will be displayed when attempting to create a Runner:
 
@@ -155,7 +171,7 @@ To create a Runner through at the System level:
    * **`Windows`**
    * **`Docker`**
    * **`Kubernetes`**
-   :::warning Platform Selection Implications
+   :::warning Platform Selection
    Once a platform is selected, it cannot be changed for a given Runner. If the platform needs to be changed in the future, a new Runner will need to be created.
    :::
 7. Click **Next**.
@@ -176,8 +192,8 @@ To create a Runner through at the System level:
     * **Kubernetes**: The code snippet for installing the Runner as a Kubernetes deployment is provided:
        ![Install Kubernetes Runner](/assets/img/install-kubernetes-runner.png)<br>
 
-Copy and paste the code snippet into the terminal of the host where the Runner will be installed.
-   
+Copy and paste the code snippet into the terminal of the host where the Runner will be installed. 
+
 11. Click **Close and Complete**.
 
 On the subsequent screen, the new Runner will be listed along with any other Runners that have been created:
@@ -231,6 +247,6 @@ To create a Runner within a Project:
       ![Install Docker Runner](/assets/img/install-docker-runner.png)<br>
     * **Kubernetes**: The code snippet for installing the Runner as a Kubernetes deployment is provided:
       ![Install Kubernetes Runner](/assets/img/install-kubernetes-runner.png)<br>
-12. Click **Close and Complete** to finish the Runner creation process. 
+12. Click **Close and Complete** to finish the Runner creation process.
 
-On the subsequent screen, the new Runner will be listed along with any other Runners that have been created:
+On the subsequent screen, the new Runner will be listed along with any other Runners that have been created.
