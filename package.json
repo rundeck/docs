@@ -23,7 +23,7 @@
     "lodash": "^4.17.21",
     "markdown-it-container": "^3.0.0",
     "markdown-it-include": "^2.0.0",
-    "openapi-explorer": "^2.2.734",
+    "openapi-explorer": "^2.2.764",
     "swagger-ui-dist": "^5.9.0",
     "vuepress-plugin-open-graph": "^1.16.0"
   },
@@ -36,7 +36,7 @@
     "@vuepress/helper": "2.0.0-rc.112",
     "@vuepress/plugin-container": "2.0.0-rc.0",
     "@vuepress/plugin-docsearch": "2.0.0-rc.112",
-    "@vuepress/plugin-feed": "2.0.0-rc.112", 
+    "@vuepress/plugin-feed": "2.0.0-rc.112",
     "@vuepress/plugin-google-analytics": "2.0.0-rc.112",
     "@vuepress/plugin-markdown-tab": "2.0.0-rc.112",
     "@vuepress/plugin-prismjs": "2.0.0-rc.112",
