@@ -249,6 +249,4 @@ To create a Runner within a Project:
       ![Install Kubernetes Runner](/assets/img/install-kubernetes-runner.png)<br>
 12. Click **Close and Complete** to finish the Runner creation process.
 
-On the subsequent screen, the new Runner will be listed along with any other Runners that have been created:
-
-![Project Runners List](/assets/img/runner-list-project.png)<br>
+On the subsequent screen, the new Runner will be listed along with any other Runners that have been created.
