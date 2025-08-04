@@ -118,5 +118,5 @@ The example below shows that the user can't create Job for those nodes.
 
 ## Related Command line tools
 
-[rd nodes](/rd-cli/commands.md)
+[rd nodes](/rd-cli/commands.md#nodes)
 ~ List nodes via the `rd` tool.
