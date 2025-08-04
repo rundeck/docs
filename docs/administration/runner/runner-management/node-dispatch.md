@@ -94,4 +94,6 @@ When defining Node Filters for Runners, it is possible to have filters on multip
 For example, one Runner may have the node filter ```region: "us-west-1"``` and another Runner may have the node filter ```region: "us-west-1" osFamily: "windows"```.
 In this case, Jobs steps that target _Windows_ nodes in the _US-WEST-1_ region could be dispatched through **_either_** Runner.
 
-It is recommended to **avoid overlapping Node Filters for Runners**, as this can lead to confusion and unexpected behavior.  Instead, it is recommended to use Replicas to scale the Runner's capacity and provide redundancy.
+While this can be useful for redundancy purposes, it requires careful considering that both Runners and their hosts are configured as identically as possible to reduce the likelihood of unpredictable behavior.
+
+Native high-availability and horizontal scaling of Runners is planned for a future release.
