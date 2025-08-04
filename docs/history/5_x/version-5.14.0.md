@@ -20,8 +20,6 @@ Key improvements include enhanced character escaping for Unix, PowerShell, and C
 
 While this release doesn't introduce major new features, it significantly strengthens the security posture and stability of your Rundeck environment. We recommend upgrading to ensure your installation benefits from these important security fixes.
 
-
-
 ## Runbook Automation Updates
 
 > Also includes all Open Source updates from below
