@@ -8,7 +8,7 @@ Runner Logs are located in the `./runner/logs` folder under the folder where the
 
 ### **Error message**
 ```
-08-06-2025 14:23:47.445 [main] ERROR io.micronaut.retry.intercept.RecoveryInterceptor - Type [com.rundeck.sidecar.agent.server.RESClient$Intercepted] executed with error: javax.net.ssl.SSLHandshakeException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target reactor.core.Exceptions$ReactiveException: javax.net.ssl.SSLHandshakeException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+MM-DD-YYYY 14:23:47.445 [main] ERROR io.micronaut.retry.intercept.RecoveryInterceptor - Type [com.rundeck.sidecar.agent.server.RESClient$Intercepted] executed with error: javax.net.ssl.SSLHandshakeException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target reactor.core.Exceptions$ReactiveException: javax.net.ssl.SSLHandshakeException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
 ```
 
 ### Why does this happen?
@@ -37,7 +37,7 @@ The default password is `changeit`.
 
 Example command:
 
-```
+```bash
 keytool -import -alias rundeck-ca -file /path/to/ca.crt -keystore $JAVA_HOME/lib/security/cacerts
 ```
 
