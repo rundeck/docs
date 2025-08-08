@@ -70,6 +70,8 @@ There is also a new section in the [System Report](/manual/system-report.md) (On
 * _FullUser.assigned.max:_ Max Count of User Class assignments for FullUser.
 * _FullUser.mapping.current:_ Current Mappings for FullUser. (shown as array of usernames)
 
+The time period used to calculate these counters begins from the date the license is issued.
+
 This section is also included in the Export Report and may be asked for as part of licensing validation.
 
 ## Licensing
