@@ -12,6 +12,10 @@ feed:
 
 # 5.14.0 Release Notes
 
+
+<VidStack src="youtube/ZFm-DYB0STA" poster="https://img.youtube.com/vi/ZFm-DYB0STA/maxresdefault.jpg"/>
+
+
 ## Overview
 
 Rundeck 5.14.0 is a maintenance release focused on security enhancements and bug fixes. This release addresses multiple CVEs including CVE-2023-3635, CVE-2025-48734, CVE-2025-48976, and CVE-2025-7783 through dependency updates across the platform. 
