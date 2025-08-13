@@ -174,27 +174,46 @@ To create a Runner through at the System level:
    :::warning Platform Selection
    Once a platform is selected, it cannot be changed for a given Runner. If the platform needs to be changed in the future, a new Runner will need to be created.
    :::
-7. Click **Next**.
-8. In the **Project Association** step, select the Projects that can make use of this Runner. When a Runner is associated with a given Project, it will be visible in the **Runner Management** tab of that Project and users with Runner management permissions within that Project can specify how that Runner will be used for that particular Project.
+7. **Treat Replicas as Ephemeral**: When enabled,  this Runner will still appear as healthy when some replicas are no longer sending a signal. Treating replicas as ephemeral is recommended when replicas will be added and removed dynamically through external orchestration such as Kubernetes or Auto-Scaling Groups. If enabled, Replicas cannot be manually added or removed through the Web interface or API.
+   :::warning Ephemeral Replicas Selection 
+   Once a Runner is configured for _Ephemeral_ vs _Persistent_, this cannot be changed for a given Runner. If this setting needs to be changed in the future, a new Runner will need to be created.
+   ::: 
+8. Click **Next**.
+9. In the **Project Association** step, select the Projects that can make use of this Runner. When a Runner is associated with a given Project, it will be visible in the **Runner Management** tab of that Project and users with Runner management permissions within that Project can specify how that Runner will be used for that particular Project.
     ![Create a Runner](/assets/img/runner-wizard-step-2-system.png)
-9. Click **Create Runner** to proceed to the installation step.
-10. Depending on the **Platform** chosen earlier, the instructions for installing the Runner will vary on the **Install Runner** screen:
-    * **Linux**: There are two options for the **Download Artifact**: copy and paste the `curl` command or download the `.jar` file locally. The `curl` can be executed on the host that the Runner will be installed on.  
-      * :::warning Note that the `curl` command requires an **API Token**. Click [here](/manual/10-user.md#user-api-tokens) for steps to create an API Token.
-         :::
-         ![Install Linux Runner](/assets/img/install-linux-runner.png)<br>
-    * **Windows**: There are two options for the **Download Artifact**: copy and paste the `Invoke-WebRequest` command or download the `.jar` file locally. The `Invoke-WebRequest` can be executed on the host that the Runner will be installed on.
-      * :::warning Note that the `Invoke-WebRequest` command requires an **API Token**. Click [here](/manual/10-user.md#user-api-tokens) for steps to create an API Token.
-         :::
-         ![Install Windows Runner](/assets/img/install-windows-runner.png)<br>
-    * **Docker**: The code snippet for installing and starting the Runner as a Docker container with **`docker-compose`** is provided:
-      ![Install Docker Runner](/assets/img/install-docker-runner.png)<br>
-    * **Kubernetes**: The code snippet for installing the Runner as a Kubernetes deployment is provided:
-       ![Install Kubernetes Runner](/assets/img/install-kubernetes-runner.png)<br>
+10. Click **Create Runner** to proceed to the installation step.
+11. Depending on the **Platform** chosen earlier, the instructions for installing the Runner will vary on the **Install Runner** screen:
+:::tabs
+@tab Linux
+ There are two options for the **Download Artifact**: copy and paste the `curl` command or download the `.jar` file locally. The `curl` can be executed on the host that the Runner will be installed on.
 
-Copy and paste the code snippet into the terminal of the host where the Runner will be installed. 
+  * :::warning Note that the `curl` command requires an **API Token**. Click [here](/manual/10-user.md#user-api-tokens) for steps to create an API Token.
+     :::
+     ![Install Linux Runner](/assets/img/install-linux-runner.png)<br>
+  
+@tab Windows
+  There are two options for the **Download Artifact**: copy and paste the `Invoke-WebRequest` command or download the `.jar` file locally. The `Invoke-WebRequest` can be executed on the host that the Runner will be installed on.
 
-11. Click **Close and Complete**.
+  * :::warning Note that the `Invoke-WebRequest` command requires an **API Token**. Click [here](/manual/10-user.md#user-api-tokens) for steps to create an API Token.
+    
+   ![Install Windows Runner](/assets/img/install-windows-runner.png)<br>
+    
+@tab Docker
+  The code snippet for installing and starting the Runner as a Docker container with **`docker-compose`** is provided:
+    ![Install Docker Runner](/assets/img/install-docker-runner.png)<br>
+
+@tab Kubernetes
+  The code snippet for installing the Runner as a Kubernetes deployment is provided:
+     ![Install Kubernetes Runner](/assets/img/install-kubernetes-runner.png)<br>
+    
+   * :::tip Kubernetes Replicas & Runner Replicas
+        When deploying multiple replicas of the Runner in Kubernetes, the number of replicas specified in the Kubernetes deployment will be used to determine the number of replicas for the Runner.
+     
+:::
+
+  Copy and paste the code snippet into the terminal of the host where the Runner will be installed.
+   
+12. Click **Close and Complete**.
 
 On the subsequent screen, the new Runner will be listed along with any other Runners that have been created:
 
@@ -229,24 +248,47 @@ To create a Runner within a Project:
       :::warning Platform Selection Implications
       Once a platform is selected, it cannot be changed for a given Runner. If the platform needs to be changed in the future, a new Runner will need to be created.
       :::
-7. Click **Next**.
-8. On the **Node Dispatch** step, select whether this Runner should be added as a Node to the Node Inventory. Doing so allows you to target the Runner's host in Jobs and commands, scripts and plugins will execute locally on that node rather than use a remote-execution protocol - such as SSH or WinRM.
-9. Also on the **Node Dispatch** step, select whether this Runner should be used to target remote nodes and use the **Node Filter** to define the assignment of the subset of the node-inventory for this Runner:
-   ![Node Dispatch](/assets/img/runner-wizard-step-2-project.png)
-10. Click **Create Runner** to proceed to the installation step.
-11. Depending on the **Platform** chosen earlier, the instructions for installing the Runner will vary on the **Install Runner** screen:
-    * **Linux**: There are two options for the **Download Artifact**: copy and paste the `curl` command or download the `.jar` file locally. The `curl` can be executed on the host that the Runner will be installed on.
-        * :::warning Note that the `curl` command requires an **API Token**. Click [here](/manual/10-user.md#user-api-tokens) for steps to create an API Token.
-          :::
-          ![Install Linux Runner](/assets/img/install-linux-runner.png)<br>
-    * **Windows**: There are two options for the **Download Artifact**: copy and paste the `Invoke-WebRequest` command or download the `.jar` file locally. The `Invoke-WebRequest` can be executed on the host that the Runner will be installed on.
-        * :::warning Note that the `Set-Item` command requires an **API Token**. Click [here](/manual/10-user.md#user-api-tokens) for steps to create an API Token.
-          :::
-          ![Install Windows Runner](/assets/img/install-windows-runner.png)<br>
-    * **Docker**: The code snippet for installing and starting the Runner as a Docker container with **`docker-compose`** is provided:
-      ![Install Docker Runner](/assets/img/install-docker-runner.png)<br>
-    * **Kubernetes**: The code snippet for installing the Runner as a Kubernetes deployment is provided:
-      ![Install Kubernetes Runner](/assets/img/install-kubernetes-runner.png)<br>
-12. Click **Close and Complete** to finish the Runner creation process.
+7. **Treat Replicas as Ephemeral**: When enabled,  this Runner will still appear as healthy when some replicas are no longer sending a signal. Treating replicas as ephemeral is recommended when replicas will be added and removed dynamically through external orchestration such as Kubernetes or Auto-Scaling Groups. If enabled, Replicas cannot be manually added or removed through the Web interface or API.
+   :::warning Ephemeral Replicas Selection
+   Once a Runner is configured for _Ephemeral_ vs _Persistent_, this cannot be changed for a given Runner. If this setting needs to be changed in the future, a new Runner will need to be created.
+   :::
+8. Click **Next**.
+9. On the **Node Dispatch** step, select whether this Runner should be added as a Node to the Node Inventory. Doing so allows you to target the Runner's host in Jobs and commands, scripts and plugins will execute locally on that node rather than use a remote-execution protocol - such as SSH or WinRM.
+10. Also on the **Node Dispatch** step, select whether this Runner should be used to target remote nodes and use the **Node Filter** to define the assignment of the subset of the node-inventory for this Runner:
+    ![Node Dispatch](/assets/img/runner-wizard-step-2-project.png)
+11. Click **Create Runner** to proceed to the installation step.
+12. Depending on the **Platform** chosen earlier, the instructions for installing the Runner will vary on the **Install Runner** screen:
+:::tabs
+@tab Linux
+There are two options for the **Download Artifact**: copy and paste the `curl` command or download the `.jar` file locally. The `curl` can be executed on the host that the Runner will be installed on.
 
-On the subsequent screen, the new Runner will be listed along with any other Runners that have been created.
+* :::warning Note that the `curl` command requires an **API Token**. Click [here](/manual/10-user.md#user-api-tokens) for steps to create an API Token.
+    :::
+      
+  ![Install Linux Runner](/assets/img/install-linux-runner.png)<br>
+
+@tab Windows
+There are two options for the **Download Artifact**: copy and paste the `Invoke-WebRequest` command or download the `.jar` file locally. The `Invoke-WebRequest` can be executed on the host that the Runner will be installed on.
+
+* :::warning Note that the `Invoke-WebRequest` command requires an **API Token**. Click [here](/manual/10-user.md#user-api-tokens) for steps to create an API Token.
+
+![Install Windows Runner](/assets/img/install-windows-runner.png)<br>
+
+@tab Docker
+The code snippet for installing and starting the Runner as a Docker container with **`docker-compose`** is provided:
+![Install Docker Runner](/assets/img/install-docker-runner.png)<br>
+
+@tab Kubernetes
+The code snippet for installing the Runner as a Kubernetes deployment is provided:
+![Install Kubernetes Runner](/assets/img/install-kubernetes-runner.png)<br>
+
+* :::tip Kubernetes Replicas & Runner Replicas
+  When deploying multiple replicas of the Runner in Kubernetes, the number of replicas specified in the Kubernetes deployment will be used to determine the number of replicas for the Runner.
+
+:::
+
+13. Click **Close and Complete** to finish the Runner creation process. 
+
+On the subsequent screen, the new Runner will be listed along with any other Runners that have been created:
+
+![Project Runners List](/assets/img/runner-list-project.png)<br>

@@ -47,7 +47,7 @@ Users can check that a Replica is available via an ad hoc "ping" operation:
 
 ## Monitoring Replicas
 
-The Replica agent is a lightweight JVM process.  It can therefore be monitored with standard JMX monitoring tools.  
+The Enterprise Runner is a lightweight JVM process.  It can therefore be monitored with standard JMX monitoring tools.  
 
 The Replica exposes a number of JMX MBeans that can be used to monitor the Replicas's health and performance.
 
@@ -60,7 +60,7 @@ To expose the JMX Mbeans, you can start the Replica with the following Java opti
 - `-Djava.rmi.server.hostname` - This sets the hostname that the JMX Mbeans will be associated with.
 - `-Dcom.sun.management.jmxremote.local.only` - This enables or disables local-only access to the JMX Mbeans.
 
-For example, to start the Replica with JMX monitoring enabled on port 9010, you would use the following command:
+For example, to start the Runner with JMX monitoring enabled on port 9010, you would use the following command:
 
 ```bash
 java -Dcom.sun.management.jmxremote \
@@ -72,10 +72,10 @@ java -Dcom.sun.management.jmxremote \
   -jar runner-6281cf48-37a2-4659-93c9-907539177022.jar
 ```
 
-Once the Replica is running with JMX monitoring enabled, you can connect to it using a monitoring tool.
+Once the Runner is running with JMX monitoring enabled, you can connect to it using a monitoring tool.
 
-For example, the **Datadog** agent can be configured to monitor the Replica's JVM metrics following [these steps](https://docs.datadoghq.com/integrations/java/?tab=host#configuration).
+For example, the **Datadog** agent can be configured to monitor the Runners JVM metrics following [these steps](https://docs.datadoghq.com/integrations/java/?tab=host#configuration).
 
-The JVM metrics will then be associated with the Replica's host in Datadog:
+The JVM metrics will then be associated with the Runner's host in Datadog:
 
 ![Datadog Monitoring Runner](/assets/img/datadog-monitoring-runner.png)<br>

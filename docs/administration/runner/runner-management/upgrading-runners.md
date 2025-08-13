@@ -1,4 +1,4 @@
-# Upgrading Runners
+# Upgrading Replicas
 
 This document describes how to upgrade Runners to the latest version.
 
