@@ -190,7 +190,10 @@ h6 {
 }
 
 .theme-container .vp-page img {
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 
+    0 4px 6px rgba(0, 0, 0, 0.1),
+    0 1px 3px rgba(0, 0, 0, 0.08),
+    0 0 0 1px rgba(0, 0, 0, 0.05);
 }
 
 //This is used to fix Code on the old API page for request and response strings.
@@ -283,6 +286,13 @@ html[data-theme=dark] {
     .custom-container-title {
       color: #fff;
     }
+  }
+
+  .theme-container .vp-page img {
+    box-shadow: 
+      0 4px 6px rgba(0, 0, 0, 0.3),
+      0 1px 3px rgba(0, 0, 0, 0.2),
+      0 0 0 1px rgba(255, 255, 255, 0.1);
   }
 
   #main-description {
