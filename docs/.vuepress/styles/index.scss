@@ -189,8 +189,9 @@ h6 {
   }
 }
 
-.theme-hope-content img {
-  border: 1px solid #C0C0C0;
+img {
+  border: 1px solid #C0C0C0 !important;
+  box-sizing: border-box;
 }
 
 //This is used to fix Code on the old API page for request and response strings.
