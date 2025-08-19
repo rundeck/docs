@@ -61,7 +61,7 @@ h6 {
   border-color: #888; /* Slightly darker border on focus */
 }
 
-    .vp-description{
+.vp-description{
   text-align: center;
   max-width: unset;
 }
@@ -191,7 +191,6 @@ h6 {
 
 .theme-container .vp-page img {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  box-sizing: border-box;
 }
 
 //This is used to fix Code on the old API page for request and response strings.
