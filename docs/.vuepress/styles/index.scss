@@ -190,7 +190,8 @@ h6 {
 }
 
 .vp-page img {
-  border: 1px solid #C0C0C0 !important;
+.theme-container .vp-page img {
+  border: 1px solid #C0C0C0;
   box-sizing: border-box;
 }
 
