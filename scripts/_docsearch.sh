@@ -13,8 +13,8 @@ getdocker () {
 getdocsearch () {
         cd ~ && git clone https://github.com/algolia/docsearch-scraper.git
         cd ~/docsearch-scraper
-        echo "APPLICATION_ID=$(APPLICATION_ID)" >> ~/docsearch-scraper/.env
-        echo "API_KEY=$(API_KEY)" >> ~/docsearch-scraper/.env
+        echo "APPLICATION_ID=$APPLICATION_ID" >> ~/docsearch-scraper/.env
+        echo "API_KEY=$API_KEY" >> ~/docsearch-scraper/.env
 }
 
 pythonstuff () {
