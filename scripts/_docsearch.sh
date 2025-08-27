@@ -7,30 +7,48 @@ getapt () {
 }
 
 getdocker () {
+        # Check if Docker is already installed
+        if command -v docker &> /dev/null; then
+                echo "Docker is already installed"
+                return 0
+        fi
+        
+        echo "Installing Docker..."
         curl -fsSL https://get.docker.com | sh
         sudo usermod -aG docker $USER
 }
 
 getdocsearch () {
-        cd ~ && git clone https://github.com/algolia/docsearch-scraper.git
-        cd ~/docsearch-scraper
-        echo "APPLICATION_ID=$APPLICATION_ID" >> ~/docsearch-scraper/.env
-        echo "API_KEY=$API_KEY" >> ~/docsearch-scraper/.env
+        # Clone to the repo directory instead of home
+        cd ~/repo && git clone https://github.com/algolia/docsearch-scraper.git
+        cd ~/repo/docsearch-scraper
+        echo "APPLICATION_ID=$APPLICATION_ID" >> ~/repo/docsearch-scraper/.env
+        echo "API_KEY=$API_KEY" >> ~/repo/docsearch-scraper/.env
 }
 
-pythonstuff () {
-        sudo apt install -y python3-pip python3-distutils
-        # Use pip3 consistently and fix package installation order
-        pip3 install --user pipenv
-        # Remove problematic uninstalls and use pip3
-        pip3 install --user python-dotenv
-        pip3 install --user future
-        pip3 install --user requests
-}
+# pythonstuff () {
+#         sudo apt install -y python3-pip python3-distutils
+#         # Use pip3 consistently and fix package installation order
+#         pip3 install --user pipenv
+#         # Remove problematic uninstalls and use pip3
+#         pip3 install --user python-dotenv
+#         pip3 install --user future
+#         pip3 install --user requests
+# }
 
 execdocsearch () {
-        # Add error handling and better output capture
-        if ./docsearch docker:run ~/repo/.docsearch/config.json 2>&1 | tee /tmp/docsearch_output | grep -i "hits:" > /tmp/NB_HITS; then
+        # Change to the correct directory and use direct Docker approach
+        cd ~/repo/docsearch-scraper
+        
+        # Pull the latest image
+        docker pull algolia/docsearch-scraper:latest
+        
+        if docker run --rm \
+            --env-file=.env \
+            -e CONFIG=/config/config.json \
+            -v $(pwd):/docsearch-scraper \
+            -v ~/repo/.docsearch:/config \
+            algolia/docsearch-scraper:latest 2>&1 | tee /tmp/docsearch_output | grep -i "hits:" > /tmp/NB_HITS; then
                 echo "Docsearch completed successfully"
         else
                 echo "Docsearch failed, checking output..."
@@ -62,7 +80,7 @@ main () {
         getapt
         getdocker
         getdocsearch
-        pythonstuff
+        # pythonstuff  # Not needed for direct Docker approach
         execdocsearch
         hitcheck
 }
