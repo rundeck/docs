@@ -48,7 +48,7 @@ execdocsearch () {
             -e CONFIG=/config/config.json \
             -v $(pwd):/docsearch-scraper \
             -v ~/repo/.docsearch:/config \
-            algolia/docsearch-scraper:latest 2>&1 | tee /tmp/docsearch_output | grep -i "hits:" > /tmp/NB_HITS; then
+            algolia/docsearch-scraper:latest 2>&1 | tee /tmp/docsearch_output | grep -i "Nb hits:" > /tmp/NB_HITS; then
                 echo "Docsearch completed successfully"
         else
                 echo "Docsearch failed, checking output..."
@@ -63,7 +63,7 @@ hitcheck () {
                 exit 1
         fi
         
-        CI_NB_HITS=`cat /tmp/NB_HITS | awk '{print $3}'`
+        CI_NB_HITS=`cat /tmp/NB_HITS | awk -F': ' '{print $2}'`
         N_CI_NB_HITS=${CI_NB_HITS//[ $'\001'-$'\037']}
         echo "CI_NB_HITS=$CI_NB_HITS"
         echo "NB_HITS=$NB_HITS"

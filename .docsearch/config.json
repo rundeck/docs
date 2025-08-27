@@ -19,7 +19,7 @@
   "selectors": {
     "default": {
       "lvl0": {
-        "selector": ".vp-sidebar-links .vp-sidebar-header.active .vp-sidebar-title",
+        "selector": ".vp-sidebar > .vp-sidebar-links > li > .vp-sidebar-group > p.vp-sidebar-header.active .vp-sidebar-title",
         "global": true,
         "default_value": "Documentation"
       },
