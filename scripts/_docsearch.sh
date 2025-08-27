@@ -19,28 +19,14 @@ getdocker () {
 }
 
 getdocsearch () {
-        # Clone to the repo directory instead of home
         cd ~/repo && git clone https://github.com/algolia/docsearch-scraper.git
         cd ~/repo/docsearch-scraper
         echo "APPLICATION_ID=$APPLICATION_ID" >> ~/repo/docsearch-scraper/.env
         echo "API_KEY=$API_KEY" >> ~/repo/docsearch-scraper/.env
 }
 
-# pythonstuff () {
-#         sudo apt install -y python3-pip python3-distutils
-#         # Use pip3 consistently and fix package installation order
-#         pip3 install --user pipenv
-#         # Remove problematic uninstalls and use pip3
-#         pip3 install --user python-dotenv
-#         pip3 install --user future
-#         pip3 install --user requests
-# }
-
 execdocsearch () {
-        # Change to the correct directory and use direct Docker approach
         cd ~/repo/docsearch-scraper
-        
-        # Pull the latest image
         docker pull algolia/docsearch-scraper:latest
         
         if docker run --rm \
@@ -80,7 +66,6 @@ main () {
         getapt
         getdocker
         getdocsearch
-        # pythonstuff  # Not needed for direct Docker approach
         execdocsearch
         hitcheck
 }
