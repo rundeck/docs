@@ -1,7 +1,7 @@
 ---
 
 title: "5.15.0 Release Notes"
-date: 2025-05-02
+date: 2025-09-02
 image: /images/chevron-logo-red-on-white.png
 description: "Rundeck | Runbook Automation Releases 5.15.0 | Security Fixes and Community Updates"
 feed:
