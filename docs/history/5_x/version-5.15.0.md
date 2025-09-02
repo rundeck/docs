@@ -88,7 +88,7 @@ Submit your own Pull Requests to get recognition here!
 
 * Lucas Migliorini ([luqpy](https://github.com/luqpy))
 * Christian Schulze-Wiehenbrauk ([Ntr0](https://github.com/Ntr0))
-*  ([mazzella-c](https://github.com/mazzella-c))
+* Clément Mazzella ([mazzella-c](https://github.com/mazzella-c))
 * JP Lassnibatt ([jplassnibatt](https://github.com/jplassnibatt))
 * Bruno Dias ([brmdias](https://github.com/brmdias))
 * Rui Melo Amaro ([rmeloamaro](https://github.com/rmeloamaro))
