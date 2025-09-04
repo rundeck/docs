@@ -254,10 +254,10 @@ These can be set in `rundeck-config.properties` or System Configuration.
 
 **Session Timeout Behavior:**
 
-- **Activity-based timeout**: By default, sessions timeout based on inactivity using the configured `maxMinutes` value
+- **Activity-based timeout**: By default, sessions timeout based on inactivity using the configured `maxMinutes` value.
 - **Forced reauthentication**: When `forceReauthentication` is enabled, sessions expire after the specified duration regardless of user activity.
-- **Default values**: When no configuration is provided, sessions timeout after 60 minutes
-- **Invalid configuration**: When the configuration value is invalid, the system falls back to the 60-minute default
+- **Default values**: When no configuration is provided, sessions timeout after 60 minutes.
+- **Invalid configuration**: When the configuration value is invalid, the system falls back to the 60-minute default.
 
 > Be aware that using the forced reauthentication feature may result in data loss if jobs are not saved when the session is invalidated.
 
