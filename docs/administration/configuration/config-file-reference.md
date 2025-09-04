@@ -259,7 +259,7 @@ It is also possible to force re-authentication regarless of activity levels.
 - `rundeck.userSessionDuration.maxMinutes`: Maximum duration in minutes for user sessions. Default: `60` minutes.
 - `rundeck.userSessionDuration.forceReauthentication`: `true/false`. Default: `false`. When set to `true`, enforces session timeout regardless of user activity.
 
-All of these can be set via [System Properties Configuration](/administration/configuration/system-properties.md)
+All of these can be set via [System Properties Configuration](/administration/configuration/system-properties.md) or in `rundeck-config.properties`
 
 **Example configurations:**
 
