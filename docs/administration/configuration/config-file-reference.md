@@ -235,9 +235,45 @@ used. Specified from [jaas-loginmodule.conf](#jaas-loginmodule-conf).
 
 ## Session timeout
 
+Session timeout controls how long user sessions remain active. Rundeck provides two methods to configure session timeout:
+
+### Servlet Session Timeout
+
 See [rundeck-config.properties > Server Settings](#server-settings)
 
 Or set `server.servlet.session.timeout` via [System Properties Configuration](/administration/configuration/system-properties.md).
+
+### User Session Duration
+
+For more granular control over user session expiration, you can configure the maximum session duration:
+
+- `rundeck.userSessionDuration.maxMinutes`: Maximum duration in minutes for user sessions. Default: `60` minutes.
+- `rundeck.userSessionDuration.forceReauthentication`: `true/false`. Default: `false`. When set to `true`, enforces session timeout regardless of user activity.
+
+These can be set in `rundeck-config.properties` or System Configuration.
+
+**Session Timeout Behavior:**
+
+- **Activity-based timeout**: By default, sessions timeout based on inactivity using the configured `maxMinutes` value
+- **Forced reauthentication**: When `forceReauthentication` is enabled, sessions expire after the specified duration regardless of user activity.
+- **Default values**: When no configuration is provided, sessions timeout after 60 minutes
+- **Invalid configuration**: When the configuration value is invalid, the system falls back to the 60-minute default
+
+> Beware that using the forced reauthentication feature may result in data loss if jobs are not saved when the session is invalidated.
+
+**Example configurations:**
+
+```properties
+# Standard activity-based timeout (2 hours)
+rundeck.userSessionDuration.maxMinutes=120
+
+# Force reauthentication after 8 hours regardless of activity
+rundeck.userSessionDuration.maxMinutes=480
+rundeck.userSessionDuration.forceReauthentication=true
+
+# Force reauthentication with default 60-minute timeout
+rundeck.userSessionDuration.forceReauthentication=true
+```
 
 ## rundeck-config.properties
 
