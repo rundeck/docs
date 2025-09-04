@@ -259,7 +259,7 @@ These can be set in `rundeck-config.properties` or System Configuration.
 - **Default values**: When no configuration is provided, sessions timeout after 60 minutes
 - **Invalid configuration**: When the configuration value is invalid, the system falls back to the 60-minute default
 
-> Beware that using the forced reauthentication feature may result in data loss if jobs are not saved when the session is invalidated.
+> Be aware that using the forced reauthentication feature may result in data loss if jobs are not saved when the session is invalidated.
 
 **Example configurations:**
 
