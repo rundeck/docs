@@ -237,7 +237,7 @@ used. Specified from [jaas-loginmodule.conf](#jaas-loginmodule-conf).
 
 Session Timeout Behavior:
 
-- **Activity-based timeout**: Under normal operations, sessions timeout based on inactivity using the value defined in `server.servlet.session.timeout` (default: 3600 seconds).
+- **Activity-based timeout**: Under normal operations, sessions time out based on inactivity using the value defined in `server.servlet.session.timeout` (default: 3600 seconds).
 - **Forced re-authentication**: When `rundeck.userSessionDuration.forceReauthentication` is enabled, sessions will expire after the duration defined in `rundeck.userSessionDuration.maxMinutes`, regardless of user activity.
 - **Default values**: When `rundeck.userSessionDuration.forceReauthentication` is enabled and `rundeck.userSessionDuration.maxMinutes` isn't specified, the default `userSessionDuration.maxMinutes` is 60 minutes.
 
