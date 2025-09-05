@@ -235,10 +235,42 @@ used. Specified from [jaas-loginmodule.conf](#jaas-loginmodule-conf).
 
 ## Session timeout
 
-See [rundeck-config.properties > Server Settings](#server-settings)
+Session Timeout Behavior:
 
-Or set `server.servlet.session.timeout` via [System Properties Configuration](/administration/configuration/system-properties.md).
+- **Activity-based timeout**: Under normal operations, sessions timeout based on inactivity using the value defined in `server.servlet.session.timeout` (default: 3600 seconds).
+- **Forced re-authentication**: When `rundeck.userSessionDuration.forceReauthentication` is enabled, sessions will expire after the duration defined in `rundeck.userSessionDuration.maxMinutes`, regardless of user activity.
+- **Default values**: When `rundeck.userSessionDuration.forceReauthentication` is enabled and `rundeck.userSessionDuration.maxMinutes` isn't specified, the default `userSessionDuration.maxMinutes` is 60 minutes.
 
+:::tip
+Beware that using the forced re-authentication feature may result in data loss if jobs are not saved when the session is invalidated.
+:::
+
+### Inactivity Timeout
+
+To configure the inactivity timeout use `server.servlet.session.timeout`. The default is 3600 seconds.
+
+### Forced re-authentication (Commercial Products Only)
+
+It is also possible to force re-authentication regardless of activity levels.
+
+- `rundeck.userSessionDuration.maxMinutes`: Maximum duration in minutes for user sessions. Default: 60 minutes.
+- `rundeck.userSessionDuration.forceReauthentication`: `true/false`. Default: `false`. When set to `true`, enforces session timeout regardless of user activity. When set to `false` (default), no forced re-authentication occurs and sessions only timeout based on inactivity.
+
+All of these can be set via [System Properties Configuration](/administration/configuration/system-properties.md) or in `rundeck-config.properties`.
+
+Example configurations:
+
+```properties
+# Standard activity-based timeout (2 hours)
+server.servlet.session.timeout=7200
+
+# Force reauthentication after 8 hours regardless of activity
+rundeck.userSessionDuration.maxMinutes=480
+rundeck.userSessionDuration.forceReauthentication=true
+
+# Force reauthentication regardless of activity with default 60-minute timeout
+rundeck.userSessionDuration.forceReauthentication=true
+```
 ## rundeck-config.properties
 
 This is the primary Rundeck webapp configuration file. Defines default
