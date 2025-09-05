@@ -247,7 +247,16 @@ Beware that using the forced re-authentication feature may result in data loss i
 
 ### Inactivity Timeout
 
-To configure the inactivity timeout use `server.servlet.session.timeout`. The default is 3600 seconds.
+To configure the inactivity timeout use `server.servlet.session.timeout`. The default is 3600 seconds. 
+
+Example configurations:
+
+```properties
+# Standard activity-based timeout (2 hours)
+server.servlet.session.timeout=7200
+```
+
+Also see [rundeck-config.properties > Server Settings](#server-settings)
 
 ### Forced re-authentication (Commercial Products Only)
 
@@ -261,9 +270,6 @@ All of these can be set via [System Properties Configuration](/administration/co
 Example configurations:
 
 ```properties
-# Standard activity-based timeout (2 hours)
-server.servlet.session.timeout=7200
-
 # Force reauthentication after 8 hours regardless of activity
 rundeck.userSessionDuration.maxMinutes=480
 rundeck.userSessionDuration.forceReauthentication=true
