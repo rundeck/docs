@@ -1445,7 +1445,8 @@ Success response, with a list of users:
     "created": "2017-10-01T09:00:20Z",
     "updated": "2018-08-24T13:53:02Z",
     "lastJob": "2018-08-28T13:31:00Z",
-    "tokens": 1
+    "tokens": 1,
+    "lastLogin": "2025-09-08T13:29:21Z"
 },
 {
     "login":"admin",
@@ -1455,9 +1456,14 @@ Success response, with a list of users:
     "created": "2016-07-17T18:42:00Z",
     "updated": "2018-08-24T13:53:00Z",
     "lastJob": "2018-08-28T13:31:00Z",
-    "tokens": 6
+    "tokens": 6,
+    "lastLogin": "2025-09-08T13:29:21Z"
 }]
 ```
+
+**Since v53**
+
+* `lastLogin` Last login time for a user.
 
 **Since v27**:
 
