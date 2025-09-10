@@ -205,7 +205,7 @@ export default [{
         {
           text: 'Notifications',
           collapsible: true,
-          link: '/manual/notifications/',
+          link: '/manual/notifications/interface-instructions.md',
           children: [
             '/manual/notifications/interface-instructions.md',
             '/manual/notifications/email.md',
