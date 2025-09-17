@@ -12,6 +12,8 @@ feed:
 
 # 5.15.0 Release Notes
 
+<VidStack src="youtube/LLkpNPuQiKk" poster="https://img.youtube.com/vi/LLkpNPuQiKk/maxresdefault.jpg"/>
+
 ## Overview
 
 We always appreciate Community submissions. As part of this release we have 6 contributors that provided enhancements alongside our dedicated staff team.
