@@ -56,3 +56,4 @@ These are the Security Advisories Rundeck has issued in the past.  It is always 
 * [CVE-2024-45338 golang/x/net 0.20.0](cve-2024-38819.md).
 * [CVE-2025-41242 Spring Path traversal](cve-2025-41242.md).
 * [CVE-2025-48924 Issue in Apache Commons Lang](cve-2025-48924.md)
+* [CVE-2025-41249 Spring Framework annotation detection mechanism may not correctly resolve annotation](cve-2025-41249.md)
