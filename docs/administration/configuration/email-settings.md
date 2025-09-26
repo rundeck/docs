@@ -31,7 +31,9 @@ grails.mail.password=pass
 
 If you need more advanced configuration (e.g., authenticated and secured over SSL), see the grails Mail plugin configuration:
 
-[Grails Mail Configuration](https://gpc.github.io/grails-mail/guide/2.%20Configuration.html)
+[Grails Mail Configuration](https://grails.github.io/grails-mail/latest/guide/2.%20Configuration.html)
+
+> Note: The link above is for version 4.0.0.  In the Rundeck version 5.0 series we are using version 3.0.0.
 
 :::tip
 For the extended configuration properties, it needs to be appended to the property prefix `grails.mail.props.<key_props>`. For example, to enable `starttls`, the property should be `grails.mail.props.mail.smtp.starttls.enable=true`

@@ -8,7 +8,7 @@
         "version": [
           "docs",
           "4.0.x",
-          "5.14.1"
+          "5.15.0"
         ]
       }
     }
@@ -19,19 +19,14 @@
   "selectors": {
     "default": {
       "lvl0": {
-        "selector": ".vp-sidebar-links > li:first-child > .vp-sidebar-group > .vp-sidebar-header > .vp-sidebar-title",
+        "selector": ".vp-sidebar > .vp-sidebar-links > li > .vp-sidebar-group > p.vp-sidebar-header.active .vp-sidebar-title",
         "global": true,
         "default_value": "Documentation"
       },
-      "lvl1": {
-        "selector": ".theme-hope-content h1",
-        "global": true,
-        "default_value": "Documentation"
-      },
-      "text": {
-        "selector": "//div[contains(@class, \"theme-hope-content\")]//li | //div[contains(@class, \"theme-hope-content\")]//p | //div[contains(@class, \"theme-hope-content\")]//pre[string-length(string()) < 5000]",
-        "type": "xpath"
-      },
+      "lvl1": "#markdown-content h1",
+      "lvl2": "#markdown-content h2",
+      "lvl3": "#markdown-content h3",
+      "text": "#markdown-content p, #markdown-content li",
       "lang": {
         "selector": "/html/@lang",
         "type": "xpath",
