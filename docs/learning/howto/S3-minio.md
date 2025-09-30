@@ -17,31 +17,27 @@ This article explains how to configure Rundeck so that these execution logs are 
    ``` 
 1. S3 Log Storage Plugin<br>
    ::: tabs
-   @tab Rundeck
+   @tab Rundeck Community
    Add the S3 log storage [plugin](https://github.com/rundeck-plugins/rundeck-s3-log-plugin) on the `libext` directory (at `$RDECK_BASE/libext` directory).<br>
    ```
    wget https://github.com/rundeck-plugins/rundeck-s3-log-plugin/releases/download/v1.0.12/rundeck-s3-log-plugin-1.0.12.jar -P $RDECK_BASE/libext
    ```
-   :::
    @tab PagerDuty Runbook Automation
    Runbook Automation includes its own plugin for this out of the box<br>  
    :::
-   ::::
+
 1. To enable the S3 / Minio log storage plugin, add the following line on the `rundeck-config.properties` file<br>
    ::: tabs
-   @tab Rundeck
+   @tab Rundeck Community
    ```
    rundeck.execution.logs.fileStoragePlugin=org.rundeck.amazon-s3
    ``` 
-   :::
    @tab PagerDuty Runbook Automation
 
    ```
    rundeck.execution.logs.fileStoragePlugin=com.rundeck.rundeckpro.amazon-s3
    ```
-   
-   :::
-   :::: 
+   ::: 
 1. Then open the `framework.properties` file and add the S3 / Minio bucket info as follow:
 
 ::: tabs
