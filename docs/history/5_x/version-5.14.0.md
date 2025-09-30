@@ -80,8 +80,6 @@ Release Date: August 4th, 2025
 
 Submit your own Pull Requests to get recognition here!
 
-* Eduardo Baltra ([edbaltra](https://github.com/edbaltra))
-*  ([jayas006](https://github.com/jayas006))
 *  ([cwaltherpd](https://github.com/cwaltherpd))
 * Rui Melo Amaro ([rmeloamaro](https://github.com/rmeloamaro))
 
