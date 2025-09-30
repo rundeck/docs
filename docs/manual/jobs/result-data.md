@@ -169,7 +169,7 @@ The API can be used to check whether an Execution has a Result Data set, and to 
 
 See:
 
-* [API - Check Execution Result Data Availability][/api/#check-execution-result-data-availability-enterprise]
+* [API - Check Execution Result Data Availability](/api/#check-execution-result-data-availability-enterprise)
 * [API - Get Execution Result Data](/api/#get-execution-result-data-enterprise)
 
 
