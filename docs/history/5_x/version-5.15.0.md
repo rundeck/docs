@@ -6,7 +6,7 @@ image: /images/chevron-logo-red-on-white.png
 description: "Rundeck | Runbook Automation Releases 5.15.0 | Security Fixes and Community Updates"
 feed:
  enable: true
- description: "Security focused improvements with some community submissions!"
+ description: "Security focused improvements with some community submissions"
 
 ---
 
