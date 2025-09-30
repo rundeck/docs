@@ -30,14 +30,14 @@ feed:
 ## Rundeck Open Source Product Updates
 
 {% for pull in core.pulls -%}
-* {{ pull.title | replace(r/^(RUN-[0-9]+\s*)+:?\s*/g, "") }}
+* [{{ pull.title | replace(r/^(RUN-[0-9]+\s*)+:?\s*/g, "") }}]({{pull.html_url}})
 {% endfor %}
 
 [Here is a link to the full list of public PRs](https://github.com/rundeck/rundeck/pulls?q=is%3Apr+milestone%3A{{version.versionString}}+is%3Aclosed)
 
 ## Ansible Plugin Updates
 {% for pull in ansible.pulls -%}
-* {{ pull.title | replace(r/^(RUN-[0-9]+\s*)+:?\s*/g, "") }}
+* [{{ pull.title | replace(r/^(RUN-[0-9]+\s*)+:?\s*/g, "") }}]({{pull.html_url}})
 {% endfor %}
 
 {% for pull in runner.pulls -%}
