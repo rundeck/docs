@@ -92,7 +92,7 @@ In order to handle stateful operations - such as temporarily saving files on the
 
 ## Local Runner
 
-The **Local Runner** refers to the Runbook Automation cluster or SaaS instance itself. When using the [Manual Runner Selection](/docs/administration/runner/runner-management/project-dispatch-configuration.md#manual-runner-selection), the Local Runner can be selected which will result in the Job being executed on the Runbook Automation cluster itself.
+The **Local Runner** refers to the Runbook Automation cluster or SaaS instance itself. When using the [Manual Runner Selection](/administration/runner/runner-management/project-dispatch-configuration.md#manual-runner-selection), the Local Runner can be selected which will result in the Job being executed on the Runbook Automation cluster itself.
 
 [//]: # (## Example Architectures)
 
