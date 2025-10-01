@@ -79,9 +79,7 @@ _When creating a Runner, the **Treat Replicas as Ephemeral** toggle can be enabl
 
 Enable the **Treat Replicas as Ephemeral** option when Replicas will be dynamically created and destroyed through container or VM orchestration - such as Kubernetes or VM auto-scaling-groups. 
 
-When enabled, the Runner will automatically remove Replicas that are no longer available after 10 minutes. As such, the Runner's overall health is only changed when _no_ Replicas are available - but not changed when individual Replicas are no longer available.
-
-This "expiration window" can be changed by setting the system property **`TBD`** to a different value.
+When enabled, the system will automatically remove Replicas that are no longer available after 10 minutes. As such, the Runner's overall health is only changed when _no_ Replicas are available - but not changed when individual Replicas are no longer available.
 
 Replicas cannot be manually added or removed by the GUI or API when this option is enabled, rather they must be managed through the third-party orchestration tool - such as Kubernetes or VM auto-scaling-groups.
 
