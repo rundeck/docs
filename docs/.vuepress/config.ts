@@ -239,7 +239,8 @@ export default defineUserConfig({
           '/learning/solutions/automated-diagnostics/examples/kubernetes.html': '/learning/solutions/containers/kubernetes.html',
           '/learning/solutions/automated-diagnostics/getting-started.html': '/learning/solutions/getting-started.html',
           '/administration/runner/runner-setup.html': '/administration/runner/index.html',
-          '/administration/runner/runner-overview.html': '/administration/runner/index.html'
+          '/administration/runner/runner-overview.html': '/administration/runner/index.html',
+          '/administration/runner/runner-management/project-dispatch-configuration.html': '/administration/runner/using-runners/project-dispatch-configuration.html'
         }
       },
       sitemap: {
