@@ -14,11 +14,14 @@ feed:
 
 ## Overview
 
-
+### Runner Replicas
+Runner Replicas transforms Enterprise Runners from single points of execution into distributed, fault-tolerant services by enabling multiple Runner instances - referred to as Replicas - to operate as a unified logical unit. 
+Administrators can now deploy multiple Replicas of the same Runner across different hosts - either virtual machines or containers. Intelligent load balancing distributes job executions across healthy replicas while maintaining execution affinity for jobs that require filesystem consistency. 
+<br>![Replicas](/assets/img/us-west-replicas.png)
+This enhancement eliminates single points of failure in the automation infrastructure, provides horizontal scalability for high-demand scenarios, and enables zero-downtime maintenance for patching, upgrading, or restarting individual Replica hosts while other Replicas seamlessly handle the workload, ultimately delivering the reliability and scale that mission-critical automation workflows demand.
 
 ## Runbook Automation Updates
 
-> Also includes all Open Source updates from below
 
 ### Additional Updates
 
