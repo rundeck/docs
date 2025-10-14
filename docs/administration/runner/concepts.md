@@ -21,6 +21,16 @@ The **Runner** is composed of one or more **Replicas**. Each Replica is a separa
 
 When a task is assigned to a Runner - such as a Job execution, fetching nodes, or retrieving secrets - any Replica of that Runner can pick up the task. This allows for load balancing and fault tolerance.
 
+### Runner Replicas Configuration
+
+:::note On-Premise Configuration
+In Rundeck On-Premise version 5.16.0 and later, the Runner Replicas feature is **disabled by default**. To enable this feature, add the following property to your configuration (rundeck-config.properties or System Configuration):
+
+```properties
+rundeck.feature.runnerReplicas.enabled=true
+```
+:::
+
 ![](/assets/img/replicas-architecture.png)
 <p style="text-align: center;"><em>A single Replica is assigned to a given task, but any Replica can pick up the task.</em></p>
 
