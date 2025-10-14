@@ -24,7 +24,7 @@ When a task is assigned to a Runner - such as a Job execution, fetching nodes, o
 ### Runner Replicas Configuration
 
 :::note On-Premise Configuration
-In Rundeck On-Premise version 5.16.0 and later, the Runner Replicas feature is **disabled by default**. To enable this feature, add the following property to your configuration:
+In Rundeck On-Premise version 5.16.0 and later, the Runner Replicas feature is **disabled by default**. To enable this feature, add the following property to your configuration (rundeck-config.properties or System Configuration):
 
 ```properties
 rundeck.feature.runnerReplicas.enabled=true
