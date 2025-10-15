@@ -12,20 +12,15 @@ The Node Dispatch settings of a Runner defines which nodes are assigned to a Run
 Enabling the _**Runner as a Node**_ adds the Runner as a node to the node inventory.  When this node is targeted with a node-step within a Job or with a command from the Commands page,
 the Runner will execute the step locally. This is useful for running automation tasks that require the Runner to execute a command or script on the local host.
 
+:::tip Runners with Multiple Replicas
+When a Runner has multiple Replicas, only a single node is created for the Runner in the node inventory.  This is because any Replica can pick up the tasks assigned to a Runner, including local-execution tasks.
+Therefore, when a command or a script is dispatched to the Runner node, any Replica of the Runner can pick up the task and execute it locally.
+:::
+
 
 :::warning Runner Version Requirement
 To use the Runner as a Node feature and target the Runner's host with command and script steps, the Runner must be at version 5.5.0 or later.
 :::
-
-
-:::warning Local Node Source Requirement
-If Run on Runner option is selected in the job **Local** Node Source to be configured.  Removing the Local Node Source will result in the removal of the Runner nodes from the inventory.
-
-![Local node source](/assets/img/local-node-source.png)<br>
-
-To still use the Local Node Source, but prevent the execution of commands and scripts on the Runbook Automation cluster members, set the JVM system property **`rundeck.localExecutor.disabled=true`** or **`DISABLED_LOCAL_EXECUTOR=true`** for Docker installations.
-:::
-
 
 Nodes that represent Runners are designated with a Runner icon in the node inventory and do not require configuring a node source for the Runner's to be added to the inventory.
 
@@ -58,6 +53,7 @@ To define the Node Filter for a Runner:
 2. Select the Runner by clicking on the Runner's name.
 3. Click on the **Node Dispatch** tab.
 4. Enable the _**Remote Node Dispatch**_ setting.
+    ![](/assets/img/runner-node-dispatch.png)
 5. Define the Node Filter using the **Node Filter** field.
 6. Click **Save Configuration**.
 
@@ -94,6 +90,4 @@ When defining Node Filters for Runners, it is possible to have filters on multip
 For example, one Runner may have the node filter ```region: "us-west-1"``` and another Runner may have the node filter ```region: "us-west-1" osFamily: "windows"```.
 In this case, Jobs steps that target _Windows_ nodes in the _US-WEST-1_ region could be dispatched through **_either_** Runner.
 
-While this can be useful for redundancy purposes, it requires careful considering that both Runners and their hosts are configured as identically as possible to reduce the likelihood of unpredictable behavior.
-
-Native high-availability and horizontal scaling of Runners is planned for a future release.
+It is recommended to **avoid overlapping Node Filters for Runners**, as this can lead to confusion and unexpected behavior.  Instead, it is recommended to use Replicas to scale the Runner's capacity and provide redundancy.

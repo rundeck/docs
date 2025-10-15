@@ -72,9 +72,8 @@ for:
   storage:
   - allow:
     - '*'
-    equals:
-      path: keys/project/prj-sandbox
-      name: .*
+    match:
+      path: keys/project/prj-sandbox(/.*)?
 context:
   project: prj-sandbox
 
