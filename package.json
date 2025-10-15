@@ -25,6 +25,7 @@
     "markdown-it-include": "^2.0.0",
     "openapi-explorer": "^2.2.764",
     "swagger-ui-dist": "^5.9.0",
+    "toposort": "^2.0.2",
     "vuepress-plugin-open-graph": "^1.16.0"
   },
   "devDependencies": {

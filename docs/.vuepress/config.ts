@@ -50,7 +50,7 @@ export default defineUserConfig({
         }
       },
       optimizeDeps: {
-        include: ['@docsearch/js'],
+        include: ['@docsearch/js', 'openapi-explorer'],
         exclude: ['@vuepress/theme-hope']
       }
     },
