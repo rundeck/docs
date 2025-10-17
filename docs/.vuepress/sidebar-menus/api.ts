@@ -9,6 +9,7 @@ export default[{
     },
     '/api/rundeck-api-versions.md',
     '/api/api_basics.md',
-    '/api/api-spec.md'
+    {link: '/api/api-spec.md', text: 'Swagger UI Spec'},
+    {link: '/api/openapi-explorer.md', text: 'OpenAPI Explorer'},
   ]
 }]

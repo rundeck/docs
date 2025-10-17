@@ -541,3 +541,12 @@ html[data-theme=dark] {
   display: block !important;
   visibility: visible !important;
 }
+
+openapi-explorer {
+  --primary-color: var(--theme-color);
+  --secondary-color: var(--text-color);
+  --nav-bg-color: var(--bg-color);
+  --nav-text-color: var(--text-color);
+  --nav-hover-bg-color: var(--grey12);
+  --nav-hover-text-color: var(--text-color);
+}
