@@ -26,7 +26,7 @@ Deprecation
 
 For tips on getting started with the API, check out these [API Basics](/api/api_basics.md) .  For information on historical version changes please see [API Version History](/api/rundeck-api-versions.md). Please note of any [incubating endpoints](/api/rundeck-api-versions.md#incubating_endpoints) that may be subject to change.
 
-Check out our Beta [OpenAPI Spec/Swagger](/api/api-spec.md) docs too!
+Check out our the [OpenAPI Spec/Swagger](/api/api-spec.md) version or the [OpenAPI Explorer](/api/openapi-explorer.md) version.  There may be minor differences, but we are moving towards these pages over the entries on this page.
 
 ### Usage
 
