@@ -13,10 +13,10 @@ servers:
   variables:
     protocol:
       description: Protocol (http or https)
-      default: https
       enum:
       - http
       - https
+      default: https
     host:
       description: Server hostname or IP address
       default: localhost
@@ -876,7 +876,6 @@ paths:
       - License
       summary: View License
       description: Returns metadata about the current License for Runbook Automation
-        (Rundeck Enterprise)
       operationId: verify
       responses:
         "200":
@@ -889,18 +888,17 @@ paths:
       tags:
       - License
       summary: Set License Key
-      description: Uploads a license key for Runbook Automation (Rundeck Enterprise)
+      description: Uploads a license key for Runbook Automation
       operationId: apiStoreLicense
       parameters:
       - name: license_agreement
         in: query
-        description: true to agree with the Runbook Automation (Rundeck Enterprise)
-          License
+        description: true to agree with the Runbook Automation License
         required: true
         schema: {}
         example: "true"
       requestBody:
-        description: The Runbook Automation (Rundeck Enterprise) License key file
+        description: The Runbook Automation License key file
         content:
           application/x-rundeck-license:
             schema:
@@ -3477,32 +3475,6 @@ paths:
                     message: $statusMessage
                     project: $project
                     synchState: $synchState
-  /job/{id}/tags:
-    get:
-      tags:
-      - Jobs
-      summary: Get Job Tags (Enterprise)
-      description: |
-        Returns the list of tags for a job.
-
-        Since: v46
-      operationId: job
-      parameters:
-      - name: id
-        in: path
-        description: Job ID
-        required: true
-        schema:
-          type: string
-      responses:
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  type: string
   /job/{id}/workflow:
     get:
       tags:
@@ -6128,118 +6100,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ApiErrorResponse"
-  /project/{project}/jobTags/query:
-    get:
-      tags:
-      - Jobs
-      summary: "Query Project Job Tags [Enterprise]"
-      description: "Returns the list of available tags, along with the count of jobs\
-        \ per each tag, for the job \nquery result received.\n\nSince: v46\n"
-      operationId: query
-      parameters:
-      - name: jobFilter
-        in: query
-        schema:
-          type: string
-      - name: jobExactFilter
-        in: query
-        schema:
-          type: string
-      - name: projFilter
-        in: query
-        schema:
-          type: string
-      - name: groupPath
-        in: query
-        schema:
-          type: string
-      - name: groupPathExact
-        in: query
-        schema:
-          type: string
-      - name: descFilter
-        in: query
-        schema:
-          type: string
-      - name: loglevelFilter
-        in: query
-        schema:
-          type: string
-      - name: idlist
-        in: query
-        schema:
-          type: string
-      - name: scheduledFilter
-        in: query
-        schema:
-          type: boolean
-      - name: scheduleEnabledFilter
-        in: query
-        schema:
-          type: boolean
-      - name: executionEnabledFilter
-        in: query
-        schema:
-          type: boolean
-      - name: serverNodeUUIDFilter
-        in: query
-        schema:
-          type: string
-      - name: daysAhead
-        in: query
-        schema:
-          type: integer
-          format: int32
-      - name: runJobLaterFilter
-        in: query
-        schema:
-          type: boolean
-      - name: max
-        in: query
-        schema:
-          type: integer
-          format: int32
-      - name: offset
-        in: query
-        schema:
-          type: integer
-          format: int32
-      - name: sortBy
-        in: query
-        schema:
-          type: string
-      - name: sortOrder
-        in: query
-        schema:
-          type: string
-      - name: inputParamMap
-        in: query
-        schema:
-          type: object
-          additionalProperties: true
-      - name: paginatedRequired
-        in: query
-        schema:
-          type: boolean
-      - name: sortOrders
-        in: query
-        schema:
-          type: array
-          items:
-            $ref: "#/components/schemas/SortOrder"
-      - name: project
-        in: path
-        required: true
-        schema:
-          type: string
-      responses:
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                type: object
-                additionalProperties: true
   /project/{project}/jobs:
     get:
       tags:
@@ -8697,6 +8557,299 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/TourManagerErrorResponse"
+  /project/{project}/webhook:
+    post:
+      tags:
+      - Webhook
+      summary: Add A Webhook
+      description: |2
+
+
+        Required Fields:
+        ```
+        project - the project that owns the webhook
+        name - the name of the webhook
+        user - string the webhook runs as this user
+        roles - string containing comma separated list of roles to use for the webhook
+        eventPlugin - string must be a valid plugin name
+        config - object containing config values for the specified plugin
+        enabled - boolean
+        ```
+        Optional:
+
+        `useAuth` - if true, use header authorization
+        `regenAuth` - if true, use generate header authorization
+
+        Do not specify an `authToken` or `creator` field. They will be ignored.
+
+        Since: v33
+      operationId: createWebhook_docs
+      parameters:
+      - name: project
+        in: path
+        description: Project Name
+        required: true
+        schema:
+          type: string
+      requestBody:
+        description: Webhook definition.
+        content:
+          application/json:
+            schema:
+              type: object
+            examples:
+              example:
+                value:
+                  id: 3
+                  name: Webhook Job Runner 1
+                  project: Webhook
+                  eventPlugin: plugin-provider-name
+                  config:
+                    argString: "-payload ${raw} -d ${data.one}"
+                    jobId: a54d07a1-033a-499f-9789-19bcacbd6e11
+                  user: username
+                  roles: "admin,user,webhook"
+                  enabled: true
+                  useAuth: true
+                  regenAuth: true
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                example:
+                  value:
+                    msg: Saved webhook
+                    generatedSecurityString: generated security string
+        "400":
+          description: Error response
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                example:
+                  value:
+                    err: error message
+  /project/{project}/webhook/{id}:
+    get:
+      tags:
+      - Webhook
+      summary: Get A Webhook
+      description: |-
+        Get the webhook definition.
+
+        Since: v33
+      operationId: get
+      parameters:
+      - name: project
+        in: path
+        description: Project Name
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        description: Webhook ID
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                example:
+                  value:
+                    authToken: Z1vnbhShhQF3B0dQq7UhJTZMnGS92TBl
+                    config:
+                      argString: "-payload ${raw}"
+                      jobId: a54d07a1-033a-499f-9789-19bcacbd6e11
+                    creator: admin
+                    enabled: true
+                    eventPlugin: webhook-run-job
+                    id: 3
+                    name: Webhook Job Runner
+                    project: Webhook
+                    roles: "admin,user"
+                    user: admin
+    post:
+      tags:
+      - Webhook
+      summary: Update A Webhook
+      description: |-
+        Updates the specified webhook.
+
+        Since: v33
+      operationId: save
+      parameters:
+      - name: project
+        in: path
+        description: Project Name
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        description: Webhook ID
+        required: true
+        schema:
+          type: string
+      requestBody:
+        description: |-
+          Updated webhook data.
+
+          Along with the required fields you may send only the fields you want to update.
+
+          When updating a webhook you may not change the user associated with a webhook,
+          so suppling the `user` field will have no effect. Also, specifying an `authToken` field has no effect.
+        content:
+          application/json:
+            schema:
+              type: object
+            examples:
+              example:
+                value:
+                  id: 3
+                  name: Webhook Job Runner 1
+                  project: Webhook
+                  eventPlugin: plugin-provider-name
+                  config:
+                    argString: "-payload ${raw} -d ${data.one}"
+                    jobId: a54d07a1-033a-499f-9789-19bcacbd6e11
+                  roles: "admin,user,webhook"
+                  enabled: true
+                  useAuth: true
+                  regenAuth: true
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                example:
+                  value:
+                    msg: Saved webhook
+                    generatedSecurityString: generated security string
+        "400":
+          description: Error response
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                example:
+                  value:
+                    err: error message
+    delete:
+      tags:
+      - Webhook
+      summary: Delete A Webhook
+      description: |-
+        Deletes the webhook.
+
+        Since: v33
+      operationId: remove
+      parameters:
+      - name: project
+        in: path
+        description: Project Name
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        description: Webhook ID
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                example:
+                  value:
+                    msg: deleted webhook
+        "400":
+          description: Error response
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                example:
+                  value:
+                    err: error message
+  /project/{project}/webhooks:
+    get:
+      tags:
+      - Webhook
+      summary: List Project Webhooks
+      description: |-
+        List the webhooks for the project.
+
+        Since: v33
+      operationId: list
+      parameters:
+      - name: project
+        in: path
+        description: Project Name
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: List of webhooks
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+              examples:
+                example:
+                  value: |-
+                    [
+                        {
+                            "authToken": "Z1vnbhShhQF3B0dQq7UhJTZMnGS92TBl",
+                            "config": {
+                                "argString": "-payload ${raw}",
+                                "jobId": "a54d07a1-033a-499f-9789-19bcacbd6e11"
+                            },
+                            "creator": "admin",
+                            "enabled": true,
+                            "eventPlugin": "webhook-run-job",
+                            "id": 3,
+                            "name": "Webhook Job Runner",
+                            "project": "Webhook",
+                            "roles": "admin,user",
+                            "user": "admin"
+                        },
+                        {
+                            "authToken": "p9ttreh05Zd222g5yBXocEMXmCJ1skOX",
+                            "config": {},
+                            "creator": "admin",
+                            "enabled": true,
+                            "eventPlugin": "log-webhook-event",
+                            "id": 4,
+                            "name": "Log it Hook",
+                            "project": "Webhook",
+                            "roles": "admin,user",
+                            "user": "admin"
+                        }
+                    ]
   /project/{project}/{filename}:
     get:
       tags:
@@ -11783,6 +11936,54 @@ paths:
       responses:
         "204":
           description: No content
+  /webhook/{authtoken}:
+    post:
+      tags:
+      - Webhook
+      summary: Send Webhook Event
+      description: "You may post whatever data you wish to the webhook endpoint, however\
+        \ the plugin you are \nusing must\nbe able to handle the data you post. If\
+        \ the webhook plugin associated with the webhook can't handle\nthe content\
+        \ type posted you will get an error response.\n\nThe webhook plugin will determine\
+        \ the response received.\nPlease see the documentation for the plugin that\
+        \ is configured for the webhook endpoint you are using.\n\nIf the webhook\
+        \ is defined to require the authorization secret, then the `Authorization`\
+        \ HTTP header must be included\nwith a value that matches the secret.\n\n\
+        Since: v33\n"
+      operationId: post
+      parameters:
+      - name: authtoken
+        in: path
+        description: Webhook auth token
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Default response
+          content:
+            '*/*':
+              examples:
+                example:
+                  value: ok
+        "400":
+          description: Error response
+          content:
+            application/json:
+              examples:
+                example:
+                  value:
+                    err: Error message
+        "404":
+          description: Webhook not enabled
+          content:
+            application/json:
+              examples:
+                example:
+                  value:
+                    err: Webhook not enabled
+      security:
+      - webhookTokenHeader: []
 components:
   schemas:
     ActionAuthorization:
@@ -12091,18 +12292,18 @@ components:
       - code
       type: object
       properties:
-        defaultMessage:
+        code:
           type: string
         codes:
           type: array
           items:
             type: string
+        defaultMessage:
+          type: string
         arguments:
           type: array
           items:
             type: object
-        code:
-          type: string
     DeleteBulkRequest:
       type: object
       properties:
@@ -12168,10 +12369,6 @@ components:
         errorCount:
           type: integer
           format: int32
-        allErrors:
-          type: array
-          items:
-            $ref: "#/components/schemas/ObjectError"
         fieldError:
           $ref: "#/components/schemas/FieldError"
         objectName:
@@ -12194,6 +12391,10 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/FieldError"
+        allErrors:
+          type: array
+          items:
+            $ref: "#/components/schemas/ObjectError"
     EventRoutingResult:
       type: object
       properties:
@@ -12880,6 +13081,8 @@ components:
       allOf:
       - $ref: "#/components/schemas/RdPageable"
       - properties:
+          errors:
+            $ref: "#/components/schemas/Errors"
           sortBy:
             type: string
           sortOrder:
@@ -12918,20 +13121,18 @@ components:
             type: boolean
           paginatedRequired:
             type: boolean
-          errors:
-            $ref: "#/components/schemas/Errors"
     RdPageable:
       type: object
       properties:
+        errors:
+          $ref: "#/components/schemas/Errors"
+        max:
+          type: integer
+          format: int32
         sortOrders:
           type: array
           items:
             $ref: "#/components/schemas/SortOrder"
-        max:
-          type: integer
-          format: int32
-        errors:
-          $ref: "#/components/schemas/Errors"
         offset:
           type: integer
           format: int32
@@ -13628,14 +13829,10 @@ components:
         resources:
           $ref: "#/components/schemas/Resources"
     StartUpResponse:
-      required:
-      - error
-      - replicaId
-      - replicaType
       type: object
       properties:
         error:
-          type: string
+          type: boolean
         replicaId:
           type: string
         replicaType:
@@ -14144,4 +14341,10 @@ components:
     rundeckApiToken:
       type: apiKey
       name: X-Rundeck-Auth-Token
+      in: header
+    webhookTokenHeader:
+      type: apiKey
+      description: Webhook Event Authorization Security header requires the `Authorization`
+        to match the secret value.
+      name: Authorization
       in: header
