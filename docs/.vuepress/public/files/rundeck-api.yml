@@ -1,12 +1,27 @@
 openapi: 3.0.1
 info:
   title: Rundeck / Runbook Automation API
-  description: "Rundeck / Runbook Automation REST API for job automation, execution\
-    \ management, and system administration"
+  description: |-
+    Rundeck / Runbook Automation REST API for job automation, execution management, and system administration.
+
+    The Rundeck API provides comprehensive access to:
+    - Job management (create, update, delete, execute jobs)
+    - Execution monitoring and control
+    - Project and resource management
+    - Node filtering and resource queries
+    - System configuration and administration
+    - SCM integration (Git and other version control)
+    - Authentication token management
+    - Metrics and health monitoring
+
+    All API endpoints require authentication via API token, password session, or JWT token (Enterprise).
+    API version must be specified in the URL path (e.g., /api/46/...).
+
+    For detailed documentation, see: [Rundeck API Docs](https://docs.rundeck.com/docs/api/)
   version: "56"
 externalDocs:
   description: Original Rundeck API Documentation
-  url: https://docs.rundeck.com/docs/api/rundeck-api.html
+  url: https://docs.rundeck.com/docs/api/
 servers:
 - url: "{protocol}://{host}:{port}/api/{version}"
   description: Rundeck / Runbook Automation Server
@@ -28,6 +43,8 @@ servers:
       default: "44"
 security:
 - rundeckApiToken: []
+- rundeckPassword: []
+- rundeckJWT: []
 tags:
 - name: ACL
   description: Access Control List operations
@@ -3964,7 +3981,7 @@ paths:
       - Project
       summary: Delete a project
       description: |-
-        Delete an existing projects on the server.
+        Delete an existing projects on the server.  The action cannot be undone.
 
         Authorization required: `delete` access for `project` resource type or `admin` or `app_admin` access for `user` resource type.
       operationId: apiProjectDelete
@@ -4528,30 +4545,38 @@ paths:
           type: string
       responses:
         "200":
-          description: Project details
+          description: Project configuration retrieved successfully
           content:
-            application/text:
-              schema:
-                type: string
-              examples:
-                example:
-                  value: |-
-                    key=value
-                    key2=value
             application/json:
               schema:
                 type: object
+                additionalProperties: true
               examples:
-                example:
+                projectConfig:
+                  summary: Example project configuration
                   value:
-                    key: value
-                    key2: value2...
+                    project.description: My Project Description
+                    project.label: My Project
+                    project.disable.executions: "false"
+                    project.disable.schedule: "false"
+                    project.execution.history.cleanup.enabled: "true"
+                    project.execution.history.cleanup.retention.days: "60"
+                    project.execution.history.cleanup.retention.minimum: "50"
+                    project.execution.history.cleanup.batch: "500"
+                    project.execution.history.cleanup.schedule: 0 0 0 1/1 * ? *
+                    project.jobs.gui.groupExpandLevel: "1"
+                    resources.source.1.type: file
+                    resources.source.1.config.file: /var/rundeck/projects/myproject/etc/resources.xml
+                    resources.source.1.config.generateFileAutomatically: "true"
+                    resources.source.1.config.includeServerNode: "true"
+                    service.NodeExecutor.default.provider: jsch-ssh
+                    service.FileCopier.default.provider: jsch-scp
     put:
       tags:
       - Project
       summary: Modify a project config
       description: |-
-        Replaces all configuration data with the submitted values.
+        Replaces all configuration data with the submitted values. Any existing configuration properties not included in the request will be removed.
         The response, based on `Accept` header, can be returned in the Text, XML or Json format.
 
         Authorization required: `configure` access for `project` resource type or `admin` or `app_admin` access for `user` resource type.
@@ -5298,20 +5323,28 @@ paths:
       tags:
       - Project
       summary: Export a zip archive of the project.
-      description: "Performs the export to a zip archive of the project synchronously.\
-        \ \nOptional parameters:\n\n* executionIds a list (comma-separated) of execution\
-        \ IDs. If this is specified then the archive will contain only executions\
-        \ that are specified, and will not contain Jobs, ACLs, or project configuration/readme\
-        \ files.\n* optionally use POST method with with application/x-www-form-urlencoded\
-        \ content for large lists of execution IDs\n* optionally, specify executionIds\
-        \ multiple times, with a single ID per entry.\n\nIn APIv19 or later:\n\nBy\
-        \ default, exportALL=true. So, in order to not export empty data, you need\
-        \ to include one of the parameter flags.\n\nIn APIv28 or later:\n\n* exportScm\
-        \ true/false, include project SCM configuration, if authorized\n\nIn APIv34\
-        \ or later:\n\n* exportWebhooks true/false, include project webhooks in the\
-        \ archive\n* whkIncludeAuthTokens true/false, include the auth token information\
-        \ when exporting webhooks, if not included the auth tokens will be regenerated\
-        \ upon import\n\nRequires `export` authorization for the project resource."
+      description: |-
+        Performs the export to a zip archive of the project synchronously.  _For large projects, consider using the async export endpoint instead._
+        Optional parameters:
+
+        * executionIds a list (comma-separated) of execution IDs. If this is specified then the archive will contain only executions that are specified, and will not contain Jobs, ACLs, or project configuration/readme files.
+        * optionally use POST method with with application/x-www-form-urlencoded content for large lists of execution IDs
+        * optionally, specify executionIds multiple times, with a single ID per entry.
+
+        In APIv19 or later:
+
+        By default, exportALL=true. So, in order to not export empty data, you need to include one of the parameter flags.
+
+        In APIv28 or later:
+
+        * exportScm true/false, include project SCM configuration, if authorized
+
+        In APIv34 or later:
+
+        * exportWebhooks true/false, include project webhooks in the archive
+        * whkIncludeAuthTokens true/false, include the auth token information when exporting webhooks, if not included the auth tokens will be regenerated upon import
+
+        Requires `export` authorization for the project resource.
       operationId: apiProjectExport
       parameters:
       - name: project
@@ -5986,21 +6019,21 @@ paths:
         required: false
         schema:
           type: boolean
-      - name: 'importConfig '
+      - name: importConfig
         in: query
         description: "If true, import the project configuration from the archive.\
           \ \nIf false, do not import the project configuration (default)."
         required: false
         schema:
           type: boolean
-      - name: 'importACL '
+      - name: importACL
         in: query
         description: "If true, import all of the ACL Policies from the archive. \n\
           If false, do not import the ACL Policies (default)."
         required: false
         schema:
           type: boolean
-      - name: 'importScm '
+      - name: importScm
         in: query
         description: "If true, import SCM configuration from the archive. \nIf false,\
           \ do not import the SCM configuration (default)."
@@ -9003,7 +9036,7 @@ paths:
       description: |
         List the existing projects on the server.
 
-        Authorization required: `read` for project resource
+        Authorization required: `read` for each project resource. Only authorized projects will be included in the response.
       operationId: apiProjectList_1
       parameters:
       - name: meta
@@ -12292,18 +12325,18 @@ components:
       - code
       type: object
       properties:
-        code:
+        arguments:
+          type: array
+          items:
+            type: object
+        defaultMessage:
           type: string
         codes:
           type: array
           items:
             type: string
-        defaultMessage:
+        code:
           type: string
-        arguments:
-          type: array
-          items:
-            type: object
     DeleteBulkRequest:
       type: object
       properties:
@@ -12349,13 +12382,13 @@ components:
     ErrorResponse:
       type: object
       properties:
+        errorMessage:
+          type: string
         errorCode:
           type: string
         apiVersion:
           type: integer
           format: int32
-        errorMessage:
-          type: string
         error:
           type: string
         apiversion:
@@ -12369,6 +12402,10 @@ components:
         errorCount:
           type: integer
           format: int32
+        allErrors:
+          type: array
+          items:
+            $ref: "#/components/schemas/ObjectError"
         fieldError:
           $ref: "#/components/schemas/FieldError"
         objectName:
@@ -12391,10 +12428,6 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/FieldError"
-        allErrors:
-          type: array
-          items:
-            $ref: "#/components/schemas/ObjectError"
     EventRoutingResult:
       type: object
       properties:
@@ -13129,13 +13162,13 @@ components:
         max:
           type: integer
           format: int32
+        offset:
+          type: integer
+          format: int32
         sortOrders:
           type: array
           items:
             $ref: "#/components/schemas/SortOrder"
-        offset:
-          type: integer
-          format: int32
     RegenRunnerCredResponse:
       type: object
       properties:
@@ -13831,12 +13864,12 @@ components:
     StartUpResponse:
       type: object
       properties:
-        error:
-          type: boolean
         replicaId:
           type: string
         replicaType:
           type: string
+        error:
+          type: boolean
     Step:
       type: object
       properties:
@@ -14340,8 +14373,23 @@ components:
   securitySchemes:
     rundeckApiToken:
       type: apiKey
+      description: API Token authentication. Include your API token in the X-Rundeck-Auth-Token
+        header or as an 'authtoken' query parameter. Tokens can be generated from
+        your User Profile page and must have appropriate authorization roles and expiration
+        settings.
       name: X-Rundeck-Auth-Token
       in: header
+    rundeckJWT:
+      type: http
+      description: JWT token authentication for OAuth/OIDC integration (Commercial/Enterprise
+        only). Include JWT token in Authorization header with Bearer schema.
+      scheme: bearer
+      bearerFormat: JWT
+    rundeckPassword:
+      type: http
+      description: Session-based authentication using username and password. Submit
+        credentials to /j_security_check and maintain JSESSIONID cookie.
+      scheme: basic
     webhookTokenHeader:
       type: apiKey
       description: Webhook Event Authorization Security header requires the `Authorization`

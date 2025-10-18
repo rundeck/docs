@@ -11,7 +11,7 @@ sidebar: false
     renderStyle="view"
     :showHeader="false"
     :hideConsole="false"
-    :hideAuthentication="true"
+    :hideAuthentication="false"
     :usePathInNavBar="false"
   />
 </ClientOnly>
