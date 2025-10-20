@@ -8456,6 +8456,30 @@ Content-Type: `application/json`:
 
 * `POST` [Update Runner Node Dispatch at project context](#update-runner-node-dispatch-at-project-context)
 
+[/api/V/runnerManagement/runner/\[RUNNERID\]/replicas](#create-manual-runner-replica)
+
+* `POST` [Create Manual Runner Replica](#create-manual-runner-replica)
+
+[/api/V/project/\[PROJECT\]/runnerManagement/runner/\[RUNNERID\]/replicas](#create-manual-runner-replica-at-project-level)
+
+* `POST` [Create Manual Runner Replica at Project Level](#create-manual-runner-replica-at-project-level)
+
+[/api/V/runnerManagement/runner/\[RUNNERID\]/replica/\[REPLICAID\]](#delete-manual-runner-replica)
+
+* `DELETE` [Delete Manual Runner Replica](#delete-manual-runner-replica)
+
+[/api/V/project/\[PROJECT\]/runnerManagement/runner/\[RUNNERID\]/replica/\[REPLICAID\]](#delete-manual-runner-replica-at-project-level)
+
+* `DELETE` [Delete Manual Runner Replica at Project Level](#delete-manual-runner-replica-at-project-level)
+
+[/api/V/runnerManagement/runner/\[RUNNERID\]/replicas](#list-runner-replicas)
+
+* `GET` [List Runner Replicas](#list-runner-replicas)
+
+[/api/V/project/\[PROJECT\]/runnerManagement/runner/\[RUNNERID\]/replicas](#list-runner-replicas-at-project-level)
+
+* `GET` [List Runner Replicas at Project Level](#list-runner-replicas-at-project-level)
+
 
 ### Incubating
 
