@@ -250,3 +250,10 @@
 [GET /api/V/runnerManagement/tags]:/api/index.md#list-all-known-tags
 [GET /api/V/runnerManagement/ui]:/api/index.md#get-ui-info-for-runner-management
 [GET /api/V/runnerTag/searchTags]:/api/index.md#list-tags-for-the-runner
+
+[POST /api/V/runnerManagement/runner/\[RUNNERID\]/replicas]:/api/index.md#create-manual-runner-replica-at-project-level
+[POST /api/V/project/\[PROJECT\]/runnerManagement/runner/\[RUNNERID\]/replicas]:/api/index.md#create-manual-runner-replica-at-project-level
+[GET /api/V/runnerManagement/runner/\[RUNNERID\]/replicas]:/api/index.md#list-runner-replicas
+[GET /api/V/project/\[PROJECT\]/runnerManagement/runner/\[RUNNERID\]/replicas]:/api/index.md#list-runner-replicas-at-project-level
+[DELETE /api/V/runnerManagement/runner/\[RUNNERID\]/replica/\[REPLICAID\]]:/api/index.md#delete-manual-runner-replica
+[DELETE /api/V/project/\[PROJECT\]/runnerManagement/runner/\[RUNNERID\]/replica/\[REPLICAID\]]:/api/index.md#delete-manual-runner-replica-at-project-level
