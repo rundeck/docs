@@ -7786,7 +7786,7 @@ Content-Type: `application/json`:
 
 **Request:**
 
-    POST /api/42/runnerManagement/runner/[RUNNERID]/replicas
+    POST /api/55/runnerManagement/runner/[RUNNERID]/replicas
 
 **Response:**
 
@@ -7806,7 +7806,7 @@ Content-Type: `application/json`:
 :::
 **Request:**
 
-    POST /api/42/project/[PROJECT]/runnerManagement/runner/[RUNNERID]/replicas
+    POST /api/55/project/[PROJECT]/runnerManagement/runner/[RUNNERID]/replicas
 
 **Response:**
 
@@ -7828,7 +7828,7 @@ Content-Type: `application/json`:
 
 **Request:**
 
-    DELETE /api/42/runnerManagement/runner/[RUNNERID]/replica/[REPLICAID]
+    DELETE /api/55/runnerManagement/runner/[RUNNERID]/replica/[REPLICAID]
 
 **Response:**
     204 No Content
@@ -7840,7 +7840,7 @@ Content-Type: `application/json`:
 
 **Request:**
 
-    DELETE /api/42/project/[PROJECT]/runnerManagement/runner/[RUNNERID]/replica/[REPLICAID]
+    DELETE /api/55/project/[PROJECT]/runnerManagement/runner/[RUNNERID]/replica/[REPLICAID]
 
 **Response:**
     204 No Content
@@ -7852,7 +7852,7 @@ Content-Type: `application/json`:
 
 **Request:**
 
-    GET /api/42/runnerManagement/runner/[RUNNERID]/replicas
+    GET /api/55/runnerManagement/runner/[RUNNERID]/replicas
 
 **Response:**
 
@@ -7888,7 +7888,7 @@ Content-Type: `application/json`:
 
 **Request:**
 
-    GET /api/42/project/[PROJECT]/runnerManagement/runner/[RUNNERID]/replicas
+    GET /api/55/project/[PROJECT]/runnerManagement/runner/[RUNNERID]/replicas
 
 **Response:**
 
