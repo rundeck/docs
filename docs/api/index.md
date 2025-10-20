@@ -7215,7 +7215,7 @@ Body
 * `description` Optional
 * `assignedProjects` Optional Map of project names to node filters
 * `tagNames` Optional Comma separated list of tags
-* `installationType` Optional Type of installation package, one of `linux`, `windows`, `docker`, `kubernetes`.
+* `installationType` Optional Type of installation package, one of `linux`, `windows`, `docker`, `kubernetes`. Default is `linux`
 * `replicaType` Optional Type of replica, one of `manual`, `ephemeral`. Default is `manual`
 
 ```json
