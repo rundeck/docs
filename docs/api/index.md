@@ -7766,6 +7766,161 @@ Content-Type: `application/json`:
   "runnerNodeFilter": ".*"
 }
 ```
+
+### Create Manual Runner Replica ###
+
+::: enterprise
+:::
+
+**Request:**
+
+    POST /api/42/runnerManagement/runner/[RUNNERID]/replicas
+
+**Response:**
+
+Content-Type: `application/json`:
+
+```json
+{
+  "token": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "runnerId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "replicaId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "downloadTk": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+}
+```
+### Create Manual Runner Replica at Project Level ###
+
+::: enterprise
+:::
+**Request:**
+
+    POST /api/42/project/[PROJECT]/runnerManagement/runner/[RUNNERID]/replicas
+
+**Response:**
+
+Content-Type: `application/json`:
+
+```json
+{
+  "token": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "runnerId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "replicaId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "downloadTk": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+}
+```
+
+### Delete Manual Runner Replica ###
+
+::: enterprise
+:::
+
+**Request:**
+
+    DELETE /api/42/runnerManagement/runner/[RUNNERID]/replica/[REPLICAID]
+
+**Response:**
+    204 No Content
+
+### Delete Manual Runner Replica at Project Level ###
+
+::: enterprise
+:::
+
+**Request:**
+
+    DELETE /api/42/project/[PROJECT]/runnerManagement/runner/[RUNNERID]/replica/[REPLICAID]
+
+**Response:**
+    204 No Content
+
+### List Runner Replicas ###
+
+::: enterprise
+:::
+
+**Request:**
+
+    GET /api/42/runnerManagement/runner/[RUNNERID]/replicas
+
+**Response:**
+
+Content-Type: `application/json`:
+
+```json
+{
+    "replicas": [
+      {
+        "replicaId": "replica-001",
+        "runnerId": "runner-123",
+        "sessionId": "session-abc",
+        "status": "active",
+        "version": "1.2.3",
+        "hostname": "host1.example.com",
+        "installationPath": "/opt/rundeck/runner",
+        "ipAddress": "192.168.1.10",
+        "createTime": "2024-06-10T12:34:56Z",
+        "lastCheckin": "2024-06-11T08:00:00Z",
+        "lastCheckinAlert": false,
+        "uptime": 86400,
+        "runningOperations": 5,
+        "versionWarning": false
+      }
+    ]
+}
+```
+
+### List Runner Replicas at Project Level ###
+
+::: enterprise
+:::
+
+**Request:**
+
+    GET /api/42/project/[PROJECT]/runnerManagement/runner/[RUNNERID]/replicas
+
+**Response:**
+
+Content-Type: `application/json`:
+
+```json
+{
+  "replicas": [
+    {
+      "replicaId": "replica-001",
+      "runnerId": "runner-123",
+      "sessionId": "session-abc",
+      "status": "active",
+      "version": "1.2.3",
+      "hostname": "host1.example.com",
+      "installationPath": "/opt/rundeck/runner",
+      "ipAddress": "192.168.1.10",
+      "createTime": "2024-06-10T12:34:56Z",
+      "lastCheckin": "2024-06-11T08:00:00Z",
+      "lastCheckinAlert": false,
+      "uptime": 86400,
+      "runningOperations": 5,
+      "versionWarning": false
+    },
+    {
+      "replicaId": "replica-002",
+      "runnerId": "runner-456",
+      "sessionId": "session-def",
+      "status": "inactive",
+      "version": "1.2.2",
+      "hostname": "host2.example.com",
+      "installationPath": "/opt/rundeck/runner",
+      "ipAddress": "192.168.1.11",
+      "createTime": "2024-06-09T09:20:00Z",
+      "lastCheckin": "2024-06-10T18:30:00Z",
+      "lastCheckinAlert": true,
+      "uptime": 43200,
+      "runningOperations": 0,
+      "versionWarning": true
+    }
+  ]
+}
+```
+
 ## Index
 
 [/api/V/config/refresh][]
