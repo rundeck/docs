@@ -38,15 +38,15 @@ API versions below `{{$apiDepVersion}}` are *deprecated*.  Clients using earlier
 ### Version 55
 
 * New Endpoints:
-  * [`POST /api/55/runnerManagement/runner/[RUNNERID]/replicas`][POST /api/55/runnerManagement/runner/\[RUNNERID\]/replicas] - Create a new Runner Replica
-  * [`POST /api/55/project/[PROJECT]/runnerManagement/runner/[RUNNERID]/replicas`][POST /api/55/project/\[PROJECT\]/runnerManagement/runner/\[RUNNERID\]/replicas] - Create a new Runner Replica at Project Level
-  * [`GET /api/55/runnerManagement/runner/[RUNNERID]/replicas`][GET /api/55/runnerManagement/runner/\[RUNNERID\]/replicas] - List Runner Replicas
-  * [`GET /api/55/project/[PROJECT]/runnerManagement/runner/[RUNNERID]/replicas`][GET /api/55/project/\[PROJECT\]/runnerManagement/runner/\[RUNNERID\]/replicas] - List Runner Replicas at Project Level
-  * [`DELETE /api/55/runnerManagement/runner/[RUNNERID]/replica/[REPLICAID]`][DELETE /api/55/runnerManagement/runner/\[RUNNERID\]/replica/\[REPLICAID\]] - Delete a Runner Replica
-  * [`DELETE /api/55/project/[PROJECT]/runnerManagement/runner/[RUNNERID]/replica/[REPLICAID]`][DELETE /api/55/project/\[PROJECT\]/runnerManagement/runner/\[RUNNERID\]/replica/\[REPLICAID\]] - Delete a Runner Replica at Project Level
+  * [`POST /api/V/runnerManagement/runner/[RUNNERID]/replicas`][POST /api/V/runnerManagement/runner/\[RUNNERID\]/replicas] - Create a new Runner Replica
+  * [`POST /api/V/project/[PROJECT]/runnerManagement/runner/[RUNNERID]/replicas`][POST /api/V/project/\[PROJECT\]/runnerManagement/runner/\[RUNNERID\]/replicas] - Create a new Runner Replica at Project Level
+  * [`GET /api/V/runnerManagement/runner/[RUNNERID]/replicas`][GET /api/V/runnerManagement/runner/\[RUNNERID\]/replicas] - List Runner Replicas
+  * [`GET /api/V/project/[PROJECT]/runnerManagement/runner/[RUNNERID]/replicas`][GET /api/V/project/\[PROJECT\]/runnerManagement/runner/\[RUNNERID\]/replicas] - List Runner Replicas at Project Level
+  * [`DELETE /api/V/runnerManagement/runner/[RUNNERID]/replica/[REPLICAID]`][DELETE /api/V/runnerManagement/runner/\[RUNNERID\]/replica/\[REPLICAID\]] - Delete a Runner Replica
+  * [`DELETE /api/V/project/[PROJECT]/runnerManagement/runner/[RUNNERID]/replica/[REPLICAID]`][DELETE /api/V/project/\[PROJECT\]/runnerManagement/runner/\[RUNNERID\]/replica/\[REPLICAID\]] - Delete a Runner Replica at Project Level
 
 * Updated Endpoints:
-  * [`POST /api/55/runnerManagement/runner`][POST /api/55/runnerManagement/runner] - Update the endpoint to create a new runner to include the optionals fields:  `installationType` and `replicaType`. `InstallantionType` should have values of `linux`, `windows`, `docker` or `kubernetes` and `replicaType` should have values of `manual` or `ephemeral`.
+  * [`POST /api/V/runnerManagement/runners`][POST /api/V/runnerManagement/runners] - Update the endpoint to create a new runner to include the optionals fields:  `installationType` and `replicaType`. `InstallantionType` should have values of `linux`, `windows`, `docker` or `kubernetes` and `replicaType` should have values of `manual` or `ephemeral`.
   * . If not provided, they will default to `linux` and `manual` respectively.
 
 ### Version 52
