@@ -7216,7 +7216,9 @@ Content-Type: `application/json`:
     "project1": ".*",
     "project2": ".*"
   },
-  "tagNames": "runner, pipeline, automation"
+  "tagNames": "runner, pipeline, automation",
+  "installationType": "linux",
+  "replicaType": "manual"
 }
 ```
 
