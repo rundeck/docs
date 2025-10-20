@@ -7208,6 +7208,16 @@ Schema: RunnerList
     POST /api/42/runnerManagement/runners
 
 Content-Type: `application/json`:
+
+Body
+
+* `name` Required
+* `description` Optional
+* `assignedProjects` Optional Map of project names to node filters
+* `tagNames` Optional Comma separated list of tags
+* `installationType` Optional Type of installation package, one of `linux`, `windows`, `docker`, `kubernetes`.
+* `replicaType` Optional Type of replica, one of `manual`, `ephemeral`. Default is `manual`
+
 ```json
 {
   "name": "My Runner",
