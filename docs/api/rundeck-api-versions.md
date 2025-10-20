@@ -46,8 +46,7 @@ API versions below `{{$apiDepVersion}}` are *deprecated*.  Clients using earlier
   * [`DELETE /api/V/project/[PROJECT]/runnerManagement/runner/[RUNNERID]/replica/[REPLICAID]`][DELETE /api/V/project/\[PROJECT\]/runnerManagement/runner/\[RUNNERID\]/replica/\[REPLICAID\]] - Delete a Runner Replica at Project Level
 
 * Updated Endpoints:
-  * [`POST /api/V/runnerManagement/runners`][POST /api/V/runnerManagement/runners] - Update the endpoint to create a new runner to include the optionals fields:  `installationType` and `replicaType`. `InstallantionType` should have values of `linux`, `windows`, `docker` or `kubernetes` and `replicaType` should have values of `manual` or `ephemeral`.
-  * . If not provided, they will default to `linux` and `manual` respectively.
+  * [`POST /api/V/runnerManagement/runners`][POST /api/V/runnerManagement/runners] - Update the endpoint to create a new runner to include the optionals fields:  `installationType` and `replicaType`. `InstallantionType` should have values of `linux`, `windows`, `docker` or `kubernetes` and `replicaType` should have values of `manual` or `ephemeral`. If not provided, they will default to `linux` and `manual` respectively.
 
 ### Version 52
 
