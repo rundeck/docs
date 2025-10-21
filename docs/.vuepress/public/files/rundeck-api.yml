@@ -9448,10 +9448,7 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                newRunnerRequest:
-                  $ref: "#/components/schemas/CreateRunnerRequest"
+              $ref: "#/components/schemas/CreateRunnerRequest"
         required: true
       responses:
         "200":
@@ -12254,6 +12251,7 @@ components:
       - description
       - name
       - installationType
+      - replicaType
       type: object
       properties:
         name:
