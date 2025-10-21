@@ -12253,6 +12253,7 @@ components:
       required:
       - description
       - name
+      - installationType
       type: object
       properties:
         name:
