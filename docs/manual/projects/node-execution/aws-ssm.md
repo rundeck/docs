@@ -194,7 +194,7 @@ The SSM File Copier can alternatively be configured on a per **Node Source** or 
 
 ## Using SSM for Commands and Scripts
 Once the setup is complete, commands that are executed on the specified EC2s - either through the [**Commands**](/manual/06-commands.md#commands-tab-overview) tab or through the **Remote Command** step - will automatically execute through SSM.
-Similarly, scripts that are executed using the **Incline Script** Job step will take place using SSM with S3 as the pass-through mechanism.
+Similarly, scripts that are executed using the **Inline Script** Job step will take place using SSM with S3 as the pass-through mechanism.
 
 ### Execution Timeout Configuration
 AWS SSM has a default execution timeout of 1 hour (3600 seconds). You can configure a custom timeout value using the **`ssm-execution-timeout`** property to allow longer-running commands and scripts.
