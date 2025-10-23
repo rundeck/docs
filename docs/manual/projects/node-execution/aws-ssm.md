@@ -203,6 +203,12 @@ To set the execution timeout for all SSM executions in a project:
 1. Navigate to **Project Settings** -> **Edit Configuration** -> **Default Node Executor**.
 2. In the **AWS / SSM / Node Executor** configuration, add the **Execution Timeout** value in seconds.
 
+To set the execution timeout on project config file:
+**`project.ssm-execution-timeout=3600`**
+
+To set the execution timeout at node level, add the following node-attribute to the nodes by using the [Attribute Match](/manual/node-enhancers.md#attribute-match)
+**`ssm-execution-timeout=3600`**
+
 **Default Value**: If not specified, the execution timeout defaults to **3600 seconds (1 hour)**.
 
 ## Using CloudWatch Logs (Optional)
