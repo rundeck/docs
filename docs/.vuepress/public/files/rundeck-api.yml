@@ -13448,8 +13448,8 @@ components:
     RunnerReplicaType:
       type: string
       enum:
-      - EPHEMERAL
-      - MANUAL
+      - ephemeral
+      - manual
     RunnerSummary:
       type: object
       properties:
