@@ -9,6 +9,7 @@ Upgrade instructions [can be found here](/upgrading/index.md).
 
 | Release Version                          | Release Date         | Enterprise Support Status |
 |------------------------------------------|----------------------|---------------------------|
+| [5.17.0](/history/5_x/version-5.17.0.md)   | TBD   | Supported |
 | [5.16.0](/history/5_x/version-5.16.0.md)   | October 6th, 2025   | Supported |
 | [5.15.0](/history/5_x/version-5.15.0.md)   | September 2nd, 2025   | Supported |
 | [5.14.1](/history/5_x/version-5.14.1.md)   | August 18th, 2025   | Supported |

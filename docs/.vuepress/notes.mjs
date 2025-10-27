@@ -1,5 +1,6 @@
 import fs from 'fs';
 import * as path from 'path';
+import { fileURLToPath } from 'url';
 import { Buffer } from 'buffer';
 import nunjucks from 'nunjucks';
 import { Octokit } from '@octokit/rest';
@@ -7,6 +8,8 @@ import dotenv from 'dotenv';
 import _yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
 import RundeckVersion from './version.mjs';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const argv = _yargs(hideBin(process.argv)).argv;
 
@@ -53,9 +56,7 @@ async function main() {
 
   const pathBase = `./docs/history/${argv.milestone.split('.').slice(0, 1).concat(['x']).join('_')}/`;
 
-  //let path;
   let outPath = "";
-
   if (argv.draft) {
     outPath = path.join(pathBase, 'draft.md');
   } else {
@@ -63,6 +64,29 @@ async function main() {
   }
   console.log(notes);
   fs.writeFileSync(outPath, notes);
+
+    // Only run update functions if not a draft
+    if (!argv.draft) {
+      updateDocsearchVersion(argv.milestone);
+      addReleaseRow(argv.milestone);
+      updateSetupJs(argv.milestone);
+      addSidebarVersion(argv.milestone);
+    }
+function addSidebarVersion(version) {
+  const sidebarPath = path.resolve(__dirname, 'sidebar-menus/history.ts');
+  let content = fs.readFileSync(sidebarPath, 'utf-8');
+  const versionEntry = `              {\n                text: "${version}",\n                link: "https://docs.rundeck.com/${version}/"\n              },\n`;
+  const version5xSection = /text: 'Version 5\.x',[\s\S]*?children: \[/m;
+  const match = content.match(version5xSection);
+  if (match) {
+    const insertIndex = match.index + match[0].indexOf('children: [') + 'children: ['.length;
+    content = content.slice(0, insertIndex) + '\n' + versionEntry + content.slice(insertIndex);
+    fs.writeFileSync(sidebarPath, content);
+    console.log(`Added sidebar version entry for ${version} to history.ts`);
+  } else {
+    console.warn('Could not find Version 5.x section in sidebar-menus/history.ts');
+  }
+}
 }
 
 async function getRepoData(repo, includeLabels) {
@@ -117,4 +141,52 @@ async function getRepoData(repo, includeLabels) {
   }
 }
 
-main();
+
+(async () => {
+  await main();
+})();
+
+function addReleaseRow(version) {
+  const releaseCalendarPath = path.resolve(__dirname, '../history/release-calendar.md');
+  let content = fs.readFileSync(releaseCalendarPath, 'utf-8');
+  const row = `| [${version}](/history/5_x/version-${version}.md)   | TBD   | Supported |\n`;
+  const tableHeader = '| Release Version';
+  const tableDivider = '|------------------------------------------|----------------------|---------------------------|';
+  const headerIndex = content.indexOf(tableHeader);
+  const dividerIndex = content.indexOf(tableDivider, headerIndex);
+  if (dividerIndex !== -1) {
+    const insertIndex = content.indexOf('\n', dividerIndex) + 1;
+    content = content.slice(0, insertIndex) + row + content.slice(insertIndex);
+    fs.writeFileSync(releaseCalendarPath, content);
+    console.log(`Added release row for ${version} to release-calendar.md`);
+  } else {
+    console.warn('Could not find release table in release-calendar.md');
+  }
+}
+
+function updateDocsearchVersion(version) {
+  const docsearchConfigPath = path.resolve(__dirname, '../../.docsearch/config.json');
+  const docsearchConfig = JSON.parse(fs.readFileSync(docsearchConfigPath, 'utf-8'));
+  if (
+    docsearchConfig.start_urls &&
+    docsearchConfig.start_urls[0] &&
+    docsearchConfig.start_urls[0].variables &&
+    Array.isArray(docsearchConfig.start_urls[0].variables.version)
+  ) {
+    docsearchConfig.start_urls[0].variables.version[2] = version;
+    fs.writeFileSync(docsearchConfigPath, JSON.stringify(docsearchConfig, null, 2));
+    console.log(`Updated .docsearch/config.json version to ${version}`);
+  } else {
+    console.warn('Could not update .docsearch/config.json: version array not found.');
+  }
+}
+
+function updateSetupJs(version) {
+  const setupJsPath = path.resolve(__dirname, 'setup.js');
+  let setupJs = fs.readFileSync(setupJsPath, 'utf-8');
+  setupJs = setupJs
+    .replace(/const RUNDECK_VERSION='[^']*'/, `const RUNDECK_VERSION='${version}'`)
+    .replace(/const RUNDECK_VERSION_FULL='[^']*'/, `const RUNDECK_VERSION_FULL='${version}-SNAPSHOT'`);
+  fs.writeFileSync(setupJsPath, setupJs);
+  console.log(`Updated setup.js RUNDECK_VERSION to ${version} and RUNDECK_VERSION_FULL to ${version}-SNAPSHOT`);
+}
