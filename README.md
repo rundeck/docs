@@ -95,11 +95,22 @@ replacing `[TOKEN]` with your GitHub API token. This token needs `repo` scope.
 
 ## Release Notes
 
-Run the following with the milestone for the release.  This will create/overwrite an existing entry for the release.  Use wisely:
+Run the following with the milestone for the release. This will create/overwrite an existing entry for the release and automatically update related documentation and configuration files:
 
 ```bash
 npm run notes -- --milestone=${1?milestone name}
 ```
+
+When run, the script will:
+- Generate release notes for the specified milestone.
+    - This will require edits for proper dates, the Overview, etc.
+- Add a new row for the release in `docs/history/release-calendar.md`.
+    - This file will require an update to the release date.
+- Update `.docsearch/config.json` to set the correct version for search indexing.
+- Update `docs/.vuepress/setup.js` with the new version information.
+- Add the new version link to the sidebar in `docs/.vuepress/sidebar-menus/history.ts`.
+
+> Use wisely: running this command will overwrite existing release notes for the specified release and possibly duplicate config file updates.
 
 ## Draft Release Notes
 
