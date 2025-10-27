@@ -65,17 +65,46 @@ async function main() {
   console.log(notes);
   fs.writeFileSync(outPath, notes);
 
-    // Only run update functions if not a draft
-    if (!argv.draft) {
-      updateDocsearchVersion(argv.milestone);
-      addReleaseRow(argv.milestone);
-      updateSetupJs(argv.milestone);
-      addSidebarVersion(argv.milestone);
-    }
+  // Only run update functions if not a draft
+  if (!argv.draft) {
+    updateDocsearchVersion(argv.milestone);
+    addReleaseRow(argv.milestone);
+    updateSetupJs(argv.milestone);
+    addSidebarVersion(argv.milestone);
+  }
+
+// Helper: Add release row to release-calendar.md if not present
+function addReleaseRow(version) {
+  const releaseCalendarPath = path.resolve(__dirname, '../history/release-calendar.md');
+  let content = fs.readFileSync(releaseCalendarPath, 'utf-8');
+  const row = `| [${version}](/history/5_x/version-${version}.md)   | TBD   | Supported |\n`;
+  if (content.includes(`[${version}](/history/5_x/version-${version}.md)`)) {
+    console.log(`Release row for ${version} already exists in release-calendar.md, skipping.`);
+    return;
+  }
+  const tableHeader = '| Release Version';
+  const tableDivider = '|------------------------------------------|----------------------|---------------------------|';
+  const headerIndex = content.indexOf(tableHeader);
+  const dividerIndex = content.indexOf(tableDivider, headerIndex);
+  if (dividerIndex !== -1) {
+    const insertIndex = content.indexOf('\n', dividerIndex) + 1;
+    content = content.slice(0, insertIndex) + row + content.slice(insertIndex);
+    fs.writeFileSync(releaseCalendarPath, content);
+    console.log(`Added release row for ${version} to release-calendar.md`);
+  } else {
+    console.warn('Could not find release table in release-calendar.md');
+  }
+}
+
+// Helper: Add sidebar version entry if not present
 function addSidebarVersion(version) {
   const sidebarPath = path.resolve(__dirname, 'sidebar-menus/history.ts');
   let content = fs.readFileSync(sidebarPath, 'utf-8');
   const versionEntry = `              {\n                text: "${version}",\n                link: "https://docs.rundeck.com/${version}/"\n              },\n`;
+  if (content.includes(`text: "${version}"`)) {
+    console.log(`Sidebar version entry for ${version} already exists in history.ts, skipping.`);
+    return;
+  }
   const version5xSection = /text: 'Version 5\.x',[\s\S]*?children: \[/m;
   const match = content.match(version5xSection);
   if (match) {

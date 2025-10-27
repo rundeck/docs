@@ -23,11 +23,15 @@ feed:
 ### Additional Updates
 
 
+* Improvement in the create runner endpoint to validate assignedProjects prop format
+* Set default runner replica type to manual if not provided in API request
+* Improve the nodehealth check cache refresh
+* Runner Wizard error creating runner linux+ephemeral
+* Allow Script Arguements on GitHub Run Script plugin
 
 
 ## Rundeck Open Source Product Updates
 
-* [Fix T Packaging CircleCI Errors](https://github.com/rundeck/rundeck/pull/9855)
 * [OpenAPI doc improvements](https://github.com/rundeck/rundeck/pull/9852)
 * [Fix example value in set-project-config documentation](https://github.com/rundeck/rundeck/pull/9851)
 * [Clean up println statements from JobAuditApiSpec](https://github.com/rundeck/rundeck/pull/9850)
@@ -42,10 +46,7 @@ feed:
 * [Update log4j2.properties.template to add Pre authentication logs](https://github.com/rundeck/rundeck/pull/9820)
 * [Fix error on project export using the UI](https://github.com/rundeck/rundeck/pull/9818)
 * [Fix button to select deselect all on project export ](https://github.com/rundeck/rundeck/pull/9817)
-* [improve refexecs](https://github.com/rundeck/rundeck/pull/9812)
 * [force to load the orchestrator values in the execution object in Job Notification](https://github.com/rundeck/rundeck/pull/9811)
-* [Add job creation date and last modified user tracking to job metadata](https://github.com/rundeck/rundeck/pull/9810)
-* [improve performance for referenced executions query](https://github.com/rundeck/rundeck/pull/9802)
 * [Error Saving config: Undefined immediately after adding Node Source](https://github.com/rundeck/rundeck/pull/9797)
 * [Convert Job File Upload form to Vue](https://github.com/rundeck/rundeck/pull/9791)
 * [Job Import: skip duplicate option causes 500 error](https://github.com/rundeck/rundeck/pull/9790)
