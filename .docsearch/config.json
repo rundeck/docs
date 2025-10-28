@@ -26,19 +26,7 @@
       "lvl1": "#markdown-content h1",
       "lvl2": "#markdown-content h2",
       "lvl3": "#markdown-content h3",
-      "text": [
-        "#markdown-content p",
-        "#markdown-content li",
-        "#markdown-content td",
-        "#markdown-content th",
-        "#markdown-content code",
-        "#markdown-content pre",
-        "#markdown-content blockquote",
-        "#markdown-content dt",
-        "#markdown-content dd",
-        "#markdown-content figcaption",
-        "#markdown-content .hint-container"
-      ],
+      "text": "#markdown-content p, #markdown-content li, #markdown-content td, #markdown-content th, #markdown-content code, #markdown-content pre, #markdown-content blockquote, #markdown-content dt, #markdown-content dd, #markdown-content figcaption, #markdown-content .hint-container",
       "lang": {
         "selector": "/html/@lang",
         "type": "xpath",
