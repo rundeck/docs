@@ -68,7 +68,7 @@ async function main() {
   // Only run update functions if not a draft
   if (!argv.draft) {
     updateDocsearchVersion(argv.milestone);
-    addReleaseRow(argv.milestone);
+    // addReleaseRow(argv.milestone); // Removed: function not defined
     updateSetupJs(argv.milestone);
     addSidebarVersion(argv.milestone);
   }
