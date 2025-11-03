@@ -83,7 +83,7 @@ Release Date: November 3rd, 2025
 
 Submit your own Pull Requests to get recognition here!
 
-*  ([jayas006](https://github.com/jayas006))
+* ([jayas006](https://github.com/jayas006))
 * Eduardo Baltra ([edbaltra](https://github.com/edbaltra))
 * J. Casalino ([thedoc31](https://github.com/thedoc31))
 * Takafumi Noguchi ([tknog-pd](https://github.com/tknog-pd))
