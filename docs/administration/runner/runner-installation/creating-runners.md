@@ -15,6 +15,14 @@ Before creating a Runner, ensure that you have read the [prerequisites](/adminis
 * The Runner binary size is 164MB.
 * The Runner requires a network path to reach the Runbook Automation cluster or SaaS instance over port 443.  This is an outbound connection.
 
+:::note On-Premise Configuration
+Runner Replicas is available in Runbook Automation Self Hosted version 5.16.0 and later, but feature is **disabled by default**. To enable this feature, add the following property to your System Configuration:
+
+```properties
+rundeck.feature.runnerReplicas.enabled=true
+```
+:::
+
 ### Resource Allocation
 
 If setting up Enterprise Runners on virtualized environments, here are baseline recommendations.  These are _**general**_ guidelines and the actual resource requirements may vary based on the workload and the number of concurrent executions.  It is recommended to monitor the Runner's performance - such as CPU, Memory, and Network Latency - and adjust the resources accordingly.
