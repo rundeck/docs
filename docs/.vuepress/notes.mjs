@@ -155,23 +155,6 @@ async function getRepoData(repo, includeLabels) {
   await main();
 })();
 
-function addReleaseRow(version) {
-  const releaseCalendarPath = path.resolve(__dirname, '../history/release-calendar.md');
-  let content = fs.readFileSync(releaseCalendarPath, 'utf-8');
-  const row = `| [${version}](/history/5_x/version-${version}.md)   | TBD   | Supported |\n`;
-  const tableHeader = '| Release Version';
-  const tableDivider = '|------------------------------------------|----------------------|---------------------------|';
-  const headerIndex = content.indexOf(tableHeader);
-  const dividerIndex = content.indexOf(tableDivider, headerIndex);
-  if (dividerIndex !== -1) {
-    const insertIndex = content.indexOf('\n', dividerIndex) + 1;
-    content = content.slice(0, insertIndex) + row + content.slice(insertIndex);
-    fs.writeFileSync(releaseCalendarPath, content);
-    console.log(`Added release row for ${version} to release-calendar.md`);
-  } else {
-    console.warn('Could not find release table in release-calendar.md');
-  }
-}
 
 function updateDocsearchVersion(version) {
   const docsearchConfigPath = path.resolve(__dirname, '../../.docsearch/config.json');
