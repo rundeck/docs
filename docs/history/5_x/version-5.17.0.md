@@ -18,7 +18,7 @@ feed:
 
 This release introduces several key enhancements to Rundeck’s automation and runner management capabilities. The create runner endpoint now validates the assignedProjects property format, ensuring more reliable runner assignments. Default runner replica types are set to manual when not specified, simplifying API requests. Node health check cache refreshes have been improved for better system monitoring, and errors related to runner creation in the wizard (especially for Linux ephemeral runners) have been addressed. Additionally, the GitHub Run Script plugin now supports script arguments, expanding its flexibility for automation workflows.
 
-We have recently introduced a new, [beta method for viewing our API](/api/api-basics.md#openapi-views): the OpenAPI specification file is now automatically generated from our code base, helping ensure documentation remains current. As this feature is still in beta, we are continuing to refine the official spec file over the next few releases. We welcome your feedback and encourage you to report any issues you encounter.
+We have recently introduced a new, [beta method for viewing our API](/api/api_basics.md#openapi-views): the OpenAPI specification file is now automatically generated from our code base, helping ensure documentation remains current. As this feature is still in beta, we are continuing to refine the official spec file over the next few releases. We welcome your feedback and encourage you to report any issues you encounter.
 
 ## Runbook Automation Updates
 
