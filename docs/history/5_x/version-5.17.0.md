@@ -1,7 +1,7 @@
 ---
 
 title: "5.17.0 Release Notes"
-date: 2025-01-01
+date: 2025-11-03
 image: /images/chevron-logo-red-on-white.png
 description: "Rundeck | Runbook Automation Releases <VERSION> <DESCRIPTION>"
 feed:
@@ -76,7 +76,7 @@ We have recently introduced a new, [beta method for viewing our API](/api/api-ba
 
 Name: <span style="color: sandybrown"><span class="glyphicon glyphicon-flag"></span> "Mont Blanc sandybrown flag"</span>
 
-Release Date: PUTADATEHERE
+Release Date: November 3rd, 2025
 
 
 ## Community Contributors
