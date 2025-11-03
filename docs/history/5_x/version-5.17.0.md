@@ -3,7 +3,7 @@
 title: "5.17.0 Release Notes"
 date: 2025-11-03
 image: /images/chevron-logo-red-on-white.png
-description: "Rundeck | Runbook Automation Releases <VERSION> <DESCRIPTION>"
+description: "Rundeck | Runbook Automation Releases 5.17.0 - Runner management enhancements, improved node health checks, API updates, and expanded plugin flexibility."
 feed:
  enable: true
  description: ""
