@@ -74,27 +74,7 @@ async function main() {
   }
 
 // Helper: Add release row to release-calendar.md if not present
-function addReleaseRow(version) {
-  const releaseCalendarPath = path.resolve(__dirname, '../history/release-calendar.md');
-  let content = fs.readFileSync(releaseCalendarPath, 'utf-8');
-  const row = `| [${version}](/history/5_x/version-${version}.md)   | TBD   | Supported |\n`;
-  if (content.includes(`[${version}](/history/5_x/version-${version}.md)`)) {
-    console.log(`Release row for ${version} already exists in release-calendar.md, skipping.`);
-    return;
-  }
-  const tableHeader = '| Release Version';
-  const tableDivider = '|------------------------------------------|----------------------|---------------------------|';
-  const headerIndex = content.indexOf(tableHeader);
-  const dividerIndex = content.indexOf(tableDivider, headerIndex);
-  if (dividerIndex !== -1) {
-    const insertIndex = content.indexOf('\n', dividerIndex) + 1;
-    content = content.slice(0, insertIndex) + row + content.slice(insertIndex);
-    fs.writeFileSync(releaseCalendarPath, content);
-    console.log(`Added release row for ${version} to release-calendar.md`);
-  } else {
-    console.warn('Could not find release table in release-calendar.md');
-  }
-}
+// (Removed duplicate definition of addReleaseRow)
 
 // Helper: Add sidebar version entry if not present
 function addSidebarVersion(version) {
