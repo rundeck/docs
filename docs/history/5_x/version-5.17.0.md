@@ -28,7 +28,7 @@ We have recently introduced a new, [beta method for viewing our API](/api/api-ba
 * Set default runner replica type to manual if not provided in API request
 * Improve the nodehealth check cache refresh
 * Runner Wizard error creating runner linux+ephemeral
-* Allow Script Arguements on GitHub Run Script plugin
+* Allow Script Arguments on GitHub Run Script plugin
 
 
 ## Rundeck Open Source Product Updates
