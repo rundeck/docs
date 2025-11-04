@@ -74,7 +74,6 @@ export default [
                 text: "5.18.0",
                 link: "https://docs.rundeck.com/5.18.0/"
               },
-
               {
                 text: "5.17.0",
                 link: "https://docs.rundeck.com/5.17.0/"

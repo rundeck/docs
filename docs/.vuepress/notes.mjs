@@ -80,7 +80,7 @@ async function main() {
 function addSidebarVersion(version) {
   const sidebarPath = path.resolve(__dirname, 'sidebar-menus/history.ts');
   let content = fs.readFileSync(sidebarPath, 'utf-8');
-  const versionEntry = `              {\n                text: "${version}",\n                link: "https://docs.rundeck.com/${version}/"\n              },\n`;
+  const versionEntry = `              {\n                text: "${version}",\n                link: "https://docs.rundeck.com/${version}/"\n              },`;
   if (content.includes(`text: "${version}"`)) {
     console.log(`Sidebar version entry for ${version} already exists in history.ts, skipping.`);
     return;
