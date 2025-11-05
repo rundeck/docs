@@ -10,6 +10,11 @@ export default [
     children: [
       ...getHistory('docs/history/'),
       {
+        text: 'Recent Changes',
+        collapsible: true,
+        link: '/history/updates/'
+      },
+      {
         text: '5.x',
         collapsible: true,
         link: '/history/',

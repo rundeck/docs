@@ -8,6 +8,7 @@
     "docs:no-cache": "vuepress dev docs --no-cache",
     "deploy:github": "npm run docs:build; push-dir --dir=docs/.vuepress/dist --branch=gh-pages --cleanup",
     "notes": "node ./docs/.vuepress/notes.mjs",
+    "pr-feed": "node ./docs/.vuepress/generate-pr-feed.mjs --include-section=\"Release Notes\"",
     "docs:clean-dev": "vuepress dev docs --clean-cache",
     "docs:update-package": "npx vp-update"
   },

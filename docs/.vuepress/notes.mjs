@@ -71,6 +71,7 @@ async function main() {
     // addReleaseRow(argv.milestone); // Removed: function not defined
     updateSetupJs(argv.milestone);
     addSidebarVersion(argv.milestone);
+    updatePRFeedConfig(argv.milestone);
   }
 
 // Helper: Add release row to release-calendar.md if not present
@@ -181,4 +182,20 @@ function updateSetupJs(version) {
     .replace(/const RUNDECK_VERSION_FULL='[^']*'/, `const RUNDECK_VERSION_FULL='${version}-SNAPSHOT'`);
   fs.writeFileSync(setupJsPath, setupJs);
   console.log(`Updated setup.js RUNDECK_VERSION to ${version} and RUNDECK_VERSION_FULL to ${version}-SNAPSHOT`);
+}
+
+function updatePRFeedConfig(version) {
+  const configPath = path.resolve(__dirname, 'pr-feed-config.json');
+  const today = new Date().toISOString().split('T')[0];
+  
+  const config = {
+    lastSelfHostedRelease: {
+      version: version,
+      date: today,
+      description: "Last self-hosted release version and date"
+    }
+  };
+  
+  fs.writeFileSync(configPath, JSON.stringify(config, null, 2) + '\n');
+  console.log(`Updated pr-feed-config.json with version ${version} and date ${today}`);
 }

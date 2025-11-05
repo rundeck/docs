@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Rundeck Development Updates</title>
+    <link>https://docs.rundeck.com/docs</link>
+    <description>Recent merged pull requests and development updates from Rundeck</description>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 05 Nov 2025 21:55:10 GMT</lastBuildDate>
+    <atom:link href="https://docs.rundeck.com/feeds/development.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Improvement in the create runner endpoint to validate assignedProjects prop format</title>
+      <link>https://github.com/rundeckpro/rundeckpro/pull/4429</link>
+      <description>Improvement in the create runner endpoint to validate assignedProjects prop format (Merged: Oct 22, 2025)</description>
+      <pubDate>Wed, 22 Oct 2025 18:28:32 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeckpro-4429</guid>
+    </item>
+    <item>
+      <title>Fix RSS Feeds plugin not recognizing Dates on Microsoft RSS Feeds</title>
+      <link>https://github.com/rundeckpro/rundeckpro/pull/4441</link>
+      <description>Fix RSS Feeds plugin not recognizing Dates on Microsoft RSS Feeds (Merged: Oct 22, 2025)</description>
+      <pubDate>Wed, 22 Oct 2025 17:07:40 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeckpro-4441</guid>
+    </item>
+    <item>
+      <title>Set default runner replica type to manual if not provided in API request</title>
+      <link>https://github.com/rundeckpro/rundeckpro/pull/4428</link>
+      <description>Set default runner replica type to manual if not provided in API request (Merged: Oct 21, 2025)</description>
+      <pubDate>Tue, 21 Oct 2025 21:46:07 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeckpro-4428</guid>
+    </item>
+    <item>
+      <title>Allow Script Arguments on GitHub Run Script plugin</title>
+      <link>https://github.com/rundeckpro/rundeckpro/pull/4403</link>
+      <description>Allow Script Arguments on GitHub Run Script plugin (Merged: Oct 21, 2025)</description>
+      <pubDate>Tue, 21 Oct 2025 15:46:55 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeckpro-4403</guid>
+    </item>
+    <item>
+      <title>Improve the nodehealth check cache refresh</title>
+      <link>https://github.com/rundeckpro/rundeckpro/pull/4424</link>
+      <description>Improve the nodehealth check cache refresh (Merged: Oct 21, 2025)</description>
+      <pubDate>Tue, 21 Oct 2025 13:12:25 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeckpro-4424</guid>
+    </item>
+    <item>
+      <title>Runner Wizard error creating runner linux+ephemeral</title>
+      <link>https://github.com/rundeckpro/rundeckpro/pull/4414</link>
+      <description>Runner Wizard error creating runner linux+ephemeral (Merged: Oct 8, 2025)</description>
+      <pubDate>Wed, 08 Oct 2025 15:26:30 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeckpro-4414</guid>
+    </item>
+  </channel>
+</rss>

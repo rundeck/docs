@@ -120,6 +120,18 @@ Run the following with the milestone for the release. This will create the file 
 npm run notes -- --milestone=${1?milestone name} --draft
 ```
 
+## SaaS Development Updates Feed
+
+For generating RSS/Atom feeds and markdown pages showing recent PRs deployed to the SaaS platform (but not yet in self-hosted releases), see [PR-FEED-README.md](./PR-FEED-README.md).
+
+This feed automatically tracks changes since the last self-hosted release and is updated after each SaaS deployment:
+
+```bash
+npm run pr-feed
+```
+
+The feed is automatically updated when you create release notes - no manual configuration needed!
+
 ## Troubleshooting
 
 If you encounter errors running the site locally, follow these steps to ensure a clean environment and proper setup:

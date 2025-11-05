@@ -1,0 +1,45 @@
+---
+title: Recent Development Updates
+description: Latest merged changes from the Rundeck development team
+date: {{currentDate}}
+feed: true
+index: true
+---
+
+# Recent Development Updates
+
+Stay up to date with the latest changes and improvements from the Runbook Automation development team.
+
+## Subscribe to Updates
+
+Stay informed about Rundeck development by subscribing to our feeds:
+
+- [RSS Feed](/feeds/development.xml)
+- [Atom Feed](/feeds/development-atom.xml)
+
+These feeds are updated after each deployment to our production Runbook Automation SaaS solution. They highlight important changes that may not be available in our Self Hosted Releases yet.
+
+## About These Updates
+
+The development updates are automatically generated from our private development repository and filtered to show customer-visible changes. They provide insight into active development features available in the Runbook Automation SaaS solution.
+
+**Note**: These updates reflect changes deployed to our SaaS platform. Self-hosted customers should refer to the [Release Notes](/history/) section for version-specific updates applicable to their installation.
+
+---
+
+**Last updated:** {{lastUpdated}}
+
+This page shows recently merged pull requests from the Rundeck development team {{periodDescription}}{{releaseInfo}}.
+
+## Recent Changes
+
+{% if prs.length === 0 %}
+*No updates available for this period.*
+{% else %}
+{% for pr in prs -%}
+#### {{ pr.cleanTitle }} _({{ pr.mergedDate }})_
+{% if pr.sectionContent %}
+{{ pr.sectionContent }}
+{% endif %}
+{% endfor %}
+{% endif %}
