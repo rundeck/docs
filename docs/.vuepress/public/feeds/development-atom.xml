@@ -3,8 +3,49 @@
   <title>Rundeck Development Updates</title>
   <link href="https://docs.rundeck.com/feeds/development.xml" rel="self" />
   <link href="https://docs.rundeck.com/docs" />
-  <updated>2025-11-05T22:11:27.846Z</updated>
+  <updated>2025-11-05T22:14:45.623Z</updated>
   <id>https://docs.rundeck.com/feeds/development</id>
   <subtitle>Recent merged pull requests and development updates from Rundeck</subtitle>
-
+  <entry>
+    <title>Improvement in the create runner endpoint to validate assignedProjects prop format</title>
+    <link href="https://github.com/rundeckpro/rundeckpro/pull/4429" />
+    <id>rundeck-pr-rundeckpro-4429</id>
+    <updated>2025-10-22T18:28:32.000Z</updated>
+    <content type="text">Improvement in the create runner endpoint to validate assignedProjects prop format (Merged: Oct 22, 2025)</content>
+  </entry>
+  <entry>
+    <title>Fix RSS Feeds plugin not recognizing Dates on Microsoft RSS Feeds</title>
+    <link href="https://github.com/rundeckpro/rundeckpro/pull/4441" />
+    <id>rundeck-pr-rundeckpro-4441</id>
+    <updated>2025-10-22T17:07:40.000Z</updated>
+    <content type="text">Fix RSS Feeds plugin not recognizing Dates on Microsoft RSS Feeds (Merged: Oct 22, 2025)</content>
+  </entry>
+  <entry>
+    <title>Set default runner replica type to manual if not provided in API request</title>
+    <link href="https://github.com/rundeckpro/rundeckpro/pull/4428" />
+    <id>rundeck-pr-rundeckpro-4428</id>
+    <updated>2025-10-21T21:46:07.000Z</updated>
+    <content type="text">Set default runner replica type to manual if not provided in API request (Merged: Oct 21, 2025)</content>
+  </entry>
+  <entry>
+    <title>Allow Script Arguments on GitHub Run Script plugin</title>
+    <link href="https://github.com/rundeckpro/rundeckpro/pull/4403" />
+    <id>rundeck-pr-rundeckpro-4403</id>
+    <updated>2025-10-21T15:46:55.000Z</updated>
+    <content type="text">Allow Script Arguments on GitHub Run Script plugin (Merged: Oct 21, 2025)</content>
+  </entry>
+  <entry>
+    <title>Improve the nodehealth check cache refresh</title>
+    <link href="https://github.com/rundeckpro/rundeckpro/pull/4424" />
+    <id>rundeck-pr-rundeckpro-4424</id>
+    <updated>2025-10-21T13:12:25.000Z</updated>
+    <content type="text">Improve the nodehealth check cache refresh (Merged: Oct 21, 2025)</content>
+  </entry>
+  <entry>
+    <title>Runner Wizard error creating runner linux+ephemeral</title>
+    <link href="https://github.com/rundeckpro/rundeckpro/pull/4414" />
+    <id>rundeck-pr-rundeckpro-4414</id>
+    <updated>2025-10-08T15:26:30.000Z</updated>
+    <content type="text">Runner Wizard error creating runner linux+ephemeral (Merged: Oct 8, 2025)</content>
+  </entry>
 </feed>
