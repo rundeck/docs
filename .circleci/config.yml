@@ -5,8 +5,7 @@ orbs:
 jobs:
   build:
     docker:
-      # specify the version you desire here
-      - image: cimg/node:18.19.0
+      - image: cimg/node:22.12.0
         environment:
           NODE_OPTIONS="--max-old-space-size=6144"
     resource_class: medium+
@@ -128,7 +127,7 @@ jobs:
             }
   update_index:
     machine:
-      image: ubuntu-2004:2023.07.1
+      image: ubuntu-2204:current
     resource_class: medium
     working_directory: ~/repo
     steps:
@@ -147,6 +146,7 @@ workflows:
             branches:
               only:
                 - /[4,5]\.[0-9]+\..*/
+                - openapi-explorer
             tags:
               only: /^v.*/
       - update_index:

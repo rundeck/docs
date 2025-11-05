@@ -2,15 +2,51 @@
 redirectFrom: /administration/runner/management
 ---
 
-# Managing Runners
-
-## Overview
+# System & Project Runner Management
 
 Runners can be managed at the System level as well as at the Project level of Runbook Automation (cloud and self-hosted).
 Both the System and Project level management interfaces allow users to create, edit, and delete Runners.  
-However, there are specific actions that can only take place depending on whether operating in the System or Project level.
+However, there are specific actions that can only take place in the System Level - such as assigning a Runner to multiple projects - or at the Project level - such as defining the Node Filter for dispatching to nodes.
 
-### Managing Runners at the System level
+## System Level Runner Management
+<br>
+<details>
+    <summary><u>ACL Permissions for Managing Runners at <strong>System</strong> level</u></summary>
+
+To manage a Runner at the **System level**, users will need the following ACL permissions:
+
+```acl
+---
+by:
+  group: my-user-group-name
+description: Update Runners at System Level
+for:
+  runner:
+  - allow:
+    - update
+    - delete
+    - read
+context:
+  application: rundeck
+
+---
+by:
+  group: my-user-group-name
+description: Write Access to Runner Feature at System Level
+for:
+  resource:
+  - allow:
+    - read
+    - admin
+    equals:
+      kind: runner
+context:
+  application: rundeck
+```
+
+* Change **`my-user-group-name`** in the above ACL policy to the name of the user group that needs to have these permissions.
+
+</details> 
 
 At the System level, in addition to creating, editing, and deleting Runners, users can also assign Runners to Projects.
 
@@ -27,10 +63,11 @@ From this interface, users can:
 - Create a new Runner. For detailed steps, see [Creating a Runner](/administration/runner/runner-installation/creating-runners.md).
 - [Edit a Runner's Tags](#runner-tags).
 - [Assigning Runners to Projects](#assign-runners-to-projects).
+- [Manage a Runner's Replicas](managing-replicas.md).
 
 [//]: # (- Delete Runners.  For detailed steps, see [Deleting a Runner]&#40;/administration/runner/runner-installation/delete-a-runner&#41;.)
 
-#### Assigning Runners to Projects
+### Assigning Runners to Projects
 
 To assign a Runner to a project, follow these steps:
 
@@ -43,21 +80,45 @@ To assign a Runner to a project, follow these steps:
 
 The Runner can now be used within the designated projects for various tasks such as job execution, node discovery, and secrets-management integration.
 
-In order to assign a Runner to a Project, the user must have the following ACL permission:
+## Managing Runners within a Project
+<br>
+<details>
+    <summary><u>ACL Permissions for Creating Runners at <strong>Project</strong> level</u></summary>
 
-```
+To create a Runner within a Project, users will need the following ACL permissions:
+
+```acl
+---
 by:
   group: my-user-group-name
-description: Allow [update] for runner
+description: Manage Existing Runners within Project
 for:
   runner:
   - allow:
+    - read
     - update
+    - delete
 context:
-  application: rundeck
+  project: my-project-name
+
+---
+by:
+  group: my-user-group-name
+description: Write access to Runners at the Project Level
+for:
+  resource:
+  - allow:
+    - read
+    - admin
+    equals:
+      kind: runner
+context:
+  project: my-project-name
 ```
 
-### Managing Runners within a Project
+* Change **`my-user-group-name`** in the above ACL policy to the name of the user group that needs to have these permissions.
+
+</details>
 
 At the Project level, users can create, edit, and delete Runners for that specific Project.
 However, Runners created at the Project level are only available for use within that Project and cannot be used in other Projects.
@@ -77,7 +138,7 @@ From this interface, users can:
 
 [//]: # (- Delete Runners.  For detailed steps, see [Deleting a Runner]&#40;/administration/runner/runner-installation/delete-a-runner&#41;.)
 
-#### Removing a Runner from a Project
+### Removing a Runner from a Project
 
 To remove a Runner from a Project, follow these steps:
 
@@ -142,7 +203,7 @@ by:
 ```
 :::
 
-### Changing Runners from Single to Multiple Projects
+## Changing Runners from Single to Multiple Projects
 
 When a Runner is assigned to a single Project, then users within a Project and with the appropriate permissions can make any changes to the Runner from the Project level interface. This includes the ability to:
 - Edit the Runner's Name
@@ -158,14 +219,7 @@ However, when a Runner is assigned to multiple Projects, then users within Proje
 
 This is because when a Runner spans multiple Projects it is considered a _shared resource_.
 
-
-### Viewing Runner details
-
-A new section Tags is available  at the bottom of the Runner information page. Like in the summary page, a list of associated tags are displayed.
-
-![View details](/assets/img/runner-config-viewdetails.png)<br>
-
-### Runner Tags
+## Runner Tags
 
 Runner Tags are used to select on or more Runners for specific operations - such as for Job execution when using [**Manual Runner Dispatch Configuration**](/administration/runner/runner-management/project-dispatch-configuration.md#manual-runner-selection) or when using [Runners for Node Source](/administration/runner/using-runners/runners-for-node-discovery.md) plugins.
 
@@ -173,36 +227,8 @@ Tag selection within the **Runner Selector** uses _and_ logic to define the incl
 
 ![Edit Runners](/assets/img/runner-config-edit.png)<br>
 
-### Listing Runners
+[//]: # (## Listing Runners)
 
-The Runner summary page has a new Tags column added to the list. The column shouldn’t display if the feature is disabled. Runner tags are listed if available.
+[//]: # ()
+[//]: # (![List Runners]&#40;/assets/img/runner-config-list.png&#41;<br>)
 
-![List Runners](/assets/img/runner-config-list.png)<br>
-
-### Runners Status
-
-| **Icon** | **Status** | **Description**                                                                                                                                                                                                    |
-|----------|------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|   ![New](/assets/img/runner_new.png)       | New        | Runner has been downloaded but it has not yet sent a first status signal to Runbook Automation.                                                                                                            |
-|   ![Healthy](/assets/img/runner_healthy.png)       | Healthy    | Runner has connected to Runbook Automation and has reported a _Last Check-in_ at a reasonable time. Heartbeats are sent every 5 seconds from the Runner.                                                |
-|    ![Unhealthy](/assets/img/runner_unhealthy.png)      | Unhealthy  | Runner has connected to Runbook Automation but experiencing a high workload. This status is set to safeguard the execution times and tells Runbook Automation to utilize another Runner - if available. |
-|    ![Unknown](/assets/img/runner_unknown.png)      | Unknown    | Runner may have lost connectivity to Runbook Automation. The Unknown status is assumed if the Runner does not report a heartbeat to Runbook Automation within the last 30 seconds.  |
-|    ![Down](/assets/img/runner_down.png)      | Down       | Runner is unavailable to execute any workload. A Runner will assume this status in the event of a graceful shutdown or if the Last Check-in is greater than 120 seconds.                                    |
-
-- An **Unhealthy** state is related to the number of concurrent operations (and tasks) being executed on the runner ( you can check the number of concurrent operations via the API endpoint [Get runner information](/api/index.md#get-runner-information) under the variable **runningOperations**
-- The maximum number of concurrent executions can be tuned, as stated. By default, the limit is set to 50. It can be tuned using the parameter ` -Drunner.operations.maxRunning=<EXEC_LIMIT>` when deploying a Runner. However, please note the following:
-    - The execution limit is linked to the available resources set for the runner process. Although a maximum number of executions can be established via this parameter, the Runner will throttle the number of executions based on the available resources (CPU, Memory, Stack Memory and Heap Space in Java) as well as the number of tasks associated with that execution.
-    - A Runner will report an **Unhealthy** state to Runbook Automation whenever this limit has been hit. Executions will be queued in memory rather than immediately scheduled to a CPU core.
-    - It is recommended to review the allocated resources to the machine and the Runner process when a Runner is reporting as **Unhealthy**.  Runners can be scaled vertically by allocating additional compute resources to the Java process, as well as horizontally by deploying additional Runners with the same Tags and Project assignments.
-
-### Ping Runners
-
-Users can check that a Runner is available via an ad hoc "ping" operation: 
-
-1. When managing a Runner - either at the Project or System level - click on the **Ping** button in the upper right:
-    ![Ping Runner](/assets/img/ping-runner.png)<br>
-2. After a few seconds, the response will appear in the upper right.
-3. If the Runner is available, the response show that the message was received:
-    ![Ping Runner Response](/assets/img/runner-ping-response.png)<br>
-4. If the Runner is unavailable, the response will show that the ping response timed out:
-    ![Ping Runner Unavailable](/assets/img/runner-ping-unavailable.png)<br>

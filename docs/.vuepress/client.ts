@@ -1,5 +1,7 @@
 import { defineClientConfig } from '@vuepress/client'
 import '@docsearch/css'
+import Layout from "./layouts/Layout.vue";
+import NotFound from "./layouts/NotFound.vue";
 
 declare const VERSION: string;
 declare const VERSION_FULL: string;
@@ -11,6 +13,10 @@ declare const CLI_VERSION: string;
 
 
 export default defineClientConfig({
+  layouts: {
+    Layout,
+    NotFound,
+  },
   enhance({ app, router, siteData }) {
     Object.defineProperties(app.config.globalProperties, {
       $rundeckVersion: { get: () => VERSION },

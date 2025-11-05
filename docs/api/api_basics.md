@@ -21,6 +21,12 @@ An API delivers a user response to a Rundeck Instance and sends the proper respo
 You can find a complete Rundeck API reference [here](/api/index.md).
 
 
+## OpenAPI Views 
+:::incubating
+:::
+
+Rundeck now offers two beta options for exploring the API. The [OpenAPI Explorer](openapi-explorer.md) provides a dynamic, interactive interface for viewing and testing endpoints directly in your browser. For those who prefer a more traditional experience, a [Swagger UI](api-spec.md) view is also available, offering familiar documentation and testing features. Both views are in beta and may evolve as we refine the official API specification. Feedback and bug reports are welcome!
+
 ## Postman
 
 Postman is an API platform for building and using APIs. Postman simplifies each step of the API lifecycle and streamlines collaboration so you can create better APIs. With Postman it's possible to create a Collection and then save any API endpoint call there. Postman is available [here](https://www.postman.com/downloads/), and the installation process is described [here](https://learning.postman.com/docs/getting-started/installation-and-updates/).

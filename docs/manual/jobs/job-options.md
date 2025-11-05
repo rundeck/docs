@@ -392,6 +392,13 @@ Which allows the shell will correctly handle the input value by quoting it.
 
 Note: for Multiline Text options, some shells like Bash will not expand a variable with multiple lines exactly as it was entered, *unless* the variable is quoted.
 
+::: tip
+When running a command, the value of `${option.name}` will be escaped with single quotes by default.
+You can change this behavior when using cmd commands by setting the node attribute `shell-escaping-interpreter` to `cmd` 
+or setting the project property `project.plugin.Shell.Escaping.interpreter` to `cmd`.
+This will escape the option value by adding a `^` before any special characters.
+:::
+
 ### Using non-escaped values
 
 If the job needs to provide an option in its raw, unescaped form it is possible to use the `unquotedoption` context lookup key instead of `option`.

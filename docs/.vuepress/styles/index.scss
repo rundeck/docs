@@ -61,7 +61,7 @@ h6 {
   border-color: #888; /* Slightly darker border on focus */
 }
 
-    .vp-description{
+.vp-description{
   text-align: center;
   max-width: unset;
 }
@@ -189,8 +189,11 @@ h6 {
   }
 }
 
-.theme-hope-content img {
-  border: 1px solid #C0C0C0;
+.theme-container .vp-page img {
+  box-shadow: 
+    0 4px 6px rgba(0, 0, 0, 0.1),
+    0 1px 3px rgba(0, 0, 0, 0.08),
+    0 0 0 1px rgba(0, 0, 0, 0.05);
 }
 
 //This is used to fix Code on the old API page for request and response strings.
@@ -274,6 +277,22 @@ html[data-theme=dark] {
 
   #main-title .a {
     color: #fff;
+  }
+  
+  .custom-container.enterprise {
+    background-color: #2a2a2a;
+    border-color: #06ac38;
+    
+    .custom-container-title {
+      color: #fff;
+    }
+  }
+
+  .theme-container .vp-page img {
+    box-shadow: 
+      0 4px 6px rgba(0, 0, 0, 0.3),
+      0 1px 3px rgba(0, 0, 0, 0.2),
+      0 0 0 1px rgba(255, 255, 255, 0.1);
   }
 
   #main-description {
@@ -521,4 +540,13 @@ html[data-theme=dark] {
 .DocSearch-Hit-path {
   display: block !important;
   visibility: visible !important;
+}
+
+openapi-explorer {
+  --primary-color: var(--theme-color);
+  --secondary-color: var(--text-color);
+  --nav-bg-color: var(--bg-color);
+  --nav-text-color: var(--text-color);
+  --nav-hover-bg-color: var(--grey12);
+  --nav-hover-text-color: var(--text-color);
 }

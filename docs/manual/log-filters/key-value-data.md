@@ -15,12 +15,15 @@ There are only three configuration components:
   - Pattern
   - Name Data
   - Log Data (Checkbox)
+  - Match Substrings (Checkbox)
 
 The Pattern field matches a regular expression and looks for one or two Capture Groups. If there are two Capture Groups, the first will be mapped to a Rundeck variable key in the data context, while the second will be the value. If there is only one Capture Group, the match will be the value.
 
 The Name Data field is only used when a single Capture Group is defined in the regex statement. The value of that field will be used as the variable key.  The variable value will be the content from the Capture Group.
 
 Log Data is a checkbox that, if checked, will add tabular output of what is captured in the filter to the log output of the job that the filter is attached to.
+
+Match Substrings is a checkbox that, if checked, will allow the Pattern to match substrings within a line of log output. If unchecked, the Pattern must match the entire line of log output.
 
 By default, the pattern field is set to: `^RUNDECK:DATA:(.+?)\s*=\s*(.+)$`
 

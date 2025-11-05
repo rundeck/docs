@@ -9,7 +9,6 @@ import { registerComponentsPlugin } from '@vuepress/plugin-register-components';
 import { dateSorter } from "@vuepress/helper";
 import { googleAnalyticsPlugin } from '@vuepress/plugin-google-analytics';
 import { removePwaPlugin } from '@vuepress/plugin-remove-pwa';
-import { prismjsPlugin } from '@vuepress/plugin-prismjs';
 
 // sidebars
 import sidebarAdmin from './sidebar-menus/administration'
@@ -51,11 +50,17 @@ export default defineUserConfig({
         }
       },
       optimizeDeps: {
-        include: ['@docsearch/js'],
+        include: ['@docsearch/js', 'openapi-explorer'],
         exclude: ['@vuepress/theme-hope']
       }
     },
-    vuePluginOptions: {},
+    vuePluginOptions: {
+      template: {
+        compilerOptions: {
+          isCustomElement: (tag) => ['openapi-explorer'].includes(tag)
+        }
+      }
+    },
   }),
   debug: false,
   title: '',
@@ -97,7 +102,7 @@ export default defineUserConfig({
 
   //Theme Config
   theme: hopeTheme({
-    debug: true,
+    debug: process.env.NODE_ENV === 'development',
     logo: '/images/RundeckbyPagerDuty.svg',
     repo: 'rundeck/docs',
     docsDir: 'docs',
@@ -145,6 +150,7 @@ export default defineUserConfig({
       },
       redirect: {
         config: {
+          '/history/cves/2025-06-05-runnersecurity.html' : '/history/cves/2025-06-runner-security.html',
           '/manual/01-introduction.html': '/introduction/introduction.html',
           '/manual/03-getting-started.html': '/learning/index.html',
           '/manual/02-getting-help.html': '/introduction/getting-help.html',
@@ -239,7 +245,8 @@ export default defineUserConfig({
           '/learning/solutions/automated-diagnostics/examples/kubernetes.html': '/learning/solutions/containers/kubernetes.html',
           '/learning/solutions/automated-diagnostics/getting-started.html': '/learning/solutions/getting-started.html',
           '/administration/runner/runner-setup.html': '/administration/runner/index.html',
-          '/administration/runner/runner-overview.html': '/administration/runner/index.html'
+          '/administration/runner/runner-overview.html': '/administration/runner/index.html',
+          '/administration/runner/runner-management/project-dispatch-configuration.html': '/administration/runner/using-runners/project-dispatch-configuration.html'
         }
       },
       sitemap: {
@@ -320,24 +327,6 @@ export default defineUserConfig({
   },
     { custom: true },
   ),
-  alias: {
-    "@theme-hope/components/HomePage": path.resolve(
-      __dirname,
-      "./components/HomePageAnnounce.vue",
-    ),
-    "@theme-hope/modules/sidebar/components/Sidebar": path.resolve(
-      __dirname,
-      "./components/SidebarAnnounce.vue",
-    ),
-    "@theme-hope/layouts/NotFound": path.resolve(
-      __dirname,
-      "./components/notFoundCustom.vue",
-    ),
-    "@theme-hope/modules/navbar/components/Navbar": path.resolve(
-      __dirname,
-      "./components/CustomNavBar.vue",
-    ),
-  },
   //Plugins Config
   plugins: [
     removePwaPlugin({
@@ -347,6 +336,7 @@ export default defineUserConfig({
     registerComponentsPlugin({
       components: {
         RundeckSwaggerUi: path.resolve(__dirname, './components/RundeckSwaggerUI.vue'),
+        OpenApiExplorer: path.resolve(__dirname, './components/OpenApiExplorer.vue')
       },
     }),
     googleAnalyticsPlugin({

@@ -1,7 +1,8 @@
 ---
 title: API Reference
 alias: api/index.html
-headerDepth: 3
+toc:
+  levels: [2, 3]
 ---
 
 # API Reference | Version {{ $apiVersion }}
@@ -25,7 +26,7 @@ Deprecation
 
 For tips on getting started with the API, check out these [API Basics](/api/api_basics.md) .  For information on historical version changes please see [API Version History](/api/rundeck-api-versions.md). Please note of any [incubating endpoints](/api/rundeck-api-versions.md#incubating_endpoints) that may be subject to change.
 
-Check out our Beta [OpenAPI Spec/Swagger](/api/api-spec.md) docs too!
+Check out our the [OpenAPI Spec/Swagger](/api/api-spec.md) version or the [OpenAPI Explorer](/api/openapi-explorer.md) version.  There may be minor differences, but we are moving towards these pages over the entries on this page.
 
 ### Usage
 
@@ -1444,7 +1445,8 @@ Success response, with a list of users:
     "created": "2017-10-01T09:00:20Z",
     "updated": "2018-08-24T13:53:02Z",
     "lastJob": "2018-08-28T13:31:00Z",
-    "tokens": 1
+    "tokens": 1,
+    "lastLogin": "2025-09-08T13:29:21Z"
 },
 {
     "login":"admin",
@@ -1454,9 +1456,14 @@ Success response, with a list of users:
     "created": "2016-07-17T18:42:00Z",
     "updated": "2018-08-24T13:53:00Z",
     "lastJob": "2018-08-28T13:31:00Z",
-    "tokens": 6
+    "tokens": 6,
+    "lastLogin": "2025-09-08T13:29:21Z"
 }]
 ```
+
+**Since v53**
+
+* `lastLogin` Last login time for a user.
 
 **Since v27**:
 
@@ -4750,7 +4757,7 @@ Provides the **public key** content if the `Accept` request header matches `*/*`
 
     GET /api/{{ $apiMinVersion }}/storage/keys/[PATH]/[FILE]
 
-NOTE: Since Rundeck 5.11.0, downloading Public Key Content is disabled by default unless enabled via configuration, see [Rundeck Key Storage > Enable/Disable public key download](/manual/key-storage.md#enable-disable-public-key-download).
+NOTE: Since Rundeck 5.11.0, downloading Public Key Content is disabled by default unless enabled via configuration, see [Rundeck Key Storage > Enable/Disable public key download](manual/key-storage/#enable-disable-public-key-download).
 
 **Retrieving private key or password file contents is not allowed.**
 
@@ -5812,6 +5819,10 @@ Configure and enable a plugin for a project.
 The request body is expected to contain entries for all of the `required` input fields for the plugin.
 
 If a validation error occurs with the configuration, then the response will include detail about the errors.
+
+Valid INTEGRATION values are: "import" and "export".
+
+For TYPE, the only supported values are "git-import" and "git-export".
 
 **Request**
 
@@ -7197,6 +7208,16 @@ Schema: RunnerList
     POST /api/42/runnerManagement/runners
 
 Content-Type: `application/json`:
+
+Body
+
+* `name` Required
+* `description` Optional
+* `assignedProjects` Optional Map of project names to node filters
+* `tagNames` Optional Comma separated list of tags
+* `installationType` Optional Type of installation package, one of `linux`, `windows`, `docker`, `kubernetes`. Default is `linux`
+* `replicaType` Optional Type of replica, one of `manual`, `ephemeral`. Default is `manual`
+
 ```json
 {
   "name": "My Runner",
@@ -7205,7 +7226,9 @@ Content-Type: `application/json`:
     "project1": ".*",
     "project2": ".*"
   },
-  "tagNames": "runner, pipeline, automation"
+  "tagNames": "runner, pipeline, automation",
+  "installationType": "linux",
+  "replicaType": "manual"
 }
 ```
 
@@ -7755,6 +7778,161 @@ Content-Type: `application/json`:
   "runnerNodeFilter": ".*"
 }
 ```
+
+### Create Manual Runner Replica ###
+
+::: enterprise
+:::
+
+**Request:**
+
+    POST /api/55/runnerManagement/runner/[RUNNERID]/replicas
+
+**Response:**
+
+Content-Type: `application/json`:
+
+```json
+{
+  "token": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "runnerId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "replicaId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "downloadTk": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+}
+```
+### Create Manual Runner Replica at Project Level ###
+
+::: enterprise
+:::
+**Request:**
+
+    POST /api/55/project/[PROJECT]/runnerManagement/runner/[RUNNERID]/replicas
+
+**Response:**
+
+Content-Type: `application/json`:
+
+```json
+{
+  "token": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "runnerId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "replicaId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "downloadTk": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+}
+```
+
+### Delete Manual Runner Replica ###
+
+::: enterprise
+:::
+
+**Request:**
+
+    DELETE /api/55/runnerManagement/runner/[RUNNERID]/replica/[REPLICAID]
+
+**Response:**
+    204 No Content
+
+### Delete Manual Runner Replica at Project Level ###
+
+::: enterprise
+:::
+
+**Request:**
+
+    DELETE /api/55/project/[PROJECT]/runnerManagement/runner/[RUNNERID]/replica/[REPLICAID]
+
+**Response:**
+    204 No Content
+
+### List Runner Replicas ###
+
+::: enterprise
+:::
+
+**Request:**
+
+    GET /api/55/runnerManagement/runner/[RUNNERID]/replicas
+
+**Response:**
+
+Content-Type: `application/json`:
+
+```json
+{
+    "replicas": [
+      {
+        "replicaId": "replica-001",
+        "runnerId": "runner-123",
+        "sessionId": "session-abc",
+        "status": "active",
+        "version": "1.2.3",
+        "hostname": "host1.example.com",
+        "installationPath": "/opt/rundeck/runner",
+        "ipAddress": "192.168.1.10",
+        "createTime": "2024-06-10T12:34:56Z",
+        "lastCheckin": "2024-06-11T08:00:00Z",
+        "lastCheckinAlert": false,
+        "uptime": 86400,
+        "runningOperations": 5,
+        "versionWarning": false
+      }
+    ]
+}
+```
+
+### List Runner Replicas at Project Level ###
+
+::: enterprise
+:::
+
+**Request:**
+
+    GET /api/55/project/[PROJECT]/runnerManagement/runner/[RUNNERID]/replicas
+
+**Response:**
+
+Content-Type: `application/json`:
+
+```json
+{
+  "replicas": [
+    {
+      "replicaId": "replica-001",
+      "runnerId": "runner-123",
+      "sessionId": "session-abc",
+      "status": "active",
+      "version": "1.2.3",
+      "hostname": "host1.example.com",
+      "installationPath": "/opt/rundeck/runner",
+      "ipAddress": "192.168.1.10",
+      "createTime": "2024-06-10T12:34:56Z",
+      "lastCheckin": "2024-06-11T08:00:00Z",
+      "lastCheckinAlert": false,
+      "uptime": 86400,
+      "runningOperations": 5,
+      "versionWarning": false
+    },
+    {
+      "replicaId": "replica-002",
+      "runnerId": "runner-456",
+      "sessionId": "session-def",
+      "status": "inactive",
+      "version": "1.2.2",
+      "hostname": "host2.example.com",
+      "installationPath": "/opt/rundeck/runner",
+      "ipAddress": "192.168.1.11",
+      "createTime": "2024-06-09T09:20:00Z",
+      "lastCheckin": "2024-06-10T18:30:00Z",
+      "lastCheckinAlert": true,
+      "uptime": 43200,
+      "runningOperations": 0,
+      "versionWarning": true
+    }
+  ]
+}
+```
+
 ## Index
 
 [/api/V/config/refresh][]
@@ -8289,6 +8467,30 @@ Content-Type: `application/json`:
 [/api/V/project/\[PROJECT\]/runnerManagement/nodeDispatch/config](#update-runner-node-dispatch-at-project-context)
 
 * `POST` [Update Runner Node Dispatch at project context](#update-runner-node-dispatch-at-project-context)
+
+[/api/V/runnerManagement/runner/\[RUNNERID\]/replicas](#create-manual-runner-replica)
+
+* `POST` [Create Manual Runner Replica](#create-manual-runner-replica)
+
+[/api/V/project/\[PROJECT\]/runnerManagement/runner/\[RUNNERID\]/replicas](#create-manual-runner-replica-at-project-level)
+
+* `POST` [Create Manual Runner Replica at Project Level](#create-manual-runner-replica-at-project-level)
+
+[/api/V/runnerManagement/runner/\[RUNNERID\]/replica/\[REPLICAID\]](#delete-manual-runner-replica)
+
+* `DELETE` [Delete Manual Runner Replica](#delete-manual-runner-replica)
+
+[/api/V/project/\[PROJECT\]/runnerManagement/runner/\[RUNNERID\]/replica/\[REPLICAID\]](#delete-manual-runner-replica-at-project-level)
+
+* `DELETE` [Delete Manual Runner Replica at Project Level](#delete-manual-runner-replica-at-project-level)
+
+[/api/V/runnerManagement/runner/\[RUNNERID\]/replicas](#list-runner-replicas)
+
+* `GET` [List Runner Replicas](#list-runner-replicas)
+
+[/api/V/project/\[PROJECT\]/runnerManagement/runner/\[RUNNERID\]/replicas](#list-runner-replicas-at-project-level)
+
+* `GET` [List Runner Replicas at Project Level](#list-runner-replicas-at-project-level)
 
 
 ### Incubating
