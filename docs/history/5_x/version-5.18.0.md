@@ -16,6 +16,8 @@ feed:
 
 <!-- <VidStack src="youtube/REPLACE" poster="https://img.youtube.com/vi/REPLACE/maxresdefault.jpg"/> -->
 
+Terraform Provider now supports Runners.
+
 ## Runbook Automation Updates
 
 > Also includes all Open Source updates from below
