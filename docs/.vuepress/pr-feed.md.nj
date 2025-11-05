@@ -27,17 +27,17 @@ The development updates are automatically generated from our private development
 
 ---
 
-**Last updated:** {{lastUpdated}}
+**List Last updated:** {{lastUpdated}}
 
 This page shows recently merged pull requests from the Rundeck development team {{periodDescription}}{{releaseInfo}}.
 
 ## Recent Changes
 
 {% if prs.length === 0 %}
-*No updates available for this period.*
+*No new updates to report since the last release.*
 {% else %}
 {% for pr in prs -%}
-#### {{ pr.cleanTitle }} _({{ pr.mergedDate }})_
+#### ::circle-check:: {{ pr.cleanTitle }} _({{ pr.mergedDate }})_
 {% if pr.sectionContent %}
 {{ pr.sectionContent }}
 {% endif %}

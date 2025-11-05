@@ -1,7 +1,7 @@
 ---
 title: Recent Development Updates
 description: Latest merged changes from the Rundeck development team
-date: 2025-11-05T21:55:10.371Z
+date: 2025-11-05T22:11:27.823Z
 feed: true
 index: true
 ---
@@ -27,26 +27,12 @@ The development updates are automatically generated from our private development
 
 ---
 
-**Last updated:** 2025-11-05
+**List Last updated:** 2025-11-05
 
-This page shows recently merged pull requests from the Rundeck development team merged since the last self-hosted release of [5.16.0](/history/5_x/version-5.16.0.md) on October 5, 2025.
+This page shows recently merged pull requests from the Rundeck development team merged since the last self-hosted release of [5.17.0](/history/5_x/version-5.17.0.md) on November 2, 2025.
 
 ## Recent Changes
 
 
-#### Improvement in the create runner endpoint to validate assignedProjects prop format _(Oct 22, 2025)_
-
-#### Fix RSS Feeds plugin not recognizing Dates on Microsoft RSS Feeds _(Oct 22, 2025)_
-
-  This PR fixes a parsing error that occurs when processing RSS feeds that use Z as the timezone indicator instead of standard abbreviations like GMT or UTC.
-
-#### Set default runner replica type to manual if not provided in API request _(Oct 21, 2025)_
-
-#### Allow Script Arguments on GitHub Run Script plugin _(Oct 21, 2025)_
-
-#### Improve the nodehealth check cache refresh _(Oct 21, 2025)_
-
-#### Runner Wizard error creating runner linux+ephemeral _(Oct 8, 2025)_
-
-
+*No new updates to report since the last release.*
 
