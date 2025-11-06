@@ -60,7 +60,6 @@ We have recently introduced a new, [beta method for viewing our API](/api/api_ba
 
 ## Ansible Plugin Updates
 * [CVE Fixes](https://github.com/rundeck-plugins/ansible-plugin/pull/418)
-* [Add centralized Snyk security scanning](https://github.com/rundeck-plugins/ansible-plugin/pull/416)
 
 
 
@@ -83,8 +82,6 @@ Release Date: November 3rd, 2025
 
 Submit your own Pull Requests to get recognition here!
 
-* ([jayas006](https://github.com/jayas006))
-* Eduardo Baltra ([edbaltra](https://github.com/edbaltra))
 * J. Casalino ([thedoc31](https://github.com/thedoc31))
 * Takafumi Noguchi ([tknog-pd](https://github.com/tknog-pd))
 
