@@ -264,10 +264,17 @@ function generateMarkdown(prs) {
   let releaseInfo = '';
   if (feedConfig && feedConfig.lastSelfHostedRelease && !argv.days) {
     const releaseVersion = feedConfig.lastSelfHostedRelease.version;
-    const releaseDate = new Date(feedConfig.lastSelfHostedRelease.date).toLocaleDateString('en-US', {
+    // Parse date as UTC to avoid timezone issues
+    const releaseDateParts = feedConfig.lastSelfHostedRelease.date.split('-');
+    const releaseDate = new Date(Date.UTC(
+      parseInt(releaseDateParts[0]), 
+      parseInt(releaseDateParts[1]) - 1, 
+      parseInt(releaseDateParts[2])
+    )).toLocaleDateString('en-US', {
       year: 'numeric',
       month: 'long',
-      day: 'numeric'
+      day: 'numeric',
+      timeZone: 'UTC'
     });
     periodDescription = `merged since the last self-hosted release`;
     releaseInfo = ` of [${releaseVersion}](/history/5_x/version-${releaseVersion}.md) on ${releaseDate}`;
