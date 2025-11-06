@@ -1,7 +1,7 @@
 ---
 
 title: "5.17.0 Release Notes"
-date: 2025-11-06
+date: 2025-11-03
 image: /images/chevron-logo-red-on-white.png
 description: "Rundeck | Runbook Automation Releases 5.17.0 - Open API Spec Beta, and lots of bug fixes."
 feed:
@@ -89,7 +89,7 @@ Adds logger configuration for the ExecutionsCleanUp job in the Remco log4j2 temp
 
 Name: <span style="color: sandybrown"><span class="glyphicon glyphicon-flag"></span> "Mont Blanc sandybrown flag"</span>
 
-Release Date: November 6th, 2025
+Release Date: November 3rd, 2025
 
 
 ## Community Contributors

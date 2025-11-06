@@ -33,7 +33,8 @@ const excludeUsernames = [
   'hiawvp',
   'ltamaster',
   'ronaveva',
-  'smartinellibenedetti'
+  'smartinellibenedetti',
+  'jayas006'
 ];
 
 async function main() {
