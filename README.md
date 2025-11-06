@@ -130,7 +130,7 @@ This feed automatically tracks changes since the last self-hosted release and is
 npm run pr-feed
 ```
 
-The feed is automatically updated when you create release notes - no manual configuration needed!
+The feed date range is automatically updated when you create release notes - no manual configuration needed!
 
 ## Troubleshooting
 

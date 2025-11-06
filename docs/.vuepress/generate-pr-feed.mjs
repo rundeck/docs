@@ -424,6 +424,8 @@ function escapeMarkdown(text) {
  */
 function generateRSS(prs) {
   const now = new Date();
+  const updatesPageUrl = `${CONFIG.siteUrl}/docs/history/updates/`;
+  
   const items = prs.map(pr => {
     const cleanTitle = cleanPRTitle(pr.title);
     const mergedDate = new Date(pr.merged_at).toLocaleDateString('en-US', {
@@ -437,7 +439,7 @@ function generateRSS(prs) {
     
     return `    <item>
       <title>${escapeXml(cleanTitle)}</title>
-      <link>${escapeXml(pr.html_url)}</link>
+      <link>${updatesPageUrl}</link>
       <description>${escapeXml(description)}</description>
       <pubDate>${new Date(pr.merged_at).toUTCString()}</pubDate>
       <guid isPermaLink="false">rundeck-pr-${CONFIG.repo}-${pr.number}</guid>
@@ -465,6 +467,8 @@ ${items}
  */
 function generateAtom(prs) {
   const now = new Date();
+  const updatesPageUrl = `${CONFIG.siteUrl}/docs/history/updates/`;
+  
   const entries = prs.map(pr => {
     const cleanTitle = cleanPRTitle(pr.title);
     const mergedDate = new Date(pr.merged_at).toLocaleDateString('en-US', {
@@ -478,7 +482,7 @@ function generateAtom(prs) {
     
     return `  <entry>
     <title>${escapeXml(cleanTitle)}</title>
-    <link href="${escapeXml(pr.html_url)}" />
+    <link href="${updatesPageUrl}" />
     <id>rundeck-pr-${CONFIG.repo}-${pr.number}</id>
     <updated>${new Date(pr.merged_at).toISOString()}</updated>
     <content type="text">${content}</content>

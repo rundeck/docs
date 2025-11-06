@@ -1,7 +1,7 @@
 ---
 title: Recent Development Updates
 description: Latest merged changes from the Rundeck development team
-date: 2025-11-05T22:14:45.598Z
+date: 2025-11-06T00:00:39.650Z
 feed: true
 index: true
 ---
@@ -27,7 +27,7 @@ The development updates are automatically generated from our private development
 
 ---
 
-**List Last updated:** 2025-11-05
+**List Last updated:** 2025-11-06
 
 This page shows recently merged pull requests from the Rundeck development team merged since the last self-hosted release of [5.16.0](/history/5_x/version-5.16.0.md) on October 5, 2025.
 
