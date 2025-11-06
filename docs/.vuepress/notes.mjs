@@ -45,9 +45,8 @@ async function main() {
   context.core = await getRepoData({ repo: 'rundeck', owner: 'rundeck' }, []);
   context.enterprise = await getRepoData({ repo: 'rundeckpro', owner: 'rundeckpro' }, ['release-notes/include']);
   context.docs = await getRepoData({ repo: 'docs', owner: 'rundeck' }, []);
-  context.ansible = await getRepoData({ repo: 'ansible-plugin', owner: 'rundeck-plugins' }, []);
+  context.ansible = await getRepoData({ repo: 'ansible-plugin', owner: 'rundeck-plugins' }, ['release-notes/include']);
   context.runner = await getRepoData({ repo: 'sidecar', owner: 'rundeckpro' }, ['release-notes/include']);
-  //context.sidecarVersion = await getSideCarVersion({ repo: 'rundeckpro', owner: 'rundeckpro' });
   context.contributors = { ...context.core.contributors, ...context.docs.contributors, ...context.ansible.contributors };
 
   context.version = new RundeckVersion({ versionString: argv.milestone });
@@ -93,7 +92,6 @@ async function main() {
   // Only run update functions if not a draft
   if (!argv.draft) {
     updateDocsearchVersion(argv.milestone);
-    // addReleaseRow(argv.milestone); // Removed: function not defined
     updateSetupJs(argv.milestone);
     addSidebarVersion(argv.milestone);
     updateLatestReleaseLink(argv.milestone);
@@ -101,9 +99,6 @@ async function main() {
     updatePRFeedConfig(argv.milestone);
   }
 }
-
-// Helper: Add release row to release-calendar.md if not present
-// (Removed duplicate definition of addReleaseRow)
 
 // Helper: Add sidebar version entry if not present
 function addSidebarVersion(version) {

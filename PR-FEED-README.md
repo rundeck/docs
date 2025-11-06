@@ -1,15 +1,17 @@
 # PR Feed Generator
 
-This script generates RSS/Atom feeds and markdown pages from recently merged pull requests in the private rundeckpro repository. It's designed to be run as part of the SaaS release process to keep customers informed about development updates deployed to the Runbook Automation SaaS platform.
+This script generates RSS/Atom feeds and markdown pages from recently merged pull requests in both the Rundeck repositories. It's designed to be run as part of the SaaS release process to keep customers informed about development updates deployed to the Runbook Automation SaaS platform.
 
 ## Use Case
 
-**SaaS Release Communication**: The Runbook Automation team releases to SaaS approximately weekly (and sometimes more frequently for urgent updates). These changes come from both the public `rundeck` repo and the private `rundeckpro` repo. Since customers can see public repo changes but not private ones, this tool captures and communicates the full scope of updates deployed to the SaaS platform.
+**SaaS Release Communication**: The Runbook Automation team releases to SaaS approximately weekly (and sometimes more frequently for urgent updates). These changes come from both the public `rundeck/rundeck` repo and the private `rundeckpro/rundeckpro` repo. Since customers can see public repo changes but not private ones, this tool captures and communicates the full scope of updates deployed to the SaaS platform.
 
 ## Features
 
-- ✅ Fetches merged PRs from private `rundeckpro/rundeckpro` repository
-- ✅ Filters PRs with the `release-notes/include` label
+- ✅ Fetches merged PRs from **both** repositories:
+  - **Private**: `rundeckpro/rundeckpro` (filtered by `release-notes/include` label)
+  - **Public**: `rundeck/rundeck` (filtered by `release-notes/include` label)
+- ✅ Combines and sorts PRs by merge date across both repos
 - ✅ Automatically removes `RUN-XXXX` prefixes from PR titles (matching notes.mjs logic)
 - ✅ Generates both RSS 2.0 and Atom feeds
 - ✅ Creates VuePress-compatible markdown pages
@@ -110,14 +112,21 @@ node ./docs/.vuepress/generate-pr-feed.mjs --owner=rundeck --repo=rundeck
 
 ### How It Works
 
+**Dual-Repository Fetching:**
+1. Fetches PRs from `rundeckpro/rundeckpro` (filtered by `release-notes/include` label)
+2. Fetches PRs from `rundeck/rundeck` (filtered by `release-notes/include` label)
+3. Combines results and sorts by merge date
+4. Removes duplicate PR titles if they appear in both repos (rare but possible)
+
 **Default Behavior (`--since-release`):**
 - Reads `pr-feed-config.json` to find last self-hosted release date
-- Shows all PRs merged after that date
+- Shows all PRs merged after that date from both repositories
 - No need to remember when you last ran it
 
 **Override with `--days`:**
 - Explicitly specify a lookback window
 - Useful for testing or special cases
+- Still fetches from both repos
 
 ## What Gets Generated
 

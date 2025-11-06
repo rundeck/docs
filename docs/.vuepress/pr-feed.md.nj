@@ -10,7 +10,7 @@ index: true
 
 Stay up to date with the latest changes and improvements from the Runbook Automation development team.  
 
-This page shows recently merged pull requests from the Runbook Automation product repository {{periodDescription}}{{releaseInfo}}. These changes are specific to the commercial Runbook Automation product, which is built on top of the open source Rundeck project. For updates to the open source Rundeck code, visit the [Rundeck GitHub repository](https://github.com/rundeck/rundeck).
+This page shows recently merged pull requests from both the Runbook Automation product repository and the open source Rundeck repository {{periodDescription}}{{releaseInfo}}. These updates reflect changes deployed to our Runbook Automation SaaS platform, combining both private product enhancements and public open source improvements.
 
 ## Subscribe to Updates
 
@@ -24,7 +24,7 @@ These feeds are updated after each deployment to our production Runbook Automati
 ## About These Updates
 
 
-The development updates are automatically generated from our private development repository to highlight key changes happening in the SaaS solution. They provide insight into active development features available in the Runbook Automation SaaS solution and will be released with the next Self Hosted release.
+The development updates are automatically generated from both our private repository for the commercial product and the public open source repository to provide complete visibility into changes deployed to the SaaS platform. They provide insight into active development features available in the Runbook Automation SaaS solution and will be released with the next Self Hosted release.
 
 **Note**: These updates only reflect changes deployed to our SaaS platform. Self-hosted customers should refer to the [Release Notes](/history/) section for version-specific updates applicable to their installation.
 
@@ -38,7 +38,8 @@ The development updates are automatically generated from our private development
 *No new updates to report since the last release.*
 {% else %}
 {% for pr in prs -%}
-#### ::circle-check:: {{ pr.cleanTitle }} _({{ pr.mergedDate }})_
+#### ::circle-check:: {{ pr.cleanTitle }} _({{ pr.mergedDate }})_{% if pr.repoName === 'rundeck' %} [PR #{{ pr.number }}]({{ pr.prUrl }}){% endif %}
+
 {% if pr.sectionContent %}
 {{ pr.sectionContent }}
 {% endif %}

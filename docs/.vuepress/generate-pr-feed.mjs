@@ -158,65 +158,100 @@ function initOctokit() {
 }
 
 /**
- * Fetch recently merged PRs from GitHub
- * @param {Octokit} octokit - GitHub API client
+ * Fetch recent merged PRs from a specific repository
+ * @param {Object} octokit - Initialized Octokit instance
+ * @param {string} owner - Repository owner
+ * @param {string} repo - Repository name
+ * @param {Array<string>} includeLabels - Labels that PRs must have (empty array = all PRs)
  * @returns {Promise<Array>} Array of PR objects
  */
-async function fetchRecentPRs(octokit) {
-  const since = CONFIG.sinceDate;
-  
-  console.log(`Fetching PRs from ${CONFIG.owner}/${CONFIG.repo}...`);
-  console.log(`Looking for PRs merged after ${since.toISOString().split('T')[0]}`);
+async function fetchRecentPRs(octokit, owner, repo, includeLabels = []) {
+  console.log(`  Repository: ${owner}/${repo}`);
+  if (includeLabels.length > 0) {
+    console.log(`  Required labels: ${includeLabels.join(', ')}`);
+  } else {
+    console.log(`  No label filtering`);
+  }
   
   try {
-    // Use paginate to get all PRs if more than per_page limit
+    // Use paginate to handle large result sets automatically
     const pullRequests = await octokit.paginate(
-      octokit.pulls.list,
+      octokit.rest.pulls.list,
       {
-        owner: CONFIG.owner,
-        repo: CONFIG.repo,
+        owner,
+        repo,
         state: 'closed',
         sort: 'updated',
         direction: 'desc',
         per_page: 100
       },
-      (response) => response.data.slice(0, CONFIG.maxPRs)
+      (response, done) => {
+        // Filter only merged PRs within our date range
+        const filtered = response.data.filter(pr => {
+          // Must be merged (not just closed)
+          if (!pr.merged_at) return false;
+          
+          // Must be within date range
+          const mergedDate = new Date(pr.merged_at);
+          if (mergedDate < CONFIG.sinceDate) {
+            done(); // Stop pagination once we're past our date range
+            return false;
+          }
+          
+          return true;
+        });
+        
+        return filtered;
+      }
     );
-
-    console.log(`Retrieved ${pullRequests.length} closed PRs`);
-
-    // Filter for merged PRs within the date range
-    const mergedPRs = pullRequests.filter(pr => {
-      if (!pr.merged_at) return false;
+    
+    console.log(`  Found ${pullRequests.length} merged PRs since ${CONFIG.sinceDate.toISOString().split('T')[0]}`);
+    
+    // Filter by labels
+    const filteredPRs = pullRequests.filter(pr => {
+      const prLabels = pr.labels.map(label => label.name);
       
-      const mergedDate = new Date(pr.merged_at);
-      if (mergedDate <= since) return false;
+      // Check exclude labels first
+      if (CONFIG.excludeLabels.some(label => prLabels.includes(label))) {
+        return false;
+      }
       
-      // Check for included labels
-      const hasIncludedLabel = CONFIG.includeLabels.length === 0 || 
-        pr.labels.some(label => CONFIG.includeLabels.includes(label.name));
+      // Check include labels (must have at least one, if specified)
+      if (includeLabels.length > 0) {
+        return includeLabels.some(label => prLabels.includes(label));
+      }
       
-      // Check for excluded labels
-      const hasExcludedLabel = pr.labels.some(label => 
-        CONFIG.excludeLabels.includes(label.name)
-      );
-      
-      return hasIncludedLabel && !hasExcludedLabel;
+      return true;
     });
-
-    console.log(`Found ${mergedPRs.length} merged PRs matching criteria`);
     
-    // Sort by merge date, most recent first
-    mergedPRs.sort((a, b) => new Date(b.merged_at) - new Date(a.merged_at));
+    console.log(`  After label filtering: ${filteredPRs.length} PRs`);
     
-    return mergedPRs;
+    // Limit to max PRs and sort by merge date (newest first)
+    const limitedPRs = filteredPRs
+      .sort((a, b) => new Date(b.merged_at) - new Date(a.merged_at))
+      .slice(0, CONFIG.maxPRs);
+    
+    if (limitedPRs.length < filteredPRs.length) {
+      console.log(`  Limited to ${CONFIG.maxPRs} most recent PRs`);
+    }
+    
+    // Add repo information to each PR for later use
+    const prsWithRepo = limitedPRs.map(pr => ({
+      ...pr,
+      _repoOwner: owner,
+      _repoName: repo
+    }));
+    
+    return prsWithRepo;
     
   } catch (error) {
-    console.error(`Error fetching PRs: ${error.message}`);
     if (error.status === 404) {
-      console.error(`Repository ${CONFIG.owner}/${CONFIG.repo} not found or token lacks access.`);
+      throw new Error(`Repository ${owner}/${repo} not found. Check your credentials and repository name.`);
+    } else if (error.status === 401) {
+      throw new Error('Authentication failed. Check your GitHub token.');
+    } else {
+      throw new Error(`Failed to fetch PRs from ${owner}/${repo}: ${error.message}`);
     }
-    throw error;
   }
 }
 
@@ -308,7 +343,10 @@ function generateMarkdown(prs) {
     return {
       cleanTitle,
       mergedDate,
-      sectionContent
+      sectionContent,
+      repoName: pr._repoName,
+      prUrl: pr.html_url,
+      number: pr.number
     };
   });
   
@@ -449,7 +487,7 @@ function generateRSS(prs) {
       <link>${updatesPageUrl}</link>
       <description>${escapeXml(description)}</description>
       <pubDate>${new Date(pr.merged_at).toUTCString()}</pubDate>
-      <guid isPermaLink="false">rundeck-pr-${CONFIG.repo}-${pr.number}</guid>
+      <guid isPermaLink="false">rundeck-pr-${pr._repoName}-${pr.number}</guid>
     </item>`;
   }).join('\n');
 
@@ -490,7 +528,7 @@ function generateAtom(prs) {
     return `  <entry>
     <title>${escapeXml(cleanTitle)}</title>
     <link href="${updatesPageUrl}" />
-    <id>rundeck-pr-${CONFIG.repo}-${pr.number}</id>
+    <id>rundeck-pr-${pr._repoName}-${pr.number}</id>
     <updated>${new Date(pr.merged_at).toISOString()}</updated>
     <content type="text">${content}</content>
   </entry>`;
@@ -560,7 +598,7 @@ function writeFile(filePath, content, description) {
 async function main() {
   console.log('=== Rundeck PR Feed Generator ===\n');
   console.log('Configuration:');
-  console.log(`  Repository: ${CONFIG.owner}/${CONFIG.repo}`);
+  console.log(`  Repositories: rundeckpro/rundeckpro + rundeck/rundeck`);
   
   if (feedConfig && feedConfig.lastSelfHostedRelease && !argv.days) {
     console.log(`  Mode: Since last self-hosted release`);
@@ -572,19 +610,29 @@ async function main() {
   }
   
   console.log(`  Since date: ${CONFIG.sinceDate.toISOString().split('T')[0]}`);
-  console.log(`  Include labels: ${CONFIG.includeLabels.join(', ')}`);
+  console.log(`  Include labels (both repos): ${CONFIG.includeLabels.join(', ')}`);
   console.log(`  Exclude labels: ${CONFIG.excludeLabels.join(', ')}`);
-  console.log(`  Max PRs: ${CONFIG.maxPRs}`);
+  console.log(`  Max PRs per repo: ${CONFIG.maxPRs}`);
   console.log('');
 
   try {
     // Initialize GitHub client
     const octokit = initOctokit();
     
-    // Fetch PRs
-    const prs = await fetchRecentPRs(octokit);
+    // Fetch PRs from both repos
+    console.log('Fetching from rundeckpro/rundeckpro...');
+    const rundeckproPRs = await fetchRecentPRs(octokit, 'rundeckpro', 'rundeckpro', CONFIG.includeLabels);
     
-    if (prs.length === 0) {
+    console.log('\nFetching from rundeck/rundeck...');
+    const rundeckPRs = await fetchRecentPRs(octokit, 'rundeck', 'rundeck', CONFIG.includeLabels);
+    
+    // Combine and sort all PRs by merge date
+    const allPRs = [...rundeckproPRs, ...rundeckPRs];
+    allPRs.sort((a, b) => new Date(b.merged_at) - new Date(a.merged_at));
+    
+    console.log(`\nTotal PRs from both repos: ${allPRs.length}`);
+    
+    if (allPRs.length === 0) {
       console.log('\nNo PRs found matching the criteria.');
       console.log('Generating empty feeds...\n');
     }
@@ -594,22 +642,22 @@ async function main() {
     ensureDirectoryExists(CONFIG.feedsDir);
     
     // Generate markdown page
-    const markdown = generateMarkdown(prs);
+    const markdown = generateMarkdown(allPRs);
     const markdownPath = path.join(CONFIG.outputDir, 'index.md');
     writeFile(markdownPath, markdown, 'markdown page');
     
     // Generate RSS feed
-    const rss = generateRSS(prs);
+    const rss = generateRSS(allPRs);
     const rssPath = path.join(CONFIG.feedsDir, 'development.xml');
     writeFile(rssPath, rss, 'RSS feed');
     
     // Generate Atom feed
-    const atom = generateAtom(prs);
+    const atom = generateAtom(allPRs);
     const atomPath = path.join(CONFIG.feedsDir, 'development-atom.xml');
     writeFile(atomPath, atom, 'Atom feed');
     
     console.log('\n=== Summary ===');
-    console.log(`Total PRs processed: ${prs.length}`);
+    console.log(`Total PRs processed: ${allPRs.length} (${rundeckproPRs.length} from rundeckpro, ${rundeckPRs.length} from rundeck)`);
     console.log(`Markdown page: ${markdownPath}`);
     console.log(`RSS feed: ${rssPath}`);
     console.log(`Atom feed: ${atomPath}`);
