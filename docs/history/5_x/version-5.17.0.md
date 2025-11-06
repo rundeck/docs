@@ -3,10 +3,10 @@
 title: "5.17.0 Release Notes"
 date: 2025-11-06
 image: /images/chevron-logo-red-on-white.png
-description: "Rundeck | Runbook Automation Releases 5.17.0 - <DESCRIPTION>"
+description: "Rundeck | Runbook Automation Releases 5.17.0 - Open API Spec Beta, and lots of bug fixes."
 feed:
  enable: true
- description: ""
+ description: "Open API Spec Beta, and lots of bug fixes"
 
 ---
 
@@ -14,7 +14,11 @@ feed:
 
 ## Overview
 
-<!-- <VidStack src="youtube/REPLACE" poster="https://img.youtube.com/vi/REPLACE/maxresdefault.jpg"/> -->
+<VidStack src="youtube/GTK71H-S0R4" poster="https://img.youtube.com/vi/GTK71H-S0R4/maxresdefault.jpg"/>
+
+This release introduces several key enhancements to Rundeck’s automation and runner management capabilities. The create runner endpoint now validates the assignedProjects property format, ensuring more reliable runner assignments. Default runner replica types are set to manual when not specified, simplifying API requests. Node health check cache refreshes have been improved for better system monitoring, and errors related to runner creation in the wizard (especially for Linux ephemeral runners) have been addressed. Additionally, the GitHub Run Script plugin now supports script arguments, expanding its flexibility for automation workflows.
+
+We have recently introduced a new, [beta method for viewing our API](/api/api_basics.md#openapi-views): the OpenAPI specification file is now automatically generated from our code base, helping ensure documentation remains current. As this feature is still in beta, we are continuing to refine the official spec file over the next few releases. We welcome your feedback and encourage you to report any issues you encounter.
 
 ## Runbook Automation Updates
 
@@ -40,6 +44,8 @@ Adds support for passing custom arguments to scripts executed by the GitHubScrip
 ## Rundeck Open Source Product Updates
 
 #####  ::circle-dot:: [OpenAPI doc improvements](https://github.com/rundeck/rundeck/pull/9852)
+  
+We working on a dynamically generated OpenAPI spec file that is hosted on our documentation site at [https://docs.rundeck.com/docs/api/](https://docs.rundeck.com/docs/api/).  Currently this functionality is Beta, but the output can be viewed their in two different viewers.  Going forward there will continue to be improvements to these specs.  For more information check out our release notes stream on the release notes page for 5.17.0.
 
 #####  ::circle-dot:: [Execution view shows local timezone](https://github.com/rundeck/rundeck/pull/9848)
   
