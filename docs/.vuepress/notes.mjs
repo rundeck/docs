@@ -72,6 +72,7 @@ async function main() {
     updateSetupJs(argv.milestone);
     addSidebarVersion(argv.milestone);
     updateLatestReleaseLink(argv.milestone);
+    updateNavbarReleaseLink(argv.milestone);
     updatePRFeedConfig(argv.milestone);
   }
 }
@@ -122,6 +123,31 @@ function updateLatestReleaseLink(version) {
     console.log(`Updated "Latest Release" link to version ${version} in history.ts`);
   } else {
     console.warn('Could not find "Latest Release" link pattern in sidebar-menus/history.ts');
+  }
+}
+
+// Helper: Update the "Release Notes" link in navbar
+function updateNavbarReleaseLink(version) {
+  const navbarPath = path.resolve(__dirname, 'navbar-menus/about.js');
+  let content = fs.readFileSync(navbarPath, 'utf-8');
+  
+  // Find the major version number (e.g., "5" from "5.17.0")
+  const majorVersion = version.split('.')[0];
+  
+  // Pattern to match the Release Notes link line in navbar
+  const releaseNotesPattern = /(text: 'Release Notes',[\s\S]*?link: ')\/history\/\d+_x\/version-[\d.]+\.md(')/;
+  
+  if (content.match(releaseNotesPattern)) {
+    // Replace with new version
+    content = content.replace(
+      releaseNotesPattern,
+      `$1/history/${majorVersion}_x/version-${version}.md$2`
+    );
+    
+    fs.writeFileSync(navbarPath, content);
+    console.log(`Updated navbar "Release Notes" link to version ${version} in about.js`);
+  } else {
+    console.warn('Could not find "Release Notes" link pattern in navbar-menus/about.js');
   }
 }
 
