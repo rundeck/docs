@@ -15,7 +15,7 @@ export default [{
     link: '/rd-cli/'
   },
   {
-    text: 'Release Notes',
+    text: 'Release History',
     link: '/history/'
   },
   {
