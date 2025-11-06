@@ -38,7 +38,7 @@ The development updates are automatically generated from both our private reposi
 *No new updates to report since the last release.*
 {% else %}
 {% for pr in prs -%}
-#### ::circle-check:: {{ pr.cleanTitle }} _({{ pr.mergedDate }})_{% if pr.repoName === 'rundeck' %} [PR #{{ pr.number }}]({{ pr.prUrl }}){% endif %}
+#### ::circle-dot:: {{ pr.cleanTitle }} _({{ pr.mergedDate }})_{% if pr.repoName === 'rundeck' %} [PR #{{ pr.number }}]({{ pr.prUrl }}){% endif %}
 
 {% if pr.sectionContent %}
 {{ pr.sectionContent }}

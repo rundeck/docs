@@ -1,7 +1,7 @@
 ---
 title: Recent Development Updates
 description: Latest merged changes from the Rundeck development team
-date: 2025-11-06T22:20:13.397Z
+date: 2025-11-06T22:48:38.007Z
 feed: true
 index: true
 ---
@@ -10,7 +10,7 @@ index: true
 
 Stay up to date with the latest changes and improvements from the Runbook Automation development team.  
 
-This page shows recently merged pull requests from both the Runbook Automation product repository and the open source Rundeck repository merged since the last self-hosted release of [5.17.0](/history/5_x/version-5.17.0.md) on October 3, 2025. These updates reflect changes deployed to our Runbook Automation SaaS platform, combining both private product enhancements and public open source improvements.
+This page shows recently merged pull requests from both the Runbook Automation product repository and the open source Rundeck repository merged since the last self-hosted release of [5.18.0](/history/5_x/version-5.18.0.md) on October 6, 2025. These updates reflect changes deployed to our Runbook Automation SaaS platform, combining both private product enhancements and public open source improvements.
 
 ## Subscribe to Updates
 
@@ -35,46 +35,46 @@ The development updates are automatically generated from both our private reposi
 ## Recent Changes
 
 
-#### ::circle-check:: Multiline Job Options (Beta) _(Nov 4, 2025)_ [PR #9822](https://github.com/rundeck/rundeck/pull/9822)
+#### ::circle-dot:: Multiline Job Options (Beta) _(Nov 4, 2025)_ [PR #9822](https://github.com/rundeck/rundeck/pull/9822)
 
 
   Adds support for Multiline Job Options as a new choice in the &quot;Option Type&quot; dropdown. This allows users to create job options that can accept multi-line text input instead of being limited to single-line text fields.
 
-#### ::circle-check:: Update nimbusJose for CVE-2025-53864 _(Oct 29, 2025)_
+#### ::circle-dot:: Update nimbusJose for CVE-2025-53864 _(Oct 29, 2025)_
 
 
-#### ::circle-check:: Bouncy Castle 1.79 for CVE-2025-8916 _(Oct 23, 2025)_
+#### ::circle-dot:: Bouncy Castle 1.79 for CVE-2025-8916 _(Oct 23, 2025)_
 
 
-#### ::circle-check:: SSM cannot run job for more than 1 hour _(Oct 23, 2025)_
+#### ::circle-dot:: SSM cannot run job for more than 1 hour _(Oct 23, 2025)_
 
 
   Adds configurable SSM execution timeout functionality to allow AWS SSM jobs to run beyond the default 1-hour limit. The changes introduce a new ssm-execution-timeout configuration property that defaults to 3600 seconds (1 hour) but can be adjusted as needed.
 
-#### ::circle-check:: Improvement in the create runner endpoint to validate assignedProjects prop format _(Oct 22, 2025)_
+#### ::circle-dot:: Improvement in the create runner endpoint to validate assignedProjects prop format _(Oct 22, 2025)_
 
 
   Fixed an issue to avoid creating a runner via API with a wrong format to the assginedProject property. Currently, the runner is being created even if this property is not correct and it causes an error when listing runner from the GUI or via API
 
-#### ::circle-check:: Fix RSS Feeds plugin not recognizing Dates on Microsoft RSS Feeds _(Oct 22, 2025)_
+#### ::circle-dot:: Fix RSS Feeds plugin not recognizing Dates on Microsoft RSS Feeds _(Oct 22, 2025)_
 
 
   Error that occurs when processing RSS feeds that use Z as the timezone indicator instead of standard abbreviations like GMT or UTC.
 
-#### ::circle-check:: Set default runner replica type to manual if not provided in API request _(Oct 21, 2025)_
+#### ::circle-dot:: Set default runner replica type to manual if not provided in API request _(Oct 21, 2025)_
 
 
-#### ::circle-check:: Allow Script Arguments on GitHub Run Script plugin _(Oct 21, 2025)_
+#### ::circle-dot:: Allow Script Arguments on GitHub Run Script plugin _(Oct 21, 2025)_
 
 
   Adds support for passing custom arguments to scripts executed by the GitHubScriptPlugin, allowing users to specify script arguments with shell-like quoting and escaping functionality.
 
-#### ::circle-check:: Improve the nodehealth check cache refresh _(Oct 21, 2025)_
+#### ::circle-dot:: Improve the nodehealth check cache refresh _(Oct 21, 2025)_
 
 
   Removes the automatic 30-second cache refresh mechanism for node health checks and replaces it with a GUI-based refresh approach. The change eliminates forced periodic cache reloads that occurred every 30 seconds, improving performance by relying on user-initiated refreshes instead.
 
-#### ::circle-check:: Runner Wizard error creating runner linux+ephemeral _(Oct 8, 2025)_
+#### ::circle-dot:: Runner Wizard error creating runner linux+ephemeral _(Oct 8, 2025)_
 
 
 

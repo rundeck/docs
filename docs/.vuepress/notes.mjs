@@ -65,12 +65,6 @@ async function main() {
     }
   };
   context.currentDateLong = `${monthNames[now.getMonth()]} ${day}${suffix(day)}, ${now.getFullYear()}`;
-  
-  // Extract "Release Notes" section from enterprise PRs
-  context.enterprise.pulls = context.enterprise.pulls.map(pr => ({
-    ...pr,
-    releaseNotes: extractPRSection(pr.body, 'Release Notes')
-  }));
 
   const notes = nunjucks.renderString(template.toString(), context);
 
@@ -237,9 +231,15 @@ async function getRepoData(repo, includeLabels) {
     contributors[user.data.login] = user.data;
   }
 
+  // Extract "Release Notes" section from all PRs
+  const pullsWithNotes = pulls.map(pr => ({
+    ...pr,
+    releaseNotes: extractPRSection(pr.body, 'Release Notes')
+  }));
+
   return {
     contributors,
-    pulls,
+    pulls: pullsWithNotes,
   };
 }
 
