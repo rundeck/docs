@@ -29,7 +29,7 @@ The development updates are automatically generated from our private development
 
 **List Last updated:** {{lastUpdated}}
 
-This page shows recently merged pull requests from the Rundeck development team {{periodDescription}}{{releaseInfo}}.
+This page shows recently merged pull requests from the Runbook Automation product repository {{periodDescription}}{{releaseInfo}}. These changes are specific to the commercial Runbook Automation product, which is built on top of the open source Rundeck project. For updates to the open source Rundeck code, visit the [Rundeck GitHub repository](https://github.com/rundeck/rundeck).
 
 ## Recent Changes
 
