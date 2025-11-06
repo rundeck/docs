@@ -1,7 +1,7 @@
 ---
 title: Recent Development Updates
 description: Latest merged changes from the Rundeck development team
-date: 2025-11-06T00:10:01.173Z
+date: 2025-11-06T15:33:13.906Z
 feed: true
 index: true
 ---
@@ -34,7 +34,17 @@ This page shows recently merged pull requests from the Rundeck development team 
 ## Recent Changes
 
 
+#### ::circle-check:: Update nimbusJose for CVE-2025-53864 _(Oct 29, 2025)_
+
+#### ::circle-check:: Bouncy Castle 1.79 for CVE-2025-8916 _(Oct 23, 2025)_
+
+#### ::circle-check:: SSM cannot run job for more than 1 hour _(Oct 23, 2025)_
+
+  Adds configurable SSM execution timeout functionality to allow AWS SSM jobs to run beyond the default 1-hour limit. The changes introduce a new ssm-execution-timeout configuration property that defaults to 3600 seconds (1 hour) but can be adjusted as needed.
+
 #### ::circle-check:: Improvement in the create runner endpoint to validate assignedProjects prop format _(Oct 22, 2025)_
+
+  Fixed an issue to avoid creating a runner via API with a wrong format to the assginedProject property. Currently, the runner is being created even if this property is not correct and it causes an error when listing runner from the GUI or via API
 
 #### ::circle-check:: Fix RSS Feeds plugin not recognizing Dates on Microsoft RSS Feeds _(Oct 22, 2025)_
 
