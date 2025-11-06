@@ -51,6 +51,12 @@ async function main() {
   context.contributors = { ...context.core.contributors, ...context.docs.contributors, ...context.ansible.contributors };
 
   context.version = new RundeckVersion({ versionString: argv.milestone });
+  
+  // Extract "Release Notes" section from enterprise PRs
+  context.enterprise.pulls = context.enterprise.pulls.map(pr => ({
+    ...pr,
+    releaseNotes: extractPRSection(pr.body, 'Release Notes')
+  }));
 
   const notes = nunjucks.renderString(template.toString(), context);
 
@@ -149,6 +155,45 @@ function updateNavbarReleaseLink(version) {
   } else {
     console.warn('Could not find "Release Notes" link pattern in navbar-menus/about.js');
   }
+}
+
+// Helper: Extract a specific section from PR body
+function extractPRSection(body, sectionName) {
+  if (!body) return null;
+  
+  // Match section headers like "## Release Notes" or "### Release Notes"
+  const sectionRegex = new RegExp(
+    `^#+\\s*${sectionName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\s*$`,
+    'im'
+  );
+  
+  const lines = body.split('\n');
+  let inSection = false;
+  let sectionContent = [];
+  let sectionLevel = 0;
+  
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    
+    if (sectionRegex.test(line)) {
+      // Found the section header
+      inSection = true;
+      sectionLevel = line.match(/^#+/)[0].length;
+      continue;
+    }
+    
+    if (inSection) {
+      // Check if we've hit another section at same or higher level
+      const headerMatch = line.match(/^(#+)\s/);
+      if (headerMatch && headerMatch[1].length <= sectionLevel) {
+        break; // End of our section
+      }
+      sectionContent.push(line);
+    }
+  }
+  
+  const content = sectionContent.join('\n').trim();
+  return content || null;
 }
 
 async function getRepoData(repo, includeLabels) {

@@ -1,7 +1,7 @@
 ---
 title: Recent Development Updates
 description: Latest merged changes from the Rundeck development team
-date: 2025-11-06T17:33:26.026Z
+date: 2025-11-06T18:28:35.090Z
 feed: true
 index: true
 ---
@@ -55,7 +55,11 @@ The development updates are automatically generated from our private development
 
 #### ::circle-check:: Allow Script Arguments on GitHub Run Script plugin _(Oct 21, 2025)_
 
+  Adds support for passing custom arguments to scripts executed by the GitHubScriptPlugin, allowing users to specify script arguments with shell-like quoting and escaping functionality.
+
 #### ::circle-check:: Improve the nodehealth check cache refresh _(Oct 21, 2025)_
+
+  Removes the automatic 30-second cache refresh mechanism for node health checks and replaces it with a GUI-based refresh approach. The change eliminates forced periodic cache reloads that occurred every 30 seconds, improving performance by relying on user-initiated refreshes instead.
 
 #### ::circle-check:: Runner Wizard error creating runner linux+ephemeral _(Oct 8, 2025)_
 
