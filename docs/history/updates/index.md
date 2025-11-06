@@ -1,35 +1,36 @@
 ---
 title: Recent Development Updates
 description: Latest merged changes from the Rundeck development team
-date: 2025-11-06T15:33:13.906Z
+date: 2025-11-06T17:33:26.026Z
 feed: true
 index: true
 ---
 
 # Recent Development Updates
 
-Stay up to date with the latest changes and improvements from the Runbook Automation development team.
+Stay up to date with the latest changes and improvements from the Runbook Automation development team.  
+
+This page shows recently merged pull requests from the Runbook Automation product repository merged since the last self-hosted release of [5.16.0](/history/5_x/version-5.16.0.md) on October 6, 2025. These changes are specific to the commercial Runbook Automation product, which is built on top of the open source Rundeck project. For updates to the open source Rundeck code, visit the [Rundeck GitHub repository](https://github.com/rundeck/rundeck).
 
 ## Subscribe to Updates
 
-Stay informed about Rundeck development by subscribing to our feeds:
+Stay informed about Rundeck development by subscribing to a feed:
 
 - [RSS Feed](/feeds/development.xml)
 - [Atom Feed](/feeds/development-atom.xml)
 
-These feeds are updated after each deployment to our production Runbook Automation SaaS solution. They highlight important changes that may not be available in our Self Hosted Releases yet.
+These feeds are updated after each deployment to our production Runbook Automation SaaS solution. They highlight changes that may not be available in our Self Hosted Releases yet.
 
 ## About These Updates
 
-The development updates are automatically generated from our private development repository and filtered to show customer-visible changes. They provide insight into active development features available in the Runbook Automation SaaS solution.
 
-**Note**: These updates reflect changes deployed to our SaaS platform. Self-hosted customers should refer to the [Release Notes](/history/) section for version-specific updates applicable to their installation.
+The development updates are automatically generated from our private development repository to highlight key changes happening in the SaaS solution. They provide insight into active development features available in the Runbook Automation SaaS solution and will be released with the next Self Hosted release.
+
+**Note**: These updates only reflect changes deployed to our SaaS platform. Self-hosted customers should refer to the [Release Notes](/history/) section for version-specific updates applicable to their installation.
 
 ---
 
 **List Last updated:** 2025-11-06
-
-This page shows recently merged pull requests from the Rundeck development team merged since the last self-hosted release of [5.16.0](/history/5_x/version-5.16.0.md) on October 6, 2025.
 
 ## Recent Changes
 
