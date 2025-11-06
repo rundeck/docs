@@ -1,9 +1,9 @@
 ---
 
 title: "{{version.versionString}} Release Notes"
-date: 2025-01-01
+date: {{currentDate}}
 image: /images/chevron-logo-red-on-white.png
-description: "Rundeck | Runbook Automation Releases <VERSION> <DESCRIPTION>"
+description: "Rundeck | Runbook Automation Releases {{version.versionString}} - <DESCRIPTION>"
 feed:
  enable: true
  description: ""
@@ -18,12 +18,9 @@ feed:
 
 ## Runbook Automation Updates
 
-> Also includes all Open Source updates from below
-
 {% for pull in enterprise.pulls -%}
-#### ::circle-check:: {{ pull.title | replace(r/^(RUN-[0-9]+\s*)+:?\s*/g, "") }}
-
-{% if pull.releaseNotes %}
+##### {{ pull.title | replace(r/^(RUN-[0-9]+\s*)+:?\s*/g, "") }}
+{% if pull.releaseNotes %}  
 {{ pull.releaseNotes }}
 {% endif %}
 {% endfor %}
@@ -56,7 +53,7 @@ feed:
 
 Name: <span style="color: {{version.color()}}"><span class="glyphicon glyphicon-{{version.icon()}}"></span> "{{version.name()}} {{version.color()}} {{version.icon()}}"</span>
 
-Release Date: PUTADATEHERE
+Release Date: {{currentDateLong}}
 
 
 ## Community Contributors

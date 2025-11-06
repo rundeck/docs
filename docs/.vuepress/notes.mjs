@@ -52,6 +52,25 @@ async function main() {
 
   context.version = new RundeckVersion({ versionString: argv.milestone });
   
+  // Add current date in two formats
+  const now = new Date();
+  context.currentDate = now.toISOString().split('T')[0]; // Format: 2025-01-01
+  
+  // Format for "January 1st, 2025"
+  const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
+    'July', 'August', 'September', 'October', 'November', 'December'];
+  const day = now.getDate();
+  const suffix = (day) => {
+    if (day > 3 && day < 21) return 'th';
+    switch (day % 10) {
+      case 1: return 'st';
+      case 2: return 'nd';
+      case 3: return 'rd';
+      default: return 'th';
+    }
+  };
+  context.currentDateLong = `${monthNames[now.getMonth()]} ${day}${suffix(day)}, ${now.getFullYear()}`;
+  
   // Extract "Release Notes" section from enterprise PRs
   context.enterprise.pulls = context.enterprise.pulls.map(pr => ({
     ...pr,
