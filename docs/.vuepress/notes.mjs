@@ -71,8 +71,10 @@ async function main() {
     // addReleaseRow(argv.milestone); // Removed: function not defined
     updateSetupJs(argv.milestone);
     addSidebarVersion(argv.milestone);
+    updateLatestReleaseLink(argv.milestone);
     updatePRFeedConfig(argv.milestone);
   }
+}
 
 // Helper: Add release row to release-calendar.md if not present
 // (Removed duplicate definition of addReleaseRow)
@@ -81,7 +83,7 @@ async function main() {
 function addSidebarVersion(version) {
   const sidebarPath = path.resolve(__dirname, 'sidebar-menus/history.ts');
   let content = fs.readFileSync(sidebarPath, 'utf-8');
-  const versionEntry = `              {\n                text: "${version}",\n                link: "https://docs.rundeck.com/${version}/"\n              },\n`;
+  const versionEntry = `          {\n            text: "${version}",\n            link: "https://docs.rundeck.com/${version}/"\n          },\n`;
   if (content.includes(`text: "${version}"`)) {
     console.log(`Sidebar version entry for ${version} already exists in history.ts, skipping.`);
     return;
@@ -97,6 +99,30 @@ function addSidebarVersion(version) {
     console.warn('Could not find Version 5.x section in sidebar-menus/history.ts');
   }
 }
+
+// Helper: Update the "Latest Release" link in sidebar
+function updateLatestReleaseLink(version) {
+  const sidebarPath = path.resolve(__dirname, 'sidebar-menus/history.ts');
+  let content = fs.readFileSync(sidebarPath, 'utf-8');
+  
+  // Find the major version number (e.g., "5" from "5.17.0")
+  const majorVersion = version.split('.')[0];
+  
+  // Pattern to match the "Latest Release" link line
+  const latestReleasePattern = /(text: 'Latest Release',[\s\S]*?link: ')\/history\/\d+_x\/version-[\d.]+\.md(',)/;
+  
+  if (content.match(latestReleasePattern)) {
+    // Replace with new version
+    content = content.replace(
+      latestReleasePattern,
+      `$1/history/${majorVersion}_x/version-${version}.md$2`
+    );
+    
+    fs.writeFileSync(sidebarPath, content);
+    console.log(`Updated "Latest Release" link to version ${version} in history.ts`);
+  } else {
+    console.warn('Could not find "Latest Release" link pattern in sidebar-menus/history.ts');
+  }
 }
 
 async function getRepoData(repo, includeLabels) {
