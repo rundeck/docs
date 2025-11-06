@@ -1,7 +1,6 @@
 import fs from 'fs';
 import * as path from 'path';
 import { fileURLToPath } from 'url';
-import { Buffer } from 'buffer';
 import nunjucks from 'nunjucks';
 import { Octokit } from '@octokit/rest';
 import dotenv from 'dotenv';
@@ -11,11 +10,12 @@ import RundeckVersion from './version.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
+dotenv.config();
+
 const argv = _yargs(hideBin(process.argv)).argv;
 
 const template = fs.readFileSync('./docs/.vuepress/notes.md.nj');
 
-const excludeLabels = ['release-notes/exclude'];
 // List of usernames to exclude from contributors
 const excludeUsernames = [
   'github-actions[bot]',
@@ -36,15 +36,11 @@ const excludeUsernames = [
   'smartinellibenedetti'
 ];
 
-const ghToken = process.env.GH_API_TOKEN;
-
-dotenv.config();
-
 async function main() {
   const context = {};
-  context.core = await getRepoData({ repo: 'rundeck', owner: 'rundeck' }, []);
+  context.core = await getRepoData({ repo: 'rundeck', owner: 'rundeck' }, ['release-notes/include']);
   context.enterprise = await getRepoData({ repo: 'rundeckpro', owner: 'rundeckpro' }, ['release-notes/include']);
-  context.docs = await getRepoData({ repo: 'docs', owner: 'rundeck' }, []);
+  context.docs = await getRepoData({ repo: 'docs', owner: 'rundeck' }, []); // No label filtering for docs (need all PRs for contributors)
   context.ansible = await getRepoData({ repo: 'ansible-plugin', owner: 'rundeck-plugins' }, ['release-notes/include']);
   context.runner = await getRepoData({ repo: 'sidecar', owner: 'rundeckpro' }, ['release-notes/include']);
   context.contributors = { ...context.core.contributors, ...context.docs.contributors, ...context.ansible.contributors };
@@ -219,47 +215,32 @@ async function getRepoData(repo, includeLabels) {
 
   if (!milestone) {
     console.error(`GitHub milestone ${argv.milestone} not found on ${repo.owner}/${repo.repo}.`);
-  } else {
-    const issuesResp = await gh.paginate(gh.issues.listForRepo, {
-      ...repo,
-      milestone: milestone.number,
-      state: 'closed',
-      labels: includeLabels.join(','),
-      per_page: 100,
-    });
-
-    const pulls = issuesResp
-      .filter((i) => i.pull_request)
-      .filter((i) => !i.labels.some((l) => excludeLabels.includes(l.name)));
-
-    const issues = issuesResp
-      .filter((i) => !i.pull_request)
-      .filter((i) => !i.labels.some((l) => !excludeLabels.includes(l.name)));
-
-    const contributors = {};
-    const reporters = {};
-
-    for (const p of pulls) {
-      if (excludeUsernames.includes(p.user.login)) continue;
-      if (contributors[p.user.login]) continue;
-      const user = await gh.users.getByUsername({ username: p.user.login });
-      contributors[user.data.login] = user.data;
-    }
-
-    for (const i of issues) {
-      if (excludeUsernames.includes(i.user.login)) continue;
-      if (reporters[i.user.login]) continue;
-      const user = await gh.users.getByUsername({ username: i.user.login });
-      reporters[user.data.login] = user.data;
-    }
-
-    return {
-      contributors,
-      reporters,
-      pulls,
-      issues,
-    };
+    return { contributors: {}, pulls: [] };
   }
+
+  const issuesResp = await gh.paginate(gh.issues.listForRepo, {
+    ...repo,
+    milestone: milestone.number,
+    state: 'closed',
+    labels: includeLabels.join(','),
+    per_page: 100,
+  });
+
+  const pulls = issuesResp.filter((i) => i.pull_request);
+
+  const contributors = {};
+
+  for (const p of pulls) {
+    if (excludeUsernames.includes(p.user.login)) continue;
+    if (contributors[p.user.login]) continue;
+    const user = await gh.users.getByUsername({ username: p.user.login });
+    contributors[user.data.login] = user.data;
+  }
+
+  return {
+    contributors,
+    pulls,
+  };
 }
 
 
