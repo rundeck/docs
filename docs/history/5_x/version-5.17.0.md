@@ -96,7 +96,6 @@ Release Date: November 3rd, 2025
 
 Submit your own Pull Requests to get recognition here!
 
-*  ([jayas006](https://github.com/jayas006))
 * Lucas Migliorini ([luqpy](https://github.com/luqpy))
 
 
