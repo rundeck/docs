@@ -10,7 +10,21 @@ index: true
 
 Stay up to date with the latest changes and improvements from the Runbook Automation development team.  
 
-This page shows recently merged pull requests from both the Runbook Automation product repository and the open source Rundeck repository {{periodDescription}}{{releaseInfo}}. These updates reflect changes deployed to our Runbook Automation SaaS platform, combining both private product enhancements and public open source improvements.
+This page shows recently merged pull requests from both the Runbook Automation product repository and the open source Rundeck repository {{periodDescription}}{{releaseInfo}}.
+
+## Recent Changes
+
+{% if prs.length === 0 %}
+*No new updates to report since the last release.*
+{% else %}
+{% for pr in prs -%}
+#### ::circle-dot:: {{ pr.cleanTitle }} _({{ pr.mergedDate }})_{% if pr.repoName === 'rundeck' %} [PR #{{ pr.number }}]({{ pr.prUrl }}){% endif %}
+
+{% if pr.sectionContent %}
+{{ pr.sectionContent }}
+{% endif %}
+{% endfor %}
+{% endif %}
 
 ## Subscribe to Updates
 
@@ -32,16 +46,4 @@ The development updates are automatically generated from both our private reposi
 
 **List Last updated:** {{lastUpdated}}
 
-## Recent Changes
 
-{% if prs.length === 0 %}
-*No new updates to report since the last release.*
-{% else %}
-{% for pr in prs -%}
-#### ::circle-dot:: {{ pr.cleanTitle }} _({{ pr.mergedDate }})_{% if pr.repoName === 'rundeck' %} [PR #{{ pr.number }}]({{ pr.prUrl }}){% endif %}
-
-{% if pr.sectionContent %}
-{{ pr.sectionContent }}
-{% endif %}
-{% endfor %}
-{% endif %}
