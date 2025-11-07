@@ -181,30 +181,48 @@ async function fetchPRsSinceTag(octokit, owner, repo, version, includeLabels = [
   console.log(`  Found ${prNumbers.size} unique PRs (including squash merges)`);
   
   // Fetch full PR data and filter by labels
+  // Use batched parallel requests to improve performance and respect rate limits
+  // Processing 10 PRs at a time provides a good balance between speed and API courtesy
+  const BATCH_SIZE = 10;
+  const prNumbersArray = Array.from(prNumbers);
   const prs = [];
-  for (const prNumber of prNumbers) {
-    try {
-      const { data: pr } = await octokit.rest.pulls.get({
-        owner,
-        repo,
-        pull_number: prNumber
-      });
-      
-      // Check if PR has required labels
-      const prLabels = pr.labels.map(label => label.name);
-      if (includeLabels.length === 0 || includeLabels.some(label => prLabels.includes(label))) {
-        // Check exclude labels
-        if (!CONFIG.excludeLabels.some(label => prLabels.includes(label))) {
-          prs.push({
-            ...pr,
-            _repoOwner: owner,
-            _repoName: repo
-          });
+  
+  for (let i = 0; i < prNumbersArray.length; i += BATCH_SIZE) {
+    const batch = prNumbersArray.slice(i, i + BATCH_SIZE);
+    
+    // Fetch batch in parallel
+    const batchResults = await Promise.allSettled(
+      batch.map(prNumber =>
+        octokit.rest.pulls.get({
+          owner,
+          repo,
+          pull_number: prNumber
+        })
+      )
+    );
+    
+    // Process results and filter by labels
+    batchResults.forEach((result, idx) => {
+      if (result.status === 'fulfilled') {
+        const pr = result.value.data;
+        const prLabels = pr.labels.map(label => label.name);
+        
+        // Check if PR has required labels
+        if (includeLabels.length === 0 || includeLabels.some(label => prLabels.includes(label))) {
+          // Check exclude labels
+          if (!CONFIG.excludeLabels.some(label => prLabels.includes(label))) {
+            prs.push({
+              ...pr,
+              _repoOwner: owner,
+              _repoName: repo
+            });
+          }
         }
+      } else {
+        const prNumber = batch[idx];
+        console.warn(`  Warning: Could not fetch PR #${prNumber}: ${result.reason?.message || 'Unknown error'}`);
       }
-    } catch (error) {
-      console.warn(`  Warning: Could not fetch PR #${prNumber}: ${error.message}`);
-    }
+    });
   }
   
   console.log(`  After label filtering: ${prs.length} PRs with required labels`);
