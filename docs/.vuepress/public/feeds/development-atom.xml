@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Rundeck Development Updates</title>
+  <link href="https://docs.rundeck.com/feeds/development.xml" rel="self" />
+  <link href="https://docs.rundeck.com/docs" />
+  <updated>2025-11-07T00:29:20.934Z</updated>
+  <id>https://docs.rundeck.com/feeds/development</id>
+  <subtitle>Recent merged pull requests and development updates from Rundeck</subtitle>
+  <entry>
+    <title>Multiline Job Options (Beta)</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeck-9822</id>
+    <updated>2025-11-04T23:56:21.000Z</updated>
+    <content type="text">Multiline Job Options (Beta) (Merged: Nov 4, 2025)</content>
+  </entry>
+  <entry>
+    <title>Update nimbusJose for CVE-2025-53864</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeckpro-4453</id>
+    <updated>2025-10-29T15:28:47.000Z</updated>
+    <content type="text">Update nimbusJose for CVE-2025-53864 (Merged: Oct 29, 2025)</content>
+  </entry>
+  <entry>
+    <title>Bouncy Castle 1.79 for CVE-2025-8916</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeckpro-4443</id>
+    <updated>2025-10-23T16:54:27.000Z</updated>
+    <content type="text">Bouncy Castle 1.79 for CVE-2025-8916 (Merged: Oct 23, 2025)</content>
+  </entry>
+  <entry>
+    <title>SSM cannot run job for more than 1 hour</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeckpro-4444</id>
+    <updated>2025-10-23T16:31:42.000Z</updated>
+    <content type="text">SSM cannot run job for more than 1 hour (Merged: Oct 23, 2025)</content>
+  </entry>
+</feed>

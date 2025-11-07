@@ -1,4 +1,4 @@
-# Rundeck Release Highlights
+# Release History
 
 ## Most Recent Release Notes
 
