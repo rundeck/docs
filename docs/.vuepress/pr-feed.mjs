@@ -146,7 +146,7 @@ async function fetchPRsSinceTag(octokit, owner, repo, version, includeLabels = [
   }
   
   if (!comparison) {
-    console.warn(`  Tag for version ${version} not found in ${owner}/${repo} (tried: ${tagFormats.join(', ')})`);
+    console.warn(`  Tag for version ${version} not found in ${owner}/${repo} (tried: ${tagFormats.map(tag => `'${tag}'`).join(', ')})`);
     return [];
   }
   
