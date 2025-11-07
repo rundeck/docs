@@ -1,7 +1,7 @@
 ---
 title: Recent Development Updates
 description: Latest merged changes from the Rundeck development team
-date: 2025-11-07T19:27:35.356Z
+date: 2025-11-07T20:06:26.663Z
 feed: true
 index: true
 ---
@@ -22,7 +22,15 @@ This page shows recently merged pull requests from both the Runbook Automation p
 #### ::circle-dot:: Update nimbusJose for CVE-2025-53864 
 
 
+#### ::circle-dot:: Fix project export using CLI  [PR #9872](https://github.com/rundeck/rundeck/pull/9872)
+
+
+  This PR fixes an error in the project export functionality when using the Rundeck CLI by ensuring proper cleanup of resources even when file streaming fails.
+
 #### ::circle-dot:: Bouncy Castle 1.79 for CVE-2025-8916 
+
+
+#### ::circle-dot:: Fix CVE-2025-8916  [PR #9863](https://github.com/rundeck/rundeck/pull/9863)
 
 
 #### ::circle-dot:: SSM cannot run job for more than 1 hour 

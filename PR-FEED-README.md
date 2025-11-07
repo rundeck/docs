@@ -93,9 +93,14 @@ The `pr-feed-config.json` file tracks three key values:
 
 3. **`lastSaasCut`**: Update manually each time you cut a release (typically weekly)
    - This is the tag created when you build the release candidate
-   - Format: `rba/5.18-RBA-YYYYMMDD-shortsha1-shortsha2`
-   - This tag defines the "endpoint" for PR queries
-   - PRs merged after this tag will NOT appear in the feed until the next cut
+   - Format: `rba/${vNum}-RBA-${vDate}-${coreSha}-${proSha}`
+     - `vNum`: Next major version (e.g., `5.18`)
+     - `vDate`: Date the cut was made (YYYYMMDD)
+     - `coreSha`: Short SHA of the rundeck (core) submodule commit
+     - `proSha`: Short SHA of the rundeckpro commit
+   - Example: `rba/5.18-RBA-20251030-2f39445-a6d9e14`
+   - The script parses this tag to extract the exact commit SHAs
+   - PRs merged after these commits will NOT appear in the feed until the next cut
 
 **Example workflow:**
 1. Wednesday: Cut release → Update `lastSaasCut` with the new tag
@@ -140,12 +145,15 @@ node ./docs/.vuepress/pr-feed.mjs --owner=rundeck --repo=rundeck
 1. Reads `pr-feed-config.json` to get:
    - Last self-hosted release version (e.g., `5.17.0`)
    - SaaS cut tag (e.g., `rba/5.18-RBA-20251030-2f39445-a6d9e14`)
-2. For **rundeckpro**: Compares `v5.17.0` tag to SaaS cut tag using `git.compareCommits`
-3. For **rundeck**: Extracts the rundeck submodule commit from the SaaS cut tag, then compares `v5.17.0` to that commit
-4. Finds all commits between these points and extracts associated PRs
-5. Handles all merge strategies: merge commits, squash merges, and rebase merges
-6. Filters by `release-notes/include` label
-7. Combines results and sorts by merge date
+2. Parses the SaaS cut tag to extract:
+   - `coreSha` (2f39445): The rundeck submodule commit
+   - `proSha` (a6d9e14): The rundeckpro commit
+3. For **rundeckpro**: Compares `v5.17.0` tag to `proSha` commit using `git.compareCommits`
+4. For **rundeck**: Compares `v5.17.0` tag to `coreSha` commit using `git.compareCommits`
+5. Finds all commits between these points and extracts associated PRs
+6. Handles all merge strategies: merge commits, squash merges, and rebase merges
+7. Filters by `release-notes/include` label
+8. Combines results and sorts by merge date
 
 **Why Tag-Based?**
 - More accurate than date-based queries
@@ -154,11 +162,11 @@ node ./docs/.vuepress/pr-feed.mjs --owner=rundeck --repo=rundeck
 - Aligns with actual release cuts and deployments
 - Ensures you only see PRs that are truly included in the deployment
 
-**Submodule Handling:**
-Since `rundeck` is a submodule of `rundeckpro`, the script automatically:
-- Checks the rundeckpro SaaS cut tag to find which rundeck commit was included
-- Uses that specific commit as the comparison point for rundeck PRs
-- Ensures accuracy even when rundeck and rundeckpro tags don't match
+**Tag Format Benefits:**
+- No API lookups needed - commit SHAs are directly in the tag
+- Guarantees accuracy - uses the exact commits from the build
+- Simple parsing - reliable extraction from standardized format
+- Fast execution - no need to traverse git trees
 
 ## What Gets Generated
 
@@ -314,15 +322,21 @@ The script handles all three GitHub merge strategies:
 2. **Squash merges**: Detected via `listPullRequestsAssociatedWithCommit` API
 3. **Rebase merges**: Each rebased commit is associated with its PR via GitHub API
 
-### Submodule Resolution
-When querying the rundeck repository:
-1. Script reads the rundeckpro SaaS cut tag
-2. Extracts the git tree to find submodule references (mode `160000`)
-3. Finds the `rundeck` submodule commit SHA
-4. Uses that SHA as the comparison endpoint for rundeck PRs
-5. Falls back to `main` if submodule cannot be resolved
+### SaaS Cut Tag Parsing
+The `lastSaasCut` tag follows the format: `rba/${vNum}-RBA-${vDate}-${coreSha}-${proSha}`
 
-This ensures rundeck PRs are accurately scoped to what was included in the rundeckpro build.
+Example: `rba/5.18-RBA-20251030-2f39445-a6d9e14`
+- `5.18` - Next major version number
+- `20251030` - Cut date (October 30, 2025)
+- `2f39445` - Short SHA of rundeck (core) submodule commit
+- `a6d9e14` - Short SHA of rundeckpro commit
+
+The script parses this format to extract commit SHAs directly, eliminating the need for:
+- API calls to fetch tag objects
+- Git tree traversal to find submodules
+- Handling of annotated vs lightweight tags
+
+This ensures the exact commits used in the build are compared, guaranteeing accuracy.
 
 ## License
 

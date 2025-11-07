@@ -5,7 +5,7 @@
     <link>https://docs.rundeck.com/docs</link>
     <description>Recent merged pull requests and development updates from Rundeck</description>
     <language>en-us</language>
-    <lastBuildDate>Fri, 07 Nov 2025 19:27:35 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 07 Nov 2025 20:06:26 GMT</lastBuildDate>
     <atom:link href="https://docs.rundeck.com/feeds/development.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Update nimbusJose for CVE-2025-53864</title>
@@ -15,11 +15,25 @@
       <guid isPermaLink="false">rundeck-pr-rundeckpro-4453</guid>
     </item>
     <item>
+      <title>Fix project export using CLI</title>
+      <link>https://docs.rundeck.com/docs/history/updates/</link>
+      <description>Fix project export using CLI (Merged: Oct 24, 2025)</description>
+      <pubDate>Fri, 24 Oct 2025 15:20:24 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeck-9872</guid>
+    </item>
+    <item>
       <title>Bouncy Castle 1.79 for CVE-2025-8916</title>
       <link>https://docs.rundeck.com/docs/history/updates/</link>
       <description>Bouncy Castle 1.79 for CVE-2025-8916 (Merged: Oct 23, 2025)</description>
       <pubDate>Thu, 23 Oct 2025 16:54:27 GMT</pubDate>
       <guid isPermaLink="false">rundeck-pr-rundeckpro-4443</guid>
+    </item>
+    <item>
+      <title>Fix CVE-2025-8916</title>
+      <link>https://docs.rundeck.com/docs/history/updates/</link>
+      <description>Fix CVE-2025-8916 (Merged: Oct 23, 2025)</description>
+      <pubDate>Thu, 23 Oct 2025 16:54:15 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeck-9863</guid>
     </item>
     <item>
       <title>SSM cannot run job for more than 1 hour</title>
