@@ -173,7 +173,8 @@ async function fetchPRsSinceTag(octokit, owner, repo, version, includeLabels = [
           }
         });
       } catch (error) {
-        // Ignore errors for individual commits
+        // Log errors for individual commits at debug level to aid troubleshooting
+        console.debug(`    Debug: Could not fetch associated PRs for commit ${commit.sha}: ${error.message}`);
       }
     }
   }
