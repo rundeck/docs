@@ -1,7 +1,7 @@
 ---
 title: Recent Development Updates
 description: Latest merged changes from the Rundeck development team
-date: 2025-11-06T23:24:06.905Z
+date: 2025-11-07T00:05:10.636Z
 feed: true
 index: true
 ---
@@ -10,7 +10,7 @@ index: true
 
 Stay up to date with the latest changes and improvements from the Runbook Automation development team.  
 
-This page shows recently merged pull requests from both the Runbook Automation product repository and the open source Rundeck repository merged since the last self-hosted release of [5.17.0](/history/5_x/version-5.17.0.md) on October 27, 2025. These updates reflect changes deployed to our Runbook Automation SaaS platform, combining both private product enhancements and public open source improvements.
+This page shows recently merged pull requests from both the Runbook Automation product repository and the open source Rundeck repository merged since the last self-hosted release of [5.17.0](/history/5_x/version-5.17.0.md) on October 23, 2025. These updates reflect changes deployed to our Runbook Automation SaaS platform, combining both private product enhancements and public open source improvements.
 
 ## Subscribe to Updates
 
@@ -30,7 +30,7 @@ The development updates are automatically generated from both our private reposi
 
 ---
 
-**List Last updated:** 2025-11-06
+**List Last updated:** 2025-11-07
 
 ## Recent Changes
 
@@ -42,6 +42,14 @@ The development updates are automatically generated from both our private reposi
 
 #### ::circle-dot:: Update nimbusJose for CVE-2025-53864 _(Oct 29, 2025)_
 
+
+#### ::circle-dot:: Bouncy Castle 1.79 for CVE-2025-8916 _(Oct 23, 2025)_
+
+
+#### ::circle-dot:: SSM cannot run job for more than 1 hour _(Oct 23, 2025)_
+
+
+  Adds configurable SSM execution timeout functionality to allow AWS SSM jobs to run beyond the default 1-hour limit. The changes introduce a new ssm-execution-timeout configuration property that defaults to 3600 seconds (1 hour) but can be adjusted as needed.
 
 
 
