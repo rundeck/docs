@@ -221,11 +221,9 @@ async function fetchPRsSinceTag(octokit, owner, repo, version, includeLabels = [
         }
       } else {
         const prNumber = batch[idx];
-        console.warn(`  Warning: Could not fetch PR #${prNumber}: ${result.reason?.message || 'Unknown error'}`);
+        console.warn(`  Warning: Could not fetch PR #${prNumber} from ${owner}/${repo}: ${result.reason?.message || 'Unknown error'}`);
       }
-    } catch (error) {
-      console.warn(`  Warning: Could not fetch PR #${prNumber} from ${owner}/${repo}: ${error.message}`);
-    }
+    });
   }
   
   console.log(`  After label filtering: ${prs.length} PRs with required labels`);
