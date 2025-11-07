@@ -163,7 +163,7 @@ node ./docs/.vuepress/pr-feed.mjs --owner=rundeck --repo=rundeck
 - Ensures you only see PRs that are truly included in the deployment
 
 **Tag Format Benefits:**
-- No API lookups needed - commit SHAs are directly in the tag
+- Minimal API lookups needed - commit SHAs are directly in the tag (no tag object API calls needed)
 - Guarantees accuracy - uses the exact commits from the build
 - Simple parsing - reliable extraction from standardized format
 - Fast execution - no need to traverse git trees
