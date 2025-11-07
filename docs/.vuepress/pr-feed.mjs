@@ -1,11 +1,11 @@
 /**
- * generate-pr-feed.mjs
+ * pr-feed.mjs
  * 
  * Generates RSS/Atom feeds and markdown pages from recently merged PRs
  * in the private rundeckpro repository. Designed for weekly release updates.
  * 
  * Usage:
- *   node generate-pr-feed.mjs --days=7 [--owner=rundeckpro] [--repo=rundeckpro]
+ *   node pr-feed.mjs --days=7 [--owner=rundeckpro] [--repo=rundeckpro]
  * 
  * Environment Variables:
  *   GH_API_TOKEN - GitHub API token with access to private repos
