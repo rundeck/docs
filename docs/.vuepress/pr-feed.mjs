@@ -85,11 +85,6 @@ function loadConfig() {
 }
 
 /**
- * Calculate the "since" date based on config or --days parameter
- * @param {Object|null} config - Config object from pr-feed-config.json
- * @returns {Date} Date to use as cutoff for PRs
- */
-/**
  * Parse the SaaS cut tag to extract commit SHAs
  * Tag format: rba/${vNum}-RBA-${vDate}-${coreSha}-${proSha}
  * Example: rba/5.18-RBA-20251030-2f39445-a6d9e14
@@ -280,7 +275,7 @@ function initOctokit() {
  * @param {Date} sinceDate - Date to fetch PRs after
  * @returns {Promise<Array>} Array of PR objects
  */
-async function fetchRecentPRs(octokit, owner, repo, includeLabels = [], sinceDate = CONFIG.sinceDate) {
+async function fetchRecentPRs(octokit, owner, repo, includeLabels, sinceDate) {
   console.log(`  Repository: ${owner}/${repo}`);
   if (includeLabels.length > 0) {
     console.log(`  Required labels: ${includeLabels.join(', ')}`);
