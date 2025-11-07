@@ -284,11 +284,10 @@ function updatePRFeedConfig(version) {
   const config = {
     lastSelfHostedRelease: {
       version: version,
-      date: today,
       description: "Last self-hosted release version and date"
     }
   };
   
   fs.writeFileSync(configPath, JSON.stringify(config, null, 2) + '\n');
-  console.log(`Updated pr-feed-config.json with version ${version} and date ${today}`);
+  console.log(`Updated pr-feed-config.json with version ${version}`);
 }
