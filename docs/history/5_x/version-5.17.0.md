@@ -49,7 +49,7 @@ We are working on a dynamically generated OpenAPI spec file that is hosted on ou
 
 #####  ::circle-dot:: [Execution view shows local timezone](https://github.com/rundeck/rundeck/pull/9848)
   
-Improves time display formatting across the UI consistent timezone-aware time formatting for execution start/end dates and log entries.
+Improves time display formatting across the UI with consistent timezone-aware time formatting for execution start/end dates and log entries.
 
 #####  ::circle-dot:: [Feature/Add Job Creation Date And Last Modified User Audit Tracking To Job Metadata](https://github.com/rundeck/rundeck/pull/9839)
   
