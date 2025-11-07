@@ -204,7 +204,7 @@ async function fetchPRsSinceTag(octokit, owner, repo, version, includeLabels = [
         }
       }
     } catch (error) {
-      console.warn(`  Warning: Could not fetch PR #${prNumber}: ${error.message}`);
+      console.warn(`  Warning: Could not fetch PR #${prNumber} from ${owner}/${repo}: ${error.message}`);
     }
   }
   
