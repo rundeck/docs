@@ -350,12 +350,29 @@ function generateMarkdown(prs) {
     };
   });
   
+  // Format lastSaasRelease date if available
+  let lastSaasRelease = null;
+  if (feedConfig && feedConfig.lastSelfHostedRelease && feedConfig.lastSelfHostedRelease.lastSaasRelease) {
+    const saasDateParts = feedConfig.lastSelfHostedRelease.lastSaasRelease.split('-');
+    lastSaasRelease = new Date(Date.UTC(
+      parseInt(saasDateParts[0]), 
+      parseInt(saasDateParts[1]) - 1, 
+      parseInt(saasDateParts[2])
+    )).toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      timeZone: 'UTC'
+    });
+  }
+  
   // Prepare context for nunjucks
   const context = {
     currentDate: now.toISOString(),
     lastUpdated: dateStr,
     periodDescription,
     releaseInfo,
+    lastSaasRelease,
     prs: prData
   };
   

@@ -93,7 +93,7 @@ npm run pr-feed -- --days=7
 npm run pr-feed -- --include-section="Customer Summary"
 
 # Different repository
-node ./docs/.vuepress/generate-pr-feed.mjs --owner=rundeck --repo=rundeck
+node ./docs/.vuepress/pr-feed.mjs --owner=rundeck --repo=rundeck
 ```
 
 ### Command-Line Options
@@ -239,17 +239,17 @@ If you see prefixes that weren't removed, they may not match this pattern.
 ### Label Filtering
 Use different labels:
 ```bash
-node ./docs/.vuepress/generate-pr-feed.mjs --labels feature bugfix enhancement
+node ./docs/.vuepress/pr-feed.mjs --labels feature bugfix enhancement
 ```
 
 ### Different Repository
 ```bash
-node ./docs/.vuepress/generate-pr-feed.mjs --owner=rundeck --repo=rundeck --days=14
+node ./docs/.vuepress/pr-feed.mjs --owner=rundeck --repo=rundeck --days=14
 ```
 
 ### Output Location
 ```bash
-node ./docs/.vuepress/generate-pr-feed.mjs --output-dir=./docs/some-other-location
+node ./docs/.vuepress/pr-feed.mjs --output-dir=./docs/some-other-location
 ```
 
 ## Implementation Notes

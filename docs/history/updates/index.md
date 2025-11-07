@@ -1,7 +1,7 @@
 ---
 title: Recent Development Updates
 description: Latest merged changes from the Rundeck development team
-date: 2025-11-07T00:17:56.059Z
+date: 2025-11-07T00:29:20.912Z
 feed: true
 index: true
 ---
@@ -12,21 +12,25 @@ Stay up to date with the latest changes and improvements from the Runbook Automa
 
 This page shows recently merged pull requests from both the Runbook Automation product repository and the open source Rundeck repository merged since the last self-hosted release of [5.17.0](/history/5_x/version-5.17.0.md) on October 23, 2025.
 
+
+**Last SaaS Deployment:** November 4, 2025
+
+
 ## Recent Changes
 
 
-#### ::circle-dot:: Multiline Job Options (Beta) _(Nov 4, 2025)_ [PR #9822](https://github.com/rundeck/rundeck/pull/9822)
+#### ::circle-dot:: Multiline Job Options (Beta)  [PR #9822](https://github.com/rundeck/rundeck/pull/9822)
 
 
   Adds support for Multiline Job Options as a new choice in the &quot;Option Type&quot; dropdown. This allows users to create job options that can accept multi-line text input instead of being limited to single-line text fields.
 
-#### ::circle-dot:: Update nimbusJose for CVE-2025-53864 _(Oct 29, 2025)_
+#### ::circle-dot:: Update nimbusJose for CVE-2025-53864 
 
 
-#### ::circle-dot:: Bouncy Castle 1.79 for CVE-2025-8916 _(Oct 23, 2025)_
+#### ::circle-dot:: Bouncy Castle 1.79 for CVE-2025-8916 
 
 
-#### ::circle-dot:: SSM cannot run job for more than 1 hour _(Oct 23, 2025)_
+#### ::circle-dot:: SSM cannot run job for more than 1 hour 
 
 
   Adds configurable SSM execution timeout functionality to allow AWS SSM jobs to run beyond the default 1-hour limit. The changes introduce a new ssm-execution-timeout configuration property that defaults to 3600 seconds (1 hour) but can be adjusted as needed.
