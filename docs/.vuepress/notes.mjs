@@ -279,13 +279,22 @@ function updateSetupJs(version) {
 
 function updatePRFeedConfig(version) {
   const configPath = path.resolve(__dirname, 'pr-feed-config.json');
-  const today = new Date().toISOString().split('T')[0];
   
-  const config = {
-    lastSelfHostedRelease: {
-      version: version,
-      description: "Last self-hosted release version and date"
+  // Read existing config to preserve existing fields like 'date'
+  let config = { lastSelfHostedRelease: {} };
+  if (fs.existsSync(configPath)) {
+    try {
+      config = JSON.parse(fs.readFileSync(configPath, 'utf-8'));
+    } catch (error) {
+      console.warn('Could not parse existing pr-feed-config.json, creating new config.');
     }
+  }
+  
+  // Only update the version, preserve all other fields
+  config.lastSelfHostedRelease = {
+    ...config.lastSelfHostedRelease,
+    version: version,
+    description: "Last self-hosted release version and date"
   };
   
   fs.writeFileSync(configPath, JSON.stringify(config, null, 2) + '\n');
