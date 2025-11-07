@@ -45,7 +45,7 @@ Adds support for passing custom arguments to scripts executed by the GitHubScrip
 
 #####  ::circle-dot:: [OpenAPI doc improvements](https://github.com/rundeck/rundeck/pull/9852)
   
-We working on a dynamically generated OpenAPI spec file that is hosted on our documentation site at [https://docs.rundeck.com/docs/api/](https://docs.rundeck.com/docs/api/).  Currently this functionality is Beta, but the output can be viewed their in two different viewers.  Going forward there will continue to be improvements to these specs.  For more information check out our release notes stream on the release notes page for 5.17.0.
+We are working on a dynamically generated OpenAPI spec file that is hosted on our documentation site at [https://docs.rundeck.com/docs/api/](https://docs.rundeck.com/docs/api/).  Currently this functionality is Beta, but the output can be viewed there in two different viewers.  Going forward there will continue to be improvements to these specs.  For more information check out our release notes stream on the release notes page for 5.17.0.
 
 #####  ::circle-dot:: [Execution view shows local timezone](https://github.com/rundeck/rundeck/pull/9848)
   
