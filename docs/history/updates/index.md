@@ -1,7 +1,7 @@
 ---
 title: Recent Development Updates
 description: Latest merged changes from the Rundeck development team
-date: 2025-11-07T20:06:26.663Z
+date: 2025-11-07T22:34:50.766Z
 feed: true
 index: true
 ---
@@ -20,6 +20,9 @@ This page shows recently merged pull requests from both the Runbook Automation p
 
 
 #### ::circle-dot:: Update nimbusJose for CVE-2025-53864 
+
+
+#### ::circle-dot:: Update nimbusJose for CVE-2025-53864  [PR #9876](https://github.com/rundeck/rundeck/pull/9876)
 
 
 #### ::circle-dot:: Fix project export using CLI  [PR #9872](https://github.com/rundeck/rundeck/pull/9872)

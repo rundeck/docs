@@ -5,7 +5,7 @@
     <link>https://docs.rundeck.com/docs</link>
     <description>Recent merged pull requests and development updates from Rundeck</description>
     <language>en-us</language>
-    <lastBuildDate>Fri, 07 Nov 2025 20:06:26 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 07 Nov 2025 22:34:50 GMT</lastBuildDate>
     <atom:link href="https://docs.rundeck.com/feeds/development.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Update nimbusJose for CVE-2025-53864</title>
@@ -13,6 +13,13 @@
       <description>Update nimbusJose for CVE-2025-53864 (Merged: Oct 29, 2025)</description>
       <pubDate>Wed, 29 Oct 2025 15:28:47 GMT</pubDate>
       <guid isPermaLink="false">rundeck-pr-rundeckpro-4453</guid>
+    </item>
+    <item>
+      <title>Update nimbusJose for CVE-2025-53864</title>
+      <link>https://docs.rundeck.com/docs/history/updates/</link>
+      <description>Update nimbusJose for CVE-2025-53864 (Merged: Oct 29, 2025)</description>
+      <pubDate>Wed, 29 Oct 2025 15:28:39 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeck-9876</guid>
     </item>
     <item>
       <title>Fix project export using CLI</title>

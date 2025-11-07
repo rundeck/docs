@@ -3,7 +3,7 @@
   <title>Rundeck Development Updates</title>
   <link href="https://docs.rundeck.com/feeds/development.xml" rel="self" />
   <link href="https://docs.rundeck.com/docs" />
-  <updated>2025-11-07T20:06:26.706Z</updated>
+  <updated>2025-11-07T22:34:50.784Z</updated>
   <id>https://docs.rundeck.com/feeds/development</id>
   <subtitle>Recent merged pull requests and development updates from Rundeck</subtitle>
   <entry>
@@ -11,6 +11,13 @@
     <link href="https://docs.rundeck.com/docs/history/updates/" />
     <id>rundeck-pr-rundeckpro-4453</id>
     <updated>2025-10-29T15:28:47.000Z</updated>
+    <content type="text">Update nimbusJose for CVE-2025-53864 (Merged: Oct 29, 2025)</content>
+  </entry>
+  <entry>
+    <title>Update nimbusJose for CVE-2025-53864</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeck-9876</id>
+    <updated>2025-10-29T15:28:39.000Z</updated>
     <content type="text">Update nimbusJose for CVE-2025-53864 (Merged: Oct 29, 2025)</content>
   </entry>
   <entry>
