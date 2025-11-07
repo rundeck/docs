@@ -16,11 +16,15 @@ feed:
 
 <VidStack src="youtube/GTK71H-S0R4" poster="https://img.youtube.com/vi/GTK71H-S0R4/maxresdefault.jpg"/>
 
-This release introduces several key enhancements to Rundeck’s automation and runner management capabilities. The create runner endpoint now validates the assignedProjects property format, ensuring more reliable runner assignments. Default runner replica types are set to manual when not specified, simplifying API requests. Node health check cache refreshes have been improved for better system monitoring, and errors related to runner creation in the wizard (especially for Linux ephemeral runners) have been addressed. Additionally, the GitHub Run Script plugin now supports script arguments, expanding its flexibility for automation workflows.
+This release introduces several key enhancements to Rundeck’s automation and runner management capabilities. The create runner endpoint now validates the assignedProjects property format, ensuring more reliable runner assignments. Default runner replica types are set to manual when not specified, simplifying API requests. Node health check cache refreshes have been improved for better system monitoring, and errors related to runner creation in the wizard (especially for Linux ephemeral runners) have been addressed. Additionally, the GitHub Run Script plugin now supports script arguments, expanding its flexibility for automation workflows and the Hashicorp Vault plugin supports certificate authentication.
 
 We have recently introduced a new, [beta method for viewing our API](/api/api_basics.md#openapi-views): the OpenAPI specification file is now automatically generated from our code base, helping ensure documentation remains current. As this feature is still in beta, we are continuing to refine the official spec file over the next few releases. We welcome your feedback and encourage you to report any issues you encounter.
 
 ## Runbook Automation Updates
+
+##### ::circle-dot:: Hashicorp Vault Plugin Certificate Authentication
+  
+We&#39;ve significantly improved our Rundeck Vault plugin by implementing full certificate authentication support. The update adds critical missing code for CERT authentication, introduces new configuration options for truststore passwords and custom cert authentication mounts. Users can now successfully authenticate with HashiCorp Vault using client certificates, securely configure password-protected JKS truststores, and benefit from enhanced logging and error handling that makes troubleshooting configuration issues much easier.
 
 ##### ::circle-dot:: Improvement in the create runner endpoint to validate assignedProjects prop format
   
