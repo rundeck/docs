@@ -1,7 +1,7 @@
 ---
 title: Recent Development Updates
 description: Latest merged changes from the Rundeck development team
-date: 2025-11-07T00:29:20.912Z
+date: 2025-11-07T01:14:35.898Z
 feed: true
 index: true
 ---
@@ -18,11 +18,6 @@ This page shows recently merged pull requests from both the Runbook Automation p
 
 ## Recent Changes
 
-
-#### ::circle-dot:: Multiline Job Options (Beta)  [PR #9822](https://github.com/rundeck/rundeck/pull/9822)
-
-
-  Adds support for Multiline Job Options as a new choice in the &quot;Option Type&quot; dropdown. This allows users to create job options that can accept multi-line text input instead of being limited to single-line text fields.
 
 #### ::circle-dot:: Update nimbusJose for CVE-2025-53864 
 
