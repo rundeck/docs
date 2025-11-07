@@ -24,7 +24,7 @@ We have recently introduced a new, [beta method for viewing our API](/api/api_ba
 
 ##### ::circle-dot:: Improvement in the create runner endpoint to validate assignedProjects prop format
   
-Fixed an issue to avoid creating a runner via API with a wrong format to the assginedProject property. Currently, the runner is being created even if this property is not correct and it causes an error when listing runner from the GUI or via API
+Fixed an issue to avoid creating a runner via API with a wrong format to the assignedProject property. Currently, the runner is being created even if this property is not correct and it causes an error when listing runner from the GUI or via API
 
 ##### ::circle-dot:: Set default runner replica type to manual if not provided in API request
 
