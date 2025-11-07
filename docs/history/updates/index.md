@@ -1,7 +1,7 @@
 ---
 title: Recent Development Updates
 description: Latest merged changes from the Rundeck development team
-date: 2025-11-07T16:47:18.272Z
+date: 2025-11-07T22:34:50.766Z
 feed: true
 index: true
 ---
@@ -22,23 +22,24 @@ This page shows recently merged pull requests from both the Runbook Automation p
 #### ::circle-dot:: Update nimbusJose for CVE-2025-53864 
 
 
+#### ::circle-dot:: Update nimbusJose for CVE-2025-53864  [PR #9876](https://github.com/rundeck/rundeck/pull/9876)
+
+
+#### ::circle-dot:: Fix project export using CLI  [PR #9872](https://github.com/rundeck/rundeck/pull/9872)
+
+
+  This PR fixes an error in the project export functionality when using the Rundeck CLI by ensuring proper cleanup of resources even when file streaming fails.
+
 #### ::circle-dot:: Bouncy Castle 1.79 for CVE-2025-8916 
+
+
+#### ::circle-dot:: Fix CVE-2025-8916  [PR #9863](https://github.com/rundeck/rundeck/pull/9863)
 
 
 #### ::circle-dot:: SSM cannot run job for more than 1 hour 
 
 
   Adds configurable SSM execution timeout functionality to allow AWS SSM jobs to run beyond the default 1-hour limit. The changes introduce a new ssm-execution-timeout configuration property that defaults to 3600 seconds (1 hour) but can be adjusted as needed.
-
-#### ::circle-dot:: Improvement in the create runner endpoint to validate assignedProjects prop format 
-
-
-  Fixed an issue to avoid creating a runner via API with a wrong format to the assginedProject property. Currently, the runner is being created even if this property is not correct and it causes an error when listing runner from the GUI or via API
-
-#### ::circle-dot:: Fix RSS Feeds plugin not recognizing Dates on Microsoft RSS Feeds 
-
-
-  Error that occurs when processing RSS feeds that use Z as the timezone indicator instead of standard abbreviations like GMT or UTC.
 
 
 

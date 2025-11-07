@@ -3,7 +3,7 @@
   <title>Rundeck Development Updates</title>
   <link href="https://docs.rundeck.com/feeds/development.xml" rel="self" />
   <link href="https://docs.rundeck.com/docs" />
-  <updated>2025-11-07T16:47:18.307Z</updated>
+  <updated>2025-11-07T22:34:50.784Z</updated>
   <id>https://docs.rundeck.com/feeds/development</id>
   <subtitle>Recent merged pull requests and development updates from Rundeck</subtitle>
   <entry>
@@ -14,6 +14,20 @@
     <content type="text">Update nimbusJose for CVE-2025-53864 (Merged: Oct 29, 2025)</content>
   </entry>
   <entry>
+    <title>Update nimbusJose for CVE-2025-53864</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeck-9876</id>
+    <updated>2025-10-29T15:28:39.000Z</updated>
+    <content type="text">Update nimbusJose for CVE-2025-53864 (Merged: Oct 29, 2025)</content>
+  </entry>
+  <entry>
+    <title>Fix project export using CLI</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeck-9872</id>
+    <updated>2025-10-24T15:20:24.000Z</updated>
+    <content type="text">Fix project export using CLI (Merged: Oct 24, 2025)</content>
+  </entry>
+  <entry>
     <title>Bouncy Castle 1.79 for CVE-2025-8916</title>
     <link href="https://docs.rundeck.com/docs/history/updates/" />
     <id>rundeck-pr-rundeckpro-4443</id>
@@ -21,24 +35,17 @@
     <content type="text">Bouncy Castle 1.79 for CVE-2025-8916 (Merged: Oct 23, 2025)</content>
   </entry>
   <entry>
+    <title>Fix CVE-2025-8916</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeck-9863</id>
+    <updated>2025-10-23T16:54:15.000Z</updated>
+    <content type="text">Fix CVE-2025-8916 (Merged: Oct 23, 2025)</content>
+  </entry>
+  <entry>
     <title>SSM cannot run job for more than 1 hour</title>
     <link href="https://docs.rundeck.com/docs/history/updates/" />
     <id>rundeck-pr-rundeckpro-4444</id>
     <updated>2025-10-23T16:31:42.000Z</updated>
     <content type="text">SSM cannot run job for more than 1 hour (Merged: Oct 23, 2025)</content>
-  </entry>
-  <entry>
-    <title>Improvement in the create runner endpoint to validate assignedProjects prop format</title>
-    <link href="https://docs.rundeck.com/docs/history/updates/" />
-    <id>rundeck-pr-rundeckpro-4429</id>
-    <updated>2025-10-22T18:28:32.000Z</updated>
-    <content type="text">Improvement in the create runner endpoint to validate assignedProjects prop format (Merged: Oct 22, 2025)</content>
-  </entry>
-  <entry>
-    <title>Fix RSS Feeds plugin not recognizing Dates on Microsoft RSS Feeds</title>
-    <link href="https://docs.rundeck.com/docs/history/updates/" />
-    <id>rundeck-pr-rundeckpro-4441</id>
-    <updated>2025-10-22T17:07:40.000Z</updated>
-    <content type="text">Fix RSS Feeds plugin not recognizing Dates on Microsoft RSS Feeds (Merged: Oct 22, 2025)</content>
   </entry>
 </feed>
