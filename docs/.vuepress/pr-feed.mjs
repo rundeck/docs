@@ -95,7 +95,7 @@ function loadConfig() {
 function parseSaasCutTag(tag) {
   // Tag format: rba/5.18-RBA-20251030-2f39445-a6d9e14
   //                    ^version  ^date    ^core   ^pro
-  const match = tag.match(/^rba\/[\d.]+-RBA-\d+-([a-f0-9]+)-([a-f0-9]+)$/);
+  const match = tag.match(/^rba\/[\d.]+-RBA-\d{8}-([a-f0-9]+)-([a-f0-9]+)$/);
   
   if (!match) {
     console.warn(`  Warning: Could not parse SaaS cut tag format: ${tag}`);
