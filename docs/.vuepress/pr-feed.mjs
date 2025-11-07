@@ -90,15 +90,75 @@ function loadConfig() {
  * @returns {Date} Date to use as cutoff for PRs
  */
 /**
+ * Get the rundeck submodule commit SHA from a rundeckpro tag
+ * @param {Object} octokit - Initialized Octokit instance
+ * @param {string} tag - Tag name in rundeckpro repo
+ * @returns {Promise<string|null>} Rundeck submodule commit SHA or null
+ */
+async function getRundeckSubmoduleCommit(octokit, tag) {
+  try {
+    // Get the tag reference
+    const { data: refData } = await octokit.rest.git.getRef({
+      owner: 'rundeckpro',
+      repo: 'rundeckpro',
+      ref: `tags/${tag}`
+    });
+    
+    // Get the commit SHA (handle annotated tags)
+    let commitSha;
+    if (refData.object.type === 'tag') {
+      const { data: tagData } = await octokit.rest.git.getTag({
+        owner: 'rundeckpro',
+        repo: 'rundeckpro',
+        tag_sha: refData.object.sha
+      });
+      commitSha = tagData.object.sha;
+    } else {
+      commitSha = refData.object.sha;
+    }
+    
+    // Get the tree to find submodules
+    const { data: commit } = await octokit.rest.git.getCommit({
+      owner: 'rundeckpro',
+      repo: 'rundeckpro',
+      commit_sha: commitSha
+    });
+    
+    const { data: tree } = await octokit.rest.git.getTree({
+      owner: 'rundeckpro',
+      repo: 'rundeckpro',
+      tree_sha: commit.tree.sha,
+      recursive: '1'
+    });
+    
+    // Find the rundeck submodule
+    const rundeckSubmodule = tree.tree.find(item => 
+      item.mode === '160000' && item.path === 'rundeck'
+    );
+    
+    if (rundeckSubmodule) {
+      console.log(`  rundeck submodule at ${tag}: ${rundeckSubmodule.sha.substring(0, 7)}`);
+      return rundeckSubmodule.sha;
+    }
+    
+    return null;
+  } catch (error) {
+    console.warn(`  Could not get rundeck submodule commit: ${error.message}`);
+    return null;
+  }
+}
+
+/**
  * Fetch PRs merged after a specific tag using git comparison
  * @param {Object} octokit - Initialized Octokit instance
  * @param {string} owner - Repository owner
  * @param {string} repo - Repository name
  * @param {string} version - Version tag (e.g., "5.17.0")
  * @param {Array<string>} includeLabels - Labels that PRs must have
+ * @param {string} headRef - Optional head reference (defaults to 'main')
  * @returns {Promise<Array>} Array of PR objects
  */
-async function fetchPRsSinceTag(octokit, owner, repo, version, includeLabels = []) {
+async function fetchPRsSinceTag(octokit, owner, repo, version, includeLabels = [], headRef = 'main') {
   // Try different tag naming conventions
   const tagFormats = [`v${version}`, version, `V${version}`];
   
@@ -107,15 +167,15 @@ async function fetchPRsSinceTag(octokit, owner, repo, version, includeLabels = [
   
   for (const tag of tagFormats) {
     try {
-      // Compare tag to main branch
+      // Compare tag to head reference
       comparison = await octokit.rest.repos.compareCommits({
         owner,
         repo,
         base: tag,
-        head: 'main'
+        head: headRef
       });
       tagUsed = tag;
-      console.log(`  Found tag ${tag}, ${comparison.data.ahead_by} commits ahead`);
+      console.log(`  Found tag ${tag}, ${comparison.data.ahead_by} commits ahead of ${headRef}`);
       break;
     } catch (error) {
       if (error.status === 404) {
@@ -660,11 +720,29 @@ async function main() {
     
     if (tagBasedMode) {
       // Tag-based mode: compare git history
+      const saasCutTag = feedConfig.lastSelfHostedRelease.lastSaasCut;
+      
       console.log('Fetching PRs from rundeckpro/rundeckpro...');
-      const rundeckproPRs = await fetchPRsSinceTag(octokit, 'rundeckpro', 'rundeckpro', version, CONFIG.includeLabels);
+      // For rundeckpro, compare from version tag to SaaS cut tag (or main if not set)
+      const rundeckproHead = saasCutTag || 'main';
+      if (saasCutTag) {
+        console.log(`  Using SaaS cut tag as endpoint: ${saasCutTag}`);
+      }
+      const rundeckproPRs = await fetchPRsSinceTag(octokit, 'rundeckpro', 'rundeckpro', version, CONFIG.includeLabels, rundeckproHead);
       
       console.log('\nFetching PRs from rundeck/rundeck...');
-      const rundeckPRs = await fetchPRsSinceTag(octokit, 'rundeck', 'rundeck', version, CONFIG.includeLabels);
+      // For rundeck, we need to find the submodule commit at the SaaS cut tag
+      let rundeckHead = 'main';
+      if (saasCutTag) {
+        const rundeckSubmoduleCommit = await getRundeckSubmoduleCommit(octokit, saasCutTag);
+        if (rundeckSubmoduleCommit) {
+          rundeckHead = rundeckSubmoduleCommit;
+          console.log(`  Using rundeck submodule commit as endpoint`);
+        } else {
+          console.log(`  Could not find rundeck submodule, using main branch`);
+        }
+      }
+      const rundeckPRs = await fetchPRsSinceTag(octokit, 'rundeck', 'rundeck', version, CONFIG.includeLabels, rundeckHead);
       
       // Combine and sort all PRs by merge date
       allPRs = [...rundeckproPRs, ...rundeckPRs];

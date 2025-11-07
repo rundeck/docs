@@ -1,7 +1,7 @@
 ---
 title: Recent Development Updates
 description: Latest merged changes from the Rundeck development team
-date: 2025-11-07T16:47:18.272Z
+date: 2025-11-07T19:27:35.356Z
 feed: true
 index: true
 ---
@@ -29,16 +29,6 @@ This page shows recently merged pull requests from both the Runbook Automation p
 
 
   Adds configurable SSM execution timeout functionality to allow AWS SSM jobs to run beyond the default 1-hour limit. The changes introduce a new ssm-execution-timeout configuration property that defaults to 3600 seconds (1 hour) but can be adjusted as needed.
-
-#### ::circle-dot:: Improvement in the create runner endpoint to validate assignedProjects prop format 
-
-
-  Fixed an issue to avoid creating a runner via API with a wrong format to the assginedProject property. Currently, the runner is being created even if this property is not correct and it causes an error when listing runner from the GUI or via API
-
-#### ::circle-dot:: Fix RSS Feeds plugin not recognizing Dates on Microsoft RSS Feeds 
-
-
-  Error that occurs when processing RSS feeds that use Z as the timezone indicator instead of standard abbreviations like GMT or UTC.
 
 
 

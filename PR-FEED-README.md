@@ -11,6 +11,10 @@ This script generates RSS/Atom feeds and markdown pages from recently merged pul
 - ✅ Fetches merged PRs from **both** repositories:
   - **Private**: `rundeckpro/rundeckpro` (filtered by `release-notes/include` label)
   - **Public**: `rundeck/rundeck` (filtered by `release-notes/include` label)
+- ✅ **Tag-based comparison**: Uses git tags instead of dates for accurate PR detection
+- ✅ **SaaS cut support**: Limits PRs to those included in the most recent SaaS deployment cut
+- ✅ **Submodule awareness**: Automatically finds the correct rundeck commit from rundeckpro tags
+- ✅ **All merge strategies**: Handles merge commits, squash merges, and rebase merges
 - ✅ Combines and sorts PRs by merge date across both repos
 - ✅ Automatically removes `RUN-XXXX` prefixes from PR titles (matching notes.mjs logic)
 - ✅ Generates both RSS 2.0 and Atom feeds
@@ -46,7 +50,11 @@ Run after each SaaS deployment:
 npm run pr-feed
 ```
 
-The script will automatically show all PRs merged since the last self-hosted release (configured in `pr-feed-config.json`).
+The script will automatically:
+1. Use git tag comparison (v5.17.0 to SaaS cut tag) to find PRs
+2. For rundeckpro: Compare v5.17.0 to the `lastSaasCut` tag
+3. For rundeck: Extract the submodule commit from the SaaS cut tag and use that as the endpoint
+4. Show only PRs that were included in the most recent SaaS deployment
 
 Then commit the generated files:
 
@@ -57,26 +65,43 @@ git commit -m "Update SaaS deployment feed"
 git push
 ```
 
-### Updating the Release Baseline
+### Updating the Configuration
 
-**Automatic**: When you run `notes.mjs` to create release notes, it automatically updates `pr-feed-config.json`:
-
-```bash
-node ./docs/.vuepress/notes.mjs --milestone=5.9.0
-# This automatically updates pr-feed-config.json with version 5.9.0 and today's date
-```
-
-**Manual** (if needed), edit `docs/.vuepress/pr-feed-config.json`:
+The `pr-feed-config.json` file tracks three key values:
 
 ```json
 {
   "lastSelfHostedRelease": {
-    "version": "5.9.0",
-    "date": "2024-11-15",
+    "version": "5.17.0",
+    "date": "2025-10-22",
+    "lastSaasRelease": "2025-11-04",
+    "lastSaasCut": "rba/5.18-RBA-20251030-2f39445-a6d9e14",
     "description": "Last self-hosted release version and date"
   }
 }
 ```
+
+**When to update each field:**
+
+1. **`version` and `date`**: Updated automatically by `notes.mjs` when creating self-hosted release notes
+   ```bash
+   node ./docs/.vuepress/notes.mjs --milestone=5.18.0
+   # Automatically updates version and date
+   ```
+
+2. **`lastSaasRelease`**: Update manually after deploying to SaaS production (displayed on the updates page)
+
+3. **`lastSaasCut`**: Update manually each time you cut a release (typically weekly)
+   - This is the tag created when you build the release candidate
+   - Format: `rba/5.18-RBA-YYYYMMDD-shortsha1-shortsha2`
+   - This tag defines the "endpoint" for PR queries
+   - PRs merged after this tag will NOT appear in the feed until the next cut
+
+**Example workflow:**
+1. Wednesday: Cut release → Update `lastSaasCut` with the new tag
+2. Monday: Deploy to production → Update `lastSaasRelease` with deployment date
+3. Monday: Run `npm run pr-feed` → Shows PRs between last release and the cut tag
+4. Repeat weekly
 
 ## Command Reference
 
@@ -100,33 +125,40 @@ node ./docs/.vuepress/pr-feed.mjs --owner=rundeck --repo=rundeck
 
 | Option | Alias | Default | Description |
 |--------|-------|---------|-------------|
-| `--days` | `-d` | *(uses config)* | Number of days to look back (overrides --since-release) |
-| `--since-release` | | `true` | Show PRs since last self-hosted release from config |
-| `--owner` | `-o` | `rundeckpro` | GitHub repository owner |
-| `--repo` | `-r` | `rundeckpro` | GitHub repository name |
+| `--days` | `-d` | *(uses config)* | Number of days to look back (overrides tag-based mode) |
+| `--since-release` | | `true` | Use tag-based comparison from last self-hosted release |
 | `--labels` | `-l` | `release-notes/include` | Labels to include (space-separated) |
 | `--exclude-labels` | | `wip, do-not-publish` | Labels to exclude |
-| `--max-prs` | | `100` | Maximum number of PRs to fetch |
+| `--max-prs` | | `100` | Maximum number of PRs to fetch per repository |
 | `--include-section` | | `Release Notes` | Include specific section from PR body |
+| `--output-dir` | | `docs/history/updates` | Output directory for markdown page |
 | `--help` | | | Show help message |
 
 ### How It Works
 
-**Dual-Repository Fetching:**
-1. Fetches PRs from `rundeckpro/rundeckpro` (filtered by `release-notes/include` label)
-2. Fetches PRs from `rundeck/rundeck` (filtered by `release-notes/include` label)
-3. Combines results and sorts by merge date
-4. Removes duplicate PR titles if they appear in both repos (rare but possible)
+**Tag-Based Comparison (Default):**
+1. Reads `pr-feed-config.json` to get:
+   - Last self-hosted release version (e.g., `5.17.0`)
+   - SaaS cut tag (e.g., `rba/5.18-RBA-20251030-2f39445-a6d9e14`)
+2. For **rundeckpro**: Compares `v5.17.0` tag to SaaS cut tag using `git.compareCommits`
+3. For **rundeck**: Extracts the rundeck submodule commit from the SaaS cut tag, then compares `v5.17.0` to that commit
+4. Finds all commits between these points and extracts associated PRs
+5. Handles all merge strategies: merge commits, squash merges, and rebase merges
+6. Filters by `release-notes/include` label
+7. Combines results and sorts by merge date
 
-**Default Behavior (`--since-release`):**
-- Reads `pr-feed-config.json` to find last self-hosted release date
-- Shows all PRs merged after that date from both repositories
-- No need to remember when you last ran it
+**Why Tag-Based?**
+- More accurate than date-based queries
+- Tags represent actual git history, not approximate dates
+- Correctly handles retroactive tagging scenarios
+- Aligns with actual release cuts and deployments
+- Ensures you only see PRs that are truly included in the deployment
 
-**Override with `--days`:**
-- Explicitly specify a lookback window
-- Useful for testing or special cases
-- Still fetches from both repos
+**Submodule Handling:**
+Since `rundeck` is a submodule of `rundeckpro`, the script automatically:
+- Checks the rundeckpro SaaS cut tag to find which rundeck commit was included
+- Uses that specific commit as the comparison point for rundeck PRs
+- Ensures accuracy even when rundeck and rundeckpro tags don't match
 
 ## What Gets Generated
 
@@ -236,15 +268,16 @@ If you see prefixes that weren't removed, they may not match this pattern.
 
 ## Customization
 
+### Time-Based Override
+For testing or special cases, you can override tag-based comparison with time-based:
+```bash
+npm run pr-feed -- --days=7
+```
+
 ### Label Filtering
 Use different labels:
 ```bash
 node ./docs/.vuepress/pr-feed.mjs --labels feature bugfix enhancement
-```
-
-### Different Repository
-```bash
-node ./docs/.vuepress/pr-feed.mjs --owner=rundeck --repo=rundeck --days=14
 ```
 
 ### Output Location
@@ -265,11 +298,31 @@ This script follows the same patterns as `notes.mjs`:
 
 ### Key Differences from notes.mjs
 - **SaaS vs Self-Hosted**: Focuses on SaaS deployments vs version-specific self-hosted releases
-- **Time/Release-based**: Uses recent time periods or release dates instead of specific milestones
+- **Tag-based comparison**: Uses git tag comparison instead of milestone-based PR queries
+- **SaaS cut awareness**: Limits PRs to those in the deployment cut (not everything in main)
+- **Submodule handling**: Automatically resolves rundeck submodule commits from rundeckpro tags
 - **Continuous updates**: Generates standalone pages for ongoing updates
 - **Customer communication**: Designed for SaaS customers via RSS/Atom feeds
-- **Label filtering**: Uses `release-notes/include` for rundeckpro PRs
+- **All merge strategies**: Handles merge commits, squash merges, and rebase merges
 - **Shared logic**: Uses same PR title cleaning regex as notes.md.nj template
+
+## Technical Details
+
+### Merge Strategy Support
+The script handles all three GitHub merge strategies:
+1. **Merge commits**: Detected via "Merge pull request #X" in commit message
+2. **Squash merges**: Detected via `listPullRequestsAssociatedWithCommit` API
+3. **Rebase merges**: Each rebased commit is associated with its PR via GitHub API
+
+### Submodule Resolution
+When querying the rundeck repository:
+1. Script reads the rundeckpro SaaS cut tag
+2. Extracts the git tree to find submodule references (mode `160000`)
+3. Finds the `rundeck` submodule commit SHA
+4. Uses that SHA as the comparison endpoint for rundeck PRs
+5. Falls back to `main` if submodule cannot be resolved
+
+This ensures rundeck PRs are accurately scoped to what was included in the rundeckpro build.
 
 ## License
 
