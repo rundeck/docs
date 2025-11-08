@@ -22,12 +22,12 @@ This page shows recently merged pull requests from both the Runbook Automation p
 #### ::circle-dot:: Multiline Job Options (Beta)  [PR #9822](https://github.com/rundeck/rundeck/pull/9822)
 
 
-  Adds support for Multiline Job Options as a new choice in the &quot;Option Type&quot; dropdown. This allows users to create job options that can accept multi-line text input instead of being limited to single-line text fields.
+  Adds support for Multiline Job Options as a new choice in the "Option Type" dropdown. This allows users to create job options that can accept multi-line text input instead of being limited to single-line text fields.
 
 #### ::circle-dot:: Update Key Value Data with new Match Substrings checkbox  [PR #9873](https://github.com/rundeck/rundeck/pull/9873)
 
 
-  This fix addresses an issue where the Key Value Data log filter required regex patterns to match the entire log line due to its use of `Matcher.matches()`. Users found that patterns working in external tools failed in Rundeck because they didn&#39;t consume the full line. To resolve this, we&#39;ve added a new matchSubstrings configuration property that allows users to toggle between full-line matching (using `matches()`) and substring matching (using `find()`). This provides the flexibility to use partial patterns like `^.*&#92;.[A-Z]([0-9]+)&#92;.` without requiring them to match the entire line, while maintaining backward compatibility by defaulting to the original full-line matching behavior.
+  This fix addresses an issue where the Key Value Data log filter required regex patterns to match the entire log line due to its use of `Matcher.matches()`. Users found that patterns working in external tools failed in Rundeck because they didn't consume the full line. To resolve this, we've added a new matchSubstrings configuration property that allows users to toggle between full-line matching (using `matches()`) and substring matching (using `find()`). This provides the flexibility to use partial patterns like `` ^.*\.[A-Z]([0-9]+)\. `` without requiring them to match the entire line, while maintaining backward compatibility by defaulting to the original full-line matching behavior.
 
 #### ::circle-dot:: Update nimbusJose for CVE-2025-53864 
 
