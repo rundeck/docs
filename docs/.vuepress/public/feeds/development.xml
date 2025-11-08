@@ -5,8 +5,36 @@
     <link>https://docs.rundeck.com/docs</link>
     <description>Recent merged pull requests and development updates from Rundeck</description>
     <language>en-us</language>
-    <lastBuildDate>Fri, 07 Nov 2025 22:34:50 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 08 Nov 2025 00:44:19 GMT</lastBuildDate>
     <atom:link href="https://docs.rundeck.com/feeds/development.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Set sleep time on sftp plugin</title>
+      <link>https://docs.rundeck.com/docs/history/updates/</link>
+      <description>Set sleep time on sftp plugin (Merged: Nov 7, 2025)</description>
+      <pubDate>Fri, 07 Nov 2025 17:16:07 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeckpro-4465</guid>
+    </item>
+    <item>
+      <title>Fix the loading icon showing when a step already succeeded</title>
+      <link>https://docs.rundeck.com/docs/history/updates/</link>
+      <description>Fix the loading icon showing when a step already succeeded (Merged: Nov 6, 2025)</description>
+      <pubDate>Thu, 06 Nov 2025 21:42:20 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeck-9884</guid>
+    </item>
+    <item>
+      <title>Multiline Job Options (Beta)</title>
+      <link>https://docs.rundeck.com/docs/history/updates/</link>
+      <description>Multiline Job Options (Beta) (Merged: Nov 4, 2025)</description>
+      <pubDate>Tue, 04 Nov 2025 23:56:21 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeck-9822</guid>
+    </item>
+    <item>
+      <title>Update Key Value Data with new Match Substrings checkbox</title>
+      <link>https://docs.rundeck.com/docs/history/updates/</link>
+      <description>Update Key Value Data with new Match Substrings checkbox (Merged: Nov 3, 2025)</description>
+      <pubDate>Mon, 03 Nov 2025 15:54:23 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeck-9873</guid>
+    </item>
     <item>
       <title>Update nimbusJose for CVE-2025-53864</title>
       <link>https://docs.rundeck.com/docs/history/updates/</link>
