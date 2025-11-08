@@ -1,7 +1,7 @@
 ---
 title: Recent Development Updates
 description: Latest merged changes from the Rundeck development team
-date: 2025-11-07T22:34:50.766Z
+date: 2025-11-08T01:01:48.736Z
 feed: true
 index: true
 ---
@@ -18,6 +18,16 @@ This page shows recently merged pull requests from both the Runbook Automation p
 
 ## Recent Changes
 
+
+#### ::circle-dot:: Multiline Job Options (Beta)  [PR #9822](https://github.com/rundeck/rundeck/pull/9822)
+
+
+  Adds support for Multiline Job Options as a new choice in the &quot;Option Type&quot; dropdown. This allows users to create job options that can accept multi-line text input instead of being limited to single-line text fields.
+
+#### ::circle-dot:: Update Key Value Data with new Match Substrings checkbox  [PR #9873](https://github.com/rundeck/rundeck/pull/9873)
+
+
+  This fix addresses an issue where the Key Value Data log filter required regex patterns to match the entire log line due to its use of `Matcher.matches()`. Users found that patterns working in external tools failed in Rundeck because they didn&#39;t consume the full line. To resolve this, we&#39;ve added a new matchSubstrings configuration property that allows users to toggle between full-line matching (using `matches()`) and substring matching (using `find()`). This provides the flexibility to use partial patterns like `^.*&#92;.[A-Z]([0-9]+)&#92;.` without requiring them to match the entire line, while maintaining backward compatibility by defaulting to the original full-line matching behavior.
 
 #### ::circle-dot:: Update nimbusJose for CVE-2025-53864 
 
@@ -62,6 +72,6 @@ The development updates are automatically generated from both our private reposi
 
 ---
 
-**List Last updated:** 2025-11-07
+**List Last updated:** 2025-11-08
 
 
