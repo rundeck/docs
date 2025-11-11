@@ -1,7 +1,7 @@
 ---
 title: Recent Development Updates
 description: Latest merged changes from the Rundeck development team
-date: 2025-11-11T20:14:37.645Z
+date: 2025-11-11T20:27:05.270Z
 feed: true
 index: true
 ---
@@ -10,7 +10,7 @@ index: true
 
 Stay up to date with the latest changes and improvements from the Runbook Automation development team.  
 
-This page shows recently merged pull requests from both the Runbook Automation product repository and the open source Rundeck repository merged since the last self-hosted release of [5.17.0](/history/5_x/version-5.17.0.md) on October 23, 2025.
+This page shows recently merged pull requests from both the Runbook Automation product repository and the open source Rundeck repository merged since the last self-hosted release of [5.17.0](/history/5_x/version-5.17.0.md) on November 4, 2025.
 
 
 **Last SaaS Deployment:** November 10, 2025
