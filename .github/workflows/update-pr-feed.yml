@@ -71,10 +71,10 @@ jobs:
           # Run the pr-feed script and capture the exit code
           if npm run pr-feed; then
             echo "feed_generation_status=success" >> $GITHUB_OUTPUT
-            echo "✅ Feed generation completed successfully"
+            echo "Feed generation completed successfully"
           else
             echo "feed_generation_status=failed" >> $GITHUB_OUTPUT
-            echo "⚠️ Feed generation failed, but continuing to commit config changes"
+            echo "Feed generation failed, but continuing to commit config changes"
           fi
         continue-on-error: true
         
@@ -157,7 +157,7 @@ jobs:
           Workflow dispatch from RBA release process
           
           ---
-          🤖 *This PR was automatically created by the update-pr-feed workflow*
+          *This PR was automatically created by the update-pr-feed workflow*
           EOF
           else
             cat > pr_body.md << 'EOF'
@@ -180,7 +180,7 @@ jobs:
           Workflow dispatch from RBA release process
           
           ---
-          🤖 *This PR was automatically created by the update-pr-feed workflow*
+          *This PR was automatically created by the update-pr-feed workflow*
           EOF
           fi
           
