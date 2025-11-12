@@ -1,7 +1,7 @@
 ---
 title: Recent Development Updates
 description: Latest merged changes from the Rundeck development team
-date: 2025-11-12T15:11:49.325Z
+date: 2025-11-12T15:43:04.758Z
 feed: true
 index: true
 ---
@@ -29,6 +29,9 @@ This page shows recently merged pull requests from both the Runbook Automation p
 
   This fix addresses an issue where the Key Value Data log filter required regex patterns to match the entire log line due to its use of `Matcher.matches()`. Users found that patterns working in external tools failed in Rundeck because they didn&#39;t consume the full line. To resolve this, we&#39;ve added a new matchSubstrings configuration property that allows users to toggle between full-line matching (using `matches()`) and substring matching (using `find()`). This provides the flexibility to use partial patterns like `^.*&#92;.[A-Z]([0-9]+)&#92;.` without requiring them to match the entire line, while maintaining backward compatibility by defaulting to the original full-line matching behavior.
 
+#### ::circle-dot:: Update nimbusJose for CVE-2025-53864 
+
+
 #### ::circle-dot:: Update nimbusJose for CVE-2025-53864  [PR #9876](https://github.com/rundeck/rundeck/pull/9876)
 
 
@@ -37,8 +40,16 @@ This page shows recently merged pull requests from both the Runbook Automation p
 
   This PR fixes an error in the project export functionality when using the Rundeck CLI by ensuring proper cleanup of resources even when file streaming fails.
 
+#### ::circle-dot:: Bouncy Castle 1.79 for CVE-2025-8916 
+
+
 #### ::circle-dot:: Fix CVE-2025-8916  [PR #9863](https://github.com/rundeck/rundeck/pull/9863)
 
+
+#### ::circle-dot:: SSM cannot run job for more than 1 hour 
+
+
+  Adds configurable SSM execution timeout functionality to allow AWS SSM jobs to run beyond the default 1-hour limit. The changes introduce a new ssm-execution-timeout configuration property that defaults to 3600 seconds (1 hour) but can be adjusted as needed.
 
 
 

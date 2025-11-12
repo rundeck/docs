@@ -5,7 +5,7 @@
     <link>https://docs.rundeck.com/docs</link>
     <description>Recent merged pull requests and development updates from Rundeck</description>
     <language>en-us</language>
-    <lastBuildDate>Wed, 12 Nov 2025 15:11:49 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 12 Nov 2025 15:43:04 GMT</lastBuildDate>
     <atom:link href="https://docs.rundeck.com/feeds/development.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Multiline Job Options (Beta)</title>
@@ -25,6 +25,13 @@
       <title>Update nimbusJose for CVE-2025-53864</title>
       <link>https://docs.rundeck.com/docs/history/updates/</link>
       <description>Update nimbusJose for CVE-2025-53864 (Merged: Oct 29, 2025)</description>
+      <pubDate>Wed, 29 Oct 2025 15:28:47 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeckpro-4453</guid>
+    </item>
+    <item>
+      <title>Update nimbusJose for CVE-2025-53864</title>
+      <link>https://docs.rundeck.com/docs/history/updates/</link>
+      <description>Update nimbusJose for CVE-2025-53864 (Merged: Oct 29, 2025)</description>
       <pubDate>Wed, 29 Oct 2025 15:28:39 GMT</pubDate>
       <guid isPermaLink="false">rundeck-pr-rundeck-9876</guid>
     </item>
@@ -36,11 +43,25 @@
       <guid isPermaLink="false">rundeck-pr-rundeck-9872</guid>
     </item>
     <item>
+      <title>Bouncy Castle 1.79 for CVE-2025-8916</title>
+      <link>https://docs.rundeck.com/docs/history/updates/</link>
+      <description>Bouncy Castle 1.79 for CVE-2025-8916 (Merged: Oct 23, 2025)</description>
+      <pubDate>Thu, 23 Oct 2025 16:54:27 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeckpro-4443</guid>
+    </item>
+    <item>
       <title>Fix CVE-2025-8916</title>
       <link>https://docs.rundeck.com/docs/history/updates/</link>
       <description>Fix CVE-2025-8916 (Merged: Oct 23, 2025)</description>
       <pubDate>Thu, 23 Oct 2025 16:54:15 GMT</pubDate>
       <guid isPermaLink="false">rundeck-pr-rundeck-9863</guid>
+    </item>
+    <item>
+      <title>SSM cannot run job for more than 1 hour</title>
+      <link>https://docs.rundeck.com/docs/history/updates/</link>
+      <description>SSM cannot run job for more than 1 hour (Merged: Oct 23, 2025)</description>
+      <pubDate>Thu, 23 Oct 2025 16:31:42 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeckpro-4444</guid>
     </item>
   </channel>
 </rss>
