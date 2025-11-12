@@ -211,7 +211,7 @@ jobs:
               --title "Update PR Feed Configuration for ${RBA_TAG}" \
               --body-file pr_body.md \
               --base 4.0.x \
-              --head "$BRANCH_NAME" \
+              --head "$BRANCH_NAME"
           fi
             
       # Step 10: Summary
