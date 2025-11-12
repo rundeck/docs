@@ -1,0 +1,220 @@
+name: Update PR Feed Configuration
+
+on:
+  workflow_dispatch:
+    inputs:
+      rba_tag:
+        description: 'RBA tag (e.g., rba/5.18-RBA-20251030-2f39445-a6d9e14)'
+        required: true
+        type: string
+
+# Permissions needed for the workflow
+permissions:
+  contents: write      # To push branches and commits
+  pull-requests: write # To create pull requests
+
+jobs:
+  update-pr-feed:
+    runs-on: ubuntu-latest
+    
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: 4.0.x  # Default branch for docs repo
+          
+      # Step 2: Set up Node.js environment
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22.12.0'
+          cache: 'npm'
+          
+      # Step 3: Install dependencies
+      - name: Install dependencies
+        run: npm install
+        
+      # Step 4: Update pr-feed-config.json with the new RBA tag
+      - name: Update PR feed configuration
+        id: update-config
+        run: |
+          CONFIG_FILE="docs/.vuepress/pr-feed-config.json"
+          RBA_TAG="${{ github.event.inputs.rba_tag }}"
+          
+          echo "Updating $CONFIG_FILE with RBA tag: $RBA_TAG"
+          
+          # Use jq to update the lastSaasCut field
+          jq --arg tag "$RBA_TAG" \
+             '.lastSelfHostedRelease.lastSaasCut = $tag' \
+             "$CONFIG_FILE" > "${CONFIG_FILE}.tmp"
+          
+          # Replace the original file
+          mv "${CONFIG_FILE}.tmp" "$CONFIG_FILE"
+          
+          # Verify the update
+          echo "Updated configuration:"
+          cat "$CONFIG_FILE"
+          
+          # Output sanitized tag for branch naming (replace / with -)
+          SANITIZED_TAG=$(echo "$RBA_TAG" | sed 's/\//-/g')
+          echo "sanitized_tag=$SANITIZED_TAG" >> $GITHUB_OUTPUT
+          
+      # Step 5: Generate PR feed files
+      - name: Generate PR feed files
+        id: generate-feeds
+        env:
+          GH_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "Running npm run pr-feed to regenerate feed files..."
+          
+          # Run the pr-feed script and capture the exit code
+          if npm run pr-feed; then
+            echo "feed_generation_status=success" >> $GITHUB_OUTPUT
+            echo "Feed generation completed successfully"
+          else
+            echo "feed_generation_status=failed" >> $GITHUB_OUTPUT
+            echo "Feed generation failed, but continuing to commit config changes"
+          fi
+        continue-on-error: true
+        
+      # Step 6: Create a new branch
+      - name: Create branch
+        id: create-branch
+        run: |
+          SANITIZED_TAG="${{ steps.update-config.outputs.sanitized_tag }}"
+          TIMESTAMP=$(date +%Y%m%d-%H%M%S)
+          BRANCH_NAME="update-pr-feed-${SANITIZED_TAG}-${TIMESTAMP}"
+          
+          echo "Creating branch: $BRANCH_NAME"
+          git checkout -b "$BRANCH_NAME"
+          echo "branch_name=$BRANCH_NAME" >> $GITHUB_OUTPUT
+          
+      # Step 7: Commit changes
+      - name: Commit changes
+        run: |
+          RBA_TAG="${{ github.event.inputs.rba_tag }}"
+          FEED_STATUS="${{ steps.generate-feeds.outputs.feed_generation_status }}"
+          
+          # Configure git
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # Stage all changes (config + generated files)
+          git add docs/.vuepress/pr-feed-config.json
+          git add docs/history/updates/index.md
+          git add docs/.vuepress/public/feeds/development.xml
+          git add docs/.vuepress/public/feeds/development-atom.xml
+          
+          # Create commit message based on feed generation status
+          if [ "$FEED_STATUS" = "success" ]; then
+            git commit -m "Update PR feed configuration for ${RBA_TAG}" \
+                       -m "" \
+                       -m "- Updated lastSaasCut to ${RBA_TAG}" \
+                       -m "- Regenerated PR feed files" \
+                       -m "- Updated markdown page and RSS/Atom feeds"
+          else
+            git commit -m "Update PR feed configuration for ${RBA_TAG}" \
+                       -m "" \
+                       -m "- Updated lastSaasCut to ${RBA_TAG}" \
+                       -m "- Warning: Feed generation failed (see workflow logs)" \
+                       -m "- Manual regeneration may be required"
+          fi
+          
+      # Step 8: Push the branch
+      - name: Push branch
+        run: |
+          BRANCH_NAME="${{ steps.create-branch.outputs.branch_name }}"
+          git push origin "$BRANCH_NAME"
+          
+      # Step 9: Create Pull Request
+      - name: Create Pull Request
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          RBA_TAG="${{ github.event.inputs.rba_tag }}"
+          BRANCH_NAME="${{ steps.create-branch.outputs.branch_name }}"
+          FEED_STATUS="${{ steps.generate-feeds.outputs.feed_generation_status }}"
+          
+          # Create PR body file to avoid quoting issues
+          if [ "$FEED_STATUS" = "success" ]; then
+            cat > pr_body.md << 'EOF'
+          ## PR Feed Configuration Update
+          
+          This PR updates the PR feed configuration with the latest RBA release tag.
+          
+          ### Changes
+          - **RBA Tag**: `RBA_TAG_PLACEHOLDER`
+          - **Updated Field**: `lastSelfHostedRelease.lastSaasCut`
+          - **Feed Generation**: Success
+          
+          ### Generated Files
+          - `docs/history/updates/index.md` - Updated markdown page
+          - `docs/.vuepress/public/feeds/development.xml` - Updated RSS feed
+          - `docs/.vuepress/public/feeds/development-atom.xml` - Updated Atom feed
+          
+          ### Triggered By
+          Workflow dispatch from RBA release process
+          
+          ---
+          *This PR was automatically created by the update-pr-feed workflow*
+          EOF
+          else
+            cat > pr_body.md << 'EOF'
+          ## PR Feed Configuration Update
+          
+          This PR updates the PR feed configuration with the latest RBA release tag.
+          
+          ### Changes
+          - **RBA Tag**: `RBA_TAG_PLACEHOLDER`
+          - **Updated Field**: `lastSelfHostedRelease.lastSaasCut`
+          - **Feed Generation**: **Failed**
+          
+          ### Action Required
+          The feed generation script failed during this workflow run. Please:
+          1. Review the workflow logs
+          2. Manually run `npm run pr-feed` after merging to regenerate feeds
+          3. Check that the `GH_API_TOKEN` has proper permissions
+          
+          ### Triggered By
+          Workflow dispatch from RBA release process
+          
+          ---
+          *This PR was automatically created by the update-pr-feed workflow*
+          EOF
+          fi
+          
+          # Replace placeholder with actual tag
+          sed -i "s|RBA_TAG_PLACEHOLDER|${RBA_TAG}|g" pr_body.md
+          
+          # Create the PR using GitHub CLI
+          gh pr create \
+            --title "Update PR Feed Configuration for ${RBA_TAG}" \
+            --body-file pr_body.md \
+            --base 4.0.x \
+            --head "$BRANCH_NAME" \
+            --label "automation" \
+            --label "documentation"
+            
+      # Step 10: Summary
+      - name: Workflow Summary
+        if: always()
+        run: |
+          RBA_TAG="${{ github.event.inputs.rba_tag }}"
+          BRANCH_NAME="${{ steps.create-branch.outputs.branch_name }}"
+          FEED_STATUS="${{ steps.generate-feeds.outputs.feed_generation_status }}"
+          
+          echo "## PR Feed Update Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- **RBA Tag**: \`${RBA_TAG}\`" >> $GITHUB_STEP_SUMMARY
+          echo "- **Branch**: \`${BRANCH_NAME}\`" >> $GITHUB_STEP_SUMMARY
+          echo "- **Config Update**: Success" >> $GITHUB_STEP_SUMMARY
+          
+          if [ "$FEED_STATUS" = "success" ]; then
+            echo "- **Feed Generation**: Success" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "- **Feed Generation**: Failed (check logs)" >> $GITHUB_STEP_SUMMARY
+          fi
+          
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "A pull request has been created for review." >> $GITHUB_STEP_SUMMARY

@@ -7,6 +7,7 @@ You are an AI assistant helping maintain the Rundeck documentation site.
 - Documentation is primarily written in Markdown and organized by product versions
 - Documentation follows a specific structure with product versions, features, and administration guides
 - Documentation is built using VuePress 2 and the Hope Theme.
+- Never use emojis within content.  If absolutely necessary font awesome is available for page content.
 
 ## Key Documentation Guidelines
 - Use clear, concise language
