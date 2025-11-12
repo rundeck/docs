@@ -242,8 +242,8 @@ function calculateSinceDate(config) {
   
   // If --since-release is true and config exists, use release date
   if (argv['since-release'] && config && config.lastSelfHostedRelease) {
-    const releaseDate = new Date(config.lastSelfHostedRelease.date);
-    console.log(`Using last self-hosted release: ${config.lastSelfHostedRelease.version} (${config.lastSelfHostedRelease.date})`);
+    const releaseDate = new Date(config.lastSelfHostedRelease.lastSelfHostedDate);
+    console.log(`Using last self-hosted release: ${config.lastSelfHostedRelease.version} (${config.lastSelfHostedRelease.lastSelfHostedDate})`);
     return releaseDate;
   }
   
@@ -399,7 +399,7 @@ function generateMarkdown(prs) {
   if (feedConfig && feedConfig.lastSelfHostedRelease && !argv.days) {
     const releaseVersion = feedConfig.lastSelfHostedRelease.version;
     // Parse date as UTC to avoid timezone issues
-    const releaseDateParts = feedConfig.lastSelfHostedRelease.date.split('-');
+    const releaseDateParts = feedConfig.lastSelfHostedRelease.lastSelfHostedDate.split('-');
     const releaseDate = new Date(Date.UTC(
       parseInt(releaseDateParts[0]), 
       parseInt(releaseDateParts[1]) - 1, 

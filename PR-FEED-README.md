@@ -73,7 +73,7 @@ The `pr-feed-config.json` file tracks three key values:
 {
   "lastSelfHostedRelease": {
     "version": "5.17.0",
-    "date": "2025-10-22",
+    "lastSelfHostedDate": "2025-10-22",
     "lastSaasRelease": "2025-11-04",
     "lastSaasCut": "rba/5.18-RBA-20251030-2f39445-a6d9e14",
     "description": "Last self-hosted release version and date"
@@ -83,7 +83,7 @@ The `pr-feed-config.json` file tracks three key values:
 
 **When to update each field:**
 
-1. **`version` and `date`**: Updated automatically by `notes.mjs` when creating self-hosted release notes
+1. **`version` and `lastSelfHostedDate`**: Updated automatically by `notes.mjs` when creating self-hosted release notes
    ```bash
    node ./docs/.vuepress/notes.mjs --milestone=5.18.0
    # Automatically updates version and date

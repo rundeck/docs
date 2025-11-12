@@ -3,9 +3,23 @@
   <title>Rundeck Development Updates</title>
   <link href="https://docs.rundeck.com/feeds/development.xml" rel="self" />
   <link href="https://docs.rundeck.com/docs" />
-  <updated>2025-11-07T22:34:50.784Z</updated>
+  <updated>2025-11-11T20:27:05.300Z</updated>
   <id>https://docs.rundeck.com/feeds/development</id>
   <subtitle>Recent merged pull requests and development updates from Rundeck</subtitle>
+  <entry>
+    <title>Multiline Job Options (Beta)</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeck-9822</id>
+    <updated>2025-11-04T23:56:21.000Z</updated>
+    <content type="text">Multiline Job Options (Beta) (Merged: Nov 4, 2025)</content>
+  </entry>
+  <entry>
+    <title>Update Key Value Data with new Match Substrings checkbox</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeck-9873</id>
+    <updated>2025-11-03T15:54:23.000Z</updated>
+    <content type="text">Update Key Value Data with new Match Substrings checkbox (Merged: Nov 3, 2025)</content>
+  </entry>
   <entry>
     <title>Update nimbusJose for CVE-2025-53864</title>
     <link href="https://docs.rundeck.com/docs/history/updates/" />
