@@ -3,7 +3,7 @@
   <title>Rundeck Development Updates</title>
   <link href="https://docs.rundeck.com/feeds/development.xml" rel="self" />
   <link href="https://docs.rundeck.com/docs" />
-  <updated>2025-11-11T20:27:05.300Z</updated>
+  <updated>2025-11-12T15:11:49.348Z</updated>
   <id>https://docs.rundeck.com/feeds/development</id>
   <subtitle>Recent merged pull requests and development updates from Rundeck</subtitle>
   <entry>
@@ -23,13 +23,6 @@
   <entry>
     <title>Update nimbusJose for CVE-2025-53864</title>
     <link href="https://docs.rundeck.com/docs/history/updates/" />
-    <id>rundeck-pr-rundeckpro-4453</id>
-    <updated>2025-10-29T15:28:47.000Z</updated>
-    <content type="text">Update nimbusJose for CVE-2025-53864 (Merged: Oct 29, 2025)</content>
-  </entry>
-  <entry>
-    <title>Update nimbusJose for CVE-2025-53864</title>
-    <link href="https://docs.rundeck.com/docs/history/updates/" />
     <id>rundeck-pr-rundeck-9876</id>
     <updated>2025-10-29T15:28:39.000Z</updated>
     <content type="text">Update nimbusJose for CVE-2025-53864 (Merged: Oct 29, 2025)</content>
@@ -42,24 +35,10 @@
     <content type="text">Fix project export using CLI (Merged: Oct 24, 2025)</content>
   </entry>
   <entry>
-    <title>Bouncy Castle 1.79 for CVE-2025-8916</title>
-    <link href="https://docs.rundeck.com/docs/history/updates/" />
-    <id>rundeck-pr-rundeckpro-4443</id>
-    <updated>2025-10-23T16:54:27.000Z</updated>
-    <content type="text">Bouncy Castle 1.79 for CVE-2025-8916 (Merged: Oct 23, 2025)</content>
-  </entry>
-  <entry>
     <title>Fix CVE-2025-8916</title>
     <link href="https://docs.rundeck.com/docs/history/updates/" />
     <id>rundeck-pr-rundeck-9863</id>
     <updated>2025-10-23T16:54:15.000Z</updated>
     <content type="text">Fix CVE-2025-8916 (Merged: Oct 23, 2025)</content>
-  </entry>
-  <entry>
-    <title>SSM cannot run job for more than 1 hour</title>
-    <link href="https://docs.rundeck.com/docs/history/updates/" />
-    <id>rundeck-pr-rundeckpro-4444</id>
-    <updated>2025-10-23T16:31:42.000Z</updated>
-    <content type="text">SSM cannot run job for more than 1 hour (Merged: Oct 23, 2025)</content>
   </entry>
 </feed>
