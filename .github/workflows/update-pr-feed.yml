@@ -146,7 +146,7 @@ jobs:
           ### Changes
           - **RBA Tag**: `RBA_TAG_PLACEHOLDER`
           - **Updated Field**: `lastSelfHostedRelease.lastSaasCut`
-          - **Feed Generation**: ✅ Success
+          - **Feed Generation**: Success
           
           ### Generated Files
           - `docs/history/updates/index.md` - Updated markdown page
@@ -168,7 +168,7 @@ jobs:
           ### Changes
           - **RBA Tag**: `RBA_TAG_PLACEHOLDER`
           - **Updated Field**: `lastSelfHostedRelease.lastSaasCut`
-          - **Feed Generation**: ⚠️ **Failed**
+          - **Feed Generation**: **Failed**
           
           ### Action Required
           The feed generation script failed during this workflow run. Please:
@@ -208,12 +208,12 @@ jobs:
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "- **RBA Tag**: \`${RBA_TAG}\`" >> $GITHUB_STEP_SUMMARY
           echo "- **Branch**: \`${BRANCH_NAME}\`" >> $GITHUB_STEP_SUMMARY
-          echo "- **Config Update**: ✅ Success" >> $GITHUB_STEP_SUMMARY
+          echo "- **Config Update**: Success" >> $GITHUB_STEP_SUMMARY
           
           if [ "$FEED_STATUS" = "success" ]; then
-            echo "- **Feed Generation**: ✅ Success" >> $GITHUB_STEP_SUMMARY
+            echo "- **Feed Generation**: Success" >> $GITHUB_STEP_SUMMARY
           else
-            echo "- **Feed Generation**: ⚠️ Failed (check logs)" >> $GITHUB_STEP_SUMMARY
+            echo "- **Feed Generation**: Failed (check logs)" >> $GITHUB_STEP_SUMMARY
           fi
           
           echo "" >> $GITHUB_STEP_SUMMARY
