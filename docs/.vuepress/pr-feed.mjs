@@ -146,8 +146,9 @@ async function fetchPRsSinceTag(octokit, owner, repo, version, includeLabels = [
   }
   
   if (!comparison) {
-    console.warn(`  Tag for version ${version} not found in ${owner}/${repo} (tried: ${tagFormats.map(tag => `'${tag}'`).join(', ')})`);
-    return [];
+    const errorMsg = `Tag for version ${version} not found in ${owner}/${repo} (tried: ${tagFormats.map(tag => `'${tag}'`).join(', ')})`;
+    console.error(`  ERROR: ${errorMsg}`);
+    throw new Error(errorMsg);
   }
   
   // Extract PR numbers from merge commits
