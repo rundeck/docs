@@ -24,17 +24,46 @@ jobs:
         with:
           ref: 4.0.x  # Default branch for docs repo
           
-      # Step 2: Set up Node.js environment
+      # Step 2: Determine branch name and checkout/create branch
+      - name: Determine branch name
+        id: branch-info
+        run: |
+          RBA_TAG="${{ github.event.inputs.rba_tag }}"
+          SANITIZED_TAG=$(echo "$RBA_TAG" | sed 's/\//-/g')
+          BRANCH_NAME="update-pr-feed-${SANITIZED_TAG}"
+          
+          echo "sanitized_tag=$SANITIZED_TAG" >> $GITHUB_OUTPUT
+          echo "branch_name=$BRANCH_NAME" >> $GITHUB_OUTPUT
+          
+      # Step 3: Create or checkout branch
+      - name: Create or checkout branch
+        run: |
+          BRANCH_NAME="${{ steps.branch-info.outputs.branch_name }}"
+          
+          # Fetch remote branches
+          git fetch origin
+          
+          # Check if branch exists on remote
+          if git ls-remote --heads origin "$BRANCH_NAME" | grep -q "$BRANCH_NAME"; then
+            echo "Branch $BRANCH_NAME exists on remote, checking it out..."
+            git checkout "$BRANCH_NAME"
+            git pull origin "$BRANCH_NAME"
+          else
+            echo "Creating new branch from 4.0.x: $BRANCH_NAME"
+            git checkout -b "$BRANCH_NAME"
+          fi
+          
+      # Step 4: Set up Node.js environment
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '22.12.0'
           
-      # Step 3: Install dependencies
+      # Step 5: Install dependencies
       - name: Install dependencies
         run: npm install
         
-      # Step 4: Update pr-feed-config.json with the new RBA tag
+      # Step 6: Update pr-feed-config.json with the new RBA tag
       - name: Update PR feed configuration
         id: update-config
         run: |
@@ -55,11 +84,7 @@ jobs:
           echo "Updated configuration:"
           cat "$CONFIG_FILE"
           
-          # Output sanitized tag for branch naming (replace / with -)
-          SANITIZED_TAG=$(echo "$RBA_TAG" | sed 's/\//-/g')
-          echo "sanitized_tag=$SANITIZED_TAG" >> $GITHUB_OUTPUT
-          
-      # Step 5: Generate PR feed files
+      # Step 7: Generate PR feed files
       - name: Generate PR feed files
         id: generate-feeds
         env:
@@ -76,28 +101,6 @@ jobs:
             echo "Feed generation failed, but continuing to commit config changes"
           fi
         continue-on-error: true
-        
-      # Step 6: Create or checkout branch
-      - name: Create or checkout branch
-        id: create-branch
-        run: |
-          SANITIZED_TAG="${{ steps.update-config.outputs.sanitized_tag }}"
-          BRANCH_NAME="update-pr-feed-${SANITIZED_TAG}"
-          
-          # Fetch remote branches
-          git fetch origin
-          
-          # Check if branch exists on remote
-          if git ls-remote --heads origin "$BRANCH_NAME" | grep -q "$BRANCH_NAME"; then
-            echo "Branch $BRANCH_NAME exists on remote, checking it out..."
-            git checkout "$BRANCH_NAME"
-            git pull origin "$BRANCH_NAME"
-          else
-            echo "Creating new branch: $BRANCH_NAME"
-            git checkout -b "$BRANCH_NAME"
-          fi
-          
-          echo "branch_name=$BRANCH_NAME" >> $GITHUB_OUTPUT
           
       # Step 7: Commit changes
       - name: Commit changes
@@ -133,7 +136,7 @@ jobs:
       # Step 8: Push the branch
       - name: Push branch
         run: |
-          BRANCH_NAME="${{ steps.create-branch.outputs.branch_name }}"
+          BRANCH_NAME="${{ steps.branch-info.outputs.branch_name }}"
           git push origin "$BRANCH_NAME"
           
       # Step 9: Create Pull Request
@@ -142,7 +145,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           RBA_TAG="${{ github.event.inputs.rba_tag }}"
-          BRANCH_NAME="${{ steps.create-branch.outputs.branch_name }}"
+          BRANCH_NAME="${{ steps.branch-info.outputs.branch_name }}"
           FEED_STATUS="${{ steps.generate-feeds.outputs.feed_generation_status }}"
           
           # Create PR body file to avoid quoting issues
@@ -218,7 +221,7 @@ jobs:
         if: always()
         run: |
           RBA_TAG="${{ github.event.inputs.rba_tag }}"
-          BRANCH_NAME="${{ steps.create-branch.outputs.branch_name }}"
+          BRANCH_NAME="${{ steps.branch-info.outputs.branch_name }}"
           FEED_STATUS="${{ steps.generate-feeds.outputs.feed_generation_status }}"
           
           echo "## PR Feed Update Summary" >> $GITHUB_STEP_SUMMARY
