@@ -82,8 +82,7 @@ jobs:
         id: create-branch
         run: |
           SANITIZED_TAG="${{ steps.update-config.outputs.sanitized_tag }}"
-          TIMESTAMP=$(date +%Y%m%d-%H%M%S)
-          BRANCH_NAME="update-pr-feed-${SANITIZED_TAG}-${TIMESTAMP}"
+          BRANCH_NAME="update-pr-feed-${SANITIZED_TAG}"
           
           echo "Creating branch: $BRANCH_NAME"
           git checkout -b "$BRANCH_NAME"
@@ -191,9 +190,7 @@ jobs:
             --title "Update PR Feed Configuration for ${RBA_TAG}" \
             --body-file pr_body.md \
             --base 4.0.x \
-            --head "$BRANCH_NAME" \
-            --label "automation" \
-            --label "documentation"
+            --head "$BRANCH_NAME"
             
       # Step 10: Summary
       - name: Workflow Summary
