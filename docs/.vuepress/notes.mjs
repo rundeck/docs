@@ -281,7 +281,7 @@ function updateSetupJs(version) {
 function updatePRFeedConfig(version) {
   const configPath = path.resolve(__dirname, 'pr-feed-config.json');
   
-  // Read existing config to preserve existing fields like 'date'
+  // Read existing config to preserve fields like lastSaasRelease and lastSaasCut
   let config = { lastSelfHostedRelease: {} };
   if (fs.existsSync(configPath)) {
     try {
@@ -291,13 +291,18 @@ function updatePRFeedConfig(version) {
     }
   }
   
-  // Only update the version, preserve all other fields
+  // Get current date in YYYY-MM-DD format
+  const now = new Date();
+  const dateStr = now.toISOString().split('T')[0];
+  
+  // Update version and lastSelfHostedDate, preserve other fields
   config.lastSelfHostedRelease = {
     ...config.lastSelfHostedRelease,
     version: version,
+    lastSelfHostedDate: dateStr,
     description: "Last self-hosted release version and date"
   };
   
   fs.writeFileSync(configPath, JSON.stringify(config, null, 2) + '\n');
-  console.log(`Updated pr-feed-config.json with version ${version}`);
+  console.log(`Updated pr-feed-config.json with version ${version} and date ${dateStr}`);
 }
