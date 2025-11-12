@@ -77,15 +77,26 @@ jobs:
           fi
         continue-on-error: true
         
-      # Step 6: Create a new branch
-      - name: Create branch
+      # Step 6: Create or checkout branch
+      - name: Create or checkout branch
         id: create-branch
         run: |
           SANITIZED_TAG="${{ steps.update-config.outputs.sanitized_tag }}"
           BRANCH_NAME="update-pr-feed-${SANITIZED_TAG}"
           
-          echo "Creating branch: $BRANCH_NAME"
-          git checkout -b "$BRANCH_NAME"
+          # Fetch remote branches
+          git fetch origin
+          
+          # Check if branch exists on remote
+          if git ls-remote --heads origin "$BRANCH_NAME" | grep -q "$BRANCH_NAME"; then
+            echo "Branch $BRANCH_NAME exists on remote, checking it out..."
+            git checkout "$BRANCH_NAME"
+            git pull origin "$BRANCH_NAME"
+          else
+            echo "Creating new branch: $BRANCH_NAME"
+            git checkout -b "$BRANCH_NAME"
+          fi
+          
           echo "branch_name=$BRANCH_NAME" >> $GITHUB_OUTPUT
           
       # Step 7: Commit changes
@@ -185,12 +196,22 @@ jobs:
           # Replace placeholder with actual tag
           sed -i "s|RBA_TAG_PLACEHOLDER|${RBA_TAG}|g" pr_body.md
           
-          # Create the PR using GitHub CLI
-          gh pr create \
-            --title "Update PR Feed Configuration for ${RBA_TAG}" \
-            --body-file pr_body.md \
-            --base 4.0.x \
-            --head "$BRANCH_NAME"
+          # Check if PR already exists for this branch
+          EXISTING_PR=$(gh pr list --head "$BRANCH_NAME" --base 4.0.x --json number --jq '.[0].number' || echo "")
+          
+          if [ -n "$EXISTING_PR" ]; then
+            echo "PR #$EXISTING_PR already exists for branch $BRANCH_NAME"
+            echo "The PR will be automatically updated with the new commits"
+          else
+            echo "Creating new PR for branch $BRANCH_NAME..."
+            gh pr create \
+              --title "Update PR Feed Configuration for ${RBA_TAG}" \
+              --body-file pr_body.md \
+              --base 4.0.x \
+              --head "$BRANCH_NAME" \
+              --label "automation" \
+              --label "documentation"
+          fi
             
       # Step 10: Summary
       - name: Workflow Summary
