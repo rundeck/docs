@@ -212,8 +212,6 @@ jobs:
               --body-file pr_body.md \
               --base 4.0.x \
               --head "$BRANCH_NAME" \
-              --label "automation" \
-              --label "documentation"
           fi
             
       # Step 10: Summary
