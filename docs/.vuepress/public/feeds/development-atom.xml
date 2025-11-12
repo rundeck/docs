@@ -3,9 +3,37 @@
   <title>Rundeck Development Updates</title>
   <link href="https://docs.rundeck.com/feeds/development.xml" rel="self" />
   <link href="https://docs.rundeck.com/docs" />
-  <updated>2025-11-11T20:27:05.300Z</updated>
+  <updated>2025-11-12T21:07:21.748Z</updated>
   <id>https://docs.rundeck.com/feeds/development</id>
   <subtitle>Recent merged pull requests and development updates from Rundeck</subtitle>
+  <entry>
+    <title>Fixes datacenter value in Vmware resource model</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeckpro-4469</id>
+    <updated>2025-11-12T17:04:59.000Z</updated>
+    <content type="text">Fixes datacenter value in Vmware resource model (Merged: Nov 12, 2025)</content>
+  </entry>
+  <entry>
+    <title>Fixes missing no output message when looking at a step in the execution page</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeck-9886</id>
+    <updated>2025-11-10T16:11:36.000Z</updated>
+    <content type="text">Fixes missing no output message when looking at a step in the execution page (Merged: Nov 10, 2025)</content>
+  </entry>
+  <entry>
+    <title>Set sleep time on sftp plugin</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeckpro-4465</id>
+    <updated>2025-11-07T17:16:07.000Z</updated>
+    <content type="text">Set sleep time on sftp plugin (Merged: Nov 7, 2025)</content>
+  </entry>
+  <entry>
+    <title>Fix the loading icon showing when a step already succeeded</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeck-9884</id>
+    <updated>2025-11-06T21:42:20.000Z</updated>
+    <content type="text">Fix the loading icon showing when a step already succeeded (Merged: Nov 6, 2025)</content>
+  </entry>
   <entry>
     <title>Multiline Job Options (Beta)</title>
     <link href="https://docs.rundeck.com/docs/history/updates/" />
