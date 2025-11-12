@@ -63,7 +63,7 @@ jobs:
       - name: Generate PR feed files
         id: generate-feeds
         env:
-          GH_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_API_TOKEN: ${{ secrets.GH_API_TOKEN }}
         run: |
           echo "Running npm run pr-feed to regenerate feed files..."
           
