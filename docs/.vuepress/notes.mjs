@@ -64,12 +64,59 @@ async function main() {
   console.log('=== Rundeck Release Notes Generator ===\n');
   console.log(`Comparing versions: ${fromVersion} → ${toVersion}\n`);
   
+  // Check if toVersion tag exists by attempting to fetch from main repos
+  const gh = new Octokit({ auth: process.env.GH_API_TOKEN });
+  let tagExists = false;
+  let useHead = false;
+  
+  // Try to find the tag in rundeck repo (main repo)
+  const tagFormats = [`v${toVersion}`, toVersion, `V${toVersion}`];
+  for (const tag of tagFormats) {
+    try {
+      await gh.rest.repos.getReleaseByTag({
+        owner: 'rundeck',
+        repo: 'rundeck',
+        tag: tag
+      });
+      tagExists = true;
+      break;
+    } catch (error) {
+      if (error.status !== 404) {
+        // Some other error, try git refs
+        try {
+          await gh.rest.git.getRef({
+            owner: 'rundeck',
+            repo: 'rundeck',
+            ref: `tags/${tag}`
+          });
+          tagExists = true;
+          break;
+        } catch (refError) {
+          // Continue to next format
+        }
+      }
+    }
+  }
+  
+  // Determine behavior based on tag existence and mode
+  if (!tagExists) {
+    if (argv.draft) {
+      console.log(`\nWarning: Tag ${toVersion} not found, using HEAD for preview\n`);
+      useHead = true;
+    } else {
+      console.error(`\nERROR: Tag ${toVersion} not found.`);
+      console.error(`       Create the tag first or use --draft mode to preview with HEAD.\n`);
+      console.log(`Continuing with empty results to create placeholder file...\n`);
+      // Continue execution but with empty results
+    }
+  }
+  
   const context = {};
-  context.core = await getRepoData({ repo: 'rundeck', owner: 'rundeck' }, fromVersion, toVersion, ['release-notes/include']);
-  context.enterprise = await getRepoData({ repo: 'rundeckpro', owner: 'rundeckpro' }, fromVersion, toVersion, ['release-notes/include']);
-  context.docs = await getRepoData({ repo: 'docs', owner: 'rundeck' }, fromVersion, toVersion, []); // No label filtering for docs (need all PRs for contributors)
-  context.ansible = await getRepoData({ repo: 'ansible-plugin', owner: 'rundeck-plugins' }, fromVersion, toVersion, ['release-notes/include']);
-  context.runner = await getRepoData({ repo: 'sidecar', owner: 'rundeckpro' }, fromVersion, toVersion, ['release-notes/include']);
+  context.core = await getRepoData({ repo: 'rundeck', owner: 'rundeck' }, fromVersion, toVersion, ['release-notes/include'], useHead);
+  context.enterprise = await getRepoData({ repo: 'rundeckpro', owner: 'rundeckpro' }, fromVersion, toVersion, ['release-notes/include'], useHead);
+  context.docs = await getRepoData({ repo: 'docs', owner: 'rundeck' }, fromVersion, toVersion, [], useHead); // No label filtering for docs (need all PRs for contributors)
+  context.ansible = await getRepoData({ repo: 'ansible-plugin', owner: 'rundeck-plugins' }, fromVersion, toVersion, ['release-notes/include'], useHead);
+  context.runner = await getRepoData({ repo: 'sidecar', owner: 'rundeckpro' }, fromVersion, toVersion, ['release-notes/include'], useHead);
   context.contributors = { ...context.core.contributors, ...context.docs.contributors, ...context.ansible.contributors };
 
   context.version = new RundeckVersion({ versionString: argv.milestone });
@@ -188,12 +235,15 @@ function updateNavbarReleaseLink(version) {
   }
 }
 
-async function getRepoData(repo, fromVersion, toVersion, includeLabels) {
+async function getRepoData(repo, fromVersion, toVersion, includeLabels, useHead = false) {
   const gh = new Octokit({ auth: process.env.GH_API_TOKEN });
 
   console.log(`Fetching PRs from ${repo.owner}/${repo.repo}...`);
   
   try {
+    // Determine the head reference
+    const headRef = useHead ? 'main' : null;
+    
     // Fetch PRs between tags using shared utility
     const pulls = await fetchPRsBetweenTags(
       gh,
@@ -202,7 +252,8 @@ async function getRepoData(repo, fromVersion, toVersion, includeLabels) {
       fromVersion,
       toVersion,
       includeLabels,
-      excludeUsernames // Use excludeUsernames as exclude labels (though these are for contributors)
+      excludeUsernames, // Use excludeUsernames as exclude labels (though these are for contributors)
+      headRef
     );
 
     // Extract contributors (excluding bots and internal users)

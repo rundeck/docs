@@ -167,6 +167,12 @@ cat docs/history/5_x/draft.md
 npm run notes -- --milestone=5.17.0
 ```
 
+**Tag Detection:**
+- If the tag exists (e.g., `v5.17.0`), draft mode uses the exact tag comparison
+- If the tag doesn't exist yet, draft mode automatically uses `HEAD` to preview what will be in the release
+  - You'll see: "Warning: Tag 5.17.0 not found, using HEAD for preview"
+  - This allows you to preview release notes before creating the tag
+
 ## What the Script Does
 
 When you run `npm run notes -- --milestone=5.17.0`, it will:
@@ -191,19 +197,25 @@ When you run `npm run notes -- --milestone=5.17.0`, it will:
 ### Self-Hosted Release Process
 
 ```bash
-# 1. Generate draft for review
+# 1. Generate draft for review (before tagging)
+# If tag doesn't exist yet, uses HEAD for preview
 npm run notes:draft -- --milestone=5.17.0
 
 # 2. Review the generated draft
 code docs/history/5_x/draft.md
 
-# 3. Generate final release notes (updates all configs)
+# 3. Create the version tag
+git tag v5.17.0
+git push origin v5.17.0
+
+# 4. Generate final release notes (updates all configs)
+# Now uses the exact tag for accurate PR detection
 npm run notes -- --milestone=5.17.0
 
-# 4. Edit the generated file for dates, overview, etc.
+# 5. Edit the generated file for dates, overview, etc.
 code docs/history/5_x/version-5.17.0.md
 
-# 5. Commit all changes
+# 6. Commit all changes
 git add docs/history/5_x/version-5.17.0.md
 git add docs/.vuepress/sidebar-menus/history.ts
 git add docs/.vuepress/navbar-menus/about.js
@@ -213,6 +225,8 @@ git add docs/.vuepress/pr-feed-config.json
 git commit -m "Release notes for 5.17.0"
 git push
 ```
+
+**Note:** You can preview with draft mode before creating the tag. Draft mode will use HEAD if the tag doesn't exist yet.
 
 ## SaaS Development Updates Feed
 
@@ -228,16 +242,26 @@ The feed date range is automatically updated when you create release notes - no 
 
 ## Troubleshooting Release Notes
 
-### "Tags for versions X...Y not found"
+### "Tag X.Y.Z not found" Warning or Error
 
-**Cause**: Tag doesn't exist in the repository or uses different naming.
+**In Draft Mode:**
+- Shows warning: "Tag 5.18.0 not found, using HEAD for preview"
+- Uses HEAD (main branch) to preview PRs
+- This is normal before the tag is created
 
-**Solution**:
-- For `docs` and `ansible-plugin` repos: This is normal (they don't use version tags)
-- For main repos: Verify tags exist:
-  ```bash
-  git ls-remote --tags https://github.com/rundeck/rundeck | grep 5.17
-  ```
+**In Final Mode:**
+- Shows error: "Tag 5.18.0 not found. Create the tag first or use --draft mode."
+- Creates a placeholder file with minimal content
+- Re-run after creating the tag to populate with actual PRs
+
+**Solution:**
+1. Use draft mode to preview: `npm run notes:draft -- --milestone=5.18.0`
+2. Create the tag when ready: `git tag v5.18.0 && git push origin v5.18.0`
+3. Generate final notes: `npm run notes -- --milestone=5.18.0`
+
+**For repo-specific warnings** (`docs`, `ansible-plugin`):
+- This is normal - these repos don't use version tags
+- They'll be skipped gracefully
 
 ### "GH_API_TOKEN environment variable is not set"
 
