@@ -252,7 +252,7 @@ async function getRepoData(repo, fromVersion, toVersion, includeLabels, useHead 
       fromVersion,
       toVersion,
       includeLabels,
-      excludeUsernames, // Use excludeUsernames as exclude labels (though these are for contributors)
+      [], // Exclude labels (e.g., 'wip', 'do-not-publish') - none currently needed
       headRef
     );
 

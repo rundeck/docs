@@ -363,7 +363,6 @@ This ensures the exact commits used in the build are compared, guaranteeing accu
 ## Related Documentation
 
 - **[README.md](./README.md)** - Main documentation project setup and release notes generation
-- **[MIGRATION-NOTES.md](./docs/.vuepress/MIGRATION-NOTES.md)** - Migration guide from milestone-based to tag-based approach
 - **`notes.mjs`** - Self-hosted release notes generator (uses same shared utilities)
 - **`pr-utils.mjs`** - Shared utility functions used by both scripts
 
