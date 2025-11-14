@@ -44,6 +44,12 @@ Fixes a Runner Wizard error when creating a Linux ephemeral runner by ensuring p
   
 Adds support for passing custom arguments to scripts executed by the GitHubScriptPlugin, allowing users to specify script arguments with shell-like quoting and escaping functionality.
 
+##### ::circle-dot:: Fix RSS Feeds plugin not recognizing Dates on Microsoft RSS Feeds
+  
+Error that occurs when processing RSS feeds that use Z as the timezone indicator instead of standard abbreviations like GMT or UTC.
+
+##### ::circle-dot:: CVE-2025-58754 Axios Update
+
 
 ## Rundeck Open Source Product Updates
 
@@ -75,6 +81,9 @@ Adds a database index on the retry_execution_id column in the execution table to
   
 Adds logger configuration for the ExecutionsCleanUp job in the Remco log4j2 template for Docker images. The change enables proper logging visibility for cleanup execution history operations without requiring global log level modifications.
 
+#####  ::circle-dot:: [Remote URL Job Option is not going through a configured proxy](https://github.com/rundeck/rundeck/pull/9860)
+
+#####  ::circle-dot:: [Fix CVE-2025-58754 Axios in ui-trellis](https://github.com/rundeck/rundeck/pull/9859)
 
 [Here is a link to the full list of public PRs](https://github.com/rundeck/rundeck/pulls?q=is%3Apr+milestone%3A5.17.0+is%3Aclosed)
 

@@ -7,12 +7,30 @@ import dotenv from 'dotenv';
 import _yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
 import RundeckVersion from './version.mjs';
+import { fetchPRsBetweenTags, extractPRSection, getPreviousVersion } from './pr-utils.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 dotenv.config();
 
-const argv = _yargs(hideBin(process.argv)).argv;
+// Parse command line arguments
+const argv = _yargs(hideBin(process.argv))
+  .option('milestone', {
+    type: 'string',
+    description: 'Target version/milestone (e.g., 5.17.0)',
+    demandOption: true
+  })
+  .option('from-version', {
+    type: 'string',
+    description: 'Previous version to compare from (e.g., 5.16.0). Auto-calculated if not provided.'
+  })
+  .option('draft', {
+    type: 'boolean',
+    description: 'Generate as draft.md instead of version-X.Y.Z.md',
+    default: false
+  })
+  .help()
+  .argv;
 
 const template = fs.readFileSync('./docs/.vuepress/notes.md.nj');
 
@@ -39,12 +57,19 @@ const excludeUsernames = [
 ];
 
 async function main() {
+  // Determine version range
+  const toVersion = argv.milestone;
+  const fromVersion = argv['from-version'] || getPreviousVersion(toVersion);
+  
+  console.log('=== Rundeck Release Notes Generator ===\n');
+  console.log(`Comparing versions: ${fromVersion} → ${toVersion}\n`);
+  
   const context = {};
-  context.core = await getRepoData({ repo: 'rundeck', owner: 'rundeck' }, ['release-notes/include']);
-  context.enterprise = await getRepoData({ repo: 'rundeckpro', owner: 'rundeckpro' }, ['release-notes/include']);
-  context.docs = await getRepoData({ repo: 'docs', owner: 'rundeck' }, []); // No label filtering for docs (need all PRs for contributors)
-  context.ansible = await getRepoData({ repo: 'ansible-plugin', owner: 'rundeck-plugins' }, ['release-notes/include']);
-  context.runner = await getRepoData({ repo: 'sidecar', owner: 'rundeckpro' }, ['release-notes/include']);
+  context.core = await getRepoData({ repo: 'rundeck', owner: 'rundeck' }, fromVersion, toVersion, ['release-notes/include']);
+  context.enterprise = await getRepoData({ repo: 'rundeckpro', owner: 'rundeckpro' }, fromVersion, toVersion, ['release-notes/include']);
+  context.docs = await getRepoData({ repo: 'docs', owner: 'rundeck' }, fromVersion, toVersion, []); // No label filtering for docs (need all PRs for contributors)
+  context.ansible = await getRepoData({ repo: 'ansible-plugin', owner: 'rundeck-plugins' }, fromVersion, toVersion, ['release-notes/include']);
+  context.runner = await getRepoData({ repo: 'sidecar', owner: 'rundeckpro' }, fromVersion, toVersion, ['release-notes/include']);
   context.contributors = { ...context.core.contributors, ...context.docs.contributors, ...context.ansible.contributors };
 
   context.version = new RundeckVersion({ versionString: argv.milestone });
@@ -163,86 +188,54 @@ function updateNavbarReleaseLink(version) {
   }
 }
 
-// Helper: Extract a specific section from PR body
-function extractPRSection(body, sectionName) {
-  if (!body) return null;
-  
-  // Match section headers like "## Release Notes" or "### Release Notes"
-  const sectionRegex = new RegExp(
-    `^#+\\s*${sectionName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\s*$`,
-    'im'
-  );
-  
-  const lines = body.split('\n');
-  let inSection = false;
-  let sectionContent = [];
-  let sectionLevel = 0;
-  
-  for (let i = 0; i < lines.length; i++) {
-    const line = lines[i];
-    
-    if (sectionRegex.test(line)) {
-      // Found the section header
-      inSection = true;
-      sectionLevel = line.match(/^#+/)[0].length;
-      continue;
-    }
-    
-    if (inSection) {
-      // Check if we've hit another section at same or higher level
-      const headerMatch = line.match(/^(#+)\s/);
-      if (headerMatch && headerMatch[1].length <= sectionLevel) {
-        break; // End of our section
-      }
-      sectionContent.push(line);
-    }
-  }
-  
-  const content = sectionContent.join('\n').trim();
-  return content || null;
-}
-
-async function getRepoData(repo, includeLabels) {
+async function getRepoData(repo, fromVersion, toVersion, includeLabels) {
   const gh = new Octokit({ auth: process.env.GH_API_TOKEN });
 
-  const milestones = await gh.issues.listMilestones({ ...repo });
+  console.log(`Fetching PRs from ${repo.owner}/${repo.repo}...`);
+  
+  try {
+    // Fetch PRs between tags using shared utility
+    const pulls = await fetchPRsBetweenTags(
+      gh,
+      repo.owner,
+      repo.repo,
+      fromVersion,
+      toVersion,
+      includeLabels,
+      excludeUsernames // Use excludeUsernames as exclude labels (though these are for contributors)
+    );
 
-  const milestone = milestones.data.find((m) => m.title === argv.milestone);
+    // Extract contributors (excluding bots and internal users)
+    const contributors = {};
+    
+    for (const p of pulls) {
+      if (excludeUsernames.includes(p.user.login)) continue;
+      if (contributors[p.user.login]) continue;
+      
+      try {
+        const user = await gh.users.getByUsername({ username: p.user.login });
+        contributors[user.data.login] = user.data;
+      } catch (error) {
+        console.warn(`  Warning: Could not fetch user data for ${p.user.login}: ${error.message}`);
+      }
+    }
 
-  if (!milestone) {
-    console.error(`GitHub milestone ${argv.milestone} not found on ${repo.owner}/${repo.repo}.`);
+    // Extract "Release Notes" section from all PRs
+    const pullsWithNotes = pulls.map(pr => ({
+      ...pr,
+      releaseNotes: extractPRSection(pr.body, 'Release Notes')
+    }));
+
+    console.log(`  Found ${pullsWithNotes.length} PRs and ${Object.keys(contributors).length} contributors\n`);
+
+    return {
+      contributors,
+      pulls: pullsWithNotes,
+    };
+  } catch (error) {
+    console.error(`  Error fetching PRs from ${repo.owner}/${repo.repo}: ${error.message}`);
     return { contributors: {}, pulls: [] };
   }
-
-  const issuesResp = await gh.paginate(gh.issues.listForRepo, {
-    ...repo,
-    milestone: milestone.number,
-    state: 'closed',
-    labels: includeLabels.join(','),
-    per_page: 100,
-  });
-
-  const pulls = issuesResp.filter((i) => i.pull_request);
-
-  const contributors = {};
-
-  for (const p of pulls) {
-    if (excludeUsernames.includes(p.user.login)) continue;
-    if (contributors[p.user.login]) continue;
-    const user = await gh.users.getByUsername({ username: p.user.login });
-    contributors[user.data.login] = user.data;
-  }
-
-  // Extract "Release Notes" section from all PRs
-  const pullsWithNotes = pulls.map(pr => ({
-    ...pr,
-    releaseNotes: extractPRSection(pr.body, 'Release Notes')
-  }));
-
-  return {
-    contributors,
-    pulls: pullsWithNotes,
-  };
 }
 
 

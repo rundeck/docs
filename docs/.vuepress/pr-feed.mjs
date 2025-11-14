@@ -19,6 +19,7 @@ import dotenv from 'dotenv';
 import _yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
 import nunjucks from 'nunjucks';
+import { fetchPRsBetweenTags, parseSaasCutTag, cleanPRTitle, extractPRSection } from './pr-utils.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -85,31 +86,9 @@ function loadConfig() {
 }
 
 /**
- * Parse the SaaS cut tag to extract commit SHAs
- * Tag format: rba/${vNum}-RBA-${vDate}-${coreSha}-${proSha}
- * Example: rba/5.18-RBA-20251030-2f39445-a6d9e14
- * 
- * @param {string} tag - SaaS cut tag
- * @returns {Object} Object with rundeckSha and rundeckproSha, or null if parse fails
- */
-function parseSaasCutTag(tag) {
-  // Tag format: rba/5.18-RBA-20251030-2f39445-a6d9e14
-  //                    ^version  ^date    ^core   ^pro
-  const match = tag.match(/^rba\/[\d.]+-RBA-\d{8}-([a-f0-9]+)-([a-f0-9]+)$/);
-  
-  if (!match) {
-    console.warn(`  Warning: Could not parse SaaS cut tag format: ${tag}`);
-    return null;
-  }
-  
-  return {
-    rundeckSha: match[1],     // coreSha - rundeck submodule commit
-    rundeckproSha: match[2]   // proSha - rundeckpro commit
-  };
-}
-
-/**
  * Fetch PRs merged after a specific tag using git comparison
+ * This is a wrapper around the shared fetchPRsBetweenTags that maintains
+ * backward compatibility with the "since tag" approach (tag -> head)
  * @param {Object} octokit - Initialized Octokit instance
  * @param {string} owner - Repository owner
  * @param {string} repo - Repository name
@@ -119,117 +98,18 @@ function parseSaasCutTag(tag) {
  * @returns {Promise<Array>} Array of PR objects
  */
 async function fetchPRsSinceTag(octokit, owner, repo, version, includeLabels = [], headRef = 'main') {
-  // Try different tag naming conventions
-  const tagFormats = [`v${version}`, version, `V${version}`];
-  
-  let comparison = null;
-  let tagUsed = null;
-  
-  for (const tag of tagFormats) {
-    try {
-      // Compare tag to head reference
-      comparison = await octokit.rest.repos.compareCommits({
-        owner,
-        repo,
-        base: tag,
-        head: headRef
-      });
-      tagUsed = tag;
-      console.log(`  Found tag ${tag}, ${comparison.data.ahead_by} commits ahead of ${headRef}`);
-      break;
-    } catch (error) {
-      if (error.status === 404) {
-        continue; // Try next format
-      }
-      throw error;
-    }
-  }
-  
-  if (!comparison) {
-    const errorMsg = `Tag for version ${version} not found in ${owner}/${repo} (tried: ${tagFormats.map(tag => `'${tag}'`).join(', ')})`;
-    console.error(`  ERROR: ${errorMsg}`);
-    throw new Error(errorMsg);
-  }
-  
-  // Extract PR numbers from merge commits
-  const prNumbers = new Set();
-  for (const commit of comparison.data.commits) {
-    // Check for standard merge commit pattern
-    const match = commit.commit.message.match(/Merge pull request #(\d+)/);
-    if (match) {
-      prNumbers.add(parseInt(match[1]));
-    } else {
-      // For squash merges or other commits, check if they're associated with a PR
-      try {
-        const { data: associatedPRs } = await octokit.rest.repos.listPullRequestsAssociatedWithCommit({
-          owner,
-          repo,
-          commit_sha: commit.sha
-        });
-        
-        // Add any merged PRs associated with this commit
-        associatedPRs.forEach(pr => {
-          if (pr.merged_at) {
-            prNumbers.add(pr.number);
-          }
-        });
-      } catch (error) {
-        // Log errors for individual commits at debug level to aid troubleshooting
-        console.debug(`    Debug: Could not fetch associated PRs for commit ${commit.sha}: ${error.message}`);
-      }
-    }
-  }
-  
-  console.log(`  Found ${prNumbers.size} unique PRs (including squash merges)`);
-  
-  // Fetch full PR data and filter by labels
-  // Use batched parallel requests to improve performance and respect rate limits
-  // Processing 10 PRs at a time provides a good balance between speed and API courtesy
-  const BATCH_SIZE = 10;
-  const prNumbersArray = Array.from(prNumbers);
-  const prs = [];
-  
-  for (let i = 0; i < prNumbersArray.length; i += BATCH_SIZE) {
-    const batch = prNumbersArray.slice(i, i + BATCH_SIZE);
-    
-    // Fetch batch in parallel
-    const batchResults = await Promise.allSettled(
-      batch.map(prNumber =>
-        octokit.rest.pulls.get({
-          owner,
-          repo,
-          pull_number: prNumber
-        })
-      )
-    );
-    
-    // Process results and filter by labels
-    batchResults.forEach((result, idx) => {
-      if (result.status === 'fulfilled') {
-        const pr = result.value.data;
-        const prLabels = pr.labels.map(label => label.name);
-        
-        // Check if PR has required labels
-        if (includeLabels.length === 0 || includeLabels.some(label => prLabels.includes(label))) {
-          // Check exclude labels
-          if (!CONFIG.excludeLabels.some(label => prLabels.includes(label))) {
-            prs.push({
-              ...pr,
-              _repoOwner: owner,
-              _repoName: repo
-            });
-          }
-        }
-      } else {
-        const prNumber = batch[idx];
-        console.warn(`  Warning: Could not fetch PR #${prNumber} from ${owner}/${repo}: ${result.reason?.message || 'Unknown error'}`);
-      }
-    });
-  }
-  
-  console.log(`  After label filtering: ${prs.length} PRs with required labels`);
-  
-  return prs;
+  // Use the shared utility, treating version as fromVersion and headRef as the target
+  // Note: fetchPRsBetweenTags expects toVersion as a tag name, but can accept a commit SHA via headRef param
+  return await fetchPRsBetweenTags(
+    octokit,
+    owner,
+    repo,
+    version,      // fromVersion (base tag)
+    headRef,      // toVersion (can be tag or commit SHA)
+    includeLabels,
+    CONFIG.excludeLabels,
+    headRef       // Pass headRef again to force using it instead of trying tag formats
+  );
 }
 
 function calculateSinceDate(config) {
@@ -480,59 +360,7 @@ function generateMarkdown(prs) {
   return nunjucks.renderString(template.toString(), context);
 }
 
-/**
- * Clean PR title by removing RUN-XXXX prefixes
-*/
-function cleanPRTitle(title) {
-  if (!title) return '';
-  // Remove one or more RUN-XXXX prefixes with optional colons and spaces
-  return title.replace(/^(RUN-[0-9]+\s*)+:?\s*/g, '').trim();
-}
-
-/**
- * Extract a specific section from PR body
- * Looks for sections like "## Customer Summary" or "### Release Notes"
- * @param {string} body - PR body text
- * @param {string} sectionName - Section header to look for (case insensitive)
- * @returns {string|null} Section content or null if not found
- */
-function extractPRSection(body, sectionName) {
-  if (!body) return null;
-  
-  // Match section headers like "## Customer Summary" or "### Release Notes"
-  const sectionRegex = new RegExp(
-    `^#+\\s*${sectionName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\s*$`,
-    'im'
-  );
-  
-  const lines = body.split('\n');
-  let inSection = false;
-  let sectionContent = [];
-  let sectionLevel = 0;
-  
-  for (let i = 0; i < lines.length; i++) {
-    const line = lines[i];
-    
-    if (sectionRegex.test(line)) {
-      // Found the section header
-      inSection = true;
-      sectionLevel = line.match(/^#+/)[0].length;
-      continue;
-    }
-    
-    if (inSection) {
-      // Check if we've hit another section at same or higher level
-      const headerMatch = line.match(/^(#+)\s/);
-      if (headerMatch && headerMatch[1].length <= sectionLevel) {
-        break; // End of our section
-      }
-      sectionContent.push(line);
-    }
-  }
-  
-  const content = sectionContent.join('\n').trim();
-  return content || null;
-}
+// cleanPRTitle and extractPRSection are now imported from pr-utils.mjs
 
 /**
  * Generate RSS 2.0 feed

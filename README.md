@@ -84,40 +84,134 @@ The documentation is organized as follows:
 
 # How to Create Release Notes
 
-Rundeck Core PRs are included by default.
-Core PRs can excluded by labeling them with the `release-notes/exclude` label.
+## Prerequisites
 
-Rundeck Enterprise PRs are excluded by default.
-Enterprise PRs can be included by labeling them with the `release-notes/include` label.
+### GitHub API Token Setup
 
-Create the file `.env` in the project root and add the line `GH_API_TOKEN=[TOKEN]`
-replacing `[TOKEN]` with your GitHub API token. This token needs `repo` scope.
-
-## Release Notes
-
-Run the following with the milestone for the release. This will create/overwrite an existing entry for the release and automatically update related documentation and configuration files:
+Create a `.env` file in the project root:
 
 ```bash
-npm run notes -- --milestone=${1?milestone name}
+# Create .env file
+touch .env
+
+# Add your GitHub API token
+echo "GH_API_TOKEN=ghp_your_actual_token_here" > .env
 ```
 
-When run, the script will:
-- Generate release notes for the specified milestone.
-    - This will require edits for proper dates, the Overview, etc.
-- Add a new row for the release in `docs/history/release-calendar.md`.
-    - This file will require an update to the release date.
-- Update `.docsearch/config.json` to set the correct version for search indexing.
-- Update `docs/.vuepress/setup.js` with the new version information.
-- Add the new version link to the sidebar in `docs/.vuepress/sidebar-menus/history.ts`.
+Get a token at: https://github.com/settings/tokens
 
-> Use wisely: running this command will overwrite existing release notes for the specified release and possibly duplicate config file updates.
+**Required permissions:**
+- `repo` - Full control of private repositories
+- Access to `rundeckpro/rundeckpro` (private)
+- Access to `rundeckpro/sidecar` (private)
 
-## Draft Release Notes
+### PR Labeling
 
-Run the following with the milestone for the release. This will create the file named draft.md to avoid overwriting any existing version:
+Both Rundeck Core and Enterprise repositories use the **`release-notes/include`** label:
+- PRs with this label will be included in release notes
+- PRs without this label will be excluded
+
+**Release Notes Sections:**
+The script automatically extracts content from the `## Release Notes` section in PR descriptions. Structure your PRs like this:
+
+```markdown
+## Release Notes
+Brief customer-facing description of the change.
+This content will appear in the generated release notes.
+
+## Technical Details
+Implementation specifics (not included in release notes).
+```
+
+## Tag-Based Release Notes (Current Approach)
+
+The release notes script uses **git tag comparison** to find all PRs between two releases. This ensures accuracy by capturing all changes in the actual git history.
+
+### Basic Usage
 
 ```bash
-npm run notes -- --milestone=${1?milestone name} --draft
+# Generate release notes (auto-detects previous version)
+# Example: 5.17.0 automatically compares with 5.16.0
+npm run notes -- --milestone=5.17.0
+```
+
+### Version Auto-Detection
+
+| Target Version | Auto-detected Previous | What it compares |
+|---------------|------------------------|------------------|
+| `5.17.0`      | `5.16.0`              | All PRs between v5.16.0 and v5.17.0 tags |
+| `5.17.1`      | `5.17.0`              | All PRs between v5.17.0 and v5.17.1 tags |
+| `5.0.0`       | `4.17.0`              | All PRs between v4.17.0 and v5.0.0 tags |
+
+### Custom Version Range
+
+For patch releases or special cases, specify the previous version:
+
+```bash
+# Compare 5.17.0 to 5.17.1
+npm run notes -- --milestone=5.17.1 --from-version=5.17.0
+```
+
+### Draft Mode (Recommended for Testing)
+
+Generate a draft without modifying configuration files:
+
+```bash
+# Creates docs/history/5_x/draft.md
+npm run notes:draft -- --milestone=5.17.0
+
+# Review the draft
+cat docs/history/5_x/draft.md
+
+# When satisfied, generate the final version
+npm run notes -- --milestone=5.17.0
+```
+
+## What the Script Does
+
+When you run `npm run notes -- --milestone=5.17.0`, it will:
+
+1. **Compare git tags** to find all PRs between versions (e.g., v5.16.0 → v5.17.0)
+2. **Extract Release Notes sections** from PR bodies
+3. **Collect contributor information** (excluding bots and internal accounts)
+4. **Generate release notes markdown** at `docs/history/5_x/version-5.17.0.md`
+5. **Update sidebar and navbar links** (unless `--draft` mode)
+6. **Update configuration files**:
+   - `.docsearch/config.json` - Search indexing version
+   - `docs/.vuepress/setup.js` - Version information
+   - `docs/.vuepress/sidebar-menus/history.ts` - Version link
+   - `docs/.vuepress/navbar-menus/about.js` - Release notes link
+   - `docs/.vuepress/pr-feed-config.json` - PR feed baseline
+7. **Handle all merge strategies** (merge commits, squash merges, rebase merges)
+
+> **Note**: The generated file requires manual edits for dates, Overview section, and final descriptions.
+
+## Typical Workflow
+
+### Self-Hosted Release Process
+
+```bash
+# 1. Generate draft for review
+npm run notes:draft -- --milestone=5.17.0
+
+# 2. Review the generated draft
+code docs/history/5_x/draft.md
+
+# 3. Generate final release notes (updates all configs)
+npm run notes -- --milestone=5.17.0
+
+# 4. Edit the generated file for dates, overview, etc.
+code docs/history/5_x/version-5.17.0.md
+
+# 5. Commit all changes
+git add docs/history/5_x/version-5.17.0.md
+git add docs/.vuepress/sidebar-menus/history.ts
+git add docs/.vuepress/navbar-menus/about.js
+git add docs/.vuepress/setup.js
+git add .docsearch/config.json
+git add docs/.vuepress/pr-feed-config.json
+git commit -m "Release notes for 5.17.0"
+git push
 ```
 
 ## SaaS Development Updates Feed
@@ -131,6 +225,51 @@ npm run pr-feed
 ```
 
 The feed date range is automatically updated when you create release notes - no manual configuration needed!
+
+## Troubleshooting Release Notes
+
+### "Tags for versions X...Y not found"
+
+**Cause**: Tag doesn't exist in the repository or uses different naming.
+
+**Solution**:
+- For `docs` and `ansible-plugin` repos: This is normal (they don't use version tags)
+- For main repos: Verify tags exist:
+  ```bash
+  git ls-remote --tags https://github.com/rundeck/rundeck | grep 5.17
+  ```
+
+### "GH_API_TOKEN environment variable is not set"
+
+**Solution**: Create `.env` file with your GitHub token (see Prerequisites above).
+
+### No PRs found
+
+**Check**:
+- Version range is correct
+- Tags exist in the repositories
+- PRs are merged (not just closed)
+- PRs have the required labels (`release-notes/include` for enterprise)
+
+### Get Help
+
+```bash
+# View all available options
+npm run notes -- --help
+```
+
+## Advanced Options
+
+```bash
+# Specify custom previous version
+npm run notes -- --milestone=5.17.1 --from-version=5.17.0
+
+# Draft mode (doesn't update configs)
+npm run notes:draft -- --milestone=5.17.0
+
+# Direct script usage
+node ./docs/.vuepress/notes.mjs --milestone=5.17.0 --from-version=5.16.0
+```
 
 ## Troubleshooting
 
