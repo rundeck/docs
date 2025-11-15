@@ -13,7 +13,11 @@ export default [
     link: '/history/updates/'
   },
   {
-    text: 'Release Notes',
+    text: 'Release Calendar',
+    link: '/history/release-calendar.md',
+  },
+  {
+    text: 'All Release Notes',
     collapsible: true,
     link: '/history/',
     headerDepth: 1,
