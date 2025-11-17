@@ -8,19 +8,19 @@ This script generates RSS/Atom feeds and markdown pages from recently merged pul
 
 ## Features
 
-- ✅ Fetches merged PRs from **both** repositories:
+- Fetches merged PRs from **both** repositories:
   - **Private**: `rundeckpro/rundeckpro` (filtered by `release-notes/include` label)
   - **Public**: `rundeck/rundeck` (filtered by `release-notes/include` label)
-- ✅ **Tag-based comparison**: Uses git tags instead of dates for accurate PR detection
-- ✅ **SaaS cut support**: Limits PRs to those included in the most recent SaaS deployment cut
-- ✅ **Submodule awareness**: Automatically finds the correct rundeck commit from rundeckpro tags
-- ✅ **All merge strategies**: Handles merge commits, squash merges, and rebase merges
-- ✅ Combines and sorts PRs by merge date across both repos
-- ✅ Automatically removes `RUN-XXXX` prefixes from PR titles (matching notes.mjs logic)
-- ✅ Generates both RSS 2.0 and Atom feeds
-- ✅ Creates VuePress-compatible markdown pages
-- ✅ Template-based content using Nunjucks (like notes.mjs)
-- ✅ Comprehensive error handling
+- **Tag-based comparison**: Uses git tags instead of dates for accurate PR detection
+- **SaaS cut support**: Limits PRs to those included in the most recent SaaS deployment cut
+- **Submodule awareness**: Automatically finds the correct rundeck commit from rundeckpro tags
+- **All merge strategies**: Handles merge commits, squash merges, and rebase merges
+- Combines and sorts PRs by merge date across both repos
+- Automatically removes `RUN-XXXX` prefixes from PR titles (matching notes.mjs logic)
+- Generates both RSS 2.0 and Atom feeds
+- Creates VuePress-compatible markdown pages
+- Template-based content using Nunjucks (like notes.mjs)
+- Comprehensive error handling
 
 ## Initial Setup (One-time)
 
@@ -295,7 +295,21 @@ node ./docs/.vuepress/pr-feed.mjs --output-dir=./docs/some-other-location
 
 ## Implementation Notes
 
+### Shared Utilities with notes.mjs
+
+Both `pr-feed.mjs` and `notes.mjs` now use shared functions from `pr-utils.mjs`:
+
+**Shared Functions:**
+- `fetchPRsBetweenTags()` - Compare two git tags to find all PRs
+- `extractPRSection()` - Extract specific sections from PR bodies (e.g., "Release Notes")
+- `cleanPRTitle()` - Remove RUN-XXXX prefixes from PR titles
+- `parseSaasCutTag()` - Parse SaaS cut tag format to extract commit SHAs
+- `getPreviousVersion()` - Auto-decrement version numbers (e.g., 5.17.0 → 5.16.0)
+
+This ensures consistent behavior across both scripts and reduces code duplication.
+
 ### Pattern Matching with notes.mjs
+
 This script follows the same patterns as `notes.mjs`:
 - Uses ES modules (`.mjs` extension)
 - Uses Nunjucks templates for content generation
@@ -303,16 +317,24 @@ This script follows the same patterns as `notes.mjs`:
 - Loads environment variables with `dotenv`
 - Parses CLI arguments with `yargs`
 - Follows the same code style and structure
+- Both now use tag-based comparison (not milestones)
 
 ### Key Differences from notes.mjs
+
 - **SaaS vs Self-Hosted**: Focuses on SaaS deployments vs version-specific self-hosted releases
-- **Tag-based comparison**: Uses git tag comparison instead of milestone-based PR queries
+- **Continuous updates**: Generates standalone pages for ongoing updates vs one-time release notes
 - **SaaS cut awareness**: Limits PRs to those in the deployment cut (not everything in main)
 - **Submodule handling**: Automatically resolves rundeck submodule commits from rundeckpro tags
-- **Continuous updates**: Generates standalone pages for ongoing updates
 - **Customer communication**: Designed for SaaS customers via RSS/Atom feeds
-- **All merge strategies**: Handles merge commits, squash merges, and rebase merges
-- **Shared logic**: Uses same PR title cleaning regex as notes.md.nj template
+- **Feed generation**: Creates RSS 2.0 and Atom 1.0 feeds
+
+### Similarity to notes.mjs
+
+- **Both use tag-based comparison**: Compare git tags to find PRs between releases
+- **Both handle all merge strategies**: Merge commits, squash merges, and rebase merges
+- **Both use shared utilities**: Common functions from `pr-utils.mjs`
+- **Both extract PR sections**: Pull "Release Notes" sections from PR bodies
+- **Both filter by labels**: Use `release-notes/include` for enterprise PRs
 
 ## Technical Details
 
@@ -337,6 +359,12 @@ The script parses this format to extract commit SHAs directly, eliminating the n
 - Handling of annotated vs lightweight tags
 
 This ensures the exact commits used in the build are compared, guaranteeing accuracy.
+
+## Related Documentation
+
+- **[README.md](./README.md)** - Main documentation project setup and release notes generation
+- **`notes.mjs`** - Self-hosted release notes generator (uses same shared utilities)
+- **`pr-utils.mjs`** - Shared utility functions used by both scripts
 
 ## License
 
