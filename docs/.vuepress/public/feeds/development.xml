@@ -5,8 +5,36 @@
     <link>https://docs.rundeck.com/docs</link>
     <description>Recent merged pull requests and development updates from Rundeck</description>
     <language>en-us</language>
-    <lastBuildDate>Tue, 11 Nov 2025 20:27:05 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 12 Nov 2025 21:27:32 GMT</lastBuildDate>
     <atom:link href="https://docs.rundeck.com/feeds/development.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Fixes datacenter value in Vmware resource model</title>
+      <link>https://docs.rundeck.com/docs/history/updates/</link>
+      <description>Fixes datacenter value in Vmware resource model (Merged: Nov 12, 2025)</description>
+      <pubDate>Wed, 12 Nov 2025 17:04:59 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeckpro-4469</guid>
+    </item>
+    <item>
+      <title>Fixes missing no output message when looking at a step in the execution page</title>
+      <link>https://docs.rundeck.com/docs/history/updates/</link>
+      <description>Fixes missing no output message when looking at a step in the execution page (Merged: Nov 10, 2025)</description>
+      <pubDate>Mon, 10 Nov 2025 16:11:36 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeck-9886</guid>
+    </item>
+    <item>
+      <title>Set sleep time on sftp plugin</title>
+      <link>https://docs.rundeck.com/docs/history/updates/</link>
+      <description>Set sleep time on sftp plugin (Merged: Nov 7, 2025)</description>
+      <pubDate>Fri, 07 Nov 2025 17:16:07 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeckpro-4465</guid>
+    </item>
+    <item>
+      <title>Fix the loading icon showing when a step already succeeded</title>
+      <link>https://docs.rundeck.com/docs/history/updates/</link>
+      <description>Fix the loading icon showing when a step already succeeded (Merged: Nov 6, 2025)</description>
+      <pubDate>Thu, 06 Nov 2025 21:42:20 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeck-9884</guid>
+    </item>
     <item>
       <title>Multiline Job Options (Beta)</title>
       <link>https://docs.rundeck.com/docs/history/updates/</link>

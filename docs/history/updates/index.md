@@ -1,7 +1,7 @@
 ---
 title: Recent Development Updates
 description: Latest merged changes from the Rundeck development team
-date: 2025-11-11T20:27:05.270Z
+date: 2025-11-12T21:27:32.406Z
 feed: true
 index: true
 ---
@@ -18,6 +18,26 @@ This page shows recently merged pull requests from both the Runbook Automation p
 
 ## Recent Changes
 
+
+#### ::circle-dot:: Fixes datacenter value in Vmware resource model 
+
+
+  This PR fixes the datacenter value retrieval in the VMware resource model by replacing hardcoded parent chain navigation (parent?.getParent()?.getName()) with a dynamic traversal approach that handles VMs at any folder depth. 
+  
+  Before this fix, any nodes nested more than 2 folders would exhibit the wrong value for the attribute datacenter.
+
+#### ::circle-dot:: Fixes missing no output message when looking at a step in the execution page  [PR #9886](https://github.com/rundeck/rundeck/pull/9886)
+
+
+#### ::circle-dot:: Set sleep time on sftp plugin 
+
+
+  Adds a configurable sleep timeout property to the File Transfer plugin, allowing users to customize the wait time after file transfer completion instead of using the hardcoded 2000ms value.  There is a new `sleepTimeout` integer property with a default value of 2000ms.
+
+#### ::circle-dot:: Fix the loading icon showing when a step already succeeded  [PR #9884](https://github.com/rundeck/rundeck/pull/9884)
+
+
+  Small bug fix: When a job is running, a step that doesn&#39;t have an output shows a loading icon no matter if the step has finished running.
 
 #### ::circle-dot:: Multiline Job Options (Beta)  [PR #9822](https://github.com/rundeck/rundeck/pull/9822)
 
@@ -72,6 +92,6 @@ The development updates are automatically generated from both our private reposi
 
 ---
 
-**List Last updated:** 2025-11-11
+**List Last updated:** 2025-11-12
 
 
