@@ -1,7 +1,7 @@
 ---
 title: Recent Development Updates
 description: Latest merged changes from the Rundeck development team
-date: 2025-11-18T22:15:31.933Z
+date: 2025-11-19T18:01:03.384Z
 feed: true
 index: true
 ---
@@ -18,6 +18,31 @@ This page shows recently merged pull requests from both the Runbook Automation p
 
 ## Recent Changes
 
+
+#### ::circle-dot:: Fix CVE-2025-55163: Upgrade google-cloud-container to 2.82.0 
+
+
+  This mitigates CVE-2025-55163 (CVSS 8.7, CWE-770) by upgrading the `google-cloud-container` dependency from 2.54.0 to 2.82.0 in both the kubernetes-clusters and gcp-plugins modules.
+
+#### ::circle-dot:: Upgrade MSSQL JDBC to fix CVE-2025-59250  [PR #9892](https://github.com/rundeck/rundeck/pull/9892)
+
+
+  Upgraded the Microsoft SQL Server JDBC driver from version 9.4.0.jre8 to 13.2.1.jre8 in the runner-agent module to address security vulnerability CVE-2025-59250.
+
+#### ::circle-dot:: Slack Notification Plugin now supports Templates 
+
+
+  Refactoring and enhancement of the SlackNotificationPlugin to improve template handling, logging, and code robustness. The main changes include support for external FreeMarker templates, safer and more informative logging, and improved per-notification context management.
+
+#### ::circle-dot:: Added new ansible-plugin release version  [PR #9893](https://github.com/rundeck/rundeck/pull/9893)
+
+
+  - Update to the way the Ansible plugin handles ad-hoc command execution, specifically replacing the deprecated -t argument with environment variables for callback configuration, and modernizing inventory argument handling. It also adds and improves tests to ensure these changes work as intended and that user-provided environment variables are respected.
+
+#### ::circle-dot:: Fix: Nodes page support for url param for filter input  [PR #9881](https://github.com/rundeck/rundeck/pull/9881)
+
+
+  Fixed an issue where the ?filter= URL parameter was not properly setting the node filter on the Nodes page, ensuring deep links with node filters now work as expected.
 
 #### ::circle-dot:: Fixes datacenter value in Vmware resource model 
 
@@ -92,6 +117,6 @@ The development updates are automatically generated from both our private reposi
 
 ---
 
-**List Last updated:** 2025-11-18
+**List Last updated:** 2025-11-19
 
 
