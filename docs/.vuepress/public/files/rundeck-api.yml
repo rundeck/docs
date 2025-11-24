@@ -18,6 +18,9 @@ info:
     API version must be specified in the URL path (e.g., /api/46/...).
 
     For detailed documentation, see: [Rundeck API Docs](https://docs.rundeck.com/docs/api/)
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
   version: "56"
 externalDocs:
   description: Original Rundeck API Documentation
@@ -40,7 +43,7 @@ servers:
       default: "4440"
     version:
       description: API version number
-      default: "44"
+      default: '56'
 security:
 - rundeckApiToken: []
 - rundeckPassword: []
@@ -3492,6 +3495,32 @@ paths:
                     message: $statusMessage
                     project: $project
                     synchState: $synchState
+  /job/{id}/tags:
+    get:
+      tags:
+      - Jobs
+      summary: Get Job Tags (Enterprise)
+      description: |
+        Returns the list of tags for a job.
+
+        Since: v46
+      operationId: job
+      parameters:
+      - name: id
+        in: path
+        description: Job ID
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
   /job/{id}/workflow:
     get:
       tags:
@@ -3981,7 +4010,7 @@ paths:
       - Project
       summary: Delete a project
       description: |-
-        Delete an existing projects on the server.  The action cannot be undone.
+        Delete an existing project on the server.  The action cannot be undone.
 
         Authorization required: `delete` access for `project` resource type or `admin` or `app_admin` access for `user` resource type.
       operationId: apiProjectDelete
@@ -4722,7 +4751,7 @@ paths:
               set-project-config:
                 summary: Replace an individual config settings
                 value:
-                  '[KEY]': key value
+                  value: key value
           text/plain:
             schema:
               type: string
@@ -5181,7 +5210,6 @@ paths:
   /project/{project}/executions/metrics:
     get:
       tags:
-      - Job Executions
       - Job Executions
       summary: Execution Query Metrics
       description: |
@@ -6133,6 +6161,118 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ApiErrorResponse"
+  /project/{project}/jobTags/query:
+    get:
+      tags:
+      - Jobs
+      summary: "Query Project Job Tags [Enterprise]"
+      description: "Returns the list of available tags, along with the count of jobs\
+        \ per each tag, for the job \nquery result received.\n\nSince: v46\n"
+      operationId: query
+      parameters:
+      - name: jobFilter
+        in: query
+        schema:
+          type: string
+      - name: jobExactFilter
+        in: query
+        schema:
+          type: string
+      - name: projFilter
+        in: query
+        schema:
+          type: string
+      - name: groupPath
+        in: query
+        schema:
+          type: string
+      - name: groupPathExact
+        in: query
+        schema:
+          type: string
+      - name: descFilter
+        in: query
+        schema:
+          type: string
+      - name: loglevelFilter
+        in: query
+        schema:
+          type: string
+      - name: idlist
+        in: query
+        schema:
+          type: string
+      - name: scheduledFilter
+        in: query
+        schema:
+          type: boolean
+      - name: scheduleEnabledFilter
+        in: query
+        schema:
+          type: boolean
+      - name: executionEnabledFilter
+        in: query
+        schema:
+          type: boolean
+      - name: serverNodeUUIDFilter
+        in: query
+        schema:
+          type: string
+      - name: daysAhead
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: runJobLaterFilter
+        in: query
+        schema:
+          type: boolean
+      - name: max
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: offset
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: sortBy
+        in: query
+        schema:
+          type: string
+      - name: sortOrder
+        in: query
+        schema:
+          type: string
+      - name: inputParamMap
+        in: query
+        schema:
+          type: object
+          additionalProperties: true
+      - name: paginatedRequired
+        in: query
+        schema:
+          type: boolean
+      - name: sortOrders
+        in: query
+        schema:
+          type: array
+          items:
+            $ref: "#/components/schemas/SortOrder"
+      - name: project
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
   /project/{project}/jobs:
     get:
       tags:
@@ -6510,7 +6650,6 @@ paths:
     post:
       tags:
       - Jobs
-      - Jobs
       summary: Import Job definitions
       description: |-
         Import a set of job definitions in a supported format.
@@ -6791,7 +6930,6 @@ paths:
   /project/{project}/plugins/save:
     post:
       tags:
-      - Configuration
       - Project
       summary: Save list-style plugin configurations for a project
       description: |-
@@ -7494,6 +7632,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/RegenRunnerCredResponse"
+        "500":
+          description: Server error while regenerating runner credentials
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
   /project/{project}/runnerManagement/runner/{runnerId}:
     get:
       tags:
@@ -7609,8 +7753,8 @@ paths:
       tags:
       - Runner
       summary: Delete Runner Replica at Project Context
-      description: "Delete the specified runner replica no ephemeral mode. Since:\
-        \ V41"
+      description: "Delete the specified Runner Replica without ephemeral mode. Since:\
+        \ V55"
       operationId: deleteProjectRunnerReplica
       parameters:
       - name: project
@@ -7635,8 +7779,8 @@ paths:
     get:
       tags:
       - Runner
-      summary: List Runners Replicas at Project Context
-      description: "List available runners Replicas. Since: V41"
+      summary: List Runner Replicas at Project Context
+      description: "List available Runner Replicas. Since: V55"
       operationId: listProjectRunnersReplicas
       parameters:
       - name: project
@@ -7659,8 +7803,9 @@ paths:
     post:
       tags:
       - Runner
-      summary: Create a Runner at Project Context
-      description: "Create a new Runner at project context. Since: V42"
+      summary: Create a Runner Replica without ephemeral mode at project context
+      description: "Create a new Runner Replica without ephemeral mode at project\
+        \ context. Since: V55"
       operationId: createProjectNoEphemeralReplica
       parameters:
       - name: project
@@ -7679,13 +7824,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/NewRunnerResponse"
+                $ref: "#/components/schemas/NewRunnerReplicaResponse"
         "400":
           description: Failed to create the runner
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ErrorResponse"
+                $ref: "#/components/schemas/ApiErrorResponse"
+        "403":
+          description: Not authorized to create runner replica at project level
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
   /project/{project}/runnerManagement/runners:
     get:
       tags:
@@ -7742,11 +7893,22 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                newRunnerRequest:
-                  $ref: "#/components/schemas/CreateRunnerRequest"
-        required: true
+              allOf:
+              - $ref: "#/components/schemas/CreateRunnerRequest"
+              - properties:
+                  newRunnerRequest:
+                    $ref: "#/components/schemas/CreateRunnerRequest"
+            examples:
+              Create Runner Example:
+                value:
+                  name: MyRunner
+                  description: A runner for running CI/CD pipelines
+                  tagNames: "tag1,tag2"
+                  assignedProjects:
+                    ProjectA: .*
+                    ProjectB: .*
+                  installationType: linux
+                  replicaType: ephemeral
       responses:
         "200":
           description: New runner created
@@ -7759,7 +7921,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ErrorResponse"
+                $ref: "#/components/schemas/ApiErrorResponse"
   /project/{project}/runnerManagement/ui:
     get:
       tags:
@@ -9132,7 +9294,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ErrorResponse"
+                $ref: "#/components/schemas/ApiErrorResponse"
   /runnerManagement/checkPing/{token}:
     get:
       tags:
@@ -9249,6 +9411,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/RegenRunnerCredResponse"
+        "500":
+          description: Server error while regenerating runner credentials
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
   /runnerManagement/runner/{id}/tags:
     get:
       tags:
@@ -9341,8 +9509,8 @@ paths:
       tags:
       - Runner
       summary: Delete Runner Replica
-      description: "Delete the specified runner replica no ephemeral mode. Since:\
-        \ V52"
+      description: "Delete the specified runner replica without ephemeral mode. Since:\
+        \ V55"
       operationId: deleteRunnerReplica
       parameters:
       - name: runnerId
@@ -9362,8 +9530,8 @@ paths:
     get:
       tags:
       - Runner
-      summary: List Runners Replicas
-      description: "List available runners Replicas. Since: V41"
+      summary: List Runner Replicas
+      description: "List available Runner Replicas. Since: V55"
       operationId: listRunnersReplicas
       parameters:
       - name: runnerId
@@ -9382,7 +9550,7 @@ paths:
       tags:
       - Runner
       summary: Create a Runner Replica in no-ephemeral mode
-      description: "Create a new Runner Replica. Since: V42"
+      description: "Create a new Runner Replica. Since: V55"
       operationId: createNoEphemeralReplica
       parameters:
       - name: runnerId
@@ -9402,7 +9570,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ErrorResponse"
+                $ref: "#/components/schemas/ApiErrorResponse"
   /runnerManagement/runners:
     get:
       tags:
@@ -9448,8 +9616,22 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/CreateRunnerRequest"
-        required: true
+              allOf:
+              - $ref: "#/components/schemas/CreateRunnerRequest"
+              - properties:
+                  newRunnerRequest:
+                    $ref: "#/components/schemas/CreateRunnerRequest"
+            examples:
+              Create Runner Example:
+                value:
+                  name: MyRunner
+                  description: A runner for running CI/CD pipelines
+                  tagNames: "tag1,tag2"
+                  assignedProjects:
+                    ProjectA: .*
+                    ProjectB: .*
+                  installationType: linux
+                  replicaType: ephemeral
       responses:
         "200":
           description: New runner created
@@ -9462,7 +9644,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ErrorResponse"
+                $ref: "#/components/schemas/ApiErrorResponse"
   /runnerManagement/tags:
     get:
       tags:
@@ -12250,14 +12432,14 @@ components:
       required:
       - description
       - name
-      - installationType
-      - replicaType
       type: object
       properties:
         name:
           type: string
+          description: Name of the Runner
         description:
           type: string
+          description: Description of the Runner
         tagNames:
           type: string
           description: Comma separated tags
@@ -12265,14 +12447,27 @@ components:
           type: object
           additionalProperties:
             type: string
+          description: Map of project names to their associated runner roles
+          example:
+            ProjectA: .*
+            ProjectB: .*
         projectRunnerAsNode:
           type: object
           additionalProperties:
             type: boolean
+          description: Map of project names to a boolean indicating if the runner
+            should be associated as a node executor for that project
+          example:
+            ProjectA: true
+            ProjectB: false
         installationType:
           type: string
+          description: Installation type of the Runner
+          example: linux
         replicaType:
           type: string
+          description: Replica type of the Runner
+          example: ephemeral
     CreateToken:
       type: object
       properties:
@@ -12324,18 +12519,18 @@ components:
       - code
       type: object
       properties:
-        arguments:
-          type: array
-          items:
-            type: object
-        defaultMessage:
+        code:
           type: string
         codes:
           type: array
           items:
             type: string
-        code:
+        defaultMessage:
           type: string
+        arguments:
+          type: array
+          items:
+            type: object
     DeleteBulkRequest:
       type: object
       properties:
@@ -12378,23 +12573,6 @@ components:
       properties:
         enabled:
           type: boolean
-    ErrorResponse:
-      type: object
-      properties:
-        errorMessage:
-          type: string
-        errorCode:
-          type: string
-        apiVersion:
-          type: integer
-          format: int32
-        error:
-          type: string
-        apiversion:
-          type: integer
-          format: int32
-        message:
-          type: string
     Errors:
       type: object
       properties:
@@ -12859,12 +13037,16 @@ components:
       properties:
         token:
           type: string
+          description: Authentication token for the new Runner replica.
         runnerId:
           type: string
+          description: Unique Runner ID for the Runner instance.
         replicaId:
           type: string
+          description: Unique Runner ID for the Runner replica.
         downloadTk:
           type: string
+          description: Download token for retrieving Runner resources.
     NewRunnerResponse:
       type: object
       allOf:
@@ -13161,13 +13343,13 @@ components:
         max:
           type: integer
           format: int32
-        offset:
-          type: integer
-          format: int32
         sortOrders:
           type: array
           items:
             $ref: "#/components/schemas/SortOrder"
+        offset:
+          type: integer
+          format: int32
     RegenRunnerCredResponse:
       type: object
       properties:
@@ -13365,10 +13547,10 @@ components:
     RunnerInstallationType:
       type: string
       enum:
-      - LINUX
-      - WINDOWS
-      - KUBERNETES
-      - DOCKER
+      - linux
+      - windows
+      - kubernetes
+      - docker
     RunnerList:
       type: object
       properties:
@@ -13416,35 +13598,49 @@ components:
       properties:
         replicaId:
           type: string
+          description: Unique identifier for the Runner replica.
         runnerId:
           type: string
+          description: Unique identifier for the Runner instance.
         sessionId:
           type: string
+          description: Session identifier for the replica's current session.
         status:
           type: string
+          description: "Current status of the replica (e.g., active, offline)."
         version:
           type: string
+          description: Version of the Runner software.
         hostname:
           type: string
+          description: Hostname of the machine running the replica.
         installationPath:
           type: string
+          description: Installation path of the Runner on the host machine.
         ipAddress:
           type: string
+          description: IP address of the replica host.
         createTime:
           type: string
+          description: Timestamp when the replica was created.
           format: date-time
         lastCheckin:
           type: string
+          description: Last check-in time as a formatted string.
         lastCheckinAlert:
           type: boolean
+          description: Indicates if the last check-in triggered an alert.
         uptime:
           type: integer
+          description: Uptime of the replica in milliseconds.
           format: int64
         runningOperations:
           type: integer
+          description: Number of currently running operations on the replica.
           format: int64
         versionWarning:
           type: boolean
+          description: Indicates if there is a version mismatch warning for the replica.
     RunnerReplicaType:
       type: string
       enum:
@@ -13863,12 +14059,12 @@ components:
     StartUpResponse:
       type: object
       properties:
+        error:
+          type: boolean
         replicaId:
           type: string
         replicaType:
           type: string
-        error:
-          type: boolean
     Step:
       type: object
       properties:

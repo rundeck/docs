@@ -55,7 +55,7 @@ Beyond security, this release includes important user experience improvements su
 * [Fix: repeated exceptions after SCM is disabled](https://github.com/rundeck/rundeck/pull/9756)
 * [Child processes not being killed on Windows OS nodes](https://github.com/rundeck/rundeck/pull/9747)
 * [Update Quartz for CVE-2019-5427](https://github.com/rundeck/rundeck/pull/9745)
-* [Update openshh-node-execution plugin version](https://github.com/rundeck/rundeck/pull/9744)
+* [Update openssh-node-execution plugin version](https://github.com/rundeck/rundeck/pull/9744)
 * [update commons-compress version](https://github.com/rundeck/rundeck/pull/9743)
 * [Additional Fixes for CVE-2025-48976](https://github.com/rundeck/rundeck/pull/9742)
 * [Update execution metrics](https://github.com/rundeck/rundeck/pull/9741)

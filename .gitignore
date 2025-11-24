@@ -22,7 +22,6 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw?
-package-lock.json
 *.iml
 *.ipr
 *~

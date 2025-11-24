@@ -1,9 +1,9 @@
 ---
 
 title: "{{version.versionString}} Release Notes"
-date: 2025-01-01
+date: {{currentDate}}
 image: /images/chevron-logo-red-on-white.png
-description: "Rundeck | Runbook Automation Releases <VERSION> <DESCRIPTION>"
+description: "Rundeck | Runbook Automation Releases {{version.versionString}} - <DESCRIPTION>"
 feed:
  enable: true
  description: ""
@@ -18,31 +18,41 @@ feed:
 
 ## Runbook Automation Updates
 
-> Also includes all Open Source updates from below
-
-### Additional Updates
-
-
 {% for pull in enterprise.pulls -%}
-* {{ pull.title | replace(r/^(RUN-[0-9]+\s*)+:?\s*/g, "") }}
+##### ::circle-dot:: {{ pull.title | replace(r/^(RUN-[0-9]+\s*)+:?\s*/g, "") }}
+{% if pull.releaseNotes %}  
+{{ pull.releaseNotes }}
+{% endif %}
 {% endfor %}
-
 ## Rundeck Open Source Product Updates
 
 {% for pull in core.pulls -%}
-* [{{ pull.title | replace(r/^(RUN-[0-9]+\s*)+:?\s*/g, "") }}]({{pull.html_url}})
+#####  ::circle-dot:: [{{ pull.title | replace(r/^(RUN-[0-9]+\s*)+:?\s*/g, "") }}]({{pull.html_url}})
+{% if pull.releaseNotes %}  
+{{ pull.releaseNotes }}
+{% endif %}
 {% endfor %}
-
 [Here is a link to the full list of public PRs](https://github.com/rundeck/rundeck/pulls?q=is%3Apr+milestone%3A{{version.versionString}}+is%3Aclosed)
 
+{% if ansible.pulls.length > 0 %}
 ## Ansible Plugin Updates
 {% for pull in ansible.pulls -%}
-* [{{ pull.title | replace(r/^(RUN-[0-9]+\s*)+:?\s*/g, "") }}]({{pull.html_url}})
+#####  ::circle-dot:: [{{ pull.title | replace(r/^(RUN-[0-9]+\s*)+:?\s*/g, "") }}]({{pull.html_url}})
+{% if pull.releaseNotes %}  
+{{ pull.releaseNotes }}
+{% endif %}
 {% endfor %}
+{% endif %}
 
+{% if runner.pulls.length > 0 %}
+## Runner Updates
 {% for pull in runner.pulls -%}
-* {{ pull.title | replace(r/^(RUN-[0-9]+\s*)+:?\s*/g, "") }}
+#####  ::circle-dot:: [{{ pull.title | replace(r/^(RUN-[0-9]+\s*)+:?\s*/g, "") }}]({{pull.html_url}})
+{% if pull.releaseNotes %}  
+{{ pull.releaseNotes }}
+{% endif %}
 {% endfor %}
+{% endif %}
 
 ## Links
 
@@ -55,7 +65,7 @@ feed:
 
 Name: <span style="color: {{version.color()}}"><span class="glyphicon glyphicon-{{version.icon()}}"></span> "{{version.name()}} {{version.color()}} {{version.icon()}}"</span>
 
-Release Date: PUTADATEHERE
+Release Date: {{currentDateLong}}
 
 
 ## Community Contributors

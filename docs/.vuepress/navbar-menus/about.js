@@ -21,6 +21,6 @@ export default [
   },
   {
     text: 'Release Notes',
-    link: '/history/'
+    link: '/history/5_x/version-5.17.0.md'
   }
 ]

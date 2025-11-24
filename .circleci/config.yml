@@ -17,18 +17,18 @@ jobs:
       # Download and cache dependencies
       - restore_cache:
           keys:
-            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-{{ checksum "package.json" }}-{{ checksum "package-lock.json" }}
             # fallback to using the latest cache if no exact match is found
             #- v1-dependencies-
       - run: sudo apt-get update && sudo apt-get install -y apt-transport-https
       - run: sudo apt-get update && sudo apt-get -y install python3-dev python3-pip libpython2-dev
       - run: sudo pip3 install 'awscli==1.29.58'
-      - run: npm install --verbose
+      - run: npm ci
       - run: npm list
       - save_cache:
           paths:
             - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
+          key: v1-dependencies-{{ checksum "package.json" }}-{{ checksum "package-lock.json" }}
       # run tests!
       - run: node docs/.vuepress/deploy.mjs $CIRCLE_TAG
       - slack/notify:

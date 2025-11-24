@@ -43,15 +43,6 @@ level of procedure formalization.
   value be somewhat open ended consider how you can create
   safeguards to control their choice.
 
-## Input Types
-
-Option Input Types define how the option is presented in the GUI, and how it is used when the Job executes.
-
-Input types:
-
-- "Plain" - a normal option which is shown in clear text
-- "Secure" - a secure option which is obscured at user input time, and the value of which is not stored in the database. See [secure-options](#secure-options).
-- "Secure Remote Authentication" - a secure option which is used only for remote authentication and is not exposed in scripts or commands. See [secure-remote-authentication-options](#secure-remote-authentication-options).
 
 ## Options editor
 
@@ -87,10 +78,21 @@ loaded to the Rundeck server. See [job-xml](/manual/document-format-reference/jo
 
 ## Defining an option
 
-**Text Options**
-
 New options can be defined by pressing the "Add an option" link while
 existing ones can be changed by pressing their "edit" link.
+
+### Option Types
+
+Options can be one of these types:
+
+* [Text](#text-option-type) - a single line of text, or multiple values
+* [File](#file-option-type) - a File upload option
+* [Multiline Text](#multiline-text-option-type) - multiple lines of text
+
+Depending on the Option Type selected, different configuration options are available.
+
+### Text Option Type
+
 
 Choose "Text" from the Option Type:
 
@@ -98,26 +100,32 @@ Choose "Text" from the Option Type:
 
 The option definition form is organized into several areas:
 
-Identification
+Option Name
 
-: Here you provide the option's name and description. The name
-becomes part of acceptable arguments to the Job while the
-description will be provided as help text to users running the Job.
+: Here you provide the option's name. This value
+will be used to reference the option variable within steps of the Job.
 
-     The Default Value will be pre-selected in the GUI when the option is presented.
+Option Label
+
+: An optional display label shown in place of the Option Name when viewed in the GUI.
+
+Description
+
+: This will be provided as help text to users running the Job.
+
+Default Value
+
+: A Default Value will automatically be set for the option if it is not otherwise specified by the user, even if not specified among the arguments when executing a job via the command-line or API. Note that a blank value can be specified via the command-line or API, which will override the use of the Default Value.
 
 Input Type
 
-: Choose between "Plain", "Date", "Secure" and "Secure Remote Authentication". For input types other than "Plain", the multi-valued option will be disabled.
+: Choose between "Plain", "Date", "Plain Text with Password Input" and "Secure Remote Authentication". For input types other than "Plain", the multi-valued option will be disabled.
 
 Date Format
 
 : If "Date" Input Type is chosen, you can enter a date format to use when selecting the date
 in the user interface. Using the [momentjs format](https://momentjs.com/docs/#/displaying/format/).
 
-Default Value
-
-: A Default Value will automatically be set for the option if it is not otherwise specified by the user, even if not specified among the arguments when executing a job via the command-line or API. Note that a blank value can be specified via the command-line or API, which will override the use of the Default Value.
 
 Allowed values
 
@@ -136,7 +144,7 @@ popup menu. If set "false", a text field will also be presented.
 Enter a regular expression in the "Match Regular Expression"
 field the Job will evaluate when run.
 
-Requirement
+Required
 
 : Indicates if the Job can only run if a non-blank value is provided for
 that Option. Choose "No" to indicate that a blank value is allowed, and
@@ -166,7 +174,20 @@ Usage (see below)
 
 ![Option Usage](/assets/img/fig-option-usage.png)
 
-### Option timestamp variable
+
+#### Input Types
+
+For Text Option types, the Input Type defines how the text option is presented in the GUI, and how it is used when the Job executes.
+
+Input types:
+
+- "Plain" - a normal option which is shown in clear text
+
+- "Date" - A Date input which can produce a date string in a user-defined format.
+- "Plain Text with Password Input" - an option which is obscured at user input time, and the value of which is not stored in the database, but is exposed in scripts and commands. See [secure-options](#secure-options).
+- "Secure Remote Authentication" - a secure option which is used only for remote authentication and is not exposed in scripts or commands. See [secure-remote-authentication-options](#secure-remote-authentication-options).
+
+#### Option timestamp variable
 
 You can use the string `${DATE:format}` as a job option value (either as a default value or as input by the user), which will be converted when the job/command is executed.
 This variable also allows you to add or remove days as you can see below.
@@ -199,6 +220,31 @@ The `option.NAME` variable will contain a unique ID identifying the uploaded fil
 
 `file.NAME.sha` will be the SHA256 hash of the file.
 
+### Multiline Text Option Type
+
+:::betafeature Beta Feature (Since v5.17.0)
+
+**This is a Beta feature.** To enable this feature, add the config `rundeck.feature.multilineJobOptions.enabled=true` 
+:::
+
+::: danger Important
+If you disable the `multilineJobOptions` feature flag after creating jobs with multiline options, **those options may become unusable**. The enforced setting and other configurations may not persist correctly when the feature is re-enabled. If this occurs, the only solution is to delete the affected options and recreate them completely. It is recommended to leave the feature enabled once you have jobs using multiline options.
+:::
+
+Choose "Multiline Text" from the Option Type dropdown:
+
+![Multiline Text Option Edit Form](/assets/img/fig-newoption-multiline.png)
+
+Default Value
+
+: Enter a multi-line string to use as a default value.
+
+Restrictions
+
+: Choose None, or "Match Regular Expression".  If a Regular expression is used, be aware that for multiline input, the default behavior of the Java Pattern match will not match across multiple lines.  You must use the "s" flag, which can be done by including `(?s)` in the regular expression.
+
+
+
 ## Script usage
 
 Option values can be passed to scripts as an argument or referenced
@@ -221,9 +267,9 @@ forms to access the value of the "message" option.
 
 ```bash .numberLines
 #!/bin/sh
-echo envvar=$RD_OPTION_MESSAGE ;# access message as environment variable.
-echo args=$1                   ;# read value passed into argument vector
-echo message=@option.message@  ;# access message via replacement token syntax
+echo envvar="$RD_OPTION_MESSAGE" ;# access message as environment variable.
+echo args="$1"                   ;# read value passed into argument vector
+echo message="@option.message@"  ;# access message via replacement token syntax
 ```
 
 When the user runs the "hello" job they will be prompted for the
@@ -346,6 +392,8 @@ echo "$1"
 ```
 
 Which allows the shell will correctly handle the input value by quoting it.
+
+Note: for Multiline Text options, some shells like Bash will not expand a variable with multiple lines exactly as it was entered, *unless* the variable is quoted.
 
 ::: tip
 When running a command, the value of `${option.name}` will be escaped with single quotes by default.

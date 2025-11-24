@@ -1,14 +1,12 @@
 import _ from 'lodash'
 import fs from 'fs'
-import glob from 'glob'
+import { globSync } from 'glob'
 import markdownIt from 'markdown-it'
 import meta from 'markdown-it-meta'
 
 // Load all MD files in a specified directory and order by metadata 'order' value
 const getChildren = function(parent_path, dir) {
-    let files = glob
-        .sync(parent_path + (dir ? `/${dir}` : '') + '/*.md')
-        .map(path => {
+    let files = globSync(parent_path + (dir ? `/${dir}` : '') + '/*.md').map(path => {
             // Instantiate MarkdownIt
             let md = new markdownIt();
             // Add markdown-it-meta

@@ -265,7 +265,7 @@ export default defineUserConfig({
           dateSorter(pageA.frontmatter.date, pageB.frontmatter.date)
       },
       icon: {
-        assets: "fontawesome"
+        assets: "fontawesome-with-brands",
       },
       components: {
         components: [

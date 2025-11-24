@@ -3,12 +3,25 @@ import getChildren from '../getChildren'
 
 export default [
   {
-    text: 'Release Notes',
+    text: 'Latest Release',
     collapsible: false,
+    link: '/history/5_x/version-5.17.0.md',
+  },
+  {
+    text: 'Recent Changes',
+    collapsible: true,
+    link: '/history/updates/'
+  },
+  {
+    text: 'Release Calendar',
+    link: '/history/release-calendar.md',
+  },
+  {
+    text: 'All Release Notes',
+    collapsible: true,
     link: '/history/',
     headerDepth: 1,
     children: [
-      ...getHistory('docs/history/'),
       {
         text: '5.x',
         collapsible: true,
@@ -56,14 +69,20 @@ export default [
         link: '/history/',
         children: getChildren('docs/history/', '1_x'),
       },
+    ]
+  },
+  {
+    text: "Security Advisories",
+    collapsible: true,
+    link: '/history/cves/',
+    children: getChildren('docs/history/', 'cves'),
+  },
+  {
+    text: "Previous Version Docs",
+    collapsible: true,
+    children: [
       {
-        text: "Security Advisories",
-        collapsible: true,
-        link: '/history/cves/',
-        children: getChildren('docs/history/', 'cves'),
-      },
-      {
-        text: "Previous Version Docs",
+        text: 'Version 5.x',
         collapsible: true,
         children: [
           {
@@ -78,7 +97,6 @@ export default [
                 text: "5.17.0",
                 link: "https://docs.rundeck.com/5.17.0/"
               },
-
               {
                 text: "5.16.0",
                 link: "https://docs.rundeck.com/5.16.0/"
@@ -377,7 +395,4 @@ export default [
           }
         ]
       }
-    ],
-  },
-
-]
+    ]
