@@ -22,7 +22,6 @@ Passwords for SSH and/or sudo authentication mechanisms can be used with the bui
 By design and for security reasons, it isn't possible to use private/public keys on options. Only Passwords from the Key Storage can be used.
 :::
 
-
 ### Date Format
 If Date Input Type is selected, users provide a date format to be used when selecting the date in the user interface (see "Date" in the next section).<br>
 ### Default Value
