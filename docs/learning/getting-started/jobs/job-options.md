@@ -17,6 +17,12 @@ A safe option where the value is hidden when the user enters it. For Secure Opti
 * **Remote Secure Option**<br>
 A safe choice that is hidden from scripts and commands and only used for remote authentication. The node executor and node definition must directly support this type of option.<br>
 Passwords for SSH and/or sudo authentication mechanisms can be used with the built-in SSH Provider for node execution. Those passwords are provided via Secure Remote Authentication Options defined in a Job.<br>
+
+:::note Private and Public Keys
+By design and for security reasons isn't possible to use private/public keys on options. Only Passwords from the Key Storage can be used.
+:::
+
+
 ### Date Format
 If Date Input Type is selected, users provide a date format to be used when selecting the date in the user interface (see "Date" in the next section).<br>
 ### Default Value
