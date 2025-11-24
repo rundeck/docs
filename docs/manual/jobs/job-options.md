@@ -224,9 +224,12 @@ The `option.NAME` variable will contain a unique ID identifying the uploaded fil
 
 :::betafeature Beta Feature (Since v5.17.0)
 
-To enable this feature, add the config `rundeck.feature.multilineJobOptions.enabled=true` 
+**This is a Beta feature.** To enable this feature, add the config `rundeck.feature.multilineJobOptions.enabled=true` 
 :::
 
+::: danger Important
+If you disable the `multilineJobOptions` feature flag after creating jobs with multiline options, **those options may become unusable**. The enforced setting and other configurations may not persist correctly when the feature is re-enabled. If this occurs, the only solution is to delete the affected options and recreate them completely. It is recommended to leave the feature enabled once you have jobs using multiline options.
+:::
 
 Choose "Multiline Text" from the Option Type dropdown:
 
