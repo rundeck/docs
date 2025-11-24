@@ -17,7 +17,7 @@ dotenv.config();
 const argv = _yargs(hideBin(process.argv))
   .option('milestone', {
     type: 'string',
-    description: 'Target version/milestone (e.g., 5.17.0)',
+    description: 'Target version/milestone (e.g., 5.17.0) `npm run notes -- --milestone=5.17.0`',
     demandOption: true
   })
   .option('from-version', {
