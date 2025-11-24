@@ -19,7 +19,7 @@ A safe choice that is hidden from scripts and commands and only used for remote 
 Passwords for SSH and/or sudo authentication mechanisms can be used with the built-in SSH Provider for node execution. Those passwords are provided via Secure Remote Authentication Options defined in a Job.<br>
 
 :::note Private and Public Keys
-By design and for security reasons isn't possible to use private/public keys on options. Only Passwords from the Key Storage can be used.
+By design and for security reasons, it isn't possible to use private/public keys on options. Only Passwords from the Key Storage can be used.
 :::
 
 
