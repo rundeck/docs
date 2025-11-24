@@ -194,7 +194,22 @@ The SSM File Copier can alternatively be configured on a per **Node Source** or 
 
 ## Using SSM for Commands and Scripts
 Once the setup is complete, commands that are executed on the specified EC2s - either through the [**Commands**](/manual/06-commands.md#commands-tab-overview) tab or through the **Remote Command** step - will automatically execute through SSM.
-Similarly, scripts that are executed using the **Incline Script** Job step will take place using SSM with S3 as the pass-through mechanism.
+Similarly, scripts that are executed using the **Inline Script** Job step will take place using SSM with S3 as the pass-through mechanism.
+
+### Execution Timeout Configuration
+AWS SSM has a default execution timeout of 1 hour (3600 seconds). You can configure a custom timeout value using the **`ssm-execution-timeout`** property to allow longer-running commands and scripts.
+
+To set the execution timeout for all SSM executions in a project:
+1. Navigate to **Project Settings** -> **Edit Configuration** -> **Default Node Executor**.
+2. In the **AWS / SSM / Node Executor** configuration, add the **Execution Timeout** value in seconds.
+
+To set the execution timeout on project config file:
+**`project.ssm-execution-timeout=3600`**
+
+To set the execution timeout at node level, add the following node-attribute to the nodes by using the [Attribute Match](/manual/node-enhancers.md#attribute-match)
+**`ssm-execution-timeout=3600`**
+
+**Default Value**: If not specified, the execution timeout defaults to **3600 seconds (1 hour)**.
 
 ## Using CloudWatch Logs (Optional)
 The example policies in the prior sections enable Runbook Automation to retrieve logs directly from SSM.  
