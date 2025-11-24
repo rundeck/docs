@@ -5,8 +5,43 @@
     <link>https://docs.rundeck.com/docs</link>
     <description>Recent merged pull requests and development updates from Rundeck</description>
     <language>en-us</language>
-    <lastBuildDate>Tue, 18 Nov 2025 22:15:31 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 20 Nov 2025 15:59:02 GMT</lastBuildDate>
     <atom:link href="https://docs.rundeck.com/feeds/development.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Fix CVE-2025-55163: Upgrade google-cloud-container to 2.82.0</title>
+      <link>https://docs.rundeck.com/docs/history/updates/</link>
+      <description>Fix CVE-2025-55163: Upgrade google-cloud-container to 2.82.0 (Merged: Nov 17, 2025)</description>
+      <pubDate>Mon, 17 Nov 2025 19:58:30 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeckpro-4484</guid>
+    </item>
+    <item>
+      <title>Upgrade MSSQL JDBC to fix CVE-2025-59250</title>
+      <link>https://docs.rundeck.com/docs/history/updates/</link>
+      <description>Upgrade MSSQL JDBC to fix CVE-2025-59250 (Merged: Nov 14, 2025)</description>
+      <pubDate>Fri, 14 Nov 2025 22:06:41 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeck-9892</guid>
+    </item>
+    <item>
+      <title>Slack Notification Plugin now supports Templates</title>
+      <link>https://docs.rundeck.com/docs/history/updates/</link>
+      <description>Slack Notification Plugin now supports Templates (Merged: Nov 14, 2025)</description>
+      <pubDate>Fri, 14 Nov 2025 19:43:26 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeckpro-4479</guid>
+    </item>
+    <item>
+      <title>Added new ansible-plugin release version</title>
+      <link>https://docs.rundeck.com/docs/history/updates/</link>
+      <description>Added new ansible-plugin release version (Merged: Nov 13, 2025)</description>
+      <pubDate>Thu, 13 Nov 2025 19:07:43 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeck-9893</guid>
+    </item>
+    <item>
+      <title>Fix: Nodes page support for url param for filter input</title>
+      <link>https://docs.rundeck.com/docs/history/updates/</link>
+      <description>Fix: Nodes page support for url param for filter input (Merged: Nov 12, 2025)</description>
+      <pubDate>Wed, 12 Nov 2025 17:20:38 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeck-9881</guid>
+    </item>
     <item>
       <title>Fixes datacenter value in Vmware resource model</title>
       <link>https://docs.rundeck.com/docs/history/updates/</link>

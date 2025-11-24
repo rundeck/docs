@@ -21,4 +21,12 @@ Your base URL would look like this: `https://hooks.slack.com/services`
 
 - **Slack Channel**
 : This is the slack channel where you would like the notification to be posted. It should be in the following format: #slack-channel.
- 
+
+- **Custom Template Path**
+  : This is the directory where custom FreeMarker (.ftl) templates can be loaded from.
+  If left blank, Rundeck will automatically use: `${rdeck.base}/libext/templates`.
+
+- **Custom Template**
+  : This is the name of the .ftl file (template) to use when sending Slack messages.
+  The plugin first attempts to load this file from the path defined in Custom Template Path.
+  If the template is not found, the plugin will automatically fall back to its built-in default message format.
