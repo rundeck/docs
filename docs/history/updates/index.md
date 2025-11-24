@@ -1,12 +1,12 @@
 ---
-title: Recent Development Updates
+title: Recent Updates
 description: Latest merged changes from the Rundeck development team
 date: 2025-11-20T15:59:02.276Z
 feed: true
 index: true
 ---
 
-# Recent Development Updates
+# Recent Updates
 
 Stay up to date with the latest changes and improvements from the Runbook Automation development team.  
 
