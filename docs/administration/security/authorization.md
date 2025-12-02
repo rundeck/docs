@@ -273,6 +273,49 @@ by:
   group: multi_project_team
 ```
 
+## Key Storage Access Control
+
+Key Storage access can be controlled at both the system level (Application context) and the project level (Project context). This allows administrators to isolate key storage access per project, preventing users from accessing keys in other projects.
+
+### Project-Level Key Storage
+
+By default, Key Storage access is defined at the project level. This means each project can have its own set of keys, and project-level ACLs control who can access them. The Key Storage GUI is available in the project configuration menu for project-level key management.
+
+**Example: Granting project-level key storage access**
+
+```yaml
+description: Application - Access to project keys
+context:
+  application: 'rundeck'
+for:
+  storage:
+    - match:
+        path: '(keys/MyProject/.*|MyProject/.*)'
+      allow: [read, create, update, delete]
+by:
+  group: developers
+```
+
+This grants the `developers` group full access to keys stored under the `keys/MyProject/` or `MyProject/` storage paths.
+
+### System-Level Key Storage (Legacy Behavior)
+
+If you prefer to use the previous system-level key storage behavior (where all keys are defined at the system level rather than per project), you can disable project-level key storage.
+
+**For Enterprise users**: Navigate to **System Menu → System Configuration** and set:
+- Configuration Key: `rundeck.feature.projectKeyStorage.enabled`
+- Value: `false`
+
+**For Open Source users**: Add this property to `rundeck-config.properties`:
+
+```properties
+rundeck.feature.projectKeyStorage.enabled=false
+```
+
+When disabled, all Key Storage access control must be defined in Application context ACL policies, and keys are shared across all projects.
+
+**Best Practice**: Use project-level key storage (the default) to maintain better security isolation between projects.
+
 ## Access control policy
 
 Access to running or modifying Jobs is managed in an access control policy defined using the aclpolicy YAML document. This file contains a number of policy elements that describe what user
@@ -302,6 +345,53 @@ The files are loaded at startup and are cached. When an authorization request oc
 If an authorization request occurs in the context of a specific Project (e.g. "does a user have Run access for a specific Job in this project?") then the Project-level policies created via the API area also used to evaluate the authorization request.
 
 Otherwise, only the policies on the filesystem, and uploaded to the System ACLs API are evaluated for the request.
+
+### Enterprise ACL Storage Layer
+
+Rundeck Enterprise includes an optimized ACL Storage Layer that improves application performance when you have many ACL policies. This feature stores ACLs in the database in a format that allows them to be queried more efficiently, significantly improving performance with large numbers of ACLs.
+
+**How it works:**
+
+- The Enterprise ACL Storage Layer is enabled by default
+- At startup, ACLs from the Core ACL Storage Layer are automatically transferred to the Enterprise layer if the transfer feature is enabled
+- Newly created or modified ACLs automatically use the Enterprise storage layer
+- Performance improves as the number of ACLs increases
+
+**Configuration:**
+
+**For Enterprise users**: Navigate to **System Menu → System Configuration** to configure these settings:
+
+- **Enterprise ACL Storage Layer**
+  - Configuration Key: `rundeck.feature.enterpriseacl.enabled`
+  - Value: `true` (enabled by default)
+
+- **Automatic Transfer Feature**
+  - Configuration Key: `rundeck.feature.enterpriseacltransfer.enabled`
+  - Value: `true` (enabled by default)
+
+**For Open Source users**: Add these properties to `rundeck-config.properties`:
+
+```properties
+rundeck.feature.enterpriseacl.enabled=true
+rundeck.feature.enterpriseacltransfer.enabled=true
+```
+
+**How the Transfer Feature Works:**
+
+When the Transfer feature is enabled (`enterpriseacltransfer.enabled=true`):
+
+- If Enterprise ACL Storage Layer is **enabled**: ACLs that can be transferred will move from Core to Enterprise storage at startup
+- If Enterprise ACL Storage Layer is **disabled**: ACLs will transfer back from Enterprise to Core storage at startup
+
+When the Transfer feature is disabled, no automatic transfers occur. You can enable the Enterprise ACL Storage Layer without enabling automatic transfer—only newly created or modified ACLs will use the new storage layer.
+
+:::warning
+If regular expressions are used in the `by:` clause of ACLs, those ACLs cannot be queried efficiently and remain stored only in the Core storage layer.
+:::
+
+:::warning
+If you disable the Enterprise ACL Storage Layer feature (`enterpriseacl.enabled=false`) but enable the Transfer feature (`enterpriseacltransfer.enabled=true`) and restart, any ACLs in the Enterprise storage layer will be automatically transferred back to the Core storage layer.
+:::
 
 ### rd-acl
 

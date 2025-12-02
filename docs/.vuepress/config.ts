@@ -159,6 +159,7 @@ export default defineUserConfig({
           '/manual/servicenow-app.html': '/manual/integrations/servicenow-app.html',
           '/administration/security/key-storage.html': '/manual/key-storage/key-storage.html',
           '/administration/key-storage/key-storage.html': '/manual/key-storage/key-storage.html',
+          '/administration/security/project-acl.html': '/administration/security/authorization.html',
           '/administration/security/storage-plugins.html': '/manual/key-storage/key-plugins.html',
           '/administration/key-storage/storage-plugins.html': '/manual/key-storage/key-plugins.html',
           '/administration/security/storage-plugins/cyberark-storage.html': '/manual/key-storage/storage-plugins/cyberark-storage.html',
