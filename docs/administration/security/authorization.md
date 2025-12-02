@@ -18,7 +18,7 @@ The remainder of this section will describe how to use the access control policy
 
 ## Understanding ACL Concepts
 
-Before diving into specific policies, it's important to understand three fundamental concepts that cause the most confusion:
+Before diving into specific policies, it's important to understand three fundamental concepts:
 
 ### The Two-Context Model
 
@@ -39,7 +39,7 @@ Every complete permission set requires rules in BOTH contexts:
 
 ### Generic vs Specific Resources
 
-This is the most confusing aspect of ACLs. There are two ways to reference resources:
+There are two ways to reference resources:
 
 **Generic Resources** - Use when the resource doesn't exist yet:
 - Format: `resource:` section with `kind:` property
