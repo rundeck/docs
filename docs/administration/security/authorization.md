@@ -949,12 +949,14 @@ Permissions are additive. To run a job, you need:
 
 To diagnose access issues:
 
-1. **Verify group membership**: Go to the user's profile page in Rundeck. That page will list the groups the user is a member of.
+1. **Use Access Level Checks** (Commercial/Enterprise only): The [Access Level Checks](/administration/security/acl-policy-editor.md#access-level-checks-commercial) tool provides a comprehensive view of all permissions applied to a user or group. This is especially helpful when multiple ACL policy documents are used together, as it shows the combined effective permissions.
 
-2. **Check the audit log**: Read the messages inside the `rundeck.audit.log` file. The authorization facility generates detailed messages describing how the policy is matched to the user context.
+2. **Verify group membership**: Go to the user's profile page in Rundeck. That page will list the groups the user is a member of.
 
-3. **Validate policy files**: Use the [rd-acl](/manual/command-line-tools/rd-acl.md) tool to test and validate your policy files.
+3. **Check the audit log**: Read the messages inside the `rundeck.audit.log` file. The authorization facility generates detailed messages describing how the policy is matched to the user context.
 
-4. **Understand the evaluation order**: For each entry in the audit log, you'll see all decisions leading up to either an AUTHORIZED or a REJECTED message. It's not uncommon to see REJECTED messages followed by AUTHORIZED. The important thing is to look at the LAST decision made.
+4. **Validate policy files**: Use the [rd-acl](/manual/command-line-tools/rd-acl.md) tool to test and validate your policy files.
 
-5. **Remember deny rules win**: If ANY rule denies an action, it's denied, even if other rules allow it.
+5. **Understand the evaluation order**: For each entry in the audit log, you'll see all decisions leading up to either an AUTHORIZED or a REJECTED message. It's not uncommon to see REJECTED messages followed by AUTHORIZED. The important thing is to look at the LAST decision made.
+
+6. **Remember deny rules win**: If ANY rule denies an action, it's denied, even if other rules allow it.
