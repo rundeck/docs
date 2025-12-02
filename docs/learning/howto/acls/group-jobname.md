@@ -9,6 +9,24 @@ order: 500
 
 Assign a specific Rundeck Group access to run a single, named Job in a specified project.  It will allow running that job against all nodes in the project.
 
+## What This User CAN Do
+- View the specified job
+- Run the specified job
+- View execution history for the specified job
+- View all nodes in the project
+- Run the job on all nodes
+- Read project-specific key storage entries
+
+## What This User CANNOT Do
+- View or run any other jobs in the project
+- Create, modify, or delete any jobs
+- Run ad-hoc commands
+- Create, update, or delete nodes
+- Configure project settings
+- Manage project ACLs
+- Create or modify key storage entries
+- Manage webhooks
+
 ## Code Description
 Find and replace these values with your own.
 - Project Unique ID: `prj-sandbox`
@@ -26,10 +44,13 @@ context:
 for:
   resource:
     - allow: [run,read]
+    - equals:
+        kind: event
+      allow: [read]
   job:
     - equals:
         name: jname-sandbox
-      allow: [run,read]
+      allow: [run,read,view,view_history]
   node:
     - allow: [read,run]
 by:
@@ -48,12 +69,15 @@ for:
 by:
   group: grp-sandbox-exec
 ---
-description: Allow [read] for key storage access at the project level.  If accessing keys outside the project context, you'll need a comparable system-level rule.
+description: Allow [read] for key storage access at the project level.
 context:
-  project: prj-sandbox
+  application: rundeck
 for:
   storage:
-  - allow: [read]
+  - allow:
+      - read
+    match:
+      path: keys/project/prj-sandbox(/.*)?
 by:
   group: grp-sandbox-exec
 ```

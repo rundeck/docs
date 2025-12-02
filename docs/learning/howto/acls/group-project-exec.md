@@ -9,6 +9,26 @@ order: 300
 
 Assign a specific Rundeck Group access to only run all jobs in a specified project.  This policy also allows read access to the project Key Storage entries and against all nodes in the project.
 
+## What This User CAN Do
+- View all jobs in the project
+- Run all jobs in the project
+- View execution history for jobs they run
+- View all nodes in the project
+- Run jobs on all nodes
+- Refresh node sources
+- Read project-specific key storage entries
+
+## What This User CANNOT Do
+- Create, modify, or delete jobs
+- Run ad-hoc commands
+- Create, update, or delete nodes
+- Configure project settings
+- Manage project ACLs
+- Create or modify key storage entries
+- Manage webhooks
+- Delete executions
+- Toggle job schedules or execution status
+
 ## Code Description
 Find and replace these values with your own.
 - Project Unique ID: `prj-sandbox`
@@ -21,7 +41,7 @@ Steps to implement are covered in the [overview page](index.md).
 ``` yaml
 by:
   group: grp-sandbox-exec
-description: Allows grp-sandbox-exec the ability to read the prj-prjoect.
+description: Allows grp-sandbox-exec the ability to read the prj-sandbox project.
 for:
   project:
   - allow:
@@ -84,7 +104,7 @@ context:
 ---
 by:
   group: grp-sandbox-exec
-description: Allows grp-sandbox-exec the ability to read the prj-prjoect Activity Log.
+description: Allows grp-sandbox-exec the ability to read the prj-sandbox Activity Log.
 for:
   resource:
   - allow:

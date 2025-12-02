@@ -16,6 +16,263 @@ The remainder of this section will describe how to use the access control policy
 
 <VidStack src="youtube/i859f1WG3Bo" poster="https://img.youtube.com/vi/i859f1WG3Bo/maxresdefault.jpg"/>
 
+## Understanding ACL Concepts
+
+Before diving into specific policies, it's important to understand three fundamental concepts:
+
+### The Two-Context Model
+
+Every complete permission set requires rules in BOTH contexts:
+
+1. **Application Context** (`context: application: 'rundeck'`)
+   - Controls access TO projects and system resources
+   - Answers: "Can this user see this project in the list?"
+   - Answers: "Can this user create new projects?"
+   - Required even for project-level users
+
+2. **Project Context** (`context: project: 'ProjectName'`)
+   - Controls actions WITHIN a specific project
+   - Answers: "Can this user run jobs?"
+   - Answers: "Can this user view nodes?"
+
+**Key Point**: A user needs Application-level `read` permission on a project just to see it, PLUS Project-level permissions to do anything inside it.
+
+### Generic vs Specific Resources
+
+There are two ways to reference resources:
+
+**Generic Resources** - Use when the resource doesn't exist yet:
+- Format: `resource:` section with `kind:` property
+- Used for: CREATE and DELETE permissions on resource types
+- Example: Creating NEW jobs, deleting ANY job
+
+```yaml
+for:
+  resource:
+    - equals:
+        kind: job
+      allow: [create]  # Allow creating NEW jobs
+```
+
+**Specific Resources** - Use for actions on existing resources:
+- Format: Named sections like `job:`, `node:`, `adhoc:`
+- Used for: READ, RUN, UPDATE, KILL on specific resources
+- Can filter by properties (name, group, uuid, tags, etc.)
+
+```yaml
+for:
+  job:
+    - equals:
+        name: 'MyJob'
+      allow: [read, run]  # Allow running the specific job "MyJob"
+```
+
+**Why Both?** To delete a job, you need:
+1. Generic permission: `resource: kind: job allow: [delete]` (permission to delete jobs as a type)
+2. Specific permission: `job: ... allow: [delete]` (permission to delete this particular job)
+
+### Actions Depend on Resource Type
+
+Not all actions are available for all resources. The available actions depend on:
+- The context (Application vs Project)
+- The resource type
+- Whether it's generic or specific
+
+This is detailed in the reference tables below, but common patterns are:
+- Jobs: `read, view, update, delete, run, kill, create, toggle_schedule, toggle_execution`
+- Nodes: `read, run` (in Project context) or `read, create, update, refresh` (as generic resource)
+- Projects: `read, configure, delete, import, export, admin`
+
+## Common Access Patterns
+
+These examples show complete, working ACL policies for typical scenarios. You can copy and modify these for your needs:
+
+### Read-Only User (Can View but Not Execute)
+
+**Goal**: User can see the project and jobs but cannot run anything.
+
+```yaml
+description: Application - See project in list
+context:
+  application: 'rundeck'
+for:
+  project:
+    - equals:
+        name: 'MyProject'
+      allow: [read]
+by:
+  group: readonly_users
+
+---
+
+description: Project - View jobs and nodes
+context:
+  project: 'MyProject'
+for:
+  job:
+    - allow: [read, view]  # Can see job definition
+  node:
+    - allow: [read]  # Can see node list
+  resource:
+    - equals:
+        kind: event
+      allow: [read]  # Can see execution history
+by:
+  group: readonly_users
+```
+
+### Job Executor (Can Run but Not Modify)
+
+**Goal**: User can run existing jobs but cannot create, modify, or delete them.
+
+```yaml
+description: Application - Project access
+context:
+  application: 'rundeck'
+for:
+  project:
+    - equals:
+        name: 'MyProject'
+      allow: [read]
+by:
+  group: executors
+
+---
+
+description: Project - Run jobs only
+context:
+  project: 'MyProject'
+for:
+  job:
+    - allow: [read, view, run, kill]  # Can run and stop executions
+  node:
+    - allow: [read, run]  # Can execute on nodes
+  resource:
+    - equals:
+        kind: event
+      allow: [read]  # Can see execution history
+by:
+  group: executors
+```
+
+### Job Developer (Full Job Management)
+
+**Goal**: User can create, modify, run, and delete jobs in a project.
+
+```yaml
+description: Application - Project access
+context:
+  application: 'rundeck'
+for:
+  project:
+    - equals:
+        name: 'MyProject'
+      allow: [read]
+  storage:
+    - match:
+        path: '(keys/myproject/.*|myproject/.*)'
+      allow: [read]  # Access to project-specific keys
+by:
+  group: developers
+
+---
+
+description: Project - Full job management
+context:
+  project: 'MyProject'
+for:
+  resource:
+    - equals:
+        kind: job
+      allow: [create, delete]  # Can create/delete jobs
+    - equals:
+        kind: node
+      allow: [read, refresh]  # Can refresh node sources
+    - equals:
+        kind: event
+      allow: [read, create]
+  job:
+    - allow: [read, view, update, run, kill, toggle_schedule, toggle_execution]
+  node:
+    - allow: [read, run]
+  adhoc:
+    - allow: [read, run, kill]  # Can run ad-hoc commands
+by:
+  group: developers
+```
+
+### Limited by Job Group
+
+**Goal**: User can only see/run jobs in a specific job group path.
+
+```yaml
+description: Application - Project access
+context:
+  application: 'rundeck'
+for:
+  project:
+    - equals:
+        name: 'MyProject'
+      allow: [read]
+by:
+  group: app_team
+
+---
+
+description: Project - Limited to /apps/myapp/* jobs
+context:
+  project: 'MyProject'
+for:
+  job:
+    - match:
+        group: 'apps/myapp/.*'  # Only jobs in this path
+      allow: [read, view, run]
+  node:
+    - allow: [read, run]
+  resource:
+    - equals:
+        kind: event
+      allow: [read]
+by:
+  group: app_team
+```
+
+**What this user CANNOT do**: They cannot see or run jobs outside the `apps/myapp/` group path.
+
+### Multiple Projects Access
+
+**Goal**: User has access to multiple projects with the same permissions.
+
+```yaml
+description: Application - Access to multiple projects
+context:
+  application: 'rundeck'
+for:
+  project:
+    - match:
+        name: '(ProjectA|ProjectB|ProjectC)'
+      allow: [read]
+by:
+  group: multi_project_team
+
+---
+
+description: Project - Run jobs in multiple projects
+context:
+  project: '(ProjectA|ProjectB|ProjectC)'  # Regex matches all three
+for:
+  job:
+    - allow: [read, view, run, kill]
+  node:
+    - allow: [read, run]
+  resource:
+    - equals:
+        kind: event
+      allow: [read]
+by:
+  group: multi_project_team
+```
+
 ## Access control policy
 
 Access to running or modifying Jobs is managed in an access control policy defined using the aclpolicy YAML document. This file contains a number of policy elements that describe what user
@@ -51,7 +308,7 @@ Otherwise, only the policies on the filesystem, and uploaded to the System ACLs 
 The [rd acl](https://rundeck.github.io/rundeck-cli/) command
 can help to create, test, and validate your policy files.
 
-### Example
+### Complete Admin Policy Example
 
 File listing: admin.aclpolicy example
 
@@ -151,6 +408,18 @@ The actions and resources are divided into project scope and application scope:
 
 ### Application Scope Resources and Actions
 
+**When do you use Application Scope?**
+- Granting access TO projects (so they appear in the project list)
+- Creating new projects
+- System administration (managing ACLs, users, plugins, runners)
+- Managing API tokens
+- Accessing Key Storage
+- System-level execution control (enable/disable all executions)
+
+**Important**: Even users who only work within projects need Application scope rules to:
+1. See the project in their project list (`project:` resource with `read` action)
+2. Access Key Storage if needed (`storage:` resource)
+
 You define application scope rules in the aclpolicy, by declaring this context:
 
     context:
@@ -213,6 +482,10 @@ These are the Application scope actions that can be allowed or denied via the ac
 The following table summarizes the generic and specific resources and the
 actions you can restrict in the application scope:
 
+#### Application Scope: Generic Resources
+
+**Use these for permissions that apply to resource types (e.g., creating new resources)**
+
 | Type       | Resource Kind | Properties | Actions                  | Description                                    |
 |------------|---------------|------------|--------------------------|------------------------------------------------|
 | `resource` | `project`     | none       | `create`                 | Create a new project                           |
@@ -242,7 +515,9 @@ actions you can restrict in the application scope:
 | "          | "             |none        | `ping`                   | Execute the ping command to check Runner status |
 | "          | "             |none        | `regenerate_credentials` | Regenerate a new credential package for a Runner|
 
-Table: Application scope generic type actions
+#### Application Scope: Specific Resources
+
+**Use these for permissions on specific named resources (e.g., accessing a particular project)**
 
 | Type          | Properties         | Actions            | Description                                             |
 |---------------|--------------------|--------------------|---------------------------------------------------------|
@@ -265,10 +540,6 @@ Table: Application scope generic type actions
 | "             | "                  | `read`             | Read files and list directories in the storage facility |
 | "             | "                  | `delete`           | Delete files in the storage facility                    |
 | `apitoken`    | "username","roles" | `create`           | Create an API Token with specified roles or username    |
-
----
-
-Table: Application scope specific resource actions
 
 #### API Token Authorization
 
@@ -339,12 +610,23 @@ The `subset:` match for `roles:` declares that _extra_ roles for the Service Tok
 
 ### Project Scope Resources and Actions
 
+**When do you use Project Scope?**
+- Controlling what users can DO inside a project
+- Managing job permissions (create, run, modify, delete)
+- Controlling node access
+- Managing webhooks
+- Running ad-hoc commands
+
+**Important**: Project scope rules are evaluated AFTER a user has accessed the project. Without Application scope `read` permission for the project, these rules never apply.
+
 You define project scope rules in the aclpolicy by declaring this context:
 
     context:
       project: "(regex)"
 
 The regex can match all projects using ".\*", or you can simply put the project name.
+
+**Critical Note**: For projects not matched by any aclpolicy, NO actions will be granted to users. This means every user needs explicit rules for every project they access.
 
 Note that for projects not matched by an aclpolicy, _no_ actions will be granted to users.
 
@@ -373,6 +655,10 @@ These are the Project scope actions that can be allowed or denied via the aclpol
 The following table summarizes the generic and specific resources and the
 actions you can restrict in the project scope:
 
+#### Project Scope: Generic Resources
+
+**Use these for permissions that apply to resource types within a project**
+
 | Type       | Resource Kind | Actions      | Description                                   |
 |------------|---------------|--------------|-----------------------------------------------|
 | `resource` | `job`         | `create`     | Create a new Job                              |
@@ -398,7 +684,9 @@ actions you can restrict in the project scope:
 | "          | "             | `ping`                   | Execute the ping command to check Runner status |
 | "          | "             | `regenerate_credentials` | Regenerate a new credential package for a Runner|
 
-Type Properties Actions Description
+#### Project Scope: Specific Resources
+
+**Use these for permissions on specific resources within a project**
 
 | Type    | Properties                        | Actions            | Description                                                                         |
 |---------|-----------------------------------|--------------------|-------------------------------------------------------------------------------------|
@@ -564,14 +852,111 @@ by:
   group: remote
 ```
 
+## Quick Reference: ACL Checklist
+
+### Minimum ACL for Project Access
+
+Every project user needs at least:
+
+✅ **Application Context:**
+```yaml
+context:
+  application: 'rundeck'
+for:
+  project:
+    - equals:
+        name: 'ProjectName'
+      allow: [read]
+by:
+  group: my_group
+```
+
+✅ **Project Context:** (minimum to see anything)
+```yaml
+context:
+  project: 'ProjectName'
+for:
+  job:
+    - allow: [read, view]
+  node:
+    - allow: [read]
+by:
+  group: my_group
+```
+
+### Action Hierarchy
+
+Permissions are additive. To run a job, you need:
+1. Application: `project: allow: [read]` (see the project)
+2. Project: `job: allow: [read or view]` (see the job)
+3. Project: `job: allow: [run]` (run the job)
+4. Project: `node: allow: [run]` (execute on nodes)
+
+### Common Action Combinations
+
+| User Role | Application Context | Project Context |
+|-----------|-------------------|-----------------|
+| **Viewer** | `project: [read]` | `job: [read, view]`, `node: [read]`, `resource: event [read]` |
+| **Executor** | `project: [read]` | `job: [read, view, run, kill]`, `node: [read, run]`, `resource: event [read]` |
+| **Developer** | `project: [read]`, `storage: [read]` | `resource: job [create, delete]`, `job: [read, view, update, run, kill]`, `node: [read, run]`, `adhoc: [read, run]` |
+| **Project Admin** | `project: [read, configure]`, `project_acl: [read, create, update, delete]`, `storage: [read, create]` | `resource: [all types]`, `job: [*]`, `node: [*]`, `adhoc: [*]` |
+
+### Resource Type Quick Reference
+
+| Type | Use In | Purpose | Common Actions |
+|------|--------|---------|----------------|
+| `resource: kind: job` | Project | CREATE/DELETE jobs | `create`, `delete`, `scm_create`, `scm_delete` |
+| `job:` | Project | Actions on SPECIFIC jobs | `read`, `view`, `update`, `run`, `kill`, `toggle_schedule` |
+| `resource: kind: node` | Project | CREATE/UPDATE nodes | `create`, `update`, `refresh` |
+| `node:` | Project | Actions on SPECIFIC nodes | `read`, `run` |
+| `resource: kind: project` | Application | CREATE new projects | `create` |
+| `project:` | Application | Actions on SPECIFIC projects | `read`, `configure`, `delete`, `import`, `export` |
+| `adhoc:` | Project | Run ad-hoc commands | `read`, `run`, `kill`, `runAs` |
+| `storage:` | Application | Access keys/passwords | `read`, `create`, `update`, `delete` |
+
 ## Troubleshooting access control policy
 
-After defining an aclpolicy file to grant access to a particular group of users, you may find them getting "unauthorized" messages or complaints that certain actions are not possible.
+### Quick Diagnosis Decision Tree
 
-To diagnose this, begin by checking two bits:
+**User says: "I can't see the project"**
+→ Check Application scope: Does user have `project: name: 'ProjectName' allow: [read]`?
 
-1. The user's group membership. This can be done by going to the user's profile page in Rundeck. That page will list the groups the user is a member.
-2. Read the messages inside the `rundeck.audit.log` log file. The  authorization facility generates fairly low level messages describing how the policy is matched to the user context.
-3. Use the [rd-acl](/manual/command-line-tools/rd-acl.md) tool to test and validate your policy files
+**User says: "I can see the project but it's empty/no jobs visible"**
+→ Check Project scope: Does user have `job: allow: [read]` or `[view]`?
+→ Check if job-specific filters (group, name, uuid) are too restrictive
 
-For each entry in the audit log, you'll see all decisions leading up to either a AUTHORIZED or a REJECTED message. It's not uncommon to see REJECTED messages followed by AUTHORIZED. The important thing is to look at the last decision made.
+**User says: "I can see jobs but can't run them"**
+→ Check Project scope: Does user have `job: allow: [run]`?
+→ Check Project scope: Does user have `node: allow: [run]`? (Required to execute on nodes)
+
+**User says: "I can't create new jobs"**
+→ Check you have BOTH:
+   1. Project scope: `resource: kind: job allow: [create]` (generic permission)
+   2. Project scope: `job: allow: [create]` (specific permission)
+
+**User says: "I can't delete a job"**
+→ Check you have BOTH:
+   1. Project scope: `resource: kind: job allow: [delete]` (generic permission)
+   2. Project scope: `job: allow: [delete]` matching that specific job (specific permission)
+
+**User says: "I get 'Unauthorized' but I have the right ACL"**
+→ Check your group membership (User Profile page)
+→ Check `rundeck.audit.log` for detailed evaluation
+→ Look for DENIED entries (deny rules override allow rules)
+→ Verify the `by:` clause uses `group:` and NOT `username:` if using groups
+
+### Diagnostic Steps
+
+To diagnose access issues:
+
+1. **Use Access Level Checks** (Commercial/Enterprise only): The [Access Level Checks](/administration/security/acl-policy-editor.md#access-level-checks-commercial) tool provides a comprehensive view of all permissions applied to a user or group. This is especially helpful when multiple ACL policy documents are used together, as it shows the combined effective permissions.
+
+2. **Verify group membership**: Go to the user's profile page in Rundeck. That page will list the groups the user is a member of.
+
+3. **Check the audit log**: Read the messages inside the `rundeck.audit.log` file. The authorization facility generates detailed messages describing how the policy is matched to the user context.
+
+4. **Validate policy files**: Use the [rd-acl](/manual/command-line-tools/rd-acl.md) tool to test and validate your policy files.
+
+5. **Understand the evaluation order**: For each entry in the audit log, you'll see all decisions leading up to either an AUTHORIZED or a REJECTED message. It's not uncommon to see REJECTED messages followed by AUTHORIZED. The important thing is to look at the LAST decision made.
+
+6. **Remember deny rules win**: If ANY rule denies an action, it's denied, even if other rules allow it.
