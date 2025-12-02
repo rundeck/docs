@@ -74,7 +74,8 @@ context:
   application: rundeck
 for:
   storage:
-  - allow: [read]
+  - allow:
+      - read
     match:
       path: keys/project/prj-sandbox(/.*)?
 by:

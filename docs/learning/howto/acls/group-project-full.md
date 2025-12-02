@@ -43,24 +43,24 @@ description: Allow grp-sandbox-full full access for project prj-sandbox.
 for:
   project:
   - allow:
-    - read
-    - configure
-    - delete
-    - import
-    - export
-    - scm_import
-    - scm_export
-    - delete_execution
-    - admin
+      - read
+      - configure
+      - delete
+      - import
+      - export
+      - scm_import
+      - scm_export
+      - delete_execution
+      - admin
     equals:
       name: prj-sandbox
   project_acl:
   - allow:
-    - read
-    - create
-    - update
-    - delete
-    - admin
+      - read
+      - create
+      - update
+      - delete
+      - admin
     equals:
       name: prj-sandbox
 context:
@@ -122,7 +122,7 @@ description: Allows grp-sandbox-full group full access to all keys the Project s
 for:
   storage:
   - allow:
-    - '*'
+      - '*'
     match:
       path: keys/project/prj-sandbox(/.*)?
 context:
