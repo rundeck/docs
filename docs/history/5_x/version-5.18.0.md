@@ -1,7 +1,7 @@
 ---
 
 title: "5.18.0 Release Notes"
-date: 2025-12-08
+date: 2025-12-15
 image: /images/chevron-logo-red-on-white.png
 description: "Rundeck | Runbook Automation Releases 5.18.0 - <DESCRIPTION>"
 feed:
@@ -105,12 +105,7 @@ Fixed security vulnerability CVE-2025-64756 in the glob package by upgrading to 
 
 #####  ::circle-dot:: [Fix Firefox scroll behavior on execution output tab](https://github.com/rundeck/rundeck/pull/9894)
 
-
 [Here is a link to the full list of public PRs](https://github.com/rundeck/rundeck/pulls?q=is%3Apr+milestone%3A5.18.0+is%3Aclosed)
-
-
-
-
 
 ## Links
 
@@ -123,14 +118,11 @@ Fixed security vulnerability CVE-2025-64756 in the glob package by upgrading to 
 
 Name: <span style="color: brown"><span class="glyphicon glyphicon-grain"></span> "Monte Fitz Roy brown grain"</span>
 
-Release Date: Decmber 8th, 2025
-
+Release Date: December 15th, 2025
 
 ## Community Contributors
 
 Submit your own Pull Requests to get recognition here!
-
-
 
 ## Staff Contributors
 
