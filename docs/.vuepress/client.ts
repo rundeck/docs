@@ -50,7 +50,14 @@ export default defineClientConfig({
         initializeAnalytics();
         // Track initial page view
         trackPageView(router.currentRoute.value.path);
-      }, { once: true });
+      });
+      
+      // Listen for consent revoked event (when user changes from Accept to Reject)
+      window.addEventListener('ga-consent-revoked', () => {
+        // Clear any existing analytics state if needed
+        // Note: We don't uninitialize GA4 as it's already loaded
+        console.log('Analytics consent revoked - no new events will be tracked');
+      });
 
       // Track page views on route changes
       router.afterEach((to) => {

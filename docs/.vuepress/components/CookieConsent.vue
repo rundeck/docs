@@ -28,6 +28,16 @@ import { CONSENT_KEY } from '../utils/constants';
 
 const showBanner = ref(false);
 
+// Expose function to reopen banner (for Cookie Settings)
+const reopenBanner = () => {
+  showBanner.value = true;
+};
+
+// Make it accessible globally for Cookie Settings link
+if (typeof window !== 'undefined') {
+  (window as any).reopenCookieBanner = reopenBanner;
+}
+
 onMounted(() => {
   // Only show banner if user hasn't made a choice yet
   if (typeof window !== 'undefined') {
@@ -47,15 +57,21 @@ onMounted(() => {
 const acceptCookies = () => {
   if (typeof window !== 'undefined') {
     try {
+      const previousConsent = localStorage.getItem(CONSENT_KEY);
       localStorage.setItem(CONSENT_KEY, 'true');
       showBanner.value = false;
       
       // Move focus to main content
       const mainContent = document.querySelector('main') || document.body;
+      if (mainContent && !(mainContent as HTMLElement).hasAttribute('tabindex')) {
+        (mainContent as HTMLElement).setAttribute('tabindex', '-1');
+      }
       (mainContent as HTMLElement)?.focus();
       
-      // Emit custom event that GA4 should be loaded
-      window.dispatchEvent(new CustomEvent('ga-consent-granted'));
+      // Only emit event if this is a new acceptance (not already accepted)
+      if (previousConsent !== 'true') {
+        window.dispatchEvent(new CustomEvent('ga-consent-granted'));
+      }
     } catch (error) {
       console.error('Failed to save consent preference:', error);
       // Still hide banner and dispatch event even if storage fails
@@ -68,6 +84,7 @@ const acceptCookies = () => {
 const rejectCookies = () => {
   if (typeof window !== 'undefined') {
     try {
+      const previousConsent = localStorage.getItem(CONSENT_KEY);
       localStorage.setItem(CONSENT_KEY, 'false');
       showBanner.value = false;
       
@@ -77,6 +94,11 @@ const rejectCookies = () => {
         (mainContent as HTMLElement).setAttribute('tabindex', '-1');
       }
       (mainContent as HTMLElement)?.focus();
+      
+      // Emit revoked event if user changed from Accept to Reject
+      if (previousConsent === 'true') {
+        window.dispatchEvent(new CustomEvent('ga-consent-revoked'));
+      }
     } catch (error) {
       console.error('Failed to save consent preference:', error);
       // Still hide banner even if storage fails
