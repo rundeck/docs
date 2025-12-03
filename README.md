@@ -24,7 +24,7 @@ npm install
 
 #### For PagerDuty employees with Cloudsmith access
 
-Export your Cloudsmith token before building:
+Export your Cloudsmith token before installing dependencies:
 
 ```bash
 export CLOUDSMITH_NPM_TOKEN=your-cloudsmith-token-here
