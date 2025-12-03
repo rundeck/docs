@@ -1,6 +1,6 @@
 <template>
   <Transition name="cookie-banner-fade">
-    <div v-if="showBanner" class="cookie-consent-banner" role="dialog" aria-labelledby="cookie-consent-title" aria-describedby="cookie-consent-description">
+    <div v-if="showBanner" class="cookie-consent-banner" role="dialog" aria-modal="true" aria-labelledby="cookie-consent-title" aria-describedby="cookie-consent-description">
       <div class="cookie-consent-content">
         <div class="cookie-consent-text">
           <h3 id="cookie-consent-title" class="cookie-consent-title">Cookie Notice</h3>
@@ -24,15 +24,21 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
+import { CONSENT_KEY } from '../utils/constants';
 
-const CONSENT_KEY = 'ga_consent_given';
 const showBanner = ref(false);
 
 onMounted(() => {
   // Only show banner if user hasn't made a choice yet
   if (typeof window !== 'undefined') {
-    const existingConsent = localStorage.getItem(CONSENT_KEY);
-    if (existingConsent === null) {
+    try {
+      const existingConsent = localStorage.getItem(CONSENT_KEY);
+      if (existingConsent === null) {
+        showBanner.value = true;
+      }
+    } catch (error) {
+      // If localStorage is unavailable (e.g., private browsing), show the banner
+      console.warn('localStorage unavailable:', error);
       showBanner.value = true;
     }
   }
@@ -40,18 +46,39 @@ onMounted(() => {
 
 const acceptCookies = () => {
   if (typeof window !== 'undefined') {
-    localStorage.setItem(CONSENT_KEY, 'true');
-    showBanner.value = false;
-    
-    // Emit custom event that GA4 should be loaded
-    window.dispatchEvent(new CustomEvent('ga-consent-granted'));
+    try {
+      localStorage.setItem(CONSENT_KEY, 'true');
+      showBanner.value = false;
+      
+      // Move focus to main content
+      const mainContent = document.querySelector('main') || document.body;
+      (mainContent as HTMLElement)?.focus();
+      
+      // Emit custom event that GA4 should be loaded
+      window.dispatchEvent(new CustomEvent('ga-consent-granted'));
+    } catch (error) {
+      console.error('Failed to save consent preference:', error);
+      // Still hide banner and dispatch event even if storage fails
+      showBanner.value = false;
+      window.dispatchEvent(new CustomEvent('ga-consent-granted'));
+    }
   }
 };
 
 const rejectCookies = () => {
   if (typeof window !== 'undefined') {
-    localStorage.setItem(CONSENT_KEY, 'false');
-    showBanner.value = false;
+    try {
+      localStorage.setItem(CONSENT_KEY, 'false');
+      showBanner.value = false;
+      
+      // Move focus to main content
+      const mainContent = document.querySelector('main') || document.body;
+      (mainContent as HTMLElement)?.focus();
+    } catch (error) {
+      console.error('Failed to save consent preference:', error);
+      // Still hide banner even if storage fails
+      showBanner.value = false;
+    }
   }
 };
 </script>

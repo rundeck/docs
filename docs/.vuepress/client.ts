@@ -1,4 +1,5 @@
 import { defineClientConfig } from '@vuepress/client'
+import { nextTick } from 'vue'
 import '@docsearch/css'
 import Layout from "./layouts/Layout.vue";
 import NotFound from "./layouts/NotFound.vue";
@@ -50,10 +51,10 @@ export default defineClientConfig({
 
       // Track page views on route changes
       router.afterEach((to) => {
-        // Small delay to ensure page title is updated
-        setTimeout(() => {
+        // Wait for DOM updates to complete
+        nextTick(() => {
           trackPageView(to.path);
-        }, 100);
+        });
       });
     }
     

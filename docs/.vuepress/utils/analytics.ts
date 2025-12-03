@@ -5,8 +5,7 @@
  * after explicit user consent. No tracking occurs before consent is granted.
  */
 
-const GA_MEASUREMENT_ID = 'G-05XJ24KPYH';
-const CONSENT_KEY = 'ga_consent_given';
+import { GA_MEASUREMENT_ID, CONSENT_KEY } from './constants';
 
 declare global {
   interface Window {
@@ -31,10 +30,7 @@ export function loadGA4(): void {
   if (typeof window === 'undefined') return;
   
   // Check if already loaded
-  if (window.gtag) {
-    console.log('Analytics already loaded');
-    return;
-  }
+  if (window.gtag) return;
 
   // Initialize dataLayer and gtag stub
   window.dataLayer = window.dataLayer || [];
@@ -159,12 +155,17 @@ export function trackVideoComplete(videoId: string, videoTitle?: string): void {
   });
 }
 
+// Guards to prevent duplicate initialization
+let autoTrackingInitialized = false;
+let videoTrackingInitialized = false;
+
 /**
  * Set up automatic tracking for outbound links and downloads
  * Call this once when the app initializes
  */
 export function setupAutoTracking(): void {
-  if (typeof window === 'undefined') return;
+  if (typeof window === 'undefined' || autoTrackingInitialized) return;
+  autoTrackingInitialized = true;
 
   // Track outbound links
   document.addEventListener('click', (e) => {
@@ -178,13 +179,15 @@ export function setupAutoTracking(): void {
 
     // Check if it's an outbound link
     if (href.startsWith('http') && !href.includes(window.location.hostname)) {
-      trackOutboundLink(href, target.textContent || undefined);
+      const sanitizedText = (target.textContent || '').substring(0, 200).trim();
+      trackOutboundLink(href, sanitizedText || undefined);
     }
 
     // Check if it's a file download
     const downloadExtensions = ['.pdf', '.zip', '.tar', '.gz', '.dmg', '.exe', '.doc', '.docx', '.xls', '.xlsx', '.ppt', '.pptx'];
     if (downloadExtensions.some(ext => href.toLowerCase().endsWith(ext))) {
-      trackDownload(href, target.textContent || href.split('/').pop());
+      const sanitizedText = (target.textContent || '').substring(0, 200).trim();
+      trackDownload(href, sanitizedText || href.split('/').pop());
     }
   });
 }
@@ -194,7 +197,8 @@ export function setupAutoTracking(): void {
  * Monitors all VidStack video players on the page and tracks engagement
  */
 export function setupVideoTracking(): void {
-  if (typeof window === 'undefined') return;
+  if (typeof window === 'undefined' || videoTrackingInitialized) return;
+  videoTrackingInitialized = true;
 
   const trackedVideos = new Map<string, {
     milestones: Set<number>;
@@ -293,10 +297,22 @@ export function setupVideoTracking(): void {
 
   // Watch for dynamically added videos (for SPA navigation)
   const observer = new MutationObserver((mutations) => {
+    let hasRelevantChanges = false;
     for (const mutation of mutations) {
-      if (mutation.addedNodes.length > 0) {
-        trackAllVideos();
+      for (const node of mutation.addedNodes) {
+        if (
+          node instanceof Element &&
+          (node.matches('media-player') ||
+            node.querySelector('media-player'))
+        ) {
+          hasRelevantChanges = true;
+          break;
+        }
       }
+      if (hasRelevantChanges) break;
+    }
+    if (hasRelevantChanges) {
+      trackAllVideos();
     }
   });
 
