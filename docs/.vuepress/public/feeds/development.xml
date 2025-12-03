@@ -5,7 +5,7 @@
     <link>https://docs.rundeck.com/docs</link>
     <description>Recent merged pull requests and development updates from Rundeck</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 20 Nov 2025 15:59:02 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 03 Dec 2025 18:27:59 GMT</lastBuildDate>
     <atom:link href="https://docs.rundeck.com/feeds/development.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Fix CVE-2025-55163: Upgrade google-cloud-container to 2.82.0</title>
