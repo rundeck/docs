@@ -126,6 +126,7 @@ export function trackDownload(url: string, fileName?: string): void {
 export function trackVideoStart(videoId: string, videoTitle?: string, pagePath?: string): void {
   if (!hasConsent() || !window.gtag) return;
 
+  console.log('📹 Video Start:', videoId);
   window.gtag('event', 'video_start', {
     video_id: videoId,
     video_title: videoTitle || document.title,
@@ -142,6 +143,7 @@ export function trackVideoStart(videoId: string, videoTitle?: string, pagePath?:
 export function trackVideoProgress(videoId: string, progress: number, videoTitle?: string): void {
   if (!hasConsent() || !window.gtag) return;
 
+  console.log(`📊 Video Progress: ${progress}% - ${videoId}`);
   window.gtag('event', 'video_progress', {
     video_id: videoId,
     video_progress: progress,
@@ -158,6 +160,7 @@ export function trackVideoProgress(videoId: string, progress: number, videoTitle
 export function trackVideoComplete(videoId: string, videoTitle?: string): void {
   if (!hasConsent() || !window.gtag) return;
 
+  console.log('✅ Video Complete:', videoId);
   window.gtag('event', 'video_complete', {
     video_id: videoId,
     video_title: videoTitle || document.title,
@@ -208,23 +211,32 @@ export function setupVideoTracking(): void {
   }>();
 
   /**
-   * Extract YouTube video ID from VidStack src attribute
+   * Extract YouTube video ID from media-player element
    */
-  function extractVideoId(vidStackElement: Element): string | null {
-    const src = vidStackElement.getAttribute('src');
+  function extractVideoId(mediaPlayer: Element): string | null {
+    // Look for the YouTube iframe inside the media-player
+    const youtubeIframe = mediaPlayer.querySelector('iframe.vds-youtube');
+    if (!youtubeIframe) return null;
+    
+    const src = youtubeIframe.getAttribute('src');
     if (!src) return null;
     
-    // Handle format: youtube/VIDEO_ID
-    const match = src.match(/youtube\/([a-zA-Z0-9_-]+)/);
+    // Extract video ID from YouTube embed URL
+    // Format: https://www.youtube-nocookie.com/embed/VIDEO_ID?...
+    const match = src.match(/embed\/([a-zA-Z0-9_-]+)/);
     return match ? match[1] : null;
   }
 
   /**
    * Initialize tracking for a single video player
    */
-  function initVideoTracking(vidStackElement: Element): void {
-    const videoId = extractVideoId(vidStackElement);
+  function initVideoTracking(mediaPlayer: Element): void {
+    const videoId = extractVideoId(mediaPlayer);
     if (!videoId) return;
+
+    // Check if already tracking this player instance
+    if (mediaPlayer.hasAttribute('data-ga-tracked')) return;
+    mediaPlayer.setAttribute('data-ga-tracked', 'true');
 
     // Initialize tracking state for this video
     if (!trackedVideos.has(videoId)) {
@@ -236,63 +248,53 @@ export function setupVideoTracking(): void {
 
     const trackingState = trackedVideos.get(videoId)!;
 
-    // Wait for the media player to be ready
-    const checkForPlayer = setInterval(() => {
-      const mediaPlayer = vidStackElement.querySelector('media-player');
-      if (!mediaPlayer) return;
+    // Track video start
+    mediaPlayer.addEventListener('play', () => {
+      if (!hasConsent()) return;
+      if (!trackingState.started) {
+        trackVideoStart(videoId, document.title, window.location.pathname);
+        trackingState.started = true;
+      }
+    });
 
-      clearInterval(checkForPlayer);
+    // Track progress milestones
+    mediaPlayer.addEventListener('time-update', (event: any) => {
+      if (!hasConsent()) return;
+      
+      const detail = event.detail;
+      if (!detail) return;
 
-      // Track video start
-      mediaPlayer.addEventListener('play', () => {
-        if (!hasConsent()) return;
-        if (!trackingState.started) {
-          trackVideoStart(videoId, document.title, window.location.pathname);
-          trackingState.started = true;
+      const currentTime = detail.currentTime || 0;
+      // Get duration from the player element itself, not from event
+      const duration = (mediaPlayer as any).duration || 0;
+      
+      if (duration === 0 || currentTime === 0) return;
+
+      const progress = (currentTime / duration) * 100;
+
+      // Track milestones: 25%, 50%, 75%, 100%
+      const milestones = [25, 50, 75, 100];
+      for (const milestone of milestones) {
+        if (progress >= milestone && !trackingState.milestones.has(milestone)) {
+          trackingState.milestones.add(milestone);
+          trackVideoProgress(videoId, milestone, document.title);
         }
-      });
+      }
+    });
 
-      // Track progress milestones
-      mediaPlayer.addEventListener('time-update', (event: any) => {
-        if (!hasConsent()) return;
-        
-        const detail = event.detail;
-        if (!detail) return;
-
-        const currentTime = detail.currentTime || 0;
-        const duration = detail.duration || 0;
-        
-        if (duration === 0) return;
-
-        const progress = (currentTime / duration) * 100;
-
-        // Track milestones: 25%, 50%, 75%, 100%
-        const milestones = [25, 50, 75, 100];
-        for (const milestone of milestones) {
-          if (progress >= milestone && !trackingState.milestones.has(milestone)) {
-            trackingState.milestones.add(milestone);
-            trackVideoProgress(videoId, milestone, document.title);
-          }
-        }
-      });
-
-      // Track video completion
-      mediaPlayer.addEventListener('ended', () => {
-        if (!hasConsent()) return;
-        trackVideoComplete(videoId, document.title);
-      });
-    }, 100);
-
-    // Clean up after 10 seconds if player never loads
-    setTimeout(() => clearInterval(checkForPlayer), 10000);
+    // Track video completion
+    mediaPlayer.addEventListener('ended', () => {
+      if (!hasConsent()) return;
+      trackVideoComplete(videoId, document.title);
+    });
   }
 
   /**
-   * Find and track all VidStack elements on the page
+   * Find and track all media-player elements on the page
    */
   function trackAllVideos(): void {
-    const vidStackElements = document.querySelectorAll('VidStack, [class*="vidstack"]');
-    vidStackElements.forEach(initVideoTracking);
+    const mediaPlayers = document.querySelectorAll('media-player');
+    mediaPlayers.forEach(initVideoTracking);
   }
 
   // Initial tracking
