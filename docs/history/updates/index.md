@@ -1,7 +1,7 @@
 ---
 title: Recent Updates
 description: Latest merged changes from the Rundeck development team
-date: 2025-11-20T15:59:02.276Z
+date: 2025-12-03T18:27:59.073Z
 feed: true
 index: true
 ---
@@ -103,8 +103,8 @@ This page shows recently merged pull requests from both the Runbook Automation p
 
 Stay informed about Rundeck development by subscribing to a feed:
 
-- [RSS Feed](/feeds/development.xml)
-- [Atom Feed](/feeds/development-atom.xml)
+- [RSS Feed](https://docs.rundeck.com/docs/feeds/development.xml)
+- [Atom Feed](https://docs.rundeck.com/docs/feeds/development-atom.xml)
 
 These feeds are updated after each deployment to our production Runbook Automation SaaS solution. They highlight changes that may not be available in our Self Hosted Releases yet.
 
@@ -117,6 +117,6 @@ The development updates are automatically generated from both our private reposi
 
 ---
 
-**List Last updated:** 2025-11-20
+**List Last updated:** 2025-12-03
 
 
