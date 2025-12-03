@@ -142,6 +142,7 @@ workflows:
       - build:
           context:
             - slack-secrets
+            - Cloudsmith
           filters:
             branches:
               only:

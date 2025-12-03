@@ -11,6 +11,7 @@ jobs:
     
     env:
       SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+      CLOUDSMITH_NPM_TOKEN: ${{ secrets.CLOUDSMITH_NPM_TOKEN }}
     
     steps:
       - name: Checkout code
