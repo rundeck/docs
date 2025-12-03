@@ -34,8 +34,8 @@ This page shows recently merged pull requests from both the Runbook Automation p
 
 Stay informed about Rundeck development by subscribing to a feed:
 
-- [RSS Feed](/feeds/development.xml)
-- [Atom Feed](/feeds/development-atom.xml)
+- [RSS Feed](https://docs.rundeck.com/docs/feeds/development.xml)
+- [Atom Feed](https://docs.rundeck.com/docs/feeds/development-atom.xml)
 
 These feeds are updated after each deployment to our production Runbook Automation SaaS solution. They highlight changes that may not be available in our Self Hosted Releases yet.
 
