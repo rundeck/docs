@@ -73,6 +73,9 @@ const rejectCookies = () => {
       
       // Move focus to main content
       const mainContent = document.querySelector('main') || document.body;
+      if (mainContent && !(mainContent as HTMLElement).hasAttribute('tabindex')) {
+        (mainContent as HTMLElement).setAttribute('tabindex', '-1');
+      }
       (mainContent as HTMLElement)?.focus();
     } catch (error) {
       console.error('Failed to save consent preference:', error);

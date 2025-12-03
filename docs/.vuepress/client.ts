@@ -33,24 +33,28 @@ export default defineClientConfig({
 
     // Google Analytics 4 with Cookie Consent
     if (typeof window !== 'undefined') {
-      // Check if user already gave consent
-      if (hasConsent()) {
+      // Helper to initialize analytics
+      const initializeAnalytics = () => {
         loadGA4();
         setupAutoTracking();
         setupVideoTracking();
+      };
+
+      // Check if user already gave consent
+      if (hasConsent()) {
+        initializeAnalytics();
       }
 
       // Listen for consent granted event
       window.addEventListener('ga-consent-granted', () => {
-        loadGA4();
-        setupAutoTracking();
-        setupVideoTracking();
+        initializeAnalytics();
         // Track initial page view
         trackPageView(router.currentRoute.value.path);
-      });
+      }, { once: true });
 
       // Track page views on route changes
       router.afterEach((to) => {
+        if (!hasConsent()) return;
         // Wait for DOM updates to complete
         nextTick(() => {
           trackPageView(to.path);

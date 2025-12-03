@@ -19,7 +19,11 @@ declare global {
  */
 export function hasConsent(): boolean {
   if (typeof window === 'undefined') return false;
-  return localStorage.getItem(CONSENT_KEY) === 'true';
+  try {
+    return localStorage.getItem(CONSENT_KEY) === 'true';
+  } catch {
+    return false;
+  }
 }
 
 /**
@@ -35,7 +39,7 @@ export function loadGA4(): void {
   // Initialize dataLayer and gtag stub
   window.dataLayer = window.dataLayer || [];
   window.gtag = function gtag(...args: any[]) {
-    window.dataLayer!.push(arguments);
+    window.dataLayer!.push(args);
   };
   window.gtag('js', new Date());
   window.gtag('config', GA_MEASUREMENT_ID, {
@@ -109,7 +113,7 @@ export function trackDownload(url: string, fileName?: string): void {
 
 /**
  * Track video start
- * @param videoId - YouTube video ID
+ * @param videoId - Video ID (e.g., YouTube video ID when using YouTube provider)
  * @param videoTitle - Title/description of the video
  * @param pagePath - Path of the page containing the video
  */
@@ -125,7 +129,7 @@ export function trackVideoStart(videoId: string, videoTitle?: string, pagePath?:
 
 /**
  * Track video progress milestones
- * @param videoId - YouTube video ID
+ * @param videoId - Video ID (e.g., YouTube video ID when using YouTube provider)
  * @param progress - Progress percentage (25, 50, 75, 100)
  * @param videoTitle - Title/description of the video
  */
@@ -142,7 +146,7 @@ export function trackVideoProgress(videoId: string, progress: number, videoTitle
 
 /**
  * Track video completion
- * @param videoId - YouTube video ID
+ * @param videoId - Video ID (e.g., YouTube video ID when using YouTube provider)
  * @param videoTitle - Title/description of the video
  */
 export function trackVideoComplete(videoId: string, videoTitle?: string): void {
@@ -158,6 +162,9 @@ export function trackVideoComplete(videoId: string, videoTitle?: string): void {
 // Guards to prevent duplicate initialization
 let autoTrackingInitialized = false;
 let videoTrackingInitialized = false;
+
+// Video progress milestones to track
+const VIDEO_MILESTONES = [25, 50, 75, 100] as const;
 
 /**
  * Set up automatic tracking for outbound links and downloads
@@ -179,14 +186,14 @@ export function setupAutoTracking(): void {
 
     // Check if it's an outbound link
     if (href.startsWith('http') && !href.includes(window.location.hostname)) {
-      const sanitizedText = (target.textContent || '').substring(0, 200).trim();
+      const sanitizedText = (target.textContent || '').substring(0, 200).trim().replace(/[\n\r\t]/g, ' ');
       trackOutboundLink(href, sanitizedText || undefined);
     }
 
     // Check if it's a file download
     const downloadExtensions = ['.pdf', '.zip', '.tar', '.gz', '.dmg', '.exe', '.doc', '.docx', '.xls', '.xlsx', '.ppt', '.pptx'];
     if (downloadExtensions.some(ext => href.toLowerCase().endsWith(ext))) {
-      const sanitizedText = (target.textContent || '').substring(0, 200).trim();
+      const sanitizedText = (target.textContent || '').substring(0, 200).trim().replace(/[\n\r\t]/g, ' ');
       trackDownload(href, sanitizedText || href.split('/').pop());
     }
   });
@@ -261,15 +268,14 @@ export function setupVideoTracking(): void {
 
       const currentTime = detail.currentTime || 0;
       // Get duration from the player element itself, not from event
-      const duration = (mediaPlayer as any).duration || 0;
+      const duration = 'duration' in mediaPlayer ? (mediaPlayer as any).duration : 0;
       
       if (duration === 0 || currentTime === 0) return;
 
       const progress = (currentTime / duration) * 100;
 
-      // Track milestones: 25%, 50%, 75%, 100%
-      const milestones = [25, 50, 75, 100];
-      for (const milestone of milestones) {
+      // Track milestones
+      for (const milestone of VIDEO_MILESTONES) {
         if (progress >= milestone && !trackingState.milestones.has(milestone)) {
           trackingState.milestones.add(milestone);
           trackVideoProgress(videoId, milestone, document.title);
