@@ -7,7 +7,6 @@ import { getDirname, path } from '@vuepress/utils';
 import { openGraphPlugin } from 'vuepress-plugin-open-graph';
 import { registerComponentsPlugin } from '@vuepress/plugin-register-components';
 import { dateSorter } from "@vuepress/helper";
-import { googleAnalyticsPlugin } from '@vuepress/plugin-google-analytics';
 import { removePwaPlugin } from '@vuepress/plugin-remove-pwa';
 
 // sidebars
@@ -150,6 +149,7 @@ export default defineUserConfig({
       },
       redirect: {
         config: {
+          '/privacy-policy.html': 'https://www.pagerduty.com/privacy-policy/',
           '/history/cves/2025-06-05-runnersecurity.html' : '/history/cves/2025-06-runner-security.html',
           '/manual/01-introduction.html': '/introduction/introduction.html',
           '/manual/03-getting-started.html': '/learning/index.html',
@@ -339,9 +339,6 @@ export default defineUserConfig({
         RundeckSwaggerUi: path.resolve(__dirname, './components/RundeckSwaggerUI.vue'),
         OpenApiExplorer: path.resolve(__dirname, './components/OpenApiExplorer.vue')
       },
-    }),
-    googleAnalyticsPlugin({
-      id: 'G-05XJ24KPYH',
     }),
     openGraphPlugin({
       host: 'https://docs.rundeck.com',

@@ -2,6 +2,8 @@ import { defineClientConfig } from '@vuepress/client'
 import '@docsearch/css'
 import Layout from "./layouts/Layout.vue";
 import NotFound from "./layouts/NotFound.vue";
+import CookieConsent from "./components/CookieConsent.vue";
+import { loadGA4, trackPageView, setupAutoTracking, setupVideoTracking, hasConsent } from "./utils/analytics";
 
 declare const VERSION: string;
 declare const VERSION_FULL: string;
@@ -27,6 +29,33 @@ export default defineClientConfig({
       $apiVersion: { get: () => API_VERSION },
       $cliVersion: { get: () => CLI_VERSION },
     });
+
+    // Google Analytics 4 with Cookie Consent
+    if (typeof window !== 'undefined') {
+      // Check if user already gave consent
+      if (hasConsent()) {
+        loadGA4();
+        setupAutoTracking();
+        setupVideoTracking();
+      }
+
+      // Listen for consent granted event
+      window.addEventListener('ga-consent-granted', () => {
+        loadGA4();
+        setupAutoTracking();
+        setupVideoTracking();
+        // Track initial page view
+        trackPageView(router.currentRoute.value.path);
+      });
+
+      // Track page views on route changes
+      router.afterEach((to) => {
+        // Small delay to ensure page title is updated
+        setTimeout(() => {
+          trackPageView(to.path);
+        }, 100);
+      });
+    }
     
     // The section below is used to properly format the Search results on the docs site.
     if (typeof window !== 'undefined') {
@@ -96,5 +125,5 @@ export default defineClientConfig({
     }
   },
   setup() { },
-  rootComponents: [],
+  rootComponents: [CookieConsent],
 })
