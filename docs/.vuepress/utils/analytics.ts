@@ -36,19 +36,15 @@ export function loadGA4(): void {
     return;
   }
 
-  // Initialize dataLayer
+  // Initialize dataLayer and gtag stub
   window.dataLayer = window.dataLayer || [];
   window.gtag = function gtag(...args: any[]) {
-    window.dataLayer!.push(args);
+    window.dataLayer!.push(arguments);
   };
-
-  // Set initial timestamp
   window.gtag('js', new Date());
-
-  // Configure analytics with measurement ID
   window.gtag('config', GA_MEASUREMENT_ID, {
-    send_page_view: false, // We'll manually track page views
-    anonymize_ip: true, // Privacy-friendly
+    send_page_view: false,
+    anonymize_ip: true,
   });
 
   // Inject the analytics script
@@ -56,8 +52,6 @@ export function loadGA4(): void {
   script.async = true;
   script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
   document.head.appendChild(script);
-
-  console.log('Analytics loaded with consent');
 }
 
 /**
@@ -126,7 +120,6 @@ export function trackDownload(url: string, fileName?: string): void {
 export function trackVideoStart(videoId: string, videoTitle?: string, pagePath?: string): void {
   if (!hasConsent() || !window.gtag) return;
 
-  console.log('📹 Video Start:', videoId);
   window.gtag('event', 'video_start', {
     video_id: videoId,
     video_title: videoTitle || document.title,
@@ -143,7 +136,6 @@ export function trackVideoStart(videoId: string, videoTitle?: string, pagePath?:
 export function trackVideoProgress(videoId: string, progress: number, videoTitle?: string): void {
   if (!hasConsent() || !window.gtag) return;
 
-  console.log(`📊 Video Progress: ${progress}% - ${videoId}`);
   window.gtag('event', 'video_progress', {
     video_id: videoId,
     video_progress: progress,
@@ -160,7 +152,6 @@ export function trackVideoProgress(videoId: string, progress: number, videoTitle
 export function trackVideoComplete(videoId: string, videoTitle?: string): void {
   if (!hasConsent() || !window.gtag) return;
 
-  console.log('✅ Video Complete:', videoId);
   window.gtag('event', 'video_complete', {
     video_id: videoId,
     video_title: videoTitle || document.title,
