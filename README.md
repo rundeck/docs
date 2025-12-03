@@ -22,7 +22,7 @@ npm install
 
 ## Cloudsmith Authentication Setup
 
-#### For PagerDuty employees with Cloudsmith access
+### For PagerDuty employees with Cloudsmith access
 
 Export your Cloudsmith token before building:
 
@@ -30,7 +30,7 @@ Export your Cloudsmith token before building:
 export CLOUDSMITH_NPM_TOKEN=your-cloudsmith-token-here
 ```
 
-#### For contributors without Cloudsmith access
+### For contributors without Cloudsmith access
 
 Delete the `.npmrc` file in the repository root:
 
