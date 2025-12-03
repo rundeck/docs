@@ -17,7 +17,7 @@ export default [
   },
   {
     text: 'Security',
-    link: '/administration/security/default-users'
+    link: '/administration/security/'
   },
   {
     text: 'Enterprise Runner',

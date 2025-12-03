@@ -209,8 +209,9 @@ export default [{
     {
       text: 'Security',
       collapsible: true,
-      link: '/administration/security/default-users',
+      link: '/administration/security/',
       children: [
+        '/administration/security/',
         '/administration/security/default-users',
         '/administration/security/authentication',
         '/administration/security/authorization',
@@ -228,7 +229,6 @@ export default [{
           ]
         },
         '/administration/security/webapp-http-headers',
-        '/administration/security/project-acl',
         '/administration/security/password-security',
         '/administration/security/ratelimiting',
         '/administration/security/blocklist',

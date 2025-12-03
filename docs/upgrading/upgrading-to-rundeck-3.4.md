@@ -42,7 +42,7 @@ Version 3.4.0 removed support for API v10 and below. The minimum API version is 
 In the example above make sure the value at `<APIVERSION>` is 11 or higher.
 
 ## Project ACLs for Key Storage
-Project ACLs for Key Storage implements a new dynamic within the Key Storage component.  If the existing Key Storage (from version 3.3 and previous) is organized by project name (e.g. `keys/project-name/folder/key) `care should be taken to ensure that rights are properly granted.  [More information about this feature can be found here](/administration/security/project-acl.md).
+Project ACLs for Key Storage implements a new dynamic within the Key Storage component.  If the existing Key Storage (from version 3.3 and previous) is organized by project name (e.g. `keys/project-name/folder/key) `care should be taken to ensure that rights are properly granted.  [More information about this feature can be found here](/administration/security/authorization.md).
 
 ## Enterprise ACL Storage Layer (Commercial)
 
