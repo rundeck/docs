@@ -54,26 +54,26 @@ context:
 
 ---
 by:
-group: my-user-group-name
+  group: my-user-group-name
 description: Allow "write" access within Runner management at the System level
 for:
-resource:
-- allow:
+  resource:
+  - allow:
     - admin
-      equals:
+    equals:
       kind: runner
-      context:
-      application: rundeck
+context:
+  application: rundeck
 ---
 by:
-group: my-user-group-name
+  group: my-user-group-name
 description: Allow creation of apitokens (general)
 for:
-apitoken:
-- allow:
+  apitoken:
+  - allow:
     - create
-      context:
-      application: rundeck
+context:
+  application: rundeck
 ---
 by:
 group: my-user-group-name
@@ -82,10 +82,10 @@ for:
 resource:
 - allow:
     - generate_service_token
-      equals:
+    equals:
       kind: apitoken
-      context:
-      application: rundeck
+context:
+  application: rundeck
 ```
 
 * Change **`my-user-group-name`** in the above ACL policy to the name of the user group that needs to have these permissions.
@@ -118,6 +118,7 @@ for:
   runner:
   - allow:
     - create
+    - update
     - read
 context:
   project: my-project-name
