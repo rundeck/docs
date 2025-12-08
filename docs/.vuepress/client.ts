@@ -5,6 +5,7 @@ import Layout from "./layouts/Layout.vue";
 import NotFound from "./layouts/NotFound.vue";
 import CookieConsent from "./components/CookieConsent.vue";
 import { loadGA4, trackPageView, setupAutoTracking, setupVideoTracking, hasConsent } from "./utils/analytics";
+import { CONSENT_GRANTED_EVENT, CONSENT_REVOKED_EVENT, CONSENT_DENIED_EVENT } from "./utils/constants";
 
 declare const VERSION: string;
 declare const VERSION_FULL: string;
@@ -46,17 +47,22 @@ export default defineClientConfig({
       }
 
       // Listen for consent granted event
-      window.addEventListener('ga-consent-granted', () => {
+      window.addEventListener(CONSENT_GRANTED_EVENT, () => {
         initializeAnalytics();
         // Track initial page view
         trackPageView(router.currentRoute.value.path);
       });
       
       // Listen for consent revoked event (when user changes from Accept to Reject)
-      window.addEventListener('ga-consent-revoked', () => {
+      window.addEventListener(CONSENT_REVOKED_EVENT, () => {
         // Clear any existing analytics state if needed
         // Note: We don't uninitialize GA4 as it's already loaded
         console.log('Analytics consent revoked - no new events will be tracked');
+      });
+      
+      // Listen for consent denied event (when user initially rejects)
+      window.addEventListener(CONSENT_DENIED_EVENT, () => {
+        console.log('Analytics consent denied - tracking not enabled');
       });
 
       // Track page views on route changes

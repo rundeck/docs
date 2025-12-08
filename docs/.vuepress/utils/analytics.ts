@@ -5,7 +5,7 @@
  * after explicit user consent. No tracking occurs before consent is granted.
  */
 
-import { GA_MEASUREMENT_ID, CONSENT_KEY } from './constants';
+import { GA_MEASUREMENT_ID, CONSENT_KEY, CONSENT_EXPIRY_MONTHS } from './constants';
 
 declare global {
   interface Window {
@@ -20,7 +20,27 @@ declare global {
 export function hasConsent(): boolean {
   if (typeof window === 'undefined') return false;
   try {
-    return localStorage.getItem(CONSENT_KEY) === 'true';
+    const consentStr = localStorage.getItem(CONSENT_KEY);
+    if (!consentStr) return false;
+    
+    try {
+      // New format with timestamp
+      const consentData = JSON.parse(consentStr);
+      
+      // Check if consent is true and not expired
+      if (consentData.consent !== true) return false;
+      
+      // Check expiration
+      if (!consentData.timestamp) return false;
+      const monthsSinceConsent = (Date.now() - consentData.timestamp) / (1000 * 60 * 60 * 24 * 30);
+      if (monthsSinceConsent > CONSENT_EXPIRY_MONTHS) return false;
+      
+      return true;
+    } catch {
+      // Old format (just 'true' or 'false')
+      // Treat old format as expired for safety
+      return false;
+    }
   } catch {
     return false;
   }

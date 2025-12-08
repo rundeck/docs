@@ -24,7 +24,13 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
-import { CONSENT_KEY } from '../utils/constants';
+import { 
+  CONSENT_KEY, 
+  CONSENT_GRANTED_EVENT, 
+  CONSENT_REVOKED_EVENT, 
+  CONSENT_DENIED_EVENT,
+  CONSENT_EXPIRY_MONTHS 
+} from '../utils/constants';
 
 const showBanner = ref(false);
 
@@ -38,13 +44,44 @@ if (typeof window !== 'undefined') {
   (window as any).reopenCookieBanner = reopenBanner;
 }
 
+/**
+ * Check if consent has expired (GDPR compliance)
+ */
+const isConsentExpired = (consentData: any): boolean => {
+  if (!consentData.timestamp) return true; // Old format, expired
+  
+  const monthsSinceConsent = (Date.now() - consentData.timestamp) / (1000 * 60 * 60 * 24 * 30);
+  return monthsSinceConsent > CONSENT_EXPIRY_MONTHS;
+};
+
 onMounted(() => {
-  // Only show banner if user hasn't made a choice yet
+  // Only show banner if user hasn't made a choice yet or consent expired
   if (typeof window !== 'undefined') {
     try {
-      const existingConsent = localStorage.getItem(CONSENT_KEY);
-      if (existingConsent === null) {
+      const existingConsentStr = localStorage.getItem(CONSENT_KEY);
+      
+      if (existingConsentStr === null) {
+        // No consent stored yet
         showBanner.value = true;
+      } else {
+        // Check if it's old format (just 'true'/'false') or new format with timestamp
+        try {
+          const consentData = JSON.parse(existingConsentStr);
+          
+          // Check if consent has expired
+          if (consentData.consent === true && isConsentExpired(consentData)) {
+            // Consent expired, show banner again
+            showBanner.value = true;
+          }
+          // If consent === false (rejected), don't show banner
+        } catch {
+          // Old format (just 'true' or 'false' string), migrate and check
+          if (existingConsentStr === 'true') {
+            // Treat old 'true' as expired - show banner to get fresh consent
+            showBanner.value = true;
+          }
+          // If old 'false', keep it as rejected, don't show banner
+        }
       }
     } catch (error) {
       // If localStorage is unavailable (e.g., private browsing), show the banner
@@ -57,8 +94,27 @@ onMounted(() => {
 const acceptCookies = () => {
   if (typeof window !== 'undefined') {
     try {
-      const previousConsent = localStorage.getItem(CONSENT_KEY);
-      localStorage.setItem(CONSENT_KEY, 'true');
+      const previousConsentStr = localStorage.getItem(CONSENT_KEY);
+      let previousConsent = false;
+      
+      // Check previous consent status
+      try {
+        if (previousConsentStr) {
+          const parsed = JSON.parse(previousConsentStr);
+          previousConsent = parsed.consent === true;
+        }
+      } catch {
+        // Old format
+        previousConsent = previousConsentStr === 'true';
+      }
+      
+      // Store consent with timestamp
+      const consentData = {
+        consent: true,
+        timestamp: Date.now(),
+        version: 1
+      };
+      localStorage.setItem(CONSENT_KEY, JSON.stringify(consentData));
       showBanner.value = false;
       
       // Move focus to main content
@@ -69,14 +125,14 @@ const acceptCookies = () => {
       (mainContent as HTMLElement)?.focus();
       
       // Only emit event if this is a new acceptance (not already accepted)
-      if (previousConsent !== 'true') {
-        window.dispatchEvent(new CustomEvent('ga-consent-granted'));
+      if (!previousConsent) {
+        window.dispatchEvent(new CustomEvent(CONSENT_GRANTED_EVENT));
       }
     } catch (error) {
       console.error('Failed to save consent preference:', error);
       // Still hide banner and dispatch event even if storage fails
       showBanner.value = false;
-      window.dispatchEvent(new CustomEvent('ga-consent-granted'));
+      window.dispatchEvent(new CustomEvent(CONSENT_GRANTED_EVENT));
     }
   }
 };
@@ -84,8 +140,27 @@ const acceptCookies = () => {
 const rejectCookies = () => {
   if (typeof window !== 'undefined') {
     try {
-      const previousConsent = localStorage.getItem(CONSENT_KEY);
-      localStorage.setItem(CONSENT_KEY, 'false');
+      const previousConsentStr = localStorage.getItem(CONSENT_KEY);
+      let previousConsent = false;
+      
+      // Check previous consent status
+      try {
+        if (previousConsentStr) {
+          const parsed = JSON.parse(previousConsentStr);
+          previousConsent = parsed.consent === true;
+        }
+      } catch {
+        // Old format
+        previousConsent = previousConsentStr === 'true';
+      }
+      
+      // Store rejection with timestamp
+      const consentData = {
+        consent: false,
+        timestamp: Date.now(),
+        version: 1
+      };
+      localStorage.setItem(CONSENT_KEY, JSON.stringify(consentData));
       showBanner.value = false;
       
       // Move focus to main content
@@ -95,9 +170,13 @@ const rejectCookies = () => {
       }
       (mainContent as HTMLElement)?.focus();
       
-      // Emit revoked event if user changed from Accept to Reject
-      if (previousConsent === 'true') {
-        window.dispatchEvent(new CustomEvent('ga-consent-revoked'));
+      // Emit appropriate event
+      if (previousConsent) {
+        // User changed from Accept to Reject
+        window.dispatchEvent(new CustomEvent(CONSENT_REVOKED_EVENT));
+      } else {
+        // Initial rejection
+        window.dispatchEvent(new CustomEvent(CONSENT_DENIED_EVENT));
       }
     } catch (error) {
       console.error('Failed to save consent preference:', error);
