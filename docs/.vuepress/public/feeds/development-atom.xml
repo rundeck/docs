@@ -3,9 +3,114 @@
   <title>Rundeck Development Updates</title>
   <link href="https://docs.rundeck.com/feeds/development.xml" rel="self" />
   <link href="https://docs.rundeck.com/docs" />
-  <updated>2025-12-03T18:27:59.104Z</updated>
+  <updated>2025-12-09T17:07:58.226Z</updated>
   <id>https://docs.rundeck.com/feeds/development</id>
   <subtitle>Recent merged pull requests and development updates from Rundeck</subtitle>
+  <entry>
+    <title>Fix 500 error on duplicate user creation - return 409 Conflict with proper error message</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeckpro-4494</id>
+    <updated>2025-12-03T22:16:24.000Z</updated>
+    <content type="text">Fix 500 error on duplicate user creation - return 409 Conflict with proper error message (Merged: Dec 3, 2025)</content>
+  </entry>
+  <entry>
+    <title>Enhance OpenAPI documentation for Runner Management configuration endpoint</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeckpro-4501</id>
+    <updated>2025-12-03T21:19:35.000Z</updated>
+    <content type="text">Enhance OpenAPI documentation for Runner Management configuration endpoint (Merged: Dec 3, 2025)</content>
+  </entry>
+  <entry>
+    <title>Enhance OpenAPI documentation for 15 API endpoints</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeck-9908</id>
+    <updated>2025-12-03T20:43:19.000Z</updated>
+    <content type="text">Enhance OpenAPI documentation for 15 API endpoints (Merged: Dec 3, 2025)</content>
+  </entry>
+  <entry>
+    <title>Update OCI SDK to 3.43.2 to address CVE-2024-30172</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeckpro-4506</id>
+    <updated>2025-12-03T20:32:56.000Z</updated>
+    <content type="text">Update OCI SDK to 3.43.2 to address CVE-2024-30172 (Merged: Dec 3, 2025)</content>
+  </entry>
+  <entry>
+    <title>Fix webpack bundling configuration for vue3-markdown to prevent System Configuration from loading</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeck-9916</id>
+    <updated>2025-12-03T18:47:31.000Z</updated>
+    <content type="text">Fix webpack bundling configuration for vue3-markdown to prevent System Configuration from loading (Merged: Dec 3, 2025)</content>
+  </entry>
+  <entry>
+    <title>Regenerate Credentials button is hidden for Ephemeral Runners</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeckpro-4509</id>
+    <updated>2025-12-03T18:11:13.000Z</updated>
+    <content type="text">Regenerate Credentials button is hidden for Ephemeral Runners (Merged: Dec 3, 2025)</content>
+  </entry>
+  <entry>
+    <title>Fix CVE-2025-8916 by updating dependencies and forcing BouncyCastle 1.79</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeckpro-4499</id>
+    <updated>2025-12-02T17:16:21.000Z</updated>
+    <content type="text">Fix CVE-2025-8916 by updating dependencies and forcing BouncyCastle 1.79 (Merged: Dec 2, 2025)</content>
+  </entry>
+  <entry>
+    <title>Update sshj to 0.40.0 for CVE-2025-8916</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeck-9907</id>
+    <updated>2025-12-02T17:16:03.000Z</updated>
+    <content type="text">Update sshj to 0.40.0 for CVE-2025-8916 (Merged: Dec 2, 2025)</content>
+  </entry>
+  <entry>
+    <title>Ansible Plugin Improvements</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeckpro-4478</id>
+    <updated>2025-11-25T01:02:47.000Z</updated>
+    <content type="text">Ansible Plugin Improvements (Merged: Nov 25, 2025)</content>
+  </entry>
+  <entry>
+    <title>Fix Firefox scroll behavior on execution output tab</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeck-9894</id>
+    <updated>2025-11-24T22:12:08.000Z</updated>
+    <content type="text">Fix Firefox scroll behavior on execution output tab (Merged: Nov 24, 2025)</content>
+  </entry>
+  <entry>
+    <title>Mitigate CVE-2025-12383 in jersey-client dependency</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeckpro-4496</id>
+    <updated>2025-11-24T17:30:41.000Z</updated>
+    <content type="text">Mitigate CVE-2025-12383 in jersey-client dependency (Merged: Nov 24, 2025)</content>
+  </entry>
+  <entry>
+    <title>Fix CVE-2025-64756 in glob package</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeckpro-4495</id>
+    <updated>2025-11-22T14:44:36.000Z</updated>
+    <content type="text">Fix CVE-2025-64756 in glob package (Merged: Nov 22, 2025)</content>
+  </entry>
+  <entry>
+    <title>Fix CVE-2025-64756 in glob package</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeck-9904</id>
+    <updated>2025-11-22T00:33:02.000Z</updated>
+    <content type="text">Fix CVE-2025-64756 in glob package (Merged: Nov 22, 2025)</content>
+  </entry>
+  <entry>
+    <title>Allow KeyValueDataLogFilterPlugin to capture multiple values</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeck-9896</id>
+    <updated>2025-11-21T14:50:54.000Z</updated>
+    <content type="text">Allow KeyValueDataLogFilterPlugin to capture multiple values (Merged: Nov 21, 2025)</content>
+  </entry>
+  <entry>
+    <title>Fix OpenAPI spec for metrics endpoints</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeck-9901</id>
+    <updated>2025-11-20T22:26:08.000Z</updated>
+    <content type="text">Fix OpenAPI spec for metrics endpoints (Merged: Nov 20, 2025)</content>
+  </entry>
   <entry>
     <title>Fix CVE-2025-55163: Upgrade google-cloud-container to 2.82.0</title>
     <link href="https://docs.rundeck.com/docs/history/updates/" />
