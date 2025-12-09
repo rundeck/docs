@@ -138,6 +138,10 @@ paths:
 
         This endpoint checks permissions for a resource type (kind) such as "job", "project", "system", etc., and returns authorization results for each requested action. The evaluation is performed using the application's access control policies and the authenticated user's permissions.
 
+        The `actions` parameter must be provided as a query parameter and can be specified multiple times for multiple actions.
+
+        Example: `GET /api/56/authorizations/application/job?actions=create&actions=read`
+
         Useful for UI components that need to conditionally display features or for applications that need to verify permissions before attempting operations.
 
         **INCUBATING**: This endpoint is in "incubating" status, and may change.
@@ -151,7 +155,8 @@ paths:
           type: string
       - name: actions
         in: query
-        description: Actions to check authorization for
+        description: Actions to check authorization for (can be specified multiple
+          times)
         required: true
         schema:
           type: array
@@ -164,6 +169,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/AuthorizationsResponse"
+        "400":
+          description: Bad request - missing required parameter `actions`
   /authorizations/application/{type}/{specifier}:
     get:
       tags:
@@ -171,8 +178,10 @@ paths:
       summary: Get authorizations for an application type with specifier
       description: "Get authorizations for the supplied set of actions for the subject\
         \ executing the API call. \nEvaluation is made in the context of the application\
-        \ for the supplied type and specifier.\n\n**INCUBATING**: This endpoint is\
-        \ in \"incubating\" status, and may change."
+        \ for the supplied type and specifier.\n\nThe `actions` parameter must be\
+        \ provided as a query parameter and can be specified multiple times for multiple\
+        \ actions.\n\nExample: `GET /api/56/authorizations/application/project/myproject?actions=read&actions=delete`\n\
+        \n**INCUBATING**: This endpoint is in \"incubating\" status, and may change."
       operationId: appContextAuthorizationsForTypeWithSpecifier
       parameters:
       - name: type
@@ -189,7 +198,8 @@ paths:
           type: string
       - name: actions
         in: query
-        description: Actions to check authorization for
+        description: Actions to check authorization for (can be specified multiple
+          times)
         required: true
         schema:
           type: array
@@ -202,6 +212,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/AuthorizationsResponse"
+        "400":
+          description: Bad request - missing required parameter `actions`
   /authorizations/project/{project}/job/{specifier}:
     get:
       tags:
@@ -247,8 +259,10 @@ paths:
       summary: Get authorizations for a project resource kind
       description: "Get authorizations for the supplied set of actions for the subject\
         \ executing the API call. \nEvaluation is made in the context of the project\
-        \ for the supplied resource kind.\n\n**INCUBATING**: This endpoint is in \"\
-        incubating\" status, and may change."
+        \ for the supplied resource kind.\n\nThe `actions` parameter must be provided\
+        \ as a query parameter and can be specified multiple times for multiple actions.\n\
+        \nExample: `GET /api/56/authorizations/project/myproject/node?actions=read&actions=run`\n\
+        \n**INCUBATING**: This endpoint is in \"incubating\" status, and may change."
       operationId: projectContextAuthorizationsForResourceKind
       parameters:
       - name: project
@@ -265,7 +279,8 @@ paths:
           type: string
       - name: actions
         in: query
-        description: Actions to check authorization for
+        description: Actions to check authorization for (can be specified multiple
+          times)
         required: true
         schema:
           type: array
@@ -278,6 +293,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/AuthorizationsResponse"
+        "400":
+          description: Bad request - missing required parameter `actions`
   /authorizations/project/{project}/{type}/{specifier}:
     get:
       tags:
@@ -285,8 +302,10 @@ paths:
       summary: Get authorizations for a type with specifier
       description: "Get authorizations for the supplied set of actions for the subject\
         \ executing the API call. \nEvaluation is made in the context of the project\
-        \ for the type with a specifier.\n\n**INCUBATING**: This endpoint is in \"\
-        incubating\" status, and may change."
+        \ for the type with a specifier.\n\nThe `actions` parameter must be provided\
+        \ as a query parameter and can be specified multiple times for multiple actions.\n\
+        \nExample: `GET /api/56/authorizations/project/myproject/node/node1?actions=read&actions=run`\n\
+        \n**INCUBATING**: This endpoint is in \"incubating\" status, and may change."
       operationId: projectContextAuthorizationsForTypeWithSpecifier
       parameters:
       - name: project
@@ -309,7 +328,8 @@ paths:
           type: string
       - name: actions
         in: query
-        description: Actions to check authorization for
+        description: Actions to check authorization for (can be specified multiple
+          times)
         required: true
         schema:
           type: array
@@ -322,6 +342,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/AuthorizationsResponse"
+        "400":
+          description: Bad request - missing required parameter `actions`
   /config/delete:
     post:
       tags:
@@ -1353,21 +1375,24 @@ paths:
             \ log entries will only be returned in textual form without metadata.\n\
             \nContents:\n\n* `id`: ID of the execution\n* `message`: optional text\
             \ message indicating why no entries were returned\n* `error`: optional\
-            \ text message indicating an error case\n* `unmodified`: true/false, (optional)\
-            \ \"true\" will be returned if the `lastmod` parameter was used and the\
-            \ file had not changed\n* `empty`: true/false, (optional) \"true\" will\
-            \ be returned if the log file does not exist or is empty, which may occur\
-            \ if the log data is requested before any output has been stored.\n* `offset`:\
-            \ Byte offset to read for the next set of data\n* `completed`: true/false,\
-            \ \"true\" if the current log entries or request parameters include all\
-            \ of the available data\n* `execCompleted`: true/false, \"true\" if the\
-            \ execution has completed.\n* `hasFailedNodes`: true/false, \"true\" if\
-            \ the execution has recorded a list of failed nodes\n* `execState`: execution\
-            \ state, one of \"running\",\"succeeded\",\"failed\",\"aborted\"\n* `lastModified`:\
-            \ (long integer), millisecond timestamp of the last modification of the\
-            \ log file\n* `execDuration`: (long integer), millisecond duration of\
-            \ the execution\n* `percentLoaded`: (float), (optional) percentage of\
-            \ the output which has been loaded by the parameters to this request\n\
+            \ text message indicating an error case. Note: A 200 response may include\
+            \ an `error` field (e.g., \"The Execution Log could not be found\") when\
+            \ log data is not available, which is normal for executions where logs\
+            \ have not been generated or stored yet.\n* `unmodified`: true/false,\
+            \ (optional) \"true\" will be returned if the `lastmod` parameter was\
+            \ used and the file had not changed\n* `empty`: true/false, (optional)\
+            \ \"true\" will be returned if the log file does not exist or is empty,\
+            \ which may occur if the log data is requested before any output has been\
+            \ stored.\n* `offset`: Byte offset to read for the next set of data\n\
+            * `completed`: true/false, \"true\" if the current log entries or request\
+            \ parameters include all of the available data\n* `execCompleted`: true/false,\
+            \ \"true\" if the execution has completed.\n* `hasFailedNodes`: true/false,\
+            \ \"true\" if the execution has recorded a list of failed nodes\n* `execState`:\
+            \ execution state, one of \"running\",\"succeeded\",\"failed\",\"aborted\"\
+            \n* `lastModified`: (long integer), millisecond timestamp of the last\
+            \ modification of the log file\n* `execDuration`: (long integer), millisecond\
+            \ duration of the execution\n* `percentLoaded`: (float), (optional) percentage\
+            \ of the output which has been loaded by the parameters to this request\n\
             * `totalSize`: (integer), total bytes available in the output file\n*\
             \ `filter` - if a `node` or `step` filter was used\n    - `nodename` -\
             \ value of the node name filter\n    - `stepctx` - value of the step context\
@@ -1927,6 +1952,11 @@ paths:
                       nodeStep: false
                       id: "2"
                       startTime: 2014-01-13T20:38:31Z
+        "404":
+          description: "Execution state not found. This occurs when the execution\
+            \ never started (e.g., status: missed, meaning the job was scheduled but\
+            \ conditions prevented it from starting) or when state data is not available\
+            \ for the execution."
   /executions/delete:
     post:
       tags:
@@ -3913,33 +3943,207 @@ paths:
                     - id: "[UUID]"
                       errorCode: "(error code, see above)"
                       message: (success or failure message)
-  /metrics/{name}:
+  /metrics:
     get:
       tags:
       - Metrics
-      summary: Get Rundeck metrics
-      description: Return metrics and information
-      operationId: apiMetrics
-      parameters:
-      - name: name
-        in: path
-        description: "Metric name, or blank to receive list of metrics"
-        required: true
-        allowEmptyValue: true
-        schema:
-          type: string
-          enum:
-          - metrics
-          - ping
-          - threads
-          - healthcheck
+      summary: List available metrics
+      description: Return list of available metrics endpoints
+      operationId: apiMetricsList
       responses:
         "200":
-          description: List of metrics available if not specified
+          description: List of metrics available
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/LinkListResponse"
+              examples:
+                example:
+                  value:
+                    _links:
+                      metrics:
+                        href: http://localhost:4440/api/56/metrics/metrics
+                      ping:
+                        href: http://localhost:4440/api/56/metrics/ping
+                      threads:
+                        href: http://localhost:4440/api/56/metrics/threads
+                      healthcheck:
+                        href: http://localhost:4440/api/56/metrics/healthcheck
+  /metrics/healthcheck:
+    get:
+      tags:
+      - Metrics
+      summary: Get healthcheck results
+      description: Return results of health checks
+      operationId: apiMetricsHealthcheck
+      responses:
+        "200":
+          description: Healthcheck results
+          content:
+            application/json:
+              examples:
+                example:
+                  value:
+                    dataSource.connection.time:
+                      healthy: true
+                      message: Datasource connection healthy with timeout 5 seconds
+                      duration: 5
+                      timestamp: 2025-11-20T16:31:54.697Z
+                    quartz.scheduler.threadPool:
+                      healthy: true
+                      duration: 0
+                      timestamp: 2025-11-20T16:31:54.691Z
+        "404":
+          description: Error response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+              examples:
+                example:
+                  value:
+                    error: true
+                    errorCode: api.error.code
+                    message: not ok
+                    apiversion: 41
+  /metrics/metrics:
+    get:
+      tags:
+      - Metrics
+      summary: Get metrics data
+      description: "Return metrics data including gauges, counters, histograms, meters,\
+        \ and timers"
+      operationId: apiMetricsData
+      responses:
+        "200":
+          description: Metrics data
+          content:
+            application/json:
+              examples:
+                example:
+                  value:
+                    version: 4.0.0
+                    gauges:
+                      dataSource.connection.pingTime:
+                        value: 1
+                      rundeck.scheduler.quartz.runningExecutions:
+                        value: 0
+                      rundeck.scheduler.quartz.threadPoolSize:
+                        value: 10
+                    counters:
+                      rundeck.scheduler.quartz.scheduledJobs:
+                        count: 0
+                      userLogin.success:
+                        count: 11
+                    histograms: {}
+                    meters:
+                      rundeck.services.AuthorizationService.systemAuthorization.evaluateMeter:
+                        count: 0
+                        m15_rate: 0.0
+                        m1_rate: 0.0
+                        m5_rate: 0.0
+                        mean_rate: 0.0
+                        units: events/second
+                    timers:
+                      rundeck.api.requests.requestTimer:
+                        count: 60
+                        max: 6.317398919
+                        mean: 0.026001214274461268
+                        min: 0.0023142080000000003
+                        p50: 0.026092959000000002
+                        p75: 0.030003541
+                        p95: 0.038119417
+                        p98: 0.040306041
+                        p99: 0.044510167
+                        p999: 0.044510167
+                        stddev: 0.01834652011881323
+                        m15_rate: 0.03909615395387536
+                        m1_rate: 0.0397593563491449
+                        m5_rate: 0.054026440399837165
+                        mean_rate: 0.07388108803406175
+                        duration_units: seconds
+                        rate_units: calls/second
+        "404":
+          description: Error response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+              examples:
+                example:
+                  value:
+                    error: true
+                    errorCode: api.error.code
+                    message: not ok
+                    apiversion: 41
+  /metrics/ping:
+    get:
+      tags:
+      - Metrics
+      summary: Ping metrics endpoint
+      description: Simple ping endpoint that returns a text response
+      operationId: apiMetricsPing
+      responses:
+        "200":
+          description: Ping response
+          content:
+            text/plain:
+              examples:
+                example:
+                  value: pong
+        "404":
+          description: Error response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+              examples:
+                example:
+                  value:
+                    error: true
+                    errorCode: api.error.code
+                    message: not ok
+                    apiversion: 41
+  /metrics/threads:
+    get:
+      tags:
+      - Metrics
+      summary: Get thread dump
+      description: Return a dump of running JVM threads
+      operationId: apiMetricsThreads
+      responses:
+        "200":
+          description: Thread dump
+          content:
+            text/plain:
+              examples:
+                example:
+                  value: |-
+                    "qtp646391393-124" id=124 state=TIMED_WAITING
+                        - waiting on <0x05c9b4f9> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+                        - locked <0x05c9b4f9> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+                        at java.base@11.0.28/jdk.internal.misc.Unsafe.park(Native Method)
+                        at java.base@11.0.28/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:234)
+                        at java.base@11.0.28/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:2123)
+                        at org.eclipse.jetty.util.BlockingArrayQueue.poll(BlockingArrayQueue.java:382)
+                        at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.idleJobPoll(QueuedThreadPool.java:974)
+                        at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:1018)
+                        at java.base@11.0.28/java.lang.Thread.run(Thread.java:829)
+
+                    "pool-3-thread-13" id=120 state=TIMED_WAITING
+                        - waiting on <0x569b5d5c> (a java.util.concurrent.SynchronousQueue$TransferStack)
+                        - locked <0x569b5d5c> (a java.util.concurrent.SynchronousQueue$TransferStack)
+                        at java.base@11.0.28/jdk.internal.misc.Unsafe.park(Native Method)
+                        at java.base@11.0.28/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:234)
+                        at java.base@11.0.28/java.util.concurrent.SynchronousQueue$TransferStack.awaitFulfill(SynchronousQueue.java:462)
+                        at java.base@11.0.28/java.util.concurrent.SynchronousQueue$TransferStack.transfer(SynchronousQueue.java:361)
+                        at java.base@11.0.28/java.util.concurrent.SynchronousQueue.poll(SynchronousQueue.java:937)
+                        at java.base@11.0.28/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1053)
+                        at java.base@11.0.28/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1114)
+                        at java.base@11.0.28/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+                        at java.base@11.0.28/java.lang.Thread.run(Thread.java:829)
+
+                    ... (additional threads omitted for brevity)
         "404":
           description: Error response
           content:
@@ -5373,7 +5577,7 @@ paths:
         * whkIncludeAuthTokens true/false, include the auth token information when exporting webhooks, if not included the auth tokens will be regenerated upon import
 
         Requires `export` authorization for the project resource.
-      operationId: apiProjectExport
+      operationId: apiProjectExport_docs
       parameters:
       - name: project
         in: path
@@ -5448,11 +5652,123 @@ paths:
         required: false
         schema:
           type: string
-      - name: archiveParams
-        in: query
+      responses:
+        "200":
+          description: The project exported zip archive file
+          content:
+            application/zip:
+              schema:
+                $ref: "#/components/schemas/OutputStream"
+        "400":
+          description: Bad request if it has error in the parameters
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+    post:
+      tags:
+      - Project
+      summary: Export a zip archive of the project (POST).
+      description: |-
+        Performs the export to a zip archive of the project synchronously using POST method. _For large projects, consider using the async export endpoint instead._
+
+        This is useful for large lists of execution IDs that exceed URL length limits when using GET.
+
+        Parameters can be sent as application/x-www-form-urlencoded or as query parameters.
+
+        Optional parameters:
+
+        * executionIds a list (comma-separated) of execution IDs, or specified multiple times with a single ID per entry. If this is specified then the archive will contain only executions that are specified, and will not contain Jobs, ACLs, or project configuration/readme files.
+
+        In APIv19 or later:
+
+        By default, exportALL=true. So, in order to not export empty data, you need to include one of the parameter flags.
+
+        In APIv28 or later:
+
+        * exportScm true/false, include project SCM configuration, if authorized
+
+        In APIv34 or later:
+
+        * exportWebhooks true/false, include project webhooks in the archive
+        * whkIncludeAuthTokens true/false, include the auth token information when exporting webhooks, if not included the auth tokens will be regenerated upon import
+
+        Requires `export` authorization for the project resource.
+      operationId: apiProjectExportPost_docs
+      parameters:
+      - name: project
+        in: path
+        description: Project Name
         required: true
+        allowEmptyValue: false
         schema:
-          $ref: "#/components/schemas/ProjectArchiveParams"
+          type: string
+      - name: executionIds
+        in: query
+        description: List of execution to include to the exported archive
+        required: false
+        schema:
+          type: string
+      - name: exportAll
+        in: query
+        description: "true/false, include all project contents (default: true)"
+        required: false
+        schema:
+          type: string
+      - name: exportJobs
+        in: query
+        description: "true/false, include jobs"
+        required: false
+        schema:
+          type: string
+      - name: exportExecutions
+        in: query
+        description: "true/false, include executions"
+        required: false
+        schema:
+          type: string
+      - name: exportConfigs
+        in: query
+        description: "true/false, include project configuration"
+        required: false
+        schema:
+          type: string
+      - name: exportReadmes
+        in: query
+        description: "true/false, include project readme/motd files"
+        required: false
+        schema:
+          type: string
+      - name: exportAcls
+        in: query
+        description: "true/false, include project ACL Policy files, if authorized"
+        required: false
+        schema:
+          type: string
+      - name: exportComponents.calendars
+        in: query
+        description: "true/false, include project calendars"
+        required: false
+        schema:
+          type: string
+      - name: exportComponents.Schedule%20Definitions
+        in: query
+        description: "true/false, include schedule definitions"
+        required: false
+        schema:
+          type: string
+      - name: exportComponents.tours-manager
+        in: query
+        description: "true/false, include tours manager"
+        required: false
+        schema:
+          type: string
+      - name: exportComponents.node-wizard
+        in: query
+        description: "true/false, include node wizard"
+        required: false
+        schema:
+          type: string
       responses:
         "200":
           description: The project exported zip archive file
@@ -5565,6 +5881,131 @@ paths:
         "200":
           description: Returns the Token to retrieve export status and download zip
             achive
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                example:
+                  value: |-
+                    {
+                        "token":"[TOKEN]",
+                        "ready":true/false,
+                        "percentage":int,
+                    }
+        "400":
+          description: Bad request if it has error in the parameters
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+    post:
+      tags:
+      - Project
+      summary: Export a zip archive of the project asynchronously (POST).
+      description: |-
+        Performs the export to a zip archive of the project asynchronously using POST method.
+        This is useful for large lists of execution IDs that exceed URL length limits.
+
+        Parameters can be sent as application/x-www-form-urlencoded or as query parameters.
+
+        Optional parameters:
+
+        * executionIds a list (comma-separated) of execution IDs, or specified multiple times with a single ID per entry. If this is specified then the archive will contain only executions that are specified, and will not contain Jobs, ACLs, or project configuration/readme files.
+
+        In APIv19 or later:
+
+        By default, exportALL=true. So, in order to not export empty data, you need to include one of the parameter flags.
+
+        In APIv28 or later:
+
+        * exportScm true/false, include project SCM configuration, if authorized
+
+        In APIv34 or later:
+
+        * exportWebhooks true/false, include project webhooks in the archive
+        * whkIncludeAuthTokens true/false, include the auth token information when exporting webhooks, if not included the auth tokens will be regenerated upon import
+
+        Requires `export` authorization for the project resource.
+      operationId: apiProjectExportAsyncPost_docs
+      parameters:
+      - name: project
+        in: path
+        description: Project Name
+        required: true
+        allowEmptyValue: false
+        schema:
+          type: string
+      - name: executionIds
+        in: query
+        description: List of execution to include to the exported archive
+        required: false
+        schema:
+          type: string
+      - name: exportAll
+        in: query
+        description: "true/false, include all project contents (default: true)"
+        required: false
+        schema:
+          type: string
+      - name: exportJobs
+        in: query
+        description: "true/false, include jobs"
+        required: false
+        schema:
+          type: string
+      - name: exportExecutions
+        in: query
+        description: "true/false, include executions"
+        required: false
+        schema:
+          type: string
+      - name: exportConfigs
+        in: query
+        description: "true/false, include project configuration"
+        required: false
+        schema:
+          type: string
+      - name: exportReadmes
+        in: query
+        description: "true/false, include project readme/motd files"
+        required: false
+        schema:
+          type: string
+      - name: exportAcls
+        in: query
+        description: "true/false, include project ACL Policy files, if authorized"
+        required: false
+        schema:
+          type: string
+      - name: exportComponents.calendars
+        in: query
+        description: "true/false, include project calendars"
+        required: false
+        schema:
+          type: string
+      - name: exportComponents.Schedule%20Definitions
+        in: query
+        description: "true/false, include schedule definitions"
+        required: false
+        schema:
+          type: string
+      - name: exportComponents.tours-manager
+        in: query
+        description: "true/false, include tours manager"
+        required: false
+        schema:
+          type: string
+      - name: exportComponents.node-wizard
+        in: query
+        description: "true/false, include node wizard"
+        required: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Returns the Token to retrieve export status and download zip
+            archive
           content:
             application/json:
               schema:
@@ -7150,6 +7591,10 @@ paths:
       description: |-
         Run a command string.
 
+        This endpoint accepts parameters either as query parameters or as a JSON request body. Query parameters are recommended for simplicity.
+
+        Example using query parameters: `POST /api/56/project/myproject/run/command?exec=echo+test&filter=.*`
+
         Authorization required: `run` for project resource type `adhoc`, as well as `runAs` if the runAs parameter is used
 
         Since: v14
@@ -7225,6 +7670,10 @@ paths:
       summary: Run Adhoc Script
       description: |-
         Run a script.
+
+        This endpoint accepts parameters as query parameters, with the script content submitted in the request body. The script can be submitted as multipart/form-data, application/x-www-form-urlencoded (with `scriptFile` parameter), or as a JSON document.
+
+        Example using query parameters: `POST /api/56/project/myproject/run/script?filter=.*` with script content in body
 
         Authorization required: `run` for project resource type `adhoc`, as well as `runAs` if the runAs parameter is used
 
@@ -7502,7 +7951,16 @@ paths:
       tags:
       - Runner
       summary: Save Project Context Runner Config
-      description: "Save project context runner config. Since: V41"
+      description: "Configure runner assignment settings for a project in the Rundeck\
+        \ / Runbook Automation runner management system.\n            \n         \
+        \   This endpoint allows you to set whether runner assignment should be automatic\
+        \ or manual for a specific project.\n            When automatic is true, runners\
+        \ will be automatically assigned to execute jobs in this project based on\
+        \ \n            availability and configuration. When false, runners must be\
+        \ manually assigned to the project.\n            \n            The request\
+        \ body must include a runnerConfigRequest object with the project name and\
+        \ automatic flag.\n            \n            Authorization required: Application\
+        \ admin access for the project\n            \n            Since: V41"
       operationId: saveProjectContextRunnerConfig
       parameters:
       - name: project
@@ -7512,13 +7970,21 @@ paths:
         schema:
           type: string
       requestBody:
+        description: Runner configuration request containing project name and automatic
+          assignment setting
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                runnerConfigRequest:
-                  $ref: "#/components/schemas/SaveProjectRunnerConfigRequest"
+              allOf:
+              - $ref: "#/components/schemas/SaveProjectRunnerConfigRequest"
+              - properties:
+                  runnerConfigRequest:
+                    $ref: "#/components/schemas/SaveProjectRunnerConfigRequest"
+            examples:
+              Configure automatic runner assignment:
+                value:
+                  project: myproject
+                  automatic: true
         required: true
       responses:
         "200":
@@ -7527,6 +7993,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ProjectContextRunnerConfig"
+        "400":
+          description: Bad Request - Invalid or missing request body parameters
   /project/{project}/runnerManagement/download/{token}:
     get:
       tags:
@@ -9089,7 +9557,8 @@ paths:
                   value:
                     contents: The readme contents
         "404":
-          description: Not found
+          description: Resource file does not exist in the project. This occurs when
+            the requested readme.md or motd.md file has not been created for the project.
           content:
             application/json:
               schema:
@@ -10296,15 +10765,98 @@ paths:
       tags:
       - User
       summary: "Create A Local User [Enterprise]"
-      description: |2-
+      description: |-
+        Creates a native/local user with a password for use with the built-in authentication system.
+
+        This endpoint is designed for environments that use the internal authentication mechanism rather than external authentication providers (such as LDAP, Active Directory, or OAuth). It allows administrators to provision local user accounts with specified roles and credentials.
+
+        **Important Notes:**
+        - The password field is named `pwd` (not "password") in the request body to maintain consistency with the internal authentication system
+        - Users created through this endpoint are stored in the database and authenticated using built-in authentication
+        - When a user already exists, the operation will fail with an error
+
+        **Expected Behavior:**
+        - **Successful Creation**: Returns 201 Created when a user is successfully created
+        - **User Already Exists**: Returns an error when attempting to create a user that already exists
+        - **Validation Errors**: Returns 400 Bad Request for missing required fields or invalid data
+        - **Permission Errors**: Returns 403 Forbidden if the caller lacks sufficient permissions
 
         Authorization required: `app_admin` for system resource type `user`.
 
         Since: v44
       operationId: apiCreate_1
+      requestBody:
+        description: "User creation data including username, password (pwd), and roles"
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateUserRequest"
+            examples:
+              basic-user:
+                summary: Create a basic user with required fields only
+                description: "Minimal request with only required fields: username,\
+                  \ pwd (password), and roles"
+                value:
+                  username: alice
+                  pwd: SecurePass123!
+                  roles:
+                  - user
+                  - dev
+              complete-user:
+                summary: Create a user with all available fields
+                description: "Complete user profile including optional fields like\
+                  \ firstname, lastname, email, and notes"
+                value:
+                  username: bob.smith
+                  pwd: MySecurePassword456!
+                  roles:
+                  - admin
+                  - sre
+                  - dev
+                  firstname: Bob
+                  lastname: Smith
+                  email: bob.smith@company.com
+                  notes: DevOps team lead
+        required: true
       responses:
         "201":
-          description: Created
+          description: User successfully created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserCreatedResponse"
+        "400":
+          description: "Bad Request - Validation errors (missing required fields,\
+            \ invalid email format, weak password, etc.)"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserErrorResponse"
+              examples:
+                example:
+                  value: |-
+                    Examples of validation errors:
+                    {"err": "username must be set"}
+                    {"err": "password must be set"}
+                    {"err": "The email address provided as the username is not valid"}
+                    {"err": "Password must be at least 8 characters long"}
+                    {"err": "Validation Error(s) occurred during save()"}
+        "403":
+          description: Forbidden - Insufficient permissions to create users
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                example:
+                  value:
+                    error: "Unauthorized: app_admin action required for user resource"
+        "409":
+          description: Conflict - User already exists with the specified username
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserErrorResponse"
         "200":
           description: apiCreate_1 200 response
           content:
@@ -12501,6 +13053,45 @@ components:
       description: Create Token request using a comma-separated string for Roles
       allOf:
       - $ref: "#/components/schemas/CreateTokenBase"
+    CreateUserRequest:
+      required:
+      - pwd
+      - roles
+      - username
+      type: object
+      properties:
+        username:
+          type: string
+          description: Username for the new user
+          example: johndoe
+        pwd:
+          type: string
+          description: "Password for the new user. Note: field is named 'pwd' not\
+            \ 'password' for consistency with internal authentication system"
+          example: SecurePassword123!
+        roles:
+          type: array
+          description: List of role names to assign to the user
+          example: "[\"user\", \"dev\", \"admin\"]"
+          items:
+            type: string
+        firstname:
+          type: string
+          description: User's first name (optional)
+          example: John
+        lastname:
+          type: string
+          description: User's last name (optional)
+          example: Doe
+        email:
+          type: string
+          description: User's email address (optional)
+          example: john.doe@example.com
+        notes:
+          type: string
+          description: Additional notes about the user (optional)
+          example: DevOps team lead
+      description: Request to create a new local user
     DataSet:
       type: object
       properties:
@@ -12579,12 +13170,6 @@ components:
         errorCount:
           type: integer
           format: int32
-        allErrors:
-          type: array
-          items:
-            $ref: "#/components/schemas/ObjectError"
-        fieldError:
-          $ref: "#/components/schemas/FieldError"
         objectName:
           type: string
         nestedPath:
@@ -12605,6 +13190,12 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/FieldError"
+        allErrors:
+          type: array
+          items:
+            $ref: "#/components/schemas/ObjectError"
+        fieldError:
+          $ref: "#/components/schemas/FieldError"
     EventRoutingResult:
       type: object
       properties:
@@ -12652,16 +13243,19 @@ components:
           type: string
           description: "since: v42"
     FieldError:
-      required:
-      - field
       type: object
-      properties:
-        bindingFailure:
-          type: boolean
-        rejectedValue:
-          type: object
-        field:
-          type: string
+      allOf:
+      - $ref: "#/components/schemas/ObjectError"
+      - $ref: "#/components/schemas/DefaultMessageSourceResolvable"
+      - required:
+        - field
+        properties:
+          bindingFailure:
+            type: boolean
+          rejectedValue:
+            type: object
+          field:
+            type: string
     HomeSummary:
       required:
       - execCount
@@ -14330,6 +14924,22 @@ components:
           type: string
         userclass:
           type: string
+    UserCreatedResponse:
+      type: object
+      properties:
+        msg:
+          type: string
+          description: Success message
+          example: user created
+      description: Successful user creation response
+    UserErrorResponse:
+      type: object
+      properties:
+        err:
+          type: string
+          description: Error message describing what went wrong
+          example: User with username 'alice' already exists
+      description: Error response for user operations
     WebhookEvaluation:
       type: object
       properties:
