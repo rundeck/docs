@@ -57,11 +57,14 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '22.12.0'
+          node-version-file: '.nvmrc'
+          cache: 'npm'
           
       # Step 5: Install dependencies
       - name: Install dependencies
-        run: npm install
+        env:
+          CLOUDSMITH_NPM_TOKEN: ${{ secrets.CLOUDSMITH_NPM_TOKEN }}
+        run: npm ci
         
       # Step 6: Update pr-feed-config.json with the new RBA tag
       - name: Update PR feed configuration

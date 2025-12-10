@@ -1,7 +1,7 @@
 ---
 title: Recent Updates
 description: Latest merged changes from the Rundeck development team
-date: 2025-12-03T18:27:59.073Z
+date: 2025-12-09T17:07:58.201Z
 feed: true
 index: true
 ---
@@ -18,6 +18,81 @@ This page shows recently merged pull requests from both the Runbook Automation p
 
 ## Recent Changes
 
+
+#### ::circle-dot:: Fix 500 error on duplicate user creation - return 409 Conflict with proper error message 
+
+
+  **Fixed API error handling for duplicate user creation and added complete OpenAPI documentation.** The user creation API endpoint (`PUT /api/44/secure/users/create`) now properly handles duplicate username errors. Previously, attempting to create a user with an existing username returned an HTTP 500 Internal Server Error with an HTML error page. Now it correctly returns HTTP 409 Conflict with a clean JSON error message: `{&quot;err&quot;: &quot;User with username &#39;xyz&#39; already exists&quot;}`. Additionally, the endpoint now includes comprehensive OpenAPI documentation with detailed request body schemas (including the `username`, `pwd`, and `roles` fields), multiple JSON examples for basic and complete user creation, and documentation for all response codes (201, 400, 403, 409). This fix improves API reliability and makes it easier for API consumers to handle duplicate user scenarios programmatically.
+
+#### ::circle-dot:: Enhance OpenAPI documentation for Runner Management configuration endpoint 
+
+
+  Improved OpenAPI specification documentation for the Runner Management configuration endpoint, providing clearer guidance for API consumers on how to configure automatic vs manual runner assignment for projects.
+
+#### ::circle-dot:: Enhance OpenAPI documentation for 15 API endpoints  [PR #9908](https://github.com/rundeck/rundeck/pull/9908)
+
+
+  Enhanced OpenAPI specification documentation for 15 API endpoints across multiple controllers, improving clarity for API consumers and generated SDK quality. All changes are documentation-only and fully backward compatible with no breaking changes to existing API behavior.
+
+  Key improvements include clarification of query parameter usage for Ad Hoc endpoints, addition of previously undocumented POST method support for project export endpoints, and comprehensive documentation of 404 response scenarios for execution state, SCM status, and project file endpoints.
+
+  ---
+
+#### ::circle-dot:: Update OCI SDK to 3.43.2 to address CVE-2024-30172 
+
+
+  Updated Oracle Cloud Infrastructure (OCI) Java SDK to version 3.43.2 to address security vulnerability CVE-2024-30172. This update affects the Oracle Cloud plugins and Oracle Cloud Health Check plugin, improving the security posture of Oracle Cloud integrations.
+
+#### ::circle-dot:: Fix webpack bundling configuration for vue3-markdown to prevent System Configuration from loading  [PR #9916](https://github.com/rundeck/rundeck/pull/9916)
+
+
+#### ::circle-dot:: Regenerate Credentials button is hidden for Ephemeral Runners 
+
+
+  Fixed an issue where the Regenerate Credentials button was incorrectly hidden for Ephemeral Runners in the Runner Management interface, ensuring users can now properly regenerate credentials for ephemeral runner types.
+
+#### ::circle-dot:: Fix CVE-2025-8916 by updating dependencies and forcing BouncyCastle 1.79 
+
+
+  **Security Enhancement**: Fixed CVE-2025-8916 (BouncyCastle vulnerability, CVSS 6.3) by updating OCI SDK to 3.21.0, Kubernetes client to 22.0.0, Spring Security RSA to 1.0.13, and globally forcing BouncyCastle to the patched version 1.79 across all affected components. This addresses &quot;Allocation of Resources Without Limits or Throttling&quot; vulnerabilities in 6 plugins: cloud-oraclecloud-healthcheck-plugin, kubernetes-clusters, rundeckpro-config, rundeckpro-security, runbook-automation-data-spi, and runbook-automation-utils.
+
+#### ::circle-dot:: Update sshj to 0.40.0 for CVE-2025-8916  [PR #9907](https://github.com/rundeck/rundeck/pull/9907)
+
+
+  Updated sshj dependency in the git-plugin from 0.33.0 to 0.40.0 to address CVE-2025-8916, a security vulnerability in the SSH library.
+
+#### ::circle-dot:: Ansible Plugin Improvements 
+
+
+  Update to the way the Ansible plugin handles ad-hoc command execution, specifically replacing the deprecated -t argument with environment variables for callback configuration, and modernizing inventory argument handling. It also adds and improves tests to ensure these changes work as intended and that user-provided environment variables are respected.
+
+#### ::circle-dot:: Fix Firefox scroll behavior on execution output tab  [PR #9894](https://github.com/rundeck/rundeck/pull/9894)
+
+
+#### ::circle-dot:: Mitigate CVE-2025-12383 in jersey-client dependency 
+
+
+  This PR mitigates CVE-2025-12383 (CVSS 9.4 Critical) in the jersey-client dependency used by the jira-plugins module.
+
+#### ::circle-dot:: Fix CVE-2025-64756 in glob package 
+
+
+  Fixed security vulnerability CVE-2025-64756 in the glob package by upgrading to version 10.5.0, which patches a command injection vulnerability in the glob CLI.
+
+#### ::circle-dot:: Fix CVE-2025-64756 in glob package  [PR #9904](https://github.com/rundeck/rundeck/pull/9904)
+
+
+  Fixed security vulnerability CVE-2025-64756 in the glob package by upgrading to version 10.5.0, which patches a command injection vulnerability in the glob CLI.
+
+#### ::circle-dot:: Allow KeyValueDataLogFilterPlugin to capture multiple values  [PR #9896](https://github.com/rundeck/rundeck/pull/9896)
+
+
+  Enhanced the Key Value Data Log Filter Plugin to support capturing multiple key-value pairs from a single log line through a new optional allowMultipleMatches property. This enables parsing of complex log formats containing multiple matches (e.g., &quot;user=john role=admin session=abc123&quot;) while maintaining full backward compatibility with the default single-match behavior.
+
+#### ::circle-dot:: Fix OpenAPI spec for metrics endpoints  [PR #9901](https://github.com/rundeck/rundeck/pull/9901)
+
+
+  Fixed OpenAPI documentation for metrics endpoints to properly represent them as five separate endpoints (/metrics, /metrics/metrics, /metrics/ping, /metrics/threads, /metrics/healthcheck) instead of a single endpoint with an optional parameter. This ensures the OpenAPI Explorer generates correct curl commands and includes example responses for each endpoint, improving API discoverability and developer experience.
 
 #### ::circle-dot:: Fix CVE-2025-55163: Upgrade google-cloud-container to 2.82.0 
 
@@ -117,6 +192,6 @@ The development updates are automatically generated from both our private reposi
 
 ---
 
-**List Last updated:** 2025-12-03
+**List Last updated:** 2025-12-09
 
 
