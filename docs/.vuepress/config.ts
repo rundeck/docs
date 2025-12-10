@@ -143,7 +143,6 @@ export default defineUserConfig({
             },
           },
         },
-        container: '#docsearch',
         disableUserPersonalization: true,
         initialQuery: '',
       },
