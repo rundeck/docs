@@ -16,6 +16,8 @@ These are the Security Advisories Rundeck has issued in the past.  It is always 
     Command Injection in Job Options Due to Incomplete Escaping
 * [Runner Security Issue - June 2025](2025-06-runner-security.md)<br>
     Password Masking Failure Exposing Secrets in Enterprise Runner Log Output.
+* [CVE-2025-52493](cve-2025-52493.md)<br>
+    Stored secrets exposed in webpage DOM at configuration page.
 * [CVE-2023-48222](cve-2023-48222.md)<br>
     Authenticated users can view or delete jobs for which they do not have authorization.
 * [CVE-2023-47112](cve-2023-47112.md)<br>
