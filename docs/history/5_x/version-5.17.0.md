@@ -61,9 +61,16 @@ We are working on a dynamically generated OpenAPI spec file that is hosted on ou
   
 Improves time display formatting across the UI with consistent timezone-aware time formatting for execution start/end dates and log entries.
 
-#####  ::circle-dot:: [Feature/Add Job Creation Date And Last Modified User Audit Tracking To Job Metadata](https://github.com/rundeck/rundeck/pull/9839)
+#####  ::circle-dot:: [Job Audit Tracking: Track Job Creator and Modification History](https://github.com/rundeck/rundeck/pull/9839)
   
-This helps teams see who owns each job and when it was last changed. When importing jobs, the tracking information is protected so it doesn&#39;t get overwritten.
+Rundeck now automatically tracks comprehensive audit information for every job, making it easier to manage job ownership and understand change history. Each job now records:
+
+- **Job Creator** (`createdBy`): The username of who originally created the job
+- **Last Modifier** (`lastModifiedBy`): The username of who last changed the job  
+- **Creation Date** (`created`): When the job was first created
+- **Last Modified Date** (`lastModified`): When the job was last changed
+
+This audit information is visible through the API (v56+) and appears in exported job definitions (YAML/JSON/XML). The tracking fields are system-managed and protected during job import operations to maintain accurate audit history - when you import or promote jobs between environments, the audit trail is preserved rather than being overwritten. This helps teams answer questions like "Who created this job?", "When was it last modified?", and "Who made the most recent changes?" - essential for compliance, troubleshooting, and job lifecycle management.
 
 #####  ::circle-dot:: [Remediate CVE-2025-59952](https://github.com/rundeck/rundeck/pull/9837)
 

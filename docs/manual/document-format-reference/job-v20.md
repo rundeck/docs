@@ -220,6 +220,50 @@ as unique as possible if you set it manually.
 This identifier is used to uniquely identify jobs when ported between Rundeck
 instances.
 
+## Audit Tracking Fields
+
+The following elements are system-managed audit tracking fields (since v5.17.0). These fields are automatically populated and maintained by Rundeck and appear in exported job definitions. When importing jobs, these fields are protected and will not overwrite existing audit information.
+
+### user
+
+The `user` element contains the username of the job creator.
+
+```xml
+<job>
+    <name>My Job</name>
+    <user>admin</user>
+    ...
+</job>
+```
+
+### createdBy
+
+The `createdBy` element contains the username of the job creator.
+
+### lastModifiedBy
+
+The `lastModifiedBy` element contains the username of the user who last modified the job.
+
+### created
+
+The `created` element contains an ISO-8601 timestamp when the job was created.
+
+```xml
+<created>2024-01-15T10:30:00Z</created>
+```
+
+### lastModified
+
+The `lastModified` element contains an ISO-8601 timestamp when the job was last modified.
+
+```xml
+<lastModified>2024-12-10T14:22:00Z</lastModified>
+```
+
+::: tip
+The audit tracking fields are system-managed and should not be manually edited. When importing jobs, these fields are ignored to preserve accurate audit history. Jobs created before Rundeck 5.17.0 may have null values for these fields until they are next modified.
+:::
+
 ## name
 
 The job name is a sub-element of [job](#job). The combination of 'name'
