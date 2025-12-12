@@ -124,43 +124,77 @@ rundeck.storage.provider.[index].config.approleAuthMount=approleAuthMount
 rundeck.storage.provider.[index].config.githubToken=githubToken
 ```
 
-
-* **keyStoreFile**: Key store file
-A Java keystore, containing a client certificate that's registered with Vault's TLS Certificate auth backend.
+* **certAuthMount**: TLS Certificate auth mount path. The mount path where the TLS Certificate auth method is enabled in Vault. Only required when using `authBackend=cert`.
 
 ```
-rundeck.storage.provider.[index].config.keyStoreFile=/path/keyfile
+rundeck.storage.provider.[index].config.certAuthMount=cert
 ```
 
-* **keyStoreFilePassword**: Key store password
-The password needed to access the keystore
+Default value: cert
+
+### TLS/SSL Certificate Configuration
+
+The plugin supports certificates for two distinct purposes:
+
+#### 1. Client Authentication Certificates (when authBackend=cert)
+
+These certificates authenticate Rundeck to Vault using the [TLS Certificate auth method](https://developer.hashicorp.com/vault/docs/auth/cert). Choose **ONE** of the following options:
+
+**Option A: Java KeyStore (JKS) Format**
+
+* **keyStoreFile**: Path to a Java KeyStore (JKS) file containing both the client certificate and its private key that are registered with Vault's TLS Certificate auth backend.
 
 ```
-rundeck.storage.provider.[index].config.keyStoreFilePassword=/path/keyStoreFilePassword
+rundeck.storage.provider.[index].config.keyStoreFile=/path/to/client-keystore.jks
 ```
 
-* **trustStoreFile**: Truststore file. A JKS truststore file, containing the Vault server's X509 certificate
-```
-rundeck.storage.provider.[index].config.trustStoreFile=/path/trustStoreFile
-```
-
-* **pemFile**: PEM file. The path of a file containing an X.509 certificate, in unencrypted PEM format with UTF-8 encoding.
+* **keyStoreFilePassword**: Password to decrypt and access the keystore file.
 
 ```
-rundeck.storage.provider.[index].config.pemFile=/path/pemFile
+rundeck.storage.provider.[index].config.keyStoreFilePassword=keystorePassword
 ```
 
-* **clientPemFile**: Client PEM file. The path of a file containing an X.509 certificate, in unencrypted PEM format with UTF-8 encoding.
+**Option B: PEM Format**
+
+* **clientPemFile**: Path to the client certificate file in PEM format (X.509 certificate) that is registered with Vault's TLS Certificate auth backend.
 
 ```
-rundeck.storage.provider.[index].config.clientPemFile=/path/clientPemFile
+rundeck.storage.provider.[index].config.clientPemFile=/path/to/client-cert.pem
 ```
 
-* **clientKeyPemFile**: Client key PEM file. The path of a file containing an RSA private key, in unencrypted PEM format with UTF-8 encoding.
+* **clientKeyPemFile**: Path to the client's private key file in unencrypted PEM format (RSA or ECDSA private key) corresponding to the client certificate.
 
 ```
-rundeck.storage.provider.[index].config.clientKeyPemFile=/path/clientKeyPemFile
+rundeck.storage.provider.[index].config.clientKeyPemFile=/path/to/client-key.pem
 ```
+
+#### 2. Server Trust Certificates (SSL Verification)
+
+These certificates verify the Vault server's identity when connecting over HTTPS. Choose **ONE** of the following options:
+
+**Option A: Java TrustStore (JKS) Format**
+
+* **trustStoreFile**: Path to a JKS truststore file containing the Certificate Authority (CA) certificate or the Vault server's certificate used to verify the Vault server's SSL certificate.
+
+```
+rundeck.storage.provider.[index].config.trustStoreFile=/path/to/truststore.jks
+```
+
+* **trustStoreFilePassword**: Password to decrypt and access the truststore file.
+
+```
+rundeck.storage.provider.[index].config.trustStoreFilePassword=truststorePassword
+```
+
+**Option B: PEM Format**
+
+* **pemFile**: Path to the Certificate Authority (CA) certificate or Vault server's certificate in PEM format (X.509 certificate) used to verify the Vault server's SSL certificate.
+
+```
+rundeck.storage.provider.[index].config.pemFile=/path/to/vault-ca.pem
+```
+
+>**Note**: For production environments using TLS certificate authentication, you typically need to configure **both** client authentication certificates (Option A or B from section 1) **and** server trust certificates (Option A or B from section 2).
 
 * **(Enterprise Config) Namespace**: Define the Hashicorp namespace for the integration.  If root is needed leave blank or set to `root/`
 ```
@@ -291,6 +325,67 @@ rundeck.storage.provider.1.config.retryIntervalMilliseconds=2
 rundeck.storage.provider.1.config.openTimeout=2500
 rundeck.storage.provider.1.config.readTimeout=2500
 ```
+
+#### **Using TLS Certificate authentication**
+
+**Example with JKS format (Java KeyStore):**
+
+```
+rundeck.storage.provider.1.type=vault-storage
+rundeck.storage.provider.1.path=keys
+rundeck.storage.provider.1.config.prefix=rundeck
+rundeck.storage.provider.1.config.secretBackend=secret
+rundeck.storage.provider.1.config.address=https://vault.example.com:8200
+rundeck.storage.provider.1.config.engineVersion=2
+
+# TLS Certificate Authentication
+rundeck.storage.provider.1.config.authBackend=cert
+rundeck.storage.provider.1.config.certAuthMount=cert
+
+# Client authentication certificate (JKS format)
+rundeck.storage.provider.1.config.keyStoreFile=/etc/rundeck/certs/client-keystore.jks
+rundeck.storage.provider.1.config.keyStoreFilePassword=keystorePassword
+
+# Server trust certificate (JKS format)
+rundeck.storage.provider.1.config.trustStoreFile=/etc/rundeck/certs/truststore.jks
+rundeck.storage.provider.1.config.trustStoreFilePassword=truststorePassword
+
+# SSL validation
+rundeck.storage.provider.1.config.validateSsl=true
+```
+
+**Example with PEM format:**
+
+```
+rundeck.storage.provider.1.type=vault-storage
+rundeck.storage.provider.1.path=keys
+rundeck.storage.provider.1.config.prefix=rundeck
+rundeck.storage.provider.1.config.secretBackend=secret
+rundeck.storage.provider.1.config.address=https://vault.example.com:8200
+rundeck.storage.provider.1.config.engineVersion=2
+
+# TLS Certificate Authentication
+rundeck.storage.provider.1.config.authBackend=cert
+rundeck.storage.provider.1.config.certAuthMount=cert
+
+# Client authentication certificate (PEM format)
+rundeck.storage.provider.1.config.clientPemFile=/etc/rundeck/certs/client-cert.pem
+rundeck.storage.provider.1.config.clientKeyPemFile=/etc/rundeck/certs/client-key.pem
+
+# Server trust certificate (PEM format)
+rundeck.storage.provider.1.config.pemFile=/etc/rundeck/certs/vault-ca.pem
+
+# SSL validation
+rundeck.storage.provider.1.config.validateSsl=true
+```
+
+**Requirements for TLS Certificate Authentication:**
+
+1. The TLS Certificate auth method must be [enabled in Vault](https://developer.hashicorp.com/vault/docs/auth/cert)
+2. The client certificate must be registered with the Vault TLS Certificate auth backend
+3. The certificate must have appropriate policies assigned in Vault
+4. File paths must be absolute paths accessible by the Rundeck process
+5. PEM files must be in unencrypted format with UTF-8 encoding
 
 
 ## Vault API versions

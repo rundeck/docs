@@ -1,5 +1,6 @@
 import getHistory from '../getHistory'
 import getChildren from '../getChildren'
+import getCveChildren from '../getCveChildren'
 
 export default [
   {
@@ -75,7 +76,7 @@ export default [
     text: "Security Advisories",
     collapsible: true,
     link: '/history/cves/',
-    children: getChildren('docs/history/', 'cves'),
+    children: getCveChildren('docs/history/', 'cves'),
   },
   {
     text: "Previous Version Docs",

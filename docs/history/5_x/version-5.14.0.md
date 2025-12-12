@@ -18,7 +18,7 @@ feed:
 
 ## Overview
 
-Rundeck 5.14.0 is a maintenance release focused on security enhancements and bug fixes. This release addresses multiple CVEs including CVE-2023-3635, CVE-2025-48734, CVE-2025-48976, and CVE-2025-7783 through dependency updates across the platform. 
+Rundeck 5.14.0 is a maintenance release focused on security enhancements and bug fixes. This release addresses multiple CVEs including CVE-2023-3635, CVE-2025-48734, CVE-2025-48976, CVE-2025-52493, and CVE-2025-7783 through dependency updates and security fixes across the platform. 
 
 Key improvements include enhanced character escaping for Unix, PowerShell, and CMD commands, fixes for execution reporting issues, and updates to the Ansible plugin. The release also includes authorization improvements and various plugin enhancements for Jira integration and ROI/Job Metrics functionality.
 
@@ -31,6 +31,7 @@ While this release doesn't introduce major new features, it significantly streng
 ### Additional Updates
 
 
+* Addresses [CVE-2025-52493](../cves/cve-2025-52493.md) by preventing stored secrets from being exposed in webpage DOM
 * Addresses CVE-2025-48734 by updating beanutils to version 1.11.0
 * Jira assignee field issue
 * Jira plugins - Error with Numeric Custom Field
