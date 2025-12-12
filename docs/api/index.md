@@ -2680,6 +2680,14 @@ In Cluster mode, additional information about what server UUID is the schedule o
 * `serverNodeUUID` UUID of the schedule owner server for this job
 * `serverOwner` boolean value whether the target server is the owner, `true/false`.
 
+**Since v56**:
+
+Job audit tracking fields are included in the response:
+
+* `createdBy` - Username of the user who created the job (may be null for jobs created before v5.17.0)
+* `lastModifiedBy` - Username of the user who last modified the job (may be null for jobs created before v5.17.0)
+* `created` - ISO-8601 timestamp when the job was created (may be null for jobs created before v5.17.0)
+* `lastModified` - ISO-8601 timestamp when the job was last modified (may be null for jobs created before v5.17.0)
 
 ``` json
 [
@@ -2695,7 +2703,11 @@ In Cluster mode, additional information about what server UUID is the schedule o
     "scheduleEnabled": true/false,
     "enabled": true/false,
     "serverNodeUUID": "[UUID]",
-    "serverOwner": true/false
+    "serverOwner": true/false,
+    "createdBy": "username",
+    "lastModifiedBy": "username",
+    "created": "2024-01-15T10:30:00Z",
+    "lastModified": "2024-12-10T14:22:00Z"
   }
 ]
 ```
@@ -2822,6 +2834,8 @@ Depending on the requested format:
 * YAML: [job-yaml](/manual/document-format-reference/job-yaml-v12.md) format
 * JSON: [job-json](/manual/document-format-reference/job-json-v44.md) format (API v44+)
 
+**Since v56**: Exported job definitions include audit tracking fields (`user`, `createdBy`, `lastModifiedBy`, `created`, `lastModified`) that indicate who created and last modified the job, along with timestamps. See the job definition format documentation for details.
+
 
 ### Importing Jobs ###
 
@@ -2849,6 +2863,15 @@ Optional parameters:
 * `uuidOption`: Whether to preserve or remove UUIDs from the imported jobs. Allowed values (**since V9**):
     *  `preserve`: Preserve the UUIDs in imported jobs.  This may cause the import to fail if the UUID is already used. (Default value).
     *  `remove`: Remove the UUIDs from imported jobs. Allows update/create to succeed without conflict on UUID.
+
+**Audit Field Handling (since v56)**:
+
+Job audit tracking fields (`user`, `createdBy`, `lastModifiedBy`, `created`, `lastModified`) are protected during import and will not be overwritten. These fields are system-managed to maintain accurate audit history:
+
+* When importing a job with audit fields, those fields are ignored and the existing audit information is preserved
+* When creating a new job via import, the current user and timestamp are recorded as the creator
+* When updating an existing job via import, the current user and timestamp are recorded as the last modifier
+* Jobs imported from older Rundeck versions (before 5.17.0) without audit fields will have these fields populated on first modification
 
 **Response:**
 
@@ -3173,9 +3196,20 @@ A single object:
     "scheduled": true/false,
     "scheduleEnabled": true/false,
     "enabled": true/false,
-    "averageDuration": long (milliseconds)
+    "averageDuration": long (milliseconds),
+    "createdBy": "username",
+    "lastModifiedBy": "username",
+    "created": "2024-01-15T10:30:00Z",
+    "lastModified": "2024-12-10T14:22:00Z"
 }
 ```
+
+**Since v56**: The response includes job audit tracking fields:
+
+* `createdBy` - Username of the user who created the job (may be null for jobs created before v5.17.0)
+* `lastModifiedBy` - Username of the user who last modified the job (may be null for jobs created before v5.17.0)
+* `created` - ISO-8601 timestamp when the job was created (may be null for jobs created before v5.17.0)
+* `lastModified` - ISO-8601 timestamp when the job was last modified (may be null for jobs created before v5.17.0)
 
 ### Upload a File for a Job Option
 
