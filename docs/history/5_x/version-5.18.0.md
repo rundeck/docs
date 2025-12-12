@@ -3,10 +3,10 @@
 title: "5.18.0 Release Notes"
 date: 2025-12-15
 image: /images/chevron-logo-red-on-white.png
-description: "Rundeck | Runbook Automation Releases 5.18.0 - <DESCRIPTION>"
+description: "Rundeck | Runbook Automation Releases 5.18.0 - Security updates, plugin enhancements, and improved API documentation"
 feed:
  enable: true
- description: ""
+ description: "Version 5.18.0 delivers important security patches addressing multiple CVEs, enhanced plugin functionality including configurable AWS SSM timeouts and Slack template support, a new beta Multiline Job Options feature, and comprehensive OpenAPI documentation improvements for better API integration. Additionally, we're releasing Terraform Provider 1.0.0—a complete modernization that eliminates all known plan drift issues and provides a stable foundation for infrastructure-as-code workflows."
 
 ---
 
@@ -16,7 +16,56 @@ feed:
 
 <!-- <VidStack src="youtube/REPLACE" poster="https://img.youtube.com/vi/REPLACE/maxresdefault.jpg"/> -->
 
-Terraform Provider 1.0.0
+Release 5.18.0 focuses on strengthening security and improving operational flexibility. This update addresses eight security vulnerabilities across multiple components, including critical fixes for BouncyCastle, MSSQL JDBC, and various cloud integration dependencies. Enterprise users will benefit from configurable AWS SSM execution timeouts for long-running jobs, enhanced Slack notifications with FreeMarker template support, and a fix for VMware datacenter attribute handling. Open source users gain a new beta feature for multiline job options, improved log filter capabilities for capturing multiple key-value pairs, and comprehensive API error handling. The release also includes extensive OpenAPI documentation enhancements across 15 endpoints, making it easier to integrate with Rundeck programmatically.
+
+**Terraform Provider Milestone:** Alongside this release, we're excited to announce version 1.0.0 of the Rundeck Terraform Provider—a complete modernization that eliminates all known plan drift issues and establishes a stable foundation for infrastructure-as-code workflows.
+
+## Terraform Provider 1.0.0 Release
+
+We're thrilled to announce the **1.0.0 release of the Rundeck Terraform Provider**—a major modernization that represents years of community feedback and engineering effort. This release eliminates all known plan drift issues and provides a rock-solid foundation for managing Rundeck infrastructure as code.
+
+### What's New
+
+**No More Plan Drift:** The provider has been completely rebuilt using the Terraform Plugin Framework with JSON-only API interactions, eliminating the schema inconsistencies and drift issues that plagued earlier versions. Your `terraform plan` will finally show "No changes" when nothing has actually changed.
+
+**Modern Architecture:** 
+- Single provider implementation (removed SDK v2 and plugin multiplexer)
+- Native HCL nested blocks for cleaner, more intuitive configurations
+- Comprehensive test coverage with 38 passing acceptance tests (100% pass rate)
+
+**Enhanced Job Management:**
+- UUID support for job references (use immutable UUIDs instead of names)
+- Complete notification support with proper webhook, email, and plugin configurations
+- Fixed execution lifecycle plugins (critical fix—previous versions silently ignored these)
+- Automatic schedule normalization and option enforcement inference
+- Full support for orchestrators, log limits, and global log filters
+
+**Runner Management Improvements:**
+- Semantic equality for tags (no more drift from Rundeck's tag normalization)
+- Enhanced error messages with API response details
+
+**Better Developer Experience:**
+- Username/password authentication support
+- Improved error messages for troubleshooting
+- Comprehensive documentation with troubleshooting guides
+
+### Breaking Changes
+
+This is a major release with important compatibility requirements:
+- **Minimum Rundeck version: 5.0.0** (API v46+)
+- **Minimum Go version: 1.24+**
+- All XML API interactions have been removed (JSON only)
+
+### Getting Started
+
+The 1.0.0 release will be available in the [Terraform Registry](https://registry.terraform.io/providers/rundeck/rundeck/latest) today. Existing Terraform configurations should work without modification, though you may need to reorder notification blocks alphabetically and explicitly set `require_predefined_choice = true` for options with value choices.
+
+**Resources:**
+- [Full Changelog](https://github.com/rundeck/terraform-provider-rundeck/blob/provider-modernization/CHANGELOG.md)
+- [GitHub Repository](https://github.com/rundeck/terraform-provider-rundeck)
+- [Provider Documentation](https://registry.terraform.io/providers/rundeck/rundeck/latest/docs)
+
+Special thanks to the community members who reported issues, tested pre-release versions, and contributed to making this release possible!
 
 ## Runbook Automation Updates
 
@@ -38,6 +87,10 @@ This PR fixes the datacenter value retrieval in the VMware resource model by rep
 
 Before this fix, any nodes nested more than 2 folders would exhibit the wrong value for the attribute datacenter.
 
+##### ::circle-dot:: Ansible Plugin Improvements
+  
+Update to the way the Ansible plugin handles ad-hoc command execution, specifically replacing the deprecated -t argument with environment variables for callback configuration, and modernizing inventory argument handling. It also adds and improves tests to ensure these changes work as intended and that user-provided environment variables are respected.
+
 ##### ::circle-dot:: Slack Notification Plugin now supports Templates
   
 Refactoring and enhancement of the SlackNotificationPlugin to improve template handling, logging, and code robustness. The main changes include support for external FreeMarker templates, safer and more informative logging, and improved per-notification context management.
@@ -46,6 +99,10 @@ Refactoring and enhancement of the SlackNotificationPlugin to improve template h
   
 This mitigates CVE-2025-55163 (CVSS 8.7, CWE-770) by upgrading the `google-cloud-container` dependency from 2.54.0 to 2.82.0 in both the kubernetes-clusters and gcp-plugins modules.
 
+##### ::circle-dot:: Fix 500 error on duplicate user creation - return 409 Conflict with proper error message
+  
+**Fixed API error handling for duplicate user creation and added complete OpenAPI documentation.** The user creation API endpoint (`PUT /api/44/secure/users/create`) now properly handles duplicate username errors. Previously, attempting to create a user with an existing username returned an HTTP 500 Internal Server Error with an HTML error page. Now it correctly returns HTTP 409 Conflict with a clean JSON error message: `{&quot;err&quot;: &quot;User with username &#39;xyz&#39; already exists&quot;}`. Additionally, the endpoint now includes comprehensive OpenAPI documentation with detailed request body schemas (including the `username`, `pwd`, and `roles` fields), multiple JSON examples for basic and complete user creation, and documentation for all response codes (201, 400, 403, 409). This fix improves API reliability and makes it easier for API consumers to handle duplicate user scenarios programmatically.
+
 ##### ::circle-dot:: Fix CVE-2025-64756 in glob package
   
 Fixed security vulnerability CVE-2025-64756 in the glob package by upgrading to version 10.5.0, which patches a command injection vulnerability in the glob CLI.
@@ -53,6 +110,22 @@ Fixed security vulnerability CVE-2025-64756 in the glob package by upgrading to 
 ##### ::circle-dot:: Mitigate CVE-2025-12383 in jersey-client dependency
   
 This PR mitigates CVE-2025-12383 (CVSS 9.4 Critical) in the jersey-client dependency used by the jira-plugins module.
+
+##### ::circle-dot:: Fix CVE-2025-8916 by updating dependencies and forcing BouncyCastle 1.79
+  
+**Security Enhancement**: Fixed CVE-2025-8916 (BouncyCastle vulnerability, CVSS 6.3) by updating OCI SDK to 3.21.0, Kubernetes client to 22.0.0, Spring Security RSA to 1.0.13, and globally forcing BouncyCastle to the patched version 1.79 across all affected components. This addresses &quot;Allocation of Resources Without Limits or Throttling&quot; vulnerabilities in 6 plugins: cloud-oraclecloud-healthcheck-plugin, kubernetes-clusters, rundeckpro-config, rundeckpro-security, runbook-automation-data-spi, and runbook-automation-utils.
+
+##### ::circle-dot:: Enhance OpenAPI documentation for Runner Management configuration endpoint
+  
+Improved OpenAPI specification documentation for the Runner Management configuration endpoint, providing clearer guidance for API consumers on how to configure automatic vs manual runner assignment for projects.
+
+##### ::circle-dot:: Update OCI SDK to 3.43.2 to address CVE-2024-30172
+  
+Updated Oracle Cloud Infrastructure (OCI) Java SDK to version 3.43.2 to address security vulnerability CVE-2024-30172. This update affects the Oracle Cloud plugins and Oracle Cloud Health Check plugin, improving the security posture of Oracle Cloud integrations.
+
+##### ::circle-dot:: Regenerate Credentials button is hidden for Ephemeral Runners
+  
+Fixed an issue where the Regenerate Credentials button was incorrectly hidden for Ephemeral Runners in the Runner Management interface, ensuring users can now properly regenerate credentials for ephemeral runner types.
 
 
 ## Rundeck Open Source Product Updates
@@ -103,7 +176,22 @@ Enhanced the Key Value Data Log Filter Plugin to support capturing multiple key-
   
 Fixed security vulnerability CVE-2025-64756 in the glob package by upgrading to version 10.5.0, which patches a command injection vulnerability in the glob CLI.
 
+#####  ::circle-dot:: [Update sshj to 0.40.0 for CVE-2025-8916](https://github.com/rundeck/rundeck/pull/9907)
+  
+Updated sshj dependency in the git-plugin from 0.33.0 to 0.40.0 to address CVE-2025-8916, a security vulnerability in the SSH library.
+
 #####  ::circle-dot:: [Fix Firefox scroll behavior on execution output tab](https://github.com/rundeck/rundeck/pull/9894)
+
+#####  ::circle-dot:: [Enhance OpenAPI documentation for 15 API endpoints](https://github.com/rundeck/rundeck/pull/9908)
+  
+Enhanced OpenAPI specification documentation for 15 API endpoints across multiple controllers, improving clarity for API consumers and generated SDK quality. All changes are documentation-only and fully backward compatible with no breaking changes to existing API behavior.
+
+Key improvements include clarification of query parameter usage for Ad Hoc endpoints, addition of previously undocumented POST method support for project export endpoints, and comprehensive documentation of 404 response scenarios for execution state, SCM status, and project file endpoints.
+
+---
+
+#####  ::circle-dot:: [Fix webpack bundling configuration for vue3-markdown to prevent System Configuration from loading](https://github.com/rundeck/rundeck/pull/9916)
+
 
 [Here is a link to the full list of public PRs](https://github.com/rundeck/rundeck/pulls?q=is%3Apr+milestone%3A5.18.0+is%3Aclosed)
 
@@ -120,9 +208,12 @@ Name: <span style="color: brown"><span class="glyphicon glyphicon-grain"></span>
 
 Release Date: December 15th, 2025
 
+
 ## Community Contributors
 
 Submit your own Pull Requests to get recognition here!
+
+
 
 ## Staff Contributors
 
