@@ -35,6 +35,16 @@ Changes introduced by API Version number:
 API versions below `{{$apiDepVersion}}` are *deprecated*.  Clients using earlier versions should upgrade to use `{{$apiDepVersion}}` as the minimum version before release `{{ $apiDepRelease }}` to avoid errors.
 :::
 
+### Version 56
+
+* Updated Endpoints:
+  * [`GET /api/V/project/[PROJECT]/jobs`][/api/V/project/\[PROJECT\]/jobs] - Job listing responses now include audit tracking fields: `createdBy` (job creator username), `lastModifiedBy` (last modifier username), `created` (creation timestamp), and `lastModified` (last modification timestamp)
+  * [`GET /api/18/job/[ID]/info`][/api/V/job/\[ID\]/info] - Job metadata response now includes audit tracking fields
+  * Job Export endpoints now include audit tracking fields in exported job definitions
+
+* Job Import Behavior:
+  * Audit tracking fields (`user`, `createdBy`, `lastModifiedBy`, `created`, `lastModified`) are now protected during job import operations and will not be overwritten. These fields are managed by the system to maintain accurate audit history.
+
 ### Version 55
 
 * New Endpoints:

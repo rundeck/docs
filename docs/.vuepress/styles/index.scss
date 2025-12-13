@@ -3,6 +3,12 @@
 @use "sass:list";
 @use "vuepress-shared/styles/shining";
 
+// DocSearch color overrides - use your theme color instead of purple
+:root {
+  --docsearch-primary-color: #066F30 !important;
+  --docsearch-highlight-color: #066F30 !important;
+}
+
 .theme-container h1,
 h2,
 h3,
@@ -274,6 +280,8 @@ html[data-theme=dark] {
   };
   
   --theme-color: var(--theme-color-dark);
+  --docsearch-primary-color: #3eaf7c !important;
+  --docsearch-highlight-color: #3eaf7c !important;
 
   #main-title .a {
     color: #fff;
@@ -413,133 +421,6 @@ html[data-theme=dark] {
     }
   }
 
-}
-// DocSearch specific styles
-.DocSearch-Hit {
-  padding: 0 !important;
-  margin: 0 !important;
-  
-  a {
-    display: flex !important;
-    width: 100%;
-    padding: 8px !important;
-    text-decoration: none !important;
-    color: var(--vp-c-text);
-    
-    &:hover {
-      background: var(--docsearch-primary-color);
-      color: white;
-      
-      .DocSearch-Hit-title,
-      .DocSearch-Hit-path,
-      .DocSearch-Hit-icon svg path {
-        color: white !important;
-      }
-    }
-  }
-}
-
-.DocSearch-Hit-Container {
-  display: flex !important;
-  align-items: center !important;
-  width: 100%;
-  gap: 8px !important;
-  
-  .DocSearch-Hit-icon {
-    flex: 0 0 auto;
-    display: flex;
-    align-items: center;
-  }
-  
-  .DocSearch-Hit-content-wrapper {
-    flex: 1;
-    min-width: 0;
-    display: flex !important;
-    flex-direction: column;
-    
-    .DocSearch-Hit-title {
-      display: block !important;
-      color: var(--vp-c-text);
-      font-size: 0.9rem;
-      line-height: 1.4;
-      margin: 0;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      
-      mark {
-        background: none;
-        color: var(--docsearch-primary-color);
-        font-weight: 600;
-      }
-    }
-    
-    .DocSearch-Hit-path {
-      display: block !important;
-      color: var(--vp-c-text-2);
-      font-size: 0.75rem;
-      margin: 0;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-  }
-  
-  .DocSearch-Hit-action {
-    flex: 0 0 auto;
-    display: flex;
-    align-items: center;
-  }
-}
-
-.DocSearch-Hit-source {
-  padding: 8px var(--docsearch-spacing);
-  font-weight: 600;
-  background: var(--vp-c-bg-soft);
-  color: var(--vp-c-text);
-  margin: 0;
-}
-
-// Force visibility of elements
-.DocSearch-Hit[aria-selected=true] a {
-  background: var(--docsearch-primary-color);
-  
-  .DocSearch-Hit-title,
-  .DocSearch-Hit-path,
-  .DocSearch-Hit-icon svg path {
-    color: white !important;
-  }
-  
-  mark {
-    color: white !important;
-    text-decoration: underline;
-  }
-}
-
-// Ensure modal is above other elements
-.DocSearch-Modal {
-  z-index: 100;
-}
-
-// Force display of hit items
-.DocSearch-Hits {
-  .DocSearch-Hit {
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-  }
-}
-
-// Add important flags to ensure styles are applied
-.DocSearch-Hit-content-wrapper {
-  display: flex !important;
-  flex-direction: column !important;
-}
-
-.DocSearch-Hit-title,
-.DocSearch-Hit-path {
-  display: block !important;
-  visibility: visible !important;
 }
 
 openapi-explorer {

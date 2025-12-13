@@ -115,6 +115,30 @@ In addition, these optional entries can be present:
 
 : Unique UUID
 
+`user`
+
+: Username of the job creator (system-managed, since v5.17.0). This field is automatically populated when a job is created and appears in exported job definitions. When importing jobs, this field is protected and will not overwrite existing audit information.
+
+`createdBy`
+
+: Username of the job creator (system-managed, since v5.17.0). This field is automatically populated and maintained by Rundeck.
+
+`lastModifiedBy`
+
+: Username of the user who last modified the job (system-managed, since v5.17.0). This field is automatically updated whenever the job is modified.
+
+`created`
+
+: ISO-8601 timestamp when the job was created (system-managed, since v5.17.0). Example: `"2024-01-15T10:30:00Z"`
+
+`lastModified`
+
+: ISO-8601 timestamp when the job was last modified (system-managed, since v5.17.0). Example: `"2024-12-10T14:22:00Z"`
+
+::: tip
+The audit tracking fields (`user`, `createdBy`, `lastModifiedBy`, `created`, `lastModified`) are system-managed and should not be manually edited. When importing jobs, these fields are ignored to preserve accurate audit history. Jobs created before Rundeck 5.17.0 may have null values for these fields until they are next modified.
+:::
+
 `group`
 
 : Job group name

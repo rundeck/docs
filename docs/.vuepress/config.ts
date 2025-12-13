@@ -145,6 +145,7 @@ export default defineUserConfig({
         },
         disableUserPersonalization: true,
         initialQuery: '',
+        injectStyles: true,
       },
       redirect: {
         config: {
