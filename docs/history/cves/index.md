@@ -59,3 +59,4 @@ These are the Security Advisories Rundeck has issued in the past.  It is always 
 * [CVE-2025-41242 Spring Path traversal](cve-2025-41242.md).
 * [CVE-2025-48924 Issue in Apache Commons Lang](cve-2025-48924.md)
 * [CVE-2025-41249 Spring Framework annotation detection mechanism may not correctly resolve annotation](cve-2025-41249.md)
+* [CVE-2025-66021 Issue with OWASP Java HTML Sanitizer](cve-2025-66021.md)
