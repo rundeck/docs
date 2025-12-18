@@ -9,12 +9,12 @@ Before upgrading to version 5.0 please ensure that your system is using Java 11.
 
 ## Enterprise Runner Upgrade
 
-::: No longer mandatory with 5.0.2
-Note: As of version 5.0.2 this update is not mandatory at the time of upgrading, but is recommended for the best performance and full functionality.
+::: warning Upgrade Runners for 5.0.0 and 5.0.1
+If you are upgrading to version 5.0.0 or 5.0.1, you **must** upgrade your Enterprise Runners to function properly.
 :::
 
-::: warning Upgrade Runners
-If you plan to or have already upgraded to 5.0.0 or 5.0.1, they required an upgraded Enterprise Runner to function properly.
+::: tip Optional for 5.0.2 and Later
+As of version 5.0.2, upgrading the Enterprise Runner is no longer mandatory at the time of upgrading Rundeck, but is still recommended for the best performance and full functionality.
 :::
 
 Update the Enterprise Runner by downloading the latest version. Here are the following ways to download the runner:

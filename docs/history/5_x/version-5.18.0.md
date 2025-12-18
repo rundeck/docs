@@ -14,7 +14,7 @@ feed:
 
 ## Overview
 
-<!-- <VidStack src="youtube/REPLACE" poster="https://img.youtube.com/vi/REPLACE/maxresdefault.jpg"/> -->
+<VidStack src="youtube/xy2g3pjcnq4" poster="https://img.youtube.com/vi/xy2g3pjcnq4/maxresdefault.jpg"/>
 
 Release 5.18.0 focuses on strengthening security and improving operational flexibility. This update addresses eight security vulnerabilities across multiple components, including critical fixes for BouncyCastle, MSSQL JDBC, and various cloud integration dependencies. Enterprise users will benefit from configurable AWS SSM execution timeouts for long-running jobs, enhanced Slack notifications with FreeMarker template support, and a fix for VMware datacenter attribute handling. Open source users gain a new beta feature for multiline job options, improved log filter capabilities for capturing multiple key-value pairs, and comprehensive API error handling. The release also includes extensive OpenAPI documentation enhancements across 15 endpoints, making it easier to integrate with Rundeck programmatically.
 
