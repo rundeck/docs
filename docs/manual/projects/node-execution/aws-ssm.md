@@ -211,7 +211,7 @@ The maximum execution timeout depends on your authentication method and executio
   - Applies when using direct IAM role attachment or access keys
   - Suitable for very long-running operations
 
-- **Inline Scripts (RBA and RBA-SH)**: Maximum **8 hours (28800 seconds)**
+- **Inline Scripts (Runbook Automation/RBA and Runbook Automation Self-Hosted/RBA-SH)**: Maximum **8 hours (28800 seconds)**
   - This limit applies specifically to inline script steps in both Runbook Automation (RBA) and Runbook Automation Self-Hosted (RBA-SH)
   - Applies regardless of assume role usage
 
