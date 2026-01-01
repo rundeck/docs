@@ -35,6 +35,12 @@ Changes introduced by API Version number:
 API versions below `{{$apiDepVersion}}` are *deprecated*.  Clients using earlier versions should upgrade to use `{{$apiDepVersion}}` as the minimum version before release `{{ $apiDepRelease }}` to avoid errors.
 :::
 
+### Version 57
+
+* Updated Endpoints:
+  * [`GET /api/V/executions/metrics`][/api/V/executions/metrics] - Added `useStats` parameter: if `true`, use snapshot-based metrics from SCHEDULED_EXECUTION_STATS table (fast, returns empty metrics (all zeros) if no stats exist). If `false` or not provided, use execution table query. Added `groupByJob` parameter: if `true` with `useStats=true`, returns metrics for all jobs in the project (batch mode). Requires `project` parameter.
+  * [`GET /api/V/project/[PROJECT]/executions/metrics`][/api/V/project/\[PROJECT\]/executions/metrics] - Added `useStats` parameter: if `true`, use snapshot-based metrics from SCHEDULED_EXECUTION_STATS table (fast, returns empty metrics (all zeros) if no stats exist). If `false` or not provided, use execution table query. Added `groupByJob` parameter: if `true` with `useStats=true`, returns metrics for all jobs in the project (batch mode).
+
 ### Version 56
 
 * Updated Endpoints:
