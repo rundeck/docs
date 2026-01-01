@@ -3911,10 +3911,14 @@ To narrow down the result set over which the metrics will be calculated, you can
 
 Paging parameters `max` and `offset` will have no effect on the result.
 
+**Additional Parameters (API v57+):**
+
+* `useStats` (boolean): If `true`, use snapshot-based metrics from SCHEDULED_EXECUTION_STATS table (fast, returns empty metrics (all zeros) if no stats exist). If `false` or not provided, use execution table query. When `useStats=true`, the `jobIdListFilter` parameter is required for the system-wide endpoint.
+* `groupByJob` (boolean): If `true` with `useStats=true`, returns metrics for all jobs in the project (batch mode). Requires `project` parameter. Returns format: `{jobs: {uuid1: metrics, uuid2: metrics, ...}}`. This parameter can only be used with the project-specific endpoint.
+
 **Response**
 
-
-An object with `duration` entry containing duration stats, and a `total` entry with total executions.
+When `groupByJob` is not used, the response is an object with `duration` entry containing duration stats, and a `total` entry with total executions:
 
 ``` json
 {
@@ -3924,6 +3928,33 @@ An object with `duration` entry containing duration stats, and a `total` entry w
         "max": "39s"
     },
     "total": 1325,
+}
+```
+
+When `groupByJob=true` with `useStats=true` (API v57+), the response format is:
+
+``` json
+{
+    "jobs": {
+        "uuid1": {
+            "total": 100,
+            "succeeded": 95,
+            "failed": 5,
+            "duration": {
+                "average": "5s"
+            },
+            ...
+        },
+        "uuid2": {
+            "total": 50,
+            "succeeded": 48,
+            "failed": 2,
+            "duration": {
+                "average": "3s"
+            },
+            ...
+        }
+    }
 }
 ```
 
