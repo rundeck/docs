@@ -2,7 +2,7 @@
 
 :::warning Plugin not available in the Enterprise Runner
 This Node Executor Plugin is not available in the Enterprise Runner.
-Please check the full list of plugins installed on the Runner ![here](https://docs.rundeck.com/docs/administration/runner/runner-plugins/runner-plugins.html).
+Please check the full list of plugins installed on the Runner [here](https://docs.rundeck.com/docs/administration/runner/runner-plugins/runner-plugins.html).
 :::
 
 ## Custom command and script execution with the script-plugin
