@@ -3915,8 +3915,8 @@ Paging parameters `max` and `offset` will have no effect on the result.
 
 * `useStats` (boolean): If `true`, use snapshot-based metrics from SCHEDULED_EXECUTION_STATS table. If `false` or not provided, use execution table query. When `useStats=true`, the `jobIdListFilter` parameter is required unless `groupByJob=true`.
 * `groupByJob` (boolean): If `true` with `useStats=true`, returns metrics for all jobs in the project (batch mode). Requires `project` parameter. Returns format: `{jobs: {uuid1: metrics, uuid2: metrics, ...}}`.
-* `begin` (string): When using `useStats=true`, filter metrics to include only executions that completed on or after this date. Format: `yyyy-MM-dd'T'HH:mm:ss'Z'` (ISO8601).
-* `end` (string): When using `useStats=true`, filter metrics to include only executions that completed on or before this date. Format: `yyyy-MM-dd'T'HH:mm:ss'Z'` (ISO8601).
+* `begin` (string): When using `useStats=true`, filter metrics to include only executions that completed on or after this date. Format: `yyyy-MM-ddTHH:mm:ssZ` (ISO8601).
+* `end` (string): When using `useStats=true`, filter metrics to include only executions that completed on or before this date. Format: `yyyy-MM-ddTHH:mm:ssZ` (ISO8601).
 
 **Response**
 
