@@ -3913,8 +3913,10 @@ Paging parameters `max` and `offset` will have no effect on the result.
 
 **Additional Parameters (API v57+):**
 
-* `useStats` (boolean): If `true`, use snapshot-based metrics from SCHEDULED_EXECUTION_STATS table (fast, returns empty metrics (all zeros) if no stats exist). If `false` or not provided, use execution table query. When `useStats=true`, the `jobIdListFilter` parameter is required for the system-wide endpoint.
-* `groupByJob` (boolean): If `true` with `useStats=true`, returns metrics for all jobs in the project (batch mode). Requires `project` parameter. Returns format: `{jobs: {uuid1: metrics, uuid2: metrics, ...}}`. This parameter can only be used with the project-specific endpoint.
+* `useStats` (boolean): If `true`, use snapshot-based metrics from SCHEDULED_EXECUTION_STATS table. If `false` or not provided, use execution table query. When `useStats=true`, the `jobIdListFilter` parameter is required unless `groupByJob=true`.
+* `groupByJob` (boolean): If `true` with `useStats=true`, returns metrics for all jobs in the project (batch mode). Requires `project` parameter. Returns format: `{jobs: {uuid1: metrics, uuid2: metrics, ...}}`.
+* `begin` (string): When using `useStats=true`, filter metrics to include only executions that completed on or after this date. Format: `yyyy-MM-dd'T'HH:mm:ss'Z'` (ISO8601).
+* `end` (string): When using `useStats=true`, filter metrics to include only executions that completed on or before this date. Format: `yyyy-MM-dd'T'HH:mm:ss'Z'` (ISO8601).
 
 **Response**
 
