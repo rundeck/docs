@@ -38,8 +38,14 @@ API versions below `{{$apiDepVersion}}` are *deprecated*.  Clients using earlier
 ### Version 57
 
 * Updated Endpoints:
-  * [`GET /api/V/executions/metrics`][/api/V/executions/metrics] - Added `useStats` parameter: if `true`, use snapshot-based metrics from SCHEDULED_EXECUTION_STATS table. If `false` or not provided, use execution table query. Added `groupByJob` parameter: if `true` with `useStats=true`, returns metrics for all jobs in the project (batch mode). Requires `project` parameter. Added `begin` and `end` parameters for date range filtering when using `useStats=true`.
-  * [`GET /api/V/project/[PROJECT]/executions/metrics`][/api/V/project/\[PROJECT\]/executions/metrics] - Added `useStats` parameter: if `true`, use snapshot-based metrics from SCHEDULED_EXECUTION_STATS table. If `false` or not provided, use execution table query. Added `groupByJob` parameter: if `true` with `useStats=true`, returns metrics for all jobs in the project (batch mode). Added `begin` and `end` parameters for date range filtering when using `useStats=true`.
+  * [`GET /api/V/executions/metrics`][/api/V/executions/metrics]
+    * Added `useStats` parameter: if `true`, use snapshot-based metrics from `SCHEDULED_EXECUTION_STATS` table. If `false` or not provided, use execution table query.
+    * Added `groupByJob` parameter: if `true` with `useStats=true`, returns metrics for all jobs in the project (batch mode). Requires `project` parameter.
+    * Added `begin` and `end` parameters for date range filtering when using `useStats=true`.
+  * [`GET /api/V/project/[PROJECT]/executions/metrics`][/api/V/project/\[PROJECT\]/executions/metrics]
+    * Added `useStats` parameter: if `true`, use snapshot-based metrics from `SCHEDULED_EXECUTION_STATS` table. If `false` or not provided, use execution table query.
+    * Added `groupByJob` parameter: if `true` with `useStats=true`, returns metrics for all jobs in the project (batch mode).
+    * Added `begin` and `end` parameters for date range filtering when using `useStats=true`.
 
 ### Version 56
 
