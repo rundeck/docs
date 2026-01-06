@@ -190,7 +190,7 @@ rundeck.clusterMode.remoteExecution.config.groupWeight=1,0,0,0
 rundeck.clusterMode.remoteExecution.config.groupWeight=4,3,2
 ```
 
-**Other criterion available for the Load Balancing policy**
+**Other criteria available for the Load Balancing policy**
 
  - `threadRatio`: Ratio of scheduler threads in use (default first criterion).
  - `load`: System load normalized by CPU count (default second criterion).
