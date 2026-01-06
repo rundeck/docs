@@ -1,8 +1,8 @@
 {
   "latest": {
-    "href": "https://docs.rundeck.com/keys/BUILD-GPG-KEY-20250102.key",
-    "name": "BUILD-GPG-KEY-20250102.key",
-    "althref": "https://github.com/rundeck/packaging/blob/34013dc95e61c04b2c57b34d066a43c6be56b685/pubring.gpg",
-    "description": "Version 5.9.0 and later"
+    "href": "https://docs.rundeck.com/keys/BUILD-GPG-KEY-20260105.key",
+    "name": "BUILD-GPG-KEY-20260105.key",
+    "althref": "https://github.com/rundeck/packaging/blob/5174e38b36d7a4c5ca10bb8263639294ee1f2e19/pubring.gpg",
+    "description": "Version 5.19.0 and later"
   }
 }
