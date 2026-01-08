@@ -1,2 +1,33 @@
-dist
-manpages
+.DS_Store
+node_modules
+docs/.vuepress/dist
+.temp
+.cache
+
+# local env files
+.env
+.env.local
+.env.*.local
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.iml
+*.ipr
+*~
+docs/assets/img/Admin Guide.docx
+draft.md
+node_modules/
+hope/.vuepress/.cache/
+hope/.vuepress/.temp/
+hope/.vuepress/dist/
