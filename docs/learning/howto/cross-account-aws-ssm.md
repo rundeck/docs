@@ -298,6 +298,15 @@ The SSM Node Executor can be set as the **Default Node Executor** - thereby maki
    * If you have more than one remote account, you can leave this blank.
 6. See below for using **CloudWatch Logs** for larger log-output.
 7. Optionally modify the **Log Filter Delay** property to be the number of seconds to wait before retrieving logs.
+
+:::tip Extended Execution Time
+SSM executions support extended timeout configurations:
+- With Assume Role: up to **12 hours (43200 seconds)**
+- Without Assume Role: up to **48 hours (172800 seconds)**
+- Inline Scripts: maximum **8 hours (28800 seconds)**
+
+See the [Execution Timeout Configuration](/manual/projects/node-execution/aws-ssm.md#execution-timeout-configuration) section for complete details and configuration methods.
+:::
    <br>
 
 The SSM File Copier can also be set as the **Default File Copier** for the whole project:
