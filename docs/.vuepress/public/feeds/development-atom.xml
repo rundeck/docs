@@ -3,15 +3,36 @@
   <title>Rundeck Development Updates</title>
   <link href="https://docs.rundeck.com/feeds/development.xml" rel="self" />
   <link href="https://docs.rundeck.com/docs" />
-  <updated>2026-01-07T19:35:27.592Z</updated>
+  <updated>2026-01-14T20:31:02.566Z</updated>
   <id>https://docs.rundeck.com/feeds/development</id>
   <subtitle>Recent merged pull requests and development updates from Rundeck</subtitle>
+  <entry>
+    <title>Implement performance optimization for the Job UI Metrics</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeckpro-4502</id>
+    <updated>2026-01-14T18:57:46.000Z</updated>
+    <content type="text">Implement performance optimization for the Job UI Metrics (Merged: Jan 14, 2026)</content>
+  </entry>
+  <entry>
+    <title>Bump azureStorageVersion to 1.0.4</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeckpro-4556</id>
+    <updated>2026-01-12T14:59:04.000Z</updated>
+    <content type="text">Bump azureStorageVersion to 1.0.4 (Merged: Jan 12, 2026)</content>
+  </entry>
   <entry>
     <title>Update Remco to newer commit that remediates some CVEs</title>
     <link href="https://docs.rundeck.com/docs/history/updates/" />
     <id>rundeck-pr-rundeck-9936</id>
     <updated>2026-01-07T17:28:56.000Z</updated>
     <content type="text">Update Remco to newer commit that remediates some CVEs (Merged: Jan 7, 2026)</content>
+  </entry>
+  <entry>
+    <title>Allow executions up to 12 hours for Aws ssm using assume role</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeckpro-4537</id>
+    <updated>2026-01-06T20:16:48.000Z</updated>
+    <content type="text">Allow executions up to 12 hours for Aws ssm using assume role (Merged: Jan 6, 2026)</content>
   </entry>
   <entry>
     <title>Hashi corp vault integration modification time issue</title>
