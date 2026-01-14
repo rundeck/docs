@@ -58,3 +58,7 @@ For RPM and DEB you should create /var/lib/rundeck/lib folder and place the driv
 ::: warning
 You must establish a JDBC connection for every job you expect to be running simultaneously (we suggest for # of connections to equal number of jobs * 2 | 3). So if you expect to have two jobs running simultaneously, we recommend a minimum of 4 connections.
 :::
+
+::: tip
+For advanced connection pool tuning options, see [Tuning Rundeck - Database Connection Pool](/administration/maintenance/tuning-rundeck.md#database-connection-pool).
+:::

@@ -148,6 +148,73 @@ It is recommended to start from low numbers like 50, 100, 200, etc. (50 is a goo
 
 This threads size does not affect only to scheduled jobs but ad-hoc commands, manually triggered jobs, and health-checks.
 
+### Database connection pool
+
+::: tip
+These settings can only be set on Runbook Automation Self Hosted versions
+:::
+
+**Available in Rundeck 5.16.0+**
+
+Rundeck uses HikariCP for database connection pooling with default settings that work well for most installations. You typically only need to adjust these settings if you experience:
+
+- Connection pool exhaustion errors in logs
+- Database timeout or "waiting for connection" errors  
+- Performance degradation under high concurrent job execution (50+ simultaneous jobs)
+- Slow job startup times during peak load
+
+#### When to tune connection pool settings
+
+The default pool size of 10 connections is sufficient for:
+- Small to medium installations (< 30 concurrent jobs)
+- Development and testing environments
+- Single-user or small team usage
+
+Consider tuning if you have:
+- High concurrent job execution (50+ jobs running simultaneously)
+- Large Rundeck clusters with multiple active users
+- Jobs that hold database connections for extended periods
+- Database monitoring showing connection wait times
+
+#### Configuration properties
+
+Add these properties to `rundeck-config.properties` to adjust your connection pool:
+
+```properties
+# Maximum number of connections in the pool (default: 10)
+dataSource.properties.maximumPoolSize=50
+
+# Minimum number of idle connections (default: same as maximumPoolSize)
+dataSource.properties.minimumIdle=10
+
+# Maximum wait time for connection in milliseconds (default: 30000)
+dataSource.properties.connectionTimeout=30000
+
+# Maximum lifetime of a connection in milliseconds (default: 1800000 = 30 minutes)
+dataSource.properties.maxLifetime=1800000
+
+# Maximum idle time before connection removal in milliseconds (default: 600000 = 10 minutes)
+dataSource.properties.idleTimeout=600000
+```
+
+#### Sizing guidance
+
+**Start conservatively:** Begin with small increases (e.g., 20-30 connections) and monitor performance.
+
+**Formula for sizing:**  
+`maximumPoolSize ≈ (expected concurrent jobs × 2) + 10`
+
+**Examples:**
+- 50 concurrent jobs → set to 110
+- 100 concurrent jobs → set to 210  
+- 200 concurrent jobs → set to 410
+
+**Memory consideration:** Each database connection consumes memory. Monitor your JVM heap usage when increasing pool size and adjust the [Java heap size](#java-heap-size) accordingly if needed.
+
+**Database limits:** Ensure your database server is configured to handle the total number of connections from all Rundeck instances in your cluster.
+
+For complete HikariCP configuration options, see the [HikariCP documentation](https://github.com/brettwooldridge/HikariCP#configuration-knobs-baby).
+
 ### JMX instrumentation
 
 You may wish to monitor the internal operation of your Rundeck server via JMX.
