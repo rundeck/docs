@@ -18,12 +18,6 @@ This page shows recently merged pull requests from both the Runbook Automation p
 
 ## Recent Changes
 
-
-#### ::circle-dot:: Implement performance optimization for the Job UI Metrics 
-
-
-  Significantly improved the performance of Job UI Metrics by introducing batch processing that fetches metrics for all jobs in a single API call instead of making individual requests for each job, reducing page load times from minutes to seconds in projects with many jobs and eliminating timeout issues caused by excessive database queries.
-
 #### ::circle-dot:: Bump azureStorageVersion to 1.0.4 
 
 

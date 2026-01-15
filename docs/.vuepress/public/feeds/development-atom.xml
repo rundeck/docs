@@ -7,13 +7,6 @@
   <id>https://docs.rundeck.com/feeds/development</id>
   <subtitle>Recent merged pull requests and development updates from Rundeck</subtitle>
   <entry>
-    <title>Implement performance optimization for the Job UI Metrics</title>
-    <link href="https://docs.rundeck.com/docs/history/updates/" />
-    <id>rundeck-pr-rundeckpro-4502</id>
-    <updated>2026-01-14T18:57:46.000Z</updated>
-    <content type="text">Implement performance optimization for the Job UI Metrics (Merged: Jan 14, 2026)</content>
-  </entry>
-  <entry>
     <title>Bump azureStorageVersion to 1.0.4</title>
     <link href="https://docs.rundeck.com/docs/history/updates/" />
     <id>rundeck-pr-rundeckpro-4556</id>
