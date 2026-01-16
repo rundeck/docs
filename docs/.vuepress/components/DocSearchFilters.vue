@@ -4,7 +4,7 @@
     <button 
       class="filter-toggle-btn"
       :class="{ active: showFilters }"
-      @click="showFilters = !showFilters"
+      @click.stop="showFilters = !showFilters"
       title="Toggle section filters"
     >
       <svg class="filter-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
