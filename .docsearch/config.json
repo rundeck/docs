@@ -3,13 +3,104 @@
   "js_render": false,
   "start_urls": [
     {
+      "url": "https://docs.rundeck.com/(?P<version>.*?)/learning/",
+      "variables": {
+        "version": [
+          "docs",
+          "4.0.x"
+        ]
+      },
+      "tags": ["Learning"]
+    },
+    {
+      "url": "https://docs.rundeck.com/(?P<version>.*?)/manual/",
+      "variables": {
+        "version": [
+          "docs",
+          "4.0.x"
+        ]
+      },
+      "tags": ["User Guide"]
+    },
+    {
+      "url": "https://docs.rundeck.com/(?P<version>.*?)/api/",
+      "variables": {
+        "version": [
+          "docs",
+          "4.0.x"
+        ]
+      },
+      "tags": ["API"]
+    },
+    {
+      "url": "https://docs.rundeck.com/(?P<version>.*?)/administration/",
+      "variables": {
+        "version": [
+          "docs",
+          "4.0.x"
+        ]
+      },
+      "tags": ["Administration"]
+    },
+    {
+      "url": "https://docs.rundeck.com/(?P<version>.*?)/developer/",
+      "variables": {
+        "version": [
+          "docs",
+          "4.0.x"
+        ]
+      },
+      "tags": ["Developer"]
+    },
+    {
+      "url": "https://docs.rundeck.com/(?P<version>.*?)/history/cves/",
+      "variables": {
+        "version": [
+          "docs",
+          "4.0.x"
+        ]
+      },
+      "tags": ["Administration"]
+    },
+    {
+      "url": "https://docs.rundeck.com/(?P<version>.*?)/history/",
+      "variables": {
+        "version": [
+          "docs",
+          "4.0.x"
+        ]
+      },
+      "tags": ["Release Notes"]
+    },
+    {
+      "url": "https://docs.rundeck.com/(?P<version>.*?)/rd-cli/",
+      "variables": {
+        "version": [
+          "docs",
+          "4.0.x"
+        ]
+      },
+      "tags": ["User Guide"]
+    },
+    {
+      "url": "https://docs.rundeck.com/(?P<version>.*?)/upgrading/",
+      "variables": {
+        "version": [
+          "docs",
+          "4.0.x"
+        ]
+      },
+      "tags": ["Administration"]
+    },
+    {
       "url": "https://docs.rundeck.com/(?P<version>.*?)/",
       "variables": {
         "version": [
           "docs",
           "4.0.x"
         ]
-      }
+      },
+      "tags": ["General"]
     }
   ],
   "stop_urls": [
@@ -41,7 +132,8 @@
   "custom_settings": {
     "attributesForFaceting": [
       "version",
-      "lang"
+      "lang",
+      "tags"
     ]
   }
 }

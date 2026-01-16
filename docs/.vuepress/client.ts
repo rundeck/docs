@@ -1,11 +1,13 @@
 import { defineClientConfig } from '@vuepress/client'
-import { nextTick } from 'vue'
+import { nextTick, createApp } from 'vue'
 import '@docsearch/css'
 import Layout from "./layouts/Layout.vue";
 import NotFound from "./layouts/NotFound.vue";
 import CookieConsent from "./components/CookieConsent.vue";
+import DocSearchFilters from "./components/DocSearchFilters.vue";
 import { loadGA4, trackPageView, setupAutoTracking, setupVideoTracking, hasConsent } from "./utils/analytics";
 import { CONSENT_GRANTED_EVENT, CONSENT_REVOKED_EVENT, CONSENT_DENIED_EVENT } from "./utils/constants";
+import { initializeDocSearchFilters } from "./plugins/docsearch-filters";
 
 declare const VERSION: string;
 declare const VERSION_FULL: string;
@@ -73,6 +75,12 @@ export default defineClientConfig({
           trackPageView(to.path);
         });
       });
+
+      // Initialize DocSearch filters integration
+      initializeDocSearchFilters();
+
+      // Inject DocSearch filters into navbar
+      injectDocSearchFiltersIntoNavbar();
     }
     
     // The section below is used to properly format the Search results on the docs site.
@@ -142,6 +150,51 @@ export default defineClientConfig({
       window.XMLHttpRequest = newXHR as any;
     }
   },
-  setup() { },
+  setup() {
+    // Inject DocSearchFilters component into the navbar
+    injectDocSearchFiltersIntoNavbar();
+  },
   rootComponents: [CookieConsent],
 })
+
+/**
+ * Inject DocSearchFilters component into the navbar next to search
+ * Mounts directly after the docsearch-container for tight integration
+ */
+function injectDocSearchFiltersIntoNavbar() {
+  const checkAndInject = () => {
+    // Target the docsearch container directly
+    const docsearchContainer = document.querySelector('#docsearch-container')
+    
+    if (!docsearchContainer) {
+      // Keep trying until docsearch is rendered
+      setTimeout(checkAndInject, 100)
+      return
+    }
+
+    // Check if already injected - look for the wrapper in parent
+    const parent = docsearchContainer.parentElement
+    if (parent?.querySelector('.navbar-filters-wrapper')) {
+      return
+    }
+
+    // Create a container for the filters
+    const filterContainer = document.createElement('div')
+    filterContainer.className = 'navbar-filters-wrapper'
+    filterContainer.style.display = 'flex'
+    filterContainer.style.alignItems = 'center'
+    filterContainer.style.marginLeft = '8px'
+    
+    // Insert right after the docsearch container
+    docsearchContainer.parentElement?.appendChild(filterContainer)
+
+    // Mount the Vue component
+    const app = createApp(DocSearchFilters)
+    app.mount(filterContainer)
+  }
+
+  // Start checking after a brief delay to ensure DOM is ready
+  if (typeof window !== 'undefined') {
+    setTimeout(checkAndInject, 500)
+  }
+}
