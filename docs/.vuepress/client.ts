@@ -78,9 +78,6 @@ export default defineClientConfig({
 
       // Initialize DocSearch filters integration
       initializeDocSearchFilters();
-
-      // Inject DocSearch filters into navbar
-      injectDocSearchFiltersIntoNavbar();
     }
     
     // The section below is used to properly format the Search results on the docs site.
@@ -157,6 +154,9 @@ export default defineClientConfig({
   rootComponents: [CookieConsent],
 })
 
+// Store Vue app instance to enable cleanup if needed
+let filterAppInstance: ReturnType<typeof createApp> | null = null
+
 /**
  * Inject DocSearchFilters component into the navbar next to search
  * Mounts directly after the docsearch-container for tight integration
@@ -188,9 +188,18 @@ function injectDocSearchFiltersIntoNavbar() {
     // Insert right after the docsearch container
     docsearchContainer.parentElement?.appendChild(filterContainer)
 
-    // Mount the Vue component
-    const app = createApp(DocSearchFilters)
-    app.mount(filterContainer)
+    // Unmount previous instance if it exists
+    if (filterAppInstance) {
+      try {
+        filterAppInstance.unmount()
+      } catch (e) {
+        console.warn('Failed to unmount previous filter app instance:', e)
+      }
+    }
+
+    // Mount the Vue component and store the instance
+    filterAppInstance = createApp(DocSearchFilters)
+    filterAppInstance.mount(filterContainer)
   }
 
   // Start checking after a brief delay to ensure DOM is ready

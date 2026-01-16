@@ -45,7 +45,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, nextTick } from 'vue'
+import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
 
 const sections = [
   'User Guide',
@@ -64,7 +64,11 @@ const hasActiveFilters = computed(() => selectedSections.value.length > 0)
 
 const updateFilters = () => {
   // Store selection in localStorage
-  localStorage.setItem('docsearch-section-filters', JSON.stringify(selectedSections.value))
+  try {
+    localStorage.setItem('docsearch-section-filters', JSON.stringify(selectedSections.value))
+  } catch (e) {
+    console.error('Failed to save search filters to localStorage:', e)
+  }
   
   // Dispatch event for other components to listen to
   window.dispatchEvent(new CustomEvent('docsearch-filters-updated', {
@@ -77,7 +81,17 @@ const updateFilters = () => {
 
 const clearFilters = () => {
   selectedSections.value = []
-  localStorage.removeItem('docsearch-section-filters')
+  try {
+    localStorage.removeItem('docsearch-section-filters')
+  } catch (e) {
+    console.error('Failed to clear search filters from localStorage:', e)
+  }
+  
+  // Dispatch event to notify other components
+  window.dispatchEvent(new CustomEvent('docsearch-filters-updated', {
+    detail: { selectedSections: selectedSections.value }
+  }))
+  
   triggerDocSearchUpdate()
 }
 
@@ -92,13 +106,21 @@ const triggerDocSearchUpdate = () => {
 
 // Restore filters from localStorage on mount
 const restoreFilters = () => {
-  const stored = localStorage.getItem('docsearch-section-filters')
-  if (stored) {
-    try {
+  try {
+    const stored = localStorage.getItem('docsearch-section-filters')
+    if (stored) {
       selectedSections.value = JSON.parse(stored)
-    } catch (e) {
-      console.error('Failed to restore search filters:', e)
     }
+  } catch (e) {
+    console.error('Failed to restore search filters:', e)
+  }
+}
+
+// Click outside handler
+const handleClickOutside = (e: MouseEvent) => {
+  const container = document.querySelector('.docsearch-filters-container')
+  if (container && !container.contains(e.target as Node)) {
+    showFilters.value = false
   }
 }
 
@@ -106,12 +128,12 @@ onMounted(() => {
   restoreFilters()
   
   // Close filters panel when clicking outside
-  document.addEventListener('click', (e) => {
-    const container = document.querySelector('.docsearch-filters-container')
-    if (container && !container.contains(e.target as Node)) {
-      showFilters.value = false
-    }
-  })
+  document.addEventListener('click', handleClickOutside)
+})
+
+onBeforeUnmount(() => {
+  // Clean up event listener to prevent memory leak
+  document.removeEventListener('click', handleClickOutside)
 })
 </script>
 

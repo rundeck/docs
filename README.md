@@ -96,9 +96,10 @@ git push origin
 ## Documentation Structure
 
 The documentation is organized as follows:
-- `/docs/` - Main documentation content
+- `/docs/` - Main documentation content (published to docs.rundeck.com)
 - `/docs/.vuepress/` - VuePress configuration
 - `/docs/.vuepress/public/assets/img/` - Images Folder
+- `/dev-docs/` - Internal developer documentation (scripts, architecture, workflows)
 
 # How to Create Release Notes
 
@@ -248,7 +249,7 @@ git push
 
 ## SaaS Development Updates Feed
 
-For generating RSS/Atom feeds and markdown pages showing recent PRs deployed to the SaaS platform (but not yet in self-hosted releases), see [PR-FEED-README.md](./PR-FEED-README.md).
+For generating RSS/Atom feeds and markdown pages showing recent PRs deployed to the SaaS platform (but not yet in self-hosted releases), see [dev-docs/PR-FEED-README.md](./dev-docs/PR-FEED-README.md).
 
 This feed automatically tracks changes since the last self-hosted release and is updated after each SaaS deployment:
 

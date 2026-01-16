@@ -23,31 +23,26 @@ This guide explains how to integrate the section filtering component into your R
 
 ## Integration in Layout
 
-To add the filter button to your navbar, you have two options:
+The filter button is **automatically injected** into the navbar by the client configuration. No manual component placement is needed.
 
-### Option A: Add to Custom Navbar (Recommended)
-Edit your navbar menu file to include the component.
+The `injectDocSearchFiltersIntoNavbar()` function in `client.ts` automatically:
+1. Waits for the DocSearch container to be rendered
+2. Creates a wrapper element next to the search container
+3. Mounts the `DocSearchFilters` component dynamically
 
-### Option B: Add to Layout (Alternative)
-You can add it to a navbar slot in `Layout.vue`:
-
-```vue
-<template #navbarEnd>
-  <DocSearchFilters />
-</template>
-```
-
-Or create a custom navbar that includes the component.
+This ensures the filter component appears right next to the search button without requiring manual template modifications.
 
 ## How It Works
 
 1. **User clicks the filter button** (funnel icon with badge)
 2. **Filter dropdown opens** showing available section tags
 3. **User selects/deselects sections** via checkboxes
-4. **Selections are stored** in localStorage
-5. **Filter state is dispatched** via custom event
-6. **DocSearch monitors** and applies the filter state
-7. **Results are filtered** by Algolia based on selected tags
+4. **Selections are stored** in localStorage for persistence
+5. **Filter state is dispatched** via custom `docsearch-filters-updated` event
+6. **Plugin intercepts Algolia requests** - The `docsearch-filters.ts` plugin patches `fetch` and `XMLHttpRequest` to intercept all Algolia API calls
+7. **Facet filters are injected** - Selected sections are added to the request's `facetFilters` parameter as OR conditions (e.g., `tags:Learning OR tags:API`)
+8. **Results are filtered by Algolia** - Algolia returns only results matching the selected section tags
+9. **Search input is triggered** - An input event is dispatched to refresh the search results with the new filters applied
 
 ## Configuration
 

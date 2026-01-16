@@ -3,8 +3,15 @@
  * This modifies DocSearch behavior to respect the selected section filters
  */
 
+// Track if integration has been set up to prevent duplicate listeners
+let isIntegrationSetup = false
+
 export function setupDocSearchFiltersIntegration() {
   if (typeof window === 'undefined') return
+  
+  // Prevent duplicate setup
+  if (isIntegrationSetup) return
+  isIntegrationSetup = true
 
   // Patch fetch and XHR immediately
   patchAlgoliaRequests()
