@@ -131,7 +131,8 @@ export default defineUserConfig({
         indexName: 'prod_rundeck_docs',
         searchParameters: {
           hitsPerPage: 100,
-          facetFilters: [`version:${setup.base}`]
+          facetFilters: [`version:${setup.base}`],
+          facets: ['tags']
         },
         locales: {
           '/': {

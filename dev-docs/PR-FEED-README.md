@@ -362,7 +362,7 @@ This ensures the exact commits used in the build are compared, guaranteeing accu
 
 ## Related Documentation
 
-- **[README.md](./README.md)** - Main documentation project setup and release notes generation
+- **[README.md](../README.md)** - Main documentation project setup and release notes generation
 - **`notes.mjs`** - Self-hosted release notes generator (uses same shared utilities)
 - **`pr-utils.mjs`** - Shared utility functions used by both scripts
 

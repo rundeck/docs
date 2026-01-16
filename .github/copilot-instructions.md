@@ -40,3 +40,17 @@ You are an AI assistant helping maintain the Rundeck documentation site.
 - Use numbered lists for sequential steps
 - Use bullet points for non-sequential items
 - Tables should have headers and consistent column formatting
+
+## Search Setup
+
+### Architecture
+- **Search Provider**: Algolia DocSearch via `@vuepress/plugin-docsearch`
+- **Index Name**: `prod_rundeck_docs`
+- **Indexing**: Automated via CircleCI using `algolia/docsearch-scraper` Docker image
+- **Configuration Files**:
+  - `.docsearch/config.json` - Algolia scraper configuration (selectors, start URLs, faceting attributes)
+  - `docs/.vuepress/config.ts` - VuePress DocSearch plugin configuration (appId, apiKey, search parameters)
+- **Current Facets**: `version` (filters by docs version like "docs", "4.0.x") and `lang`
+- **Section-Based Filtering**: Uses `tags` attribute to enable filtering by documentation section (learning, manual, api, administration, developer, etc.)
+- **Indexing Strategy**: Tags are applied via URL patterns in `start_urls` to categorize content by documentation section
+- **Custom Implementation**: Section filter checkboxes can be added via custom search UI using Algolia InstantSearch or DocSearch customization
