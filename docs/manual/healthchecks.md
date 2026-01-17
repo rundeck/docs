@@ -8,9 +8,8 @@
 Health Checks allow the ability to check the *Health Status* of Nodes periodically and on-demand.
 It can show the heatlh status visually in the GUI, and use the status to filter out unhealthy nodes when running Jobs.
 
-:::warning Limitation with Enterprise Runners
-The Health Checks feature is not yet compatible with Enterprise Runners. If you have Enterprise Runners enabled, Health Checks will show nodes as unhealthy.
-This will be addressed in an upcoming release
+:::tip Health Checks with Enterprise Runners
+Health Checks are fully compatible with Enterprise Runners as of version 5.18.0. Health Checks will continue to work correctly when Runners are enabled and assigned to projects.
 :::
 
 ![Health Checks](/assets/img/healthchecks-health-status-ui.png)<br>
