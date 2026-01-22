@@ -1,7 +1,7 @@
 ---
 title: Recent Updates
 description: Latest merged changes from the Rundeck development team
-date: 2026-01-14T20:31:02.542Z
+date: 2026-01-22T03:25:41.111Z
 feed: true
 index: true
 ---
@@ -17,6 +17,12 @@ This page shows recently merged pull requests from both the Runbook Automation p
 
 
 ## Recent Changes
+
+
+#### ::circle-dot:: Implement performance optimization for the Job UI Metrics 
+
+
+  Significantly improved the performance of Job UI Metrics by introducing batch processing that fetches metrics for all jobs in a single API call instead of making individual requests for each job, reducing page load times from minutes to seconds in projects with many jobs and eliminating timeout issues caused by excessive database queries.
 
 #### ::circle-dot:: Bump azureStorageVersion to 1.0.4 
 
@@ -75,6 +81,6 @@ The development updates are automatically generated from both our private reposi
 
 ---
 
-**List Last updated:** 2026-01-14
+**List Last updated:** 2026-01-22
 
 
