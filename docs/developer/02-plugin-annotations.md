@@ -69,6 +69,46 @@ See [Provider Metadata](/developer/01-plugin-development.md#provider-metadata-1)
 
 [\@pluginmetadata]: {{$javaDocBase}}/com/dtolabs/rundeck/plugins/descriptions/PluginMetadata.html
 
+### Plugin Grouping
+
+Plugins can be grouped together in the UI by using the `groupBy` metadata key. This allows related plugins (such as plugins for the same service or cloud provider) to be visually grouped together.
+
+To group your plugin, use the `@PluginMetadata` annotation with the key `PluginGroupConstants.PLUGIN_GROUP_KEY`:
+
+```java
+import com.dtolabs.rundeck.plugins.PluginGroupConstants;
+
+@Plugin(name="myplugin", service=ServiceNameConstants.WorkflowStep)
+@PluginDescription(title="My Plugin", description="Performs a custom step")
+@PluginMetadata(key=PluginGroupConstants.PLUGIN_GROUP_KEY, value="MyGroup")
+public class MyPlugin implements StepPlugin{
+    ...
+}
+```
+
+The group name you specify will be used to group plugins together in the UI. Plugins with the same group name will appear together.
+
+You can also define constants for group names in a constants class:
+
+```java
+public class MyPluginGroupConstants {
+    public static final String GROUP_MY_SERVICE = "MyService";
+}
+```
+
+Then use it in your plugin:
+
+```java
+@Plugin(name="myplugin", service=ServiceNameConstants.WorkflowStep)
+@PluginMetadata(key=PluginGroupConstants.PLUGIN_GROUP_KEY, 
+                value=MyPluginGroupConstants.GROUP_MY_SERVICE)
+public class MyPlugin implements StepPlugin{
+    ...
+}
+```
+
+The group icon will be automatically determined from the first plugin in the group that has an icon, or can be explicitly defined using `PluginGroupDefinitions.getGroupIconUrl()`.
+
 ## Plugin Properties
 
 You can annotate individual fields in your class to define the configuration

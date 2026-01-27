@@ -6319,7 +6319,26 @@ Same response as [Setup SCM Plugin for a Project](#setup-scm-plugin-for-a-projec
         "service": "NodeExecutor",
         "title": "Kubernetes / Pods / Node Executor",
         "iconUrl": "...",
-        "providerMetadata": { }
+        "providerMetadata": {
+            "groupBy": "Kubernetes",
+            "groupIconUrl": "/path/to/kubernetes-icon.svg"
+        }
+    },
+    {
+        "artifactName": "aws-vm-plugin",
+        "author": "Rundeck",
+        "builtin": false,
+        "description": "AWS VM management plugin",
+        "id": "abc123def456",
+        "name": "AwsVmStartPlugin",
+        "pluginVersion": "2.0.0",
+        "service": "WorkflowStep",
+        "title": "AWS VM Start",
+        "iconUrl": "...",
+        "providerMetadata": {
+            "groupBy": "AWS VM",
+            "groupIconUrl": "/path/to/aws-icon.svg"
+        }
     },
     {
         "artifactName": "py-winrm-plugin",
@@ -6340,6 +6359,8 @@ Same response as [Setup SCM Plugin for a Project](#setup-scm-plugin-for-a-projec
 
 * `iconUrl` - URL to icon file for the plugin if present. **since V40**
 * `providerMetadata` - Map of metadata about the plugin if present. **since V40**
+  * `groupBy` - The group name for the plugin, used for UI grouping. Plugins with the same `groupBy` value will be grouped together in the UI. **since V57**
+  * `groupIconUrl` - The icon URL for the plugin group. This may be explicitly defined for the group or automatically determined from the first plugin in the group. **since V57**
 
 ### Get Plugin Detail
 
@@ -6361,7 +6382,10 @@ Since: v49
   "targetHostCompatibility": "all",
   "ver": null,
   "id": "d36b17dfae7b",
-  "providerMetadata": {},
+  "providerMetadata": {
+    "groupBy": "MyGroup",
+    "groupIconUrl": "/path/to/group-icon.svg"
+  },
   "dynamicProps": null,
   "thirdPartyDependencies": null,
   "name": "<provider-name>",
@@ -6394,6 +6418,10 @@ Since: v49
   "dynamicDefaults": null
 }
 ```
+
+The `providerMetadata` object may contain:
+* `groupBy` - The group name for the plugin, used for UI grouping. **since V57**
+* `groupIconUrl` - The icon URL for the plugin group. **since V57**
 
 ## Webhooks
 

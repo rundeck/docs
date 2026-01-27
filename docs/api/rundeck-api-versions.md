@@ -35,6 +35,12 @@ Changes introduced by API Version number:
 API versions below `{{$apiDepVersion}}` are *deprecated*.  Clients using earlier versions should upgrade to use `{{$apiDepVersion}}` as the minimum version before release `{{ $apiDepRelease }}` to avoid errors.
 :::
 
+### Version 57
+
+* Updated Endpoints:
+  * [`GET /api/V/plugin/list`][GET /api/V/plugin/list] - Plugin list response `providerMetadata` now includes `groupBy` and `groupIconUrl` fields for plugin UI grouping
+  * [`GET /api/V/plugin/detail/[SERVICE]/[PROVIDER]`][GET /api/V/plugin/detail/\[SERVICE\]/\[PROVIDER\]] - Plugin detail response `providerMetadata` now includes `groupBy` and `groupIconUrl` fields for plugin UI grouping
+
 ### Version 56
 
 * Updated Endpoints:
