@@ -107,7 +107,7 @@ public class MyPlugin implements StepPlugin{
 }
 ```
 
-The group icon will be automatically determined from the first plugin in the group that has an icon, or can be explicitly defined using `PluginGroupDefinitions.getGroupIconUrl()`.
+The group icon is automatically determined from the first plugin in the group that defines an icon; there is no separate group-level icon configuration.
 
 ## Plugin Properties
 
