@@ -3911,10 +3911,16 @@ To narrow down the result set over which the metrics will be calculated, you can
 
 Paging parameters `max` and `offset` will have no effect on the result.
 
+**Additional Parameters (API v57+):**
+
+* `useStats` (boolean): If `true`, use snapshot-based metrics from SCHEDULED_EXECUTION_STATS table. If `false` or not provided, use execution table query. When `useStats=true`, the `jobIdListFilter` parameter is required unless `groupByJob=true`.
+* `groupByJob` (boolean): If `true` with `useStats=true`, returns metrics for all jobs in a single project (batch mode). The metrics query must be scoped to one project, either by using the project-specific endpoint (`/api/29/project/[PROJECT]/executions/metrics`) or by including a `project` query parameter when calling the global endpoint (`/api/29/executions/metrics`). Returns format: `{jobs: {uuid1: metrics, uuid2: metrics, ...}}`.
+* `begin` (string): When using `useStats=true`, filter metrics to include only executions that completed on or after this date. Format: `yyyy-MM-ddTHH:mm:ssZ` (ISO8601).
+* `end` (string): When using `useStats=true`, filter metrics to include only executions that completed on or before this date. Format: `yyyy-MM-ddTHH:mm:ssZ` (ISO8601).
+
 **Response**
 
-
-An object with `duration` entry containing duration stats, and a `total` entry with total executions.
+When `groupByJob` is not used, the response is an object with `duration` entry containing duration stats, and a `total` entry with total executions:
 
 ``` json
 {
@@ -3924,6 +3930,33 @@ An object with `duration` entry containing duration stats, and a `total` entry w
         "max": "39s"
     },
     "total": 1325,
+}
+```
+
+When `groupByJob=true` with `useStats=true` (API v57+), the response format is:
+
+``` json
+{
+    "jobs": {
+        "uuid1": {
+            "total": 100,
+            "succeeded": 95,
+            "failed": 5,
+            "duration": {
+                "average": "5s"
+            },
+            ...
+        },
+        "uuid2": {
+            "total": 50,
+            "succeeded": 48,
+            "failed": 2,
+            "duration": {
+                "average": "3s"
+            },
+            ...
+        }
+    }
 }
 ```
 
