@@ -1,7 +1,7 @@
 {
   "lastSelfHostedRelease": {
-    "version": "5.18.0",
-    "lastSelfHostedDate": "2025-12-16",
+    "version": "5.19.0",
+    "lastSelfHostedDate": "2026-01-28",
     "lastSaasRelease": "2025-11-24",
     "lastSaasCut": "rba/5.18-RBA-20251204-16bd2b6-f14b8e9",
     "description": "Last self-hosted release version and date"
