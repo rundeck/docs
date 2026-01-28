@@ -3,7 +3,7 @@
 title: "5.19.0 Release Notes"
 date: 2026-01-28
 image: /images/chevron-logo-red-on-white.png
-description: "Rundeck | Runbook Automation Releases 5.19.0 - <DESCRIPTION>"
+description: "Rundeck | Runbook Automation 5.19.0 release with Ansible output fixes, Vault timestamp corrections, extended AWS SSM timeouts, Azure storage security updates, and faster Job UI metrics."
 feed:
  enable: true
  description: ""
