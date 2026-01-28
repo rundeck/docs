@@ -20,12 +20,10 @@ This plugin executes an HTTP/S request to a remote endpoint.
     * JSON example:
     * ```json 
       {
-         "name": "User-Agent",
-         "value": "Buddy"
+         "User-Agent": "Buddy"
       },
       {
-         "name": "Content-Type",
-         "value": "application/json"
+         "Content-Type": "application/json",
       }
       ```
 

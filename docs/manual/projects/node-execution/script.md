@@ -1,5 +1,10 @@
 # Script Node Execution
 
+:::warning Plugin not available in the Enterprise Runner
+This Node Executor Plugin is not available in the Enterprise Runner.
+Please check the full list of plugins installed on the Runner [here](https://docs.rundeck.com/docs/administration/runner/runner-plugins/runner-plugins.html).
+:::
+
 ## Custom command and script execution with the script-plugin
 
 Rundeck comes with a pre-installed plugin called `script-plugin` that includes two providers that may be useful to customize how to execute commands and script files on remote nodes.

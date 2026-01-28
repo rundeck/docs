@@ -341,22 +341,22 @@ async function getRepoData(repo, fromVersion, toVersion, includeLabels, useHead 
 })();
 
 
-function updateDocsearchVersion(version) {
-  const docsearchConfigPath = path.resolve(__dirname, '../../.docsearch/config.json');
-  const docsearchConfig = JSON.parse(fs.readFileSync(docsearchConfigPath, 'utf-8'));
-  if (
-    docsearchConfig.start_urls &&
-    docsearchConfig.start_urls[0] &&
-    docsearchConfig.start_urls[0].variables &&
-    Array.isArray(docsearchConfig.start_urls[0].variables.version)
-  ) {
-    docsearchConfig.start_urls[0].variables.version[2] = version;
-    fs.writeFileSync(docsearchConfigPath, JSON.stringify(docsearchConfig, null, 2));
-    console.log(`Updated .docsearch/config.json version to ${version}`);
-  } else {
-    console.warn('Could not update .docsearch/config.json: version array not found.');
-  }
-}
+// function updateDocsearchVersion(version) {
+//   const docsearchConfigPath = path.resolve(__dirname, '../../.docsearch/config.json');
+//   const docsearchConfig = JSON.parse(fs.readFileSync(docsearchConfigPath, 'utf-8'));
+//   if (
+//     docsearchConfig.start_urls &&
+//     docsearchConfig.start_urls[0] &&
+//     docsearchConfig.start_urls[0].variables &&
+//     Array.isArray(docsearchConfig.start_urls[0].variables.version)
+//   ) {
+//     docsearchConfig.start_urls[0].variables.version[2] = version;
+//     fs.writeFileSync(docsearchConfigPath, JSON.stringify(docsearchConfig, null, 2));
+//     console.log(`Updated .docsearch/config.json version to ${version}`);
+//   } else {
+//     console.warn('Could not update .docsearch/config.json: version array not found.');
+//   }
+// }
 
 function updateSetupJs(version) {
   const setupJsPath = path.resolve(__dirname, 'setup.js');

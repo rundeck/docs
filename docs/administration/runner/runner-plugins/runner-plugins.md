@@ -117,6 +117,6 @@ The following plugins are available in the next generation Runners:
 - vault-storage
 :::
 
-:::warning Health Checks Limitation
-The Health Checks feature is not yet compatible with Enterprise Runners. If you have Enterprise Runners enabled, Health Checks will show nodes as unhealthy. This will be addressed in an upcoming release.
+:::tip Health Checks with Enterprise Runners
+Health Checks are fully compatible with Enterprise Runners as of version 5.18.0. Health Checks will continue to work correctly when Runners are enabled and assigned to projects.
 :::

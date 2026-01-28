@@ -129,9 +129,11 @@ export default defineUserConfig({
         appId: 'GRSXNRCDRG',
         apiKey: 'c463f74d6f36a5af808650e0f69aadfa',
         indexName: 'prod_rundeck_docs',
+        maxResultsPerGroup: 20,
         searchParameters: {
           hitsPerPage: 100,
-          facetFilters: [`version:${setup.base}`]
+          facetFilters: [`version:${setup.base}`],
+          facets: ['tags']
         },
         locales: {
           '/': {

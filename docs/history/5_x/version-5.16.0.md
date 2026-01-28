@@ -24,9 +24,11 @@ This enhancement eliminates single points of failure in the automation infrastru
 
 ## Runbook Automation Updates
 
+### Database Connection Pool Configuration
+
+Rundeck v5.16.0 adds support for configuring additional datasource properties via `dataSource.properties.*` in configuration files. This enhancement allows administrators to tune HikariCP connection pool settings for optimal performance in high-concurrency environments.
 
 ### Additional Updates
-
 
 * Fixes for CVE-2020-26939
 * Bundle the new S3 plugins into rundeckpro
@@ -34,6 +36,7 @@ This enhancement eliminates single points of failure in the automation infrastru
 
 ## Rundeck Open Source Product Updates
 
+* [Add support for configuring datasource properties](https://github.com/rundeck/rundeck/pull/9808) - Enables `dataSource.properties.*` configuration for HikariCP connection pool tuning
 * [Add job creation time to API v55+ responses](https://github.com/rundeck/rundeck/pull/9808)
 * [separated query from the Run Later Job for the Job Takeover process](https://github.com/rundeck/rundeck/pull/9805)
 * [Update selenium driver](https://github.com/rundeck/rundeck/pull/9793)

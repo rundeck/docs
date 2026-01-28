@@ -22,4 +22,4 @@ Yes, multiple runners can be configured with the same tags. At this time only on
 
 ## Does this work with Health Checks?
 
-As of the current product version Health Checks via the Runner are not yet supported.
+Yes, Health Checks are fully compatible with Enterprise Runners as of version 5.18.0. Health Checks will continue to work correctly when Runners are enabled and assigned to projects.

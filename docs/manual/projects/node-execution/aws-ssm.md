@@ -199,17 +199,61 @@ Similarly, scripts that are executed using the **Inline Script** Job step will t
 ### Execution Timeout Configuration
 AWS SSM has a default execution timeout of 1 hour (3600 seconds). You can configure a custom timeout value using the **`ssm-execution-timeout`** property to allow longer-running commands and scripts.
 
-To set the execution timeout for all SSM executions in a project:
+#### Maximum Timeout Limits
+
+The maximum execution timeout depends on your authentication method and execution type:
+
+- **With Assume Role**: Up to **12 hours (43200 seconds)**
+  - Applies when using cross-account access with IAM role assumption
+  - Limited by AWS IAM temporary credentials duration
+
+- **Without Assume Role**: Up to **48 hours (172800 seconds)**
+  - Applies when using direct IAM role attachment or access keys
+  - Suitable for very long-running operations
+
+- **Inline Scripts (Runbook Automation/RBA and Runbook Automation Self-Hosted/RBA-SH)**: Maximum **8 hours (28800 seconds)**
+  - This limit applies specifically to inline script steps in both Runbook Automation (RBA) and Runbook Automation Self-Hosted (RBA-SH)
+  - Applies regardless of assume role usage
+
+:::warning Important
+Ensure your IAM policies and AWS service limits support your configured timeout duration. For assume role configurations, verify the maximum session duration is set appropriately in the IAM role settings.
+:::
+
+:::tip Best Practice: Timeout Configuration
+Configure your `ssm-execution-timeout` to be **longer than your expected job duration**, with a safety margin of a few minutes. For example, if your job typically runs for 2 hours, set the timeout to 2 hours and 5-10 minutes (7500-7800 seconds) to ensure the job completes successfully without timing out. This buffer accounts for variable execution times and system delays.
+:::
+
+#### Configuration Methods
+
+**1. Project-wide Configuration (Default Node Executor)**
 1. Navigate to **Project Settings** -> **Edit Configuration** -> **Default Node Executor**.
-2. In the **AWS / SSM / Node Executor** configuration, add the **Execution Timeout** value in seconds.
+2. Select **AWS / SSM / Node Executor**
+3. Set the **Execution Timeout** value in seconds (e.g., 7200 for 2 hours)
 
-To set the execution timeout on project config file:
-**`project.ssm-execution-timeout=3600`**
+**2. Node Source Level (EC2 Node Source)**
 
-To set the execution timeout at node level, add the following node-attribute to the nodes by using the [Attribute Match](/manual/node-enhancers.md#attribute-match)
-**`ssm-execution-timeout=3600`**
+Using the **Mapping Params** field:
+```
+ssm-execution-timeout.default=7200
+```
+(Example: 2 hours = 7200 seconds)
 
-**Default Value**: If not specified, the execution timeout defaults to **3600 seconds (1 hour)**.
+**3. Project Configuration File**
+
+Add to your project configuration file:
+```
+project.ssm-execution-timeout=7200
+```
+
+**4. Node Level (Individual Nodes)**
+
+Using the [Attribute Match](/manual/node-enhancers.md#attribute-match) node enhancer, add as a node-attribute:
+```
+ssm-execution-timeout=7200
+```
+
+#### Default Value
+If not specified, the execution timeout defaults to **3600 seconds (1 hour)**.
 
 ## Using CloudWatch Logs (Optional)
 The example policies in the prior sections enable Runbook Automation to retrieve logs directly from SSM.  

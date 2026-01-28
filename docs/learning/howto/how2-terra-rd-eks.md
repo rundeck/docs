@@ -154,9 +154,85 @@ The deployment should look as follows in `k9`:<br>
 Rundeck is available via the service's external URL.<br>
 
 ![](/assets/img/terra-eks5.png)
+
+## Production Deployment with Helm Chart
+
+For production environments, using a Helm chart provides a more robust and maintainable deployment approach compared to raw manifest files. The PagerDuty Runbook Automation Helm chart offers:
+
+- **High Availability:** Multiple replicas with session affinity and load balancing
+- **Production-Ready Configuration:** Integration with RDS, S3, Route53, and ACM
+- **Security:** Proper secrets management and ACL configuration
+- **Scalability:** Resource limits, auto-scaling capabilities, and cluster configuration
+- **Maintainability:** Version control, easy upgrades, and rollback capabilities
+
+### Quick Start with Helm
+
+#### Prerequisites
+- **Helm 3.x** installed ([Installation Guide](https://helm.sh/docs/intro/install/))
+- AWS infrastructure:
+  - AWS Load Balancer Controller
+  - ExternalDNS
+  - RDS Database (MySQL/MariaDB)
+  - S3 Bucket for logs
+  - Route53 Hosted Zone
+  - ACM Certificate
+
+#### Installation Steps
+
+1. **Create namespace and database secret:**
+```bash
+kubectl create namespace rundeck
+kubectl create secret generic database-password \
+  --from-literal=password='YOUR_DATABASE_PASSWORD' \
+  --namespace=rundeck
+```
+
+2. **Prepare configuration files:**
+   - `admin-role.aclpolicy` - Admin ACL permissions
+   - `realm.properties` - Local user accounts
+
+3. **Customize values.yaml** with your environment settings:
+   - Ingress host and ACM certificate ARN
+   - RDS database endpoint
+   - S3 bucket for logs
+   - LDAP/AD configuration (if applicable)
+
+4. **Install the Helm chart:**
+```bash
+# Clone the docker-zoo repository
+git clone https://github.com/rundeck/docker-zoo.git
+cd docker-zoo/kubernetes/helm
+
+# Install the chart
+helm install rundeckpro ./rundeckpro \
+  --namespace=rundeck \
+  --set-file aclFile=./admin-role.aclpolicy \
+  --set-file realm=./realm.properties \
+  --values values.yaml
+```
+
+5. **Verify the deployment:**
+```bash
+kubectl get pods -n rundeck
+kubectl get ingress -n rundeck
+```
+
+### Full Documentation
+
+For complete Helm chart documentation, including:
+- Architecture overview
+- Detailed prerequisites and AWS infrastructure setup
+- All configuration options
+- LDAP/AD integration
+- Production vs. development configurations
+- Troubleshooting guide
+- Security best practices
+
+Visit the [Runbook Automation Helm Chart README](https://github.com/rundeck/docker-zoo/tree/master/kubernetes/helm/rundeckpro).
+
 ### Uninstalling
 
-#### To uninstall the Rundeck deployment use:
+#### To uninstall the basic Rundeck deployment use:
 
 ```
 kubectl delete deployment rundeck-deployment
@@ -167,6 +243,14 @@ kubectl delete deployment rundeck-deployment
 ```
 kubectl delete service rundeck-svc
 ```
+
+#### To uninstall a Helm-based deployment:
+
+```
+helm uninstall rundeckpro --namespace=rundeck
+```
+
+**Note:** The Helm uninstall command removes all Kubernetes resources (deployments, services, ingress, secrets) but does NOT delete the RDS database, S3 bucket, or Route53 records.
 
 ## Resources
 * AWS EKS [Introduction](https://aws.amazon.com/eks/)<br>

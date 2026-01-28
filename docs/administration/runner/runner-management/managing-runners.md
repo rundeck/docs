@@ -9,7 +9,7 @@ Both the System and Project level management interfaces allow users to create, e
 However, there are specific actions that can only take place in the System Level - such as assigning a Runner to multiple projects - or at the Project level - such as defining the Node Filter for dispatching to nodes.
 
 ## System Level Runner Management
-<br>
+
 <details>
     <summary><u>ACL Permissions for Managing Runners at <strong>System</strong> level</u></summary>
 
@@ -44,19 +44,19 @@ context:
   application: rundeck
 ```
 
-* Change **`my-user-group-name`** in the above ACL policy to the name of the user group that needs to have these permissions.
+- Change **`my-user-group-name`** in the above ACL policy to the name of the user group that needs to have these permissions.
 
-</details> 
+</details>
 
 At the System level, in addition to creating, editing, and deleting Runners, users can also assign Runners to Projects.
 
 To access the System level Runner management interface, navigate to the **System menu** and select **Runner Management**:
 
-![Runner Management System Menu](/assets/img/runner-management-system-menu.png)<br>
+![Runner Management System Menu](/assets/img/runner-management-system-menu.png)
 
 The Runner Management interface will display a list of all Runners in the system:
 
-![Runner Management System List](/assets/img/system-level-runner-management.png)<br>
+![Runner Management System List](/assets/img/system-level-runner-management.png)
 
 From this interface, users can:
 
@@ -65,23 +65,21 @@ From this interface, users can:
 - [Assigning Runners to Projects](#assign-runners-to-projects).
 - [Manage a Runner's Replicas](managing-replicas.md).
 
-[//]: # (- Delete Runners.  For detailed steps, see [Deleting a Runner]&#40;/administration/runner/runner-installation/delete-a-runner&#41;.)
-
 ### Assigning Runners to Projects
 
 To assign a Runner to a project, follow these steps:
 
 1. From the System level Runner management interface, click on the name of the Runner.
 2. In the **Project Assignments** section, click on the **Add Projects** button.
-    ![Add Projects Button](/assets/img/assign-runner-to-project.png)
+   ![Add Projects Button](/assets/img/assign-runner-to-project.png)
 3. From the popup, select the Projects that should be able to use this Runner
-    ![Select Projects](/assets/img/runner-select-projects.png)
+   ![Select Projects](/assets/img/runner-select-projects.png)
 4. Click **Add**
 
 The Runner can now be used within the designated projects for various tasks such as job execution, node discovery, and secrets-management integration.
 
 ## Managing Runners within a Project
-<br>
+
 <details>
     <summary><u>ACL Permissions for Creating Runners at <strong>Project</strong> level</u></summary>
 
@@ -116,7 +114,7 @@ context:
   project: my-project-name
 ```
 
-* Change **`my-user-group-name`** in the above ACL policy to the name of the user group that needs to have these permissions.
+- Change **`my-user-group-name`** in the above ACL policy to the name of the user group that needs to have these permissions.
 
 </details>
 
@@ -127,16 +125,14 @@ To access the Project level Runner management interface, navigate to a specific 
 
 The Runner Management interface will display a list of all Runners in the Project:
 
-![Project Runners](/assets/img/project-management-runners-list.png)<br>
+![Project Runners](/assets/img/project-management-runners-list.png)
 
 From this interface, users can:
 
-- [Creating a new Runner](/administration/runner/runner-installation/creating-runners.md).
+- Create a new Runner. For detailed steps, see [Creating a Runner](/administration/runner/runner-installation/creating-runners.md).
 - [Modify a Runner's Node Dispatch Settings](/administration/runner/runner-management/node-dispatch.md).
 - [Edit a Runner's Tags](#runner-tags).
 - [Remove a Runner from a Project](#removing-a-runner-from-a-project).
-
-[//]: # (- Delete Runners.  For detailed steps, see [Deleting a Runner]&#40;/administration/runner/runner-installation/delete-a-runner&#41;.)
 
 ### Removing a Runner from a Project
 
@@ -163,11 +159,14 @@ context:
 If using the self-hosted product and upgrading a version earlier than 5.3.0, the AppAdmin ACL policy stored on the local filesystem may need to be updated.
 
 The following permissions must be **added** to it in order to manage Runners at the Project level:
+
 ```
 runner:
   - allow: '*' # allow read/write/delete for all Runners
 ```
+
 Therefore, the AppAdmin ACL Policy should look like this:
+
 ```
 description: Admin, all access.
 context:
@@ -177,7 +176,7 @@ for:
     - allow: '*' # allow read/create all kinds
   adhoc:
     - allow: '*' # allow read/running/killing adhoc jobs
-  job: 
+  job:
     - allow: '*' # allow read/write/delete/run/kill of all jobs
   node:
     - allow: '*' # allow read/run for all nodes
@@ -201,11 +200,13 @@ for:
 by:
   group: admin
 ```
+
 :::
 
 ## Changing Runners from Single to Multiple Projects
 
 When a Runner is assigned to a single Project, then users within a Project and with the appropriate permissions can make any changes to the Runner from the Project level interface. This includes the ability to:
+
 - Edit the Runner's Name
 - Edit the Runner's Tags
 - Delete the Runner
@@ -221,14 +222,138 @@ This is because when a Runner spans multiple Projects it is considered a _shared
 
 ## Runner Tags
 
-Runner Tags are used to select on or more Runners for specific operations - such as for Job execution when using [**Manual Runner Dispatch Configuration**](/administration/runner/runner-management/project-dispatch-configuration.md#manual-runner-selection) or when using [Runners for Node Source](/administration/runner/using-runners/runners-for-node-discovery.md) plugins.
+Runner Tags are used to select one or more Runners for specific operations - such as for Job execution when using [**Manual Runner Dispatch Configuration**](/administration/runner/runner-management/project-dispatch-configuration.md#manual-runner-selection) or when using [Runners for Node Source](/administration/runner/using-runners/runners-for-node-discovery.md) plugins.
 
 Tag selection within the **Runner Selector** uses _and_ logic to define the inclusive set of Runners. For example, if a Job is configured to run on Runners with the tags `LINUX` and `DEV`, then only Runners that have _both_ tags will be listed as usable for the Job.
 
-![Edit Runners](/assets/img/runner-config-edit.png)<br>
+![Edit Runners](/assets/img/runner-config-edit.png)
 
-[//]: # (## Listing Runners)
+## Editing Runner Details
 
-[//]: # ()
-[//]: # (![List Runners]&#40;/assets/img/runner-config-list.png&#41;<br>)
+Rundeck provides an improved single-screen inline editing experience for managing Runner information. Instead of navigating to a separate edit page, you can now edit Runner details directly on the Runner's detail page within the **Basic Information** tab.
 
+### Accessing Edit Mode
+
+To edit a Runner:
+
+1. Navigate to the Runner Management page (system or project level)
+2. Click the **Actions** dropdown next to the Runner you want to edit
+3. Select **Edit Runner**
+
+The Runner's detail page opens with the **Basic Information** tab in edit mode, allowing you to modify Runner properties without leaving the page.
+
+### Editable Fields
+
+In edit mode, you can modify the following Runner properties:
+
+- **Name**: The Runner's display name (required)
+- **Description**: Additional information about the Runner's purpose
+- **Tags**: Labels for organizing Runners and controlling job execution targeting
+
+### Validation
+
+The edit form includes built-in validation:
+
+- **Runner Name is Required**: You cannot save a Runner without a name
+- Empty or whitespace-only names will display a clear error message
+- Invalid inputs are caught before submission to prevent errors
+
+### Saving Changes
+
+To save your edits:
+
+1. Make your desired changes to the Runner details
+2. Click **Save** to commit the changes
+
+Upon successful save:
+
+- You'll see a success notification: "Runner updated successfully"
+- The detail page returns to view mode with your updated Runner data
+- Changes are immediately reflected across the system
+
+### Canceling Edits
+
+To discard your changes:
+
+1. Click **Cancel** in the edit form
+2. All changes are discarded
+3. The detail page returns to view mode with the original Runner data
+
+### Focused Editing Experience
+
+When in edit mode:
+
+- Non-essential tabs (Node Dispatch, Replicas) are hidden to maintain focus on editing
+- Only the **Basic Information** tab is visible with the edit form
+- The **Regenerate Credentials** button is hidden during editing (only available in view mode)
+- All tabs reappear when you cancel or save
+
+**Note**: The **Node Dispatch** tab settings are managed and saved independently from the basic Runner information.
+
+To edit these settings:
+
+1. View the Runner detail page in **View Mode** (not Edit Mode)
+2. Open the **Node Dispatch** tab
+3. Adjust the settings as needed
+4. Use the **Node Dispatch** tab's save action to persist those changes without affecting the other Runner fields
+
+## Regenerating Runner Credentials
+
+Credentials may need to be regenerated if they are compromised or lost. The **Regenerate Credentials** functionality is only available when viewing a Runner's detail page in view mode (not during edit mode).
+
+### When Regenerate is Available
+
+The **Regenerate Credentials** button visibility depends on Runner type and replica configuration:
+
+#### View Mode Requirement
+
+- The **Regenerate Credentials** button is only visible in view mode (not shown during edit mode to maintain focus on basic information editing)
+
+#### When Replicas Feature is Enabled
+
+- **Ephemeral Runners**: Can regenerate credentials (designed for dynamic environments)
+- **Manual Runners**: Cannot regenerate credentials (use "Add Replica" workflow instead)
+
+#### When Replicas Feature is Disabled (Legacy Mode)
+
+- All Runner types can regenerate credentials for backward compatibility
+
+### Security Note
+
+:::warning Important
+Regenerating credentials will immediately invalidate the current credentials. Any active Runner using the old credentials will no longer be able to connect to Rundeck until you update the Runner with the new credentials and restart it.
+:::
+
+### How to Regenerate Credentials
+
+1. Navigate to the Runner's detail page (click on a Runner name from the table)
+2. Ensure you are in **View Mode** (not Edit Mode) - the **Regenerate Credentials** button is only visible in view mode
+3. Scroll to the **Regenerate Credentials** section
+4. Review the warning message about credential invalidation
+5. Click **Regenerate Credentials**
+6. Installation instructions will appear with:
+   - New Runner Token
+   - New Download Token
+   - Updated installation commands for your platform
+
+**Note**: The "Download Runner" option has been removed from the actions dropdown. Installation instructions are now displayed directly after clicking **Regenerate Credentials**.
+
+### Installing Regenerated Credentials
+
+After regenerating credentials:
+
+1. Stop the running Runner service on your Runner machine
+2. Update the Runner configuration file with the new token:
+
+```bash
+RUNDECK_RUNNER_TOKEN=your-new-token-value
+```
+
+3. Restart the Runner service
+4. Verify the Runner reconnects and shows "Healthy" status
+
+For manual Runners with replicas enabled, use the **Add Replica** workflow to create new Runner instances rather than regenerating credentials.
+
+[//]: # "## Listing Runners"
+[//]: #
+[//]: # "![List Runners](/assets/img/runner-config-list.png)<br>"
