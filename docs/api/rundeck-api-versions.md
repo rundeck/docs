@@ -38,6 +38,8 @@ API versions below `{{$apiDepVersion}}` are *deprecated*.  Clients using earlier
 ### Version 57
 
 * Updated Endpoints:
+  * [`GET /api/V/plugin/list`][GET /api/V/plugin/list] - Plugin list response `providerMetadata` now includes `groupBy` and `groupIconUrl` fields for plugin UI grouping
+  * [`GET /api/V/plugin/detail/[SERVICE]/[PROVIDER]`][GET /api/V/plugin/detail/\[SERVICE\]/\[PROVIDER\]] - Plugin detail response `providerMetadata` now includes `groupBy` and `groupIconUrl` fields for plugin UI grouping
   * [`GET /api/V/executions/metrics`][/api/V/executions/metrics]
     * Added `useStats` parameter: if `true`, use snapshot-based metrics from `SCHEDULED_EXECUTION_STATS` table. If `false` or not provided, use execution table query.
     * Added `groupByJob` parameter: if `true` with `useStats=true`, returns metrics for all jobs in the project (batch mode). Requires `project` parameter.
