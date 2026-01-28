@@ -1,7 +1,7 @@
 ---
 title: Recent Updates
 description: Latest merged changes from the Rundeck development team
-date: 2026-01-22T03:25:41.111Z
+date: 2026-01-28T21:00:26.447Z
 feed: true
 index: true
 ---
@@ -24,7 +24,7 @@ This page shows recently merged pull requests from both the Runbook Automation p
 
   Significantly improved the performance of Job UI Metrics by introducing batch processing that fetches metrics for all jobs in a single API call instead of making individual requests for each job, reducing page load times from minutes to seconds in projects with many jobs and eliminating timeout issues caused by excessive database queries.
 
-#### ::circle-dot:: Bump azureStorageVersion to 1.0.4 
+#### ::circle-dot:: Bump Azure Storage Plugin version to 1.0.4 
 
 
   Bump aiohttp to 3.13.3 minimum for CVE-2025-69223, CVE-2025-69227, and CVE-2025-69228
@@ -34,22 +34,22 @@ This page shows recently merged pull requests from both the Runbook Automation p
 
   Enhanced Docker image security by updating Remco (the configuration management tool) to a newer version that remediates three security vulnerabilities (CVE-2025-4673, CVE-2025-22872, and CVE-2025-47906), strengthening the security posture of Rundeck container deployments.
 
-#### ::circle-dot:: Allow executions up to 12 hours for Aws ssm using assume role 
+#### ::circle-dot:: Allow executions up to 12 hours for AWS SSM using AssumeRole 
 
 
   Enhanced AWS SSM node executor to support execution durations up to 12 hours when using AssumeRole authentication, enabling longer-running operations for cross-account AWS deployments. The system now automatically validates and adjusts timeout values to ensure compliance with AWS service limits, preventing execution failures due to timeout configuration errors.
 
-#### ::circle-dot:: Hashi corp vault integration modification time issue 
+#### ::circle-dot:: Hashicorp Vault integration modification time issue 
 
 
   Fixed an issue where Vault keys displayed incorrect modification and creation timestamps in Rundeck due to missing metadata.
 
-#### ::circle-dot:: Issues with ansible inline workflow executions where it shows an unwanted output 
+#### ::circle-dot:: Issues with Ansible inline workflow executions where it shows an unwanted output 
 
 
   Resolved an issue where Ansible inline workflow executions displayed unwanted output by properly sanitizing group names to comply with Ansible requirements, filtering out reserved host attributes that could conflict with Ansible&#39;s internal variables, and ensuring only valid host entries are processed during execution.
 
-#### ::circle-dot:: Issues with ansible inline workflow executions where it shows an unwanted output  [PR #9940](https://github.com/rundeck/rundeck/pull/9940)
+#### ::circle-dot:: Issues with Ansible inline workflow executions where it shows an unwanted output  [PR #9940](https://github.com/rundeck/rundeck/pull/9940)
 
 
   Resolved an issue where Ansible inline workflow executions displayed unwanted output by properly sanitizing group names to comply with Ansible requirements, filtering out reserved host attributes that could conflict with Ansible&#39;s internal variables, and ensuring only valid host entries are processed during execution.
@@ -81,6 +81,6 @@ The development updates are automatically generated from both our private reposi
 
 ---
 
-**List Last updated:** 2026-01-22
+**List Last updated:** 2026-01-28
 
 
