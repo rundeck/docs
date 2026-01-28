@@ -178,13 +178,9 @@ async function main() {
 
   // Only run update functions if not a draft
   if (!argv.draft) {
-<<<<<<< Updated upstream
-    updateDocsearchVersion(argv.milestone);
-=======
     console.log('\n=== Updating Configuration Files ===\n');
-    //Turning off docsearch update for version specific page
-    //updateDocsearchVersion(argv.milestone);
->>>>>>> Stashed changes
+    // Turning off docsearch update for version specific page
+    // updateDocsearchVersion(argv.milestone);
     updateSetupJs(argv.milestone);
     addSidebarVersion(argv.milestone);
     updateLatestReleaseLink(argv.milestone);
