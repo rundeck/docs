@@ -5,7 +5,7 @@
     <link>https://docs.rundeck.com/docs</link>
     <description>Recent merged pull requests and development updates from Rundeck</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 22 Jan 2026 03:25:41 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 29 Jan 2026 22:39:18 GMT</lastBuildDate>
     <atom:link href="https://docs.rundeck.com/feeds/development.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Implement performance optimization for the Job UI Metrics</title>
@@ -15,9 +15,9 @@
       <guid isPermaLink="false">rundeck-pr-rundeckpro-4502</guid>
     </item>
     <item>
-      <title>Bump azureStorageVersion to 1.0.4</title>
+      <title>Bump Azure Storage Plugin version to 1.0.4</title>
       <link>https://docs.rundeck.com/docs/history/updates/</link>
-      <description>Bump azureStorageVersion to 1.0.4 (Merged: Jan 12, 2026)</description>
+      <description>Bump Azure Storage Plugin version to 1.0.4 (Merged: Jan 12, 2026)</description>
       <pubDate>Mon, 12 Jan 2026 14:59:04 GMT</pubDate>
       <guid isPermaLink="false">rundeck-pr-rundeckpro-4556</guid>
     </item>
@@ -29,30 +29,23 @@
       <guid isPermaLink="false">rundeck-pr-rundeck-9936</guid>
     </item>
     <item>
-      <title>Allow executions up to 12 hours for Aws ssm using assume role</title>
+      <title>Allow executions up to 12 hours for AWS SSM using AssumeRole</title>
       <link>https://docs.rundeck.com/docs/history/updates/</link>
-      <description>Allow executions up to 12 hours for Aws ssm using assume role (Merged: Jan 6, 2026)</description>
+      <description>Allow executions up to 12 hours for AWS SSM using AssumeRole (Merged: Jan 6, 2026)</description>
       <pubDate>Tue, 06 Jan 2026 20:16:48 GMT</pubDate>
       <guid isPermaLink="false">rundeck-pr-rundeckpro-4537</guid>
     </item>
     <item>
-      <title>Hashi corp vault integration modification time issue</title>
+      <title>Hashicorp Vault integration modification time issue</title>
       <link>https://docs.rundeck.com/docs/history/updates/</link>
-      <description>Hashi corp vault integration modification time issue (Merged: Dec 22, 2025)</description>
+      <description>Hashicorp Vault integration modification time issue (Merged: Dec 22, 2025)</description>
       <pubDate>Mon, 22 Dec 2025 16:13:14 GMT</pubDate>
       <guid isPermaLink="false">rundeck-pr-rundeckpro-4541</guid>
     </item>
     <item>
-      <title>Issues with ansible inline workflow executions where it shows an unwanted output</title>
+      <title>Issues with Ansible inline workflow executions where it shows an unwanted output</title>
       <link>https://docs.rundeck.com/docs/history/updates/</link>
-      <description>Issues with ansible inline workflow executions where it shows an unwanted output (Merged: Dec 17, 2025)</description>
-      <pubDate>Wed, 17 Dec 2025 14:36:04 GMT</pubDate>
-      <guid isPermaLink="false">rundeck-pr-rundeckpro-4534</guid>
-    </item>
-    <item>
-      <title>Issues with ansible inline workflow executions where it shows an unwanted output</title>
-      <link>https://docs.rundeck.com/docs/history/updates/</link>
-      <description>Issues with ansible inline workflow executions where it shows an unwanted output (Merged: Dec 17, 2025)</description>
+      <description>Issues with Ansible inline workflow executions where it shows an unwanted output (Merged: Dec 17, 2025)</description>
       <pubDate>Wed, 17 Dec 2025 14:35:57 GMT</pubDate>
       <guid isPermaLink="false">rundeck-pr-rundeck-9940</guid>
     </item>
