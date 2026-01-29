@@ -2,8 +2,7 @@
   "lastSelfHostedRelease": {
     "version": "5.18.0",
     "lastSelfHostedDate": "2025-12-16",
-    "lastSaasRelease": "2025-11-24",
     "lastSaasCut": "rba/5.20-RBA-20260128-2c35e1f-1989440",
-    "description": "Last self-hosted release version and date"
+    "description": "Last self-hosted GA release version and date"
   }
 }

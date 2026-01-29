@@ -1,7 +1,7 @@
 ---
 title: Recent Updates
 description: Latest merged changes from the Rundeck development team
-date: 2026-01-28T21:00:26.447Z
+date: 2026-01-29T22:39:18.163Z
 feed: true
 index: true
 ---
@@ -11,10 +11,6 @@ index: true
 Stay up to date with the latest changes and improvements from the Runbook Automation development team.  
 
 This page shows recently merged pull requests from both the Runbook Automation product repository and the open source Rundeck repository merged since the last self-hosted release of [5.18.0](/history/5_x/version-5.18.0.md) on December 16, 2025.
-
-
-**Last SaaS Deployment:** November 24, 2025
-
 
 ## Recent Changes
 
@@ -44,11 +40,6 @@ This page shows recently merged pull requests from both the Runbook Automation p
 
   Fixed an issue where Vault keys displayed incorrect modification and creation timestamps in Rundeck due to missing metadata.
 
-#### ::circle-dot:: Issues with Ansible inline workflow executions where it shows an unwanted output 
-
-
-  Resolved an issue where Ansible inline workflow executions displayed unwanted output by properly sanitizing group names to comply with Ansible requirements, filtering out reserved host attributes that could conflict with Ansible&#39;s internal variables, and ensuring only valid host entries are processed during execution.
-
 #### ::circle-dot:: Issues with Ansible inline workflow executions where it shows an unwanted output  [PR #9940](https://github.com/rundeck/rundeck/pull/9940)
 
 
@@ -70,17 +61,17 @@ Stay informed about Rundeck development by subscribing to a feed:
 - [RSS Feed](https://docs.rundeck.com/docs/feeds/development.xml)
 - [Atom Feed](https://docs.rundeck.com/docs/feeds/development-atom.xml)
 
-These feeds are updated after each deployment to our production Runbook Automation SaaS solution. They highlight changes that may not be available in our Self Hosted Releases yet.
+These feeds are updated regularly to highlight changes that are available in Runbook Automation SaaS and will be included in upcoming Self Hosted releases.
 
 ## About These Updates
 
 
-The development updates are automatically generated from both our private repository for the commercial product and the public open source repository to provide complete visibility into changes deployed to the SaaS platform. They provide insight into active development features available in the Runbook Automation SaaS solution and will be released with the next Self Hosted release.
+The development updates are automatically generated from both our private repository for the commercial product and the public open source repository. These changes have been merged since the last GA release and provide insight into what's coming in the next Self Hosted release.
 
-**Note**: These updates only reflect changes deployed to our SaaS platform. Self-hosted customers should refer to the [Release Notes](/history/) section for version-specific updates applicable to their installation.
+**Note**: These updates reflect changes merged since the last GA release. Self-hosted customers should refer to the [Release Notes](/history/) section for version-specific updates applicable to their installation.
 
 ---
 
-**List Last updated:** 2026-01-28
+**List Last updated:** 2026-01-29
 
 

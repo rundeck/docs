@@ -5,7 +5,7 @@
     <link>https://docs.rundeck.com/docs</link>
     <description>Recent merged pull requests and development updates from Rundeck</description>
     <language>en-us</language>
-    <lastBuildDate>Wed, 28 Jan 2026 21:00:26 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 29 Jan 2026 22:39:18 GMT</lastBuildDate>
     <atom:link href="https://docs.rundeck.com/feeds/development.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Implement performance optimization for the Job UI Metrics</title>
@@ -41,13 +41,6 @@
       <description>Hashicorp Vault integration modification time issue (Merged: Dec 22, 2025)</description>
       <pubDate>Mon, 22 Dec 2025 16:13:14 GMT</pubDate>
       <guid isPermaLink="false">rundeck-pr-rundeckpro-4541</guid>
-    </item>
-    <item>
-      <title>Issues with Ansible inline workflow executions where it shows an unwanted output</title>
-      <link>https://docs.rundeck.com/docs/history/updates/</link>
-      <description>Issues with Ansible inline workflow executions where it shows an unwanted output (Merged: Dec 17, 2025)</description>
-      <pubDate>Wed, 17 Dec 2025 14:36:04 GMT</pubDate>
-      <guid isPermaLink="false">rundeck-pr-rundeckpro-4534</guid>
     </item>
     <item>
       <title>Issues with Ansible inline workflow executions where it shows an unwanted output</title>
