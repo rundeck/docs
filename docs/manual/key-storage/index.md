@@ -8,6 +8,64 @@ The recommended structure/hierarchy used for organizing Keys is by project.  Key
 
 Project scope defined keys should be stored using this formula `keys/project/[project-name]/[key-name]`.  Additional subfolders under the `[project-folders]` are allowed and can help organize larger sets of keys.  _(example: `keys/project/project1/default.pem`)_
 
+## Using the Key Storage UI
+
+The Key Store page provides a simple browser to navigate folders and perform actions on keys. Keys can be stored either using an uploaded file or as text input.
+
+### Key Store Organization
+
+Key Storage organizes keys similar to how files are organized in a file system. Keys can be organized into a folder structure. Here's an example convention that uses three fields to manage keys:
+
+```
+keys/projects/{project}/nodes/{node}/{identity}.pem
+```
+
+The fields in the pattern provide slots to allow multiple projects and users:
+
+- **project**: project name
+- **node**: might be a specific node or could be a class name like 'www'
+- **identity**: the name of the user
+
+### Add Private Key with Text
+
+Press the "Add or Upload a Key" button.
+
+![Key Storage browser](/assets/img/fig0720.png)
+
+Next, choose "Private Key" for the Key type.
+
+![Key Type menu](/assets/img/fig0722.png)
+
+Key data can be added using the content of an uploaded file or as text input.
+
+Choose the "Enter text" option. Paste the key content here.
+
+Enter the storage path and give the key a name.
+
+![Add a key and enter text](/assets/img/fig0721.png)
+
+Here's the form with all the input.
+
+Press the "Save" button.
+
+![Key Storage UI](/assets/img/fig0724.png)
+
+After the key has been saved, the browser will be updated.
+
+![Key Storage page listing](/assets/img/fig0725.png)
+
+### Add Private Key with File
+
+![Key Storage file upload](/assets/img/fig0728.png)
+
+### Add a Password
+
+![Key Storage UI](/assets/img/fig0726.png)
+
+### Delete a Key
+
+![Key Storage UI](/assets/img/fig0727.png)
+
 ## Storage Plugins
 
 Rundeck offers users the option to use a storage plugin to store key store data in a third party password manager such as HashiCorp Vault, Thycotic Secret Server and Cyberark.
@@ -40,7 +98,7 @@ configuration steps are outlined in [Key Storage through Enterprise Runner](/man
 When you have external key storage configured for rundeck, you may not need the storage converter (encryption) for that particular provider. Since it is an external provider of secrets and already have a security layer from provider-side, you don't need an additional layer of encryption.
 :::
 
-Keys can be encrypted in the storage backend by use of a [Storage Converter plugin](/developer/08-storage-converter-plugins.md). A typical plugin would encrypt any private-key data at write time, and decrypt it at read time.
+Keys can be encrypted in the storage backend by use of a [Storage Converter plugin](/developer/storage-converter-plugins.md). A typical plugin would encrypt any private-key data at write time, and decrypt it at read time.
 
 The Storage Converter Plugin handles reading and writing the content for any matching resources. The subsequent data is stored in the storage backend (on-disk or in a database) alongside the metadata for the file. If necessary, the metadata content can also be encrypted by modifying the data map that is provided.
 

@@ -21,7 +21,7 @@ of services:
 - [Node Execution](/manual/projects/node-execution/index.md) - defines a mechanism to connect to a remote Node and execute a command
 - [File Copier](/manual/projects/node-execution/index.md) - defines a mechanism to copy a file to a remote node
 - [Resource Model Source](/manual/projects/resource-model-sources/index.md) - defines a mechanism to retrieve Resource Model data (Node definitions) for use by a Rundeck project
-- [Resource Format](/developer/03-model-source-format-parser-generator-plugins.md) - defines a data format for Resource Models
+- [Resource Format](/developer/resource-model-format-plugins.md) - defines a data format for Resource Models
 - [Notification](/manual/jobs/job-plugins/index.md#notifications) - defines a mechanism for notification that can be triggered when a Job starts or finishes
 - [Streaming Logging](/administration/maintenance/logs.md#streaming-log-plugins) - defines a mechanism for reading and writing log events
 - [Execution File Storage](/administration/maintenance/logs.md#execution-file-storage) - defines a mechanism for storage of log files

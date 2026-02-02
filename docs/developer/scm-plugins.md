@@ -55,7 +55,7 @@ The properties for the SCM plugin can be added using the `System Configuration` 
 
 ## Java Plugin Type
 
-- _Note_: Refer to [Java Development](/developer/01-plugin-development.md#java-plugin-development) for information about developing a Java plugin for Rundeck.
+- _Note_: Refer to [Java Development](/developer/java-plugin-development.md) for information about developing a Java plugin for Rundeck.
 
 The plugin interface is [ScmExportPluginFactory]({{$javaDocBase}}/com/dtolabs/rundeck/plugins/scm/ScmExportPluginFactory.html).
 This factory type should produce a [ScmExportPlugin][] object.
@@ -68,11 +68,11 @@ This factory type should produce a [ScmImportPlugin][] object.
 
 ## Localization
 
-For the basics of plugin localization see: [Plugin Development - Plugin Localization](/developer/01-plugin-development.md#plugin-localization).
+For the basics of plugin localization see: [Plugin Development - Plugin Localization](/developer/plugin-properties.md#plugin-localization).
 
 ### Message Codes
 
-In addition to the [basic plugin message codes](/developer/01-plugin-development.md#defining-plugin-localization-messages), SCM Plugins can have multiple "input views" with a set of properties,
+In addition to the [basic plugin message codes](/developer/plugin-properties.md#plugin-localization), SCM Plugins can have multiple "input views" with a set of properties,
 as well as a set of "setup" properties.
 The codes for these properties can be defined in your "messages.properties"
 file using the following patterns:

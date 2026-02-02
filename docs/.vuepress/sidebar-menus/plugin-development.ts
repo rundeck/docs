@@ -1,31 +1,128 @@
-export default [{
+export default [
+  {
   text: 'Plugin Development',
-  collapsible: false,
+  collapsible: true,
+  link: '/developer/',
   children: [
-    '/developer/01-plugin-development.md',
-    '/developer/02-plugin-annotations.md',
-    '/developer/plugin-groups.md',
-    '/developer/03-model-source-format-parser-generator-plugins.md',
-    '/developer/03-model-source-plugins.md',
-    '/developer/03-step-plugins.md',
-    '/developer/04-file-copier-plugins.md',
-    '/developer/04-node-execution-plugins.md',
-    '/developer/05-notification-plugins.md',
-    '/developer/06-logging-plugins.md',
-    '/developer/07-storage-plugin.md',
-    '/developer/08-storage-converter-plugins.md',
-    '/developer/09-orchestrator-plugin.md',
-    '/developer/10-scm-plugins.md',
-    '/developer/11-ui-plugins.md',
-    '/developer/log-filter-plugins.md',
-    '/developer/content-converter-plugins.md',
-    '/developer/12-option-values-plugins.md',
-    '/developer/13-user-group-source-plugin.md',
-    '/developer/14-file-upload-plugins.md',
-    '/developer/password-encrypt-utility.md',
-    '/developer/16-webhook-plugins.md',
-    '/developer/execution-lifecycle.md',
-    '/developer/job-lifecycle.md',
-    '/developer/audit-events-listeners.md'
+    { text: 'Overview', link: '/developer/' },
+    {
+      text: 'Development Approaches',
+      collapsible: true,
+      children: [
+        '/developer/java-plugin-development.md',
+        '/developer/groovy-plugin-development.md',
+        '/developer/script-plugin-development.md',
+      ]
+    },
+    {
+      text: 'Common Topics',
+      collapsible: true,
+      children: [
+        '/developer/plugin-properties.md',
+        '/developer/plugin-groups.md',
+      ]
+    },
+    {
+      text: 'Job Execution Plugins',
+      collapsible: true,
+      children: [
+        '/developer/step-plugins.md',
+        '/developer/node-executor-plugins.md',
+        '/developer/file-copier-plugins.md',
+      ]
+    },
+    {
+      text: 'Resource (Node) Discovery',
+      collapsible: true,
+      children: [
+        '/developer/resource-model-source-plugins.md',
+        '/developer/resource-model-format-plugins.md',
+      ]
+    },
+    {
+      text: 'Logging and Output',
+      collapsible: true,
+      children: [
+        '/developer/log-filter-plugins.md',
+        '/developer/logging-plugins.md',
+        '/developer/content-converter-plugins.md',
+      ]
+    },
+    {
+      text: 'Notifications and Events',
+      collapsible: true,
+      children: [
+        '/developer/notification-plugins.md',
+        '/developer/webhook-plugins.md',
+        '/developer/audit-events-listeners.md',
+      ]
+    },
+    {
+      text: 'Security and Storage',
+      collapsible: true,
+      children: [
+        '/developer/storage-plugins.md',
+        '/developer/storage-converter-plugins.md',
+        '/developer/user-group-source-plugins.md',
+      ]
+    },
+    {
+      text: 'Orchestration and Control',
+      collapsible: true,
+      children: [
+        '/developer/orchestrator-plugins.md',
+      ]
+    },
+    {
+      text: 'Configuration and Options',
+      collapsible: true,
+      children: [
+        '/developer/option-values-plugins.md',
+        '/developer/file-upload-plugins.md',
+      ]
+    },
+    {
+      text: 'Lifecycle Plugins',
+      collapsible: true,
+      children: [
+        '/developer/execution-lifecycle.md',
+        '/developer/job-lifecycle.md',
+      ]
+    },
+    {
+      text: 'Source Control Integration',
+      collapsible: true,
+      children: [
+        '/developer/scm-plugins.md',
+      ]
+    },
+    {
+      text: 'User Interface',
+      collapsible: true,
+      children: [
+        '/developer/ui-plugins.md',
+      ]
+    },
+    {
+      text: 'Tools and Utilities',
+      collapsible: true,
+      children: [
+        '/developer/password-encrypt-utility.md',
+      ]
+    },
   ]
-}]
+},
+{
+  text: 'Document Formats',
+  collapsible: true,
+  link: '/manual/document-format-reference/index.md',
+    children: [
+      '/manual/document-format-reference/aclpolicy-v10.md',
+      '/manual/document-format-reference/job-v20.md',
+      '/manual/document-format-reference/job-yaml-v12.md',
+      '/manual/document-format-reference/resource-json-v10.md',
+      '/manual/document-format-reference/resource-v13.md',
+      '/manual/document-format-reference/resource-yaml-v13.md',
+    ]
+  }
+]

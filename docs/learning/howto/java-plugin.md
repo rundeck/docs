@@ -197,7 +197,7 @@ If you want to try your plugin on your live Rundeck server instead of on your wo
 
 ## References
 
-- [Workflow Step Plugin Developer Guide](/developer/03-step-plugins.md)
+- [Workflow Step Plugin Developer Guide](/developer/step-plugins.md)
 - [Installing plugins](/administration/configuration/plugins/installing.md)
 - [Rundeck Playground](https://github.com/clofresh/rundeck-playground)
 - [Rundeck Plugin Bootstrap](https://github.com/rundeck/plugin-bootstrap)

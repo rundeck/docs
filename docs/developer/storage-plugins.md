@@ -16,7 +16,7 @@ See: [Configuring the Storage Plugins](/manual/key-storage/index.md#configuring-
 
 ## Java Plugin Type
 
-- _Note_: Refer to [Java Development](/developer/01-plugin-development.md#java-plugin-development) for information about developing a Java plugin for Rundeck.
+- _Note_: Refer to [Java Development](/developer/java-plugin-development.md) for information about developing a Java plugin for Rundeck.
 
 **Plugin Interface**
 

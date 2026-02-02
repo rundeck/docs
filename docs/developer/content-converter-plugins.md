@@ -65,7 +65,7 @@ rundeckPlugin(ContentConverterPlugin){
 }
 ```
 
-To define metadata about your plugin, see the [Plugin Development - Groovy Plugin Development](/developer/01-plugin-development.md#groovy-plugin-development) chapter.
+To define metadata about your plugin, see the [Plugin Development - Groovy Plugin Development](/developer/groovy-plugin-development.md) chapter.
 
 The `ContentConverterPlugin` Groovy DSL supports defining conversions between data types.
 
@@ -143,7 +143,7 @@ convert(dataType(SomeClass,'application/x-another-type')) {
 
 ## Localization
 
-For the basics of plugin localization see: [Plugin Development - Plugin Localization](/developer/01-plugin-development.md#plugin-localization).
+For the basics of plugin localization see: [Plugin Development - Plugin Localization](/developer/plugin-properties.md#plugin-localization).
 
 ## Example
 
@@ -163,4 +163,4 @@ See the [JsonConverterPlugin] for an example.
 
 See <https://github.com/rundeck/rundeck/tree/master/examples/example-groovy-content-converter-plugins>.
 
-[Plugin Development - Plugin Localization](/developer/01-plugin-development.md#plugin-localization)
+[Plugin Development - Plugin Localization](/developer/plugin-properties.md#plugin-localization)

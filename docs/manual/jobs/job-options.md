@@ -250,7 +250,7 @@ Restrictions
 Option values can be passed to scripts as an argument or referenced
 inside the script via a named token. Each option value is defined in the Options context variables as `option.NAME`.
 
-See the [Context Variables](/manual/jobs/job-workflows.md#context-variables) Section.
+See the [Job Variables Reference](/manual/jobs/job-variables.md).
 
 **Example:**
 

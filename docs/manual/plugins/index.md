@@ -10,7 +10,7 @@ This section is a guide for the basic configuration of plugins. For a detailed l
 
 For administrators and advanced-users, here is additional documentation on Installing Plugins and [advanced configuration settings](/administration/configuration/plugins/configuring.md).
 
-For developers interested in developing new plugins or contributing to open-source plugins, click [here](/developer/01-plugin-development.md).
+For developers interested in developing new plugins or contributing to open-source plugins, click [here](/developer/).
 
 ## Plugins Configuration
 

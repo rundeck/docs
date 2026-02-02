@@ -154,7 +154,7 @@ Webhook Plugins built for Rundeck 3.2 will no longer work due to a Java interfac
 
 Webhook plugins must now return a `WebhookResponder` from the `onEvent` method in the plugin. A `null` can be returned to use the `DefaultWebhookResponder`.
 
-Please see the [Development > Webhook Plugins](/developer/16-webhook-plugins.md) document for more detail.
+Please see the [Development > Webhook Plugins](/developer/webhook-plugins.md) document for more detail.
 
 ## Node step error handler behavior change
 

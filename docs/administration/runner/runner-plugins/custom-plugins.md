@@ -1,6 +1,6 @@
 # Custom Plugins on the Enterprise Runner
 
-Enterprise Runners allow remote execution and workflow orchestration close to target infrastructure. To extend Runbook Automation functionality, customers can [develop their own custom plugins](/developer/01-plugin-development.md). The Enterprise Runner supports the following plugin types:
+Enterprise Runners allow remote execution and workflow orchestration close to target infrastructure. To extend Runbook Automation functionality, customers can [develop their own custom plugins](/developer/). The Enterprise Runner supports the following plugin types:
 
 * Node Step
 * Workflow Step
