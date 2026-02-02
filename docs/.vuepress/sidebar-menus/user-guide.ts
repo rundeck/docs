@@ -26,6 +26,7 @@ export default [{
         '/manual/projects/plugin-control',
         '/manual/projects/project-archive',
         '/manual/projects/project-delete',
+        '/manual/projects/execution-history-cleaner',
         '/manual/project-settings',
         {
           text: 'Node Execution',
