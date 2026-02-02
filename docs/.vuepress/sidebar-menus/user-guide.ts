@@ -78,6 +78,7 @@ export default [{
         '/manual/jobs/job-workflows',
         '/manual/jobs/job-options',
         '/manual/jobs/job-notifications',
+        '/manual/jobs/job-variables',
         {
           text: 'Job Step Plugins',
           link: '/manual/jobs/job-plugins/index.md',
@@ -86,7 +87,7 @@ export default [{
             { text: 'Overview', link: '/manual/jobs/job-plugins/index.md' },
             {
               text: 'Node Steps',
-              collapsible: false,
+              collapsible: true,
               children: [
                 { text: 'AWS EC2', link: '/manual/jobs/job-plugins/node-steps/aws', icon: '/assets/img/aws-icon.png' },
                 { text: 'AWS ECS', link: '/manual/jobs/job-plugins/node-steps/aws-ecs', icon: '/assets/img/aws-icon.png' },
@@ -134,7 +135,7 @@ export default [{
             },
             {
               text: 'Workflow Steps',
-              collapsible: false,
+              collapsible: true,
               children: [
                 { text: 'Ansible Module', link: '/manual/jobs/job-plugins/workflow-steps/builtin.md#ansible-module', icon: '/assets/img/ansible-icon.png' },
                 { text: 'Ansible Playbook', link: '/manual/jobs/job-plugins/workflow-steps/builtin.md#ansible-playbook', icon: '/assets/img/ansible-icon.png' },
