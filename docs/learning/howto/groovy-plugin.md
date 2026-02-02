@@ -78,4 +78,4 @@ If you modify the job to fail intentionally and run it again, you will see the "
 
 * [Apache Groovy site](http://www.groovy-lang.org/) 
 * [Rundeck Plugin development](/developer/01-plugin-development.md#plugin-development) 
-* [Notification plugins development](/developer/05-notification-plugins.md)
+* [Notification plugins development](/developer/notification-plugins.md)

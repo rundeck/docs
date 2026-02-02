@@ -5,15 +5,15 @@
 Rundeck plugins allow you to extend Rundeck's functionality by adding new capabilities for job execution, notifications, logging, resource discovery, and more. This guide will help you develop custom plugins to meet your specific automation needs.
 
 **Plugin Types Available:**
-- [Node Steps](/developer/03-step-plugins.md) - Execute actions on remote nodes
-- [Workflow Steps](/developer/03-step-plugins.md) - Execute workflow-level orchestration
-- [Node Executors](/developer/04-node-execution-plugins.md) - Define how to execute commands on nodes
-- [File Copiers](/developer/04-file-copier-plugins.md) - Define how to copy files to nodes
-- [Resource Model Sources](/developer/03-model-source-plugins.md) - Provide node inventory from external systems
-- [Notifications](/developer/05-notification-plugins.md) - Send notifications on job events
+- [Node Steps](/developer/step-plugins.md) - Execute actions on remote nodes
+- [Workflow Steps](/developer/step-plugins.md) - Execute workflow-level orchestration
+- [Node Executors](/developer/node-executor-plugins.md) - Define how to execute commands on nodes
+- [File Copiers](/developer/file-copier-plugins.md) - Define how to copy files to nodes
+- [Resource Model Sources](/developer/resource-model-source-plugins.md) - Provide node inventory from external systems
+- [Notifications](/developer/notification-plugins.md) - Send notifications on job events
 - [Log Filters](/developer/log-filter-plugins.md) - Transform or capture log output
-- [Storage Plugins](/developer/07-storage-plugin.md) - Store key/password data in external systems
-- [SCM Plugins](/developer/10-scm-plugins.md) - Integrate with source control systems
+- [Storage Plugins](/developer/storage-plugins.md) - Store key/password data in external systems
+- [SCM Plugins](/developer/scm-plugins.md) - Integrate with source control systems
 - [And many more...](#available-plugin-types)
 
 ## Choosing Your Plugin Development Approach
@@ -155,44 +155,44 @@ Rundeck supports many different types of plugins. Each type serves a specific pu
 
 ### Job Execution Plugins
 
-- **[Node Steps](/developer/03-step-plugins.md#node-step-plugin)** - Execute once per target node
-- **[Workflow Steps](/developer/03-step-plugins.md#workflow-step-plugin)** - Execute once per job invocation
-- **[Node Executors](/developer/04-node-execution-plugins.md)** - Control how commands execute on nodes
-- **[File Copiers](/developer/04-file-copier-plugins.md)** - Control how files are copied to nodes
+- **[Node Steps](/developer/step-plugins.md#node-step-plugin)** - Execute once per target node
+- **[Workflow Steps](/developer/step-plugins.md#workflow-step-plugin)** - Execute once per job invocation
+- **[Node Executors](/developer/node-executor-plugins.md)** - Control how commands execute on nodes
+- **[File Copiers](/developer/file-copier-plugins.md)** - Control how files are copied to nodes
 
 ### Resource Discovery
 
-- **[Resource Model Sources](/developer/03-model-source-plugins.md)** - Provide node inventory data
-- **[Resource Format Parsers](/developer/03-model-source-format-parser-generator-plugins.md)** - Parse resource data formats
-- **[Resource Format Generators](/developer/03-model-source-format-parser-generator-plugins.md)** - Generate resource data formats
+- **[Resource Model Sources](/developer/resource-model-source-plugins.md)** - Provide node inventory data
+- **[Resource Format Parsers](/developer/resource-model-format-plugins.md)** - Parse resource data formats
+- **[Resource Format Generators](/developer/resource-model-format-plugins.md)** - Generate resource data formats
 
 ### Logging and Output
 
 - **[Log Filters](/developer/log-filter-plugins.md)** - Transform or capture log output
-- **[Logging Plugins](/developer/06-logging-plugins.md)** - Stream logs to external systems
+- **[Logging Plugins](/developer/logging-plugins.md)** - Stream logs to external systems
 - **[Content Converters](/developer/content-converter-plugins.md)** - Render log output as HTML/Markdown
 
 ### Notifications and Events
 
-- **[Notification Plugins](/developer/05-notification-plugins.md)** - Send notifications on job events
-- **[Webhook Plugins](/developer/16-webhook-plugins.md)** - Receive and process webhooks
+- **[Notification Plugins](/developer/notification-plugins.md)** - Send notifications on job events
+- **[Webhook Plugins](/developer/webhook-plugins.md)** - Receive and process webhooks
 - **[Audit Event Listeners](/developer/audit-events-listeners.md)** - Respond to audit events
 
 ### Security and Storage
 
-- **[Storage Plugins](/developer/07-storage-plugin.md)** - Store keys/passwords in external systems
-- **[Storage Converter Plugins](/developer/08-storage-converter-plugins.md)** - Encrypt/decrypt stored data
-- **[User Group Source Plugins](/developer/13-user-group-source-plugin.md)** - Integrate with authentication systems
+- **[Storage Plugins](/developer/storage-plugins.md)** - Store keys/passwords in external systems
+- **[Storage Converter Plugins](/developer/storage-converter-plugins.md)** - Encrypt/decrypt stored data
+- **[User Group Source Plugins](/developer/user-group-source-plugins.md)** - Integrate with authentication systems
 
 ### Orchestration and Control
 
-- **[Orchestrator Plugins](/developer/09-orchestrator-plugin.md)** - Control node execution order
-- **[Workflow Strategy Plugins](/developer/03-step-plugins.md#workflow-step-plugin)** - Define custom workflow execution patterns
+- **[Orchestrator Plugins](/developer/orchestrator-plugins.md)** - Control node execution order
+- **[Workflow Strategy Plugins](/developer/step-plugins.md#workflow-step-plugin)** - Define custom workflow execution patterns
 
 ### Configuration and Options
 
-- **[Option Values Plugins](/developer/12-option-values-plugins.md)** - Provide dynamic option values
-- **[File Upload Plugins](/developer/14-file-upload-plugins.md)** - Handle file uploads for job options
+- **[Option Values Plugins](/developer/option-values-plugins.md)** - Provide dynamic option values
+- **[File Upload Plugins](/developer/file-upload-plugins.md)** - Handle file uploads for job options
 
 ### Lifecycle Plugins
 
@@ -201,11 +201,11 @@ Rundeck supports many different types of plugins. Each type serves a specific pu
 
 ### Source Control Integration
 
-- **[SCM Plugins](/developer/10-scm-plugins.md)** - Integrate jobs with Git or other SCM systems
+- **[SCM Plugins](/developer/scm-plugins.md)** - Integrate jobs with Git or other SCM systems
 
 ### User Interface
 
-- **[UI Plugins](/developer/11-ui-plugins.md)** - Add custom UI components
+- **[UI Plugins](/developer/ui-plugins.md)** - Add custom UI components
 
 ## Common Plugin Development Topics
 

@@ -203,7 +203,7 @@ You can select an Orchestrator plugin to use instead, which can choose its own l
 for how many and what order to process the nodes.
 
 To learn how to develop your own Orchestrator plugin
-see [Plugin Developer Guide - Orchestrator Plugin](/developer/09-orchestrator-plugin.md).
+see [Plugin Developer Guide - Orchestrator Plugin](/developer/orchestrator-plugins.md).
 
 ### Scheduled Jobs
 

@@ -14,13 +14,13 @@ Script plugins allow you to extend Rundeck using any scripting language (Bash, P
 
 These Services support Script Plugins:
 
-- **[NodeExecutor](/developer/04-node-execution-plugins.md#script-plugin-type)** - Execute commands on nodes
-- **[FileCopier](/developer/04-file-copier-plugins.md#script-plugin-type)** - Copy files to nodes
-- **[ResourceModelSource](/developer/03-model-source-plugins.md#script-plugin-type)** - Provide node inventory
-- **[WorkflowNodeStep](/developer/03-step-plugins.md#script-plugin-type)** - Node step execution
-- **[RemoteScriptNodeStep](/developer/03-step-plugins.md#script-plugin-type)** - Remote script execution
+- **[NodeExecutor](/developer/node-executor-plugins.md#script-plugin-type)** - Execute commands on nodes
+- **[FileCopier](/developer/file-copier-plugins.md#script-plugin-type)** - Copy files to nodes
+- **[ResourceModelSource](/developer/resource-model-source-plugins.md#script-plugin-type)** - Provide node inventory
+- **[WorkflowNodeStep](/developer/step-plugins.md#script-plugin-type)** - Node step execution
+- **[RemoteScriptNodeStep](/developer/step-plugins.md#script-plugin-type)** - Remote script execution
 
-Additionally, **[UI Plugins](/developer/11-ui-plugins.md)** are supported with a `ui` plugin type, which is similar to a Script Plugin.
+Additionally, **[UI Plugins](/developer/ui-plugins.md)** are supported with a `ui` plugin type, which is similar to a Script Plugin.
 
 ## Quick Start
 
@@ -707,9 +707,9 @@ providers:
 ## Related Documentation
 
 - [Plugin Properties Reference](/developer/plugin-properties.md) - Complete property documentation
-- [NodeExecutor Script Plugins](/developer/04-node-execution-plugins.md#script-plugin-type)
-- [FileCopier Script Plugins](/developer/04-file-copier-plugins.md#script-plugin-type)
-- [ResourceModelSource Script Plugins](/developer/03-model-source-plugins.md#script-plugin-type)
-- [WorkflowStep Script Plugins](/developer/03-step-plugins.md#script-plugin-type)
-- [UI Plugins](/developer/11-ui-plugins.md) - Similar structure for UI plugins
+- [NodeExecutor Script Plugins](/developer/node-executor-plugins.md#script-plugin-type)
+- [FileCopier Script Plugins](/developer/file-copier-plugins.md#script-plugin-type)
+- [ResourceModelSource Script Plugins](/developer/resource-model-source-plugins.md#script-plugin-type)
+- [WorkflowStep Script Plugins](/developer/step-plugins.md#script-plugin-type)
+- [UI Plugins](/developer/ui-plugins.md) - Similar structure for UI plugins
 - [Job Variables Reference](/manual/jobs/job-variables.md) - Available context variables

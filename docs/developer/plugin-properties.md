@@ -305,7 +305,7 @@ The `messages.properties` file is a [Java Properties Format](https://docs.oracle
 | `property.NAME.defaultValue` | Static text/html for a STATIC_TEXT property named "NAME" |
 
 ::: tip
-SCM Plugins have additional message codes. See: [SCM Plugins - Localization](/developer/10-scm-plugins.md#localization)
+SCM Plugins have additional message codes. See: [SCM Plugins - Localization](/developer/scm-plugins.md#localization)
 :::
 
 ### Message Code Resolution

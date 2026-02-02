@@ -18,10 +18,10 @@ Groovy plugins provide a middle ground between Script and Java plugins, offering
 
 Groovy plugins currently support these service types:
 
-- **[Notification Plugin](/developer/05-notification-plugins.md#groovy-plugin-type)** - Send notifications on job events
-- **[Streaming Log Reader](/developer/06-logging-plugins.md#groovy-streaminglogreader)** - Read execution logs
-- **[Streaming Log Writer](/developer/06-logging-plugins.md#groovy-streaminglogwriter)** - Write execution logs
-- **[Execution File Storage](/developer/06-logging-plugins.md#groovy-executionfilestorage)** - Store execution files
+- **[Notification Plugin](/developer/notification-plugins.md#groovy-plugin-type)** - Send notifications on job events
+- **[Streaming Log Reader](/developer/logging-plugins.md#groovy-streaminglogreader)** - Read execution logs
+- **[Streaming Log Writer](/developer/logging-plugins.md#groovy-streaminglogwriter)** - Write execution logs
+- **[Execution File Storage](/developer/logging-plugins.md#groovy-executionfilestorage)** - Store execution files
 - **[Log Filter](/developer/log-filter-plugins.md#groovy-logfilter)** - Filter/transform log output
 - **[Content Converter](/developer/content-converter-plugins.md#groovy-contentconverter)** - Render content as HTML
 
@@ -675,8 +675,8 @@ Groovy plugins currently have some limitations:
 ## Related Documentation
 
 - [Plugin Properties Reference](/developer/plugin-properties.md) - Property configuration details
-- [Notification Plugins](/developer/05-notification-plugins.md#groovy-plugin-type) - Groovy notification plugins
-- [Logging Plugins](/developer/06-logging-plugins.md) - Groovy logging plugins
+- [Notification Plugins](/developer/notification-plugins.md#groovy-plugin-type) - Groovy notification plugins
+- [Logging Plugins](/developer/logging-plugins.md) - Groovy logging plugins
 - [Log Filter Plugins](/developer/log-filter-plugins.md#groovy-logfilter) - Groovy log filters
 - [Java Plugin Development](/developer/java-plugin-development.md) - For unsupported types
 - [Script Plugin Development](/developer/script-plugin-development.md) - Alternative approach

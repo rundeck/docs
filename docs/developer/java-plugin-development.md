@@ -254,53 +254,53 @@ Java plugins can implement any of these services:
 
 ### Node Execution
 
-- **[NodeExecutor](/developer/04-node-execution-plugins.md)** - Execute commands on nodes
-- **[FileCopier](/developer/04-file-copier-plugins.md)** - Copy files to nodes
+- **[NodeExecutor](/developer/node-executor-plugins.md)** - Execute commands on nodes
+- **[FileCopier](/developer/file-copier-plugins.md)** - Copy files to nodes
 
 ### Workflow Steps
 
-- **[WorkflowStep](/developer/03-step-plugins.md)** - Workflow-level step
-- **[WorkflowNodeStep](/developer/03-step-plugins.md)** - Node-level step
-- **[RemoteScriptNodeStep](/developer/03-step-plugins.md)** - Generate remote scripts
+- **[WorkflowStep](/developer/step-plugins.md)** - Workflow-level step
+- **[WorkflowNodeStep](/developer/step-plugins.md)** - Node-level step
+- **[RemoteScriptNodeStep](/developer/step-plugins.md)** - Generate remote scripts
 
 ### Resource Model
 
-- **[ResourceModelSource](/developer/03-model-source-plugins.md)** - Provide node inventory
-- **[ResourceFormatParser](/developer/03-model-source-format-parser-generator-plugins.md)** - Parse resource documents
-- **[ResourceFormatGenerator](/developer/03-model-source-format-parser-generator-plugins.md)** - Generate resource documents
+- **[ResourceModelSource](/developer/resource-model-source-plugins.md)** - Provide node inventory
+- **[ResourceFormatParser](/developer/resource-model-format-plugins.md)** - Parse resource documents
+- **[ResourceFormatGenerator](/developer/resource-model-format-plugins.md)** - Generate resource documents
 
 ### Notifications and Events
 
-- **[Notification](/developer/05-notification-plugins.md)** - Send notifications on job events
-- **[WebhookEventPlugin](/developer/16-webhook-plugins.md)** - Process webhooks
+- **[Notification](/developer/notification-plugins.md)** - Send notifications on job events
+- **[WebhookEventPlugin](/developer/webhook-plugins.md)** - Process webhooks
 
 ### Logging
 
-- **[ExecutionFileStorage](/developer/06-logging-plugins.md)** - Store/retrieve execution files
-- **[StreamingLogWriter](/developer/06-logging-plugins.md)** - Write log events
-- **[StreamingLogReader](/developer/06-logging-plugins.md)** - Read log events
+- **[ExecutionFileStorage](/developer/logging-plugins.md)** - Store/retrieve execution files
+- **[StreamingLogWriter](/developer/logging-plugins.md)** - Write log events
+- **[StreamingLogReader](/developer/logging-plugins.md)** - Read log events
 - **[LogFilterPlugin](/developer/log-filter-plugins.md)** - Filter/transform log output
 
 ### Storage
 
-- **[Storage](/developer/07-storage-plugin.md)** - Backend storage for data
-- **[StorageConverter](/developer/08-storage-converter-plugins.md)** - Encrypt/decrypt stored content
+- **[Storage](/developer/storage-plugins.md)** - Backend storage for data
+- **[StorageConverter](/developer/storage-converter-plugins.md)** - Encrypt/decrypt stored content
 
 ### Orchestration
 
-- **[Orchestrator](/developer/09-orchestrator-plugin.md)** - Control node execution order
+- **[Orchestrator](/developer/orchestrator-plugins.md)** - Control node execution order
 
 ### Source Control
 
-- **[ScmExportPlugin](/developer/10-scm-plugins.md)** - Export jobs to SCM
-- **[ScmImportPlugin](/developer/10-scm-plugins.md)** - Import jobs from SCM
+- **[ScmExportPlugin](/developer/scm-plugins.md)** - Export jobs to SCM
+- **[ScmImportPlugin](/developer/scm-plugins.md)** - Import jobs from SCM
 
 ### Configuration
 
 - **[PluginGroup](/developer/plugin-groups.md)** - Define shared properties
-- **[OptionValuesPlugin](/developer/12-option-values-plugins.md)** - Provide dynamic option values
-- **[FileUploadPlugin](/developer/14-file-upload-plugins.md)** - Handle file uploads
-- **[UserGroupSourcePlugin](/developer/13-user-group-source-plugin.md)** - Integrate authentication
+- **[OptionValuesPlugin](/developer/option-values-plugins.md)** - Provide dynamic option values
+- **[FileUploadPlugin](/developer/file-upload-plugins.md)** - Handle file uploads
+- **[UserGroupSourcePlugin](/developer/user-group-source-plugins.md)** - Integrate authentication
 
 ### Lifecycle
 
@@ -310,7 +310,7 @@ Java plugins can implement any of these services:
 
 ### User Interface
 
-- **[UIPlugin](/developer/11-ui-plugins.md)** - Add custom UI components
+- **[UIPlugin](/developer/ui-plugins.md)** - Add custom UI components
 - **[ContentConverterPlugin](/developer/content-converter-plugins.md)** - Render content as HTML
 
 ## Plugin Annotations
@@ -964,6 +964,6 @@ public void testPluginExecution() throws StepException {
 - [Plugin Properties Reference](/developer/plugin-properties.md) - Complete property documentation
 - [Script Plugin Development](/developer/script-plugin-development.md) - Alternative approach
 - [Plugin Development Overview](/developer/) - Compare all approaches
-- [Step Plugins](/developer/03-step-plugins.md) - Workflow and node steps
-- [Notification Plugins](/developer/05-notification-plugins.md) - Job notifications
+- [Step Plugins](/developer/step-plugins.md) - Workflow and node steps
+- [Notification Plugins](/developer/notification-plugins.md) - Job notifications
 - [Java API Documentation](https://javadoc.io/doc/org.rundeck/rundeck-core/) - JavaDoc

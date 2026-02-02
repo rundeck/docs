@@ -231,7 +231,7 @@ See the [Error Handlers](/manual/jobs/job-workflows.md#error-handlers) section f
 Execution context variables contain detailed information about the Job execution. These are **Global Scope** variables.
 
 ::: warning Important
-The `execution.*` variables are only available in the [Notification context](/developer/05-notification-plugins.md#execution-data). They are **not** available while a Job is running or as part of Job Steps.
+The `execution.*` variables are only available in the [Notification context](/developer/notification-plugins.md#execution-data). They are **not** available while a Job is running or as part of Job Steps.
 :::
 
 | Variable | Description |
@@ -524,7 +524,7 @@ See [Job Options - Variable Expansion](/manual/jobs/job-options.md#variable-expa
 
 Notifications have access to both `execution.*` and `job.*` variables, plus any configuration properties with embedded references.
 
-See [Notification Plugins](/developer/05-notification-plugins.md#execution-data) for more information.
+See [Notification Plugins](/developer/notification-plugins.md#execution-data) for more information.
 
 ## Troubleshooting Variables
 
@@ -578,7 +578,7 @@ echo "DEBUG: node.hostname = ${node.hostname}"
 - [Key Value Data](/manual/log-filters/key-value-data.md) - Capturing data from output
 - [Workflow Steps](/manual/jobs/job-plugins/workflow-steps/builtin.md) - Built-in workflow steps including Global Variable
 - [Webhooks](/manual/webhooks/run-job.md) - Webhook variables and usage
-- [Notification Plugins](/developer/05-notification-plugins.md) - Variables in notification context
+- [Notification Plugins](/developer/notification-plugins.md) - Variables in notification context
 - [Workflow Strategies](/manual/jobs/workflow-strategies/index.md) - How strategy affects variable availability
 
 ## Quick Reference

@@ -15,7 +15,7 @@ So far we have the following plugins for execution log storage:
 - [AWS S3](/administration/cluster/logstore/s3.md): This plugin works with any storage compatible with AWS S3 API, eg: S3, Minio, etc.
 - [Azure Blob Storage](/administration/cluster/logstore/azure.md)
 
-See [Logging Plugin Development](/developer/06-logging-plugins.md) to learn how to implement your own log storage.
+See [Logging Plugin Development](/developer/logging-plugins.md) to learn how to implement your own log storage.
 
 ## Shared file system
 

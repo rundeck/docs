@@ -167,4 +167,4 @@ Exit code:
 Script output:
 
 - All output on `STDOUT` will be captured and passed to a
-  [ResourceFormatParser](/developer/03-model-source-format-parser-generator-plugins.md#resourceformatparser) for the specified `resource-format` to create the Node definitions.
+  [ResourceFormatParser](/developer/resource-model-format-plugins.md#resourceformatparser) for the specified `resource-format` to create the Node definitions.

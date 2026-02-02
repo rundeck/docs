@@ -207,7 +207,7 @@ Use the service name for the plugin type:
 - `WorkflowNodeStep`
 - `RemoteScriptNodeStep`
 
-For configuration properties, see the [Resource Model Source Plugin - Plugin Properties](/developer/03-model-source-format-parser-generator-plugins.md).
+For configuration properties, see the [Resource Model Source Plugin - Plugin Properties](/developer/resource-model-format-plugins.md).
 
 Two additional [provider metadata properties](/developer/01-plugin-development.md#provider-metadata) are available for `RemoteScriptNodeStep` plugins:
 

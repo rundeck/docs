@@ -734,7 +734,7 @@ java -Xms4g -Xmx8g -jar rundeck.war
 ```
 
 :::tip
-It is also possible to reconfigure the default path for files according to [this page](/developer/14-file-upload-plugins.md#about) using the property in this form:
+It is also possible to reconfigure the default path for files according to [this page](/developer/file-upload-plugins.md#about) using the property in this form:
 
 `framework.plugin.FileUpload.filesystem-temp.basePath=/desired/path`
 
