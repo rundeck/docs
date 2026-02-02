@@ -15,16 +15,6 @@ export default [
       ]
     },
     {
-      text: 'Job Execution Plugins',
-      collapsible: true,
-      children: [
-        { text: 'Node Steps', link: '/developer/step-plugins.md#node-step-plugin' },
-        { text: 'Workflow Steps', link: '/developer/step-plugins.md#workflow-step-plugin' },
-        '/developer/node-executor-plugins.md',
-        '/developer/file-copier-plugins.md',
-      ]
-    },
-    {
       text: 'Common Topics',
       collapsible: true,
       children: [
@@ -33,7 +23,16 @@ export default [
       ]
     },
     {
-      text: 'Resource Discovery',
+      text: 'Job Execution Plugins',
+      collapsible: true,
+      children: [
+        '/developer/step-plugins.md',
+        '/developer/node-executor-plugins.md',
+        '/developer/file-copier-plugins.md',
+      ]
+    },
+    {
+      text: 'Resource (Node) Discovery',
       collapsible: true,
       children: [
         '/developer/resource-model-source-plugins.md',
