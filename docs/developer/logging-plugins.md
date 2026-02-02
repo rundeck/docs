@@ -88,7 +88,7 @@ Rundeck supports two development modes for Logging plugins:
 
 ### Java plugin type
 
-Java-based plugins can be developed just as any other Rundeck plugin, as described in the chapter [Plugin Development - Java Plugin Development](/developer/01-plugin-development.md#java-plugin-development).
+Java-based plugins can be developed just as any other Rundeck plugin, as described in the chapter [Plugin Development - Java Plugin Development](/developer/java-plugin-development.md).
 
 Your plugin class should implement the appropriate Java interface as described in the section for that plugin:
 
@@ -96,13 +96,13 @@ Your plugin class should implement the appropriate Java interface as described i
 - [StreamingLogReader](#streaminglogreader)
 - [ExecutionFileStorage](#executionfilestorage)
 
-To define configuration properties for your plugin, you use the same mechanisms as for Workflow Steps, described under the chapter [Plugin Annotations - Plugin Descriptions](/developer/02-plugin-annotations.md#plugin-description).
+To define configuration properties for your plugin, you use the same mechanisms as for Workflow Steps, described under the chapter [Plugin Annotations - Plugin Descriptions](/developer/java-plugin-development.md#plugindescription-annotation).
 
-The simplest way to do this is to use [Plugin Annotations - Plugin Properties](/developer/02-plugin-annotations.md#plugin-properties).
+The simplest way to do this is to use [Plugin Annotations - Plugin Properties](/developer/java-plugin-development.md#plugin-properties).
 
 ### Groovy plugin type
 
-For info about the Groovy plugin development method see the [Plugin Development - Groovy Plugin Development](/developer/01-plugin-development.md#groovy-plugin-development) chapter.
+For info about the Groovy plugin development method see the [Plugin Development - Groovy Plugin Development](/developer/groovy-plugin-development.md) chapter.
 
 Create a Groovy script, and define your plugin by calling the `rundeckPlugin` method, and pass it both the Class of the type of plugin, and a Closure used to build the plugin object.
 
@@ -244,7 +244,7 @@ rundeckPlugin(StreamingLogWriterPlugin){
 }
 ```
 
-To define metadata about your plugin, and configuration properties, see the [Plugin Development - Groovy Plugin Development](/developer/01-plugin-development.md#groovy-plugin-development) chapter.
+To define metadata about your plugin, and configuration properties, see the [Plugin Development - Groovy Plugin Development](/developer/groovy-plugin-development.md) chapter.
 
 Define these closures inside your definition:
 
@@ -416,7 +416,7 @@ rundeckPlugin(StreamingLogReaderPlugin){
 }
 ```
 
-To define metadata about your plugin, and configuration properties, see the [Plugin Development - Groovy Plugin Development](/developer/01-plugin-development.md#groovy-plugin-development) chapter.
+To define metadata about your plugin, and configuration properties, see the [Plugin Development - Groovy Plugin Development](/developer/groovy-plugin-development.md) chapter.
 
 Define these closures inside your definition:
 
@@ -727,7 +727,7 @@ rundeckPlugin(ExecutionFileStoragePlugin){
 }
 ```
 
-To define metadata about your plugin, and configuration properties, see the [Plugin Development - Groovy Plugin Development](/developer/01-plugin-development.md#groovy-plugin-development) chapter.
+To define metadata about your plugin, and configuration properties, see the [Plugin Development - Groovy Plugin Development](/developer/groovy-plugin-development.md) chapter.
 
 Define these closures inside your definition:
 

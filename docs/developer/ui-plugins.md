@@ -30,7 +30,7 @@ will be called.
 
 ## Zip Plugin Type
 
-See the [Plugin Development - Script plugin zip structure](/developer/01-plugin-development.md#script-plugin-zip-structure)
+See the [Plugin Development - Script plugin zip structure](/developer/script-plugin-development.md#plugin-structure)
 for the basics of Zip plugin structure.
 
 The structure of the zip file is:
@@ -100,16 +100,16 @@ See [Javascript API](#javascript-api) for additional Javascript information.
 
 ### Localization
 
-For the basics of zip plugin localization see: [Plugin Development - Internationalization/Localization for Zip files](/developer/01-plugin-development.md#internationalizationlocalization-for-zip-files).
+For the basics of zip plugin localization see: [Plugin Development - Internationalization/Localization for Zip files](/developer/script-plugin-development.md#localization).
 
 ### Icon
 
-See [Plugin Icons](/developer/01-plugin-development.md#plugin-icons).
+See [Plugin Icons](/developer/plugin-properties.md#plugin-icons).
 
 ## Java Plugin Type
 
 ::: tip
-Refer to [Java Development](/developer/01-plugin-development.md#java-plugin-development) for information about developing a Java plugin for Rundeck.
+Refer to [Java Development](/developer/java-plugin-development.md) for information about developing a Java plugin for Rundeck.
 :::
 
 The plugin interface is [UIPlugin]({{$javaDocBase}}/com/dtolabs/rundeck/plugins/rundeck/UIPlugin.html).
@@ -167,11 +167,11 @@ Resources should be included in your plugin Jar file under a `resources/` direct
 
 ### Localization
 
-For the basics of Java plugin localization see: [Plugin Development - Plugin Localization](/developer/01-plugin-development.md#plugin-localization)
+For the basics of Java plugin localization see: [Plugin Development - Plugin Localization](/developer/plugin-properties.md#plugin-localization)
 
 ### Icon
 
-See [Plugin Icons](/developer/01-plugin-development.md#plugin-icons).
+See [Plugin Icons](/developer/plugin-properties.md#plugin-icons).
 
 ## Javascript API
 
@@ -212,7 +212,7 @@ function loadHtmlTemplate(file){
 
 The `rundeckPage.pluginBasei18nUrl(..)` method will return the base URL for loading i18n resources.
 
-Rundeck Plugin Localization/Internationalization uses java `.properties` formatted files. (See [Plugin Localization](/developer/01-plugin-development.md#plugin-localization)). However, your i18n resources don't have to be `.properties` files.
+Rundeck Plugin Localization/Internationalization uses java `.properties` formatted files. (See [Plugin Localization](/developer/plugin-properties.md#plugin-localization)). However, your i18n resources don't have to be `.properties` files.
 
 Requesting resources via this URL provides two features to help with i18n:
 

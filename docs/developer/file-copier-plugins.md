@@ -35,7 +35,7 @@ Optionally the plugin may implement [MultiFileCopier]({{$javaDocBase}}/com/dtola
 
 ### Plugin properties
 
-See [Plugin Development - Java Plugins - Descriptions](/developer/01-plugin-development.md#plugin-descriptions)
+See [Plugin Development - Java Plugins - Descriptions](/developer/java-plugin-development.md#plugin-descriptions)
 to learn how to create configuration properties for your plugin.
 
 ::: tip
@@ -44,7 +44,7 @@ The `destination` parameter may or may not be specified. If it is not null, it i
 
 ## Script Plugin Type
 
-See the [Script Plugin Development](/developer/01-plugin-development.md#script-plugin-development)
+See the [Script Plugin Development](/developer/script-plugin-development.md)
 for the basics of developing script-based plugins for Rundeck.
 
 ### Additional data context properties

@@ -66,7 +66,7 @@ project.plugin.JobLifecycle.[your_plugin_name].[property]=value
 
 
 ::: tip
-Refer to [Java Development](/developer/01-plugin-development.md#java-plugin-development) for information about developing a Java plugin for Rundeck.
+Refer to [Java Development](/developer/java-plugin-development.md) for information about developing a Java plugin for Rundeck.
 :::
 
 Implement the `JobLifecyclePlugin` interface:

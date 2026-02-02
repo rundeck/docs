@@ -15,7 +15,7 @@ Users creating Workflows can configure Log Filter plugins within their workflow 
 
 ## Java Plugin Type
 
-- _Note_: Refer to [Java Development](/developer/01-plugin-development.md#java-plugin-development) for information about developing a Java plugin for Rundeck.
+- _Note_: Refer to [Java Development](/developer/java-plugin-development.md) for information about developing a Java plugin for Rundeck.
 
 The plugin interface is [LogFilterPlugin][]. You can use the [PluginLoggingContext] to get the data context and add data to it via the Output context.
 
@@ -46,7 +46,7 @@ rundeckPlugin(LogFilterPlugin){
 }
 ```
 
-To define metadata about your plugin, and configuration properties, see the [Plugin Development - Groovy Plugin Development](/developer/01-plugin-development.md#groovy-plugin-development) chapter.
+To define metadata about your plugin, and configuration properties, see the [Plugin Development - Groovy Plugin Development](/developer/groovy-plugin-development.md) chapter.
 
 The `LogFilterPlugin` Groovy DLS supports these closure definitions:
 
@@ -91,7 +91,7 @@ complete { PluginLoggingContext context, Map configuration ->
 
 ## Localization
 
-For the basics of plugin localization see: [Plugin Development - Plugin Localization](/developer/01-plugin-development.md#plugin-localization).
+For the basics of plugin localization see: [Plugin Development - Plugin Localization](/developer/plugin-properties.md#plugin-localization).
 
 ## Example
 
