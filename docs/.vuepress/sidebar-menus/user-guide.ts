@@ -27,22 +27,7 @@ export default [{
         '/manual/projects/project-archive',
         '/manual/projects/project-delete',
         '/manual/projects/execution-history-cleaner',
-        '/manual/project-settings',
-        {
-          text: 'Node Execution',
-          collapsible: true,
-          children: [
-            //            '/manual/projects/node-execution/',
-            '/manual/projects/node-execution/aws-ecs',
-            '/manual/projects/node-execution/aws-ssm',
-            '/manual/projects/node-execution/bastionssh',
-            '/manual/projects/node-execution/builtin',
-            '/manual/projects/node-execution/openssh',
-            '/manual/projects/node-execution/powershell',
-            '/manual/projects/node-execution/script',
-            '/manual/projects/node-execution/ssh'
-          ]
-        }
+        '/manual/project-settings'
       ]
     },
     {
@@ -240,6 +225,22 @@ export default [{
             '/manual/projects/resource-model-sources/servicenow',
             '/manual/projects/resource-model-sources/http-json',
             '/manual/projects/resource-model-sources/vmware'
+          ]
+        },
+        {
+          text: 'Node Execution',
+          collapsible: true,
+          link: '/manual/projects/node-execution/',
+          children: [
+            {text: "Overview", link: '/manual/projects/node-execution/'},
+            '/manual/projects/node-execution/ssh',
+            '/manual/projects/node-execution/openssh',
+            '/manual/projects/node-execution/bastionssh',
+            '/manual/projects/node-execution/powershell',
+            '/manual/projects/node-execution/aws-ssm',
+            '/manual/projects/node-execution/aws-ecs',
+            '/manual/projects/node-execution/script',
+            '/manual/projects/node-execution/builtin'
           ]
         },
         '/manual/node-enhancers.md',
