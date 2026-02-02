@@ -26,31 +26,7 @@ export default [{
         '/manual/projects/plugin-control',
         '/manual/projects/project-archive',
         '/manual/projects/project-delete',
-        {
-          text: 'Resource Model Sources',
-          collapsible: true,
-          children: [
-            '/manual/projects/resource-model-sources/',
-            '/manual/projects/resource-model-sources/aws',
-            '/manual/projects/resource-model-sources/aws-eks',
-            '/manual/projects/resource-model-sources/azure',
-            '/manual/projects/resource-model-sources/azure-aks',
-            '/manual/projects/resource-model-sources/datadog',
-            { text: 'Docker', link: '/manual/projects/resource-model-sources/docker' },
-            '/manual/projects/resource-model-sources/ecs-fargate',
-            '/manual/projects/resource-model-sources/gcp',
-            '/manual/projects/resource-model-sources/gcp-gke',
-            '/manual/projects/resource-model-sources/kubernetes',
-            '/manual/projects/resource-model-sources/builtin',
-            '/manual/projects/resource-model-sources/oracle',
-            '/manual/projects/resource-model-sources/node-wizard',
-            '/manual/projects/resource-model-sources/resource-editor',
-            '/manual/projects/resource-model-sources/sensu',
-            '/manual/projects/resource-model-sources/servicenow',
-            '/manual/projects/resource-model-sources/http-json',
-            '/manual/projects/resource-model-sources/vmware'
-          ]
-        },
+        '/manual/project-settings',
         {
           text: 'Node Execution',
           collapsible: true,
@@ -234,6 +210,151 @@ export default [{
       ]
     },
     {
+      text: 'Nodes',
+      collapsible: true,
+      link: '/manual/05-nodes',
+      children: [
+        {text: "Overview", link: '/manual/05-nodes'},
+        {
+          text: 'Node Sources',
+          collapsible: true,
+          link: '/manual/projects/resource-model-sources/',
+          children: [
+            '/manual/projects/resource-model-sources/',
+            '/manual/projects/resource-model-sources/aws',
+            '/manual/projects/resource-model-sources/aws-eks',
+            '/manual/projects/resource-model-sources/azure',
+            '/manual/projects/resource-model-sources/azure-aks',
+            '/manual/projects/resource-model-sources/datadog',
+            { text: 'Docker', link: '/manual/projects/resource-model-sources/docker' },
+            '/manual/projects/resource-model-sources/ecs-fargate',
+            '/manual/projects/resource-model-sources/gcp',
+            '/manual/projects/resource-model-sources/gcp-gke',
+            '/manual/projects/resource-model-sources/kubernetes',
+            '/manual/projects/resource-model-sources/builtin',
+            '/manual/projects/resource-model-sources/oracle',
+            '/manual/projects/resource-model-sources/node-wizard',
+            '/manual/projects/resource-model-sources/resource-editor',
+            '/manual/projects/resource-model-sources/sensu',
+            '/manual/projects/resource-model-sources/servicenow',
+            '/manual/projects/resource-model-sources/http-json',
+            '/manual/projects/resource-model-sources/vmware'
+          ]
+        },
+        '/manual/node-enhancers.md',
+        '/manual/11-node-filters.md',
+      ]
+    },
+    {
+      text: 'Commands',
+      link: '/manual/06-commands',
+      collapsible: true,
+    },
+    {
+      text: 'Activity',
+      link: '/manual/08-activity',
+      collapsible: true,
+      children: [
+        {text: "Overview", link: '/manual/08-activity'},
+        '/manual/07-executions'
+      ]
+    },
+    {
+      text: 'Webhooks',
+      collapsible: true,
+      link: '/manual/webhooks',
+      children: [
+        {text: "Overview", link: '/manual/webhooks'},
+        {
+          text: 'Webhooks Handlers',
+          children: [
+            '/manual/webhooks/advanced-run-job',
+            '/manual/webhooks/pagerduty-run-job',
+            '/manual/webhooks/datadog-run-job.md',
+            '/manual/webhooks/aws-sns-webhook',
+            '/manual/webhooks/github-webhook',
+            '/manual/webhooks/run-job.md',
+            '/manual/webhooks/log-events.md'
+          ]
+        },
+      ]
+    },
+    {
+      text: 'Schedules (Commercial)',
+      collapsible: true,
+      link: '/manual/schedules/project-schedules',
+      children: [
+        {text: "Overview", link: '/manual/schedules/project-schedules'},
+        '/manual/schedules/missedjobfires.md'
+      ],
+    },
+    {
+      text: 'Calendars (Commercial)',
+      collapsible: true,
+      link: '/manual/calendars',
+      children: [
+        {text: "Overview", link: '/manual/calendars'},
+        '/manual/calendars/system-calendars.md',
+        '/manual/calendars/project-calendars.md',
+        '/manual/calendars/import-export.md'
+      ]
+    },
+    {
+      text: 'Health Checks',
+      collapsible: true,
+      link: '/manual/healthchecks',
+      children: [
+        {text: "Overview", link: '/manual/healthchecks'},
+        '/manual/healthcheckplugins/datadog.md',
+        '/manual/healthcheckplugins/sensu.md',
+        '/manual/healthcheckplugins/azure-healthcheck.md',
+        '/manual/healthcheckplugins/aws-ec2-healthcheck.md',
+        '/manual/healthcheckplugins/gcp-compute-healthcheck.md'
+      ]
+    },
+    {
+      text: 'Tour Manager (Commercial)',
+      collapsible: true,
+      link: '/manual/tour-manager.md',
+      children: [
+        {text: "Overview", link: '/manual/tour-manager.md'},
+      ]
+    },
+    {
+      text: 'System Menu',
+      collapsible: true,
+      link: '/manual/system-configs',
+      children: [
+        {text: "Overview", link: '/manual/system-configs'},
+        '/manual/user-management/user-mgmt',
+        '/manual/user-management/password-reset',
+        '/manual/user-management/user-classes',
+        '/manual/system-report',
+        '/manual/configuration-mgmt/configmgmt'
+      ]
+    },
+    {
+      text: 'Key Storage',
+      collapsible: true,
+      link: '/manual/key-storage/index',
+      children: [
+        {text: "Overview", link: '/manual/key-storage/index'},
+        '/manual/key-storage/enterprise-runner-key-storage.md',
+        {
+          text: 'Key Storage Plugins',
+          collapsible: true,
+          children: [
+            { link: '/manual/key-storage/storage-plugins/aws-secrets-manager.md', text: 'AWS Secrets Manager (Commercial)' },
+            { link: '/manual/key-storage/storage-plugins/azure-vault.md', text: 'Azure Key Vault (Commercial)' },
+            { link: '/manual/key-storage/storage-plugins/cyberark-storage.md', text: 'CyberArk (Commercial)' },
+            { link: '/manual/key-storage/storage-plugins/thycotic-storage.md', text: 'Delinea (Commercial)' },
+            { link: '/manual/key-storage/storage-plugins/vault.md', text: 'HashiCorp Vault' }
+          ]
+        },
+      ]
+    },
+    { link: '/manual/10-user.md', text: 'Profile Menu' },
+    {
       text: 'Plugins',
       collapsible: true,
       link: '/manual/plugins/index',
@@ -253,145 +374,11 @@ export default [{
       ]
     },
     {
-      text: 'Nodes',
-      collapsible: true,
-      link: '/manual/05-nodes',
-      children: [
-        '/manual/05-nodes',
-        '/manual/node-enhancers.md',
-        '/manual/11-node-filters.md',
-        {
-          text: 'Health Checks',
-          collapsible: true,
-          link: '/manual/healthchecks',
-          children: [
-            '/manual/healthchecks',
-            '/manual/healthcheckplugins/datadog.md',
-            '/manual/healthcheckplugins/sensu.md',
-            '/manual/healthcheckplugins/azure-healthcheck.md',
-            '/manual/healthcheckplugins/aws-ec2-healthcheck.md',
-            '/manual/healthcheckplugins/gcp-compute-healthcheck.md'
-          ]
-        },
-        { text: "Node Sources", link: '/manual/projects/resource-model-sources/' }
-      ]
-    },
-    {
-      text: 'Key Storage',
-      collapsible: true,
-      link: '/manual/key-storage/index',
-      children: [
-        '/manual/key-storage/index',
-        '/manual/key-storage/enterprise-runner-key-storage.md',
-        {
-          text: 'Key Storage Plugins',
-          collapsible: true,
-          children: [
-            { link: '/manual/key-storage/storage-plugins/aws-secrets-manager.md', text: 'AWS Secrets Manager (Commercial)' },
-            { link: '/manual/key-storage/storage-plugins/azure-vault.md', text: 'Azure Key Vault (Commercial)' },
-            { link: '/manual/key-storage/storage-plugins/cyberark-storage.md', text: 'CyberArk (Commercial)' },
-            { link: '/manual/key-storage/storage-plugins/thycotic-storage.md', text: 'Delinea (Commercial)' },
-            { link: '/manual/key-storage/storage-plugins/vault.md', text: 'HashiCorp Vault' }
-          ]
-        },
-      ]
-    },
-    {
-      text: 'Commands',
-      link: '/manual/06-commands',
-      collapsible: true,
-    },
-    {
-      text: 'Activity',
-      link: '/manual/08-activity',
-      collapsible: true,
-      children: [
-        '/manual/08-activity',
-        '/manual/07-executions'
-      ]
-    },
-    {
-      text: 'Schedules (Commercial)',
-      collapsible: true,
-      link: '/manual/schedules/project-schedules',
-      children: [
-        '/manual/schedules/project-schedules.md',
-        '/manual/schedules/missedjobfires.md'
-      ],
-    },
-    {
-      text: 'Tour Manager (Commercial)',
-      collapsible: true,
-      link: '/manual/tour-manager.md',
-    },
-    {
-      text: 'Calendars (Commercial)',
-      collapsible: true,
-      link: '/manual/calendars',
-      children: [
-        '/manual/calendars',
-        '/manual/calendars/system-calendars.md',
-        '/manual/calendars/project-calendars.md',
-        '/manual/calendars/import-export.md'
-      ]
-    },
-    {
-      text: 'Webhooks',
-      collapsible: true,
-      link: '/manual/webhooks',
-      children: [
-        '/manual/webhooks',
-        {
-          text: 'Webhooks Handlers',
-          children: [
-            '/manual/webhooks/advanced-run-job',
-            '/manual/webhooks/pagerduty-run-job',
-            '/manual/webhooks/datadog-run-job.md',
-            '/manual/webhooks/aws-sns-webhook',
-            '/manual/webhooks/github-webhook',
-            '/manual/webhooks/run-job.md',
-            '/manual/webhooks/log-events.md'
-          ]
-        },
-      ]
-    },
-    {
-      text: 'Project Settings',
-      collapsible: true,
-      link: '/manual/project-settings',
-    },
-    {
-      text: 'System Menu',
-      collapsible: true,
-      link: '/manual/system-configs',
-      children: [
-        '/manual/system-configs',
-        '/manual/user-management/user-mgmt',
-        '/manual/user-management/password-reset',
-        '/manual/user-management/user-classes',
-        '/manual/system-report',
-        '/manual/configuration-mgmt/configmgmt'
-      ]
-    },
-    { link: '/manual/10-user.md', text: 'Profile Menu' },
-    {
       text: 'Integrations',
       collapsible: true,
       link: '/manual/integrations/index.md',
       children: [
         '/manual/integrations/servicenow-app.md'
-      ]
-    },
-    {
-      text: 'Document Formats',
-      collapsible: true,
-      children: [
-        '/manual/document-format-reference/aclpolicy-v10.md',
-        '/manual/document-format-reference/job-v20.md',
-        '/manual/document-format-reference/job-yaml-v12.md',
-        '/manual/document-format-reference/resource-json-v10.md',
-        '/manual/document-format-reference/resource-v13.md',
-        '/manual/document-format-reference/resource-yaml-v13.md',
       ]
     }
   ]

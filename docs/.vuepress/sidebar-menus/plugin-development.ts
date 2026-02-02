@@ -1,9 +1,14 @@
-export default [{
+export default [
+  {
   text: 'Plugin Development',
-  collapsible: false,
+  collapsible: true,
+  link: '/developer/',
   children: [
-    '/developer/01-plugin-development.md',
-    '/developer/02-plugin-annotations.md',
+    { text: 'Overview', link: '/developer/' },
+    '/developer/java-plugin-development.md',
+    '/developer/groovy-plugin-development.md',
+    '/developer/script-plugin-development.md',
+    '/developer/plugin-properties.md',
     '/developer/plugin-groups.md',
     '/developer/03-model-source-format-parser-generator-plugins.md',
     '/developer/03-model-source-plugins.md',
@@ -28,4 +33,18 @@ export default [{
     '/developer/job-lifecycle.md',
     '/developer/audit-events-listeners.md'
   ]
-}]
+},
+{
+  text: 'Document Formats',
+  collapsible: true,
+  link: '/manual/document-format-reference/index.md',
+    children: [
+      '/manual/document-format-reference/aclpolicy-v10.md',
+      '/manual/document-format-reference/job-v20.md',
+      '/manual/document-format-reference/job-yaml-v12.md',
+      '/manual/document-format-reference/resource-json-v10.md',
+      '/manual/document-format-reference/resource-v13.md',
+      '/manual/document-format-reference/resource-yaml-v13.md',
+    ]
+  }
+]
