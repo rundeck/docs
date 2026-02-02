@@ -1,67 +1,180 @@
-# Workflow Step Plugin
+# Job Step Plugins
 
-## About
+## Overview
 
-There are two types of steps in a workflow:
+Step plugins are the most commonly created plugin type. They allow you to add custom steps to job workflows, extending Rundeck's automation capabilities.
 
-1. **Node Steps** - executed on multiple nodes
-   - example: a command or script execution
-2. **Workflow Steps** - only executes once in a workflow
-   - example: a Job-Reference step
+There are two fundamental types of step plugins:
 
-When there are multiple Nodes to execute on, the Node Steps execute multiple
-times, although the Workflow Steps will execute only once. Workflow steps
-are always executed in order, so any sequence of steps will be completed
-before the next step is executed even if they run on multiple nodes or threads.
+1. **[Node Step Plugins](#node-step-plugin)** - Execute on each target node in parallel
+2. **[Workflow Step Plugins](#workflow-step-plugin)** - Execute once per job at the workflow level
 
-You can create a plugin to execute either type of step.
+## Understanding the Difference
 
-### Use cases
+### Node Step Plugin
 
-There are several reasons to create a Step Plugin:
+**Executes:** Once per target node (parallel execution across nodes)
 
-- You want to take the set of nodes defined for a Job, and use them with some other batch processing system, such as another kind of remote dispatcher or orchestration tool, rather than executing commands on them directly.
-  - You would implement a [WorkflowStep Plugin](#workflowstep-plugin) plugin which is provided with the set of Nodes
-- You want to interact with another system on a per-node basis, such as for updating or reporting the state of a Node or process, rather than executing a command on the node
-  - You would implement a [WorkflowNodeStep Plugin](#workflownodestep-plugin)
-- You want to wrap a command or script in a simplified user interface and have it executed remotely on nodes
-  - You would implement a [RemoteScriptNodeStep Plugin](#remotescriptnodestep-plugin) which allows you to define a command or script and declare a custom set of input fields.
+**Use When:**
+- You need to perform an action on each individual node
+- The operation is node-specific (requires node attributes)
+- You want parallel execution across multiple nodes
+- Examples: Install software, check service status, update configuration files
 
-## Java Plugin Type
+**Key Characteristics:**
+- Receives node context (hostname, attributes, etc.)
+- Executes multiple times (once per selected node)
+- Can run in parallel across nodes
+- Stores output in **Node Scope** variables
+- Ideal for infrastructure automation tasks
 
-## Define a plugin provider class
+**Common Examples:**
+- Execute remote commands or scripts
+- Deploy files to nodes
+- Check node health status
+- Install or update packages
+- Configure node-specific settings
 
-Refer to the [Plugin Development - Java Plugins](/developer/java-plugin-development.md)
-section for information about correct
-definition of a [Plugin]({{$javaDocBase}}/com/dtolabs/rundeck/core/plugins/Plugin.html) class, including packaging as a Jar and annotation.
+### Workflow Step Plugin
 
-Be sure to use the `@Plugin` annotation on your provider implementation class
-to let it be recognized by Rundeck (See [Plugin Annotations](/developer/java-plugin-development.md#plugin-annotations)).
+**Executes:** Once per job (single execution at workflow level)
 
-Your `service` name should be one of the
-three listed below. The class
-[ServiceNameConstants]({{$javaDocBase}}/com/dtolabs/rundeck/plugins/ServiceNameConstants.html) contains static definitions of all Rundeck Service names.
+**Use When:**
+- You need to perform an orchestration task once
+- The operation is not node-specific
+- You want to coordinate across multiple nodes as a group
+- Examples: Send notifications, call APIs, update tickets, create reports
 
-## Workflow Step Types
+**Key Characteristics:**
+- No individual node context (but can access the node set)
+- Executes only once regardless of node count
+- Always runs sequentially in workflow order
+- Stores output in **Global Scope** variables
+- Ideal for orchestration and integration tasks
 
-Your plugins can be one of three types.
+**Common Examples:**
+- Call external APIs
+- Send notifications
+- Create tickets in JIRA or ServiceNow
+- Generate reports
+- Reference other jobs
+- Aggregate data from multiple nodes
 
-- [WorkflowStep](#workflowstep-plugin)
-- [WorkflowNodeStep](#workflownodestep-plugin)
-- [RemoteScriptNodeStep](#remotescriptnodestep-plugin)
+## Quick Decision Guide
 
-Each plugin type has an associated Java interface.
+```
+Need to execute on EACH node? 
+  → Use Node Step Plugin
+  
+Need to execute ONCE for the entire job?
+  → Use Workflow Step Plugin
 
-### Plugin properties
+Need to coordinate/aggregate across ALL nodes?
+  → Use Workflow Step Plugin
 
-See [Plugin Development - Java Plugins - Descriptions](/developer/java-plugin-development.md#plugin-descriptions)
+Need to access node-specific attributes (hostname, tags)?
+  → Use Node Step Plugin
+
+Need to call external APIs or services?
+  → Use Workflow Step Plugin (usually)
+
+Need to execute remote commands/scripts?
+  → Use Node Step Plugin (specifically RemoteScriptNodeStep)
+```
+
+## Comparison Table
+
+| Feature | Node Step | Workflow Step |
+|---------|-----------|---------------|
+| **Execution** | Once per node | Once per job |
+| **Node Context** | Yes, receives individual node | No, but can access node set |
+| **Parallelism** | Can run parallel across nodes | Sequential only |
+| **Variable Scope** | Node Scope | Global Scope |
+| **Use Case** | Node operations | Orchestration/Integration |
+| **Examples** | Commands, scripts, configs | APIs, notifications, tickets |
+
+## Plugin Implementation Types
+
+You can implement step plugins in three ways:
+
+1. **[Java Plugins](/developer/java-plugin-development.md)** - Most powerful and flexible
+2. **[Script Plugins](/developer/script-plugin-development.md)** - Easiest to get started
+3. **[Groovy Plugins](/developer/groovy-plugin-development.md)** - Currently not supported for step plugins
+
+## Node Step Plugin
+
+Node Step plugins execute on each target node. There are two Java interfaces you can implement:
+
+### WorkflowNodeStep (Most Common)
+
+Execute custom logic on each node locally from the Rundeck server.
+
+**Service Name:** `WorkflowNodeStep`
+
+**Use When:**
+- You need to interact with external APIs per node
+- You want to perform checks or validations
+- You need complex logic before/after node operations
+
+**See:** [WorkflowNodeStep Implementation](#workflownodestep-plugin) below
+
+### RemoteScriptNodeStep (For Scripts)
+
+Generate a script/command that Rundeck executes remotely on each node.
+
+**Service Name:** `RemoteScriptNodeStep`
+
+**Use When:**
+- You want to execute commands or scripts on remote nodes
+- You need the script to run in the node's environment
+- You want to leverage Rundeck's remote execution (SSH, WinRM, etc.)
+
+**See:** [RemoteScriptNodeStep Implementation](#remotescriptnodestep-plugin) below
+
+## Workflow Step Plugin
+
+Workflow Step plugins execute once at the workflow level.
+
+**Service Name:** `WorkflowStep`
+
+**Use When:**
+- You need to call external APIs once
+- You want to send notifications
+- You need to orchestrate across all nodes
+- You're integrating with ticketing systems
+
+**See:** [WorkflowStep Implementation](#workflowstep-plugin) below
+
+---
+
+## Java Plugin Implementation
+
+### Setup
+
+Refer to the [Java Plugin Development](/developer/java-plugin-development.md) guide for:
+- Adding Rundeck dependencies to your project
+- Packaging as a JAR
+- Using `@Plugin` annotations
+
+Your `service` name should be one of:
+- `WorkflowStep` - for Workflow Step plugins
+- `WorkflowNodeStep` - for Node Step plugins
+- `RemoteScriptNodeStep` - for Remote Script plugins
+
+See [ServiceNameConstants]({{$javaDocBase}}/com/dtolabs/rundeck/plugins/ServiceNameConstants.html) for all available service names.
+
+### Plugin Properties
+
+See [Plugin Development - Java Plugins - Plugin Properties](/developer/java-plugin-development.md#plugin-properties)
 to learn how to create configuration properties for your plugin using Java annotations.
 
 ### WorkflowStep Plugin
 
-Annotate your class with `@Plugin` and use the service name `WorkflowStep`.
+**Service Name:** `WorkflowStep`
 
-Implement the interface [StepPlugin]({{$javaDocBase}}/com/dtolabs/rundeck/plugins/step/StepPlugin.html):
+**Interface:** [StepPlugin]({{$javaDocBase}}/com/dtolabs/rundeck/plugins/step/StepPlugin.html)
+
+**Method to Implement:**
 
 ```java
 /**
@@ -76,13 +189,64 @@ public void executeStep(final PluginStepContext context, final Map<String, Objec
     throws StepException;
 ```
 
-Your implementation should throw a [StepException]({{$javaDocBase}}/com/dtolabs/rundeck/core/execution/workflow/steps/node/NodeStepException.html) if an error occurs.
+**Complete Example:**
+
+```java
+import com.dtolabs.rundeck.core.plugins.Plugin;
+import com.dtolabs.rundeck.plugins.ServiceNameConstants;
+import com.dtolabs.rundeck.plugins.step.PluginStepContext;
+import com.dtolabs.rundeck.plugins.step.StepException;
+import com.dtolabs.rundeck.plugins.step.StepPlugin;
+import com.dtolabs.rundeck.plugins.descriptions.*;
+
+@Plugin(name = "ticket-creator", service = ServiceNameConstants.WorkflowStep)
+@PluginDescription(title = "Ticket Creator", description = "Creates a ticket in external system")
+public class TicketCreatorPlugin implements StepPlugin {
+    
+    @PluginProperty(title = "API Endpoint", required = true)
+    private String apiEndpoint;
+    
+    @PluginProperty(title = "Summary", required = true)
+    private String summary;
+    
+    @Override
+    public void executeStep(PluginStepContext context, Map<String, Object> configuration) 
+            throws StepException {
+        
+        context.getLogger().log(2, "Creating ticket: " + summary);
+        
+        try {
+            // Call external API
+            String ticketId = createTicket(apiEndpoint, summary);
+            
+            context.getLogger().log(2, "Ticket created: " + ticketId);
+            
+            // Store result in data context (Global Scope)
+            context.getExecutionContext().getDataContext()
+                .put("ticket", "id", ticketId);
+                
+        } catch (Exception e) {
+            throw new StepException("Failed to create ticket: " + e.getMessage(), e, 
+                StepFailureReason.PluginFailed);
+        }
+    }
+    
+    private String createTicket(String endpoint, String summary) {
+        // Implementation here
+        return "TICKET-123";
+    }
+}
+```
+
+Your implementation should throw a [StepException]({{$javaDocBase}}/com/dtolabs/rundeck/core/execution/workflow/steps/StepException.html) if an error occurs.
 
 ### WorkflowNodeStep Plugin
 
-Annotate your class with `@Plugin` and use the service name `WorkflowNodeStep`.
+**Service Name:** `WorkflowNodeStep`
 
-Implement the interface [NodeStepPlugin]({{$javaDocBase}}/com/dtolabs/rundeck/plugins/step/NodeStepPlugin.html):
+**Interface:** [NodeStepPlugin]({{$javaDocBase}}/com/dtolabs/rundeck/plugins/step/NodeStepPlugin.html)
+
+**Method to Implement:**
 
 ```java
 /**
@@ -100,18 +264,89 @@ public void executeNodeStep(final PluginStepContext context,
     throws NodeStepException;
 ```
 
-Your implementation should throw a [StepException]({{$javaDocBase}}/com/dtolabs/rundeck/core/execution/workflow/steps/node/NodeStepException.html) if an error occurs.
+**Complete Example:**
+
+```java
+import com.dtolabs.rundeck.core.common.INodeEntry;
+import com.dtolabs.rundeck.core.execution.workflow.steps.node.NodeStepException;
+import com.dtolabs.rundeck.core.plugins.Plugin;
+import com.dtolabs.rundeck.plugins.ServiceNameConstants;
+import com.dtolabs.rundeck.plugins.step.NodeStepPlugin;
+import com.dtolabs.rundeck.plugins.step.PluginStepContext;
+import com.dtolabs.rundeck.plugins.descriptions.*;
+
+@Plugin(name = "health-checker", service = ServiceNameConstants.WorkflowNodeStep)
+@PluginDescription(title = "Health Checker", description = "Checks node health status")
+public class HealthCheckerPlugin implements NodeStepPlugin {
+    
+    @PluginProperty(title = "Endpoint Port", defaultValue = "8080")
+    private int port;
+    
+    @PluginProperty(title = "Timeout (seconds)", defaultValue = "30")
+    private int timeout;
+    
+    @Override
+    public void executeNodeStep(PluginStepContext context,
+                               Map<String, Object> configuration,
+                               INodeEntry node) throws NodeStepException {
+        
+        String hostname = node.getHostname();
+        context.getLogger().log(2, "Checking health of: " + hostname);
+        
+        try {
+            // Perform health check using node attributes
+            boolean healthy = checkHealth(hostname, port, timeout);
+            
+            if (!healthy) {
+                throw new NodeStepException(
+                    "Node health check failed for " + hostname,
+                    NodeStepFailureReason.PluginFailed,
+                    node.getNodename()
+                );
+            }
+            
+            context.getLogger().log(2, hostname + " is healthy");
+            
+            // Store result in data context (Node Scope)
+            context.getExecutionContext().getDataContext().merge(
+                ContextView.node(node.getNodename()),
+                DataContextUtils.context("healthcheck", 
+                    Collections.singletonMap("status", "healthy"))
+            );
+            
+        } catch (Exception e) {
+            throw new NodeStepException(
+                "Failed to check health: " + e.getMessage(),
+                e,
+                NodeStepFailureReason.IOFailure,
+                node.getNodename()
+            );
+        }
+    }
+    
+    private boolean checkHealth(String hostname, int port, int timeout) {
+        // Implementation here
+        return true;
+    }
+}
+```
+
+Your implementation should throw a [NodeStepException]({{$javaDocBase}}/com/dtolabs/rundeck/core/execution/workflow/steps/node/NodeStepException.html) if an error occurs.
 
 ### RemoteScriptNodeStep Plugin
 
-These are a specialized use-case of the Node Step
-plugin. They allow you to simply define a command or a script that should be
-executed on the remote nodes, and Rundeck will handle the remote execution of the
-command/script via the appropriate services.
+**Service Name:** `RemoteScriptNodeStep`
 
-Annotate your class with `@Plugin` and use the service name `RemoteScriptNodeStep`
+**Interface:** [RemoteScriptNodeStepPlugin]({{$javaDocBase}}/com/dtolabs/rundeck/plugins/step/RemoteScriptNodeStepPlugin.html)
 
-Implement the interface [RemoteScriptNodeStepPlugin]({{$javaDocBase}}/com/dtolabs/rundeck/plugins/step/RemoteScriptNodeStepPlugin.html):
+RemoteScriptNodeStep plugins are a specialized type of Node Step that generate scripts or commands to be executed remotely on nodes. Rundeck handles the remote execution via SSH, WinRM, or other configured node executors.
+
+**Use When:**
+- You want to execute shell commands on remote nodes
+- You need to run scripts in the node's environment
+- You want Rundeck to handle the remote execution mechanism
+
+**Method to Implement:**
 
 ```java
 /**
@@ -129,9 +364,9 @@ public GeneratedScript generateScript(final PluginStepContext context,
     throws NodeStepException;
 ```
 
-Your implementation should return a [GeneratedScript]({{$javaDocBase}}/com/dtolabs/rundeck/plugins/step/GeneratedScript.html) object. You can make use of the
-[GeneratedScriptBuilder]({{$javaDocBase}}/com/dtolabs/rundeck/plugins/step/GeneratedScriptBuilder.html) class to generate the appropriate return type using these
-two factory methods:
+**Return Type:**
+
+Your implementation should return a [GeneratedScript]({{$javaDocBase}}/com/dtolabs/rundeck/plugins/step/GeneratedScript.html) object. Use the [GeneratedScriptBuilder]({{$javaDocBase}}/com/dtolabs/rundeck/plugins/step/GeneratedScriptBuilder.html) factory methods:
 
 ```java
 /**
@@ -148,6 +383,83 @@ public static GeneratedScript script(final String script, final String[] args);
  * @param command the command and arguments
  */
 public static GeneratedScript command(final String... command);
+```
+
+**Complete Example:**
+
+```java
+import com.dtolabs.rundeck.core.common.INodeEntry;
+import com.dtolabs.rundeck.core.execution.workflow.steps.node.NodeStepException;
+import com.dtolabs.rundeck.core.plugins.Plugin;
+import com.dtolabs.rundeck.plugins.ServiceNameConstants;
+import com.dtolabs.rundeck.plugins.step.GeneratedScript;
+import com.dtolabs.rundeck.plugins.step.GeneratedScriptBuilder;
+import com.dtolabs.rundeck.plugins.step.PluginStepContext;
+import com.dtolabs.rundeck.plugins.step.RemoteScriptNodeStepPlugin;
+import com.dtolabs.rundeck.plugins.descriptions.*;
+
+@Plugin(name = "service-manager", service = ServiceNameConstants.RemoteScriptNodeStep)
+@PluginDescription(title = "Service Manager", 
+                  description = "Start, stop, or restart services on remote nodes")
+public class ServiceManagerPlugin implements RemoteScriptNodeStepPlugin {
+    
+    @PluginProperty(title = "Service Name", required = true)
+    private String serviceName;
+    
+    @PluginProperty(title = "Action", required = true)
+    @SelectValues(values = {"start", "stop", "restart", "status"})
+    private String action;
+    
+    @Override
+    public GeneratedScript generateScript(PluginStepContext context,
+                                         Map<String, Object> configuration,
+                                         INodeEntry node) throws NodeStepException {
+        
+        context.getLogger().log(2, 
+            String.format("Generating %s command for service %s on %s", 
+                action, serviceName, node.getNodename()));
+        
+        // Determine OS type from node attributes
+        String osFamily = node.getOsFamily();
+        
+        if ("windows".equalsIgnoreCase(osFamily)) {
+            // Generate Windows PowerShell command
+            return GeneratedScriptBuilder.command(
+                "powershell.exe",
+                "-Command",
+                action + "-Service",
+                "-Name",
+                serviceName
+            );
+        } else {
+            // Generate Linux systemctl command
+            return GeneratedScriptBuilder.command(
+                "systemctl",
+                action,
+                serviceName
+            );
+        }
+    }
+}
+```
+
+**Script Example:**
+
+```java
+@Override
+public GeneratedScript generateScript(PluginStepContext context,
+                                     Map<String, Object> configuration,
+                                     INodeEntry node) throws NodeStepException {
+    
+    // Generate a script to be executed
+    String script = "#!/bin/bash\n" +
+                   "echo 'Checking disk space...'\n" +
+                   "df -h\n" +
+                   "echo 'Checking memory...'\n" +
+                   "free -m\n";
+    
+    return GeneratedScriptBuilder.script(script, null);
+}
 ```
 
 ### Step context information
