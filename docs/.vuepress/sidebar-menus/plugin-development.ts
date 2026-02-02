@@ -5,33 +5,111 @@ export default [
   link: '/developer/',
   children: [
     { text: 'Overview', link: '/developer/' },
-    '/developer/java-plugin-development.md',
-    '/developer/groovy-plugin-development.md',
-    '/developer/script-plugin-development.md',
-    '/developer/plugin-properties.md',
-    '/developer/plugin-groups.md',
-    '/developer/resource-model-format-plugins.md',
-    '/developer/resource-model-source-plugins.md',
-    '/developer/step-plugins.md',
-    '/developer/file-copier-plugins.md',
-    '/developer/node-executor-plugins.md',
-    '/developer/notification-plugins.md',
-    '/developer/logging-plugins.md',
-    '/developer/storage-plugins.md',
-    '/developer/storage-converter-plugins.md',
-    '/developer/orchestrator-plugins.md',
-    '/developer/scm-plugins.md',
-    '/developer/ui-plugins.md',
-    '/developer/log-filter-plugins.md',
-    '/developer/content-converter-plugins.md',
-    '/developer/option-values-plugins.md',
-    '/developer/user-group-source-plugins.md',
-    '/developer/file-upload-plugins.md',
-    '/developer/password-encrypt-utility.md',
-    '/developer/webhook-plugins.md',
-    '/developer/execution-lifecycle.md',
-    '/developer/job-lifecycle.md',
-    '/developer/audit-events-listeners.md'
+    {
+      text: 'Development Approaches',
+      collapsible: true,
+      children: [
+        '/developer/java-plugin-development.md',
+        '/developer/groovy-plugin-development.md',
+        '/developer/script-plugin-development.md',
+      ]
+    },
+    {
+      text: 'Common Topics',
+      collapsible: true,
+      children: [
+        '/developer/plugin-properties.md',
+        '/developer/plugin-groups.md',
+      ]
+    },
+    {
+      text: 'Job Execution Plugins',
+      collapsible: true,
+      children: [
+        '/developer/step-plugins.md',
+        '/developer/node-executor-plugins.md',
+        '/developer/file-copier-plugins.md',
+      ]
+    },
+    {
+      text: 'Resource Discovery',
+      collapsible: true,
+      children: [
+        '/developer/resource-model-source-plugins.md',
+        '/developer/resource-model-format-plugins.md',
+      ]
+    },
+    {
+      text: 'Logging and Output',
+      collapsible: true,
+      children: [
+        '/developer/log-filter-plugins.md',
+        '/developer/logging-plugins.md',
+        '/developer/content-converter-plugins.md',
+      ]
+    },
+    {
+      text: 'Notifications and Events',
+      collapsible: true,
+      children: [
+        '/developer/notification-plugins.md',
+        '/developer/webhook-plugins.md',
+        '/developer/audit-events-listeners.md',
+      ]
+    },
+    {
+      text: 'Security and Storage',
+      collapsible: true,
+      children: [
+        '/developer/storage-plugins.md',
+        '/developer/storage-converter-plugins.md',
+        '/developer/user-group-source-plugins.md',
+      ]
+    },
+    {
+      text: 'Orchestration and Control',
+      collapsible: true,
+      children: [
+        '/developer/orchestrator-plugins.md',
+      ]
+    },
+    {
+      text: 'Configuration and Options',
+      collapsible: true,
+      children: [
+        '/developer/option-values-plugins.md',
+        '/developer/file-upload-plugins.md',
+      ]
+    },
+    {
+      text: 'Lifecycle Plugins',
+      collapsible: true,
+      children: [
+        '/developer/execution-lifecycle.md',
+        '/developer/job-lifecycle.md',
+      ]
+    },
+    {
+      text: 'Source Control Integration',
+      collapsible: true,
+      children: [
+        '/developer/scm-plugins.md',
+      ]
+    },
+    {
+      text: 'User Interface',
+      collapsible: true,
+      children: [
+        '/developer/ui-plugins.md',
+      ]
+    },
+    {
+      text: 'Tools and Utilities',
+      collapsible: true,
+      children: [
+        '/developer/password-encrypt-utility.md',
+      ]
+    },
   ]
 },
 {
