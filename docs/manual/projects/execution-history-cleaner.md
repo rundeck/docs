@@ -8,20 +8,6 @@ The Execution History Cleaner automatically removes old execution records from y
 The Execution History Cleaner is the **recommended way to clean Activity history** in Rundeck. It is specifically optimized for performance against both the database and CPU, making it far more efficient than using individual API calls to delete executions one at a time.
 :::
 
-### Why Use the Execution History Cleaner?
-
-**Performance Benefits:**
-- **Database Optimized** - Uses efficient batch queries instead of individual deletes
-- **CPU Efficient** - Processes multiple executions in optimized batches
-- **Resource Friendly** - Runs on a schedule during configurable times
-- **Comprehensive** - Cleans all related data (logs, reports, files, database records)
-
-**vs. Individual API Calls:**
-- API calls delete executions one at a time (slow)
-- Each API call creates separate database transactions (inefficient)
-- No batch optimization or retention safeguards
-- Higher CPU and database load
-
 ## What Gets Cleaned
 
 When an execution is deleted by the cleaner, the following data is removed:
