@@ -73,8 +73,16 @@ The next several sections describe the specification of each kind of workflow st
 
 Steps in a workflow can be either _Node Steps_ or _Workflow Steps_.
 
-- Node Steps operate once on each Node, which could be multiple times within a workflow. For a full list of Node Steps, see [Job Plugins - Node Steps](/manual/jobs/job-plugins/index.md#node-steps)
-- Workflow Steps operate only once in the workflow. For a full list of Workflow Steps, see [Workflow Steps](/manual/jobs/job-plugins/index.md#workflow-steps)
+- **Node Steps** execute once on each node that matches the Job's node filter, running in a Node Context with access to node-specific variables
+- **Workflow Steps** execute exactly once per Job invocation on the Rundeck server, running in a Global Context
+
+Understanding the distinction between these step types is critical for building effective workflows, especially when working with variables and data capture.
+
+For a comprehensive explanation of Node Steps vs Workflow Steps, including characteristics, variable scoping, and execution order, see [Job Step Plugins - Understanding Step Types](/manual/jobs/job-plugins/index.md#understanding-step-types).
+
+**Available Steps:**
+- [Node Steps](/manual/jobs/job-plugins/index.md#node-steps) - Commands, scripts, file operations
+- [Workflow Steps](/manual/jobs/job-plugins/index.md#workflow-steps) - Orchestration, integrations, global operations
 
 ### Reordering steps
 

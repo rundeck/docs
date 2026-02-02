@@ -35,7 +35,9 @@ Log Filters use Regular Expression syntax (RegEx) to collect information from th
 ## Exercises Intro
 As part of the Welcome Projects we have built some example jobs to highlight how variables can be passed from one job step to another.  For more information about the Welcome Projects check out the [Learning Overview](/learning/index.md).
 
-It's important to note that Node Steps (steps run against nodes) and Workflow Steps (steps run from the Rundeck server) store variables differently. The examples will also show how to use the variables from different types of steps and highlight common trouble spots.
+It's important to note that **Node Steps** (which execute on each node) and **Workflow Steps** (which execute once on the Rundeck server) store variables differently. Node Steps capture data in Node Scope while Workflow Steps capture data in Global Scope. The examples will show how to use variables from different types of steps and highlight common trouble spots.
+
+For a detailed explanation of step types and variable scoping, see [Job Step Plugins - Understanding Step Types](/manual/jobs/job-plugins/index.md#understanding-step-types).
 
 ::: tip Important Exercise Prerequisite
 If you are new to Rundeck, we recommend finishing the exercises in the [Getting Started Tutorial](/learning/tutorial/index.md) first. Terminology and actions in the following exercise will assume you have completed that Tutorial.
@@ -73,11 +75,11 @@ How Step Data variables are referenced in Jobs depend on a few things:
 - Whether the variable is being accessed from a Command Step or a Script
 
 ### Job Step Types
-There are two types of Job Steps.
-- **Node Steps**: These are steps that are run against every node associated with this job.
-- **Workflow Steps**: These steps are run from the Rundeck server without being associated to a specific node.
+There are two types of Job Steps (see [Understanding Step Types](/manual/jobs/job-plugins/index.md#understanding-step-types) for complete details):
+- **Node Steps**: Execute once on each node that matches the job's node filter
+- **Workflow Steps**: Execute exactly once per job invocation on the Rundeck server
 
-This is important to keep in mind because when a job is run against more than one node a variable may have multiple entries, one for each node it was run against.
+This is important to keep in mind because when a job is run against more than one node, each Node Step creates a separate variable entry for each node it was run against.
 
 ### Command Steps vs Scripts
 Referencing variables from Command Steps use a different syntax than referencing them from within a Script. Most Job Steps are Command Steps and will follow a format of:

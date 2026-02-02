@@ -2,14 +2,78 @@
 
 Jobs are composed of _steps_ that define the actions to be taken against target nodes, tools or data.
 
-There are two types of steps in Runbook Automation Jobs:
+## Understanding Step Types
 
-* **Node Steps** are designed to iterate across one or more target endpoints - such as VMs, databases or Kubernetes clusters. An example of a node step is a single command or an inline script to be executed on each targeted node.<br>
-* **Workflow Steps** execute once per Job invocation and do not operate in a node context. For example, the "Refresh Project Nodes" workflow step refreshes the node cache in case of any change.<br> 
+There are two fundamental types of steps in Runbook Automation Jobs, and understanding the distinction is critical for building effective workflows:
 
-The order of the execution of the steps is defined by the [workflow strategy](/manual/jobs/workflow-strategies/index.md).
+### Node Steps
 
-If there is a mix of node and workflow steps (which is common) the steps will be executed in order (based on the [workflow strategy](/manual/jobs/job-workflows.md#workflow-control-settings)). Node steps may be executed several times, once per node, while the workflow steps will only run once.<br>
+**Node Steps** are designed to iterate across one or more target endpoints and execute once for each matched node.
+
+**Characteristics:**
+- Execute on each node that matches the Job's node filter
+- Run in a **Node Context** with access to node-specific variables (`node.hostname`, `node.name`, etc.)
+- Capture data in **Node Scope**, meaning each node can have different values for the same variable
+- Examples: Commands, scripts, file operations, node-specific API calls
+
+**Common Node Steps:**
+- Execute a command on multiple servers
+- Run a script against a database cluster
+- Copy files to remote nodes
+- Query node-specific metrics
+
+**Variable Scoping:**
+When a Node Step captures data (via log filters), that data is stored in the Node's scope. To reference data from a specific node, use: `${data.variable@nodename}`. To collect values from all nodes, use: `${data.variable*}`.
+
+See [Job Variables Reference - Node Scope](/manual/jobs/job-variables.md#node-scope) for more details.
+
+### Workflow Steps
+
+**Workflow Steps** execute exactly once per Job invocation and do not operate in a node context.
+
+**Characteristics:**
+- Execute only once, regardless of how many nodes are targeted
+- Run on the Rundeck server (not dispatched to remote nodes)
+- Run in a **Global Context** without access to node-specific variables
+- Can access data from Node Steps, but must specify which node's data to use
+- Examples: Orchestration logic, global state changes, API integrations
+
+**Common Workflow Steps:**
+- Update a load balancer configuration
+- Send notifications
+- Refresh the project's node cache
+- Export captured data from multiple nodes
+- Make decisions based on aggregate node results
+
+**Variable Scoping:**
+Workflow Steps capture data in Global Scope, making it available to all subsequent steps. To access Node Scope data from a Workflow Step, you must explicitly reference it: `${data.variable@nodename}` or collect all values: `${data.variable*}`.
+
+See [Job Variables Reference - Global Scope](/manual/jobs/job-variables.md#global-scope) for more details.
+
+### Execution Order
+
+The order in which steps execute is determined by the [Workflow Strategy](/manual/jobs/workflow-strategies/index.md):
+
+- **Node-First Strategy** (default): Each node runs all steps before moving to the next node
+- **Sequential Strategy**: Each step runs on all nodes before moving to the next step  
+- **Parallel Strategy**: Steps run simultaneously across nodes
+
+When mixing Node Steps and Workflow Steps (which is common):
+- Node Steps may execute multiple times (once per node)
+- Workflow Steps execute only once
+- The execution order follows the workflow strategy
+- Workflow Steps can access aggregated data from all Node Steps that executed before them
+
+**Example Workflow:**
+
+```
+Step 1: Node Step - Check disk space on all web servers
+Step 2: Workflow Step - Determine which server has the most free space
+Step 3: Node Step - Deploy application to the server with most space
+Step 4: Workflow Step - Update load balancer to include new deployment
+```
+
+For more information on building workflows, see [Job Workflows](/manual/jobs/job-workflows.md).
 
 ## Node Steps
 
