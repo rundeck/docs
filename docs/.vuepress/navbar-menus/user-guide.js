@@ -62,9 +62,5 @@ export default [
   {
     link: '/manual/10-user',
     text: 'Profile Menu'
-  },
-  {
-    link: '/manual/document-format-reference/index',
-    text: 'Document Formats'
   }
 ]
