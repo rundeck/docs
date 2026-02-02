@@ -51,7 +51,7 @@ All SSH Keys and Passwords are stored under the `keys/` top-level path.
 
 **Note:** In general if a "key storage path" and another configuration option are both specified, the "key storage path" will be used.
 
-It is possible to embed context property references within the key storage path such as `${job.project}`. See [User Guide - Creating Job Workflows - Context Variables](/manual/jobs/job-workflows.md#context-variables).
+It is possible to embed context property references within the key storage path such as `${job.project}`. See [Job Variables Reference](/manual/jobs/job-variables.md).
 
 ### SFTP File Copier
 
@@ -171,7 +171,7 @@ When connecting to the remote node, Rundeck will look for a property/attribute s
 
 If the private key is encrypted with a passphrase use a "Secure Remote Authentication Option" to prompt the user to enter the passphrase when executing on the Node. See below.
 
-It is possible to embed context property references within the keypath such as `${job.project}`. See [User Guide - Creating Job Workflows - Context Variables](/manual/jobs/job-workflows.md#context-variables).
+It is possible to embed context property references within the keypath such as `${job.project}`. See [Job Variables Reference](/manual/jobs/job-variables.md).
 
 #### SSH Private Key Storage
 

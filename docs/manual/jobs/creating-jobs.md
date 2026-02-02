@@ -97,7 +97,7 @@ The value for the retry can be:
 
 Each execution will be started with context variables
 indicating the current retry attempt and whether it was a retry.
-See [Context Variables](/manual/jobs/job-workflows.md#context-variables).
+See [Job Variables Reference](/manual/jobs/job-variables.md).
 
 Optionally a delay between retries can be established:
 
