@@ -232,7 +232,7 @@ export default [{
           collapsible: true,
           link: '/manual/projects/node-execution/',
           children: [
-            '/manual/projects/node-execution/',
+            {text: "Overview", link: '/manual/projects/node-execution/'},
             '/manual/projects/node-execution/ssh',
             '/manual/projects/node-execution/openssh',
             '/manual/projects/node-execution/bastionssh',
