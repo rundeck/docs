@@ -12,16 +12,8 @@ export default [
     text: 'Jobs'
   },
   {
-    link: '/manual/plugins/index.md',
-    text: 'Plugins'
-  },
-  {
     link: '/manual/05-nodes',
     text: 'Nodes'
-  },
-  {
-    text: 'Key Storage',
-    link: '/manual/key-storage/index'
   },
   {
     link: '/manual/06-commands',
@@ -32,6 +24,10 @@ export default [
     text: 'Activity'
   },
   {
+    link: '/manual/webhooks',
+    text: 'Webhooks'
+  },
+  {
     link: '/manual/schedules/project-schedules',
     text: 'Schedules'
   },
@@ -40,28 +36,32 @@ export default [
     text: 'Calendars'
   },
   {
-    link: '/manual/webhooks',
-    text: 'Webhooks'
+    link: '/manual/healthchecks',
+    text: 'Health Checks'
   },
   {
     link: '/manual/tour-manager',
     text: 'Tour Manager'
   },
   {
-    link: '/manual/project-settings',
-    text: 'Project Settings'
-  },
-  {
     link: '/manual/system-configs',
     text: 'System Menu'
   },
   {
-    link: '/manual/10-user',
-    text: 'Profile Menu'
+    text: 'Key Storage',
+    link: '/manual/key-storage/index'
+  },
+  {
+    link: '/manual/plugins/index.md',
+    text: 'Plugins'
   },
   {
     link: '/manual/integrations/index',
     text: 'Integrations'
+  },
+  {
+    link: '/manual/10-user',
+    text: 'Profile Menu'
   },
   {
     link: '/manual/document-format-reference/index',
