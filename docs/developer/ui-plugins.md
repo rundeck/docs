@@ -1,18 +1,27 @@
 # UI Plugins
 
-## About
+## Overview
 
-UI Plugins provide a way to include Javascript and CSS files
-in various parts of the Rundeck GUI's HTML pages.
-You can define which pages of the GUI should include your plugin files,
-and use the Javascript and CSS to modify or add new features to the GUI.
+UI Plugins extend the Rundeck web interface by injecting custom JavaScript and CSS into specific pages. They enable you to:
+
+- Add new tabs and visualizations to existing pages
+- Enhance the user interface with custom components
+- Integrate with external systems via the browser
+- Create custom dashboards and reports
+- Modify existing UI behavior
+
+**Common Use Cases:**
+- Custom metrics dashboards (execution statistics, ROI summaries)
+- Enhanced job list views with additional data
+- Integration with external monitoring/analytics tools
+- Custom data visualizations using Chart.js or other libraries
+- Workflow enhancements and automation tools
 
 UI Plugins that are installed are loaded on all applicable pages by default.
 
-UI Plugins can either be packaged as Zip files or Java Jar files.
-The simplest is to use a Zip plugin type.
+UI Plugins can be packaged as either Zip files or Java Jar files. **Zip plugins are recommended** for most use cases as they're simpler to develop and deploy.
 
-Your Javascript can make use if a simple [Javascript API](#javascript-api) for additional features.
+Your Javascript has access to a [Javascript API](#javascript-api) for integration with Rundeck.
 
 ## Behavior
 
@@ -28,75 +37,296 @@ page. For Zip UI Plugins, the Page configuration determines which scripts and st
 to load. For Java plugins, the `scriptResourcesForPath` and `styleResourcesForPath` methods
 will be called.
 
-## Zip Plugin Type
+## Development Approaches
 
-See the [Plugin Development - Script plugin zip structure](/developer/script-plugin-development.md#plugin-structure)
-for the basics of Zip plugin structure.
+### Simple Zip Plugin (Basic)
 
-The structure of the zip file is:
+The simplest approach: manually create directory structure and package as a zip file.
 
-    [name]-plugin.zip
-    \- [name]-plugin/ -- root directory of zip contents, same name as zip file
-       |- plugin.yaml -- plugin metadata file
-       \- resources/  -- i18n resources, icons, (and for UI plugins: scripts/css)
-       	  |- icon.png
-          |- i18n/
-          |  |- messages.properties
-          |  |- messages_es_419.properties
-          |  \- ...
-          |- js/
-          |  |- myfile.js
-          |  \- ...
-          \- css/
-             |- mystyles.css
-             \- ...
+**Best for:**
+- Simple plugins with minimal JavaScript/CSS
+- Quick prototypes and learning
+- No build tooling needed
 
-### UI Plugin Provider Declaration
+See the [basic structure](#simple-plugin-structure-manual) below.
 
-The following is required in the `providers:` section of the `plugin.yaml`:
+### Modern Gradle + Asset Pipeline (Recommended)
 
-```yaml
-# yaml plugin metadata
+Use Gradle with the Asset Pipeline plugin for production-quality plugins.
 
-name: plugin name
-version: plugin version
-rundeckPluginVersion: 1.2
-author: author name
-date: release date (ISO8601)
-url: website URL
-providers:
-    - service: UI
-      name: my-provider-id
-      plugin-type: ui
-      title: "My Plugin Title"
-      description: "My Plugin Description"
-      ui:
-        - pages: '*'
-          scripts:
-            - js/my-init.js
-            - js/lib/some-dependency.js
-            - js/lib/my-main.js
-          requires: 'some-other-provider'
-        - pages: ['some/path']
-          styles:
-          	- css/mystyles.css
+**Best for:**
+- Complex plugins with multiple JS/CSS files
+- Using asset preprocessing (SCSS, ES6+, minification)
+- Professional plugins shared with community
+- Projects requiring dependency management
+
+**Key Benefits:**
+- Automatic asset compilation and optimization
+- SCSS/SASS support
+- Asset fingerprinting for cache busting
+- Built-in zip packaging
+- Version management with `axion-release`
+
+See the [modern structure](#modern-plugin-structure-with-asset-pipeline) section below.
+
+**Example repositories using this approach:**
+- [ui-job-metrics](https://github.com/rundeck-plugins/ui-job-metrics) - Job execution metrics dashboard
+- [ui-roi-summary](https://github.com/rundeck-plugins/ui-roi-summary) - ROI summary views
+
+## Simple Plugin Structure (Manual)
+
+For basic plugins created manually without build tooling:
+
+```
+[name]-plugin.zip
+\- [name]-plugin/              # Root directory (same name as zip file)
+   |- plugin.yaml              # Plugin metadata file
+   \- resources/               # All plugin resources
+      |- icon.png              # Plugin icon
+      |- i18n/                 # Internationalization
+      |  |- messages.properties
+      |  |- messages_es_419.properties
+      |  \- ...
+      |- js/                   # JavaScript files
+      |  |- init.js
+      |  |- myfile.js
+      |  \- ...
+      \- css/                  # Stylesheets
+         |- mystyles.css
+         \- ...
 ```
 
-For a UI plugin, define a `service: UI` and a `plugin-type: ui`.
-(The `providers` section can also define other providers, of any type.)
+## Modern Plugin Structure (with Asset Pipeline)
 
-For `name:` use a unique provider ID for your plugin.
+For professional plugins using Gradle and Asset Pipeline:
 
-Within the `ui:` section is a list of UI Plugin Page Configurations.
+```
+ui-myplugin/
+├── build.gradle                    # Gradle build with Asset Pipeline
+├── gradle/
+│   ├── libs.versions.toml         # Dependency versions
+│   └── wrapper/                   # Gradle wrapper
+├── src/
+│   └── main/
+│       └── rdplugin/
+│           ├── plugin.yaml        # Plugin metadata
+│           ├── assets/            # SOURCE files (compiled by Asset Pipeline)
+│           │   ├── css/
+│           │   │   ├── variables.css
+│           │   │   └── styles.css
+│           │   └── js/
+│           │       ├── main.js
+│           │       └── lib/
+│           │           ├── support.js
+│           │           └── dataManager.js
+│           └── resources/         # STATIC files (copied as-is)
+│               ├── html/          # HTML templates
+│               │   └── template.html
+│               ├── i18n/          # Internationalization
+│               │   └── messages.properties
+│               ├── icon.png       # Plugin icon
+│               └── js/
+│                   └── init.js    # Initialization script
+└── build/
+    ├── assets/resources/          # COMPILED assets go here
+    │   ├── js/                    # Processed JavaScript
+    │   └── css/                   # Processed CSS
+    └── distributions/             # Final plugin ZIP
+        └── ui-myplugin-1.0.0.zip
+```
 
-UI Plugin Page Configurations consist of:
+### Key Directory Distinctions
 
-- `pages:` A list of applicable Page paths. This can be a single path string, a list of paths, or a `*` which will match all paths.
-- `scripts:` A single file or list of files. These are relative to the `resources` directory in your zip file.
-- `styles:` A single file, or a list of files. Thes are relative to the `resources` directory in your zip file.
-- `requires:` A single or list of other UI plugin provider IDs.
+**`assets/` directory** (Asset Pipeline source):
+- Files here are **processed/compiled** by Asset Pipeline
+- SCSS/SASS compiled to CSS
+- JavaScript can use directives (`//= require`)
+- Asset fingerprinting applied
+- Minification (if enabled)
+- Output goes to `build/assets/resources/`
 
-See [Javascript API](#javascript-api) for additional Javascript information.
+**`resources/` directory** (static files):
+- Files here are **copied as-is** (no processing)
+- HTML templates
+- Internationalization files
+- Icons and images
+- Initialization scripts that load first
+
+**Why this split?**
+- `resources/js/init.js` runs first and sets up your plugin namespace
+- `assets/js/main.js` contains your processed application code
+- HTML templates need to be unprocessed for runtime loading
+- i18n files must remain in `.properties` format
+
+### Example build.gradle
+
+```gradle
+buildscript {
+    repositories {
+        mavenCentral()
+        maven { url "https://repo.grails.org/grails/core" }
+    }
+    dependencies {
+        classpath "com.bertramlabs.plugins:asset-pipeline-gradle:4.5.0"
+    }
+}
+
+plugins {
+    id 'pl.allegro.tech.build.axion-release' version '1.14.0'
+    id 'java'
+}
+
+apply plugin: 'com.bertramlabs.asset-pipeline'
+
+repositories {
+    mavenCentral()
+}
+
+ext.pluginName = 'My UI Plugin'
+ext.pluginDescription = 'Custom UI enhancements'
+ext.archivesBaseName = "ui-myplugin"
+
+// Asset Pipeline configuration
+assets {
+    minifyJs = false        # Enable in production
+    minifyCss = false
+    enableSourceMaps = false
+    includes = ['css/**/*.css', 'js/**/*.js']
+    excludes = ['**/*.html', 'js/lib/**/*.js']  # Don't process libs
+    
+    from "${project.projectDir}/src/main/rdplugin/assets"
+    compileDir = "${project.buildDir}/assets/resources"
+}
+
+// Create plugin ZIP
+task pluginZip(type: Jar) {
+    destinationDirectory = file("build/distributions")
+    archiveBaseName = project.ext.archivesBaseName
+    archiveVersion = project.version
+    archiveExtension = 'zip'
+    
+    from("${project.buildDir}/zip-contents") {
+        into("${archivesBaseName}-${version}")
+    }
+}
+
+build.dependsOn 'pluginZip'
+```
+
+## UI Plugin Configuration (plugin.yaml)
+
+The `plugin.yaml` file defines your plugin metadata and which pages it applies to.
+
+### Basic Example
+
+```yaml
+name: ui-myplugin
+rundeckPluginVersion: 1.2
+author: Your Name
+url: https://github.com/yourorg/your-plugin
+date: 2026-02-02
+version: 1.0.0
+providers:
+    - service: UI
+      name: ui-myplugin
+      plugin-type: ui
+      title: 'My Plugin Title'
+      description: 'Brief description of what this plugin does'
+      ui:
+        - pages: ['menu/jobs', 'scheduledExecution/show']
+          scripts:
+            - js/init.js
+            - js/main.js
+          styles:
+            - css/styles.css
+```
+
+### Configuration Fields
+
+**Top-level fields:**
+- `name:` Unique plugin identifier (lowercase, hyphen-separated)
+- `rundeckPluginVersion:` Use `1.2` or `1.3`
+- `author:` Your name or organization
+- `version:` Plugin version (semantic versioning)
+- `date:` Release date (ISO8601 format)
+- `url:` Project homepage or repository
+
+**Provider configuration:**
+- `service:` Must be `UI`
+- `name:` Provider ID (typically matches plugin name)
+- `plugin-type:` Must be `ui`
+- `title:` Display name shown in Rundeck
+- `description:` Brief description of functionality
+
+**UI section:**
+
+Each entry in the `ui:` array defines page-specific loading:
+
+- `pages:` Which pages to load on
+  - Single path: `'menu/jobs'`
+  - Multiple paths: `['menu/jobs', 'scheduledExecution/show']`
+  - All pages: `'*'` (use sparingly)
+- `scripts:` JavaScript files to load (order matters)
+  - Paths relative to `resources/` directory
+  - Listed in load order
+- `styles:` CSS files to load
+  - Paths relative to `resources/` directory
+- `requires:` (Optional) Other UI plugin IDs this depends on
+  - Ensures load order dependencies
+
+### Common Page Paths
+
+| Page | Path | Description |
+|------|------|-------------|
+| Job List | `menu/jobs` | Jobs page/list view |
+| Job Detail | `scheduledExecution/show` | Individual job page |
+| Execution Page | `execution/show` | Individual execution view |
+| Activity | `reports/index` | Activity/history page |
+| Project Home | `menu/projectHome` | Project dashboard |
+| Nodes | `framework/nodes` | Nodes page |
+| Commands | `framework/adhoc` | Commands page |
+| All Pages | `*` | Every page (use carefully) |
+
+::: warning Performance Tip
+Only load your plugin on pages where it's needed. Avoid using `pages: '*'` unless absolutely necessary, as it loads on every page and can impact performance.
+:::
+
+### Multiple Page Configurations
+
+You can define different scripts/styles for different pages:
+
+```yaml
+ui:
+  # Load on job list with full dashboard
+  - pages: ['menu/jobs']
+    scripts:
+      - js/init.js
+      - js/dashboard.js
+      - js/charts.min.js
+    styles:
+      - css/styles.css
+  
+  # Load on job detail with minimal code
+  - pages: ['scheduledExecution/show']
+    scripts:
+      - js/init.js
+      - js/job-detail.js
+    styles:
+      - css/styles.css
+```
+
+### Script Load Order
+
+::: tip Important
+Script order matters! List dependencies first:
+
+```yaml
+scripts:
+  - js/lib/chart.min.js     # Third-party library
+  - js/init.js               # Initialize namespace
+  - js/main.js               # Your main code
+```
+:::
 
 ### Localization
 
@@ -105,6 +335,626 @@ For the basics of zip plugin localization see: [Plugin Development - Internation
 ### Icon
 
 See [Plugin Icons](/developer/plugin-properties.md#plugin-icons).
+
+## JavaScript Development Patterns
+
+### UI Version Detection
+
+Rundeck has different UI versions (Classic UI vs. Current UI). Plugins should detect which UI is active:
+
+**Pattern: Detect Current UI**
+
+```javascript
+// Check if Current UI is active
+const currentUi = !!document.querySelector('.ui-type-current');
+
+if (currentUi) {
+    console.log('Current UI detected - initialize plugin');
+    // Your plugin initialization code
+} else {
+    console.log('Classic UI detected - plugin may not be compatible');
+    // Optionally handle Classic UI or skip initialization
+}
+```
+
+**Why this matters:**
+- Current UI and Classic UI have different DOM structures
+- Selectors that work in one may not work in the other
+- Prevents errors when plugin loads on incompatible UI version
+- Some features (like certain APIs) are only available in Current UI
+
+**Real-world example from ui-job-metrics:**
+
+```javascript
+function initJobMetrics() {
+  const currentUi = !!document.querySelector('.ui-type-current');
+  
+  if (currentUi) {
+    console.log('Initializing Job Metrics');
+    var jobListSupport = new JobListSupport();
+    
+    jQuery(function() {
+      // Initialize your plugin components
+    });
+  } else {
+    console.log('Job Metrics requires Current UI');
+  }
+}
+
+// Auto-initialize when script loads
+initJobMetrics();
+```
+
+### Plugin Namespace Pattern
+
+Avoid global namespace pollution by using a dedicated namespace object.
+
+**Pattern: Use `window.RDPRO` or similar**
+
+```javascript
+// resources/js/init.js - Loads first, sets up namespace
+jQuery(function() {
+  // Initialize global namespace if it doesn't exist
+  if (typeof window.RDPRO != "object") {
+      window.RDPRO = {};
+  }
+  
+  // Register your plugin in the namespace
+  window.RDPRO["ui-myplugin"] = {
+      name: "ui-myplugin",
+      version: "1.0.0",
+      initialized: false
+  };
+});
+```
+
+```javascript
+// assets/js/main.js - Your main plugin code
+function initMyPlugin() {
+  // Access your namespace
+  var plugin = window.RDPRO["ui-myplugin"];
+  
+  if (plugin.initialized) {
+    console.log('Plugin already initialized');
+    return;
+  }
+  
+  // Your initialization logic here
+  
+  plugin.initialized = true;
+}
+
+initMyPlugin();
+```
+
+**Benefits:**
+- Prevents naming conflicts with other plugins
+- Provides a clear plugin registry
+- Makes debugging easier (inspect `window.RDPRO` in console)
+- Allows communication between related plugins
+
+### Dark Mode / Theme Detection
+
+Rundeck supports light and dark themes. Plugins should adapt their styling and charts accordingly.
+
+**Pattern: Detect Current Theme**
+
+```javascript
+function getChartThemeColors() {
+  // Check current theme
+  const isDarkMode = document.documentElement.getAttribute('data-color-theme') === 'dark';
+  
+  return {
+    textColor: isDarkMode ? '#ffffff' : '#666666',
+    gridColor: isDarkMode ? 'rgba(160, 160, 160, 0.1)' : 'rgba(0, 0, 0, 0.1)',
+    borderColor: isDarkMode ? 'rgba(160, 160, 160, 0.2)' : 'rgba(0, 0, 0, 0.2)',
+    backgroundColor: isDarkMode ? '#1e1e1e' : '#ffffff'
+  };
+}
+
+// Apply theme to Chart.js
+function createChart(ctx, data) {
+  const theme = getChartThemeColors();
+  
+  new Chart(ctx, {
+    type: 'line',
+    data: data,
+    options: {
+      plugins: {
+        legend: {
+          labels: {
+            color: theme.textColor
+          }
+        }
+      },
+      scales: {
+        x: {
+          grid: {
+            color: theme.gridColor
+          },
+          ticks: {
+            color: theme.textColor
+          }
+        },
+        y: {
+          grid: {
+            color: theme.gridColor
+          },
+          ticks: {
+            color: theme.textColor
+          }
+        }
+      }
+    }
+  });
+}
+```
+
+**Watching for theme changes:**
+
+```javascript
+// Watch for theme changes
+const observer = new MutationObserver((mutations) => {
+  mutations.forEach((mutation) => {
+    if (mutation.attributeName === 'data-color-theme') {
+      console.log('Theme changed, updating charts...');
+      updateChartsForTheme();
+    }
+  });
+});
+
+observer.observe(document.documentElement, {
+  attributes: true,
+  attributeFilter: ['data-color-theme']
+});
+```
+
+### Adding Tabs to Existing Pages
+
+Common pattern for adding new tabs to pages like the Job List.
+
+**Pattern: JobListSupport.initPage()**
+
+```javascript
+// Helper class for adding tabs (from support.js pattern)
+function JobListSupport() {
+  this.initPage = function(
+    firsttab,      // Existing tab selector (e.g., '#joblistContent')
+    firsttitle,    // Title for existing tab
+    contentid,     // ID for your new tab content
+    tabid,         // ID for your new tab link
+    tabname,       // Display name for your tab
+    tabcontent,    // HTML content for your tab
+    ontabcontent,  // Callback when tab is created
+    makefirst,     // true = insert your tab first
+    newactive      // true = make your tab active by default
+  ) {
+    // Tab creation logic...
+    // See full implementation in ui-job-metrics/ui-roi-summary repos
+  }
+}
+
+// Usage example
+var jobListSupport = new JobListSupport();
+
+jobListSupport.initPage(
+  '#joblistContent',           // Existing content selector
+  'Jobs',                      // Existing tab title
+  'job-metrics-content',       // Your tab content ID
+  'job-metrics-tab',           // Your tab ID
+  'Job Metrics',               // Your tab title
+  '<div id="metrics-container"></div>',  // Your HTML
+  function(tabElement) {
+    // Called after tab is created
+    initializeMetricsView(tabElement);
+  },
+  false,    // Don't make it first tab
+  false     // Don't make it active by default
+);
+```
+
+### LocalStorage for User Preferences
+
+Store user-configurable settings in browser localStorage.
+
+**Pattern: Persistent Settings**
+
+```javascript
+// Save setting
+function saveTimeWindow(days) {
+  localStorage.setItem('rundeck.plugin.ui-myplugin.timeWindow', days.toString());
+}
+
+// Load setting with default
+function getTimeWindow() {
+  const saved = localStorage.getItem('rundeck.plugin.ui-myplugin.timeWindow');
+  return saved ? parseInt(saved) : 30; // Default: 30 days
+}
+
+// Using with Knockout.js (common in Rundeck UI)
+function GraphOptions() {
+  var self = this;
+  
+  // Initialize with saved value or default
+  const savedTimeWindow = localStorage.getItem('rundeck.plugin.ui-myplugin.timeWindow');
+  self.timeWindow = ko.observable(savedTimeWindow ? parseInt(savedTimeWindow) : 30);
+  
+  // Persist changes automatically
+  self.timeWindow.subscribe(function(newValue) {
+    localStorage.setItem('rundeck.plugin.ui-myplugin.timeWindow', newValue.toString());
+    console.log('Time window updated:', newValue);
+  });
+}
+```
+
+**Best practice:**
+- Use namespaced keys: `rundeck.plugin.[your-plugin-name].[setting-name]`
+- Provide sensible defaults
+- Validate loaded values (they could be corrupted)
+
+## Complete Working Example
+
+Here's a minimal but complete UI plugin that adds a custom tab to the Job List page:
+
+### Directory Structure
+
+```
+ui-hello-world/
+├── build.gradle
+└── src/
+    └── main/
+        └── rdplugin/
+            ├── plugin.yaml
+            ├── resources/
+            │   ├── icon.png
+            │   ├── i18n/
+            │   │   └── messages.properties
+            │   └── js/
+            │       └── init.js
+            └── assets/
+                ├── css/
+                │   └── styles.css
+                └── js/
+                    ├── lib/
+                    │   └── support.js
+                    └── hello.js
+```
+
+### plugin.yaml
+
+```yaml
+name: ui-helloworld
+rundeckPluginVersion: 1.2
+author: Your Name
+url: https://github.com/yourname/ui-hello-world
+date: 2026-02-02
+version: 1.0.0
+providers:
+    - service: UI
+      name: ui-helloworld
+      plugin-type: ui
+      title: 'Hello World Plugin'
+      description: 'Example UI plugin demonstrating basic patterns'
+      ui:
+        - pages: ['menu/jobs']
+          scripts:
+            - js/init.js
+            - js/hello.js
+          styles:
+            - css/styles.css
+```
+
+### resources/js/init.js
+
+```javascript
+// Initialize plugin namespace
+jQuery(function() {
+  if (typeof window.RDPRO != "object") {
+      window.RDPRO = {};
+  }
+  
+  window.RDPRO["ui-helloworld"] = {
+      name: "ui-helloworld",
+      version: "1.0.0",
+      initialized: false
+  };
+  
+  console.log('Hello World plugin namespace created');
+});
+```
+
+### assets/js/lib/support.js
+
+```javascript
+function JobListSupport() {
+  this.initPage = function(firsttab, firsttitle, contentid, tabid, 
+                          tabname, tabcontent, ontabcontent, makefirst, newactive) {
+    var main = jQuery(firsttab);
+    var activeOld = newactive ? '' : 'active';
+    var activenew = newactive ? 'active' : '';
+    
+    var newTabLi = `<li class="${activenew}">
+      <a href="#${contentid}" data-toggle="tab" id="${tabid}">${tabname}</a>
+    </li>`;
+    
+    if (!main.hasClass('tab-pane')) {
+      // First tab - need to create tab structure
+      var tabA = `<li class="${activeOld}">
+        <a href="${firsttab}" data-toggle="tab" id="${firsttab.substr(1)}_tab">${firsttitle}</a>
+      </li>`;
+      var tabB = newTabLi;
+      
+      if (makefirst) {
+        [tabA, tabB] = [tabB, tabA];
+      }
+      
+      let tabs = jQuery(`
+        <div class="vue-tabs">
+          <div class="nav-tabs-navigation">
+            <div class="nav-tabs-wrapper">
+              <ul class="nav nav-tabs">${tabA}${tabB}</ul>
+            </div>
+          </div>
+          <div class="tab-content"></div>
+        </div>
+      `);
+      
+      let newtab = jQuery(`<div id="${contentid}" class="tab-pane ${activenew}">${tabcontent}</div>`);
+      let maintabcontent = tabs.find('.tab-content');
+      main.wrap(maintabcontent);
+      newtab.insertAfter(main);
+      main.addClass('tab-pane ' + activeOld);
+      tabs.insertBefore(main.parent());
+      
+      if (typeof ontabcontent === 'function') {
+        ontabcontent(newtab[0]);
+      }
+    } else {
+      // Tab structure already exists
+      let tabs = main.parent().parent().find('.nav.nav-tabs');
+      
+      if (makefirst) {
+        tabs.prepend(newTabLi);
+      } else {
+        tabs.append(newTabLi);
+      }
+      
+      let newtab = jQuery(`<div id="${contentid}" class="tab-pane">${tabcontent}</div>`);
+      newtab.insertAfter(main);
+      
+      if (typeof ontabcontent === 'function') {
+        ontabcontent(newtab[0]);
+      }
+    }
+    
+    return jQuery('#' + tabid);
+  };
+}
+```
+
+### assets/js/hello.js
+
+```javascript
+//= require ./lib/support
+
+function initHelloWorld() {
+  // Check for Current UI
+  const currentUi = !!document.querySelector('.ui-type-current');
+  
+  if (!currentUi) {
+    console.log('Hello World plugin requires Current UI');
+    return;
+  }
+  
+  console.log('Initializing Hello World plugin');
+  
+  jQuery(function() {
+    var plugin = window.RDPRO["ui-helloworld"];
+    
+    if (plugin.initialized) {
+      return;
+    }
+    
+    var jobListSupport = new JobListSupport();
+    
+    // Create tab content
+    var tabContent = `
+      <div style="padding: 20px;">
+        <h3>Hello from UI Plugin!</h3>
+        <p>This tab was added by a UI plugin.</p>
+        <p>Project: ${window._rundeck.projectName}</p>
+        <button id="hello-button" class="btn btn-primary">Click Me</button>
+        <div id="hello-output" style="margin-top: 20px;"></div>
+      </div>
+    `;
+    
+    // Add the tab
+    jobListSupport.initPage(
+      '#joblistContent',
+      'Jobs',
+      'hello-tab-content',
+      'hello-tab',
+      'Hello World',
+      tabContent,
+      function(tabElement) {
+        // Tab created callback
+        jQuery('#hello-button').click(function() {
+          var count = localStorage.getItem('hello.clickCount') || 0;
+          count = parseInt(count) + 1;
+          localStorage.setItem('hello.clickCount', count);
+          
+          jQuery('#hello-output').html(
+            `<div class="alert alert-success">
+              Button clicked ${count} time(s)!
+            </div>`
+          );
+        });
+      },
+      false,  // Not first tab
+      false   // Not active by default
+    );
+    
+    plugin.initialized = true;
+    console.log('Hello World plugin initialized');
+  });
+}
+
+// Auto-initialize
+initHelloWorld();
+```
+
+### assets/css/styles.css
+
+```css
+#hello-tab-content {
+    background: var(--background-color, #ffffff);
+    color: var(--text-color, #333333);
+}
+
+#hello-button {
+    background: var(--primary-color, #337ab7);
+    border-color: var(--primary-color, #2e6da4);
+}
+
+#hello-button:hover {
+    background: var(--primary-hover-color, #286090);
+    border-color: var(--primary-hover-border, #204d74);
+}
+```
+
+### Build and Install
+
+```bash
+# Build
+./gradlew clean build
+
+# Install
+cp build/distributions/ui-helloworld-1.0.0.zip $RDECK_BASE/libext/
+
+# No restart required - just reload the page
+```
+
+## Best Practices
+
+### 1. Always Detect UI Version
+
+```javascript
+const currentUi = !!document.querySelector('.ui-type-current');
+if (!currentUi) {
+    console.warn('Plugin requires Current UI');
+    return;
+}
+```
+
+### 2. Use Plugin Namespaces
+
+```javascript
+// Good
+window.RDPRO["ui-myplugin"] = { /* ... */ };
+
+// Bad - pollutes global namespace
+window.myPluginData = { /* ... */ };
+```
+
+### 3. Handle Theme Changes
+
+```javascript
+// Support both light and dark themes
+const isDarkMode = document.documentElement.getAttribute('data-color-theme') === 'dark';
+```
+
+### 4. Check for Initialization
+
+```javascript
+if (plugin.initialized) {
+    return; // Prevent double-initialization
+}
+```
+
+### 5. Use LocalStorage Carefully
+
+```javascript
+// Always namespace your keys
+localStorage.setItem('rundeck.plugin.myplugin.setting', value);
+
+// Always provide defaults
+const setting = localStorage.getItem('key') || defaultValue;
+
+// Always validate loaded data
+const days = parseInt(saved);
+if (isNaN(days) || days < 1) {
+    days = defaultValue;
+}
+```
+
+### 6. Load Scripts in Correct Order
+
+```yaml
+scripts:
+  - js/lib/chart.min.js    # Third-party deps first
+  - js/init.js              # Namespace setup
+  - js/main.js              # Your code last
+```
+
+### 7. Only Load on Necessary Pages
+
+```yaml
+# Good - specific pages
+pages: ['menu/jobs', 'scheduledExecution/show']
+
+# Bad - loads everywhere (performance impact)
+pages: '*'
+```
+
+### 8. Use Asset Directives for Code Organization
+
+```javascript
+//= require ./lib/support
+//= require ./lib/dataManager
+// Your main code here
+```
+
+### 9. Provide User Feedback
+
+```javascript
+// Show loading states
+showSpinner();
+fetchData().then(() => {
+    hideSpinner();
+    showSuccess();
+}).catch(() => {
+    hideSpinner();
+    showError();
+});
+```
+
+### 10. Test in Both Themes
+
+- Test your UI in light mode
+- Test your UI in dark mode
+- Ensure charts/visualizations adapt correctly
+- Check contrast and readability
+
+### 11. Handle Errors Gracefully
+
+```javascript
+try {
+    initializePlugin();
+} catch (error) {
+    console.error('Plugin initialization failed:', error);
+    // Show user-friendly error message
+}
+```
+
+### 12. Clean Up Resources
+
+```javascript
+// If your plugin creates intervals/observers
+window.addEventListener('beforeunload', function() {
+    clearInterval(myInterval);
+    observer.disconnect();
+});
+```
 
 ## Java Plugin Type
 
