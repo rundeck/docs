@@ -385,4 +385,4 @@ curl -X PUT \
 
 - [Project Settings](/manual/project-settings.md) - General project configuration
 - [Activity](/manual/08-activity.md) - View execution history
-- [Executions API](/api/rundeck-api.md#executions) - Programmatic execution management
+- [Executions API](/api/index.md#executions) - Programmatic execution management
