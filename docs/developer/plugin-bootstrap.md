@@ -155,18 +155,18 @@ rundeck-plugin-bootstrap \
 ```
 
 **Generates:**
-- `~/projects/apiintegration/` directory
-- Complete Java project with Gradle build
-- Template plugin implementing NodeStepPlugin
-- Test scaffolding
-- README and Makefile
+- `~/projects/api-integration/` directory (kebab-case from plugin name)
+- Complete Groovy/Java project with Gradle build
+- Template plugin implementing NodeStepPlugin with helper classes
+- Spock test scaffolding
+- README with basic instructions
 
 **Next steps:**
 ```bash
-cd ~/projects/apiintegration
-# Edit src/main/java/.../ApiIntegration.java
+cd ~/projects/api-integration
+# Edit src/main/groovy/com/plugin/apiintegration/ApiIntegration.groovy
 ./gradlew build
-# Plugin JAR is in build/libs/
+# Plugin JAR is in build/libs/api-integration-0.1.0.jar
 ```
 
 ### Create a Notification Plugin (Java)
@@ -285,39 +285,59 @@ See [example tests](https://github.com/rundeck-plugins/rundeck-ec2-nodes-plugin/
 
 ### Java Plugin Structure
 
+The bootstrap tool generates a complete Gradle project with Groovy source files:
+
 ```
-myplugin/
-├── build.gradle              # Gradle build with Rundeck dependencies
-├── settings.gradle
-├── README.md                 # Plugin documentation template
-├── Makefile                  # Build shortcuts
+example-workflow-node-step/
+├── build.gradle                        # Gradle build with Rundeck dependencies
+├── README.md                           # Plugin documentation template
 └── src/
     ├── main/
-    │   ├── java/
-    │   │   └── com/plugin/myplugin/
-    │   │       ├── MyPlugin.java        # Your plugin implementation
-    │   │       ├── Constants.groovy     # Constants and configuration
-    │   │       └── ExampleApis.groovy   # API integration helpers
+    │   ├── groovy/                     # Plugin source (Groovy)
+    │   │   └── com/plugin/exampleworkflownodestep/
+    │   │       ├── ExampleWorkflowNodeStep.groovy  # Main plugin class
+    │   │       ├── Constants.groovy                # Constants and defaults
+    │   │       ├── ExampleApis.groovy              # API helper methods
+    │   │       ├── FailureReason.groovy            # Failure reason enum
+    │   │       └── Util.groovy                     # Utility methods
     │   └── resources/
     │       └── resources/
-    │           └── icon.png             # Plugin icon
+    │           └── icon.png                        # Plugin icon
     └── test/
         └── groovy/
-            └── com/plugin/myplugin/
-                └── MyPluginSpec.groovy  # Spock tests
+            └── com/plugin/exampleworkflownodestep/
+                └── ExampleWorkflowNodeStepSpec.groovy  # Spock test
 ```
+
+**Key Points:**
+- Uses **Groovy** (not pure Java) for more concise code
+- Includes helper classes (Constants, ExampleApis, FailureReason, Util)
+- Package name is lowercase derived from plugin name
+- Build output: `build/libs/<plugin-name>-<version>.jar`
+- Spock framework for testing
 
 ### Script Plugin Structure
 
+Script plugins are simpler zip-based plugins:
+
 ```
-myplugin/
-├── build.gradle              # Gradle build for packaging
-├── README.md
-├── Makefile
-└── contents/
-    ├── plugin.yaml           # Plugin metadata and configuration
-    └── myplugin.sh          # Your plugin script
+example-script-workflow-step/
+├── build.gradle              # Gradle build (uses remote build script)
+├── Makefile                  # Alternative build tool
+├── README.md                 # Plugin documentation
+├── plugin.yaml               # Plugin metadata and configuration
+├── contents/
+│   └── exec                  # Your plugin script (bash)
+└── resources/
+    └── icon.png              # Plugin icon
 ```
+
+**Key Points:**
+- Script file in `contents/` directory
+- `plugin.yaml` defines metadata and configuration properties
+- Can use either Gradle or Make for building
+- Build output: `build/libs/<plugin-name>.zip`
+- No compilation needed - edit script and repackage
 
 ## Customizing Generated Plugins
 
