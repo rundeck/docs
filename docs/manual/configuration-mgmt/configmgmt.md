@@ -1,4 +1,4 @@
-# System Configuration (Enterprise Only)
+# System Configuration (Commercial)
 
 :::enterprise
 :::

@@ -10,12 +10,12 @@ a PluginGroup definition to define common Properties such as credentials and con
 
 ## Defining a PluginGroup
 
-Defining a PluginGroup is just like defining any other Java plugin, see [Plugin Development](/developer/01-plugin-development.md#java-plugin-development).
+Defining a PluginGroup is just like defining any other Java plugin, see [Plugin Development](/developer/java-plugin-development.md).
 
 Your implementation class will extend a Java interface, named [PluginGroup]({{$javaDocBase}}/com/dtolabs/rundeck/plugins/config/PluginGroup.html), 
 apply the `@Plugin` annotation, and will define any Plugin Properties that will be used by your other plugins.
 
-Typically, the Plugin Properties are defined using [Plugin Annotations](/developer/02-plugin-annotations.md).
+Typically, the Plugin Properties are defined using [Plugin Annotations](/developer/java-plugin-development.md#plugin-annotations).
 
 ### Example
 

@@ -102,7 +102,7 @@ Other settings:
 
 - `rundeck.server.uuid`: This is used to manually specify the server UUID for certain cluster and licensing needs.
 - `framework.log.dispatch.console.format`: Default format for non-terse node execution logging run by the `dispatch` CLI tool.
-- `execution.script.tokenexpansion.enabled`: Whether inline script token expansion is enabled, default `true`. If `false`, the "Inline Script Content" syntax described in [User Guide - Creating Job Workflows - Context Variables](/manual/jobs/job-workflows.md#context-variables) is disabled.
+- `execution.script.tokenexpansion.enabled`: Whether inline script token expansion is enabled, default `true`. If `false`, the "Inline Script Content" syntax described in [Job Variables Reference](/manual/jobs/job-variables.md#inline-script-content) is disabled.
 - `communityNews.disabled`: Default is not set, or false. Disables the external polling of Community News feed. Link will persist but will not poll, and clicking this link will open a new browser tab and navigate to the web-based version of Community News.
 
 #### Static authentication tokens for API access:
@@ -734,7 +734,7 @@ java -Xms4g -Xmx8g -jar rundeck.war
 ```
 
 :::tip
-It is also possible to reconfigure the default path for files according to [this page](/developer/14-file-upload-plugins.md#about) using the property in this form:
+It is also possible to reconfigure the default path for files according to [this page](/developer/file-upload-plugins.md#about) using the property in this form:
 
 `framework.plugin.FileUpload.filesystem-temp.basePath=/desired/path`
 

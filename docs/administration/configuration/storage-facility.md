@@ -64,11 +64,11 @@ For information on configuring Rundeck to use specific Databases, see:
 
 To develop your own storage plugin, see:
 
-- [Storage Plugin Development](/developer/07-storage-plugin.md).
+- [Storage Plugin Development](/developer/storage-plugins.md).
 
 ## Storage Converters
 
-Files can be encrypted in the storage backend by use of a [Storage Converter plugin](/developer/08-storage-converter-plugins.md). A typical plugin would encrypt data at write time, and decrypt it at read time.
+Files can be encrypted in the storage backend by use of a [Storage Converter plugin](/developer/storage-converter-plugins.md). A typical plugin would encrypt data at write time, and decrypt it at read time.
 
 The Storage Converter Plugin handles reading and writing the content for any matching resources. The subsequent data is stored in the storage backend (on-disk or in a database) alongside the metadata for the file.
 
@@ -76,7 +76,7 @@ Converter plugins do not have to manage storing the data, that will be handled b
 
 To develop your own storage converter plugin, see:
 
-- [Storage Converter Plugin Development](/developer/08-storage-converter-plugins.md).
+- [Storage Converter Plugin Development](/developer/storage-converter-plugins.md).
 
 ### Using Encryption
 

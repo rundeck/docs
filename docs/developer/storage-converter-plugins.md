@@ -14,7 +14,7 @@ See: [Configuring the Storage Converter Plugin](/manual/key-storage/index.md#con
 
 ## Java Plugin Type
 
-- _Note_: Refer to [Java Development](/developer/01-plugin-development.md#java-plugin-development) for information about developing a Java plugin for Rundeck.
+- _Note_: Refer to [Java Development](/developer/java-plugin-development.md) for information about developing a Java plugin for Rundeck.
 
 The plugin interface is [StorageConverterPlugin]({{$javaDocBase}}/com/dtolabs/rundeck/plugins/storage/StorageConverterPlugin.html).
 

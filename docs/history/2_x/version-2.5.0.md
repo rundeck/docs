@@ -20,7 +20,7 @@ This release has many new features and bugfixes, and contains some refactoring u
 * New `rd-acl` commandline tool can list test and generate .aclpolicy file contents, see [rd-acl](/rd-cli/rd-acl.md)
 * New Orchestrator plugin point. Orchestrators can be used to batch and sequence the matched nodes used in node dispatching, e.g.: only allow a certain % to run simultaneously.
 	* [Plugins User Guide -  Orchestrator Plugins](/manual/plugins/full-list.md)
-	* [Plugin Developer Guide -  Orchestrator Plugin](/developer/09-orchestrator-plugin.md)
+	* [Plugin Developer Guide -  Orchestrator Plugin](/developer/orchestrator-plugins.md)
 	* [Example code](https://github.com/rundeck/rundeck/tree/development/examples/example-java-orchestrator-plugin)
 * Added hybrid LDAP + properties file group authentication for JAAS (`JettyCombinedLdapLoginModule`)
 	* [Administration - Authentication - Combining LDAP with other modules](/administration/security/authentication.md)

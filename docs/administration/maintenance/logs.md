@@ -41,7 +41,7 @@ Streaming Log Readers
 : can load the log data from another system, rather than from the local file system. Only a single Log Reader can be configured for the a server, and Rundeck's filesystem-based log reader is used by default.
 
 To learn how to develop your own Logging plugin
-see [Plugin Developer Guide - Logging Plugin](/developer/06-logging-plugins.md).
+see [Plugin Developer Guide - Logging Plugin](/developer/logging-plugins.md).
 
 ## Rotation of service.log (Linux)
 

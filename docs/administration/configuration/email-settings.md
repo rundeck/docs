@@ -78,7 +78,7 @@ rundeck.mail.template.log.formatted=true/false (if true, prefix log lines with c
 
 If a template filepath ends with `.md` or `.markdown`, then it will be interpreted as a Markdown formatted template. Otherwise it is expected that the template file contains HTML.
 
-The Subject line, filepath, and file contents can all contain embedded property references of the form `${group.key}`. The available properties are mostly the same as those available for Notification Plugins, including the `execution.*` and `job.*` values. See [Plugin Developer Guide - Notification Plugin - Execution Data](/developer/05-notification-plugins.md#execution-data).
+The Subject line, filepath, and file contents can all contain embedded property references of the form `${group.key}`. The available properties are mostly the same as those available for Notification Plugins, including the `execution.*` and `job.*` values. See [Plugin Developer Guide - Notification Plugin - Execution Data](/developer/notification-plugins.md#execution-data).
 
 The "Context Variables" values used within the execution are available just as they are in the execution, so options would be available as `${option.name}`.
 

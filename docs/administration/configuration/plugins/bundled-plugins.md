@@ -38,7 +38,7 @@ Defines Script Node Executor and Script File Copier.
 
 For more detail see [Script Plugin](/manual/projects/node-execution/script.md).
 
-Executes an external script file to perform the command, useful for developing your own plugin with the [Script Plugin Development](/developer/01-plugin-development.md#script-plugin-development) model.
+Executes an external script file to perform the command, useful for developing your own plugin with the [Script Plugin Development](/developer/script-plugin-development.md) model.
 
 File: `rundeck-script-plugin-{{$rundeckVersionFull}}.jar`
 
