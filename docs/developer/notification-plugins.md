@@ -1,154 +1,192 @@
 # Notification Plugin
 
-## About
+## Overview
 
-Notifications are actions that are performed when a Job starts or finishes.
+Notification plugins allow you to send alerts and notifications when job events occur. They integrate Rundeck with external systems like chat platforms, ticketing systems, monitoring tools, and custom notification services.
 
-Currently, there are five conditions that can trigger notifications:
+When a job starts, succeeds, fails, or meets other conditions, Rundeck triggers your notification plugin to send information to external systems, enabling real-time awareness of job execution status across your organization.
 
-- `onstart` - the Job started
-- `onsuccess` - the Job completed without error
-- `onfailure` - the Job failed or was aborted
-- `onavgduration` - The Execution exceed the average duration of the Job
-- `onretryablefailure` - the Job failed but will be retried
+## What Notification Plugins Do
 
-Rundeck has two built-in notification types that can be configured for Jobs:
+Notification plugins can:
 
-1. Send an email to a list of addresses
-2. POST XML to a list of URLs
+- **Send alerts** - Notify teams in Slack, Teams, Discord, or other chat platforms
+- **Create tickets** - Open or update tickets in JIRA, ServiceNow, PagerDuty, etc.
+- **Update dashboards** - Push metrics and status to monitoring systems
+- **Trigger workflows** - Initiate follow-up actions in other automation systems
+- **Log events** - Record job events in external logging or analytics platforms
+- **Send custom messages** - Format and deliver notifications with specific content and structure
 
-This chapter discusses how to create your own notification plugins.
+## When to Create a Notification Plugin
 
-## Plugin execution
+Create a notification plugin when you need to:
 
-When a notification is defined for a Job, and the associated trigger occurs, your plugin will be executed
-and passed in two sets of Map data:
+- **Integrate with an unsupported service** - Your team uses a notification system without an existing plugin
+- **Customize message formatting** - You need specific message templates, formats, or rich content
+- **Implement complex logic** - Advanced routing, filtering, aggregation, or conditional notifications
+- **Add authentication** - Your notification service requires special authentication or API keys
+- **Aggregate metrics** - Push execution data to analytics, monitoring, or reporting platforms
+- **Create tickets automatically** - Generate support tickets or incident records based on job failures
 
-1. Configuration data - the user-supplied configuration for the plugin
-2. Execution data - information about the Job and Execution for the notification
+## Built-in Notification Types
 
-### Configuration data
+Rundeck includes two built-in notification types:
 
-The Configuration data is fully custom depending on your plugin, and is described in the [Plugin configuration properties](#plugin-configuration-properties) section.
+1. **Email** - Send email notifications to specified addresses
+2. **Webhook** - POST JSON or XML to URLs
 
-## Notifications thread feature
+**Consider creating a plugin if you need:**
+- Custom message formatting or templates
+- Service-specific authentication
+- Retry logic or error handling
+- Rich content (embeds, attachments, formatting)
+- Complex integrations beyond simple HTTP POST
+- Service-specific features (threading, reactions, etc.)
 
-Notifications can be run on their own thread by setting the following properties in the rundeck-config.properties file:
+## Notification Triggers
 
-`rundeck.feature.notificationsOwnThread.enabled`: ('true','false') When set to 'true' it will trigger the notifications on a separate thread.
-`rundeck.notification.threadTimeOut`: (numeric, in milliseconds, defaults to 120000ms) When you set the notifications to be triggered on a separate thread, you can also set a time out for the notification thread so that it must be sent before a certain time.
+Notifications can be triggered on five job events:
 
+| Trigger | When It Fires | Available Data |
+|---------|---------------|----------------|
+| `onstart` | Job started execution | Job details, user, start time (no end time/results) |
+| `onsuccess` | Job completed successfully | Job details, execution results, duration, node results |
+| `onfailure` | Job failed or was aborted | Job details, failure reason, failed nodes, duration |
+| `onavgduration` | Execution exceeded average duration | Job details, execution time, average duration |
+| `onretryablefailure` | Job failed but will be retried | Job details, failure reason, retry information |
 
-#### Property References
+::: tip
+Your plugin can implement handlers for any or all of these triggers. Each trigger receives different execution data based on what's available at that point in the job lifecycle.
+:::
 
-The specific data values of the Configuration section are allowed to have
-embedded Property References as described in the
-[Job Variables Reference](/manual/jobs/job-variables.md).
+## Notification Plugin vs. Other Plugin Types
 
-For example, when a user configures your plugin, they could embed an option value using: `${option.myoption}`. This value will be replaced with the runtime option value before being passed to your plugin.
+**Not a Notification Plugin if you're:**
+- ❌ Executing tasks or commands on nodes (use [Step Plugin](/developer/step-plugins.md) instead)
+- ❌ Discovering or providing node inventory (use [Resource Model Source](/developer/resource-model-source-plugins.md) instead)
+- ❌ Receiving and processing incoming webhooks (use [Webhook Plugin](/developer/webhook-plugins.md) instead)
+- ❌ Transforming log output (use [Log Filter Plugin](/developer/log-filter-plugins.md) instead)
 
-When defining Configuration properties that use custom Validation, keep in mind
-that the value set by a user may have such an embedded property reference and
-therefore may not pass the validation rules you have defined. If you want to
-allow these property references for a Configuration property, it must be a String type property, and any custom validation code should allow the embedded
-property references, for example by looking for a `${` sequence and allowing
-the value.
+**Use a Notification Plugin if you're:**
+- ✅ Sending alerts about job events
+- ✅ Integrating with external notification/messaging services
+- ✅ Creating tickets or records based on job outcomes
+- ✅ Pushing job metrics to monitoring systems
+- ✅ Triggering follow-up workflows in external systems
 
-### Execution data
+## Plugin Execution Context
 
-The execution data is included as a Map called `execution`
-containing the following keys and values:
+When a notification trigger fires, your plugin receives two parameters:
 
-> Note: The context variables that will be available for users to use on inputs on the GUI will depend on the specific notification plugin.
+1. **`executionData`** (Map) - Information about the job execution and job itself
+2. **`config`** (Map) - User-configured properties for your plugin
 
-`execution.id`: ID of the execution
+### Execution Data Reference
 
-`execution.href`: URL to the execution output view
+The `executionData` map contains comprehensive information about the job execution. Key fields include:
 
-`execution.status`: Execution state ('running','failed','aborted','succeeded')
+**Execution Information:**
+- `execution.id` - Execution ID
+- `execution.href` - URL to execution page
+- `execution.status` - Status: 'running', 'succeeded', 'failed', 'aborted'
+- `execution.user` - User who started the job
+- `execution.project` - Project name
+- `execution.loglevel` - Log level: 'ERROR', 'WARN', 'INFO', 'VERBOSE', 'DEBUG'
 
-`execution.user`: User who started the job
+**Timing Information:**
+- `execution.dateStarted` - Start time (java.util.Date)
+- `execution.dateStartedUnixtime` - Start time as milliseconds since epoch
+- `execution.dateStartedW3c` - Start time as W3C formatted string
+- `execution.dateEnded` - End time (available after completion)
+- `execution.dateEndedUnixtime` - End time as milliseconds since epoch
+- `execution.dateEndedW3c` - End time as W3C formatted string
 
-`execution.dateStarted`: Start time (java.util.Date)
+**Job Information:**
+- `job.id` - Job ID
+- `job.name` - Job name
+- `job.group` - Job group
+- `job.project` - Project name
+- `job.description` - Job description
+- `job.href` - URL to job page
+- `job.averageDuration` - Average duration in milliseconds (if available)
 
-`execution.dateStartedUnixtime`: Start time as milliseconds since epoch (long)
+**Node Results** (available after job completion, not on `onstart`):
+- `execution.succeededNodeList` - List of node names that succeeded
+- `execution.succeededNodeListString` - Comma-separated list of succeeded nodes
+- `execution.failedNodeList` - List of node names that failed
+- `execution.failedNodeListString` - Comma-separated list of failed nodes
+- `execution.nodestatus` - Map with counts: `[succeeded: int, failed: int, total: int]`
 
-`execution.dateStartedW3c`: Start time as a W3C formatted String
+**Context Variables:**
+- `execution.context.option` - Map of all job option key/values
+- `execution.context.secureOption` - Map of secure option key/values
+- `execution.context.*` - All context variables from [Job Variables Reference](/manual/jobs/job-variables.md)
 
-`execution.description`: Summary string for the execution
+::: tip Accessing Data
+In Java, access nested values: `(String) ((Map) executionData.get("execution")).get("status")`
 
-`execution.argstring`: Argument string for any job options
+In Groovy, use GPath: `execution.status` or `execution.context.option.myoption`
+:::
 
-`execution.project`: Project name
+### Configuration Properties
 
-`execution.loglevel`: Loglevel string ('ERROR','WARN','INFO','VERBOSE','DEBUG')
+Configuration properties are defined by your plugin and allow users to customize behavior. Users can embed [Job Variable references](/manual/jobs/job-variables.md) in string properties (e.g., `${option.myoption}`) which are resolved before being passed to your plugin.
 
-The following values may be available after the job is finished (not available for `onstart` trigger):
-
-`execution.failedNodeListString`: Comma-separated list of any nodes that failed, if present
-
-`execution.failedNodeList`: Java List of any node names that failed, if present
-
-`execution.succeededNodeListString`: Comma-separated list of any nodes that succeeded, if present
-
-`execution.succeededNodeList`: Java List of any node names that succeeded, if present
-
-`execution.nodestatus`: Java Map containing summary counts of node success/failure/total, in the form: `[succeeded: int, failed: int, total: int]`
-
-`execution.dateEnded`: End time (java.util.Date)
-
-`execution.dateEndedUnixtime`: End time as milliseconds since epoch (long)
-
-`execution.dateEndedW3c`: End time as W3C formatted string
-
-`execution.abortedby`: User who aborted the execution
-
-`job` information is in a `job` entry and contains another Map:
-
-`job.id`: Job ID
-
-`job.href`: URL to Job view page
-
-`job.name`: Job name
-
-`job.group`: Job group
-
-`job.project`: Project name
-
-`job.description`: Job Description
-
-`job.averageDuration`: Average job duration in Milliseconds, if available
-
-`execution.context` - this is a map containing all of the context variables available to the execution when it ran or will run, such as [Job Variables Reference](/manual/jobs/job-variables.md). The contents of this Map are the specific context namespaces and variables.
-
-`execution.context.option`: a Map containing all Job Option keys/values.
-
-`execution.context.secureOption`: a Map containing only the Job Option keys/values whose value is set from secure storage.
-
-`job`: a Map containing the Job context data, as provided to executions. This map will contain some duplicate information as the `execution.job` map previously described.
-
-In Groovy, you can simply reference any values in the Execution data maps using
-[Groovy Gpath](http://groovy-lang.org/processing-xml.html#_gpath), e.g.:
+When implementing custom validation, allow for property references by checking for `${` sequences:
 
 ```java
-println execution.context.option.myoption
+@PluginProperty(title = "Message Template")
+private String messageTemplate; // Can contain ${option.name}, ${job.name}, etc.
 ```
 
-## Plugin configuration properties
+Notification plugins support [property scopes](/developer/plugin-properties.md#property-scopes), allowing configuration at project or instance level.
 
-Each plugin can define a set of "configuration" properties which allow users to specify input that the plugin can
-use when it operates.
+## Advanced Configuration
 
-Notification plugins support scoped properties, allowing some of the configuration to be defined, or defaulted, on a per-project or per-Rundeck instance basis.
+### Asynchronous Notifications
 
-## Plugin types
+By default, notifications run synchronously. Enable asynchronous execution in `rundeck-config.properties`:
+
+**`rundeck.feature.notificationsOwnThread.enabled`** (true/false)
+- When `true`, notifications run on a separate thread
+- Prevents notification delays from blocking job completion
+
+**`rundeck.notification.threadTimeOut`** (milliseconds, default: 120000)
+- Maximum time for notification thread execution
+- Notifications exceeding this timeout will be terminated
+
+**Example configuration:**
+```properties
+rundeck.feature.notificationsOwnThread.enabled=true
+rundeck.notification.threadTimeOut=60000
+```
+
+::: tip When to Use Async
+Enable async notifications if:
+- Notifications call slow external services
+- You don't want notification failures to delay job completion reporting
+- Multiple notifications are configured per job
+:::
+
+## Plugin Implementation Types
 
 Rundeck supports two types of Notification plugins:
 
-1. Java-based development deployed as a Jar file.
-2. Groovy-based deployed as a single `.groovy` script.
+### Java Plugins
+- **Best for:** Complex integrations, production use, reusable libraries
+- **Deployment:** JAR file in `libext` directory
+- **Features:** Full access to Java ecosystem, type safety, IDE support
+- **See:** [Java Plugin Implementation](#java-plugin-type) below
 
-Currently "script-based" plugins (shell scripts, that is) are not supported.
+### Groovy Plugins
+- **Best for:** Quick development, simple integrations, prototyping
+- **Deployment:** Single `.groovy` file in `libext` directory
+- **Features:** Simplified DSL, hot-reload (after initial load), less boilerplate
+- **See:** [Groovy Plugin Implementation](#groovy-plugin-type) below
+
+::: warning Script Plugins Not Supported
+Shell script-based plugins are **not supported** for notifications. Use Java or Groovy plugins instead.
+:::
 
 ## Example code
 
@@ -164,134 +202,479 @@ Java examples.
 
 ## Java Plugin Type
 
-Java-based plugins can be developed just as any other Rundeck plugin, as described in the chapter [Plugin Development - Java Plugin Development](/developer/java-plugin-development.md).
+### Interface
 
-These plugin classes should implement the interface
-[NotificationPlugin]({{$javaDocBase}}/com/dtolabs/rundeck/plugins/notification/NotificationPlugin.html):
+Java notification plugins implement the [NotificationPlugin]({{$javaDocBase}}/com/dtolabs/rundeck/plugins/notification/NotificationPlugin.html) interface:
 
 ```java
 public interface NotificationPlugin {
     /**
      * Post a notification for the given trigger, dataset, and configuration
-     * @param trigger event type causing notification
-     * @param executionData execution data
-     * @param config notification configuration
+     * @param trigger event type causing notification (onstart, onsuccess, onfailure, etc.)
+     * @param executionData execution and job data
+     * @param config user-provided configuration for the plugin
+     * @return true if notification succeeded, false otherwise
      */
-    public boolean postNotification(String trigger,Map executionData,Map config);
+    public boolean postNotification(String trigger, Map executionData, Map config);
 }
 ```
 
-To define configuration properties for your plugin, you use the same mechanisms as for Workflow Steps, described under the chapter [Plugin Development - Plugin Descriptions](/developer/java-plugin-development.md#plugin-descriptions).
+**Method Parameters:**
+- `trigger` - The event that triggered the notification (`onstart`, `onsuccess`, `onfailure`, `onavgduration`, `onretryablefailure`)
+- `executionData` - Map containing execution and job information (see [Execution Data](#execution-data) above)
+- `config` - Map containing user-configured properties for this notification
 
-The simplest way to do this is to use [Plugin Annotations](/developer/java-plugin-development.md#plugin-annotations). Here is an example class annotated to describe it to the Rundeck GUI:
+**Return Value:**
+- `true` - Notification sent successfully
+- `false` - Notification failed (will be logged as an error)
+
+### Basic Example
 
 ```java
-@Plugin(service="Notification", name="example")
-@PluginDescription(title="Example Plugin", description="An example Plugin for Rundeck Notifications.")
-public class ExampleNotificationPlugin implements NotificationPlugin{
+import com.dtolabs.rundeck.core.plugins.Plugin;
+import com.dtolabs.rundeck.plugins.notification.NotificationPlugin;
+import com.dtolabs.rundeck.plugins.descriptions.*;
 
-    @PluginProperty(name = "test" ,title = "Test String", description = "a description")
-    private String test;
+@Plugin(service = "Notification", name = "example")
+@PluginDescription(title = "Example Notification", 
+                  description = "Sends notifications to an example service")
+public class ExampleNotificationPlugin implements NotificationPlugin {
 
+    @PluginProperty(title = "Webhook URL", description = "URL to send notifications", required = true)
+    private String webhookUrl;
+    
+    @PluginProperty(title = "Channel", description = "Notification channel")
+    private String channel;
+
+    @Override
     public boolean postNotification(String trigger, Map executionData, Map config) {
-        System.err.printf("Trigger %s fired for %s, configuration: %s\n",trigger,executionData,config);
-        System.err.printf("Local field test is: %s\n",test);
-        return true;
+        try {
+            // Extract execution data
+            Map execution = (Map) executionData.get("execution");
+            Map job = (Map) executionData.get("job");
+            
+            String jobName = (String) job.get("name");
+            String status = (String) execution.get("status");
+            String user = (String) execution.get("user");
+            
+            // Build notification message
+            String message = String.format(
+                "Job '%s' %s by %s (trigger: %s)",
+                jobName, status, user, trigger
+            );
+            
+            // Send notification (your implementation)
+            sendToWebhook(webhookUrl, channel, message);
+            
+            return true; // Success
+            
+        } catch (Exception e) {
+            System.err.println("Failed to send notification: " + e.getMessage());
+            e.printStackTrace();
+            return false; // Failure
+        }
+    }
+    
+    private void sendToWebhook(String url, String channel, String message) {
+        // Your notification sending logic here
     }
 }
 ```
+
+### Complete Example with Error Handling
+
+```java
+import com.dtolabs.rundeck.core.plugins.Plugin;
+import com.dtolabs.rundeck.plugins.notification.NotificationPlugin;
+import com.dtolabs.rundeck.plugins.descriptions.*;
+import java.net.http.*;
+import java.net.URI;
+
+@Plugin(service = "Notification", name = "slack-notifier")
+@PluginDescription(title = "Slack Notifier", 
+                  description = "Sends job notifications to Slack")
+@PluginMetadata(key = "faicon", value = "slack")
+public class SlackNotificationPlugin implements NotificationPlugin {
+
+    @PluginProperty(title = "Webhook URL", 
+                   description = "Slack webhook URL", 
+                   required = true)
+    @SelectValues(values = {})
+    @PluginRenderingOptions({
+        @PluginRenderingOption(key = StringRenderingConstants.DISPLAY_TYPE_KEY,
+                              value = "PASSWORD"),
+        @PluginRenderingOption(key = StringRenderingConstants.SELECTION_ACCESSOR_KEY,
+                              value = StringRenderingConstants.SELECTION_ACCESSOR_STORAGE_PATH)
+    })
+    private String webhookUrl;
+    
+    @PluginProperty(title = "Channel", 
+                   description = "Slack channel (optional)")
+    private String channel;
+    
+    @PluginProperty(title = "Notify on Start", 
+                   description = "Send notification when job starts",
+                   defaultValue = "false")
+    private boolean notifyOnStart;
+
+    @Override
+    public boolean postNotification(String trigger, Map executionData, Map config) {
+        // Skip onstart if not enabled
+        if ("onstart".equals(trigger) && !notifyOnStart) {
+            return true;
+        }
+        
+        try {
+            Map execution = (Map) executionData.get("execution");
+            Map job = (Map) executionData.get("job");
+            
+            // Build Slack message
+            String color = getColorForTrigger(trigger);
+            String message = buildSlackMessage(trigger, execution, job);
+            
+            // Send to Slack
+            HttpClient client = HttpClient.newHttpClient();
+            String payload = String.format(
+                "{\"text\":\"%s\",\"channel\":\"%s\",\"attachments\":[{\"color\":\"%s\",\"text\":\"%s\"}]}",
+                "Job Notification", 
+                channel != null ? channel : "",
+                color,
+                message
+            );
+            
+            HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(webhookUrl))
+                .header("Content-Type", "application/json")
+                .POST(HttpRequest.BodyPublishers.ofString(payload))
+                .build();
+            
+            HttpResponse<String> response = client.send(request, 
+                HttpResponse.BodyHandlers.ofString());
+            
+            return response.statusCode() == 200;
+            
+        } catch (Exception e) {
+            System.err.println("Slack notification failed: " + e.getMessage());
+            e.printStackTrace();
+            return false;
+        }
+    }
+    
+    private String getColorForTrigger(String trigger) {
+        switch (trigger) {
+            case "onsuccess": return "good";
+            case "onfailure": return "danger";
+            case "onavgduration": return "warning";
+            default: return "#439FE0";
+        }
+    }
+    
+    private String buildSlackMessage(String trigger, Map execution, Map job) {
+        String jobName = (String) job.get("name");
+        String status = (String) execution.get("status");
+        String user = (String) execution.get("user");
+        String href = (String) execution.get("href");
+        
+        return String.format(
+            "Job *%s* %s by %s\\n<%s|View Execution>",
+            jobName, status, user, href
+        );
+    }
+}
+```
+
+### Configuration Properties
+
+Define configuration properties using [Plugin Annotations](/developer/java-plugin-development.md#plugin-annotations). See [Java Plugin Development - Plugin Properties](/developer/java-plugin-development.md#plugin-properties) for complete documentation.
+
+**Common notification properties:**
+- Webhook URLs or API endpoints
+- Authentication tokens (use Key Storage)
+- Channel or destination identifiers
+- Message templates
+- Trigger-specific settings (notify on start, etc.)
 
 ## Groovy Plugin Type
 
-Notification supports the Groovy Plugin Type.
+Groovy notification plugins provide a simplified DSL for quick development without the overhead of Java compilation and packaging.
 
-To define metadata about your plugin, and configuration properties, see the [Plugin Development - Groovy Plugin Development](/developer/groovy-plugin-development.md) chapter.
+### Setup
 
-To create a Groovy based plugin, create a file named `MyNotificationPlugin.groovy` in the plugins directory for Rundeck.
+1. Create a file named `MyNotificationPlugin.groovy` in Rundeck's plugins directory (`libext`)
+2. Restart Rundeck to load the plugin initially
+3. After initial load, you can update the file without restarting (hot-reload)
 
-To make the plugin available, as well as after any plugin code modifications, you must restart Rundeck.
-
-[Groovy Plugin Development](/developer/groovy-plugin-development.md)
+See [Groovy Plugin Development](/developer/groovy-plugin-development.md) for complete Groovy plugin documentation.
 
 ### Groovy DSL
 
-Within the Groovy script, you define your plugin by calling the `rundeckPlugin` method, and pass it both the Class of the type of plugin, and a Closure used to build the plugin object.
+Define your plugin using the `rundeckPlugin` method with the `NotificationPlugin` interface:
 
-```java
-import  com.dtolabs.rundeck.plugins.notification.NotificationPlugin
-rundeckPlugin(NotificationPlugin){
-    //plugin definition goes here...
+```groovy
+import com.dtolabs.rundeck.plugins.notification.NotificationPlugin
+
+rundeckPlugin(NotificationPlugin) {
+    title = 'My Notification'
+    description = 'Sends notifications to my service'
+    version = '1.0'
+    
+    configuration {
+        // Define properties here
+    }
+    
+    // Define trigger handlers
+    onstart { execution, config ->
+        // Handle job start
+        true
+    }
+    
+    onsuccess { execution, config ->
+        // Handle job success
+        true
+    }
+    
+    onfailure { execution, config ->
+        // Handle job failure
+        true
+    }
 }
 ```
 
-In this case, we use the same `NotificationPlugin` interface used for Java plugins.
+### Notification Handlers
 
-### Notification handlers
+Define handlers for each notification trigger. Each handler receives two parameters:
 
-For a `NotificationPlugin`, you can define custom handlers for each of the notification triggers (`onsuccess`, `onfailure`, `onstart`, `onavgduration`, and `onretryablefailure`).
+- `execution` - Map containing execution and job data
+- `config` - Map containing user-configured properties
 
-Simply define a closure with the given trigger name, and return a true value if your action was successful:
+**Available Handlers:**
+- `onstart` - Job started
+- `onsuccess` - Job succeeded
+- `onfailure` - Job failed or was aborted
+- `onavgduration` - Job exceeded average duration
+- `onretryablefailure` - Job failed but will be retried
 
-```java
-onstart{ Map execution, Map configuration ->
-    //perform an action using the execution and configuration
-    println "Job ${execution.job.name} has been started by ${execution.user}..."
-    return true
+**Return Value:**
+- `true` - Notification succeeded
+- `false` - Notification failed (logged as error)
+
+**Basic Handler Example:**
+
+```groovy
+onstart { execution, config ->
+    println "Job ${execution.job.name} started by ${execution.user}"
+    true
 }
-onsuccess{ Map execution, Map configuration ->
-    //perform an action using the execution and configuration
-    println "Success! Job ${execution.job.name} worked fine."
-    return true
+
+onsuccess { execution, config ->
+    println "Success! Job ${execution.job.name} completed"
+    true
 }
-onfailure{ Map execution, Map configuration ->
-    //perform an action using the execution and configuration
-    println "Oh No! Job ${execution.job.name} didn't work out."
-    return true
+
+onfailure { execution, config ->
+    println "Failed! Job ${execution.job.name} did not complete"
+    true
 }
-onavgduration{ Map execution, Map configuration ->
-    //perform an action using the execution and configuration
-    println "Job ${execution.job.name} exceeded Average Duration!"
-    return true
+
+onavgduration { execution, config ->
+    println "Job ${execution.job.name} exceeded average duration"
+    true
 }
-onretryablefailure{ Map execution, Map configuration ->
-    //perform an action using the execution and configuration
-    println "Job ${execution.job.name} failed but will be retried."
-    return true
+
+onretryablefailure { execution, config ->
+    println "Job ${execution.job.name} failed but will be retried"
+    true
 }
 ```
 
-If your closure returns a `false` value, then Rundeck will log an error in the server log.
+**Accessing Execution Data:**
 
-### Example
+```groovy
+onsuccess { execution, config ->
+    // Job information
+    def jobName = execution.job.name
+    def jobGroup = execution.job.group
+    
+    // Execution information
+    def user = execution.user
+    def status = execution.status
+    def executionId = execution.id
+    def href = execution.href
+    
+    // Duration (available after completion)
+    def started = execution.dateStarted
+    def ended = execution.dateEnded
+    
+    // Node results (if applicable)
+    def succeededNodes = execution.succeededNodeList
+    def failedNodes = execution.failedNodeList
+    
+    println "Job ${jobName} completed by ${user}"
+    true
+}
+```
 
-Here is a minimal example:
+### Complete Example
+
+Here's a complete Groovy notification plugin that sends messages to a webhook:
+
+**WebhookNotificationPlugin.groovy**:
+
+```groovy
+import com.dtolabs.rundeck.plugins.notification.NotificationPlugin
+import groovy.json.JsonOutput
+
+rundeckPlugin(NotificationPlugin) {
+    title = 'Webhook Notifier'
+    description = 'Sends job notifications to a webhook endpoint'
+    version = '1.0'
+    author = 'Ops Team'
+    
+    metadata = [
+        faicon: 'bell'
+    ]
+    
+    configuration {
+        webhook_url(
+            title: 'Webhook URL',
+            description: 'URL to send notifications',
+            required: true
+        )
+        
+        channel(
+            title: 'Channel',
+            description: 'Notification channel (optional)',
+            required: false
+        )
+        
+        notify_on_start(
+            title: 'Notify on Start',
+            type: 'Boolean',
+            defaultValue: 'false',
+            description: 'Send notification when job starts'
+        )
+    }
+    
+    onstart { execution, config ->
+        if (config.notify_on_start == 'true') {
+            def message = [
+                event: 'start',
+                job: execution.job.name,
+                user: execution.user,
+                execution_id: execution.id,
+                href: execution.href
+            ]
+            return sendWebhook(config.webhook_url, config.channel, message)
+        }
+        true
+    }
+    
+    onsuccess { execution, config ->
+        def duration = execution.dateEnded.time - execution.dateStarted.time
+        def message = [
+            event: 'success',
+            job: execution.job.name,
+            user: execution.user,
+            execution_id: execution.id,
+            duration_ms: duration,
+            href: execution.href,
+            succeeded_nodes: execution.succeededNodeList?.size() ?: 0
+        ]
+        sendWebhook(config.webhook_url, config.channel, message)
+    }
+    
+    onfailure { execution, config ->
+        def message = [
+            event: 'failure',
+            job: execution.job.name,
+            user: execution.user,
+            execution_id: execution.id,
+            href: execution.href,
+            failed_nodes: execution.failedNodeList ?: [],
+            status: execution.status
+        ]
+        sendWebhook(config.webhook_url, config.channel, message)
+    }
+    
+    onavgduration { execution, config ->
+        def duration = execution.dateEnded.time - execution.dateStarted.time
+        def avgDuration = execution.job.averageDuration
+        def message = [
+            event: 'avg_duration_exceeded',
+            job: execution.job.name,
+            duration_ms: duration,
+            average_duration_ms: avgDuration,
+            href: execution.href
+        ]
+        sendWebhook(config.webhook_url, config.channel, message)
+    }
+    
+    onretryablefailure { execution, config ->
+        def message = [
+            event: 'retryable_failure',
+            job: execution.job.name,
+            execution_id: execution.id,
+            href: execution.href,
+            status: 'Will be retried'
+        ]
+        sendWebhook(config.webhook_url, config.channel, message)
+    }
+}
+
+def sendWebhook(String url, String channel, Map message) {
+    try {
+        if (channel) {
+            message.channel = channel
+        }
+        
+        def json = JsonOutput.toJson(message)
+        def connection = new URL(url).openConnection()
+        connection.setRequestMethod('POST')
+        connection.setRequestProperty('Content-Type', 'application/json')
+        connection.setDoOutput(true)
+        
+        connection.outputStream.withWriter { writer ->
+            writer.write(json)
+        }
+        
+        def responseCode = connection.responseCode
+        println("Webhook response: ${responseCode}")
+        
+        return responseCode >= 200 && responseCode < 300
+        
+    } catch (Exception e) {
+        System.err.println("Failed to send webhook: ${e.message}")
+        e.printStackTrace()
+        return false
+    }
+}
+```
+
+### Minimal Example
+
+For a simple notification plugin:
 
 **MinimalNotificationPlugin.groovy**:
 
-```java
-import com.dtolabs.rundeck.plugins.notification.NotificationPlugin;
+```groovy
+import com.dtolabs.rundeck.plugins.notification.NotificationPlugin
 
-rundeckPlugin(NotificationPlugin){
+rundeckPlugin(NotificationPlugin) {
+    title = 'Simple Logger'
+    description = 'Logs job events to console'
+    
     onstart {
-        println("job start: data ${execution}")
+        println("Job ${execution.job.name} started by ${execution.user}")
         true
     }
-
-    onfailure {
-        println("failure: data ${execution}")
-        true
-    }
-
+    
     onsuccess {
-        println("success: data ${execution}")
+        println("Job ${execution.job.name} succeeded")
         true
     }
-    onavgduration{
-        println("exceeded average duration: data ${execution}")
-        true
-    }
-    onretryablefailure{
-        println("retryable failure: data ${execution}")
+    
+    onfailure {
+        println("Job ${execution.job.name} failed")
         true
     }
 }
@@ -372,3 +755,78 @@ rundeckPlugin(NotificationPlugin) {
 }
 
 ```
+
+## Best Practices
+
+### Error Handling
+
+Always wrap notification logic in try-catch blocks:
+
+```groovy
+onsuccess { execution, config ->
+    try {
+        sendNotification(execution, config)
+        return true
+    } catch (Exception e) {
+        System.err.println("Notification failed: ${e.message}")
+        e.printStackTrace()
+        return false
+    }
+}
+```
+
+### Logging
+
+Use appropriate logging levels:
+- `println()` for info messages
+- `System.err.println()` for errors
+- Include context (job name, execution ID) in log messages
+
+### Configuration Validation
+
+Validate configuration early:
+
+```groovy
+onsuccess { execution, config ->
+    if (!config.webhook_url) {
+        System.err.println("ERROR: Webhook URL not configured")
+        return false
+    }
+    // Continue with valid config
+}
+```
+
+### Timeouts
+
+Implement timeouts for external calls to prevent hanging:
+
+```java
+HttpClient client = HttpClient.newBuilder()
+    .connectTimeout(Duration.ofSeconds(10))
+    .build();
+```
+
+### Secure Credentials
+
+Use Key Storage for sensitive data like API keys and tokens:
+
+```java
+@PluginProperty(title = "API Key")
+@SelectValues(values = {})
+@PluginRenderingOptions({
+    @PluginRenderingOption(key = StringRenderingConstants.DISPLAY_TYPE_KEY,
+                          value = "PASSWORD"),
+    @PluginRenderingOption(key = StringRenderingConstants.SELECTION_ACCESSOR_KEY,
+                          value = StringRenderingConstants.SELECTION_ACCESSOR_STORAGE_PATH)
+})
+private String apiKey;
+```
+
+## Related Documentation
+
+- [Job Notifications (User Guide)](/manual/jobs/job-notifications.md) - Configuring notifications in jobs
+- [Java Plugin Development](/developer/java-plugin-development.md) - General Java plugin development
+- [Groovy Plugin Development](/developer/groovy-plugin-development.md) - General Groovy plugin development
+- [Plugin Properties](/developer/plugin-properties.md) - Configuration property reference
+- [Webhook Plugins](/developer/webhook-plugins.md) - For receiving webhooks (opposite direction)
+- [Job Variables Reference](/manual/jobs/job-variables.md) - Available context variables
