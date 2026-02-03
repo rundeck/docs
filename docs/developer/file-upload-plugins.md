@@ -1,10 +1,79 @@
 # File Upload Plugins
 
-## About
+## Overview
 
-File Upload plugins are used to receive uploaded files for Job Options that are of type File, store them, and retrieve them when needed by a running Execution.
+File Upload plugins handle storage and retrieval of files uploaded via Job Options. When users upload files as job input (configuration files, data files, certificates, etc.), these plugins store them and make them available during job execution.
 
-Each uploaded file is recorded with a "refid", a unique ID that identifies the file.
+**What They Handle:**
+
+1. **Upload** - Receive file from user/API
+2. **Storage** - Store file until needed
+3. **Retrieval** - Provide file during job execution
+4. **Lifecycle** - Manage retention and cleanup
+
+**Common Use Cases:**
+
+**Configuration Management:**
+- Upload application config files per deployment
+- Custom SSL certificates for installation
+- Environment-specific property files
+
+**Data Processing:**
+- CSV files for batch processing
+- Log files for analysis
+- Data import files
+
+**Deployment Artifacts:**
+- WAR/JAR files for deployment
+- Docker compose files
+- Kubernetes manifests
+
+**Certificates & Keys:**
+- SSL/TLS certificates
+- SSH public keys
+- License files
+
+**Real-World Examples:**
+- Deploy job accepts WAR file, uploads to S3, deploys to Tomcat
+- Database import job takes CSV file, stores in blob storage, imports to DB
+- Certificate renewal uploads new cert, distributes to web servers
+- Config update job uploads JSON config, deploys to all application nodes
+
+**Benefits:**
+- **Flexible Storage** - Store in S3, Azure Blob, database, custom backend
+- **Large Files** - Handle multi-GB uploads efficiently
+- **Cloud Native** - Ephemeral Rundeck servers, persistent file storage
+- **Clustering** - Multiple Rundeck servers access same files
+- **Audit Trail** - Track file uploads and usage
+
+**Default Behavior:**
+
+Rundeck includes a default file upload plugin that stores files on local disk (`var/tmp/uploads`). This works for single servers but not for:
+- Cloud deployments (ephemeral disk)
+- Clustering (files only on one server)
+- Large files (disk space constraints)
+
+**File Lifecycle:**
+
+```
+User uploads file
+    ↓
+Plugin stores file (with unique refid)
+    ↓
+File "retained" until execution starts or timeout
+    ↓
+Execution starts → Plugin retrieves file
+    ↓
+File available to job steps
+    ↓
+Execution completes
+    ↓
+Plugin transitions state (Used) → Retain or Delete
+    ↓
+Cleanup after retention period
+```
+
+Each uploaded file gets a unique **refid** (reference ID) that identifies it throughout its lifecycle.
 
 ## Behavior
 
@@ -58,3 +127,129 @@ Methods:
 - `InternalState transitionState(String reference, ExternalState state)`: plugin should retain or delete the file
 
 [fileuploadplugin]: {{$javaDocBase}}/com/dtolabs/rundeck/plugins/file/FileUploadPlugin.html
+
+## Complete Java Example: S3 File Upload
+
+```java
+package com.example.rundeck.upload;
+
+import com.dtolabs.rundeck.core.plugins.Plugin;
+import com.dtolabs.rundeck.plugins.ServiceNameConstants;
+import com.dtolabs.rundeck.plugins.descriptions.*;
+import com.dtolabs.rundeck.plugins.file.*;
+import software.amazon.awssdk.core.sync.RequestBody;
+import software.amazon.awssdk.services.s3.S3Client;
+import software.amazon.awssdk.services.s3.model.*;
+
+import java.io.*;
+import java.util.Map;
+
+@Plugin(name = "s3-upload", service = ServiceNameConstants.FileUpload)
+@PluginDescription(title = "S3 File Upload", description = "Stores uploaded files in S3")
+public class S3FileUploadPlugin implements FileUploadPlugin {
+    
+    @PluginProperty(title = "S3 Bucket", required = true)
+    private String bucket;
+    
+    @PluginProperty(title = "Path Prefix", defaultValue = "rundeck-uploads/")
+    private String pathPrefix;
+    
+    private S3Client s3Client;
+    
+    @Override
+    public void initialize() {
+        this.s3Client = S3Client.create();
+    }
+    
+    @Override
+    public String uploadFile(InputStream content, long length, String refid,
+                           Map<String, String> config) throws IOException {
+        String key = pathPrefix + refid;
+        
+        s3Client.putObject(
+            PutObjectRequest.builder().bucket(bucket).key(key).build(),
+            RequestBody.fromInputStream(content, length)
+        );
+        
+        return refid;
+    }
+    
+    @Override
+    public boolean hasFile(String refid) {
+        try {
+            String key = pathPrefix + refid;
+            s3Client.headObject(HeadObjectRequest.builder()
+                .bucket(bucket).key(key).build());
+            return true;
+        } catch (NoSuchKeyException e) {
+            return false;
+        }
+    }
+    
+    @Override
+    public void retrieveFile(String refid, OutputStream out) throws IOException {
+        String key = pathPrefix + refid;
+        try (InputStream s3Stream = s3Client.getObject(
+                GetObjectRequest.builder().bucket(bucket).key(key).build())) {
+            s3Stream.transferTo(out);
+        }
+    }
+    
+    @Override
+    public InternalState transitionState(String refid, ExternalState state) {
+        if (state == ExternalState.Deleted || state == ExternalState.Used) {
+            // Delete from S3
+            String key = pathPrefix + refid;
+            s3Client.deleteObject(DeleteObjectRequest.builder()
+                .bucket(bucket).key(key).build());
+            return InternalState.Deleted;
+        }
+        return InternalState.Retained;
+    }
+}
+```
+
+## Best Practices
+
+### 1. Clean Up After Use
+
+```java
+@Override
+public InternalState transitionState(String refid, ExternalState state) {
+    if (state == ExternalState.Used) {
+        deleteFile(refid);  // Clean up after execution
+        return InternalState.Deleted;
+    }
+    return InternalState.Retained;
+}
+```
+
+### 2. Handle Large Files
+
+```java
+// Stream, don't load into memory
+public String uploadFile(InputStream content, long length, String refid,
+                        Map<String, String> config) {
+    // Use multipart upload for large files
+    if (length > 100 * 1024 * 1024) {  // > 100MB
+        return multipartUpload(content, length, refid);
+    }
+    return regularUpload(content, length, refid);
+}
+```
+
+### 3. Verify Checksums
+
+```java
+String expectedSha = metadata.get("sha");
+String actualSha = calculateSha(retrievedFile);
+if (!expectedSha.equals(actualSha)) {
+    throw new IOException("Checksum mismatch");
+}
+```
+
+## Related Documentation
+
+- [Key Storage](/manual/key-storage/index.md) - Secure storage for credentials
+- [Job Options](/manual/jobs/job-options.md) - File option types
+- [Java Plugin Development](/developer/java-plugin-development.md) - General guide

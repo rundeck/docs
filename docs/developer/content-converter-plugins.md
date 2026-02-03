@@ -4,29 +4,165 @@ title: Content Converter Plugins
 
 # Content Converter Plugins
 
-## About
+## Overview
 
-Content Converter Plugins can convert log data into HTML or other data formats, to enable richer logs to be presented in the Rundeck GUI when viewing the Execution Output Logs.
+Content Converter plugins transform log output into rich, visual formats for display in the Rundeck GUI. Instead of plain text, you can render logs as HTML tables, charts, JSON viewers, markdown, or custom visualizations.
 
-In addition, Content Converters can be chained together in a limited way, allowing one plugin to do the work
-of (say) converting a List of Java Strings into an HTML `<ol>`, while another plugin does the work of converting CSV formatted data
-into a List of Strings. You could add another plugin which can convert log data into a List of Strings, and it would
-also be rendered into a `<ol>` in the final output due to the first plugin.
+**What They Do:**
 
-Each Content Converter Plugin can be asked for "Data Types" that it can accept, and also describes the Output "Data Types" that it can produce.
+Convert log data from one format to another:
+- **Input:** Structured data (JSON, XML, CSV, custom formats)
+- **Processing:** Parse, transform, format
+- **Output:** Rich HTML for GUI display
 
-A "Data Type" consist of a Java type (class), and a String such as `text/html`.
+**Common Use Cases:**
 
-## Behavior
+**Data Visualization:**
+- **JSON → HTML Table** - Display API responses as tables
+- **CSV → HTML Table** - Render CSV output with formatting
+- **Metrics → Charts** - Convert performance data to charts/graphs
+- **Test Results → Dashboard** - Pretty test result displays
 
-Content Converter plugins are applied automatically to Log Output when viewing it in the Rundeck GUI.
+**Enhanced Readability:**
+- **Markdown → HTML** - Render markdown in logs
+- **ANSI Colors → HTML** - Convert terminal colors to HTML
+- **XML → Formatted HTML** - Pretty-print XML responses
+- **Log Levels → Icons** - Visual indicators for errors/warnings
 
-However, the Log output must have certain metadata entries set for the Log Events. Plain log output will not be
-rendered in any special way (aside from ANSI Color rendering.)
+**Custom Formats:**
+- **Proprietary → Standard** - Convert vendor formats to readable output
+- **Binary → Hex View** - Display binary data
+- **Structured Logs → Timeline** - Event timeline visualization
 
-For this reason, usually a [Log Filter Plugin](/developer/log-filter-plugins.md) is used to annotate the log output with the correct data type when
-used with Rundeck's Command or Script steps,
-however custom Step plugins can add this metadata in the logs they emit.
+**Real-World Examples:**
+- API response JSON rendered as formatted table
+- Database query results displayed with sorting/filtering
+- Test suite results with pass/fail icons and colors
+- Deployment metrics shown as progress bars
+- Network scan results in organized table
+
+**How Converters Work:**
+
+```
+Log Event (with metadata)
+    ↓
+content-data-type: application/json
+    ↓
+Content Converter Plugin
+    ↓
+Converts: JSON String → HTML
+    ↓
+Rich Display in Rundeck GUI
+```
+
+**Chaining Converters:**
+
+Rundeck can chain up to **2 converters** to reach HTML:
+
+```
+Raw Data → Intermediate Format → HTML
+
+Example 1:
+CSV String → Java List → HTML Table
+
+Example 2:
+JSON String → Java Map → HTML Table
+```
+
+This modularity lets you:
+- Reuse converters (multiple data sources → same HTML renderer)
+- Build libraries of converters
+- Combine converters flexibly
+
+**Data Types:**
+
+A "Data Type" = Java Class + MIME Type string
+
+Examples:
+- `String` + `application/json`
+- `List<String>` + `application/x-java-list`
+- `Map` + `application/x-java-map-or-list`
+- `String` + `text/html` (final output)
+
+## When to Create a Content Converter
+
+### Built-in Converters Cover Common Formats
+
+Rundeck includes converters for:
+- **JSON** → HTML Table
+- **CSV/TSV** → HTML Table  
+- **ANSI Colors** → HTML
+- **Java Maps/Lists** → HTML Table
+- **Markdown** → HTML
+
+### Create Custom Converter When:
+
+**✅ Proprietary Format**
+- Vendor-specific log format
+- Custom structured output
+- Legacy system format
+
+**✅ Special Visualization**
+- Charts/graphs from metrics
+- Custom tables with special formatting
+- Progress bars, gauges, dashboards
+- Timeline views
+
+**✅ Integration**
+- Parse output from specific tools
+- Match existing visualizations
+- Company-specific formats
+
+### Don't Create When:
+
+**❌ Standard JSON/CSV**
+
+Use built-in converters + Log Filter plugin to set `content-data-type`.
+
+**❌ Simple HTML**
+
+Use Log Filter plugin to wrap output in HTML directly.
+
+## How Content Converters Work
+
+### Trigger: Log Metadata
+
+Converters are applied automatically when log events have metadata:
+
+```java
+// In a Log Filter or Step Plugin:
+Map<String, String> meta = new HashMap<>();
+meta.put("content-data-type", "application/json");
+event.addEventMeta(meta);
+```
+
+### Automatic Application
+
+When viewing logs in GUI:
+1. Rundeck sees `content-data-type: application/json` metadata
+2. Finds converter(s) that can convert to `text/html`
+3. Chains up to 2 converters if needed
+4. Renders HTML in GUI
+
+### Used With Log Filters
+
+Typical pattern:
+
+**Step 1: Log Filter adds metadata**
+```java
+// Log Filter Plugin
+if (isJsonLine(message)) {
+    event.addEventMeta(Collections.singletonMap("content-data-type", "application/json"));
+}
+```
+
+**Step 2: Content Converter renders**
+```java
+// Content Converter Plugin
+convert("application/json", "text/html") {
+    // Parse JSON and return HTML table
+}
+```
 
 ## Log Metadata
 
@@ -41,18 +177,126 @@ of Commands or Script steps.
 Additional metadata can be passed to the Content Converter plugins. All log metadata entries with keys starting with `content-meta:` will be extracted from the
 Log Event metadata, and the `content-meta:` prefix removed.
 
-## Java Plugin Type
+## Java Plugin Implementation
 
-Plugins must implement the [ContentConverterPlugin] interface, and declare as a provider of service [`ContentConverter`]({{$javaDocBase}}/com/dtolabs/rundeck/plugins/ServiceNameConstants.html#ContentConverter).
+Implement [ContentConverterPlugin]({{$javaDocBase}}/com/dtolabs/rundeck/plugins/logs/ContentConverterPlugin.html):
 
-Methods:
+```java
+public interface ContentConverterPlugin {
+    boolean isSupportsDataType(Class<?> clazz, String dataType);
+    Class<?> getOutputClassForDataType(Class<?> clazz, String dataType);
+    String getOutputDataTypeForContentDataType(Class<?> clazz, String dataType);
+    Object convert(Object data, String dataType, Map<String,String> metadata);
+}
+```
 
-- `boolean isSupportsDataType(Class<?> clazz, String dataType)`: called to detect if the plugin supports the input Data Type.
-- `Class<?> getOutputClassForDataType(Class<?> clazz, String dataType)`: gets the Java Class for the input data type
-- `String getOutputDataTypeForContentDataType(Class<?> clazz, String dataType)`: gets the data type string for the input data type.
-- `Object convert(Object data, String dataType, Map<String,String> metadata)`: Convert the input data type to the output object, includes metadata about the log event as described in [Log Metadata](#log-metadata).
+### Complete Example: JSON to HTML Table
 
-[contentconverterplugin]: {{$javaDocBase}}/com/dtolabs/rundeck/plugins/logs/ContentConverterPlugin.html
+```java
+package com.example.rundeck.converter;
+
+import com.dtolabs.rundeck.core.plugins.Plugin;
+import com.dtolabs.rundeck.plugins.ServiceNameConstants;
+import com.dtolabs.rundeck.plugins.logs.ContentConverterPlugin;
+import com.fasterxml.jackson.databind.*;
+
+@Plugin(name = "json-table", service = ServiceNameConstants.ContentConverter)
+public class JsonTableConverter implements ContentConverterPlugin {
+    
+    @Override
+    public boolean isSupportsDataType(Class<?> clazz, String dataType) {
+        return String.class.isAssignableFrom(clazz) && 
+               "application/json".equals(dataType);
+    }
+    
+    @Override
+    public Class<?> getOutputClassForDataType(Class<?> clazz, String dataType) {
+        return String.class;  // Output is HTML string
+    }
+    
+    @Override
+    public String getOutputDataTypeForContentDataType(Class<?> clazz, String dataType) {
+        return "text/html";  // Final output type
+    }
+    
+    @Override
+    public Object convert(Object data, String dataType, Map<String, String> metadata) {
+        if (!(data instanceof String)) {
+            return null;
+        }
+        
+        try {
+            String jsonStr = (String) data;
+            ObjectMapper mapper = new ObjectMapper();
+            JsonNode root = mapper.readTree(jsonStr);
+            
+            return generateHtmlTable(root);
+        } catch (Exception e) {
+            return "<pre>Error parsing JSON: " + e.getMessage() + "</pre>";
+        }
+    }
+    
+    private String generateHtmlTable(JsonNode node) {
+        if (node.isArray()) {
+            return arrayToTable(node);
+        } else if (node.isObject()) {
+            return objectToTable(node);
+        } else {
+            return "<pre>" + node.asText() + "</pre>";
+        }
+    }
+    
+    private String arrayToTable(JsonNode array) {
+        StringBuilder html = new StringBuilder();
+        html.append("<table border='1' cellpadding='5' style='border-collapse: collapse;'>");
+        
+        // Header row from first element
+        if (array.size() > 0 && array.get(0).isObject()) {
+            html.append("<thead><tr>");
+            Iterator<String> fieldNames = array.get(0).fieldNames();
+            while (fieldNames.hasNext()) {
+                html.append("<th>").append(fieldNames.next()).append("</th>");
+            }
+            html.append("</tr></thead>");
+        }
+        
+        // Data rows
+        html.append("<tbody>");
+        for (JsonNode item : array) {
+            html.append("<tr>");
+            if (item.isObject()) {
+                item.elements().forEachRemaining(value -> 
+                    html.append("<td>").append(value.asText()).append("</td>")
+                );
+            } else {
+                html.append("<td>").append(item.asText()).append("</td>");
+            }
+            html.append("</tr>");
+        }
+        html.append("</tbody></table>");
+        
+        return html.toString();
+    }
+    
+    private String objectToTable(JsonNode obj) {
+        StringBuilder html = new StringBuilder();
+        html.append("<table border='1' cellpadding='5' style='border-collapse: collapse;'>");
+        html.append("<tbody>");
+        
+        Iterator<Map.Entry<String, JsonNode>> fields = obj.fields();
+        while (fields.hasNext()) {
+            Map.Entry<String, JsonNode> entry = fields.next();
+            html.append("<tr>");
+            html.append("<th>").append(entry.getKey()).append("</th>");
+            html.append("<td>").append(entry.getValue().asText()).append("</td>");
+            html.append("</tr>");
+        }
+        
+        html.append("</tbody></table>");
+        return html.toString();
+    }
+}
+```
 
 ### Groovy ContentConverter
 
@@ -164,3 +408,40 @@ See the [JsonConverterPlugin] for an example.
 See <https://github.com/rundeck/rundeck/tree/master/examples/example-groovy-content-converter-plugins>.
 
 [Plugin Development - Plugin Localization](/developer/plugin-properties.md#plugin-localization)
+
+## Best Practices
+
+### 1. Chain With Existing Converters
+
+```groovy
+// Convert to intermediate Java Map (others can render to HTML)
+convert('application/x-mydata', dataType(Map, 'application/x-java-map-or-list')) {
+    return parseToMap(data)  // Use built-in HTML renderer
+}
+```
+
+### 2. Handle Errors Gracefully
+
+```java
+try {
+    return generateHtml(data);
+} catch (Exception e) {
+    return "<pre class='error'>Error rendering: " + escape(e.getMessage()) + "</pre>";
+}
+```
+
+### 3. Escape HTML
+
+```java
+private String escapeHtml(String text) {
+    return text.replace("&", "&amp;")
+              .replace("<", "&lt;")
+              .replace(">", "&gt;");
+}
+```
+
+## Related Documentation
+
+- [Log Filter Plugins](/developer/log-filter-plugins.md) - Add content-data-type metadata
+- [Render Formatted Data](/manual/log-filters/render-formatted-data.md) - Built-in log filter
+- [Java Plugin Development](/developer/java-plugin-development.md) - General guide
