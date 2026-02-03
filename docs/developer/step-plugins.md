@@ -93,6 +93,29 @@ Need to execute remote commands/scripts?
 | **Use Case** | Node operations | Orchestration/Integration |
 | **Examples** | Commands, scripts, configs | APIs, notifications, tickets |
 
+## Quick Start with Plugin Bootstrap
+
+::: tip Fastest Way to Start
+Use the [Plugin Bootstrap Tool](/developer/plugin-bootstrap.md) to generate a complete step plugin project:
+
+**For Workflow Step (Java):**
+```bash
+rundeck-plugin-bootstrap -n MyWorkflowStep -t java -s WorkflowStep -d ~/projects
+```
+
+**For Node Step (Java):**
+```bash
+rundeck-plugin-bootstrap -n MyNodeStep -t java -s WorkflowNodeStep -d ~/projects
+```
+
+**For Node Step (Script):**
+```bash
+rundeck-plugin-bootstrap -n MyScriptStep -t script -s WorkflowNodeStep -d ~/projects
+```
+
+This generates everything you need: project structure, build files, template code, and tests. Then customize the generated plugin with your logic.
+:::
+
 ## Plugin Implementation Types
 
 You can implement step plugins in three ways:

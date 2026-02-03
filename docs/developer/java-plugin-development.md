@@ -931,9 +931,33 @@ public void executeStep(PluginStepContext context,
 
 ## Development Tools
 
-### Plugin Bootstrap
+### Plugin Bootstrap Tool (Recommended)
 
-Use the [Rundeck Plugin Bootstrap](https://github.com/rundeck/plugin-bootstrap) tool to quickly generate plugin project templates.
+The [Plugin Bootstrap Tool](/developer/plugin-bootstrap.md) generates complete Java plugin projects with one command, saving hours of setup time.
+
+**Quick Start:**
+
+```bash
+# Generate a Workflow Step plugin
+rundeck-plugin-bootstrap -n MyPlugin -t java -s WorkflowStep -d ~/projects
+
+# Generated structure includes:
+# - Complete Gradle project with Rundeck dependencies
+# - Template plugin class with annotations
+# - Test scaffolding
+# - Build configuration
+```
+
+**Supported Java Plugin Types:**
+- WorkflowStep, WorkflowNodeStep
+- Notification
+- ResourceModelSource
+- NodeExecutor
+- LogFilter
+- Orchestrator
+- Option (OptionValues)
+
+See [Plugin Bootstrap Tool](/developer/plugin-bootstrap.md) for complete documentation and examples.
 
 ### Maven Archetype
 

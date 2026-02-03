@@ -22,7 +22,25 @@ These Services support Script Plugins:
 
 Additionally, **[UI Plugins](/developer/ui-plugins.md)** are supported with a `ui` plugin type, which is similar to a Script Plugin.
 
-## Quick Start
+## Plugin Bootstrap Tool (Fastest Way to Start)
+
+::: tip Recommended
+Use the [Plugin Bootstrap Tool](/developer/plugin-bootstrap.md) to generate a complete script plugin project instantly:
+
+```bash
+# Generate a Node Step plugin
+rundeck-plugin-bootstrap -n MyNodeStep -t script -s WorkflowNodeStep -d ~/projects
+
+# Or generate a Node Executor
+rundeck-plugin-bootstrap -n CustomExecutor -t script -s NodeExecutor -d ~/projects
+```
+
+This creates the complete directory structure, plugin.yaml, script template, and build configuration. Skip to step 4 below to customize the generated plugin.
+:::
+
+## Quick Start (Manual)
+
+If you prefer to create the structure manually:
 
 ### 1. Create Plugin Directory Structure
 

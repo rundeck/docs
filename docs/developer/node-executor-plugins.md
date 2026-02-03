@@ -57,6 +57,24 @@ Create a Node Executor plugin when you need to:
 - ✅ Implementing a new **transport mechanism**
 - ✅ Providing an alternative to SSH/WinRM/etc.
 
+## Quick Start with Plugin Bootstrap
+
+::: tip Fastest Way to Start
+Use the [Plugin Bootstrap Tool](/developer/plugin-bootstrap.md) to generate a complete Node Executor plugin:
+
+**Java Plugin:**
+```bash
+rundeck-plugin-bootstrap -n CustomExecutor -t java -s NodeExecutor -d ~/projects
+```
+
+**Script Plugin:**
+```bash
+rundeck-plugin-bootstrap -n CustomExecutor -t script -s NodeExecutor -d ~/projects
+```
+
+This generates the complete project structure, build configuration, and template code. Then customize with your connection logic.
+:::
+
 ## Java Plugin Implementation
 
 ### Interface

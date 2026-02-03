@@ -106,6 +106,12 @@ See [Configuring Storage Plugins](/manual/key-storage/index.md#configuring-the-s
 Storage plugins can **only** be implemented in Java. Script and Groovy plugins are not supported for this service type.
 :::
 
+::: tip Reference Implementation
+The [Vault Storage Plugin](https://github.com/rundeck-plugins/vault-storage) is an excellent open-source example to use as a starting point. It demonstrates complete Storage plugin implementation with best practices.
+
+Note: The [Plugin Bootstrap Tool](/developer/plugin-bootstrap.md) does not currently generate Storage plugin templates. Use the Vault plugin as a reference or start from scratch.
+:::
+
 ### Dependencies
 
 Add these dependencies to your build:

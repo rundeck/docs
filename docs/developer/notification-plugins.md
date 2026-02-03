@@ -74,6 +74,21 @@ Your plugin can implement handlers for any or all of these triggers. Each trigge
 - ✅ Pushing job metrics to monitoring systems
 - ✅ Triggering follow-up workflows in external systems
 
+## Quick Start with Plugin Bootstrap
+
+::: tip Fastest Way to Start
+Use the [Plugin Bootstrap Tool](/developer/plugin-bootstrap.md) to generate a complete notification plugin project:
+
+**Java Notification Plugin:**
+```bash
+rundeck-plugin-bootstrap -n SlackNotifier -t java -s Notification -d ~/projects
+```
+
+This generates everything you need: project structure, build files, template notification class with all trigger handlers, and test scaffolding. Then customize with your notification logic.
+
+See [Plugin Bootstrap Tool](/developer/plugin-bootstrap.md) for more examples.
+:::
+
 ## Plugin Execution Context
 
 When a notification trigger fires, your plugin receives two parameters:

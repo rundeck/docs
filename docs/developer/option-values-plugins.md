@@ -65,6 +65,24 @@ Create an Option Values plugin when you need to:
 - ✅ Providing values that change based on context (project, user, etc.)
 - ✅ Integrating with systems without simple REST APIs
 
+## Quick Start with Plugin Bootstrap
+
+::: tip Fastest Way to Start
+Use the [Plugin Bootstrap Tool](/developer/plugin-bootstrap.md) to generate a complete Option Values plugin:
+
+**Java Plugin:**
+```bash
+rundeck-plugin-bootstrap -n RegionSelector -t java -s Option -d ~/projects
+```
+
+**Script Plugin:**
+```bash
+rundeck-plugin-bootstrap -n EnvironmentList -t script -s Option -d ~/projects
+```
+
+This generates the complete project structure, build configuration, and template code. Then customize with your value generation logic.
+:::
+
 ## Using Option Values Plugins
 
 ### 1. Install Your Plugin

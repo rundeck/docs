@@ -18,6 +18,7 @@ export default [
       text: 'Common Topics',
       collapsible: true,
       children: [
+        '/developer/plugin-bootstrap.md',
         '/developer/plugin-properties.md',
         '/developer/plugin-groups.md',
       ]

@@ -231,8 +231,11 @@ Organize related plugins:
 
 ### Tools and Utilities
 
+- **[Plugin Bootstrap Tool](/developer/plugin-bootstrap.md)** - Generate complete plugin projects in seconds (RECOMMENDED)
+  - Supports Java, Script, and UI plugins
+  - Creates project structure, build files, template code, and tests
+  - Get started immediately with working plugin scaffold
 - **[Password Utility](/developer/password-encrypt-utility.md)** - Encrypt passwords for configuration
-- **[Plugin Bootstrap](https://github.com/rundeck/plugin-bootstrap)** - Quickstart templates for plugin projects
 - **[Rundeck Plugin Archetype](https://github.com/rundeck/rundeck-plugin-archetype)** - Maven archetype for Java plugins
 
 ### API Documentation
@@ -249,12 +252,19 @@ Organize related plugins:
 ## Next Steps
 
 1. **Choose your approach**: Review the [comparison table](#quick-comparison) above
-2. **Read the specific guide**: 
+2. **Use the Plugin Bootstrap Tool** (Recommended): Generate a complete plugin project instantly
+   - See [Plugin Bootstrap Tool](/developer/plugin-bootstrap.md) for commands and examples
+   - Saves hours of setup time
+3. **Read the specific guide**: 
    - [Java Plugin Development](/developer/java-plugin-development.md)
    - [Script Plugin Development](/developer/script-plugin-development.md)
    - [Groovy Plugin Development](/developer/groovy-plugin-development.md)
-3. **Select a plugin type**: Pick from the [available types](#available-plugin-types)
-4. **Start developing**: Follow the setup and development instructions
-5. **Test and deploy**: Package your plugin and deploy to Rundeck
+4. **Select a plugin type**: Pick from the [available types](#available-plugin-types)
+5. **Start developing**: Implement your plugin logic in the generated scaffold
+6. **Test and deploy**: Build, test, and deploy to Rundeck
+
+::: tip Quick Start
+The fastest way to start: Use the [Plugin Bootstrap Tool](/developer/plugin-bootstrap.md) to generate your project, then follow the specific guide for your chosen approach.
+:::
 
 Good luck with your plugin development! If you have questions, reach out to the Rundeck community.
