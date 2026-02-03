@@ -227,6 +227,226 @@ Make your plugin user-friendly:
 Organize related plugins:
 - [Plugin Groups](/developer/plugin-groups.md) - Group related plugins in the UI
 
+## Plugin Development Best Practices
+
+### Performance and Scale Considerations
+
+::: danger Your Plugin Will Be Used at Scale
+Plugins that work fine in development can cause serious performance issues in production environments with thousands of jobs and executions. **You are responsible for ensuring your plugin performs efficiently.**
+:::
+
+#### Why Performance Matters
+
+Rundeck environments vary dramatically in size:
+- **Small**: 10-100 jobs, hundreds of executions
+- **Medium**: 100-1,000 jobs, thousands of executions  
+- **Large**: 1,000-5,000 jobs, tens of thousands of executions
+- **Enterprise**: 10,000+ jobs, millions of executions
+
+**A plugin that works perfectly with 50 jobs may bring Rundeck to its knees with 5,000 jobs.**
+
+#### Common Performance Pitfalls
+
+**1. Unbounded Queries**
+```java
+// BAD - Loads all executions in memory
+List<Execution> allExecutions = executionService.getAllExecutions(project);
+
+// GOOD - Page results, process in batches
+int pageSize = 100;
+for (int offset = 0; offset < totalCount; offset += pageSize) {
+    List<Execution> batch = executionService.getExecutions(project, pageSize, offset);
+    processBatch(batch);
+}
+```
+
+**2. N+1 Query Problems**
+```java
+// BAD - Separate query for each job
+for (Job job : jobs) {
+    List<Execution> executions = getExecutionsForJob(job.id);  // Query per job!
+    process(job, executions);
+}
+
+// GOOD - Single batched query
+List<Execution> allExecutions = getExecutionsForJobs(jobIds);
+Map<String, List<Execution>> executionsByJob = groupByJobId(allExecutions);
+for (Job job : jobs) {
+    process(job, executionsByJob.get(job.id));
+}
+```
+
+**3. Inefficient Loops**
+```java
+// BAD - Rebuilds list on every iteration
+List<String> results = new ArrayList<>();
+for (Node node : nodes) {
+    results = Stream.concat(results.stream(), processNode(node).stream())
+             .collect(Collectors.toList());  // Rebuilding entire list each time!
+}
+
+// GOOD - Add to existing list
+List<String> results = new ArrayList<>();
+for (Node node : nodes) {
+    results.addAll(processNode(node));  // Simple append
+}
+```
+
+**4. Holding Resources Too Long**
+```java
+// BAD - Connection held for entire operation
+Connection conn = getConnection();
+for (int i = 0; i < 10000; i++) {
+    processRecord(conn, i);  // Connection held during all processing
+}
+conn.close();
+
+// GOOD - Use connection only when needed
+for (int i = 0; i < 10000; i++) {
+    processRecord(i);  // Processing happens without connection
+}
+// Connection auto-closed by try-with-resources when actually used
+```
+
+**5. Excessive Logging**
+```java
+// BAD - Logs in tight loop
+for (Execution exec : executions) {
+    logger.debug("Processing execution: " + exec.getId() + " details: " + exec.toString());
+}
+
+// GOOD - Log summaries
+logger.debug("Processing {} executions", executions.size());
+if (logger.isTraceEnabled()) {
+    executions.forEach(e -> logger.trace("Execution: {}", e.getId()));
+}
+```
+
+#### Performance Testing
+
+**Test with realistic data:**
+```bash
+# Generate test data at scale
+# Create 1000 jobs
+for i in {1..1000}; do
+    rd jobs create -p TestProject -n "TestJob$i" ...
+done
+
+# Generate execution history
+# Run jobs repeatedly to simulate real usage
+```
+
+**Monitor during testing:**
+- CPU usage (server and client)
+- Memory usage (heap, GC frequency)
+- Response times
+- Database query counts
+- Thread pool utilization
+- Log file growth
+
+**Tools:**
+- JProfiler / YourKit for Java profiling
+- Chrome DevTools for UI plugin performance
+- Rundeck's metrics endpoints (`/metrics`)
+- Database slow query logs
+
+#### Plugin-Specific Considerations
+
+**Node Step / Workflow Step Plugins:**
+- May execute thousands of times per job
+- Keep execution logic lightweight
+- Cache expensive operations (API calls, file reads)
+- Use connection pooling for external services
+
+**Notification Plugins:**
+- May fire for every execution (high volume)
+- Implement rate limiting for external services
+- Queue and batch notifications when possible
+- Handle failures gracefully (don't block execution completion)
+
+**Resource Model Source Plugins:**
+- May manage thousands of nodes
+- Cache node data appropriately
+- Implement efficient filtering
+- Stream results instead of loading all in memory
+
+**UI Plugins:**
+- API calls multiply across all users
+- Cache aggressively in browser
+- Limit auto-refresh frequency
+- Use Web Workers for heavy processing
+- See [UI Plugins Performance](/developer/ui-plugins.md#performance-considerations) for details
+
+**Option Values Plugins:**
+- May be called frequently as users configure jobs
+- Cache API results
+- Implement timeouts
+- Return reasonable result set sizes (< 1000 values)
+
+#### Performance Checklist
+
+Before releasing your plugin:
+
+- [ ] Test with production-scale data (not just 10 test jobs)
+- [ ] Implement pagination for large result sets
+- [ ] Cache expensive operations appropriately
+- [ ] Use efficient data structures (avoid repeated list rebuilding)
+- [ ] Implement timeouts for external calls
+- [ ] Handle large volumes gracefully (batching, streaming)
+- [ ] Add configurable limits (max results, max retries, timeouts)
+- [ ] Monitor resource usage (memory, CPU, connections)
+- [ ] Log at appropriate levels (not debug in production)
+- [ ] Profile your code under load
+- [ ] Document performance characteristics in README
+- [ ] Document recommended environment sizes/limits
+
+#### When Performance Issues Arise
+
+If users report performance problems:
+
+1. **Ask for environment details**
+   - How many jobs?
+   - How many executions?
+   - How many nodes?
+   - Rundeck version and configuration
+
+2. **Reproduce at scale**
+   - Generate test data matching user's environment
+   - Use profiling tools to identify bottlenecks
+
+3. **Optimize incrementally**
+   - Fix the biggest bottleneck first
+   - Measure improvement after each change
+   - Test at scale again
+
+4. **Document limitations**
+   - Update README with tested scale limits
+   - Provide configuration recommendations
+   - Warn about known performance characteristics
+
+### Security Considerations
+
+**Credentials and Secrets:**
+- Use Rundeck's Key Storage for sensitive data
+- Never log credentials or secrets
+- Use secure credential types (`@PluginProperty` with `renderingOptions`)
+
+**Input Validation:**
+- Validate all user inputs
+- Sanitize data before executing commands
+- Prevent injection attacks (command, SQL, script)
+
+**External Connections:**
+- Validate SSL/TLS certificates
+- Use secure protocols (HTTPS, SSH)
+- Implement timeouts to prevent hanging
+- Handle connection failures gracefully
+
+**Error Messages:**
+- Don't expose sensitive information in errors
+- Log detailed errors server-side
+- Show generic errors to users
+
 ## Additional Resources
 
 ### Tools and Utilities

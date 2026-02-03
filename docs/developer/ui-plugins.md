@@ -1105,6 +1105,359 @@ function loadi18nHtmlTemplate(file){
 }
 ```
 
+## Performance Considerations
+
+::: danger Critical: API Usage Can Impact Server Performance
+UI plugins that make API calls to Rundeck can significantly impact server performance, especially in large environments with hundreds or thousands of jobs/executions. **You are responsible for ensuring your plugin performs efficiently.**
+:::
+
+### Why Performance Matters
+
+UI plugins run in every user's browser, but when they call Rundeck APIs, those calls hit the server. Problems multiply:
+
+- **One inefficient query** × **Multiple users** × **Auto-refresh** = **Server overload**
+- Large environments amplify these issues exponentially
+- CPU spikes can impact all Rundeck users
+- Database load can slow down the entire system
+
+**Real-world example:**
+An early version of the Job Metrics plugin made inefficient API calls that caused significant CPU spikes in environments with 1000+ jobs. The issue only appeared at scale and required optimization.
+
+### API Performance Best Practices
+
+#### 1. Minimize API Calls
+
+**Bad - Calls API for every job individually:**
+```javascript
+// DON'T DO THIS
+jobs.forEach(job => {
+    // Makes 1000 API calls if you have 1000 jobs!
+    fetch(`/api/job/${job.id}/executions`).then(data => {
+        processJobData(job.id, data);
+    });
+});
+```
+
+**Good - Single batched API call:**
+```javascript
+// DO THIS
+const jobIds = jobs.map(j => j.id).join(',');
+fetch(`/api/project/${project}/executions?jobIdListFilter=${jobIds}&max=500`)
+    .then(data => {
+        const executionsByJob = groupExecutionsByJob(data.executions);
+        jobs.forEach(job => {
+            processJobData(job.id, executionsByJob[job.id] || []);
+        });
+    });
+```
+
+#### 2. Use Appropriate Query Parameters
+
+**Control result size:**
+```javascript
+// Limit results to what you actually need
+fetch(`/api/project/${project}/executions?max=100&offset=0`)
+
+// Filter on the server, not in the browser
+fetch(`/api/project/${project}/executions?recentFilter=1d&statusFilter=succeeded`)
+```
+
+**Available filters:**
+- `max` - Limit number of results (default: 20, max: 200)
+- `offset` - Pagination offset
+- `recentFilter` - Time window (`1h`, `1d`, `1w`, `1m`)
+- `statusFilter` - Filter by status (`succeeded`, `failed`, `running`)
+- `jobIdListFilter` - Filter by specific job IDs
+
+#### 3. Implement Caching
+
+**Cache API responses in memory:**
+```javascript
+const cache = {
+    data: null,
+    timestamp: null,
+    ttl: 60000  // 1 minute
+};
+
+function fetchWithCache(url) {
+    const now = Date.now();
+    
+    // Return cached data if still valid
+    if (cache.data && cache.timestamp && (now - cache.timestamp) < cache.ttl) {
+        console.log('Using cached data');
+        return Promise.resolve(cache.data);
+    }
+    
+    // Fetch fresh data
+    return fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            cache.data = data;
+            cache.timestamp = now;
+            return data;
+        });
+}
+```
+
+**Use localStorage for persistent caching:**
+```javascript
+function getCachedData(key, maxAge) {
+    const cached = localStorage.getItem(key);
+    if (!cached) return null;
+    
+    const { data, timestamp } = JSON.parse(cached);
+    if (Date.now() - timestamp > maxAge) {
+        localStorage.removeItem(key);
+        return null;
+    }
+    
+    return data;
+}
+
+function setCachedData(key, data) {
+    localStorage.setItem(key, JSON.stringify({
+        data: data,
+        timestamp: Date.now()
+    }));
+}
+```
+
+#### 4. Use Web Workers for Heavy Processing
+
+**Offload data processing to a worker:**
+```javascript
+// assets/js/lib/dataWorker.js
+self.addEventListener('message', function(e) {
+    const { executions, jobs } = e.data;
+    
+    // Heavy processing happens in worker thread
+    const results = processExecutionData(executions, jobs);
+    
+    self.postMessage({ results: results });
+});
+
+// main.js
+const worker = new Worker('/path/to/dataWorker.js');
+
+worker.postMessage({ executions: rawData, jobs: jobList });
+
+worker.addEventListener('message', function(e) {
+    const results = e.data.results;
+    updateUI(results);
+});
+```
+
+#### 5. Implement Progressive Loading
+
+**Load data in chunks:**
+```javascript
+async function loadAllExecutions(project, maxDays = 30) {
+    const pageSize = 200;  // API max per request
+    let offset = 0;
+    let allExecutions = [];
+    let hasMore = true;
+    
+    while (hasMore) {
+        const url = `/api/project/${project}/executions?max=${pageSize}&offset=${offset}&recentFilter=${maxDays}d`;
+        const response = await fetch(url);
+        const data = await response.json();
+        
+        allExecutions = allExecutions.concat(data.executions);
+        
+        // Show progress to user
+        updateProgressBar(allExecutions.length, data.total);
+        
+        hasMore = data.executions.length === pageSize;
+        offset += pageSize;
+        
+        // Yield to browser to prevent freezing
+        await new Promise(resolve => setTimeout(resolve, 100));
+    }
+    
+    return allExecutions;
+}
+```
+
+#### 6. Debounce User Actions
+
+**Prevent excessive API calls from user input:**
+```javascript
+let debounceTimer;
+
+function onSearchInput(query) {
+    clearTimeout(debounceTimer);
+    
+    // Wait 300ms after user stops typing
+    debounceTimer = setTimeout(() => {
+        searchJobs(query);
+    }, 300);
+}
+
+jQuery('#search-input').on('input', function() {
+    onSearchInput(jQuery(this).val());
+});
+```
+
+#### 7. Implement Request Throttling
+
+**Limit concurrent API requests:**
+```javascript
+class RequestQueue {
+    constructor(maxConcurrent = 3) {
+        this.queue = [];
+        this.active = 0;
+        this.maxConcurrent = maxConcurrent;
+    }
+    
+    async add(requestFn) {
+        if (this.active >= this.maxConcurrent) {
+            await new Promise(resolve => this.queue.push(resolve));
+        }
+        
+        this.active++;
+        
+        try {
+            return await requestFn();
+        } finally {
+            this.active--;
+            const next = this.queue.shift();
+            if (next) next();
+        }
+    }
+}
+
+const queue = new RequestQueue(3);
+
+// Usage
+queue.add(() => fetch('/api/executions/1'));
+queue.add(() => fetch('/api/executions/2'));
+queue.add(() => fetch('/api/executions/3'));
+// Only 3 run concurrently
+```
+
+#### 8. Monitor Your Plugin's Performance
+
+**Add performance tracking:**
+```javascript
+function trackApiCall(url, startTime) {
+    const duration = Date.now() - startTime;
+    
+    console.log(`API Call: ${url}`);
+    console.log(`Duration: ${duration}ms`);
+    
+    if (duration > 2000) {
+        console.warn(`Slow API call detected: ${url} took ${duration}ms`);
+    }
+    
+    // Store metrics
+    metrics.apiCalls++;
+    metrics.totalTime += duration;
+    metrics.avgTime = metrics.totalTime / metrics.apiCalls;
+}
+
+// Usage
+const startTime = Date.now();
+fetch(url)
+    .then(response => {
+        trackApiCall(url, startTime);
+        return response.json();
+    });
+```
+
+### Auto-Refresh Considerations
+
+If your plugin auto-refreshes data, be extra careful:
+
+**Bad - Aggressive refresh:**
+```javascript
+// DON'T DO THIS - Hammers server every 5 seconds
+setInterval(() => {
+    fetchAllData();
+}, 5000);
+```
+
+**Good - Reasonable refresh with user control:**
+```javascript
+// Default: 60 seconds (configurable by user)
+const DEFAULT_REFRESH = 60000;
+const refreshInterval = localStorage.getItem('plugin.refreshInterval') || DEFAULT_REFRESH;
+
+let refreshTimer;
+
+function startAutoRefresh() {
+    refreshTimer = setInterval(() => {
+        // Only refresh if tab is visible
+        if (!document.hidden) {
+            fetchAllData();
+        }
+    }, refreshInterval);
+}
+
+// Stop refresh when user navigates away
+window.addEventListener('beforeunload', () => {
+    clearInterval(refreshTimer);
+});
+
+// Pause refresh when tab is hidden
+document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+        clearInterval(refreshTimer);
+    } else {
+        startAutoRefresh();
+    }
+});
+```
+
+### Testing at Scale
+
+::: warning Test with Realistic Data Volumes
+Your plugin might work fine with 10 jobs but fail with 1000. Always test with production-scale data.
+:::
+
+**Recommended test scenarios:**
+- Small environment: 10-50 jobs, 100-500 executions
+- Medium environment: 100-500 jobs, 1K-10K executions
+- Large environment: 1000+ jobs, 50K+ executions
+- Enterprise environment: 5000+ jobs, 500K+ executions
+
+**What to monitor:**
+- API response times
+- Browser memory usage (Chrome DevTools → Memory tab)
+- CPU usage in browser (Chrome DevTools → Performance tab)
+- Server CPU/memory (watch Rundeck logs and metrics)
+- Time to initial render
+- Time to interactive
+
+### Performance Checklist
+
+Before releasing your plugin:
+
+- [ ] Minimize number of API calls (batch where possible)
+- [ ] Use appropriate query filters and limits
+- [ ] Implement caching (memory and/or localStorage)
+- [ ] Use Web Workers for heavy processing
+- [ ] Implement progressive loading for large datasets
+- [ ] Debounce user input actions
+- [ ] Throttle concurrent requests
+- [ ] Make auto-refresh configurable and reasonable (≥60 seconds)
+- [ ] Pause operations when tab is hidden
+- [ ] Add performance monitoring/logging
+- [ ] Test with production-scale data
+- [ ] Monitor server impact during testing
+- [ ] Document performance characteristics in README
+
+### When Performance Issues Arise
+
+If users report performance problems:
+
+1. **Gather metrics** - What scale environment? How many jobs/executions?
+2. **Profile your code** - Use Chrome DevTools Performance tab
+3. **Check API calls** - Network tab shows all requests and timing
+4. **Optimize queries** - Add filters, reduce result sets
+5. **Add caching** - Especially for data that doesn't change often
+6. **Move to workers** - Offload heavy processing
+7. **Communicate** - Document known limitations and recommendations
+
 ## Example Plugin
 
 Here are some [UI Plugin Examples][example-code].
