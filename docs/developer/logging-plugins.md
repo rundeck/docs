@@ -1,75 +1,565 @@
-# Logging Plugin
+# Logging Plugins
 
-## About
+## Overview
 
-A Logging provider stores or forwards execution log data.
+Logging plugins control where and how Rundeck stores execution logs. By default, Rundeck writes logs to local disk (`var/logs`), but this isn't suitable for cloud environments, clustering, or long-term retention. Logging plugins enable you to send logs to external systems for storage, analysis, compliance, and monitoring.
 
-### About Rundeck Logging
+**Common Use Cases:**
 
-When Rundeck executes a Job or adhoc execution, it runs workflow steps across multiple nodes and channels all output from these steps into a log for the execution. This log contains the output from each step, as well as metadata about the context that the event occurred in, such as the node name, date stamp, and contextual data about the step being executed.
+**Cloud Storage & Clustering:**
+- Store logs in **S3** for ephemeral cloud deployments
+- Use **Azure Blob Storage** when running Rundeck in Azure
+- Centralize logs in **Google Cloud Storage** for GCP environments
+- Enable **clustering** by storing logs externally (multiple Rundeck servers)
 
-This logging system consists of these components:
+**Monitoring & Analytics:**
+- Stream logs to **CloudWatch** for AWS monitoring and alerts
+- Send logs to **Splunk** for centralized log management
+- Forward to **Elasticsearch** for searching and analysis
+- Push to **Datadog** or other APM tools for observability
 
-- _Streaming Log Writers_ - One or more outputs for the log data
-- _Streaming Log Reader_ - One input for reading the log data
+**Compliance & Retention:**
+- Archive logs to **S3 Glacier** for long-term retention
+- Store logs in compliant storage (HIPAA, SOC 2, etc.)
+- Maintain audit trails for regulatory requirements
+- Implement custom retention policies
 
-When an execution starts, it writes log events to all outputs until it is done.
-When a user views the execution log in the Rundeck GUI, or accesses it via the API, the input component is used to read the log events for the specific Execution.
+**Real-Time Integration:**
+- Stream logs to **Kafka** for real-time processing
+- Send to **Syslog** for SIEM integration
+- Forward to custom webhooks or APIs
+- Trigger alerts based on log content
 
-Rundeck provides a built-in Reader and Writer, by writing the log output to a formatted file on disk, stored in the `var/logs` directory. This is the _Local File Log_.
+**Real-World Examples:**
+- E-commerce company stores all execution logs in S3, archives after 90 days to Glacier
+- Financial institution streams logs to Splunk for compliance auditing
+- SaaS startup uses CloudWatch for real-time alerting on job failures
+- Healthcare provider encrypts logs and stores in compliant Azure storage
+- DevOps team clusters 3 Rundeck servers, all writing/reading from shared S3 bucket
 
-In addition, in Rundeck 2.0+, each execution generates a _state_ file, which contains information about how each step and node executed. This file is also stored on disk.
+**Benefits:**
+- **No Local Disk Dependency** - Logs persist beyond server lifecycle
+- **Clustering Support** - Multiple Rundeck instances share logs
+- **Compliance** - Meet retention and audit requirements
+- **Scalability** - Cloud storage scales infinitely
+- **Integration** - Connect to existing monitoring/logging infrastructure
+- **Cost Optimization** - Use tiered storage (hot/cold/archive)
 
-However local storage of log files is not always ideal, such as when deploying of Rundeck in a cloud environment where local disk storage could be ephemeral, or when clustering multiple Rundeck servers. In those cases, it would be useful to have a way to store the log file and state file somewhere else, and retrieve them when necessary.
+## How Rundeck Logging Works
 
-Rundeck has another component:
+### Architecture
 
-- _Execution File Storage_ - A way of storing and retrieving file data in an external system
+When Rundeck executes a job, it generates log events containing:
+- Command output from each step
+- Node names and timestamps  
+- Execution context and metadata
+- Step results and state information
 
-Rundeck has a plugin mechanism for all three of these components, allowing the logging system and file storage system to be adapted to different needs.
+These log events flow through a pluggable logging system with three components:
 
-Log Events are written to all configured Writer plugins, as well as the **Local File Log** if not disabled:
+**1. Streaming Log Writers** - Where logs are sent during execution  
+**2. Streaming Log Readers** - Where logs are read from for display  
+**3. Execution File Storage** - Where complete log files are stored/retrieved
+
+### Default Behavior (Local File Log)
+
+By default, Rundeck uses the **Local File Log**:
+- Writes logs to `var/logs/rundeck/{project}/{execution-id}.rdlog`
+- Stores execution state to `var/logs/rundeck/{project}/{execution-id}.state.json`
+- Works well for single server, persistent disk
+
+### Three Plugin Types
+
+#### 1. **StreamingLogWriter** (Real-time Output)
+
+**Purpose:** Send log events somewhere as they happen during execution.
+
+**When to Use:**
+- Real-time monitoring (CloudWatch, Datadog)
+- Log aggregation (Splunk, Elasticsearch)
+- Custom alerting systems
+- Audit trail duplication
+
+**Architecture:**
+
+```
+Job Execution → Log Events → Writer Plugin(s) → External System(s)
+                           ↓
+                        Local File Log (optional)
+```
+
+Multiple writers can be configured simultaneously.
 
 ![Writer plugins](/assets/img/log_storage1.png)
 
-Events are read from either a Reader plugin, or the **Local File Log**:
+**Examples:**
+- CloudWatch Writer - Streams logs to AWS CloudWatch Logs
+- Splunk Writer - Forwards log events to Splunk HTTP Event Collector
+- Syslog Writer - Sends logs to syslog server
+- Custom API Writer - POSTs log events to your API
+
+#### 2. **StreamingLogReader** (Real-time Display)
+
+**Purpose:** Read log events from external system for display in Rundeck UI/API.
+
+**When to Use:**
+- Completely replace local file storage
+- Read from centralized log system
+- Custom log storage backend
+
+**Architecture:**
+
+```
+Rundeck UI/API → Reader Plugin → External System
+                ↓
+             Display Logs
+```
 
 ![Reader plugins](/assets/img/log_storage2.png)
 
-When the **Local File Log** is used, the logs can be asynchronously stored to a Storage plugin after they are completed. Later, the logs can be asynchronously retrieved via the Storage plugin to be used by the **Local File Log**:
+**Examples:**
+- CloudWatch Reader - Reads logs from CloudWatch Logs
+- S3 Reader - Streams logs directly from S3 objects
+- Database Reader - Queries logs from database
+
+**Note:** Readers and Writers usually come in pairs for complete replacement of Local File Log.
+
+#### 3. **ExecutionFileStorage** (Batch Storage/Retrieval)
+
+**Purpose:** Store and retrieve **complete** log files after execution completes.
+
+**When to Use:**
+- Cloud deployments (ephemeral disks)
+- Rundeck clustering (shared log storage)
+- Long-term log archival
+- Backup/disaster recovery
+
+**This is the most common plugin type for customers.**
+
+**Architecture:**
+
+```
+Execution Complete → Local File Log → Storage Plugin → External Storage
+                                                         (S3, Azure Blob, etc.)
+
+Later...
+
+User Views Log → Local File Missing → Storage Plugin Retrieves → Local Cache
+```
 
 ![Storage plugins](/assets/img/log_storage3.png)
 
-Here are some examples of how it can be used:
+**Flow:**
+1. During execution, logs written to local disk (fast)
+2. After completion, logs asynchronously uploaded to storage plugin
+3. Local logs can be cleaned up (disk space)
+4. When user views log, plugin retrieves from storage if needed
+5. Retrieved logs cached locally for performance
 
-- replace the **Local File Log** entirely with another Reader and set of Writers
-- duplicate all log output somewhere, in addition to using the **Local File Log**
-- Supplement the **Local File Log** with a secondary log file storage system, so that local files can be removed and restored as needed
+**Examples:**
+- S3 Storage - Stores logs in AWS S3 buckets
+- Azure Blob Storage - Stores logs in Azure Storage
+- GCS Storage - Stores logs in Google Cloud Storage
+- Custom Storage - Your own storage backend
 
-## Changes since Rundeck 1.6
+## When to Use Which Type
 
-In Rundeck 1.6, there was an `LogFileStorage` service and plugin system. In Rundeck 2.0+, this has been replaced by the `ExecutionFileStorage` service and plugin system.
+### Decision Matrix
 
-Any plugins written for Rundeck 1.6 will _not_ work in Rundeck 2.0, and need to be updated to use the new mechanism.
+| Scenario | Recommended Plugin Type | Why |
+|----------|------------------------|-----|
+| **Cloud deployment (AWS, Azure, GCP)** | ExecutionFileStorage | Ephemeral disks, need external storage |
+| **Rundeck Clustering** | ExecutionFileStorage | All servers access shared logs |
+| **Real-time monitoring** | StreamingLogWriter | Live log streaming to monitoring tools |
+| **Compliance/Audit** | StreamingLogWriter + ExecutionFileStorage | Real-time audit trail + long-term storage |
+| **Replace local storage entirely** | StreamingLogWriter + StreamingLogReader | Complete custom backend |
+| **Backup existing logs** | ExecutionFileStorage | Keep local, backup remotely |
+| **SIEM integration** | StreamingLogWriter | Forward logs to security tools |
 
-## Changes in Rundeck 2.6
+### Common Patterns
 
-The `ExecutionFileStorage` behavior has been extended to allow use of two new optional interfaces:
+**Pattern 1: Cloud Storage Only** (Most Common)
+```
+Local File Log → ExecutionFileStorage (S3/Azure/GCS)
+```
+- Logs written locally during execution (fast)
+- Uploaded to cloud storage after completion
+- Retrieved when needed
+- Local logs can be deleted
 
-- [ExecutionMultiFileStorage](#executionmultifilestorage)
-- [ExecutionFileStorageOptions](#executionfilestorageoptions)
+**Pattern 2: Real-Time + Cloud Storage**
+```
+StreamingLogWriter (CloudWatch) + ExecutionFileStorage (S3)
+```
+- Real-time monitoring in CloudWatch
+- Long-term storage in S3
+- Best of both worlds
 
-The groovy-script based DSL for this plugin type has been modified to support these features automatically.
+**Pattern 3: Complete Replacement**
+```
+StreamingLogWriter (Custom) + StreamingLogReader (Custom)
+```
+- No local file log
+- All logs in external system
+- Requires paired reader/writer
 
-Previous plugin implementations will work without modification.
+**Pattern 4: Audit Duplication**
+```
+Local File Log + StreamingLogWriter (Syslog/Splunk)
+```
+- Normal local logging
+- Duplicate to audit/SIEM system
+- Compliance requirement
 
-## Types of Logging Plugins
+## Quick Start: S3 Storage Example
 
-There are three types of plugins that can be created:
+The most common use case is storing logs in S3. Here's a complete working example:
 
-- [StreamingLogWriter](#streaminglogwriter) - provides a stream-like mechanism for writing log events ([javadoc]({{$javaDocBase}}/com/dtolabs/rundeck/core/logging/StreamingLogWriter.html)).
-- [StreamingLogReader](#streaminglogreader) - provides a stream-like mechanism for reading log events ([javadoc]({{$javaDocBase}}/com/dtolabs/rundeck/core/logging/StreamingLogReader.html)).
-- [ExecutionFileStorage](#executionfilestorage) - provides a way to both store and retrieve entire log files and execution state files ([javadoc]({{$javaDocBase}}/com/dtolabs/rundeck/core/logging/ExecutionFileStorage.html)).
+```java
+package com.example.rundeck.logging;
+
+import com.dtolabs.rundeck.core.logging.ExecutionFileStorageException;
+import com.dtolabs.rundeck.core.plugins.Plugin;
+import com.dtolabs.rundeck.plugins.ServiceNameConstants;
+import com.dtolabs.rundeck.plugins.descriptions.*;
+import com.dtolabs.rundeck.plugins.logging.ExecutionFileStoragePlugin;
+import software.amazon.awssdk.core.sync.RequestBody;
+import software.amazon.awssdk.services.s3.S3Client;
+import software.amazon.awssdk.services.s3.model.*;
+
+import java.io.*;
+import java.util.*;
+
+@Plugin(name = "s3-log-storage", service = ServiceNameConstants.ExecutionFileStorage)
+@PluginDescription(title = "S3 Log Storage", description = "Stores execution logs in AWS S3")
+public class S3LogStoragePlugin implements ExecutionFileStoragePlugin {
+    
+    @PluginProperty(title = "S3 Bucket", description = "S3 bucket name", required = true)
+    private String bucket;
+    
+    @PluginProperty(title = "Path Pattern", 
+        description = "Path pattern for log files (use ${project}, ${execid})",
+        required = false,
+        defaultValue = "rundeck-logs/${project}/${execid}")
+    private String pathPattern;
+    
+    @PluginProperty(title = "AWS Region", required = false, defaultValue = "us-east-1")
+    private String region;
+    
+    private S3Client s3Client;
+    private Map<String, Object> context;
+    
+    @Override
+    public void initialize(Map<String, ? extends Object> context) {
+        this.context = new HashMap<>(context);
+        this.s3Client = S3Client.builder()
+            .region(software.amazon.awssdk.regions.Region.of(region))
+            .build();
+    }
+    
+    @Override
+    public boolean isAvailable(String filetype) throws ExecutionFileStorageException {
+        try {
+            String key = buildS3Key(filetype);
+            HeadObjectRequest request = HeadObjectRequest.builder()
+                .bucket(bucket)
+                .key(key)
+                .build();
+            
+            s3Client.headObject(request);
+            return true;  // File exists
+        } catch (NoSuchKeyException e) {
+            return false;  // File doesn't exist
+        } catch (Exception e) {
+            throw new ExecutionFileStorageException(
+                "Error checking S3 availability: " + e.getMessage(), e);
+        }
+    }
+    
+    @Override
+    public boolean store(String filetype, InputStream stream, long length, Date lastModified)
+            throws IOException, ExecutionFileStorageException {
+        try {
+            String key = buildS3Key(filetype);
+            
+            PutObjectRequest request = PutObjectRequest.builder()
+                .bucket(bucket)
+                .key(key)
+                .contentLength(length)
+                .build();
+            
+            s3Client.putObject(request, RequestBody.fromInputStream(stream, length));
+            return true;
+        } catch (Exception e) {
+            throw new ExecutionFileStorageException(
+                "Error storing to S3: " + e.getMessage(), e);
+        }
+    }
+    
+    @Override
+    public boolean retrieve(String filetype, OutputStream stream)
+            throws IOException, ExecutionFileStorageException {
+        try {
+            String key = buildS3Key(filetype);
+            
+            GetObjectRequest request = GetObjectRequest.builder()
+                .bucket(bucket)
+                .key(key)
+                .build();
+            
+            try (InputStream s3Stream = s3Client.getObject(request)) {
+                byte[] buffer = new byte[8192];
+                int bytesRead;
+                while ((bytesRead = s3Stream.read(buffer)) != -1) {
+                    stream.write(buffer, 0, bytesRead);
+                }
+            }
+            return true;
+        } catch (NoSuchKeyException e) {
+            return false;  // File not found
+        } catch (Exception e) {
+            throw new ExecutionFileStorageException(
+                "Error retrieving from S3: " + e.getMessage(), e);
+        }
+    }
+    
+    private String buildS3Key(String filetype) {
+        // Expand path pattern with context variables
+        String path = pathPattern
+            .replace("${project}", String.valueOf(context.get("project")))
+            .replace("${execid}", String.valueOf(context.get("execid")));
+        
+        return path + "." + filetype;
+    }
+}
+```
+
+**What This Does:**
+- Stores logs in S3 after execution completes
+- Uses path pattern: `rundeck-logs/{project}/{execution-id}.rdlog`
+- Retrieves logs when user views execution
+- Supports clustering (multiple Rundeck servers use same bucket)
+
+**Configuration** (in `framework.properties` or project config):
+```properties
+framework.plugin.ExecutionFileStorage.s3-log-storage.bucket=my-rundeck-logs
+framework.plugin.ExecutionFileStorage.s3-log-storage.region=us-east-1
+framework.plugin.ExecutionFileStorage.s3-log-storage.pathPattern=logs/${project}/${execid}
+```
+
+## Best Practices
+
+### 1. Handle Errors Gracefully
+
+```java
+@Override
+public boolean store(String filetype, InputStream stream, long length, Date lastModified) {
+    try {
+        // Attempt storage
+        uploadToStorage(stream);
+        return true;
+    } catch (Exception e) {
+        // Log error but don't crash Rundeck
+        System.err.println("Storage failed: " + e.getMessage());
+        return false;  // Will retry later
+    }
+}
+```
+
+**Why:** If your plugin throws unhandled exceptions, it can fail job executions. Return `false` to indicate failure and allow Rundeck to retry.
+
+### 2. Implement Timeouts
+
+```java
+S3Client s3 = S3Client.builder()
+    .overrideConfiguration(config -> config
+        .apiCallTimeout(Duration.ofSeconds(30))
+        .apiCallAttemptTimeout(Duration.ofSeconds(10)))
+    .build();
+```
+
+**Why:** Network operations can hang indefinitely. Always set timeouts to prevent blocking.
+
+### 3. Use Buffered Streams
+
+```java
+// Bad - reads byte by byte
+s3Stream.transferTo(outputStream);
+
+// Good - buffers for performance
+try (BufferedInputStream buffered = new BufferedInputStream(s3Stream, 8192)) {
+    byte[] buffer = new byte[8192];
+    int bytesRead;
+    while ((bytesRead = buffered.read(buffer)) != -1) {
+        outputStream.write(buffer, 0, bytesRead);
+    }
+}
+```
+
+**Why:** Unbuffered streams are extremely slow for large files. Buffer sizes of 8KB-64KB work well.
+
+### 4. Close Resources Properly
+
+```java
+@Override
+public boolean retrieve(String filetype, OutputStream stream) {
+    InputStream s3Stream = null;
+    try {
+        s3Stream = s3Client.getObject(request);
+        // ... copy to output stream
+        return true;
+    } catch (Exception e) {
+        return false;
+    } finally {
+        if (s3Stream != null) {
+            try { s3Stream.close(); } catch (IOException ignored) {}
+        }
+    }
+}
+```
+
+**Why:** Leaked resources cause memory issues and connection exhaustion. Use try-with-resources or finally blocks.
+
+### 5. Support Execution Import
+
+Handle imported executions correctly:
+
+```java
+@Override
+public void initialize(Map<String, ? extends Object> context) {
+    this.context = context;
+    
+    // Check if this is an imported execution
+    boolean isRemote = "true".equals(context.get("isRemoteFilePath"));
+    
+    if (isRemote) {
+        // Use outputfilepath directly
+        this.logPath = (String) context.get("outputfilepath");
+        this.execId = (String) context.get("execIdForLogStore");
+    } else {
+        // Use normal path pattern
+        this.logPath = expandPathPattern();
+        this.execId = (String) context.get("execid");
+    }
+}
+```
+
+**Why:** Imported executions may have different paths. Check `isRemoteFilePath` context variable (v4.17.0+).
+
+### 6. Validate Configuration
+
+```java
+@Override
+public void initialize(Map<String, ? extends Object> context) {
+    if (bucket == null || bucket.trim().isEmpty()) {
+        throw new IllegalArgumentException("S3 bucket is required");
+    }
+    
+    if (!bucket.matches("^[a-z0-9][a-z0-9.-]*[a-z0-9]$")) {
+        throw new IllegalArgumentException("Invalid S3 bucket name: " + bucket);
+    }
+    
+    // Initialize client
+    this.s3Client = S3Client.builder()
+        .region(Region.of(region))
+        .build();
+}
+```
+
+**Why:** Fail fast with clear error messages. Don't wait until store/retrieve to discover config problems.
+
+### 7. Log Plugin Activity
+
+```java
+@Override
+public boolean store(String filetype, InputStream stream, long length, Date lastModified) {
+    String key = buildS3Key(filetype);
+    System.out.println("Storing " + filetype + " to s3://" + bucket + "/" + key);
+    
+    try {
+        // ... storage logic
+        System.out.println("Successfully stored " + length + " bytes");
+        return true;
+    } catch (Exception e) {
+        System.err.println("Storage failed: " + e.getMessage());
+        e.printStackTrace();
+        return false;
+    }
+}
+```
+
+**Why:** Plugin activity appears in Rundeck's service log, helping with troubleshooting.
+
+### 8. Consider Multipart Uploads (Large Files)
+
+For files > 100MB, use multipart uploads:
+
+```java
+if (length > 100 * 1024 * 1024) {  // 100MB
+    // Use multipart upload
+    CreateMultipartUploadRequest createRequest = CreateMultipartUploadRequest.builder()
+        .bucket(bucket)
+        .key(key)
+        .build();
+    
+    CreateMultipartUploadResponse response = s3Client.createMultipartUpload(createRequest);
+    // ... upload parts
+    // ... complete multipart upload
+} else {
+    // Normal single-part upload
+    s3Client.putObject(request, RequestBody.fromInputStream(stream, length));
+}
+```
+
+**Why:** Large single-part uploads can timeout or fail. Multipart uploads are more reliable.
+
+### 9. Implement Retries
+
+```java
+private boolean storeWithRetry(String key, InputStream stream, int maxRetries) {
+    for (int attempt = 1; attempt <= maxRetries; attempt++) {
+        try {
+            s3Client.putObject(request, RequestBody.fromInputStream(stream, length));
+            return true;
+        } catch (Exception e) {
+            System.err.println("Upload attempt " + attempt + " failed: " + e.getMessage());
+            if (attempt < maxRetries) {
+                try { Thread.sleep(1000 * attempt); } catch (InterruptedException ignored) {}
+            }
+        }
+    }
+    return false;
+}
+```
+
+**Why:** Transient network failures are common. Retry with exponential backoff improves success rate.
+
+### 10. Support Partial Retrieval (Streaming)
+
+```java
+@Override
+public boolean partialRetrieve(String filetype, OutputStream stream) 
+        throws IOException, ExecutionFileStorageException {
+    // Implement streaming for live execution logs
+    GetObjectRequest request = GetObjectRequest.builder()
+        .bucket(bucket)
+        .key(buildS3Key(filetype))
+        .build();
+    
+    try (InputStream s3Stream = s3Client.getObject(request)) {
+        // Stream data as it becomes available
+        byte[] buffer = new byte[4096];
+        int bytesRead;
+        while ((bytesRead = s3Stream.read(buffer)) != -1) {
+            stream.write(buffer, 0, bytesRead);
+            stream.flush();  // Send immediately for live view
+        }
+    }
+    return true;
+}
+```
+
+**Why:** Users can watch logs in real-time even when stored externally.
 
 ## Configuration
 
@@ -813,3 +1303,199 @@ The plugin is used in this manner:
    - The `store` closure is called when a file needs to be stored, with the filetype, the [contextual data](#execution-context-data), configuration Map, and InputStream which will produce the log data. Additionally `length` and `lastModified` properties are in the closure binding, providing the file length, and last modification Date.
 
 [multifilestoragerequest]: {{$javaDocBase}}/com/dtolabs/rundeck/core/logging/MultiFileStorageRequest.html
+
+## Version History
+
+### Changes in Rundeck 4.17.0+
+
+Added support for imported executions with new context variables:
+- `isRemoteFilePath` - Indicates if execution was imported
+- `outputfilepath` - Actual file path for imported executions  
+- `execIdForLogStore` - Execution ID to use for storage
+
+Plugins should check `isRemoteFilePath` and use `outputfilepath` directly when `true`.
+
+### Changes in Rundeck 2.6
+
+The `ExecutionFileStorage` behavior was extended with two new optional interfaces:
+
+- [ExecutionMultiFileStorage](#executionmultifilestorage) - Store multiple files in one call
+- [ExecutionFileStorageOptions](#executionfilestorageoptions) - Declare supported operations
+
+The Groovy-script DSL was modified to support these features automatically.
+
+Previous plugin implementations work without modification.
+
+### Changes in Rundeck 2.0
+
+In Rundeck 1.6, the `LogFileStorage` service existed. In Rundeck 2.0+, it was replaced by the `ExecutionFileStorage` service.
+
+Plugins written for Rundeck 1.6 do **not** work in Rundeck 2.0+ and must be updated.
+
+## Related Documentation
+
+- [Java Plugin Development](/developer/java-plugin-development.md) - General Java plugin guide
+- [Groovy Plugin Development](/developer/groovy-plugin-development.md) - Groovy plugin DSL
+- [Logging Plugin Configuration](/administration/configuration/plugins/configuring.md#logging-plugin-configuration) - User guide for configuring logging plugins
+- [Log Filter Plugins](/developer/log-filter-plugins.md) - Transform log content
+
+## Example Implementations
+
+### Built-in Plugins
+
+Rundeck includes reference implementations:
+
+- **Example Groovy Logging Plugins:**  
+  <https://github.com/rundeck/rundeck/tree/development/examples/example-groovy-log-plugins>
+
+- **Example Java Logging Plugins:**  
+  <https://github.com/rundeck/rundeck/tree/development/examples/example-java-logging-plugins>
+
+### Community Plugins
+
+Popular community logging plugins:
+
+- **S3 Log Storage** - AWS S3 storage plugin
+- **Azure Blob Storage** - Microsoft Azure storage
+- **Google Cloud Storage** - GCS storage plugin
+
+Check the [Rundeck Plugin Registry](https://github.com/rundeck-plugins/) for more.
+
+## Troubleshooting
+
+### Logs Not Being Stored
+
+**Problem:** Logs remain on local disk, not uploaded to storage.
+
+**Check:**
+- Plugin is configured and enabled
+- Configuration properties are correct
+- Check Rundeck service log for errors
+- Verify storage system is accessible (network, credentials)
+
+**Debug:**
+```bash
+# Check Rundeck service log
+tail -f /var/log/rundeck/service.log | grep -i "storage\|logging"
+
+# Look for errors like:
+# "Error storing execution file"
+# "ExecutionFileStorage plugin error"
+```
+
+### Retrieved Logs Are Empty or Corrupt
+
+**Problem:** Logs display as empty or corrupted when retrieved.
+
+**Check:**
+- Stream is being closed properly
+- No encoding issues (use binary streams, not text)
+- Length parameter is accurate during storage
+- No buffering issues
+
+**Fix:**
+```java
+// Bad - text encoding can corrupt binary data
+OutputStreamWriter writer = new OutputStreamWriter(stream);
+
+// Good - raw binary streams
+try (InputStream in = getLogData()) {
+    byte[] buffer = new byte[8192];
+    int bytesRead;
+    while ((bytesRead = in.read(buffer)) != -1) {
+        stream.write(buffer, 0, bytesRead);
+    }
+}
+```
+
+### Storage Requests Failing/Retrying
+
+**Problem:** Storage requests keep retrying and failing.
+
+**Check:**
+- Network connectivity to storage system
+- Authentication credentials are valid
+- Storage system has capacity/isn't down
+- Timeout values aren't too aggressive
+- File permissions/bucket policies
+
+**Debug:**
+```java
+@Override
+public boolean store(String filetype, InputStream stream, long length, Date lastModified) {
+    try {
+        System.out.println("Attempting to store " + filetype + " (" + length + " bytes)");
+        // ... storage logic
+        System.out.println("Storage succeeded");
+        return true;
+    } catch (Exception e) {
+        System.err.println("Storage failed: " + e.getClass().getName());
+        System.err.println("Error message: " + e.getMessage());
+        e.printStackTrace();
+        return false;
+    }
+}
+```
+
+### Performance Issues
+
+**Problem:** Log storage/retrieval is very slow.
+
+**Causes:**
+- Not using buffered streams
+- Network latency to storage
+- Large files without multipart upload
+- No connection pooling
+
+**Optimize:**
+```java
+// Use appropriate buffer sizes
+byte[] buffer = new byte[64 * 1024];  // 64KB buffer
+
+// Enable connection pooling
+S3Client s3 = S3Client.builder()
+    .httpClientBuilder(ApacheHttpClient.builder()
+        .maxConnections(50)
+        .connectionTimeout(Duration.ofSeconds(5)))
+    .build();
+
+// Use multipart for large files
+if (length > 100 * 1024 * 1024) {
+    useMultipartUpload(stream, length);
+}
+```
+
+## Quick Reference
+
+### ExecutionFileStorage Methods
+
+| Method | Purpose | Returns |
+|--------|---------|---------|
+| `initialize(Map)` | Called first with execution context | void |
+| `isAvailable(String)` | Check if file exists | true/false |
+| `store(String, InputStream, long, Date)` | Store a log file | true = success, false = retry |
+| `retrieve(String, OutputStream)` | Retrieve a log file | true = success, false = not found |
+| `partialRetrieve(String, OutputStream)` | Stream partial/live logs | true = success |
+| `deleteFile(String)` | Delete stored file | true = success |
+
+### Context Variables
+
+Common execution context variables available to plugins:
+
+| Variable | Example Value | Description |
+|----------|--------------|-------------|
+| `execid` | `"123"` | Execution ID |
+| `project` | `"MyProject"` | Project name |
+| `username` | `"admin"` | User who ran job |
+| `filetype` | `"rdlog"` | File type (rdlog, state.json) |
+| `isRemoteFilePath` | `"true"/"false"` | Is imported execution? (v4.17.0+) |
+| `outputfilepath` | `"logs/proj/999.log"` | Actual log path (v4.17.0+) |
+| `execIdForLogStore` | `"999"` | Original execution ID (v4.17.0+) |
+
+### File Types
+
+| Type | Description |
+|------|-------------|
+| `rdlog` | Execution log file (output from steps) |
+| `state.json` | Execution state (step/node status) |
+| `execution.xml` | Execution metadata (ExecutionMultiFileStorage only) |

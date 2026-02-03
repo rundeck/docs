@@ -1,16 +1,174 @@
-# Resource Model Source Plugin
+# Node Source Plugins
+## (Resource Model Source Plugins)
 
-## About
+## Overview
 
-Resource Model Sources provide the means to retrieve Node resources for a Project.
-You can implement a Resource Model Source using a [Java Plugin Type](#java-plugin-type)
-or a [Script Plugin Type](#script-plugin-type).
+**Node Source plugins** (also called "Resource Model Source" plugins in the API) dynamically discover and import nodes into Rundeck from external systems. Instead of manually defining nodes in Rundeck, you can automatically pull them from your infrastructure providers, CMDBs, container orchestrators, cloud platforms, and monitoring systems.
 
-## Plugin configuration
+::: tip Terminology Note
+In the Rundeck API and code, these are called "ResourceModelSource" plugins, but in user-facing documentation and the UI, they're referred to as "Node Sources." They're the same thing - we use "Node Source" in this guide as it's clearer and matches what users see in the interface.
+:::
 
-The `ResourceModelSource`
-[(javadoc)]({{$javaDocBase}}/com/dtolabs/rundeck/core/resources/ResourceModelSource.html) service allows the plugins to be configured via the Rundeck Web GUI. You are thus able to declare configuration properties for
-your plugin, which will be displayed as a web form when the Project is configured, or can be manually configured in the `project.properties` file.
+**What Are Nodes?**
+
+Nodes represent the targets where Rundeck executes commands - servers, containers, cloud instances, network devices, or any system you want to automate. Each node has attributes like hostname, username, tags, and connection settings.
+
+**Why Use Node Source Plugins?**
+
+**Dynamic Infrastructure:**
+- **AWS EC2** - Auto-discover EC2 instances, import tags and metadata
+- **Azure VMs** - Pull Azure virtual machines into Rundeck
+- **Google Cloud** - Import GCE instances automatically
+- **Kubernetes** - Discover pods, deployments, services as nodes
+- **Docker** - Import running containers as execution targets
+
+**Configuration Management Databases (CMDB):**
+- **ServiceNow** - Sync nodes from CMDB configuration items
+- **Device42** - Import discovered infrastructure
+- **Custom CMDB** - Query your internal asset database
+
+**Monitoring & Observability:**
+- **Datadog** - Import monitored hosts and their tags
+- **Sensu** - Use monitoring data to populate nodes
+- **Prometheus** - Discover targets from service discovery
+
+**Container Orchestration:**
+- **Kubernetes** - Pods, services, deployments
+- **AWS ECS/Fargate** - Container tasks
+- **Azure AKS** - Kubernetes nodes and pods
+- **GCP GKE** - GKE cluster resources
+
+**Common Scenarios:**
+- Auto-scaling environments where nodes come and go
+- Multi-cloud deployments (AWS + Azure + GCP)
+- Hybrid infrastructure (on-prem + cloud)
+- Microservices (hundreds/thousands of containers)
+- Network device management (routers, switches)
+- Database fleet management
+
+**Real-World Examples:**
+- **E-commerce**: Auto-discover 500+ EC2 instances across dev/staging/prod, import tags for environment, team, app name
+- **SaaS Startup**: Kubernetes pods auto-populate as nodes, Rundeck jobs target by label selectors
+- **Enterprise**: ServiceNow CMDB as single source of truth, 10K+ servers synced every 5 minutes
+- **DevOps Team**: Docker containers discovered on-demand, temporary nodes for batch jobs
+- **Network Ops**: Custom SNMP-based plugin discovers all network devices, imports device type and location
+
+**Benefits:**
+- **Always Up-to-Date** - Nodes refresh automatically (every 30s by default)
+- **Zero Manual Maintenance** - No manual node management required
+- **Source of Truth** - Infrastructure provider is authoritative
+- **Automatic Attributes** - Tags, metadata imported automatically
+- **Scale** - Handles thousands of dynamic nodes
+- **Consistency** - Same data across teams and tools
+
+## When to Create a Custom Node Source
+
+### Existing Plugins Cover Most Needs
+
+Rundeck and the community already provide node source plugins for:
+- AWS EC2, Azure VMs, Google Cloud
+- Kubernetes, Docker, ECS/Fargate
+- ServiceNow, VMware, Oracle Cloud
+- Static files (JSON, YAML, XML)
+- HTTP/REST APIs
+
+**Check first:** <https://github.com/rundeck-plugins/>
+
+### Create a Custom Plugin When:
+
+**✅ Your Infrastructure Provider Isn't Supported**
+- Proprietary CMDB or asset management system
+- Custom cloud platform or hypervisor
+- Internal service registry or discovery system
+- Legacy systems with unique APIs
+
+**✅ You Need Custom Logic**
+- Filter or transform nodes based on business rules
+- Combine data from multiple sources
+- Add computed attributes or enrichment
+- Implement custom tagging schemes
+
+**✅ You Have a Unique Data Source**
+- CSV files from external team
+- Excel spreadsheets (converted to CSV)
+- Custom database schemas
+- LDAP/Active Directory queries
+- Network discovery tools (Nmap, etc.)
+
+**✅ Integration Requirements**
+- Internal API that returns infrastructure data
+- ETL pipeline outputs node inventory
+- Monitoring system with custom metadata
+- Ticketing system (JIRA, etc.) as source
+
+### Don't Create a Plugin When:
+
+**❌ A Simple Script Suffices**
+
+If you just need to generate static nodes or call a simple API, use a [Script Plugin](#script-plugin-type) - much faster than Java.
+
+**❌ Manual Management Is Fine**
+
+For small, static environments (<20 nodes), manually defining nodes in `resources.xml` or the Resource Editor is simpler.
+
+**❌ Data Changes Rarely**
+
+If your node list updates monthly, a scheduled script that generates a static file might be easier than maintaining a plugin.
+
+## How Node Source Plugins Work
+
+### Refresh Cycle
+
+```
+Rundeck Project
+  ↓
+1. Calls Node Source Plugin (every 30s default)
+  ↓
+2. Plugin queries external system (API, DB, file, etc.)
+  ↓
+3. Plugin returns nodes in standard format
+  ↓
+4. Rundeck updates node list
+  ↓
+5. Jobs can target the latest nodes
+```
+
+### Node Attributes
+
+Each node must have:
+- **nodename** - Unique identifier (required)
+- **hostname** - Target hostname or IP (required)
+- **username** - SSH/WinRM username
+- **osFamily** - Linux, Windows, etc.
+- **tags** - For filtering and targeting
+
+Additional attributes:
+- Custom attributes (environment, app, team, etc.)
+- Connection settings (ssh-port, winrm-port)
+- Authentication method
+- Any metadata useful for job targeting
+
+### Plugin Responsibilities
+
+Your plugin must:
+1. **Query** the external system for current node data
+2. **Transform** data into Rundeck node format
+3. **Handle errors** gracefully (network issues, auth failures)
+4. **Return** nodes in the specified format (YAML, JSON, XML)
+
+Rundeck handles:
+- Scheduling refresh (every 30s default)
+- Caching nodes between refreshes
+- Merging nodes from multiple sources
+- Filtering by tags/attributes in jobs
+
+## Configuration
+
+Node Source plugins can be configured via:
+- Rundeck Web UI (Project Settings → Edit Nodes → Sources)
+- `project.properties` file (for advanced users)
+
+The `ResourceModelSource` service ([javadoc]({{$javaDocBase}}/com/dtolabs/rundeck/core/resources/ResourceModelSource.html)) automatically generates configuration forms from your plugin properties.
 
 ## Java Plugin Type
 

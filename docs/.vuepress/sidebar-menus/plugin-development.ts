@@ -91,13 +91,6 @@ export default [
       ]
     },
     {
-      text: 'Source Control Integration',
-      collapsible: true,
-      children: [
-        '/developer/scm-plugins.md',
-      ]
-    },
-    {
       text: 'User Interface',
       collapsible: true,
       children: [
