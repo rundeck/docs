@@ -304,10 +304,6 @@ The `messages.properties` file is a [Java Properties Format](https://docs.oracle
 | `property.NAME.description` | Description for configuration property named "NAME" |
 | `property.NAME.defaultValue` | Static text/html for a STATIC_TEXT property named "NAME" |
 
-::: tip
-SCM Plugins have additional message codes. See: [SCM Plugins - Localization](/developer/scm-plugins.md#localization)
-:::
-
 ### Message Code Resolution
 
 The message code will be resolved using the following search pattern using the Service and Provider names:

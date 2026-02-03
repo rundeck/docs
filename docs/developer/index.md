@@ -13,7 +13,6 @@ Rundeck plugins allow you to extend Rundeck's functionality by adding new capabi
 - [Notifications](/developer/notification-plugins.md) - Send notifications on job events
 - [Log Filters](/developer/log-filter-plugins.md) - Transform or capture log output
 - [Storage Plugins](/developer/storage-plugins.md) - Store key/password data in external systems
-- [SCM Plugins](/developer/scm-plugins.md) - Integrate with source control systems
 - [And many more...](#available-plugin-types)
 
 ## Choosing Your Plugin Development Approach
@@ -198,10 +197,6 @@ Rundeck supports many different types of plugins. Each type serves a specific pu
 
 - **[Execution Lifecycle Plugins](/developer/execution-lifecycle.md)** - Hook into execution lifecycle events
 - **[Job Lifecycle Plugins](/developer/job-lifecycle.md)** - Hook into job definition lifecycle
-
-### Source Control Integration
-
-- **[SCM Plugins](/developer/scm-plugins.md)** - Integrate jobs with Git or other SCM systems
 
 ### User Interface
 

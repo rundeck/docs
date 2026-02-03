@@ -166,7 +166,7 @@ export default defineUserConfig({
           '/developer/07-storage-plugin.html': '/developer/storage-plugins.html',
           '/developer/08-storage-converter-plugins.html': '/developer/storage-converter-plugins.html',
           '/developer/09-orchestrator-plugin.html': '/developer/orchestrator-plugins.html',
-          '/developer/10-scm-plugins.html': '/developer/scm-plugins.html',
+          '/developer/10-scm-plugins.html': '/manual/projects/scm/index.html',
           '/developer/11-ui-plugins.html': '/developer/ui-plugins.html',
           '/developer/12-option-values-plugins.html': '/developer/option-values-plugins.html',
           '/developer/13-user-group-source-plugin.html': '/developer/user-group-source-plugins.html',

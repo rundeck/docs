@@ -290,11 +290,6 @@ Java plugins can implement any of these services:
 
 - **[Orchestrator](/developer/orchestrator-plugins.md)** - Control node execution order
 
-### Source Control
-
-- **[ScmExportPlugin](/developer/scm-plugins.md)** - Export jobs to SCM
-- **[ScmImportPlugin](/developer/scm-plugins.md)** - Import jobs from SCM
-
 ### Configuration
 
 - **[PluginGroup](/developer/plugin-groups.md)** - Define shared properties
