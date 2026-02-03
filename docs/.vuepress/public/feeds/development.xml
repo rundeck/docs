@@ -5,56 +5,8 @@
     <link>https://docs.rundeck.com/docs</link>
     <description>Recent merged pull requests and development updates from Rundeck</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 29 Jan 2026 22:49:04 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 03 Feb 2026 16:46:35 GMT</lastBuildDate>
     <atom:link href="https://docs.rundeck.com/feeds/development.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Implement performance optimization for the Job UI Metrics</title>
-      <link>https://docs.rundeck.com/docs/history/updates/</link>
-      <description>Implement performance optimization for the Job UI Metrics (Merged: Jan 14, 2026)</description>
-      <pubDate>Wed, 14 Jan 2026 18:57:46 GMT</pubDate>
-      <guid isPermaLink="false">rundeck-pr-rundeckpro-4502</guid>
-    </item>
-    <item>
-      <title>Bump Azure Storage Plugin version to 1.0.4</title>
-      <link>https://docs.rundeck.com/docs/history/updates/</link>
-      <description>Bump Azure Storage Plugin version to 1.0.4 (Merged: Jan 12, 2026)</description>
-      <pubDate>Mon, 12 Jan 2026 14:59:04 GMT</pubDate>
-      <guid isPermaLink="false">rundeck-pr-rundeckpro-4556</guid>
-    </item>
-    <item>
-      <title>Update Remco to newer commit that remediates some CVEs</title>
-      <link>https://docs.rundeck.com/docs/history/updates/</link>
-      <description>Update Remco to newer commit that remediates some CVEs (Merged: Jan 7, 2026)</description>
-      <pubDate>Wed, 07 Jan 2026 17:28:56 GMT</pubDate>
-      <guid isPermaLink="false">rundeck-pr-rundeck-9936</guid>
-    </item>
-    <item>
-      <title>Allow executions up to 12 hours for AWS SSM using AssumeRole</title>
-      <link>https://docs.rundeck.com/docs/history/updates/</link>
-      <description>Allow executions up to 12 hours for AWS SSM using AssumeRole (Merged: Jan 6, 2026)</description>
-      <pubDate>Tue, 06 Jan 2026 20:16:48 GMT</pubDate>
-      <guid isPermaLink="false">rundeck-pr-rundeckpro-4537</guid>
-    </item>
-    <item>
-      <title>Hashicorp Vault integration modification time issue</title>
-      <link>https://docs.rundeck.com/docs/history/updates/</link>
-      <description>Hashicorp Vault integration modification time issue (Merged: Dec 22, 2025)</description>
-      <pubDate>Mon, 22 Dec 2025 16:13:14 GMT</pubDate>
-      <guid isPermaLink="false">rundeck-pr-rundeckpro-4541</guid>
-    </item>
-    <item>
-      <title>Issues with Ansible inline workflow executions where it shows an unwanted output</title>
-      <link>https://docs.rundeck.com/docs/history/updates/</link>
-      <description>Issues with Ansible inline workflow executions where it shows an unwanted output (Merged: Dec 17, 2025)</description>
-      <pubDate>Wed, 17 Dec 2025 14:35:57 GMT</pubDate>
-      <guid isPermaLink="false">rundeck-pr-rundeck-9940</guid>
-    </item>
-    <item>
-      <title>Promote workflow tab out of alphaUi</title>
-      <link>https://docs.rundeck.com/docs/history/updates/</link>
-      <description>Promote workflow tab out of alphaUi (Merged: Dec 15, 2025)</description>
-      <pubDate>Mon, 15 Dec 2025 16:41:42 GMT</pubDate>
-      <guid isPermaLink="false">rundeck-pr-rundeck-9928</guid>
-    </item>
+
   </channel>
 </rss>
