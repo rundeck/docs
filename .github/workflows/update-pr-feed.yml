@@ -156,54 +156,51 @@ jobs:
           
           # Create PR body file to avoid quoting issues
           if [ "$FEED_STATUS" = "success" ]; then
-            cat > pr_body.md << 'EOF'
-## PR Feed Configuration Update
-
-This PR updates the PR feed configuration with the latest RBA release tag.
-
-### Changes
-- **RBA Tag**: `RBA_TAG_PLACEHOLDER`
-- **Updated Field**: `lastSelfHostedRelease.lastSaasCut`
-- **Feed Generation**: Success
-
-### Generated Files
-- `docs/history/updates/index.md` - Updated markdown page with changes since last GA release
-- `docs/.vuepress/public/feeds/development.xml` - Updated RSS feed
-- `docs/.vuepress/public/feeds/development-atom.xml` - Updated Atom feed
-
-### Triggered By
-Workflow dispatch from RBA release process
-
----
-*This PR was automatically created by the update-pr-feed workflow*
-EOF
-          else
-            cat > pr_body.md << 'EOF'
-## PR Feed Configuration Update
-
-This PR updates the PR feed configuration with the latest RBA release tag.
-
-### Changes
-- **RBA Tag**: `RBA_TAG_PLACEHOLDER`
-- **Updated Field**: `lastSelfHostedRelease.lastSaasCut`
-- **Feed Generation**: **Failed**
-
-### Action Required
-The feed generation script failed during this workflow run. Please:
-1. Review the workflow logs
-2. Manually run `npm run pr-feed` after merging to regenerate feeds
-3. Check that the `GH_API_TOKEN` has proper permissions
-
-### Triggered By
-Workflow dispatch from RBA release process
-
----
-*This PR was automatically created by the update-pr-feed workflow*
-EOF
-          fi
+            cat > pr_body.md << "EOFMARKER"
+          ## PR Feed Configuration Update
           
-          # Replace placeholder with actual tag
-          sed -i "s|RBA_TAG_PLACEHOLDER|${RBA_TAG}|g" pr_body.md
+          This PR updates the PR feed configuration with the latest RBA release tag.
+          
+          ### Changes
+          - **RBA Tag**: ${RBA_TAG}
+          - **Updated Field**: lastSelfHostedRelease.lastSaasCut
+          - **Feed Generation**: Success
+          
+          ### Generated Files
+          - docs/history/updates/index.md - Updated markdown page with changes since last GA release
+          - docs/.vuepress/public/feeds/development.xml - Updated RSS feed
+          - docs/.vuepress/public/feeds/development-atom.xml - Updated Atom feed
+          
+          ### Triggered By
+          Workflow dispatch from RBA release process
+          
+          ---
+          *This PR was automatically created by the update-pr-feed workflow*
+          EOFMARKER
+          else
+            cat > pr_body.md << "EOFMARKER"
+          ## PR Feed Configuration Update
+          
+          This PR updates the PR feed configuration with the latest RBA release tag.
+          
+          ### Changes
+          - **RBA Tag**: ${RBA_TAG}
+          - **Updated Field**: lastSelfHostedRelease.lastSaasCut
+          - **Feed Generation**: **Failed**
+          
+          ### Action Required
+          The feed generation script failed during this workflow run. Please:
+          1. Review the workflow logs
+          2. Manually run npm run pr-feed after merging to regenerate feeds
+          3. Check that the GH_API_TOKEN has proper permissions
+          
+          ### Triggered By
+          Workflow dispatch from RBA release process
+          
+          ---
+          *This PR was automatically created by the update-pr-feed workflow*
+          EOFMARKER
+          fi
           
           # Check if PR already exists for this branch
           EXISTING_PR=$(gh pr list --head "$BRANCH_NAME" --base 4.0.x --json number --jq '.[0].number' || echo "")
