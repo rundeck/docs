@@ -1,7 +1,7 @@
 ---
 title: Recent Updates
 description: Latest merged changes from the Rundeck development team
-date: 2026-02-10T12:38:03.672Z
+date: 2026-02-13T22:18:56.780Z
 feed: true
 index: true
 ---
@@ -36,6 +36,6 @@ The development updates are automatically generated from both our private reposi
 
 ---
 
-**List Last updated:** 2026-02-10
+**List Last updated:** 2026-02-13
 
 
