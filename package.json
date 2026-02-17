@@ -17,7 +17,6 @@
     "@vue/babel-helper-vue-jsx-merge-props": "^1.4.0",
     "@vue/component-compiler-utils": "^3.3.0",
     "ansi-html-community": "0.0.8",
-    "axios": "^1.9.0",
     "core-js": "^2.6.5",
     "express": "^4.22.0",
     "glob": "^9.0.0",
