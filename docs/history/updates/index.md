@@ -1,7 +1,7 @@
 ---
 title: Recent Updates
 description: Latest merged changes from the Rundeck development team
-date: 2026-02-10T12:38:03.672Z
+date: 2026-02-18T21:41:07.823Z
 feed: true
 index: true
 ---
@@ -15,7 +15,12 @@ This page shows recently merged pull requests from both the Runbook Automation p
 ## Recent Changes
 
 
-*No new updates to report since the last release.*
+#### ::circle-dot:: Improve Next Ui management  [PR #9981](https://github.com/rundeck/rundeck/pull/9981)
+
+
+  A new settings modal replaces the previous theme dropdown, providing a unified interface for switching themes and toggling Next UI mode, with visual indicators and notifications to help users understand when Next UI is available and active. Administrators can optionally enable Next UI by default for all users via system configuration.
+
+
 
 
 ## Subscribe to Updates
@@ -36,6 +41,6 @@ The development updates are automatically generated from both our private reposi
 
 ---
 
-**List Last updated:** 2026-02-10
+**List Last updated:** 2026-02-18
 
 
