@@ -16,7 +16,7 @@ feed:
 
 This release focuses on stability, performance, and security improvements across the platform. Key updates include enhanced AWS SSM execution timeouts (up to 12 hours), significant Job UI Metrics performance optimizations, and fixes for Ansible workflow output handling and Vault timestamp issues. Security updates address multiple CVEs in the Azure Storage plugin and Docker image dependencies.
 
-<!-- <VidStack src="youtube/REPLACE" poster="https://img.youtube.com/vi/REPLACE/maxresdefault.jpg"/> -->
+<VidStack src="youtube/YXidHZOdR1M" poster="https://img.youtube.com/vi/YXidHZOdR1M/maxresdefault.jpg"/>
 
 ## Runbook Automation Updates
 
