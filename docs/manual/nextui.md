@@ -1,5 +1,9 @@
 # NextUI (Modern UI)
 
+:::tip
+This feature will be included in the 5.20.0 release for Self Hosted customers.
+:::
+
 NextUI is Rundeck’s way of offering **newly migrated or updated UI pages** to customers. As we modernize the interface from legacy code or change UI dynamics, these pages can be **more performant** and easier to maintain or use.
 
 ## What is NextUI?
