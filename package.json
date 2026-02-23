@@ -19,11 +19,11 @@
     "ansi-html-community": "0.0.8",
     "core-js": "^2.6.5",
     "express": "^4.22.0",
-    "glob": "^9.0.0",
+    "glob": "^10.5.0",
     "lodash": "^4.17.21",
     "markdown-it-container": "^3.0.0",
     "markdown-it-include": "^2.0.0",
-    "openapi-explorer": "2.4.780",
+    "openapi-explorer": "2.4.788",
     "swagger-ui-dist": "^5.9.0",
     "toposort": "^2.0.2",
     "vuepress-plugin-open-graph": "^1.16.0"
@@ -82,7 +82,9 @@
     "mdast-util-to-hast": "13.2.0",
     "electron-to-chromium": "1.5.256",
     "algoliasearch": "5.44.0",
-    "qs": "6.14.1"
+    "qs": "6.14.1",
+    "ajv": ">=8.18.0 || ^8.17.1",
+    "minimatch": ">=9.0.6 || ^8.0.4"
   },
   "postcss": {
     "plugins": {
