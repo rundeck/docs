@@ -628,6 +628,10 @@ rundeck.metrics.requestFilterEnabled=true/false
 rundeck.metrics.jmxEnabled=true/false
 ```
 
+:::tip
+By security design, metrics capturing is capped by default in the SaaS product.
+:::
+
 #### Metrics API Endpoints
 
 Rundeck exposes Metrics data via API endpoints, which are enabled by default.
