@@ -382,6 +382,7 @@ export default [{
       children: [
         '/manual/integrations/servicenow-app.md'
       ]
-    }
+    },
+    { link: '/manual/nextui.md', text: 'NextUI (Modern UI)' },
   ]
 }]
