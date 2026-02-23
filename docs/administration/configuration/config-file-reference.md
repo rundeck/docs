@@ -610,6 +610,11 @@ The default value for this property is 3MB.
 
 ### Metrics Capturing
 
+:::tip
+Note: Metrics capturing is only available in our Runbook Automation Self Hosted products.
+:::
+
+
 Rundeck captures metrics using the [Metrics](http://metrics.dropwizard.io/3.0.2/) library.
 
 You can disable all metrics capturing with:
