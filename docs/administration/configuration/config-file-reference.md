@@ -629,7 +629,7 @@ rundeck.metrics.jmxEnabled=true/false
 ```
 
 :::tip
-By security design, the Metrics Capturing is capped by default in the SaaS product.
+By security design, metrics capturing is capped by default in the SaaS product.
 :::
 
 #### Metrics API Endpoints
