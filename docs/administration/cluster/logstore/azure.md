@@ -61,3 +61,10 @@ framework.plugin.ExecutionFileStorage.rundeckpro.azure-storage.containerName=log
 framework.plugin.ExecutionFileStorage.rundeckpro.azure-storage.path=${job.project}/${job.execid}
 framework.plugin.ExecutionFileStorage.rundeckpro.azure-storage.defaultEndpointProtocol=https
 ```
+
+
+And on the framework.properties to delete executions in your logstorage:
+
+```properties
+framework.plugin.ExecutionFileStorage.rundeckpro.azure-storage.allowDeleteFiles=true
+```
