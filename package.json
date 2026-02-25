@@ -87,10 +87,11 @@
     "electron-to-chromium": "1.5.256",
     "algoliasearch": "5.44.0",
     "qs": "6.14.1",
-    "ajv": ">=8.18.0 || ^8.17.1",
-    "minimatch": ">=10.2.1 || ^10.2.0",
-    "caniuse-lite": ">=1.0.30001774 || ^1.0.30001769",
-    "autoprefixer": ">=10.4.25 || ^10.4.24"
+    "ajv": "8.18.0",
+    "minimatch": "10.2.0",
+    "caniuse-lite": "1.0.30001769",
+    "autoprefixer": "10.4.24",
+    "filelist": "1.0.3"
   },
   "postcss": {
     "plugins": {
