@@ -8,9 +8,9 @@ In this guide, we will show you how to deploy Rundeck (or commercial Runbook Aut
 
 ## Prerequisites
 To complete the tasks in this guide you’ll first need to install the following:<br>
-1. Terraform (available [here](https://www.terraform.io/downloads)).<br>
+1. Terraform 1.0 or later (available [here](https://www.terraform.io/downloads)).<br>
 2. AWS CLI tool (available [here](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)), required by the Terraform AWS provider.<br>
-3. Configure the AWS CLI using a valid AWS user. Use the `aws configure` command to configure `aws` using your AWS credentials (AWS Access and Secret keys). <br>
+3. Configure the AWS CLI using a valid AWS user. Use the `aws configure` command to configure `aws` using your AWS credentials (AWS Access and Secret keys).<br>
 
 ## Deployment of Rundeck as a Terraform project
 Create an SSH keypair to interact with AWS in order to use the code. Create an example private key named `example` and a public key named `example.pub`, and run the following command in terminal (substituting the path to your project directory):<br>
@@ -50,11 +50,11 @@ provider "aws" {
 
 # Terraform requisites
 terraform {
- required_version = ">=1.1.8"
+ required_version = ">=1.0"
  required_providers {
    aws = {
      source  = "hashicorp/aws"
-     version = "4.11.0"
+     version = "~> 5.0"
    }
  }
 }

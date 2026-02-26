@@ -32,7 +32,7 @@ When prompted, provide the AWS access and secret key.<br>
 EKS CLI is linked to AWS CLI. If AWS CLI was configured successfully in the previous step, create an EKS cluster with the following command.<br>
 
 ```
-eksctl create cluster --name oss-test-cluster --version 1.23 --region eu-north-1 --nodegroup-name test-workers --node-type t3.xlarge --nodes 3 --nodes-min 1 --nodes-max 4 --managed
+eksctl create cluster --name oss-test-cluster --version 1.31 --region eu-north-1 --nodegroup-name test-workers --node-type t3.xlarge --nodes 3 --nodes-min 1 --nodes-max 4 --managed
 ```
 
 Included parameters:<br>
@@ -133,7 +133,7 @@ spec:
    spec:
      containers:
      - name: rundeck
-       image: rundeck/rundeck:4.8.0
+       image: rundeck/rundeck:5.8.0
        env:
        - name: RUNDECK_GRAILS_URL
          value: "http://service_url:4440"
