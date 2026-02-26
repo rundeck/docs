@@ -11,7 +11,7 @@ Note: This provider is community-supported. While Rundeck/PagerDuty staff review
 ## Pre-Requisites
 
 - This exercise is based on the Welcome Projects. Please ensure you have completed the tutorial and have that environment running.
-- [Terraform 0.13.x or later](https://learn.hashicorp.com/tutorials/terraform/install-cli) must be installed on your local machine. Confirm with `terraform -version`.
+- [Terraform 1.0 or later](https://learn.hashicorp.com/tutorials/terraform/install-cli) must be installed on your local machine. Confirm with `terraform -version`.
 - Rundeck 5.0.0 or later (required for provider v1.x)
 - General understanding of using your computer's terminal program.
 

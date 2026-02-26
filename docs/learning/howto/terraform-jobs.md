@@ -16,7 +16,7 @@ Each provider is responsible for translating the resource configurations defined
 Rundeck Projects, Jobs, and Keys can be created and configured via Terraform using the Rundeck Terraform service. Terraform can handle Rundeck projects thanks to the project resource. In this guide, let's see how to manage Rundeck Jobs through Terraform by using the [Terraform Rundeck Provider](https://registry.terraform.io/providers/rundeck/rundeck/latest/docs).
 
 ## Requisites
-1. Terraform 0.13.x or later installed on your local computer. Follow [this guide](https://developer.hashicorp.com/terraform/downloads) to learn how to install it. To see the version, execute `terraform -version`.
+1. Terraform 1.0 or later installed on your local computer. Follow [this guide](https://developer.hashicorp.com/terraform/downloads) to learn how to install it. To see the version, execute `terraform -version`.
 2. A local Rundeck instance (version 5.0.0 or later). Check [this guide](https://docs.rundeck.com/docs/administration/install/) to learn how to install it.
 3. Basic knowledge about Linux terminal usage.
 
