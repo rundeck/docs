@@ -16,8 +16,8 @@ Each provider is responsible for translating the resource configurations defined
 Rundeck Projects, Jobs, and Keys can be created and configured via Terraform using the Rundeck Terraform service. Terraform can handle Rundeck projects thanks to the project resource. In this guide, let's see how to manage Rundeck Jobs through Terraform by using the [Terraform Rundeck Provider](https://registry.terraform.io/providers/rundeck/rundeck/latest/docs).
 
 ## Requisites
-1. Latest Terraform installed in your local computer, follow [this](https://developer.hashicorp.com/terraform/downloads) to learn how to install it. To see the version, execute `terraform -version`.
-2. A local Rundeck instance. Check [this](https://docs.rundeck.com/docs/administration/install/) to learn how to install it.
+1. Terraform 0.13.x or later installed on your local computer. Follow [this guide](https://developer.hashicorp.com/terraform/downloads) to learn how to install it. To see the version, execute `terraform -version`.
+2. A local Rundeck instance (version 5.0.0 or later). Check [this guide](https://docs.rundeck.com/docs/administration/install/) to learn how to install it.
 3. Basic knowledge about Linux terminal usage.
 
 :::tip
@@ -47,24 +47,23 @@ The Rundeck Instance must be configured for access. To accomplish this, the obje
 	 required_providers {
 	   rundeck = {
 	     source  = "rundeck/rundeck"
-	     version = "0.4.7"
+	     version = "~> 1.1"
 	   }
 	 }
 	}
 	```  
 
-	This enables Terraform to use the Rundeck service. The `version` attribute refers to the provider version (0.4.7, which is the most recent at the time of writing this how-to).  
+	This enables Terraform to use the Rundeck provider. The `version` attribute uses `~> 1.1` to allow any 1.x version (automatically gets bug fixes and new features while staying on major version 1).  
 4. In the `rundeck.tf` file, add the Rundeck instance resource block:  
 
 	```
 	provider "rundeck" {
-	 url         = "http://localhost:4440/"
-	 api_version = "45"
-	 auth_token  = "your_token"
+	 url        = "http://localhost:4440/"
+	 auth_token = "your_token"
 	}
 	```
 
-	The Rundeck instance token from the previous section is referred to as `auth_token` attribute, and the Rundeck instance url, `url`, in this case points to a local instance (`http://localhost:4440`). The latest Rundeck API version at the moment of writing this how-to is 45.
+	The Rundeck instance token from the previous section is the `auth_token` attribute, and the `url` points to your Rundeck instance (in this case, a local instance at `http://localhost:4440`). The provider defaults to API version 56, which works with Rundeck 5.0.0 and later.
 5. Now, let's add a new Rundeck Project resource:
 
 	```
@@ -79,7 +78,7 @@ The Rundeck Instance must be configured for access. To accomplish this, the obje
 	           file = "/opt/rundeck/resources.xml"
 	           writable = "true"
 	           generateFileAutomatically = "false"
-	     ssh_authentication_type = "password"
+	           ssh_authentication_type = "password"
 	       }
 	   }
 	
@@ -124,14 +123,13 @@ The `file` attribute is associated with the Rundeck server file path of the mode
 	```
 
 	The `node_filter_query` represents the job node filter and the `command` section expresses the Rundeck jobs steps.
-7. Now let's add the password  resource. Add the following block to the `rundeck.tf` file:
+7. Now let's add the password resource. Add the following block to the `rundeck.tf` file:
 
 	```
 	resource "rundeck_password" "terraform" {
-	  path         = "passwd"
+	  path     = "keys/passwd"
 	  password = "my_password"
 	}
-	
 	```
 
 8. And the ACL resource block:
@@ -188,15 +186,14 @@ terraform {
    required_providers {
        rundeck = {
          source  = "rundeck/rundeck"
-         version = "0.4.7"
+         version = "~> 1.1"
        }
    }
 }
 
 provider "rundeck" {
-   url         = "http://localhost:4440/"
-   api_version = "45"
-   auth_token  = "your_rundeck_auth_token"
+   url        = "http://localhost:4440/"
+   auth_token = "your_rundeck_auth_token"
 }
 
 resource "rundeck_project" "terraform" {
@@ -228,7 +225,7 @@ resource "rundeck_job" "bounceweb" {
 }
 
 resource "rundeck_password" "terraform" {
- path         = "passwd"
+ path     = "keys/passwd"
  password = "vagrant"
 }
 
@@ -257,24 +254,27 @@ You can learn more about the `terraform validate` command [here](https://develop
 Initializing the backend...
 
 Initializing provider plugins...
-- Finding rundeck/rundeck versions matching "0.4.7"...
+- Finding rundeck/rundeck versions matching "~> 1.1"...
 - Finding latest version of hashicorp/local...
-- Installing rundeck/rundeck v0.4.7...
-- Installed rundeck/rundeck v0.4.7 (self-signed, key ID 363DB95DA1D090AA)
-- Installing hashicorp/local v2.4.0...
-- Installed hashicorp/local v2.4.0 (signed by HashiCorp)
+- Installing rundeck/rundeck v1.1.2...
+- Installed rundeck/rundeck v1.1.2 (signed by a HashiCorp partner, key ID 363DB95DA1D090AA)
+- Installing hashicorp/local v2.5.1...
+- Installed hashicorp/local v2.5.1 (signed by HashiCorp)
 
-Partner and community providers are signed by their developers.
-If you'd like to know more about provider signing, you can read about it here:
-https://www.terraform.io/docs/cli/plugins/signing.html
-
-Terraform has created a lock file .terraform.lock.hcl to record the provider selections it made above. Include this file in your version control repository so that Terraform can guarantee to make the same selections by default when you run "terraform init" in the future.
+Terraform has created a lock file .terraform.lock.hcl to record the provider
+selections it made above. Include this file in your version control repository
+so that Terraform can guarantee to make the same selections by default when
+you run "terraform init" in the future.
 
 Terraform has been successfully initialized!
 
-You may now begin working with Terraform. Try running "terraform plan" to see any changes that are required for your infrastructure. All Terraform commands should now work.
+You may now begin working with Terraform. Try running "terraform plan" to see
+any changes that are required for your infrastructure. All Terraform commands
+should now work.
 
-If you ever set or change modules or backend configuration for Terraform, rerun this command to reinitialize your working directory. If you forget, other commands will detect it and remind you to do so if necessary.
+If you ever set or change modules or backend configuration for Terraform,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
 ```
 
 You can learn more about the `terraform init` command [here](https://developer.hashicorp.com/terraform/cli/commands/init).  <br>
@@ -303,7 +303,7 @@ When we need to undo all modifications, we can accomplish it by following these 
 
 	```
 	rundeck_acl_policy.example: Destroying... [id=ExampleAcl.aclpolicy]
-	rundeck_password.terraform: Destroying... [id=passwd]
+	rundeck_password.terraform: Destroying... [id=keys/passwd]
 	rundeck_job.bounceweb: Destroying... [id=acb1685c-6940-4818-bf60-ec6c027552cd]
 	rundeck_password.terraform: Destruction complete after 0s
 	rundeck_acl_policy.example: Destruction complete after 0s
@@ -312,8 +312,20 @@ When we need to undo all modifications, we can accomplish it by following these 
 	rundeck_project.terraform: Destruction complete after 0s
 	```
 
+## Next Steps
+
+Once you're comfortable with the basics, explore additional capabilities:
+
+- **Job Scheduling** - Add cron schedules to your jobs for automated execution
+- **Notifications** - Configure email, webhook, or plugin notifications for job events
+- **Job Options** - Create parameterized jobs with dropdown choices and validation
+- **Webhooks** - Configure external systems to trigger your Rundeck jobs (v1.2.0+)
+- **Import Existing Resources** - Bring existing Rundeck resources under Terraform management
+
+For advanced features and examples, see the [provider documentation](https://registry.terraform.io/providers/rundeck/rundeck/latest/docs).
+
 ## Resources
-* [Terraform documentation](https://developer.hashicorp.com/terraform?product_intent=terraform).
-* [Rundeck documentation](https://docs.rundeck.com/docs/).
-* [Terraform Rundeck Provider](https://registry.terraform.io/providers/rundeck/rundeck/latest/docs).
-* [Terraform Rundeck Provider GitHub space](https://github.com/rundeck/terraform-provider-rundeck).
+* [Terraform documentation](https://developer.hashicorp.com/terraform?product_intent=terraform)
+* [Rundeck documentation](https://docs.rundeck.com/docs/)
+* [Terraform Rundeck Provider](https://registry.terraform.io/providers/rundeck/rundeck/latest/docs)
+* [Terraform Rundeck Provider GitHub](https://github.com/rundeck/terraform-provider-rundeck)
