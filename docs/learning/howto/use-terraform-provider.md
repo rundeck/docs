@@ -10,9 +10,10 @@ Note: This provider is community-supported. While Rundeck/PagerDuty staff review
 
 ## Pre-Requisites
 
-- This Exercise is build based on the Welcome Projects.  Please ensure you have completed the tutorial and have that environment running.
-- [Terraform must be installed](https://learn.hashicorp.com/tutorials/terraform/install-cli) on your local machine. Confirm with `terraform -version`.  Latest version as of writing is _1.0.3_.
-- General understanding of using your computers terminal program.
+- This exercise is based on the Welcome Projects. Please ensure you have completed the tutorial and have that environment running.
+- [Terraform 0.13.x or later](https://learn.hashicorp.com/tutorials/terraform/install-cli) must be installed on your local machine. Confirm with `terraform -version`.
+- Rundeck 5.0.0 or later (required for provider v1.x)
+- General understanding of using your computer's terminal program.
 
 ## Exercise
 
@@ -36,8 +37,8 @@ A box will pop up.  Be sure to copy the API Token somewhere before clicking **Cl
 
 1. Create a working directory on your machine for this exercise.
 1. Copy the contents from the **Terraform Plan File** (tabs below) to a file called `rundeck-build.tf` in your working directory.
-2. Ensure the value for `url` is accurate for your Rundeck instance. (The default will work with the Welcome Projects)
-3. Replace the `your-auth-token` value on line 13 with the value from the Create API Key steps.
+2. Ensure the value for `url` is accurate for your Rundeck instance. (The default `http://localhost:4440/` will work with the Welcome Projects)
+3. Replace the `your-auth-token` value with the API token from the Create API Key steps.
 4. Copy the contents from the **ACL Example File** (tabs below) to a file called `acl.yaml` in your working directory.
 5. In your computer's terminal program navigate to your working directory.
 6. Execute the command `terraform init`
@@ -70,15 +71,14 @@ terraform {
   required_providers {
     rundeck = {
       source  = "rundeck/rundeck"
-      version = "0.4.7"
+      version = "~> 1.1"
     }
   }
 }
 
 provider "rundeck" {
-  url         = "http://localhost:4440/"
-  api_version = "38"
-  auth_token  = "your-auth-token"
+  url        = "http://localhost:4440/"
+  auth_token = "your-auth-token"
 }
 
 resource "rundeck_project" "terraform" {
@@ -118,7 +118,7 @@ resource "rundeck_public_key" "terraform" {
 
 resource "rundeck_private_key" "terraform" {
   path         = "terraform/id_rsa"
-  key_material = "$${file(\"id_rsa.pub\")}"
+  key_material = "$${file(\"id_rsa\")}"
 }
 
 data "local_file" "acl" {
@@ -169,6 +169,21 @@ context:
 
 :::
 
-## More Information
+## Next Steps
 
-[Link to official Terraform Rundeck Provider Docs](https://registry.terraform.io/providers/rundeck/rundeck/latest/docs)
+Once you've completed these exercises, explore more advanced features:
+
+- **Job Scheduling** - Add automated execution schedules to your jobs
+- **Notifications** - Set up email or webhook notifications for job events
+- **Job Options** - Create parameterized jobs with user inputs
+- **Webhooks** - Enable external systems to trigger Rundeck jobs (v1.2.0+)
+- **Import Existing Resources** - Bring your existing Rundeck configuration under Terraform management
+
+For detailed documentation and examples, visit the [Terraform Rundeck Provider documentation](https://registry.terraform.io/providers/rundeck/rundeck/latest/docs).
+
+## Resources
+
+- [Terraform Rundeck Provider Documentation](https://registry.terraform.io/providers/rundeck/rundeck/latest/docs)
+- [Provider GitHub Repository](https://github.com/rundeck/terraform-provider-rundeck)
+- [Rundeck Documentation](https://docs.rundeck.com/)
+- [Terraform Documentation](https://developer.hashicorp.com/terraform)
