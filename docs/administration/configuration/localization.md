@@ -9,6 +9,10 @@ Rundeck supports multiple languages through localization (l10n) and internationa
 - **Adoption** - Easier onboarding for non-English speaking users
 - **User experience** - Improved comprehension and reduced errors
 
+:::warning
+**Support Policy:** PagerDuty/Rundeck officially delivers and supports **English only**. All other language translations are community-contributed and maintained on a best-effort basis. They are provided "as-is" without official support or warranty. See [Official Support Policy](#official-support-policy) for details.
+:::
+
 **What gets localized:**
 - User interface text (buttons, labels, messages)
 - Date and time formats
@@ -26,20 +30,46 @@ Rundeck supports multiple languages through localization (l10n) and internationa
 
 ## Available Languages
 
-Rundeck includes built-in translations for these languages:
+### Official Support Policy
 
-| Language | Locale Code | Coverage | Notes |
-|----------|-------------|----------|-------|
-| **English (US)** | `en_US` | 100% | Default language |
-| **Spanish** | `es_419` | ~95% | Latin American Spanish |
-| **French** | `fr_FR` | ~90% | France French |
-| **Japanese** | `ja_JP` | ~85% | |
-| **Portuguese** | `pt_BR` | ~90% | Brazilian Portuguese |
-| **Chinese (Simplified)** | `zh_CN` | ~85% | |
+**PagerDuty/Rundeck officially delivers and supports English only.** Non-English translations are community-contributed and maintained.
 
-**Note:** Coverage percentages are approximate. Not all UI elements may be translated in all languages yet.
+**What this means:**
 
-**Missing translations?** See [Contributing Translations](#contributing-translations) to help improve coverage.
+| Language | Official Support | Updates | Quality Assurance |
+|----------|------------------|---------|-------------------|
+| **English (US)** | ✅ Fully supported | Included in every release | QA tested |
+| **Other languages** | ❌ Not officially supported | Community-contributed | Community maintained |
+
+**Community translations:**
+- Provided "as-is" without warranty
+- May not cover all features
+- May lag behind English updates
+- Quality depends on community contributors
+- Not covered by support agreements
+
+**We welcome and encourage community translation contributions!** See [Contributing Translations](#contributing-translations) to help improve and maintain translations.
+
+### Included Translations
+
+Rundeck includes these community-contributed translations:
+
+| Language | Locale Code | Approximate Coverage | Last Updated |
+|----------|-------------|----------------------|--------------|
+| **English (US)** | `en_US` | 100% (Official) | Every release |
+| **Spanish** | `es_419` | ~95% | Community maintained |
+| **French** | `fr_FR` | ~90% | Community maintained |
+| **Japanese** | `ja_JP` | ~85% | Community maintained |
+| **Portuguese** | `pt_BR` | ~90% | Community maintained |
+| **Chinese (Simplified)** | `zh_CN` | ~85% | Community maintained |
+
+**Note:** 
+- Coverage percentages are approximate and change over time
+- Not all UI elements may be translated in all languages
+- New features are typically added in English first
+- Community translations may be updated in subsequent releases
+
+**Missing translations?** See [Contributing Translations](#contributing-translations) to help improve coverage for your language.
 
 ---
 
@@ -386,12 +416,32 @@ jobslist.running.format.ko=HH:mm
 
 ## Contributing Translations
 
+### Community Translation Program
+
+**PagerDuty/Rundeck welcomes translation contributions from the community!**
+
+While we officially deliver and support English only, we recognize the value of making Rundeck accessible to users worldwide. All non-English translations are community-contributed and we actively encourage contributions through our open-source repository.
+
+**How community translations work:**
+- Contributors submit translations via GitHub Pull Requests
+- PagerDuty reviews and merges approved translations
+- Translations are included in subsequent Rundeck releases
+- Community maintains and updates translations over time
+- No formal support obligations, but we help coordinate efforts
+
+**Benefits of contributing:**
+- Help Rundeck users in your language
+- Get your organization's name in the contributors list
+- Improve your open-source portfolio
+- Connect with the Rundeck community
+
 ### Improving Existing Translations
 
-Help improve Rundeck's built-in translations! If you notice:
-- Missing translations (English text in other languages)
+Help improve Rundeck's community-contributed translations! If you notice:
+- Missing translations (English text appearing in other languages)
 - Incorrect translations
 - Inconsistent terminology
+- Outdated translations for new features
 
 You can contribute improvements back to Rundeck.
 
@@ -475,11 +525,15 @@ Include:
 
 ### For Administrators
 
-1. **Document language choices:** Note which languages you're supporting and why
-2. **Test before production:** Verify translations work in test environment
-3. **Backup custom files:** Include `$RDECK_BASE/i18n/` in backups
-4. **Version control:** Keep custom messages files in version control
-5. **Consistent across clusters:** Ensure all cluster members have identical messages files
+1. **Understand support limitations:** Non-English translations are community-maintained and not officially supported by PagerDuty. Plan accordingly for production environments.
+2. **Document language choices:** Note which languages you're using and why, including any known limitations or gaps.
+3. **Test before production:** Thoroughly verify translations work in test environment, especially for critical workflows.
+4. **Plan for gaps:** Have a fallback plan when translations are incomplete (users comfortable with English, custom translations, etc.).
+5. **Backup custom files:** Include `$RDECK_BASE/i18n/` in backups.
+6. **Version control:** Keep custom messages files in version control.
+7. **Consistent across clusters:** Ensure all cluster members have identical messages files.
+8. **Monitor for updates:** Check new releases for translation updates if using non-English languages.
+9. **Consider contributing:** If you create custom translations, consider contributing them back to the community.
 
 ### For Users
 
