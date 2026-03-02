@@ -88,7 +88,7 @@
     "algoliasearch": "5.44.0",
     "qs": "6.15.0",
     "ajv": "8.18.0",
-    "minimatch": "10.2.1",
+    "minimatch": "10.2.2",
     "caniuse-lite": "1.0.30001769",
     "autoprefixer": "10.4.24",
     "filelist": "1.0.3"
