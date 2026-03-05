@@ -28,7 +28,7 @@ This is an Early Access feature with the following limitations:
 - **Workflow Strategy**: Only works with Sequential and Parallel strategies (not Node First or Ruleset)
 - **No Nested Conditionals**: Cannot place a conditional step inside another conditional step. To achieve multi-level conditional logic, use Job Reference steps to call other jobs that contain conditionals.
 - **Substep Type Matching**: Substeps must be the same type (node/workflow) as the parent conditional step
-- **No Prior Step Output**: Cannot reference output from previous steps in conditions (planned for future release)
+- **Step Output Requires Log Filters**: To reference output from previous steps in conditions, use log filters to capture the data, then reference it using `${data.*}` syntax.
 - **Error Handlers/Log Filters**: Only supported on root-level steps, not on substeps within conditionals
 
 ## Enabling Conditional Logic
@@ -70,9 +70,9 @@ Executes conditionally **on each node** that matches the job's node filter. Cond
 - Data captured via log filters
 
 **Use Cases:**
-- Run commands only on Linux nodes: `node.osFamily equals unix`
-- Target specific hostnames: `node.hostname contains web`
-- Filter by node tags: `node.tags contains production`
+- Run commands only on Linux nodes: Field `${node.osFamily}` equals `unix`
+- Target specific hostnames: Field `${node.hostname}` contains `web`
+- Filter by node tags: Field `${node.tags}` contains `production`
 
 <!-- Screenshot: Node Conditional Logic step in step picker modal -->
 
@@ -88,9 +88,9 @@ Executes conditionally **once per job execution** on the Rundeck server. Conditi
 **Note:** Node Attributes are NOT available for workflow conditional steps.
 
 **Use Cases:**
-- Run steps only in production environment: `option.environment equals production`
-- Skip steps for specific users: `job.username not equals serviceaccount`
-- Execute based on captured data: `data.status equals ready`
+- Run steps only in production environment: Field `${option.environment}` equals `production`
+- Skip steps for specific users: Field `${job.username}` not equals `serviceaccount`
+- Execute based on captured data: Field `${data.status}` equals `ready`
 
 <!-- Screenshot: Workflow Conditional Logic step in step picker modal -->
 
@@ -375,11 +375,16 @@ This allows the job to have a broader node filter but selectively execute steps.
 **Problem:** Substeps execute when they shouldn't (or vice versa).
 
 **Solutions:**
+- Enable Debug mode when running the job to see condition evaluation details
 - Verify option names match exactly (case-sensitive)
 - For node attributes, confirm the attribute exists on target nodes
 - **Important**: Fields must use `${}` syntax (e.g., `${node.osFamily}` not `node.osFamily`)
 - Values can be literal or use `${}` syntax for variables
 - Use `contains` instead of `equals` for partial matching
+
+**Note on Step Output:**
+- Use `${data.*}` to reference data captured via log filters from previous steps
+- To use output from previous steps: add a log filter (e.g., Key Value Data) to capture the output, then reference it using `${data.variableName}` in your conditions
 
 ### Cannot Add Substeps
 
@@ -427,58 +432,55 @@ Conditional steps use the following structure in job definitions:
 
 **JSON Example:**
 ```json
-{
-  "jobs": [
-    {
-      "name": "Example Job",
-      "workflow": {
-        "commands": [
-          {
-            "type": "conditional.logic",
-            "nodeStep": true,
-            "description": "Check Linux Nodes",
-            "conditionGroups": [
-              {
-                "conditions": [
-                  {
-                    "field": "node.osFamily",
-                    "operator": "equals",
-                    "value": "unix"
-                  }
-                ]
-              }
-            ],
-            "steps": [
-              {
-                "type": "command",
-                "exec": "echo 'Running on Linux'"
-              }
-            ]
-          }
-        ]
-      }
+[
+  {
+    "name": "Example Job",
+    "loglevel": "INFO",
+    "sequence": {
+      "commands": [
+        {
+          "type": "conditional.logic",
+          "nodeStep": true,
+          "description": "Check Linux Nodes",
+          "conditionGroups": [
+            {
+              "conditions": [
+                {
+                  "field": "${node.osFamily}",
+                  "operator": "equals",
+                  "value": "unix"
+                }
+              ]
+            }
+          ],
+          "steps": [
+            {
+              "exec": "echo 'Running on Linux'"
+            }
+          ]
+        }
+      ]
     }
-  ]
-}
+  }
+]
 ```
 
 **YAML Example:**
 ```yaml
-jobs:
-  - name: Example Job
-    workflow:
-      commands:
-        - type: conditional.logic
-          nodeStep: true
-          description: Check Linux Nodes
-          conditionGroups:
-            - conditions:
-                - field: node.osFamily
-                  operator: equals
-                  value: unix
-          steps:
-            - type: command
-              exec: echo 'Running on Linux'
+- name: Example Job
+  loglevel: INFO
+  sequence:
+    commands:
+      - type: conditional.logic
+        nodeStep: true
+        description: Check Linux Nodes
+        conditionGroups:
+          - conditions:
+              - field: ${node.osFamily}
+                operator: equals
+                value: unix
+        steps:
+          - exec: echo 'Running on Linux'
 ```
 
 ### Import Validation

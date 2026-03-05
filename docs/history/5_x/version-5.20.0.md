@@ -27,7 +27,7 @@ Introduces a new workflow step type that enables dynamic conditional execution b
 **Key Capabilities:**
 - **Two step types**: Node Conditional Logic (executes per-node) and Workflow Conditional Logic (executes once per job)
 - **Flexible condition logic**: Combine up to 5 condition sets with AND/OR grouping, supporting operators like equals, not equals, contains, regex matching, and numeric comparisons
-- **Context-aware evaluation**: Reference job options (`option.environment`), node attributes (`node.osFamily`), job context (`job.project`), and data captured via log filters
+- **Context-aware evaluation**: Reference job options (`${option.environment}`), node attributes (`${node.osFamily}`), job context (`${job.project}`), and data captured via log filters
 - **Nested substeps**: Add multiple substeps that execute only when conditions are met
 - **Debug mode**: View detailed condition evaluation in execution logs to troubleshoot and verify logic
 
@@ -39,7 +39,6 @@ Introduces a new workflow step type that enables dynamic conditional execution b
 **Limitations (Current Release):**
 - No nested conditionals. To achieve multi-level conditional logic, use Job Reference steps to call other jobs that contain conditionals.
 - Substeps must match parent type (node substeps for node conditionals, workflow substeps for workflow conditionals)
-- Prior step output referencing not available in this release (planned for future)
 - Error handlers and log filters only supported on root-level steps, not on substeps within conditionals
 
 **Example Use Cases:**
