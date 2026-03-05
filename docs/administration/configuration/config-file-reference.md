@@ -544,6 +544,15 @@ Configure authentication, session management, and security policies.
 
 **Security tip:** Keep `showTracesOnResponse=false` in production to avoid exposing internal details.
 
+#### Early Access Features
+
+| Property | Default | Description |
+|----------|---------|-------------|
+| `rundeck.feature.earlyAccessJobConditional.enabled` | `false` | Enable Conditional Logic workflow steps (Early Access) |
+
+**Conditional Logic Feature:**
+Enables dynamic conditional execution in workflows based on runtime conditions. When enabled, users can add Conditional Logic steps to jobs that evaluate conditions (job options, node attributes, job context) and execute substeps only when conditions are met. Requires Sequential or Parallel workflow strategy. See [Conditional Logic Steps](/manual/jobs/conditional-logic.md) for complete documentation.
+
 #### Local User Management (Enterprise)
 
 **Purpose:** Create and manage users directly in Rundeck's database (alternative to LDAP/SSO).
