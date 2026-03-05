@@ -476,9 +476,9 @@ Conditional steps use the following structure in job definitions:
         description: Check Linux Nodes
         conditionGroups:
           - conditions:
-              - field: ${node.osFamily}
+              - field: "${node.osFamily}"
                 operator: equals
-                value: unix
+                value: "unix"
         steps:
           - exec: echo 'Running on Linux'
 ```
