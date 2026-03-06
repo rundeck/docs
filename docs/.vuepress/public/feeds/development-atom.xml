@@ -3,9 +3,37 @@
   <title>Rundeck Development Updates</title>
   <link href="https://docs.rundeck.com/feeds/development.xml" rel="self" />
   <link href="https://docs.rundeck.com/docs" />
-  <updated>2026-02-18T21:41:07.844Z</updated>
+  <updated>2026-03-06T17:28:01.261Z</updated>
   <id>https://docs.rundeck.com/feeds/development</id>
   <subtitle>Recent merged pull requests and development updates from Rundeck</subtitle>
+  <entry>
+    <title>Fix command injection vulnerability in exec commands with ${option.name}</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeck-10003</id>
+    <updated>2026-03-05T21:46:23.000Z</updated>
+    <content type="text">Fix command injection vulnerability in exec commands with ${option.name} (Merged: Mar 5, 2026)</content>
+  </entry>
+  <entry>
+    <title>Implement conditional workflow logic</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeckpro-4598</id>
+    <updated>2026-03-05T18:39:52.000Z</updated>
+    <content type="text">Implement conditional workflow logic (Merged: Mar 5, 2026)</content>
+  </entry>
+  <entry>
+    <title>Add UI for conditional logic</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeckpro-4595</id>
+    <updated>2026-02-25T23:36:47.000Z</updated>
+    <content type="text">Add UI for conditional logic (Merged: Feb 25, 2026)</content>
+  </entry>
+  <entry>
+    <title>Update to commons-lang3 for CVE-2025-48924</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeck-9990</id>
+    <updated>2026-02-19T22:33:08.000Z</updated>
+    <content type="text">Update to commons-lang3 for CVE-2025-48924 (Merged: Feb 19, 2026)</content>
+  </entry>
   <entry>
     <title>Improve Next Ui management</title>
     <link href="https://docs.rundeck.com/docs/history/updates/" />
