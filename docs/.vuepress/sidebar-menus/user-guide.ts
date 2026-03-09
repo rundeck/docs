@@ -37,10 +37,12 @@ export default [{
       children: [
         { text: 'Overview', link: '/manual/jobs/index.md' },
         '/manual/jobs/creating-jobs',
+        '/manual/jobs/ai-generated-runbooks.md',
         '/manual/jobs/job-workflows',
         '/manual/jobs/job-options',
         '/manual/jobs/job-notifications',
         '/manual/jobs/job-variables',
+        '/manual/jobs/conditional-logic',
         {
           text: 'Job Step Plugins',
           link: '/manual/jobs/job-plugins/index.md',
@@ -145,9 +147,15 @@ export default [{
             }
           ]
         },
-        '/manual/jobs/job-queue.md',
-        '/manual/jobs/job-resume.md',
-        '/manual/jobs/job-retry-failed-nodes.md',
+        {
+          text: 'Execution Control & Recovery (Commercial)',
+          collapsible: true,
+          children: [
+            '/manual/jobs/job-queue.md',
+            '/manual/jobs/job-resume.md',
+            '/manual/jobs/job-retry-failed-nodes.md',
+          ]
+        },
         {
           text: 'Log Filters',
           collapsible: true,
@@ -181,9 +189,14 @@ export default [{
             '/manual/notifications/jira.md'
           ]
         },
-        '/manual/jobs/result-data.md',
-        '/manual/jobs/roi-metrics.md',
-        '/manual/jobs/ai-generated-runbooks.md',
+        {
+          text: 'Job Analytics & Reporting',
+          collapsible: true,
+          children: [
+            '/manual/jobs/result-data.md',
+            '/manual/jobs/roi-metrics.md',
+          ]
+        },
         {
           text: 'Workflow Strategies',
           link: '/manual/jobs/workflow-strategies/index.md',
