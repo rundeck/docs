@@ -278,14 +278,14 @@ This example demonstrates advanced conditional logic using multiple condition se
 
 Try these combinations to understand the OR/AND logic:
 
-| Environment | OS | Version | Will Execute? | Why? |
-|-------------|-----|---------|---------------|------|
-| Dev | Linux | 5.20 | ✅ Yes | Matches Set 1 (Dev environment) |
-| Dev | Windows | 5.19 | ✅ Yes | Matches Set 1 (Dev environment) |
-| Prod | Windows | 5.19 | ✅ Yes | Matches Set 2 (Windows AND not 5.20) |
-| Prod | Windows | 5.20 | ❌ No | Set 2 fails (version IS 5.20), Set 3 fails (not Linux) |
-| Prod | Linux | 5.20 | ✅ Yes | Matches Set 3 (Linux AND not 5.19) |
-| Prod | Linux | 5.19 | ❌ No | Set 3 fails (version IS 5.19), Set 2 fails (not Windows) |
+| Environment | OS      | Version | Will Execute? | Why?                                                                                    |
+|-------------|---------|---------|---------------|-----------------------------------------------------------------------------------------|
+| Dev         | Linux   | 5.20    | ✅ Yes         | Matches Set 1 (Dev environment)                                                         |
+| Dev         | Windows | 5.19    | ✅ Yes         | Matches Set 1 (Dev environment)                                                         |
+| Prod        | Windows | 5.19    | ✅ Yes         | Matches Set 2 (Windows AND not 5.20)                                                    |
+| Prod        | Windows | 5.20    | ❌ No          | Set 1 fails (Prod enviroment), Set 2 fails (version IS 5.20), Set 3 fails (not Linux)   |
+| Prod        | Linux   | 5.20    | ✅ Yes         | Matches Set 3 (Linux AND not 5.19)                                                      |
+| Prod        | Linux   | 5.19    | ❌ No          | Set 1 fails (Prod enviroment), Set 2 fails (not Windows), Set 3 fails (version IS 5.19) |
 
 **What to Observe:**
 
