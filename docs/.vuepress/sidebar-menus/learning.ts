@@ -126,6 +126,7 @@ export default [{
           children: [
             '/learning/howto/use-example-jobs.md',
             '/learning/howto/passing-variables.md',
+            '/learning/howto/using-conditional-logic.md',
             '/learning/howto/calling-apis.md',
             '/learning/howto/log4shell.md',
             '/learning/howto/use-roi-metrics.md',

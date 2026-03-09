@@ -42,7 +42,7 @@ export default [{
         '/manual/jobs/job-options',
         '/manual/jobs/job-notifications',
         '/manual/jobs/job-variables',
-        '/manual/jobs/conditional-logic',
+        {text: 'Conditional Logic', link: '/manual/jobs/conditional-logic'},
         {
           text: 'Job Step Plugins',
           link: '/manual/jobs/job-plugins/index.md',

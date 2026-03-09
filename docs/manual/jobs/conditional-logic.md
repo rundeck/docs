@@ -1,6 +1,6 @@
-# Conditional Logic Steps
+# Conditional Logic Steps (Commercial)
 
-**Early Access Feature** - Available in Rundeck 5.20.0+
+**Early Access Feature** - Available in Runbook Automation 5.20.0+
 
 Conditional Logic steps enable dynamic workflow execution based on runtime conditions. Use these steps to create intelligent automation that makes decisions during execution without requiring external scripts or complex logic.
 
@@ -74,7 +74,7 @@ Executes conditionally **on each node** that matches the job's node filter. Cond
 - Target specific hostnames: Field `${node.hostname}` contains `web`
 - Filter by node tags: Field `${node.tags}` contains `production`
 
-<!-- Screenshot: Node Conditional Logic step in step picker modal -->
+![job-conditionals-picker](/assets/img/job-conditionals-picker-node.png)
 
 ### Workflow Conditional Logic
 
@@ -92,7 +92,7 @@ Executes conditionally **once per job execution** on the Rundeck server. Conditi
 - Skip steps for specific users: Field `${job.username}` not equals `serviceaccount`
 - Execute based on captured data: Field `${data.status}` equals `ready`
 
-<!-- Screenshot: Workflow Conditional Logic step in step picker modal -->
+![job-conditionals-picker-wf](/assets/img/job-conditionals-picker-wf.png)
 
 ## Adding Conditional Logic Steps
 
@@ -102,8 +102,6 @@ In the Job Editor's Workflow tab:
 
 1. Click **"Add a step"** button
 2. The Early Access step picker modal opens with two tabs: **Node Steps** and **Workflow Steps**
-
-<!-- Screenshot 1: Step picker modal showing conditional logic options in both Node Steps and Workflow Steps tabs -->
 
 ### Step 2: Select Conditional Type
 
@@ -145,7 +143,7 @@ Example:
 - **OR**
 - Set 2: `${node.osFamily} equals windows` **AND** `${node.tags} contains iis`
 
-<!-- Screenshot 2: Conditional step editor with conditions configured showing Field/Operator/Value dropdowns, AND logic within a set, and OR separator between condition sets -->
+![job-conditionals-2](/assets/img/job-conditionals-2.png)
 
 **Limits:**
 - Maximum 5 conditions per condition set
@@ -170,7 +168,7 @@ Click **"Save Step"** to add the conditional step to your workflow.
 
 Click **"Cancel"** to discard changes.
 
-<!-- Screenshot 3: Completed conditional step card in workflow showing condition summary and substeps -->
+![job-conditionals-1](/assets/img/job-conditionals-1.png)
 
 ## Available Operators
 
@@ -283,7 +281,7 @@ Debug output shows:
 - Whether each condition passed or failed
 - Whether the overall condition set was true or false
 
-<!-- Screenshot 4: Execution log showing condition evaluation debug output with detailed condition results -->
+![job-conditionals-debugoutput](/assets/img/job-conditionals-debugoutput.png)
 
 ### Execution Log Display
 
