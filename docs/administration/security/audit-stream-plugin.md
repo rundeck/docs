@@ -888,9 +888,9 @@ After successfully configuring the Audit Stream Plugin, consider these next step
 ### Documentation
 - [Audit Trail Log](/administration/security/audit-trail.md) - Understanding Rundeck's local audit log file (available in all editions)
 - [Audit Events Listener Plugin Development Guide](/developer/audit-events-listeners.md) - Learn about the underlying plugin framework
-- [Rundeck Security Overview](/administration/security/default.md) - Understanding Rundeck's security model
-- [Key Storage](/administration/security/key-storage.md) - Securely storing API credentials
-- [System Configuration](/administration/configuration/system-configuration.md) - Managing plugin settings
+- [Rundeck Security Overview](/administration/security/index.md) - Understanding Rundeck's security model
+- [Key Storage](/manual/key-storage/index.md) - Securely storing API credentials
+- [System Configuration](/administration/configuration/index.md) - Managing plugin settings
 
 ### External Resources
 - [Datadog Events API Documentation](https://docs.datadoghq.com/api/latest/events/)
