@@ -1,7 +1,7 @@
 ---
 title: Recent Updates
 description: Latest merged changes from the Rundeck development team
-date: 2026-02-18T21:41:07.823Z
+date: 2026-03-09T21:10:20.760Z
 feed: true
 index: true
 ---
@@ -14,6 +14,21 @@ This page shows recently merged pull requests from both the Runbook Automation p
 
 ## Recent Changes
 
+
+#### ::circle-dot:: Fix command injection vulnerability in exec commands with ${option.name}  [PR #10003](https://github.com/rundeck/rundeck/pull/10003)
+
+
+  Fixed a critical command injection vulnerability in exec commands where shell control characters in job option values were not properly escaped, now protecting against malicious input by applying shell escaping to all `${option.name}` values by default while providing a compatibility flag for edge cases.
+
+#### ::circle-dot:: Implement conditional workflow logic 
+
+
+  Introduces backend support for Conditional Logic workflow steps, enabling dynamic workflow execution based on runtime conditions such as job options, node attributes, and prior step outputs.
+
+#### ::circle-dot:: Update to commons-lang3 for CVE-2025-48924  [PR #9990](https://github.com/rundeck/rundeck/pull/9990)
+
+
+  Updated Apache Commons Lang library to the latest version (commons-lang3) to address CVE-2025-48924, ensuring continued security and compatibility with modern Java standards.
 
 #### ::circle-dot:: Improve Next Ui management  [PR #9981](https://github.com/rundeck/rundeck/pull/9981)
 
@@ -41,6 +56,6 @@ The development updates are automatically generated from both our private reposi
 
 ---
 
-**List Last updated:** 2026-02-18
+**List Last updated:** 2026-03-09
 
 
