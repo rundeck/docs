@@ -541,6 +541,67 @@ Example:
       job: "${option.job}"
 ```
 
+### Conditional Logic Step Entry
+
+::: tip Since Rundeck 5.20.0
+Conditional Logic steps are an Early Access commercial feature that requires the feature flag `rundeck.feature.earlyAccessJobConditional.enabled=true`.
+:::
+
+Defines a step that conditionally executes substeps based on runtime conditions. Available for both Node Steps and Workflow Steps.
+
+`type`
+
+: Must be `"conditional.logic"`
+
+`nodeStep`
+
+: Boolean: `true` for Node Conditional Logic, `false` for Workflow Conditional Logic
+
+`description`
+
+: Optional step name/description
+
+`conditionGroups`
+
+: Array of condition sets (OR logic between sets)
+  * `conditions` - Array of individual conditions (AND logic within set)
+    * `field` - Field reference using `${}` syntax (e.g., `"${node.osFamily}"`, `"${option.environment}"`)
+    * `operator` - One of: `"equals"`, `"not equals"`, `"contains"`, `"matches"`, `"greater than"`, `"less than"`
+    * `value` - Comparison value (literal or variable reference with `${}` syntax)
+
+`steps`
+
+: Array of substeps to execute when conditions are met (must match `nodeStep` type)
+
+Example:
+
+```yaml
+  - type: conditional.logic
+    nodeStep: true
+    description: Check Linux Nodes
+    conditionGroups:
+      - conditions:
+          - field: "${node.osFamily}"
+            operator: equals
+            value: unix
+    steps:
+      - exec: echo 'Condition met'
+```
+
+**Available Field References:**
+- Job Context: `${job.name}`, `${job.project}`, `${job.username}`, `${job.id}`
+- Job Options: `${option.[name]}`
+- Node Attributes (Node steps only): `${node.hostname}`, `${node.osFamily}`, `${node.tags}`, etc.
+- Data Variables: `${data.[name]}`
+
+**Limitations:**
+- Only works with Sequential and Parallel workflow strategies
+- Cannot nest conditional steps (use Job Reference steps for multi-level logic)
+- Substeps must match parent type (node substeps for node conditionals)
+- XML format not supported
+
+See [Conditional Logic Steps](/manual/jobs/conditional-logic.md) for complete documentation.
+
 ### Options
 
 Options for a job can be specified with a list of Maps. Each map contains a `name` key with the name of the option, and the content is a map defining the [Option](#option).
