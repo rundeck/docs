@@ -3,9 +3,23 @@
   <title>Rundeck Development Updates</title>
   <link href="https://docs.rundeck.com/feeds/development.xml" rel="self" />
   <link href="https://docs.rundeck.com/docs" />
-  <updated>2026-03-09T21:10:20.789Z</updated>
+  <updated>2026-03-18T17:41:58.361Z</updated>
   <id>https://docs.rundeck.com/feeds/development</id>
   <subtitle>Recent merged pull requests and development updates from Rundeck</subtitle>
+  <entry>
+    <title>Add Filename to Runner API output</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeckpro-4468</id>
+    <updated>2026-03-12T00:18:51.000Z</updated>
+    <content type="text">Add Filename to Runner API output (Merged: Mar 12, 2026)</content>
+  </entry>
+  <entry>
+    <title>Add Dutch (nl_NL) UI translations and locale wiring</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeck-9983</id>
+    <updated>2026-03-11T16:43:20.000Z</updated>
+    <content type="text">Add Dutch (nl_NL) UI translations and locale wiring (Merged: Mar 11, 2026)</content>
+  </entry>
   <entry>
     <title>Fix command injection vulnerability in exec commands with ${option.name}</title>
     <link href="https://docs.rundeck.com/docs/history/updates/" />
