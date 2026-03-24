@@ -36,8 +36,10 @@ Bump aiohttp to 3.13.3 minimum for CVE-2025-69223, CVE-2025-69227, and CVE-2025-
   
 Significantly improved the performance of Job UI Metrics by introducing batch processing that fetches metrics for all jobs in a single API call instead of making individual requests for each job, reducing page load times from minutes to seconds in projects with many jobs and eliminating timeout issues caused by excessive database queries.
 
-::: tip Configuration required for the optimized path
-The faster Job Metrics experience uses pre-aggregated daily execution statistics and API v57+ stats-based metrics (`useStats=true`). You must set **`rundeck.executionDailyMetrics.enabled=true`** so the server records those aggregates when executions complete, and **`rundeck.feature.guiUseExecutionDailyMetrics.enabled=true`** so the UI uses them. Metrics are available only for executions that finish after daily metrics collection is turned on (no automatic backfill). Full details, API notes, and plugin behavior are documented under [Execution daily metrics](/administration/configuration/config-file-reference.md#execution-daily-metrics).
+::: tip Configuration required for the optimized path [Self Hosted]
+The faster Job Metrics experience uses pre-aggregated daily execution statistics and API v57+ stats-based metrics (`useStats=true`). To enable set **`rundeck.executionDailyMetrics.enabled=true`** so the server records those aggregates when executions complete, and **`rundeck.feature.guiUseExecutionDailyMetrics.enabled=true`** so the UI uses them. Metrics are available only for executions that finish after daily metrics collection is turned on (no automatic backfill). Full details, API notes, and plugin behavior are documented under [Execution daily metrics](/administration/configuration/config-file-reference.md#execution-daily-metrics).
+
+Note: This is already configured for all SaaS instances of Runbook Automation
 :::
 
 
