@@ -14,7 +14,7 @@ feed:
 
 ## Overview
 
-This release focuses on stability, performance, and security improvements across the platform. Key updates include enhanced AWS SSM execution timeouts (up to 12 hours), significant Job UI Metrics performance optimizations, and fixes for Ansible workflow output handling and Vault timestamp issues. Security updates address multiple CVEs in the Azure Storage plugin and Docker image dependencies.
+This release focuses on stability, performance, and security improvements across the platform. Key updates include enhanced AWS SSM execution timeouts (up to 12 hours), significant Job UI Metrics performance optimizations (these require enabling configuration flags; see the note under [Runbook Automation Updates](#runbook-automation-updates) and [Execution daily metrics](/administration/configuration/config-file-reference.md#execution-daily-metrics)), and fixes for Ansible workflow output handling and Vault timestamp issues. Security updates address multiple CVEs in the Azure Storage plugin and Docker image dependencies.
 
 <VidStack src="youtube/YXidHZOdR1M" poster="https://img.youtube.com/vi/YXidHZOdR1M/maxresdefault.jpg"/>
 
@@ -35,6 +35,10 @@ Bump aiohttp to 3.13.3 minimum for CVE-2025-69223, CVE-2025-69227, and CVE-2025-
 ##### ::circle-dot:: Implement performance optimization for the Job UI Metrics 
   
 Significantly improved the performance of Job UI Metrics by introducing batch processing that fetches metrics for all jobs in a single API call instead of making individual requests for each job, reducing page load times from minutes to seconds in projects with many jobs and eliminating timeout issues caused by excessive database queries.
+
+::: tip Configuration required for the optimized path
+The faster Job Metrics experience uses pre-aggregated daily execution statistics and API v57+ stats-based metrics (`useStats=true`). You must set **`rundeck.executionDailyMetrics.enabled=true`** so the server records those aggregates when executions complete, and **`rundeck.feature.guiUseExecutionDailyMetrics.enabled=true`** so the UI uses them. Metrics are available only for executions that finish after daily metrics collection is turned on (no automatic backfill). Full details, API notes, and plugin behavior are documented under [Execution daily metrics](/administration/configuration/config-file-reference.md#execution-daily-metrics).
+:::
 
 
 ## Rundeck Open Source Product Updates
