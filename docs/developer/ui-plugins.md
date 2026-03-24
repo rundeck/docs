@@ -70,7 +70,7 @@ Use Gradle with the Asset Pipeline plugin for production-quality plugins.
 See the [modern structure](#modern-plugin-structure-with-asset-pipeline) section below.
 
 **Example repositories using this approach:**
-- [ui-job-metrics](https://github.com/rundeck-plugins/ui-job-metrics) - Job execution metrics dashboard
+- [ui-job-metrics](https://github.com/rundeck-plugins/ui-job-metrics) - Job execution metrics dashboard (for stats-based metrics with `rundeck.feature.guiUseExecutionDailyMetrics.enabled`, plugins should use the [execution metrics API](/api/index.md#execution-query-metrics) with `useStats=true`, API v57+; see [Execution daily metrics](/administration/configuration/config-file-reference.md#execution-daily-metrics))
 - [ui-roi-summary](https://github.com/rundeck-plugins/ui-roi-summary) - ROI summary views
 
 ## Simple Plugin Structure (Manual)
