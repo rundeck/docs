@@ -857,6 +857,32 @@ If the log file is larger than this value, the log viewer will display a "Whale 
 
 The default value for this property is 3MB.
 
+### Execution daily metrics
+
+**Purpose:** Record per-day execution aggregates into scheduled execution stats as executions complete. That data backs the stats-based mode of the [execution metrics API](/api/index.md#execution-query-metrics) (`useStats=true`, API v57+), which avoids scanning the execution table and is intended for large environments.
+
+| Property | Default | Description |
+|----------|---------|-------------|
+| `rundeck.executionDailyMetrics.enabled` | `false` | When `true`, daily metrics are updated when executions finish. Required for meaningful results when using `useStats=true` on the metrics API. |
+| `rundeck.feature.guiUseExecutionDailyMetrics.enabled` | `false` | When `true`, enables the `guiUseExecutionDailyMetrics` feature for the GUI so compatible views can use the stats-based metrics path. |
+
+**Collection window:** Metrics exist only for executions that complete after `rundeck.executionDailyMetrics.enabled` is turned on. Older executions are not backfilled into the daily aggregates.
+
+**Operational order:** Turn on `rundeck.executionDailyMetrics.enabled` first and allow executions to run so aggregates populate; then enable the GUI feature when your UI and plugins expect the stats-based flow.
+
+**Job Metrics UI plugin:** After you enable `rundeck.feature.guiUseExecutionDailyMetrics.enabled`, a Job Metrics UI plugin that still relies on the legacy metrics behavior may show all jobs as having no executions. That is expected until the plugin uses the updated stats-based API (`useStats=true`, API v57+).
+
+### Job Metrics and ROI Summary UI
+
+**Purpose:** Control visibility of the bundled Job Metrics and ROI Summary UI. These settings do not remove plugins from the installation; they stop the UI from loading those integrations.
+
+Set properties in `rundeck-config.properties`. Most deployments require a Rundeck restart for changes to take effect.
+
+| Property | Default | Description |
+|----------|---------|-------------|
+| `rundeck.plugin.jobmetrics.disabled` | `false` | When `true`, disables the Job Metrics UI. |
+| `rundeck.plugin.roisummary.disabled` | `false` | When `true`, disables the ROI Summary UI. |
+
 ### Metrics Capturing
 
 :::tip

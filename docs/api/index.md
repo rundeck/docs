@@ -3918,6 +3918,10 @@ Paging parameters `max` and `offset` will have no effect on the result.
 * `begin` (string): When using `useStats=true`, filter metrics to include only executions that completed on or after this date. Format: `yyyy-MM-ddTHH:mm:ssZ` (ISO8601).
 * `end` (string): When using `useStats=true`, filter metrics to include only executions that completed on or before this date. Format: `yyyy-MM-ddTHH:mm:ssZ` (ISO8601).
 
+::: tip Stats-based mode requirements
+`useStats=true` reads pre-aggregated daily metrics written when executions complete. Set `rundeck.executionDailyMetrics.enabled=true` in `rundeck-config.properties`. Data is available only from when that property was enabled (no automatic backfill). The GUI feature flag `rundeck.feature.guiUseExecutionDailyMetrics.enabled` controls exposure of stats-based metrics to the UI; plugins that are not updated for this flow may show empty job metrics until they call the API with `useStats=true`. See [Execution daily metrics](/administration/configuration/config-file-reference.md#execution-daily-metrics).
+:::
+
 **Response**
 
 When `groupByJob` is not used, the response is an object with `duration` entry containing duration stats, and a `total` entry with total executions:
