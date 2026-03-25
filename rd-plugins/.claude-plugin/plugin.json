@@ -1,0 +1,8 @@
+{
+    "name": "rundeck-docs",
+    "description": "A plugin to document changes in rundeck",
+    "version": "0.0.1",
+    "author": {
+    "name": "Rundeck Core Team"
+    }
+}

@@ -1,5 +1,5 @@
 ---
-name: rundeck-docs
+name: document 
 description: Write, update, and verify technical documentation for the Rundeck product (docs/ folder). Use this skill whenever the user provides a PR, branch, or feature to document — including writing release notes, API reference entries, user manual pages, administration guides, developer docs, or learning content. Also use when reviewing or correcting existing documentation for accuracy against source code. Trigger on any request involving Rundeck documentation, even if the user doesn't say "documentation" explicitly (e.g., "write up the changes in this PR", "add this to the release notes", "document this config property").
 ---
 
