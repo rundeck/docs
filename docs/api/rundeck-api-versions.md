@@ -35,6 +35,12 @@ Changes introduced by API Version number:
 API versions below `{{$apiDepVersion}}` are *deprecated*.  Clients using earlier versions should upgrade to use `{{$apiDepVersion}}` as the minimum version before release `{{ $apiDepRelease }}` to avoid errors.
 :::
 
+### Version 58
+
+* Updated Endpoints:
+  * [`GET /api/V/project/[PROJECT]/jobs/browse`][/api/V/project/\[PROJECT\]/jobs/browse] - Optional query parameter `metaExclude`: comma-separated job metadata component names to omit after resolving `meta`. When `meta` includes `*`, the server expands `*` to the union of all names reported by registered `JobMetadataComponent` beans, then removes excluded names (the literal `*` is not passed to loaders). For an explicit comma-separated `meta` list, excluded names are removed from that list. The parameter is ignored if the request URL uses an API version below 58.
+  * [`GET /api/V/job/[ID]/meta`][/api/V/job/\[ID\]/meta] - Same optional `metaExclude` query parameter and resolution rules (API version 58+ only).
+
 ### Version 57
 
 * Updated Endpoints:
