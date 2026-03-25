@@ -1,9 +1,15 @@
 # Audit Trail Log
 
-Starting from version `4.6.0` rundeck provides an audit trail log to record user and system activity.
+Starting from version `4.6.0`, Rundeck provides a local audit trail log file to record user and system activity.
 By default, this file is named `rundeck.audit.events.log` and is located at the [default log directory](/administration/configuration/config-file-reference.md#framework-properties).
 
 This file will record tracked activity events and store relevant data such as origin information, resources involved and action performed.
+
+:::enterprise
+**Looking to integrate with external monitoring or SIEM systems?**
+
+For Rundeck Enterprise users, the [Audit Stream Plugin](/administration/security/audit-stream-plugin.md) can automatically stream these events in real-time to platforms like Datadog, New Relic, Splunk, or custom webhooks. This eliminates the need to parse local log files and enables easier integration with your existing security and monitoring infrastructure.
+:::
 
 Example log contents:
 
@@ -56,7 +62,50 @@ Taking one example event line for analysis:
     - The web session ID of the client (`sessionId`) is `node0hp0hfqhno01lo14wcpv002ll3`
     - The `userAgent` field shows the client was using the Mozilla Firefox browser.
 
-## Customizing event data or collecting to other destinations
+## Integrating with External Systems
 
-If you need to collect the audit trail data for other purposes, like forwarding it into a monitoring system, another database, or generate a custom file format,
-you can use [Audit Events Listener Plugins](/developer/audit-events-listeners).
+### Option 1: Parse Local Log Files (All Editions)
+
+You can parse the `rundeck.audit.events.log` file using log shipping tools like:
+- **Filebeat** or **Logstash** to send logs to Elasticsearch
+- **Fluentd** or **Fluent Bit** for flexible log forwarding
+- **Splunk Universal Forwarder** for Splunk integration
+- Custom scripts that read and process the log file
+
+**Considerations:**
+- Requires setting up and maintaining log parsing configuration
+- Events are in Rundeck's log format (not structured JSON)
+- Adds complexity for regex parsing and field extraction
+- Log rotation and file monitoring must be configured
+
+### Option 2: Audit Stream Plugin (Enterprise)
+
+:::enterprise
+For Rundeck Enterprise (version 5.13.0+), the [Audit Stream Plugin](/administration/security/audit-stream-plugin.md) provides a simpler, more reliable integration:
+
+**Benefits:**
+- Real-time streaming (no log file parsing required)
+- Events sent as structured JSON
+- Built-in support for popular platforms (Datadog, New Relic, Splunk, etc.)
+- Configurable event filtering
+- Secure authentication methods (AWS SigV4, Azure SAS, Bearer tokens)
+- No additional infrastructure required
+
+**Use cases:**
+- SIEM integration for security monitoring
+- Compliance and audit reporting
+- Operational dashboards and alerting
+- Correlation with other application events
+
+See the [Audit Stream Plugin documentation](/administration/security/audit-stream-plugin.md) for configuration examples and platform-specific setup guides.
+:::
+
+### Option 3: Custom Audit Event Listener Plugin (Developers)
+
+For advanced use cases or custom integrations, you can develop your own audit event listener plugin. This allows you to:
+- Process events programmatically in Java
+- Implement custom event filtering logic
+- Format data for proprietary systems
+- Add custom business logic based on events
+
+See the [Audit Events Listener Plugin Development Guide](/developer/audit-events-listeners.md) for technical details on implementing custom plugins.

@@ -3911,10 +3911,20 @@ To narrow down the result set over which the metrics will be calculated, you can
 
 Paging parameters `max` and `offset` will have no effect on the result.
 
+**Additional Parameters (API v57+):**
+
+* `useStats` (boolean): If `true`, use snapshot-based metrics from SCHEDULED_EXECUTION_STATS table. If `false` or not provided, use execution table query. When `useStats=true`, the `jobIdListFilter` parameter is required unless `groupByJob=true`.
+* `groupByJob` (boolean): If `true` with `useStats=true`, returns metrics for all jobs in a single project (batch mode). The metrics query must be scoped to one project, either by using the project-specific endpoint (`/api/29/project/[PROJECT]/executions/metrics`) or by including a `project` query parameter when calling the global endpoint (`/api/29/executions/metrics`). Returns format: `{jobs: {uuid1: metrics, uuid2: metrics, ...}}`.
+* `begin` (string): When using `useStats=true`, filter metrics to include only executions that completed on or after this date. Format: `yyyy-MM-ddTHH:mm:ssZ` (ISO8601).
+* `end` (string): When using `useStats=true`, filter metrics to include only executions that completed on or before this date. Format: `yyyy-MM-ddTHH:mm:ssZ` (ISO8601).
+
+::: tip Stats-based mode requirements
+`useStats=true` reads pre-aggregated daily metrics written when executions complete. For this mode to return data, you must set `rundeck.executionDailyMetrics.enabled=true` in `rundeck-config.properties`, and metrics are only available from the time that property was enabled (no automatic backfill). Separately, the GUI feature flag `rundeck.feature.guiUseExecutionDailyMetrics.enabled` controls whether Web UI views (and any plugins that rely on those views) use stats-based metrics instead of querying executions directly; if the flag is enabled but daily metrics are disabled or not yet populated for a period, those stats-based views can show empty results. See [Execution daily metrics](/administration/configuration/config-file-reference.md#execution-daily-metrics).
+:::
+
 **Response**
 
-
-An object with `duration` entry containing duration stats, and a `total` entry with total executions.
+When `groupByJob` is not used, the response is an object with `duration` entry containing duration stats, and a `total` entry with total executions:
 
 ``` json
 {
@@ -3924,6 +3934,33 @@ An object with `duration` entry containing duration stats, and a `total` entry w
         "max": "39s"
     },
     "total": 1325,
+}
+```
+
+When `groupByJob=true` with `useStats=true` (API v57+), the response format is:
+
+``` json
+{
+    "jobs": {
+        "uuid1": {
+            "total": 100,
+            "succeeded": 95,
+            "failed": 5,
+            "duration": {
+                "average": "5s"
+            },
+            ...
+        },
+        "uuid2": {
+            "total": 50,
+            "succeeded": 48,
+            "failed": 2,
+            "duration": {
+                "average": "3s"
+            },
+            ...
+        }
+    }
 }
 ```
 
@@ -6319,7 +6356,26 @@ Same response as [Setup SCM Plugin for a Project](#setup-scm-plugin-for-a-projec
         "service": "NodeExecutor",
         "title": "Kubernetes / Pods / Node Executor",
         "iconUrl": "...",
-        "providerMetadata": { }
+        "providerMetadata": {
+            "groupBy": "Kubernetes",
+            "groupIconUrl": "/path/to/kubernetes-icon.svg"
+        }
+    },
+    {
+        "artifactName": "aws-vm-plugin",
+        "author": "Rundeck",
+        "builtin": false,
+        "description": "AWS VM management plugin",
+        "id": "abc123def456",
+        "name": "AwsVmStartPlugin",
+        "pluginVersion": "2.0.0",
+        "service": "WorkflowStep",
+        "title": "AWS VM Start",
+        "iconUrl": "...",
+        "providerMetadata": {
+            "groupBy": "AWS VM",
+            "groupIconUrl": "/path/to/aws-icon.svg"
+        }
     },
     {
         "artifactName": "py-winrm-plugin",
@@ -6340,6 +6396,8 @@ Same response as [Setup SCM Plugin for a Project](#setup-scm-plugin-for-a-projec
 
 * `iconUrl` - URL to icon file for the plugin if present. **since V40**
 * `providerMetadata` - Map of metadata about the plugin if present. **since V40**
+  * `groupBy` - The group name for the plugin, used for UI grouping. Plugins with the same `groupBy` value will be grouped together in the UI. **since V57**
+  * `groupIconUrl` - The icon URL for the plugin group. This may be explicitly defined for the group or automatically determined from the first plugin in the group. **since V57**
 
 ### Get Plugin Detail
 
@@ -6361,7 +6419,10 @@ Since: v49
   "targetHostCompatibility": "all",
   "ver": null,
   "id": "d36b17dfae7b",
-  "providerMetadata": {},
+  "providerMetadata": {
+    "groupBy": "MyGroup",
+    "groupIconUrl": "/path/to/group-icon.svg"
+  },
   "dynamicProps": null,
   "thirdPartyDependencies": null,
   "name": "<provider-name>",
@@ -6394,6 +6455,10 @@ Since: v49
   "dynamicDefaults": null
 }
 ```
+
+The `providerMetadata` object may contain:
+* `groupBy` - The group name for the plugin, used for UI grouping. **since V57**
+* `groupIconUrl` - The icon URL for the plugin group. **since V57**
 
 ## Webhooks
 

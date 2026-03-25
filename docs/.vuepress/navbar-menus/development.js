@@ -21,5 +21,10 @@ export default [{
   {
     text: 'Security Advisories',
     link: '/history/cves/'
+  },
+  {
+    text: 'Document Formats',
+    collapsible: true,
+    link: '/manual/document-format-reference/index.md'
   }
 ]

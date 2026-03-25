@@ -52,7 +52,7 @@ export async function fetchPRsBetweenTags(octokit, owner, repo, fromVersion, toV
   let baseTagUsed = null;
   let headTagUsed = null;
   
-  // Try to find valid base tag
+  // Try to find valid base tag (silently try different formats)
   for (const baseTag of baseTagFormats) {
     for (const headTag of headTagFormats) {
       try {
@@ -65,11 +65,11 @@ export async function fetchPRsBetweenTags(octokit, owner, repo, fromVersion, toV
         });
         baseTagUsed = baseTag;
         headTagUsed = headTag;
-        console.log(`  Found tags ${baseTag}...${headTag}, ${comparison.data.ahead_by} commits ahead`);
+        console.log(`  ✓ Found tags ${baseTag}...${headTag}, ${comparison.data.ahead_by} commits ahead`);
         break;
       } catch (error) {
         if (error.status === 404) {
-          continue; // Try next format
+          continue; // Try next format silently
         }
         throw error;
       }
@@ -78,8 +78,7 @@ export async function fetchPRsBetweenTags(octokit, owner, repo, fromVersion, toV
   }
   
   if (!comparison) {
-    const errorMsg = `Tags for versions ${fromVersion}...${toVersion} not found in ${owner}/${repo}`;
-    console.warn(`  Warning: ${errorMsg} - skipping this repository`);
+    console.log(`  ⚠ Tags ${fromVersion}...${toVersion} not found - skipping ${owner}/${repo}`);
     return [];
   }
   

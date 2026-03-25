@@ -1,9 +1,25 @@
 # Configuration File Reference
 
-## Configuration layout
+This reference guide documents all Rundeck configuration files and properties. If you're just getting started, see the [Configuration Overview](/administration/configuration/) for guided setup paths.
 
-Configuration file layout differs between the RPM and Launcher
-installation methods.
+**What you'll find here:**
+- Location of configuration files for your installation type
+- Complete property reference with descriptions
+- Common configuration scenarios
+- Security and performance tuning options
+
+**Quick navigation:**
+- [Essential Properties](#essential-configuration-properties) - Start here for production deployments
+- [Configuration Files Overview](#configuration-files) - What each file does
+- [rundeck-config.properties](#rundeck-config-properties) - Primary configuration file
+- [framework.properties](#framework-properties) - Framework and plugin settings
+- [Security Settings](#security) - Authentication, sessions, and HTTP headers
+
+---
+
+## Where Are My Configuration Files?
+
+Configuration file locations depend on how you installed Rundeck.
 
 ### DEB/RPM layout
 
@@ -58,40 +74,151 @@ installation methods.
     ├── rundeck-config.properties
     └── ssl.properties
 
-## Configuration files
+---
 
-Configuration is specified in a number of standard Rundeck
-configuration files generated during the installation process.
+## Essential Configuration Properties
 
-The purpose of each configuration file is described in its own section.
+**First-time setup? Configure these properties first:**
+
+### Must Configure (Production Requirements)
+
+These settings are critical for any production deployment:
+
+| Property | File | Description | Example |
+|----------|------|-------------|---------|
+| `grails.serverURL` | rundeck-config.properties | Your Rundeck URL (hostname/domain) | `https://rundeck.company.com` |
+| `dataSource.url` | rundeck-config.properties | Database connection (don't use H2 in production) | See [Database Config](/administration/configuration/database/) |
+| `server.servlet.session.timeout` | rundeck-config.properties | Session inactivity timeout in seconds | `7200` (2 hours) |
+| `framework.server.url` | framework.properties | Base URL for Rundeck server | Same as `grails.serverURL` |
+
+**Why these matter:**
+- `grails.serverURL`: Used in emails, webhooks, and API responses. Must match your actual URL.
+- `dataSource.url`: H2 database (default) is only for testing. Production needs PostgreSQL, MySQL, etc.
+- `server.servlet.session.timeout`: Default is 1 hour. Set appropriate for your security needs.
+
+### Highly Recommended
+
+Configure these for a complete production setup:
+
+| Property | File | Description | Default |
+|----------|------|-------------|---------|
+| `grails.mail.host` | rundeck-config.properties | SMTP server for notifications | None |
+| `rundeck.executionMode` | rundeck-config.properties | Active or passive mode | `active` |
+| `framework.ssh.keypath` | framework.properties | SSH private key for node access | None |
+| `framework.ssh.user` | framework.properties | Default SSH username | Current user |
+
+**See also:**
+- [Email Configuration](/administration/configuration/email-settings.md) - Complete SMTP setup
+- [Authentication](/administration/security/authentication.md) - Beyond default admin user
+- [SSL/HTTPS Setup](/administration/security/ssl.md) - Enable HTTPS
+
+### Common Scenarios Quick Reference
+
+**Scenario: Setting up database (PostgreSQL)**
+```properties
+# In rundeck-config.properties
+dataSource.url=jdbc:postgresql://dbhost:5432/rundeck
+dataSource.username=rundeck
+dataSource.password=your_password
+dataSource.driverClassName=org.postgresql.Driver
+```
+[Full Database Configuration →](/administration/configuration/database/)
+
+**Scenario: Enabling email notifications**
+```properties
+# In rundeck-config.properties
+grails.mail.host=smtp.gmail.com
+grails.mail.port=587
+grails.mail.username=rundeck@company.com
+grails.mail.password=your_password
+grails.mail.props.mail.smtp.starttls.enable=true
+grails.mail.props.mail.smtp.auth=true
+```
+[Full Email Configuration →](/administration/configuration/email-settings.md)
+
+**Scenario: Cluster setup (Enterprise)**
+```properties
+# In rundeck-config.properties
+rundeck.clusterMode.enabled=true
+dataSource.url=jdbc:mysql://shared-db-host:3306/rundeck
+rundeck.clusterMode.heartbeat.interval=30
+rundeck.clusterMode.autotakeover.enabled=true
+```
+[Full Cluster Configuration →](/administration/cluster/)
+
+---
+
+## Configuration Files Overview
+
+Rundeck uses multiple configuration files, each serving a specific purpose. Here's what each file does and when you'll need to edit it.
+
+| File | Purpose | When to Edit | Edition |
+|------|---------|--------------|---------|
+| **rundeck-config.properties** | Primary configuration (database, security, features) | First setup, feature configuration | All |
+| **framework.properties** | Framework settings (SSH, plugins, global variables) | Node connections, plugin config | All |
+| **realm.properties** | Local user accounts and passwords | Adding local users (if not using LDAP/SSO) | All |
+| **admin.aclpolicy** | Admin role permissions | Customizing admin access | All |
+| **jaas-loginmodule.conf** | Authentication method configuration | Changing auth from file-based to LDAP/AD | All |
+| **profile** | Environment variables for Rundeck process | JVM options, memory settings | All |
+| **log4j2.properties** | Logging configuration | Changing log levels, log file locations | All |
+| **ssl.properties** | SSL/HTTPS settings | Enabling HTTPS | All |
+| **project.properties** | Per-project settings | Within each project directory | All |
+
+**Configuration priority:** Environment variables > rundeck-config.properties > framework.properties > defaults
+
+---
+
+## Configuration Files Detailed Reference
 
 ### admin.aclpolicy
 
-Administrator access control policy defined with a [aclpolicy]
-document.
+**Purpose:** Defines permissions for users with the "admin" role.
 
-This file governs the access for the "admin" group and role.
+**When to edit:** 
+- Customize what admin users can do
+- Create additional role-based access policies
+- Restrict admin access to specific projects
 
-See [role based access control](/administration/security/authorization.md) for information about setting up policy files for other user groups.
+This file uses the [aclpolicy document format](/manual/document-format-reference/aclpolicy-v10).
 
-[aclpolicy]: /manual/document-format-reference/aclpolicy-v10
+**See also:** [Role-Based Access Control](/administration/security/authorization.md) for creating policies for other roles.
+
+---
 
 ### framework.properties
 
-Configuration file used by shell tools and core Rundeck services. This file will be created for you at install time.
+**Purpose:** Core framework configuration used by Rundeck services and command-line tools.
 
-Some important settings:
+**Common reasons to edit:**
+- Configure SSH connections to nodes
+- Set up plugin configurations
+- Define global execution variables
+- Specify API authentication tokens
 
-- `framework.server.hostname`: Hostname of the Rundeck server node
-- `framework.server.name`: Name (identity) of the Rundeck server node
-- `framework.projects.dir`: Path to the directory containing Rundeck Project directories. Default is `$RDECK_BASE/projects`.
-- `framework.var.dir`: Base directory for output and temp files used by the server and CLI tools. Default is `$RDECK_BASE/var`.
-- `framework.logs.dir`: Directory for log files written by core services and Rundeck Server's Job executions. Default is `$RDECK_BASE/var/logs`
-- `framework.server.username`: Username for connection to the Rundeck server
-- `framework.server.password`: Password for connection to the Rundeck server
-- `framework.server.url`: Base URL for Rundeck server.
+This file is automatically created during installation.
 
-SSH Connection settings (See [Projects - Node Execution - SSH](/manual/projects/node-execution/ssh.md)):
+#### Server Identity Settings
+
+| Property | Description | When to Set |
+|----------|-------------|-------------|
+| `framework.server.hostname` | Hostname of this Rundeck server | Set during installation, important for clusters |
+| `framework.server.name` | Display name for this server | Optional, helpful in multi-server setups |
+| `framework.server.url` | Base URL for Rundeck | **Must match `grails.serverURL`** |
+| `framework.server.username` | API username (if needed) | Rarely used, for CLI tools |
+| `framework.server.password` | API password (if needed) | Rarely used, for CLI tools |
+| `rundeck.server.uuid` | Manual server UUID | Only for cluster or licensing needs |
+
+#### Directory Paths
+
+| Property | Description | Default | When to Change |
+|----------|-------------|---------|----------------|
+| `framework.projects.dir` | Projects directory location | `$RDECK_BASE/projects` | Custom storage location |
+| `framework.var.dir` | Temp files and output | `$RDECK_BASE/var` | Custom storage location |
+| `framework.logs.dir` | Log file location | `$RDECK_BASE/var/logs` | Custom log location, separate disk |
+
+#### SSH Connection Settings
+
+**Configure these to connect to remote nodes via SSH.** See [SSH Node Execution](/manual/projects/node-execution/ssh.md) for details.
 
 - `framework.ssh.keypath`: Path to the SSH private key file used for SSH connections
 - `framework.ssh.user`: Default username for SSH Connections, if not overridden by Node specific value.
@@ -102,7 +229,7 @@ Other settings:
 
 - `rundeck.server.uuid`: This is used to manually specify the server UUID for certain cluster and licensing needs.
 - `framework.log.dispatch.console.format`: Default format for non-terse node execution logging run by the `dispatch` CLI tool.
-- `execution.script.tokenexpansion.enabled`: Whether inline script token expansion is enabled, default `true`. If `false`, the "Inline Script Content" syntax described in [User Guide - Creating Job Workflows - Context Variables](/manual/jobs/job-workflows.md#context-variables) is disabled.
+- `execution.script.tokenexpansion.enabled`: Whether inline script token expansion is enabled, default `true`. If `false`, the "Inline Script Content" syntax described in [Job Variables Reference](/manual/jobs/job-variables.md#inline-script-content) is disabled.
 - `communityNews.disabled`: Default is not set, or false. Disables the external polling of Community News feed. Link will persist but will not poll, and clicking this link will open a new browser tab and navigate to the web-based version of Community News.
 
 #### Static authentication tokens for API access:
@@ -233,16 +360,29 @@ specifies the use of the PropertyFileLoginModule:
 Property file user directory when PropertyFileLoginModule is
 used. Specified from [jaas-loginmodule.conf](#jaas-loginmodule-conf).
 
+---
+
 ## Session timeout
 
-Session Timeout Behavior:
+**Purpose:** Control how long users stay logged in before requiring re-authentication.
 
-- **Activity-based timeout**: Under normal operations, sessions time out based on inactivity using the value defined in `server.servlet.session.timeout` (default: 3600 seconds).
-- **Forced re-authentication**: When `rundeck.userSessionDuration.forceReauthentication` is enabled, sessions will expire after the duration defined in `rundeck.userSessionDuration.maxMinutes`, regardless of user activity.
-- **Default values**: When `rundeck.userSessionDuration.forceReauthentication` is enabled and `rundeck.userSessionDuration.maxMinutes` isn't specified, the default `userSessionDuration.maxMinutes` is 60 minutes.
+**Two timeout mechanisms:**
+
+1. **Activity-based timeout** (standard): Sessions end after period of inactivity
+2. **Forced re-authentication** (Enterprise): Sessions end after maximum duration regardless of activity
+
+### How Session Timeouts Work
+
+- **Activity-based timeout**: User sessions expire after inactivity period defined in `server.servlet.session.timeout` (default: 3600 seconds = 1 hour)
+- **Forced re-authentication**: When enabled, sessions expire after `rundeck.userSessionDuration.maxMinutes` regardless of user activity
+- **Combined**: Both can work together - session expires at whichever limit is reached first
+
+**Choose your approach:**
+- **Activity-only (default):** Users stay logged in as long as they're active - good for interactive workflows
+- **Forced timeout (Enterprise):** Users must re-authenticate after set duration - good for compliance requirements
 
 :::tip
-Beware that using the forced re-authentication feature may result in data loss if jobs are not saved when the session is invalidated.
+**Warning:** Forced re-authentication may cause data loss if users have unsaved work when session expires. Consider longer timeouts or save prompts.
 :::
 
 ### Inactivity Timeout
@@ -277,13 +417,28 @@ rundeck.userSessionDuration.forceReauthentication=true
 # Force reauthentication regardless of activity with default 60-minute timeout
 rundeck.userSessionDuration.forceReauthentication=true
 ```
+---
+
 ## rundeck-config.properties
 
-This is the primary Rundeck webapp configuration file. Defines default
-loglevel, datasource configuration, and
-[GUI customization](/administration/configuration/gui-customization.md).
+**Purpose:** Primary Rundeck application configuration file.
 
-The following sections describe configuration values for this file.
+**What's configured here:**
+- Database connection
+- Security settings (sessions, authentication, HTTPS)
+- Email/SMTP settings
+- Execution behavior and limits
+- GUI customization
+- Feature flags and advanced options
+
+**Location:**
+- **RPM/DEB:** `/etc/rundeck/rundeck-config.properties`
+- **Launcher:** `$RDECK_BASE/server/config/rundeck-config.properties`
+- **Docker:** Use environment variables instead
+
+**Important:** Most changes require restarting Rundeck to take effect. Enterprise editions can use [Live Configuration Refreshing](#live-configuration-refreshing-commercial) for some properties.
+
+The sections below document all available properties grouped by category.
 
 #### Live Configuration Refreshing (Commercial)
 
@@ -308,53 +463,113 @@ Some of the properties that work with live reloading:
 
 ### Security
 
-- `rundeck.security.useHMacRequestTokens` : `true/false`. Default: `true`.
-  Switches between HMac based request tokens, and the default grails UUID
-  tokens. HMac tokens have a timeout, which may cause submitted forms or
-  actions to fail with a message like "Token has expired".
-  If set to false, UUIDs will be used instead of HMac tokens,
-  and they have no timeouts.
-  The default timeout for tokens can be changed with the java system property
-  `-Dorg.rundeck.web.infosec.HMacSynchronizerTokensHolder.DEFAULT_DURATION=[timeout in ms]`.
+Configure authentication, session management, and security policies.
 
-- `rundeck.security.apiCookieAccess.enabled`: `true/false`. Default: `true`.
-  Determines whether access to the API is allowed if the API client
-  authenticates via session cookies (i.e. username and password login.) If
-  set to `false`, the current CLI tools and API libraries will not operate
-  correctly if they use username and password login.
+#### Request Token Security
 
-- `rundeck.api.tokens.duration.max`: Duration string indicating maximum lifetime of API Tokens. If unset, the value
-  will be "30d" (30 days). Format: "##{ydhms}" (years, days, hours, minutes, seconds).
-  If you want to disable the max expiration you can set it to 0 and create token with 0 duration that don't expire.
+**Purpose:** Protects against CSRF (Cross-Site Request Forgery) attacks.
 
-- `rundeck.security.csrf.referer.filterMethod`:`NONE|POST|*`. Set HTTP Method to filter based on Referer header. Can be POST, or "\*" for all methods. Default: NONE (disabled)
+**Property:** `rundeck.security.useHMacRequestTokens`
+- **Default:** `true` (recommended)
+- **Options:** `true` (HMac tokens with timeout) or `false` (UUID tokens, no timeout)
 
-- `rundeck.security.csrf.referer.allowApi`: `true|false`. Allow /api/\* requests without requiring matching Referer header. Default: true.
+**When to change:** Only set to `false` if users frequently see "Token has expired" errors due to long idle times on forms.
 
-- `rundeck.security.csrf.referer.requireHttps`: `true|false`. If server URL is HTTPS, Require referer header to be from HTTPS version of server URL, if false allow HTTP as well. Default: true.
+**Advanced:** Adjust HMac timeout with JVM property:
+```
+-Dorg.rundeck.web.infosec.HMacSynchronizerTokensHolder.DEFAULT_DURATION=[milliseconds]
+```
 
-- `rundeck.security.enforceMaxSessions`: `true|false`. Only allow users to log in a configured number of times. Oldest sessions are automatically logged out. `Default: false`.
+#### API Authentication
 
-  Note: If you use the rd tool with the RD_USERNAME/RD_PASSWORD authentication this will use an active session each time your run the command. If you log into the
-  user interface then execute rd commands you could be logged out of your web session. If you have multiple long running rd commands and you exceed the maxSessions
-  limit, you may experience unexpected behavior. If you use api tokens with the rd tool it will not log out your interactive session. If you enable this setting and also
-  use the rd tool, it is recommended that you use api tokens with the rd tool.
+**Cookie-based API access**
 
-- `rundeck.security.maxSessions`: If enforceMaxSessions is true, this setting controls the number of active sessions a user is allowed to have. `Default: 1`
+**Property:** `rundeck.security.apiCookieAccess.enabled`
+- **Default:** `true`
+- **Purpose:** Allow API access using session cookies (username/password authentication)
 
-- `rundeck.feature.debug.showTracesOnResponse` : `true/false`. Default: `false`. The default behavior is to never return 5xx http responses with any stacktrace in it to hide specific information regarding the backend (stacktraces are only present on the log files).
+**When to disable:** If you want to force all API access to use API tokens only. **Warning:** Disabling breaks CLI tools using username/password.
 
-- `rundeck.security.jaasRolePrefix`: Prefix string to add to each _role_ determined via [JAAS Authentication](/administration/security/authentication.md#jetty-and-jaas-authentication). Default: none.
+**API Token Expiration**
 
-- `rundeck.security.requiredRole`: `roleName`. If this property is set, all users must be a member of the role specified.
+**Property:** `rundeck.api.tokens.duration.max`
+- **Default:** `30d` (30 days)
+- **Format:** `##{ydhms}` - years, days, hours, minutes, seconds
+- **Examples:** 
+  - `90d` - 90 days
+  - `1y` - 1 year
+  - `0` - Never expire (not recommended for security)
 
-- `rundeck.security.dblogin.enabled`: `true|false`. (Commercial) This option is enabled by default in version 3.3.0 to allow creation of local Rundeck users.  [More Info](/manual/user-management/user-mgmt.md#manage-local-users)
+**Security tip:** Set shorter expiration for compliance requirements (e.g., `7d` for weekly rotation).
 
-- `rundeck.security.dblogin.createAdminUserAndRoles`: `true|false`.  Enabling this feature adds the admin user and roles . (See `rundeck.security.dblogin.enabled`) Default is `false` so that no admin user or role is created by default.
+#### CSRF Protection
 
-- `rundeck.security.dblogin.adminUsername`: `[String]` The user name for the admin account that is created if the `createAdminUserAndRoles` value is set to *true*. Default is `rdadmin`.
+**Referer Header Validation**
 
-- `rundeck.security.dblogin.adminPassword`: `[String]` A password value for the admin user created above.  If this entry is left blank or missing a password will be generated on boot of Rundeck.  The printed message will look like this:
+| Property | Default | Options | Purpose |
+|----------|---------|---------|---------|
+| `rundeck.security.csrf.referer.filterMethod` | `NONE` | `NONE`, `POST`, `*` | Which HTTP methods require Referer header validation |
+| `rundeck.security.csrf.referer.allowApi` | `true` | `true`, `false` | Skip Referer check for `/api/*` endpoints |
+| `rundeck.security.csrf.referer.requireHttps` | `true` | `true`, `false` | Require HTTPS Referer if server URL is HTTPS |
+
+**When to configure:**
+- Set `filterMethod` to `POST` or `*` if using a reverse proxy
+- Set `requireHttps=false` if transitioning from HTTP to HTTPS
+
+#### Session Limits
+
+**Concurrent Session Control**
+
+**Purpose:** Prevent users from having too many active sessions simultaneously.
+
+| Property | Default | Description |
+|----------|---------|-------------|
+| `rundeck.security.enforceMaxSessions` | `false` | Enable session limit enforcement |
+| `rundeck.security.maxSessions` | `1` | Maximum concurrent sessions per user |
+
+**Important:** If enabled, the oldest session is automatically logged out when the limit is exceeded.
+
+**Using `rd` CLI tool?**
+- Username/password authentication uses sessions - may cause unexpected logouts
+- **Recommended:** Use API tokens with `rd` tool to avoid session conflicts
+- API token usage doesn't count against session limits
+
+#### Additional Security Settings
+
+| Property | Default | Description |
+|----------|---------|-------------|
+| `rundeck.feature.debug.showTracesOnResponse` | `false` | Show stack traces in 5xx errors (disable in production) |
+| `rundeck.security.jaasRolePrefix` | None | Prefix to add to roles from JAAS auth (e.g., `ROLE_`) |
+| `rundeck.security.requiredRole` | None | Require all users to have this role |
+
+**Security tip:** Keep `showTracesOnResponse=false` in production to avoid exposing internal details.
+
+#### Conditional Logic Feature
+
+**Early Access Feature**
+
+| Property | Default | Description |
+|----------|---------|-------------|
+| `rundeck.feature.earlyAccessJobConditional.enabled` | `false` | Enable Conditional Logic workflow steps (Early Access) |
+
+Enables dynamic conditional execution in workflows based on runtime conditions. When enabled, users can add Conditional Logic steps to jobs that evaluate conditions (job options, node attributes, job context) and execute substeps only when conditions are met. Requires Sequential or Parallel workflow strategy. See [Conditional Logic Steps](/manual/jobs/conditional-logic.md) for complete documentation.
+
+#### Local User Management (Enterprise)
+
+**Purpose:** Create and manage users directly in Rundeck's database (alternative to LDAP/SSO).
+
+| Property | Default | Description |
+|----------|---------|-------------|
+| `rundeck.security.dblogin.enabled` | `true` | Enable local user creation |
+| `rundeck.security.dblogin.createAdminUserAndRoles` | `false` | Auto-create admin user on startup |
+| `rundeck.security.dblogin.adminUsername` | `rdadmin` | Username for auto-created admin |
+| `rundeck.security.dblogin.adminPassword` | (generated) | Password for auto-created admin |
+
+**How it works:**
+1. Enable `dblogin.enabled=true`
+2. Optionally enable `createAdminUserAndRoles=true` for automatic admin creation
+3. If `adminPassword` is blank, a random password is generated and printed at startup:
+
 ```
 ************************************
 * YOUR GENERATED DB ADMIN PASSWORD *
@@ -364,20 +579,29 @@ Some of the properties that work with live reloading:
 * PLEASE LOGIN WITH THIS PASSWORD  *
 * AND CHANGE IT IMMEDIATELY        *
 ************************************
-
 ```
+
+**See also:** [User Management Guide](/manual/user-management/user-mgmt.md#manage-local-users)
 
 ### Security HTTP Headers
 
+**Purpose:** Add security headers to HTTP responses to protect against common web vulnerabilities.
+
+**What they protect against:**
+- **XSS (Cross-Site Scripting)** - Malicious scripts injected into pages
+- **Clickjacking** - Embedding Rundeck in malicious iframes
+- **MIME sniffing attacks** - Browser misinterpreting content types
+- **Cache-based attacks** - Sensitive data cached in browsers
+
+**Default behavior:** All security headers are enabled by default. You can customize or disable individual headers if needed for specific integrations or reverse proxy configurations.
+
 :::warning
-The HTTP header 'XSS-Protection' has been deprecated by modern browsers and it use can introduce additional security issues on the client side of the application. Rundeck has deprecated this setting as of version 4.3.0.
+**Deprecated:** The `X-XSS-Protection` header has been deprecated as of Rundeck 4.3.0. Modern browsers have deprecated this header as it can introduce additional security issues.
 :::
 
-Rundeck adds some HTTP headers for XSS prevention and other security reasons, as described below.
+#### Enabling/Disabling Security Headers
 
-By default, these headers are enabled, but they can be individually disabled, or reconfigured.
-
-Additionally, custom headers can be enabled if required.
+**Master switch:**
 
 ```properties
 # enable security headers filter to add these headers (default: true)
@@ -533,16 +757,41 @@ rundeck.primaryServerId=70a4af69-74d6-4319-b923-16eec8c742d3
 
 ### Execution Mode
 
-- `rundeck.executionMode`:`active/passive`. Default `active`. Set the Execution
-  Mode for the Rundeck server.
+**Purpose:** Control whether this Rundeck server can execute jobs.
 
-Rundeck can be in `active` or `passive` execution mode.
+**Property:** `rundeck.executionMode`
+- **Default:** `active`
+- **Options:** `active` or `passive`
 
-- `active` mode: Jobs, scheduled Jobs, and adhoc executions can be run.
-- `passive` mode: No Jobs or adhoc executions can be run.
+#### Mode Comparison
 
-Setting Rundeck to `passive` mode prevents users from running anything on the
-system and is useful when managing Rundeck server clusters.
+| Mode | Jobs Can Run | Scheduled Jobs | Ad-hoc Commands | When to Use |
+|------|--------------|----------------|-----------------|-------------|
+| `active` | Yes | Yes | Yes | Normal operation |
+| `passive` | No | No | No | Maintenance, cluster member removal, read-only access |
+
+#### Common Use Cases for Passive Mode
+
+**Cluster Management:**
+- Taking a cluster member offline for maintenance
+- Draining executions before shutdown
+- Temporarily disabling a cluster member
+
+**Maintenance Windows:**
+- Preventing new executions during database maintenance
+- Testing configuration changes without allowing execution
+- Read-only mode for auditing/review
+
+**Planned Decommissioning:**
+- Gracefully removing a server from a cluster
+- Migrating executions to other cluster members
+
+**How to change mode:**
+1. Edit `rundeck-config.properties` and set `rundeck.executionMode=passive`
+2. Restart Rundeck
+3. Or use CLI: [System Mode Documentation](/administration/maintenance/index.md)
+
+**Cluster note:** Each cluster member has its own execution mode. Set individual members to passive without affecting others.
 
 ### Project Configuration Storage settings
 
@@ -608,7 +857,38 @@ If the log file is larger than this value, the log viewer will display a "Whale 
 
 The default value for this property is 3MB.
 
+### Execution daily metrics
+
+**Purpose:** Record per-day execution aggregates into scheduled execution stats as executions complete. That data backs the stats-based mode of the [execution metrics API](/api/index.md#execution-query-metrics) (`useStats=true`, API v57+), which avoids scanning the execution table and is intended for large environments.
+
+| Property | Default | Description |
+|----------|---------|-------------|
+| `rundeck.executionDailyMetrics.enabled` | `false` | When `true`, daily metrics are updated when executions finish. Required for meaningful results when using `useStats=true` on the metrics API. |
+| `rundeck.feature.guiUseExecutionDailyMetrics.enabled` | `false` | When `true`, enables the `guiUseExecutionDailyMetrics` feature for the GUI so compatible views can use the stats-based metrics path. |
+
+**Collection window:** Metrics exist only for executions that complete after `rundeck.executionDailyMetrics.enabled` is turned on. Older executions are not backfilled into the daily aggregates.
+
+**Operational order:** Turn on `rundeck.executionDailyMetrics.enabled` first and allow executions to run so aggregates populate; then enable the GUI feature when your UI and plugins expect the stats-based flow.
+
+**Job Metrics UI plugin:** After you enable `rundeck.feature.guiUseExecutionDailyMetrics.enabled`, a Job Metrics UI plugin that still relies on the legacy metrics behavior may show all jobs as having no executions. That is expected until the plugin uses the updated stats-based API (`useStats=true`, API v57+).
+
+### Job Metrics and ROI Summary UI
+
+**Purpose:** Control visibility of the bundled Job Metrics and ROI Summary UI. These settings do not remove plugins from the installation; they stop the UI from loading those integrations.
+
+Set properties in `rundeck-config.properties`. Most deployments require a Rundeck restart for changes to take effect.
+
+| Property | Default | Description |
+|----------|---------|-------------|
+| `rundeck.plugin.jobmetrics.disabled` | `false` | When `true`, disables the Job Metrics UI. |
+| `rundeck.plugin.roisummary.disabled` | `false` | When `true`, disables the ROI Summary UI. |
+
 ### Metrics Capturing
+
+:::tip
+Note: Metrics capturing is only available in our Runbook Automation Self Hosted products.
+:::
+
 
 Rundeck captures metrics using the [Metrics](http://metrics.dropwizard.io/3.0.2/) library.
 
@@ -734,7 +1014,7 @@ java -Xms4g -Xmx8g -jar rundeck.war
 ```
 
 :::tip
-It is also possible to reconfigure the default path for files according to [this page](/developer/14-file-upload-plugins.md#about) using the property in this form:
+It is also possible to reconfigure the default path for files according to [this page](/developer/file-upload-plugins.md#about) using the property in this form:
 
 `framework.plugin.FileUpload.filesystem-temp.basePath=/desired/path`
 

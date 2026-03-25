@@ -190,6 +190,13 @@ rundeck.clusterMode.remoteExecution.config.groupWeight=1,0,0,0
 rundeck.clusterMode.remoteExecution.config.groupWeight=4,3,2
 ```
 
+**Other criteria available for the Load Balancing policy**
+
+ - `threadRatio`: Ratio of scheduler threads in use (default first criterion).
+ - `load`: System load normalized by CPU count (default second criterion).
+ - `systemLoadAverage`: Raw system load average exposed by the member.
+ - `processors`: CPU core count for weighting/normalization.
+
 ### Cluster Remote Execution with Secure Options
 
 When forwarding executions which include [Secure Options](/manual/jobs/job-options.md#secure-options), option values will be delivered

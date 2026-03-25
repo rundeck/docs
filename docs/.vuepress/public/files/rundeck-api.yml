@@ -21,7 +21,7 @@ info:
   license:
     name: Apache 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0.html
-  version: "56"
+  version: "57"
 externalDocs:
   description: Original Rundeck API Documentation
   url: https://docs.rundeck.com/docs/api/
@@ -43,7 +43,7 @@ servers:
       default: "4440"
     version:
       description: API version number
-      default: '56'
+      default: '57'
 security:
 - rundeckApiToken: []
 - rundeckPassword: []
@@ -2202,6 +2202,22 @@ paths:
           - scheduled
           - user
           - user-scheduled
+      - name: useStats
+        in: query
+        description: "if true, use snapshot-based metrics from SCHEDULED_EXECUTION_STATS\
+          \ table (fast, returns empty metrics (all zeros) if no stats exist). if\
+          \ false or not provided, use execution table query (slow, always returns\
+          \ data). Since: v57"
+        schema:
+          type: boolean
+      - name: groupByJob
+        in: query
+        description: "if true with useStats=true, returns metrics for all jobs in\
+          \ the project (batch mode). Requires project parameter. Returns format:\
+          \ {jobs: {uuid1: metrics, uuid2: metrics, ...}}. RUN-3768 Phase 5. Since:\
+          \ v57"
+        schema:
+          type: boolean
       - name: max
         in: query
         description: "maximum number of results to include in response. (default:\
@@ -5321,6 +5337,22 @@ paths:
           - scheduled
           - user
           - user-scheduled
+      - name: useStats
+        in: query
+        description: "if true, use snapshot-based metrics from SCHEDULED_EXECUTION_STATS\
+          \ table (fast, returns empty metrics (all zeros) if no stats exist). if\
+          \ false or not provided, use execution table query (slow, always returns\
+          \ data). Since: v57"
+        schema:
+          type: boolean
+      - name: groupByJob
+        in: query
+        description: "if true with useStats=true, returns metrics for all jobs in\
+          \ the project (batch mode). Requires project parameter. Returns format:\
+          \ {jobs: {uuid1: metrics, uuid2: metrics, ...}}. RUN-3768 Phase 5. Since:\
+          \ v57"
+        schema:
+          type: boolean
       - name: max
         in: query
         description: "maximum number of results to include in response. (default:\
@@ -13170,10 +13202,6 @@ components:
         errorCount:
           type: integer
           format: int32
-        objectName:
-          type: string
-        nestedPath:
-          type: string
         globalErrorCount:
           type: integer
           format: int32
@@ -13190,6 +13218,10 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/FieldError"
+        objectName:
+          type: string
+        nestedPath:
+          type: string
         allErrors:
           type: array
           items:
@@ -13891,6 +13923,8 @@ components:
       - properties:
           errors:
             $ref: "#/components/schemas/Errors"
+          scheduleEnabledFilter:
+            type: boolean
           sortBy:
             type: string
           sortOrder:
@@ -13915,8 +13949,6 @@ components:
           idlist:
             type: string
           scheduledFilter:
-            type: boolean
-          scheduleEnabledFilter:
             type: boolean
           executionEnabledFilter:
             type: boolean

@@ -10,10 +10,13 @@ Use this section to edit Project Settings like the name, various defaults and en
 ### Details
 Edit the Project Name and Description.
 
-### Execution History Clean
-When enabled this setting will clean out old executions to help keep your data clean.
+### Execution History Cleaner
+
+Automatically removes old execution records based on configurable retention policies. The Execution History Cleaner is the recommended way to maintain a clean, performant execution history.
 
 ![Execution History Clean](/assets/img/execution-history-clean.png)
+
+For comprehensive documentation on how to configure and use the Execution History Cleaner, see [Execution History Cleaner](/manual/projects/execution-history-cleaner.md).
 
 ### Execution Mode
 Used to manage job execution and schedule configuration at project level.  If there is a need to disable all job executions for this project, or disabled all scheduled jobs (but still run manually) use the check boxes in this section.

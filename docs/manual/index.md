@@ -82,6 +82,12 @@ Manage your user profile, preferences, and personal settings.
 
 [View Profile Menu →](/manual/10-user.md)
 
+## NextUI (Modern UI)
+
+NextUI lets you use newly migrated or updated UI pages across the product. These pages are built with Vue 3 and can be more performant than the legacy interface. They remain under NextUI while we finish polish and gather feedback—you may see it on jobs, activity, project pages, and elsewhere as we modernize.
+
+[Learn more about NextUI →](/manual/nextui.md)
+
 ## Integrations
 
 Connect Rundeck with external platforms and services for enhanced automation workflows.

@@ -91,6 +91,9 @@ The following properties can optionally be set in the WinRM Node Executor and Wi
 * **`WinRM Port`**: The WinRM port to use. The default is port 5985.  This can be overridden on nodes with `winrm-port`. <br><br>
 * **`WinRM Username`**: Optional username. The username can be set at node level (using the attribute `username`) or at job level (using an input option called `username`). <br><br>
 * **`Certificate Path`**: The path for SSL verification. This can be overridden on nodes with `winrm-certpath`. <br><br>
+  :::warning Important
+  `winrm-certpath` expects a **file system path** (e.g., `/opt/rundeck/certs/certificate.pem`), **NOT** a Rundeck Key Storage path (e.g., `keys/project/...`). The certificate path is passed directly to the pywinrm library without Key Storage resolution. The certificate file must be in PEM format and readable by the Rundeck user on the Enterprise Runner or Rundeck server.
+  :::
 * **`Connect/Read Times Out`**: The maximum seconds to wait before an HTTP connect/read times out (default 30). This value should be slightly higher than operation timeout, as the server can block *at least* that long. This can be overridden on nodes with `winrm-readtimeout`. <br><br>
 * **`Proxy`**: Optionally specify a proxy address for communicating with Windows nodes. Example HTTP proxy strings are `http://server:port` and `http://user:pass@server:port`. An example SOCKS5 proxy string is `socks5://user:pass@server:port`.<br><br>
 * **`Operation Timeout`**: The maximum allowed time in seconds for any single wsman HTTP operation (default 20). Note that operation timeouts while receiving output will be silently retried indefinitely. This can be overridden on nodes with `winrm-operationtimeout`.<br><br>

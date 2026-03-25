@@ -1,7 +1,7 @@
 # Webhooks
 
 ## Webhooks
-Webhooks are an industry standard way for internet applications to communicate with each other.  Rundeck Webhooks are an entry point to automation with Rundeck.  A Webhook can be configured to accept incoming payloads and trigger Rundeck Job(s).  Webhook events are handled by [Webhook Event](/developer/16-webhook-plugins.md) Rundeck plugins.
+Webhooks are an industry standard way for internet applications to communicate with each other.  Rundeck Webhooks are an entry point to automation with Rundeck.  A Webhook can be configured to accept incoming payloads and trigger Rundeck Job(s).  Webhook events are handled by [Webhook Event](/developer/webhook-plugins.md) Rundeck plugins.
 
 
 ## Webhook Administration
@@ -37,7 +37,7 @@ It is possible to regenerate the Authorization String by clicking the **Regenera
 
 ### Webhook Handlers
 
-Webhook Event Handlers are custom handlers that can be developed as [Rundeck Plugins](/developer/16-webhook-plugins.md) to interact with external systems.
+Webhook Event Handlers are custom handlers that can be developed as [Rundeck Plugins](/developer/webhook-plugins.md) to interact with external systems.
 They can respond to authentication calls, pre-process inputs, and provide configuration defaults for specific systems.
 
 Rundeck includes the following Webhook Handlers:

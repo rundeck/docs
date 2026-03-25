@@ -65,7 +65,16 @@ async function main() {
   console.log(`Comparing versions: ${fromVersion} → ${toVersion}\n`);
   
   // Check if toVersion tag exists by attempting to fetch from main repos
-  const gh = new Octokit({ auth: process.env.GH_API_TOKEN });
+  // Use a quiet Octokit instance to avoid noisy 404 logs during tag detection
+  const gh = new Octokit({ 
+    auth: process.env.GH_API_TOKEN,
+    log: {
+      debug: () => {},
+      info: () => {},
+      warn: () => {},
+      error: () => {}
+    }
+  });
   let tagExists = false;
   let useHead = false;
   
@@ -79,6 +88,7 @@ async function main() {
         tag: tag
       });
       tagExists = true;
+      console.log(`✓ Found release tag: ${tag}\n`);
       break;
     } catch (error) {
       if (error.status !== 404) {
@@ -90,6 +100,7 @@ async function main() {
             ref: `tags/${tag}`
           });
           tagExists = true;
+          console.log(`✓ Found git tag: ${tag}\n`);
           break;
         } catch (refError) {
           // Continue to next format
@@ -101,22 +112,34 @@ async function main() {
   // Determine behavior based on tag existence and mode
   if (!tagExists) {
     if (argv.draft) {
-      console.log(`\nWarning: Tag ${toVersion} not found, using HEAD for preview\n`);
+      console.log(`⚠ Tag ${toVersion} not found, using HEAD for preview\n`);
       useHead = true;
     } else {
-      console.error(`\nERROR: Tag ${toVersion} not found.`);
-      console.error(`       Create the tag first or use --draft mode to preview with HEAD.\n`);
-      console.log(`Continuing with empty results to create placeholder file...\n`);
-      // Continue execution but with empty results
+      console.log(`⚠ Tag ${toVersion} not found - creating placeholder file without PR data`);
+      console.log(`  Tip: Use --draft mode to preview with HEAD, or create the tag first.\n`);
+      // Continue execution but skip PR fetching
     }
   }
   
   const context = {};
-  context.core = await getRepoData({ repo: 'rundeck', owner: 'rundeck' }, fromVersion, toVersion, ['release-notes/include'], useHead);
-  context.enterprise = await getRepoData({ repo: 'rundeckpro', owner: 'rundeckpro' }, fromVersion, toVersion, ['release-notes/include'], useHead);
-  context.docs = await getRepoData({ repo: 'docs', owner: 'rundeck' }, fromVersion, toVersion, [], useHead); // No label filtering for docs (need all PRs for contributors)
-  context.ansible = await getRepoData({ repo: 'ansible-plugin', owner: 'rundeck-plugins' }, fromVersion, toVersion, ['release-notes/include'], useHead);
-  context.runner = await getRepoData({ repo: 'sidecar', owner: 'rundeckpro' }, fromVersion, toVersion, ['release-notes/include'], useHead);
+  
+  // Skip PR fetching if tag doesn't exist and not in draft mode
+  const skipPRs = !tagExists && !useHead;
+  
+  if (skipPRs) {
+    console.log('Skipping PR fetching (tag not found, not in draft mode)\n');
+    context.core = { contributors: {}, pulls: [] };
+    context.enterprise = { contributors: {}, pulls: [] };
+    context.docs = { contributors: {}, pulls: [] };
+    context.ansible = { contributors: {}, pulls: [] };
+    context.runner = { contributors: {}, pulls: [] };
+  } else {
+    context.core = await getRepoData({ repo: 'rundeck', owner: 'rundeck' }, fromVersion, toVersion, ['release-notes/include'], useHead);
+    context.enterprise = await getRepoData({ repo: 'rundeckpro', owner: 'rundeckpro' }, fromVersion, toVersion, ['release-notes/include'], useHead);
+    context.docs = await getRepoData({ repo: 'docs', owner: 'rundeck' }, fromVersion, toVersion, [], useHead); // No label filtering for docs (need all PRs for contributors)
+    context.ansible = await getRepoData({ repo: 'ansible-plugin', owner: 'rundeck-plugins' }, fromVersion, toVersion, ['release-notes/include'], useHead);
+    context.runner = await getRepoData({ repo: 'sidecar', owner: 'rundeckpro' }, fromVersion, toVersion, ['release-notes/include'], useHead);
+  }
   context.contributors = { ...context.core.contributors, ...context.docs.contributors, ...context.ansible.contributors };
 
   context.version = new RundeckVersion({ versionString: argv.milestone });
@@ -155,12 +178,22 @@ async function main() {
 
   // Only run update functions if not a draft
   if (!argv.draft) {
-    updateDocsearchVersion(argv.milestone);
+    console.log('\n=== Updating Configuration Files ===\n');
+    // Turning off docsearch update for version specific page
+    // updateDocsearchVersion(argv.milestone);
     updateSetupJs(argv.milestone);
     addSidebarVersion(argv.milestone);
     updateLatestReleaseLink(argv.milestone);
     updateNavbarReleaseLink(argv.milestone);
     updatePRFeedConfig(argv.milestone);
+    
+    console.log('\n✓ Successfully generated release notes and updated all configuration files!');
+    console.log(`  File: ${outPath}`);
+    if (!tagExists && !useHead) {
+      console.log('\n  Note: PR data not included (tag not found). Re-run after creating the tag to populate PR details.');
+    }
+  } else {
+    console.log(`\n✓ Draft release notes generated: ${outPath}`);
   }
 }
 
@@ -236,7 +269,16 @@ function updateNavbarReleaseLink(version) {
 }
 
 async function getRepoData(repo, fromVersion, toVersion, includeLabels, useHead = false) {
-  const gh = new Octokit({ auth: process.env.GH_API_TOKEN });
+  // Use quiet logging to avoid noisy 404 errors during tag format attempts
+  const gh = new Octokit({ 
+    auth: process.env.GH_API_TOKEN,
+    log: {
+      debug: () => {},
+      info: () => {},
+      warn: () => {},
+      error: () => {}
+    }
+  });
 
   console.log(`Fetching PRs from ${repo.owner}/${repo.repo}...`);
   
@@ -295,22 +337,22 @@ async function getRepoData(repo, fromVersion, toVersion, includeLabels, useHead 
 })();
 
 
-function updateDocsearchVersion(version) {
-  const docsearchConfigPath = path.resolve(__dirname, '../../.docsearch/config.json');
-  const docsearchConfig = JSON.parse(fs.readFileSync(docsearchConfigPath, 'utf-8'));
-  if (
-    docsearchConfig.start_urls &&
-    docsearchConfig.start_urls[0] &&
-    docsearchConfig.start_urls[0].variables &&
-    Array.isArray(docsearchConfig.start_urls[0].variables.version)
-  ) {
-    docsearchConfig.start_urls[0].variables.version[2] = version;
-    fs.writeFileSync(docsearchConfigPath, JSON.stringify(docsearchConfig, null, 2));
-    console.log(`Updated .docsearch/config.json version to ${version}`);
-  } else {
-    console.warn('Could not update .docsearch/config.json: version array not found.');
-  }
-}
+// function updateDocsearchVersion(version) {
+//   const docsearchConfigPath = path.resolve(__dirname, '../../.docsearch/config.json');
+//   const docsearchConfig = JSON.parse(fs.readFileSync(docsearchConfigPath, 'utf-8'));
+//   if (
+//     docsearchConfig.start_urls &&
+//     docsearchConfig.start_urls[0] &&
+//     docsearchConfig.start_urls[0].variables &&
+//     Array.isArray(docsearchConfig.start_urls[0].variables.version)
+//   ) {
+//     docsearchConfig.start_urls[0].variables.version[2] = version;
+//     fs.writeFileSync(docsearchConfigPath, JSON.stringify(docsearchConfig, null, 2));
+//     console.log(`Updated .docsearch/config.json version to ${version}`);
+//   } else {
+//     console.warn('Could not update .docsearch/config.json: version array not found.');
+//   }
+// }
 
 function updateSetupJs(version) {
   const setupJsPath = path.resolve(__dirname, 'setup.js');

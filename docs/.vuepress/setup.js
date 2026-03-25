@@ -1,13 +1,13 @@
 import { BaseTransition } from "vue"
 
-const RUNDECK_VERSION='5.18.0'
-const RUNDECK_VERSION_FULL='5.18.0-SNAPSHOT'
-const API_VERSION='56'
+const RUNDECK_VERSION='5.19.0'
+const RUNDECK_VERSION_FULL='5.19.0-SNAPSHOT'
+const API_VERSION='57'
 const API_DEP_REL='6.0.0'
 const API_DEP_VER='17'
 const API_MIN_VER='14'
 const CLI_VERSION='2.0.8'
-const GPG_KEY_DATE='20250102'
+const GPG_KEY_DATE='20260105'
 
 const REPO_BRANCH='4.0.x'
 const rundeckVersionFull = process.env.RUNDECK_VERSION_FULL || RUNDECK_VERSION_FULL
