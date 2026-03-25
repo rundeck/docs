@@ -3499,7 +3499,10 @@ Since: v46
 Request parameters:
 
 * `meta` - Comma-separated list of metadata item names to include, or "*" for all (default)
-* `metaExclude` - (**API v58+**, ignored for lower API versions in the request URL) Optional comma-separated list of metadata component names to omit after resolving `meta`. If `meta` contains `*`, the effective set is all registered job metadata names minus these entries. If `meta` is an explicit list, each name in `metaExclude` is removed from that list. Omit the parameter to keep the previous behavior.
+
+**Additional Parameters (API v58+):**
+
+* `metaExclude` - Optional comma-separated list of metadata component names to omit after resolving `meta`. Requires API v58 or higher in the request URL; if the URL uses a lower API version, this parameter is ignored. If `meta` contains `*`, the server expands `*` to the union of all registered job metadata component names, then removes excluded names (the literal `*` is not treated as a component name). If `meta` is an explicit list, each name in `metaExclude` is removed from that list. Omit the parameter to keep the previous behavior.
 
 **Response:**
 
@@ -5551,11 +5554,14 @@ Since: v46
 Query Parameters:
 * `path` - Group path root, or blank for the root
 * `meta` - Comma-separated list of metadata items to include, or "*" for all
-* `metaExclude` - (**API v58+**, ignored for lower API versions in the request URL) Optional comma-separated list of metadata component names to omit after resolving `meta`. If `meta` contains `*`, the server expands `*` to all names from registered job metadata components, then drops excluded names. If `meta` is an explicit list, excluded names are removed from that list. Omit the parameter to keep the previous behavior.
 * `breakpoint` - Breakpoint, max number of jobs to load with metadata, if more results than the 
 breakpoint are available, no metadata will be loaded
 
 * Additional query parameters, see [Listing Jobs](#listing-jobs).
+
+**Additional Parameters (API v58+):**
+
+* `metaExclude` - Optional comma-separated list of metadata component names to omit after resolving `meta`. Requires API v58 or higher in the request URL; if the URL uses a lower API version, this parameter is ignored. If `meta` contains `*`, the server expands `*` to the union of all registered job metadata component names, then removes excluded names (the literal `*` is not treated as a component name). If `meta` is an explicit list, excluded names are removed from that list. Omit the parameter to keep the previous behavior.
 
 **Response**
 
