@@ -1,7 +1,7 @@
 ---
 title: Recent Updates
 description: Latest merged changes from the Rundeck development team
-date: 2026-03-09T21:10:20.760Z
+date: 2026-03-25T19:32:28.084Z
 feed: true
 index: true
 ---
@@ -14,6 +14,27 @@ This page shows recently merged pull requests from both the Runbook Automation p
 
 ## Recent Changes
 
+
+#### ::circle-dot:: Add metaExclude for the endpoint browse/job meta API and skip retrieval of execution stats in job list page when NextUi=true  [PR #10026](https://github.com/rundeck/rundeck/pull/10026)
+
+
+  - **API v58**: Optional **`metaExclude`** query parameter for **jobs browse** and **job meta** endpoints: comma-separated metadata names to omit after resolving **`meta`** (when **`meta`** includes **`*`**, names are taken from all registered job metadata components, then exclusions are applied).
+  - **Next UI / job browse**: Browse and lazy job meta requests now omit **`stats`** by default via **`metaExclude=stats`**, improving job list load time on instances with very large execution history.
+
+#### ::circle-dot:: Fix bug where editing a step deletes log filters previously added  [PR #10025](https://github.com/rundeck/rundeck/pull/10025)
+
+
+  - Fixed a bug in nextUi mode, where editing steps could remove existing **log filters**.
+
+#### ::circle-dot:: Add Filename to Runner API output 
+
+
+  Include the filename in the API output for Runner creation.
+
+#### ::circle-dot:: Add Dutch (nl_NL) UI translations and locale wiring  [PR #9983](https://github.com/rundeck/rundeck/pull/9983)
+
+
+  Rundeck now supports Dutch (nl_NL) as a user interface language. Users can select Dutch from their profile settings to view Jobs, Activity, Notifications, Nodes, Storage, Webhooks, and Project Configuration screens in Dutch, making Rundeck more accessible to Dutch-speaking teams.
 
 #### ::circle-dot:: Fix command injection vulnerability in exec commands with ${option.name}  [PR #10003](https://github.com/rundeck/rundeck/pull/10003)
 
@@ -56,6 +77,6 @@ The development updates are automatically generated from both our private reposi
 
 ---
 
-**List Last updated:** 2026-03-09
+**List Last updated:** 2026-03-25
 
 
