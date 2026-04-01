@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import { viteBundler } from '@vuepress/bundler-vite';
 import { defineUserConfig, Page } from 'vuepress';
 import { hopeTheme } from "vuepress-theme-hope";
