@@ -156,7 +156,7 @@ These settings can only be set on Runbook Automation Self Hosted versions
 
 **Available in Rundeck 5.16.0+**
 
-Rundeck uses HikariCP for database connection pooling with default settings that work well for most installations. You typically only need to adjust these settings if you experience:
+Rundeck uses Tomcat JDBC for database connection pooling with default settings that work well for most installations. You typically only need to adjust these settings if you experience:
 
 - Connection pool exhaustion errors in logs
 - Database timeout or "waiting for connection" errors  
@@ -165,36 +165,55 @@ Rundeck uses HikariCP for database connection pooling with default settings that
 
 #### When to tune connection pool settings
 
-The default pool size of 10 connections is sufficient for:
-- Small to medium installations (< 30 concurrent jobs)
-- Development and testing environments
-- Single-user or small team usage
+The default pool size of 100 connections (maxActive) is sufficient for most installations, including:
+- Small to large installations (up to several hundred concurrent jobs)
+- Development, testing, and production environments
+- Most typical usage patterns
 
 Consider tuning if you have:
-- High concurrent job execution (50+ jobs running simultaneously)
-- Large Rundeck clusters with multiple active users
+- Very high concurrent job execution (200+ jobs running simultaneously)
+- Very large Rundeck clusters with many active users
 - Jobs that hold database connections for extended periods
-- Database monitoring showing connection wait times
+- Database monitoring showing connection wait times or pool exhaustion
+- Your database server has connection limits that require reducing maxActive
 
 #### Configuration properties
 
 Add these properties to `rundeck-config.properties` to adjust your connection pool:
 
 ```properties
-# Maximum number of connections in the pool (default: 10)
-dataSource.properties.maximumPoolSize=50
+# Maximum number of active connections in the pool (default: 100)
+dataSource.properties.maxActive=50
 
-# Minimum number of idle connections (default: same as maximumPoolSize)
-dataSource.properties.minimumIdle=10
+# Initial number of connections created when pool starts (default: 10)
+dataSource.properties.initialSize=10
+
+# Minimum number of idle connections maintained in the pool (default: 10)
+dataSource.properties.minIdle=10
+
+# Maximum number of idle connections in the pool (default: 100)
+dataSource.properties.maxIdle=25
 
 # Maximum wait time for connection in milliseconds (default: 30000)
-dataSource.properties.connectionTimeout=30000
+dataSource.properties.maxWait=30000
 
-# Maximum lifetime of a connection in milliseconds (default: 1800000 = 30 minutes)
-dataSource.properties.maxLifetime=1800000
+# Maximum lifetime of a connection in milliseconds (default: no limit)
+dataSource.properties.maxAge=1800000
 
-# Maximum idle time before connection removal in milliseconds (default: 600000 = 10 minutes)
-dataSource.properties.idleTimeout=600000
+# Validation query to test connections (recommended for production)
+dataSource.properties.validationQuery=SELECT 1
+
+# Test connections before borrowing from pool (default: false)
+dataSource.properties.testOnBorrow=true
+
+# Test idle connections periodically (default: false)
+dataSource.properties.testWhileIdle=true
+
+# Interval between idle connection validation runs in milliseconds (default: 5000)
+dataSource.properties.timeBetweenEvictionRunsMillis=5000
+
+# Minimum time a connection must be idle before eviction in milliseconds (default: 60000)
+dataSource.properties.minEvictableIdleTimeMillis=60000
 ```
 
 #### Sizing guidance
@@ -202,18 +221,18 @@ dataSource.properties.idleTimeout=600000
 **Start conservatively:** Begin with small increases (e.g., 20-30 connections) and monitor performance.
 
 **Formula for sizing:**  
-`maximumPoolSize ≈ (expected concurrent jobs × 2) + 10`
+`maxActive ≈ (expected concurrent jobs × 2) + 10`
 
 **Examples:**
-- 50 concurrent jobs → set to 110
-- 100 concurrent jobs → set to 210  
-- 200 concurrent jobs → set to 410
+- 50 concurrent jobs → set maxActive to 110
+- 100 concurrent jobs → set maxActive to 210  
+- 200 concurrent jobs → set maxActive to 410
 
 **Memory consideration:** Each database connection consumes memory. Monitor your JVM heap usage when increasing pool size and adjust the [Java heap size](#java-heap-size) accordingly if needed.
 
 **Database limits:** Ensure your database server is configured to handle the total number of connections from all Rundeck instances in your cluster.
 
-For complete HikariCP configuration options, see the [HikariCP documentation](https://github.com/brettwooldridge/HikariCP#configuration-knobs-baby).
+For complete Tomcat JDBC pool configuration options, see the [Tomcat JDBC documentation](https://tomcat.apache.org/tomcat-9.0-doc/jdbc-pool.html).
 
 ### JMX instrumentation
 
