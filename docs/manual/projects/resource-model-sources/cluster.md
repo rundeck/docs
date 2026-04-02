@@ -47,6 +47,10 @@ framework.ssh.user=rundeck
 framework.ssh.keypath=/var/lib/rundeck/.ssh/id_rsa
 ```
 
+:::tip SSH Authentication
+SSH authentication settings can be overridden using node attributes such as `ssh-key-storage-path` or `username`. See [SSH Node Execution](/manual/projects/node-execution/ssh.md) for configuration options and precedence.
+:::
+
 See [Configuration File Reference](/administration/configuration/config-file-reference.md#frameworkproperties) for more details on framework properties.
 
 ## Node Attributes
