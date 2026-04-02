@@ -2,6 +2,7 @@
 node_modules
 docs/.vuepress/dist
 .temp
+temp/
 .cache
 
 # local env files

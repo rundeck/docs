@@ -5,31 +5,86 @@ order: 44
 
 ## **Security Advisory: Command Injection in Job Options Due to Incomplete Escaping**
 
-A security vulnerability has been identified in Rundeck where certain shell control characters in user supplied values for job options are not properly escaped, potentially allowing for command injection. Exploitation requires valid credentials with privilege to run a job that has options with a vulnerable configuration where input restrictions (validation) are either not configured, or are overly permissive.
+A security vulnerability has been identified in Rundeck where shell control characters in user supplied values for job options are not properly escaped when used with `${option.name}` syntax in exec commands, potentially allowing for command injection. Exploitation requires valid credentials with privilege to run a job that has options with a vulnerable configuration where input restrictions (validation) are either not configured, or are overly permissive.
 
-Rundeck provides multiple ways to control the risk of command injection in job options, including allow-lists, validation with regular expressions, and escaping known shell control characters. The backtick character (`) is missing from the list of known shell control characters for *nix operating systems, and escaping for Windows operating systems is not implemented. We recommend making use of input restrictions (validation) as a preferred option whenever possible.
+Rundeck provides multiple ways to control the risk of command injection in job options, including allow-lists, validation with regular expressions, and escaping known shell control characters. However, the quoting logic was checking for property references AFTER variable replacement, which meant shell control characters (including backticks, pipes, command substitution, and others) were not being escaped even when they should have been.
 
-A fix for the backtick escaping issue will be included in a future Rundeck release.
+This vulnerability has been fixed in Rundeck 5.20.0.
 
 ## **Description**
 
-Rundeck's job option escaping mechanism fails to properly escape backtick characters (`) in quoted job options. This allows command injection/substitution attacks when job options are used directly in command execution without sufficient input validation. The vulnerability can be exploited in certain scenarios:
+Rundeck's job option escaping mechanism failed to properly escape shell control characters when job options were used with `${option.name}` syntax in exec commands. The root cause was that the quoting decision was made AFTER variable replacement, which meant the code checked if the replaced string contained `${...}` (which it didn't, since it was already replaced). This caused the quoting logic to be skipped entirely, allowing shell control characters to be interpreted by the shell.
 
-* **Single Parameter Jobs**: Command injection using backticks when the parameter doesn't contain whitespace
-* **Multi-Parameter Jobs**: Payload splitting across parameters to bypass whitespace restrictions 
+**Vulnerable Characters:**
+
+All shell control characters were exploitable:
+- `|` (pipe)
+- `&&` `||` (logical operators)
+- `$()` (command substitution)
+- `;` (command separator)
+- `>` `>>` `<` (redirection)
+- `` ` `` (backticks)
+- `&` (background)
+- `*` (wildcards)
+- `{` `}` (brace expansion)
+
+**Exploitation Scenarios:**
+
+* **Exec Commands**: Command injection using any shell control character in option values with `${option.name}` syntax
 * **Script-based Jobs**: Command injection in bash scripts using `@option.option1@` syntax with `$(command)` or backtick substitution
-* **Windows Environments**: No specific escaping implemented for Windows, allowing potential command injection in batch scripts and environment variable-based whitespace bypasses
+* **Windows Environments**: No specific escaping implemented for Windows, allowing potential command injection in batch scripts
 
-The vulnerability may be exploited when jobs are configured without input validation mechanisms such as regex patterns or allowed value lists, or if the regex patterns are overly permissive.
+The vulnerability could be exploited when jobs were configured without input validation mechanisms such as regex patterns or allowed value lists, or if the regex patterns were overly permissive.
 
+## **Technical Details**
+
+**Root Cause:**
+
+The vulnerability was introduced in Rundeck v3.4.1 when quoting logic was changed. The critical flaw was that the quoting decision was made AFTER variable replacement:
+
+1. Command is tokenized: `["echo", "Scanning port: ${option.port}"]`
+2. Variables are replaced: `["echo", "Scanning port: 80 | whoami"]`
+3. Code checks if replaced string contains `${...}` → NO (because it's already replaced)
+4. `shouldQuote = false` → No quoting applied
+5. Shell interprets `| whoami` as a pipe command → **Command injection successful**
+
+**The Correct Fix (v5.20.0):**
+
+Track which arguments contain property references BEFORE replacement, then use those flags AFTER replacement:
+
+1. Command is tokenized: `["echo", "Scanning port: ${option.port}"]`
+2. **Track property references**: `[false, true]` (second argument contains `${...}`)
+3. Variables are replaced: `["echo", "Scanning port: 80 | whoami"]`
+4. Use tracked flag: `shouldQuote = true` (because original had `${...}`)
+5. Quoting applied: `echo 'Scanning port: 80 | whoami'` → **Shell treats as literal string**
+
+**Example Attack:**
+
+Before the fix, an authenticated user could execute arbitrary commands:
+
+```bash
+# Job definition
+exec: echo "Scanning port: ${option.port}"
+
+# Attacker provides option value
+port: 80 | whoami
+
+# Executed command (vulnerable)
+echo Scanning port: 80 | whoami
+# Result: "Scanning port: 80" echoed, then whoami executed
+
+# After fix (v5.20.0)
+echo 'Scanning port: 80 | whoami'
+# Result: Entire string "Scanning port: 80 | whoami" echoed literally
+```
 
 ## **Impact**
 
 **Affected Versions:**
 
-* [Currently supported Rundeck versions](/history/release-calendar.md) through 5.13.0
-* Unsupported versions from 3.3.0 forward
-* Versions prior to 3.3.0 have not been evaluated and may be affected
+* Rundeck versions 3.4.1 through 5.19.0
+* The vulnerability was introduced in v3.4.1 when quoting logic was changed
+* Fixed in version 5.20.0
 
 **Scope:**
 
@@ -48,14 +103,30 @@ The vulnerability may be exploited when jobs are configured without input valida
 
 ## **Patches**
 
-A fix for the escaping issues is being developed and will be included in a future Rundeck release.
+This vulnerability has been fixed in **Rundeck 5.20.0** (released March 2026).
 
-**Immediate Mitigation Steps:**
+**The Fix:**
+
+The fix correctly tracks which command arguments contain property references (`${option.name}`) BEFORE variable replacement, then uses those tracked flags to determine which arguments need shell escaping AFTER replacement. This ensures that shell control characters in option values are properly escaped.
+
+**Feature Flag:**
+
+A feature flag `rundeck.feature.exec.quoting.enabled` has been added for backwards compatibility. By default, quoting is **enabled** (secure by default). To disable quoting (not recommended - leaves system vulnerable):
+
+```properties
+# In framework.properties (NOT RECOMMENDED)
+rundeck.feature.exec.quoting.enabled=false
+```
+
+**Breaking Change Risk:** Very low. Only affects jobs that intentionally use shell features in option values (e.g., wildcards, command substitution), which are security anti-patterns themselves.
+
+**Upgrade Recommendation:**
+
+Upgrade to Rundeck 5.20.0 or later immediately. After upgrading:
 
 1. **Review Job Configurations**: Audit existing jobs that use job options in command or script execution
-2. **Implement Input Validation**: Add regex validation patterns to job options to restrict allowed characters
-3. **Use Structured Inputs**: Configure job options with predefined allowed values where possible
-4. **Apply Least Privilege**: Ensure Rundeck service accounts have minimal necessary permissions
+2. **Test Critical Jobs**: Verify jobs work as expected with the new escaping behavior
+3. **Update Anti-patterns**: If any jobs intentionally used shell features in option values, move that logic to Script steps with proper input validation
 
 ## **Workarounds**
 
@@ -85,11 +156,11 @@ If you have any questions or comments about this advisory:
 
 **Is this really a vulnerability if Rundeck is designed for command execution?**
 
-While Rundeck is indeed a command execution platform, the failure to properly escape backticks in quoted job options represents a deviation from expected security behavior. The "quoted" option type is specifically designed to provide escaping, and users should be able to rely on this protection.
+While Rundeck is indeed a command execution platform, the failure to properly escape shell control characters in job option values represents a security vulnerability. When users provide option values through the UI or API, they expect those values to be treated as data, not executable code. The vulnerability allowed authenticated users to break out of the intended command structure and execute arbitrary commands.
 
 **What's the difference between this and the "unquoted" job option feature?**
 
-The unquoted job option feature is intentionally designed to allow command injection and is clearly documented with security warnings. The vulnerability affects the "quoted" job option type, which is expected to provide protection against injection attacks.
+The unquoted job option feature is intentionally designed to allow shell expansion and is clearly documented with security warnings. This vulnerability affected the default behavior where option values should be treated as literal data, not as shell commands.
 
 :::warning
 Note: The "unquoted" job option feature should **only be used when absolutely necessary** and [with full awareness of security implications](/manual/jobs/job-options.html#using-non-escaped-values).
@@ -98,12 +169,14 @@ Note: The "unquoted" job option feature should **only be used when absolutely ne
 
 **How can I identify vulnerable job configurations in my environment?**
 
-Look for jobs that:
+If you are running Rundeck versions 3.4.1 through 5.19.0, look for jobs that:
 
-* Use job options in command execution (`${option.optionname}`)
+* Use job options in exec command execution (`${option.optionname}`)
 * Use job options in script templates (`@option.optionname@`)
 * Lack regex validation patterns on job options
 * Don't use structured input types (allowed values, etc.)
+
+These jobs are vulnerable to command injection. Upgrade to 5.20.0 or later to fix the vulnerability.
 
 **What permissions are needed to exploit this vulnerability?**
 
@@ -115,8 +188,17 @@ An attacker needs:
 
 **How can I monitor for potential exploitation attempts?**
 
-Monitor Rundeck logs for:
+If running vulnerable versions (3.4.1 through 5.19.0), monitor Rundeck logs for:
 
-* Job executions with unusual option values containing backticks or command substitution syntax
+* Job executions with unusual option values containing shell control characters (pipes, backticks, command substitution syntax, etc.)
 * Failed job executions that might indicate injection attempts
 * Unexpected command outputs or system behavior following job executions
+
+**What was the timeline for fixing this vulnerability?**
+
+* **July 2025**: Vulnerability initially reported
+* **March 5, 2026**: First fix attempt merged (PR #10003) - but did not actually fix the vulnerability due to checking for property references after replacement
+* **March 11, 2026**: Correct fix merged (PR #10010) - properly tracks property references before replacement
+* **March 2026**: Fixed version 5.20.0 released
+
+The initial fix attempt failed because it checked whether the replaced string contained `${...}` patterns, but after replacement those patterns were already gone, so no quoting was applied. The correct fix tracks which arguments originally contained property references before replacement occurs.

@@ -157,7 +157,7 @@ Extend Rundeck functionality:
 - [Database](/administration/configuration/database/) - Verify connection strings
 - [Storage Facility](/administration/configuration/storage-facility.md) - Migrate key storage if needed
 - Test authentication and authorization
-- For Enterprise: Explore [System Configuration UI](/administration/configuration/system-configuration.md)
+- For Enterprise: Explore [System Configuration UI](/manual/configuration-mgmt/configmgmt.md)
 
 ### Scenario: Security Hardening
 
@@ -171,7 +171,7 @@ Extend Rundeck functionality:
 5. [Audit Stream Plugin](/administration/security/audit-stream-plugin.md) (Enterprise) - Send audit logs to SIEM
 
 **Also review:**
-- [Key Storage](/administration/security/key-storage.md) - Secure credential management
+- [Key Storage](/manual/key-storage/) - Secure credential management
 - [System Properties](/administration/configuration/system-properties.md) - Disable unnecessary features
 
 ---
@@ -193,7 +193,7 @@ Extend Rundeck functionality:
 | Topic | Description | Edition |
 |-------|-------------|---------|
 | [Docker Configuration](/administration/configuration/docker) | Environment variables, volumes, and Docker-specific settings | All |
-| [System Configuration](/administration/configuration/system-configuration.md) | GUI-based configuration interface | Enterprise |
+| [System Configuration](/manual/configuration-mgmt/configmgmt.md) | GUI-based configuration interface | Enterprise |
 | [Cluster Configuration](/administration/cluster/) | High-availability cluster setup | Enterprise |
 
 ### Enterprise Features
@@ -234,7 +234,7 @@ Extend Rundeck functionality:
 4. Default values
 
 **Getting Help:**
-- Check [Troubleshooting Guide](/administration/maintenance/troubleshooting.md)
+- Check [Troubleshooting Guide](/learning/howto/troubleshooting.md)
 - Review [Rundeck Logs](/administration/maintenance/logs.md)
 - Search [Rundeck Discussions](https://github.com/rundeck/rundeck/discussions)
 - Contact [PagerDuty Rundeck Support](https://support.pagerduty.com)
@@ -247,6 +247,6 @@ After completing initial configuration:
 
 1. **[Create Your First Project](/manual/projects/)** - Set up projects to organize jobs
 2. **[Configure Node Sources](/manual/projects/resource-model-sources/)** - Add servers/nodes to manage
-3. **[Create Jobs](/manual/creating-jobs.md)** - Define automation workflows
+3. **[Create Jobs](/manual/jobs/creating-jobs.md)** - Define automation workflows
 4. **[Set Up Access Control](/administration/security/authorization.md)** - Configure user permissions
 5. **[Configure Integrations](/learning/solutions/)** - Connect to external systems
