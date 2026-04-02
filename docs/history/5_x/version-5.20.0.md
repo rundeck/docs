@@ -20,6 +20,7 @@ This release also enhances the user experience with a redesigned **Next UI setti
 
 <!-- <VidStack src="youtube/REPLACE" poster="https://img.youtube.com/vi/REPLACE/maxresdefault.jpg"/> -->
 
+
 ## Runbook Automation Updates
 
 ##### ::circle-dot:: Add Filename to Runner API output
@@ -45,9 +46,9 @@ Updated Apache Commons Lang library to the latest version (commons-lang3) to add
   
 Updated Jackson library to version 2.18.6 to address a security vulnerability (CWE-770) that could allow resource exhaustion, improving the overall security and stability of Rundeck.
 
-#####  ::circle-dot:: [Fix command injection vulnerability in exec commands with ${option.name}](https://github.com/rundeck/rundeck/pull/10010)
+#####  ::circle-dot:: [Fix command injection vulnerability in exec commands with ${option.name}](https://github.com/rundeck/rundeck/pull/10003)
   
-Fixed a critical command injection vulnerability in exec commands where shell control characters in job option values were not properly escaped. The final fix in [PR #10010](https://github.com/rundeck/rundeck/pull/10010) builds on the initial hardening from [PR #10003](https://github.com/rundeck/rundeck/pull/10003), ensuring `${option.name}` values are shell-escaped by default while providing a compatibility flag for edge cases. For more details, see the security advisory in `docs/history/cves/2025-07-option-escaping.md`.
+Fixed a critical command injection vulnerability in exec commands where shell control characters in job option values were not properly escaped, now protecting against malicious input by applying shell escaping to all `${option.name}` values by default while providing a compatibility flag for edge cases.
 
 #####  ::circle-dot:: [Add Dutch (nl_NL) UI translations and locale wiring](https://github.com/rundeck/rundeck/pull/9983)
   
