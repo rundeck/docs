@@ -14,7 +14,7 @@ feed:
 
 ## Overview
 
-Rundeck 5.20.0 introduces **Conditional Logic Steps**, an Early Access feature that brings intelligent decision-making directly into your workflows. Build dynamic automation that branches based on job options, node attributes, and runtime data without requiring external scripts or complex workarounds. Configure conditions using a visual editor with AND/OR logic, multiple operators, and support for both node-level and workflow-level execution.
+Rundeck 5.20.0 introduces **[Conditional Logic Steps](/manual/jobs/conditional-logic.md)**, an Early Access feature that brings intelligent decision-making directly into your workflows. Build dynamic automation that branches based on job options, node attributes, and runtime data without requiring external scripts or complex workarounds. Configure conditions using a visual editor with AND/OR logic, multiple operators, and support for both node-level and workflow-level execution.
 
 This release also enhances the user experience with a redesigned **Next UI settings modal** that makes it easier to discover and enable the modern interface, plus adds **Dutch language support** contributed by the community, expanding Rundeck's accessibility to Dutch-speaking teams worldwide.
 
