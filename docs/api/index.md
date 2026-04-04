@@ -3500,6 +3500,10 @@ Request parameters:
 
 * `meta` - Comma-separated list of metadata item names to include, or "*" for all (default)
 
+**Additional Parameters (API v58+):**
+
+* `metaExclude` - Optional comma-separated list of metadata component names to omit after resolving `meta`. Requires API v58 or higher in the request URL; if the URL uses a lower API version, this parameter is ignored. If `meta` contains `*`, the server expands `*` to the union of all registered job metadata component names, then removes excluded names (the literal `*` is not treated as a component name). If `meta` is an explicit list, each name in `metaExclude` is removed from that list. Omit the parameter to keep the previous behavior.
+
 **Response:**
 
 ```json
@@ -5554,6 +5558,10 @@ Query Parameters:
 breakpoint are available, no metadata will be loaded
 
 * Additional query parameters, see [Listing Jobs](#listing-jobs).
+
+**Additional Parameters (API v58+):**
+
+* `metaExclude` - Optional comma-separated list of metadata component names to omit after resolving `meta`. Requires API v58 or higher in the request URL; if the URL uses a lower API version, this parameter is ignored. If `meta` contains `*`, the server expands `*` to the union of all registered job metadata component names, then removes excluded names (the literal `*` is not treated as a component name). If `meta` is an explicit list, excluded names are removed from that list. Omit the parameter to keep the previous behavior.
 
 **Response**
 
