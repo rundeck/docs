@@ -5,35 +5,8 @@
     <link>https://docs.rundeck.com/docs</link>
     <description>Recent merged pull requests and development updates from Rundeck</description>
     <language>en-us</language>
-    <lastBuildDate>Mon, 09 Mar 2026 21:10:20 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 02 Apr 2026 17:27:23 GMT</lastBuildDate>
     <atom:link href="https://docs.rundeck.com/feeds/development.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Fix command injection vulnerability in exec commands with ${option.name}</title>
-      <link>https://docs.rundeck.com/docs/history/updates/</link>
-      <description>Fix command injection vulnerability in exec commands with ${option.name} (Merged: Mar 5, 2026)</description>
-      <pubDate>Thu, 05 Mar 2026 21:46:23 GMT</pubDate>
-      <guid isPermaLink="false">rundeck-pr-rundeck-10003</guid>
-    </item>
-    <item>
-      <title>Implement conditional workflow logic</title>
-      <link>https://docs.rundeck.com/docs/history/updates/</link>
-      <description>Implement conditional workflow logic (Merged: Mar 5, 2026)</description>
-      <pubDate>Thu, 05 Mar 2026 18:39:52 GMT</pubDate>
-      <guid isPermaLink="false">rundeck-pr-rundeckpro-4598</guid>
-    </item>
-    <item>
-      <title>Update to commons-lang3 for CVE-2025-48924</title>
-      <link>https://docs.rundeck.com/docs/history/updates/</link>
-      <description>Update to commons-lang3 for CVE-2025-48924 (Merged: Feb 19, 2026)</description>
-      <pubDate>Thu, 19 Feb 2026 22:33:08 GMT</pubDate>
-      <guid isPermaLink="false">rundeck-pr-rundeck-9990</guid>
-    </item>
-    <item>
-      <title>Improve Next Ui management</title>
-      <link>https://docs.rundeck.com/docs/history/updates/</link>
-      <description>Improve Next Ui management (Merged: Feb 17, 2026)</description>
-      <pubDate>Tue, 17 Feb 2026 21:22:01 GMT</pubDate>
-      <guid isPermaLink="false">rundeck-pr-rundeck-9981</guid>
-    </item>
+
   </channel>
 </rss>

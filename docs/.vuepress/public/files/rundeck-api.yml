@@ -21,7 +21,7 @@ info:
   license:
     name: Apache 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0.html
-  version: "57"
+  version: "58"
 externalDocs:
   description: Original Rundeck API Documentation
   url: https://docs.rundeck.com/docs/api/
@@ -43,7 +43,7 @@ servers:
       default: "4440"
     version:
       description: API version number
-      default: '57'
+      default: '58'
 security:
 - rundeckApiToken: []
 - rundeckPassword: []
@@ -2916,6 +2916,15 @@ paths:
         in: query
         description: "Comma-separated list of metadata item names to include, or \"\
           *\" for all (default)"
+        required: true
+        schema:
+          type: string
+      - name: metaExclude
+        in: query
+        description: "Since API v58: Comma-separated metadata names to omit. Ignored\
+          \ when the request API version is below 58. When set, if meta includes \"\
+          *\", \nit is expanded to all names from registered JobMetadataComponent\
+          \ beans, then exclusions are applied."
         required: true
         schema:
           type: string
@@ -6924,6 +6933,16 @@ paths:
         required: true
         schema:
           type: string
+      - name: metaExclude
+        in: query
+        description: "Since API v58: Comma-separated metadata names to omit. Ignored\
+          \ when the request API version is below 58. When set, if meta includes \"\
+          *\", \nit is expanded to all names from registered JobMetadataComponent\
+          \ beans, then exclusions are applied (literal \"*\" is not passed to loaders).\
+          \ \nFor an explicit meta list, excluded names are removed from that list."
+        required: true
+        schema:
+          type: string
       - name: breakpoint
         in: query
         description: "Breakpoint, max number of jobs to load with metadata, if more\
@@ -6944,10 +6963,19 @@ paths:
       summary: Project Job Group browse
       description: "Query the jobs at a specific group path. Response includes the\
         \ list of immediate jobs matching the query in the exact path, \nand the names\
-        \ of job Groups starting at that path.\n\nAuthorization required: `read` or\
-        \ `view` for the Jobs.\n\nSince: v46"
+        \ of job Groups starting at that path.\n\nQuery parameters `meta`, `metaExclude`,\
+        \ `breakpoint`, and `max` are the same as for the GET jobs browse endpoint.\
+        \ Since API v58, optional `metaExclude` omits metadata keys after resolving\
+        \ `meta` (including expanding `*`).\n\nAuthorization required: `read` or `view`\
+        \ for the Jobs.\n\nSince: v46"
       operationId: apiJobBrowse
       parameters:
+      - name: metaExclude
+        in: query
+        description: "Since API v58: Same as GET /project/{project}/jobs/browse. Ignored\
+          \ when the request API version is below 58."
+        schema:
+          type: string
       - name: project
         in: path
         description: Project name
@@ -12814,12 +12842,19 @@ components:
       properties:
         error:
           type: boolean
+          description: Always true to indicate an error response
         apiversion:
           type: integer
+          description: Rundeck / Runbook Automation API version number
           format: int32
+          example: 56
         errorCode:
           type: string
+          description: Error code (HTTP status or custom error code)
         message:
+          type: string
+          description: Human-readable error message
+        errorMessage:
           type: string
       description: Error Response
     ApiPluginListProvider:
@@ -12850,7 +12885,8 @@ components:
           type: object
           additionalProperties:
             type: string
-          description: "Map of metadata about the plugin if present. Since: v40"
+          description: "Map of metadata about the plugin if present. Includes groupBy\
+            \ and groupIconUrl from v57+. Since: v40"
         isHighlighted:
           type: boolean
           description: "Indication of whether the plugin is marked as highlighted.\
@@ -13202,9 +13238,12 @@ components:
         errorCount:
           type: integer
           format: int32
-        globalErrorCount:
-          type: integer
-          format: int32
+        allErrors:
+          type: array
+          items:
+            $ref: "#/components/schemas/ObjectError"
+        fieldError:
+          $ref: "#/components/schemas/FieldError"
         globalErrors:
           type: array
           items:
@@ -13222,12 +13261,9 @@ components:
           type: string
         nestedPath:
           type: string
-        allErrors:
-          type: array
-          items:
-            $ref: "#/components/schemas/ObjectError"
-        fieldError:
-          $ref: "#/components/schemas/FieldError"
+        globalErrorCount:
+          type: integer
+          format: int32
     EventRoutingResult:
       type: object
       properties:
@@ -13275,19 +13311,16 @@ components:
           type: string
           description: "since: v42"
     FieldError:
+      required:
+      - field
       type: object
-      allOf:
-      - $ref: "#/components/schemas/ObjectError"
-      - $ref: "#/components/schemas/DefaultMessageSourceResolvable"
-      - required:
-        - field
-        properties:
-          bindingFailure:
-            type: boolean
-          rejectedValue:
-            type: object
-          field:
-            type: string
+      properties:
+        rejectedValue:
+          type: object
+        bindingFailure:
+          type: boolean
+        field:
+          type: string
     HomeSummary:
       required:
       - execCount
@@ -13595,12 +13628,12 @@ components:
     LoginRoleData:
       type: object
       properties:
-        description:
-          type: string
         id:
           type: integer
           format: int64
         authority:
+          type: string
+        description:
           type: string
     Manifest:
       type: object
@@ -13673,6 +13706,9 @@ components:
         downloadTk:
           type: string
           description: Download token for retrieving Runner resources.
+        filename:
+          type: string
+          description: Filename for the downloadable runner JAR artifact
     NewRunnerResponse:
       type: object
       allOf:
@@ -13923,8 +13959,6 @@ components:
       - properties:
           errors:
             $ref: "#/components/schemas/Errors"
-          scheduleEnabledFilter:
-            type: boolean
           sortBy:
             type: string
           sortOrder:
@@ -13949,6 +13983,8 @@ components:
           idlist:
             type: string
           scheduledFilter:
+            type: boolean
+          scheduleEnabledFilter:
             type: boolean
           executionEnabledFilter:
             type: boolean
@@ -13987,6 +14023,9 @@ components:
         downloadTk:
           type: string
           description: Runner package download token
+        filename:
+          type: string
+          description: Filename for the downloadable runner JAR artifact
         replicaId:
           type: string
     RemoveExpiredTokens:

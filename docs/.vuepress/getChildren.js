@@ -1,4 +1,3 @@
-import _ from 'lodash'
 import fs from 'fs'
 import { globSync } from 'glob'
 import markdownIt from 'markdown-it'
@@ -28,9 +27,15 @@ const getChildren = function(parent_path, dir) {
             };
         });
 
-    // Return the ordered list of files, sort by 'order' then 'path'
-    const children = _.sortBy(files, ['order', 'path'])
-        .map(file => file.path);
+    // Return the ordered list of files, sort by 'order' then 'path' (undefined order last)
+    const children = [...files]
+        .sort((a, b) => {
+            const ao = a.order ?? Infinity
+            const bo = b.order ?? Infinity
+            if (ao !== bo) return ao - bo
+            return String(a.path).localeCompare(String(b.path))
+        })
+        .map(file => file.path)
 
     return children;
 };

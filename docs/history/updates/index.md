@@ -1,7 +1,7 @@
 ---
 title: Recent Updates
 description: Latest merged changes from the Rundeck development team
-date: 2026-03-09T21:10:20.760Z
+date: 2026-04-02T17:27:23.831Z
 feed: true
 index: true
 ---
@@ -10,32 +10,12 @@ index: true
 
 Stay up to date with the latest changes and improvements from the Runbook Automation development team.  
 
-This page shows recently merged pull requests from both the Runbook Automation product repository and the open source Rundeck repository merged since the last self-hosted release of [5.19.0](/history/5_x/version-5.19.0.md) on February 2, 2026.
+This page shows recently merged pull requests from both the Runbook Automation product repository and the open source Rundeck repository merged since the last self-hosted release of [5.20.0](/history/5_x/version-5.20.0.md) on April 1, 2026.
 
 ## Recent Changes
 
 
-#### ::circle-dot:: Fix command injection vulnerability in exec commands with ${option.name}  [PR #10003](https://github.com/rundeck/rundeck/pull/10003)
-
-
-  Fixed a critical command injection vulnerability in exec commands where shell control characters in job option values were not properly escaped, now protecting against malicious input by applying shell escaping to all `${option.name}` values by default while providing a compatibility flag for edge cases.
-
-#### ::circle-dot:: Implement conditional workflow logic 
-
-
-  Introduces backend support for Conditional Logic workflow steps, enabling dynamic workflow execution based on runtime conditions such as job options, node attributes, and prior step outputs.
-
-#### ::circle-dot:: Update to commons-lang3 for CVE-2025-48924  [PR #9990](https://github.com/rundeck/rundeck/pull/9990)
-
-
-  Updated Apache Commons Lang library to the latest version (commons-lang3) to address CVE-2025-48924, ensuring continued security and compatibility with modern Java standards.
-
-#### ::circle-dot:: Improve Next Ui management  [PR #9981](https://github.com/rundeck/rundeck/pull/9981)
-
-
-  A new settings modal replaces the previous theme dropdown, providing a unified interface for switching themes and toggling Next UI mode, with visual indicators and notifications to help users understand when Next UI is available and active. Administrators can optionally enable Next UI by default for all users via system configuration.
-
-
+*No new updates to report since the last release.*
 
 
 ## Subscribe to Updates
@@ -56,6 +36,6 @@ The development updates are automatically generated from both our private reposi
 
 ---
 
-**List Last updated:** 2026-03-09
+**List Last updated:** 2026-04-02
 
 

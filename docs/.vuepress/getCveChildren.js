@@ -1,4 +1,3 @@
-import _ from 'lodash'
 import fs from 'fs'
 import { globSync } from 'glob'
 import markdownIt from 'markdown-it'
@@ -62,12 +61,29 @@ const getCveChildren = function(parent_path, dir) {
     });
 
     // Sort each category
-    const sortedPinned = _.sortBy(pinnedFiles, ['order', 'path']);
-    
+    const sortedPinned = [...pinnedFiles].sort((a, b) => {
+        const ao = a.order ?? Infinity
+        const bo = b.order ?? Infinity
+        if (ao !== bo) return ao - bo
+        return String(a.path).localeCompare(String(b.path))
+    })
+
     // Sort CVE files by year DESC, then by number DESC (newest CVEs first)
-    const sortedCves = _.orderBy(cveFiles, ['cveYear', 'cveNumber'], ['desc', 'desc']);
-    
-    const sortedOthers = _.sortBy(otherFiles, ['order', 'path']);
+    const sortedCves = [...cveFiles].sort((a, b) => {
+        const ay = a.cveYear ?? 0
+        const by = b.cveYear ?? 0
+        if (ay !== by) return by - ay
+        const an = a.cveNumber ?? 0
+        const bn = b.cveNumber ?? 0
+        return bn - an
+    })
+
+    const sortedOthers = [...otherFiles].sort((a, b) => {
+        const ao = a.order ?? Infinity
+        const bo = b.order ?? Infinity
+        if (ao !== bo) return ao - bo
+        return String(a.path).localeCompare(String(b.path))
+    })
 
     // Combine: pinned files first, then CVEs, then other files
     const orderedFiles = [...sortedPinned, ...sortedCves, ...sortedOthers];

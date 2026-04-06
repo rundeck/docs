@@ -231,6 +231,7 @@ export default [{
             '/manual/projects/resource-model-sources/gcp-gke',
             '/manual/projects/resource-model-sources/kubernetes',
             '/manual/projects/resource-model-sources/builtin',
+            '/manual/projects/resource-model-sources/cluster',
             '/manual/projects/resource-model-sources/oracle',
             '/manual/projects/resource-model-sources/node-wizard',
             '/manual/projects/resource-model-sources/resource-editor',
