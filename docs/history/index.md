@@ -1,29 +1,53 @@
-# Release History
+# Release history
 
-## Most Recent Release Notes
+This section collects **version release notes** for Rundeck and Runbook Automation: what shipped, when, and highlights worth scanning before an upgrade.
 
-<p><RouterLink :to="`5_x/version-${$rundeckVersion}.md`">Our most recent release is {{ $rundeckVersion }}</RouterLink></p>
+## Supported versions vs. these pages
 
+[**Runbook Automation support**](/history/release-calendar.md) covers released versions for **up to one year** from the original release date. Anything outside that window is **out of support** for enterprise assistance—even if installers still run.
 
-Also check out the 4.0 release list of larger feature enhancements for our Enterprise and Open Source versions of Rundeck.
+Use the **[release calendar](/history/release-calendar.md)** to see which versions are supported today and to plan upgrades ahead of the one-year boundary.
 
-[Rundeck 5.0.0](5_x/version-5.0.0.md)
+::: tip Why keep older release notes?
+Archives here are **historical context**: when a feature appeared, what changed in a given minor release, or what to read before jumping several versions.
+:::
 
-## Version 5.x
-This list shows all the release notes the 5.x.y series [5.0.0 Release Notes](5_x/version-5.0.0.html)
+## Latest release (docs build)
 
-## Version 4.x
-This list shows all the release notes the 4.x.y series [4.0.0 Release Notes](4_x/version-4.0.0.html)
+The link below tracks **`RUNDECK_VERSION`** from the docs build (see project setup). It resolves to the correct major line (`5_x`, `6_x`, …) automatically.
 
-## Version 3.4.x
-This list shows all the release notes the 3.3.x series [3.4.0 Release Notes](3_4_x/version-3.4.0.html)
+<p><RouterLink :to="`/history/${String($rundeckVersion).split('.')[0]}_x/version-${$rundeckVersion}.md`">Release notes for {{ $rundeckVersion }}</RouterLink></p>
 
-## Version 3.3.x
-This list shows all the release notes in the 3.3.x series [3.3.0 Release Notes](3_3_x/version-3.3.0.html)
+For the authoritative **supported** list and dates, use the **[release calendar](/history/release-calendar.md)**.
 
-## Version 3.2.x
-This list shows all the release notes in the 3.2.x series [3.2.0 Release Notes](3_2_x/version-3.2.0.html)
+## Archives by release line
+
+Individual version pages live under each folder (for example `history/5_x/version-5.20.0.md`). Use your editor or repo search to browse a series; the calendar links many **5.x** entries explicitly.
+
+### Rundeck 6.x
+
+[6.0.0](/history/6_x/version-6.0.0.md) - Current major release version series.
+
+### Rundeck 5.x
+
+Entry point for the line: [5.0.0](/history/5_x/version-5.0.0.md). Additional versions follow the same `version-x.y.z.md` pattern in `history/5_x/`.
+
+### Rundeck 4.x
+
+Entry point: [4.0.0](/history/4_x/version-4.0.0.md). Further notes in `history/4_x/`.
+
+### Rundeck 3.4.x
+
+Entry point: [3.4.0](/history/3_4_x/version-3.4.0.md). Further notes in `history/3_4_x/`.
+
+### Rundeck 3.3.x
+
+Entry point: [3.3.0](/history/3_3_x/version-3.3.0.md). Further notes in `history/3_3_x/`.
+
+### Rundeck 3.2.x
+
+Entry point: [3.2.0](/history/3_2_x/version-3.2.0.md). Further notes in `history/3_2_x/`.
 
 ## Upgrading
 
-See [Upgrading to Rundeck](/upgrading/index.md) section for details about using this latest version.
+Step-by-step and version-specific guidance: **[Upgrading](/upgrading/index.md)**.

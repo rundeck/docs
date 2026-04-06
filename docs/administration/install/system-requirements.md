@@ -3,8 +3,8 @@
 | --- | ---------- | --- |
 | Operating Systems | **Supported**:<br>[Red Hat Enterprise 8+/Amazon 2+/Oracle Linux 8+](/administration/install/linux-rpm.md)<br>[Ubuntu 22.04.3+/Debian 11.8+](/administration/install/linux-deb.md)<br>[Windows Server 2019+](/administration/install/windows.md) | **Recommended**:<br>[Red Hat Enterprise 8+/Amazon 2+/Oracle Linux 8+](/administration/install/linux-rpm.md)<br>[Ubuntu 22.04.3+/Debian11.8+](/administration/install/linux-deb.md)<br>[Windows Server 2019+](/administration/install/windows.md) |
 | Server Profile | **Recommended**:<br>32GB RAM<br>(24GB JVM Heap)<br>8 CPUs per instance<br>*Equivalent to m4.2xlarge in AWS EC2*<br><br>**Minimum**:<br>16GB RAM<br>(12GB JVM Heap)<br>4 CPUs per instance<br>*Equivalent to m4.xlarge in AWS EC2* | <br><br><br><br><br><br><br>**Minimum**:<br>8GB RAM<br>(4GB JVM Heap)<br>2 CPUs per instance<br>*Equivalent to m4.large in AWS EC2*  |
-| [Database](#database) | **Supported**:<br>[MariaDB 10.11.6+/MySQL 8.0.35+](/administration/configuration/database/mysql.md)<br>[PostgreSQL 15.5+](/administration/configuration/database/postgres.md)<br>[Microsoft SQL Server 2022](/administration/configuration/database/mssql.md)<br>[Oracle 19c+](/administration/configuration/database/oracle.md) | **Recommended**:<br>[MariaDB 10.11.6+/MySQL 8.0.35+](/administration/configuration/database/mysql.md)<br> [PostgreSQL 15.5+](/administration/configuration/database/postgres.md)<br>[Microsoft SQL Server 2022](/administration/configuration/database/mssql.md)<br>[Oracle 19c+](/administration/configuration/database/oracle.md) |
-| [Java](#java) | [Java 11/17 runtime](#java) installed on each instance | [Java 11/17 runtime](#java) installed on each instance |
+| [Database](#database) | **Supported**:<br>[MariaDB 10.11.6+](/administration/configuration/database/mysql.md); MySQL [8.0.35+ or 8.4+](/administration/configuration/database/mysql.md)<br>[PostgreSQL 15.5+](/administration/configuration/database/postgres.md)<br>[Microsoft SQL Server 2022](/administration/configuration/database/mssql.md)<br>[Oracle 19c+](/administration/configuration/database/oracle.md) | **Recommended**:<br>[MariaDB 10.11.6+](/administration/configuration/database/mysql.md); MySQL [8.0.35+ or 8.4+](/administration/configuration/database/mysql.md)<br> [PostgreSQL 15.5+](/administration/configuration/database/postgres.md)<br>[Microsoft SQL Server 2022](/administration/configuration/database/mssql.md)<br>[Oracle 19c+](/administration/configuration/database/oracle.md) |
+| [Java](#java) | [Java 17 runtime](#java) installed on each instance | [Java 17 runtime](#java) installed on each instance |
 | [Log Store](#logstore) | **Recommended**:<br>[S3-compatible object store](/learning/howto/S3-minio.md#s3-or-minio-for-execution-logs) | File system or <br>[S3-compatible object store](/learning/howto/S3-minio.md#s3-or-minio-for-execution-logs) |
 | Install Method | [.rpm](/administration/install/linux-rpm.md)<br> [.deb](/administration/install/linux-deb.md)<br>[Java servlet (.war)](/administration/install/jar.md)<br>[Docker](/administration/install/docker.md) | [.rpm](/administration/install/linux-rpm.md)<br>[.deb](/administration/install/linux-deb.md)<br>[Java servlet (.war)](/administration/install/jar.md)<br>[Docker](/administration/install/docker.md) |
 | [Network Ports](#network-access) | 4443 (https)<br>4440 (http)<br>22 (Linux machines over SSH)<br>5985 (Windows machines over http)<br>5986 (Windows machines over https) | 4443 (https)<br>4440 (http)<br>22 (Linux machines over SSH)<br>5985 (Windows machines over http)<br>5986 (Windows machines over https) |
@@ -15,7 +15,9 @@
 
 Rundeck is a Java-Servlet based server and therefore requires the Java runtime.
 
-As of version 5.10.0, Java 11 or Java 17 runtime versions are supported (JRE). Java must be installed prior to running the install process. Ensure the JAVA\_HOME environment variable is defined properly in your environment before running the launcher. Installers will use the java found on your path. See [Setting JAVA\_HOME](/administration/maintenance/startup.md#setting-java_home) if you want to run a different version of java.
+As of **Rundeck 6.0.0**, **Java 17** is the **minimum** and **only supported** runtime (JRE) for production use. Java must be installed prior to running the install process. Ensure the JAVA\_HOME environment variable is defined properly in your environment before running the launcher. Installers will use the java found on your path. See [Setting JAVA\_HOME](/administration/maintenance/startup.md#setting-java_home) if you want to run a different installation of Java.
+
+Newer Java versions may run successfully but are **not yet validated** for Rundeck 6.0.0; official support for additional runtimes will be announced in a future release.
 
 Verify your Java version to check it meets the requirement:
 
@@ -26,9 +28,9 @@ $ java -version
 Example output (actual version numbers can vary)
 
 ```
-java version "11.0.7" 2020-04-14 LTS
-Java(TM) SE Runtime Environment 18.9 (build 11.0.7+8-LTS)
-Java HotSpot(TM) 64-Bit Server VM 18.9 (build 11.0.7+8-LTS, mixed mode)
+java version "17.0.10" 2024-01-16 LTS
+Java(TM) SE Runtime Environment (build 17.0.10+11-LTS-240)
+Java HotSpot(TM) 64-Bit Server VM (build 17.0.10+11-LTS-240, mixed mode, sharing)
 ```
 
 ::: warning Java Versions
@@ -36,9 +38,8 @@ Java HotSpot(TM) 64-Bit Server VM 18.9 (build 11.0.7+8-LTS, mixed mode)
 
 Sun/Oracle and other flavors of Java may work, but our team has limited capabilities to troubleshoot problems specific to those distributions. The [Azul Zulu Open JDK](https://www.azul.com/downloads/?package=jdk#zulu) is strongly recommended.
 
-- As of version 5.8.0 the [Enterprise Runner](/administration/runner/index.md) supports either Java 11 or Java 17 runtime (JRE).
-- As of version 5.10.0 the [Self Hosted RBA and Rundeck Open Source](/administration/runner/index.md) support either Java 11 or Java 17 runtime (JRE).
-- Building from source still requires Java 11 (JDK).
+- **Rundeck 6.0.0**: **Java 17** (JRE) is required for the Rundeck server (Runbook Automation Self-Hosted and Rundeck Open Source) and for [Enterprise Runner](/administration/runner/index.md) installations.
+- Building from source requires **Java 17** (JDK).
 
 :::
 

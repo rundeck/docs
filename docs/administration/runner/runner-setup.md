@@ -10,13 +10,15 @@ The new architecture is available with v4.11+ of Runbook Automation. The new arc
 
 ## Setup steps
 
-If the enterprise Runners are enabled you can skip setting the **`runner.enabled`** setting. If you have not enabled the Runner feature please do so by doing the following: Add the following property in rundeck-config.properties file and restart the Runbook Automation. This feature has been enabled on Docker installations since v4.5.0 and is also enabled by default for Runbook Automation:
+**Rundeck / Runbook Automation 6.0+** defaults **`rundeck.feature.runner.enabled`**, **`rundeck.feature.distributedAutomation.enabled`**, and **`rundeck.feature.runnerReplicas.enabled`** to **`true`** for self-hosted Enterprise. Skip the flags below unless you are on an **older** version or need to **override** a saved **`false`**.
 
-**`rundeck.feature.runner.enabled`** and set it to **`true`**.
+On **5.x** and earlier (or if Runners are off), add the following in **`rundeck-config.properties`** and restart. Docker has enabled **`runner.enabled`** since v4.5.0; SaaS enables Runner features by default.
 
-To use the latest features, be sure to add the following property in **System Configuration** as well:
+**`rundeck.feature.runner.enabled`** = **`true`**.
 
-**`rundeck.feature.distributedAutomation.enabled`** and set it to **`true`**.
+For distributed automation (runner tags, project runner UI, plugins on Runners), set:
+
+**`rundeck.feature.distributedAutomation.enabled`** = **`true`**.
 
 
 ## Upgrade Notes for customers previously using Runners before Runbook Automation version 4.11
@@ -25,5 +27,5 @@ This section applies only for installations that have deployed the previous gene
 
 If you are using the previous generation of Runners before v4.11, and want to enable the new architecture please review how the new architecture behaves - [Overview](/administration/runner/index.md), [Configuration](/administration/runner/runner-config.md) and [Usage](/administration/runner/using-runners/runner-using.md) of the new Runners before making changes. The new architecture uses Runner tags that are referenced in Jobs when selecting which Runners will carry out a task instead of relying on node filters hardcoded in the Runner configuration. Once reviewed, update the configuration of your Runners and the jobs using them with the following steps:
 
-1. Set **`rundeck.feature.distributedAutomation.enabled`** = true as described previously.
+1. Ensure **`rundeck.feature.distributedAutomation.enabled`** is **`true`** (default on **6.0+** unless overridden).
 2. Upgrade the Runners to the latest version.

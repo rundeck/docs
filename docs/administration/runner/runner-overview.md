@@ -37,13 +37,15 @@ The new architecture is available with v4.11+ of Runook Automation. The new arch
 
 ## Setup steps
 
-If the enterprise Runners are enabled you can skip setting the runner.enabled setting. If you have not enabled the Runner feature please do so by doing the following: Add the following property in rundeck-config.properties file and restart the Runbook Automation. This feature has been enabled on Docker installations since v4.5.0 and is also enabled by default for Runbook Automation:
+**Runbook Automation Self-Hosted 6.0+** defaults **`rundeck.feature.runner.enabled`**, **`rundeck.feature.distributedAutomation.enabled`**, and **`rundeck.feature.runnerReplicas.enabled`** to **`true`**. You usually only add these if you are on **5.x**, or if a prior admin set them to **`false`**.
+
+On older self-hosted installs, enable the Runner platform:
 
 `rundeck.feature.runner.enabled=true`
 
-To enable the new architecture, a new configuration feature flag was added to enable/disable the new UI components for managing and running jobs with Runners. The feature flag will turn on all the new UI and APIs. The flag can be added through  “Add config” n the System Configuration UI. Applying this setting does not require a restart of Runbook Automation.
+Turn on distributed automation (runner tags, project runner management, new Runner UI/APIs) via **System Configuration** (or config file). On **6.0+** this is already the default:
 
-`rundeck.feature.distributedAutomation.enabled = true`
+`rundeck.feature.distributedAutomation.enabled=true`
 
 
 ## Upgrade Notes for customers previously using Runners before Runbook Automation version 4.11
@@ -52,5 +54,5 @@ This section applies only for installations that have deployed the previous gene
 
 If you are using the previous generation of Runners before v4.11, and want to enable the latest Runner features:
 
-1. Set **`rundeck.feature.distributedAutomation.enabled`** = **`true`** as described previously.
+1. Ensure **`rundeck.feature.distributedAutomation.enabled`** is **`true`** (default on **6.0+** unless overridden).
 2. Upgrade the Runners to the latest version.

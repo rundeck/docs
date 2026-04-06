@@ -83,17 +83,16 @@ Some endpoints also support using a `format` query parameter to specify the expe
 
 ## XML support
 
-:::deprecated
+::: warning Rundeck 6.0 and later: JSON only
+**Rundeck 6.0+** serves the **REST API in JSON only**. **XML** request bodies and **`Accept: application/xml`** responses are **not supported**. The **`rundeck.feature.legacyXml.enabled`** flag has been **removed**—there is no configuration toggle to restore XML on the API.
 
-XML request and response support is *deprecated* and will be removed in a future release.
+Update clients to send and parse **JSON** (`Content-Type: application/json`, `Accept: application/json`). See [Upgrading to Rundeck 6.0](/upgrading/upgrading-to-6.0.md#rest-api-xml-removed-json-only) and [configuration reference](/administration/configuration/config-file-reference.md#feature-flags-removed-or-changed-rundeck-60).
 
-(This does not apply to "Document Formats" such as Jobs or Node resources.)
+**Document formats** (for example exporting or importing job definitions as XML files) are **not** the same as API content negotiation; those formats are described in their own sections.
 
-Legacy XML API behavior is not enabled by default, it can be enabled with a configuration flag:
+For **historical** XML API examples (Rundeck 5.x and earlier), see [previous documentation](/manual/old-docs.md).
 
-    rundeck.feature.legacyXml.enabled=true
-
-Please see [previous 4.x versions](/manual/old-docs.md) of the API documentation for reference to XML response formats.
+**Rundeck 5.x:** XML on the API was deprecated and off by default; it could be enabled with `rundeck.feature.legacyXml.enabled=true`. That option **does not exist** in **6.0**.
 :::
 
 ## Authentication

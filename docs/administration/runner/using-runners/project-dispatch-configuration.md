@@ -1,7 +1,7 @@
 # Project Dispatch Configuration
 
-:::warning System Configuration Required
-To use this feature, **`rundeck.feature.distributedAutomation.enabled`** must be set to **`true`** in **System Configuration**.
+:::warning System configuration
+**Rundeck 6.0+:** **`rundeck.feature.distributedAutomation.enabled`** is **`true` by default**. This page applies when distributed automation is **enabled**. If it was set to **`false`** in **System Configuration**, enable it to use the settings below. On **5.x**, you may need to set it to **`true`** explicitly.
 :::
 
 The Project Dispatch Configuration dictates project-level Runner behavior.

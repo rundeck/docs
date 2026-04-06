@@ -7,6 +7,7 @@ Specific instructions for upgrading to specific Rundeck versions is below.
 **When upgrading from multiple versions behind be sure to follow all interim upgrade steps.  For example: Going from 3.3.13 to 4.1 means reviewing the 3.4 and 4.0 notes as well.**
 :::
 
+- [Upgrade to Runbook Automation OnPrem 6.0 / Rundeck 6.0](upgrading-to-6.0.md)
 - [Upgrade to Runbook Automation OnPrem 5.0](upgrading-to-5.0.md)
 - [Upgrade to Runbook Automation OnPrem 4.8](upgrading-to-4.8.md)
 - [Upgrade to Runbook Automation OnPrem 4.1](upgrading-to-4.1.md)

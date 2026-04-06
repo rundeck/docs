@@ -9,6 +9,10 @@ The WinRM Check plugin provides a way to check the connection with a remote node
 The WinRM Check plugin is open source and available on [GitHub](https://github.com/rundeck-plugins/py-winrm-plugin).
 :::
 
+:::tip Python version
+PyWinRM-based steps require **Python 3.8+** on the process host (Rundeck server or **Enterprise Runner**). **Python 2 is not supported.** See [Upgrading to Rundeck 6.0](/upgrading/upgrading-to-6.0.md#py-winrm-plugin-python-38).
+:::
+
 ### WinRM Check Step
 
 ![WinRM Check Step](/assets/img/winrm-check-node-step.png)<br>
