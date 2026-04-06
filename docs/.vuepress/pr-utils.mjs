@@ -250,11 +250,42 @@ export function getPreviousVersion(version) {
     return `${major}.${minor - 1}.0`;
   }
   
-  // If major > 0, decrement major and assume previous ended at .17.0
+  // Major bump (e.g. 6.0.0 → prior line). Old releases used a fixed minor; use
+  // resolveNotesFromVersion() with docs RUNDECK_VERSION instead for accurate PR ranges.
   if (major > 0) {
     return `${major - 1}.17.0`;
   }
-  
+
   throw new Error(`Cannot decrement version: ${version}`);
+}
+
+/**
+ * Resolve the "from" version for release-notes PR scraping.
+ * For a new major (X.0.0), if docs still track the previous major in setup (RUNDECK_VERSION),
+ * use that value so notes span 5.20.0 → 6.0.0 instead of a stale hardcoded 5.17.0.
+ *
+ * @param {string} toVersion - Milestone (e.g. "6.0.0")
+ * @param {string} docsRundeckVersion - Typically setup.rundeckVersion from the docs build
+ * @param {string|null|undefined} explicitFrom - CLI --from-version when set
+ * @returns {string}
+ */
+export function resolveNotesFromVersion(toVersion, docsRundeckVersion, explicitFrom) {
+  if (explicitFrom) {
+    return explicitFrom;
+  }
+  const tp = toVersion.split('.').map(Number);
+  if (tp.length !== 3 || tp.some((n) => Number.isNaN(n))) {
+    throw new Error(`Invalid milestone: ${toVersion}. Expected X.Y.Z`);
+  }
+  const [maj, min, pat] = tp;
+  const sp = String(docsRundeckVersion || '')
+    .split('.')
+    .map(Number);
+  const isMajorMilestone = min === 0 && pat === 0;
+  const docsLooksPriorLine = sp.length === 3 && !sp.some(Number.isNaN) && sp[0] === maj - 1;
+  if (isMajorMilestone && docsLooksPriorLine) {
+    return docsRundeckVersion;
+  }
+  return getPreviousVersion(toVersion);
 }
 

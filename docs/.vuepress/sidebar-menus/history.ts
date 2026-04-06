@@ -6,7 +6,7 @@ export default [
   {
     text: 'Latest Release',
     collapsible: false,
-    link: '/history/5_x/version-5.20.0.md',
+    link: '/history/6_x/version-6.0.0.md',
   },
   {
     text: 'Recent Changes',
@@ -23,6 +23,12 @@ export default [
     link: '/history/',
     headerDepth: 1,
     children: [
+      {
+        text: '6.x',
+        collapsible: true,
+        link: '/history/',
+        children: getHistory('docs/history/', '6_x')
+      },
       {
         text: '5.x',
         collapsible: true,
@@ -82,6 +88,16 @@ export default [
     text: "Previous Version Docs",
     collapsible: true,
     children: [
+      {
+        text: 'Version 6.x',
+        collapsible: true,
+        children: [
+          {
+            text: "6.0.0",
+            link: "https://docs.rundeck.com/6.0.0/"
+          },
+        ]
+      },
       {
         text: 'Version 5.x',
         collapsible: true,
