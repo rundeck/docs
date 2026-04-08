@@ -18,7 +18,7 @@ Rundeck 5.20.0 introduces **[Conditional Logic Steps](/manual/jobs/conditional-l
 
 This release also enhances the user experience with a redesigned **Next UI settings modal** that makes it easier to discover and enable the modern interface, plus adds **Dutch language support** contributed by the community, expanding Rundeck's accessibility to Dutch-speaking teams worldwide.
 
-<!-- <VidStack src="youtube/REPLACE" poster="https://img.youtube.com/vi/REPLACE/maxresdefault.jpg"/> -->
+<VidStack src="youtube/9zUTWC5bTcg" poster="https://img.youtube.com/vi/9zUTWC5bTcg/maxresdefault.jpg"/>
 
 
 ## Runbook Automation Updates
