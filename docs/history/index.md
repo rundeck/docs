@@ -1,5 +1,9 @@
 # Release History
 
+::: danger Do Not Use 7.0.1-20260409 from Maven Central
+This version was erroneously released and is not a valid or tested release version.  We are working with Maven Central to try and get it removed.  Always check this page for the latest release information for offical GA releases.
+:::
+
 ## Most Recent Release Notes
 
 <p><RouterLink :to="`5_x/version-${$rundeckVersion}.md`">Our most recent release is {{ $rundeckVersion }}</RouterLink></p>
