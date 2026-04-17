@@ -27,15 +27,15 @@ Perform an HTTP POST to `/api/${v}/secure/generatepasswordreset/${username}`.  T
 
 ## Link Expiration
 
-Password reset links expire after a configurable duration. By default, links expire after **7 days**. Expired links return a 403 error, treated the same as invalid tokens.
+Password reset links expire after a configurable duration. By default, links expire after **7 days**. Expired links return an HTTP 403 (Forbidden) response, treated the same as invalid tokens.
 
 To change the expiration duration, set the following in `rundeck-config.properties` or *Configuration Management*:
 
-  `rundeck.security.dblogin.resetLink.maxDuration = <duration>`
+  `rundeck.security.dblogin.resetLink.maxDuration=<duration>`
 
 Supported duration formats: `7d` (days), `24h` (hours), `1440m` (minutes).
 
-If a user clicks an expired link, they will see a 403 error. An admin must generate a new reset link for them — there is no self-service resend flow.
+If a user clicks an expired link, they will see an HTTP 403 (Forbidden) response. An admin must generate a new reset link for them — there is no self-service resend flow.
 
 ## Notifying Users
 When email is configured for the Rundeck server, [as described here](/administration/configuration/email-settings.md), the feature will send the user an email containing a reset link. The user will click the link and be able to set their own password.
