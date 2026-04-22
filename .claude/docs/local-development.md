@@ -1,14 +1,14 @@
-## Local Development
+# Local Development
 
 VuePress 2 documentation site for Rundeck. Content lives in `docs/`, config in `docs/.vuepress/`.
 
-### Prerequisites
+## Prerequisites
 
 - Node.js 22.22.0 (managed via nvm — version pinned in `.nvmrc`)
 - Cloudsmith NPM token (`CLOUDSMITH_NPM_TOKEN`) for the internal registry at `npm.artifacts.pd-internal.com`
 - GitHub API token (`GH_API_TOKEN`) only needed for release notes generation
 
-### Setup
+## Setup
 
 ```shell
 nvm install && nvm use
@@ -23,7 +23,7 @@ rm .npmrc
 npm install
 ```
 
-### Running locally
+## Running locally
 
 ```shell
 npm run docs:dev        # dev server with hot reload
@@ -32,7 +32,7 @@ npm run docs:no-cache   # dev server, skip cache
 npm run docs:clean-dev  # dev server, clear cache first
 ```
 
-### Release notes
+## Release notes
 
 ```shell
 # Draft (safe, doesn't modify config files)
@@ -44,7 +44,7 @@ npm run notes -- --milestone=5.17.0
 
 Requires `GH_API_TOKEN` in a `.env` file at the repo root. PRs must have the `release-notes/include` label.
 
-### PR feed (SaaS development updates)
+## PR feed (SaaS development updates)
 
 ```shell
 npm run pr-feed
@@ -52,7 +52,7 @@ npm run pr-feed
 
 Regenerates RSS/Atom feeds and `docs/history/updates/index.md` for SaaS deployments not yet in a self-hosted release. See `.claude/docs/pr-feed.md` for details.
 
-### Troubleshooting
+## Troubleshooting
 
 ```shell
 # Clean reinstall

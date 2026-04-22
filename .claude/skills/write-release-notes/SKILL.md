@@ -43,12 +43,19 @@ npm run notes:draft -- --milestone=<X.Y.Z>
 
 ### Phase 2: Tag the release
 
+Only proceed when the user has confirmed the draft content. Split tag creation from pushing so the user can confirm each step.
+
+Create the local tag:
+
 ```bash
 git tag v<X.Y.Z>
-git push origin v<X.Y.Z>
 ```
 
-Only tag when the user has confirmed the draft content.
+Push the tag ONLY after the user explicitly confirms (Critical Rule: never push without explicit instruction):
+
+```bash
+git push origin v<X.Y.Z>
+```
 
 ### Phase 3: Generate final notes (updates configs)
 
@@ -83,6 +90,15 @@ git commit -m "Release notes for <X.Y.Z>"
 ```
 
 Do NOT push without the user's explicit instruction.
+
+### Phase 6: Push (only on explicit instruction)
+
+Once the user confirms, push the commit (and, if not already pushed, the tag):
+
+```bash
+git push
+git push origin v<X.Y.Z>   # if not already pushed in Phase 2
+```
 
 ## Version Auto-Detection
 

@@ -62,8 +62,9 @@ Then commit the generated files:
 git add docs/history/updates/index.md
 git add docs/.vuepress/public/feeds/
 git commit -m "Update SaaS deployment feed"
-git push
 ```
+
+Do not push to the remote without explicit user instruction — see `CLAUDE.md` Critical Rules.
 
 ### Updating the Configuration
 

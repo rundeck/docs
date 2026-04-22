@@ -1,20 +1,20 @@
-## Infrastructure
+# Infrastructure
 
-### CI/CD — GitHub Actions
+## CI/CD — GitHub Actions
 
 | Workflow | Trigger | Purpose |
 |---|---|---|
-| `check-milestone.yml` | PR open/sync/reopen on `4.0.x` | Enforces milestone on every PR |
-| `snyk-scan.yml` | PR + push | Snyk security scan; monitors default branch, blocks on high-severity vulns |
+| `check-milestone.yml` | `pull_request_target` (`opened`, `synchronize`, `reopened`, `milestoned`, `demilestoned`) on `4.0.x` | Enforces milestone on every PR |
+| `snyk-scan.yml` | `pull_request` + `push` | Snyk security scan; monitors default branch, blocks on high-severity vulns |
 | `update-pr-feed.yml` | `workflow_dispatch` | Updates PR feed config for a given RBA tag, regenerates feed files, opens a PR |
 
 Node.js version is pinned via `.nvmrc` (22.22.0); all workflows use `actions/setup-node@v4` with `node-version-file: '.nvmrc'`.
 
-### NPM Registry
+## NPM Registry
 
 Private registry at `npm.artifacts.pd-internal.com` (Cloudsmith). Configured in `.npmrc`. Requires `CLOUDSMITH_NPM_TOKEN` secret in CI and locally.
 
-### Deployment
+## Deployment
 
 Docs are published to `docs.rundeck.com` based on branch/tag naming:
 
@@ -26,7 +26,7 @@ Docs are published to `docs.rundeck.com` based on branch/tag naming:
 
 Maintenance branches for older versions follow the pattern `git checkout -b 3.2.8`.
 
-### Secrets
+## Secrets
 
 | Secret | Used by |
 |---|---|

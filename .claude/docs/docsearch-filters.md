@@ -105,5 +105,6 @@ To test the filters:
 - Clear localStorage and refresh if there are issues
 
 ### Component not visible
-- Ensure DocSearchFilters component is imported and placed in the layout
-- Check browser console for Vue component registration errors
+- Check the navbar injection logic in `docs/.vuepress/client.ts` (`injectDocSearchFiltersIntoNavbar()`)
+- Verify the `#docsearch-container` mount target exists in the rendered navbar DOM
+- Check the browser console for client-side mount or selector errors
