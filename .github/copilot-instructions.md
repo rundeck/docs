@@ -1,56 +1,26 @@
 # GitHub Copilot Instructions for Rundeck Documentation
 
-You are an AI assistant helping maintain the Rundeck documentation site.
+You are an AI assistant helping maintain the Rundeck documentation site (VuePress 2, published to `docs.rundeck.com`).
 
-## Project Context
-- This repository contains documentation for Rundeck, an open-source job scheduler and runbook automation tool
-- Documentation is primarily written in Markdown and organized by product versions
-- Documentation follows a specific structure with product versions, features, and administration guides
-- Documentation is built using VuePress 2 and the Hope Theme.
-- Never use emojis within content.  If absolutely necessary font awesome is available for page content.
+## Canonical Conventions
 
-## Key Documentation Guidelines
-- Use clear, concise language
-- Follow technical writing best practices
-- Include practical examples where appropriate
-- Ensure all code examples are properly formatted and functional
-- Maintain consistent terminology throughout the documentation
-- Use proper heading hierarchy (H1 > H2 > H3)
-- Include descriptive alt text for images
+All writing, markdown, content-structure, and tooling conventions for this repository are maintained in a single canonical location to prevent drift across AI tools:
 
-## Common Tasks
-- Creating new documentation pages
-- Updating existing documentation for new releases
-- Fixing formatting issues in Markdown files
-- Improving code examples
-- Enhancing clarity of technical explanations
-- Cross-referencing related documentation
+- **`CLAUDE.md`** (repo root) — project conventions index (symlinked as `AGENTS.md`)
+- **`.claude/docs/writing-style.md`** — voice, markdown rules, page structure, DocSearch architecture, content directory layout
+- **`.claude/docs/local-development.md`** — environment setup and dev server
+- **`.claude/docs/pr-feed.md`** — SaaS PR feed generator
+- **`.claude/docs/docsearch-filters.md`** — custom DocSearch section filter
+- **`.claude/docs/infrastructure.md`** — CI, deployment, secrets
 
-## Directory Structure
-- `/docs/` - Main documentation content
-- `/docs/manual/` - Core product documentation
-- `/docs/administration/` - Administration guides
-- `/docs/api/` - API documentation
-- `/docs/developer/` - Developer documentation
-- `/docs/learning/` - Tutorials and learning resources
+Read `CLAUDE.md` first; follow its references into `.claude/docs/` as needed.
 
-## Markdown Guidelines
-- Use ATX-style headers (`#` for H1, `##` for H2)
-- Code blocks should specify language for proper syntax highlighting
-- Use numbered lists for sequential steps
-- Use bullet points for non-sequential items
-- Tables should have headers and consistent column formatting
+## Critical Constraints (Quick Reference)
 
-## Search Setup
+- **Never use emojis in published content.** Font Awesome is available if decorative icons are strictly required.
+- **Use ATX-style headers only** (`#`, `##`, `###`); one H1 per page, no skipped levels.
+- **Every fenced code block declares its language.**
+- **Never hand-edit PR-derived content in generated files** under `docs/history/**/version-*.md` or `docs/history/updates/index.md` — fix the originating PR and re-run the generator.
+- **PRs for release notes MUST carry the `release-notes/include` label** and contain a `## Release Notes` section.
 
-### Architecture
-- **Search Provider**: Algolia DocSearch via `@vuepress/plugin-docsearch`
-- **Index Name**: `prod_rundeck_docs`
-- **Indexing**: Automated via CircleCI using `algolia/docsearch-scraper` Docker image
-- **Configuration Files**:
-  - `.docsearch/config.json` - Algolia scraper configuration (selectors, start URLs, faceting attributes)
-  - `docs/.vuepress/config.ts` - VuePress DocSearch plugin configuration (appId, apiKey, search parameters)
-- **Current Facets**: `version` (filters by docs version like "docs", "4.0.x") and `lang`
-- **Section-Based Filtering**: Uses `tags` attribute to enable filtering by documentation section (learning, manual, api, administration, developer, etc.)
-- **Indexing Strategy**: Tags are applied via URL patterns in `start_urls` to categorize content by documentation section
-- **Custom Implementation**: Section filter checkboxes can be added via custom search UI using Algolia InstantSearch or DocSearch customization
+Full detail and rationale in `.claude/docs/writing-style.md` and `CLAUDE.md`.
