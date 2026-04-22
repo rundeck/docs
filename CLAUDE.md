@@ -76,7 +76,7 @@ Invoke via the Skill tool: `Skill(skill_name="write-release-notes")`.
 
 ## Critical Rules
 
-1. **Never commit release-notes output in isolation.** The generated `docs/history/<major>_x/version-<X.Y.Z>.md` MUST be staged alongside `.docsearch/config.json`, `docs/.vuepress/setup.js`, `docs/.vuepress/sidebar-menus/history.ts`, `docs/.vuepress/navbar-menus/about.js`, and `docs/.vuepress/pr-feed-config.json`.
+1. **Never commit release-notes output in isolation.** The generated `docs/history/<major>_x/version-<X.Y.Z>.md` MUST be staged alongside `docs/.vuepress/setup.js`, `docs/.vuepress/sidebar-menus/history.ts`, `docs/.vuepress/navbar-menus/about.js`, and `docs/.vuepress/pr-feed-config.json`. Run `git status` after the generator to catch any other modified files and stage them too.
 2. **Never hand-edit PR-derived content in generated files.** Fix the PR description and re-run `npm run notes` / `npm run pr-feed`.
 3. **Never push to remote without explicit user instruction.**
 4. **Never bypass the `release-notes/include` label** — it is the single source of truth for customer-visible changes.

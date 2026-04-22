@@ -39,7 +39,7 @@ Human-authored reference material consulted by the agent and developers alike.
 | `docs/pr-feed.md` | Working on the SaaS PR feed generator (`npm run pr-feed`) or `pr-feed.mjs` |
 | `docs/docsearch-filters.md` | Modifying the DocSearch filter component or `.vuepress/plugins/docsearch-filters.ts` |
 
-Legacy paths at `dev-docs/DOCSEARCH_FILTERS_README.md` and `dev-docs/PR-FEED-README.md` are symlinks into `docs/` — the canonical copies live here.
+Legacy paths at `dev-docs/DOCSEARCH_FILTERS_README.md` and `dev-docs/PR-FEED-README.md` are symlinks into `.claude/docs/` — the canonical copies live here.
 
 ---
 

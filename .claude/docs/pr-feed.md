@@ -122,9 +122,6 @@ npm run pr-feed -- --days=7
 
 # Include specific section from PR descriptions
 npm run pr-feed -- --include-section="Customer Summary"
-
-# Different repository
-node ./docs/.vuepress/pr-feed.mjs --owner=rundeck --repo=rundeck
 ```
 
 ### Command-Line Options
@@ -136,7 +133,7 @@ node ./docs/.vuepress/pr-feed.mjs --owner=rundeck --repo=rundeck
 | `--labels` | `-l` | `release-notes/include` | Labels to include (space-separated) |
 | `--exclude-labels` | | `wip, do-not-publish` | Labels to exclude |
 | `--max-prs` | | `100` | Maximum number of PRs to fetch per repository |
-| `--include-section` | | `Release Notes` | Include specific section from PR body |
+| `--include-section` | | *(none)* | Include specific section from PR body. The `npm run pr-feed` script passes `--include-section="Release Notes"` by default; when invoking `pr-feed.mjs` directly, no default applies. |
 | `--output-dir` | | `docs/history/updates` | Output directory for markdown page |
 | `--help` | | | Show help message |
 

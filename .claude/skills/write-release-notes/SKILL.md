@@ -64,7 +64,6 @@ npm run notes -- --milestone=<X.Y.Z>
 ```
 
 This updates, in addition to the notes markdown:
-- `.docsearch/config.json` — search indexing version
 - `docs/.vuepress/setup.js` — version info
 - `docs/.vuepress/sidebar-menus/history.ts` — sidebar link
 - `docs/.vuepress/navbar-menus/about.js` — navbar link
@@ -84,10 +83,11 @@ git add docs/history/<major>_x/version-<X.Y.Z>.md
 git add docs/.vuepress/sidebar-menus/history.ts
 git add docs/.vuepress/navbar-menus/about.js
 git add docs/.vuepress/setup.js
-git add .docsearch/config.json
 git add docs/.vuepress/pr-feed-config.json
 git commit -m "Release notes for <X.Y.Z>"
 ```
+
+Use `git status` to confirm no additional side-effect files were modified; stage any that appear.
 
 Do NOT push without the user's explicit instruction.
 
