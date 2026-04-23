@@ -19,7 +19,7 @@ AI-Generated Runbooks also helps experienced authors of Jobs by reducing the tim
 ## How to Enable AI-Generated Runbooks
 
 :::tip Product Availability
-The _AI-Generated Runbooks_ feature is only available in Runbook Automation.
+The _AI-Generated Runbooks_ feature is only available in Runbook Automation SaaS. It is not available in Runbook Automation Self-Hosted.
 New users and current Runbook Automation customers are encouraged to [start a trial](https://www.pagerduty.com/sign-up/runbook-automation/) of Runbook Automation to try out the _AI-Generated Runbooks_ feature.
 :::
 
