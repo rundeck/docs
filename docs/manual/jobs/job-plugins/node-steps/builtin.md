@@ -20,7 +20,7 @@ If an exception is thrown with the message `Cannot run program, error = 26 Text 
 
 ### Script file step
 
-Executes the script file local to the sever to the filtered Node
+Executes the script file local to the server to the filtered Node
 set. Arguments can be passed to the script by specifying them in the
 lower text field.
 
