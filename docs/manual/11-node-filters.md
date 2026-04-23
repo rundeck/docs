@@ -40,7 +40,7 @@ Include mynode and exclude mynode2:
 
     mynode1 !nodename: mynode2
 
-Include nodes with both of the tags `www` and `prod` or either of the given hostnames:
+Include nodes with both the `www` and `prod` tags and either of the given hostnames:
 
     tags: www+prod hostname: dev1.example.com,dev2.example.com
 
