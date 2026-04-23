@@ -5,7 +5,7 @@ description: Generate self-hosted release notes for a Rundeck version using tag-
 
 # Write Release Notes
 
-Guides the full release-notes workflow for a Rundeck self-hosted milestone using `npm run notes` / `npm run notes:draft`. Auto-loads prerequisites, runs the draft, and helps finalise after tagging.
+Guides the full release-notes workflow for a Rundeck self-hosted milestone using `npm run notes`. Auto-loads prerequisites, runs the draft, and helps finalise after tagging.
 
 ## When to Use
 
@@ -31,17 +31,32 @@ Read these before executing:
 
 ## Process
 
-### Phase 1: Draft preview (safe, does not modify configs)
+### Phase 1: Gather parameters
 
+Before running anything, confirm with the user:
+
+1. **Target milestone** (required) — e.g. `5.20.1`. If the user has not stated it, ask.
+2. **Baseline version** (`--from-version`, optional) — ask the user: *"Should I auto-detect the starting version from the previous tag, or do you want to specify it explicitly (e.g. `--from-version=5.20.0`)?"* Auto-detection is the default and usually correct; an explicit baseline is needed for patch releases or unusual ranges.
+
+### Phase 2: Run the draft preview (safe — does not modify configs)
+
+Use the form that matches what the user provided in Phase 1:
+
+**If the user did not supply `--from-version` (auto-detect):**
 ```bash
 npm run notes:draft -- --milestone=<X.Y.Z>
+```
+
+**If the user supplied an explicit `--from-version`:**
+```bash
+npm run notes -- --milestone=<X.Y.Z> --from-version=<X.Y.Z-prev> --draft
 ```
 
 - If the tag `v<X.Y.Z>` does not yet exist, draft mode falls back to `HEAD` and prints a warning — this is expected.
 - Output: `docs/history/<major>_x/draft.md`.
 - Review the draft with the user before proceeding.
 
-### Phase 2: Tag the release
+### Phase 3: Tag the release
 
 Only proceed when the user has confirmed the draft content. Split tag creation from pushing so the user can confirm each step.
 
@@ -57,7 +72,7 @@ Push the tag ONLY after the user explicitly confirms (Critical Rule: never push 
 git push origin v<X.Y.Z>
 ```
 
-### Phase 3: Generate final notes (updates configs)
+### Phase 4: Generate final notes (updates configs)
 
 ```bash
 npm run notes -- --milestone=<X.Y.Z>
@@ -69,14 +84,14 @@ This updates, in addition to the notes markdown:
 - `docs/.vuepress/navbar-menus/about.js` — navbar link
 - `docs/.vuepress/pr-feed-config.json` — PR feed baseline
 
-### Phase 4: Manual edits
+### Phase 5: Manual edits
 
 Open `docs/history/<major>_x/version-<X.Y.Z>.md` and fill in:
 - Release date
 - Overview section
 - Any final descriptions or curated ordering
 
-### Phase 5: Commit
+### Phase 6: Commit
 
 ```bash
 git add docs/history/<major>_x/version-<X.Y.Z>.md
@@ -91,7 +106,7 @@ Use `git status` to confirm no additional side-effect files were modified; stage
 
 Do NOT push without the user's explicit instruction.
 
-### Phase 6: Push (only on explicit instruction)
+### Phase 7: Push (only on explicit instruction)
 
 Once the user confirms, push the commit (and, if not already pushed, the tag):
 
@@ -108,7 +123,7 @@ git push origin v<X.Y.Z>   # if not already pushed in Phase 2
 | `5.17.1` | `5.17.0` | v5.17.0 → v5.17.1 |
 | `5.0.0` | `4.17.0` | v4.17.0 → v5.0.0 |
 
-Override with `--from-version=<X.Y.Z>` for patch releases or special ranges.
+If the user provides `--from-version`, pass it explicitly (Phase 2 explicit form). Otherwise, auto-detection is used. Ask the user in Phase 1 if the milestone is a patch release and the baseline is ambiguous.
 
 ## Troubleshooting
 
