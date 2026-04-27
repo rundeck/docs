@@ -57,6 +57,99 @@ Example:
 java -Drunner.rundeck.overrideTempDir=true -Drunner.dirs.tmp=/your/custom/dir -jar runner.jar
 ```
 
+## Performance tuning for high-throughput Runners
+
+When a Runner handles a large volume of concurrent operations or produces a large volume of log output, the default configuration may not be sufficient. In that case, the server can emit the error:
+
+```
+Failed: IOFailure: Runner did not deliver reports in the configured timeout period
+```
+
+This error means the server did not receive any status report from the Runner for a consecutive 10-minute window for an in-flight operation. It typically indicates that the Runner is saturated, not that the operation itself hung.
+
+The properties below are the main levers available to increase capacity and avoid this class of error. All of them are JVM system properties — pass them with `-D` on the Runner command line (or via `command:` in Docker Compose).
+
+### Operation concurrency
+
+The Runner runs each operation in a thread from a fixed-size pool. When the pool is full, additional operations wait in an unbounded queue, and no status reports are emitted for queued operations.
+
+#### `runner.operations.maxRunning`
+
+* **Default:** `50`
+* **Purpose:** Maximum number of operations the Runner will execute in parallel.
+* **When to increase:** If you regularly submit bursts of more than 50 operations and see operations sitting "Queued" for a long time, or if the server reports timeouts for operations that were sitting in the queue.
+* **Caveats:** More concurrency means more threads, more memory and more concurrent log streams. Increase [`-Xmx`](#configure-java-heap-size) proportionally.
+
+Example — double the default concurrency:
+
+```
+java -Drunner.operations.maxRunning=100 -Xmx8g -jar pd-runner.jar
+```
+
+### Report delivery
+
+The Runner batches status reports in memory and flushes them to the server on a fixed interval. Under high log volume, the batch may fill before the interval elapses; if the flush rate is too slow, the in-memory queue grows and the server eventually times out waiting for a batch.
+
+:::warning
+Changing these values increases the rate and/or size of HTTP requests that reach the server. On busy deployments this can significantly raise CPU, memory and database load on the Rundeck server. **The default values are recommended.** Only tune these properties after confirming the Runner is the bottleneck, and validate the server's resource usage after each change.
+:::
+
+#### `runner.reporter.sendRate`
+
+* **Default:** `2s`
+* **Purpose:** How often the Runner flushes queued reports to the server.
+* **When to decrease:** When operations produce heavy log output and reports accumulate in memory faster than they are sent. A lower value (e.g. `1s`) flushes more often but increases HTTP request rate.
+
+#### `runner.reporter.sendBatchSize`
+
+* **Default:** `1000`
+* **Purpose:** Maximum number of reports sent in a single HTTP request.
+* **When to increase:** When you see the Runner hitting the batch cap repeatedly (reports accumulate because each flush can only drain 1000 at a time). Larger batches are more efficient per request but produce larger payloads.
+
+Example — flush faster with bigger batches:
+
+```
+java -Drunner.reporter.sendRate=1s -Drunner.reporter.sendBatchSize=2000 -jar pd-runner.jar
+```
+
+### HTTP client tuning
+
+The Runner uses a Micronaut HTTP client to deliver reports and poll for new operations. Under load, the default connection pool and timeouts may be too small.
+
+#### `micronaut.http.client.pool.max-connections`
+
+* **Default:** `50`
+* **Purpose:** Size of the HTTP connection pool used by the Runner to talk to the server.
+* **When to increase:** When the Runner is running many concurrent operations (`runner.operations.maxRunning` increased) and you also increase the polling / reporting frequency. A good rule of thumb is to keep this greater than or equal to `maxRunning`.
+
+#### `micronaut.http.client.pool.acquire-timeout`
+
+* **Default:** `10s`
+* **Purpose:** Maximum time a thread will wait for a free connection in the pool before failing.
+* **When to increase:** When you see intermittent `HttpClientException` or "connection not available" errors under load. Increase together with `max-connections`.
+
+#### `micronaut.http.client.read-timeout`
+
+* **Default:** `60s`
+* **Purpose:** Maximum time to wait for a single HTTP response from the server.
+* **When to increase:** Only when the network path to the server is slow or the server is under heavy load and legitimately takes longer to acknowledge batched reports.
+
+#### `micronaut.http.client.connect-timeout`
+
+* **Default:** `10s`
+* **Purpose:** Maximum time to establish a TCP connection to the server.
+
+Example — expand the HTTP pool for a high-concurrency Runner:
+
+```
+java \
+  -Drunner.operations.maxRunning=100 \
+  -Dmicronaut.http.client.pool.max-connections=120 \
+  -Dmicronaut.http.client.pool.acquire-timeout=30s \
+  -Xmx8g \
+  -jar pd-runner.jar
+```
+
 ## Runner APIs
 
 [Runner APIs](/api/index.md#runner-management) are available to create, edit, download, and delete Runners.
