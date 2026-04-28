@@ -12,7 +12,7 @@ Runners can be configured to connect through a HTTP/HTTPS proxy. Proxies are com
 The following example will allow the runner to connect through the secure company proxy with address wp.acme.corp.
 
 ```
-java -Dmicronaut.http.client.proxy-type=http -Dmicronaut.http.client.proxy-address=wp.acme.corp:443 -jar pdrunner.jar
+java -Dmicronaut.http.client.proxy-type=http -Dmicronaut.http.client.proxy-address=wp.acme.corp:443 -jar pd-runner.jar
 ```
 
 1. `-Dmicronaut.http.client.proxy-type` is set to `http`
@@ -23,7 +23,7 @@ java -Dmicronaut.http.client.proxy-type=http -Dmicronaut.http.client.proxy-addre
 The following example adds basic auth proxy configuration to the runner. The proxy-type and proxy-address settings are the same as the unauthenticated access example.
 
 ```
-java -Dmicronaut.http.client.proxy-type=http -Dmicronaut.http.client.proxy-address=wp.acme.corp:443 -Dmicronaut.http.client.proxy-username=proxyUsernameString -Dmicronaut.http.client.proxy-password=proxyPassString -jar pdrunner.jar
+java -Dmicronaut.http.client.proxy-type=http -Dmicronaut.http.client.proxy-address=wp.acme.corp:443 -Dmicronaut.http.client.proxy-username=proxyUsernameString -Dmicronaut.http.client.proxy-password=proxyPassString -jar pd-runner.jar
 ```
 
 1. `-Dmicronaut.http.client.proxy-username` is set to the user that is allowed to connect through the secure proxy.
@@ -39,7 +39,7 @@ To configure the Java heap size for the Runner, add these parameters when starti
 
 Example:
 ```
-java -Xms4g -Xmx6g -jar runner.jar
+java -Xms4g -Xmx6g -jar pd-runner.jar
 ```
 
 In this example, the Runner will start with an initial heap size of 4GB and can use a maximum of 6GB.
@@ -54,7 +54,7 @@ To override the temporary directory used by the Runner, add these parameters whe
 
 Example:
 ```
-java -Drunner.rundeck.overrideTempDir=true -Drunner.dirs.tmp=/your/custom/dir -jar runner.jar
+java -Drunner.rundeck.overrideTempDir=true -Drunner.dirs.tmp=/your/custom/dir -jar pd-runner.jar
 ```
 
 ## Performance tuning for high-throughput Runners
