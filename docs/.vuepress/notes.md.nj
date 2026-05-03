@@ -19,7 +19,7 @@ feed:
 ## Runbook Automation Updates
 
 {% for pull in enterprise.pulls -%}
-##### ::circle-dot:: {{ pull.title | replace(r/^(RUN-[0-9]+\s*)+:?\s*/g, "") }}
+##### ::circle-dot:: {{ pull.title | cleanPRTitle }}
 {% if pull.releaseNotes %}  
 {{ pull.releaseNotes }}
 {% endif %}
@@ -27,7 +27,7 @@ feed:
 ## Rundeck Open Source Product Updates
 
 {% for pull in core.pulls -%}
-#####  ::circle-dot:: [{{ pull.title | replace(r/^(RUN-[0-9]+\s*)+:?\s*/g, "") }}]({{pull.html_url}})
+#####  ::circle-dot:: [{{ pull.title | cleanPRTitle }}]({{pull.html_url}})
 {% if pull.releaseNotes %}  
 {{ pull.releaseNotes }}
 {% endif %}
@@ -37,7 +37,7 @@ feed:
 {% if ansible.pulls.length > 0 %}
 ## Ansible Plugin Updates
 {% for pull in ansible.pulls -%}
-#####  ::circle-dot:: [{{ pull.title | replace(r/^(RUN-[0-9]+\s*)+:?\s*/g, "") }}]({{pull.html_url}})
+#####  ::circle-dot:: [{{ pull.title | cleanPRTitle }}]({{pull.html_url}})
 {% if pull.releaseNotes %}  
 {{ pull.releaseNotes }}
 {% endif %}
@@ -47,7 +47,7 @@ feed:
 {% if runner.pulls.length > 0 %}
 ## Runner Updates
 {% for pull in runner.pulls -%}
-#####  ::circle-dot:: [{{ pull.title | replace(r/^(RUN-[0-9]+\s*)+:?\s*/g, "") }}]({{pull.html_url}})
+#####  ::circle-dot:: [{{ pull.title | cleanPRTitle }}]({{pull.html_url}})
 {% if pull.releaseNotes %}  
 {{ pull.releaseNotes }}
 {% endif %}
@@ -85,7 +85,6 @@ Submit your own Pull Requests to get recognition here!
 * Jake Cohen ([jsboak](https://github.com/jsboak))
 * Jaya Singh ([jayas006](https://github.com/jayas006))
 * Jesus Osuna ([Jesus-Osuna-M](https://github.com/Jesus-Osuna-M))
-* José Vásquez ([hiawvp](https://github.com/hiawvp))
 * Luis Toledo ([ltamaster](https://github.com/ltamaster))
 * Rodrigo Navarro ([ronaveva](https://github.com/ronaveva))
 * Sarah Martinelli Benedetti ([smartinellibenedetti](https://github.com/smartinellibenedetti))
