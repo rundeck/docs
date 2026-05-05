@@ -163,24 +163,12 @@ In addition to passing configuration via JVM system properties (`-D` flags), you
 runner:
   operations:
     maxRunning: 100
-  reporter:
-    sendRate: 1s
-    sendBatchSize: 2000
-  dirs:
-    tmp: /your/custom/dir
-  rundeck:
-    overrideTempDir: true
 
 micronaut:
   http:
     client:
-      proxy-type: http
-      proxy-address: wp.acme.corp:443
-      proxy-username: proxyUser
-      proxy-password: proxyPass
       pool:
         max-connections: 120
-        acquire-timeout: 30s
       read-timeout: 60s
       connect-timeout: 10s
 ```
@@ -216,12 +204,8 @@ services:
       - RUNNER_RUNDECK_SERVER_TOKEN=<your-api-token>
       # Operation concurrency
       - RUNNER_OPERATIONS_MAXRUNNING=100
-      # Report delivery
-      - RUNNER_REPORTER_SENDRATE=1s
-      - RUNNER_REPORTER_SENDBATCHSIZE=2000
       # HTTP client pool
       - MICRONAUT_HTTP_CLIENT_POOL_MAX_CONNECTIONS=120
-      - MICRONAUT_HTTP_CLIENT_POOL_ACQUIRE_TIMEOUT=30s
 ```
 
 **Docker run command**
@@ -233,8 +217,6 @@ docker run \
   -e RUNNER_RUNDECK_SERVER_URL=https://<your-subdomain>.runbook.pagerduty.cloud \
   -e RUNNER_RUNDECK_SERVER_TOKEN=<your-api-token> \
   -e RUNNER_OPERATIONS_MAXRUNNING=100 \
-  -e RUNNER_REPORTER_SENDRATE=1s \
-  -e RUNNER_REPORTER_SENDBATCHSIZE=2000 \
   -e MICRONAUT_HTTP_CLIENT_POOL_MAX_CONNECTIONS=120 \
   rundeckpro/runner:5.9.0
 ```
