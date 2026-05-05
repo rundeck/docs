@@ -150,6 +150,209 @@ java \
   -jar pd-runner.jar
 ```
 
+## Using custom YAML configuration
+
+In addition to passing configuration via JVM system properties (`-D` flags), you can place a custom `application.yml` file alongside the Runner JAR. This file allows you to define all settings in a structured format, which can be easier to maintain than long command lines.
+
+### Creating a custom YAML file
+
+1. Create an `application.yml` file in the same directory as `pd-runner.jar`.
+2. Add any configuration properties in YAML format:
+
+```yaml
+runner:
+  operations:
+    maxRunning: 100
+  reporter:
+    sendRate: 1s
+    sendBatchSize: 2000
+  dirs:
+    tmp: /your/custom/dir
+  rundeck:
+    overrideTempDir: true
+
+micronaut:
+  http:
+    client:
+      proxy-type: http
+      proxy-address: wp.acme.corp:443
+      proxy-username: proxyUser
+      proxy-password: proxyPass
+      pool:
+        max-connections: 120
+        acquire-timeout: 30s
+      read-timeout: 60s
+      connect-timeout: 10s
+```
+
+3. Start the Runner normally — it will automatically detect and load `application.yml`:
+
+```bash
+java -jar pd-runner.jar
+```
+
+:::tip
+You can combine YAML configuration with command-line properties. Command-line properties (`-D` flags) take precedence over values in `application.yml`, which is useful for overriding specific settings without modifying the file.
+:::
+
+### Docker configuration with custom YAML
+
+To use a custom YAML file in Docker, mount it as a volume:
+
+**Docker compose file**
+
+```yaml
+version: '3.9'
+services:
+  runner:
+    image: 'rundeckpro/runner:5.9.0'
+    environment:
+      - RUNNER_RUNDECK_CLIENT_ID=<your-runner-id>
+      - 'RUNNER_RUNDECK_SERVER_URL=https://<your-subdomain>.runbook.pagerduty.cloud'
+      - RUNNER_RUNDECK_SERVER_TOKEN=<your-api-token>
+    volumes:
+      - ./application.yml:/app/application.yml:ro
+```
+
+**Docker run command**
+
+```bash
+docker run \
+  --name runner \
+  -e RUNNER_RUNDECK_CLIENT_ID=<your-runner-id> \
+  -e RUNNER_RUNDECK_SERVER_URL=https://<your-subdomain>.runbook.pagerduty.cloud \
+  -e RUNNER_RUNDECK_SERVER_TOKEN=<your-api-token> \
+  -v ./application.yml:/app/application.yml:ro \
+  rundeckpro/runner:5.9.0
+```
+
+## Configuring logging levels
+
+The Runner uses SLF4J with Logback for logging. You can adjust log levels to increase visibility during troubleshooting or reduce noise in production.
+
+### Using logback.xml
+
+Create a `logback.xml` file in the same directory as the Runner JAR:
+
+```xml
+<configuration>
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <!-- Root logger - default level for all packages -->
+  <root level="INFO">
+    <appender-ref ref="STDOUT" />
+  </root>
+
+  <!-- Runner-specific logging -->
+  <logger name="com.rundeck.runner" level="DEBUG" />
+  
+  <!-- HTTP client request/response logging -->
+  <logger name="io.micronaut.http.client" level="TRACE" />
+  
+  <!-- Show all HTTP headers and bodies -->
+  <logger name="io.micronaut.http.client.netty" level="TRACE" />
+</configuration>
+```
+
+Start the Runner with the custom logback configuration:
+
+```bash
+java -Dlogback.configurationFile=logback.xml -jar pd-runner.jar
+```
+
+### Common logging configurations
+
+**Debug Runner internals**
+
+```xml
+<logger name="com.rundeck.runner" level="DEBUG" />
+<logger name="com.rundeck.runner.operations" level="TRACE" />
+<logger name="com.rundeck.runner.reporter" level="DEBUG" />
+```
+
+**Debug HTTP requests to Rundeck server**
+
+Enable this to see all HTTP requests, responses, headers and bodies sent between the Runner and server:
+
+```xml
+<logger name="io.micronaut.http.client" level="TRACE" />
+<logger name="io.micronaut.http.client.netty.DefaultHttpClient" level="TRACE" />
+```
+
+**Debug operation execution**
+
+```xml
+<logger name="com.rundeck.runner.operations.CommandExecutor" level="DEBUG" />
+<logger name="com.rundeck.runner.operations.OperationHandler" level="TRACE" />
+```
+
+**Reduce noise in production**
+
+```xml
+<root level="WARN">
+  <appender-ref ref="STDOUT" />
+</root>
+
+<!-- Keep only critical Runner logs -->
+<logger name="com.rundeck.runner" level="INFO" />
+```
+
+### Using command-line log level override
+
+For quick testing without creating a `logback.xml` file, you can set log levels via system properties:
+
+```bash
+# Set root logger to DEBUG
+java -Dlogger.levels.root=DEBUG -jar pd-runner.jar
+
+# Set specific package to TRACE
+java -Dlogger.levels.io.micronaut.http.client=TRACE -jar pd-runner.jar
+
+# Multiple loggers
+java \
+  -Dlogger.levels.root=WARN \
+  -Dlogger.levels.com.rundeck.runner=DEBUG \
+  -Dlogger.levels.io.micronaut.http.client=TRACE \
+  -jar pd-runner.jar
+```
+
+### Docker logging configuration
+
+Mount a `logback.xml` file and reference it in the command:
+
+**Docker compose file**
+
+```yaml
+version: '3.9'
+services:
+  runner:
+    image: 'rundeckpro/runner:5.9.0'
+    environment:
+      - RUNNER_RUNDECK_CLIENT_ID=<your-runner-id>
+      - 'RUNNER_RUNDECK_SERVER_URL=https://<your-subdomain>.runbook.pagerduty.cloud'
+      - RUNNER_RUNDECK_SERVER_TOKEN=<your-api-token>
+    volumes:
+      - ./logback.xml:/app/logback.xml:ro
+    command: "java -Dlogback.configurationFile=/app/logback.xml -jar pd-runner.jar"
+```
+
+**Docker run command**
+
+```bash
+docker run \
+  --name runner \
+  -e RUNNER_RUNDECK_CLIENT_ID=<your-runner-id> \
+  -e RUNNER_RUNDECK_SERVER_URL=https://<your-subdomain>.runbook.pagerduty.cloud \
+  -e RUNNER_RUNDECK_SERVER_TOKEN=<your-api-token> \
+  -v ./logback.xml:/app/logback.xml:ro \
+  rundeckpro/runner:5.9.0 \
+  java -Dlogback.configurationFile=/app/logback.xml -jar pd-runner.jar
+```
+
 ## Runner APIs
 
 [Runner APIs](/api/index.md#runner-management) are available to create, edit, download, and delete Runners.
