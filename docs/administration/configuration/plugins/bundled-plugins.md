@@ -181,7 +181,7 @@ rundeck.storage.converter.1.config.encryptorType=custom
 
 ```properties
 rundeck.config.storage.converter.1.type=aes-gcm-encryption
-rundeck.config.storage.converter.1.path=/
+rundeck.config.storage.converter.1.path=projects
 rundeck.config.storage.converter.1.config.password=YOUR_EXISTING_PASSWORD
 rundeck.config.storage.converter.1.config.encryptorType=custom
 ```
