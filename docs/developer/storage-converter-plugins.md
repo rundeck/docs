@@ -52,7 +52,7 @@ Storage converters ensure this data is **encrypted at rest**, even if someone ga
 **Built-in Encryption:**
 
 Rundeck includes:
-- **JasyptEncryption** - AES encryption with master password
+- **AES-GCM Encryption** - AES-256-GCM authenticated encryption with master password
 - Configured via `framework.properties`
 
 Create custom plugins for:
