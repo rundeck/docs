@@ -1,6 +1,6 @@
 # Release history
 
-This section collects **version release notes** for Rundeck and Runbook Automation: what shipped, when, and highlights worth scanning before an upgrade.
+## Most Recent Release Notes
 
 ## Supported versions vs. these pages
 
