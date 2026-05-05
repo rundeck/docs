@@ -241,101 +241,94 @@ docker run \
 
 ## Configuring logging levels
 
-The Runner uses SLF4J with Logback for logging. You can adjust log levels to increase visibility during troubleshooting or reduce noise in production.
+You can adjust log levels in the `application.yml` file to increase visibility during troubleshooting or reduce noise in production.
 
-### Using logback.xml
+Add a `logger.levels` section to your `application.yml`:
 
-Create a `logback.xml` file in the same directory as the Runner JAR:
+```yaml
+---
+# Custom configuration for Runner
 
-```xml
-<configuration>
-  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
-    <encoder>
-      <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
-    </encoder>
-  </appender>
+# Logging configuration
+logger:
+  levels:
+    # HTTP Client logging to monitor requests/responses
+    io.micronaut.http.client: DEBUG
+    io.micronaut.http.client.netty: DEBUG
+    io.micronaut.http.client.netty.DefaultHttpClient: TRACE
 
-  <!-- Root logger - default level for all packages -->
-  <root level="INFO">
-    <appender-ref ref="STDOUT" />
-  </root>
+    # Reporter logging
+    com.rundeck.sidecar.agent.server.RESClient: DEBUG
+    com.rundeck.sidecar.agent.operations.reporting.InMemoryOperationReporter: DEBUG
+    com.rundeck.sidecar.agent.operations.reporting: INFO
+    com.rundeck.sidecar.agent.operations.OperationService: INFO
 
-  <!-- Runner-specific logging -->
-  <logger name="com.rundeck.runner" level="DEBUG" />
-  
-  <!-- HTTP client request/response logging -->
-  <logger name="io.micronaut.http.client" level="TRACE" />
-  
-  <!-- Show all HTTP headers and bodies -->
-  <logger name="io.micronaut.http.client.netty" level="TRACE" />
-</configuration>
+# Runner configuration
+runner:
+  operations:
+    maxRunning: 100
+  reporter:
+    sendRate: 1s
+    sendBatchSize: 2000
 ```
 
-Start the Runner with the custom logback configuration:
+Start the Runner with the configuration file:
 
 ```bash
-java -Dlogback.configurationFile=logback.xml -jar pd-runner.jar
+java -Dmicronaut.config.files=application.yml -jar pd-runner.jar
 ```
 
-### Common logging configurations
-
-**Debug Runner internals**
-
-```xml
-<logger name="com.rundeck.runner" level="DEBUG" />
-<logger name="com.rundeck.runner.operations" level="TRACE" />
-<logger name="com.rundeck.runner.reporter" level="DEBUG" />
-```
+### Common logging scenarios
 
 **Debug HTTP requests to Rundeck server**
 
-Enable this to see all HTTP requests, responses, headers and bodies sent between the Runner and server:
+See all HTTP requests, responses, headers and bodies between Runner and server:
 
-```xml
-<logger name="io.micronaut.http.client" level="TRACE" />
-<logger name="io.micronaut.http.client.netty.DefaultHttpClient" level="TRACE" />
+```yaml
+logger:
+  levels:
+    io.micronaut.http.client: TRACE
+    io.micronaut.http.client.netty.DefaultHttpClient: TRACE
 ```
 
-**Debug operation execution**
+**Debug operation execution and reporting**
 
-```xml
-<logger name="com.rundeck.runner.operations.CommandExecutor" level="DEBUG" />
-<logger name="com.rundeck.runner.operations.OperationHandler" level="TRACE" />
+```yaml
+logger:
+  levels:
+    com.rundeck.sidecar.agent.operations: DEBUG
+    com.rundeck.sidecar.agent.operations.OperationService: TRACE
+    com.rundeck.sidecar.agent.operations.reporting: DEBUG
 ```
 
 **Reduce noise in production**
 
-```xml
-<root level="WARN">
-  <appender-ref ref="STDOUT" />
-</root>
-
-<!-- Keep only critical Runner logs -->
-<logger name="com.rundeck.runner" level="INFO" />
+```yaml
+logger:
+  levels:
+    root: WARN
+    com.rundeck.sidecar: INFO
 ```
 
-### Using command-line log level override
+### Quick command-line log level override
 
-For quick testing without creating a `logback.xml` file, you can set log levels via system properties:
+For quick testing, you can set log levels via system properties without modifying the YAML file:
 
 ```bash
-# Set root logger to DEBUG
-java -Dlogger.levels.root=DEBUG -jar pd-runner.jar
-
-# Set specific package to TRACE
-java -Dlogger.levels.io.micronaut.http.client=TRACE -jar pd-runner.jar
+# Set specific package to DEBUG
+java -Dlogger.levels.io.micronaut.http.client=DEBUG -jar pd-runner.jar
 
 # Multiple loggers
 java \
   -Dlogger.levels.root=WARN \
-  -Dlogger.levels.com.rundeck.runner=DEBUG \
+  -Dlogger.levels.com.rundeck.sidecar=DEBUG \
   -Dlogger.levels.io.micronaut.http.client=TRACE \
   -jar pd-runner.jar
 ```
 
 ### Docker logging configuration
 
-Mount a `logback.xml` file and reference it in the command:
+Use environment variables to set log levels in Docker:
 
 **Docker compose file**
 
@@ -348,9 +341,11 @@ services:
       - RUNNER_RUNDECK_CLIENT_ID=<your-runner-id>
       - 'RUNNER_RUNDECK_SERVER_URL=https://<your-subdomain>.runbook.pagerduty.cloud'
       - RUNNER_RUNDECK_SERVER_TOKEN=<your-api-token>
-    volumes:
-      - ./logback.xml:/app/logback.xml:ro
-    command: "java -Dlogback.configurationFile=/app/logback.xml -jar pd-runner.jar"
+      # Enable HTTP client debug logging
+      - LOGGER_LEVELS_IO_MICRONAUT_HTTP_CLIENT=DEBUG
+      - LOGGER_LEVELS_IO_MICRONAUT_HTTP_CLIENT_NETTY=DEBUG
+      # Enable reporter debug logging
+      - LOGGER_LEVELS_COM_RUNDECK_SIDECAR_AGENT_OPERATIONS_REPORTING=DEBUG
 ```
 
 **Docker run command**
@@ -361,9 +356,9 @@ docker run \
   -e RUNNER_RUNDECK_CLIENT_ID=<your-runner-id> \
   -e RUNNER_RUNDECK_SERVER_URL=https://<your-subdomain>.runbook.pagerduty.cloud \
   -e RUNNER_RUNDECK_SERVER_TOKEN=<your-api-token> \
-  -v ./logback.xml:/app/logback.xml:ro \
-  rundeckpro/runner:5.9.0 \
-  java -Dlogback.configurationFile=/app/logback.xml -jar pd-runner.jar
+  -e LOGGER_LEVELS_IO_MICRONAUT_HTTP_CLIENT=DEBUG \
+  -e LOGGER_LEVELS_COM_RUNDECK_SIDECAR_AGENT_OPERATIONS_REPORTING=DEBUG \
+  rundeckpro/runner:5.9.0
 ```
 
 ## Runner APIs
