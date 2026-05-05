@@ -20,8 +20,6 @@ rundeck.storage.provider.1.path=keys
 rundeck.storage.converter.1.type=aes-gcm-encryption
 rundeck.storage.converter.1.path=keys
 rundeck.storage.converter.1.config.password=encryption_password
-rundeck.storage.converter.1.config.algorithm=PBEWITHSHA256AND128BITAES-CBC-BC
-rundeck.storage.converter.1.config.provider=BC
 ```
 
 ### [Hashicorp Vault Integration](/learning/howto/vault-integration.md#how-to-integrate-hashicorp-vault)

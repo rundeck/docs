@@ -89,7 +89,6 @@ rundeck.storage.provider.1.path=/keys
 rundeck.storage.converter.1.type=aes-gcm-encryption
 rundeck.storage.converter.1.path=/keys
 rundeck.storage.converter.1.config.password=CHANGE_THIS_PASSWORD
-rundeck.storage.converter.1.config.algorithm=PBEWITHHMACSHA256ANDAES_256
 ```
 
 ### Common Key Storage Issues
@@ -446,7 +445,6 @@ Prior to Rundeck 6.0, this plugin was called `jasypt-encryption`. The legacy nam
 rundeck.storage.converter.1.type=aes-gcm-encryption
 rundeck.storage.converter.1.path=keys
 rundeck.storage.converter.1.config.password=YOUR_ENCRYPTION_PASSWORD_HERE
-rundeck.storage.converter.1.config.encryptorType=custom
 ```
 
 **Project Storage encryption (optional):**
@@ -456,7 +454,6 @@ rundeck.storage.converter.1.config.encryptorType=custom
 rundeck.config.storage.converter.1.type=aes-gcm-encryption
 rundeck.config.storage.converter.1.path=projects
 rundeck.config.storage.converter.1.config.password=YOUR_ENCRYPTION_PASSWORD_HERE
-rundeck.config.storage.converter.1.config.encryptorType=custom
 ```
 
 #### Encryption Algorithm
@@ -915,7 +912,6 @@ rundeck.projectsStorageType=db
 rundeck.storage.converter.1.type=aes-gcm-encryption
 rundeck.storage.converter.1.path=/keys
 rundeck.storage.converter.1.config.password=${RD_STORAGE_PASSWORD}
-rundeck.storage.converter.1.config.algorithm=PBEWITHHMACSHA256ANDAES_256
 
 # Database - same connection
 dataSource.url=jdbc:postgresql://shared-db-host:5432/rundeck
@@ -1129,7 +1125,6 @@ rundeck.storage.provider.1.path=/keys
 rundeck.storage.converter.1.type=aes-gcm-encryption
 rundeck.storage.converter.1.path=/keys
 rundeck.storage.converter.1.config.password=${RD_STORAGE_PASSWORD}
-rundeck.storage.converter.1.config.algorithm=PBEWITHHMACSHA256ANDAES_256
 
 # Project Storage - database
 rundeck.projectsStorageType=db
@@ -1165,7 +1160,6 @@ rundeck.storage.provider.1.path=/keys
 rundeck.storage.converter.1.type=aes-gcm-encryption
 rundeck.storage.converter.1.path=/keys
 rundeck.storage.converter.1.config.password=${RD_STORAGE_PASSWORD}
-rundeck.storage.converter.1.config.algorithm=PBEWITHHMACSHA256ANDAES_256
 
 # Project Storage - shared database with encryption
 rundeck.projectsStorageType=db
@@ -1173,7 +1167,6 @@ rundeck.projectsStorageType=db
 rundeck.config.storage.converter.1.type=aes-gcm-encryption
 rundeck.config.storage.converter.1.path=/
 rundeck.config.storage.converter.1.config.password=${RD_PROJECT_STORAGE_PASSWORD}
-rundeck.config.storage.converter.1.config.algorithm=PBEWITHHMACSHA256ANDAES_256
 
 # Shared Database
 dataSource.url=jdbc:postgresql://shared-db-cluster:5432/rundeck
