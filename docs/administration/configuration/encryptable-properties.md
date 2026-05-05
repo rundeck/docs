@@ -20,12 +20,15 @@ run:
 
 ```shell
 java -jar rundeck.war --encryptpwd Jasypt
-
 ```
+
+:::info
+The `Jasypt` argument is a legacy CLI name kept for backward compatibility. The actual encryption now uses AES-256-GCM — the Jasypt library is no longer included.
+:::
 
 You will receive prompts for information that look like the following:
 
-```
+```text
 Required values are marked with: *
 Encrypter Config (The base property name used in RD_ENCRYPTION_ or rd.encryption. ('default' is the default value)):
 
@@ -68,11 +71,15 @@ If you have existing encrypted values that were generated with a custom algorith
 These settings only affect **decryption of legacy values**. All new encryptions use AES-256-GCM regardless of these settings.
 :::
 
-For example, if your existing encrypted values were generated with the `PBEWITHSHA256AND256BITAES-CBC-BC` algorithm:
+For example, if your existing encrypted values were generated with the `PBEWITHSHA256AND256BITAES-CBC-BC` algorithm, set the corresponding system properties when starting Rundeck:
 
 ```shell
-java -jar -Drd.encryption.STRONG.algorithm=PBEWITHSHA256AND256BITAES-CBC-BC -Drundeck.encrypter.config.name=STRONG rundeck.war
+java -Drd.encryption.STRONG.algorithm=PBEWITHSHA256AND256BITAES-CBC-BC \
+     -Drundeck.encrypter.config.name=STRONG \
+     -jar rundeck.war
 ```
+
+The `Encrypter Config` name (`STRONG` in this example) links the algorithm system property to the encrypted values. When the application encounters an `ENC(...)` value, it uses the configured algorithm and provider to decrypt legacy data.
 
 If you would rather use environment variables to set the encryption settings you can use:
 `RUNDECK_PROP_DECRYPTER_CONFIG` to set the config to use
@@ -85,10 +92,14 @@ For the example above, these would be:
 
 ### Re-encrypting Legacy Values
 
-To migrate existing legacy-encrypted values to AES-256-GCM, simply re-run the encryption utility with the same master password:
+To migrate existing legacy-encrypted values to AES-256-GCM, re-run the encryption utility with the same master password:
 
 ```shell
 java -jar rundeck.war --encryptpwd Jasypt
 ```
+
+:::info
+The `Jasypt` argument is the legacy CLI provider name retained for backward compatibility. The utility now encrypts using AES-256-GCM.
+:::
 
 Enter the plaintext value you want to encrypt. The output will be in the new AES-256-GCM format. Replace the old `ENC(...)` value in your configuration file with the new one. Both old and new formats are supported simultaneously, so migration can be done incrementally.
