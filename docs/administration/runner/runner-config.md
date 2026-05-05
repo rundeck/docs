@@ -185,19 +185,23 @@ micronaut:
       connect-timeout: 10s
 ```
 
-3. Start the Runner normally — it will automatically detect and load `application.yml`:
+3. Start the Runner with the `-Dmicronaut.config.files` flag pointing to your YAML file:
 
 ```bash
-java -jar pd-runner.jar
+java -Dmicronaut.config.files=application.yml -jar pd-runner.jar
 ```
 
 :::tip
 You can combine YAML configuration with command-line properties. Command-line properties (`-D` flags) take precedence over values in `application.yml`, which is useful for overriding specific settings without modifying the file.
 :::
 
-### Docker configuration with custom YAML
+### Docker configuration with environment variables
 
-To use a custom YAML file in Docker, mount it as a volume:
+For Docker deployments, it's easier to use environment variables instead of mounting YAML files. Micronaut automatically maps environment variables to configuration properties using the following convention:
+
+- Replace `.` with `_`
+- Use uppercase letters
+- Nested properties use `_` as separator
 
 **Docker compose file**
 
@@ -210,8 +214,14 @@ services:
       - RUNNER_RUNDECK_CLIENT_ID=<your-runner-id>
       - 'RUNNER_RUNDECK_SERVER_URL=https://<your-subdomain>.runbook.pagerduty.cloud'
       - RUNNER_RUNDECK_SERVER_TOKEN=<your-api-token>
-    volumes:
-      - ./application.yml:/app/application.yml:ro
+      # Operation concurrency
+      - RUNNER_OPERATIONS_MAXRUNNING=100
+      # Report delivery
+      - RUNNER_REPORTER_SENDRATE=1s
+      - RUNNER_REPORTER_SENDBATCHSIZE=2000
+      # HTTP client pool
+      - MICRONAUT_HTTP_CLIENT_POOL_MAX_CONNECTIONS=120
+      - MICRONAUT_HTTP_CLIENT_POOL_ACQUIRE_TIMEOUT=30s
 ```
 
 **Docker run command**
@@ -222,7 +232,10 @@ docker run \
   -e RUNNER_RUNDECK_CLIENT_ID=<your-runner-id> \
   -e RUNNER_RUNDECK_SERVER_URL=https://<your-subdomain>.runbook.pagerduty.cloud \
   -e RUNNER_RUNDECK_SERVER_TOKEN=<your-api-token> \
-  -v ./application.yml:/app/application.yml:ro \
+  -e RUNNER_OPERATIONS_MAXRUNNING=100 \
+  -e RUNNER_REPORTER_SENDRATE=1s \
+  -e RUNNER_REPORTER_SENDBATCHSIZE=2000 \
+  -e MICRONAUT_HTTP_CLIENT_POOL_MAX_CONNECTIONS=120 \
   rundeckpro/runner:5.9.0
 ```
 
