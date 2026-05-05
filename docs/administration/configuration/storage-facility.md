@@ -86,7 +86,7 @@ rundeck.storage.provider.1.path=/keys
 **Encryption converter:**
 ```properties
 # Format: rundeck.storage.converter.[index].[property]
-rundeck.storage.converter.1.type=jasypt-encryption
+rundeck.storage.converter.1.type=aes-gcm-encryption
 rundeck.storage.converter.1.path=/keys
 rundeck.storage.converter.1.config.password=CHANGE_THIS_PASSWORD
 rundeck.storage.converter.1.config.algorithm=PBEWITHHMACSHA256ANDAES_256
@@ -186,7 +186,7 @@ rundeck.config.storage.provider.1.type=db
 rundeck.config.storage.provider.1.path=/
 
 # Optional: Encryption for project configs
-rundeck.config.storage.converter.1.type=jasypt-encryption
+rundeck.config.storage.converter.1.type=aes-gcm-encryption
 rundeck.config.storage.converter.1.path=/
 rundeck.config.storage.converter.1.config.password=CHANGE_THIS_PASSWORD
 ```
@@ -423,9 +423,13 @@ Disk/Database → Storage Backend → [Converter: Decrypt] → User/API
 - **Transparent:** Application doesn't know encryption is happening
 - **Metadata stored separately:** Encryption info stored with file metadata
 
-### Encryption with Jasypt Plugin
+### Encryption with AES-GCM Plugin
 
-Rundeck includes the **Jasypt Encryption Plugin** for encrypting stored data. This is the most common converter configuration.
+Rundeck includes the **AES-GCM Encryption Plugin** for encrypting stored data using AES-256-GCM authenticated encryption. This is the most common converter configuration.
+
+:::tip Upgrade Note
+Prior to Rundeck 6.0, this plugin was called `jasypt-encryption`. The legacy name still works as an alias — existing configurations do not need to be changed.
+:::
 
 **When to use encryption:**
 - **Required:** Production environments storing sensitive keys/passwords
@@ -439,31 +443,29 @@ Rundeck includes the **Jasypt Encryption Plugin** for encrypting stored data. Th
 
 ```properties
 # Encrypt all keys
-rundeck.storage.converter.1.type=jasypt-encryption
-rundeck.storage.converter.1.path=/keys
+rundeck.storage.converter.1.type=aes-gcm-encryption
+rundeck.storage.converter.1.path=keys
 rundeck.storage.converter.1.config.password=YOUR_ENCRYPTION_PASSWORD_HERE
-rundeck.storage.converter.1.config.algorithm=PBEWITHHMACSHA256ANDAES_256
+rundeck.storage.converter.1.config.encryptorType=custom
 ```
 
 **Project Storage encryption (optional):**
 
 ```properties
 # Encrypt project configurations
-rundeck.config.storage.converter.1.type=jasypt-encryption
-rundeck.config.storage.converter.1.path=/
+rundeck.config.storage.converter.1.type=aes-gcm-encryption
+rundeck.config.storage.converter.1.path=projects
 rundeck.config.storage.converter.1.config.password=YOUR_ENCRYPTION_PASSWORD_HERE
-rundeck.config.storage.converter.1.config.algorithm=PBEWITHHMACSHA256ANDAES_256
+rundeck.config.storage.converter.1.config.encryptorType=custom
 ```
 
-#### Encryption Algorithm Options
+#### Encryption Algorithm
 
-| Algorithm | Security | Performance | JVM Requirement |
-|-----------|----------|-------------|-----------------|
-| `PBEWITHHMACSHA256ANDAES_256` | High (recommended) | Good | JCE Unlimited Strength (Java 8+) |
-| `PBEWITHMD5ANDDES` | Low (legacy) | Fast | Standard JVM |
-| `PBEWITHSHA256AND256BITAES-CBC-BC` | High | Good | Bouncy Castle library |
+Starting with Rundeck 6.0, the encryption algorithm is **AES-256-GCM** (authenticated encryption with PBKDF2-SHA256 key derivation). This is not configurable — all new data is encrypted with the strongest available standard. There is no need to choose an algorithm.
 
-**Recommendation:** Use `PBEWITHHMACSHA256ANDAES_256` for production.
+:::info
+The `algorithm`, `provider`, and `encryptorType` properties are only relevant for **decrypting legacy data** from previous Rundeck versions. See the [AES-GCM Encryption Plugin](/administration/configuration/plugins/bundled-plugins.md#aes-gcm-encryption-plugin) documentation for details.
+:::
 
 #### Managing Encryption Passwords
 
@@ -523,7 +525,7 @@ rundeck.storage.converter.1.config.password=${KMS_RETRIEVED_PASSWORD}
 
 2. **Add converter configuration:**
 ```properties
-rundeck.storage.converter.1.type=jasypt-encryption
+rundeck.storage.converter.1.type=aes-gcm-encryption
 rundeck.storage.converter.1.path=/keys
 rundeck.storage.converter.1.config.password=${RD_STORAGE_PASSWORD}
 ```
@@ -613,7 +615,7 @@ echo "Re-encryption complete"
 - **Verification:** Check `rundeck-config.properties` on all nodes
 
 **See also:**
-- [Jasypt Encryption Plugin](/administration/configuration/plugins/bundled-plugins.md#jasypt-encryption-plugin) - Detailed configuration
+- [AES-GCM Encryption Plugin](/administration/configuration/plugins/bundled-plugins.md#aes-gcm-encryption-plugin) - Detailed configuration
 - [Storage Converter Plugin Development](/developer/storage-converter-plugins.md) - Custom converters
 
 ---
@@ -910,7 +912,7 @@ rundeck.storage.provider.1.path=/keys
 rundeck.projectsStorageType=db
 
 # Encryption - MUST be identical
-rundeck.storage.converter.1.type=jasypt-encryption
+rundeck.storage.converter.1.type=aes-gcm-encryption
 rundeck.storage.converter.1.path=/keys
 rundeck.storage.converter.1.config.password=${RD_STORAGE_PASSWORD}
 rundeck.storage.converter.1.config.algorithm=PBEWITHHMACSHA256ANDAES_256
@@ -1124,7 +1126,7 @@ rundeck.projectsStorageType=filesystem
 rundeck.storage.provider.1.type=db
 rundeck.storage.provider.1.path=/keys
 
-rundeck.storage.converter.1.type=jasypt-encryption
+rundeck.storage.converter.1.type=aes-gcm-encryption
 rundeck.storage.converter.1.path=/keys
 rundeck.storage.converter.1.config.password=${RD_STORAGE_PASSWORD}
 rundeck.storage.converter.1.config.algorithm=PBEWITHHMACSHA256ANDAES_256
@@ -1160,7 +1162,7 @@ rundeck.clusterMode.enabled=true
 rundeck.storage.provider.1.type=db
 rundeck.storage.provider.1.path=/keys
 
-rundeck.storage.converter.1.type=jasypt-encryption
+rundeck.storage.converter.1.type=aes-gcm-encryption
 rundeck.storage.converter.1.path=/keys
 rundeck.storage.converter.1.config.password=${RD_STORAGE_PASSWORD}
 rundeck.storage.converter.1.config.algorithm=PBEWITHHMACSHA256ANDAES_256
@@ -1168,7 +1170,7 @@ rundeck.storage.converter.1.config.algorithm=PBEWITHHMACSHA256ANDAES_256
 # Project Storage - shared database with encryption
 rundeck.projectsStorageType=db
 
-rundeck.config.storage.converter.1.type=jasypt-encryption
+rundeck.config.storage.converter.1.type=aes-gcm-encryption
 rundeck.config.storage.converter.1.path=/
 rundeck.config.storage.converter.1.config.password=${RD_PROJECT_STORAGE_PASSWORD}
 rundeck.config.storage.converter.1.config.algorithm=PBEWITHHMACSHA256ANDAES_256
@@ -1201,7 +1203,7 @@ export DB_PASSWORD="database_password"
 rundeck.storage.provider.1.type=db
 rundeck.storage.provider.1.path=/keys
 
-rundeck.storage.converter.1.type=jasypt-encryption
+rundeck.storage.converter.1.type=aes-gcm-encryption
 rundeck.storage.converter.1.path=/keys
 rundeck.storage.converter.1.config.password=${RD_STORAGE_PASSWORD}
 
@@ -1219,7 +1221,7 @@ dataSource.url=jdbc:mysql://dbhost:3306/rundeck
 
 ### Security
 
-1. **Always encrypt in production** - Use jasypt-encryption converter for key storage
+1. **Always encrypt in production** - Use aes-gcm-encryption converter for key storage
 2. **Separate encryption passwords** - Use different passwords for keys vs projects
 3. **Secure password storage** - Store encryption passwords in external vault (not in config files)
 4. **Rotate passwords** - Plan for periodic encryption password rotation
@@ -1265,7 +1267,7 @@ dataSource.url=jdbc:mysql://dbhost:3306/rundeck
 - [Key Storage](/manual/key-storage/index.md) - User guide for managing keys
 - [Project Configuration](/manual/projects/configuration.md) - Project setup and storage
 - [Database Configuration](/administration/configuration/database/index.md) - External database setup
-- [Jasypt Encryption Plugin](/administration/configuration/plugins/bundled-plugins.md#jasypt-encryption-plugin) - Encryption details
+- [AES-GCM Encryption Plugin](/administration/configuration/plugins/bundled-plugins.md#aes-gcm-encryption-plugin) - Encryption details
 - [Storage Plugin Development](/developer/storage-plugins.md) - Custom storage backends
 - [Storage Converter Plugin Development](/developer/storage-converter-plugins.md) - Custom converters
 - [Cluster Configuration](/administration/cluster/) - High-availability setup

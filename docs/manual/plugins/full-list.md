@@ -75,7 +75,7 @@ Resource Format | [JSON](/manual/document-format-reference/resource-json-v10.md)
 SCM | [Git](/manual/projects/scm/git.md)                                                                              | Imports or exports jobs from a Git repository | Community
 SCM | [Job Replication](/manual/projects/scm/job-replication.md)                                                      | Replicates job state between Rundeck Cluster instances | Enterprise
 SSO | [Okta](/administration/security/sso/index.md)                                                                   | Allows you to use Okta to log into Rundeck | Enterprise
-Storage Converter | [Encyption](/administration/configuration/plugins/bundled-plugins.md#jasypt-encryption-plugin)                  | Encrypts Key Storage and Project configuration data | Built-in
+Storage Converter | [Encryption](/administration/configuration/plugins/bundled-plugins.md#aes-gcm-encryption-plugin)                  | Encrypts Key Storage and Project configuration data (AES-256-GCM) | Built-in
 Webhook | [Run Job](/manual/webhooks/run-job.md)                                                                          | Runs a job when a webhook event is received | Built In
 Webhook | [Routing Run Job](/manual/webhooks/advanced-run-job.md)                                                         | Advanced rule processing of webhook event data to run jobs. | Enterprise
 
