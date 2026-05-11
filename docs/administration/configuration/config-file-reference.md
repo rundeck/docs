@@ -1067,7 +1067,7 @@ Controls the height of the ACE code editor rendered inside plugin configuration 
 
 | Property | Default | Description |
 |----------|---------|-------------|
-| `rundeck.feature.guiAceEditorMinLines` | `12` | Minimum number of visible lines shown in the editor, which sets its minimum visible height |
+| `rundeck.feature.guiAceEditorMinLines` | `12` | Minimum number of visible lines shown in the editor, which sets its minimum visible height. |
 | `rundeck.feature.guiAceEditorMaxLines` | `0` | Maximum number of lines the editor auto-expands to. Set to `0` for unlimited. |
 
 These settings can be changed at runtime via **System Configuration → GUI** without restarting Rundeck. The new values take effect on the next page load.
