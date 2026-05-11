@@ -1063,7 +1063,7 @@ Trim Output: Max size of visible Log Output (not present by default).
 
 ### Code Editor Settings
 
-Controls the height of the ACE code editor rendered inside plugin configuration forms (for example, inline script steps and node executor configuration).
+Controls the height of the ACE code editor rendered inside plugin configuration forms (for example, inline script steps, orchestrator configuration, and execution lifecycle plugins).
 
 | Property | Default | Description |
 |----------|---------|-------------|
@@ -1071,6 +1071,8 @@ Controls the height of the ACE code editor rendered inside plugin configuration 
 | `rundeck.feature.guiAceEditorMaxLines` | `0` | Maximum number of lines the editor auto-expands to. Set to `0` for unlimited. |
 
 These settings can be changed at runtime via **System Configuration → GUI** without restarting Rundeck. The new values take effect on the next page load.
+
+**Scope:** These settings apply only to plugin configuration forms rendered by Vue components (job workflow steps, orchestrator, execution lifecycle, key storage, and webhooks). Plugin configuration forms that use the legacy Grails/Knockout UI are not affected.
 
 ### Groovy config format
 
