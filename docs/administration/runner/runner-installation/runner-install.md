@@ -44,6 +44,12 @@ The Runner can be installed as a `systemd` service on Linux systems.
     # sudo service runner start
     ```
 
+## Windows Service for the Runner
+
+For Windows environments, the Runner can be installed as a Windows service using either Apache Commons Daemon or NSSM. This ensures the Runner starts automatically with the system and runs in the background.
+
+See the [Enterprise Runner as Windows Service](/learning/howto/runner-service-windows.html) guide for detailed installation instructions.
+
 ## Manual Docker Installation
 
 The standard method for deploying the Runner with Docker is with `docker-compose` as outlined in the [Creating Runner](/administration/runner/runner-installation/creating-runners.md) documentation by selecting **`Docker`** for the **Platform**.
