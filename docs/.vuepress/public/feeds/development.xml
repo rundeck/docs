@@ -5,8 +5,49 @@
     <link>https://docs.rundeck.com/docs</link>
     <description>Recent merged pull requests and development updates from Rundeck</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 02 Apr 2026 17:27:23 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 13 May 2026 16:42:38 GMT</lastBuildDate>
     <atom:link href="https://docs.rundeck.com/feeds/development.xml" rel="self" type="application/rss+xml" />
-
+    <item>
+      <title>[RUN-4410] Upgrade log4J to 2.25.4</title>
+      <link>https://docs.rundeck.com/docs/history/updates/</link>
+      <description>[RUN-4410] Upgrade log4J to 2.25.4 (Merged: Apr 28, 2026)</description>
+      <pubDate>Tue, 28 Apr 2026 18:06:44 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeck-10086</guid>
+    </item>
+    <item>
+      <title>[RUN-4401] German (de_DE) is now available as a full UI language.</title>
+      <link>https://docs.rundeck.com/docs/history/updates/</link>
+      <description>[RUN-4401] German (de_DE) is now available as a full UI language. (Merged: Apr 24, 2026)</description>
+      <pubDate>Fri, 24 Apr 2026 23:34:17 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeck-10018</guid>
+    </item>
+    <item>
+      <title>[RUN-3885] Fix project runner replica list gated on delete permission</title>
+      <link>https://docs.rundeck.com/docs/history/updates/</link>
+      <description>[RUN-3885] Fix project runner replica list gated on delete permission (Merged: Apr 24, 2026)</description>
+      <pubDate>Fri, 24 Apr 2026 19:35:34 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeckpro-4651</guid>
+    </item>
+    <item>
+      <title>[RUN-3192] Execution log runner UI (i18n + badge settings)</title>
+      <link>https://docs.rundeck.com/docs/history/updates/</link>
+      <description>[RUN-3192] Execution log runner UI (i18n + badge settings) (Merged: Apr 22, 2026)</description>
+      <pubDate>Wed, 22 Apr 2026 02:46:08 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeckpro-4650</guid>
+    </item>
+    <item>
+      <title>[RUN-4318] Prevent saving job when workflow step is in edit mode</title>
+      <link>https://docs.rundeck.com/docs/history/updates/</link>
+      <description>[RUN-4318] Prevent saving job when workflow step is in edit mode (Merged: Apr 21, 2026)</description>
+      <pubDate>Tue, 21 Apr 2026 17:25:33 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeckpro-4652</guid>
+    </item>
+    <item>
+      <title>[RUN-4121] Mask key storage secrets for all provider indexes in system config</title>
+      <link>https://docs.rundeck.com/docs/history/updates/</link>
+      <description>[RUN-4121] Mask key storage secrets for all provider indexes in system config (Merged: Apr 17, 2026)</description>
+      <pubDate>Fri, 17 Apr 2026 16:31:44 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeckpro-4629</guid>
+    </item>
   </channel>
 </rss>
