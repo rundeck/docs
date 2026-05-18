@@ -27,7 +27,7 @@ jobs:
         run: npm ci
           
       - name: Install Snyk CLI
-        run: npm install -g snyk --userconfig=.npmrc
+        run: npm install -g snyk@1.1304.1 --userconfig=.npmrc
       
       - name: Verify Snyk installation
         run: snyk --version
