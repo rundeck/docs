@@ -1421,7 +1421,11 @@ A timer combines a **meter** (how often) and a **histogram** (how long). It reco
 | `duration_units` | string  | —                     | Unit for all duration fields (e.g., `"seconds"`, `"nanoseconds"`).                                               |
 | `rate_units`     | string  | —                     | Unit for all rate fields (e.g., `"calls/second"`).                                                               |
 
-> **Tip:** For performance analysis, prefer the percentile fields (`p50`–`p999`) over `mean`, since percentiles are not skewed by outliers. The `p99` or `p999` values reveal worst-case latencies that a mean value would obscure. For throughput, `m1_rate` and `m5_rate` reflect recent activity more accurately than `mean_rate`.
+::: tip
+
+For performance analysis, prefer the percentile fields (`p50`–`p999`) over `mean`, since percentiles are not skewed by outliers. The `p99` or `p999` values reveal worst-case latencies that a mean value would obscure. For throughput, `m1_rate` and `m5_rate` reflect recent activity more accurately than `mean_rate`.
+
+:::
 
 ### Metrics Healthcheck
 
