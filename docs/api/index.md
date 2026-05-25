@@ -1348,7 +1348,7 @@ Return the metrics data.
 
 ### Metric Types Reference
 
-Rundeck exposes metrics via [Dropwizard Metrics](https://metrics.dropwizard.io/). The response from `GET /api/V/metrics/metrics` contains five top-level keys — `gauges`, `counters`, `histograms`, `meters`, and `timers` — each holding a map of named metrics. The following tables describe every field for each metric type.
+Rundeck exposes metrics via [Dropwizard Metrics](https://metrics.dropwizard.io/). The response from `GET /api/V/metrics/metrics` contains a top-level `version` string and five metric map keys — `gauges`, `counters`, `histograms`, `meters`, and `timers` — each holding a map of named metrics. The following tables describe every field for each metric type.
 
 #### Gauge
 
@@ -1368,21 +1368,21 @@ A counter is an incrementing/decrementing integer (e.g., scheduled job count).
 
 #### Histogram
 
-A histogram samples the distribution of a value over time and computes statistics over the recorded samples (e.g., request payload sizes). In many Rundeck deployments this map is empty, but the key is always present in the response.
+A histogram samples the distribution of a value over time and computes statistics over the recorded samples (e.g., request payload sizes). In many Rundeck deployments this map is empty, but the key is always present in the response. The unit of numeric fields depends on what is being measured and is not provided by the API.
 
-| Field    | Type    | Unit                   | Description                                                                                 |
-|----------|---------|------------------------|---------------------------------------------------------------------------------------------|
-| `count`  | integer | samples                | Total number of values recorded since the server started.                                   |
-| `min`    | number  | see `duration_units`   | Minimum recorded value.                                                                     |
-| `max`    | number  | see `duration_units`   | Maximum recorded value.                                                                     |
-| `mean`   | number  | see `duration_units`   | Arithmetic mean of all recorded values.                                                     |
-| `stddev` | number  | see `duration_units`   | Standard deviation of recorded values.                                                      |
-| `p50`    | number  | see `duration_units`   | 50th percentile (median): 50% of values were at or below this.                              |
-| `p75`    | number  | see `duration_units`   | 75th percentile: 75% of values were at or below this.                                       |
-| `p95`    | number  | see `duration_units`   | 95th percentile: 95% of values were at or below this.                                       |
-| `p98`    | number  | see `duration_units`   | 98th percentile: 98% of values were at or below this.                                       |
-| `p99`    | number  | see `duration_units`   | 99th percentile: 99% of values were at or below this.                                       |
-| `p999`   | number  | see `duration_units`   | 99.9th percentile: 99.9% of values were at or below this.                                   |
+| Field    | Type    | Unit | Description                                                                                 |
+|----------|---------|------|---------------------------------------------------------------------------------------------|
+| `count`  | integer | —    | Total number of values recorded since the server started.                                   |
+| `min`    | number  | —    | Minimum recorded value.                                                                     |
+| `max`    | number  | —    | Maximum recorded value.                                                                     |
+| `mean`   | number  | —    | Arithmetic mean of all recorded values.                                                     |
+| `stddev` | number  | —    | Standard deviation of recorded values.                                                      |
+| `p50`    | number  | —    | 50th percentile (median): 50% of values were at or below this.                              |
+| `p75`    | number  | —    | 75th percentile: 75% of values were at or below this.                                       |
+| `p95`    | number  | —    | 95th percentile: 95% of values were at or below this.                                       |
+| `p98`    | number  | —    | 98th percentile: 98% of values were at or below this.                                       |
+| `p99`    | number  | —    | 99th percentile: 99% of values were at or below this.                                       |
+| `p999`   | number  | —    | 99.9th percentile: 99.9% of values were at or below this.                                   |
 
 #### Meter
 
