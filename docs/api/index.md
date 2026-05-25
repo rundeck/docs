@@ -1346,6 +1346,72 @@ Return the metrics data.
 }
 ```
 
+### Metric Types Reference
+
+Rundeck exposes metrics via [Dropwizard Metrics](https://metrics.dropwizard.io/). The response from `GET /api/V/metrics/metrics` contains four top-level keys — `gauges`, `counters`, `meters`, and `timers` — each holding a map of named metrics. The following tables describe every field for each metric type.
+
+#### Gauge
+
+A gauge measures a single instantaneous value at the time the endpoint is called (e.g., current cache hit rate, number of running executions).
+
+| Field   | Type    | Description                                      |
+|---------|---------|--------------------------------------------------|
+| `value` | number  | The current measured value at the time of the request. |
+
+#### Counter
+
+A counter is an incrementing/decrementing integer (e.g., scheduled job count).
+
+| Field   | Type    | Description                                      |
+|---------|---------|--------------------------------------------------|
+| `count` | integer | The current counter value.                       |
+
+#### Meter
+
+A meter measures the rate at which events occur over time (e.g., authorization evaluations per second).
+
+| Field        | Type   | Unit           | Description                                                                               |
+|--------------|--------|----------------|-------------------------------------------------------------------------------------------|
+| `count`      | integer | events        | Total number of events recorded since the server started.                                 |
+| `m1_rate`    | number  | events/second | Exponentially weighted moving average rate over the **last 1 minute**.                    |
+| `m5_rate`    | number  | events/second | Exponentially weighted moving average rate over the **last 5 minutes**.                   |
+| `m15_rate`   | number  | events/second | Exponentially weighted moving average rate over the **last 15 minutes**.                  |
+| `mean_rate`  | number  | events/second | Overall mean rate since the server started (total count / elapsed time). Not a moving average — it decays toward 0 as the server runs longer without new events. |
+| `units`      | string  | —             | The rate unit label (e.g., `"events/second"`).                                            |
+
+#### Timer
+
+A timer combines a **meter** (how often) and a **histogram** (how long). It records duration statistics and throughput for a timed operation (e.g., an API request handler or a node-loading routine). All duration values are in the unit reported by `duration_units` (typically `"seconds"`).
+
+**Duration statistics** (snapshot of all recorded durations):
+
+| Field    | Type   | Unit     | Description                                                                 |
+|----------|--------|----------|-----------------------------------------------------------------------------|
+| `count`  | integer | calls   | Total number of timed calls recorded since the server started.              |
+| `min`    | number  | seconds | Minimum recorded duration.                                                  |
+| `max`    | number  | seconds | Maximum recorded duration.                                                  |
+| `mean`   | number  | seconds | Arithmetic mean of all recorded durations.                                  |
+| `stddev` | number  | seconds | Standard deviation of recorded durations. A low value means durations are clustered close to the mean; a high value indicates high variability. |
+| `p50`    | number  | seconds | 50th percentile (median): 50% of calls completed in this duration or less.  |
+| `p75`    | number  | seconds | 75th percentile: 75% of calls completed in this duration or less.           |
+| `p95`    | number  | seconds | 95th percentile: 95% of calls completed in this duration or less.           |
+| `p98`    | number  | seconds | 98th percentile: 98% of calls completed in this duration or less.           |
+| `p99`    | number  | seconds | 99th percentile: 99% of calls completed in this duration or less.           |
+| `p999`   | number  | seconds | 99.9th percentile: 99.9% of calls completed in this duration or less. Useful for identifying extreme outliers. |
+
+**Rate statistics** (how frequently the operation is called):
+
+| Field         | Type   | Unit          | Description                                                                                |
+|---------------|--------|---------------|--------------------------------------------------------------------------------------------|
+| `m1_rate`     | number  | calls/second | Exponentially weighted moving average call rate over the **last 1 minute**.                |
+| `m5_rate`     | number  | calls/second | Exponentially weighted moving average call rate over the **last 5 minutes**.               |
+| `m15_rate`    | number  | calls/second | Exponentially weighted moving average call rate over the **last 15 minutes**.              |
+| `mean_rate`   | number  | calls/second | Overall mean call rate since the server started. Not a moving average.                     |
+| `duration_units` | string | —          | Unit for all duration fields (e.g., `"seconds"`).                                          |
+| `rate_units`  | string  | —             | Unit for all rate fields (e.g., `"calls/second"`).                                         |
+
+> **Tip:** For performance analysis, prefer the percentile fields (`p50`–`p999`) over `mean`, since percentiles are not skewed by outliers. The `p99` or `p999` values reveal worst-case latencies that a mean value would obscure. For throughput, `m1_rate` and `m5_rate` reflect recent activity more accurately than `mean_rate`.
+
 ### Metrics Healthcheck
 
 Returns results of some health checks.
