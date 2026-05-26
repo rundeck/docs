@@ -13244,6 +13244,13 @@ components:
             $ref: "#/components/schemas/ObjectError"
         fieldError:
           $ref: "#/components/schemas/FieldError"
+        objectName:
+          type: string
+        nestedPath:
+          type: string
+        globalErrorCount:
+          type: integer
+          format: int32
         globalErrors:
           type: array
           items:
@@ -13257,13 +13264,6 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/FieldError"
-        objectName:
-          type: string
-        nestedPath:
-          type: string
-        globalErrorCount:
-          type: integer
-          format: int32
     EventRoutingResult:
       type: object
       properties:
@@ -13315,10 +13315,10 @@ components:
       - field
       type: object
       properties:
-        rejectedValue:
-          type: object
         bindingFailure:
           type: boolean
+        rejectedValue:
+          type: object
         field:
           type: string
     HomeSummary:
@@ -13628,12 +13628,12 @@ components:
     LoginRoleData:
       type: object
       properties:
+        description:
+          type: string
         id:
           type: integer
           format: int64
         authority:
-          type: string
-        description:
           type: string
     Manifest:
       type: object

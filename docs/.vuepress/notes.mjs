@@ -7,8 +7,7 @@ import dotenv from 'dotenv';
 import _yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
 import RundeckVersion from './version.mjs';
-import setup from './setup.js';
-import { fetchPRsBetweenTags, extractPRSection, resolveNotesFromVersion } from './pr-utils.mjs';
+import { fetchPRsBetweenTags, extractPRSection, getPreviousVersion, cleanPRTitle } from './pr-utils.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -42,6 +41,9 @@ const argv = _yargs(hideBin(process.argv))
   .argv;
 
 const template = fs.readFileSync('./docs/.vuepress/notes.md.nj');
+
+const notesEnv = new nunjucks.Environment();
+notesEnv.addFilter('cleanPRTitle', cleanPRTitle);
 
 // List of usernames to exclude from contributors
 const excludeUsernames = [
@@ -192,7 +194,7 @@ async function main() {
   };
   context.currentDateLong = `${monthNames[now.getMonth()]} ${day}${suffix(day)}, ${now.getFullYear()}`;
 
-  const notes = nunjucks.renderString(template.toString(), context);
+  const notes = notesEnv.renderString(template.toString(), context);
 
   const seriesDir = `${argv.milestone.split('.').slice(0, 1).concat(['x']).join('_')}`;
   const pathBase = path.join(process.cwd(), 'docs', 'history', seriesDir);

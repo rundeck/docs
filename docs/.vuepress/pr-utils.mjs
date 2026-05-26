@@ -166,14 +166,14 @@ export async function fetchPRsBetweenTags(octokit, owner, repo, fromVersion, toV
 }
 
 /**
- * Clean PR title by removing RUN-XXXX prefixes
+ * Clean PR title by removing the required Jira prefix `[RUN-123]` (optional colon/spaces after `]`).
+ * Titles without this prefix are left unchanged so non-compliant titles surface as-is.
  * @param {string} title - PR title
  * @returns {string} Cleaned title
  */
 export function cleanPRTitle(title) {
   if (!title) return '';
-  // Remove one or more RUN-XXXX prefixes with optional colons and spaces
-  return title.replace(/^(RUN-[0-9]+\s*)+:?\s*/g, '').trim();
+  return title.replace(/^(?:\[RUN-[0-9]+\]\s*:?\s*)+/, '').trim();
 }
 
 /**
