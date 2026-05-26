@@ -1080,6 +1080,19 @@ Trim Output: Max size of visible Log Output (not present by default).
 : `rundeck.logviewer.trimOutput=250kb` Remove the oldest lines in Log Output after displaying 250kb of logs
 
 
+### Code Editor Settings
+
+Controls the height of the ACE code editor rendered inside plugin configuration forms (for example, inline script steps, orchestrator configuration, and execution lifecycle plugins).
+
+| Property | Default | Description |
+|----------|---------|-------------|
+| `rundeck.feature.guiAceEditorMinLines` | `12` | Minimum number of visible lines shown in the editor, which sets its minimum visible height. |
+| `rundeck.feature.guiAceEditorMaxLines` | `0` | Maximum number of lines the editor auto-expands to. Set to `0` for unlimited. |
+
+These settings can be changed at runtime via **System Configuration → GUI** without restarting Rundeck. The new values take effect on the next page load.
+
+**Scope:** These settings apply only to plugin configuration forms rendered by Vue components (job workflow steps, orchestrator, execution lifecycle, key storage, and webhooks). Plugin configuration forms that use the legacy Grails/Knockout UI are not affected.
+
 ### Groovy config format
 
 If you would prefer to use Groovy for the config file, you can use rundeck-config.groovy instead of rundeck-config.properties. Or, you can use a combination of the two (i.e. some settings configured in the properties file and some in the Groovy file).
