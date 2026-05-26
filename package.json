@@ -18,7 +18,7 @@
     "@vue/component-compiler-utils": "^3.3.0",
     "ansi-html-community": "0.0.8",
     "core-js": "^2.6.5",
-    "express": "^4.22.0",
+    "express": "^4.22.2",
     "glob": "^13.0.6",
     "markdown-it-container": "^3.0.0",
     "markdown-it-include": "^2.0.0",
