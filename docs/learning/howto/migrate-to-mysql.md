@@ -66,7 +66,7 @@ Enable DB storage for Project configurations, and Key Storage. Optionally enable
 For more info refer to:
 
 - [Security - Key Storage](/manual/key-storage/index.md)
-- [Configuring Plugins - Bundled Plugins - Jasypt Encryption Plugin](/administration/configuration/plugins/bundled-plugins.md#jasypt-encryption-plugin)
+- [Configuring Plugins - Bundled Plugins - AES-GCM Encryption Plugin](/administration/configuration/plugins/bundled-plugins.md#aes-gcm-encryption-plugin)
 - [Storage Facility](/administration/configuration/storage-facility.md)
 
 ## Start Rundeck
