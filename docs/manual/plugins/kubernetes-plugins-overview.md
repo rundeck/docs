@@ -57,7 +57,9 @@ Follow these steps to set up a Runner in a Kubernetes cluster:
    --data-raw '{
       "name": "K8s Runner US-WEST-1 Cluster 1",
       "description": "Runner installed in US-WEST-1 Cluster 1",
-      "tagNames": ["K8S-RUNNER", "us-west-1", "cluster-1"]
+      "tagNames": ["K8S-RUNNER", "us-west-1", "cluster-1"],
+      "installationType": "kubernetes",
+      "replicaType": "ephemeral"
      }'
       ```
    :::tip Tip
