@@ -6,7 +6,7 @@ Rundeck can be configured to use Azure Active Directory authentication by regist
 
 ### Azure - Create a new app registration
 
-The first thing to do is create a new application registration in Azure.
+The first thing to do is create a new application registration in Azure.\
 
 ![](/assets/img/sso-azure-01-appreg1.jpg)
 
@@ -40,14 +40,19 @@ Next, add the required permissions in Azure.
 
 ![](/assets/img/sso-azure-04-apiperm2.jpg)
 
+**For group name mapping (optional):**
+
+If you need to use group names (not group IDs) in ACL policies, add the following Application permission:
+
 1. Select **"API permissions"** on the left
 2. Select **"+ Add a permission"**
 3. Select **"Microsoft Graph"** as the permission type
 4. Select **"Application permissions"**
-5. Enter **"Directory.Read.All"** in the search box
-6. Select **"Directory"** to expand it
-7. Select **"Directory.Read.All"** under Directory to enable the permission
-8. Select **"Add permission"** at the bottom
+5. Enter **"GroupMember.Read.All"** in the search box
+6. Select **"GroupMember.Read.All"** to enable the permission
+7. Select **"Add permission"** at the bottom
+
+**Note:** Using group IDs instead of group names requires no additional Application permissions beyond the delegated permissions above.
 
 ### Azure - Create the Application Secret
 
@@ -89,7 +94,8 @@ rundeck.security.oauth.azure.clientSecret=<SECRET_VALUE>
 rundeck.security.syncOauthUser=true
 
 # Define the Azure scopes to map
-rundeck.security.oauth.azure.scope=openid email profile https://graph.microsoft.com/Directory.Read.All
+# Use GroupMember.Read.All only if group name mapping is required
+rundeck.security.oauth.azure.scope=openid email profile https://graph.microsoft.com/GroupMember.Read.All
 
 # Map Azure user detail attributes
 rundeck.ssoSyncAttribNames.firstname=given_name
@@ -104,7 +110,7 @@ rundeck.ssoSyncAttribNames.email=preferred_username
 
 ### Important: First Login Approval
 
-Upon first login to Rundeck using Azure SSO an Azure Admin level user will need to consent to the `Directory.Read.All` permission. Make sure to click the checkbox that asks to consent for the **whole organization**.
+If using the `GroupMember.Read.All` permission for group name mapping, an Azure Admin level user will need to consent upon first login to Rundeck using Azure SSO. Make sure to click the checkbox that asks to consent for the **whole organization**.
 
 <img width="517" alt="image" src="https://github.com/rundeck/docs/assets/58412426/185bf972-577f-4e15-8367-d29fccaae578">
 
@@ -115,7 +121,7 @@ By default, Azure does not send group information in the SSO token. You can conf
 ![](/assets/img/sso-azure-08-token.png)
 
 
-**If you need to sync user groups by group name**, you need to enable the Rundeck plugin that uses the MS Graph API to get user/group information. Using this requires additional API permissions that were setup in the App Registration.
+**If you need to sync user groups by group name**, you need to enable the Rundeck plugin that uses the MS Graph API to get user/group information. Using this requires the `GroupMember.Read.All` Application permission configured in the App Registration above.
 
 To enable this plugin, enable the *Enable Azure UserGroupSource Plugin* setting in the **System Configuration** page (config key `framework.plugin.UserGroupSource.AzureGroupSource.enabled`), or add the following to the `framework.properties` file:
 
