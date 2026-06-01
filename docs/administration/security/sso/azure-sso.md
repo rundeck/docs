@@ -6,7 +6,7 @@ Rundeck can be configured to use Azure Active Directory authentication by regist
 
 ### Azure - Create a new app registration
 
-The first thing to do is create a new application registration in Azure.\
+The first thing to do is create a new application registration in Azure.
 
 ![](/assets/img/sso-azure-01-appreg1.jpg)
 
