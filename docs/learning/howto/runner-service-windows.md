@@ -112,11 +112,15 @@ To register the Enterprise Runner as a service, check the following steps:
 
 2. Uncompress the file and copy the `prunmgr.exe` and `prunsrv.exe` files to the `C:\runner\` folder.
 
-   :::warning Use the 64-bit prunsrv.exe
-   On a 64-bit system running a 64-bit JDK, use the 64-bit `prunsrv.exe` located in the `amd64\` subfolder of the uncompressed archive — **not** the 32-bit `prunsrv.exe` in the root of the archive. A 32-bit `prunsrv.exe` cannot load a 64-bit `jvm.dll`, and the service will fail to start or stop with the error `%1 is not a valid Win32 application`. You can confirm which architecture is in use by checking `commons-daemon.log`: the startup line should read `procrun (1.x.x.x 64-bit) started`. (`prunmgr.exe`, the GUI monitor, is 32-bit only — that is expected and fine.)
+   :::warning Use the 64-bit binary on a 64-bit JDK/JRE
+   On a 64-bit system running a 64-bit JDK/JRE, use the 64-bit `prunsrv.exe` located in the `amd64\` subfolder of the uncompressed archive — **not** the 32-bit `prunsrv.exe` in the root of the archive. (`prunmgr.exe`, the GUI monitor, is 32-bit only — that is expected and fine.)
    :::
 
 3. Rename the `prunsrv.exe` as `runner.exe`, and `prunmgr.exe` as `runnerw.exe`.
+
+   :::warning Architecture mismatch
+   If a 32-bit `runner.exe` is used with a 64-bit JRE/JDK, it cannot load the 64-bit `jvm.dll`, and the service will fail to start or stop with the error `%1 is not a valid Win32 application`. You can confirm which architecture is in use by checking `commons-daemon.log`: the startup line should read `procrun (1.x.x.x 64-bit) started`.
+   :::
 
 4. Create a stop script named `stop-runner.bat` in the `C:\runner\` folder with the content below. This script stops only the Runner process that the service started — it reads the PID that procrun writes to `runner.pid` — instead of killing every `java.exe` process on the host:
 
@@ -154,7 +158,7 @@ runner.exe //IS//runner ^
  --StopPath=C:\runner ^
  --StopTimeout=30 ^
  --PidFile=runner.pid ^
- --JvmMs=1024
+ --JvmMs=1024 ^
  --JvmMx=4096 ^
  --StdOutput=C:\runner\runner.log ^
  --StdError=C:\runner\runner.log
@@ -162,10 +166,6 @@ runner.exe //IS//runner ^
 
 :::tip Note
 The service name uses a double slash (`//IS//runner`) — this is the procrun syntax for "install service". `--Jvm=auto` lets procrun locate `jvm.dll` automatically from `JAVA_HOME` / the registry. The stop is delegated to `stop-runner.bat` through `cmd.exe`; the full path to `cmd.exe` is required because procrun passes `--StopImage` directly to `CreateProcess`, which does not search the `PATH` (a bare `cmd` fails with `The system cannot find the file specified`).
-:::
-
-:::warning
-Avoid setting `--StopImage=TASKKILL.exe` on its own: with no parameters the stop fails with `ERROR: Invalid syntax. Neither /FI nor /PID nor /IM were specified.`, and using `/IM java.exe` would terminate every JVM running on the machine. The PID-scoped `stop-runner.bat` above avoids both problems.
 :::
 
 You will see messages similar to the following:
