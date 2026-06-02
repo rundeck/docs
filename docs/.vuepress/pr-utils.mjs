@@ -166,19 +166,22 @@ export async function fetchPRsBetweenTags(octokit, owner, repo, fromVersion, toV
 }
 
 /**
- * Clean PR title by removing the required Jira prefix `[RUN-123]` (optional colon/spaces after `]`).
+ * Clean PR title by removing the Jira prefix in either format:
+ * - Old format: `RUN-123: `
+ * - New format: `[RUN-123]` or `[RUN-123]: `
  * Titles without this prefix are left unchanged so non-compliant titles surface as-is.
  * @param {string} title - PR title
  * @returns {string} Cleaned title
  */
 export function cleanPRTitle(title) {
   if (!title) return '';
-  return title.replace(/^(?:\[RUN-[0-9]+\]\s*:?\s*)+/, '').trim();
+  return title.replace(/^(?:\[?RUN-[0-9]+\]?\s*:?\s*)+/, '').trim();
 }
 
 /**
  * Extract a specific section from PR body
  * Looks for sections like "## Customer Summary" or "### Release Notes"
+ * Strips markdown reference-style links (e.g., [RUN-123]: https://...) from the output
  * @param {string} body - PR body text
  * @param {string} sectionName - Section header to look for (case insensitive)
  * @returns {string|null} Section content or null if not found
@@ -217,7 +220,12 @@ export function extractPRSection(body, sectionName) {
     }
   }
   
-  const content = sectionContent.join('\n').trim();
+  let content = sectionContent.join('\n').trim();
+  
+  // Remove markdown reference-style links (e.g., [RUN-123]: https://...)
+  // These are typically at the end and should not appear in release notes output
+  content = content.replace(/^\[.+?\]:\s*https?:\/\/.+$/gm, '').trim();
+  
   return content || null;
 }
 
