@@ -1,7 +1,7 @@
 ---
 
 title: "6.0.0 Release Notes"
-date: TBD
+date: 2026-06-02
 image: /images/chevron-logo-red-on-white.png
 description: "Rundeck | Runbook Automation Releases 6.0.0 - <DESCRIPTION>"
 feed:
@@ -39,7 +39,7 @@ feed:
 
 Name: <span style="color: brown"><span class="glyphicon glyphicon-apple"></span> "Auriga brown apple"</span>
 
-Release Date: TBD
+Release Date: June 2nd, 2026
 
 
 ## Community Contributors
@@ -57,7 +57,6 @@ Submit your own Pull Requests to get recognition here!
 * Jake Cohen ([jsboak](https://github.com/jsboak))
 * Jaya Singh ([jayas006](https://github.com/jayas006))
 * Jesus Osuna ([Jesus-Osuna-M](https://github.com/Jesus-Osuna-M))
-* José Vásquez ([hiawvp](https://github.com/hiawvp))
 * Luis Toledo ([ltamaster](https://github.com/ltamaster))
 * Rodrigo Navarro ([ronaveva](https://github.com/ronaveva))
 * Sarah Martinelli Benedetti ([smartinellibenedetti](https://github.com/smartinellibenedetti))

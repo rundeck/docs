@@ -7,7 +7,8 @@ import dotenv from 'dotenv';
 import _yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
 import RundeckVersion from './version.mjs';
-import { fetchPRsBetweenTags, extractPRSection, getPreviousVersion, cleanPRTitle } from './pr-utils.mjs';
+import setup from './setup.js';
+import { fetchPRsBetweenTags, extractPRSection, getPreviousVersion, cleanPRTitle, resolveNotesFromVersion } from './pr-utils.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
