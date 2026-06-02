@@ -154,7 +154,8 @@ runner.exe //IS//runner ^
  --StopPath=C:\runner ^
  --StopTimeout=30 ^
  --PidFile=runner.pid ^
- --JvmMs=1024 --JvmMx=2048 ^
+ --JvmMs=1024
+ --JvmMx=4096 ^
  --StdOutput=C:\runner\runner.log ^
  --StdError=C:\runner\runner.log
 ```
