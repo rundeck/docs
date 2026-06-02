@@ -27,8 +27,8 @@ which python - "example/path/to/python"
 
 The [pywinrm plugin](https://github.com/rundeck-plugins/py-winrm-plugin) uses the python [WinRM Library](https://github.com/diyan/pywinrm/) to provide the WinRM implementation.
 
-* Python 3.3-3.5 or PyPy2 installed on Rundeck server. _(Python 3 strongly recommended)_
-* Pywinrm library (It can be installed with the following command: `pip install pywinrm`)
+* **Python 3.8 or newer** on the Rundeck (or Runbook Automation) server and on any **Enterprise Runner** host that executes PyWinRM. **Python 2 is not supported** in current py-winrm-plugin releases (upstream **pywinrm** requires Python 3.8+). For **Rundeck 6.0** upgrades, confirm the interpreter before upgrading. See [Upgrading to Rundeck 6.0](/upgrading/upgrading-to-6.0.md#py-winrm-plugin-python-38).
+* Pywinrm library (install with a Python 3 `pip`, for example: `pip3 install pywinrm`)
 * OpenSSL version 1.1.1 or higher. (openssl version can be checked with the following command: `openssl version - "OpenSSL 1.1.1k"`)
     * `requests-kerberos` and `requests-credssp` are optional.
   

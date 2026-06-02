@@ -77,12 +77,11 @@ You can find below the possible **Execution Status** an Execution can assume in 
 | MISSED            | ![Clock](/assets/img/569667.png)       | Red        | Status when [Missed Job Fires (Enterprise Only)](/manual/schedules/missedjobfires.md) is enabled and one of the jobs doesn't run at the time when it was scheduled to run.                                                                                                                                                          |
 | OTHER-INCOMPLETE  | ![Incomplete](/assets/img/569911.png)  | Orange     | Status when a job finishes with some nodes where some steps were not started                                                                                                                                                                                                                                                        |
 | OTHER             | ![Other](/assets/img/569744.png)       | ORANGE     | Status when any other issue occurs during runbook execution                                                                                                                                                                                                                                                                         |
-## RSS link
+## RSS feed (deprecated in Rundeck 6.0)
 
-If configured, an RSS icon provides a link to an RSS view of the events that match
-the current filtering criteria.
-
-![RSS link](/assets/img/fig0214.png)
+::: warning
+Earlier releases could expose an **RSS** icon on Activity linking to an XML feed of executions matching the current filters (sometimes configurable as a public URL). In **Rundeck 6.0** this server-side feed is **deprecated** and **off by default**. If your organization still requires it, you can opt in with **`rundeck.feature.legacyRSS.enabled=true`** (not recommended long term; see [upgrade notes](/upgrading/upgrading-to-6.0.md#activity-rss-feed-server-feature-removed)). This does **not** affect the [RSS Feed Plugin](/manual/jobs/job-plugins/workflow-steps/rss-feed-plugin.md) job step.
+:::
 
 ## Bulk Delete Executions
 

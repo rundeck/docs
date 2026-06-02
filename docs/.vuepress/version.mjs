@@ -195,7 +195,41 @@ export class RundeckVersion {
         'Vinson',
         'Whitney',
         'Wycheproof'
-    ]
+    ];
+
+    /** Rundeck 6.x release codenames (constellations) */
+    names6 = [
+        'Andromeda',
+        'Aquila',
+        'Auriga',
+        'Carina',
+        'Cassiopeia',
+        'Centaurus',
+        'Columba',
+        'Cygnus',
+        'Delphinus',
+        'Draco',
+        'Eridanus',
+        'Fornax',
+        'Hercules',
+        'Hydrus',
+        'Indus',
+        'Lacerta',
+        'Lupus',
+        'Lyra',
+        'Monoceros',
+        'Octans',
+        'Ophiuchus',
+        'Orion',
+        'Pavo',
+        'Pegasus',
+        'Perseus',
+        'Phoenix',
+        'Pyxis',
+        'Sagittarius',
+        'Vela',
+        'Volans',
+    ];
 
     splitVersion(versionString) {
         var partsa = String(versionString).split(' ');
@@ -224,11 +258,12 @@ export class RundeckVersion {
         var tag = '';
         if (parts.length > 1 && /^\d+$/.test(parts[1])) {
             release = parseInt(parts[1]);
-            tag = parts.length > 2 ? parts.slice(2).join('-') : 'GA';
+            tag = parts.length > 2 ? parts.slice(2).join('-') : '';
         } else if (parts.length > 1) {
             tag = parts.slice(1).join('-');
         }
 
+        data['semantic'] = parts[0];
         data['tag'] = tag;
         data['release'] = release;
         data['pointRelease'] = data.point * 20 + release;
@@ -247,7 +282,7 @@ export class RundeckVersion {
         var partsb = partsa.join('');
         var sixes = [];
         for (var j = 0; (j + 1) * 6 < partsb.length; j++) {
-            data['6let' + i] = partsb.substring(j * 6, (j + 1) * 6);
+            data['6let' + j] = partsb.substring(j * 6, (j + 1) * 6);
             sixes.push(partsb.substring(j * 6, (j + 1) * 6));
         }
         data['sixes'] = sixes;
@@ -259,14 +294,22 @@ export class RundeckVersion {
     colorForVersion(val) {
         return this.inList(this.csscolors, val);
     };
-    nameForVersion = (val) => {
-        return this.inList(this.names, val);
+    /**
+     * Rundeck 5.x (including security/critical point releases on that line) keeps peak codenames
+     * (names5). Only major >= 6 uses constellations (names6). Keep in sync with ui-trellis RundeckVersion.ts.
+     */
+    nameListForMajor(major) {
+        if (major >= 6) {
+            return this.names6;
+        }
+        return this.names5;
+    }
+    nameForVersion(val) {
+        const major = this.versionData.major;
+        return this.inList(this.nameListForMajor(major), val);
     };
     nameForVersion4 = (val) => {
         return this.inList(this.names4, val);
-    };
-    nameForVersion5 = (val) => {
-        return this.inList(this.names5, val);
     };
     iconForVersion(val) {
         return this.inList(this.glyphicons2, val);
@@ -281,16 +324,9 @@ export class RundeckVersion {
         return this.colorForVersion(this.versionData[this.colorIdentity]);
     };
     name() {
-        var func;
-        if (this.versionData.major === 4) {
-            func = this.nameForVersion4;
-        } else {
-            if (this.versionData.major === 5) {
-                func = this.nameForVersion5;
-            } else {
-            func = this.nameForVersion;
-        }}
-        return func(this.versionData[this.nameIdentity] + this.nameTilt);
+        return this.nameForVersion(
+            this.versionData[this.nameIdentity] + this.nameTilt,
+        );
     };
     icon() {
         return this.iconForVersion3(this.versionData[this.iconIdentity]);

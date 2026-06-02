@@ -71,6 +71,27 @@ for:
 1. Generic permission: `resource: kind: job allow: [delete]` (permission to delete jobs as a type)
 2. Specific permission: `job: ... allow: [delete]` (permission to delete this particular job)
 
+### Deny Rules Always Win
+
+Deny rules are evaluated **first** and take precedence over allow rules:
+
+- If **ANY** deny rule matches the action/resource, authorization is immediately denied
+- Allow rules are only evaluated if no deny rules match
+- Evaluation order: **Deny → Allow → No Match** (default deny)
+
+This means you can use deny rules to create exceptions. For example, you can allow all jobs but deny specific ones:
+
+```yaml
+for:
+  job:
+    - match:
+        group: 'admin/.*'
+      deny: [run]  # Deny running jobs in /admin group
+    - allow: [run]  # Allow running all other jobs
+```
+
+**Result**: Users can run all jobs EXCEPT those in the `/admin` group path.
+
 ### Actions Depend on Resource Type
 
 Not all actions are available for all resources. The available actions depend on:
@@ -340,7 +361,13 @@ Rundeck loads ACL Policy definitions from these locations:
 
 The Rundeck server does not need to be restarted for changes to aclpolicy files to take effect.
 
-The files are loaded at startup and are cached. When an authorization request occurs, the policies may be reloaded if the file was modified. A file's contents are cached for at least 2 minutes before checking if they need to be reloaded. Also, the etc directory is only re-scanned for new/removed files after a 2 minute delay.
+The files are loaded at startup and are cached. Policy file contents are cached for **2 minutes** before checking for modifications. The list of policy files in the `etc` directory is cached for **30 minutes** before re-scanning for new or removed files.
+
+When an authorization request occurs, the system checks if the cached policy file has been modified. If modified, it reloads that specific file. This means:
+
+- **Changes to existing policy files**: Take effect within 2 minutes (on the next authorization check after the cache expires)
+- **New or deleted policy files**: Detected within 30 minutes (when the file list cache expires)
+- **Immediate effect**: Restart Rundeck to apply changes immediately without waiting for cache expiration
 
 If an authorization request occurs in the context of a specific Project (e.g. "does a user have Run access for a specific Job in this project?") then the Project-level policies created via the API area also used to evaluate the authorization request.
 
@@ -461,6 +488,16 @@ by:
 ```
 
 The example policy document above demonstrates the access granted to the users in group "admin".
+
+**Note**: The example above uses explicit action lists for clarity. You can also use `allow: '*'` as a wildcard to grant all actions, which is equivalent to listing all actions explicitly. For example:
+
+```yaml
+for:
+  job:
+    - allow: '*'  # Equivalent to [create,read,update,delete,run,runAs,kill,killAs,toggle_schedule,toggle_execution,view_history]
+```
+
+Both approaches are valid. Use explicit actions when you want to be clear about what permissions are granted, or use wildcards for simplicity when granting full access.
 
 Both `username` and `group` can use regular expressions to match multiple users or groups.
 
@@ -1035,6 +1072,13 @@ Permissions are additive. To run a job, you need:
 → Look for DENIED entries (deny rules override allow rules)
 → Verify the `by:` clause uses `group:` and NOT `username:` if using groups
 
+**User says: "I changed the ACL file but it's not working"**
+→ Policy files are cached for 2 minutes. Wait up to 2 minutes for changes to take effect, or restart Rundeck for immediate effect.
+→ New policy files may take up to 30 minutes to be detected.
+→ Verify the file is in the correct location (`$RDECK_BASE/etc/` or `/etc/rundeck/`)
+→ Check file permissions (must be readable by the Rundeck process)
+→ Validate YAML syntax using the `rd-acl` tool
+
 ### Diagnostic Steps
 
 To diagnose access issues:
@@ -1049,4 +1093,4 @@ To diagnose access issues:
 
 5. **Understand the evaluation order**: For each entry in the audit log, you'll see all decisions leading up to either an AUTHORIZED or a REJECTED message. It's not uncommon to see REJECTED messages followed by AUTHORIZED. The important thing is to look at the LAST decision made.
 
-6. **Remember deny rules win**: If ANY rule denies an action, it's denied, even if other rules allow it.
+6. **Remember deny rules win**: Deny rules are evaluated first. If ANY deny rule matches, the action is immediately denied (REJECTED_DENIED), even if other rules allow it. Allow rules are only evaluated if no deny rules match.

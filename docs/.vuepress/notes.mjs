@@ -22,12 +22,20 @@ const argv = _yargs(hideBin(process.argv))
   })
   .option('from-version', {
     type: 'string',
-    description: 'Previous version to compare from (e.g., 5.16.0). Auto-calculated if not provided.'
+    description:
+      'Previous version to compare from (e.g., 5.20.0). For X.0.0 milestones, defaults to docs setup.js RUNDECK_VERSION when it is still on the prior major line; otherwise auto-decrement (patch/minor) or legacy (major−1).17.0 fallback.'
   })
   .option('draft', {
     type: 'boolean',
-    description: 'Generate as draft.md instead of version-X.Y.Z.md',
+    description:
+      'Write to docs/history/…/draft.md and skip setup/sidebar/navbar updates. Omit for a full release run (version-X.Y.Z.md + config updates).',
     default: false
+  })
+  .option('output', {
+    alias: 'o',
+    type: 'string',
+    description:
+      'Output file path relative to the repo root (e.g. docs/history/6_x/version-6.0.0.md). Overrides the default path from --draft / milestone. Parent directories are created if needed.',
   })
   .help()
   .argv;
@@ -62,10 +70,30 @@ const excludeUsernames = [
 async function main() {
   // Determine version range
   const toVersion = argv.milestone;
-  const fromVersion = argv['from-version'] || getPreviousVersion(toVersion);
-  
+  const fromVersion = resolveNotesFromVersion(
+    toVersion,
+    setup.rundeckVersion,
+    argv['from-version'],
+  );
+
+  const toParts = toVersion.split('.').map(Number);
+  const isMajorMilestone =
+    toParts.length === 3 &&
+    !toParts.some(Number.isNaN) &&
+    toParts[1] === 0 &&
+    toParts[2] === 0;
+
   console.log('=== Rundeck Release Notes Generator ===\n');
   console.log(`Comparing versions: ${fromVersion} → ${toVersion}\n`);
+  if (
+    !argv['from-version'] &&
+    isMajorMilestone &&
+    fromVersion === setup.rundeckVersion
+  ) {
+    console.log(
+      `(Prior line taken from docs setup.js RUNDECK_VERSION=${setup.rundeckVersion}. Override with --from-version= if needed.)\n`,
+    );
+  }
   
   // Check if toVersion tag exists by attempting to fetch from main repos
   // Use a quiet Octokit instance to avoid noisy 404 logs during tag detection
@@ -168,14 +196,18 @@ async function main() {
 
   const notes = notesEnv.renderString(template.toString(), context);
 
-  const pathBase = `./docs/history/${argv.milestone.split('.').slice(0, 1).concat(['x']).join('_')}/`;
+  const seriesDir = `${argv.milestone.split('.').slice(0, 1).concat(['x']).join('_')}`;
+  const pathBase = path.join(process.cwd(), 'docs', 'history', seriesDir);
 
-  let outPath = "";
-  if (argv.draft) {
+  let outPath;
+  if (argv.output) {
+    outPath = path.resolve(process.cwd(), argv.output);
+  } else if (argv.draft) {
     outPath = path.join(pathBase, 'draft.md');
   } else {
     outPath = path.join(pathBase, `version-${argv.milestone}.md`);
   }
+  fs.mkdirSync(path.dirname(outPath), { recursive: true });
   console.log(notes);
   fs.writeFileSync(outPath, notes);
 
@@ -200,7 +232,7 @@ async function main() {
   }
 }
 
-// Helper: Add sidebar version entry if not present
+// Helper: Add sidebar version entry if not present (under Version {major}.x in Previous Version Docs)
 function addSidebarVersion(version) {
   const sidebarPath = path.resolve(__dirname, 'sidebar-menus/history.ts');
   let content = fs.readFileSync(sidebarPath, 'utf-8');
@@ -209,16 +241,39 @@ function addSidebarVersion(version) {
     console.log(`Sidebar version entry for ${version} already exists in history.ts, skipping.`);
     return;
   }
-  const version5xSection = /text: 'Version 5\.x',[\s\S]*?children: \[/m;
-  const match = content.match(version5xSection);
+
+  const major = version.split('.')[0];
+  const sectionLabel = `Version ${major}.x`;
+  // Match current sidebar style: text: 'Version N.x',
+  const sectionOpen = new RegExp(
+    `(text: 'Version ${major.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\.x',[\\s\\S]*?children: \\[)(\\n)`,
+    'm',
+  );
+  let match = content.match(sectionOpen);
   if (match) {
-    const insertIndex = match.index + match[0].indexOf('children: [') + 'children: ['.length;
-    content = content.slice(0, insertIndex) + '\n' + versionEntry + content.slice(insertIndex);
+    const insertIndex = match.index + match[1].length;
+    content = content.slice(0, insertIndex) + versionEntry + content.slice(insertIndex);
     fs.writeFileSync(sidebarPath, content);
-    console.log(`Added sidebar version entry for ${version} to history.ts`);
-  } else {
-    console.warn('Could not find Version 5.x section in sidebar-menus/history.ts');
+    console.log(`Added sidebar version entry for ${version} under ${sectionLabel} in history.ts`);
+    return;
   }
+
+  // New major line: insert a Version N.x block at the top of Previous Version Docs children
+  const newBlock = `      {\n        text: '${sectionLabel}',\n        collapsible: true,\n        children: [\n${versionEntry}        ]\n      },\n`;
+  const previousDocsRegex =
+    /(text: "Previous Version Docs",\s*\n\s*collapsible: true,\s*\n\s*children: \[\n)/;
+  if (previousDocsRegex.test(content)) {
+    content = content.replace(previousDocsRegex, `$1${newBlock}`);
+    fs.writeFileSync(sidebarPath, content);
+    console.log(
+      `Added ${sectionLabel} block with ${version} to history.ts (new major line under Previous Version Docs)`,
+    );
+    return;
+  }
+
+  console.warn(
+    'Could not find matching Version N.x section or Previous Version Docs in sidebar-menus/history.ts',
+  );
 }
 
 // Helper: Update the "Latest Release" link in sidebar

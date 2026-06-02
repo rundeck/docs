@@ -35,6 +35,8 @@ Users who require WinRM functionality in Rundeck are encouraged to use the PyWin
 
 The PyWinRM plugin is included out of the box with Rundeck and Runbook Automation and does not require extra steps to install it.
 
+Current py-winrm-plugin builds require **Python 3.8+** on the Rundeck server (and on Runner hosts that run WinRM work); **Python 2 is not supported**. See [Windows nodes with PyWinRM](/learning/howto/configuring-windows-nodes.md) and [Upgrading to Rundeck 6.0](/upgrading/upgrading-to-6.0.md#py-winrm-plugin-python-38).
+
 ## Configuration Steps
 The following section explains how to configure Windows to use WinRM and Rundeck to dispatch commands and scripts over WinRM against Windows nodes.
 

@@ -30,6 +30,7 @@ export default [{
                 children: [
                   '/upgrading/',
                   '/upgrading/upgrading',
+                  '/upgrading/upgrading-to-6.0.md',
                   '/upgrading/upgrading-to-5.0.md',
                   '/upgrading/upgrading-to-4.8.md',
                   '/upgrading/upgrading-to-4.1.md',
@@ -106,8 +107,6 @@ export default [{
                   collapsible: true,
                   link: '/administration/runner/runner-config'
                 }
-//                   '/administration/runner/runner-advancedsetup.md',
-//                   '/administration/runner/runner-faq.md'
                 ]
               },
               {
@@ -203,6 +202,16 @@ export default [{
                   '/administration/cluster/loadbalancer/reverse_proxies',
                   '/administration/configuration/remote-job-execution',
                   '/administration/cluster/replication/'
+                ]
+              },
+              {
+                text: 'Monitoring',
+                collapsible: true,
+                link: '/administration/monitoring/',
+                children: [
+                  '/administration/monitoring/',
+                  '/administration/monitoring/configuration.md',
+                  '/administration/monitoring/monitoring.md'
                 ]
               }
             ]},
