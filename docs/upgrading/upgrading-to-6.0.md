@@ -4,11 +4,9 @@ These notes cover steps and considerations when upgrading from Rundeck or Runboo
 
 ## Java 17 required
 
-**Rundeck 6.0.0** requires **Java 17** as the minimum and only supported runtime. See [Java (system requirements)](/administration/install/system-requirements.md#java) for details, supported distributions, and verification.
+**Rundeck 6.0.0** requires **Java 17** as the minimum supported runtime and includes support for **Java 25**. See [Java (system requirements)](/administration/install/system-requirements.md#java) for details, supported distributions, and verification.
 
 The **5.x** series supports Java 11 and Java 17. If the instance still runs on Java 11, either move to Java 17 **before** upgrading to 6.0 (while still on 5.x), or plan Java 17 installation as part of the same maintenance window as the 6.0 upgrade. Do not start Rundeck 6.0 on Java 11.
-
-Newer Java versions are not validated for 6.0.0 at release; they may work but are not yet supported.
 
 ### Enterprise Runners
 
@@ -40,12 +38,6 @@ As with any upgrade, use a **supported production database**, take a **backup** 
 ### MySQL schedule name length
 
 On MySQL and MariaDB, the `schedule_def.name` column maximum length has been reduced from 768 to 513 characters to accommodate utf8mb4 character sets and a 3072-byte unique index on `(project,name)`. Schedule names longer than 513 characters will be truncated during migration. This typically affects environments moving to MySQL 8.x with utf8mb4. Review scheduled job names if you have particularly long identifiers in your database.
-
-## Oracle 12c minimum version
-
-**Oracle 12c** is now the minimum supported Oracle database version. Rundeck 6.0 will not start on Oracle 11g—login and migrations will fail. If you are running Oracle 11g, **upgrade your database to Oracle 12c or higher before upgrading Rundeck to 6.0**.
-
-See [supported databases](/administration/install/system-requirements.md#database) and [Oracle database configuration](/administration/configuration/database/oracle.md) for details.
 
 ## Monitoring and metrics (legacy HTTP off by default)
 
@@ -91,6 +83,8 @@ This section highlights the changes that most often affect integrations and oper
 ### REST API: XML removed (JSON only) {#rest-api-xml-removed-json-only}
 
 The **`rundeck.feature.legacyXml.enabled`** property is **removed** in **6.0**. The **REST API no longer supports XML** requests or responses. Clients must use **JSON** (`Accept: application/json`, `Content-Type: application/json` where applicable). See [XML support](/api/index.md#xml-support) in the API guide.
+
+**Terraform users:** If you use the [Rundeck Terraform Provider](https://registry.terraform.io/providers/rundeck/rundeck/latest), upgrade to **version 1.0 or later** before upgrading Rundeck to 6.0. Earlier provider versions rely on XML API responses and will not work with Rundeck 6.0.
 
 **Document formats** (for example job definitions or resource documents that use XML as a **file** format) are separate from the HTTP API content negotiation above; follow the format-specific documentation for those workflows.
 

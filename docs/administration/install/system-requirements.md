@@ -15,9 +15,7 @@
 
 Rundeck is a Java-Servlet based server and therefore requires the Java runtime.
 
-As of **Rundeck 6.0.0**, **Java 17** is the **minimum** and **only supported** runtime (JRE) for production use. Java must be installed prior to running the install process. Ensure the JAVA\_HOME environment variable is defined properly in your environment before running the launcher. Installers will use the java found on your path. See [Setting JAVA\_HOME](/administration/maintenance/startup.md#setting-java_home) if you want to run a different installation of Java.
-
-Newer Java versions may run successfully but are **not yet validated** for Rundeck 6.0.0; official support for additional runtimes will be announced in a future release.
+As of **Rundeck 6.0.0**, **Java 17** is the **minimum supported** runtime (JRE) for production use, with support through **Java 25**. Java must be installed prior to running the install process. Ensure the JAVA\_HOME environment variable is defined properly in your environment before running the launcher. Installers will use the java found on your path. See [Setting JAVA\_HOME](/administration/maintenance/startup.md#setting-java_home) if you want to run a different installation of Java.
 
 Verify your Java version to check it meets the requirement:
 
@@ -38,7 +36,7 @@ Java HotSpot(TM) 64-Bit Server VM (build 17.0.10+11-LTS-240, mixed mode, sharing
 
 Sun/Oracle and other flavors of Java may work, but our team has limited capabilities to troubleshoot problems specific to those distributions. The [Azul Zulu Open JDK](https://www.azul.com/downloads/?package=jdk#zulu) is strongly recommended.
 
-- **Rundeck 6.0.0**: **Java 17** (JRE) is required for the Rundeck server (Runbook Automation Self-Hosted and Rundeck Open Source) and for [Enterprise Runner](/administration/runner/index.md) installations.
+- **Rundeck 6.0.0**: **Java 17** (JRE) is the minimum requirement, with support through **Java 25**, for the Rundeck server (Runbook Automation Self-Hosted and Rundeck Open Source) and for [Enterprise Runner](/administration/runner/index.md) installations.
 - Building from source requires **Java 17** (JDK).
 
 :::

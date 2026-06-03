@@ -22,7 +22,7 @@ Rundeck 6.0.0 represents a major milestone with the upgrade to Grails 7, Spring 
 
 **Modernized Monitoring** - The monitoring infrastructure has been upgraded to Spring Boot Actuator with native Prometheus support, replacing the legacy Dropwizard metrics endpoints. This provides better integration with modern observability stacks and more granular metrics for troubleshooting and capacity planning.
 
-**Enhanced Database Support** - MySQL 8.4 is now fully supported, and Oracle 12c is now the minimum Oracle version. These updates ensure compatibility with modern database features and security requirements.
+**Enhanced Database Support** - MySQL 8.4 is now fully supported with improved compatibility and performance. Database support has been updated to ensure compatibility with modern database features and security requirements.
 
 **Improved Security** - Over 20 CVEs have been addressed in this release through dependency upgrades and security patches. The modern framework allowed us to resolve previously blocked security issues that required Grails 7.
 
