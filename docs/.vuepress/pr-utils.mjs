@@ -30,6 +30,87 @@ export function parseSaasCutTag(tag) {
 }
 
 /**
+ * Fetch PRs by milestone as a fallback for large commit ranges
+ * @param {Object} octokit - Initialized Octokit instance
+ * @param {string} owner - Repository owner
+ * @param {string} repo - Repository name
+ * @param {string} milestone - Milestone version (e.g., "6.0.0")
+ * @param {Array<string>} includeLabels - Labels that PRs must have (empty array = all PRs)
+ * @param {Array<string>} excludeLabels - Labels to exclude from results
+ * @returns {Promise<Array>} Array of PR objects
+ */
+async function fetchPRsByMilestone(octokit, owner, repo, milestone, includeLabels = [], excludeLabels = []) {
+  console.log(`  Using milestone-based search for ${owner}/${repo} milestone ${milestone}`);
+  
+  const prs = [];
+  let page = 1;
+  const perPage = 100;
+  let hasMore = true;
+  
+  while (hasMore) {
+    try {
+      const { data: pullRequests } = await octokit.rest.pulls.list({
+        owner,
+        repo,
+        state: 'closed',
+        per_page: perPage,
+        page: page,
+        sort: 'updated',
+        direction: 'desc'
+      });
+      
+      if (pullRequests.length === 0) {
+        hasMore = false;
+        break;
+      }
+      
+      for (const pr of pullRequests) {
+        // Only include merged PRs
+        if (!pr.merged_at) continue;
+        
+        // Check milestone if it exists
+        if (pr.milestone && pr.milestone.title === milestone) {
+          const prLabels = pr.labels.map(label => label.name);
+          
+          // Check exclude labels
+          if (excludeLabels.length > 0 && excludeLabels.some(label => prLabels.includes(label))) {
+            continue;
+          }
+          
+          // Check include labels (empty = all PRs)
+          if (includeLabels.length === 0 || includeLabels.some(label => prLabels.includes(label))) {
+            prs.push({
+              ...pr,
+              _repoOwner: owner,
+              _repoName: repo
+            });
+          }
+        }
+      }
+      
+      // GitHub's list PRs API paginates
+      if (pullRequests.length < perPage) {
+        hasMore = false;
+      } else {
+        page++;
+      }
+      
+      // Safety limit
+      if (page > 100) {
+        console.log(`  ⚠ Reached pagination safety limit (${prs.length} PRs found)`);
+        hasMore = false;
+      }
+    } catch (error) {
+      console.warn(`  Warning: Error fetching PRs by milestone: ${error.message}`);
+      hasMore = false;
+    }
+  }
+  
+  console.log(`  Found ${prs.length} PRs with milestone ${milestone}`);
+  return prs;
+}
+
+/**
  * Fetch PRs merged between two tags using git comparison
  * @param {Object} octokit - Initialized Octokit instance
  * @param {string} owner - Repository owner
@@ -80,6 +161,15 @@ export async function fetchPRsBetweenTags(octokit, owner, repo, fromVersion, toV
   if (!comparison) {
     console.log(`  ⚠ Tags ${fromVersion}...${toVersion} not found - skipping ${owner}/${repo}`);
     return [];
+  }
+  
+  const totalCommits = comparison.data.total_commits || comparison.data.commits.length;
+  
+  // GitHub's compareCommits API has a 250 commit limit
+  // For large ranges, we need a different approach
+  if (totalCommits > 250) {
+    console.log(`  ⚠ Large commit range (${totalCommits} commits) - using milestone/search fallback`);
+    return await fetchPRsByMilestone(octokit, owner, repo, toVersion, includeLabels, excludeLabels);
   }
   
   // Extract PR numbers from merge commits
