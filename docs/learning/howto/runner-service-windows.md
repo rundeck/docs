@@ -124,7 +124,7 @@ To register the Enterprise Runner as a service, check the following steps:
 
 4. Create a stop script named `stop-runner.bat` in the `C:\runner\` folder with the content below. This script stops only the Runner process that the service started — it reads the PID that procrun writes to `runner.pid` — instead of killing every `java.exe` process on the host:
 
-```
+```bat
 @echo off
 setlocal
 set "PIDFILE=C:\runner\runner.pid"
