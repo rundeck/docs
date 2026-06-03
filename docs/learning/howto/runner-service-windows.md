@@ -22,8 +22,8 @@ Skip this section if you have already installed an Enterprise Runner on a Window
 
 2. Edit the `rundeck-config.properties` file and add the following line:
 
-```
-rundeck.feature.runner.enabled=true
+```properties
+rundeck.feature.runner.enabled = true
 ```
 
 This line enables the Enterprise Runner functionality on Runbook Automation Self-Hosted. Runbook Automation SaaS includes this feature out of the box.
@@ -112,38 +112,66 @@ To register the Enterprise Runner as a service, check the following steps:
 
 2. Uncompress the file and copy the `prunmgr.exe` and `prunsrv.exe` files to the `C:\runner\` folder.
 
+   :::warning Use the 64-bit binary on a 64-bit JDK/JRE
+   On a 64-bit system running a 64-bit JDK/JRE, use the 64-bit `prunsrv.exe` located in the `amd64\` subfolder of the uncompressed archive — **not** the 32-bit `prunsrv.exe` in the root of the archive. (`prunmgr.exe`, the GUI monitor, is 32-bit only — that is expected and fine.)
+   :::
+
 3. Rename the `prunsrv.exe` as `runner.exe`, and `prunmgr.exe` as `runnerw.exe`.
 
-4. Open a new CMD terminal with Administrative rights.
+   :::warning Architecture mismatch
+   If a 32-bit `runner.exe` is used with a 64-bit JRE/JDK, it cannot load the 64-bit `jvm.dll`, and the service will fail to start or stop with the error `%1 is not a valid Win32 application`. You can confirm which architecture is in use by checking `commons-daemon.log`: the startup line should read `procrun (1.x.x.x 64-bit) started`.
+   :::
 
-5. Go to the `C:\runner\` folder.
+4. Create a stop script named `stop-runner.bat` in the `C:\runner\` folder with the content below. This script stops only the Runner process that the service started — it reads the PID that procrun writes to `runner.pid` — instead of killing every `java.exe` process on the host:
 
-6. Execute the following command (you can copy and paste it directly on the CMD terminal to execute it):
-
+```bat
+@echo off
+setlocal
+set "PIDFILE=C:\runner\runner.pid"
+if not exist "%PIDFILE%" exit /b 0
+set /p PID=<"%PIDFILE%"
+if "%PID%"=="" exit /b 0
+taskkill /F /FI "PID eq %PID%" /FI "IMAGENAME eq java.exe"
+endlocal
 ```
-runner.exe //IS/runner ^
+
+5. Open a new CMD terminal with Administrative rights.
+
+6. Go to the `C:\runner\` folder.
+
+7. Execute the following command (you can copy and paste it directly on the CMD terminal to execute it):
+
+```bat
+runner.exe //IS//Runner ^
  --DisplayName=Runner ^
- --LogLevel=Debug ^
+ --LogLevel=Info ^
  --LogPath=C:\runner ^
  --ServiceUser=LocalSystem ^
  --Startup=auto ^
+ --Jvm=auto ^
  --StartMode=java ^
  --StartPath=C:\runner ^
  --StartParams=-jar#runner.jar ^
  --StopMode=exe ^
+ --StopImage=C:\Windows\System32\cmd.exe ^
+ --StopParams=/c#C:\runner\stop-runner.bat ^
  --StopPath=C:\runner ^
- --StopImage=TASKKILL.exe ^
  --StopTimeout=30 ^
- --PidFile=rundeck.pid ^
- --JvmMs=1024 --JvmMx=2048 ^
+ --PidFile=runner.pid ^
+ --JvmMs=1024 ^
+ --JvmMx=4096 ^
  --StdOutput=C:\runner\runner.log ^
  --StdError=C:\runner\runner.log
 ```
 
-You will see the following messages:
+:::tip Note
+The service name uses a double slash (`//IS//runner`) — this is the procrun syntax for "install service". `--Jvm=auto` lets procrun locate `jvm.dll` automatically from `JAVA_HOME` / the registry. The stop is delegated to `stop-runner.bat` through `cmd.exe`; the full path to `cmd.exe` is required because procrun passes `--StopImage` directly to `CreateProcess`, which does not search the `PATH` (a bare `cmd` fails with `The system cannot find the file specified`).
+:::
 
-```
-[2023-10-04 13:12:51] [info]  ( prunsrv.c:2018) [ 5164] Apache Commons Daemon procrun (1.3.4.0 32-bit) started.
+You will see messages similar to the following:
+
+```log
+[2023-10-04 13:12:51] [info]  ( prunsrv.c:2018) [ 5164] Apache Commons Daemon procrun (1.5.1.0 64-bit) started.
 [2023-10-04 13:12:51] [debug] ( prunsrv.c:774 ) [ 5164] Installing service...
 [2023-10-04 13:12:51] [info]  ( prunsrv.c:831 ) [ 5164] Installing service 'runner' name 'Runner'.
 [2023-10-04 13:12:51] [debug] ( prunsrv.c:865 ) [ 5164] Setting service user 'LocalSystem'.
@@ -151,15 +179,19 @@ You will see the following messages:
 [2023-10-04 13:12:51] [info]  ( prunsrv.c:2102) [ 5164] Apache Commons Daemon procrun finished.
 ```
 
-7. Now press the Windows key + R key combination, then type `services.msc` and press the Enter key.
+8. Now press the Windows key + R key combination, then type `services.msc` and press the Enter key.
 
-8. Scroll down the Service list and locate the "Runner" service.
+9. Scroll down the Service list and locate the "Runner" service.
 
 ![Launching services.msc](/assets/img/raas2.png)<br>
 
-9. Click the right button and select "Start", after a couple of seconds, the service must be shown as "Running" status.
+10. Click the right button and select "Start", after a couple of seconds, the service must be shown as "Running" status.
 
 ![Windows Services](/assets/img/raas5.png)<br>
+
+:::tip Note
+If you install the service at `--LogLevel=Debug`, the stop sequence may log repeated `conhost.exe ... Still here!` lines for a few seconds while procrun tears down the console host of the spawned `java.exe` process. This is cosmetic — the service still reaches the `Stopped` state. Running at `--LogLevel=Info` (as shown above) keeps the log clean. Note that the Runner's own application logs are written under `C:\runner\runner\logs\`, separate from the procrun `--StdOutput`/`--StdError` file.
+:::
 
 ### How to remove the service
 
@@ -169,7 +201,7 @@ To stop and remove the Enterprise Runner service check the following steps:
 
 2. Go to the `C:\runner\` folder.
 
-3. Execute `runner.exe //DS/Runner`. This process could take around 30 seconds.
+3. Execute `runner.exe //DS//Runner`. This process could take around 30 seconds.
 
 Now, the service is down and unregistered from Windows Services.
 
