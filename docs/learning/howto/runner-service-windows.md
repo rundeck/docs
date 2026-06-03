@@ -142,7 +142,7 @@ endlocal
 7. Execute the following command (you can copy and paste it directly on the CMD terminal to execute it):
 
 ```bat
-runner.exe //IS//runner ^
+runner.exe //IS//Runner ^
  --DisplayName=Runner ^
  --LogLevel=Info ^
  --LogPath=C:\runner ^
