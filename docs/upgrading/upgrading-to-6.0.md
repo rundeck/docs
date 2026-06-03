@@ -37,6 +37,16 @@ Configuration and prerequisites are summarized in [Connect to Windows Nodes with
 
 As with any upgrade, use a **supported production database**, take a **backup** before upgrading, and allow the application to run migrations on startup in a controlled window.
 
+### MySQL schedule name length
+
+On MySQL and MariaDB, the `schedule_def.name` column maximum length has been reduced from 768 to 513 characters to accommodate utf8mb4 character sets and a 3072-byte unique index on `(project,name)`. Schedule names longer than 513 characters will be truncated during migration. This typically affects environments moving to MySQL 8.x with utf8mb4. Review scheduled job names if you have particularly long identifiers in your database.
+
+## Oracle 12c minimum version
+
+**Oracle 12c** is now the minimum supported Oracle database version. Rundeck 6.0 will not start on Oracle 11g—login and migrations will fail. If you are running Oracle 11g, **upgrade your database to Oracle 12c or higher before upgrading Rundeck to 6.0**.
+
+See [supported databases](/administration/install/system-requirements.md#database) and [Oracle database configuration](/administration/configuration/database/oracle.md) for details.
+
 ## Monitoring and metrics (legacy HTTP off by default)
 
 Rundeck **6.0** changes the default for **legacy** metrics HTTP endpoints (`/metrics/*`, Dropwizard-style JSON). Those endpoints are **disabled by default** (`rundeck.metrics.legacy.enabled=false`). **Modern** Spring Boot Actuator endpoints under **`/monitoring/*`** (for example Prometheus scrape and JSON metric discovery) remain **enabled by default**.
@@ -49,6 +59,16 @@ API routes that **forward to legacy metrics** (for example **`/api/25/metrics/me
 2. **Temporary bridge:** If you must keep legacy URLs during transition, set **`rundeck.metrics.legacy.enabled=true`** (see [Monitoring configuration](/administration/monitoring/configuration.md#legacy-endpoints)).
 
 Legacy **`/metrics/*`** HTTP is scheduled for **removal in Rundeck 7.0**; plan to rely on **`/monitoring/*`** before then. For a full picture of application vs. infrastructure metrics (including JMX), see the [monitoring overview](/administration/monitoring/index.md).
+
+## Ant-based local executor removed {#ant-based-local-executor-removed}
+
+The legacy Ant-based local executor has been removed in Rundeck 6.0. Local execution now uses Java `ProcessBuilder` exclusively. 
+
+If you previously set `local-node-executor="legacy"` in configuration, this will now result in a "provider not found" error. The `newLocalNodeExecutor` feature flag has been removed and will be ignored if present in your configuration.
+
+**Action required:** Remove any `local-node-executor="legacy"` configuration and the `newLocalNodeExecutor` flag if present. The modern local executor (which has been the default since earlier versions) will be used automatically.
+
+This change only affects environments that explicitly forced the legacy executor behavior via feature flags. If you haven't manually configured this setting, no action is required.
 
 ## Activity RSS feed (deprecated; off by default) {#activity-rss-feed-server-feature-removed}
 
@@ -88,5 +108,17 @@ Runner overview: [Enterprise Runner](/administration/runner/index.md#enabling-th
 ### Other notable flag outcomes (summary)
 
 Internal review also **raised defaults** or **made behaviors permanent** for features such as execution and job lifecycle plugins, notifications editor (Vue), workflow execution summary UI, workflow dynamic step summary, and several storage/plugin behaviors—so explicit **`false`** overrides from older environments may now be **overriding the 6.0 default on**. After upgrade, confirm whether those overrides are still intentional.
+
+## JAAS authentication configuration (Jetty 12) {#jaas-authentication-jetty-12}
+
+Rundeck 6.0 upgrades to **Jetty 12**, which removes the legacy Jetty JAAS packages. Custom JAAS configurations must now reference **`org.rundeck.jaas.*`** modules instead of the old Jetty classes.
+
+**Action required for JAAS users:**
+
+1. **Update `jaas-loginmodule.conf`** to reference `org.rundeck.jaas.PropertyFileLoginModule` instead of the old Jetty class names
+2. **Jetty OBF passwords are no longer supported** - if you use obfuscated passwords, migrate to MD5, CRYPT, or BCRYPT password hashing
+3. **Docker and Kubernetes deployments** that mount custom JAAS configurations must update their config files before upgrading to 6.0
+
+See the [Authentication documentation](/administration/security/authentication.md) for current JAAS configuration examples and supported password formats.
 
 

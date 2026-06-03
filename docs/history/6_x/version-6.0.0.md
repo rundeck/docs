@@ -14,12 +14,29 @@ feed:
 
 ## Overview
 
-- Java 17 minimum with support for Java 25
-- Significant performance improvements
-- Modernized monitoring (Prometheus)
-- Oracle 12c minimum version
-- MySQL 8.4 support
-- Lots More
+Rundeck 6.0.0 represents a major milestone with the upgrade to Grails 7, Spring Boot 3, and Java 17 support. This modernization brings significant improvements across performance, security, and user experience.
+
+### What's New
+
+**Java 17 and Java 25 Support** - Rundeck 6.0 requires Java 17 as the minimum runtime and introduces support for Java 25, enabling you to run on the latest Java versions with improved performance and security features.
+
+**Modernized Monitoring** - The monitoring infrastructure has been upgraded to Spring Boot Actuator with native Prometheus support, replacing the legacy Dropwizard metrics endpoints. This provides better integration with modern observability stacks and more granular metrics for troubleshooting and capacity planning.
+
+**Enhanced Database Support** - MySQL 8.4 is now fully supported, and Oracle 12c is now the minimum Oracle version. These updates ensure compatibility with modern database features and security requirements.
+
+**Improved Security** - Over 20 CVEs have been addressed in this release through dependency upgrades and security patches. The modern framework allowed us to resolve previously blocked security issues that required Grails 7.
+
+### Performance Improvements
+
+In combination with Java 25 support and the new framework, we are seeing significant performance improvements. Each customer's environment is unique, so individual benefits will vary based on workload patterns and infrastructure configuration.
+
+### Security Enhancements
+
+This release improves security by patching and addressing over 20 different CVEs. The modern framework also allowed us to mitigate some previously open issues that were blocked on older dependencies requiring Grails 7.
+
+Key security features in this release include:
+- **Password reset links now automatically expire** after a configurable period (7 days by default), limiting the window of opportunity for unauthorized password resets
+- **Password policy enforcement from System Configuration** now correctly prioritizes database settings over file-based configuration, ensuring policies set through the UI are properly enforced
 
 <!-- <VidStack src="youtube/REPLACE" poster="https://img.youtube.com/vi/REPLACE/maxresdefault.jpg"/> -->
 
