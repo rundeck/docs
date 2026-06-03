@@ -22,8 +22,8 @@ Skip this section if you have already installed an Enterprise Runner on a Window
 
 2. Edit the `rundeck-config.properties` file and add the following line:
 
-```
-rundeck.feature.runner.enabled=true
+```properties
+rundeck.feature.runner.enabled = true
 ```
 
 This line enables the Enterprise Runner functionality on Runbook Automation Self-Hosted. Runbook Automation SaaS includes this feature out of the box.
@@ -141,7 +141,7 @@ endlocal
 
 7. Execute the following command (you can copy and paste it directly on the CMD terminal to execute it):
 
-```
+```bat
 runner.exe //IS//runner ^
  --DisplayName=Runner ^
  --LogLevel=Info ^
@@ -170,7 +170,7 @@ The service name uses a double slash (`//IS//runner`) — this is the procrun sy
 
 You will see messages similar to the following:
 
-```
+```log
 [2023-10-04 13:12:51] [info]  ( prunsrv.c:2018) [ 5164] Apache Commons Daemon procrun (1.5.1.0 64-bit) started.
 [2023-10-04 13:12:51] [debug] ( prunsrv.c:774 ) [ 5164] Installing service...
 [2023-10-04 13:12:51] [info]  ( prunsrv.c:831 ) [ 5164] Installing service 'runner' name 'Runner'.
