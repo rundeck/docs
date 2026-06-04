@@ -172,7 +172,7 @@ runner.exe //IS//Runner ^
 The service name uses a double slash (`//IS//runner`) — this is the procrun syntax for "install service". `--Jvm=auto` lets procrun locate `jvm.dll` automatically from `JAVA_HOME` / the registry. The stop is delegated to `stop-runner.bat` through `cmd.exe`; the full path to `cmd.exe` is required because procrun passes `--StopImage` directly to `CreateProcess`, which does not search the `PATH` (a bare `cmd` fails with `The system cannot find the file specified`).
 :::
 
-@tab Alternative More logging (`jvm` mode)
+@tab Alternative (more logging, `jvm` mode)
 
 With `--StartMode=java`, procrun launches the Runner as a **separate** `java.exe` process and does not pipe that process's output into `--StdOutput`/`--StdError`, so `runner.log` can stay empty. Use this `jvm`-mode variant instead: procrun loads the JVM **in-process** and captures the Runner's `System.out`/`System.err` directly into the log file.
 
