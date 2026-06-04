@@ -202,7 +202,7 @@ runner.exe //IS//Runner ^
 ```
 
 :::warning Set `--Jvm` to your real `jvm.dll` path
-In `jvm` mode `--Jvm=auto` often fails with `no JVM configured or found in registry` (many JDK/JRE builds don't register in the Windows registry, and the `LocalSystem` account doesn't see a user-level `JAVA_HOME`). Replace `<JAVA_INSTALL_PATH>` with your Java installation directory (the same path as `JAVA_HOME`)
+In `jvm` mode, `--Jvm=auto` often fails with `no JVM configured or found in registry` (many JDK/JRE builds don't register in the Windows registry, and the `LocalSystem` account doesn't see a user-level `JAVA_HOME`). Replace `<JAVA_INSTALL_PATH>` with your Java installation directory (the same path as `JAVA_HOME`).
 
 Note that `jvm` mode replaces `--StartMode=java`/`--StartParams=-jar#runner.jar` with `--StartMode=jvm`, `--Classpath` (the path to `runner.jar`) and `--StartClass` (the Runner main class). The `runner.exe` (procrun) and the `jvm.dll` must be the **same architecture** (use the 64-bit `prunsrv.exe` from `amd64\` with a 64-bit JRE/JDK).
 :::
