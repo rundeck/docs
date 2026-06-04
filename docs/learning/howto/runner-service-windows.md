@@ -141,7 +141,7 @@ endlocal
 
 7. Execute the following command (you can copy and paste it directly on the CMD terminal to execute it):
 
-::: tabs
+:::: tabs
 
 @tab Standard (`java` mode)
 
@@ -168,7 +168,7 @@ runner.exe //IS//Runner ^
  --StdError=C:\runner\runner.log
 ```
 
-:::tip Note
+::: tip Note
 The service name uses a double slash (`//IS//runner`) — this is the procrun syntax for "install service". `--Jvm=auto` lets procrun locate `jvm.dll` automatically from `JAVA_HOME` / the registry. The stop is delegated to `stop-runner.bat` through `cmd.exe`; the full path to `cmd.exe` is required because procrun passes `--StopImage` directly to `CreateProcess`, which does not search the `PATH` (a bare `cmd` fails with `The system cannot find the file specified`).
 :::
 
