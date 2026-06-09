@@ -71,6 +71,7 @@ export default [{
                       '/administration/runner/runner-management/node-dispatch.md',
                       '/administration/runner/runner-management/managing-replicas.md',
                       '/administration/runner/runner-management/monitoring-runners.md',
+                      {link:'/administration/runner/runner-management/runner-metrics.md',text:"Runner Metrics Reference"},
                       '/administration/runner/runner-management/runner-logging.md',
                       '/administration/runner/runner-management/upgrading-runners.md',
                       {link:'/administration/runner/runner-management/runner-high-availability.md',text:"Runner High Availability"}
