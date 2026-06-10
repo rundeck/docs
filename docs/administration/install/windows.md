@@ -133,6 +133,10 @@ The JAVA_HOME system environment variable must be set (See [How to set up JAVA_H
 4. Rename WAR package to rundeck.war, rename prunsrv.exe to the service name i.e rundeck.exe, and prunmgr.exe to rundeckw.exe (the "w" character is required).
 5. Open a CMD prompt and paste these commands (Administrator user is required to install a service)
 
+:::: tabs
+
+@tab Standard (`java` mode)
+
 ```batch
   rundeck.exe //IS/rundeck ^
   --DisplayName=Rundeck/ProcessAutomation ^
@@ -153,6 +157,46 @@ The JAVA_HOME system environment variable must be set (See [How to set up JAVA_H
   --StdError=C:\rundeck\var\logs\service.log ^
   --JvmOptions=-server#-Drdeck.base=C:\rundeck#-Drundeck.config.location=C:\rundeck\server\config\rundeck-config.properties#-Drundeck.server.logDir=C:\rundeck\server\logs
 ```
+
+@tab JVM mode (captures logging)
+
+With `--StartMode=java`, procrun launches Rundeck as a **separate** `java.exe` process and does not pipe that process's output into `--StdOutput`/`--StdError`, so `service.log` can stay empty. Use this `jvm`-mode variant instead: procrun loads the JVM **in-process** and captures Rundeck's `System.out`/`System.err` directly into the log file.
+
+```batch
+  rundeck.exe //IS//rundeck ^
+  --DisplayName=Rundeck/ProcessAutomation ^
+  --LogLevel=Debug ^
+  --LogPath=C:\rundeck ^
+  --LogPrefix=commons-daemon ^
+  --ServiceUser=LocalSystem ^
+  --Startup=auto ^
+  --Jvm="%JAVA_HOME%\bin\server\jvm.dll" ^
+  --LibraryPath="%JAVA_HOME%\bin" ^
+  --StartMode=jvm ^
+  --Classpath=C:\rundeck\rundeck.war ^
+  --StartClass=org.springframework.boot.loader.WarLauncher ^
+  --StartMethod=main ^
+  --StartPath=C:\rundeck ^
+  --StopMode=jvm ^
+  --StopClass=java.lang.System ^
+  --StopMethod=exit ^
+  --StopParams=0 ^
+  --StopTimeout=30 ^
+  --PidFile=rundeck.pid ^
+  --JvmMs=1024 ^
+  --JvmMx=2048 ^
+  --StdOutput=C:\rundeck\service.log ^
+  --StdError=C:\rundeck\service.log ^
+  --JvmOptions=-Drdeck.base=C:\rundeck#-Drundeck.config.location=C:\rundeck\server\config\rundeck-config.properties#-Drundeck.server.logDir=C:\rundeck\server\logs#--add-opens=java.base/java.lang=ALL-UNNAMED#--add-opens=java.base/java.util=ALL-UNNAMED#--add-opens=java.base/java.lang.reflect=ALL-UNNAMED#--add-opens=java.base/java.io=ALL-UNNAMED#--add-opens=java.base/java.net=ALL-UNNAMED
+```
+
+:::warning Set `--Jvm` to your real `jvm.dll` path
+In `jvm` mode, `--Jvm=auto` often fails with `no JVM configured or found in registry` (many JDK/JRE builds don't register in the Windows registry, and the `LocalSystem` account doesn't see a user-level `JAVA_HOME`). Replace the `--Jvm` and `--LibraryPath` values above with your actual Java installation directory (the same path as `JAVA_HOME`).
+
+The `rundeck.exe` (procrun) binary and the `jvm.dll` must be the **same architecture** — use the 64-bit `prunsrv.exe` from the `amd64\` subfolder of the Apache Commons Daemon archive with a 64-bit JDK/JRE. The `--add-opens` options are required so the embedded JVM can run on Java 17.
+:::
+
+::::
 
 Now, Rundeck is configured as a Service and can be managed with rundeckw.exe
 
