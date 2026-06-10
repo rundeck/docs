@@ -5,8 +5,112 @@
     <link>https://docs.rundeck.com/docs</link>
     <description>Recent merged pull requests and development updates from Rundeck</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 02 Apr 2026 17:27:23 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 10 Jun 2026 18:52:43 GMT</lastBuildDate>
     <atom:link href="https://docs.rundeck.com/feeds/development.xml" rel="self" type="application/rss+xml" />
-
+    <item>
+      <title>Fix cluster member state showing as unknown on Job page</title>
+      <link>https://docs.rundeck.com/docs/history/updates/</link>
+      <description>Fix cluster member state showing as unknown on Job page (Merged: May 27, 2026)</description>
+      <pubDate>Wed, 27 May 2026 21:16:57 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeck-10172</guid>
+    </item>
+    <item>
+      <title>Fix cron expression selector not updating in Execution History Clean</title>
+      <link>https://docs.rundeck.com/docs/history/updates/</link>
+      <description>Fix cron expression selector not updating in Execution History Clean (Merged: May 27, 2026)</description>
+      <pubDate>Wed, 27 May 2026 21:04:15 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeck-10154</guid>
+    </item>
+    <item>
+      <title>Fix search not working in User Management tables</title>
+      <link>https://docs.rundeck.com/docs/history/updates/</link>
+      <description>Fix search not working in User Management tables (Merged: May 27, 2026)</description>
+      <pubDate>Wed, 27 May 2026 19:29:06 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeckpro-4698</guid>
+    </item>
+    <item>
+      <title>Restore step property value colors for dark background contexts</title>
+      <link>https://docs.rundeck.com/docs/history/updates/</link>
+      <description>Restore step property value colors for dark background contexts (Merged: May 27, 2026)</description>
+      <pubDate>Wed, 27 May 2026 16:22:49 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeck-10153</guid>
+    </item>
+    <item>
+      <title>Improve Dutch translations to be better understandable - Community Submission</title>
+      <link>https://docs.rundeck.com/docs/history/updates/</link>
+      <description>Improve Dutch translations to be better understandable - Community Submission (Merged: May 27, 2026)</description>
+      <pubDate>Wed, 27 May 2026 16:20:42 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeck-10164</guid>
+    </item>
+    <item>
+      <title>Update follow-redirects for CVE-2026-40895</title>
+      <link>https://docs.rundeck.com/docs/history/updates/</link>
+      <description>Update follow-redirects for CVE-2026-40895 (Merged: May 26, 2026)</description>
+      <pubDate>Tue, 26 May 2026 20:21:07 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeck-10169</guid>
+    </item>
+    <item>
+      <title>Update commons-compress to 1.28.0 to fix CVE-2025-48924</title>
+      <link>https://docs.rundeck.com/docs/history/updates/</link>
+      <description>Update commons-compress to 1.28.0 to fix CVE-2025-48924 (Merged: May 26, 2026)</description>
+      <pubDate>Tue, 26 May 2026 20:20:27 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeck-10165</guid>
+    </item>
+    <item>
+      <title>Fix/add created by field</title>
+      <link>https://docs.rundeck.com/docs/history/updates/</link>
+      <description>Fix/add created by field (Merged: May 26, 2026)</description>
+      <pubDate>Tue, 26 May 2026 18:07:02 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeck-10150</guid>
+    </item>
+    <item>
+      <title>Conditional step with multiple sub-steps breaks job output</title>
+      <link>https://docs.rundeck.com/docs/history/updates/</link>
+      <description>Conditional step with multiple sub-steps breaks job output (Merged: May 26, 2026)</description>
+      <pubDate>Tue, 26 May 2026 16:57:54 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeck-10140</guid>
+    </item>
+    <item>
+      <title>Make script editor min/max lines configurable via System Configuration</title>
+      <link>https://docs.rundeck.com/docs/history/updates/</link>
+      <description>Make script editor min/max lines configurable via System Configuration (Merged: May 22, 2026)</description>
+      <pubDate>Fri, 22 May 2026 22:05:05 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeck-10137</guid>
+    </item>
+    <item>
+      <title>Remove Community News Subscribe Button</title>
+      <link>https://docs.rundeck.com/docs/history/updates/</link>
+      <description>Remove Community News Subscribe Button (Merged: May 22, 2026)</description>
+      <pubDate>Fri, 22 May 2026 21:59:48 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeck-10148</guid>
+    </item>
+    <item>
+      <title>Make UUID field read-only in job Other tab</title>
+      <link>https://docs.rundeck.com/docs/history/updates/</link>
+      <description>Make UUID field read-only in job Other tab (Merged: May 15, 2026)</description>
+      <pubDate>Fri, 15 May 2026 22:27:16 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeck-10146</guid>
+    </item>
+    <item>
+      <title>NextUI: Vue migration for User and System Configuration menus</title>
+      <link>https://docs.rundeck.com/docs/history/updates/</link>
+      <description>NextUI: Vue migration for User and System Configuration menus (Merged: May 11, 2026)</description>
+      <pubDate>Mon, 11 May 2026 16:30:54 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeck-9899</guid>
+    </item>
+    <item>
+      <title>Eliminate Jasypt dependency and upgrade BouncyCastle to 1.84</title>
+      <link>https://docs.rundeck.com/docs/history/updates/</link>
+      <description>Eliminate Jasypt dependency and upgrade BouncyCastle to 1.84 (Merged: May 6, 2026)</description>
+      <pubDate>Wed, 06 May 2026 18:04:30 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeck-10094</guid>
+    </item>
+    <item>
+      <title>Upgrade mina-core to 2.2.7 to fix CVE-2026-42779</title>
+      <link>https://docs.rundeck.com/docs/history/updates/</link>
+      <description>Upgrade mina-core to 2.2.7 to fix CVE-2026-42779 (Merged: May 4, 2026)</description>
+      <pubDate>Mon, 04 May 2026 23:48:07 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeck-10118</guid>
+    </item>
   </channel>
 </rss>
