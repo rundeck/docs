@@ -170,9 +170,11 @@ Kerberos is the recommended authentication method for enterprise environments as
 - The `krb5-workstation` and `python-gssapi` packages installed on the Rundeck server
 - The `rundeck` service account must exist in each target AD domain with the same password stored in Rundeck Key Storage
 
-### Configuring krb5.conf for Multiple Domains
+### Configuring krb5.conf
 
-Instead of editing `/etc/krb5.conf` directly, place one file per domain in `/etc/krb5.conf.d/`. The main config file only needs to enable the include directory and set the default realm:
+Instead of editing `/etc/krb5.conf` directly, the recommended approach is to place domain configuration as drop-in files under `/etc/krb5.conf.d/`. This keeps the main config file clean and makes it easy to add or remove domains independently — one file per domain, all in the same directory.
+
+The main `/etc/krb5.conf` only needs to enable the include directory and set global defaults:
 
 ```ini
 # /etc/krb5.conf
@@ -194,7 +196,7 @@ includedir /etc/krb5.conf.d/
     default_ccache_name = KEYRING:persistent:%{uid}
 ```
 
-Then create one drop-in file per domain under `/etc/krb5.conf.d/`:
+For each domain, create a drop-in file under `/etc/krb5.conf.d/`. If you only have one domain, a single file is enough. For multiple domains, simply add one file per domain — Kerberos will load all of them automatically:
 
 ```ini
 # /etc/krb5.conf.d/krb5-domain1.conf
@@ -211,7 +213,7 @@ domain1.example.com = DOMAIN1.EXAMPLE.COM
 ```
 
 ```ini
-# /etc/krb5.conf.d/krb5-domain2.conf
+# /etc/krb5.conf.d/krb5-domain2.conf  (add this only if you have a second domain)
 [realms]
 DOMAIN2.EXAMPLE.COM = {
     kdc = dc1.domain2.example.com
@@ -264,7 +266,14 @@ The following Group Policy settings are required on the Windows nodes:
 
 ### Verifying Kerberos Configuration
 
-Test that tickets can be obtained for each domain before running Rundeck jobs:
+Before running Rundeck jobs, verify that tickets can be obtained for each domain. For a single domain:
+
+```bash
+kinit rundeck@DOMAIN1.EXAMPLE.COM
+klist  # should show a valid ticket for DOMAIN1.EXAMPLE.COM
+```
+
+If you have multiple domains, test each one — `klist` should show a ticket for every realm:
 
 ```bash
 kinit rundeck@DOMAIN1.EXAMPLE.COM
