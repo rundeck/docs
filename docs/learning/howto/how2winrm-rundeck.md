@@ -252,17 +252,24 @@ When using Kerberos with multiple domains, set the username in UPN format (`user
 
 ### GPO Requirements
 
-The following Group Policy settings are required on the Windows nodes:
+The following Group Policy settings are required on the Windows nodes. All credential delegation policies are found under:
 
-| Path | Policy | Value |
-|---|---|---|
-| Computer Config > Admin Templates > System > Credentials Delegation | Allow delegating default credentials | Enabled — server list: `WSMAN/*` |
-| Computer Config > Admin Templates > System > Credentials Delegation | Allow delegating fresh credentials | Enabled — server list: `WSMAN/*` |
-| Computer Config > Admin Templates > System > Credentials Delegation | Allow delegating saved credentials | Enabled — server list: `WSMAN/*` |
-| WinRM Client | Allow Kerberos authentication | Enabled |
-| WinRM Service | Allow Kerberos authentication | Enabled |
+**Computer Configuration > Policies > Administrative Templates > System > Credentials Delegation**
 
-> **Important:** Use `WSMAN/*` (not `WSMAN/*.yourdomain.com`) in the server list. A domain-scoped value will prevent credential delegation from working when Rundeck targets nodes in other domains.
+| Policy | Value |
+|---|---|
+| Allow delegating default credentials | Enabled — server list: `WSMAN/*` |
+| Allow delegating fresh credentials | Enabled — server list: `WSMAN/*` |
+| Allow delegating saved credentials | Enabled — server list: `WSMAN/*` |
+| Allow delegating default credentials with NTLM-only server authentication | Enabled — server list: `WSMAN/*` |
+| Allow delegating fresh credentials with NTLM-only server authentication | Enabled — server list: `WSMAN/*` |
+| Allow delegating saved credentials with NTLM-only server authentication | Enabled — server list: `WSMAN/*` |
+| WinRM Client > Allow Kerberos authentication | Enabled |
+| WinRM Service > Allow Kerberos authentication | Enabled |
+
+The first three policies cover credential delegation when the target server authenticates via **Kerberos**. The `NTLM-only` variants cover the same delegation but when the server falls back to **NTLM** — which can happen when Kerberos is temporarily unavailable, a DNS issue prevents SPN resolution, or a node is not yet fully enrolled in the domain. Enabling both sets ensures delegation works reliably across all nodes regardless of which authentication protocol is negotiated.
+
+> **Important:** Always use `WSMAN/*` (not `WSMAN/*.yourdomain.com`) in the server list. A domain-scoped value is a common mistake when exporting and importing GPOs between domains — it will silently block credential delegation for any node outside the original domain.
 
 ### Verifying Kerberos Configuration
 
