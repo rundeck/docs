@@ -166,9 +166,16 @@ Kerberos is the recommended authentication method for enterprise environments as
 
 ### Prerequisites
 
-- A Kerberos-enabled Active Directory domain
-- The `krb5-workstation` and `python-gssapi` packages installed on the Rundeck server
-- The `rundeck` service account must exist in each target AD domain with the same password stored in Rundeck Key Storage
+The following requirements apply to the Rundeck server. For the full list see the [py-winrm-plugin requirements](https://github.com/rundeck-plugins/py-winrm-plugin#requirements).
+
+- Linux, Mac OS X or Windows
+- CPython 3.8+ or PyPy3
+- pywinrm (`pip install pywinrm`)
+- openssl 1.1.1 or higher
+- requests-kerberos (required for Kerberos authentication — see [installation instructions](https://github.com/diyan/pywinrm/#to-use-kerberos-authentication-you-need-these-optional-dependencies))
+- requests-credssp (required for CredSSP authentication — see [installation instructions](https://github.com/diyan/pywinrm/#to-use-credssp-authentication-you-need-these-optional-dependencies))
+
+In addition, the `rundeck` service account must exist in each target AD domain with the same password stored in Rundeck Key Storage.
 
 ### Configuring krb5.conf
 
