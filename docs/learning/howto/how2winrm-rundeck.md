@@ -175,7 +175,7 @@ The following requirements apply to the Rundeck server. For the full list see th
 - requests-kerberos (required for Kerberos authentication — see [installation instructions](https://github.com/diyan/pywinrm/#to-use-kerberos-authentication-you-need-these-optional-dependencies))
 - requests-credssp (required for CredSSP authentication — see [installation instructions](https://github.com/diyan/pywinrm/#to-use-credssp-authentication-you-need-these-optional-dependencies))
 
-In addition, the `rundeck` service account must exist in each target AD domain with the same password stored in Rundeck Key Storage.
+In addition, the Windows account defined in the node definition must exist in each target AD domain with its password stored in Rundeck Key Storage.
 
 ### Configuring krb5.conf
 
