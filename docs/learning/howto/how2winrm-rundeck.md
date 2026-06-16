@@ -230,22 +230,27 @@ The `[domain_realm]` section in each file is critical — it maps hostnames to t
 
 ### Node Configuration
 
-When using Kerberos with multiple domains, set the username in UPN format (`user@REALM`) so that `kinit` requests a ticket from the correct domain:
+Set the username in UPN format (`user@REALM`) so that `kinit` requests a ticket from the correct domain for each node. The node name, `nodename`, and `hostname` should all be set to the full FQDN of the target machine:
 
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<project>
-  <node name="winnode-domain2"
-      description="Windows node in domain2"
-      tags="windows"
-      hostname="winnode.domain2.example.com"
-      osFamily="windows"
-      username="rundeck@DOMAIN2.EXAMPLE.COM"
-      winrm-password-storage-path="keys/project/kerberos/rundeck.password"
-      node-executor="WinRMPython"
-      file-copier="WinRMcpPython"
-      winrm-authtype="kerberos"/>
-</project>
+```yaml
+winnode.domain1.example.com:
+  nodename: winnode.domain1.example.com
+  hostname: winnode.domain1.example.com
+  osFamily: windows
+  winrm-password-storage-path: keys/project/kerberos/rundeck.password
+  node-executor: WinRMPython
+  file-copier: WinRMcpPython
+  username: rundeck@DOMAIN1.EXAMPLE.COM
+  tags: windows
+winnode.domain2.example.com:
+  nodename: winnode.domain2.example.com
+  hostname: winnode.domain2.example.com
+  osFamily: windows
+  winrm-password-storage-path: keys/project/kerberos/rundeck.password
+  node-executor: WinRMPython
+  file-copier: WinRMcpPython
+  username: rundeck@DOMAIN2.EXAMPLE.COM
+  tags: windows
 ```
 
 > **Important:** Using `DOMAIN\user` format instead of UPN causes pywinrm to construct an incorrect Kerberos principal and fall back to NTLM. Always use `user@REALM` format when targeting nodes across multiple domains.
