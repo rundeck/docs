@@ -268,18 +268,23 @@ The following Group Policy settings are required on the Windows nodes. All crede
 
 | Policy | Value |
 |---|---|
-| Allow delegating default credentials | Enabled — server list: `WSMAN/*` |
-| Allow delegating fresh credentials | Enabled — server list: `WSMAN/*` |
-| Allow delegating saved credentials | Enabled — server list: `WSMAN/*` |
-| Allow delegating default credentials with NTLM-only server authentication | Enabled — server list: `WSMAN/*` |
-| Allow delegating fresh credentials with NTLM-only server authentication | Enabled — server list: `WSMAN/*` |
-| Allow delegating saved credentials with NTLM-only server authentication | Enabled — server list: `WSMAN/*` |
-| WinRM Client > Allow Kerberos authentication | Enabled |
-| WinRM Service > Allow Kerberos authentication | Enabled |
+| Allow delegating default credentials | Enabled — server list: `WSMAN/*.yourdomain.com` |
+| Allow delegating fresh credentials | Enabled — server list: `WSMAN/*.yourdomain.com` |
+| Allow delegating saved credentials | Enabled — server list: `WSMAN/*.yourdomain.com` |
+| Allow delegating default credentials with NTLM-only server authentication | Enabled — server list: `WSMAN/*.yourdomain.com` |
+| Allow delegating fresh credentials with NTLM-only server authentication | Enabled — server list: `WSMAN/*.yourdomain.com` |
+| Allow delegating saved credentials with NTLM-only server authentication | Enabled — server list: `WSMAN/*.yourdomain.com` |
+
+**Computer Configuration > Policies > Administrative Templates > Windows Components > Windows Remote Management**
+
+| Policy | Value |
+|---|---|
+| WinRM Client > Disallow Kerberos authentication | Disabled |
+| WinRM Service > Disallow Kerberos authentication | Disabled |
 
 The first three policies cover credential delegation when the target server authenticates via **Kerberos**. The `NTLM-only` variants cover the same delegation but when the server falls back to **NTLM** — which can happen when Kerberos is temporarily unavailable, a DNS issue prevents SPN resolution, or a node is not yet fully enrolled in the domain. Enabling both sets ensures delegation works reliably across all nodes regardless of which authentication protocol is negotiated.
 
-> **Important:** Always use `WSMAN/*` (not `WSMAN/*.yourdomain.com`) in the server list. A domain-scoped value is a common mistake when exporting and importing GPOs between domains — it will silently block credential delegation for any node outside the original domain.
+> **Important:** Always use `WSMAN/*.yourdomain.com` (not `WSMAN/*`) in the server list. A domain-scoped value improves server security.
 
 ### Verifying Kerberos Configuration
 
