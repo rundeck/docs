@@ -160,6 +160,144 @@ The node should now be reflected in the "Matched Nodes" section.<br>
 9. Save the job, then run it.<br>
 ![](/assets/img/winrm14.png)<br>
 
+## Kerberos Authentication
+
+Kerberos is the recommended authentication method for enterprise environments as it avoids sending passwords over the network. The PyWinRM plugin supports Kerberos authentication through the `kerberos` transport.
+
+### Prerequisites
+
+The following requirements apply to the Rundeck server. For the full list see the [py-winrm-plugin requirements](https://github.com/rundeck-plugins/py-winrm-plugin#requirements).
+
+- Linux, Mac OS X or Windows
+- CPython 3.8+ or PyPy3
+- pywinrm (`pip install pywinrm`)
+- openssl 1.1.1 or higher
+- requests-kerberos (required for Kerberos authentication — see [installation instructions](https://github.com/diyan/pywinrm/#to-use-kerberos-authentication-you-need-these-optional-dependencies))
+- requests-credssp (required for CredSSP authentication — see [installation instructions](https://github.com/diyan/pywinrm/#to-use-credssp-authentication-you-need-these-optional-dependencies))
+
+### Configuring krb5.conf
+
+Instead of editing `/etc/krb5.conf` directly, the recommended approach is to place domain configuration as drop-in files under `/etc/krb5.conf.d/`. This keeps the main config file clean and makes it easy to add or remove domains independently — one file per domain, all in the same directory.
+
+The main `/etc/krb5.conf` only needs to enable the include directory and set global defaults:
+
+```ini
+# /etc/krb5.conf
+includedir /etc/krb5.conf.d/
+
+[logging]
+    default = FILE:/var/log/krb5libs.log
+    kdc = FILE:/var/log/krb5kdc.log
+    admin_server = FILE:/var/log/kadmind.log
+
+[libdefaults]
+    dns_lookup_realm = false
+    ticket_lifetime = 24h
+    renew_lifetime = 7d
+    forwardable = true
+    rdns = false
+    pkinit_anchors = FILE:/etc/pki/tls/certs/ca-bundle.crt
+    default_realm = DOMAIN1.EXAMPLE.COM
+    default_ccache_name = KEYRING:persistent:%{uid}
+```
+
+For each domain, create a drop-in file under `/etc/krb5.conf.d/`. If you only have one domain, a single file is enough. For multiple domains, simply add one file per domain — Kerberos will load all of them automatically:
+
+```ini
+# /etc/krb5.conf.d/krb5-domain1.conf
+[realms]
+DOMAIN1.EXAMPLE.COM = {
+    kdc = dc1.domain1.example.com
+    admin_server = dc1.domain1.example.com
+    default_domain = domain1.example.com
+}
+
+[domain_realm]
+.domain1.example.com = DOMAIN1.EXAMPLE.COM
+domain1.example.com = DOMAIN1.EXAMPLE.COM
+```
+
+```ini
+# /etc/krb5.conf.d/krb5-domain2.conf  (add this only if you have a second domain)
+[realms]
+DOMAIN2.EXAMPLE.COM = {
+    kdc = dc1.domain2.example.com
+    admin_server = dc1.domain2.example.com
+    default_domain = domain2.example.com
+}
+
+[domain_realm]
+.domain2.example.com = DOMAIN2.EXAMPLE.COM
+domain2.example.com = DOMAIN2.EXAMPLE.COM
+```
+
+The `[domain_realm]` section in each file is critical — it maps hostnames to their correct Kerberos realm so that `kinit` does not fall back to `default_realm` when connecting to nodes in other domains.
+
+### Node Configuration
+
+Set the username in UPN format (`user@REALM`) so that `kinit` requests a ticket from the correct domain for each node. The node name, `nodename`, and `hostname` should all be set to the full FQDN of the target machine:
+
+```yaml
+winnode.domain1.example.com:
+  nodename: winnode.domain1.example.com
+  hostname: winnode.domain1.example.com
+  osFamily: windows
+  winrm-password-storage-path: keys/project/kerberos/rundeck.password
+  node-executor: WinRMPython
+  file-copier: WinRMcpPython
+  username: rundeck@DOMAIN1.EXAMPLE.COM
+  tags: windows
+winnode.domain2.example.com:
+  nodename: winnode.domain2.example.com
+  hostname: winnode.domain2.example.com
+  osFamily: windows
+  winrm-password-storage-path: keys/project/kerberos/rundeck.password
+  node-executor: WinRMPython
+  file-copier: WinRMcpPython
+  username: rundeck@DOMAIN2.EXAMPLE.COM
+  tags: windows
+```
+
+> **Important:** Using `DOMAIN\user` format instead of UPN causes pywinrm to construct an incorrect Kerberos principal and fall back to NTLM. Always use `user@REALM` format when targeting nodes across multiple domains.
+
+### GPO Requirements
+
+The following Group Policy settings are required on the Windows nodes. All credential delegation policies are found under:
+
+**Computer Configuration > Policies > Administrative Templates > System > Credentials Delegation**
+
+| Policy | Value |
+|---|---|
+| Allow delegating default credentials | Enabled — server list: `WSMAN/*` |
+| Allow delegating fresh credentials | Enabled — server list: `WSMAN/*` |
+| Allow delegating saved credentials | Enabled — server list: `WSMAN/*` |
+| Allow delegating default credentials with NTLM-only server authentication | Enabled — server list: `WSMAN/*` |
+| Allow delegating fresh credentials with NTLM-only server authentication | Enabled — server list: `WSMAN/*` |
+| Allow delegating saved credentials with NTLM-only server authentication | Enabled — server list: `WSMAN/*` |
+| WinRM Client > Allow Kerberos authentication | Enabled |
+| WinRM Service > Allow Kerberos authentication | Enabled |
+
+The first three policies cover credential delegation when the target server authenticates via **Kerberos**. The `NTLM-only` variants cover the same delegation but when the server falls back to **NTLM** — which can happen when Kerberos is temporarily unavailable, a DNS issue prevents SPN resolution, or a node is not yet fully enrolled in the domain. Enabling both sets ensures delegation works reliably across all nodes regardless of which authentication protocol is negotiated.
+
+> **Important:** Always use `WSMAN/*` (not `WSMAN/*.yourdomain.com`) in the server list. A domain-scoped value is a common mistake when exporting and importing GPOs between domains — it will silently block credential delegation for any node outside the original domain.
+
+### Verifying Kerberos Configuration
+
+Before running Rundeck jobs, verify that tickets can be obtained for each domain. For a single domain:
+
+```bash
+kinit rundeck@DOMAIN1.EXAMPLE.COM
+klist  # should show a valid ticket for DOMAIN1.EXAMPLE.COM
+```
+
+If you have multiple domains, test each one — `klist` should show a ticket for every realm:
+
+```bash
+kinit rundeck@DOMAIN1.EXAMPLE.COM
+kinit rundeck@DOMAIN2.EXAMPLE.COM
+klist  # should show tickets for both realms
+```
+
 ## Resources
 * PyWinRM plugin Github [space](https://github.com/rundeck-plugins/py-winrm-plugin).
 * WinRM protocol [documentation](https://learn.microsoft.com/en-us/windows/win32/winrm/portal).
