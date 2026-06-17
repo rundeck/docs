@@ -251,7 +251,7 @@ List all tokens or all tokens for a specific user.
     "id": "ece75ac8-2791-442e-b179-a9907d83fd05",
     "creator": "user3",
     "name": "Admin RD-CLI",
-    "expiration": "2017-03-25T21:16:50Z",
+    "expiration": "2017-03-25T21:16:50.000Z",
     "roles": [
       "DEV_99",
       "FEDCD25B-C945-48D3-9821-A10D44535EA4"
@@ -263,7 +263,7 @@ List all tokens or all tokens for a specific user.
     "id": "abcb096f-cef4-451a-bd2b-43284a3ff2ad",
     "creator": "user3",
     "name": "CI Server",
-    "expiration": "2017-03-25T21:17:12Z",
+    "expiration": "2017-03-25T21:17:12.000Z",
     "roles": [
       "SVC_XYZ",
       "devops",
@@ -276,7 +276,7 @@ List all tokens or all tokens for a specific user.
     "id": "a99bd86d-0125-4eaa-9b16-caded4485476",
     "creator": "user3",
     "name": "GitHub Integration",
-    "expiration": "2018-03-24T21:17:26Z",
+    "expiration": "2018-03-24T21:17:26.000Z",
     "roles": [
       "user",
       "FEDCD25B-C945-48D3-9821-A10D44535EA4"
@@ -287,7 +287,7 @@ List all tokens or all tokens for a specific user.
     "user": "user3",
     "id": "c13de457-c429-4476-9acd-e1c89e3c2928",
     "creator": "user3",
-    "expiration": "2017-03-24T21:18:55Z",
+    "expiration": "2017-03-24T21:18:55.000Z",
     "roles": [
       "USER_ACCOUNT"
     ],
@@ -341,7 +341,7 @@ The `id` is the unique ID, and the `name` (since v37) is the name given at creat
   "id": "c13de457-c429-4476-9acd-e1c89e3c2928",
   "creator": "user3",
   "name": "CI Server Token",
-  "expiration": "2017-03-24T21:18:55Z",
+  "expiration": "2017-03-24T21:18:55.000Z",
   "roles": [
     "USER_ACCOUNT"
   ],
@@ -361,7 +361,7 @@ The `id` is the unique ID, and the `token` value is the token string.
   "token": "VjkbX2zUAwnXjDIbRYFp824tF5X2N7W1",
   "id": "c13de457-c429-4476-9acd-e1c89e3c2928",
   "creator": "user3",
-  "expiration": "2017-03-24T21:18:55Z",
+  "expiration": "2017-03-24T21:18:55.000Z",
   "roles": [
     "USER_ACCOUNT"
   ],
@@ -441,7 +441,7 @@ then the generated token will have all roles as the authenticated user.
   "id": "b6ea87e3-43e5-4210-bd51-b82f8e33d9a4",
   "creator": "admin",
   "name": "Example Token",
-  "expiration": "2017-07-22T22:43:53Z",
+  "expiration": "2017-07-22T22:43:53.000Z",
   "roles": [
     "dev",
     "sre"
