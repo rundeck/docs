@@ -283,21 +283,21 @@ When `ssm-sts-region` is **not** configured, behavior is identical to previous v
 **2. Node Source Level (EC2 Node Source)**
 
 Using the **Mapping Params** field:
-```
+```properties
 ssm-sts-region.default=us-east-1
 ```
 
 **3. Project Configuration File**
 
 Add to your project configuration file:
-```
+```properties
 project.ssm-sts-region=us-east-1
 ```
 
 **4. Node Level (Individual Nodes)**
 
 Using the [Attribute Match](/manual/node-enhancers.md#attribute-match) node enhancer, add as a node-attribute:
-```
+```properties
 ssm-sts-region=us-east-1
 ```
 

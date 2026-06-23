@@ -292,7 +292,7 @@ If your remote EC2 nodes reside in an **AWS opt-in region**, you must also set t
 **Why?** AWS opt-in regions reject STS v1 tokens with `InvalidClientTokenId (HTTP 403)`. Regional STS endpoints always issue v2 tokens that are valid in all AWS regions, including opt-in regions.
 
 Add the following to your **Mapping Params**:
-```
+```properties
 ssm-sts-region.default=us-east-1
 ```
 Or as a project-level property: **`project.ssm-sts-region=us-east-1`**
