@@ -3,8 +3,203 @@
   <title>Rundeck Development Updates</title>
   <link href="https://docs.rundeck.com/feeds/development.xml" rel="self" />
   <link href="https://docs.rundeck.com/docs" />
-  <updated>2026-04-02T17:27:23.848Z</updated>
+  <updated>2026-06-24T18:55:04.293Z</updated>
   <id>https://docs.rundeck.com/feeds/development</id>
   <subtitle>Recent merged pull requests and development updates from Rundeck</subtitle>
-
+  <entry>
+    <title>Audit failed login attempts when using rundeck.jaaslogin=true</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeck-10212</id>
+    <updated>2026-06-24T15:37:19.000Z</updated>
+    <content type="text">Audit failed login attempts when using rundeck.jaaslogin=true (Merged: Jun 24, 2026)</content>
+  </entry>
+  <entry>
+    <title>Fix inline script step with Args not working with AWS SSM</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeckpro-4752</id>
+    <updated>2026-06-18T18:30:23.000Z</updated>
+    <content type="text">Fix inline script step with Args not working with AWS SSM (Merged: Jun 18, 2026)</content>
+  </entry>
+  <entry>
+    <title>Fix cannot manage user class for usernames containing slashes</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeckpro-4705</id>
+    <updated>2026-06-17T20:30:40.000Z</updated>
+    <content type="text">Fix cannot manage user class for usernames containing slashes (Merged: Jun 17, 2026)</content>
+  </entry>
+  <entry>
+    <title>Fix PagerDuty Notification Start Incident Workflow trigger</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeckpro-4757</id>
+    <updated>2026-06-17T20:10:32.000Z</updated>
+    <content type="text">Fix PagerDuty Notification Start Incident Workflow trigger (Merged: Jun 17, 2026)</content>
+  </entry>
+  <entry>
+    <title>Fix OIDC login broken after Grails 7: restore ROLE_USER authority</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeckpro-4769</id>
+    <updated>2026-06-17T18:49:22.000Z</updated>
+    <content type="text">Fix OIDC login broken after Grails 7: restore ROLE_USER authority (Merged: Jun 17, 2026)</content>
+  </entry>
+  <entry>
+    <title>Fix legacy MySQL JDBC driver class at startup</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeckpro-4753</id>
+    <updated>2026-06-17T18:46:17.000Z</updated>
+    <content type="text">Fix legacy MySQL JDBC driver class at startup (Merged: Jun 17, 2026)</content>
+  </entry>
+  <entry>
+    <title>Fix KeyStorageSelector state not resetting on reopen</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeck-10155</id>
+    <updated>2026-06-16T20:28:47.000Z</updated>
+    <content type="text">Fix KeyStorageSelector state not resetting on reopen (Merged: Jun 16, 2026)</content>
+  </entry>
+  <entry>
+    <title>Fix job import resetting dispatch mode when node filter is empty</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeck-10171</id>
+    <updated>2026-06-16T20:28:15.000Z</updated>
+    <content type="text">Fix job import resetting dispatch mode when node filter is empty (Merged: Jun 16, 2026)</content>
+  </entry>
+  <entry>
+    <title>Fix Remote URL auth headers not appended when fetching option values</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeck-10152</id>
+    <updated>2026-06-16T20:26:43.000Z</updated>
+    <content type="text">Fix Remote URL auth headers not appended when fetching option values (Merged: Jun 16, 2026)</content>
+  </entry>
+  <entry>
+    <title>remove usernames from system report</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeckpro-4755</id>
+    <updated>2026-06-16T17:39:52.000Z</updated>
+    <content type="text">remove usernames from system report (Merged: Jun 16, 2026)</content>
+  </entry>
+  <entry>
+    <title>fixes bulk edit when using nextui</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeck-10189</id>
+    <updated>2026-06-15T21:10:46.000Z</updated>
+    <content type="text">fixes bulk edit when using nextui (Merged: Jun 15, 2026)</content>
+  </entry>
+  <entry>
+    <title>Fix node filter attributes incorrectly wrapped in double quotes</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeck-10157</id>
+    <updated>2026-06-15T18:10:02.000Z</updated>
+    <content type="text">Fix node filter attributes incorrectly wrapped in double quotes (Merged: Jun 15, 2026)</content>
+  </entry>
+  <entry>
+    <title>Improve audit log userInfo.username showing null or anonymous for job runs</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeck-10168</id>
+    <updated>2026-06-15T17:22:49.000Z</updated>
+    <content type="text">Improve audit log userInfo.username showing null or anonymous for job runs (Merged: Jun 15, 2026)</content>
+  </entry>
+  <entry>
+    <title>Fix cluster member state showing as unknown on Job page</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeck-10172</id>
+    <updated>2026-05-27T21:16:57.000Z</updated>
+    <content type="text">Fix cluster member state showing as unknown on Job page (Merged: May 27, 2026)</content>
+  </entry>
+  <entry>
+    <title>Fix cron expression selector not updating in Execution History Clean</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeck-10154</id>
+    <updated>2026-05-27T21:04:15.000Z</updated>
+    <content type="text">Fix cron expression selector not updating in Execution History Clean (Merged: May 27, 2026)</content>
+  </entry>
+  <entry>
+    <title>Fix search not working in User Management tables</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeckpro-4698</id>
+    <updated>2026-05-27T19:29:06.000Z</updated>
+    <content type="text">Fix search not working in User Management tables (Merged: May 27, 2026)</content>
+  </entry>
+  <entry>
+    <title>Restore step property value colors for dark background contexts</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeck-10153</id>
+    <updated>2026-05-27T16:22:49.000Z</updated>
+    <content type="text">Restore step property value colors for dark background contexts (Merged: May 27, 2026)</content>
+  </entry>
+  <entry>
+    <title>Improve Dutch translations to be better understandable - Community Submission</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeck-10164</id>
+    <updated>2026-05-27T16:20:42.000Z</updated>
+    <content type="text">Improve Dutch translations to be better understandable - Community Submission (Merged: May 27, 2026)</content>
+  </entry>
+  <entry>
+    <title>Update follow-redirects for CVE-2026-40895</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeck-10169</id>
+    <updated>2026-05-26T20:21:07.000Z</updated>
+    <content type="text">Update follow-redirects for CVE-2026-40895 (Merged: May 26, 2026)</content>
+  </entry>
+  <entry>
+    <title>Update commons-compress to 1.28.0 to fix CVE-2025-48924</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeck-10165</id>
+    <updated>2026-05-26T20:20:27.000Z</updated>
+    <content type="text">Update commons-compress to 1.28.0 to fix CVE-2025-48924 (Merged: May 26, 2026)</content>
+  </entry>
+  <entry>
+    <title>Fix/add created by field</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeck-10150</id>
+    <updated>2026-05-26T18:07:02.000Z</updated>
+    <content type="text">Fix/add created by field (Merged: May 26, 2026)</content>
+  </entry>
+  <entry>
+    <title>Conditional step with multiple sub-steps breaks job output</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeck-10140</id>
+    <updated>2026-05-26T16:57:54.000Z</updated>
+    <content type="text">Conditional step with multiple sub-steps breaks job output (Merged: May 26, 2026)</content>
+  </entry>
+  <entry>
+    <title>Make script editor min/max lines configurable via System Configuration</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeck-10137</id>
+    <updated>2026-05-22T22:05:05.000Z</updated>
+    <content type="text">Make script editor min/max lines configurable via System Configuration (Merged: May 22, 2026)</content>
+  </entry>
+  <entry>
+    <title>Remove Community News Subscribe Button</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeck-10148</id>
+    <updated>2026-05-22T21:59:48.000Z</updated>
+    <content type="text">Remove Community News Subscribe Button (Merged: May 22, 2026)</content>
+  </entry>
+  <entry>
+    <title>Make UUID field read-only in job Other tab</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeck-10146</id>
+    <updated>2026-05-15T22:27:16.000Z</updated>
+    <content type="text">Make UUID field read-only in job Other tab (Merged: May 15, 2026)</content>
+  </entry>
+  <entry>
+    <title>NextUI: Vue migration for User and System Configuration menus</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeck-9899</id>
+    <updated>2026-05-11T16:30:54.000Z</updated>
+    <content type="text">NextUI: Vue migration for User and System Configuration menus (Merged: May 11, 2026)</content>
+  </entry>
+  <entry>
+    <title>Eliminate Jasypt dependency and upgrade BouncyCastle to 1.84</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeck-10094</id>
+    <updated>2026-05-06T18:04:30.000Z</updated>
+    <content type="text">Eliminate Jasypt dependency and upgrade BouncyCastle to 1.84 (Merged: May 6, 2026)</content>
+  </entry>
+  <entry>
+    <title>Upgrade mina-core to 2.2.7 to fix CVE-2026-42779</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeck-10118</id>
+    <updated>2026-05-04T23:48:07.000Z</updated>
+    <content type="text">Upgrade mina-core to 2.2.7 to fix CVE-2026-42779 (Merged: May 4, 2026)</content>
+  </entry>
 </feed>
