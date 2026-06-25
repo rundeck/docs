@@ -800,9 +800,10 @@ In this case, the option will be allowed to use a text field to set the value.
 
 You can create a URL to link to a specific Job, and pre-fill some of the option values by adding URL query parameters to the Job's URL.
 
-Query Parameters format for options:
+Supported query parameters:
 
 - `opt.NAME`: provide a value for an option named `NAME`
+- `nodeFilter`: pre-populate the node filter field with the given filter expression. This parameter is only applied when the Job has **Node Filter** set to **Editable** (`nodeFilterEditable: true`); it is ignored otherwise.
 
 For example, if the URL for the Job is:
 
@@ -815,5 +816,9 @@ Then you can pre-fill the values for `myopt1` and `myotheropt` by appending this
 The result would be:
 
     http://rundeck:4440/project/MyProject/job/show/ab698597-9753-4e98-bdab-90ebf395b0d0?opt.myopt1=some+value&opt.myotheropt=another+value
+
+To also pre-populate the node filter, combine `nodeFilter` with option parameters:
+
+    http://rundeck:4440/project/MyProject/job/show/ab698597-9753-4e98-bdab-90ebf395b0d0?opt.myopt1=some+value&nodeFilter=name%3A+web-server-01
 
 Note: be sure to properly escape the strings for option values, and if necessary for the option names as well.
