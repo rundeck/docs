@@ -60,7 +60,7 @@ RUNDECK_FEATURE_ACTIVITYDEFAULTTIMEFILTER_ENABLED=true
 RUNDECK_GUI_ACTIVITY_DEFAULTTIMEFILTER=1w
 ```
 
-When enabled, the **Activity**, **Jobs**, and **Adhoc Commands** pages all apply this filter on first load when no other filters are active. Users can still change or clear the filter manually at any time.
+When enabled, the **Activity**, **Jobs**, and **Ad hoc commands** pages all apply this filter on first load when no other filters are active. Users can still change or clear the filter manually at any time.
 
 :::tip
 Setting a default time filter is recommended for production instances with months or years of execution history, as it significantly reduces initial page load time.
