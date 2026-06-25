@@ -816,4 +816,4 @@ The result would be:
 
     http://rundeck:4440/project/MyProject/job/show/ab698597-9753-4e98-bdab-90ebf395b0d0?opt.myopt1=some+value&opt.myotheropt=another+value
 
-Note: be sure to properly escape the strings for option values, and if necessary for the option names as well.
+Note: be sure to properly URL-encode all parameter values. This applies to option values, option names, and `nodeFilter` expressions — filter syntax characters such as spaces and `:` must be encoded (e.g., `name: web-01` becomes `name%3A+web-01`).
