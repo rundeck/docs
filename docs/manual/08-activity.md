@@ -29,22 +29,38 @@ display executions matching the search.
 
 By default the Activity view loads all executions without a time boundary, which can be slow on instances with large execution history. Administrators can configure a default time filter so the Activity page opens pre-filtered to a recent window.
 
-This is controlled by the `ACTIVITY_DEFAULT_TIME_FILTER` feature flag in `rundeck-config.properties`:
+Two settings work together to enable this feature:
+
+**1. Enable the feature flag** in `rundeck-config.properties`:
 
 ```properties
 rundeck.feature.activityDefaultTimeFilter.enabled=true
-rundeck.feature.activityDefaultTimeFilter.value=1w
 ```
 
-Supported values for `value`:
+**2. Set the default time window** (optional — defaults to `1m`):
+
+```properties
+rundeck.gui.activity.defaultTimeFilter=1w
+```
+
+Accepted values:
 
 | Value | Description |
 |-------|-------------|
+| `1h`  | Last 1 hour |
 | `1d`  | Last 1 day  |
-| `1w`  | Last 1 week (default when enabled) |
-| `1m`  | Last 1 month |
+| `1w`  | Last 1 week |
+| `1m`  | Last 1 month (default when not specified) |
 
-When enabled, the **Activity**, **Jobs**, and **Adhoc Commands** pages all apply this filter when they first load. Users can still change or clear the filter manually.
+**Docker / environment variable configuration:**
+
+```bash
+RUNDECK_FEATURE_ACTIVITYDEFAULTTIMEFILTER_NAME=activityDefaultTimeFilter
+RUNDECK_FEATURE_ACTIVITYDEFAULTTIMEFILTER_ENABLED=true
+RUNDECK_GUI_ACTIVITY_DEFAULTTIMEFILTER=1w
+```
+
+When enabled, the **Activity**, **Jobs**, and **Adhoc Commands** pages all apply this filter on first load when no other filters are active. Users can still change or clear the filter manually at any time.
 
 :::tip
 Setting a default time filter is recommended for production instances with months or years of execution history, as it significantly reduces initial page load time.
