@@ -1061,6 +1061,47 @@ Trim Output: Max size of visible Log Output (not present by default).
 : `rundeck.logviewer.trimOutput=250kb` Remove the oldest lines in Log Output after displaying 250kb of logs
 
 
+### Runner report processing (Commercial)
+
+:::enterprise
+:::
+
+The Rundeck server includes an optional compact processor that consolidates incoming runner reports into a single, compressed database row per operation. This significantly reduces database transaction pressure and improves log update responsiveness under high report load.
+
+:::tip Recommended: configure via System Configuration
+These are live-refreshable server-side settings. The preferred way to apply them is through the **System Configuration** GUI (System Menu → System Configuration) so they take effect without a restart and are shared across all cluster members. See [System Configuration](/manual/configuration-mgmt/configmgmt.md) for instructions.
+:::
+
+#### `rundeck.runner.compactProcessor.enabled`
+
+| | |
+|---|---|
+| **Default** | `false` |
+| **Restart required** | No (live-refreshable) |
+
+Enables the compact report processing mode. When `true`, the server stores the complete runner report message in a single compressed row (zlib) instead of one row per data object. This greatly reduces the number of database write transactions and can noticeably improve log update speed in the UI under high load.
+
+**When to enable:** When runners handle jobs with large log volumes and you observe elevated database load or slow log updates in the UI.
+
+```properties
+rundeck.runner.compactProcessor.enabled=true
+```
+
+#### `rundeck.runner.compactProcessor.maxReportDataSize`
+
+| | |
+|---|---|
+| **Default** | `1gb` |
+| **Restart required** | No (live-refreshable) |
+
+Sets the maximum amount of runner report data the server will store in the database per operation. Once the limit is reached, older report data for that operation is pruned. This acts as a safeguard against unbounded data growth from long-running or highly verbose jobs.
+
+**Accepted values:** Size strings — for example, `500mb`, `1gb`, `2gb`.
+
+```properties
+rundeck.runner.compactProcessor.maxReportDataSize=1gb
+```
+
 ### Groovy config format
 
 If you would prefer to use Groovy for the config file, you can use rundeck-config.groovy instead of rundeck-config.properties. Or, you can use a combination of the two (i.e. some settings configured in the properties file and some in the Groovy file).
