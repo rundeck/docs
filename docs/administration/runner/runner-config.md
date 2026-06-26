@@ -150,44 +150,6 @@ java \
   -jar pd-runner.jar
 ```
 
-## Server-side report processing (rundeck-config.properties)
-
-The Rundeck server includes an optional compact processor that consolidates incoming runner reports into a single, compressed database row per operation, rather than expanding each report item into a separate row. This significantly reduces database transaction pressure and improves log update responsiveness, especially under high report load.
-
-These are server-side properties that go in `rundeck-config.properties`. They complement the runner-client performance settings above, and are most impactful when runners produce high volumes of log output.
-
-### `rundeck.runner.compactProcessor.enabled`
-
-* **Default:** `false`
-* **Purpose:** Enables the compact report processing mode on the server. When set to `true`, the server stores each runner's complete report message in a single compressed row (zlib) instead of one row per data object. This greatly reduces the number of database write transactions and can noticeably improve log update speed in the UI under high load.
-* **When to enable:** When runners handle jobs with large log volumes and you observe elevated database load, slow log updates in the UI, or the error `Runner did not deliver reports in the configured timeout period` despite the runner being responsive.
-
-Add to `rundeck-config.properties`:
-
-```
-rundeck.runner.compactProcessor.enabled=true
-```
-
-### `rundeck.runner.compactProcessor.maxReportDataSize`
-
-* **Default:** `1gb`
-* **Purpose:** Sets the maximum amount of runner report data that the server will store in the database per operation. Once the limit is reached, older report data for that operation is pruned. This acts as a safeguard against unbounded data growth from long-running or highly verbose jobs.
-* **When to adjust:** Increase this value if jobs regularly produce output that exceeds 1 GB. Decrease it if you want a more conservative limit to protect database storage.
-* **Accepted values:** Size strings — for example, `500mb`, `1gb`, `2gb`.
-
-Add to `rundeck-config.properties`:
-
-```
-rundeck.runner.compactProcessor.maxReportDataSize=1gb
-```
-
-**Example — enable compact processing with a custom data limit:**
-
-```
-rundeck.runner.compactProcessor.enabled=true
-rundeck.runner.compactProcessor.maxReportDataSize=2gb
-```
-
 ## Using custom YAML configuration
 
 In addition to passing configuration via JVM system properties (`-D` flags), you can place a custom `application.yml` file alongside the Runner JAR. This file allows you to define all settings in a structured format, which can be easier to maintain than long command lines.
