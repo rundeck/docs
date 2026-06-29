@@ -1069,7 +1069,7 @@ Trim Output: Max size of visible Log Output (not present by default).
 The Rundeck server includes an optional compact processor that consolidates incoming runner reports into a single, compressed database row per operation. This significantly reduces database transaction pressure and improves log update responsiveness under high report load.
 
 :::tip Recommended: configure via System Configuration
-These properties are registered in the System Configuration GUI under **System Menu → System Configuration → Runner → Advanced**. Configuring them there stores the values in the database, shares them across all cluster members, and takes effect without a restart. See [System Configuration](/manual/configuration-mgmt/configmgmt.md) for instructions.
+These properties are registered in the System Configuration GUI under **System Menu → System Configuration → Runner → Advanced**. Configuring them there stores the values in the database, shares them across all cluster members, and takes effect without a restart. See [System Configuration](/manual/configuration-mgmt/configmgmt.md) for instructions. Note: if the same property is set in `rundeck-config.properties`, the file-based value takes precedence; remove it from the file if you want the GUI value to apply.
 :::
 
 #### `rundeck.runner.compactProcessor.enabled`
