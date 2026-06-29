@@ -255,6 +255,57 @@ ssm-execution-timeout=7200
 #### Default Value
 If not specified, the execution timeout defaults to **3600 seconds (1 hour)**.
 
+## STS Region Configuration for AWS Opt-In Regions
+
+By default, the SSM Node Executor uses the node's `region` attribute to determine which AWS STS regional endpoint to call when performing AssumeRole authentication. This works correctly for standard AWS regions.
+
+**AWS opt-in regions** (e.g., `eu-central-2` — Zurich, `ap-east-1` — Hong Kong, `me-south-1` — Bahrain) require STS tokens issued by a **regional STS endpoint** rather than the global endpoint. If your Runbook Automation instance is running in a standard region but needs to execute SSM commands on nodes in opt-in regions, use the `ssm-sts-region` property to explicitly control which STS endpoint region is used for the AssumeRole call.
+
+:::tip Why this matters
+AWS STS has two token versions:
+- **v1 tokens** — issued by the global endpoint (`sts.amazonaws.com`). Opt-in regions **reject** v1 tokens with `InvalidClientTokenId (HTTP 403)`.
+- **v2 tokens** — issued by any **regional STS endpoint** (e.g., `sts.us-east-1.amazonaws.com`). Valid in **all** AWS regions, including opt-in regions.
+
+Setting `ssm-sts-region` to any standard region (e.g., `us-east-1`) forces the plugin to use a regional STS endpoint, producing v2 tokens that work in opt-in regions.
+:::
+
+:::warning Backward Compatibility
+When `ssm-sts-region` is **not** configured, behavior is identical to previous versions — no change for existing setups.
+:::
+
+### Configuration Methods
+
+**1. Project-wide Configuration (Default Node Executor)**
+1. Navigate to **Project Settings** → **Edit Configuration** → **Default Node Executor**.
+2. Select **AWS / SSM / Node Executor**.
+3. Set the **STS Region** field to a standard AWS region (e.g., `us-east-1`).
+
+**2. Node Source Level (EC2 Node Source)**
+
+Using the **Mapping Params** field:
+```properties
+ssm-sts-region.default=us-east-1
+```
+
+**3. Project Configuration File**
+
+Add to your project configuration file:
+```properties
+project.ssm-sts-region=us-east-1
+```
+
+**4. Node Level (Individual Nodes)**
+
+Using the [Attribute Match](/manual/node-enhancers.md#attribute-match) node enhancer, add as a node-attribute:
+```properties
+ssm-sts-region=us-east-1
+```
+
+### Default Value
+If not specified, `ssm-sts-region` defaults to the node's **`region`** attribute value, which is the same behavior as previous plugin versions.
+
+---
+
 ## Using CloudWatch Logs (Optional)
 The example policies in the prior sections enable Runbook Automation to retrieve logs directly from SSM.  
 However, these logs are truncated to 48,000 characters. To view logs that are longer than this limit, CloudWatch logs are used.  

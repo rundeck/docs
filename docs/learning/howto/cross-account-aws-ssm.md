@@ -286,6 +286,20 @@ The SSM Node Executor and File Copier can be configured on a per **Node Source**
 
 If the same S3 bucket will be used across multiple Node Sources (thereby serving multiple AWS Accounts), _and_ the **Default File Copier** is not set to use SSM, then this can instead be added as a Project level property: **`project.ssm-copier-bucket=<<S3 bucket name>>`**.
 
+:::warning Nodes in AWS Opt-In Regions (e.g., eu-central-2, ap-east-1)
+If your remote EC2 nodes reside in an **AWS opt-in region**, you must also set the `ssm-sts-region` property to a **standard** (non-opt-in) AWS region such as `us-east-1`.
+
+**Why?** AWS opt-in regions reject STS v1 tokens with `InvalidClientTokenId (HTTP 403)`. Regional STS endpoints always issue v2 tokens that are valid in all AWS regions, including opt-in regions.
+
+Add the following to your **Mapping Params**:
+```properties
+ssm-sts-region.default=us-east-1
+```
+Or as a project-level property: **`project.ssm-sts-region=us-east-1`**
+
+See the [STS Region Configuration](/manual/projects/node-execution/aws-ssm.md#sts-region-configuration-for-aws-opt-in-regions) section for full details and all configuration methods.
+:::
+
 #### Option 2: Project Wide Configuration
 The SSM Node Executor can be set as the **Default Node Executor** - thereby making it the standard node executor for the whole project:
 
