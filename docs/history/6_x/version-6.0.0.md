@@ -6,7 +6,7 @@ image: /images/chevron-logo-red-on-white.png
 description: "Rundeck | Runbook Automation Releases 6.0.0"
 feed:
  enable: true
- description: ""
+ description: "6.0 Release - Java 17, MySQL 8.4, and more"
 
 ---
 
