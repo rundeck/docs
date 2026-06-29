@@ -33,7 +33,7 @@ There is nothing you need to do for the platform upgrade itself - the SaaS envir
 - **WinRM via self-managed Runners requires Python 3.8+**: The [py-winrm plugin](/learning/howto/configuring-windows-nodes.md) dropped Python 2 support (upstream `pywinrm` now requires Python 3.8 or newer). If you run your own Runners that connect to Windows nodes over WinRM, ensure those hosts have Python 3.8+ before the update reaches them.
 - **Activity RSS feed deprecated**: The built-in Activity RSS feed is deprecated and disabled by default. Use the [API](/api/index.md) or notifications for execution-driven integrations. This does not affect the [RSS Feed Plugin](/manual/jobs/job-plugins/workflow-steps/rss-feed-plugin.md) workflow step.
 
-Full, version-specific release notes for Self-Hosted customers is now published with the 6.0 Self-Hosted release in the [Release Notes](/history/6_x/version-6.0.0.md) section.
+Full, version-specific release notes for Self-Hosted customers are now published with the 6.0 Self-Hosted release in the [Release Notes](/history/6_x/version-6.0.0.md) section.
 
 ## Subscribe to Updates
 
