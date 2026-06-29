@@ -54,7 +54,7 @@ Legacy **`/metrics/*`** HTTP is scheduled for **removal in Rundeck 7.0**; plan t
 
 ## Ant-based local executor removed {#ant-based-local-executor-removed}
 
-The legacy Ant-based local executor has been removed in Rundeck 6.0. Local execution now uses Java `ProcessBuilder` exclusively. 
+The legacy Ant-based local executor has been removed in Rundeck 6.0. Local execution now uses Java `ProcessBuilder` exclusively.
 
 If you previously set `local-node-executor="legacy"` in configuration, this will now result in a "provider not found" error. The `newLocalNodeExecutor` feature flag has been removed and will be ignored if present in your configuration.
 
