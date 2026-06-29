@@ -3,7 +3,7 @@
 title: "6.0.0 Release Notes"
 date: 2026-06-29
 image: /images/chevron-logo-red-on-white.png
-description: "Rundeck | Runbook Automation Releases 6.0.0 - <DESCRIPTION>"
+description: "Rundeck | Runbook Automation Releases 6.0.0"
 feed:
  enable: true
  description: ""
