@@ -30,6 +30,7 @@ export default [{
                 children: [
                   '/upgrading/',
                   '/upgrading/upgrading',
+                  '/upgrading/upgrading-to-6.0.md',
                   '/upgrading/upgrading-to-5.0.md',
                   '/upgrading/upgrading-to-4.8.md',
                   '/upgrading/upgrading-to-4.1.md',
@@ -70,6 +71,7 @@ export default [{
                       '/administration/runner/runner-management/node-dispatch.md',
                       '/administration/runner/runner-management/managing-replicas.md',
                       '/administration/runner/runner-management/monitoring-runners.md',
+                      {link:'/administration/runner/runner-management/runner-metrics.md',text:"Runner Metrics Reference"},
                       '/administration/runner/runner-management/runner-logging.md',
                       '/administration/runner/runner-management/upgrading-runners.md',
                       {link:'/administration/runner/runner-management/runner-high-availability.md',text:"Runner High Availability"}
@@ -106,8 +108,6 @@ export default [{
                   collapsible: true,
                   link: '/administration/runner/runner-config'
                 }
-//                   '/administration/runner/runner-advancedsetup.md',
-//                   '/administration/runner/runner-faq.md'
                 ]
               },
               {
@@ -203,6 +203,16 @@ export default [{
                   '/administration/cluster/loadbalancer/reverse_proxies',
                   '/administration/configuration/remote-job-execution',
                   '/administration/cluster/replication/'
+                ]
+              },
+              {
+                text: 'Monitoring',
+                collapsible: true,
+                link: '/administration/monitoring/',
+                children: [
+                  '/administration/monitoring/',
+                  '/administration/monitoring/configuration.md',
+                  '/administration/monitoring/monitoring.md'
                 ]
               }
             ]},

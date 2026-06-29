@@ -1,5 +1,9 @@
 # Tuning Rundeck
 
+::: tip Rundeck 6.0 Memory Requirements
+**Rundeck 6.0** upgrades to **Grails 7** and **Spring Boot 3**, which increases baseline JVM memory usage compared to 5.x. If you are upgrading from an earlier version, review the [6.0 upgrade notes on JVM heap and memory](/upgrading/upgrading-to-6.0.md#jvm-heap-and-memory) and plan to validate and adjust your memory settings after upgrade. Default package and container memory settings have been raised accordingly, but custom JVM tuning may need adjustment.
+:::
+
 ### File descriptors
 
 The Rundeck server process opens a number of files during normal operation. These

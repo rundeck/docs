@@ -11,18 +11,15 @@ _The interface to upload a key to the Rundeck keystore_
 ### [Rundeck Key Storage](/manual/key-storage/index.md#rundeck-key-storage)
 Rundeck Key Storage is the space that Rundeck Admins can use to store current sensitive private key/password data ("keys") storage that can be utilized across Rundeck. By default, Rundeck stores these keys on the internal [backend database](/administration/configuration/database/#database-overview). These keys can be used to customize the automation environment's plugins, node executors, and other components.
 
-Rundeck also has [Key Storage Encryption](/administration/configuration/plugins/bundled-plugins.md#jasypt-encryption-plugin). This enables the encryption of keys and passwords saved on the Rundeck Key Storage (at the Rundeck backend). The following setting allows this encryption and is predefined in the `rundeck-config.properties` file:
+Rundeck also has [Key Storage Encryption](/administration/configuration/plugins/bundled-plugins.md#aes-gcm-encryption-plugin). This enables the encryption of keys and passwords saved on the Rundeck Key Storage (at the Rundeck backend). The following setting allows this encryption and is predefined in the `rundeck-config.properties` file:
 
-```
+```properties
 # Encryption for key storage
 rundeck.storage.provider.1.type=db
 rundeck.storage.provider.1.path=keys
-rundeck.storage.converter.1.type=jasypt-encryption
+rundeck.storage.converter.1.type=aes-gcm-encryption
 rundeck.storage.converter.1.path=keys
-rundeck.storage.converter.1.config.encryptorType=custom
 rundeck.storage.converter.1.config.password=encryption_password
-rundeck.storage.converter.1.config.algorithm=PBEWITHSHA256AND128BITAES-CBC-BC
-rundeck.storage.converter.1.config.provider=BC
 ```
 
 ### [Hashicorp Vault Integration](/learning/howto/vault-integration.md#how-to-integrate-hashicorp-vault)

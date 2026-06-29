@@ -146,7 +146,7 @@ workflows:
           filters:
             branches:
               only:
-                - /[4,5]\.[0-9]+\..*/
+                - /[456]\.[0-9]+\..*/
                 - openapi-explorer
             tags:
               only: /^v.*/

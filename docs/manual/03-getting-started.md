@@ -138,9 +138,9 @@ See [Commands](/manual/06-commands.md).
 From the Activity page, one can view currently executing Commands
 and Jobs, or browse execution history. The execution
 history can be filtered based on user-selected parameters. Once the
-filter has been set, the matching history is displayed. The current
-filter settings also configure an RSS link, found in the top right of
-the page (see Rundeck Administration to enable RSS).
+filter has been set, the matching history is displayed. (Older versions
+could expose an Activity **RSS** link from the same filters; **Rundeck
+6.0** [deprecates that feed](/upgrading/upgrading-to-6.0.md#activity-rss-feed-server-feature-removed) and disables it by default—use the API or notifications for new integrations.)
 
 ::: tip
 See [Activity](/manual/08-activity.md).

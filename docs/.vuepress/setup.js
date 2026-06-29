@@ -1,12 +1,12 @@
 import { BaseTransition } from "vue"
 
-const RUNDECK_VERSION='5.20.1'
-const RUNDECK_VERSION_FULL='5.20.1-SNAPSHOT'
+const RUNDECK_VERSION='6.0.0'
+const RUNDECK_VERSION_FULL='6.0.0-SNAPSHOT'
 const API_VERSION='58'
-const API_DEP_REL='6.0.0'
-const API_DEP_VER='17'
-const API_MIN_VER='14'
-const CLI_VERSION='2.0.8'
+const API_DEP_REL='7.0.0'
+const API_DEP_VER='34'
+const API_MIN_VER='17'
+const CLI_VERSION='2.1.1'
 const GPG_KEY_DATE='20260105'
 
 const REPO_BRANCH='4.0.x'

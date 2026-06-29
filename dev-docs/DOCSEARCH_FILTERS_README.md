@@ -1,1 +1,0 @@
-../.claude/docs/docsearch-filters.md

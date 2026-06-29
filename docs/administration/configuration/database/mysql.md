@@ -5,7 +5,7 @@ MySQL 5.6 is now End of Life.  Rundeck will offer limited support on that versio
 
 ## Install MySQL
 
-Install MySQL using the installation guides [here](https://dev.mysql.com/doc/refman/8.0/en/installing.html)
+Install MySQL using the installation guides for [MySQL 8.0](https://dev.mysql.com/doc/refman/8.0/en/installing.html) or [MySQL 8.4](https://dev.mysql.com/doc/refman/8.4/en/installing.html).
 
 ## Configure MySQL
 
@@ -17,7 +17,11 @@ servers, maybe even higher if the server has more than 32G of RAM.
 
 ### MySQL 8.0
 
-This is the recommended version of MySQL for Rundeck.
+This is a recommended version of MySQL for Rundeck (8.0.35 or newer).
+
+### MySQL 8.4
+
+As of **Rundeck 6.0.0**, **MySQL 8.4** is supported. The release includes database schema and migration updates needed for MySQL 8.4; apply normal upgrade steps when moving to this version of Rundeck or this MySQL line.
 
 ### MySQL 5.7
 
