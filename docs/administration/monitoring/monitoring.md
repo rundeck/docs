@@ -19,7 +19,7 @@ curl http://localhost:4440/monitoring/prometheus
 ```
 
 **Example output:**
-```
+```text
 # HELP http_server_requests_total Total HTTP server requests
 # TYPE http_server_requests_total counter
 http_server_requests_total{method="GET",status="200",uri="/api/14/projects"} 1234.0
