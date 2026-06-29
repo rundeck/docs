@@ -1079,7 +1079,47 @@ Trim Output: Max size of visible Log Output (not present by default).
 
 : `rundeck.logviewer.trimOutput=250kb` Remove the oldest lines in Log Output after displaying 250kb of logs
 
+### Runner report processing (Commercial)
 
+:::enterprise
+:::
+
+The Rundeck server includes an optional compact processor that consolidates incoming runner reports into a single, compressed database row per operation. This significantly reduces database transaction pressure and improves log update responsiveness under high report load.
+
+:::tip Recommended: configure via System Configuration
+These properties are registered in the System Configuration GUI under **System Menu → System Configuration → Runner → Advanced**. Configuring them there stores the values in the database, shares them across all cluster members, and takes effect without a restart. See [System Configuration](/manual/configuration-mgmt/configmgmt.md) for instructions. Note: if the same property is set in `rundeck-config.properties`, the file-based value takes precedence; remove it from the file if you want the GUI value to apply.
+:::
+
+#### `rundeck.runner.compactProcessor.enabled`
+
+| | |
+|---|---|
+| **Default** | `false` |
+| **Restart required** | No (live-refreshable) |
+
+Enables the compact report processing mode. When `true`, the server stores the complete runner report message in a single compressed row (zlib) instead of one row per data object. This greatly reduces the number of database write transactions and can noticeably improve log update speed in the UI under high load.
+
+**When to enable:** When runners handle jobs with large log volumes and you observe elevated database load or slow log updates in the UI.
+
+```properties
+rundeck.runner.compactProcessor.enabled=true
+```
+
+#### `rundeck.runner.compactProcessor.maxReportDataSize`
+
+| | |
+|---|---|
+| **Default** | `1gb` |
+| **Restart required** | No (live-refreshable) |
+
+Sets the maximum amount of runner report data the server will store in the database per operation. Once the limit is reached, older report data for that operation is pruned. This acts as a safeguard against unbounded data growth from long-running or highly verbose jobs.
+
+**Accepted values:** Size strings — for example, `500mb`, `1gb`, `2gb`.
+
+```properties
+rundeck.runner.compactProcessor.maxReportDataSize=1gb
+```
+=======
 ### Code Editor Settings
 
 Controls the height of the ACE code editor rendered inside plugin configuration forms (for example, inline script steps, orchestrator configuration, and execution lifecycle plugins).
