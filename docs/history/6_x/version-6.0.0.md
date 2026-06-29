@@ -63,7 +63,7 @@ Execution log: runner plugin registers i18n for the “Display Runner Badge” s
 
 #####  ::circle-dot:: [NextUI: Vue migration for User and System Configuration menus](https://github.com/rundeck/rundeck/pull/9899)
   
-&lt;!-- If you have suggested content that would describe this PR to other Rundeck community users, please enter it here.--&gt;
+The System and User Config pages have been migrated to Vue part of our NextUI project.  Our NextUI pages are newly updated pages that users can enable using the selector in the bottom right.
 
 #####  ::circle-dot:: [Upgrade to Grails 7.0.9, Spring Boot 3.5.11, Groovy 4.0.30, Java 17](https://github.com/rundeck/rundeck/pull/9922)
   
