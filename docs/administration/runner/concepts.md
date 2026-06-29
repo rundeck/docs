@@ -23,8 +23,8 @@ When a task is assigned to a Runner - such as a Job execution, fetching nodes, o
 
 ### Runner Replicas Configuration
 
-:::note On-Premise Configuration
-Runner Replicas is available in Runbook Automation Self Hosted version 5.16.0 and later, but feature is **disabled by default**. To enable this feature, add the following property to your System Configuration:
+:::note Self-hosted Runner replicas
+Runner Replicas are available in Runbook Automation Self-Hosted **5.16.0** and later. **Rundeck 6.0+** enables **`rundeck.feature.runnerReplicas.enabled`** by **default**. On **5.x**, the feature was **off** until you set:
 
 ```properties
 rundeck.feature.runnerReplicas.enabled=true

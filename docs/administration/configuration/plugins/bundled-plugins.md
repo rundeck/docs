@@ -98,24 +98,26 @@ Provides a Workflow Step:
 
 File: `rundeck-flow-control-plugin-{{$rundeckVersionFull}}.jar`
 
-## Jasypt Encryption Plugin
+## AES-GCM Encryption Plugin
 
 Provides an encryption [storage converter](/administration/configuration/storage-facility.md#storage-converters) for the Storage facility. Can be used to encrypt the contents of Key Storage,
 and Project Configuration stored in the DB or on disk.
 
-This plugin provides password based encryption for storage contents.
-It uses the [Jasypt][] encryption library. The built in Java JCE is used unless another provider is specified, [Bouncycastle][] can be used by specifying the 'BC' provider name.
+This plugin provides password-based authenticated encryption using AES-256-GCM with PBKDF2 key derivation via [Bouncycastle][]. It can also transparently decrypt data encrypted by the previous Jasypt-based plugin, enabling seamless upgrades.
 
-[jasypt]: http://www.jasypt.org/
 [bouncycastle]: https://www.bouncycastle.org/
 
-Password, algorithm, provider, etc can be specified directly, or via environment variables (the `*EnvVarName` properties), or Java System properties (the `*SysPropName` properties).
+Password can be specified directly, or via environment variables (the `*EnvVarName` properties), or Java System properties (the `*SysPropName` properties).
 
 To enable it, see [Configuring - Storage Converter Plugins](/administration/configuration/plugins/configuring.md#storage-converter-plugins).
 
 See also: [Key Storage](/manual/key-storage/index.md)
 
-Provider type: `jasypt-encryption`
+Provider type: `aes-gcm-encryption`
+
+:::tip Backward Compatibility
+The legacy provider name `jasypt-encryption` is still supported as an alias. Existing configurations do not need to be changed after upgrade.
+:::
 
 The following encryption properties marked with `*` can be set directly,
 using the property name shown,
@@ -126,54 +128,65 @@ or `SysPropName` to use the Java System Property.
 If a System Property is specified: it is read in once and used by the initialization of the converter plugin,
 then the Java System Property is set to null so it cannot be read again.
 
-Configuration properties:
-
-`encryptorType`
-
-: Jasypt Encryptor to use. Either `basic`, `strong`, or `custom`. Default: 'basic'.
-
-    * `basic` uses algorithm `PBEWithMD5AndDES`
-    * `strong` requires use of the JCE Unlimited Strength policy files. (Algorithm: `PBEWithMD5AndTripleDES`)
-    * `custom` is required to specify the algorithm.
+#### Configuration properties
 
 `password*`
-: the password.
+: The encryption password. This is the only required property.
 
-`algorithm*`
-: the encryption algorithm.
-
-`provider*`
-: the provider name. 'BC' indicates Bouncycastle.
-
-`providerClassName*`
-: Java class name of the provider.
-
-`keyObtentionIterations*`
-: Number of hashes to use for the password when generating the key, default is 1000.
-
-Example configuration for the Key Storage facility:
+Example configuration for **new installations**:
 
 ```properties
-rundeck.storage.converter.1.type=jasypt-encryption
+rundeck.storage.converter.1.type=aes-gcm-encryption
 rundeck.storage.converter.1.path=keys
-rundeck.storage.converter.1.config.encryptorType=custom
-rundeck.storage.converter.1.config.passwordEnvVarName=ENC_PASSWORD
-rundeck.storage.converter.1.config.algorithm=PBEWITHSHA256AND128BITAES-CBC-BC
-rundeck.storage.converter.1.config.provider=BC
+rundeck.storage.converter.1.config.password=YOUR_ENCRYPTION_PASSWORD
 ```
-
-Example configuration for the Project Configuration storage facility:
 
 ```properties
-rundeck.config.storage.converter.1.type=jasypt-encryption
-rundeck.config.storage.converter.1.path=/
-rundeck.config.storage.converter.1.config.password=sekrit
-rundeck.config.storage.converter.1.config.encryptorType=custom
-rundeck.config.storage.converter.1.config.algorithm=PBEWITHSHA256AND128BITAES-CBC-BC
-rundeck.config.storage.converter.1.config.provider=BC
+rundeck.config.storage.converter.1.type=aes-gcm-encryption
+rundeck.config.storage.converter.1.path=projects
+rundeck.config.storage.converter.1.config.password=YOUR_ENCRYPTION_PASSWORD
 ```
 
-File: `rundeck-jasypt-encryption-plugin-{{$rundeckVersionFull}}.jar`
+#### Legacy properties (only needed when upgrading from a previous version)
+
+The following properties are only needed if you are upgrading from a Rundeck version that used the old `jasypt-encryption` plugin and you have existing encrypted data in your database. They tell the plugin how to **decrypt** that old data. New encryptions always use AES-256-GCM regardless of these settings.
+
+:::info
+If you are upgrading from a standard Rundeck installation (default settings), just add `encryptorType=custom` and use the same password you had before. No other legacy properties are needed.
+:::
+
+`encryptorType`
+: Identifies the legacy encryptor format used on existing data. Either `basic` or `custom`. Default: 'custom'.
+
+    * `custom` — decrypts using algorithm `PBEWITHSHA256AND128BITAES-CBC-BC` with BC provider (the Rundeck default since 2014)
+    * `basic` — decrypts using algorithm `PBEWithMD5AndDES`
+
+`algorithm`
+: (optional) Only needed if you previously configured a non-default algorithm. Overrides the legacy algorithm for decrypting existing data.
+
+`provider`
+: (optional) Only needed if you previously used a non-default JCE provider. Default: 'BC' (Bouncycastle).
+
+`keyObtentionIterations`
+: (optional) Only needed if you previously changed this from the default. Default: 1000.
+
+Example configuration for an **upgrade** from a standard Rundeck installation:
+
+```properties
+rundeck.storage.converter.1.type=aes-gcm-encryption
+rundeck.storage.converter.1.path=keys
+rundeck.storage.converter.1.config.password=YOUR_EXISTING_PASSWORD
+rundeck.storage.converter.1.config.encryptorType=custom
+```
+
+```properties
+rundeck.config.storage.converter.1.type=aes-gcm-encryption
+rundeck.config.storage.converter.1.path=projects
+rundeck.config.storage.converter.1.config.password=YOUR_EXISTING_PASSWORD
+rundeck.config.storage.converter.1.config.encryptorType=custom
+```
+
+File: `rundeck-aes-gcm-encryption-plugin-{{$rundeckVersionFull}}.jar`
 
 :::tip
 Note: the specific PBE algorithms available for use with the `encryptorType=custom` come from installed JCE providers.  BouncyCastle is included but others are provided by the specific JDK you use.  Here is a sample list of PBE providers using BouncyCastle and OpenJDK 1.8:

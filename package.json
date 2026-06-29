@@ -22,7 +22,7 @@
     "glob": "^13.0.6",
     "markdown-it-container": "^3.0.0",
     "markdown-it-include": "^2.0.0",
-    "openapi-explorer": "2.4.788",
+    "openapi-explorer": "2.4.801",
     "swagger-ui-dist": "^5.9.0",
     "toposort": "^2.0.2",
     "vuepress-plugin-open-graph": "^1.16.0"

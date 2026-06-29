@@ -69,6 +69,10 @@ This error means the server did not receive any status report from the Runner fo
 
 The properties below are the main levers available to increase capacity and avoid this class of error. All of them are JVM system properties — pass them with `-D` on the Runner command line (or via `command:` in Docker Compose).
 
+:::tip
+To confirm which bottleneck is causing the timeout before tuning, consult the [Runner Metrics Reference](/administration/runner/runner-management/runner-metrics.md). It documents the operation-queue and report-delivery metrics that show saturation building before the server times out.
+:::
+
 ### Operation concurrency
 
 The Runner runs each operation in a thread from a fixed-size pool. When the pool is full, additional operations wait in an unbounded queue, and no status reports are emitted for queued operations.

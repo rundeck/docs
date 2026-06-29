@@ -48,21 +48,22 @@ For more details on how Replicas operate, see [**Runner Replicas**](/administrat
 
 ### Enabling the Latest Runner Features
 
-To use the latest Enterprise Runner features, the following feature-flag must be enabled in **System Configuration** or optionally in the `rundeck-config.properties` file if using the self-hosted software.
+For **Runbook Automation Self-Hosted 6.0 and later**, **`rundeck.feature.runner.enabled`**, **`rundeck.feature.distributedAutomation.enabled`**, and **`rundeck.feature.runnerReplicas.enabled`** default to **`true`**. You normally **do not** need to set them unless you turned a capability **off** and need to turn it back **on**, or you are aligning an older configuration with the current defaults. See [Upgrading to Rundeck 6.0 — Feature flags](/upgrading/upgrading-to-6.0.md#feature-flags-defaults-removals-and-cleanup).
 
-1. **`rundeck.feature.runner.enabled`** = **`true`**.  This enables the platform feature of the Runner.
-2. **`rundeck.feature.distributedAutomation.enabled`** = **`true`**.  This enables the latest features of the Runner - such as executing plugins on the Runner and managing Runners within Projects. It is **highly recommended** to add this feature-flag as well.
+On **5.x** self-hosted (and some longer-lived configs), **`distributedAutomation`** and **runner replicas** often had to be enabled explicitly; the notes below and linked pages may still describe that path.
 
-:::tip Enabled by Default for Docker and Runbook Automation SaaS
-These features have been enabled on Docker installations since v4.5.0 and is also enabled by default for Runbook Automation SAAS.
-If using either Docker or Runbook Automation SAAS, the feature is enabled by default and no further action is required.
+1. **`rundeck.feature.runner.enabled`** = **`true`** enables the Runner platform.
+2. **`rundeck.feature.distributedAutomation.enabled`** = **`true`** enables distributed automation (runner tags, project runner management, plugins on the Runner, and related UI/API).
+
+:::tip Enabled by Default for Docker, SaaS, and Self-Hosted 6.0+
+Runner-related flags have been enabled on Docker installations since v4.5.0 and are enabled by default for Runbook Automation **SaaS**. **Self-hosted 6.0+** also defaults **`distributedAutomation`** and **`runnerReplicas`** to **on**. Confirm **System Configuration** if anything still sets them to **`false`**.
 :::
 
 :::warning Upgrading from versions prior to 4.11
 
 If using the Enterprise Runner prior to version 4.11 and want to upgrade and enable the latest Runner features, follow these steps:
 
-1. Set **`rundeck.feature.distributedAutomation.enabled`** = **`true`** in **System Configuration**.
+1. Ensure **`rundeck.feature.distributedAutomation.enabled`** is **`true`** in **System Configuration** (on **6.0+** it is already **on** by default unless overridden).
 2. [Upgrade the Runners](/administration/runner/runner-management/upgrading-runners.md) to the latest version.
 
 It may also be helpful to review the latest Runner features.

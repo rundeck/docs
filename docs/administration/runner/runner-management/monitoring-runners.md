@@ -79,3 +79,18 @@ For example, the **Datadog** agent can be configured to monitor the Runners JVM 
 The JVM metrics will then be associated with the Runner's host in Datadog:
 
 ![Datadog Monitoring Runner](/assets/img/datadog-monitoring-runner.png)<br>
+
+## Operation and report-delivery metrics
+
+Rundeck 6.0 adds operation-queue and report-delivery metrics that help diagnose and predict the server-side `Runner did not deliver reports in the configured timeout period` error. On the Replica these are exposed through the **same JMX MBeans** described above — no extra configuration beyond enabling JMX is required.
+
+The Replica does **not** expose an HTTP metrics endpoint and does not bind to a network port for monitoring. To consume the Runner metrics with Prometheus, attach the [`jmx_prometheus_javaagent`](https://github.com/prometheus/jmx_exporter) as a Java agent and point it at a JMX config:
+
+```bash
+java -javaagent:/path/to/jmx_prometheus_javaagent.jar=9404:/path/to/jmx-config.yml \
+  -jar runner-6281cf48-37a2-4659-93c9-907539177022.jar
+```
+
+The agent then exposes the JMX MBeans (including JVM and Runner metrics) in Prometheus format on its own port (`9404` in the example above).
+
+The Runner-side metrics are only part of the report-delivery picture; the matching server-side metrics are exposed on the Rundeck server's [`/monitoring/prometheus`](/administration/monitoring/monitoring.md) endpoint. For the full list of metrics across both processes and guidance on interpreting them, see the [Runner Metrics Reference](/administration/runner/runner-management/runner-metrics.md).

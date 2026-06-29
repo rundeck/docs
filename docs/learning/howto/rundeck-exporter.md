@@ -1,4 +1,10 @@
-# Monitor a Rundeck Instance Using Prometheus and Grafana
+# Monitor a Rundeck Instance Using Prometheus and Grafana (legacy exporter)
+
+:::warning Deprecated in Rundeck 6.0
+Rundeck 6.0 exposes metrics natively in Prometheus format at the [`/monitoring/prometheus`](/administration/monitoring/index.md) endpoint, so the third-party `rundeck_exporter` described on this page is **no longer required** for new deployments. Point Prometheus directly at `/monitoring/prometheus` instead. See the [Monitoring overview](/administration/monitoring/index.md) and [Using monitoring data](/administration/monitoring/monitoring.md) for the modern approach.
+
+This page is retained for users running older Rundeck versions or who already depend on the community exporter. For Runner-specific metrics, see the [Runner Metrics Reference](/administration/runner/runner-management/runner-metrics.md).
+:::
 
 Using Rundeck [metrics](/api/index.md#metrics-data) users can monitor the health of any Rundeck instance (workload, CPU usage, memory amount, scheduled jobs, running jobs, etc). Some users find it helpful to display these metrics on a dashboard. Using a combination of Prometheus, Grafana, and a custom Prometheus exporter (rundeck_exporter) these metrics can be shown on a dashboard for a glance viewing.
 

@@ -3,7 +3,7 @@
 Compiling Rundeck from source is an advanced and customizable approach that allows users to have full control over the installation and configuration process of this powerful workflow automation platform. By compiling Rundeck from its source code, users gain the flexibility to tailor the installation to their specific requirements and leverage the latest features and updates directly from the development repository. Whether you're a developer looking to contribute to the project or an advanced user seeking a more hands-on deployment method, compiling Rundeck from source provides a deeper understanding of the platform's internals and empowers you to customize and optimize it for your specific use cases. In this guide, we will explore the step-by-step process of compiling Rundeck from source, ensuring you have the necessary tools, dependencies, and knowledge to successfully build and deploy a personalized instance of Rundeck.
 
 :::warning Java Versions
-While Rundeck supports Java 17 for runtime, building from source is still required to use Java 11.
+For **Rundeck 6.0.0** and later, building from source requires **Java 17** (JDK), matching the [runtime requirement](/administration/install/system-requirements.md#java).
 :::
 
 ## Installing from Source
