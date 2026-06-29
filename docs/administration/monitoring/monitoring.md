@@ -225,7 +225,7 @@ Use the `/monitoring/health` endpoint for load balancer health checks. The endpo
 - Other load balancers that support HTTP health checks
 
 **Example HAProxy configuration:**
-```
+```text
 backend rundeck_backend
     option httpchk GET /monitoring/health
     http-check expect status 200
