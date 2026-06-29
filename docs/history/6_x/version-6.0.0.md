@@ -1,7 +1,7 @@
 ---
 
 title: "6.0.0 Release Notes"
-date: 2026-06-02
+date: 2026-06-29
 image: /images/chevron-logo-red-on-white.png
 description: "Rundeck | Runbook Automation Releases 6.0.0 - <DESCRIPTION>"
 feed:
@@ -57,6 +57,10 @@ Fixed a bug where **viewing runner replicas** in a project incorrectly required 
 ##### ::circle-dot:: Execution log runner UI (i18n + badge settings)
   
 Execution log: runner plugin registers i18n for the “Display Runner Badge” setting; fixes missing translation key and non-functional toggle when combined with updated ui-trellis LogViewer `addUiMessages` provider.
+
+##### ::circle-dot:: Fix OIDC login broken after Grails 7: restore ROLE_USER authority
+  
+Fixed an issue where users were unable to log in through OIDC single sign-on (such as Okta) after upgrading, caused by a change in the underlying Spring Security framework that assigned the wrong default role. OIDC/Okta SSO login now works correctly again, with users receiving the expected `ROLE_USER` access along with their provider group memberships.
 
 
 ## Rundeck Open Source Product Updates
@@ -139,7 +143,7 @@ Fix CVE-2026-34478 and CVE-2026-34480 by upgrading to 2.25.4
 
 Name: <span style="color: brown"><span class="glyphicon glyphicon-apple"></span> "Auriga brown apple"</span>
 
-Release Date: June 2nd, 2026
+Release Date: June 29th, 2026
 
 
 ## Community Contributors

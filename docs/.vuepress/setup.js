@@ -6,7 +6,7 @@ const API_VERSION='58'
 const API_DEP_REL='7.0.0'
 const API_DEP_VER='34'
 const API_MIN_VER='17'
-const CLI_VERSION='2.0.8'
+const CLI_VERSION='2.1.1'
 const GPG_KEY_DATE='20260105'
 
 const REPO_BRANCH='4.0.x'
