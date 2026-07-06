@@ -115,4 +115,44 @@ Rundeck 6.0 upgrades to **Jetty 12**, which removes the legacy Jetty JAAS packag
 
 See the [Authentication documentation](/administration/security/authentication.md) for current JAAS configuration examples and supported password formats.
 
+## Storage encryption: AES-256-GCM replaces Jasypt {#storage-encryption-aes-256-gcm}
 
+Rundeck **6.0** replaces the legacy **Jasypt**-based storage encryption plugin with a new **AES-256-GCM** authenticated encryption plugin (`aes-gcm-encryption`), resolving the BouncyCastle CVE-2026-5588 dependency issue and providing stronger encryption for Key Storage and Project Configuration data.
+
+### What happens on upgrade
+
+- The default converter type in `rundeck-config.properties` changes from `jasypt-encryption` to `aes-gcm-encryption`.
+- **Existing Jasypt-encrypted data continues to work** — the new plugin can read and decrypt legacy Jasypt payloads with no manual intervention.
+- **Lazy migration**: when a Jasypt-encrypted item is next updated (edited, re-saved, or rotated), it is automatically re-encrypted using AES-256-GCM. Items that are never updated remain Jasypt-encrypted and readable indefinitely.
+- The legacy provider name `jasypt-encryption` is supported as an alias, so existing `rundeck-config.properties` entries that reference `type=jasypt-encryption` continue to work without changes.
+- The legacy `encryptorType`, `algorithm`, `provider`, and `keyObtentionIterations` configuration properties are supported by the new plugin to ensure it can correctly decrypt data encrypted with custom Jasypt settings.
+
+No configuration changes are **required** for a standard upgrade. The same encryption password is used for both legacy decryption and new AES-GCM encryption.
+
+For full plugin configuration details, see the [AES-GCM Encryption Plugin](/administration/configuration/plugins/bundled-plugins.md#aes-gcm-encryption-plugin) reference.
+
+### Downgrading from 6.0 to 5.x {#encryption-downgrade}
+
+:::warning
+If you need to downgrade from Rundeck 6.0 back to 5.x, any storage items that were **re-encrypted as AES-256-GCM** during the 6.0 run will **not** be readable by the 5.x Jasypt plugin. Plan accordingly before upgrading.
+:::
+
+**Before upgrading**, take a **full database backup** so you can restore to the pre-upgrade state if a downgrade is needed.
+
+**If a downgrade becomes necessary** after running on 6.0:
+
+1. **Restore from the pre-upgrade database backup** — this is the safest path. All storage items return to their Jasypt-encrypted state and 5.x can read them without issues.
+
+2. **Identify affected records** — if restoring from backup is not an option, records that were re-encrypted to AES-256-GCM during the 6.0 run can be identified in the database. AES-GCM encrypted content starts with a `0x01` version byte, and these records will have `aes-gcm-encryption:encrypted = "true"` in their JSON metadata. The following query works on **MySQL**:
+
+    ```sql
+    SELECT id, name
+    FROM storage
+    WHERE JSON_UNQUOTE(JSON_EXTRACT(json_data, '$."aes-gcm-encryption:encrypted"')) = 'true'
+      AND (JSON_UNQUOTE(JSON_EXTRACT(json_data, '$."jasypt-encryption:encrypted"')) IS NULL
+           OR JSON_UNQUOTE(JSON_EXTRACT(json_data, '$."jasypt-encryption:encrypted"')) = 'false');
+    ```
+
+3. **Re-create affected secrets** — for any records identified above, re-upload the keys or passwords through the Rundeck 5.x Key Storage UI or API after the downgrade, so they are re-encrypted with the Jasypt plugin.
+
+**Recommendation:** Before upgrading to 6.0 in production, test the upgrade in a staging environment and confirm that a rollback to the database backup works correctly.

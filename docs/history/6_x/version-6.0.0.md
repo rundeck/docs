@@ -77,7 +77,7 @@ Initial Grails 7 Upgrade for Rundeck Core.  Versions and code from this pull req
 
 #####  ::circle-dot:: [Eliminate Jasypt dependency and upgrade BouncyCastle to 1.84](https://github.com/rundeck/rundeck/pull/10094)
   
-Rundeck&#39;s storage encryption has been upgraded to use modern AES-256-GCM authenticated encryption, replacing the legacy Jasypt library and resolving security vulnerability CVE-2026-5588 by upgrading BouncyCastle to version 1.84. This enhancement provides stronger encryption for stored credentials and keys while maintaining full backward compatibility—existing encrypted data continues to work and is automatically migrated to the new encryption format when next updated, requiring no manual intervention or downtime.
+Rundeck&#39;s storage encryption has been upgraded to use modern AES-256-GCM authenticated encryption, replacing the legacy Jasypt library and resolving security vulnerability CVE-2026-5588 by upgrading BouncyCastle to version 1.84. This enhancement provides stronger encryption for stored credentials and keys while maintaining full backward compatibility—existing encrypted data continues to work and is automatically migrated to the new encryption format when next updated, requiring no manual intervention or downtime. See the [upgrade notes](/upgrading/upgrading-to-6.0.md#storage-encryption-aes-256-gcm) for details and [downgrade considerations](/upgrading/upgrading-to-6.0.md#encryption-downgrade).
 
 #####  ::circle-dot:: [Make script editor min/max lines configurable via System Configuration](https://github.com/rundeck/rundeck/pull/10137)
 
