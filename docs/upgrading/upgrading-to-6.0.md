@@ -149,18 +149,20 @@ Because re-encryption is lazy (only on modification), the risk level depends on 
 
 1. **Restore from the pre-upgrade database backup** — this is the safest path. All storage items return to their Jasypt-encrypted state and 5.x can read them without issues.
 
-2. **Identify affected records** — the following query identifies records re-encrypted to AES-256-GCM in the `storage` table (which holds both Key Storage and Project Configuration data). Works on **MySQL**:
-
-    ```sql
-    SELECT id, dir, name
-    FROM storage
-    WHERE JSON_UNQUOTE(JSON_EXTRACT(json_data, '$."aes-gcm-encryption:encrypted"')) = 'true'
-      AND (JSON_UNQUOTE(JSON_EXTRACT(json_data, '$."jasypt-encryption:encrypted"')) IS NULL
-           OR JSON_UNQUOTE(JSON_EXTRACT(json_data, '$."jasypt-encryption:encrypted"')) = 'false');
-    ```
-
-    Records under `keys/` are Key Storage entries; records under `projects/` are Project Configuration entries.
-
-3. **Re-create affected data** — after downgrading, re-upload affected keys and passwords through the Rundeck 5.x Key Storage UI or API, and re-save affected project settings, so they are re-encrypted with the Jasypt plugin.
+2. **Re-create affected data** — if restoring from backup is not an option, re-upload affected keys and passwords through the Rundeck 5.x Key Storage UI or API, and re-save affected project settings, so they are re-encrypted with the Jasypt plugin.
 
 **Recommendation:** Before upgrading to 6.0 in production, test the upgrade in a staging environment and confirm that a rollback to the database backup works correctly.
+
+:::tip Diagnostic query
+To assess the scope of affected records, the following query identifies storage entries that were re-encrypted to AES-256-GCM. The `storage` table holds both Key Storage and Project Configuration data. Works on **MySQL**:
+
+```sql
+SELECT id, dir, name
+FROM storage
+WHERE JSON_UNQUOTE(JSON_EXTRACT(json_data, '$."aes-gcm-encryption:encrypted"')) = 'true'
+  AND (JSON_UNQUOTE(JSON_EXTRACT(json_data, '$."jasypt-encryption:encrypted"')) IS NULL
+       OR JSON_UNQUOTE(JSON_EXTRACT(json_data, '$."jasypt-encryption:encrypted"')) = 'false');
+```
+
+Records under `keys/` are Key Storage entries; records under `projects/` are Project Configuration entries.
+:::
