@@ -134,20 +134,20 @@ For full plugin configuration details, see the [AES-GCM Encryption Plugin](/admi
 ### Downgrading from 6.0 to 5.x {#encryption-downgrade}
 
 :::danger
-Downgrading from Rundeck 6.0 to 5.x is **not recommended**. Any storage items that were **re-encrypted as AES-256-GCM** during the 6.0 run — including Project Configuration — will **not** be readable by the 5.x Jasypt plugin. If project settings were modified on 6.0, Rundeck 5.x will **fail to load those projects on startup**.
+Downgrading from Rundeck 6.0 to 5.x is **not recommended**. Any storage items that were **re-encrypted as AES-256-GCM** during the 6.0 run will **not** be readable by the 5.x Jasypt plugin. Rundeck 5.x will start and projects will appear, but encrypted data that was re-encrypted on 6.0 — such as project configuration properties, keys, and passwords — will fail to decrypt and will not be available.
 :::
 
 Because re-encryption is lazy (only on modification), the risk level depends on how much activity occurred on 6.0:
 
 - **No projects or keys were modified** → downgrade is safe; all data remains Jasypt-encrypted.
-- **Keys/passwords were modified but no project settings** → Rundeck 5.x starts normally but affected keys must be re-uploaded.
-- **Project settings were modified** → Rundeck 5.x **cannot decrypt the project configuration** and affected projects will fail to load. A database restore is required.
+- **Keys/passwords were modified but no project settings** → Rundeck 5.x starts normally and projects load, but affected keys and passwords are not usable until re-uploaded.
+- **Project settings were modified** → Rundeck 5.x starts and the project is visible, but the encrypted project configuration properties cannot be decrypted. The project will not function correctly until the data is restored or re-created.
 
 **Before upgrading**, take a **full database backup** so you can restore to the pre-upgrade state if a downgrade is needed.
 
 **If a downgrade becomes necessary** after running on 6.0:
 
-1. **Restore from the pre-upgrade database backup** — this is the **only safe path** when project settings were modified on 6.0. All storage items return to their Jasypt-encrypted state and 5.x can read them without issues.
+1. **Restore from the pre-upgrade database backup** — this is the safest path. All storage items return to their Jasypt-encrypted state and 5.x can read them without issues.
 
 2. **Identify affected records** — the following query identifies records re-encrypted to AES-256-GCM in the `storage` table (which holds both Key Storage and Project Configuration data). Works on **MySQL**:
 
@@ -159,8 +159,8 @@ Because re-encryption is lazy (only on modification), the risk level depends on 
            OR JSON_UNQUOTE(JSON_EXTRACT(json_data, '$."jasypt-encryption:encrypted"')) = 'false');
     ```
 
-    Records under `keys/` are Key Storage entries; records under `projects/` are Project Configuration entries. **If any `projects/` records appear, a database restore is required** — Rundeck 5.x cannot start with AES-GCM-encrypted project configuration.
+    Records under `keys/` are Key Storage entries; records under `projects/` are Project Configuration entries.
 
-3. **Re-upload affected keys** — if **only** Key Storage records were re-encrypted (no `projects/` records in the query above), you can downgrade and then re-upload the affected keys or passwords through the Rundeck 5.x Key Storage UI or API so they are re-encrypted with the Jasypt plugin.
+3. **Re-create affected data** — after downgrading, re-upload affected keys and passwords through the Rundeck 5.x Key Storage UI or API, and re-save affected project settings, so they are re-encrypted with the Jasypt plugin.
 
 **Recommendation:** Before upgrading to 6.0 in production, test the upgrade in a staging environment and confirm that a rollback to the database backup works correctly.
