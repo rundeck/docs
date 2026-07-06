@@ -143,16 +143,18 @@ If you need to downgrade from Rundeck 6.0 back to 5.x, any storage items that we
 
 1. **Restore from the pre-upgrade database backup** — this is the safest path. All storage items return to their Jasypt-encrypted state and 5.x can read them without issues.
 
-2. **Identify affected records** — if restoring from backup is not an option, records that were re-encrypted to AES-256-GCM during the 6.0 run can be identified in the database. AES-GCM encrypted content starts with a `0x01` version byte, and these records will have `aes-gcm-encryption:encrypted = "true"` in their JSON metadata. The following query works on **MySQL**:
+2. **Identify affected records** — if restoring from backup is not an option, records that were re-encrypted to AES-256-GCM during the 6.0 run can be identified by their metadata flags in the `storage` table (which holds both Key Storage and Project Configuration data). The following query works on **MySQL**:
 
     ```sql
-    SELECT id, name
+    SELECT id, dir, name
     FROM storage
     WHERE JSON_UNQUOTE(JSON_EXTRACT(json_data, '$."aes-gcm-encryption:encrypted"')) = 'true'
       AND (JSON_UNQUOTE(JSON_EXTRACT(json_data, '$."jasypt-encryption:encrypted"')) IS NULL
            OR JSON_UNQUOTE(JSON_EXTRACT(json_data, '$."jasypt-encryption:encrypted"')) = 'false');
     ```
 
-3. **Re-create affected secrets** — for any records identified above, re-upload the keys or passwords through the Rundeck 5.x Key Storage UI or API after the downgrade, so they are re-encrypted with the Jasypt plugin.
+    Records under `keys/` are Key Storage entries; records under `projects/` are Project Configuration entries.
+
+3. **Re-create affected secrets** — for any Key Storage records identified above, re-upload the keys or passwords through the Rundeck 5.x Key Storage UI or API after the downgrade so they are re-encrypted with the Jasypt plugin. For Project Configuration records, re-save the project settings through the UI or API.
 
 **Recommendation:** Before upgrading to 6.0 in production, test the upgrade in a staging environment and confirm that a rollback to the database backup works correctly.
