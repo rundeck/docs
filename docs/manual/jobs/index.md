@@ -210,4 +210,6 @@ When prompted "Really kill this job?" Click the "Yes" button.
 
 The Job will terminate with a "Killed" completion status.
 
+> **Note:** Killing a job does not guarantee that child processes on the node will also be terminated. This is an architectural limitation of how Rundeck interacts with the underlying OS and remote executors.
+
 ![Job definition](/assets/img/fig0319-d.png)
