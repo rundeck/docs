@@ -25,6 +25,47 @@ The filter form contains a number of fields to limit search:
 After filling the form pressing the "Filter" button, the page will
 display executions matching the search.
 
+### Default Time Filter
+
+By default the Activity view loads all executions without a time boundary, which can be slow on instances with large execution history. Administrators can configure a default time filter so the Activity page opens pre-filtered to a recent window.
+
+Two settings work together to enable this feature:
+
+**1. Enable the feature flag** in `rundeck-config.properties`:
+
+```properties
+rundeck.feature.activityDefaultTimeFilter.enabled=true
+```
+
+**2. Set the default time window** (optional — defaults to `1m`):
+
+```properties
+rundeck.gui.activity.defaultTimeFilter=1w
+```
+
+Accepted values:
+
+| Value | Description |
+|-------|-------------|
+| `1h`  | Last 1 hour |
+| `1d`  | Last 1 day  |
+| `1w`  | Last 1 week |
+| `1m`  | Last 1 month (default when not specified) |
+
+**Docker / environment variable configuration:**
+
+```bash
+RUNDECK_FEATURE_ACTIVITYDEFAULTTIMEFILTER_NAME=activityDefaultTimeFilter
+RUNDECK_FEATURE_ACTIVITYDEFAULTTIMEFILTER_ENABLED=true
+RUNDECK_GUI_ACTIVITY_DEFAULTTIMEFILTER=1w
+```
+
+When enabled, the **Activity**, **Jobs**, and **Ad hoc commands** pages all apply this filter on first load when no other filters are active. Users can still change or clear the filter manually at any time.
+
+:::tip
+Setting a default time filter is recommended for production instances with months or years of execution history, as it significantly reduces initial page load time.
+:::
+
 ## Activity in PagerDuty Runbook Automation Self-Hosted Home
 
 On the home page, users can check activity for a specific project, such as failed executions for each project.
