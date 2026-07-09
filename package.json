@@ -97,7 +97,8 @@
     "caniuse-lite": "1.0.30001769",
     "autoprefixer": "10.4.24",
     "filelist": "1.0.3",
-    "linkify-it": "5.0.1"
+    "linkify-it": "5.0.2",
+    "js-yaml": "4.3.0"
   },
   "postcss": {
     "plugins": {
