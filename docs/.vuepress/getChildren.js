@@ -1,7 +1,7 @@
 import fs from 'fs'
 import { globSync } from 'glob'
 import markdownIt from 'markdown-it'
-import meta from 'markdown-it-meta'
+import meta from './markdown-it-meta.js'
 
 // Load all MD files in a specified directory and order by metadata 'order' value
 const getChildren = function(parent_path, dir) {
