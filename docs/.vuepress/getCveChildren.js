@@ -1,7 +1,7 @@
 import fs from 'fs'
 import { globSync } from 'glob'
 import markdownIt from 'markdown-it'
-import meta from 'markdown-it-meta'
+import meta from './markdown-it-meta.js'
 
 /**
  * Custom sorting function for CVE files
