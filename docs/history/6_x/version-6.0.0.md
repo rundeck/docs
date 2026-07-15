@@ -12,6 +12,8 @@ feed:
 
 # 6.0.0 Release Notes
 
+<VidStack src="youtube/LONX1M807sQ" poster="https://img.youtube.com/vi/LONX1M807sQ/maxresdefault.jpg"/>
+
 ## Overview
 
 Rundeck 6.0.0 represents a major milestone with the upgrade to Grails 7, Spring Boot 3, and Java 17 support. This modernization brings significant improvements across performance, security, and user experience.
@@ -37,8 +39,6 @@ This release improves security by patching and addressing over 20 different CVEs
 Key security features in this release include:
 - **Password reset links now automatically expire** after a configurable period (7 days by default), limiting the window of opportunity for unauthorized password resets
 - **Password policy enforcement from System Configuration** now correctly prioritizes database settings over file-based configuration, ensuring policies set through the UI are properly enforced
-
-<!-- <VidStack src="youtube/REPLACE" poster="https://img.youtube.com/vi/REPLACE/maxresdefault.jpg"/> -->
 
 ## Runbook Automation Updates
 
