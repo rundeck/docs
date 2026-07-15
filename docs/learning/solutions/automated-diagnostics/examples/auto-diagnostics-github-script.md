@@ -8,7 +8,7 @@ This solution provides instructions for setting up Automation Actions to retriev
 
 ## Create Automation Actions Runner
 :::tip Prerequisites
-In order to install the Automation Actions runner, you must have a server available where you can install Java 11+. Linux is the recommended operating system, though you can optionally run the Automation-Actions Jar in a container.
+In order to install the Automation Actions runner, you must have a server available where you can install Java 17+. Linux is the recommended operating system, though you can optionally run the Automation-Actions Jar in a container.
 :::
 
 ### Download Runner Credentials File
@@ -32,7 +32,7 @@ In order to install the Automation Actions runner, you must have a server availa
 
 ### Deploy Runner
 1. [Optional] Update the machine where you will install the runner `sudo apt-get update` (Debian) or `sudo yum update` (RHEL/CentOS).
-2. If you have not installed Java 11+ yet, install it with `sudo apt install openjdk-11-jre-headless`.
+2. If you have not installed Java 17+ yet, install it with `sudo apt install openjdk-17-jre-headless`.
 3. `mkdir rundeck_runner`: Create a folder in a preferred directory on your system to place the credentials files.
 4. `cd rundeck_runner`: Navigate into the runner’s directory.
 5. Copy the credentials file that was downloaded from the PagerDuty Runner menu in the last section. It should already contain the PagerDuty API key inside the file.

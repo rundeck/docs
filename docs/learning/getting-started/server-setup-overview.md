@@ -5,7 +5,7 @@ The following steps show you how to prepare the Server properly.  These steps ar
 Ensure that your server meets the minimum system requirements for Rundeck and keep all the server packages updated.<br>
 ### Step 2: [Install Java](/administration/install/system-requirements.md#java)
 Rundeck requires Java JRE to run. Install the Java Runtime Environment (JRE).<br>
-For example, on Ubuntu, you can use `sudo apt install openjdk-11-jre`<br>
+For example, on Ubuntu, you can use `sudo apt install openjdk-17-jre`<br>
 ### Step 3: [Install Rundeck](/administration/install/index.md)
 Add the Rundeck repository to your package manager and install the latest Rundeck version depending on your operating system. For Windows-based servers, follow [this](/administration/install/windows.md#installing-on-windows).<br>
 ### Step 4: [Set the right server URL for Rundeck server](/administration/install/index.md#server-url)

@@ -204,6 +204,12 @@ Choose "File" from the Option Type:
 
 ![File Option Edit Form](/assets/img/fig-newoption-file.png)
 
+::: warning Not supported with Enterprise Runners
+The **File** option type is **not supported** when a Job executes through an Enterprise Runner (distributed automation), whether the Runner runs the step locally or dispatches it to nodes. Uploaded files are not transferred to the Runner, so `file.NAME` will not resolve on the remote side.
+
+There is currently **no pre-execution warning** in the UI or API when a Job that uses a File option is dispatched to a Runner. If your Job relies on file uploads, run it on the Local Runner / Automation Server.
+:::
+
 The Option Name and Description can be entered.
 
 Required
@@ -800,9 +806,10 @@ In this case, the option will be allowed to use a text field to set the value.
 
 You can create a URL to link to a specific Job, and pre-fill some of the option values by adding URL query parameters to the Job's URL.
 
-Query Parameters format for options:
+Supported query parameters:
 
 - `opt.NAME`: provide a value for an option named `NAME`
+- `nodeFilter`: pre-populate the node filter field with the given filter expression. This parameter is only applied when the Job has **Node Filter** set to **Editable** (`nodeFilterEditable: true`); it is ignored otherwise.
 
 For example, if the URL for the Job is:
 
@@ -816,4 +823,8 @@ The result would be:
 
     http://rundeck:4440/project/MyProject/job/show/ab698597-9753-4e98-bdab-90ebf395b0d0?opt.myopt1=some+value&opt.myotheropt=another+value
 
-Note: be sure to properly escape the strings for option values, and if necessary for the option names as well.
+To also pre-populate the node filter, combine `nodeFilter` with option parameters:
+
+    http://rundeck:4440/project/MyProject/job/show/ab698597-9753-4e98-bdab-90ebf395b0d0?opt.myopt1=some+value&nodeFilter=name%3A+web-server-01
+
+Note: be sure to properly URL-encode all parameter values. This applies to option values, option names, and `nodeFilter` expressions — filter syntax characters such as spaces and `:` must be encoded (e.g., `name: web-01` becomes `name%3A+web-01`).

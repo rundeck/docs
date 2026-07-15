@@ -221,7 +221,7 @@ Variable Value: jdk installation directory
 :::warning
 Don’t include the \bin directory, only the JDK path. Example: (path specifics may vary)
 
-**Correct** – `C:\Program Files\Java\jdk-11`
+**Correct** – `C:\Program Files\Java\jdk-17`
 
-**Wrong** – `C:\Program Files\Java\jdk-11\bin`
+**Wrong** – `C:\Program Files\Java\jdk-17\bin`
 :::

@@ -96,11 +96,11 @@ rundeck_url: https://<your_account>.pagerduty.runbook.cloud
 rundeck_token: <Your_Saved_Process_Automation_API_TOKEN>
 ```
 #### On your Runner machine
-Install Java 11+ on the machine that will host the runner. We recommend Linux (Ubuntu 18) or higher. If the operating system is reasonably new, it is recommended to perform an update:
+Install Java 17+ on the machine that will host the runner. We recommend Linux (Ubuntu 18) or higher. If the operating system is reasonably new, it is recommended to perform an update:
 1. Update the Ubuntu version<br>
    `sudo apt-get update`
 2. Install the open source Java version that the runner uses<br>
-   `sudo apt install openjdk-11-jre-headless`
+   `sudo apt install openjdk-17-jre-headless`
 3. Create a folder in a preferred directory on your system to place the credentials files<br>
    `mkdir automation_runner`
 4. Navigate into the runner’s directory<br>
@@ -119,7 +119,7 @@ Install Java 11+ on the machine that will host the runner. We recommend Linux (U
 11. Check the runner’s status in PagerDuty.
 	<br>![](/assets/img/parunner4.png)<br><br>
 	A **green checkmark** indicates that the runner is active and running successfully.
-	A **red circle** indicates that the runner is not running or there is a problem with the runner. Please verify your Java 11+ installation and check the local runner logs, or refer to our [FAQ](https://support.pagerduty.com/docs/automation-actions#faq).
+	A **red circle** indicates that the runner is not running or there is a problem with the runner. Please verify your Java 17+ installation and check the local runner logs, or refer to our [FAQ](https://support.pagerduty.com/docs/automation-actions#faq).
 
 ### Define an Action
 1. In Runbook Automation, click on **Third Party Service Disruptions** in your Jobs list.

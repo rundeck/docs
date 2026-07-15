@@ -7,7 +7,7 @@ Please refer to the [System Requirements](system-requirements.md) for the latest
 :::
 
 ```bash
-sudo apt-get install openjdk-11-jre-headless
+sudo apt-get install openjdk-17-jre-headless
 ```
 
 ::: tabs

@@ -199,7 +199,7 @@ resource "aws_security_group_rule" "all" {
 
 #### instances.tf file
 This file defines the EC2 Rundeck instance. Below are some interesting parameters.<br>
-The `ami` parameter is the EC2 base image. This example will be deployed to the AWS `eu-north-1` region, so the `ami-0bcf2639b551f6b31` AMI must be available in that specific region.<br>
+The `ami` parameter is the EC2 base image. This example will be deployed to the AWS `eu-north-1` region, so the `ami-0bcf2639b551f6b31` AMI must be available in that specific region. Use an Amazon Linux 2023 AMI so that the `dnf` and Amazon Corretto 17 commands in the `user_data` script apply.<br>
 
 ![](/assets/img/terra-aws1.png)
 
@@ -228,10 +228,10 @@ resource "aws_instance" "example" {
  user_data                   = <<-EOF
                #!/bin/bash
                sudo su
-               yum -y update
-               amazon-linux-extras install java-openjdk11
+               dnf -y update
+               dnf -y install java-17-amazon-corretto
                curl https://raw.githubusercontent.com/rundeck/packaging/main/scripts/rpm-setup.sh 2> /dev/null | bash -s rundeck
-               yum -y install rundeck
+               dnf -y install rundeck
                rdeck_ip=$(curl http://checkip.amazonaws.com)
                sleep 2
                sed -i "s/localhost/$rdeck_ip/g" /etc/rundeck/rundeck-config.properties
