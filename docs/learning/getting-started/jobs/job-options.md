@@ -44,6 +44,10 @@ If checked, and no default value(s) are specified, all of the remote or local va
 ## Option Type: File
 ![](/assets/img/joboptions2.png)<br>
 The option type file permits uploading a file that can be utilized as part of the Job. Areas displayed when setting up a File Option Type are a subset of those available in the Text Option Type.<br>
+
+::: warning Not supported with Enterprise Runners
+The **File** option type is **not supported** when a Job executes through an Enterprise Runner (distributed automation). Uploaded files are not transferred to the Runner host, so `file.NAME` will not resolve there. There is currently **no pre-execution warning** in the UI or API when a Job with a File option is dispatched to an Enterprise Runner. For Jobs that depend on file uploads, run them on the **Local Runner** (Automation Server).
+:::
 ## How to reference options on command steps and script steps
 ### Command Step
 To reference a Job Option from a Command Step use the following notation:<br>

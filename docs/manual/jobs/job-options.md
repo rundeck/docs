@@ -204,6 +204,12 @@ Choose "File" from the Option Type:
 
 ![File Option Edit Form](/assets/img/fig-newoption-file.png)
 
+::: warning Not supported with Enterprise Runners
+The **File** option type is **not supported** when a Job executes through an Enterprise Runner (distributed automation), whether the Runner runs the step locally or dispatches it to nodes. Uploaded files are not transferred to the Runner, so `file.NAME` will not resolve on the remote side.
+
+There is currently **no pre-execution warning** in the UI or API when a Job that uses a File option is dispatched to a Runner. If your Job relies on file uploads, run it on the Local Runner / Automation Server.
+:::
+
 The Option Name and Description can be entered.
 
 Required
