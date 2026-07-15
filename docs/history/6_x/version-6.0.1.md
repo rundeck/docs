@@ -1,12 +1,12 @@
 ---
 
 title: "6.0.1 Release Notes"
-date: 2026-07-08
+date: 2026-07-15
 image: /images/chevron-logo-red-on-white.png
 description: "Rundeck | Runbook Automation Releases 6.0.1 - <DESCRIPTION>"
 feed:
  enable: true
- description: ""
+ description: "LDAP Groups Fix"
 
 ---
 
@@ -14,18 +14,7 @@ feed:
 
 ## Overview
 
-<!-- <VidStack src="youtube/REPLACE" poster="https://img.youtube.com/vi/REPLACE/maxresdefault.jpg"/> -->
-
-## Runbook Automation Updates
-
-
-## Rundeck Open Source Product Updates
-
-
-[Here is a link to the full list of public PRs](https://github.com/rundeck/rundeck/pulls?q=is%3Apr+milestone%3A6.0.1+is%3Aclosed)
-
-
-
+Fixed a critical issue introduced in 6.0.0 where LDAP and Active Directory users could log in successfully but were assigned no roles, leaving them with empty permissions and unable to access any projects or run jobs. Group-based roles from LDAP/AD are now correctly applied after login, restoring normal access. Local users configured via realm.properties were not affected.
 
 
 ## Links
@@ -39,13 +28,7 @@ feed:
 
 Name: <span style="color: coral"><span class="glyphicon glyphicon-bell"></span> "Auriga coral bell"</span>
 
-Release Date: July 8th, 2026
-
-
-## Community Contributors
-
-Submit your own Pull Requests to get recognition here!
-
+Release Date: July 15th, 2026
 
 
 ## Staff Contributors
