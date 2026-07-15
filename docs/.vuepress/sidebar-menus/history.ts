@@ -91,11 +91,12 @@ export default [
       {
         text: 'Version 6.x',
         collapsible: true,
-        children: [ 
+        children: [
           {
             text: "6.0.1",
             link: "https://docs.rundeck.com/6.0.1/"
-          },{
+          },
+          {
             text: "6.0.0",
             link: "https://docs.rundeck.com/6.0.0/"
           },
@@ -109,17 +110,14 @@ export default [
             text: "5.20.1",
             link: "https://docs.rundeck.com/5.20.1/"
           },
-
           {
             text: "5.20.0",
             link: "https://docs.rundeck.com/5.20.0/"
           },
-
           {
             text: "5.19.0",
             link: "https://docs.rundeck.com/5.19.0/"
           },
-
           {
             text: "5.18.0",
             link: "https://docs.rundeck.com/5.18.0/"

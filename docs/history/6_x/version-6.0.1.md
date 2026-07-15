@@ -3,7 +3,7 @@
 title: "6.0.1 Release Notes"
 date: 2026-07-15
 image: /images/chevron-logo-red-on-white.png
-description: "Rundeck | Runbook Automation Releases 6.0.1 - <DESCRIPTION>"
+description: "Rundeck | Runbook Automation Releases 6.0.1 - LDAP Groups Fix"
 feed:
  enable: true
  description: "LDAP Groups Fix"
