@@ -26,4 +26,4 @@ Yes, Health Checks are fully compatible with Enterprise Runners as of version 5.
 
 ## Can I use the "File" Job Option (file upload) with Enterprise Runners?
 
-No. The File option type (file upload via UI or API) is not supported when the Job runs through an Enterprise Runner. The uploaded file is not made available on the Runner, so steps that reference `file.NAME` will fail or behave inconsistently. Note that there is currently no pre-execution warning when a Job that uses a File option is dispatched to a Runner. Use the Local Runner / Automation Server for Jobs that depend on file uploads.
+No. The **File** option type (file upload via UI or API) is not supported when the Job runs through an Enterprise Runner. The uploaded file is not made available on the Runner host, so steps that reference `file.NAME` will fail or behave inconsistently. Note that there is currently no pre-execution warning when a Job that uses a File option is dispatched to an Enterprise Runner. Use the **Local Runner** (Automation Server) for Jobs that depend on file uploads.
