@@ -117,7 +117,7 @@ Based on your requirements, select [Java](#when-to-use-java-plugins), [Script](#
 ### 3. Set Up Your Development Environment
 
 **For Java Plugins:**
-- Install JDK 11 or later
+- Install JDK 17 or later
 - Set up Maven or Gradle
 - Add Rundeck dependencies
 - Configure your IDE

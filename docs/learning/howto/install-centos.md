@@ -15,7 +15,7 @@ To install CentOS 7 on a cloud instance (with any provider like Amazon Web Servi
 
 [You can find the full guide to install Centos 7 here](https://docs.centos.org/en-US/centos/install-guide/).
 
-The main package requirement for Rundeck is Java 11.
+The main package requirement for Rundeck is Java 17.
 
 # Steps to Install the Latest Rundeck Community Version on CentOS 7 Linux.
 
@@ -29,13 +29,13 @@ The main package requirement for Rundeck is Java 11.
     ```
     Example output (actual version numbers can vary):
     ```
-    openjdk version "11.0.11" 2021-04-20 LTS
-    OpenJDK Runtime Environment 18.9 (build 11.0.11+9-LTS)
-    OpenJDK 64-Bit Server VM 18.9 (build 11.0.11+9-LTS, mixed mode, sharing)
+    openjdk version "17.0.10" 2024-01-16 LTS
+    OpenJDK Runtime Environment (build 17.0.10+7-LTS)
+    OpenJDK 64-Bit Server VM (build 17.0.10+7-LTS, mixed mode, sharing)
     ```
 1. If you need to install the Java JRE:
     ```
-    sudo yum install java-11-openjdk
+    sudo yum install java-17-openjdk
     ```
 1. Install Rundeck:
     ```

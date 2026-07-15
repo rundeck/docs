@@ -34,7 +34,7 @@ Follow these steps to install a Runner:
 
 Pre-Requisites:
 - Same [OS requirements as Rundeck](/administration/install/system-requirements.md)
-- Java 11 is required to run the Runner JAR file.
+- Java 17 is required to run the Runner JAR file.
 
 1. Copy the Runner JAR file that was saved when the Runner was created to the server and directory where it will run.
 1. Execute `java -jar runner_filename.jar` to start the service.

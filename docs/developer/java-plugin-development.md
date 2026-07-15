@@ -18,7 +18,7 @@ Java plugins are distributed as `.jar` files containing one or more service prov
 ### 1. Set Up Development Environment
 
 **Requirements:**
-- JDK 11 or later
+- JDK 17 or later
 - Maven or Gradle build tool
 - IDE (IntelliJ IDEA, Eclipse, or VS Code recommended)
 
