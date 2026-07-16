@@ -292,7 +292,7 @@ function generateMarkdown(prs) {
       timeZone: 'UTC'
     });
     periodDescription = `merged since the last self-hosted release`;
-    releaseInfo = ` of [${releaseVersion}](/history/5_x/version-${releaseVersion}.md) on ${releaseDate}`;
+    releaseInfo = ` of [${releaseVersion}](/history/6_x/version-${releaseVersion}.md) on ${releaseDate}`;
   } else {
     const daysDiff = Math.floor((now - CONFIG.sinceDate) / (1000 * 60 * 60 * 24));
     periodDescription = `merged in the last ${daysDiff} days`;

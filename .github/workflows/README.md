@@ -1,5 +1,24 @@
 # GitHub Actions Workflows
 
+## Build Check
+
+**File**: `build-check.yml`
+
+### Purpose
+Runs `npm run docs:build` on every pull request to confirm the VuePress site still builds — no publish step. This exists because the CircleCI `publish` workflow only builds/deploys branches matching the version-number pattern (`[456]\.[0-9]+\..*`) or tags, so PRs from other branches (e.g. Renovate's `renovate/*` dependency-update branches) previously had no build validation at all. VuePress is sensitive to exact dependency versions, so this catches breakage from a bumped package before it merges.
+
+### Trigger
+- `pull_request` (any branch, any base)
+- `workflow_dispatch` for manual runs
+
+### What It Does
+1. Checks out the PR branch
+2. Sets up Node.js via `.nvmrc`
+3. Runs `npm ci` (using `CLOUDSMITH_NPM_TOKEN` for the private registry)
+4. Runs `npm run docs:build`
+
+If the build fails, the check fails on the PR — nothing is deployed either way.
+
 ## Update PR Feed Configuration
 
 **File**: `update-pr-feed.yml`
