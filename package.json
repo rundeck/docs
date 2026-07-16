@@ -40,7 +40,7 @@
     "@vuepress/plugin-markdown-tab": "2.0.0-rc.130",
     "@vuepress/plugin-prismjs": "2.0.0-rc.130",
     "@vuepress/plugin-pwa": "2.0.0-rc.130",
-    "@vuepress/plugin-redirect": "2.0.0-rc.130",
+    "@vuepress/plugin-redirect": "2.0.0-rc.131",
     "@vuepress/plugin-register-components": "2.0.0-rc.130",
     "@vuepress/plugin-remove-pwa": "2.0.0-rc.130",
     "@vuepress/theme-default": "2.0.0-rc.130",
