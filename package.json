@@ -27,7 +27,7 @@
     "vuepress-plugin-open-graph": "^1.26.0"
   },
   "devDependencies": {
-    "@docsearch/css": "4.6.0",
+    "@docsearch/css": "4.6.3",
     "@docsearch/js": "4.6.0",
     "@octokit/rest": "^22.0.1",
     "@types/swagger-ui": "^3.52.0",
