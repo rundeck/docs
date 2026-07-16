@@ -66,7 +66,7 @@ This change only affects environments that explicitly forced the legacy executor
 
 **Rundeck 6.0** **deprecates** the server **Activity RSS** feature (XML URLs for execution history matching Activity filters, including modes that allowed **unauthenticated** access). It is **disabled by default** for security and maintainability reasons. The feed is scheduled for **full removal in a later release** (plan migrations in the 6.x timeframe; see [RUN-2665](https://pagerduty.atlassian.net/browse/RUN-2665)).
 
-**Recommended:** Move integrations to the **REST API** ([API documentation](/api/index.md)) with proper **authentication** and ACLs, or use [notifications](/manual/notifications/index.md) and [webhooks](/manual/notifications/webhooks.md) for execution-driven automation.
+**Recommended:** Move integrations to the **REST API** ([API documentation](/api/index.md)) with proper **authentication** and ACLs, or use [notifications](/manual/jobs/job-notifications.md) and [webhooks](/manual/notifications/webhooks.md) for execution-driven automation.
 
 **If RSS is business-critical temporarily:** Set **`rundeck.feature.legacyRSS.enabled=true`** in `rundeck-config.properties` (or your deployment’s equivalent app configuration). On startup, Rundeck logs a **warning** that the feature is deprecated and unsafe for unauthenticated exposure. Plan to migrate before it is removed.
 
