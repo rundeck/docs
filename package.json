@@ -96,7 +96,7 @@
     "path-to-regexp": "0.1.13",
     "@oxc-project/types": "0.122.0",
     "caniuse-lite": "1.0.30001769",
-    "autoprefixer": "10.4.24",
+    "autoprefixer": "10.5.2",
     "filelist": "1.0.3",
     "linkify-it": "5.0.2",
     "body-parser": "1.20.6",
