@@ -34,7 +34,7 @@
     "@vuepress/bundler-vite": "2.0.0-rc.30",
     "@vuepress/helper": "2.0.0-rc.130",
     "@vuepress/plugin-container": "2.0.0-rc.0",
-    "@vuepress/plugin-docsearch": "2.0.0-rc.130",
+    "@vuepress/plugin-docsearch": "2.0.0-rc.132",
     "@vuepress/plugin-feed": "2.0.0-rc.130",
     "@vuepress/plugin-google-analytics": "2.0.0-rc.130",
     "@vuepress/plugin-markdown-tab": "2.0.0-rc.130",
