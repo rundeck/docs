@@ -65,6 +65,7 @@
     "yargs": "^16.2.0"
   },
   "overrides": {
+    "@apidevtools/json-schema-ref-parser": "^15.3.6"
   },
   "browserslist": [
     "> 1%",
