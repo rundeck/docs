@@ -2,5 +2,15 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:recommended"
+  ],
+  "packageRules": [
+    {
+      "groupName": "vuepress core",
+      "matchPackageNames": ["vuepress", "@vuepress/*"]
+    },
+    {
+      "groupName": "vuepress-theme-hope",
+      "matchPackageNames": ["vuepress-theme-hope", "vuepress-shared", "vuepress-plugin-components"]
+    }
   ]
 }
