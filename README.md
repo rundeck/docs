@@ -4,7 +4,7 @@ Rundeck Documentation project.
 ## Getting Started
 
 ### Dependencies
-* NodeJS version `22.22.0` is the currently supported and only version that should be used.
+* NodeJS version `24.10.0` is the current version used.
 * NVM is helpful in making sure your machine is using the currently supported versions as we upgrade in the future.
 
 ### Recommended setup steps
