@@ -28,7 +28,7 @@
     "@octokit/rest": "^22.0.1",
     "@types/swagger-ui": "^5.0.0",
     "@vuepress/bundler-vite": "2.0.0-rc.30",
-    "@vuepress/helper": "2.0.0-rc.130",
+    "@vuepress/helper": "2.0.0-rc.131",
     "@vuepress/plugin-container": "2.0.0-rc.28",
     "@vuepress/plugin-docsearch": "2.0.0-rc.132",
     "@vuepress/plugin-feed": "2.0.0-rc.132",
