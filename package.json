@@ -15,7 +15,7 @@
   "dependencies": {
     "ansi-html-community": "0.0.8",
     "glob": "^13.0.6",
-    "markdown-it-container": "^3.0.0",
+    "markdown-it-container": "^4.0.0",
     "markdown-it-include": "^2.0.0",
     "openapi-explorer": "2.4.812",
     "swagger-ui-dist": "^5.9.0",
