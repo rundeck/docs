@@ -9,23 +9,24 @@
  * Parse the SaaS cut tag to extract commit SHAs
  * Tag format: rba/${vNum}-RBA-${vDate}-${coreSha}-${proSha}
  * Example: rba/5.18-RBA-20251030-2f39445-a6d9e14
- * 
+ *
  * @param {string} tag - SaaS cut tag
- * @returns {Object} Object with rundeckSha and rundeckproSha, or null if parse fails
+ * @returns {Object} Object with vNum, rundeckSha and rundeckproSha, or null if parse fails
  */
 export function parseSaasCutTag(tag) {
   // Tag format: rba/5.18-RBA-20251030-2f39445-a6d9e14
   //                    ^version  ^date    ^core   ^pro
-  const match = tag.match(/^rba\/[\d.]+-RBA-\d{8}-([a-fA-F0-9]+)-([a-fA-F0-9]+)$/);
-  
+  const match = tag.match(/^rba\/([\d.]+)-RBA-\d{8}-([a-fA-F0-9]+)-([a-fA-F0-9]+)$/);
+
   if (!match) {
     console.warn(`  Warning: Could not parse SaaS cut tag format: ${tag}`);
     return null;
   }
-  
+
   return {
-    rundeckSha: match[1],     // coreSha - rundeck submodule commit
-    rundeckproSha: match[2]   // proSha - rundeckpro commit
+    vNum: match[1],           // e.g. "6.1" - next major version targeted by this cut
+    rundeckSha: match[2],     // coreSha - rundeck submodule commit
+    rundeckproSha: match[3]   // proSha - rundeckpro commit
   };
 }
 
@@ -120,9 +121,12 @@ async function fetchPRsByMilestone(octokit, owner, repo, milestone, includeLabel
  * @param {Array<string>} includeLabels - Labels that PRs must have (empty array = all PRs)
  * @param {Array<string>} excludeLabels - Labels to exclude from results
  * @param {string} headRef - Optional head reference (defaults to trying the toVersion tag)
+ * @param {string} milestoneFallback - Optional milestone title to use for the large-range fallback
+ *   (defaults to toVersion, which is only a valid milestone title when toVersion is a real
+ *   version like "6.1.0" rather than a commit SHA)
  * @returns {Promise<Array>} Array of PR objects
  */
-export async function fetchPRsBetweenTags(octokit, owner, repo, fromVersion, toVersion, includeLabels = [], excludeLabels = [], headRef = null) {
+export async function fetchPRsBetweenTags(octokit, owner, repo, fromVersion, toVersion, includeLabels = [], excludeLabels = [], headRef = null, milestoneFallback = null) {
   // Try different tag naming conventions for base (from) tag
   const baseTagFormats = [`v${fromVersion}`, fromVersion, `V${fromVersion}`];
   
@@ -168,8 +172,9 @@ export async function fetchPRsBetweenTags(octokit, owner, repo, fromVersion, toV
   // GitHub's compareCommits API has a 250 commit limit
   // For large ranges, we need a different approach
   if (totalCommits > 250) {
+    const milestone = milestoneFallback || toVersion;
     console.log(`  ⚠ Large commit range (${totalCommits} commits) - using milestone/search fallback`);
-    return await fetchPRsByMilestone(octokit, owner, repo, toVersion, includeLabels, excludeLabels);
+    return await fetchPRsByMilestone(octokit, owner, repo, milestone, includeLabels, excludeLabels);
   }
   
   // Extract PR numbers from merge commits
