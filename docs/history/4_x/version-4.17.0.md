@@ -98,7 +98,6 @@ Previously, if a user chose to use a Node Source that was not available on an En
 Submit your own Pull Requests to get recognition here!
 
 * J. Casalino ([thedoc31](https://github.com/thedoc31))
-* Rodrigo Borchert ([rodrigoborchert](https://github.com/rodrigoborchert))
 * Elio Espinel ([elioe](https://github.com/elioe))
 * Lucas Canavosio ([lcanavosio](https://github.com/lcanavosio))
 * Simon Cateau ([simon-c-msc](https://github.com/simon-c-msc))
