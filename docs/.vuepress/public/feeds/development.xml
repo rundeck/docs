@@ -5,7 +5,7 @@
     <link>https://docs.rundeck.com/docs</link>
     <description>Recent merged pull requests and development updates from Rundeck</description>
     <language>en-us</language>
-    <lastBuildDate>Wed, 15 Jul 2026 22:00:13 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 20 Jul 2026 17:47:32 GMT</lastBuildDate>
     <atom:link href="https://docs.rundeck.com/feeds/development.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Bump linkify-it to 5.0.1+ to fix ReDoS CVEs</title>
@@ -24,7 +24,7 @@
     <item>
       <title>Add option to choose what value is used for GCP Resource Model hostname</title>
       <link>https://docs.rundeck.com/docs/history/updates/</link>
-      <description>Add option to choose what value is used for GCP Resource Model hostname (Merged: Jun 28, 2026)</description>
+      <description>Add option to choose what value is used for GCP Resource Model hostname (Merged: Jun 27, 2026)</description>
       <pubDate>Sun, 28 Jun 2026 02:50:28 GMT</pubDate>
       <guid isPermaLink="false">rundeck-pr-rundeckpro-4790</guid>
     </item>
@@ -45,7 +45,7 @@
     <item>
       <title>Add Configurable Group Name Attribute And Prefix Filter To Azure Group</title>
       <link>https://docs.rundeck.com/docs/history/updates/</link>
-      <description>Add Configurable Group Name Attribute And Prefix Filter To Azure Group (Merged: Jun 26, 2026)</description>
+      <description>Add Configurable Group Name Attribute And Prefix Filter To Azure Group (Merged: Jun 25, 2026)</description>
       <pubDate>Fri, 26 Jun 2026 00:49:35 GMT</pubDate>
       <guid isPermaLink="false">rundeck-pr-rundeckpro-4760</guid>
     </item>
