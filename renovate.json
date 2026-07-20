@@ -12,7 +12,5 @@
       "groupName": "vuepress-theme-hope",
       "matchPackageNames": ["vuepress-theme-hope", "vuepress-shared", "vuepress-plugin-components"]
     }
-  ],
-  "minimumReleaseAge": "7 days",
-  "prConcurrentLimit": 4
+  ]
 }
