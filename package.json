@@ -13,11 +13,7 @@
     "docs:update-package": "npx vp-update"
   },
   "dependencies": {
-    "@babel/core": "^8.0.0",
-    "@vue/babel-helper-vue-jsx-merge-props": "^1.4.0",
     "ansi-html-community": "0.0.8",
-    "core-js": "^3.0.0",
-    "express": "^4.22.2",
     "glob": "^13.0.6",
     "markdown-it-container": "^3.0.0",
     "markdown-it-include": "^2.0.0",
@@ -44,7 +40,6 @@
     "@vuepress/plugin-register-components": "2.0.0-rc.132",
     "@vuepress/plugin-remove-pwa": "2.0.0-rc.130",
     "@vuepress/theme-default": "2.0.0-rc.132",
-    "dashjs": "^5.0.0",
     "dotenv": "^17.0.0",
     "hls.js": "^1.5.8",
     "markdown-it-deflist": "^2.0.3",
@@ -65,7 +60,8 @@
     "yargs": "^16.2.0"
   },
   "overrides": {
-    "@apidevtools/json-schema-ref-parser": "^15.3.6"
+    "@apidevtools/json-schema-ref-parser": "^15.3.6",
+    "nostics": "1.1.4"
   },
   "browserslist": [
     "> 1%",
