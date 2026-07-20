@@ -13,7 +13,7 @@
     "docs:update-package": "npx vp-update"
   },
   "dependencies": {
-    "@babel/core": "^7.24.4",
+    "@babel/core": "^8.0.0",
     "@vue/babel-helper-vue-jsx-merge-props": "^1.4.0",
     "ansi-html-community": "0.0.8",
     "core-js": "^2.6.5",
