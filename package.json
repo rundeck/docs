@@ -44,7 +44,7 @@
     "@vuepress/plugin-register-components": "2.0.0-rc.132",
     "@vuepress/plugin-remove-pwa": "2.0.0-rc.130",
     "@vuepress/theme-default": "2.0.0-rc.132",
-    "dashjs": "^4.7.4",
+    "dashjs": "^5.0.0",
     "dotenv": "^17.0.0",
     "hls.js": "^1.5.8",
     "markdown-it-deflist": "^2.0.3",
