@@ -12,5 +12,8 @@
       "groupName": "vuepress-theme-hope",
       "matchPackageNames": ["vuepress-theme-hope", "vuepress-shared", "vuepress-plugin-components"]
     }
-  ]
+  ],
+  "minimumReleaseAge": "7 days",
+  "prTitle": "[RUN-0000] {{prettyTitle}}",
+  "commitMessagePrefix": "[RUN-0000] "
 }
