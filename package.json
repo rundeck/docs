@@ -60,7 +60,7 @@
   },
   "overrides": {
     "@apidevtools/json-schema-ref-parser": "^15.3.6",
-    "nostics": "1.1.4"
+    "nostics": "1.2.0"
   },
   "browserslist": [
     "> 1%",
