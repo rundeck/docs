@@ -14,6 +14,5 @@
     }
   ],
   "minimumReleaseAge": "7 days",
-  "prTitle": "[RUN-0000] {{prettyTitle}}",
-  "commitMessagePrefix": "[RUN-0000] "
+  "commitMessagePrefix": "[RUN-0000] {{prettyTitle}}"
 }
