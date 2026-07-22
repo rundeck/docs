@@ -1,7 +1,7 @@
 ---
 title: Recent Updates
 description: Latest merged changes from the Rundeck development team
-date: 2026-07-20T18:01:46.941Z
+date: 2026-07-22T21:13:28.424Z
 feed: true
 index: true
 ---
@@ -14,6 +14,27 @@ This page shows recently merged pull requests from both the Runbook Automation p
 
 ## Recent Changes
 
+
+#### ::circle-dot:: Runner operation metrics: Busy status, live utilization bars, and expandable stat cards 
+
+
+  Runners now expose real-time operation metrics in the Runner Management UI. Each runner and replica row shows a live utilization progress bar (running / max operations) in the new **Operations** column. Clicking a row expands a panel with five stat cards — Utilization %, Running, Max, Queued, and Completed — giving operators an at-a-glance view of capacity without leaving the management page.
+
+  Runners also report a new `Busy` health status (yellow badge) when their operation queue backs up under heavy concurrent job load. Previously this showed as `Unhealthy` (red) — the same signal as a broken or offline runner — making it impossible to distinguish capacity saturation from an actual failure. Older runners that don&#39;t yet report metrics show a warning in the expand panel prompting an upgrade.
+
+#### ::circle-dot:: Fix compact report processor silently disabled by bootstrap cleanup failures 
+
+
+  &lt;!--
+
+  To include as part of release notes, label as &quot;release-notes/include&quot; and fill in this section.  Copilot can help.
+
+  --&gt;
+
+#### ::circle-dot:: Fix: API REST metrics trigger SQL errors  [PR #10186](https://github.com/rundeck/rundeck/pull/10186)
+
+
+  Fixed an issue where retrieving execution metrics through the REST API generated repeated SQL conversion errors in the logs when using the H2 database, ensuring clean logs and reliable metrics responses.
 
 #### ::circle-dot:: Bump linkify-it to 5.0.1+ to fix ReDoS CVEs 
 
@@ -166,11 +187,6 @@ This page shows recently merged pull requests from both the Runbook Automation p
 
   Fixed an issue where PagerDuty &quot;Start Incident Workflow&quot; notifications failed to trigger because the configured Incident ID and Incident Workflow ID were not being read correctly. These notifications now work as expected, and a clear error is logged if either required value is missing.
 
-#### ::circle-dot:: Fix OIDC login broken after Grails 7: restore ROLE_USER authority 
-
-
-  Fixed an issue where users were unable to log in through OIDC single sign-on (such as Okta) after upgrading, caused by a change in the underlying Spring Security framework that assigned the wrong default role. OIDC/Okta SSO login now works correctly again, with users receiving the expected `ROLE_USER` access along with their provider group memberships.
-
 #### ::circle-dot:: Fix legacy MySQL JDBC driver class at startup 
 
 
@@ -232,6 +248,6 @@ The development updates are automatically generated from both our private reposi
 
 ---
 
-**List Last updated:** 2026-07-20
+**List Last updated:** 2026-07-22
 
 
