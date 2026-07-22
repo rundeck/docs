@@ -34,13 +34,13 @@ Rundeck 6.1 surfaces each Runner's operational load directly in the **Runner Man
 
 ### Load column
 
-The Runner and Replica tables include a **Load** column that shows a utilization bar for each row. The bar represents the ratio of currently running operations to the Runner's maximum concurrent capacity (`running / max`) and is colour-coded to match the Runner status:
+The Runner and Replica tables include a **Load** column that shows a utilization bar for each row. The bar represents the ratio of currently running operations to the maximum concurrent capacity (`running / max`) and is colour-coded to match the row's status:
 
 - **Green** — operating comfortably within capacity.
-- **Orange** — the Runner is [**Busy**](#runners-status): running at or near capacity.
-- **Red** — the Runner is **Unhealthy** or **Down**.
+- **Orange** — the Runner or Replica is [**Busy**](#runners-status): running at or near capacity.
+- **Red** — the Runner or Replica is **Unhealthy** or **Down**.
 
-An idle Runner shows an empty (0%) bar rather than a blank cell, so the column is always readable at a glance.
+An idle Runner or Replica shows an empty (0%) bar rather than a blank cell, so the column is always readable at a glance.
 
 ### Operation metrics panel
 
