@@ -131,6 +131,7 @@ export default [{
             '/learning/howto/log4shell.md',
             '/learning/howto/use-roi-metrics.md',
             '/learning/howto/env-in-notifications.md',
+            '/learning/howto/custom-email-notification-template.md',
             '/learning/howto/rabbitmq-diag.md'
           ]
         },
