@@ -42,6 +42,7 @@ Available Guides by Section
 [Find Log4Shell with Rundeck](/learning/howto/log4shell.md)  
 [Use ROI Metric Data](/learning/howto/use-roi-metrics.md)  
 [Pass Data into Notifications](/learning/howto/env-in-notifications.md)  
+[Build a Custom Email Notification Template](/learning/howto/custom-email-notification-template.md)  
 
 ## Integrating
 [Use Rundeck Webhooks](/learning/howto/using-webhooks.md)  
