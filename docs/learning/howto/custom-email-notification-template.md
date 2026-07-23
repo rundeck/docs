@@ -14,7 +14,7 @@ A custom template can be a full HTML or Markdown file on the Rundeck server's fi
 
 ## Step 1: Decide the scope of your customization
 
-Pick the narrowest property that fits your need:
+Pick the property that best matches the scope you want:
 
 ```properties
 # applies to all notifications, any trigger/project
