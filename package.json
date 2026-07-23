@@ -61,7 +61,7 @@
   "overrides": {
     "@apidevtools/json-schema-ref-parser": "^15.3.6",
     "nostics": "1.2.0",
-    "fast-uri": "3.1.4"
+    "fast-uri": "4.0.1"
   },
   "browserslist": [
     "> 1%",
