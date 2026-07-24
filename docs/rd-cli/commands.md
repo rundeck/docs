@@ -168,6 +168,40 @@ Project Archives import and export
        export - Export a project archive
        import - Import a project archive
 
+### projects archives export
+
+Export a project archive.
+
+	Usage: export options
+		[--execids -e value...] : List of execution IDs. Exports only those ids.
+		--file -f value : Output file path
+		[--include -i value...] : List of archive contents to include. [all,jobs,executions,configs,readmes,acls,scm]. Default: all. (API v19 required for other options).
+		[--project -p /^[-_a-zA-Z0-9+][-\._a-zA-Z0-9+]*$/] : Project name
+
+### projects archives import
+
+Import a project archive.
+
+	Usage: import options
+		[--async-import-enabled -i] : Enables asynchronous import process for the uploaded project file.
+		[--component -I value...] : Enable named import components, such as tours-manager (enterprise). See <https://docs.rundeck.com/docs/api/rundeck-api.html#project-archive-import>
+		--file -f value : Import file path
+		[--include value...] : List of archive contents to import. [executions,config,acl,scm,webhooks,nodeSources]. Default: executions. (webhooks: requires API v34. nodeSources: requires API v38).
+		[--include-acl -a] : Include ACLs in import, default: false
+		[--include-config -c] : Include project configuration in import, default: false
+		[--include-node-sources -n] : Include node resources in import, default: false (api v38 required)
+		[--include-scm -s] : Include SCM configuration in import, default: false (api v28 required)
+		[--include-webhooks -w] : Include Webhooks in import, default: false (api v34 required)
+		[-x] : Do not include executions in import. Default: do include executions in import.
+		[--options -O value...] : Set options for enabled components, in the form name.key=value
+		[--project -p /^[-_a-zA-Z0-9+][-\._a-zA-Z0-9+]*$/] : Project name
+		[-r] : Remove Job UUIDs in imported jobs. Default: preserve job UUIDs.
+		[--regenerate-tokens -t] : Regenerate the auth tokens associated with the webhook in import, default: false (api v34 required)
+		[--remove-webhooks-uuids -R] : Remove Webhooks UUIDs in import. Default: preserve webhooks UUIDs. (api v47 required)
+		[--strict] : Return non-zero exit status if any imported item had an error. Default: only job import errors are treated as failures.
+
+	`--include` selects the archive contents to import using the same value syntax as `projects archives export`'s `--include` option. When `--include` is not specified, the individual `--include-*`/`-x` flags above are used instead, for backwards compatibility. If both are set, `--include` takes precedence.
+
 ### projects scm
 
 Manage Project SCM
