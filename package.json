@@ -16,7 +16,7 @@
     "ansi-html-community": "0.0.8",
     "glob": "^13.0.6",
     "markdown-it-include": "^2.0.0",
-    "openapi-explorer": "2.4.812",
+    "openapi-explorer": "2.4.820",
     "swagger-ui-dist": "^5.9.0",
     "toposort": "^2.0.2",
     "vuepress-plugin-open-graph": "1.26.0"
