@@ -4,17 +4,20 @@ The `rd` command provides top level commands:
 
 Available commands:
 
-	   adhoc      - Dispatch adhoc COMMAND to matching nodes
+	   adhoc      - Run adhoc command or script on matching nodes
 	   executions - List running executions, attach and follow their output, or kill them
 	   jobs       - List and manage Jobs
 	   keys       - Manage Keys via the Key Storage Facility.
+	   metrics    - View metrics endpoints information.
 	   nodes      - List and manage node resources
 	   projects   - List and manage projects
+	   retry      - Run a Job based on a specific execution.
 	   run        - Run a Job
 	   scheduler  - View scheduler information
 	   system     - View system information
 	   tokens     - Create, and manage tokens
 	   users      - Manage user information
+	   version    - Print version information
 
 	Use "rd [command] help" to get help on any command.
 
@@ -25,7 +28,7 @@ See [rd acl](./rd-acl.md)
 
 ## adhoc
 
-Dispatch adhoc COMMAND to matching nodes.
+Run adhoc command or script on matching nodes.
 
 	Usage: adhoc options -- COMMAND...
 		[--quoted -Q] : Use quoted args
@@ -33,7 +36,7 @@ Dispatch adhoc COMMAND to matching nodes.
 		[--filter -F value] : A node filter string
 		[--follow -f] : Follow execution output as it runs
 		[--keepgoing -K] : Keep going when an error occurs
-		[--outformat -% value] : Output format specifier for execution logs. You can use "%key" where key is one of:time,level,log,user,command,node. E.g. "%user@%node/%level: %log"
+		[--outformat -% value] : Output format specifier for execution data. You can use "%key" where key is one of:id, project, description, argstring, permalink, href, status, job, job.*, user, serverUUID, dateStarted, dateEnded, successfulNodes, failedNodes, adhoc. E.g. "%id %href"
 		[--progress -r] : Do not echo log text, just an indicator that output is being received.
 		[--project -p /^[-_a-zA-Z0-9+][-\._a-zA-Z0-9+]*$/] : Project name
 		[--quiet -q] : Echo no output. Combine with -f/--follow to wait silently until the execution completes. Useful for non-interactive scripts.
@@ -60,6 +63,7 @@ List running executions, attach and follow their output, or kill them.
 	   kill       - Attempt to kill an execution by ID
 	   list       - List all running executions for a project
 	   query      - Query previous executions for a project
+	   metrics    - Obtain metrics over the result set of an execution query. (API v29 required)
 	   state      - Get detail about the node and step state of an execution by ID  
 	   deleteall  - Delete all executions for a job
 
@@ -69,7 +73,8 @@ Query previous executions for a project.
 
 	Usage: query options
 		[--adhoconly -A] : Adhoc executions only
-		[--confirm -y] : Force confirmation of delete request.
+		[--autopage] : Automatically load more results in non-interactive mode if there are more paged results. (query command only)
+		[--noninteractive] : Don't use interactive prompts to load more pages if there are more paged results (query command only)
 		[--xgroup value] : Group or partial group path to exclude, "-" means top-level jobs only
 		[--xgroupexact value] : Exact group path to exclude, "-" means top-level jobs only
 		[--xnameexact value] : Exclude Exact Job Name Filter, exclude any name that is equal to this value
@@ -87,13 +92,24 @@ Query previous executions for a project.
 		[--offset -o value] : First result offset to receive.
 		[--older -O value] : Get executions older than specified time. e.g. "3m" (3 months).
 	Use: h,n,s,d,w,m,y (hour,minute,second,day,week,month,year)
-		[--outformat -% value] : Output format specifier for execution data. You can use "%key" where key is one of:id, project, description, argstring, permalink, href, status, job, user, serverUUID, dateStarted, dateEnded, successfulNodes, failedNodes. E.g. "%id %href"
-		--project -p value : Project name
+		[--outformat -% value] : Output format specifier for execution data. You can use "%key" where key is one of:id, project, description, argstring, permalink, href, status, job, job.*, user, serverUUID, dateStarted, dateEnded, successfulNodes, failedNodes, adhoc. E.g. "%id %href"
+		[--project -p value] : Project name
 		[--recent -d value] : Get executions newer than specified time. e.g. "3m" (3 months).
 	Use: h,n,s,d,w,m,y (hour,minute,second,day,week,month,year)
 		[--status -s value] : Status filter, one of: running,succeeded,failed,aborted
 		[--user -u value] : User filter
 		[--verbose -v] : Extended verbose output
+
+### execution metrics
+
+Obtain metrics over the result set of an execution query. (API v29 required)
+
+	Usage: metrics options
+		[--jobids -i value...] : Job ID list to include
+		[--outformat -% value] : Output format specifier for execution metrics data. You can use "%key" where key is one of: total,failed-with-retry,failed,succeeded,duration-avg,duration-min,duration-max. E.g. "%total %failed %succeeded"
+		[--verbose -v] : Show verbose output
+
+	Accepts the same project/job filter options as `executions query` (`--project`, `--group`, `--name`, `--status`, `--recent`, `--older`, etc.), applied to the set of executions the metrics are computed over.
 
 ## jobs
 
@@ -104,9 +120,10 @@ List and manage Jobs.
 
        disable        - Disable execution for a job
        enable         - Enable execution for a job
+       files          - List and manage File options for Jobs (API v19)
        info           - Get info about a Job by ID (API v18)
        list           - List jobs found in a project, or download Job definitions (-f)
-       load           - Load Job definitions from a file in JSON, XML or YAML format
+       load           - Load Job definitions from a file in XML, YAML or JSON format
        purge          - Delete jobs matching the query parameters
        reschedule     - Enable schedule for a job
        unschedule     - Disable schedule for a job
@@ -116,10 +133,43 @@ List and manage Jobs.
        unschedulebulk - Disable schedule for a set of jobs
        forecast   - Get Schedule Forecast for a Job by ID (API v31)
 
+### jobs files
+
+List and manage File options for Jobs.
+
+	Available commands:
+
+	   info - Get info about a Job input option file (API v19)
+	   list - List files uploaded for a Job or Execution (API v19). Specify Job ID or Execution ID
+	   load - Upload a file as input for a job option (API v19). Returns a unique key for the uploaded file, which can be used as the option value when running the job.
+
+#### jobs files info
+
+	Usage: info options
+		--id -i value : File ID
+
+#### jobs files list
+
+	Usage: list options
+		[--eid -e value] : Execution ID
+		[--jobid -j value] : Job ID
+		[--max -m value] : Maximum number of results to retrieve at once.
+		[--offset -o value] : First result offset to receive.
+		[--state -s value] : File state filter for listing Files for a Job only. (default:temp), one of: temp,expired,deleted,retained.
+
+	One of `-j/--jobid` or `-e/--eid` is required. `-s/--state` is only valid with `-j/--jobid`.
+
+#### jobs files load
+
+	Usage: load options
+		--file -f value : File path of the file to upload
+		--id -i value : Job ID
+		--option -o value : Option name
+
 ## keys
 
 Manage Keys via the Key Storage Facility.
-Specify the path using -p/--path, or as the last argument to the command.
+Specify the path using -p/--path.
 
 
 	Available commands:
@@ -130,6 +180,45 @@ Specify the path using -p/--path, or as the last argument to the command.
 	   info   - Get metadata about the given path
 	   list   - List the keys and directories at a given path, or at the root by default
 	   update - Update an existing key entry
+
+## metrics
+
+View metrics endpoints information.
+
+	Available commands:
+
+	   data        - Prints the metrics data.
+	   healthcheck - Print health check status information.
+	   list        - Print system information and stats.
+	   ping        - Returns a simple response.
+	   threads     - Print system threads status information.
+
+### metrics list
+
+	Usage: list options
+		[--verbose -v] : Extended verbose output
+
+### metrics healthcheck
+
+	Usage: healthcheck options
+		[--fail -f] : Exit with unsuccessful status if unhealthy checks are found.
+		[--unhealthy -u] : Show only checks with unhealthy status.
+
+### metrics threads
+
+	Usage: threads options
+		[--verbose -v] : Extended verbose output
+
+### metrics data
+
+	Usage: data options
+		[--all -a] : Show all metrics available, which is the default. This option supersedes all other selection options.
+		[--counters -c] : Show all counter metrics available.
+		[--gauges -g] : Show all gauge metrics available.
+		[--histograms -h] : Show all histogram metrics available.
+		[--meters -m] : Show all meter metrics available.
+		[--summary -s] : Show only a summary of metric data selected.
+		[--timers -t] : Show all timer metrics available.
 
 ## nodes
 
@@ -142,6 +231,35 @@ List all nodes for a project.  You can use the -F/--filter to specify a node fil
 		[--outformat -% value] : Output format specifier for Node info. You can use "%key" where key is one of:nodename, hostname, osFamily, osVersion, osArch, description, username, tags, or any attribute. E.g. "%nodename %tags"
 		[--project -p value] : Project name
 		[--verbose -v] : Extended verbose output
+
+## plugins
+
+Manage Rundeck plugins.
+
+	Available commands:
+
+	   install   - Install a plugin from your plugin repository into your Rundeck instance
+	   list      - List plugins
+	   uninstall - Unistall a Rundeck plugin from your Rundeck instance
+	   upload    - Upload a Rundeck plugin to your plugin repository
+
+### plugins upload
+
+	Usage: upload options
+		--file -f value : Path to Rundeck 2.0 plugin to install in your repository
+		--repository -r value : Target name of repository to upload plugin into.
+
+### plugins install
+
+	Usage: install options
+		--id -i value : Id of the plugin you want to install
+		--repository -r value : Repository name that contains the plugin.
+		[--version -v value] : (Optional) Specific version of the plugin you want to install
+
+### plugins uninstall
+
+	Usage: uninstall options
+		--id -i value : Id of the plugin you want to uninstall
 
 ## projects
 
@@ -159,14 +277,62 @@ List and manage projects.
        readme    - Manage Project readme
        scm       - Manage Project SCM
 
+### projects acls
+
+Manage Project ACLs.
+
+	Available commands:
+
+	   create - Create a project ACL definition
+	   delete - Delete a project ACL definition
+	   get    - Get a project ACL definition
+	   list   - List project ACLs
+	   update - Update a project ACL definition
+
+#### projects acls list
+
+	Usage: list options
+		[--outformat -% value] : Output format specifier for ACL info. You can use "%key" where key is one of:name, type, href. E.g. "%name %href"
+		--project -p value : Project name
+		[--verbose -v] : Extended verbose output
+
+#### projects acls get
+
+	Usage: get options
+		--name -n value : name of the aclpolicy file
+		--project -p value : Project name
+
+#### projects acls create
+
+	Usage: create options
+		--file -f value : ACLPolicy file to upload
+		--name -n value : name of the aclpolicy file
+		--project -p value : Project name
+
+#### projects acls update
+
+Update an existing project ACL definition.
+
+	Usage: update options
+		--file -f value : ACLPolicy file to upload
+		--name -n value : name of the aclpolicy file
+		--project -p value : Project name
+
+#### projects acls delete
+
+	Usage: delete options
+		--name -n value : name of the aclpolicy file
+		--project -p value : Project name
+
 ### projects archives
 
 Project Archives import and export
 
     Available commands:
 
-       export - Export a project archive
-       import - Import a project archive
+       export              - Export a project archive
+       import              - Import a project archive
+       async-import-status - Get the status of an ongoing asynchronous import process.
 
 ### projects archives export
 
@@ -176,7 +342,7 @@ Export a project archive.
 		[--execids -e value...] : List of execution IDs. Exports only those ids.
 		--file -f value : Output file path
 		[--include -i value...] : List of archive contents to include. [all,jobs,executions,configs,readmes,acls,scm]. Default: all. (API v19 required for other options).
-		[--project -p /^[-_a-zA-Z0-9+][-\._a-zA-Z0-9+]*$/] : Project name
+		--project -p /^[-_a-zA-Z0-9+][-\._a-zA-Z0-9+]*$/ : Project name
 
 ### projects archives import
 
@@ -194,13 +360,20 @@ Import a project archive.
 		[--include-webhooks -w] : Include Webhooks in import, default: false (api v34 required)
 		[-x] : Do not include executions in import. Default: do include executions in import.
 		[--options -O value...] : Set options for enabled components, in the form name.key=value
-		[--project -p /^[-_a-zA-Z0-9+][-\._a-zA-Z0-9+]*$/] : Project name
+		--project -p /^[-_a-zA-Z0-9+][-\._a-zA-Z0-9+]*$/ : Project name
 		[-r] : Remove Job UUIDs in imported jobs. Default: preserve job UUIDs.
-		[--regenerate-tokens -t] : Regenerate the auth tokens associated with the webhook in import, default: false (api v34 required)
+		[--regenerate-tokens -t] : regenerate the auth tokens associated with the webhook in import, default: false (api v34 required)
 		[--remove-webhooks-uuids -R] : Remove Webhooks UUIDs in import. Default: preserve webhooks UUIDs. (api v47 required)
 		[--strict] : Return non-zero exit status if any imported item had an error. Default: only job import errors are treated as failures.
 
 	`--include` selects the archive contents to import using the same value syntax as `projects archives export`'s `--include` option. When `--include` is not specified, the individual `--include-*`/`-x` flags above are used instead, for backwards compatibility. If both are set, `--include` takes precedence.
+
+### projects archives async-import-status
+
+Get the status of an ongoing asynchronous import process.
+
+	Usage: async-import-status options
+		[--project -p value] : Project name
 
 ### projects scm
 
@@ -229,6 +402,51 @@ Manage Project configuration
        set    - Overwrite all configuration properties for a project
        update - Modify configuration properties for a project
 
+### projects readme
+
+Manage Project readme.md/motd.md.
+
+	Available commands:
+
+	   delete - Delete project readme/motd file
+	   get    - Get project readme/motd file
+	   put    - Set project readme/motd file
+
+#### projects readme get
+
+	Usage: get options
+		[--motd -m] : Choose the 'motd.md' file. If unset, choose 'readme.md'.
+		[--project -p value] : Project name
+
+#### projects readme put
+
+	Usage: put options
+		[--file -f value] : Path to a file to read for readme/motd contents.
+		[--motd -m] : Choose the 'motd.md' file. If unset, choose 'readme.md'.
+		[--project -p value] : Project name
+		[--text -t value] : Text to use for readme/motd contents.
+
+	One of `-f/--file` or `-t/--text` is required.
+
+#### projects readme delete
+
+	Usage: delete options
+		[--motd -m] : Choose the 'motd.md' file. If unset, choose 'readme.md'.
+		[--project -p value] : Project name
+
+## retry
+
+Run a Job based on a specific execution. (API v24 required)
+
+	Usage: retry options -- -OPT "VAL" -OPT2 "VAL"...
+		[--eid -e value] : Execution ID to retry on failed nodes.
+		[--failedNodes -F] : Run only on failed nodes (default=true).
+		[--loglevel -l /(verbose|info|warning|error)/] : Run the command using the specified LEVEL. LEVEL can be verbose, info, warning, error.
+		[--outformat -% value] : Output format specifier for execution logs. You can use "%key" where key is one of:time,level,log,user,command,node. E.g. "%user@%node/%level: %log"
+		[--raw] : Treat option values as raw text, so that '-opt @value' is sent literally
+		[--user -u value] : A username to run the job as, (runAs access required).
+		[--verbose -v] : Extended verbose output
+
 ## run
 
 Run a Job.
@@ -238,12 +456,14 @@ Run a Job.
          [--follow -f] : Follow execution output as it runs
          [--id -i value] : Run the Job with this IDENTIFIER
          [--job -j value] : Job job (group and name). Run a Job specified by Job name and group. eg: 'group/name'.
-         [--loglevel -l /(verbose|info|warning|error)/] : Run the command using the specified LEVEL. LEVEL can be verbose, info, warning, error.
+         [--loglevel -l /(debug|verbose|info|warning|error)/] : Run the command using the specified LEVEL. LEVEL can be debug, verbose, info, warning, error.
+         [--outformat -% value] : Output format specifier for execution data. You can use "%key" where key is one of:id, project, description, argstring, permalink, href, status, job, job.*, user, serverUUID, dateStarted, dateEnded, successfulNodes, failedNodes, adhoc. E.g. "%id %href"
          [--progress -r] : Do not echo log text, just an indicator that output is being received.
          [--project -p value] : Project name
          [--quiet -q] : Echo no output. Combine with -f/--follow to wait silently until the execution completes. Useful for non-interactive scripts.
+         [--raw] : Treat option values as raw text, so that '-opt @value' is sent literally
          [--restart -t] : Restart from the beginning
-         [--at -@ value] : Run the job at the specified date/time. ISO8601 format (yyyy-MM-dd'T'HH:mm:ss'Z')
+         [--at -@ value] : Run the job at the specified date/time. ISO8601 format (yyyy-MM-dd'T'HH:mm:ssXX)
          [--delay -d /(\d+[smhdwMY]\s*)+/] : Run the job at a certain time from now. Format: ##[smhdwMY] where ## is an integer and the units are seconds, minutes, hours, days, weeks, Months, Years. Can combine units, e.g. "2h30m", "20m30s"
          [--tail -T value] : Number of lines to tail from the end, default: 1
          [--user -u value] : A username to run the job as, (runAs access required).
@@ -286,7 +506,7 @@ Manage System ACLs
 	   delete - Delete a system ACL definition
 	   get    - get a system ACL definition
 	   list   - list system acls
-	   upload - Upload a system ACL definition
+	   update - Update an existing system ACL definition
 
 ### system info
 
@@ -312,8 +532,8 @@ Create, and manage tokens
 
        create - Create a token for a user
        delete - Delete a token
+       info   - Get token info for an ID (API v19+)
        list   - List tokens for a user
-       reveal - Reveal token value for an ID (API v19+)
 
 ## users
 
@@ -322,6 +542,16 @@ Manage user information
 
     Available commands:
 
-       edit - Edit information of the same user or another if 'user' is specified
-       info - Get information of the same user or from another if 'user' is specified
-       list - Get the list of users
+       edit  - Edit information of the same user or another if 'user' is specified
+       info  - Get information of the same user or from another if 'user' is specified
+       list  - Get the list of users
+       roles - Get the list of roles for the current user. (API v30 required)
+
+## version
+
+Print version information.
+
+	Usage: version options
+		[--verbose -v] : Extended verbose output
+
+	With `-v/--verbose`, also prints the git commit, branch, build date, minimum supported API version, and user agent string.

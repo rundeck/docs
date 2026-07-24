@@ -1,5 +1,7 @@
 # Rundeck CLI - Install
 
+**Requires Java 17 or later** to run.
+
 All artifacts can be downloaded from: [github releases](https://github.com/rundeck/rundeck-cli/releases/latest)
 
 * [zip install](#zip-install) `rd-{{$cliVersion}}.zip` / `rd-{{$cliVersion}}.tar`

@@ -17,6 +17,6 @@ repositories {
 }
 
 dependencies {
-    compile "org.rundeck.api:rd-api-client:{{$cliVersion}}"
+    implementation "org.rundeck.api:rd-api-client:{{$cliVersion}}"
 }
 ~~~

@@ -1,6 +1,6 @@
 # rd acl
 
-`rd acl` - Test and generate Rundeck ACL policy files.
+`rd acl` - Generate, test, and validate Rundeck ACL policy files.
 
 ## Synopsis
 
@@ -70,17 +70,23 @@ the Rundeck "etc" dir will be used as for the `--dir` option by default.
 In addition,
 the `test` command also takes the [Common Options](#common-options) and these options:
 
-`-V, --validate`
+`-V`
 : Validate all input files, and exit with non-zero exit code if validation fails. (`test` and `list` actions.)
 
 ### Create Command Options
 
 In addition to the [Common Options](#common-options), the `create` command takes these input options.
 
-`-i, --input <file | ->`
-: Parse the Rundeck AUDIT log input, and for any REJECTED decisions, generate the appropriate aclpolicy
-to allow the action. If the value of the `--input` option is `-` (dash character), then the STDIN is read.
-If `--input` is used, then the Common Options are ignored.
+`-f, --file <file>`
+: Parse the Rundeck AUDIT log input from the specified file, and for any REJECTED decisions, generate the
+appropriate aclpolicy to allow the action. (This reuses the same `-f/--file` option as the Test/Validate commands.)
+
+`--stdin`
+: Read the Rundeck AUDIT log input from STDIN, and for any REJECTED decisions, generate the appropriate
+aclpolicy to allow the action.
+
+If `-f/--file` or `--stdin` is used to supply AUDIT log input, the other [Common Options](#common-options) that
+define an explicit rule (context/subject/action/resource) are ignored.
 
 `-r, --regex`
 : Match the resource using regular expressions. (create command).
@@ -102,9 +108,8 @@ and to define a rule in the ACL Policy (for the `create` command).
 : Subject Groups names. Comma-separated list of user groups to
 validate (test command) or for by: clause (create command).
 
-`-u,--user <user,...>`
-: Subject User name. Comma-separated list of user names to
-validate (test command) or for by: clause (create command).
+`-u,--user <user>`
+: Subject User name to validate (test command) or for by: clause (create command).
 
 **Action options:**
 
@@ -118,7 +123,7 @@ validate (test command) or for by: clause (create command).
 
 Resources are characterized as either "specific resources", or "resource types"
 (see [Specific Resources and Resource Types](/administration/security/authorization.md#specific-resources-and-resource-types)). You can specify "resource types" using the `-G, --generic <kind>` option. All specific resources can
-be specified directly using one of the options, or by type using `-R, --resource <type>` in combination with `-b, --attributes <attr=val ...>`.
+be specified directly using one of the options, or by type using `-R, --resource <type>` in combination with `-b, --attrs <attr=val ...>`.
 
 `-G,--generic <kind>`
 : Generic resource kind.
@@ -126,7 +131,7 @@ be specified directly using one of the options, or by type using `-R, --resource
 `-R,--resource <type>`
 : Resource type name.
 
-`-b,--attributes <key=value ...>`
+`-b,--attrs <key=value ...>`
 : Attributes for the resource. A sequence of key=value pairs, multiple pairs can follow with a space. Use a value of '?' to see suggestions.
 
 The following define [Project scope resources](/administration/security/authorization.md#project-scope-resources-and-actions):
@@ -137,14 +142,14 @@ The following define [Project scope resources](/administration/security/authoriz
 `-j,--job <group/name>`
 : Job group/name. (project context)
 
-`-I,--jobUuid <uuid>`
+`-i,--jobUuid <uuid>`
 : Job uuid. (project context)
 
 `-n,--node <nodename>`
 : Node name. (project context)
 
 `-t,--tags <tag,..>`
-: Node tags. If specified, the resource match will be defined using 'contains'. (project context)
+: Node tags. If specified, the resource match will be defined using 'contains'. (project context). Accepts multiple values.
 
 The following define [Application scope resources](/administration/security/authorization.md#application-scope-resources-and-actions):
 
@@ -153,6 +158,9 @@ The following define [Application scope resources](/administration/security/auth
 
 `-p,--project <project>`
 : Name of project, used in project context or for application resource.
+
+`-P,--projectacl <project>`
+: Project name for ACL policy access, used in application context.
 
 ### List Command Options
 
@@ -165,10 +173,11 @@ The Subject options: `-g,--groups` and `-u,--user`
 These Resource options:
 
 - `-p,--project` name of a project to test
+- `-P,--projectacl` name of a project to test ACL policy access for
 - `-s,--storage` Storage path/name
 - `-n,--node` or `-t,--tags` name or tags of a node to tests
 - `-j,--job` Job group/name.
-- `-I,--jobUuid` Job uuid.
+- `-i,--jobUuid` Job uuid.
 
 ## Test Command
 
@@ -397,7 +406,7 @@ rd acl create
 -c/--context is required.
 Choose one of:
   -c application
-    Access to projects, users, storage, system info.
+    Access to projects, users, storage, system info, execution management.
   -c project
     Access to jobs, nodes, events, within a project.
 ```
@@ -430,7 +439,8 @@ rd acl create -c project -p '.*' -g test
 Project-context resource option is required.
 Possible options:
   Job: -j/--job <group/name>
-    View, modify, create*, delete*, run, and kill specific jobs.
+    View, modify, create*, delete*, run, and kill specific jobs,
+    and toggle whether schedule and/or execution are enabled.
     * Create and delete also require additional -G/--generic <kind> level access.
   Adhoc: -A/--adhoc
     View, run, and kill adhoc commands.
@@ -438,7 +448,7 @@ Possible options:
       : -t/--tags <tag,..>
     View and run on specific nodes by name or tag.
   Resource: -R/--resource <type>
-    Specify the resource type directly. -b/--attributes <key=value ...> should also be used.
+    Specify the resource type directly. -b/--attrs <key=value ...> should also be used.
     resource types in this context:
     node
     job
