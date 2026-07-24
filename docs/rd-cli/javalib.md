@@ -13,7 +13,7 @@ A demo project can be seen here: <https://github.com/gschueler/rd-api-demo>
 Starting with `rd-api-client` version `2.1.4`, releases are published to PagerDuty's PackageCloud repository instead of Maven Central. Versions `2.1.3` and earlier remain permanently available on Maven Central.
 
 ~~~{groovy}
-//rd-api-client 2.1.4+ is published to PagerDuty's PackageCloud repository (no credentials required to read)
+// rd-api-client 2.1.4+ is published to PagerDuty's PackageCloud repository (no credentials required to read)
 repositories {
     maven {
         url "https://packagecloud.io/pagerduty/rundeck/maven2"
