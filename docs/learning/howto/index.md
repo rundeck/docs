@@ -35,6 +35,9 @@ Available Guides by Section
 [Revoke OpenSSH Keys](/learning/howto/revoke-ssh-keys.md)  
 [Configure remote nodes with WinRM](/learning/howto/how2winrm-rundeck.md)  
 
+## Managing Runners
+[Comprehensive runner management system for RBA and PagerDuty runners](/learning/howto/runner-service-manager.md)
+
 ## Writing Jobs
 [Use Rundeck Example Jobs](/learning/howto/use-example-jobs.md)  
 [Pass Data Between Steps](/learning/howto/passing-variables.md)  

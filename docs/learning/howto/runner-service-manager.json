@@ -1,0 +1,308 @@
+[ {
+  "defaultTab" : "nodes",
+  "description" : "-\n![](https://img.shields.io/badge/GenAI%20Automated%20Documentation-green)\n\n**Information**:\n\n| Field | Value |\n|-------|-------|\n| Job Name | runner-service-manager |\n| Can be executed | true |\n| Can be scheduled | true |\n| Description | - Comprehensive runner management system for both RBA (Runbook Automation) and PagerDuty runners<br>- Supports multiple deployment architectures including standalone and replica configurations<br>- Provides complete lifecycle management including installation, configuration, start/stop operations, and upgrades<br>- Handles systemd service management with both privileged and unprivileged execution modes<br>- Implements intelligent naming conventions and automatic SSL certificate management<br>- Includes rollback mechanisms to prevent orphaned API registrations during failed installations |\n| Last Modified Date | 2026-07-21T17:43:42Z |\n\n**Readme**: Click on Readme to see more detailed documentation.\n\n---\n\n**Job Prerequisites**:\n- Java runtime environment installed on target nodes\n- Network connectivity to Rundeck API and external endpoints\n- Appropriate permissions for service management (systemd or process-based)\n- Valid API tokens for Rundeck and PagerDuty (if using PD runners)\n- Sufficient disk space in working directory for runner installation\n\n**Options**:\n\n| Name | Description | Required | Secure | Default | Notes |\n|------|-------------|----------|---------|---------|-------|\n| rd-token | Runbook Automation (RBA) API Token | true | true | - | Stored in project key storage |\n| pd-token | PagerDuty Automation Actions Token | false | true | - | Required for PD runner operations |\n| pd-runner-id | Runner ID from credentials.pdrunner-creds | false | true | - | PagerDuty specific credential |\n| pd-runner-secret | Runner Secret from credentials.pdrunner-creds | false | true | - | PagerDuty specific credential |\n| mode | Action to perform on the targeted nodes | true | false | status | Options: status, start, stop, restart, install-only, install-start, uninstall, upgrade |\n| runner-type | The ecosystem type of Runner to manage | true | false | rba-runner | Options: rba-runner, pd-runner |\n| architecture | Deployment Architecture | true | false | standalone | Standalone creates 1:1 runners, Replica creates clustered pool |\n| parent-runner | The logical Parent Runner name for replica | false | false | - | Used only when architecture is replica |\n| runner-naming | Naming convention for managed Runner | true | false | verbose | Options: standard, verbose |\n| runner-tags | Comma-separated list of additional tags to apply | false | false | - | Used only when architecture is standalone |\n| runner-memory | Memory allocation for the runner | true | false | 1G | Options: 512M, 1G, 2G, 4G |\n| project | Rundeck Project to associate | false | false | - | Auto-uses current project if blank |\n| runner-as-node | Register Runner as dispatchable Node | true | false | true | Options: true, false |\n| work-dir | Absolute installation path | false | false | - | Uses default node working directory if blank |\n| service-as-systemd | Manage Runner as Systemd service | false | false | true | Options: true, false |\n| service-as-root | Manage Runner with root privileges | false | false | - | Leave blank for unprivileged execution |\n| runner-error-routing-key | PagerDuty Routing Key for crash alerting | false | false | - | Events V2 API for systemd circuit breaker |\n| skip-errors | Skip errors and resume for non-critical exceptions | true | false | false | Options: true, false |\n\n**External Endpoints**:\n- Rundeck API endpoints for runner management and project operations\n- PagerDuty Runbook Actions service (https://runbook-actions.pagerduty.com)\n- PagerDuty Events V2 API (https://events.pagerduty.com/v2/enqueue)\n- SSL certificate validation services for HTTPS connections\n- Systemd service management interfaces\n\n**Steps**:\n- Execute get-rba-api-version job reference to determine API compatibility\n- Perform Java runtime validation check using Python script\n- Generate dynamic configuration based on runner type, architecture, and naming conventions\n- Set configuration data using stub-data-step for workflow context\n- Execute conditional workflow steps based on operation mode:\n  - **Stop Operations**: Stop running services via PID files or systemd commands\n  - **Installation**: Create API registrations, download runner JARs, configure SSL certificates\n  - **Systemd Setup**: Create and enable systemd service files with proper permissions and crash alerting\n  - **PagerDuty Setup**: Configure PD-specific credentials and download PD runner JAR\n  - **Uninstallation**: Remove services, deregister from APIs, clean up directories\n  - **Upgrade**: Regenerate API tokens, download updated JARs, prepare for restart\n  - **Start/Status**: Launch services and verify operational status with API health checks\n\n**Technical Details**:\n- **Programming Languages**: Python 3.x for all automation scripts\n- **Runtime Environment**: Java for runner execution, Python for management operations\n- **Step Types**: Mixed workflow containing both workflow steps and node steps\n- **Workflows Referenced**: get-rba-api-version (functions group)\n- **Plugins Used**: \n  - json-mapper (LogFilter) for data extraction\n  - stub-data-step for configuration management\n  - progress-badge for workflow status indication\n  - mask-passwords (LogFilter) for security\n- **Workflow Strategy**: Ruleset-based conditional execution with complex branching logic\n- **Filters**: JSON data filtering and password masking throughout execution\n\n**Disclaimer**: This document and the described automation job are provided as is without warranty of any kind, express or implied. The user assumes all risks associated with the use of this job. The creators or contributors are not liable for any direct, indirect, incidental, special, exemplary, or consequential damages (including, but not limited to, procurement of substitute goods or services; loss of use, data, or profits; or business interruption) caused and on any theory of liability, whether in contract, strict liability, or tort (including negligence or otherwise) arising in any way out of the use of this job, even if advised of the possibility of such damage.",
+  "executionEnabled" : true,
+  "group" : "runner/management",
+  "id" : "71033aa5-0294-440f-af74-79dfd8c24dcb",
+  "loglevel" : "INFO",
+  "name" : "runner-service-manager",
+  "nodeFilterEditable" : false,
+  "nodefilters" : {
+    "dispatch" : {
+      "excludePrecedence" : true,
+      "keepgoing" : false,
+      "rankOrder" : "ascending",
+      "successOnEmptyNodeFilter" : false,
+      "threadcount" : "1"
+    },
+    "filter" : ".*"
+  },
+  "nodesSelectedByDefault" : false,
+  "options" : [ {
+    "description" : "Runbook Automation (RBA) API Token",
+    "name" : "rd-token",
+    "required" : true,
+    "secure" : true,
+    "storagePath" : "keys/project/${job.project}/rd-token",
+    "type" : "text",
+    "valueExposed" : true
+  }, {
+    "description" : "PagerDuty Automation Actions Token",
+    "name" : "pd-token",
+    "secure" : true,
+    "storagePath" : "keys/project/${job.project}/pd-token",
+    "type" : "text",
+    "valueExposed" : true
+  }, {
+    "description" : "Runner ID from credentials.pdrunner-creds",
+    "name" : "pd-runner-id",
+    "secure" : true,
+    "valueExposed" : true
+  }, {
+    "description" : "Runner Secret from credentials.pdrunner-creds",
+    "name" : "pd-runner-secret",
+    "secure" : true,
+    "valueExposed" : true
+  }, {
+    "description" : "Action to perform on the targeted nodes",
+    "enforced" : true,
+    "name" : "mode",
+    "required" : true,
+    "value" : "status",
+    "values" : [ "status", "start", "stop", "restart", "install-only", "install-start", "uninstall", "upgrade" ],
+    "valuesListDelimiter" : ","
+  }, {
+    "description" : "The ecosystem type of Runner to manage",
+    "enforced" : true,
+    "name" : "runner-type",
+    "required" : true,
+    "value" : "rba-runner",
+    "values" : [ "rba-runner", "pd-runner" ],
+    "valuesListDelimiter" : ","
+  }, {
+    "description" : "Deployment Architecture (Standalone creates 1:1 runners. Replica creates a clustered runner pool)",
+    "enforced" : true,
+    "name" : "architecture",
+    "required" : true,
+    "value" : "standalone",
+    "values" : [ "standalone", "replica" ],
+    "valuesListDelimiter" : ","
+  }, {
+    "description" : "The logical Parent Runner name this replica belongs to (Only used when Architecture is set to 'replica'). \n\nLeave blank to automatically group targets into a logical pool (e.g., 'runner-rba-pool-sysd-MyProject'). \n\nExample: If you type 'frontend-cluster' here, all targeted nodes will group as replicas under a single 'frontend-cluster' runner in the Rundeck UI.",
+    "name" : "parent-runner"
+  }, {
+    "description" : "Naming convention for the managed Runner's directory and service structure on the target node. \n\nExample: 'verbose' creates highly descriptive names like 'runner-rba-rep-sysd-MyProject-node01'. 'standard' uses a simpler legacy format like 'runner-replica-MyProject-node01'.",
+    "enforced" : true,
+    "name" : "runner-naming",
+    "required" : true,
+    "value" : "verbose",
+    "values" : [ "standard", "verbose" ],
+    "valuesListDelimiter" : ","
+  }, {
+    "description" : "Comma-separated list of additional tags to apply to the runner (e.g., linux,prod,database). Only used when Architecture is set to 'standalone' and Type is 'rba-runner'.",
+    "name" : "runner-tags"
+  }, {
+    "description" : "Memory allocation for the runner (Applied to -Xms and -Xmx). Only works with install and upgrade modes.",
+    "enforced" : true,
+    "name" : "runner-memory",
+    "required" : true,
+    "value" : "1G",
+    "values" : [ "512M", "1G", "2G", "4G" ],
+    "valuesListDelimiter" : ","
+  }, {
+    "description" : "Rundeck Project to associate (Leave blank to automatically use the project this job is running in)",
+    "name" : "project",
+    "valuesUrl" : "file:${globals.workdir}/rba-data-option-project.json"
+  }, {
+    "description" : "Register and configure the Runner to automatically act as a dispatchable Node within the Rundeck project?",
+    "enforced" : true,
+    "name" : "runner-as-node",
+    "required" : true,
+    "value" : "true",
+    "values" : [ "true", "false" ],
+    "valuesListDelimiter" : ","
+  }, {
+    "description" : "Absolute installation path (Leave blank to use default node working directory)",
+    "name" : "work-dir",
+    "regex" : "^\\/.*$"
+  }, {
+    "description" : "Manage the Runner as a Systemd service?",
+    "enforced" : true,
+    "name" : "service-as-systemd",
+    "value" : "true",
+    "values" : [ "true", "false" ],
+    "valuesListDelimiter" : ","
+  }, {
+    "description" : "Manage the Runner with root privileges? (Leave blank for unprivileged User-Space execution)",
+    "name" : "service-as-root",
+    "values" : [ "sudo" ],
+    "valuesListDelimiter" : ","
+  }, {
+    "description" : "PagerDuty Routing Key for crash alerting (Events V2 API). If provided, configures systemd circuit breaker and ExecStopPost notifications to create a PD incident. Only works when service-as-systemd is true.",
+    "name" : "runner-error-routing-key"
+  }, {
+    "description" : "Skip errors and resume steps for non-critical exceptions?",
+    "enforced" : true,
+    "name" : "skip-errors",
+    "required" : true,
+    "value" : "false",
+    "values" : [ "true", "false" ],
+    "valuesListDelimiter" : ","
+  } ],
+  "plugins" : {
+    "ExecutionLifecycle" : { }
+  },
+  "runnerSelector" : {
+    "canChange" : true,
+    "runnerFilterMode" : "LOCAL",
+    "runnerFilterType" : "LOCAL_RUNNER"
+  },
+  "scheduleEnabled" : true,
+  "schedules" : [ ],
+  "sequence" : {
+    "commands" : [ {
+      "jobref" : {
+        "group" : "functions",
+        "name" : "get-rba-api-version",
+        "useName" : "true"
+      }
+    }, {
+      "description" : "checks",
+      "fileExtension" : "py",
+      "interpreterArgsQuoted" : false,
+      "script" : "import subprocess\nimport sys\n\ntry:\n    java_version = subprocess.check_output([\"java\", \"-version\"], stderr=subprocess.STDOUT, text=True)\n    if 'build' not in java_version:\n        print(\"Java not found. Install it before running the job\")\n        sys.exit(1)\nexcept subprocess.CalledProcessError:\n    print(\"Java not installed. Please install Java before running the job.\")\n    sys.exit(1)\nsys.exit(0)\n",
+      "scriptInterpreter" : "python"
+    }, {
+      "description" : "define-configs",
+      "fileExtension" : "py",
+      "interpreterArgsQuoted" : false,
+      "plugins" : {
+        "LogFilter" : [ {
+          "config" : {
+            "extraQuotes" : "false",
+            "filter" : ".",
+            "logData" : "true",
+            "prefix" : "result"
+          },
+          "type" : "json-mapper"
+        } ]
+      },
+      "script" : "import os\nimport json\n\n# Fallback project to the execution context project if left blank\ninput_project = \"@option.project@\"\nproject = input_project if input_project else \"@job.project@\"\n\nnodeType = \"node\" if not \"@node.runner:runnerId@\" else \"runner\"\nrunnerType = \"@option.runner-type@\"\narchitecture = \"@option.architecture@\"\nparentRunnerInput = \"@option.parent-runner@\"\nsvcSystemd = \"@option.service-as-systemd@\"\nnamingConvention = \"@option.runner-naming@\"\nnodeName = \"@node.name@\"\nrunnerAsNode = \"@option.runner-as-node@\"\nrunnerMemory = \"@option.runner-memory@\"\nrunnerTags = \"@option.runner-tags@\"\n\n# Generate Short Codes\ntype_code = \"rba\" if runnerType == \"rba-runner\" else \"pd\"\narch_code = \"rep\" if architecture == \"replica\" else \"std\"\nsvc_code = \"sysd\" if svcSystemd == \"true\" else \"proc\"\n\nif nodeType == \"runner\":\n    # If executing on the runner itself, simply adopt the existing local installation name\n    workDir = \"@option.work-dir@\" if \"@option.work-dir@\" else os.getenv(\"PWD\")\n    runner = os.path.basename(workDir)\nelse:\n    # Enforce 'runner-' prefix and apply naming convention intelligently for new installations\n    if runnerType == \"pd-runner\":\n        if namingConvention == \"verbose\":\n            runner = f\"runner-pd-{svc_code}-{nodeName}\"\n        else:\n            runner = f\"runner-pd-{nodeName}\"\n    else:\n        if namingConvention == \"verbose\":\n            runner = f\"runner-{type_code}-{arch_code}-{svc_code}-{project}-{nodeName}\"\n        else:\n            prefix = \"runner-replica\" if architecture == \"replica\" else \"runner\"\n            runner = f\"{prefix}-{project}-{nodeName}\"\n            \n    workDir = f\"@option.work-dir@/{runner}\" if \"@option.work-dir@\" else f\"{os.getenv('PWD')}/{runner}\"\n\n# Smart Parent Runner \"Pool\" Fallback\nparentRunner = parentRunnerInput\nif architecture == \"replica\" and not parentRunnerInput and runnerType == \"rba-runner\":\n    if namingConvention == \"verbose\":\n        parentRunner = f\"runner-rba-pool-{svc_code}-{project}\"\n    else:\n        parentRunner = f\"runner-pool-{project}\"\n\nrunnerFlags = f\"-Xms{runnerMemory} -Xmx{runnerMemory} -XX:-UsePerfData -Dorg.sqlite.tmpdir={workDir} -Drunner.rundeck.overrideTempDir=true -Drunner.dirs.tmp={workDir}\"\n\nconfigs = {\n    \"project\": project,\n    \"runner\": runner,\n    \"workDir\": workDir,\n    \"runnerFlags\": runnerFlags,\n    \"architecture\": architecture,\n    \"parentRunner\": parentRunner,\n    \"runnerAsNode\": runnerAsNode,\n    \"runnerType\": runnerType,\n    \"runnerTags\": runnerTags\n}\n\nprint(json.dumps(configs))\n",
+      "scriptInterpreter" : "python"
+    }, {
+      "configuration" : {
+        "data" : "{\n    \"rdToken\":\"${option.rd-token}\",\n    \"pdToken\":\"${option.pd-token}\",\n    \"pdRunnerId\":\"${option.pd-runner-id}\",\n    \"pdRunnerSecret\":\"${option.pd-runner-secret}\",\n    \"serviceAsSystemd\":\"${option.service-as-systemd}\",\n    \"serviceAsRoot\":\"${option.service-as-root}\",\n    \"skipErrors\":\"${option.skip-errors}\",\n    \"jobName\":\"${job.name}\",\n    \"rdUrl\":\"${job.serverUrl}/api/${export.get-rba-api-version}\",\n    \"project\":\"${data.project*}\",\n    \"runner\":\"${data.runner*}\",\n    \"workDir\":\"${data.workDir*}\",\n    \"runnerFlags\":\"${data.runnerFlags*}\",\n    \"architecture\":\"${data.architecture*}\",\n    \"parentRunner\":\"${data.parentRunner*}\",\n    \"runnerAsNode\":\"${data.runnerAsNode*}\",\n    \"runnerType\":\"${data.runnerType*}\",\n    \"runnerTags\":\"${data.runnerTags*}\"\n}",
+        "format" : "json"
+      },
+      "description" : "set-configs",
+      "nodeStep" : false,
+      "type" : "stub-data-step"
+    }, {
+      "configuration" : {
+        "text" : "PRE STOP"
+      },
+      "nodeStep" : false,
+      "type" : "progress-badge"
+    }, {
+      "description" : "stop",
+      "fileExtension" : "py",
+      "interpreterArgsQuoted" : false,
+      "script" : "import os, signal, sys\nrunner = \"@stub.runner@\"\nworkDir = \"@stub.workDir@\"\nskipErrors = \"@stub.skipErrors@\"\nprint(f\"Stopping service {runner}\")\ntry:\n    os.chdir(workDir)\n    with open(f\"{runner}.pid\", \"r\") as pid_file:\n        pid = int(pid_file.read().strip())\n    os.kill(pid, signal.SIGKILL)\nexcept Exception as e:\n    print(f\"An error occurred: {e}\")\n    if skipErrors == \"false\": sys.exit(1)\n",
+      "scriptInterpreter" : "${option.service-as-root} python"
+    }, {
+      "description" : "stop-systemd",
+      "fileExtension" : "py",
+      "interpreterArgsQuoted" : false,
+      "script" : "import os, subprocess, sys\nrunner = \"@stub.runner@\"\nworkDir = \"@stub.workDir@\"\nskipErrors = \"@stub.skipErrors@\"\nsvcRoot = \"@stub.serviceAsRoot@\"\nprint(f\"Stopping service {runner}\")\ntry:\n    if not svcRoot:\n        subprocess.run([\"systemctl\", \"--user\", \"stop\", f\"{runner}.service\"], check=True)\n    else:\n        subprocess.run([\"systemctl\", \"stop\", f\"{runner}.service\"], check=True)\nexcept subprocess.CalledProcessError as e:\n    print(f\"Error occurred while managing service {runner}: {e}\")\n    if skipErrors == \"false\": sys.exit(1)\n",
+      "scriptInterpreter" : "${option.service-as-root} python"
+    }, {
+      "configuration" : {
+        "text" : "INSTALL"
+      },
+      "nodeStep" : false,
+      "type" : "progress-badge"
+    }, {
+      "description" : "install",
+      "fileExtension" : "py",
+      "interpreterArgsQuoted" : false,
+      "script" : "import os, json, subprocess, requests\nTOKEN = \"@stub.rdToken@\"\nPROJECT = \"@stub.project@\"\nRDURL = \"@stub.rdUrl@\"\nRUNNER = \"@stub.runner@\"\nWORKDIR = \"@stub.workDir@\"\nARCH = \"@stub.architecture@\"\nPARENT = \"@stub.parentRunner@\"\nRUNNERASNODE = \"@stub.runnerAsNode@\" == \"true\"\nRUNNERTAGS = \"@stub.runnerTags@\"\n\nrequests.packages.urllib3.disable_warnings()\nsession = requests.Session()\nsession.verify = False\n\ntry:\n    os.makedirs(WORKDIR, exist_ok=True)\n    os.chdir(WORKDIR)\n    headers = {\"X-Rundeck-Auth-Token\": TOKEN, \"Accept\": \"application/json\", \"Content-Type\": \"application/json\"}\n    api_base = f\"{RDURL}/project/{PROJECT}/runnerManagement\"\n    \n    runner_data = {}\n\n    if ARCH == \"replica\":\n        print(f\"Checking Parent Runner {PARENT}\")\n        res = session.get(f\"{api_base}/runners\", headers=headers)\n        runners = res.json().get('runners', [])\n        parent_id = next((r['id'] for r in runners if r['name'] == PARENT), None)\n        \n        if not parent_id:\n            print(f\"Creating Parent Runner {PARENT}...\")\n            payload = {\"name\": PARENT, \"description\": \"Replica Pool\", \"assignedProjects\": {PROJECT: \".*\"}, \"installationType\": \"linux\", \"replicaType\": \"manual\", \"runnerAsNodeEnabled\": RUNNERASNODE}\n            res = session.post(f\"{api_base}/runners\", json=payload, headers=headers)\n            if res.status_code not in [200, 201]:\n                print(f\"Failed to create Parent Runner: {res.status_code} - {res.text}\"); exit(1)\n            \n            parent_data = res.json()\n            parent_id = parent_data.get('id') or parent_data.get('runnerId')\n            if not parent_id:\n                check_res = session.get(f\"{api_base}/runners\", headers=headers)\n                parent_id = next((r['id'] for r in check_res.json().get('runners', []) if r['name'] == PARENT), None)\n            if not parent_id:\n                print(\"Error: Parent Runner was created but could not retrieve its ID.\"); exit(1)\n            \n            rep_res = session.get(f\"{api_base}/runner/{parent_id}/replicas\", headers=headers)\n            existing_replicas = rep_res.json().get('replicas', [])\n            dl_token = parent_data.get('downloadTk')\n            \n            if existing_replicas and dl_token:\n                runner_data = {\n                    \"runnerId\": parent_id,\n                    \"replicaId\": existing_replicas[0]['replicaId'],\n                    \"downloadTk\": dl_token\n                }\n                print(f\"Using auto-generated Replica ID: {runner_data['replicaId']}\")\n            else:\n                print(f\"Creating Replica for Parent ID: {parent_id}\")\n                res = session.post(f\"{api_base}/runner/{parent_id}/replicas\", headers=headers)\n                if res.status_code not in [200, 201]:\n                    print(f\"Failed to create Replica: {res.status_code} - {res.text}\"); exit(1)\n                runner_data = res.json()\n                if existing_replicas:\n                    session.delete(f\"{api_base}/runner/{parent_id}/replica/{existing_replicas[0]['replicaId']}\", headers=headers)\n        else:\n            print(f\"Creating Replica for Parent ID: {parent_id}\")\n            res = session.post(f\"{api_base}/runner/{parent_id}/replicas\", headers=headers)\n            if res.status_code not in [200, 201]:\n                print(f\"Failed to create Replica: {res.status_code} - {res.text}\"); exit(1)\n            runner_data = res.json()\n            \n        with open(f\"{WORKDIR}/.replica-meta\", \"w\") as f:\n            json.dump(runner_data, f)\n        registered_runner_id = runner_data.get('runnerId')\n        registered_replica_id = runner_data.get('replicaId')\n        dl_token = runner_data.get('downloadTk')\n        if not dl_token:\n             print(\"Error: No download token received for replica.\"); exit(1)\n    else:\n        print(f\"Creating Standalone Runner {RUNNER} on {WORKDIR}\")\n        tags_list = [RUNNER]\n        if RUNNERTAGS:\n            tags_list.extend([t.strip() for t in RUNNERTAGS.split(',') if t.strip()])\n        tags_list = list(set(tags_list))\n        payload = {\"name\": RUNNER, \"description\": RUNNER, \"tagNames\": tags_list, \"assignedProjects\": {PROJECT: \".*\"}, \"installationType\": \"linux\", \"replicaType\": \"manual\", \"runnerAsNodeEnabled\": RUNNERASNODE}\n        res = session.post(f\"{api_base}/runners\", json=payload, headers=headers)\n        if res.status_code not in [200, 201]:\n             print(f\"Failed to create Standalone Runner: {res.status_code} - {res.text}\"); exit(1)\n        \n        runner_data = res.json()\n        registered_runner_id = runner_data.get('id') or runner_data.get('runnerId')\n        if not registered_runner_id:\n             check_res = session.get(f\"{api_base}/runners\", headers=headers)\n             registered_runner_id = next((r['id'] for r in check_res.json().get('runners', []) if r['name'] == RUNNER), None)\n\n        dl_token = runner_data.get('downloadTk')\n        if not dl_token and registered_runner_id:\n             regen_res = session.post(f\"{api_base}/runner/{registered_runner_id}/regenerateCreds\", headers=headers)\n             dl_token = regen_res.json().get('downloadTk')\n             \n        if not dl_token:\n             print(\"Error: No download token received for standalone runner.\"); exit(1)\n\n    # Risky operations block (Download & SSL)\n    try:\n        print(f\"Downloading JAR...\")\n        response = session.get(f\"{RDURL}/runnerManagement/download/{dl_token}\", headers=headers, stream=True)\n        if response.status_code == 200:\n            with open(f\"{RUNNER}.jar\", \"wb\") as f:\n                f.write(response.content)\n        else:\n            raise Exception(f\"Error downloading the runner: {response.status_code} - {response.text}\")\n\n        if RDURL.startswith(\"https://\"):\n            CERT = f\"{RUNNER}.crt\"\n            STOREPASS = \"changeit\"\n            STOREPATH = f\"{WORKDIR}/truststore\"\n            HOST = RDURL.replace(\"https://\", \"\").split('/')[0]\n            subprocess.run(f\"keytool -printcert -rfc -sslserver {HOST} > {CERT}\", shell=True, check=True)\n            subprocess.run(f\"rm -f {STOREPATH} && keytool -v -noprompt -importcert -alias {RUNNER} -file {CERT} -storepass {STOREPASS} -keystore {STOREPATH}\", shell=True, check=True)\n    except Exception as e:\n        print(f\"Installation failed during setup: {e}\")\n        print(\"Rolling back API registration (Orphan Prevention)...\")\n        if ARCH == \"replica\":\n            if registered_runner_id and registered_replica_id:\n                session.delete(f\"{api_base}/runner/{registered_runner_id}/replica/{registered_replica_id}\", headers=headers)\n            if os.path.exists(f\"{WORKDIR}/.replica-meta\"): os.remove(f\"{WORKDIR}/.replica-meta\")\n        else:\n            if registered_runner_id:\n                session.delete(f\"{api_base}/runner/{registered_runner_id}\", headers=headers)\n        exit(1)\n\nfinally:\n    session.close()",
+      "scriptInterpreter" : "${option.service-as-root} python"
+    }, {
+      "description" : "install-systemd",
+      "fileExtension" : "py",
+      "interpreterArgsQuoted" : false,
+      "script" : "import os, subprocess, json, requests\nTOKEN = \"@stub.rdToken@\"\nSVCROOT = \"@stub.serviceAsRoot@\"\nPROJECT = \"@stub.project@\"\nRDURL = \"@stub.rdUrl@\"\nRUNNER = \"@stub.runner@\"\nWORKDIR = \"@stub.workDir@\"\nRUNNERFLAGS = \"@stub.runnerFlags@\"\nARCH = \"@stub.architecture@\"\nPARENT = \"@stub.parentRunner@\"\nRUNNERASNODE = \"@stub.runnerAsNode@\" == \"true\"\nRUNNERTAGS = \"@stub.runnerTags@\"\n\nrequests.packages.urllib3.disable_warnings()\nsession = requests.Session()\nsession.verify = False\nheaders = {\"X-Rundeck-Auth-Token\": TOKEN, \"Accept\": \"application/json\", \"Content-Type\": \"application/json\"}\napi_base = f\"{RDURL}/project/{PROJECT}/runnerManagement\"\n\ndef create_runner():\n    if ARCH == \"replica\":\n        print(f\"Checking Parent Runner {PARENT}\")\n        res = session.get(f\"{api_base}/runners\", headers=headers)\n        runners = res.json().get('runners', [])\n        parent_id = next((r['id'] for r in runners if r['name'] == PARENT), None)\n        \n        if not parent_id:\n            print(f\"Creating Parent Runner {PARENT}...\")\n            payload = {\"name\": PARENT, \"description\": \"Replica Pool\", \"assignedProjects\": {PROJECT: \".*\"}, \"installationType\": \"linux\", \"replicaType\": \"manual\", \"runnerAsNodeEnabled\": RUNNERASNODE}\n            res = session.post(f\"{api_base}/runners\", json=payload, headers=headers)\n            if res.status_code not in [200, 201]:\n                print(f\"Failed to create Parent Runner: {res.status_code} - {res.text}\"); exit(1)\n                \n            parent_data = res.json()\n            parent_id = parent_data.get('id') or parent_data.get('runnerId')\n            if not parent_id:\n                check_res = session.get(f\"{api_base}/runners\", headers=headers)\n                parent_id = next((r['id'] for r in check_res.json().get('runners', []) if r['name'] == PARENT), None)\n            if not parent_id:\n                print(\"Error: Parent Runner was created but could not retrieve its ID.\"); exit(1)\n            \n            rep_res = session.get(f\"{api_base}/runner/{parent_id}/replicas\", headers=headers)\n            existing_replicas = rep_res.json().get('replicas', [])\n            dl_token = parent_data.get('downloadTk')\n            \n            if existing_replicas and dl_token:\n                runner_data = {\n                    \"runnerId\": parent_id,\n                    \"replicaId\": existing_replicas[0]['replicaId'],\n                    \"downloadTk\": dl_token\n                }\n                print(f\"Using auto-generated Replica ID: {runner_data['replicaId']}\")\n            else:\n                print(f\"Creating Replica for Parent ID: {parent_id}\")\n                res = session.post(f\"{api_base}/runner/{parent_id}/replicas\", headers=headers)\n                if res.status_code not in [200, 201]:\n                    print(f\"Failed to create Replica: {res.status_code} - {res.text}\"); exit(1)\n                runner_data = res.json()\n                if existing_replicas:\n                    session.delete(f\"{api_base}/runner/{parent_id}/replica/{existing_replicas[0]['replicaId']}\", headers=headers)\n        else:\n            print(f\"Creating Replica for Parent ID: {parent_id}\")\n            res = session.post(f\"{api_base}/runner/{parent_id}/replicas\", headers=headers)\n            if res.status_code not in [200, 201]:\n                print(f\"Failed to create Replica: {res.status_code} - {res.text}\"); exit(1)\n            runner_data = res.json()\n            \n        with open(f\"{WORKDIR}/.replica-meta\", \"w\") as f:\n            json.dump(runner_data, f)\n        return runner_data\n    else:\n        print(f\"Installing Standalone Runner {RUNNER} on {WORKDIR}\")\n        tags_list = [RUNNER]\n        if RUNNERTAGS:\n            tags_list.extend([t.strip() for t in RUNNERTAGS.split(',') if t.strip()])\n        tags_list = list(set(tags_list))\n        payload = {\"name\": RUNNER, \"description\": RUNNER, \"tagNames\": tags_list, \"assignedProjects\": {PROJECT: \".*\"}, \"installationType\": \"linux\", \"replicaType\": \"manual\", \"runnerAsNodeEnabled\": RUNNERASNODE}\n        response = session.post(f\"{api_base}/runners\", json=payload, headers=headers)\n        if response.status_code in [200, 201]:\n            runner_data = response.json()\n            registered_id = runner_data.get('id') or runner_data.get('runnerId')\n            if not registered_id:\n                 check_res = session.get(f\"{api_base}/runners\", headers=headers)\n                 registered_id = next((r['id'] for r in check_res.json().get('runners', []) if r['name'] == RUNNER), None)\n                 runner_data['id'] = registered_id\n            if not runner_data.get('downloadTk') and registered_id:\n                 regen_res = session.post(f\"{api_base}/runner/{registered_id}/regenerateCreds\", headers=headers)\n                 runner_data['downloadTk'] = regen_res.json().get('downloadTk')\n            return runner_data\n        else:\n            print(f\"Failed to create Standalone Runner: {response.status_code} - {response.text}\"); exit(1)\n\ndef download_runner(runnerResponse):\n    dl_token = runnerResponse.get(\"downloadTk\")\n    if not dl_token:\n        raise Exception(\"No download token found in the API response.\")\n        \n    response = session.get(f\"{RDURL}/runnerManagement/download/{dl_token}\", headers={\"X-Rundeck-Auth-Token\": TOKEN, \"Accept\": \"application/json\"}, stream=True)\n    if response.status_code == 200:\n        with open(f\"{RUNNER}.jar\", \"wb\") as jar_file:\n            jar_file.write(response.content)\n    else:\n        raise Exception(f\"Failed to download runner JAR: {response.status_code} - {response.text}\")\n\ndef check_ssl():\n    if \"https://\" in RDURL:\n        cert = f\"{RUNNER}.crt\"; storepass = \"changeit\"; storepath = f\"{WORKDIR}/truststore\"\n        host = RDURL.replace(\"https://\", \"\").split(\"/\")[0]\n        subprocess.run([\"keytool\", \"-printcert\", \"-rfc\", \"-sslserver\", host], stdout=open(cert, \"w\"), check=True)\n        subprocess.run([\"rm\", \"-f\", storepath], check=False)\n        subprocess.run([\"keytool\", \"-v\", \"-noprompt\", \"-importcert\", \"-alias\", RUNNER, \"-file\", cert, \"-storepass\", storepass, \"-keystore\", storepath], check=True)\n        return f\"-Dmicronaut.ssl.trust-store.password={storepass} -Dmicronaut.ssl.trust-store.path=file:{storepath}\"\n    return \"\"\n\ndef create_service(ssl_options):\n    print(f\"Creating service {RUNNER}\")\n    \n    if not SVCROOT:\n        try:\n            user = os.getenv(\"USER\") or subprocess.check_output([\"id\", \"-un\"]).strip().decode('utf-8')\n            linger_status = subprocess.check_output(f\"loginctl show-user {user}\", shell=True, text=True)\n            if \"Linger=no\" in linger_status:\n                print(f\"Enabling linger for user {user}...\")\n                subprocess.run([\"loginctl\", \"enable-linger\", user], check=True)\n        except Exception as e:\n            print(f\"Warning: Could not check/set linger status automatically: {e}\")\n\n    ROUTING_KEY = \"@option.runner-error-routing-key@\"\n    webhook_str = \"\"\n    if ROUTING_KEY:\n        import json as j\n        payload = {\n            \"routing_key\": ROUTING_KEY,\n            \"event_action\": \"trigger\",\n            \"dedup_key\": RUNNER,\n            \"payload\": {\n                \"summary\": f\"{RUNNER} crashed on $(hostname)\",\n                \"source\": \"$(hostname)\",\n                \"severity\": \"critical\",\n                \"component\": \"runner\"\n            }\n        }\n        payload_str = j.dumps(payload).replace('\"', '\\\\\"')\n        webhook_str = f\"ExecStopPost=/bin/sh -c 'if [ \\\"$$SERVICE_RESULT\\\" != \\\"success\\\" ]; then curl -s -k -X POST -H \\\"Content-Type: application/json\\\" -H \\\"Accept: application/json\\\" --data \\\"{payload_str}\\\" https://events.pagerduty.com/v2/enqueue; fi'\\n\"\n\n    service_content = f\"\"\"[Unit]\\nDescription=RBA Runner [{RUNNER}]\\nStartLimitIntervalSec=60\\nStartLimitBurst=3\\n[Service]\\nRestart=on-failure\\nRestartSec=5\\nSuccessExitStatus=3 4 143\\nRestartForceExitStatus=3 4\\nNoNewPrivileges=true\\nWorkingDirectory={WORKDIR}\\nExecStart=java {RUNNERFLAGS} {ssl_options} -jar {WORKDIR}/{RUNNER}.jar\\n{webhook_str}[Install]\\nWantedBy=default.target\\n\"\"\"\n    with open(f\"{WORKDIR}/{RUNNER}.service\", \"w\") as service_file:\n        service_file.write(service_content)\n    if not SVCROOT:\n        user_systemd_dir = os.path.join(os.getenv(\"HOME\"), \".config\", \"systemd\", \"user\")\n        os.makedirs(user_systemd_dir, exist_ok=True)\n        subprocess.run([\"mv\", f\"{WORKDIR}/{RUNNER}.service\", os.path.join(user_systemd_dir, f\"{RUNNER}.service\")], check=True)\n        subprocess.run([\"systemctl\", \"--user\", \"daemon-reload\"], check=True)\n        subprocess.run([\"systemctl\", \"--user\", \"enable\", \"--now\", f\"{RUNNER}.service\"], check=True)\n    else:\n        subprocess.run([\"mv\", f\"{WORKDIR}/{RUNNER}.service\", f\"/etc/systemd/system/{RUNNER}.service\"], check=True)\n        subprocess.run([\"restorecon\", f\"/etc/systemd/system/{RUNNER}.service\"], check=False)\n        subprocess.run([\"systemctl\", \"daemon-reload\"], check=True)\n        subprocess.run([\"systemctl\", \"enable\", \"--now\", f\"{RUNNER}.service\"], check=True)\n\ntry:\n    os.makedirs(WORKDIR, exist_ok=True)\n    os.chdir(WORKDIR)\n    runnerResponse = {}\n    runnerResponse = create_runner()\n    \n    # Risky operations block (Download, SSL, Systemd config)\n    try:\n        download_runner(runnerResponse)\n        ssl_options = check_ssl()\n        create_service(ssl_options)\n    except Exception as e:\n        print(f\"Installation failed during setup: {e}\")\n        print(\"Rolling back API registration (Orphan Prevention)...\")\n        if ARCH == \"replica\":\n            r_id = runnerResponse.get('runnerId') or runnerResponse.get('id')\n            rep_id = runnerResponse.get('replicaId')\n            if r_id and rep_id:\n                session.delete(f\"{api_base}/runner/{r_id}/replica/{rep_id}\", headers=headers)\n            if os.path.exists(f\"{WORKDIR}/.replica-meta\"): os.remove(f\"{WORKDIR}/.replica-meta\")\n        else:\n            r_id = runnerResponse.get('id') or runnerResponse.get('runnerId')\n            if r_id:\n                session.delete(f\"{api_base}/runner/{r_id}\", headers=headers)\n        exit(1)\n\nfinally:\n    session.close()",
+      "scriptInterpreter" : "${option.service-as-root} python"
+    }, {
+      "description" : "install-pd",
+      "fileExtension" : "py",
+      "interpreterArgsQuoted" : false,
+      "script" : "import os, json, subprocess, requests\n# PD Runners do not utilize the Replica API logic\nTOKEN = \"@stub.rdToken@\"\nPDTOKEN = \"@stub.pdToken@\"\nPDRUNNERID = \"@stub.pdRunnerId@\"\nPDRUNNERSECRET = \"@stub.pdRunnerSecret@\"\nRDURL = \"@stub.rdUrl@\"\nRUNNER = \"@stub.runner@\"\nWORKDIR = \"@stub.workDir@\"\n\nrequests.packages.urllib3.disable_warnings()\nos.makedirs(WORKDIR, exist_ok=True)\nos.chdir(WORKDIR)\n\nwith open(\".pdrunner-creds\", \"w\") as f:\n    f.write(f\"id:{PDRUNNERID}\\nsecret:{PDRUNNERSECRET}\\ntoken:{PDTOKEN}\\nrundeck_url:{RDURL.split('/api')[0]}\\nrundeck_token:{TOKEN}\\n\")\n\nprint(f\"Installing PagerDuty Runner {RUNNER} on {WORKDIR}\")\nresponse = requests.get(\"https://runbook-actions.pagerduty.com/pd-runner.jar\", stream=True, verify=True)\nif response.status_code == 200:\n    with open(f\"{RUNNER}.jar\", \"wb\") as f:\n        f.write(response.content)\nelse:\n    print(f\"Error downloading: {response.status_code}\"); exit(1)\n",
+      "scriptInterpreter" : "${option.service-as-root} python"
+    }, {
+      "description" : "install-pd-systemd",
+      "fileExtension" : "py",
+      "interpreterArgsQuoted" : false,
+      "script" : "import os, json, subprocess, requests\n# PD Runners do not utilize the Replica API logic\nTOKEN = \"@stub.rdToken@\"\nPDTOKEN = \"@stub.pdToken@\"\nPDRUNNERID = \"@stub.pdRunnerId@\"\nPDRUNNERSECRET = \"@stub.pdRunnerSecret@\"\nSVCROOT = \"@stub.serviceAsRoot@\"\nRDURL = \"@stub.rdUrl@\"\nRUNNER = \"@stub.runner@\"\nWORKDIR = \"@stub.workDir@\"\nRUNNERMEM = \"@option.runner-memory@\"\n\nrequests.packages.urllib3.disable_warnings()\nos.makedirs(WORKDIR, exist_ok=True)\nos.chdir(WORKDIR)\n\nwith open(\".pdrunner-creds\", \"w\") as f:\n    f.write(f\"id:{PDRUNNERID}\\nsecret:{PDRUNNERSECRET}\\ntoken:{PDTOKEN}\\nrundeck_url:{RDURL.split('/api')[0]}\\nrundeck_token:{TOKEN}\\n\")\n\nprint(f\"Installing PagerDuty Runner {RUNNER} on {WORKDIR}\")\nresponse = requests.get(\"https://runbook-actions.pagerduty.com/pd-runner.jar\", stream=True, verify=True)\nif response.status_code == 200:\n    with open(f\"{RUNNER}.jar\", \"wb\") as f:\n        f.write(response.content)\nelse:\n    print(f\"Error downloading: {response.status_code}\"); exit(1)\n\nif not SVCROOT:\n    try:\n        user = os.getenv(\"USER\") or subprocess.check_output([\"id\", \"-un\"]).strip().decode('utf-8')\n        linger_status = subprocess.check_output(f\"loginctl show-user {user}\", shell=True, text=True)\n        if \"Linger=no\" in linger_status:\n            print(f\"Enabling linger for user {user}...\")\n            subprocess.run([\"loginctl\", \"enable-linger\", user], check=True)\n    except Exception as e:\n        print(f\"Warning: Could not check/set linger status automatically: {e}\")\n\nROUTING_KEY = \"@option.runner-error-routing-key@\"\nwebhook_str = \"\"\nif ROUTING_KEY:\n    import json as j\n    payload = {\n        \"routing_key\": ROUTING_KEY,\n        \"event_action\": \"trigger\",\n        \"dedup_key\": RUNNER,\n        \"payload\": {\n            \"summary\": f\"{RUNNER} crashed on $(hostname)\",\n            \"source\": \"$(hostname)\",\n            \"severity\": \"critical\",\n            \"component\": \"runner\"\n        }\n    }\n    payload_str = j.dumps(payload).replace('\"', '\\\\\"')\n    webhook_str = f\"ExecStopPost=/bin/sh -c 'if [ \\\"$$SERVICE_RESULT\\\" != \\\"success\\\" ]; then curl -s -k -X POST -H \\\"Content-Type: application/json\\\" -H \\\"Accept: application/json\\\" --data \\\"{payload_str}\\\" https://events.pagerduty.com/v2/enqueue; fi'\\n\"\n\nservice_content = f\"\"\"[Unit]\\nDescription=PagerDuty Runner [{RUNNER}]\\nStartLimitIntervalSec=60\\nStartLimitBurst=3\\n[Service]\\nRestart=on-failure\\nRestartSec=5\\nSuccessExitStatus=3 4 143\\nRestartForceExitStatus=3 4\\nNoNewPrivileges=true\\nWorkingDirectory={WORKDIR}\\nExecStart=java -Xms{RUNNERMEM} -Xmx{RUNNERMEM} -jar {WORKDIR}/{RUNNER}.jar\\n{webhook_str}[Install]\\nWantedBy=default.target\\n\"\"\"\nwith open(f\"{WORKDIR}/{RUNNER}.service\", \"w\") as service_file:\n    service_file.write(service_content)\n\nif not SVCROOT:\n    user_systemd_dir = os.path.join(os.getenv(\"HOME\"), \".config\", \"systemd\", \"user\")\n    os.makedirs(user_systemd_dir, exist_ok=True)\n    subprocess.run([\"mv\", f\"{WORKDIR}/{RUNNER}.service\", os.path.join(user_systemd_dir, f\"{RUNNER}.service\")], check=True)\n    subprocess.run([\"systemctl\", \"--user\", \"daemon-reload\"], check=True)\n    subprocess.run([\"systemctl\", \"--user\", \"enable\", \"--now\", f\"{RUNNER}.service\"], check=True)\nelse:\n    subprocess.run([\"mv\", f\"{WORKDIR}/{RUNNER}.service\", f\"/etc/systemd/system/{RUNNER}.service\"], check=True)\n    subprocess.run([\"systemctl\", \"daemon-reload\"], check=True)\n    subprocess.run([\"systemctl\", \"enable\", \"--now\", f\"{RUNNER}.service\"], check=True)\n",
+      "scriptInterpreter" : "${option.service-as-root} python"
+    }, {
+      "configuration" : {
+        "text" : "UNINSTALL"
+      },
+      "nodeStep" : false,
+      "type" : "progress-badge"
+    }, {
+      "description" : "uninstall",
+      "fileExtension" : "py",
+      "interpreterArgsQuoted" : false,
+      "script" : "import os, requests, shutil, json\nTOKEN = \"@stub.rdToken@\"\nPROJECT = \"@stub.project@\"\nRDURL = \"@stub.rdUrl@\"\nRUNNER = \"@stub.runner@\"\nWORKDIR = \"@stub.workDir@\"\nARCH = \"@stub.architecture@\"\nRUNNERTYPE = \"@stub.runnerType@\"\n\nrequests.packages.urllib3.disable_warnings()\nsession = requests.Session(); session.verify = False\nheaders = {\"X-Rundeck-Auth-Token\": TOKEN, \"Accept\": \"application/json\"}\napi_base = f\"{RDURL}/project/{PROJECT}/runnerManagement\"\n\nprint(f\"Uninstalling {RUNNER} on {WORKDIR}\")\nif RUNNERTYPE == \"rba-runner\":\n    if ARCH == \"replica\":\n        try:\n            with open(f\"{WORKDIR}/.replica-meta\", \"r\") as f:\n                meta = json.load(f)\n            print(f\"Deregistering Replica {meta['replicaId']}...\")\n            session.delete(f\"{api_base}/runner/{meta['runnerId']}/replica/{meta['replicaId']}\", headers=headers)\n        except Exception as e:\n            print(f\"Warning: Could not deregister replica from server: {e}\")\n    else:\n        response = session.get(f\"{api_base}/runners\", headers=headers)\n        if response.status_code == 200:\n            runners = response.json().get(\"runners\", [])\n            runner_info = next((r for r in runners if r[\"name\"] == RUNNER), None)\n            if runner_info:\n                runner_id = runner_info.get(\"id\")\n                session.delete(f\"{api_base}/runner/{runner_id}\", headers=headers)\n                print(f\"Successfully deleted standalone runner {RUNNER}.\")\n\nif os.path.exists(WORKDIR):\n    shutil.rmtree(WORKDIR)\n    print(f\"Successfully removed {WORKDIR}.\")\n",
+      "scriptInterpreter" : "${option.service-as-root} python"
+    }, {
+      "description" : "uninstall-systemd",
+      "fileExtension" : "py",
+      "interpreterArgsQuoted" : false,
+      "script" : "import os, subprocess, requests, shutil, json\nTOKEN = \"@stub.rdToken@\"\nSVCROOT = \"@stub.serviceAsRoot@\"\nPROJECT = \"@stub.project@\"\nRDURL = \"@stub.rdUrl@\"\nRUNNER = \"@stub.runner@\"\nWORKDIR = \"@stub.workDir@\"\nARCH = \"@stub.architecture@\"\nRUNNERTYPE = \"@stub.runnerType@\"\n\nrequests.packages.urllib3.disable_warnings()\nsession = requests.Session(); session.verify = False\nheaders = {\"X-Rundeck-Auth-Token\": TOKEN, \"Accept\": \"application/json\"}\napi_base = f\"{RDURL}/project/{PROJECT}/runnerManagement\"\n\nprint(f\"Uninstalling {RUNNER} on {WORKDIR}\")\ntry:\n    if not SVCROOT:\n        subprocess.run([\"systemctl\", \"--user\", \"disable\", \"--now\", f\"{RUNNER}.service\"], check=False)\n        subprocess.run([\"systemctl\", \"--user\", \"daemon-reload\"], check=False)\n    else:\n        subprocess.run([\"systemctl\", \"disable\", \"--now\", f\"{RUNNER}.service\"], check=False)\n        subprocess.run([\"systemctl\", \"daemon-reload\"], check=False)\nexcept Exception as e:\n    print(f\"Warning: Error stopping systemd service: {e}\")\n\nif RUNNERTYPE == \"rba-runner\":\n    if ARCH == \"replica\":\n        try:\n            with open(f\"{WORKDIR}/.replica-meta\", \"r\") as f:\n                meta = json.load(f)\n            print(f\"Deregistering Replica {meta['replicaId']}...\")\n            session.delete(f\"{api_base}/runner/{meta['runnerId']}/replica/{meta['replicaId']}\", headers=headers)\n        except Exception as e:\n            print(f\"Warning: Could not deregister replica: {e}\")\n    else:\n        response = session.get(f\"{api_base}/runners\", headers=headers)\n        if response.status_code == 200:\n            runners = response.json().get(\"runners\", [])\n            runner_info = next((r for r in runners if r[\"name\"] == RUNNER), None)\n            if runner_info:\n                runner_id = runner_info.get(\"id\")\n                session.delete(f\"{api_base}/runner/{runner_id}\", headers=headers)\n\ntry:\n    if not SVCROOT:\n        service_file = os.path.join(os.getenv(\"HOME\"), \".config\", \"systemd\", \"user\", f\"{RUNNER}.service\")\n    else:\n        service_file = f\"/etc/systemd/system/{RUNNER}.service\"\n    if os.path.exists(service_file): os.remove(service_file)\nexcept: pass\n\nif os.path.exists(WORKDIR):\n    shutil.rmtree(WORKDIR)\n    print(f\"Successfully removed {WORKDIR}.\")",
+      "scriptInterpreter" : "${option.service-as-root} python"
+    }, {
+      "configuration" : {
+        "text" : "UPGRADE"
+      },
+      "nodeStep" : false,
+      "type" : "progress-badge"
+    }, {
+      "description" : "upgrade",
+      "fileExtension" : "py",
+      "interpreterArgsQuoted" : false,
+      "script" : "import os, json, requests, subprocess\nTOKEN = \"@stub.rdToken@\"\nPROJECT = \"@stub.project@\"\nRDURL = \"@stub.rdUrl@\"\nRUNNER = \"@stub.runner@\"\nWORKDIR = \"@stub.workDir@\"\nARCH = \"@stub.architecture@\"\n\nrequests.packages.urllib3.disable_warnings()\nsession = requests.Session(); session.verify = False\nheaders = {\"X-Rundeck-Auth-Token\": TOKEN, \"Accept\": \"application/json\", \"Content-Type\": \"application/json\"}\napi_base = f\"{RDURL}/project/{PROJECT}/runnerManagement\"\n\nos.chdir(WORKDIR)\nprint(f\"Upgrading {RUNNER} on {WORKDIR}\")\n\nif ARCH == \"replica\":\n    try:\n        with open(f\"{WORKDIR}/.replica-meta\", \"r\") as f:\n            meta = json.load(f)\n    except:\n        print(\"No .replica-meta found. Cannot safely upgrade.\"); exit(1)\n    \n    print(\"Deleting old Replica API token...\")\n    session.delete(f\"{api_base}/runner/{meta['runnerId']}/replica/{meta['replicaId']}\", headers=headers)\n    \n    print(\"Generating new Replica token...\")\n    res = session.post(f\"{api_base}/runner/{meta['runnerId']}/replicas\", headers=headers)\n    new_meta = res.json()\n    with open(f\"{WORKDIR}/.replica-meta\", \"w\") as f:\n        json.dump(new_meta, f)\n    dl_token = new_meta['downloadTk']\nelse:\n    response = session.get(f\"{api_base}/runners\", headers=headers)\n    if response.status_code == 200:\n        runners = response.json().get(\"runners\", [])\n        runner_info = next((r for r in runners if r[\"name\"] == RUNNER), None)\n        if runner_info:\n            runner_id = runner_info.get(\"id\")\n            res = session.post(f\"{RDURL}/runnerManagement/runner/{runner_id}/regenerateCreds\", headers=headers)\n            dl_token = res.json().get(\"downloadTk\")\n        else:\n            print(f\"Runner {RUNNER} not found on server.\"); exit(1)\n\nprint(\"Downloading updated JAR...\")\ndl_res = session.get(f\"{RDURL}/runnerManagement/download/{dl_token}\", headers=headers)\nwith open(f\"{RUNNER}.jar\", \"wb\") as f:\n    f.write(dl_res.content)\nprint(\"Upgrade complete. Restarting service will apply the new JAR.\")\n",
+      "scriptInterpreter" : "${option.service-as-root} python"
+    }, {
+      "configuration" : {
+        "text" : "POST START/STATUS"
+      },
+      "nodeStep" : false,
+      "type" : "progress-badge"
+    }, {
+      "description" : "start-post",
+      "fileExtension" : "py",
+      "interpreterArgsQuoted" : false,
+      "script" : "import os, subprocess, sys\nRUNNER = \"@stub.runner@\"\nWORKDIR = \"@stub.workDir@\"\nRUNNERFLAGS = \"@stub.runnerFlags@\"\nRDURL = \"@stub.rdUrl@\"\n\nos.chdir(WORKDIR)\nSSL = []\nif \"@option.runner-type@\" == \"rba-runner\":\n    if RDURL.startswith(\"https://\"):\n        STOREPASS = \"changeit\"\n        STOREPATH = f\"{WORKDIR}/truststore\"\n        SSL = f\"-Dmicronaut.ssl.trust-store.password={STOREPASS} -Dmicronaut.ssl.trust-store.path=file:{STOREPATH}\".split()\n\nprint(f\"Starting service {RUNNER}\")\njava_command = [\"setsid\", \"java\"] + RUNNERFLAGS.split() + SSL + [\"-jar\", f\"{RUNNER}.jar\"]\ntry:\n    process = subprocess.Popen(java_command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)\n    runner_pid = process.pid\n    with open(f\"{RUNNER}.pid\", \"w\") as pid_file:\n        pid_file.write(str(runner_pid))\n    print(f\"{RUNNER} PID: {runner_pid}\")\nexcept Exception as e:\n    print(f\"Error starting service {RUNNER}: {e}\")\n    sys.exit(1)\n",
+      "scriptInterpreter" : "${option.service-as-root} python"
+    }, {
+      "description" : "start-systemd-post",
+      "fileExtension" : "py",
+      "interpreterArgsQuoted" : false,
+      "script" : "import os, subprocess\nRUNNER = \"@stub.runner@\"\nWORKDIR = \"@stub.workDir@\"\nSVCROOT = \"@stub.serviceAsRoot@\"\n\nos.chdir(WORKDIR)\nprint(f\"Starting service {RUNNER}\")\ntry:\n    if not SVCROOT:\n        subprocess.run([\"systemctl\", \"--user\", \"start\", f\"{RUNNER}.service\"], check=True)\n    else:\n        subprocess.run([\"systemctl\", \"start\", f\"{RUNNER}.service\"], check=True)\nexcept subprocess.CalledProcessError as e:\n    print(f\"Error: {e}\"); exit(1)\n",
+      "scriptInterpreter" : "${option.service-as-root} python"
+    }, {
+      "description" : "status-post",
+      "fileExtension" : "py",
+      "interpreterArgsQuoted" : false,
+      "script" : "import os, subprocess, json, requests\nTOKEN = \"@stub.rdToken@\"\nPROJECT = \"@stub.project@\"\nRDURL = \"@stub.rdUrl@\"\nRUNNER = \"@stub.runner@\"\nWORKDIR = \"@stub.workDir@\"\nARCH = \"@stub.architecture@\"\nRUNNERTYPE = \"@stub.runnerType@\"\n\nrequests.packages.urllib3.disable_warnings()\nheaders = {\"X-Rundeck-Auth-Token\": TOKEN, \"Accept\": \"application/json\"}\napi_base = f\"{RDURL}/project/{PROJECT}/runnerManagement\"\n\ntry:\n    os.chdir(WORKDIR)\n    with open(f\"{RUNNER}.pid\", 'r') as pid_file:\n        pid = pid_file.read().strip()\n        subprocess.run([\"ps\", \"-fp\", pid], check=False)\nexcept Exception as e:\n    print(e)\n\nif RUNNERTYPE == \"rba-runner\":\n    print(f\"\\nChecking status on {RDURL}\")\n    if ARCH == \"replica\":\n        try:\n            with open(f\"{WORKDIR}/.replica-meta\", \"r\") as f:\n                meta = json.load(f)\n            res = requests.get(f\"{api_base}/runner/{meta['runnerId']}/replicas\", headers=headers, verify=False)\n            if res.status_code == 200:\n                health = next((r for r in res.json().get('replicas', []) if r['replicaId'] == meta['replicaId']), None)\n                if health:\n                    print(json.dumps(health, indent=2))\n                    if health.get('lastCheckinAlert'): print(\"\\n⚠️ ALERT: Missed last check-in!\")\n                    if health.get('versionWarning'): print(\"\\n⚠️ WARNING: Outdated version. Please Upgrade.\")\n                else:\n                    print(\"Replica NOT registered on the server.\")\n        except:\n            print(\"No replica metadata found locally.\")\n    else:\n        response = requests.get(f\"{api_base}/runners\", headers=headers, verify=False)\n        if response.status_code == 200:\n            runners = response.json().get('runners', [])\n            runner_info = next((r for r in runners if r['name'] == RUNNER), None)\n            if runner_info:\n                RUNNERID = runner_info.get('id')\n                response = requests.get(f\"{RDURL}/runnerManagement/runner/{RUNNERID}\", headers=headers, verify=False)\n                print(json.dumps(response.json(), indent=4) if response.status_code == 200 else f\"Failed to retrieve detailed status for {RUNNER}\")\n            else:\n                print(f\"Runner {RUNNER} not found on server\")\nelse:\n    print(\"\\nPagerDuty Runner detected. Skipping RBA API status check.\")\n",
+      "scriptInterpreter" : "${option.service-as-root} python"
+    }, {
+      "description" : "status-systemd-post",
+      "fileExtension" : "py",
+      "interpreterArgsQuoted" : false,
+      "script" : "import os, subprocess, json, requests\nTOKEN = \"@stub.rdToken@\"\nSVCROOT = \"@stub.serviceAsRoot@\"\nPROJECT = \"@stub.project@\"\nRDURL = \"@stub.rdUrl@\"\nRUNNER = \"@stub.runner@\"\nWORKDIR = \"@stub.workDir@\"\nARCH = \"@stub.architecture@\"\nRUNNERTYPE = \"@stub.runnerType@\"\n\nrequests.packages.urllib3.disable_warnings()\nheaders = {\"X-Rundeck-Auth-Token\": TOKEN, \"Accept\": \"application/json\"}\napi_base = f\"{RDURL}/project/{PROJECT}/runnerManagement\"\n\ntry:\n    os.chdir(WORKDIR)\n    if not SVCROOT:\n        subprocess.run([\"systemctl\", \"--user\", \"status\", f\"{RUNNER}.service\"], check=False)\n    else:\n        subprocess.run([\"systemctl\", \"status\", f\"{RUNNER}.service\"], check=False)\nexcept Exception as e:\n    print(e)\n\nif RUNNERTYPE == \"rba-runner\":\n    print(f\"\\nChecking status on {RDURL}\")\n    if ARCH == \"replica\":\n        try:\n            with open(f\"{WORKDIR}/.replica-meta\", \"r\") as f:\n                meta = json.load(f)\n            res = requests.get(f\"{api_base}/runner/{meta['runnerId']}/replicas\", headers=headers, verify=False)\n            if res.status_code == 200:\n                health = next((r for r in res.json().get('replicas', []) if r['replicaId'] == meta['replicaId']), None)\n                if health:\n                    print(json.dumps(health, indent=2))\n                    if health.get('lastCheckinAlert'): print(\"\\n⚠️ ALERT: Missed last check-in!\")\n                    if health.get('versionWarning'): print(\"\\n⚠️ WARNING: Outdated version. Please Upgrade.\")\n                else:\n                    print(\"Replica NOT registered on the server.\")\n        except:\n            print(\"No replica metadata found locally.\")\n    else:\n        response = requests.get(f\"{api_base}/runners\", headers=headers, verify=False)\n        if response.status_code == 200:\n            runners = response.json().get('runners', [])\n            runner_info = next((r for r in runners if r['name'] == RUNNER), None)\n            if runner_info:\n                RUNNERID = runner_info.get('id')\n                response = requests.get(f\"{RDURL}/runnerManagement/runner/{RUNNERID}\", headers=headers, verify=False)\n                print(json.dumps(response.json(), indent=4) if response.status_code == 200 else f\"Failed to retrieve detailed status for {RUNNER}\")\n            else:\n                print(f\"Runner {RUNNER} not found on server\")\nelse:\n    print(\"\\nPagerDuty Runner detected. Skipping RBA API status check.\")\n",
+      "scriptInterpreter" : "${option.service-as-root} python"
+    } ],
+    "keepgoing" : false,
+    "pluginConfig" : {
+      "LogFilter" : [ {
+        "config" : {
+          "replacement" : "[SECURE]"
+        },
+        "type" : "mask-passwords"
+      } ],
+      "WorkflowStrategy" : {
+        "ruleset" : {
+          "rules" : "# status\n[status-post] if:option.service-as-systemd==false if:option.mode==status\n[status-systemd-post] if:option.service-as-systemd==true if:option.mode==status\n# start\n[start-post,status-post] if:option.service-as-systemd==false if:option.mode==start\n[start-systemd-post,status-systemd-post] if:option.service-as-systemd==true if:option.mode==start\n# stop\n[stop,status-post] if:option.service-as-systemd==false if:option.mode==stop\n[stop-systemd,status-systemd-post] if:option.service-as-systemd==true if:option.mode==stop\n# restart\n[stop,start-post,status-post] if:option.service-as-systemd==false if:option.mode==restart\n[stop-systemd,start-systemd-post,status-systemd-post] if:option.service-as-systemd==true if:option.mode==restart\n# install-only (RBA-RUNNER)\n[install,status-post] if:option.service-as-systemd==false if:option.mode==install-only if:option.runner-type==rba-runner\n[install-systemd,status-systemd-post] if:option.service-as-systemd==true if:option.mode==install-only if:option.runner-type==rba-runner\n# install-start (RBA-RUNNER)\n[install,start-post,status-post] if:option.service-as-systemd==false if:option.mode==install-start if:option.runner-type==rba-runner\n[install-systemd,start-systemd-post,status-systemd-post] if:option.service-as-systemd==true if:option.mode==install-start if:option.runner-type==rba-runner\n# install-only (PD-RUNNER)\n[install-pd,status-post] if:option.service-as-systemd==false if:option.mode==install-only if:option.runner-type==pd-runner if:option.pd-token=~.* if:option.pd-runner-id=~.* if:option.pd-runner-secret=~.*\n[install-pd-systemd,status-systemd-post] if:option.service-as-systemd==true if:option.mode==install-only if:option.runner-type==pd-runner if:option.pd-token=~.* if:option.pd-runner-id=~.* if:option.pd-runner-secret=~.*\n# install-start (PD-RUNNER)\n[install-pd,start-post,status-post] if:option.service-as-systemd==false if:option.mode==install-start if:option.runner-type==pd-runner if:option.pd-token=~.* if:option.pd-runner-id=~.* if:option.pd-runner-secret=~.*\n[install-pd-systemd,start-systemd-post,status-systemd-post] if:option.service-as-systemd==true if:option.mode==install-start if:option.runner-type==pd-runner if:option.pd-token=~.* if:option.pd-runner-id=~.* if:option.pd-runner-secret=~.*\n# uninstall\n[stop,uninstall,status-post] if:option.service-as-systemd==false if:option.mode==uninstall\n[stop-systemd,uninstall-systemd,status-systemd-post] if:option.service-as-systemd==true if:option.mode==uninstall\n# upgrade\n[stop,upgrade,start-post,status-post] if:option.service-as-systemd==false if:option.mode==upgrade if:option.runner-type==rba-runner\n[stop-systemd,upgrade,start-systemd-post,status-systemd-post] if:option.service-as-systemd==true if:option.mode==upgrade if:option.runner-type==rba-runner\n"
+        }
+      }
+    },
+    "strategy" : "ruleset"
+  },
+  "tags" : "automation-actions,management,pagerduty,runbook-automation,runner,service",
+  "user" : "admin",
+  "uuid" : "71033aa5-0294-440f-af74-79dfd8c24dcb"
+} ]
