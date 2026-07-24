@@ -240,7 +240,7 @@ Manage Rundeck plugins.
 
 	   install   - Install a plugin from your plugin repository into your Rundeck instance
 	   list      - List plugins
-	   uninstall - Unistall a Rundeck plugin from your Rundeck instance
+	   uninstall - Uninstall a Rundeck plugin from your Rundeck instance
 	   upload    - Upload a Rundeck plugin to your plugin repository
 
 ### plugins upload
