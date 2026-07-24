@@ -11,9 +11,11 @@ The Java library used by RD can be used as a dependency in your Java project to 
 A demo project can be seen here: <https://github.com/gschueler/rd-api-demo>
 
 ~~~{groovy}
-//use maven central
+//rd-api-client is published to PagerDuty's PackageCloud repository (no credentials required to read)
 repositories {
-    mavenCentral()
+    maven {
+        url "https://packagecloud.io/pagerduty/rundeck/maven2"
+    }
 }
 
 dependencies {

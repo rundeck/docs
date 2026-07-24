@@ -25,7 +25,7 @@ Extensions can be developed as Java libraries.
 
 Add the `rd-cli-lib` dependency to your project.
 
-Available in Maven Central.
+Available via PagerDuty's PackageCloud Maven repository (no credentials required to read).
 
 Javadoc:
 
@@ -38,9 +38,12 @@ Javadoc:
 A demo project can be seen here: <https://github.com/gschueler/rd-extension-demo>
 
 ~~~{groovy}
-//use maven central
+//rd-cli-lib and rd-api-client are published to PagerDuty's PackageCloud repository (no credentials required to read)
 repositories {
     mavenCentral()
+    maven {
+        url "https://packagecloud.io/pagerduty/rundeck/maven2"
+    }
 }
 
 dependencies {
