@@ -13,7 +13,7 @@
       "matchPackageNames": ["vuepress-theme-hope", "vuepress-shared", "vuepress-plugin-components"]
     }
   ],
-  "minimumReleaseAge": "7 days",
+  "minimumReleaseAge": "4 days",
   "commitMessagePrefix": "[RUN-0000] {{prettyTitle}}",
   "internalChecksFilter": "flexible" 
 }
