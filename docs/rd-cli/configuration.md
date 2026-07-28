@@ -32,6 +32,22 @@ export RD_URL=http://rundeck:4440/api/12
 
 All requests will be made using that API version.
 
+Alternatively, set the API version without modifying `RD_URL`:
+
+```shell
+export RD_API_VERSION=29
+```
+
+If a version is not specified via either method, the CLI uses its default supported API version.
+
+## Project
+
+You can set a default project to use when a command's `-p/--project` option is not specified:
+
+```shell
+export RD_PROJECT=myproject
+```
+
 ## Credentials
 
 Define access credentials as user/password or Token value:
@@ -61,21 +77,23 @@ export RD_AUTH_PROMPT=false
 
 ## ANSI color
 
-By default, `rd` will print some output using ANSI escapes for colorized output.
+`rd` auto-detects whether to print output using ANSI escapes for colorized output: it is enabled automatically
+when your terminal's `TERM` value contains `color`.
 
-You can disable this:
+You can force it on:
+
+```shell
+export RD_COLOR=1
+```
+
+Or force it off:
 
 ```shell
 export RD_COLOR=0
 ```
 
-You can set the default colors used by info/output/error/warning output:
-
-```shell
-export RD_COLOR_INFO=blue
-export RD_COLOR_WARN=orange
-export RD_COLOR_ERROR=cyan
-```
+`rd` also honors the [`NO_COLOR`](https://no-color.org/) convention: setting `NO_COLOR` to any non-empty value
+disables colorized output (unless `RD_COLOR=1` is also set).
 
 ## Date Format
 
@@ -147,6 +165,24 @@ Use `RD_CONNECT_RETRY` (default `true`):
 export RD_CONNECT_RETRY=false
 ```
 
+## API Version Downgrade
+
+If the server does not support the requested API version, `rd` can automatically retry the request using a lower,
+supported API version. This is disabled by default:
+
+```shell
+export RD_API_DOWNGRADE=true
+```
+
+## Cross-Origin Redirects
+
+By default, `rd` will not follow HTTP redirects to a different origin than the configured `RD_URL`, to prevent
+credentials from being sent to an unexpected host. To allow cross-origin redirects to be followed with credentials:
+
+```shell
+export RD_ALLOW_CROSS_ORIGIN_REDIRECT=true
+```
+
 ## Debug HTTP
 
 Use the `RD_DEBUG` env var to turn on HTTP debugging:
@@ -179,6 +215,12 @@ export RD_INSECURE_SSL=true
 When enabled, a value of `RD_DEBUG=2` will also report SSL certificate
 information.
 
+To suppress the warning that is printed when insecure SSL is enabled:
+
+```shell
+export RD_INSECURE_SSL_NO_WARN=true
+```
+
 ## Insecure SSL Hostname Verification
 
 To retain SSL certificate verification, but allow *any* hostname to be
@@ -198,3 +240,24 @@ it does not match the hostname you are using in your request:
 ```shell
 RD_ALT_SSL_HOSTNAME=hostname
 ```
+
+## YAML Output Format
+
+When using `RD_FORMAT=yaml` (see [Scripting](./scripting.md)), you can control the YAML output style:
+
+```shell
+# BLOCK (default) or FLOW
+export RD_YAML_FLOW=BLOCK
+# pretty-print flow style, default: true
+export RD_YAML_PRETTY=true
+```
+
+## Extensions
+
+Loading external [extension jars](./extensions.md) is disabled by default. To enable it:
+
+```shell
+export RD_EXT_DISABLED=false
+```
+
+See [Extensions](./extensions.md) for details.
