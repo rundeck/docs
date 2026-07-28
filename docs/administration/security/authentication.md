@@ -105,7 +105,7 @@ Some salt revisions for BCRYPT are security concerns in our spring security, so 
 :::
 
 :::warning Rundeck 6.0 and later: OBF not supported
-Jetty-obfuscated (`OBF:`) passwords are no longer supported starting in **Rundeck 6.0** (Jetty 12 removed the legacy obfuscation support). Use `MD5`, `CRYPT`, or `BCRYPT` instead — `BCRYPT` is recommended. If you are upgrading from 5.x and currently have `OBF:` passwords in `realm.properties`, re-encrypt them with one of the supported formats before upgrading.
+Jetty-obfuscated (`OBF:`) passwords are no longer supported starting in **Rundeck 6.0** (Jetty 12 removed the legacy obfuscation support). Use `BCRYPT` instead (recommended). `MD5` and `CRYPT` are still supported, but should be avoided unless required for compatibility. If you are upgrading from 5.x and currently have `OBF:` passwords in `realm.properties`, re-encrypt them with one of the supported formats before upgrading.
 :::
 
 Then add this to the `realm.properties` file with a line like so:
