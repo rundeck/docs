@@ -131,7 +131,7 @@ For example, the following configuration uses the non-reloadable `realm.properti
     RDpropertyfilelogin {
         org.rundeck.jaas.PropertyFileLoginModule required
         debug="true"
-        file="/etc/rundeck/server/config/realm.properties";
+        file="/etc/rundeck/realm.properties";
     };
 
 This configuration would enable hot reloading:
@@ -139,7 +139,7 @@ This configuration would enable hot reloading:
     RDpropertyfilelogin {
         org.rundeck.jaas.jetty.ReloadablePropertyFileLoginModule required
         debug="true"
-        file="/etc/rundeck/server/config/realm.properties";
+        file="/etc/rundeck/realm.properties";
     };
 
 ## LDAP
