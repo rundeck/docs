@@ -1,7 +1,7 @@
 ---
 title: Recent Updates
 description: Latest merged changes from the Rundeck development team
-date: 2026-07-27T21:13:28.424Z
+date: 2026-07-29T21:38:26.079Z
 feed: true
 index: true
 ---
@@ -14,6 +14,21 @@ This page shows recently merged pull requests from both the Runbook Automation p
 
 ## Recent Changes
 
+
+#### ::circle-dot:: Allow Java 21 and 25 in preinst.sh version check  [PR #10410](https://github.com/rundeck/rundeck/pull/10410)
+
+
+  Fixed RPM installation failing on hosts running Java 21 or 25 because the installer incorrectly rejected those JVM versions. The RPM pre-install check now accepts Java 17, 21, and 25, matching Rundeck&#39;s documented system requirements and allowing installation on newer Linux distributions such as RHEL/Rocky Linux 10 that no longer ship Java 17.
+
+#### ::circle-dot:: Allow view_history to authorize job execution listing  [PR #10386](https://github.com/rundeck/rundeck/pull/10386)
+
+
+  Fixed a regression in 6.0 where users granted only the `view_history` job ACL permission could not see job execution history through the executions API or `rd executions query`—the total count was returned but the execution list was always empty. Users with `view_history` (without full job `read` access) can now view execution history again, matching the behavior already supported on the History page.
+
+#### ::circle-dot:: Fix JobExec to exclude project/uuid when useName=true  [PR #10350](https://github.com/rundeck/rundeck/pull/10350)
+
+
+  Fixed an issue where exporting and importing a project caused job reference steps configured to match jobs by name to still point at jobs in the original project instead of the imported project. Name-based job references now resolve correctly in the destination project after import, while cross-project references continue to work as before.
 
 #### ::circle-dot:: Runner operation metrics: Busy status, live utilization bars, and expandable stat cards 
 
@@ -36,6 +51,16 @@ This page shows recently merged pull requests from both the Runbook Automation p
 
   Fixed an issue where retrieving execution metrics through the REST API generated repeated SQL conversion errors in the logs when using the H2 database, ensuring clean logs and reliable metrics responses.
 
+#### ::circle-dot:: Fix variable expansion for ${...} in nixy/local-script step 
+
+
+  Fixed an issue where shell variable references such as `${VAR}` and `${VAR:-default}` in the *nixy / local-script step were silently stripped before the shell could evaluate them, causing those variables to resolve to empty values. Shell variables using brace syntax are now preserved for bash to expand at runtime, while Rundeck data references such as `${option.X}` and `${job.id}` continue to work as before.
+
+#### ::circle-dot:: Fix OBF: obfuscated passwords in ssl.properties broken in 6.0  [PR #10333](https://github.com/rundeck/rundeck/pull/10333)
+
+
+  Fixed an issue where Rundeck 6.0 failed to start with HTTPS when `ssl.properties` used obfuscated (`OBF:`) keystore passwords, a configuration that worked in 5.x. Obfuscated passwords in `ssl.properties` are supported again, so upgrades no longer require converting them to plain text.
+
 #### ::circle-dot:: Bump linkify-it to 5.0.1+ to fix ReDoS CVEs 
 
 
@@ -46,31 +71,20 @@ This page shows recently merged pull requests from both the Runbook Automation p
 
   Fixed an issue where shell variable references such as `${VAR}` and `${VAR:-default}` in scripts run by script-based step plugins could be stripped out before the shell had a chance to evaluate them, causing those variables to resolve to empty values. Script plugins can now preserve these expressions so they expand correctly at runtime.
 
+#### ::circle-dot:: Fix integer overflow in API token duration validation  [PR #10300](https://github.com/rundeck/rundeck/pull/10300)
+
+
+  Fixed a security issue in API token creation where certain invalid expiration durations could bypass maximum duration limits and result in tokens that never expire. Token expiration is now validated correctly when creating tokens through the API and user profile.
+
 #### ::circle-dot:: Bump attribute-match-node-enhancer to 1.0.3  [PR #10331](https://github.com/rundeck/rundeck/pull/10331)
 
 
   The bundled Attribute Match Node Enhancer plugin now supports attribute value substitution, letting you build new node attributes and tags from a node&#39;s existing attributes using `${attribute}` syntax (for example, `image-${ec2.imageId}` or `endpoint=${host}:${port}`). This makes it possible to derive richer, dynamic metadata for nodes without external scripting. The update also adds a new &quot;is present&quot; match operator (`~~`), so enhancement rules can target nodes based simply on whether an attribute exists, regardless of its value, complementing the existing &quot;not present&quot; (`!!`) operator.
 
-#### ::circle-dot:: add date formater for api/** endpoints  [PR #10318](https://github.com/rundeck/rundeck/pull/10318)
+#### ::circle-dot:: Add date formatter for api/** endpoints  [PR #10318](https://github.com/rundeck/rundeck/pull/10318)
 
 
   Fixed a change in API date formatting introduced by the Grails 7 / Spring Boot 3 upgrade, where date/time fields in API responses began including milliseconds (e.g. `2026-03-25T21:16:50.123Z`). API date values are once again returned in second-precision UTC ISO-8601 format (e.g. `2026-03-25T21:16:50Z`) across both JSON and XML and for all API versions, restoring compatibility for existing API integrations.
-
-  Jira: [https://pagerduty.atlassian.net/browse/RUN-4550](url)
-  
-  This pull request standardizes the serialization of all `Date` values in Rundeck API responses to use second-precision W3C/ISO-8601 format in UTC (e.g., `2026-03-25T21:16:50Z`), removing milliseconds. This change restores backward compatibility for API consumers after an upgrade to Grails 7 / Spring Boot 3, which began including milliseconds by default. The update is enforced for all API versions and is covered by comprehensive tests across affected endpoints.
-  
-  **API Date Serialization Standardization:**
-  
-  * Introduced a custom marshaller in `ApiMarshallerRegistrar` to serialize all `Date` values in API JSON and XML responses with second-precision W3C/ISO-8601 format (no milliseconds), and registered it for every API version. [[1]](diffhunk://#diff-6afb34835773788e379a495581b6dd0cb550244b8808fb69458313141c32ccaaR24-R52) [[2]](diffhunk://#diff-6afb34835773788e379a495581b6dd0cb550244b8808fb69458313141c32ccaaR92-R96)
-  * Updated `RdExecutionController` to configure Jackson&#39;s `ObjectMapper` to use the same date format for consistency in controller responses. [[1]](diffhunk://#diff-2b3ad1e0a2a304a03bfb4120c23f81bb53bba12166209a5629a2157ada3dadbbR3-R9) [[2]](diffhunk://#diff-2b3ad1e0a2a304a03bfb4120c23f81bb53bba12166209a5629a2157ada3dadbbR24-R28)
-  
-  **Test Coverage and Verification:**
-  
-  * Added `ApiDateMarshallerSpec` to verify that all relevant DTOs and endpoints serialize dates without milliseconds, for both JSON and XML, across all API versions.
-  * Updated and extended tests in `ApiControllerSpec`, `MenuControllerSpec`, and `RdExecutionControllerSpec` to assert that API responses do not include milliseconds in date fields. [[1]](diffhunk://#diff-62006b966c57c204ead5071093e47ac70df5e0ff3888cab22a7737666a1ccfd9R136-R210) [[2]](diffhunk://#diff-62006b966c57c204ead5071093e47ac70df5e0ff3888cab22a7737666a1ccfd9L361-R437) [[3]](diffhunk://#diff-62006b966c57c204ead5071093e47ac70df5e0ff3888cab22a7737666a1ccfd9L418-R494) [[4]](diffhunk://#diff-6e07be9b49269a1459df118da029d8635ccddda6dd5d6d8cb12c714ed0e5b9cdR19-R21) [[5]](diffhunk://#diff-6e07be9b49269a1459df118da029d8635ccddda6dd5d6d8cb12c714ed0e5b9cdR2428-R2438) [[6]](diffhunk://#diff-6e07be9b49269a1459df118da029d8635ccddda6dd5d6d8cb12c714ed0e5b9cdL2439-R2448) [[7]](diffhunk://#diff-6e07be9b49269a1459df118da029d8635ccddda6dd5d6d8cb12c714ed0e5b9cdR2460-R2461) [[8]](diffhunk://#diff-e5d266ba462bf481bc5e162a7a36e8da4b428538f671aed204a8d38c4d36a60aR32-R47)
-  
-  This ensures consistent, backward-compatible date formatting for all API consumers, preventing regressions and aligning with previous API behavior.
 
 #### ::circle-dot:: Persist useName in job reference step to prevent UUID reversion  [PR #10314](https://github.com/rundeck/rundeck/pull/10314)
 
@@ -82,12 +96,17 @@ This page shows recently merged pull requests from both the Runbook Automation p
 
   Fixed an issue where the label (description) on a Job Reference step was not saved—both when adding a new job reference step and when editing an existing one—causing the label to disappear or revert after saving. Job Reference step labels are now preserved correctly.
 
-#### ::circle-dot:: add a new index to the execution table  [PR #9964](https://github.com/rundeck/rundeck/pull/9964)
+#### ::circle-dot:: Add a new index to the execution table  [PR #9964](https://github.com/rundeck/rundeck/pull/9964)
 
 
   Add indexes on `execution`, `referenced_execution`, and `job_file_record` to improve the performance of execution history queries and the Execution API.
 
-#### ::circle-dot:: - Fix Node UI paging to respect rundeck.gui.matchedNodesMaxCount, and a…  [PR #10234](https://github.com/rundeck/rundeck/pull/10234)
+#### ::circle-dot:: Fix NextUI job favorites star losing sync with favsonly filter 
+
+
+  Fixed an issue in the Next UI job list where starring or unstarring a job could leave the favorite icon out of sync with the &quot;Show Favourites&quot; filter, causing the filtered list to include jobs that were not actually favorited or omit jobs that were.
+
+#### ::circle-dot:: Fixed incorrect paging on the Nodes page  [PR #10234](https://github.com/rundeck/rundeck/pull/10234)
 
 
   Fixed incorrect paging on the Nodes page that occurred when the number of nodes shown per page was increased via the `rundeck.gui.matchedNodesMaxCount` setting. Page counts and the pager controls at the bottom of the page now calculate correctly based on the configured page size.
@@ -96,6 +115,11 @@ This page shows recently merged pull requests from both the Runbook Automation p
 
 
   Fixed an issue where the System Report showed all runner health counts as zero (healthy, unhealthy, new, unknown, and down) even when runners were active and healthy. The report now accurately reflects each runner&#39;s current health status, so operators relying on the System Report get a correct view of their runner fleet.
+
+#### ::circle-dot:: Fix ${DATE:FORMAT} colon parsing and add per-token timezone support  [PR #10307](https://github.com/rundeck/rundeck/pull/10307)
+
+
+  Fixed a bug where `${DATE:HH:mm:ss}` and other time-of-day format patterns in job argument strings were silently left unexpanded at runtime. Added support for an optional per-token timezone: `${DATE:HH:mm:ss:Asia/Tokyo}`.
 
 #### ::circle-dot:: Fix ACL policy API returning JSON instead of YAML  [PR #10295](https://github.com/rundeck/rundeck/pull/10295)
 
@@ -142,7 +166,7 @@ This page shows recently merged pull requests from both the Runbook Automation p
 
   The Azure (Entra ID) user group source can now be configured to use a specific directory attribute as the Rundeck group name (for example, `onPremisesSamAccountName` instead of the default `displayName`), and to optionally include only groups matching a name prefix. This lets administrators align group names between sign-in tokens and directory lookups—eliminating the need to maintain duplicate group names in ACLs—while existing configurations continue to behave exactly as before.
 
-#### ::circle-dot:: Fix Hostname -&gt; hostname in tool tip on node filter input  [PR #10162](https://github.com/rundeck/rundeck/pull/10162)
+#### ::circle-dot:: Fix Hostname capitalization in tool tip on node filter input  [PR #10162](https://github.com/rundeck/rundeck/pull/10162)
 
 
   Minor fix of capitalization on the word &quot;hostname&quot;.
@@ -151,6 +175,11 @@ This page shows recently merged pull requests from both the Runbook Automation p
 
 
   Fixed an edge case where `data.*` variables set by log filter plugins (e.g. `key-value-data`) were lost in subsequent workflow steps when a secure option&#39;s storage path contained a node context variable such as `${node.name}`.
+
+#### ::circle-dot:: Support node first strategy for Conditionals 
+
+
+  **Conditional Workflow Steps now support Node First and Step First execution strategies.** Previously, conditional logic in Pro jobs was limited to Sequential and Parallel workflows, which meant multi-node jobs that run all steps on one node before moving to the next (Node First) or run each step across every node before proceeding (Step First) could not use if/unless rules to adapt the workflow at runtime. With this release, conditional steps work across all four supported strategies, so you can combine node-oriented execution patterns with the same dynamic branching based on job options, step outcomes, exported variables, and other execution context. Conditionals are evaluated as the workflow progresses, allowing later steps to react to results from earlier steps even when work is organized node-by-node or step-by-step across your infrastructure.
 
 #### ::circle-dot:: Add default time filter to activity/executions listing  [PR #10190](https://github.com/rundeck/rundeck/pull/10190)
 
@@ -248,6 +277,6 @@ The development updates are automatically generated from both our private reposi
 
 ---
 
-**List Last updated:** 2026-07-27
+**List Last updated:** 2026-07-29
 
 
