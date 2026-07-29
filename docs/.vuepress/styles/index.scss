@@ -1,7 +1,7 @@
 @use "@sass-palette/hope-config";
 @use "sass:color";
 @use "sass:list";
-@use "vuepress-shared/styles/shining";
+@use "vuepress-shared/scss/shining";
 
 // DocSearch color overrides - use your theme color instead of purple
 :root {

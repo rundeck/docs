@@ -95,9 +95,12 @@ function loadConfig() {
  * @param {string} version - Version tag (e.g., "5.17.0")
  * @param {Array<string>} includeLabels - Labels that PRs must have
  * @param {string} headRef - Optional head reference (defaults to 'main')
+ * @param {string} milestoneFallback - Optional milestone title (e.g. "6.1.0") to use if the
+ *   commit range is too large for a direct compare - headRef is a commit SHA, not a valid
+ *   milestone title, so this must be supplied separately when known
  * @returns {Promise<Array>} Array of PR objects
  */
-async function fetchPRsSinceTag(octokit, owner, repo, version, includeLabels = [], headRef = 'main') {
+async function fetchPRsSinceTag(octokit, owner, repo, version, includeLabels = [], headRef = 'main', milestoneFallback = null) {
   // Use the shared utility, treating version as fromVersion and headRef as the target
   // Note: fetchPRsBetweenTags expects toVersion as a tag name, but can accept a commit SHA via headRef param
   return await fetchPRsBetweenTags(
@@ -108,7 +111,8 @@ async function fetchPRsSinceTag(octokit, owner, repo, version, includeLabels = [
     headRef,      // toVersion (can be tag or commit SHA)
     includeLabels,
     CONFIG.excludeLabels,
-    headRef       // Pass headRef again to force using it instead of trying tag formats
+    headRef,      // Pass headRef again to force using it instead of trying tag formats
+    milestoneFallback
   );
 }
 
@@ -292,7 +296,7 @@ function generateMarkdown(prs) {
       timeZone: 'UTC'
     });
     periodDescription = `merged since the last self-hosted release`;
-    releaseInfo = ` of [${releaseVersion}](/history/5_x/version-${releaseVersion}.md) on ${releaseDate}`;
+    releaseInfo = ` of [${releaseVersion}](/history/6_x/version-${releaseVersion}.md) on ${releaseDate}`;
   } else {
     const daysDiff = Math.floor((now - CONFIG.sinceDate) / (1000 * 60 * 60 * 24));
     periodDescription = `merged in the last ${daysDiff} days`;
@@ -515,7 +519,11 @@ async function main() {
       
       // Parse the SaaS cut tag to extract commit SHAs
       const saasCutCommits = saasCutTag ? parseSaasCutTag(saasCutTag) : null;
-      
+      // Milestones in rundeck/rundeckpro follow "X.Y.0" naming; the tag's vNum is "X.Y",
+      // used as a fallback identifier when the commit range is too large to compare directly
+      // (a commit SHA is not a valid milestone title, so this must be derived separately)
+      const milestoneFallback = saasCutCommits ? `${saasCutCommits.vNum}.0` : null;
+
       console.log('Fetching PRs from rundeckpro/rundeckpro...');
       // For rundeckpro, use the proSha from the tag or fall back to main
       let rundeckproHead = 'main';
@@ -523,8 +531,8 @@ async function main() {
         rundeckproHead = saasCutCommits.rundeckproSha;
         console.log(`  Using SaaS cut commit as endpoint: ${rundeckproHead.substring(0, 7)}`);
       }
-      const rundeckproPRs = await fetchPRsSinceTag(octokit, 'rundeckpro', 'rundeckpro', version, CONFIG.includeLabels, rundeckproHead);
-      
+      const rundeckproPRs = await fetchPRsSinceTag(octokit, 'rundeckpro', 'rundeckpro', version, CONFIG.includeLabels, rundeckproHead, milestoneFallback);
+
       console.log('\nFetching PRs from rundeck/rundeck...');
       // For rundeck, use the coreSha from the tag or fall back to main
       let rundeckHead = 'main';
@@ -532,7 +540,7 @@ async function main() {
         rundeckHead = saasCutCommits.rundeckSha;
         console.log(`  Using SaaS cut commit as endpoint: ${rundeckHead.substring(0, 7)}`);
       }
-      const rundeckPRs = await fetchPRsSinceTag(octokit, 'rundeck', 'rundeck', version, CONFIG.includeLabels, rundeckHead);
+      const rundeckPRs = await fetchPRsSinceTag(octokit, 'rundeck', 'rundeck', version, CONFIG.includeLabels, rundeckHead, milestoneFallback);
       
       // Combine and sort all PRs by merge date
       allPRs = [...rundeckproPRs, ...rundeckPRs];

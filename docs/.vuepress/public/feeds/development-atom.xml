@@ -3,15 +3,92 @@
   <title>Rundeck Development Updates</title>
   <link href="https://docs.rundeck.com/feeds/development.xml" rel="self" />
   <link href="https://docs.rundeck.com/docs" />
-  <updated>2026-07-08T23:12:14.093Z</updated>
+  <updated>2026-07-27T21:13:28.438Z</updated>
   <id>https://docs.rundeck.com/feeds/development</id>
   <subtitle>Recent merged pull requests and development updates from Rundeck</subtitle>
   <entry>
-    <title>Fix LDAP roles not added to JAAS Subject after commit()</title>
+    <title>Runner operation metrics: Busy status, live utilization bars, and expandable stat cards</title>
     <link href="https://docs.rundeck.com/docs/history/updates/" />
-    <id>rundeck-pr-rundeck-10308</id>
-    <updated>2026-07-08T15:20:37.000Z</updated>
-    <content type="text">Fix LDAP roles not added to JAAS Subject after commit() (Merged: Jul 8, 2026)</content>
+    <id>rundeck-pr-rundeckpro-4803</id>
+    <updated>2026-07-22T01:02:57.000Z</updated>
+    <content type="text">Runner operation metrics: Busy status, live utilization bars, and expandable stat cards (Merged: Jul 22, 2026)</content>
+  </entry>
+  <entry>
+    <title>Fix compact report processor silently disabled by bootstrap cleanup failures</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeckpro-4880</id>
+    <updated>2026-07-21T20:02:39.000Z</updated>
+    <content type="text">Fix compact report processor silently disabled by bootstrap cleanup failures (Merged: Jul 21, 2026)</content>
+  </entry>
+  <entry>
+    <title>Fix: API REST metrics trigger SQL errors</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeck-10186</id>
+    <updated>2026-07-21T19:47:25.000Z</updated>
+    <content type="text">Fix: API REST metrics trigger SQL errors (Merged: Jul 21, 2026)</content>
+  </entry>
+  <entry>
+    <title>Bump linkify-it to 5.0.1+ to fix ReDoS CVEs</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeckpro-4823</id>
+    <updated>2026-07-15T21:21:05.000Z</updated>
+    <content type="text">Bump linkify-it to 5.0.1+ to fix ReDoS CVEs (Merged: Jul 15, 2026)</content>
+  </entry>
+  <entry>
+    <title>Parse blankIfUnexpandable from script plugin YAML config</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeck-10319</id>
+    <updated>2026-07-14T22:21:21.000Z</updated>
+    <content type="text">Parse blankIfUnexpandable from script plugin YAML config (Merged: Jul 14, 2026)</content>
+  </entry>
+  <entry>
+    <title>Bump attribute-match-node-enhancer to 1.0.3</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeck-10331</id>
+    <updated>2026-07-10T23:09:08.000Z</updated>
+    <content type="text">Bump attribute-match-node-enhancer to 1.0.3 (Merged: Jul 10, 2026)</content>
+  </entry>
+  <entry>
+    <title>add date formater for api/** endpoints</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeck-10318</id>
+    <updated>2026-07-10T21:07:13.000Z</updated>
+    <content type="text">add date formater for api/** endpoints (Merged: Jul 10, 2026)</content>
+  </entry>
+  <entry>
+    <title>Persist useName in job reference step to prevent UUID reversion</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeck-10314</id>
+    <updated>2026-07-10T20:56:17.000Z</updated>
+    <content type="text">Persist useName in job reference step to prevent UUID reversion (Merged: Jul 10, 2026)</content>
+  </entry>
+  <entry>
+    <title>Fix label not being saved</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeck-10235</id>
+    <updated>2026-07-10T16:50:34.000Z</updated>
+    <content type="text">Fix label not being saved (Merged: Jul 10, 2026)</content>
+  </entry>
+  <entry>
+    <title>add a new index to the execution table</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeck-9964</id>
+    <updated>2026-07-10T16:27:17.000Z</updated>
+    <content type="text">add a new index to the execution table (Merged: Jul 10, 2026)</content>
+  </entry>
+  <entry>
+    <title>- Fix Node UI paging to respect rundeck.gui.matchedNodesMaxCount, and a…</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeck-10234</id>
+    <updated>2026-07-10T16:04:20.000Z</updated>
+    <content type="text">- Fix Node UI paging to respect rundeck.gui.matchedNodesMaxCount, and a… (Merged: Jul 10, 2026)</content>
+  </entry>
+  <entry>
+    <title>Fix System Report runner health counts always reporting 0</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeckpro-4809</id>
+    <updated>2026-07-09T21:48:36.000Z</updated>
+    <content type="text">Fix System Report runner health counts always reporting 0 (Merged: Jul 9, 2026)</content>
   </entry>
   <entry>
     <title>Fix ACL policy API returning JSON instead of YAML</title>
@@ -138,13 +215,6 @@
     <id>rundeck-pr-rundeckpro-4757</id>
     <updated>2026-06-17T20:10:32.000Z</updated>
     <content type="text">Fix PagerDuty Notification Start Incident Workflow trigger (Merged: Jun 17, 2026)</content>
-  </entry>
-  <entry>
-    <title>Fix OIDC login broken after Grails 7: restore ROLE_USER authority</title>
-    <link href="https://docs.rundeck.com/docs/history/updates/" />
-    <id>rundeck-pr-rundeckpro-4769</id>
-    <updated>2026-06-17T18:49:22.000Z</updated>
-    <content type="text">Fix OIDC login broken after Grails 7: restore ROLE_USER authority (Merged: Jun 17, 2026)</content>
   </entry>
   <entry>
     <title>Fix legacy MySQL JDBC driver class at startup</title>

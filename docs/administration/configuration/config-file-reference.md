@@ -556,7 +556,7 @@ Many other **`rundeck.feature.*`** keys were set to **default `true`**, made per
 
 #### Activity RSS feed (deprecated) {#activity-rss-feed-deprecated}
 
-The Activity page RSS/XML feed for execution history is **deprecated** in Rundeck 6.0, **disabled by default**, and will be **removed in a future release**. Prefer the [API](/api/index.md), [notifications](/manual/notifications/index.md), or [webhooks](/manual/notifications/webhooks.md). Details: [Upgrading to Rundeck 6.0](/upgrading/upgrading-to-6.0.md#activity-rss-feed-server-feature-removed).
+The Activity page RSS/XML feed for execution history is **deprecated** in Rundeck 6.0, **disabled by default**, and will be **removed in a future release**. Prefer the [API](/api/index.md), [notifications](/manual/jobs/job-notifications.md), or [webhooks](/manual/notifications/webhooks.md). Details: [Upgrading to Rundeck 6.0](/upgrading/upgrading-to-6.0.md#activity-rss-feed-server-feature-removed).
 
 | Property | Default | Description |
 |----------|---------|-------------|

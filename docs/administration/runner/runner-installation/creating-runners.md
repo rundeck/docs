@@ -11,7 +11,7 @@ Before creating a Runner, ensure that you have read the [prerequisites](/adminis
 * Runners can be installed on Windows, Linux or in containers.
   * The operating systems that we officially support for the Runner are listed [here](/administration/install/system-requirements.md).
   * Note that the Runner can be installed on a *different* operating system than the self-hosted cluster.
-* Java 11 or Java 17 JRE installed on the Runner's host.
+* Java 17 JRE installed on the Runner's host.
 * The Runner binary size is 164MB.
 * The Runner requires a network path to reach the Runbook Automation cluster or SaaS instance over port 443.  This is an outbound connection.
 

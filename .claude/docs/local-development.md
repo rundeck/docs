@@ -44,6 +44,24 @@ npm run notes -- --milestone=5.17.0
 
 Requires `GH_API_TOKEN` in a `.env` file at the repo root. PRs must have the `release-notes/include` label.
 
+## Updating vuepress dependencies
+
+```shell
+npm run docs:update-package
+```
+
+Runs `vp-update`, the official VuePress CLI updater — bumps the whole `@vuepress/*` family (core, plugins, `@vuepress/helper`) to mutually-compatible versions in one shot. Prefer this over letting Renovate land individual `@vuepress/*` PRs one at a time: several of these packages (`@vuepress/helper`, `plugin-docsearch`, `plugin-feed`, `plugin-pwa`, `theme-default`, etc.) declare an **exact** peerDependency on the `vuepress` core version, so bumping one without the rest risks a transient peer-dependency mismatch.
+
+`vp-update` queries the registry with a raw unauthenticated request, so it fails against the Cloudsmith proxy (which requires the `CLOUDSMITH_NPM_TOKEN` auth header). Run it against the public registry, then reinstall against Cloudsmith to fix up the lockfile:
+
+```shell
+npm_config_registry=https://registry.npmjs.org/ npx vp-update
+rm -f package-lock.json
+npm install   # re-resolves against Cloudsmith, restores correct lockfile URLs
+```
+
+Cloudsmith's proxy can lag behind the public registry by a patch version or two — if `npm install` fails with `ETARGET` for a package `vp-update` just bumped, check `npm view <package> versions` and back the version down to the latest one Cloudsmith actually has cached.
+
 ## PR feed (SaaS development updates)
 
 ```shell

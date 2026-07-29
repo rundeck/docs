@@ -74,7 +74,7 @@ The runner was configured on our Project, now, let's test the runner from the Wi
 
 Before configuring the Enterprise Runner as a service, a good starting point could be to test the connection between the Enterprise Runner and the Runbook Automation instance. To do so, check the following steps:
 
-1. Review the Enterprise Runner requirements, the major need being Java 11 JRE and the `JAVA_HOME` environment variable configured.
+1. Review the Enterprise Runner requirements, the major need being Java 17 JRE and the `JAVA_HOME` environment variable configured.
 
 2. Make a new folder, such as `C:\runner\` in this example.
 
@@ -262,7 +262,7 @@ NOTE: NSSM is an inactive project, the last build was released in 2014.
 
 ![NSSM Service Editor](/assets/img/raas8.png)<br>
 
-5. On the "Path" field put the Java 11 JRE binary path (including the `java.exe` at the end).
+5. On the "Path" field put the Java 17 JRE binary path (including the `java.exe` at the end).
 
 6. On the "Startup directory" put the Enterprise Runner folder, e.g. `C:\runner\`.
 

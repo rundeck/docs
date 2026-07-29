@@ -5,14 +5,91 @@
     <link>https://docs.rundeck.com/docs</link>
     <description>Recent merged pull requests and development updates from Rundeck</description>
     <language>en-us</language>
-    <lastBuildDate>Wed, 08 Jul 2026 23:12:14 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 27 Jul 2026 21:13:28 GMT</lastBuildDate>
     <atom:link href="https://docs.rundeck.com/feeds/development.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Fix LDAP roles not added to JAAS Subject after commit()</title>
+      <title>Runner operation metrics: Busy status, live utilization bars, and expandable stat cards</title>
       <link>https://docs.rundeck.com/docs/history/updates/</link>
-      <description>Fix LDAP roles not added to JAAS Subject after commit() (Merged: Jul 8, 2026)</description>
-      <pubDate>Wed, 08 Jul 2026 15:20:37 GMT</pubDate>
-      <guid isPermaLink="false">rundeck-pr-rundeck-10308</guid>
+      <description>Runner operation metrics: Busy status, live utilization bars, and expandable stat cards (Merged: Jul 22, 2026)</description>
+      <pubDate>Wed, 22 Jul 2026 01:02:57 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeckpro-4803</guid>
+    </item>
+    <item>
+      <title>Fix compact report processor silently disabled by bootstrap cleanup failures</title>
+      <link>https://docs.rundeck.com/docs/history/updates/</link>
+      <description>Fix compact report processor silently disabled by bootstrap cleanup failures (Merged: Jul 21, 2026)</description>
+      <pubDate>Tue, 21 Jul 2026 20:02:39 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeckpro-4880</guid>
+    </item>
+    <item>
+      <title>Fix: API REST metrics trigger SQL errors</title>
+      <link>https://docs.rundeck.com/docs/history/updates/</link>
+      <description>Fix: API REST metrics trigger SQL errors (Merged: Jul 21, 2026)</description>
+      <pubDate>Tue, 21 Jul 2026 19:47:25 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeck-10186</guid>
+    </item>
+    <item>
+      <title>Bump linkify-it to 5.0.1+ to fix ReDoS CVEs</title>
+      <link>https://docs.rundeck.com/docs/history/updates/</link>
+      <description>Bump linkify-it to 5.0.1+ to fix ReDoS CVEs (Merged: Jul 15, 2026)</description>
+      <pubDate>Wed, 15 Jul 2026 21:21:05 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeckpro-4823</guid>
+    </item>
+    <item>
+      <title>Parse blankIfUnexpandable from script plugin YAML config</title>
+      <link>https://docs.rundeck.com/docs/history/updates/</link>
+      <description>Parse blankIfUnexpandable from script plugin YAML config (Merged: Jul 14, 2026)</description>
+      <pubDate>Tue, 14 Jul 2026 22:21:21 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeck-10319</guid>
+    </item>
+    <item>
+      <title>Bump attribute-match-node-enhancer to 1.0.3</title>
+      <link>https://docs.rundeck.com/docs/history/updates/</link>
+      <description>Bump attribute-match-node-enhancer to 1.0.3 (Merged: Jul 10, 2026)</description>
+      <pubDate>Fri, 10 Jul 2026 23:09:08 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeck-10331</guid>
+    </item>
+    <item>
+      <title>add date formater for api/** endpoints</title>
+      <link>https://docs.rundeck.com/docs/history/updates/</link>
+      <description>add date formater for api/** endpoints (Merged: Jul 10, 2026)</description>
+      <pubDate>Fri, 10 Jul 2026 21:07:13 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeck-10318</guid>
+    </item>
+    <item>
+      <title>Persist useName in job reference step to prevent UUID reversion</title>
+      <link>https://docs.rundeck.com/docs/history/updates/</link>
+      <description>Persist useName in job reference step to prevent UUID reversion (Merged: Jul 10, 2026)</description>
+      <pubDate>Fri, 10 Jul 2026 20:56:17 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeck-10314</guid>
+    </item>
+    <item>
+      <title>Fix label not being saved</title>
+      <link>https://docs.rundeck.com/docs/history/updates/</link>
+      <description>Fix label not being saved (Merged: Jul 10, 2026)</description>
+      <pubDate>Fri, 10 Jul 2026 16:50:34 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeck-10235</guid>
+    </item>
+    <item>
+      <title>add a new index to the execution table</title>
+      <link>https://docs.rundeck.com/docs/history/updates/</link>
+      <description>add a new index to the execution table (Merged: Jul 10, 2026)</description>
+      <pubDate>Fri, 10 Jul 2026 16:27:17 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeck-9964</guid>
+    </item>
+    <item>
+      <title>- Fix Node UI paging to respect rundeck.gui.matchedNodesMaxCount, and a…</title>
+      <link>https://docs.rundeck.com/docs/history/updates/</link>
+      <description>- Fix Node UI paging to respect rundeck.gui.matchedNodesMaxCount, and a… (Merged: Jul 10, 2026)</description>
+      <pubDate>Fri, 10 Jul 2026 16:04:20 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeck-10234</guid>
+    </item>
+    <item>
+      <title>Fix System Report runner health counts always reporting 0</title>
+      <link>https://docs.rundeck.com/docs/history/updates/</link>
+      <description>Fix System Report runner health counts always reporting 0 (Merged: Jul 9, 2026)</description>
+      <pubDate>Thu, 09 Jul 2026 21:48:36 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeckpro-4809</guid>
     </item>
     <item>
       <title>Fix ACL policy API returning JSON instead of YAML</title>
@@ -139,13 +216,6 @@
       <description>Fix PagerDuty Notification Start Incident Workflow trigger (Merged: Jun 17, 2026)</description>
       <pubDate>Wed, 17 Jun 2026 20:10:32 GMT</pubDate>
       <guid isPermaLink="false">rundeck-pr-rundeckpro-4757</guid>
-    </item>
-    <item>
-      <title>Fix OIDC login broken after Grails 7: restore ROLE_USER authority</title>
-      <link>https://docs.rundeck.com/docs/history/updates/</link>
-      <description>Fix OIDC login broken after Grails 7: restore ROLE_USER authority (Merged: Jun 17, 2026)</description>
-      <pubDate>Wed, 17 Jun 2026 18:49:22 GMT</pubDate>
-      <guid isPermaLink="false">rundeck-pr-rundeckpro-4769</guid>
     </item>
     <item>
       <title>Fix legacy MySQL JDBC driver class at startup</title>

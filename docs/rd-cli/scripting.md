@@ -10,7 +10,7 @@ Specifying formatted output for Job and Execution lists:
 
 ## Date Format
 
-For `rd executions` you can customize the default date format of `yyyy-MM-ddHH:mm:ssZ`:
+For `rd executions` you can customize the default date format of `yyyy-MM-dd'T'HH:mm:ssXX`:
 
     `RD_DATE_FORMAT="yyyy-MM-dd HH:mm z"`
 

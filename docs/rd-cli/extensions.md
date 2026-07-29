@@ -4,9 +4,15 @@ Rundeck CLI can use *extension jars* to add additional functionality.
 
 ## Using Extensions
 
+Extension loading is disabled by default. Enable it:
+
+```sh
+export RD_EXT_DISABLED=false
+```
+
 Download an extension jar, and place it in the `RD_EXT_DIR` directory.
 
-By default for UNIX this is located at `~/.rd/ext`, you can override the location in your `~/.rd/rd.conf` file by adding:
+By default for UNIX this is located at `~/.rd/extv2`, you can override the location in your `~/.rd/rd.conf` file by adding:
 
 ``` sh
 export RD_EXT_DIR=/my/ext/dir
@@ -25,27 +31,26 @@ Extensions can be developed as Java libraries.
 
 Add the `rd-cli-lib` dependency to your project.
 
-Available in Maven Central.
+Starting with version `2.1.4`, `rd-cli-lib` (and `rd-api-client`) are published to PagerDuty's PackageCloud Maven repository (no credentials required to read) instead of Maven Central. Versions `2.1.3` and earlier remain permanently available on Maven Central.
 
 Javadoc:
 
 * [rd-cli-lib ![javadoc](https://javadoc.io/badge2/org.rundeck.cli/rd-cli-lib/javadoc.svg)](https://javadoc.io/doc/org.rundeck.cli/rd-cli-lib)
-* [cli-toolbelt ![cli-toolbelt](https://javadoc.io/badge2/org.rundeck.cli-toolbelt/toolbelt/javadoc.svg)](https://javadoc.io/doc/org.rundeck.cli-toolbelt/toolbelt)
 
 
 ### Gradle example
 
-A demo project can be seen here: <https://github.com/gschueler/rd-extension-demo>
-
 ~~~{groovy}
-//use maven central
+//rd-cli-lib and rd-api-client 2.1.4+ are published to PagerDuty's PackageCloud repository (no credentials required to read)
 repositories {
-    mavenCentral()
+    mavenCentral() //still needed for cli-toolbelt, and for rd-cli-lib/rd-api-client versions 2.1.3 and earlier
+    maven {
+        url "https://packagecloud.io/pagerduty/rundeck/maven2"
+    }
 }
 
 dependencies {
     api "org.rundeck.cli:rd-cli-lib:{{$cliVersion}}"
-    api "org.rundeck.cli-toolbelt:toolbelt-jewelcli:0.2.28"
     implementation "org.rundeck.api:rd-api-client:{{$cliVersion}}"
 
     implementation 'com.squareup.retrofit2:retrofit:2.7.1'
@@ -57,33 +62,30 @@ dependencies {
 
 ## Implement `RdCommandExtension`
 
-The following example adds the command `rd sub path somecomand`.
+Argument parsing is done with [picocli](https://picocli.info). Extend `BaseCommand` (which implements
+`RdCommandExtension`) and annotate the class with picocli's `@CommandLine.Command`. Methods annotated with
+`@CommandLine.Command` are automatically registered as subcommands.
+
+The following example adds the command `rd somecommand`:
 
 ```java
 package com.mycompany;
-import org.rundeck.client.tool.extension.RdCommandExtension;
-import org.rundeck.client.tool.extension.RdTool;
-import org.rundeck.client.util.Client;
-import org.rundeck.client.util.ServiceClient;
-import org.rundeck.toolbelt.Command;
-import org.rundeck.toolbelt.CommandOutput;
-import org.rundeck.toolbelt.SubCommand;
 
-@SubCommand(path={"sub","path"})
-class MyClass implements RdCommandExtension{
-    RdTool rdTool;
-    public void setRdTool(RdTool rdTool){
-        this.rdTool=rdTool;
-    }   
+import org.rundeck.client.tool.extension.BaseCommand;
+import picocli.CommandLine;
 
-    @Command
-    public boolean someCommand(CommandOutput out){
-        out.output("running someCommand");
+@CommandLine.Command(name = "somecommand", description = "An example extension command")
+public class MyClass extends BaseCommand {
+
+    @CommandLine.Command(description = "Run the example subcommand")
+    public void run(@CommandLine.Option(names = {"-m", "--message"}) String message) {
+        getRdOutput().output("running somecommand: " + message);
     }
 }
 ```
 
-Argument parsing is done with the CLI Toolbelt, and can use the JewelCLI or Picocli libraries.  See the Example code.
+If you need direct access to the `RdTool` and output beyond what `BaseCommand` exposes, implement
+`RdCommandExtension` directly instead of extending `BaseCommand`.
 
 ## Declare the Service
 

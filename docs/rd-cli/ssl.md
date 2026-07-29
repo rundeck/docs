@@ -56,6 +56,6 @@ If you used a different trust store "type" you can also set that with this opt:
 
 Then, [Setup your Rundeck connection info](./configuration.md), and you can use `rd`.
 
-	export RD_URL="https://$HOST:$PORT/api/18"
+	export RD_URL="https://$HOST:$PORT/api/29"
 	export RD_TOKEN="..."
 	rd system

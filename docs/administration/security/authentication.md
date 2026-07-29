@@ -28,6 +28,10 @@ Where role1, role2, role3 are the names of the groups you wish to grant access t
 
 ## Jetty and JAAS authentication
 
+:::warning Rundeck 6.0 and later: Jetty 12
+Rundeck 6.0 upgrades to Jetty 12, which removes the legacy `org.eclipse.jetty.jaas.spi.*` JAAS packages. Custom JAAS configurations must reference the `org.rundeck.jaas.*` modules shown below instead of the old Jetty classes. See [Upgrading to Rundeck 6.0](/upgrading/upgrading-to-6.0.md#jaas-authentication-jetty-12) for full migration details.
+:::
+
 Rundeck has three basic JAAS modules.
 
 1. [PropertyFileLoginModule](#propertyfileloginmodule)
@@ -44,7 +48,7 @@ By default a new installation uses the realm.properties method.  Each method det
 It is recommended to use `BCRYPT` encrypted passwords with `realm.properties` as it is the most secure option available. Avoid `plain`, `MD5`, and `CRYPT`.
 :::
 
-- NOTE: The `org.eclipse.jetty.jaas.spi.PropertyFileLoginModule` JAAS module will automatically add the username as a role to the login credentials.  
+- NOTE: The `org.rundeck.jaas.PropertyFileLoginModule` JAAS module (`org.eclipse.jetty.jaas.spi.PropertyFileLoginModule` on Rundeck 5.x and earlier — removed in Jetty 12) will automatically add the username as a role to the login credentials.  
 If you do not want this behavior please use the `org.rundeck.jaas.jetty.ReloadablePropertyFileLoginModule` module.*
 
 These instructions explain how to manage user credentials for Rundeck using a text file containing usernames, passwords and role definitions. Usually this file is called <code>realm.properties</code>.
@@ -100,6 +104,10 @@ bcrypt: BCRYPT:a029d0df84eb5549c641e04a9ef389e5
 Some salt revisions for BCRYPT are security concerns in our spring security, so `$2a$` works but `$2y$` does not. 
 :::
 
+:::warning Rundeck 6.0 and later: OBF not supported
+Jetty-obfuscated (`OBF:`) passwords are no longer supported starting in **Rundeck 6.0** (Jetty 12 removed the legacy obfuscation support). Use `BCRYPT` instead (recommended). `MD5` and `CRYPT` are still supported, but should be avoided unless required for compatibility. If you are upgrading from 5.x and currently have `OBF:` passwords in `realm.properties`, re-encrypt them with one of the supported formats before upgrading.
+:::
+
 Then add this to the `realm.properties` file with a line like so:
 
     jsmith: BCRYPT:a029d0df84eb5549c641e04a9ef389e5,user,admin
@@ -114,16 +122,16 @@ The use of `CRYPT` comes with limitations. Only the first 8 characters of the pr
 
 #### Hot Reloading the `realm.properties` file
 
-If you want your changes to the `realm.properties` file to be picked up without having to restart Rundeck change the module specified in the JAAS config file from `org.eclipse.jetty.jaas.spi.PropertyFileLoginModule` to `org.rundeck.jaas.jetty.ReloadablePropertyFileLoginModule`
+If you want your changes to the `realm.properties` file to be picked up without having to restart Rundeck change the module specified in the JAAS config file from `org.rundeck.jaas.PropertyFileLoginModule` (`org.eclipse.jetty.jaas.spi.PropertyFileLoginModule` prior to Rundeck 6.0) to `org.rundeck.jaas.jetty.ReloadablePropertyFileLoginModule`
 
 The refresh interval for checking the file is 5 seconds. This is not configurable.
 
-For example, the following configuration uses the non-reloadable `realm.properties`
+For example, the following configuration uses the non-reloadable `realm.properties` (Rundeck 6.0+; on 5.x and earlier use `org.eclipse.jetty.jaas.spi.PropertyFileLoginModule` instead):
 
     RDpropertyfilelogin {
-        org.eclipse.jetty.jaas.spi.PropertyFileLoginModule required
+        org.rundeck.jaas.PropertyFileLoginModule required
         debug="true"
-        file="/etc/rundeck/server/config/realm.properties";
+        file="/etc/rundeck/realm.properties";
     };
 
 This configuration would enable hot reloading:
@@ -131,7 +139,7 @@ This configuration would enable hot reloading:
     RDpropertyfilelogin {
         org.rundeck.jaas.jetty.ReloadablePropertyFileLoginModule required
         debug="true"
-        file="/etc/rundeck/server/config/realm.properties";
+        file="/etc/rundeck/realm.properties";
     };
 
 ## LDAP
@@ -703,7 +711,7 @@ In your config file, separate the LoginModule definitions with a `;` and be sure
 
 The full syntax and the description of how these Flags work is described in more detail under the [JAAS Configuration Documentation](https://docs.oracle.com/javase/6/docs/api/javax/security/auth/login/Configuration.html).
 
-Here is an example combining an LDAP module flagged as `sufficient`, and a flat file realm.properties config flagged as `required`:
+Here is an example combining an LDAP module flagged as `sufficient`, and a flat file realm.properties config flagged as `required` (Rundeck 6.0+; on 5.x and earlier use `org.eclipse.jetty.jaas.spi.PropertyFileLoginModule` instead):
 
 ```c .numberLines
 multiauth {
@@ -729,7 +737,7 @@ multiauth {
     cacheDurationMillis="300000"
     reportStatistics="true";
 
-  org.eclipse.jetty.jaas.spi.PropertyFileLoginModule required
+  org.rundeck.jaas.PropertyFileLoginModule required
     debug="true"
     file="/etc/rundeck/realm.properties";
 };
