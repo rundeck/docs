@@ -1,6 +1,6 @@
 # Monitor a Runner with Prometheus and Grafana
 
-Rundeck Runners expose operation-queue, report-delivery, and JVM metrics that are invaluable for diagnosing the `Runner did not deliver reports in the configured timeout period` error and for capacity planning. Unlike the Rundeck server, a Runner does **not** serve an HTTP metrics endpoint — its metrics are published as JMX MBeans. To get them into Prometheus and Grafana, run the [Prometheus JMX Exporter](https://github.com/prometheus/jmx_exporter) alongside the Runner.
+Rundeck Runners expose operation-queue, report-delivery, and JVM metrics that are useful for monitoring Runner health and capacity planning. Unlike the Rundeck server, a Runner does **not** serve an HTTP metrics endpoint — its metrics are published as JMX MBeans. To get them into Prometheus and Grafana, run the [Prometheus JMX Exporter](https://github.com/prometheus/jmx_exporter) alongside the Runner.
 
 This guide uses the `jmx_prometheus_javaagent`, which runs in-process and exposes the Runner's metrics on an HTTP port that Prometheus can scrape.
 
@@ -36,7 +36,9 @@ curl -L -o jmx_prometheus_javaagent.jar \
 
 ## Step 2: Create the exporter configuration
 
-Create `jmx-config.yml` next to the Runner JAR. This configuration lowercases names, maps standard JVM MBeans to conventional metric names, exposes the Runner's metrics (published under the `metrics` JMX domain), and includes a catch-all so nothing is silently dropped:
+The Runner publishes its metrics through Micrometer's JMX registry (under the `metrics` domain), so the exporter rules map those MBeans to the exact Prometheus series names the Runner Grafana dashboard expects. The pattern, `first-match-wins`, is: operation gauges and counters to plain names, timers to `SUMMARY` metrics with `{quantile}` labels (milliseconds converted to seconds via `valueFactor`), JVM threads/GC to Micrometer-compatible aliases, noisy duplicate attributes suppressed, and a catch-all so nothing is silently dropped.
+
+A representative excerpt — one gauge, one timer, and the catch-all — is shown below. It is **abbreviated**: the Runner dashboard and the panel queries in [Step 6](#step-6-build-dashboard-panels) rely on the full rule set, so use the complete file from docker-zoo (linked in the tip after the excerpt), not just this snippet.
 
 ```yaml
 startDelaySeconds: 0
@@ -45,34 +47,28 @@ lowercaseOutputName: true
 lowercaseOutputLabelNames: true
 
 rules:
-  # JVM heap / non-heap memory
-  - pattern: "java.lang<type=Memory><>(HeapMemoryUsage|NonHeapMemoryUsage)"
-    name: jvm_memory_bytes
+  # Runner operation gauge → exact dashboard metric name
+  - pattern: 'metrics<name=runnerOperationsPoolUtilization, type=gauges><>Value'
+    name: runner_operations_pool_utilization
     type: GAUGE
+    help: "Runner operation thread pool utilization ratio (0.0–1.0)"
+
+  # Timer → SUMMARY with {quantile} labels; Micrometer emits ms, valueFactor converts to seconds
+  - pattern: 'metrics<name=runnerOperationsInvocations\.handler\.([^,]+), type=timers><>(\d+)thPercentile'
+    name: runner_operations_invocations_seconds
+    type: SUMMARY
+    valueFactor: 0.001
     labels:
-      area: "$1"
+      handler: "$1"
+      quantile: "0.$2"
 
-  # Garbage collection
-  - pattern: "java.lang<type=GarbageCollector,name=(.+)><>(CollectionTime|CollectionCount)"
-    name: jvm_gc_$2
-    type: COUNTER
-    labels:
-      gc: "$1"
-
-  # Threads
-  - pattern: "java.lang<type=Threading><>(ThreadCount|PeakThreadCount|TotalStartedThreadCount)"
-    name: jvm_threads_$1
-    type: GAUGE
-
-  # Runner application metrics (runner.operations.*, runner.reporter.*) published via Micrometer's JMX registry
-  - pattern: 'metrics<name=(.+)><>([A-Za-z0-9_]+)'
-    name: runner_$1_$2
-    help: "Runner metric $1 $2"
-    type: GAUGE
-
-  # Catch-all: expose anything not matched above with auto-generated names
+  # Catch-all: export every remaining JMX bean unchanged
   - pattern: ".*"
 ```
+
+:::tip Use the complete, tested configuration
+The full `jmx-config.yml` — mapping every Runner operation, reporter, HTTP-client, and JVM metric the dashboard uses, plus the suppression rules that drop noisy duplicate attributes — is published as a runnable example in [docker-zoo](https://github.com/rundeck/docker-zoo/tree/master/monitoring). Copy [`runner-agent/jmx-config.yml`](https://github.com/rundeck/docker-zoo/blob/master/monitoring/runner-agent/jmx-config.yml) from there rather than assembling the rules by hand.
+:::
 
 ## Step 3: Start the Runner with the exporter attached
 
@@ -129,7 +125,11 @@ Replace `runner:9404` with the address Prometheus uses to reach the exporter. Re
 
 ## Step 6: Build dashboard panels
 
-In Grafana, add panels using the Prometheus data source. Use the names you confirmed in Step 4 — the queries below assume the example rules from Step 2.
+:::tip Start from the ready-made dashboard
+Rather than building every panel by hand, import the pre-built **Runner** dashboard from the [docker-zoo monitoring example](https://github.com/rundeck/docker-zoo/tree/master/monitoring) — [`grafana/dashboards/Runner-Dashboard.json`](https://github.com/rundeck/docker-zoo/blob/master/monitoring/grafana/dashboards/Runner-Dashboard.json). In Grafana use **Dashboards → New → Import**. It binds to a Prometheus data source with uid `prometheus` and expects the metric names produced by the [`runner-agent/jmx-config.yml`](https://github.com/rundeck/docker-zoo/blob/master/monitoring/runner-agent/jmx-config.yml) mapping from [Step 2](#step-2-create-the-exporter-configuration). The panels below explain the individual queries if you prefer to build your own.
+:::
+
+In Grafana, add panels using the Prometheus data source. Use the names you confirmed in Step 4 — the queries below assume the full rule set from Step 2 (the complete `jmx-config.yml` in docker-zoo), not only the abbreviated excerpt.
 
 **Operation pool utilization (0–100%):**
 
@@ -166,6 +166,56 @@ jvm_memory_bytes{area="HeapMemoryUsage"}
 ## Alternative: scrape JMX remotely
 
 If you prefer not to run an in-process agent, you can instead enable JMX remote access on the Runner (see [Status & Monitoring → Monitoring Replicas](/administration/runner/runner-management/monitoring-runners.md#monitoring-replicas)) and run the standalone `jmx_prometheus_httpserver` as a separate process pointed at the Runner's JMX port. The in-process `javaagent` approach in this guide is simpler because it does not require opening a remote JMX port.
+
+## Ship container logs to Grafana with Loki
+
+The JMX exporter above covers *metrics*. To get the Runner's **logs** into the same Grafana — when the Runner runs in Docker — use the [Loki Docker logging driver](https://grafana.com/docs/loki/latest/send-data/docker-driver/): Docker ships the container's stdout and stderr straight to [Loki](https://grafana.com/oss/loki/), with no extra agent, collector, or Docker-socket access. You reuse the **same Loki** you stood up for the server in [Monitor the Rundeck Server with Prometheus and Grafana](/learning/howto/monitor-server-grafana.md#ship-container-logs-to-grafana-with-loki); only Loki and Grafana are involved.
+
+```text
+  Runner container ─(Docker Loki log driver)→ Loki ─→ Grafana (:3000)
+```
+
+### Step 1: Install the Loki Docker driver plugin
+
+If you have not already installed it for the server, install the plugin on the Docker host once:
+
+```bash
+docker plugin install grafana/loki-docker-driver:latest --alias loki --grant-all-permissions
+docker plugin ls | grep loki   # ENABLED should be "true"
+```
+
+### Step 2: Route the Runner container's logs to Loki
+
+Add a `logging` block to the Runner service:
+
+```yaml
+  runner:
+    logging:
+      driver: loki
+      options:
+        loki-url: "http://localhost:3100/loki/api/v1/push"
+        loki-retries: "5"
+        loki-batch-size: "400"
+        mode: "non-blocking"
+```
+
+The `loki-url` is resolved by the Docker daemon on the host, so it uses `localhost:3100` (Loki's published port), not the compose service name. `mode: "non-blocking"` keeps the container from stalling if Loki is briefly unavailable.
+
+### Step 3: Explore Runner logs in Grafana
+
+Restart the stack (`docker compose up -d`). In Grafana, open **Explore**, select the **Loki** data source, and query by the labels the driver attaches automatically:
+
+- `{compose_service="runner"}` — logs from the Runner container.
+- `{compose_project="<your-project>"}` — every container in the stack.
+
+:::tip Browse without writing queries: Logs Drilldown
+Grafana's **Logs Drilldown** app (**Drilldown → Logs** in the left menu) lists each service and lets you filter and drill into logs visually, no LogQL required. It relies on Loki's volume endpoint — make sure the server guide's `loki-config.yml` sets `limits_config.volume_enabled: true`. Services appear by their `service_name` label, which with the Docker driver defaults to the container name.
+:::
+
+:::tip Not running in Docker?
+The logging driver only applies to containers. If the Runner runs as a plain process, point a log shipper such as [Grafana Alloy](https://grafana.com/docs/alloy/latest/) or [Promtail](https://grafana.com/docs/loki/latest/send-data/promtail/) at its log file instead.
+:::
+
 
 ## Next steps
 
