@@ -3,10 +3,10 @@
 title: "6.1.0 Release Notes"
 date: 2026-07-29
 image: /images/chevron-logo-red-on-white.png
-description: "Rundeck | Runbook Automation Releases 6.1.0 - <DESCRIPTION>"
+description: "Rundeck | Runbook Automation Releases 6.1.0 - Conditionals, Runner Metrics, and Customer Fixes"
 feed:
  enable: true
- description: ""
+ description: "Conditionals, Runner Metrics, and Customer Fixes"
 
 ---
 
@@ -15,6 +15,18 @@ feed:
 ## Overview
 
 <!-- <VidStack src="youtube/REPLACE" poster="https://img.youtube.com/vi/REPLACE/maxresdefault.jpg"/> -->
+
+Rundeck 6.1.0 builds on the **[Conditional Logic Steps](/manual/jobs/conditional-logic.md)** Early Access feature introduced in [5.20.0](/history/5_x/version-5.20.0.md) by extending support to **Node First** and **Step First** execution strategies. Conditional steps previously worked only with Sequential and Parallel workflows; they now work across all four strategies, so multi-node jobs can use the same if/unless branching based on job options, step outcomes, and runtime context—whether work is organized node-by-node or step-by-step across your infrastructure.
+
+This release also adds **[Runner operation metrics](/administration/runner/runner-management/monitoring-runners.md)** in the Runner Management UI. Live utilization bars show running versus max capacity for each Runner and Replica, expandable panels surface Utilization, Running, Max, Queued, and Completed counts, and a new **Busy** health status distinguishes capacity saturation from true Unhealthy or Down failures.
+
+![Expanded Runner operation metrics panel showing Utilization, Running, Max, Queued, and Completed cards](/assets/img/runner-load-metrics.png)
+
+<!-- TODO: screenshots when available -->
+<!-- ![Runner Load column in the Runner Management list](/assets/img/relnotes-610-runner-load-column.png) -->
+<!-- ![Runner Busy health status badge](/assets/img/relnotes-610-runner-busy.png) -->
+
+Beyond these highlights, 6.1.0 delivers one of the largest sets of customer-focused fixes in a single release—covering job editing and import, API compatibility, authentication and audit logging, cloud integrations (AWS, Azure, GCP, Jira, PagerDuty), and Runner reliability.
 
 ## Runbook Automation Updates
 
