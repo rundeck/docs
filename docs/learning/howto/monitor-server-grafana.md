@@ -198,7 +198,7 @@ If you use [Runners](/administration/runner/index.md), the server also publishes
 Metrics tell you *what* is happening; logs tell you *why*. When Rundeck runs in Docker, the simplest way to get its logs into the same Grafana is the [Loki Docker logging driver](https://grafana.com/docs/loki/latest/send-data/docker-driver/): Docker itself ships each container's stdout and stderr straight to [Loki](https://grafana.com/oss/loki/), with no extra agent, collector, or access to the Docker socket. Only Loki and Grafana are added to the stack.
 
 ```text
-  Rundeck container ─(Docker loki log driver)→ Loki ─→ Grafana (:3000)
+  Rundeck container ─(Docker Loki log driver)→ Loki ─→ Grafana (:3000)
 ```
 
 ### Step 1: Install the Loki Docker driver plugin

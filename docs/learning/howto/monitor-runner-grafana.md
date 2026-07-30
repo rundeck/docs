@@ -38,7 +38,7 @@ curl -L -o jmx_prometheus_javaagent.jar \
 
 The Runner publishes its metrics through Micrometer's JMX registry (under the `metrics` domain), so the exporter rules map those MBeans to the exact Prometheus series names the Runner Grafana dashboard expects. The pattern, `first-match-wins`, is: operation gauges and counters to plain names, timers to `SUMMARY` metrics with `{quantile}` labels (milliseconds converted to seconds via `valueFactor`), JVM threads/GC to Micrometer-compatible aliases, noisy duplicate attributes suppressed, and a catch-all so nothing is silently dropped.
 
-A representative excerpt — one gauge, one timer, and the catch-all — looks like this:
+A representative excerpt — one gauge, one timer, and the catch-all — is shown below. It is **abbreviated**: the Runner dashboard and the panel queries in [Step 6](#step-6-build-dashboard-panels) rely on the full rule set, so use the complete file from docker-zoo (linked in the tip after the excerpt), not just this snippet.
 
 ```yaml
 startDelaySeconds: 0
@@ -129,7 +129,7 @@ Replace `runner:9404` with the address Prometheus uses to reach the exporter. Re
 Rather than building every panel by hand, import the pre-built **Runner** dashboard from the [docker-zoo monitoring example](https://github.com/rundeck/docker-zoo/tree/master/monitoring) — [`grafana/dashboards/Runner-Dashboard.json`](https://github.com/rundeck/docker-zoo/blob/master/monitoring/grafana/dashboards/Runner-Dashboard.json). In Grafana use **Dashboards → New → Import**. It binds to a Prometheus data source with uid `prometheus` and expects the metric names produced by the [`runner-agent/jmx-config.yml`](https://github.com/rundeck/docker-zoo/blob/master/monitoring/runner-agent/jmx-config.yml) mapping from [Step 2](#step-2-create-the-exporter-configuration). The panels below explain the individual queries if you prefer to build your own.
 :::
 
-In Grafana, add panels using the Prometheus data source. Use the names you confirmed in Step 4 — the queries below assume the example rules from Step 2.
+In Grafana, add panels using the Prometheus data source. Use the names you confirmed in Step 4 — the queries below assume the full rule set from Step 2 (the complete `jmx-config.yml` in docker-zoo), not only the abbreviated excerpt.
 
 **Operation pool utilization (0–100%):**
 
@@ -172,7 +172,7 @@ If you prefer not to run an in-process agent, you can instead enable JMX remote 
 The JMX exporter above covers *metrics*. To get the Runner's **logs** into the same Grafana — when the Runner runs in Docker — use the [Loki Docker logging driver](https://grafana.com/docs/loki/latest/send-data/docker-driver/): Docker ships the container's stdout and stderr straight to [Loki](https://grafana.com/oss/loki/), with no extra agent, collector, or Docker-socket access. You reuse the **same Loki** you stood up for the server in [Monitor the Rundeck Server with Prometheus and Grafana](/learning/howto/monitor-server-grafana.md#ship-container-logs-to-grafana-with-loki); only Loki and Grafana are involved.
 
 ```text
-  Runner container ─(Docker loki log driver)→ Loki ─→ Grafana (:3000)
+  Runner container ─(Docker Loki log driver)→ Loki ─→ Grafana (:3000)
 ```
 
 ### Step 1: Install the Loki Docker driver plugin
