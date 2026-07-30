@@ -35,6 +35,10 @@ curl http://localhost:4440/monitoring/prometheus
 
 You should see output beginning with metric definitions such as `# HELP jvm_memory_used_bytes ...`. If you get a 404, the endpoints are disabled — see the configuration reference linked above.
 
+:::warning Secure the endpoint
+The `/monitoring/*` endpoints are unauthenticated by default so that scrapers and health checks can reach them. On production deployments, restrict access to these paths (for example at your reverse proxy or network layer) so they are only reachable by your monitoring system. See [Monitoring configuration](/administration/monitoring/configuration.md#security-considerations).
+:::
+
 ## Step 2: Configure the Prometheus scrape target
 
 Create `prometheus/prometheus.yml`:
