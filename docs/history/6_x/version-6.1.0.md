@@ -48,14 +48,6 @@ Runners now expose real-time operation metrics in the Runner Management UI. Each
 
 Runners also report a new `Busy` health status (yellow badge) when their operation queue backs up under heavy concurrent job load. Previously this showed as `Unhealthy` (red) — the same signal as a broken or offline runner — making it impossible to distinguish capacity saturation from an actual failure. Older runners that don&#39;t yet report metrics show a warning in the expand panel prompting an upgrade.
 
-##### ::circle-dot:: Fix compact report processor silently disabled by bootstrap cleanup failures
-  
-&lt;!--
-
-To include as part of release notes, label as &quot;release-notes/include&quot; and fill in this section.  Copilot can help.
-
---&gt;
-
 ##### ::circle-dot:: Bump linkify-it to 5.0.1+ to fix ReDoS CVEs
   
 Addressed two security advisories (CVE-2026-48801 and CVE-2026-59887) in a third-party library used to render Markdown links in the Rundeck UI. The vulnerability could allow specially crafted text to consume excessive CPU and slow down the interface; this update upgrades the affected library to a fixed version.
@@ -245,7 +237,7 @@ Fix audit log `userInfo.username` for job run events. Scheduled jobs no longer s
 
 Name: <span style="color: olivedrab"><span class="glyphicon glyphicon-camera"></span> "Carina olivedrab camera"</span>
 
-Release Date: <TBD>
+Release Date: TBD
 
 
 ## Community Contributors
