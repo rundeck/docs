@@ -571,7 +571,7 @@ The Activity page RSS/XML feed for execution history is **deprecated** in Rundec
 |----------|---------|-------------|
 | `rundeck.feature.earlyAccessJobConditional.enabled` | `false` | Enable Conditional Logic workflow steps (Early Access) |
 
-Enables dynamic conditional execution in workflows based on runtime conditions. When enabled, users can add Conditional Logic steps to jobs that evaluate conditions (job options, node attributes, job context) and execute substeps only when conditions are met. Requires Sequential or Parallel workflow strategy. See [Conditional Logic Steps](/manual/jobs/conditional-logic.md) for complete documentation.
+Enables dynamic conditional execution in workflows based on runtime conditions. When enabled, users can add Conditional Logic steps to jobs that evaluate conditions (job options, node attributes, job context) and execute substeps only when conditions are met. Works with Sequential, Parallel, and Node First workflow strategies (Ruleset is not supported). See [Conditional Logic Steps](/manual/jobs/conditional-logic.md) for complete documentation.
 
 #### Local User Management (Enterprise)
 

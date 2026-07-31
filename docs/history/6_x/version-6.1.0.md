@@ -16,7 +16,7 @@ feed:
 
 <!-- <VidStack src="youtube/REPLACE" poster="https://img.youtube.com/vi/REPLACE/maxresdefault.jpg"/> -->
 
-Rundeck 6.1.0 builds on the **[Conditional Logic Steps](/manual/jobs/conditional-logic.md)** Early Access feature introduced in [5.20.0](/history/5_x/version-5.20.0.md) by extending support to **Node First** and **Step First** execution strategies. Conditional steps previously worked only with Sequential and Parallel workflows; they now work across all four strategies, so multi-node jobs can use the same if/unless branching based on job options, step outcomes, and runtime context—whether work is organized node-by-node or step-by-step across your infrastructure.
+Rundeck 6.1.0 builds on the **[Conditional Logic Steps](/manual/jobs/conditional-logic.md)** Early Access feature introduced in [5.20.0](/history/5_x/version-5.20.0.md) by extending support to **Node First** and **Step First** execution strategies. Conditional steps previously worked only with Sequential and Parallel workflows; they now work across all four strategies, so multi-node jobs can use the same if/unless branching based on job options, step outcomes, and runtime context—whether work is organized node-by-node or step-by-step across your infrastructure. This release also enables **nested conditionals** for multi-level branching, and **error handlers and log filters on conditional substeps** (substep UI polish continues in a later release). Ruleset strategy remains unsupported for Conditional Logic.
 
 This release also adds **[Runner operation metrics](/administration/runner/runner-management/monitoring-runners.md)** in the Runner Management UI. Live utilization bars show running versus max capacity for each Runner and Replica, expandable panels surface Utilization, Running, Max, Queued, and Completed counts, and a new **Busy** health status distinguishes capacity saturation from true Unhealthy or Down failures.
 
@@ -37,6 +37,8 @@ Fixed an issue in the Next UI job list where starring or unstarring a job could 
 ##### ::circle-dot:: Support node first strategy for Conditionals
   
 **Conditional Workflow Steps now support Node First and Step First execution strategies.** Previously, conditional logic in Pro jobs was limited to Sequential and Parallel workflows, which meant multi-node jobs that run all steps on one node before moving to the next (Node First) or run each step across every node before proceeding (Step First) could not use if/unless rules to adapt the workflow at runtime. With this release, conditional steps work across all four supported strategies, so you can combine node-oriented execution patterns with the same dynamic branching based on job options, step outcomes, exported variables, and other execution context. Conditionals are evaluated as the workflow progresses, allowing later steps to react to results from earlier steps even when work is organized node-by-node or step-by-step across your infrastructure.
+
+This release also adds **nested conditionals**, so you can place a Conditional Logic step inside another for multi-level branching without Job Reference workarounds. **Error handlers and log filters** now work on substeps within conditionals; the UI for configuring them on substeps will continue to improve in a later release. Ruleset strategy remains unsupported.
 
 ##### ::circle-dot:: Fix variable expansion for ${...} in nixy/local-script step
   
