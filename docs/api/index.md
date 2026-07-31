@@ -4436,7 +4436,11 @@ the result data.
 In this mode, Log Entries are compacted by only including the changed values from the
 previous Log Entry in the list.  The first Log Entry in the results will always have complete information.  Subsequent entries may include only changed values.
 
-In JSON format, if the `compactedAttr` value is `log` in the response data, and only the `log` value changed relative to a previous Log Entry, the Log Entry may consist only of the log message string. That is, the array entry will be a string, not a hash.
+::: tip API v59+
+As of API v59, every compacted Log Entry is returned as a consistent object (a JSON hash), omitting only the fields that are unchanged from the previous entry. Earlier behavior — where an entry could be a bare string or an empty hash — is preserved for requests made with API v58 and below, for backward compatibility. The example below reflects the v21–v58 behavior.
+:::
+
+In JSON format, for requests using API v58 or below, if the `compactedAttr` value is `log` in the response data, and only the `log` value changed relative to a previous Log Entry, the Log Entry may consist only of the log message string. That is, the array entry will be a string, not a hash.
 
 When no values changed from the previous Log Entry, the Log Entry will be an empty hash.
 

@@ -35,6 +35,11 @@ Changes introduced by API Version number:
 API versions below `{{$apiDepVersion}}` are *deprecated*.  Clients using earlier versions should upgrade to use `{{$apiDepVersion}}` as the minimum version before release `{{ $apiDepRelease }}` to avoid errors.
 :::
 
+### Version 59
+
+* Updated Endpoints:
+  * [`GET /api/V/execution/[ID]/output`][/api/V/execution/\[ID\]/output] - `compacted=true` responses now return every Log Entry as a consistent object, omitting only unchanged fields, instead of mixing bare strings and empty hashes. API v58 and earlier retain the prior behavior for backward compatibility.
+
 ### Version 58
 
 * Updated Endpoints:

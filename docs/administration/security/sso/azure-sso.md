@@ -131,6 +131,26 @@ To enable this plugin, enable the *Enable Azure UserGroupSource Plugin* setting 
 framework.plugin.UserGroupSource.AzureGroupSource.enabled=true
 ```
 
+### Group Name Attribute and Prefix Filter
+
+By default, the plugin uses the Graph API's `displayName` attribute as the Rundeck group name. You can configure it to use a different directory attribute instead — for example `onPremisesSamAccountName` — so that group names match values already used elsewhere, such as in the SSO token claims:
+
+```properties
+# framework.properties: use onPremisesSamAccountName instead of displayName
+framework.plugin.UserGroupSource.AzureGroupSource.groupNameAttribute=onPremisesSamAccountName
+```
+
+If the configured attribute is absent or empty for a given group (for example, a cloud-only group with no on-premises attributes), the plugin falls back to `displayName` for that group so it is not silently dropped.
+
+You can also limit which groups are returned to those whose resolved name starts with a given prefix:
+
+```properties
+# framework.properties: only include groups whose name starts with "rundeck-"
+framework.plugin.UserGroupSource.AzureGroupSource.groupNameFilter=rundeck-
+```
+
+Leave `groupNameFilter` unset (the default) to include all groups. Both settings are optional; existing configurations that don't set them behave exactly as before.
+
 ## Note: firstname, lastname and email attribute mapping
 
 If your Azure Active Directory attributes are non-standard, you can specify the correct attribute values to use.  You can verify the values by selecting the person icon in the upper right corner after logging in, and selecting **Profile**.  If you see **NOT SET** for any fields, you will need to correct the attribute mappings to your custom settings.
