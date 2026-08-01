@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "@docsearch/css": "4.6.3",
-    "@docsearch/js": "4.6.3",
+    "@docsearch/js": "4.7.0",
     "@octokit/rest": "^22.0.1",
     "@types/swagger-ui": "^5.0.0",
     "@vuepress/bundler-vite": "2.0.0-rc.30",
