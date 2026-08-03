@@ -21,7 +21,7 @@ info:
   license:
     name: Apache 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0.html
-  version: "58"
+  version: "59"
 externalDocs:
   description: Original Rundeck API Documentation
   url: https://docs.rundeck.com/docs/api/
@@ -43,7 +43,7 @@ servers:
       default: "4440"
     version:
       description: API version number
-      default: '58'
+      default: '59'
 security:
 - rundeckApiToken: []
 - rundeckPassword: []
@@ -687,12 +687,15 @@ paths:
             \ Log Entries are compacted by only including the changed values from\
             \ the\nprevious Log Entry in the list.  The first Log Entry in the results\
             \ will always have complete information.  Subsequent entries may include\
-            \ only changed values.\n\nIn JSON format, if the `compactedAttr` value\
-            \ is `log` in the response data, and only the `log` value changed relative\
-            \ to a previous Log Entry, the Log Entry may consist only of the log message\
-            \ string. That is, the array entry will be a string, not an object.\n\n\
-            When no values changed from the previous Log Entry, the Log Entry will\
-            \ be an empty object.\n\nWhen an entry value is not present in the subsequent\
+            \ only changed values.\n\nIn JSON format (API v21-v58), if the `compactedAttr`\
+            \ value is `log` in the response data, and only the `log` value changed\
+            \ relative to a previous Log Entry, the Log Entry may consist only of\
+            \ the log message string. That is, the array entry will be a string, not\
+            \ an object.\n\nAs of API v59, compacted entries are always objects even\
+            \ when only the `log` value changed. This avoids mixed-type arrays and\
+            \ ensures clients can always treat each entry as an object.\n\nWhen no\
+            \ values changed from the previous Log Entry, the Log Entry will be an\
+            \ empty object.\n\nWhen an entry value is not present in the subsequent\
             \ Log Entry, but was present in the previous\none, in JSON this will be\
             \ represented with a `null` value."
           headers:
@@ -6145,6 +6148,150 @@ paths:
                 type: object
               examples:
                 value: {}
+  /project/{project}/run/command/inline:
+    post:
+      tags:
+      - Ad Hoc
+      summary: Run Adhoc Command (Inline)
+      description: |-
+        Run a command string via inline endpoint (maintains backward compatibility with ajax format).
+
+        This endpoint accepts parameters either as query parameters or as a JSON request body. The response format matches the legacy ajax endpoint for backward compatibility.
+
+        Example: `POST /api/56/project/myproject/run/command/inline?exec=echo+test&filter=.*`
+
+        Authorization required: `run` for project resource type `adhoc`, as well as `runAs` if the runAs parameter is used
+
+        Since: v56
+      operationId: runAdhocInline
+      parameters:
+      - name: project
+        in: path
+        description: Project Name
+        required: true
+        schema:
+          type: string
+      - name: filter
+        in: query
+        description: Node Filter String
+        schema:
+          type: string
+      - name: exec
+        in: query
+        description: "The shell command string to run, e.g. \"echo hello\"."
+        schema:
+          type: string
+      - name: nodeThreadcount
+        in: query
+        description: threadcount to use
+        schema:
+          type: integer
+      - name: nodeKeepgoing
+        in: query
+        description: "if \"true\", continue executing on other nodes even if some\
+          \ fail."
+        schema:
+          type: boolean
+      - name: filterExclude
+        in: query
+        description: Node exclude filter string
+        schema:
+          type: string
+      - name: doNodedispatch
+        in: query
+        description: Enable node dispatch
+        schema:
+          type: string
+      requestBody:
+        description: Request body
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ApiRunAdhocRequest"
+            examples:
+              value: {}
+      responses:
+        "200":
+          description: Execution result with success flag and execution ID (backward
+            compatible format).
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                value: {}
+  /project/{project}/run/command/inline/api:
+    post:
+      tags:
+      - Ad Hoc
+      summary: Run Adhoc Command (Inline) - API Auth
+      description: |-
+        Run a command string via inline endpoint with API authentication (v56+).
+
+        This endpoint requires API authentication and is intended for use by the new Vue.js UI.
+
+        Example: `POST /api/56/project/myproject/run/command/inline/api?exec=echo+test&filter=.*`
+
+        Authorization required: `run` for project resource type `adhoc`, as well as `runAs` if the runAs parameter is used
+
+        Since: v56
+      operationId: runAdhocInlineApi
+      parameters:
+      - name: project
+        in: path
+        description: Project Name
+        required: true
+        schema:
+          type: string
+      - name: filter
+        in: query
+        description: Node Filter String
+        schema:
+          type: string
+      - name: exec
+        in: query
+        description: "The shell command string to run, e.g. \"echo hello\"."
+        schema:
+          type: string
+      - name: nodeThreadcount
+        in: query
+        description: threadcount to use
+        schema:
+          type: integer
+      - name: nodeKeepgoing
+        in: query
+        description: "if \"true\", continue executing on other nodes even if some\
+          \ fail."
+        schema:
+          type: boolean
+      - name: filterExclude
+        in: query
+        description: Node exclude filter string
+        schema:
+          type: string
+      - name: doNodedispatch
+        in: query
+        description: Enable node dispatch
+        schema:
+          type: string
+      requestBody:
+        description: Request body
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ApiRunAdhocRequest"
+            examples:
+              value: {}
+      responses:
+        "200":
+          description: Execution result with success flag and execution ID (backward
+            compatible format).
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                value: {}
   /project/{project}/run/script:
     post:
       tags:
@@ -8795,220 +8942,704 @@ paths:
                     roles:
                     - admin
                     - user
-  /project/{project}/disable/later:
-    post:
+  /enterprise/system-report/datasets:
+    get:
       tags:
-      - Execution Mode
-      summary: Disable Project executions or schedules after a duration of time
+      - System
+      summary: List System Report Datasets
       description: |
-        Sets project execution mode to Passive or disables Schedules at a later time.
+        List the system report datasets.
 
-        Since: v34
-      operationId: apiProjectDisableLater
+        Authorization required: `ops_admin` for `system`
+
+        Since: v44
+      operationId: listDatasets
+      responses:
+        "200":
+          description: Result
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/SystemReportItem"
+              examples:
+                datasets-list:
+                  description: System report datasets list
+                  value: |
+                    [
+                      {
+                        "label": "Statistics",
+                        "name": "projectStats"
+                      },
+                      {
+                        "label": "Framework Configuration",
+                        "name": "frameworkConfig"
+                      },
+                      {
+                        "label": "Rundeck Configuration",
+                        "name": "rundeckConfig"
+                      },
+                      {
+                        "label": "System Environment",
+                        "name": "systemEnv"
+                      },
+                      {
+                        "label": "Licensing",
+                        "name": "licensing"
+                      },
+                      {
+                        "label": "Full Configuration",
+                        "name": "fullConfig"
+                      }
+                    ]
+  /enterprise/system-report/datasets/{dataset}:
+    get:
+      tags:
+      - System
+      summary: Get System Report Dataset by Name
+      description: |
+        Get a system report dataset.
+
+        Authorization required: `ops_admin` for `system`
+
+        Since: v44
+      operationId: getDataset
+      parameters:
+      - name: dataset
+        in: path
+        description: Dataset Name
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Result
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/DataSet"
+  /execution/{id}/result/data:
+    get:
+      tags:
+      - Jobs
+      summary: "Get Execution Result Data [Enterprise]"
+      description: |
+        Retrieve the Result Data created by a Job using the [Result Data feature](https://docs.rundeck.com/docs/manual/execution-lifecycle/result-data.html) in JSON format.
+
+        Note: In a Rundeck Cluster, Result Data may not be locally available and must be retrieved by the server asynchronously before it can be returned.
+
+        You can handle this situation in two ways: either use the `wait=true` URL parameter, to indicate that the API request should block until the data is retrieved (waiting up to 10 seconds), or if the response has HTTP status 202 it means that the asynchronous request was started but has not completed yet and you can retry the same API request shortly.
+
+        Since: v40
+      operationId: apiExecutionDataExport
+      parameters:
+      - name: wait
+        in: query
+        description: "if true and the data is not immediately available, the response\
+          \ will wait until the data is retrieved, or a timeout occurs. Otherwise\
+          \ the response may return 202 status if data must be retrieved first."
+        schema:
+          type: boolean
+      - name: id
+        in: path
+        description: Execution ID
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: "Result data from the Job execution, the format will depend\
+            \ on the data generated."
+          content:
+            application/json:
+              schema:
+                type: object
+        "202":
+          description: "Request was accepted but not fulfilled. This indicates the\
+            \ data will be retrieved asynchronously before it can be made available.\
+            \ Retry the request later to retrieve the data. See also: the `wait` parameter"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResultDataLoadingState"
+        "404":
+          description: Data was not available.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResultDataBasicErrorResponse"
+  /execution/{id}/result/dataAvailable:
+    get:
+      tags:
+      - Jobs
+      summary: "Check Execution Result Data Availability [Enterprise]"
+      description: |
+        Check whether the execution has Result Data created by a Job using the [Result Data feature](https://docs.rundeck.com/docs/manual/execution-lifecycle/result-data.html).
+
+        Since: v40
+      operationId: apiExecutionDataAvailable
+      parameters:
+      - name: id
+        in: path
+        description: Execution ID
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Data available
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResultDataAvailableResponse"
+        "404":
+          description: "No data can be retrieved for the Execution. If an error occurred,\
+            \ the `error` entry will contain a description of the error."
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResultDataBasicErrorResponse"
+  /project/{project}/listAllJobs:
+    get:
+      tags:
+      - Jobs
+      summary: "List all Jobs in Summarized Form [Enterprise]"
+      description: List the jobs summarized for a project.
+      operationId: apiListAllJobsInProject
       parameters:
       - name: project
         in: path
-        description: project name
+        description: Project Name
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: |-
+            List of Jobs.
+
+            If the job is scheduled, it will contain a `nextExecution` (millisecond unix timestamp), and `nextExecutionRelative` (text)
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+              examples:
+                paged-jobs-list:
+                  description: Paged jobs list response
+                  value: |-
+                    [ {
+                        "scheduleEnabled": true,
+                        "executionEnabled": true,
+                        "scheduled": false,
+                        "name": "test job",
+                        "type": "job",
+                        "uuid": "0bafa429-96ab-4568-ac60-0a440bc11f26",
+                        "actions": [
+                          "update",
+                          "view",
+                          "run",
+                          "delete",
+                          "read",
+                          "kill"
+                        ],
+                        "group": "job group",
+                        "desc": "a basic job"
+                      }
+                    ]
+  /secure/generatepasswordreset/{username}:
+    post:
+      tags:
+      - User
+      summary: "Reset User Password [Enterprise]"
+      description: |-
+        Sends a password reset email to the user's email address, if email is configured.
+
+        Authorization required: `app_admin` for system resource type `user`.
+
+        Since: v44
+      operationId: apiSendPasswordReset
+      parameters:
+      - name: username
+        in: path
+        description: User Name
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Reset Response contains a `link` that the user can use to reset
+            their password.
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                value: {}
+  /secure/role/{id}:
+    get:
+      tags:
+      - User
+      summary: "Get A Local Role [Enterprise]"
+      description: |2-
+
+        Authorization required: `app_admin` for system resource type `user`.
+
+        Since: v44
+      operationId: apiGet
+      parameters:
+      - name: id
+        in: path
+        description: Role ID
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Role
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LoginRoleData"
+    post:
+      tags:
+      - User
+      summary: "Update A Local Role [Enterprise]"
+      description: |
+        List the local role definitions.
+
+        Authorization required: `app_admin` for system resource type `user`.
+
+        Since: v44
+      operationId: apiEdit
+      parameters:
+      - name: id
+        in: path
+        description: Role ID
         required: true
         schema:
           type: string
       requestBody:
-        description: |
-          Disable Schedule or Executions.
-          Specify the `type` to enable, and a `value` with a time duration expression.
-          The request must contain a `value` with a "Time duration expression". (See request schema for syntax.)
+        description: Role Definition
         content:
           application/json:
             schema:
-              allOf:
-              - $ref: "#/components/schemas/ProjectModeLaterRequest"
-              - type: object
-                properties:
-                  command:
-                    $ref: "#/components/schemas/ProjectExecutionModeLaterCommand"
+              type: object
             examples:
-              Disable-Executions:
+              update-role-example:
+                description: Update role name and description
                 value:
-                  type: executions
-                  value: 1d
-              Disable-Schedule:
-                value:
-                  type: schedule
-                  value: 2h30m
+                  authority: rolename
+                  description: description
         required: true
       responses:
         "200":
-          description: Request processed. The `saved` value may be false if e.g. the
-            current execution mode is already enabled.
+          description: Successful
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ModeLaterResponse"
-              examples:
-                value: {}
-        "400":
-          description: Request error response. A description of the error is in the
-            `msg` field.
+                type: object
+    delete:
+      tags:
+      - User
+      summary: "Delete A Local Role [Enterprise]"
+      description: |2-
+
+        Authorization required: `app_admin` for system resource type `user`.
+
+        Since: v44
+      operationId: apiDelete
+      parameters:
+      - name: id
+        in: path
+        description: Role ID
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Successful
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ModeLaterResponse"
-              examples:
-                value: {}
-  /project/{project}/enable/later:
+                type: object
+  /secure/role/{id}/updateMembers:
     post:
       tags:
-      - Execution Mode
-      summary: Enable Project executions or schedules after a duration of time
-      description: |
-        Sets project execution mode to Active or enable Schedules at a later time.
+      - User
+      summary: "Update Role Members [Enterprise]"
+      description: |2-
 
-        Since: v34
-      operationId: apiProjectEnableLater
+        Authorization required: `app_admin` for system resource type `user`.
+
+        Since: v44
+      operationId: apiUpdateMembers
       parameters:
-      - name: project
+      - name: id
         in: path
-        description: project name
+        description: Role ID
         required: true
         schema:
           type: string
       requestBody:
-        description: |
-          Enable Schedule or Executions.
-          Specify the `type` to enable, and a `value` with a time duration expression.
-          The request must contain a `value` with a "Time duration expression". (See request schema for syntax.)
+        description: Role Definition
         content:
           application/json:
             schema:
-              allOf:
-              - $ref: "#/components/schemas/ProjectModeLaterRequest"
-              - type: object
-                properties:
-                  command:
-                    $ref: "#/components/schemas/ProjectExecutionModeLaterCommand"
+              type: object
             examples:
-              Enable-Schedule:
+              update-role-users-example:
+                description: Add and remove users from role
                 value:
-                  type: schedule
-                  value: 2h30m
-              Enable-Executions:
-                value:
-                  type: executions
-                  value: 1d
+                  add:
+                  - 1
+                  - 2
+                  remove:
+                  - 3
+                  - 4
         required: true
       responses:
         "200":
-          description: Request processed. The `saved` value may be false if e.g. the
-            current execution mode is already enabled.
+          description: Successful
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ModeLaterResponse"
-              examples:
-                value: {}
-        "400":
-          description: Request error response. A description of the error is in the
-            `msg` field.
+                type: object
+  /secure/roles:
+    get:
+      tags:
+      - User
+      summary: "List Local Roles [Enterprise]"
+      description: |-
+        List local role definitions.
+
+        Authorization required: `app_admin` for system resource type `user`.
+
+        Since: v44
+      operationId: apiList
+      responses:
+        "200":
+          description: Role List
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ModeLaterResponse"
+                type: array
+                items:
+                  $ref: "#/components/schemas/LoginRoleData"
+              examples:
+                role-list:
+                  description: Role List
+                  value: |-
+                    [
+                      {
+                        "id": 1,
+                        "authority": "agroup",
+                        "description": "a description"
+                      }
+                    ]
+  /secure/roles/create:
+    put:
+      tags:
+      - User
+      summary: "Create A Local Role [Enterprise]"
+      description: |2-
+
+        Authorization required: `app_admin` for system resource type `user`.
+
+        Since: v44
+      operationId: apiCreate
+      requestBody:
+        description: Role Definition
+        content:
+          application/json:
+            schema:
+              type: object
+            examples:
+              create-role-example:
+                description: Create a new role with name and description
+                value:
+                  authority: rolename
+                  description: description
+        required: true
+      responses:
+        "200":
+          description: apiCreate 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+        "201":
+          description: created
+          content:
+            application/json:
+              schema:
+                type: object
               examples:
                 value: {}
-  /system/executions/disable/later:
+  /secure/user/roles/{id}:
+    get:
+      tags:
+      - User
+      summary: "Get Roles for a Local User [Enterprise]"
+      description: |2-
+
+        Authorization required: `app_admin` for system resource type `user`.
+
+        Since: v44
+      operationId: apiGetUserRoles
+      parameters:
+      - name: id
+        in: path
+        description: User ID
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Role List
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/LoginRoleData"
+              examples:
+                role-list:
+                  description: List of roles for a user
+                  value: |-
+                    [
+                    {
+                      "id": 1,
+                      "authority": "agroup",
+                      "description": "a description"
+                    }
+                    ]
+  /secure/user/{id}:
+    get:
+      tags:
+      - User
+      summary: "Get A Local User [Enterprise]"
+      description: |2-
+
+        Authorization required: `app_admin` for system resource type `user`.
+
+        Since: v44
+      operationId: apiGet_1
+      parameters:
+      - name: id
+        in: path
+        description: User ID
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Role List
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                value: {}
     post:
       tags:
-      - Execution Mode
-      summary: Disable System executions after a duration of time
-      description: |
-        Sets System execution mode to Passive at a later time.
+      - User
+      summary: "Update A Local User [Enterprise]"
+      description: |2-
 
-        Since: v34
-      operationId: apiExecutionModeLaterPassive
-      requestBody:
-        description: |
-          Disable Executions.
-          Specify a `value` with a time duration expression. (See request schema for syntax.)
-        content:
-          application/json:
-            schema:
-              allOf:
-              - $ref: "#/components/schemas/ModeLaterRequest"
-              - type: object
-                properties:
-                  command:
-                    $ref: "#/components/schemas/ExecutionModeLaterCommand"
-            examples:
-              example:
-                value:
-                  value: 2h30m
+        Authorization required: `app_admin` for system resource type `user`.
+
+        Since: v44
+      operationId: apiEdit_1
+      parameters:
+      - name: id
+        in: path
+        description: User ID
         required: true
+        schema:
+          type: string
       responses:
         "200":
-          description: Request processed. The `saved` value may be false if e.g. the
-            current execution mode is already disabled.
+          description: apiEdit_1 200 response
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ModeLaterResponse"
-              examples:
-                value: {}
-        "400":
-          description: Request error response. A description of the error is in the
-            `msg` field.
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ModeLaterResponse"
-              examples:
-                value: {}
-  /system/executions/enable/later:
-    post:
+                type: object
+    delete:
       tags:
-      - Execution Mode
-      summary: Enable System executions after a duration of time
-      description: |
-        Sets System execution mode to Active at a later time.
+      - User
+      summary: "Delete A Local User [Enterprise]"
+      description: |2-
 
-        Since: v34
-      operationId: apiExecutionModeLaterActive
+        Authorization required: `app_admin` for system resource type `user`.
+
+        Since: v44
+      operationId: apiDelete_1
+      parameters:
+      - name: id
+        in: path
+        description: User ID
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: apiDelete_1 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+  /secure/users:
+    get:
+      tags:
+      - User
+      summary: "List Local Users [Enterprise]"
+      description: |2-
+
+        Authorization required: `app_admin` for system resource type `user`.
+
+        Since: v44
+      operationId: apiList_1
+      responses:
+        "200":
+          description: Role List
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+              examples:
+                user-list:
+                  description: List of users with roles
+                  value: |-
+                    [
+                      {
+                        "id": 1,
+                        "username": "test1",
+                        "enabled": true,
+                        "passwordExpired": false,
+                        "accountLocked": false,
+                        "accountExpired": false,
+                        "notes": null,
+                        "roles": [
+                          {
+                            "id": 1,
+                            "authority": "agroup",
+                            "description": "a description"
+                          }
+                        ],
+                        "firstname": "test",
+                        "lastname": "user",
+                        "email": "test@example.com"
+                      }
+                    ]
+  /secure/users/create:
+    put:
+      tags:
+      - User
+      summary: "Create A Local User [Enterprise]"
+      description: |-
+        Creates a native/local user with a password for use with the built-in authentication system.
+
+        This endpoint is designed for environments that use the internal authentication mechanism rather than external authentication providers (such as LDAP, Active Directory, or OAuth). It allows administrators to provision local user accounts with specified roles and credentials.
+
+        **Important Notes:**
+        - The password field is named `pwd` (not "password") in the request body to maintain consistency with the internal authentication system
+        - Users created through this endpoint are stored in the database and authenticated using built-in authentication
+        - When a user already exists, the operation will fail with an error
+
+        **Expected Behavior:**
+        - **Successful Creation**: Returns 201 Created when a user is successfully created
+        - **User Already Exists**: Returns an error when attempting to create a user that already exists
+        - **Validation Errors**: Returns 400 Bad Request for missing required fields or invalid data
+        - **Permission Errors**: Returns 403 Forbidden if the caller lacks sufficient permissions
+
+        Authorization required: `app_admin` for system resource type `user`.
+
+        Since: v44
+      operationId: apiCreate_1
       requestBody:
-        description: |
-          Enable Executions.
-          Specify a `value` with a time duration expression. (See request schema for syntax.)
+        description: "User creation data including username, password (pwd), and roles"
         content:
           application/json:
             schema:
-              allOf:
-              - $ref: "#/components/schemas/ModeLaterRequest"
-              - type: object
-                properties:
-                  command:
-                    $ref: "#/components/schemas/ExecutionModeLaterCommand"
+              $ref: "#/components/schemas/CreateUserRequest"
             examples:
-              example:
+              complete-user:
+                summary: Create a user with all available fields
+                description: "Complete user profile including optional fields like\
+                  \ firstname, lastname, email, and notes"
                 value:
-                  value: 2h30m
+                  username: bob.smith
+                  pwd: MySecurePassword456!
+                  roles:
+                  - admin
+                  - sre
+                  - dev
+                  firstname: Bob
+                  lastname: Smith
+                  email: bob.smith@company.com
+                  notes: DevOps team lead
+              basic-user:
+                summary: Create a basic user with required fields only
+                description: "Minimal request with only required fields: username,\
+                  \ pwd (password), and roles"
+                value:
+                  username: alice
+                  pwd: SecurePass123!
+                  roles:
+                  - user
+                  - dev
         required: true
       responses:
         "200":
-          description: Request processed. The `saved` value may be false if e.g. the
-            current execution mode is already enabled.
+          description: apiCreate_1_1 200 response
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ModeLaterResponse"
-              examples:
-                value: {}
+                type: object
+        "201":
+          description: User successfully created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserCreatedResponse"
         "400":
-          description: Request error response. A description of the error is in the
-            `msg` field.
+          description: "Bad Request - Validation errors (missing required fields,\
+            \ invalid email format, weak password, etc.)"
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ModeLaterResponse"
+                $ref: "#/components/schemas/UserErrorResponse"
+              examples:
+                validation-errors:
+                  description: Examples of validation errors
+                  value: |-
+                    Examples of validation errors:
+                    {"err": "username must be set"}
+                    {"err": "password must be set"}
+                    {"err": "The email address provided as the username is not valid"}
+                    {"err": "Password must be at least 8 characters long"}
+                    {"err": "Validation Error(s) occurred during save()"}
+        "403":
+          description: Forbidden - Insufficient permissions to create users
+          content:
+            application/json:
+              schema:
+                type: object
               examples:
                 value: {}
+        "409":
+          description: Conflict - User already exists with the specified username
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserErrorResponse"
   /project/{project}/runnerManagement/checkPing/{token}:
     get:
       tags:
@@ -9993,34 +10624,54 @@ paths:
                 type: array
                 items:
                   type: string
-  /project/{project}/webhook:
+  /project/{project}/healthcheck/enhancer:
+    get:
+      tags:
+      - Health
+      summary: "Check Health Status Node Enhancer is Configured [Enterprise]"
+      description: |
+        Check if the Project has the Health Status Node Enhancer configured.
+
+        Authorization required: `app_admin` for `system` resource.
+      operationId: apiProjectHasHealthStatusEnhancer
+      parameters:
+      - name: project
+        in: path
+        description: Project Name
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Healthcheck Status List without Checks
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                enhancer-status:
+                  description: Health status node enhancer configuration check
+                  value:
+                    status: true
+                    message: The project test has the HealthStatusNodeEnhancerPlugin
+                      installed
+  /project/{project}/healthcheck/refresh:
     post:
       tags:
-      - Webhook
-      summary: Add A Webhook
-      description: |2
+      - Health
+      summary: "Refresh Node Healthcheck Status [Enterprise]"
+      description: |
+        Request a Refresh to the Healthcheck status for a set of Nodes.
 
-
-        Required Fields:
-        ```
-        project - the project that owns the webhook
-        name - the name of the webhook
-        user - string the webhook runs as this user
-        roles - string containing comma separated list of roles to use for the webhook
-        eventPlugin - string must be a valid plugin name
-        config - object containing config values for the specified plugin
-        enabled - boolean
-        ```
-        Optional:
-
-        `useAuth` - if true, use header authorization
-        `regenAuth` - if true, use generate header authorization
-
-        Do not specify an `authToken` or `creator` field. They will be ignored.
-
-        Since: v33
-      operationId: createWebhook_docs
+        Authorization required: `app_admin` for `system` resource.
+      operationId: apiRefreshHealthCheck
       parameters:
+      - name: node
+        in: query
+        description: Node Name
+        required: false
+        schema:
+          type: string
       - name: project
         in: path
         description: Project Name
@@ -10028,71 +10679,47 @@ paths:
         schema:
           type: string
       requestBody:
-        description: Webhook definition.
+        description: Node List Request
         content:
           application/json:
             schema:
               type: object
             examples:
-              value: {}
+              node-list-example:
+                description: Check health for specific nodes
+                value:
+                  nodes:
+                  - node1
+                  - node2
+        required: false
       responses:
         "200":
-          description: Successful response
+          description: Healthcheck Status
           content:
             application/json:
               schema:
                 type: object
               examples:
-                value: {}
+                healthcheck-response:
+                  description: Health check status response
+                  value:
+                    message: ok
         "400":
-          description: Error response
+          description: Bad Request
           content:
             application/json:
               schema:
-                type: object
-              examples:
-                value: {}
-  /project/{project}/webhook/{id}:
-    get:
-      tags:
-      - Webhook
-      summary: Get A Webhook
-      description: |-
-        Get the webhook definition.
-
-        Since: v33
-      operationId: get
-      parameters:
-      - name: project
-        in: path
-        description: Project Name
-        required: true
-        schema:
-          type: string
-      - name: id
-        in: path
-        description: Webhook ID
-        required: true
-        schema:
-          type: string
-      responses:
-        "200":
-          description: Successful response
-          content:
-            application/json:
-              schema:
-                type: object
-              examples:
-                value: {}
+                $ref: "#/components/schemas/BasicErrorResponse"
+  /project/{project}/healthcheck/refresh/all:
     post:
       tags:
-      - Webhook
-      summary: Update A Webhook
-      description: |-
-        Updates the specified webhook.
+      - Health
+      summary: "Refresh All Project Node Healthchecks [Enterprise]"
+      description: |
+        Request a Refresh to the Healtcheck status for all Nodes in a Project.
 
-        Since: v33
-      operationId: save
+        Authorization required: `app_admin` for `system` resource.
+      operationId: apiRefreshHealthCheckAll
       parameters:
       - name: project
         in: path
@@ -10100,93 +10727,37 @@ paths:
         required: true
         schema:
           type: string
-      - name: id
-        in: path
-        description: Webhook ID
-        required: true
-        schema:
-          type: string
-      requestBody:
-        description: |-
-          Updated webhook data.
-
-          Along with the required fields you may send only the fields you want to update.
-
-          When updating a webhook you may not change the user associated with a webhook,
-          so suppling the `user` field will have no effect. Also, specifying an `authToken` field has no effect.
-        content:
-          application/json:
-            schema:
-              type: object
-            examples:
-              value: {}
       responses:
         "200":
-          description: Successful response
+          description: Healthcheck Status
           content:
             application/json:
               schema:
                 type: object
               examples:
-                value: {}
-        "400":
-          description: Error response
-          content:
-            application/json:
-              schema:
-                type: object
-              examples:
-                value: {}
-    delete:
-      tags:
-      - Webhook
-      summary: Delete A Webhook
-      description: |-
-        Deletes the webhook.
-
-        Since: v33
-      operationId: remove
-      parameters:
-      - name: project
-        in: path
-        description: Project Name
-        required: true
-        schema:
-          type: string
-      - name: id
-        in: path
-        description: Webhook ID
-        required: true
-        schema:
-          type: string
-      responses:
-        "200":
-          description: Successful response
-          content:
-            application/json:
-              schema:
-                type: object
-              examples:
-                value: {}
-        "400":
-          description: Error response
-          content:
-            application/json:
-              schema:
-                type: object
-              examples:
-                value: {}
-  /project/{project}/webhooks:
+                refresh-response:
+                  description: Health check refresh response
+                  value:
+                    message: ok
+  /project/{project}/healthcheck/status:
     get:
       tags:
-      - Webhook
-      summary: List Project Webhooks
-      description: |-
-        List the webhooks for the project.
+      - Health
+      summary: "Get Node Healthcheck Status [Enterprise]"
+      description: |+
+        Node Healtcheck status for a Node.
 
-        Since: v33
-      operationId: list
+        Authorization required: `app_admin` for `system` resource.
+
+
+      operationId: apiNodeHealth
       parameters:
+      - name: node
+        in: query
+        description: Node Name
+        required: true
+        schema:
+          type: string
       - name: project
         in: path
         description: Project Name
@@ -10195,7 +10766,63 @@ paths:
           type: string
       responses:
         "200":
-          description: List of webhooks
+          description: Healthcheck Status
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                node-healthcheck:
+                  description: Node health check status
+                  value:
+                    node: node-0
+                    project: test
+                    healthchecks:
+                    - type: command
+                      status: HEALTHY
+                      data: {}
+                    status: HEALTHY
+                    lastChecked: 2023-03-20T17:33:28Z
+                    duration: 25
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BasicErrorResponse"
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BasicErrorResponse"
+  /project/{project}/healthcheck/status/all:
+    get:
+      tags:
+      - Health
+      summary: "Get Node Healthcheck Status for All Nodes [Enterprise]"
+      description: |
+        Node Healtcheck status for all Nodes.
+
+        Authorization required: `app_admin` for `system` resource.
+      operationId: apiNodeHealthAll
+      parameters:
+      - name: project
+        in: path
+        description: Project Name
+        required: true
+        schema:
+          type: string
+      - name: includeChecks
+        in: query
+        description: Include Checks
+        required: false
+        explode: false
+        schema:
+          type: boolean
+      responses:
+        "200":
+          description: Healthcheck Status List without Checks
           content:
             application/json:
               schema:
@@ -10203,236 +10830,402 @@ paths:
                 items:
                   type: object
               examples:
-                webhook-list:
-                  description: List of webhooks
+                all-nodes-healthcheck:
+                  description: Health check status for all nodes
                   value: |-
                     [
-                        {
-                            "authToken": "Z1vnbhShhQF3B0dQq7UhJTZMnGS92TBl",
-                            "config": {
-                                "argString": "-payload ${raw}",
-                                "jobId": "a54d07a1-033a-499f-9789-19bcacbd6e11"
-                            },
-                            "creator": "admin",
-                            "enabled": true,
-                            "eventPlugin": "webhook-run-job",
-                            "id": 3,
-                            "name": "Webhook Job Runner",
-                            "project": "Webhook",
-                            "roles": "admin,user",
-                            "user": "admin"
-                        },
-                        {
-                            "authToken": "p9ttreh05Zd222g5yBXocEMXmCJ1skOX",
-                            "config": {},
-                            "creator": "admin",
-                            "enabled": true,
-                            "eventPlugin": "log-webhook-event",
-                            "id": 4,
-                            "name": "Log it Hook",
-                            "project": "Webhook",
-                            "roles": "admin,user",
-                            "user": "admin"
-                        }
+                      {
+                        "node": "459a545d524f",
+                        "project": "test",
+                        "href": "/api/44/project/test/healthcheck/status?nodename=459a545d524f",
+                        "status": "HEALTHY",
+                        "lastChecked": "2023-03-20T19:30:28Z",
+                        "duration": 35
+                      },
+                      {
+                        "node": "node-0",
+                        "project": "test",
+                        "href": "/api/44/project/test/healthcheck/status?nodename=node-0",
+                        "status": "HEALTHY",
+                        "lastChecked": "2023-03-20T19:30:28Z",
+                        "duration": 19
+                      }
                     ]
-  /webhook/{authtoken}:
+  /project/{project}/disable/later:
     post:
       tags:
-      - Webhook
-      summary: Send Webhook Event
-      description: "You may post whatever data you wish to the webhook endpoint, however\
-        \ the plugin you are \nusing must\nbe able to handle the data you post. If\
-        \ the webhook plugin associated with the webhook can't handle\nthe content\
-        \ type posted you will get an error response.\n\nThe webhook plugin will determine\
-        \ the response received.\nPlease see the documentation for the plugin that\
-        \ is configured for the webhook endpoint you are using.\n\nIf the webhook\
-        \ is defined to require the authorization secret, then the `Authorization`\
-        \ HTTP header must be included\nwith a value that matches the secret.\n\n\
-        Since: v33\n"
-      operationId: post
-      parameters:
-      - name: authtoken
-        in: path
-        description: Webhook auth token
-        required: true
-        schema:
-          type: string
-      - name: Authorization
-        in: header
-        description: Optional authorization secret. Required if webhook is configured
-          to require authorization.
-        required: false
-        schema:
-          type: string
-      responses:
-        "200":
-          description: Default response
-          content:
-            '*/*':
-              examples:
-                success:
-                  description: Success response
-                  value: ok
-        "400":
-          description: Error response
-          content:
-            application/json:
-              examples:
-                error:
-                  description: Error response
-                  value:
-                    err: Error message
-        "404":
-          description: Webhook not enabled
-          content:
-            application/json:
-              examples:
-                value: {}
-  /job/{id}/tags:
-    get:
-      tags:
-      - Jobs
-      summary: Get Job Tags (Enterprise)
+      - Execution Mode
+      summary: Disable Project executions or schedules after a duration of time
       description: |
-        Returns the list of tags for a job.
+        Sets project execution mode to Passive or disables Schedules at a later time.
 
-        Since: v46
-      operationId: job
+        Since: v34
+      operationId: apiProjectDisableLater
       parameters:
-      - name: id
+      - name: project
         in: path
-        description: Job ID
+        description: project name
         required: true
         schema:
           type: string
+      requestBody:
+        description: |
+          Disable Schedule or Executions.
+          Specify the `type` to enable, and a `value` with a time duration expression.
+          The request must contain a `value` with a "Time duration expression". (See request schema for syntax.)
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: "#/components/schemas/ProjectModeLaterRequest"
+              - type: object
+                properties:
+                  command:
+                    $ref: "#/components/schemas/ProjectExecutionModeLaterCommand"
+            examples:
+              Disable-Executions:
+                value:
+                  type: executions
+                  value: 1d
+              Disable-Schedule:
+                value:
+                  type: schedule
+                  value: 2h30m
+        required: true
       responses:
         "200":
-          description: Success
+          description: Request processed. The `saved` value may be false if e.g. the
+            current execution mode is already enabled.
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: string
-  /project/{project}/jobTags/query:
-    get:
+                $ref: "#/components/schemas/ModeLaterResponse"
+              examples:
+                value: {}
+        "400":
+          description: Request error response. A description of the error is in the
+            `msg` field.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ModeLaterResponse"
+              examples:
+                value: {}
+  /project/{project}/enable/later:
+    post:
       tags:
-      - Jobs
-      summary: "Query Project Job Tags [Enterprise]"
-      description: "Returns the list of available tags, along with the count of jobs\
-        \ per each tag, for the job \nquery result received.\n\nSince: v46\n"
-      operationId: query
+      - Execution Mode
+      summary: Enable Project executions or schedules after a duration of time
+      description: |
+        Sets project execution mode to Active or enable Schedules at a later time.
+
+        Since: v34
+      operationId: apiProjectEnableLater
       parameters:
-      - name: sortOrders
-        in: query
-        schema:
-          type: array
-          items:
-            $ref: "#/components/schemas/SortOrder"
-      - name: jobFilter
-        in: query
-        schema:
-          type: string
-      - name: jobExactFilter
-        in: query
-        schema:
-          type: string
-      - name: projFilter
-        in: query
-        schema:
-          type: string
-      - name: groupPath
-        in: query
-        schema:
-          type: string
-      - name: groupPathExact
-        in: query
-        schema:
-          type: string
-      - name: descFilter
-        in: query
-        schema:
-          type: string
-      - name: loglevelFilter
-        in: query
-        schema:
-          type: string
-      - name: idlist
-        in: query
-        schema:
-          type: string
-      - name: scheduledFilter
-        in: query
-        schema:
-          type: boolean
-      - name: scheduleEnabledFilter
-        in: query
-        schema:
-          type: boolean
-      - name: executionEnabledFilter
-        in: query
-        schema:
-          type: boolean
-      - name: serverNodeUUIDFilter
-        in: query
-        schema:
-          type: string
-      - name: daysAhead
-        in: query
-        schema:
-          type: integer
-          format: int32
-      - name: runJobLaterFilter
-        in: query
-        schema:
-          type: boolean
-      - name: max
-        in: query
-        schema:
-          type: integer
-          format: int32
-      - name: offset
-        in: query
-        schema:
-          type: integer
-          format: int32
-      - name: sortBy
-        in: query
-        schema:
-          type: string
-      - name: sortOrder
-        in: query
-        schema:
-          type: string
-      - name: inputParamMap
-        in: query
-        schema:
-          type: object
-          additionalProperties:
-            type: object
-      - name: paginatedRequired
-        in: query
-        schema:
-          type: boolean
       - name: project
         in: path
+        description: project name
+        required: true
+        schema:
+          type: string
+      requestBody:
+        description: |
+          Enable Schedule or Executions.
+          Specify the `type` to enable, and a `value` with a time duration expression.
+          The request must contain a `value` with a "Time duration expression". (See request schema for syntax.)
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: "#/components/schemas/ProjectModeLaterRequest"
+              - type: object
+                properties:
+                  command:
+                    $ref: "#/components/schemas/ProjectExecutionModeLaterCommand"
+            examples:
+              Enable-Schedule:
+                value:
+                  type: schedule
+                  value: 2h30m
+              Enable-Executions:
+                value:
+                  type: executions
+                  value: 1d
+        required: true
+      responses:
+        "200":
+          description: Request processed. The `saved` value may be false if e.g. the
+            current execution mode is already enabled.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ModeLaterResponse"
+              examples:
+                value: {}
+        "400":
+          description: Request error response. A description of the error is in the
+            `msg` field.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ModeLaterResponse"
+              examples:
+                value: {}
+  /system/executions/disable/later:
+    post:
+      tags:
+      - Execution Mode
+      summary: Disable System executions after a duration of time
+      description: |
+        Sets System execution mode to Passive at a later time.
+
+        Since: v34
+      operationId: apiExecutionModeLaterPassive
+      requestBody:
+        description: |
+          Disable Executions.
+          Specify a `value` with a time duration expression. (See request schema for syntax.)
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: "#/components/schemas/ModeLaterRequest"
+              - type: object
+                properties:
+                  command:
+                    $ref: "#/components/schemas/ExecutionModeLaterCommand"
+            examples:
+              example:
+                value:
+                  value: 2h30m
+        required: true
+      responses:
+        "200":
+          description: Request processed. The `saved` value may be false if e.g. the
+            current execution mode is already disabled.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ModeLaterResponse"
+              examples:
+                value: {}
+        "400":
+          description: Request error response. A description of the error is in the
+            `msg` field.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ModeLaterResponse"
+              examples:
+                value: {}
+  /system/executions/enable/later:
+    post:
+      tags:
+      - Execution Mode
+      summary: Enable System executions after a duration of time
+      description: |
+        Sets System execution mode to Active at a later time.
+
+        Since: v34
+      operationId: apiExecutionModeLaterActive
+      requestBody:
+        description: |
+          Enable Executions.
+          Specify a `value` with a time duration expression. (See request schema for syntax.)
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: "#/components/schemas/ModeLaterRequest"
+              - type: object
+                properties:
+                  command:
+                    $ref: "#/components/schemas/ExecutionModeLaterCommand"
+            examples:
+              example:
+                value:
+                  value: 2h30m
+        required: true
+      responses:
+        "200":
+          description: Request processed. The `saved` value may be false if e.g. the
+            current execution mode is already enabled.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ModeLaterResponse"
+              examples:
+                value: {}
+        "400":
+          description: Request error response. A description of the error is in the
+            `msg` field.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ModeLaterResponse"
+              examples:
+                value: {}
+  /execution/{id}/roimetrics/available:
+    get:
+      tags:
+      - ROI
+      summary: "INCUBATING: ROI Metrics Data Available [Enterprise]"
+      description: Get result indicating whether ROI metrics data is available as
+        part of an execution.
+      operationId: getRoiMetricsDataAvailability
+      parameters:
+      - name: id
+        in: path
+        description: Execution ID
         required: true
         schema:
           type: string
       responses:
         "200":
-          description: Success
+          description: Availability Response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RoiMetricsController.DataAvailableResponse"
+        "404":
+          description: No Data Availability Response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RoiMetricsController.DataAvailableResponse"
+  /execution/{id}/roimetrics/data:
+    get:
+      tags:
+      - ROI
+      summary: "INCUBATING: ROI Metrics Data [Enterprise]"
+      description: Get result data for ROI Metrics.
+      operationId: getRoiMetricsDataApi
+      parameters:
+      - name: wait
+        in: query
+        description: "if true and the data is not immediately available, the response\
+          \ will wait until the data is retrieved, or a timeout occurs. Otherwise\
+          \ the response may return 202 status if data must be retrieved first."
+        schema:
+          type: boolean
+      - name: id
+        in: path
+        description: Execution ID
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: "ROI Metrics data from the Execution, the format will depend\
+            \ on the data generated."
+          content:
+            application/json:
+              schema:
+                type: object
+        "202":
+          description: "Request was accepted but not fulfilled. This indicates the\
+            \ data will be retrieved asynchronously before it can be made available.\
+            \ Retry the request later to retrieve the data. See also: the `wait` parameter"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ROIDataLoadingState"
+        "404":
+          description: Data was not available.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ROIDataBasicErrorResponse"
+  /enterprise/cluster/executions/disable:
+    post:
+      tags:
+      - Cluster
+      summary: "Set Execution Mode for a Cluster Member [Enterprise]"
+      description: "Set the Execution Mode for the target cluster member.\n\n* `/enterprise/cluster/executions/enable`:\
+        \ Set execution mode to *Active* \n* `/enterprise/cluster/executions/disable`:\
+        \ Set execution mode to *Passive* \n\nIf the UUID parameter matches the current\
+        \ cluster member, the mode will be changed immediately, otherwise the status\
+        \ will be `pending`.\n\nAuthorization required: (enable) `enable_executions`\
+        \ or `admin` for `system` resource, or \n(disable) `disable_executions` or\
+        \ `admin` for `system` resource.\n\nSince: v41\n"
+      operationId: apiToggle
+      parameters:
+      - name: uuid
+        in: query
+        description: UUID of Member
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        "200":
+          description: |
+            Result.
+
+            `status`
+            :   `pending` indicates the request has been posted, `complete` indicates the request has taken effect already.
+
+            `executionMode`
+            :   The requested execution mode, either `active` or `passive`
+
+            `uuid`
+            :   The target cluster member UUID
           content:
             application/json:
               schema:
                 type: object
               examples:
-                tag-counts:
-                  description: Map of tag names to job counts
+                toggle-response:
+                  description: Execution mode toggle response
                   value:
-                    tag1: 5
-                    tag2: 3
-                    tag3: 12
+                    status: pending
+                    executionMode: active
+                    uuid: a3de6030-2b7a-47e3-b46f-3e46a11a85d9
+  /enterprise/cluster/executions/enable:
+    post:
+      tags:
+      - Cluster
+      summary: "Set Execution Mode for a Cluster Member [Enterprise]"
+      description: "Set the Execution Mode for the target cluster member.\n\n* `/enterprise/cluster/executions/enable`:\
+        \ Set execution mode to *Active* \n* `/enterprise/cluster/executions/disable`:\
+        \ Set execution mode to *Passive* \n\nIf the UUID parameter matches the current\
+        \ cluster member, the mode will be changed immediately, otherwise the status\
+        \ will be `pending`.\n\nAuthorization required: (enable) `enable_executions`\
+        \ or `admin` for `system` resource, or \n(disable) `disable_executions` or\
+        \ `admin` for `system` resource.\n\nSince: v41\n"
+      operationId: apiToggle_1
+      parameters:
+      - name: uuid
+        in: query
+        description: UUID of Member
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        "200":
+          description: |
+            Result.
+
+            `status`
+            :   `pending` indicates the request has been posted, `complete` indicates the request has taken effect already.
+
+            `executionMode`
+            :   The requested execution mode, either `active` or `passive`
+
+            `uuid`
+            :   The target cluster member UUID
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                toggle-response:
+                  description: Execution mode toggle response
+                  value:
+                    status: pending
+                    executionMode: active
+                    uuid: a3de6030-2b7a-47e3-b46f-3e46a11a85d9
   /config/delete:
     post:
       tags:
@@ -10924,688 +11717,151 @@ paths:
           description: Bad request
         "403":
           description: Unauthorized response
-  /enterprise/project/{project}/webhooks/{id}/debug-events:
-    get:
-      tags:
-      - Webhook
-      summary: "Get Webhook Debug Events [Enterprise]"
-      description: |
-        Return webook debug events.
-
-        Authorization Required: `app_admin` to `webhook` resource.
-      operationId: getDebugEvents
-      parameters:
-      - name: project
-        in: path
-        description: Project Name
-        required: true
-        schema:
-          type: string
-      - name: id
-        in: path
-        description: Webhook ID
-        required: true
-        schema:
-          type: string
-      responses:
-        "200":
-          description: debug events
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/WebhookEvaluation"
-  /execution/{id}/roimetrics/available:
-    get:
-      tags:
-      - ROI
-      summary: "INCUBATING: ROI Metrics Data Available [Enterprise]"
-      description: Get result indicating whether ROI metrics data is available as
-        part of an execution.
-      operationId: getRoiMetricsDataAvailability
-      parameters:
-      - name: id
-        in: path
-        description: Execution ID
-        required: true
-        schema:
-          type: string
-      responses:
-        "200":
-          description: Availability Response
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/RoiMetricsController.DataAvailableResponse"
-        "404":
-          description: No Data Availability Response
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/RoiMetricsController.DataAvailableResponse"
-  /execution/{id}/roimetrics/data:
-    get:
-      tags:
-      - ROI
-      summary: "INCUBATING: ROI Metrics Data [Enterprise]"
-      description: Get result data for ROI Metrics.
-      operationId: getRoiMetricsDataApi
-      parameters:
-      - name: wait
-        in: query
-        description: "if true and the data is not immediately available, the response\
-          \ will wait until the data is retrieved, or a timeout occurs. Otherwise\
-          \ the response may return 202 status if data must be retrieved first."
-        schema:
-          type: boolean
-      - name: id
-        in: path
-        description: Execution ID
-        required: true
-        schema:
-          type: string
-      responses:
-        "200":
-          description: "ROI Metrics data from the Execution, the format will depend\
-            \ on the data generated."
-          content:
-            application/json:
-              schema:
-                type: object
-        "202":
-          description: "Request was accepted but not fulfilled. This indicates the\
-            \ data will be retrieved asynchronously before it can be made available.\
-            \ Retry the request later to retrieve the data. See also: the `wait` parameter"
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ROIDataLoadingState"
-        "404":
-          description: Data was not available.
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ROIDataBasicErrorResponse"
-  /project/{project}/healthcheck/enhancer:
-    get:
-      tags:
-      - Health
-      summary: "Check Health Status Node Enhancer is Configured [Enterprise]"
-      description: |
-        Check if the Project has the Health Status Node Enhancer configured.
-
-        Authorization required: `app_admin` for `system` resource.
-      operationId: apiProjectHasHealthStatusEnhancer
-      parameters:
-      - name: project
-        in: path
-        description: Project Name
-        required: true
-        schema:
-          type: string
-      responses:
-        "200":
-          description: Healthcheck Status List without Checks
-          content:
-            application/json:
-              schema:
-                type: object
-              examples:
-                enhancer-status:
-                  description: Health status node enhancer configuration check
-                  value:
-                    status: true
-                    message: The project test has the HealthStatusNodeEnhancerPlugin
-                      installed
-  /project/{project}/healthcheck/refresh:
-    post:
-      tags:
-      - Health
-      summary: "Refresh Node Healthcheck Status [Enterprise]"
-      description: |
-        Request a Refresh to the Healtcheck status for a set of Nodes.
-
-        Authorization required: `app_admin` for `system` resource.
-      operationId: apiRefreshHealthCheck
-      parameters:
-      - name: node
-        in: query
-        description: Node Name
-        required: false
-        schema:
-          type: string
-      - name: project
-        in: path
-        description: Project Name
-        required: true
-        schema:
-          type: string
-      requestBody:
-        description: Node List Request
-        content:
-          application/json:
-            schema:
-              type: object
-            examples:
-              node-list-example:
-                description: Check health for specific nodes
-                value:
-                  nodes:
-                  - node1
-                  - node2
-        required: false
-      responses:
-        "200":
-          description: Healthcheck Status
-          content:
-            application/json:
-              schema:
-                type: object
-              examples:
-                healthcheck-response:
-                  description: Health check status response
-                  value:
-                    message: ok
-        "400":
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/BasicErrorResponse"
-  /project/{project}/healthcheck/refresh/all:
-    post:
-      tags:
-      - Health
-      summary: "Refresh All Project Node Healthchecks [Enterprise]"
-      description: |
-        Request a Refresh to the Healtcheck status for all Nodes in a Project.
-
-        Authorization required: `app_admin` for `system` resource.
-      operationId: apiRefreshHealthCheckAll
-      parameters:
-      - name: project
-        in: path
-        description: Project Name
-        required: true
-        schema:
-          type: string
-      responses:
-        "200":
-          description: Healthcheck Status
-          content:
-            application/json:
-              schema:
-                type: object
-              examples:
-                refresh-response:
-                  description: Health check refresh response
-                  value:
-                    message: ok
-  /project/{project}/healthcheck/status:
-    get:
-      tags:
-      - Health
-      summary: "Get Node Healthcheck Status [Enterprise]"
-      description: |+
-        Node Healtcheck status for a Node.
-
-        Authorization required: `app_admin` for `system` resource.
-
-
-      operationId: apiNodeHealth
-      parameters:
-      - name: node
-        in: query
-        description: Node Name
-        required: true
-        schema:
-          type: string
-      - name: project
-        in: path
-        description: Project Name
-        required: true
-        schema:
-          type: string
-      responses:
-        "200":
-          description: Healthcheck Status
-          content:
-            application/json:
-              schema:
-                type: object
-              examples:
-                node-healthcheck:
-                  description: Node health check status
-                  value:
-                    node: node-0
-                    project: test
-                    healthchecks:
-                    - type: command
-                      status: HEALTHY
-                      data: {}
-                    status: HEALTHY
-                    lastChecked: 2023-03-20T17:33:28Z
-                    duration: 25
-        "400":
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/BasicErrorResponse"
-        "404":
-          description: Not Found
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/BasicErrorResponse"
-  /project/{project}/healthcheck/status/all:
-    get:
-      tags:
-      - Health
-      summary: "Get Node Healthcheck Status for All Nodes [Enterprise]"
-      description: |
-        Node Healtcheck status for all Nodes.
-
-        Authorization required: `app_admin` for `system` resource.
-      operationId: apiNodeHealthAll
-      parameters:
-      - name: project
-        in: path
-        description: Project Name
-        required: true
-        schema:
-          type: string
-      - name: includeChecks
-        in: query
-        description: Include Checks
-        required: false
-        explode: false
-        schema:
-          type: boolean
-      responses:
-        "200":
-          description: Healthcheck Status List without Checks
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  type: object
-              examples:
-                all-nodes-healthcheck:
-                  description: Health check status for all nodes
-                  value: |-
-                    [
-                      {
-                        "node": "459a545d524f",
-                        "project": "test",
-                        "href": "/api/44/project/test/healthcheck/status?nodename=459a545d524f",
-                        "status": "HEALTHY",
-                        "lastChecked": "2023-03-20T19:30:28Z",
-                        "duration": 35
-                      },
-                      {
-                        "node": "node-0",
-                        "project": "test",
-                        "href": "/api/44/project/test/healthcheck/status?nodename=node-0",
-                        "status": "HEALTHY",
-                        "lastChecked": "2023-03-20T19:30:28Z",
-                        "duration": 19
-                      }
-                    ]
-  /project/{project}/calendars:
-    get:
-      tags:
-      - Calendars
-      summary: "List Project Calendars [Enterprise]"
-      description: |-
-        Retrieves all calendars configured at the project scope level. Calendars are used to define allowed and blackout periods for job scheduling and execution, providing fine-grained control over when jobs can run within a specific project context. This endpoint returns comprehensive calendar information including date definitions, recurrence patterns, and associated job references.
-
-        Authorization required: `admin` or `app_admin` access for `user` resource type.
-
-        Since: v41
-      operationId: apiProjectCalendars
-      parameters:
-      - name: project
-        in: path
-        description: Project Name
-        required: true
-        allowEmptyValue: false
-        schema:
-          type: string
-      responses:
-        "200":
-          description: List of all calendar of a project
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  type: object
-              examples:
-                example:
-                  value: |-
-                    [
-                      {
-                        "id": 1,
-                        "name": "[NAME]",
-                        "description": "[DESCRIPTION]",
-                        "calendarType": "[blackout/allowed]",
-                        "scope": "project",
-                        "project": "[PROJECT]",
-                        "dateType": "[date,range,daily,monthly]",
-                        "dateDefinition": ""[DATE-DEFINITION]"",
-                        "enable": true,
-                        "allReference": true,
-                        "recurrent": true,
-                        "objects": [
-                          {
-                            "uuid": "[JOBUUID]",
-                            "name": "[JOBNAME"]
-                          }
-                        ]
-                      }
-                    ]
-    post:
-      tags:
-      - Calendars
-      summary: "Create/Update Project Calendar [Enterprise]"
-      description: |-
-        Create or update a calendar at project scope.
-        * if the ID exists, it will update the existing calendar, otherwise a new one will be created.
-
-        Authorization required: `admin` or `app_admin` access for `user` resource type.
-
-        Since: v41
-      operationId: apiLoadProjectCalendars
-      parameters:
-      - name: project
-        in: path
-        description: Project Name
-        required: true
-        allowEmptyValue: false
-        schema:
-          type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-            examples:
-              save-calendar-example:
-                description: Save or update calendar definition
-                value:
-                  id: 1
-                  name: "[NAME]"
-                  description: "[DESCRIPTION]"
-                  calendarType: "[blackout/allowed]"
-                  scope: project
-                  project: "[PROJECT]"
-                  dateType: "[date,range,daily,monthly]"
-                  dateDefinition: "[DATE-DEFINITION]"
-                  enable: true
-                  allReference: true
-                  recurrent: true
-                  objects:
-                  - uuid: "[JOBUUID]"
-                    name: "[JOBNAME]"
-                  - uuid: "[JOBUUID]"
-                    name: "[JOBNAME]"
-      responses:
-        "200":
-          description: Calendar created or updated
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProjectCalendarsResponse"
-              examples:
-                value: {}
-  /project/{project}/calendars/{id}:
-    delete:
-      tags:
-      - Calendars
-      summary: "Delete Project Calendar [Enterprise]"
-      description: |-
-        Deletes a calendar at project scope.
-
-        Authorization required: `delete` access for `project` resource type or `admin` or `app_admin` access for `user` resource type.
-
-        Since: v41
-      operationId: apiDeleteProjectCalendar
-      parameters:
-      - name: project
-        in: path
-        description: Project Name
-        required: true
-        allowEmptyValue: false
-        schema:
-          type: string
-      - name: id
-        in: path
-        description: Calendar Id to be deleted
-        required: true
-        allowEmptyValue: false
-        schema:
-          type: string
-      responses:
-        "204":
-          description: No content
-  /system/calendars:
-    get:
-      tags:
-      - Calendars
-      summary: "List System Calendars [Enterprise]"
-      description: |-
-        Get all calendars at system scope.
-
-        Authorization required: `admin` or `app_admin` access for `user` resource type.
-
-        Since: v41
-      operationId: apiSystemCalendars
-      responses:
-        "200":
-          description: List of all system calendars
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  type: object
-              examples:
-                example:
-                  value: |-
-                    [
-                      {
-                        "id": 1,
-                        "name": "[NAME]",
-                        "description": "[DESCRIPTION]",
-                        "calendarType": "[blackout/allowed]",
-                        "scope": "project",
-                        "dateType": "[date,range,daily,monthly]",
-                        "dateDefinition": "[DATE-DEFINITION]",
-                        "enable": true,
-                        "allReference": true,
-                        "recurrent": true,
-                        "objects": [
-                          {
-                            "uuid": "[JOBUUID]",
-                            "name": "[JOBNAME]"
-                          }
-                        ]
-                      }
-                    ]
-    post:
-      tags:
-      - Calendars
-      summary: "Create/Update System Calendar [Enterprise]"
-      description: |-
-        Create or update a calendar at system scope.
-        * if the ID exists, it will update the existing calendar, otherwise a new one will be created.
-
-        Authorization required: `admin` or `app_admin` access for `user` resource type.
-
-        Since: v41
-      operationId: apiLoadSystemCalendars
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-            examples:
-              update-calendar-example:
-                description: Update calendar definition with jobs
-                value:
-                  id: 1
-                  name: "[NAME]"
-                  description: "[DESCRIPTION]"
-                  calendarType: "[blackout/allowed]"
-                  scope: project
-                  dateType: "[date,range,daily,monthly]"
-                  dateDefinition: "[DATE-DEFINITION]"
-                  enable: true
-                  allReference: true
-                  recurrent: true
-                  objects:
-                  - uuid: "[JOBUUID]"
-                    name: "[JOBNAME]"
-                  - uuid: "[JOBUUID]"
-                    name: "[JOBNAME]"
-      responses:
-        "200":
-          description: Calendar created or updated
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProjectCalendarsResponse"
-              examples:
-                calendar-response:
-                  description: Calendar save response
-                  value:
-                    calendar:
-                      id: 1
-                      name: New Calendar
-                      description: test
-                      calendarType: blackout
-                      scope: system
-                      dateType: date
-                      dateDefinition:
-                      - 2019/12/07
-                      - 2019/12/14
-                      - 2019/12/31
-                      - 2020/01/01
-                      enable: true
-                      allReference: false
-                      recurrent: false
-                      objects:
-                      - uuid: 7ca918bd-b463-4948-96d2-796c0619c2bd
-                        name: scheduled/job
-                    saved: true
-                    msg: Saved Calendar
-  /system/calendars/{id}:
-    delete:
-      tags:
-      - Calendars
-      summary: "Delete System Calendar [Enterprise]"
-      description: |-
-        Deletes a calendar at system scope.
-
-        Authorization required: `delete` access for `project` resource type or `admin` or `app_admin` access for `user` resource type.
-
-        Since: v41
-      operationId: apiDeleteSystemCalendar
-      parameters:
-      - name: id
-        in: path
-        description: Calendar Id to be deleted
-        required: true
-        allowEmptyValue: false
-        schema:
-          type: string
-      responses:
-        "204":
-          description: No content
-  /execution/{id}/result/data:
+  /job/{id}/tags:
     get:
       tags:
       - Jobs
-      summary: "Get Execution Result Data [Enterprise]"
+      summary: Get Job Tags (Enterprise)
       description: |
-        Retrieve the Result Data created by a Job using the [Result Data feature](https://docs.rundeck.com/docs/manual/execution-lifecycle/result-data.html) in JSON format.
+        Returns the list of tags for a job.
 
-        Note: In a Rundeck Cluster, Result Data may not be locally available and must be retrieved by the server asynchronously before it can be returned.
-
-        You can handle this situation in two ways: either use the `wait=true` URL parameter, to indicate that the API request should block until the data is retrieved (waiting up to 10 seconds), or if the response has HTTP status 202 it means that the asynchronous request was started but has not completed yet and you can retry the same API request shortly.
-
-        Since: v40
-      operationId: apiExecutionDataExport
+        Since: v46
+      operationId: job
       parameters:
-      - name: wait
-        in: query
-        description: "if true and the data is not immediately available, the response\
-          \ will wait until the data is retrieved, or a timeout occurs. Otherwise\
-          \ the response may return 202 status if data must be retrieved first."
-        schema:
-          type: boolean
       - name: id
         in: path
-        description: Execution ID
+        description: Job ID
         required: true
         schema:
           type: string
       responses:
         "200":
-          description: "Result data from the Job execution, the format will depend\
-            \ on the data generated."
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+  /project/{project}/jobTags/query:
+    get:
+      tags:
+      - Jobs
+      summary: "Query Project Job Tags [Enterprise]"
+      description: "Returns the list of available tags, along with the count of jobs\
+        \ per each tag, for the job \nquery result received.\n\nSince: v46\n"
+      operationId: query
+      parameters:
+      - name: sortOrders
+        in: query
+        schema:
+          type: array
+          items:
+            $ref: "#/components/schemas/SortOrder"
+      - name: jobFilter
+        in: query
+        schema:
+          type: string
+      - name: jobExactFilter
+        in: query
+        schema:
+          type: string
+      - name: projFilter
+        in: query
+        schema:
+          type: string
+      - name: groupPath
+        in: query
+        schema:
+          type: string
+      - name: groupPathExact
+        in: query
+        schema:
+          type: string
+      - name: descFilter
+        in: query
+        schema:
+          type: string
+      - name: loglevelFilter
+        in: query
+        schema:
+          type: string
+      - name: idlist
+        in: query
+        schema:
+          type: string
+      - name: scheduledFilter
+        in: query
+        schema:
+          type: boolean
+      - name: scheduleEnabledFilter
+        in: query
+        schema:
+          type: boolean
+      - name: executionEnabledFilter
+        in: query
+        schema:
+          type: boolean
+      - name: serverNodeUUIDFilter
+        in: query
+        schema:
+          type: string
+      - name: daysAhead
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: runJobLaterFilter
+        in: query
+        schema:
+          type: boolean
+      - name: max
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: offset
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: sortBy
+        in: query
+        schema:
+          type: string
+      - name: sortOrder
+        in: query
+        schema:
+          type: string
+      - name: inputParamMap
+        in: query
+        schema:
+          type: object
+          additionalProperties:
+            type: object
+      - name: paginatedRequired
+        in: query
+        schema:
+          type: boolean
+      - name: project
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Success
           content:
             application/json:
               schema:
                 type: object
-        "202":
-          description: "Request was accepted but not fulfilled. This indicates the\
-            \ data will be retrieved asynchronously before it can be made available.\
-            \ Retry the request later to retrieve the data. See also: the `wait` parameter"
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ResultDataLoadingState"
-        "404":
-          description: Data was not available.
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ResultDataBasicErrorResponse"
-  /execution/{id}/result/dataAvailable:
-    get:
-      tags:
-      - Jobs
-      summary: "Check Execution Result Data Availability [Enterprise]"
-      description: |
-        Check whether the execution has Result Data created by a Job using the [Result Data feature](https://docs.rundeck.com/docs/manual/execution-lifecycle/result-data.html).
-
-        Since: v40
-      operationId: apiExecutionDataAvailable
-      parameters:
-      - name: id
-        in: path
-        description: Execution ID
-        required: true
-        schema:
-          type: string
-      responses:
-        "200":
-          description: Data available
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ResultDataAvailableResponse"
-        "404":
-          description: "No data can be retrieved for the Execution. If an error occurred,\
-            \ the `error` entry will contain a description of the error."
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ResultDataBasicErrorResponse"
+              examples:
+                tag-counts:
+                  description: Map of tag names to job counts
+                  value:
+                    tag1: 5
+                    tag2: 3
+                    tag3: 12
   /project/{project}/tour/import/{tourFolder}/{manifestFileName}:
     post:
       tags:
@@ -11893,664 +12149,6 @@ paths:
                 type: array
                 items:
                   type: string
-  /enterprise/cluster/executions/disable:
-    post:
-      tags:
-      - Cluster
-      summary: "Set Execution Mode for a Cluster Member [Enterprise]"
-      description: "Set the Execution Mode for the target cluster member.\n\n* `/enterprise/cluster/executions/enable`:\
-        \ Set execution mode to *Active* \n* `/enterprise/cluster/executions/disable`:\
-        \ Set execution mode to *Passive* \n\nIf the UUID parameter matches the current\
-        \ cluster member, the mode will be changed immediately, otherwise the status\
-        \ will be `pending`.\n\nAuthorization required: (enable) `enable_executions`\
-        \ or `admin` for `system` resource, or \n(disable) `disable_executions` or\
-        \ `admin` for `system` resource.\n\nSince: v41\n"
-      operationId: apiToggle
-      parameters:
-      - name: uuid
-        in: query
-        description: UUID of Member
-        required: true
-        schema:
-          type: string
-          format: uuid
-      responses:
-        "200":
-          description: |
-            Result.
-
-            `status`
-            :   `pending` indicates the request has been posted, `complete` indicates the request has taken effect already.
-
-            `executionMode`
-            :   The requested execution mode, either `active` or `passive`
-
-            `uuid`
-            :   The target cluster member UUID
-          content:
-            application/json:
-              schema:
-                type: object
-              examples:
-                toggle-response:
-                  description: Execution mode toggle response
-                  value:
-                    status: pending
-                    executionMode: active
-                    uuid: a3de6030-2b7a-47e3-b46f-3e46a11a85d9
-  /enterprise/cluster/executions/enable:
-    post:
-      tags:
-      - Cluster
-      summary: "Set Execution Mode for a Cluster Member [Enterprise]"
-      description: "Set the Execution Mode for the target cluster member.\n\n* `/enterprise/cluster/executions/enable`:\
-        \ Set execution mode to *Active* \n* `/enterprise/cluster/executions/disable`:\
-        \ Set execution mode to *Passive* \n\nIf the UUID parameter matches the current\
-        \ cluster member, the mode will be changed immediately, otherwise the status\
-        \ will be `pending`.\n\nAuthorization required: (enable) `enable_executions`\
-        \ or `admin` for `system` resource, or \n(disable) `disable_executions` or\
-        \ `admin` for `system` resource.\n\nSince: v41\n"
-      operationId: apiToggle_1
-      parameters:
-      - name: uuid
-        in: query
-        description: UUID of Member
-        required: true
-        schema:
-          type: string
-          format: uuid
-      responses:
-        "200":
-          description: |
-            Result.
-
-            `status`
-            :   `pending` indicates the request has been posted, `complete` indicates the request has taken effect already.
-
-            `executionMode`
-            :   The requested execution mode, either `active` or `passive`
-
-            `uuid`
-            :   The target cluster member UUID
-          content:
-            application/json:
-              schema:
-                type: object
-              examples:
-                toggle-response:
-                  description: Execution mode toggle response
-                  value:
-                    status: pending
-                    executionMode: active
-                    uuid: a3de6030-2b7a-47e3-b46f-3e46a11a85d9
-  /enterprise/system-report/datasets:
-    get:
-      tags:
-      - System
-      summary: List System Report Datasets
-      description: |
-        List the system report datasets.
-
-        Authorization required: `ops_admin` for `system`
-
-        Since: v44
-      operationId: listDatasets
-      responses:
-        "200":
-          description: Result
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/SystemReportItem"
-              examples:
-                datasets-list:
-                  description: System report datasets list
-                  value: |
-                    [
-                      {
-                        "label": "Statistics",
-                        "name": "projectStats"
-                      },
-                      {
-                        "label": "Framework Configuration",
-                        "name": "frameworkConfig"
-                      },
-                      {
-                        "label": "Rundeck Configuration",
-                        "name": "rundeckConfig"
-                      },
-                      {
-                        "label": "System Environment",
-                        "name": "systemEnv"
-                      },
-                      {
-                        "label": "Licensing",
-                        "name": "licensing"
-                      },
-                      {
-                        "label": "Full Configuration",
-                        "name": "fullConfig"
-                      }
-                    ]
-  /enterprise/system-report/datasets/{dataset}:
-    get:
-      tags:
-      - System
-      summary: Get System Report Dataset by Name
-      description: |
-        Get a system report dataset.
-
-        Authorization required: `ops_admin` for `system`
-
-        Since: v44
-      operationId: getDataset
-      parameters:
-      - name: dataset
-        in: path
-        description: Dataset Name
-        required: true
-        schema:
-          type: string
-      responses:
-        "200":
-          description: Result
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/DataSet"
-  /secure/generatepasswordreset/{username}:
-    post:
-      tags:
-      - User
-      summary: "Reset User Password [Enterprise]"
-      description: |-
-        Sends a password reset email to the user's email address, if email is configured.
-
-        Authorization required: `app_admin` for system resource type `user`.
-
-        Since: v44
-      operationId: apiSendPasswordReset
-      parameters:
-      - name: username
-        in: path
-        description: User Name
-        required: true
-        schema:
-          type: string
-      responses:
-        "200":
-          description: Reset Response contains a `link` that the user can use to reset
-            their password.
-          content:
-            application/json:
-              schema:
-                type: object
-              examples:
-                value: {}
-  /secure/role/{id}:
-    get:
-      tags:
-      - User
-      summary: "Get A Local Role [Enterprise]"
-      description: |2-
-
-        Authorization required: `app_admin` for system resource type `user`.
-
-        Since: v44
-      operationId: apiGet
-      parameters:
-      - name: id
-        in: path
-        description: Role ID
-        required: true
-        schema:
-          type: string
-      responses:
-        "200":
-          description: Role
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/LoginRoleData"
-    post:
-      tags:
-      - User
-      summary: "Update A Local Role [Enterprise]"
-      description: |
-        List the local role definitions.
-
-        Authorization required: `app_admin` for system resource type `user`.
-
-        Since: v44
-      operationId: apiEdit
-      parameters:
-      - name: id
-        in: path
-        description: Role ID
-        required: true
-        schema:
-          type: string
-      requestBody:
-        description: Role Definition
-        content:
-          application/json:
-            schema:
-              type: object
-            examples:
-              update-role-example:
-                description: Update role name and description
-                value:
-                  authority: rolename
-                  description: description
-        required: true
-      responses:
-        "200":
-          description: Successful
-          content:
-            application/json:
-              schema:
-                type: object
-    delete:
-      tags:
-      - User
-      summary: "Delete A Local Role [Enterprise]"
-      description: |2-
-
-        Authorization required: `app_admin` for system resource type `user`.
-
-        Since: v44
-      operationId: apiDelete
-      parameters:
-      - name: id
-        in: path
-        description: Role ID
-        required: true
-        schema:
-          type: string
-      responses:
-        "200":
-          description: Successful
-          content:
-            application/json:
-              schema:
-                type: object
-  /secure/role/{id}/updateMembers:
-    post:
-      tags:
-      - User
-      summary: "Update Role Members [Enterprise]"
-      description: |2-
-
-        Authorization required: `app_admin` for system resource type `user`.
-
-        Since: v44
-      operationId: apiUpdateMembers
-      parameters:
-      - name: id
-        in: path
-        description: Role ID
-        required: true
-        schema:
-          type: string
-      requestBody:
-        description: Role Definition
-        content:
-          application/json:
-            schema:
-              type: object
-            examples:
-              update-role-users-example:
-                description: Add and remove users from role
-                value:
-                  add:
-                  - 1
-                  - 2
-                  remove:
-                  - 3
-                  - 4
-        required: true
-      responses:
-        "200":
-          description: Successful
-          content:
-            application/json:
-              schema:
-                type: object
-  /secure/roles:
-    get:
-      tags:
-      - User
-      summary: "List Local Roles [Enterprise]"
-      description: |-
-        List local role definitions.
-
-        Authorization required: `app_admin` for system resource type `user`.
-
-        Since: v44
-      operationId: apiList
-      responses:
-        "200":
-          description: Role List
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/LoginRoleData"
-              examples:
-                role-list:
-                  description: Role List
-                  value: |-
-                    [
-                      {
-                        "id": 1,
-                        "authority": "agroup",
-                        "description": "a description"
-                      }
-                    ]
-  /secure/roles/create:
-    put:
-      tags:
-      - User
-      summary: "Create A Local Role [Enterprise]"
-      description: |2-
-
-        Authorization required: `app_admin` for system resource type `user`.
-
-        Since: v44
-      operationId: apiCreate
-      requestBody:
-        description: Role Definition
-        content:
-          application/json:
-            schema:
-              type: object
-            examples:
-              create-role-example:
-                description: Create a new role with name and description
-                value:
-                  authority: rolename
-                  description: description
-        required: true
-      responses:
-        "200":
-          description: apiCreate 200 response
-          content:
-            application/json:
-              schema:
-                type: object
-        "201":
-          description: created
-          content:
-            application/json:
-              schema:
-                type: object
-              examples:
-                value: {}
-  /secure/user/roles/{id}:
-    get:
-      tags:
-      - User
-      summary: "Get Roles for a Local User [Enterprise]"
-      description: |2-
-
-        Authorization required: `app_admin` for system resource type `user`.
-
-        Since: v44
-      operationId: apiGetUserRoles
-      parameters:
-      - name: id
-        in: path
-        description: User ID
-        required: true
-        schema:
-          type: string
-      responses:
-        "200":
-          description: Role List
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/LoginRoleData"
-              examples:
-                role-list:
-                  description: List of roles for a user
-                  value: |-
-                    [
-                    {
-                      "id": 1,
-                      "authority": "agroup",
-                      "description": "a description"
-                    }
-                    ]
-  /secure/user/{id}:
-    get:
-      tags:
-      - User
-      summary: "Get A Local User [Enterprise]"
-      description: |2-
-
-        Authorization required: `app_admin` for system resource type `user`.
-
-        Since: v44
-      operationId: apiGet_1
-      parameters:
-      - name: id
-        in: path
-        description: User ID
-        required: true
-        schema:
-          type: string
-      responses:
-        "200":
-          description: Role List
-          content:
-            application/json:
-              schema:
-                type: object
-              examples:
-                value: {}
-    post:
-      tags:
-      - User
-      summary: "Update A Local User [Enterprise]"
-      description: |2-
-
-        Authorization required: `app_admin` for system resource type `user`.
-
-        Since: v44
-      operationId: apiEdit_1
-      parameters:
-      - name: id
-        in: path
-        description: User ID
-        required: true
-        schema:
-          type: string
-      responses:
-        "200":
-          description: apiEdit_1 200 response
-          content:
-            application/json:
-              schema:
-                type: object
-    delete:
-      tags:
-      - User
-      summary: "Delete A Local User [Enterprise]"
-      description: |2-
-
-        Authorization required: `app_admin` for system resource type `user`.
-
-        Since: v44
-      operationId: apiDelete_1
-      parameters:
-      - name: id
-        in: path
-        description: User ID
-        required: true
-        schema:
-          type: string
-      responses:
-        "200":
-          description: apiDelete_1 200 response
-          content:
-            application/json:
-              schema:
-                type: object
-  /secure/users:
-    get:
-      tags:
-      - User
-      summary: "List Local Users [Enterprise]"
-      description: |2-
-
-        Authorization required: `app_admin` for system resource type `user`.
-
-        Since: v44
-      operationId: apiList_1
-      responses:
-        "200":
-          description: Role List
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  type: object
-              examples:
-                user-list:
-                  description: List of users with roles
-                  value: |-
-                    [
-                      {
-                        "id": 1,
-                        "username": "test1",
-                        "enabled": true,
-                        "passwordExpired": false,
-                        "accountLocked": false,
-                        "accountExpired": false,
-                        "notes": null,
-                        "roles": [
-                          {
-                            "id": 1,
-                            "authority": "agroup",
-                            "description": "a description"
-                          }
-                        ],
-                        "firstname": "test",
-                        "lastname": "user",
-                        "email": "test@example.com"
-                      }
-                    ]
-  /secure/users/create:
-    put:
-      tags:
-      - User
-      summary: "Create A Local User [Enterprise]"
-      description: |-
-        Creates a native/local user with a password for use with the built-in authentication system.
-
-        This endpoint is designed for environments that use the internal authentication mechanism rather than external authentication providers (such as LDAP, Active Directory, or OAuth). It allows administrators to provision local user accounts with specified roles and credentials.
-
-        **Important Notes:**
-        - The password field is named `pwd` (not "password") in the request body to maintain consistency with the internal authentication system
-        - Users created through this endpoint are stored in the database and authenticated using built-in authentication
-        - When a user already exists, the operation will fail with an error
-
-        **Expected Behavior:**
-        - **Successful Creation**: Returns 201 Created when a user is successfully created
-        - **User Already Exists**: Returns an error when attempting to create a user that already exists
-        - **Validation Errors**: Returns 400 Bad Request for missing required fields or invalid data
-        - **Permission Errors**: Returns 403 Forbidden if the caller lacks sufficient permissions
-
-        Authorization required: `app_admin` for system resource type `user`.
-
-        Since: v44
-      operationId: apiCreate_1
-      requestBody:
-        description: "User creation data including username, password (pwd), and roles"
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/CreateUserRequest"
-            examples:
-              complete-user:
-                summary: Create a user with all available fields
-                description: "Complete user profile including optional fields like\
-                  \ firstname, lastname, email, and notes"
-                value:
-                  username: bob.smith
-                  pwd: MySecurePassword456!
-                  roles:
-                  - admin
-                  - sre
-                  - dev
-                  firstname: Bob
-                  lastname: Smith
-                  email: bob.smith@company.com
-                  notes: DevOps team lead
-              basic-user:
-                summary: Create a basic user with required fields only
-                description: "Minimal request with only required fields: username,\
-                  \ pwd (password), and roles"
-                value:
-                  username: alice
-                  pwd: SecurePass123!
-                  roles:
-                  - user
-                  - dev
-        required: true
-      responses:
-        "200":
-          description: apiCreate_1_1 200 response
-          content:
-            application/json:
-              schema:
-                type: object
-        "201":
-          description: User successfully created
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UserCreatedResponse"
-        "400":
-          description: "Bad Request - Validation errors (missing required fields,\
-            \ invalid email format, weak password, etc.)"
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UserErrorResponse"
-              examples:
-                validation-errors:
-                  description: Examples of validation errors
-                  value: |-
-                    Examples of validation errors:
-                    {"err": "username must be set"}
-                    {"err": "password must be set"}
-                    {"err": "The email address provided as the username is not valid"}
-                    {"err": "Password must be at least 8 characters long"}
-                    {"err": "Validation Error(s) occurred during save()"}
-        "403":
-          description: Forbidden - Insufficient permissions to create users
-          content:
-            application/json:
-              schema:
-                type: object
-              examples:
-                value: {}
-        "409":
-          description: Conflict - User already exists with the specified username
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UserErrorResponse"
   /enterprise/license:
     get:
       tags:
@@ -12859,13 +12457,199 @@ paths:
       responses:
         "204":
           description: No content
-  /project/{project}/listAllJobs:
+  /project/{project}/webhook:
+    post:
+      tags:
+      - Webhook
+      summary: Add A Webhook
+      description: |2
+
+
+        Required Fields:
+        ```
+        project - the project that owns the webhook
+        name - the name of the webhook
+        user - string the webhook runs as this user
+        roles - string containing comma separated list of roles to use for the webhook
+        eventPlugin - string must be a valid plugin name
+        config - object containing config values for the specified plugin
+        enabled - boolean
+        ```
+        Optional:
+
+        `useAuth` - if true, use header authorization
+        `regenAuth` - if true, use generate header authorization
+
+        Do not specify an `authToken` or `creator` field. They will be ignored.
+
+        Since: v33
+      operationId: createWebhook_docs
+      parameters:
+      - name: project
+        in: path
+        description: Project Name
+        required: true
+        schema:
+          type: string
+      requestBody:
+        description: Webhook definition.
+        content:
+          application/json:
+            schema:
+              type: object
+            examples:
+              value: {}
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                value: {}
+        "400":
+          description: Error response
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                value: {}
+  /project/{project}/webhook/{id}:
     get:
       tags:
-      - Jobs
-      summary: "List all Jobs in Summarized Form [Enterprise]"
-      description: List the jobs summarized for a project.
-      operationId: apiListAllJobsInProject
+      - Webhook
+      summary: Get A Webhook
+      description: |-
+        Get the webhook definition.
+
+        Since: v33
+      operationId: get
+      parameters:
+      - name: project
+        in: path
+        description: Project Name
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        description: Webhook ID
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                value: {}
+    post:
+      tags:
+      - Webhook
+      summary: Update A Webhook
+      description: |-
+        Updates the specified webhook.
+
+        Since: v33
+      operationId: save
+      parameters:
+      - name: project
+        in: path
+        description: Project Name
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        description: Webhook ID
+        required: true
+        schema:
+          type: string
+      requestBody:
+        description: |-
+          Updated webhook data.
+
+          Along with the required fields you may send only the fields you want to update.
+
+          When updating a webhook you may not change the user associated with a webhook,
+          so suppling the `user` field will have no effect. Also, specifying an `authToken` field has no effect.
+        content:
+          application/json:
+            schema:
+              type: object
+            examples:
+              value: {}
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                value: {}
+        "400":
+          description: Error response
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                value: {}
+    delete:
+      tags:
+      - Webhook
+      summary: Delete A Webhook
+      description: |-
+        Deletes the webhook.
+
+        Since: v33
+      operationId: remove
+      parameters:
+      - name: project
+        in: path
+        description: Project Name
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        description: Webhook ID
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                value: {}
+        "400":
+          description: Error response
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                value: {}
+  /project/{project}/webhooks:
+    get:
+      tags:
+      - Webhook
+      summary: List Project Webhooks
+      description: |-
+        List the webhooks for the project.
+
+        Since: v33
+      operationId: list
       parameters:
       - name: project
         in: path
@@ -12875,10 +12659,7 @@ paths:
           type: string
       responses:
         "200":
-          description: |-
-            List of Jobs.
-
-            If the job is scheduled, it will contain a `nextExecution` (millisecond unix timestamp), and `nextExecutionRelative` (text)
+          description: List of webhooks
           content:
             application/json:
               schema:
@@ -12886,28 +12667,394 @@ paths:
                 items:
                   type: object
               examples:
-                paged-jobs-list:
-                  description: Paged jobs list response
+                webhook-list:
+                  description: List of webhooks
                   value: |-
-                    [ {
-                        "scheduleEnabled": true,
-                        "executionEnabled": true,
-                        "scheduled": false,
-                        "name": "test job",
-                        "type": "job",
-                        "uuid": "0bafa429-96ab-4568-ac60-0a440bc11f26",
-                        "actions": [
-                          "update",
-                          "view",
-                          "run",
-                          "delete",
-                          "read",
-                          "kill"
-                        ],
-                        "group": "job group",
-                        "desc": "a basic job"
+                    [
+                        {
+                            "authToken": "Z1vnbhShhQF3B0dQq7UhJTZMnGS92TBl",
+                            "config": {
+                                "argString": "-payload ${raw}",
+                                "jobId": "a54d07a1-033a-499f-9789-19bcacbd6e11"
+                            },
+                            "creator": "admin",
+                            "enabled": true,
+                            "eventPlugin": "webhook-run-job",
+                            "id": 3,
+                            "name": "Webhook Job Runner",
+                            "project": "Webhook",
+                            "roles": "admin,user",
+                            "user": "admin"
+                        },
+                        {
+                            "authToken": "p9ttreh05Zd222g5yBXocEMXmCJ1skOX",
+                            "config": {},
+                            "creator": "admin",
+                            "enabled": true,
+                            "eventPlugin": "log-webhook-event",
+                            "id": 4,
+                            "name": "Log it Hook",
+                            "project": "Webhook",
+                            "roles": "admin,user",
+                            "user": "admin"
+                        }
+                    ]
+  /webhook/{authtoken}:
+    post:
+      tags:
+      - Webhook
+      summary: Send Webhook Event
+      description: "You may post whatever data you wish to the webhook endpoint, however\
+        \ the plugin you are \nusing must\nbe able to handle the data you post. If\
+        \ the webhook plugin associated with the webhook can't handle\nthe content\
+        \ type posted you will get an error response.\n\nThe webhook plugin will determine\
+        \ the response received.\nPlease see the documentation for the plugin that\
+        \ is configured for the webhook endpoint you are using.\n\nIf the webhook\
+        \ is defined to require the authorization secret, then the `Authorization`\
+        \ HTTP header must be included\nwith a value that matches the secret.\n\n\
+        Since: v33\n"
+      operationId: post
+      parameters:
+      - name: authtoken
+        in: path
+        description: Webhook auth token
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Optional authorization secret. Required if webhook is configured
+          to require authorization.
+        required: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Default response
+          content:
+            '*/*':
+              examples:
+                success:
+                  description: Success response
+                  value: ok
+        "400":
+          description: Error response
+          content:
+            application/json:
+              examples:
+                error:
+                  description: Error response
+                  value:
+                    err: Error message
+        "404":
+          description: Webhook not enabled
+          content:
+            application/json:
+              examples:
+                value: {}
+  /enterprise/project/{project}/webhooks/{id}/debug-events:
+    get:
+      tags:
+      - Webhook
+      summary: "Get Webhook Debug Events [Enterprise]"
+      description: |
+        Return webook debug events.
+
+        Authorization Required: `app_admin` to `webhook` resource.
+      operationId: getDebugEvents
+      parameters:
+      - name: project
+        in: path
+        description: Project Name
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        description: Webhook ID
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: debug events
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/WebhookEvaluation"
+  /project/{project}/calendars:
+    get:
+      tags:
+      - Calendars
+      summary: "List Project Calendars [Enterprise]"
+      description: |-
+        Retrieves all calendars configured at the project scope level. Calendars are used to define allowed and blackout periods for job scheduling and execution, providing fine-grained control over when jobs can run within a specific project context. This endpoint returns comprehensive calendar information including date definitions, recurrence patterns, and associated job references.
+
+        Authorization required: `admin` or `app_admin` access for `user` resource type.
+
+        Since: v41
+      operationId: apiProjectCalendars
+      parameters:
+      - name: project
+        in: path
+        description: Project Name
+        required: true
+        allowEmptyValue: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: List of all calendar of a project
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+              examples:
+                example:
+                  value: |-
+                    [
+                      {
+                        "id": 1,
+                        "name": "[NAME]",
+                        "description": "[DESCRIPTION]",
+                        "calendarType": "[blackout/allowed]",
+                        "scope": "project",
+                        "project": "[PROJECT]",
+                        "dateType": "[date,range,daily,monthly]",
+                        "dateDefinition": ""[DATE-DEFINITION]"",
+                        "enable": true,
+                        "allReference": true,
+                        "recurrent": true,
+                        "objects": [
+                          {
+                            "uuid": "[JOBUUID]",
+                            "name": "[JOBNAME"]
+                          }
+                        ]
                       }
                     ]
+    post:
+      tags:
+      - Calendars
+      summary: "Create/Update Project Calendar [Enterprise]"
+      description: |-
+        Create or update a calendar at project scope.
+        * if the ID exists, it will update the existing calendar, otherwise a new one will be created.
+
+        Authorization required: `admin` or `app_admin` access for `user` resource type.
+
+        Since: v41
+      operationId: apiLoadProjectCalendars
+      parameters:
+      - name: project
+        in: path
+        description: Project Name
+        required: true
+        allowEmptyValue: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+            examples:
+              save-calendar-example:
+                description: Save or update calendar definition
+                value:
+                  id: 1
+                  name: "[NAME]"
+                  description: "[DESCRIPTION]"
+                  calendarType: "[blackout/allowed]"
+                  scope: project
+                  project: "[PROJECT]"
+                  dateType: "[date,range,daily,monthly]"
+                  dateDefinition: "[DATE-DEFINITION]"
+                  enable: true
+                  allReference: true
+                  recurrent: true
+                  objects:
+                  - uuid: "[JOBUUID]"
+                    name: "[JOBNAME]"
+                  - uuid: "[JOBUUID]"
+                    name: "[JOBNAME]"
+      responses:
+        "200":
+          description: Calendar created or updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProjectCalendarsResponse"
+              examples:
+                value: {}
+  /project/{project}/calendars/{id}:
+    delete:
+      tags:
+      - Calendars
+      summary: "Delete Project Calendar [Enterprise]"
+      description: |-
+        Deletes a calendar at project scope.
+
+        Authorization required: `delete` access for `project` resource type or `admin` or `app_admin` access for `user` resource type.
+
+        Since: v41
+      operationId: apiDeleteProjectCalendar
+      parameters:
+      - name: project
+        in: path
+        description: Project Name
+        required: true
+        allowEmptyValue: false
+        schema:
+          type: string
+      - name: id
+        in: path
+        description: Calendar Id to be deleted
+        required: true
+        allowEmptyValue: false
+        schema:
+          type: string
+      responses:
+        "204":
+          description: No content
+  /system/calendars:
+    get:
+      tags:
+      - Calendars
+      summary: "List System Calendars [Enterprise]"
+      description: |-
+        Get all calendars at system scope.
+
+        Authorization required: `admin` or `app_admin` access for `user` resource type.
+
+        Since: v41
+      operationId: apiSystemCalendars
+      responses:
+        "200":
+          description: List of all system calendars
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+              examples:
+                example:
+                  value: |-
+                    [
+                      {
+                        "id": 1,
+                        "name": "[NAME]",
+                        "description": "[DESCRIPTION]",
+                        "calendarType": "[blackout/allowed]",
+                        "scope": "project",
+                        "dateType": "[date,range,daily,monthly]",
+                        "dateDefinition": "[DATE-DEFINITION]",
+                        "enable": true,
+                        "allReference": true,
+                        "recurrent": true,
+                        "objects": [
+                          {
+                            "uuid": "[JOBUUID]",
+                            "name": "[JOBNAME]"
+                          }
+                        ]
+                      }
+                    ]
+    post:
+      tags:
+      - Calendars
+      summary: "Create/Update System Calendar [Enterprise]"
+      description: |-
+        Create or update a calendar at system scope.
+        * if the ID exists, it will update the existing calendar, otherwise a new one will be created.
+
+        Authorization required: `admin` or `app_admin` access for `user` resource type.
+
+        Since: v41
+      operationId: apiLoadSystemCalendars
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+            examples:
+              update-calendar-example:
+                description: Update calendar definition with jobs
+                value:
+                  id: 1
+                  name: "[NAME]"
+                  description: "[DESCRIPTION]"
+                  calendarType: "[blackout/allowed]"
+                  scope: project
+                  dateType: "[date,range,daily,monthly]"
+                  dateDefinition: "[DATE-DEFINITION]"
+                  enable: true
+                  allReference: true
+                  recurrent: true
+                  objects:
+                  - uuid: "[JOBUUID]"
+                    name: "[JOBNAME]"
+                  - uuid: "[JOBUUID]"
+                    name: "[JOBNAME]"
+      responses:
+        "200":
+          description: Calendar created or updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProjectCalendarsResponse"
+              examples:
+                calendar-response:
+                  description: Calendar save response
+                  value:
+                    calendar:
+                      id: 1
+                      name: New Calendar
+                      description: test
+                      calendarType: blackout
+                      scope: system
+                      dateType: date
+                      dateDefinition:
+                      - 2019/12/07
+                      - 2019/12/14
+                      - 2019/12/31
+                      - 2020/01/01
+                      enable: true
+                      allReference: false
+                      recurrent: false
+                      objects:
+                      - uuid: 7ca918bd-b463-4948-96d2-796c0619c2bd
+                        name: scheduled/job
+                    saved: true
+                    msg: Saved Calendar
+  /system/calendars/{id}:
+    delete:
+      tags:
+      - Calendars
+      summary: "Delete System Calendar [Enterprise]"
+      description: |-
+        Deletes a calendar at system scope.
+
+        Authorization required: `delete` access for `project` resource type or `admin` or `app_admin` access for `user` resource type.
+
+        Since: v41
+      operationId: apiDeleteSystemCalendar
+      parameters:
+      - name: id
+        in: path
+        description: Calendar Id to be deleted
+        required: true
+        allowEmptyValue: false
+        schema:
+          type: string
+      responses:
+        "204":
+          description: No content
 components:
   schemas:
     ActionAuthorization:
@@ -14417,6 +14564,15 @@ components:
         runningOperations:
           type: integer
           format: int32
+        maxRunningOperations:
+          type: integer
+          format: int32
+        queuedOperations:
+          type: integer
+          format: int32
+        completedOperations:
+          type: integer
+          format: int32
         uptime:
           type: integer
           format: int64
@@ -14551,6 +14707,19 @@ components:
           type: integer
           description: Number of currently running operations on the replica.
           format: int64
+        maxRunningOperations:
+          type: integer
+          description: Maximum concurrent operations this replica is configured to
+            handle.
+          format: int32
+        queuedOperations:
+          type: integer
+          description: Operations waiting in the executor queue.
+          format: int32
+        completedOperations:
+          type: integer
+          description: Total operations completed since runner startup.
+          format: int32
         versionWarning:
           type: boolean
           description: Indicates if there is a version mismatch warning for the replica.
@@ -14612,6 +14781,15 @@ components:
           type: integer
           format: int32
         runningOperations:
+          type: integer
+          format: int32
+        maxRunningOperations:
+          type: integer
+          format: int32
+        queuedOperations:
+          type: integer
+          format: int32
+        completedOperations:
           type: integer
           format: int32
         uptime:

@@ -595,10 +595,13 @@ Example:
 - Data Variables: `${data.[name]}`
 
 **Limitations:**
-- Only works with Sequential and Parallel workflow strategies
-- Cannot nest conditional steps (use Job Reference steps for multi-level logic)
+- Works with Sequential, Parallel, and Node First workflow strategies (Ruleset is not supported)
 - Substeps must match parent type (node substeps for node conditionals)
 - XML format not supported
+
+::: tip Since Rundeck 6.1.0
+Nested conditional steps are supported. Error handlers and log filters are supported on substeps (UI improvements planned for a later release).
+:::
 
 See [Conditional Logic Steps](/manual/jobs/conditional-logic.md) for complete documentation.
 

@@ -6,7 +6,7 @@ export default [
   {
     text: 'Latest Release',
     collapsible: false,
-    link: '/history/6_x/version-6.0.1.md',
+    link: '/history/6_x/version-6.1.0.md',
   },
   {
     text: 'Recent Changes',
@@ -91,7 +91,11 @@ export default [
       {
         text: 'Version 6.x',
         collapsible: true,
-        children: [
+        children: [          {
+            text: "6.1.0",
+            link: "https://docs.rundeck.com/6.1.0/"
+          },
+
           {
             text: "6.0.1",
             link: "https://docs.rundeck.com/6.0.1/"

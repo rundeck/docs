@@ -31,7 +31,7 @@ This guide provides hands-on examples to help you understand how to use conditio
    rundeck.feature.earlyAccessJobConditional.enabled=true
    ```
 3. **Basic understanding** of job workflows and job options
-4. **Workflow strategy** set to Sequential or Parallel (not Node First or Ruleset)
+4. **Workflow strategy** set to Sequential, Parallel, or Node First (Ruleset is not supported)
 
 ::: tip New to Rundeck?
 If you're new to Rundeck, we recommend completing the [Getting Started Tutorial](/learning/tutorial/index.md) first. This guide assumes familiarity with creating jobs, adding steps, and using job options.
@@ -454,21 +454,22 @@ Step 2: Workflow Conditional Logic: ${data.status} equals "ready"
 
 ### Multi-Level Conditional Logic
 
-Since nested conditionals are not supported, use Job Reference steps:
+You can nest Conditional Logic steps to build multi-level branching:
 
-1. Create Job B with its own conditional logic
-2. In Job A, add a conditional step
-3. Add a Job Reference substep pointing to Job B
-4. When Job A's condition is met, it calls Job B, which evaluates its own conditions
+1. Add a parent Conditional Logic step and define its conditions
+2. Add another Conditional Logic step as a substep
+3. Configure the nested conditional's conditions and its own substeps
+4. When the parent condition is met, the nested conditional evaluates independently
 
-This pattern enables sophisticated multi-level conditional workflows.
+You can also use Job Reference steps as substeps when you want to reuse a shared job that contains its own conditionals.
 
 ### Combining with Workflow Strategies
 
-Conditional Logic respects your job's workflow strategy:
+Conditional Logic works with Sequential, Parallel, and Node First strategies (not Ruleset):
 
-- **Sequential Strategy**: Evaluates conditionals for all nodes before moving to the next step
+- **Sequential Strategy (Step First)**: Evaluates each conditional step across nodes before moving to the next step
 - **Parallel Strategy**: Evaluates conditionals concurrently across nodes
+- **Node First Strategy**: Runs the full workflow on each node before the next node, evaluating conditions as the workflow progresses on that node
 
 ## Related Documentation
 

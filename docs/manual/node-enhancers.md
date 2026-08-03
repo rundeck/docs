@@ -9,7 +9,7 @@ The attribute match enhancer is a way for you to add new attributes to various n
 ![Attribute Match](/assets/img/attribute_match.png)
 
 - **Attribute Matches**
-: This is where you specify the attribute that you want to search for. By doing so, you can add new attributes to the nodes that match based off of what you input this section.
+: This is where you specify the attribute that you want to search for. By doing so, you can add new attributes to the nodes that match based off of what you input this section. Each match is entered on its own line using the format `key<operator>value`, where `key` is the attribute name. All matches must succeed for a node to be enhanced. See [Match Operators](#match-operators) for the supported operators.
 
 - **Attributes to Add**
 : This is where you specify the new attributes that you wish to add to the nodes that matched the attributes you specified above. So, any attributes you put here will show up on all the nodes that match based off your Attribute Matches input.
@@ -17,9 +17,25 @@ The attribute match enhancer is a way for you to add new attributes to various n
 - **Tags to Add**
 : This is where you specify any tags you want added to the nodes that match. You can enter numerous tags, all separated by a comma.
 
+- **Enable Attribute Substitution**
+: When enabled, values in **Attributes to Add** and **Tags to Add** can reference a node's existing attributes using `${attribute}` syntax. For example, `image-${ec2.imageId}` as a tag, or `newattr=some-${oldattr}/${otherattr}` as an attribute. References to attributes that do not exist on the node resolve to an empty string. This option is disabled by default, so existing configurations are unaffected.
+
 :::tip Heads Up
 If you would like to match the node name attribute, use 'nodename' instead of 'name'. The latter one works at 'Node filter' context only.
 :::
+
+### Match Operators
+
+The **Attribute Matches** field supports the following operators. Most operators compare an attribute against a `value`, while the presence operators only check whether an attribute exists.
+
+| Operator | Match | Value |
+|---|---|---|
+| `==` | Equality match | Required |
+| `!=` | Inequality match | Required |
+| `=~` | Regular expression match | Required |
+| `!~` | Negative regular expression match | Required |
+| `~~` | Is present match (attribute exists) | Not used |
+| `!!` | Not present match (attribute is absent) | Not used |
 
 ### Attribute Match Examples
 
@@ -53,6 +69,23 @@ username=rundeck_admin
 winrm-password-storage-path=keys/win_server1
 winrm-cmd=CMD
 ```
+
+#### Build New Attributes and Tags from Existing Attributes
+With **Enable Attribute Substitution** turned on, you can derive new attributes and tags from a node's existing attributes.
+This is useful when you want human-readable metadata based on values imported from a Node Source.
+
+**Tag EC2 Nodes with their AMI ID:**<br>
+* Attribute Match: **`ec2.imageId~~`** (matches any node that has an `ec2.imageId` attribute) <br>
+* Tags to Add: **`image-${ec2.imageId}`** <br>
+* Enable Attribute Substitution: **checked**
+
+**Combine Existing Attributes into a New Attribute:**<br>
+* Attribute Match: **`ec2.region~~`** <br>
+* Attributes to Add:
+```properties
+location=${ec2.region}/${ec2.availabilityZone}
+```
+* Enable Attribute Substitution: **checked**
 
 
 ## Icon

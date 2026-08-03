@@ -68,9 +68,10 @@ There is also a new section in the [System Report](/manual/system-report.md) (On
 * _JobRunner.assigned.current:_ Current Count of User Class assignments for JobRunner.
 * _JobRunner.assigned.max:_ Max Count of User Class assignments for JobRunner.
 * _FullUser.assigned.max:_ Max Count of User Class assignments for FullUser.
-* _FullUser.mapping.current:_ Current Mappings for FullUser. (shown as array of usernames)
 
 This section is also included in the Export Report and may be asked for as part of licensing validation.
+
+Note: To protect user privacy, the System Report no longer includes individual usernames or userclass mappings. License allocation and usage totals continue to be reported.
 
 ## Licensing
 

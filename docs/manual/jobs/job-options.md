@@ -198,6 +198,8 @@ This variable also allows you to add or remove days as you can see below.
 
 `${DATE-2:format}` two days ago
 
+`${DATE:format:timezone}` current date in the given format, rendered in the specified timezone, e.g. `${DATE:HH:mm:ss:Asia/Tokyo}`
+
 ### File Option Type
 
 Choose "File" from the Option Type:

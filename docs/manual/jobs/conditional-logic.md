@@ -1,6 +1,6 @@
 # Conditional Logic Steps (Commercial)
 
-**Early Access Feature** - Available in Runbook Automation 5.20.0+
+**Early Access Feature** - Available in Runbook Automation 5.20.0+ (Node First strategy, nested conditionals, and substep error handlers/log filters require 6.1.0+)
 
 Conditional Logic steps enable dynamic workflow execution based on runtime conditions. Use these steps to create intelligent automation that makes decisions during execution without requiring external scripts or complex logic.
 
@@ -18,6 +18,7 @@ Conditional Logic steps evaluate conditions at runtime and execute substeps only
 - **AND/OR Logic**: Combine multiple conditions with flexible grouping
 - **Multiple Operators**: Equals, not equals, contains, regex matching, numeric comparisons
 - **Node and Workflow Types**: Execute conditionally per-node or once per workflow
+- **Nested Conditionals**: Place conditional steps inside other conditional steps for multi-level logic
 - **Nested Substeps**: Add multiple steps that execute when conditions are met
 - **Debug Mode**: View detailed condition evaluation in execution logs
 
@@ -25,11 +26,10 @@ Conditional Logic steps evaluate conditions at runtime and execute substeps only
 
 This is an Early Access feature with the following limitations:
 
-- **Workflow Strategy**: Only works with Sequential and Parallel strategies (not Node First or Ruleset)
-- **No Nested Conditionals**: Cannot place a conditional step inside another conditional step. To achieve multi-level conditional logic, use Job Reference steps to call other jobs that contain conditionals.
-- **Substep Type Matching**: Substeps must be the same type (node/workflow) as the parent conditional step
+- **Ruleset Strategy**: Not supported. Conditional Logic works with Sequential, Parallel, and Node First strategies.
+- **Substep Type Matching**: Substeps must be the same type (node/workflow) as the parent conditional step.
 - **Step Output Requires Log Filters**: To reference output from previous steps in conditions, use log filters to capture the data, then reference it using `${data.*}` syntax.
-- **Error Handlers/Log Filters**: Only supported on root-level steps, not on substeps within conditionals
+- **Error Handlers/Log Filters on Substeps**: Supported on substeps in this release. The UI for configuring them on substeps is still being finalized and will improve in a later release.
 
 ## Enabling Conditional Logic
 
@@ -292,16 +292,21 @@ In the execution log:
 
 ### Workflow Strategies
 
-Conditional Logic steps respect the job's workflow strategy:
+Conditional Logic steps work with Sequential, Parallel, and Node First strategies (not Ruleset):
 
-**Sequential Strategy:**
-- Evaluates conditional for all nodes before moving to next step
+**Sequential Strategy (Step First):**
+- Evaluates each conditional step across nodes before moving to the next step
 - Substeps execute on matching nodes according to sequential ordering
 
 **Parallel Strategy:**
 - All steps (including conditionals) run in parallel
 - Conditional evaluation happens concurrently across nodes
 - Substeps execute in parallel when conditions are met
+
+**Node First Strategy:**
+- Runs the full workflow on each node before moving to the next node
+- Conditions are evaluated as the workflow progresses on each node
+- Substeps execute on that node when conditions are met
 
 ## Advanced Scenarios
 
@@ -321,16 +326,24 @@ Condition Set 2 (Windows):
 - Field: `${node.osFamily}` Operator: `equals` Value: `windows`
 - Field: `${node.tags}` Operator: `contains` Value: `iis`
 
-### Using Job Reference Substeps
+### Nested Conditionals
 
-Since nested conditionals are not supported, use Job Reference steps to achieve multi-level conditional logic:
+You can place a Conditional Logic step inside another Conditional Logic step to build multi-level branching:
 
-1. Create a job with conditional logic (Job B)
-2. In your main job (Job A), add a conditional step
-3. Add a Job Reference step as a substep, pointing to Job B
-4. When Job A's condition is met, it calls Job B, which then evaluates its own conditionals
+1. Add a parent Conditional Logic step and define its conditions
+2. Click **"+ Add Condition Step"** and select another Conditional Logic step as a substep
+3. Configure the nested conditional's conditions and its own substeps
+4. When the parent condition is met, the nested conditional evaluates independently
 
-This pattern enables sophisticated multi-level conditional workflows.
+**Example: Environment gate, then OS-specific commands**
+
+1. Workflow Conditional Logic: `${option.environment}` equals `production`
+   - Nested Node Conditional Logic: `${node.osFamily}` equals `unix`
+     - Substeps: Linux production commands
+   - Nested Node Conditional Logic: `${node.osFamily}` equals `windows`
+     - Substeps: Windows production commands
+
+You can also use Job Reference steps as substeps when you want to reuse a shared job that contains its own conditionals.
 
 ### Environment-Based Workflows
 
@@ -366,7 +379,7 @@ This allows the job to have a broader node filter but selectively execute steps.
 **Solutions:**
 - Verify `rundeck.feature.earlyAccessJobConditional.enabled=true` in `rundeck-config.properties`
 - Restart Rundeck after enabling the feature flag
-- Check workflow strategy is Sequential or Parallel (not Node First or Ruleset)
+- Check workflow strategy is Sequential, Parallel, or Node First (Ruleset is not supported)
 
 ### Conditions Not Evaluating Correctly
 
@@ -486,7 +499,7 @@ Conditional steps use the following structure in job definitions:
 When importing job definitions:
 
 - **Feature flag required**: Jobs with `type: conditional.logic` steps require the feature flag to be enabled
-- **Strategy validation**: Import will fail if workflow strategy is Node First or Ruleset
+- **Strategy validation**: Import will fail if workflow strategy is Ruleset
 - **Substep type validation**: Import will fail if substeps don't match parent type (node/workflow)
 
 **Error Example:**
@@ -525,7 +538,7 @@ When exporting jobs:
 ### Maintainability
 
 - **Consistent naming**: Use standard naming conventions for options and data variables
-- **Limit nesting depth**: Use Job References instead of trying to nest conditionals
+- **Keep nesting readable**: Prefer shallow nested conditionals; use Job References when the same branching logic should be reused across jobs
 - **Group related substeps**: Keep logically related steps together within a conditional
 - **Comment your logic**: Add notes in job description explaining complex conditional workflows
 
