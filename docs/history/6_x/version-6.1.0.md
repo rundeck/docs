@@ -20,11 +20,10 @@ Rundeck 6.1.0 builds on the **[Conditional Logic Steps](/manual/jobs/conditional
 
 This release also adds **[Runner operation metrics](/administration/runner/runner-management/monitoring-runners.md)** in the Runner Management UI. Live utilization bars show running versus max capacity for each Runner and Replica, expandable panels surface Utilization, Running, Max, Queued, and Completed counts, and a new **Busy** health status distinguishes capacity saturation from true Unhealthy or Down failures.
 
-![Expanded Runner operation metrics panel showing Utilization, Running, Max, Queued, and Completed cards](/assets/img/runner-load-metrics.png)
+![In Product Runner operation metrics panel showing Utilization, Running, Max, Queued, and Completed cards](/assets/img/runner-load-metrics.png)
 
-<!-- TODO: screenshots when available -->
-<!-- ![Runner Load column in the Runner Management list](/assets/img/relnotes-610-runner-load-column.png) -->
-<!-- ![Runner Busy health status badge](/assets/img/relnotes-610-runner-busy.png) -->
+
+![Extended Runner Performance Graph Example in Grafana](/assets/img/release-610-performancegraph.png)
 
 Beyond these highlights, 6.1.0 delivers one of the largest sets of customer-focused fixes in a single release—covering job editing and import, API compatibility, authentication and audit logging, cloud integrations (AWS, Azure, GCP, Jira, PagerDuty), and Runner reliability.
 
