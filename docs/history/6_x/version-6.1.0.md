@@ -1,7 +1,7 @@
 ---
 
 title: "6.1.0 Release Notes"
-date: 2026-07-29
+date: 2026-08-03
 image: /images/chevron-logo-red-on-white.png
 description: "Rundeck | Runbook Automation Releases 6.1.0 - Conditionals, Runner Metrics, and Customer Fixes"
 feed:
@@ -225,9 +225,6 @@ Fix audit log `userInfo.username` for job run events. Scheduled jobs no longer s
 [Here is a link to the full list of public PRs](https://github.com/rundeck/rundeck/pulls?q=is%3Apr+milestone%3A6.1.0+is%3Aclosed)
 
 
-
-
-
 ## Links
 
 - Download the Releases: [Open Source](https://www.rundeck.com/community-downloads/6.1.0) | [Self-Hosted](https://www.rundeck.com/enterprise-downloads/6.1.0)
@@ -239,7 +236,7 @@ Fix audit log `userInfo.username` for job run events. Scheduled jobs no longer s
 
 Name: <span style="color: olivedrab"><span class="glyphicon glyphicon-camera"></span> "Carina olivedrab camera"</span>
 
-Release Date: TBD
+Release Date: August 3rd, 2026
 
 
 ## Community Contributors

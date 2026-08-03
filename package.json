@@ -46,7 +46,7 @@
     "nunjucks": "^3.2.4",
     "path": "^0.12.7",
     "plyr": "^3.7.8",
-    "postcss": "^8.5.14",
+    "postcss": "^8.5.25",
     "sass-embedded": "^1.79.4",
     "semver-compare": "^1.0.0",
     "vidstack": "^1.11.19",
@@ -56,13 +56,13 @@
     "vuepress-plugin-components": "2.0.0-rc.107",
     "vuepress-shared": "2.0.0-rc.107",
     "vuepress-theme-hope": "2.0.0-rc.107",
-    "yargs": "^18.0.0"
+    "yargs": "^18.1.0"
   },
   "overrides": {
     "@apidevtools/json-schema-ref-parser": "^15.3.6",
     "nostics": "1.2.0",
     "fast-uri": "4.1.1",
-    "brace-expansion": "5.0.8"
+    "brace-expansion": "5.0.9"
   },
   "browserslist": [
     "> 1%",
