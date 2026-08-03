@@ -51,7 +51,7 @@
     "semver-compare": "^1.0.0",
     "vidstack": "^1.11.19",
     "vue": "^3.5.39",
-    "vuepress": "2.0.0-rc.30",
+    "vuepress": "2.0.0-rc.31",
     "vuepress-plugin-autometa": "0.1.13",
     "vuepress-plugin-components": "2.0.0-rc.107",
     "vuepress-shared": "2.0.0-rc.107",
