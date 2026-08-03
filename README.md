@@ -88,8 +88,8 @@ git push -f origin v4.13.0-20230515
 For maintenance to docs on previous versions, simply switch to or create the branch:
 ```bash
 # For 3.2.8
-git checkout v3.2.8
-git checkout -b 3.2.8
+git checkout 6.1.0
+git checkout -b 6.1.0
 git push origin
 ```
 
