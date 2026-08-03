@@ -3988,9 +3988,9 @@ Obtain metrics over the result set of an execution query. The query can be issue
 
 **Authorization required:** `read` access for the `event` resource type in the relevant project(s) — the same access required to read a project's execution history. The metrics are scoped to the projects you are authorized to read:
 
-* When a project is specified — the project variant (`/api/V/project/[PROJECT]/executions/metrics`) or a `project` query parameter — you must have that access on the named project, otherwise the request returns `403 unauthorized`.
-* When `jobIdListFilter` is supplied, you must have that access on every project that owns the referenced jobs, otherwise the request returns `403 unauthorized`.
-* For the global variant (`/api/V/executions/metrics`) with no `project` and no `jobIdListFilter`, the metrics are calculated only over the projects you are authorized to read (not over every project on the system); if you can read none, the request returns `403 unauthorized`.
+* When a project is specified — the project variant (`/api/V/project/[PROJECT]/executions/metrics`) or a `project` query parameter — you must have that access on the named project, otherwise the request returns `403 Unauthorized`.
+* When `jobIdListFilter` is supplied, you must have that access on every project that owns the referenced jobs, otherwise the request returns `403 Unauthorized`.
+* For the global variant (`/api/V/executions/metrics`) with no `project` and no `jobIdListFilter`, the metrics are calculated only over the projects you are authorized to read (not over every project on the system); if you cannot read any projects, the request returns `403 Unauthorized`.
 
 **Request:**
 
