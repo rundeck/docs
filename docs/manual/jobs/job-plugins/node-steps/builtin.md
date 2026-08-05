@@ -43,6 +43,13 @@ of the Job and its group.
 
 ![Job reference step type](/assets/img/fig0407.png)
 
+:::warning Runners affect referenced Jobs
+When you reference a Job from another project, Runner usage and configuration can affect the execution flow. The Runner is chosen by the **parent project's** [Runner Selection](/administration/runner/runner-management/project-dispatch-configuration.md) setting, not the referenced Job's project:
+
+- **Automatic:** Runner selection is made in the parent project; the referenced Job's project configuration is not taken into account.
+- **Manual:** Runner selection is made per Job, and the referenced Job's project configuration is honored.
+:::
+
 The Job Reference form provides a Job browser to make it easier to
 select from the existing set of saved Jobs.
 Click the "Choose A Job..." link and navigate to the desired Job.
