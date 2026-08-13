@@ -14,7 +14,7 @@ const isHomePage = computed(() => pageData.value.frontmatter.home === true);
     <template #heroAfter>
       <div v-if="isHomePage"class="homepage-announce">
         <p>
-         <b>The <i>resources.rundeck.com</i> site has been consolidated here!  Check our our <a href='/learning/solutions/'>Solutions</a> page for Automation use cases. </b>
+         <b>The Rundeck MCP Server is now available for download! <a href='/mcp/'>Check out the documentation</a> for more information.</b>
         </p>
       </div>
     </template>
@@ -23,7 +23,7 @@ const isHomePage = computed(() => pageData.value.frontmatter.home === true);
     <template #sidebarTop>
       <div v-if="!isHomePage" class="sidebar-announce">
         <p>
-          <b>Process Automation On Prem</b> is now <b>Runbook Automation Self-Hosted</b>
+          <b><a href='/mcp/'>Checkout the new Rundeck MCP Server documentation!</a></b>
         </p>
       </div>
     </template>
