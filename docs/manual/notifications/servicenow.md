@@ -48,3 +48,14 @@ To use the plugin, configure this mandatory input:
 
 - assignment group: ServiceNow&reg; incident ID.
 - state: State code. If not set, the change will be in New status.
+
+## ServiceNow / Change / Note
+
+Notification plugin to add a note to a ServiceNow Change Request.
+
+### Usage
+
+To use the plugin, configure this mandatory input:
+
+- Change Request: ServiceNow Change Request number.
+- Note: Note to add.
