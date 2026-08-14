@@ -16,6 +16,11 @@ This almost always means `RUNDECK_DOCS_PATH` isn't resolving:
 2. Verify `RUNDECK_TOKEN` is valid and has the permissions the call needs.
 3. Verify `RUNDECK_API_VERSION` matches a version your instance actually supports.
 4. If the error mentions a timeout, the instance may be unreachable or overloaded — `RUNDECK_API_TIMEOUT_MS` controls how long the server waits before giving up (default 30 seconds).
+5. If the error is about an unrecognized endpoint or parameter, check your Rundeck version — see below.
+
+### `api_call` rejects an endpoint or parameter that looks correct
+
+Each MCP server release validates `api_call` requests against the OpenAPI spec current as of that release, and may expect endpoints or fields that don't exist on an older Rundeck/RBA instance. This is most likely to show up if the server is newer than **Rundeck 6.0**, the minimum supported version. Upgrading the Rundeck instance (or, if that's not possible, setting `RUNDECK_SKIP_OPENAPI_VALIDATE=1` to bypass the local check) usually resolves it — keeping in mind that use against older, untested versions isn't guaranteed to work correctly even with validation skipped.
 
 ### The Docker container won't start
 

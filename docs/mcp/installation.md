@@ -10,6 +10,7 @@ The Rundeck MCP Server is distributed two ways: as a Docker image (`rundeck/mcp`
 
 ## Prerequisites
 
+- **Rundeck 6.0 or later.** Each MCP server release is built against the OpenAPI spec current at release time and may expect endpoints that don't exist on older instances. Using the latest Rundeck/RBA release alongside the latest MCP server release is recommended. Older instances may work, but aren't tested.
 - A Rundeck or Runbook Automation instance URL.
 - An API token, generated from your Rundeck user profile page (**User Profile → Generate API Token**).
 - **Docker path:** a running Docker daemon (Docker Desktop, Rancher Desktop, etc.) — your MCP client starts a container on demand each time it connects.
