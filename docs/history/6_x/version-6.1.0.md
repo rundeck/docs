@@ -14,7 +14,7 @@ feed:
 
 ## Overview
 
-<!-- <VidStack src="youtube/REPLACE" poster="https://img.youtube.com/vi/REPLACE/maxresdefault.jpg"/> -->
+<VidStack src="youtube/LfEOeP2p7s4" poster="https://img.youtube.com/vi/LfEOeP2p7s4/maxresdefault.jpg"/>
 
 Rundeck 6.1.0 builds on the **[Conditional Logic Steps](/manual/jobs/conditional-logic.md)** Early Access feature introduced in [5.20.0](/history/5_x/version-5.20.0.md) by extending support to the **Node First** execution strategy. Conditional steps previously worked only with Sequential and Parallel workflows; they now work with Node First as well, so multi-node jobs that run the full workflow on one node before moving to the next can use the same if/unless branching based on job options, step outcomes, and runtime context. This release also enables **nested conditionals** for multi-level branching, and **error handlers and log filters on conditional substeps** (substep UI polish continues in a later release). Ruleset strategy remains unsupported for Conditional Logic.
 

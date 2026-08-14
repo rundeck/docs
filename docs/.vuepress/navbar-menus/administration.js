@@ -30,5 +30,9 @@ export default [
   {
     text: 'Clustering',
     link: '/administration/cluster/index'
+  },
+  {
+    text: 'Monitoring',
+    link: '/administration/monitoring/'
   }
 ]
