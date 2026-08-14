@@ -238,9 +238,9 @@ Rundeck workflow step that creates a Change Request in ServiceNow
 
 ## ServiceNow / Change / Note
 
-Rundeck workflow step that adds a Note to a Change Reqwuest
+Rundeck workflow step that adds a Note to a Change Request
 
-![ServiceNow / Change / Check State](/assets/img/servicenow-change-note.png)
+![ServiceNow / Change / Note](/assets/img/servicenow-change-note.png)
 
 - **Change Request**
 : Number of the change.

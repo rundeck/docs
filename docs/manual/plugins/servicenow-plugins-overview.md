@@ -21,9 +21,11 @@ These integrations allow operations teams to provide self-service mechanisms to 
 |[**Check Change State**](/manual/jobs/job-plugins/workflow-steps/servicenow.md#servicenow-change-check-state)|Job Step|Change|
 |[**Update Change State**](/manual/jobs/job-plugins/workflow-steps/servicenow.md#servicenow-change-update-state)|Job Step|Change|
 |[**Create Change Request**](/manual/jobs/job-plugins/workflow-steps/servicenow.md#servicenow-change-create)|Job Step|Change|
+|[**Add Change Note**](/manual/jobs/job-plugins/workflow-steps/servicenow.md#servicenow-change-note)|Job Step|Change|
 |[**Create Incident**](/manual/notifications/servicenow.md#servicenow-incident-create)|Notification|Incident|
 |[**Comment Incident**](/manual/notifications/servicenow.md#servicenow®-notification-plugins)|Notification|Incident|
 |[**Create Change Request**](/manual/notifications/servicenow.md#servicenow-change-create)|Notification|Change|
+|[**Add Note to Change Request**](/manual/notifications/servicenow.md#servicenow-change-note)|Notification|Change|
 |[**ServiceNow Node Source**](/manual/projects/resource-model-sources/servicenow.md#servicenow-node-source-enterprise)|Node Source|CMDB|
 </details>
 <br>
