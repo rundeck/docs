@@ -36,7 +36,7 @@ The Docker daemon needs to be *running*, not just installed (Docker Desktop, Ran
 
 ### Does `job_create` enforce our organization's coding standards?
 
-No. `job_create` and `job_validate` check structure only. See their entries in the [Tools Reference](tools.md) for exactly what that covers. Neither knows about organization-specific conventions like "secrets must come from a particular key storage path" or "job failures must trigger a specific notification."
+No. `job_create` and `job_validate` check structure only. See their entries in [Technical Capabilities](capabilities.md) for exactly what that covers. Neither knows about organization-specific conventions like "secrets must come from a particular key storage path" or "job failures must trigger a specific notification."
 
 If you want an assistant to apply house rules on top of what these tools generate, that's a job for a custom prompt or client-side skill layered on top of the MCP server, not a configuration option on `job_create` itself. The tool is deliberately generic, useful across every Rundeck/RBA setup rather than tuned to one.
 
@@ -50,4 +50,4 @@ This is expected. Rundeck enforces ACLs at the Runner level: there's no separate
 
 ### What happens if I call a tool without its required parameters?
 
-For most tools, you get back **guidance** (a markdown explanation of what's needed and why) instead of a hard error, so an assistant can recover and ask a follow-up question rather than dead-ending. See [Guidance mode](tools.md#guidance-mode) for exactly which tools support this and what triggers it. Malformed input (wrong type, invalid enum value) still returns a normal validation error.
+For most tools, you get back **guidance** (a markdown explanation of what's needed and why) instead of a hard error, so an assistant can recover and ask a follow-up question rather than dead-ending. See [Guidance mode](capabilities.md#guidance-mode) for exactly which tools support this and what triggers it. Malformed input (wrong type, invalid enum value) still returns a normal validation error.

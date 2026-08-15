@@ -10,9 +10,9 @@ A short checklist for running the MCP server against a real Rundeck instance, no
 
 - **Write an ACL policy scoped to that user, limiting it to what you're comfortable with an AI assistant doing.** Without one, that user (and therefore the assistant) has whatever access Rundeck's defaults grant. The ACL policy is the actual enforcement point, not the tools themselves (see the next item).
 
-  Start narrow (specific projects, read-only, no job execution) and widen it as you get comfortable. Validate any policy with `acl_validate` before submitting it with `acl_manage`. See [ACL Tools](tools.md#acl-tools).
+  Start narrow (specific projects, read-only, no job execution) and widen it as you get comfortable. Validate any policy with `acl_validate` before submitting it with `acl_manage`. See [ACL policies](capabilities.md#acl-policies).
 
-- **Review generated job definitions and ACL policies before they go anywhere.** `job_create`, `job_validate`, and `acl_validate` check structure only, not your organization's conventions or Rundeck's own server-side rules. See the [Tools Reference](tools.md) for exactly what each one covers.
+- **Review generated job definitions and ACL policies before they go anywhere.** `job_create`, `job_validate`, and `acl_validate` check structure only, not your organization's conventions or Rundeck's own server-side rules. See [Technical Capabilities](capabilities.md) for exactly what each one covers.
 
 - **Point it at a non-production instance first**, especially the first time you chain `job_create` into `api_call`'s import endpoint. Confirm the round-trip does what you expect before doing it against production.
 
@@ -22,6 +22,6 @@ A short checklist for running the MCP server against a real Rundeck instance, no
 
 ## Related
 
-- [Tools Reference](tools.md): what each tool actually checks vs. submits
+- [Technical Capabilities](capabilities.md): what each tool actually checks vs. submits
 - [Multiple Instances](multiple-instances.md): the `RUNDECK_INSTANCES` registry and file permissions
 - [FAQ & Troubleshooting](faq.md)

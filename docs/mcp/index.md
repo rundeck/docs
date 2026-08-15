@@ -17,7 +17,7 @@ Normally, getting an AI assistant to help with Rundeck means it's guessing: it d
 - **Validate and manage ACL policies**: catch a structural mistake before it's ever submitted, or list, read, create, update, and delete stored policies directly.
 - **Provision runners**: create system- or project-scoped Rundeck Runners on demand, on Docker, Kubernetes, Linux, or Windows.
 
-Under the hood, this runs on three MCP building blocks — **tools** (actions the assistant can call), **resources** (read-only documentation, addressed via `rundeck://` URIs), and **prompts** (guided, multi-step workflows) — but you shouldn't need to think about that distinction to use it. It only matters if you're building against the protocol directly; see the [Tools](tools.md), [Resources](resources.md), and [Prompts](prompts.md) references for that.
+Under the hood, this runs on three MCP building blocks — **tools** (actions the assistant can call), **resources** (read-only documentation, addressed via `rundeck://` URIs), and **prompts** (guided, multi-step workflows) — but you shouldn't need to think about that distinction to use it. It only matters if you're building against the protocol directly; see [Technical Capabilities](capabilities.md) for that.
 
 ## Quick start
 
@@ -39,7 +39,5 @@ Wire that command into your MCP client's configuration and you're connected. See
 - **[Best Practices](best-practices.md)**: set it up so the assistant can only do what you're comfortable with.
 - **[Configuration Reference](configuration.md)**: every environment variable the server reads, in one place.
 - **[Multiple Instances](multiple-instances.md)**: connect to more than one Rundeck instance (e.g. staging and production) from a single session.
-- **[Tools Reference](tools.md)**: every tool the server exposes, with parameters and examples.
-- **[Prompts Reference](prompts.md)**: the guided workflows available for common tasks.
-- **[Resources Reference](resources.md)**: the full `rundeck://` documentation catalog.
+- **[Technical Capabilities](capabilities.md)**: what the server can do, and what it doesn't cover.
 - **[FAQ & Troubleshooting](faq.md)**: common setup issues and questions.

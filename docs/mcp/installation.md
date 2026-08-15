@@ -36,7 +36,5 @@ Running a different client (Cursor, VS Code, Claude Desktop), or want to skip Do
 ## Next steps
 
 - [Best Practices](best-practices.md): set this up so the assistant can only do what you're comfortable with.
-- [Tools Reference](tools.md): what you can ask the assistant to do.
-- [Prompts Reference](prompts.md): guided workflows for common tasks.
-- [Resources Reference](resources.md): the documentation catalog available to the assistant.
+- [Technical Capabilities](capabilities.md): what the server can do, and what it doesn't cover.
 - [FAQ & Troubleshooting](faq.md): if something isn't working as expected.
