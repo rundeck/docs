@@ -1,6 +1,6 @@
 # Resources Reference
 
-Resources give an AI assistant read-only access to Rundeck documentation, addressed with `rundeck://` URIs. Some resources are self-contained (built into the server); others read from a local documentation checkout at `RUNDECK_DOCS_PATH` (see [Installation](installation.md)) and return "Resource not found" if that path isn't reachable.
+Resources give an AI assistant read-only access to Rundeck documentation, addressed with `rundeck://` URIs. Some resources are self-contained (built into the server); others read from a local documentation checkout at `RUNDECK_DOCS_PATH` (see [Configuration Reference](configuration.md); only relevant for the npx path) and return "Resource not found" if that path isn't reachable.
 
 Use [`docs_search`](tools.md#docs_search) to find the right URI when you don't already know it, then read the resource directly for the complete, authoritative content.
 
@@ -69,15 +69,15 @@ These read from `RUNDECK_DOCS_PATH` and mirror the structure of the published do
 
 | URI pattern | Content source |
 |---|---|
-| `rundeck://docs/manual` and `rundeck://docs/manual/{...path}` | User manual — jobs, nodes, executions, calendars, projects, key storage, and more. |
-| `rundeck://docs/administration` and `rundeck://docs/administration/{...path}` | Administration guides — installation, security, configuration, clustering. |
+| `rundeck://docs/manual` and `rundeck://docs/manual/{...path}` | User manual: jobs, nodes, executions, calendars, projects, key storage, and more. |
+| `rundeck://docs/administration` and `rundeck://docs/administration/{...path}` | Administration guides: installation, security, configuration, clustering. |
 | `rundeck://docs/developer` and `rundeck://docs/developer/{...path}` | Plugin development documentation. |
 | `rundeck://docs/developer/plugins` | Plugin development overview. |
 | `rundeck://docs/developer/plugin/{type}` | Documentation for a specific plugin type (e.g. `step-plugins`, `node-execution-plugins`, `file-copier-plugins`, `notification-plugins`). |
 | `rundeck://docs/rd-cli`, `rundeck://docs/rd-cli/commands`, `rundeck://docs/rd-cli/scripting`, `rundeck://docs/rd-cli/{topic}` | RD command-line interface documentation. |
 | `rundeck://docs/integrations/salesforce` | Salesforce integration guidance. |
 
-A few manual/administration topics are reachable under friendlier names than their underlying file path — for example `rundeck://docs/manual/nodes`, `.../executions`, `.../performance` (and its `metrics`/`monitoring` aliases), and `.../projects/aws-ssm`. These aliases are always included in `listResources()`, so you don't need to know the underlying file layout to find them.
+A few manual/administration topics are reachable under friendlier names than their underlying file path, for example `rundeck://docs/manual/nodes`, `.../executions`, `.../performance` (and its `metrics`/`monitoring` aliases), and `.../projects/aws-ssm`. These aliases are always included in `listResources()`, so you don't need to know the underlying file layout to find them.
 
 ## Quick-access shortcuts
 
@@ -92,4 +92,4 @@ A handful of frequently-needed topics are also reachable directly, without the `
 
 ## Discovering resources
 
-Call your MCP client's `resources/list` to get the full, current catalog — including every dynamically-discovered `docs/manual` and `docs/administration` path — rather than relying on this page to enumerate every leaf topic. This page documents the URI *scheme* and the categories it covers; the manual and administration trees in particular are large enough that new pages appear there independent of MCP server releases.
+Call your MCP client's `resources/list` to get the full, current catalog, including every dynamically-discovered `docs/manual` and `docs/administration` path, rather than relying on this page to enumerate every leaf topic. This page documents the URI *scheme* and the categories it covers; the manual and administration trees in particular are large enough that new pages appear there independent of MCP server releases.
