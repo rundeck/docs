@@ -33,10 +33,25 @@ Resource Model Document Formats.
 | `requireFileExists`         | true/false  | If true and the file is missing, causes a failure to load the nodes. (Default: false)                         |
 | `includeServerNode`         | true/false  | If true, include the Project's server node automatically. (Default: false)                                    |
 | `generateFileAutomatically` | true/false  | If true, create the file automatically if it is missing. (Default: false)                                     |
+| `writeable`                 | true/false  | If true, the file's contents can be viewed and edited from the Node Sources UI (Project Settings -> Edit Nodes -> Sources). (Default: false) |
 
 Table: Configuration properties for `file` Resource Model Source provider
 
 The value of `format` must be one of the supported Resource Model Document Formats. The built-in formats are: `resourcexml` or `resourceyaml`, but any format provided by a [Resource Format Plugin](#resource-model-document-formats) can be specified as well.
+
+### Path Restrictions for Writeable File Sources
+
+:::tip Security
+This behavior applies to `file` Resource Model Sources configured with `writeable=true`, whose contents can be viewed and edited in-browser from the Node Sources UI.
+:::
+
+When a `file` Node Source has `writeable` set to `true`, its `file` path is subject to validation before its contents can be viewed or saved from the Node Sources UI:
+
+* By default, the file path must resolve (after canonicalization, which prevents `../` traversal and symlink tricks) to a location inside the project's directory. Attempts to view or save a writeable file source pointing outside the project directory will fail with a validation error, and the incident is logged.
+* An administrator can allow additional directories outside the project directory by setting `rundeck.resourceModelSource.file.allowedBasePaths` in `rundeck-config.properties` to a comma-separated list of absolute paths. See [rundeck-config.properties](/administration/configuration/config-file-reference.md#rundeck-config-properties) for details.
+* As defense-in-depth, when viewing the file from the Node Sources UI, its contents must also parse successfully as one of the supported [Resource Model Document Formats](#resource-model-document-formats). If the file is not a valid Node Source document, the UI will show an empty editor with a warning rather than the raw file contents.
+
+This does not affect `file` Node Sources that are not marked `writeable`, nor does it restrict which paths Rundeck can read from at node-refresh time -- it only restricts what a project-configure user can view or overwrite via the interactive file editor.
 
 _Example:_
 
