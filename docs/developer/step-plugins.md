@@ -561,3 +561,7 @@ add a `scope` entry in the map for a configuration property:
       description: Enter the number of nodes to generate
       scope: Project
 ```
+
+::: warning Default Scope
+If `scope` is omitted, `WorkflowNodeStep` and `RemoteScriptNodeStep` properties default to `InstanceOnly` — the value is resolved **only** from the job/step configuration, with no fallback to Project- or Framework-level configuration. Explicitly set `scope: Instance` (or `Project`, if Framework-level fallback isn't needed) for any property that should be configurable above the individual job step. See [Default Scope When `scope` Is Omitted](/developer/plugin-properties.md#default-scope-when-scope-is-omitted).
+:::
