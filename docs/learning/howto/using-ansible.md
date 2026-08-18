@@ -101,6 +101,16 @@ Time for a quick test.
 
 To see the output you may need to switch to the _Log Output_ view.
 
+## Job Environment Variables
+
+Rundeck's job data context (job name, execution ID, the username who triggered the run, etc.) is forwarded to the Ansible process as `RD_JOB_*` environment variables, the same way it's already available to script steps. A playbook can read these to, for example, identify who is running it:
+
+``` yaml
+- name: log who triggered this run
+  debug:
+    msg: "Triggered by {{ lookup('ansible.builtin.env', 'RD_JOB_USERNAME') }}"
+```
+
 ## Inventory Yaml
 When Gather Facts is false, the inventory file is read as Yaml data.
 This avoids connection validation, significantly saving time and reducing CPU and RAM usage.
