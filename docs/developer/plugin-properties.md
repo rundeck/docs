@@ -86,10 +86,10 @@ If a property does not declare a `scope`, Rundeck applies a default — but **th
 
 This distinction matters because `InstanceOnly` and `Instance` behave very differently:
 
-- `Instance` resolves the job/step-level value, then falls back to Project-level configuration, then Framework/System-level configuration.
-- `InstanceOnly` resolves **only** the job/step-level value. It never falls back to Project or Framework/System configuration, even if a value is configured at those levels.
+- `Instance` resolves the instance-level value (for example, job/step configuration for step plugins), then falls back to Project-level configuration, then Framework-level configuration.
+- `InstanceOnly` resolves **only** the instance-level value. It never falls back to Project or Framework-level configuration, even if a value is configured at those levels.
 
-**Practical impact:** for the most common script-plugin service types — `WorkflowNodeStep` and `RemoteScriptNodeStep` — a property with no explicit `scope` will silently ignore any value configured at the Project or System level. There is no error or warning; the property simply resolves as if it were never configured outside the individual job step.
+**Practical impact:** for the most common script-plugin service types — `WorkflowNodeStep` and `RemoteScriptNodeStep` — a property with no explicit `scope` will silently ignore any value configured at the Project or Framework level. There is no error or warning; the property simply resolves as if it were never configured outside the individual job step.
 
 **Recommendation:** always declare `scope: Instance` explicitly for any property that should be configurable above the individual job/step level. Do not rely on the default, since it is inconsistent across plugin types and this is not obvious from the plugin.yaml format itself.
 
