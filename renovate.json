@@ -59,6 +59,12 @@
       "groupName": "atlassian jira rest client"
     },
     {
+      "description": "vuepress core (vuepress, @vuepress/bundler-vite, @vuepress/client, etc.) and the vuepress-theme-hope ecosystem (@vuepress/helper, @vuepress/plugin-*, @vuepress/theme-default, vuepress-shared, vuepress-plugin-components, vuepress-theme-hope) are still pre-1.0 RC releases from two separately-versioned monorepos that pin exact peer-dep versions of each other. Bumping only one side leaves duplicate/incompatible @vuepress/client instances installed (breaks useClientData()/usePageData()) — group them into one PR and require manual review so a partial, incompatible bump can't land unnoticed",
+      "matchPackageNames": ["vuepress", "/^@vuepress\\//", "vuepress-shared", "vuepress-plugin-components", "vuepress-theme-hope"],
+      "groupName": "vuepress ecosystem (manual review - cross-package version coupling)",
+      "dependencyDashboardApproval": true
+    },
+    {
       "description": "Group low-risk GitHub Actions updates",
       "matchManagers": ["github-actions"],
       "groupName": "github actions"
