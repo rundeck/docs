@@ -291,7 +291,7 @@ config:
 | `required` | No | If true, value must be provided (default: false) |
 | `default` | No | Default value to use |
 | `values` | For Select types | Comma-separated list of allowed values |
-| `scope` | No | Resolution scope (default: Instance). See [Property Scopes](/developer/plugin-properties.md#property-scopes) |
+| `scope` | No | Resolution scope. **The default when omitted depends on the service type** — `WorkflowNodeStep` and `RemoteScriptNodeStep` default to `InstanceOnly` (no fallback to Project/System config), while `NodeExecutor`, `FileCopier`, and `ResourceModelSource` default to `Instance`. Always set `scope: Instance` explicitly if the property should be configurable above the individual job/step level. See [Default Scope When `scope` Is Omitted](/developer/plugin-properties.md#default-scope-when-scope-is-omitted) |
 | `renderingOptions` | No | Map of rendering options. See [Property Rendering Options](/developer/plugin-properties.md#property-rendering-options) |
 
 ### Example Properties

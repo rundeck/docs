@@ -413,7 +413,7 @@ private String endpoint;
 | `description` | String | Help text |
 | `required` | boolean | Whether value is required (default: false) |
 | `defaultValue` | String | Default value |
-| `scope` | PropertyScope | Resolution scope (default: InstanceOnly) |
+| `scope` | PropertyScope | Resolution scope. **The default when omitted depends on the service type** — `WorkflowStep`, `WorkflowNodeStep`, and `RemoteScriptNodeStep` default to `InstanceOnly` (no fallback to Project/System config), while `NodeExecutor`, `FileCopier`, `ResourceModelSource`, and `Notification` default to `Instance`. Always set `scope = PropertyScope.Instance` explicitly if the property should be configurable above the individual job/step level. See [Default Scope When `scope` Is Omitted](/developer/plugin-properties.md#default-scope-when-scope-is-omitted) |
 
 ### Property Types
 
