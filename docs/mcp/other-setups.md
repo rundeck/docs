@@ -8,7 +8,7 @@ The [Installation](installation.md) page covers the fastest path: Docker with Cl
 |---|---|---|
 | Requires | Docker daemon running | Node.js 20+ |
 | Docs search / resources | Work out of the box | Require `RUNDECK_DOCS_PATH` set explicitly (see below) |
-| `api_call` OpenAPI validation | Never active: the image's docs checkout excludes the spec file (see [FAQ](faq.md)) | Active if `RUNDECK_DOCS_PATH` points at a full docs checkout |
+| `api_call` OpenAPI validation | Active out of the box | Active if `RUNDECK_DOCS_PATH` points at a full docs checkout |
 
 ### Claude Desktop / Cursor
 

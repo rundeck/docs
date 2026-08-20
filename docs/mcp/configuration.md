@@ -16,7 +16,7 @@ Every environment variable the MCP server reads, in one place. If you just want 
 |---|---|---|---|
 | `RUNDECK_API_VERSION` | Docker & npx | `59` | Rundeck API version appended to the base URL. Only needed if your instance runs a different supported version. |
 | `RUNDECK_API_TIMEOUT_MS` | Docker & npx | `30000` | Timeout for `api_call`'s underlying HTTP request (also bounds `runner_create` and `acl_manage`). |
-| `RUNDECK_SKIP_OPENAPI_VALIDATE` | Docker & npx | — | Set to `1` to disable pre-request validation of `api_call` parameters against the shipped OpenAPI spec. Has no practical effect on Docker, where that spec file isn't present to begin with — see [FAQ](faq.md). |
+| `RUNDECK_SKIP_OPENAPI_VALIDATE` | Docker & npx | — | Set to `1` to disable pre-request validation of `api_call` parameters against the shipped OpenAPI spec. |
 
 ## Documentation source (npx only)
 
@@ -27,6 +27,12 @@ The Docker image resolves its own bundled documentation automatically at a fixed
 | `RUNDECK_DOCS_PATH` | npx only | Auto-detected (rarely resolves for an MCP client) | Path to a Rundeck documentation checkout on disk. Without it, `docs_search`, the documentation resources, and OpenAPI-based validation in `api_call` silently come up empty. |
 | `RUNDECK_DOCS_BRANCH` | npx only | `4.0.x` | Branch of [rundeck/docs](https://github.com/rundeck/docs) to download when no documentation is already present. |
 | `SKIP_RUNDECK_DOCS_DOWNLOAD` | npx only | — | Set to `1` to skip the automatic documentation download during `npm install`/`npm ci`. |
+
+## Safety
+
+| Variable | Applies to | Default | Purpose |
+|---|---|---|---|
+| `SKIP_ELICITATION` | Docker & npx | — | Set to `1` or `true` to bypass the confirmation prompt for destructive actions (`api_call` `DELETE`/credential regeneration, `acl_manage` `update`/`delete`) and let them proceed without asking. A server-operator setting, not something an agent can set via tool parameters. See [Destructive-action confirmation](capabilities.md#destructive-action-confirmation). |
 
 ## Diagnostics
 

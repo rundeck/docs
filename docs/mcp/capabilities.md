@@ -14,6 +14,10 @@ For most tools (`api_call`, `job_create`, `job_validate`, `runner_create`, `acl_
 
 `api_call` executes a request against your live instance — querying projects, jobs, executions, or nodes, or triggering a run. `api_list` discovers available endpoints by category first, if you're not sure what's there. Requires `RUNDECK_URL` and `RUNDECK_TOKEN`.
 
+### Destructive-action confirmation
+
+A `DELETE` request through `api_call` (including a runner's `regenerateCreds` endpoint) and `acl_manage` calls with `action: "delete"` or `"update"` all pause before reaching Rundeck: the assistant's MCP client is asked to confirm the action with you directly, and the call only proceeds once you approve. A decline is a hard stop — there's no retry path around it. If your client can't prompt you this way, the call is blocked outright rather than skipped silently. Server operators can disable the check entirely with `SKIP_ELICITATION` (see [Configuration Reference](configuration.md)).
+
 ### Job definitions
 
 `job_create` generates a job definition (YAML or JSON) from a plain-language description — workflow steps, node filters, options, schedules — without calling your instance. `job_validate` checks an existing definition's structure before import.
@@ -28,7 +32,7 @@ For most tools (`api_call`, `job_create`, `job_validate`, `runner_create`, `acl_
 
 ### ACL policies
 
-Rundeck ACL policies are easy to get subtly wrong by hand — a missing `context`, `by`, or `allow`/`deny` clause silently turns into a denied access check with no error at edit time. `acl_validate` checks a policy's structure offline before it's ever submitted (not a substitute for Rundeck's own server-side validation). `acl_manage` lists, gets, creates, updates, or deletes a stored policy file at system or project scope. See [Best Practices](best-practices.md) for scoping a policy to the user whose token the assistant uses.
+Rundeck ACL policies are easy to get subtly wrong by hand — a missing `context`, `by`, or `allow`/`deny` clause silently turns into a denied access check with no error at edit time. `acl_validate` checks a policy's structure offline before it's ever submitted (not a substitute for Rundeck's own server-side validation). `acl_manage` lists, gets, creates, updates, or deletes a stored policy file at system or project scope; `update` and `delete` require confirmation (see [Destructive-action confirmation](#destructive-action-confirmation)). See [Best Practices](best-practices.md) for scoping a policy to the user whose token the assistant uses.
 
 ### Documentation search
 

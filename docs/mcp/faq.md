@@ -20,13 +20,7 @@ This almost always means `RUNDECK_DOCS_PATH` isn't resolving:
 
 ### `api_call` rejects an endpoint or parameter that looks correct
 
-Each MCP server release validates `api_call` requests against the OpenAPI spec current as of that release, and may expect endpoints or fields that don't exist on an older Rundeck/RBA instance. This is most likely to show up if your instance predates **Rundeck 6.1.0** — the release that introduced API v59, the server's default `RUNDECK_API_VERSION`. Upgrade the Rundeck instance, or, if that's not possible, set `RUNDECK_SKIP_OPENAPI_VALIDATE=1` to bypass the local check.
-
-This can't be what's happening on the **Docker image**, though: see the next entry.
-
-### On Docker, `api_call` never rejects a bad parameter, even ones that should fail
-
-This validation only runs if the OpenAPI spec file (`rundeck-api.yml`) is present under `RUNDECK_DOCS_PATH`. The Docker image fetches documentation via a sparse checkout that deliberately excludes `.vuepress/public/**` (a large, mostly-media tree), but that's exactly where the spec file lives. Without it, `api_call` skips query/body-key validation silently, independent of `RUNDECK_SKIP_OPENAPI_VALIDATE`; everything else `api_call` does (making the request, handling the response) is unaffected. If you need this validation, use the npm/`npx` path instead, with `RUNDECK_DOCS_PATH` pointed at a full docs checkout that includes `.vuepress/public/files/`.
+Each MCP server release validates `api_call` requests against the OpenAPI spec current as of that release, and may expect endpoints or fields that don't exist on an older Rundeck/RBA instance. This is most likely to show up if your instance predates **Rundeck 6.1.0** — the release that introduced API v59, the server's default `RUNDECK_API_VERSION`. Upgrade the Rundeck instance, or, if that's not possible, set `RUNDECK_SKIP_OPENAPI_VALIDATE=1` to bypass the local check. This applies on both Docker and npx.
 
 ### The Docker container won't start
 
@@ -47,6 +41,10 @@ This is expected. Rundeck enforces ACLs at the Runner level: there's no separate
 ### Why does the npm/`npx` setup need `RUNDECK_DOCS_PATH`, but Docker doesn't?
 
 `npm install` downloads a documentation checkout as part of its postinstall step, but into the installed package's own directory, not the working directory your MCP client happens to launch the process from. The server's auto-detection logic only looks in a few `cwd`-relative locations, so it won't find that download unless your client's working directory happens to line up. Setting `RUNDECK_DOCS_PATH` explicitly sidesteps the guesswork. The Docker image doesn't have this problem because its documentation lands at a fixed, known path inside the container every time.
+
+### Why did the assistant stop and ask me to confirm before deleting or updating something?
+
+Destructive actions — an `api_call` `DELETE` (including regenerating a runner's credentials) or `acl_manage` with `update`/`delete` — always pause for your explicit confirmation before they reach Rundeck; the assistant can't answer on your behalf. See [Destructive-action confirmation](capabilities.md#destructive-action-confirmation). If you're a server operator and want to remove this check entirely, set `SKIP_ELICITATION` (see [Configuration Reference](configuration.md)) — there's no way to bypass it per-call from the assistant side.
 
 ### What happens if I call a tool without its required parameters?
 
