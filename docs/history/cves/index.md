@@ -60,3 +60,6 @@ These are the Security Advisories Rundeck has issued in the past.  It is always 
 * [CVE-2025-48924 Issue in Apache Commons Lang](cve-2025-48924.md).
 * [CVE-2025-41249 Spring Framework annotation detection mechanism may not correctly resolve annotation](cve-2025-41249.md).
 * [CVE-2025-66021 Issue with OWASP Java HTML Sanitizer](cve-2025-66021.md).
+* [CVE-2026-13500 Code Injection in ANTLR4 Grammar Action Block Handler](cve-2026-13500.md).
+* [CVE-2026-13501 Command Injection in ANTLR4 Go Target (gofmt)](cve-2026-13501.md).
+* [CVE-2026-13503 Path Traversal in ANTLR4 tokenVocab Grammar Option Handler](cve-2026-13503.md).
