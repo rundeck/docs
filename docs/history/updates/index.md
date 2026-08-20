@@ -1,7 +1,7 @@
 ---
 title: Recent Updates
 description: Latest merged changes from the Rundeck development team
-date: 2026-07-27T21:13:28.424Z
+date: 2026-08-20T21:54:14.540Z
 feed: true
 index: true
 ---
@@ -10,222 +10,124 @@ index: true
 
 Stay up to date with the latest changes and improvements from the Runbook Automation development team.  
 
-This page shows recently merged pull requests from both the Runbook Automation product repository and the open source Rundeck repository merged since the last self-hosted release of [6.0.1](/history/6_x/version-6.0.1.md) on July 15, 2026.
+This page shows recently merged pull requests from both the Runbook Automation product repository and the open source Rundeck repository merged since the last self-hosted release of [6.1.0](/history/6_x/version-6.1.0.md) on August 3, 2026.
 
 ## Recent Changes
 
 
-#### ::circle-dot:: Runner operation metrics: Busy status, live utilization bars, and expandable stat cards 
+#### ::circle-dot:: Generate API and webhook tokens using a CSPRNG  [PR #10436](https://github.com/rundeck/rundeck/pull/10436)
 
 
-  Runners now expose real-time operation metrics in the Runner Management UI. Each runner and replica row shows a live utilization progress bar (running / max operations) in the new **Operations** column. Clicking a row expands a panel with five stat cards — Utilization %, Running, Max, Queued, and Completed — giving operators an at-a-glance view of capacity without leaving the management page.
+  &lt;!-- If you have suggested content that would describe this PR to other Rundeck community users, please enter it here.--&gt;
+  Fixed: API and webhook auth tokens are now generated using a cryptographically secure random number generator (CSPRNG) instead of a non-cryptographic PRNG.
 
-  Runners also report a new `Busy` health status (yellow badge) when their operation queue backs up under heavy concurrent job load. Previously this showed as `Unhealthy` (red) — the same signal as a broken or offline runner — making it impossible to distinguish capacity saturation from an actual failure. Older runners that don&#39;t yet report metrics show a warning in the expand panel prompting an upgrade.
+#### ::circle-dot:: Fix plaintext password storage in JettyCompatibleSpringSecurityPasswordEncoder  [PR #10475](https://github.com/rundeck/rundeck/pull/10475)
 
-#### ::circle-dot:: Fix compact report processor silently disabled by bootstrap cleanup failures 
 
+  Fixed: user account passwords authenticated via the realm.properties (non-JAAS) path are now hashed with BCrypt when set/changed, instead of being stored in plaintext.
 
-  &lt;!--
+  🤖 Generated with [Claude Code](https://claude.com/claude-code)
 
-  To include as part of release notes, label as &quot;release-notes/include&quot; and fill in this section.  Copilot can help.
+#### ::circle-dot:: Fix CVE-2026-64607 in httpclient5 buildscript classpath  [PR #10474](https://github.com/rundeck/rundeck/pull/10474)
 
-  --&gt;
 
-#### ::circle-dot:: Fix: API REST metrics trigger SQL errors  [PR #10186](https://github.com/rundeck/rundeck/pull/10186)
+  This release addresses CVE-2026-64607 in Apache HttpClient 5 build dependencies (Medium severity). The affected library is used during build only and is not shipped as part of the Rundeck application package.
 
+#### ::circle-dot:: Normal users are not able to see job history any more  [PR #10476](https://github.com/rundeck/rundeck/pull/10476)
 
-  Fixed an issue where retrieving execution metrics through the REST API generated repeated SQL conversion errors in the logs when using the H2 database, ensuring clean logs and reliable metrics responses.
 
-#### ::circle-dot:: Bump linkify-it to 5.0.1+ to fix ReDoS CVEs 
+  Fixed a bug where users whose ACL granted only the job `view` action (without `read` or
+  `view_history`) could not see execution history from the executions API, even though the
+  correct total count was reported.
 
+#### ::circle-dot:: Add certRoleName config metadata for Vault storage cert auth 
 
-  Addressed two security advisories (CVE-2026-48801 and CVE-2026-59887) in a third-party library used to render Markdown links in the Rundeck UI. The vulnerability could allow specially crafted text to consume excessive CPU and slow down the interface; this update upgrades the affected library to a fixed version.
 
-#### ::circle-dot:: Parse blankIfUnexpandable from script plugin YAML config  [PR #10319](https://github.com/rundeck/rundeck/pull/10319)
+  Added an optional **Cert Role Name** setting for Vault Key Storage when using TLS certificate authentication. Some Vault deployments require an explicit certificate role name in the login request and return permission denied without it; you can now configure this in System Configuration under Key Storage (Advanced). When left unset, Vault certificate authentication behaves as before.
 
+#### ::circle-dot:: Add Japanese (ja) translations for Rundeck Pro UI 
 
-  Fixed an issue where shell variable references such as `${VAR}` and `${VAR:-default}` in scripts run by script-based step plugins could be stripped out before the shell had a chance to evaluate them, causing those variables to resolve to empty values. Script plugins can now preserve these expressions so they expand correctly at runtime.
 
-#### ::circle-dot:: Bump attribute-match-node-enhancer to 1.0.3  [PR #10331](https://github.com/rundeck/rundeck/pull/10331)
+  Added Japanese (ja) translations for Rundeck Pro&#39;s Enterprise UI, including calendars, cluster management, runners, licensing, security, job favorites, and other Pro-specific features. Add `?lang=ja` to a project URL to switch to Japanese for the session. Some areas are not yet translated, including parts of the Runner UI and OSS screens such as Dashboard and Project Settings.
 
+#### ::circle-dot:: Recognize JDBC/native Jetty JAAS role principals  [PR #10454](https://github.com/rundeck/rundeck/pull/10454)
 
-  The bundled Attribute Match Node Enhancer plugin now supports attribute value substitution, letting you build new node attributes and tags from a node&#39;s existing attributes using `${attribute}` syntax (for example, `image-${ec2.imageId}` or `endpoint=${host}:${port}`). This makes it possible to derive richer, dynamic metadata for nodes without external scripting. The update also adds a new &quot;is present&quot; match operator (`~~`), so enhancement rules can target nodes based simply on whether an attribute exists, regardless of its value, complementing the existing &quot;not present&quot; (`!!`) operator.
 
-#### ::circle-dot:: add date formater for api/** endpoints  [PR #10318](https://github.com/rundeck/rundeck/pull/10318)
+  Fixed a bug where users authenticating via JAAS with a native Jetty login module (e.g.
+  `JDBCLoginModule`) could log in successfully but were assigned no roles, blocking all project
+  access. Roles are now correctly granted for these login modules, matching the behavior already
+  restored for LDAP in 6.0.1.
 
+#### ::circle-dot:: Fix execution summary Start Time column Showing Step Identifiers  [PR #10440](https://github.com/rundeck/rundeck/pull/10440)
 
-  Fixed a change in API date formatting introduced by the Grails 7 / Spring Boot 3 upgrade, where date/time fields in API responses began including milliseconds (e.g. `2026-03-25T21:16:50.123Z`). API date values are once again returned in second-precision UTC ISO-8601 format (e.g. `2026-03-25T21:16:50Z`) across both JSON and XML and for all API versions, restoring compatibility for existing API integrations.
 
-  Jira: [https://pagerduty.atlassian.net/browse/RUN-4550](url)
-  
-  This pull request standardizes the serialization of all `Date` values in Rundeck API responses to use second-precision W3C/ISO-8601 format in UTC (e.g., `2026-03-25T21:16:50Z`), removing milliseconds. This change restores backward compatibility for API consumers after an upgrade to Grails 7 / Spring Boot 3, which began including milliseconds by default. The update is enforced for all API versions and is covered by comprehensive tests across affected endpoints.
-  
-  **API Date Serialization Standardization:**
-  
-  * Introduced a custom marshaller in `ApiMarshallerRegistrar` to serialize all `Date` values in API JSON and XML responses with second-precision W3C/ISO-8601 format (no milliseconds), and registered it for every API version. [[1]](diffhunk://#diff-6afb34835773788e379a495581b6dd0cb550244b8808fb69458313141c32ccaaR24-R52) [[2]](diffhunk://#diff-6afb34835773788e379a495581b6dd0cb550244b8808fb69458313141c32ccaaR92-R96)
-  * Updated `RdExecutionController` to configure Jackson&#39;s `ObjectMapper` to use the same date format for consistency in controller responses. [[1]](diffhunk://#diff-2b3ad1e0a2a304a03bfb4120c23f81bb53bba12166209a5629a2157ada3dadbbR3-R9) [[2]](diffhunk://#diff-2b3ad1e0a2a304a03bfb4120c23f81bb53bba12166209a5629a2157ada3dadbbR24-R28)
-  
-  **Test Coverage and Verification:**
-  
-  * Added `ApiDateMarshallerSpec` to verify that all relevant DTOs and endpoints serialize dates without milliseconds, for both JSON and XML, across all API versions.
-  * Updated and extended tests in `ApiControllerSpec`, `MenuControllerSpec`, and `RdExecutionControllerSpec` to assert that API responses do not include milliseconds in date fields. [[1]](diffhunk://#diff-62006b966c57c204ead5071093e47ac70df5e0ff3888cab22a7737666a1ccfd9R136-R210) [[2]](diffhunk://#diff-62006b966c57c204ead5071093e47ac70df5e0ff3888cab22a7737666a1ccfd9L361-R437) [[3]](diffhunk://#diff-62006b966c57c204ead5071093e47ac70df5e0ff3888cab22a7737666a1ccfd9L418-R494) [[4]](diffhunk://#diff-6e07be9b49269a1459df118da029d8635ccddda6dd5d6d8cb12c714ed0e5b9cdR19-R21) [[5]](diffhunk://#diff-6e07be9b49269a1459df118da029d8635ccddda6dd5d6d8cb12c714ed0e5b9cdR2428-R2438) [[6]](diffhunk://#diff-6e07be9b49269a1459df118da029d8635ccddda6dd5d6d8cb12c714ed0e5b9cdL2439-R2448) [[7]](diffhunk://#diff-6e07be9b49269a1459df118da029d8635ccddda6dd5d6d8cb12c714ed0e5b9cdR2460-R2461) [[8]](diffhunk://#diff-e5d266ba462bf481bc5e162a7a36e8da4b428538f671aed204a8d38c4d36a60aR32-R47)
-  
-  This ensures consistent, backward-compatible date formatting for all API consumers, preventing regressions and aligning with previous API behavior.
+  Fixed an issue on the Execution Summary page where the Start Time column for collapsed node rows showed step identifiers (such as &quot;Step: 2/1&quot;) instead of an actual timestamp when viewing conditional or branching workflows. The Start Time column now displays the node&#39;s earliest step start time.
 
-#### ::circle-dot:: Persist useName in job reference step to prevent UUID reversion  [PR #10314](https://github.com/rundeck/rundeck/pull/10314)
+#### ::circle-dot:: windows-cmd-quoting 
 
 
-  Fixed an issue in the workflow editor where a Job Reference step set to reference a job by name would revert to referencing by UUID the next time the step was edited. The name-vs-UUID selection is now saved with the step and preserved across edits.
+  Fixed an issue where Windows job commands failed when expanded job options or global variables contained spaces or special characters and the remote shell was cmd.exe (including WinRM with the cmd shell and SSH to Windows nodes). After a Rundeck 6.0 security change, those values were quoted with single quotes, which cmd.exe does not treat as string delimiters—breaking commands such as `powershell -File` when the script path contained spaces (for example, paths ending in `.ps1&#39;`). Windows argument quoting now uses proper double-quote escaping so values are passed as a single argument while preserving injection protections against shell metacharacters such as `|`, `&gt;`, and `&amp;&amp;`.
 
-#### ::circle-dot:: Fix label not being saved  [PR #10235](https://github.com/rundeck/rundeck/pull/10235)
+#### ::circle-dot:: Migrate bundled AWS Plugins from AWS SDK v1 to v2 
 
 
-  Fixed an issue where the label (description) on a Job Reference step was not saved—both when adding a new job reference step and when editing an existing one—causing the label to disappear or revert after saving. Job Reference step labels are now preserved correctly.
+  Completed the migration of Rundeck Pro AWS cloud plugins to AWS SDK v2 for the remaining services—including SSM run commands, S3, Athena, load balancers, EKS, Autoscaling, and CloudWatch Logs—following the earlier EC2, ECS, RDS, and Lambda migration. AWS integrations in cloud-aws-plugins now use the current SDK throughout, improving compatibility with modern AWS APIs and credential handling including SSM assume-role.
 
-#### ::circle-dot:: add a new index to the execution table  [PR #9964](https://github.com/rundeck/rundeck/pull/9964)
+#### ::circle-dot:: Update nanoid for CVE-2026-67213  [PR #10438](https://github.com/rundeck/rundeck/pull/10438)
 
 
-  Add indexes on `execution`, `referenced_execution`, and `job_file_record` to improve the performance of execution history queries and the Execution API.
+  This release addresses CVE-2026-67213 by updating the nanoid JavaScript dependency used in the Rundeck web UI to version 3.3.17, fixing a denial-of-service vulnerability that could cause excessive CPU use during ID generation.
 
-#### ::circle-dot:: - Fix Node UI paging to respect rundeck.gui.matchedNodesMaxCount, and a…  [PR #10234](https://github.com/rundeck/rundeck/pull/10234)
+#### ::circle-dot:: Fix CVE-2026-71497 by forcing jsoup 1.23.1  [PR #10439](https://github.com/rundeck/rundeck/pull/10439)
 
 
-  Fixed incorrect paging on the Nodes page that occurred when the number of nodes shown per page was increased via the `rundeck.gui.matchedNodesMaxCount` setting. Page counts and the pager controls at the bottom of the page now calculate correctly based on the configured page size.
+  Upgraded jsoup to 1.23.1 to address CVE-2026-71497 in OpenAPI tooling dependencies.
 
-#### ::circle-dot:: Fix System Report runner health counts always reporting 0 
+#### ::circle-dot:: Azure Key Vault: preserve all *:encrypted flags 
 
 
-  Fixed an issue where the System Report showed all runner health counts as zero (healthy, unhealthy, new, unknown, and down) even when runners were active and healthy. The report now accurately reflects each runner&#39;s current health status, so operators relying on the System Report get a correct view of their runner fleet.
+  Fixed an issue where secrets stored in Azure Key Vault could become undecryptable on Rundeck 6.0, causing jobs to fail with invalid environment variable values when reading Key Storage entries. When a secret carried more than one encryption metadata flag, only the first flag was preserved in Azure tags, which could drop the active encryption converter&#39;s marker and leave Rundeck returning raw ciphertext instead of the decrypted value. All encryption flags are now preserved when secrets are written to and read from Azure Key Vault. Secrets already saved with a missing flag must be re-saved through Rundeck or have the missing tag restored manually in Azure Key Vault.
 
-#### ::circle-dot:: Fix ACL policy API returning JSON instead of YAML  [PR #10295](https://github.com/rundeck/rundeck/pull/10295)
+#### ::circle-dot:: Publish rundeckpro Docker images as multi-platform (linux/amd64 + linux/arm64) 
 
 
-  Fixed an issue where the ACL policy API returned JSON with the policy wrapped in a `contents` field even when YAML was requested via the `Accept: application/yaml` header. The endpoint now correctly returns the raw YAML policy document again, restoring compatibility for ACL import, diff, and backup tooling that relies on YAML responses.
+  &lt;!-- CI/build-only change, no user-facing runtime behavior change until images are actually published multi-arch. Not marked for release notes. --&gt;
 
-#### ::circle-dot:: Fix i18n fallback for dynamically registered plugin messages  [PR #10246](https://github.com/rundeck/rundeck/pull/10246)
+#### ::circle-dot:: Enforce project-level authorization on execution metrics API  [PR #10419](https://github.com/rundeck/rundeck/pull/10419)
 
 
-  Fixed an issue where plugin-provided i18n messages would show raw translation keys instead of English text for users whose locale was not `en_US` and a specific key was missing in their locale&#39;s message catalogue.
+  The execution metrics API (`/executions/metrics`) now enforces project-level authorization: metrics are only returned for projects the requesting user is authorized to read.
 
-#### ::circle-dot:: Fix compacted execution output API returning mixed-type entries array  [PR #10219](https://github.com/rundeck/rundeck/pull/10219)
+#### ::circle-dot:: Fix Remote URL option Auth Type lost after saving and reopening job  [PR #10413](https://github.com/rundeck/rundeck/pull/10413)
 
 
-  Fixed the compacted execution output API (`GET /api/*/execution/{id}/output?compacted=true&amp;format=json`), which previously returned a mix of full objects and bare strings in its `entries` array—causing errors in clients that expected every entry to be an object with a `log` field. As of API v59, all compacted log entries are returned as consistent objects (omitting only unchanged fields), while API v58 and earlier keep their existing behavior for backward compatibility.
+  Fixed: Remote URL job option&#39;s Auth Type (Bearer Token / Basic / API Key) is now correctly restored when reopening a saved job for editing.
 
-#### ::circle-dot:: Add option to choose what value is used for GCP Resource Model hostname 
+#### ::circle-dot:: SCM: Restore plugin resilience when Git server is temporarily unreachable  [PR #10214](https://github.com/rundeck/rundeck/pull/10214)
 
 
-  The GCP resource model source now lets you choose which value is used as a discovered node&#39;s hostname—instance name, internal IP, or external IP—and set a default username for those nodes. Discovered GCP nodes also now expose both their internal IP and external IP as node attributes, making it easier to connect to instances across peered VPCs or different GCP projects.
+  Fixed SCM plugin (git-export/git-import) incorrectly disabling itself when the Git server is temporarily unreachable. The plugin now recovers automatically when connectivity is restored, without requiring manual re-activation, and without repeatedly hammering the Git server during an outage — after fast retries are exhausted it polls once per `scmLoader.slowPoll.interval` (default 60s) instead of giving up. Users will see a clear &quot;Git server unavailable&quot; warning in the UI during outages instead of a stale or missing status. Also adds a configurable fetch/pull timeout for the git plugin (default 30s) to prevent a hung remote from blocking indefinitely.
 
-#### ::circle-dot:: Fix Jira plugin createmeta fallback for Jira Cloud team-managed projects 
+#### ::circle-dot:: Allow Java 21 and 25 in preinst.sh version check  [PR #10410](https://github.com/rundeck/rundeck/pull/10410)
 
 
-  Fixed Jira issue creation failing on Jira Cloud team-managed projects with a &quot;Failed to find issue type&quot; error even when the issue type existed. Both the Jira &quot;Create Issue&quot; workflow/job step and the Jira issue-creation notification now fall back to a supported issue-type lookup so issues are created successfully in these projects, while behavior for Jira Server / Data Center is unchanged.
+  Fixed RPM installation failing on hosts running Java 21 or 25 because the installer incorrectly rejected those JVM versions. The RPM pre-install check now accepts Java 17, 21, and 25, matching Rundeck&#39;s documented system requirements and allowing installation on newer Linux distributions such as RHEL/Rocky Linux 10 that no longer ship Java 17.
 
-#### ::circle-dot:: Bump py-winrm-plugin to 3.2.0  [PR #10205](https://github.com/rundeck/rundeck/pull/10205)
+#### ::circle-dot:: Fix blackout calendar ignoring non-GMT schedule TimeZone 
 
 
-  Resolved intermittent failures of Windows (WinRM) jobs using Kerberos authentication when many executions run concurrently. Previously, running large numbers of Kerberos WinRM jobs at the same time could fail with `GSSError: Credential cache is empty` because all executions shared a single Kerberos credential cache. Each execution now uses its own isolated credential cache, so high-concurrency WinRM workloads run reliably.
+  Fixed an issue where blackout (and allowed) calendars defined with a specific date or date range ignored the schedule&#39;s configured time zone and used the server&#39;s default time zone instead. On non-GMT schedules this caused the blackout to apply to the wrong calendar day, so jobs could run during a window that was supposed to block them. Blackout and allowed date/range calendars now correctly honor the schedule&#39;s time zone. Recurring daily, weekly, and monthly calendars were not affected.
 
-#### ::circle-dot:: Convert adhoc page to Vue SPA  [PR #10138](https://github.com/rundeck/rundeck/pull/10138)
+#### ::circle-dot:: Migrate cloud-aws-plugins EC2/ECS/RDS/Lambda from AWS SDK v1 to v2 
 
 
-  The Commands (adhoc) page has been rebuilt as a modern Vue single-page application, available when the new NextUI option is enabled. This delivers faster, more responsive command execution and a consistent look and feel with the rest of the redesigned Rundeck interface.
+  Updated the EC2, ECS, RDS, and Lambda AWS plugins to use AWS SDK v2, with no changes to plugin configuration. Assume-role authentication now automatically refreshes credentials, preventing expired-token failures on long-running jobs after about one hour. Also fixed the ECS &quot;Stopped Task Details&quot; step ignoring a configured access key, and updated the Lambda runtime list.
 
-#### ::circle-dot:: Fix SSM Node Executor to use regional STS endpoints for opt-in regions 
+#### ::circle-dot:: Fix project home executions stat links missing last-day filter  [PR #10402](https://github.com/rundeck/rundeck/pull/10402)
 
 
-  Fixed an issue where AWS SSM node command and script execution failed in opt-in regions (such as `eu-central-2`) when using cross-account role assumption, previously returning an `InvalidClientTokenId` error. A new optional `ssm-sts-region` setting also lets operators choose which region&#39;s STS endpoint is used for authentication, while existing configurations continue to work unchanged.
-
-#### ::circle-dot:: Add Configurable Group Name Attribute And Prefix Filter To Azure Group 
-
-
-  The Azure (Entra ID) user group source can now be configured to use a specific directory attribute as the Rundeck group name (for example, `onPremisesSamAccountName` instead of the default `displayName`), and to optionally include only groups matching a name prefix. This lets administrators align group names between sign-in tokens and directory lookups—eliminating the need to maintain duplicate group names in ACLs—while existing configurations continue to behave exactly as before.
-
-#### ::circle-dot:: Fix Hostname -&gt; hostname in tool tip on node filter input  [PR #10162](https://github.com/rundeck/rundeck/pull/10162)
-
-
-  Minor fix of capitalization on the word &quot;hostname&quot;.
-
-#### ::circle-dot:: Preserve accumulated data vars when secureOption storagePath uses node variable  [PR #10220](https://github.com/rundeck/rundeck/pull/10220)
-
-
-  Fixed an edge case where `data.*` variables set by log filter plugins (e.g. `key-value-data`) were lost in subsequent workflow steps when a secure option&#39;s storage path contained a node context variable such as `${node.name}`.
-
-#### ::circle-dot:: Add default time filter to activity/executions listing  [PR #10190](https://github.com/rundeck/rundeck/pull/10190)
-
-
-  Adds a feature flag `rundeck.feature.activityDefaultTimeFilter.enabled` that, when enabled, scopes the activity/executions page to a configurable recent time window on first load. The window defaults to the last month and is configurable via `gui.activity.defaultTimeFilter` (accepted values: `1h`, `1d`, `1w`, `1m`).
-
-#### ::circle-dot:: Fix AWS Secrets Manager assume-role session expiry causing ExpiredTokenException 
-
-
-  Fixed an issue where the AWS Secrets Manager key storage plugin, when configured with an assume-role ARN, stopped retrieving secrets after about one hour on long-running Rundeck instances and failed with `ExpiredTokenException`. The plugin now automatically refreshes the assumed-role session, so secrets remain accessible without needing to restart Rundeck.
-
-#### ::circle-dot:: Fix StorageTreeFactory stopping at first gap in provider index sequence  [PR #10225](https://github.com/rundeck/rundeck/pull/10225)
-
-
-  Fixed an issue where key storage providers and converters configured with non-contiguous index numbers were silently skipped, making any keys stored under the skipped providers inaccessible. Rundeck now loads every configured storage provider regardless of gaps in the index sequence, so administrators no longer need to keep provider indexes perfectly consecutive when configuring key storage outside the UI (for example, via `rundeck-config.properties` or automated/API-driven setups).
-
-#### ::circle-dot:: Audit failed login attempts when using rundeck.jaaslogin=true  [PR #10212](https://github.com/rundeck/rundeck/pull/10212)
-
-
-  Fixed: Failed login attempts are now audited when Rundeck is configured with `rundeck.jaaslogin=true`. Previously, JAAS authentication failures were silently dropped from the audit log.
-
-#### ::circle-dot:: Fix inline script step with Args not working with AWS SSM 
-
-
-  Fixed a bug where inline script steps with `args` configured would fail with an S3 403 error when using the AWS SSM node executor. Script arguments are now correctly passed to the SSM `commandLine` parameter instead of being appended to the S3 URI.
-
-#### ::circle-dot:: Fix cannot manage user class for usernames containing slashes 
-
-
-  Fix User Class management for usernames containing `/` (e.g. pronouns like `He/Him`). Assigning and removing User Class assignments now works correctly for these users.
-
-#### ::circle-dot:: Fix PagerDuty Notification Start Incident Workflow trigger 
-
-
-  Fixed an issue where PagerDuty &quot;Start Incident Workflow&quot; notifications failed to trigger because the configured Incident ID and Incident Workflow ID were not being read correctly. These notifications now work as expected, and a clear error is logged if either required value is missing.
-
-#### ::circle-dot:: Fix legacy MySQL JDBC driver class at startup 
-
-
-  Fixed a startup failure that occurred after upgrading when the database configuration still referenced the legacy MySQL JDBC driver class (`com.mysql.jdbc.Driver` or `com.mysql.cj.jdbc.Driver`). Rundeck now automatically substitutes the bundled MariaDB driver in these cases so the server starts successfully, and logs a warning directing operators to update their configuration.
-
-#### ::circle-dot:: Fix KeyStorageSelector state not resetting on reopen  [PR #10155](https://github.com/rundeck/rundeck/pull/10155)
-
-
-  Fix PagerDuty V3 webhook: selecting a key from the Key Storage selector now correctly populates the Shared Secret Key field.
-
-#### ::circle-dot:: Fix job import resetting dispatch mode when node filter is empty  [PR #10171](https://github.com/rundeck/rundeck/pull/10171)
-
-
-  Fixed an issue where jobs configured as &quot;Dispatch to nodes&quot; with an empty node filter were silently converted to &quot;Execute locally&quot; after export + reimport (via YAML, XML, Job Actions upload, SCM import, project archive import, or Terraform provider).
-
-#### ::circle-dot:: Fix Remote URL auth headers not appended when fetching option values  [PR #10152](https://github.com/rundeck/rundeck/pull/10152)
-
-
-  Fixed a regression where Remote URL job options configured with API Key or Basic authentication were not sending the configured authentication headers or query parameters when fetching option values, causing the option dropdown to fail to load with an authentication error.
-
-#### ::circle-dot:: Remove usernames from System Report 
-
-
-  The System Report no longer includes individual usernames or their userclass mappings. This improves privacy by ensuring user identities are not captured in generated system reports, while license allocation and usage totals continue to be reported.
-
-#### ::circle-dot:: Fixes bulk edit when using NextUI  [PR #10189](https://github.com/rundeck/rundeck/pull/10189)
-
-
-  Fixed the layout of the bulk edit controls on the Jobs page when using the next-generation UI, correcting the alignment and structure of the header so bulk actions display properly.
-
-#### ::circle-dot:: Fix node filter attributes incorrectly wrapped in double quotes  [PR #10157](https://github.com/rundeck/rundeck/pull/10157)
-
-
-  Fix node filter: saving a filter with multiple attributes (e.g. `osFamily: unix name:localhost`) no longer incorrectly wraps them in double quotes. Pre-quoted values are also preserved correctly when re-loading a saved filter.
-
-#### ::circle-dot:: Improve audit log userInfo.username showing null or anonymous for job runs  [PR #10168](https://github.com/rundeck/rundeck/pull/10168)
-
-
-  Fix audit log `userInfo.username` for job run events. Scheduled jobs no longer show `null` and API/webhook-triggered jobs no longer show `__grails.anonymous.user__` — both now correctly reflect the user associated with the execution.
+  Fixed: the &quot;Executions in the last Day&quot; stat on the project home/list pages now links to the
+  Activity page pre-filtered to the last day, instead of showing all-time executions.
 
 
 
@@ -248,6 +150,6 @@ The development updates are automatically generated from both our private reposi
 
 ---
 
-**List Last updated:** 2026-08-03
+**List Last updated:** 2026-08-20
 
 
