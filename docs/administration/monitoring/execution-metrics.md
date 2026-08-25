@@ -1,6 +1,6 @@
 # Execution Metrics Reference
 
-Rundeck 6.0 adds native, tagged execution metrics on the modern monitoring endpoint (`/monitoring/prometheus`), so per-project and per-job execution counts, durations, and in-flight counts are queryable directly from Prometheus and Grafana — without the third-party `rundeck_exporter` (see [Monitor a Rundeck Instance Using Prometheus and Grafana (legacy exporter)](/learning/howto/rundeck-exporter.md)).
+Rundeck 6.0 adds native, tagged execution metrics on the modern monitoring endpoint (`/monitoring/prometheus`), so per-project and per-job execution counts, durations, and in-flight counts are queryable directly from Prometheus and Grafana.
 
 These metrics are registered directly on the Micrometer registry (not bridged from the legacy Dropwizard registry), so they follow standard Prometheus naming: dots become underscores, and counters get a `_total` suffix.
 
