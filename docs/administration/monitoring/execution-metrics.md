@@ -24,10 +24,6 @@ All metrics on this page are served at `/monitoring/prometheus`, the same endpoi
 | `rundeck_execution_duration_seconds_sum` | same | Total execution duration. Divide by `_count` to get the average. |
 | `rundeck_execution_duration_seconds_max` | same | Largest execution duration observed since the process started. |
 
-:::tip No percentile buckets
-This timer does not publish histogram buckets, so there is no `rundeck_execution_duration_seconds_bucket` series and no `histogram_quantile()` support (avoiding a dependency on HdrHistogram/LatencyUtils). Use `rate(_sum) / rate(_count)` for the average duration over a window, and `_max` for the worst case. If you need true percentiles, use the execution list API instead.
-:::
-
 ### Gauges
 
 | Metric | Tags | Description |
