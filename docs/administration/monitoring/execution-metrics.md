@@ -44,11 +44,7 @@ rundeck.metrics.execution.job.dimension.enabled=true
 
 This can also be set from **System Configuration** in the admin UI (Execution category) and takes effect immediately, no restart required.
 
-:::warning Cardinality
-Enabling this adds one label series per distinct job in your **job catalog**, not per execution — a job that runs 30 million times still contributes only one `job_id` series. This is what makes the dimension tractable where a per-`execution_id` tag would not be: cardinality is bounded by the number of job definitions, not execution volume. Still, if you have a very large job catalog (tens of thousands of jobs), account for the added series count when sizing Prometheus.
-
 Ad-hoc (non-scheduled) executions never receive a `job_id`/`job_name` tag, even when this flag is enabled — they have no stable job identity to tag.
-:::
 
 When a job is deleted, its `job_id`-tagged series are removed from the live registry so they don't accumulate as unused ("zombie") series in the running process. This only affects what future scrapes report — any history already scraped into Prometheus is retained for as long as Prometheus's own retention policy keeps it, independent of the job's lifecycle in Rundeck.
 
