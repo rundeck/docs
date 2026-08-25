@@ -161,6 +161,13 @@ Rundeck exposes a wide variety of metrics. Some commonly monitored metrics inclu
 - `executor.completed` - Completed tasks
 - `executor.queued` - Queued tasks
 
+### Execution Metrics
+- `rundeck.executions` - Execution counts tagged by project and status
+- `rundeck.execution.duration` - Execution duration tagged by project and status
+- `rundeck.executions.running` - Executions currently running, tagged by project
+
+See the [Execution Metrics Reference](/administration/monitoring/execution-metrics.md) for the full list of series, tags, the optional `job_id`/`job_name` dimension, and example queries.
+
 :::tip Discovering Metrics
 Use `/monitoring/metrics` to get a complete list of available metrics for your Rundeck instance. Metric names may vary slightly between versions as new metrics are added.
 :::

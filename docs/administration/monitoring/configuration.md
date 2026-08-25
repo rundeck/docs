@@ -170,6 +170,7 @@ The monitoring endpoints expose operational metrics but do not expose sensitive 
 | `rundeck.metrics.legacy.enabled` | `false` | Enable legacy endpoints at `/metrics/*` (deprecated) |
 | `rundeck.metrics.enabled` | `true` | Master switch for metrics collection (required for all metrics features) |
 | `rundeck.metrics.jmxEnabled` | `false` | Enable JMX export of metrics as MBeans (requires restart) |
+| `rundeck.metrics.execution.job.dimension.enabled` | `false` | Add `job_id`/`job_name` tags to execution metrics. See [Execution Metrics Reference](/administration/monitoring/execution-metrics.md) for cardinality considerations |
 
 **Configuration Notes:**
 - HTTP endpoint properties (`monitoring.enabled`, `legacy.enabled`) take effect immediately without restart
