@@ -14,15 +14,15 @@ The [pywinrm plugin](https://github.com/rundeck-plugins/py-winrm-plugin) needs t
 ### Requirements:
 
 :::tip
-Make sure that your python installation is same that the one that is exported in your "PATH" environment variable, so the PyWinRm plugin can access its packages.
-- We recommend this commands to check the python installation:
+Make sure the Python interpreter used by the plugin can import `pywinrm`. If **Python Interpreter** is a command name such as `python3`, that command must be on `PATH`. If you set a full path (for example a virtualenv), that interpreter is used instead.
+- We recommend these commands to check the python installation:
 ```
 # Windows OS
-where python - "example/path/to/python"
+where python
 # linux OS
-which python - "example/path/to/python"
+which python3
 ```
-**The path to the executable must be the same if we dispatch the command to the required node with the AD-HOC command functionality.**
+**The interpreter used for project node execution should be the same one that can import the pywinrm packages.**
 :::
 
 The [pywinrm plugin](https://github.com/rundeck-plugins/py-winrm-plugin) uses the python [WinRM Library](https://github.com/diyan/pywinrm/) to provide the WinRM implementation.
@@ -31,6 +31,8 @@ The [pywinrm plugin](https://github.com/rundeck-plugins/py-winrm-plugin) uses th
 * Pywinrm library (install with a Python 3 `pip`, for example: `pip3 install pywinrm`)
 * OpenSSL version 1.1.1 or higher. (openssl version can be checked with the following command: `openssl version - "OpenSSL 1.1.1k"`)
     * `requests-kerberos` and `requests-credssp` are optional.
+
+On distributions that mark the system Python as **externally managed** (for example Ubuntu 24.04+), install `pywinrm` with the OS package manager, or set **Python Interpreter** to a virtualenv interpreter that already has `pywinrm` installed. The field accepts a command name (`python3`) or a full path (`/opt/winrm-venv/bin/python3`). Override per node with `winrm-interpreter`.
   
 Note: Due to networking complexity issues this exercise will not work with the Welcome Projects.  These steps assume you have Rundeck installed [using these instructions](/administration/install/index.md).  For more information see the [Additional Information](#additional-information) section.
 
@@ -76,17 +78,18 @@ Create a Windows-based project on the Rundeck instance.
 
 1. Create a new project: **Name** `windows`, and  **Label` Windows Jobs`**
     <br><br>![Create Project](/assets/img/howto-winnode-createproject.png)<br><br>
-1. Go to the Default Node Executor tab and then select **WinRM Node Executor Python**. It may be necessary to set the Python interpreter textbox to `python3` interpreter as the command/path.
+1. Go to the Default Node Executor tab and then select **WinRM Node Executor Python**. Set **Python Interpreter** to `python3`, or to the full path of a virtualenv interpreter if the system Python is externally managed.
     <br><br>![Node Executor](/assets/img/howto-winnode-nodeexec.png)<br><br>
-1. Go to the **Default File Copier** tab and select the **WinRM Python File Copier**. Similar to the previous step, it may be necessary to define the Python interpreter textbox as `python3` interpreter for the command/path.
+1. Go to the **Default File Copier** tab and select the **WinRM Python File Copier**. Use the same **Python Interpreter** value as the node executor.
     <br><br>![File Copier](/assets/img/howto-winnode-filecopy.png)<br><br>
 1. Click on the **Create** button.
 
 ### Additional Configuration
 The following properties can optionally be set in the WinRM Node Executor and WinRM File Copier:
 
+* **`Python Interpreter`**: Python command or full path used to run the plugin (default: `python3`). Use a command on `PATH` or a virtualenv interpreter. This can be overridden on nodes with `winrm-interpreter`. <br><br>
 * **`No SSL Verification`**: When this is set to `true`, SSL is not validated in the WinRM communication. This can be overridden on nodes with `winrm-nossl`.  <br><br>
-  * **`Disable TLS 1.2`**: Check this box to execute over TLS 1.0 <br><br>
+  * **`Disable TLS 1.2`**: Check this box to execute over TLS 1.0. This can be overridden on nodes with `winrm-disable-tls-12`. <br><br>
 * **`WinRM Transport Protocol`**: Optionally choose HTTP or HTTPS for the WinRM transport protocol. This can be overridden on nodes with `winrm-transport`. <br><br>
 * **`WinRM Port`**: The WinRM port to use. The default is port 5985.  This can be overridden on nodes with `winrm-port`. <br><br>
 * **`WinRM Username`**: Optional username. The username can be set at node level (using the attribute `username`) or at job level (using an input option called `username`). <br><br>
@@ -95,17 +98,23 @@ The following properties can optionally be set in the WinRM Node Executor and Wi
   `winrm-certpath` expects a **file system path** (e.g., `/opt/rundeck/certs/certificate.pem`), **NOT** a Rundeck Key Storage path (e.g., `keys/project/...`). The certificate path is passed directly to the pywinrm library without Key Storage resolution. The certificate file must be in PEM format and readable by the Rundeck user on the Enterprise Runner or Rundeck server.
   :::
 * **`Connect/Read Times Out`**: The maximum seconds to wait before an HTTP connect/read times out (default 30). This value should be slightly higher than operation timeout, as the server can block *at least* that long. This can be overridden on nodes with `winrm-readtimeout`. <br><br>
-* **`Proxy`**: Optionally specify a proxy address for communicating with Windows nodes. Example HTTP proxy strings are `http://server:port` and `http://user:pass@server:port`. An example SOCKS5 proxy string is `socks5://user:pass@server:port`.<br><br>
+* **`Proxy`**: Optionally specify a proxy address for communicating with Windows nodes. Example HTTP proxy strings are `http://server:port` and `http://user:pass@server:port`. An example SOCKS5 proxy string is `socks5://user:pass@server:port`. This can be overridden on nodes with `winrm-proxy`.<br><br>
+* **`No Proxy List`**: Comma-separated list of hosts, IPs, or CIDRs that should bypass the proxy and connect directly. Supports exact IPs, CIDR notation (`192.168.1.0/24`), domain suffixes (`.internal.corp`), hostnames, and wildcard (`*`). Requires **Proxy** to also be set. This can be overridden on nodes with `winrm-noproxy`.<br><br>
 * **`Operation Timeout`**: The maximum allowed time in seconds for any single wsman HTTP operation (default 20). Note that operation timeouts while receiving output will be silently retried indefinitely. This can be overridden on nodes with `winrm-operationtimeout`.<br><br>
-* **`Shell`**: The Windows shell interpreter. Options include `cmd` and `powershell`.  This can be overridden on nodes `winrm-shell`.<br><br>
+* **`Shell`**: The Windows shell interpreter. Options include `cmd` and `powershell`.  This can be overridden on nodes with `winrm-shell`.<br><br>
 * **`Script Exit Behavior`**: Script Exit Behaviour. Options include:
   * `console` (default): if the std-error console has data, the process fails. 
-  * `exitcode`: script won't fail by default, the user must control the exit code, such as by using a try/catch block. See [this link](https://github.com/rundeck-plugins/py-winrm-plugin/tree/master#running-scripts) for more details.<br><br>
+  * `exitcode`: script won't fail by default, the user must control the exit code, such as by using a try/catch block. See [Running Scripts](https://github.com/rundeck-plugins/py-winrm-plugin#running-scripts) for more details.<br><br>
+* **`Terminate On Abort`**: When enabled, aborting a job terminates the remote command and its whole process tree on the Windows node. Disabled by default (legacy behaviour). Applies to the WinRM Node Executor. This can be overridden on nodes with `winrm-terminate-on-abort`. See [Aborting jobs](https://github.com/rundeck-plugins/py-winrm-plugin#aborting-jobs).<br><br>
 * **`Retry connection`**: Retry the connection to the node if the connection fails. This can be overridden on nodes with `winrm-retry-connection`.<br><br>
 * **`Retry Connection Delay`**: Delay in seconds between each retry attempt. This can be overridden on nodes with `winrm-retry-connection-delay`.<br><br>
+* **`Enable HTTP logging in debug mode`**: Print extra HTTP logging when the job log level is DEBUG. This can be overridden on nodes with `winrm-enable-http-logging`.<br><br>
 * **`krb5 Config File`**: Path to a `krb5.conf` file, either on the Runbook Automation server or Enterprise Runner's host.<br><br>
+* **`Kinit Command`**: `kinit` command used to create a Kerberos ticket (default: `kinit`).<br><br>
   * **`Kerberos Delegations`**: If True, TGT is sent to target server to allow multiple hops.<br><br>
-* **`Clean Escaping`**: Cleans unnecessarily Escaped characters on commands.<br><br>
+* **`Clean Escaping`**: Cleans unnecessarily Escaped characters on commands. This can be overridden on nodes with `clean-escaping`.<br><br>
+
+WinRM shells default to Windows code page **65001** (UTF-8). If command output is garbled on nodes that use a different ANSI code page (for example Japanese Windows, code page 932), set the node attribute `codepage` to the numeric Windows code page. Invalid values fall back to 65001.
 
 ## Adding a Windows Test Node
 
@@ -152,6 +161,7 @@ Now Rundeck should ask about the model source. Let's start with the Windows node
       username: Administrator
       winrm-password-storage-path: "keys/windows.password"
     ```
+    Optional node attributes include `winrm-interpreter`, `winrm-noproxy`, `winrm-terminate-on-abort`, and `codepage` (numeric Windows code page; default `65001`). See [Additional Configuration](#additional-configuration).
 1. **Save the entry.<br>The node is available now by clicking on the "Nodes" section in the left sidebar and setting the filter to `.*`
 :::
 
