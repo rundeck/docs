@@ -1,5 +1,9 @@
 # Monitor the Rundeck Server with Prometheus and Grafana
 
+:::tip Full working example
+A complete, runnable Prometheus + Grafana + Rundeck stack (including the pre-built dashboard referenced in this guide) is available at [rundeck/docker-zoo](https://github.com/rundeck/docker-zoo/tree/master/monitoring).
+:::
+
 Rundeck 6.0 exposes application metrics natively in Prometheus format at the [`/monitoring/prometheus`](/administration/monitoring/index.md) endpoint, which is enabled by default. This means you no longer need a third-party exporter to build a metrics dashboard — Prometheus can scrape Rundeck directly.
 
 This guide walks through a working Prometheus + Grafana stack pointed at a Rundeck server, with example queries for the most useful health and performance metrics. It then shows how to ship the container **logs** into the same Grafana with Loki — see [Ship container logs to Grafana with Loki](#ship-container-logs-to-grafana-with-loki).
