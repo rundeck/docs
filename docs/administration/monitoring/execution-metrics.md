@@ -34,7 +34,7 @@ All metrics on this page are served at `/monitoring/prometheus`, the same endpoi
 
 ## The `job_id`/`job_name` dimension
 
-By default, `rundeck_executions_total`, `rundeck_execution_duration_seconds_*`, and `rundeck_executions_running` are tagged only with `project` and `status`. You can opt in to an additional `job_id`/`job_name` tag pair to get per-job breakdowns directly in Prometheus, instead of falling back to the executions API or database for per-job statistics.
+By default, `rundeck_executions_total` and `rundeck_execution_duration_seconds_*` are tagged with `project` and `status`; `rundeck_executions_running` is tagged with `project` only (it tracks in-flight executions, which have no final status yet). All three accept an additional `job_id`/`job_name` tag pair when you opt in, to get per-job breakdowns directly in Prometheus instead of falling back to the executions API or database for per-job statistics.
 
 Enable it with:
 
@@ -59,9 +59,9 @@ sum(rate(rundeck_executions_total[5m]))
 
 **Average execution duration by project:**
 ```promql
-rate(rundeck_execution_duration_seconds_sum[5m])
+sum by (project) (rate(rundeck_execution_duration_seconds_sum[5m]))
 /
-rate(rundeck_execution_duration_seconds_count[5m])
+sum by (project) (rate(rundeck_execution_duration_seconds_count[5m]))
 ```
 
 **Executions currently running, by project (cluster-wide):**
