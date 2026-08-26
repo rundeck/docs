@@ -7,7 +7,7 @@ The [Installation](installation.md) page covers the fastest path: Docker with Cl
 | | Docker | npm (`npx`) |
 |---|---|---|
 | Requires | Docker daemon running | Node.js 20+ |
-| Docs search / resources | Work out of the box | Require `RUNDECK_DOCS_PATH` set explicitly (see below) |
+| Docs search / resources | Works out of the box | Requires `RUNDECK_DOCS_PATH` set explicitly (see below) |
 | `api_call` OpenAPI validation | Active out of the box | Active if `RUNDECK_DOCS_PATH` points at a full docs checkout |
 
 ### Claude Desktop / Cursor

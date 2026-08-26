@@ -12,7 +12,7 @@ const isHomePage = computed(() => pageData.value.frontmatter.home === true);
   <Layout>
     <!-- Adding announcement before content (works on all pages) -->
     <template #heroAfter>
-      <div v-if="isHomePage"class="homepage-announce">
+      <div v-if="isHomePage" class="homepage-announce">
         <p>
          <b>The Rundeck MCP Server is now available for download! <a href='/mcp/'>Check out the documentation</a> for more information.</b>
         </p>
@@ -23,7 +23,7 @@ const isHomePage = computed(() => pageData.value.frontmatter.home === true);
     <template #sidebarTop>
       <div v-if="!isHomePage" class="sidebar-announce">
         <p>
-          <b><a href='/mcp/'>Checkout the new Rundeck MCP Server documentation!</a></b>
+          <b><a href='/mcp/'>Check out the new Rundeck MCP Server documentation!</a></b>
         </p>
       </div>
     </template>
