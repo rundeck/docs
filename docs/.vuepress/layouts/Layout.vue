@@ -12,9 +12,9 @@ const isHomePage = computed(() => pageData.value.frontmatter.home === true);
   <Layout>
     <!-- Adding announcement before content (works on all pages) -->
     <template #heroAfter>
-      <div v-if="isHomePage"class="homepage-announce">
+      <div v-if="isHomePage" class="homepage-announce">
         <p>
-          <b>Rundeck / Runbook Automation 6.1.0</b> is now available!  <a href='/history/6_x/version-6.1.0.html'>Check out the <b>Release Notes</b> for more information.</a>
+         <b>The Rundeck MCP Server is now available for download! <a href='/mcp/'>Check out the documentation</a> for more information.</b>
         </p>
       </div>
     </template>
@@ -23,7 +23,7 @@ const isHomePage = computed(() => pageData.value.frontmatter.home === true);
     <template #sidebarTop>
       <div v-if="!isHomePage" class="sidebar-announce">
         <p>
-          <a href='/history/6_x/version-6.1.0.html'><b>6.1.0</b> is now available!  Check out the <b>Release Notes</b> for more information.</a>
+          <b><a href='/mcp/'>Check out the new Rundeck MCP Server documentation!</a></b>
         </p>
       </div>
     </template>
