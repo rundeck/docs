@@ -604,7 +604,7 @@ Enables dynamic conditional execution in workflows based on runtime conditions. 
 
 #### Job Option Injection Controls
 
-Job option **values** are user input. When referenced in commands and scripts (`${option.name}`, `@option.name@`) they can carry shell metacharacters. Rundeck escapes option values used in the standard command/exec path, but these two opt-in controls validate or reject option input *before* an execution runs. They are defense-in-depth on top of — not a replacement for — the per-option **Match Regular Expression** and **Enforced** allowed-values restrictions described in [Job Options](/manual/jobs/job-options.md).
+Job option **values** are user input. When referenced in commands and scripts (`${option.name}`, `@option.name@`) they can carry shell metacharacters. Rundeck escapes option values used in the standard command/exec path, but these controls validate or reject option input *before* an execution runs. They are defense-in-depth on top of — not a replacement for — the per-option **Match Regular Expression** and **Enforced** allowed-values restrictions described in [Job Options](/manual/jobs/job-options.md).
 
 **Default option-value allowlist**
 
