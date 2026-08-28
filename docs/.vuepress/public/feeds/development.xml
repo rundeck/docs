@@ -5,168 +5,273 @@
     <link>https://docs.rundeck.com/docs</link>
     <description>Recent merged pull requests and development updates from Rundeck</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 27 Aug 2026 20:36:52 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 27 Jul 2026 21:13:28 GMT</lastBuildDate>
     <atom:link href="https://docs.rundeck.com/feeds/development.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Fix git-export SSH fetch failing with ConnectionException: Stream closed</title>
+      <title>Runner operation metrics: Busy status, live utilization bars, and expandable stat cards</title>
       <link>https://docs.rundeck.com/docs/history/updates/</link>
-      <description>Fix git-export SSH fetch failing with ConnectionException: Stream closed (Merged: Aug 27, 2026)</description>
-      <pubDate>Thu, 27 Aug 2026 18:17:07 GMT</pubDate>
-      <guid isPermaLink="false">rundeck-pr-rundeck-10506</guid>
+      <description>Runner operation metrics: Busy status, live utilization bars, and expandable stat cards (Merged: Jul 22, 2026)</description>
+      <pubDate>Wed, 22 Jul 2026 01:02:57 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeckpro-4803</guid>
     </item>
     <item>
-      <title>Add native Prometheus execution metrics (Micrometer)</title>
+      <title>Fix compact report processor silently disabled by bootstrap cleanup failures</title>
       <link>https://docs.rundeck.com/docs/history/updates/</link>
-      <description>Add native Prometheus execution metrics (Micrometer) (Merged: Aug 25, 2026)</description>
-      <pubDate>Tue, 25 Aug 2026 16:32:03 GMT</pubDate>
-      <guid isPermaLink="false">rundeck-pr-rundeck-10486</guid>
+      <description>Fix compact report processor silently disabled by bootstrap cleanup failures (Merged: Jul 21, 2026)</description>
+      <pubDate>Tue, 21 Jul 2026 20:02:39 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeckpro-4880</guid>
     </item>
     <item>
-      <title>Generate API and webhook tokens using a CSPRNG</title>
+      <title>Fix: API REST metrics trigger SQL errors</title>
       <link>https://docs.rundeck.com/docs/history/updates/</link>
-      <description>Generate API and webhook tokens using a CSPRNG (Merged: Aug 20, 2026)</description>
-      <pubDate>Thu, 20 Aug 2026 16:12:49 GMT</pubDate>
-      <guid isPermaLink="false">rundeck-pr-rundeck-10436</guid>
+      <description>Fix: API REST metrics trigger SQL errors (Merged: Jul 21, 2026)</description>
+      <pubDate>Tue, 21 Jul 2026 19:47:25 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeck-10186</guid>
     </item>
     <item>
-      <title>Fix plaintext password storage in JettyCompatibleSpringSecurityPasswordEncoder</title>
+      <title>Bump linkify-it to 5.0.1+ to fix ReDoS CVEs</title>
       <link>https://docs.rundeck.com/docs/history/updates/</link>
-      <description>Fix plaintext password storage in JettyCompatibleSpringSecurityPasswordEncoder (Merged: Aug 20, 2026)</description>
-      <pubDate>Thu, 20 Aug 2026 15:48:01 GMT</pubDate>
-      <guid isPermaLink="false">rundeck-pr-rundeck-10475</guid>
+      <description>Bump linkify-it to 5.0.1+ to fix ReDoS CVEs (Merged: Jul 15, 2026)</description>
+      <pubDate>Wed, 15 Jul 2026 21:21:05 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeckpro-4823</guid>
     </item>
     <item>
-      <title>Fix CVE-2026-64607 in httpclient5 buildscript classpath</title>
+      <title>Parse blankIfUnexpandable from script plugin YAML config</title>
       <link>https://docs.rundeck.com/docs/history/updates/</link>
-      <description>Fix CVE-2026-64607 in httpclient5 buildscript classpath (Merged: Aug 19, 2026)</description>
-      <pubDate>Wed, 19 Aug 2026 17:34:54 GMT</pubDate>
-      <guid isPermaLink="false">rundeck-pr-rundeck-10474</guid>
+      <description>Parse blankIfUnexpandable from script plugin YAML config (Merged: Jul 14, 2026)</description>
+      <pubDate>Tue, 14 Jul 2026 22:21:21 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeck-10319</guid>
     </item>
     <item>
-      <title>Normal users are not able to see job history any more</title>
+      <title>Bump attribute-match-node-enhancer to 1.0.3</title>
       <link>https://docs.rundeck.com/docs/history/updates/</link>
-      <description>Normal users are not able to see job history any more (Merged: Aug 19, 2026)</description>
-      <pubDate>Wed, 19 Aug 2026 16:45:41 GMT</pubDate>
-      <guid isPermaLink="false">rundeck-pr-rundeck-10476</guid>
+      <description>Bump attribute-match-node-enhancer to 1.0.3 (Merged: Jul 10, 2026)</description>
+      <pubDate>Fri, 10 Jul 2026 23:09:08 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeck-10331</guid>
     </item>
     <item>
-      <title>Add certRoleName config metadata for Vault storage cert auth</title>
+      <title>add date formater for api/** endpoints</title>
       <link>https://docs.rundeck.com/docs/history/updates/</link>
-      <description>Add certRoleName config metadata for Vault storage cert auth (Merged: Aug 17, 2026)</description>
-      <pubDate>Mon, 17 Aug 2026 21:30:28 GMT</pubDate>
-      <guid isPermaLink="false">rundeck-pr-rundeckpro-4952</guid>
+      <description>add date formater for api/** endpoints (Merged: Jul 10, 2026)</description>
+      <pubDate>Fri, 10 Jul 2026 21:07:13 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeck-10318</guid>
     </item>
     <item>
-      <title>Add Japanese (ja) translations for Rundeck Pro UI</title>
+      <title>Persist useName in job reference step to prevent UUID reversion</title>
       <link>https://docs.rundeck.com/docs/history/updates/</link>
-      <description>Add Japanese (ja) translations for Rundeck Pro UI (Merged: Aug 14, 2026)</description>
-      <pubDate>Fri, 14 Aug 2026 18:14:44 GMT</pubDate>
-      <guid isPermaLink="false">rundeck-pr-rundeckpro-4939</guid>
+      <description>Persist useName in job reference step to prevent UUID reversion (Merged: Jul 10, 2026)</description>
+      <pubDate>Fri, 10 Jul 2026 20:56:17 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeck-10314</guid>
     </item>
     <item>
-      <title>Recognize JDBC/native Jetty JAAS role principals</title>
+      <title>Fix label not being saved</title>
       <link>https://docs.rundeck.com/docs/history/updates/</link>
-      <description>Recognize JDBC/native Jetty JAAS role principals (Merged: Aug 13, 2026)</description>
-      <pubDate>Thu, 13 Aug 2026 22:24:38 GMT</pubDate>
-      <guid isPermaLink="false">rundeck-pr-rundeck-10454</guid>
+      <description>Fix label not being saved (Merged: Jul 10, 2026)</description>
+      <pubDate>Fri, 10 Jul 2026 16:50:34 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeck-10235</guid>
     </item>
     <item>
-      <title>Fix execution summary Start Time column Showing Step Identifiers</title>
+      <title>add a new index to the execution table</title>
       <link>https://docs.rundeck.com/docs/history/updates/</link>
-      <description>Fix execution summary Start Time column Showing Step Identifiers (Merged: Aug 13, 2026)</description>
-      <pubDate>Thu, 13 Aug 2026 18:30:50 GMT</pubDate>
-      <guid isPermaLink="false">rundeck-pr-rundeck-10440</guid>
+      <description>add a new index to the execution table (Merged: Jul 10, 2026)</description>
+      <pubDate>Fri, 10 Jul 2026 16:27:17 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeck-9964</guid>
     </item>
     <item>
-      <title>windows-cmd-quoting</title>
+      <title>- Fix Node UI paging to respect rundeck.gui.matchedNodesMaxCount, and a…</title>
       <link>https://docs.rundeck.com/docs/history/updates/</link>
-      <description>windows-cmd-quoting (Merged: Aug 12, 2026)</description>
-      <pubDate>Wed, 12 Aug 2026 17:05:37 GMT</pubDate>
-      <guid isPermaLink="false">rundeck-pr-rundeckpro-4931</guid>
+      <description>- Fix Node UI paging to respect rundeck.gui.matchedNodesMaxCount, and a… (Merged: Jul 10, 2026)</description>
+      <pubDate>Fri, 10 Jul 2026 16:04:20 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeck-10234</guid>
     </item>
     <item>
-      <title>Migrate bundled AWS Plugins from AWS SDK v1 to v2</title>
+      <title>Fix System Report runner health counts always reporting 0</title>
       <link>https://docs.rundeck.com/docs/history/updates/</link>
-      <description>Migrate bundled AWS Plugins from AWS SDK v1 to v2 (Merged: Aug 10, 2026)</description>
-      <pubDate>Mon, 10 Aug 2026 21:28:10 GMT</pubDate>
-      <guid isPermaLink="false">rundeck-pr-rundeckpro-4927</guid>
+      <description>Fix System Report runner health counts always reporting 0 (Merged: Jul 9, 2026)</description>
+      <pubDate>Thu, 09 Jul 2026 21:48:36 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeckpro-4809</guid>
     </item>
     <item>
-      <title>Update nanoid for CVE-2026-67213</title>
+      <title>Fix ACL policy API returning JSON instead of YAML</title>
       <link>https://docs.rundeck.com/docs/history/updates/</link>
-      <description>Update nanoid for CVE-2026-67213 (Merged: Aug 10, 2026)</description>
-      <pubDate>Mon, 10 Aug 2026 20:24:31 GMT</pubDate>
-      <guid isPermaLink="false">rundeck-pr-rundeck-10438</guid>
+      <description>Fix ACL policy API returning JSON instead of YAML (Merged: Jul 7, 2026)</description>
+      <pubDate>Tue, 07 Jul 2026 17:55:08 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeck-10295</guid>
     </item>
     <item>
-      <title>Fix CVE-2026-71497 by forcing jsoup 1.23.1</title>
+      <title>Fix i18n fallback for dynamically registered plugin messages</title>
       <link>https://docs.rundeck.com/docs/history/updates/</link>
-      <description>Fix CVE-2026-71497 by forcing jsoup 1.23.1 (Merged: Aug 10, 2026)</description>
-      <pubDate>Mon, 10 Aug 2026 19:55:58 GMT</pubDate>
-      <guid isPermaLink="false">rundeck-pr-rundeck-10439</guid>
+      <description>Fix i18n fallback for dynamically registered plugin messages (Merged: Jul 6, 2026)</description>
+      <pubDate>Mon, 06 Jul 2026 18:24:42 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeck-10246</guid>
     </item>
     <item>
-      <title>Azure Key Vault: preserve all *:encrypted flags</title>
+      <title>Fix compacted execution output API returning mixed-type entries array</title>
       <link>https://docs.rundeck.com/docs/history/updates/</link>
-      <description>Azure Key Vault: preserve all *:encrypted flags (Merged: Aug 10, 2026)</description>
-      <pubDate>Mon, 10 Aug 2026 13:19:17 GMT</pubDate>
-      <guid isPermaLink="false">rundeck-pr-rundeckpro-4921</guid>
+      <description>Fix compacted execution output API returning mixed-type entries array (Merged: Jun 30, 2026)</description>
+      <pubDate>Tue, 30 Jun 2026 18:07:17 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeck-10219</guid>
     </item>
     <item>
-      <title>Publish rundeckpro Docker images as multi-platform (linux/amd64 + linux/arm64)</title>
+      <title>Add option to choose what value is used for GCP Resource Model hostname</title>
       <link>https://docs.rundeck.com/docs/history/updates/</link>
-      <description>Publish rundeckpro Docker images as multi-platform (linux/amd64 + linux/arm64) (Merged: Aug 4, 2026)</description>
-      <pubDate>Tue, 04 Aug 2026 19:21:56 GMT</pubDate>
-      <guid isPermaLink="false">rundeck-pr-rundeckpro-4923</guid>
+      <description>Add option to choose what value is used for GCP Resource Model hostname (Merged: Jun 28, 2026)</description>
+      <pubDate>Sun, 28 Jun 2026 02:50:28 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeckpro-4790</guid>
     </item>
     <item>
-      <title>Enforce project-level authorization on execution metrics API</title>
+      <title>Fix Jira plugin createmeta fallback for Jira Cloud team-managed projects</title>
       <link>https://docs.rundeck.com/docs/history/updates/</link>
-      <description>Enforce project-level authorization on execution metrics API (Merged: Aug 3, 2026)</description>
-      <pubDate>Mon, 03 Aug 2026 18:03:37 GMT</pubDate>
-      <guid isPermaLink="false">rundeck-pr-rundeck-10419</guid>
+      <description>Fix Jira plugin createmeta fallback for Jira Cloud team-managed projects (Merged: Jun 26, 2026)</description>
+      <pubDate>Fri, 26 Jun 2026 19:57:01 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeckpro-4782</guid>
     </item>
     <item>
-      <title>Fix Remote URL option Auth Type lost after saving and reopening job</title>
+      <title>Bump py-winrm-plugin to 3.2.0</title>
       <link>https://docs.rundeck.com/docs/history/updates/</link>
-      <description>Fix Remote URL option Auth Type lost after saving and reopening job (Merged: Jul 30, 2026)</description>
-      <pubDate>Thu, 30 Jul 2026 20:23:39 GMT</pubDate>
-      <guid isPermaLink="false">rundeck-pr-rundeck-10413</guid>
+      <description>Bump py-winrm-plugin to 3.2.0 (Merged: Jun 26, 2026)</description>
+      <pubDate>Fri, 26 Jun 2026 18:10:06 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeck-10205</guid>
     </item>
     <item>
-      <title>SCM: Restore plugin resilience when Git server is temporarily unreachable</title>
+      <title>Convert adhoc page to Vue SPA</title>
       <link>https://docs.rundeck.com/docs/history/updates/</link>
-      <description>SCM: Restore plugin resilience when Git server is temporarily unreachable (Merged: Jul 28, 2026)</description>
-      <pubDate>Tue, 28 Jul 2026 19:37:47 GMT</pubDate>
-      <guid isPermaLink="false">rundeck-pr-rundeck-10214</guid>
+      <description>Convert adhoc page to Vue SPA (Merged: Jun 26, 2026)</description>
+      <pubDate>Fri, 26 Jun 2026 16:48:08 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeck-10138</guid>
     </item>
     <item>
-      <title>Allow Java 21 and 25 in preinst.sh version check</title>
+      <title>Fix SSM Node Executor to use regional STS endpoints for opt-in regions</title>
       <link>https://docs.rundeck.com/docs/history/updates/</link>
-      <description>Allow Java 21 and 25 in preinst.sh version check (Merged: Jul 28, 2026)</description>
-      <pubDate>Tue, 28 Jul 2026 18:48:20 GMT</pubDate>
-      <guid isPermaLink="false">rundeck-pr-rundeck-10410</guid>
+      <description>Fix SSM Node Executor to use regional STS endpoints for opt-in regions (Merged: Jun 26, 2026)</description>
+      <pubDate>Fri, 26 Jun 2026 14:21:20 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeckpro-4748</guid>
     </item>
     <item>
-      <title>Fix blackout calendar ignoring non-GMT schedule TimeZone</title>
+      <title>Add Configurable Group Name Attribute And Prefix Filter To Azure Group</title>
       <link>https://docs.rundeck.com/docs/history/updates/</link>
-      <description>Fix blackout calendar ignoring non-GMT schedule TimeZone (Merged: Jul 27, 2026)</description>
-      <pubDate>Mon, 27 Jul 2026 20:21:08 GMT</pubDate>
-      <guid isPermaLink="false">rundeck-pr-rundeckpro-4807</guid>
+      <description>Add Configurable Group Name Attribute And Prefix Filter To Azure Group (Merged: Jun 26, 2026)</description>
+      <pubDate>Fri, 26 Jun 2026 00:49:35 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeckpro-4760</guid>
     </item>
     <item>
-      <title>Migrate cloud-aws-plugins EC2/ECS/RDS/Lambda from AWS SDK v1 to v2</title>
+      <title>Fix Hostname -&gt; hostname in tool tip on node filter input</title>
       <link>https://docs.rundeck.com/docs/history/updates/</link>
-      <description>Migrate cloud-aws-plugins EC2/ECS/RDS/Lambda from AWS SDK v1 to v2 (Merged: Jul 24, 2026)</description>
-      <pubDate>Fri, 24 Jul 2026 19:17:48 GMT</pubDate>
-      <guid isPermaLink="false">rundeck-pr-rundeckpro-4825</guid>
+      <description>Fix Hostname -&gt; hostname in tool tip on node filter input (Merged: Jun 25, 2026)</description>
+      <pubDate>Thu, 25 Jun 2026 20:40:01 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeck-10162</guid>
     </item>
     <item>
-      <title>Fix project home executions stat links missing last-day filter</title>
+      <title>Preserve accumulated data vars when secureOption storagePath uses node variable</title>
       <link>https://docs.rundeck.com/docs/history/updates/</link>
-      <description>Fix project home executions stat links missing last-day filter (Merged: Jul 24, 2026)</description>
-      <pubDate>Fri, 24 Jul 2026 17:03:27 GMT</pubDate>
-      <guid isPermaLink="false">rundeck-pr-rundeck-10402</guid>
+      <description>Preserve accumulated data vars when secureOption storagePath uses node variable (Merged: Jun 25, 2026)</description>
+      <pubDate>Thu, 25 Jun 2026 20:20:40 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeck-10220</guid>
+    </item>
+    <item>
+      <title>Add default time filter to activity/executions listing</title>
+      <link>https://docs.rundeck.com/docs/history/updates/</link>
+      <description>Add default time filter to activity/executions listing (Merged: Jun 25, 2026)</description>
+      <pubDate>Thu, 25 Jun 2026 19:48:51 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeck-10190</guid>
+    </item>
+    <item>
+      <title>Fix AWS Secrets Manager assume-role session expiry causing ExpiredTokenException</title>
+      <link>https://docs.rundeck.com/docs/history/updates/</link>
+      <description>Fix AWS Secrets Manager assume-role session expiry causing ExpiredTokenException (Merged: Jun 25, 2026)</description>
+      <pubDate>Thu, 25 Jun 2026 15:54:28 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeckpro-4776</guid>
+    </item>
+    <item>
+      <title>Fix StorageTreeFactory stopping at first gap in provider index sequence</title>
+      <link>https://docs.rundeck.com/docs/history/updates/</link>
+      <description>Fix StorageTreeFactory stopping at first gap in provider index sequence (Merged: Jun 25, 2026)</description>
+      <pubDate>Thu, 25 Jun 2026 14:03:07 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeck-10225</guid>
+    </item>
+    <item>
+      <title>Audit failed login attempts when using rundeck.jaaslogin=true</title>
+      <link>https://docs.rundeck.com/docs/history/updates/</link>
+      <description>Audit failed login attempts when using rundeck.jaaslogin=true (Merged: Jun 24, 2026)</description>
+      <pubDate>Wed, 24 Jun 2026 15:37:19 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeck-10212</guid>
+    </item>
+    <item>
+      <title>Fix inline script step with Args not working with AWS SSM</title>
+      <link>https://docs.rundeck.com/docs/history/updates/</link>
+      <description>Fix inline script step with Args not working with AWS SSM (Merged: Jun 18, 2026)</description>
+      <pubDate>Thu, 18 Jun 2026 18:30:23 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeckpro-4752</guid>
+    </item>
+    <item>
+      <title>Fix cannot manage user class for usernames containing slashes</title>
+      <link>https://docs.rundeck.com/docs/history/updates/</link>
+      <description>Fix cannot manage user class for usernames containing slashes (Merged: Jun 17, 2026)</description>
+      <pubDate>Wed, 17 Jun 2026 20:30:40 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeckpro-4705</guid>
+    </item>
+    <item>
+      <title>Fix PagerDuty Notification Start Incident Workflow trigger</title>
+      <link>https://docs.rundeck.com/docs/history/updates/</link>
+      <description>Fix PagerDuty Notification Start Incident Workflow trigger (Merged: Jun 17, 2026)</description>
+      <pubDate>Wed, 17 Jun 2026 20:10:32 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeckpro-4757</guid>
+    </item>
+    <item>
+      <title>Fix legacy MySQL JDBC driver class at startup</title>
+      <link>https://docs.rundeck.com/docs/history/updates/</link>
+      <description>Fix legacy MySQL JDBC driver class at startup (Merged: Jun 17, 2026)</description>
+      <pubDate>Wed, 17 Jun 2026 18:46:17 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeckpro-4753</guid>
+    </item>
+    <item>
+      <title>Fix KeyStorageSelector state not resetting on reopen</title>
+      <link>https://docs.rundeck.com/docs/history/updates/</link>
+      <description>Fix KeyStorageSelector state not resetting on reopen (Merged: Jun 16, 2026)</description>
+      <pubDate>Tue, 16 Jun 2026 20:28:47 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeck-10155</guid>
+    </item>
+    <item>
+      <title>Fix job import resetting dispatch mode when node filter is empty</title>
+      <link>https://docs.rundeck.com/docs/history/updates/</link>
+      <description>Fix job import resetting dispatch mode when node filter is empty (Merged: Jun 16, 2026)</description>
+      <pubDate>Tue, 16 Jun 2026 20:28:15 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeck-10171</guid>
+    </item>
+    <item>
+      <title>Fix Remote URL auth headers not appended when fetching option values</title>
+      <link>https://docs.rundeck.com/docs/history/updates/</link>
+      <description>Fix Remote URL auth headers not appended when fetching option values (Merged: Jun 16, 2026)</description>
+      <pubDate>Tue, 16 Jun 2026 20:26:43 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeck-10152</guid>
+    </item>
+    <item>
+      <title>Remove usernames from System Report</title>
+      <link>https://docs.rundeck.com/docs/history/updates/</link>
+      <description>Remove usernames from System Report (Merged: Jun 16, 2026)</description>
+      <pubDate>Tue, 16 Jun 2026 17:39:52 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeckpro-4755</guid>
+    </item>
+    <item>
+      <title>Fixes bulk edit when using NextUI</title>
+      <link>https://docs.rundeck.com/docs/history/updates/</link>
+      <description>Fixes bulk edit when using NextUI (Merged: Jun 15, 2026)</description>
+      <pubDate>Mon, 15 Jun 2026 21:10:46 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeck-10189</guid>
+    </item>
+    <item>
+      <title>Fix node filter attributes incorrectly wrapped in double quotes</title>
+      <link>https://docs.rundeck.com/docs/history/updates/</link>
+      <description>Fix node filter attributes incorrectly wrapped in double quotes (Merged: Jun 15, 2026)</description>
+      <pubDate>Mon, 15 Jun 2026 18:10:02 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeck-10157</guid>
+    </item>
+    <item>
+      <title>Improve audit log userInfo.username showing null or anonymous for job runs</title>
+      <link>https://docs.rundeck.com/docs/history/updates/</link>
+      <description>Improve audit log userInfo.username showing null or anonymous for job runs (Merged: Jun 15, 2026)</description>
+      <pubDate>Mon, 15 Jun 2026 17:22:49 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeck-10168</guid>
     </item>
   </channel>
 </rss>
