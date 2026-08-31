@@ -75,6 +75,9 @@ If you have *admin* authorization, you can specify the User, and list of Roles t
 
 You can also specify the duration of the token, or use blank or `0` to have it set to the maximum allowed duration.
 
+- On Runbook Automation SaaS, the maximum allowed duration is **365 days** — leaving the duration blank or setting it to `0` creates a token that expires in 365 days.
+- On self-hosted Runbook Automation, the maximum is controlled by the `rundeck.api.tokens.duration.max` config property (default `30d`). See [Configuration File Reference - API Authentication](/administration/configuration/config-file-reference.md#api-authentication) for details, including how to allow non-expiring tokens.
+
 Click "Generate New Token" to create the Token and the token value will appear. **Be sure to save your token. This is the only moment in which you can see the token value.**
 
 ![Token Value](/assets/img/fig-user-tokens-onetime-display.png)

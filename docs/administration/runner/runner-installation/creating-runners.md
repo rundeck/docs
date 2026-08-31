@@ -15,6 +15,10 @@ Before creating a Runner, ensure that you have read the [prerequisites](/adminis
 * The Runner binary size is 164MB.
 * The Runner requires a network path to reach the Runbook Automation cluster or SaaS instance over port 443.  This is an outbound connection.
 
+:::tip Updating a Runner's Token Later
+The API Token used below is only needed to authenticate the initial download command. The Runner's own token (used at runtime to connect to Rundeck) can be rotated at any time without recreating the Runner — see [Regenerating Runner Credentials](/administration/runner/runner-management/managing-runners.md#regenerating-runner-credentials).
+:::
+
 :::note Self-hosted Runner replicas
 Runner Replicas require Runbook Automation Self-Hosted **5.16.0** or later. **Rundeck 6.0+** enables **`rundeck.feature.runnerReplicas.enabled`** by **default**. On **5.x**, enable it explicitly if needed:
 
