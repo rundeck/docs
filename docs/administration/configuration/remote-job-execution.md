@@ -165,8 +165,6 @@ ratio and the percentage of CPU.
 rundeck.clusterMode.remoteExecution.config.criteria = threadRatio,load
 ```
 
-> **Note:** These are the only criteria available so far.
-
 Each criteria can be weighted using a relative value:
 
 ```properties
