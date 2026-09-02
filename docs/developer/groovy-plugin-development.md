@@ -626,19 +626,19 @@ After the initial load:
 3. Test your changes
 
 ::: tip Hot Reloading
-Groovy plugins support hot reloading after the initial load, but it's **opt-in** - you must set the `plugin.refreshDelay` JVM system property first. See below to enable it.
+Groovy plugins support hot reloading after the initial load, but it's **opt-in** - you must set the `plugin.refreshDelay` property first. See below to enable it.
 :::
 
 #### Enabling Hot Reloading
 
-`plugin.refreshDelay` sets, in milliseconds, how often Rundeck checks the `.groovy` file for changes. Set it via `RDECK_JVM_OPTS` (see [System Properties Configuration](/administration/configuration/system-properties.md) for how to set JVM system properties for your installation type):
+`plugin.refreshDelay` sets, in milliseconds, how often Rundeck checks the `.groovy` file for changes. It's read once at startup, so a restart is still required after changing it. Set it in `rundeck-config.properties` - Rundeck's primary configuration file, present in every installation type (RPM, DEB, Docker, self-hosted):
 
-```bash
-# /etc/sysconfig/rundeckd (RPM) or /etc/default/rundeckd (DEB)
-RDECK_JVM_OPTS="$RDECK_JVM_OPTS -Dplugin.refreshDelay=5000"
+```properties
+# $RDECK_BASE/server/config/rundeck-config.properties
+plugin.refreshDelay=5000
 ```
 
-For Docker, Rundeck's official images configure the JVM through environment variables and templated config rather than a direct `-D` flag — see [Extending Docker Configuration](/administration/configuration/docker/extending-configuration.md) to add this property via a derived image.
+See [Config File Reference](/administration/configuration/config-file-reference.md) for its location per installation type. Alternatively, set it as a JVM system property via `RDECK_JVM_OPTS` - see [System Properties Configuration](/administration/configuration/system-properties.md).
 
 ::: warning Hot Reloading Caveat
 Enabling `plugin.refreshDelay` makes Rundeck watch every Groovy plugin in `libext`, not just the one you're editing. If any of those files is empty or fails to evaluate, the application can fail to start. Verify your `libext` directory doesn't contain broken or empty `.groovy` files before enabling this in a shared environment.
