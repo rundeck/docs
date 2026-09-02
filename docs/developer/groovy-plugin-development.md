@@ -641,7 +641,7 @@ plugin.refreshDelay=5000
 See [Config File Reference](/administration/configuration/config-file-reference.md) for its location per installation type. Alternatively, set it as a JVM system property via `RDECK_JVM_OPTS` - see [System Properties Configuration](/administration/configuration/system-properties.md).
 
 ::: warning Hot Reloading Caveat
-Enabling `plugin.refreshDelay` makes Rundeck watch every Groovy plugin in `libext`, not just the one you're editing. If any of those files is empty or fails to evaluate, the application can fail to start. Verify your `libext` directory doesn't contain broken or empty `.groovy` files before enabling this in a shared environment.
+Broken or empty `.groovy` files in `libext` can prevent Rundeck from starting, regardless of whether `plugin.refreshDelay` is set. Enabling `plugin.refreshDelay` extends periodic refresh-checking to every Groovy plugin in `libext`, not just the one you're editing - verify the whole directory is clean before enabling this in a shared environment.
 :::
 
 ### Debugging
