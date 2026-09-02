@@ -635,10 +635,10 @@ Groovy plugins support hot reloading after the initial load, but it's **opt-in**
 
 ```bash
 # /etc/sysconfig/rundeckd (RPM) or /etc/default/rundeckd (DEB)
-RDECK_JVM_OPTS="-Dplugin.refreshDelay=5000"
+RDECK_JVM_OPTS="$RDECK_JVM_OPTS -Dplugin.refreshDelay=5000"
 ```
 
-For Docker, add `-Dplugin.refreshDelay=5000` to the container's `command`.
+For Docker, Rundeck's official images configure the JVM through environment variables and templated config rather than a direct `-D` flag — see [Extending Docker Configuration](/administration/configuration/docker/extending-configuration.md) to add this property via a derived image.
 
 ::: warning Hot Reloading Caveat
 Enabling `plugin.refreshDelay` makes Rundeck watch every Groovy plugin in `libext`, not just the one you're editing. If any of those files is empty or fails to evaluate, the application can fail to start. Verify your `libext` directory doesn't contain broken or empty `.groovy` files before enabling this in a shared environment.
