@@ -7,7 +7,7 @@ Groovy plugins provide a middle ground between Script and Java plugins, offering
 - **Simple Development** - Create plugins in a single `.groovy` file
 - **Dynamic Scripting** - Groovy's powerful scripting features
 - **Java Ecosystem Access** - Use Java libraries and classes
-- **Hot Reloading** - Update plugins without restarting Rundeck (after initial load)
+- **Hot Reloading** - Optionally reload plugin changes without restarting Rundeck (after initial load)
 - **DSL Syntax** - Simplified domain-specific language for plugin definition
 
 **Limitations:**
@@ -619,14 +619,30 @@ try {
 
 ### Iterative Development
 
-After the initial load:
+By default, Rundeck does **not** reload a Groovy plugin after its initial load — restarting is required to pick up any edit, the same as with Java plugins. Hot reloading is **opt-in**, controlled by the JVM system property `plugin.refreshDelay`.
+
+`plugin.refreshDelay` sets, in milliseconds, how often Rundeck checks the `.groovy` file for changes. Enable it based on how you run Rundeck:
+
+**RPM (CentOS/RHEL)** — add to `/etc/sysconfig/rundeckd`:
+
+```bash
+export RDECK_JVM_OPTS="-Dplugin.refreshDelay=5000"
+```
+
+**DEB (Ubuntu/Debian)** — add the same line to `/etc/default/rundeckd`.
+
+**Docker** — add `-Dplugin.refreshDelay=5000` to the container's `command`.
+
+**Rundeck development (`bootRun`)** — pass `-Dplugin.refreshDelay=5000` as a gradle command argument.
+
+Once enabled:
 
 1. Edit the `.groovy` file
-2. **No restart needed!** - Changes take effect on next use
+2. Wait up to the configured `plugin.refreshDelay` interval — changes take effect on next use
 3. Test your changes
 
-::: tip Hot Reloading
-Groovy plugins support hot reloading after the initial load. This makes development much faster than Java plugins.
+::: warning Hot Reloading Caveat
+Enabling `plugin.refreshDelay` makes Rundeck watch every Groovy plugin in `libext`, not just the one you're editing. If any of those files is empty or fails to evaluate, the application can fail to start. Verify your `libext` directory doesn't contain broken or empty `.groovy` files before enabling this in a shared environment.
 :::
 
 ### Debugging
