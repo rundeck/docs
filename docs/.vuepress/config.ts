@@ -16,6 +16,7 @@ import sidebarDeveloper from './sidebar-menus/plugin-development'
 import sidebarLearning from './sidebar-menus/learning'
 import sidebarHistory from './sidebar-menus/history'
 import sidebarAbout from './sidebar-menus/about'
+import sidebarMcp from './sidebar-menus/mcp'
 
 import apiMenu from './sidebar-menus/api'
 
@@ -330,6 +331,7 @@ export default defineUserConfig({
       '/manual/': sidebarUserGuide,
       '/learning/': sidebarLearning,
       '/developer/': sidebarDeveloper,
+      '/mcp/': sidebarMcp,
       '/history/': sidebarHistory,
       '/api/': apiMenu,
       '/': [

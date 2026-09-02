@@ -3,6 +3,10 @@ export default [{
     link: '/api/'
   },
   {
+    text: 'MCP Server',
+    link: '/mcp/'
+  },
+  {
     text: 'Plugin Development',
     link: '/developer/'
   },
