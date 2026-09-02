@@ -600,11 +600,15 @@ Defines a step that conditionally executes substeps based on runtime conditions.
 
 `conditionGroups`
 
-: Array of condition sets (OR logic between sets)
-  * `conditions` - Array of individual conditions (AND logic within set)
+: Array of condition sets (OR logic between sets by default; see `invertLogic`)
+  * `conditions` - Array of individual conditions (AND logic within set by default; see `invertLogic`)
     * `field` - Field reference using `${}` syntax (e.g., `"${node.osFamily}"`, `"${option.environment}"`)
     * `operator` - One of: `"equals"`, `"not equals"`, `"contains"`, `"matches"`, `"greater than"`, `"less than"`
     * `value` - Comparison value (literal or variable reference with `${}` syntax)
+
+`invertLogic`
+
+: Optional boolean, default `false`. Swaps the logic operators used between condition sets and within a condition set: `false` (default) evaluates AND within each set and OR across sets; `true` evaluates OR within each set and AND across sets.
 
 `steps`
 
@@ -617,6 +621,7 @@ Example:
   "type": "conditional.logic",
   "nodeStep": true,
   "description": "Check Linux Nodes",
+  "invertLogic": false,
   "conditionGroups": [
     {
       "conditions": [
@@ -649,6 +654,10 @@ Example:
 
 ::: tip Since Rundeck 6.1.0
 Nested conditional steps are supported. Error handlers and log filters are supported on substeps (UI improvements planned for a later release).
+:::
+
+::: tip Since Rundeck 6.2.0
+`invertLogic` is supported, letting you swap the AND/OR grouping between and within condition sets.
 :::
 
 See [Conditional Logic Steps](/manual/jobs/conditional-logic.md) for complete documentation.

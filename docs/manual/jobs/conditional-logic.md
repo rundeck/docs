@@ -15,7 +15,7 @@ Conditional Logic steps evaluate conditions at runtime and execute substeps only
 
 ### Key Features
 
-- **AND/OR Logic**: Combine multiple conditions with flexible grouping
+- **AND/OR Logic**: Combine multiple conditions with flexible grouping, with an AND/OR toggle to invert the default grouping when needed
 - **Multiple Operators**: Equals, not equals, contains, regex matching, numeric comparisons
 - **Node and Workflow Types**: Execute conditionally per-node or once per workflow
 - **Nested Conditionals**: Place conditional steps inside other conditional steps for multi-level logic
@@ -128,15 +128,15 @@ Build your condition logic using the condition editor:
 2. **Operator**: Choose how to compare (equals, not equals, contains, matches, etc.)
 3. **Value**: Enter a literal value or use variable syntax like `${option.env}`
 
-**Adding Multiple Conditions (AND Logic):**
+**Adding Multiple Conditions (AND Logic by Default):**
 
-Within a condition set, click **"Add"** to add another condition. All conditions in a set must be true (AND logic).
+Within a condition set, click **"Add"** to add another condition. By default, all conditions in a set must be true (AND logic).
 
 Example: `${node.osFamily} equals unix` **AND** `${node.hostname} contains web`
 
-**Adding Condition Sets (OR Logic):**
+**Adding Condition Sets (OR Logic by Default):**
 
-Click **"Add Condition Set"** to create a new set. The step executes if ANY condition set is true (OR logic).
+Click **"Add Condition Set"** to create a new set. By default, the step executes if ANY condition set is true (OR logic).
 
 Example: 
 - Set 1: `${node.osFamily} equals unix` **AND** `${node.tags} contains web`
@@ -148,6 +148,39 @@ Example:
 **Limits:**
 - Maximum 5 conditions per condition set
 - Maximum 5 condition sets per step
+
+### Inverting the Logic: AND/OR Toggle
+
+By default, a Conditional Logic step evaluates **AND within each condition set, OR across condition sets**. Once you've added a second condition set, a dropdown appears at the last set boundary that lets you invert this: **OR within each condition set, AND across condition sets**.
+
+::: tip Since Rundeck 6.2.0
+The AND/OR toggle for condition sets is available starting in Rundeck 6.2.0.
+:::
+
+<!-- TODO: add screenshot showing the AND/OR toggle dropdown at the last condition set boundary (visible once 2+ condition sets exist). Suggested filename: job-conditionals-toggle.png -->
+
+The toggle applies to the whole step, not just the boundary where it appears — it flips both the within-set and across-set operators together.
+
+**Why this matters:**
+
+The default (AND-within/OR-across) is well suited to "match any of these profiles" logic, where each set describes a complete, self-contained case. But some conditions are naturally expressed as "all of these requirements must hold, and each requirement can be satisfied a few different ways" — which is AND-across/OR-within.
+
+**Example: Require production AND an approved region**
+
+Suppose a step should only run when the job is targeting a production-like environment **and** an approved region — but "production-like" and "approved region" each have more than one acceptable value:
+
+- Requirement 1 (environment): `${option.environment}` equals `production` **OR** `${option.environment}` equals `staging`
+- Requirement 2 (region): `${option.region}` equals `us-east` **OR** `${option.region}` equals `us-west`
+
+Modeling this with the default AND/OR grouping would require enumerating every valid combination as a separate condition set (`production`+`us-east`, `production`+`us-west`, `staging`+`us-east`, `staging`+`us-west`) — four sets instead of two, and a new set for every environment or region added later.
+
+Toggling the logic to invert lets you express it directly as two sets, each OR'd internally, with the sets AND'd together:
+
+- Set 1 (environment, OR within set): `${option.environment}` equals `production` **OR** `${option.environment}` equals `staging`
+- **AND**
+- Set 2 (region, OR within set): `${option.region}` equals `us-east` **OR** `${option.region}` equals `us-west`
+
+This keeps the condition sets aligned with the business requirements (environment, region) rather than with every combination of values, and it stays maintainable as acceptable values are added or removed.
 
 #### 3. Set the Steps
 
@@ -326,6 +359,8 @@ Condition Set 2 (Windows):
 - Field: `${node.osFamily}` Operator: `equals` Value: `windows`
 - Field: `${node.tags}` Operator: `contains` Value: `iis`
 
+See [Inverting the Logic: AND/OR Toggle](#inverting-the-logic-and-or-toggle) above for cases where the sets should be AND'd together instead, with OR logic within each set.
+
 ### Nested Conditionals
 
 You can place a Conditional Logic step inside another Conditional Logic step to build multi-level branching:
@@ -453,6 +488,7 @@ Conditional steps use the following structure in job definitions:
           "type": "conditional.logic",
           "nodeStep": true,
           "description": "Check Linux Nodes",
+          "invertLogic": false,
           "conditionGroups": [
             {
               "conditions": [
@@ -485,6 +521,7 @@ Conditional steps use the following structure in job definitions:
       - type: conditional.logic
         nodeStep: true
         description: Check Linux Nodes
+        invertLogic: false
         conditionGroups:
           - conditions:
               - field: "${node.osFamily}"
