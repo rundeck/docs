@@ -157,7 +157,7 @@ By default, a Conditional Logic step evaluates **AND within each condition set, 
 The AND/OR toggle for condition sets is available starting in Rundeck 6.2.0.
 :::
 
-<!-- TODO: add screenshot showing the AND/OR toggle dropdown at the last condition set boundary (visible once 2+ condition sets exist). Suggested filename: job-conditionals-toggle.png -->
+![job-conditionals-toggle](/assets/img/job-conditionals-toggle.png)
 
 The toggle applies to the whole step, not just the boundary where it appears — it flips both the within-set and across-set operators together.
 
@@ -174,11 +174,15 @@ Suppose a step should only run when the job is targeting a production-like envir
 
 Modeling this with the default AND/OR grouping would require enumerating every valid combination as a separate condition set (`production`+`us-east`, `production`+`us-west`, `staging`+`us-east`, `staging`+`us-west`) — four sets instead of two, and a new set for every environment or region added later.
 
+![job-conditionals-toggle-long](/assets/img/job-conditionals-toggle-long.png)
+
 Toggling the logic to invert lets you express it directly as two sets, each OR'd internally, with the sets AND'd together:
 
 - Set 1 (environment, OR within set): `${option.environment}` equals `production` **OR** `${option.environment}` equals `staging`
 - **AND**
 - Set 2 (region, OR within set): `${option.region}` equals `us-east` **OR** `${option.region}` equals `us-west`
+
+![job-conditionals-toggle-short](/assets/img/job-conditionals-toggle-short.png)
 
 This keeps the condition sets aligned with the business requirements (environment, region) rather than with every combination of values, and it stays maintainable as acceptable values are added or removed.
 
