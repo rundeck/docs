@@ -7,7 +7,7 @@ Groovy plugins provide a middle ground between Script and Java plugins, offering
 - **Simple Development** - Create plugins in a single `.groovy` file
 - **Dynamic Scripting** - Groovy's powerful scripting features
 - **Java Ecosystem Access** - Use Java libraries and classes
-- **Hot Reloading** - Update plugins without restarting Rundeck (after initial load)
+- **Hot Reloading** - Optionally reload plugin changes without restarting Rundeck (after initial load)
 - **DSL Syntax** - Simplified domain-specific language for plugin definition
 
 **Limitations:**
@@ -622,11 +622,26 @@ try {
 After the initial load:
 
 1. Edit the `.groovy` file
-2. **No restart needed!** - Changes take effect on next use
+2. **Enable hot reloading** (see below) - or restart Rundeck to pick up the change
 3. Test your changes
 
 ::: tip Hot Reloading
-Groovy plugins support hot reloading after the initial load. This makes development much faster than Java plugins.
+Groovy plugins support hot reloading after the initial load, but it's **opt-in** - you must set the `plugin.refreshDelay` property first. See below to enable it.
+:::
+
+#### Enabling Hot Reloading
+
+`plugin.refreshDelay` sets, in milliseconds, how often Rundeck checks the `.groovy` file for changes. It's read once at startup, so a restart is still required after changing it. Set it in `rundeck-config.properties` - Rundeck's primary configuration file, present in every installation type (RPM, DEB, Docker, self-hosted):
+
+```properties
+# $RDECK_BASE/server/config/rundeck-config.properties
+plugin.refreshDelay=5000
+```
+
+See [Config File Reference](/administration/configuration/config-file-reference.md) for its location per installation type. Alternatively, set it as a JVM system property via `RDECK_JVM_OPTS` - see [System Properties Configuration](/administration/configuration/system-properties.md).
+
+::: warning Hot Reloading Caveat
+Broken or empty `.groovy` files in `libext` can prevent Rundeck from starting, regardless of whether `plugin.refreshDelay` is set. Enabling `plugin.refreshDelay` extends periodic refresh-checking to every Groovy plugin in `libext`, not just the one you're editing - verify the whole directory is clean before enabling this in a shared environment.
 :::
 
 ### Debugging
