@@ -1126,11 +1126,11 @@ Controls the sizing behavior of the ACE code editor rendered inside plugin confi
 
 | Property | Default | Description |
 |----------|---------|-------------|
-| `rundeck.feature.guiAceEditorMinLines` | `0` | Minimum number of visible lines in the editor. `0` (default) makes the editor manually resizable via a drag handle instead of auto-sizing. Set to a non-zero value to disable manual resize and have the editor auto-size to that minimum line count instead. |
-| `rundeck.feature.guiAceEditorMaxLines` | `0` | Maximum number of lines the editor auto-expands to. Only applies when `guiAceEditorMinLines` is non-zero. Set to `0` for unlimited. |
+| `rundeck.feature.guiAceEditorMinLines` | `0` | Minimum number of visible lines in the editor. `0` (default) makes the editor manually resizable via a drag handle. A non-zero value disables manual resize; the editor starts with enough height to show that many lines and auto-expands as lines are added. |
+| `rundeck.feature.guiAceEditorMaxLines` | `0` | Only applies when `guiAceEditorMinLines` is non-zero. Caps how far the editor auto-expands: once content reaches this many lines, a scrollbar appears instead of the editor growing further. Set to `0` for unlimited. |
 
 :::tip
-Manual resize is available now on Runbook Automation **SaaS**. On **Self-Hosted**, the default changes from `12` to `0` (manually resizable) starting in **Rundeck 6.3.0**.
+Manual resize is available now on Runbook Automation **SaaS**. On Runbook Automation **Self-Hosted**, the default changes from `12` to `0` (manually resizable) starting in **Rundeck 6.3.0**.
 :::
 
 These settings can be changed at runtime via **System Configuration → GUI** without restarting Rundeck. The new values take effect on the next page load.
