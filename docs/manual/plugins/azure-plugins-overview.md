@@ -12,18 +12,16 @@ These integrations allow operations teams to provide self-service mechanisms to 
 |Plugin Name| Plugin Type| Description|
 |:---------------------------------------------------------|:---------------------------------------------------------:|:---------------------------------------------------------|
 |[**Azure Node Source**](/manual/projects/resource-model-sources/azure.md)|Node Source|Retrieve Azure virtual machines for Node Inventory.|
-|[**Delete Azure VM**](/manual/jobs/job-plugins/node-steps/azure.md#azure-node-delete)|Node Step|Delete an virtual machine.|
-|[**Start Azure VM**](/manual/jobs/job-plugins/node-steps/azure.md#azure-node-start)|Node Step|Start (power on) an existing virtual machine.|
-|[**Stop Azure VM**](/manual/jobs/job-plugins/node-steps/azure.md#azure-node-stop)|Node Step|Stop (power off) an existing virtual machine.|
-|[**Restart Azure VM**](/manual/jobs/job-plugins/node-steps/azure.md#azure-node-restart)|Node Step|Restarts an existing virtual machine.|
-|[**Capture VM Snapshot**](/manual/jobs/job-plugins/node-steps/azure.md#azure-node-capture)|Node Step|Capture a snapshot of an existing virtual machine.|
-|[**Storage Copy**](/manual/jobs/job-plugins/workflow-steps/azure.md#azure-storage-copy)|Workflow Step|Copy or get objects from Azure storage to/from Runbook Automation (Rundeck).|
-|[**Storage Delete**](/manual/jobs/job-plugins/workflow-steps/azure.md#azure-storage-delete)|Workflow Step|Delete blob storage from Azure storage container.|
-|[**Storage List**](/manual/jobs/job-plugins/workflow-steps/azure.md#azure-storage-list)|Workflow Step|List blobs from Azure storage container.|
-|[**Create Azure VM**](/manual/jobs/job-plugins/workflow-steps/azure.md#azure-vm-create)|Workflow Step|Create a new Azure virtual machine.|
-|[**List Azure VMs**](/manual/jobs/job-plugins/workflow-steps/azure.md#azure-vm-list)|Workflow Step|List Azure virtual machines.|
-|[**Start Azure VM**](/manual/jobs/job-plugins/workflow-steps/azure.md#azure-vm-start)|Workflow Step|Start (power on) an Azure virtual machines.|
-|[**Stop Azure VM**](/manual/jobs/job-plugins/workflow-steps/azure.md#azure-vm-stop)|Workflow Step|Stop (power off) an Azure virtual machines.|
+|[**Delete Azure VM**](/manual/jobs/job-plugins/node-steps/azure.md#azure-vm-delete)|Node Step|Delete an virtual machine.|
+|[**Start Azure VM**](/manual/jobs/job-plugins/node-steps/azure.md#azure-vm-start)|Node Step|Start (power on) an existing virtual machine.|
+|[**Stop Azure VM**](/manual/jobs/job-plugins/node-steps/azure.md#azure-vm-stop)|Node Step|Stop (power off) an existing virtual machine.|
+|[**Restart Azure VM**](/manual/jobs/job-plugins/node-steps/azure.md#azure-vm-restart)|Node Step|Restarts an existing virtual machine.|
+|[**Capture VM Snapshot**](/manual/jobs/job-plugins/workflow-steps/azure.md#azure-vm-capture-snapshot)|Workflow Step|Capture a snapshot of an existing virtual machine.|
+|[**Capture VM Managed Disk Snapshot**](/manual/jobs/job-plugins/workflow-steps/azure.md#azure-vm-managed-disk-capture-snapshot)|Workflow Step|Capture a snapshot of an existing virtual machine's managed disk.|
+|[**Storage Remote Copy**](/manual/jobs/job-plugins/node-steps/azure-storage.md#remote-copy)|Node Step|Copy files between Azure Storage containers or a local filesystem.|
+|[**Storage Remove Blobs**](/manual/jobs/job-plugins/node-steps/azure-storage.md#remove-blobs)|Node Step|Remove blobs from an Azure Storage container.|
+|[**Storage List Blobs**](/manual/jobs/job-plugins/node-steps/azure-storage.md#list-blobs)|Node Step|List the blobs in an Azure Storage container.|
+|[**Storage Remote Syncs**](/manual/jobs/job-plugins/node-steps/azure-storage.md#remote-syncs)|Node Step|Synchronize files between Azure Storage containers or a local filesystem.|
 |[**Azure Log Storage**](/administration/cluster/logstore/azure.md)|Log Storage|Send execution log files to Azure Storage Account.|
 |[**VM Health Check**](/manual/healthcheckplugins/azure-healthcheck.md)|Health Check|Check the status of Azure virtual machines.|
 |[**Azure Active Directory SSO**](/administration/security/sso/azure-sso.md)|Single Sign On|Use Azure Active Directory to authenticate users.|

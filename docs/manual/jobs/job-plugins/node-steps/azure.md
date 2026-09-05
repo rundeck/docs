@@ -37,9 +37,9 @@ For Rundeck OSS installations, use the properties listed below to configure cred
 It is important to configure the azure resource model plugin before using these steps: [Azure Resource Model](/manual/projects/resource-model-sources/azure.md#azure-enterprise)
 :::
 
-### Azure / Node / Delete
+### Azure / VM / Delete
 
-![Azure - Delete Node](/assets/img/azure-node-delete.png)
+![Azure VM Delete step configuration](/assets/img/azure-vm-delete.png)
 
 - **Async**
 : Should be set to true if the vm should be deleted asynchronously.
@@ -48,39 +48,30 @@ It is important to configure the azure resource model plugin before using these 
  Be very careful when using this step.  It would be possible to remove a lot of instances by mistake if the node filter is too broad.
 :::
 
-### Azure / Node / Start
+### Azure / VM / Start
 
-![Azure - Delete Node](/assets/img/azure-node-start.png)
+![Azure VM Start step configuration](/assets/img/azure-vm-start.png)
 
 - **Async**
 : Should be set to true if the vm should be started asynchronously.
 
-### Azure / Node / Stop
+### Azure / VM / Stop
 
-![Azure - Delete Node](/assets/img/azure-node-stop.png)
+![Azure VM Stop step configuration](/assets/img/azure-vm-stop.png)
 
 - **Async**
 : Should be set to true if the vm should be stopped asynchronously.
 
-### Azure / Node / Restart
+- **Deallocate**
+: If enabled, deallocates the VM after it is stopped, releasing its Azure compute resources to save costs. Enabling this option forces the stop to run synchronously, overriding the **Async** setting.
 
-![Azure - Delete Node](/assets/img/azure-node-restart.png)
+### Azure / VM / Restart
+
+![Azure VM Restart step configuration](/assets/img/azure-vm-restart.png)
 
 - **Async**
 : Should be set to true if the vm should be restart asynchronously.
 
-### Azure / Node / Capture
-
-![Azure - Delete Node](/assets/img/azure-node-capture2.png)
-
-- **Async**
-: Should be set to true if the vm should be captured asynchronously.
-
-- **containerName**
-: destination container name to store the captured VHD
-
-- **vhdPrefix**
-: the prefix for the VHD holding captured image.
-
-- **overwriteVhd**
-: whether to overwrites destination VHD if it exists. If set to true, it will be overwritten.
+:::tip
+Looking for VM snapshot capture? [**Azure / VM / Capture Snapshot**](/manual/jobs/job-plugins/workflow-steps/azure.md#azure-vm-capture-snapshot) is a Workflow Step, not a Node Step — see the [Azure Workflow Steps](/manual/jobs/job-plugins/workflow-steps/azure.md) page.
+:::

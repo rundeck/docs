@@ -8,162 +8,81 @@ Follow the steps outlined in the [**Azure Plugins Overview**](/manual/plugins/az
 Credentials can be configured on a per Job Step basis, Project basis, or for the entire Runbook Automation system.
 
 
-## Azure / VM / Create
+:::tip
+Looking for Create, List, Start, Delete, Stop, or Restart? Those are Node Steps — see [Azure Node Steps](/manual/jobs/job-plugins/node-steps/azure.md).
+:::
 
-This job step allows users to create a new Virtual Machine hosted by Azure. In order to do so, you need to specify information about the configuration of the virtual machine.
+## Azure / VM / Capture Snapshot
 
-![Azure - Create VM](/assets/img/azure_create1.png)
+This job step allows users to capture a snapshot of a Virtual Machine hosted by Azure.
+
+![Azure VM Capture Snapshot step configuration](/assets/img/azure-vm-capture-snapshot.png)
 
 - **Client ID**
-: This is where you provide the Azure client ID. To find it, choose the application you wish to use and look for the Application ID. This is the same as the client ID.
+: Azure Client ID.
 
 - **Tenant ID**
-: This is where you provide the Azure tenant ID. To find it, search for "tenant properties" in the Azure portal and go to that page. The tenant ID is in the center of the page.
+: Azure Tenant ID.
 
 - **Subscription ID**
-: This is where you provide the Azure subscription ID. To find it, go to subscriptions and find the subscription you wish to use to host the VM and copy that subscription ID.
+: Azure Subscription ID.
 
 - **Key**
-: This is the access key that will grant access to your Azure account. To find it, go to storage accounts, choose the storage account you wish to use and select access keys under settings.
+: Azure Access Key.
 
 - **Certificate Path**
-: (Optional if the access key is not defined) This is the file path to the Azure certificate. If you don't have a certificate already, go to the App Services Certificates page and click "Create App Service Certificate."
+: (Optional if the access key is not defined) Azure certificate file path.
 
 - **Certificate Password**
-: (Optional if the access key is not defined) This is the password for the Azure certificate.
+: (Optional if the access key is not defined) Azure certificate password.
 
-![Azure - Create VM - VM Properties](/assets/img/azure_create2.png)
-
-- **Region**
-: This is the Azure region you wish to use for the Virtual Machine. An example is "East US."
+- **Resource Group**
+: The Azure Resource Group the VM belongs to.
 
 - **Name**
-: This is the name you want the new Virtual Machine to be called.
+: The name of the VM to capture.
 
-- **UserName**
-: This is the username used to login on the new Virtual Machine.
+- **Container Name**
+: Azure container name to store the captured VHD.
 
-- **Password**
-: This is the password used to login on the new Virtual Machine.
+- **VHD prefix**
+: The prefix to add to the captured VHD.
 
-- **Resource Group**
-: This is the resource group for the VMs you want listed. To see the different resource groups you have, seach for "resource groups" and navigate to that page.
+- **Overwrite existing snapshot ?**
+: Will overwrite the existing snapshot if one already exists.
 
-- **Create resource group**
-: If checked, this will create a new resource group that the VM is in.
+- **Async**
+: Should be set to true if the snapshot should be captured asynchronously.
 
-- **VM Size**
-: This is the size of the new Virtual Machine (from a list of preset options).
+## Azure / VM / Managed Disk Capture Snapshot
 
-- **OS Type**
-: This is the operating system you want on the new Virtual Machine (Linux or Windows).
+This job step allows users to capture a snapshot of a Virtual Machine's managed disk hosted by Azure.
 
-![Azure - Create VM - Network Options](/assets/img/azure_create3.png)
-
-- **Primary Network**
-: This is the IP address of the primary network.
-
-- **Network Type**
-: This is the network type for the VM (public or private).
-
-## Azure / VM / List
-
-![Azure - List VM - Credentials](/assets/img/azure_list2.png)
-
-This job step allows users to get a list of all of the Virtual Machines being hosted by Azure.
+![Azure VM Managed Disk Capture Snapshot step configuration](/assets/img/azure-vm-managed-disk-capture-snapshot.png)
 
 - **Client ID**
-: This is where you provide the Azure client ID. To find it, choose the application you wish to use and look for the Application ID. This is the same as the client ID.
+: Azure Client ID.
 
 - **Tenant ID**
-: This is where you provide the Azure tenant ID. To find it, search for "tenant properties" in the Azure portal and go to that page. The tenant ID is in the center of the page.
+: Azure Tenant ID.
 
 - **Subscription ID**
-: This is where you provide the Azure subscription ID. To find it, go to subscriptions and find the subscription you wish to use to host the VM and copy that subscription ID.
+: Azure Subscription ID.
 
 - **Key**
-: This is the access key that will grant access to your Azure account. To find it, go to storage accounts, choose the storage account you wish to use and select access keys under settings.
+: Azure Access Key.
 
 - **Certificate Path**
-: (Optional if the access key is not defined) This is the file path to the Azure certificate. If you don't have a certificate already, go to the App Services Certificates page and click "Create App Service Certificate."
+: (Optional if the access key is not defined) Azure certificate file path.
 
 - **Certificate Password**
-: (Optional if the access key is not defined) This is the password for the Azure certificate.
-
-![Azure - List VM - VM Properties](/assets/img/azure_list3.png)
-
-- **Region**
-: This is the region of the VMs you want listed.
-
-- **Tag Name**
-: This is the tag for the names of VMs you want listed.
-
-- **Region**
-: This is the tag value for the regions you want VMs listed within.
+: (Optional if the access key is not defined) Azure certificate password.
 
 - **Resource Group**
-: This is the resource group for the VMs you want listed. To see the different resource groups you have, seach for "resource groups" and navigate to that page.
+: The Azure Resource Group the VM belongs to.
 
-## Azure / VM / Start
+- **Snapshot Name**
+: Name of the snapshot.
 
-This job step allows users to start a Virtual Machine that is being hosted by Azure.
-
-![Azure - Start VM - Credentials](/assets/img/azure_start1.png)
-
-- **Client ID**
-: This is where you provide the Azure client ID. To find it, choose the application you wish to use and look for the Application ID. This is the same as the client ID.
-
-- **Tenant ID**
-: This is where you provide the Azure tenant ID. To find it, search for "tenant properties" in the Azure portal and go to that page. The tenant ID is in the center of the page.
-
-- **Subscription ID**
-: This is where you provide the Azure subscription ID. To find it, go to subscriptions and find the subscription you wish to use to host the VM and copy that subscription ID.
-
-- **Key**
-: This is the access key that will grant access to your Azure VM. To find it, go to app registrations on Azure, click on the application you want to link, and then go to certificates and secrets. Now create a new secret or use an existing one, making sure to use the secret value and not ID. 
-
-- **Certificate Path**
-: (Optional if the access key is not defined) This is the file path to the Azure certificate. If you don't have a certificate already, go to the App Services Certificates page and click "Create App Service Certificate."
-
-- **Certificate Password**
-: (Optional if the access key is not defined) This is the password for the Azure certificate.
-
-![Azure - Start VM - VM Properties](/assets/img/azure_start2.png)
-
-- **Resource Group**
-: This is the resource group for the VMs you want listed. To see the different resource groups you have, search for "resource groups" and navigate to that page.
-
-- **Name**
-: This is the name of the VM you wish to start.
-
-## Azure / VM / Stop
-
-This job step allows users to stop a Virtual Machine that is being hosted by Azure.
-
-![Azure - Stop VM - Credentials](/assets/img/azure_stop1.png)
-
-- **Client ID**
-: This is where you provide the Azure client ID. To find it, choose the application you wish to use and look for the Application ID. This is the same as the client ID.
-
-- **Tenant ID**
-: This is where you provide the Azure tenant ID. To find it, search for "tenant properties" in the Azure portal and go to that page. The tenant ID is in the center of the page.
-
-- **Subscription ID**
-: This is where you provide the Azure subscription ID. To find it, go to subscriptions and find the subscription you wish to use to host the VM and copy that subscription ID.
-
-- **Key**
-: This is the access key that will grant access to your Azure VM. To find it, go to app registrations on Azure, click on the application you want to link, and then go to certificates and secrets. Now create a new secret or use an existing one, making sure to use the secret value and not ID. 
-
-- **Certificate Path**
-: (Optional if the access key is not defined) This is the file path to the Azure certificate. If you don't have a certificate already, go to the App Services Certificates page and click "Create App Service Certificate."
-
-- **Certificate Password**
-: (Optional if the access key is not defined) This is the password for the Azure certificate.
-
-![Azure - Stop VM - VM Properties](/assets/img/azure_stop2.png)
-
-- **Resource Group**
-: This is the resource group for the VMs you want listed. To see the different resource groups you have, seach for "resource groups" and navigate to that page.
-
-- **Name**
-: This is the name of the VM you wish to stop.
+- **DISK ID**
+: Disk ID of the VM's OS disk.
