@@ -15,7 +15,7 @@ The [pywinrm plugin](https://github.com/rundeck-plugins/py-winrm-plugin) needs t
 
 :::tip
 Make sure the Python interpreter used by the plugin can import `pywinrm`. If **Python Interpreter** is a command name such as `python3`, that command must be on `PATH`. If you set a full path (for example a virtualenv), that interpreter is used instead.
-- We recommend these commands to check the python installation:
+- We recommend these commands to check the Python installation:
 ```shell
 # Windows OS
 where python
