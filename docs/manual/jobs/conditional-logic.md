@@ -157,7 +157,7 @@ By default, a Conditional Logic step evaluates **AND within each condition set, 
 The AND/OR toggle for condition sets is available starting in Rundeck 6.2.0.
 :::
 
-![job-conditionals-toggle](/assets/img/job-conditionals-toggle.png)
+![Conditional Logic editor showing the AND/OR toggle between condition sets](/assets/img/job-conditionals-toggle.png)
 
 The toggle applies to the whole step, not just the boundary where it appears — it flips both the within-set and across-set operators together.
 
