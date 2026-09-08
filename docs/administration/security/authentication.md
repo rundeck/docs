@@ -153,6 +153,10 @@ Rundeck includes two JAAS login modules you can use for LDAP directory authentic
 
 These are an enhanced version of the default Jetty JAAS Ldap login module that caches authorization results for a period of time.
 
+:::tip
+`JettyCachingLdapLoginModule` and `JettyCombinedLdapLoginModule` are Rundeck-authored modules, not part of Jetty's built-in JAAS SPI. They are unaffected by the Jetty 12 changes described above, so they intentionally remain in the `com.dtolabs.rundeck.jetty.jaas` package on Rundeck 6.0+ — do not change these class names to `org.rundeck.jaas.*` when migrating your JAAS configuration.
+:::
+
 JAAS supports evaluating `MD5`, `BCRYPT` and `CRYPT` password hashes.
 
 You must change some configuration values to change the authentication module to use.
