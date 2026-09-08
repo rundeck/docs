@@ -42,7 +42,7 @@ It is important to configure the azure resource model plugin before using these 
 ![Azure VM Delete step configuration](/assets/img/azure-vm-delete.png)
 
 - **Async**
-: Should be set to true if the vm should be deleted asynchronously.
+: Should be set to true if the VM should be deleted asynchronously.
 
 :::danger
  Be very careful when using this step.  It would be possible to remove a lot of instances by mistake if the node filter is too broad.
