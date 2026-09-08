@@ -48,7 +48,7 @@ This job step allows users to capture a snapshot of a Virtual Machine hosted by 
 - **VHD prefix**
 : The prefix to add to the captured VHD.
 
-- **Overwrite existing snapshot ?**
+- **Overwrite existing snapshot?**
 : Will overwrite the existing snapshot if one already exists.
 
 - **Async**

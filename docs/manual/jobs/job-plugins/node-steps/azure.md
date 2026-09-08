@@ -70,7 +70,7 @@ It is important to configure the azure resource model plugin before using these 
 ![Azure VM Restart step configuration](/assets/img/azure-vm-restart.png)
 
 - **Async**
-: Should be set to true if the vm should be restart asynchronously.
+: Should be set to true if the VM should be restarted asynchronously.
 
 :::tip
 Looking for VM snapshot capture? [**Azure / VM / Capture Snapshot**](/manual/jobs/job-plugins/workflow-steps/azure.md#azure-vm-capture-snapshot) is a Workflow Step, not a Node Step — see the [Azure Workflow Steps](/manual/jobs/job-plugins/workflow-steps/azure.md) page.

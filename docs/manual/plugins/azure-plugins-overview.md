@@ -12,7 +12,7 @@ These integrations allow operations teams to provide self-service mechanisms to 
 |Plugin Name| Plugin Type| Description|
 |:---------------------------------------------------------|:---------------------------------------------------------:|:---------------------------------------------------------|
 |[**Azure Node Source**](/manual/projects/resource-model-sources/azure.md)|Node Source|Retrieve Azure virtual machines for Node Inventory.|
-|[**Delete Azure VM**](/manual/jobs/job-plugins/node-steps/azure.md#azure-vm-delete)|Node Step|Delete an virtual machine.|
+|[**Delete Azure VM**](/manual/jobs/job-plugins/node-steps/azure.md#azure-vm-delete)|Node Step|Delete a virtual machine.|
 |[**Start Azure VM**](/manual/jobs/job-plugins/node-steps/azure.md#azure-vm-start)|Node Step|Start (power on) an existing virtual machine.|
 |[**Stop Azure VM**](/manual/jobs/job-plugins/node-steps/azure.md#azure-vm-stop)|Node Step|Stop (power off) an existing virtual machine.|
 |[**Restart Azure VM**](/manual/jobs/job-plugins/node-steps/azure.md#azure-vm-restart)|Node Step|Restarts an existing virtual machine.|
