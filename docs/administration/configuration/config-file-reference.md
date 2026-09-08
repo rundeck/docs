@@ -602,6 +602,21 @@ Enables dynamic conditional execution in workflows based on runtime conditions. 
 
 **See also:** [User Management Guide](/manual/user-management/user-mgmt.md#manage-local-users)
 
+#### SSH Exported Variable Quoting
+
+**Purpose:** Optionally POSIX shell-quote the values exported to remote nodes via a node's `ssh-variable-export-pattern` attribute, to prevent command injection through those values (for example a job option value containing `;`, `$()`, or backticks).
+
+| Property | Default | Description |
+|----------|---------|-------------|
+| `rundeck.execution.sshExportQuoting` | `false` | When `true`, values interpolated into a node's `ssh-variable-export-pattern` (the `export {key}={value}` prefix prepended to the remote SSH command) are shell-quoted before dispatch. |
+
+**Behavior:**
+
+- **Opt-in.** Default `false` preserves the current behavior; the control has no effect until enabled. System-level only (not per-project).
+- When enabled, only values that contain whitespace or shell metacharacters are quoted — values without them are emitted unchanged, so typical configurations are unaffected.
+- When enabling, node export patterns must reference `{value}` **without** surrounding quotes (e.g. `export {key}={value}`, not `export {key}='{value}'`). The framework performs the quoting; a self-quoting pattern would double-quote the value.
+- Only nodes that define the (non-default) `ssh-variable-export-pattern` attribute are affected.
+
 ### Security HTTP Headers
 
 **Purpose:** Add security headers to HTTP responses to protect against common web vulnerabilities.
