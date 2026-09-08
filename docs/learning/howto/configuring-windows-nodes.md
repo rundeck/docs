@@ -89,7 +89,7 @@ The following properties can optionally be set in the WinRM Node Executor and Wi
 
 * **`Python Interpreter`**: Python command or full path used to run the plugin (default: `python3`). Use a command on `PATH` or a virtualenv interpreter. This can be overridden on nodes with `winrm-interpreter`. <br><br>
 * **`No SSL Verification`**: When this is set to `true`, SSL is not validated in the WinRM communication. This can be overridden on nodes with `winrm-nossl`.  <br><br>
-  * **`Disable TLS 1.2`**: Check this box to execute over TLS 1.0. This can be overridden on nodes with `winrm-disable-tls-12`. <br><br>
+* **`Disable TLS 1.2`**: Check this box to execute over TLS 1.0. This can be overridden on nodes with `winrm-disable-tls-12`. <br><br>
 * **`WinRM Transport Protocol`**: Optionally choose HTTP or HTTPS for the WinRM transport protocol. This can be overridden on nodes with `winrm-transport`. <br><br>
 * **`WinRM Port`**: The WinRM port to use. The default is port 5985.  This can be overridden on nodes with `winrm-port`. <br><br>
 * **`WinRM Username`**: Optional username. The username can be set at node level (using the attribute `username`) or at job level (using an input option called `username`). <br><br>
