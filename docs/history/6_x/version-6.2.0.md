@@ -1,7 +1,7 @@
 ---
 
 title: "6.2.0 Release Notes"
-date: 2026-09-02
+date: 2026-09-08
 image: /images/chevron-logo-red-on-white.png
 description: "Rundeck | Runbook Automation Releases 6.2.0 - Conditional AND/OR, AWS SDK v2, and Security Fixes"
 feed:
@@ -169,7 +169,7 @@ Fixed SCM plugin (git-export/git-import) incorrectly disabling itself when the G
 
 Name: <span style="color: rebeccapurple"><span class="glyphicon glyphicon-glass"></span> "Cassiopeia rebeccapurple glass"</span>
 
-Release Date: September 2nd, 2026
+Release Date: September 8th, 2026
 
 
 ## Community Contributors
