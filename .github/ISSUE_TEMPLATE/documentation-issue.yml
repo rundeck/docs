@@ -1,0 +1,29 @@
+name: Documentation issue
+description: Report incorrect, outdated, or missing Rundeck documentation
+title: "[Docs]: "
+body:
+  - type: input
+    id: version
+    attributes:
+      label: Rundeck Version
+      description: Which version of Rundeck is this about? Docs can differ across versions, and missing-documentation requests are often version-specific too (e.g. a feature that shipped without any docs for it).
+      placeholder: e.g. 6.1.0
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Describe the issue
+      description: What's wrong with the existing content, or what's missing? If there's no existing page to point to, describe what documentation should exist.
+    validations:
+      required: true
+
+  - type: input
+    id: source_page
+    attributes:
+      label: Source page
+      description: Link or name of the existing page with the issue. Leave blank if this is about documentation that doesn't exist yet.
+      placeholder: e.g. https://docs.rundeck.com/docs/administration/...
+    validations:
+      required: false
