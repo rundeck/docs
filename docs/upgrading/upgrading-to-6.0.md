@@ -27,6 +27,8 @@ The bundled **[py-winrm-plugin](https://github.com/rundeck-plugins/py-winrm-plug
 
 Before upgrading to **Rundeck 6.0**, ensure every host that runs PyWinRM code is using **Python 3.8+** on the OS path the plugin uses (typically the **Rundeck / Runbook Automation server**; if you use **Enterprise Runners** to execute WinRM against nodes, install **Python 3.8+** on those Runner hosts as well). Reinstall **`pywinrm`** (and optional extras such as Kerberos/CREDSSP helpers) with a **Python 3** `pip` if needed.
 
+On distributions that mark the system Python as externally managed (for example Ubuntu 24.04+), install `pywinrm` with the OS package manager or set **Python Interpreter** to a virtualenv that has the packages installed. The field accepts a command name or a full path, and can be overridden per node with `winrm-interpreter`.
+
 Configuration and prerequisites are summarized in [Connect to Windows Nodes with PyWinRM](/learning/howto/configuring-windows-nodes.md).
 
 ## MySQL 8.4 and database migrations
