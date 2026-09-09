@@ -12,6 +12,20 @@ feed:
 
 # 6.2.0 Release Notes
 
+::: warning
+⚠️ Breaking change: undeclared job options are rejected by default.
+
+Starting in 6.2.0, Rundeck rejects any job execution submitted with an option name the job does not declare. Previously, undeclared option values were silently accepted and exported to the job as `RD_OPTION_*` environment variables without validation; they are now rejected as a security hardening measure.
+
+This is controlled by the new system property `rundeck.execution.rejectUndeclaredOptions`, which defaults to `true`.
+
+_Who is affected:_ Any execution attached to a saved job — API `job/{id}/run`, "Run Job Now", scheduled/cron runs, webhook-triggered runs, and re-runs (including automatic retry) — where the submitted options include a name not declared on that job. This commonly affects wrapper/orchestrator jobs that pass tracing metadata (e.g. `parent_job_id`, `parent_job_exec_id`) to child jobs. Job reference (`jobref`) steps are not affected by this check.
+
+_What it looks like:_ The execution is created and the API/UI call returns success (`status: running`), but the execution then fails immediately before any workflow step runs, logging: `Execution rejected: option(s) not defined on this job were provided: [...]`.
+
+_To remediate:_ Declare the previously-undeclared options on the affected job(s) (e.g. `required: false`, no default needed) — note this also brings those values under any configured option-input allowlist (`rundeck.option.input.validation.default.pattern` / `project.option.input.validation.default.pattern`) for the first time. To temporarily restore the previous behavior instance-wide, set `rundeck.execution.rejectUndeclaredOptions=false` (a startup security warning will be logged).
+:::
+
 ::: tip Rundeck/RBA MCP Server
 The [Rundeck MCP Server](/mcp/index.md) is now available. It is distributed separately from 6.2.0 and works with Rundeck 6.1.0 or later. The server connects MCP-compatible AI assistants (Claude Desktop, Claude Code, Cursor, VS Code, and others) to your Rundeck or Runbook Automation instance so you can query projects, generate and validate jobs, manage ACLs, and provision runners from chat, authenticated with your own API token.
 :::
