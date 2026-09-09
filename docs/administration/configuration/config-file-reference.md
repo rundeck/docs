@@ -634,9 +634,9 @@ This control is opt-in. With no pattern configured (the default), option values 
 
 | Property | Default | Description |
 |----------|---------|-------------|
-| `rundeck.execution.rejectUndeclaredOptions` | `true` | When enabled, an execution that provides an option not defined on the job is created and then failed at start, with a message in the execution log. |
+| `rundeck.execution.rejectUndeclaredOptions` | `false` | When enabled, an execution that provides an option not defined on the job is created and then failed at start, with a message in the execution log. |
 
-Options not declared on a job would otherwise bypass all server-side option validation yet still reach the option data context and `RD_OPTION_*` environment variables. With this control enabled (the default), such executions are rejected before any workflow step runs. Disable it only if you must allow undeclared options to pass through — for example, re-running a job whose option set has since changed. Disabling it weakens protection against option injection, and Rundeck logs a security warning at startup when it is set to `false`. Scope: top-level executions (UI, API, webhook, and scheduled).
+Options not declared on a job would otherwise bypass all server-side option validation yet still reach the option data context and `RD_OPTION_*` environment variables. When this control is enabled, such executions are rejected before any workflow step runs. Enable it to prevent unvalidated option names from reaching scripts. The default is `false`, which allows undeclared options to pass through. Scope: top-level executions (UI, API, webhook, and scheduled).
 
 Scope includes re-running a prior execution, including automatic retry via `retryExecId` — the original option string is replayed verbatim and is checked again against the job's current option definitions. Job reference (`jobref`) workflow steps are exempt from this check: an undeclared option passed from one job to another via a job-reference step is not rejected, only options supplied to a job's own top-level execution (its own API/UI/webhook/scheduled run) are.
 
