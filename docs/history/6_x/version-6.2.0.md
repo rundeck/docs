@@ -13,17 +13,21 @@ feed:
 # 6.2.0 Release Notes
 
 ::: warning
-⚠️ Breaking change: undeclared job options are rejected by default.
+6.2.0 includes two items administrators should address: a breaking change to undeclared job options, and a change that rejected the default `admin`/`admin` login.
 
-Starting in 6.2.0, Rundeck rejects any job execution submitted with an option name the job does not declare. Previously, undeclared option values were silently accepted and exported to the job as `RD_OPTION_*` environment variables without validation; they are now rejected as a security hardening measure.
+**Breaking change in 6.2.0:** Undeclared job options are rejected by default. *A 6.2.1 patch will revert this default so the check is off unless you enable it.*
 
-This is controlled by the new system property `rundeck.execution.rejectUndeclaredOptions`, which defaults to `true`.
+In 6.2.0, Rundeck rejects any job execution submitted with an option name the job does not declare. Previously, undeclared option values were silently accepted and exported to the job as `RD_OPTION_*` environment variables without validation; they are now rejected as a security hardening measure.
+
+This is controlled by the new system property `rundeck.execution.rejectUndeclaredOptions`, which defaults to `true` in 6.2.0.
 
 _Who is affected:_ Any execution attached to a saved job — API `job/{id}/run`, "Run Job Now", scheduled/cron runs, webhook-triggered runs, and re-runs (including automatic retry) — where the submitted options include a name not declared on that job. This commonly affects wrapper/orchestrator jobs that pass tracing metadata (e.g. `parent_job_id`, `parent_job_exec_id`) to child jobs. Job reference (`jobref`) steps are not affected by this check.
 
 _What it looks like:_ The execution is created and the API/UI call returns success (`status: running`), but the execution then fails immediately before any workflow step runs, logging: `Execution rejected: option(s) not defined on this job were provided: [...]`.
 
 _To remediate:_ Declare the previously-undeclared options on the affected job(s) (e.g. `required: false`, no default needed) — note this also brings those values under any configured option-input allowlist (`rundeck.option.input.validation.default.pattern` / `project.option.input.validation.default.pattern`) for the first time. To temporarily restore the previous behavior instance-wide, set `rundeck.execution.rejectUndeclaredOptions=false` (a startup security warning will be logged).
+
+**Default credentials:** 6.2.0 no longer accepts the shipped plaintext `admin`/`admin` login in `realm.properties`, which broke some install and upgrade setups that still rely on that default. *A 6.2.1 patch will restore the previous behavior.*
 :::
 
 ::: tip Rundeck/RBA MCP Server
@@ -43,7 +47,7 @@ Beyond these highlights, 6.2.0 includes security hardening (Secure session cooki
 ## Runbook Automation Updates
 
 ##### ::circle-dot:: Swapping and/or logic in a Conditional step
-
+  
 Conditional workflow steps now include an AND/OR toggle to invert how conditions are combined. By default, every condition in a set must match and matching any set is enough; with the toggle enabled, any condition in a set can satisfy that set and every set must match. Existing conditional steps are unchanged unless you turn the toggle on.
 
 ##### ::circle-dot:: Migrate bundled AWS Plugins from AWS SDK v1 to v2
@@ -62,7 +66,7 @@ Added an optional **Cert Role Name** setting for Vault Key Storage when using TL
   
 Fixed an issue where secrets stored in Azure Key Vault could become undecryptable on Rundeck 6.0, causing jobs to fail with invalid environment variable values when reading Key Storage entries. When a secret carried more than one encryption metadata flag, only the first flag was preserved in Azure tags, which could drop the active encryption converter&#39;s marker and leave Rundeck returning raw ciphertext instead of the decrypted value. All encryption flags are now preserved when secrets are written to and read from Azure Key Vault. Secrets already saved with a missing flag must be re-saved through Rundeck or have the missing tag restored manually in Azure Key Vault.
 
-##### ::circle-dot:: Fix Windows cmd.exe quoting for job options with spaces
+##### ::circle-dot:: Fix: Windows Quoting Issues
   
 Fixed an issue where Windows job commands failed when expanded job options or global variables contained spaces or special characters and the remote shell was cmd.exe (including WinRM with the cmd shell and SSH to Windows nodes). After a Rundeck 6.0 security change, those values were quoted with single quotes, which cmd.exe does not treat as string delimiters—breaking commands such as `powershell -File` when the script path contained spaces (for example, paths ending in `.ps1&#39;`). Windows argument quoting now uses proper double-quote escaping so values are passed as a single argument while preserving injection protections against shell metacharacters such as `|`, `&gt;`, and `&amp;&amp;`.
 
@@ -76,6 +80,38 @@ Fixed an issue where blackout (and allowed) calendars defined with a specific da
 
 
 ## Rundeck Open Source Product Updates
+
+#####  ::circle-dot:: [Harden realm.properties password encoder: drop plaintext fallback, warn on weak formats](https://github.com/rundeck/rundeck/pull/10548)
+  
+Strengthened security for file-based accounts in `realm.properties` when using built-in realm authentication. Passwords without a recognized hash prefix are no longer accepted as plain text, closing a fallback that could allow login with unhashed credentials if the file was exposed. On startup, Rundeck now logs a warning listing accounts still stored in weak formats (MD5, CRYPT, or plain text) so administrators can migrate them to BCrypt.
+
+#####  ::circle-dot:: [Sync activity filters into the URL so browser back/forward preserves them](https://github.com/rundeck/rundeck/pull/10547)
+  
+Fixed the Activity page so that applied filters are preserved when navigating back from viewing an execution, instead of being silently reset.
+
+#####  ::circle-dot:: [Remove identity id generator from User domain to fix login constraint violation](https://github.com/rundeck/rundeck/pull/10546)
+  
+Fixed a login failure (`null value in column &quot;id&quot; of relation &quot;rduser&quot;`) that could occur for new users on Rundeck installations that have been upgraded across multiple releases, particularly on PostgreSQL.
+
+#####  ::circle-dot:: [Fix dynamic form and select value handling](https://github.com/rundeck/rundeck/pull/10542)
+  
+Fixes the ServiceNow plugin configuration editor: custom fields can be added again, and Urgency/Impact/Priority now submit the selected code rather than its display label.
+
+#####  ::circle-dot:: [Fix grails.* config keys being ignored in rundeck-config.groovy](https://github.com/rundeck/rundeck/pull/10538)
+  
+Fixed `rundeck-config.groovy` so that `grails.serverURL` and other `grails.*` settings are correctly honored instead of being silently ignored.
+
+#####  ::circle-dot:: [Raise default ACE code editor min lines from 12 to 20](https://github.com/rundeck/rundeck/pull/10536)
+  
+Raised the default minimum visible lines for the ACE code/script editor from 12 to 20. The minimum (and maximum) can still be customized via System Configuration → GUI.
+
+#####  ::circle-dot:: [Allow Java 21 and 25 in preinst.sh version check](https://github.com/rundeck/rundeck/pull/10410)
+  
+Fixed RPM installation failing on hosts running Java 21 or 25 because the installer incorrectly rejected those JVM versions. The RPM pre-install check now accepts Java 17, 21, and 25, matching Rundeck&#39;s documented system requirements and allowing installation on newer Linux distributions such as RHEL/Rocky Linux 10 that no longer ship Java 17.
+
+#####  ::circle-dot:: [Fix plaintext password storage in JettyCompatibleSpringSecurityPasswordEncoder](https://github.com/rundeck/rundeck/pull/10475)
+  
+Fixed: user account passwords authenticated via the realm.properties (non-JAAS) path are now hashed with BCrypt when set/changed, instead of being stored in plaintext.
 
 #####  ::circle-dot:: [fix(user-management): use substring match for User Management search filters](https://github.com/rundeck/rundeck/pull/10361)
   
@@ -116,7 +152,7 @@ Rundeck now natively emits per-project/status execution counts and durations, a 
 This release addresses CVE-2026-67213 by updating the nanoid JavaScript dependency used in the Rundeck web UI to version 3.3.17, fixing a denial-of-service vulnerability that could cause excessive CPU use during ID generation.
 
 #####  ::circle-dot:: [Generate API and webhook tokens using a CSPRNG](https://github.com/rundeck/rundeck/pull/10436)
-  
+
 Fixed: API and webhook auth tokens are now generated using a cryptographically secure random number generator (CSPRNG) instead of a non-cryptographic PRNG.
 
 #####  ::circle-dot:: [Recognize JDBC/native Jetty JAAS role principals](https://github.com/rundeck/rundeck/pull/10454)
@@ -133,10 +169,6 @@ This release addresses CVE-2026-64607 in Apache HttpClient 5 build dependencies 
 #####  ::circle-dot:: [Fix CVE-2026-71497 by forcing jsoup 1.23.1](https://github.com/rundeck/rundeck/pull/10439)
   
 Upgraded jsoup to 1.23.1 to address CVE-2026-71497 in OpenAPI tooling dependencies.
-
-#####  ::circle-dot:: [Fix plaintext password storage in JettyCompatibleSpringSecurityPasswordEncoder](https://github.com/rundeck/rundeck/pull/10475)
-  
-Fixed: user account passwords authenticated via the realm.properties (non-JAAS) path are now hashed with BCrypt when set/changed, instead of being stored in plaintext.
 
 #####  ::circle-dot:: [Normal users are not able to see job history any more](https://github.com/rundeck/rundeck/pull/10476)
   
