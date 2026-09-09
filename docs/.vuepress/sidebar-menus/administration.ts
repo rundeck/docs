@@ -212,7 +212,8 @@ export default [{
                 children: [
                   '/administration/monitoring/',
                   '/administration/monitoring/configuration.md',
-                  '/administration/monitoring/monitoring.md'
+                  '/administration/monitoring/monitoring.md',
+                  '/administration/monitoring/execution-metrics.md'
                 ]
               }
             ]},
