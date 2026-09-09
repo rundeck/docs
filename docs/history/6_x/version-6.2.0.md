@@ -13,9 +13,9 @@ feed:
 # 6.2.0 Release Notes
 
 ::: warning
-6.2.0 includes two items administrators should address: a breaking change to undeclared job options, and a change that rejected the default `admin`/`admin` login.
+6.2.0 includes two items administrators should address: a breaking change to undeclared job options, and a change that rejected the default `admin`/`admin` login. Both are resolved in [6.2.1](/history/6_x/version-6.2.1.md).
 
-**Breaking change in 6.2.0:** Undeclared job options are rejected by default. *A 6.2.1 patch will revert this default so the check is off unless you enable it.*
+**Breaking change in 6.2.0:** Undeclared job options are rejected by default. *[6.2.1](/history/6_x/version-6.2.1.md) reverts this default so the check is off unless you enable it.*
 
 In 6.2.0, Rundeck rejects any job execution submitted with an option name the job does not declare. Previously, undeclared option values were silently accepted and exported to the job as `RD_OPTION_*` environment variables without validation; they are now rejected as a security hardening measure.
 
@@ -27,7 +27,7 @@ _What it looks like:_ The execution is created and the API/UI call returns succe
 
 _To remediate:_ Declare the previously-undeclared options on the affected job(s) (e.g. `required: false`, no default needed) — note this also brings those values under any configured option-input allowlist (`rundeck.option.input.validation.default.pattern` / `project.option.input.validation.default.pattern`) for the first time. To temporarily restore the previous behavior instance-wide, set `rundeck.execution.rejectUndeclaredOptions=false` (a startup security warning will be logged).
 
-**Default credentials:** 6.2.0 no longer accepts the shipped plaintext `admin`/`admin` login in `realm.properties`, which broke some install and upgrade setups that still rely on that default. *A 6.2.1 patch will restore the previous behavior.*
+**Default credentials:** 6.2.0 no longer accepts the shipped plaintext `admin`/`admin` login in `realm.properties`, which broke some install and upgrade setups that still rely on that default. *[6.2.1](/history/6_x/version-6.2.1.md) restores the previous behavior.*
 :::
 
 ::: tip Rundeck/RBA MCP Server
