@@ -19,8 +19,8 @@ PyWinRM-based steps require **Python 3.8+** on the process host (Rundeck server 
 
 The **WinRM Check Step** plugin checks the connection with a remote node using winrm-python. The plugin requires the following fields:
 
-* **Python Interpreter**: The Python interpreter to use. Default is `python`.
-    * Example: `python3`
+* **Python Interpreter**: The Python interpreter to use. Default is `python3`. Accepts a command name or a full path (for example a virtualenv interpreter).
+    * Example: `python3` or `/opt/winrm-venv/bin/python3`
 * **Hostname**: The hostname of the Windows machine.
     * Example: `windows.example.com`
 * **Authentication Type**: The authentication type to use.
@@ -47,4 +47,8 @@ The **WinRM Check Step** plugin checks the connection with a remote node using w
     * Example: `kinit`
 * **Kerberos Delegations**: If true, the TGT is sent to the target server to allow multiple hops. Default is `false`.
     * Example: `true`
+* **Proxy**: Proxy address for communicating with the Windows node. Example HTTP proxy strings are `http://server:port` and `http://user:pass@server:port`. An example SOCKS5 proxy string is `socks5://user:pass@server:port`.
+    * Example: `http://proxy.example.com:8080`
+* **No Proxy List**: Comma-separated list of hosts, IPs, or CIDRs that should bypass the proxy. Supports exact IPs, CIDR notation (`192.168.1.0/24`), domain suffixes (`.internal.corp`), hostnames, and wildcard (`*`).
+    * Example: `10.0.0.0/8,.internal.corp`
 

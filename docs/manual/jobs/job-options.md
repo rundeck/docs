@@ -429,6 +429,16 @@ Using non-escaped values can expose the environment to security risks like Comma
 > You can limit the risk by adopting appropriate regex masks, coding the script
 > defensively, and using the least privilege principle.
 
+## Restricting option input
+
+Because option values are user input, a value containing shell metacharacters can be a command-injection risk when used in commands or scripts (see [Escaped values](#escaped-values) above). Beyond escaping, you can restrict which values are accepted:
+
+- **Per option** — set a **Match Regular Expression** or an **Enforced** allowed-values list on the option (see the option Restrictions described in [Defining an option](#defining-an-option) above). These constrain that single option.
+- **Project- or system-wide default allowlist** — configure a default regular expression applied to every option value that does not already have its own regex or enforced list. Set `project.option.input.validation.default.pattern` for a project, or `rundeck.option.input.validation.default.pattern` instance-wide. A value that does not fully match the pattern causes the execution to be rejected before it runs.
+- **Reject undeclared options** — by default (`rundeck.execution.rejectUndeclaredOptions=true`), an execution that supplies an option the job does not declare is rejected, so unvalidated values cannot reach scripts or `RD_OPTION_*` environment variables.
+
+See [Job Option Injection Controls](/administration/configuration/config-file-reference.md#job-option-injection-controls) for the full property reference, precedence rules, and pattern caveats (full-match behavior, multi-line matching, international characters, and fail-closed handling of an invalid pattern).
+
 ## Secure Options
 
 Options can be marked as Secure, to show a password prompt in the GUI, instead of a normal text field or drop down menu. Secure option values are not stored with the Execution as are the other option values.
