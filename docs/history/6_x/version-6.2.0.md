@@ -81,6 +81,32 @@ Fixed an issue where blackout (and allowed) calendars defined with a specific da
 
 ## Rundeck Open Source Product Updates
 
+::: tip Security Fix: File Resource Model Source Path Validation (RUN-4671)
+
+Fixed a security vulnerability where users with project-configure permission could read arbitrary files on the Rundeck server filesystem.
+
+**What changed:**
+
+- File resource model sources are now restricted to the project directory by default
+- Administrators can configure additional allowed paths via rundeck.resourceModelSource.file.allowedBasePaths in rundeck-config.properties
+- Path traversal attacks (../, symlinks) are now blocked
+- Invalid node source files return empty content instead of exposing file contents
+
+**Impact:**
+
+- Existing file sources within project directories continue to work without changes
+- File sources pointing outside the project directory will show a validation error when editing
+- To allow file sources outside the project directory, administrators must explicitly configure allowed paths
+
+**Configuration:**
+
+_Optional:_ Allow file resource model sources to read from additional directories
+
+`rundeck.resourceModelSource.file.allowedBasePaths=/opt/shared/nodes,/var/custom/resources`
+
+> Note: this applies to both open source and commercial versions.
+:::
+
 #####  ::circle-dot:: [Harden realm.properties password encoder: drop plaintext fallback, warn on weak formats](https://github.com/rundeck/rundeck/pull/10548)
   
 Strengthened security for file-based accounts in `realm.properties` when using built-in realm authentication. Passwords without a recognized hash prefix are no longer accepted as plain text, closing a fallback that could allow login with unhashed credentials if the file was exposed. On startup, Rundeck now logs a warning listing accounts still stored in weak formats (MD5, CRYPT, or plain text) so administrators can migrate them to BCrypt.
