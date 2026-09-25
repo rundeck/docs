@@ -201,7 +201,7 @@ For Docker deployments, it's easier to use environment variables instead of moun
 version: '3.9'
 services:
   runner:
-    image: 'rundeckpro/runner:5.20.0'
+    image: 'rundeckpro/runner:6.3.0'
     environment:
       - RUNNER_RUNDECK_CLIENT_ID=<your-runner-id>
       - 'RUNNER_RUNDECK_SERVER_URL=https://<your-subdomain>.runbook.pagerduty.cloud'
@@ -222,7 +222,7 @@ docker run \
   -e RUNNER_RUNDECK_SERVER_TOKEN=<your-api-token> \
   -e RUNNER_OPERATIONS_MAXRUNNING=100 \
   -e MICRONAUT_HTTP_CLIENT_POOL_MAX_CONNECTIONS=120 \
-  rundeckpro/runner:5.20.0
+  rundeckpro/runner:6.3.0
 ```
 
 ## Configuring logging levels
@@ -322,7 +322,7 @@ Use environment variables to set log levels in Docker:
 version: '3.9'
 services:
   runner:
-    image: 'rundeckpro/runner:5.20.0'
+    image: 'rundeckpro/runner:6.3.0'
     environment:
       - RUNNER_RUNDECK_CLIENT_ID=<your-runner-id>
       - 'RUNNER_RUNDECK_SERVER_URL=https://<your-subdomain>.runbook.pagerduty.cloud'
@@ -344,7 +344,7 @@ docker run \
   -e RUNNER_RUNDECK_SERVER_TOKEN=<your-api-token> \
   -e LOGGER_LEVELS_IO_MICRONAUT_HTTP_CLIENT=DEBUG \
   -e LOGGER_LEVELS_COM_RUNDECK_SIDECAR_AGENT_OPERATIONS_REPORTING=DEBUG \
-  rundeckpro/runner:5.20.0
+  rundeckpro/runner:6.3.0
 ```
 
 ## Runner APIs
@@ -365,7 +365,7 @@ Here is an example for a Proxy configuration on a Runner container:
 version: '3.9'
 services:
     runner:
-        image: 'rundeckpro/runner:5.20.0'
+        image: 'rundeckpro/runner:6.3.0'
         environment:
             - RUNNER_RUNDECK_CLIENT_ID=<your-runner-id>
             - 'RUNNER_RUNDECK_SERVER_URL=https://<your-subdomain>.runbook.pagerduty.cloud'
@@ -381,7 +381,7 @@ docker run \
   -e RUNNER_RUNDECK_CLIENT_ID=<your-runner-id> \
   -e RUNNER_RUNDECK_SERVER_URL=https://<your-subdomain>.runbook.pagerduty.cloud \
   -e RUNNER_RUNDECK_SERVER_TOKEN=<your-api-token> \
-  rundeckpro/runner:5.20.0 \
+  rundeckpro/runner:6.3.0 \
   java -Dmicronaut.http.client.proxy-type=http -Dmicronaut.http.client.proxy-address=proxysrv:443 -jar pd-runner.jar
 ```
 
@@ -417,7 +417,7 @@ spec:
     spec:
       containers:
         - name: runner
-          image: rundeckpro/runner:5.20.0
+          image: rundeckpro/runner:6.3.0
           command: ["java"]
           args:
             - "-Dmicronaut.http.client.proxy-type=http"
