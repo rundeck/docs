@@ -360,7 +360,6 @@ export default defineUserConfig({
     registerComponentsPlugin({
       components: {
         RundeckSwaggerUi: path.resolve(__dirname, './components/RundeckSwaggerUI.vue'),
-        OpenApiExplorer: path.resolve(__dirname, './components/OpenApiExplorer.vue')
       },
     }),
     openGraphPlugin({
