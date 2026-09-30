@@ -14,7 +14,7 @@ feed:
 
 ## Overview
 
-<!-- <VidStack src="youtube/REPLACE" poster="https://img.youtube.com/vi/REPLACE/maxresdefault.jpg"/> -->
+<VidStack src="youtube/G1QqzrxumhY" poster="https://img.youtube.com/vi/G1QqzrxumhY/maxresdefault.jpg"/>
 
 Rundeck 6.2.1 is a patch for two [6.2.0](/history/6_x/version-6.2.0.md) changes that broke some existing setups.
 

@@ -34,9 +34,9 @@ _To remediate:_ Declare the previously-undeclared options on the affected job(s)
 The [Rundeck MCP Server](/mcp/index.md) is now available. It is distributed separately from 6.2.0 and works with Rundeck 6.1.0 or later. The server connects MCP-compatible AI assistants (Claude Desktop, Claude Code, Cursor, VS Code, and others) to your Rundeck or Runbook Automation instance so you can query projects, generate and validate jobs, manage ACLs, and provision runners from chat, authenticated with your own API token.
 :::
 
-## Overview
+<VidStack src="youtube/G1QqzrxumhY" poster="https://img.youtube.com/vi/G1QqzrxumhY/maxresdefault.jpg"/>
 
-<!-- <VidStack src="youtube/REPLACE" poster="https://img.youtube.com/vi/REPLACE/maxresdefault.jpg"/> -->
+## Overview
 
 Rundeck 6.2.0 continues the **[Conditional Logic Steps](/manual/jobs/conditional-logic.md)** Early Access work from [6.1.0](/history/6_x/version-6.1.0.md) with a toggle that swaps AND/OR grouping in a Conditional step. By default, conditions within a set are combined with AND and sets are combined with OR; you can now invert that to OR within a set and AND across sets, so more complex branching can be expressed without nested conditionals or Job Reference workarounds.
 
