@@ -61,6 +61,8 @@
   "overrides": {
     "@vuepress/client": "$vuepress",
     "@vuepress/core": "$vuepress",
+    "@docsearch/js": "$@docsearch/js",
+    "@docsearch/css": "$@docsearch/css",
     "@apidevtools/json-schema-ref-parser": "^15.3.6",
     "nostics": "1.2.0",
     "fast-uri": "4.2.1",
