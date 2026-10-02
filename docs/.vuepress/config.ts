@@ -128,13 +128,17 @@ export default defineUserConfig({
       docsearch: {
         appId: 'GRSXNRCDRG',
         apiKey: 'c463f74d6f36a5af808650e0f69aadfa',
-        indexName: 'prod_rundeck_docs',
+        indices: [
+          {
+            name: 'prod_rundeck_docs',
+            searchParameters: {
+              hitsPerPage: 100,
+              facetFilters: [`version:${setup.base}`],
+              facets: ['tags']
+            },
+          },
+        ],
         maxResultsPerGroup: 20,
-        searchParameters: {
-          hitsPerPage: 100,
-          facetFilters: [`version:${setup.base}`],
-          facets: ['tags']
-        },
         locales: {
           '/': {
             placeholder: 'Search Documentation',

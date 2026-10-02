@@ -43,7 +43,7 @@ Search is powered by Algolia DocSearch via `@vuepress/plugin-docsearch`.
 | Index name | `prod_rundeck_docs` |
 | Scraper | `algolia/docsearch-scraper` Docker image, driven by CircleCI |
 | Scraper config | `.docsearch/config.json` (selectors, start URLs, faceting attributes) |
-| VuePress plugin config | `docs/.vuepress/config.ts` (`appId`, `apiKey`, `searchParameters`) |
+| VuePress plugin config | `docs/.vuepress/config.ts` (`appId`, `apiKey`, `indices[].searchParameters`) |
 | Current facets | `version` (e.g. `docs`, `4.0.x`), `lang` |
 | Section tags | Applied via URL patterns in `start_urls` (Learning, User Guide, API, Administration, Developer, Release Notes, General) |
 
@@ -52,8 +52,8 @@ The custom section-filter UI is documented in `.claude/docs/docsearch-filters.md
 ### When Search Won't Update
 
 - After adding new `start_urls` with tags to `.docsearch/config.json`, re-scrape the index — existing records carry stale tags until re-indexed.
-- `searchParameters.facetFilters` in `docs/.vuepress/config.ts` MUST include `version:${setup.base}` so results scope correctly to the current version.
-- `searchParameters.facets` MUST include `'tags'` for the filter UI to work.
+- `indices[].searchParameters.facetFilters` in `docs/.vuepress/config.ts` MUST include `version:${setup.base}` so results scope correctly to the current version.
+- `indices[].searchParameters.facets` MUST include `'tags'` for the filter UI to work.
 
 ## Content Directory Structure
 
