@@ -33,6 +33,35 @@ direct access to these endpoints, then an Enterprise Runner is the recommended m
 If a Node Source is selected that is not in the list above, the following error will appear after the node source tries to gather resources: `Reason: The datadog-resource-model plugin was not found on Runner ID = US-WEST-1-QA. You may need to upgrade your Runner or select a different Runner.` In a future version the Node Source configuration will dynamically know which runners support which Node Source plugins.
 :::
 
+## Projects with many Node Sources
+
+A project loads the nodes from every one of its Node Sources into a single node set, and caches the result.
+
+### Changing the project configuration
+
+When you change a project's configuration, for example by adding a Node Source, the project's nodes are reloaded in the background.
+The previously loaded nodes stay available until the new node set has finished loading, then are replaced.
+For a project with many slow Node Sources, nodes can therefore be out of date for the duration of the reload, but they are not unavailable.
+
+### Loading Node Sources in parallel
+
+By default the Node Sources of a project are queried one at a time. For a project with many Node Sources this can make each reload slow.
+
+Set **Load Threads** in the project's **Edit Configuration** page, under **Node Sources**, to query several Node Sources at the same time.
+This is equivalent to the project property:
+
+```properties
+project.resources.loadThreads=10
+```
+
+- The default is `1`, which queries Node Sources one at a time. Values of `1` or less, or values that are not a number, query them one at a time.
+- Nodes from the Node Sources are always merged in the order the Node Sources are defined, so the resulting node set is the same as with a serial load.
+- Each Node Source that fails is reported separately, and does not prevent the others from loading.
+
+:::warning Concurrent requests
+A higher value increases the number of simultaneous requests made to the systems behind your Node Sources, such as cloud provider APIs, which may throttle or reject them. Increase the value gradually.
+:::
+
 ## Node Source Data Formats
 Rundeck makes use of common data formats ([XML](/manual/document-format-reference/resource-v13.md), [JSON](/manual/document-format-reference/resource-json-v10.md) & [YAML](/manual/document-format-reference/resource-yaml-v13.md)). Though third-party software may produce these formats natively, it is typical to have to massage the output of one system into the appropriate format to be consumed by Rundeck. Since URLs and HTTP are a lowest-common-denominator for communication, Rundeck only requires that the data Providers make this data available as a file at a URL or on the local disk.<br>
 

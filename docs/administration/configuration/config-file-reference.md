@@ -1108,6 +1108,8 @@ Enabled: true/false (default true).
 First Load Asynch: true/false
 : `rundeck.nodeService.nodeCache.firstLoadAsynch=false` The default for whether the first load of a project's nodes should be performed synchronously or not. If set to `true`, and the [Project Nodes > Synchronous First Load](/manual/projects/project-create.md#project-nodes) value is unset, then the initial load of a Project's nodes when the cache is empty will be done in the background asynchronously. Otherwise the initial load is done synchronously, possibly causing a delay at Rundeck startup or Job execution startup. A Project level configuration value will override this default.
 
+For projects with many Node Sources, see [Projects with many Node Sources](/manual/projects/resource-model-sources/index.md#projects-with-many-node-sources) for how reloads are handled and how to load Node Sources in parallel.
+
 ### Limit displayed Job execution Log Output
 
 Limit the amount of lines displayed in Log Output when following the execution of a Job that is running (not finished yet) after a configurable limit has been reached.
