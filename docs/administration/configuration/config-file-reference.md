@@ -602,6 +602,21 @@ Enables dynamic conditional execution in workflows based on runtime conditions. 
 
 **See also:** [User Management Guide](/manual/user-management/user-mgmt.md#manage-local-users)
 
+#### SSH Exported Variable Quoting
+
+**Purpose:** Optionally POSIX shell-quote the values exported to remote nodes via a node's `ssh-variable-export-pattern` attribute, to prevent command injection through those values (for example a job option value containing `;`, `$()`, or backticks).
+
+| Property | Default | Description |
+|----------|---------|-------------|
+| `rundeck.execution.sshExportQuoting` | `false` | When `true`, values interpolated into a node's `ssh-variable-export-pattern` (the `export {key}={value}` prefix prepended to the remote SSH command) are shell-quoted before dispatch. |
+
+**Behavior:**
+
+- **Opt-in.** Default `false` preserves the current behavior; the control has no effect until enabled. System-level only (not per-project).
+- When enabled, only values that contain whitespace or shell metacharacters are quoted — values without them are emitted unchanged, so typical configurations are unaffected.
+- When enabling, node export patterns must reference `{value}` **without** surrounding quotes (e.g. `export {key}={value}`, not `export {key}='{value}'`). The framework performs the quoting; a self-quoting pattern would double-quote the value.
+- Only nodes that define the (non-default) `ssh-variable-export-pattern` attribute are affected.
+
 #### Job Option Injection Controls
 
 Job option **values** are user input. When referenced in commands and scripts (`${option.name}`, `@option.name@`) they can carry shell metacharacters. Rundeck escapes option values used in the standard command/exec path, but these controls validate or reject option input *before* an execution runs. They are defense-in-depth on top of — not a replacement for — the per-option **Match Regular Expression** and **Enforced** allowed-values restrictions described in [Job Options](/manual/jobs/job-options.md).
