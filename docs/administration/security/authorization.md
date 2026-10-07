@@ -251,19 +251,20 @@ for:
   resource:
     - equals:
         kind: job
-      allow: [create]  # The right to create jobs at all
+      allow: [create, delete]  # The right to create and delete jobs at all
   job:
-    - allow: [create, read, view, update, delete]  # And on the job being saved
+    - allow: [create, read, view, update, delete]  # And on the specific job
   node:
     - allow: [read]
 by:
   group: authors
 ```
 
-Saving a job is authorized twice: once against the generic `resource` of
-`kind: job`, for the right to create jobs in the project, and again against the
-specific `job` being saved. Granting only one of the two is a common cause of a
-save being rejected.
+Creating and deleting a job are each authorized twice: once against the generic
+`resource` of `kind: job`, for the right to act on jobs in the project at all, and
+again against the specific `job`. Granting only one of the two is a common cause of
+a save or a delete being rejected. See
+[Generic vs Specific Resources](#generic-vs-specific-resources).
 
 #### How this interacts with scheduled jobs
 
@@ -276,10 +277,14 @@ identity with no `run` access. Rundeck does not block this, and the schedule sti
 fires: the authorization that governs interactive runs is not applied when a
 trigger creates the execution.
 
-Because that is rarely intended, Rundeck flags any scheduled job whose saved user
-is no longer authorized to run it. The warning appears on the job page, in the job
-list, and in the cluster's scheduled-jobs view. To resolve it, either grant the
-saved user `run` on that job, or re-save the job as a user who already has it. See
+Because that is rarely intended, Rundeck flags the job. The warning is shown only
+where the schedule could actually fire, so it does not appear when the job's
+schedule or execution is disabled, or when the project disables scheduling or
+executions — in those states nothing will run as that user.
+
+The warning appears on the job page and in the job list, and in Enterprise also in
+the cluster's scheduled-jobs view. To resolve it, either grant the saved user `run`
+on that job, or re-save the job as a user who already has it. See
 [Scheduled Jobs](/manual/jobs/creating-jobs.md#scheduled-jobs).
 
 ### Limited by Job Group
