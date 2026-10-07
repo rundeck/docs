@@ -147,9 +147,6 @@ export default [{
             '/learning/howto/config-sn-nodesource.md',
             '/learning/howto/configure-gcp-plugins.md',
             '/learning/howto/sn-midserver.md',
-            {link:'/learning/howto/monitor-server-grafana.md',text:'Monitor the Server with Prometheus and Grafana'},
-            {link:'/learning/howto/monitor-runner-grafana.md',text:'Monitor a Runner with Prometheus and Grafana'},
-            '/learning/howto/rundeck-exporter.md',
             '/learning/howto/vault-integration.md',
             '/learning/howto/howtojenkins.md',
             '/learning/howto/how2kube.md',
@@ -157,6 +154,15 @@ export default [{
             '/learning/howto/events-with-rba.md',
             '/learning/howto/email-gmail.md',
             '/learning/howto/email-outlook.md'
+          ]
+        },
+        {
+          text: 'Monitoring',
+          collapsible: true,
+          children: [
+            {link:'/learning/howto/monitor-server-grafana.md',text:'Monitor the Server with Prometheus and Grafana'},
+            {link:'/learning/howto/monitor-runner-grafana.md',text:'Monitor a Runner with Prometheus and Grafana'},
+            '/learning/howto/rundeck-exporter.md'
           ]
         },
         {

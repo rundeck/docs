@@ -617,6 +617,44 @@ Enables dynamic conditional execution in workflows based on runtime conditions. 
 - When enabling, node export patterns must reference `{value}` **without** surrounding quotes (e.g. `export {key}={value}`, not `export {key}='{value}'`). The framework performs the quoting; a self-quoting pattern would double-quote the value.
 - Only nodes that define the (non-default) `ssh-variable-export-pattern` attribute are affected.
 
+#### Job Option Injection Controls
+
+Job option **values** are user input. When referenced in commands and scripts (`${option.name}`, `@option.name@`) they can carry shell metacharacters. Rundeck escapes option values used in the standard command/exec path, but these controls validate or reject option input *before* an execution runs. They are defense-in-depth on top of — not a replacement for — the per-option **Match Regular Expression** and **Enforced** allowed-values restrictions described in [Job Options](/manual/jobs/job-options.md).
+
+**Default option-value allowlist**
+
+An allowlist regular expression applied to every option value that does not already define its own validation regex or enforced value list. When set, each such value must **fully match** the pattern or the execution is rejected before it runs.
+
+| Property | Scope | Default | Description |
+|----------|-------|---------|-------------|
+| `rundeck.option.input.validation.default.pattern` | System (`rundeck-config.properties` or System Configuration UI, category Execution) | (none) | Allowlist regex applied to option values instance-wide unless overridden per project. |
+| `project.option.input.validation.default.pattern` | Project (project configuration) | (none) | Per-project override. Takes precedence over the system value. |
+
+Precedence for a given option value: a per-option regex or enforced allowed-values list wins; otherwise the project pattern; otherwise the system pattern. Leave both unset to disable the control (the default). File-reference (`file` type) option values are exempt, because they are validated separately.
+
+A good general-purpose starting pattern that allows upper- and lower-case letters, digits, and spaces is `[A-Za-z0-9 ]+`. Widen it as your option values require.
+
+When writing a pattern, note:
+
+- Matching is a **full match** (anchored): `[A-Za-z0-9_-]+` accepts `abc-1` but rejects `abc 1`.
+- To allow multi-line values, the pattern must match newlines — prefix with the DOTALL flag, for example `(?s).*`. A bare `.*` rejects any value containing a line break.
+- Matching is against the raw value, including non-ASCII characters. An ASCII-only pattern such as the recommended `[A-Za-z0-9 ]+` will reject option values containing accented letters, non-Latin scripts, or other non-ASCII text — widen the character class (for example, add Unicode letter categories via `\p{L}`) if such values must be allowed.
+- If the configured pattern is **not a valid regular expression**, Rundeck fails closed: affected executions are rejected and an error is logged, rather than silently running without validation.
+
+::: warning
+This control is opt-in. With no pattern configured (the default), option values are not restricted by it.
+:::
+
+**Reject undeclared options**
+
+| Property | Default | Description |
+|----------|---------|-------------|
+| `rundeck.execution.rejectUndeclaredOptions` | `true` | When enabled, an execution that provides an option not defined on the job is created and then failed at start, with a message in the execution log. |
+
+Options not declared on a job would otherwise bypass all server-side option validation yet still reach the option data context and `RD_OPTION_*` environment variables. With this control enabled (the default), such executions are rejected before any workflow step runs. Disable it only if you must allow undeclared options to pass through — for example, re-running a job whose option set has since changed. Disabling it weakens protection against option injection, and Rundeck logs a security warning at startup when it is set to `false`. Scope: top-level executions (UI, API, webhook, and scheduled).
+
+Scope includes re-running a prior execution, including automatic retry via `retryExecId` — the original option string is replayed verbatim and is checked again against the job's current option definitions. Job reference (`jobref`) workflow steps are exempt from this check: an undeclared option passed from one job to another via a job-reference step is not rejected, only options supplied to a job's own top-level execution (its own API/UI/webhook/scheduled run) are.
+
 ### Security HTTP Headers
 
 **Purpose:** Add security headers to HTTP responses to protect against common web vulnerabilities.
@@ -1134,15 +1172,19 @@ Sets the maximum amount of runner report data the server will store in the datab
 ```properties
 rundeck.runner.compactProcessor.maxReportDataSize=1gb
 ```
-=======
+
 ### Code Editor Settings
 
-Controls the height of the ACE code editor rendered inside plugin configuration forms (for example, inline script steps, orchestrator configuration, and execution lifecycle plugins).
+Controls the sizing behavior of the ACE code editor rendered inside plugin configuration forms (for example, inline script steps, orchestrator configuration, and execution lifecycle plugins).
 
 | Property | Default | Description |
 |----------|---------|-------------|
-| `rundeck.feature.guiAceEditorMinLines` | `12` | Minimum number of visible lines shown in the editor, which sets its minimum visible height. |
-| `rundeck.feature.guiAceEditorMaxLines` | `0` | Maximum number of lines the editor auto-expands to. Set to `0` for unlimited. |
+| `rundeck.feature.guiAceEditorMinLines` | `0` | Minimum number of visible lines in the editor. `0` (default) makes the editor manually resizable via a drag handle. A non-zero value disables manual resize; the editor starts with enough height to show that many lines and auto-expands as lines are added. |
+| `rundeck.feature.guiAceEditorMaxLines` | `0` | Only applies when `guiAceEditorMinLines` is non-zero. Caps how far the editor auto-expands: once content reaches this many lines, a scrollbar appears instead of the editor growing further. Set to `0` for unlimited. |
+
+:::tip
+Manual resize is available now on Runbook Automation **SaaS**. On Runbook Automation **Self-Hosted**, the default changes from `12` to `0` (manually resizable) starting in **Rundeck 6.3.0**.
+:::
 
 These settings can be changed at runtime via **System Configuration → GUI** without restarting Rundeck. The new values take effect on the next page load.
 

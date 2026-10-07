@@ -75,10 +75,10 @@ In order to connect exclusively to Windows nodes using WinRM from a particular p
 1. Create a new project and give it a name. 
 ![](/assets/img/winrm3.png)
 2. Click on the "Default Node Executor" tab and select "WinRM Node Executor Python" from the Node Executor selector list (the default value is "SSH"). 
-3. Pick the correct version of Python from the "Python Interpreter" list. (Note: some Linux distributions use "Python" to indicate the Python 3 interpreter by default).
+3. Set **Python Interpreter** to `python3`, or to a full path such as `/opt/winrm-venv/bin/python3` if the system Python is externally managed (for example Ubuntu 24.04+).
 ![](/assets/img/winrm4.png)
 4. Click on the "Default File Copier" tab and select "WinRM Python File Copier". 
-5. Pick the appropriate Python version as an interpreter. This enables dispatching scripts against Windows systems. 
+5. Use the same Python interpreter as the node executor. This enables dispatching scripts against Windows systems. 
 ![](/assets/img/winrm5.png)
 6. Scroll down and save the project.
 

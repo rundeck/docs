@@ -27,6 +27,8 @@ The bundled **[py-winrm-plugin](https://github.com/rundeck-plugins/py-winrm-plug
 
 Before upgrading to **Rundeck 6.0**, ensure every host that runs PyWinRM code is using **Python 3.8+** on the OS path the plugin uses (typically the **Rundeck / Runbook Automation server**; if you use **Enterprise Runners** to execute WinRM against nodes, install **Python 3.8+** on those Runner hosts as well). Reinstall **`pywinrm`** (and optional extras such as Kerberos/CREDSSP helpers) with a **Python 3** `pip` if needed.
 
+On distributions that mark the system Python as externally managed (for example Ubuntu 24.04+), install `pywinrm` with the OS package manager or set **Python Interpreter** to a virtualenv that has the packages installed. The field accepts a command name or a full path, and can be overridden per node with `winrm-interpreter`.
+
 Configuration and prerequisites are summarized in [Connect to Windows Nodes with PyWinRM](/learning/howto/configuring-windows-nodes.md).
 
 ## MySQL 8.4 and database migrations
@@ -105,13 +107,16 @@ Internal review also **raised defaults** or **made behaviors permanent** for fea
 
 ## JAAS authentication configuration (Jetty 12) {#jaas-authentication-jetty-12}
 
-Rundeck 6.0 upgrades to **Jetty 12**, which removes the legacy Jetty JAAS packages. Custom JAAS configurations must now reference **`org.rundeck.jaas.*`** modules instead of the old Jetty classes.
+Rundeck 6.0 upgrades to **Jetty 12**, which removes Jetty's built-in JAAS SPI classes (`org.eclipse.jetty.jaas.spi.*`). Rundeck's own `PropertyFileLoginModule` and PAM login modules now live under **`org.rundeck.jaas.*`** instead of the old Jetty classes.
+
+The LDAP login modules (`JettyCachingLdapLoginModule` and `JettyCombinedLdapLoginModule`) are Rundeck-authored and were never part of Jetty's JAAS SPI, so they are **not affected** by this change — they remain in the `com.dtolabs.rundeck.jetty.jaas` package. Do not rename these classes in your JAAS config.
 
 **Action required for JAAS users:**
 
-1. **Update `jaas-loginmodule.conf`** to reference `org.rundeck.jaas.PropertyFileLoginModule` instead of the old Jetty class names
+1. **Update `jaas-loginmodule.conf`** to reference `org.rundeck.jaas.PropertyFileLoginModule` instead of the old Jetty class names (leave any LDAP module entries referencing `com.dtolabs.rundeck.jetty.jaas.*` unchanged)
 2. **Jetty OBF passwords are no longer supported** - if you use obfuscated passwords, migrate to MD5, CRYPT, or BCRYPT password hashing
 3. **Docker and Kubernetes deployments** that mount custom JAAS configurations must update their config files before upgrading to 6.0
+4. **`log4j2.properties` JAAS logger categories are unchanged** - the shipped config defines two separate logger categories: `logger.rundeck_jaas.name = com.dtolabs.rundeck.jetty.jaas` (LDAP modules) and `logger.jaas.name = org.rundeck.jaas` (`PropertyFileLoginModule` and PAM modules). Keep both as-is; there is no need to rename the `com.dtolabs.rundeck.jetty.jaas` logger category.
 
 See the [Authentication documentation](/administration/security/authentication.md) for current JAAS configuration examples and supported password formats.
 
