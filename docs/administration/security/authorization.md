@@ -222,6 +222,66 @@ by:
   group: developers
 ```
 
+### Job Author (Can Create but Not Run)
+
+**Goal**: User can define and maintain jobs in a project, but cannot execute them.
+
+Creating a job and running it are separate permissions, so this pattern is
+deliberately supported: a user can author a job that someone else, or a schedule,
+executes.
+
+```yaml
+description: Application - Project access
+context:
+  application: 'rundeck'
+for:
+  project:
+    - equals:
+        name: 'MyProject'
+      allow: [read]
+by:
+  group: authors
+
+---
+
+description: Project - Author jobs, but no run access
+context:
+  project: 'MyProject'
+for:
+  resource:
+    - equals:
+        kind: job
+      allow: [create]  # The right to create jobs at all
+  job:
+    - allow: [create, read, view, update, delete]  # And on the job being saved
+  node:
+    - allow: [read]
+by:
+  group: authors
+```
+
+Saving a job is authorized twice: once against the generic `resource` of
+`kind: job`, for the right to create jobs in the project, and again against the
+specific `job` being saved. Granting only one of the two is a common cause of a
+save being rejected.
+
+#### How this interacts with scheduled jobs
+
+A scheduled job runs as the user who last saved it, with the roles that user held
+at that moment. That identity is read from the job on every trigger, so the
+schedule keeps using it even after the user's permissions change.
+
+A user with this pattern can therefore schedule a job that then runs under an
+identity with no `run` access. Rundeck does not block this, and the schedule still
+fires: the authorization that governs interactive runs is not applied when a
+trigger creates the execution.
+
+Because that is rarely intended, Rundeck flags any scheduled job whose saved user
+is no longer authorized to run it. The warning appears on the job page, in the job
+list, and in the cluster's scheduled-jobs view. To resolve it, either grant the
+saved user `run` on that job, or re-save the job as a user who already has it. See
+[Scheduled Jobs](/manual/jobs/creating-jobs.md#scheduled-jobs).
+
 ### Limited by Job Group
 
 **Goal**: User can only see/run jobs in a specific job group path.
