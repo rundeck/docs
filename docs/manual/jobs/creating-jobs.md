@@ -253,9 +253,11 @@ Rundeck flags the job to make the mismatch visible.
 
 The same warning appears in the job list and, in Enterprise, in the cluster's
 scheduled-jobs view. Resolve it either by granting the saved user `run` access to
-that job, or by re-saving the job as a user who already has it. Administrators who
-can edit project ACLs are offered a link that opens the ACL editor with a policy
-granting exactly that access, ready to review before saving.
+that job, or by re-saving the job as a user who already has it. Users who can create
+project ACL policies — `create`, `admin` or `app_admin` on the project's ACLs — are
+offered a link that opens the ACL editor with a policy granting exactly that
+access, ready to review before saving. Permission to update existing policies is
+not enough, since the link creates a new one.
 
 See [Access Control Policy](/administration/security/authorization.md#job-author-can-create-but-not-run)
 for the permissions involved.
