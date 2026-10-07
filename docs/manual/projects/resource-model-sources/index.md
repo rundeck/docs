@@ -61,6 +61,8 @@ project.resources.loadThreads=10
 
 :::warning Concurrent requests
 A higher value increases the number of simultaneous requests made to the systems behind your Node Sources, such as cloud provider APIs, which may throttle or reject them. Increase the value gradually.
+
+Node Sources then run on separate threads, so Node Source plugins that are not thread-safe, or that rely on state bound to the calling thread, may misbehave. Test a project with a few Node Sources before raising the value.
 :::
 
 ## Node Source Data Formats
