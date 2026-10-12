@@ -39,9 +39,12 @@ A project loads the nodes from every one of its Node Sources into a single node 
 
 ### Changing the project configuration
 
-When you change a project's configuration, for example by adding a Node Source, the project's nodes are reloaded in the background.
-The previously loaded nodes stay available until the new node set has finished loading, then are replaced.
-For a project with many slow Node Sources, nodes can therefore be out of date for the duration of the reload, but they are not unavailable.
+When you save a project's configuration, for example by adding a Node Source in the **Edit Configuration** page, through the API, or by importing a project archive, the cached nodes are cleared.
+The next request loads the nodes from the new configuration, and waits until every Node Source has been queried.
+For a project with many slow Node Sources this can take a long time. To shorten it, load the Node Sources in parallel (see below).
+
+Other changes to the project configuration, such as a Node Source added by the Node Wizard, do not clear the cached nodes.
+The previously loaded nodes stay available, and are reloaded in the background the next time the node cache refreshes.
 
 ### Loading Node Sources in parallel
 
