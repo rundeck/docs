@@ -162,7 +162,7 @@ export default [{
           children: [
             {link:'/learning/howto/monitor-server-grafana.md',text:'Monitor the Server with Prometheus and Grafana'},
             {link:'/learning/howto/monitor-runner-grafana.md',text:'Monitor a Runner with Prometheus and Grafana'},
-            '/learning/howto/rundeck-exporter.md'
+            '/learning/howto/legacy-community-metrics-exporter.md'
           ]
         },
         {

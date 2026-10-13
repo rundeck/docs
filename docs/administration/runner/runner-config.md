@@ -201,7 +201,7 @@ For Docker deployments, it's easier to use environment variables instead of moun
 version: '3.9'
 services:
   runner:
-    image: 'rundeckpro/runner:5.20.0'
+    image: 'rundeckpro/runner:6.3.0'
     environment:
       - RUNNER_RUNDECK_CLIENT_ID=<your-runner-id>
       - 'RUNNER_RUNDECK_SERVER_URL=https://<your-subdomain>.runbook.pagerduty.cloud'
@@ -222,7 +222,7 @@ docker run \
   -e RUNNER_RUNDECK_SERVER_TOKEN=<your-api-token> \
   -e RUNNER_OPERATIONS_MAXRUNNING=100 \
   -e MICRONAUT_HTTP_CLIENT_POOL_MAX_CONNECTIONS=120 \
-  rundeckpro/runner:5.20.0
+  rundeckpro/runner:6.3.0
 ```
 
 ## Configuring logging levels
@@ -322,7 +322,7 @@ Use environment variables to set log levels in Docker:
 version: '3.9'
 services:
   runner:
-    image: 'rundeckpro/runner:5.20.0'
+    image: 'rundeckpro/runner:6.3.0'
     environment:
       - RUNNER_RUNDECK_CLIENT_ID=<your-runner-id>
       - 'RUNNER_RUNDECK_SERVER_URL=https://<your-subdomain>.runbook.pagerduty.cloud'
@@ -344,7 +344,7 @@ docker run \
   -e RUNNER_RUNDECK_SERVER_TOKEN=<your-api-token> \
   -e LOGGER_LEVELS_IO_MICRONAUT_HTTP_CLIENT=DEBUG \
   -e LOGGER_LEVELS_COM_RUNDECK_SIDECAR_AGENT_OPERATIONS_REPORTING=DEBUG \
-  rundeckpro/runner:5.20.0
+  rundeckpro/runner:6.3.0
 ```
 
 ## Runner APIs
@@ -365,7 +365,7 @@ Here is an example for a Proxy configuration on a Runner container:
 version: '3.9'
 services:
     runner:
-        image: 'rundeckpro/runner:5.20.0'
+        image: 'rundeckpro/runner:6.3.0'
         environment:
             - RUNNER_RUNDECK_CLIENT_ID=<your-runner-id>
             - 'RUNNER_RUNDECK_SERVER_URL=https://<your-subdomain>.runbook.pagerduty.cloud'
@@ -381,6 +381,56 @@ docker run \
   -e RUNNER_RUNDECK_CLIENT_ID=<your-runner-id> \
   -e RUNNER_RUNDECK_SERVER_URL=https://<your-subdomain>.runbook.pagerduty.cloud \
   -e RUNNER_RUNDECK_SERVER_TOKEN=<your-api-token> \
-  rundeckpro/runner:5.20.0 \
+  rundeckpro/runner:6.3.0 \
   java -Dmicronaut.http.client.proxy-type=http -Dmicronaut.http.client.proxy-address=proxysrv:443 -jar pd-runner.jar
 ```
+
+## Runner configuration in a Kubernetes container
+
+:::warning
+Setting `HTTP_PROXY`, `HTTPS_PROXY`, or `NO_PROXY` as container environment variables has **no effect** on the Runner's connection to the Rundeck server. The Runner's HTTP client (Micronaut) does not read these standard environment variables the way tools like `curl` do — it only honors the `-Dmicronaut.http.client.proxy-*` JVM system properties described in [Proxying Runner connections](#proxying-runner-connections) above.
+
+If only those environment variables are set and the cluster has no direct internet egress, the Runner will still attempt a direct connection to the Rundeck server, get no response, and fail at startup after about 10 seconds with:
+
+```
+Connecting to the rundeck server
+io.micronaut.http.client.exceptions.ReadTimeoutException: Read Timeout
+```
+:::
+
+As with Docker, pass the proxy properties by overriding the container's `command`/`args` in the Deployment manifest instead of relying on environment variables:
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: runner
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: runner
+  template:
+    metadata:
+      labels:
+        app: runner
+    spec:
+      containers:
+        - name: runner
+          image: rundeckpro/runner:6.3.0
+          command: ["java"]
+          args:
+            - "-Dmicronaut.http.client.proxy-type=http"
+            - "-Dmicronaut.http.client.proxy-address=proxysrv:443"
+            - "-jar"
+            - "pd-runner.jar"
+          env:
+            - name: RUNNER_RUNDECK_CLIENT_ID
+              value: "<your-runner-id>"
+            - name: RUNNER_RUNDECK_SERVER_URL
+              value: "https://<your-subdomain>.runbook.pagerduty.cloud"
+            - name: RUNNER_RUNDECK_SERVER_TOKEN
+              value: "<your-api-token>"
+```
+
+If the Runner still fails to connect after adding this, confirm that the network path actually requires a proxy (some clusters allow direct egress) and that the `proxy-address` above matches a proxy your cluster nodes can reach.

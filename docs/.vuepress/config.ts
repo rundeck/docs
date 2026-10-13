@@ -128,13 +128,17 @@ export default defineUserConfig({
       docsearch: {
         appId: 'GRSXNRCDRG',
         apiKey: 'c463f74d6f36a5af808650e0f69aadfa',
-        indexName: 'prod_rundeck_docs',
+        indices: [
+          {
+            name: 'prod_rundeck_docs',
+            searchParameters: {
+              hitsPerPage: 100,
+              facetFilters: [`version:${setup.base}`],
+              facets: ['tags']
+            },
+          },
+        ],
         maxResultsPerGroup: 20,
-        searchParameters: {
-          hitsPerPage: 100,
-          facetFilters: [`version:${setup.base}`],
-          facets: ['tags']
-        },
         locales: {
           '/': {
             placeholder: 'Search Documentation',
@@ -203,6 +207,7 @@ export default defineUserConfig({
           '/administration/install/installing-rundeck': '/administration/install/index',
           '/learning/tutorial/preparing.html': '/learning/tutorial/index.html',
           '/learning/howto/overview.html': '/learning/howto/index.html',
+          '/learning/howto/rundeck-exporter.html': '/learning/howto/legacy-community-metrics-exporter.html',
           '/learning/getting-started/overview.html': '/learning/getting-started/index.html',
           '/plugins/': '/manual/plugins/full-list',
           '/learning/getting-started/rba/rba-welcome-overview.html': '/learning/getting-started/rba/index.html',
@@ -359,7 +364,6 @@ export default defineUserConfig({
     registerComponentsPlugin({
       components: {
         RundeckSwaggerUi: path.resolve(__dirname, './components/RundeckSwaggerUI.vue'),
-        OpenApiExplorer: path.resolve(__dirname, './components/OpenApiExplorer.vue')
       },
     }),
     openGraphPlugin({

@@ -63,12 +63,19 @@ To add new sections:
 ### VuePress Configuration
 The DocSearch configuration in `docs/.vuepress/config.ts` includes:
 ```typescript
-searchParameters: {
-  hitsPerPage: 100,
-  facetFilters: [`version:${setup.base}`],
-  facets: ['tags']
-}
+indices: [
+  {
+    name: 'prod_rundeck_docs',
+    searchParameters: {
+      hitsPerPage: 100,
+      facetFilters: [`version:${setup.base}`],
+      facets: ['tags']
+    },
+  },
+],
 ```
+
+`@vuepress/plugin-docsearch` rc.134+ requires `indices`. Do not use the legacy root-level `indexName` / `searchParameters`: `indices` ends up undefined and clicking Search throws `TypeError: Cannot read properties of undefined (reading 'map')`.
 
 The `facets: ['tags']` tells Algolia to include tags as filterable attributes.
 

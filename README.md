@@ -4,7 +4,7 @@ Rundeck Documentation project.
 ## Getting Started
 
 ### Dependencies
-* NodeJS version `24.10.0` is the current version used.
+* The current NodeJS version is the current version used in the `.nvmrc` file.
 * NVM is helpful in making sure your machine is using the currently supported versions as we upgrade in the future.
 
 ### Recommended setup steps

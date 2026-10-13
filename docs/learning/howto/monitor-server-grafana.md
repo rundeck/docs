@@ -4,12 +4,12 @@
 A complete, runnable Prometheus + Grafana + Rundeck stack (including the pre-built dashboard referenced in this guide) is available at [rundeck/docker-zoo](https://github.com/rundeck/docker-zoo/tree/master/monitoring).
 :::
 
-Rundeck 6.0 exposes application metrics natively in Prometheus format at the [`/monitoring/prometheus`](/administration/monitoring/index.md) endpoint, which is enabled by default. This means you no longer need a third-party exporter to build a metrics dashboard — Prometheus can scrape Rundeck directly.
+Rundeck 6.0 exposes application metrics natively in Prometheus format at the [`/monitoring/prometheus`](/administration/monitoring/index.md) endpoint, which is enabled by default. Rundeck 6.2.0 adds native per-project and per-job execution counts, durations, and in-flight counts on the same endpoint (see [Execution Metrics Reference](/administration/monitoring/execution-metrics.md)). Together, this means you no longer need a third-party exporter to build a metrics dashboard — Prometheus can scrape Rundeck directly for both server health and job/execution statistics.
 
-This guide walks through a working Prometheus + Grafana stack pointed at a Rundeck server, with example queries for the most useful health and performance metrics. It then shows how to ship the container **logs** into the same Grafana with Loki — see [Ship container logs to Grafana with Loki](#ship-container-logs-to-grafana-with-loki).
+This guide walks through a working Prometheus + Grafana stack pointed at a Rundeck server, with example queries for the most useful health, performance, and execution metrics. It then shows how to ship the container **logs** into the same Grafana with Loki — see [Ship container logs to Grafana with Loki](#ship-container-logs-to-grafana-with-loki).
 
 :::tip Looking for the older exporter guide?
-The community `rundeck_exporter` approach is now deprecated for Rundeck 6.0+. See [Monitor a Rundeck Instance Using Prometheus and Grafana (legacy exporter)](/learning/howto/rundeck-exporter.md) only if you are running an older version.
+The community `rundeck_exporter` approach is deprecated: JVM/HTTP health metrics are natively available as of Rundeck 6.0, and project/job execution counts, durations, and running-execution counts as of 6.2.0. See [Monitor a Rundeck Instance Using Prometheus and Grafana (legacy exporter)](/learning/howto/legacy-community-metrics-exporter.md) only if you are running an older version or need the per-execution/per-node metrics that page describes, which the native endpoint does not expose.
 :::
 
 For the underlying endpoint reference (formats, available metrics, configuration, and authentication), see [Monitoring overview](/administration/monitoring/index.md), [Monitoring configuration](/administration/monitoring/configuration.md), and [Using monitoring data](/administration/monitoring/monitoring.md). To monitor Runners as well, see the [Runner Metrics Reference](/administration/runner/runner-management/runner-metrics.md).
@@ -196,6 +196,42 @@ sum(rate(http_server_requests_seconds_count[5m])) by (status)
 ```promql
 sum(rate(http_server_requests_seconds_count{status=~"[45].."}[5m]))
 ```
+
+### Execution metrics (job/project success, duration, in-flight)
+
+As of Rundeck 6.2.0, the same `/monitoring/prometheus` endpoint also exposes native execution metrics, so you can chart job and project success rates alongside the server-health panels above without a third-party exporter. See the [Execution Metrics Reference](/administration/monitoring/execution-metrics.md) for the full list of series, tags, and the opt-in `job_id`/`job_name` dimension.
+
+**Execution success rate (5m):**
+
+```promql
+sum(rate(rundeck_executions_total{status="succeeded"}[5m]))
+/
+sum(rate(rundeck_executions_total[5m]))
+```
+
+**Average execution duration by project:**
+
+```promql
+sum by (project) (rate(rundeck_execution_duration_seconds_sum[5m]))
+/
+sum by (project) (rate(rundeck_execution_duration_seconds_count[5m]))
+```
+
+**Executions currently running, by project (cluster-wide):**
+
+```promql
+sum by (project) (rundeck_executions_running)
+```
+
+**Top 10 jobs by failure count** (requires `rundeck.metrics.execution.job.dimension.enabled=true`):
+
+```promql
+topk(10, sum by (job_id, job_name) (rundeck_executions_total{status="failed"}))
+```
+
+:::tip Not the same as historical execution counts
+`rundeck_executions_total` and `rundeck_executions_running` are in-memory counters scoped to the current process — they reset on restart and (for `rundeck_executions_running`) reflect only the instance being scraped, not the whole cluster, until aggregated with `sum by (...)` as above. For a permanent count of executions per project, or per-execution detail such as which user ran a specific execution, use the [Executions API](/api/index.md#execution-query) instead.
+:::
 
 ### Runner report-delivery metrics
 

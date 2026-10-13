@@ -52,15 +52,11 @@ npm run docs:update-package
 
 Runs `vp-update`, the official VuePress CLI updater — bumps the whole `@vuepress/*` family (core, plugins, `@vuepress/helper`) to mutually-compatible versions in one shot. Prefer this over letting Renovate land individual `@vuepress/*` PRs one at a time: several of these packages (`@vuepress/helper`, `plugin-docsearch`, `plugin-feed`, `plugin-pwa`, `theme-default`, etc.) declare an **exact** peerDependency on the `vuepress` core version, so bumping one without the rest risks a transient peer-dependency mismatch.
 
-`vp-update` queries the registry with a raw unauthenticated request, so it fails against the Cloudsmith proxy (which requires the `CLOUDSMITH_NPM_TOKEN` auth header). Run it against the public registry, then reinstall against Cloudsmith to fix up the lockfile:
+`npm run docs:update-package` runs `vp-update` through the Cloudsmith registry in `.npmrc`. `vp-update` looks up package dist-tags with a raw `https.get()` and does not send the `CLOUDSMITH_NPM_TOKEN` header itself. It also keeps the trailing newline from `npm config get registry`, which makes Cloudsmith reject the URL. `scripts/update-vuepress-packages.mjs` preloads `scripts/cloudsmith-https-auth.cjs` to add the auth header and repair that URL. Export `CLOUDSMITH_NPM_TOKEN` before running the command.
 
-```shell
-npm_config_registry=https://registry.npmjs.org/ npx vp-update
-rm -f package-lock.json
-npm install   # re-resolves against Cloudsmith, restores correct lockfile URLs
-```
+Cloudsmith hides newly published versions for a cooldown period. A request for a hidden version returns `403` with `Hidden by Cooldown period`, and `npm install` fails with `ETARGET` because that version is omitted from the registry metadata. After `vp-update` rewrites `package.json`, the script replaces each hidden version with the newest one Cloudsmith will serve, and moves `@vuepress/helper` and `vuepress-shared` onto a release whose exact `vuepress` peer matches the core version just selected. It then runs `npm install`.
 
-Cloudsmith's proxy can lag behind the public registry by a patch version or two — if `npm install` fails with `ETARGET` for a package `vp-update` just bumped, check `npm view <package> versions` and back the version down to the latest one Cloudsmith actually has cached.
+`vuepress-plugin-open-graph` depends on an exact `@vuepress/core` version. The `overrides` for `@vuepress/client` and `@vuepress/core` keep those packages on the same version as `vuepress`, so the app and the plugin share one `clientData` provider.
 
 ## PR feed (SaaS development updates)
 

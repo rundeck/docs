@@ -54,7 +54,7 @@ Available Guides by Section
 [Use a serviceNow MID Server](/learning/howto/sn-midserver.md)  
 [Monitor the Server with Prometheus and Grafana](/learning/howto/monitor-server-grafana.md)  
 [Monitor a Runner with Prometheus and Grafana](/learning/howto/monitor-runner-grafana.md)  
-[Monitor Using Prometheus and Grafana (legacy exporter)](/learning/howto/rundeck-exporter.md)  
+[Monitor Using Prometheus and Grafana (legacy exporter)](/learning/howto/legacy-community-metrics-exporter.md)  
 [Integrate with Hashicorp Vault](/learning/howto/vault-integration.md)  
 [Integrate with Jenkins](/learning/howto/howtojenkins.md)  
 [Manage Kubernetes](/learning/howto/how2kube.md)  

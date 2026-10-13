@@ -320,7 +320,10 @@ export function extractPRSection(body, sectionName) {
   // Remove markdown reference-style links (e.g., [RUN-123]: https://...)
   // These are typically at the end and should not appear in release notes output
   content = content.replace(/^\[.+?\]:\s*https?:\/\/.+$/gm, '').trim();
-  
+
+  // Remove HTML comments (e.g., PR template placeholder instructions)
+  content = content.replace(/<!--[\s\S]*?(-->|$)/g, '').trim();
+
   return content || null;
 }
 

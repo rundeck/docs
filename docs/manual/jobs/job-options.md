@@ -435,7 +435,7 @@ Because option values are user input, a value containing shell metacharacters ca
 
 - **Per option** — set a **Match Regular Expression** or an **Enforced** allowed-values list on the option (see the option Restrictions described in [Defining an option](#defining-an-option) above). These constrain that single option.
 - **Project- or system-wide default allowlist** — configure a default regular expression applied to every option value that does not already have its own regex or enforced list. Set `project.option.input.validation.default.pattern` for a project, or `rundeck.option.input.validation.default.pattern` instance-wide. A value that does not fully match the pattern causes the execution to be rejected before it runs.
-- **Reject undeclared options** — by default (`rundeck.execution.rejectUndeclaredOptions=true`), an execution that supplies an option the job does not declare is rejected, so unvalidated values cannot reach scripts or `RD_OPTION_*` environment variables.
+- **Reject undeclared options** — when enabled (`rundeck.execution.rejectUndeclaredOptions=true`), an execution that supplies an option the job does not declare is created and then fails at start (before any workflow step runs), so unvalidated values cannot reach scripts or `RD_OPTION_*` environment variables. The default is `false`.
 
 See [Job Option Injection Controls](/administration/configuration/config-file-reference.md#job-option-injection-controls) for the full property reference, precedence rules, and pattern caveats (full-match behavior, multi-line matching, international characters, and fail-closed handling of an invalid pattern).
 
