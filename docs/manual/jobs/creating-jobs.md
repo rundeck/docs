@@ -225,6 +225,10 @@ If the the desired schedule cannot be defined using the simple schedule editor, 
 
 ![Scheduled job crontab form](/assets/img/fig0307.png)
 
+:::warning 2026 Canadian time zone changes
+Jobs scheduled in `America/Vancouver`, `America/Edmonton`, `America/Inuvik`, or `America/Winnipeg` may run one hour off after November 1, 2026. See [2026 Canadian Time Zone Changes](/administration/maintenance/canada-timezone-2026.md) for an interim workaround.
+:::
+
 Use the crontab syntax referenced here: [Quartz Scheduler crontrigger].
 
 A good place to generate, validate and test job crontabs is [here](https://www.freeformatter.com/cron-expression-generator-quartz.html).
