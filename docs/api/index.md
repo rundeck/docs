@@ -5016,7 +5016,7 @@ Delete an existing projects on the server. Requires 'delete' authorization.
 Optional Query Parameters:
 
 * `deferred`: (**Since API v45**) If `true`, specifies the deletion process should take place in the background, and the request will be answered before its processed. 
-If `false` the server will wait for the process to finish before answering. Default: `true` 
+If `false` the server will wait for the process to finish before answering. Default: the value of the [`rundeck.projectService.deferredProjectDelete`](/administration/configuration/config-file-reference.md#project-deletion) configuration property (`true` unless changed). 
 
 
 :::tip
