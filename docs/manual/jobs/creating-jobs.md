@@ -237,6 +237,31 @@ will be displayed when the Job is listed:
 :::warning
 If cluster mode is enabled, any change to the execution schedule when editing a job will take a few seconds to take effect. This is because the job take over message needs to be processed by the instance that owns the job to change the schedule configuration.
 :::
+
+#### Who a scheduled job runs as
+
+A scheduled job runs as the user who last saved it, using the roles that user held
+at that moment. The schedule keeps using that identity on every trigger, so the job
+continues to run as that user even after their permissions change, or after they
+leave.
+
+Because creating a job and running one are separate permissions, a job can be
+scheduled by someone who cannot run it. The schedule still fires in that case, so
+Rundeck flags the job to make the mismatch visible.
+
+![Job page showing a Permission Issue badge beside the job name and a warning banner naming the saved user who cannot run the job, with a Grant run access button](/assets/img/scheduled-job-run-permission-warning.png)
+
+The same warning appears in the job list and, in Enterprise, in the cluster's
+scheduled-jobs view. Resolve it either by granting the saved user `run` access to
+that job, or by re-saving the job as a user who already has it. Users who can create
+project ACL policies — `create`, `admin` or `app_admin` on the project's ACLs — are
+offered a link that opens the ACL editor with a policy granting exactly that
+access, ready to review before saving. Permission to update existing policies is
+not enough, since the link creates a new one.
+
+See [Access Control Policy](/administration/security/authorization.md#job-author-can-create-but-not-run)
+for the permissions involved.
+
 ### Job Notifications
 
 Job notifications are messages triggered by a job event.
