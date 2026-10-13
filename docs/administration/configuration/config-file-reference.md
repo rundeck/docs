@@ -1108,6 +1108,17 @@ Enabled: true/false (default true).
 First Load Asynch: true/false
 : `rundeck.nodeService.nodeCache.firstLoadAsynch=false` The default for whether the first load of a project's nodes should be performed synchronously or not. If set to `true`, and the [Project Nodes > Synchronous First Load](/manual/projects/project-create.md#project-nodes) value is unset, then the initial load of a Project's nodes when the cache is empty will be done in the background asynchronously. Otherwise the initial load is done synchronously, possibly causing a delay at Rundeck startup or Job execution startup. A Project level configuration value will override this default.
 
+### Project Deletion
+
+Deferred project deletion: true/false (default true).
+: `rundeck.projectService.deferredProjectDelete=true` Controls how projects are deleted from the GUI, and from the [Project Deletion API](/api/index.md#project-deletion) when the `deferred` query parameter is not specified.
+
+When set to `true`, the project is marked as disabled, the request returns immediately, and its jobs, executions and other data are deleted in the background. While this happens, the project shows the message "Project is disabled or being deleted". The background deletion is not resumed if the server stops before it completes (for example during a restart), and in that case the project stays disabled.
+
+When set to `false`, the deletion runs as part of the request, and any error is returned to the caller. Deleting a project with many executions can take some time, so make sure load balancers or proxies in front of Rundeck allow enough time for the request to complete.
+
+For Docker images, use the `RUNDECK_PROJECTSERVICE_DEFERREDPROJECTDELETE` environment variable.
+
 ### Limit displayed Job execution Log Output
 
 Limit the amount of lines displayed in Log Output when following the execution of a Job that is running (not finished yet) after a configurable limit has been reached.
