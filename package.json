@@ -22,13 +22,8 @@
     "vuepress-plugin-open-graph": "1.26.0"
   },
   "devDependencies": {
-<<<<<<< HEAD
-    "@docsearch/css": "4.7.0",
-    "@docsearch/js": "4.7.1",
-=======
     "@docsearch/css": "4.7.1",
-    "@docsearch/js": "4.7.0",
->>>>>>> origin/4.0.x
+    "@docsearch/js": "4.7.1",
     "@octokit/rest": "^22.0.1",
     "@types/swagger-ui": "^5.0.0",
     "@vuepress/bundler-vite": "2.0.0-rc.31",
