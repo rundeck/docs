@@ -5,8 +5,15 @@
     <link>https://docs.rundeck.com/docs</link>
     <description>Recent merged pull requests and development updates from Rundeck</description>
     <language>en-us</language>
-    <lastBuildDate>Wed, 07 Oct 2026 15:23:38 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 08 Oct 2026 22:20:02 GMT</lastBuildDate>
     <atom:link href="https://docs.rundeck.com/feeds/development.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Warn when a scheduled job&apos;s saved user can no longer run it</title>
+      <link>https://docs.rundeck.com/docs/history/updates/</link>
+      <description>Warn when a scheduled job&apos;s saved user can no longer run it (Merged: Oct 7, 2026)</description>
+      <pubDate>Wed, 07 Oct 2026 18:22:43 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeck-10670</guid>
+    </item>
     <item>
       <title>Fix plugin upload security issues</title>
       <link>https://docs.rundeck.com/docs/history/updates/</link>

@@ -1,7 +1,7 @@
 ---
 title: Recent Updates
 description: Latest merged changes from the Rundeck development team
-date: 2026-10-07T15:23:38.424Z
+date: 2026-10-08T22:20:02.905Z
 feed: true
 index: true
 ---
@@ -14,6 +14,13 @@ This page shows recently merged pull requests from both the Runbook Automation p
 
 ## Recent Changes
 
+
+#### ::circle-dot:: Warn when a scheduled job&#39;s saved user can no longer run it  [PR #10670](https://github.com/rundeck/rundeck/pull/10670)
+
+
+  Job pages now show a warning when a scheduled job&#39;s saved user is no longer authorized to run it.
+
+  🤖 Generated with [Claude Code](https://claude.com/claude-code)
 
 #### ::circle-dot:: Fix plugin upload security issues  [PR #10602](https://github.com/rundeck/rundeck/pull/10602)
 
@@ -122,6 +129,6 @@ The development updates are automatically generated from both our private reposi
 
 ---
 
-**List Last updated:** 2026-10-07
+**List Last updated:** 2026-10-08
 
 
