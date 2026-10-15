@@ -152,6 +152,21 @@ Use the following command to generate the ssh key pair:
 You can set **Match a Regular Expression?** to `yes` to enter a regular expression that is going to be checked to match all paths that match the regular expression to be imported.
 If you set it to `no` on the next step you are going to be asked to select one by one the files to be imported.
 
+## Remote restrictions
+
+Optional controls for Git Import and Git Export. Both are off by default, so existing remotes keep working. A saved value applies on the next clone, fetch, pull, push, or remote-branch lookup, without a restart.
+
+The same keys can be set in **System Menu → System Configuration → SCM** (Commercial), in `rundeck-config.properties`, in `framework.properties`, or as a JVM system property. The first non-blank value wins, in that order. A blank `allowedSchemes` value is treated as unset and does not reject every scheme.
+
+| Property | Default | Description |
+|----------|---------|-------------|
+| `rundeck.scm.git.allowedSchemes` | unset | Comma-separated scheme allowlist, for example `https,http,ssh`. `ssh` includes `ssh://` and scp-style `git@host:path`. `file` includes `file://` and local paths. |
+| `rundeck.scm.git.blockInternalAddresses` | `false` | When `true`, reject a host that resolves to a loopback, link-local, private, or unique-local address, including HTTP redirects. |
+
+A denied scheme is reported as `Git URL scheme '<scheme>' is not allowed.` A denied host is reported as `The Git host is not allowed.` Other Git transport errors in the UI and API are `Could not access the Git repository. See the server log for details.` A missing remote branch is still reported.
+
+An allowlist that omits `file` rejects a local repository path. Enabling `blockInternalAddresses` rejects a Git server on a private network.
+
 ## Advanced configurations
 
 ### Use the same repo for multiple projects.
