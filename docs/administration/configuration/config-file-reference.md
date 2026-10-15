@@ -1129,7 +1129,7 @@ Allowed URL schemes (unset by default).
 Block internal addresses: true/false (default false).
 : `rundeck.scm.git.blockInternalAddresses=false` When `true`, reject a host that resolves to a non-public address, including HTTP redirects.
 
-A saved value applies on the next Git operation, without a restart. The effective application configuration is used first: a value in `rundeck-config.properties` overrides **System Menu → System Configuration → SCM** (Commercial). Remove the key from the file for the GUI value to apply. If that value is blank or unset, `framework.properties` is used, then the JVM system property.
+A saved value applies on the next Git operation, without a restart. The first non-blank value wins: **System Menu → System Configuration → SCM** (Commercial), then `rundeck-config.properties`, then `framework.properties`, then a JVM `-D` system property. A saved value, including `false`, overrides the file. Deleting that key makes the file value apply again. If every source is blank or unset, the control stays off. A blank `allowedSchemes` value counts as unset.
 
 Git transport errors shown in the UI and API are a generic message. The detail stays in the server log. A missing remote branch, a denied scheme, and a denied host are still reported.
 
