@@ -156,7 +156,7 @@ If you set it to `no` on the next step you are going to be asked to select one b
 
 Optional controls for Git Import and Git Export. Both are off by default, so existing remotes keep working. A saved value applies on the next clone, fetch, pull, push, or remote-branch lookup, without a restart.
 
-The same keys can be set in **System Menu → System Configuration → SCM** (Commercial), in `rundeck-config.properties`, in `framework.properties`, or as a JVM system property. The first non-blank value wins, in that order. A blank `allowedSchemes` value is treated as unset and does not reject every scheme.
+The effective application configuration is used first. A value in `rundeck-config.properties` overrides **System Menu → System Configuration → SCM** (Commercial). Remove the key from the file for a GUI value to apply. If the application value is blank or unset, `framework.properties` is used, then the JVM system property. A blank `allowedSchemes` value is treated as unset and does not reject every scheme.
 
 | Property | Default | Description |
 |----------|---------|-------------|
