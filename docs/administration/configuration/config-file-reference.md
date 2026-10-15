@@ -1121,17 +1121,15 @@ For Docker images, use the `RUNDECK_PROJECTSERVICE_DEFERREDPROJECTDELETE` enviro
 
 ### Git SCM
 
-Optional controls for which Git remotes SCM Import and Export accept. Both are off by default. See [Git Plugin — Remote restrictions](/manual/projects/scm/git.md#remote-restrictions).
+Optional controls for Git Import and Export. Both are off by default. See [Git Plugin — Remote restrictions](/manual/projects/scm/git.md#remote-restrictions).
 
 Allowed URL schemes (unset by default).
-: `rundeck.scm.git.allowedSchemes` Comma-separated schemes, for example `https,http,ssh`. `ssh` includes `ssh://` and `git@host:path`. `file` includes `file://` and local paths. Blank or unset means no restriction.
+: `rundeck.scm.git.allowedSchemes` Comma-separated schemes, for example `https,http,ssh`. `ssh` includes `ssh://` and `git@host:path`. `file` includes `file://` and a local path. A blank value counts as unset.
 
 Block internal addresses: true/false (default false).
-: `rundeck.scm.git.blockInternalAddresses=false` When `true`, reject a host that resolves to a non-public address, including HTTP redirects.
+: `rundeck.scm.git.blockInternalAddresses=false` When `true`, Git SCM rejects an internal host.
 
-A saved value applies on the next Git operation, without a restart. The first non-blank value wins: **System Menu → System Configuration → SCM** (Commercial), then `rundeck-config.properties`, then `framework.properties`, then a JVM `-D` system property. A saved value, including `false`, overrides the file. Deleting that key makes the file value apply again. If every source is blank or unset, the control stays off. A blank `allowedSchemes` value counts as unset.
-
-Git transport errors shown in the UI and API are a generic message. The detail stays in the server log. A missing remote branch, a denied scheme, and a denied host are still reported.
+A saved value applies on the next Git operation, without a restart. The first non-blank value wins: **System Menu → System Configuration → SCM** (Commercial), then `rundeck-config.properties`, then `framework.properties`, then a JVM `-D` system property. A saved value, including `false`, overrides the file. Deleting that key makes the file value apply again.
 
 ### Limit displayed Job execution Log Output
 
