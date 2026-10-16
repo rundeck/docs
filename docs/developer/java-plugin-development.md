@@ -616,7 +616,7 @@ Property property = PropertyBuilder.builder()
     .build();
 ```
 
-To declare an output-only property on a hand-built `Description` (equivalent to `@PluginOutput` without `@PluginProperty`), use `.outputMetadata(...)` and `.outputOnly(true)`:
+Plugins that implement `Describable` build their own `Description` and do not have class fields scanned for `@PluginOutput`. To declare an output-only property on a hand-built `Description` (equivalent to `@PluginOutput` without `@PluginProperty`), use `.outputMetadata(...)` and `.outputOnly(true)` on `PropertyBuilder`, and either store the computed result in an instance field with the same name as the property or write it directly to `context.getExecutionContext().getOutputContext().addOutput(group, name, value)`:
 
 ```java
 Property outputProp = PropertyBuilder.builder()

@@ -604,7 +604,7 @@ Defines a step that conditionally executes substeps based on runtime conditions.
   * `conditions` - Array of individual conditions (AND logic within set by default; see `invertLogic`)
     * `field` - Field reference using `${}` syntax (e.g., `"${node.osFamily}"`, `"${option.environment}"`) or prior-step output reference using `"<Step Label> - <Output Name>"` syntax (e.g., `"Get Incident - pd_incident_status"`)
     * `operator` - One of: `"equals"`, `"not equals"`, `"contains"`, `"matches"`, `"greater than"`, `"less than"`
-    * `value` - Comparison value (literal or variable reference with `${}` syntax)
+    * `value` - Comparison value (literal, variable reference with `${}` syntax, or prior-step output reference using `"<Step Label> - <Output Name>"` syntax)
 
 `invertLogic`
 

@@ -289,7 +289,7 @@ When saved, the condition stores the reference in `<Step Label> - <Output Name>`
 **Scoping and Naming Rules:**
 - **Step type matching**: A **Workflow Conditional Logic** step can only reference outputs from prior **Workflow Steps**. A **Node Conditional Logic** step can only reference outputs from prior **Node Steps** (each node evaluates the condition against the output captured on that same node). To switch conditional step types, click the link in the note at the top of the **Prior Steps** tab.
 - **Prior sibling scope**: Only steps that execute before the conditional step (at the same level or an enclosing level) are in scope. Substeps inside an earlier sibling conditional block cannot be referenced by later steps outside that block.
-- **Unique step names**: If multiple prior steps share the same **Step Name**, only the last (most recent) step's outputs are listed in the **Prior Steps** tab and resolved at execution time. Give each referenced step a unique Step Name to avoid ambiguity.
+- **Unique step names**: If multiple prior steps share the same **Step Name**, the **Prior Steps** tab displays the note *"Only steps with unique "Step name" are displayed in this list."* and lists only the last (most recent) matching step's outputs, matching how the workflow engine resolves duplicate labels at runtime. Give each referenced step a unique Step Name to avoid ambiguity.
 
 **Built-in Step Plugins Exposing Outputs:**
 
@@ -298,29 +298,29 @@ When saved, the condition stores the reference in `<Step Label> - <Output Name>`
 | **Built-in (Core)** | Job State Conditional | `observedExecutionState` |
 | **PagerDuty** | PagerDuty / Incident / Get | `pd_incident_id`, `pd_incident_status`, `pd_incident_summary`, `pd_priority_id`, `pd_priority_label`, `pd_service_id`, `pd_service_name`, `pd_urgency`, `pd_escalation_policy_id`, `pd_escalation_policy_name` |
 | **PagerDuty** | PagerDuty / Incident / Escalate | `incidentStatus` |
-| **PagerDuty** | PagerDuty / Incident / Response Play | `responsePlayStatus` |
-| **PagerDuty** | PagerDuty / Incident / Start Incident Workflow | `workflow_id`, `workflow_type`, `workflow_incident_id`, `workflow_incident_type`, `workflow_incident_summary` |
-| **PagerDuty** | PagerDuty / User / Get User, Create User | `pd_user_id` |
+| **PagerDuty** | PagerDuty / Incident / Run Response Play | `responsePlayStatus` |
+| **PagerDuty** | PagerDuty / Incident / Start Incident Workflow Instance | `workflow_id`, `workflow_type`, `workflow_incident_id`, `workflow_incident_type`, `workflow_incident_summary` |
+| **PagerDuty** | PagerDuty / User / Get, PagerDuty / User / Create | `pd_user_id` |
 | **ServiceNow** | ServiceNow / Incident / Create | `incidentNumber` |
 | **ServiceNow** | ServiceNow / Incident / View | `incidentState` |
 | **ServiceNow** | ServiceNow / Incident / Check Assigned | `assignedIncidentCount` |
 | **ServiceNow** | ServiceNow / Change / Create | `changeNumber` |
 | **Jira** | Jira / Issue / Create (Workflow & Node Step) | `jira_issue_id`, `jira_issue_key`, `jira_issue_url` |
-| **Jira** | Jira / Issue / Check | `issueStatus` (stored under `issue.status`) |
-| **Datadog** | Datadog / Create Incident | `dd_incident_id` |
-| **Datadog** | Datadog / Add Task | `dd_task_id` |
+| **Jira** | Jira / Issue / Check Exist | `status` (captured under `issue.status`; also resolvable as `issueStatus`) |
+| **Datadog** | Datadog / Incident / Create | `dd_incident_id` |
+| **Datadog** | Datadog / Incident / Add Task | `dd_task_id` |
 | **AWS** | AWS / RDS / Status | `rdsInstanceStatus` |
-| **AWS** | AWS / ELB / Target Group Health | `unhealthyTargetCount` |
-| **AWS** | AWS / CloudWatch / Execute Saved Query, Logs Insights | `matchedRecordCount` |
-| **AWS** | AWS / Lambda / Invoke Lambda Function (Workflow & Node Step) | `functionError` |
+| **AWS** | AWS / ELB / Target Unhealthy | `unhealthyTargetCount` |
+| **AWS** | AWS / CloudWatch / Execute Saved Query, AWS / CloudWatch / Logs | `matchedRecordCount` |
+| **AWS** | AWS / Lambda / Invoke (Workflow & Node Step) | `functionError` |
 | **AWS** | AWS / Lambda / Custom Code Execution | `functionName`, `functionWasCreated`, `functionWasInvoked`, `functionWasDeleted`, `invokeResponsePayloadString`, `invokeFunctionError`, `invokeExecutionLog` |
 | **Executions** | Executions Search | `executionCount` |
 | **Executions** | Executions Retry | `retriedExecutionCount` |
 | **Executions** | Executions Delete | `deletedExecutionCount` |
 | **Executions** | Executions Wait Result | `failedExecutionCount` |
-| **Wait for Job** | Wait for Job | `waitSucceeded` |
-| **RSS Feeds** | Retrieve RSS Feed Events | `eventCount` |
-| **Sensu** | Sensu / Check Info, Run Check (Node Steps) | `checkStatus` |
+| **Wait for Job** | Wait For Job Execution | `waitSucceeded` |
+| **RSS Feeds** | RSS Feed / Retrieve Events | `eventCount` |
+| **Sensu** | Sensu / Get Check Info, Sensu / Run ad hoc Check (Node Steps) | `checkStatus` |
 
 For Command and Script steps, or plugins that do not declare `@PluginOutput` properties, capture output using a [Log Filter](/manual/log-filters/index.md) and reference it as `${data.<name>}` (or reference the command exit code via `${<stepNum>:exec.exitCode*}`).
 
@@ -414,7 +414,7 @@ In the execution log:
 
 When a Node Conditional Logic step evaluates to `false` on a node, its substeps are not started on that node, which causes the node to appear as incomplete in the execution summary even when the overall execution succeeded.
 
-On successful (`SUCCEEDED`) executions, enable the **Hide incomplete nodes** checkbox on the **Nodes** tab or in the **Log Output** settings drawer to hide nodes whose only unrun steps were skipped by a conditional and filter their log lines from the Log Output view. The toggle state is synchronized between both tabs.
+On successful (`SUCCEEDED`) executions, enable the **Hide incomplete nodes** checkbox on the **Nodes** tab or in the **Log Output** settings drawer to hide nodes whose only unrun steps were skipped by a conditional (where all executed steps succeeded) and filter their log lines from the Log Output view. Node completion summary counts remain unchanged, and the toggle state is synchronized between both tabs.
 
 ### Workflow Strategies
 
