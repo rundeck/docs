@@ -105,7 +105,7 @@ Fix cron expression selector in Project Settings &gt; Execution History Clean. S
 
 #####  ::circle-dot:: [Improve Dutch translations to be better understandable - Community Submission](https://github.com/rundeck/rundeck/pull/10164)
   
-Community Submission from @TheSander562.  Enhancement for dutch speaking people so the words and sentences makes sense when reading them in Rundeck.
+Community Submission from @TheSander562.  Enhancement for Dutch speaking people so the words and sentences makes sense when reading them in Rundeck.
 
 #####  ::circle-dot:: [Update follow-redirects for CVE-2026-40895](https://github.com/rundeck/rundeck/pull/10169)
   
@@ -119,7 +119,7 @@ Updated Apache Commons Compress to version 1.28.0 to address CVE-2025-48924, whi
 
 #####  ::circle-dot:: [Make UUID field read-only in job Other tab](https://github.com/rundeck/rundeck/pull/10146)
   
-UUID is no longer be editable on Jobs Other tab
+UUID is no longer editable on Jobs Other tab
 
 #####  ::circle-dot:: [Upgrade log4J to 2.25.4](https://github.com/rundeck/rundeck/pull/10086)
   
