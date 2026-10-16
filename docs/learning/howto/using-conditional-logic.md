@@ -10,13 +10,16 @@ feed:
 
 # Using Conditional Logic in a Job
 
-**Early Access Feature** - Available in Runbook Automation 5.20.0+
+::: tip Generally Available in Runbook Automation 6.3.0
+Conditional Logic steps are Generally Available and **enabled by default** starting in Runbook Automation 6.3.0.
+:::
 
 ## Overview
 
 Conditional Logic steps enable workflows to make decisions during execution based on runtime conditions. Instead of creating multiple jobs for different scenarios or writing complex scripts with if/then logic, you can use Conditional Logic steps to branch your workflow based on:
 
 - Job options (environment, configuration values)
+- Prior step outputs (status, state, IDs, or counts exposed by earlier steps)
 - Node attributes (OS family, hostname, tags)
 - Job context (project name, job name, execution user)
 - Data captured from previous steps
@@ -25,13 +28,12 @@ This guide provides hands-on examples to help you understand how to use conditio
 
 ## Prerequisites
 
-1. **Runbook Automation 5.20.0+** with the conditional logic feature enabled
-2. **Feature flag enabled** in `rundeck-config.properties`:
+1. **Runbook Automation 6.3.0+** (Conditional Logic is enabled by default). On versions **5.20.0 through 6.2.x**, enable the feature flag in `rundeck-config.properties`:
    ```properties
    rundeck.feature.earlyAccessJobConditional.enabled=true
    ```
-3. **Basic understanding** of job workflows and job options
-4. **Workflow strategy** set to Sequential, Parallel, or Node First (Ruleset is not supported)
+2. **Basic understanding** of job workflows and job options
+3. **Workflow strategy** set to Sequential, Parallel, or Node First (Ruleset is not supported)
 
 ::: tip New to Rundeck?
 If you're new to Rundeck, we recommend completing the [Getting Started Tutorial](/learning/tutorial/index.md) first. This guide assumes familiarity with creating jobs, adding steps, and using job options.
@@ -280,12 +282,12 @@ Try these combinations to understand the OR/AND logic:
 
 | Environment | OS      | Version | Will Execute? | Why?                                                                                    |
 |-------------|---------|---------|---------------|-----------------------------------------------------------------------------------------|
-| Dev         | Linux   | 5.20    | ✅ Yes         | Matches Set 1 (Dev environment)                                                         |
-| Dev         | Windows | 5.19    | ✅ Yes         | Matches Set 1 (Dev environment)                                                         |
-| Prod        | Windows | 5.19    | ✅ Yes         | Matches Set 2 (Windows AND not 5.20)                                                    |
-| Prod        | Windows | 5.20    | ❌ No          | Set 1 fails (Prod enviroment), Set 2 fails (version IS 5.20), Set 3 fails (not Linux)   |
-| Prod        | Linux   | 5.20    | ✅ Yes         | Matches Set 3 (Linux AND not 5.19)                                                      |
-| Prod        | Linux   | 5.19    | ❌ No          | Set 1 fails (Prod enviroment), Set 2 fails (not Windows), Set 3 fails (version IS 5.19) |
+| Dev         | Linux   | 5.20    | Yes           | Matches Set 1 (Dev environment)                                                         |
+| Dev         | Windows | 5.19    | Yes           | Matches Set 1 (Dev environment)                                                         |
+| Prod        | Windows | 5.19    | Yes           | Matches Set 2 (Windows AND not 5.20)                                                    |
+| Prod        | Windows | 5.20    | No            | Set 1 fails (Prod environment), Set 2 fails (version IS 5.20), Set 3 fails (not Linux)  |
+| Prod        | Linux   | 5.20    | Yes           | Matches Set 3 (Linux AND not 5.19)                                                      |
+| Prod        | Linux   | 5.19    | No            | Set 1 fails (Prod environment), Set 2 fails (not Windows), Set 3 fails (version IS 5.19) |
 
 **What to Observe:**
 
@@ -319,7 +321,7 @@ Try these combinations to understand the OR/AND logic:
 
 Use conditionals to run different steps based on environment:
 
-```
+```text
 Workflow Conditional Logic: ${option.environment} equals "production"
 ├─ Substep: Send approval notification
 ├─ Substep: Backup database
@@ -330,7 +332,7 @@ Workflow Conditional Logic: ${option.environment} equals "production"
 
 Target specific operating systems without changing node filters:
 
-```
+```text
 Node Conditional Logic: ${node.osFamily} equals "unix"
 └─ Substep: Run Linux-specific commands
 
@@ -342,7 +344,7 @@ Node Conditional Logic: ${node.osFamily} equals "windows"
 
 Skip or include steps based on application versions:
 
-```
+```text
 Workflow Conditional Logic: ${option.version} greater than "5.0"
 └─ Substep: Use new API endpoints
 ```
@@ -351,7 +353,7 @@ Workflow Conditional Logic: ${option.version} greater than "5.0"
 
 Execute steps only on nodes with specific tags:
 
-```
+```text
 Node Conditional Logic: ${node.tags} contains "database"
 └─ Substep: Database maintenance commands
 ```
@@ -373,7 +375,7 @@ Node Conditional Logic: ${node.tags} contains "database"
 3. **Add Conditional Step**
    - In the Job Editor, click "Add a step"
    - Select Node Conditional Logic or Workflow Conditional Logic
-   - Give the step a descriptive name
+   - Give the step a descriptive name (a default Step Name is pre-filled automatically)
 
 4. **Configure Conditions**
    - Add your first condition (Field, Operator, Value)
@@ -401,21 +403,21 @@ Node Conditional Logic: ${node.tags} contains "database"
 ### Common Patterns
 
 **Multiple Environments:**
-```
+```text
 Set 1: ${option.environment} equals "dev"
 OR
 Set 2: ${option.environment} equals "staging"
 ```
 
 **OS + Tag Combination:**
-```
+```text
 Set 1: ${node.osFamily} equals "unix" AND ${node.tags} contains "web"
 OR
 Set 2: ${node.osFamily} equals "windows" AND ${node.tags} contains "iis"
 ```
 
 **Exclude Specific Cases:**
-```
+```text
 ${option.environment} not equals "production"
 ```
 
@@ -424,7 +426,7 @@ ${option.environment} not equals "production"
 **Conditions not evaluating correctly?**
 - Enable Debug logging when running the job
 - Verify option names match exactly (case-sensitive)
-- Ensure Fields use `${}` syntax: `${option.name}` not `option.name`
+- Ensure context variable fields use `${}` syntax (`${option.name}` not `option.name`), or select prior step outputs from the **Prior Steps** tab
 - Check that node attributes exist on target nodes
 
 **Substeps not appearing?**
@@ -434,19 +436,29 @@ ${option.environment} not equals "production"
 
 **Cannot import job?**
 - Conditional Logic requires JSON or YAML format (XML is not supported)
-- Verify the feature flag is enabled before importing
+- Verify the feature flag is not disabled before importing
 
 ## Advanced Scenarios
 
-### Using Data from Previous Steps
+### Using Outputs from Previous Steps
 
-Conditional Logic can evaluate data captured from previous steps using log filters:
+Conditional Logic can evaluate outputs from earlier steps in two ways:
+
+**1. Built-in Prior Step Outputs (6.3.0+):**
+Many bundled step plugins (such as PagerDuty, ServiceNow, Jira, Datadog, AWS, Sensu, and Job State Conditional) expose their outcomes directly in the condition editor:
+
+1. Give the earlier step a unique **Step Name** (e.g., `Get Incident`)
+2. In your Conditional Logic step, click the **Field** input and select the **Prior Steps** tab
+3. Choose the exposed output (e.g., `pd_incident_status [steps.['Get Incident'].pd_incident_status]`)
+
+**2. Capturing Output with Log Filters:**
+For Command, Script, or custom steps, capture output using log filters:
 
 1. Add a step with a Log Filter (e.g., Key Value Data) to capture output
 2. In a later conditional step, reference the captured data: `${data.variableName}`
 
 Example:
-```
+```text
 Step 1: Command with Key Value Data log filter capturing "status"
 Step 2: Workflow Conditional Logic: ${data.status} equals "ready"
   └─ Substep: Proceed with deployment
@@ -485,6 +497,5 @@ Conditional Logic works with Sequential, Parallel, and Node First strategies (no
 Now that you understand conditional logic basics:
 
 1. **Experiment** with the example jobs - modify conditions and observe behavior
-2. **Combine** conditionals with other features like log filters and job references
+2. **Combine** conditionals with other features like prior step outputs, log filters, and job references
 3. **Build** your own conditional workflows for your specific use cases
-4. **Share feedback** with Rundeck support - this is an Early Access feature under active development

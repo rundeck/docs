@@ -580,8 +580,8 @@ Example:
 
 ### Conditional Logic Step Entry
 
-::: tip Since Rundeck 5.20.0
-Conditional Logic steps are an Early Access commercial feature that requires the feature flag `rundeck.feature.earlyAccessJobConditional.enabled=true`.
+::: tip Generally Available in Runbook Automation 6.3.0
+Conditional Logic steps are enabled by default starting in Runbook Automation 6.3.0 (`rundeck.feature.earlyAccessJobConditional.enabled=true`). In versions 5.20.0 through 6.2.x, this feature flag must be enabled explicitly.
 :::
 
 Defines a step that conditionally executes substeps based on runtime conditions. Available for both Node Steps and Workflow Steps.
@@ -602,7 +602,7 @@ Defines a step that conditionally executes substeps based on runtime conditions.
 
 : Array of condition sets (OR logic between sets by default; see `invertLogic`)
   * `conditions` - Array of individual conditions (AND logic within set by default; see `invertLogic`)
-    * `field` - Field reference using `${}` syntax (e.g., `"${node.osFamily}"`, `"${option.environment}"`)
+    * `field` - Field reference using `${}` syntax (e.g., `"${node.osFamily}"`, `"${option.environment}"`) or prior-step output reference using `"<Step Label> - <Output Name>"` syntax (e.g., `"Get Incident - pd_incident_status"`)
     * `operator` - One of: `"equals"`, `"not equals"`, `"contains"`, `"matches"`, `"greater than"`, `"less than"`
     * `value` - Comparison value (literal or variable reference with `${}` syntax)
 
@@ -643,21 +643,26 @@ Example:
 
 **Available Field References:**
 - Job Context: `${job.name}`, `${job.project}`, `${job.username}`, `${job.id}`
+- Prior Step Outputs: `"<Step Label> - <Output Name>"` (e.g., `"Create Incident - incidentNumber"`)
 - Job Options: `${option.[name]}`
 - Node Attributes (Node steps only): `${node.hostname}`, `${node.osFamily}`, `${node.tags}`, etc.
 - Data Variables: `${data.[name]}`
 
 **Limitations:**
 - Works with Sequential, Parallel, and Node First workflow strategies (Ruleset is not supported)
-- Substeps must match parent type (node substeps for node conditionals)
+- Substeps and referenced prior steps must match parent type (node steps for node conditionals, workflow steps for workflow conditionals)
 - XML format not supported
 
 ::: tip Since Rundeck 6.1.0
-Nested conditional steps are supported. Error handlers and log filters are supported on substeps (UI improvements planned for a later release).
+Nested conditional steps are supported. Error handlers and log filters are supported on substeps.
 :::
 
 ::: tip Since Rundeck 6.2.0
 `invertLogic` is supported, letting you swap the AND/OR grouping between and within condition sets.
+:::
+
+::: tip Since Rundeck 6.3.0
+Conditional Logic is enabled by default, and conditions can reference outputs exposed by prior steps using `"<Step Label> - <Output Name>"`.
 :::
 
 See [Conditional Logic Steps](/manual/jobs/conditional-logic.md) for complete documentation.
