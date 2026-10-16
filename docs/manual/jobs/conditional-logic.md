@@ -286,6 +286,8 @@ Conditional steps can evaluate outcomes produced by earlier steps—such as inci
 
 When saved, the condition stores the reference in `<Step Label> - <Output Name>` format (for example, `Get Incident - pd_incident_status`), and the collapsed conditional card displays `steps.['Get Incident'].pd_incident_status`. At runtime, the workflow engine resolves the reference to the value captured when that step executed.
 
+![Prior Steps tab in the Conditional Logic Field dropdown](/assets/img/job-conditionals-prior-steps.png)
+
 **Scoping and Naming Rules:**
 - **Step type matching**: A **Workflow Conditional Logic** step can only reference outputs from prior **Workflow Steps**. A **Node Conditional Logic** step can only reference outputs from prior **Node Steps** (each node evaluates the condition against the output captured on that same node). To switch conditional step types, click the link in the note at the top of the **Prior Steps** tab.
 - **Prior sibling scope**: Only steps that execute before the conditional step (at the same level or an enclosing level) are in scope. Substeps inside an earlier sibling conditional block cannot be referenced by later steps outside that block.
@@ -370,7 +372,12 @@ Use **"Undo"** above the workflow to revert reordering.
 **Reorder Protection and Reference Validation:**
 
 - If you drag a step to a position that breaks a downstream conditional step's prior-step reference (for example, moving a referenced step below the conditional step that depends on it), a **"Reordering May Affect Workflow Logic"** confirmation modal appears. Choose **Cancel** to keep the current order or **Reorder Anyway** to proceed.
+
+![Reordering May Affect Workflow Logic confirmation modal](/assets/img/job-conditionals-reorder-warning.png)
+
 - If a referenced prior step is renamed, deleted, or moved after the conditional step, the collapsed conditional step card displays an **Invalid Condition Criteria** badge, a warning banner appears above the workflow step list, and saving the conditional step is blocked until the invalid **Field** reference is updated.
+
+![Invalid Condition Criteria badge and workflow warning banner after deleting a referenced prior step](/assets/img/job-conditionals-invalid-reference.png)
 
 ### Duplicating Steps
 
@@ -409,12 +416,6 @@ In the execution log:
 
 - **Conditions Met**: Substeps appear in the log and execute normally
 - **Conditions Not Met**: A log message indicates the conditional step was skipped, and substeps do not appear
-
-**Hiding Incomplete Nodes on Conditional Skip:**
-
-When a Node Conditional Logic step evaluates to `false` on a node, its substeps are not started on that node, which causes the node to appear as incomplete in the execution summary even when the overall execution succeeded.
-
-On successful (`SUCCEEDED`) executions, enable the **Hide incomplete nodes** checkbox on the **Nodes** tab or in the **Log Output** settings drawer to hide nodes whose only unrun steps were skipped by a conditional (where all executed steps succeeded) and filter their log lines from the Log Output view. Node completion summary counts remain unchanged, and the toggle state is synchronized between both tabs.
 
 ### Workflow Strategies
 

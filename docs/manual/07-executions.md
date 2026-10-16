@@ -117,7 +117,9 @@ The Report view is similar to the Monitor view, displaying node and step informa
 
 ![Report view](/assets/img/fig0807.png)
 
-On a completed execution with status `SUCCEEDED`, a **Hide incomplete nodes** checkbox is available in the Nodes view and in the Log Output settings drawer. When a conditional step skips substeps on certain nodes, those nodes appear as incomplete even though the execution succeeded. Enabling **Hide incomplete nodes** hides nodes whose only unrun steps were skipped by a conditional (and whose executed steps all succeeded) from the Nodes list and filters their log entries from the Log Output view, without changing the summary completion counts.
+On a completed execution with status `SUCCEEDED`, a **Hide incomplete nodes** checkbox is available in the Nodes view and in the Log Output settings drawer. Enabling **Hide incomplete nodes** hides nodes whose unrun steps were skipped (where all executed steps on the node succeeded) from the Nodes list and filters their log entries from the Log Output view, without changing the summary completion counts. The toggle state is synchronized between both views.
+
+![Hide incomplete nodes checkbox on the execution Report view](/assets/img/execution-hide-incomplete-nodes.png)
 
 ## Log Output
 
