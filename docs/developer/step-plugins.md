@@ -520,6 +520,20 @@ public interface PluginStepContext {
 }
 ```
 
+### Exposing Step Outputs for Conditional Logic
+
+Starting in Rundeck 6.3.0, `StepPlugin` and `NodeStepPlugin` implementations can declare outputs using the `@PluginOutput` annotation (`com.dtolabs.rundeck.plugins.descriptions.PluginOutput`) so that downstream [Conditional Logic Steps](/manual/jobs/conditional-logic.md) can select and branch on them from the **Prior Steps** tab in the Job Editor:
+
+```java
+@PluginOutput(
+    name = "ticketId",
+    description = "ID of the ticket created by this step"
+)
+private String ticketId;
+```
+
+When a field carries `@PluginOutput` without `@PluginProperty`, it is treated as an output-only property (`isOutputOnly() == true`) and omitted from the step configuration UI. After `executeStep` or `executeNodeStep` returns without throwing an exception, Rundeck reads the field's value and writes it to `OutputContext` under the declared `group` (default `"data"`) and `name` (scoped per node for `NodeStepPlugin`). See [@PluginOutput Annotation](/developer/java-plugin-development.md#pluginoutput-annotation) for full details.
+
 ### Example code
 
 See the source directory `examples/example-java-step-plugin` for
