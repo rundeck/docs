@@ -174,7 +174,7 @@ By default, a Conditional Logic step evaluates **AND within each condition set, 
 The AND/OR toggle for condition sets is available starting in Rundeck 6.2.0.
 :::
 
-![Conditional Logic editor showing the AND/OR toggle between condition sets](/assets/img/job-conditionals-toggle.png)
+![Conditional Logic editor with the condition-set logic dropdown showing AND and OR options](/assets/img/job-conditionals-and-or-selector.png)
 
 The toggle applies to the whole step, not just the boundary where it appears — it flips both the within-set and across-set operators together.
 
@@ -390,6 +390,8 @@ Use **Undo** above the workflow to revert the last change, or **Revert All Chang
 
 Open the three-dot actions menu (**⋯**) on the conditional step card and select **Duplicate this step**. The duplicate appears immediately after the original step.
 
+![Conditional step actions menu showing the Duplicate this step option](/assets/img/job-conditionals-actions-menu.png)
+
 ### Deleting Steps
 
 Click **"Delete"** on a conditional step card to remove it from the workflow. Use **"Undo"** to restore a deleted step.
@@ -472,6 +474,8 @@ You can place a Conditional Logic step one level inside another Conditional Logi
 3. Configure the nested conditional's conditions and its own substeps
 4. When the parent condition is met, the nested conditional evaluates independently
 
+![Expanded parent conditional showing nested conditional steps and their substeps](/assets/img/job-conditionals-nested-workflow.png)
+
 **Example: Environment gate, then OS-specific commands**
 
 1. Node Conditional Logic: `${option.environment}` equals `production`
@@ -552,6 +556,8 @@ This allows the job to have a broader node filter but selectively execute steps.
 - At least one condition must be defined
 - Check for syntax errors in regex patterns (for `matches` operator)
 - **Important**: Context variable fields must use `${}` syntax - verify syntax like `${option.name}` not `$option.name`
+
+![Parent conditional warning and Invalid Condition Criteria badge for a nested conditional with a broken prior-step reference](/assets/img/job-conditionals-nested-invalid-reference.png)
 
 ### Import/Export Issues
 
