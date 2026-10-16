@@ -49,7 +49,7 @@ Conditional Logic steps come in two types:
 Both types support:
 - Multiple conditions with AND logic (all must be true)
 - Multiple condition sets with OR logic (any set can be true)
-- Various operators: equals, not equals, contains, matches (regex), greater than, less than
+- Eight comparison operators: equals, not equals, greater than, greater than or equal, less than, less than or equal, contains, and matches (regex)
 
 ## Hands-On Examples
 
@@ -451,6 +451,10 @@ Many bundled step plugins (such as PagerDuty, ServiceNow, Jira, Datadog, AWS, Se
 2. In your Conditional Logic step, click the **Field** input and select the **Prior Steps** tab
 3. Choose the exposed output (e.g., `pd_incident_status [steps.['Get Incident'].pd_incident_status]`)
 
+::: warning Parallel strategy and prior-step outputs
+The Parallel strategy starts top-level steps concurrently. Use Sequential or Node First when a conditional depends on an earlier step's output so that the earlier step finishes before the condition evaluates.
+:::
+
 **2. Capturing Output with Log Filters:**
 For Command, Script, or custom steps, capture output using log filters:
 
@@ -464,16 +468,16 @@ Step 2: Workflow Conditional Logic: ${data.status} equals "ready"
   └─ Substep: Proceed with deployment
 ```
 
-### Multi-Level Conditional Logic
+### Nested Conditional Logic
 
-You can nest Conditional Logic steps to build multi-level branching:
+You can place a Conditional Logic step one level inside another Conditional Logic step:
 
 1. Add a parent Conditional Logic step and define its conditions
 2. Add another Conditional Logic step as a substep
-3. Configure the nested conditional's conditions and its own substeps
+3. Configure the nested conditional's conditions and add regular substeps
 4. When the parent condition is met, the nested conditional evaluates independently
 
-You can also use Job Reference steps as substeps when you want to reuse a shared job that contains its own conditionals.
+The nested conditional cannot contain another conditional. Use a Job Reference substep when deeper or reusable branching is required.
 
 ### Combining with Workflow Strategies
 

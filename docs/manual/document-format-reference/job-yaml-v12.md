@@ -551,7 +551,7 @@ Defines a step that conditionally executes substeps based on runtime conditions.
 
 `type`
 
-: Must be `"conditional.logic"`
+: Must be `"conditional"`
 
 `nodeStep`
 
@@ -563,33 +563,31 @@ Defines a step that conditionally executes substeps based on runtime conditions.
 
 `conditionGroups`
 
-: Array of condition sets (OR logic between sets by default; see `invertLogic`)
-  * `conditions` - Array of individual conditions (AND logic within set by default; see `invertLogic`)
-    * `field` - Field reference using `${}` syntax (e.g., `"${node.osFamily}"`, `"${option.environment}"`) or prior-step output reference using `"<Step Label> - <Output Name>"` syntax (e.g., `"Get Incident - pd_incident_status"`)
-    * `operator` - One of: `"equals"`, `"not equals"`, `"contains"`, `"matches"`, `"greater than"`, `"less than"`
-    * `value` - Comparison value (literal, variable reference with `${}` syntax, or prior-step output reference using `"<Step Label> - <Output Name>"` syntax)
+: Array of condition-group arrays (OR logic between groups by default; see `invertLogic`). Each inner array contains individual conditions evaluated with AND logic by default.
+  * `key` - Field reference using `${}` syntax (e.g., `"${node.osFamily}"`, `"${option.environment}"`) or prior-step output reference using `"<Step Label> - <Output Name>"` syntax (e.g., `"Get Incident - pd_incident_status"`)
+  * `operator` - One of: `"=="`, `"!="`, `">"`, `">="`, `"<"`, `"<="`, `"contains"`, `"matches"`
+  * `value` - Comparison value (literal, variable reference with `${}` syntax, or prior-step output reference using `"<Step Label> - <Output Name>"` syntax)
 
 `invertLogic`
 
 : Optional boolean, default `false`. Swaps the logic operators used between condition sets and within a condition set: `false` (default) evaluates AND within each set and OR across sets; `true` evaluates OR within each set and AND across sets.
 
-`steps`
+`subSteps`
 
 : Array of substeps to execute when conditions are met (must match `nodeStep` type)
 
 Example:
 
 ```yaml
-  - type: conditional.logic
+  - type: conditional
     nodeStep: true
     description: Check Linux Nodes
     invertLogic: false
     conditionGroups:
-      - conditions:
-          - field: "${node.osFamily}"
-            operator: equals
-            value: unix
-    steps:
+      - - key: "${node.osFamily}"
+          operator: "=="
+          value: unix
+    subSteps:
       - exec: echo 'Condition met'
 ```
 
@@ -603,10 +601,11 @@ Example:
 **Limitations:**
 - Works with Sequential, Parallel, and Node First workflow strategies (Ruleset is not supported)
 - Substeps and referenced prior steps must match parent type (node steps for node conditionals, workflow steps for workflow conditionals)
+- Conditional steps can be nested one level deep; a nested conditional cannot contain another conditional
 - XML format not supported
 
 ::: tip Since Rundeck 6.1.0
-Nested conditional steps are supported. Error handlers and log filters are supported on substeps.
+Conditional steps can be nested one level deep. Error handlers and log filters are supported on substeps.
 :::
 
 ::: tip Since Rundeck 6.2.0

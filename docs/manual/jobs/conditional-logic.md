@@ -22,7 +22,7 @@ Conditional Logic steps evaluate conditions at runtime and execute substeps only
 - **Prior Step Outputs**: Reference outputs produced by earlier workflow or node steps directly from the condition editor, with automatic reference validation and reorder protection
 - **Multiple Operators**: Equals, not equals, contains, regex matching, numeric comparisons
 - **Node and Workflow Types**: Execute conditionally per-node or once per workflow
-- **Nested Conditionals**: Place conditional steps inside other conditional steps for multi-level logic
+- **Nested Conditionals**: Place a conditional step one level inside another conditional step
 - **Nested Substeps**: Add multiple steps that execute when conditions are met
 - **Debug Mode**: View detailed condition evaluation in execution logs
 
@@ -32,6 +32,7 @@ Conditional Logic has the following limitations:
 
 - **Ruleset Strategy**: Not supported. Conditional Logic works with Sequential, Parallel, and Node First strategies.
 - **Substep and Reference Type Matching**: Substeps must match the type (node or workflow) of the parent conditional step, and conditions can only reference prior steps of the same type.
+- **Conditional Nesting Depth**: A parent conditional can contain a nested conditional, but the nested conditional cannot contain another conditional.
 
 ## Enabling or Disabling Conditional Logic
 
@@ -227,14 +228,16 @@ Click **"Cancel"** to discard changes.
 
 The following operators are available for condition evaluation:
 
-| Operator | Description | Example |
-|----------|-------------|---------|
-| `equals` | Exact match (case-sensitive) | Field: `${node.osFamily}` Value: `unix` |
-| `not equals` | Does not match | Field: `${option.env}` Value: `dev` |
-| `contains` | Value contains substring | Field: `${node.hostname}` Value: `web` |
-| `matches` | Regular expression match | Field: `${node.hostname}` Value: `^web[0-9]+$` |
-| `greater than` | Numeric comparison | Field: `${option.count}` Value: `5` |
-| `less than` | Numeric comparison | Field: `${option.timeout}` Value: `60` |
+| Operator | Job definition value | Description | Example |
+|----------|----------------------|-------------|---------|
+| Equals | `==` | Exact match (case-sensitive) | Field: `${node.osFamily}` Value: `unix` |
+| Not Equals | `!=` | Does not match | Field: `${option.env}` Value: `dev` |
+| Greater than | `>` | Numeric comparison | Field: `${option.count}` Value: `5` |
+| Greater than or equal | `>=` | Numeric comparison | Field: `${option.count}` Value: `5` |
+| Less than | `<` | Numeric comparison | Field: `${option.timeout}` Value: `60` |
+| Less than or equal | `<=` | Numeric comparison | Field: `${option.timeout}` Value: `60` |
+| Contains | `contains` | Value contains substring | Field: `${node.hostname}` Value: `web` |
+| Matches | `matches` | Regular expression match | Field: `${node.hostname}` Value: `^web[0-9]+$` |
 
 ## Using Variables in Conditions
 
@@ -292,6 +295,10 @@ When saved, the condition stores the reference in `<Step Label> - <Output Name>`
 - **Step type matching**: A **Workflow Conditional Logic** step can only reference outputs from prior **Workflow Steps**. A **Node Conditional Logic** step can only reference outputs from prior **Node Steps** (each node evaluates the condition against the output captured on that same node). To switch conditional step types, click the link in the note at the top of the **Prior Steps** tab.
 - **Prior sibling scope**: Only steps that execute before the conditional step (at the same level or an enclosing level) are in scope. Substeps inside an earlier sibling conditional block cannot be referenced by later steps outside that block.
 - **Unique step names**: If multiple prior steps share the same **Step Name**, the **Prior Steps** tab displays the note *"Only steps with unique "Step name" are displayed in this list."* and lists only the last (most recent) matching step's outputs, matching how the workflow engine resolves duplicate labels at runtime. Give each referenced step a unique Step Name to avoid ambiguity.
+
+::: warning Parallel strategy and prior-step outputs
+The **Prior Steps** tab determines scope from the order of steps in the workflow editor. The Parallel strategy starts top-level steps concurrently, so a referenced output might not exist when the conditional evaluates. Use Sequential or Node First when a conditional depends on an earlier step's output.
+:::
 
 **Built-in Step Plugins Exposing Outputs:**
 
@@ -353,7 +360,7 @@ When typing in the Value field, an autocomplete menu displays available variable
 
 ### Editing Conditional Steps
 
-1. Click the **Edit** button on the conditional step card
+1. Click the step title or pencil icon in the conditional step card header
 2. The inline editor opens with current configuration
 3. Modify conditions, substeps, or step name
 4. Click **"Save"** to apply changes or **"Cancel"** to discard
@@ -367,7 +374,7 @@ Conditional steps can be reordered like any other workflow step:
 3. A blue horizontal bar shows the drop position
 4. Release to place the step in the new position
 
-Use **"Undo"** above the workflow to revert reordering.
+Use **Undo** above the workflow to revert the last change, or **Revert All Changes** to restore the workflow to its last saved state.
 
 **Reorder Protection and Reference Validation:**
 
@@ -381,7 +388,7 @@ Use **"Undo"** above the workflow to revert reordering.
 
 ### Duplicating Steps
 
-Click **"Duplicate"** on a conditional step card to create a copy with the same configuration. The duplicate appears immediately after the original step.
+Open the three-dot actions menu (**⋯**) on the conditional step card and select **Duplicate this step**. The duplicate appears immediately after the original step.
 
 ### Deleting Steps
 
@@ -429,6 +436,7 @@ Conditional Logic steps work with Sequential, Parallel, and Node First strategie
 - All steps (including conditionals) run in parallel
 - Conditional evaluation happens concurrently across nodes
 - Substeps execute in parallel when conditions are met
+- Prior-step output dependencies are not ordered; use Sequential or Node First when a condition requires an earlier step to finish first
 
 **Node First Strategy:**
 - Runs the full workflow on each node before moving to the next node
@@ -457,7 +465,7 @@ See [Inverting the Logic: AND/OR Toggle](#inverting-the-logic-and-or-toggle) abo
 
 ### Nested Conditionals
 
-You can place a Conditional Logic step inside another Conditional Logic step to build multi-level branching:
+You can place a Conditional Logic step one level inside another Conditional Logic step. The nested conditional can contain regular substeps, but it cannot contain another conditional.
 
 1. Add a parent Conditional Logic step and define its conditions
 2. Click **"+ Add Condition Step"** and select another Conditional Logic step as a substep
@@ -466,13 +474,13 @@ You can place a Conditional Logic step inside another Conditional Logic step to 
 
 **Example: Environment gate, then OS-specific commands**
 
-1. Workflow Conditional Logic: `${option.environment}` equals `production`
+1. Node Conditional Logic: `${option.environment}` equals `production`
    - Nested Node Conditional Logic: `${node.osFamily}` equals `unix`
      - Substeps: Linux production commands
    - Nested Node Conditional Logic: `${node.osFamily}` equals `windows`
      - Substeps: Windows production commands
 
-You can also use Job Reference steps as substeps when you want to reuse a shared job that contains its own conditionals.
+Use a Job Reference substep when deeper or reusable branching is required.
 
 ### Environment-Based Workflows
 
@@ -540,6 +548,7 @@ This allows the job to have a broader node filter but selectively execute steps.
 **Solutions:**
 - Ensure all required fields are filled (Field and Value are required)
 - If a condition shows `"Invalid prior step input. Update this field to continue."`, the referenced prior step was renamed, deleted, or moved after the conditional step. Re-select a valid step output from the **Prior Steps** tab
+- If a parent conditional shows `"A nested conditional step has an invalid prior step input. Update it to continue."`, open its nested conditional and update the invalid **Field** reference
 - At least one condition must be defined
 - Check for syntax errors in regex patterns (for `matches` operator)
 - **Important**: Context variable fields must use `${}` syntax - verify syntax like `${option.name}` not `$option.name`
@@ -579,22 +588,20 @@ Conditional steps use the following structure in job definitions:
     "sequence": {
       "commands": [
         {
-          "type": "conditional.logic",
+          "type": "conditional",
           "nodeStep": true,
           "description": "Check Linux Nodes",
           "invertLogic": false,
           "conditionGroups": [
-            {
-              "conditions": [
-                {
-                  "field": "${node.osFamily}",
-                  "operator": "equals",
-                  "value": "unix"
-                }
-              ]
-            }
+            [
+              {
+                "key": "${node.osFamily}",
+                "operator": "==",
+                "value": "unix"
+              }
+            ]
           ],
-          "steps": [
+          "subSteps": [
             {
               "exec": "echo 'Running on Linux'"
             }
@@ -612,16 +619,15 @@ Conditional steps use the following structure in job definitions:
   loglevel: INFO
   sequence:
     commands:
-      - type: conditional.logic
+      - type: conditional
         nodeStep: true
         description: Check Linux Nodes
         invertLogic: false
         conditionGroups:
-          - conditions:
-              - field: "${node.osFamily}"
-                operator: equals
-                value: "unix"
-        steps:
+          - - key: "${node.osFamily}"
+              operator: "=="
+              value: "unix"
+        subSteps:
           - exec: echo 'Running on Linux'
 ```
 
@@ -629,7 +635,7 @@ Conditional steps use the following structure in job definitions:
 
 When importing job definitions:
 
-- **Feature flag**: Jobs with `type: conditional.logic` steps require Conditional Logic to be enabled (enabled by default in 6.3.0+)
+- **Feature flag**: Jobs with `type: conditional` steps require Conditional Logic to be enabled (enabled by default in 6.3.0+)
 - **Strategy validation**: Import will fail if workflow strategy is Ruleset
 - **Substep type validation**: Import will fail if substeps don't match parent type (node/workflow)
 
@@ -669,7 +675,7 @@ When exporting jobs:
 ### Maintainability
 
 - **Consistent naming**: Use standard naming conventions for options and data variables
-- **Keep nesting readable**: Prefer shallow nested conditionals; use Job References when the same branching logic should be reused across jobs
+- **Keep nesting readable**: Use the supported single nesting level sparingly; use Job References when the same branching logic should be reused across jobs
 - **Group related substeps**: Keep logically related steps together within a conditional
 - **Comment your logic**: Add notes in job description explaining complex conditional workflows
 
