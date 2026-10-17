@@ -3,9 +3,37 @@
   <title>Rundeck Development Updates</title>
   <link href="https://docs.rundeck.com/feeds/development.xml" rel="self" />
   <link href="https://docs.rundeck.com/docs" />
-  <updated>2026-10-08T22:20:02.915Z</updated>
+  <updated>2026-10-14T22:19:16.005Z</updated>
   <id>https://docs.rundeck.com/feeds/development</id>
   <subtitle>Recent merged pull requests and development updates from Rundeck</subtitle>
+  <entry>
+    <title>Update legacy moment-timezone to 0.6.5 (tzdb 2026e) for Canadian DST changes</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeck-10695</id>
+    <updated>2026-10-14T19:24:45.000Z</updated>
+    <content type="text">Update legacy moment-timezone to 0.6.5 (tzdb 2026e) for Canadian DST changes (Merged: Oct 14, 2026)</content>
+  </entry>
+  <entry>
+    <title>Patch JDK tzdb to IANA 2026e in the ubuntu-base Docker image</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeck-10698</id>
+    <updated>2026-10-14T19:24:26.000Z</updated>
+    <content type="text">Patch JDK tzdb to IANA 2026e in the ubuntu-base Docker image (Merged: Oct 14, 2026)</content>
+  </entry>
+  <entry>
+    <title>Keep exit code for workflow step plugins on remote runner</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeckpro-5131</id>
+    <updated>2026-10-13T22:01:50.000Z</updated>
+    <content type="text">Keep exit code for workflow step plugins on remote runner (Merged: Oct 13, 2026)</content>
+  </entry>
+  <entry>
+    <title>Keep failureData when a workflow step plugin fails</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeck-10691</id>
+    <updated>2026-10-13T20:20:49.000Z</updated>
+    <content type="text">Keep failureData when a workflow step plugin fails (Merged: Oct 13, 2026)</content>
+  </entry>
   <entry>
     <title>Warn when a scheduled job&apos;s saved user can no longer run it</title>
     <link href="https://docs.rundeck.com/docs/history/updates/" />
