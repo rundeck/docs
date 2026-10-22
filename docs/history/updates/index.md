@@ -1,7 +1,7 @@
 ---
 title: Recent Updates
 description: Latest merged changes from the Rundeck development team
-date: 2026-10-07T15:23:38.424Z
+date: 2026-10-14T22:19:15.988Z
 feed: true
 index: true
 ---
@@ -14,6 +14,47 @@ This page shows recently merged pull requests from both the Runbook Automation p
 
 ## Recent Changes
 
+
+#### ::circle-dot:: Update legacy moment-timezone to 0.6.5 (tzdb 2026e) for Canadian DST changes  [PR #10695](https://github.com/rundeck/rundeck/pull/10695)
+
+
+  **Fixed:** Updated the timezone library bundled with the web UI (moment 2.31.0, moment-timezone 0.6.5 with IANA tzdb 2026e). Dates and times on the web UI pages that use it (job scheduler, date/time picker and run-later, activity, job and execution views) are now correct for the 2026 Canadian time zone changes that take effect November 1, 2026: British Columbia (`America/Vancouver`), Alberta (`America/Edmonton`), Northwest Territories (`America/Inuvik`), and Manitoba (`America/Winnipeg`).
+
+  &gt; **Note — may still be affected:** This change covers only the timezone data bundled with the web UI. **Server-side job scheduling** uses the timezone data of the Java runtime that Rundeck runs on, and that depends on how Rundeck is installed:
+  &gt; - **Official Docker images:** fixed separately in #10698, which patches the image&#39;s Java runtime to tzdb 2026e. Restart or redeploy on the updated image before November 1 so schedules are recalculated.
+  &gt; - **Installs on your own OS (DEB/RPM/WAR) and self-hosted runners:** these use whatever Java runtime is installed on that host. As of mid-October 2026, no published Java build includes tzdb 2026e, and installing the OS `tzdata` package doesn&#39;t update Java. Use the vendor&#39;s timezone updater tool, or temporarily schedule affected jobs in an equivalent fixed-offset zone until the vendor ships 2026e.
+  &gt;
+  &gt; Until the Java runtime has tzdb 2026e or later, scheduled jobs in `America/Edmonton`, `America/Inuvik`, or `America/Winnipeg` (and `America/Vancouver` on runtimes older than 2026b) may run one hour off from November 2, 2026. Interim workaround: schedule those jobs in an equivalent fixed-offset zone (`America/Regina` for Alberta and the Northwest Territories, `America/Panama` for Manitoba), and switch back once the runtime is updated.
+
+#### ::circle-dot:: Patch JDK tzdb to IANA 2026e in the ubuntu-base Docker image  [PR #10698](https://github.com/rundeck/rundeck/pull/10698)
+
+
+  **Fixed:** The official Docker images now include IANA tzdb 2026e timezone data for the Java runtime. Scheduled jobs in `America/Edmonton`, `America/Inuvik` and `America/Winnipeg` (Alberta, Northwest Territories, Manitoba) keep firing at the correct local time after these provinces stop observing DST on November 1, 2026. Restart or redeploy Rundeck on the updated image before November 1 so schedules are recalculated.
+
+  🤖 Generated with [Claude Code](https://claude.com/claude-code)
+
+#### ::circle-dot:: Keep exit code for workflow step plugins on remote runner 
+
+
+  Error handlers on failed workflow step plugins (local or remote runner) can now read `${result.resultCode}`.
+
+#### ::circle-dot:: Keep failureData when a workflow step plugin fails  [PR #10691](https://github.com/rundeck/rundeck/pull/10691)
+
+
+  Fixed: when a workflow step plugin (for example a script-based workflow step such as a local script step) failed with a non-zero exit code, its error handler could not read the exit code: `${result.resultCode}` was empty. A handler that exported it, such as a Global Variable step, failed with `Empty value`, so the exit code could not be passed to later steps or back to a parent job through a job reference.
+
+  Error handlers on failed workflow step plugins now get the step&#39;s exit code in `${result.resultCode}`, the same as Command and Script node steps. This works on the local runner and on remote runners.
+
+  Note: with &quot;If a step fails: Run remaining steps&quot; (keepgoing) enabled, a successful error handler marks the failed step as successful. This is existing behavior. Before this fix, such handlers often failed because of the empty value, so the step stayed failed.
+
+  🤖 Generated with [Claude Code](https://claude.com/claude-code)
+
+#### ::circle-dot:: Warn when a scheduled job&#39;s saved user can no longer run it  [PR #10670](https://github.com/rundeck/rundeck/pull/10670)
+
+
+  Job pages now show a warning when a scheduled job&#39;s saved user is no longer authorized to run it.
+
+  🤖 Generated with [Claude Code](https://claude.com/claude-code)
 
 #### ::circle-dot:: Fix plugin upload security issues  [PR #10602](https://github.com/rundeck/rundeck/pull/10602)
 
@@ -122,6 +163,6 @@ The development updates are automatically generated from both our private reposi
 
 ---
 
-**List Last updated:** 2026-10-07
+**List Last updated:** 2026-10-14
 
 
