@@ -33,20 +33,7 @@ direct access to these endpoints, then an Enterprise Runner is the recommended m
 If a Node Source is selected that is not in the list above, the following error will appear after the node source tries to gather resources: `Reason: The datadog-resource-model plugin was not found on Runner ID = US-WEST-1-QA. You may need to upgrade your Runner or select a different Runner.` In a future version the Node Source configuration will dynamically know which runners support which Node Source plugins.
 :::
 
-## Projects with many Node Sources
-
-A project loads the nodes from every one of its Node Sources into a single node set, and caches the result.
-
-### Changing the project configuration
-
-When you save a project's configuration, for example by adding a Node Source in the **Edit Configuration** page, through the API, or by importing a project archive, the cached nodes are cleared.
-The next request loads the nodes from the new configuration, and waits until every Node Source has been queried.
-For a project with many slow Node Sources this can take a long time. To shorten it, load the Node Sources in parallel (see below).
-
-Other changes to the project configuration, such as a Node Source added by the Node Wizard, do not clear the cached nodes.
-The previously loaded nodes stay available, and are reloaded in the background the next time the node cache refreshes.
-
-### Loading Node Sources in parallel
+## Loading Node Sources in parallel
 
 By default the Node Sources of a project are queried one at a time. For a project with many Node Sources this can make each reload slow.
 
@@ -60,7 +47,7 @@ project.resources.loadThreads=10
 - The default is `1`, which queries Node Sources one at a time. Values of `1` or less, or values that are not a number, query them one at a time.
 - Nodes from the Node Sources are always merged in the order the Node Sources are defined, so the resulting node set is the same as with a serial load.
 - Each Node Source that fails is reported separately, and does not prevent the others from loading.
-- At most 20 Node Sources are queried at once across all projects, including projects that load serially. Values above `20` have no further effect.
+- At most 20 Node Sources are queried in parallel at once across all projects. Values above `20` have no further effect.
 
 :::warning Concurrent requests
 A higher value increases the number of simultaneous requests made to the systems behind your Node Sources, such as cloud provider APIs, which may throttle or reject them. Increase the value gradually.
