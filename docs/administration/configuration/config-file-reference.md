@@ -738,8 +738,8 @@ rundeck.security.httpHeaders.provider.cache-control.enabled=true
 
 References:
 
-- <https://www.owasp.org/index.php/OWASP_Secure_Headers_Project>
-- <https://content-security-policy.com>
+- [OWASP Secure Headers Project (OSHP)](https://secure-headers-project.owasp.org/)
+- [Content Security Policy (CSP)](https://content-security-policy.com)
 
 
 ### Security HTTP Firewall
