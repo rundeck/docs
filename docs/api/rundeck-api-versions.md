@@ -35,6 +35,12 @@ Changes introduced by API Version number:
 API versions below `{{$apiDepVersion}}` are *deprecated*.  Clients using earlier versions should upgrade to use `{{$apiDepVersion}}` as the minimum version before release `{{ $apiDepRelease }}` to avoid errors.
 :::
 
+### Version 60
+
+* Endpoints promoted out of incubating status. These endpoints no longer contain `incubating/` in the endpoint URL, and now require API version 60 minimum.
+    * [`GET /api/60/enterprise/cluster/info`][GET /api/V/enterprise/cluster/info] - Get Cluster Info (Enterprise only)
+    * [`GET /api/60/enterprise/cluster/member/[MEMBERID]`][GET /api/V/enterprise/cluster/member/\[MEMBERID\]] - Get Cluster Member Info (Enterprise only)
+
 ### Version 59
 
 * Updated Endpoints:

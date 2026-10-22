@@ -2439,6 +2439,122 @@ List the scheduled Jobs with their schedule owned by the target cluster server.
 The same format as [Listing Jobs](#listing-jobs).
 
 
+### Get Cluster Info (Commercial)
+
+:::enterprise
+:::
+
+Gets information about the cluster members known to the server and the cluster heartbeat and execution-takeover intervals.
+
+**Authorization required:** `view_cluster` access to the `system` resource.
+
+**Request**
+
+`GET /api/60/enterprise/cluster/info`
+
+**Response**
+
+`Content-Type: application/json`
+
+```json
+{
+  "serverUUID": "a3de6030-2b7a-47e3-b46f-3e46a11a85d9",
+  "heartbeatIntervalMs": 30000,
+  "memberTtlMs": 90000,
+  "execIntervalMs": 15000,
+  "members": [
+    {
+      "id": 1,
+      "sender": "a3de6030-2b7a-47e3-b46f-3e46a11a85d9",
+      "lastUpdated": "2026-09-01T12:00:00Z",
+      "dateCreated": "2026-09-01T11:00:00Z",
+      "topic": "rundeck.cluster.heartbeat",
+      "type": "sysinfo",
+      "namespace": "rundeck.system",
+      "destination": null,
+      "state": "sent",
+      "body": {
+        "serverUUID": "a3de6030-2b7a-47e3-b46f-3e46a11a85d9",
+        "nodeName": "rundeck-0",
+        "isAlive": true
+      }
+    }
+  ]
+}
+```
+
+`heartbeatIntervalMs` is the interval between member heartbeat messages, `memberTtlMs` is the time without a heartbeat before a member is considered dead, and `execIntervalMs` is the execution-takeover check interval. All interval values are in milliseconds.
+
+Each entry in `members` is a cluster message envelope. Its `body` is the same [Cluster Member Info](#get-cluster-member-info-commercial) object returned by the member endpoint.
+
+### Get Cluster Member Info (Commercial)
+
+:::enterprise
+:::
+
+Gets system information for a single cluster member.
+
+**Authorization required:** `view_cluster` access to the `system` resource.
+
+**Request**
+
+`GET /api/60/enterprise/cluster/member/[MEMBERID]`
+
+URL Parameters:
+
+`MEMBERID`
+:    UUID of the cluster member.
+
+**Response**
+
+`Content-Type: application/json`
+
+```json
+{
+  "serverUUID": "a3de6030-2b7a-47e3-b46f-3e46a11a85d9",
+  "nodeName": "rundeck-0",
+  "nodeHostname": "rundeck-0.internal",
+  "version": "6.3.0",
+  "build": "2026-09-01",
+  "executionModeActive": true,
+  "schedulerRunningCount": 2,
+  "threadPoolSize": 10,
+  "schedulerThreadRatio": 0.2,
+  "scheduledJobs": 15,
+  "scheduledEnabledJobs": 14,
+  "uptime": 30.478,
+  "durationTime": 123456789,
+  "load": 0.45,
+  "processors": 8,
+  "memfree": 512000000,
+  "memmax": 2048000000,
+  "memtotal": 1024000000,
+  "allocated": 0.5,
+  "heapusage": 0.25,
+  "threadsactive": 42,
+  "osArch": "amd64",
+  "osName": "Linux",
+  "osVersion": "5.15.0",
+  "osFamily": "unix",
+  "javaVendor": "Eclipse Adoptium",
+  "javaVersion": "21.0.1",
+  "vmName": "OpenJDK 64-Bit Server VM",
+  "vmVendor": "Eclipse Adoptium",
+  "implementationVersion": "21.0.1+12",
+  "remoteExecution": {
+    "enabled": false,
+    "defaultPolicy": "None",
+    "defaultConfig": null
+  },
+  "remoteExecutionProfiles": [],
+  "isAlive": true
+}
+```
+
+`uptime` is the number of seconds since this member's message record was created, while `durationTime` is the JVM uptime in milliseconds. `allocated` is the ratio of total to maximum memory, and `heapusage` is the ratio of used memory to total memory.
+
+An unknown `MEMBERID` returns `404 Not Found`.
+
 ### Set Active Mode for a Cluster Member (Commercial)
 
 :::enterprise
@@ -8473,6 +8589,14 @@ Content-Type: `application/json`:
 * `GET` [Get A Webhook](#get-a-webhook)
 * `POST` [Update A Webhook](#update-a-webhook)
 * `DELETE` [Delete A Webhook](#delete-a-webhook)
+
+[/api/V/enterprise/cluster/info][]
+
+* `GET` [Get Cluster Info](#get-cluster-info-commercial)
+
+[/api/V/enterprise/cluster/member/\[MEMBERID\]][]
+
+* `GET` [Get Cluster Member Info](#get-cluster-member-info-commercial)
 
 [/api/V/scheduler/takeover][]
 
