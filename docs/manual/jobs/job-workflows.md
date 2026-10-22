@@ -67,6 +67,12 @@ See [Reordering steps](#reordering-steps) for directions on moving steps into a 
 
 Each step can have a "Description" to give it a more logical name or description to be displayed in the Rundeck GUI.
 
+![Workflow step card showing the clickable Command title](/assets/img/workflow-step-card-edit.jpg)
+
+::: tip New workflow step interface
+Workflow steps are displayed as cards in the job editor. To edit a step, click its title. The title shows a pencil icon when you hover over it.
+:::
+
 The next several sections describe the specification of each kind of workflow step.
 
 ### Types of Steps
