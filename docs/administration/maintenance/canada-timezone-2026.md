@@ -19,13 +19,14 @@ Software uses its own copy of this database. If that copy is older than the rele
 
 ## Who is affected
 
-You are affected if you have **job schedules, or use date/time inputs, set to any of the zones above**.
+You are affected if you have **job schedules, or use date/time inputs, set to any of the zones above**. This includes jobs with no time zone set when the server runs in one of those zones (for example, a container with `TZ=America/Edmonton`), because those jobs inherit the server's time zone.
 
-Jobs scheduled in other time zones, including UTC (the default), are **not** affected.
+Jobs scheduled in other time zones, or that inherit a server time zone outside the zones above, are **not** affected.
 
 | Component | Current timezone data | Affected zones |
 |---|---|---|
-| Server: official Docker images (Ubuntu 22.04 OpenJDK 17 package) | 2026b | Edmonton, Inuvik, Winnipeg |
+| Server: official Docker images before 6.3.0 (Ubuntu 22.04 OpenJDK 17 package) | 2026b | Edmonton, Inuvik, Winnipeg |
+| Server: official Docker images, 6.3.0 and later | 2026e | None |
 | Server: installed on your own OS (DEB/RPM/WAR) | Whatever Java runtime is installed on that host | Check your environment |
 | Self-hosted runners | Whatever Java runtime is installed on that host | Check your environment |
 | Web UI, Rundeck 6.3.0 and later | 2026e | None |
@@ -66,10 +67,10 @@ Each substitute was checked against both the old (2019a) and new (2026e) timezon
 - **Switch back after the full fix.** Once you're on a release and runtime with tzdb 2026e or later, change your schedules back to the original Canadian zone. Substitute zones could change their own rules in the future, and the original zone ID is the accurate one for your location.
 - **Vancouver, server-only cases:** the server already has the British Columbia change (2026b). The Vancouver substitute is needed only for the web UI on releases before 6.3.0, and for self-managed Java runtimes older than 2026b.
 
-## Full fix (in progress)
+## Full fix
 
 - **Web UI:** fixed in **Rundeck 6.3.0**. The bundled timezone library is updated to tzdb 2026e, which covers all four zones. Upgrade to 6.3.0 or later.
-- **Official Docker images:** the image already runs the newest available Ubuntu 22.04 base and Java packages. The Java runtime's timezone data will be updated to 2026e as soon as it's available upstream, or through a timezone updater. Pull the updated image once it's released.
+- **Official Docker images:** fixed in **Rundeck 6.3.0**. The image's Java runtime includes tzdb 2026e. Pull the 6.3.0 image and restart or redeploy before November 1 so schedules are recalculated. After upgrading, you don't need the interim workaround for server-side schedules.
 - **Installed on your own OS (DEB/RPM/WAR) and self-hosted runners:** our image updates don't reach these, because they use the Java runtime installed on your host. Make sure that runtime includes tzdb 2026e or later (see the check below). Update it through your OS package manager or Java vendor, or apply the vendor's timezone updater tool. You also need to upgrade to Rundeck 6.3.0 or later for the web UI fix.
 
 ## Check your current timezone data
