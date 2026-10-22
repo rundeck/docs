@@ -72,6 +72,27 @@ It is important to configure the azure resource model plugin before using these 
 - **Async**
 : Should be set to true if the VM should be restarted asynchronously.
 
+### Azure / VM / Managed Disk Capture Snapshot
+
+Captures a snapshot of a Virtual Machine's managed disk once for each node the step runs on. In the step list, the description ends with "(per node)" to tell it apart from the [Workflow Step version](/manual/jobs/job-plugins/workflow-steps/azure.md#azure-vm-managed-disk-capture-snapshot).
+
+<!-- TODO: replace with node step screenshot (currently reuses the workflow step image) -->
+![Azure VM Managed Disk Capture Snapshot node step configuration](/assets/img/azure-vm-managed-disk-capture-snapshot.png)
+
+The properties are the same as the Workflow Step. Use node attributes so that each node gets its own values:
+
+- **Client ID**, **Tenant ID**, **Subscription ID**, **Key**, **Certificate Path**, **Certificate Password**
+: Optional. Credentials, as described in [Getting Started](#getting-started).
+
+- **Resource Group**
+: The Azure Resource Group the VM belongs to. Example: `${node.resourceGroup}`
+
+- **Snapshot Name**
+: Name of the snapshot. Use a unique name per node. Example: `${node.nodename}-snapshot`
+
+- **DISK ID**
+: Disk ID of the VM's OS disk. The [Azure Resource Model](/manual/projects/resource-model-sources/azure.md#azure-enterprise) does not set a disk ID attribute. Unless this field references a custom node attribute, such as `${node.diskId}`, every node snapshots the same disk.
+
 :::tip
-Looking for VM snapshot capture? [**Azure / VM / Capture Snapshot**](/manual/jobs/job-plugins/workflow-steps/azure.md#azure-vm-capture-snapshot) is a Workflow Step, not a Node Step — see the [Azure Workflow Steps](/manual/jobs/job-plugins/workflow-steps/azure.md) page.
+Looking for full VM snapshot capture? [**Azure / VM / Capture Snapshot**](/manual/jobs/job-plugins/workflow-steps/azure.md#azure-vm-capture-snapshot) is available only as a Workflow Step. See the [Azure Workflow Steps](/manual/jobs/job-plugins/workflow-steps/azure.md) page.
 :::
