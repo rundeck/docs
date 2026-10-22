@@ -17,7 +17,7 @@ feed:
 Rundeck 6.3.0 makes Conditional Logic generally available, and also focuses on security hardening, upcoming timezone changes, and reliability fixes.
 
 ::: warning Security update: eMudhra intermediate CA
-6.3.0 ships a few days ahead of schedule to deliver patched official Docker images that address the compromised eMudhra intermediate certificate authority (CVE-2026-111943). If you run Rundeck or Runbook Automation from the official Docker images, pull the updated 6.3.0 images and redeploy. More detailed guidance will follow.
+If you run Rundeck or Runbook Automation from the official Docker images, upgrade to 6.3.0 and redeploy. SaaS is not affected. This release ships a few days ahead of schedule with patched Docker images that no longer trust the compromised eMudhra intermediate certificate authority certificates. This is not a vulnerability in Rundeck or Runbook Automation code, and there is no known exploitation. See the [security advisory](../cves/2026-10-emudhra-ca.md) for details and verification steps.
 :::
 
 **Conditional Logic is now Generally Available.** In Runbook Automation, Conditional Logic steps are now enabled by default, with no configuration change required. Use them to branch a workflow at runtime based on option values, node attributes, or outputs from earlier steps, without writing if/then logic in scripts or maintaining separate jobs for each scenario. On 5.20.0 through 6.2.x this feature was Early Access behind a feature flag. To turn it off, set `rundeck.feature.earlyAccessJobConditional.enabled=false` and restart. See [Conditional Logic Steps](../../manual/jobs/conditional-logic.md) and the [how-to guide](../../learning/howto/using-conditional-logic.md).

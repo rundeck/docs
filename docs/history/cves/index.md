@@ -12,6 +12,8 @@ Below is a collection of security notices previously filed for Rundeck and Runbo
 
 These are the Security Advisories Rundeck has issued in the past.  It is always recommended to upgrade to the current version of Rundeck ({{$rundeckVersion}}) for the latest security updates.
 
+* [eMudhra Intermediate CA Compromise - October 2026](2026-10-emudhra-ca.md)<br>
+    Rundeck and Runbook Automation Docker images prior to 6.3.0 trust compromised eMudhra intermediate CA certificates.
 * [Command Injection via Job Options](2025-07-option-escaping.md)<br>
     Command Injection in Job Options Due to Incomplete Escaping
 * [Runner Security Issue - June 2025](2025-06-runner-security.md)<br>
