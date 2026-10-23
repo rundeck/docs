@@ -97,7 +97,8 @@ This would remove the "stopping" tag selector, and add a new "ami_id" selector.
 
 * **Mapping File**: Filepath to a mapping property-mapping file.<br><br>
 * **Use Default Mapping**: Start with default mapping definition. (Defaults will automatically be used if no others are defined).<br><br>
-* **Max API Results**: Limit the number of instances retrieved per API call.<br>
+* **Max API Results**: Limit the number of instances retrieved per API call.<br><br>
+* **Query Node Instances in Parallel**: Query all regions in parallel, using one thread per region, instead of one region at a time. Applies only when **Endpoint** is `ALL_REGIONS` or a comma-separated list of endpoints. Default: `false`.<br>
 
 ### Connecting to EC2's for Commands and Scripts
 In order to execute commands or scripts on EC2's, a **Node Executor** must be specified - either for the full Node Source or for a subset of EC2's within the Node Source.
@@ -122,6 +123,7 @@ If a Node Executor is not specified for the Node Source, then the Project's [Def
 In the **Endpoint** field, enter a comma-separated list of endpoints to integrate with multiple regions.  For example:<br>
 `https://ec2.us-west-1.amazonaws.com, https://ec2.us-east-1.amazonaws.com, https://ec2.eu-west-1.amazonaws.com` would integrate with the **us-west-1**, **us-east-1**, and **eu-west-1** regions.<br><br>
 You can also input **`ALL_REGIONS`** and this will retrieve instances from all the regions that the provided credentials have access to.
+To load nodes faster when many regions are queried, enable **Query Node Instances in Parallel**.
 For the full list of endpoints, see [Amazon EC2 Regions and Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#ec2_region).
 
 ### Integrating with Multiple AWS Accounts in a Single Project
