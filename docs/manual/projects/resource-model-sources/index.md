@@ -47,6 +47,7 @@ project.resources.loadThreads=10
 - The default is `1`, which queries Node Sources one at a time. Values of `1` or less, or values that are not a number, query them one at a time.
 - Nodes from the Node Sources are always merged in the order the Node Sources are defined, so the resulting node set is the same as with a serial load.
 - Each Node Source that fails is reported separately, and does not prevent the others from loading.
+- A new Node Source query starts only after the earliest outstanding Node Source finishes, so one slow Node Source can leave the other threads idle and reduce the speedup.
 - At most 20 Node Sources are queried in parallel at once across all projects. Values above `20` have no further effect.
 
 :::warning Concurrent requests
