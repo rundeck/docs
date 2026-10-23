@@ -9,7 +9,7 @@ order: 43
 Upgrade Rundeck or Runbook Automation to [6.3.0](../6_x/version-6.3.0.md) and redeploy using the updated official Docker images. Running `apt-get upgrade` inside a running container is not a durable fix, because the change is lost when the container is recreated.
 :::
 
-Runbook Automation SaaS is not affected, and SaaS customers do not need to take any action.
+Runbook Automation SaaS is not affected. If you run the Runner in Docker or Kubernetes, pull the updated image (6.3.0) and recreate the container. A Runner installed on your own host uses that host's trust store.
 
 ## Summary
 
@@ -29,10 +29,9 @@ For more information, see the [public disclosure](https://emudhra.we-have-a-prob
 
 * **Affected:** Official Rundeck (open source) and Runbook Automation Docker images prior to 6.3.0. These images ship a CA trust store that still trusts the compromised intermediates.
 * **Not affected:** Runbook Automation SaaS.
+* **Runner in Docker or Kubernetes:** images built before 6.3.0. Pull the updated image (6.3.0) and recreate the container. A Runner installed on your own host uses that host's trust store.
 * **Installs on your own hosts (RPM, DEB, WAR):** These use the CA trust stores of the host operating system and Java runtime, which you manage. Whether they are affected depends on whether those trust stores have been updated.
 * **Risk:** An on-path attacker using a certificate issued by a compromised intermediate could, in theory, intercept outbound TLS connections from an affected system. This includes connections to integrations, webhooks, plugins, and remote nodes over HTTPS.
-
-<!-- TODO VERIFY: Is the Enterprise Runner (and other runner images) affected, and has it been patched? Engineering is checking. -->
 
 ## Remediation
 
