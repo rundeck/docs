@@ -523,6 +523,38 @@ private String password;
 
 For complete rendering options, see [Property Rendering Options](/developer/plugin-properties.md#property-rendering-options).
 
+### @PluginOutput Annotation
+
+::: tip Since Rundeck 6.3.0
+The `@PluginOutput` and `@PluginOutputs` annotations are available starting in Rundeck 6.3.0.
+:::
+
+Step plugins (`WorkflowStep` and `WorkflowNodeStep`) can expose computed outcome values—or resolved configuration values—for downstream [Conditional Logic Steps](/manual/jobs/conditional-logic.md) using `@PluginOutput` (`com.dtolabs.rundeck.plugins.descriptions.PluginOutput`).
+
+**Attributes:**
+
+| Attribute | Type | Description |
+|-----------|------|-------------|
+| `name` | String | Required. Exposed output variable name |
+| `group` | String | Data context group the value is captured under (default: `"data"`) |
+| `description` | String | Help text describing the output value (default: `""`) |
+
+**Output-Only Field (Computed Outcome):**
+
+Annotate a field with `@PluginOutput` *without* `@PluginProperty` to declare a runtime outcome that is excluded from the step configuration form (`isOutputOnly() == true`). Set the field during `executeStep` or `executeNodeStep`; after the step succeeds, Rundeck captures the field's non-null value into the step's `OutputContext`:
+
+```java
+@PluginOutput(
+    name = "incidentNumber",
+    description = "Number of the incident created by this step"
+)
+private String incidentNumber;
+```
+
+**Exposing a Configurable Property:**
+
+Combine `@PluginOutput` with `@PluginProperty` when a configurable input should also be selectable as a prior-step output in conditions. `@PluginOutput` is repeatable (via `@PluginOutputs`) if the value must be exposed under multiple group/name pairs.
+
 ## Plugin Descriptions (Non-Annotation Approach)
 
 For plugin types that don't support annotations, or when you need more control, implement one of these interfaces:
@@ -581,6 +613,21 @@ Property property = PropertyBuilder.builder()
     .required(true)
     .renderingOption(StringRenderingConstants.DISPLAY_TYPE_KEY,
                     StringRenderingConstants.DisplayType.PASSWORD)
+    .build();
+```
+
+Plugins that implement `Describable` build their own `Description` and do not have class fields scanned for `@PluginOutput`. To declare an output-only property on a hand-built `Description` (equivalent to `@PluginOutput` without `@PluginProperty`), use `.outputMetadata(...)` and `.outputOnly(true)` on `PropertyBuilder`, and either store the computed result in an instance field with the same name as the property or write it directly to `context.getExecutionContext().getOutputContext().addOutput(group, name, value)`:
+
+```java
+Property outputProp = PropertyBuilder.builder()
+    .string("matchedRecordCount")
+    .title("matchedRecordCount")
+    .description("Number of records matched by the query")
+    .outputMetadata(Collections.singletonList(
+        new PluginOutputMetadata("data", "matchedRecordCount",
+            "Number of records matched by the query")
+    ))
+    .outputOnly(true)
     .build();
 ```
 

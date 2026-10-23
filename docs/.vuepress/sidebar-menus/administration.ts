@@ -167,7 +167,8 @@ export default [{
                   '/administration/maintenance/startup',
                   '/administration/maintenance/logs',
                   '/administration/maintenance/backup',
-                  '/administration/maintenance/tuning-rundeck'
+                  '/administration/maintenance/tuning-rundeck',
+                  '/administration/maintenance/canada-timezone-2026'
                 ]
               },
               {

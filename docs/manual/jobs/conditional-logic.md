@@ -1,6 +1,8 @@
 # Conditional Logic Steps (Commercial)
 
-**Early Access Feature** - Available in Runbook Automation 5.20.0+ (Node First strategy, nested conditionals, and substep error handlers/log filters require 6.1.0+)
+::: tip Generally Available in Runbook Automation 6.3.0
+Conditional Logic steps are now Generally Available and **enabled by default** starting in Runbook Automation 6.3.0. Earlier releases (5.20.0–6.2.x) offered Conditional Logic as an Early Access feature behind the `rundeck.feature.earlyAccessJobConditional.enabled` flag.
+:::
 
 Conditional Logic steps enable dynamic workflow execution based on runtime conditions. Use these steps to create intelligent automation that makes decisions during execution without requiring external scripts or complex logic.
 
@@ -9,6 +11,7 @@ Conditional Logic steps enable dynamic workflow execution based on runtime condi
 Conditional Logic steps evaluate conditions at runtime and execute substeps only when those conditions are met. This enables workflows to branch based on:
 
 - Job options (environment, configuration values)
+- Prior step outputs (status, state, IDs, or counts exposed by earlier steps)
 - Node attributes (OS family, hostname, tags)
 - Job context (project name, job name, execution user)
 - Data captured from previous steps (via log filters)
@@ -16,44 +19,52 @@ Conditional Logic steps evaluate conditions at runtime and execute substeps only
 ### Key Features
 
 - **AND/OR Logic**: Combine multiple conditions with flexible grouping, with an AND/OR toggle to invert the default grouping when needed
+- **Prior Step Outputs**: Reference outputs produced by earlier workflow or node steps directly from the condition editor, with automatic reference validation and reorder protection
 - **Multiple Operators**: Equals, not equals, contains, regex matching, numeric comparisons
 - **Node and Workflow Types**: Execute conditionally per-node or once per workflow
-- **Nested Conditionals**: Place conditional steps inside other conditional steps for multi-level logic
+- **Nested Conditionals**: Place a conditional step one level inside another conditional step
 - **Nested Substeps**: Add multiple steps that execute when conditions are met
 - **Debug Mode**: View detailed condition evaluation in execution logs
 
-### Limitations (Current Release)
+### Limitations
 
-This is an Early Access feature with the following limitations:
+Conditional Logic has the following limitations:
 
 - **Ruleset Strategy**: Not supported. Conditional Logic works with Sequential, Parallel, and Node First strategies.
-- **Substep Type Matching**: Substeps must be the same type (node/workflow) as the parent conditional step.
-- **Step Output Requires Log Filters**: To reference output from previous steps in conditions, use log filters to capture the data, then reference it using `${data.*}` syntax.
-- **Error Handlers/Log Filters on Substeps**: Supported on substeps in this release. The UI for configuring them on substeps is still being finalized and will improve in a later release.
+- **Substep and Reference Type Matching**: Substeps must match the type (node or workflow) of the parent conditional step, and conditions can only reference prior steps of the same type.
+- **Conditional Nesting Depth**: A parent conditional can contain a nested conditional, but the nested conditional cannot contain another conditional.
 
-## Enabling Conditional Logic
+## Enabling or Disabling Conditional Logic
 
-Conditional Logic is an **Early Access commercial feature** controlled by a feature flag.
+Starting in Runbook Automation **6.3.0**, Conditional Logic is **enabled by default**. No configuration change is required on 6.3.0 or later.
 
-::: warning Early Access Feature
-This feature is under active development. If you encounter issues or have feedback, please report them to Rundeck support. You can disable the feature at any time by setting the feature flag to `false` and restarting Rundeck.
+::: warning Disabling Conditional Logic
+You can disable Conditional Logic at any time by setting `rundeck.feature.earlyAccessJobConditional.enabled=false` and restarting Rundeck.
 
-**Important:** If you disable the feature flag after creating jobs with conditional logic steps, those jobs will be preserved but will fail to execute until the conditional steps are removed or the feature is re-enabled.
+**Important:** If you disable the feature flag after creating jobs with conditional logic steps:
+- Existing jobs with conditional logic steps will fail to execute until the conditional steps are removed or the feature is re-enabled.
+- Opening a job in the Job Editor that contains conditional logic steps (or a direct Job Reference step pointing to a job with conditional logic steps) strips those steps from the workflow editor view and displays a *"Conditional logic steps removed"* warning banner. Saving the job in that state removes the steps permanently.
 :::
 
 ### Configuration
 
-Add this property to `rundeck-config.properties`:
+In Runbook Automation **5.20.0 through 6.2.x**, enable the feature in `rundeck-config.properties`:
 
 ```properties
 rundeck.feature.earlyAccessJobConditional.enabled=true
 ```
 
-**For On-Prem Installations:**
-After adding the property, restart Rundeck for the change to take effect.
+In Runbook Automation **6.3.0+**, the property defaults to `true`. To disable the feature:
+
+```properties
+rundeck.feature.earlyAccessJobConditional.enabled=false
+```
+
+**For Self-Hosted Installations:**
+Restart Rundeck after changing the property in `rundeck-config.properties`.
 
 **For SaaS Deployments:**
-Once the property is set, the feature activates automatically without requiring a restart.
+Conditional Logic is enabled by default.
 
 ## Understanding Conditional Step Types
 
@@ -65,14 +76,16 @@ Executes conditionally **on each node** that matches the job's node filter. Cond
 
 **Available Condition Fields:**
 - Job Context (job name, project, user)
-- Job Options
+- Prior Steps (outputs exposed by earlier Node Steps)
 - Node Attributes (hostname, OS family, tags, custom attributes)
+- Job Options
 - Data captured via log filters
 
 **Use Cases:**
 - Run commands only on Linux nodes: Field `${node.osFamily}` equals `unix`
 - Target specific hostnames: Field `${node.hostname}` contains `web`
 - Filter by node tags: Field `${node.tags}` contains `production`
+- Branch on a prior node step's result: Field `Run Sensu Check - checkStatus` equals `0`
 
 ![job-conditionals-picker](/assets/img/job-conditionals-picker-node.png)
 
@@ -82,14 +95,16 @@ Executes conditionally **once per job execution** on the Rundeck server. Conditi
 
 **Available Condition Fields:**
 - Job Context (job name, project, user)
+- Prior Steps (outputs exposed by earlier Workflow Steps)
 - Job Options
 - Data captured via log filters
 
-**Note:** Node Attributes are NOT available for workflow conditional steps.
+**Note:** Node Attributes and prior Node Step outputs are NOT available for workflow conditional steps.
 
 **Use Cases:**
 - Run steps only in production environment: Field `${option.environment}` equals `production`
 - Skip steps for specific users: Field `${job.username}` not equals `serviceaccount`
+- Branch on a prior workflow step's output: Field `Check Incident - pd_incident_status` equals `triggered`
 - Execute based on captured data: Field `${data.status}` equals `ready`
 
 ![job-conditionals-picker-wf](/assets/img/job-conditionals-picker-wf.png)
@@ -101,7 +116,7 @@ Executes conditionally **once per job execution** on the Rundeck server. Conditi
 In the Job Editor's Workflow tab:
 
 1. Click **"Add a step"** button
-2. The Early Access step picker modal opens with two tabs: **Node Steps** and **Workflow Steps**
+2. The step picker modal opens with two tabs: **Node Steps** and **Workflow Steps**
 
 ### Step 2: Select Conditional Type
 
@@ -116,7 +131,9 @@ The conditional step editor has three main sections:
 
 #### 1. Step Name
 
-Enter a descriptive name for this conditional step (e.g., "Check Linux Nodes", "Production Environment Only").
+When you add a new step (including a conditional step), the **Step Name** field is automatically pre-filled with a default name based on the step type (for example, `"Conditional Logic Node Step"` or `"Command"`). Existing unnamed steps also receive a default name when opened for editing.
+
+Update the **Step Name** to a descriptive, unique name (e.g., `"Check Linux Nodes"`, `"Production Environment Only"`), especially when later conditional steps need to reference a step's outputs via the **Prior Steps** tab.
 
 #### 2. Define Conditions
 
@@ -124,7 +141,7 @@ Build your condition logic using the condition editor:
 
 **Adding a Single Condition:**
 
-1. **Field**: Select what to evaluate using `${}` syntax (e.g., `${node.osFamily}`, `${option.environment}`, `${job.project}`)
+1. **Field**: Click the **Field** input to open the tabbed autocomplete menu (**Job Context**, **Prior Steps**, **Node Attributes** for Node Conditionals, and **Job Options**), or enter a variable reference using `${}` syntax (e.g., `${node.osFamily}`, `${option.environment}`, `${data.status}`)
 2. **Operator**: Choose how to compare (equals, not equals, contains, matches, etc.)
 3. **Value**: Enter a literal value or use variable syntax like `${option.env}`
 
@@ -157,7 +174,7 @@ By default, a Conditional Logic step evaluates **AND within each condition set, 
 The AND/OR toggle for condition sets is available starting in Rundeck 6.2.0.
 :::
 
-![Conditional Logic editor showing the AND/OR toggle between condition sets](/assets/img/job-conditionals-toggle.png)
+![Conditional Logic editor with the condition-set logic dropdown showing AND and OR options](/assets/img/job-conditionals-and-or-selector.png)
 
 The toggle applies to the whole step, not just the boundary where it appears — it flips both the within-set and across-set operators together.
 
@@ -211,20 +228,29 @@ Click **"Cancel"** to discard changes.
 
 The following operators are available for condition evaluation:
 
-| Operator | Description | Example |
-|----------|-------------|---------|
-| `equals` | Exact match (case-sensitive) | Field: `${node.osFamily}` Value: `unix` |
-| `not equals` | Does not match | Field: `${option.env}` Value: `dev` |
-| `contains` | Value contains substring | Field: `${node.hostname}` Value: `web` |
-| `matches` | Regular expression match | Field: `${node.hostname}` Value: `^web[0-9]+$` |
-| `greater than` | Numeric comparison | Field: `${option.count}` Value: `5` |
-| `less than` | Numeric comparison | Field: `${option.timeout}` Value: `60` |
+| Operator | Job definition value | Description | Example |
+|----------|----------------------|-------------|---------|
+| Equals | `==` | Exact match (case-sensitive) | Field: `${node.osFamily}` Value: `unix` |
+| Not Equals | `!=` | Does not match | Field: `${option.env}` Value: `dev` |
+| Greater than | `>` | Numeric comparison | Field: `${option.count}` Value: `5` |
+| Greater than or equal | `>=` | Numeric comparison | Field: `${option.count}` Value: `5` |
+| Less than | `<` | Numeric comparison | Field: `${option.timeout}` Value: `60` |
+| Less than or equal | `<=` | Numeric comparison | Field: `${option.timeout}` Value: `60` |
+| Contains | `contains` | Value contains substring | Field: `${node.hostname}` Value: `web` |
+| Matches | `matches` | Regular expression match | Field: `${node.hostname}` Value: `^web[0-9]+$` |
 
 ## Using Variables in Conditions
 
 ### Field References
 
-Fields must use `${}` syntax to reference data sources using dot notation:
+Click the **Field** input to select a variable or step output from the tabbed autocomplete menu:
+
+- **Job Context**: Job context and global variables
+- **Prior Steps**: Outputs exposed by earlier steps in the workflow (grouped by step name)
+- **Node Attributes** (Node Conditional Logic only): Node attributes
+- **Job Options**: Options declared on the job
+
+You can also enter references directly using `${}` syntax or prior-step reference syntax:
 
 **Job Context:**
 - `${job.name}` - Job name
@@ -243,22 +269,83 @@ Fields must use `${}` syntax to reference data sources using dot notation:
 - `${node.tags}` - Node tags (comma-separated)
 - `${node.[attribute]}` - Any custom node attribute
 
+**Prior Step Outputs:**
+- `<Step Label> - <Output Name>` - Output exposed by a prior step (selected from the **Prior Steps** tab, where it displays as `<Output Name> [steps.['<Step Label>'].<Output Name>]`)
+
 **Data Variables:**
 - `${data.[name]}` - Data captured via log filters (e.g., `${data.status}`)
+
+### Referencing Prior Step Outputs
+
+::: tip Since Rundeck 6.3.0
+The **Prior Steps** tab and built-in step output capture are available starting in Rundeck 6.3.0.
+:::
+
+Conditional steps can evaluate outcomes produced by earlier steps—such as incident statuses, created record IDs, or execution counts—without configuring a log filter.
+
+1. Ensure the earlier step has a clear, unique **Step Name** (for example, `Get Incident` or `Check RDS`).
+2. In your Conditional Logic step, click the **Field** input and select the **Prior Steps** tab.
+3. Expand the prior step's section in the accordion and select the desired output.
+
+When saved, the condition stores the reference in `<Step Label> - <Output Name>` format (for example, `Get Incident - pd_incident_status`), and the collapsed conditional card displays `steps.['Get Incident'].pd_incident_status`. At runtime, the workflow engine resolves the reference to the value captured when that step executed.
+
+![Prior Steps tab in the Conditional Logic Field dropdown](/assets/img/job-conditionals-prior-steps.png)
+
+**Scoping and Naming Rules:**
+- **Step type matching**: A **Workflow Conditional Logic** step can only reference outputs from prior **Workflow Steps**. A **Node Conditional Logic** step can only reference outputs from prior **Node Steps** (each node evaluates the condition against the output captured on that same node). To switch conditional step types, click the link in the note at the top of the **Prior Steps** tab.
+- **Prior sibling scope**: Only steps that execute before the conditional step (at the same level or an enclosing level) are in scope. Substeps inside an earlier sibling conditional block cannot be referenced by later steps outside that block.
+- **Unique step names**: If multiple prior steps share the same **Step Name**, the **Prior Steps** tab displays the note *"Only steps with unique "Step name" are displayed in this list."* and lists only the last (most recent) matching step's outputs, matching how the workflow engine resolves duplicate labels at runtime. Give each referenced step a unique Step Name to avoid ambiguity.
+
+::: warning Parallel strategy and prior-step outputs
+The **Prior Steps** tab determines scope from the order of steps in the workflow editor. The Parallel strategy starts top-level steps concurrently, so a referenced output might not exist when the conditional evaluates. Use Sequential or Node First when a conditional depends on an earlier step's output.
+:::
+
+**Built-in Step Plugins Exposing Outputs:**
+
+| Plugin Group / Category | Step Plugin | Exposed Outputs |
+|---|---|---|
+| **Built-in (Core)** | Job State Conditional | `observedExecutionState` |
+| **PagerDuty** | PagerDuty / Incident / Get | `pd_incident_id`, `pd_incident_status`, `pd_incident_summary`, `pd_priority_id`, `pd_priority_label`, `pd_service_id`, `pd_service_name`, `pd_urgency`, `pd_escalation_policy_id`, `pd_escalation_policy_name` |
+| **PagerDuty** | PagerDuty / Incident / Escalate | `incidentStatus` |
+| **PagerDuty** | PagerDuty / Incident / Run Response Play | `responsePlayStatus` |
+| **PagerDuty** | PagerDuty / Incident / Start Incident Workflow Instance | `workflow_id`, `workflow_type`, `workflow_incident_id`, `workflow_incident_type`, `workflow_incident_summary` |
+| **PagerDuty** | PagerDuty / User / Get, PagerDuty / User / Create | `pd_user_id` |
+| **ServiceNow** | ServiceNow / Incident / Create | `incidentNumber` |
+| **ServiceNow** | ServiceNow / Incident / View | `incidentState` |
+| **ServiceNow** | ServiceNow / Incident / Check Assigned | `assignedIncidentCount` |
+| **ServiceNow** | ServiceNow / Change / Create | `changeNumber` |
+| **Jira** | Jira / Issue / Create (Workflow & Node Step) | `jira_issue_id`, `jira_issue_key`, `jira_issue_url` |
+| **Jira** | Jira / Issue / Check Exist | `status` (captured under `issue.status`; also resolvable as `issueStatus`) |
+| **Datadog** | Datadog / Incident / Create | `dd_incident_id` |
+| **Datadog** | Datadog / Incident / Add Task | `dd_task_id` |
+| **AWS** | AWS / RDS / Status | `rdsInstanceStatus` |
+| **AWS** | AWS / ELB / Target Unhealthy | `unhealthyTargetCount` |
+| **AWS** | AWS / CloudWatch / Execute Saved Query, AWS / CloudWatch / Logs | `matchedRecordCount` |
+| **AWS** | AWS / Lambda / Invoke (Workflow & Node Step) | `functionError` |
+| **AWS** | AWS / Lambda / Custom Code Execution | `functionName`, `functionWasCreated`, `functionWasInvoked`, `functionWasDeleted`, `invokeResponsePayloadString`, `invokeFunctionError`, `invokeExecutionLog` |
+| **Executions** | Executions Search | `executionCount` |
+| **Executions** | Executions Retry | `retriedExecutionCount` |
+| **Executions** | Executions Delete | `deletedExecutionCount` |
+| **Executions** | Executions Wait Result | `failedExecutionCount` |
+| **Wait for Job** | Wait For Job Execution | `waitSucceeded` |
+| **RSS Feeds** | RSS Feed / Retrieve Events | `eventCount` |
+| **Sensu** | Sensu / Get Check Info, Sensu / Run ad hoc Check (Node Steps) | `checkStatus` |
+
+For Command and Script steps, or plugins that do not declare `@PluginOutput` properties, capture output using a [Log Filter](/manual/log-filters/index.md) and reference it as `${data.<name>}` (or reference the command exit code via `${<stepNum>:exec.exitCode*}`).
 
 ### Value References
 
 Values can be either literal strings/numbers or variable references using `${}` syntax:
 
 **Literal Values:**
-```
+```text
 Field: ${node.osFamily}   Operator: equals   Value: unix
 Field: ${option.count}    Operator: greater than   Value: 10
 Field: ${node.hostname}   Operator: contains   Value: web
 ```
 
 **Variable References:**
-```
+```text
 Field: ${node.hostname}   Operator: equals   Value: ${option.target_host}
 Field: ${data.status}     Operator: equals   Value: ${option.expected_status}
 ```
@@ -273,7 +360,7 @@ When typing in the Value field, an autocomplete menu displays available variable
 
 ### Editing Conditional Steps
 
-1. Click the **Edit** button on the conditional step card
+1. Click the step title or pencil icon in the conditional step card header
 2. The inline editor opens with current configuration
 3. Modify conditions, substeps, or step name
 4. Click **"Save"** to apply changes or **"Cancel"** to discard
@@ -287,11 +374,23 @@ Conditional steps can be reordered like any other workflow step:
 3. A blue horizontal bar shows the drop position
 4. Release to place the step in the new position
 
-Use **"Undo"** above the workflow to revert reordering.
+Use **Undo** above the workflow to revert the last change, or **Revert All Changes** to restore the workflow to its last saved state.
+
+**Reorder Protection and Reference Validation:**
+
+- If you drag a step to a position that breaks a downstream conditional step's prior-step reference (for example, moving a referenced step below the conditional step that depends on it), a **"Reordering May Affect Workflow Logic"** confirmation modal appears. Choose **Cancel** to keep the current order or **Reorder Anyway** to proceed.
+
+![Reordering May Affect Workflow Logic confirmation modal](/assets/img/job-conditionals-reorder-warning.png)
+
+- If a referenced prior step is renamed, deleted, or moved after the conditional step, the collapsed conditional step card displays an **Invalid Condition Criteria** badge, a warning banner appears above the workflow step list, and saving the conditional step is blocked until the invalid **Field** reference is updated.
+
+![Invalid Condition Criteria badge and workflow warning banner after deleting a referenced prior step](/assets/img/job-conditionals-invalid-reference.png)
 
 ### Duplicating Steps
 
-Click **"Duplicate"** on a conditional step card to create a copy with the same configuration. The duplicate appears immediately after the original step.
+Open the three-dot actions menu (**⋯**) on the conditional step card and select **Duplicate this step**. The duplicate appears immediately after the original step.
+
+![Conditional step actions menu showing the Duplicate this step option](/assets/img/job-conditionals-actions-menu.png)
 
 ### Deleting Steps
 
@@ -339,6 +438,7 @@ Conditional Logic steps work with Sequential, Parallel, and Node First strategie
 - All steps (including conditionals) run in parallel
 - Conditional evaluation happens concurrently across nodes
 - Substeps execute in parallel when conditions are met
+- Prior-step output dependencies are not ordered; use Sequential or Node First when a condition requires an earlier step to finish first
 
 **Node First Strategy:**
 - Runs the full workflow on each node before moving to the next node
@@ -367,22 +467,24 @@ See [Inverting the Logic: AND/OR Toggle](#inverting-the-logic-and-or-toggle) abo
 
 ### Nested Conditionals
 
-You can place a Conditional Logic step inside another Conditional Logic step to build multi-level branching:
+You can place a Conditional Logic step one level inside another Conditional Logic step. The nested conditional can contain regular substeps, but it cannot contain another conditional.
 
 1. Add a parent Conditional Logic step and define its conditions
 2. Click **"+ Add Condition Step"** and select another Conditional Logic step as a substep
 3. Configure the nested conditional's conditions and its own substeps
 4. When the parent condition is met, the nested conditional evaluates independently
 
+![Expanded parent conditional showing nested conditional steps and their substeps](/assets/img/job-conditionals-nested-workflow.png)
+
 **Example: Environment gate, then OS-specific commands**
 
-1. Workflow Conditional Logic: `${option.environment}` equals `production`
+1. Node Conditional Logic: `${option.environment}` equals `production`
    - Nested Node Conditional Logic: `${node.osFamily}` equals `unix`
      - Substeps: Linux production commands
    - Nested Node Conditional Logic: `${node.osFamily}` equals `windows`
      - Substeps: Windows production commands
 
-You can also use Job Reference steps as substeps when you want to reuse a shared job that contains its own conditionals.
+Use a Job Reference substep when deeper or reusable branching is required.
 
 ### Environment-Based Workflows
 
@@ -416,9 +518,8 @@ This allows the job to have a broader node filter but selectively execute steps.
 **Problem:** Conditional Logic steps don't appear in the step picker.
 
 **Solutions:**
-- Verify `rundeck.feature.earlyAccessJobConditional.enabled=true` in `rundeck-config.properties`
-- Restart Rundeck after enabling the feature flag
 - Check workflow strategy is Sequential, Parallel, or Node First (Ruleset is not supported)
+- Verify `rundeck.feature.earlyAccessJobConditional.enabled` is not set to `false` in `rundeck-config.properties` (on Runbook Automation 5.20.0–6.2.x, set `rundeck.feature.earlyAccessJobConditional.enabled=true` and restart Rundeck)
 
 ### Conditions Not Evaluating Correctly
 
@@ -428,13 +529,13 @@ This allows the job to have a broader node filter but selectively execute steps.
 - Enable Debug mode when running the job to see condition evaluation details
 - Verify option names match exactly (case-sensitive)
 - For node attributes, confirm the attribute exists on target nodes
-- **Important**: Fields must use `${}` syntax (e.g., `${node.osFamily}` not `node.osFamily`)
+- **Important**: Standard context fields must use `${}` syntax (e.g., `${node.osFamily}` not `node.osFamily`), or select an exposed step output from the **Prior Steps** tab (`<Step Label> - <Output Name>`)
 - Values can be literal or use `${}` syntax for variables
 - Use `contains` instead of `equals` for partial matching
 
 **Note on Step Output:**
-- Use `${data.*}` to reference data captured via log filters from previous steps
-- To use output from previous steps: add a log filter (e.g., Key Value Data) to capture the output, then reference it using `${data.variableName}` in your conditions
+- For step plugins that expose outputs (such as PagerDuty, ServiceNow, Jira, Datadog, AWS, Sensu, or Job State Conditional), select the output directly from the **Prior Steps** tab in the **Field** dropdown
+- For Command, Script, or other steps, add a log filter (e.g., Key Value Data) to capture the output, then reference it using `${data.variableName}` in your conditions
 
 ### Cannot Add Substeps
 
@@ -450,9 +551,13 @@ This allows the job to have a broader node filter but selectively execute steps.
 
 **Solutions:**
 - Ensure all required fields are filled (Field and Value are required)
+- If a condition shows `"Invalid prior step input. Update this field to continue."`, the referenced prior step was renamed, deleted, or moved after the conditional step. Re-select a valid step output from the **Prior Steps** tab
+- If a parent conditional shows `"A nested conditional step has an invalid prior step input. Update it to continue."`, open its nested conditional and update the invalid **Field** reference
 - At least one condition must be defined
 - Check for syntax errors in regex patterns (for `matches` operator)
-- **Important**: Fields must use `${}` syntax - verify syntax like `${option.name}` not `$option.name`
+- **Important**: Context variable fields must use `${}` syntax - verify syntax like `${option.name}` not `$option.name`
+
+![Parent conditional warning and Invalid Condition Criteria badge for a nested conditional with a broken prior-step reference](/assets/img/job-conditionals-nested-invalid-reference.png)
 
 ### Import/Export Issues
 
@@ -462,7 +567,7 @@ This allows the job to have a broader node filter but selectively execute steps.
 - Conditional Logic is supported in JSON and YAML formats only
 - XML format is NOT supported - attempting to import XML with conditionals will fail
 - When exporting, use JSON or YAML format
-- Ensure the feature flag is enabled before importing jobs with conditionals
+- Ensure the feature flag is not disabled (`rundeck.feature.earlyAccessJobConditional.enabled=false`) before importing jobs with conditionals
 
 ## Job Definition Format
 
@@ -472,9 +577,9 @@ Conditional Logic steps are supported in **JSON and YAML** job definition format
 
 | Format | Supported | Notes |
 |--------|-----------|-------|
-| JSON | ✅ Yes | Recommended format |
-| YAML | ✅ Yes | Recommended format |
-| XML | ❌ No | Will cause errors if job contains conditionals |
+| JSON | Yes | Recommended format |
+| YAML | Yes | Recommended format |
+| XML | No | Will cause errors if job contains conditionals |
 
 ### Structure
 
@@ -489,22 +594,20 @@ Conditional steps use the following structure in job definitions:
     "sequence": {
       "commands": [
         {
-          "type": "conditional.logic",
+          "type": "conditional",
           "nodeStep": true,
           "description": "Check Linux Nodes",
           "invertLogic": false,
           "conditionGroups": [
-            {
-              "conditions": [
-                {
-                  "field": "${node.osFamily}",
-                  "operator": "equals",
-                  "value": "unix"
-                }
-              ]
-            }
+            [
+              {
+                "key": "${node.osFamily}",
+                "operator": "==",
+                "value": "unix"
+              }
+            ]
           ],
-          "steps": [
+          "subSteps": [
             {
               "exec": "echo 'Running on Linux'"
             }
@@ -522,16 +625,15 @@ Conditional steps use the following structure in job definitions:
   loglevel: INFO
   sequence:
     commands:
-      - type: conditional.logic
+      - type: conditional
         nodeStep: true
         description: Check Linux Nodes
         invertLogic: false
         conditionGroups:
-          - conditions:
-              - field: "${node.osFamily}"
-                operator: equals
-                value: "unix"
-        steps:
+          - - key: "${node.osFamily}"
+              operator: "=="
+              value: "unix"
+        subSteps:
           - exec: echo 'Running on Linux'
 ```
 
@@ -539,12 +641,12 @@ Conditional steps use the following structure in job definitions:
 
 When importing job definitions:
 
-- **Feature flag required**: Jobs with `type: conditional.logic` steps require the feature flag to be enabled
+- **Feature flag**: Jobs with `type: conditional` steps require Conditional Logic to be enabled (enabled by default in 6.3.0+)
 - **Strategy validation**: Import will fail if workflow strategy is Ruleset
 - **Substep type validation**: Import will fail if substeps don't match parent type (node/workflow)
 
-**Error Example:**
-```
+**Error Example (when feature flag is disabled):**
+```text
 Import failed: Job contains conditional logic steps but feature 
 'rundeck.feature.earlyAccessJobConditional.enabled' is not enabled.
 ```
@@ -579,7 +681,7 @@ When exporting jobs:
 ### Maintainability
 
 - **Consistent naming**: Use standard naming conventions for options and data variables
-- **Keep nesting readable**: Prefer shallow nested conditionals; use Job References when the same branching logic should be reused across jobs
+- **Keep nesting readable**: Use the supported single nesting level sparingly; use Job References when the same branching logic should be reused across jobs
 - **Group related substeps**: Keep logically related steps together within a conditional
 - **Comment your logic**: Add notes in job description explaining complex conditional workflows
 

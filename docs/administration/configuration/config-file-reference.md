@@ -565,13 +565,11 @@ The Activity page RSS/XML feed for execution history is **deprecated** in Rundec
 
 #### Conditional Logic Feature
 
-**Early Access Feature**
-
 | Property | Default | Description |
 |----------|---------|-------------|
-| `rundeck.feature.earlyAccessJobConditional.enabled` | `false` | Enable Conditional Logic workflow steps (Early Access) |
+| `rundeck.feature.earlyAccessJobConditional.enabled` | `true` | Enable Conditional Logic workflow steps (default `true` in 6.3.0+; set to `false` to disable) |
 
-Enables dynamic conditional execution in workflows based on runtime conditions. When enabled, users can add Conditional Logic steps to jobs that evaluate conditions (job options, node attributes, job context) and execute substeps only when conditions are met. Works with Sequential, Parallel, and Node First workflow strategies (Ruleset is not supported). See [Conditional Logic Steps](/manual/jobs/conditional-logic.md) for complete documentation.
+Enables dynamic conditional execution in workflows based on runtime conditions. Users can add Conditional Logic steps to jobs that evaluate conditions (job options, prior step outputs, node attributes, job context, and captured data variables) and execute substeps only when conditions are met. Works with Sequential, Parallel, and Node First workflow strategies (Ruleset is not supported). See [Conditional Logic Steps](/manual/jobs/conditional-logic.md) for complete documentation.
 
 #### Local User Management (Enterprise)
 
@@ -601,6 +599,21 @@ Enables dynamic conditional execution in workflows based on runtime conditions. 
 ```
 
 **See also:** [User Management Guide](/manual/user-management/user-mgmt.md#manage-local-users)
+
+#### SSH Exported Variable Quoting
+
+**Purpose:** Optionally POSIX shell-quote the values exported to remote nodes via a node's `ssh-variable-export-pattern` attribute, to prevent command injection through those values (for example a job option value containing `;`, `$()`, or backticks).
+
+| Property | Default | Description |
+|----------|---------|-------------|
+| `rundeck.execution.sshExportQuoting` | `false` | When `true`, values interpolated into a node's `ssh-variable-export-pattern` (the `export {key}={value}` prefix prepended to the remote SSH command) are shell-quoted before dispatch. |
+
+**Behavior:**
+
+- **Opt-in.** Default `false` preserves the current behavior; the control has no effect until enabled. System-level only (not per-project).
+- When enabled, only values that contain whitespace or shell metacharacters are quoted — values without them are emitted unchanged, so typical configurations are unaffected.
+- When enabling, node export patterns must reference `{value}` **without** surrounding quotes (e.g. `export {key}={value}`, not `export {key}='{value}'`). The framework performs the quoting; a self-quoting pattern would double-quote the value.
+- Only nodes that define the (non-default) `ssh-variable-export-pattern` attribute are affected.
 
 #### Job Option Injection Controls
 
@@ -1168,15 +1181,19 @@ Sets the maximum amount of runner report data the server will store in the datab
 ```properties
 rundeck.runner.compactProcessor.maxReportDataSize=1gb
 ```
-=======
+
 ### Code Editor Settings
 
-Controls the height of the ACE code editor rendered inside plugin configuration forms (for example, inline script steps, orchestrator configuration, and execution lifecycle plugins).
+Controls the sizing behavior of the ACE code editor rendered inside plugin configuration forms (for example, inline script steps, orchestrator configuration, and execution lifecycle plugins).
 
 | Property | Default | Description |
 |----------|---------|-------------|
-| `rundeck.feature.guiAceEditorMinLines` | `12` | Minimum number of visible lines shown in the editor, which sets its minimum visible height. |
-| `rundeck.feature.guiAceEditorMaxLines` | `0` | Maximum number of lines the editor auto-expands to. Set to `0` for unlimited. |
+| `rundeck.feature.guiAceEditorMinLines` | `0` | Minimum number of visible lines in the editor. `0` (default) makes the editor manually resizable via a drag handle. A non-zero value disables manual resize; the editor starts with enough height to show that many lines and auto-expands as lines are added. |
+| `rundeck.feature.guiAceEditorMaxLines` | `0` | Only applies when `guiAceEditorMinLines` is non-zero. Caps how far the editor auto-expands: once content reaches this many lines, a scrollbar appears instead of the editor growing further. Set to `0` for unlimited. |
+
+:::tip
+Manual resize is available now on Runbook Automation **SaaS**. On Runbook Automation **Self-Hosted**, the default changes from `12` to `0` (manually resizable) starting in **Rundeck 6.3.0**.
+:::
 
 These settings can be changed at runtime via **System Configuration → GUI** without restarting Rundeck. The new values take effect on the next page load.
 

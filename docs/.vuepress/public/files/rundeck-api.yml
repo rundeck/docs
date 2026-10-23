@@ -21,7 +21,7 @@ info:
   license:
     name: Apache 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0.html
-  version: "59"
+  version: "60"
 externalDocs:
   description: Original Rundeck API Documentation
   url: https://docs.rundeck.com/docs/api/
@@ -43,7 +43,7 @@ servers:
       default: "4440"
     version:
       description: API version number
-      default: '59'
+      default: '60'
 security:
 - rundeckApiToken: []
 - rundeckPassword: []
@@ -8801,248 +8801,209 @@ paths:
                     roles:
                     - admin
                     - user
-  /enterprise/cluster/executions/disable:
+  /project/{project}/webhook:
     post:
       tags:
-      - Cluster
-      summary: "Set Execution Mode for a Cluster Member [Enterprise]"
-      description: "Set the Execution Mode for the target cluster member.\n\n* `/enterprise/cluster/executions/enable`:\
-        \ Set execution mode to *Active* \n* `/enterprise/cluster/executions/disable`:\
-        \ Set execution mode to *Passive* \n\nIf the UUID parameter matches the current\
-        \ cluster member, the mode will be changed immediately, otherwise the status\
-        \ will be `pending`.\n\nAuthorization required: (enable) `enable_executions`\
-        \ or `admin` for `system` resource, or \n(disable) `disable_executions` or\
-        \ `admin` for `system` resource.\n\nSince: v41\n"
-      operationId: apiToggle
-      parameters:
-      - name: uuid
-        in: query
-        description: UUID of Member
-        required: true
-        schema:
-          type: string
-          format: uuid
-      responses:
-        "200":
-          description: |
-            Result.
+      - Webhook
+      summary: Add A Webhook
+      description: |2
 
-            `status`
-            :   `pending` indicates the request has been posted, `complete` indicates the request has taken effect already.
 
-            `executionMode`
-            :   The requested execution mode, either `active` or `passive`
+        Required Fields:
+        ```
+        project - the project that owns the webhook
+        name - the name of the webhook
+        user - string the webhook runs as this user
+        roles - string containing comma separated list of roles to use for the webhook
+        eventPlugin - string must be a valid plugin name
+        config - object containing config values for the specified plugin
+        enabled - boolean
+        ```
+        Optional:
 
-            `uuid`
-            :   The target cluster member UUID
-          content:
-            application/json:
-              schema:
-                type: object
-              examples:
-                toggle-response:
-                  description: Execution mode toggle response
-                  value:
-                    status: pending
-                    executionMode: active
-                    uuid: a3de6030-2b7a-47e3-b46f-3e46a11a85d9
-  /enterprise/cluster/executions/enable:
-    post:
-      tags:
-      - Cluster
-      summary: "Set Execution Mode for a Cluster Member [Enterprise]"
-      description: "Set the Execution Mode for the target cluster member.\n\n* `/enterprise/cluster/executions/enable`:\
-        \ Set execution mode to *Active* \n* `/enterprise/cluster/executions/disable`:\
-        \ Set execution mode to *Passive* \n\nIf the UUID parameter matches the current\
-        \ cluster member, the mode will be changed immediately, otherwise the status\
-        \ will be `pending`.\n\nAuthorization required: (enable) `enable_executions`\
-        \ or `admin` for `system` resource, or \n(disable) `disable_executions` or\
-        \ `admin` for `system` resource.\n\nSince: v41\n"
-      operationId: apiToggle_1
-      parameters:
-      - name: uuid
-        in: query
-        description: UUID of Member
-        required: true
-        schema:
-          type: string
-          format: uuid
-      responses:
-        "200":
-          description: |
-            Result.
+        `useAuth` - if true, use header authorization
+        `regenAuth` - if true, use generate header authorization
 
-            `status`
-            :   `pending` indicates the request has been posted, `complete` indicates the request has taken effect already.
+        Do not specify an `authToken` or `creator` field. They will be ignored.
 
-            `executionMode`
-            :   The requested execution mode, either `active` or `passive`
-
-            `uuid`
-            :   The target cluster member UUID
-          content:
-            application/json:
-              schema:
-                type: object
-              examples:
-                toggle-response:
-                  description: Execution mode toggle response
-                  value:
-                    status: pending
-                    executionMode: active
-                    uuid: a3de6030-2b7a-47e3-b46f-3e46a11a85d9
-  /project/{project}/calendars:
-    get:
-      tags:
-      - Calendars
-      summary: "List Project Calendars [Enterprise]"
-      description: |-
-        Retrieves all calendars configured at the project scope level. Calendars are used to define allowed and blackout periods for job scheduling and execution, providing fine-grained control over when jobs can run within a specific project context. This endpoint returns comprehensive calendar information including date definitions, recurrence patterns, and associated job references.
-
-        Authorization required: `admin` or `app_admin` access for `user` resource type.
-
-        Since: v41
-      operationId: apiProjectCalendars
+        Since: v33
+      operationId: createWebhook_docs
       parameters:
       - name: project
         in: path
         description: Project Name
         required: true
-        allowEmptyValue: false
-        schema:
-          type: string
-      responses:
-        "200":
-          description: List of all calendar of a project
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  type: object
-              examples:
-                example:
-                  value: |-
-                    [
-                      {
-                        "id": 1,
-                        "name": "[NAME]",
-                        "description": "[DESCRIPTION]",
-                        "calendarType": "[blackout/allowed]",
-                        "scope": "project",
-                        "project": "[PROJECT]",
-                        "dateType": "[date,range,daily,monthly]",
-                        "dateDefinition": ""[DATE-DEFINITION]"",
-                        "enable": true,
-                        "allReference": true,
-                        "recurrent": true,
-                        "objects": [
-                          {
-                            "uuid": "[JOBUUID]",
-                            "name": "[JOBNAME"]
-                          }
-                        ]
-                      }
-                    ]
-    post:
-      tags:
-      - Calendars
-      summary: "Create/Update Project Calendar [Enterprise]"
-      description: |-
-        Create or update a calendar at project scope.
-        * if the ID exists, it will update the existing calendar, otherwise a new one will be created.
-
-        Authorization required: `admin` or `app_admin` access for `user` resource type.
-
-        Since: v41
-      operationId: apiLoadProjectCalendars
-      parameters:
-      - name: project
-        in: path
-        description: Project Name
-        required: true
-        allowEmptyValue: false
         schema:
           type: string
       requestBody:
+        description: Webhook definition.
         content:
           application/json:
             schema:
               type: object
             examples:
-              save-calendar-example:
-                description: Save or update calendar definition
-                value:
-                  id: 1
-                  name: "[NAME]"
-                  description: "[DESCRIPTION]"
-                  calendarType: "[blackout/allowed]"
-                  scope: project
-                  project: "[PROJECT]"
-                  dateType: "[date,range,daily,monthly]"
-                  dateDefinition: "[DATE-DEFINITION]"
-                  enable: true
-                  allReference: true
-                  recurrent: true
-                  objects:
-                  - uuid: "[JOBUUID]"
-                    name: "[JOBNAME]"
-                  - uuid: "[JOBUUID]"
-                    name: "[JOBNAME]"
+              value: {}
       responses:
         "200":
-          description: Calendar created or updated
+          description: Successful response
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProjectCalendarsResponse"
+                type: object
               examples:
                 value: {}
-  /project/{project}/calendars/{id}:
-    delete:
+        "400":
+          description: Error response
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                value: {}
+  /project/{project}/webhook/{id}:
+    get:
       tags:
-      - Calendars
-      summary: "Delete Project Calendar [Enterprise]"
+      - Webhook
+      summary: Get A Webhook
       description: |-
-        Deletes a calendar at project scope.
+        Get the webhook definition.
 
-        Authorization required: `delete` access for `project` resource type or `admin` or `app_admin` access for `user` resource type.
-
-        Since: v41
-      operationId: apiDeleteProjectCalendar
+        Since: v33
+      operationId: get
       parameters:
       - name: project
         in: path
         description: Project Name
         required: true
-        allowEmptyValue: false
         schema:
           type: string
       - name: id
         in: path
-        description: Calendar Id to be deleted
+        description: Webhook ID
         required: true
-        allowEmptyValue: false
         schema:
           type: string
       responses:
-        "204":
-          description: No content
-  /system/calendars:
-    get:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                value: {}
+    post:
       tags:
-      - Calendars
-      summary: "List System Calendars [Enterprise]"
+      - Webhook
+      summary: Update A Webhook
       description: |-
-        Get all calendars at system scope.
+        Updates the specified webhook.
 
-        Authorization required: `admin` or `app_admin` access for `user` resource type.
+        Since: v33
+      operationId: save
+      parameters:
+      - name: project
+        in: path
+        description: Project Name
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        description: Webhook ID
+        required: true
+        schema:
+          type: string
+      requestBody:
+        description: |-
+          Updated webhook data.
 
-        Since: v41
-      operationId: apiSystemCalendars
+          Along with the required fields you may send only the fields you want to update.
+
+          When updating a webhook you may not change the user associated with a webhook,
+          so suppling the `user` field will have no effect. Also, specifying an `authToken` field has no effect.
+        content:
+          application/json:
+            schema:
+              type: object
+            examples:
+              value: {}
       responses:
         "200":
-          description: List of all system calendars
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                value: {}
+        "400":
+          description: Error response
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                value: {}
+    delete:
+      tags:
+      - Webhook
+      summary: Delete A Webhook
+      description: |-
+        Deletes the webhook.
+
+        Since: v33
+      operationId: remove
+      parameters:
+      - name: project
+        in: path
+        description: Project Name
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        description: Webhook ID
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                value: {}
+        "400":
+          description: Error response
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                value: {}
+  /project/{project}/webhooks:
+    get:
+      tags:
+      - Webhook
+      summary: List Project Webhooks
+      description: |-
+        List the webhooks for the project.
+
+        Since: v33
+      operationId: list
+      parameters:
+      - name: project
+        in: path
+        description: Project Name
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: List of webhooks
           content:
             application/json:
               schema:
@@ -9050,424 +9011,91 @@ paths:
                 items:
                   type: object
               examples:
-                example:
+                webhook-list:
+                  description: List of webhooks
                   value: |-
                     [
-                      {
-                        "id": 1,
-                        "name": "[NAME]",
-                        "description": "[DESCRIPTION]",
-                        "calendarType": "[blackout/allowed]",
-                        "scope": "project",
-                        "dateType": "[date,range,daily,monthly]",
-                        "dateDefinition": "[DATE-DEFINITION]",
-                        "enable": true,
-                        "allReference": true,
-                        "recurrent": true,
-                        "objects": [
-                          {
-                            "uuid": "[JOBUUID]",
-                            "name": "[JOBNAME]"
-                          }
-                        ]
-                      }
+                        {
+                            "authToken": "Z1vnbhShhQF3B0dQq7UhJTZMnGS92TBl",
+                            "config": {
+                                "argString": "-payload ${raw}",
+                                "jobId": "a54d07a1-033a-499f-9789-19bcacbd6e11"
+                            },
+                            "creator": "admin",
+                            "enabled": true,
+                            "eventPlugin": "webhook-run-job",
+                            "id": 3,
+                            "name": "Webhook Job Runner",
+                            "project": "Webhook",
+                            "roles": "admin,user",
+                            "user": "admin"
+                        },
+                        {
+                            "authToken": "p9ttreh05Zd222g5yBXocEMXmCJ1skOX",
+                            "config": {},
+                            "creator": "admin",
+                            "enabled": true,
+                            "eventPlugin": "log-webhook-event",
+                            "id": 4,
+                            "name": "Log it Hook",
+                            "project": "Webhook",
+                            "roles": "admin,user",
+                            "user": "admin"
+                        }
                     ]
+  /webhook/{authtoken}:
     post:
       tags:
-      - Calendars
-      summary: "Create/Update System Calendar [Enterprise]"
-      description: |-
-        Create or update a calendar at system scope.
-        * if the ID exists, it will update the existing calendar, otherwise a new one will be created.
-
-        Authorization required: `admin` or `app_admin` access for `user` resource type.
-
-        Since: v41
-      operationId: apiLoadSystemCalendars
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-            examples:
-              update-calendar-example:
-                description: Update calendar definition with jobs
-                value:
-                  id: 1
-                  name: "[NAME]"
-                  description: "[DESCRIPTION]"
-                  calendarType: "[blackout/allowed]"
-                  scope: project
-                  dateType: "[date,range,daily,monthly]"
-                  dateDefinition: "[DATE-DEFINITION]"
-                  enable: true
-                  allReference: true
-                  recurrent: true
-                  objects:
-                  - uuid: "[JOBUUID]"
-                    name: "[JOBNAME]"
-                  - uuid: "[JOBUUID]"
-                    name: "[JOBNAME]"
-      responses:
-        "200":
-          description: Calendar created or updated
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProjectCalendarsResponse"
-              examples:
-                calendar-response:
-                  description: Calendar save response
-                  value:
-                    calendar:
-                      id: 1
-                      name: New Calendar
-                      description: test
-                      calendarType: blackout
-                      scope: system
-                      dateType: date
-                      dateDefinition:
-                      - 2019/12/07
-                      - 2019/12/14
-                      - 2019/12/31
-                      - 2020/01/01
-                      enable: true
-                      allReference: false
-                      recurrent: false
-                      objects:
-                      - uuid: 7ca918bd-b463-4948-96d2-796c0619c2bd
-                        name: scheduled/job
-                    saved: true
-                    msg: Saved Calendar
-  /system/calendars/{id}:
-    delete:
-      tags:
-      - Calendars
-      summary: "Delete System Calendar [Enterprise]"
-      description: |-
-        Deletes a calendar at system scope.
-
-        Authorization required: `delete` access for `project` resource type or `admin` or `app_admin` access for `user` resource type.
-
-        Since: v41
-      operationId: apiDeleteSystemCalendar
+      - Webhook
+      summary: Send Webhook Event
+      description: "You may post whatever data you wish to the webhook endpoint, however\
+        \ the plugin you are \nusing must\nbe able to handle the data you post. If\
+        \ the webhook plugin associated with the webhook can't handle\nthe content\
+        \ type posted you will get an error response.\n\nThe webhook plugin will determine\
+        \ the response received.\nPlease see the documentation for the plugin that\
+        \ is configured for the webhook endpoint you are using.\n\nIf the webhook\
+        \ is defined to require the authorization secret, then the `Authorization`\
+        \ HTTP header must be included\nwith a value that matches the secret.\n\n\
+        Since: v33\n"
+      operationId: post
       parameters:
-      - name: id
+      - name: authtoken
         in: path
-        description: Calendar Id to be deleted
-        required: true
-        allowEmptyValue: false
-        schema:
-          type: string
-      responses:
-        "204":
-          description: No content
-  /project/{project}/healthcheck/enhancer:
-    get:
-      tags:
-      - Health
-      summary: "Check Health Status Node Enhancer is Configured [Enterprise]"
-      description: |
-        Check if the Project has the Health Status Node Enhancer configured.
-
-        Authorization required: `app_admin` for `system` resource.
-      operationId: apiProjectHasHealthStatusEnhancer
-      parameters:
-      - name: project
-        in: path
-        description: Project Name
+        description: Webhook auth token
         required: true
         schema:
           type: string
-      responses:
-        "200":
-          description: Healthcheck Status List without Checks
-          content:
-            application/json:
-              schema:
-                type: object
-              examples:
-                enhancer-status:
-                  description: Health status node enhancer configuration check
-                  value:
-                    status: true
-                    message: The project test has the HealthStatusNodeEnhancerPlugin
-                      installed
-  /project/{project}/healthcheck/refresh:
-    post:
-      tags:
-      - Health
-      summary: "Refresh Node Healthcheck Status [Enterprise]"
-      description: |
-        Request a Refresh to the Healtcheck status for a set of Nodes.
-
-        Authorization required: `app_admin` for `system` resource.
-      operationId: apiRefreshHealthCheck
-      parameters:
-      - name: node
-        in: query
-        description: Node Name
+      - name: Authorization
+        in: header
+        description: Optional authorization secret. Required if webhook is configured
+          to require authorization.
         required: false
         schema:
           type: string
-      - name: project
-        in: path
-        description: Project Name
-        required: true
-        schema:
-          type: string
-      requestBody:
-        description: Node List Request
-        content:
-          application/json:
-            schema:
-              type: object
-            examples:
-              node-list-example:
-                description: Check health for specific nodes
-                value:
-                  nodes:
-                  - node1
-                  - node2
-        required: false
       responses:
         "200":
-          description: Healthcheck Status
+          description: Default response
           content:
-            application/json:
-              schema:
-                type: object
+            '*/*':
               examples:
-                healthcheck-response:
-                  description: Health check status response
-                  value:
-                    message: ok
+                success:
+                  description: Success response
+                  value: ok
         "400":
-          description: Bad Request
+          description: Error response
           content:
             application/json:
-              schema:
-                $ref: "#/components/schemas/BasicErrorResponse"
-  /project/{project}/healthcheck/refresh/all:
-    post:
-      tags:
-      - Health
-      summary: "Refresh All Project Node Healthchecks [Enterprise]"
-      description: |
-        Request a Refresh to the Healtcheck status for all Nodes in a Project.
-
-        Authorization required: `app_admin` for `system` resource.
-      operationId: apiRefreshHealthCheckAll
-      parameters:
-      - name: project
-        in: path
-        description: Project Name
-        required: true
-        schema:
-          type: string
-      responses:
-        "200":
-          description: Healthcheck Status
-          content:
-            application/json:
-              schema:
-                type: object
               examples:
-                refresh-response:
-                  description: Health check refresh response
+                error:
+                  description: Error response
                   value:
-                    message: ok
-  /project/{project}/healthcheck/status:
-    get:
-      tags:
-      - Health
-      summary: "Get Node Healthcheck Status [Enterprise]"
-      description: |+
-        Node Healtcheck status for a Node.
-
-        Authorization required: `app_admin` for `system` resource.
-
-
-      operationId: apiNodeHealth
-      parameters:
-      - name: node
-        in: query
-        description: Node Name
-        required: true
-        schema:
-          type: string
-      - name: project
-        in: path
-        description: Project Name
-        required: true
-        schema:
-          type: string
-      responses:
-        "200":
-          description: Healthcheck Status
-          content:
-            application/json:
-              schema:
-                type: object
-              examples:
-                node-healthcheck:
-                  description: Node health check status
-                  value:
-                    node: node-0
-                    project: test
-                    healthchecks:
-                    - type: command
-                      status: HEALTHY
-                      data: {}
-                    status: HEALTHY
-                    lastChecked: 2023-03-20T17:33:28Z
-                    duration: 25
-        "400":
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/BasicErrorResponse"
+                    err: Error message
         "404":
-          description: Not Found
+          description: Webhook not enabled
           content:
             application/json:
-              schema:
-                $ref: "#/components/schemas/BasicErrorResponse"
-  /project/{project}/healthcheck/status/all:
-    get:
-      tags:
-      - Health
-      summary: "Get Node Healthcheck Status for All Nodes [Enterprise]"
-      description: |
-        Node Healtcheck status for all Nodes.
-
-        Authorization required: `app_admin` for `system` resource.
-      operationId: apiNodeHealthAll
-      parameters:
-      - name: project
-        in: path
-        description: Project Name
-        required: true
-        schema:
-          type: string
-      - name: includeChecks
-        in: query
-        description: Include Checks
-        required: false
-        explode: false
-        schema:
-          type: boolean
-      responses:
-        "200":
-          description: Healthcheck Status List without Checks
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  type: object
               examples:
-                all-nodes-healthcheck:
-                  description: Health check status for all nodes
-                  value: |-
-                    [
-                      {
-                        "node": "459a545d524f",
-                        "project": "test",
-                        "href": "/api/44/project/test/healthcheck/status?nodename=459a545d524f",
-                        "status": "HEALTHY",
-                        "lastChecked": "2023-03-20T19:30:28Z",
-                        "duration": 35
-                      },
-                      {
-                        "node": "node-0",
-                        "project": "test",
-                        "href": "/api/44/project/test/healthcheck/status?nodename=node-0",
-                        "status": "HEALTHY",
-                        "lastChecked": "2023-03-20T19:30:28Z",
-                        "duration": 19
-                      }
-                    ]
-  /enterprise/system-report/datasets:
-    get:
-      tags:
-      - System
-      summary: List System Report Datasets
-      description: |
-        List the system report datasets.
-
-        Authorization required: `ops_admin` for `system`
-
-        Since: v44
-      operationId: listDatasets
-      responses:
-        "200":
-          description: Result
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/SystemReportItem"
-              examples:
-                datasets-list:
-                  description: System report datasets list
-                  value: |
-                    [
-                      {
-                        "label": "Statistics",
-                        "name": "projectStats"
-                      },
-                      {
-                        "label": "Framework Configuration",
-                        "name": "frameworkConfig"
-                      },
-                      {
-                        "label": "Rundeck Configuration",
-                        "name": "rundeckConfig"
-                      },
-                      {
-                        "label": "System Environment",
-                        "name": "systemEnv"
-                      },
-                      {
-                        "label": "Licensing",
-                        "name": "licensing"
-                      },
-                      {
-                        "label": "Full Configuration",
-                        "name": "fullConfig"
-                      }
-                    ]
-  /enterprise/system-report/datasets/{dataset}:
-    get:
-      tags:
-      - System
-      summary: Get System Report Dataset by Name
-      description: |
-        Get a system report dataset.
-
-        Authorization required: `ops_admin` for `system`
-
-        Since: v44
-      operationId: getDataset
-      parameters:
-      - name: dataset
-        in: path
-        description: Dataset Name
-        required: true
-        schema:
-          type: string
-      responses:
-        "200":
-          description: Result
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/DataSet"
+                value: {}
   /project/{project}/disable/later:
     post:
       tags:
@@ -9682,578 +9310,6 @@ paths:
                 $ref: "#/components/schemas/ModeLaterResponse"
               examples:
                 value: {}
-  /execution/{id}/result/data:
-    get:
-      tags:
-      - Jobs
-      summary: "Get Execution Result Data [Enterprise]"
-      description: |
-        Retrieve the Result Data created by a Job using the [Result Data feature](https://docs.rundeck.com/docs/manual/execution-lifecycle/result-data.html) in JSON format.
-
-        Note: In a Rundeck Cluster, Result Data may not be locally available and must be retrieved by the server asynchronously before it can be returned.
-
-        You can handle this situation in two ways: either use the `wait=true` URL parameter, to indicate that the API request should block until the data is retrieved (waiting up to 10 seconds), or if the response has HTTP status 202 it means that the asynchronous request was started but has not completed yet and you can retry the same API request shortly.
-
-        Since: v40
-      operationId: apiExecutionDataExport
-      parameters:
-      - name: wait
-        in: query
-        description: "if true and the data is not immediately available, the response\
-          \ will wait until the data is retrieved, or a timeout occurs. Otherwise\
-          \ the response may return 202 status if data must be retrieved first."
-        schema:
-          type: boolean
-      - name: id
-        in: path
-        description: Execution ID
-        required: true
-        schema:
-          type: string
-      responses:
-        "200":
-          description: "Result data from the Job execution, the format will depend\
-            \ on the data generated."
-          content:
-            application/json:
-              schema:
-                type: object
-        "202":
-          description: "Request was accepted but not fulfilled. This indicates the\
-            \ data will be retrieved asynchronously before it can be made available.\
-            \ Retry the request later to retrieve the data. See also: the `wait` parameter"
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ResultDataLoadingState"
-        "404":
-          description: Data was not available.
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ResultDataBasicErrorResponse"
-  /execution/{id}/result/dataAvailable:
-    get:
-      tags:
-      - Jobs
-      summary: "Check Execution Result Data Availability [Enterprise]"
-      description: |
-        Check whether the execution has Result Data created by a Job using the [Result Data feature](https://docs.rundeck.com/docs/manual/execution-lifecycle/result-data.html).
-
-        Since: v40
-      operationId: apiExecutionDataAvailable
-      parameters:
-      - name: id
-        in: path
-        description: Execution ID
-        required: true
-        schema:
-          type: string
-      responses:
-        "200":
-          description: Data available
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ResultDataAvailableResponse"
-        "404":
-          description: "No data can be retrieved for the Execution. If an error occurred,\
-            \ the `error` entry will contain a description of the error."
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ResultDataBasicErrorResponse"
-  /config/delete:
-    post:
-      tags:
-      - Configuration
-      summary: "Delete a Single Config Value [Enterprise]"
-      description: |
-        Delete a single config by key and strata.
-
-        Authorization required: `ops_admin` or `app_admin` for `system` resource.
-
-        Since: v36
-      operationId: ConfigDelete
-      requestBody:
-        description: |
-          Delete Config Request.
-
-          * `key` Required
-            * Represents the config to be deleted.
-            * Accepts: Any `string`
-          * `strata` Optional
-            * Whether the config should apply to the current server (`Server`), or to all servers in the cluster (`default`).
-            * Accepts: `Server`, `default`
-            * Default: `default`
-        content:
-          application/json:
-            schema:
-              type: object
-            examples:
-              delete-config-request:
-                description: Delete config request example
-                value:
-                  key: myCustomConfig
-                  strata: default
-      responses:
-        "200":
-          description: ConfigDelete 200 response
-          content:
-            application/json:
-              schema:
-                type: object
-        "204":
-          description: No Content if successful
-        "403":
-          description: Unauthorized response
-  /config/get:
-    get:
-      tags:
-      - Configuration
-      summary: "Get Configuration Value [Enterprise]"
-      description: |
-        Get the value for a configuration key.
-
-        Authorization required: `ops_admin` or `app_admin` for `system` resource.
-
-        Since: v36
-      operationId: ConfigGet
-      parameters:
-      - name: key
-        in: query
-        description: Configuration key
-        required: true
-        schema:
-          type: string
-      - name: strata
-        in: query
-        description: "Storage Strata. Can be `server` to indicate the current cluster\
-          \ member, or a member UUID, or `default` or global configuration (Default\
-          \ value)."
-        schema:
-          type: string
-      responses:
-        "200":
-          description: Result data
-          content:
-            application/json:
-              examples:
-                config-value:
-                  description: Configuration value response
-                  value:
-                    key: key.name
-                    value: config value
-                    strata: default
-        "403":
-          description: Unauthorized response
-  /config/getCategories:
-    get:
-      tags:
-      - Configuration
-      summary: "Get Configuration Categories [Enterprise]"
-      description: |
-        Get the Configuration categories.
-
-        Authorization required: `ops_admin` or `app_admin` for `system` resource.
-
-        Since: v36
-      operationId: ConfigGetCategories
-      responses:
-        "200":
-          description: |
-            Categories Result.
-
-            Result is an array of categories, which may have one level of sub-categories.
-
-            Each category has fields:
-
-            * `name` category name
-            * `isSubcat` true if it is a subcategory
-            * `parentCategory` name of parent category if it is a subcategory
-            * `childNodes` array of subcategories
-          content:
-            application/json:
-              examples:
-                categories-list:
-                  description: Configuration categories list
-                  value: |
-                    [
-                      {
-                        "name": "Plugins",
-                        "isSubcat": false,
-                        "parentCategory": null,
-                        "childNodes": [
-                          {
-                            "name": "Azure",
-                            "isSubcat": true,
-                            "parentCategory": "Plugins"
-                          },
-                          {
-                            "name": "DataDog",
-                            "isSubcat": true,
-                            "parentCategory": "Plugins"
-                          },
-                          {
-                            "name": "GCP",
-                            "isSubcat": true,
-                            "parentCategory": "Plugins"
-                          },
-                          {
-                            "name": "Jenkins",
-                            "isSubcat": true,
-                            "parentCategory": "Plugins"
-                          },
-                          {
-                            "name": "Oracle",
-                            "isSubcat": true,
-                            "parentCategory": "Plugins"
-                          },
-                          {
-                            "name": "Sensu",
-                            "isSubcat": true,
-                            "parentCategory": "Plugins"
-                          },
-                          {
-                            "name": "Sumo Logic",
-                            "isSubcat": true,
-                            "parentCategory": "Plugins"
-                          }
-                        ]
-                      },
-                      {
-                        "name": "SSO",
-                        "isSubcat": false,
-                        "parentCategory": null,
-                        "childNodes": [
-                          {
-                            "name": "Azure",
-                            "isSubcat": true,
-                            "parentCategory": "SSO"
-                          },
-                          {
-                            "name": "Okta",
-                            "isSubcat": true,
-                            "parentCategory": "SSO"
-                          },
-                          {
-                            "name": "Ping",
-                            "isSubcat": true,
-                            "parentCategory": "SSO"
-                          }
-                        ]
-                      }
-                    ]
-  /config/list:
-    get:
-      tags:
-      - Configuration
-      summary: "List All Current Configurations [Enterprise]"
-      description: |
-        List all existing configs and their properties.
-
-        Authorization required: `ops_admin` or `app_admin` for `system` resource.
-
-        Since: v36
-      operationId: ConfigList
-      responses:
-        "200":
-          description: |
-            Call was successful. A list of all configs stored using Configuration Management is returned.
-
-            _NOTE: For a complete list of all configs, reference the System Report page in Rundeck._
-          content:
-            application/json:
-              examples:
-                configs-list:
-                  description: List of configurations
-                  value: |-
-                    [
-                      {
-                        "name": "azure.clientId",
-                        "value": "test222236",
-                        "level": "default",
-                        "label": "Azure Client ID",
-                        "category": "Plugins/Azure"
-                      },
-                      {
-                        "name": "myCustomConfig",
-                        "value": "myConfigValue",
-                        "level": "default",
-                        "category": "Custom",
-                      },
-                      {
-                        "name": "myCustomConfig2",
-                        "value": "myConfigValue2",
-                        "level": "default",
-                        "category": "Custom",
-                      }
-                    ]
-        "403":
-          description: Unauthorized response
-  /config/listStoragePlugins:
-    get:
-      tags:
-      - Configuration
-      summary: "List All Currently configured Storage Plugins [Enterprise]"
-      description: |
-        List all existing configs and their properties for storage plugins.
-
-        Authorization required: `app_admin`.
-      operationId: StorageConfigList
-      responses:
-        "200":
-          description: |
-            Call was successful. A list of all configs stored using Configuration Management is returned.
-
-            _NOTE: For a complete list of all configs, reference the System Report page in Rundeck._
-          content:
-            application/json:
-              examples:
-                storage-plugins-list:
-                  description: List of storage plugins
-                  value: "[\n      {\n        \"type\": \"exampleProvider\",\n   \
-                    \     \"path\": \"keys/exampleProvider\",\n        \"extra\":\
-                    \ {\n            \"extraConfig\": \"value\"\n        },\n    \
-                    \    \"config\": {\n            \"password\": \"pass\",\n    \
-                    \        \"username\": \"user123\",\n        }\n      },\n   \
-                    \   {\n        \"type\": \"testprovider2\",\n        \"path\"\
-                    : \"keys/testprovider2\",\n        \"extra\": {\n            \"\
-                    extraConfig\": \"value\"\n        },\n        \"config\": {\n\
-                    \            \"password\": \"pass\",\n            \"username\"\
-                    : \"user123\",\n        }\n        \n      }\n]"
-        "403":
-          description: Unauthorized response
-  /config/metaList:
-    get:
-      tags:
-      - Configuration
-      summary: "List Configuration Metadata [Enterprise]"
-      description: |
-        List all known configuration key names and metadata.
-
-        Authorization required: `ops_admin` or `app_admin` for `system` resource.
-
-        Since: v36
-      operationId: ConfigMetaList
-      responses:
-        "200":
-          description: |
-            Call was successful. A list of all configuration keys is returned.
-          content:
-            application/json:
-              examples:
-                config-metadata-list:
-                  description: Configuration metadata list
-                  value: |-
-                    [
-                      {
-                        "key": "rundeck.api.tokens.duration.max",
-                        "visibility": "Advanced",
-                        "category": "API",
-                        "strata": "default",
-                        "required": false,
-                        "restart": false,
-                        "label": "API Token Duration Max",
-                        "datatype": "String",
-                        "encrypted": false,
-                        "defaultValue": "",
-                        "link": "",
-                        "description": "",
-                        "authRequired": "app_admin"
-                      },
-                      {
-                        "key": "rundeck.authRateLimiting.enabled",
-                        "visibility": "Advanced",
-                        "category": "Authentication",
-                        "strata": "default",
-                        "required": false,
-                        "restart": false,
-                        "label": "Enable authentication rate limiting feature",
-                        "datatype": "Boolean",
-                        "encrypted": false,
-                        "defaultValue": "FALSE",
-                        "link": "https://docs.rundeck.com/docs/administration/security/rateLimiting.html",
-                        "description": "Enable or disable the authentication rate limiting feature",
-                        "authRequired": "ops_admin"
-                      }
-                    ]
-        "403":
-          description: Unauthorized response
-  /config/refresh:
-    post:
-      tags:
-      - Configuration
-      summary: "Refresh Configurations from Properties File [Enterprise]"
-      description: |
-        Make the Rundeck server re-read the config properties file.
-
-        Authorization required: `ops_admin` or `app_admin` for `system` resource.
-
-        Since: v36
-      operationId: refresh
-      responses:
-        "200":
-          description: |-
-            The call was successful. Rundeck will reread the config properties file.
-
-            _NOTE: Some config changes will not go into effect after a reload, and require a full restart of Rundeck._
-          content:
-            application/json:
-              examples:
-                refresh-response:
-                  description: Configuration refresh response
-                  value:
-                    msg: Rundeck configuration refreshed
-  /config/restart:
-    post:
-      tags:
-      - Configuration
-      summary: "Restart the Rundeck Server [Enterprise]"
-      description: |-
-        Restart the server. Requires that the server container supports the operation.
-
-        Authorization required: `ops_admin` for `system` resource
-
-        Since: v36
-      operationId: restart
-      responses:
-        "200":
-          description: The call was successful. The Rundeck server will immediately
-            restart.
-          content:
-            application/json:
-              examples:
-                value: {}
-  /config/save:
-    post:
-      tags:
-      - Configuration
-      summary: "Create or Update Configurations [Enterprise]"
-      description: |
-        Create or update configs and properties.
-
-        Authorization required: `ops_admin` or `app_admin` for `system` resource.
-
-        Since: v36
-      operationId: ConfigSave
-      requestBody:
-        description: |
-          Update Config Request.
-          List of config values, each value contains:
-
-          * `key` Required
-            * Represents either a new config to be created, or an existing config to be updated.
-            * Accepts: Any `string`
-          * `value` Required
-            * The value for the desired config `key`.
-            * Accepts: Any `string`
-          * `strata` Optional
-            * Whether the config should apply to the current server (`Server`), or to all servers in the cluster (`default`).
-            * Accepts: `Server`, `default`
-            * Default: `default`
-        content:
-          application/json:
-            schema:
-              type: array
-              items:
-                type: object
-            examples:
-              config-update-example:
-                description: Update existing configs and create new ones
-                value: |-
-                  [
-                    {
-                      "key": "myCustomConfig",
-                      "value": "newValueForCustomConfig",
-                      "strata": "default"
-                    },
-                    {
-                      "key": "myNewCustomConfig",
-                      "value": "valueOfNewCustomConfig",
-                      "strata": "default"
-                    }
-                  ]
-        required: true
-      responses:
-        "200":
-          description: All configs were successfully saved or updated. A payload reflecting
-            save or creation status is returned. `restart` will indicate if the server
-            must be restarted for some changes to take effect.
-          content:
-            application/json:
-              examples:
-                save-response:
-                  description: Configuration save response
-                  value:
-                    msg: Saved
-                    restart: true
-                    created:
-                    - myNewCustomConfig
-                    updated:
-                    - myCustomConfig
-        "400":
-          description: Bad request
-        "403":
-          description: Unauthorized response
-  /config/saveStoragePlugins:
-    post:
-      tags:
-      - Configuration
-      summary: "Create or Update Storage Plugins [Enterprise]"
-      description: "Create or update configs and properties for storage plugins.\n\
-        \nAuthorization required: `app_admin`. \n\n"
-      operationId: StorageConfigSave
-      requestBody:
-        description: |
-          Update Storage Plugin Config Request.
-          Configured plugins to be saved should be specified in the `plugins` array. Plugins that have been deleted should be specified in the `removedPlugins` array.
-        content:
-          application/json:
-            schema:
-              type: array
-              items:
-                type: object
-            examples:
-              storage-plugin-save-example:
-                description: Save and remove storage plugins
-                value:
-                  plugins:
-                    "0":
-                      type: exampleProvider1
-                      path: keys/exampleProvider1
-                      extra:
-                        extraConfig: value
-                      config:
-                        password: pass
-                        username: user123
-                  removedPlugins:
-                    "0":
-                      type: exampleProvider2
-                      path: keys/exampleProvider2
-        required: true
-      responses:
-        "200":
-          description: All configs were successfully saved or updated. A payload reflecting
-            save or creation status is returned.
-          content:
-            application/json:
-              examples:
-                storage-save-response:
-                  description: Storage plugins save response
-                  value:
-                    msg: Saved
-                    restart: true
-                    created:
-                    - myNewCustomConfig
-                    updated:
-                    - myCustomConfig
-                    deleted:
-                    - myDeletedCustomConfig
-        "400":
-          description: Bad request
-        "403":
-          description: Unauthorized response
   /secure/generatepasswordreset/{username}:
     post:
       tags:
@@ -10743,6 +9799,283 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/UserErrorResponse"
+  /execution/{id}/result/data:
+    get:
+      tags:
+      - Jobs
+      summary: "Get Execution Result Data [Enterprise]"
+      description: |
+        Retrieve the Result Data created by a Job using the [Result Data feature](https://docs.rundeck.com/docs/manual/execution-lifecycle/result-data.html) in JSON format.
+
+        Note: In a Rundeck Cluster, Result Data may not be locally available and must be retrieved by the server asynchronously before it can be returned.
+
+        You can handle this situation in two ways: either use the `wait=true` URL parameter, to indicate that the API request should block until the data is retrieved (waiting up to 10 seconds), or if the response has HTTP status 202 it means that the asynchronous request was started but has not completed yet and you can retry the same API request shortly.
+
+        Since: v40
+      operationId: apiExecutionDataExport
+      parameters:
+      - name: wait
+        in: query
+        description: "if true and the data is not immediately available, the response\
+          \ will wait until the data is retrieved, or a timeout occurs. Otherwise\
+          \ the response may return 202 status if data must be retrieved first."
+        schema:
+          type: boolean
+      - name: id
+        in: path
+        description: Execution ID
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: "Result data from the Job execution, the format will depend\
+            \ on the data generated."
+          content:
+            application/json:
+              schema:
+                type: object
+        "202":
+          description: "Request was accepted but not fulfilled. This indicates the\
+            \ data will be retrieved asynchronously before it can be made available.\
+            \ Retry the request later to retrieve the data. See also: the `wait` parameter"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResultDataLoadingState"
+        "404":
+          description: Data was not available.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResultDataBasicErrorResponse"
+  /execution/{id}/result/dataAvailable:
+    get:
+      tags:
+      - Jobs
+      summary: "Check Execution Result Data Availability [Enterprise]"
+      description: |
+        Check whether the execution has Result Data created by a Job using the [Result Data feature](https://docs.rundeck.com/docs/manual/execution-lifecycle/result-data.html).
+
+        Since: v40
+      operationId: apiExecutionDataAvailable
+      parameters:
+      - name: id
+        in: path
+        description: Execution ID
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Data available
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResultDataAvailableResponse"
+        "404":
+          description: "No data can be retrieved for the Execution. If an error occurred,\
+            \ the `error` entry will contain a description of the error."
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResultDataBasicErrorResponse"
+  /enterprise/cluster/executions/disable:
+    post:
+      tags:
+      - Cluster
+      summary: "Set Execution Mode for a Cluster Member [Enterprise]"
+      description: "Set the Execution Mode for the target cluster member.\n\n* `/enterprise/cluster/executions/enable`:\
+        \ Set execution mode to *Active* \n* `/enterprise/cluster/executions/disable`:\
+        \ Set execution mode to *Passive* \n\nIf the UUID parameter matches the current\
+        \ cluster member, the mode will be changed immediately, otherwise the status\
+        \ will be `pending`.\n\nAuthorization required: (enable) `enable_executions`\
+        \ or `admin` for `system` resource, or \n(disable) `disable_executions` or\
+        \ `admin` for `system` resource.\n\nSince: v41\n"
+      operationId: apiToggle
+      parameters:
+      - name: uuid
+        in: query
+        description: UUID of Member
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        "200":
+          description: |
+            Result.
+
+            `status`
+            :   `pending` indicates the request has been posted, `complete` indicates the request has taken effect already.
+
+            `executionMode`
+            :   The requested execution mode, either `active` or `passive`
+
+            `uuid`
+            :   The target cluster member UUID
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                toggle-response:
+                  description: Execution mode toggle response
+                  value:
+                    status: pending
+                    executionMode: active
+                    uuid: a3de6030-2b7a-47e3-b46f-3e46a11a85d9
+  /enterprise/cluster/executions/enable:
+    post:
+      tags:
+      - Cluster
+      summary: "Set Execution Mode for a Cluster Member [Enterprise]"
+      description: "Set the Execution Mode for the target cluster member.\n\n* `/enterprise/cluster/executions/enable`:\
+        \ Set execution mode to *Active* \n* `/enterprise/cluster/executions/disable`:\
+        \ Set execution mode to *Passive* \n\nIf the UUID parameter matches the current\
+        \ cluster member, the mode will be changed immediately, otherwise the status\
+        \ will be `pending`.\n\nAuthorization required: (enable) `enable_executions`\
+        \ or `admin` for `system` resource, or \n(disable) `disable_executions` or\
+        \ `admin` for `system` resource.\n\nSince: v41\n"
+      operationId: apiToggle_1
+      parameters:
+      - name: uuid
+        in: query
+        description: UUID of Member
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        "200":
+          description: |
+            Result.
+
+            `status`
+            :   `pending` indicates the request has been posted, `complete` indicates the request has taken effect already.
+
+            `executionMode`
+            :   The requested execution mode, either `active` or `passive`
+
+            `uuid`
+            :   The target cluster member UUID
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                toggle-response:
+                  description: Execution mode toggle response
+                  value:
+                    status: pending
+                    executionMode: active
+                    uuid: a3de6030-2b7a-47e3-b46f-3e46a11a85d9
+  /enterprise/cluster/info:
+    get:
+      tags:
+      - Cluster
+      summary: "Get Cluster Info [Enterprise]"
+      description: |
+        Get sysinfo for all cluster members, plus cluster-wide heartbeat/timing settings.
+
+        Authorization required: `view_cluster` on the `system` resource.
+
+        Since: v60
+      operationId: apiCluster
+      responses:
+        "200":
+          description: "Cluster info: all member sysinfo plus cluster-wide settings."
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ClusterInfoResponse"
+              examples:
+                cluster-info-response:
+                  description: Cluster info response
+                  value:
+                    serverUUID: a3de6030-2b7a-47e3-b46f-3e46a11a85d9
+                    heartbeatIntervalMs: 30000
+                    memberTtlMs: 90000
+                    execIntervalMs: 15000
+                    members:
+                    - sender: a3de6030-2b7a-47e3-b46f-3e46a11a85d9
+                      lastUpdated: 2026-09-01T12:00:00Z
+                      dateCreated: 2026-09-01T11:00:00Z
+                      topic: rundeck.cluster.heartbeat
+                      type: sysinfo
+                      namespace: rundeck.system
+                      state: sent
+                      body:
+                        serverUUID: a3de6030-2b7a-47e3-b46f-3e46a11a85d9
+                        nodeName: rundeck-0
+                        isAlive: true
+  /enterprise/cluster/member/{memberId}:
+    get:
+      tags:
+      - Cluster
+      summary: "Get Cluster Member Info [Enterprise]"
+      description: |
+        Get sysinfo for a single cluster member (scheduler status, CPU/memory, OS/Java info,
+        remote execution config, log storage stats, etc).
+
+        Authorization required: `view_cluster` on the `system` resource.
+
+        Since: v60
+      operationId: apiMemberInfo
+      parameters:
+      - name: memberId
+        in: path
+        description: Member UUID
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        "200":
+          description: Cluster member sysinfo.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ClusterMemberInfoResponse"
+              examples:
+                member-info-response:
+                  description: Cluster member info response
+                  value:
+                    serverUUID: a3de6030-2b7a-47e3-b46f-3e46a11a85d9
+                    nodeName: rundeck-0
+                    nodeHostname: rundeck-0.internal
+                    version: 6.3.0
+                    build: 2026-09-01
+                    executionModeActive: true
+                    schedulerRunningCount: 2
+                    threadPoolSize: 10
+                    schedulerThreadRatio: 0.2
+                    scheduledJobs: 15
+                    scheduledEnabledJobs: 14
+                    uptime: 30.478
+                    durationTime: 123456789
+                    load: 0.45
+                    processors: 8
+                    memfree: 512000000
+                    memmax: 2048000000
+                    memtotal: 1024000000
+                    allocated: 0.5
+                    heapusage: 0.25
+                    threadsactive: 42
+                    osArch: amd64
+                    osName: Linux
+                    osVersion: 5.15.0
+                    osFamily: unix
+                    javaVendor: Eclipse Adoptium
+                    javaVersion: 21.0.1
+                    vmName: OpenJDK 64-Bit Server VM
+                    vmVendor: Eclipse Adoptium
+                    implementationVersion: 21.0.1+12
+                    remoteExecution:
+                      enabled: false
+                      defaultPolicy: None
+                    remoteExecutionProfiles: []
+                    isAlive: true
   /project/{project}/listAllJobs:
     get:
       tags:
@@ -10792,179 +10125,54 @@ paths:
                         "desc": "a basic job"
                       }
                     ]
-  /job/{id}/tags:
+  /project/{project}/healthcheck/enhancer:
     get:
       tags:
-      - Jobs
-      summary: Get Job Tags (Enterprise)
+      - Health
+      summary: "Check Health Status Node Enhancer is Configured [Enterprise]"
       description: |
-        Returns the list of tags for a job.
+        Check if the Project has the Health Status Node Enhancer configured.
 
-        Since: v46
-      operationId: job
+        Authorization required: `app_admin` for `system` resource.
+      operationId: apiProjectHasHealthStatusEnhancer
       parameters:
-      - name: id
-        in: path
-        description: Job ID
-        required: true
-        schema:
-          type: string
-      responses:
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  type: string
-  /project/{project}/jobTags/query:
-    get:
-      tags:
-      - Jobs
-      summary: "Query Project Job Tags [Enterprise]"
-      description: "Returns the list of available tags, along with the count of jobs\
-        \ per each tag, for the job \nquery result received.\n\nSince: v46\n"
-      operationId: query
-      parameters:
-      - name: sortOrders
-        in: query
-        schema:
-          type: array
-          items:
-            $ref: "#/components/schemas/SortOrder"
-      - name: jobFilter
-        in: query
-        schema:
-          type: string
-      - name: jobExactFilter
-        in: query
-        schema:
-          type: string
-      - name: projFilter
-        in: query
-        schema:
-          type: string
-      - name: groupPath
-        in: query
-        schema:
-          type: string
-      - name: groupPathExact
-        in: query
-        schema:
-          type: string
-      - name: descFilter
-        in: query
-        schema:
-          type: string
-      - name: loglevelFilter
-        in: query
-        schema:
-          type: string
-      - name: idlist
-        in: query
-        schema:
-          type: string
-      - name: scheduledFilter
-        in: query
-        schema:
-          type: boolean
-      - name: scheduleEnabledFilter
-        in: query
-        schema:
-          type: boolean
-      - name: executionEnabledFilter
-        in: query
-        schema:
-          type: boolean
-      - name: serverNodeUUIDFilter
-        in: query
-        schema:
-          type: string
-      - name: daysAhead
-        in: query
-        schema:
-          type: integer
-          format: int32
-      - name: runJobLaterFilter
-        in: query
-        schema:
-          type: boolean
-      - name: max
-        in: query
-        schema:
-          type: integer
-          format: int32
-      - name: offset
-        in: query
-        schema:
-          type: integer
-          format: int32
-      - name: sortBy
-        in: query
-        schema:
-          type: string
-      - name: sortOrder
-        in: query
-        schema:
-          type: string
-      - name: inputParamMap
-        in: query
-        schema:
-          type: object
-          additionalProperties:
-            type: object
-      - name: paginatedRequired
-        in: query
-        schema:
-          type: boolean
       - name: project
         in: path
+        description: Project Name
         required: true
         schema:
           type: string
       responses:
         "200":
-          description: Success
+          description: Healthcheck Status List without Checks
           content:
             application/json:
               schema:
                 type: object
               examples:
-                tag-counts:
-                  description: Map of tag names to job counts
+                enhancer-status:
+                  description: Health status node enhancer configuration check
                   value:
-                    tag1: 5
-                    tag2: 3
-                    tag3: 12
-  /project/{project}/webhook:
+                    status: true
+                    message: The project test has the HealthStatusNodeEnhancerPlugin
+                      installed
+  /project/{project}/healthcheck/refresh:
     post:
       tags:
-      - Webhook
-      summary: Add A Webhook
-      description: |2
+      - Health
+      summary: "Refresh Node Healthcheck Status [Enterprise]"
+      description: |
+        Request a Refresh to the Healtcheck status for a set of Nodes.
 
-
-        Required Fields:
-        ```
-        project - the project that owns the webhook
-        name - the name of the webhook
-        user - string the webhook runs as this user
-        roles - string containing comma separated list of roles to use for the webhook
-        eventPlugin - string must be a valid plugin name
-        config - object containing config values for the specified plugin
-        enabled - boolean
-        ```
-        Optional:
-
-        `useAuth` - if true, use header authorization
-        `regenAuth` - if true, use generate header authorization
-
-        Do not specify an `authToken` or `creator` field. They will be ignored.
-
-        Since: v33
-      operationId: createWebhook_docs
+        Authorization required: `app_admin` for `system` resource.
+      operationId: apiRefreshHealthCheck
       parameters:
+      - name: node
+        in: query
+        description: Node Name
+        required: false
+        schema:
+          type: string
       - name: project
         in: path
         description: Project Name
@@ -10972,71 +10180,47 @@ paths:
         schema:
           type: string
       requestBody:
-        description: Webhook definition.
+        description: Node List Request
         content:
           application/json:
             schema:
               type: object
             examples:
-              value: {}
+              node-list-example:
+                description: Check health for specific nodes
+                value:
+                  nodes:
+                  - node1
+                  - node2
+        required: false
       responses:
         "200":
-          description: Successful response
+          description: Healthcheck Status
           content:
             application/json:
               schema:
                 type: object
               examples:
-                value: {}
+                healthcheck-response:
+                  description: Health check status response
+                  value:
+                    message: ok
         "400":
-          description: Error response
+          description: Bad Request
           content:
             application/json:
               schema:
-                type: object
-              examples:
-                value: {}
-  /project/{project}/webhook/{id}:
-    get:
-      tags:
-      - Webhook
-      summary: Get A Webhook
-      description: |-
-        Get the webhook definition.
-
-        Since: v33
-      operationId: get
-      parameters:
-      - name: project
-        in: path
-        description: Project Name
-        required: true
-        schema:
-          type: string
-      - name: id
-        in: path
-        description: Webhook ID
-        required: true
-        schema:
-          type: string
-      responses:
-        "200":
-          description: Successful response
-          content:
-            application/json:
-              schema:
-                type: object
-              examples:
-                value: {}
+                $ref: "#/components/schemas/BasicErrorResponse"
+  /project/{project}/healthcheck/refresh/all:
     post:
       tags:
-      - Webhook
-      summary: Update A Webhook
-      description: |-
-        Updates the specified webhook.
+      - Health
+      summary: "Refresh All Project Node Healthchecks [Enterprise]"
+      description: |
+        Request a Refresh to the Healtcheck status for all Nodes in a Project.
 
-        Since: v33
-      operationId: save
+        Authorization required: `app_admin` for `system` resource.
+      operationId: apiRefreshHealthCheckAll
       parameters:
       - name: project
         in: path
@@ -11044,93 +10228,37 @@ paths:
         required: true
         schema:
           type: string
-      - name: id
-        in: path
-        description: Webhook ID
-        required: true
-        schema:
-          type: string
-      requestBody:
-        description: |-
-          Updated webhook data.
-
-          Along with the required fields you may send only the fields you want to update.
-
-          When updating a webhook you may not change the user associated with a webhook,
-          so suppling the `user` field will have no effect. Also, specifying an `authToken` field has no effect.
-        content:
-          application/json:
-            schema:
-              type: object
-            examples:
-              value: {}
       responses:
         "200":
-          description: Successful response
+          description: Healthcheck Status
           content:
             application/json:
               schema:
                 type: object
               examples:
-                value: {}
-        "400":
-          description: Error response
-          content:
-            application/json:
-              schema:
-                type: object
-              examples:
-                value: {}
-    delete:
-      tags:
-      - Webhook
-      summary: Delete A Webhook
-      description: |-
-        Deletes the webhook.
-
-        Since: v33
-      operationId: remove
-      parameters:
-      - name: project
-        in: path
-        description: Project Name
-        required: true
-        schema:
-          type: string
-      - name: id
-        in: path
-        description: Webhook ID
-        required: true
-        schema:
-          type: string
-      responses:
-        "200":
-          description: Successful response
-          content:
-            application/json:
-              schema:
-                type: object
-              examples:
-                value: {}
-        "400":
-          description: Error response
-          content:
-            application/json:
-              schema:
-                type: object
-              examples:
-                value: {}
-  /project/{project}/webhooks:
+                refresh-response:
+                  description: Health check refresh response
+                  value:
+                    message: ok
+  /project/{project}/healthcheck/status:
     get:
       tags:
-      - Webhook
-      summary: List Project Webhooks
-      description: |-
-        List the webhooks for the project.
+      - Health
+      summary: "Get Node Healthcheck Status [Enterprise]"
+      description: |+
+        Node Healtcheck status for a Node.
 
-        Since: v33
-      operationId: list
+        Authorization required: `app_admin` for `system` resource.
+
+
+      operationId: apiNodeHealth
       parameters:
+      - name: node
+        in: query
+        description: Node Name
+        required: true
+        schema:
+          type: string
       - name: project
         in: path
         description: Project Name
@@ -11139,7 +10267,63 @@ paths:
           type: string
       responses:
         "200":
-          description: List of webhooks
+          description: Healthcheck Status
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                node-healthcheck:
+                  description: Node health check status
+                  value:
+                    node: node-0
+                    project: test
+                    healthchecks:
+                    - type: command
+                      status: HEALTHY
+                      data: {}
+                    status: HEALTHY
+                    lastChecked: 2023-03-20T17:33:28Z
+                    duration: 25
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BasicErrorResponse"
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BasicErrorResponse"
+  /project/{project}/healthcheck/status/all:
+    get:
+      tags:
+      - Health
+      summary: "Get Node Healthcheck Status for All Nodes [Enterprise]"
+      description: |
+        Node Healtcheck status for all Nodes.
+
+        Authorization required: `app_admin` for `system` resource.
+      operationId: apiNodeHealthAll
+      parameters:
+      - name: project
+        in: path
+        description: Project Name
+        required: true
+        schema:
+          type: string
+      - name: includeChecks
+        in: query
+        description: Include Checks
+        required: false
+        explode: false
+        schema:
+          type: boolean
+      responses:
+        "200":
+          description: Healthcheck Status List without Checks
           content:
             application/json:
               schema:
@@ -11147,449 +10331,106 @@ paths:
                 items:
                   type: object
               examples:
-                webhook-list:
-                  description: List of webhooks
+                all-nodes-healthcheck:
+                  description: Health check status for all nodes
                   value: |-
                     [
-                        {
-                            "authToken": "Z1vnbhShhQF3B0dQq7UhJTZMnGS92TBl",
-                            "config": {
-                                "argString": "-payload ${raw}",
-                                "jobId": "a54d07a1-033a-499f-9789-19bcacbd6e11"
-                            },
-                            "creator": "admin",
-                            "enabled": true,
-                            "eventPlugin": "webhook-run-job",
-                            "id": 3,
-                            "name": "Webhook Job Runner",
-                            "project": "Webhook",
-                            "roles": "admin,user",
-                            "user": "admin"
-                        },
-                        {
-                            "authToken": "p9ttreh05Zd222g5yBXocEMXmCJ1skOX",
-                            "config": {},
-                            "creator": "admin",
-                            "enabled": true,
-                            "eventPlugin": "log-webhook-event",
-                            "id": 4,
-                            "name": "Log it Hook",
-                            "project": "Webhook",
-                            "roles": "admin,user",
-                            "user": "admin"
-                        }
+                      {
+                        "node": "459a545d524f",
+                        "project": "test",
+                        "href": "/api/44/project/test/healthcheck/status?nodename=459a545d524f",
+                        "status": "HEALTHY",
+                        "lastChecked": "2023-03-20T19:30:28Z",
+                        "duration": 35
+                      },
+                      {
+                        "node": "node-0",
+                        "project": "test",
+                        "href": "/api/44/project/test/healthcheck/status?nodename=node-0",
+                        "status": "HEALTHY",
+                        "lastChecked": "2023-03-20T19:30:28Z",
+                        "duration": 19
+                      }
                     ]
-  /webhook/{authtoken}:
-    post:
-      tags:
-      - Webhook
-      summary: Send Webhook Event
-      description: "You may post whatever data you wish to the webhook endpoint, however\
-        \ the plugin you are \nusing must\nbe able to handle the data you post. If\
-        \ the webhook plugin associated with the webhook can't handle\nthe content\
-        \ type posted you will get an error response.\n\nThe webhook plugin will determine\
-        \ the response received.\nPlease see the documentation for the plugin that\
-        \ is configured for the webhook endpoint you are using.\n\nIf the webhook\
-        \ is defined to require the authorization secret, then the `Authorization`\
-        \ HTTP header must be included\nwith a value that matches the secret.\n\n\
-        Since: v33\n"
-      operationId: post
-      parameters:
-      - name: authtoken
-        in: path
-        description: Webhook auth token
-        required: true
-        schema:
-          type: string
-      - name: Authorization
-        in: header
-        description: Optional authorization secret. Required if webhook is configured
-          to require authorization.
-        required: false
-        schema:
-          type: string
-      responses:
-        "200":
-          description: Default response
-          content:
-            '*/*':
-              examples:
-                success:
-                  description: Success response
-                  value: ok
-        "400":
-          description: Error response
-          content:
-            application/json:
-              examples:
-                error:
-                  description: Error response
-                  value:
-                    err: Error message
-        "404":
-          description: Webhook not enabled
-          content:
-            application/json:
-              examples:
-                value: {}
-  /project/{project}/tour/import/{tourFolder}/{manifestFileName}:
-    post:
-      tags:
-      - Tours
-      summary: "Import Tours Archive for a Project [Enterprise]"
-      description: |-
-        Import a zip archive of Tours to a Project.
-
-        Authorization required: `admin` for the Project resource.
-      operationId: apiProjectImportTour
-      parameters:
-      - name: project
-        in: path
-        description: Project Name
-        required: true
-        schema:
-          type: string
-      - name: tourFolder
-        in: path
-        description: "Tour Folder Name: the name of the zip content folder containing\
-          \ tour.json files."
-        required: true
-        schema:
-          type: string
-      - name: manifestFileName
-        in: path
-        description: "Manifest File Name: the name of the manifest.json file within\
-          \ the archive"
-        required: true
-        schema:
-          type: string
-      requestBody:
-        description: Zip archive of Tours
-        content:
-          application/zip:
-            schema:
-              type: object
-      responses:
-        "200":
-          description: Successful
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TourManagerSuccessResponse"
-        "400":
-          description: Error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TourManagerErrorResponse"
-  /project/{project}/tours:
+  /enterprise/system-report/datasets:
     get:
       tags:
-      - Tours
-      summary: "Get Project Tours [Enterprise]"
+      - System
+      summary: List System Report Datasets
       description: |
-        Get the manifest of tours for the project.
+        List the system report datasets.
 
-        Authorization required: `admin` for the Project resource.
-      operationId: apiProjectToursList
-      parameters:
-      - name: project
-        in: path
-        description: Project Name
-        required: true
-        schema:
-          type: string
-      responses:
-        "200":
-          description: List
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Manifest"
-  /project/{project}/tours/resource/{path}:
-    get:
-      tags:
-      - Tours
-      summary: "Get Project Tour Resource [Enterprise]"
-      description: |-
-        Get a tour at a specific path.
+        Authorization required: `ops_admin` for `system`
 
-        Authorization required: `admin` for the Project resource.
-      operationId: apiGetProjectResource
-      parameters:
-      - name: project
-        in: path
-        description: Project Name
-        required: true
-        schema:
-          type: string
-      - name: path
-        in: path
-        description: Resource Path
-        required: true
-        schema:
-          type: string
+        Since: v44
+      operationId: listDatasets
       responses:
         "200":
-          description: List
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Tour"
-  /project/{project}/tours/{path}:
-    post:
-      tags:
-      - Tours
-      summary: "Upload Project Tour Resource [Enterprise]"
-      description: |-
-        Upload a tour resource at a specific path.
-
-        Authorization required: `admin` for the Project resource.
-      operationId: apiProjectLoadResource
-      parameters:
-      - name: project
-        in: path
-        description: Project Name
-        required: true
-        schema:
-          type: string
-      - name: path
-        in: path
-        description: Resource Path
-        required: true
-        schema:
-          type: string
-      requestBody:
-        description: Manifest or Tour definition
-        content:
-          application/json:
-            schema:
-              oneOf:
-              - $ref: "#/components/schemas/Manifest"
-              - $ref: "#/components/schemas/Tour"
-      responses:
-        "200":
-          description: Successful
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TourManagerSuccessResponse"
-        "400":
-          description: Error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TourManagerErrorResponse"
-  /system/tour/import/{tourFolder}/{manifestFileName}:
-    post:
-      tags:
-      - Tours
-      summary: "Import Tours Archive for System [Enterprise]"
-      description: |-
-        Import a zip archive of Tours to the System.
-
-        Authorization required: `app_admin` for the `system` resource.
-      operationId: apiSystemImportTour
-      parameters:
-      - name: tourFolder
-        in: path
-        description: "Tour Folder Name: the name of the zip content folder containing\
-          \ tour.json files."
-        required: true
-        schema:
-          type: string
-      - name: manifestFileName
-        in: path
-        description: "Manifest File Name: the name of the manifest.json file within\
-          \ the archive"
-        required: true
-        schema:
-          type: string
-      requestBody:
-        description: Zip archive of Tours
-        content:
-          application/zip:
-            schema:
-              type: object
-      responses:
-        "200":
-          description: Successful
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TourManagerSuccessResponse"
-        "400":
-          description: Error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TourManagerErrorResponse"
-  /system/tours:
-    get:
-      tags:
-      - Tours
-      summary: "Get System Tours [Enterprise]"
-      description: |
-        Get the manifest of tours for the system.
-
-        Authorization required: `app_admin` for the `system` resource.
-      operationId: apiSystemList
-      responses:
-        "200":
-          description: List
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Manifest"
-  /system/tours/resource/{path}:
-    get:
-      tags:
-      - Tours
-      summary: "Get System Tour Resource [Enterprise]"
-      description: |-
-        Get a tour at a specific path.
-
-        Authorization required: `app_admin` for the `system` resource.
-      operationId: apiGetSystemResource
-      parameters:
-      - name: path
-        in: path
-        description: Resource Path
-        required: true
-        schema:
-          type: string
-      responses:
-        "200":
-          description: List
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Tour"
-  /system/tours/{path}:
-    post:
-      tags:
-      - Tours
-      summary: "Upload System Tour Resource [Enterprise]"
-      description: |-
-        Upload a system tour resource at a specific path.
-
-        Authorization required: `app_admin` for the `system` resource.
-      operationId: apiSystemLoadResource
-      parameters:
-      - name: path
-        in: path
-        description: Resource Path
-        required: true
-        schema:
-          type: string
-      requestBody:
-        description: Manifest or Tour definition
-        content:
-          application/json:
-            schema:
-              oneOf:
-              - $ref: "#/components/schemas/Manifest"
-              - $ref: "#/components/schemas/Tour"
-      responses:
-        "200":
-          description: Successful
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TourManagerSuccessResponse"
-        "400":
-          description: Error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TourManagerErrorResponse"
-  /tours/endpoints:
-    get:
-      tags:
-      - Tours
-      summary: "Get Tour Endpoints List [Enterprise]"
-      description: List the endpoints usable by Tours
-      operationId: apiRundeckEndpoints
-      responses:
-        "200":
-          description: List
+          description: Result
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  type: string
-  /execution/{id}/roimetrics/available:
+                  $ref: "#/components/schemas/SystemReportItem"
+              examples:
+                datasets-list:
+                  description: System report datasets list
+                  value: |
+                    [
+                      {
+                        "label": "Statistics",
+                        "name": "projectStats"
+                      },
+                      {
+                        "label": "Framework Configuration",
+                        "name": "frameworkConfig"
+                      },
+                      {
+                        "label": "Rundeck Configuration",
+                        "name": "rundeckConfig"
+                      },
+                      {
+                        "label": "System Environment",
+                        "name": "systemEnv"
+                      },
+                      {
+                        "label": "Licensing",
+                        "name": "licensing"
+                      },
+                      {
+                        "label": "Full Configuration",
+                        "name": "fullConfig"
+                      }
+                    ]
+  /enterprise/system-report/datasets/{dataset}:
     get:
       tags:
-      - ROI
-      summary: "INCUBATING: ROI Metrics Data Available [Enterprise]"
-      description: Get result indicating whether ROI metrics data is available as
-        part of an execution.
-      operationId: getRoiMetricsDataAvailability
+      - System
+      summary: Get System Report Dataset by Name
+      description: |
+        Get a system report dataset.
+
+        Authorization required: `ops_admin` for `system`
+
+        Since: v44
+      operationId: getDataset
       parameters:
-      - name: id
+      - name: dataset
         in: path
-        description: Execution ID
+        description: Dataset Name
         required: true
         schema:
           type: string
       responses:
         "200":
-          description: Availability Response
+          description: Result
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/RoiMetricsController.DataAvailableResponse"
-        "404":
-          description: No Data Availability Response
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/RoiMetricsController.DataAvailableResponse"
-  /execution/{id}/roimetrics/data:
-    get:
-      tags:
-      - ROI
-      summary: "INCUBATING: ROI Metrics Data [Enterprise]"
-      description: Get result data for ROI Metrics.
-      operationId: getRoiMetricsDataApi
-      parameters:
-      - name: wait
-        in: query
-        description: "if true and the data is not immediately available, the response\
-          \ will wait until the data is retrieved, or a timeout occurs. Otherwise\
-          \ the response may return 202 status if data must be retrieved first."
-        schema:
-          type: boolean
-      - name: id
-        in: path
-        description: Execution ID
-        required: true
-        schema:
-          type: string
-      responses:
-        "200":
-          description: "ROI Metrics data from the Execution, the format will depend\
-            \ on the data generated."
-          content:
-            application/json:
-              schema:
-                type: object
-        "202":
-          description: "Request was accepted but not fulfilled. This indicates the\
-            \ data will be retrieved asynchronously before it can be made available.\
-            \ Retry the request later to retrieve the data. See also: the `wait` parameter"
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ROIDataLoadingState"
-        "404":
-          description: Data was not available.
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ROIDataBasicErrorResponse"
+                type: array
+                items:
+                  $ref: "#/components/schemas/DataSet"
   /enterprise/license:
     get:
       tags:
@@ -11891,6 +10732,277 @@ paths:
       - name: username
         in: path
         description: User Name
+        required: true
+        allowEmptyValue: false
+        schema:
+          type: string
+      responses:
+        "204":
+          description: No content
+  /project/{project}/calendars:
+    get:
+      tags:
+      - Calendars
+      summary: "List Project Calendars [Enterprise]"
+      description: |-
+        Retrieves all calendars configured at the project scope level. Calendars are used to define allowed and blackout periods for job scheduling and execution, providing fine-grained control over when jobs can run within a specific project context. This endpoint returns comprehensive calendar information including date definitions, recurrence patterns, and associated job references.
+
+        Authorization required: `admin` or `app_admin` access for `user` resource type.
+
+        Since: v41
+      operationId: apiProjectCalendars
+      parameters:
+      - name: project
+        in: path
+        description: Project Name
+        required: true
+        allowEmptyValue: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: List of all calendar of a project
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+              examples:
+                example:
+                  value: |-
+                    [
+                      {
+                        "id": 1,
+                        "name": "[NAME]",
+                        "description": "[DESCRIPTION]",
+                        "calendarType": "[blackout/allowed]",
+                        "scope": "project",
+                        "project": "[PROJECT]",
+                        "dateType": "[date,range,daily,monthly]",
+                        "dateDefinition": ""[DATE-DEFINITION]"",
+                        "enable": true,
+                        "allReference": true,
+                        "recurrent": true,
+                        "objects": [
+                          {
+                            "uuid": "[JOBUUID]",
+                            "name": "[JOBNAME"]
+                          }
+                        ]
+                      }
+                    ]
+    post:
+      tags:
+      - Calendars
+      summary: "Create/Update Project Calendar [Enterprise]"
+      description: |-
+        Create or update a calendar at project scope.
+        * if the ID exists, it will update the existing calendar, otherwise a new one will be created.
+
+        Authorization required: `admin` or `app_admin` access for `user` resource type.
+
+        Since: v41
+      operationId: apiLoadProjectCalendars
+      parameters:
+      - name: project
+        in: path
+        description: Project Name
+        required: true
+        allowEmptyValue: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+            examples:
+              save-calendar-example:
+                description: Save or update calendar definition
+                value:
+                  id: 1
+                  name: "[NAME]"
+                  description: "[DESCRIPTION]"
+                  calendarType: "[blackout/allowed]"
+                  scope: project
+                  project: "[PROJECT]"
+                  dateType: "[date,range,daily,monthly]"
+                  dateDefinition: "[DATE-DEFINITION]"
+                  enable: true
+                  allReference: true
+                  recurrent: true
+                  objects:
+                  - uuid: "[JOBUUID]"
+                    name: "[JOBNAME]"
+                  - uuid: "[JOBUUID]"
+                    name: "[JOBNAME]"
+      responses:
+        "200":
+          description: Calendar created or updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProjectCalendarsResponse"
+              examples:
+                value: {}
+  /project/{project}/calendars/{id}:
+    delete:
+      tags:
+      - Calendars
+      summary: "Delete Project Calendar [Enterprise]"
+      description: |-
+        Deletes a calendar at project scope.
+
+        Authorization required: `delete` access for `project` resource type or `admin` or `app_admin` access for `user` resource type.
+
+        Since: v41
+      operationId: apiDeleteProjectCalendar
+      parameters:
+      - name: project
+        in: path
+        description: Project Name
+        required: true
+        allowEmptyValue: false
+        schema:
+          type: string
+      - name: id
+        in: path
+        description: Calendar Id to be deleted
+        required: true
+        allowEmptyValue: false
+        schema:
+          type: string
+      responses:
+        "204":
+          description: No content
+  /system/calendars:
+    get:
+      tags:
+      - Calendars
+      summary: "List System Calendars [Enterprise]"
+      description: |-
+        Get all calendars at system scope.
+
+        Authorization required: `admin` or `app_admin` access for `user` resource type.
+
+        Since: v41
+      operationId: apiSystemCalendars
+      responses:
+        "200":
+          description: List of all system calendars
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+              examples:
+                example:
+                  value: |-
+                    [
+                      {
+                        "id": 1,
+                        "name": "[NAME]",
+                        "description": "[DESCRIPTION]",
+                        "calendarType": "[blackout/allowed]",
+                        "scope": "project",
+                        "dateType": "[date,range,daily,monthly]",
+                        "dateDefinition": "[DATE-DEFINITION]",
+                        "enable": true,
+                        "allReference": true,
+                        "recurrent": true,
+                        "objects": [
+                          {
+                            "uuid": "[JOBUUID]",
+                            "name": "[JOBNAME]"
+                          }
+                        ]
+                      }
+                    ]
+    post:
+      tags:
+      - Calendars
+      summary: "Create/Update System Calendar [Enterprise]"
+      description: |-
+        Create or update a calendar at system scope.
+        * if the ID exists, it will update the existing calendar, otherwise a new one will be created.
+
+        Authorization required: `admin` or `app_admin` access for `user` resource type.
+
+        Since: v41
+      operationId: apiLoadSystemCalendars
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+            examples:
+              update-calendar-example:
+                description: Update calendar definition with jobs
+                value:
+                  id: 1
+                  name: "[NAME]"
+                  description: "[DESCRIPTION]"
+                  calendarType: "[blackout/allowed]"
+                  scope: project
+                  dateType: "[date,range,daily,monthly]"
+                  dateDefinition: "[DATE-DEFINITION]"
+                  enable: true
+                  allReference: true
+                  recurrent: true
+                  objects:
+                  - uuid: "[JOBUUID]"
+                    name: "[JOBNAME]"
+                  - uuid: "[JOBUUID]"
+                    name: "[JOBNAME]"
+      responses:
+        "200":
+          description: Calendar created or updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProjectCalendarsResponse"
+              examples:
+                calendar-response:
+                  description: Calendar save response
+                  value:
+                    calendar:
+                      id: 1
+                      name: New Calendar
+                      description: test
+                      calendarType: blackout
+                      scope: system
+                      dateType: date
+                      dateDefinition:
+                      - 2019/12/07
+                      - 2019/12/14
+                      - 2019/12/31
+                      - 2020/01/01
+                      enable: true
+                      allReference: false
+                      recurrent: false
+                      objects:
+                      - uuid: 7ca918bd-b463-4948-96d2-796c0619c2bd
+                        name: scheduled/job
+                    saved: true
+                    msg: Saved Calendar
+  /system/calendars/{id}:
+    delete:
+      tags:
+      - Calendars
+      summary: "Delete System Calendar [Enterprise]"
+      description: |-
+        Deletes a calendar at system scope.
+
+        Authorization required: `delete` access for `project` resource type or `admin` or `app_admin` access for `user` resource type.
+
+        Since: v41
+      operationId: apiDeleteSystemCalendar
+      parameters:
+      - name: id
+        in: path
+        description: Calendar Id to be deleted
         required: true
         allowEmptyValue: false
         schema:
@@ -12914,6 +12026,1000 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/WebhookEvaluation"
+  /execution/{id}/roimetrics/available:
+    get:
+      tags:
+      - ROI
+      summary: "INCUBATING: ROI Metrics Data Available [Enterprise]"
+      description: Get result indicating whether ROI metrics data is available as
+        part of an execution.
+      operationId: getRoiMetricsDataAvailability
+      parameters:
+      - name: id
+        in: path
+        description: Execution ID
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Availability Response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RoiMetricsController.DataAvailableResponse"
+        "404":
+          description: No Data Availability Response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RoiMetricsController.DataAvailableResponse"
+  /execution/{id}/roimetrics/data:
+    get:
+      tags:
+      - ROI
+      summary: "INCUBATING: ROI Metrics Data [Enterprise]"
+      description: Get result data for ROI Metrics.
+      operationId: getRoiMetricsDataApi
+      parameters:
+      - name: wait
+        in: query
+        description: "if true and the data is not immediately available, the response\
+          \ will wait until the data is retrieved, or a timeout occurs. Otherwise\
+          \ the response may return 202 status if data must be retrieved first."
+        schema:
+          type: boolean
+      - name: id
+        in: path
+        description: Execution ID
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: "ROI Metrics data from the Execution, the format will depend\
+            \ on the data generated."
+          content:
+            application/json:
+              schema:
+                type: object
+        "202":
+          description: "Request was accepted but not fulfilled. This indicates the\
+            \ data will be retrieved asynchronously before it can be made available.\
+            \ Retry the request later to retrieve the data. See also: the `wait` parameter"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ROIDataLoadingState"
+        "404":
+          description: Data was not available.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ROIDataBasicErrorResponse"
+  /project/{project}/tour/import/{tourFolder}/{manifestFileName}:
+    post:
+      tags:
+      - Tours
+      summary: "Import Tours Archive for a Project [Enterprise]"
+      description: |-
+        Import a zip archive of Tours to a Project.
+
+        Authorization required: `admin` for the Project resource.
+      operationId: apiProjectImportTour
+      parameters:
+      - name: project
+        in: path
+        description: Project Name
+        required: true
+        schema:
+          type: string
+      - name: tourFolder
+        in: path
+        description: "Tour Folder Name: the name of the zip content folder containing\
+          \ tour.json files."
+        required: true
+        schema:
+          type: string
+      - name: manifestFileName
+        in: path
+        description: "Manifest File Name: the name of the manifest.json file within\
+          \ the archive"
+        required: true
+        schema:
+          type: string
+      requestBody:
+        description: Zip archive of Tours
+        content:
+          application/zip:
+            schema:
+              type: object
+      responses:
+        "200":
+          description: Successful
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TourManagerSuccessResponse"
+        "400":
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TourManagerErrorResponse"
+  /project/{project}/tours:
+    get:
+      tags:
+      - Tours
+      summary: "Get Project Tours [Enterprise]"
+      description: |
+        Get the manifest of tours for the project.
+
+        Authorization required: `admin` for the Project resource.
+      operationId: apiProjectToursList
+      parameters:
+      - name: project
+        in: path
+        description: Project Name
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: List
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Manifest"
+  /project/{project}/tours/resource/{path}:
+    get:
+      tags:
+      - Tours
+      summary: "Get Project Tour Resource [Enterprise]"
+      description: |-
+        Get a tour at a specific path.
+
+        Authorization required: `admin` for the Project resource.
+      operationId: apiGetProjectResource
+      parameters:
+      - name: project
+        in: path
+        description: Project Name
+        required: true
+        schema:
+          type: string
+      - name: path
+        in: path
+        description: Resource Path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: List
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Tour"
+  /project/{project}/tours/{path}:
+    post:
+      tags:
+      - Tours
+      summary: "Upload Project Tour Resource [Enterprise]"
+      description: |-
+        Upload a tour resource at a specific path.
+
+        Authorization required: `admin` for the Project resource.
+      operationId: apiProjectLoadResource
+      parameters:
+      - name: project
+        in: path
+        description: Project Name
+        required: true
+        schema:
+          type: string
+      - name: path
+        in: path
+        description: Resource Path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        description: Manifest or Tour definition
+        content:
+          application/json:
+            schema:
+              oneOf:
+              - $ref: "#/components/schemas/Manifest"
+              - $ref: "#/components/schemas/Tour"
+      responses:
+        "200":
+          description: Successful
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TourManagerSuccessResponse"
+        "400":
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TourManagerErrorResponse"
+  /system/tour/import/{tourFolder}/{manifestFileName}:
+    post:
+      tags:
+      - Tours
+      summary: "Import Tours Archive for System [Enterprise]"
+      description: |-
+        Import a zip archive of Tours to the System.
+
+        Authorization required: `app_admin` for the `system` resource.
+      operationId: apiSystemImportTour
+      parameters:
+      - name: tourFolder
+        in: path
+        description: "Tour Folder Name: the name of the zip content folder containing\
+          \ tour.json files."
+        required: true
+        schema:
+          type: string
+      - name: manifestFileName
+        in: path
+        description: "Manifest File Name: the name of the manifest.json file within\
+          \ the archive"
+        required: true
+        schema:
+          type: string
+      requestBody:
+        description: Zip archive of Tours
+        content:
+          application/zip:
+            schema:
+              type: object
+      responses:
+        "200":
+          description: Successful
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TourManagerSuccessResponse"
+        "400":
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TourManagerErrorResponse"
+  /system/tours:
+    get:
+      tags:
+      - Tours
+      summary: "Get System Tours [Enterprise]"
+      description: |
+        Get the manifest of tours for the system.
+
+        Authorization required: `app_admin` for the `system` resource.
+      operationId: apiSystemList
+      responses:
+        "200":
+          description: List
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Manifest"
+  /system/tours/resource/{path}:
+    get:
+      tags:
+      - Tours
+      summary: "Get System Tour Resource [Enterprise]"
+      description: |-
+        Get a tour at a specific path.
+
+        Authorization required: `app_admin` for the `system` resource.
+      operationId: apiGetSystemResource
+      parameters:
+      - name: path
+        in: path
+        description: Resource Path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: List
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Tour"
+  /system/tours/{path}:
+    post:
+      tags:
+      - Tours
+      summary: "Upload System Tour Resource [Enterprise]"
+      description: |-
+        Upload a system tour resource at a specific path.
+
+        Authorization required: `app_admin` for the `system` resource.
+      operationId: apiSystemLoadResource
+      parameters:
+      - name: path
+        in: path
+        description: Resource Path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        description: Manifest or Tour definition
+        content:
+          application/json:
+            schema:
+              oneOf:
+              - $ref: "#/components/schemas/Manifest"
+              - $ref: "#/components/schemas/Tour"
+      responses:
+        "200":
+          description: Successful
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TourManagerSuccessResponse"
+        "400":
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TourManagerErrorResponse"
+  /tours/endpoints:
+    get:
+      tags:
+      - Tours
+      summary: "Get Tour Endpoints List [Enterprise]"
+      description: List the endpoints usable by Tours
+      operationId: apiRundeckEndpoints
+      responses:
+        "200":
+          description: List
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+  /config/delete:
+    post:
+      tags:
+      - Configuration
+      summary: "Delete a Single Config Value [Enterprise]"
+      description: |
+        Delete a single config by key and strata.
+
+        Authorization required: `ops_admin` or `app_admin` for `system` resource.
+
+        Since: v36
+      operationId: ConfigDelete
+      requestBody:
+        description: |
+          Delete Config Request.
+
+          * `key` Required
+            * Represents the config to be deleted.
+            * Accepts: Any `string`
+          * `strata` Optional
+            * Whether the config should apply to the current server (`Server`), or to all servers in the cluster (`default`).
+            * Accepts: `Server`, `default`
+            * Default: `default`
+        content:
+          application/json:
+            schema:
+              type: object
+            examples:
+              delete-config-request:
+                description: Delete config request example
+                value:
+                  key: myCustomConfig
+                  strata: default
+      responses:
+        "200":
+          description: ConfigDelete 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+        "204":
+          description: No Content if successful
+        "403":
+          description: Unauthorized response
+  /config/get:
+    get:
+      tags:
+      - Configuration
+      summary: "Get Configuration Value [Enterprise]"
+      description: |
+        Get the value for a configuration key.
+
+        Authorization required: `ops_admin` or `app_admin` for `system` resource.
+
+        Since: v36
+      operationId: ConfigGet
+      parameters:
+      - name: key
+        in: query
+        description: Configuration key
+        required: true
+        schema:
+          type: string
+      - name: strata
+        in: query
+        description: "Storage Strata. Can be `server` to indicate the current cluster\
+          \ member, or a member UUID, or `default` or global configuration (Default\
+          \ value)."
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Result data
+          content:
+            application/json:
+              examples:
+                config-value:
+                  description: Configuration value response
+                  value:
+                    key: key.name
+                    value: config value
+                    strata: default
+        "403":
+          description: Unauthorized response
+  /config/getCategories:
+    get:
+      tags:
+      - Configuration
+      summary: "Get Configuration Categories [Enterprise]"
+      description: |
+        Get the Configuration categories.
+
+        Authorization required: `ops_admin` or `app_admin` for `system` resource.
+
+        Since: v36
+      operationId: ConfigGetCategories
+      responses:
+        "200":
+          description: |
+            Categories Result.
+
+            Result is an array of categories, which may have one level of sub-categories.
+
+            Each category has fields:
+
+            * `name` category name
+            * `isSubcat` true if it is a subcategory
+            * `parentCategory` name of parent category if it is a subcategory
+            * `childNodes` array of subcategories
+          content:
+            application/json:
+              examples:
+                categories-list:
+                  description: Configuration categories list
+                  value: |
+                    [
+                      {
+                        "name": "Plugins",
+                        "isSubcat": false,
+                        "parentCategory": null,
+                        "childNodes": [
+                          {
+                            "name": "Azure",
+                            "isSubcat": true,
+                            "parentCategory": "Plugins"
+                          },
+                          {
+                            "name": "DataDog",
+                            "isSubcat": true,
+                            "parentCategory": "Plugins"
+                          },
+                          {
+                            "name": "GCP",
+                            "isSubcat": true,
+                            "parentCategory": "Plugins"
+                          },
+                          {
+                            "name": "Jenkins",
+                            "isSubcat": true,
+                            "parentCategory": "Plugins"
+                          },
+                          {
+                            "name": "Oracle",
+                            "isSubcat": true,
+                            "parentCategory": "Plugins"
+                          },
+                          {
+                            "name": "Sensu",
+                            "isSubcat": true,
+                            "parentCategory": "Plugins"
+                          },
+                          {
+                            "name": "Sumo Logic",
+                            "isSubcat": true,
+                            "parentCategory": "Plugins"
+                          }
+                        ]
+                      },
+                      {
+                        "name": "SSO",
+                        "isSubcat": false,
+                        "parentCategory": null,
+                        "childNodes": [
+                          {
+                            "name": "Azure",
+                            "isSubcat": true,
+                            "parentCategory": "SSO"
+                          },
+                          {
+                            "name": "Okta",
+                            "isSubcat": true,
+                            "parentCategory": "SSO"
+                          },
+                          {
+                            "name": "Ping",
+                            "isSubcat": true,
+                            "parentCategory": "SSO"
+                          }
+                        ]
+                      }
+                    ]
+  /config/list:
+    get:
+      tags:
+      - Configuration
+      summary: "List All Current Configurations [Enterprise]"
+      description: |
+        List all existing configs and their properties.
+
+        Authorization required: `ops_admin` or `app_admin` for `system` resource.
+
+        Since: v36
+      operationId: ConfigList
+      responses:
+        "200":
+          description: |
+            Call was successful. A list of all configs stored using Configuration Management is returned.
+
+            _NOTE: For a complete list of all configs, reference the System Report page in Rundeck._
+          content:
+            application/json:
+              examples:
+                configs-list:
+                  description: List of configurations
+                  value: |-
+                    [
+                      {
+                        "name": "azure.clientId",
+                        "value": "test222236",
+                        "level": "default",
+                        "label": "Azure Client ID",
+                        "category": "Plugins/Azure"
+                      },
+                      {
+                        "name": "myCustomConfig",
+                        "value": "myConfigValue",
+                        "level": "default",
+                        "category": "Custom",
+                      },
+                      {
+                        "name": "myCustomConfig2",
+                        "value": "myConfigValue2",
+                        "level": "default",
+                        "category": "Custom",
+                      }
+                    ]
+        "403":
+          description: Unauthorized response
+  /config/listStoragePlugins:
+    get:
+      tags:
+      - Configuration
+      summary: "List All Currently configured Storage Plugins [Enterprise]"
+      description: |
+        List all existing configs and their properties for storage plugins.
+
+        Authorization required: `app_admin`.
+      operationId: StorageConfigList
+      responses:
+        "200":
+          description: |
+            Call was successful. A list of all configs stored using Configuration Management is returned.
+
+            _NOTE: For a complete list of all configs, reference the System Report page in Rundeck._
+          content:
+            application/json:
+              examples:
+                storage-plugins-list:
+                  description: List of storage plugins
+                  value: "[\n      {\n        \"type\": \"exampleProvider\",\n   \
+                    \     \"path\": \"keys/exampleProvider\",\n        \"extra\":\
+                    \ {\n            \"extraConfig\": \"value\"\n        },\n    \
+                    \    \"config\": {\n            \"password\": \"pass\",\n    \
+                    \        \"username\": \"user123\",\n        }\n      },\n   \
+                    \   {\n        \"type\": \"testprovider2\",\n        \"path\"\
+                    : \"keys/testprovider2\",\n        \"extra\": {\n            \"\
+                    extraConfig\": \"value\"\n        },\n        \"config\": {\n\
+                    \            \"password\": \"pass\",\n            \"username\"\
+                    : \"user123\",\n        }\n        \n      }\n]"
+        "403":
+          description: Unauthorized response
+  /config/metaList:
+    get:
+      tags:
+      - Configuration
+      summary: "List Configuration Metadata [Enterprise]"
+      description: |
+        List all known configuration key names and metadata.
+
+        Authorization required: `ops_admin` or `app_admin` for `system` resource.
+
+        Since: v36
+      operationId: ConfigMetaList
+      responses:
+        "200":
+          description: |
+            Call was successful. A list of all configuration keys is returned.
+          content:
+            application/json:
+              examples:
+                config-metadata-list:
+                  description: Configuration metadata list
+                  value: |-
+                    [
+                      {
+                        "key": "rundeck.api.tokens.duration.max",
+                        "visibility": "Advanced",
+                        "category": "API",
+                        "strata": "default",
+                        "required": false,
+                        "restart": false,
+                        "label": "API Token Duration Max",
+                        "datatype": "String",
+                        "encrypted": false,
+                        "defaultValue": "",
+                        "link": "",
+                        "description": "",
+                        "authRequired": "app_admin"
+                      },
+                      {
+                        "key": "rundeck.authRateLimiting.enabled",
+                        "visibility": "Advanced",
+                        "category": "Authentication",
+                        "strata": "default",
+                        "required": false,
+                        "restart": false,
+                        "label": "Enable authentication rate limiting feature",
+                        "datatype": "Boolean",
+                        "encrypted": false,
+                        "defaultValue": "FALSE",
+                        "link": "https://docs.rundeck.com/docs/administration/security/rateLimiting.html",
+                        "description": "Enable or disable the authentication rate limiting feature",
+                        "authRequired": "ops_admin"
+                      }
+                    ]
+        "403":
+          description: Unauthorized response
+  /config/refresh:
+    post:
+      tags:
+      - Configuration
+      summary: "Refresh Configurations from Properties File [Enterprise]"
+      description: |
+        Make the Rundeck server re-read the config properties file.
+
+        Authorization required: `ops_admin` or `app_admin` for `system` resource.
+
+        Since: v36
+      operationId: refresh
+      responses:
+        "200":
+          description: |-
+            The call was successful. Rundeck will reread the config properties file.
+
+            _NOTE: Some config changes will not go into effect after a reload, and require a full restart of Rundeck._
+          content:
+            application/json:
+              examples:
+                refresh-response:
+                  description: Configuration refresh response
+                  value:
+                    msg: Rundeck configuration refreshed
+  /config/restart:
+    post:
+      tags:
+      - Configuration
+      summary: "Restart the Rundeck Server [Enterprise]"
+      description: |-
+        Restart the server. Requires that the server container supports the operation.
+
+        Authorization required: `ops_admin` for `system` resource
+
+        Since: v36
+      operationId: restart
+      responses:
+        "200":
+          description: The call was successful. The Rundeck server will immediately
+            restart.
+          content:
+            application/json:
+              examples:
+                value: {}
+  /config/save:
+    post:
+      tags:
+      - Configuration
+      summary: "Create or Update Configurations [Enterprise]"
+      description: |
+        Create or update configs and properties.
+
+        Authorization required: `ops_admin` or `app_admin` for `system` resource.
+
+        Since: v36
+      operationId: ConfigSave
+      requestBody:
+        description: |
+          Update Config Request.
+          List of config values, each value contains:
+
+          * `key` Required
+            * Represents either a new config to be created, or an existing config to be updated.
+            * Accepts: Any `string`
+          * `value` Required
+            * The value for the desired config `key`.
+            * Accepts: Any `string`
+          * `strata` Optional
+            * Whether the config should apply to the current server (`Server`), or to all servers in the cluster (`default`).
+            * Accepts: `Server`, `default`
+            * Default: `default`
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: object
+            examples:
+              config-update-example:
+                description: Update existing configs and create new ones
+                value: |-
+                  [
+                    {
+                      "key": "myCustomConfig",
+                      "value": "newValueForCustomConfig",
+                      "strata": "default"
+                    },
+                    {
+                      "key": "myNewCustomConfig",
+                      "value": "valueOfNewCustomConfig",
+                      "strata": "default"
+                    }
+                  ]
+        required: true
+      responses:
+        "200":
+          description: All configs were successfully saved or updated. A payload reflecting
+            save or creation status is returned. `restart` will indicate if the server
+            must be restarted for some changes to take effect.
+          content:
+            application/json:
+              examples:
+                save-response:
+                  description: Configuration save response
+                  value:
+                    msg: Saved
+                    restart: true
+                    created:
+                    - myNewCustomConfig
+                    updated:
+                    - myCustomConfig
+        "400":
+          description: Bad request
+        "403":
+          description: Unauthorized response
+  /config/saveStoragePlugins:
+    post:
+      tags:
+      - Configuration
+      summary: "Create or Update Storage Plugins [Enterprise]"
+      description: "Create or update configs and properties for storage plugins.\n\
+        \nAuthorization required: `app_admin`. \n\n"
+      operationId: StorageConfigSave
+      requestBody:
+        description: |
+          Update Storage Plugin Config Request.
+          Configured plugins to be saved should be specified in the `plugins` array. Plugins that have been deleted should be specified in the `removedPlugins` array.
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: object
+            examples:
+              storage-plugin-save-example:
+                description: Save and remove storage plugins
+                value:
+                  plugins:
+                    "0":
+                      type: exampleProvider1
+                      path: keys/exampleProvider1
+                      extra:
+                        extraConfig: value
+                      config:
+                        password: pass
+                        username: user123
+                  removedPlugins:
+                    "0":
+                      type: exampleProvider2
+                      path: keys/exampleProvider2
+        required: true
+      responses:
+        "200":
+          description: All configs were successfully saved or updated. A payload reflecting
+            save or creation status is returned.
+          content:
+            application/json:
+              examples:
+                storage-save-response:
+                  description: Storage plugins save response
+                  value:
+                    msg: Saved
+                    restart: true
+                    created:
+                    - myNewCustomConfig
+                    updated:
+                    - myCustomConfig
+                    deleted:
+                    - myDeletedCustomConfig
+        "400":
+          description: Bad request
+        "403":
+          description: Unauthorized response
+  /job/{id}/tags:
+    get:
+      tags:
+      - Jobs
+      summary: Get Job Tags (Enterprise)
+      description: |
+        Returns the list of tags for a job.
+
+        Since: v46
+      operationId: job
+      parameters:
+      - name: id
+        in: path
+        description: Job ID
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+  /project/{project}/jobTags/query:
+    get:
+      tags:
+      - Jobs
+      summary: "Query Project Job Tags [Enterprise]"
+      description: "Returns the list of available tags, along with the count of jobs\
+        \ per each tag, for the job \nquery result received.\n\nSince: v46\n"
+      operationId: query
+      parameters:
+      - name: sortOrders
+        in: query
+        schema:
+          type: array
+          items:
+            $ref: "#/components/schemas/SortOrder"
+      - name: jobFilter
+        in: query
+        schema:
+          type: string
+      - name: jobExactFilter
+        in: query
+        schema:
+          type: string
+      - name: projFilter
+        in: query
+        schema:
+          type: string
+      - name: groupPath
+        in: query
+        schema:
+          type: string
+      - name: groupPathExact
+        in: query
+        schema:
+          type: string
+      - name: descFilter
+        in: query
+        schema:
+          type: string
+      - name: loglevelFilter
+        in: query
+        schema:
+          type: string
+      - name: idlist
+        in: query
+        schema:
+          type: string
+      - name: scheduledFilter
+        in: query
+        schema:
+          type: boolean
+      - name: scheduleEnabledFilter
+        in: query
+        schema:
+          type: boolean
+      - name: executionEnabledFilter
+        in: query
+        schema:
+          type: boolean
+      - name: serverNodeUUIDFilter
+        in: query
+        schema:
+          type: string
+      - name: daysAhead
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: runJobLaterFilter
+        in: query
+        schema:
+          type: boolean
+      - name: max
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: offset
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: sortBy
+        in: query
+        schema:
+          type: string
+      - name: sortOrder
+        in: query
+        schema:
+          type: string
+      - name: inputParamMap
+        in: query
+        schema:
+          type: object
+          additionalProperties:
+            type: object
+      - name: paginatedRequired
+        in: query
+        schema:
+          type: boolean
+      - name: project
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                tag-counts:
+                  description: Map of tag names to job counts
+                  value:
+                    tag1: 5
+                    tag2: 3
+                    tag3: 12
 components:
   schemas:
     ActionAuthorization:
@@ -13002,6 +13108,29 @@ components:
           type: integer
           description: "Order of the highlighted plugin. Since: v51"
           format: int32
+        outputs:
+          type: array
+          description: "Values a step plugin computes and exposes for reference by\
+            \ a Conditional Logic step, including output-only values. Omitted when\
+            \ the plugin exposes none."
+          items:
+            $ref: "#/components/schemas/ApiPluginOutput"
+    ApiPluginOutput:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Output name; the value a condition references as "<Step Label>
+            - <name>"
+        group:
+          type: string
+          description: Data context group the value is captured under
+        description:
+          type: string
+          description: Description of the output
+        title:
+          type: string
+          description: "Title of the property that declares the output, for display"
     ApiRunAdhocRequest:
       type: object
       properties:
@@ -13143,6 +13272,191 @@ components:
         lastUpdated:
           type: string
           format: date-time
+    ClusterInfoResponse:
+      type: object
+      properties:
+        members:
+          type: array
+          items:
+            $ref: "#/components/schemas/ClusterMemberEntry"
+        heartbeatIntervalMs:
+          type: integer
+          description: "Heartbeat interval, in milliseconds"
+          format: int64
+        memberTtlMs:
+          type: integer
+          description: "Time without a heartbeat before a member is considered dead,\
+            \ in milliseconds"
+          format: int64
+        execIntervalMs:
+          type: integer
+          description: "Execution takeover check interval, in milliseconds"
+          format: int64
+        serverUUID:
+          type: string
+          description: This server's own UUID
+      description: Cluster Info
+    ClusterMemberEntry:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Internal message id
+          format: int64
+        dateCreated:
+          type: string
+          format: date-time
+        lastUpdated:
+          type: string
+          description: Time this member last sent a heartbeat
+          format: date-time
+        topic:
+          type: string
+        type:
+          type: string
+        sender:
+          type: string
+          description: Member server UUID
+        destination:
+          type: string
+        state:
+          type: string
+          description: Internal message lifecycle state (not the member health/alive
+            status - see body.isAlive for that)
+        namespace:
+          type: string
+        body:
+          description: Member sysinfo
+          allOf:
+          - $ref: "#/components/schemas/ClusterMemberInfoResponse"
+      description: Cluster member message envelope
+    ClusterMemberInfoResponse:
+      type: object
+      properties:
+        schedulerThreadRatio:
+          type: number
+          description: Ratio of currently running scheduler jobs to the scheduler
+            thread pool size
+          format: double
+        schedulerRunningCount:
+          type: integer
+          format: int32
+        threadPoolSize:
+          type: integer
+          format: int32
+        uptime:
+          type: number
+          description: |-
+            Seconds since this member's message record was created. Fractional:
+            computed as (now - dateCreated) in milliseconds / 1000, without integer division.
+          format: double
+        serverUUID:
+          type: string
+        nodeName:
+          type: string
+        nodeHostname:
+          type: string
+          description: Hostname to use for SSH connections to this member (may differ
+            from nodeName in containerized environments)
+        load:
+          type: number
+          description: System CPU load average
+          format: double
+        processors:
+          type: integer
+          format: int32
+        executionModeActive:
+          type: boolean
+        durationTime:
+          type: integer
+          description: JVM uptime in milliseconds
+          format: int64
+        scheduledJobs:
+          type: integer
+          format: int32
+        scheduledEnabledJobs:
+          type: integer
+          format: int32
+        base:
+          type: string
+        memfree:
+          type: integer
+          format: int64
+        memmax:
+          type: integer
+          format: int64
+        memtotal:
+          type: integer
+          format: int64
+        allocated:
+          type: number
+          description: Ratio of total to max memory
+          format: double
+        heapusage:
+          type: number
+          description: Ratio of used (total - free) to total memory
+          format: double
+        threadsactive:
+          type: integer
+          format: int32
+        build:
+          type: string
+        version:
+          type: string
+        implementationVersion:
+          type: string
+        vmName:
+          type: string
+        vmVendor:
+          type: string
+        javaVendor:
+          type: string
+        javaVersion:
+          type: string
+        username:
+          type: string
+          description: "SSH connection user, only present when framework.ssh.user\
+            \ is configured"
+        osArch:
+          type: string
+        osName:
+          type: string
+        osVersion:
+          type: string
+        osFamily:
+          type: string
+        tags:
+          type: array
+          description: "Server tags, only present when rundeck.server.tags is configured"
+          items:
+            type: string
+        remoteExecutionProfiles:
+          type: array
+          items:
+            type: object
+            additionalProperties:
+              type: object
+        remoteExecution:
+          type: object
+          additionalProperties:
+            type: object
+        logFileStorage:
+          type: object
+          additionalProperties:
+            type: object
+          description: "Log storage plugin stats, only present when a log storage\
+            \ plugin is active"
+        messagingKey:
+          type: string
+          description: "Messaging public key, only present when messaging encryption\
+            \ is enabled"
+        runnerReportCompressionEnabled:
+          type: boolean
+          description: Only present (and true) when runner report compression is enabled
+        isAlive:
+          type: boolean
+          description: Only present (and true) when this member is currently alive
+      description: Cluster Member Info
     Condition:
       required:
       - condition
