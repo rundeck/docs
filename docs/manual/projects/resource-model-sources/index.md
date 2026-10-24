@@ -48,7 +48,7 @@ project.resources.loadThreads=10
 - Nodes from the Node Sources are always merged in the order the Node Sources are defined, so the resulting node set is the same as with a serial load.
 - Each Node Source that fails is reported separately, and does not prevent the others from loading.
 - A new Node Source query starts only after the earliest outstanding Node Source finishes, so one slow Node Source can leave the other threads idle and reduce the speedup.
-- At most 20 Node Sources are queried in parallel at once across all projects. Values above `20` have no further effect.
+- At most 20 Node Sources are queried in parallel at once in each project. Values above `20` have no further effect. Each project has its own threads, so several projects loading at the same time can make more concurrent requests in total.
 
 :::warning Concurrent requests
 A higher value increases the number of simultaneous requests made to the systems behind your Node Sources, such as cloud provider APIs, which may throttle or reject them. Increase the value gradually.
