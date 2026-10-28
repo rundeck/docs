@@ -38,13 +38,13 @@ If a Node Source is selected that is not in the list above, the following error 
 By default the Node Sources of a project are queried one at a time. For a project with many Node Sources this can make each reload slow.
 
 Set **Load Threads** in the project's **Edit Configuration** page, under **Node Sources**, to query several Node Sources at the same time.
-This is equivalent to the project property:
+Parallel loading is opt-in. This example turns it on with 10 threads, using the project property behind **Load Threads**:
 
 ```properties
 project.resources.loadThreads=10
 ```
 
-- The default is `1`, which queries Node Sources one at a time. Values of `1` or less, or values that are not a number, query them one at a time.
+- The default is `1`, which queries Node Sources one at a time. Leave the property unset to keep that behavior. Values of `1` or less, or values that are not a number, query them one at a time.
 - Nodes from the Node Sources are always merged in the order the Node Sources are defined, so the resulting node set is the same as with a serial load.
 - Each Node Source that fails is reported separately, and does not prevent the others from loading.
 - A new Node Source query starts only after the earliest outstanding Node Source finishes, so one slow Node Source can leave the other threads idle and reduce the speedup.
