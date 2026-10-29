@@ -19,18 +19,6 @@ All of the changes previously listed on this page are included in 6.3.0. See the
 Runbook Automation SaaS will receive the remaining 6.3.0 changes in its next deployment. This page will resume listing new changes after that deployment.
 
 
-## PowerShell Preserves Unresolved File Option References
-
-Fixed a regression introduced in 6.2.0 where an optional File option with no
-uploaded file could reach a PowerShell script as an empty string. Windows jobs
-using the WinRM PowerShell shell now receive the unresolved
-`${file.OptionName}` reference literally, as they did before 6.2. Windows
-`cmd` jobs retain the double-quote handling added in 6.2 for paths and values
-containing spaces.
-
-For compatibility across versions, PowerShell scripts can treat both an empty
-string and the literal `${file.OptionName}` as "no file provided."
-
 ## Subscribe to Updates
 
 Stay informed about Rundeck development by subscribing to a feed:
