@@ -1,4 +1,4 @@
-# Release History
+# MCP Server Release History
 
 This page gives a high-level summary of each Rundeck MCP Server release. For the complete list of changes in every version, including dependency updates and contributor credits, see the full [CHANGELOG](https://github.com/rundeck/mcp/blob/main/CHANGELOG.md) on GitHub.
 
