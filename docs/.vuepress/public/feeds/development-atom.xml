@@ -3,7 +3,7 @@
   <title>Rundeck Development Updates</title>
   <link href="https://docs.rundeck.com/feeds/development.xml" rel="self" />
   <link href="https://docs.rundeck.com/docs" />
-  <updated>2026-11-03T20:14:59.121Z</updated>
+  <updated>2026-11-03T20:30:16.481Z</updated>
   <id>https://docs.rundeck.com/feeds/development</id>
   <subtitle>Recent merged pull requests and development updates from Rundeck</subtitle>
   <entry>
@@ -14,32 +14,11 @@
     <content type="text">Bypass the replica query cache (Merged: Oct 27, 2026)</content>
   </entry>
   <entry>
-    <title>Build remco with Go 1.27.3 for CVE-2026-111943 (eMudhra)</title>
-    <link href="https://docs.rundeck.com/docs/history/updates/" />
-    <id>rundeck-pr-rundeck-10727</id>
-    <updated>2026-10-22T19:27:00.000Z</updated>
-    <content type="text">Build remco with Go 1.27.3 for CVE-2026-111943 (eMudhra) (Merged: Oct 22, 2026)</content>
-  </entry>
-  <entry>
     <title>Restrict Git SCM remotes and hide transport errors</title>
     <link href="https://docs.rundeck.com/docs/history/updates/" />
     <id>rundeck-pr-rundeck-10688</id>
     <updated>2026-10-15T15:10:15.000Z</updated>
     <content type="text">Restrict Git SCM remotes and hide transport errors (Merged: Oct 15, 2026)</content>
-  </entry>
-  <entry>
-    <title>Web UI time zone data updated for 2026 Canadian DST changes</title>
-    <link href="https://docs.rundeck.com/docs/history/updates/" />
-    <id>rundeck-pr-rundeck-10695</id>
-    <updated>2026-10-14T19:24:45.000Z</updated>
-    <content type="text">Web UI time zone data updated for 2026 Canadian DST changes (Merged: Oct 14, 2026)</content>
-  </entry>
-  <entry>
-    <title>Docker images updated with 2026 Canadian time zone data</title>
-    <link href="https://docs.rundeck.com/docs/history/updates/" />
-    <id>rundeck-pr-rundeck-10698</id>
-    <updated>2026-10-14T19:24:26.000Z</updated>
-    <content type="text">Docker images updated with 2026 Canadian time zone data (Merged: Oct 14, 2026)</content>
   </entry>
   <entry>
     <title>Keep exit code for workflow step plugins on remote runner</title>

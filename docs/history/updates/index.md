@@ -1,7 +1,7 @@
 ---
 title: Recent Updates
 description: Latest merged changes from the Rundeck development team
-date: 2026-11-03T20:14:59.109Z
+date: 2026-11-03T20:30:16.466Z
 feed: true
 index: true
 ---
@@ -20,34 +20,10 @@ This page shows recently merged pull requests from both the Runbook Automation p
 
   Cluster members no longer fail job start or runner health checks when another member has deleted a runner replica.
 
-#### ::circle-dot:: Build remco with Go 1.27.3 for CVE-2026-111943 (eMudhra)  [PR #10727](https://github.com/rundeck/rundeck/pull/10727)
-
-
-  Docker images: remco is now built with Go 1.27.3 to address CVE-2026-111943. Rebuild and republish images; customers should pull updated tags.
-
-
-  Made with [Cursor](https://cursor.com)
-
 #### ::circle-dot:: Restrict Git SCM remotes and hide transport errors  [PR #10688](https://github.com/rundeck/rundeck/pull/10688)
 
 
   Git SCM import and export can optionally restrict remote URL schemes and reject hosts that resolve to non-public addresses. Both controls are off by default, so existing Git remotes keep working. Git transport errors shown in the UI and API are now a generic message.
-
-#### ::circle-dot:: Web UI time zone data updated for 2026 Canadian DST changes  [PR #10695](https://github.com/rundeck/rundeck/pull/10695)
-
-
-  **Fixed:** Updated the timezone library bundled with the web UI (moment 2.31.0, moment-timezone 0.6.5 with IANA tzdb 2026e). Dates and times on the web UI pages that use it (job scheduler, date/time picker and run-later, activity, job and execution views) are now correct for the 2026 Canadian time zone changes that take effect November 1, 2026: British Columbia (`America/Vancouver`), Alberta (`America/Edmonton`), Northwest Territories (`America/Inuvik`), and Manitoba (`America/Winnipeg`).
-  
-  **Note — may still be affected:** This change covers only the timezone data bundled with the web UI. **Server-side job scheduling** uses the timezone data of the Java runtime that Rundeck runs on, and that depends on how Rundeck is installed:
-  - **Official Docker images:** fixed separately in #10698, which patches the image&#39;s Java runtime to tzdb 2026e. Restart or redeploy on the updated image before November 1 so schedules are recalculated.
-  - **Installs on your own OS (DEB/RPM/WAR) and self-hosted runners:** these use whatever Java runtime is installed on that host. As of mid-October 2026, no published Java build includes tzdb 2026e, and installing the OS `tzdata` package doesn&#39;t update Java. Use the vendor&#39;s timezone updater tool, or temporarily schedule affected jobs in an equivalent fixed-offset zone until the vendor ships 2026e.
-  
-  Until the Java runtime has tzdb 2026e or later, scheduled jobs in `America/Edmonton`, `America/Inuvik`, or `America/Winnipeg` (and `America/Vancouver` on runtimes older than 2026b) may run one hour off from November 2, 2026. Interim workaround: schedule those jobs in an equivalent fixed-offset zone (`America/Regina` for Alberta and the Northwest Territories, `America/Panama` for Manitoba), and switch back once the runtime is updated.
-
-#### ::circle-dot:: Docker images updated with 2026 Canadian time zone data  [PR #10698](https://github.com/rundeck/rundeck/pull/10698)
-
-
-  **Fixed:** The official Docker images now include IANA tzdb 2026e timezone data for the Java runtime. Scheduled jobs in `America/Edmonton`, `America/Inuvik` and `America/Winnipeg` (Alberta, Northwest Territories, Manitoba) keep firing at the correct local time after these provinces stop observing DST on November 1, 2026. Restart or redeploy Rundeck on the updated image before November 1 so schedules are recalculated.
 
 #### ::circle-dot:: Keep exit code for workflow step plugins on remote runner 
 

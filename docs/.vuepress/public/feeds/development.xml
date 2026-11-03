@@ -5,7 +5,7 @@
     <link>https://docs.rundeck.com/docs</link>
     <description>Recent merged pull requests and development updates from Rundeck</description>
     <language>en-us</language>
-    <lastBuildDate>Tue, 03 Nov 2026 20:14:59 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 03 Nov 2026 20:30:16 GMT</lastBuildDate>
     <atom:link href="https://docs.rundeck.com/feeds/development.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Bypass the replica query cache</title>
@@ -15,32 +15,11 @@
       <guid isPermaLink="false">rundeck-pr-rundeckpro-5171</guid>
     </item>
     <item>
-      <title>Build remco with Go 1.27.3 for CVE-2026-111943 (eMudhra)</title>
-      <link>https://docs.rundeck.com/docs/history/updates/</link>
-      <description>Build remco with Go 1.27.3 for CVE-2026-111943 (eMudhra) (Merged: Oct 22, 2026)</description>
-      <pubDate>Thu, 22 Oct 2026 19:27:00 GMT</pubDate>
-      <guid isPermaLink="false">rundeck-pr-rundeck-10727</guid>
-    </item>
-    <item>
       <title>Restrict Git SCM remotes and hide transport errors</title>
       <link>https://docs.rundeck.com/docs/history/updates/</link>
       <description>Restrict Git SCM remotes and hide transport errors (Merged: Oct 15, 2026)</description>
       <pubDate>Thu, 15 Oct 2026 15:10:15 GMT</pubDate>
       <guid isPermaLink="false">rundeck-pr-rundeck-10688</guid>
-    </item>
-    <item>
-      <title>Web UI time zone data updated for 2026 Canadian DST changes</title>
-      <link>https://docs.rundeck.com/docs/history/updates/</link>
-      <description>Web UI time zone data updated for 2026 Canadian DST changes (Merged: Oct 14, 2026)</description>
-      <pubDate>Wed, 14 Oct 2026 19:24:45 GMT</pubDate>
-      <guid isPermaLink="false">rundeck-pr-rundeck-10695</guid>
-    </item>
-    <item>
-      <title>Docker images updated with 2026 Canadian time zone data</title>
-      <link>https://docs.rundeck.com/docs/history/updates/</link>
-      <description>Docker images updated with 2026 Canadian time zone data (Merged: Oct 14, 2026)</description>
-      <pubDate>Wed, 14 Oct 2026 19:24:26 GMT</pubDate>
-      <guid isPermaLink="false">rundeck-pr-rundeck-10698</guid>
     </item>
     <item>
       <title>Keep exit code for workflow step plugins on remote runner</title>
