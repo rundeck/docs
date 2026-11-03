@@ -1,7 +1,7 @@
 ---
 title: Recent Updates
 description: Latest merged changes from the Rundeck development team
-date: 2026-10-28T20:16:09.027Z
+date: 2026-11-03T20:14:59.109Z
 feed: true
 index: true
 ---
@@ -58,12 +58,10 @@ This page shows recently merged pull requests from both the Runbook Automation p
 
 
   Fixed: when a workflow step plugin (for example a script-based workflow step such as a local script step) failed with a non-zero exit code, its error handler could not read the exit code: `${result.resultCode}` was empty. A handler that exported it, such as a Global Variable step, failed with `Empty value`, so the exit code could not be passed to later steps or back to a parent job through a job reference.
-
+  
   Error handlers on failed workflow step plugins now get the step&#39;s exit code in `${result.resultCode}`, the same as Command and Script node steps. This works on the local runner and on remote runners.
-
+  
   Note: with &quot;If a step fails: Run remaining steps&quot; (keepgoing) enabled, a successful error handler marks the failed step as successful. This is existing behavior. Before this fix, such handlers often failed because of the empty value, so the step stayed failed.
-
-  🤖 Generated with [Claude Code](https://claude.com/claude-code)
 
 
 
@@ -86,6 +84,6 @@ The development updates are automatically generated from both our private reposi
 
 ---
 
-**List Last updated:** 2026-10-28
+**List Last updated:** 2026-11-03
 
 

@@ -5,7 +5,7 @@
     <link>https://docs.rundeck.com/docs</link>
     <description>Recent merged pull requests and development updates from Rundeck</description>
     <language>en-us</language>
-    <lastBuildDate>Wed, 28 Oct 2026 20:16:09 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 03 Nov 2026 20:14:59 GMT</lastBuildDate>
     <atom:link href="https://docs.rundeck.com/feeds/development.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Bypass the replica query cache</title>
