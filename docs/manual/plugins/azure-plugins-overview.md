@@ -18,6 +18,7 @@ These integrations allow operations teams to provide self-service mechanisms to 
 |[**Restart Azure VM**](/manual/jobs/job-plugins/node-steps/azure.md#azure-vm-restart)|Node Step|Restarts an existing virtual machine.|
 |[**Capture VM Snapshot**](/manual/jobs/job-plugins/workflow-steps/azure.md#azure-vm-capture-snapshot)|Workflow Step|Capture a snapshot of an existing virtual machine.|
 |[**Capture VM Managed Disk Snapshot**](/manual/jobs/job-plugins/workflow-steps/azure.md#azure-vm-managed-disk-capture-snapshot)|Workflow Step|Capture a snapshot of an existing virtual machine's managed disk.|
+|[**Capture VM Managed Disk Snapshot (per node)**](/manual/jobs/job-plugins/node-steps/azure.md#azure-vm-managed-disk-capture-snapshot)|Node Step|Capture a snapshot of each target node's managed disk.|
 |[**Storage Remote Copy**](/manual/jobs/job-plugins/node-steps/azure-storage.md#remote-copy)|Node Step|Copy files between Azure Storage containers or a local filesystem.|
 |[**Storage Remove Blobs**](/manual/jobs/job-plugins/node-steps/azure-storage.md#remove-blobs)|Node Step|Remove blobs from an Azure Storage container.|
 |[**Storage List Blobs**](/manual/jobs/job-plugins/node-steps/azure-storage.md#list-blobs)|Node Step|List the blobs in an Azure Storage container.|
