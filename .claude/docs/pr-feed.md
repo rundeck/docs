@@ -131,7 +131,7 @@ npm run pr-feed -- --include-section="Customer Summary"
 | `--days` | `-d` | *(uses config)* | Number of days to look back (overrides tag-based mode) |
 | `--since-release` | | `true` | Use tag-based comparison from last self-hosted release |
 | `--labels` | `-l` | `release-notes/include` | Labels to include (space-separated) |
-| `--exclude-labels` | | `wip, do-not-publish` | Labels to exclude |
+| `--exclude-labels` | | `wip, do-not-publish` | Labels to exclude. `rc-backport-<last self-hosted version>-applied` is always excluded as well (see below) |
 | `--max-prs` | | `100` | Maximum number of PRs to fetch per repository |
 | `--include-section` | | *(none)* | Include specific section from PR body. The `npm run pr-feed` script passes `--include-section="Release Notes"` by default; when invoking `pr-feed.mjs` directly, no default applies. |
 | `--output-dir` | | `docs/history/updates` | Output directory for markdown page |
@@ -151,7 +151,8 @@ npm run pr-feed -- --include-section="Customer Summary"
 5. Finds all commits between these points and extracts associated PRs
 6. Handles all merge strategies: merge commits, squash merges, and rebase merges
 7. Filters by `release-notes/include` label
-8. Combines results and sorts by merge date
+8. Drops PRs labeled `rc-backport-<last self-hosted version>-applied` (for example, `rc-backport-6.3.0-applied`). These were cherry-picked onto the release branch and already shipped in that release, but when the release tag has diverged from main (as when self-hosted ships ahead of SaaS), their original commits on main still fall in the comparison range. `notes.mjs` applies the same rule, because the filter lives in `fetchPRsBetweenTags` in `pr-utils.mjs`.
+9. Combines results and sorts by merge date
 
 **Why Tag-Based?**
 - More accurate than date-based queries
