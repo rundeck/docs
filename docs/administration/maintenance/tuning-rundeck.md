@@ -1,7 +1,7 @@
 # Tuning Rundeck
 
 ::: tip Rundeck 6.0 Memory Requirements
-**Rundeck 6.0** upgrades to **Grails 7** and **Spring Boot 3**, which increases baseline JVM memory usage compared to 5.x. If you are upgrading from an earlier version, review the [6.0 upgrade notes on JVM heap and memory](/upgrading/upgrading-to-6.0.md#jvm-heap-and-memory) and plan to validate and adjust your memory settings after upgrade. Default package and container memory settings have been raised accordingly, but custom JVM tuning may need adjustment.
+**Rundeck 6.0** upgrades to **Grails 7** and **Spring Boot 3**, which increases baseline JVM memory usage compared to 5.x. If you are upgrading from an earlier version, review the [6.0 upgrade notes on JVM heap and memory](/upgrading/upgrading-to-6.0.md#jvm-heap-and-memory) and plan to validate and adjust your memory settings after upgrade. Default package and container memory settings have been raised accordingly, but custom JVM tuning may need adjustment. When upgrading from 5.x, revisit heap sizing together with the host memory guidance in [Heap size and total host memory](#heap-size-and-total-host-memory).
 :::
 
 ### File descriptors
@@ -116,6 +116,23 @@ In **DEB** create/edit `/etc/default/rundeckd` and add below line.
 RDECK_JVM_SETTINGS="$RDECK_JVM_SETTINGS -Xmx4096m -Xms1024m"
 ```
 
+#### Heap size and total host memory
+
+`-Xmx` sets only the maximum size of the Java heap. The Rundeck process also uses memory outside the heap, including metaspace, thread stacks (each thread reserves its own stack), direct/NIO buffers, and garbage collector overhead. The total memory used by the Rundeck process is therefore larger than `-Xmx`.
+
+Jobs and commands that run locally on the Rundeck server (the local node, or local command and script steps) run as separate operating system processes. They use host memory outside the JVM entirely.
+
+Set `-Xmx` so that the host has room for the operating system, the JVM's non-heap memory, and all local job processes that may run at the same time. If the host runs out of memory, the operating system (for example the Linux OOM killer) terminates the Rundeck process. This looks different from a Java `OutOfMemoryError`: the process disappears, often with no Java stack trace in `service.log`. To confirm, check the kernel log:
+
+```bash
+dmesg -T | grep -i -E 'out of memory|killed process'
+journalctl -k | grep -i -E 'out of memory|killed process'
+```
+
+As a starting point, do not set `-Xmx` close to total RAM on servers that run many or long-lived local jobs. Size the heap from measured usage (for example via [JMX instrumentation](#jmx-instrumentation) and host-level memory monitoring) and adjust from there.
+
+Where possible, run heavy or long-running work on remote nodes or [Runners](/administration/runner/index.md) instead of locally on the Rundeck server.
+
 ### Quartz job threadCount
 
 The maximum number of threads used by Rundeck for concurrent jobs
@@ -151,6 +168,24 @@ The relation between the Java heap size allocated and threadPool size is, the mo
 It is recommended to start from low numbers like 50, 100, 200, etc. (50 is a good number to start at) These settings will depend on how much workload/jobs/memory the server will need to handle within it's environment.
 
 This threads size does not affect only to scheduled jobs but ad-hoc commands, manually triggered jobs, and health-checks.
+
+### Node dispatch thread count
+
+Jobs that dispatch to multiple nodes have a per-job **Thread Count** setting under [node dispatching](/manual/jobs/creating-jobs.md#node-dispatching-and-filtering) (`nodeThreadcount` in job definitions). It is separate from `quartz.threadPool.threadCount`.
+
+The Quartz thread pool limits how many executions run at once; each running execution holds one Quartz thread for its whole run. When a job dispatches to nodes in parallel, the execution starts its own additional threads, up to the job's thread count, and these are not counted against the Quartz pool. A single job with a high thread count across many nodes can start that many threads at once, each with its own connection and output handling, which can use significant memory.
+
+Rundeck does not enforce a maximum node thread count. To keep it under control:
+
+- Keep node thread counts proportional to available memory.
+- Account for the total across all jobs that may run at the same time, not only per job.
+- Review high values before promoting jobs to production. Job review through SCM or Terraform is a good place to catch this.
+
+### Job timeouts
+
+A [timeout](/manual/jobs/creating-jobs.md#timeout) is set per job. There is no system-wide or project-wide default, so a job without a timeout can run indefinitely and keep its Quartz thread and other resources for the whole time.
+
+Set timeouts on all production jobs, especially long-running jobs and jobs that depend on external systems, and include timeout checks in job review. The per-job [log limit](/manual/jobs/creating-jobs.md#log-limit) is a related guardrail that stops a job from producing unbounded output.
 
 ### Database connection pool
 
