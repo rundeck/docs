@@ -127,6 +127,10 @@ async function fetchPRsByMilestone(octokit, owner, repo, milestone, includeLabel
  * @returns {Promise<Array>} Array of PR objects
  */
 export async function fetchPRsBetweenTags(octokit, owner, repo, fromVersion, toVersion, includeLabels = [], excludeLabels = [], headRef = null, milestoneFallback = null) {
+  // PRs cherry-picked onto the fromVersion release branch already shipped in fromVersion,
+  // but their original commits on main still fall in the comparison range when the tags diverge
+  excludeLabels = [...excludeLabels, `rc-backport-${fromVersion}-applied`];
+
   // Try different tag naming conventions for base (from) tag
   const baseTagFormats = [`v${fromVersion}`, fromVersion, `V${fromVersion}`];
   
