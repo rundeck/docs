@@ -1,6 +1,6 @@
 ---
 title: Recent Updates
-description: Latest merged changes from the Rundeck development team
+description: New features and fixes available in Runbook Automation SaaS ahead of the next self-hosted release
 date: {{currentDate}}
 feed: true
 index: true
@@ -8,17 +8,17 @@ index: true
 
 # Recent Updates
 
-Stay up to date with the latest changes and improvements from the Runbook Automation development team.  
+Runbook Automation SaaS receives new features and fixes in regular updates. The updates below are already live in SaaS and will be included in the next self-hosted release of Runbook Automation and Rundeck.
 
-This page shows recently merged pull requests from both the Runbook Automation product repository and the open source Rundeck repository {{periodDescription}}{{releaseInfo}}.
+{% if releaseInfo %}For everything in the current self-hosted version, see the {{releaseInfo}}.{% endif %}
 
-## Recent Changes
+## Available Now in SaaS
 
 {% if prs.length === 0 %}
-*No new updates to report since the last release.*
+*No new updates yet. Check back soon.*
 {% else %}
 {% for pr in prs -%}
-#### ::circle-dot:: {{ pr.cleanTitle }} {% if pr.repoName === 'rundeck' %} [PR #{{ pr.number }}]({{ pr.prUrl }}){% endif %}
+### ::circle-dot:: {{ pr.cleanTitle }} {% if pr.repoName === 'rundeck' %} [PR #{{ pr.number }}]({{ pr.prUrl }}){% endif %}
 
 {% if pr.sectionContent %}
 {{ pr.sectionContent }}
@@ -33,14 +33,11 @@ Stay informed about Rundeck development by subscribing to a feed:
 - [RSS Feed](https://docs.rundeck.com/docs/feeds/development.xml)
 - [Atom Feed](https://docs.rundeck.com/docs/feeds/development-atom.xml)
 
-These feeds are updated regularly to highlight changes that are available in Runbook Automation SaaS and will be included in upcoming Self Hosted releases.
+The feeds are updated as new features and fixes reach Runbook Automation SaaS.
 
 ## About These Updates
 
-
-The development updates are automatically generated from both our private repository for the commercial product and the public open source repository. These changes have been merged since the last GA release and provide insight into what's coming in the next Self Hosted release.
-
-**Note**: These updates reflect changes merged since the last GA release. Self-hosted customers should refer to the [Release Notes](/history/) section for version-specific updates applicable to their installation.
+This page is generated from changes in both the Runbook Automation product and the open source Rundeck project. It gives self-hosted customers an early look at what is coming in their next upgrade. For version-specific details, see the [Release Notes](/history/).
 
 ---
 
