@@ -3,9 +3,9 @@
   <channel>
     <title>Rundeck Development Updates</title>
     <link>https://docs.rundeck.com/docs</link>
-    <description>Recent merged pull requests and development updates from Rundeck</description>
+    <description>New features and fixes available in Runbook Automation SaaS ahead of the next self-hosted release</description>
     <language>en-us</language>
-    <lastBuildDate>Tue, 03 Nov 2026 20:30:16 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 04 Nov 2026 15:31:32 GMT</lastBuildDate>
     <atom:link href="https://docs.rundeck.com/feeds/development.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Bypass the replica query cache</title>

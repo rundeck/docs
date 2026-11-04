@@ -3,9 +3,9 @@
   <title>Rundeck Development Updates</title>
   <link href="https://docs.rundeck.com/feeds/development.xml" rel="self" />
   <link href="https://docs.rundeck.com/docs" />
-  <updated>2026-11-03T20:30:16.481Z</updated>
+  <updated>2026-11-04T15:31:32.178Z</updated>
   <id>https://docs.rundeck.com/feeds/development</id>
-  <subtitle>Recent merged pull requests and development updates from Rundeck</subtitle>
+  <subtitle>New features and fixes available in Runbook Automation SaaS ahead of the next self-hosted release</subtitle>
   <entry>
     <title>Bypass the replica query cache</title>
     <link href="https://docs.rundeck.com/docs/history/updates/" />
