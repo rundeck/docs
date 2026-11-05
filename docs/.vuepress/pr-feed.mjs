@@ -152,7 +152,7 @@ const CONFIG = {
   feedsDir: path.join(__dirname, '../.vuepress/public/feeds'),
   siteUrl: 'https://docs.rundeck.com',
   feedTitle: 'Rundeck Development Updates',
-  feedDescription: 'Recent merged pull requests and development updates from Rundeck'
+  feedDescription: 'New features and fixes available in Runbook Automation SaaS ahead of the next self-hosted release'
 };
 
 /**
@@ -295,11 +295,11 @@ function generateMarkdown(prs) {
       day: 'numeric',
       timeZone: 'UTC'
     });
-    periodDescription = `merged since the last self-hosted release`;
-    releaseInfo = ` of [${releaseVersion}](/history/6_x/version-${releaseVersion}.md) on ${releaseDate}`;
+    periodDescription = `since the ${releaseVersion} self-hosted release`;
+    releaseInfo = `[${releaseVersion} release notes](/history/6_x/version-${releaseVersion}.md)`;
   } else {
     const daysDiff = Math.floor((now - CONFIG.sinceDate) / (1000 * 60 * 60 * 24));
-    periodDescription = `merged in the last ${daysDiff} days`;
+    periodDescription = `from the last ${daysDiff} days`;
   }
   
   // Prepare PR data for template

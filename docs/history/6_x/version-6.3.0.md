@@ -12,6 +12,8 @@ feed:
 
 # 6.3.0 Release Notes
 
+<VidStack src="youtube/Lvak1PxVaIc" poster="https://img.youtube.com/vi/Lvak1PxVaIc/maxresdefault.jpg"/>
+
 ## Overview
 
 Rundeck 6.3.0 makes Conditional Logic generally available, and also focuses on security hardening, upcoming timezone changes, and reliability fixes.
@@ -40,8 +42,6 @@ If you run Rundeck or Runbook Automation from the official Docker images, upgrad
 ::: warning Behavior change
 `${job.serverUrl}` no longer ends with a trailing slash. Job steps that use `${job.serverUrl}api/...` must be updated to `${job.serverUrl}/api/...`.
 :::
-
-<!-- <VidStack src="youtube/REPLACE" poster="https://img.youtube.com/vi/REPLACE/maxresdefault.jpg"/> -->
 
 ## Runbook Automation Updates
 
