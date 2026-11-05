@@ -229,10 +229,10 @@ The `option.NAME` variable will contain a unique ID identifying the uploaded fil
 `file.NAME.sha` will be the SHA256 hash of the file.
 
 When an optional File option has no uploaded file, `${file.NAME}` remains
-unresolved. If it is passed as an argument to a script on a Windows node using
-the WinRM PowerShell shell, the script receives the literal `${file.NAME}`.
-Scripts that run across Rundeck versions should treat both that literal value
-and an empty string as "no file provided."
+unresolved. If it is passed through a node executor that evaluates the remote
+command in PowerShell, the script receives the literal `${file.NAME}`. Scripts
+that run across Rundeck versions should treat both that literal value and an
+empty string as "no file provided."
 
 ### Multiline Text Option Type
 
@@ -412,8 +412,9 @@ Note: for Multiline Text options, some shells like Bash will not expand a variab
 ::: tip
 Rundeck quotes expanded arguments for the target shell:
 
-- Unix shells and the WinRM PowerShell shell use single quotes. Embedded single
-  quotes are escaped for the selected shell.
+- Unix shells and PowerShell-aware node executors use single quotes. This
+  includes WinRM PowerShell, the PowerShell Runner executor, and AWS SSM on
+  Windows. Embedded single quotes are escaped for the selected shell.
 - Windows `cmd` uses double quotes so paths containing spaces remain one
   argument.
 - Setting the node attribute `shell-escaping-interpreter` or the project
