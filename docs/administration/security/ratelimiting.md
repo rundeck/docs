@@ -63,11 +63,12 @@ Configuration Parameters:
    ![rate-limiting-jmx-monitor](/assets/img/rate-limiting-jmx-monitor.png)
 System admin can use their monitor tools to capture the Cache overflow event.
 
-5. `rundeck.apiRateLimiting.include` - A string of semicolon separated Rate Limiter algorithm names. It defines which Rate Limiter algorithm will be applied. We have three different Rate Limiter algorithms: Session-Based, AuthToken-Based and Client IP Based, we use this parameter to let system admin choose the desired Rate Limiter algorithm. The valid algorithm names are:
+5. `rundeck.apiRateLimiting.include` - A string of semicolon separated Rate Limiter algorithm names. It defines which Rate Limiter algorithm will be applied. We have four different Rate Limiter algorithms: Session-Based, AuthToken-Based, Client IP Based, and Webhook Trigger. Use this parameter to choose the desired Rate Limiter algorithm. The valid algorithm names are:
    
     - `rundeckpro.security.rateLimit.AuthTokenApiRateLimiter` - This rate limiter will apply rate limiting on requests per Auth Token. 
     - `rundeckpro.security.rateLimit.SessionApiRateLimiter` - This rate limiter will apply rate limiting on requests per authenticated user session
     - `rundeckpro.security.rateLimit.ClientIPApiRateLimiter` - This rate limiter will apply rate limiting on requests per client IP address
+    - `rundeckpro.security.rateLimit.WebhookTokenApiRateLimiter` - This rate limiter counts webhook trigger requests. See [Webhook Trigger Rate Limiting](#webhook-trigger-rate-limiting).
 
     Here are some samples of valid settings:
     ```
@@ -82,3 +83,38 @@ System admin can use their monitor tools to capture the Cache overflow event.
 
     rundeck.apiRateLimiting.include = rundeckpro.security.rateLimit.AuthTokenApiRateLimiter;rundeckpro.security.rateLimit.SessionApiRateLimiter
     ```
+
+## Webhook Trigger Rate Limiting
+
+:::enterprise
+:::
+
+Webhook Trigger Rate Limiting counts `POST /api/<version>/webhook/<token>`. Every webhook token on the instance spends the same ceiling. It does not count the webhook administration API under `/api/<version>/project/<project>/webhook`.
+
+The API token ceiling, `rundeck.apiRateLimiting.rate`, is not used for webhook triggers. Webhook triggers use `rundeck.apiRateLimiting.webhook.rate`. The refill window and the cache size stay on the shared API rate-limit settings.
+
+The limiter is off unless all of the following are true:
+
+- `rundeck.apiRateLimiting.enabled=true`
+- `rundeck.apiRateLimiting.include` contains `rundeckpro.security.rateLimit.WebhookTokenApiRateLimiter`
+- `rundeck.apiRateLimiting.webhook.rate` is a positive integer
+
+If the webhook rate is missing or not a positive integer, webhook triggers are not limited. There is no default ceiling.
+
+Example, 30 webhook trigger requests per 60 seconds for the whole instance:
+
+```
+rundeck.apiRateLimiting.enabled=true
+rundeck.apiRateLimiting.refillWindowInSeconds=60
+rundeck.apiRateLimiting.cacheSize=1000
+rundeck.apiRateLimiting.include=rundeckpro.security.rateLimit.AuthTokenApiRateLimiter;rundeckpro.security.rateLimit.WebhookTokenApiRateLimiter
+rundeck.apiRateLimiting.webhook.rate=30
+```
+
+`30` in that example is not a recommended production value. Choose the ceiling for the instance.
+
+Over the limit, the filter returns HTTP 429 and a `Retry-After` header. The window is fixed. Requests are accepted again when `rundeck.apiRateLimiting.refillWindowInSeconds` elapses.
+
+The path is percent-decoded once before it is matched. `POST /api/60/web%68ook/<token>` is the same trigger as `POST /api/60/webhook/<token>`. A `#name` suffix on the token is not a separate webhook and does not get its own ceiling.
+
+Set the properties in `rundeck-config.properties`, or add `rundeck.apiRateLimiting.webhook.rate` as a custom property in System Configuration. There is no dedicated field for it. The `include` list is read when the rate-limit filter starts, so restart after adding `WebhookTokenApiRateLimiter`. After that restart, a System Configuration save can change `rundeck.apiRateLimiting.webhook.rate` without another restart.

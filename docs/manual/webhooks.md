@@ -87,6 +87,15 @@ log4j.appender.webhook.layout=org.apache.log4j.PatternLayout
 log4j.appender.webhook.layout.ConversionPattern=[%d{ISO8601}] %-5p %c{2} - %m%n
 ```  
 
+## Webhook request limit
+
+:::enterprise
+:::
+
+Runbook Automation can limit how many webhook trigger calls the instance accepts. Every webhook token shares one ceiling. Calls over the ceiling receive HTTP 429 and a `Retry-After` header. The webhook administration pages and the webhook admin API are not counted.
+
+The limit is off until it is configured. See [Webhook Trigger Rate Limiting](/administration/security/ratelimiting.md#webhook-trigger-rate-limiting).
+
 ## Disable Webhooks
 :::tip
 Webhooks are on by default as of `3.2.0`. They can be disabled by following the following instructions.
