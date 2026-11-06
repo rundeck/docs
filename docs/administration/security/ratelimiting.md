@@ -86,35 +86,17 @@ System admin can use their monitor tools to capture the Cache overflow event.
 
 ## Webhook Trigger Rate Limiting
 
-:::enterprise
-:::
+Counts `POST /api/<version>/webhook/<token>`. All webhook tokens share one bucket. The webhook admin API is not counted. `rundeck.apiRateLimiting.rate` does not apply here.
 
-Webhook Trigger Rate Limiting counts `POST /api/<version>/webhook/<token>`. Every webhook token on the instance spends the same ceiling. It does not count the webhook administration API under `/api/<version>/project/<project>/webhook`.
-
-The API token ceiling, `rundeck.apiRateLimiting.rate`, is not used for webhook triggers. Webhook triggers use `rundeck.apiRateLimiting.webhook.rate`. The refill window and the cache size stay on the shared API rate-limit settings.
-
-The limiter is off unless all of the following are true:
-
-- `rundeck.apiRateLimiting.enabled=true`
-- `rundeck.apiRateLimiting.include` contains `rundeckpro.security.rateLimit.WebhookTokenApiRateLimiter`
-- `rundeck.apiRateLimiting.webhook.rate` is a positive integer
-
-If the webhook rate is missing or not a positive integer, webhook triggers are not limited. There is no default ceiling.
-
-Example, 30 webhook trigger requests per 60 seconds for the whole instance:
+The limiter stays off until `rundeck.apiRateLimiting.enabled=true`, `include` lists `rundeckpro.security.rateLimit.WebhookTokenApiRateLimiter`, and `rundeck.apiRateLimiting.webhook.rate` is a positive integer. Unset or `0` means no webhook limit. The window is `rundeck.apiRateLimiting.refillWindowInSeconds`. Over the limit the response is HTTP 429 with `Retry-After`.
 
 ```
 rundeck.apiRateLimiting.enabled=true
 rundeck.apiRateLimiting.refillWindowInSeconds=60
-rundeck.apiRateLimiting.cacheSize=1000
 rundeck.apiRateLimiting.include=rundeckpro.security.rateLimit.AuthTokenApiRateLimiter;rundeckpro.security.rateLimit.WebhookTokenApiRateLimiter
 rundeck.apiRateLimiting.webhook.rate=30
 ```
 
-`30` in that example is not a recommended production value. Choose the ceiling for the instance.
+`30` is an example: 30 trigger calls per window for the whole instance. Restart after adding the class to `include`. A later change to `webhook.rate` in System Configuration applies without another restart.
 
-Over the limit, the filter returns HTTP 429 and a `Retry-After` header. The window is fixed. Requests are accepted again when `rundeck.apiRateLimiting.refillWindowInSeconds` elapses.
-
-The path is percent-decoded once before it is matched. `POST /api/60/web%68ook/<token>` is the same trigger as `POST /api/60/webhook/<token>`. A `#name` suffix on the token is not a separate webhook and does not get its own ceiling.
-
-Set the properties in `rundeck-config.properties`, or add `rundeck.apiRateLimiting.webhook.rate` as a custom property in System Configuration. There is no dedicated field for it. The `include` list is read when the rate-limit filter starts, so restart after adding `WebhookTokenApiRateLimiter`. After that restart, a System Configuration save can change `rundeck.apiRateLimiting.webhook.rate` without another restart.
+`/api/60/web%68ook/<token>` counts as `/api/60/webhook/<token>`. A `#name` suffix is not a separate token.

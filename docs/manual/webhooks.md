@@ -92,9 +92,7 @@ log4j.appender.webhook.layout.ConversionPattern=[%d{ISO8601}] %-5p %c{2} - %m%n
 :::enterprise
 :::
 
-Runbook Automation can limit how many webhook trigger calls the instance accepts. Every webhook token shares one ceiling. Calls over the ceiling receive HTTP 429 and a `Retry-After` header. The webhook administration pages and the webhook admin API are not counted.
-
-The limit is off until it is configured. See [Webhook Trigger Rate Limiting](/administration/security/ratelimiting.md#webhook-trigger-rate-limiting).
+All webhook tokens can share one request ceiling. Over the limit, trigger calls receive HTTP 429. See [Webhook Trigger Rate Limiting](/administration/security/ratelimiting.md#webhook-trigger-rate-limiting).
 
 ## Disable Webhooks
 :::tip
