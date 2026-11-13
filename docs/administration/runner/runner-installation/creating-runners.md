@@ -40,6 +40,12 @@ If setting up Enterprise Runners on virtualized environments, here are baseline 
 
 ### Permissions
 
+Creating a Runner also creates its API tokens. Both examples below grant the required application-context token permissions and restrict additional token usernames and roles to `_runner` and `_replica`. These token permissions are required even when the Runner permissions apply only to a specific project.
+
+:::warning Restrict API Token Creation
+Do not grant unrestricted `create` access to `apitoken`. Combined with `generate_service_token`, this allows users to create tokens with arbitrary roles, including `admin`, and access other projects. Keep the `match` and `subset` restrictions in both examples. See [API Token Authorization](/administration/security/authorization.md#api-token-authorization).
+:::
+
 <details>
     <summary> ACL Permissions for Creating Runners at <strong>System</strong> level</summary>
 
@@ -71,20 +77,24 @@ context:
 ---
 by:
   group: my-user-group-name
-description: Allow creation of apitokens (general)
+description: Allow creation of Runner API tokens with restricted usernames and roles
 for:
   apitoken:
   - allow:
     - create
+    match:
+      username: '(_runner|_replica)'
+    subset:
+      roles: [_runner, _replica]
 context:
   application: rundeck
 ---
 by:
-group: my-user-group-name
-description: Restrict apitoken creation to only generate_service_token to be used for Runners
+  group: my-user-group-name
+description: Allow service token generation for Runner creation
 for:
-resource:
-- allow:
+  resource:
+  - allow:
     - generate_service_token
     equals:
       kind: apitoken
@@ -109,6 +119,7 @@ for:
   resource:
   - allow:
     - admin
+    - create
     equals:
       kind: runner
 context:
@@ -117,7 +128,7 @@ context:
 ---
 by:
   group: my-user-group-name
-description: Allow [create, read] for runners within specific project
+description: Allow [create, update, read] for runners within specific project
 for:
   runner:
   - allow:
@@ -128,18 +139,22 @@ context:
   project: my-project-name
 ---
 by:
-  group: runneradmin
-description: Allow creation of apitokens (general)
+  group: my-user-group-name
+description: Allow creation of Runner API tokens with restricted usernames and roles
 for:
   apitoken:
   - allow:
     - create
+    match:
+      username: '(_runner|_replica)'
+    subset:
+      roles: [_runner, _replica]
 context:
   application: rundeck
 ---
 by:
-  group: runneradmin
-description: Restrict apitoken creation to only generate_service_token to be used for Runners
+  group: my-user-group-name
+description: Allow service token generation for Runner creation
 for:
   resource:
   - allow:
