@@ -51,6 +51,8 @@ When a `file` Node Source has `writeable` set to `true`, its `file` path is subj
 * An administrator can allow additional directories outside the project directory by setting `rundeck.resourceModelSource.file.allowedBasePaths` in `rundeck-config.properties` to a comma-separated list of absolute paths. See [rundeck-config.properties](/administration/configuration/config-file-reference.md#rundeck-config-properties) for details.
 * As defense-in-depth, when viewing the file from the Node Sources UI, its contents must also parse successfully as one of the supported [Resource Model Document Formats](#resource-model-document-formats). If the file is not a valid Node Source document, the UI will show an empty editor with a warning rather than the raw file contents.
 
+Existing file sources outside the project directory and configured allowed base paths continue to load nodes for compatibility, but their edit page displays a warning. To remove the warning, move the file into the project directory or add only its intended base directory to `rundeck.resourceModelSource.file.allowedBasePaths`. Do not allow broader filesystem locations than necessary.
+
 This does not affect `file` Node Sources that are not marked `writeable`, nor does it restrict which paths Rundeck can read from at node-refresh time -- it only restricts what a project-configure user can view or overwrite via the interactive file editor.
 
 _Example:_
