@@ -1,7 +1,7 @@
 ---
 title: Recent Updates
 description: New features and fixes available in Runbook Automation SaaS ahead of the next self-hosted release
-date: 2026-11-04T15:31:32.164Z
+date: 2026-11-04T21:45:52.529Z
 feed: true
 index: true
 ---
