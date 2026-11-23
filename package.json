@@ -69,7 +69,7 @@
     },
     "nostics": "1.3.0",
     "fast-uri": "4.2.3",
-    "brace-expansion": "5.0.12",
+    "brace-expansion": "5.0.13",
     "js-yaml": "4.3.2",
     "qs": "6.17.1",
     "gray-matter": {
