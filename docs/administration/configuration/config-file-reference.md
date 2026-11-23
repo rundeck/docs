@@ -544,6 +544,26 @@ Configure authentication, session management, and security policies.
 
 **Security tip:** Keep `showTracesOnResponse=false` in production to avoid exposing internal details.
 
+#### Upload size limits {#upload-size-limits}
+
+Key Storage and Access Control each accept one file up to **2MB** by default. The limit applies to system and project uploads, from the UI and the API. A larger file is rejected with HTTP 413 and is not stored. The message is `api.error.upload.filesize`.
+
+The global multipart limit (`grails.controllers.upload.maxFileSize`, 25MB) is unchanged. Job import, plugins, and archives keep that limit.
+
+| Property | Default | Description |
+|----------|---------|-------------|
+| `rundeck.security.upload.keystorage.maxsize` | `2MB` | Maximum size of one Key Storage file. Covers `POST` and `PUT /api/{version}/storage/keys/...` and `POST /storage/upload/keys`. |
+| `rundeck.security.upload.acl.maxsize` | `2MB` | Maximum size of one Access Control policy file. Covers system and project ACL uploads from the UI and the API. |
+
+Use a file size such as `2MB`, `512KB`, or a byte count such as `2097152`. An empty value, `0`, or a value that is not a file size keeps the **2MB** default. The limit cannot be turned off. Raise the value to allow a larger file.
+
+Both properties are in System Configuration under **Security** (Advanced). Saving there applies on the next upload, without a restart. The same keys in `rundeck-config.properties` apply at startup.
+
+```properties
+rundeck.security.upload.keystorage.maxsize=2MB
+rundeck.security.upload.acl.maxsize=2MB
+```
+
 #### Feature flags removed or changed (Rundeck 6.0) {#feature-flags-removed-or-changed-rundeck-60}
 
 | Property | Status in 6.0 |

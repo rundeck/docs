@@ -438,6 +438,8 @@ If an authorization request occurs in the context of a specific Project (e.g. "d
 
 Otherwise, only the policies on the filesystem, and uploaded to the System ACLs API are evaluated for the request.
 
+One uploaded policy file is limited to 2MB by default. A larger file is rejected and is not stored. Change `rundeck.security.upload.acl.maxsize` to allow a larger file. See [Upload size limits](/administration/configuration/config-file-reference.md#upload-size-limits).
+
 ### Enterprise ACL Storage Layer
 
 Rundeck Enterprise includes an optimized ACL Storage Layer that improves application performance when you have many ACL policies. This feature stores ACLs in the database in a format that allows them to be queried more efficiently, significantly improving performance with large numbers of ACLs.
