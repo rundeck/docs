@@ -5,8 +5,50 @@
     <link>https://docs.rundeck.com/docs</link>
     <description>New features and fixes available in Runbook Automation SaaS ahead of the next self-hosted release</description>
     <language>en-us</language>
-    <lastBuildDate>Wed, 04 Nov 2026 15:31:32 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 23 Nov 2026 15:17:15 GMT</lastBuildDate>
     <atom:link href="https://docs.rundeck.com/feeds/development.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Register the webhook template cache feature</title>
+      <link>https://docs.rundeck.com/docs/history/updates/</link>
+      <description>Register the webhook template cache feature (Merged: Nov 17, 2026)</description>
+      <pubDate>Tue, 17 Nov 2026 19:06:42 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeck-10805</guid>
+    </item>
+    <item>
+      <title>Fix Grails 7.2 GradleWorkerMain memory leak during compilation and bootRun (-32% to -39% peak RAM)</title>
+      <link>https://docs.rundeck.com/docs/history/updates/</link>
+      <description>Fix Grails 7.2 GradleWorkerMain memory leak during compilation and bootRun (-32% to -39% peak RAM) (Merged: Nov 16, 2026)</description>
+      <pubDate>Mon, 16 Nov 2026 16:48:34 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeck-10798</guid>
+    </item>
+    <item>
+      <title>Preserve log-filter data from proxied workflow steps</title>
+      <link>https://docs.rundeck.com/docs/history/updates/</link>
+      <description>Preserve log-filter data from proxied workflow steps (Merged: Nov 11, 2026)</description>
+      <pubDate>Wed, 11 Nov 2026 16:10:25 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeck-10771</guid>
+    </item>
+    <item>
+      <title>Include file, node source and project name in node source error logs</title>
+      <link>https://docs.rundeck.com/docs/history/updates/</link>
+      <description>Include file, node source and project name in node source error logs (Merged: Nov 11, 2026)</description>
+      <pubDate>Wed, 11 Nov 2026 12:56:39 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeck-10784</guid>
+    </item>
+    <item>
+      <title>Accept numeric, boolean and plain map entries in remote option values</title>
+      <link>https://docs.rundeck.com/docs/history/updates/</link>
+      <description>Accept numeric, boolean and plain map entries in remote option values (Merged: Nov 11, 2026)</description>
+      <pubDate>Wed, 11 Nov 2026 12:45:04 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeck-10783</guid>
+    </item>
+    <item>
+      <title>Linux and Cygwin line endings</title>
+      <link>https://docs.rundeck.com/docs/history/updates/</link>
+      <description>Linux and Cygwin line endings (Merged: Nov 10, 2026)</description>
+      <pubDate>Tue, 10 Nov 2026 17:52:59 GMT</pubDate>
+      <guid isPermaLink="false">rundeck-pr-rundeck-10777</guid>
+    </item>
     <item>
       <title>Bypass the replica query cache</title>
       <link>https://docs.rundeck.com/docs/history/updates/</link>
