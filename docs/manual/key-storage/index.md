@@ -10,7 +10,7 @@ Project scope defined keys should be stored using this formula `keys/project/[pr
 
 ## Using the Key Storage UI
 
-The Key Store page provides a simple browser to navigate folders and perform actions on keys. Keys can be stored either using an uploaded file or as text input.
+The Key Store page provides a simple browser to navigate folders and perform actions on keys. Keys can be stored either using an uploaded file or as text input. One key is limited to 2MB by default. Change `rundeck.security.upload.keystorage.maxsize` to allow a larger file. See [Upload size limits](/administration/configuration/config-file-reference.md#upload-size-limits).
 
 ### Key Store Organization
 
