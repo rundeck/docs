@@ -1,7 +1,7 @@
 ---
 title: Recent Updates
 description: New features and fixes available in Runbook Automation SaaS ahead of the next self-hosted release
-date: 2026-11-04T15:31:32.164Z
+date: 2026-11-23T15:17:15.308Z
 feed: true
 index: true
 ---
@@ -14,6 +14,41 @@ For everything in the current self-hosted version, see the [6.3.0 release notes]
 
 ## Available Now in SaaS
 
+
+### ::circle-dot:: Register the webhook template cache feature  [PR #10805](https://github.com/rundeck/rundeck/pull/10805)
+
+
+  The webhook template cache can be turned off with `rundeck.feature.webhookTemplateCache.enabled=false`. It stays on when the property is unset.
+
+### ::circle-dot:: Fix Grails 7.2 GradleWorkerMain memory leak during compilation and bootRun (-32% to -39% peak RAM)  [PR #10798](https://github.com/rundeck/rundeck/pull/10798)
+
+
+  **Fixed:** Resolved a memory leak when building or running Rundeck from source where background build processes stayed in memory for the entire session instead of shutting down. Peak memory usage during builds is now **32%–39% lower**, and local server startup from source is **38%–60% faster** on memory-constrained machines by avoiding disk swap.
+
+### ::circle-dot:: Preserve log-filter data from proxied workflow steps  [PR #10771](https://github.com/rundeck/rundeck/pull/10771)
+
+
+  Runner-proxied workflow steps now preserve workflow data captured by log filters for use by subsequent steps.
+  
+  
+  **Companion Rundeck Pro PR:**
+  
+  - https://github.com/rundeckpro/rundeckpro/pull/5204
+
+### ::circle-dot:: Include file, node source and project name in node source error logs  [PR #10784](https://github.com/rundeck/rundeck/pull/10784)
+
+
+  Node source load errors in the Rundeck log now identify the node source, the project and, for file sources, the file path.
+
+### ::circle-dot:: Accept numeric, boolean and plain map entries in remote option values  [PR #10783](https://github.com/rundeck/rundeck/pull/10783)
+
+
+  Remote URL job options now accept numeric and boolean values, and name/value objects, including those selected by a JSON Path filter (for example `$.results.*.id`). Previously these failed with &quot;expected string or map like {name:&quot;..&quot;,value:&quot;..&quot;}&quot;. A name/value item whose value is `0` or an empty string is no longer rejected. In a list that mixes plain strings and name/value objects, the objects are no longer dropped.
+
+### ::circle-dot:: Linux and Cygwin line endings  [PR #10777](https://github.com/rundeck/rundeck/pull/10777)
+
+
+  Script steps for Linux and Cygwin nodes now use Unix line endings, including when the runner is Windows.
 
 ### ::circle-dot:: Bypass the replica query cache 
 
@@ -57,6 +92,6 @@ This page is generated from changes in both the Runbook Automation product and t
 
 ---
 
-**List Last updated:** 2026-11-04
+**List Last updated:** 2026-11-23
 
 

@@ -3,9 +3,51 @@
   <title>Rundeck Development Updates</title>
   <link href="https://docs.rundeck.com/feeds/development.xml" rel="self" />
   <link href="https://docs.rundeck.com/docs" />
-  <updated>2026-11-04T15:31:32.178Z</updated>
+  <updated>2026-11-23T15:17:15.320Z</updated>
   <id>https://docs.rundeck.com/feeds/development</id>
   <subtitle>New features and fixes available in Runbook Automation SaaS ahead of the next self-hosted release</subtitle>
+  <entry>
+    <title>Register the webhook template cache feature</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeck-10805</id>
+    <updated>2026-11-17T19:06:42.000Z</updated>
+    <content type="text">Register the webhook template cache feature (Merged: Nov 17, 2026)</content>
+  </entry>
+  <entry>
+    <title>Fix Grails 7.2 GradleWorkerMain memory leak during compilation and bootRun (-32% to -39% peak RAM)</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeck-10798</id>
+    <updated>2026-11-16T16:48:34.000Z</updated>
+    <content type="text">Fix Grails 7.2 GradleWorkerMain memory leak during compilation and bootRun (-32% to -39% peak RAM) (Merged: Nov 16, 2026)</content>
+  </entry>
+  <entry>
+    <title>Preserve log-filter data from proxied workflow steps</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeck-10771</id>
+    <updated>2026-11-11T16:10:25.000Z</updated>
+    <content type="text">Preserve log-filter data from proxied workflow steps (Merged: Nov 11, 2026)</content>
+  </entry>
+  <entry>
+    <title>Include file, node source and project name in node source error logs</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeck-10784</id>
+    <updated>2026-11-11T12:56:39.000Z</updated>
+    <content type="text">Include file, node source and project name in node source error logs (Merged: Nov 11, 2026)</content>
+  </entry>
+  <entry>
+    <title>Accept numeric, boolean and plain map entries in remote option values</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeck-10783</id>
+    <updated>2026-11-11T12:45:04.000Z</updated>
+    <content type="text">Accept numeric, boolean and plain map entries in remote option values (Merged: Nov 11, 2026)</content>
+  </entry>
+  <entry>
+    <title>Linux and Cygwin line endings</title>
+    <link href="https://docs.rundeck.com/docs/history/updates/" />
+    <id>rundeck-pr-rundeck-10777</id>
+    <updated>2026-11-10T17:52:59.000Z</updated>
+    <content type="text">Linux and Cygwin line endings (Merged: Nov 10, 2026)</content>
+  </entry>
   <entry>
     <title>Bypass the replica query cache</title>
     <link href="https://docs.rundeck.com/docs/history/updates/" />
