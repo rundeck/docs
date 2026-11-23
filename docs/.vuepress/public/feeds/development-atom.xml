@@ -3,7 +3,7 @@
   <title>Rundeck Development Updates</title>
   <link href="https://docs.rundeck.com/feeds/development.xml" rel="self" />
   <link href="https://docs.rundeck.com/docs" />
-  <updated>2026-11-23T15:17:15.320Z</updated>
+  <updated>2026-11-23T15:47:46.603Z</updated>
   <id>https://docs.rundeck.com/feeds/development</id>
   <subtitle>New features and fixes available in Runbook Automation SaaS ahead of the next self-hosted release</subtitle>
   <entry>
@@ -12,13 +12,6 @@
     <id>rundeck-pr-rundeck-10805</id>
     <updated>2026-11-17T19:06:42.000Z</updated>
     <content type="text">Register the webhook template cache feature (Merged: Nov 17, 2026)</content>
-  </entry>
-  <entry>
-    <title>Fix Grails 7.2 GradleWorkerMain memory leak during compilation and bootRun (-32% to -39% peak RAM)</title>
-    <link href="https://docs.rundeck.com/docs/history/updates/" />
-    <id>rundeck-pr-rundeck-10798</id>
-    <updated>2026-11-16T16:48:34.000Z</updated>
-    <content type="text">Fix Grails 7.2 GradleWorkerMain memory leak during compilation and bootRun (-32% to -39% peak RAM) (Merged: Nov 16, 2026)</content>
   </entry>
   <entry>
     <title>Preserve log-filter data from proxied workflow steps</title>

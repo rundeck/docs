@@ -1,7 +1,7 @@
 ---
 title: Recent Updates
 description: New features and fixes available in Runbook Automation SaaS ahead of the next self-hosted release
-date: 2026-11-23T15:17:15.308Z
+date: 2026-11-23T15:47:46.578Z
 feed: true
 index: true
 ---
@@ -19,11 +19,6 @@ For everything in the current self-hosted version, see the [6.3.0 release notes]
 
 
   The webhook template cache can be turned off with `rundeck.feature.webhookTemplateCache.enabled=false`. It stays on when the property is unset.
-
-### ::circle-dot:: Fix Grails 7.2 GradleWorkerMain memory leak during compilation and bootRun (-32% to -39% peak RAM)  [PR #10798](https://github.com/rundeck/rundeck/pull/10798)
-
-
-  **Fixed:** Resolved a memory leak when building or running Rundeck from source where background build processes stayed in memory for the entire session instead of shutting down. Peak memory usage during builds is now **32%–39% lower**, and local server startup from source is **38%–60% faster** on memory-constrained machines by avoiding disk swap.
 
 ### ::circle-dot:: Preserve log-filter data from proxied workflow steps  [PR #10771](https://github.com/rundeck/rundeck/pull/10771)
 
