@@ -103,7 +103,6 @@ jobs:
             echo "feed_generation_status=failed" >> $GITHUB_OUTPUT
             echo "Feed generation failed, but continuing to commit config changes"
           fi
-        continue-on-error: true
           
       # Step 7: Commit changes
       - name: Commit changes
@@ -156,7 +155,7 @@ jobs:
           
           # Create PR body file to avoid quoting issues
           if [ "$FEED_STATUS" = "success" ]; then
-            cat > pr_body.md << "EOFMARKER"
+            cat > pr_body.md << EOFMARKER
           ## PR Feed Configuration Update
           
           This PR updates the PR feed configuration with the latest RBA release tag.
@@ -178,7 +177,7 @@ jobs:
           *This PR was automatically created by the update-pr-feed workflow*
           EOFMARKER
           else
-            cat > pr_body.md << "EOFMARKER"
+            cat > pr_body.md << EOFMARKER
           ## PR Feed Configuration Update
           
           This PR updates the PR feed configuration with the latest RBA release tag.
@@ -208,6 +207,7 @@ jobs:
           if [ -n "$EXISTING_PR" ]; then
             echo "PR #$EXISTING_PR already exists for branch $BRANCH_NAME"
             echo "The PR will be automatically updated with the new commits"
+            gh pr edit "$EXISTING_PR" --body-file pr_body.md
           else
             echo "Creating new PR for branch $BRANCH_NAME..."
             gh pr create \
@@ -239,3 +239,10 @@ jobs:
           
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "A pull request has been created for review." >> $GITHUB_STEP_SUMMARY
+
+      # Step 11: Fail the run if feed generation failed, so it is not reported as success
+      - name: Check feed generation status
+        if: steps.generate-feeds.outputs.feed_generation_status != 'success'
+        run: |
+          echo "::error::Feed generation failed. Config was committed, but feed files were not regenerated. See the 'Generate PR feed files' step logs."
+          exit 1
