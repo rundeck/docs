@@ -87,6 +87,13 @@ log4j.appender.webhook.layout=org.apache.log4j.PatternLayout
 log4j.appender.webhook.layout.ConversionPattern=[%d{ISO8601}] %-5p %c{2} - %m%n
 ```  
 
+## Webhook request limit
+
+:::enterprise
+:::
+
+All webhook tokens can share one request ceiling. Over the limit, trigger calls receive HTTP 429. See [Webhook Trigger Rate Limiting](/administration/security/ratelimiting.md#webhook-trigger-rate-limiting).
+
 ## Disable Webhooks
 :::tip
 Webhooks are on by default as of `3.2.0`. They can be disabled by following the following instructions.

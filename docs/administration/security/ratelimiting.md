@@ -63,11 +63,12 @@ Configuration Parameters:
    ![rate-limiting-jmx-monitor](/assets/img/rate-limiting-jmx-monitor.png)
 System admin can use their monitor tools to capture the Cache overflow event.
 
-5. `rundeck.apiRateLimiting.include` - A string of semicolon separated Rate Limiter algorithm names. It defines which Rate Limiter algorithm will be applied. We have three different Rate Limiter algorithms: Session-Based, AuthToken-Based and Client IP Based, we use this parameter to let system admin choose the desired Rate Limiter algorithm. The valid algorithm names are:
+5. `rundeck.apiRateLimiting.include` - A string of semicolon separated Rate Limiter algorithm names. It defines which Rate Limiter algorithm will be applied. We have four different Rate Limiter algorithms: Session-Based, AuthToken-Based, Client IP Based, and Webhook Trigger. Use this parameter to choose the desired Rate Limiter algorithm. The valid algorithm names are:
    
     - `rundeckpro.security.rateLimit.AuthTokenApiRateLimiter` - This rate limiter will apply rate limiting on requests per Auth Token. 
     - `rundeckpro.security.rateLimit.SessionApiRateLimiter` - This rate limiter will apply rate limiting on requests per authenticated user session
     - `rundeckpro.security.rateLimit.ClientIPApiRateLimiter` - This rate limiter will apply rate limiting on requests per client IP address
+    - `rundeckpro.security.rateLimit.WebhookTokenApiRateLimiter` - This rate limiter counts webhook trigger requests. See [Webhook Trigger Rate Limiting](#webhook-trigger-rate-limiting).
 
     Here are some samples of valid settings:
     ```
@@ -82,3 +83,20 @@ System admin can use their monitor tools to capture the Cache overflow event.
 
     rundeck.apiRateLimiting.include = rundeckpro.security.rateLimit.AuthTokenApiRateLimiter;rundeckpro.security.rateLimit.SessionApiRateLimiter
     ```
+
+## Webhook Trigger Rate Limiting
+
+Counts `POST /api/<version>/webhook/<token>`. All webhook tokens share one bucket. The webhook admin API is not counted. `rundeck.apiRateLimiting.rate` does not apply here.
+
+The limiter stays off until `rundeck.apiRateLimiting.enabled=true`, `include` lists `rundeckpro.security.rateLimit.WebhookTokenApiRateLimiter`, and `rundeck.apiRateLimiting.webhook.rate` is a positive integer. Unset or `0` means no webhook limit. The window is `rundeck.apiRateLimiting.refillWindowInSeconds`. Over the limit the response is HTTP 429 with `Retry-After`.
+
+```
+rundeck.apiRateLimiting.enabled=true
+rundeck.apiRateLimiting.refillWindowInSeconds=60
+rundeck.apiRateLimiting.include=rundeckpro.security.rateLimit.AuthTokenApiRateLimiter;rundeckpro.security.rateLimit.WebhookTokenApiRateLimiter
+rundeck.apiRateLimiting.webhook.rate=30
+```
+
+`30` is an example: 30 trigger calls per window for the whole instance. Restart after adding the class to `include`. A later change to `webhook.rate` in System Configuration applies without another restart.
+
+`/api/60/web%68ook/<token>` counts as `/api/60/webhook/<token>`. A `#name` suffix is not a separate token.
