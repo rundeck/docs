@@ -152,6 +152,24 @@ Use the following command to generate the ssh key pair:
 You can set **Match a Regular Expression?** to `yes` to enter a regular expression that is going to be checked to match all paths that match the regular expression to be imported.
 If you set it to `no` on the next step you are going to be asked to select one by one the files to be imported.
 
+## Remote restrictions
+
+Optional controls for Git Import and Git Export. Both are off by default, so existing remotes keep working. A saved value applies on the next Git operation, without a restart.
+
+The first non-blank value wins:
+
+1. **System Menu → System Configuration → SCM** (Commercial). A saved value, including `false`, overrides `rundeck-config.properties`. Deleting that key makes the file value apply again.
+2. `rundeck-config.properties`
+3. `framework.properties`
+4. A JVM `-D` system property
+
+If every source above is blank or unset, the control stays off. A blank `allowedSchemes` value counts as unset.
+
+| Property | Default | Description |
+|----------|---------|-------------|
+| `rundeck.scm.git.allowedSchemes` | unset | Comma-separated schemes, for example `https,http,ssh`. `ssh` includes `ssh://` and `git@host:path`. `file` includes `file://` and a local path. |
+| `rundeck.scm.git.blockInternalAddresses` | `false` | When `true`, Git SCM rejects an internal host. Leave this off when the Git server is on a private network. |
+
 ## Advanced configurations
 
 ### Use the same repo for multiple projects.

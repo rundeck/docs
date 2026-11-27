@@ -1132,6 +1132,18 @@ When set to `false`, the deletion runs as part of the request, and any error is 
 
 For Docker images, use the `RUNDECK_PROJECTSERVICE_DEFERREDPROJECTDELETE` environment variable.
 
+### Git SCM
+
+Optional controls for Git Import and Export. Both are off by default. See [Git Plugin — Remote restrictions](/manual/projects/scm/git.md#remote-restrictions).
+
+Allowed URL schemes (unset by default).
+: `rundeck.scm.git.allowedSchemes` Comma-separated schemes, for example `https,http,ssh`. `ssh` includes `ssh://` and `git@host:path`. `file` includes `file://` and a local path. A blank value counts as unset.
+
+Block internal addresses: true/false (default false).
+: `rundeck.scm.git.blockInternalAddresses=false` When `true`, Git SCM rejects an internal host.
+
+A saved value applies on the next Git operation, without a restart. The first non-blank value wins: **System Menu → System Configuration → SCM** (Commercial), then `rundeck-config.properties`, then `framework.properties`, then a JVM `-D` system property. A saved value, including `false`, overrides the file. Deleting that key makes the file value apply again.
+
 ### Limit displayed Job execution Log Output
 
 Limit the amount of lines displayed in Log Output when following the execution of a Job that is running (not finished yet) after a configurable limit has been reached.
